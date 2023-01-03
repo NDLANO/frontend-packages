@@ -38,4 +38,10 @@ export const themes: Record<ButtonColor, ButtonTheme> = {
     hoverForeground: colors.white,
     hoverBackground: colors.support.red,
   },
+  darker: {
+    foreground: colors.white,
+    background: colors.brand.dark,
+    hoverForeground: colors.white,
+    hoverBackground: colors.brand.dark,
+  },
 };

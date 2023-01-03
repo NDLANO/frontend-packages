@@ -58,9 +58,9 @@ const ProgrammeSubjects = ({ grades, onNavigate, selectedGrade = 'vg1' }: Props)
             <li key={item.name}>
               <SafeLinkButton
                 to={current ? '' : item.name.toLowerCase()}
-                lighter={item !== grade}
-                borderShape="rounded"
-                buttonSize="normal"
+                colorTheme={item !== grade ? 'lighter' : undefined}
+                shape="pill"
+                size="normal"
                 aria-current={current}>
                 {item.name}
               </SafeLinkButton>

@@ -170,6 +170,29 @@ export const buttonStyle = ({
         border: none;
       }
     `}
+    ${variant === 'stripped' &&
+    css`
+      padding: 0;
+      border-radius: 0;
+      color: inherit;
+      font-size: inherit;
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+      font-weight: ${fonts.weight.normal};
+      &:hover,
+      &:active,
+      &:disabled,
+      &:focus {
+        box-shadow: none;
+        color: ${colors.brand.primary};
+        background-color: transparent;
+        border: none;
+      }
+      &:focus {
+        outline-width: medium;
+      }
+    `}
 
   // Modifiers
   ${inverted &&

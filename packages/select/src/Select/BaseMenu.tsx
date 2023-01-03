@@ -14,8 +14,10 @@ import { MenuProps, components, GroupBase } from 'react-select';
 import { Option } from './types';
 
 const menuStyle = css`
-  min-width: 100%;
-  width: unset;
+  && {
+    min-width: 100%;
+    width: unset;
+  }
 `;
 
 const StyledBaseMenu = styled.div<Props>`

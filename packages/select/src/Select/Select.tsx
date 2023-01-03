@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import ReactSelect, { OnChangeValue, PropsValue } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
@@ -52,7 +52,7 @@ const Select = <T extends boolean>({
   prefix,
   postfix,
 }: Props<T>) => {
-  const portalTarget = typeof document !== 'undefined' ? document?.querySelector('body') : null;
+  const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
 
   return (
     <ReactSelect<Option, T>

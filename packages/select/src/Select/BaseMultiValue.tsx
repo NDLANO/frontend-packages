@@ -5,20 +5,35 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import isArray from 'lodash/isArray';
 import React from 'react';
+import isArray from 'lodash/isArray';
 import { useTranslation } from 'react-i18next';
 import { MultiValueProps } from 'react-select';
 import { Option } from './types';
+import { TextEllipsis } from './BasePlaceholder';
 
-const BaseMultiValue = <T extends boolean>({ selectProps: { value }, data, children }: MultiValueProps<Option, T>) => {
+interface Props {
+  postfix?: string;
+}
+
+const BaseMultiValue = <T extends boolean>({
+  selectProps: { value },
+  data,
+  children,
+  postfix,
+}: Props & MultiValueProps<Option, T>) => {
   const { t } = useTranslation();
 
   const count = isArray(value) ? value.length : 0;
   const isLastItem = isArray(value) && data === value[count - 1];
 
-  if (count === 1) return <span>{children}</span>;
-  if (isLastItem) return <span>{t('dropdown.selected', { count })}</span>;
+  if (count === 1) return <TextEllipsis>{children}</TextEllipsis>;
+  if (isLastItem)
+    return (
+      <TextEllipsis>
+        {t('dropdown.selected', { count })} <span>{postfix}</span>
+      </TextEllipsis>
+    );
   return null;
 };
 

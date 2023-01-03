@@ -14,18 +14,10 @@ npm i --save @ndla/select
 
 ## Usage
 
-### Select with custom control component
-
 ```js
-import { Select, ControlPropsType } from '@ndla/select';
+import { Select } from '@ndla/select';
 
-const CustomControl = ({ ...props }: ControlPropsType<false>) => {
-  return (
-    <div {...props.innerProps} ref={props.innerRef}>
-      {props.children}
-    </div>
-  );
-};
-
-<Select options={[{ value: 'blå', label: 'blå' }]} placeholder="Farger" ControlComponent={CustomControl} />;
+<Select options={[{ value: 'blå', label: 'blå' }]} placeholder="Farger" />;
 ```
+
+Can be controlled using `value` and `onChange` props.

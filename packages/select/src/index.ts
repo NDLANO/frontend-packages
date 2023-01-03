@@ -6,13 +6,5 @@
  *
  */
 
-export type {
-  Option,
-  ControlPropsType,
-  OptionPropsType,
-  MenuPropsType,
-  SingleValue,
-  MultiValue,
-  DropdownIndicatorPropsType,
-} from './Select';
+export type { Option, SingleValue, MultiValue } from './Select';
 export { default as Select } from './Select';

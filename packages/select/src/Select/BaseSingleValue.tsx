@@ -5,16 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import styled from '@emotion/styled';
+
 import React from 'react';
+import styled from '@emotion/styled';
+import { fonts } from '@ndla/core/src';
 import { components, GroupBase, SingleValueProps } from 'react-select';
 import { Option } from './types';
-
-// Wrapper grid-component is needed to show ellipsis at overflow without fixed width
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr;
-`;
 
 const StyledSingleValue = styled.div`
   overflow: hidden;
@@ -22,14 +18,27 @@ const StyledSingleValue = styled.div`
   white-space: nowrap;
 `;
 
+const StyledPostfix = styled.span`
+  font-weight: ${fonts.weight.semibold};
+`;
+
+interface Props {
+  prefix?: string;
+  postfix?: string;
+}
+
 const BaseSingleValue = <T extends boolean>({
-  children,
   innerProps,
-}: SingleValueProps<Option, T, GroupBase<Option>>) => {
+  prefix,
+  postfix,
+  children,
+}: Props & SingleValueProps<Option, T, GroupBase<Option>>) => {
   return (
-    <Wrapper {...innerProps}>
-      <StyledSingleValue>{children}</StyledSingleValue>
-    </Wrapper>
+    <StyledSingleValue {...innerProps}>
+      <StyledPostfix>{prefix}</StyledPostfix>
+      {children}
+      <span>{postfix}</span>
+    </StyledSingleValue>
   );
 };
 

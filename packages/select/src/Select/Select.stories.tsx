@@ -29,16 +29,8 @@ export default {
 
 export const SelectStory: ComponentStory<typeof Select> = (args) => {
   return (
-    <div style={{ width: 150 }}>
-      <Select
-        {...args}
-        options={[
-          { value: 'Gul', label: 'Gul' },
-          { value: 'Blå', label: 'Blå' },
-          { value: 'Grønn', label: 'Grønn' },
-        ]}
-        placeholder="Velg en farge"
-      />
+    <div style={{ display: 'flex' }}>
+      <Select {...args} placeholder="Velg en farge" />
     </div>
   );
 };

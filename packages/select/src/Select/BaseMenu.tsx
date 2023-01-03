@@ -7,28 +7,32 @@
  */
 
 import React from 'react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import { CSSObjectWithLabel } from 'react-select';
-import { MenuPropsType } from './types';
+import { MenuProps, components, GroupBase } from 'react-select';
+import { Option } from './types';
 
-const StyledBaseMenu = styled.div<{ baseStyling: CSSObjectWithLabel }>`
-  ${(props) => props.baseStyling};
-  width: auto;
+const menuStyle = css`
   min-width: 100%;
-  overflow: hidden;
-  border: 1px solid ${colors.brand.greyLighter};
+  width: unset;
 `;
 
-const BaseMenu = <T extends boolean>(props: MenuPropsType<T>) => {
-  const { innerRef, innerProps, children } = props;
-  const baseMenuStyles = props.getStyles('menu', props);
+const StyledBaseMenu = styled.div<Props>`
+  overflow: hidden;
+  background-color: ${colors.white};
+  border: 1px solid ${colors.brand.light};
+  border-radius: ${({ small }) => (small ? '4px' : '8px')};
+  margin: 4px 0;
+`;
 
-  return (
-    <StyledBaseMenu baseStyling={baseMenuStyles} ref={innerRef} {...innerProps}>
-      {children}
-    </StyledBaseMenu>
-  );
-};
+interface Props {
+  small?: boolean;
+}
 
+const BaseMenu = <T extends boolean>({ small, children, ...props }: Props & MenuProps<Option, T>) => (
+  <components.Menu<Option, T, GroupBase<Option>> {...props} css={menuStyle}>
+    <StyledBaseMenu small={small}>{children}</StyledBaseMenu>
+  </components.Menu>
+);
 export default BaseMenu;

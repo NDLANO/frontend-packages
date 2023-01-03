@@ -1,6 +1,6 @@
 {
   "name": "@ndla/button",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

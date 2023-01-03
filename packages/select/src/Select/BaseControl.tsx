@@ -23,16 +23,16 @@ const StyledBaseControl = styled.div<StyledProps>`
   border-radius: 8px;
   padding: ${spacing.small} ${spacing.normal};
   min-height: 40px;
-  font-weight: ${fonts.weight.bold};
+  font-weight: ${({ bold }) => (bold ? fonts.weight.bold : fonts.weight.semibold)};
   ${fonts.sizes('18px', '24px')};
 
-  ${({ small }) =>
+  ${({ small, bold }) =>
     small &&
     css`
       border-radius: 4px;
       padding: ${spacing.xxsmall} ${spacing.xsmall};
       min-height: unset;
-      font-weight: ${fonts.weight.normal};
+      font-weight: ${bold ? fonts.weight.semibold : fonts.weight.normal};
       ${fonts.sizes('16px', '18px')};
     `}
 
@@ -60,16 +60,24 @@ interface StyledProps {
   small?: boolean;
   colorTheme: Color;
   outline?: boolean;
+  bold?: boolean;
 }
 
 const BaseControl = <T extends boolean>({
-  selectProps: { small, outline, colorTheme },
+  selectProps: { small, outline, colorTheme, bold },
   innerRef,
   innerProps,
   children,
   ...rest
 }: ControlProps<Option, T>) => (
-  <StyledBaseControl small={small} colorTheme={colorTheme} outline={outline} ref={innerRef} {...innerProps} {...rest}>
+  <StyledBaseControl
+    small={small}
+    bold={bold}
+    colorTheme={colorTheme}
+    outline={outline}
+    ref={innerRef}
+    {...innerProps}
+    {...rest}>
     {children}
   </StyledBaseControl>
 );

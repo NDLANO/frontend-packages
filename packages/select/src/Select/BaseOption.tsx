@@ -27,6 +27,7 @@ const StyledCheck = styled(Done, { shouldForwardProp })<CheckProps>`
 
 interface StyledProps {
   small?: boolean;
+  bold?: boolean;
   isFocused: boolean;
 }
 
@@ -40,11 +41,12 @@ const StyledBaseOption = styled.div<StyledProps>`
   background-color: ${({ isFocused }) => (isFocused ? colors.brand.lighter : colors.white)};
   padding-right: 20px;
   color: ${colors.brand.dark};
-  font-weight: ${fonts.weight.bold};
-  ${({ small }) =>
+  font-weight: ${({ bold }) => (bold ? fonts.weight.bold : fonts.weight.semibold)};
+
+  ${({ small, bold }) =>
     small &&
     css`
-      font-weight: ${fonts.weight.normal};
+      font-weight: ${bold ? fonts.weight.semibold : fonts.weight.normal};
       ${fonts.sizes('16px', '16px')};
       padding: ${spacing.xsmall};
     `}
@@ -55,11 +57,11 @@ const BaseOption = <T extends boolean>({
   innerProps,
   isFocused,
   isSelected,
-  selectProps: { small },
+  selectProps: { small, bold },
   children,
 }: OptionProps<Option, T>) => {
   return (
-    <StyledBaseOption small={small} ref={innerRef} {...innerProps} isFocused={isFocused}>
+    <StyledBaseOption small={small} bold={bold} ref={innerRef} {...innerProps} isFocused={isFocused}>
       <StyledCheck isSelected={isSelected} />
       {children}
     </StyledBaseOption>

@@ -11,7 +11,7 @@ import ReactSelect, { OnChangeValue, PropsValue } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, Color } from './types';
+import { Option, Color, MultiValue, SingleValue } from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -22,7 +22,7 @@ import BaseContainer from './BaseContainer';
 interface Props<T extends boolean> {
   options: Option[];
   label?: string;
-  onChange?: (value: OnChangeValue<Option, T>) => void;
+  onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
   value?: PropsValue<Option>;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
@@ -30,6 +30,7 @@ interface Props<T extends boolean> {
   hideArrow?: boolean;
   isLoading?: boolean;
   small?: boolean;
+  bold?: boolean;
   prefix?: string;
   postfix?: string;
   outline?: boolean;
@@ -47,6 +48,7 @@ const Select = <T extends boolean>({
   hideArrow,
   isLoading,
   small,
+  bold,
   outline,
   colorTheme = 'blue',
   prefix,
@@ -57,6 +59,7 @@ const Select = <T extends boolean>({
   return (
     <ReactSelect<Option, T>
       small={small}
+      bold={bold}
       outline={outline}
       colorTheme={colorTheme}
       postfix={postfix}
@@ -78,11 +81,11 @@ const Select = <T extends boolean>({
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{
         SelectContainer: BaseContainer,
-        IndicatorSeparator: () => null,
+        IndicatorSeparator: null,
         Option: BaseOption,
         Control: BaseControl,
         SingleValue: BaseSingleValue,
-        DropdownIndicator: hideArrow ? BaseDropdownIndicator : null,
+        DropdownIndicator: hideArrow ? null : BaseDropdownIndicator,
         Menu: BaseMenu,
         MultiValue: BaseMultiValue,
         Placeholder: BasePlaceholder,

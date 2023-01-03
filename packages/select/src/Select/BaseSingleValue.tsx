@@ -19,21 +19,25 @@ const StyledSingleValue = styled.div`
 `;
 
 const StyledPostfix = styled.span<StyledProps>`
-  font-weight: ${({ small }) => (small ? fonts.weight.semibold : fonts.weight.bold)};
+  font-weight: ${fonts.weight.semibold};
+  font-weight: ${({ small, bold }) => !small && bold && fonts.weight.bold};
 `;
 
 interface StyledProps {
   small?: boolean;
+  bold?: boolean;
 }
 
 const BaseSingleValue = <T extends boolean>({
   innerProps,
-  selectProps: { small, prefix, postfix },
+  selectProps: { small, prefix, postfix, bold },
   children,
 }: StyledProps & SingleValueProps<Option, T, GroupBase<Option>>) => {
   return (
     <StyledSingleValue {...innerProps}>
-      <StyledPostfix small={small}>{prefix}</StyledPostfix>
+      <StyledPostfix small={small} bold={bold}>
+        {prefix}
+      </StyledPostfix>
       {children}
       <span>{postfix}</span>
     </StyledSingleValue>

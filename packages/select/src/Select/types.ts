@@ -15,8 +15,12 @@ declare module 'react-select/dist/declarations/src/Select' {
     outline?: boolean;
     prefix?: string;
     postfix?: string;
+    bold?: boolean;
   }
 }
+
+export type SingleValue = Option | null;
+export type MultiValue = readonly Option[];
 
 export type Option = {
   value: string;

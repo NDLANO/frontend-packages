@@ -7,8 +7,8 @@
  */
 
 import Select from './Select';
-import { Option } from './types';
+import { Option, SingleValue, MultiValue } from './types';
 
-export type { Option };
+export type { Option, SingleValue, MultiValue };
 
 export default Select;

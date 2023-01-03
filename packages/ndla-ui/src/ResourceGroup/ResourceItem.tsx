@@ -80,9 +80,9 @@ const ListElement = styled.li<ListElementProps>`
     props.additional &&
     css`
       border-style: dashed;
-      animation-name: ${fadeInAdditionalsKeyframe};
       animation-duration: 0.8s;
       animation-fill-mode: forwards;
+      animation: ${fadeInAdditionalsKeyframe};
     `}
   ${(props) => props.extraBottomMargin && `margin-bottom: ${spacing.large};`}
 
@@ -288,18 +288,22 @@ const ResourceItem = ({
           <>
             {additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <Additional
-                  className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-                  aria-label={contentTypeDescription}
-                />
+                <div>
+                  <Additional
+                    className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+                    aria-label={contentTypeDescription}
+                  />
+                </div>
               </Tooltip>
             )}
             {!additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <Core
-                  className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-                  aria-label={contentTypeDescription}
-                />
+                <div>
+                  <Core
+                    className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+                    aria-label={contentTypeDescription}
+                  />
+                </div>
               </Tooltip>
             )}
           </>

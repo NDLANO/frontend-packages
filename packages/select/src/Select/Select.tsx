@@ -7,11 +7,11 @@
  */
 
 import React from 'react';
-import ReactSelect from 'react-select';
+import ReactSelect, { OnChangeValue, PropsValue } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, SingleValue, MultiValue, Color } from './types';
+import { Option, Color } from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -22,8 +22,8 @@ import BaseContainer from './BaseContainer';
 interface Props<T extends boolean> {
   options: Option[];
   label?: string;
-  onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
-  value?: Option | null;
+  onChange?: (value: OnChangeValue<Option, T>) => void;
+  value?: PropsValue<Option>;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
   isMultiSelect?: T;

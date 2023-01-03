@@ -6,9 +6,6 @@
  *
  */
 
-export type SingleValue = Option | null;
-export type MultiValue = readonly Option[];
-
 export type Option = {
   value: string;
   label: string;

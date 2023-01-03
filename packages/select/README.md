@@ -1,6 +1,6 @@
-# select
+# Select
 
-Select components.
+Select component.
 
 ## Installation
 

@@ -19,7 +19,7 @@ export const generateFeatureChecks = () => {
     .join('');
 };
 
-export const featureDetect = (polyfill, scripts = []) => {
+export const featureDetect = (polyfill: string, scripts: string | string[] = []) => {
   return `
   var feats = [];
   ${generateFeatureChecks()}

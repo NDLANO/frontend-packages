@@ -23,7 +23,7 @@ const StyledBaseControl = styled.div<Props>`
   border-radius: 8px;
   padding: ${spacing.small} ${spacing.normal};
   min-height: 40px;
-  font-weight: ${fonts.weight.semibold};
+  font-weight: ${fonts.weight.bold};
   ${fonts.sizes('18px', '24px')};
 
   ${({ small }) =>

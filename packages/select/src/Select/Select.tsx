@@ -76,7 +76,7 @@ const Select = <T extends boolean>({
         IndicatorSeparator: () => null,
         Option: (props) => <BaseOption {...props} small={small} />,
         Control: (props) => <BaseControl {...props} small={small} outline={outline} colorTheme={colorTheme} />,
-        SingleValue: (props) => <BaseSingleValue {...props} postfix={postfix} prefix={prefix} />,
+        SingleValue: (props) => <BaseSingleValue {...props} postfix={postfix} prefix={prefix} small={small} />,
         DropdownIndicator: (props) => (hideArrow ? null : <BaseDropdownIndicator {...props} small={small} />),
         Menu: (props) => <BaseMenu small={small} {...props} />,
         MultiValue: (props) => <BaseMultiValue {...props} postfix={postfix} />,

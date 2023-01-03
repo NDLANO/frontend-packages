@@ -40,7 +40,7 @@ const StyledBaseOption = styled.div<Props>`
   background-color: ${({ isFocused }) => (isFocused ? colors.brand.lighter : colors.white)};
   padding-right: 20px;
   color: ${colors.brand.dark};
-  font-weight: ${fonts.weight.semibold};
+  font-weight: ${fonts.weight.bold};
   ${({ small }) =>
     small &&
     css`

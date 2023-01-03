@@ -17,11 +17,7 @@ export const TextEllipsis = styled.span`
   white-space: nowrap;
 `;
 
-interface Props {
-  small?: boolean;
-}
-
-const BasePlaceholder = <T extends boolean>({ children, innerProps }: Props & PlaceholderProps<Option, T>) => (
+const BasePlaceholder = <T extends boolean>({ children, innerProps }: PlaceholderProps<Option, T>) => (
   <TextEllipsis {...innerProps}>{children}</TextEllipsis>
 );
 export default BasePlaceholder;

@@ -14,7 +14,7 @@ import { ControlProps } from 'react-select';
 import { Color, Option } from './types';
 import { StyledDropdown } from './BaseDropdownIndicator';
 
-const StyledBaseControl = styled.div<Props>`
+const StyledBaseControl = styled.div<StyledProps>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -55,7 +55,7 @@ const StyledBaseControl = styled.div<Props>`
   }
 `;
 
-interface Props {
+interface StyledProps {
   menuIsOpen: boolean;
   small?: boolean;
   colorTheme: Color;
@@ -63,12 +63,13 @@ interface Props {
 }
 
 const BaseControl = <T extends boolean>({
+  selectProps: { small, outline, colorTheme },
   innerRef,
   innerProps,
   children,
   ...rest
-}: Props & ControlProps<Option, T>) => (
-  <StyledBaseControl ref={innerRef} {...innerProps} {...rest}>
+}: ControlProps<Option, T>) => (
+  <StyledBaseControl small={small} colorTheme={colorTheme} outline={outline} ref={innerRef} {...innerProps} {...rest}>
     {children}
   </StyledBaseControl>
 );

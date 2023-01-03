@@ -13,7 +13,7 @@ import { ChevronDown } from '@ndla/icons/common';
 import { DropdownIndicatorProps } from 'react-select';
 import { Option } from './types';
 
-export const StyledDropdown = styled.div<Props>`
+export const StyledDropdown = styled.div<StyledProps>`
   svg {
     height: 22px;
     width: 22px;
@@ -26,11 +26,14 @@ export const StyledDropdown = styled.div<Props>`
   }
 `;
 
-interface Props {
+interface StyledProps {
   small?: boolean;
 }
 
-const BaseDropdownIndicator = <T extends boolean>({ innerProps, small }: Props & DropdownIndicatorProps<Option, T>) => (
+const BaseDropdownIndicator = <T extends boolean>({
+  innerProps,
+  selectProps: { small },
+}: DropdownIndicatorProps<Option, T>) => (
   <StyledDropdown small={small} {...innerProps}>
     <ChevronDown />
   </StyledDropdown>

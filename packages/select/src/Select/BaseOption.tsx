@@ -25,12 +25,12 @@ const StyledCheck = styled(Done, { shouldForwardProp })<CheckProps>`
   flex-shrink: 0;
 `;
 
-interface Props {
+interface StyledProps {
   small?: boolean;
   isFocused: boolean;
 }
 
-const StyledBaseOption = styled.div<Props>`
+const StyledBaseOption = styled.div<StyledProps>`
   ${fonts.sizes('18px', '24px')};
   padding: ${spacing.small};
   display: flex;
@@ -55,9 +55,9 @@ const BaseOption = <T extends boolean>({
   innerProps,
   isFocused,
   isSelected,
-  small,
+  selectProps: { small },
   children,
-}: OptionProps<Option, T> & Props) => {
+}: OptionProps<Option, T>) => {
   return (
     <StyledBaseOption small={small} ref={innerRef} {...innerProps} isFocused={isFocused}>
       <StyledCheck isSelected={isSelected} />

@@ -12,16 +12,11 @@ import { MultiValueProps } from 'react-select';
 import { Option } from './types';
 import { TextEllipsis } from './BasePlaceholder';
 
-interface Props {
-  postfix?: string;
-}
-
 const BaseMultiValue = <T extends boolean>({
-  selectProps: { value },
+  selectProps: { value, postfix },
   data,
   children,
-  postfix,
-}: Props & MultiValueProps<Option, T>) => {
+}: MultiValueProps<Option, T>) => {
   const { t } = useTranslation();
 
   const count = isArray(value) ? value.length : 0;

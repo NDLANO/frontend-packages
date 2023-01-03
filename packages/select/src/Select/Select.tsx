@@ -56,6 +56,11 @@ const Select = <T extends boolean>({
 
   return (
     <ReactSelect<Option, T>
+      small={small}
+      outline={outline}
+      colorTheme={colorTheme}
+      postfix={postfix}
+      prefix={prefix}
       aria-label={label}
       options={options}
       onChange={onChange}
@@ -64,7 +69,7 @@ const Select = <T extends boolean>({
       placeholder={placeholder}
       menuPlacement={menuPlacement}
       isMulti={isMultiSelect}
-      closeMenuOnSelect={!isMultiSelect}
+      closeMenuOnSelect={false}
       isClearable={false}
       hideSelectedOptions={false}
       isLoading={isLoading}
@@ -74,13 +79,13 @@ const Select = <T extends boolean>({
       components={{
         SelectContainer: BaseContainer,
         IndicatorSeparator: () => null,
-        Option: (props) => <BaseOption {...props} small={small} />,
-        Control: (props) => <BaseControl {...props} small={small} outline={outline} colorTheme={colorTheme} />,
-        SingleValue: (props) => <BaseSingleValue {...props} postfix={postfix} prefix={prefix} small={small} />,
-        DropdownIndicator: (props) => (hideArrow ? null : <BaseDropdownIndicator {...props} small={small} />),
-        Menu: (props) => <BaseMenu small={small} {...props} />,
-        MultiValue: (props) => <BaseMultiValue {...props} postfix={postfix} />,
-        Placeholder: (props) => <BasePlaceholder {...props} />,
+        Option: BaseOption,
+        Control: BaseControl,
+        SingleValue: BaseSingleValue,
+        DropdownIndicator: hideArrow ? BaseDropdownIndicator : null,
+        Menu: BaseMenu,
+        MultiValue: BaseMultiValue,
+        Placeholder: BasePlaceholder,
         ValueContainer: ValueContainer,
       }}
     />

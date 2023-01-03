@@ -18,23 +18,19 @@ const StyledSingleValue = styled.div`
   white-space: nowrap;
 `;
 
-const StyledPostfix = styled.span<Props>`
+const StyledPostfix = styled.span<StyledProps>`
   font-weight: ${({ small }) => (small ? fonts.weight.semibold : fonts.weight.bold)};
 `;
 
-interface Props {
-  prefix?: string;
-  postfix?: string;
+interface StyledProps {
   small?: boolean;
 }
 
 const BaseSingleValue = <T extends boolean>({
   innerProps,
-  prefix,
-  postfix,
-  small,
+  selectProps: { small, prefix, postfix },
   children,
-}: Props & SingleValueProps<Option, T, GroupBase<Option>>) => {
+}: StyledProps & SingleValueProps<Option, T, GroupBase<Option>>) => {
   return (
     <StyledSingleValue {...innerProps}>
       <StyledPostfix small={small}>{prefix}</StyledPostfix>

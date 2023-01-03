@@ -5,5 +5,6 @@
     "declarationDir": "./lib",
     "rootDir": "./src"
   },
+  "files": ["./src/Select/declarations.ts"],
   "include": ["./src"]
 }

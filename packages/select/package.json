@@ -9,7 +9,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn build:types",
-    "build:types": "tsc -p tsconfig.build.json",
+    "build:types": "tsc -p tsconfig.json",
     "prepublish": "yarn build"
   },
   "repository": {

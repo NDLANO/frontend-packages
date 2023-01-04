@@ -26,6 +26,12 @@ const initPopovers = () => {
     const inner = el.querySelector('[data-trigger]');
 
     const outerHTML = inner?.outerHTML;
+    // Popovers located inside dialogs fail to resolve their css.
+    // This is a hacky workaround, and should be removed once article-converter usage is
+    // straightened out.
+    if (el.children.length === 2) {
+      document.head.appendChild(el.children[0]);
+    }
 
     ReactDOM.hydrate(<Popover popover={popover!} hydrateHTML={outerHTML} />, el);
   });

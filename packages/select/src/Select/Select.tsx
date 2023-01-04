@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import ReactSelect, { OnChangeValue, PropsValue } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
@@ -18,6 +18,7 @@ import ValueContainer from './ValueContainer';
 import BaseSingleValue from './BaseSingleValue';
 import BasePlaceholder from './BasePlaceholder';
 import BaseContainer from './BaseContainer';
+import BaseGroupHeading from './BaseGroupHeading';
 
 interface Props<T extends boolean> {
   options: Option[];
@@ -35,23 +36,31 @@ interface Props<T extends boolean> {
   postfix?: string;
   outline?: boolean;
   colorTheme?: Color;
+  isSearchable?: boolean;
+  noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
+  groupTitle?: string;
 }
 
 const Select = <T extends boolean>({
+  options,
   hideArrow,
   label,
   menuPlacement = 'bottom',
   colorTheme = 'blue',
+  isSearchable = false,
+  groupTitle,
   ...rest
 }: Props<T>) => {
   const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
+  const customOption = groupTitle ? [{ label: groupTitle, options: options }] : options;
 
   return (
     <ReactSelect<Option, T>
       {...rest}
+      options={customOption}
       colorTheme={colorTheme}
       aria-label={label}
-      isSearchable={false}
+      isSearchable={isSearchable}
       menuPlacement={menuPlacement}
       closeMenuOnSelect={false}
       isClearable={false}
@@ -70,6 +79,7 @@ const Select = <T extends boolean>({
         MultiValue: BaseMultiValue,
         Placeholder: BasePlaceholder,
         ValueContainer: ValueContainer,
+        GroupHeading: BaseGroupHeading,
       }}
     />
   );

@@ -40,6 +40,7 @@ interface Props<T extends boolean> {
   noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
   groupTitle?: string;
   isClearable?: boolean;
+  closeMenuOnSelect?: boolean;
 }
 
 const Select = <T extends boolean>({

@@ -24,7 +24,7 @@ const StyledGroupHeader = styled.div<StyledProps>`
   ${({ small }) => (small ? fonts.sizes('16px', '18px') : fonts.sizes('18px', '24px'))};
 `;
 
-const BaseOption = <T extends boolean>({
+const BaseGroupHeading = <T extends boolean>({
   children,
   selectProps: { small, bold },
   ...rest
@@ -36,4 +36,4 @@ const BaseOption = <T extends boolean>({
   );
 };
 
-export default BaseOption;
+export default BaseGroupHeading;

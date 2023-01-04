@@ -39,6 +39,7 @@ interface Props<T extends boolean> {
   isSearchable?: boolean;
   noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
   groupTitle?: string;
+  isClearable?: boolean;
 }
 
 const Select = <T extends boolean>({
@@ -63,7 +64,6 @@ const Select = <T extends boolean>({
       isSearchable={isSearchable}
       menuPlacement={menuPlacement}
       closeMenuOnSelect={false}
-      isClearable={false}
       hideSelectedOptions={false}
       unstyled
       menuPortalTarget={portalTarget}

@@ -7,7 +7,7 @@
  */
 
 import React, { ReactNode, useMemo } from 'react';
-import ReactSelect, { OnChangeValue, PropsValue } from 'react-select';
+import ReactSelect, { PropsValue } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';

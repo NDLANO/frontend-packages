@@ -253,7 +253,7 @@ const messages = {
   },
   subjectsPage: {
     filterSubjects: 'Filtrer fag',
-    scrollToCategory: 'Hopp til kategori',
+    scrollToGroup: 'Hopp til gruppe',
     goToTop: 'Gå til toppen',
     alphabeticSort: 'Fag gruppert alfabetisk',
     subjectGroup: 'Gruppe "{{ category }}"',

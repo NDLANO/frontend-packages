@@ -254,7 +254,7 @@ const messages = {
   },
   subjectsPage: {
     filterSubjects: 'Filter subjects',
-    scrollToCategory: 'Scroll to category',
+    scrollToGroup: 'Scroll to group',
     goToTop: 'Scroll to top',
     alphabeticSort: 'Subjects grouped alphabetically',
     subjectGroup: 'Group "{{ category }}"',

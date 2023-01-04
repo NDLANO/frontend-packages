@@ -253,6 +253,11 @@ const messages = {
     archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
+    filterSubjects: 'Filter subjects',
+    scrollToGroup: 'Scroll to group',
+    goToTop: 'Scroll to top',
+    alphabeticSort: 'Subjects grouped alphabetically',
+    subjectGroup: 'Group "{{ category }}"',
     allSubjects: 'All subjects',
     chooseSubject: 'Choose subject',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',

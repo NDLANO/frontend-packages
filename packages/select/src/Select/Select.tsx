@@ -11,7 +11,7 @@ import ReactSelect, { OnChangeValue, PropsValue } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, Color } from './types';
+import { Option, Color, MultiValue, SingleValue } from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -22,14 +22,15 @@ import BaseContainer from './BaseContainer';
 interface Props<T extends boolean> {
   options: Option[];
   label?: string;
-  onChange?: (value: OnChangeValue<Option, T>) => void;
+  onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
   value?: PropsValue<Option>;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
-  isMultiSelect?: T;
+  isMulti?: T;
   hideArrow?: boolean;
   isLoading?: boolean;
   small?: boolean;
+  bold?: boolean;
   prefix?: string;
   postfix?: string;
   outline?: boolean;
@@ -37,50 +38,37 @@ interface Props<T extends boolean> {
 }
 
 const Select = <T extends boolean>({
-  options,
-  label,
-  onChange,
-  value,
-  placeholder,
-  menuPlacement = 'bottom',
-  isMultiSelect,
   hideArrow,
-  isLoading,
-  small,
-  outline,
+  label,
+  menuPlacement = 'bottom',
   colorTheme = 'blue',
-  prefix,
-  postfix,
+  ...rest
 }: Props<T>) => {
   const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
 
   return (
     <ReactSelect<Option, T>
+      {...rest}
+      colorTheme={colorTheme}
       aria-label={label}
-      options={options}
-      onChange={onChange}
-      value={value}
       isSearchable={false}
-      placeholder={placeholder}
       menuPlacement={menuPlacement}
-      isMulti={isMultiSelect}
-      closeMenuOnSelect={!isMultiSelect}
+      closeMenuOnSelect={false}
       isClearable={false}
       hideSelectedOptions={false}
-      isLoading={isLoading}
       unstyled
       menuPortalTarget={portalTarget}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{
         SelectContainer: BaseContainer,
-        IndicatorSeparator: () => null,
-        Option: (props) => <BaseOption {...props} small={small} />,
-        Control: (props) => <BaseControl {...props} small={small} outline={outline} colorTheme={colorTheme} />,
-        SingleValue: (props) => <BaseSingleValue {...props} postfix={postfix} prefix={prefix} small={small} />,
-        DropdownIndicator: (props) => (hideArrow ? null : <BaseDropdownIndicator {...props} small={small} />),
-        Menu: (props) => <BaseMenu small={small} {...props} />,
-        MultiValue: (props) => <BaseMultiValue {...props} postfix={postfix} />,
-        Placeholder: (props) => <BasePlaceholder {...props} />,
+        IndicatorSeparator: null,
+        Option: BaseOption,
+        Control: BaseControl,
+        SingleValue: BaseSingleValue,
+        DropdownIndicator: hideArrow ? null : BaseDropdownIndicator,
+        Menu: BaseMenu,
+        MultiValue: BaseMultiValue,
+        Placeholder: BasePlaceholder,
         ValueContainer: ValueContainer,
       }}
     />

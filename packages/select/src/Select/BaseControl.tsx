@@ -14,7 +14,7 @@ import { ControlProps } from 'react-select';
 import { Color, Option } from './types';
 import { StyledDropdown } from './BaseDropdownIndicator';
 
-const StyledBaseControl = styled.div<Props>`
+const StyledBaseControl = styled.div<StyledProps>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -23,16 +23,16 @@ const StyledBaseControl = styled.div<Props>`
   border-radius: 8px;
   padding: ${spacing.small} ${spacing.normal};
   min-height: 40px;
-  font-weight: ${fonts.weight.bold};
+  font-weight: ${({ bold }) => (bold ? fonts.weight.bold : fonts.weight.semibold)};
   ${fonts.sizes('18px', '24px')};
 
-  ${({ small }) =>
+  ${({ small, bold }) =>
     small &&
     css`
       border-radius: 4px;
       padding: ${spacing.xxsmall} ${spacing.xsmall};
       min-height: unset;
-      font-weight: ${fonts.weight.normal};
+      font-weight: ${bold ? fonts.weight.semibold : fonts.weight.normal};
       ${fonts.sizes('16px', '18px')};
     `}
 
@@ -55,20 +55,29 @@ const StyledBaseControl = styled.div<Props>`
   }
 `;
 
-interface Props {
+interface StyledProps {
   menuIsOpen: boolean;
   small?: boolean;
   colorTheme: Color;
   outline?: boolean;
+  bold?: boolean;
 }
 
 const BaseControl = <T extends boolean>({
+  selectProps: { small, outline, colorTheme, bold },
   innerRef,
   innerProps,
   children,
   ...rest
-}: Props & ControlProps<Option, T>) => (
-  <StyledBaseControl ref={innerRef} {...innerProps} {...rest}>
+}: ControlProps<Option, T>) => (
+  <StyledBaseControl
+    small={small}
+    bold={bold}
+    colorTheme={colorTheme}
+    outline={outline}
+    ref={innerRef}
+    {...innerProps}
+    {...rest}>
     {children}
   </StyledBaseControl>
 );

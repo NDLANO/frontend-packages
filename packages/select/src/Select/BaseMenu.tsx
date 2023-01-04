@@ -20,7 +20,7 @@ const menuStyle = css`
   }
 `;
 
-const StyledBaseMenu = styled.div<Props>`
+const StyledBaseMenu = styled.div<StyledProps>`
   overflow: hidden;
   background-color: ${colors.white};
   border: 1px solid ${colors.brand.light};
@@ -28,13 +28,14 @@ const StyledBaseMenu = styled.div<Props>`
   margin: 4px 0;
 `;
 
-interface Props {
+interface StyledProps {
   small?: boolean;
 }
 
-const BaseMenu = <T extends boolean>({ small, children, ...props }: Props & MenuProps<Option, T>) => (
-  <components.Menu<Option, T, GroupBase<Option>> {...props} css={menuStyle}>
-    <StyledBaseMenu small={small}>{children}</StyledBaseMenu>
+const BaseMenu = <T extends boolean>({ selectProps, children, ...props }: MenuProps<Option, T>) => (
+  <components.Menu<Option, T, GroupBase<Option>> {...props} selectProps={selectProps} css={menuStyle}>
+    <StyledBaseMenu small={selectProps.small}>{children}</StyledBaseMenu>
   </components.Menu>
 );
+
 export default BaseMenu;

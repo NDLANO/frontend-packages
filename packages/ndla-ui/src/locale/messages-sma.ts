@@ -624,6 +624,7 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'Om NDLA',
+    socialMedia: 'Sosiale medier',
     selectLanguage: 'Velg språk (language): ',
     vision: 'Sammen skaper vi framtidas læring',
     linksHeader: 'Andre NDLA-nettsteder',

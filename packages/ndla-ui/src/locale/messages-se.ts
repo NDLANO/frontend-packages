@@ -624,6 +624,7 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'NDLA birra',
+    socialMedia: 'Sosiale medier',
     selectLanguage: 'Vállje giela (language): ',
     vision: 'Ovttas hábmet boahtteáiggi oahppama',
     linksHeader: 'Eará NDLA neahttabáikkit',

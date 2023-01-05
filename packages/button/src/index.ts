@@ -17,8 +17,6 @@ export { default as IconButtonV2, iconButtonStyle } from './IconButtonV2';
 export { default as LoadingButton } from './LoadingButton';
 export { default as MenuButton } from './MenuButton';
 export type { MenuItemProps } from './MenuButton';
-export { default as DeleteButton } from './DeleteButton';
-export { default as AddButton } from './AddButton';
 export { default as FavoriteButton } from './FavoriteButton';
 
 export type { ButtonAppearance, ButtonBorder, ButtonSize, ButtonTextAlign, ButtonWidth, ButtonProps } from './Button';

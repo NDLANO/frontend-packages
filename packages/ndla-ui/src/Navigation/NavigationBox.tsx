@@ -172,6 +172,12 @@ const StyledButtonContentSelected = styled.span`
   margin-left: ${spacing.small};
 `;
 
+const listElementStyle = css`
+  display: flex;
+  flex: 1;
+  text-align: left;
+`;
+
 export type ItemProps = {
   url?: string;
   label: string;
@@ -182,7 +188,7 @@ export type ItemProps = {
 };
 type Props = {
   heading?: string;
-  colorMode?: 'light' | 'greyLightest' | 'greyLighter';
+  colorMode?: 'primary' | 'darker' | 'light' | 'greyLightest' | 'greyLighter';
   isButtonElements?: boolean;
   items: ItemProps[];
   onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
@@ -193,13 +199,9 @@ type Props = {
   onToggleAdditionalResources?: ChangeEventHandler<HTMLInputElement>;
 };
 
-const listElementStyle = css`
-  text-align: left;
-`;
-
 export const NavigationBox = ({
   heading,
-  colorMode,
+  colorMode = 'primary',
   items,
   isButtonElements,
   onClick,
@@ -233,11 +235,11 @@ export const NavigationBox = ({
               lighter={colorMode === 'light'}
               selected={item.selected}>
               <ListElementType
-                css={listElementStyle}
                 to={item.url ?? ''}
-                colorTheme={item.selected ? undefined : colorMode}
+                colorTheme={item.selected ? 'darker' : colorMode}
                 size="medium"
                 shape="sharp"
+                css={listElementStyle}
                 onClick={(e: MouseEvent<HTMLElement>) => {
                   if (onClick) {
                     onClick(e, item.id);

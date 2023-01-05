@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, MouseEvent, useState, useEffect } from 'react';
+import React, { ReactNode, MouseEvent, useState, useEffect, forwardRef } from 'react';
 import ButtonV2, { ButtonProps } from './ButtonV2';
 
 interface Props extends ButtonProps {
@@ -16,28 +16,30 @@ interface Props extends ButtonProps {
   showCopyTimer?: number;
 }
 
-const CopyButton = ({ children, copyNode, onClick, showCopyTimer = 4000, ...rest }: Props) => {
-  const [showCopyState, setShowCopyState] = useState(false);
+const CopyButton = forwardRef<HTMLButtonElement, Props>(
+  ({ children, copyNode, onClick, showCopyTimer = 4000, ...rest }, ref) => {
+    const [showCopyState, setShowCopyState] = useState(false);
 
-  useEffect(() => {
-    if (showCopyState) {
-      const timer = setTimeout(() => setShowCopyState(false), showCopyTimer);
-      return () => clearTimeout(timer);
-    }
-  }, [showCopyState, showCopyTimer]);
+    useEffect(() => {
+      if (showCopyState) {
+        const timer = setTimeout(() => setShowCopyState(false), showCopyTimer);
+        return () => clearTimeout(timer);
+      }
+    }, [showCopyState, showCopyTimer]);
 
-  const handleCopy = (e?: MouseEvent<HTMLButtonElement>) => {
-    onClick(e);
-    if (!showCopyState) {
-      setShowCopyState(true);
-    }
-  };
+    const handleCopy = (e?: MouseEvent<HTMLButtonElement>) => {
+      onClick(e);
+      if (!showCopyState) {
+        setShowCopyState(true);
+      }
+    };
 
-  return (
-    <ButtonV2 onClick={handleCopy} {...rest}>
-      {showCopyState ? copyNode : children}
-    </ButtonV2>
-  );
-};
+    return (
+      <ButtonV2 onClick={handleCopy} {...rest} ref={ref}>
+        {showCopyState ? copyNode : children}
+      </ButtonV2>
+    );
+  },
+);
 
 export default CopyButton;

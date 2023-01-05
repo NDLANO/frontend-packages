@@ -30,7 +30,7 @@ type StyledFooterProps = {
   addMargin?: boolean;
 };
 
-const StyledFooter = styled.footer<StyledFooterProps>`
+const StyledDiv = styled.div<StyledFooterProps>`
   color: #fff;
   position: relative;
   background: ${colors.brand.dark};
@@ -159,11 +159,13 @@ const Footer = ({ children, links, languageSelector, auth, privacyLinks }: Props
   return (
     <>
       {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
-      <StyledFooter addMargin={!languageSelector}>
-        <OneColumn cssModifier="large">{footerContent}</OneColumn>
-        <StyledBackground />
-      </StyledFooter>
-      {auth}
+      <footer>
+        <StyledDiv addMargin={!languageSelector}>
+          <OneColumn cssModifier="large">{footerContent}</OneColumn>
+          <StyledBackground />
+        </StyledDiv>
+        {auth}
+      </footer>
     </>
   );
 };

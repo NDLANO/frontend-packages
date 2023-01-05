@@ -252,6 +252,11 @@ const messages = {
     archived: 'Dát leat heaittihuvvon fága mii ii ođasmahttojuvvo.',
   },
   subjectsPage: {
+    filterSubjects: 'Filtrer fag',
+    scrollToGroup: 'Hopp til gruppe',
+    goToTop: 'Gå til toppen',
+    alphabeticSort: 'Fag gruppert alfabetisk',
+    subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: 'Buot fágat',
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     chooseSubject: 'Vállje fága',
@@ -260,6 +265,7 @@ const messages = {
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjernet fra favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Šállošat, boasttuvuohta čuožžilii fáddáčilgehusa viežžamis.',
@@ -623,6 +629,7 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'NDLA birra',
+    socialMedia: 'Sosiale medier',
     selectLanguage: 'Vállje giela (language): ',
     vision: 'Ovttas hábmet boahtteáiggi oahppama',
     linksHeader: 'Eará NDLA neahttabáikkit',
@@ -851,6 +858,7 @@ const messages = {
     searching: 'Ohcá...',
     create: 'Ráhkat ođđa',
     isSelectedItem: 'Lasihuvvon',
+    selected: '{{count}} valgte',
   },
   blogPosts: {
     blog1: {
@@ -1195,6 +1203,9 @@ const messages = {
     search: 'Oza',
     contact: 'Váldde oktavuođa',
     help: 'Veahket',
+  },
+  programme: {
+    grades: 'Trinn',
   },
 };
 

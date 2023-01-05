@@ -1,6 +1,6 @@
 {
   "name": "@ndla/article-scripts",
-  "version": "3.0.13",
+  "version": "3.0.14",
   "description": "A collection of functions for making article content responsive (and interactive)",
   "license": "GPL-3.0",
   "main": "lib/index.js",

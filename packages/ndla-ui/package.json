@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "33.2.0",
+  "version": "33.4.0",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,20 +31,20 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/article-scripts": "^3.0.13",
-    "@ndla/button": "^7.0.2",
-    "@ndla/carousel": "^2.1.0",
+    "@ndla/article-scripts": "^3.0.14",
+    "@ndla/button": "^7.0.5",
+    "@ndla/carousel": "^2.1.1",
     "@ndla/core": "^3.0.3",
-    "@ndla/forms": "^4.1.6",
+    "@ndla/forms": "^4.1.9",
     "@ndla/hooks": "^1.2.0",
-    "@ndla/icons": "^2.1.0",
-    "@ndla/licenses": "^6.1.4",
-    "@ndla/modal": "^2.2.1",
-    "@ndla/notion": "^4.1.8",
-    "@ndla/safelink": "^3.1.6",
+    "@ndla/icons": "^2.1.1",
+    "@ndla/licenses": "^6.1.5",
+    "@ndla/modal": "^2.2.2",
+    "@ndla/notion": "^4.1.11",
+    "@ndla/safelink": "^4.0.0",
     "@ndla/switch": "^1.0.3",
-    "@ndla/tabs": "^2.1.0",
-    "@ndla/tooltip": "^4.0.2",
+    "@ndla/tabs": "^2.1.1",
+    "@ndla/tooltip": "^4.0.3",
     "@ndla/types-learningpath-api": "^0.0.17",
     "@ndla/util": "^3.1.9",
     "@reach/menu-button": "^0.16.2",
@@ -56,7 +56,7 @@
     "invariant": "^2.2.3",
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^2.2.2",
-    "react-select": "^5.4.0",
+    "react-select": "^5.7.0",
     "react-swipeable": "^7.0.0",
     "remarkable": "^2.0.1",
     "shave": "^2.5.10"
@@ -73,11 +73,11 @@
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@types/reach__dialog": "^0.1.0",
-    "css-loader": "^2.1.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "sass-loader": "^7.1.0",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^4.10.0"
+    "css-loader": "^6.7.3",
+    "mini-css-extract-plugin": "^2.7.2",
+    "sass-loader": "^13.2.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "publishConfig": {
     "access": "public"

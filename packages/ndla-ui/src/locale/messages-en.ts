@@ -253,6 +253,11 @@ const messages = {
     archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
+    filterSubjects: 'Filter subjects',
+    scrollToGroup: 'Scroll to group',
+    goToTop: 'Scroll to top',
+    alphabeticSort: 'Subjects grouped alphabetically',
+    subjectGroup: 'Group "{{ category }}"',
     allSubjects: 'All subjects',
     chooseSubject: 'Choose subject',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',
@@ -261,6 +266,7 @@ const messages = {
     removeFavorite: 'Remove favorite subject',
     removeConfirmed: '{{subject}} is removed from your favorite subjects',
     addConfirmed: '{{subject}} is added to your favorite subjects',
+    shows: 'Shows',
   },
   topicPage: {
     articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
@@ -623,6 +629,7 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'About NDLA',
+    socialMedia: 'Social media',
     selectLanguage: 'Choose language (språk): ',
     info: 'This webapplication is developed by NDLA as Open Source code.',
     editorInChief: 'Editor in chief: ',
@@ -851,6 +858,7 @@ const messages = {
     searching: 'Searching...',
     create: 'Create new',
     isSelectedItem: 'Added',
+    selected: '{{count}} selected',
   },
   blogPosts: {
     blog1: {
@@ -1196,6 +1204,9 @@ const messages = {
     search: 'Search',
     contact: 'Contact',
     help: 'Help',
+  },
+  programme: {
+    grades: 'Grades',
   },
 };
 

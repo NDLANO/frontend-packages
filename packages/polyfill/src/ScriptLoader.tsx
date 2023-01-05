@@ -7,10 +7,14 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { featureDetect } from './featureDetect';
 
-const ScriptLoader = ({ polyfill, scripts }) => {
+interface Props {
+  polyfill?: { src: string };
+  scripts: { src: string }[];
+}
+
+const ScriptLoader = ({ polyfill, scripts }: Props) => {
   return (
     <script
       type="text/javascript"
@@ -19,15 +23,6 @@ const ScriptLoader = ({ polyfill, scripts }) => {
       }}
     />
   );
-};
-
-ScriptLoader.propTypes = {
-  polyfill: PropTypes.shape({ src: PropTypes.string.isRequired }),
-  scripts: PropTypes.arrayOf(
-    PropTypes.shape({
-      src: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
 };
 
 export default ScriptLoader;

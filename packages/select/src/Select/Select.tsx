@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useMemo } from 'react';
+import React, { ReactNode, useCallback, useMemo } from 'react';
 import ReactSelect, { PropsValue } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
@@ -56,6 +56,13 @@ const Select = <T extends boolean>({
   const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
   const customOption = groupTitle ? [{ label: groupTitle, options: options }] : options;
 
+  const customSearchFilter = useCallback((option: Option, input: string) => {
+    if (input) {
+      return option.label.split(' ').some((c) => c.toLowerCase().startsWith(input.toLowerCase()));
+    }
+    return true;
+  }, []);
+
   return (
     <ReactSelect<Option, T>
       {...rest}
@@ -64,10 +71,10 @@ const Select = <T extends boolean>({
       aria-label={label}
       isSearchable={isSearchable}
       menuPlacement={menuPlacement}
-      closeMenuOnSelect={false}
       hideSelectedOptions={false}
       unstyled
       menuPortalTarget={portalTarget}
+      filterOption={customSearchFilter}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{
         SelectContainer: BaseContainer,

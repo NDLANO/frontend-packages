@@ -231,7 +231,7 @@ const pd: LicenseType = {
     title: 'PD Public domain merket: Offentleg eigedom',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
-    linkText: 'Lær meir om public domain-merker',
+    linkText: 'Lær meir om public domain-merke',
     description:
       'Dette merket let andre kopiere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
   },

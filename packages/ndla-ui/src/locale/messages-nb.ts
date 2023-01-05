@@ -258,6 +258,7 @@ const messages = {
     alphabeticSort: 'Fag gruppert alfabetisk',
     subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: 'Alle fag',
+    myFavoriteSubjects: 'Mine favorittfag',
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     chooseSubject: 'Velg fag',
     confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',

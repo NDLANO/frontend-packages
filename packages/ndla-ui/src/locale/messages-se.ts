@@ -258,6 +258,7 @@ const messages = {
     alphabeticSort: 'Fag gruppert alfabetisk',
     subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: 'Buot fágat',
+    myFavoriteSubjects: 'Mine favorittfag',
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     chooseSubject: 'Vállje fága',
     confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',

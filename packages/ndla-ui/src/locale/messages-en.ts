@@ -483,9 +483,10 @@ const messages = {
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
     competenceGoalTitle: 'The pupil is expected to be able to:',
-    competenceTabLK06label: 'Competence goal (LK06)',
-    competenceTabLK20label: 'Competence goal (LK20)',
+    competenceTabLK20label: 'Competence goal',
+    competenceTabLK20Tooltip: 'Show competence goals',
     competenceTabCorelabel: 'Core element',
+    competenceTabCoreTooltip: 'Show core elements',
     competenceGoalItem: {
       title: 'Competence goals and assessment',
     },

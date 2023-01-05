@@ -483,9 +483,10 @@ const messages = {
     competenceSubjectSearchText: 'Mana fágasiidui',
     competenceGoalClose: 'Govčča',
     competenceGoalTitle: 'Mihttun lea ahte oahppi galgá máhttit:',
-    competenceTabLK06label: 'Gealbomihttomearri (ML06)',
-    competenceTabLK20label: 'Gealbomihttomearri (ML20)',
+    competenceTabLK20label: 'Gealbomihttomearri',
+    competenceTabLK20Tooltip: 'Vis kompetansemål',
     competenceTabCorelabel: 'Guovddášelemeanta',
+    competenceTabCoreTooltip: 'Vis kjerneelementer',
     competenceGoalItem: {
       title: 'Gealbomihttomearit ja árvvoštallan',
     },

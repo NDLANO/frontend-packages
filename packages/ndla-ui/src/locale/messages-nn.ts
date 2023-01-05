@@ -483,9 +483,10 @@ const messages = {
     competenceSubjectSearchText: 'Gå til fagsiden',
     competenceGoalClose: 'Lukk',
     competenceGoalTitle: 'Målet er at eleven skal kunne:',
-    competenceTabLK06label: 'Kompetansemål (LK06)',
-    competenceTabLK20label: 'Kompetansemål (LK20)',
+    competenceTabLK20label: 'Kompetansemål',
+    competenceTabLK20Tooltip: 'Vis kompetansemål',
     competenceTabCorelabel: 'Kjerneelement',
+    competenceTabCoreTooltip: 'Vis kjerneelementar',
     competenceGoalItem: {
       title: 'Kompetansemål og vurdering',
     },

@@ -9,30 +9,26 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import cloneDeepWith from 'lodash/cloneDeepWith';
-
 import {
   Masthead,
   MastheadItem,
   LanguageSelector,
   Logo,
-  TopicMenu,
   DisplayOnPageYOffset,
   SearchField,
   SearchResultSleeve,
   MastheadSearchModal,
-  TopicMenuButton,
   SearchFieldForm,
   MastheadAuthModal,
   HeaderBreadcrumb,
 } from '@ndla/ui';
-import Modal from '@ndla/modal';
+import { Menu } from '@ndla/icons/common';
+import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 
-import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
 import { feideUserLaerer } from './feideUser';
 
 const BreadcrumbWrapper = styled.div`
@@ -54,8 +50,6 @@ class MastheadWithTopicMenu extends Component {
     super(props);
     this.state = {
       value: '',
-      expandedTopicId: null,
-      expandedSubtopicsId: [],
     };
     this.inputRef = createRef();
     this.closeAllModals = [null, null];
@@ -133,11 +127,9 @@ class MastheadWithTopicMenu extends Component {
       ndlaFilm,
       beta,
       betaInfoContent,
-      topicMenuProps,
       hideMenuButton,
       breadcrumbItems,
       isAuthed,
-      menuProps,
       t,
       i18n,
       messages,
@@ -153,28 +145,6 @@ class MastheadWithTopicMenu extends Component {
           onAuthenticateClick: () => {},
         };
 
-    const initialSelectedMenu = () => {
-      if (menuProps.hideSubject && menuProps.hideCurrentProgramme) {
-        return 'programmes';
-      }
-      if (menuProps.hideSubject) {
-        return 'programme';
-      }
-      return null;
-    };
-
-    const remapTopicProps = (value) => {
-      if (value.label) {
-        value.name = value.label;
-        if (value.subTopics) {
-          value.subtopics = value.subTopics;
-        }
-      }
-    };
-
-    // must add props to topic object that matches the TopicMenu component
-    const topicMenuValues = cloneDeepWith(topics, remapTopicProps);
-
     return (
       <Masthead
         fixed
@@ -183,84 +153,7 @@ class MastheadWithTopicMenu extends Component {
         infoContent={beta && betaInfoContent}
         messages={messages}>
         <MastheadItem left>
-          {!hideMenuButton && (
-            <Modal
-              size="fullscreen"
-              activateButton={<TopicMenuButton ndlaFilm={ndlaFilm}>{t('masthead.menu.title')}</TopicMenuButton>}
-              animation="subtle"
-              animationDuration={150}
-              backgroundColor="grey"
-              noBackdrop
-              onClose={() => {
-                this.setState({
-                  expandedTopicId: null,
-                  expandedSubtopicsId: [],
-                });
-                this.closeAllModals[0] = null;
-              }}>
-              {(onClose) => {
-                this.closeAllModals[0] = onClose;
-                return (
-                  <TopicMenu
-                    close={onClose}
-                    searchFieldComponent={this.renderSearchButtonView(false, ndlaFilm)}
-                    subjectTitle={menuProps.hideSubject ? '' : 'Forretningsdrift (SR Vg1)'}
-                    toFrontpage={() => ''}
-                    toSubject={() => '#'}
-                    toTopic={() => '#'}
-                    programmes={programmes}
-                    subjectCategories={subjectCategories}
-                    currentProgramme={
-                      menuProps.hideCurrentProgramme
-                        ? null
-                        : {
-                            name: programme.label,
-                            grades: programme.grades,
-                            selectedGradeIndex: 0,
-                          }
-                    }
-                    topics={topicMenuValues}
-                    initialSelectedMenu={initialSelectedMenu()}
-                    filterOptions={[
-                      {
-                        title: 'Medieuttrykk',
-                        value: 'Medieuttrykk',
-                      },
-                      {
-                        title: 'Mediesamfunnet',
-                        value: 'Mediesamfunnet',
-                      },
-                    ]}
-                    filterValues={this.state.filterMenuValues}
-                    onFilterClick={(values) => {
-                      this.setState({
-                        filterMenuValues: values,
-                      });
-                    }}
-                    resourceToLinkProps={(resource) => ({ to: resource.path })}
-                    expandedTopicId={this.state.expandedTopicId}
-                    expandedSubtopicsId={this.state.expandedSubtopicsId}
-                    onNavigate={(expandedTopicId, subtopicId, currentIndex) => {
-                      let { expandedSubtopicsId } = this.state;
-                      if (expandedSubtopicsId.length > currentIndex) {
-                        expandedSubtopicsId = expandedSubtopicsId.slice(0, currentIndex);
-                      }
-                      if (subtopicId) {
-                        expandedSubtopicsId.push(subtopicId);
-                      } else {
-                        expandedSubtopicsId.pop();
-                      }
-                      this.setState({
-                        expandedTopicId,
-                        expandedSubtopicsId,
-                      });
-                    }}
-                    {...topicMenuProps}
-                  />
-                );
-              }}
-            </Modal>
-          )}
+          {!hideMenuButton && <ButtonV2 inverted={ndlaFilm} variant="outline"><Menu /> {t('masthead.menu.title')}</ButtonV2>}
           {breadcrumbItems && (
             <DisplayOnPageYOffset yOffsetMin={150}>
               <BreadcrumbWrapper>
@@ -294,16 +187,11 @@ MastheadWithTopicMenu.propTypes = {
   hideMenuButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
-  topicMenuProps: PropTypes.object,
   t: PropTypes.func.isRequired,
   ndlaFilm: PropTypes.bool,
   skipToMainContentId: PropTypes.string,
   breadcrumbItems: PropTypes.array,
   isAuthed: PropTypes.bool,
-  menuProps: PropTypes.shape({
-    hideSubject: PropTypes.bool,
-    hideCurrentProgramme: PropTypes.bool,
-  }),
   messages: PropTypes.arrayOf(PropTypes.string),
 };
 

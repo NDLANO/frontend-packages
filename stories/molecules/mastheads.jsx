@@ -154,7 +154,7 @@ class MastheadWithTopicMenu extends Component {
         messages={messages}>
         <MastheadItem left>
           {!hideMenuButton && (
-            <ButtonV2 inverted={ndlaFilm} variant="outline">
+            <ButtonV2 inverted={ndlaFilm} variant="outline" shape="pill">
               <Menu /> {t('masthead.menu.title')}
             </ButtonV2>
           )}

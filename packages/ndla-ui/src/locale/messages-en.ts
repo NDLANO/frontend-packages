@@ -267,6 +267,9 @@ const messages = {
     removeFavorite: 'Remove favorite subject',
     removeConfirmed: '{{subject}} is removed from your favorite subjects',
     addConfirmed: '{{subject}} is added to your favorite subjects',
+    subjectFavoritePitch: 'Do you want to favorite this subject?',
+    subjectFavoriteGuide:
+      'To favorite a subject you must log in to My NDLA. You will find the subject on the top of this page after logging in.',
     shows: 'Shows',
   },
   topicPage: {

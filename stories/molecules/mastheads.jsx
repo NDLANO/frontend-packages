@@ -153,7 +153,11 @@ class MastheadWithTopicMenu extends Component {
         infoContent={beta && betaInfoContent}
         messages={messages}>
         <MastheadItem left>
-          {!hideMenuButton && <ButtonV2 inverted={ndlaFilm} variant="outline"><Menu /> {t('masthead.menu.title')}</ButtonV2>}
+          {!hideMenuButton && (
+            <ButtonV2 inverted={ndlaFilm} variant="outline">
+              <Menu /> {t('masthead.menu.title')}
+            </ButtonV2>
+          )}
           {breadcrumbItems && (
             <DisplayOnPageYOffset yOffsetMin={150}>
               <BreadcrumbWrapper>

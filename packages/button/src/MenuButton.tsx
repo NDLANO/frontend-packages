@@ -13,7 +13,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
 import { ButtonSize } from './';
-import { convertSizeForSVG } from './IconButton';
+import { svgSizes } from './IconButtonV2';
 
 interface StyledButtonProps {
   svgSize: number;
@@ -125,15 +125,13 @@ export const MenuButton = ({
         aria-label={t('myNdla.more')}
         tabIndex={tabIndex}
         className={className}
-        svgSize={convertSizeForSVG(size || 'normal')}
+        svgSize={svgSizes[size || 'normal']}
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();
         }} // Prevent redirect from triggering when placed inside <a>
         {...rest}>
-        <MenuIconWrapper svgSize={convertSizeForSVG(size || 'normal')}>
-          {menuIcon || <StyledHorizontalMenu />}
-        </MenuIconWrapper>
+        <MenuIconWrapper svgSize={svgSizes[size || 'normal']}>{menuIcon || <StyledHorizontalMenu />}</MenuIconWrapper>
       </StyledMenuButton>
       <DropdownMenu.Portal>
         <StyledMenuItems align={align}>

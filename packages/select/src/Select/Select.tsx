@@ -70,7 +70,7 @@ const Select = <T extends boolean>({
       hideSelectedOptions={false}
       unstyled
       menuPortalTarget={portalTarget}
-      {...(matchFrom === 'start' ? { filterOption: createFilter({ matchFrom: 'start' }) } : {})}
+      filterOption={matchFrom === 'start' ? createFilter({ matchFrom: 'start' }) : undefined}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{
         SelectContainer: BaseContainer,

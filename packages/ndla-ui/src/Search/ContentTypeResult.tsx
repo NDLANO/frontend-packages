@@ -23,7 +23,9 @@ const renderAdditionalIcon = (label: string, isAdditional?: boolean): ReactEleme
   if (isAdditional && label) {
     return (
       <Tooltip tooltip={label}>
-        <Additional className="c-icon--20" />
+        <div>
+          <Additional className="c-icon--20" aria-hidden={false} />
+        </div>
       </Tooltip>
     );
   }

@@ -42,6 +42,7 @@ interface Props<T extends boolean> {
   isClearable?: boolean;
   closeMenuOnSelect?: boolean;
   matchFrom?: 'any' | 'start';
+  required?: boolean;
 }
 
 const Select = <T extends boolean>({

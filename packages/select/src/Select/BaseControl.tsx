@@ -24,6 +24,7 @@ const StyledBaseControl = styled.div<StyledProps>`
   padding: ${spacing.small} ${spacing.normal};
   min-height: 40px;
   font-weight: ${({ bold }) => (bold ? fonts.weight.bold : fonts.weight.semibold)};
+  outline: ${({ required, hasValue }) => (required && !hasValue ? `2px solid ${colors.support.redLight}` : 'none')};
   ${fonts.sizes('18px', '24px')};
 
   ${({ small, bold }) =>
@@ -61,10 +62,12 @@ interface StyledProps {
   colorTheme: Color;
   outline?: boolean;
   bold?: boolean;
+  required?: boolean;
+  hasValue?: boolean;
 }
 
 const BaseControl = <T extends boolean>({
-  selectProps: { small, outline, colorTheme, bold },
+  selectProps: { small, outline, colorTheme, bold, required },
   innerRef,
   innerProps,
   children,
@@ -75,6 +78,7 @@ const BaseControl = <T extends boolean>({
     bold={bold}
     colorTheme={colorTheme}
     outline={outline}
+    required={required}
     ref={innerRef}
     {...innerProps}
     {...rest}>

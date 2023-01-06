@@ -341,6 +341,7 @@ const messages = {
       },
     },
     menu: {
+      button: 'Menu',
       goToMainMenu: 'Go to main menu',
       close: 'Close',
       goTo: 'Go to',

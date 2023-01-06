@@ -327,7 +327,7 @@ const messages = {
     menuOptions: {
       programme: 'Utdanningsprogram',
       subjects: 'Fag',
-      kultidisciplinarySubjects: 'Tverrfaglige tema',
+      multidisciplinarySubjects: 'Tverrfaglige tema',
       toolboxStudents: 'Verktøykassa - for elever',
       toolboxTeachers: 'Verktøykassa - for lærere',
       film: 'NDLA Film',

@@ -341,7 +341,7 @@ const messages = {
       },
     },
     menu: {
-      menu: 'Meny',
+      button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
       close: 'Govčča',
       goTo: 'Mana deike',

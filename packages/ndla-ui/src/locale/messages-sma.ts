@@ -340,7 +340,7 @@ const messages = {
       },
     },
     menu: {
-      menu: 'Meny',
+      button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
       close: 'Lukk',
       goTo: 'Gå til',

@@ -110,7 +110,6 @@ export type CompetenceGoalsItemType = {
   goals: {
     text: string;
     url?: string;
-    type: 'LK06' | 'LK20';
   }[];
   selected?: boolean;
   isOembed?: boolean;

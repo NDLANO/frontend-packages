@@ -70,7 +70,7 @@ const CompetenceGoalItem = ({ title, goals, isOembed }: CompetenceGoalsItemType)
           <li key={`${goal.text}${index}`}>
             <ListItemContent>
               <GoalText>{goal.text}</GoalText>
-              {goal.url && goal.type !== 'LK06' && (
+              {goal.url && (
                 <GoalSearchWrapper>
                   <SafeLinkButton variant="outline" to={goal.url} target={isOembed ? '_blank' : '_self'}>
                     <StyledSearch size="large" />

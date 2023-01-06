@@ -144,18 +144,6 @@ const ArticleByline = ({
       )}
       {showSecondaryContributors && <TextWrapper>{getSuppliersText(suppliers, t)}</TextWrapper>}
       <ButtonWrapper>
-        {copySourceReference && (
-          <CopyButton
-            size="small"
-            variant="outline"
-            shape="pill"
-            aria-live="assertive"
-            copyNode={t('license.hasCopiedTitle')}
-            data-copy-string={copySourceReference}
-            onClick={copyLicense}>
-            {`${t('license.copy')} ${t('license.copyTitle').toLowerCase()}`}
-          </CopyButton>
-        )}
         {licenseBox && (
           <Modal
             labelledBy={buttonId}

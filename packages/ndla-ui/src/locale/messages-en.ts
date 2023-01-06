@@ -253,7 +253,13 @@ const messages = {
     archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
+    filterSubjects: 'Filter subjects',
+    scrollToGroup: 'Scroll to group',
+    goToTop: 'Scroll to top',
+    alphabeticSort: 'Subjects grouped alphabetically',
+    subjectGroup: 'Group "{{ category }}"',
     allSubjects: 'All subjects',
+    myFavoriteSubjects: 'My favorite subjects',
     chooseSubject: 'Choose subject',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',
     confirmRemove: 'Are you sure you want to remove {{subject}} from your favorite subjects?',
@@ -335,6 +341,7 @@ const messages = {
       },
     },
     menu: {
+      button: 'Menu',
       goToMainMenu: 'Go to main menu',
       close: 'Close',
       goTo: 'Go to',
@@ -624,6 +631,7 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'About NDLA',
+    socialMedia: 'Social media',
     selectLanguage: 'Choose language (språk): ',
     info: 'This webapplication is developed by NDLA as Open Source code.',
     editorInChief: 'Editor in chief: ',

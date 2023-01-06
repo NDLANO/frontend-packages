@@ -252,7 +252,13 @@ const messages = {
     archived: 'Dát leat heaittihuvvon fága mii ii ođasmahttojuvvo.',
   },
   subjectsPage: {
+    filterSubjects: 'Filtrer fag',
+    scrollToGroup: 'Hopp til gruppe',
+    goToTop: 'Gå til toppen',
+    alphabeticSort: 'Fag gruppert alfabetisk',
+    subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: 'Buot fágat',
+    myFavoriteSubjects: 'Mine favorittfag',
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     chooseSubject: 'Vállje fága',
     confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
@@ -335,6 +341,7 @@ const messages = {
       },
     },
     menu: {
+      button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
       close: 'Govčča',
       goTo: 'Mana deike',
@@ -624,6 +631,7 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'NDLA birra',
+    socialMedia: 'Sosiale medier',
     selectLanguage: 'Vállje giela (language): ',
     vision: 'Ovttas hábmet boahtteáiggi oahppama',
     linksHeader: 'Eará NDLA neahttabáikkit',

@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import Button, { CopyButton } from '@ndla/button';
+import { CopyButton, ButtonV2 } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
@@ -144,13 +144,25 @@ const ArticleByline = ({
       )}
       {showSecondaryContributors && <TextWrapper>{getSuppliersText(suppliers, t)}</TextWrapper>}
       <ButtonWrapper>
+        {copySourceReference && (
+          <CopyButton
+            size="small"
+            variant="outline"
+            shape="pill"
+            aria-live="assertive"
+            copyNode={t('license.hasCopiedTitle')}
+            data-copy-string={copySourceReference}
+            onClick={copyLicense}>
+            {`${t('license.copy')} ${t('license.copyTitle').toLowerCase()}`}
+          </CopyButton>
+        )}
         {licenseBox && (
           <Modal
             labelledBy={buttonId}
             activateButton={
-              <Button id={buttonId} size="small" borderShape="rounded" outline>
+              <ButtonV2 id={buttonId} size="small" shape="pill" variant="outline">
                 {t('article.useContent')}
-              </Button>
+              </ButtonV2>
             }
             backgroundColor="white"
             position="top"
@@ -168,8 +180,8 @@ const ArticleByline = ({
         {copySourceReference && (
           <CopyButton
             size="small"
-            borderShape="rounded"
-            outline
+            shape="pill"
+            variant="outline"
             aria-live="assertive"
             copyNode={t('license.hasCopiedTitle')}
             data-copy-string={copySourceReference}
@@ -181,8 +193,8 @@ const ArticleByline = ({
           <CopyButton
             onClick={copyLinkHandler}
             size="small"
-            borderShape="rounded"
-            outline
+            shape="pill"
+            variant="outline"
             aria-live="assertive"
             data-copy-string={copyPageUrlLink}
             copyNode={t('article.copyPageLinkCopied')}>
@@ -192,8 +204,8 @@ const ArticleByline = ({
         {copyEmbedLink && (
           <CopyButton
             size="small"
-            borderShape="rounded"
-            outline
+            shape="pill"
+            variant="outline"
             aria-live="assertive"
             copyNode={t('license.hasCopiedTitle')}
             data-copy-string={copyEmbedLink}
@@ -202,9 +214,9 @@ const ArticleByline = ({
           </CopyButton>
         )}
         {printUrl && (
-          <Button size="small" borderShape="rounded" outline onClick={() => printPage(printUrl)}>
+          <ButtonV2 size="small" shape="pill" variant="outline" onClick={() => printPage(printUrl)}>
             {t('article.printPage')}
-          </Button>
+          </ButtonV2>
         )}
       </ButtonWrapper>
     </Wrapper>

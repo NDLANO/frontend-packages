@@ -43,6 +43,7 @@ interface Props<T extends boolean> {
   closeMenuOnSelect?: boolean;
   matchFrom?: 'any' | 'start';
   required?: boolean;
+  isDisabled?: boolean;
 }
 
 const Select = <T extends boolean>({

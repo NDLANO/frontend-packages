@@ -74,7 +74,7 @@ const CompetenceGoalItem = ({ title, goals, isOembed }: CompetenceGoalsItemType)
                 <GoalSearchWrapper>
                   <SafeLinkButton variant="outline" to={goal.url} target={isOembed ? '_blank' : '_self'}>
                     <StyledSearch size="large" />
-                    <span>{t('competenceGoals.competenceGoalResourceSearchText')}</span>
+                    <span>{t('competenceGoals.competenceGoalResourceSearchText', { goal: goal.id })}</span>
                   </SafeLinkButton>
                 </GoalSearchWrapper>
               )}

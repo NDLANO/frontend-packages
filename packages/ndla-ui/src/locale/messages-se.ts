@@ -472,7 +472,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Geavat filtara',
     closeCompentenceGoalsFilter: 'Govčča filtara',
     competenceGoalsNarrowBackButton: 'Ruovttoluotta',
-    competenceGoalResourceSearchText: 'Oza buot resurssaid mat heivejit dán gealbomihttomearrái',
+    competenceGoalResourceSearchText: 'Søk på alle ressursar som passar til kompetansemål {{goal}}',
     competenceGoalShowExtra: 'Čájet oahppoplána doarjaga',
     competenceGoalCloseExtra: 'Čiega oahppoplána doarjaga',
     competenceCoreLabel: 'Guovddášelemeanta',

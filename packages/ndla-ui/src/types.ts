@@ -108,6 +108,7 @@ export type CompetenceGoalsItemType = {
   id: string;
   title: string;
   goals: {
+    id: string;
     text: string;
     url?: string;
   }[];

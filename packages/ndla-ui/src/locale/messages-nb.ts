@@ -266,6 +266,9 @@ const messages = {
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjernet fra favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke et fag må du logge inn på Min NDLA. Du finner faget øverst på denne siden etter at du har logget inn.',
     shows: 'Viser',
   },
   topicPage: {

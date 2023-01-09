@@ -44,10 +44,9 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
     if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to) || asAnchor || disabled) {
       const href = typeof to === 'string' ? to : '#';
       return (
-        // eslint-disable-next-line jsx-a11y/no-redundant-roles
         <a
           href={disabled ? undefined : href}
-          role="link"
+          role={disabled ? 'link' : undefined}
           aria-disabled={disabled}
           ref={ref}
           tabIndex={tabIndex}

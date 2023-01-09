@@ -55,9 +55,6 @@ interface Props {
 
 const HomeBreadcrumb = ({ items, light }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
-    if (item.index === totalCount - 1) {
-      return <StyledSpan light={light}>{item.name}</StyledSpan>;
-    }
     if (item.index === 0) {
       return (
         <StyledIconSafeLink aria-label={item.name} to={item.to}>
@@ -66,7 +63,7 @@ const HomeBreadcrumb = ({ items, light }: Props) => {
       );
     }
     return (
-      <StyledSafeLink light={light} to={item.to}>
+      <StyledSafeLink light={light} to={item.to} aria-current={item.index === totalCount - 1 ? 'page' : undefined}>
         {item.name}
       </StyledSafeLink>
     );

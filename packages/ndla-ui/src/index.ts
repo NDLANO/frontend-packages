@@ -167,7 +167,7 @@ export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
 export { default as AuthorInfo } from './AuthorInfo';
 
-export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
+export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from './Breadcrumb';
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist';

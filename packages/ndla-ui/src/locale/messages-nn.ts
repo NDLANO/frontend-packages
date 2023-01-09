@@ -268,7 +268,7 @@ const messages = {
     addConfirmed: '{{subject}} er lagt til som favorittfag',
     subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
     subjectFavoriteGuide:
-      'For å favorittmerke eit fag må du logge inn på Min NDLA. Du finner faget øverst på denne sida etter at du har logga inn.',
+      'For å favorittmerke eit fag må du logge inn på Min NDLA. Du finn faget øverst på denne sida etter at du har logga inn.',
     shows: 'Viser',
   },
   topicPage: {

@@ -108,9 +108,9 @@ export type CompetenceGoalsItemType = {
   id: string;
   title: string;
   goals: {
+    id: string;
     text: string;
     url?: string;
-    type: 'LK06' | 'LK20';
   }[];
   selected?: boolean;
   isOembed?: boolean;

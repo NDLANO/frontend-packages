@@ -80,7 +80,6 @@ const ArticleLearningMaterial = ({ accessRestricted }) => {
         }}
         licenseBox={<LicenseBox />}
         competenceGoals={<CompetenceGoalListExample />}
-        competenceGoalTypes={['LK20', 'LK06']}
         printUrl={window.location.href}
         icon={<SubjectMaterialBadge background size="large" />}
         id="mainContentId"

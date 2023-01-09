@@ -119,6 +119,7 @@ type Props = {
   article: ArticleType;
   icon?: ReactNode;
   licenseBox?: ReactNode;
+  competenceGoalsLoading?: boolean;
   modifier?: string;
   children?: ReactNode;
   messages: Messages;
@@ -129,7 +130,6 @@ type Props = {
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | ReactNode
     | null;
-  competenceGoalTypes?: string[];
   id: string;
   renderMarkdown: (text: string) => string;
   printUrl?: string;
@@ -157,7 +157,7 @@ export const Article = ({
   messageBoxLinks,
   children,
   competenceGoals,
-  competenceGoalTypes,
+  competenceGoalsLoading,
   id,
   locale,
   notions,
@@ -214,7 +214,7 @@ export const Article = ({
               <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
             </MSGboxWrapper>
           )}
-          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
+          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalsLoading={competenceGoalsLoading}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
 
             <ArticleTitle icon={icon} label={messages.label}>

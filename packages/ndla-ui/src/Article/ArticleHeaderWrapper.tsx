@@ -30,11 +30,11 @@ type Props = {
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | ReactNode
     | null;
-  competenceGoalTypes?: string[];
+  competenceGoalsLoading?: boolean;
   children: ReactNode;
 };
 
-const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalTypes }: Props) => {
+const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalsLoading }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -77,7 +77,13 @@ const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalTypes }
   return (
     <div {...classes('header')}>
       {children}
-      <ButtonV2 size="xsmall" colorTheme="light" shape="pill" onClick={openDialog}>
+      <ButtonV2
+        aria-busy={competenceGoalsLoading}
+        size="xsmall"
+        colorTheme="light"
+        shape="pill"
+        onClick={openDialog}
+        disabled={competenceGoalsLoading}>
         <FooterHeaderIcon />
         <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
       </ButtonV2>

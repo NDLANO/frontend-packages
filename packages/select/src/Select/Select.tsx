@@ -6,8 +6,8 @@
  *
  */
 
-import React, { ReactNode, useMemo } from 'react';
-import ReactSelect, { PropsValue } from 'react-select';
+import React, { ReactNode, useCallback, useMemo } from 'react';
+import ReactSelect, { PropsValue, createFilter } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
@@ -41,6 +41,9 @@ interface Props<T extends boolean> {
   groupTitle?: string;
   isClearable?: boolean;
   closeMenuOnSelect?: boolean;
+  matchFrom?: 'any' | 'start';
+  required?: boolean;
+  isDisabled?: boolean;
 }
 
 const Select = <T extends boolean>({
@@ -51,6 +54,7 @@ const Select = <T extends boolean>({
   colorTheme = 'blue',
   isSearchable = false,
   groupTitle,
+  matchFrom = 'start',
   ...rest
 }: Props<T>) => {
   const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
@@ -64,10 +68,10 @@ const Select = <T extends boolean>({
       aria-label={label}
       isSearchable={isSearchable}
       menuPlacement={menuPlacement}
-      closeMenuOnSelect={false}
       hideSelectedOptions={false}
       unstyled
       menuPortalTarget={portalTarget}
+      filterOption={matchFrom === 'start' ? createFilter({ matchFrom: 'start' }) : undefined}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{
         SelectContainer: BaseContainer,

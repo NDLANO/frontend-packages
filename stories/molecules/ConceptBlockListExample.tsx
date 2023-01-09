@@ -97,7 +97,6 @@ const ConceptBlockListExample = () => {
         }}
         licenseBox={<LicenseBox />}
         competenceGoals={<CompetenceGoalListExample />}
-        copyPageUrlLink={window.location.href}
         printUrl={window.location.href}
         icon={<TasksAndActivitiesBadge background size="large" />}
         id="mainContentId"

@@ -125,13 +125,13 @@ type Props = {
   messages: Messages;
   locale: Locale;
   messageBoxLinks?: [];
+  copyText?: string;
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | ReactNode
     | null;
   id: string;
   renderMarkdown: (text: string) => string;
-  copyPageUrlLink?: string;
   printUrl?: string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
@@ -158,7 +158,6 @@ export const Article = ({
   children,
   competenceGoals,
   competenceGoalsLoading,
-  copyPageUrlLink,
   id,
   locale,
   notions,
@@ -166,6 +165,7 @@ export const Article = ({
   renderMarkdown,
   accessMessage,
   heartButton,
+  copyText,
 }: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
@@ -237,7 +237,7 @@ export const Article = ({
         <LayoutItem layout="center">
           {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
           <ArticleByline
-            copyPageUrlLink={copyPageUrlLink}
+            copySourceReference={copyText}
             authors={authors}
             suppliers={rightsholders}
             published={published}

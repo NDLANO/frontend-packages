@@ -18,12 +18,13 @@ const StyledBaseControl = styled.div<StyledProps>`
   display: flex;
   width: 100%;
   align-items: center;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'auto' : 'pointer')};
   justify-content: space-between;
   border-radius: 8px;
   padding: ${spacing.small} ${spacing.normal};
   min-height: 40px;
   font-weight: ${({ bold }) => (bold ? fonts.weight.bold : fonts.weight.semibold)};
+  outline: ${({ required, hasValue }) => (required && !hasValue ? `2px solid ${colors.support.redLight}` : 'none')};
   ${fonts.sizes('18px', '24px')};
 
   ${({ small, bold }) =>
@@ -40,11 +41,12 @@ const StyledBaseControl = styled.div<StyledProps>`
     outline: 2px solid ${colors.brand.dark};
   }
 
-  color: ${colors.brand.dark};
+  color: ${({ disabled }) => (disabled ? colors.brand.greyLight : colors.brand.dark)};
   border-style: solid;
   border-width: ${({ outline }) => (outline ? '1px' : '0px')};
   border-color: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.dark : colors.brand.light)};
-  background: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.lighter : colors.white)};
+  background: ${({ colorTheme, disabled }) =>
+    disabled ? colors.brand.greyMedium : colorTheme === 'blue' ? colors.brand.lighter : colors.white};
 
   & ${StyledDropdown} svg {
     ${({ menuIsOpen }) =>
@@ -61,10 +63,13 @@ interface StyledProps {
   colorTheme: Color;
   outline?: boolean;
   bold?: boolean;
+  required?: boolean;
+  hasValue?: boolean;
+  disabled?: boolean;
 }
 
 const BaseControl = <T extends boolean>({
-  selectProps: { small, outline, colorTheme, bold },
+  selectProps: { small, outline, colorTheme, bold, required },
   innerRef,
   innerProps,
   children,
@@ -75,6 +80,8 @@ const BaseControl = <T extends boolean>({
     bold={bold}
     colorTheme={colorTheme}
     outline={outline}
+    required={required}
+    disabled={rest.isDisabled}
     ref={innerRef}
     {...innerProps}
     {...rest}>

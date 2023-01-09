@@ -180,7 +180,6 @@ const ArticleAdditional = () => (
       }}
       licenseBox={<LicenseBox />}
       competenceGoals={<CompetenceGoalListExample />}
-      copyPageUrlLink={window.location.href}
       printUrl={window.location.href}
       icon={<SubjectMaterialBadge background size="large" />}
       id="mainContentId"

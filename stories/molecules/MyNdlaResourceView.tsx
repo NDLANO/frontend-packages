@@ -13,7 +13,7 @@ import { mq, breakpoints, colors, spacing, fonts } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
-import Button, { AddButton } from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
@@ -73,11 +73,6 @@ const DashRightSide = styled.div`
     display: none;
   }
 `;
-const DashLeftSide = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-`;
 
 const FoldersText = styled.p`
   margin: 0;
@@ -99,7 +94,7 @@ const CountWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledIconButton = styled(Button)`
+const StyledIconButton = styled(ButtonV2)`
   padding: 10px;
   svg {
     margin: 0;
@@ -166,14 +161,12 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         </CountWrapper>
       </ResourceCountWrapper>
       <DashOptionWrapper>
-        <DashLeftSide>
-          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')} ghostPill onClick={() => {}} />
-        </DashLeftSide>
         {(folders || resources) && (
           <DashRightSide>
             <Tooltip tooltip={t('myNdla.listView')}>
               <StyledIconButton
-                ghostPill
+                variant="ghost"
+                colorTheme="light"
                 onClick={() => setLayout('list')}
                 size="small"
                 aria-label={t('myNdla.listView')}>
@@ -182,7 +175,8 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
             </Tooltip>
             <Tooltip tooltip={t('myNdla.detailView')}>
               <StyledIconButton
-                ghostPill
+                variant="ghost"
+                colorTheme="light"
                 onClick={() => setLayout('listLarger')}
                 size="small"
                 aria-label={t('myNdla.detailView')}>
@@ -191,7 +185,8 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
             </Tooltip>
             <Tooltip tooltip={t('myNdla.shortView')}>
               <StyledIconButton
-                ghostPill
+                variant="ghost"
+                colorTheme="light"
                 onClick={() => setLayout('block')}
                 size="small"
                 aria-label={t('myNdla.shortView')}>

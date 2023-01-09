@@ -259,6 +259,7 @@ const messages = {
     alphabeticSort: 'Subjects grouped alphabetically',
     subjectGroup: 'Group "{{ category }}"',
     allSubjects: 'All subjects',
+    myFavoriteSubjects: 'My favorite subjects',
     chooseSubject: 'Choose subject',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',
     confirmRemove: 'Are you sure you want to remove {{subject}} from your favorite subjects?',
@@ -266,6 +267,9 @@ const messages = {
     removeFavorite: 'Remove favorite subject',
     removeConfirmed: '{{subject}} is removed from your favorite subjects',
     addConfirmed: '{{subject}} is added to your favorite subjects',
+    subjectFavoritePitch: 'Do you want to favorite this subject?',
+    subjectFavoriteGuide:
+      'To favorite a subject you must log in to My NDLA. You will find the subject on the top of this page after logging in.',
     shows: 'Shows',
   },
   topicPage: {
@@ -340,6 +344,7 @@ const messages = {
       },
     },
     menu: {
+      button: 'Menu',
       goToMainMenu: 'Go to main menu',
       close: 'Close',
       goTo: 'Go to',

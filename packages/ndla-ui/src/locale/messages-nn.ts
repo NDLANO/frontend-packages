@@ -258,6 +258,7 @@ const messages = {
     alphabeticSort: 'Fag gruppert alfabetisk',
     subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: 'Alle fag',
+    myFavoriteSubjects: 'Favorittfaga mine',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
     chooseSubject: 'Vel fag',
     confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
@@ -265,6 +266,9 @@ const messages = {
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjerna frå favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke eit fag må du logge inn på Min NDLA. Du finn faget øverst på denne sida etter at du har logga inn.',
     shows: 'Viser',
   },
   topicPage: {
@@ -339,6 +343,7 @@ const messages = {
       },
     },
     menu: {
+      button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
       close: 'Lukk',
       goTo: 'Gå til',

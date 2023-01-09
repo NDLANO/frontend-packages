@@ -258,6 +258,7 @@ const messages = {
     alphabeticSort: 'Fag gruppert alfabetisk',
     subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: 'Buot fágat',
+    myFavoriteSubjects: 'Mine favorittfag',
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     chooseSubject: 'Vállje fága',
     confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
@@ -265,6 +266,9 @@ const messages = {
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjernet fra favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke et fag må du logge inn på Min NDLA. Du finner faget øverst på denne siden etter at du har logget inn.',
     shows: 'Viser',
   },
   topicPage: {
@@ -340,6 +344,7 @@ const messages = {
       },
     },
     menu: {
+      button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
       close: 'Govčča',
       goTo: 'Mana deike',

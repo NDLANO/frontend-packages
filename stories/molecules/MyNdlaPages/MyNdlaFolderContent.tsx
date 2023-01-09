@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, fonts, mq, breakpoints } from '@ndla/core';
-import Button, { DeleteButton } from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { Feide, HashTag } from '@ndla/icons/common';
@@ -106,7 +106,7 @@ const StyledBottomDiv = styled.div`
   }
 `;
 
-const LogoutButton = styled(Button)`
+const LogoutButton = styled(ButtonV2)`
   margin-bottom: ${spacing.small};
 `;
 
@@ -185,10 +185,10 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
         </Terms>
 
         <ButtonsWrapper>
-          <LogoutButton outline>{t('user.buttonLogOut')}</LogoutButton>
+          <LogoutButton variant="outline">{t('user.buttonLogOut')}</LogoutButton>
 
           <p>{t('myNdla.myPage.wishToDelete')}</p>
-          <DeleteButton>{t('myNdla.myPage.deleteAccount')}</DeleteButton>
+          <ButtonV2 colorTheme="danger">{t('myNdla.myPage.deleteAccount')}</ButtonV2>
         </ButtonsWrapper>
       </StyledBottomDiv>
     </MyPageWrapper>

@@ -66,7 +66,6 @@ const ArticleExternalLearningResource = () => (
       }}
       licenseBox={<LicenseBox />}
       competenceGoals={<CompetenceGoalListExample />}
-      copyPageUrlLink={window.location.href}
       printUrl={window.location.href}
       icon={<ExternalLearningResourcesBadge background size="large" />}
       id="mainContentId"

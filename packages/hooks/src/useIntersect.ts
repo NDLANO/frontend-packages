@@ -1,26 +1,12 @@
-import { useRef, useState, useCallback, useEffect, RefObject } from 'react';
-import { isIE, browserVersion } from 'react-device-detect';
+import { useRef, useState, useCallback, useEffect } from 'react';
 
 const DEFAULT_ROOT_MARGIN = '0px';
 const DEFAULT_THRESHOLD = [0];
 
-export type IntersectionObserverHookRefCallbackNode = Element | null;
-export type IntersectionObserverHookRefCallback = (node: IntersectionObserverHookRefCallbackNode) => void;
-
-export type IntersectionObserverHookResult = [
-  IntersectionObserverHookRefCallback,
-  { entry: IntersectionObserverEntry | undefined },
-];
-
-const IntersectionObserverBrowserSupport = () =>
-  !(typeof window === 'undefined' || !('IntersectionObserver' in window) || !('IntersectionObserverEntry' in window));
-
-// For more info:
-// https://developers.google.com/web/updates/2016/04/intersectionobserver
-// https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+export type IntersectionObserverHookRefCallback = (node: Element | null) => void;
 
 interface Props extends IntersectionObserverInit {
-  target?: HTMLElement | Document | null;
+  target?: HTMLElement | null;
 }
 
 export function useIntersectionObserver({
@@ -28,8 +14,7 @@ export function useIntersectionObserver({
   target = null,
   rootMargin = DEFAULT_ROOT_MARGIN,
   threshold = DEFAULT_THRESHOLD,
-}: Props = {}): IntersectionObserverHookResult {
-  const isIE11 = isIE && parseInt(browserVersion) < 12;
+}: Props = {}) {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
 
@@ -55,18 +40,13 @@ export function useIntersectionObserver({
     return observerRef.current;
   }, [root, rootMargin, threshold]);
 
-  const refCallback = useCallback(
-    (node: IntersectionObserverHookRefCallbackNode) => {
-      const observer = getObserver();
-      if (node) {
-        observer.observe(node);
-      }
-    },
-    [getObserver],
-  );
+  useEffect(() => {
+    const observer = getObserver();
 
-  if (isIE11 || !IntersectionObserverBrowserSupport()) {
-    return [() => {}, { entry }];
-  }
-  return [refCallback, { entry }];
+    if (target) {
+      observer.observe(target);
+    }
+  }, [target, getObserver]);
+
+  return { entry };
 }

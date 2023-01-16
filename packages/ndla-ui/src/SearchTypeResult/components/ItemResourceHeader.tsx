@@ -85,7 +85,7 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
 
 const HeaderWrapper = styled.div`
   overflow: hidden;
-  flex: 1 1 0%;
+  height: 170px;
   display: flex;
   flex-direction: column;
 `;

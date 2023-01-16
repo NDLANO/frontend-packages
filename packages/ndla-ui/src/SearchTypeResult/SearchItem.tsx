@@ -28,8 +28,8 @@ interface ItemTypeProps {
 const Container = styled.div`
   overflow: hidden;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr;
   align-items: stretch;
   height: 400px;
   border-radius: 5px;
@@ -68,8 +68,8 @@ const StyledLink = styled(SafeLink)`
 const ItemText = styled.div<ItemTypeProps>`
   ${fonts.sizes('16px', '24px')};
   word-break: break-word;
-  overflow-wrap: anywhere;
-  margin-top: ${spacing.small};
+  overflow: hidden;
+  text-overflow: ellipsis;
   ${(props) =>
     props.isTopic &&
     `
@@ -79,10 +79,15 @@ const ItemText = styled.div<ItemTypeProps>`
 
 const ContextWrapper = styled.div`
   align-self: flex-start;
+  margin-top: auto;
   background: white;
 `;
 
 const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
+  overflow: hidden;
   margin-top: auto;
   padding: 0 ${spacing.normal} ${spacing.small};
 `;
@@ -105,7 +110,7 @@ export interface SearchItemType {
 }
 
 const SearchItem = ({ item, type }: SearchItemType) => {
-  const { title, url, ingress, contexts, img = null, labels = [], children } = item;
+  const { title, url, ingress, contexts, img = null, labels = [] } = item;
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
@@ -123,7 +128,6 @@ const SearchItem = ({ item, type }: SearchItemType) => {
           <StyledLink to={url} ref={linkRef}>
             <ItemTitle>{title}</ItemTitle>
           </StyledLink>
-          <ItemText isTopic>{parse(ingress)}</ItemText>
         </ItemTopicHeader>
       ) : (
         <ItemResourceHeader labels={labels} img={img} type={type} />
@@ -134,14 +138,13 @@ const SearchItem = ({ item, type }: SearchItemType) => {
             <StyledLink to={url} ref={linkRef}>
               <ItemTitle>{title}</ItemTitle>
             </StyledLink>
-            <ItemText>{parse(ingress)}</ItemText>
           </>
         )}
+        <ItemText isTopic={isTopic}>{parse(ingress)}</ItemText>
         <ContextWrapper>
           {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
         </ContextWrapper>
       </ContentWrapper>
-      {children}
     </Container>
   );
 };

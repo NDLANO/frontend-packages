@@ -75,7 +75,7 @@ const ItemTopicHeader = ({ children, image, type }: Props) => {
     <Wrapper>
       {image && (
         <TopicHeaderVisualElementWrapper>
-          <TopicHeaderImage className="topic-header-image" src={image.url} alt={image.alt} />
+          <TopicHeaderImage className="topic-header-image" src={image.url} alt="" />
         </TopicHeaderVisualElementWrapper>
       )}
       <Label className="topic-label">

@@ -117,11 +117,17 @@ const SearchItem = ({ item, type }: SearchItemType) => {
   };
 
   return (
-    <Container onClick={handleClick}>
+    <Container onClick={handleClick} role="presentation">
       {isTopic ? (
         <ItemTopicHeader image={img} type={type}>
           <ItemTitleWrapper isTopic>
-            <StyledLink to={url} ref={linkRef}>
+            <StyledLink
+              to={url}
+              ref={linkRef}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}>
               <ItemTitle isTopic>{title}</ItemTitle>
             </StyledLink>
           </ItemTitleWrapper>

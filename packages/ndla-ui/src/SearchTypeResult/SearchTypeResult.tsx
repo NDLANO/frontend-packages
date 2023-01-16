@@ -16,7 +16,7 @@ import SearchItems from './SearchItems';
 import { SearchItemProps } from './SearchItem';
 import ResultNavigation, { PaginationType } from './ResultNavigation';
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   flex: 1;

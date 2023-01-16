@@ -8,6 +8,7 @@
 
 import React, { memo } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import SearchItem, { SearchItemProps } from './SearchItem';
 import { ContentType } from './SearchTypeResult';
@@ -30,15 +31,16 @@ const Container = styled.ul<ContainerProps>`
 
   ${(props) =>
     props.viewType === 'grid' &&
-    `
-          ${mq.range({ from: breakpoints.tablet })} {
-    column-gap: ${spacing.normal};
-    grid-template-columns: repeat(2, 1fr);
-  }
+    css`
+      ${mq.range({ from: breakpoints.tablet })} {
+        column-gap: ${spacing.normal};
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-  ${mq.range({ from: breakpoints.desktop })} {
-    grid-template-columns: repeat(3, 1fr);
-  }`}
+      ${mq.range({ from: breakpoints.desktop })} {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    `}
 `;
 
 interface Props {

@@ -44,6 +44,7 @@ const BadgeWrapper = styled.span`
 
 const SubjectName = styled.div`
   display: flex;
+  gap: ${spacing.small};
   ${fonts.sizes('18px', '24px')};
   margin: 2px 0;
   h2 {
@@ -101,7 +102,7 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
           <SubjectName>
             <h2 id={`searchitem-header-${type}`}>
               {type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}
-            </h2>{' '}
+            </h2>
             {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
           </SubjectName>
         </TypeWrapper>

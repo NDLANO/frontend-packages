@@ -132,7 +132,13 @@ const SearchItem = ({ item, type }: SearchItemType) => {
           <ItemResourceHeader labels={labels} img={img} type={type} />
           <TextWrapper>
             <ItemTitleWrapper>
-              <StyledLink to={url} ref={linkRef}>
+              <StyledLink
+                to={url}
+                ref={linkRef}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                }}>
                 <ItemTitle>{title}</ItemTitle>
               </StyledLink>
             </ItemTitleWrapper>

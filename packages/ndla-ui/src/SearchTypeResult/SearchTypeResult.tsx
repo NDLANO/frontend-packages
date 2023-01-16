@@ -81,7 +81,7 @@ const SearchTypeResult = ({
     )}
     <SearchTypeHeader onFilterClick={onFilterClick} filters={filters} totalCount={totalCount} type={type} />
     <SearchItems items={items} type={type} viewType={viewType} />
-    {pagination && <ResultNavigation {...pagination} />}
+    {pagination && <ResultNavigation {...pagination} type={type} />}
     {children}
   </Wrapper>
 );

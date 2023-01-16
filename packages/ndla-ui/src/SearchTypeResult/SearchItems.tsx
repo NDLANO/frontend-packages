@@ -18,12 +18,13 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-type ContainerProps = {
+interface ContainerProps {
   viewType: Props['viewType'];
-};
+}
 
-const Container = styled.div<ContainerProps>`
+const Container = styled.ul<ContainerProps>`
   display: grid;
+  list-style: none;
   row-gap: ${spacing.normal};
   grid-template-columns: repeat(1, 1fr);
 
@@ -40,15 +41,16 @@ const Container = styled.div<ContainerProps>`
   }`}
 `;
 
-type Props = {
+interface Props {
   items: SearchItemProps[];
   type?: ContentType;
   viewType?: 'grid' | 'list';
-};
+}
+
 const SearchItems = ({ items, type, viewType = 'grid' }: Props) => {
   return (
     <Wrapper>
-      <Container viewType={viewType}>
+      <Container aria-describedby={`searchitem-header-${type}`} viewType={viewType}>
         {items.map((item) => {
           const contentType = type || item.type;
           const Component = viewType === 'list' ? SearchItemList : SearchItem;

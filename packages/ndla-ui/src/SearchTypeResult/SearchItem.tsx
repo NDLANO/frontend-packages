@@ -121,13 +121,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
       {isTopic ? (
         <ItemTopicHeader image={img} type={type}>
           <ItemTitleWrapper isTopic>
-            <StyledLink
-              to={url}
-              ref={linkRef}
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-              }}>
+            <StyledLink to={url} ref={linkRef}>
               <ItemTitle isTopic>{title}</ItemTitle>
             </StyledLink>
           </ItemTitleWrapper>
@@ -138,13 +132,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
           <ItemResourceHeader labels={labels} img={img} type={type} />
           <TextWrapper>
             <ItemTitleWrapper>
-              <StyledLink
-                to={url}
-                ref={linkRef}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                }}>
+              <StyledLink to={url} ref={linkRef}>
                 <ItemTitle>{title}</ItemTitle>
               </StyledLink>
             </ItemTitleWrapper>

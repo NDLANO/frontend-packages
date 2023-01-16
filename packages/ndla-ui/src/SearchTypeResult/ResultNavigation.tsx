@@ -74,7 +74,7 @@ const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '' }:
 
   return (
     <ResultNav>
-      <NavInfo>
+      <NavInfo id={`resultnav-${contentType}`}>
         {isMore
           ? t('searchPage.resultType.showing', {
               count: toCount,

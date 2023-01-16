@@ -26,6 +26,7 @@ interface ItemTypeProps {
 }
 
 const Container = styled.div`
+  overflow: hidden;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -44,32 +45,27 @@ const Container = styled.div`
   }
 `;
 
-const TextWrapper = styled.div`
-  padding: 0 ${spacing.normal} ${spacing.small};
-`;
-
-const ItemTitleWrapper = styled.div<ItemTypeProps>`
-  margin-top: ${spacing.small};
-`;
-
 const ItemTitle = styled.h3<ItemTypeProps>`
+  display: inline;
   ${fonts.sizes('24px', '28px')};
   color: ${colors.brand.primary};
   margin-bottom: ${(props) => props.isTopic && spacing.small};
   font-weight: ${fonts.weight.semibold};
   overflow-wrap: anywhere;
-  display: inline;
-`;
-
-const StyledLink = styled(SafeLink)`
-  box-shadow: none;
+  margin: 0;
   ${Container}:hover & {
-    box-shadow: ${misc.textLinkBoxShadow};
+    box-shadow: 0 -1px inset;
   }
 `;
 
+const StyledLink = styled(SafeLink)`
+  display: block;
+  box-shadow: none;
+  margin-top: ${spacing.small};
+  color: ${colors.brand.primary};
+`;
+
 const ItemText = styled.div<ItemTypeProps>`
-  overflow: hidden;
   ${fonts.sizes('16px', '24px')};
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -84,6 +80,10 @@ const ItemText = styled.div<ItemTypeProps>`
 const ContextWrapper = styled.div`
   align-self: flex-start;
   background: white;
+`;
+
+const ContentWrapper = styled.div`
+  margin-top: auto;
   padding: 0 ${spacing.normal} ${spacing.small};
 `;
 
@@ -120,29 +120,27 @@ const SearchItem = ({ item, type }: SearchItemType) => {
     <Container onClick={handleClick} role="presentation">
       {isTopic ? (
         <ItemTopicHeader image={img} type={type}>
-          <ItemTitleWrapper isTopic>
-            <StyledLink to={url} ref={linkRef}>
-              <ItemTitle isTopic>{title}</ItemTitle>
-            </StyledLink>
-          </ItemTitleWrapper>
+          <StyledLink to={url} ref={linkRef}>
+            <ItemTitle>{title}</ItemTitle>
+          </StyledLink>
           <ItemText isTopic>{parse(ingress)}</ItemText>
         </ItemTopicHeader>
       ) : (
-        <>
-          <ItemResourceHeader labels={labels} img={img} type={type} />
-          <TextWrapper>
-            <ItemTitleWrapper>
-              <StyledLink to={url} ref={linkRef}>
-                <ItemTitle>{title}</ItemTitle>
-              </StyledLink>
-            </ItemTitleWrapper>
-            <ItemText>{parse(ingress)}</ItemText>
-          </TextWrapper>
-        </>
+        <ItemResourceHeader labels={labels} img={img} type={type} />
       )}
-      <ContextWrapper>
-        {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
-      </ContextWrapper>
+      <ContentWrapper>
+        {!isTopic && (
+          <>
+            <StyledLink to={url} ref={linkRef}>
+              <ItemTitle>{title}</ItemTitle>
+            </StyledLink>
+            <ItemText>{parse(ingress)}</ItemText>
+          </>
+        )}
+        <ContextWrapper>
+          {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
+        </ContextWrapper>
+      </ContentWrapper>
       {children}
     </Container>
   );

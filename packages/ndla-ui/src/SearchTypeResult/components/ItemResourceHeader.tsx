@@ -26,13 +26,8 @@ const ImageElement = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-`;
-
-const ImageWrapper = styled.div`
-  flex: 1;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   overflow: hidden;
+  flex: 1;
 `;
 
 const NoImageElement = styled.div<ItemTypeProps>`
@@ -75,18 +70,24 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
   ) => props.contentType && `${encodeURIComponent(resourceTypeColor(props.contentType))}`}'/%3E%3C/svg%3E");
   background-position: top;
   background-repeat: no-repeat;
-  left: 17px;
+  left: 15px;
   top: -23px;
   height: 45px;
   width: 78px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
   svg {
     width: 20px;
     height: 20px;
   }
+`;
+
+const HeaderWrapper = styled.div`
+  overflow: hidden;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
 `;
 
 type Props = {
@@ -98,11 +99,9 @@ type Props = {
 const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
   const { t } = useTranslation();
   return (
-    <>
+    <HeaderWrapper>
       {img ? (
-        <ImageWrapper>
-          <ImageElement src={img.url} alt={img.alt} />
-        </ImageWrapper>
+        <ImageElement src={img.url} alt={img.alt} />
       ) : (
         <NoImageElement contentType={type}>{type && <ContentTypeBadge type={type} border={false} />}</NoImageElement>
       )}
@@ -124,7 +123,7 @@ const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
           </>
         )}
       </ContentTypeWrapper>
-    </>
+    </HeaderWrapper>
   );
 };
 

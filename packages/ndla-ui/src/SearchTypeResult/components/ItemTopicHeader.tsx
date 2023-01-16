@@ -19,7 +19,6 @@ const Wrapper = styled.div`
   padding: ${spacing.small} ${spacing.normal};
   position: relative;
   min-height: 0;
-  flex: 1;
 `;
 
 const Label = styled.div`
@@ -64,11 +63,11 @@ const TopicHeaderImage = styled.img`
   max-width: unset;
 `;
 
-type Props = {
+interface Props {
   children: ReactNode;
   image?: SearchItemType['item']['img'] | null;
   type?: ContentType;
-};
+}
 const ItemTopicHeader = ({ children, image, type }: Props) => {
   const { t } = useTranslation();
   return (

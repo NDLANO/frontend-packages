@@ -112,6 +112,7 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
           {filters.map((option: FilterOptionsType) => (
             <CategoryTypeButtonWrapper key={option.id}>
               <Button
+                aria-current={option.active}
                 size="xsmall"
                 borderShape="rounded"
                 greyLighter={!option.active}

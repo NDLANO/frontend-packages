@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 const frameStyle = css`
   ${mq.range({ from: breakpoints.tabletWide })} {
     padding: 40px 40px;
-    border: 2px solid #d1d6db;
+    border: 2px solid ${colors.brand.neutral7};
   }
   ${mq.range({ from: breakpoints.desktop })} {
     padding: 40px 80px;

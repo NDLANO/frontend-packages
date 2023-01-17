@@ -204,6 +204,14 @@ type Props = {
   heartButton?: (path: string) => ReactNode;
 };
 
+const NewIconWrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+`;
 const ResourceItem = ({
   id,
   contentTypeName,
@@ -247,37 +255,25 @@ const ResourceItem = ({
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === 'teacher' && (
           <Tooltip tooltip={t('article.access.onlyTeacher')}>
-            <div>
-              <HumanMaleBoard
-                id={accessId}
-                aria-label={t('article.access.onlyTeacher')}
-                className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-              />
-            </div>
+            <NewIconWrapper>
+              <HumanMaleBoard id={accessId} aria-label={t('article.access.onlyTeacher')} />
+            </NewIconWrapper>
           </Tooltip>
         )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <div>
-                  <Additional
-                    id={additionalId}
-                    className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-                    aria-label={contentTypeDescription}
-                  />
-                </div>
+                <NewIconWrapper>
+                  <Additional id={additionalId} aria-label={contentTypeDescription} />
+                </NewIconWrapper>
               </Tooltip>
             )}
             {!additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <div>
-                  <Core
-                    id={coreId}
-                    aria-label={contentTypeDescription}
-                    className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-                  />
-                </div>
+                <NewIconWrapper>
+                  <Core id={coreId} aria-label={contentTypeDescription} />
+                </NewIconWrapper>
               </Tooltip>
             )}
           </>

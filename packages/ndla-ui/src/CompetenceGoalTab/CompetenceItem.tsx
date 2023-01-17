@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { MenuBook } from '@ndla/icons/action';
-import { fonts } from '@ndla/core';
+import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import CompetenceGoalItem from './CompetenceGoalItem';
 import { CompetenceGoalsItemType } from '../types';
@@ -21,54 +21,43 @@ const GroupedGoalsWrapper = styled.div`
 const GroupedGoalsTitleWrapper = styled.div`
   border-bottom: 1px solid #d1d6db;
 `;
-const GroupedGoalsTitle = styled.h3`
-  ${fonts.sizes('22px', '32px')};
-  margin-bottom: 0;
+const GroupedGoalsTitle = styled.h2`
   display: flex;
-`;
-
-const GroupedGoalsTitleIcon = styled.span`
-  display: inline-flex;
   align-items: center;
-  margin-right: 8px;
+  gap: ${spacing.xsmall};
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
-const GoalsInfo = styled.h4`
-  ${fonts.sizes('22px', '32px')};
-  margin-top: 0;
-  font-weight: ${fonts.weight.normal};
+const GoalsInfo = styled.p`
+  margin: 0;
 `;
 
-const Goals = styled.ul`
+const GoalList = styled.ul`
   margin: 0;
   padding: 0;
   list-style-type: none;
   list-style-image: none;
 `;
 
-const CoreItem = styled.div`
-  margin: 16px 0 24px;
-`;
 const GroupedCoreItemsWrapper = styled.div`
   margin: 24px 0 52px;
 `;
 
-const CoreItemTitle = styled.h4`
-  font-size: 20px;
-`;
-const CoreItemText = styled.p`
-  font-size: 18px;
-  line-height: 32px;
-`;
-
 export type CompetenceTypeProps = 'competenceGoals' | 'coreElement';
 export type CompetenceGoals = {
-  title?: string;
+  title: string;
   elements: CompetenceGoalsItemType[];
 };
 export type CoreElementItems = {
   title?: string;
-  elements: any;
+  elements: {
+    id: string;
+    name: string;
+    text: string;
+  }[];
 };
 export type ListItemProp = {
   id: string;
@@ -89,59 +78,51 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
     case 'competenceGoals':
       return (
         <>
-          {groupedCompetenceGoals &&
-            groupedCompetenceGoals.map((group) => (
-              <GroupedGoalsWrapper key={group.title}>
-                <GroupedGoalsTitleWrapper>
-                  {group.title && (
-                    <GroupedGoalsTitle>
-                      <GroupedGoalsTitleIcon>
-                        <MenuBook style={{ width: '24px', height: '24px' }} />
-                      </GroupedGoalsTitleIcon>
-                      {group.title}
-                    </GroupedGoalsTitle>
-                  )}
+          {groupedCompetenceGoals?.map((group) => (
+            <GroupedGoalsWrapper key={group.title}>
+              <GroupedGoalsTitleWrapper>
+                <hgroup>
+                  <GroupedGoalsTitle>
+                    <MenuBook />
+                    {group.title}
+                  </GroupedGoalsTitle>
                   <GoalsInfo>{t('competenceGoals.competenceGoalTitle')}</GoalsInfo>
-                </GroupedGoalsTitleWrapper>
-                {group.elements.length > 0 && (
-                  <Goals>
-                    {group.elements.map((goal) => (
-                      <CompetenceGoalItem
-                        key={goal.id}
-                        id={goal.id}
-                        title={goal.title}
-                        goals={goal.goals}
-                        isOembed={isOembed}
-                      />
-                    ))}
-                  </Goals>
-                )}
-              </GroupedGoalsWrapper>
-            ))}
+                </hgroup>
+              </GroupedGoalsTitleWrapper>
+              {group.elements.length > 0 && (
+                <GoalList>
+                  {group.elements.map((goal) => (
+                    <CompetenceGoalItem
+                      key={goal.id}
+                      id={goal.id}
+                      title={goal.title}
+                      goals={goal.goals}
+                      isOembed={isOembed}
+                    />
+                  ))}
+                </GoalList>
+              )}
+            </GroupedGoalsWrapper>
+          ))}
         </>
       );
     case 'coreElement':
       return (
         <>
-          {groupedCoreElementItems &&
-            groupedCoreElementItems.map((group: any) => (
-              <GroupedCoreItemsWrapper key={group.title}>
-                {group.title && (
-                  <GroupedGoalsTitle>
-                    <GroupedGoalsTitleIcon>
-                      <MenuBook style={{ width: '24px', height: '24px' }} />
-                    </GroupedGoalsTitleIcon>
-                    {group.title}
-                  </GroupedGoalsTitle>
-                )}
-                {group.elements.map((coreItem: any) => (
-                  <CoreItem key={coreItem.id}>
-                    {coreItem.name && <CoreItemTitle>{coreItem.name}</CoreItemTitle>}
-                    {coreItem.text && <CoreItemText>{coreItem.text}</CoreItemText>}
-                  </CoreItem>
-                ))}
-              </GroupedCoreItemsWrapper>
-            ))}
+          {groupedCoreElementItems?.map((group) => (
+            <GroupedCoreItemsWrapper key={group.title}>
+              <GroupedGoalsTitle>
+                <MenuBook />
+                {group.title}
+              </GroupedGoalsTitle>
+              {group.elements.map((coreItem) => (
+                <div key={coreItem.id}>
+                  <h3>{coreItem.name}</h3>
+                  <p>{coreItem.text}</p>
+                </div>
+              ))}
+            </GroupedCoreItemsWrapper>
+          ))}
         </>
       );
     default:

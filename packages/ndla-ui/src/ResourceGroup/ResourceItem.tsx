@@ -74,7 +74,7 @@ const ListElement = styled.li<ListElementProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 1rem;
+  padding: ${spacing.small};
 
   ${(props) =>
     props.additional &&
@@ -108,48 +108,12 @@ const ListElement = styled.li<ListElementProps>`
   ${({ hidden }) => hidden && `display:none; opacity:0;`}
 `;
 
-const LinkStyle = css`
-  display: flex;
-  color: ${colors.brand.dark};
-  align-items: center;
-  width: auto;
-  padding: ${spacing.small};
-  box-shadow: none;
-  min-height: 70px;
-`;
-
-const ActiveWrapper = styled.div`
-  ${LinkStyle}
-`;
 const ResourceLink = styled(SafeLink)`
-  ${LinkStyle}
-  &:hover .c-content-type-badge {
-    width: 38px;
-    height: 38px;
-
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-    &.c-content-type-badge--subject-material,
-    &.c-content-type-badge--learning-path,
-    &.c-content-type-badge--source-material,
-    &.c-content-type-badge--external-learning-resources {
-      svg {
-        width: 26px;
-        height: 26px;
-      }
-    }
-  }
-`;
-
-const headingStyle = css`
   font-weight: ${fonts.weight.semibold};
-  transform: translateY(-1px);
-  text-transform: none;
-  letter-spacing: 0;
-  margin: 0;
-  display: inline;
+  box-shadow: none;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  color: ${colors.brand.dark};
   ${fonts.sizes('16px', '26px')};
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes('18px', '26px')};
@@ -157,21 +121,8 @@ const headingStyle = css`
   ${mq.range({ from: breakpoints.desktop })} {
     ${fonts.sizes('20px', '26px')};
   }
-
-  box-shadow: ${colors.link};
-
-  ${ResourceLink}:hover &,
-  ${ResourceLink}:focus & {
-    box-shadow: ${colors.linkHover};
-  }
-`;
-
-const activeHeadingStyle = css`
-  color: ${colors.brand.greyDark};
-  box-shadow: none;
-  small {
-    padding-left: ${spacing.small};
-    font-weight: ${fonts.weight.normal};
+  &:hover {
+    text-decoration: none;
   }
 `;
 
@@ -208,6 +159,40 @@ const ContentTypeName = styled.span`
   text-align: right;
 `;
 
+const InlineContainer = styled.div`
+  display: inline;
+`;
+
+const ResourceWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.xsmall};
+  align-items: center;
+  :hover {
+    .c-content-type-badge {
+      width: 38px;
+      height: 38px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+      &.c-content-type-badge--subject-material,
+      &.c-content-type-badge--learning-path,
+      &.c-content-type-badge--source-material,
+      &.c-content-type-badge--external-learning-resources {
+        svg {
+          width: 26px;
+          height: 26px;
+        }
+      }
+    }
+  }
+`;
+
+const CurrentSmall = styled.small`
+  margin-left: ${spacing.xsmall};
+`;
+
 type Props = {
   id: string;
   showContentTypeDescription?: boolean;
@@ -234,6 +219,10 @@ const ResourceItem = ({
   heartButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
+  const accessId = `${id}-teacher`;
+  const coreId = `${id}-core`;
+  const additionalId = `${id}-additional`;
+  const describedBy = `${coreId} ${additionalId} ${accessId}`;
   const hidden = additional ? !showAdditionalResources : false;
   return (
     <ListElement
@@ -243,32 +232,28 @@ const ResourceItem = ({
       active={active}
       additional={additional}
       extraBottomMargin={extraBottomMargin}>
-      {active ? (
-        <ActiveWrapper>
-          <IconWrapper>
-            <ContentTypeBadge type={contentType ?? ''} background border={false} />
-          </IconWrapper>
-          <span css={[headingStyle, activeHeadingStyle]}>
+      <ResourceWrapper>
+        <IconWrapper>
+          <ContentTypeBadge type={contentType ?? ''} background border={false} />
+        </IconWrapper>
+        <InlineContainer>
+          <ResourceLink to={path} aria-current={active ? 'page' : undefined} aria-describedby={describedBy}>
             {name}
-            <small>{t('resource.youAreHere')}</small>
-          </span>
-        </ActiveWrapper>
-      ) : (
-        <ResourceLink to={path}>
-          <IconWrapper>
-            <ContentTypeBadge type={contentType ?? ''} background border={false} />
-          </IconWrapper>
-          <span css={headingStyle}>{name}</span>
-        </ResourceLink>
-      )}
+          </ResourceLink>
+          {active ? <CurrentSmall>{t('resource.youAreHere')}</CurrentSmall> : undefined}
+        </InlineContainer>
+      </ResourceWrapper>
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === 'teacher' && (
           <Tooltip tooltip={t('article.access.onlyTeacher')}>
-            <HumanMaleBoard
-              className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-              aria-label={t('article.access.onlyTeacher')}
-            />
+            <div>
+              <HumanMaleBoard
+                id={accessId}
+                aria-label={t('article.access.onlyTeacher')}
+                className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+              />
+            </div>
           </Tooltip>
         )}
         {showAdditionalResources && contentTypeDescription && (
@@ -277,6 +262,7 @@ const ResourceItem = ({
               <Tooltip tooltip={contentTypeDescription}>
                 <div>
                   <Additional
+                    id={additionalId}
                     className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
                     aria-label={contentTypeDescription}
                   />
@@ -287,8 +273,9 @@ const ResourceItem = ({
               <Tooltip tooltip={contentTypeDescription}>
                 <div>
                   <Core
-                    className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+                    id={coreId}
                     aria-label={contentTypeDescription}
+                    className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
                   />
                 </div>
               </Tooltip>

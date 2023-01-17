@@ -32,6 +32,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: stretch;
   height: 400px;
+  gap: ${spacing.small};
   border-radius: 5px;
   border: 1px solid ${colors.brand.neutral7};
 
@@ -59,9 +60,7 @@ const ItemTitle = styled.h3<ItemTypeProps>`
 `;
 
 const StyledLink = styled(SafeLink)`
-  display: block;
   box-shadow: none;
-  margin-top: ${spacing.small};
   color: ${colors.brand.primary};
 `;
 
@@ -88,7 +87,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   gap: ${spacing.small};
   overflow: hidden;
-  padding: 0 ${spacing.normal} ${spacing.small};
+  padding: 0 ${spacing.normal};
 `;
 
 export interface SearchItemProps {

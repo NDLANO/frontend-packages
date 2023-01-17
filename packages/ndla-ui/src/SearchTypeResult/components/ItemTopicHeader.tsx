@@ -26,7 +26,7 @@ const Label = styled.div`
   height: 26px;
   display: flex;
   align-items: center;
-  margin-top: ${spacing.small};
+  margin: ${spacing.small} 0;
 
   .c-content-type-badge {
     width: 26px;

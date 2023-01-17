@@ -69,7 +69,6 @@ const ItemText = styled.div<ItemTypeProps>`
   ${fonts.sizes('16px', '24px')};
   word-break: break-word;
   overflow: hidden;
-  text-overflow: ellipsis;
   ${(props) =>
     props.isTopic &&
     `
@@ -88,7 +87,6 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   gap: ${spacing.small};
   overflow: hidden;
-  margin-top: auto;
   padding: 0 ${spacing.normal} ${spacing.small};
 `;
 

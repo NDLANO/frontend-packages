@@ -23,10 +23,11 @@ const StyledMovieTags = styled.span`
 `;
 
 interface Props {
+  id: string;
   movieResourceTypes: MovieResourceType[];
   resourceTypes: MovieResourceType[];
 }
-const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }: Props) => {
+const FilmContentCardTags = ({ movieResourceTypes, resourceTypes, id }: Props) => {
   const resources: Record<string, boolean> = {};
   movieResourceTypes.forEach((movieResourceType) => {
     const resource = resourceTypes.find((resourceType) => resourceType.id === movieResourceType.id);
@@ -35,7 +36,7 @@ const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }: Props) => {
     }
   });
   return (
-    <StyledWrapperDiv>
+    <StyledWrapperDiv id={id}>
       {Object.keys(resources).map((resourceName) => (
         <StyledMovieTags key={resourceName}>{resourceName}</StyledMovieTags>
       ))}

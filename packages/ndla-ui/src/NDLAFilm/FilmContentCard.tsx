@@ -24,41 +24,46 @@ const FilmContentCard = ({
   hideTags = false,
 }: Props) => {
   let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
+  const contentTypeId = `content-type-${id}`;
   if (resizeThumbnailImages && metaImage) {
     backgroundImage += '?width=480';
   }
 
   return (
-    <StyledSlideWrapper key={id} columnWidth={columnWidth} style={{ marginRight: `${distanceBetweenItems}px` }}>
-      <SafeLink to={path}>
-        <StyledImage
-          role="img"
-          columnWidth={columnWidth}
-          aria-label={(metaImage && metaImage.alt) || ''}
-          style={{
-            backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(600)})`,
-          }}>
-          {movieResourceTypes && !hideTags && (
-            <FilmContentCardTags movieResourceTypes={movieResourceTypes} resourceTypes={resourceTypes} />
-          )}
-        </StyledImage>
-        <StyledMovieTitle>{title}</StyledMovieTitle>
-      </SafeLink>
-    </StyledSlideWrapper>
+    <StyledSafeLink
+      to={path}
+      aria-describedby={contentTypeId}
+      key={id}
+      columnWidth={columnWidth}
+      style={{ marginRight: `${distanceBetweenItems}px` }}>
+      <StyledImage
+        role="img"
+        columnWidth={columnWidth}
+        style={{
+          backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(600)})`,
+        }}>
+        {movieResourceTypes && !hideTags && (
+          <FilmContentCardTags
+            id={contentTypeId}
+            movieResourceTypes={movieResourceTypes}
+            resourceTypes={resourceTypes}
+          />
+        )}
+      </StyledImage>
+      <StyledMovieTitle>{title}</StyledMovieTitle>
+    </StyledSafeLink>
   );
 };
 
-const StyledMovieTitle = styled.h2`
+const StyledMovieTitle = styled.p`
   ${fonts.sizes('14px', '20px')};
   font-weight: ${fonts.weight.semibold};
   color: #fff;
-  margin: ${spacing.xsmall} 0 ${spacing.normal};
-  min-height: ${spacing.large};
+  margin: 0;
   @media (min-width: ${breakpoints.mobileWide}) {
     ${fonts.sizes('16px', '22px')};
   }
   @media (min-width: ${breakpoints.tablet}) {
-    margin: ${spacing.small} 0;
     ${fonts.sizes('18px', '24px')};
   }
 `;
@@ -93,11 +98,18 @@ interface StyledSlideWrapperProps {
   columnWidth: number;
 }
 
-const StyledSlideWrapper = styled.div<StyledSlideWrapperProps>`
+const shouldForwardProp = (p: string) => p !== 'columnWidth';
+
+const StyledSafeLink = styled(SafeLink, { shouldForwardProp })<StyledSlideWrapperProps>`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
   width: ${(props) => props.columnWidth}px;
   color: #fff;
   box-shadow: none;
   &:hover,
+  &:focus-within,
+  &:active,
   &:focus {
     ${StyledMovieTitle} {
       text-decoration: underline;

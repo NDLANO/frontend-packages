@@ -772,6 +772,7 @@ const messages = {
     copyCode: 'Copy code',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Scroll backwards',
     slideForwardsLabel: 'Scroll forwards',
     movieMatchInCategory: 'Matches',
@@ -818,6 +819,7 @@ const messages = {
       shortFilm: 'Short film',
       all: 'All movies A-Z',
     },
+    allMovieGroupTitleLabel: 'Movies starting with {{letter}}',
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:

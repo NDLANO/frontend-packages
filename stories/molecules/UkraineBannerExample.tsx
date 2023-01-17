@@ -5,9 +5,9 @@ const UkraineBannerExample = () => {
   return (
     <BannerCard
       link="/"
-      title="Lær om det norske samfunn - på ukrainsk"
-      content="Дізнайтеся про норвезьке суспільство – українською"
-      linkText="Learn about Norwegian society - in Ukrainian"
+      title={{ title: 'Lær om det norske samfunn - på ukrainsk', lang: 'nb' }}
+      content={{ content: 'Дізнайтеся про норвезьке суспільство – українською', lang: 'uk' }}
+      linkText={{ text: 'Learn about Norwegian society - in Ukrainian', lang: 'en' }}
       image={{
         altText: 'Ukrainian flag',
         imageSrc:

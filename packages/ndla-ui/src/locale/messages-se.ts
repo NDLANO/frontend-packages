@@ -266,6 +266,9 @@ const messages = {
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjernet fra favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke et fag må du logge inn på Min NDLA. Du finner faget øverst på denne siden etter at du har logget inn.',
     shows: 'Viser',
   },
   topicPage: {
@@ -474,7 +477,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Geavat filtara',
     closeCompentenceGoalsFilter: 'Govčča filtara',
     competenceGoalsNarrowBackButton: 'Ruovttoluotta',
-    competenceGoalResourceSearchText: 'Oza buot resurssaid mat heivejit dán gealbomihttomearrái',
+    competenceGoalResourceSearchText: 'Vis ressursar til kompetansemål {{goal}}',
     competenceGoalShowExtra: 'Čájet oahppoplána doarjaga',
     competenceGoalCloseExtra: 'Čiega oahppoplána doarjaga',
     competenceCoreLabel: 'Guovddášelemeanta',
@@ -485,9 +488,10 @@ const messages = {
     competenceSubjectSearchText: 'Mana fágasiidui',
     competenceGoalClose: 'Govčča',
     competenceGoalTitle: 'Mihttun lea ahte oahppi galgá máhttit:',
-    competenceTabLK06label: 'Gealbomihttomearri (ML06)',
-    competenceTabLK20label: 'Gealbomihttomearri (ML20)',
+    competenceTabLK20label: 'Gealbomihttomearri',
+    competenceTabLK20Tooltip: 'Vis kompetansemål',
     competenceTabCorelabel: 'Guovddášelemeanta',
+    competenceTabCoreTooltip: 'Vis kjerneelementer',
     competenceGoalItem: {
       title: 'Gealbomihttomearit ja árvvoštallan',
     },

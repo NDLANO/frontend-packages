@@ -75,9 +75,9 @@ type ImageProps = {
 type BannerProps = {
   link: string;
   image: ImageProps;
-  title: string;
-  content: string;
-  linkText: string;
+  title: { title: string; lang?: string };
+  content: { content: string; lang?: string };
+  linkText: { text: string; lang?: string };
 };
 export const BannerCard = ({ link, title, content, linkText, image }: BannerProps) => {
   return (
@@ -86,10 +86,10 @@ export const BannerCard = ({ link, title, content, linkText, image }: BannerProp
         <StyledImage alt={image.altText} src={image.imageSrc} />
       </ImageWrapper>
       <TextWrapper>
-        <TitleText>{title}</TitleText>
-        <ContentText>{content}</ContentText>
-        <LinkText target="_self" to={link}>
-          {linkText}
+        <TitleText lang={title.lang}>{title.title}</TitleText>
+        <ContentText lang={content.lang}>{content.content}</ContentText>
+        <LinkText target="_self" to={link} lang={linkText.lang}>
+          {linkText.text}
         </LinkText>
       </TextWrapper>
     </BannerWrapper>

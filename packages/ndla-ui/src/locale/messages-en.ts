@@ -267,6 +267,9 @@ const messages = {
     removeFavorite: 'Remove favorite subject',
     removeConfirmed: '{{subject}} is removed from your favorite subjects',
     addConfirmed: '{{subject}} is added to your favorite subjects',
+    subjectFavoritePitch: 'Do you want to favorite this subject?',
+    subjectFavoriteGuide:
+      'To favorite a subject you must log in to My NDLA. You will find the subject on the top of this page after logging in.',
     shows: 'Shows',
   },
   topicPage: {
@@ -439,7 +442,7 @@ const messages = {
   article: {
     edition: 'Edition',
     publisher: 'Publisher',
-    lastUpdated: 'Last updated',
+    lastUpdated: 'Last revised date',
     closeLabel: 'Close',
     useContent: 'Cite or use',
     additionalLabel: 'Additional content',
@@ -474,7 +477,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Use filter',
     closeCompentenceGoalsFilter: 'Close filter',
     competenceGoalsNarrowBackButton: 'Go back',
-    competenceGoalResourceSearchText: 'Search all resources appropriate to this goal',
+    competenceGoalResourceSearchText: 'View resources to competence goal {{goal}}',
     competenceGoalShowExtra: 'Show',
     competenceGoalCloseExtra: 'Hide',
     competenceCoreLabel: 'Core element',
@@ -485,9 +488,10 @@ const messages = {
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
     competenceGoalTitle: 'The pupil is expected to be able to:',
-    competenceTabLK06label: 'Competence goal (LK06)',
-    competenceTabLK20label: 'Competence goal (LK20)',
+    competenceTabLK20label: 'Competence goal',
+    competenceTabLK20Tooltip: 'Show competence goals',
     competenceTabCorelabel: 'Core element',
+    competenceTabCoreTooltip: 'Show core elements',
     competenceGoalItem: {
       title: 'Competence goals and assessment',
     },

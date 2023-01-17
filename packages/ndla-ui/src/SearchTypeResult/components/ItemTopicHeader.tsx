@@ -18,7 +18,6 @@ import { ContentType } from '../SearchTypeResult';
 const Wrapper = styled.div`
   padding: ${spacing.small} ${spacing.normal};
   position: relative;
-  min-height: 0;
 `;
 
 const Label = styled.div`

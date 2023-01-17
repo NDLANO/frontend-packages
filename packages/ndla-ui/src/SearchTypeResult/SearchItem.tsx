@@ -28,8 +28,8 @@ interface ItemTypeProps {
 const Container = styled.div`
   overflow: hidden;
   cursor: pointer;
-  display: grid;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
   height: 400px;
   border-radius: 5px;
@@ -80,6 +80,7 @@ const ContextWrapper = styled.div`
   align-self: flex-start;
   margin-top: auto;
   background: white;
+  padding: 0 ${spacing.normal} ${spacing.small};
 `;
 
 const ContentWrapper = styled.div`
@@ -139,10 +140,10 @@ const SearchItem = ({ item, type }: SearchItemType) => {
           </>
         )}
         <ItemText isTopic={isTopic}>{parse(ingress)}</ItemText>
-        <ContextWrapper>
-          {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
-        </ContextWrapper>
       </ContentWrapper>
+      <ContextWrapper>
+        {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
+      </ContextWrapper>
     </Container>
   );
 };

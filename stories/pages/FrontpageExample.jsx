@@ -56,7 +56,7 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
 
   return (
     <>
-      <FrontpageHeader locale="nb" >
+      <FrontpageHeader locale="nb">
         <FrontpageSearch
           locale="nb"
           searchFieldValue={searchFieldValue}

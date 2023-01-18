@@ -12,9 +12,14 @@ import { spacing } from '@ndla/core';
 
 export const slideWrapperCSS = css`
   display: flex;
-  overflow-x: scroll;
-  scrollbar-width: none;
   position: relative;
+  overflow-x: scroll;
+  padding: ${spacing.xxsmall} 0;
+
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 `;
 
 interface SlideContentProps {

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { cloneElement, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
+import React, { cloneElement, ReactElement, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { breakpoints, mq } from '@ndla/core';
@@ -21,7 +21,7 @@ export interface CalculatedProps {
 }
 
 interface Props extends CalculatedProps {
-  items: ReactElement<{ id: string | number }>[];
+  items: ReactElement[];
   leftButton?: ReactElement;
   rightButton?: ReactElement;
 }

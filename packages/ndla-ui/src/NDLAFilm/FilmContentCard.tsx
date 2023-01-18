@@ -33,7 +33,6 @@ const FilmContentCard = ({
     <StyledSafeLink
       to={path}
       aria-describedby={contentTypeId}
-      key={id}
       columnWidth={columnWidth}
       style={{ marginRight: `${distanceBetweenItems}px` }}>
       <StyledImage
@@ -55,11 +54,10 @@ const FilmContentCard = ({
   );
 };
 
-const StyledMovieTitle = styled.p`
+const StyledMovieTitle = styled.span`
   ${fonts.sizes('14px', '20px')};
   font-weight: ${fonts.weight.semibold};
   color: #fff;
-  margin: 0;
   @media (min-width: ${breakpoints.mobileWide}) {
     ${fonts.sizes('16px', '22px')};
   }

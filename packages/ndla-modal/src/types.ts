@@ -11,7 +11,7 @@ import { DialogContentProps } from '@reach/dialog';
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 import { animations } from './animations';
 
-export type ModalSize = 'xxsmall' | 'xsmall' | 'small' | 'normal' | 'large' | 'full';
+export type ModalSize = 'xsmall' | 'small' | 'normal' | 'large' | 'full';
 export type ModalSizeType = ModalSize | { width: ModalSize; height: ModalSize };
 export type ModalPosition = 'top' | 'center' | 'bottom' | 'left' | 'right';
 export type ModalMargin = 'none' | 'small';

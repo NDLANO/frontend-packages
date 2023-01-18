@@ -82,10 +82,10 @@ export const ArticleIntroduction = ({
   },
 }: ArticleIntroductionProps) => {
   if (isString(children)) {
-    return <p className="article_introduction">{parse(renderMarkdown(children))}</p>;
+    return <div className="article_introduction">{parse(renderMarkdown(children))}</div>;
   }
   if (children) {
-    return <p className="article_introduction">{children}</p>;
+    return <div className="article_introduction">{children}</div>;
   }
   return null;
 };
@@ -119,19 +119,19 @@ type Props = {
   article: ArticleType;
   icon?: ReactNode;
   licenseBox?: ReactNode;
+  competenceGoalsLoading?: boolean;
   modifier?: string;
   children?: ReactNode;
   messages: Messages;
   locale: Locale;
   messageBoxLinks?: [];
+  copyText?: string;
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | ReactNode
     | null;
-  competenceGoalTypes?: string[];
   id: string;
   renderMarkdown: (text: string) => string;
-  copyPageUrlLink?: string;
   printUrl?: string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
@@ -157,8 +157,7 @@ export const Article = ({
   messageBoxLinks,
   children,
   competenceGoals,
-  competenceGoalTypes,
-  copyPageUrlLink,
+  competenceGoalsLoading,
   id,
   locale,
   notions,
@@ -166,6 +165,7 @@ export const Article = ({
   renderMarkdown,
   accessMessage,
   heartButton,
+  copyText,
 }: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
@@ -214,7 +214,7 @@ export const Article = ({
               <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
             </MSGboxWrapper>
           )}
-          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
+          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalsLoading={competenceGoalsLoading}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
 
             <ArticleTitle icon={icon} label={messages.label}>
@@ -237,7 +237,7 @@ export const Article = ({
         <LayoutItem layout="center">
           {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
           <ArticleByline
-            copyPageUrlLink={copyPageUrlLink}
+            copySourceReference={copyText}
             authors={authors}
             suppliers={rightsholders}
             published={published}

@@ -14,11 +14,7 @@ const Markdown = () => (
       Markdown er et språk som brukes til å formatere tekst. Nedenfor er en tabell som viser den mest nyttige syntaksen.
       Fullstendig syntaks finnes <a href="https://commonmark.org/help/">her</a>.
     </p>
-    <Table
-      messages={{
-        dialogCloseButton: 'Lukk',
-        expandButtonLabel: 'Vis stor versjon',
-      }}>
+    <Table>
       <thead>
         <tr>
           <th>Syntaks</th>

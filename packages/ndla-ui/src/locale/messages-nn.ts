@@ -110,12 +110,13 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Kommande',
-    [subjectTypes.RESOURCE_COLLECTION]: 'Andre ressursar',
+    [subjectCategories.OTHER]: 'Andre ressursar',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamlingar',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafag',
-    [subjectTypes.SUBJECT]: 'Fag',
     [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
+    [subjectTypes.SUBJECT]: 'Fag',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {{query}}',
@@ -251,8 +252,24 @@ const messages = {
     archived: 'Dette er eit utgått fag som ikkje blir halde ved like.',
   },
   subjectsPage: {
+    filterSubjects: 'Filtrer fag',
+    scrollToGroup: 'Hopp til gruppe',
+    goToTop: 'Gå til toppen',
+    alphabeticSort: 'Fag gruppert alfabetisk',
+    subjectGroup: 'Gruppe "{{ category }}"',
+    allSubjects: 'Alle fag',
+    myFavoriteSubjects: 'Favorittfaga mine',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
     chooseSubject: 'Vel fag',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    removeConfirmed: '{{subject}} er fjerna frå favorittfag',
+    addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke eit fag må du logge inn på Min NDLA. Du finn faget øverst på denne sida etter at du har logga inn.',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emneskildringa.',
@@ -288,6 +305,7 @@ const messages = {
         name: 'Følg oss',
       },
     },
+    errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
     film: {
       header: 'NDLA film',
       text: 'NDLA film er ei teneste i samarbeid med Norgesfilm. Denne tenesta lar deg sjå ei rekkje spelefilmar, kortfilmar, dokumentarar og seriar. Du kan òg sjå undervisningsfilm og filmklipp. Velkomen inn i filmen si verd!',
@@ -295,7 +313,6 @@ const messages = {
       linkLabel: 'Gå til NDLA film',
     },
     blog: 'Frå bloggen',
-    errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
   toolboxPage: {
     introduction:
@@ -326,12 +343,14 @@ const messages = {
       },
     },
     menu: {
+      button: 'Meny',
+      goToMainMenu: 'Gå til hovedmeny',
       close: 'Lukk',
       goTo: 'Gå til',
       search: 'Søk',
       toFrontpage: 'Til framsida',
       subjectOverview: 'Alle fag',
-      title: 'Innhald',
+      title: 'Åpne meny',
       modalLabel: 'Vel innhald',
       subjectPage: 'Fagframside',
       backToSubjectFrontpage: 'Tilbake til fagframsida',
@@ -353,7 +372,6 @@ const messages = {
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]: 'Vis færre oppgåver og aktivitetar',
-        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstiar',
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstiar',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressursar',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kjeldemateriale',
@@ -379,8 +397,8 @@ const messages = {
     error: 'Orsak, ein del av innhaldet kunne ikkje visast.',
     noCoreResourcesAvailableUnspecific: 'Det er ikkje noko kjernestoff tilgjengeleg.',
     noCoreResourcesAvailable: 'Det er ikkje noko kjernestoff tilgjengeleg for {{name}}.',
-    toggleFilterLabel: 'Tilleggsressursar',
     activateAdditionalResources: 'Tilleggsressursar',
+    toggleFilterLabel: 'Tilleggsressursar',
     label: 'Læringsressursar',
     allResources: 'Ressursar',
     shortcutButtonText: 'Lærestoff',
@@ -421,7 +439,7 @@ const messages = {
       'Utgåtte fag blir det ikkje undervist i lenger, men det kan framleis vere mogleg å ta eksamen i faget som privatist.',
   },
   article: {
-    lastUpdated: 'Sist oppdatert',
+    lastUpdated: 'Sist faglig oppdatert',
     edition: 'Utgåve',
     publisher: 'Utgjevar',
     closeLabel: 'Lukk',
@@ -458,7 +476,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
-    competenceGoalResourceSearchText: 'Søk på alle ressursar som passar til dette kompetansemålet',
+    competenceGoalResourceSearchText: 'Vis ressursar til kompetansemål {{goal}}',
     competenceGoalShowExtra: 'Vis støtte til læreplanen',
     competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
     competenceCoreLabel: 'Kjerneelement',
@@ -469,9 +487,10 @@ const messages = {
     competenceSubjectSearchText: 'Gå til fagsiden',
     competenceGoalClose: 'Lukk',
     competenceGoalTitle: 'Målet er at eleven skal kunne:',
-    competenceTabLK06label: 'Kompetansemål (LK06)',
-    competenceTabLK20label: 'Kompetansemål (LK20)',
+    competenceTabLK20label: 'Kompetansemål',
+    competenceTabLK20Tooltip: 'Vis kompetansemål',
     competenceTabCorelabel: 'Kjerneelement',
+    competenceTabCoreTooltip: 'Vis kjerneelementar',
     competenceGoalItem: {
       title: 'Kompetansemål og vurdering',
     },
@@ -615,13 +634,15 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'Om NDLA',
+    socialMedia: 'Sosiale media',
     selectLanguage: 'Vel språk (language): ',
     vision: 'Saman skapar vi framtidas læring',
-    footerLinksHeader: 'Andre NDLA-nettstader',
-    footerInfo: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
-    footerEditiorInChief: 'Ansvarleg redaktør: ',
-    footerManagingEditor: 'Utgåveansvarleg: ',
-    footerPrivacyLink: 'Personvernerklæring og cookies',
+    linksHeader: 'Andre NDLA-nettstader',
+    info: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
+    editorInChief: 'Ansvarleg redaktør: ',
+    managingEditor: 'Utgåveansvarleg: ',
+    privacyLink: 'Personvernerklæring',
+    cookiesLink: 'Erklæring om informasjonskapslar',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',
@@ -842,6 +863,7 @@ const messages = {
     searching: 'Søkjer...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
+    selected: '{{count}} valgte',
   },
   blogPosts: {
     blog1: {
@@ -1084,6 +1106,7 @@ const messages = {
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.',
     myFolders: 'Mine mapper',
     myTags: 'Mine emneknaggar',
+    mySubjects: 'Mine fag',
     newFolder: 'Ny mappe',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
@@ -1184,6 +1207,9 @@ const messages = {
     search: 'Søk',
     contact: 'Kontakt',
     help: 'Hjelp',
+  },
+  programme: {
+    grades: 'Trinn',
   },
 };
 

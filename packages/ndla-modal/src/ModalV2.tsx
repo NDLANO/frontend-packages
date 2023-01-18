@@ -10,10 +10,10 @@ import React, { cloneElement, MouseEvent, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import { css, SerializedStyles } from '@emotion/react';
 import { DialogContent, DialogOverlay } from '@reach/dialog';
-import { breakpoints, mq } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import { BaseProps, ModalAnimation, ModalMargin, ModalPosition, ModalSizeType } from './types';
 import { animations } from './animations';
-import { margins, sizeCombos, sizes } from './modalStyles';
+import { heights, margins, sizeCombos, sizes, widths } from './modalStyles';
 
 interface DialogProps {
   size?: ModalSizeType;
@@ -50,6 +50,7 @@ const StyledDialogOverlay = styled(DialogOverlay, { shouldForwardProp: forwardOv
 interface StyledDialogContentProps {
   position: ModalPosition;
   margin: string;
+  size: ModalSizeType;
   dialogSize: SerializedStyles;
   animationDuration: number;
   animationName: string;
@@ -78,13 +79,18 @@ const opposite = {
   bottom: 'top',
 };
 
+const getSize = (sizeType: ModalSizeType, type: 'width' | 'height') => {
+  return typeof sizeType === 'string' ? sizeType : sizeType[type];
+};
+
 const StyledDialogContent = styled(DialogContent, { shouldForwardProp: forwardContent })<StyledDialogContentProps>`
   display: flex;
   flex-direction: column;
   position: fixed;
   overflow-y: auto;
   background: white;
-  max-height: 100%;
+  max-height: 85%;
+  max-width: 95%;
   ${(p) => p.position !== 'center' && `${p.position}: ${p.margin}`};
   ${(p) => p.position !== 'center' && `${opposite[p.position]}: unset`};
   animation-name: ${(p) => p.animationName};
@@ -101,6 +107,10 @@ const StyledDialogContent = styled(DialogContent, { shouldForwardProp: forwardCo
   ${(p) =>
     p.expands &&
     css`
+      width: unset;
+      height: unset;
+      min-width: ${widths[getSize(p.size, 'width')]};
+      min-height: ${heights[getSize(p.size, 'height')]};
       max-width: 100%;
       max-height: 100%;
     `};
@@ -190,6 +200,7 @@ const ModalV2 = ({
           margin={margins[modalMargin]}
           expands={expands}
           dialogSize={dialogSize}
+          size={size}
           {...rest}>
           {children(closeModal)}
         </StyledDialogContent>

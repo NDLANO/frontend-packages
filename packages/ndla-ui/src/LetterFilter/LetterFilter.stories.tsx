@@ -9,7 +9,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import React from 'react';
-import { defaultParameters } from '../../../designmanual/stories/defaults';
+import { defaultParameters } from '../../../../stories/defaults';
 import LetterFilter from './LetterFilter';
 
 export default {

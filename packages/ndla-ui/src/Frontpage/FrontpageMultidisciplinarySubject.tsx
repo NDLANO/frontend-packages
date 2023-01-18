@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import SectionHeading from '../SectionHeading';
 import ComponentCursor from '../ComponentCursor';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
+import { HeadingLevel } from '../types';
 
 export const StyledSection = styled.section`
   position: relative;
@@ -72,16 +73,19 @@ const Topic = styled.div`
 type Props = {
   url: string;
   topics?: { url: string; title: string; id: string }[];
+  headingLevel: HeadingLevel;
 };
 
-const FrontpageMultidisciplinarySubject = ({ url, topics }: Props) => {
+const FrontpageMultidisciplinarySubject = ({ url, topics, headingLevel }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledSection>
       <ComponentCursor variant="left" text={t('frontpageMultidisciplinarySubject.cursorText')} />
       <Wrapper>
         <Content>
-          <SectionHeading large>{t('frontpageMultidisciplinarySubject.heading')}</SectionHeading>
+          <SectionHeading headingLevel={headingLevel} large>
+            {t('frontpageMultidisciplinarySubject.heading')}
+          </SectionHeading>
           {topics ? (
             <Topics>
               {topics.map((topic) => {
@@ -97,7 +101,7 @@ const FrontpageMultidisciplinarySubject = ({ url, topics }: Props) => {
         </Content>
       </Wrapper>
       <TargetItem className="o-text-link__wrapper o-text-link__wrapper">
-        <SafeLinkButton to={url} buttonSize="medium" borderShape="rounded">
+        <SafeLinkButton to={url} size="medium" shape="pill">
           {t('frontpageMultidisciplinarySubject.linkText')}
         </SafeLinkButton>
       </TargetItem>

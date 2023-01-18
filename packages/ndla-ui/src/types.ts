@@ -108,9 +108,9 @@ export type CompetenceGoalsItemType = {
   id: string;
   title: string;
   goals: {
+    id: string;
     text: string;
     url?: string;
-    type: 'LK06' | 'LK20';
   }[];
   selected?: boolean;
   isOembed?: boolean;
@@ -120,3 +120,5 @@ export type NotionMedia = {
   type: 'video' | 'other';
   element: ReactNode;
 };
+
+export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';

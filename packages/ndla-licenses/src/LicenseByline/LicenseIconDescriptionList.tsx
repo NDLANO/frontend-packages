@@ -8,12 +8,11 @@
 
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
-import PropTypes from 'prop-types';
+import { Popover } from '@ndla/tooltip';
 import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
-import { StyledLicenseIconButton, StyledLicenseIconItem } from './LicenseIconList';
+import { StyledLicenseIcon, StyledListItem } from './LicenseIconList';
 import StyledLicenseIconList from './StyledLicenseIconList';
 
 const StyledLicenseLabel = styled.div`
@@ -34,22 +33,17 @@ const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <StyledLicenseIconItem>
-      <Tooltip tooltip={description}>
-        <IconLineWrapper>
-          <StyledLicenseIconButton>
+    <StyledListItem>
+      <IconLineWrapper>
+        <Popover popover={description}>
+          <StyledLicenseIcon>
             <LicenseIcon licenseRight={licenseRight} description={description} />
-          </StyledLicenseIconButton>
-          <StyledLicenseLabel>{description}</StyledLicenseLabel>
-        </IconLineWrapper>
-      </Tooltip>
-    </StyledLicenseIconItem>
+          </StyledLicenseIcon>
+        </Popover>
+        <StyledLicenseLabel>{description}</StyledLicenseLabel>
+      </IconLineWrapper>
+    </StyledListItem>
   );
-};
-
-LicenseIconItem.propTypes = {
-  licenseRight: PropTypes.string.isRequired,
-  locale: PropTypes.string,
 };
 
 interface LicenseIconDescriptionListProps {
@@ -66,12 +60,5 @@ const LicenseIconDescriptionList = ({ licenseRights, locale, color, highlightCC 
     ))}
   </StyledLicenseIconList>
 );
-
-LicenseIconDescriptionList.propTypes = {
-  licenseRights: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  highlightCC: PropTypes.bool,
-  color: PropTypes.string,
-  locale: PropTypes.string,
-};
 
 export default LicenseIconDescriptionList;

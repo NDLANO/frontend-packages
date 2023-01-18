@@ -32,10 +32,6 @@ const StyledSection = styled.section`
   }
 `;
 
-const StyledIconButton = styled(IconButtonV2)`
-  margin-top: 50px;
-`;
-
 const FilmMovieList = ({
   name,
   movies = [],
@@ -49,14 +45,14 @@ const FilmMovieList = ({
     <StyledHeadingH2 marginLeft={autoSizedProps.margin}>{name}</StyledHeadingH2>
     <Carousel
       leftButton={
-        <StyledIconButton aria-label={slideBackwardsLabel}>
+        <IconButtonV2 aria-label={slideBackwardsLabel}>
           <ChevronLeft />
-        </StyledIconButton>
+        </IconButtonV2>
       }
       rightButton={
-        <StyledIconButton aria-label={slideForwardsLabel}>
+        <IconButtonV2 aria-label={slideForwardsLabel}>
           <ChevronRight />
-        </StyledIconButton>
+        </IconButtonV2>
       }
       items={movies.map((movie) => (
         <FilmContentCard

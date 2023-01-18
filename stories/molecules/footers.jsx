@@ -18,12 +18,9 @@ const FooterExample = ({ inverted, t, hideLanguageSelector, i18n, isAuthenticate
       languageSelector={
         !hideLanguageSelector && (
           <LanguageSelector
-            alwaysVisible
-            outline
-            center
             inverted={inverted}
-            options={i18n.options.supportedLanguages}
-            currentLanguage={i18n.language}
+            locales={i18n.options.supportedLngs}
+            onSelect={i18n.changeLanguage}
           />
         )
       }

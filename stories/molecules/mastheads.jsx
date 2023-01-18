@@ -27,7 +27,7 @@ import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
-import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
+import { contentTypeResults,  } from '../../dummydata';
 
 import { feideUserLaerer } from './feideUser';
 
@@ -168,7 +168,7 @@ class MastheadWithTopicMenu extends Component {
         </MastheadItem>
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
-            <LanguageSelector inverted={ndlaFilm} options={dummyLanguageOptions} currentLanguage={i18n.language} />
+            <LanguageSelector inverted={ndlaFilm} locales={i18n.options.supportedLngs} onSelect={(lang) => i18n.changeLanguage(lang)}/>
           </DisplayOnPageYOffset>
           <MastheadAuthModal inverted={ndlaFilm} {...authedProps} />
           {this.renderSearchButtonView(true, ndlaFilm)}

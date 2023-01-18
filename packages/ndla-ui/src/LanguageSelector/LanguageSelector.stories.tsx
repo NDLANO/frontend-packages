@@ -1,12 +1,12 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { LanguageSelectorV2 } from '@ndla/ui';
+import { LanguageSelector } from '@ndla/ui';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
-import { defaultParameters } from '../../../designmanual/stories/defaults';
+import { defaultParameters } from '../../../../stories/defaults';
 export default {
   title: 'Enkle komponenter/LanguageSelector',
-  component: LanguageSelectorV2,
+  component: LanguageSelector,
   parameters: {
     ...defaultParameters,
   },
@@ -16,7 +16,7 @@ export default {
     // eslint-disable-next-line no-console
     onSelect: (locale) => console.log(`selected ${locale}`),
   },
-} as ComponentMeta<typeof LanguageSelectorV2>;
+} as ComponentMeta<typeof LanguageSelector>;
 
 interface ButtonWrapperProps {
   inverted?: boolean;
@@ -29,10 +29,10 @@ const ButtonWrapper = styled('div', { shouldForwardProp })<ButtonWrapperProps>`
   padding: ${spacing.normal};
 `;
 
-export const LanguageSelectorStory: ComponentStory<typeof LanguageSelectorV2> = (args) => {
+export const LanguageSelectorStory: ComponentStory<typeof LanguageSelector> = (args) => {
   return (
     <ButtonWrapper inverted={args.inverted}>
-      <LanguageSelectorV2 {...args} />
+      <LanguageSelector {...args} />
     </ButtonWrapper>
   );
 };

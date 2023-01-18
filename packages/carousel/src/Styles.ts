@@ -35,7 +35,7 @@ export const StyledSlideContent = styled.div<SlideContentProps>`
 `;
 
 export const ButtonWrapper = styled.div`
-  display: block;
+  display: none;
   position: absolute;
   top: 30%;
   transform: translateY(-20%);

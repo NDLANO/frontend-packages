@@ -39,6 +39,7 @@ const FilmContentCard = ({
 
   return (
     <StyledSafeLink
+      onMouseDown={(e) => e.preventDefault()}
       to={path}
       aria-describedby={contentTypeId}
       columnWidth={columnWidth}

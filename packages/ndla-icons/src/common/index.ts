@@ -19,6 +19,7 @@ export { default as Back } from './Back';
 export { default as BlocksDark } from './BlocksDark';
 export { default as BlocksLight } from './BlocksLight';
 export { default as BookOpen } from './BookOpen';
+export { default as CalendarEd } from './CalendarEd';
 export { default as ChevronDown } from './ChevronDown';
 export { default as ChevronLeft } from './ChevronLeft';
 export { default as ChevronRight } from './ChevronRight';

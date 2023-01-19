@@ -442,7 +442,7 @@ const messages = {
   article: {
     edition: 'Edition',
     publisher: 'Publisher',
-    lastUpdated: 'Last updated',
+    lastUpdated: 'Last revised date',
     closeLabel: 'Close',
     useContent: 'Cite or use',
     additionalLabel: 'Additional content',

@@ -771,6 +771,7 @@ const messages = {
     copyCode: 'Kopier kode til utklippstavle',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll framover',
     movieMatchInCategory: 'Treff',
@@ -817,6 +818,7 @@ const messages = {
       shortFilm: 'Kortfilm',
       all: 'Alle filmar A-Å',
     },
+    allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:

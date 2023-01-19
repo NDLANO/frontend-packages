@@ -772,6 +772,7 @@ const messages = {
     copyCode: 'Máŋge koda vuorkátávvalii',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Rulle maŋos',
     slideForwardsLabel: 'Rulle ovddas',
     movieMatchInCategory: 'Deaivan',
@@ -818,6 +819,7 @@ const messages = {
       shortFilm: 'Oanehis filbma',
       all: 'Buot filmmat A-Å',
     },
+    allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
     moreAboutNdlaFilm: {
       header: 'NDLA Filbma',
       firstParagraph:

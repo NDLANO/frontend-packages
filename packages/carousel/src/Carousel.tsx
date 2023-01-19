@@ -6,7 +6,7 @@
  *
  */
 
-import React, { cloneElement, MouseEvent, ReactElement, UIEvent, useMemo, useRef, useState } from 'react';
+import React, { cloneElement, ReactElement, UIEvent, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { breakpoints, mq, spacing } from '@ndla/core';
@@ -81,7 +81,7 @@ export const Carousel = ({
     parent?.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
   };
 
-  const onMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     const pos = {
       left: slideContainer.current?.scrollLeft || 0,
       x: e.clientX,
@@ -89,17 +89,18 @@ export const Carousel = ({
 
     const slider = slideContainer.current;
     const sliderContent = slideshowRef.current;
+
     if (slider) {
       slider.style.cursor = 'grabbing';
     }
     document.body.style.cursor = 'grabbing';
 
-    const mouseMoveHandler = (e: MouseEvent<HTMLDivElement>) => {
+    const mouseMoveHandler = (e: MouseEvent) => {
+      const dx = e.clientX - pos.x;
+
       if (sliderContent && !sliderContent?.style.pointerEvents) {
         sliderContent.style.pointerEvents = 'none';
       }
-      const dx = e.clientX - pos.x;
-
       if (slider) {
         slider.style.userSelect = 'none';
         slider.scrollLeft = pos.left - dx;
@@ -113,6 +114,7 @@ export const Carousel = ({
       sliderContent?.style.removeProperty('pointer-events');
       slider?.style.removeProperty('user-select');
       document.body.style.removeProperty('cursor');
+
       if (slider) {
         slider.style.cursor = 'grab';
       }

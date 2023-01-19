@@ -59,13 +59,14 @@ const fadeInAdditionalsKeyframe = keyframes`
   }
 `;
 
-type ListElementProps = {
+interface ListElementProps {
   additional?: boolean;
   extraBottomMargin?: boolean;
   contentType?: string;
   active?: boolean;
   hidden?: boolean;
-};
+}
+
 const ListElement = styled.li<ListElementProps>`
   border: 1px solid #d1d6db;
   border-radius: 5px;
@@ -126,7 +127,7 @@ const ResourceLink = styled(SafeLink)`
   }
 `;
 
-const IconWrapper = styled.div`
+const ContentBadgeWrapper = styled.div`
   display: flex;
   flex: 0 0 auto;
   text-align: center;
@@ -193,7 +194,7 @@ const CurrentSmall = styled.small`
   margin-left: ${spacing.xsmall};
 `;
 
-type Props = {
+interface Props {
   id: string;
   showContentTypeDescription?: boolean;
   contentTypeName?: string;
@@ -202,9 +203,9 @@ type Props = {
   showAdditionalResources?: boolean;
   access?: 'teacher';
   heartButton?: (path: string) => ReactNode;
-};
+}
 
-const NewIconWrapper = styled.div`
+const IconWrapper = styled.div`
   display: flex;
   flex-grow: 1;
   svg {
@@ -212,6 +213,7 @@ const NewIconWrapper = styled.div`
     height: 26px;
   }
 `;
+
 const ResourceItem = ({
   id,
   contentTypeName,
@@ -241,9 +243,9 @@ const ResourceItem = ({
       additional={additional}
       extraBottomMargin={extraBottomMargin}>
       <ResourceWrapper>
-        <IconWrapper>
+        <ContentBadgeWrapper>
           <ContentTypeBadge type={contentType ?? ''} background border={false} />
-        </IconWrapper>
+        </ContentBadgeWrapper>
         <InlineContainer>
           <ResourceLink to={path} aria-current={active ? 'page' : undefined} aria-describedby={describedBy}>
             {name}
@@ -255,25 +257,25 @@ const ResourceItem = ({
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === 'teacher' && (
           <Tooltip tooltip={t('article.access.onlyTeacher')}>
-            <NewIconWrapper>
+            <IconWrapper>
               <HumanMaleBoard id={accessId} aria-label={t('article.access.onlyTeacher')} />
-            </NewIconWrapper>
+            </IconWrapper>
           </Tooltip>
         )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <NewIconWrapper>
+                <IconWrapper>
                   <Additional id={additionalId} aria-label={contentTypeDescription} />
-                </NewIconWrapper>
+                </IconWrapper>
               </Tooltip>
             )}
             {!additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <NewIconWrapper>
+                <IconWrapper>
                   <Core id={coreId} aria-label={contentTypeDescription} />
-                </NewIconWrapper>
+                </IconWrapper>
               </Tooltip>
             )}
           </>

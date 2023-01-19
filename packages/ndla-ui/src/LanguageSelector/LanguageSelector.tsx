@@ -80,6 +80,7 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Pro
             <Item asChild key={locale}>
               <LanguageChoice
                 role="link"
+                aria-current={i18n.language === locale}
                 variant="ghost"
                 aria-label={t(`changeLanguage.${locale}`)}
                 onClick={() => onSelect(locale)}>

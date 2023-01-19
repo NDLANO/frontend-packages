@@ -6,11 +6,11 @@
  *
  */
 
-import React, { cloneElement, ReactElement, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import React, { cloneElement, MouseEvent, ReactElement, UIEvent, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { breakpoints, mq } from '@ndla/core';
-import { ButtonWrapper, slideWrapperCSS, StyledSlideContent } from './Styles';
+import { breakpoints, mq, spacing } from '@ndla/core';
+import { ButtonWrapper, StyledSlideContent } from './Styles';
 
 export interface CalculatedProps {
   columnsPrSlide: number;
@@ -29,12 +29,25 @@ interface Props extends CalculatedProps {
 const CarouselWrapper = styled.div`
   overflow: hidden;
   position: relative;
+  cursor: grab;
   &:hover {
     ${mq.range({ from: breakpoints.desktop })} {
       ${ButtonWrapper} {
         display: block;
       }
     }
+  }
+`;
+
+const SliderWrapper = styled.div`
+  display: flex;
+  position: relative;
+  overflow-x: scroll;
+  padding: ${spacing.xxsmall} 0;
+
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
 `;
 
@@ -48,18 +61,13 @@ export const Carousel = ({
   margin = 0,
 }: Props) => {
   const slideshowRef = useRef<HTMLDivElement>(null);
+  const slideContainer = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(true);
   const roundedColumnsPrSlide = useMemo(() => Math.floor(columnsPrSlide), [columnsPrSlide]);
   const hideButtons = useMemo(() => columnsPrSlide >= items.length, [columnsPrSlide, items.length]);
 
-  useEffect(() => {
-    const parent = slideshowRef.current?.parentElement;
-    parent?.addEventListener('scroll', onScroll);
-    return () => parent?.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const onScroll = (e: Event) => {
+  const onScroll = (e: UIEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
     setShowLeft(target.scrollLeft !== 0);
     if (slideshowRef.current) {
@@ -71,6 +79,47 @@ export const Carousel = ({
     const amount = columnWidth * roundedColumnsPrSlide;
     const parent = slideshowRef.current?.parentElement;
     parent?.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
+  };
+
+  const onMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    const pos = {
+      left: slideContainer.current?.scrollLeft || 0,
+      x: e.clientX,
+    };
+
+    const slider = slideContainer.current;
+    const sliderContent = slideshowRef.current;
+    if (slider) {
+      slider.style.cursor = 'grabbing';
+    }
+    document.body.style.cursor = 'grabbing';
+
+    const mouseMoveHandler = (e: MouseEvent<HTMLDivElement>) => {
+      if (sliderContent && !sliderContent?.style.pointerEvents) {
+        sliderContent.style.pointerEvents = 'none';
+      }
+      const dx = e.clientX - pos.x;
+
+      if (slider) {
+        slider.style.userSelect = 'none';
+        slider.scrollLeft = pos.left - dx;
+      }
+    };
+
+    const mouseUpHandler = () => {
+      document.removeEventListener('mousemove', mouseMoveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
+
+      sliderContent?.style.removeProperty('pointer-events');
+      slider?.style.removeProperty('user-select');
+      document.body.style.removeProperty('cursor');
+      if (slider) {
+        slider.style.cursor = 'grab';
+      }
+    };
+
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler, { once: true });
   };
 
   return (
@@ -87,11 +136,11 @@ export const Carousel = ({
         onClick={() => slidePage('right')}
         hidden={hideButtons || !showRight}
       />
-      <div css={slideWrapperCSS}>
+      <SliderWrapper ref={slideContainer} onScroll={onScroll} onMouseDown={onMouseDown}>
         <StyledSlideContent margin={margin} ref={slideshowRef} gap={distanceBetweenItems}>
           {items.map((item) => item)}
         </StyledSlideContent>
-      </div>
+      </SliderWrapper>
     </CarouselWrapper>
   );
 };

@@ -7,20 +7,6 @@
  */
 
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { spacing } from '@ndla/core';
-
-export const slideWrapperCSS = css`
-  display: flex;
-  position: relative;
-  overflow-x: scroll;
-  padding: ${spacing.xxsmall} 0;
-
-  scrollbar-width: none; /* Firefox */
-  ::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
-`;
 
 interface SlideContentProps {
   gap: number;

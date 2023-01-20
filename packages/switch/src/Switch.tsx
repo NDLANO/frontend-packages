@@ -1,154 +1,91 @@
-/**
- * Copyright (c) 2019-present, NDLA.
- *
- * This source code is licensed under the GPLv3 license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-import React, { ChangeEventHandler, HTMLProps, ReactNode, useState } from 'react';
+import React from 'react';
+import { Root, Thumb, SwitchProps } from '@radix-ui/react-switch';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { colors, fonts, spacing, spacingUnit, utils } from '@ndla/core';
+import { colors, spacing } from '@ndla/core';
 
-const SIZE: number = 22;
+interface Props extends Omit<SwitchProps, 'asChild' | 'id' | 'onChange' | 'onCheckedChange'> {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+  label: string;
+  id: string | number;
+}
 
-type StyledSwitchProps = {
-  hasFocus: boolean;
-};
-
-const StyledSwitch = styled.div<StyledSwitchProps>`
-  color: ${colors.brand.primary};
-  margin: 0;
-  padding-right: ${spacing.large};
-  ${fonts.sizes(16, 1.1)};
-  font-family: ${fonts.sans};
-  position: relative;
-  cursor: pointer;
+const SwitchWrapper = styled.div`
   display: flex;
-  min-height: ${spacing.normal};
   align-items: center;
-  ${(props) =>
-    props.hasFocus &&
-    css`
-      ${utils.restoreOutline};
-    `};
+  color: ${colors.brand.primary};
+  gap: ${spacing.small};
+  cursor: pointer;
   label {
     cursor: pointer;
-    &:after {
-      content: '';
-      display: block;
-      width: ${SIZE}px;
-      height: ${SIZE}px;
-      position: absolute;
-      right: 0;
-      top: 2px;
-      transform: translateX(-${spacingUnit * 1.5 - SIZE}px);
-      background: ${colors.brand.greyMedium};
-      transition: all 100ms ease;
-      border-radius: 100%;
-      cursor: pointer;
-    }
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      right: 0;
-      top: 2px;
-      width: ${spacingUnit * 1.5}px;
-      height: ${SIZE - 4}px;
-      transform: translateY(2px);
-      background: ${colors.brand.greyLight};
-      transition: all 100ms ease;
-      border-radius: ${SIZE}px;
-      pointer-events: all;
-      cursor: pointer;
+  }
+`;
+
+const StyledThumb = styled(Thumb)`
+  position: absolute;
+  transform: translate(0px, -50%);
+  width: 23px;
+  height: 23px;
+  background-color: ${colors.brand.greyMedium};
+  border-radius: 100%;
+  transition: transform 100ms;
+  will-change: transform;
+
+  &[data-state='unchecked'] {
+    &:hover,
+    &:focus,
+    &:focus-within {
+      background-color: ${colors.brand.grey};
     }
   }
-  input {
-    width: 0;
-    height: 0;
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    &:checked + label {
-      &:after {
-        transform: translateX(0);
-        background: ${colors.brand.dark};
-      }
-      &:before {
-        background: ${colors.brand.light};
-      }
-    }
-    &:focus {
-      &:checked {
-        + label {
-          &:before {
-            background: ${colors.brand.tertiary};
-          }
-          &:after {
-            background: ${colors.brand.dark};
-          }
-        }
-      }
-      &:not(:checked) {
-        + label {
-          &:after {
-            background: ${colors.brand.grey};
-          }
-        }
-      }
-    }
+
+  &[data-state='checked'] {
+    transform: translate(19px, -50%);
+    background-color: ${colors.brand.primary};
   }
-  &:hover {
-    input {
-      + label {
-        &:after {
-          background: ${colors.brand.grey};
-        }
-      }
-      &:checked {
-        + label {
-          &:before {
-            background: ${colors.brand.tertiary};
-          }
-          &:after {
-            background: ${colors.brand.dark};
-          }
-        }
+`;
+
+const StyledTrack = styled.div`
+  position: absolute;
+  transform: translateY(-50%);
+  width: 39px;
+  height: 18px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: ${colors.brand.greyLight};
+  border-radius: ${spacing.normal};
+`;
+
+const StyledRoot = styled(Root)`
+  all: unset;
+  display: block;
+  position: relative;
+  width: 42px;
+  height: 25px;
+  &[data-state='checked'] {
+    ${StyledTrack} {
+      background-color: ${colors.brand.light};
+    }
+    &:hover,
+    &:focus,
+    &:focus-within {
+      ${StyledTrack} {
+        background-color: ${colors.brand.tertiary};
       }
     }
   }
 `;
 
-interface Props extends Omit<HTMLProps<HTMLDivElement>, 'as'> {
-  checked: boolean;
-  label: string;
-  id: string;
-  disabled?: boolean;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  children?: ReactNode;
-}
-
-const Switch = ({ onChange, checked, disabled, id, label, ...rest }: Props) => {
-  const [hasFocus, setFocusState] = useState(false);
+const SwitchV2 = ({ onChange, label, id, className, ...rest }: Props) => {
   return (
-    <StyledSwitch {...rest} hasFocus={hasFocus}>
-      <input
-        onFocus={() => setFocusState(true)}
-        onBlur={() => setFocusState(false)}
-        onChange={onChange}
-        id={id}
-        type="checkbox"
-        checked={checked}
-        disabled={disabled}
-      />
-      <label htmlFor={id}>{label}</label>
-    </StyledSwitch>
+    <SwitchWrapper className={className}>
+      <label htmlFor={`switch-${id}`}>{label}</label>
+      <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} {...rest}>
+        <StyledTrack />
+        <StyledThumb />
+      </StyledRoot>
+    </SwitchWrapper>
   );
 };
 
-export default Switch;
+export default SwitchV2;

@@ -434,7 +434,7 @@ const messages = {
     newVersion:
       'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ',
     frontPageBeta:
-      'Kommende fag er tilpassa ny læreplan som gjelder fra neste skoleår. Vi håper likevel at læringsressursene i kommende fag kan være nyttige allerede nå.',
+      'Disse fagene er i betaversjon. Vi fyller på med ressurser fortløpende. Vi håper likevel at læringsressursene kan være nyttige allerede nå.',
     frontPageExpired:
       'Utgåtte fag undervises det ikke i lenger, men det kan fortsatt være mulig å ta eksamen i faga som privatist.',
   },

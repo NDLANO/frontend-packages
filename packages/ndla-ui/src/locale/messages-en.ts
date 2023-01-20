@@ -431,11 +431,11 @@ const messages = {
     resources: 'This is not a complete course, but a collection of resources we hope you will find useful.',
     subjectOutdated: 'This course is not updated to the current curriculum.',
     subjectFuture: 'This course is for a future curriculum.',
-    subjectBeta: 'This course is in beta. New resources are being added continously.',
+    subjectBeta: 'This course is in beta. New resources are being added continuously.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:
-      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from the next school year. We hope, however, that the learning resources available by now may come in useful already.',
+      'These courses is in beta. New resources are being added continuously. We hope, however, that the learning resources available by now may come in useful already.',
     frontPageExpired:
       'Expired subjects are not being taught any longer, but it may still be possible to take exams in these subjects.',
   },

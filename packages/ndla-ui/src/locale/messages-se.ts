@@ -435,7 +435,7 @@ const messages = {
     newVersion:
       'Dát oahpporesursa ii leat ođasmahttojuvvon gustovaš oahppaplána vuođul. Dáppe gávnnat ođastuvvon veršuvnna: ',
     frontPageBeta:
-      'Čuovvovaš fága lea heivehuvvon ođđa oahppoplána vuođul mii lea gustovaš boahtte skuvlajagi rájes. Mii sávvat goitge ahte oahppanresurssat cuovvovaš fága sáhttet leat ávkkálaččat dál juo.',
+      'Disse fagene er i betaversjon. Vi fyller på med ressurser fortløpende. Vi håper likevel at læringsressursene kan være nyttige allerede nå.',
     frontPageExpired:
       'Ii leat oahpahus šat fágain mat eai leat gustovaččat, muhto sáhttá ain leat vejolaš váldit eksámena fágas privatistan.',
   },

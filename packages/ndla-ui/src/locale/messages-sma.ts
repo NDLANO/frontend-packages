@@ -643,8 +643,8 @@ const messages = {
     vision: 'Ektesne båetijen aejkien lïerehtimmiem sjugniedibie',
     linksHeader: 'Jeatjah NDLA-nedtesijjieh',
     info: 'NDLA nedtesijjiem ræhpas gaaltijekodine dorjeme.',
-    editorInChief: 'Redaktööre mij dïedtem åtna: ',
-    managingEditor: 'Tjåadtjoehtæjja låhkoen åvteste: ',
+    editorInChief: 'Redaktööre mij dïedtem åtna:',
+    availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Personvernerklæring og cookies',
     cookiesLink: 'Erklæring om informasjonskapslar',
     socialMediaLinks: {

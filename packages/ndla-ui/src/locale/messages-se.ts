@@ -640,8 +640,8 @@ const messages = {
     vision: 'Ovttas hábmet boahtteáiggi oahppama',
     linksHeader: 'Eará NDLA neahttabáikkit',
     info: 'Neahttabáiki lea ráhkaduvvon NDLA bokte rabas gáldokodain.',
-    editorInChief: 'Vásttolaš doaimmaheaddji: ',
-    managingEditor: 'Almmuhusa vásttolaš: ',
+    editorInChief: 'Vásttolaš doaimmaheaddji:',
+    availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Persovdnasuodjalusjulggaštus ja diehtočoahkku (gáhkožat)',
     cookiesLink: 'Julggaštus birra diehtočoahkku (gáhkožat)',
     socialMediaLinks: {

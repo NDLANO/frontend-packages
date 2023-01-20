@@ -639,8 +639,8 @@ const messages = {
     vision: 'Saman skapar vi framtidas læring',
     linksHeader: 'Andre NDLA-nettstader',
     info: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
-    editorInChief: 'Ansvarleg redaktør: ',
-    managingEditor: 'Utgåveansvarleg: ',
+    editorInChief: 'Ansvarleg redaktør:',
+    availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Personvernerklæring',
     cookiesLink: 'Erklæring om informasjonskapslar',
     socialMediaLinks: {

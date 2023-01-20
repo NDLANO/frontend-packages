@@ -35,7 +35,7 @@ const byncnd: LicenseType = {
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
     description:
-      'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavspersonen, men dei kan ikkje endra det på nokon måte, eller bruka det kommersielt.',
+      'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavspersonen, men dei kan ikkje endra det på nokon måte, eller bruke det kommersielt.',
   },
   nb: {
     short: restrictedReuseNB,

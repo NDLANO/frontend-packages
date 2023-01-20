@@ -640,7 +640,7 @@ const messages = {
     linksHeader: 'Andre NDLA-nettstader',
     info: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
     editorInChief: 'Ansvarleg redaktør:',
-    availabilityLink: 'Tilgjengelighetserklæring',
+    availabilityLink: 'Tilgjengelegheitserklæring',
     privacyLink: 'Personvernerklæring',
     cookiesLink: 'Erklæring om informasjonskapslar',
     socialMediaLinks: {
@@ -1156,7 +1156,7 @@ const messages = {
       newFavourite: 'Nyleg lagt til',
       feide: 'Dette hentar vi om deg gjennom Feide',
       feideWrongInfo:
-        'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversyn over brukartrygd finst her: feide.no/brukartrygd',
+        'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversyn over brukarstøtte finst her: feide.no/brukerstotte',
       storageInfo: {
         title: 'Slik lagrar du favorittressursane dine frå NDLA',
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',

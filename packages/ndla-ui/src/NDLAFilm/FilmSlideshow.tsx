@@ -7,7 +7,7 @@
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { SwipeEventData, useSwipeable } from 'react-swipeable';
+import { SwipeDirections, SwipeEventData, useSwipeable } from 'react-swipeable';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { breakpoints, mq, spacing, spacingUnit, fonts, colors } from '@ndla/core';
@@ -104,7 +104,9 @@ interface SlideshowLinkProps {
   out?: boolean;
 }
 
-const SlideshowLink = styled(SafeLink)<SlideshowLinkProps>`
+const shouldForwardProp = (p: string) => p !== 'out';
+
+const SlideshowLink = styled(SafeLink, { shouldForwardProp })<SlideshowLinkProps>`
   display: flex;
   box-shadow: none;
   transition: all 400ms ease;
@@ -120,8 +122,9 @@ const SlideshowLink = styled(SafeLink)<SlideshowLinkProps>`
     padding-bottom: ${spacingUnit * 3}px;
   }
   &:hover {
-    h1 {
+    ${() => SlideshowName} {
       text-decoration: underline;
+      text-decoration-color: white;
     }
   }
 `;
@@ -138,8 +141,9 @@ const SlideshowWrapper = styled.section`
 `;
 
 const SlideshowInfo = styled.div`
-  border: 0;
-  background: none;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
   background-color: rgba(3, 23, 43, 0.7);
   border-radius: 4px;
   padding: ${spacing.medium} ${spacing.medium} ${spacing.medium} ${spacing.normal};
@@ -150,40 +154,38 @@ const SlideshowInfo = styled.div`
     width: 100%;
     padding: ${spacing.medium} ${spacingUnit * 2}px ${spacing.medium} ${spacing.normal};
   }
-  h1 {
-    ${fonts.sizes('22px', '30px')};
-    color: ${colors.white};
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    margin: 0;
-    font-weight: ${fonts.weight.semibold};
-    ${mq.range({ from: breakpoints.mobileWide })} {
-      margin: 0 0 ${spacing.small};
-      ${fonts.sizes('26px', '30px')};
-    }
-    ${mq.range({ from: breakpoints.tablet })} {
-      ${fonts.sizes('40px', '44px')};
-    }
-    ${mq.range({ from: breakpoints.desktop })} {
-      ${fonts.sizes('48px', '54px')};
-    }
-  }
+`;
 
-  p {
-    color: ${colors.white};
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    border-radius: 4px;
-    ${fonts.sizes('12px', '18px')};
-    ${mq.range({ from: breakpoints.mobileWide })} {
-      ${fonts.sizes('15px', '20px')};
-    }
-    ${mq.range({ from: breakpoints.tablet })} {
-      ${fonts.sizes('18px', '24px')};
-    }
-    ${mq.range({ from: breakpoints.wide })} {
-      ${fonts.sizes('20px', '32px')};
-    }
+const SlideshowName = styled.p`
+  ${fonts.sizes('22px', '30px')};
+  color: ${colors.white};
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  margin: 0;
+  font-weight: ${fonts.weight.semibold};
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    ${fonts.sizes('26px', '30px')};
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${fonts.sizes('40px', '44px')};
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    ${fonts.sizes('48px', '54px')};
+  }
+`;
+
+const SlideshowDescription = styled.p`
+  color: ${colors.white};
+  margin: 0;
+  padding: 0;
+  ${fonts.sizes('12px', '18px')};
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    ${fonts.sizes('15px', '20px')};
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${fonts.sizes('18px', '24px')};
+  }
+  ${mq.range({ from: breakpoints.wide })} {
+    ${fonts.sizes('20px', '32px')};
   }
 `;
 
@@ -215,6 +217,7 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
   const [slideIndex, setSlideIndex] = useState(0);
   const [slideIndexTarget, setSlideIndexTarget] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(true);
+  const [swipeDirection, setSwipeDirection] = useState<SwipeDirections | undefined>(undefined);
   const slideRef = useRef<HTMLDivElement>(null);
   const slideText = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -263,6 +266,7 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
   };
 
   const onSwipeEnd = () => {
+    setSwipeDirection(undefined);
     let slide;
     if (swipeDistance > 40) {
       slide = -1;
@@ -292,7 +296,11 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
   };
 
   const onSwipe = (eventData: SwipeEventData) => {
-    if (eventData.dir === 'Up' || eventData.dir === 'Down') {
+    if (eventData.initial) {
+      setSwipeDirection(eventData.dir);
+    }
+    const dir = eventData.initial ? eventData.dir : swipeDirection;
+    if (dir === 'Up' || dir === 'Down') {
       return;
     }
     if (timer.current) {
@@ -352,6 +360,7 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
   const handlers = useSwipeable({
     onSwiped: onSwipeEnd,
     onSwiping: onSwipe,
+    preventScrollOnSwipe: swipeDirection === 'Left' || swipeDirection === 'Right',
   });
 
   if (slideshow.length === 0) {
@@ -381,8 +390,8 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
           <OneColumn>
             <SlideshowLink to={slideshow[activeSlide].path} out={!animationComplete}>
               <SlideshowInfo ref={slideText}>
-                <h1>{slideshow[activeSlide].title}</h1>
-                <p>{slideshow[activeSlide].metaDescription}</p>
+                <SlideshowName>{slideshow[activeSlide].title}</SlideshowName>
+                <SlideshowDescription>{slideshow[activeSlide].metaDescription}</SlideshowDescription>
               </SlideshowInfo>
             </SlideshowLink>
           </OneColumn>

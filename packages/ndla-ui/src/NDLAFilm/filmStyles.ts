@@ -21,7 +21,7 @@ export const StyledHeadingH1 = styled.h1<StyledHeadingProps>`
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: ${colors.white};
-  margin: ${spacing.small} 0;
+  margin: ${spacing.xsmall} 0;
   margin-left: ${(props) => props.marginLeft && `${props.marginLeft}px`};
   small {
     font-weight: normal;

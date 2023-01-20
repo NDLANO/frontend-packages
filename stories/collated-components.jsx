@@ -19,7 +19,6 @@ import {
   LanguageSelector,
   OneColumn,
   Content,
-  i18nInstance,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 import { Translation as I18nTranslate } from 'react-i18next';
@@ -671,24 +670,7 @@ storiesOf('Sammensatte moduler', module)
       <Center>
         <Footer
           links={mockFooterLinks}
-          languageSelector={
-            <LanguageSelector
-              center
-              outline
-              alwaysVisible
-              options={{
-                nb: {
-                  name: 'Bokmål',
-                  url: '#',
-                },
-                nn: {
-                  name: 'Nynorsk',
-                  url: '#',
-                },
-              }}
-              currentLanguage={i18nInstance.language}
-            />
-          }
+          languageSelector={<LanguageSelector locales={['nb', 'nn']} onSelect={() => {}} />}
           privacyLinks={privacyLinks}>
           <FooterText>
             <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />

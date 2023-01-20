@@ -440,7 +440,7 @@ const messages = {
       'Utgåtte fag undervises det ikke i lenger, men det kan fortsatt være mulig å ta eksamen i faga som privatist.',
   },
   article: {
-    lastUpdated: 'Sist oppdatert',
+    lastUpdated: 'Sist faglig oppdatert',
     edition: 'Utgave',
     publisher: 'Utgiver',
     useContent: 'Regler for bruk',
@@ -772,6 +772,7 @@ const messages = {
     copyCode: 'Kopier kode til utklippstavle',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll fremover',
     movieMatchInCategory: 'Treff',
@@ -818,6 +819,7 @@ const messages = {
       shortFilm: 'Kortfilm',
       all: 'Alle filmer A-Å',
     },
+    allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:

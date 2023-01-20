@@ -168,13 +168,13 @@ export const Article = ({
   copyText,
 }: Props) => {
   const articleRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const { entry } = useIntersectionObserver({
     rootMargin: '400px',
     target: articleRef.current,
     threshold: 0.1,
   });
   const [articlePositionRight, setArticlePositionRight] = useState(0);
-  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const showExplainNotions = entry && entry.isIntersecting;
 

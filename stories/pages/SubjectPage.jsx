@@ -387,7 +387,7 @@ const SubjectPage = ({
   };
 
   // show/hide breadcrumb based on intersection
-  const entry = useIntersectionObserver({
+  const { entry } = useIntersectionObserver({
     root: null,
     target: containerRef.current,
     rootMargin: '-325px',

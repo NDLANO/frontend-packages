@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Fag',
+    subject_plural: 'Fag',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Endre mappenavn',
@@ -675,7 +679,6 @@ const messages = {
   contentTypes: {
     all: 'Alle',
     subject: 'Faagem',
-    subjects: 'Fag',
     'topic-article': 'Teema',
     'learning-path': 'Lïeremebaalka',
     'subject-material': 'Faage-aamhtese',

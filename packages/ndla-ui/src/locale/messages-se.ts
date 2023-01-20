@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Fag',
+    subject_plural: 'Fag',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Rievdat máhpa nama',
@@ -672,7 +676,6 @@ const messages = {
   contentTypes: {
     all: 'Buot',
     subject: 'Fága',
-    subjects: 'Fag',
     'topic-article': 'Fáddá',
     'learning-path': 'Oahppanbálggis',
     'subject-material': 'Fágaávdnasat',

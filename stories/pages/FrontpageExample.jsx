@@ -16,7 +16,6 @@ import {
   FrontpageProgramMenu,
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Instagram, LinkedIn } from '@ndla/icons/common';
-import { dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
 import BlogExampleImage2 from '../../images/blog/en-god-skolestart.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
@@ -57,7 +56,7 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
 
   return (
     <>
-      <FrontpageHeader locale="nb" languageOptions={dummyLanguageOptions}>
+      <FrontpageHeader locale="nb">
         <FrontpageSearch
           locale="nb"
           searchFieldValue={searchFieldValue}
@@ -222,7 +221,6 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
             closeSearchLabel: t('welcomePage.closeSearch'),
             menuButton: t('welcomePage.heading.messages.menuButton'),
           }}
-          languageOptions={dummyLanguageOptions}
           suggestion={searchFieldValue.length > 2 && 'et-liknende-ord'}
           suggestionUrl={'search?query=et-liknende-ord'}
         />

@@ -92,7 +92,7 @@ const fetchTopicData = (topicDataItem, setDataCallback) => {
     updatedItem.content = result.content;
     updatedItem.introduction = result.introduction;
     if (result.metaImage) {
-      updatedItem.image = { url: `${result.metaImage.url}?width=400`, alt: result.metaImage.alt };
+      updatedItem.image = { url: `${result.metaImage.url}`, alt: result.metaImage.alt };
       updatedItem.visualElement = {
         type: 'image',
         element: <FigureImage type="full-column" alt={result.metaImage.alt} src={result.metaImage.url} />,

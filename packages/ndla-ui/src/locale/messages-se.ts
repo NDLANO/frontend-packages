@@ -640,8 +640,8 @@ const messages = {
     vision: 'Ovttas hábmet boahtteáiggi oahppama',
     linksHeader: 'Eará NDLA neahttabáikkit',
     info: 'Neahttabáiki lea ráhkaduvvon NDLA bokte rabas gáldokodain.',
-    editorInChief: 'Vásttolaš doaimmaheaddji: ',
-    managingEditor: 'Almmuhusa vásttolaš: ',
+    editorInChief: 'Vásttolaš doaimmaheaddji:',
+    availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Persovdnasuodjalusjulggaštus ja diehtočoahkku (gáhkožat)',
     cookiesLink: 'Julggaštus birra diehtočoahkku (gáhkožat)',
     socialMediaLinks: {
@@ -1158,7 +1158,7 @@ const messages = {
       newFavourite: 'Aitto lasihuvvon',
       feide: 'Dát vižžojuvvo du birra Feide:s',
       feideWrongInfo:
-        'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot organisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogova geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstøtte',
+        'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot organisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogova geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstotte',
       storageInfo: {
         title: 'Ná vurket iežat oiddotresurssaid NDLA:s',
         text: 'Deaddil váibmoboalu vurken dihtii resurssa.',

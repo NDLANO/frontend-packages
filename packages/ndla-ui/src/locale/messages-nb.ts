@@ -639,8 +639,8 @@ const messages = {
     vision: 'Sammen skaper vi framtidas læring',
     linksHeader: 'Andre NDLA-nettsteder',
     info: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
-    editorInChief: 'Ansvarlig redaktør: ',
-    managingEditor: 'Utgaveansvarlig: ',
+    editorInChief: 'Ansvarlig redaktør:',
+    availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Personvernerklæring',
     cookiesLink: 'Erklæring om informasjonskapsler',
     socialMediaLinks: {
@@ -1156,7 +1156,7 @@ const messages = {
       newFavourite: 'Nylig lagt til',
       feide: 'Dette henter vi om deg gjennom Feide',
       feideWrongInfo:
-        'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstøtte',
+        'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstotte',
       storageInfo: {
         title: 'Slik lagrer du favorittressursene dine fra NDLA',
         text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',

@@ -18,9 +18,9 @@ import { SearchItemType } from '../SearchItem';
 import resourceTypeColor from '../../utils/resourceTypeColor';
 import ContentTypeBadge from '../../ContentTypeBadge';
 
-type ItemTypeProps = {
+interface ItemTypeProps {
   contentType?: ContentType;
-};
+}
 
 const ImageElement = styled.img`
   width: 100%;
@@ -84,14 +84,10 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
 `;
 
 const HeaderWrapper = styled.div`
-  overflow: hidden;
-  min-height: 100px;
-  max-height: 170px;
-  flex-shrink: 1;
-  flex-basis: 0;
-  flex-grow: 1;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
+  height: 170px;
 `;
 
 type Props = {

@@ -25,6 +25,7 @@ interface ContainerProps {
 
 const Container = styled.ul<ContainerProps>`
   display: grid;
+  align-items: flex-start;
   list-style: none;
   row-gap: ${spacing.normal};
   grid-template-columns: repeat(1, 1fr);

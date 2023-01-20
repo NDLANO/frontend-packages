@@ -16,7 +16,7 @@ import ContentTypeBadge from '../../ContentTypeBadge';
 import { ContentType } from '../SearchTypeResult';
 
 const Wrapper = styled.div`
-  padding: ${spacing.small} ${spacing.normal};
+  padding: ${spacing.small} ${spacing.normal} 0;
   position: relative;
 `;
 

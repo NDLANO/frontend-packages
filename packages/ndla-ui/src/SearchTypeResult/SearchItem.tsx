@@ -26,12 +26,9 @@ interface ItemTypeProps {
 }
 
 const Container = styled.div`
-  overflow: hidden;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  height: 400px;
   gap: ${spacing.small};
   border-radius: 5px;
   border: 1px solid ${colors.brand.neutral7};
@@ -77,7 +74,6 @@ const ItemText = styled.div<ItemTypeProps>`
 
 const ContextWrapper = styled.div`
   align-self: flex-start;
-  margin-top: auto;
   background: white;
   padding: 0 ${spacing.normal} ${spacing.small};
 `;

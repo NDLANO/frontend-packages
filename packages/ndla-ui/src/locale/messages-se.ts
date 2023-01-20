@@ -672,6 +672,7 @@ const messages = {
   contentTypes: {
     all: 'Buot',
     subject: 'Fága',
+    subjects: 'Fag',
     'topic-article': 'Fáddá',
     'learning-path': 'Oahppanbálggis',
     'subject-material': 'Fágaávdnasat',

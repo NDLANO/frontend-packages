@@ -675,6 +675,7 @@ const messages = {
   contentTypes: {
     all: 'Alle',
     subject: 'Faagem',
+    subjectTypes: 'Fag',
     'topic-article': 'Teema',
     'learning-path': 'Lïeremebaalka',
     'subject-material': 'Faage-aamhtese',

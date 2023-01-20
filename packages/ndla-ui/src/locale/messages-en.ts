@@ -672,6 +672,7 @@ const messages = {
   contentTypes: {
     all: 'All',
     subject: 'Subject',
+    subjects: 'Subjects',
     'topic-article': 'Topic article',
     'learning-path': 'Learning path',
     'subject-material': 'Subject material',

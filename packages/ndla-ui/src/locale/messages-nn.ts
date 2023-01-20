@@ -671,6 +671,7 @@ const messages = {
   contentTypes: {
     all: 'Alle',
     subject: 'Fag',
+    subjects: 'Fag',
     'topic-article': 'Emne',
     'learning-path': 'Læringssti',
     'subject-material': 'Fagstoff',

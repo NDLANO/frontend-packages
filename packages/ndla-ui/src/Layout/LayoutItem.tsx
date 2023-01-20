@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 
 interface Props {
   children?: ReactNode;
@@ -33,11 +32,6 @@ export const LayoutItem = ({ children, layout }: Props) => {
       return <section className="o-layout__item">{children}</section>;
     }
   }
-};
-
-LayoutItem.propTypes = {
-  children: PropTypes.node,
-  layout: PropTypes.string,
 };
 
 export default LayoutItem;

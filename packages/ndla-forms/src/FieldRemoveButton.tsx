@@ -48,6 +48,7 @@ interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'type'> {
   type?: 'submit' | 'reset' | 'button';
 }
 const FieldRemoveButton = ({ children, type = 'button', ...rest }: Props) => (
+  // eslint-disable-next-line react/button-has-type
   <button css={buttonCSS} type={type} {...rest}>
     <Cross className="c-icon--medium" aria-hidden={true} />
     <span>{children}</span>

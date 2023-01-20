@@ -56,6 +56,7 @@ export default function VideoSearchResultYouTube({
               className="c-video-preview__video"
               title={selectedVideo.title}
               src={selectedVideo.pagemap.videoobject[0].embedurl}
+              // eslint-disable-next-line react/no-unknown-property
               allowFullScreen
             />
           </PreviewVideo>

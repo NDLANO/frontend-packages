@@ -26,9 +26,9 @@ react-router
 @ndla/util
 ```
 
-See: [package.json](package.json) for version requirements
+See: [package.json](package.json) for version requirements.
 
-**N.B!** All optional dependencies are required if you use `import {...} from '@ndla/ui'`
+**N.B!** Optional dependencies are required if you use `import {...} from '@ndla/ui'`
 
 ## Usage
 
@@ -81,3 +81,7 @@ const MyPage = () => {
   );
 };
 ```
+
+### Important
+
+Components to be used as part of article rendered in article-converter can _not_ use useTranslation hook. This is because article-converter generates static html without dynamics, and this locks all texts inserted via the hook to be 'nb'.

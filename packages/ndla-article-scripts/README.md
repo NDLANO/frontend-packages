@@ -16,7 +16,7 @@ yarn add @ndla/article-scripts
 
 ## Usage
 
-### Plain javascript (embed scripts)
+### Plain javascript (embed scripts).
 
 ```javascript
 import { addEventListenerForResize, updateIFrameDimensions, addFactBoxClickListener } from '@ndla/article-scripts';

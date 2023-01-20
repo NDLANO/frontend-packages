@@ -66,8 +66,9 @@ const MovieGrid = ({
       <MovieListing marginLeft={autoSizedProps.margin}>
         {fetchingMoviesByType && <LoadingPlaceholder height={loadingPlaceholderHeight} />}
         {!fetchingMoviesByType &&
-          moviesByType.map((movie) => (
+          moviesByType.map((movie, index) => (
             <FilmContentCard
+              key={index}
               hideTags
               movie={movie}
               columnWidth={autoSizedProps.columnWidth}

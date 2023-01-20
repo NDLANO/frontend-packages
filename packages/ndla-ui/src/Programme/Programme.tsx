@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import LayoutItem, { OneColumn } from '../Layout';
-import ProgrammeSubjects from './ProgrammeSubjects';
-import { GradesProps } from './ProgrammeSubjects';
+import ProgrammeSubjects, { GradesProps } from './ProgrammeSubjects';
 import MessageBox from '../Messages/MessageBox';
 import { NavigationHeading } from '..';
 const StyledWrapper = styled.div`
@@ -68,15 +67,7 @@ type Props = GradesProps & {
   headingId?: string;
 };
 
-export const Programme = ({
-  heading,
-  image,
-  grades,
-  selectedGrade,
-  onChangeGrade,
-  messageBoxText,
-  headingId,
-}: Props) => {
+export const Programme = ({ heading, image, grades, selectedGrade, messageBoxText, headingId }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledWrapper>
@@ -88,7 +79,7 @@ export const Programme = ({
               <NavigationHeading headingId={headingId}>{heading}</NavigationHeading>
               {messageBoxText && <MessageBox>{t(messageBoxText)}</MessageBox>}
               <SubjectsWrapper>
-                <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} onChangeGrade={onChangeGrade} />
+                <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} />
               </SubjectsWrapper>
             </StyledContentWrapper>
           </LayoutItem>

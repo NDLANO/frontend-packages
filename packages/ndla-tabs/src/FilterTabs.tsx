@@ -9,7 +9,9 @@
 import React, { Component, MutableRefObject, ReactNode, KeyboardEvent, createRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ArrowDropDown } from '@ndla/icons/common';
-import { DebouncedFunc, debounce } from 'lodash';
+import debounce from 'lodash/debounce';
+// eslint-disable-next-line lodash/import-scope
+import type { DebouncedFunc } from 'lodash';
 
 const classes = BEMHelper('c-tabs');
 

@@ -110,7 +110,8 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktijve',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Eah vielie gååvnesh',
     [subjectCategories.BETA_SUBJECTS]: 'Båetije',
-    [subjectTypes.RESOURCE_COLLECTION]: 'Andre ressurser',
+    [subjectCategories.OTHER]: 'Andre ressurser',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamlinger',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafag',
@@ -251,8 +252,24 @@ const messages = {
     archived: 'Faage nåhkeme jïh ij dam vielie orresth.',
   },
   subjectsPage: {
+    filterSubjects: 'Filtrer fag',
+    scrollToGroup: 'Hopp til gruppe',
+    goToTop: 'Gå til toppen',
+    alphabeticSort: 'Fag gruppert alfabetisk',
+    subjectGroup: 'Gruppe "{{ category }}"',
+    allSubjects: 'Alle fag',
+    myFavoriteSubjects: 'Mine favorittfag',
     errorDescription: 'Gaatesjen, fieljie sjïdti veedtjemisnie.',
     chooseSubject: 'Veeljh faagem',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    removeConfirmed: '{{subject}} er fjernet fra favorittfag',
+    addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke et fag må du logge inn på Min NDLA. Du finner faget øverst på denne siden etter at du har logget inn.',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Gaatesjen, fiejlie sjïdti teemabuerkiestimmie-veedtjemisnie.',
@@ -326,6 +343,8 @@ const messages = {
       },
     },
     menu: {
+      button: 'Meny',
+      goToMainMenu: 'Gå til hovedmeny',
       close: 'Dahph',
       goTo: 'Mïnnh',
       search: 'Ohtsh',
@@ -469,9 +488,10 @@ const messages = {
     competenceSubjectSearchText: 'Mïnnh faagesæjrose',
     competenceGoalClose: 'Dahph',
     competenceGoalTitle: 'Ulmie learohke edtja maehtedh:',
-    competenceTabLK06label: 'Maahtoe-ulmie (LK06)',
-    competenceTabLK20label: 'Maahtoe-ulmie (LK20)',
+    competenceTabLK20label: 'Maahtoe-ulmie',
+    competenceTabLK20Tooltip: 'Maahtoe-ulmie',
     competenceTabCorelabel: 'Kjerneelement',
+    competenceTabCoreTooltip: 'Vis kjerneelementer',
     competenceGoalItem: {
       title: 'Maahtoe-ulmie jïh vuarjasjimmie',
     },
@@ -618,13 +638,15 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'Om NDLA',
+    socialMedia: 'Sosiale medier',
     selectLanguage: 'Veeljh gïelem  (language): ',
     vision: 'Ektesne båetijen aejkien lïerehtimmiem sjugniedibie',
-    footerLinksHeader: 'Jeatjah NDLA-nedtesijjieh',
-    footerInfo: 'NDLA nedtesijjiem ræhpas gaaltijekodine dorjeme.',
-    footerEditiorInChief: 'Redaktööre mij dïedtem åtna: ',
-    footerManagingEditor: 'Tjåadtjoehtæjja låhkoen åvteste: ',
-    footerPrivacyLink: 'Personvernerklæring og cookies',
+    linksHeader: 'Jeatjah NDLA-nedtesijjieh',
+    info: 'NDLA nedtesijjiem ræhpas gaaltijekodine dorjeme.',
+    editorInChief: 'Redaktööre mij dïedtem åtna: ',
+    managingEditor: 'Tjåadtjoehtæjja låhkoen åvteste: ',
+    privacyLink: 'Personvernerklæring og cookies',
+    cookiesLink: 'Erklæring om informasjonskapslar',
     socialMediaLinks: {
       facebook: 'NDLA Facebook:sne',
       facebookAria: 'Vaaksjoeh NDLA:m Facebookesne',
@@ -755,6 +777,7 @@ const messages = {
     copyCode: 'Vaeltieh kopijem kodeste bietskiedimmietaavlese',
   },
   ndlaFilm: {
+    heading: 'NDLA Filmen',
     slideBackwardsLabel: 'Scroll bååstede',
     slideForwardsLabel: 'Scroll åvtese',
     movieMatchInCategory: 'Gaavnoeh',
@@ -801,6 +824,7 @@ const messages = {
       shortFilm: 'Åenehksfilme',
       all: 'Gaajhkh filmh A-Å',
     },
+    allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
@@ -847,6 +871,7 @@ const messages = {
     searching: 'Ohtseminie...',
     create: 'Darjoeh orre',
     isSelectedItem: 'Lissiehtamme',
+    selected: '{{count}} valgte',
   },
   blogPosts: {
     blog1: {
@@ -1090,6 +1115,7 @@ const messages = {
     confirmDeleteTag: 'Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.',
     myFolders: 'Mine mapper',
     myTags: 'Mine emneknagger',
+    mySubjects: 'Mine fag',
     newFolder: 'Ny mappe',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
@@ -1190,6 +1216,9 @@ const messages = {
     search: 'Ohtsh',
     contact: 'Kontakt',
     help: 'Hjelp',
+  },
+  programme: {
+    grades: 'Trinn',
   },
 };
 

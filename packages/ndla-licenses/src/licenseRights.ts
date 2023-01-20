@@ -100,7 +100,7 @@ const pd: RightType = {
   nn: {
     title: 'Offentleg eigedom',
     userFriendlyTitle: 'Offentleg eigedom',
-    description: 'Innhaldet er så gammalt at du kan bruka det som du vil.',
+    description: 'Innhaldet er så gammalt at du kan bruke det som du vil.',
   },
   nb: {
     title: 'Offentlig eiendom',

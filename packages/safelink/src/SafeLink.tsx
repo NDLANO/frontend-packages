@@ -10,7 +10,7 @@ import React, { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useCont
 import { Link, LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';
-import { isString } from 'lodash';
+import isString from 'lodash/isString';
 import MissingRouterContext from './MissingRouterContext';
 
 const isExternalLink = (to?: LinkProps['to']) =>
@@ -30,6 +30,7 @@ type Props = {
   ref?: MutableRefObject<HTMLAnchorElement | null>;
   asAnchor?: boolean;
   children?: ReactNode;
+  disabled?: boolean;
 };
 
 export type SafeLinkProps = Props & LinkProps & HTMLAttributes<HTMLElement>;
@@ -37,13 +38,19 @@ export type SafeLinkProps = Props & LinkProps & HTMLAttributes<HTMLElement>;
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 
 const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
-  ({ to, replace, children, showNewWindowIcon, tabIndex, asAnchor, ...rest }, ref) => {
+  ({ to, replace, disabled, children, showNewWindowIcon, tabIndex, asAnchor, ...rest }, ref) => {
     const isMissingRouterContext = useContext(MissingRouterContext);
 
-    if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to) || asAnchor) {
+    if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to) || asAnchor || disabled) {
       const href = typeof to === 'string' ? to : '#';
       return (
-        <a href={href} ref={ref} {...rest}>
+        <a
+          href={disabled ? undefined : href}
+          role={disabled ? 'link' : undefined}
+          aria-disabled={disabled}
+          ref={ref}
+          tabIndex={tabIndex}
+          {...rest}>
           {children}
           {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
         </a>

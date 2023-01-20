@@ -1,12 +1,13 @@
-import { FolderType, TreeStructureType } from './types';
+import { IFolder } from '@ndla/types-learningpath-api';
+import { TreeStructureType } from './types';
 
-export const flattenFolders = (folders: FolderType[], openFolders?: string[]): FolderType[] => {
+export const flattenFolders = (folders: IFolder[], openFolders?: string[]): IFolder[] => {
   return folders.reduce((acc, { subfolders, id, ...rest }) => {
     if (!subfolders || (openFolders && !openFolders.includes(id))) {
       return acc.concat({ subfolders, id, ...rest });
     }
     return acc.concat({ subfolders, id, ...rest }, flattenFolders(subfolders, openFolders));
-  }, [] as FolderType[]);
+  }, [] as IFolder[]);
 };
 
 export const treestructureId = (type: TreeStructureType, modifier: string) => {

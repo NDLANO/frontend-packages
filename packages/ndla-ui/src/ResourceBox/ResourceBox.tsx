@@ -8,7 +8,6 @@
  */
 import React from 'react';
 import { breakpoints, fonts, mq, colors, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
 import { Launch } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
@@ -90,19 +89,18 @@ interface Props {
   title: string;
   caption: string;
   url: string;
+  buttonText: string;
 }
 
-export const ResourceBox = ({ image, title, caption, url }: Props) => {
-  const { t } = useTranslation();
+export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) => {
   return (
     <ResourceBoxContainer>
       <StyledImage src={image.src} alt={image.alt} />
       <ContentWrapper>
         <Title>{title}</Title>
         <Caption>{caption}</Caption>
-
-        <StyledButton to={url} target="_blank" outline borderShape="rounded">
-          {t('license.other.itemImage.ariaLabel')}
+        <StyledButton to={url} target="_blank" variant="outline" shape="pill">
+          {buttonText}
           <Launch aria-hidden />
         </StyledButton>
       </ContentWrapper>

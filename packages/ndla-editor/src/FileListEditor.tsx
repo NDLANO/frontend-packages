@@ -10,7 +10,7 @@ import React, { Component, MouseEvent as ReactMouseEvent, createRef, MutableRefO
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import Tooltip from '@ndla/tooltip';
-import { isNumber } from 'lodash';
+import isNumber from 'lodash/isNumber';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 import { spacing, spacingUnit, fonts, colors, shadows, animations } from '@ndla/core';

@@ -6,8 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
-import { ComponentType } from 'react';
+import React, { ReactNode, ComponentType } from 'react';
 import NoSSR from './NoSSR';
 
 /** Basic HoC to wrap your component in `NoSSR`, see `NoSSR.tsx` */

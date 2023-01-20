@@ -10,9 +10,8 @@ import React, { HTMLProps, MutableRefObject, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, spacingUnit, fonts, colors } from '@ndla/core';
-import { Download } from '@ndla/icons/common';
+import { Download, InformationOutline } from '@ndla/icons/common';
 import { css } from '@emotion/react';
-import { InformationOutline } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
 import { File, FileListMessages } from './FileListEditor';
 

@@ -9,11 +9,6 @@
 import { ReactNode } from 'react';
 import { IFolder, IResource } from '@ndla/types-learningpath-api';
 
-export interface FolderType extends IFolder {
-  icon?: ReactNode;
-  isNavigation?: boolean;
-}
-
 export type TreeStructureType = 'navigation' | 'picker';
 
 export type OnCreatedFunc = (folder: IFolder | undefined, parentId: string) => void;
@@ -35,14 +30,14 @@ export interface CommonTreeStructureProps {
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {
-  focusedFolder?: FolderType;
+  focusedFolder?: IFolder;
   level: number;
   maxLevel: number;
-  selectedFolder?: FolderType;
+  selectedFolder?: IFolder;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
-  setFocusedFolder: (folder: FolderType) => void;
-  setSelectedFolder: (folder: FolderType) => void;
-  visibleFolders: FolderType[];
+  setFocusedFolder: (folder: IFolder) => void;
+  setSelectedFolder: (folder: IFolder) => void;
+  visibleFolders: IFolder[];
   closeTree: () => void;
 }

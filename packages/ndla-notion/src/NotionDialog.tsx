@@ -92,7 +92,7 @@ export const NotionDialogRelatedLinks = ({ links, label }: NotionDialogRelatedLi
     </NotionDialogRelatedLinksWrapper>
   ) : null;
 
-const Paragraph = styled.p`
+const StyledDiv = styled.div`
   font-weight: ${fonts.weight.normal};
   ${fonts.sizes('18px', 1.3)};
   color: ${colors.text.primary};
@@ -102,7 +102,7 @@ const Paragraph = styled.p`
 interface NotionDialogTextProps {
   children?: ReactNode;
 }
-export const NotionDialogText = ({ children }: NotionDialogTextProps) => <Paragraph>{children}</Paragraph>;
+export const NotionDialogText = ({ children }: NotionDialogTextProps) => <StyledDiv>{children}</StyledDiv>;
 
 const NotionDialogImageWrapper = styled.div`
   display: flex;
@@ -188,7 +188,9 @@ const NotionDialog = ({ title, children, id, subTitle, ariaHidden = true, custom
     aria-labelledby={id}
     aria-describedby={id}
     css={customCSS}>
-    <NotionHeader title={title} subTitle={subTitle} children={headerContent} />
+    <NotionHeader title={title} subTitle={subTitle}>
+      {headerContent}
+    </NotionHeader>
     <NotionBody>{children}</NotionBody>
   </NotionDialogStyledWrapper>
 );

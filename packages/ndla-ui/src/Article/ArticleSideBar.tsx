@@ -1,5 +1,5 @@
 import React, { MouseEvent, ReactNode, RefObject, useEffect, useState } from 'react';
-import Button, { CopyButton } from '@ndla/button';
+import { CopyButton, ButtonV2 } from '@ndla/button';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { fonts } from '@ndla/core';
@@ -74,7 +74,7 @@ const ArticleSideBar = ({
       //TOP
       if (resourcesRef.current.getBoundingClientRect().top <= 0) {
         setHide(true);
-      } else if (resourcesRef.current.getBoundingClientRect().top <= 0) {
+      } else if (resourcesRef.current.getBoundingClientRect().top >= 0) {
         setHide(false);
       }
     };
@@ -87,8 +87,7 @@ const ArticleSideBar = ({
           <CopyButton
             onClick={copyLinkHandler}
             size="small"
-            width="full"
-            outline
+            variant="outline"
             aria-live="assertive"
             copyNode={t('article.copyPageLinkCopied')}
             data-copy-string={copyPageUrlLink}>
@@ -99,9 +98,9 @@ const ArticleSideBar = ({
       {licenseBox && (
         <Modal
           activateButton={
-            <Button size="small" width="full" outline>
+            <ButtonV2 size="small" variant="outline">
               {t('article.useContent')}
-            </Button>
+            </ButtonV2>
           }
           size="medium">
           {(onClose: () => void) => (

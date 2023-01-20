@@ -27,15 +27,11 @@ const ImageElement = styled.img`
   height: 100%;
   object-fit: cover;
   overflow: hidden;
-  flex: 1;
 `;
 
 const NoImageElement = styled.div<ItemTypeProps>`
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   flex: 1;
   background: ${(props) => props.contentType && `${resourceTypeColor(props.contentType)}`};
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +50,6 @@ const NoImageElement = styled.div<ItemTypeProps>`
 const ContentTypeWrapper = styled.div<ItemTypeProps>`
   height: 48px;
   background: ${(props) => props.contentType && `${resourceTypeColor(props.contentType)}`};
-  flex: 0 0 auto;
   position: relative;
   display: flex;
   align-items: center;
@@ -84,17 +79,18 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
 `;
 
 const HeaderWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr auto;
   overflow: hidden;
   flex-direction: column;
-  height: 170px;
+  height: 180px;
 `;
 
-type Props = {
+interface Props {
   labels: SearchItemType['item']['labels'];
   img?: SearchItemType['item']['img'] | null;
   type?: ContentType;
-};
+}
 
 const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
   const { t } = useTranslation();

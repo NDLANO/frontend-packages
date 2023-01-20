@@ -29,7 +29,6 @@ const Container = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: ${spacing.small};
   border-radius: 5px;
   border: 1px solid ${colors.brand.neutral7};
 
@@ -49,7 +48,7 @@ const ItemTitle = styled.h3<ItemTypeProps>`
   color: ${colors.brand.primary};
   margin-bottom: ${(props) => props.isTopic && spacing.small};
   font-weight: ${fonts.weight.semibold};
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   margin: 0;
   ${Container}:hover & {
     box-shadow: 0 -1px inset;
@@ -63,8 +62,6 @@ const StyledLink = styled(SafeLink)`
 
 const ItemText = styled.div<ItemTypeProps>`
   ${fonts.sizes('16px', '24px')};
-  word-break: break-word;
-  overflow: hidden;
   ${(props) =>
     props.isTopic &&
     `
@@ -72,18 +69,11 @@ const ItemText = styled.div<ItemTypeProps>`
     `};
 `;
 
-const ContextWrapper = styled.div`
-  align-self: flex-start;
-  background: white;
-  padding: 0 ${spacing.normal} ${spacing.small};
-`;
-
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
-  overflow: hidden;
-  padding: 0 ${spacing.normal};
+  padding: ${spacing.small} ${spacing.normal};
 `;
 
 export interface SearchItemProps {
@@ -135,10 +125,8 @@ const SearchItem = ({ item, type }: SearchItemType) => {
           </>
         )}
         <ItemText isTopic={isTopic}>{parse(ingress)}</ItemText>
-      </ContentWrapper>
-      <ContextWrapper>
         {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
-      </ContextWrapper>
+      </ContentWrapper>
     </Container>
   );
 };

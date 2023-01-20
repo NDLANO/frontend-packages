@@ -44,15 +44,11 @@ const Label = styled.div`
 const TopicHeaderVisualElementWrapper = styled.div`
   float: right;
   margin-left: ${spacing.small};
-  position: relative;
-  width: 112px;
-  height: 112px;
+  width: 110px;
+  height: 110px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
   border-radius: 50%;
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
 `;
 
 const TopicHeaderImage = styled.img`
@@ -67,6 +63,7 @@ interface Props {
   image?: SearchItemType['item']['img'] | null;
   type?: ContentType;
 }
+
 const ItemTopicHeader = ({ children, image, type }: Props) => {
   const { t } = useTranslation();
   return (

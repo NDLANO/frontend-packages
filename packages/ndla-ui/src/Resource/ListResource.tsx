@@ -27,6 +27,7 @@ import { contentTypeMapping } from '../model/ContentType';
 const ListResourceWrapper = styled.div`
   flex: 1;
   display: grid;
+  position: relative;
   grid-template-columns: auto minmax(50px, 1fr) auto;
   grid-template-areas:
     'image  topicAndTitle   tags'
@@ -101,6 +102,7 @@ interface TagsAndActionProps {
 
 const TagsandActionMenu = styled.div<TagsAndActionProps>`
   grid-area: tags;
+  z-index: 1;
   box-sizing: content-box;
   display: grid;
   grid-template-columns: 1fr auto auto;
@@ -220,14 +222,9 @@ const ListResource = ({
   const linkRef = useRef<HTMLAnchorElement>(null);
   const firstContentType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
-  const handleClick = () => {
-    if (linkRef.current) {
-      linkRef.current.click();
-    }
-  };
 
   return (
-    <ListResourceWrapper onClick={handleClick} id={id}>
+    <ListResourceWrapper id={id}>
       <ImageWrapper imageSize={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}

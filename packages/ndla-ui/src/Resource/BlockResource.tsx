@@ -27,6 +27,7 @@ import { contentTypeMapping } from '../model/ContentType';
 
 const BlockElementWrapper = styled.div`
   display: flex;
+  position: relative;
   text-decoration: none;
   box-shadow: none;
   flex-direction: column;
@@ -67,6 +68,7 @@ const BlockDescription = styled.p`
 `;
 
 const RightRow = styled(Row)`
+  z-index: 1;
   justify-content: flex-end;
   margin: 0 -${spacing.small} -${spacing.small} 0;
 `;

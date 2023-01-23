@@ -126,24 +126,13 @@ export const MenuButton = ({
         tabIndex={tabIndex}
         className={className}
         svgSize={svgSizes[size || 'normal']}
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-        }} // Prevent redirect from triggering when placed inside <a>
         {...rest}>
         <MenuIconWrapper svgSize={svgSizes[size || 'normal']}>{menuIcon || <StyledHorizontalMenu />}</MenuIconWrapper>
       </StyledMenuButton>
       <DropdownMenu.Portal>
         <StyledMenuItems align={align}>
           {menuItems?.map(({ type, text, icon, onClick }) => (
-            <StyledMenuItem
-              key={text}
-              onClick={(e) => {
-                onClick(e);
-                e.stopPropagation();
-              }}
-              type={type}
-              aria-label={text}>
+            <StyledMenuItem key={text} onClick={onClick} type={type} aria-label={text}>
               {icon}
               {text}
             </StyledMenuItem>

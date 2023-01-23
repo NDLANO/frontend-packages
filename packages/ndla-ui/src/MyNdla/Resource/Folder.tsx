@@ -23,6 +23,7 @@ interface LayoutProps {
 
 const FolderWrapper = styled.div<LayoutProps>`
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   padding: ${spacing.nsmall};

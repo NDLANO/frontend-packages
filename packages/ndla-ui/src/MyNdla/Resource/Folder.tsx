@@ -168,7 +168,6 @@ interface Props {
 
 const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
   const { t } = useTranslation();
-  const linkRef = useRef<HTMLAnchorElement | null>(null);
 
   return (
     <FolderWrapper type={type} id={id}>
@@ -176,7 +175,7 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
         <IconWrapper>
           <FolderOutlined aria-label={t('myNdla.folder.folder')} />
         </IconWrapper>
-        <ResourceTitleLink to={link} ref={linkRef}>
+        <ResourceTitleLink to={link}>
           <FolderTitle title={title}>{title}</FolderTitle>
         </ResourceTitleLink>
       </TitleWrapper>

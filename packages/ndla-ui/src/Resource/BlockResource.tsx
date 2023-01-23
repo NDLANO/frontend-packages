@@ -164,18 +164,11 @@ const BlockResource = ({
   targetBlank,
   resourceTypes,
 }: Props) => {
-  const linkRef = useRef<HTMLAnchorElement>(null);
   const firstResourceType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
 
-  const handleClick = () => {
-    if (linkRef.current) {
-      linkRef.current.click();
-    }
-  };
-
   return (
-    <BlockElementWrapper onClick={handleClick} id={id}>
+    <BlockElementWrapper id={id}>
       <ImageWrapper>
         <BlockImage
           image={resourceImage}
@@ -186,7 +179,7 @@ const BlockResource = ({
       <BlockInfoWrapper>
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
-            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
+            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link}>
               <Title>{title}</Title>
             </ResourceTitleLink>
           </ResourceTypeAndTitleLoader>

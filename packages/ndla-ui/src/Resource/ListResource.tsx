@@ -219,7 +219,6 @@ const ListResource = ({
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
-  const linkRef = useRef<HTMLAnchorElement>(null);
   const firstContentType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
 
@@ -235,7 +234,7 @@ const ListResource = ({
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
+          <StyledLink to={link} target={targetBlank ? '_blank' : undefined}>
             <Title title={title}>{title}</Title>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />

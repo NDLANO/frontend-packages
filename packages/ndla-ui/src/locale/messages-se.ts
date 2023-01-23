@@ -15,8 +15,8 @@ const titleTemplate = ' - NDLA';
 
 const messages = {
   common: {
-    subject: 'Fag',
-    subject_plural: 'Fag',
+    subject: 'Fága',
+    subject_plural: 'Fágat,
   },
   treeStructure: {
     folderChildOptions: {

@@ -27,6 +27,7 @@ import { contentTypeMapping } from '../model/ContentType';
 
 const BlockElementWrapper = styled.div`
   display: flex;
+  position: relative;
   text-decoration: none;
   box-shadow: none;
   flex-direction: column;
@@ -67,6 +68,7 @@ const BlockDescription = styled.p`
 `;
 
 const RightRow = styled(Row)`
+  z-index: 1;
   justify-content: flex-end;
   margin: 0 -${spacing.small} -${spacing.small} 0;
 `;
@@ -162,18 +164,11 @@ const BlockResource = ({
   targetBlank,
   resourceTypes,
 }: Props) => {
-  const linkRef = useRef<HTMLAnchorElement>(null);
   const firstResourceType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
 
-  const handleClick = () => {
-    if (linkRef.current) {
-      linkRef.current.click();
-    }
-  };
-
   return (
-    <BlockElementWrapper onClick={handleClick} id={id}>
+    <BlockElementWrapper id={id}>
       <ImageWrapper>
         <BlockImage
           image={resourceImage}
@@ -184,7 +179,7 @@ const BlockResource = ({
       <BlockInfoWrapper>
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
-            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
+            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link}>
               <Title>{title}</Title>
             </ResourceTitleLink>
           </ResourceTypeAndTitleLoader>

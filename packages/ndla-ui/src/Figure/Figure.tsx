@@ -25,6 +25,7 @@ const classes = new BEMHelper({
 export const FigureCaption = ({
   figureId,
   id,
+  modalButton,
   children,
   caption,
   authors,
@@ -48,15 +49,19 @@ export const FigureCaption = ({
                 <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
               )}
               <div>
-                <Button
-                  borderShape="rounded"
-                  outline
-                  size="small"
-                  type="button"
-                  data-dialog-trigger-id={id}
-                  data-dialog-source-id={figureId}>
-                  {reuseLabel}
-                </Button>
+                {modalButton ? (
+                  modalButton
+                ) : (
+                  <Button
+                    borderShape="rounded"
+                    outline
+                    size="small"
+                    type="button"
+                    data-dialog-trigger-id={id}
+                    data-dialog-source-id={figureId}>
+                    {reuseLabel}
+                  </Button>
+                )}
                 {hasLinkedVideo && (
                   <Button
                     borderShape="rounded"
@@ -106,9 +111,10 @@ interface FigureCaptionProps {
   figureId: string;
   id?: string;
   caption?: string;
-  reuseLabel: string;
+  reuseLabel?: string;
   licenseRights: string[];
   children?: ReactNode;
+  modalButton?: ReactNode;
   authors?: { name: string }[];
   link?: {
     url: string;

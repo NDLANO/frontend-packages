@@ -22,17 +22,17 @@ type Props = {
   locale: Locale;
 };
 const ArticleContent = ({ content, locale, ...rest }: Props) => {
-  useEffect(() => {
-    removeEventListenerForResize();
-    initArticleScripts();
-    initAudioPlayers(locale);
-    initTooltips();
-    initPopovers();
-    initCopyParagraphButtons();
-    return () => {
-      removeEventListenerForResize();
-    };
-  }, [content, locale]);
+  // useEffect(() => {
+  //   removeEventListenerForResize();
+  //   initArticleScripts();
+  //   initAudioPlayers(locale);
+  //   initTooltips();
+  //   initPopovers();
+  //   initCopyParagraphButtons();
+  //   return () => {
+  //     removeEventListenerForResize();
+  //   };
+  // }, [content, locale]);
 
   return <div dangerouslySetInnerHTML={{ __html: content }} {...rest} />;
 };

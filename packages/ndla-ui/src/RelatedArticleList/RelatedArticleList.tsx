@@ -1,4 +1,5 @@
 import React, { Children, cloneElement, ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import BEMHelper from 'react-bem-helper';
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
@@ -47,7 +48,7 @@ export const RelatedArticle = ({
 };
 
 interface Props {
-  messages: {
+  messages?: {
     title: string;
     showMore: string;
     showLess: string;
@@ -60,6 +61,7 @@ interface Props {
   articleCount?: number;
 }
 const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML, headingLevel }: Props) => {
+  const { t } = useTranslation();
   const clonedChildren =
     !dangerouslySetInnerHTML && children
       ? Children.map(children, (article, i) =>
@@ -73,7 +75,7 @@ const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetIn
   return (
     <section {...classes('')}>
       <SectionHeading headingLevel={headingLevel} className={classes('component-title').className}>
-        {messages.title}
+        {t('related.title')}
       </SectionHeading>
       <div {...classes('articles')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
         {clonedChildren}
@@ -81,10 +83,10 @@ const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetIn
       {childrenCount > 2 && (
         <Button
           data-type="related-article-button"
-          data-showmore={messages.showMore}
-          data-showless={messages.showLess}
+          data-showmore={t('related.showMore')}
+          data-showless={t('related.showLess')}
           outline>
-          {messages.showMore}
+          {t('related.showMore')}
         </Button>
       )}
     </section>

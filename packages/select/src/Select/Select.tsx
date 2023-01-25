@@ -72,7 +72,6 @@ const Select = <T extends boolean>({
       menuPlacement={menuPlacement}
       hideSelectedOptions={false}
       unstyled
-      backspaceRemovesValue={!isMulti}
       menuPortalTarget={portalTarget}
       filterOption={matchFrom === 'start' ? createFilter({ matchFrom: 'start' }) : undefined}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}

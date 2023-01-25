@@ -10,7 +10,7 @@
 // Move components to this file when they are migrated to typescript
 
 export { default as SectionHeading } from './SectionHeading';
-export { ImageEmbed, AudioEmbed } from './Embed';
+export { ImageEmbed, AudioEmbed, H5pEmbed, ExternalEmbed, IframeEmbed, FootnoteEmbed } from './Embed';
 
 export {
   ArticleByline,

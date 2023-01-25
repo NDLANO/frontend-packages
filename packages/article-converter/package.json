@@ -26,6 +26,7 @@
     "es"
   ],
   "dependencies": {
+    "@ndla/code": "^2.1.14",
     "@ndla/ui":"^34.1.2",
     "html-react-parser": "^3.0.8"
   },

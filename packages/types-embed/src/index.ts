@@ -8,7 +8,19 @@
 
 import { ImageEmbedData, ImageMetaData } from './imageTypes';
 import { AudioMetaData, AudioEmbedData } from './audioTypes';
-import { IframeMetaData, IframeEmbedData } from './iframeTypes';
+import { IframeMetaData, IframeEmbedData, IframeData } from './iframeTypes';
+import {
+  H5pMetaData,
+  H5pEmbedData,
+  OembedProxyData,
+  H5pPreviewResponse,
+  H5pOembedData,
+  H5pLicenseInformation,
+} from './h5pTypes';
+import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
+import { CodeEmbedData, CodeMetaData } from './codeTypes';
+import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from './contentLinkTypes';
+import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from './footnoteTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -22,11 +34,42 @@ export type EmbedData =
   | IframeEmbedData
   | CodeEmbedData
   | FootnoteEmbedData
-  | ConceptListEmbedData;
+  | ConceptListEmbedData
+  | OembedEmbedData;
 
-export type EmbedMetaData = ImageMetaData | AudioMetaData | IframeMetaData;
-export type { ImageMetaData, AudioMetaData, IframeMetaData };
-export type { AudioEmbedData, ImageEmbedData, IframeEmbedData };
+export type EmbedMetaData =
+  | AudioMetaData
+  | ContentLinkMetaData
+  | ImageMetaData
+  | IframeMetaData
+  | H5pMetaData
+  | OembedMetaData
+  | CodeMetaData
+  | FootnoteMetaData;
+export type {
+  ImageMetaData,
+  AudioMetaData,
+  IframeMetaData,
+  H5pMetaData,
+  CodeMetaData,
+  ContentLinkMetaData,
+  FootnoteMetaData,
+};
+export type {
+  AudioEmbedData,
+  ImageEmbedData,
+  IframeEmbedData,
+  H5pEmbedData,
+  CodeEmbedData,
+  ContentLinkEmbedData,
+  FootnoteEmbedData,
+};
+export type { OembedEmbedData, OembedData, OembedMetaData };
+export type { IframeData };
+export type { ContentLinkData };
+export type { FootnoteData };
+
+export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation };
 
 interface MetaDataFailure<EmbedData> {
   embedData: EmbedData;
@@ -44,12 +87,22 @@ interface MetaDataSuccess<EmbedData, MetaData> {
 
 export type MetaData<EmbedData, MetaData> = MetaDataFailure<EmbedData> | MetaDataSuccess<EmbedData, MetaData>;
 
-export interface ContentLinkEmbedData {
-  resource: 'content-link';
-  contentId: string;
-  linkText?: string;
-  openIn?: string;
-  contentType?: string;
+export interface OembedProxyResponse {
+  type: string;
+  version: string;
+  title?: string;
+  description?: string;
+  authorName?: string;
+  authorUrl?: string;
+  providerName?: string;
+  providerUrl?: string;
+  cacheAge?: number;
+  thumbnailUrl?: string;
+  thumbnailWidth?: number;
+  thumbnailHeight?: number;
+  width?: number;
+  height?: number;
+  html?: string;
 }
 
 export type ConceptEmbedData = {
@@ -66,13 +119,6 @@ export type ConceptListEmbedData = {
   subjectId: string;
 };
 
-export interface CodeEmbedData {
-  resource: 'code-block';
-  codeFormat: string;
-  codeContent: string;
-  title?: string;
-}
-
 export type BrightcoveEmbedData = {
   resource: 'brightcove' | 'video';
   videoid: string;
@@ -83,23 +129,6 @@ export type BrightcoveEmbedData = {
   title: string;
   metaData?: any;
 };
-
-export interface FootnoteEmbedData {
-  resource: 'footnote';
-  title: string;
-  type: string;
-  year: string;
-  edition: string;
-  publisher: string;
-  authors: string;
-}
-
-export interface H5pEmbedData {
-  resource: 'h5p';
-  path: string;
-  url?: string;
-  title?: string;
-}
 
 export interface RelatedContentEmbedData {
   resource: 'related-content';

@@ -8,9 +8,17 @@
 
 import { PluginType } from '../types';
 import { AudioEmbedPlugin } from './AudioEmbedPlugin';
+import { ExternalEmbedPlugin } from './ExternalEmbedPlugin';
+import { H5pEmbedPlugin } from './H5pEmbedPlugin';
+import { IframeEmbedPlugin } from './IframeEmbedPlugin';
 import { ImageEmbedPlugin } from './ImageEmbedPlugin';
+import { FootnoteEmbedPlugin } from './FootnoteEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: ImageEmbedPlugin,
   audio: AudioEmbedPlugin,
+  h5p: H5pEmbedPlugin,
+  external: ExternalEmbedPlugin,
+  iframe: IframeEmbedPlugin,
+  footnote: FootnoteEmbedPlugin,
 };

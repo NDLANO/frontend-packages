@@ -20,4 +20,8 @@ export interface IframeEmbedData {
   imageid?: string;
 }
 
-export type IframeMetaData = MetaData<IframeEmbedData, IImageMetaInformationV2 | undefined>;
+export interface IframeData {
+  iframeImage?: IImageMetaInformationV2;
+}
+
+export type IframeMetaData = MetaData<IframeEmbedData, IframeData>;

@@ -30,7 +30,7 @@ export default {
 export const SelectStory: ComponentStory<typeof Select> = (args) => {
   return (
     <div style={{ display: 'flex' }}>
-      <Select {...args} placeholder="Velg en farge" />
+      <Select {...args} />
     </div>
   );
 };

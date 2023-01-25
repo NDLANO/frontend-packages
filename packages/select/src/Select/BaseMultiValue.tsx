@@ -6,30 +6,12 @@
  *
  */
 import React from 'react';
-import isArray from 'lodash/isArray';
-import { useTranslation } from 'react-i18next';
 import { MultiValueProps } from 'react-select';
 import { Option } from './types';
-import { TextEllipsis } from './BasePlaceholder';
+import { TextEllipsis } from './BaseSingleValue';
 
-const BaseMultiValue = <T extends boolean>({
-  selectProps: { value, postfix },
-  data,
-  children,
-}: MultiValueProps<Option, T>) => {
-  const { t } = useTranslation();
-
-  const count = isArray(value) ? value.length : 0;
-  const isLastItem = isArray(value) && data === value[count - 1];
-
-  if (count === 1) return <TextEllipsis>{children}</TextEllipsis>;
-  if (isLastItem)
-    return (
-      <TextEllipsis>
-        {t('dropdown.selected', { count })} <span>{postfix}</span>
-      </TextEllipsis>
-    );
-  return null;
+const BaseMultiValue = <T extends boolean>({ children }: MultiValueProps<Option, T>) => {
+  return <TextEllipsis>{children}</TextEllipsis>;
 };
 
 export default BaseMultiValue;

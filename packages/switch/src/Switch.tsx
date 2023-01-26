@@ -37,7 +37,6 @@ const SwitchWrapper = styled.div`
 `;
 
 interface ThumbProps {
-  checked?: boolean;
   switchLabel?: SwitchLabel;
 }
 
@@ -64,11 +63,16 @@ const StyledThumb = styled(Thumb)<ThumbProps>`
     background-color: ${colors.brand.primary};
   }
 
-  ${({ switchLabel, checked }) =>
+  ${({ switchLabel }) =>
     switchLabel &&
     css`
+      &[data-state='checked']::before {
+        content: '${switchLabel.labelOn}';
+      }
+      &[data-state='unchecked']::before {
+        content: '${switchLabel.labelOff}';
+      }
       &::before {
-        content: '${checked ? switchLabel.labelOn : switchLabel.labelOff}';
         margin-top: 0.63px;
         display: flex;
         justify-content: center;
@@ -111,13 +115,13 @@ const StyledRoot = styled(Root)`
   }
 `;
 
-const SwitchV2 = ({ onChange, label, id, className, checked, switchLabel, ...rest }: Props) => {
+const SwitchV2 = ({ onChange, label, id, className, switchLabel, ...rest }: Props) => {
   return (
     <SwitchWrapper className={className}>
       <label htmlFor={`switch-${id}`}>{label}</label>
-      <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} checked={checked} {...rest}>
+      <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} {...rest}>
         <StyledTrack />
-        <StyledThumb checked={checked} switchLabel={switchLabel} />
+        <StyledThumb switchLabel={switchLabel} />
       </StyledRoot>
     </SwitchWrapper>
   );

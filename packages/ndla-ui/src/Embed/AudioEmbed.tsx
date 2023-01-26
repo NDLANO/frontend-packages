@@ -29,7 +29,6 @@ import { Author } from './ImageEmbed';
 
 interface Props {
   embed: AudioMetaData;
-  frontendDomain: string;
 }
 export const getFirstNonEmptyLicenseCredits = (authors: {
   creators: Author[];
@@ -43,7 +42,7 @@ const renderMarkdown = (text: string) => {
   return <span dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 
-const AudioEmbed = ({ embed, frontendDomain }: Props) => {
+const AudioEmbed = ({ embed }: Props) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   if (embed.status === 'error') {
@@ -73,9 +72,7 @@ const AudioEmbed = ({ embed, frontendDomain }: Props) => {
     return <AudioPlayer speech src={data.audioFile.url} title={data.title.title} />;
   }
 
-  const subtitle = data.series
-    ? { title: data.series.title.title, url: `${frontendDomain}/podkast/${data.series.id}` }
-    : undefined;
+  const subtitle = data.series ? { title: data.series.title.title, url: `/podkast/${data.series.id}` } : undefined;
 
   const textVersion = data.manuscript && renderMarkdown(data.manuscript.manuscript);
   const description = renderMarkdown(data.podcastMeta?.introduction ?? '');
@@ -105,7 +102,7 @@ const AudioEmbed = ({ embed, frontendDomain }: Props) => {
           '', // options.shortPath || options.path,
           data.copyright,
           data.copyright.license.license,
-          frontendDomain,
+          undefined, // frontendDomain
           (id: string) => t(id),
           i18n.language,
         )
@@ -142,7 +139,7 @@ const AudioEmbed = ({ embed, frontendDomain }: Props) => {
             title={data.title.title}
             license={license}
             authors={contributors}
-            origin={origin}
+            origin={''} // Todo: Fix origin
             locale={i18n.language}
             messages={{
               title: t('title'),
@@ -169,12 +166,7 @@ const AudioEmbed = ({ embed, frontendDomain }: Props) => {
         )}
       </ModalV2>
       {data.imageMeta && (
-        <ImageLicense
-          image={data.imageMeta}
-          figureId={figureId}
-          figureLicenseDialogId={figureLicenseDialogId}
-          frontendDomain={frontendDomain}
-        />
+        <ImageLicense image={data.imageMeta} figureId={figureId} figureLicenseDialogId={figureLicenseDialogId} />
       )}
     </Figure>
   );
@@ -183,11 +175,10 @@ const AudioEmbed = ({ embed, frontendDomain }: Props) => {
 interface ImageLicenseProps {
   image: IImageMetaInformationV2;
   figureId: string;
-  frontendDomain: string;
   figureLicenseDialogId: string;
 }
 
-const ImageLicense = ({ image, figureId, frontendDomain, figureLicenseDialogId }: ImageLicenseProps) => {
+const ImageLicense = ({ image, figureId, figureLicenseDialogId }: ImageLicenseProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const {
@@ -207,7 +198,7 @@ const ImageLicense = ({ image, figureId, frontendDomain, figureLicenseDialogId }
     '', // options.shortPath || options.path,
     copyright,
     copyright.license.license,
-    frontendDomain,
+    undefined, // frontendDomain
     (id: string) => t(id),
     i18n.language,
   );
@@ -242,7 +233,7 @@ const ImageLicense = ({ image, figureId, frontendDomain, figureLicenseDialogId }
               title={image.title.title}
               license={license}
               authors={contributors}
-              origin={origin}
+              origin={''} // Todo: Fix origin
               locale={i18n.language}
               messages={{
                 title: t('title'),

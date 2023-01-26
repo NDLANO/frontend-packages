@@ -11,8 +11,8 @@ import { AudioMetaData } from '@ndla/types-embed';
 import { AudioEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const AudioEmbedPlugin: PluginType = (element, _, transformOpts) => {
+export const AudioEmbedPlugin: PluginType = (element, _) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as AudioMetaData;
-  return <AudioEmbed embed={data} frontendDomain={transformOpts.frontendDomain} />;
+  return <AudioEmbed embed={data} />;
 };

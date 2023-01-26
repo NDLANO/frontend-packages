@@ -175,7 +175,7 @@ const ImageEmbed = ({ embed }: Props) => {
                   license={license}
                   onClose={close}
                   authors={contributors}
-                  origin={origin}
+                  origin={''} // Todo: Fix origin
                   locale={i18n.language}
                   messages={{
                     title: t('title'),

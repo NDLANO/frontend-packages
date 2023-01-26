@@ -12,7 +12,7 @@ import { TransformOptions } from './plugins/types';
 import { embedPlugins } from './plugins/embed';
 
 const transform = (content: string, opts: TransformOptions) => {
-  const plugins = opts.isOembed ? oembedPlugins : basePlugins;
+  const plugins = opts?.isOembed ? oembedPlugins : basePlugins;
   const options: HTMLReactParserOptions = {
     replace: (node) => {
       if (!('attribs' in node)) {

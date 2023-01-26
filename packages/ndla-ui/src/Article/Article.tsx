@@ -123,6 +123,7 @@ type Props = {
   modifier?: string;
   children?: ReactNode;
   messages: Messages;
+  contentTransformed?: boolean;
   locale: Locale;
   messageBoxLinks?: [];
   copyText?: string;
@@ -137,7 +138,10 @@ type Props = {
   accessMessage?: string;
 };
 
-const getArticleContent = (content: any, locale: Locale) => {
+const getArticleContent = (content: any, locale: Locale, contentTransformed?: boolean) => {
+  if (contentTransformed) {
+    return content;
+  }
   switch (typeof content) {
     case 'string':
       return <ArticleContent content={content} locale={locale} />;
@@ -166,6 +170,7 @@ export const Article = ({
   accessMessage,
   heartButton,
   copyText,
+  contentTransformed,
 }: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
@@ -231,7 +236,7 @@ export const Article = ({
               buttonOffsetRight={articlePositionRight}
             />
           )}
-          {getArticleContent(content, locale)}
+          {getArticleContent(content, locale, contentTransformed)}
         </LayoutItem>
 
         <LayoutItem layout="center">

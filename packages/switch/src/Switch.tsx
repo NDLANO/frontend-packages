@@ -9,20 +9,14 @@
 import React from 'react';
 import { Root, Thumb, SwitchProps } from '@radix-ui/react-switch';
 import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import { css } from '@emotion/react';
-
-interface SwitchLabel {
-  labelOn: string;
-  labelOff: string;
-}
+import { colors, fonts, spacing } from '@ndla/core';
 
 interface Props extends Omit<SwitchProps, 'asChild' | 'id' | 'onChange' | 'onCheckedChange'> {
   checked: boolean;
   onChange: (checked: boolean) => void;
   label: string;
   id: string | number;
-  switchLabel?: SwitchLabel;
+  thumbCharacter?: string;
 }
 
 const SwitchWrapper = styled.div`
@@ -36,11 +30,7 @@ const SwitchWrapper = styled.div`
   }
 `;
 
-interface ThumbProps {
-  switchLabel?: SwitchLabel;
-}
-
-const StyledThumb = styled(Thumb)<ThumbProps>`
+const StyledThumb = styled(Thumb)`
   position: absolute;
   transform: translate(0px, -50%);
   width: 23px;
@@ -62,26 +52,6 @@ const StyledThumb = styled(Thumb)<ThumbProps>`
     transform: translate(19px, -50%);
     background-color: ${colors.brand.primary};
   }
-
-  ${({ switchLabel }) =>
-    switchLabel &&
-    css`
-      &[data-state='checked']::before {
-        content: '${switchLabel.labelOn}';
-      }
-      &[data-state='unchecked']::before {
-        content: '${switchLabel.labelOff}';
-      }
-      &::before {
-        margin-top: 0.63px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-weight: 600;
-        font-size: 0.8rem;
-      }
-    `}
 `;
 
 const StyledTrack = styled.div`
@@ -115,13 +85,20 @@ const StyledRoot = styled(Root)`
   }
 `;
 
-const SwitchV2 = ({ onChange, label, id, className, switchLabel, ...rest }: Props) => {
+const StyledThumbChar = styled.div`
+  text-align: center;
+  color: ${colors.white};
+  font-weight: 600;
+  ${fonts.sizes('14px', '23px')}
+`;
+
+const SwitchV2 = ({ onChange, label, id, className, thumbCharacter, ...rest }: Props) => {
   return (
     <SwitchWrapper className={className}>
       <label htmlFor={`switch-${id}`}>{label}</label>
       <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} {...rest}>
         <StyledTrack />
-        <StyledThumb switchLabel={switchLabel} />
+        <StyledThumb>{thumbCharacter && <StyledThumbChar>{thumbCharacter}</StyledThumbChar>}</StyledThumb>
       </StyledRoot>
     </SwitchWrapper>
   );

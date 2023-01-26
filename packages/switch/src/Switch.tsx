@@ -10,12 +10,19 @@ import React from 'react';
 import { Root, Thumb, SwitchProps } from '@radix-ui/react-switch';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
+import { css } from '@emotion/react';
+
+interface SwitchLabel {
+  labelOn: string;
+  labelOff: string;
+}
 
 interface Props extends Omit<SwitchProps, 'asChild' | 'id' | 'onChange' | 'onCheckedChange'> {
   checked: boolean;
   onChange: (checked: boolean) => void;
   label: string;
   id: string | number;
+  switchLabel?: SwitchLabel;
 }
 
 const SwitchWrapper = styled.div`
@@ -29,7 +36,12 @@ const SwitchWrapper = styled.div`
   }
 `;
 
-const StyledThumb = styled(Thumb)`
+interface ThumbProps {
+  checked?: boolean;
+  switchLabel?: SwitchLabel;
+}
+
+const StyledThumb = styled(Thumb)<ThumbProps>`
   position: absolute;
   transform: translate(0px, -50%);
   width: 23px;
@@ -51,6 +63,21 @@ const StyledThumb = styled(Thumb)`
     transform: translate(19px, -50%);
     background-color: ${colors.brand.primary};
   }
+
+  ${({ switchLabel, checked }) =>
+    switchLabel &&
+    css`
+      &::before {
+        content: '${checked ? switchLabel.labelOn : switchLabel.labelOff}';
+        margin-top: 0.63px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+    `}
 `;
 
 const StyledTrack = styled.div`
@@ -84,13 +111,13 @@ const StyledRoot = styled(Root)`
   }
 `;
 
-const SwitchV2 = ({ onChange, label, id, className, ...rest }: Props) => {
+const SwitchV2 = ({ onChange, label, id, className, checked, switchLabel, ...rest }: Props) => {
   return (
     <SwitchWrapper className={className}>
       <label htmlFor={`switch-${id}`}>{label}</label>
-      <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} {...rest}>
+      <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} checked={checked} {...rest}>
         <StyledTrack />
-        <StyledThumb />
+        <StyledThumb checked={checked} switchLabel={switchLabel} />
       </StyledRoot>
     </SwitchWrapper>
   );

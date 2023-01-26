@@ -21,6 +21,7 @@ export default {
     disabled: false,
     defaultChecked: false,
     className: '',
+    switchLabel: { labelOn: 'G', labelOff: 'U' },
   },
   parameters: {
     ...defaultParameters,

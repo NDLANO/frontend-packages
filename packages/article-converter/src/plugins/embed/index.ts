@@ -13,6 +13,9 @@ import { H5pEmbedPlugin } from './H5pEmbedPlugin';
 import { IframeEmbedPlugin } from './IframeEmbedPlugin';
 import { ImageEmbedPlugin } from './ImageEmbedPlugin';
 import { FootnoteEmbedPlugin } from './FootnoteEmbedPlugin';
+import { BrightcoveEmbedPlugin } from './BrightcoveEmbedPlugin';
+import { RelatedContentEmbedPlugin } from './RelatedContentEmbedPlugin';
+import { ContentLinkEmbedPlugin } from './ContentLinkEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: ImageEmbedPlugin,
@@ -21,4 +24,7 @@ export const embedPlugins: Record<string, PluginType> = {
   external: ExternalEmbedPlugin,
   iframe: IframeEmbedPlugin,
   footnote: FootnoteEmbedPlugin,
+  brightcove: BrightcoveEmbedPlugin,
+  'related-content': RelatedContentEmbedPlugin,
+  'content-link': ContentLinkEmbedPlugin,
 };

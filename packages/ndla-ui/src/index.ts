@@ -10,7 +10,17 @@
 // Move components to this file when they are migrated to typescript
 
 export { default as SectionHeading } from './SectionHeading';
-export { ImageEmbed, AudioEmbed, H5pEmbed, ExternalEmbed, IframeEmbed, FootnoteEmbed } from './Embed';
+export {
+  ImageEmbed,
+  AudioEmbed,
+  H5pEmbed,
+  ExternalEmbed,
+  IframeEmbed,
+  FootnoteEmbed,
+  BrightcoveEmbed,
+  ContentLinkEmbed,
+  RelatedContentEmbed,
+} from './Embed';
 
 export {
   ArticleByline,
@@ -40,7 +50,7 @@ export { default as Portrait } from './Portrait';
 
 export { default as ContentLoader } from './ContentLoader';
 
-export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
+export { default as RelatedArticleList, RelatedArticle, RelatedArticleListV2 } from './RelatedArticleList';
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 

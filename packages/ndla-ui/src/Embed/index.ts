@@ -12,3 +12,6 @@ export { default as H5pEmbed } from './H5pEmbed';
 export { default as ExternalEmbed } from './ExternalEmbed';
 export { default as IframeEmbed } from './IframeEmbed';
 export { default as FootnoteEmbed } from './FootnoteEmbed';
+export { default as BrightcoveEmbed } from './BrightcoveEmbed';
+export { default as ContentLinkEmbed } from './ContentLinkEmbed';
+export { default as RelatedContentEmbed } from './RelatedContentEmbed';

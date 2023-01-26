@@ -21,6 +21,14 @@ import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
 import { CodeEmbedData, CodeMetaData } from './codeTypes';
 import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from './contentLinkTypes';
 import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from './footnoteTypes';
+import {
+  BrightcoveData,
+  BrightcoveEmbedData,
+  BrightcoveMetaData,
+  BrightcoveVideoSource,
+  BrightcoveApiType,
+} from './brightcoveTypes';
+import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from './relatedContentTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -39,8 +47,10 @@ export type EmbedData =
 
 export type EmbedMetaData =
   | AudioMetaData
+  | BrightcoveMetaData
   | ContentLinkMetaData
   | ImageMetaData
+  | RelatedContentMetaData
   | IframeMetaData
   | H5pMetaData
   | OembedMetaData
@@ -48,6 +58,8 @@ export type EmbedMetaData =
   | FootnoteMetaData;
 export type {
   ImageMetaData,
+  RelatedContentMetaData,
+  BrightcoveMetaData,
   AudioMetaData,
   IframeMetaData,
   H5pMetaData,
@@ -56,6 +68,8 @@ export type {
   FootnoteMetaData,
 };
 export type {
+  BrightcoveEmbedData,
+  RelatedContentEmbedData,
   AudioEmbedData,
   ImageEmbedData,
   IframeEmbedData,
@@ -68,6 +82,8 @@ export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };
 export type { FootnoteData };
+export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource };
+export type { RelatedContentData };
 
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation };
 
@@ -118,24 +134,6 @@ export type ConceptListEmbedData = {
   title: string;
   subjectId: string;
 };
-
-export type BrightcoveEmbedData = {
-  resource: 'brightcove' | 'video';
-  videoid: string;
-  caption: string;
-  url?: string;
-  account: string;
-  player: string;
-  title: string;
-  metaData?: any;
-};
-
-export interface RelatedContentEmbedData {
-  resource: 'related-content';
-  articleId?: string;
-  url?: string;
-  title?: string;
-}
 
 export interface NRKEmbedData {
   resource: 'nrk';

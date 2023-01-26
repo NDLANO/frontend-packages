@@ -29,67 +29,50 @@ const SwitchWrapper = styled.div`
     cursor: pointer;
   }
 `;
-
 const StyledThumb = styled(Thumb)`
-  position: absolute;
-  transform: translate(0px, -50%);
-  width: 23px;
-  height: 23px;
-  background-color: ${colors.brand.greyMedium};
-  border-radius: 100%;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: ${colors.white};
+  border-radius: 9999px;
   transition: transform 100ms;
+  transform: translateX(2px);
   will-change: transform;
 
-  &[data-state='unchecked'] {
-    &:hover,
-    &:focus,
-    &:focus-within {
-      background-color: ${colors.brand.grey};
-    }
-  }
-
   &[data-state='checked'] {
-    transform: translate(19px, -50%);
-    background-color: ${colors.brand.primary};
+    transform: translateX(22px);
   }
 `;
-
-const StyledTrack = styled.div`
-  position: absolute;
-  transform: translateY(-50%);
-  width: 39px;
-  height: 18px;
-  margin-left: 2px;
-  margin-right: 2px;
-  background-color: ${colors.brand.greyLight};
-  border-radius: ${spacing.normal};
-`;
-
 const StyledRoot = styled(Root)`
   all: unset;
-  display: block;
+  width: 40px;
+  height: 20px;
+  border-radius: 9999px;
   position: relative;
-  width: 42px;
-  height: 25px;
+
   &[data-state='checked'] {
-    ${StyledTrack} {
-      background-color: ${colors.brand.light};
+    background-color: ${colors.brand.primary};
+  }
+  &[data-state='unchecked'] {
+    background-color: ${colors.text.light};
+  }
+  &:hover,
+  &:focus,
+  &:focus-within {
+    &[data-state='checked'] {
+      background-color: ${colors.brand.secondary};
     }
-    &:hover,
-    &:focus,
-    &:focus-within {
-      ${StyledTrack} {
-        background-color: ${colors.brand.tertiary};
-      }
+    &[data-state='unchecked'] {
+      background-color: ${colors.brand.greyMedium};
     }
   }
 `;
 
 const StyledThumbChar = styled.div`
   text-align: center;
-  color: ${colors.white};
+  color: ${colors.black};
   font-weight: 600;
-  ${fonts.sizes('14px', '23px')}
+  ${fonts.sizes('14px', '16px')}
 `;
 
 const SwitchV2 = ({ onChange, label, id, className, thumbCharacter, ...rest }: Props) => {
@@ -97,7 +80,6 @@ const SwitchV2 = ({ onChange, label, id, className, thumbCharacter, ...rest }: P
     <SwitchWrapper className={className}>
       <label htmlFor={`switch-${id}`}>{label}</label>
       <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} {...rest}>
-        <StyledTrack />
         <StyledThumb>{thumbCharacter && <StyledThumbChar>{thumbCharacter}</StyledThumbChar>}</StyledThumb>
       </StyledRoot>
     </SwitchWrapper>

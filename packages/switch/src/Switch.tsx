@@ -17,6 +17,7 @@ interface Props extends Omit<SwitchProps, 'asChild' | 'id' | 'onChange' | 'onChe
   label: string;
   id: string | number;
   thumbCharacter?: string;
+  onOffVariant?: boolean;
 }
 
 const SwitchWrapper = styled.div`
@@ -43,7 +44,7 @@ const StyledThumb = styled(Thumb)`
     transform: translateX(22px);
   }
 `;
-const StyledRoot = styled(Root)`
+const StyledRoot = styled(Root)<{ onOffVariant: boolean }>`
   all: unset;
   width: 40px;
   height: 20px;
@@ -54,7 +55,7 @@ const StyledRoot = styled(Root)`
     background-color: ${colors.brand.primary};
   }
   &[data-state='unchecked'] {
-    background-color: ${colors.text.light};
+    background-color: ${({ onOffVariant }) => (onOffVariant ? colors.text.light : colors.brand.primary)};
   }
   &:hover,
   &:focus,
@@ -63,7 +64,7 @@ const StyledRoot = styled(Root)`
       background-color: ${colors.brand.secondary};
     }
     &[data-state='unchecked'] {
-      background-color: ${colors.brand.greyMedium};
+      background-color: ${({ onOffVariant }) => (onOffVariant ? colors.brand.greyMedium : colors.brand.secondary)};
     }
   }
 `;
@@ -75,11 +76,11 @@ const StyledThumbChar = styled.div`
   ${fonts.sizes('14px', '16px')}
 `;
 
-const SwitchV2 = ({ onChange, label, id, className, thumbCharacter, ...rest }: Props) => {
+const SwitchV2 = ({ onChange, label, id, className, thumbCharacter, onOffVariant = true, ...rest }: Props) => {
   return (
     <SwitchWrapper className={className}>
       <label htmlFor={`switch-${id}`}>{label}</label>
-      <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} {...rest}>
+      <StyledRoot id={`switch-${id}`} onCheckedChange={onChange} onOffVariant={onOffVariant} {...rest}>
         <StyledThumb>{thumbCharacter && <StyledThumbChar>{thumbCharacter}</StyledThumbChar>}</StyledThumb>
       </StyledRoot>
     </SwitchWrapper>

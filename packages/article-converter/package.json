@@ -1,17 +1,17 @@
 {
   "name": "@ndla/article-converter",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Transforms NDLA articles into extended html versions",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "build": "yarn build:types",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",
@@ -23,11 +23,12 @@
   "author": "ndla@knowit.no",
   "files": [
     "lib",
-    "es"
+    "es",
+    "src"
   ],
   "dependencies": {
-    "@ndla/code": "^2.1.14",
-    "@ndla/ui":"^34.1.2",
+    "@ndla/code": "^2.1.13",
+    "@ndla/ui": "^34.1.2",
     "html-react-parser": "^3.0.8"
   },
   "peerDependencies": {

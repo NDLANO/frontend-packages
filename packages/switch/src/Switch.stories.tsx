@@ -22,7 +22,6 @@ export default {
     defaultChecked: false,
     className: '',
     thumbCharacter: 'G',
-    onOffVariant: true,
   },
   parameters: {
     ...defaultParameters,

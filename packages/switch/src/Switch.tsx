@@ -60,10 +60,10 @@ const StyledRoot = styled(Root)`
   &:focus,
   &:focus-within {
     &[data-state='checked'] {
-      background-color: ${colors.brand.secondary};
+      background-color: ${colors.brand.dark};
     }
     &[data-state='unchecked'] {
-      background-color: ${colors.brand.greyMedium};
+      background-color: ${colors.brand.greyDark};
     }
   }
 `;

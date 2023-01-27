@@ -71,7 +71,7 @@ const StyledRoot = styled(Root)`
 const StyledThumbChar = styled.div`
   text-align: center;
   color: ${colors.black};
-  font-weight: 600;
+  font-weight: ${fonts.weight.semibold};
   ${fonts.sizes('14px', '16px')};
   user-select: none;
 `;

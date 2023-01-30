@@ -12,7 +12,7 @@ import {
   removeEventListenerForResize,
   // @ts-ignore
 } from '@ndla/article-scripts';
-import { initTooltips } from '@ndla/tooltip';
+import { initPopovers, initTooltips } from '@ndla/tooltip';
 import { initAudioPlayers } from '../AudioPlayer';
 import { initCopyParagraphButtons } from '../CopyParagraphButton';
 import { Locale } from '../types';
@@ -26,8 +26,9 @@ const ArticleContent = ({ content, locale, ...rest }: Props) => {
     removeEventListenerForResize();
     initArticleScripts();
     initAudioPlayers(locale);
-    initCopyParagraphButtons();
     initTooltips();
+    initPopovers();
+    initCopyParagraphButtons();
     return () => {
       removeEventListenerForResize();
     };

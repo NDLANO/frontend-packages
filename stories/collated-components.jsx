@@ -19,7 +19,6 @@ import {
   LanguageSelector,
   OneColumn,
   Content,
-  i18nInstance,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 import { Translation as I18nTranslate } from 'react-i18next';
@@ -27,7 +26,7 @@ import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureImage from './article/FigureImage';
-import { topicList, mockFooterLinks } from '../dummydata/index';
+import { mockFooterLinks } from '../dummydata/index';
 import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
@@ -55,7 +54,6 @@ import ComponentInfo from './ComponentInfo';
 
 import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
-import SwitchExample from './atoms/SwitchExample';
 import FooterExample from './molecules/footers';
 import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
@@ -671,24 +669,7 @@ storiesOf('Sammensatte moduler', module)
       <Center>
         <Footer
           links={mockFooterLinks}
-          languageSelector={
-            <LanguageSelector
-              center
-              outline
-              alwaysVisible
-              options={{
-                nb: {
-                  name: 'Bokmål',
-                  url: '#',
-                },
-                nn: {
-                  name: 'Nynorsk',
-                  url: '#',
-                },
-              }}
-              currentLanguage={i18nInstance.language}
-            />
-          }
+          languageSelector={<LanguageSelector locales={['nb', 'nn']} onSelect={() => {}} />}
           privacyLinks={privacyLinks}>
           <FooterText>
             <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
@@ -698,11 +679,6 @@ storiesOf('Sammensatte moduler', module)
       </Center>
     );
   })
-  .add('Switch kontroller', () => (
-    <div>
-      <SwitchExample />
-    </div>
-  ))
 
   .add('Ressurs fra lenke', () => (
     <PageContainer>

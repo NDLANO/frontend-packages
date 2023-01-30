@@ -78,9 +78,9 @@ const FilmMovieSearch = ({
       <OneColumn>
         <TopicNavigation>
           <StyledHeadingH2 id={skipToContentId} className="u-12/12 u-4/12@tablet">
-            {t('ndlaFilm.subjectsInMovies')}:
+            {`${t('ndlaFilm.subjectsInMovies')}:`}
           </StyledHeadingH2>
-          <nav className="u-12/12 u-8/12@tablet">
+          <nav className="u-12/12 u-8/12@tablet" aria-labelledby={skipToContentId}>
             <ul>
               {topics.map((topic) => (
                 <li key={topic.id}>

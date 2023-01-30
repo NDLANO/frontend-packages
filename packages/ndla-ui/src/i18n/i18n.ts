@@ -13,6 +13,7 @@ import messagesEN from '../locale/messages-en';
 import messagesNN from '../locale/messages-nn';
 import messagesNB from '../locale/messages-nb';
 import messagesSE from '../locale/messages-se';
+import messagesSMA from '../locale/messages-sma';
 
 const DETECTION_OPTIONS = {
   order: ['path', 'localStorage', 'htmlTag'],
@@ -26,7 +27,7 @@ i18nInstance.init({
   compatibilityJSON: 'v3',
   detection: DETECTION_OPTIONS,
   fallbackLng: 'nb',
-  supportedLngs: ['nb', 'nn', 'en', 'se'],
+  supportedLngs: ['nb', 'nn', 'en', 'se', 'sma'],
   resources: {
     en: {
       translation: messagesEN,
@@ -39,6 +40,9 @@ i18nInstance.init({
     },
     se: {
       translation: messagesSE,
+    },
+    sma: {
+      translation: messagesSMA,
     },
   },
 });

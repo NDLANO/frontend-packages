@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Subject',
+    subject_plural: 'Subjects',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Edit foldername',
@@ -253,8 +257,24 @@ const messages = {
     archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
+    filterSubjects: 'Filter subjects',
+    scrollToGroup: 'Scroll to group',
+    goToTop: 'Scroll to top',
+    alphabeticSort: 'Subjects grouped alphabetically',
+    subjectGroup: 'Group "{{ category }}"',
+    allSubjects: 'All subjects',
+    myFavoriteSubjects: 'My favorite subjects',
     chooseSubject: 'Choose subject',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',
+    confirmRemove: 'Are you sure you want to remove {{subject}} from your favorite subjects?',
+    addFavorite: 'Add favorite subject',
+    removeFavorite: 'Remove favorite subject',
+    removeConfirmed: '{{subject}} is removed from your favorite subjects',
+    addConfirmed: '{{subject}} is added to your favorite subjects',
+    subjectFavoritePitch: 'Do you want to favorite this subject?',
+    subjectFavoriteGuide:
+      'To favorite a subject you must log in to My NDLA. You will find the subject on the top of this page after logging in.',
+    shows: 'Shows',
   },
   topicPage: {
     articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
@@ -328,6 +348,7 @@ const messages = {
       },
     },
     menu: {
+      button: 'Menu',
       goToMainMenu: 'Go to main menu',
       close: 'Close',
       goTo: 'Go to',
@@ -425,7 +446,7 @@ const messages = {
   article: {
     edition: 'Edition',
     publisher: 'Publisher',
-    lastUpdated: 'Last updated',
+    lastUpdated: 'Last revised date',
     closeLabel: 'Close',
     useContent: 'Cite or use',
     additionalLabel: 'Additional content',
@@ -460,7 +481,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Use filter',
     closeCompentenceGoalsFilter: 'Close filter',
     competenceGoalsNarrowBackButton: 'Go back',
-    competenceGoalResourceSearchText: 'Search all resources appropriate to this goal',
+    competenceGoalResourceSearchText: 'View resources to competence goal {{goal}}',
     competenceGoalShowExtra: 'Show',
     competenceGoalCloseExtra: 'Hide',
     competenceCoreLabel: 'Core element',
@@ -471,9 +492,10 @@ const messages = {
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
     competenceGoalTitle: 'The pupil is expected to be able to:',
-    competenceTabLK06label: 'Competence goal (LK06)',
-    competenceTabLK20label: 'Competence goal (LK20)',
+    competenceTabLK20label: 'Competence goal',
+    competenceTabLK20Tooltip: 'Show competence goals',
     competenceTabCorelabel: 'Core element',
+    competenceTabCoreTooltip: 'Show core elements',
     competenceGoalItem: {
       title: 'Competence goals and assessment',
     },
@@ -617,11 +639,12 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'About NDLA',
+    socialMedia: 'Social media',
     selectLanguage: 'Choose language (språk): ',
     info: 'This webapplication is developed by NDLA as Open Source code.',
-    editorInChief: 'Editor in chief: ',
-    managingEditor: 'Managing editor: ',
+    editorInChief: 'Editor in chief:',
     linksHeader: 'Other NDLA sites',
+    availabilityLink: 'Availability statement',
     privacyLink: 'Privacy statement',
     cookiesLink: 'Statement about cookies',
     vision: 'We create the learning of the future together',
@@ -683,12 +706,14 @@ const messages = {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
     se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
     se: 'Siiddut leat davvisámegiellii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -753,6 +778,7 @@ const messages = {
     copyCode: 'Copy code',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Scroll backwards',
     slideForwardsLabel: 'Scroll forwards',
     movieMatchInCategory: 'Matches',
@@ -799,6 +825,7 @@ const messages = {
       shortFilm: 'Short film',
       all: 'All movies A-Z',
     },
+    allMovieGroupTitleLabel: 'Movies starting with {{letter}}',
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
@@ -845,6 +872,7 @@ const messages = {
     searching: 'Searching...',
     create: 'Create new',
     isSelectedItem: 'Added',
+    selected: '{{count}} selected',
   },
   blogPosts: {
     blog1: {
@@ -1088,6 +1116,7 @@ const messages = {
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',
     myTags: 'My tags',
+    mySubjects: 'My subjects',
     newFolder: 'New folder',
     newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
@@ -1189,6 +1218,9 @@ const messages = {
     search: 'Search',
     contact: 'Contact',
     help: 'Help',
+  },
+  programme: {
+    grades: 'Grades',
   },
 };
 

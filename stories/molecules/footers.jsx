@@ -17,14 +17,7 @@ const FooterExample = ({ inverted, t, hideLanguageSelector, i18n, isAuthenticate
       links={mockFooterLinks}
       languageSelector={
         !hideLanguageSelector && (
-          <LanguageSelector
-            alwaysVisible
-            outline
-            center
-            inverted={inverted}
-            options={i18n.options.supportedLanguages}
-            currentLanguage={i18n.language}
-          />
+          <LanguageSelector inverted={inverted} locales={i18n.options.supportedLngs} onSelect={i18n.changeLanguage} />
         )
       }
       auth={<FooterAuth isAuthenticated={!!isAuthenticated} user={feideUserLaerer} onAuthenticateClick={() => {}} />}

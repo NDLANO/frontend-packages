@@ -27,6 +27,7 @@ import { contentTypeMapping } from '../model/ContentType';
 const ListResourceWrapper = styled.div`
   flex: 1;
   display: grid;
+  position: relative;
   grid-template-columns: auto minmax(50px, 1fr) auto;
   grid-template-areas:
     'image  topicAndTitle   tags'
@@ -101,6 +102,7 @@ interface TagsAndActionProps {
 
 const TagsandActionMenu = styled.div<TagsAndActionProps>`
   grid-area: tags;
+  z-index: 1;
   box-sizing: content-box;
   display: grid;
   grid-template-columns: 1fr auto auto;
@@ -217,17 +219,11 @@ const ListResource = ({
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
-  const linkRef = useRef<HTMLAnchorElement>(null);
   const firstContentType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
-  const handleClick = () => {
-    if (linkRef.current) {
-      linkRef.current.click();
-    }
-  };
 
   return (
-    <ListResourceWrapper onClick={handleClick} id={id}>
+    <ListResourceWrapper id={id}>
       <ImageWrapper imageSize={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}
@@ -238,7 +234,7 @@ const ListResource = ({
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
+          <StyledLink to={link} target={targetBlank ? '_blank' : undefined}>
             <Title title={title}>{title}</Title>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
@@ -247,7 +243,7 @@ const ListResource = ({
       {showDescription && <Description description={description} loading={isLoading} />}
       <TagsandActionMenu hasMenuButton={!!(tags && tags.length > 3) || !!(menuItems && menuItems.length)}>
         {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-        {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
     </ListResourceWrapper>
   );

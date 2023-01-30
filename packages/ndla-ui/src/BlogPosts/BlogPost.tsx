@@ -32,11 +32,6 @@ const StyledLicense = styled.span<StyledLicenseProps>`
   border-radius: ${spacing.normal};
   li {
     padding-bottom: 0 !important;
-    svg {
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-    }
     &:last-child {
       padding-right: ${spacing.xsmall};
     }

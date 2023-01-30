@@ -29,7 +29,10 @@ const Welcome = () => (
         </p>
         <p>
           Den er ikke en brukermanual for innholdsproduksjon. Råd og retningslinjer for produksjon av innhold ligger i{' '}
-          <a href="https://brukskvalitetsplattform.ndla.no/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://ndla.zendesk.com/hc/no/categories/4405379912082-Plattform-for-brukskvalitet"
+            target="_blank"
+            rel="noopener noreferrer">
             brukskvalitetsplattformen.
           </a>
         </p>

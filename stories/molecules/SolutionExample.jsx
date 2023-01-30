@@ -9,12 +9,7 @@ class SolutionTableExample extends Component {
   };
 
   render = () => (
-    <Table
-      id="solutionTable"
-      messages={{
-        dialogCloseButton: 'Lukk',
-        expandButtonLabel: 'Vis stor versjon',
-      }}>
+    <Table id="solutionTable">
       <caption>Tabelltittel</caption>
       <thead>
         <tr>

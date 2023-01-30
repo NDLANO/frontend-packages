@@ -23,6 +23,16 @@ export interface ResourceImageProps {
 export const ResourceTitleLink = styled(SafeLink)`
   box-shadow: none;
   color: ${colors.brand.primary};
+  flex: 1;
+  :after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 `;
 
 export const ResourceTitle = styled.h2`
@@ -131,9 +141,7 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
     <StyledTagList aria-label={t('myNdla.tagList')}>
       {tags.map((tag, i) => (
         <StyledTagListElement key={`tag-${i}`}>
-          <StyledSafeLink
-            onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
-            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`}>
+          <StyledSafeLink to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`}>
             <HashTag />
             {tag}
           </StyledSafeLink>
@@ -169,7 +177,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
           size="small"
           menuIcon={<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
           menuItems={remainingTags}
-          alignRight
+          align="end"
           aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
         />
       )}

@@ -26,9 +26,9 @@ react-router
 @ndla/util
 ```
 
-See: [package.json](package.json) for version requirements
+See: [package.json](package.json) for version requirements.
 
-**N.B!** All optional dependencies are required if you use `import {...} from '@ndla/ui'`
+**N.B!** Optional dependencies are required if you use `import {...} from '@ndla/ui'`
 
 ## Usage
 

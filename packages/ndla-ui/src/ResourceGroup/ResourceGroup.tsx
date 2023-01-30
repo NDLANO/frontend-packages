@@ -8,35 +8,33 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { fonts, spacing } from '@ndla/core';
+import { css } from '@emotion/react';
+import { colors, fonts, spacing } from '@ndla/core';
 
 import ResourceList, { ResourceListProps } from './ResourceList';
+import { HeadingLevel } from '../types';
 
 const Wrapper = styled.section`
   margin-bottom: ${spacing.large};
 `;
 
-type StyledHeaderProps = {
-  invertedStyle?: boolean;
-};
-
-const StyledHeader = styled.header<StyledHeaderProps>`
-  margin: ${spacing.small} 0 ${spacing.xsmall};
-  ${(props) => props.invertedStyle && `color: #fff`};
-`;
-
-const StyledHeading = styled.h1`
+const headingStyle = css`
   ${fonts.sizes('16px', '18px')};
   font-weight: ${fonts.weight.bold};
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin: 0;
+  margin: ${spacing.small} 0 ${spacing.xsmall};
+`;
+
+const invertedStyle = css`
+  color: ${colors.white};
 `;
 
 type Props = {
   invertedStyle?: boolean;
   toggleAdditionalResources: () => void;
   heartButton?: (path: string) => ReactNode;
+  headingLevel?: HeadingLevel;
 };
 
 const ResourceGroup = ({
@@ -45,15 +43,12 @@ const ResourceGroup = ({
   showAdditionalResources,
   toggleAdditionalResources,
   contentType,
-  invertedStyle,
+  invertedStyle: invertedStyleProp,
+  headingLevel: Heading = 'h1',
   heartButton,
 }: Props & ResourceListProps) => (
   <Wrapper>
-    {title && (
-      <StyledHeader invertedStyle={invertedStyle}>
-        <StyledHeading>{title}</StyledHeading>
-      </StyledHeader>
-    )}
+    {title && <Heading css={[headingStyle, invertedStyleProp ? invertedStyle : undefined]}>{title}</Heading>}
     {resources.length > 0 ? (
       <ResourceList
         title={title}

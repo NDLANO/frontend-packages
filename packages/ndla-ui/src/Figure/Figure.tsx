@@ -126,11 +126,14 @@ interface FigureCaptionProps {
   };
 }
 
-const Figure = ({ children, type = 'full', resizeIframe, ...rest }: Props) => {
+const Figure = ({ children, type = 'full', resizeIframe, className, ...rest }: Props) => {
   const typeClass = type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
   const right = ['small-right', 'xsmall-right'].includes(type);
   return (
-    <figure data-sizetype={type} {...classes('', { resize: !!resizeIframe, right }, typeClass)} {...rest}>
+    <figure
+      data-sizetype={type}
+      {...classes('', { resize: !!resizeIframe, right }, `${typeClass} ${className ?? ''}`)}
+      {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
@@ -156,6 +159,7 @@ interface Props {
   type?: FigureType;
   resizeIframe?: boolean;
   noFigcaption?: boolean;
+  className?: string;
 }
 
 export default Figure;

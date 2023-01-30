@@ -13,8 +13,8 @@ import { FileDocumentOutline } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
-import SafeLink from '@ndla/safelink';
 import { MenuButton, MenuItemProps } from '@ndla/button';
+import { ResourceTitleLink } from '../../Resource/resourceComponents';
 
 type LayoutType = 'list' | 'listLarger' | 'block';
 interface LayoutProps {
@@ -23,6 +23,7 @@ interface LayoutProps {
 
 const FolderWrapper = styled.div<LayoutProps>`
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   padding: ${spacing.nsmall};
@@ -73,12 +74,6 @@ const IconWrapper = styled.div`
   }
 `;
 
-const StyledLink = styled(SafeLink)`
-  box-shadow: none;
-  color: ${colors.brand.primary};
-  flex: 1;
-`;
-
 const FolderTitle = styled.h2`
   ${fonts.sizes('16px', '20px')};
   font-weight: ${fonts.weight.semibold};
@@ -106,6 +101,7 @@ interface MenuWrapperProps {
 const MenuWrapper = styled.div<MenuWrapperProps>`
   overflow: hidden;
   display: flex;
+  z-index: 1;
   flex-direction: row;
   align-items: center;
   gap: ${spacing.xsmall};
@@ -172,28 +168,23 @@ interface Props {
 
 const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
   const { t } = useTranslation();
-  const linkRef = useRef<HTMLAnchorElement | null>(null);
-
-  const onClick = () => {
-    linkRef?.current?.click();
-  };
 
   return (
-    <FolderWrapper type={type} onClick={onClick} id={id}>
+    <FolderWrapper type={type} id={id}>
       <TitleWrapper>
         <IconWrapper>
           <FolderOutlined aria-label={t('myNdla.folder.folder')} />
         </IconWrapper>
-        <StyledLink to={link} ref={linkRef}>
+        <ResourceTitleLink to={link}>
           <FolderTitle title={title}>{title}</FolderTitle>
-        </StyledLink>
+        </ResourceTitleLink>
       </TitleWrapper>
       <MenuWrapper hasMenuButton={!!menuItems?.length}>
         <CountContainer>
           <Count layoutType={type} type={'folder'} count={subFolders} />
           <Count layoutType={type} type={'resource'} count={subResources} />
         </CountContainer>
-        {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
       </MenuWrapper>
     </FolderWrapper>
   );

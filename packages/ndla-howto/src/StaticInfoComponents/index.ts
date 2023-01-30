@@ -76,15 +76,15 @@ export const stories: Record<string, Story> = {
       {
         type: 'link',
         content: {
-          href: 'https://brukskvalitetsplattform.ndla.no/bruk-av-bilder.html',
-          text: 'https://brukskvalitetsplattform.ndla.no/bruk-av-bilder.html',
+          href: 'https://ndla.zendesk.com/hc/no/articles/4405380397714-KAPITTEL-7-Bruk-av-bilder',
+          text: 'https://ndla.zendesk.com/hc/no/articles/4405380397714-KAPITTEL-7-Bruk-av-bilder',
         },
       },
     ],
   },
   Videos: {
     title: 'Video',
-    lead: 'Denne funksjonen lar deg legge inn en video i artikkelen. Du kan søke frem videoer fra NDLA sin konto på Brightcove og YouTube.',
+    lead: 'Denne funksjonen lar deg legge inn en video i artikkelen. Du kan søke frem videoer fra NDLA sin konto på Brightcove.',
   },
   Audios: {
     title: 'Lydfiler',
@@ -99,6 +99,10 @@ export const stories: Record<string, Story> = {
         content: AudioPlayerExamples,
       },
     ],
+  },
+  Podcasts: {
+    title: 'Podkastepisoder',
+    lead: 'Denne funksjonen lar deg legge til en podkastepisode i artikkelen.',
   },
   H5P: {
     title: 'h5p',
@@ -170,8 +174,8 @@ export const stories: Record<string, Story> = {
       {
         type: 'link',
         content: {
-          href: 'https://brukskvalitetsplattform.ndla.no/bruk-av-lisenser.html',
-          text: 'https://brukskvalitetsplattform.ndla.no/bruk-av-lisenser.html',
+          href: 'https://ndla.zendesk.com/hc/no/articles/4405386986898-KAPITTEL-10-Bruk-av-lisenser',
+          text: 'https://ndla.zendesk.com/hc/no/articles/4405386986898-KAPITTEL-10-Bruk-av-lisenser',
         },
       },
     ],
@@ -223,8 +227,8 @@ export const stories: Record<string, Story> = {
       {
         type: 'link',
         content: {
-          href: 'https://brukskvalitetsplattform.ndla.no/innholdstyper.html',
-          text: 'https://brukskvalitetsplattform.ndla.no/innholdstyper.html',
+          href: 'https://ndla.zendesk.com/hc/no/articles/4405380403218-KAPITTEL-5-Innholdstyper',
+          text: 'https://ndla.zendesk.com/hc/no/articles/4405380403218-KAPITTEL-5-Innholdstyper',
         },
       },
     ],
@@ -277,7 +281,7 @@ export const stories: Record<string, Story> = {
     body: [
       {
         type: 'text',
-        content: 'Søk opp og legg til forklaring i artikkel.',
+        content: 'Søk opp og legg til forklaring som blokkvisning i artikkel.',
       },
     ],
   },
@@ -287,7 +291,7 @@ export const stories: Record<string, Story> = {
     body: [
       {
         type: 'text',
-        content: 'Legg til en liste av forklaringer i artikkel.',
+        content: 'Legg til en liste av forklaringer som blokkvisning i artikkel.',
       },
     ],
   },

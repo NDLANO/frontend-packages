@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Fag',
+    subject_plural: 'Fag',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Endre mappenavn',
@@ -252,8 +256,24 @@ const messages = {
     archived: 'Dette er et utgått fag som ikke vedlikeholdes.',
   },
   subjectsPage: {
+    filterSubjects: 'Filtrer fag',
+    scrollToGroup: 'Hopp til gruppe',
+    goToTop: 'Gå til toppen',
+    alphabeticSort: 'Fag gruppert alfabetisk',
+    subjectGroup: 'Gruppe "{{ category }}"',
+    allSubjects: 'Alle fag',
+    myFavoriteSubjects: 'Mine favorittfag',
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     chooseSubject: 'Velg fag',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    removeConfirmed: '{{subject}} er fjernet fra favorittfag',
+    addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke et fag må du logge inn på Min NDLA. Du finner faget øverst på denne siden etter at du har logget inn.',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Beklager, en feil oppstod under lasting av emnebeskrivelsen.',
@@ -327,6 +347,7 @@ const messages = {
       },
     },
     menu: {
+      button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
       close: 'Lukk',
       goTo: 'Gå til',
@@ -422,7 +443,7 @@ const messages = {
       'Utgåtte fag undervises det ikke i lenger, men det kan fortsatt være mulig å ta eksamen i faga som privatist.',
   },
   article: {
-    lastUpdated: 'Sist oppdatert',
+    lastUpdated: 'Sist faglig oppdatert',
     edition: 'Utgave',
     publisher: 'Utgiver',
     useContent: 'Regler for bruk',
@@ -459,7 +480,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
-    competenceGoalResourceSearchText: 'Søk på alle ressurser som passer til dette kompetansemålet',
+    competenceGoalResourceSearchText: 'Vis ressurser til kompetansemål {{goal}}',
     competenceGoalShowExtra: 'Vis støtte til læreplanen',
     competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
     competenceCoreLabel: 'Kjerneelement',
@@ -470,9 +491,10 @@ const messages = {
     competenceSubjectSearchText: 'Gå til fagsiden',
     competenceGoalClose: 'Lukk',
     competenceGoalTitle: 'Målet er at eleven skal kunne:',
-    competenceTabLK06label: 'Kompetansemål (LK06)',
-    competenceTabLK20label: 'Kompetansemål (LK20)',
+    competenceTabLK20label: 'Kompetansemål',
+    competenceTabLK20Tooltip: 'Vis kompetansemål',
     competenceTabCorelabel: 'Kjerneelement',
+    competenceTabCoreTooltip: 'Vis kjerneelementer',
     competenceGoalItem: {
       title: 'Kompetansemål og vurdering',
     },
@@ -616,12 +638,13 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'Om NDLA',
+    socialMedia: 'Sosiale medier',
     selectLanguage: 'Velg språk (language): ',
     vision: 'Sammen skaper vi framtidas læring',
     linksHeader: 'Andre NDLA-nettsteder',
     info: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
-    editorInChief: 'Ansvarlig redaktør: ',
-    managingEditor: 'Utgaveansvarlig: ',
+    editorInChief: 'Ansvarlig redaktør:',
+    availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Personvernerklæring',
     cookiesLink: 'Erklæring om informasjonskapsler',
     socialMediaLinks: {
@@ -682,12 +705,14 @@ const messages = {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
     se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
     se: 'Siiddut leat davvisámegiellii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -752,6 +777,7 @@ const messages = {
     copyCode: 'Kopier kode til utklippstavle',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll fremover',
     movieMatchInCategory: 'Treff',
@@ -798,6 +824,7 @@ const messages = {
       shortFilm: 'Kortfilm',
       all: 'Alle filmer A-Å',
     },
+    allMovieGroupTitleLabel: 'Filmer som starter på {{letter}}',
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
@@ -844,6 +871,7 @@ const messages = {
     searching: 'Søker...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
+    selected: '{{count}} valgte',
   },
   blogPosts: {
     blog1: {
@@ -1086,6 +1114,7 @@ const messages = {
     confirmDeleteTag: 'Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.',
     myFolders: 'Mine mapper',
     myTags: 'Mine emneknagger',
+    mySubjects: 'Mine fag',
     newFolder: 'Ny mappe',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
@@ -1131,7 +1160,7 @@ const messages = {
       newFavourite: 'Nylig lagt til',
       feide: 'Dette henter vi om deg gjennom Feide',
       feideWrongInfo:
-        'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstøtte',
+        'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstotte',
       storageInfo: {
         title: 'Slik lagrer du favorittressursene dine fra NDLA',
         text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',
@@ -1186,6 +1215,9 @@ const messages = {
     search: 'Søk',
     contact: 'Kontakt',
     help: 'Hjelp',
+  },
+  programme: {
+    grades: 'Trinn',
   },
 };
 

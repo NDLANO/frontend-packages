@@ -15,7 +15,7 @@ import { programme } from '../../dummydata/mockPrograms';
 const MessageBoxSiteExample = ({ type }) => {
   return (
     <PageContainer>
-      <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
+      <MastheadWithTopicMenu />
       <Content>
         <MessageBox type={type} showCloseButton>
           {

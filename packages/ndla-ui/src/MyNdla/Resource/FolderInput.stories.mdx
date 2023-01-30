@@ -1,0 +1,41 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { defaultParameters } from '../../../../../stories/defaults';
+import { Pencil } from '@ndla/icons/action';
+import { DeleteForever } from '@ndla/icons/editor';
+
+import FolderInput from './FolderInput';
+import ButtonV2 from '../../../../button/src/ButtonV2';
+
+<Meta
+  title="Enkle komponenter/FolderInput"
+  component={FolderInput}
+  parameters={{
+    ...defaultParameters,
+    docs: {
+      inlineStories: true,
+    },
+    backgrounds: {},
+  }}
+/>
+
+export const Template = (args) => <FolderInput {...args} />;
+
+# Ny mappe
+
+<Canvas>
+  <Story
+    name="FolderInput"
+    args={{
+      labelHidden: true,
+      onSave: () => {},
+      onClose: () => console.log('onClose'),
+      label: '',
+      name: '',
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="FolderInput" />

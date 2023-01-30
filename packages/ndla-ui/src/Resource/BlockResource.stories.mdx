@@ -2,8 +2,22 @@ import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
 import { defaultParameters } from '../../../../stories/defaults';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
+//import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import BlockResource from './BlockResource';
+
+export const menuItems = [
+  { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
+  { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
+];
+
+export const tags = ['tag'];
+
+export const resourceImage = {
+  src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+  alt: '',
+};
 
 <Meta
   title="Enkle komponenter/Ressurser/BlockResource"
@@ -16,15 +30,6 @@ import BlockResource from './BlockResource';
     backgrounds: {},
   }}
   argTypes={{
-    resourceImage: {
-      control: false,
-    },
-    resourceTypes: {
-      control: false,
-    },
-    headingLevel: {
-      control: false,
-    },
     menuItems: {
       control: false,
     },
@@ -47,12 +52,76 @@ export const Template = (args) => <BlockResource {...args} />;
         alt: '',
       },
       resourceTypes: [{ id: 'urn:resourcetype:learningPath', name: 'Læringssti' }],
-      tags: ['tag', 'tag', 'tag', 'tag'],
+      tags: tags,
     }}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
-### Props
+## Props
 
 <ArgsTable story="BlockResource" />
+
+## Varianter
+
+### Blokkressurs med bilde
+
+<Canvas>
+  <BrowserRouter>
+    <BlockResource
+      id="2ae58e7d-ea25-49f0-b2a5-1f11830f8c04"
+      key={'blockResource'}
+      title="Helt Vanlig Tittel"
+      resourceTypes={[{ id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' }]}
+      tags={tags}
+      description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
+      resourceImage={resourceImage}
+      link={''}
+      menuItems={menuItems}
+    />
+  </BrowserRouter>
+</Canvas>
+
+### Blokkressurs uten bilde
+
+<Canvas>
+  <BrowserRouter>
+    <BlockResource
+      id="2ae58e7d-ea25-49f0-b2a5-1f11830f8c04"
+      key={'blockResource'}
+      title="Helt Vanlig Tittel"
+      resourceTypes={[{ id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' }]}
+      tags={tags}
+      description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
+      resourceImage={{
+        src: '',
+        alt: '',
+      }}
+      link={''}
+      menuItems={menuItems}
+    />
+  </BrowserRouter>
+</Canvas>
+
+#### Ulike ressurstyper:
+
+<ul>
+  <li>
+    <strong> Læringssti:</strong> urn:resourcetype:learningPath
+  </li>
+  <li>
+    <strong>Fagstoff:</strong> urn:resourcetype:subjectMaterial
+  </li>
+  <li>
+    <strong>Oppgaver og aktiviteter:</strong> urn:resourcetype:tasksAndActivities
+  </li>
+  <li>
+    <strong>Vurderingsressurs:</strong> urn:resourcetype:reviewResource
+  </li>
+  <li>
+    <strong>Ekstern læringsressurs:</strong> urn:resourcetype:externalResource
+  </li>
+  <li>
+    <strong>Kildemateriale:</strong> urn:resourcetype:SourceMaterial
+  </li>
+</ul>

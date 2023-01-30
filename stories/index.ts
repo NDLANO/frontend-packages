@@ -24,4 +24,3 @@ require('./produksjonssystem');
 require('./experimental');
 require('./messages');
 require('./ndla-urls');
-require('./my-ndla');

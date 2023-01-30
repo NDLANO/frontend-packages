@@ -110,6 +110,7 @@ const colors = {
     yellow: '#ead854',
     yellowLight: '#f8f3cb',
     yellowLightest: '#fbf9e5',
+    orange: '#e29929',
   },
   tableBg: '#f9fafb',
   favoriteColor: '#fcba03',

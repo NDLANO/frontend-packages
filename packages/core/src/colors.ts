@@ -71,7 +71,7 @@ const colors = {
 
   notion: {
     light: '#DEF1ED',
-    dark: '#3E5860'
+    dark: '#3E5860',
   },
 
   tasksAndActivities: {

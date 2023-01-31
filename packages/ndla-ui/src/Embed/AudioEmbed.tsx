@@ -135,18 +135,12 @@ const AudioEmbed = ({ embed }: Props) => {
         {(close) => (
           <FigureLicenseDialogContent
             onClose={close}
-            id={figureLicenseDialogId}
             title={data.title.title}
             license={license}
             authors={contributors}
             origin={''} // Todo: Fix origin
             locale={i18n.language}
-            messages={{
-              title: t('title'),
-              rulesForUse: t('license.audio.rules'),
-              learnAboutLicenses: t('license.learnMore'),
-              source: t('source'),
-            }}>
+            type="audio">
             {data.copyright.license.license !== 'COPYRIGHT' && (
               <>
                 {copyString && (
@@ -229,18 +223,12 @@ const ImageLicense = ({ image, figureId, figureLicenseDialogId }: ImageLicensePr
           {(close) => (
             <FigureLicenseDialogContent
               onClose={close}
-              id={figureLicenseDialogId}
               title={image.title.title}
               license={license}
               authors={contributors}
               origin={''} // Todo: Fix origin
               locale={i18n.language}
-              messages={{
-                title: t('title'),
-                rulesForUse: t('license.audio.rules'),
-                learnAboutLicenses: t('license.learnMore'),
-                source: t('source'),
-              }}>
+              type="image">
               {image.copyright.license.license !== 'COPYRIGHT' && (
                 <>
                   {copyString && (

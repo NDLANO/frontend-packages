@@ -16,6 +16,9 @@ import { FootnoteEmbedPlugin } from './FootnoteEmbedPlugin';
 import { BrightcoveEmbedPlugin } from './BrightcoveEmbedPlugin';
 import { RelatedContentEmbedPlugin } from './RelatedContentEmbedPlugin';
 import { ContentLinkEmbedPlugin } from './ContentLinkEmbedPlugin';
+import { ConceptEmbedPlugin } from './ConceptEmbedPlugin';
+import { ConceptListEmbedPlugin } from './ConceptListEmbedPlugin';
+import { FileEmbedPlugin } from './FileEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: ImageEmbedPlugin,
@@ -27,4 +30,7 @@ export const embedPlugins: Record<string, PluginType> = {
   brightcove: BrightcoveEmbedPlugin,
   'related-content': RelatedContentEmbedPlugin,
   'content-link': ContentLinkEmbedPlugin,
+  concept: ConceptEmbedPlugin,
+  'concept-list': ConceptListEmbedPlugin,
+  file: FileEmbedPlugin,
 };

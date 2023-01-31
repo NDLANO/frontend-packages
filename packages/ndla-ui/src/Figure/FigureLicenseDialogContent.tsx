@@ -6,6 +6,7 @@
  *
  */
 
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
@@ -16,18 +17,11 @@ import { FigureLicense } from './Figure';
 import { classLicenses, FigureLicenseByline, FigureLicenseCta } from './FigureLicense';
 
 interface Props {
-  id: string;
   children?: ReactNode;
   origin?: string;
   authors?: Contributor[];
   onClose: () => void;
-  messages: {
-    modelPremission?: string;
-    rulesForUse: string;
-    source: string;
-    learnAboutLicenses: string;
-    title: string;
-  };
+  type: 'image' | 'text' | 'audio' | 'podcast' | 'video' | 'h5p' | 'concept' | 'files';
   title?: string;
   license: FigureLicense;
   locale: string;
@@ -35,27 +29,30 @@ interface Props {
 
 const StyledModalBody = styled(ModalBody)`
   background-color: ${colors.brand.light};
+  flex: 1;
 `;
 
 export const FigureLicenseDialogContent = ({
   children,
-  messages,
-  id,
   authors,
   origin,
   title,
   locale,
   license,
   onClose,
+  type,
 }: Props) => {
-  const headingLabelId = `heading-${id}`;
+  const { t } = useTranslation();
+  const messages = {
+    title: t('title'),
+    source: t('source'),
+    learnAboutLicenses: t('license.learnMore'),
+  };
   return (
     <StyledModalBody>
       <div {...classLicenses()}>
         <ModalHeaderV2>
-          <h1 id={headingLabelId} {...classLicenses('title')}>
-            {messages.rulesForUse}
-          </h1>
+          <h1 {...classLicenses('title')}>{t(`license.${type}.rules`)}</h1>
           <ButtonV2 variant="link" onClick={onClose}>
             Lukk
           </ButtonV2>

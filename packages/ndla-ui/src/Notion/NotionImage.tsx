@@ -38,7 +38,7 @@ const StyledImage = styled(Image)`
 `;
 
 interface Props {
-  type: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | undefined;
+  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | undefined;
   id: string;
   src: string;
   alt: string;

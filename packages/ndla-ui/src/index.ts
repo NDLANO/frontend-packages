@@ -20,6 +20,8 @@ export {
   BrightcoveEmbed,
   ContentLinkEmbed,
   RelatedContentEmbed,
+  ConceptEmbed,
+  ConceptListEmbed,
 } from './Embed';
 
 export {
@@ -54,7 +56,7 @@ export { default as RelatedArticleList, RelatedArticle, RelatedArticleListV2 } f
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
-export { default as FileList, File } from './FileList';
+export { default as FileList, File, FileListV2, FileV2, PdfFile } from './FileList';
 
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
 

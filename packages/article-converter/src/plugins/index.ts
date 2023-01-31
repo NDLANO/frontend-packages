@@ -15,6 +15,7 @@ import { H3Plugin } from './H3Plugin';
 import { MathPlugin } from './MathPlugin';
 import { AnchorPlugin } from './oembed/AnchorPlugin';
 import { DivPlugin } from './DivPlugin';
+import { TablePlugin } from './TablePlugin';
 
 export const basePlugins: Record<string, PluginType> = {
   h2: CopyParagraphPlugin,
@@ -24,6 +25,7 @@ export const basePlugins: Record<string, PluginType> = {
   span: SpanPlugin,
   math: MathPlugin,
   div: DivPlugin,
+  table: TablePlugin,
 };
 
 export const oembedPlugins: Record<string, PluginType> = {

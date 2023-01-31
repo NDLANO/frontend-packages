@@ -246,7 +246,7 @@ export const Article = ({
             authors={authors}
             suppliers={rightsholders}
             published={published}
-            license={licenseObj.license}
+            license={licenseObj?.license ?? ''}
             licenseBox={licenseBox}
             printUrl={printUrl}
           />

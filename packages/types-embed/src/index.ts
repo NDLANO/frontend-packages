@@ -28,7 +28,18 @@ import {
   BrightcoveVideoSource,
   BrightcoveApiType,
 } from './brightcoveTypes';
-import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from './relatedContentTypes';
+import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData, NodeType } from './relatedContentTypes';
+import {
+  ConceptListData,
+  ConceptData,
+  ConceptEmbedData,
+  ConceptListEmbedData,
+  ConceptListMetaData,
+  ConceptMetaData,
+  ConceptVisualElement,
+  ConceptVisualElementMeta,
+} from './conceptTypes';
+import { FileEmbedData, FileMetaData } from './fileTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -43,7 +54,8 @@ export type EmbedData =
   | CodeEmbedData
   | FootnoteEmbedData
   | ConceptListEmbedData
-  | OembedEmbedData;
+  | OembedEmbedData
+  | FileEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -51,12 +63,16 @@ export type EmbedMetaData =
   | ContentLinkMetaData
   | ImageMetaData
   | RelatedContentMetaData
+  | ConceptMetaData
   | IframeMetaData
   | H5pMetaData
+  | ConceptListMetaData
   | OembedMetaData
   | CodeMetaData
-  | FootnoteMetaData;
+  | FootnoteMetaData
+  | FileMetaData;
 export type {
+  ConceptMetaData,
   ImageMetaData,
   RelatedContentMetaData,
   BrightcoveMetaData,
@@ -66,8 +82,11 @@ export type {
   CodeMetaData,
   ContentLinkMetaData,
   FootnoteMetaData,
+  ConceptListMetaData,
+  FileMetaData,
 };
 export type {
+  ConceptEmbedData,
   BrightcoveEmbedData,
   RelatedContentEmbedData,
   AudioEmbedData,
@@ -77,31 +96,36 @@ export type {
   CodeEmbedData,
   ContentLinkEmbedData,
   FootnoteEmbedData,
+  ConceptListEmbedData,
+  FileEmbedData,
 };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };
 export type { FootnoteData };
 export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource };
-export type { RelatedContentData };
+export type { RelatedContentData, NodeType };
+export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
 
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation };
 
-interface MetaDataFailure<EmbedData> {
-  embedData: EmbedData;
+interface MetaDataFailure<T extends EmbedData> {
+  resource: T['resource'];
+  embedData: T;
   status: 'error';
   seq: number;
   message?: string;
 }
 
-interface MetaDataSuccess<EmbedData, MetaData> {
-  embedData: EmbedData;
-  data: MetaData;
+interface MetaDataSuccess<T extends EmbedData, Data> {
+  resource: T['resource'];
+  embedData: T;
+  data: Data;
   seq: number;
   status: 'success';
 }
 
-export type MetaData<EmbedData, MetaData> = MetaDataFailure<EmbedData> | MetaDataSuccess<EmbedData, MetaData>;
+export type MetaData<Embed extends EmbedData, Data> = MetaDataFailure<Embed> | MetaDataSuccess<Embed, Data>;
 
 export interface OembedProxyResponse {
   type: string;
@@ -120,20 +144,6 @@ export interface OembedProxyResponse {
   height?: number;
   html?: string;
 }
-
-export type ConceptEmbedData = {
-  resource: 'concept';
-  contentId: string;
-  type: 'block' | 'inline';
-  linkText: string;
-};
-
-export type ConceptListEmbedData = {
-  resource: 'concept-list';
-  tag: string;
-  title: string;
-  subjectId: string;
-};
 
 export interface NRKEmbedData {
   resource: 'nrk';

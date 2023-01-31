@@ -170,19 +170,13 @@ const ImageEmbed = ({ embed }: Props) => {
             <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
               {(close) => (
                 <FigureLicenseDialogContent
-                  id={figureId}
                   title={data.title.title}
                   license={license}
                   onClose={close}
                   authors={contributors}
                   origin={''} // Todo: Fix origin
                   locale={i18n.language}
-                  messages={{
-                    title: t('title'),
-                    rulesForUse: t('license.images.rules'),
-                    learnAboutLicenses: t('licenses.learnMore'),
-                    source: t('source'),
-                  }}
+                  type="image"
                 />
               )}
             </ModalV2>

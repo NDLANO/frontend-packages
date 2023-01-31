@@ -182,18 +182,12 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
       <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
         {(close) => (
           <FigureLicenseDialogContent
-            id={data.id}
             onClose={close}
             title={data.name}
             locale={i18n.language}
             license={license}
             authors={contributors}
-            messages={{
-              rulesForUse: t('license.video.rules'),
-              learnAboutLicenses: t('license.learnMore'),
-              source: t('source'),
-              title: t('title'),
-            }}>
+            type="video">
             <SafeLinkButton key="download" to={download} variant="outline" download>
               {t('video.download')}
             </SafeLinkButton>

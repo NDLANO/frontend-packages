@@ -7,18 +7,24 @@
  */
 
 import isNumber from 'lodash/isNumber';
-import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
+import styled from '@emotion/styled';
+import { figureApa7CopyString, getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
 import { ImageEmbedData, ImageMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { ModalV2 } from '@ndla/modal';
-import { useState } from 'react';
-import { ButtonV2 } from '@ndla/button';
+import { SafeLinkButton } from '@ndla/safelink';
+import { MouseEventHandler, useState } from 'react';
+import { ButtonV2, CopyButton } from '@ndla/button';
+import { ExpandTwoArrows } from '@ndla/icons/action';
+import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Figure, FigureCaption, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
 
 interface Props {
   embed: ImageMetaData;
+  articlePath?: string;
+  previewAlt?: boolean;
 }
 
 export interface Author {
@@ -93,8 +99,17 @@ const getCrop = (data: ImageEmbedData) => {
   return undefined;
 };
 
-const ImageEmbed = ({ embed }: Props) => {
+const StyledSpan = styled.span`
+  font-style: italic;
+  color: grey;
+`;
+
+const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
+
+const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
+  const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   const { t, i18n } = useTranslation();
   if (embed.status === 'error') {
     const { align, size } = embed.embedData;
@@ -128,61 +143,89 @@ const ImageEmbed = ({ embed }: Props) => {
     type: item.label,
   }));
 
-  // missing copyString
-
-  // missing expand buttons;
+  const copyString = figureApa7CopyString(
+    data.title.title,
+    undefined,
+    data.imageUrl,
+    articlePath,
+    data.copyright,
+    data.copyright.license.license,
+    '',
+    t,
+    i18n.language,
+  );
 
   const figureId = `figure-${seq}-${data.id}`;
 
   const { creators, rightsholders, processors } = authors;
   const captionAuthors = creators.length || rightsholders.length ? [...creators, ...rightsholders] : processors;
   return (
-    // Mangler concept-option. Da skal det være full-size.
-    <Figure id={figureId} type={figureType}>
-      {({ typeClass }: { typeClass: string }) => (
-        <>
-          <ImageWrapper src={data.imageUrl} crop={crop} size={embedData.size}>
-            <Image
-              focalPoint={focalPoint}
-              contentType={data.contentType}
-              crop={crop}
-              sizes={sizes}
-              alt={altText}
-              src={data.imageUrl}
-              // expandButton={<ExpandButton size={size} typeClass={typeClass} />}
+    <Figure
+      id={figureId}
+      type={imageSizes ? undefined : figureType}
+      className={imageSizes ? 'c-figure--right expanded' : ''}>
+      <ImageWrapper src={data.imageUrl} crop={crop} size={embedData.size}>
+        <Image
+          focalPoint={focalPoint}
+          contentType={data.contentType}
+          crop={crop}
+          sizes={imageSizes ?? sizes}
+          alt={altText}
+          src={data.imageUrl}
+          expandButton={
+            <ExpandButton
+              size={embedData.size}
+              expanded={!!imageSizes}
+              bylineHidden={isBylineHidden}
+              onExpand={() => setImageSizes((p) => (p ? undefined : expandedSizes))}
+              onHideByline={() => setIsBylineHidden((p) => !p)}
             />
-          </ImageWrapper>
-          {/* {altTextSpan} */}
-          <FigureCaption
-            hideFigcaption={isSmall(embedData.size) || hideByline(embedData.size)}
-            figureId={figureId}
-            id={figureId}
-            caption={caption}
-            reuseLabel={t('image.reuse')}
-            modalButton={
-              <ButtonV2 shape="pill" variant="outline" size="small" onClick={() => setIsOpen(true)}>
-                {t('image.reuse')}
-              </ButtonV2>
-            }
-            licenseRights={license.rights}
-            authors={captionAuthors}
-            locale={i18n.language}>
-            <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
-              {(close) => (
-                <FigureLicenseDialogContent
-                  title={data.title.title}
-                  license={license}
-                  onClose={close}
-                  authors={contributors}
-                  origin={data.copyright.origin}
-                  locale={i18n.language}
-                  type="image"
-                />
+          }
+        />
+      </ImageWrapper>
+      {previewAlt ? <StyledSpan>{`Alt: ${data.alttext.alttext}`}</StyledSpan> : null}
+      <FigureCaption
+        hideFigcaption={isSmall(embedData.size) || isBylineHidden}
+        figureId={figureId}
+        id={figureId}
+        caption={caption}
+        reuseLabel={t('image.reuse')}
+        modalButton={
+          <ButtonV2 shape="pill" variant="outline" size="small" onClick={() => setIsOpen(true)}>
+            {t('image.reuse')}
+          </ButtonV2>
+        }
+        licenseRights={license.rights}
+        authors={captionAuthors}
+        locale={i18n.language}>
+        <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          {(close) => (
+            <FigureLicenseDialogContent
+              title={data.title.title}
+              license={license}
+              onClose={close}
+              authors={contributors}
+              origin={data.copyright.origin}
+              locale={i18n.language}
+              type="image">
+              {data.copyright.license.license !== 'COPYRIGHTED' && (
+                <>
+                  <CopyButton
+                    variant="outline"
+                    onClick={() => navigator.clipboard.writeText(copyString)}
+                    copyNode={t('license.hasCopiedTitle')}
+                    aria-live="assertive">
+                    {t('license.copyTitle')}
+                  </CopyButton>
+                  <SafeLinkButton to={`${data.imageUrl}?download=true`} download variant="outline">
+                    {t('image.download')}
+                  </SafeLinkButton>
+                </>
               )}
-            </ModalV2>
-          </FigureCaption>
-        </>
-      )}
+            </FigureLicenseDialogContent>
+          )}
+        </ModalV2>
+      </FigureCaption>
     </Figure>
   );
 };
@@ -214,4 +257,38 @@ const ImageWrapper = ({ src, crop, size, children }: ImageWrapperProps) => {
     </ImageLink>
   );
 };
+
+interface ExpandButtonProps {
+  size?: string;
+  expanded: boolean;
+  bylineHidden: boolean;
+  onExpand: MouseEventHandler<HTMLButtonElement>;
+  onHideByline: MouseEventHandler<HTMLButtonElement>;
+}
+
+const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
+  const { t } = useTranslation();
+  if (isSmall(size)) {
+    return (
+      <button
+        type="button"
+        className="c-figure__fullscreen-btn"
+        aria-label={t(`license.images.itemImage.zoom${expanded ? 'Out' : ''}ImageButtonLabel`)}
+        onClick={onExpand}>
+        {expanded ? <ArrowCollapse /> : <ExpandTwoArrows />}
+      </button>
+    );
+  } else if (hideByline(size)) {
+    return (
+      <button
+        type="button"
+        className="c-figure__show-byline-btn"
+        aria-label={t(`license.images.itemImage.${bylineHidden ? 'expandByline' : 'minimizeByline'}`)}
+        onClick={onHideByline}>
+        {bylineHidden ? <ChevronDown /> : <ChevronUp />}
+      </button>
+    );
+  } else return null;
+};
+
 export default ImageEmbed;

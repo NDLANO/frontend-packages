@@ -201,6 +201,8 @@ export const BlockConcept = ({ title, content, metaImage, copyright, source, vis
   const licenseCredits = getLicenseCredits(copyright);
   const { creators, rightsholders, processors } = licenseCredits;
   const authors = creators.length || rightsholders.length ? creators.concat(rightsholders) : processors;
+  const visualElementType =
+    visualElement?.embedData.resource === 'brightcove' ? 'video' : visualElement?.embedData.resource;
 
   const groupedAuthors = getGroupedContributorDescriptionList(licenseCredits, i18n.language).map((item) => ({
     name: item.description,
@@ -225,12 +227,18 @@ export const BlockConcept = ({ title, content, metaImage, copyright, source, vis
                       <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
                         {visualElement.resource === 'image' ? (
                           <NotionImage
+                            type={visualElementType}
                             id={''}
                             src={visualElement.data.imageUrl}
                             alt={visualElement.data.alttext.alttext}
                           />
                         ) : metaImage ? (
-                          <NotionImage id={''} src={metaImage?.url ?? ''} alt={metaImage?.alt ?? ''} />
+                          <NotionImage
+                            type={visualElementType}
+                            id={''}
+                            src={metaImage?.url ?? ''}
+                            alt={metaImage?.alt ?? ''}
+                          />
                         ) : undefined}
                       </StyledButton>
                     </Trigger>

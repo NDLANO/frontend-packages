@@ -8,9 +8,9 @@
 
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
-import { ModalBody, ModalHeaderV2 } from '@ndla/modal';
+import { ModalBody } from '@ndla/modal';
 import { ReactNode } from 'react';
 import { Contributor } from '../types';
 import { FigureLicense } from './Figure';
@@ -32,6 +32,19 @@ const StyledModalBody = styled(ModalBody)`
   flex: 1;
 `;
 
+const StyledH1 = styled.h1`
+  color: ${colors.brand.primary};
+  ${fonts.sizes('22px', '22px')};
+  margin: 0;
+  flex-grow: 1;
+`;
+
+const StyledHeader = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: ${spacing.normal};
+`;
+
 export const FigureLicenseDialogContent = ({
   children,
   authors,
@@ -51,12 +64,12 @@ export const FigureLicenseDialogContent = ({
   return (
     <StyledModalBody>
       <div {...classLicenses()}>
-        <ModalHeaderV2>
-          <h1 {...classLicenses('title')}>{t(`license.${type}.rules`)}</h1>
+        <StyledHeader>
+          <StyledH1>{t(`license.${type}.rules`)}</StyledH1>
           <ButtonV2 variant="link" onClick={onClose}>
-            Lukk
+            {t('close')}
           </ButtonV2>
-        </ModalHeaderV2>
+        </StyledHeader>
         <FigureLicenseByline license={license} messages={messages} locale={locale} />
         <FigureLicenseCta authors={authors} title={title} origin={origin} messages={messages}>
           {children}

@@ -77,7 +77,7 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
-export { default as FactBox } from './FactBox';
+export { default as FactBox, FactBoxV2 } from './FactBox';
 
 export { default as Image, ImageLink, makeSrcQueryString } from './Image';
 export type { ImageCrop, ImageFocalPoint } from './Image';

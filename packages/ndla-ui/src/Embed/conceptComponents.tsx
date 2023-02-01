@@ -198,7 +198,7 @@ export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
             ) : (
               <StyledIframe
                 allowFullScreen
-                type={visualElementType === 'external' ? 'other' : visualElementType}
+                type={visualElementType}
                 src={notionVisualElement?.url}
                 title={notionVisualElement?.title}
               />
@@ -231,7 +231,7 @@ export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
                     <FigureLicenseCta
                       authors={visualElementGroupedAuthors}
                       title={notionVisualElement?.title}
-                      origin={''} // Todo: origin
+                      origin={notionVisualElement?.copyright?.origin}
                       messages={{ source: t('source'), title: t('title') }}></FigureLicenseCta>
                   </div>
                 </StyledAccordionContent>

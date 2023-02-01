@@ -174,7 +174,7 @@ const ImageEmbed = ({ embed }: Props) => {
                   license={license}
                   onClose={close}
                   authors={contributors}
-                  origin={''} // Todo: Fix origin
+                  origin={data.copyright.origin}
                   locale={i18n.language}
                   type="image"
                 />

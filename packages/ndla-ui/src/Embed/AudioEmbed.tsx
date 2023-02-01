@@ -138,7 +138,7 @@ const AudioEmbed = ({ embed }: Props) => {
             title={data.title.title}
             license={license}
             authors={contributors}
-            origin={''} // Todo: Fix origin
+            origin={data.copyright.origin}
             locale={i18n.language}
             type="audio">
             {data.copyright.license.license !== 'COPYRIGHT' && (
@@ -226,7 +226,7 @@ const ImageLicense = ({ image, figureId, figureLicenseDialogId }: ImageLicensePr
               title={image.title.title}
               license={license}
               authors={contributors}
-              origin={''} // Todo: Fix origin
+              origin={image.copyright.origin}
               locale={i18n.language}
               type="image">
               {image.copyright.license.license !== 'COPYRIGHT' && (

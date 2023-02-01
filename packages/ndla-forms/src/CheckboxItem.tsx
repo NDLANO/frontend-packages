@@ -14,6 +14,7 @@ import { uuid } from '@ndla/util';
 const CheckboxInput = styled.input`
   position: absolute;
   opacity: 0;
+  width: auto;
   cursor: pointer;
   &:checked {
     & + label > span:first-of-type {

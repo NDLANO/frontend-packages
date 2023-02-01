@@ -1,4 +1,4 @@
-import React, { MouseEvent, ChangeEventHandler } from 'react';
+import React, { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
 import { ButtonV2 } from '@ndla/button';
@@ -196,7 +196,7 @@ type Props = {
   showAdditionalResources?: boolean;
   listDirection?: listProps['direction'];
   invertedStyle?: boolean;
-  onToggleAdditionalResources?: ChangeEventHandler<HTMLInputElement>;
+  onToggleAdditionalResources?: (checked: boolean) => void;
 };
 
 export const NavigationBox = ({

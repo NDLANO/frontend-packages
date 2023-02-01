@@ -54,7 +54,6 @@ import ComponentInfo from './ComponentInfo';
 
 import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
-import SwitchExample from './atoms/SwitchExample';
 import FooterExample from './molecules/footers';
 import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
@@ -680,11 +679,6 @@ storiesOf('Sammensatte moduler', module)
       </Center>
     );
   })
-  .add('Switch kontroller', () => (
-    <div>
-      <SwitchExample />
-    </div>
-  ))
 
   .add('Ressurs fra lenke', () => (
     <PageContainer>

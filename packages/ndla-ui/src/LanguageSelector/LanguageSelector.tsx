@@ -25,18 +25,18 @@ const PopoverContent = styled(Content)`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: ${colors.brand.greyLightest};
+  background-color: ${colors.white};
   border-radius: ${spacing.small};
   border: 1px solid ${colors.brand.tertiary};
   fill: ${colors.brand.tertiary};
 `;
 
 const LanguageChoice = styled(ButtonV2)`
-  padding: ${spacing.small};
-  border-radius: 0;
-  gap: ${spacing.normal};
-  justify-content: space-between;
-  border: 0;
+  padding: ${spacing.small} ${spacing.normal} ${spacing.small} ${spacing.nsmall};
+  justify-content: flex-start;
+  gap: ${spacing.small};
+  border: none;
+  outline: none;
   :not(:last-of-type) {
     border-bottom: 1px solid ${colors.brand.tertiary};
   }
@@ -74,7 +74,7 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Pro
         </ButtonV2>
       </Trigger>
       <Portal>
-        <PopoverContent>
+        <PopoverContent sideOffset={4}>
           <Arrow aria-hidden />
           {locales.map((locale) => (
             <Item asChild key={locale}>
@@ -82,10 +82,11 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Pro
                 role="link"
                 aria-current={i18n.language === locale}
                 variant="ghost"
+                shape="sharp"
                 aria-label={t(`changeLanguage.${locale}`)}
                 onClick={() => onSelect(locale)}>
-                <Text>{t(`languages.${locale}`)}</Text>
                 <ActivityIndicator>{i18n.language === locale && <ActiveIndicator />}</ActivityIndicator>
+                <Text>{t(`languages.${locale}`)}</Text>
               </LanguageChoice>
             </Item>
           ))}

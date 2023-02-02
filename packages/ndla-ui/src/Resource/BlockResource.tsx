@@ -7,8 +7,8 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
-import { colors, fonts, spacing } from '@ndla/core';
+import React from 'react';
+import { colors, fonts, mq, spacing } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
@@ -67,10 +67,14 @@ const BlockDescription = styled.p`
   }
 `;
 
-const RightRow = styled(Row)`
+interface TagsAndActionProps {
+  hasMenuButton: boolean;
+}
+
+const TagsAndActionMenu = styled(Row)<TagsAndActionProps>`
   z-index: 1;
   justify-content: flex-end;
-  margin: 0 -${spacing.small} -${spacing.small} 0;
+  margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;
 `;
 
 const BlockInfoWrapper = styled.div`
@@ -186,10 +190,10 @@ const BlockResource = ({
           <ResourceTypeList resourceTypes={resourceTypes} />
           <BlockDescription>{description}</BlockDescription>
         </ContentWrapper>
-        <RightRow>
+        <TagsAndActionMenu hasMenuButton={!!(tags && tags.length > 3) || !!(menuItems && menuItems.length)}>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
           {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
-        </RightRow>
+        </TagsAndActionMenu>
       </BlockInfoWrapper>
     </BlockElementWrapper>
   );

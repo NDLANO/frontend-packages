@@ -113,6 +113,7 @@ const CountContainer = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: row;
+  min-height: 44px;
   gap: ${spacing.small};
 `;
 

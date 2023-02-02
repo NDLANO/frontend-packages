@@ -21,6 +21,7 @@ function getPackages() {
       (f) =>
         f.indexOf('ndla-scripts') === -1 &&
         f.indexOf('ndla-source-map-resolver') === -1 &&
+        f.indexOf('types-embed') === -1 &&
         f.indexOf('eslint-config-ndla') === -1,
     ); // skip private, config and script packages
 }

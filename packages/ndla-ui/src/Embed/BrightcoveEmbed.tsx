@@ -8,6 +8,8 @@
 
 import sortBy from 'lodash/sortBy';
 import isNumber from 'lodash/isNumber';
+import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 import {
   contributorGroups,
   contributorTypes,
@@ -43,6 +45,10 @@ const mapContributorType = (type: string) => {
       return type;
   }
 };
+
+const LinkedVideoButton = styled(ButtonV2)`
+  margin-left: ${spacing.small};
+`;
 
 const getLicenseByNBTitle = (title: string) => {
   switch (title.replace(/\s/g, '').toLowerCase()) {
@@ -199,9 +205,13 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
           </ButtonV2>
         }
         linkedVideoButton={
-          <ButtonV2 variant="outline" shape="pill" size="small" onClick={() => setShowOriginalVideo((p) => !p)}>
+          <LinkedVideoButton
+            variant="outline"
+            shape="pill"
+            size="small"
+            onClick={() => setShowOriginalVideo((p) => !p)}>
             {t(`figure.button.${showOriginalVideo ? 'original' : 'alternative'}`)}
-          </ButtonV2>
+          </LinkedVideoButton>
         }
         licenseRights={license.rights}
         authors={captionAuthors}

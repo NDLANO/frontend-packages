@@ -623,6 +623,7 @@ const messages = {
     rightsholder: 'Rightsholder',
     source: 'Source',
     published: 'Published',
+    info: 'License info',
   },
   errorMessage: {
     title: 'Oops, something went wrong',

@@ -21,7 +21,7 @@ const StyledIframe = styled.iframe<{ type: string }>`
 
 export type NotionVisualElementType = {
   element?: ReactNode;
-  type?: 'video' | 'image' | 'h5p';
+  type?: 'video' | 'image' | 'h5p' | 'iframe';
   resource?: string;
   title?: string;
   url?: string;

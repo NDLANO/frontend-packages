@@ -623,6 +623,7 @@ const messages = {
     published: 'Almmuhanbeaivi',
     rightsholder: 'Vuoigatvuođaguoddi',
     source: 'Gáldu',
+    info: 'Lisensinfo',
   },
   errorMessage: {
     title: 'Ops, juoga manai boastut',

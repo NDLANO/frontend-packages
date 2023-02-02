@@ -622,6 +622,7 @@ const messages = {
     published: 'Publiseringsdato',
     rightsholder: 'Rettighetshaver',
     source: 'Kilde',
+    info: 'Lisensinfo',
   },
   errorMessage: {
     title: 'Ops, noe gikk galt',

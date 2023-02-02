@@ -10,15 +10,11 @@ import { forwardRef, ReactNode, RefAttributes } from 'react';
 import { ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { Root, Item, Header, Trigger, Content } from '@radix-ui/react-accordion';
-import {
-  getGroupedContributorDescriptionList,
-  getLicenseByAbbreviation,
-  getLicenseByNBTitle,
-  getLicenseCredits,
-} from '@ndla/licenses';
+import { getGroupedContributorDescriptionList, getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import { css } from '@emotion/react';
 import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
+import { ChevronDown } from '@ndla/icons/common';
 import { parseMarkdown } from '@ndla/util';
 import styled from '@emotion/styled';
 import { NotionDialogContent, NotionDialogLicenses, NotionDialogText } from '@ndla/notion';
@@ -26,7 +22,7 @@ import { Figure, FigureCaption } from '../Figure';
 import { NotionVisualElementType } from '../Notion';
 import { classLicenses, FigureLicenseByline, FigureLicenseCta } from '../Figure/FigureLicense';
 import { Copyright } from '../types';
-import { getContributorGroups } from './BrightcoveEmbed';
+import { getContributorGroups, getLicenseByNBTitle } from './BrightcoveEmbed';
 
 export interface ConceptNotionData {
   title: string;
@@ -72,7 +68,7 @@ const getVisualElement = (
         ...getContributorGroups(visualElement.data.custom_fields),
       },
     };
-  } else if (visualElement.resource === 'external') {
+  } else if (visualElement.resource === 'external' || visualElement.resource === 'iframe') {
     return {
       resource: visualElement.resource,
       url: visualElement.embedData.url,
@@ -127,6 +123,7 @@ const notionContentCss = css`
 `;
 
 const StyledIframe = styled.iframe<{ type?: string }>`
+  aspect-ratio: 16 / 8;
   min-height: ${(p) => p.type === 'video' && '400px'};
 `;
 
@@ -152,7 +149,57 @@ const NotionHeader = styled.div`
 `;
 
 const StyledAccordionContent = styled(Content)`
-  /* background-color: ${colors.brand.tertiary}; */
+  background-color: ${colors.brand.lighter};
+  padding: ${spacing.small};
+  border-radius: ${misc.borderRadius};
+  overflow: hidden;
+  &[data-state='open'] {
+    animation: slideDown 300ms ease-out;
+  }
+  &[data-state='closed'] {
+    animation: slideUp 300ms ease-out;
+  }
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+`;
+
+const StyledRoot = styled(Root)`
+  border-bottom: 1px solid ${colors.brand.greyLight};
+`;
+
+const StyledFigureCaption = styled(FigureCaption)`
+  border-bottom: 0;
+
+  h3 {
+    margin: 0;
+  }
+`;
+
+const StyledAccordionTrigger = styled(ButtonV2)`
+  color: ${colors.brand.primary};
+  border-color: ${colors.brand.primary};
+  &[data-state='open'] {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+  svg {
+    transition: transform 300ms;
+  }
 `;
 
 export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
@@ -192,58 +239,67 @@ export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
           {closeButton}
         </NotionHeader>
         <NotionDialogContent>
-          <Figure resizeIframe type={'full-column'}>
-            {notionVisualElement && notionVisualElement.image?.src ? (
-              <img src={notionVisualElement.image.src} alt={notionVisualElement.image.alt} />
-            ) : (
-              <StyledIframe
-                allowFullScreen
-                type={visualElementType}
-                src={notionVisualElement?.url}
-                title={notionVisualElement?.title}
-              />
-            )}
-            <Root type="single" collapsible>
-              <Item value="licenseInfo">
-                <Header>
-                  <FigureCaption
-                    figureId={''}
-                    id={''}
-                    modalButton={<></>}
-                    reuseLabel={t('reuse')}
-                    authors={visualElementAuthors}
-                    licenseRights={visualElementLicense.rights}>
-                    <Trigger asChild>
-                      <ButtonV2>Skjul lisensinformasjon</ButtonV2>
-                    </Trigger>
-                  </FigureCaption>
-                </Header>
-                <StyledAccordionContent>
-                  <div {...classLicenses()}>
-                    <h1 {...classLicenses('title')}>{t(`license.${visualElementType}.rules`)}</h1>
-                    <FigureLicenseByline
-                      license={visualElementLicense}
-                      messages={{
-                        learnAboutLicenses: t('license.learnMore'),
-                      }}
-                      locale={i18n.language}
-                    />
-                    <FigureLicenseCta
-                      authors={visualElementGroupedAuthors}
-                      title={notionVisualElement?.title}
-                      origin={notionVisualElement?.copyright?.origin}
-                      messages={{ source: t('source'), title: t('title') }}></FigureLicenseCta>
-                  </div>
-                </StyledAccordionContent>
-              </Item>
-            </Root>
-          </Figure>
+          {notionVisualElement && (
+            <Figure resizeIframe type={'full-column'}>
+              {notionVisualElement.image?.src ? (
+                <img src={notionVisualElement.image.src} alt={notionVisualElement.image.alt} />
+              ) : (
+                <StyledIframe
+                  allowFullScreen
+                  type={visualElementType}
+                  src={notionVisualElement?.url}
+                  title={notionVisualElement?.title}
+                />
+              )}
+              {visualElementLicense && (
+                <StyledRoot type="single" collapsible>
+                  <Item value="licenseInfo">
+                    <StyledFigureCaption
+                      figureId={''}
+                      id={''}
+                      modalButton={<></>}
+                      reuseLabel={t('reuse')}
+                      authors={visualElementAuthors}
+                      licenseRights={visualElementLicense.rights}>
+                      {visualElementLicense.abbreviation && (
+                        <Header>
+                          <Trigger asChild>
+                            <StyledAccordionTrigger variant="outline" shape="pill" size="small" colorTheme="lighter">
+                              {t(`license.info`)}
+                              <ChevronDown />
+                            </StyledAccordionTrigger>
+                          </Trigger>
+                        </Header>
+                      )}
+                    </StyledFigureCaption>
+                    <StyledAccordionContent>
+                      <div {...classLicenses()}>
+                        <h1 {...classLicenses('title')}>{t(`license.${visualElementType}.rules`)}</h1>
+                        <FigureLicenseByline
+                          license={visualElementLicense}
+                          messages={{
+                            learnAboutLicenses: t('license.learnMore'),
+                          }}
+                          locale={i18n.language}
+                        />
+                        <FigureLicenseCta
+                          authors={visualElementGroupedAuthors}
+                          title={notionVisualElement?.title}
+                          origin={notionVisualElement?.copyright?.origin}
+                          messages={{ source: t('source'), title: t('title') }}></FigureLicenseCta>
+                      </div>
+                    </StyledAccordionContent>
+                  </Item>
+                </StyledRoot>
+              )}
+            </Figure>
+          )}
           <NotionDialogText>{parseMarkdown(content ?? '', 'body')}</NotionDialogText>
         </NotionDialogContent>
         <NotionDialogLicenses
           authors={authors.map((a) => a.name)}
           license={copyright?.license?.license ?? ''}
-          source={source}
+          source={parseMarkdown(source ?? '', 'body')}
         />
       </div>
     );

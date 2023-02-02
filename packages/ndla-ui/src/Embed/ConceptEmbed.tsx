@@ -72,7 +72,7 @@ const StyledButton = styled.button`
 
 export const ConceptEmbed = ({ embed }: Props) => {
   if (embed.status === 'error') {
-    return <div>Failed to fetch embed</div>;
+    return <span>{embed.embedData.linkText}</span>;
   }
 
   const {
@@ -152,20 +152,12 @@ const StyledAnchor = styled(Anchor)`
 `;
 
 const StyledAnchorSpan = styled.span`
-  display: flex;
-  display: block;
+  position: absolute;
+  left: 50%;
   align-self: center;
 `;
 
-const InlineConcept = ({
-  title,
-  content,
-  metaImage,
-  copyright,
-  source,
-  visualElement,
-  linkText,
-}: InlineConceptProps) => {
+const InlineConcept = ({ title, content, copyright, source, visualElement, linkText }: InlineConceptProps) => {
   const { t } = useTranslation();
   return (
     <Root>
@@ -183,7 +175,6 @@ const InlineConcept = ({
           <ConceptNotion
             title={title}
             content={content}
-            metaImage={metaImage}
             copyright={copyright}
             source={source}
             visualElement={visualElement}
@@ -257,7 +248,6 @@ export const BlockConcept = ({ title, content, metaImage, copyright, source, vis
                     <ConceptNotion
                       title={title}
                       content={content}
-                      metaImage={metaImage}
                       copyright={copyright}
                       source={source}
                       visualElement={visualElement}

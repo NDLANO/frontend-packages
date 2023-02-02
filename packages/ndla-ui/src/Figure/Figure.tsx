@@ -38,9 +38,10 @@ export const FigureCaption = ({
   hideIconsAndAuthors,
   linkedVideoMessages,
   linkedVideoButton,
+  className,
 }: FigureCaptionProps) => {
   return (
-    <figcaption {...classes('caption', hideFigcaption && !isMobile ? 'hidden-caption' : undefined)}>
+    <figcaption {...classes('caption', hideFigcaption && !isMobile ? 'hidden-caption' : undefined, className)}>
       {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
       <footer {...classes('byline')}>
         <div {...classes('byline-licenselist')}>
@@ -112,6 +113,7 @@ export interface FigureLicense {
 }
 
 interface FigureCaptionProps {
+  className?: string;
   figureId: string;
   id?: string;
   caption?: string;

@@ -50,7 +50,7 @@ const LinkedVideoButton = styled(ButtonV2)`
   margin-left: ${spacing.small};
 `;
 
-const getLicenseByNBTitle = (title: string) => {
+export const getLicenseByNBTitle = (title: string) => {
   switch (title.replace(/\s/g, '').toLowerCase()) {
     case 'navngivelse-ikkekommersiell-ingenbearbeidelse':
       return 'CC-BY-NC-ND-4.0';

@@ -10,9 +10,14 @@ import { CopyParagraphButton } from '@ndla/ui';
 import { Text, Element } from 'html-react-parser';
 import { PluginType } from './types';
 export const CopyParagraphPlugin: PluginType = (node) => {
-  const paragraphChild = node.children.find((c): c is Element => c.type === 'tag' && c.name === 'p');
+  const directTextChild = node.children.find((c): c is Text => c.type === 'text');
+  if (directTextChild) {
+    return <CopyParagraphButton title={directTextChild.data} content={directTextChild.data} />;
+  }
+  const paragraphChild = node.children.find((c): c is Element => c.type === 'tag');
   const textChild = paragraphChild?.children.find((c): c is Text => c.type === 'text');
   if (textChild) {
     return <CopyParagraphButton title={textChild.data} content={textChild.data} />;
   }
+  return null;
 };

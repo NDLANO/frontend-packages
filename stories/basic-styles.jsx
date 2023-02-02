@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Translation, TranslationLine } from '@ndla/ui';
-import { colors } from '@ndla/core';
+import { colors, lists } from '@ndla/core';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
 import Table from './molecules/TableExample';
@@ -1653,7 +1653,7 @@ storiesOf('Grunnstiler', module)
     </div>
   ))
   .add('Lister', () => (
-    <div>
+    <div css={lists.listsStyle}>
       <StoryIntro title="Lister">
         <p>
           Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet
@@ -1672,6 +1672,14 @@ storiesOf('Grunnstiler', module)
               <li>Underlistepunkt 1</li>
               <li>Underlistepunkt 2</li>
               <li>Underlistepunkt 3</li>
+              <li>
+                Underliste:
+                <ul>
+                  <li>Underlistepunkt 1</li>
+                  <li>Underlistepunkt 2</li>
+                  <li>Underlistepunkt 3</li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>

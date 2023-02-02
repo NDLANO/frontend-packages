@@ -136,7 +136,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
     return (
       <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
         <iframe
-          title={`Vidoe: ${embedData.videoid ?? ''}`}
+          title={`Video: ${embedData.videoid ?? ''}`}
           aria-label={`Video: ${embedData.videoid ?? ''}`}
           frameBorder="0"
           {...getIframeProps(embedData, [])}

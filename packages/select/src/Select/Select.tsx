@@ -55,6 +55,7 @@ const Select = <T extends boolean>({
   isSearchable = false,
   groupTitle,
   matchFrom = 'start',
+  isMulti,
   ...rest
 }: Props<T>) => {
   const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
@@ -63,6 +64,7 @@ const Select = <T extends boolean>({
   return (
     <ReactSelect<Option, T>
       {...rest}
+      isMulti={isMulti}
       options={customOption}
       colorTheme={colorTheme}
       aria-label={label}

@@ -37,6 +37,7 @@ export const FigureCaption = ({
   hasLinkedVideo,
   hideIconsAndAuthors,
   linkedVideoMessages,
+  linkedVideoButton,
 }: FigureCaptionProps) => {
   return (
     <figcaption {...classes('caption', hideFigcaption && !isMobile ? 'hidden-caption' : undefined)}>
@@ -62,17 +63,20 @@ export const FigureCaption = ({
                     {reuseLabel}
                   </Button>
                 )}
-                {hasLinkedVideo && (
-                  <Button
-                    borderShape="rounded"
-                    outline
-                    size="small"
-                    type="button"
-                    {...classes('toggleAlternativeVideo')}>
-                    <span className="original">{linkedVideoMessages?.alternative}</span>
-                    <span className="alternative hidden">{linkedVideoMessages?.original}</span>
-                  </Button>
-                )}
+                {hasLinkedVideo &&
+                  (linkedVideoButton ? (
+                    linkedVideoButton
+                  ) : (
+                    <Button
+                      borderShape="rounded"
+                      outline
+                      size="small"
+                      type="button"
+                      {...classes('toggleAlternativeVideo')}>
+                      <span className="original">{linkedVideoMessages?.alternative}</span>
+                      <span className="alternative hidden">{linkedVideoMessages?.original}</span>
+                    </Button>
+                  ))}
               </div>
               {children}
             </div>
@@ -115,6 +119,7 @@ interface FigureCaptionProps {
   licenseRights: string[];
   children?: ReactNode;
   modalButton?: ReactNode;
+  linkedVideoButton?: ReactNode;
   authors?: { name: string }[];
   link?: {
     url: string;

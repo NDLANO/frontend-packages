@@ -13,12 +13,10 @@ import {
   contributorTypes,
   getGroupedContributorDescriptionList,
   getLicenseByAbbreviation,
-  getLicenseByNBTitle,
   getLicenseCredits,
 } from '@ndla/licenses';
 import { useState } from 'react';
 import { ModalV2 } from '@ndla/modal';
-import { copyTextToClipboard } from '@ndla/util';
 import { SafeLinkButton } from '@ndla/safelink';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
@@ -43,6 +41,35 @@ const mapContributorType = (type: string) => {
       return 'Opphaver';
     default:
       return type;
+  }
+};
+
+const getLicenseByNBTitle = (title: string) => {
+  switch (title.replace(/\s/g, '').toLowerCase()) {
+    case 'navngivelse-ikkekommersiell-ingenbearbeidelse':
+      return 'CC-BY-NC-ND-4.0';
+    case 'navngivelse-ikkekommersiell-delpåsammevilkår':
+      return 'CC-BY-NC-SA-4.0';
+    case 'navngivelse-ikkekommersiell':
+      return 'CC-BY-NC-4.0';
+    case 'navngivelse-ingenbearbeidelse':
+      return 'CC-BY-ND-4.0';
+    case 'navngivelse-delpåsammevilkår':
+      return 'CC-BY-SA-4.0';
+    case 'navngivelse':
+      return 'CC-BY-4.0';
+    case 'offentligdomene':
+      return 'PD';
+    case 'publicdomaindedication':
+      return 'CC0-1.0';
+    case 'publicdomainmark':
+      return 'PD';
+    case 'fristatus-erklæring':
+      return 'CC0-1.0';
+    case 'opphavsrett':
+      return 'COPYRIGHTED';
+    default:
+      return title;
   }
 };
 
@@ -102,6 +129,7 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
 };
 const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t, i18n } = useTranslation();
   const { embedData } = embed;
   if (embed.status === 'error') {
@@ -127,7 +155,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
 
   const licenseCode = getLicenseByNBTitle(data.custom_fields.license);
 
-  const license = getLicenseByAbbreviation(licenseCode as string, i18n.language);
+  const license = getLicenseByAbbreviation(licenseCode, i18n.language);
   const authors = getLicenseCredits(contributorGroups);
   const contributors = getGroupedContributorDescriptionList(contributorGroups, i18n.language).map((item) => ({
     name: item.description,
@@ -141,6 +169,9 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
 
   const figureId = `figure-${seq}-${data.id}`;
   const originalVideoProps = getIframeProps(embedData, data.sources);
+  const alternativeVideoProps = linkedVideoId
+    ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
+    : undefined;
   const { src, height, width } = getIframeProps(embedData, data.sources);
   const captionAuthors = getFirstNonEmptyLicenseCredits(authors);
 
@@ -152,11 +183,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
           title={`Video: ${data.name}`}
           aria-label={`Video: ${data.name}`}
           frameBorder="0"
-          data-original-src={originalVideoProps.src}
-          data-alternative-src={
-            linkedVideoId && getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources).src
-          }
-          {...originalVideoProps}
+          {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
           // eslint-disable-next-line react/no-unknown-property
           allowFullScreen
         />
@@ -171,13 +198,14 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
             {t('video.reuse')}
           </ButtonV2>
         }
+        linkedVideoButton={
+          <ButtonV2 variant="outline" shape="pill" size="small" onClick={() => setShowOriginalVideo((p) => !p)}>
+            {t(`figure.button.${showOriginalVideo ? 'original' : 'alternative'}`)}
+          </ButtonV2>
+        }
         licenseRights={license.rights}
         authors={captionAuthors}
         hasLinkedVideo={!!linkedVideoId}
-        linkedVideoMessages={{
-          original: t('figure.button.original'),
-          alternative: t('figure.button.alternative'),
-        }}
       />
       <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
         {(close) => (
@@ -188,14 +216,16 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
             license={license}
             authors={contributors}
             type="video">
-            <SafeLinkButton key="download" to={download} variant="outline" download>
-              {t('video.download')}
-            </SafeLinkButton>
+            {licenseCode !== 'COPYRIGHTED' && (
+              <SafeLinkButton key="download" to={download} variant="outline" download>
+                {t('video.download')}
+              </SafeLinkButton>
+            )}
             <CopyButton
               variant="outline"
               copyNode={t('license.hasCopiedTitle')}
-              onClick={() => copyTextToClipboard(makeIframeString(src, width, height, data.name))}>
-              {t('license.copyTitle')}
+              onClick={() => navigator.clipboard.writeText(makeIframeString(src, width, height, data.name))}>
+              {t('license.embed')}
             </CopyButton>
           </FigureLicenseDialogContent>
         )}

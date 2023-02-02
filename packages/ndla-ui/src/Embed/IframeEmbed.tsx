@@ -53,7 +53,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   return (
     //@ts-ignore
     // eslint-disable-next-line react/no-unknown-property
-    <figure className={classes} resizeiframe={resize}>
+    <figure className={classes} resizeiframe={`${resize}`}>
       <iframe
         title={urlOrTitle}
         aria-label={urlOrTitle}

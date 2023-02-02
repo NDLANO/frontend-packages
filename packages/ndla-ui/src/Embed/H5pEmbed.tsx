@@ -32,13 +32,13 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
     const data = embed.data.oembed.type === 'preview' ? embed.data.oembed.html : embed.data.oembed.html;
     //@ts-ignore
     // eslint-disable-next-line react/no-unknown-property
-    return <figure className={classes} resizeiframe dangerouslySetInnerHTML={{ __html: data ?? '' }} />;
+    return <figure className={classes} resizeiframe="true" dangerouslySetInnerHTML={{ __html: data ?? '' }} />;
   }
 
   return (
     //@ts-ignore
     // eslint-disable-next-line react/no-unknown-property
-    <figure className={classes} resizeiframe>
+    <figure className={classes} resizeiframe="true">
       <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
     </figure>
   );

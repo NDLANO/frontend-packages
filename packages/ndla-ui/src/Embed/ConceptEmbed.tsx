@@ -151,6 +151,12 @@ const StyledAnchor = styled(Anchor)`
   }
 `;
 
+const StyledAnchorSpan = styled.span`
+  display: flex;
+  display: block;
+  align-self: center;
+`;
+
 const InlineConcept = ({
   title,
   content,
@@ -163,7 +169,9 @@ const InlineConcept = ({
   const { t } = useTranslation();
   return (
     <Root>
-      <StyledAnchor />
+      <StyledAnchor asChild>
+        <StyledAnchorSpan />
+      </StyledAnchor>
       <Trigger asChild>
         <NotionButton>
           {linkText}

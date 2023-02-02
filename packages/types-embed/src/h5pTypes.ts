@@ -37,7 +37,7 @@ export interface H5pPreviewResponse {
 export type H5pOembedData = OembedProxyData | H5pPreviewResponse;
 
 export interface H5pData {
-  h5pLicenseInformation: H5pLicenseInformation;
+  h5pLicenseInformation?: H5pLicenseInformation;
   h5pUrl: string;
   oembed?: H5pOembedData;
 }

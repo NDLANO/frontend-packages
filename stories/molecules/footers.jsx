@@ -11,6 +11,10 @@ const FooterExample = ({ inverted, t, hideLanguageSelector, i18n, isAuthenticate
   const privacyLinks = [
     { label: t('footer.privacyLink'), url: 'https://om.ndla.no/gpdr' },
     { label: t('footer.cookiesLink'), url: 'https://om.ndla.no/cookies' },
+    {
+      url: 'https://uustatus.no/nn/erklaringer/publisert/8cefdf3d-3272-402a-907b-689ddfc9bba7',
+      label: t('footer.availabilityLink'),
+    },
   ];
   return (
     <Footer

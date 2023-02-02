@@ -7,7 +7,7 @@
  */
 
 import { AudioMetaData } from '@ndla/types-embed';
-import { IImageMetaInformationV2 } from '@ndla/types-image-api';
+import { ICopyright } from '@ndla/types-image-api';
 import {
   figureApa7CopyString,
   getGroupedContributorDescriptionList,
@@ -20,15 +20,15 @@ import { useTranslation } from 'react-i18next';
 //@ts-ignore
 import { Remarkable } from 'remarkable';
 import { ButtonV2, CopyButton } from '@ndla/button';
-import { copyTextToClipboard } from '@ndla/util';
 import { SafeLinkButton } from '@ndla/safelink';
 import AudioPlayer from '../AudioPlayer';
-import { Figure, FigureCaption, FigureLicenseDialog } from '../Figure';
+import { Figure, FigureCaption } from '../Figure';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
 import { Author } from './ImageEmbed';
 
 interface Props {
   embed: AudioMetaData;
+  articlePath?: string;
 }
 export const getFirstNonEmptyLicenseCredits = (authors: {
   creators: Author[];
@@ -42,7 +42,7 @@ const renderMarkdown = (text: string) => {
   return <span dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 
-const AudioEmbed = ({ embed }: Props) => {
+const AudioEmbed = ({ embed, articlePath }: Props) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   if (embed.status === 'error') {
@@ -91,7 +91,6 @@ const AudioEmbed = ({ embed }: Props) => {
   }));
 
   const figureId = `figure-${seq}-${data.id}`;
-  const figureLicenseDialogId = `audio-${seq}-${data.id}`;
 
   const copyString =
     data.audioType === 'podcast'
@@ -99,10 +98,10 @@ const AudioEmbed = ({ embed }: Props) => {
           data.title.title,
           undefined,
           data.audioFile.url,
-          '', // options.shortPath || options.path,
+          articlePath,
           data.copyright,
           data.copyright.license.license,
-          undefined, // frontendDomain
+          '',
           (id: string) => t(id),
           i18n.language,
         )
@@ -117,11 +116,10 @@ const AudioEmbed = ({ embed }: Props) => {
         textVersion={textVersion}
         title={data.title.title}
         subtitle={subtitle}
-        staticRenderId={`static-render-${data.id}-${i18n.language}`}
       />
       <FigureCaption
-        figureId={figureId}
-        id={figureLicenseDialogId}
+        id=""
+        figureId=""
         modalButton={
           <ButtonV2 variant="outline" shape="pill" size="small" onClick={() => setIsOpen(true)}>
             {t('audio.reuse')}
@@ -147,7 +145,7 @@ const AudioEmbed = ({ embed }: Props) => {
                   <CopyButton
                     variant="outline"
                     copyNode={t('license.hasCopiedTitle')}
-                    onClick={() => copyTextToClipboard(copyString)}>
+                    onClick={() => navigator.clipboard.writeText(copyString)}>
                     {t('license.copyTitle')}
                   </CopyButton>
                 )}
@@ -160,43 +158,39 @@ const AudioEmbed = ({ embed }: Props) => {
         )}
       </ModalV2>
       {data.imageMeta && (
-        <ImageLicense image={data.imageMeta} figureId={figureId} figureLicenseDialogId={figureLicenseDialogId} />
+        <ImageLicense
+          title={data.imageMeta.title.title}
+          imageUrl={data.imageMeta.imageUrl}
+          copyright={data.imageMeta.copyright}
+          articlePath={articlePath}
+        />
       )}
     </Figure>
   );
 };
 
 interface ImageLicenseProps {
-  image: IImageMetaInformationV2;
-  figureId: string;
-  figureLicenseDialogId: string;
+  title: string;
+  imageUrl: string;
+  copyright: ICopyright;
+  articlePath?: string;
 }
 
-const ImageLicense = ({ image, figureId, figureLicenseDialogId }: ImageLicenseProps) => {
+const ImageLicense = ({ articlePath, title, imageUrl, copyright }: ImageLicenseProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const {
-    copyright,
-    imageUrl,
-    title: { title },
-    id,
-  } = image;
-  const {
-    license: { license: licenseAbbreviation },
-    origin,
-  } = copyright;
   const copyString = figureApa7CopyString(
     title,
     undefined,
     imageUrl,
-    '', // options.shortPath || options.path,
+    articlePath,
     copyright,
     copyright.license.license,
-    undefined, // frontendDomain
+    undefined,
     (id: string) => t(id),
     i18n.language,
   );
-  const license = getLicenseByAbbreviation(licenseAbbreviation, i18n.language);
+  const license = getLicenseByAbbreviation(copyright.license.license, i18n.language);
   const authors = getLicenseCredits(copyright);
 
   const contributors = getGroupedContributorDescriptionList(copyright, i18n.language).map((item) => ({
@@ -209,8 +203,8 @@ const ImageLicense = ({ image, figureId, figureLicenseDialogId }: ImageLicensePr
   return (
     <>
       <FigureCaption
-        figureId={figureId}
-        id={`${id}`}
+        figureId=""
+        id=""
         licenseRights={license.rights}
         modalButton={
           <ButtonV2 variant="outline" shape="pill" size="small" onClick={() => setIsOpen(true)}>
@@ -223,23 +217,23 @@ const ImageLicense = ({ image, figureId, figureLicenseDialogId }: ImageLicensePr
           {(close) => (
             <FigureLicenseDialogContent
               onClose={close}
-              title={image.title.title}
+              title={title}
               license={license}
               authors={contributors}
-              origin={image.copyright.origin}
+              origin={copyright.origin}
               locale={i18n.language}
               type="image">
-              {image.copyright.license.license !== 'COPYRIGHT' && (
+              {copyright.license.license !== 'COPYRIGHTED' && (
                 <>
                   {copyString && (
                     <CopyButton
                       variant="outline"
                       copyNode={t('license.hasCopiedTitle')}
-                      onClick={() => copyTextToClipboard(copyString)}>
+                      onClick={() => navigator.clipboard.writeText(copyString)}>
                       {t('license.copyTitle')}
                     </CopyButton>
                   )}
-                  <SafeLinkButton download to={image.imageUrl} variant="outline">
+                  <SafeLinkButton download to={imageUrl} variant="outline">
                     {t('image.download')}
                   </SafeLinkButton>
                 </>

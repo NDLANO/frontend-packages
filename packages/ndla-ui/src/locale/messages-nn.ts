@@ -622,7 +622,7 @@ const messages = {
     rightsholder: 'Rettshavar',
     source: 'Kjelde',
     published: 'Publiseringsdato',
-    info: 'Lisensinfo',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ops, noko gjekk gale',

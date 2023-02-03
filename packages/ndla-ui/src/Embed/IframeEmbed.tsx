@@ -60,13 +60,10 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
         src={url}
         width={strippedWidth}
         height={strippedHeight}
-        //@ts-ignore
         // eslint-disable-next-line react/no-unknown-property
-        allowfullscreen
+        allowFullScreen
         scrolling="no"
-        //@ts-ignore
-        // eslint-disable-next-line react/no-unknown-property
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
       />
     </figure>

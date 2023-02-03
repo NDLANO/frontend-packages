@@ -19,11 +19,13 @@ import { ContentLinkEmbedPlugin } from './ContentLinkEmbedPlugin';
 import { ConceptEmbedPlugin } from './ConceptEmbedPlugin';
 import { ConceptListEmbedPlugin } from './ConceptListEmbedPlugin';
 import { FileEmbedPlugin } from './FileEmbedPlugin';
+import { CodeEmbedPlugin } from './CodeEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: ImageEmbedPlugin,
   audio: AudioEmbedPlugin,
   h5p: H5pEmbedPlugin,
+  'code-block': CodeEmbedPlugin,
   external: ExternalEmbedPlugin,
   iframe: IframeEmbedPlugin,
   footnote: FootnoteEmbedPlugin,

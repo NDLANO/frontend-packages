@@ -14,5 +14,5 @@ import { PluginType } from '../types';
 export const ConceptEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as ConceptMetaData;
-  return <ConceptEmbed embed={data} />;
+  return <ConceptEmbed embed={data} fullWidth />;
 };

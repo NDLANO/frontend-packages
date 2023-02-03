@@ -49,6 +49,7 @@ const ImageWrapper = styled.div`
 
 interface Props {
   embed: ConceptMetaData;
+  fullWidth?: boolean;
 }
 
 const StyledButton = styled.button`
@@ -70,7 +71,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth }: Props) => {
   if (embed.status === 'error') {
     return <span>{embed.embedData.linkText}</span>;
   }
@@ -82,6 +83,7 @@ export const ConceptEmbed = ({ embed }: Props) => {
   if (embed.embedData.type === 'block') {
     return (
       <BlockConcept
+        fullWidth={fullWidth}
         title={concept.title.title}
         content={concept.content?.content}
         metaImage={concept.metaImage}
@@ -192,9 +194,19 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
   );
 };
 
-interface ConceptProps extends ConceptNotionData {}
+interface ConceptProps extends ConceptNotionData {
+  fullWidth?: boolean;
+}
 
-export const BlockConcept = ({ title, content, metaImage, copyright, source, visualElement }: ConceptProps) => {
+export const BlockConcept = ({
+  title,
+  content,
+  metaImage,
+  copyright,
+  source,
+  visualElement,
+  fullWidth,
+}: ConceptProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const licenseCredits = getLicenseCredits(copyright);
@@ -212,7 +224,7 @@ export const BlockConcept = ({ title, content, metaImage, copyright, source, vis
   return (
     <Root>
       <StyledAnchor />
-      <Figure resizeIframe type={'full-column'}>
+      <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
         <UINotion
           id=""
           title={title}

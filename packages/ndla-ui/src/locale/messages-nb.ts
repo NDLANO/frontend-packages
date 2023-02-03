@@ -545,6 +545,7 @@ const messages = {
       hasCopiedTitle: 'Lenke kopiert',
     },
     image: {
+      name: 'bilde',
       rules: 'Regler for bruk av bildet:',
     },
     images: {
@@ -622,7 +623,7 @@ const messages = {
     published: 'Publiseringsdato',
     rightsholder: 'Rettighetshaver',
     source: 'Kilde',
-    info: 'Lisensinfo',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ops, noe gikk galt',

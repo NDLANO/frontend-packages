@@ -267,7 +267,7 @@ export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
                         <Header>
                           <Trigger asChild>
                             <StyledAccordionTrigger variant="outline" shape="pill" size="small" colorTheme="lighter">
-                              {t(`license.info`)}
+                              {t('license.info')}
                               <ChevronDown />
                             </StyledAccordionTrigger>
                           </Trigger>

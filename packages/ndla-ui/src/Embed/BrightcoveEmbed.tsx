@@ -113,6 +113,12 @@ export const getContributorGroups = (fields: Record<string, string>) => {
   );
 };
 
+const BrightcoveIframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+`;
+
 export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = '') => {
   const strippedWidth = isNumber(width) ? width : width.replace(/\s*px/, '');
   const strippedHeight = isNumber(height) ? height : height.replace(/\s*px/, '');
@@ -125,12 +131,15 @@ export const isNumeric = (value: any) => !Number.isNaN(value - parseFloat(value)
 const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSource[]) => {
   const { account, videoid, player = 'default' } = data;
 
-  const source = sources.filter((s) => s.width && s.height).sort((a, b) => (b.height ?? 0) - (a.height ?? 0))[0] || {};
+  const source = sortBy(
+    sources.filter((s) => s.width && s.height),
+    (s) => s.height,
+  )[0];
 
   return {
     src: `https://players.brightcove.net/${account}/${player}_default/index.html?videoId=${videoid}`,
-    height: source.height ?? '480',
-    width: source.width ?? '640',
+    height: source?.height ?? '480',
+    width: source?.width ?? '640',
   };
 };
 const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
@@ -141,12 +150,11 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
   if (embed.status === 'error') {
     return (
       <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
-        <iframe
+        <BrightcoveIframe
           title={`Video: ${embedData.videoid ?? ''}`}
           aria-label={`Video: ${embedData.videoid ?? ''}`}
           frameBorder="0"
           {...getIframeProps(embedData, [])}
-          // eslint-disable-next-line react/no-unknown-property
           allowFullScreen
         />
         <figcaption>{t('video.error')}</figcaption>
@@ -178,13 +186,12 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
   const alternativeVideoProps = linkedVideoId
     ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
     : undefined;
-  const { src, height, width } = getIframeProps(embedData, data.sources);
   const captionAuthors = getFirstNonEmptyLicenseCredits(authors);
 
   return (
     <Figure id={figureId} type={isConcept ? 'full-column' : 'full'} resizeIframe>
       <div className="brightcove-video">
-        <iframe
+        <BrightcoveIframe
           className="original"
           title={`Video: ${data.name}`}
           aria-label={`Video: ${data.name}`}
@@ -229,9 +236,9 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
             <VideoLicenseButtons
               download={download}
               licenseCode={licenseCode}
-              src={src}
-              width={width}
-              height={height}
+              src={originalVideoProps.src}
+              width={originalVideoProps.width}
+              height={originalVideoProps.height}
               name={data.name}
             />
           </FigureLicenseDialogContent>

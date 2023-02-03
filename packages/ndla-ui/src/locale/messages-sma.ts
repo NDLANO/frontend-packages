@@ -626,7 +626,7 @@ const messages = {
     published: 'Publiseringsdato',
     rightsholder: 'Rettighetshaver',
     source: 'Gaaltije',
-    info: 'Lisensinfo',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ovva, mij akt båajhtede sjïdtit',

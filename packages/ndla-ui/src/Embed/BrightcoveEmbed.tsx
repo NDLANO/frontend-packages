@@ -226,21 +226,46 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
             license={license}
             authors={contributors}
             type="video">
-            {licenseCode !== 'COPYRIGHTED' && (
-              <SafeLinkButton key="download" to={download} variant="outline" download>
-                {t('video.download')}
-              </SafeLinkButton>
-            )}
-            <CopyButton
-              variant="outline"
-              copyNode={t('license.hasCopiedTitle')}
-              onClick={() => navigator.clipboard.writeText(makeIframeString(src, width, height, data.name))}>
-              {t('license.embed')}
-            </CopyButton>
+            <VideoLicenseButtons
+              download={download}
+              licenseCode={licenseCode}
+              src={src}
+              width={width}
+              height={height}
+              name={data.name}
+            />
           </FigureLicenseDialogContent>
         )}
       </ModalV2>
     </Figure>
+  );
+};
+
+interface VideoLicenseButtonsProps {
+  download: string;
+  licenseCode?: string;
+  src: string;
+  width: string | number;
+  height: string | number;
+  name?: string;
+}
+
+const VideoLicenseButtons = ({ download, src, width, height, name, licenseCode }: VideoLicenseButtonsProps) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      {licenseCode !== 'COPYRIGHTED' && (
+        <SafeLinkButton key="download" to={download} variant="outline" download>
+          {t('video.download')}
+        </SafeLinkButton>
+      )}
+      <CopyButton
+        variant="outline"
+        copyNode={t('license.hasCopiedTitle')}
+        onClick={() => navigator.clipboard.writeText(makeIframeString(src, width, height, name))}>
+        {t('license.embed')}
+      </CopyButton>
+    </>
   );
 };
 

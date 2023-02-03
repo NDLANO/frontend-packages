@@ -23,10 +23,12 @@ import { NotionVisualElementType } from '../Notion';
 import { classLicenses, FigureLicenseByline, FigureLicenseCta } from '../Figure/FigureLicense';
 import { Copyright } from '../types';
 import { getContributorGroups, getLicenseByNBTitle } from './BrightcoveEmbed';
+import { ImageLicenseButtons } from './ImageEmbed';
 
 export interface ConceptNotionData {
   title: string;
   content?: string;
+  articlePath?: string;
   metaImage?: {
     url?: string;
     alt?: string;
@@ -203,7 +205,7 @@ const StyledAccordionTrigger = styled(ButtonV2)`
 `;
 
 export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
-  ({ visualElement, title, content, source, copyright, closeButton, ...rest }, ref) => {
+  ({ visualElement, articlePath, title, content, source, copyright, closeButton, ...rest }, ref) => {
     const { t, i18n } = useTranslation();
     const licenseCredits = getLicenseCredits(copyright);
     const { creators, rightsholders, processors } = licenseCredits;
@@ -286,7 +288,16 @@ export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
                           authors={visualElementGroupedAuthors}
                           title={notionVisualElement?.title}
                           origin={notionVisualElement?.copyright?.origin}
-                          messages={{ source: t('source'), title: t('title') }}></FigureLicenseCta>
+                          messages={{ source: t('source'), title: t('title') }}>
+                          {visualElementType === 'image' ? (
+                            <ImageLicenseButtons
+                              imageUrl={notionVisualElement.image?.src ?? ''}
+                              title={notionVisualElement.title}
+                              copyright={notionVisualElement.copyright}
+                              articlePath={articlePath}
+                            />
+                          ) : null}
+                        </FigureLicenseCta>
                       </div>
                     </StyledAccordionContent>
                   </Item>

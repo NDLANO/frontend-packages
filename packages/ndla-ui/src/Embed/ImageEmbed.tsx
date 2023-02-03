@@ -20,6 +20,7 @@ import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Figure, FigureCaption, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
+import { Copyright } from '../types';
 
 interface Props {
   embed: ImageMetaData;
@@ -143,23 +144,12 @@ const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
     type: item.label,
   }));
 
-  const copyString = figureApa7CopyString(
-    data.title.title,
-    undefined,
-    data.imageUrl,
-    articlePath,
-    data.copyright,
-    data.copyright.license.license,
-    '',
-    t,
-    i18n.language,
-  );
-
   const figureId = `figure-${seq}-${data.id}`;
 
   const { creators, rightsholders, processors } = authors;
   const captionAuthors = creators.length || rightsholders.length ? [...creators, ...rightsholders] : processors;
   return (
+    // Mangler concept-option. Da skal det være full-size.
     <Figure
       id={figureId}
       type={imageSizes ? undefined : figureType}
@@ -208,20 +198,12 @@ const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
               origin={data.copyright.origin}
               locale={i18n.language}
               type="image">
-              {data.copyright.license.license !== 'COPYRIGHTED' && (
-                <>
-                  <CopyButton
-                    variant="outline"
-                    onClick={() => navigator.clipboard.writeText(copyString)}
-                    copyNode={t('license.hasCopiedTitle')}
-                    aria-live="assertive">
-                    {t('license.copyTitle')}
-                  </CopyButton>
-                  <SafeLinkButton to={`${data.imageUrl}?download=true`} download variant="outline">
-                    {t('image.download')}
-                  </SafeLinkButton>
-                </>
-              )}
+              <ImageLicenseButtons
+                articlePath={articlePath}
+                title={data.title.title}
+                imageUrl={data.imageUrl}
+                copyright={data.copyright}
+              />
             </FigureLicenseDialogContent>
           )}
         </ModalV2>
@@ -243,6 +225,45 @@ interface ImageWrapperProps {
 }
 const hideByline = (size?: string): boolean => {
   return !!size && size.endsWith('-hide-byline');
+};
+
+interface ImageLicenseButtonsProps {
+  imageUrl: string;
+  title?: string;
+  articlePath?: string;
+  copyright?: Partial<Copyright>;
+}
+
+export const ImageLicenseButtons = ({ imageUrl, title, articlePath, copyright }: ImageLicenseButtonsProps) => {
+  const { t, i18n } = useTranslation();
+  if (!copyright?.license?.license || copyright?.license?.license === 'COPYRIGHTED') return null;
+
+  const copyString = figureApa7CopyString(
+    title,
+    undefined,
+    imageUrl,
+    articlePath,
+    copyright,
+    copyright?.license?.license,
+    '',
+    t,
+    i18n.language,
+  );
+
+  return (
+    <>
+      <CopyButton
+        variant="outline"
+        onClick={() => navigator.clipboard.writeText(copyString)}
+        copyNode={t('license.hasCopiedTitle')}
+        aria-live="assertive">
+        {t('license.copyTitle')}
+      </CopyButton>
+      <SafeLinkButton to={`${imageUrl}?download=true`} download variant="outline">
+        {t('image.download')}
+      </SafeLinkButton>
+    </>
+  );
 };
 
 const ImageWrapper = ({ src, crop, size, children }: ImageWrapperProps) => {

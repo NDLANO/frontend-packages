@@ -28,6 +28,10 @@ const StyledAside = styled.aside`
   align-items: center;
 `;
 
+const StyledDiv = styled.div`
+  width: 100%;
+`;
+
 const StyledIconButton = styled(IconButtonV2)`
   margin-top: -20px;
   z-index: 1;
@@ -41,7 +45,7 @@ const FactBox = ({ children }: Props) => {
 
   return (
     <StyledAside {...classes(undefined, undefined, additional)}>
-      <div {...classes('content')}>{children}</div>
+      <StyledDiv {...classes('content')}>{children}</StyledDiv>
       <StyledIconButton onClick={() => setIsOpen((p) => !p)} aria-label={t(`factbox.${isOpen ? 'close' : 'open'}`)}>
         {isOpen ? <ChevronUp /> : <ChevronDown />}
       </StyledIconButton>

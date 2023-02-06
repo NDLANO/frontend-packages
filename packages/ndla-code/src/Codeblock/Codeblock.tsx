@@ -6,9 +6,13 @@
  *
  */
 
+/**
+ * Be advised! This component breaks on SSR if you import CodeBlockEditor or languages.tsx.
+ */
+
 import React, { useState, useEffect, CSSProperties } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
@@ -16,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
-import { getTitleFromFormat } from '../CodeBlockEditor';
+import { getTitleFromFormat } from '../languageOptionts';
 
 const Wrapper = styled.div`
   margin: 15px 0;

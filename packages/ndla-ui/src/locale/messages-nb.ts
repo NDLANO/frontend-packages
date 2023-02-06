@@ -545,7 +545,6 @@ const messages = {
       hasCopiedTitle: 'Lenke kopiert',
     },
     image: {
-      name: 'bilde',
       rules: 'Regler for bruk av bildet:',
     },
     images: {

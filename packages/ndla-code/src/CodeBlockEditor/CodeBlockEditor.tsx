@@ -16,7 +16,8 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Wrapper, FlexContainer, FlexElement } from './style';
-import { ICodeLangugeOption, languageOptions } from '../languages';
+import '../languages';
+import { languageOptions, ICodeLangugeOption } from '../languageOptionts';
 
 const hightlightWithLineNumbers = (input: string, language: string) =>
   highlight(input, language)
@@ -32,14 +33,6 @@ type Props = {
     title: string;
     format: string;
   } | null;
-};
-
-export const getTitleFromFormat = (format: string) => {
-  const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === format);
-  if (selectedLanguage) {
-    return selectedLanguage.title;
-  }
-  return;
 };
 
 const StyledInput = styled.input`

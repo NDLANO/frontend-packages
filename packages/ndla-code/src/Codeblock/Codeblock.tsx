@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
-import { getTitleFromFormat } from '../languageOptionts';
+import { ICodeLangugeOption, languageOptions } from '../languageOptionts';
 
 const Wrapper = styled.div`
   margin: 15px 0;
@@ -88,6 +88,14 @@ type Props = {
   title?: string | null;
   actionButton?: JSX.Element | null;
   showCopy?: boolean;
+};
+
+const getTitleFromFormat = (format: string) => {
+  const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === format);
+  if (selectedLanguage) {
+    return selectedLanguage.title;
+  }
+  return;
 };
 
 export const Codeblock = ({ actionButton, code, format, showCopy = false, title }: Props) => {

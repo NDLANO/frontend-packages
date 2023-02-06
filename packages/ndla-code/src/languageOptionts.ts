@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 export const languageOptions: Array<ICodeLangugeOption> = [
   {
     title: 'Bash',
@@ -105,11 +113,3 @@ export interface ICodeLangugeOption {
   title: string;
   format: string;
 }
-
-export const getTitleFromFormat = (format: string) => {
-  const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === format);
-  if (selectedLanguage) {
-    return selectedLanguage.title;
-  }
-  return;
-};

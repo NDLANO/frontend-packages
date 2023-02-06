@@ -21,6 +21,7 @@ import BaseContainer from './BaseContainer';
 import BaseGroupHeading from './BaseGroupHeading';
 
 interface Props<T extends boolean> {
+  /** Options to populate the select menu. Grouped view if options are of type GroupBase. */
   options: OptionsOrGroups<Option, GroupBase<Option>>;
   label?: string;
   onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
@@ -32,6 +33,7 @@ interface Props<T extends boolean> {
   isLoading?: boolean;
   small?: boolean;
   bold?: boolean;
+  /** Only has effect when isMulti is false. */
   prefix?: string;
   postfix?: string;
   outline?: boolean;
@@ -40,6 +42,7 @@ interface Props<T extends boolean> {
   noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
   isClearable?: boolean;
   closeMenuOnSelect?: boolean;
+  /** Indicate if search hits should be matched from start of word or at any position. Only has effect when isSearchable is true. */
   matchFrom?: 'any' | 'start';
   required?: boolean;
   isDisabled?: boolean;

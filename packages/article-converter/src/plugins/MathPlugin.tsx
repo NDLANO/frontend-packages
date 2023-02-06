@@ -6,15 +6,9 @@
  *
  */
 
-import { attributesToProps, domToReact } from 'html-react-parser';
+import { attributesToProps } from 'html-react-parser';
 import { PluginType } from './types';
-export const MathPlugin: PluginType = (node, opts) => {
+export const MathPlugin: PluginType = (node) => {
   const props = attributesToProps(node.attribs);
-  return (
-    // @ts-ignore
-    <math {...props} display="block">
-      {domToReact(node.children, opts)}
-      {/* @ts-ignore  */}
-    </math>
-  );
+  return <span dangerouslySetInnerHTML={{ __html: `<math display="block">${props['data-math']}</math>` }} />;
 };

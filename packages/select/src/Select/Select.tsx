@@ -6,12 +6,12 @@
  *
  */
 
-import React, { ReactNode, useCallback, useMemo } from 'react';
-import ReactSelect, { PropsValue, createFilter } from 'react-select';
+import React, { ReactNode, useMemo } from 'react';
+import ReactSelect, { PropsValue, createFilter, OptionsOrGroups } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, Color, MultiValue, SingleValue } from './types';
+import { Option, Color, MultiValue, SingleValue, GroupBase } from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -21,7 +21,7 @@ import BaseContainer from './BaseContainer';
 import BaseGroupHeading from './BaseGroupHeading';
 
 interface Props<T extends boolean> {
-  options: Option[];
+  options: OptionsOrGroups<Option, GroupBase<Option>>;
   label?: string;
   onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
   value?: PropsValue<Option>;
@@ -38,7 +38,6 @@ interface Props<T extends boolean> {
   colorTheme?: Color;
   isSearchable?: boolean;
   noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
-  groupTitle?: string;
   isClearable?: boolean;
   closeMenuOnSelect?: boolean;
   matchFrom?: 'any' | 'start';
@@ -53,19 +52,17 @@ const Select = <T extends boolean>({
   menuPlacement = 'bottom',
   colorTheme = 'blue',
   isSearchable = false,
-  groupTitle,
   matchFrom = 'start',
   isMulti,
   ...rest
 }: Props<T>) => {
   const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
-  const customOption = groupTitle ? [{ label: groupTitle, options: options }] : options;
 
   return (
     <ReactSelect<Option, T>
       {...rest}
       isMulti={isMulti}
-      options={customOption}
+      options={options}
       colorTheme={colorTheme}
       aria-label={label}
       isSearchable={isSearchable}

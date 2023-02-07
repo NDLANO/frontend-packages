@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import throttle from 'lodash/throttle';
-import React, { ReactNode, UIEvent, useCallback, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 type ScrollPosition = 'start' | 'end' | 'center';
@@ -51,7 +51,7 @@ const Table = ({ children, id, ...rest }: Props) => {
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition | undefined>(undefined);
   const tableRef = useRef<HTMLTableElement>(null);
 
-  const checkScrollPosition = (el: HTMLTableElement) => {
+  const checkScrollPosition = useCallback((el: HTMLTableElement) => {
     const { scrollLeft, offsetWidth, scrollWidth, clientWidth } = el;
     const hasScrollbar = scrollWidth > clientWidth;
 
@@ -70,30 +70,31 @@ const Table = ({ children, id, ...rest }: Props) => {
     } else {
       setScrollPosition('center');
     }
-  };
-
-  const onScroll = useCallback((event: UIEvent<HTMLTableElement>) => {
-    const el = event.target as HTMLTableElement | undefined;
-    if (el) {
-      checkScrollPosition(el);
-    }
   }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const throttledScrollListener = useCallback(throttle(onScroll, 100), [onScroll]);
+  const onScroll = useMemo(
+    () =>
+      throttle((event: UIEvent<HTMLTableElement>) => {
+        const el = event.target as HTMLTableElement | undefined;
+        if (el) {
+          checkScrollPosition(el);
+        }
+      }, 100),
+    [checkScrollPosition],
+  );
 
   useEffect(() => {
     const el = tableRef.current;
     if (el) {
       checkScrollPosition(el);
     }
-  }, []);
+  }, [checkScrollPosition]);
 
   return (
     <div {...classes('wrapper')}>
       <div {...classes('content')}>
         <LeftScrollBorder show={scrollPosition === 'end' || scrollPosition === 'center'} />
-        <table ref={tableRef} id={id} onScroll={throttledScrollListener} {...classes({ extra: ['o-table'] })} {...rest}>
+        <table ref={tableRef} id={id} onScroll={onScroll} {...classes({ extra: ['o-table'] })} {...rest}>
           {children}
         </table>
         <RightScrollBorder show={scrollPosition === 'start' || scrollPosition === 'center'} />

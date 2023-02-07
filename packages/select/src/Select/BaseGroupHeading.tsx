@@ -19,7 +19,7 @@ interface StyledProps {
 
 const StyledGroupHeader = styled.div<StyledProps>`
   padding: ${spacing.xsmall};
-  color: ${colors.brand.dark};
+  color: ${colors.brand.grey};
   font-weight: ${({ bold }) => (bold ? fonts.weight.bold : fonts.weight.semibold)};
   ${({ small }) => (small ? fonts.sizes('16px', '18px') : fonts.sizes('18px', '24px'))};
 `;

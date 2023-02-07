@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import throttle from 'lodash/throttle';
-import React, { ReactNode, UIEvent, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, UIEvent, useCallback, useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 type ScrollPosition = 'start' | 'end' | 'center';
@@ -48,7 +48,7 @@ const LeftScrollBorder = styled(ScrollBorder)`
 `;
 
 const Table = ({ children, id, ...rest }: Props) => {
-  const [scrollPosition, setScrollPosition] = useState<ScrollPosition>();
+  const [scrollPosition, setScrollPosition] = useState<ScrollPosition | undefined>(undefined);
   const tableRef = useRef<HTMLTableElement>(null);
 
   const checkScrollPosition = (el: HTMLTableElement) => {
@@ -72,21 +72,22 @@ const Table = ({ children, id, ...rest }: Props) => {
     }
   };
 
-  const onScroll = (event: UIEvent<HTMLTableElement>) => {
+  const onScroll = useCallback((event: UIEvent<HTMLTableElement>) => {
     const el = event.target as HTMLTableElement | undefined;
     if (el) {
       checkScrollPosition(el);
     }
-  };
+  }, []);
 
-  const throttledScrollListener = throttle(onScroll, 100);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const throttledScrollListener = useCallback(throttle(onScroll, 100), [onScroll]);
 
   useEffect(() => {
     const el = tableRef.current;
     if (el) {
       checkScrollPosition(el);
     }
-  }, [tableRef]);
+  }, []);
 
   return (
     <div {...classes('wrapper')}>

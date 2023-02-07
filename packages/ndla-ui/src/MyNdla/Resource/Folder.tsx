@@ -106,7 +106,6 @@ const MenuWrapper = styled.div<MenuWrapperProps>`
   align-items: center;
   gap: ${spacing.xsmall};
   justify-content: space-between;
-  margin: -${spacing.nsmall} -${(props) => (props.hasMenuButton ? spacing.nsmall : 0)} -${spacing.nsmall} 0;
 `;
 
 const CountContainer = styled.div`

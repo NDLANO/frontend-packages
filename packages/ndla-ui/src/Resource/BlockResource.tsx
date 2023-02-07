@@ -16,7 +16,6 @@ import {
   CompressedTagList,
   ResourceImageProps,
   ResourceTitle,
-  Row,
   ResourceTypeList,
   ResourceTitleLink,
   LoaderProps,
@@ -67,24 +66,21 @@ const BlockDescription = styled.p`
   }
 `;
 
-interface TagsAndActionProps {
-  hasMenuButton: boolean;
-}
-
-const TagsAndActionMenu = styled(Row)<TagsAndActionProps>`
-  z-index: 1;
+const TagsAndActionMenu = styled.div`
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
-  margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;
+  z-index: 1;
 `;
 
 const BlockInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${spacing.small};
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
+  margin: ${spacing.small} ${spacing.small} 0 ${spacing.small};
   flex-direction: column;
 `;
 
@@ -190,7 +186,7 @@ const BlockResource = ({
           <ResourceTypeList resourceTypes={resourceTypes} />
           <BlockDescription>{description}</BlockDescription>
         </ContentWrapper>
-        <TagsAndActionMenu hasMenuButton={!!(tags && tags.length > 3) || !!(menuItems && menuItems.length)}>
+        <TagsAndActionMenu>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
           {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
         </TagsAndActionMenu>

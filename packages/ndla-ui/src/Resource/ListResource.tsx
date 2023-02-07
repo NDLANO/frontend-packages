@@ -40,8 +40,6 @@ const ListResourceWrapper = styled.div`
       'tags                 tags';
   }
 
-  padding: ${spacing.small};
-  column-gap: ${spacing.small};
   cursor: pointer;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
@@ -69,6 +67,7 @@ const ImageWrapper = styled.div<StyledImageProps>`
   overflow: hidden;
   border-radius: 2px;
   display: flex;
+  margin: ${spacing.small};
   align-items: center;
   justify-content: center;
   aspect-ratio: 4/3;
@@ -84,8 +83,10 @@ const StyledResourceDescription = styled.p`
   line-clamp: 2;
   line-height: 1em;
   height: 3.1em;
-  margin: 0;
-  margin-top: ${spacing.xxsmall};
+  margin: 0 ${spacing.small} ${spacing.small} 0;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    margin: 0 ${spacing.small};
+  }
   overflow: hidden;
   ${fonts.sizes(16)};
   text-overflow: ellipsis;
@@ -96,11 +97,7 @@ const StyledResourceDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-interface TagsAndActionProps {
-  hasMenuButton: boolean;
-}
-
-const TagsandActionMenu = styled.div<TagsAndActionProps>`
+const TagsandActionMenu = styled.div`
   grid-area: tags;
   z-index: 1;
   box-sizing: content-box;
@@ -109,18 +106,16 @@ const TagsandActionMenu = styled.div<TagsAndActionProps>`
   align-items: center;
   align-self: flex-start;
   justify-items: flex-end;
-  margin: -${spacing.small} -${(props) => (props.hasMenuButton ? spacing.small : 0)} 0 0;
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;
-  }
   overflow: hidden;
 `;
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
   display: flex;
+  margin: ${spacing.small} 0;
   flex-direction: column;
   overflow: hidden;
+  margin-right: ${spacing.small};
 `;
 
 interface ListResourceImageProps {
@@ -241,7 +236,7 @@ const ListResource = ({
         </TypeAndTitleLoader>
       </TopicAndTitleWrapper>
       {showDescription && <Description description={description} loading={isLoading} />}
-      <TagsandActionMenu hasMenuButton={!!(tags && tags.length > 3) || !!(menuItems && menuItems.length)}>
+      <TagsandActionMenu>
         {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
         {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
       </TagsandActionMenu>

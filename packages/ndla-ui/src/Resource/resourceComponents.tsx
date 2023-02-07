@@ -53,9 +53,13 @@ const StyledTagList = styled.ul`
   list-style: none;
   display: flex;
   margin: 0;
+  margin-left: ${spacing.small};
   padding: 2px;
   gap: ${spacing.xsmall};
   overflow: hidden;
+  :last-child {
+    margin-right: ${spacing.small};
+  }
 `;
 
 const StyledTagListElement = styled.li`
@@ -71,6 +75,7 @@ const StyledSafeLink = styled(SafeLink)`
   color: ${colors.brand.grey};
   min-height: 44px;
   min-width: 44px;
+  white-space: nowrap;
   &:hover {
     color: ${colors.brand.primary};
   }
@@ -97,12 +102,6 @@ const StyledResourceListElement = styled.li`
   padding: 0;
   display: flex;
   align-items: center;
-`;
-
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing.xsmall};
 `;
 
 const TagCounterWrapper = styled.span`

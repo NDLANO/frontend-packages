@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React from 'react';
-import { colors, fonts, mq, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';

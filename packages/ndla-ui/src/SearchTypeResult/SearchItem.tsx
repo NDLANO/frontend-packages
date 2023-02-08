@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 
 import SafeLink from '@ndla/safelink';
-import { animations, colors, fonts, misc, spacing } from '@ndla/core';
+import { animations, colors, fonts, spacing } from '@ndla/core';
 
 import { ContentType } from './SearchTypeResult';
 import constants from '../model';
@@ -94,7 +94,7 @@ export interface SearchItemType {
 }
 
 const SearchItem = ({ item, type }: SearchItemType) => {
-  const { title, url, ingress, contexts, img = null, labels = [] } = item;
+  const { title, url, ingress, contexts = [], img = null, labels = [] } = item;
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
@@ -118,14 +118,12 @@ const SearchItem = ({ item, type }: SearchItemType) => {
       )}
       <ContentWrapper>
         {!isTopic && (
-          <>
-            <StyledLink to={url} ref={linkRef}>
-              <ItemTitle>{title}</ItemTitle>
-            </StyledLink>
-          </>
+          <StyledLink to={url} ref={linkRef}>
+            <ItemTitle>{title}</ItemTitle>
+          </StyledLink>
         )}
         <ItemText isTopic={isTopic}>{parse(ingress)}</ItemText>
-        {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
+        {contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
       </ContentWrapper>
     </Container>
   );

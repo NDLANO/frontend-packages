@@ -10,7 +10,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { User } from '@ndla/icons/common';
 import { spacing, fonts, colors } from '@ndla/core';
-import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
 
 const StyledLearningPathDetails = styled.div`
   ${fonts.sizes(14, 1.1)};

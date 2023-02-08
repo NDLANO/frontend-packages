@@ -12,7 +12,7 @@
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
-import { LicenseDescription } from '@ndla/licenses';
+import { LicenseDescription } from '@ndla/notion';
 import { FigureLicense } from './Figure';
 import { Contributor } from '../types';
 

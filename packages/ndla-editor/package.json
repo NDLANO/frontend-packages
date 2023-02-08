@@ -1,6 +1,6 @@
 {
   "name": "@ndla/editor",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Editor components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -29,7 +29,7 @@
     "@ndla/core": "^3.1.1",
     "@ndla/forms": "^4.2.4",
     "@ndla/icons": "^2.2.2",
-    "@ndla/modal": "^2.2.5",
+    "@ndla/modal": "^2.2.6",
     "@ndla/tooltip": "^4.0.7",
     "focus-trap-react": "^8.9.2"
   },

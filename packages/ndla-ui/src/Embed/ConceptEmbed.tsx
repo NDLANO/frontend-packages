@@ -6,10 +6,10 @@
  *
  */
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { isMobile } from 'react-device-detect';
 import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
@@ -170,7 +170,7 @@ const StyledAnchorSpan = styled.span`
 const InlineConcept = ({ title, content, copyright, source, visualElement, linkText }: InlineConceptProps) => {
   const { t } = useTranslation();
   return (
-    <Root>
+    <Root modal={isMobile}>
       <StyledAnchor asChild>
         <StyledAnchorSpan />
       </StyledAnchor>
@@ -231,7 +231,7 @@ export const BlockConcept = ({
   const license = copyright?.license && getLicenseByAbbreviation(copyright?.license?.license, i18n.language);
 
   return (
-    <Root>
+    <Root modal={isMobile}>
       <StyledAnchor />
       <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
         <UINotion

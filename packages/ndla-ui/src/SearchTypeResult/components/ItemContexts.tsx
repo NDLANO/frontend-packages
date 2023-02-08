@@ -25,6 +25,8 @@ const BreadcrumbPath = styled.div`
 `;
 
 const ModalButton = styled(ButtonV2)`
+  z-index: 1;
+  position: relative;
   ${fonts.sizes('14px', '20px')};
   box-shadow: none;
   &:hover {

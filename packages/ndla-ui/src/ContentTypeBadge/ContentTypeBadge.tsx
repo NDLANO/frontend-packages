@@ -22,7 +22,7 @@ const classes = new BEMHelper({
 });
 
 interface Props {
-  size: 'xx-small' | 'x-small' | 'small' | 'large';
+  size?: 'xx-small' | 'x-small' | 'small' | 'large';
   type: string;
   title?: string;
   background?: boolean;
@@ -72,11 +72,6 @@ export const ContentTypeBadge = ({ type, background, title, size = 'small', bord
       break;
   }
   return <div {...classes('', modifiers, className)}>{icon}</div>;
-};
-
-ContentTypeBadge.defaultProps = {
-  size: 'small',
-  border: true,
 };
 
 export const SubjectMaterialBadge = (props: Omit<Props, 'type'>) => (

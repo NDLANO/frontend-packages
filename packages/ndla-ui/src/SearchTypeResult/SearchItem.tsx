@@ -17,7 +17,7 @@ import { ContentType } from './SearchTypeResult';
 import constants from '../model';
 import ItemContexts, { ItemContextsType } from './components/ItemContexts';
 import ItemTopicHeader from './components/ItemTopicHeader';
-import ItemResourceBanner from './components/ItemResourceBanner';
+import ItemResourceHeader from './components/ItemResourceHeader';
 const { contentTypes } = constants;
 
 interface ItemTypeProps {
@@ -25,8 +25,9 @@ interface ItemTypeProps {
   isTopic?: boolean;
 }
 
-const Container = styled.div`
+const Container = styled.article`
   cursor: pointer;
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -58,6 +59,16 @@ const ItemTitle = styled.h3<ItemTypeProps>`
 const StyledLink = styled(SafeLink)`
   box-shadow: none;
   color: ${colors.brand.primary};
+
+  :after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 `;
 
 const ItemText = styled.div<ItemTypeProps>`
@@ -69,7 +80,7 @@ const ItemText = styled.div<ItemTypeProps>`
     `};
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.main`
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
@@ -99,14 +110,8 @@ const SearchItem = ({ item, type }: SearchItemType) => {
 
   const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
 
-  const handleClick = () => {
-    if (linkRef.current) {
-      linkRef.current.click();
-    }
-  };
-
   return (
-    <Container onClick={handleClick} role="presentation">
+    <Container>
       {isTopic ? (
         <ItemTopicHeader image={img} type={type}>
           <StyledLink to={url} ref={linkRef}>
@@ -114,7 +119,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
           </StyledLink>
         </ItemTopicHeader>
       ) : (
-        <ItemResourceBanner labels={labels} img={img} type={type} />
+        <ItemResourceHeader labels={labels} img={img} type={type} />
       )}
       <ContentWrapper>
         {!isTopic && (

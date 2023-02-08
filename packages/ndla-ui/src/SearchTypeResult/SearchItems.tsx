@@ -57,7 +57,11 @@ const SearchItems = ({ items, type, viewType = 'grid' }: Props) => {
         {items.map((item) => {
           const contentType = type || item.type;
           const Component = viewType === 'list' ? SearchItemList : SearchItem;
-          return <Component item={item} key={`${item.id}`} type={contentType} />;
+          return (
+            <li key={`${item.id}`}>
+              <Component item={item} type={contentType} />
+            </li>
+          );
         })}
       </Container>
     </Wrapper>

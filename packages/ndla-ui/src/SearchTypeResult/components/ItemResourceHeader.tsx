@@ -85,7 +85,7 @@ const StyledContentTypeBadge = styled(ContentTypeBadge)`
   }
 `;
 
-const BannerWrapper = styled.div`
+const Wrapper = styled.header`
   display: grid;
   grid-template-rows: 1fr auto;
   overflow: hidden;
@@ -99,10 +99,10 @@ interface Props {
   type?: ContentType;
 }
 
-const ItemResourceBanner = ({ labels = [], img, type }: Props) => {
+const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
   const { t } = useTranslation();
   return (
-    <BannerWrapper>
+    <Wrapper>
       {img ? (
         <ImageElement src={img.url} alt={img.alt} />
       ) : (
@@ -126,8 +126,8 @@ const ItemResourceBanner = ({ labels = [], img, type }: Props) => {
           </>
         )}
       </ContentTypeWrapper>
-    </BannerWrapper>
+    </Wrapper>
   );
 };
 
-export default ItemResourceBanner;
+export default ItemResourceHeader;

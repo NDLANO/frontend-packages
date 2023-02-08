@@ -15,9 +15,8 @@ import { SearchItemType } from '../SearchItem';
 import ContentTypeBadge from '../../ContentTypeBadge';
 import { ContentType } from '../SearchTypeResult';
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   padding: ${spacing.small} ${spacing.normal} 0;
-  position: relative;
 `;
 
 const Label = styled.div`

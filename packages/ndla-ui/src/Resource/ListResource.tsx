@@ -63,6 +63,7 @@ const ImageWrapper = styled.div<StyledImageProps>`
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
   ${mq.range({ until: breakpoints.mobileWide })} {
     width: 56px;
+    margin-bottom: 0;
   }
   overflow: hidden;
   border-radius: 2px;
@@ -107,6 +108,9 @@ const TagsandActionMenu = styled.div`
   align-self: flex-start;
   justify-items: flex-end;
   overflow: hidden;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    min-height: ${spacing.small};
+  }
 `;
 
 const TopicAndTitleWrapper = styled.div`
@@ -116,6 +120,9 @@ const TopicAndTitleWrapper = styled.div`
   flex-direction: column;
   overflow: hidden;
   margin-right: ${spacing.small};
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    margin-bottom: 0;
+  }
 `;
 
 interface ListResourceImageProps {

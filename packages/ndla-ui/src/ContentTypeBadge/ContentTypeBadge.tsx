@@ -27,11 +27,11 @@ interface Props {
   title?: string;
   background?: boolean;
   border?: boolean;
+  className?: string;
 }
 
-export const ContentTypeBadge = ({ type, background, title, size = 'small', border = true }: Props) => {
+export const ContentTypeBadge = ({ type, background, title, size = 'small', border = true, className }: Props) => {
   const modifiers = [type, size];
-
   if (background) {
     modifiers.push('background');
   }
@@ -71,7 +71,7 @@ export const ContentTypeBadge = ({ type, background, title, size = 'small', bord
     default:
       break;
   }
-  return <div {...classes('', modifiers)}>{icon}</div>;
+  return <div {...classes('', modifiers, className)}>{icon}</div>;
 };
 
 ContentTypeBadge.defaultProps = {

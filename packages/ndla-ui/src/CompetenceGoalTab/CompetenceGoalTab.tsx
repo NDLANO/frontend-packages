@@ -12,9 +12,10 @@ import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
-import { BY, CC, LicenseByline } from '@ndla/licenses';
+import { BY, CC } from '@ndla/licenses';
 import Tooltip from '@ndla/tooltip';
 import CompetenceItem, { ListItemProp } from './CompetenceItem';
+import { LicenseByline } from '../LicenseByline';
 
 type CompetenceProps = {
   list: ListItemProp[];

@@ -13,8 +13,9 @@ import { CopyButton, ButtonV2 } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { TFunction } from 'i18next';
+import { LicenseByline } from '../LicenseByline';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};

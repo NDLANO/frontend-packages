@@ -8,7 +8,8 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/ui';
 import Button from '@ndla/button';
 import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
 import { colors, spacing } from '@ndla/core';

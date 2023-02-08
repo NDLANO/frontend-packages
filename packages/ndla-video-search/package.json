@@ -32,6 +32,7 @@
     "@ndla/icons": "^2.2.2",
     "@ndla/licenses": "^6.2.1",
     "@ndla/pager": "^2.1.15",
+    "@ndla/ui": "^34.3.5",
     "@ndla/tabs": "^2.1.4",
     "react-bem-helper": "^1.4.1"
   },

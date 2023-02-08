@@ -9,7 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
-import { LicenseByline, getLicenseByNBTitle } from '@ndla/licenses';
+import { getLicenseByNBTitle } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/ui';
 import { PanoramaPhotosphere } from '@ndla/icons/common';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';

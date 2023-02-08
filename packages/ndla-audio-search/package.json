@@ -28,7 +28,8 @@
   "dependencies": {
     "@ndla/button": "^9.1.1",
     "@ndla/licenses": "^6.2.1",
-    "@ndla/pager": "^2.1.15"
+    "@ndla/pager": "^2.1.15",
+    "@ndla/ui": "^34.3.5"
   },
   "devDependencies": {
     "@ndla/types-audio-api": "^0.0.10"

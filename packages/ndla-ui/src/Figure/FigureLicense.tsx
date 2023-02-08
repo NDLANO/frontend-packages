@@ -12,9 +12,9 @@
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
-import { LicenseDescription } from '@ndla/licenses';
 import { FigureLicense } from './Figure';
 import { Contributor } from '../types';
+import { LicenseDescription } from '../LicenseByline';
 
 export const classLicenses = new BEMHelper({
   name: 'figure-license',

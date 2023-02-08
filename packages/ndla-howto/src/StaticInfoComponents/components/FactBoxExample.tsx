@@ -1,6 +1,6 @@
 import React from 'react';
-import { FactBox } from '@ndla/ui';
-import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
+import { FactBox, LicenseByline } from '@ndla/ui';
+import { BY, NC, ND } from '@ndla/licenses';
 import { colors, fonts, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 

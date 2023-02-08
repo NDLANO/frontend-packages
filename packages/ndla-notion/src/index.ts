@@ -8,7 +8,6 @@
 
 import Notion from './Notion';
 import NotionDialogWrapper from './NotionDialogWrapper';
-import NotionDialogLicenses from './NotionDialogLicenses';
 import { NotionHeaderWithoutExitButton } from './NotionHeader';
 
 import NotionDialog, {
@@ -26,7 +25,6 @@ export {
   NotionDialog,
   NotionDialogTags,
   NotionDialogWrapper,
-  NotionDialogLicenses,
   NotionDialogRelatedLinks,
   NotionHeaderWithoutExitButton,
 };

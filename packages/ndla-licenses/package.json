@@ -24,16 +24,6 @@
     "lib",
     "es"
   ],
-  "peerDependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "react": "^15.6.0 || ^16.0.0 || ^17.0.0"
-  },
-  "dependencies": {
-    "@ndla/core": "^3.1.1",
-    "@ndla/icons": "^2.2.2",
-    "@ndla/tooltip": "^4.0.7"
-  },
   "publishConfig": {
     "access": "public"
   },

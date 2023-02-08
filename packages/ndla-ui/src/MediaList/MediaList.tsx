@@ -8,7 +8,6 @@
 
 import React, { ReactNode } from 'react';
 import {
-  LicenseDescription,
   getLicenseByAbbreviation,
   getResourceTypeNamespace,
   isCreativeCommonsLicense,
@@ -16,6 +15,7 @@ import {
 } from '@ndla/licenses';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
+import { LicenseDescription } from '../LicenseByline';
 
 const oClasses = new BEMHelper({
   name: 'media',

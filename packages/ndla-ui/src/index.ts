@@ -10,6 +10,7 @@
 // Move components to this file when they are migrated to typescript
 
 export { default as SectionHeading } from './SectionHeading';
+export { LicenseByline, LicenseDescription } from './LicenseByline';
 
 export {
   ArticleByline,
@@ -228,7 +229,7 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 
-export { Notion, ConceptNotion } from './Notion';
+export { Notion, ConceptNotion, NotionDialogLicenses } from './Notion';
 export type { NotionVisualElementType, ConceptNotionType } from './Notion';
 
 export { BannerCard } from './BannerCard';

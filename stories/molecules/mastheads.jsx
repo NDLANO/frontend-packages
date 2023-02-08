@@ -60,7 +60,7 @@ class MastheadWithTopicMenu extends Component {
     if (!this.props.hideMenuButton) {
       filters.push({
         value: 'Value',
-        title: this.props.ndlaFilm ? 'NDLA Film' : 'Medieuttrykk og mediesamfunnet',
+        title: this.props.ndlaFilm ? 'NDLA film' : 'Medieuttrykk og mediesamfunnet',
       });
     }
     return (

@@ -334,7 +334,7 @@ const messages = {
       multidisciplinarySubjects: 'Tverrfaglige tema',
       toolboxStudents: 'Verktøykassa - for elever',
       toolboxTeachers: 'Verktøykassa - for lærere',
-      film: 'NDLA Film',
+      film: 'NDLA film',
       about: {
         title: 'Om NDLA',
         numbers: 'Tall og rapporter',
@@ -792,7 +792,7 @@ const messages = {
     loadingMovies: 'Henter filmer...',
     subjectsInMovies: 'Emner i film',
     about: {
-      heading: 'Om NDLA Film',
+      heading: 'Om NDLA film',
       more: 'Les mer om NDLA film',
       text: 'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
     },
@@ -834,7 +834,7 @@ const messages = {
     },
     allMovieGroupTitleLabel: 'Filmer som starter på {{letter}}',
     moreAboutNdlaFilm: {
-      header: 'NDLA Film',
+      header: 'NDLA film',
       firstParagraph:
         'Filmene i filmtjenesten er hentet fra norsk og internasjonal filmarv og kobles mot læreplaner i flere fag. De er valgt ut av NDLAs redaksjoner i samarbeid med Norgesfilm AS.',
       secondParagraph:

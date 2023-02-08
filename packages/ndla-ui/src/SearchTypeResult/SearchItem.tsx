@@ -17,7 +17,7 @@ import { ContentType } from './SearchTypeResult';
 import constants from '../model';
 import ItemContexts, { ItemContextsType } from './components/ItemContexts';
 import ItemTopicHeader from './components/ItemTopicHeader';
-import ItemResourceHeader from './components/ItemResourceHeader';
+import ItemResourceBanner from './components/ItemResourceBanner';
 const { contentTypes } = constants;
 
 interface ItemTypeProps {
@@ -114,7 +114,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
           </StyledLink>
         </ItemTopicHeader>
       ) : (
-        <ItemResourceHeader labels={labels} img={img} type={type} />
+        <ItemResourceBanner labels={labels} img={img} type={type} />
       )}
       <ContentWrapper>
         {!isTopic && (

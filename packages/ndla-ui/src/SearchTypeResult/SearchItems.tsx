@@ -53,7 +53,7 @@ interface Props {
 const SearchItems = ({ items, type, viewType = 'grid' }: Props) => {
   return (
     <Wrapper>
-      <Container aria-describedby={`searchitem-header-${type}`} viewType={viewType}>
+      <Container aria-labelledby={`searchitem-header-${type}`} viewType={viewType}>
         {items.map((item) => {
           const contentType = type || item.type;
           const Component = viewType === 'list' ? SearchItemList : SearchItem;

@@ -45,7 +45,6 @@ const PopoverWrapper = styled.div`
       z-index: 9999 !important;
       height: 100vh;
       min-width: 100vw !important;
-      overflow-y: scroll;
     }
   }
 `;

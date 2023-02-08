@@ -28,6 +28,7 @@
   "dependencies": {
     "@ndla/button": "^9.1.1",
     "@ndla/licenses": "^6.2.1",
+    "@ndla/notion": "^4.1.18",
     "@ndla/pager": "^2.1.15"
   },
   "devDependencies": {

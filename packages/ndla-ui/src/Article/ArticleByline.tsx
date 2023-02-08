@@ -13,7 +13,8 @@ import { CopyButton, ButtonV2 } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
 import { TFunction } from 'i18next';
 
 const Wrapper = styled.div`

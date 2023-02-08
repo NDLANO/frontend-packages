@@ -3,7 +3,8 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { LicenseDescription, BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
+import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
+import { LicenseDescription } from '@ndla/notion';
 import {
   ErrorMessage,
   FilterList,

@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing, colors } from '@ndla/core';
-import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { useTranslation } from 'react-i18next';
+import { LicenseByline } from './LicenseByline';
 
 const NotionDialogLicensesWrapper = styled.div`
   border-top: 1px solid ${colors.brand.tertiary};

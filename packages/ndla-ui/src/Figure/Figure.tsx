@@ -13,7 +13,7 @@ import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { isFunction as isFunctionHelper, parseMarkdown } from '@ndla/util';
 import { Link as LinkIcon } from '@ndla/icons/common';
-import { LicenseByline } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
 import SafeLink from '@ndla/safelink';
 import Button from '@ndla/button';
 import { isMobile } from 'react-device-detect';

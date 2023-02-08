@@ -171,16 +171,16 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
   const { t } = useTranslation();
   return (
     <Root>
+      <StyledAnchor asChild>
+        <StyledAnchorSpan />
+      </StyledAnchor>
+      <Trigger asChild>
+        <NotionButton>
+          {linkText}
+          {<BaselineIcon />}
+        </NotionButton>
+      </Trigger>
       <PopoverWrapper>
-        <StyledAnchor asChild>
-          <StyledAnchorSpan />
-        </StyledAnchor>
-        <Trigger asChild>
-          <NotionButton>
-            {linkText}
-            {<BaselineIcon />}
-          </NotionButton>
-        </Trigger>
         <Content asChild avoidCollisions={false} side="bottom">
           <ConceptNotion
             title={title}
@@ -232,39 +232,39 @@ export const BlockConcept = ({
 
   return (
     <Root>
-      <PopoverWrapper>
-        <StyledAnchor />
-        <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
-          <UINotion
-            id=""
-            title={title}
-            text={content}
-            visualElement={
-              visualElement?.status === 'success' && (
-                <>
-                  <ImageWrapper>
-                    <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
-                      <Trigger asChild>
-                        <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
-                          {visualElement.resource === 'image' ? (
-                            <NotionImage
-                              type={visualElementType}
-                              id={''}
-                              src={visualElement.data.imageUrl}
-                              alt={visualElement.data.alttext.alttext}
-                            />
-                          ) : metaImage ? (
-                            <NotionImage
-                              type={visualElementType}
-                              id={''}
-                              src={metaImage?.url ?? ''}
-                              alt={metaImage?.alt ?? ''}
-                            />
-                          ) : undefined}
-                        </StyledButton>
-                      </Trigger>
-                    </Tooltip>
-                  </ImageWrapper>
+      <StyledAnchor />
+      <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
+        <UINotion
+          id=""
+          title={title}
+          text={content}
+          visualElement={
+            visualElement?.status === 'success' && (
+              <>
+                <ImageWrapper>
+                  <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
+                    <Trigger asChild>
+                      <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
+                        {visualElement.resource === 'image' ? (
+                          <NotionImage
+                            type={visualElementType}
+                            id={''}
+                            src={visualElement.data.imageUrl}
+                            alt={visualElement.data.alttext.alttext}
+                          />
+                        ) : metaImage ? (
+                          <NotionImage
+                            type={visualElementType}
+                            id={''}
+                            src={metaImage?.url ?? ''}
+                            alt={metaImage?.alt ?? ''}
+                          />
+                        ) : undefined}
+                      </StyledButton>
+                    </Trigger>
+                  </Tooltip>
+                </ImageWrapper>
+                <PopoverWrapper>
                   <Content asChild avoidCollisions={false} side="bottom">
                     <ConceptNotion
                       title={title}
@@ -281,42 +281,42 @@ export const BlockConcept = ({
                       }
                     />
                   </Content>
-                </>
-              )
-            }
-          />
-          {copyright?.license && license ? (
-            <FigureCaption
-              figureId=""
-              id=""
-              authors={authors}
-              licenseRights={license.rights}
-              locale={i18n.language}
-              hideIconsAndAuthors
-              modalButton={
-                <ButtonV2 variant="outline" size="small" shape="pill" onClick={() => setIsOpen(true)}>
-                  {t('concept.reuse')}
-                </ButtonV2>
-              }>
-              <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
-                {(close) => (
-                  <FigureLicenseDialogContent
-                    authors={groupedAuthors}
-                    locale={i18n.language}
-                    title={title}
-                    origin={copyright.origin}
-                    license={license}
-                    onClose={close}
-                    type="concept"
-                  />
-                )}
-              </ModalV2>
-            </FigureCaption>
-          ) : (
-            <BottomBorder />
-          )}
-        </Figure>
-      </PopoverWrapper>
+                </PopoverWrapper>
+              </>
+            )
+          }
+        />
+        {copyright?.license && license ? (
+          <FigureCaption
+            figureId=""
+            id=""
+            authors={authors}
+            licenseRights={license.rights}
+            locale={i18n.language}
+            hideIconsAndAuthors
+            modalButton={
+              <ButtonV2 variant="outline" size="small" shape="pill" onClick={() => setIsOpen(true)}>
+                {t('concept.reuse')}
+              </ButtonV2>
+            }>
+            <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
+              {(close) => (
+                <FigureLicenseDialogContent
+                  authors={groupedAuthors}
+                  locale={i18n.language}
+                  title={title}
+                  origin={copyright.origin}
+                  license={license}
+                  onClose={close}
+                  type="concept"
+                />
+              )}
+            </ModalV2>
+          </FigureCaption>
+        ) : (
+          <BottomBorder />
+        )}
+      </Figure>
     </Root>
   );
 };

@@ -6,7 +6,7 @@
  *
  */
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -30,13 +30,22 @@ const BottomBorder = styled.div`
   border-bottom: 1px solid ${colors.brand.greyLight};
 `;
 
-const fixPopoverMobileCss = css`
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    + div[data-radix-popper-content-wrapper] {
+const PopoverWrapper = styled.div`
+  div[data-radix-popper-content-wrapper] {
+    position: absolute !important;
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    div[data-radix-popper-content-wrapper] {
       // Fix for popover positioning on mobile.
       // If we modify all popovers we break license icons.
       // https://github.com/radix-ui/primitives/issues/1839
       transform: none !important;
+      position: fixed !important;
+      width: 100vw;
+      z-index: 9999 !important;
+      height: 100vh;
+      min-width: 100vw !important;
+      overflow-y: scroll;
     }
   }
 `;
@@ -133,7 +142,6 @@ const NotionButton = styled.button`
   color: #000;
   position: relative;
   cursor: pointer;
-  ${fixPopoverMobileCss};
   &:focus,
   &:hover {
     color: ${colors.brand.primary};
@@ -163,17 +171,17 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
   const { t } = useTranslation();
   return (
     <Root>
-      <StyledAnchor asChild>
-        <StyledAnchorSpan />
-      </StyledAnchor>
-      <Trigger asChild>
-        <NotionButton>
-          {linkText}
-          {<BaselineIcon />}
-        </NotionButton>
-      </Trigger>
-      <Portal>
-        <Content asChild side="bottom">
+      <PopoverWrapper>
+        <StyledAnchor asChild>
+          <StyledAnchorSpan />
+        </StyledAnchor>
+        <Trigger asChild>
+          <NotionButton>
+            {linkText}
+            {<BaselineIcon />}
+          </NotionButton>
+        </Trigger>
+        <Content asChild avoidCollisions={false} side="bottom">
           <ConceptNotion
             title={title}
             content={content}
@@ -189,7 +197,7 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
             }
           />
         </Content>
-      </Portal>
+      </PopoverWrapper>
     </Root>
   );
 };
@@ -208,6 +216,7 @@ export const BlockConcept = ({
   fullWidth,
 }: ConceptProps) => {
   const { t, i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState(false);
   const licenseCredits = getLicenseCredits(copyright);
   const { creators, rightsholders, processors } = licenseCredits;
@@ -223,40 +232,40 @@ export const BlockConcept = ({
 
   return (
     <Root>
-      <StyledAnchor />
-      <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
-        <UINotion
-          id=""
-          title={title}
-          text={content}
-          visualElement={
-            visualElement?.status === 'success' && (
-              <>
-                <ImageWrapper>
-                  <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
-                    <Trigger asChild>
-                      <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
-                        {visualElement.resource === 'image' ? (
-                          <NotionImage
-                            type={visualElementType}
-                            id={''}
-                            src={visualElement.data.imageUrl}
-                            alt={visualElement.data.alttext.alttext}
-                          />
-                        ) : metaImage ? (
-                          <NotionImage
-                            type={visualElementType}
-                            id={''}
-                            src={metaImage?.url ?? ''}
-                            alt={metaImage?.alt ?? ''}
-                          />
-                        ) : undefined}
-                      </StyledButton>
-                    </Trigger>
-                  </Tooltip>
-                </ImageWrapper>
-                <Portal>
-                  <Content asChild side="bottom">
+      <PopoverWrapper>
+        <StyledAnchor />
+        <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
+          <UINotion
+            id=""
+            title={title}
+            text={content}
+            visualElement={
+              visualElement?.status === 'success' && (
+                <>
+                  <ImageWrapper>
+                    <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
+                      <Trigger asChild>
+                        <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
+                          {visualElement.resource === 'image' ? (
+                            <NotionImage
+                              type={visualElementType}
+                              id={''}
+                              src={visualElement.data.imageUrl}
+                              alt={visualElement.data.alttext.alttext}
+                            />
+                          ) : metaImage ? (
+                            <NotionImage
+                              type={visualElementType}
+                              id={''}
+                              src={metaImage?.url ?? ''}
+                              alt={metaImage?.alt ?? ''}
+                            />
+                          ) : undefined}
+                        </StyledButton>
+                      </Trigger>
+                    </Tooltip>
+                  </ImageWrapper>
+                  <Content asChild avoidCollisions={false} side="bottom">
                     <ConceptNotion
                       title={title}
                       content={content}
@@ -272,42 +281,42 @@ export const BlockConcept = ({
                       }
                     />
                   </Content>
-                </Portal>
-              </>
-            )
-          }
-        />
-        {copyright?.license && license ? (
-          <FigureCaption
-            figureId=""
-            id=""
-            authors={authors}
-            licenseRights={license.rights}
-            locale={i18n.language}
-            hideIconsAndAuthors
-            modalButton={
-              <ButtonV2 variant="outline" size="small" shape="pill" onClick={() => setIsOpen(true)}>
-                {t('concept.reuse')}
-              </ButtonV2>
-            }>
-            <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
-              {(close) => (
-                <FigureLicenseDialogContent
-                  authors={groupedAuthors}
-                  locale={i18n.language}
-                  title={title}
-                  origin={copyright.origin}
-                  license={license}
-                  onClose={close}
-                  type="concept"
-                />
-              )}
-            </ModalV2>
-          </FigureCaption>
-        ) : (
-          <BottomBorder />
-        )}
-      </Figure>
+                </>
+              )
+            }
+          />
+          {copyright?.license && license ? (
+            <FigureCaption
+              figureId=""
+              id=""
+              authors={authors}
+              licenseRights={license.rights}
+              locale={i18n.language}
+              hideIconsAndAuthors
+              modalButton={
+                <ButtonV2 variant="outline" size="small" shape="pill" onClick={() => setIsOpen(true)}>
+                  {t('concept.reuse')}
+                </ButtonV2>
+              }>
+              <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
+                {(close) => (
+                  <FigureLicenseDialogContent
+                    authors={groupedAuthors}
+                    locale={i18n.language}
+                    title={title}
+                    origin={copyright.origin}
+                    license={license}
+                    onClose={close}
+                    type="concept"
+                  />
+                )}
+              </ModalV2>
+            </FigureCaption>
+          ) : (
+            <BottomBorder />
+          )}
+        </Figure>
+      </PopoverWrapper>
     </Root>
   );
 };

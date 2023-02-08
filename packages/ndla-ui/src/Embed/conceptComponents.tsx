@@ -92,7 +92,6 @@ const getVisualElement = (
 };
 
 const notionContentCss = css`
-  overflow: auto;
   @keyframes animateIn {
     0% {
       opacity: 0;

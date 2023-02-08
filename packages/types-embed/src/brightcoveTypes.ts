@@ -19,6 +19,22 @@ export type BrightcoveEmbedData = {
   metaData?: any;
 };
 
+interface Author {
+  name: string;
+  type: string;
+}
+
+export interface BrightcoveCopyright {
+  license: {
+    license: string;
+    description?: string;
+    url?: string;
+  };
+  creators: Author[];
+  processors: Author[];
+  rightsholders: Author[];
+}
+
 export interface BrightcoveVideoSource {
   container?: string;
   size?: number;
@@ -30,6 +46,14 @@ export interface BrightcoveVideoSource {
 export interface BrightcoveApiType {
   id: string;
   account_id?: string | null;
+  published_at?: string | null;
+  images?: {
+    poster?: {
+      src?: string;
+    };
+  };
+  long_description?: string | null;
+  description?: string | null;
   custom_fields: Record<string, string>;
   name?: string;
   link?: {
@@ -39,6 +63,7 @@ export interface BrightcoveApiType {
 
 export interface BrightcoveData extends BrightcoveApiType {
   sources: BrightcoveVideoSource[];
+  copyright?: BrightcoveCopyright;
 }
 
 export type BrightcoveMetaData = MetaData<BrightcoveEmbedData, BrightcoveData>;

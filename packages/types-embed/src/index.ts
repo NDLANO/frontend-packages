@@ -27,6 +27,7 @@ import {
   BrightcoveMetaData,
   BrightcoveVideoSource,
   BrightcoveApiType,
+  BrightcoveCopyright,
 } from './brightcoveTypes';
 import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData, NodeType } from './relatedContentTypes';
 import {
@@ -103,7 +104,7 @@ export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };
 export type { FootnoteData };
-export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource };
+export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, BrightcoveCopyright };
 export type { RelatedContentData, NodeType };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
 

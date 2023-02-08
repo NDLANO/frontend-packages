@@ -7,7 +7,7 @@
  */
 
 import { IConcept, IConceptSummary } from '@ndla/types-concept-api';
-import { BrightcoveEmbedData, BrightcoveMetaData, MetaData } from '.';
+import { BrightcoveEmbedData, BrightcoveMetaData, IframeEmbedData, IframeMetaData, MetaData } from '.';
 import { OembedEmbedData, OembedMetaData } from './externalTypes';
 import { H5pEmbedData, H5pMetaData } from './h5pTypes';
 import { ImageEmbedData, ImageMetaData } from './imageTypes';
@@ -19,8 +19,18 @@ export interface ConceptEmbedData {
   linkText: string;
 }
 
-export type ConceptVisualElement = ImageEmbedData | H5pEmbedData | OembedEmbedData | BrightcoveEmbedData;
-export type ConceptVisualElementMeta = ImageMetaData | H5pMetaData | OembedMetaData | BrightcoveMetaData;
+export type ConceptVisualElement =
+  | ImageEmbedData
+  | H5pEmbedData
+  | OembedEmbedData
+  | BrightcoveEmbedData
+  | IframeEmbedData;
+export type ConceptVisualElementMeta =
+  | ImageMetaData
+  | H5pMetaData
+  | OembedMetaData
+  | BrightcoveMetaData
+  | IframeMetaData;
 
 export interface ConceptData {
   concept: IConcept;

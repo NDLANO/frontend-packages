@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Fag',
+    subject_plural: 'Fag',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Endre mappenamn',
@@ -333,13 +337,21 @@ const messages = {
       film: 'NDLA Film',
       about: {
         title: 'Om NDLA',
-        whatIs: 'Kva er NDLA?',
-        organization: 'Organisasjonen',
-        numbers: 'Tal og bruk',
-        keyPersonnel: 'Nøkkelpersonar',
-        vacancies: 'Ledige stillingar',
-        newsletter: 'Nyheitsbrev',
-        contact: 'Kontakt',
+        numbers: 'Tall og rapporter',
+        keyPersonnel: 'Nøkkelpersoner',
+        vacancies: 'Utlysninger',
+        vision: 'Visjon og verdier',
+        communityPurpose: 'Vårt samfunnsoppdrag',
+        history: 'NDLAs historie',
+        cooperation: 'Vår samarbeid',
+        faq: 'Ofte stilte spørsmål',
+        follow: 'Følg våre sosiale medier',
+        whoAreWe: 'Hvem er vi?',
+        whatWeDo: 'Hva gjør vi?',
+        careers: 'Jobb hos oss',
+        contactUs: 'Kontakt oss',
+        organizing: 'Organisering',
+        articlesOfAssociation: 'Vedtekter',
       },
     },
     menu: {
@@ -639,8 +651,8 @@ const messages = {
     vision: 'Saman skapar vi framtidas læring',
     linksHeader: 'Andre NDLA-nettstader',
     info: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
-    editorInChief: 'Ansvarleg redaktør: ',
-    managingEditor: 'Utgåveansvarleg: ',
+    editorInChief: 'Ansvarleg redaktør:',
+    availabilityLink: 'Tilgjengelegheitserklæring',
     privacyLink: 'Personvernerklæring',
     cookiesLink: 'Erklæring om informasjonskapslar',
     socialMediaLinks: {
@@ -701,12 +713,14 @@ const messages = {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
     se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene blir viste på bokmål',
     nn: 'Sidene blir viste på nynorsk',
     se: 'Siiddut leat davvisámegiellii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -1154,7 +1168,7 @@ const messages = {
       newFavourite: 'Nyleg lagt til',
       feide: 'Dette hentar vi om deg gjennom Feide',
       feideWrongInfo:
-        'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversyn over brukartrygd finst her: feide.no/brukartrygd',
+        'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversyn over brukarstøtte finst her: feide.no/brukerstotte',
       storageInfo: {
         title: 'Slik lagrar du favorittressursane dine frå NDLA',
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',

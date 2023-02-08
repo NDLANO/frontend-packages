@@ -34,6 +34,9 @@ const StyledLinkSpacer = styled.span`
   margin-left: ${spacing.xxsmall};
   margin-right: ${spacing.xxsmall};
   margin-bottom: ${spacing.large};
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    visibility: hidden;
+  }
 `;
 
 const StyledFooterText = styled.div`
@@ -56,6 +59,7 @@ const StyledFooterText = styled.div`
     > span {
       padding-bottom: ${spacing.xsmall};
     }
+    flex-direction: column;
   }
   margin-bottom: ${spacing.large};
 `;

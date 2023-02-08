@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Fága',
+    subject_plural: 'Fágat',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Rievdat máhpa nama',
@@ -333,14 +337,22 @@ const messages = {
       toolboxTeachers: 'Reaidokássa - oahpaheddjiide',
       film: 'NDLA Filbma',
       about: {
-        title: 'NDLA birra',
-        whatIs: 'Mii lea NDLA?',
-        organization: 'Organisašuvdna',
-        numbers: 'Logut ja geavahus',
-        keyPersonnel: 'Čoavddagieđat',
-        vacancies: 'Rabas virggit',
-        newsletter: 'Ođasreivvet',
-        contact: 'Oktavuohta',
+        title: 'Om NDLA',
+        numbers: 'Tall og rapporter',
+        keyPersonnel: 'Nøkkelpersoner',
+        vacancies: 'Utlysninger',
+        vision: 'Visjon og verdier',
+        communityPurpose: 'Vårt samfunnsoppdrag',
+        history: 'NDLAs historie',
+        cooperation: 'Våre samarbeid',
+        faq: 'Ofte stilte spørsmål',
+        follow: 'Følg våre sosiale medier',
+        whoAreWe: 'Hvem er vi?',
+        whatWeDo: 'Hva gjør vi?',
+        careers: 'Jobb hos oss',
+        contactUs: 'Kontakt oss',
+        organizing: 'Organisering',
+        articlesOfAssociation: 'Vedtekter',
       },
     },
     menu: {
@@ -640,8 +652,8 @@ const messages = {
     vision: 'Ovttas hábmet boahtteáiggi oahppama',
     linksHeader: 'Eará NDLA neahttabáikkit',
     info: 'Neahttabáiki lea ráhkaduvvon NDLA bokte rabas gáldokodain.',
-    editorInChief: 'Vásttolaš doaimmaheaddji: ',
-    managingEditor: 'Almmuhusa vásttolaš: ',
+    editorInChief: 'Vásttolaš doaimmaheaddji:',
+    availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Persovdnasuodjalusjulggaštus ja diehtočoahkku (gáhkožat)',
     cookiesLink: 'Julggaštus birra diehtočoahkku (gáhkožat)',
     socialMediaLinks: {
@@ -699,15 +711,17 @@ const messages = {
     prefixChangeLanguage: 'Vállje giela',
   },
   changeLanguage: {
-    nb: 'Rievdat giela girjedárogiellan',
-    nn: 'Rievdat giela ođđadárogiellan',
-    se: 'Rievdat giela davvisámegiellan',
-    en: 'Rievdat giela eŋgelasgiellan',
+    nb: 'Endre språk til bokmål',
+    nn: 'Endre språk til nynorsk',
+    se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
+    en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
     se: 'Siiddut leat davvisámegillii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -1156,7 +1170,7 @@ const messages = {
       newFavourite: 'Aitto lasihuvvon',
       feide: 'Dát vižžojuvvo du birra Feide:s',
       feideWrongInfo:
-        'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot organisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogova geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstøtte',
+        'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot organisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogova geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstotte',
       storageInfo: {
         title: 'Ná vurket iežat oiddotresurssaid NDLA:s',
         text: 'Deaddil váibmoboalu vurken dihtii resurssa.',

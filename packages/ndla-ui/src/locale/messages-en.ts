@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Subject',
+    subject_plural: 'Subjects',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Edit foldername',
@@ -334,13 +338,21 @@ const messages = {
       film: 'NDLA Film',
       about: {
         title: 'About NDLA',
-        whatIs: 'What is NDLA?',
-        organization: 'The organization',
-        numbers: 'Numbers and usage',
+        numbers: 'Numbers and reports',
         keyPersonnel: 'Key personnel',
         vacancies: 'Vacancies',
-        newsletter: 'Newsletter',
-        contact: 'Contact',
+        vision: 'Vision and values',
+        communityPurpose: 'Our community mission',
+        history: 'NDLAs history',
+        cooperation: 'Our cooperations',
+        faq: 'Frequently asked questions',
+        follow: 'Follow us on social media',
+        whoAreWe: 'Who are we?',
+        whatWeDo: 'What do we do?',
+        careers: 'Come work with us',
+        contactUs: 'Contact us',
+        organizing: 'Organizing',
+        articlesOfAssociation: 'Article of associations',
       },
     },
     menu: {
@@ -638,9 +650,9 @@ const messages = {
     socialMedia: 'Social media',
     selectLanguage: 'Choose language (språk): ',
     info: 'This webapplication is developed by NDLA as Open Source code.',
-    editorInChief: 'Editor in chief: ',
-    managingEditor: 'Managing editor: ',
+    editorInChief: 'Editor in chief:',
     linksHeader: 'Other NDLA sites',
+    availabilityLink: 'Availability statement',
     privacyLink: 'Privacy statement',
     cookiesLink: 'Statement about cookies',
     vision: 'We create the learning of the future together',
@@ -702,12 +714,14 @@ const messages = {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
     se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
     se: 'Siiddut leat davvisámegiellii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {

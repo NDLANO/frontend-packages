@@ -10,13 +10,7 @@ import sortBy from 'lodash/sortBy';
 import isNumber from 'lodash/isNumber';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import {
-  contributorGroups,
-  contributorTypes,
-  getGroupedContributorDescriptionList,
-  getLicenseByAbbreviation,
-  getLicenseCredits,
-} from '@ndla/licenses';
+import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
 import { useState } from 'react';
 import { ModalV2 } from '@ndla/modal';
 import { SafeLinkButton } from '@ndla/safelink';
@@ -25,7 +19,6 @@ import { useTranslation } from 'react-i18next';
 import { ButtonV2, CopyButton } from '@ndla/button';
 import { Figure, FigureCaption } from '../Figure';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
-import { Author } from './ImageEmbed';
 import { getFirstNonEmptyLicenseCredits } from './AudioEmbed';
 
 interface Props {
@@ -33,85 +26,9 @@ interface Props {
   isConcept?: boolean;
 }
 
-const mapContributorType = (type: string) => {
-  switch (type) {
-    case 'Manus':
-      return 'Manusforfatter';
-    case 'Musikk':
-      return 'Komponist';
-    case 'Opphavsmann':
-      return 'Opphaver';
-    default:
-      return type;
-  }
-};
-
 const LinkedVideoButton = styled(ButtonV2)`
   margin-left: ${spacing.small};
 `;
-
-export const getLicenseByNBTitle = (title: string) => {
-  switch (title.replace(/\s/g, '').toLowerCase()) {
-    case 'navngivelse-ikkekommersiell-ingenbearbeidelse':
-      return 'CC-BY-NC-ND-4.0';
-    case 'navngivelse-ikkekommersiell-delpåsammevilkår':
-      return 'CC-BY-NC-SA-4.0';
-    case 'navngivelse-ikkekommersiell':
-      return 'CC-BY-NC-4.0';
-    case 'navngivelse-ingenbearbeidelse':
-      return 'CC-BY-ND-4.0';
-    case 'navngivelse-delpåsammevilkår':
-      return 'CC-BY-SA-4.0';
-    case 'navngivelse':
-      return 'CC-BY-4.0';
-    case 'offentligdomene':
-      return 'PD';
-    case 'publicdomaindedication':
-      return 'CC0-1.0';
-    case 'publicdomainmark':
-      return 'PD';
-    case 'fristatus-erklæring':
-      return 'CC0-1.0';
-    case 'opphavsrett':
-      return 'COPYRIGHTED';
-    default:
-      return title;
-  }
-};
-
-export const getContributorGroups = (fields: Record<string, string>) => {
-  const parseContributorsString = (contributorString: string) => {
-    const contributorFields = contributorString.split(/: */);
-    if (contributorFields.length !== 2) return { type: '', name: contributorFields[0] };
-    const [type, name] = contributorFields;
-    const contributorType = Object.keys(contributorTypes.nb).find(
-      (key) => contributorTypes.nb[key] === mapContributorType(type?.trim()),
-    );
-    return { type: contributorType || '', name };
-  };
-
-  const licenseInfoKeys = Object.keys(fields).filter((key) => key.startsWith('licenseinfo'));
-
-  const contributors = licenseInfoKeys.map((key) => parseContributorsString(fields[key]));
-
-  return contributors.reduce(
-    (groups: { creators: Author[]; processors: Author[]; rightsholders: Author[] }, contributor) => {
-      const objectKeys = Object.keys(contributorGroups) as Array<keyof typeof contributorGroups>;
-      const group = objectKeys.find((key) => {
-        return contributorGroups[key].find((type) => type === contributor.type);
-      });
-      if (group) {
-        return { ...groups, [group]: [...groups[group], contributor] };
-      }
-      return { ...groups, creators: [...groups.creators, contributor] };
-    },
-    {
-      creators: [],
-      processors: [],
-      rightsholders: [],
-    },
-  );
-};
 
 const BrightcoveIframe = styled.iframe`
   width: 100%;
@@ -165,16 +82,15 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
 
   const linkedVideoId = isNumeric(data.link?.text) ? data.link?.text : undefined;
 
-  const contributorGroups = getContributorGroups(data.custom_fields);
+  const license = getLicenseByAbbreviation(data.copyright?.license.license ?? '', i18n.language);
+  const contributors = data.copyright
+    ? getGroupedContributorDescriptionList(data.copyright, i18n.language).map((item) => ({
+        name: item.description,
+        type: item.label,
+      }))
+    : [];
 
-  const licenseCode = getLicenseByNBTitle(data.custom_fields.license);
-
-  const license = getLicenseByAbbreviation(licenseCode, i18n.language);
-  const authors = getLicenseCredits(contributorGroups);
-  const contributors = getGroupedContributorDescriptionList(contributorGroups, i18n.language).map((item) => ({
-    name: item.description,
-    type: item.label,
-  }));
+  const { rightsholders = [], creators = [], processors = [] } = data.copyright ?? {};
 
   const download = sortBy(
     data.sources.filter((src) => src.container === 'MP4' && src.src),
@@ -186,7 +102,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
   const alternativeVideoProps = linkedVideoId
     ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
     : undefined;
-  const captionAuthors = getFirstNonEmptyLicenseCredits(authors);
+  const captionAuthors = getFirstNonEmptyLicenseCredits({ rightsholders, creators, processors });
 
   return (
     <Figure id={figureId} type={isConcept ? 'full-column' : 'full'} resizeIframe>
@@ -235,7 +151,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
             type="video">
             <VideoLicenseButtons
               download={download}
-              licenseCode={licenseCode}
+              licenseCode={data.copyright?.license.license}
               src={originalVideoProps.src}
               width={originalVideoProps.width}
               height={originalVideoProps.height}

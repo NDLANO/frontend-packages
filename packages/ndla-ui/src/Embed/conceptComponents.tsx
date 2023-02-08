@@ -22,7 +22,6 @@ import { Figure, FigureCaption } from '../Figure';
 import { NotionVisualElementType } from '../Notion';
 import { classLicenses, FigureLicenseByline, FigureLicenseCta } from '../Figure/FigureLicense';
 import { Copyright } from '../types';
-import { getContributorGroups, getLicenseByNBTitle } from './BrightcoveEmbed';
 import { ImageLicenseButtons } from './ImageEmbed';
 
 export interface ConceptNotionData {
@@ -60,15 +59,11 @@ const getVisualElement = (
       url: visualElement.data.imageUrl,
     };
   } else if (visualElement.resource === 'brightcove') {
-    const licenseCode = getLicenseByNBTitle(visualElement.data.custom_fields.license) as string;
     return {
       resource: visualElement.resource,
       title: visualElement.data.name,
       url: `https://players.brightcove.net/${visualElement.embedData.account}/${visualElement.embedData.player}_default/index.html?videoId=${visualElement.embedData.videoid}`,
-      copyright: {
-        license: { license: licenseCode },
-        ...getContributorGroups(visualElement.data.custom_fields),
-      },
+      copyright: visualElement.data.copyright,
     };
   } else if (visualElement.resource === 'external' || visualElement.resource === 'iframe') {
     return {

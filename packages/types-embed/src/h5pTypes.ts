@@ -18,9 +18,17 @@ export interface H5pEmbedData {
 export interface H5pLicenseInformation {
   h5p: {
     title: string;
+    source?: string | null;
+    license?: string | null;
+    licenseVersion?: string | null;
+    licenseExtras?: string | null;
+    thumbnail?: string | null;
     authors: {
       name: string;
       role: string;
+    }[];
+    assets?: {
+      thumbnail?: string | null;
     }[];
   };
 }

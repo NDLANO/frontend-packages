@@ -87,7 +87,6 @@ const getVisualElement = (
 };
 
 const notionContentCss = css`
-  overflow: auto;
   @keyframes animateIn {
     0% {
       opacity: 0;
@@ -114,8 +113,8 @@ const notionContentCss = css`
 
   ${mq.range({ until: breakpoints.tablet })} {
     z-index: 9999;
-    width: 100vw;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
   }
 `;
 

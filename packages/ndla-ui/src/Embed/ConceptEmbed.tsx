@@ -9,7 +9,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { isMobile } from 'react-device-detect';
 import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
@@ -30,13 +30,21 @@ const BottomBorder = styled.div`
   border-bottom: 1px solid ${colors.brand.greyLight};
 `;
 
-const fixPopoverMobileCss = css`
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    + div[data-radix-popper-content-wrapper] {
+const PopoverWrapper = styled.div`
+  div[data-radix-popper-content-wrapper] {
+    position: absolute !important;
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    div[data-radix-popper-content-wrapper] {
       // Fix for popover positioning on mobile.
       // If we modify all popovers we break license icons.
       // https://github.com/radix-ui/primitives/issues/1839
       transform: none !important;
+      position: fixed !important;
+      width: 100vw;
+      z-index: 9999 !important;
+      height: 100vh;
+      min-width: 100vw !important;
     }
   }
 `;
@@ -133,7 +141,6 @@ const NotionButton = styled.button`
   color: #000;
   position: relative;
   cursor: pointer;
-  ${fixPopoverMobileCss};
   &:focus,
   &:hover {
     color: ${colors.brand.primary};
@@ -162,7 +169,7 @@ const StyledAnchorSpan = styled.span`
 const InlineConcept = ({ title, content, copyright, source, visualElement, linkText }: InlineConceptProps) => {
   const { t } = useTranslation();
   return (
-    <Root>
+    <Root modal={isMobile}>
       <StyledAnchor asChild>
         <StyledAnchorSpan />
       </StyledAnchor>
@@ -172,8 +179,8 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
           {<BaselineIcon />}
         </NotionButton>
       </Trigger>
-      <Portal>
-        <Content asChild side="bottom">
+      <PopoverWrapper>
+        <Content asChild avoidCollisions={false} side="bottom">
           <ConceptNotion
             title={title}
             content={content}
@@ -189,7 +196,7 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
             }
           />
         </Content>
-      </Portal>
+      </PopoverWrapper>
     </Root>
   );
 };
@@ -208,6 +215,7 @@ export const BlockConcept = ({
   fullWidth,
 }: ConceptProps) => {
   const { t, i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState(false);
   const licenseCredits = getLicenseCredits(copyright);
   const { creators, rightsholders, processors } = licenseCredits;
@@ -222,7 +230,7 @@ export const BlockConcept = ({
   const license = copyright?.license && getLicenseByAbbreviation(copyright?.license?.license, i18n.language);
 
   return (
-    <Root>
+    <Root modal={isMobile}>
       <StyledAnchor />
       <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
         <UINotion
@@ -255,8 +263,8 @@ export const BlockConcept = ({
                     </Trigger>
                   </Tooltip>
                 </ImageWrapper>
-                <Portal>
-                  <Content asChild side="bottom">
+                <PopoverWrapper>
+                  <Content asChild avoidCollisions={false} side="bottom">
                     <ConceptNotion
                       title={title}
                       content={content}
@@ -272,7 +280,7 @@ export const BlockConcept = ({
                       }
                     />
                   </Content>
-                </Portal>
+                </PopoverWrapper>
               </>
             )
           }

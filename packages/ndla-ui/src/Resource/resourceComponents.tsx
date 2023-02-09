@@ -157,8 +157,7 @@ interface CompressedTagListProps {
 }
 
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
-  const navigate = useNavigate();
-  const { t } = useTranslation();
+  const navigate = useNavigate(); // Should eventually aim for a solution that does not use useNavigate
   const visibleTags = tags.slice(0, 3);
   const remainingTags = tags.slice(3, tags.length).map((tag) => {
     return {

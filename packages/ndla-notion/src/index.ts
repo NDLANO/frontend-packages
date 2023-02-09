@@ -10,6 +10,7 @@ import Notion from './Notion';
 import NotionDialogWrapper from './NotionDialogWrapper';
 import NotionDialogLicenses from './NotionDialogLicenses';
 import { NotionHeaderWithoutExitButton } from './NotionHeader';
+import { LicenseByline, LicenseDescription } from './LicenseByline';
 
 import NotionDialog, {
   NotionDialogContent,
@@ -29,6 +30,8 @@ export {
   NotionDialogLicenses,
   NotionDialogRelatedLinks,
   NotionHeaderWithoutExitButton,
+  LicenseByline,
+  LicenseDescription,
 };
 
 export default Notion;

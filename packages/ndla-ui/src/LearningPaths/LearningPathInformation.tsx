@@ -9,7 +9,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing, spacingUnit, breakpoints, mq, colors } from '@ndla/core';
-import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
 
 type StyledWrapperProps = {
   invertedStyle?: boolean;

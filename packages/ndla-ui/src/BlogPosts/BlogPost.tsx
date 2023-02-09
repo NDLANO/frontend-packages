@@ -9,7 +9,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors, fonts, breakpoints, mq, misc, spacingUnit } from '@ndla/core';
-import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
 import { Launch as LaunchIcon } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 

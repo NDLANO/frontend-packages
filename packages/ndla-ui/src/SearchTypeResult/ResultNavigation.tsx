@@ -59,7 +59,11 @@ export type PaginationType = {
   contentType?: string;
 };
 
-const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '' }: PaginationType) => {
+interface Props extends PaginationType {
+  type?: string;
+}
+
+const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '', type }: Props) => {
   const { t } = useTranslation();
   const isMore = toCount < totalCount;
   const progress = Math.ceil((toCount / totalCount) * 100);
@@ -87,7 +91,7 @@ const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '' }:
         <Progress width={progress} />
       </ProgressBar>
       {isMore ? (
-        <Button className="nav" outline onClick={onShowMore}>
+        <Button className="nav" outline onClick={onShowMore} aria-describedby={`searchitem-header-${type}`}>
           {t('searchPage.resultType.showMore')}
         </Button>
       ) : (

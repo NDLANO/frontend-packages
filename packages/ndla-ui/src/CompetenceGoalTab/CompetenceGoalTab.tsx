@@ -12,7 +12,8 @@ import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
-import { BY, CC, LicenseByline } from '@ndla/licenses';
+import { BY, CC } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
 import Tooltip from '@ndla/tooltip';
 import CompetenceItem, { ListItemProp } from './CompetenceItem';
 

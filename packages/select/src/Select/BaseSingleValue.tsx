@@ -12,9 +12,10 @@ import { fonts } from '@ndla/core';
 import { GroupBase, SingleValueProps } from 'react-select';
 import { Option } from './types';
 
-const StyledSingleValue = styled.div`
+export const TextEllipsis = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
+  grid-area: 1 / 1 / 2 / 3;
   white-space: nowrap;
 `;
 
@@ -34,13 +35,13 @@ const BaseSingleValue = <T extends boolean>({
   children,
 }: StyledProps & SingleValueProps<Option, T, GroupBase<Option>>) => {
   return (
-    <StyledSingleValue {...innerProps}>
+    <TextEllipsis {...innerProps}>
       <StyledPostfix small={small} bold={bold}>
         {prefix}
       </StyledPostfix>
       {children}
       <span>{postfix}</span>
-    </StyledSingleValue>
+    </TextEllipsis>
   );
 };
 

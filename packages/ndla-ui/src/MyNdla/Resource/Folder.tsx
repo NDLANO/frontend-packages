@@ -26,8 +26,6 @@ const FolderWrapper = styled.div<LayoutProps>`
   position: relative;
   align-items: center;
   justify-content: space-between;
-  padding: ${spacing.nsmall};
-  gap: ${spacing.small};
 
   ${mq.range({ until: breakpoints.mobileWide })} {
     ${({ type }) =>
@@ -56,8 +54,10 @@ const FolderWrapper = styled.div<LayoutProps>`
   }
 `;
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled.div<LayoutProps>`
   display: flex;
+  margin: ${spacing.nsmall};
+  margin-bottom: ${({ type }) => type === 'block' && 0};
   flex-direction: row;
   align-items: center;
   gap: ${spacing.xsmall};
@@ -94,26 +94,22 @@ const FolderTitle = styled.h2`
   }
 `;
 
-interface MenuWrapperProps {
-  hasMenuButton: boolean;
-}
-
-const MenuWrapper = styled.div<MenuWrapperProps>`
+const MenuWrapper = styled.div`
   overflow: hidden;
   display: flex;
   z-index: 1;
   flex-direction: row;
   align-items: center;
-  gap: ${spacing.xsmall};
   justify-content: space-between;
-  margin: -${spacing.nsmall} -${(props) => (props.hasMenuButton ? spacing.nsmall : 0)} -${spacing.nsmall} 0;
 `;
 
 const CountContainer = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: row;
+  min-height: 44px;
   gap: ${spacing.small};
+  margin: 0 ${spacing.small} 0 ${spacing.nsmall};
 `;
 
 const IconCountWrapper = styled.div<LayoutProps>`
@@ -171,7 +167,7 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
 
   return (
     <FolderWrapper type={type} id={id}>
-      <TitleWrapper>
+      <TitleWrapper type={type}>
         <IconWrapper>
           <FolderOutlined aria-label={t('myNdla.folder.folder')} />
         </IconWrapper>
@@ -179,7 +175,7 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
           <FolderTitle title={title}>{title}</FolderTitle>
         </ResourceTitleLink>
       </TitleWrapper>
-      <MenuWrapper hasMenuButton={!!menuItems?.length}>
+      <MenuWrapper>
         <CountContainer>
           <Count layoutType={type} type={'folder'} count={subFolders} />
           <Count layoutType={type} type={'resource'} count={subResources} />

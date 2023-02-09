@@ -173,7 +173,7 @@ const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
           }
         />
       </ImageWrapper>
-      {previewAlt ? <StyledSpan>{`Alt: ${data.alttext.alttext}`}</StyledSpan> : null}
+      {previewAlt ? <StyledSpan>{`Alt: ${embedData.alt}`}</StyledSpan> : null}
       <FigureCaption
         hideFigcaption={isSmall(embedData.size) || isBylineHidden}
         figureId={figureId}

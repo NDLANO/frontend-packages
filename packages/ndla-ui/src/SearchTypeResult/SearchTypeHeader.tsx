@@ -42,10 +42,13 @@ const BadgeWrapper = styled.span`
   margin-right: ${spacing.small};
 `;
 
-const SubjectName = styled.span`
+const SubjectName = styled.div`
+  display: flex;
+  gap: ${spacing.small};
   ${fonts.sizes('18px', '24px')};
   margin: 2px 0;
-  b {
+  h2 {
+    margin: 0;
     ${fonts.sizes('18px', '24px')};
     margin-right: 4px;
   }
@@ -97,7 +100,9 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
             </BadgeWrapper>
           )}
           <SubjectName>
-            <b>{type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}</b>{' '}
+            <h2 id={`searchitem-header-${type}`}>
+              {type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}
+            </h2>
             {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
           </SubjectName>
         </TypeWrapper>
@@ -107,6 +112,7 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
           {filters.map((option: FilterOptionsType) => (
             <CategoryTypeButtonWrapper key={option.id}>
               <Button
+                aria-current={option.active}
                 size="xsmall"
                 borderShape="rounded"
                 greyLighter={!option.active}

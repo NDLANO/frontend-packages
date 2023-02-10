@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { isMobile } from 'react-device-detect';
-import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
+import { Root, Trigger, Content, Anchor, Close } from '@radix-ui/react-popover';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { ShortText } from '@ndla/icons/common';
@@ -23,7 +23,7 @@ import { Notion as UINotion } from '../Notion';
 import { Figure, FigureCaption } from '../Figure';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
 import { NotionImage } from '../Notion/NotionImage';
-import { ConceptNotion, ConceptNotionData } from './conceptComponents';
+import { ConceptNotionV2, ConceptNotionData } from './conceptComponents';
 
 const BottomBorder = styled.div`
   margin-top: ${spacing.normal};
@@ -100,7 +100,7 @@ export const ConceptEmbed = ({ embed, fullWidth }: Props) => {
         visualElement={visualElement}
       />
     );
-  } else {
+  } else if (embed.embedData.type === 'inline') {
     return (
       <InlineConcept
         title={concept.title.title}
@@ -110,6 +110,17 @@ export const ConceptEmbed = ({ embed, fullWidth }: Props) => {
         source={concept.source}
         visualElement={visualElement}
         linkText={embed.embedData.linkText}
+      />
+    );
+  } else {
+    return (
+      <ConceptNotionV2
+        title={concept.title.title}
+        content={concept.content?.content}
+        metaImage={concept.metaImage}
+        copyright={concept.copyright}
+        source={concept.source}
+        visualElement={visualElement}
       />
     );
   }
@@ -181,12 +192,13 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
       </Trigger>
       <PopoverWrapper>
         <Content asChild avoidCollisions={false} side="bottom">
-          <ConceptNotion
+          <ConceptNotionV2
             title={title}
             content={content}
             copyright={copyright}
             source={source}
             visualElement={visualElement}
+            inPopover
             closeButton={
               <Close asChild>
                 <IconButtonV2 aria-label={t('close')} variant="ghost">
@@ -265,12 +277,13 @@ export const BlockConcept = ({
                 </ImageWrapper>
                 <PopoverWrapper>
                   <Content asChild avoidCollisions={false} side="bottom">
-                    <ConceptNotion
+                    <ConceptNotionV2
                       title={title}
                       content={content}
                       copyright={copyright}
                       source={source}
                       visualElement={visualElement}
+                      inPopover
                       closeButton={
                         <Close asChild>
                           <IconButtonV2 aria-label={t('close')} variant="ghost">

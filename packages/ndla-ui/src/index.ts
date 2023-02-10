@@ -11,6 +11,7 @@
 
 export { default as SectionHeading } from './SectionHeading';
 export {
+  ConceptNotionV2,
   ImageEmbed,
   AudioEmbed,
   H5pEmbed,

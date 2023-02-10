@@ -40,12 +40,11 @@ export interface ConceptNotionData {
 interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotionData {
   className?: string;
   closeButton?: ReactNode;
+  previewAlt?: boolean;
+  inPopover?: boolean;
 }
 
-const getVisualElement = (
-  visualElement: ConceptVisualElementMeta,
-  locale: string,
-): NotionVisualElementType | undefined => {
+const getConceptVisualElement = (visualElement: ConceptVisualElementMeta): NotionVisualElementType | undefined => {
   if (visualElement.status === 'error') {
     return undefined;
   }
@@ -185,6 +184,11 @@ const StyledFigureCaption = styled(FigureCaption)`
   }
 `;
 
+const StyledSpan = styled.span`
+  font-style: italic;
+  color: grey;
+`;
+
 const StyledAccordionTrigger = styled(ButtonV2)`
   color: ${colors.brand.primary};
   border-color: ${colors.brand.primary};
@@ -198,8 +202,11 @@ const StyledAccordionTrigger = styled(ButtonV2)`
   }
 `;
 
-export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
-  ({ visualElement, articlePath, title, content, source, copyright, closeButton, ...rest }, ref) => {
+export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
+  (
+    { visualElement, articlePath, title, content, source, copyright, closeButton, inPopover, previewAlt, ...rest },
+    ref,
+  ) => {
     const { t, i18n } = useTranslation();
     const licenseCredits = getLicenseCredits(copyright);
     const { creators, rightsholders, processors } = licenseCredits;
@@ -208,7 +215,7 @@ export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
     const visualElementType =
       visualElement?.embedData.resource === 'brightcove' ? 'video' : visualElement?.embedData.resource;
 
-    const notionVisualElement = visualElement ? getVisualElement(visualElement, i18n.language) : undefined;
+    const notionVisualElement = visualElement ? getConceptVisualElement(visualElement) : undefined;
     const visualElementLicense = getLicenseByAbbreviation(
       notionVisualElement?.copyright?.license?.license ?? '',
       i18n.language,
@@ -226,7 +233,7 @@ export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
       type: item.label,
     }));
     return (
-      <div css={notionContentCss} {...rest} ref={ref}>
+      <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <NotionHeader>
           <h1>
             {title}
@@ -247,6 +254,9 @@ export const ConceptNotion = forwardRef<HTMLDivElement, ConceptNotionProps>(
                   title={notionVisualElement?.title}
                 />
               )}
+              {previewAlt && visualElement?.resource === 'image' ? (
+                <StyledSpan>{`Alt: ${visualElement.embedData.alt}`}</StyledSpan>
+              ) : null}
               {visualElementLicense && (
                 <StyledRoot type="single" collapsible>
                   <Item value="licenseInfo">

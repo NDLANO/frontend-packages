@@ -15,7 +15,7 @@ import { ImageEmbedData, ImageMetaData } from './imageTypes';
 export interface ConceptEmbedData {
   resource: 'concept';
   contentId: string;
-  type: 'block' | 'inline';
+  type: 'block' | 'inline' | 'notion';
   linkText: string;
 }
 

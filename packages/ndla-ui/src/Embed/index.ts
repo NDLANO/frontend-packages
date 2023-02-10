@@ -16,4 +16,5 @@ export { default as BrightcoveEmbed } from './BrightcoveEmbed';
 export { default as ContentLinkEmbed } from './ContentLinkEmbed';
 export { default as RelatedContentEmbed } from './RelatedContentEmbed';
 export { default as ConceptEmbed } from './ConceptEmbed';
+export { ConceptNotionV2 } from './conceptComponents';
 export { default as ConceptListEmbed } from './ConceptListEmbed';

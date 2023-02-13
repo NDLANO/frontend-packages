@@ -11,8 +11,9 @@ import { PluginType } from './types';
 export const OLPlugin: PluginType = (node, opts) => {
   if (node.attribs['data-type'] === 'two-column') {
     const props = attributesToProps(node.attribs);
+    const classes = [node.attribs.class ?? '', 'o-list--two-columns'].filter((c) => !!c).join(' ');
     return (
-      <ul {...props} data-type={undefined} className={`${node.attribs.class ?? ''} o-list--two-columns`}>
+      <ul {...props} data-type={undefined} className={classes}>
         {domToReact(node.children, opts)}
       </ul>
     );

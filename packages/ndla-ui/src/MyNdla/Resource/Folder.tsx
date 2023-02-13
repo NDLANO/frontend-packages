@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { useRef } from 'react';
-import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
+import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/react';
@@ -179,7 +179,7 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
       <MenuWrapper>
         {isShared && (
           <IconCountWrapper type={type}>
-            <FolderShared aria-label="shared" />
+{/*             <ShareArrow aria-label="shared" /> */}
             <span>Delt</span>
           </IconCountWrapper>
         )}

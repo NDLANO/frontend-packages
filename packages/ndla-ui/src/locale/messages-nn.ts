@@ -334,7 +334,7 @@ const messages = {
       multidisciplinarySubjects: 'Tverrfaglege tema',
       toolboxStudents: 'Verktøykassa - for elevar',
       toolboxTeachers: 'Verktøykassa - for lærarar',
-      film: 'NDLA Film',
+      film: 'NDLA film',
       about: {
         title: 'Om NDLA',
         numbers: 'Tall og rapporter',
@@ -793,7 +793,7 @@ const messages = {
     loadingMovies: 'Hentar filmar...',
     subjectsInMovies: 'Emne i film',
     about: {
-      heading: 'Om NDLA Film',
+      heading: 'Om NDLA film',
       more: 'Les meir om NDLA film',
       text: 'NDLA film er ei nettbasert filmteneste for elevar og lærarar i vidaregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
     },
@@ -835,7 +835,7 @@ const messages = {
     },
     allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
     moreAboutNdlaFilm: {
-      header: 'NDLA Film',
+      header: 'NDLA film',
       firstParagraph:
         'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kopla mot læreplanar i fleire fag. Dei er valde av redaksjonane til NDLA i samarbeid med Norgesfilm AS.',
       secondParagraph:

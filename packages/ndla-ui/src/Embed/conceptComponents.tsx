@@ -42,6 +42,8 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
   closeButton?: ReactNode;
   previewAlt?: boolean;
   inPopover?: boolean;
+  tags?: string[];
+  subjects?: string[];
 }
 
 const getConceptVisualElement = (visualElement: ConceptVisualElementMeta): NotionVisualElementType | undefined => {
@@ -202,9 +204,44 @@ const StyledAccordionTrigger = styled(ButtonV2)`
   }
 `;
 
+const ListWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+  align-items: center;
+`;
+
+const StyledList = styled.ul`
+  display: flex;
+  gap: ${spacing.small};
+  align-items: center;
+  list-style: none;
+  > li {
+    margin: 0;
+    font-family: ${fonts.sans};
+    font-weight: ${fonts.weight.semibold};
+    border-radius: ${misc.borderRadius};
+    background-color: ${colors.brand.greyLightest};
+    ${fonts.sizes('12px', 1.2)};
+    padding: ${spacing.xxsmall};
+  }
+`;
+
 export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
   (
-    { visualElement, articlePath, title, content, source, copyright, closeButton, inPopover, previewAlt, ...rest },
+    {
+      visualElement,
+      articlePath,
+      title,
+      content,
+      source,
+      copyright,
+      closeButton,
+      inPopover,
+      previewAlt,
+      tags,
+      subjects,
+      ...rest
+    },
     ref,
   ) => {
     const { t, i18n } = useTranslation();
@@ -311,6 +348,27 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
           )}
           <NotionDialogText>{parseMarkdown(content ?? '', 'body')}</NotionDialogText>
         </NotionDialogContent>
+        {tags && (
+          <ListWrapper>
+            {`${t('notions.tags')}:`}
+            <StyledList>
+              {tags.map((tag, index) => (
+                <li key={index}>{tag}</li>
+              ))}
+            </StyledList>
+          </ListWrapper>
+        )}
+        {subjects && (
+          <ListWrapper>
+            {`${t('notions.usedIn')}:`}
+            <StyledList>
+              {subjects.map((subject, index) => (
+                <li key={index}>{subject}</li>
+              ))}
+            </StyledList>
+          </ListWrapper>
+        )}
+
         <NotionDialogLicenses
           authors={authors.map((a) => a.name)}
           license={copyright?.license?.license ?? ''}

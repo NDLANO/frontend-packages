@@ -766,6 +766,7 @@ const messages = {
     hits: '{{count}} hits',
   },
   notions: {
+    tags: 'List and filters',
     usedIn: 'Used in',
     closeNotion: 'Close',
   },

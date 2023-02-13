@@ -766,6 +766,7 @@ const messages = {
     hits: '{{count}} deaivama',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Adnojuvvo dás',
     closeNotion: 'Govčča',
   },

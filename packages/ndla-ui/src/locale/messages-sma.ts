@@ -769,6 +769,7 @@ const messages = {
     hits: '{{count}} gaavnedimmieh',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Brukes i',
     closeNotion: 'Dahph',
   },

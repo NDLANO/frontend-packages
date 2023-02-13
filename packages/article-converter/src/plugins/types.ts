@@ -13,6 +13,7 @@ export interface TransformOptions {
   subject?: string;
   path?: string;
   previewAlt?: boolean;
+  frontendDomain?: string;
 }
 
 export type PluginType = (

@@ -15,9 +15,10 @@ interface Props {
   embed: RelatedContentMetaData;
   isOembed?: boolean;
   subject?: string;
+  ndlaFrontendDomain?: string;
 }
 
-const RelatedContentEmbed = ({ embed, isOembed, subject }: Props) => {
+const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: Props) => {
   const { t } = useTranslation();
   if (embed.status === 'error') {
     return <></>;
@@ -35,7 +36,7 @@ const RelatedContentEmbed = ({ embed, isOembed, subject }: Props) => {
         title={data.article.title.title ?? ''}
         introduction={data.article.metaDescription?.metaDescription ?? ''}
         target={isOembed ? '_blank' : undefined}
-        to={path ?? ''}
+        to={`${ndlaFrontendDomain ?? ''}${path ?? ''}`}
         type={type}
       />
     );

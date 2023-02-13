@@ -44,7 +44,7 @@
     "react-i18next": "^11.18.6"
   },
   "devDependencies": {
-    "@ndla/types-embed": "^0.1.0"
+    "@ndla/types-embed": "^0.1.4"
   },
   "publishConfig": {
     "access": "public"

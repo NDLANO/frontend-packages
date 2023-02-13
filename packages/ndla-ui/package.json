@@ -74,7 +74,7 @@
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-    "@ndla/types-embed": "^0.1.0",
+    "@ndla/types-embed": "^0.1.4",
     "@ndla/types-image-api": "0.0.10",
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@types/reach__dialog": "^0.1.0",

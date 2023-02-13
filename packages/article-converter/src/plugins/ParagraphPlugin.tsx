@@ -11,8 +11,9 @@ import { PluginType } from './types';
 export const ParagraphPlugin: PluginType = (node, opts) => {
   if (node.attribs['data-align'] === 'center') {
     const props = attributesToProps(node.attribs);
+    const classes = [node.attribs.class ?? '', 'u-text-center'].filter((c) => !!c).join(' ');
     return (
-      <p {...props} data-align={undefined} className={`${node.attribs.class ?? ''} u-text-center`}>
+      <p {...props} data-align={undefined} className={classes}>
         {domToReact(node.children, opts)}
       </p>
     );

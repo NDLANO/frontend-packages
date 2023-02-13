@@ -8,3 +8,4 @@
 
 export { default as transform } from './transform';
 export { default as extractEmbedMeta } from './extractEmbedMeta';
+export type { TransformOptions } from './plugins/types';

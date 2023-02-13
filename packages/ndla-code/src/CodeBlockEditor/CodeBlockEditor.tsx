@@ -17,7 +17,7 @@ import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Wrapper, FlexContainer, FlexElement } from './style';
 import '../languages';
-import { languageOptions, ICodeLangugeOption } from '../languageOptionts';
+import { languageOptions, ICodeLangugeOption } from '../languageOptions';
 
 const hightlightWithLineNumbers = (input: string, language: string) =>
   highlight(input, language)

@@ -10,15 +10,9 @@ import { Element, HTMLReactParserOptions } from 'html-react-parser';
 
 export interface TransformOptions {
   isOembed?: boolean;
-  showVisualElement?: boolean;
   subject?: string;
   path?: string;
-  shortPath?: string;
-  draftConcept?: boolean;
-  previewH5p?: boolean;
   previewAlt?: boolean;
-  absoluteUrl?: boolean;
-  frontendDomain: string;
 }
 
 export type PluginType = (

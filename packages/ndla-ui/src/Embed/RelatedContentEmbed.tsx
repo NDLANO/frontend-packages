@@ -14,11 +14,10 @@ import { RelatedArticleV2 } from '../RelatedArticleList/RelatedArticleV2';
 interface Props {
   embed: RelatedContentMetaData;
   isOembed?: boolean;
-  ndlaFrontendDomain?: string;
   subject?: string;
 }
 
-const RelatedContentEmbed = ({ embed, isOembed, ndlaFrontendDomain, subject }: Props) => {
+const RelatedContentEmbed = ({ embed, isOembed, subject }: Props) => {
   const { t } = useTranslation();
   if (embed.status === 'error') {
     return <></>;

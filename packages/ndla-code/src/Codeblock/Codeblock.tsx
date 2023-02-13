@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
-import { ICodeLangugeOption, languageOptions } from '../languageOptionts';
+import { ICodeLangugeOption, languageOptions } from '../languageOptions';
 
 const Wrapper = styled.div`
   margin: 15px 0;

@@ -74,11 +74,11 @@ export const RelatedArticleListV2 = ({ children = [], articleCount, headingLevel
         {t('related.title')}
       </SectionHeading>
       <div {...classes('articles')}>{childrenToShow}</div>
-      {childCount > 2 && (
+      {childCount > 2 ? (
         <ButtonV2 onClick={() => setExpanded((p) => !p)} variant="outline">
           {t(`related.show${expanded ? 'Less' : 'More'}`)}
         </ButtonV2>
-      )}
+      ) : null}
     </section>
   );
 };

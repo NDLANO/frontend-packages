@@ -11,7 +11,7 @@ import { OembedMetaData } from '@ndla/types-embed';
 import { ExternalEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const ExternalEmbedPlugin: PluginType = (element, _, transformOpts) => {
+export const ExternalEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as OembedMetaData;
   return <ExternalEmbed embed={data} />;

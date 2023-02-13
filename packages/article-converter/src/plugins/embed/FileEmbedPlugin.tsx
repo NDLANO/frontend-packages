@@ -11,7 +11,7 @@ import { FileMetaData } from '@ndla/types-embed';
 import { PdfFile, FileV2 } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const FileEmbedPlugin: PluginType = (element, _) => {
+export const FileEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as FileMetaData;
   const { type, title, url } = data.embedData;

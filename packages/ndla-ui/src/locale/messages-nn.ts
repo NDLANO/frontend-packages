@@ -1137,6 +1137,9 @@ const messages = {
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
+    sharedFoldenr: {
+      info: 'Denne mappa inneheld fagstoff og innhald frå NDLA, samla av ein lærar. ',
+    },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
       imageAlt:

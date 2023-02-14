@@ -6,12 +6,12 @@ const generateListResets = () => {
   let styles = '';
   for (let $i = 0; $i < 50; $i++) {
     styles += ` 
-      ol.ol-reset-${$i} { counter-reset: item 0 item ${$i} }  
+      ol.ol-reset-${$i} { counter-reset: item ${$i - 1} }  
     `;
   }
 
-  return styles
-}
+  return styles;
+};
 
 const listsStyle = css`
   // Parent shared styles/defaults
@@ -87,6 +87,7 @@ const listsStyle = css`
       counter-increment: item;
       &:before {
         content: counter(item, upper-alpha) '.';
+        padding-right: 0.25em;
       }
 
       > ol.ol-list--roman {

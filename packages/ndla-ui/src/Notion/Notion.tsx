@@ -17,7 +17,7 @@ const ContentWrapper = styled.div`
     flex-direction: column-reverse;
   }
   .c-figure {
-    margin: ${spacing.normal} 0;
+    margin: 0;
     &.expanded {
       width: 100% !important;
       padding: 0;

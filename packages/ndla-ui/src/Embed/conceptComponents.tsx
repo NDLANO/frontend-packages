@@ -179,6 +179,12 @@ const StyledRoot = styled(Root)`
   border-bottom: 1px solid ${colors.brand.greyLight};
 `;
 
+const StyledFigure = styled(Figure)`
+  && {
+    margin: ${spacing.normal} 0;
+  }
+`;
+
 const StyledFigureCaption = styled(FigureCaption)`
   border-bottom: 0;
 
@@ -280,7 +286,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
         </NotionHeader>
         <NotionDialogContent>
           {notionVisualElement && (
-            <Figure resizeIframe type={'full-column'}>
+            <StyledFigure resizeIframe type={'full-column'}>
               {notionVisualElement.image?.src ? (
                 <img src={notionVisualElement.image.src} alt={notionVisualElement.image.alt} />
               ) : (
@@ -344,7 +350,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                   </Item>
                 </StyledRoot>
               )}
-            </Figure>
+            </StyledFigure>
           )}
           <NotionDialogText>{parseMarkdown(content ?? '', 'body')}</NotionDialogText>
         </NotionDialogContent>

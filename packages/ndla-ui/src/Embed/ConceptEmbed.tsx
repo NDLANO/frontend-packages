@@ -52,6 +52,11 @@ const ImageWrapper = styled.div`
   float: right;
   padding-left: ${spacing.normal};
   position: relative;
+
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 100%;
+    padding-left: 0;
+  }
 `;
 
 interface Props {

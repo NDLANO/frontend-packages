@@ -116,6 +116,7 @@ const notionContentCss = css`
     z-index: 9999;
     height: 100%;
     width: 100%;
+    overflow: auto;
   }
 `;
 
@@ -127,7 +128,7 @@ const StyledIframe = styled.iframe<{ type?: string }>`
 const NotionHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   border-bottom: 2px solid ${colors.brand.tertiary};
   padding-bottom: ${spacing.small};
   h1 {
@@ -273,8 +274,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <NotionHeader>
           <h1>
-            {title}
-            <small>{t('searchPage.resultType.notionsHeading')}</small>
+            {title} {<small>{t('searchPage.resultType.notionsHeading')}</small>}
           </h1>
           {closeButton}
         </NotionHeader>

@@ -335,16 +335,24 @@ const messages = {
       multidisciplinarySubjects: 'Multidisciplinary subjects',
       toolboxStudents: 'Toolbox - for students',
       toolboxTeachers: 'Toolbox - for teachers',
-      film: 'NDLA Film',
+      film: 'NDLA film',
       about: {
         title: 'About NDLA',
-        whatIs: 'What is NDLA?',
-        organization: 'The organization',
-        numbers: 'Numbers and usage',
+        numbers: 'Numbers and reports',
         keyPersonnel: 'Key personnel',
         vacancies: 'Vacancies',
-        newsletter: 'Newsletter',
-        contact: 'Contact',
+        vision: 'Vision and values',
+        communityPurpose: 'Our community mission',
+        history: 'NDLAs history',
+        cooperation: 'Our cooperations',
+        faq: 'Frequently asked questions',
+        follow: 'Follow us on social media',
+        whoAreWe: 'Who are we?',
+        whatWeDo: 'What do we do?',
+        careers: 'Come work with us',
+        contactUs: 'Contact us',
+        organizing: 'Organizing',
+        articlesOfAssociation: 'Article of associations',
       },
     },
     menu: {
@@ -785,7 +793,7 @@ const messages = {
     loadingMovies: 'Loading movies..',
     subjectsInMovies: 'Subjects in film',
     about: {
-      heading: 'About NDLA Film',
+      heading: 'About NDLA film',
       more: 'Read more about NDLA film',
       text: 'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
     },
@@ -827,7 +835,7 @@ const messages = {
     },
     allMovieGroupTitleLabel: 'Movies starting with {{letter}}',
     moreAboutNdlaFilm: {
-      header: 'NDLA Film',
+      header: 'NDLA film',
       firstParagraph:
         "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS.",
       secondParagraph:

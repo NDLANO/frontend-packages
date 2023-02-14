@@ -166,6 +166,7 @@ const ModalV2 = ({
 
   const onActivate = (e: MouseEvent<HTMLButtonElement>) => {
     openModal();
+    e.stopPropagation();
     e.preventDefault();
   };
 

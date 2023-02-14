@@ -76,8 +76,8 @@ export const stories: Record<string, Story> = {
       {
         type: 'link',
         content: {
-          href: 'https://brukskvalitetsplattform.ndla.no/bruk-av-bilder.html',
-          text: 'https://brukskvalitetsplattform.ndla.no/bruk-av-bilder.html',
+          href: 'https://ndla.zendesk.com/hc/no/articles/4405380397714-KAPITTEL-7-Bruk-av-bilder',
+          text: 'https://ndla.zendesk.com/hc/no/articles/4405380397714-KAPITTEL-7-Bruk-av-bilder',
         },
       },
     ],
@@ -174,8 +174,8 @@ export const stories: Record<string, Story> = {
       {
         type: 'link',
         content: {
-          href: 'https://brukskvalitetsplattform.ndla.no/bruk-av-lisenser.html',
-          text: 'https://brukskvalitetsplattform.ndla.no/bruk-av-lisenser.html',
+          href: 'https://ndla.zendesk.com/hc/no/articles/4405386986898-KAPITTEL-10-Bruk-av-lisenser',
+          text: 'https://ndla.zendesk.com/hc/no/articles/4405386986898-KAPITTEL-10-Bruk-av-lisenser',
         },
       },
     ],
@@ -227,8 +227,8 @@ export const stories: Record<string, Story> = {
       {
         type: 'link',
         content: {
-          href: 'https://brukskvalitetsplattform.ndla.no/innholdstyper.html',
-          text: 'https://brukskvalitetsplattform.ndla.no/innholdstyper.html',
+          href: 'https://ndla.zendesk.com/hc/no/articles/4405380403218-KAPITTEL-5-Innholdstyper',
+          text: 'https://ndla.zendesk.com/hc/no/articles/4405380403218-KAPITTEL-5-Innholdstyper',
         },
       },
     ],

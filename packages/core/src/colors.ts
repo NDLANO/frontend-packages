@@ -69,6 +69,11 @@ const colors = {
     additional: 'rgba(220,229,224,0.4)',
   },
 
+  notion: {
+    light: '#DEF1ED',
+    dark: '#3E5860',
+  },
+
   tasksAndActivities: {
     background: '#f8e0c4',
     light: '#fbeddc',

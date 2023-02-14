@@ -1,6 +1,7 @@
 import React from 'react';
 import { FactBox } from '@ndla/ui';
-import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
+import { BY, NC, ND } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
 import { colors, fonts, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 

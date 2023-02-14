@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
+import React from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import ContentTypeBadge from '../ContentTypeBadge';
@@ -16,7 +16,6 @@ import {
   CompressedTagList,
   ResourceImageProps,
   ResourceTitle,
-  Row,
   ResourceTypeList,
   ResourceTitleLink,
   LoaderProps,
@@ -67,20 +66,21 @@ const BlockDescription = styled.p`
   }
 `;
 
-const RightRow = styled(Row)`
-  z-index: 1;
+const TagsAndActionMenu = styled.div`
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
-  margin: 0 -${spacing.small} -${spacing.small} 0;
+  z-index: 1;
 `;
 
 const BlockInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${spacing.small};
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
+  margin: ${spacing.small} ${spacing.small} 0 ${spacing.small};
   flex-direction: column;
 `;
 
@@ -186,10 +186,10 @@ const BlockResource = ({
           <ResourceTypeList resourceTypes={resourceTypes} />
           <BlockDescription>{description}</BlockDescription>
         </ContentWrapper>
-        <RightRow>
+        <TagsAndActionMenu>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
           {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
-        </RightRow>
+        </TagsAndActionMenu>
       </BlockInfoWrapper>
     </BlockElementWrapper>
   );

@@ -8,12 +8,12 @@
 
 import React, { ReactNode } from 'react';
 import {
-  LicenseDescription,
   getLicenseByAbbreviation,
   getResourceTypeNamespace,
   isCreativeCommonsLicense,
   metaTypes,
 } from '@ndla/licenses';
+import { LicenseDescription } from '@ndla/notion';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
 

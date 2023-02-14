@@ -1112,6 +1112,7 @@ const messages = {
       onDragEndMissingOver: 'Máhppa {{name}} lea luitojuvvon',
       onDragCancel: 'Sirdin botkejuvvui. Máhppa {{name}} lea luitojuvvon.',
       dragHandle: 'Ordne máhpa {{name}}',
+      shared: 'Delt',
     },
     tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',

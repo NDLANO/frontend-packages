@@ -1115,6 +1115,7 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sloppe',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sloppe',
       dragHandle: 'Sorter mappen {{name}}',
+      shared: 'Delt',
     },
     tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',

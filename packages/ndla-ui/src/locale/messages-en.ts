@@ -1112,6 +1112,7 @@ const messages = {
       onDragEndMissingOver: 'The folder {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
       dragHandle: 'Drag the folder {{name}}',
+      shared: 'Shared',
     },
     tagList: 'Tags',
     tags: '{{count}} tag',

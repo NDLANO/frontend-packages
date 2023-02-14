@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import React, { useRef } from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
-import { FileDocumentOutline } from '@ndla/icons/common';
+import { FileDocumentOutline, ShareArrow } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
@@ -112,7 +112,7 @@ const CountContainer = styled.div`
   margin: 0 ${spacing.small} 0 ${spacing.nsmall};
 `;
 
-const IconCountWrapper = styled.div<LayoutProps>`
+const IconTextWrapper = styled.div<LayoutProps>`
   display: flex;
   align-items: center;
   gap: ${spacing.xxsmall};
@@ -144,10 +144,10 @@ const Count = ({ type, count, layoutType }: IconCountProps) => {
   if (!count) return null;
 
   return (
-    <IconCountWrapper type={layoutType}>
+    <IconTextWrapper type={layoutType}>
       <Icon aria-label={t(`myNdla.${type}s`)} />
       <span>{t(`myNdla.${type}s`, { count })}</span>
-    </IconCountWrapper>
+    </IconTextWrapper>
   );
 };
 
@@ -178,10 +178,10 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
       </TitleWrapper>
       <MenuWrapper>
         {isShared && (
-          <IconCountWrapper type={type}>
-{/*             <ShareArrow aria-label="shared" /> */}
-            <span>Delt</span>
-          </IconCountWrapper>
+          <IconTextWrapper type={type}>
+            <ShareArrow aria-label="shared" />
+            <span>{t('myNdla.folder.shared')}</span>
+          </IconTextWrapper>
         )}
         <CountContainer>
           <Count layoutType={type} type={'folder'} count={subFolders} />

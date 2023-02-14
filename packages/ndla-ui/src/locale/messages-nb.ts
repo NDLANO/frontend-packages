@@ -1111,6 +1111,7 @@ const messages = {
       onDragEndMissingOver: 'Mappen {{name}} ble sluppet',
       onDragCancel: 'Flytting avbrutt. Mappen {{name}} ble sluppet',
       dragHandle: 'Sorter mappen {{name}}',
+      shared: 'Delt',
     },
     tagList: 'Emneknagger',
     tags: '{{count}} emneknagg',

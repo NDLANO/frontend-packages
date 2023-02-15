@@ -469,7 +469,7 @@ storiesOf('Autentisering', module)
     </PageContainer>
   ));
 storiesOf('Ndla film', module)
-  .add('NDLA Film forside', () => (
+  .add('NDLA film forside', () => (
     <PageContainer ndlaFilm>
       <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
       <Content>

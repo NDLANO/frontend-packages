@@ -2,6 +2,8 @@ import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
 import { defaultParameters } from '../../../../../stories/defaults';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
+import { i18nInstance } from '@ndla/ui';
+import { BrowserRouter } from 'react-router-dom';
 
 import Folder from './Folder';
 
@@ -55,15 +57,19 @@ export const Template = (args) => <Folder {...args} />;
 ## Listevisning av mappe
 
 <Canvas>
-  <Story name="Listevisning">
-    <Folder title="Mappe 3" type="list" subFolders="3" subResources="3" />
-  </Story>
+  <BrowserRouter>
+    <I18nextProvider i18n={i18nInstance}>
+      <Folder title="Mappe 3" type="list" subFolders="3" subResources="3" />
+    </I18nextProvider>
+  </BrowserRouter>
 </Canvas>
 
 ## Blokkvisning av mappe
 
 <Canvas>
-  <Story name="Blokkvisning">
-    <Folder title="Tittel" type="block" subFolders="3" subResources="3" />
-  </Story>
+  <BrowserRouter>
+    <I18nextProvider i18n={i18nInstance}>
+      <Folder title="Tittel" type="block" subFolders="3" subResources="3" />
+    </I18nextProvider>
+  </BrowserRouter>
 </Canvas>

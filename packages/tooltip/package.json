@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tooltip",
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "Tooltip component from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,8 +26,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^3.1.1",
-    "@ndla/icons": "^2.2.2",
+    "@ndla/core": "^3.1.2",
+    "@ndla/icons": "^2.2.3",
     "@radix-ui/react-popover": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.2",
     "html-react-parser": "^0.14.1"

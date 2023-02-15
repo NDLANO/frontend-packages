@@ -156,7 +156,6 @@ interface Props {
   title: string;
   subFolders?: number;
   subResources?: number;
-  description?: string;
   link: string;
   type: LayoutType;
   menuItems?: MenuItemProps[];

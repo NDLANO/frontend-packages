@@ -39,13 +39,13 @@ export const resourceImage = {
 
 export const Template = (args) => <ListResource {...args} />;
 
-# Standard ressurs
+# ListResource
 
 <Canvas>
   <Story
     name="ListResource"
     args={{
-      id: '1234',
+      id: '123',
       link: '',
       title: 'Tittel til ressurs',
       resourceImage: {
@@ -71,8 +71,7 @@ export const Template = (args) => <ListResource {...args} />;
 <Canvas>
   <BrowserRouter>
     <ListResource
-      id={'b572358d-0807-4594-bd37-b2bc52d2a6b6'}
-      key={'defaultResource'}
+      id={'123'}
       title="Titler kan også kuttes av"
       resourceTypes={resourceType}
       tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
@@ -196,9 +195,9 @@ export const Template = (args) => <ListResource {...args} />;
 
 #### Ulike ressurstyper:
 
-**Læringssti:** urn:resourcetype:learningPath
-**Fagstoff:** urn:resourcetype:subjectMaterial
-**Oppgaver og aktiviteter:** urn:resourcetype:tasksAndActivities
-**Vurderingsressurs:** urn:resourcetype:reviewResource
-**Ekstern læringsressurs:** urn:resourcetype:externalResource
-**Kildemateriale:** urn:resourcetype:SourceMaterial
+- **Læringssti:** urn:resourcetype:learningPath
+- **Fagstoff:** urn:resourcetype:subjectMaterial
+- **Oppgaver og aktiviteter:** urn:resourcetype:tasksAndActivities
+- **Vurderingsressurs:** urn:resourcetype:reviewResource
+- **Ekstern læringsressurs:** urn:resourcetype:externalResource
+- **Kildemateriale:** urn:resourcetype:SourceMaterial

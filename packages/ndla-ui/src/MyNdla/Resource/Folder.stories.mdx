@@ -26,17 +26,16 @@ import Folder from './Folder';
 
 export const Template = (args) => <Folder {...args} />;
 
-# Mappe
+# Folder
 
 <Canvas>
   <Story
     name="Folder"
     args={{
-      id: '3d88300c-1186-47f5-a99a-8ea93fa20981',
+      id: '123',
       title: 'Dette er min tittel',
       subFolders: 3,
       subResources: 3,
-      description: '',
       link: '',
       type: 'list',
       menuItems: [
@@ -58,9 +57,7 @@ export const Template = (args) => <Folder {...args} />;
 
 <Canvas>
   <BrowserRouter>
-    <I18nextProvider i18n={i18nInstance}>
-      <Folder title="Mappe 3" type="list" subFolders="3" subResources="3" />
-    </I18nextProvider>
+    <Folder title="Mappe 3" type="list" subFolders="3" subResources="3" />
   </BrowserRouter>
 </Canvas>
 
@@ -68,8 +65,6 @@ export const Template = (args) => <Folder {...args} />;
 
 <Canvas>
   <BrowserRouter>
-    <I18nextProvider i18n={i18nInstance}>
-      <Folder title="Tittel" type="block" subFolders="3" subResources="3" />
-    </I18nextProvider>
+    <Folder title="Tittel" type="block" subFolders="3" subResources="3" />
   </BrowserRouter>
 </Canvas>

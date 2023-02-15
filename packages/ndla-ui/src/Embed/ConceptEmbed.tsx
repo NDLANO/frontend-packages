@@ -6,23 +6,26 @@
  *
  */
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { isMobile } from 'react-device-detect';
 import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
+import { useIntersectionObserver } from '@ndla/hooks';
 import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { getGroupedContributorDescriptionList, getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import { ModalV2 } from '@ndla/modal';
-import { ConceptMetaData } from '@ndla/types-embed';
+import { ConceptMetaData, ConceptVisualElementMeta } from '@ndla/types-embed';
 import Tooltip from '@ndla/tooltip';
 import { Notion as UINotion } from '../Notion';
 import { Figure, FigureCaption } from '../Figure';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
 import { NotionImage } from '../Notion/NotionImage';
 import { ConceptNotionV2, ConceptNotionData } from './conceptComponents';
+import { css } from '@emotion/react';
+import { Copyright } from '../types';
 
 const BottomBorder = styled.div`
   margin-top: ${spacing.normal};
@@ -30,15 +33,18 @@ const BottomBorder = styled.div`
 `;
 
 interface PopoverPosition {
-  top: number;
+  preventOverflow?: boolean;
 }
 
 const PopoverWrapper = styled.div<PopoverPosition>`
   div[data-radix-popper-content-wrapper] {
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    top: ${({ top }) => top}px !important;
+    height: 5000px;
+    ${({ preventOverflow }) =>
+      preventOverflow &&
+      css`
+        position: absolute !important;
+        bottom: 0;
+      `}
   }
 
   ${mq.range({ until: breakpoints.tablet })} {
@@ -195,8 +201,45 @@ const StyledAnchorSpan = styled.span`
   align-self: center;
 `;
 
+interface ConceptPopoverProps {
+  title: string;
+  content?: string;
+  copyright?: Copyright;
+  source?: string;
+  visualElement?: ConceptVisualElementMeta;
+}
+
+const ConceptPopover = ({ title, content, copyright, source, visualElement }: ConceptPopoverProps) => {
+  const { t } = useTranslation();
+  const modalRef = useRef<HTMLDivElement>(null);
+  const { entry } = useIntersectionObserver({ root: window.document, target: modalRef.current, threshold: 1 });
+  console.log(entry);
+  console.log(modalRef.current);
+
+  return (
+    <div ref={modalRef}>
+      <ConceptNotionV2
+        title={title}
+        content={content}
+        copyright={copyright}
+        source={source}
+        visualElement={visualElement}
+        inPopover
+        closeButton={
+          <Close asChild>
+            <IconButtonV2 aria-label={t('close')} variant="ghost">
+              <Cross />
+            </IconButtonV2>
+          </Close>
+        }
+      />
+    </div>
+  );
+};
+
 const InlineConcept = ({ title, content, copyright, source, visualElement, linkText }: InlineConceptProps) => {
   const { t } = useTranslation();
+
   return (
     <Root modal={isMobile}>
       <StyledAnchor asChild>
@@ -209,22 +252,14 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
         </NotionButton>
       </Trigger>
       <Portal>
-        <PopoverWrapper>
-          <Content asChild avoidCollisions={false} side="bottom">
-            <ConceptNotionV2
+        <PopoverWrapper preventOverflow={false}>
+          <Content avoidCollisions={false} side="bottom">
+            <ConceptPopover
               title={title}
               content={content}
               copyright={copyright}
               source={source}
               visualElement={visualElement}
-              inPopover
-              closeButton={
-                <Close asChild>
-                  <IconButtonV2 aria-label={t('close')} variant="ghost">
-                    <Cross />
-                  </IconButtonV2>
-                </Close>
-              }
             />
           </Content>
         </PopoverWrapper>
@@ -247,8 +282,7 @@ export const BlockConcept = ({
   fullWidth,
 }: ConceptProps) => {
   const { t, i18n } = useTranslation();
-  const anchorRef = useRef<HTMLDivElement>(null);
-  const [modalPos, setModalPos] = useState({ top: -5000 });
+  const [preventOverflow, setPreventOverflow] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
   const licenseCredits = getLicenseCredits(copyright);
@@ -264,18 +298,18 @@ export const BlockConcept = ({
   const license = copyright?.license && getLicenseByAbbreviation(copyright?.license?.license, i18n.language);
 
   const onOpenChange = (open: boolean) => {
-    if (open) {
-      const anchor = anchorRef.current;
-      if (anchor) {
-        const anchorPos = anchor.getBoundingClientRect();
-        const top = window.scrollY + anchorPos.top;
-        setModalPos({ top });
-      }
-    }
+    // if (open) {
+    //   const anchor = anchorRef.current;
+    //   if (anchor) {
+    //     const anchorPos = anchor.getBoundingClientRect();
+    //     const top = window.scrollY + anchorPos.top;
+    //     setModalPos({ top });
+    //   }
+    // }
   };
 
   return (
-    <Root modal={isMobile} onOpenChange={(open) => onOpenChange(open)}>
+    <Root modal={isMobile}>
       <StyledAnchor />
       <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
         <UINotion
@@ -308,23 +342,15 @@ export const BlockConcept = ({
                     </Trigger>
                   </Tooltip>
                 </ImageWrapper>
-                <Portal container={document.querySelector('body')}>
-                  <PopoverWrapper {...modalPos}>
-                    <Content asChild avoidCollisions={false} side="bottom">
-                      <ConceptNotionV2
+                <Portal>
+                  <PopoverWrapper preventOverflow={false}>
+                    <Content avoidCollisions={false} side="bottom">
+                      <ConceptPopover
                         title={title}
                         content={content}
                         copyright={copyright}
                         source={source}
                         visualElement={visualElement}
-                        inPopover
-                        closeButton={
-                          <Close asChild>
-                            <IconButtonV2 aria-label={t('close')} variant="ghost">
-                              <Cross />
-                            </IconButtonV2>
-                          </Close>
-                        }
                       />
                     </Content>
                   </PopoverWrapper>

@@ -15,7 +15,8 @@ import { useTranslation } from 'react-i18next';
 import Tooltip from '@ndla/tooltip';
 import NotionDialog from './NotionDialog';
 
-const BaselineIcon = styled.div`
+const BaselineIcon = styled.span`
+  display: block;
   border-bottom: 5px double currentColor;
 `;
 

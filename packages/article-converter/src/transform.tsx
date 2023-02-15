@@ -25,7 +25,7 @@ const transform = (content: string, opts: TransformOptions) => {
         if (embedPlugins[node.attribs['data-resource']]) {
           return embedPlugins[node.attribs['data-resource']](node, options, opts);
         } else {
-          return <div>Unsupported</div>;
+          return <span>Unsupported</span>;
         }
       }
     },

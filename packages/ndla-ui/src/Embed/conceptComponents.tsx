@@ -183,6 +183,7 @@ const StyledFigure = styled(Figure)`
   && {
     margin: ${spacing.normal} 0;
   }
+  padding-bottom: 0;
 `;
 
 const StyledFigureCaption = styled(FigureCaption)`

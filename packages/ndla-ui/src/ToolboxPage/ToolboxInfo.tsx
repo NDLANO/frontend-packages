@@ -14,14 +14,14 @@ import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 
 const Heading = styled.h1`
-  ${fonts.sizes('30px', '35px')};
+  ${fonts.sizes('38px', '44px')};
 
   ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('36px', '46px')};
+    ${fonts.sizes('48px', '60px')};
   }
 
   ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('52px', '65px')};
+    ${fonts.sizes('48px', '60px')};
   }
 `;
 

@@ -33,7 +33,6 @@ const BottomBorder = styled.div`
 
 interface PopoverPosition {
   top?: number;
-  preventOverflow?: boolean;
 }
 
 const PopoverWrapper = styled.div<PopoverPosition>`
@@ -42,12 +41,6 @@ const PopoverWrapper = styled.div<PopoverPosition>`
     left: 50% !important;
     transform: translateX(-50%) !important;
     top: ${({ top }) => top}px !important;
-    ${({ preventOverflow }) =>
-      preventOverflow &&
-      css`
-        bottom: 0 !important;
-        top: unset !important;
-      `}
   }
 
   ${mq.range({ until: breakpoints.tablet })} {
@@ -241,10 +234,12 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
       </Trigger>
       <Portal
         container={
-          typeof document !== 'undefined' ? (document.querySelector('.c-article') as HTMLElement | null) : null
+          typeof document !== 'undefined'
+            ? (document.querySelector('.c-article') as HTMLElement | null) || undefined
+            : undefined
         }>
         <PopoverWrapper top={modalPos}>
-          <Content avoidCollisions={false} side="bottom">
+          <Content avoidCollisions={false} side="bottom" asChild>
             <ConceptNotionV2
               title={title}
               content={content}
@@ -346,11 +341,11 @@ export const BlockConcept = ({
                 <Portal
                   container={
                     typeof document !== 'undefined'
-                      ? (document.querySelector('.c-article') as HTMLElement | null)
-                      : null
+                      ? (document.querySelector('.c-article') as HTMLElement | null) || undefined
+                      : undefined
                   }>
                   <PopoverWrapper top={modalPos}>
-                    <Content avoidCollisions={false} side="bottom">
+                    <Content avoidCollisions={false} asChild side="bottom">
                       <ConceptNotionV2
                         title={title}
                         content={content}

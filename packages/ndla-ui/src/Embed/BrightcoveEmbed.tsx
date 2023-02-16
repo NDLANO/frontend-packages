@@ -140,7 +140,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
         authors={captionAuthors}
         hasLinkedVideo={!!linkedVideoId}
       />
-      <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)} labelledBy="license-dialog-rules-heading">
         {(close) => (
           <FigureLicenseDialogContent
             onClose={close}

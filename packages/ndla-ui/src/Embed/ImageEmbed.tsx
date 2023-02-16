@@ -188,7 +188,7 @@ const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
         licenseRights={license.rights}
         authors={captionAuthors}
         locale={i18n.language}>
-        <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)} labelledBy="license-dialog-rules-heading">
           {(close) => (
             <FigureLicenseDialogContent
               title={data.title.title}

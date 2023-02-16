@@ -381,7 +381,11 @@ export const BlockConcept = ({
                 {t('concept.reuse')}
               </ButtonV2>
             }>
-            <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <ModalV2
+              controlled
+              isOpen={isOpen}
+              onClose={() => setIsOpen(false)}
+              labelledBy="license-dialog-rules-heading">
               {(close) => (
                 <FigureLicenseDialogContent
                   authors={groupedAuthors}

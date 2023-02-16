@@ -65,7 +65,7 @@ export const FigureLicenseDialogContent = ({
     <StyledModalBody>
       <div {...classLicenses()}>
         <StyledHeader>
-          <StyledH1>{t(`license.${type}.rules`)}</StyledH1>
+          <StyledH1 id="license-dialog-rules-heading">{t(`license.${type}.rules`)}</StyledH1>
           <ButtonV2 variant="link" onClick={onClose}>
             {t('close')}
           </ButtonV2>

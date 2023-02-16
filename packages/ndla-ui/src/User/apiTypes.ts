@@ -66,7 +66,7 @@ export interface FeideUser {
   cn: string[];
   displayName: string;
   eduPersonAffiliation: AffiliationType[];
-  eduPersonPrimaryAffiliation: string;
+  eduPersonPrimaryAffiliation: AffiliationType;
   eduPersonPrincipalName: string;
   givenName: string[];
   mail?: string[];

@@ -6,7 +6,7 @@
  *
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { isMobile } from 'react-device-detect';
@@ -33,16 +33,20 @@ const BottomBorder = styled.div`
 `;
 
 interface PopoverPosition {
+  top?: number;
   preventOverflow?: boolean;
 }
 
 const PopoverWrapper = styled.div<PopoverPosition>`
   div[data-radix-popper-content-wrapper] {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: ${({ top }) => top || -6000}px !important;
     height: 5000px;
     ${({ preventOverflow }) =>
       preventOverflow &&
       css`
-        position: absolute !important;
         bottom: 0;
       `}
   }
@@ -207,14 +211,19 @@ interface ConceptPopoverProps {
   copyright?: Copyright;
   source?: string;
   visualElement?: ConceptVisualElementMeta;
+  onModalOverflow: () => void;
 }
 
-const ConceptPopover = ({ title, content, copyright, source, visualElement }: ConceptPopoverProps) => {
+const ConceptPopover = ({ title, content, copyright, source, visualElement, onModalOverflow }: ConceptPopoverProps) => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDivElement>(null);
   const { entry } = useIntersectionObserver({ root: window.document, target: modalRef.current, threshold: 1 });
-  console.log(entry);
-  console.log(modalRef.current);
+
+  useEffect(() => {
+    if (entry?.isIntersecting === false) {
+      onModalOverflow();
+    }
+  }, [entry?.isIntersecting, onModalOverflow]);
 
   return (
     <div ref={modalRef}>
@@ -282,7 +291,9 @@ export const BlockConcept = ({
   fullWidth,
 }: ConceptProps) => {
   const { t, i18n } = useTranslation();
+  const anchorRef = useRef<HTMLDivElement>(null);
   const [preventOverflow, setPreventOverflow] = useState(false);
+  const [modalPos, setModalPos] = useState(-5000);
 
   const [isOpen, setIsOpen] = useState(false);
   const licenseCredits = getLicenseCredits(copyright);
@@ -298,19 +309,28 @@ export const BlockConcept = ({
   const license = copyright?.license && getLicenseByAbbreviation(copyright?.license?.license, i18n.language);
 
   const onOpenChange = (open: boolean) => {
-    // if (open) {
-    //   const anchor = anchorRef.current;
-    //   if (anchor) {
-    //     const anchorPos = anchor.getBoundingClientRect();
-    //     const top = window.scrollY + anchorPos.top;
-    //     setModalPos({ top });
-    //   }
-    // }
+    if (open) {
+      const anchor = anchorRef.current;
+      if (anchor) {
+        const article = document.querySelector('.c-article');
+        const articlePos = article?.getBoundingClientRect();
+        const anchorPos = anchor.getBoundingClientRect();
+        const top = anchorPos.top - (articlePos?.top || -window.scrollY);
+        setModalPos(top);
+      }
+    } else {
+      setPreventOverflow(false);
+      setModalPos(-5000);
+    }
   };
 
+  const onModalOverflow = useCallback(() => {
+    setPreventOverflow(true);
+  }, []);
+
   return (
-    <Root modal={isMobile}>
-      <StyledAnchor />
+    <Root modal={isMobile} onOpenChange={onOpenChange}>
+      <StyledAnchor ref={anchorRef} />
       <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
         <UINotion
           id=""
@@ -342,10 +362,11 @@ export const BlockConcept = ({
                     </Trigger>
                   </Tooltip>
                 </ImageWrapper>
-                <Portal>
-                  <PopoverWrapper preventOverflow={false}>
+                <Portal container={document.querySelector('.c-article') as HTMLElement | null}>
+                  <PopoverWrapper preventOverflow={preventOverflow} top={modalPos}>
                     <Content avoidCollisions={false} side="bottom">
                       <ConceptPopover
+                        onModalOverflow={onModalOverflow}
                         title={title}
                         content={content}
                         copyright={copyright}

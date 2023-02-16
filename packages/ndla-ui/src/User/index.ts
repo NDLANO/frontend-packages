@@ -8,8 +8,16 @@
 
 import AuthModal from './AuthModal';
 import { UserInfo } from './UserInfo';
-import type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType, FeideMembershipType, FeideUser } from './apiTypes';
+import type {
+  AffiliationType,
+  FeideGoGroup,
+  FeideGroup,
+  FeideOrg,
+  FeideUserApiType,
+  FeideMembershipType,
+  FeideUser,
+} from './apiTypes';
 
 export { UserInfo };
-export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType, FeideMembershipType, FeideUser };
+export type { AffiliationType, FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType, FeideMembershipType, FeideUser };
 export default AuthModal;

@@ -101,7 +101,7 @@ const notionContentCss = css`
 
   animation-name: animateIn;
   animation-duration: 300ms;
-  padding: ${spacing.small};
+  padding: ${spacing.normal};
   background-color: white;
   z-index: 1;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
@@ -113,6 +113,7 @@ const notionContentCss = css`
   }
 
   ${mq.range({ until: breakpoints.tablet })} {
+    padding: ${spacing.small};
     z-index: 9999;
     height: 100%;
     width: 100%;

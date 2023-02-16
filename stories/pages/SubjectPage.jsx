@@ -132,6 +132,7 @@ const SubjectPage = ({
   messageBoxTagMessage,
 }) => {
   const { t } = useTranslation();
+  const containerRef = useRef(null);
   const [selectedMainTopic, setSelectedMainTopic] = useState(preSelectedMainTopic);
   const [selectedSubTopic, setSelectedSubTopic] = useState(preSelectedSubTopic);
   const [selectedSubSubTopic, setSelectedSubSubTopic] = useState(preSelectedSubSubTopic);
@@ -386,8 +387,9 @@ const SubjectPage = ({
   };
 
   // show/hide breadcrumb based on intersection
-  const [containerRef, { entry }] = useIntersectionObserver({
+  const { entry } = useIntersectionObserver({
     root: null,
+    target: containerRef.current,
     rootMargin: '-325px',
   });
   const showBreadCrumb = entry && entry.isIntersecting;

@@ -6,7 +6,9 @@
  *
  */
 
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { colors } from '@ndla/core';
 import { ConceptListMetaData } from '@ndla/types-embed';
 import { Figure } from '../Figure';
 import { BlockConcept } from './ConceptEmbed';
@@ -24,9 +26,14 @@ const ConceptList = styled.div`
   }
 `;
 
+const StyledSpan = styled.span`
+  color: ${colors.support.red};
+`;
+
 const ConceptListEmbed = ({ embed }: Props) => {
+  const { t } = useTranslation();
   if (embed.status === 'error') {
-    return <div>Failed to load concept list</div>;
+    return <StyledSpan>{t('embed.conceptListError')}</StyledSpan>;
   }
   const { embedData, data } = embed;
   return (

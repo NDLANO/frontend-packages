@@ -1230,6 +1230,7 @@ const messages = {
     grades: 'Trinn',
   },
   embed: {
+    conceptListError: 'Klarte ikkje å vise forklaringsliste',
     linkError: 'Klarte ikkje å vise lenke.',
     unsupported: `Embed {{type}} er ikkje støtta.`,
   },

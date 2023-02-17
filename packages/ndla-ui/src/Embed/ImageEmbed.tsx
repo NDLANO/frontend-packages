@@ -149,7 +149,6 @@ const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
   const { creators, rightsholders, processors } = authors;
   const captionAuthors = creators.length || rightsholders.length ? [...creators, ...rightsholders] : processors;
   return (
-    // Mangler concept-option. Da skal det være full-size.
     <Figure
       id={figureId}
       type={imageSizes ? undefined : figureType}

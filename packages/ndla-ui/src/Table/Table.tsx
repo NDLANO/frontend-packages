@@ -93,11 +93,14 @@ const Table = ({ children, id, ...rest }: Props) => {
   return (
     <div {...classes('wrapper')}>
       <div {...classes('content')}>
-        <LeftScrollBorder show={scrollPosition === 'end' || scrollPosition === 'center'} />
+        <LeftScrollBorder show={scrollPosition === 'end' || scrollPosition === 'center'} {...classes('left-shadow')} />
         <table ref={tableRef} id={id} onScroll={onScroll} {...classes({ extra: ['o-table'] })} {...rest}>
           {children}
         </table>
-        <RightScrollBorder show={scrollPosition === 'start' || scrollPosition === 'center'} />
+        <RightScrollBorder
+          show={scrollPosition === 'start' || scrollPosition === 'center'}
+          {...classes('right-shadow')}
+        />
       </div>
     </div>
   );

@@ -6,7 +6,9 @@
  *
  */
 
+import styled from '@emotion/styled';
 import { OembedMetaData } from '@ndla/types-embed';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Figure } from '../Figure';
 import { ResourceBox } from '../ResourceBox';
@@ -17,8 +19,23 @@ interface Props {
   isConcept?: boolean;
 }
 
+const StyledFigure = styled.figure`
+  iframe {
+    height: auto;
+  }
+`;
+
 const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const { t } = useTranslation();
+  const figRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const iframe = figRef.current?.querySelector(`iframe`);
+    if (iframe) {
+      const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
+      iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
+    }
+  }, []);
   if (embed.status === 'error') {
     return (
       <figure className={isConcept ? '' : 'c-figure'}>
@@ -49,9 +66,14 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
   return (
-    //@ts-ignore
-    // eslint-disable-next-line react/no-unknown-property
-    <figure className={classes} resizeiframe="true" dangerouslySetInnerHTML={{ __html: data.oembed.html ?? '' }} />
+    <StyledFigure
+      ref={figRef}
+      className={classes}
+      //@ts-ignore
+      // eslint-disable-next-line react/no-unknown-property
+      resizeiframe="true"
+      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? '' }}
+    />
   );
 };
 

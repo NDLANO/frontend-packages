@@ -6,20 +6,18 @@
  *
  */
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { isMobile } from 'react-device-detect';
 import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
-import { useIntersectionObserver } from '@ndla/hooks';
 import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { getGroupedContributorDescriptionList, getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import { ModalV2 } from '@ndla/modal';
-import { ConceptMetaData, ConceptVisualElementMeta } from '@ndla/types-embed';
+import { ConceptMetaData } from '@ndla/types-embed';
 import Tooltip from '@ndla/tooltip';
-import { css } from '@emotion/react';
 import { Notion as UINotion } from '../Notion';
 import { Figure, FigureCaption } from '../Figure';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';

@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef, ReactNode, RefAttributes } from 'react';
+import { forwardRef, ReactNode, RefAttributes, useEffect, useRef } from 'react';
 import { ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { Root, Item, Header, Trigger, Content } from '@radix-ui/react-accordion';
@@ -122,7 +122,7 @@ const notionContentCss = css`
 `;
 
 const StyledIframe = styled.iframe<{ type?: string }>`
-  aspect-ratio: 16 / 8;
+  height: auto;
   min-height: ${(p) => p.type === 'video' && '400px'};
 `;
 
@@ -254,6 +254,16 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
     ref,
   ) => {
     const { t, i18n } = useTranslation();
+    const iframeRef = useRef<HTMLIFrameElement>(null);
+
+    useEffect(() => {
+      const iframe = iframeRef.current;
+      if (iframe) {
+        const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
+        iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
+      }
+    }, []);
+
     const licenseCredits = getLicenseCredits(copyright);
     const { creators, rightsholders, processors } = licenseCredits;
     const authors = creators.length || rightsholders.length ? creators.concat(rightsholders) : processors;
@@ -293,6 +303,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                 <img src={notionVisualElement.image.src} alt={notionVisualElement.image.alt} />
               ) : (
                 <StyledIframe
+                  ref={iframeRef}
                   allowFullScreen
                   type={visualElementType}
                   src={notionVisualElement?.url}

@@ -11,7 +11,7 @@ import isNumber from 'lodash/isNumber';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ModalV2 } from '@ndla/modal';
 import { SafeLinkButton } from '@ndla/safelink';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
@@ -31,9 +31,7 @@ const LinkedVideoButton = styled(ButtonV2)`
 `;
 
 const BrightcoveIframe = styled.iframe`
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 16/9;
+  height: auto;
 `;
 
 export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = '') => {
@@ -63,11 +61,21 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t, i18n } = useTranslation();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const { embedData } = embed;
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
+      iframe.style.aspectRatio = `${width}/${height}`;
+    }
+  }, []);
   if (embed.status === 'error') {
     return (
       <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
         <BrightcoveIframe
+          ref={iframeRef}
           title={`Video: ${embedData.videoid ?? ''}`}
           aria-label={`Video: ${embedData.videoid ?? ''}`}
           frameBorder="0"
@@ -108,6 +116,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
     <Figure id={figureId} type={isConcept ? 'full-column' : 'full'} resizeIframe>
       <div className="brightcove-video">
         <BrightcoveIframe
+          ref={iframeRef}
           className="original"
           title={`Video: ${data.name}`}
           aria-label={`Video: ${data.name}`}

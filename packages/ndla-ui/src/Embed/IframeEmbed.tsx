@@ -7,6 +7,7 @@
  */
 
 import isNumber from 'lodash/isNumber';
+import { useEffect, useRef } from 'react';
 import { IframeMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { Figure } from '../Figure';
@@ -19,8 +20,17 @@ interface Props {
 
 const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const { t } = useTranslation();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const { embedData } = embed;
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
+      iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
+    }
+  }, []);
 
   if (embedData.type === 'fullscreen') {
     const iframeImage = embed.status === 'success' ? embed.data.iframeImage : undefined;
@@ -55,6 +65,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
     // eslint-disable-next-line react/no-unknown-property
     <figure className={classes} resizeiframe={`${resize}`}>
       <iframe
+        ref={iframeRef}
         title={urlOrTitle}
         aria-label={urlOrTitle}
         src={url}

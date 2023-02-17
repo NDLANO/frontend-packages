@@ -1139,6 +1139,9 @@ const messages = {
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',
+    sharedFolder: {
+      info: 'This folder contains learning resources and tasks from NDLA, curated by a teacher.',
+    },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",
       imageAlt:

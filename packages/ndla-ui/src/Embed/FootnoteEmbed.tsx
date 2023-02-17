@@ -19,7 +19,7 @@ const FootnoteEmbed = ({ embed }: Props) => {
   }
 
   return (
-    <span id={`ref${embed.data.entryNum}`} className="c-footnotes__Ref">
+    <span id={`ref${embed.data.entryNum}`} className="c-footnotes__ref">
       <sup>
         <a href={`#note${embed.data.entryNum}`} target="_self">{`[${embed.data.entryNum}]`}</a>
       </sup>

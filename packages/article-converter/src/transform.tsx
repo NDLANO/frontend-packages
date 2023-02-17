@@ -7,6 +7,8 @@
  */
 
 import parse, { HTMLReactParserOptions } from 'html-react-parser';
+import { UnknownEmbed } from '@ndla/ui';
+import { MetaData } from '@ndla/types-embed';
 import { basePlugins, oembedPlugins } from './plugins';
 import { TransformOptions } from './plugins/types';
 import { embedPlugins } from './plugins/embed';
@@ -25,7 +27,8 @@ const transform = (content: string, opts: TransformOptions) => {
         if (embedPlugins[node.attribs['data-resource']]) {
           return embedPlugins[node.attribs['data-resource']](node, options, opts);
         } else {
-          return <span>Unsupported</span>;
+          const embed = JSON.parse(node.attribs['data-json']) as MetaData<any, any>;
+          return <UnknownEmbed embed={embed} />;
         }
       }
     },

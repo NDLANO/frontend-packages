@@ -1234,6 +1234,9 @@ const messages = {
   programme: {
     grades: 'Trinn',
   },
+  embed: {
+    unsupported: `Embed {{type}} er ikkje støtta.`,
+  },
 };
 
 export default messages;

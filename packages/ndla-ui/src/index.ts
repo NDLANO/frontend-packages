@@ -23,6 +23,7 @@ export {
   RelatedContentEmbed,
   ConceptEmbed,
   ConceptListEmbed,
+  UnknownEmbed,
 } from './Embed';
 
 export {

@@ -18,3 +18,4 @@ export { default as RelatedContentEmbed } from './RelatedContentEmbed';
 export { default as ConceptEmbed } from './ConceptEmbed';
 export { ConceptNotionV2 } from './conceptComponents';
 export { default as ConceptListEmbed } from './ConceptListEmbed';
+export { default as UnknownEmbed } from './UnknownEmbed';

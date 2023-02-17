@@ -122,7 +122,6 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
           aria-label={`Video: ${data.name}`}
           frameBorder="0"
           {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
-          // eslint-disable-next-line react/no-unknown-property
           allowFullScreen
         />
       </div>

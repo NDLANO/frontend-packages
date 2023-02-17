@@ -1230,6 +1230,7 @@ const messages = {
     grades: 'Trinn',
   },
   embed: {
+    linkError: 'Klarte ikke å vise lenke.',
     unsupported: `Embed {{type}} er ikke støttet.`,
   },
 };

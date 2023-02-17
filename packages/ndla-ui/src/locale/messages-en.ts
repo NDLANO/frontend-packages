@@ -1233,6 +1233,7 @@ const messages = {
     grades: 'Grades',
   },
   embed: {
+    linkError: 'Failed to show link.',
     unsupported: `Embed {{type}} not supported.`,
   },
 };

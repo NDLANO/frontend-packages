@@ -77,12 +77,6 @@ const getConceptVisualElement = (visualElement: ConceptVisualElementMeta): Notio
       resource: visualElement.resource,
       url: visualElement.data.h5pUrl,
       title: visualElement.embedData.title,
-      copyright: {
-        creators: visualElement.data.h5pLicenseInformation?.h5p.authors.map((author) => ({
-          type: author.role,
-          name: author.role,
-        })),
-      },
     };
   }
 };

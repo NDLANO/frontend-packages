@@ -6,18 +6,13 @@
  *
  */
 
-import { CopyParagraphButton } from '@ndla/ui';
-import { Text, Element } from 'html-react-parser';
+import { CopyParagraphButtonV2 } from '@ndla/ui';
+import { domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const CopyParagraphPlugin: PluginType = (node) => {
-  const directTextChild = node.children.find((c): c is Text => c.type === 'text');
-  if (directTextChild) {
-    return <CopyParagraphButton title={directTextChild.data} content={directTextChild.data} />;
-  }
-  const paragraphChild = node.children.find((c): c is Element => c.type === 'tag');
-  const textChild = paragraphChild?.children.find((c): c is Text => c.type === 'text');
-  if (textChild) {
-    return <CopyParagraphButton title={textChild.data} content={textChild.data} />;
-  }
-  return null;
+export const CopyParagraphPlugin: PluginType = (node, opts) => {
+  return (
+    <CopyParagraphButtonV2 copyText={node.attribs['data-text']}>
+      {domToReact(node.children, opts)}
+    </CopyParagraphButtonV2>
+  );
 };

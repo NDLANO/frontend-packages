@@ -7,7 +7,8 @@
  */
 
 import RelatedArticleList, { RelatedArticle } from './RelatedArticleList';
+import { RelatedArticleListV2 } from './RelatedArticleV2';
 
-export { RelatedArticle };
+export { RelatedArticle, RelatedArticleListV2 };
 
 export default RelatedArticleList;

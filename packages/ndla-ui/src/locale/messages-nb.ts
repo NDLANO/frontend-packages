@@ -630,6 +630,7 @@ const messages = {
     published: 'Publiseringsdato',
     rightsholder: 'Rettighetshaver',
     source: 'Kilde',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ops, noe gikk galt',
@@ -764,6 +765,7 @@ const messages = {
     hits: '{{count}} treff',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Brukes i',
     closeNotion: 'Lukk',
   },
@@ -1229,6 +1231,11 @@ const messages = {
   },
   programme: {
     grades: 'Trinn',
+  },
+  embed: {
+    conceptListError: 'Klarte ikke å vise forklaringsliste',
+    linkError: 'Klarte ikke å vise lenke.',
+    unsupported: `Embed {{type}} er ikke støttet.`,
   },
 };
 

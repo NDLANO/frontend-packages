@@ -631,6 +631,7 @@ const messages = {
     rightsholder: 'Rightsholder',
     source: 'Source',
     published: 'Published',
+    info: 'License information',
   },
   errorMessage: {
     title: 'Oops, something went wrong',
@@ -765,6 +766,7 @@ const messages = {
     hits: '{{count}} hits',
   },
   notions: {
+    tags: 'List and filters',
     usedIn: 'Used in',
     closeNotion: 'Close',
   },
@@ -1232,6 +1234,11 @@ const messages = {
   },
   programme: {
     grades: 'Grades',
+  },
+  embed: {
+    conceptListError: 'Failed to show concept list',
+    linkError: 'Failed to show link.',
+    unsupported: `Embed {{type}} not supported.`,
   },
 };
 

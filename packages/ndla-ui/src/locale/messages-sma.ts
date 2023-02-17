@@ -634,6 +634,7 @@ const messages = {
     published: 'Publiseringsdato',
     rightsholder: 'Rettighetshaver',
     source: 'Gaaltije',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ovva, mij akt båajhtede sjïdtit',
@@ -768,6 +769,7 @@ const messages = {
     hits: '{{count}} gaavnedimmieh',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Brukes i',
     closeNotion: 'Dahph',
   },
@@ -1234,6 +1236,11 @@ const messages = {
   },
   programme: {
     grades: 'Trinn',
+  },
+  embed: {
+    conceptListError: 'Klarte ikkje å vise forklaringsliste',
+    linkError: 'Klarte ikkje å vise lenke.',
+    unsupported: `Embed {{type}} er ikkje støtta.`,
   },
 };
 

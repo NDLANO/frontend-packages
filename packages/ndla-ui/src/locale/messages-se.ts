@@ -631,6 +631,7 @@ const messages = {
     published: 'Almmuhanbeaivi',
     rightsholder: 'Vuoigatvuođaguoddi',
     source: 'Gáldu',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ops, juoga manai boastut',
@@ -765,6 +766,7 @@ const messages = {
     hits: '{{count}} deaivama',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Adnojuvvo dás',
     closeNotion: 'Govčča',
   },
@@ -1230,6 +1232,11 @@ const messages = {
   },
   programme: {
     grades: 'Trinn',
+  },
+  embed: {
+    conceptListError: 'Klarte ikkje å vise forklaringsliste',
+    linkError: 'Klarte ikkje å vise lenke.',
+    unsupported: `Embed {{type}} er ikkje støtta.`,
   },
 };
 

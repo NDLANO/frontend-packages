@@ -28,6 +28,9 @@
       display: none;
     }
   }
+  &--alwaysShow {
+    display: block !important;
+  }
 }
 
 .c-aside__content {

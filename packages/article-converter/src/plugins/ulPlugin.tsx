@@ -8,7 +8,7 @@
 
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const OLPlugin: PluginType = (node, opts) => {
+export const ulPlugin: PluginType = (node, opts) => {
   if (node.attribs['data-type'] === 'two-column') {
     const props = attributesToProps(node.attribs);
     const classes = [node.attribs.class ?? '', 'o-list--two-columns'].filter((c) => !!c).join(' ');

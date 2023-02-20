@@ -7,12 +7,12 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { AudioMetaData } from '@ndla/types-embed';
-import { AudioEmbed } from '@ndla/ui';
+import { ConceptListMetaData } from '@ndla/types-embed';
+import { ConceptListEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const AudioEmbedPlugin: PluginType = (element, _, opts) => {
+export const conceptListEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as AudioMetaData;
-  return <AudioEmbed embed={data} articlePath={opts.path} />;
+  const data = JSON.parse(props['data-json']) as ConceptListMetaData;
+  return <ConceptListEmbed embed={data} />;
 };

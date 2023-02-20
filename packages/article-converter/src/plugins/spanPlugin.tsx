@@ -8,7 +8,7 @@
 
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const SpanPlugin: PluginType = (node, opts) => {
+export const spanPlugin: PluginType = (node, opts) => {
   if (node.attribs['data-size'] === 'large') {
     const props = attributesToProps(node.attribs);
     return (

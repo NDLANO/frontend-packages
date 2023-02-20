@@ -11,7 +11,7 @@ import { RelatedContentMetaData } from '@ndla/types-embed';
 import { RelatedContentEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const RelatedContentEmbedPlugin: PluginType = (element, _, opts) => {
+export const relatedContentEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as RelatedContentMetaData;
   return <RelatedContentEmbed embed={data} subject={opts.subject} ndlaFrontendDomain={opts.frontendDomain} />;

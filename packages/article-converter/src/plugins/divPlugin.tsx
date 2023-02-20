@@ -10,7 +10,7 @@ import partition from 'lodash/partition';
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
 import { FileListV2, RelatedArticleListV2 } from '@ndla/ui';
 import { PluginType } from './types';
-export const DivPlugin: PluginType = (node, opts) => {
+export const divPlugin: PluginType = (node, opts) => {
   if (node.attribs['data-type'] === 'related-content' && node.children.length) {
     const props = attributesToProps(node.attribs);
 

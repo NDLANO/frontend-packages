@@ -8,7 +8,7 @@
 
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const ParagraphPlugin: PluginType = (node, opts) => {
+export const paragraphPlugin: PluginType = (node, opts) => {
   if (node.attribs['data-align'] === 'center') {
     const props = attributesToProps(node.attribs);
     const classes = [node.attribs.class ?? '', 'u-text-center'].filter((c) => !!c).join(' ');

@@ -7,12 +7,12 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { FootnoteMetaData } from '@ndla/types-embed';
-import { FootnoteEmbed } from '@ndla/ui';
+import { AudioMetaData } from '@ndla/types-embed';
+import { AudioEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const FootnoteEmbedPlugin: PluginType = (element) => {
+export const audioEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as FootnoteMetaData;
-  return <FootnoteEmbed embed={data} />;
+  const data = JSON.parse(props['data-json']) as AudioMetaData;
+  return <AudioEmbed embed={data} articlePath={opts.path} />;
 };

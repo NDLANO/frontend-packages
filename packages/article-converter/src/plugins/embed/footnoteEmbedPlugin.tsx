@@ -7,12 +7,12 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { H5pMetaData } from '@ndla/types-embed';
-import { H5pEmbed } from '@ndla/ui';
+import { FootnoteMetaData } from '@ndla/types-embed';
+import { FootnoteEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const H5pEmbedPlugin: PluginType = (element) => {
+export const footnoteEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as H5pMetaData;
-  return <H5pEmbed embed={data} />;
+  const data = JSON.parse(props['data-json']) as FootnoteMetaData;
+  return <FootnoteEmbed embed={data} />;
 };

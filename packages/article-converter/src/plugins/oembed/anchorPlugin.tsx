@@ -8,7 +8,7 @@
 
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from '../types';
-export const AnchorPlugin: PluginType = (node, options) => {
+export const anchorPlugin: PluginType = (node, options) => {
   const props = attributesToProps(node.attribs);
   return (
     <a {...props} target="_blank">

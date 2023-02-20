@@ -7,12 +7,12 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { ConceptMetaData } from '@ndla/types-embed';
-import { ConceptEmbed } from '@ndla/ui';
+import { BrightcoveMetaData } from '@ndla/types-embed';
+import { BrightcoveEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const ConceptEmbedPlugin: PluginType = (element) => {
+export const brightcoveEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as ConceptMetaData;
-  return <ConceptEmbed embed={data} fullWidth />;
+  const data = JSON.parse(props['data-json']) as BrightcoveMetaData;
+  return <BrightcoveEmbed embed={data} />;
 };

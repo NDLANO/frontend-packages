@@ -6,10 +6,14 @@
  *
  */
 
-import { Table } from '@ndla/ui';
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const TablePlugin: PluginType = (node, opts) => {
+export const h3Plugin: PluginType = (node, opts) => {
   const props = attributesToProps(node.attribs);
-  return <Table {...props}>{domToReact(node.children, opts)}</Table>;
+  return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+    <h3 {...props} tabIndex={0}>
+      {domToReact(node.children, opts)}
+    </h3>
+  );
 };

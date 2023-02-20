@@ -7,12 +7,12 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { ConceptListMetaData } from '@ndla/types-embed';
-import { ConceptListEmbed } from '@ndla/ui';
+import { H5pMetaData } from '@ndla/types-embed';
+import { H5pEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const ConceptListEmbedPlugin: PluginType = (element) => {
+export const h5pEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as ConceptListMetaData;
-  return <ConceptListEmbed embed={data} />;
+  const data = JSON.parse(props['data-json']) as H5pMetaData;
+  return <H5pEmbed embed={data} />;
 };

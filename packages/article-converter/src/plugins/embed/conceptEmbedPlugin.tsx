@@ -7,12 +7,12 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { CodeMetaData } from '@ndla/types-embed';
-import { CodeEmbed } from '@ndla/code';
+import { ConceptMetaData } from '@ndla/types-embed';
+import { ConceptEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const CodeEmbedPlugin: PluginType = (element) => {
+export const conceptEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as CodeMetaData;
-  return <CodeEmbed embed={data} />;
+  const data = JSON.parse(props['data-json']) as ConceptMetaData;
+  return <ConceptEmbed embed={data} fullWidth />;
 };

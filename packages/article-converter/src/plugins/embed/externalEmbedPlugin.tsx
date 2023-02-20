@@ -7,12 +7,12 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { ContentLinkMetaData } from '@ndla/types-embed';
-import { ContentLinkEmbed } from '@ndla/ui';
+import { OembedMetaData } from '@ndla/types-embed';
+import { ExternalEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const ContentLinkEmbedPlugin: PluginType = (element, _, { isOembed }) => {
+export const externalEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as ContentLinkMetaData;
-  return <ContentLinkEmbed embed={data} isOembed={isOembed} />;
+  const data = JSON.parse(props['data-json']) as OembedMetaData;
+  return <ExternalEmbed embed={data} />;
 };

@@ -17,7 +17,7 @@ import { anchorPlugin } from './oembed/anchorPlugin';
 import { divPlugin } from './divPlugin';
 import { tablePlugin } from './tablePlugin';
 import { asidePlugin } from './asidePlugin';
-import { ulPlugin } from './ULPlugin';
+import { ulPlugin } from './ulPlugin';
 
 export const basePlugins: Record<string, PluginType> = {
   h2: copyParagraphPlugin,

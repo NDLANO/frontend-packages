@@ -196,7 +196,7 @@ const StyledAnchorSpan = styled.span`
 `;
 
 const getModalPosition = (anchor: HTMLElement) => {
-  const article = document.querySelector('.c-article');
+  const article = anchor.closest('.c-article');
   const articlePos = article?.getBoundingClientRect();
   const anchorPos = anchor.getBoundingClientRect();
   return anchorPos.top - (articlePos?.top || -window.scrollY);
@@ -230,12 +230,7 @@ const InlineConcept = ({ title, content, copyright, source, visualElement, linkT
           {<BaselineIcon />}
         </NotionButton>
       </Trigger>
-      <Portal
-        container={
-          typeof document !== 'undefined'
-            ? (document.querySelector('.c-article') as HTMLElement | null) || undefined
-            : undefined
-        }>
+      <Portal container={(anchorRef.current?.closest('.c-article') as HTMLElement | null) || undefined}>
         <PopoverWrapper top={modalPos}>
           <Content avoidCollisions={false} side="bottom" asChild>
             <ConceptNotionV2

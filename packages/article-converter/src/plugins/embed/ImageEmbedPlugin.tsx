@@ -11,7 +11,7 @@ import { attributesToProps } from 'html-react-parser';
 import { ImageMetaData } from '@ndla/types-embed';
 import { PluginType } from '../types';
 
-export const ImageEmbedPlugin: PluginType = (element, _, opts) => {
+export const imageEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as ImageMetaData;
   return <ImageEmbed embed={data} articlePath={opts.path} previewAlt={opts.previewAlt} />;

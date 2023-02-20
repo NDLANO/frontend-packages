@@ -8,7 +8,7 @@
 
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const H3Plugin: PluginType = (node, opts) => {
+export const h3Plugin: PluginType = (node, opts) => {
   const props = attributesToProps(node.attribs);
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

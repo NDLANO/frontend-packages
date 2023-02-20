@@ -9,7 +9,7 @@
 import { domToReact } from 'html-react-parser';
 import { Aside, FactBoxV2 } from '@ndla/ui';
 import { PluginType } from './types';
-export const AsidePlugin: PluginType = (node, opts) => {
+export const asidePlugin: PluginType = (node, opts) => {
   if (node.attribs['data-type'] === 'factAside') {
     return <FactBoxV2>{domToReact(node.children, opts)}</FactBoxV2>;
   } else if (node.attribs['data-type'] === 'rightAside') {

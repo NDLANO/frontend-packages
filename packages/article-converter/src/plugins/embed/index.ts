@@ -7,32 +7,32 @@
  */
 
 import { PluginType } from '../types';
-import { AudioEmbedPlugin } from './AudioEmbedPlugin';
-import { ExternalEmbedPlugin } from './ExternalEmbedPlugin';
-import { H5pEmbedPlugin } from './H5pEmbedPlugin';
-import { IframeEmbedPlugin } from './IframeEmbedPlugin';
-import { ImageEmbedPlugin } from './ImageEmbedPlugin';
-import { FootnoteEmbedPlugin } from './FootnoteEmbedPlugin';
-import { BrightcoveEmbedPlugin } from './BrightcoveEmbedPlugin';
-import { RelatedContentEmbedPlugin } from './RelatedContentEmbedPlugin';
-import { ContentLinkEmbedPlugin } from './ContentLinkEmbedPlugin';
-import { ConceptEmbedPlugin } from './ConceptEmbedPlugin';
-import { ConceptListEmbedPlugin } from './ConceptListEmbedPlugin';
-import { FileEmbedPlugin } from './FileEmbedPlugin';
-import { CodeEmbedPlugin } from './CodeEmbedPlugin';
+import { audioEmbedPlugin } from './audioEmbedPlugin';
+import { externalEmbedPlugin } from './externalEmbedPlugin';
+import { h5pEmbedPlugin } from './h5pEmbedPlugin';
+import { iframeEmbedPlugin } from './iframeEmbedPlugin';
+import { imageEmbedPlugin } from './imageEmbedPlugin';
+import { footnoteEmbedPlugin } from './footnoteEmbedPlugin';
+import { brightcoveEmbedPlugin } from './brightcoveEmbedPlugin';
+import { relatedContentEmbedPlugin } from './relatedContentEmbedPlugin';
+import { contentLinkEmbedPlugin } from './contentLinkEmbedPlugin';
+import { conceptEmbedPlugin } from './conceptEmbedPlugin';
+import { conceptListEmbedPlugin } from './conceptListEmbedPlugin';
+import { fileEmbedPlugin } from './fileEmbedPlugin';
+import { codeEmbedPlugin } from './codeEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
-  image: ImageEmbedPlugin,
-  audio: AudioEmbedPlugin,
-  h5p: H5pEmbedPlugin,
-  'code-block': CodeEmbedPlugin,
-  external: ExternalEmbedPlugin,
-  iframe: IframeEmbedPlugin,
-  footnote: FootnoteEmbedPlugin,
-  brightcove: BrightcoveEmbedPlugin,
-  'related-content': RelatedContentEmbedPlugin,
-  'content-link': ContentLinkEmbedPlugin,
-  concept: ConceptEmbedPlugin,
-  'concept-list': ConceptListEmbedPlugin,
-  file: FileEmbedPlugin,
+  image: imageEmbedPlugin,
+  audio: audioEmbedPlugin,
+  h5p: h5pEmbedPlugin,
+  'code-block': codeEmbedPlugin,
+  external: externalEmbedPlugin,
+  iframe: iframeEmbedPlugin,
+  footnote: footnoteEmbedPlugin,
+  brightcove: brightcoveEmbedPlugin,
+  'related-content': relatedContentEmbedPlugin,
+  'content-link': contentLinkEmbedPlugin,
+  concept: conceptEmbedPlugin,
+  'concept-list': conceptListEmbedPlugin,
+  file: fileEmbedPlugin,
 };

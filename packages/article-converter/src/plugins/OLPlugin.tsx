@@ -8,7 +8,7 @@
 
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const OLPlugin: PluginType = (node, opts) => {
+export const olPlugin: PluginType = (node, opts) => {
   const props = attributesToProps(node.attribs);
   const letterClass = node.attribs['data-type'] === 'letters' ? 'ol-list--roman' : false;
   const num = node.attribs['start'];

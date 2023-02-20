@@ -9,7 +9,7 @@
 import { CopyParagraphButtonV2 } from '@ndla/ui';
 import { domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const CopyParagraphPlugin: PluginType = (node, opts) => {
+export const copyParagraphPlugin: PluginType = (node, opts) => {
   return (
     <CopyParagraphButtonV2 copyText={node.attribs['data-text']}>
       {domToReact(node.children, opts)}

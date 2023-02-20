@@ -9,7 +9,7 @@
 import { Table } from '@ndla/ui';
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const TablePlugin: PluginType = (node, opts) => {
+export const tablePlugin: PluginType = (node, opts) => {
   const props = attributesToProps(node.attribs);
   return <Table {...props}>{domToReact(node.children, opts)}</Table>;
 };

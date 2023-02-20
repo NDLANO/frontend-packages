@@ -11,7 +11,7 @@ import { CodeMetaData } from '@ndla/types-embed';
 import { CodeEmbed } from '@ndla/code';
 import { PluginType } from '../types';
 
-export const CodeEmbedPlugin: PluginType = (element) => {
+export const codeEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as CodeMetaData;
   return <CodeEmbed embed={data} />;

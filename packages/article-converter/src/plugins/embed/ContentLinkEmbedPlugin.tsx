@@ -11,7 +11,7 @@ import { ContentLinkMetaData } from '@ndla/types-embed';
 import { ContentLinkEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const ContentLinkEmbedPlugin: PluginType = (element, _, { isOembed }) => {
+export const contentLinkEmbedPlugin: PluginType = (element, _, { isOembed }) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as ContentLinkMetaData;
   return <ContentLinkEmbed embed={data} isOembed={isOembed} />;

@@ -6,31 +6,33 @@
  *
  */
 
-import { CopyParagraphPlugin } from './CopyParagraphPlugin';
+import { copyParagraphPlugin } from './copyParagraphPlugin';
 import { PluginType } from './types';
-import { OLPlugin } from './OLPlugin';
-import { ParagraphPlugin } from './ParagraphPlugin';
-import { SpanPlugin } from './SpanPlugin';
-import { H3Plugin } from './H3Plugin';
-import { MathPlugin } from './MathPlugin';
-import { AnchorPlugin } from './oembed/AnchorPlugin';
-import { DivPlugin } from './DivPlugin';
-import { TablePlugin } from './TablePlugin';
-import { AsidePlugin } from './AsidePlugin';
+import { olPlugin } from './olPlugin';
+import { paragraphPlugin } from './paragraphPlugin';
+import { spanPlugin } from './spanPlugin';
+import { h3Plugin } from './h3Plugin';
+import { mathPlugin } from './mathPlugin';
+import { anchorPlugin } from './oembed/anchorPlugin';
+import { divPlugin } from './divPlugin';
+import { tablePlugin } from './tablePlugin';
+import { asidePlugin } from './asidePlugin';
+import { ulPlugin } from './ULPlugin';
 
 export const basePlugins: Record<string, PluginType> = {
-  h2: CopyParagraphPlugin,
-  h3: H3Plugin,
-  ol: OLPlugin,
-  p: ParagraphPlugin,
-  span: SpanPlugin,
-  math: MathPlugin,
-  div: DivPlugin,
-  table: TablePlugin,
-  aside: AsidePlugin,
+  h2: copyParagraphPlugin,
+  h3: h3Plugin,
+  ol: olPlugin,
+  p: paragraphPlugin,
+  span: spanPlugin,
+  math: mathPlugin,
+  div: divPlugin,
+  table: tablePlugin,
+  aside: asidePlugin,
+  ul: ulPlugin,
 };
 
 export const oembedPlugins: Record<string, PluginType> = {
   ...basePlugins,
-  a: AnchorPlugin,
+  a: anchorPlugin,
 };

@@ -39,7 +39,8 @@
     "@ndla/icons": "^2.2.3",
     "@ndla/util": "^3.1.9",
     "react-device-detect": "^2.2.3",
-    "react-tabs": "^3.2.3"
+    "react-tabs": "^3.2.3",
+    "@radix-ui/react-tabs": "^1.0.2"
   },
   "publishConfig": {
     "access": "public"

@@ -8,7 +8,7 @@
 
 import React, { ChangeEvent, KeyboardEvent, MouseEvent, Component } from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { QueryObject } from './AudioSearch';
 
 const AudioSearchFormWrapper = styled.div`
@@ -31,7 +31,7 @@ const FormInput = styled.input`
   border-radius: 5px 0 0 5px;
 `;
 
-const FormButton = styled(Button)`
+const FormButton = styled(ButtonV2)`
   width: 12%;
   height: 3rem;
   display: inline-block;
@@ -101,7 +101,7 @@ class AudioSearchForm extends Component<Props, State> {
           value={this.state.queryObject?.query}
           placeholder={translations.searchPlaceholder}
         />
-        <FormButton onClick={this.handleSubmit} loading={searching}>
+        <FormButton onClick={this.handleSubmit} disabled={searching}>
           {translations.searchButtonTitle}
         </FormButton>
       </AudioSearchFormWrapper>

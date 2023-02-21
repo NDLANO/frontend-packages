@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { getLicenseByNBTitle } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
 import { PanoramaPhotosphere } from '@ndla/icons/common';
@@ -50,12 +50,12 @@ export default function VideoSearchResultBrightcove({
           <div {...classes('license')}>
             {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license}
           </div>
-          <Button {...classes('button')} outline onClick={() => onVideoPreview(video)}>
+          <ButtonV2 {...classes('button')} variant="outline" onClick={() => onVideoPreview(video)}>
             {translations.previewVideo}
-          </Button>
-          <Button data-cy="use-video" {...classes('button')} onClick={() => onSelectVideo(video)}>
+          </ButtonV2>
+          <ButtonV2 data-cy="use-video" {...classes('button')} onClick={() => onSelectVideo(video)}>
             {translations.addVideo}
-          </Button>
+          </ButtonV2>
         </div>
       </div>
 

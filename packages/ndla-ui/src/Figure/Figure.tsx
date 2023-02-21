@@ -15,7 +15,7 @@ import { isFunction as isFunctionHelper, parseMarkdown } from '@ndla/util';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/notion';
 import SafeLink from '@ndla/safelink';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { isMobile } from 'react-device-detect';
 const classes = new BEMHelper({
   name: 'figure',
@@ -54,29 +54,23 @@ export const FigureCaption = ({
                 {modalButton ? (
                   modalButton
                 ) : (
-                  <Button
-                    borderShape="rounded"
-                    outline
+                  <ButtonV2
+                    shape="pill"
+                    variant="outline"
                     size="small"
-                    type="button"
                     data-dialog-trigger-id={id}
                     data-dialog-source-id={figureId}>
                     {reuseLabel}
-                  </Button>
+                  </ButtonV2>
                 )}
                 {hasLinkedVideo &&
                   (linkedVideoButton ? (
                     linkedVideoButton
                   ) : (
-                    <Button
-                      borderShape="rounded"
-                      outline
-                      size="small"
-                      type="button"
-                      {...classes('toggleAlternativeVideo')}>
+                    <ButtonV2 shape="pill" variant="outline" size="small" {...classes('toggleAlternativeVideo')}>
                       <span className="original">{linkedVideoMessages?.alternative}</span>
                       <span className="alternative hidden">{linkedVideoMessages?.original}</span>
-                    </Button>
+                    </ButtonV2>
                   ))}
               </div>
               {children}

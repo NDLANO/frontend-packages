@@ -9,7 +9,7 @@
 import React from 'react';
 import { spacing, spacingUnit, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
-import Button, { ButtonProps } from '@ndla/button';
+import { ButtonProps, ButtonV2 } from '@ndla/button';
 import styled from '@emotion/styled';
 
 interface Props extends ButtonProps {
@@ -24,7 +24,7 @@ interface StyledButtonProps {
   ndlaFilm?: boolean;
 }
 
-const StyledButton = styled(Button)<StyledButtonProps>`
+const StyledButton = styled(ButtonV2)<StyledButtonProps>`
   background: ${(p) => (p.ndlaFilm ? colors.ndlaFilm.filmColorBright : colors.brand.greyLighter)};
   border-radius: ${misc.borderRadius};
   border: 0;

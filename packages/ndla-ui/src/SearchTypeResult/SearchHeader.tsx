@@ -9,7 +9,7 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 import SearchFieldHeader from './SearchFieldHeader';
 import { CompetenceGoalsItemType } from '../types';
@@ -131,9 +131,9 @@ const SearchHeader = ({
         {searchPhraseSuggestion && (
           <PhraseSuggestionText>
             {t('searchPage.resultType.searchPhraseSuggestion')}{' '}
-            <Button link onClick={searchPhraseSuggestionOnClick}>
+            <ButtonV2 variant="link" onClick={searchPhraseSuggestionOnClick}>
               [{searchPhraseSuggestion}]
-            </Button>
+            </ButtonV2>
           </PhraseSuggestionText>
         )}
         {!!competenceGoals?.length && (

@@ -14,7 +14,7 @@ import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 
 const Heading = styled.h1`
-  ${fonts.sizes('38px', '44px')};
+  ${fonts.sizes('30px', '36px')};
 
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes('48px', '60px')};

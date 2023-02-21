@@ -41,7 +41,7 @@ const Heading = styled.h1`
 
   ${mq.range({ from: breakpoints.mobileWide })} {
     margin: 40px 0 22px;
-    ${fonts.sizes('38px', '44px')};
+    ${fonts.sizes('30px', '36px')};
   }
 
   ${mq.range({ from: breakpoints.desktop })} {

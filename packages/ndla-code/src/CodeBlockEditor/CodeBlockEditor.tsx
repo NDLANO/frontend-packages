@@ -46,7 +46,7 @@ import { Wrapper, FlexContainer, FlexElement } from './style';
 import { languageOptions, ICodeLangugeOption } from '../languageOptions';
 
 const hightlightWithLineNumbers = (input: string, language: string) =>
-  highlight(input, languages.js)
+  highlight(input, language)
     .split('\n')
     .map((line: string, i: number) => `<span class='editorLineNumber'>${i + 1}</span>${line}`)
     .join('\n');

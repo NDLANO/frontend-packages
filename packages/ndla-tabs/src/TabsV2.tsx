@@ -26,6 +26,10 @@ const TabsTrigger = styled(Tabs.Trigger)`
   position: relative;
   cursor: pointer;
 
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
   &:not(:first-child) {
     margin-left: -16px;
   }
@@ -57,6 +61,16 @@ const TabsContent = styled(Tabs.Content)`
   }
 `;
 
+const TabsList = styled(Tabs.List)`
+  display: flex;
+
+  :after {
+    content: '';
+    position: relative;
+    width: 10px;
+  }
+`;
+
 interface TabType {
   title: string;
   content: ReactNode;
@@ -72,7 +86,7 @@ const keyName = (index: number) => `tab${index + 1}`;
 const TabsV2 = ({ tabs, ariaLabel }: Props) => {
   return (
     <Tabs.Root defaultValue="tab1">
-      <Tabs.List aria-label={ariaLabel}>
+      <TabsList aria-label={ariaLabel}>
         {tabs.map((t, index) => {
           const key = keyName(index);
           return (
@@ -81,7 +95,7 @@ const TabsV2 = ({ tabs, ariaLabel }: Props) => {
             </TabsTrigger>
           );
         })}
-      </Tabs.List>
+      </TabsList>
       {tabs.map((t, index) => {
         const key = keyName(index);
         return (

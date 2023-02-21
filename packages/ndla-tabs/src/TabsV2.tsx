@@ -77,6 +77,8 @@ interface TabType {
 }
 
 interface Props {
+  /** Tabs array. Title is tab name to be displayed in the top menu,
+   * content is the content to be rendered when the associated tab is active. */
   tabs: TabType[];
   ariaLabel: string;
 }

@@ -7,6 +7,16 @@
  */
 
 import React, { ChangeEvent, createRef, useState } from 'react';
+import Editor from 'react-simple-code-editor';
+import { useTranslation } from 'react-i18next';
+import { Code } from '@ndla/icons/editor';
+import { ButtonV2 } from '@ndla/button';
+// @ts-ignore
+import { highlight, languages } from 'prismjs/components/prism-core';
+import styled from '@emotion/styled';
+import { colors, fonts, spacing } from '@ndla/core';
+import { Wrapper, FlexContainer, FlexElement } from './style';
+import { languageOptions, ICodeLangugeOption } from '../languageOptions';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-markup-templating';
@@ -33,17 +43,6 @@ import 'prismjs/components/prism-sql';
 import 'prismjs/components/prism-powershell';
 import 'prismjs/components/prism-vhdl';
 import 'prismjs/components/prism-bash';
-// @ts-ignore
-import { highlight, languages } from 'prismjs/components/prism-core';
-import Editor from 'react-simple-code-editor';
-import { useTranslation } from 'react-i18next';
-import { Code } from '@ndla/icons/editor';
-import { ButtonV2 } from '@ndla/button';
-
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { Wrapper, FlexContainer, FlexElement } from './style';
-import { languageOptions, ICodeLangugeOption } from '../languageOptions';
 
 const hightlightWithLineNumbers = (input: string, language: string) =>
   highlight(input, language)

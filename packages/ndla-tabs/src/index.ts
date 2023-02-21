@@ -12,5 +12,5 @@ export { resetIdCounter } from 'react-tabs';
 
 export { default as FilterTabs } from './FilterTabs';
 export { default as ArticleTabs } from './ArticleTabs';
-
+export { default as TabsV2 } from './TabsV2';
 export default Tabs;

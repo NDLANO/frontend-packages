@@ -24,6 +24,7 @@ const TabsTrigger = styled(Tabs.Trigger)`
   background-color: ${colors.brand.light};
   z-index: 1;
   position: relative;
+  cursor: pointer;
 
   &:not(:first-child) {
     margin-left: -16px;

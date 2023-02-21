@@ -8,7 +8,7 @@
 
 import React, { useState, Children, ReactNode, isValidElement, cloneElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 import { getPanelIds, getOpenPanels } from './accordionUtil';
 import AccordionSection from './AccordionSection';
@@ -39,9 +39,9 @@ const Accordions = ({ tiny, single, children }: Props) => {
     <>
       {!single && (
         <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-          <Button size="small" stripped onClick={toggleAllOpen}>
+          <ButtonV2 size="small" variant="stripped" onClick={toggleAllOpen}>
             {allOpen ? t('accordion.closeAll') : t('accordion.openAll')}
-          </Button>
+          </ButtonV2>
         </div>
       )}
       {Children.map(children, (child) => {

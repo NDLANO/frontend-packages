@@ -17,7 +17,7 @@ import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
 import { ICodeLangugeOption, languageOptions } from '../languageOptions';
@@ -128,7 +128,7 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
         {code}
       </SyntaxHighlighter>
       {showCopy && (
-        <Button
+        <ButtonV2
           title={t('codeBlock.copyButton')}
           disabled={isCopied}
           data-copied-title={t('codeBlock.copiedCode')}
@@ -139,7 +139,7 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
           }}>
           {isCopied ? <Done aria-hidden="true" /> : <Copy aria-hidden="true" />}{' '}
           {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
-        </Button>
+        </ButtonV2>
       )}
     </Wrapper>
   );

@@ -1056,8 +1056,9 @@ const messages = {
     loggedInAs: 'Datne tjaangeme goh {{role}}.',
     loggedInAsButton: 'Datne tjaangeme goh {{role}}',
     role: {
-      employee: 'lohkehtæjja',
-      staff: 'ansatt',
+      employee: 'barkije',
+      faculty: 'barkije',
+      staff: 'barkije',
       student: 'learohke',
     },
     buttonLogIn: 'Tjaangh Feidine',

@@ -1053,7 +1053,8 @@ const messages = {
     loggedInAs: 'Don leat sisaloggejuvvon {{role}}.',
     loggedInAsButton: 'Don leat sisaloggejuvvon {{role}}',
     role: {
-      employee: 'oahpaheaddji',
+      employee: 'bargi',
+      faculty: 'bargi',
       staff: 'bargi',
       student: 'oahppi',
     },

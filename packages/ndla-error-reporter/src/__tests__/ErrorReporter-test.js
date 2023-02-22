@@ -133,7 +133,7 @@ test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () =
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
-        text: "TypeError: Cannot set property 'foo' of null",
+        text: "TypeError: Cannot set properties of null (setting 'foo')",
       });
       return true;
     })

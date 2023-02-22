@@ -35,6 +35,8 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
     if (iframe) {
       const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
       iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
+      iframe.width = '';
+      iframe.height = '';
     }
   }, [embed]);
 

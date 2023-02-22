@@ -1052,7 +1052,8 @@ const messages = {
     loggedInAs: 'Du er pålogget som {{role}}.',
     loggedInAsButton: 'Du er pålogget som {{role}}',
     role: {
-      employee: 'lærer',
+      employee: 'ansatt',
+      faculty: 'ansatt',
       staff: 'ansatt',
       student: 'elev',
     },

@@ -1114,6 +1114,32 @@ const messages = {
       onDragEndMissingOver: 'The folder {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
       dragHandle: 'Drag the folder {{name}}',
+      sharing: {
+        share: 'Share folder',
+        shared: 'Shared',
+        unShare: 'Sharing is stopped. The folder is no longer shared',
+        link: 'Link is copied',
+        header: {
+          private: 'Do you want to share this folder?',
+          shared: 'This folder is shared',
+          unShare: 'Do you want to stop sharing this folder?',
+        },
+        description: {
+          copy: 'Copy and share this link:',
+          private:
+            'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
+          shared:
+            'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
+          unShare:
+            'When you stop sharing, the link to the shared folder is no longer active. If you have shared the link with someone, they can no longer see the content in the folder.',
+        },
+        button: {
+          share: 'Share folder',
+          preview: 'Preview shared folder',
+          unShare: 'Stop sharing',
+          shareLink: 'Copy link',
+        },
+      },
     },
     tagList: 'Tags',
     tags: '{{count}} tag',

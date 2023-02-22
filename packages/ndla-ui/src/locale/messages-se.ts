@@ -1114,6 +1114,32 @@ const messages = {
       onDragEndMissingOver: 'Máhppa {{name}} lea luitojuvvon',
       onDragCancel: 'Sirdin botkejuvvui. Máhppa {{name}} lea luitojuvvon.',
       dragHandle: 'Ordne máhpa {{name}}',
+      sharing: {
+        share: 'Del mappe',
+        shared: 'Delt',
+        unShare: 'Delingen er avsluttet. Mappen er ikke lenger delt.',
+        link: 'Lenken er kopiert',
+        header: {
+          private: 'Vil du dele denne mappen?',
+          shared: 'Denne mappen er delt.',
+          unShare: 'Vil du avslutte deling av denne mappen?',
+        },
+        description: {
+          copy: 'Kopier og del denne lenken:',
+          private:
+            'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
+          shared:
+            'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
+          unShare:
+            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+        },
+        button: {
+          share: 'Del mappen',
+          preview: 'Forhåndsvis delt mappe',
+          unShare: 'Avslutt deling',
+          shareLink: 'Kopier lenke',
+        },
+      },
     },
     tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',

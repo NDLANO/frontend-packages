@@ -1113,6 +1113,32 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sleppt',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sleppt',
       dragHandle: 'Sorter mappa {{name}}',
+      sharing: {
+        share: 'Del mappe',
+        shared: 'Delt',
+        unShare: 'Delinga er avslutta. Mappa er ikkje lenger delt',
+        link: 'Lenka er kopiert',
+        header: {
+          private: 'Vil du dele denne mappa?',
+          shared: 'Denne mappa er delt',
+          unShare: 'Vil du slutte å dele denne mappa?',
+        },
+        description: {
+          copy: 'Kopier og del denne lenka:',
+          private:
+            'Når du deler ei mappe, lagar du ei lenke som er open for alle som har lenka. Du kan endre innhaldet eller avslutte delinga når du ønsker det.',
+          shared:
+            'No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.',
+          unShare:
+            'Når du avsluttar deling, vil lenka til den delte mappa slutte å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa.',
+        },
+        button: {
+          share: 'Del mappa',
+          preview: 'Førehandsvis delt mappe',
+          unShare: 'Avslutt deling',
+          shareLink: 'Kopier lenke',
+        },
+      },
     },
     tagList: 'Emneknaggar',
     tags: '{{count}} emneknagg',

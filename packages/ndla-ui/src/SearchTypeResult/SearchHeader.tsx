@@ -15,6 +15,7 @@ import SearchFieldHeader from './SearchFieldHeader';
 import { CompetenceGoalsItemType } from '../types';
 import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
 import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
+import { Spinner } from '@ndla/icons';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -71,6 +72,7 @@ type Props = {
   onSearchValueChange: (value: string) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   noResults?: boolean;
+  loading: boolean;
 };
 
 const SearchHeader = ({
@@ -84,6 +86,7 @@ const SearchHeader = ({
   filters,
   competenceGoals,
   noResults,
+  loading,
 }: Props) => {
   const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState<boolean | undefined>();
@@ -122,12 +125,18 @@ const SearchHeader = ({
         />
       </SearchInputWrapper>
       <PhraseWrapper>
-        {searchPhrase && (
-          <>
-            <PhraseText>{phraseText}</PhraseText>
-            {removeFilterSuggestion && <PhraseText>{removeFilterSuggestion}</PhraseText>}
-          </>
-        )}
+        <div aria-live="assertive">
+          {loading ? (
+            <Spinner margin="0" size="normal" aria-label={t('loading')} />
+          ) : (
+            searchPhrase && (
+              <>
+                <PhraseText>{phraseText}</PhraseText>
+                {removeFilterSuggestion && <PhraseText>{removeFilterSuggestion}</PhraseText>}
+              </>
+            )
+          )}
+        </div>
         {searchPhraseSuggestion && (
           <PhraseSuggestionText>
             {t('searchPage.resultType.searchPhraseSuggestion')}{' '}

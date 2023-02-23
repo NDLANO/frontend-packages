@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import { ToggleItem } from '../Filter';
 
@@ -113,23 +113,23 @@ const PopupFilter = ({
               </ModalHeaderWrapper>
               {subjectCategories && programmes && (
                 <MainFilterButtonWrapper>
-                  <Button
+                  <ButtonV2
                     onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                    lighter={selectedMenu !== MENU_ALL_SUBJECTS}
+                    colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : undefined}
                     size="normal"
-                    borderShape="rounded">
+                    shape="pill">
                     {t('frontpageMenu.allsubjects')}
-                  </Button>
+                  </ButtonV2>
                 </MainFilterButtonWrapper>
               )}
               {programmes && (
-                <Button
+                <ButtonV2
                   onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                  lighter={selectedMenu !== MENU_PROGRAMMES}
+                  colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : undefined}
                   size="normal"
-                  borderShape="rounded">
+                  shape="pill">
                   {t('frontpageMenu.program')}
-                </Button>
+                </ButtonV2>
               )}
               {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
                 <FrontpageAllSubjects

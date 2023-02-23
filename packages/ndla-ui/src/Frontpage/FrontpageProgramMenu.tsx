@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { fonts, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import NavigationBox, { ItemProps } from '../Navigation/NavigationBox';
@@ -112,12 +112,20 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, showBetaCursor 
   return (
     <StyledWrapper>
       <StyledMenu>
-        <Button onClick={() => toggleSubjects(false)} lighter={showSubjects} size="medium" borderShape="rounded">
+        <ButtonV2
+          onClick={() => toggleSubjects(false)}
+          colorTheme={showSubjects ? 'lighter' : undefined}
+          size="medium"
+          shape="pill">
           <StyledMenuItem>{t('frontpageMenu.program')}</StyledMenuItem>
-        </Button>
-        <Button onClick={() => toggleSubjects(true)} lighter={!showSubjects} size="medium" borderShape="rounded">
+        </ButtonV2>
+        <ButtonV2
+          onClick={() => toggleSubjects(true)}
+          colorTheme={!showSubjects ? 'lighter' : undefined}
+          size="medium"
+          shape="pill">
           <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
-        </Button>
+        </ButtonV2>
         {showBetaCursor && (
           <CursorPlaceholder aria-hidden="true">
             <CursorWrapper>

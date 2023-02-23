@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { fonts, spacing, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 
@@ -91,13 +91,13 @@ const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '', t
         <Progress width={progress} />
       </ProgressBar>
       {isMore ? (
-        <Button className="nav" outline onClick={onShowMore} aria-describedby={`searchitem-header-${type}`}>
+        <ButtonV2 className="nav" variant="outline" onClick={onShowMore} aria-describedby={`searchitem-header-${type}`}>
           {t('searchPage.resultType.showMore')}
-        </Button>
+        </ButtonV2>
       ) : (
-        <Button className="nav" outline onClick={onToTopHandler}>
+        <ButtonV2 className="nav" variant="outline" onClick={onToTopHandler}>
           {t('searchPage.resultType.toTopOfPage')}
-        </Button>
+        </ButtonV2>
       )}
     </ResultNav>
   );

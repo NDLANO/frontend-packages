@@ -8,7 +8,7 @@
 
 import { ReactNode } from 'react';
 
-const locales = ['nb', 'nn', 'en', 'se'] as const;
+const locales = ['nb', 'nn', 'en', 'se', 'sma'] as const;
 export type Locale = typeof locales[number];
 
 export type Link = {
@@ -48,7 +48,7 @@ export interface License {
 }
 
 export interface Copyright {
-  license: License;
+  license?: License;
   creators: Array<Contributor>;
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;
@@ -108,9 +108,9 @@ export type CompetenceGoalsItemType = {
   id: string;
   title: string;
   goals: {
+    id: string;
     text: string;
     url?: string;
-    type: 'LK06' | 'LK20';
   }[];
   selected?: boolean;
   isOembed?: boolean;

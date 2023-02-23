@@ -10,6 +10,7 @@ import SafeLink from './SafeLink';
 
 export { default as MissingRouterContext } from './MissingRouterContext';
 export { default as SafeLinkButton } from './SafeLinkButton';
+export { default as SafeLinkIconButton } from './SafeLinkIconButton';
 export type { SafeLinkProps } from './SafeLink';
 
 export default SafeLink;

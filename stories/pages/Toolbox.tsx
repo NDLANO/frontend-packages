@@ -59,7 +59,7 @@ const fetchTopicData = async (topic: topicProps) => {
   return {
     title: article.title,
     introduction: article.introduction,
-    image: { url: `${article.metaImage.url}?width=400`, alt: article.metaImage.alt },
+    image: { url: `${article.metaImage.url}`, alt: article.metaImage.alt },
     visualElement: dummyVisualElementOfTopic(),
     resources: resources,
   };

@@ -6,6 +6,6 @@
  *
  */
 
-import CodeBlockEditor, { getTitleFromFormat } from './CodeBlockEditor';
+import CodeBlockEditor from './CodeBlockEditor';
 
-export { CodeBlockEditor, getTitleFromFormat };
+export { CodeBlockEditor };

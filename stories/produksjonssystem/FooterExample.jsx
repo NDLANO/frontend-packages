@@ -1,7 +1,6 @@
 import React from 'react';
-
-import { Footer, FooterQualityInsurance, FooterStatus, FooterLinkButton } from '@ndla/editor';
-import Button from '@ndla/button';
+import { Footer, FooterQualityInsurance, FooterLinkButton } from '@ndla/editor';
+import { ButtonV2 } from '@ndla/button';
 
 const optionsQualityInsurance = [
   {
@@ -19,30 +18,6 @@ const optionsQualityInsurance = [
   {
     name: 'Valider',
     onClick: () => {},
-  },
-];
-
-const optionsFooterStatus = [
-  {
-    name: 'Kladd',
-    id: '#1',
-  },
-  {
-    name: 'Utkast',
-    id: '#2',
-    active: true,
-  },
-  {
-    name: 'Tilbrukertest',
-    id: '#3',
-  },
-  {
-    name: 'Til kvalitetssikring',
-    id: '#4',
-  },
-  {
-    name: 'Kvalitetssikret',
-    id: '#5',
   },
 ];
 
@@ -75,30 +50,13 @@ const FooterExample = () => (
       </FooterLinkButton>
     </div>
     <div>
-      <FooterStatus
-        onSave={(comment, statusId) => console.log(comment, statusId)} // eslint-disable-line no-console
-        options={optionsFooterStatus}
-        messages={{
-          label: '',
-          changeStatus: 'Endre status',
-          back: 'Gå tilbake',
-          inputHeader: 'Din merknad',
-          inputHelperText: 'Kort merknad påkrevd ved statusendring',
-          cancelLabel: 'Avbryt',
-          saveLabel: 'Endre status og large utkast',
-          warningSavedWithoutComment: 'Merknad mangler',
-          newStatusPrefix: 'Ny status:',
-          statusLabel: 'Status:',
-          commentPlaceholder: 'Skriv inn merknad',
-        }}
-      />
-      <Button
+      <ButtonV2
         large
         onClick={() => {
           console.log('save resource'); // eslint-disable-line no-console
         }}>
         Lagre
-      </Button>
+      </ButtonV2>
     </div>
   </Footer>
 );

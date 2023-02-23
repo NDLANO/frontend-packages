@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 
 import Tabs from '@ndla/tabs';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { InlineContainer } from '../helpers';
 
 export class TabsControlled extends Component {
@@ -37,15 +37,15 @@ export class TabsControlled extends Component {
           ]}
         />
         <InlineContainer>
-          <Button style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 0 })}>
+          <ButtonV2 style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 0 })}>
             Vis bildefane
-          </Button>
-          <Button style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 1 })}>
+          </ButtonV2>
+          <ButtonV2 style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 1 })}>
             Vis videofane
-          </Button>
-          <Button style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 2 })}>
+          </ButtonV2>
+          <ButtonV2 style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 2 })}>
             Vis lydfane
-          </Button>
+          </ButtonV2>
         </InlineContainer>
       </div>
     );

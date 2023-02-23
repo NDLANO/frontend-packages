@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 
 const classes = new BEMHelper({
@@ -20,9 +20,9 @@ const classes = new BEMHelper({
 export default function PreviewVideo({ onVideoPreview, children }) {
   return (
     <div {...classes()}>
-      <Button {...classes('close')} stripped onClick={() => onVideoPreview(undefined)}>
+      <ButtonV2 {...classes('close')} variant="stripped" onClick={() => onVideoPreview(undefined)}>
         <Cross />
-      </Button>
+      </ButtonV2>
       {children}
     </div>
   );

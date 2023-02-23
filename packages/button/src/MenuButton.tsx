@@ -13,7 +13,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
 import { ButtonSize } from './';
-import { convertSizeForSVG } from './IconButton';
+import { svgSizes } from './IconButtonV2';
 
 interface StyledButtonProps {
   svgSize: number;
@@ -125,32 +125,14 @@ export const MenuButton = ({
         aria-label={t('myNdla.more')}
         tabIndex={tabIndex}
         className={className}
-        svgSize={convertSizeForSVG(size || 'normal')}
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-        }} // Prevent redirect from triggering when placed inside <a>
+        svgSize={svgSizes[size || 'normal']}
         {...rest}>
-        <MenuIconWrapper svgSize={convertSizeForSVG(size || 'normal')}>
-          {menuIcon || <StyledHorizontalMenu />}
-        </MenuIconWrapper>
+        <MenuIconWrapper svgSize={svgSizes[size || 'normal']}>{menuIcon || <StyledHorizontalMenu />}</MenuIconWrapper>
       </StyledMenuButton>
-      <DropdownMenu.Portal
-        onKeyDown={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-        }}>
+      <DropdownMenu.Portal>
         <StyledMenuItems align={align}>
           {menuItems?.map(({ type, text, icon, onClick }) => (
-            <StyledMenuItem
-              key={text}
-              onClick={(e) => {
-                onClick(e);
-                e.stopPropagation();
-                e.preventDefault();
-              }}
-              type={type}
-              aria-label={text}>
+            <StyledMenuItem key={text} onClick={onClick} type={type} aria-label={text}>
               {icon}
               {text}
             </StyledMenuItem>

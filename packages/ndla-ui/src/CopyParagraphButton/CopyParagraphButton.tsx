@@ -59,7 +59,7 @@ const CopyButton = ({ onClick, title, tooltip, content }: CopyButtonProps) => {
   return (
     <div>
       <Tooltip tooltip={tooltip}>
-        <IconButton onClick={onClick} data-title={title} aria-label={`${tooltip}: ${title}`}>
+        <IconButton onClick={onClick} data-title={title} aria-label={`${tooltip}: ${content}`}>
           <Link title={''} />
         </IconButton>
       </Tooltip>

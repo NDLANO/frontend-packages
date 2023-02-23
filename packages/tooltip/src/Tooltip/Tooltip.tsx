@@ -43,9 +43,11 @@ const CoreTooltip = ({ children, tooltip, className, hydrateHTML }: Props) => {
         <RadixTooltip.Trigger data-trigger asChild>
           {hydrateHTML ? parse(hydrateHTML) : children}
         </RadixTooltip.Trigger>
-        <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
-          {tooltip}
-        </StyledContent>
+        <RadixTooltip.Portal>
+          <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
+            {tooltip}
+          </StyledContent>
+        </RadixTooltip.Portal>
       </RadixTooltip.Root>
     </RadixTooltip.Provider>
   );

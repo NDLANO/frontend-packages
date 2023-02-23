@@ -11,20 +11,17 @@ const FooterExample = ({ inverted, t, hideLanguageSelector, i18n, isAuthenticate
   const privacyLinks = [
     { label: t('footer.privacyLink'), url: 'https://om.ndla.no/gpdr' },
     { label: t('footer.cookiesLink'), url: 'https://om.ndla.no/cookies' },
+    {
+      url: 'https://uustatus.no/nn/erklaringer/publisert/8cefdf3d-3272-402a-907b-689ddfc9bba7',
+      label: t('footer.availabilityLink'),
+    },
   ];
   return (
     <Footer
       links={mockFooterLinks}
       languageSelector={
         !hideLanguageSelector && (
-          <LanguageSelector
-            alwaysVisible
-            outline
-            center
-            inverted={inverted}
-            options={i18n.options.supportedLanguages}
-            currentLanguage={i18n.language}
-          />
+          <LanguageSelector inverted={inverted} locales={i18n.options.supportedLngs} onSelect={i18n.changeLanguage} />
         )
       }
       auth={<FooterAuth isAuthenticated={!!isAuthenticated} user={feideUserLaerer} onAuthenticateClick={() => {}} />}

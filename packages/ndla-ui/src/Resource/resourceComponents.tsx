@@ -23,6 +23,16 @@ export interface ResourceImageProps {
 export const ResourceTitleLink = styled(SafeLink)`
   box-shadow: none;
   color: ${colors.brand.primary};
+  flex: 1;
+  :after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 `;
 
 export const ResourceTitle = styled.h2`
@@ -43,9 +53,13 @@ const StyledTagList = styled.ul`
   list-style: none;
   display: flex;
   margin: 0;
+  margin-left: ${spacing.small};
   padding: 2px;
   gap: ${spacing.xsmall};
   overflow: hidden;
+  :last-child {
+    margin-right: ${spacing.small};
+  }
 `;
 
 const StyledTagListElement = styled.li`
@@ -61,6 +75,7 @@ const StyledSafeLink = styled(SafeLink)`
   color: ${colors.brand.grey};
   min-height: 44px;
   min-width: 44px;
+  white-space: nowrap;
   &:hover {
     color: ${colors.brand.primary};
   }
@@ -87,12 +102,6 @@ const StyledResourceListElement = styled.li`
   padding: 0;
   display: flex;
   align-items: center;
-`;
-
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing.xsmall};
 `;
 
 const TagCounterWrapper = styled.span`
@@ -131,9 +140,7 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
     <StyledTagList aria-label={t('myNdla.tagList')}>
       {tags.map((tag, i) => (
         <StyledTagListElement key={`tag-${i}`}>
-          <StyledSafeLink
-            onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
-            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`}>
+          <StyledSafeLink to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`}>
             <HashTag />
             {tag}
           </StyledSafeLink>

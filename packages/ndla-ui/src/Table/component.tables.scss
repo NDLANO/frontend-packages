@@ -26,39 +26,6 @@
     @include mq($from: desktop) {
       @include grids-expand(4, 6, 2);
     }
-
-    &--has-scroll {
-      .c-table {
-        padding-bottom: $spacing;
-
-        &__expand-button {
-          @include mq($from: wide) {
-            display: block;
-          }
-        }
-      }
-    }
-  }
-
-  &__expand-button {
-    display: none;
-    background: $brand-color--lighter;
-    border: 0;
-    height: 38px;
-    width: 38px;
-    border-radius: 0;
-    margin: $spacing 0 0 auto;
-  }
-
-  &__expanded-table-wrapper {
-    display: inline-block;
-    background: $white;
-    padding: $spacing--medium $spacing--medium $spacing--large $spacing--medium;
-    margin: $spacing--large;
-  }
-
-  &__dialog {
-    text-align: center;
   }
 
   &__content {

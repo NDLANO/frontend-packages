@@ -7,7 +7,6 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 import warning from 'tiny-warning';
 import withTracker from './withTracker';
@@ -36,10 +35,6 @@ class HelmetWithTracker extends Component<Props> {
   render() {
     return <Helmet {...this.props} />;
   }
-
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-  };
 }
 
 export default withTracker(HelmetWithTracker);

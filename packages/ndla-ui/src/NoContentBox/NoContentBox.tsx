@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 interface Props {
   onClick?: () => void;
@@ -21,9 +21,9 @@ export const NoContentBox = ({ buttonText, text, onClick }: Props) => (
       <div>
         <p>{text}</p>
         {onClick && (
-          <Button outline onClick={onClick}>
+          <ButtonV2 variant="outline" onClick={onClick}>
             {buttonText}
-          </Button>
+          </ButtonV2>
         )}
       </div>
     </span>

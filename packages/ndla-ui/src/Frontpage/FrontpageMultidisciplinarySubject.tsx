@@ -101,7 +101,7 @@ const FrontpageMultidisciplinarySubject = ({ url, topics, headingLevel }: Props)
         </Content>
       </Wrapper>
       <TargetItem className="o-text-link__wrapper o-text-link__wrapper">
-        <SafeLinkButton to={url} buttonSize="medium" borderShape="rounded">
+        <SafeLinkButton to={url} size="medium" shape="pill">
           {t('frontpageMultidisciplinarySubject.linkText')}
         </SafeLinkButton>
       </TargetItem>

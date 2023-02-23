@@ -10,13 +10,39 @@ import React, { ChangeEvent, createRef, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import { useTranslation } from 'react-i18next';
 import { Code } from '@ndla/icons/editor';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 // @ts-ignore
 import { highlight, languages } from 'prismjs/components/prism-core';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Wrapper, FlexContainer, FlexElement } from './style';
-import { ICodeLangugeOption, languageOptions } from '../languages';
+import { languageOptions, ICodeLangugeOption } from '../languageOptions';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-markup-templating';
+import 'prismjs/components/prism-php';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-c';
+import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-cpp';
+import 'prismjs/components/prism-diff';
+import 'prismjs/components/prism-ini';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-java';
+import 'prismjs/components/prism-kotlin';
+import 'prismjs/components/prism-lua';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-matlab';
+import 'prismjs/components/prism-nsis';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-ruby';
+import 'prismjs/components/prism-rust';
+import 'prismjs/components/prism-sql';
+import 'prismjs/components/prism-powershell';
+import 'prismjs/components/prism-vhdl';
+import 'prismjs/components/prism-bash';
 
 const hightlightWithLineNumbers = (input: string, language: string) =>
   highlight(input, language)
@@ -32,14 +58,6 @@ type Props = {
     title: string;
     format: string;
   } | null;
-};
-
-export const getTitleFromFormat = (format: string) => {
-  const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === format);
-  if (selectedLanguage) {
-    return selectedLanguage.title;
-  }
-  return;
 };
 
 const StyledInput = styled.input`
@@ -137,12 +155,12 @@ const CodeBlockEditor = ({ onSave, onAbort, content = null }: Props) => {
             'justify-content': 'flex-end',
             'margin-bottom': '1px',
           }}>
-          <Button onClick={save}>
+          <ButtonV2 onClick={save}>
             <span>{t('codeEditor.save')}</span>
-          </Button>
-          <Button outline onClick={abort}>
+          </ButtonV2>
+          <ButtonV2 variant="outline" onClick={abort}>
             <span>{t('codeEditor.abort')}</span>
-          </Button>
+          </ButtonV2>
         </FlexElement>
       </FlexContainer>
       <Editor

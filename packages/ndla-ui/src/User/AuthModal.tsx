@@ -10,7 +10,7 @@ import React, { ReactElement, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import Modal, { ModalCloseButton } from '@ndla/modal';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { FeideText, LogIn, LogOut, HumanMaleBoard } from '@ndla/icons/common';
 import { fonts, spacing } from '@ndla/core';
 import { UserInfo } from './UserInfo';
@@ -105,12 +105,12 @@ const AuthModal = ({
               </p>
             )}
             <StyledButtonWrapper>
-              <Button size="medium" onClick={onAuthenticateClick}>
+              <ButtonV2 size="medium" onClick={onAuthenticateClick}>
                 {isAuthenticated ? t('user.buttonLogOut') : t('user.buttonLogIn')}
                 <StyledLogInIconWrapper aria-hidden>
                   {isAuthenticated ? <LogOut className="c-icon--medium" /> : <LogIn className="c-icon--medium" />}
                 </StyledLogInIconWrapper>
-              </Button>
+              </ButtonV2>
             </StyledButtonWrapper>
           </StyledModalContent>
         </StyledModalBody>

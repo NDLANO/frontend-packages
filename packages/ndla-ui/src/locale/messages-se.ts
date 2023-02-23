@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Fága',
+    subject_plural: 'Fágat',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Rievdat máhpa nama',
@@ -252,8 +256,24 @@ const messages = {
     archived: 'Dát leat heaittihuvvon fága mii ii ođasmahttojuvvo.',
   },
   subjectsPage: {
+    filterSubjects: 'Filtrer fag',
+    scrollToGroup: 'Hopp til gruppe',
+    goToTop: 'Gå til toppen',
+    alphabeticSort: 'Fag gruppert alfabetisk',
+    subjectGroup: 'Gruppe "{{ category }}"',
+    allSubjects: 'Buot fágat',
+    myFavoriteSubjects: 'Mine favorittfag',
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     chooseSubject: 'Vállje fága',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    removeConfirmed: '{{subject}} er fjernet fra favorittfag',
+    addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke et fag må du logge inn på Min NDLA. Du finner faget øverst på denne siden etter at du har logget inn.',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Šállošat, boasttuvuohta čuožžilii fáddáčilgehusa viežžamis.',
@@ -317,17 +337,26 @@ const messages = {
       toolboxTeachers: 'Reaidokássa - oahpaheddjiide',
       film: 'NDLA Filbma',
       about: {
-        title: 'NDLA birra',
-        whatIs: 'Mii lea NDLA?',
-        organization: 'Organisašuvdna',
-        numbers: 'Logut ja geavahus',
-        keyPersonnel: 'Čoavddagieđat',
-        vacancies: 'Rabas virggit',
-        newsletter: 'Ođasreivvet',
-        contact: 'Oktavuohta',
+        title: 'Om NDLA',
+        numbers: 'Tall og rapporter',
+        keyPersonnel: 'Nøkkelpersoner',
+        vacancies: 'Utlysninger',
+        vision: 'Visjon og verdier',
+        communityPurpose: 'Vårt samfunnsoppdrag',
+        history: 'NDLAs historie',
+        cooperation: 'Våre samarbeid',
+        faq: 'Ofte stilte spørsmål',
+        follow: 'Følg våre sosiale medier',
+        whoAreWe: 'Hvem er vi?',
+        whatWeDo: 'Hva gjør vi?',
+        careers: 'Jobb hos oss',
+        contactUs: 'Kontakt oss',
+        organizing: 'Organisering',
+        articlesOfAssociation: 'Vedtekter',
       },
     },
     menu: {
+      button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
       close: 'Govčča',
       goTo: 'Mana deike',
@@ -460,7 +489,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Geavat filtara',
     closeCompentenceGoalsFilter: 'Govčča filtara',
     competenceGoalsNarrowBackButton: 'Ruovttoluotta',
-    competenceGoalResourceSearchText: 'Oza buot resurssaid mat heivejit dán gealbomihttomearrái',
+    competenceGoalResourceSearchText: 'Vis ressursar til kompetansemål {{goal}}',
     competenceGoalShowExtra: 'Čájet oahppoplána doarjaga',
     competenceGoalCloseExtra: 'Čiega oahppoplána doarjaga',
     competenceCoreLabel: 'Guovddášelemeanta',
@@ -471,9 +500,10 @@ const messages = {
     competenceSubjectSearchText: 'Mana fágasiidui',
     competenceGoalClose: 'Govčča',
     competenceGoalTitle: 'Mihttun lea ahte oahppi galgá máhttit:',
-    competenceTabLK06label: 'Gealbomihttomearri (ML06)',
-    competenceTabLK20label: 'Gealbomihttomearri (ML20)',
+    competenceTabLK20label: 'Gealbomihttomearri',
+    competenceTabLK20Tooltip: 'Vis kompetansemål',
     competenceTabCorelabel: 'Guovddášelemeanta',
+    competenceTabCoreTooltip: 'Vis kjerneelementer',
     competenceGoalItem: {
       title: 'Gealbomihttomearit ja árvvoštallan',
     },
@@ -601,6 +631,7 @@ const messages = {
     published: 'Almmuhanbeaivi',
     rightsholder: 'Vuoigatvuođaguoddi',
     source: 'Gáldu',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ops, juoga manai boastut',
@@ -617,12 +648,13 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'NDLA birra',
+    socialMedia: 'Sosiale medier',
     selectLanguage: 'Vállje giela (language): ',
     vision: 'Ovttas hábmet boahtteáiggi oahppama',
     linksHeader: 'Eará NDLA neahttabáikkit',
     info: 'Neahttabáiki lea ráhkaduvvon NDLA bokte rabas gáldokodain.',
-    editorInChief: 'Vásttolaš doaimmaheaddji: ',
-    managingEditor: 'Almmuhusa vásttolaš: ',
+    editorInChief: 'Vásttolaš doaimmaheaddji:',
+    availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Persovdnasuodjalusjulggaštus ja diehtočoahkku (gáhkožat)',
     cookiesLink: 'Julggaštus birra diehtočoahkku (gáhkožat)',
     socialMediaLinks: {
@@ -680,15 +712,17 @@ const messages = {
     prefixChangeLanguage: 'Vállje giela',
   },
   changeLanguage: {
-    nb: 'Rievdat giela girjedárogiellan',
-    nn: 'Rievdat giela ođđadárogiellan',
-    se: 'Rievdat giela davvisámegiellan',
-    en: 'Rievdat giela eŋgelasgiellan',
+    nb: 'Endre språk til bokmål',
+    nn: 'Endre språk til nynorsk',
+    se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
+    en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
     se: 'Siiddut leat davvisámegillii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -732,6 +766,7 @@ const messages = {
     hits: '{{count}} deaivama',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Adnojuvvo dás',
     closeNotion: 'Govčča',
   },
@@ -753,6 +788,7 @@ const messages = {
     copyCode: 'Máŋge koda vuorkátávvalii',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Rulle maŋos',
     slideForwardsLabel: 'Rulle ovddas',
     movieMatchInCategory: 'Deaivan',
@@ -799,6 +835,7 @@ const messages = {
       shortFilm: 'Oanehis filbma',
       all: 'Buot filmmat A-Å',
     },
+    allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
     moreAboutNdlaFilm: {
       header: 'NDLA Filbma',
       firstParagraph:
@@ -845,6 +882,7 @@ const messages = {
     searching: 'Ohcá...',
     create: 'Ráhkat ođđa',
     isSelectedItem: 'Lasihuvvon',
+    selected: '{{count}} valgte',
   },
   blogPosts: {
     blog1: {
@@ -1015,7 +1053,8 @@ const messages = {
     loggedInAs: 'Don leat sisaloggejuvvon {{role}}.',
     loggedInAsButton: 'Don leat sisaloggejuvvon {{role}}',
     role: {
-      employee: 'oahpaheaddji',
+      employee: 'bargi',
+      faculty: 'bargi',
       staff: 'bargi',
       student: 'oahppi',
     },
@@ -1076,6 +1115,32 @@ const messages = {
       onDragEndMissingOver: 'Máhppa {{name}} lea luitojuvvon',
       onDragCancel: 'Sirdin botkejuvvui. Máhppa {{name}} lea luitojuvvon.',
       dragHandle: 'Ordne máhpa {{name}}',
+      sharing: {
+        share: 'Del mappe',
+        shared: 'Delt',
+        unShare: 'Delingen er avsluttet. Mappen er ikke lenger delt.',
+        link: 'Lenken er kopiert',
+        header: {
+          private: 'Vil du dele denne mappen?',
+          shared: 'Denne mappen er delt.',
+          unShare: 'Vil du avslutte deling av denne mappen?',
+        },
+        description: {
+          copy: 'Kopier og del denne lenken:',
+          private:
+            'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
+          shared:
+            'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
+          unShare:
+            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+        },
+        button: {
+          share: 'Del mappen',
+          preview: 'Forhåndsvis delt mappe',
+          unShare: 'Avslutt deling',
+          shareLink: 'Kopier lenke',
+        },
+      },
     },
     tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',
@@ -1087,6 +1152,7 @@ const messages = {
     confirmDeleteTag: 'Leat go sihkar ahte dáhtut sihkkut fáddágilkora? Dan ii sáhte gáhtat.',
     myFolders: 'Mu máhpat',
     myTags: 'Mu fáddágilkorat',
+    mySubjects: 'Mine fag',
     newFolder: 'Ođđa máhppa',
     newFolderUnder: 'Ráhkat ođđa máhpa dán vuolde {{folderName}}',
     myAccount: 'Mu kontu',
@@ -1101,7 +1167,9 @@ const messages = {
     listView: 'Oppalašlistu',
     detailView: 'Bienalaš oppalašlistu',
     shortView: 'Oanehis listu',
-
+    sharedFolder: {
+      info: 'Denne mappen inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
+    },
     myPage: {
       noRecents: 'Don it leat lasihan makkárge resurssa vel. Ná boađát johtui:',
       imageAlt:
@@ -1133,7 +1201,7 @@ const messages = {
       newFavourite: 'Aitto lasihuvvon',
       feide: 'Dát vižžojuvvo du birra Feide:s',
       feideWrongInfo:
-        'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot organisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogova geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstøtte',
+        'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot organisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogova geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstotte',
       storageInfo: {
         title: 'Ná vurket iežat oiddotresurssaid NDLA:s',
         text: 'Deaddil váibmoboalu vurken dihtii resurssa.',
@@ -1188,6 +1256,14 @@ const messages = {
     search: 'Oza',
     contact: 'Váldde oktavuođa',
     help: 'Veahket',
+  },
+  programme: {
+    grades: 'Trinn',
+  },
+  embed: {
+    conceptListError: 'Klarte ikkje å vise forklaringsliste',
+    linkError: 'Klarte ikkje å vise lenke.',
+    unsupported: `Embed {{type}} er ikkje støtta.`,
   },
 };
 

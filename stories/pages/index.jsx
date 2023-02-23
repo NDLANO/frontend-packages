@@ -245,7 +245,7 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('2. Programside', () => (
     <PageContainer>
-      <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
+      <MastheadWithTopicMenu />
       <Content>
         <ProgrammePage />
       </Content>
@@ -469,7 +469,7 @@ storiesOf('Autentisering', module)
     </PageContainer>
   ));
 storiesOf('Ndla film', module)
-  .add('NDLA Film forside', () => (
+  .add('NDLA film forside', () => (
     <PageContainer ndlaFilm>
       <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
       <Content>

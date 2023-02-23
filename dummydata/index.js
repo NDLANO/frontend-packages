@@ -28,7 +28,6 @@ import {
 
 import { mockTypeahead } from './mockTypeahead';
 import { mockFooterLinks } from './mockFooter';
-import { dummyLanguageOptions } from './mockLanguages';
 import { ResourceData } from './mockResourceData';
 
 export {
@@ -58,7 +57,6 @@ export {
   mockMovieResourceTypes,
   mockTypeahead,
   mockFooterLinks,
-  dummyLanguageOptions,
   mockExplanationService,
   contentTypeResults,
   ResourceData,

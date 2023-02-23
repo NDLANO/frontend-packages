@@ -13,11 +13,11 @@ type OrgType =
   | 'upper_secondary'
   | 'upper_secondary_owner';
 
-type AffiliationType = 'member' | 'student' | 'faculty' | 'staff' | 'affiliate' | 'employee';
+export type AffiliationType = 'member' | 'student' | 'faculty' | 'staff' | 'affiliate' | 'employee';
 
 export interface FeideMembershipType {
   basic: 'member' | 'admin' | 'owner'; // Basic membership role of user.
-  affiliation?: AffiliationType[] | AffiliationType;
+  affiliation?: AffiliationType[];
   primarySchool?: boolean;
   primaryAffiliation?: AffiliationType;
   displayName?: string;
@@ -65,8 +65,8 @@ export type FeideGroup = FeideOrg | FeideGoGroup | FeideGrep;
 export interface FeideUser {
   cn: string[];
   displayName: string;
-  eduPersonAffiliation: AffiliationType[] | AffiliationType;
-  eduPersonPrimaryAffiliation: string;
+  eduPersonAffiliation: AffiliationType[];
+  eduPersonPrimaryAffiliation: AffiliationType;
   eduPersonPrincipalName: string;
   givenName: string[];
   mail?: string[];

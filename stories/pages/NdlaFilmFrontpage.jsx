@@ -82,7 +82,7 @@ class NdlaFilmExample extends Component {
         fetchingMoviesByType={fetchingMoviesByType}
         moreAboutNdlaFilm={
           <>
-            <h1>NDLA Film</h1>
+            <h1>NDLA film</h1>
             <hr />
             <p>
               Filmene i filmtjenesten er hentet fra norsk og internasjonal filmarv og kobles mot læreplaner i flere fag.

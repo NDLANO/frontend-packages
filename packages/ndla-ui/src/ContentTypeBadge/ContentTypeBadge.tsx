@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 import {
@@ -16,8 +15,6 @@ import {
 import { MenuBook } from '@ndla/icons/action';
 
 import * as contentTypes from '../model/ContentType';
-// @ts-ignore
-import { ContentTypeShape } from '../shapes';
 
 const classes = new BEMHelper({
   name: 'content-type-badge',
@@ -25,16 +22,16 @@ const classes = new BEMHelper({
 });
 
 interface Props {
-  size: 'xx-small' | 'x-small' | 'small' | 'large';
+  size?: 'xx-small' | 'x-small' | 'small' | 'large';
   type: string;
   title?: string;
   background?: boolean;
   border?: boolean;
+  className?: string;
 }
 
-export const ContentTypeBadge = ({ type, background, title, size = 'small', border = true }: Props) => {
+export const ContentTypeBadge = ({ type, background, title, size = 'small', border = true, className }: Props) => {
   const modifiers = [type, size];
-
   if (background) {
     modifiers.push('background');
   }
@@ -74,20 +71,7 @@ export const ContentTypeBadge = ({ type, background, title, size = 'small', bord
     default:
       break;
   }
-  return <div {...classes('', modifiers)}>{icon}</div>;
-};
-
-ContentTypeBadge.propTypes = {
-  size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'large']),
-  type: ContentTypeShape,
-  title: PropTypes.string,
-  background: PropTypes.bool,
-  border: PropTypes.bool,
-};
-
-ContentTypeBadge.defaultProps = {
-  size: 'small',
-  border: true,
+  return <div {...classes('', modifiers, className)}>{icon}</div>;
 };
 
 export const SubjectMaterialBadge = (props: Omit<Props, 'type'>) => (

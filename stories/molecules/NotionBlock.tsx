@@ -11,7 +11,7 @@ import { ConceptNotion, FigureType } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 //@ts-ignore
 import { useRunOnlyOnce } from '../article/useRunOnlyOnce';
 
@@ -41,8 +41,8 @@ const conceptData = {
       },
       licenseButtons: (
         <>
-          <Button outline>Kildehenvisning</Button>
-          <Button outline>Last ned bildet</Button>
+          <ButtonV2 variant="outline">Kildehenvisning</ButtonV2>
+          <ButtonV2 variant="outline">Last ned bildet</ButtonV2>
         </>
       ),
       resource: 'image',

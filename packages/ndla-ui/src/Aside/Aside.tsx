@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -22,12 +21,20 @@ interface Props {
   children?: ReactNode;
   narrowScreen?: boolean;
   wideScreen?: boolean;
+  alwaysShow?: boolean;
 }
 
-const Aside = ({ children, narrowScreen = false, dangerouslySetInnerHTML, wideScreen = false }: Props) => {
+const Aside = ({
+  children,
+  narrowScreen = false,
+  dangerouslySetInnerHTML,
+  wideScreen = false,
+  alwaysShow = false,
+}: Props) => {
   const modifiers = {
     narrowScreen,
     wideScreen,
+    alwaysShow,
   };
   return (
     <aside {...classes('', modifiers)}>
@@ -36,15 +43,6 @@ const Aside = ({ children, narrowScreen = false, dangerouslySetInnerHTML, wideSc
       </div>
     </aside>
   );
-};
-
-Aside.propTypes = {
-  dangerouslySetInnerHTML: PropTypes.shape({
-    __html: PropTypes.string.isRequired,
-  }),
-  children: PropTypes.node,
-  narrowScreen: PropTypes.bool,
-  wideScreen: PropTypes.bool,
 };
 
 export default Aside;

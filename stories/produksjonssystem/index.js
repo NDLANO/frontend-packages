@@ -233,7 +233,7 @@ storiesOf('Produksjonssystem', module)
   ))
   .add('Ndla film editor', () => (
     <div>
-      <StoryIntro title="Redigering av NDLA Film forside" />
+      <StoryIntro title="Redigering av NDLA film forside" />
       <Center>
         <NdlaFilmEditorExample />
       </Center>

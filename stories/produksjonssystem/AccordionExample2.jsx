@@ -8,7 +8,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { Accordions, AccordionSection } from '@ndla/accordion';
-import {ButtonV2 } from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { FilterList } from '@ndla/ui';
 
 import ComponentInfo from '../ComponentInfo';

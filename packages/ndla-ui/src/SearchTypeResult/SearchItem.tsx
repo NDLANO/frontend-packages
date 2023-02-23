@@ -43,6 +43,12 @@ const Container = styled.article`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
 const ItemTitle = styled.h3<ItemTypeProps>`
   display: inline;
   ${fonts.sizes('24px', '28px')};
@@ -87,6 +93,10 @@ const ContentWrapper = styled.main`
   padding: ${spacing.small} ${spacing.normal};
 `;
 
+const ButtonContainer = styled.div`
+  z-index: 1;
+`;
+
 export interface SearchItemProps {
   id: string | number;
   title: string;
@@ -105,7 +115,7 @@ export interface SearchItemType {
 }
 
 const SearchItem = ({ item, type }: SearchItemType) => {
-  const { title, url, ingress, contexts = [], img = null, labels = [] } = item;
+  const { title, url, ingress, contexts = [], img = null, labels = [], children } = item;
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
@@ -130,6 +140,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
         <ItemText isTopic={isTopic}>{parse(ingress)}</ItemText>
         {contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
       </ContentWrapper>
+      <ButtonWrapper>{children}</ButtonWrapper>
     </Container>
   );
 };

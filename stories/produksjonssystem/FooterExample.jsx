@@ -1,6 +1,6 @@
 import React from 'react';
 import { Footer, FooterQualityInsurance, FooterLinkButton } from '@ndla/editor';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 const optionsQualityInsurance = [
   {
@@ -50,13 +50,13 @@ const FooterExample = () => (
       </FooterLinkButton>
     </div>
     <div>
-      <Button
+      <ButtonV2
         large
         onClick={() => {
           console.log('save resource'); // eslint-disable-line no-console
         }}>
         Lagre
-      </Button>
+      </ButtonV2>
     </div>
   </Footer>
 );

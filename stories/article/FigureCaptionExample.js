@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { useTranslation } from 'react-i18next';
 import { FigureCaption, FigureLicenseDialog } from '@ndla/ui';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 function FigureCaptionExample({
   id,
@@ -54,8 +54,8 @@ function FigureCaptionExample({
         title="Mann med lupe"
         locale="nb"
         messages={messages}>
-        <Button outline>{t('license.copyTitle')}</Button>
-        {messages.download && <Button outline>{messages.download}</Button>}
+        <ButtonV2 variant="outline">{t('license.copyTitle')}</ButtonV2>
+        {messages.download && <ButtonV2 variant="outline">{messages.download}</ButtonV2>}
       </FigureLicenseDialog>
     </FigureCaption>
   );

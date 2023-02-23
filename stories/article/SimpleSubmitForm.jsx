@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 class SimpleSubmitForm extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class SimpleSubmitForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="query">{labelText}</label>
         <input id="query" type="text" onChange={this.handleChange} value={this.state.articleId} />
-        <Button submit> {submitText}</Button>
+        <ButtonV2 type="submit"> {submitText}</ButtonV2>
         {errorMessage ? <p>{errorMessage}</p> : null}
       </form>
     );

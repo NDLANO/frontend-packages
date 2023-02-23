@@ -10,7 +10,7 @@ import React, { createElement, Component } from 'react';
 import PropTypes from 'prop-types';
 import { copyTextToClipboard } from '@ndla/util';
 import { Copy } from '@ndla/icons/action';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 class IconItem extends Component {
   constructor(props) {
@@ -44,13 +44,13 @@ class IconItem extends Component {
         <div style={{ marginTop: '6.5px' }} title={`Kilde: ${icon().props['data-source']}`}>
           {icon().props['data-license']}
           {hover && (
-            <Button
-              stripped
+            <ButtonV2
+              variant="stripped"
               onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)}
               style={{ float: 'right' }}
               title="Kopier import kode">
               <Copy />
-            </Button>
+            </ButtonV2>
           )}
         </div>
       </li>

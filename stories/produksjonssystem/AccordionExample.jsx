@@ -8,7 +8,7 @@
 
 import React, { Component, Fragment } from 'react';
 import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '@ndla/accordion';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { FilterList } from '@ndla/ui';
 
 import ComponentInfo from '../ComponentInfo';
@@ -140,7 +140,7 @@ class AccordionExample extends Component {
                     isOpen={openIndexes.includes(index)}>
                     <div>
                       <p>{item}</p>
-                      <Button onClick={() => handleItemClick(index)}>Lukk</Button>
+                      <ButtonV2 onClick={() => handleItemClick(index)}>Lukk</ButtonV2>
                     </div>
                   </AccordionPanel>
                 </Fragment>

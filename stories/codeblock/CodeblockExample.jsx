@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Codeblock } from '@ndla/code';
 import { Cross } from '@ndla/icons/action';
 import ComponentInfo from '../ComponentInfo';
@@ -31,9 +31,9 @@ const first = arr.shift();
 console.log(first);`;
 
 const edCloseButton = (
-  <Button stripped>
+  <ButtonV2 variant="stripped">
     <Cross />
-  </Button>
+  </ButtonV2>
 );
 
 const CodeExample = () => (

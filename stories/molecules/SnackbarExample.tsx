@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { SnackbarProvider, useSnack } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 
@@ -40,9 +40,9 @@ const ExampleContent = () => {
 
   return (
     <div>
-      <Button outline onClick={onClick}>
+      <ButtonV2 variant="outline" onClick={onClick}>
         Generate random snack
-      </Button>
+      </ButtonV2>
     </div>
   );
 };

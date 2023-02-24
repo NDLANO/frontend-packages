@@ -10,12 +10,12 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
+import { Spinner } from '@ndla/icons';
 
 import SearchFieldHeader from './SearchFieldHeader';
 import { CompetenceGoalsItemType } from '../types';
 import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
 import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
-import { Spinner } from '@ndla/icons';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};

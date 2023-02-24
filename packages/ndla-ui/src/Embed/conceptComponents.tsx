@@ -255,6 +255,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       if (iframe) {
         const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
         iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
+        iframe.width = '';
+        iframe.height = '';
       }
     }, []);
 

@@ -69,6 +69,8 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
     if (iframe) {
       const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
       iframe.style.aspectRatio = `${width}/${height}`;
+      iframe.width = '';
+      iframe.height = '';
     }
   }, []);
   if (embed.status === 'error') {

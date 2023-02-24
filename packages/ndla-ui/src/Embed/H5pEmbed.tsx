@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { H5pMetaData } from '@ndla/types-embed';
-import { useEffect, useRef } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { errorSvgSrc } from './ImageEmbed';
 
@@ -26,18 +26,6 @@ const StyledFigure = styled.figure`
 const H5pEmbed = ({ embed, isConcept }: Props) => {
   const { t } = useTranslation();
 
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const figRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const iframe =
-      embed.status === 'success' && embed.data.oembed ? figRef.current?.querySelector('iframe') : iframeRef.current;
-    if (iframe) {
-      const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
-      iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
-    }
-  }, [embed]);
-
   if (embed.status === 'error') {
     return (
       <figure className={isConcept ? '' : 'c-figure'}>
@@ -50,23 +38,12 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
   if (embed.data.oembed) {
-    return (
-      <StyledFigure
-        className={classes}
-        ref={figRef}
-        //@ts-ignore
-        // eslint-disable-next-line react/no-unknown-property
-        resizeiframe="true"
-        dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }}
-      />
-    );
+    return <StyledFigure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
   }
 
   return (
-    //@ts-ignore
-    // eslint-disable-next-line react/no-unknown-property
-    <StyledFigure className={classes} resizeiframe="true">
-      <iframe title={embed.embedData.url} ref={iframeRef} aria-label={embed.embedData.url} src={embed.embedData.url} />
+    <StyledFigure className={classes}>
+      <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
     </StyledFigure>
   );
 };

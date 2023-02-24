@@ -129,9 +129,10 @@ const SearchHeader = ({
           {!loading && searchPhrase && (
             <>
               <PhraseText>{phraseText}</PhraseText>
-              {removeFilterSuggestion && <PhraseText>{removeFilterSuggestion}</PhraseText>}
+              <PhraseText>{removeFilterSuggestion}</PhraseText>
             </>
           )}
+          {loading && <div aria-label={t('loading')} />}
         </div>
         {searchPhraseSuggestion && (
           <PhraseSuggestionText>

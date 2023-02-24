@@ -126,15 +126,11 @@ const SearchHeader = ({
       </SearchInputWrapper>
       <PhraseWrapper>
         <div aria-live="assertive">
-          {loading ? (
-            <Spinner margin="0" size="normal" aria-label={t('loading')} />
-          ) : (
-            searchPhrase && (
-              <>
-                <PhraseText>{phraseText}</PhraseText>
-                {removeFilterSuggestion && <PhraseText>{removeFilterSuggestion}</PhraseText>}
-              </>
-            )
+          {!loading && searchPhrase && (
+            <>
+              <PhraseText>{phraseText}</PhraseText>
+              {removeFilterSuggestion && <PhraseText>{removeFilterSuggestion}</PhraseText>}
+            </>
           )}
         </div>
         {searchPhraseSuggestion && (

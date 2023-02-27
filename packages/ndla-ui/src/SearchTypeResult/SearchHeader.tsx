@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
+import { Spinner } from '@ndla/icons';
 
 import SearchFieldHeader from './SearchFieldHeader';
 import { CompetenceGoalsItemType } from '../types';
@@ -71,6 +72,7 @@ type Props = {
   onSearchValueChange: (value: string) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   noResults?: boolean;
+  loading: boolean;
 };
 
 const SearchHeader = ({
@@ -84,6 +86,7 @@ const SearchHeader = ({
   filters,
   competenceGoals,
   noResults,
+  loading,
 }: Props) => {
   const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState<boolean | undefined>();
@@ -122,12 +125,15 @@ const SearchHeader = ({
         />
       </SearchInputWrapper>
       <PhraseWrapper>
-        {searchPhrase && (
-          <>
-            <PhraseText>{phraseText}</PhraseText>
-            {removeFilterSuggestion && <PhraseText>{removeFilterSuggestion}</PhraseText>}
-          </>
-        )}
+        <div aria-live="assertive">
+          {!loading && searchPhrase && (
+            <>
+              <PhraseText>{phraseText}</PhraseText>
+              <PhraseText>{removeFilterSuggestion}</PhraseText>
+            </>
+          )}
+          {loading && <div aria-label={t('loading')} />}
+        </div>
         {searchPhraseSuggestion && (
           <PhraseSuggestionText>
             {t('searchPage.resultType.searchPhraseSuggestion')}{' '}

@@ -11,8 +11,8 @@ import { BrightcoveMetaData } from '@ndla/types-embed';
 import { BrightcoveEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const brightcoveEmbedPlugin: PluginType = (element) => {
+export const brightcoveEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as BrightcoveMetaData;
-  return <BrightcoveEmbed embed={data} />;
+  return <BrightcoveEmbed embed={data} heartButton={opts?.components?.heartButton} />;
 };

@@ -1236,6 +1236,12 @@ const messages = {
       onDragEndMissingOver: 'Ressursen blei sleppt',
       onDragCancel: 'Flytting avbrutt. Ressursen {{name}} blei sleppt',
       dragHandle: 'Sorter ressursen {{name}}',
+      resourceTypes: {
+        video: 'Video',
+        image: 'Bilde',
+        audio: 'Lyd',
+        concept: 'Forklaring',
+      },
     },
   },
   snackbar: {

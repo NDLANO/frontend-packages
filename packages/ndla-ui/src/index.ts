@@ -26,6 +26,8 @@ export {
   UnknownEmbed,
 } from './Embed';
 
+export type { HeartButtonType } from './Embed';
+
 export {
   ArticleByline,
   ArticleContent,

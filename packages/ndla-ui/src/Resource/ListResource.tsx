@@ -222,7 +222,6 @@ const ListResource = ({
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
   const firstContentType = resourceTypes?.[0]?.id ?? '';
-  const Title = ResourceTitle.withComponent(headingLevel);
 
   return (
     <ListResourceWrapper id={id}>
@@ -237,7 +236,7 @@ const ListResource = ({
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink to={link} target={targetBlank ? '_blank' : undefined}>
-            <Title title={title}>{title}</Title>
+            <ResourceTitle title={title}>{title}</ResourceTitle>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>

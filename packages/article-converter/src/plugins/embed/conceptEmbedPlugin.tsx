@@ -11,8 +11,8 @@ import { ConceptMetaData } from '@ndla/types-embed';
 import { ConceptEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const conceptEmbedPlugin: PluginType = (element) => {
+export const conceptEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as ConceptMetaData;
-  return <ConceptEmbed embed={data} fullWidth />;
+  return <ConceptEmbed embed={data} fullWidth heartButton={opts?.components?.heartButton} />;
 };

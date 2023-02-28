@@ -43,9 +43,9 @@ const PopoverWrapper = styled.div<PopoverPosition>`
 
   ${mq.range({ until: breakpoints.tablet })} {
     div[data-radix-popper-content-wrapper] {
-      // Fix for popover positioning on mobile.
-      // If we modify all popovers we break license icons.
-      // https://github.com/radix-ui/primitives/issues/1839
+      /* Fix for popover positioning on mobile. */
+      /* If we modify all popovers we break license icons. */
+      /* https://github.com/radix-ui/primitives/issues/1839 */
       position: fixed !important;
       transform: none !important;
       top: 0 !important;

@@ -15,17 +15,19 @@ import { ModalV2 } from '@ndla/modal';
 import { SafeLinkButton } from '@ndla/safelink';
 import { MouseEventHandler, useState } from 'react';
 import { ButtonV2, CopyButton } from '@ndla/button';
-import { ExpandTwoArrows } from '@ndla/icons/action';
+import { ExpandTwoArrows, Heart } from '@ndla/icons/action';
 import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Figure, FigureCaption, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
 import { Copyright } from '../types';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: ImageMetaData;
   articlePath?: string;
   previewAlt?: boolean;
+  heartButton?: HeartButtonType;
 }
 
 export interface Author {
@@ -107,7 +109,7 @@ const StyledSpan = styled.span`
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
+const ImageEmbed = ({ embed, articlePath, previewAlt, heartButton: HeartButton }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
@@ -153,6 +155,7 @@ const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
       id={figureId}
       type={imageSizes ? undefined : figureType}
       className={imageSizes ? 'c-figure--right expanded' : ''}>
+      {HeartButton && <HeartButton embed={embed} />}
       <ImageWrapper src={data.imageUrl} crop={crop} size={embedData.size}>
         <Image
           focalPoint={focalPoint}

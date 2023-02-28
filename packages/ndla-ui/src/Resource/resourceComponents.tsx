@@ -15,6 +15,7 @@ import SafeLink from '@ndla/safelink';
 import { useNavigate } from 'react-router-dom';
 import { HashTag } from '@ndla/icons/common';
 import resourceTypeColor from '../utils/resourceTypeColor';
+import { resourceTypeMapping, RESOURCE_TYPE_RESOURCES } from '../model/ContentType';
 export interface ResourceImageProps {
   alt: string;
   src: string;
@@ -35,10 +36,11 @@ export const ResourceTitleLink = styled(SafeLink)`
   }
 `;
 
-export const ResourceTitle = styled.h2`
+export const ResourceTitle = styled.span`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: ${fonts.weight.bold};
   // Unfortunate css needed for multi-line text overflow ellipsis.
   line-height: 1;
   display: -webkit-box;
@@ -195,7 +197,9 @@ export const ResourceTypeList = ({ resourceTypes }: ResourceTypeListProps) => {
     <StyledResourceTypeList aria-label={t('navigation.topics')}>
       {resourceTypes.map((resource, i) => (
         <StyledResourceListElement key={resource.id}>
-          {resource.name}
+          {resourceTypeMapping[resource.id]
+            ? t(`myNdla.resource.resourceTypes.${resourceTypeMapping[resource.id]}`)
+            : resource.name}
           {i !== resourceTypes.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
         </StyledResourceListElement>
       ))}

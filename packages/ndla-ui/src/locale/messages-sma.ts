@@ -1241,6 +1241,12 @@ const messages = {
       onDragEndMissingOver: 'Ressursen {{name}} blei sloppe',
       onDragCancel: 'Flytting avbrutt. Ressursen {{name}} blei sloppe',
       dragHandle: 'Sorter ressursen {{navn}}',
+      resourceTypes: {
+        video: 'Video',
+        image: 'Bilde',
+        audio: 'Lyd',
+        concept: 'Forklaring',
+      },
     },
   },
   snackbar: {

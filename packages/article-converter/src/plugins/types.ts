@@ -7,6 +7,11 @@
  */
 
 import { Element, HTMLReactParserOptions } from 'html-react-parser';
+import { HeartButtonType } from '@ndla/ui';
+
+export interface DynamicComponents {
+  heartButton?: HeartButtonType;
+}
 
 export interface TransformOptions {
   isOembed?: boolean;
@@ -14,6 +19,7 @@ export interface TransformOptions {
   path?: string;
   previewAlt?: boolean;
   frontendDomain?: string;
+  components?: DynamicComponents;
 }
 
 export type PluginType = (

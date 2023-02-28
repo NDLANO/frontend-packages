@@ -25,10 +25,12 @@ import AudioPlayer from '../AudioPlayer';
 import { Figure, FigureCaption } from '../Figure';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
 import { Author } from './ImageEmbed';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: AudioMetaData;
   articlePath?: string;
+  heartButton?: HeartButtonType;
 }
 export const getFirstNonEmptyLicenseCredits = (authors: {
   creators: Author[];
@@ -42,7 +44,7 @@ const renderMarkdown = (text: string) => {
   return <span dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 
-const AudioEmbed = ({ embed, articlePath }: Props) => {
+const AudioEmbed = ({ embed, articlePath, heartButton: HeartButton }: Props) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   if (embed.status === 'error') {
@@ -109,6 +111,7 @@ const AudioEmbed = ({ embed, articlePath }: Props) => {
   const captionAuthors = getFirstNonEmptyLicenseCredits(authors);
   return (
     <Figure id={figureId} type="full">
+      {HeartButton && <HeartButton embed={embed} />}
       <AudioPlayer
         description={description}
         img={img}

@@ -1237,6 +1237,12 @@ const messages = {
       onDragEndMissingOver: 'Resursa {{name}} lea luitojuvvon',
       onDragCancel: 'Sirdin botkejuvvui. Resursa {{name}} lea luitojuvvon',
       dragHandle: 'Ordne resurssa {{name}}',
+      resourceTypes: {
+        video: 'Video',
+        image: 'Bilde',
+        audio: 'Lyd',
+        concept: 'Forklaring',
+      },
     },
   },
   snackbar: {

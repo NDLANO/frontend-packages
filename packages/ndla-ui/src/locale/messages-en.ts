@@ -1239,6 +1239,12 @@ const messages = {
       onDragEndMissingOver: 'The resource {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The resource {{name}} was dropped',
       dragHandle: 'Drag the resource {{name}}',
+      resourceTypes: {
+        video: 'Video',
+        image: 'Image',
+        audio: 'Audio',
+        concept: 'Concept',
+      },
     },
   },
   snackbar: {

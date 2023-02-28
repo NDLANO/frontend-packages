@@ -20,10 +20,12 @@ import { ButtonV2, CopyButton } from '@ndla/button';
 import { Figure, FigureCaption } from '../Figure';
 import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
 import { getFirstNonEmptyLicenseCredits } from './AudioEmbed';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: BrightcoveMetaData;
   isConcept?: boolean;
+  heartButton?: HeartButtonType;
 }
 
 const LinkedVideoButton = styled(ButtonV2)`
@@ -57,7 +59,7 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? '640',
   };
 };
-const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
+const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t, i18n } = useTranslation();
@@ -116,6 +118,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
 
   return (
     <Figure id={figureId} type={isConcept ? 'full-column' : 'full'} resizeIframe>
+      {HeartButton && <HeartButton embed={embed} />}
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}

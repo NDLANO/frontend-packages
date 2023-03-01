@@ -3,7 +3,7 @@
   "name": "frontend-packages",
   "description": "NDLA Frontend Packages",
   "scripts": {
-    "build-clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist",
+    "build-clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist ./packages/*/tsconfig.build.tsbuildinfo",
     "build": "node ./scripts/build.js packages",
     "lint": "yarn format-check && yarn lint-es",
     "lint-es": "eslint --cache --ext .js,.jsx,.ts,.tsx --max-warnings=0 ./packages --ignore-path .gitignore",

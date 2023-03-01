@@ -5,6 +5,7 @@
   "license": "GPL-3.0",
   "types": "lib/index.d.ts",
   "scripts": {
+    "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "tsc -p tsconfig.build.json"
   },
   "sideEffects": false,

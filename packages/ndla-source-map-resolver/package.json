@@ -7,9 +7,6 @@
   "bin": {
     "source-map-resolver": "bin/source-map-resolver.js"
   },
-  "scripts": {
-    "test": "NODE_ENV=unittest jest"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-error-reporter/"

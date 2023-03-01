@@ -1,6 +1,6 @@
 {
   "name": "@ndla/forms",
-  "version": "4.2.8",
+  "version": "4.2.9",
   "description": "Forms components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -27,8 +27,8 @@
   ],
   "dependencies": {
     "@ndla/core": "^3.1.2",
-    "@ndla/icons": "^2.2.3",
-    "@ndla/pager": "^2.1.19",
+    "@ndla/icons": "^2.2.4",
+    "@ndla/pager": "^2.1.20",
     "@ndla/util": "^3.1.10",
     "focus-trap-react": "^8.9.2"
   },

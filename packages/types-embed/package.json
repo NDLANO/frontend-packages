@@ -28,7 +28,7 @@
     "@ndla/types-draft-api": "0.0.29",
     "@ndla/types-frontpage-api": "0.0.4",
     "@ndla/types-image-api": "0.0.10",
-    "@ndla/types-learningpath-api": "0.0.18"
+    "@ndla/types-learningpath-api": "^0.0.20"
   },
   "publishConfig": {
     "access": "public"

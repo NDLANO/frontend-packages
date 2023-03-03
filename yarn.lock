@@ -2579,15 +2579,10 @@
   resolved "https://registry.yarnpkg.com/@ndla/types-image-api/-/types-image-api-0.0.8.tgz#4d1c7d830bb90ede23ac311c8f860811f83a0c39"
   integrity sha512-O8nVTzA8nLqawNArweLRcYgAyCRdhw/MK5T1pcOYJDnORllTgKCrbeaemWZH0Fu5jd4perFwCI1P+50FteNY6w==
 
-"@ndla/types-learningpath-api@0.0.17", "@ndla/types-learningpath-api@^0.0.17":
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/@ndla/types-learningpath-api/-/types-learningpath-api-0.0.17.tgz#7ceca4372028e6f59b4e84e867ff01f7561fd851"
-  integrity sha512-bvI04Es2E5gJVDkDu6bRmPFgmvLn6JjXZNHQ47UHp7mek9p7sK9+MAeLyY04BswvidegIsdxJldxeStNq8uu/Q==
-
-"@ndla/types-learningpath-api@0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@ndla/types-learningpath-api/-/types-learningpath-api-0.0.18.tgz#5049efb4c5d2e9e349b407ea022d8b7b7b972068"
-  integrity sha512-CWD+6kTmmUMTJfb8aymtfdlAva4DsPFfbtcUVVPJbO4yUvKjuM+FCVGAlLgGNcH1AzBz15HYlIjqnSHZ/9KLlg==
+"@ndla/types-learningpath-api@^0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@ndla/types-learningpath-api/-/types-learningpath-api-0.0.20.tgz#5794c7300834fb857199f26fa934823102003b2e"
+  integrity sha512-uiM43AhkqSYFGVpwitixQM1ksmn4QqMqNN0O3S2wssAWT9koWxa4o1GjysUm8WwlCz774qOVWqnZJ0dEXjHTeQ==
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"

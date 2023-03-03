@@ -39,7 +39,7 @@ export const MY_FOLDERS_ID = 'folders';
 
 const targetResource: TreeStructureProps['targetResource'] = {
   id: 'test-resource',
-  resourceId: 123,
+  resourceId: '123',
   resourceType: 'type',
   tags: [],
   path: '',
@@ -53,6 +53,8 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
     status: 'private',
     breadcrumbs: [{ id: '1', name: 'Mine Favoritter' }],
     resources: [targetResource],
+    created: '2023-03-03T08:40:23.444Z',
+    updated: '2023-03-03T08:40:23.444Z',
     subfolders: [
       {
         id: '2',
@@ -62,6 +64,8 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
           { id: '1', name: 'Mine Favoritter' },
           { id: '2', name: 'Eksamen' },
         ],
+        created: '2023-03-03T08:40:23.444Z',
+        updated: '2023-03-03T08:40:23.444Z',
         resources: [],
         subfolders: [
           {
@@ -75,6 +79,8 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
             ],
             resources: [],
             subfolders: [],
+            created: '2023-03-03T08:40:23.444Z',
+            updated: '2023-03-03T08:40:23.444Z',
           },
           {
             id: '4',
@@ -87,6 +93,8 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
             ],
             resources: [],
             subfolders: [],
+            created: '2023-03-03T08:40:23.444Z',
+            updated: '2023-03-03T08:40:23.444Z',
           },
         ],
       },
@@ -100,6 +108,8 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
         ],
         resources: [],
         subfolders: [],
+        created: '2023-03-03T08:40:23.444Z',
+        updated: '2023-03-03T08:40:23.444Z',
       },
     ],
   },
@@ -113,6 +123,8 @@ export const FOLDER_TREE_STRUCTURE: IFolder[] = [
     breadcrumbs: [],
     resources: [],
     subfolders: [...STRUCTURE_EXAMPLE],
+    created: '2023-03-03T08:40:23.444Z',
+    updated: '2023-03-03T08:40:23.444Z',
   },
 ];
 
@@ -123,6 +135,8 @@ const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; 
   subfolders: [],
   breadcrumbs: breadcrumbs.concat({ name, id }),
   resources: [],
+  created: '2023-03-03T08:40:23.444Z',
+  updated: '2023-03-03T08:40:23.444Z',
 });
 
 export const TreeStructureExampleComponent = ({

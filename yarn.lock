@@ -1399,11 +1399,6 @@
     "@floating-ui/dom" "^0.5.3"
     use-isomorphic-layout-effect "^1.1.1"
 
-"@fontsource/shadows-into-light-two@^4.5.8":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@fontsource/shadows-into-light-two/-/shadows-into-light-two-4.5.8.tgz#4316c724ade1373f5ff0b7d1b2e0c530f4236e97"
-  integrity sha512-LB2o4dqzivba/Jo7j5D60MbxkDfhJ17lenSH/B0Q/fThLWZWCY5+5YCORxXFuk45j5EebO1jcoJrIvZ1t/IOFg==
-
 "@fontsource/source-code-pro@^4.5.9":
   version "4.5.9"
   resolved "https://registry.yarnpkg.com/@fontsource/source-code-pro/-/source-code-pro-4.5.9.tgz#b5646552b898b5b6e0a20b0f99e921c302308884"

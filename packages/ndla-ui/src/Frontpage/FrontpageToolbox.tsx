@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { SafeLinkButton } from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
-import ComponentCursor from '../ComponentCursor';
 import { ToolboxIllustration as Illustration } from './illustrations/FrontpageIllustrations';
 import { HeadingLevel } from '../types';
 
@@ -52,7 +51,6 @@ const FrontpageToolbox = ({ urlStudents, urlTeachers, headingLevel }: Props) => 
   const { t } = useTranslation();
   return (
     <StyledSection>
-      <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
       <SectionHeading headingLevel={headingLevel} large>
         {t('frontPageToolbox.heading')}
       </SectionHeading>

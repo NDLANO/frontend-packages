@@ -14,9 +14,9 @@
     "ndla"
   ],
   "scripts": {
-    "build": "yarn build:types",
+    "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build:types"
   },
   "author": "ndla@knowit.no",
   "files": [

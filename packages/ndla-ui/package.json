@@ -8,10 +8,10 @@
   "types": "lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn build:css && yarn build:types",
-    "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build"
+    "prepublish": "concurrently 'yarn build:types' 'yarn build:css'",
+    "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib"
   },
   "repository": {
     "type": "git",

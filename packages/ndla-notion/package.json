@@ -8,9 +8,9 @@
   "Types": "lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn build:types",
+    "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build:types"
   },
   "repository": {
     "type": "git",

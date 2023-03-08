@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import SectionHeading from '../SectionHeading';
-import ComponentCursor from '../ComponentCursor';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
 import { HeadingLevel } from '../types';
 
@@ -80,7 +79,6 @@ const FrontpageMultidisciplinarySubject = ({ url, topics, headingLevel }: Props)
   const { t } = useTranslation();
   return (
     <StyledSection>
-      <ComponentCursor variant="left" text={t('frontpageMultidisciplinarySubject.cursorText')} />
       <Wrapper>
         <Content>
           <SectionHeading headingLevel={headingLevel} large>

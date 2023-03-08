@@ -16,6 +16,7 @@
     // "declaration": true,
     "strict": true,
     "moduleResolution": "node",
+    "incremental": true,
     "noLib": false,
     "noEmit": true,
     "sourceMap": true,

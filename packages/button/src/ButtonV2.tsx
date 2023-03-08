@@ -90,7 +90,7 @@ export const buttonStyle = ({
     text-align: center;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       color: ${theme.hoverForeground};
       background-color: ${theme.hoverBackground};
       border-color: ${theme.hoverBackground};
@@ -135,7 +135,7 @@ export const buttonStyle = ({
       border-color: transparent;
       :hover,
       :active,
-      :focus {
+      :focus-visible {
         color: ${theme.foreground};
         background: ${theme.background};
         border-color: ${theme.background};
@@ -162,7 +162,7 @@ export const buttonStyle = ({
       &:hover,
       &:active,
       &:disabled,
-      &:focus {
+      &:focus-visible {
         outline-width: 2px;
         box-shadow: ${colors.linkHover};
         color: ${colors.brand.primary};
@@ -183,13 +183,13 @@ export const buttonStyle = ({
       &:hover,
       &:active,
       &:disabled,
-      &:focus {
+      &:focus-visible {
         box-shadow: none;
         color: ${colors.brand.primary};
         background-color: transparent;
         border: none;
       }
-      &:focus {
+      &:focus-visible {
         outline-width: medium;
       }
     `}

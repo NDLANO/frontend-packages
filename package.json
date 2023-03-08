@@ -17,6 +17,7 @@
     "deploy": "vercel --token $VERCEL_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.no && vercel --token $VERCEL_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
     "clean": "rm -rf ./packages/*/es ./packages/*/lib  ./packages/*/dist",
     "bootstrap": "lerna bootstrap && yarn nx run-many --target build prepublish",
+    "bootstrap:ci": "lerna bootstrap && yarn nx run-many --target build prepublish --skip-nx-cache",
     "publish": "yarn clean && yarn bootstrap && lerna publish",
     "watch:src": "node ./scripts/watch.js",
     "watch:tsc": "nx watch --all -- nx prepublish \\$NX_PROJECT_NAME",

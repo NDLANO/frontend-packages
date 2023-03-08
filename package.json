@@ -24,7 +24,7 @@
     "watch": "concurrently 'yarn watch:src' 'yarn watch:tsc'",
     "start": "yarn build && concurrently -k -p \"[{name}]\" -n \"Babel,Storybook,Typescript\" -c \"yellow.bold,magenta.bold,blue.bold\" \"yarn watch\" \"yarn start-storybook\" \"yarn type-check-watch\"",
     "start-storybook": "node ./scripts/startStorybook.js",
-    "prebuild-storybook": "yarn bootstrap",
+    "prebuild-storybook": "yarn bootstrap:ci",
     "build-storybook": "cross-env NODE_ENV=production node ./scripts/buildStorybook.js",
     "serve-storybook": "cross-env NODE_ENV=production serve -l 5000 ./storybook-static",
     "check-translations": "cross-env BABEL_ENV=test NODE_ENV=unittest jest 'packages/ndla-ui/src/locale/__tests__/'"

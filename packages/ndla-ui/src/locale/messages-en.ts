@@ -1118,7 +1118,7 @@ const messages = {
       sharing: {
         share: 'Share folder',
         shared: 'Shared',
-        unShare: 'Sharing is stopped. The folder is no longer shared',
+        unShare: 'Sharing stopped. The folder is no longer shared',
         link: 'Link is copied',
         header: {
           private: 'Do you want to share this folder?',
@@ -1169,7 +1169,19 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Card view',
     sharedFolder: {
-      info: 'This folder contains learning resources and tasks from NDLA, curated by a teacher.',
+      info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
+      firstShared: 'The folder was shared for the first time {{date}}',
+      learningpathUnsupported:
+        'Learning paths cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
+      drawerButton: 'Show folders and resources',
+      drawerTitle: 'Folders and resources',
+      description: {
+        info1:
+          'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
+        info2: 'You can use the menu to navigate through the articles.',
+        info3:
+          'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
+      },
     },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",
@@ -1207,6 +1219,10 @@ const messages = {
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
         text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
+      },
+      sharing: {
+        title: 'How you share your folders with others',
+        text: 'Click on the share-button in the folder to share. You will get a link you can share with others.',
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',

@@ -1122,7 +1122,7 @@ const messages = {
         header: {
           private: 'Vil du dele denne mappa?',
           shared: 'Denne mappa er delt',
-          unShare: 'Vil du slutte å dele denne mappa?',
+          unShare: 'Vil du avslutte deling av denne mappa?',
         },
         description: {
           copy: 'Kopier og del denne lenka:',
@@ -1167,7 +1167,19 @@ const messages = {
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
     sharedFolder: {
-      info: 'Denne mappa inneheld fagstoff og innhald frå NDLA, samla av ein lærar. ',
+      info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
+      firstShared: 'Mappa vart delt første gong {{date}}',
+      drawerButton: 'Vis mapper og ressursar',
+      drawerTitle: 'Mapper og ressursar',
+      learningpathUnsupported:
+        'Læringsstiar kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+      description: {
+        info1:
+          'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
+        info2: 'Du kan bla i artiklane ved å bruke menyen.',
+        info3:
+          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+      },
     },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
@@ -1204,6 +1216,10 @@ const messages = {
       storageInfo: {
         title: 'Slik lagrar du favorittressursane dine frå NDLA',
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',
+      },
+      sharing: {
+        title: 'Slik deler du mappene dine med andre',
+        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',

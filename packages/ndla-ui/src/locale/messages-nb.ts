@@ -1120,18 +1120,18 @@ const messages = {
         unShare: 'Delingen er avsluttet. Mappen er ikke lenger delt.',
         link: 'Lenken er kopiert',
         header: {
-          private: 'Vil du dele denne mappen?',
-          shared: 'Denne mappen er delt.',
-          unShare: 'Vil du avslutte deling av denne mappen?',
+          private: 'Vil du dele denne mappa?',
+          shared: 'Denne mappa er delt.',
+          unShare: 'Vil du avslutte deling av denne mappa?',
         },
         description: {
-          copy: 'Kopier og del denne lenken:',
+          copy: 'Kopier og del denne lenka:',
           private:
-            'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
+            'Når du deler ei mappe, lager du ei lenke som er åpen for alle som har lenka. Du kan endre innholdet eller avslutte delinga når du ønsker det. ',
           shared:
-            'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
+            'Nå kan du dele denne lenka med elever eller andre lærere. Hvis du gjør endringer i mappa, blir de synlige for alle du har delt lenka med.',
           unShare:
-            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+            'Når du avslutter deling, vil lenka til den delte mappa slutte å virke. Dersom du har delt lenka med noen, kan de ikke lenger se innholdet i mappa.',
         },
         button: {
           share: 'Del mappen',
@@ -1167,7 +1167,19 @@ const messages = {
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
     sharedFolder: {
-      info: 'Denne mappen inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
+      info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
+      firstShared: 'Mappa ble delt første gang {{date}}',
+      learningpathUnsupported:
+        'Læringsstier kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
+      drawerButton: 'Vis mapper og ressurser',
+      drawerTitle: 'Mapper og ressurser',
+      description: {
+        info1:
+          'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.',
+        info2: 'Du kan bla i artiklene ved å bruke menyen.',
+        info3:
+          'Hvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
+      },
     },
     myPage: {
       noRecents: 'Du har ikke lagt til noen ressurser ennå. Slik kommer du i gang:',
@@ -1204,6 +1216,10 @@ const messages = {
       storageInfo: {
         title: 'Slik lagrer du favorittressursene dine fra NDLA',
         text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',
+      },
+      sharing: {
+        title: 'Slik deler du mappene dine med andre',
+        text: 'Klikk på dele-knappen i mappa for å dele. Du vil da få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',

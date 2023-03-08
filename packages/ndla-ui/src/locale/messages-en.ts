@@ -1172,7 +1172,7 @@ const messages = {
       info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
       firstShared: 'The folder was shared for the first time {{date}}',
       learningpathUnsupported:
-        'Learning paths cannot be shown directly in a shared folder. You can view the learning path by clicking the link in the navigation menu to the left.',
+        'Learning paths cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
       drawerButton: 'Show folders and resources',
       drawerTitle: 'Folders and resources',
       description: {

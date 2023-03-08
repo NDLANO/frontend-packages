@@ -1172,7 +1172,7 @@ const messages = {
       drawerButton: 'Vis mapper og ressursar',
       drawerTitle: 'Mapper og ressursar',
       learningpathUnsupported:
-        'Læringsstier kan ikkje vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre vil stien åpnes i ei ny fane.',
+        'Læringsstiar kan ikke visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
         info1:
           'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',

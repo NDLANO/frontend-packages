@@ -7,7 +7,7 @@ import { withTranslation } from 'react-i18next';
 import { mockFooterLinks } from '../../dummydata';
 import { feideUserLaerer } from './feideUser';
 
-const FooterExample = ({  t, hideLanguageSelector, i18n, isAuthenticated }) => {
+const FooterExample = ({ t, hideLanguageSelector, i18n, isAuthenticated }) => {
   const privacyLinks = [
     { label: t('footer.privacyLink'), url: 'https://om.ndla.no/gpdr' },
     { label: t('footer.cookiesLink'), url: 'https://om.ndla.no/cookies' },

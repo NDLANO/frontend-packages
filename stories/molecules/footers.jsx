@@ -7,7 +7,7 @@ import { withTranslation } from 'react-i18next';
 import { mockFooterLinks } from '../../dummydata';
 import { feideUserLaerer } from './feideUser';
 
-const FooterExample = ({ inverted, t, hideLanguageSelector, i18n, isAuthenticated }) => {
+const FooterExample = ({  t, hideLanguageSelector, i18n, isAuthenticated }) => {
   const privacyLinks = [
     { label: t('footer.privacyLink'), url: 'https://om.ndla.no/gpdr' },
     { label: t('footer.cookiesLink'), url: 'https://om.ndla.no/cookies' },
@@ -21,7 +21,7 @@ const FooterExample = ({ inverted, t, hideLanguageSelector, i18n, isAuthenticate
       links={mockFooterLinks}
       languageSelector={
         !hideLanguageSelector && (
-          <LanguageSelector inverted={inverted} locales={i18n.options.supportedLngs} onSelect={i18n.changeLanguage} />
+          <LanguageSelector inverted={true} locales={i18n.options.supportedLngs} onSelect={i18n.changeLanguage} />
         )
       }
       auth={<FooterAuth isAuthenticated={!!isAuthenticated} user={feideUserLaerer} onAuthenticateClick={() => {}} />}

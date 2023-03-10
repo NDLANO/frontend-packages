@@ -59,13 +59,6 @@ const MastheadContent = styled.div`
   display: flex;
   height: 84px;
   justify-content: space-between;
-  ${mq.range({ from: breakpoints.tablet })} {
-    flex-direction: row;
-    padding: ${spacing.small} ${spacing.normal};
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    padding: ${spacing.small} ${spacing.large};
-  }
 `;
 
 interface StyledMastheadProps {

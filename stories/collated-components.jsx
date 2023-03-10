@@ -670,7 +670,7 @@ storiesOf('Sammensatte moduler', module)
       <Center>
         <Footer
           links={mockFooterLinks}
-          languageSelector={<LanguageSelector locales={['nb', 'nn']} onSelect={() => {}} />}
+          languageSelector={<LanguageSelector inverted locales={['nb', 'nn']} onSelect={() => {}} />}
           privacyLinks={privacyLinks}>
           <FooterText>
             <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />

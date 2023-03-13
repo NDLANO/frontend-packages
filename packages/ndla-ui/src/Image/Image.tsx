@@ -39,6 +39,8 @@ const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFo
 
 const StyledImageWrapper = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
 `;
 interface Props {
   alt: string;

@@ -3,6 +3,14 @@
 exports[`Image renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
 <div
@@ -24,6 +32,14 @@ exports[`Image renderers correctly 1`] = `
 exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
 <div
@@ -45,6 +61,14 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 exports[`Lazyloaded image renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
 <div

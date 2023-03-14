@@ -35,6 +35,16 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(pdfs, opts)}
       </>
     );
+  } else if (
+    node.attribs['class'].includes('c-bodybox') &&
+    node.childNodes.filter((c): c is Element => 'attribs' in c).some((c) => c.name === 'table')
+  ) {
+    const props = attributesToProps(node.attribs);
+    return (
+      <div {...props} className={`${props.className} c-bodybox--contains-table`}>
+        {domToReact(node.children, opts)}
+      </div>
+    );
   }
   return null;
 };

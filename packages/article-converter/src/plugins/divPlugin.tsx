@@ -16,7 +16,7 @@ export const divPlugin: PluginType = (node, opts) => {
 
     return (
       <RelatedArticleListV2 {...props} headingLevel="h3">
-        {/* @ts-ignore          */}
+        {/* @ts-ignore */}
         {domToReact(node.children, opts)}
       </RelatedArticleListV2>
     );

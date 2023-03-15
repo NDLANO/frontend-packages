@@ -1224,6 +1224,10 @@ const messages = {
         title: 'How you share your folders with others',
         text: 'Click on the share-button in the folder to share. You will get a link you can share with others.',
       },
+      favoriteSubjects: {
+        title: 'How to save your favorite subjects from NDLA',
+        text: 'Click on the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
+      },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
         text: 'You can get to the folder overview by clicking on <strong>My folders</strong> on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
@@ -1255,6 +1259,14 @@ const messages = {
       onDragEndMissingOver: 'The resource {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The resource {{name}} was dropped',
       dragHandle: 'Drag the resource {{name}}',
+    },
+    favoriteSubjects: {
+      title: 'My favorite subjects',
+      subjects: '{{count}} subject',
+      subjects_0: '{{count}} subjects',
+      subjects_plural: '{{count}} subjects',
+      noFavorites: 'You do not have any favorite subjects!',
+      goToAllSubjects: 'Go to all subjects',
     },
   },
   snackbar: {

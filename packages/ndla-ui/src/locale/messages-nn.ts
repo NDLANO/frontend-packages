@@ -1253,6 +1253,14 @@ const messages = {
       onDragCancel: 'Flytting avbrutt. Ressursen {{name}} blei sleppt',
       dragHandle: 'Sorter ressursen {{name}}',
     },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
+    },
   },
   snackbar: {
     close: 'Lukk melding',

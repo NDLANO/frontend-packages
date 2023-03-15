@@ -1256,6 +1256,14 @@ const messages = {
       onDragCancel: 'Dragging was cancelled. The resource {{name}} was dropped',
       dragHandle: 'Drag the resource {{name}}',
     },
+    favoriteSubjects: {
+      title: 'My favorite subjects',
+      subjects: '{{count}} subject',
+      subjects_0: '{{count}} subjects',
+      subjects_plural: '{{count}} subjects',
+      noFavorites: 'You do not have any favorite subjects!',
+      goToAllSubjects: 'Go to all subjects',
+    },
   },
   snackbar: {
     close: 'Close notification',

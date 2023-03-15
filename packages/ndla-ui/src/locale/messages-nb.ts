@@ -1128,6 +1128,7 @@ const messages = {
           copy: 'Kopier og del denne lenka:',
           private:
             'Når du deler ei mappe, lager du ei lenke som er åpen for alle som har lenka. Du kan endre innholdet eller avslutte delinga når du ønsker det. ',
+          private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
           shared:
             'Nå kan du dele denne lenka med elever eller andre lærere. Hvis du gjør endringer i mappa, blir de synlige for alle du har delt lenka med.',
           unShare:

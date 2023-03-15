@@ -1129,6 +1129,8 @@ const messages = {
           copy: 'Copy and share this link:',
           private:
             'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
+          private2:
+            'When you share a folder you share all content within the folder, including subfolders and resources',
           shared:
             'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
           unShare:

@@ -1223,7 +1223,7 @@ const messages = {
       },
       favoriteSubjects: {
         title: 'Slik lagrar du favorittfaga dine frå NDLA',
-        text: 'Klikk på hjarteknappen for å lagre et fag. Du vil då få muligheit til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
+        text: 'Klikk på hjarteknappen for å lagre eit fag. Du vil då få høve til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',

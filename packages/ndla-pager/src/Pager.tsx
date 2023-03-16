@@ -52,7 +52,7 @@ interface PageItemProps<T extends Query> {
   pathname: string;
   onClick: (query: T & { page: number }) => void;
   type?: string;
-  small?: boolean;
+  small: boolean;
   colorTheme: ColorTheme;
 }
 
@@ -114,7 +114,7 @@ const Pager = <T extends Query>({
   pageItemComponentClass = SafeLink,
   query,
   pathname = '',
-  small,
+  small = false,
   colorTheme = 'primary',
 }: Props<T>) => {
   const steps = stepNumbers(page, lastPage);

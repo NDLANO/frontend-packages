@@ -173,7 +173,8 @@ const PopupWrapper = ({
           onDeactivate: () => setPopupState(false),
           clickOutsideDeactivates: true,
           escapeDeactivates: true,
-        }}>
+        }}
+      >
         <div>
           <button type="button" css={buttonStyle} onClick={() => setPopupState(!isOpen)} aria-label={label}>
             {label} <StyledIcon rotate={isOpen ? 180 : 0} aria-hidden="true" />
@@ -183,7 +184,8 @@ const PopupWrapper = ({
               offsetX={typeof offsetX === 'string' ? offsetX : `${offsetX}px`}
               offsetY={typeof offsetY === 'string' ? offsetY : `${offsetY}px`}
               position={position}
-              verticalPosition={verticalPosition}>
+              verticalPosition={verticalPosition}
+            >
               <StyledOptionWrapper background={background}>
                 <StyledOptionContent>
                   {withCloseButton && (

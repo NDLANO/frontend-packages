@@ -249,11 +249,13 @@ const LearningPathMenuContent = ({
             afterCurrent={index > currentIndex}
             isOpen={isOpen}
             invertedStyle={invertedStyle}
-            indexNumber={index}>
+            indexNumber={index}
+          >
             <SafeLink
               onClick={onStepNavigate}
               to={toLearningPathUrl(learningPathId, id)}
-              aria-describedby={`read-${id}`}>
+              aria-describedby={`read-${id}`}
+            >
               <StyledContentType>
                 <ContentTypeBadge type={type ?? constants.contentTypes.LEARNING_PATH} background size="small" />
                 {hasRead(id, cookies) && (

@@ -37,7 +37,8 @@ export const SvgLogo = ({ name = true, color = '#000000', locale }: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 376 152"
     fill={color}
-    fillRule="evenodd">
+    fillRule="evenodd"
+  >
     <path d="M355 67h-84v51h102V51h-18v16zm0 14h-66v19h66V81zm-84-48v18h84V33h-84z" />
     <rect width="18" height="118" x="236" transform="matrix(-1 0 0 1 490 0)" />
     <path d="M201 100V51h-65v49h65zm18 18V0h-18v33h-83v85h101z" />

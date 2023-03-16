@@ -103,7 +103,8 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }: Props) =>
             <Tooltip
               tooltip={t('searchPage.searchFilterMessages.removeFilter', {
                 filterName: filter.title,
-              })}>
+              })}
+            >
               <ActiveFilterContent
                 filter={filter}
                 ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {

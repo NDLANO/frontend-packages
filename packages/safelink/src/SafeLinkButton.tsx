@@ -22,7 +22,8 @@ const SafeLinkButton = forwardRef<HTMLAnchorElement, Props>(
       to={to}
       ref={ref}
       css={buttonStyleV2({ colorTheme, size, variant, inverted, shape, fontWeight })}
-      {...rest}>
+      {...rest}
+    >
       {children}
     </SafeLink>
   ),

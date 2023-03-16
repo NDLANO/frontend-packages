@@ -193,7 +193,8 @@ const FolderItem = ({
       tabIndex={tabable ? 0 : -1}
       selected={selected}
       onFocus={() => setFocusedFolder(folder)}
-      onClick={handleClickFolder}>
+      onClick={handleClickFolder}
+    >
       {!hideArrow && (
         <OpenButton
           aria-hidden
@@ -208,7 +209,8 @@ const FolderItem = ({
             } else {
               onOpenFolder(id);
             }
-          }}>
+          }}
+        >
           <ArrowDropDownRounded />
         </OpenButton>
       )}
@@ -235,7 +237,8 @@ const FolderItem = ({
         setFocusedFolder(focusedFolder || folder);
       }}
       onClick={handleClickFolder}
-      isCreatingFolder={isCreatingFolder}>
+      isCreatingFolder={isCreatingFolder}
+    >
       {!hideArrow && (
         <OpenButton
           aria-hidden
@@ -249,7 +252,8 @@ const FolderItem = ({
             } else {
               onOpenFolder(id);
             }
-          }}>
+          }}
+        >
           <ArrowDropDownRounded />
         </OpenButton>
       )}

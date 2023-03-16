@@ -422,7 +422,8 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
           style={{
             width: slideshowWidth,
             transform: getSlidePosition(slideIndex),
-          }}>
+          }}
+        >
           {renderSlideItem(slideshow[slideshow.length - 1])}
           {slideshow.map(renderSlideItem)}
           {renderSlideItem(slideshow[0])}

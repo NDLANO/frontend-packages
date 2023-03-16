@@ -122,7 +122,8 @@ const ActiveFilters = ({
           <Tooltip
             tooltip={t('searchPage.searchFilterMessages.removeFilter', {
               filterName: filter.title,
-            })}>
+            })}
+          >
             <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
           </Tooltip>
         ) : (
@@ -144,7 +145,8 @@ const ActiveFilters = ({
               })}
               size="normal"
               shape="pill"
-              onClick={onClickShowHiddenSubjects}>
+              onClick={onClickShowHiddenSubjects}
+            >
               <StyledActiveFilterTitle>
                 {t('searchPage.searchFilterMessages.additionalSubjectFilters', {
                   count: filterLength - showFilterCount + 1,

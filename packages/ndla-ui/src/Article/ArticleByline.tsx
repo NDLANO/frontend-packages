@@ -155,7 +155,8 @@ const ArticleByline = ({
             }
             backgroundColor="white"
             position="top"
-            size="medium">
+            size="medium"
+          >
             {(onClose: () => void) => (
               <>
                 <ModalHeader modifier="no-bottom-padding">
@@ -174,7 +175,8 @@ const ArticleByline = ({
             aria-live="assertive"
             copyNode={t('license.hasCopiedTitle')}
             data-copy-string={copySourceReference}
-            onClick={copyLicense}>
+            onClick={copyLicense}
+          >
             {`${t('license.copy')} ${t('license.copyTitle').toLowerCase()}`}
           </CopyButton>
         )}
@@ -186,7 +188,8 @@ const ArticleByline = ({
             variant="outline"
             aria-live="assertive"
             data-copy-string={copyPageUrlLink}
-            copyNode={t('article.copyPageLinkCopied')}>
+            copyNode={t('article.copyPageLinkCopied')}
+          >
             {t('article.copyPageLink')}
           </CopyButton>
         )}
@@ -198,7 +201,8 @@ const ArticleByline = ({
             aria-live="assertive"
             copyNode={t('license.hasCopiedTitle')}
             data-copy-string={copyEmbedLink}
-            onClick={copyEmbededLink}>
+            onClick={copyEmbededLink}
+          >
             {`${t('license.copy')}  ${t('license.tabs.embedlink').toLowerCase()}`}
           </CopyButton>
         )}

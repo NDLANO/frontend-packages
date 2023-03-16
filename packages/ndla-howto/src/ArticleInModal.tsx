@@ -75,7 +75,8 @@ const ArticleInModal = ({ pageId, tooltip, activateButton }: Props) => (
     size="medium"
     backgroundColor="white"
     wrapperFunctionForButton={tooltip ? (btn: ReactElement) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : undefined}
-    activateButton={activateButton}>
+    activateButton={activateButton}
+  >
     {(onClose: () => void) =>
       ModalContent({
         pageId,

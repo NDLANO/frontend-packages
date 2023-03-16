@@ -231,7 +231,8 @@ const ButtonV2 = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         css={buttonStyle({ colorTheme, size, variant, inverted, shape, fontWeight })}
         {...rest}
-        ref={ref}>
+        ref={ref}
+      >
         {children}
       </button>
     );

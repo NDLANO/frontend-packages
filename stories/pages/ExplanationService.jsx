@@ -305,7 +305,8 @@ const ExplanationService = () => {
       <NotionDialogWrapper
         title={detailedItem.name}
         subTitle={detailedItem.category && detailedItem.category[0].title}
-        closeCallback={() => setDetailedItemHandler(null)}>
+        closeCallback={() => setDetailedItemHandler(null)}
+      >
         <NotionDialogContent>
           {detailedItem.image ? <NotionDialogImage src={detailedItem.image} alt={detailedItem.description} /> : null}
           <NotionDialogText>{detailedItem.longDescription}</NotionDialogText>
@@ -388,7 +389,8 @@ const ExplanationService = () => {
             return item ? item.title || '' : '';
           }}
           onStateChange={handleStateChangeCategoryFilter}
-          isOpen={categoryFilterOpen}>
+          isOpen={categoryFilterOpen}
+        >
           {({ getInputProps, getMenuProps, getItemProps }) => {
             return (
               <div>

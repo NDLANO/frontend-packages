@@ -25,7 +25,8 @@ const FooterExample = ({ t, hideLanguageSelector, i18n, isAuthenticated }) => {
         )
       }
       auth={<FooterAuth isAuthenticated={!!isAuthenticated} user={feideUserLaerer} onAuthenticateClick={() => {}} />}
-      privacyLinks={privacyLinks}>
+      privacyLinks={privacyLinks}
+    >
       <FooterText>
         <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
         <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>

@@ -29,14 +29,16 @@ const FooterExample = () => (
         messages={{
           buttonLabel: 'Kvalitetssikring',
           heading: 'Kvalitetssikring:',
-        }}>
+        }}
+      >
         {optionsQualityInsurance.map((option) => (
           <FooterLinkButton
             key={option.name}
             bold
             onClick={(e) => {
               option.onClick(e);
-            }}>
+            }}
+          >
             {option.name}
           </FooterLinkButton>
         ))}
@@ -45,7 +47,8 @@ const FooterExample = () => (
       <FooterLinkButton
         onClick={() => {
           console.log('clicked..'); // eslint-disable-line no-console
-        }}>
+        }}
+      >
         Tilbakestill endringer
       </FooterLinkButton>
     </div>
@@ -54,7 +57,8 @@ const FooterExample = () => (
         large
         onClick={() => {
           console.log('save resource'); // eslint-disable-line no-console
-        }}>
+        }}
+      >
         Lagre
       </ButtonV2>
     </div>

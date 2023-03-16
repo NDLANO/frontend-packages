@@ -181,7 +181,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         labelHidden={labelHidden}
         name={name}
         className={className}
-        label={label}>
+        label={label}
+      >
         <input
           ref={ref}
           name={name}
@@ -219,7 +220,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreProps>(
         label={label}
         name={name}
         className={className}
-        labelHidden={labelHidden}>
+        labelHidden={labelHidden}
+      >
         <textarea name={name} ref={forwardedRef} {...rest} aria-describedby={`${name}-error`} />
       </BaseInput>
     );

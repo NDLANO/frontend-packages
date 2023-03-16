@@ -50,7 +50,8 @@ const DefaultSnack = (snack: Snack) => {
             variant="outline"
             colorTheme="greyLighter"
             onClick={() => closeSnack(snack)}
-            aria-label={t('snackbar.close')}>
+            aria-label={t('snackbar.close')}
+          >
             <Cross />
           </IconButtonV2>
         )}

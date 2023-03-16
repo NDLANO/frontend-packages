@@ -603,7 +603,8 @@ storiesOf('Sammensatte moduler', module)
                 'Lager unike id på input og label. Sørger for at ikke htmlFor og input name/id ikke krasjer med andre komponenter på siden',
             },
           ]}
-          status={2}>
+          status={2}
+        >
           <h2 className="u-heading">Radiobuttons (group) uten label</h2>
           <div className="c-filter u-margin-top">
             <RadioButtonGroup
@@ -671,7 +672,8 @@ storiesOf('Sammensatte moduler', module)
         <Footer
           links={mockFooterLinks}
           languageSelector={<LanguageSelector inverted locales={['nb', 'nn']} onSelect={() => {}} />}
-          privacyLinks={privacyLinks}>
+          privacyLinks={privacyLinks}
+        >
           <FooterText>
             <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
           </FooterText>

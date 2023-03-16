@@ -72,7 +72,8 @@ const FigureNotion = ({
               reuseLabel={t(`${type}.reuse`)}
               authors={authors}
               licenseRights={license.rights}
-              hideIconsAndAuthors={hideIconsAndAuthors}>
+              hideIconsAndAuthors={hideIconsAndAuthors}
+            >
               <FigureLicenseDialog
                 id={id}
                 authors={groupedAuthors}
@@ -86,7 +87,8 @@ const FigureNotion = ({
                   source: t('source'),
                   learnAboutLicenses: t('license.learnMore'),
                   title: t('title'),
-                }}>
+                }}
+              >
                 {licenseButtons}
               </FigureLicenseDialog>
             </FigureCaption>

@@ -41,7 +41,8 @@ const AccordionSection = (props: Props) => {
         title={title}
         onClick={() => (onClick ? onClick() : setIsOpen((old) => !old))}
         isOpen={isOpen}
-        tiny={tiny}>
+        tiny={tiny}
+      >
         {barChildren}
       </AccordionBar>
       {isOpen && (

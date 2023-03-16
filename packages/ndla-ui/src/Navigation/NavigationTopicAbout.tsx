@@ -150,7 +150,8 @@ export const NavigationTopicAbout = ({
                 variant="link"
                 onClick={() => {
                   onToggleShowContent();
-                }}>
+                }}
+              >
                 {showContent ? (
                   <>
                     {t('navigation.showShorterDescription')} <ChevronUp />

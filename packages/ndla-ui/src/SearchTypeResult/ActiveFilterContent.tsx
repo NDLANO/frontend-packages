@@ -44,7 +44,8 @@ const ActiveFilterContent = forwardRef<HTMLButtonElement, Props>(({ filter, onFi
       })}
       ref={ref}
       shape="pill"
-      onClick={() => onFilterRemove(filter.value, filter.name)}>
+      onClick={() => onFilterRemove(filter.value, filter.name)}
+    >
       <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>
       <Cross />
     </StyledButton>

@@ -46,7 +46,8 @@ storiesOf('Produksjonssystem', module)
         backgroundColor: colors.brand.greyLightest,
         paddingBottom: spacing.large,
         minHeight: '100vh',
-      }}>
+      }}
+    >
       <StoryIntro title="Trekkspill">
         <p>
           Trekkspill (Accordion). Importeres via ndla-accordion. Innbygget kontroll for åpning og lukking gjennom render
@@ -64,7 +65,8 @@ storiesOf('Produksjonssystem', module)
         backgroundColor: colors.brand.greyLightest,
         paddingBottom: spacing.large,
         minHeight: '100vh',
-      }}>
+      }}
+    >
       <StoryIntro title="Trekkspill">
         <p>
           Trekkspill (Accordions). Importeres via ndla-accordion. Innbygget kontroll for åpning og lukking gjennom
@@ -245,7 +247,8 @@ storiesOf('Produksjonssystem', module)
         backgroundColor: colors.brand.greyLightest,
         paddingBottom: spacing.large,
         minHeight: '100vh',
-      }}>
+      }}
+    >
       <StoryIntro title="Versjonslogg og historikk">
         <p>
           Versjonshistorikk og logg for emner/læringssressurser i ED. Mulighet for å se eller tilbakestille til

@@ -14,7 +14,8 @@ const Welcome = () => (
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-          }}>
+          }}
+        >
           <Logo label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
         </Center>
@@ -32,7 +33,8 @@ const Welcome = () => (
           <a
             href="https://ndla.zendesk.com/hc/no/categories/4405379912082-Plattform-for-brukskvalitet"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             brukskvalitetsplattformen.
           </a>
         </p>

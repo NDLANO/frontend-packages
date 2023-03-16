@@ -552,16 +552,6 @@ storiesOf('Sammensatte moduler', module)
     </div>
   ))
 
-  .add('Paginering', () => (
-    <Center>
-      <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
-      <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
-    </Center>
-  ))
-
   .add('Radiobuttons', () => (
     <div>
       <StoryIntro title="Filter">

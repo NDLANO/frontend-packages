@@ -7,9 +7,9 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
-import { FolderOutlined } from '@ndla/icons/contentType';
-import { FileDocumentOutline, ShareArrow } from '@ndla/icons/common';
+import React from 'react';
+import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
+import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
@@ -145,7 +145,7 @@ const Count = ({ type, count, layoutType }: IconCountProps) => {
 
   return (
     <IconTextWrapper type={layoutType}>
-      <Icon aria-label={t(`myNdla.${type}s`)} />
+      <Icon />
       <span>{t(`myNdla.${type}s`, { count })}</span>
     </IconTextWrapper>
   );
@@ -165,12 +165,13 @@ interface Props {
 
 const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems, isShared }: Props) => {
   const { t } = useTranslation();
+  const Icon = isShared ? FolderShared : FolderOutlined;
 
   return (
     <FolderWrapper type={type} id={id}>
       <TitleWrapper type={type}>
         <IconWrapper>
-          <FolderOutlined aria-label={t('myNdla.folder.folder')} />
+          <Icon aria-label={t('myNdla.folder.folder')} />
         </IconWrapper>
         <ResourceTitleLink to={link}>
           <FolderTitle title={title}>{title}</FolderTitle>
@@ -179,8 +180,8 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
       <MenuWrapper>
         {isShared && (
           <IconTextWrapper type={type}>
-            <ShareArrow aria-label="shared" />
-            <span>{t('myNdla.folder.shared')}</span>
+            <Share />
+            <span>{t('myNdla.folder.sharing.shared')}</span>
           </IconTextWrapper>
         )}
         <CountContainer>

@@ -21,7 +21,6 @@ export default {
     page: 1,
     lastPage: 2,
     query: {},
-    small: true,
   },
 } as ComponentMeta<typeof Pager>;
 

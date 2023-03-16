@@ -99,7 +99,7 @@
     "nx": "15.8.1",
     "pdfmake": "^0.1.51",
     "postcss-loader": "^3.0.0",
-    "prettier": "^2.3.2",
+    "prettier": "^2.8.4",
     "react": "^17.0.2",
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^2.2.3",

@@ -334,7 +334,7 @@ const messages = {
       multidisciplinarySubjects: 'Tverrfaglege tema',
       toolboxStudents: 'Verktøykassa - for elevar',
       toolboxTeachers: 'Verktøykassa - for lærarar',
-      film: 'NDLA Film',
+      film: 'NDLA film',
       about: {
         title: 'Om NDLA',
         numbers: 'Tall og rapporter',
@@ -630,6 +630,7 @@ const messages = {
     rightsholder: 'Rettshavar',
     source: 'Kjelde',
     published: 'Publiseringsdato',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ops, noko gjekk gale',
@@ -764,6 +765,7 @@ const messages = {
     hits: '{{count}} treff',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Brukast i',
     closeNotion: 'Lukk',
   },
@@ -792,7 +794,7 @@ const messages = {
     loadingMovies: 'Hentar filmar...',
     subjectsInMovies: 'Emne i film',
     about: {
-      heading: 'Om NDLA Film',
+      heading: 'Om NDLA film',
       more: 'Les meir om NDLA film',
       text: 'NDLA film er ei nettbasert filmteneste for elevar og lærarar i vidaregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
     },
@@ -834,7 +836,7 @@ const messages = {
     },
     allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
     moreAboutNdlaFilm: {
-      header: 'NDLA Film',
+      header: 'NDLA film',
       firstParagraph:
         'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kopla mot læreplanar i fleire fag. Dei er valde av redaksjonane til NDLA i samarbeid med Norgesfilm AS.',
       secondParagraph:
@@ -1050,7 +1052,8 @@ const messages = {
     loggedInAs: 'Du er pålogga som {{role}}.',
     loggedInAsButton: 'Du er pålogga som {{role}}',
     role: {
-      employee: 'lærar',
+      employee: 'tilsett',
+      faculty: 'tilsett',
       staff: 'tilsett',
       student: 'elev',
     },
@@ -1111,7 +1114,33 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sleppt',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sleppt',
       dragHandle: 'Sorter mappa {{name}}',
-      shared: 'Delt',
+      sharing: {
+        share: 'Del mappe',
+        shared: 'Delt',
+        unShare: 'Delinga er avslutta. Mappa er ikkje lenger delt',
+        link: 'Lenka er kopiert',
+        header: {
+          private: 'Vil du dele denne mappa?',
+          shared: 'Denne mappa er delt',
+          unShare: 'Vil du avslutte deling av denne mappa?',
+        },
+        description: {
+          copy: 'Kopier og del denne lenka:',
+          private:
+            'Når du deler ei mappe, lagar du ei lenke som er open for alle som har lenka. Du kan endre innhaldet eller avslutte delinga når du ønsker det.',
+          private2: 'Når du deler ei mappe deler du alt innhaldet i mappa, inkludert undermapper og ressursar',
+          shared:
+            'No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.',
+          unShare:
+            'Når du avsluttar deling, vil lenka til den delte mappa slutte å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa.',
+        },
+        button: {
+          share: 'Del mappa',
+          preview: 'Førehandsvis delt mappe',
+          unShare: 'Avslutt deling',
+          shareLink: 'Kopier lenke',
+        },
+      },
     },
     tagList: 'Emneknaggar',
     tags: '{{count}} emneknagg',
@@ -1138,6 +1167,21 @@ const messages = {
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
+    sharedFolder: {
+      info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
+      firstShared: 'Mappa vart delt første gong {{date}}',
+      drawerButton: 'Vis mapper og ressursar',
+      drawerTitle: 'Mapper og ressursar',
+      learningpathUnsupported:
+        'Læringsstiar kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+      description: {
+        info1:
+          'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
+        info2: 'Du kan bla i artiklane ved å bruke menyen.',
+        info3:
+          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+      },
+    },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
       imageAlt:
@@ -1174,6 +1218,14 @@ const messages = {
         title: 'Slik lagrar du favorittressursane dine frå NDLA',
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',
       },
+      sharing: {
+        title: 'Slik deler du mappene dine med andre',
+        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+      },
+      favoriteSubjects: {
+        title: 'Slik lagrar du favorittfaga dine frå NDLA',
+        text: 'Klikk på hjarteknappen for å lagre eit fag. Du vil då få høve til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
+      },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
         text: 'Klikk på <strong>Mine mapper</strong> i menyen til venstre for å komme til mappeoversikta. Her kan du opprette nye mapper og undermapper. Du kan også opprette ny mappe i vindauget som kjem opp når du klikkar på eit hjarte i ein ressurs.',
@@ -1206,6 +1258,14 @@ const messages = {
       onDragCancel: 'Flytting avbrutt. Ressursen {{name}} blei sleppt',
       dragHandle: 'Sorter ressursen {{name}}',
     },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
+    },
   },
   snackbar: {
     close: 'Lukk melding',
@@ -1227,6 +1287,11 @@ const messages = {
   },
   programme: {
     grades: 'Trinn',
+  },
+  embed: {
+    conceptListError: 'Klarte ikkje å vise forklaringsliste',
+    linkError: 'Klarte ikkje å vise lenke.',
+    unsupported: `Embed {{type}} er ikkje støtta.`,
   },
 };
 

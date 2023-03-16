@@ -31,7 +31,8 @@ const DocumentDetails = (props: Props) => (
                 </g>
                 <g
                   transform="translate(212.641970, 64.414522) rotate(180.000000) translate(-212.641970, -64.414522) translate(187.984436, 0.715892)"
-                  fillRule="nonzero">
+                  fillRule="nonzero"
+                >
                   <polygon
                     transform="translate(23.697038, 62.939771) rotate(180.000000) translate(-23.697038, -62.939771) "
                     points="47.3940757 1.53591912 47.3940757 124.343624 28.7637324 124.343624 28.7637324 20.4543808 5.56204755e-10 20.4543808 5.54477898e-10 1.53591912"

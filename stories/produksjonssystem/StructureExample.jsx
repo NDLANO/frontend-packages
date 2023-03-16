@@ -11,7 +11,7 @@ import { Structure } from '@ndla/editor';
 import { Spinner } from '@ndla/icons';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { colors, spacing, fonts } from '@ndla/core';
 import { AlertCircle } from '@ndla/icons/editor';
 import Tooltip from '@ndla/tooltip';
@@ -298,7 +298,8 @@ class StructureExample extends Component {
                       };
                     });
                   }
-                }}>
+                }}
+              >
                 <span />
                 <span>{filter.name}</span>
               </ConnectionButton>
@@ -309,9 +310,9 @@ class StructureExample extends Component {
     }
     return (
       <StyledButtonWrapper>
-        <Button outline css={buttonAddition} onClick={() => {}}>
+        <ButtonV2 variant="outline" css={buttonAddition} onClick={() => {}}>
           Emne funksjon
-        </Button>
+        </ButtonV2>
       </StyledButtonWrapper>
     );
   }

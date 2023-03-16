@@ -70,7 +70,7 @@ const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'basisgruppe',
@@ -85,7 +85,7 @@ const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'other groups',
@@ -100,7 +100,7 @@ const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'other groups',
@@ -115,7 +115,7 @@ const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'undervisningsgruppe',
@@ -134,7 +134,7 @@ const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'undervisningsgruppe',
@@ -228,7 +228,7 @@ describe('parseUserObject', () => {
                 parent: 'fc:org:spusers.feide.no:unit:NO856326501',
                 membership: {
                   basic: 'member',
-                  affiliation: 'employee',
+                  affiliation: ['employee'],
                   displayName: 'Ansatt',
                 },
                 go_type_displayName: 'basisgruppe',
@@ -245,7 +245,7 @@ describe('parseUserObject', () => {
                 parent: 'fc:org:spusers.feide.no:unit:NO856326501',
                 membership: {
                   basic: 'member',
-                  affiliation: 'employee',
+                  affiliation: ['employee'],
                   displayName: 'Ansatt',
                 },
                 go_type_displayName: 'undervisningsgruppe',
@@ -264,7 +264,7 @@ describe('parseUserObject', () => {
                 parent: 'fc:org:spusers.feide.no:unit:NO856326501',
                 membership: {
                   basic: 'member',
-                  affiliation: 'employee',
+                  affiliation: ['employee'],
                   displayName: 'Ansatt',
                 },
                 go_type_displayName: 'undervisningsgruppe',
@@ -285,7 +285,7 @@ describe('parseUserObject', () => {
                 parent: 'fc:org:spusers.feide.no:unit:NO856326501',
                 membership: {
                   basic: 'member',
-                  affiliation: 'employee',
+                  affiliation: ['employee'],
                   displayName: 'Ansatt',
                 },
                 go_type_displayName: 'other groups',
@@ -300,7 +300,7 @@ describe('parseUserObject', () => {
                 parent: 'fc:org:spusers.feide.no:unit:NO856326501',
                 membership: {
                   basic: 'member',
-                  affiliation: 'employee',
+                  affiliation: ['employee'],
                   displayName: 'Ansatt',
                 },
                 go_type_displayName: 'other groups',

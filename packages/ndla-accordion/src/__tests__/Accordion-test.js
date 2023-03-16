@@ -21,7 +21,8 @@ const AccordionExample = (props) => (
               panelId={`panel-${index}`}
               title={`Panel ${index}`}
               onClick={() => handleItemClick(index)}
-              data-testid={`bar-${index}`}>
+              data-testid={`bar-${index}`}
+            >
               Panel {index}
             </AccordionBar>
             <AccordionPanel {...getPanelProps(index)} data-testid={`panel-${index}`}>

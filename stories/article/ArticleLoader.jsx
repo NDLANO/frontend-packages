@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 import format from 'date-fns/format';
 import { OneColumn, Article, ResourcesWrapper, ResourcesTopicTitle } from '@ndla/ui';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
@@ -40,7 +40,8 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
         showAdditionalResources={showAdditionalCores}
       />
     }
-    id="resourcesListId"></ResourcesWrapper>
+    id="resourcesListId"
+  ></ResourcesWrapper>
 );
 
 ResourcesSubTopics.propTypes = {
@@ -174,7 +175,8 @@ class ArticleLoader extends Component {
                 modifier={articleModifier}
                 messages={messages}
                 licenseBox={<LicenseBox />}
-                competenceGoals={!hideCompetenceGoals ? <CompetenceGoalListExample /> : null}>
+                competenceGoals={!hideCompetenceGoals ? <CompetenceGoalListExample /> : null}
+              >
                 {articleChildren}
               </Article>
             </OneColumn>
@@ -183,7 +185,7 @@ class ArticleLoader extends Component {
               <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />
             )}
             {article && closeButton ? (
-              <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button>
+              <ButtonV2 onClick={() => this.setState({ article: undefined })}>Lukk</ButtonV2>
             ) : null}
           </div>
         )}

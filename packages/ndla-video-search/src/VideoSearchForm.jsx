@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -54,9 +54,9 @@ class SearchForm extends Component {
           value={this.state.query}
           placeholder={translations.searchPlaceholder}
         />
-        <Button {...classes('form-button')} onClick={this.handleSubmit} loading={searching}>
+        <ButtonV2 {...classes('form-button')} onClick={this.handleSubmit} disabled={searching}>
           {translations.searchButtonTitle}
-        </Button>
+        </ButtonV2>
       </div>
     );
   }

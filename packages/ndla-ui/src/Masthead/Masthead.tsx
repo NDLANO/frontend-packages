@@ -59,13 +59,6 @@ const MastheadContent = styled.div`
   display: flex;
   height: 84px;
   justify-content: space-between;
-  ${mq.range({ from: breakpoints.tablet })} {
-    flex-direction: row;
-    padding: ${spacing.small} ${spacing.normal};
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    padding: ${spacing.small} ${spacing.large};
-  }
 `;
 
 interface StyledMastheadProps {
@@ -125,7 +118,8 @@ export const Masthead = ({ children, fixed, ndlaFilm, skipToMainContentId, messa
           <MessageBanner
             key={message.number}
             showCloseButton={message.closable}
-            onClose={() => onCloseAlert?.(message.number)}>
+            onClose={() => onCloseAlert?.(message.number)}
+          >
             {message.content}
           </MessageBanner>
         ))}

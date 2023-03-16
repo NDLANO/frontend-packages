@@ -85,7 +85,8 @@ const DropdownMenu = ({
       positionAbsolute={positionAbsolute}
       wide={wide}
       {...getMenuProps({ isOpen })}
-      data-testid="dropdown-items">
+      data-testid="dropdown-items"
+    >
       <StyledResultList menuHeight={menuHeight}>
         {items.slice(0, maxRender).map((item, index) => (
           <DropdownMenuItem

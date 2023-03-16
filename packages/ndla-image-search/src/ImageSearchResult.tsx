@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { IImageMetaInformationV3 } from '@ndla/types-image-api';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';
 
@@ -37,7 +37,7 @@ export default function ImageSearchResult({
   return (
     <div key={image.id} className={`list-item ${active}`}>
       <div className="list-item-inner">
-        <Button data-cy="select-image-from-list" stripped onClick={() => onImageClick(image)}>
+        <ButtonV2 variant="stripped" data-cy="select-image-from-list" onClick={() => onImageClick(image)}>
           <img
             role="presentation"
             alt="presentation"
@@ -45,7 +45,7 @@ export default function ImageSearchResult({
             src={image.image.imageUrl}
           />
           <span className="list-item-title">{image.title.title}</span>
-        </Button>
+        </ButtonV2>
       </div>
       {selectedImage && selectedImage.id === image.id ? (
         <PreviewImage

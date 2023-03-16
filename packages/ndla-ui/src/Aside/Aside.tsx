@@ -21,12 +21,20 @@ interface Props {
   children?: ReactNode;
   narrowScreen?: boolean;
   wideScreen?: boolean;
+  alwaysShow?: boolean;
 }
 
-const Aside = ({ children, narrowScreen = false, dangerouslySetInnerHTML, wideScreen = false }: Props) => {
+const Aside = ({
+  children,
+  narrowScreen = false,
+  dangerouslySetInnerHTML,
+  wideScreen = false,
+  alwaysShow = false,
+}: Props) => {
   const modifiers = {
     narrowScreen,
     wideScreen,
+    alwaysShow,
   };
   return (
     <aside {...classes('', modifiers)}>

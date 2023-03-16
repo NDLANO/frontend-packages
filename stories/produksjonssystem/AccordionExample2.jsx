@@ -8,7 +8,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { Accordions, AccordionSection } from '@ndla/accordion';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { FilterList } from '@ndla/ui';
 
 import ComponentInfo from '../ComponentInfo';
@@ -18,7 +18,7 @@ const PanelComponent = ({ tekst, setIsOpen }) => {
   return (
     <div>
       <p>{tekst}</p>
-      <Button onClick={() => setIsOpen(false)}>Lukk</Button>
+      <ButtonV2 onClick={() => setIsOpen(false)}>Lukk</ButtonV2>
     </div>
   );
 };
@@ -67,7 +67,8 @@ class AccordionExample2 extends Component {
             description: 'Vis kun et panel omgangen',
           },
         ]}
-        status={2}>
+        status={2}
+      >
         <h2>Eksempel</h2>
         <AccordionSection id="panel1" title="Panel 1" startOpen barChildren={<div>Children in bar</div>}>
           <p>Innhold 1</p>
@@ -131,7 +132,8 @@ class AccordionExample2 extends Component {
           id="accPanel"
           title="With tiny accordion inside"
           hasError={errorPanels.includes(3)}
-          barChildren="Accordion with tiny accordion inside">
+          barChildren="Accordion with tiny accordion inside"
+        >
           <TinyAccordionExample />
         </AccordionSection>
       </ComponentInfo>

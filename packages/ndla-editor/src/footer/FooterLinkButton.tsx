@@ -1,10 +1,9 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import { colors, spacing, fonts, spacingUnit } from '@ndla/core';
 import { css } from '@emotion/react';
-import Button from '@ndla/button';
+import { ButtonProps, ButtonV2 } from '@ndla/button';
 
-interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'size' | 'width' | 'type'> {
-  children: ReactNode;
+interface Props extends ButtonProps {
   bold: boolean;
 }
 
@@ -41,15 +40,16 @@ const boldLink = css`
 
 const FooterLinkButton = ({ children, bold, ...rest }: Props) => {
   return (
-    <Button
+    <ButtonV2
       css={css`
         ${buttonStyle};
         ${bold ? boldLink : linkStyle}
       `}
-      stripped
-      {...rest}>
+      variant="stripped"
+      {...rest}
+    >
       {children}
-    </Button>
+    </ButtonV2>
   );
 };
 

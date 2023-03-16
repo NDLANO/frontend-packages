@@ -157,7 +157,8 @@ const Structure = ({
                 isVisible={isVisible}
                 favoriteSubjectIds={favoriteSubjectIds}
                 taxonomyId={id}
-                toggleFavorite={() => toggleFavorite?.(id)}>
+                toggleFavorite={() => toggleFavorite?.(id)}
+              >
                 {renderListItems &&
                   renderListItems({
                     pathToString,

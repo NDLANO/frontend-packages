@@ -469,13 +469,13 @@ storiesOf('Autentisering', module)
     </PageContainer>
   ));
 storiesOf('Ndla film', module)
-  .add('NDLA Film forside', () => (
+  .add('NDLA film forside', () => (
     <PageContainer ndlaFilm>
       <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
       <Content>
         <NdlaFilmFrontpage id="mainContentId" />
       </Content>
-      <FooterExample inverted />
+      <FooterExample />
     </PageContainer>
   ))
   .add('Film (emne side)', () => (
@@ -491,7 +491,7 @@ storiesOf('Ndla film', module)
           ndlaFilm
         />
       </Content>
-      <FooterExample inverted />
+      <FooterExample />
     </PageContainer>
   ))
   .add('Film emne (over film)', () => (
@@ -508,7 +508,7 @@ storiesOf('Ndla film', module)
           ndlaFilm
         />
       </Content>
-      <FooterExample inverted />
+      <FooterExample />
     </PageContainer>
   ))
   .add('Læringssti (på NDLA film)', () => (
@@ -517,7 +517,7 @@ storiesOf('Ndla film', module)
       <Content>
         <LearningPathExample invertedStyle />
       </Content>
-      <FooterExample inverted />
+      <FooterExample />
     </PageContainer>
   ));
 storiesOf('Forklaringstjenesten', module).add('Forklaringstjenesten', () => (

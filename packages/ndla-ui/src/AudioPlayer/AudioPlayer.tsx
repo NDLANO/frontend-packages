@@ -9,7 +9,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Cross as CrossIcon } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
@@ -141,7 +141,7 @@ const TextVersionHeading = styled.h2`
   margin: ${spacing.small} 0 ${spacing.normal};
 `;
 
-const LinkButton = styled(Button)`
+const LinkButton = styled(ButtonV2)`
   box-shadow: none;
   padding-left: 0;
   padding-right: 4px;
@@ -216,13 +216,9 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   };
   const TextVersionComponent = ({ noMargin }: TextVersionComponentProps) => (
     <LinkToTextVersionWrapper noMargin={noMargin}>
-      <Button
-        size="normal"
-        borderShape="rounded"
-        onClick={toggleTextVersion}
-        data-audio-text-button-id={staticRenderId}>
+      <ButtonV2 size="normal" shape="pill" onClick={toggleTextVersion} data-audio-text-button-id={staticRenderId}>
         {t('audio.textVersion.heading')}
-      </Button>
+      </ButtonV2>
     </LinkToTextVersionWrapper>
   );
 
@@ -251,7 +247,8 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
               <div
                 ref={descriptionRef}
                 data-audio-player-description={1}
-                data-read-more-text={t('audio.readMoreDescriptionLabel')}>
+                data-read-more-text={t('audio.readMoreDescriptionLabel')}
+              >
                 {description}
               </div>
             </StyledDescription>
@@ -266,7 +263,12 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
         <TextVersionWrapper id={staticRenderId} hidden={!!staticRenderId}>
           <TextVersionHeadingWrapper>
             <TextVersionHeading>{t('audio.textVersion.heading')}</TextVersionHeading>
-            <LinkButton link size="normal" onClick={toggleTextVersion} data-audio-text-button-id={staticRenderId}>
+            <LinkButton
+              variant="link"
+              size="normal"
+              onClick={toggleTextVersion}
+              data-audio-text-button-id={staticRenderId}
+            >
               <CrossIcon style={{ width: '20px', height: '20px' }} />
               <CloseText>{t('audio.textVersion.close')}</CloseText>
             </LinkButton>

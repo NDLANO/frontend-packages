@@ -9,7 +9,7 @@
 import { ReactNode } from 'react';
 
 const locales = ['nb', 'nn', 'en', 'se', 'sma'] as const;
-export type Locale = typeof locales[number];
+export type Locale = (typeof locales)[number];
 
 export type Link = {
   text: string;
@@ -48,7 +48,7 @@ export interface License {
 }
 
 export interface Copyright {
-  license: License;
+  license?: License;
   creators: Array<Contributor>;
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;

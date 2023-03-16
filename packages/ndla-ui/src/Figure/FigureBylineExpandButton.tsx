@@ -26,7 +26,8 @@ export const FigureBylineExpandButton = ({ messages, typeClass }: Props) => {
       data-classtype={typeClass}
       data-aria={messages.expandBylineButtonLabel}
       data-ariaexpanded={messages.minimizeBylineButtonLabel}
-      aria-label={messages.expandBylineButtonLabel}>
+      aria-label={messages.expandBylineButtonLabel}
+    >
       <ChevronUp className="expanded-icon" />
       <ChevronDown className="contracted-icon" />
     </button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Footer, FooterQualityInsurance, FooterLinkButton } from '@ndla/editor';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 const optionsQualityInsurance = [
   {
@@ -29,14 +29,16 @@ const FooterExample = () => (
         messages={{
           buttonLabel: 'Kvalitetssikring',
           heading: 'Kvalitetssikring:',
-        }}>
+        }}
+      >
         {optionsQualityInsurance.map((option) => (
           <FooterLinkButton
             key={option.name}
             bold
             onClick={(e) => {
               option.onClick(e);
-            }}>
+            }}
+          >
             {option.name}
           </FooterLinkButton>
         ))}
@@ -45,18 +47,20 @@ const FooterExample = () => (
       <FooterLinkButton
         onClick={() => {
           console.log('clicked..'); // eslint-disable-line no-console
-        }}>
+        }}
+      >
         Tilbakestill endringer
       </FooterLinkButton>
     </div>
     <div>
-      <Button
+      <ButtonV2
         large
         onClick={() => {
           console.log('save resource'); // eslint-disable-line no-console
-        }}>
+        }}
+      >
         Lagre
-      </Button>
+      </ButtonV2>
     </div>
   </Footer>
 );

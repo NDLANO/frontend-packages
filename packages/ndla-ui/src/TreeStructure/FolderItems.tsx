@@ -72,7 +72,8 @@ const FolderItems = ({
     }
     tabIndex={-1}
     aria-labelledby={level === 0 && type === 'picker' ? treestructureId(type, 'label') : undefined}
-    role={level === 0 ? 'tree' : 'group'}>
+    role={level === 0 ? 'tree' : 'group'}
+  >
     {children}
     {folders.map((folder, index) => {
       const { subfolders, id } = folder;
@@ -102,7 +103,8 @@ const FolderItems = ({
               openFolders={openFolders}
               newFolderInput={newFolderInput}
               onCreate={onCreate}
-              {...rest}>
+              {...rest}
+            >
               {newFolderParentId === id && (
                 <li role="none">{newFolderInput?.({ parentId: id, onClose: onCancelNewFolder, onCreate })}</li>
               )}

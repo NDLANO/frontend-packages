@@ -11,7 +11,7 @@ import {
   NotionDialogWrapper,
 } from '@ndla/notion';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { withTranslation } from 'react-i18next';
 import { mockListView } from '../../dummydata';
 import { TextContent, ImageContent } from '../article/LicenseBox';
@@ -115,7 +115,8 @@ class ListViewExample extends Component {
       <NotionDialogWrapper
         title={selectedItem.name}
         subTitle={selectedItem.category.title}
-        closeCallback={() => this.handleSelectItem()}>
+        closeCallback={() => this.handleSelectItem()}
+      >
         <NotionDialogContent>
           {selectedItem.image ? <NotionDialogImage src={selectedItem.image} alt={selectedItem.description} /> : null}
           <NotionDialogText>{selectedItem.longDescription}</NotionDialogText>
@@ -126,7 +127,7 @@ class ListViewExample extends Component {
           source={selectedItem.source}
           authors={selectedItem.authors}
           licenseBox={
-            <Modal activateButton={<Button link>{t('article.useContent')}</Button>} size="medium">
+            <Modal activateButton={<ButtonV2 variant="link">{t('article.useContent')}</ButtonV2>} size="medium">
               {(onClose) => (
                 <>
                   <ModalHeader modifier="no-bottom-padding">

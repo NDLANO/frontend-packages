@@ -50,7 +50,8 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
           aria-disabled={disabled}
           ref={ref}
           tabIndex={tabIndex}
-          {...rest}>
+          {...rest}
+        >
           {children}
           {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
         </a>

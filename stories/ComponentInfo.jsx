@@ -5,7 +5,7 @@ import BEMHelper from 'react-bem-helper';
 import Tabs from '@ndla/tabs';
 import { Spinner } from '@ndla/icons';
 import { uuid, copyTextToClipboard } from '@ndla/util';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 
 const statusMessages = {
@@ -46,7 +46,7 @@ class ComponentInfo extends Component {
         title: 'Kodeeksempel',
         content: (
           <Fragment>
-            <Button
+            <ButtonV2
               onClick={() => {
                 copyTextToClipboard(reactCode);
                 this.setState(
@@ -58,12 +58,13 @@ class ComponentInfo extends Component {
                   },
                 );
               }}
-              outline
-              title="Kopier til clipboard">
+              variant="outline"
+              title="Kopier til clipboard"
+            >
               <Fragment>
                 <Copy /> {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
               </Fragment>
-            </Button>
+            </ButtonV2>
 
             <Suspense fallback={<Spinner />}>
               <SyntaxHighlighter code={reactCode} />

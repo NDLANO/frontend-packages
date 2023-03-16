@@ -822,7 +822,7 @@ export const subjectCategories = [
     type: constants.subjectCategories.OTHER,
     visible: true,
     subjects: [
-      { name: 'NDLA Film', id: 'other_subject_1', path: '#' },
+      { name: 'NDLA film', id: 'other_subject_1', path: '#' },
       { name: 'Verktøykassa - for elev', id: 'other_subject_2', path: '#' },
       { name: 'Verktøykassa - for lærer', id: 'other_subject_3', path: '#' },
       { name: 'Tverrfaglige tema', id: 'other_subject_4', path: '#' },

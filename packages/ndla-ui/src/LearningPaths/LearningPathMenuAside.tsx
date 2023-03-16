@@ -109,7 +109,8 @@ const LearningPathMenuAside = ({ lastUpdated, learningPathURL, copyright, isOpen
         target="_blank"
         rel="noopener noreferrer"
         variant="outline"
-        inverted={invertedStyle}>
+        inverted={invertedStyle}
+      >
         {t('learningPath.createLearningPathButtonText')}
       </SafeLinkButton>
     </StyledAside>

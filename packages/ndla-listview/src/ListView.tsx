@@ -282,13 +282,15 @@ const ListView = ({
             <button
               type="button"
               className={`style-button ${viewStyle === 'list' && 'active'}`}
-              onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}>
+              onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}
+            >
               <ListIcon />
             </button>
             <button
               type="button"
               className={`style-button ${viewStyle === 'grid' && 'active'}`}
-              onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}>
+              onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}
+            >
               <GridIcon />
             </button>
           </div>
@@ -307,7 +309,8 @@ const ListView = ({
                     selectedLetter === letter ? selectedLetterCallback('') : selectedLetterCallback(letter)
                   }
                   aria-pressed={selectedLetter === letter}
-                  aria-label={t('listview.filters.alphabet.letterFilter', { letter: letter })}>
+                  aria-label={t('listview.filters.alphabet.letterFilter', { letter: letter })}
+                >
                   {letter}
                 </button>
               </li>

@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Grid } from '@ndla/icons/common';
 import { ListCircle } from '@ndla/icons/editor';
 import { animations, breakpoints, colors, mq } from '@ndla/core';
@@ -32,7 +32,7 @@ const ButtonContainer = styled.div`
   width: 44px;
   height: 44px;
 `;
-const ButtonElement = styled(Button)`
+const ButtonElement = styled(ButtonV2)`
   border-radius: 50%;
   padding: 2px;
   width: 100%;
@@ -81,11 +81,13 @@ const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => 
     <Wrapper>
       <ButtonContainer>
         <ButtonElement
-          stripped
+          variant="stripped"
+          colorTheme="greyLighter"
           type="button"
           size="normal"
           title={t('searchPage.resultType.gridView')}
-          onClick={() => onClickHandler('grid')}>
+          onClick={() => onClickHandler('grid')}
+        >
           <ButtonContent selected={viewType === 'grid'}>
             <Grid aria-hidden title="" />
           </ButtonContent>
@@ -93,10 +95,11 @@ const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => 
       </ButtonContainer>
       <ButtonContainer>
         <ButtonElement
-          stripped
+          variant="stripped"
           size="normal"
           title={t('searchPage.resultType.listView')}
-          onClick={() => onClickHandler('list')}>
+          onClick={() => onClickHandler('list')}
+        >
           <ButtonContent selected={viewType === 'list'}>
             <ListCircle aria-hidden title="" />
           </ButtonContent>

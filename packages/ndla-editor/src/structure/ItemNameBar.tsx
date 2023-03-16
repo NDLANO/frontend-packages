@@ -168,7 +168,8 @@ const ItemNameBar = ({
         lastItemClickable={lastItemClickable}
         arrowDirection={isOpen ? 90 : 0}
         onClick={() => toggleOpen(path)}
-        isVisible={isVisible}>
+        isVisible={isVisible}
+      >
         {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
         {title}
       </ItemTitleButton>

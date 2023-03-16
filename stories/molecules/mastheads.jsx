@@ -60,7 +60,7 @@ class MastheadWithTopicMenu extends Component {
     if (!this.props.hideMenuButton) {
       filters.push({
         value: 'Value',
-        title: this.props.ndlaFilm ? 'NDLA Film' : 'Medieuttrykk og mediesamfunnet',
+        title: this.props.ndlaFilm ? 'NDLA film' : 'Medieuttrykk og mediesamfunnet',
       });
     }
     return (
@@ -115,7 +115,8 @@ class MastheadWithTopicMenu extends Component {
         onClose={() => {
           this.setState({ value: '' });
           this.closeAllModals[1] = null;
-        }}>
+        }}
+      >
         {this.renderSearchField()}
       </MastheadSearchModal>
     );
@@ -151,7 +152,8 @@ class MastheadWithTopicMenu extends Component {
         skipToMainContentId={skipToMainContentId}
         ndlaFilm={ndlaFilm}
         infoContent={beta && betaInfoContent}
-        messages={messages}>
+        messages={messages}
+      >
         <MastheadItem left>
           {!hideMenuButton && (
             <ButtonV2 inverted={ndlaFilm} variant="outline" shape="pill">

@@ -113,7 +113,8 @@ const SearchFieldHeader = ({
           onClick={() => {
             onChange('');
             inputRef.current?.focus();
-          }}>
+          }}
+        >
           <CrossIcon style={iconStyle} title={t<string>('welcomePage.resetSearch')} />
         </ClearButton>
       )}

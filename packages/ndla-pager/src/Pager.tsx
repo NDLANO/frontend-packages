@@ -19,17 +19,19 @@ const createQueryString = (obj: Query) =>
     .map(([key, value]) => `${key}=${value}`)
     .join('&');
 
+type ColorTheme = 'primary' | 'lighter';
+
 const pageItemActiveStyle = css`
   border-top: 3px solid ${colors.brand.primary};
   background-color: 'rgba(222,235,246,0.5)';
 `;
 
-const pageItemStyle = css`
+const pageItemStyle = (small: boolean = false, color: ColorTheme) => css`
   display: inline;
   background: transparent;
   border: 0;
-  border-top: 3px solid ${colors.background.dark};
-  padding: 1em 1.45em;
+  border-top: 3px solid ${color === 'primary' ? colors.background.dark : colors.white};
+  padding: ${small ? '0.2em 0.6em' : '1em 1.45em'};
   margin: 1em 0.3em 0;
   text-decoration: none;
   box-shadow: none;
@@ -50,6 +52,8 @@ interface PageItemProps<T extends Query> {
   pathname: string;
   onClick: (query: T & { page: number }) => void;
   type?: string;
+  small?: boolean;
+  colorTheme: ColorTheme;
 }
 
 export const PageItem = <T extends Query>({
@@ -60,6 +64,8 @@ export const PageItem = <T extends Query>({
   onClick,
   pageItemComponentClass: Component,
   type,
+  small,
+  colorTheme,
 }: PageItemProps<T>) => {
   const query = { ...currentQuery, page };
   const linkToPage = {
@@ -71,13 +77,13 @@ export const PageItem = <T extends Query>({
 
   if (Component === SafeLink) {
     return (
-      <SafeLink css={pageItemStyle} onClick={handleClick} to={linkToPage}>
+      <SafeLink css={pageItemStyle(small, colorTheme)} onClick={handleClick} to={linkToPage}>
         {children}
       </SafeLink>
     );
   }
   return (
-    <Component css={pageItemStyle} onClick={handleClick} type={type}>
+    <Component css={pageItemStyle(small, colorTheme)} onClick={handleClick} type={type}>
       {children}
     </Component>
   );
@@ -97,6 +103,8 @@ interface Props<T extends Query> {
   query: T;
   onClick?: (query: T & { page: number }) => void;
   pageItemComponentClass?: ElementType;
+  small?: boolean;
+  colorTheme?: ColorTheme;
 }
 
 const Pager = <T extends Query>({
@@ -106,15 +114,16 @@ const Pager = <T extends Query>({
   pageItemComponentClass = SafeLink,
   query,
   pathname = '',
+  small,
+  colorTheme = 'primary',
 }: Props<T>) => {
   const steps = stepNumbers(page, lastPage);
 
-  const rest = { onClick, pageItemComponentClass, query, pathname };
-
+  const rest = { onClick, pageItemComponentClass, query, pathname, small, colorTheme };
   const PageItems = steps.map((n) => {
     if (n === page) {
       return (
-        <span key={n} aria-current="step" css={[pageItemStyle, pageItemActiveStyle]}>
+        <span key={n} aria-current="step" css={[pageItemStyle(small, colorTheme), pageItemActiveStyle]}>
           {n}
         </span>
       );

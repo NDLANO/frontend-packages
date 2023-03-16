@@ -101,7 +101,8 @@ class FilmFrontpage extends Component {
             margin: spacingUnit * 3.5,
             arrowOffset: 0,
           },
-        ]}>
+        ]}
+      >
         {(autoSizedProps) =>
           resourceTypeSelected ? (
             <MovieGrid
@@ -149,7 +150,8 @@ class FilmFrontpage extends Component {
         css={css`
           background: #091a2a;
           padding-bottom: ${spacing.large};
-        `}>
+        `}
+      >
         <FilmSlideshow slideshow={highlighted} />
         <FilmMovieSearch
           ariaControlId={ARIA_FILMCATEGORY_ID}
@@ -163,7 +165,8 @@ class FilmFrontpage extends Component {
           ref={this.movieListRef}
           css={css`
             margin: ${spacingUnit * 3}px 0 ${spacingUnit * 4}px;
-          `}>
+          `}
+        >
           {showingAll ? <AllMoviesAlphabetically movies={moviesByType} /> : this.renderMovieGrid({ resourceTypeName })}
         </div>
         <AboutNdlaFilm aboutNDLAVideo={aboutNDLAVideo} moreAboutNdlaFilm={moreAboutNdlaFilm} />

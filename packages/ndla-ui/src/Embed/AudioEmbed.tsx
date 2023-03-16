@@ -54,7 +54,8 @@ const AudioEmbed = ({ embed, articlePath }: Props) => {
           viewBox="0 0 24 12"
           width="100%"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ backgroundColor: '#EFF0F2' }}>
+          style={{ backgroundColor: '#EFF0F2' }}
+        >
           <path d="M0 0h24v24H0V0z" fill="none" />
           <path
             transform="scale(0.3) translate(28, 8.5)"
@@ -138,14 +139,16 @@ const AudioEmbed = ({ embed, articlePath }: Props) => {
             authors={contributors}
             origin={data.copyright.origin}
             locale={i18n.language}
-            type="audio">
+            type="audio"
+          >
             {data.copyright.license.license !== 'COPYRIGHT' && (
               <>
                 {copyString && (
                   <CopyButton
                     variant="outline"
                     copyNode={t('license.hasCopiedTitle')}
-                    onClick={() => navigator.clipboard.writeText(copyString)}>
+                    onClick={() => navigator.clipboard.writeText(copyString)}
+                  >
                     {t('license.copyTitle')}
                   </CopyButton>
                 )}
@@ -212,7 +215,8 @@ const ImageLicense = ({ articlePath, title, imageUrl, copyright }: ImageLicenseP
           </ButtonV2>
         }
         authors={captionAuthors}
-        locale={i18n.language}>
+        locale={i18n.language}
+      >
         <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
           {(close) => (
             <FigureLicenseDialogContent
@@ -222,14 +226,16 @@ const ImageLicense = ({ articlePath, title, imageUrl, copyright }: ImageLicenseP
               authors={contributors}
               origin={copyright.origin}
               locale={i18n.language}
-              type="image">
+              type="image"
+            >
               {copyright.license.license !== 'COPYRIGHTED' && (
                 <>
                   {copyString && (
                     <CopyButton
                       variant="outline"
                       copyNode={t('license.hasCopiedTitle')}
-                      onClick={() => navigator.clipboard.writeText(copyString)}>
+                      onClick={() => navigator.clipboard.writeText(copyString)}
+                    >
                       {t('license.copyTitle')}
                     </CopyButton>
                   )}

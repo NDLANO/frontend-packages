@@ -115,7 +115,8 @@ class ListViewExample extends Component {
       <NotionDialogWrapper
         title={selectedItem.name}
         subTitle={selectedItem.category.title}
-        closeCallback={() => this.handleSelectItem()}>
+        closeCallback={() => this.handleSelectItem()}
+      >
         <NotionDialogContent>
           {selectedItem.image ? <NotionDialogImage src={selectedItem.image} alt={selectedItem.description} /> : null}
           <NotionDialogText>{selectedItem.longDescription}</NotionDialogText>

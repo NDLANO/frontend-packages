@@ -99,7 +99,8 @@ class NotionBlockExample extends Component {
               default: 'Required',
               description: 'Tar inn en liste med Notionsblocks',
             },
-          ]}></ComponentInfo>
+          ]}
+        ></ComponentInfo>
       </>
     );
   }

@@ -117,7 +117,8 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                 shape="pill"
                 onClick={() => {
                   onFilterToggle(item.value);
-                }}>
+                }}
+              >
                 <StyledButtonContent>{item.label}</StyledButtonContent>
                 <StyledButtonContentSelected>
                   <CrossIcon />
@@ -139,7 +140,8 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                   </StyledButtonContentSelected>
                 </ButtonV2>
               </StyledButtonElementWrapper>
-            }>
+            }
+          >
             {(onClose: () => void) => (
               <>
                 <ModalHeader modifier={['left-align']}>
@@ -177,7 +179,8 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                   size="normal"
                   colorTheme={!item.selected ? 'greyLighter' : undefined}
                   shape="pill"
-                  onClick={() => onFilterToggle(item.value)}>
+                  onClick={() => onFilterToggle(item.value)}
+                >
                   <StyledButtonContent>{item.label}</StyledButtonContent>
                   {item.selected && (
                     <StyledButtonContentSelected>

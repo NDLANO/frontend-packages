@@ -126,7 +126,8 @@ export const MenuButton = ({
         tabIndex={tabIndex}
         className={className}
         svgSize={svgSizes[size || 'normal']}
-        {...rest}>
+        {...rest}
+      >
         <MenuIconWrapper svgSize={svgSizes[size || 'normal']}>{menuIcon || <StyledHorizontalMenu />}</MenuIconWrapper>
       </StyledMenuButton>
       <DropdownMenu.Portal>

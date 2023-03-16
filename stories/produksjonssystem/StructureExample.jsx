@@ -298,7 +298,8 @@ class StructureExample extends Component {
                       };
                     });
                   }
-                }}>
+                }}
+              >
                 <span />
                 <span>{filter.name}</span>
               </ConnectionButton>

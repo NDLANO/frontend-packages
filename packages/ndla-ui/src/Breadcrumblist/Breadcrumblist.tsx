@@ -279,7 +279,8 @@ const Breadcrumblist = ({
         startOffset={wrapperOffset}
         hideOnNarrow={hideOnNarrow}
         isVisible={isVisible}
-        mastheadHeight={mastheadHeight}>
+        mastheadHeight={mastheadHeight}
+      >
         {items.length > 0 && (
           <>
             <Heading invertedStyle={invertedStyle}>{t('breadcrumb.youAreHere')}</Heading>
@@ -296,7 +297,8 @@ const Breadcrumblist = ({
                       onClick={(e: MouseEvent<HTMLElement>) => {
                         onNav && onNav(e, item);
                       }}
-                      aria-label={label}>
+                      aria-label={label}
+                    >
                       <IconWrapper invertedStyle={invertedStyle} isCurrent={isCurrent}>
                         {icon && icon}
                         {typename && TypeIcon(typename)}

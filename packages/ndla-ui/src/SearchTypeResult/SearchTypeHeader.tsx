@@ -121,7 +121,8 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
                     e.currentTarget.blur();
                   }
                   onFilterClick?.(option.id);
-                }}>
+                }}
+              >
                 {option.name}
                 {option.active && (
                   <CategoryTypeCrossWrapper>

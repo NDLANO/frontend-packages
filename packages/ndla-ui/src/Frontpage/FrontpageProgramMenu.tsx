@@ -61,14 +61,16 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories }: Props) => {
           onClick={() => toggleSubjects(false)}
           colorTheme={showSubjects ? 'lighter' : undefined}
           size="medium"
-          shape="pill">
+          shape="pill"
+        >
           <StyledMenuItem>{t('frontpageMenu.program')}</StyledMenuItem>
         </ButtonV2>
         <ButtonV2
           onClick={() => toggleSubjects(true)}
           colorTheme={!showSubjects ? 'lighter' : undefined}
           size="medium"
-          shape="pill">
+          shape="pill"
+        >
           <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
         </ButtonV2>
       </StyledMenu>

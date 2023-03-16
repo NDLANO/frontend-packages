@@ -51,12 +51,14 @@ const CompetenceGoalTab = ({ list, isOembed }: CompetenceProps) => {
                     ? t('competenceGoals.competenceTabCoreTooltip')
                     : t('competenceGoals.showCompetenceGoals')
                 }
-                key={`tabitem-${id}`}>
+                key={`tabitem-${id}`}
+              >
                 <ButtonV2
                   shape="pill"
                   aria-current={id === currentTabItem.id}
                   colorTheme={id !== currentTabItem.id ? 'lighter' : undefined}
-                  onClick={() => setCurrentTab(list[index])}>
+                  onClick={() => setCurrentTab(list[index])}
+                >
                   {tabTitle}
                 </ButtonV2>
               </Tooltip>

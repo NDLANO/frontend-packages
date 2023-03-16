@@ -41,7 +41,8 @@ const ArticleSideBar = ({ copyPageUrlLink, licenseBox }: Props) => {
             variant="outline"
             aria-live="assertive"
             copyNode={t('article.copyPageLinkCopied')}
-            data-copy-string={copyPageUrlLink}>
+            data-copy-string={copyPageUrlLink}
+          >
             {t('article.copyPageLink')}
           </CopyButton>
         </ButtonWrapper>
@@ -53,7 +54,8 @@ const ArticleSideBar = ({ copyPageUrlLink, licenseBox }: Props) => {
               {t('article.useContent')}
             </ButtonV2>
           }
-          size="medium">
+          size="medium"
+        >
           {(onClose: () => void) => (
             <>
               <ModalHeader modifier="no-bottom-padding">

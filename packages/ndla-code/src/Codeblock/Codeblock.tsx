@@ -124,7 +124,8 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
         language={format}
         wrapLines
         showInlineLineNumbers
-        showLineNumbers>
+        showLineNumbers
+      >
         {code}
       </SyntaxHighlighter>
       {showCopy && (
@@ -136,7 +137,8 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
           onClick={() => {
             copyTextToClipboard(code);
             setIsCopied(true);
-          }}>
+          }}
+        >
           {isCopied ? <Done aria-hidden="true" /> : <Copy aria-hidden="true" />}{' '}
           {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
         </ButtonV2>

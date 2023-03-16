@@ -152,7 +152,8 @@ const CategorySelect = ({ resourceTypes, resourceTypeSelected, ariaControlId, on
         aria-controls="selectCategory"
         type="button"
         tabIndex={resourceTypesIsOpen ? -1 : 0}
-        onClick={() => setResourceTypesIsOpen(true)}>
+        onClick={() => setResourceTypesIsOpen(true)}
+      >
         <div>
           <span>{t('ndlaFilm.search.chooseCategory')}</span>
           <small>{(resourceTypeSelected && resourceTypeSelected.name) || t('ndlaFilm.search.categoryFromNdla')}</small>
@@ -168,7 +169,8 @@ const CategorySelect = ({ resourceTypes, resourceTypeSelected, ariaControlId, on
             onDeactivate: () => setResourceTypesIsOpen(false),
             clickOutsideDeactivates: true,
             escapeDeactivates: true,
-          }}>
+          }}
+        >
           <DropdownWrapper id="selectCategory" offsetDropdown={offsetDropDown}>
             <DropdownButton aria-controls={ariaControlId} type="button" onClick={() => onSelect()}>
               <span>{t('ndlaFilm.search.categoryFromNdla')}</span>
@@ -180,7 +182,8 @@ const CategorySelect = ({ resourceTypes, resourceTypeSelected, ariaControlId, on
                 ref={(el) => updateRef(el, resourceType.id)}
                 onClick={() => onSelect(resourceType.id)}
                 data-id={resourceType.id}
-                key={resourceType.id}>
+                key={resourceType.id}
+              >
                 <span>{resourceType.name}</span>
               </DropdownButton>
             ))}

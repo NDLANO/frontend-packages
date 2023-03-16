@@ -49,7 +49,8 @@ const floatVideo = (left) => (
     <FigureWithLicense
       type={left ? 'left' : 'right'}
       resizeIframe
-      caption="Utholdenhet - animasjon av oksygentransporten">
+      caption="Utholdenhet - animasjon av oksygentransporten"
+    >
       <iframe
         title="Video: Utholdenhet - animasjon av oksygentransporten"
         height="270"

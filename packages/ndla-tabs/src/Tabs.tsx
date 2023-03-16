@@ -98,12 +98,14 @@ class Tabs extends Component<Props, State> {
           {...classes({ modifier })}
           onSelect={this.handleSelect}
           selectedIndex={this.state.index}
-          forceRenderTabPanel={forceRenderTabPanel}>
+          forceRenderTabPanel={forceRenderTabPanel}
+        >
           <TabList
             {...classes('list', {
               ...baseClass,
               singleLine: this.state.singleLineState,
-            })}>
+            })}
+          >
             {tabs.map((tab, i) => (
               <Tab
                 {...classes('tab', {
@@ -113,7 +115,8 @@ class Tabs extends Component<Props, State> {
                 })}
                 key={tab.key ? tab.key : i}
                 disabled={tab.disabled}
-                data-cy={`${tab.title}-video-tab`}>
+                data-cy={`${tab.title}-video-tab`}
+              >
                 {tab.title}
               </Tab>
             ))}

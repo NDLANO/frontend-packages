@@ -138,7 +138,8 @@ const ContentTypeResult = ({
                     if (onNavigate) {
                       onNavigate();
                     }
-                  }}>
+                  }}
+                >
                   {unGrouped && !ignoreContentTypeBadge && (
                     <ContentTypeBadge type={resource.contentType ?? ''} size="x-small" background border />
                   )}
@@ -156,7 +157,8 @@ const ContentTypeResult = ({
                 css={[showAllButtonStyle, shouldHighlightShowAllButton && noWidthhighlightStyle]}
                 data-highlighted={shouldHighlightShowAllButton}
                 onClick={() => toggleShowAll(!showAll)}
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 {showAll ? messages.showLessResultLabel : messages.allResultLabel}
                 {showAll ? <ChevronUp /> : <ChevronDown />}
               </ButtonV2>

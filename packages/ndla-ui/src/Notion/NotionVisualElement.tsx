@@ -66,7 +66,8 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
       copyright={visualElement.copyright}
       licenseString={visualElement.copyright?.license?.license ?? ''}
       licenseButtons={visualElement.licenseButtons}
-      type={type}>
+      type={type}
+    >
       {visualElement.image?.src ? (
         <img src={visualElement.image?.src} alt={visualElement.image.alt} />
       ) : (

@@ -207,7 +207,8 @@ const ProductionToolVersionLog = () => {
                                   <StyledAccordionsPanelIconButton
                                     onClick={
                                       () => console.log('Preview version') // eslint-disable-line no-console
-                                    }>
+                                    }
+                                  >
                                     <Eye />
                                   </StyledAccordionsPanelIconButton>
                                 </Tooltip>
@@ -216,7 +217,8 @@ const ProductionToolVersionLog = () => {
                                     onClick={() =>
                                       // eslint-disable-next-line no-console
                                       console.log('Are you sure? (modal to confirm revert?)')
-                                    }>
+                                    }
+                                  >
                                     <Restore />
                                   </StyledAccordionsPanelIconButton>
                                 </Tooltip>
@@ -246,7 +248,8 @@ const ProductionToolVersionLog = () => {
                               date: newDate,
                             });
                             updateVersions(updatedVersions);
-                          }}>
+                          }}
+                        >
                           <StyledForm onSubmit={() => {}}>
                             <StyledInputLabel htmlFor="inputComment">
                               {t('editor.versionHistory.inputLabel')}

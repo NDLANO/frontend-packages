@@ -47,7 +47,8 @@ const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
             <LearningPath />
             <span>{t('learningPath.openMenuTooltip')}</span>
           </ButtonV2>
-        }>
+        }
+      >
         {(closeModal: VoidFunction) => (
           <>
             <ModalHeader>

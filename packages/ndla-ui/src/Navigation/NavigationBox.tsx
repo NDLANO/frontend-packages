@@ -233,7 +233,8 @@ export const NavigationBox = ({
             <StyledListElementWrapper
               isAdditionalResource={item.isAdditionalResource}
               lighter={colorMode === 'light'}
-              selected={item.selected}>
+              selected={item.selected}
+            >
               <ListElementType
                 to={item.url ?? ''}
                 colorTheme={item.selected ? 'darker' : colorMode}
@@ -244,12 +245,14 @@ export const NavigationBox = ({
                   if (onClick) {
                     onClick(e, item.id);
                   }
-                }}>
+                }}
+              >
                 <StyledButtonContent>
                   <StyledButtonContentText
                     isAdditionalResource={item.isAdditionalResource}
                     isRestrictedResource={item.isRestrictedResource}
-                    lighter={colorMode === 'light'}>
+                    lighter={colorMode === 'light'}
+                  >
                     <StyledMarksWrapper>
                       {item.isAdditionalResource && (
                         <StyledAdditionalResourceMark lighter={colorMode === 'light'} selected={item.selected}>

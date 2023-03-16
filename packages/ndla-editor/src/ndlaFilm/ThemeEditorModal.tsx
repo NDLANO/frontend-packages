@@ -92,7 +92,8 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
           onClick={() => {
             onSave();
             onClose();
-          }}>
+          }}
+        >
           {save}
         </ButtonV2>
         <ButtonV2
@@ -100,7 +101,8 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
           onClick={onClose}
           css={css`
             margin-left: ${spacing.small};
-          `}>
+          `}
+        >
           {cancel}
         </ButtonV2>
       </ModalBody>

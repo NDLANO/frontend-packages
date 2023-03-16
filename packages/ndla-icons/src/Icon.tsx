@@ -47,7 +47,8 @@ const IconBase = ({
         verticalAlign: 'middle',
         color,
         ...style,
-      }}>
+      }}
+    >
       {title && <title>{title}</title>}
       {description && <desc>{description}</desc>}
       {children}

@@ -247,7 +247,8 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
               <div
                 ref={descriptionRef}
                 data-audio-player-description={1}
-                data-read-more-text={t('audio.readMoreDescriptionLabel')}>
+                data-read-more-text={t('audio.readMoreDescriptionLabel')}
+              >
                 {description}
               </div>
             </StyledDescription>
@@ -266,7 +267,8 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
               variant="link"
               size="normal"
               onClick={toggleTextVersion}
-              data-audio-text-button-id={staticRenderId}>
+              data-audio-text-button-id={staticRenderId}
+            >
               <CrossIcon style={{ width: '20px', height: '20px' }} />
               <CloseText>{t('audio.textVersion.close')}</CloseText>
             </LinkButton>

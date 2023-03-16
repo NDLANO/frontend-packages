@@ -318,7 +318,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                       modalButton={<></>}
                       reuseLabel={t('reuse')}
                       authors={visualElementAuthors}
-                      licenseRights={visualElementLicense.rights}>
+                      licenseRights={visualElementLicense.rights}
+                    >
                       {visualElementLicense.abbreviation && (
                         <Header>
                           <Trigger asChild>
@@ -344,7 +345,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                           authors={visualElementGroupedAuthors}
                           title={notionVisualElement?.title}
                           origin={notionVisualElement?.copyright?.origin}
-                          messages={{ source: t('source'), title: t('title') }}>
+                          messages={{ source: t('source'), title: t('title') }}
+                        >
                           {visualElementType === 'image' ? (
                             <ImageLicenseButtons
                               imageUrl={notionVisualElement.image?.src ?? ''}

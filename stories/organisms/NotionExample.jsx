@@ -58,7 +58,8 @@ class NotionExample extends Component {
                             authors={['Gary Waters']}
                           />
                         </Fragment>
-                      }>
+                      }
+                    >
                       sosialisering
                     </Notion>{' '}
                     lærer menneskene å fungere i et samfunn og får kjennskap til de regler og verdier som det forventes
@@ -107,7 +108,8 @@ class NotionExample extends Component {
                           authors={['Gary Waters']}
                         />
                       </Fragment>
-                    }>
+                    }
+                  >
                     sanksjon
                   </Notion>{' '}
                   kan både være positive og negative. Ønsket adferd belønnes, men uønsket adferd straffes. Når en person
@@ -156,7 +158,8 @@ class NotionExample extends Component {
                           />
                         </NotionDialogContent>
                       </Fragment>
-                    }>
+                    }
+                  >
                     norm
                   </Notion>{' '}
                   til sine egne og følger dem, sier man at normene er internalisert.
@@ -210,7 +213,8 @@ class NotionExample extends Component {
                           authors={['Gary Waters']}
                         />
                       </Fragment>
-                    }>
+                    }
+                  >
                     usikker
                   </Notion>
                   .

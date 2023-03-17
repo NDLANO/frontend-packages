@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Get a grouped contributor description list for each supported language 1`] = `
-Array [
-  Object {
+[
+  {
     "description": "Regissør Francis Ford Coppola",
     "label": "Opphaver",
     "metaType": "author",
   },
-  Object {
+  {
     "description": "Paramount Pictures, Distributør Alfran Productions",
     "label": "Rettighetshaver",
     "metaType": "copyrightHolder",
   },
-  Object {
+  {
     "description": "Francis Ford Coppola, Språklig Mario Puzo",
     "label": "Bearbeider",
     "metaType": "contributor",
@@ -21,18 +21,18 @@ Array [
 `;
 
 exports[`Get a grouped contributor description list for each supported language 2`] = `
-Array [
-  Object {
+[
+  {
     "description": "Director Francis Ford Coppola",
     "label": "Originator",
     "metaType": "author",
   },
-  Object {
+  {
     "description": "Paramount Pictures, Distributor Alfran Productions",
     "label": "Rightsholder",
     "metaType": "copyrightHolder",
   },
-  Object {
+  {
     "description": "Francis Ford Coppola, Linguistic Mario Puzo",
     "label": "Processor",
     "metaType": "contributor",

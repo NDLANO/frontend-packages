@@ -7,9 +7,9 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
-import { FolderOutlined } from '@ndla/icons/contentType';
-import { FileDocumentOutline } from '@ndla/icons/common';
+import React from 'react';
+import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
+import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
@@ -112,7 +112,7 @@ const CountContainer = styled.div`
   margin: 0 ${spacing.small} 0 ${spacing.nsmall};
 `;
 
-const IconCountWrapper = styled.div<LayoutProps>`
+const IconTextWrapper = styled.div<LayoutProps>`
   display: flex;
   align-items: center;
   gap: ${spacing.xxsmall};
@@ -144,10 +144,10 @@ const Count = ({ type, count, layoutType }: IconCountProps) => {
   if (!count) return null;
 
   return (
-    <IconCountWrapper type={layoutType}>
-      <Icon aria-label={t(`myNdla.${type}s`)} />
+    <IconTextWrapper type={layoutType}>
+      <Icon />
       <span>{t(`myNdla.${type}s`, { count })}</span>
-    </IconCountWrapper>
+    </IconTextWrapper>
   );
 };
 
@@ -160,22 +160,30 @@ interface Props {
   link: string;
   type: LayoutType;
   menuItems?: MenuItemProps[];
+  isShared?: boolean;
 }
 
-const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
+const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems, isShared }: Props) => {
   const { t } = useTranslation();
+  const Icon = isShared ? FolderShared : FolderOutlined;
 
   return (
     <FolderWrapper type={type} id={id}>
       <TitleWrapper type={type}>
         <IconWrapper>
-          <FolderOutlined aria-label={t('myNdla.folder.folder')} />
+          <Icon aria-label={t('myNdla.folder.folder')} />
         </IconWrapper>
         <ResourceTitleLink to={link}>
           <FolderTitle title={title}>{title}</FolderTitle>
         </ResourceTitleLink>
       </TitleWrapper>
       <MenuWrapper>
+        {isShared && (
+          <IconTextWrapper type={type}>
+            <Share />
+            <span>{t('myNdla.folder.sharing.shared')}</span>
+          </IconTextWrapper>
+        )}
         <CountContainer>
           <Count layoutType={type} type={'folder'} count={subFolders} />
           <Count layoutType={type} type={'resource'} count={subResources} />

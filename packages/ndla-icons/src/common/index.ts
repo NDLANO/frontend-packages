@@ -71,6 +71,7 @@ export { default as RssFeed } from './RssFeed';
 export { default as Sad } from './Sad';
 export { default as Search } from './Search';
 export { default as Share } from './Share';
+export { default as ShareArrow } from './ShareArrow';
 export { default as ShortText } from './ShortText';
 export { default as Tag } from './Tag';
 export { default as ThreeSixty } from './ThreeSixty';

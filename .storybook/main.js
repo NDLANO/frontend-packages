@@ -8,6 +8,9 @@
 
 module.exports = {
   stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx)'],
+  typescript: {
+    reactDocgen: 'react-docgen-typescript-plugin',
+  },
 
   addons: [
     '@storybook/addon-a11y',

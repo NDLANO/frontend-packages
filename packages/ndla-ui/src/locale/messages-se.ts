@@ -1101,6 +1101,7 @@ const messages = {
     resources_plural: '{{count}} resurssat',
     folders: '{{count}} máhpat',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
@@ -1137,7 +1138,7 @@ const messages = {
         },
         button: {
           share: 'Del mappen',
-          preview: 'Forhåndsvis delt mappe',
+          preview: 'Forhåndsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
@@ -1165,6 +1166,7 @@ const messages = {
     examLockInfo: 'Mu NDLA sisdoalu redigeren ii leat doaimmas ohppiide eksámenáigodagas.',
     help: 'Veahkki',
     more: 'Eanet válljejumit',
+    selectView: 'Velg visning',
     listView: 'Oppalašlistu',
     detailView: 'Bienalaš oppalašlistu',
     shortView: 'Oanehis listu',

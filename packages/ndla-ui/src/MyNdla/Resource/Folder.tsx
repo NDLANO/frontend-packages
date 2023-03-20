@@ -13,10 +13,11 @@ import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
-import { MenuButton, MenuItemProps } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
 import { ResourceTitleLink } from '../../Resource/resourceComponents';
+import FolderMenu from './FolderMenu';
 
-type LayoutType = 'list' | 'listLarger' | 'block';
+export type LayoutType = 'list' | 'listLarger' | 'block';
 interface LayoutProps {
   type: LayoutType;
 }
@@ -82,7 +83,7 @@ const FolderTitle = styled.h2`
 
   overflow: hidden;
   text-overflow: ellipsis;
-  // Unfortunate css needed for multi-line text overflow ellipsis.
+  /* Unfortunate css needed for multi-line text overflow ellipsis. */
   display: -webkit-box;
   -webkit-line-clamp: 1;
   line-clamp: 1;
@@ -158,12 +159,23 @@ interface Props {
   subResources?: number;
   description?: string;
   link: string;
-  type: LayoutType;
+  type?: LayoutType;
+  onViewTypeChange?: (type: LayoutType) => void;
   menuItems?: MenuItemProps[];
   isShared?: boolean;
 }
 
-const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems, isShared }: Props) => {
+const Folder = ({
+  id,
+  link,
+  title,
+  subFolders,
+  subResources,
+  type = 'list',
+  menuItems,
+  isShared,
+  onViewTypeChange,
+}: Props) => {
   const { t } = useTranslation();
   const Icon = isShared ? FolderShared : FolderOutlined;
 
@@ -188,7 +200,9 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
           <Count layoutType={type} type={'folder'} count={subFolders} />
           <Count layoutType={type} type={'resource'} count={subResources} />
         </CountContainer>
-        {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && (
+          <FolderMenu menuItems={menuItems} viewType={type} onViewTypeChange={onViewTypeChange} />
+        )}
       </MenuWrapper>
     </FolderWrapper>
   );

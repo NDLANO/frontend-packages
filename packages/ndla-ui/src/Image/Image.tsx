@@ -8,6 +8,7 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import LazyLoadImage from './LazyLoadImage';
 
 export interface ImageCrop {
@@ -37,10 +38,21 @@ const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFo
   return widths.map((width) => `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`).join(', ');
 };
 
-const StyledImageWrapper = styled.div`
+interface StyledImageWrapperProps {
+  svg?: boolean;
+}
+
+const StyledImageWrapper = styled.div<StyledImageWrapperProps>`
   position: relative;
-  display: flex;
-  justify-content: center;
+  ${({ svg }) => {
+    return (
+      svg &&
+      css`
+      display: flex
+      justify-content: center;
+    `
+    );
+  }}
 `;
 interface Props {
   alt: string;
@@ -95,7 +107,7 @@ const Image = ({
   }
 
   return (
-    <StyledImageWrapper>
+    <StyledImageWrapper svg={contentType === 'image/svg+xml'}>
       <picture>
         <source type={contentType} srcSet={srcSet} sizes={sizes} />
         <img alt={alt} src={`${src}?${queryString}`} {...rest} />

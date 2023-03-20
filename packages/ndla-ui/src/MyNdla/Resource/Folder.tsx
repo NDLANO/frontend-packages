@@ -159,8 +159,8 @@ interface Props {
   subResources?: number;
   description?: string;
   link: string;
-  type: LayoutType;
-  onViewTypeChange: (type: LayoutType) => void;
+  type?: LayoutType;
+  onViewTypeChange?: (type: LayoutType) => void;
   menuItems?: MenuItemProps[];
   isShared?: boolean;
 }

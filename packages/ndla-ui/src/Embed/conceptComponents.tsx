@@ -213,6 +213,10 @@ const ListWrapper = styled.div`
   align-items: center;
 `;
 
+const StyledNotionDialogContent = styled(NotionDialogContent)`
+  padding-top: ${spacing.small};
+`;
+
 const StyledList = styled.ul`
   display: flex;
   gap: ${spacing.small};
@@ -292,7 +296,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
           </h1>
           {closeButton}
         </NotionHeader>
-        <NotionDialogContent>
+        <StyledNotionDialogContent>
           {notionVisualElement && (
             <StyledFigure resizeIframe type={'full-column'}>
               {notionVisualElement.image?.src ? (
@@ -364,7 +368,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
             </StyledFigure>
           )}
           <NotionDialogText>{parseMarkdown(content ?? '', 'body')}</NotionDialogText>
-        </NotionDialogContent>
+        </StyledNotionDialogContent>
         {tags && (
           <ListWrapper>
             {`${t('notions.tags')}:`}

@@ -77,7 +77,7 @@ const FolderMenu = ({ menuItems, viewType, onViewTypeChange }: Props) => {
                 <FourlineHamburger />
               </ViewButton>
             </Tooltip>
-            <Tooltip tooltip={t('myNdla.detailedView')}>
+            <Tooltip tooltip={t('myNdla.detailView')}>
               <ViewButton
                 size="large"
                 aria-current={viewType === 'listLarger'}

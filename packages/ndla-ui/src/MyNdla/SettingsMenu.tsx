@@ -52,7 +52,7 @@ const SettingsMenu = ({ menuItems, children }: Props) => {
         position="bottom"
         size="small"
         activateButton={
-          <IconButtonV2 aria-label={t('myNdla.more')} variant="ghost">
+          <IconButtonV2 aria-label={t('myNdla.more')} colorTheme="light" variant="ghost">
             <HorizontalMenu />
           </IconButtonV2>
         }

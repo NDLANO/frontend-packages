@@ -1101,6 +1101,7 @@ const messages = {
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
     folders_plural: '{{count}} Folders',
+    settings: 'Settings',
     folder: {
       folder: 'Folder',
       delete: 'Delete folder',
@@ -1138,7 +1139,7 @@ const messages = {
         },
         button: {
           share: 'Share folder',
-          preview: 'Preview shared folder',
+          preview: 'Preview folder',
           unShare: 'Stop sharing',
           shareLink: 'Copy link',
         },
@@ -1167,6 +1168,7 @@ const messages = {
     examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     help: 'Help',
     more: 'More options',
+    selectView: 'Select view',
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',

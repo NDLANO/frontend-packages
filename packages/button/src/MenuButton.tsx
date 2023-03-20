@@ -98,7 +98,7 @@ const StyledMenuItem = styled(DropdownMenu.Item)<StyledMenuItemProps>`
 export interface MenuItemProps {
   icon?: ReactNode;
   text?: string;
-  onClick: (e?: MouseEvent<HTMLDivElement>) => void;
+  onClick: (e?: MouseEvent<HTMLElement>) => void;
   type?: 'danger';
 }
 

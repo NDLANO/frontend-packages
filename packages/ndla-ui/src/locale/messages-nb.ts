@@ -1100,6 +1100,7 @@ const messages = {
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1136,7 +1137,7 @@ const messages = {
         },
         button: {
           share: 'Del mappen',
-          preview: 'Forhåndsvis delt mappe',
+          preview: 'Forhåndsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
@@ -1164,6 +1165,7 @@ const messages = {
     examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     help: 'Hjelp',
     more: 'Flere valg',
+    selectView: 'Velg visning',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',

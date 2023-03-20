@@ -197,7 +197,6 @@ export interface ListResourceProps {
   tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   resourceTypes: { id: string; name: string }[];
   tags?: string[];
   description?: string;
@@ -214,7 +213,6 @@ const ListResource = ({
   tags,
   resourceImage,
   resourceTypes,
-  headingLevel = 'h2',
   description,
   menuItems,
   isLoading = false,
@@ -223,7 +221,6 @@ const ListResource = ({
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
   const firstContentType = resourceTypes?.[0]?.id ?? '';
-  const Title = ResourceTitle.withComponent(headingLevel);
 
   return (
     <ListResourceWrapper id={id}>
@@ -238,7 +235,7 @@ const ListResource = ({
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink to={link} target={targetBlank ? '_blank' : undefined}>
-            <Title title={title}>{title}</Title>
+            <ResourceTitle title={title}>{title}</ResourceTitle>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>

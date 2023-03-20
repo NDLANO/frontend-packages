@@ -23,7 +23,7 @@ const htmlCode = `<div class="demo-content">
 const cssCode = `body {
   padding: 20px;
   margin: 10px;
-  background: #ccc;
+  background: #fff;
 }`;
 
 const jsCode = `const arr = ["This", "Little", "Piggy"];

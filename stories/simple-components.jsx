@@ -719,18 +719,6 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Kodeblokk', () => (
-    <div>
-      <StoryIntro title="Kodeblokk">
-        <p>Lær deg HTML, CSS og Javascript.</p>
-      </StoryIntro>
-      <OneColumn>
-        <LayoutItem layout="extend">
-          <CodeblockExample />
-        </LayoutItem>
-      </OneColumn>
-    </div>
-  ))
 
   .add('Ukraina Banner', () => (
     <div>

@@ -182,21 +182,24 @@ const Folder = ({
   return (
     <FolderWrapper type={type} id={id}>
       <TitleWrapper type={type}>
-        <IconWrapper>
-          <Icon aria-label={t('myNdla.folder.folder')} />
+        <IconWrapper
+          aria-label={`${isShared ? `${t('myNdla.folder.sharing.shared')} ` : ''}${t('myNdla.folder.folder')}`}
+        >
+          <Icon />
         </IconWrapper>
         <ResourceTitleLink to={link}>
           <FolderTitle title={title}>{title}</FolderTitle>
         </ResourceTitleLink>
       </TitleWrapper>
       <MenuWrapper>
-        {isShared && (
-          <IconTextWrapper type={type}>
-            <Share />
-            <span>{t('myNdla.folder.sharing.shared')}</span>
-          </IconTextWrapper>
-        )}
         <CountContainer>
+          {isShared && (
+            // Information regarding the shared status of a folder is read previously, ignore this
+            <IconTextWrapper type={type} aria-hidden>
+              <Share />
+              <span>{t('myNdla.folder.sharing.shared')}</span>
+            </IconTextWrapper>
+          )}
           <Count layoutType={type} type={'folder'} count={subFolders} />
           <Count layoutType={type} type={'resource'} count={subResources} />
         </CountContainer>

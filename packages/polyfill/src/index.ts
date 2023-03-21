@@ -6,10 +6,6 @@
  *
  */
 
-// react-app-polyfill includes minimum requirements and commonly used language
-// features used by react apps
-import 'react-app-polyfill/ie11';
-
 // addition polyfill for language features used in ndla frontends
 import 'core-js/features/array/find';
 import 'core-js/features/array/flat-map';

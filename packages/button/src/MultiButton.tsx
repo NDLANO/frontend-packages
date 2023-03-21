@@ -176,7 +176,8 @@ export const MultiButton = ({
         variant={outline && !disabled ? 'outline' : undefined}
         onClick={() => {
           onClick(mainButton.value);
-        }}>
+        }}
+      >
         {children || mainButton.label}
       </Button>
       {!hideSecondaryButton && (
@@ -188,7 +189,8 @@ export const MultiButton = ({
               onDeactivate: () => setPopupState(false),
               clickOutsideDeactivates: true,
               escapeDeactivates: true,
-            }}>
+            }}
+          >
             <StyledMenuWrapper>
               <Button
                 css={clipLeft}
@@ -198,7 +200,8 @@ export const MultiButton = ({
                 onClick={() => setPopupState(!isOpen)}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
-                aria-label={isOpen ? t('multibutton.close') : t('multibutton.open')}>
+                aria-label={isOpen ? t('multibutton.close') : t('multibutton.open')}
+              >
                 <StyledIcon isOpen={isOpen} aria-hidden="true" />
               </Button>
               {isOpen && (
@@ -214,7 +217,8 @@ export const MultiButton = ({
                           onClick={() => {
                             onClick(button.value);
                             setPopupState(false);
-                          }}>
+                          }}
+                        >
                           {button.label}
                         </ButtonItem>
                       </MenuItem>

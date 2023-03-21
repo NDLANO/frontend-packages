@@ -8,7 +8,7 @@
 
 import React, { Component, Fragment } from 'react';
 import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '@ndla/accordion';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { FilterList } from '@ndla/ui';
 
 import ComponentInfo from '../ComponentInfo';
@@ -74,7 +74,8 @@ class AccordionExample extends Component {
             description: 'Vis kun et panel omgangen',
           },
         ]}
-        status={2}>
+        status={2}
+      >
         <h2>Eksempel</h2>
         <Accordion openIndexes={[0]}>
           {({ getPanelProps, getBarProps }) => (
@@ -131,16 +132,18 @@ class AccordionExample extends Component {
                     title={`Panel ${index + 1}`}
                     onClick={() => handleItemClick(index)}
                     hasError={errorPanels.includes(index)}
-                    isOpen={openIndexes.includes(index)}>
+                    isOpen={openIndexes.includes(index)}
+                  >
                     Panel {index + 1}
                   </AccordionBar>
                   <AccordionPanel
                     id={`panel-${index}`}
                     hasError={errorPanels.includes(index)}
-                    isOpen={openIndexes.includes(index)}>
+                    isOpen={openIndexes.includes(index)}
+                  >
                     <div>
                       <p>{item}</p>
-                      <Button onClick={() => handleItemClick(index)}>Lukk</Button>
+                      <ButtonV2 onClick={() => handleItemClick(index)}>Lukk</ButtonV2>
                     </div>
                   </AccordionPanel>
                 </Fragment>
@@ -150,13 +153,15 @@ class AccordionExample extends Component {
                 title="With tiny accordion inside"
                 onClick={() => handleItemClick(3)}
                 hasError={errorPanels.includes(3)}
-                isOpen={openIndexes.includes(3)}>
+                isOpen={openIndexes.includes(3)}
+              >
                 Accordion with tiny accordion inside
               </AccordionBar>
               <AccordionPanel
                 id="panelWithSubAccordion"
                 hasError={errorPanels.includes(3)}
-                isOpen={openIndexes.includes(3)}>
+                isOpen={openIndexes.includes(3)}
+              >
                 <TinyAccordionExample />
               </AccordionPanel>
             </AccordionWrapper>

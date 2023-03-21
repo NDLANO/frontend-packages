@@ -53,7 +53,7 @@ const StyledPortrait = styled(Portrait)`
       width: 4rem;
       height: 4rem;
     }
-  } ;
+  }
 `;
 
 const StyledHeading = styled.h1`

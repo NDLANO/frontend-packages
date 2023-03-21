@@ -49,7 +49,8 @@ const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
           size="medium"
           colorTheme="lighter"
           variant="ghost"
-          aria-label={t('user.buttonLogIn')}>
+          aria-label={t('user.buttonLogIn')}
+        >
           {t('myNdla.myNDLA')}
           <Feide />
         </StyledButton>

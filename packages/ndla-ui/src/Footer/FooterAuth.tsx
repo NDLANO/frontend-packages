@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { animations, colors, fonts, spacing } from '@ndla/core';
 import { ChevronDown, FeideText, LogIn, LogOut } from '@ndla/icons/common';
 import React from 'react';
@@ -44,7 +44,7 @@ const StyledButtonWrapper = styled.div`
   margin-top: ${spacing.normal};
 `;
 
-const LoginButton = styled(Button)`
+const LoginButton = styled(ButtonV2)`
   background: #222222;
   border-color: ${colors.text.light};
 `;
@@ -53,7 +53,7 @@ const StyledLogInIconWrapper = styled.span`
   margin-left: ${spacing.xsmall};
 `;
 
-const AuthedButton = styled(Button)`
+const AuthedButton = styled(ButtonV2)`
   color: #ffffff;
   transition: all ${animations.durations.fast} ease-in-out;
   &:hover,
@@ -79,7 +79,7 @@ const FooterAuth = ({ isAuthenticated, user, onAuthenticateClick, ...rest }: Aut
             user={user}
             onAuthenticateClick={onAuthenticateClick}
             activateButton={
-              <AuthedButton ghostPill size="medium">
+              <AuthedButton variant="ghost" shape="pill" size="medium">
                 {t('user.loggedInAsButton', { role: user?.eduPersonPrimaryAffiliation })}
                 <ChevronDown />
               </AuthedButton>

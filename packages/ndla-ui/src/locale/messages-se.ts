@@ -631,6 +631,7 @@ const messages = {
     published: 'Almmuhanbeaivi',
     rightsholder: 'Vuoigatvuođaguoddi',
     source: 'Gáldu',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ops, juoga manai boastut',
@@ -765,6 +766,7 @@ const messages = {
     hits: '{{count}} deaivama',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Adnojuvvo dás',
     closeNotion: 'Govčča',
   },
@@ -1051,7 +1053,8 @@ const messages = {
     loggedInAs: 'Don leat sisaloggejuvvon {{role}}.',
     loggedInAsButton: 'Don leat sisaloggejuvvon {{role}}',
     role: {
-      employee: 'oahpaheaddji',
+      employee: 'bargi',
+      faculty: 'bargi',
       staff: 'bargi',
       student: 'oahppi',
     },
@@ -1098,6 +1101,7 @@ const messages = {
     resources_plural: '{{count}} resurssat',
     folders: '{{count}} máhpat',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
@@ -1112,6 +1116,33 @@ const messages = {
       onDragEndMissingOver: 'Máhppa {{name}} lea luitojuvvon',
       onDragCancel: 'Sirdin botkejuvvui. Máhppa {{name}} lea luitojuvvon.',
       dragHandle: 'Ordne máhpa {{name}}',
+      sharing: {
+        share: 'Del mappe',
+        shared: 'Delt',
+        unShare: 'Delingen er avsluttet. Mappen er ikke lenger delt.',
+        link: 'Lenken er kopiert',
+        header: {
+          private: 'Vil du dele denne mappen?',
+          shared: 'Denne mappen er delt.',
+          unShare: 'Vil du avslutte deling av denne mappen?',
+        },
+        description: {
+          copy: 'Kopier og del denne lenken:',
+          private:
+            'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
+          private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
+          shared:
+            'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
+          unShare:
+            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+        },
+        button: {
+          share: 'Del mappen',
+          preview: 'Forhåndsvis mappe',
+          unShare: 'Avslutt deling',
+          shareLink: 'Kopier lenke',
+        },
+      },
     },
     tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',
@@ -1135,10 +1166,25 @@ const messages = {
     examLockInfo: 'Mu NDLA sisdoalu redigeren ii leat doaimmas ohppiide eksámenáigodagas.',
     help: 'Veahkki',
     more: 'Eanet válljejumit',
+    selectView: 'Velg visning',
     listView: 'Oppalašlistu',
     detailView: 'Bienalaš oppalašlistu',
     shortView: 'Oanehis listu',
-
+    sharedFolder: {
+      info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
+      firstShared: 'Mappa vart delt første gong {{date}}',
+      drawerButton: 'Vis mapper og ressursar',
+      drawerTitle: 'Mapper og ressursar',
+      learningpathUnsupported:
+        'Læringsstiar kan ikke visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+      description: {
+        info1:
+          'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
+        info2: 'Du kan bla i artiklane ved å bruke menyen.',
+        info3:
+          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+      },
+    },
     myPage: {
       noRecents: 'Don it leat lasihan makkárge resurssa vel. Ná boađát johtui:',
       imageAlt:
@@ -1175,6 +1221,14 @@ const messages = {
         title: 'Ná vurket iežat oiddotresurssaid NDLA:s',
         text: 'Deaddil váibmoboalu vurken dihtii resurssa.',
       },
+      favoriteSubjects: {
+        title: 'Slik lagrar du favorittfaga dine frå NDLA',
+        text: 'Klikk på hjarteknappen for å lagre et fag. Du vil då få muligheit til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
+      },
+      sharing: {
+        title: 'Slik deler du mappene dine med andre',
+        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+      },
       folderInfo: {
         title: 'Ná ordnet iežat oiddotresurssaid máhpaide',
         text: 'Deaddil mu máhpaid gurut bealde fálus beassan dihtii máhpa visogovvii. Doppe sáhtát ráhkadit ođđa máhpaid ja vuollemáhpaid. Sáhtát maid ráhkadit ođđa máhpa gulahallanláses mii ihtá go deaddilat váimmu muhtin resurssas.',
@@ -1207,6 +1261,14 @@ const messages = {
       onDragCancel: 'Sirdin botkejuvvui. Resursa {{name}} lea luitojuvvon',
       dragHandle: 'Ordne resurssa {{name}}',
     },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
+    },
   },
   snackbar: {
     close: 'Govčča dieđu',
@@ -1228,6 +1290,11 @@ const messages = {
   },
   programme: {
     grades: 'Trinn',
+  },
+  embed: {
+    conceptListError: 'Klarte ikkje å vise forklaringsliste',
+    linkError: 'Klarte ikkje å vise lenke.',
+    unsupported: `Embed {{type}} er ikkje støtta.`,
   },
 };
 

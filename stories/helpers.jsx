@@ -11,7 +11,8 @@ export const Center = ({ children, style }) => (
       padding: '0 12px',
       maxWidth: '900px',
       ...style,
-    }}>
+    }}
+  >
     {children}
   </div>
 );
@@ -52,7 +53,8 @@ export const AnchorNavigation = ({ links }) => (
       listStyle: 'none',
       margin: 0,
       padding: 0,
-    }}>
+    }}
+  >
     {links.map((link) => (
       <li key={uuid()}>{link}</li>
     ))}

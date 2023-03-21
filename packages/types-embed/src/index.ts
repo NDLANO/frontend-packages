@@ -16,6 +16,7 @@ import {
   H5pPreviewResponse,
   H5pOembedData,
   H5pLicenseInformation,
+  H5pInfo,
 } from './h5pTypes';
 import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
 import { CodeEmbedData, CodeMetaData } from './codeTypes';
@@ -108,7 +109,7 @@ export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, Brightco
 export type { RelatedContentData, NodeType };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
 
-export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation };
+export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 
 interface MetaDataFailure<T extends EmbedData> {
   resource: T['resource'];

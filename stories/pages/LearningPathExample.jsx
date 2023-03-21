@@ -25,7 +25,7 @@ import {
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
-import Button, { FavoriteButton } from '@ndla/button';
+import { ButtonV2, FavoriteButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { useWindowSize } from '@ndla/hooks';
 import Resources from '../molecules/resources';
@@ -277,7 +277,8 @@ const LearningPathExample = ({ invertedStyle }) => {
                 <LearningPathLastStepNavigation
                   learningPathName={learningStepsData.title.title}
                   subject={{ url: '#', name: 'Samfunnsfag' }}
-                  topic={{ url: '#', name: 'Eksempel på fag' }}>
+                  topic={{ url: '#', name: 'Eksempel på fag' }}
+                >
                   <Resources key="resources" />
                 </LearningPathLastStepNavigation>
               )}
@@ -313,14 +314,15 @@ const LearningPathExample = ({ invertedStyle }) => {
       </LearningPathWrapper>
       {hideHelp && (
         <StyledInfoHelper>
-          <Button
-            link
+          <ButtonV2
+            variant="link"
             css={css`
               float: right;
             `}
-            onClick={() => toggleHelp(false)}>
+            onClick={() => toggleHelp(false)}
+          >
             <Cross /> Lukk
-          </Button>
+          </ButtonV2>
           <p>Demo: Bruk pil-tastene for å navigere</p>
           <div>
             Læringssti ID:
@@ -342,7 +344,7 @@ const LearningPathExample = ({ invertedStyle }) => {
                 }
               }}
             />
-            <Button onClick={() => updateLearningPathId(tempLearningPathId)}>Hent læringssti</Button>
+            <ButtonV2 onClick={() => updateLearningPathId(tempLearningPathId)}>Hent læringssti</ButtonV2>
           </div>
         </StyledInfoHelper>
       )}

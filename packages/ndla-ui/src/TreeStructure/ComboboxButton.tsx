@@ -118,7 +118,8 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             onToggleTree(!showTree);
             innerRef.current?.focus();
           }
-        }}>
+        }}
+      >
         {loading && (
           <ContentLoader width={1000} height={40}>
             <rect x="15" y="0" width="1000" rx="3" ry="3" r="15" height="40" />
@@ -144,7 +145,8 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             onClick={() => {
               innerRef.current?.focus();
               onToggleTree(!showTree);
-            }}>
+            }}
+          >
             {selectedFolder?.name}
           </StyledSelectedFolder>
         )}
@@ -160,7 +162,8 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           onClick={() => {
             innerRef.current?.focus();
             onToggleTree(!showTree);
-          }}>
+          }}
+        >
           {showTree ? <ChevronUp /> : <ChevronDown />}
         </IconButton>
       </StyledRow>

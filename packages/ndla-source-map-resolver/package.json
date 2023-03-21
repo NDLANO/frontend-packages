@@ -1,14 +1,11 @@
 {
   "name": "@ndla/source-map-resolver",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Source map resolver for errors logged via ndla-error-reporter.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "bin": {
     "source-map-resolver": "bin/source-map-resolver.js"
-  },
-  "scripts": {
-    "test": "NODE_ENV=unittest jest"
   },
   "repository": {
     "type": "git",

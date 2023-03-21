@@ -1,4 +1,4 @@
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Additional, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
@@ -138,7 +138,8 @@ const ContentTypeResult = ({
                     if (onNavigate) {
                       onNavigate();
                     }
-                  }}>
+                  }}
+                >
                   {unGrouped && !ignoreContentTypeBadge && (
                     <ContentTypeBadge type={resource.contentType ?? ''} size="x-small" background border />
                   )}
@@ -150,15 +151,17 @@ const ContentTypeResult = ({
           })}
           {displayShowAllButton && (
             <StyledListItem ref={showAllRef}>
-              <Button
-                ghostPill
+              <ButtonV2
+                variant="ghost"
+                shape="pill"
                 css={[showAllButtonStyle, shouldHighlightShowAllButton && noWidthhighlightStyle]}
                 data-highlighted={shouldHighlightShowAllButton}
                 onClick={() => toggleShowAll(!showAll)}
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 {showAll ? messages.showLessResultLabel : messages.allResultLabel}
                 {showAll ? <ChevronUp /> : <ChevronDown />}
-              </Button>
+              </ButtonV2>
             </StyledListItem>
           )}
         </StyledList>

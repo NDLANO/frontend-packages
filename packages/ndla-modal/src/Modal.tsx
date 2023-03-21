@@ -100,7 +100,8 @@ const Modal = ({
           onAnimationEnd={onAnimationEnd}
           className={`animation-container ${animation} ${
             animateIn && 'animateIn'
-          } ${size} ${backgroundColor} ${position}`}>
+          } ${size} ${backgroundColor} ${position}`}
+        >
           {children(closeModal)}
         </DialogContent>
       </StyledDialogOverlay>

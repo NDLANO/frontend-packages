@@ -351,7 +351,8 @@ export const SearchResultList = ({ results, loading }: SearchResultListProps) =>
           key={`search_result_item_${typeof item.url === 'object' ? item.url.href : item.url}`}
           item={item}
           additionalContentTooltip={t('resource.tooltipAdditionalTopic')}
-          subjectsLabel={t('searchPage.searchResultListMessages.subjectsLabel')}>
+          subjectsLabel={t('searchPage.searchResultListMessages.subjectsLabel')}
+        >
           {item.children}
         </SearchResultItem>
       ))}

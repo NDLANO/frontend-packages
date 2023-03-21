@@ -631,6 +631,7 @@ const messages = {
     rightsholder: 'Rightsholder',
     source: 'Source',
     published: 'Published',
+    info: 'License information',
   },
   errorMessage: {
     title: 'Oops, something went wrong',
@@ -765,6 +766,7 @@ const messages = {
     hits: '{{count}} hits',
   },
   notions: {
+    tags: 'List and filters',
     usedIn: 'Used in',
     closeNotion: 'Close',
   },
@@ -1051,8 +1053,9 @@ const messages = {
     loggedInAs: 'You are logged in as {{role}}.',
     loggedInAsButton: 'You are logged in as {{role}}',
     role: {
-      employee: 'Teacher',
-      staff: 'Staff',
+      employee: 'Employee',
+      faculty: 'Employee',
+      staff: 'Employee',
       student: 'Student',
     },
     buttonLogIn: 'Log in with Feide',
@@ -1098,6 +1101,7 @@ const messages = {
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
     folders_plural: '{{count}} Folders',
+    settings: 'Settings',
     folder: {
       folder: 'Folder',
       delete: 'Delete folder',
@@ -1112,6 +1116,34 @@ const messages = {
       onDragEndMissingOver: 'The folder {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
       dragHandle: 'Drag the folder {{name}}',
+      sharing: {
+        share: 'Share folder',
+        shared: 'Shared',
+        unShare: 'Sharing stopped. The folder is no longer shared',
+        link: 'Link is copied',
+        header: {
+          private: 'Do you want to share this folder?',
+          shared: 'This folder is shared',
+          unShare: 'Do you want to stop sharing this folder?',
+        },
+        description: {
+          copy: 'Copy and share this link:',
+          private:
+            'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
+          private2:
+            'When you share a folder you share all content within the folder, including subfolders and resources',
+          shared:
+            'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
+          unShare:
+            'When you stop sharing, the link to the shared folder is no longer active. If you have shared the link with someone, they can no longer see the content in the folder.',
+        },
+        button: {
+          share: 'Share folder',
+          preview: 'Preview folder',
+          unShare: 'Stop sharing',
+          shareLink: 'Copy link',
+        },
+      },
     },
     tagList: 'Tags',
     tags: '{{count}} tag',
@@ -1136,9 +1168,25 @@ const messages = {
     examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     help: 'Help',
     more: 'More options',
+    selectView: 'Select view',
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',
+    sharedFolder: {
+      info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
+      firstShared: 'The folder was shared for the first time {{date}}',
+      learningpathUnsupported:
+        'Learning paths cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
+      drawerButton: 'Show folders and resources',
+      drawerTitle: 'Folders and resources',
+      description: {
+        info1:
+          'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
+        info2: 'You can use the menu to navigate through the articles.',
+        info3:
+          'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
+      },
+    },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",
       imageAlt:
@@ -1176,6 +1224,14 @@ const messages = {
         title: 'How to save your favourite resources from NDLA',
         text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
+      sharing: {
+        title: 'How you share your folders with others',
+        text: 'Click on the share-button in the folder to share. You will get a link you can share with others.',
+      },
+      favoriteSubjects: {
+        title: 'How to save your favorite subjects from NDLA',
+        text: 'Click on the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
+      },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
         text: 'You can get to the folder overview by clicking on <strong>My folders</strong> on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
@@ -1208,6 +1264,14 @@ const messages = {
       onDragCancel: 'Dragging was cancelled. The resource {{name}} was dropped',
       dragHandle: 'Drag the resource {{name}}',
     },
+    favoriteSubjects: {
+      title: 'My favorite subjects',
+      subjects: '{{count}} subject',
+      subjects_0: '{{count}} subjects',
+      subjects_plural: '{{count}} subjects',
+      noFavorites: 'You do not have any favorite subjects!',
+      goToAllSubjects: 'Go to all subjects',
+    },
   },
   snackbar: {
     close: 'Close notification',
@@ -1229,6 +1293,11 @@ const messages = {
   },
   programme: {
     grades: 'Grades',
+  },
+  embed: {
+    conceptListError: 'Failed to show concept list',
+    linkError: 'Failed to show link.',
+    unsupported: `Embed {{type}} not supported.`,
   },
 };
 

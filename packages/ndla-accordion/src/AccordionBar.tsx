@@ -124,7 +124,8 @@ export const AccordionBar = ({ title, children, panelId, hasError, isOpen, onCli
       aria-controls={panelId.toString()}
       onClick={onClick}
       tiny={tiny}
-      isOpen={isOpen}>
+      isOpen={isOpen}
+    >
       <ChevronRight aria-hidden="true" />
       <span>{title}</span>
     </StyledButton>

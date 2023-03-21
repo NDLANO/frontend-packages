@@ -9,7 +9,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Plus as PlusIcon } from '@ndla/icons/action';
 
 import PopupFilter, { PopupFilterProps } from '../PopupFilter';
@@ -106,10 +106,10 @@ const SubjectFilters = ({ filters, activeFilters, isNarrowScreen }: SubjectFilte
   };
 
   const OpenModalButton = () => (
-    <Button type="button" size="normal" greyLighter borderShape="rounded" onClick={handlePopupOpen}>
+    <ButtonV2 type="button" size="normal" colorTheme="greyLighter" shape="pill" onClick={handlePopupOpen}>
       <FilterButtonText>{t('searchPage.searchFilterMessages.noValuesButtonText')}</FilterButtonText>
       <PlusIcon />
-    </Button>
+    </ButtonV2>
   );
 
   const ActiveFiltersElement = ({ showModalButton }: { showModalButton?: boolean }) => {

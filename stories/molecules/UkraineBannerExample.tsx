@@ -12,7 +12,8 @@ const UkraineBannerExample = () => {
         altText: 'Ukrainian flag',
         imageSrc:
           'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/1280px-Flag_of_Ukraine.svg.png',
-      }}></BannerCard>
+      }}
+    ></BannerCard>
   );
 };
 

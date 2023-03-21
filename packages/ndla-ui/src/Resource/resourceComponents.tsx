@@ -35,10 +35,11 @@ export const ResourceTitleLink = styled(SafeLink)`
   }
 `;
 
-export const ResourceTitle = styled.h2`
+export const ResourceTitle = styled.span`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: ${fonts.weight.bold};
   // Unfortunate css needed for multi-line text overflow ellipsis.
   line-height: 1;
   display: -webkit-box;

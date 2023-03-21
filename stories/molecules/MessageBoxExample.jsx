@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 `;
 
 const MessageHeader = styled.h2`
-  border-bottom: #a5bcd3 2px solid; ;
+  border-bottom: #a5bcd3 2px solid;
 `;
 const MessageBoxWrapper = styled.div`
   margin-top: 20px;
@@ -69,7 +69,8 @@ const MessageBoxExample = () => {
                     { text: 'link 2', href: '#' },
                     { text: 'link 3', href: '#' },
                   ]}
-                  showCloseButton>
+                  showCloseButton
+                >
                   {t('messageBoxInfo.newVersion')}
                 </MessageBox>
               </MessageBoxWrapper>
@@ -195,7 +196,8 @@ messageBoxTagMessage="Beta"
               default: 'Required',
               description: 'kort tekst som blir satt inne i tag',
             },
-          ]}></ComponentInfo>
+          ]}
+        ></ComponentInfo>
       </Wrapper>
     </>
   );

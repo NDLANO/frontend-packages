@@ -45,7 +45,8 @@ class UploadDropZoneExample extends Component {
           onAddedFiles={this.addedFiles}
           multiple
           ariaLabel="Upload example"
-          loading={uploading}>
+          loading={uploading}
+        >
           <strong>Dra og slipp</strong> eller trykk for å laste opp bilde(r)
         </UploadDropZone>
         <ul>

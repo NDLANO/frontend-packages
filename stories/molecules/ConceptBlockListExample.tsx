@@ -70,7 +70,8 @@ const ConceptBlockListExample = () => {
               <Figure type="full">
                 <NotionList
                   title="Liste med forklaringer"
-                  notions={[{ type: 'image' }, { type: 'h5p' }, { type: 'video' }]}></NotionList>
+                  notions={[{ type: 'image' }, { type: 'h5p' }, { type: 'video' }]}
+                ></NotionList>
               </Figure>
               <p>
                 En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet

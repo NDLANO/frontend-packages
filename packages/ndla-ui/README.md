@@ -1,6 +1,6 @@
 # ndla-ui
 
-Main UI component library for NDLA.
+Main UI component library for NDLA
 
 ## Installation
 
@@ -28,7 +28,7 @@ react-router
 
 See: [package.json](package.json) for version requirements.
 
-**N.B!** Optional dependencies are required if you use `import {...} from '@ndla/ui'`
+**N.B!** Optional dependencies are required if you use `import {...} from '@ndla/ui'`.
 
 ## Usage
 

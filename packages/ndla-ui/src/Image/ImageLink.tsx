@@ -29,7 +29,8 @@ export function ImageLink({ src, crop, children, ...rest }: Props) {
       target="_blank"
       href={`${src}?${makeSrcQueryString(undefined, crop)}`}
       rel="noopener noreferrer"
-      {...rest}>
+      {...rest}
+    >
       {children}
     </StyledLink>
   );

@@ -199,7 +199,8 @@ const ResourcesTopicTitle = ({
               <TooltipButton id={tooltipId} aria-label={t('resource.dialogTooltip')}>
                 <HelpIcon invertedStyle={invertedStyle} />
               </TooltipButton>
-            }>
+            }
+          >
             {(onClose: () => void) => (
               <>
                 <ModalHeader>

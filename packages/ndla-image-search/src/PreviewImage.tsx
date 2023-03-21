@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { CheckboxItem } from '@ndla/forms';
 import { IImageMetaInformationV3 } from '@ndla/types-image-api';
@@ -74,9 +74,9 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>
           ))}
         </div>
-        <Button data-cy="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
+        <ButtonV2 data-cy="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
           {useImageTitle}
-        </Button>
+        </ButtonV2>
         {showCheckbox && (
           <div>
             <CheckboxItem

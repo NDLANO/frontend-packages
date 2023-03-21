@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
 import { YouTubeShape } from './shapes';
@@ -41,12 +41,12 @@ export default function VideoSearchResultYouTube({
             <div>{`${translations.duration}: ${setYouTubeDuration(videoData.duration)}`}</div>
             <div>{`${translations.interactioncount}: ${videoData.interactioncount}`}</div>
             <div>{videoData.description}</div>
-            <Button {...classes('button')} outline onClick={() => onVideoPreview(video)}>
+            <ButtonV2 {...classes('button')} variant="outline" onClick={() => onVideoPreview(video)}>
               {translations.previewVideo}
-            </Button>
-            <Button data-cy="use-video" {...classes('button')} onClick={() => onSelectVideo(video)}>
+            </ButtonV2>
+            <ButtonV2 data-cy="use-video" {...classes('button')} onClick={() => onSelectVideo(video)}>
               {translations.addVideo}
-            </Button>
+            </ButtonV2>
           </div>
         </div>
 

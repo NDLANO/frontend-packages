@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Codeblock } from '@ndla/code';
 import { Cross } from '@ndla/icons/action';
 import ComponentInfo from '../ComponentInfo';
@@ -31,9 +31,9 @@ const first = arr.shift();
 console.log(first);`;
 
 const edCloseButton = (
-  <Button stripped>
+  <ButtonV2 variant="stripped">
     <Cross />
-  </Button>
+  </ButtonV2>
 );
 
 const CodeExample = () => (
@@ -75,7 +75,8 @@ const CodeExample = () => (
     messages={[
       'react-syntax-highlighter implemented with Prism',
       'Language options: https://github.com/conorhastings/react-syntax-highlighter/blob/v11.0.2/AVAILABLE_LANGUAGES_PRISM.MD',
-    ]}>
+    ]}
+  >
     <p>Kodekomponent for visning av kodesnutter</p>
     <Codeblock actionButton={edCloseButton} code={htmlCode} format="markup" title="HTML EKSEMPEL" showCopy={true} />
     <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />

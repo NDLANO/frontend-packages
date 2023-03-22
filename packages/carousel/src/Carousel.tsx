@@ -27,6 +27,7 @@ interface Props extends CalculatedProps {
 }
 
 const CarouselWrapper = styled.div`
+  overflow: hidden;
   position: relative;
   cursor: grab;
   &:hover {
@@ -156,17 +157,11 @@ interface InteractButtonProps {
 const leftStyle = css`
   left: 0px;
   margin-left: 10px;
-  button {
-    transform: translateY(-50%);
-  }
 `;
 
 const rightStyle = css`
   right: 0px;
   margin-right: 10px;
-  button {
-    transform: translateX(-100%) translateY(-50%);
-  }
 `;
 
 const InteractButton = ({ position, onClick, button, hidden }: InteractButtonProps) => {

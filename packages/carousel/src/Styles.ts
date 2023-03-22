@@ -23,13 +23,9 @@ export const StyledSlideContent = styled.div<SlideContentProps>`
 export const ButtonWrapper = styled.div`
   display: none;
   position: absolute;
-  height: 100%;
+  top: 30%;
+  transform: translateY(-20%);
   z-index: 1;
-  button {
-    right: auto;
-    position: absolute;
-    top: 50%;
-  }
 `;
 
 export const StyledWrapperAutosizer = styled.div<{ width: string }>`

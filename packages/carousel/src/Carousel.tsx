@@ -137,7 +137,7 @@ export const Carousel = ({
         onClick={() => slidePage('right')}
         hidden={hideButtons || !showRight}
       />
-      <SliderWrapper ref={slideContainer} onScroll={onScroll} onMouseDown={onMouseDown}>
+      <SliderWrapper ref={slideContainer} tabIndex={-1} onScroll={onScroll} onMouseDown={onMouseDown}>
         <StyledSlideContent margin={margin} ref={slideshowRef} gap={distanceBetweenItems}>
           {items.map((item) => item)}
         </StyledSlideContent>

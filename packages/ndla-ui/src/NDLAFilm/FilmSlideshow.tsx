@@ -25,14 +25,17 @@ const SlideInfoWrapper = styled.div`
   position: absolute;
   color: ${colors.white};
   max-width: 40%;
+  min-width: 40%;
   top: 40%;
   right: 5%;
   ${mq.range({ until: breakpoints.desktop })} {
     top: 30%;
     max-width: 60%;
+    min-width: 60%;
   }
   ${mq.range({ until: breakpoints.tablet })} {
     max-width: 100%;
+    min-width: 100%;
     left: 5%;
   }
 `;
@@ -71,7 +74,7 @@ const StyledImg = styled.img`
 `;
 
 const CarouselContainer = styled.div`
-  transform: translateY(-20%);
+  transform: translateY(-30%);
 `;
 
 interface StyledFilmContentCardProps {
@@ -81,7 +84,9 @@ interface StyledFilmContentCardProps {
 const shouldForwardProp = (p: string) => p !== 'current';
 
 const StyledFilmContentCard = styled(FilmContentCard, { shouldForwardProp })<StyledFilmContentCardProps>`
-  margin-bottom: 20px;
+  min-height: 240px;
+  max-height: 240px;
+  margin-bottom: 2%;
   transform: ${(p) => (p.current ? 'translateY(0%)' : 'translateY(10%)')};
   transition: all 200ms;
 `;

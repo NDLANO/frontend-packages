@@ -8,17 +8,67 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { CalculatedCarouselProps, Carousel } from '@ndla/carousel';
-import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
+import { Carousel, CarouselAutosize } from '@ndla/carousel';
+import { breakpoints, colors, misc, mq, spacing, spacingUnit } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { IconButtonV2 } from '@ndla/button';
 import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 import FilmContentCard from './FilmContentCard';
 import { MovieType } from './types';
 
+export const slideshowBreakpoints: {
+  until?: keyof typeof breakpoints;
+  columnsPrSlide: number;
+  distanceBetweenItems: number;
+  arrowOffset: number;
+  margin?: number;
+  maxColumnWidth?: number;
+}[] = [
+  {
+    until: 'mobileWide',
+    columnsPrSlide: 2,
+    distanceBetweenItems: spacingUnit / 2,
+    margin: spacingUnit,
+    arrowOffset: 13,
+  },
+  {
+    until: 'tabletWide',
+    columnsPrSlide: 3,
+    distanceBetweenItems: spacingUnit / 2,
+    margin: spacingUnit,
+    arrowOffset: 13,
+  },
+  {
+    until: 'desktop',
+    columnsPrSlide: 3,
+    distanceBetweenItems: spacingUnit,
+    margin: spacingUnit * 2,
+    arrowOffset: 0,
+  },
+  {
+    until: 'wide',
+    columnsPrSlide: 3,
+    distanceBetweenItems: spacingUnit,
+    margin: spacingUnit * 2,
+    arrowOffset: 0,
+  },
+  {
+    until: 'ultraWide',
+    columnsPrSlide: 3,
+    distanceBetweenItems: spacingUnit,
+    margin: spacingUnit * 3.5,
+    arrowOffset: 0,
+  },
+  {
+    columnsPrSlide: 3,
+    distanceBetweenItems: spacingUnit,
+    margin: spacingUnit * 3.5,
+    arrowOffset: 0,
+  },
+];
+
 interface Props {
   slideshow: MovieType[];
-  autoSizedProps: CalculatedCarouselProps;
 }
 
 const SlideInfoWrapper = styled.div`
@@ -95,49 +145,53 @@ const StyledFilmContentCard = styled(FilmContentCard, { shouldForwardProp })<Sty
   transition: all 200ms;
 `;
 
-const FilmSlideshow = ({ slideshow, autoSizedProps }: Props) => {
+const FilmSlideshow = ({ slideshow }: Props) => {
   const [currentSlide, setCurrentSlide] = useState(slideshow[0]);
 
   return (
-    <section>
-      <StyledSafeLink to={currentSlide.path} tabIndex={-1} aria-hidden>
-        <StyledFigure>
-          <StyledImg src={currentSlide.metaImage?.url ?? ''} alt={currentSlide.metaImage?.alt ?? ''} />
-        </StyledFigure>
-        <SlideInfoWrapper>
-          <InfoWrapper>
-            <h3>{currentSlide.title}</h3>
-            <span id="currentMovieDescription">{currentSlide.metaDescription}</span>
-          </InfoWrapper>
-        </SlideInfoWrapper>
-      </StyledSafeLink>
-      <CarouselContainer>
-        <Carousel
-          leftButton={
-            <SlideshowButton aria-label={''}>
-              <ChevronLeft />
-            </SlideshowButton>
-          }
-          rightButton={
-            <SlideshowButton aria-label={''}>
-              <ChevronRight />
-            </SlideshowButton>
-          }
-          items={slideshow.map((movie) => (
-            <StyledFilmContentCard
-              onFocus={() => setCurrentSlide(movie)}
-              current={movie.id === currentSlide.id}
-              aria-describedby={'currentMovieDescription'}
-              key={movie.id}
-              movie={movie}
-              columnWidth={autoSizedProps.columnWidth}
-              resourceTypes={[]}
+    <CarouselAutosize breakpoints={slideshowBreakpoints} itemsLength={slideshow.length}>
+      {(autoSizedProps) => (
+        <section>
+          <StyledSafeLink to={currentSlide.path} tabIndex={-1} aria-hidden>
+            <StyledFigure>
+              <StyledImg src={currentSlide.metaImage?.url ?? ''} alt={currentSlide.metaImage?.alt ?? ''} />
+            </StyledFigure>
+            <SlideInfoWrapper>
+              <InfoWrapper>
+                <h3>{currentSlide.title}</h3>
+                <span id="currentMovieDescription">{currentSlide.metaDescription}</span>
+              </InfoWrapper>
+            </SlideInfoWrapper>
+          </StyledSafeLink>
+          <CarouselContainer>
+            <Carousel
+              leftButton={
+                <SlideshowButton aria-label={''}>
+                  <ChevronLeft />
+                </SlideshowButton>
+              }
+              rightButton={
+                <SlideshowButton aria-label={''}>
+                  <ChevronRight />
+                </SlideshowButton>
+              }
+              items={slideshow.map((movie) => (
+                <StyledFilmContentCard
+                  onFocus={() => setCurrentSlide(movie)}
+                  current={movie.id === currentSlide.id}
+                  aria-describedby={'currentMovieDescription'}
+                  key={movie.id}
+                  movie={movie}
+                  columnWidth={autoSizedProps.columnWidth}
+                  resourceTypes={[]}
+                />
+              ))}
+              {...autoSizedProps}
             />
-          ))}
-          {...autoSizedProps}
-        />
-      </CarouselContainer>
-    </section>
+          </CarouselContainer>
+        </section>
+      )}
+    </CarouselAutosize>
   );
 };
 

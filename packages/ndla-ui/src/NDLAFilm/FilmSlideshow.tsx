@@ -81,6 +81,10 @@ interface StyledFilmContentCardProps {
   current?: boolean;
 }
 
+const SlideshowButton = styled(IconButtonV2)`
+  margin-top: ${spacing.normal};
+`;
+
 const shouldForwardProp = (p: string) => p !== 'current';
 
 const StyledFilmContentCard = styled(FilmContentCard, { shouldForwardProp })<StyledFilmContentCardProps>`
@@ -110,14 +114,14 @@ const FilmSlideshow = ({ slideshow, autoSizedProps }: Props) => {
       <CarouselContainer>
         <Carousel
           leftButton={
-            <IconButtonV2 aria-label={''}>
+            <SlideshowButton aria-label={''}>
               <ChevronLeft />
-            </IconButtonV2>
+            </SlideshowButton>
           }
           rightButton={
-            <IconButtonV2 aria-label={''}>
+            <SlideshowButton aria-label={''}>
               <ChevronRight />
-            </IconButtonV2>
+            </SlideshowButton>
           }
           items={slideshow.map((movie) => (
             <StyledFilmContentCard

@@ -91,7 +91,7 @@ const StyledFilmContentCard = styled(FilmContentCard, { shouldForwardProp })<Sty
   transition: all 200ms;
 `;
 
-const Slideshow = ({ slideshow, autoSizedProps }: Props) => {
+const FilmSlideshow = ({ slideshow, autoSizedProps }: Props) => {
   const [currentSlide, setCurrentSlide] = useState(slideshow[0]);
 
   return (
@@ -137,4 +137,4 @@ const Slideshow = ({ slideshow, autoSizedProps }: Props) => {
   );
 };
 
-export default Slideshow;
+export default FilmSlideshow;

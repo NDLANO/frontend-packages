@@ -24,7 +24,8 @@ export const FigureOpenDialogButton = ({ messages, type }: Props) => {
       className="c-figure__fullscreen-btn"
       data-aria={messages.zoomImageButtonLabel}
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
-      aria-label={messages.zoomImageButtonLabel}>
+      aria-label={messages.zoomImageButtonLabel}
+    >
       {type === 'image' && <ExpandTwoArrows className="contracted-icon" />}
       {type === 'h5p' && <CursorClick style={{ width: '24px', height: '24px' }} />}
       {type === 'iframe' && <CursorClick style={{ width: '24px', height: '24px' }} />}

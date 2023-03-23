@@ -184,7 +184,8 @@ const TreeStructure = ({
         if (type === 'picker' && !e.currentTarget.contains(e.relatedTarget)) {
           onToggleTree(false);
         }
-      }}>
+      }}
+    >
       <Row>
         {label && <StyledLabel id={treestructureId(type, 'label')}>{label}</StyledLabel>}
         {type === 'picker' && (

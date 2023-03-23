@@ -134,7 +134,8 @@ const SearchField = ({
             onChange('');
             onFocus?.();
             inputRef?.current?.focus();
-          }}>
+          }}
+        >
           {t('welcomePage.resetSearch')}
         </button>
       )}
@@ -143,7 +144,8 @@ const SearchField = ({
         {...classes('button', 'searchIcon')}
         type="submit"
         value="Search"
-        aria-label={t('siteNav.search')}>
+        aria-label={t('siteNav.search')}
+      >
         <SearchIcon />
       </button>
     </div>

@@ -421,7 +421,8 @@ const SubjectPage = ({
                   }}
                   onToggleShowContent={() => setShowMainTopicContent(!showMainTopicContent)}
                   isAdditionalTopic={topicData.isAdditionalResource}
-                  showContent={showMainTopicContent}>
+                  showContent={showMainTopicContent}
+                >
                   {topicData.content}
                 </Topic>
                 <div ref={subTopicRef}>
@@ -450,7 +451,8 @@ const SubjectPage = ({
                     }}
                     onToggleShowContent={() => setShowSubTopicContent(!showSubTopicContent)}
                     isAdditionalTopic={subTopicData.isAdditionalResource}
-                    showContent={showSubTopicContent}>
+                    showContent={showSubTopicContent}
+                  >
                     {subTopicData.content}
                   </Topic>
                 )}
@@ -489,7 +491,8 @@ const SubjectPage = ({
                       }}
                       onToggleShowContent={() => setShowSubSubTopicContent(!showSubSubTopicContent)}
                       isAdditionalTopic={subSubTopicData.isAdditionalResource}
-                      showContent={showSubSubTopicContent}>
+                      showContent={showSubSubTopicContent}
+                    >
                       {subSubTopicData.content}
                     </Topic>
                     <Resources title={subSubTopicData.label} showActiveResource={false} />
@@ -518,7 +521,8 @@ const SubjectPage = ({
           showGeneralMessage={false}
           onAuthenticateClick={() => {}}
           onClose={() => setShowLoginModal(false)}
-          isOpen>
+          isOpen
+        >
           <p>{t('user.modal.topic')}</p>
         </AuthModal>
       )}

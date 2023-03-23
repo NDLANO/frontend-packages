@@ -40,7 +40,8 @@ const ContentLoader = ({
       className={className}
       {...rest}
       height={typeof height === 'string' ? height : undefined}
-      width={typeof width === 'string' ? width : undefined}>
+      width={typeof width === 'string' ? width : undefined}
+    >
       <rect
         style={{ fill: `url(#${idGradient})` }}
         clipPath={`url(#${idClip})`}

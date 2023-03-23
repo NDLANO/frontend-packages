@@ -70,7 +70,8 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
       onClose={onClose}
       size="fullscreen"
       backgroundColor="light-gradient"
-      narrow>
+      narrow
+    >
       {(close) => (
         <>
           <ModalHeader modifier="menu">

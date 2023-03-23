@@ -75,7 +75,8 @@ const CodeExample = () => (
     messages={[
       'react-syntax-highlighter implemented with Prism',
       'Language options: https://github.com/conorhastings/react-syntax-highlighter/blob/v11.0.2/AVAILABLE_LANGUAGES_PRISM.MD',
-    ]}>
+    ]}
+  >
     <p>Kodekomponent for visning av kodesnutter</p>
     <Codeblock actionButton={edCloseButton} code={htmlCode} format="markup" title="HTML EKSEMPEL" showCopy={true} />
     <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />

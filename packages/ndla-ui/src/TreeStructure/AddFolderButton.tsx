@@ -70,7 +70,8 @@ const AddFolderButton = ({
           e.currentTarget.focus();
           setNewFolderParentId(focusedFolder?.id);
           setShowTree(true);
-        }}>
+        }}
+      >
         <StyledPlus /> {t('myNdla.newFolder')}
       </StyledAddFolderButton>
     </Tooltip>

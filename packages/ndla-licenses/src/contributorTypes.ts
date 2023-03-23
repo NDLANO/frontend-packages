@@ -56,6 +56,7 @@ export const contributorTypes: ContributorTypes = {
     publisher: 'Publisher',
     distributor: 'Distributor',
     supplier: 'Supplier',
+    author: 'Author',
   },
   nb: {
     originator: 'Opphaver',
@@ -80,6 +81,7 @@ export const contributorTypes: ContributorTypes = {
     publisher: 'Forlag',
     distributor: 'Distributør',
     supplier: 'Leverandør',
+    author: 'Forfatter',
   },
   nn: {
     originator: 'Opphavar',
@@ -104,6 +106,7 @@ export const contributorTypes: ContributorTypes = {
     publisher: 'Forlag',
     distributor: 'Distributør',
     supplier: 'Leverandør',
+    author: 'Forfattar',
   },
   se: {
     originator: 'Vuoigŋadahkki',
@@ -128,6 +131,7 @@ export const contributorTypes: ContributorTypes = {
     publisher: 'Lágádus',
     distributor: 'Distributevra',
     supplier: 'Lágideaddji',
+    author: 'Author',
   },
   sma: {
     originator: 'Voestesaajhtere',
@@ -152,6 +156,7 @@ export const contributorTypes: ContributorTypes = {
     publisher: 'Berteme',
     distributor: 'Deallahtæjja',
     supplier: 'Deallahtæjja',
+    author: 'Author',
   },
 };
 

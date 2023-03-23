@@ -444,7 +444,8 @@ const Controls = ({ src, title }: Props) => {
             aria-label={t('audio.controls.rewind15sec')}
             onClick={() => {
               onSeekSeconds(-15);
-            }}>
+            }}
+          >
             <Back15 />
           </Back15SecButton>
         </WardButtonWrapper>
@@ -455,7 +456,8 @@ const Controls = ({ src, title }: Props) => {
               type="button"
               as="button"
               title={t('audio.controls.selectSpeed')}
-              aria-label={t('audio.controls.selectSpeed')}>
+              aria-label={t('audio.controls.selectSpeed')}
+            >
               {speedValue}x
             </SpeedButton>
             <SpeedMenu as="div" portal={false}>
@@ -470,7 +472,8 @@ const Controls = ({ src, title }: Props) => {
                       selected={speed === speedValue}
                       onSelect={() => {
                         setSpeedValue(speed);
-                      }}>
+                      }}
+                    >
                       {speed}x{speed === speedValue && <SpeedSelectedMark />}
                     </SpeedValueButton>
                   ))}
@@ -486,7 +489,8 @@ const Controls = ({ src, title }: Props) => {
             aria-label={t('audio.controls.forward15sec')}
             onClick={() => {
               onSeekSeconds(15);
-            }}>
+            }}
+          >
             <Forward15 />
           </Forward15SecButton>
         </WardButtonWrapper>
@@ -509,7 +513,8 @@ const Controls = ({ src, title }: Props) => {
               type="button"
               as="button"
               title={t('audio.controls.adjustVolume')}
-              aria-label={t('audio.controls.adjustVolume')}>
+              aria-label={t('audio.controls.adjustVolume')}
+            >
               <VolumeUp />
             </VolumeButton>
             <VolumeMenu as="div" portal={false}>
@@ -518,7 +523,8 @@ const Controls = ({ src, title }: Props) => {
                   <SliderInput
                     orientation={SliderOrientation.Vertical}
                     onChange={handleVolumeSliderChange}
-                    value={volumeValue}>
+                    value={volumeValue}
+                  >
                     <VolumeSliderBackground as="div">
                       <VolumeSliderSelected as="div" />
                       <VolumeSliderHandle as="div" />

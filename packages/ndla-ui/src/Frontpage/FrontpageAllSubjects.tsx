@@ -163,7 +163,8 @@ const renderList = (
                           onNavigate();
                         }
                       }}
-                      to={subject.path || ''}>
+                      to={subject.path || ''}
+                    >
                       {subject.name}
                     </SafeLink>
                     <StyledSpacingElement />

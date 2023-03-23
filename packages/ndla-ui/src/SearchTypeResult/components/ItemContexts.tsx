@@ -109,7 +109,8 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
             </ModalButton>
           }
           animation="subtle"
-          animationDuration={50}>
+          animationDuration={50}
+        >
           {(onClose: () => void) => (
             <>
               <ModalHeader>

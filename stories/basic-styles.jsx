@@ -1857,7 +1857,8 @@ storiesOf('Grunnstiler', module)
               position: 'absolute',
               marginTop: '-38px',
               fontSize: '13px',
-            }}>
+            }}
+          >
             Spacing large (Store avstander): 52px
           </span>
           <div style={{ padding: '26px', background: '#ddd' }}>
@@ -1866,7 +1867,8 @@ storiesOf('Grunnstiler', module)
                 position: 'absolute',
                 marginTop: '-22px',
                 fontSize: '13px',
-              }}>
+              }}
+            >
               Spacing (vanlig avstand): 26px
             </span>
             <div
@@ -1874,7 +1876,8 @@ storiesOf('Grunnstiler', module)
                 padding: '13px',
                 background: '#ccc',
                 fontSize: '13px',
-              }}>
+              }}
+            >
               <span>Spacing small (Små avstander): 13px</span>
             </div>
           </div>

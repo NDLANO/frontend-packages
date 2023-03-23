@@ -45,7 +45,8 @@ const ArticleTabs = ({ tabs }: Props) => {
         tabIndex={tabIndex}
         role="tab"
         aria-selected={selected}
-        aria-controls={tabPanelId}>
+        aria-controls={tabPanelId}
+      >
         {tab.title}
       </li>,
     );
@@ -57,7 +58,8 @@ const ArticleTabs = ({ tabs }: Props) => {
         role="tabpanel"
         id={tabPanelId}
         aria-hidden={!selected}
-        aria-labelledby={tab.id}>
+        aria-labelledby={tab.id}
+      >
         {tab.content}
       </div>,
     );

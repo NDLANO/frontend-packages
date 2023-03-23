@@ -33,6 +33,21 @@ export interface H5pLicenseInformation {
   };
 }
 
+export interface H5pInfo {
+  published: boolean;
+  title: string;
+  h5pLibrary: H5pLibraryInfo;
+}
+
+export interface H5pLibraryInfo {
+  latestMajorVersion: number;
+  latestMinorVersion: number;
+  majorVersion: number;
+  minorVersion: number;
+  name: string;
+  upgradable: boolean;
+}
+
 export interface OembedProxyData extends OembedProxyResponse {
   type: 'proxy';
 }

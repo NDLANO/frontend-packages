@@ -106,7 +106,8 @@ const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScr
         <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} ndlaFilm={ndlaFilm}>
           {t('masthead.menu.search')}
         </ToggleSearchButton>
-      }>
+      }
+    >
       {(closeModal: VoidFunction) => (
         <>
           <div css={extraBackdrop} />
@@ -116,7 +117,8 @@ const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScr
               aria-label={t('welcomePage.closeSearch')}
               variant="ghost"
               colorTheme="light"
-              onClick={closeModal}>
+              onClick={closeModal}
+            >
               <Cross className="c-icon--medium" />
             </IconButton>
           </StyledHeader>

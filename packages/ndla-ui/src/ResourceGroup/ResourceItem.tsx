@@ -241,7 +241,8 @@ const ResourceItem = ({
       hidden={hidden && !active}
       active={active}
       additional={additional}
-      extraBottomMargin={extraBottomMargin}>
+      extraBottomMargin={extraBottomMargin}
+    >
       <ResourceWrapper>
         <ContentBadgeWrapper>
           <ContentTypeBadge type={contentType ?? ''} background border={false} />

@@ -154,7 +154,8 @@ const CodeBlockEditor = ({ onSave, onAbort, content = null }: Props) => {
             'align-items': 'flex-end',
             'justify-content': 'flex-end',
             'margin-bottom': '1px',
-          }}>
+          }}
+        >
           <ButtonV2 onClick={save}>
             <span>{t('codeEditor.save')}</span>
           </ButtonV2>

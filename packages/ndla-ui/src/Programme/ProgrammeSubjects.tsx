@@ -61,7 +61,8 @@ const ProgrammeSubjects = ({ grades, onNavigate, selectedGrade = 'vg1' }: Props)
                 colorTheme={item !== grade ? 'lighter' : undefined}
                 shape="pill"
                 size="normal"
-                aria-current={current}>
+                aria-current={current}
+              >
                 {item.name}
               </SafeLinkButton>
             </li>

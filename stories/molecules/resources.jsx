@@ -155,7 +155,8 @@ class Resources extends Component {
             toggleAdditionalDialog={this.toggleAdditionalDialog}
             showAdditionalDialog={showAdditionalDialog}
           />
-        }>
+        }
+      >
         {showUngrouped && (
           <ResourceGroup
             resources={allResources}

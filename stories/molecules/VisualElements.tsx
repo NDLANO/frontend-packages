@@ -23,7 +23,8 @@ const Video = () => {
       type="full-column"
       resizeIframe
       caption="Velferdsteknologi"
-      messages={{ rulesForUse: t('license.video.rules'), reuse: t('video.reuse'), download: null }}>
+      messages={{ rulesForUse: t('license.video.rules'), reuse: t('video.reuse'), download: null }}
+    >
       <iframe
         title="Video: Velferdsteknologi"
         height="270"

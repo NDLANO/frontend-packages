@@ -29,7 +29,7 @@ export interface RightType {
 }
 
 const locales = ['nb', 'nn', 'en'] as const;
-export type Locale = typeof locales[number];
+export type Locale = (typeof locales)[number];
 
 export function isLocale(l: string): l is Locale {
   return (locales as readonly string[]).includes(l);

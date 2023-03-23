@@ -6,6 +6,7 @@
  *
  */
 
+import { lists } from '@ndla/core';
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
 export const olPlugin: PluginType = (node, opts) => {
@@ -16,7 +17,7 @@ export const olPlugin: PluginType = (node, opts) => {
   const classes = [node.attribs.class ?? false, letterClass, numClass].filter((c): c is string => !!c).join(' ');
 
   return (
-    <ol {...props} data-type={undefined} className={classes.length ? classes : undefined}>
+    <ol css={lists.listsStyle} {...props} data-type={undefined} className={classes.length ? classes : undefined}>
       {domToReact(node.children, opts)}
     </ol>
   );

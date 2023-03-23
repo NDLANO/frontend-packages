@@ -79,7 +79,8 @@ const ZendeskButton = ({ children, locale, widgetKey, ...rest }: Props) => {
         variant="outline"
         id="zendeskButton"
         disabled={loading}
-        {...rest}>
+        {...rest}
+      >
         {children}
       </ButtonV2>
     </>

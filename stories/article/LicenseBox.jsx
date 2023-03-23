@@ -52,7 +52,8 @@ const VideoContent = ({ t }) => (
               href="https://www.youtube.com/watch?v=hjujTTRB01E"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={t('license.video.itemImage.ariaLabel')}>
+              aria-label={t('license.video.itemImage.ariaLabel')}
+            >
               <img
                 src="https://images.unsplash.com/photo-1453733190371-0a9bedd82893?auto=format&fit=crop&w=500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
                 alt="Høna og egget"
@@ -66,7 +67,8 @@ const VideoContent = ({ t }) => (
               className="c-figure-license__link"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.youtube.com/yt/about/copyright/fair-use/#yt-copyright-protection">
+              href="https://www.youtube.com/yt/about/copyright/fair-use/#yt-copyright-protection"
+            >
               Les forklaring til hvordan du finner frem til reglene for gjenbruk
             </a>
             <MediaListItemActions>
@@ -113,7 +115,8 @@ export const TextContent = ({ t }) => (
             title={t('license.text.rules')}
             resourceUrl=""
             locale="nb"
-            resourceType="text">
+            resourceType="text"
+          >
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -147,7 +150,8 @@ export const TextContent = ({ t }) => (
                   variant="outline"
                   onClick={() => {
                     triggerDownloadText();
-                  }}>
+                  }}
+                >
                   {t('license.download')}
                 </ButtonV2>
               </div>
@@ -183,7 +187,8 @@ const AudioContent = ({ t }) => (
             title={t('license.audio.rules')}
             resourceUrl=""
             locale="nb"
-            resourceType="audio">
+            resourceType="audio"
+          >
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -242,7 +247,8 @@ const PodcastContent = ({ t }) => (
             title={t('license.podcast.rules')}
             resourceUrl=""
             locale="nb"
-            resourceType="audio">
+            resourceType="audio"
+          >
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -305,7 +311,8 @@ export const ImageContent = ({ t }) => (
             }}
             locale="nb"
             resourceUrl={src}
-            resourceType="image">
+            resourceType="image"
+          >
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -347,7 +354,8 @@ export const ImageContent = ({ t }) => (
             href="https://example.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t('license.images.itemImage.ariaLabel')}>
+            aria-label={t('license.images.itemImage.ariaLabel')}
+          >
             <img alt="alt" src="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg" />
           </a>
         </MediaListItemImage>
@@ -403,7 +411,8 @@ const OtherContent = ({ t }) => (
               href={example.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={t('license.other.itemImage.ariaLabel')}>
+              aria-label={t('license.other.itemImage.ariaLabel')}
+            >
               <img src={example.image} alt={example.name} className="other-content-image" />
             </a>
           </MediaListItemImage>
@@ -411,7 +420,8 @@ const OtherContent = ({ t }) => (
             license={byncndLicenseAbbreviation}
             title={`${example.description}:`}
             resourceUrl="http://ndla.no/nb/h5p/embed/146132?fag=127756"
-            resourceType="h5p">
+            resourceType="h5p"
+          >
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta

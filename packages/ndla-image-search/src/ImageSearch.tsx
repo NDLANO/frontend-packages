@@ -385,7 +385,8 @@ class ImageSearch extends Component<Props, State> {
               type="button"
               onClick={() => {
                 this.searchImages({ query: queryString, page: 1 });
-              }}>
+              }}
+            >
               <SearchIcon />
             </button>
           }

@@ -69,7 +69,7 @@ export const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'basisgruppe',
@@ -84,7 +84,7 @@ export const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'other groups',
@@ -99,7 +99,7 @@ export const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'other groups',
@@ -114,7 +114,7 @@ export const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'undervisningsgruppe',
@@ -133,7 +133,7 @@ export const feideUserLaerer: FeideUserApiType = {
       parent: 'fc:org:spusers.feide.no:unit:NO856326501',
       membership: {
         basic: 'member',
-        affiliation: 'employee',
+        affiliation: ['employee'],
         displayName: 'Ansatt',
       },
       go_type_displayName: 'undervisningsgruppe',

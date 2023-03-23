@@ -7,7 +7,7 @@
  */
 
 import React, { useState } from 'react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Spinner } from '@ndla/icons';
 
 const ResourceStats = () => {
@@ -53,7 +53,7 @@ const ResourceStats = () => {
     setIsLoading(false);
   };
 
-  return <>{isLoading ? <Spinner /> : <Button onClick={fetchData}>Hent data</Button>}</>;
+  return <>{isLoading ? <Spinner /> : <ButtonV2 onClick={fetchData}>Hent data</ButtonV2>}</>;
 };
 
 export default ResourceStats;

@@ -48,7 +48,7 @@ export interface License {
 }
 
 export interface Copyright {
-  license: License;
+  license?: License;
   creators: Array<Contributor>;
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;

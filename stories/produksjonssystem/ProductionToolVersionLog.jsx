@@ -13,7 +13,7 @@ import { colors, spacing, fonts, misc } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import Tooltip from '@ndla/tooltip';
 import styled from '@emotion/styled';
-import { buttonStyle } from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 
@@ -51,26 +51,6 @@ const StyledForm = styled.form`
   justify-content: space-between;
   align-items: center;
   margin-bottom: ${spacing.small};
-`;
-
-const StyledSubmitButton = styled.button`
-  ${buttonStyle}
-  min-width: 100px;
-  ${(props) =>
-    props.disabledStyle &&
-    css`
-      color: ${colors.brand.grey};
-      background-color: ${colors.brand.greyLight};
-      border-color: transparent;
-      cursor: not-allowed;
-      transform: translateY(0) translateX(0);
-      &:hover,
-      &:focus {
-        color: ${colors.brand.grey};
-        transform: translateY(0) translateX(0);
-        background-color: ${colors.brand.greyLight};
-      }
-    `}
 `;
 
 const StyledInputLabel = styled.label`
@@ -291,9 +271,9 @@ const ProductionToolVersionLog = () => {
                               )}
                             </StyledInputWrapper>
                             {commentError && <span>Has error!!!</span>}
-                            <StyledSubmitButton disabledStyle={commentValue.length < 3 ? true : false} type="submit">
+                            <ButtonV2 type="submit" disabled={commentValue.length < 3 ? true : false}>
                               {t('editor.versionHistory.buttonLabel')}
-                            </StyledSubmitButton>
+                            </ButtonV2>
                           </StyledForm>
                         </VersionHistory>
                       </AccordionPanel>

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { BrightcoveShape, YouTubeShape } from './shapes';
 
 const classes = new BEMHelper({
@@ -25,9 +25,9 @@ const VideoLoadMoreButton = (props) => {
   }
   return (
     <div {...classes('load-videos')}>
-      <Button disabled={searching} onClick={loadMoreVideos}>
+      <ButtonV2 disabled={searching} onClick={loadMoreVideos}>
         {searching ? <div {...classes('spinner')} /> : translations.loadMoreVideos}
-      </Button>
+      </ButtonV2>
     </div>
   );
 };

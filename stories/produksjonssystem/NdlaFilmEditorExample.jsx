@@ -12,7 +12,7 @@ import { MovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
 import { FieldHeader, Select, FieldHeaderIconStyle } from '@ndla/forms';
 import Modal from '@ndla/modal';
 import { spacing, spacingUnit } from '@ndla/core';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { withTranslation } from 'react-i18next';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
@@ -169,7 +169,7 @@ class NdlaFilmExample extends Component {
                 },
               });
             }}
-            activateButton={<Button>Lag ny gruppe</Button>}>
+            activateButton={<ButtonV2>Lag ny gruppe</ButtonV2>}>
             {(onClose) => (
               <NdlaFilmThemeEditorModal
                 onClose={onClose}

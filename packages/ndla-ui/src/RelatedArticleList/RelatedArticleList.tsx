@@ -1,6 +1,6 @@
 import React, { Children, cloneElement, ReactElement } from 'react';
 import BEMHelper from 'react-bem-helper';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
 import { HeadingLevel } from '../types';
@@ -79,13 +79,13 @@ const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetIn
         {clonedChildren}
       </div>
       {childrenCount > 2 && (
-        <Button
+        <ButtonV2
           data-type="related-article-button"
           data-showmore={messages.showMore}
           data-showless={messages.showLess}
-          outline>
+          variant="outline">
           {messages.showMore}
-        </Button>
+        </ButtonV2>
       )}
     </section>
   );

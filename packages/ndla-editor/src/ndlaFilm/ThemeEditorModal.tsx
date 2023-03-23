@@ -11,7 +11,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing, spacingUnit } from '@ndla/core';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Input } from '@ndla/forms';
 import { useTranslation } from 'react-i18next';
 
@@ -88,21 +88,21 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
             />
           </div>
         </StyledInputWrapper>
-        <Button
+        <ButtonV2
           onClick={() => {
             onSave();
             onClose();
           }}>
           {save}
-        </Button>
-        <Button
-          outline
+        </ButtonV2>
+        <ButtonV2
+          variant="outline"
           onClick={onClose}
           css={css`
             margin-left: ${spacing.small};
           `}>
           {cancel}
-        </Button>
+        </ButtonV2>
       </ModalBody>
     </>
   );

@@ -6,17 +6,21 @@
  *
  */
 
+/**
+ * Be advised! This component breaks on SSR if you import CodeBlockEditor or languages.tsx.
+ */
+
 import React, { useState, useEffect, CSSProperties } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
-import { getTitleFromFormat } from '../CodeBlockEditor';
+import { ICodeLangugeOption, languageOptions } from '../languageOptions';
 
 const Wrapper = styled.div`
   margin: 15px 0;
@@ -86,6 +90,14 @@ type Props = {
   showCopy?: boolean;
 };
 
+const getTitleFromFormat = (format: string) => {
+  const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === format);
+  if (selectedLanguage) {
+    return selectedLanguage.title;
+  }
+  return;
+};
+
 export const Codeblock = ({ actionButton, code, format, showCopy = false, title }: Props) => {
   const { t } = useTranslation();
   const [isCopied, setIsCopied] = useState(false);
@@ -116,7 +128,7 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
         {code}
       </SyntaxHighlighter>
       {showCopy && (
-        <Button
+        <ButtonV2
           title={t('codeBlock.copyButton')}
           disabled={isCopied}
           data-copied-title={t('codeBlock.copiedCode')}
@@ -127,7 +139,7 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
           }}>
           {isCopied ? <Done aria-hidden="true" /> : <Copy aria-hidden="true" />}{' '}
           {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
-        </Button>
+        </ButtonV2>
       )}
     </Wrapper>
   );

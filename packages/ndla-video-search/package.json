@@ -1,10 +1,13 @@
 {
   "name": "@ndla/video-search",
-  "version": "2.1.18",
+  "version": "2.1.27",
   "description": "A simple library for searching NDLA videos",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "scripts": {
+    "build": "node ../../scripts/build.js package"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",
@@ -28,12 +31,12 @@
     "prop-types": "^15.8.1"
   },
   "dependencies": {
-    "@ndla/button": "^9.1.1",
-    "@ndla/icons": "^2.2.2",
-    "@ndla/licenses": "^7.0.0",
-    "@ndla/notion": "^4.2.1",
-    "@ndla/pager": "^2.1.15",
-    "@ndla/tabs": "^2.1.4",
+    "@ndla/button": "^10.0.4",
+    "@ndla/icons": "^2.2.7",
+    "@ndla/licenses": "^7.0.2",
+    "@ndla/notion": "^4.2.9",
+    "@ndla/pager": "^2.1.23",
+    "@ndla/tabs": "^2.1.12",
     "react-bem-helper": "^1.4.1"
   },
   "publishConfig": {

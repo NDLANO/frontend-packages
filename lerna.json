@@ -3,5 +3,6 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "rejectCycles": true,
-  "version": "independent"
+  "version": "independent",
+  "useNx": true
 }

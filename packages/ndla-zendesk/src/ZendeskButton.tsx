@@ -8,7 +8,7 @@
 
 import { css, Global } from '@emotion/react';
 import React, { ReactNode, useState } from 'react';
-import Button, { ButtonProps } from '@ndla/button';
+import { ButtonV2, ButtonProps } from '@ndla/button';
 import { mq, breakpoints, spacing } from '@ndla/core';
 
 const styling = css`
@@ -72,16 +72,16 @@ const ZendeskButton = ({ children, locale, widgetKey, ...rest }: Props) => {
           }
         `}
       />
-      <Button
+      <ButtonV2
         type="button"
         css={styling}
         onClick={handleClick}
-        appearance="outline"
+        variant="outline"
         id="zendeskButton"
         disabled={loading}
         {...rest}>
         {children}
-      </Button>
+      </ButtonV2>
     </>
   );
 };

@@ -634,6 +634,7 @@ const messages = {
     published: 'Publiseringsdato',
     rightsholder: 'Rettighetshaver',
     source: 'Gaaltije',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ovva, mij akt båajhtede sjïdtit',
@@ -768,6 +769,7 @@ const messages = {
     hits: '{{count}} gaavnedimmieh',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Brukes i',
     closeNotion: 'Dahph',
   },
@@ -1054,8 +1056,9 @@ const messages = {
     loggedInAs: 'Datne tjaangeme goh {{role}}.',
     loggedInAsButton: 'Datne tjaangeme goh {{role}}',
     role: {
-      employee: 'lohkehtæjja',
-      staff: 'ansatt',
+      employee: 'barkije',
+      faculty: 'barkije',
+      staff: 'barkije',
       student: 'learohke',
     },
     buttonLogIn: 'Tjaangh Feidine',
@@ -1115,6 +1118,33 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sloppe',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sloppe',
       dragHandle: 'Sorter mappen {{name}}',
+      sharing: {
+        share: 'Del mappe',
+        shared: 'Delt',
+        unShare: 'Delingen er avsluttet. Mappen er ikke lenger delt.',
+        link: 'Lenken er kopiert',
+        header: {
+          private: 'Vil du dele denne mappen?',
+          shared: 'Denne mappen er delt.',
+          unShare: 'Vil du avslutte deling av denne mappen?',
+        },
+        description: {
+          copy: 'Kopier og del denne lenken:',
+          private:
+            'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
+          private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
+          shared:
+            'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
+          unShare:
+            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+        },
+        button: {
+          share: 'Del mappen',
+          preview: 'Forhåndsvis delt mappe',
+          unShare: 'Avslutt deling',
+          shareLink: 'Kopier lenke',
+        },
+      },
     },
     tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',
@@ -1142,6 +1172,21 @@ const messages = {
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
+    sharedFolder: {
+      info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
+      firstShared: 'Mappa vart delt første gong {{date}}',
+      drawerButton: 'Vis mapper og ressursar',
+      drawerTitle: 'Mapper og ressursar',
+      learningpathUnsupported:
+        'Læringsstiar kan ikke visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+      description: {
+        info1:
+          'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
+        info2: 'Du kan bla i artiklane ved å bruke menyen.',
+        info3:
+          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+      },
+    },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
       imageAlt:
@@ -1178,6 +1223,14 @@ const messages = {
         title: 'Slik lagrer du favorittressursene dine fra NDLA',
         text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',
       },
+      favoriteSubjects: {
+        title: 'Slik lagrar du favorittfaga dine frå NDLA',
+        text: 'Klikk på hjarteknappen for å lagre et fag. Du vil då få muligheit til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
+      },
+      sharing: {
+        title: 'Slik deler du mappene dine med andre',
+        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+      },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
         text: 'Klikk på <strong>Mine mapper</strong> i menyen til venstre for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette ei ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
@@ -1210,6 +1263,14 @@ const messages = {
       onDragCancel: 'Flytting avbrutt. Ressursen {{name}} blei sloppe',
       dragHandle: 'Sorter ressursen {{navn}}',
     },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
+    },
   },
   snackbar: {
     close: 'Lukk melding',
@@ -1231,6 +1292,11 @@ const messages = {
   },
   programme: {
     grades: 'Trinn',
+  },
+  embed: {
+    conceptListError: 'Klarte ikkje å vise forklaringsliste',
+    linkError: 'Klarte ikkje å vise lenke.',
+    unsupported: `Embed {{type}} er ikkje støtta.`,
   },
 };
 

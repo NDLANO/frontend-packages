@@ -9,7 +9,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import debounce from 'lodash/debounce';
 import { classes } from './filterClasses';
 import ToggleItem from './ToggleItem';
@@ -141,9 +141,9 @@ const FilterListPhone = ({
           size="fullscreen"
           backgroundColor="grey"
           activateButton={
-            <Button outline {...classes('modal-button')}>
+            <ButtonV2 variant="outline" {...classes('modal-button')}>
               {messages.openFilter}
-            </Button>
+            </ButtonV2>
           }>
           {(onClose) => (
             <>
@@ -151,9 +151,9 @@ const FilterListPhone = ({
                 <div {...classes('modal-header')}>
                   <div {...classes('modal-heading')}>
                     {!isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}
-                    <Button outline onClick={onClose}>
+                    <ButtonV2 variant="outline" onClick={onClose}>
                       {messages.useFilter}
-                    </Button>
+                    </ButtonV2>
                   </div>
                   <ModalCloseButton title={messages.closeFilter} onClick={onClose} />
                 </div>
@@ -197,9 +197,9 @@ const FilterListPhone = ({
                 ))}
 
                 <div {...classes('usefilter-wrapper')}>
-                  <Button outline onClick={onClose}>
+                  <ButtonV2 variant="outline" onClick={onClose}>
                     {messages.useFilter}
-                  </Button>
+                  </ButtonV2>
                 </div>
               </ModalBody>
             </>

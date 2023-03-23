@@ -8,7 +8,7 @@
 
 import React, { MouseEvent, memo } from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
@@ -111,11 +111,11 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
         <CategoryItems>
           {filters.map((option: FilterOptionsType) => (
             <CategoryTypeButtonWrapper key={option.id}>
-              <Button
+              <ButtonV2
                 aria-current={option.active}
                 size="xsmall"
-                borderShape="rounded"
-                greyLighter={!option.active}
+                shape="pill"
+                colorTheme={!option.active ? 'greyLighter' : undefined}
                 onClick={(e: MouseEvent<HTMLButtonElement>) => {
                   if (e.currentTarget && option.active) {
                     e.currentTarget.blur();
@@ -128,7 +128,7 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
                     <Cross />
                   </CategoryTypeCrossWrapper>
                 )}
-              </Button>
+              </ButtonV2>
             </CategoryTypeButtonWrapper>
           ))}
         </CategoryItems>

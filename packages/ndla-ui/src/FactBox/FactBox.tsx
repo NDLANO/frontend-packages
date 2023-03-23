@@ -8,7 +8,7 @@
 
 import React, { ReactNode, MouseEvent } from 'react';
 import BEMHelper from 'react-bem-helper';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 
 const classes = new BEMHelper({
@@ -34,8 +34,8 @@ const FactBox = ({ children, dangerouslySetInnerHTML }: Props) => {
       <div {...classes('content')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
         {children}
       </div>
-      <Button {...classes('button', 'collapsed')} onClick={toggleFactBox} title={t('factbox.open')} />
-      <Button {...classes('button', 'open')} onClick={toggleFactBox} title={t('factbox.close')} />
+      <ButtonV2 {...classes('button', 'collapsed')} onClick={toggleFactBox} title={t('factbox.open')} />
+      <ButtonV2 {...classes('button', 'open')} onClick={toggleFactBox} title={t('factbox.close')} />
     </aside>
   );
 };

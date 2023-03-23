@@ -1,30 +1,20 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
-import { isIE, browserVersion } from 'react-device-detect';
 
-const DEFAULT_ROOT = null;
 const DEFAULT_ROOT_MARGIN = '0px';
 const DEFAULT_THRESHOLD = [0];
 
-export type IntersectionObserverHookRefCallbackNode = Element | null;
-export type IntersectionObserverHookRefCallback = (node: IntersectionObserverHookRefCallbackNode) => void;
+export type IntersectionObserverHookRefCallback = (node: Element | null) => void;
 
-export type IntersectionObserverHookResult = [
-  IntersectionObserverHookRefCallback,
-  { entry: IntersectionObserverEntry | undefined },
-];
+interface Props extends IntersectionObserverInit {
+  target?: HTMLElement | null;
+}
 
-const IntersectionObserverBrowserSupport = () =>
-  !(typeof window === 'undefined' || !('IntersectionObserver' in window) || !('IntersectionObserverEntry' in window));
-
-// For more info:
-// https://developers.google.com/web/updates/2016/04/intersectionobserver
-// https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 export function useIntersectionObserver({
-  root = DEFAULT_ROOT,
+  root = null,
+  target = null,
   rootMargin = DEFAULT_ROOT_MARGIN,
   threshold = DEFAULT_THRESHOLD,
-}: IntersectionObserverInit = {}): IntersectionObserverHookResult {
-  const isIE11 = isIE && parseInt(browserVersion) < 12;
+}: Props = {}) {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
 
@@ -37,31 +27,26 @@ export function useIntersectionObserver({
     };
   }, []);
 
-  const refCallback = useCallback(
-    (node: IntersectionObserverHookRefCallbackNode) => {
-      function getObserver() {
-        // If there is no observer, then create it.
-        // So, we only create it only once.
-        if (!observerRef.current) {
-          observerRef.current = new IntersectionObserver(
-            ([entry]) => {
-              setEntry(entry);
-            },
-            { root, rootMargin, threshold },
-          );
-        }
-        return observerRef.current;
-      }
-      const observer = getObserver();
-      observer.disconnect();
-      if (node) {
-        observer.observe(node);
-      }
-    },
-    [root, rootMargin, threshold],
-  );
-  if (isIE11 || !IntersectionObserverBrowserSupport()) {
-    return [() => {}, { entry }];
-  }
-  return [refCallback, { entry }];
+  const getObserver = useCallback(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+    observerRef.current = new IntersectionObserver(
+      ([entry]) => {
+        setEntry(entry);
+      },
+      { root, rootMargin, threshold },
+    );
+    return observerRef.current;
+  }, [root, rootMargin, threshold]);
+
+  useEffect(() => {
+    const observer = getObserver();
+
+    if (target) {
+      observer.observe(target);
+    }
+  }, [target, getObserver]);
+
+  return { entry };
 }

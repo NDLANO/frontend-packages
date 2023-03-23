@@ -18,7 +18,6 @@ const ContentWrapper = styled.div`
   }
   .c-figure {
     margin: 0;
-    padding: 0 0 0 20px;
     &.expanded {
       width: 100% !important;
       padding: 0;

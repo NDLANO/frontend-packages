@@ -8,7 +8,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { Accordions, AccordionSection } from '@ndla/accordion';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { FilterList } from '@ndla/ui';
 
 import ComponentInfo from '../ComponentInfo';
@@ -18,7 +18,7 @@ const PanelComponent = ({ tekst, setIsOpen }) => {
   return (
     <div>
       <p>{tekst}</p>
-      <Button onClick={() => setIsOpen(false)}>Lukk</Button>
+      <ButtonV2 onClick={() => setIsOpen(false)}>Lukk</ButtonV2>
     </div>
   );
 };

@@ -7,7 +7,7 @@
  */
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
@@ -112,10 +112,9 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
         <StyledButtonsWrapper>
           {activeItems.map((item: ItemProps) => (
             <StyledButtonElementWrapper key={item.value}>
-              <Button
-                type="button"
+              <ButtonV2
                 size="normal"
-                borderShape="rounded"
+                shape="pill"
                 onClick={() => {
                   onFilterToggle(item.value);
                 }}>
@@ -123,7 +122,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                 <StyledButtonContentSelected>
                   <CrossIcon />
                 </StyledButtonContentSelected>
-              </Button>
+              </ButtonV2>
             </StyledButtonElementWrapper>
           ))}
           <Modal
@@ -133,12 +132,12 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
             backgroundColor="white"
             activateButton={
               <StyledButtonElementWrapper>
-                <Button type="button" size="normal" light borderShape="rounded">
+                <ButtonV2 colorTheme="light" size="normal" shape="pill">
                   <StyledButtonContent>{labels.openFilter}</StyledButtonContent>
                   <StyledButtonContentSelected>
                     <PlusIcon />
                   </StyledButtonContentSelected>
-                </Button>
+                </ButtonV2>
               </StyledButtonElementWrapper>
             }>
             {(onClose: () => void) => (
@@ -174,11 +173,10 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
           <FilterCarousel>
             {items.map((item: ItemProps) => (
               <StyledButtonElementWrapper key={item.value}>
-                <Button
-                  type="button"
+                <ButtonV2
                   size="normal"
-                  greyLighter={!item.selected}
-                  borderShape="rounded"
+                  colorTheme={!item.selected ? 'greyLighter' : undefined}
+                  shape="pill"
                   onClick={() => onFilterToggle(item.value)}>
                   <StyledButtonContent>{item.label}</StyledButtonContent>
                   {item.selected && (
@@ -186,15 +184,15 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                       <CrossIcon />
                     </StyledButtonContentSelected>
                   )}
-                </Button>
+                </ButtonV2>
               </StyledButtonElementWrapper>
             ))}
           </FilterCarousel>
           <StyledRemoveWrapper>
             {hasSelectedFilters && (
-              <Button onClick={onRemoveAllFilters} link>
+              <ButtonV2 variant="link" onClick={onRemoveAllFilters}>
                 <ButtonRemoveText>{t(`filterButtons.removeAllFilters`)}</ButtonRemoveText>
-              </Button>
+              </ButtonV2>
             )}
           </StyledRemoveWrapper>
         </>

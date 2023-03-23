@@ -7,7 +7,7 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { FieldHeader, FieldSection, Input, Select, FieldSplitter, FieldRemoveButton, TextArea } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
@@ -116,9 +116,9 @@ class FormExampleAuthors extends Component {
             </div>
           </FieldSection>
         ))}
-        <Button outline onClick={this.handleAddAuthor}>
+        <ButtonV2 variant="outline" onClick={this.handleAddAuthor}>
           Legg til
-        </Button>
+        </ButtonV2>
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>

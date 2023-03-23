@@ -34,6 +34,7 @@ export { default as FactBoxMaterial } from './FactBoxMaterial';
 export { default as Filter } from './Filter';
 export { default as FocalPoint } from './FocalPoint';
 export { default as Folder } from './Folder';
+export { default as FormatList } from './FormatList';
 export { default as Framed } from './Framed';
 export { default as H5P } from './H5P';
 export { default as H5PBold } from './H5PBold';

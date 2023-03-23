@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Tooltip from '@ndla/tooltip';
 import { FilterList } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { HelpCircle } from '@ndla/icons/common';
 
 import ComponentInfo from '../ComponentInfo';
@@ -16,7 +16,7 @@ const ModalDemo = ({ title, size, animation, backgroundColor, headerColorModifie
     animation={animation}
     backgroundColor={backgroundColor}
     position={position}
-    activateButton={<Button outline>{title}</Button>}>
+    activateButton={<ButtonV2 variant="outline">{title}</ButtonV2>}>
     {(onClose) => (
       <Fragment>
         <ModalHeader modifier={headerColorModifier}>
@@ -162,7 +162,7 @@ class ModalExample extends Component {
           enkelt endres ved behov. Tar også onOpen og onClose som functions via props.
         </p>
         <h3>Enkel versjon:</h3>
-        <Modal narrow activateButton={<Button outline>Åpne modal</Button>}>
+        <Modal narrow activateButton={<ButtonV2 variant="outline">Åpne modal</ButtonV2>}>
           {(onClose) => (
             <Fragment>
               <ModalHeader>
@@ -173,7 +173,7 @@ class ModalExample extends Component {
                 <hr />
                 <p>Lukk denne modal eller åpne en ny modal fra denne modalen</p>
                 <div className="u-horisontal-list">
-                  <Modal narrow size="fullscreen" activateButton={<Button>Åpne ny modal</Button>}>
+                  <Modal narrow size="fullscreen" activateButton={<ButtonV2>Åpne ny modal</ButtonV2>}>
                     {(onClose2ndModal) => (
                       <Fragment>
                         <ModalHeader>
@@ -190,9 +190,9 @@ class ModalExample extends Component {
                       </Fragment>
                     )}
                   </Modal>
-                  <Button outline onClick={onClose}>
+                  <ButtonV2 variant="outline" onClick={onClose}>
                     Lukk Modal
-                  </Button>
+                  </ButtonV2>
                 </div>
               </ModalBody>
             </Fragment>
@@ -208,9 +208,9 @@ class ModalExample extends Component {
           narrow
           wrapperFunctionForButton={(activateButton) => <Tooltip tooltip="Trykk på meg!">{activateButton}</Tooltip>}
           activateButton={
-            <Button stripped tabIndex={-1}>
+            <ButtonV2 variant="stripped" tabIndex={-1}>
               <HelpCircle />
-            </Button>
+            </ButtonV2>
           }>
           {(onClose) => (
             <Fragment>

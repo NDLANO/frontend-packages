@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { HumanMaleBoard, LogIn } from '@ndla/icons/common';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 
 import ErrorMessage from './ErrorMessage';
 
@@ -33,12 +33,12 @@ const ErrorResourceAccessDenied = ({ onAuthenticateClick }: Props) => {
       }}
       illustrationElement={<HumanMaleBoard className="c-icon--large" />}
       customElement={
-        <Button size="medium" onClick={onAuthenticateClick}>
+        <ButtonV2 size="medium" onClick={onAuthenticateClick}>
           {t('user.buttonLogIn')}
           <StyledLogInIconWrapper aria-hidden>
             <LogIn className="c-icon--medium" />
           </StyledLogInIconWrapper>
-        </Button>
+        </ButtonV2>
       }
     />
   );

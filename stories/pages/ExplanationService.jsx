@@ -11,7 +11,7 @@ import {
   NotionDialogRelatedLinks,
 } from '@ndla/notion';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
@@ -317,7 +317,7 @@ const ExplanationService = () => {
           source={detailedItem.source}
           authors={detailedItem.authors}
           licenseBox={
-            <Modal activateButton={<Button link>{t('article.useContent')}</Button>} size="medium">
+            <Modal activateButton={<ButtonV2 variant="link">{t('article.useContent')}</ButtonV2>} size="medium">
               {(onClose) => (
                 <>
                   <ModalHeader modifier="no-bottom-padding">

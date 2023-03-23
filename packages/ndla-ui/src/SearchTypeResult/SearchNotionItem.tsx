@@ -12,7 +12,7 @@ import parse from 'html-react-parser';
 
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Play } from '@ndla/icons/common';
 import { ArrowExpand } from '@ndla/icons/editor';
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
@@ -147,13 +147,13 @@ const SearchNotionItem = ({
       <ShowMediaButtonWrapper>
         <Modal
           activateButton={
-            <Button lighter size="xsmall" borderShape="rounded">
+            <ButtonV2 colorTheme="lighter" size="xsmall" shape="pill">
               <>
                 {type === 'video' && <Play />}
                 {type === 'other' && <ArrowExpand />}
                 <ShowMediaButtonText>{t('searchPage.resultType.showVideo')}</ShowMediaButtonText>
               </>
-            </Button>
+            </ButtonV2>
           }
           animation="subtle"
           animationDuration={50}
@@ -193,9 +193,9 @@ const SearchNotionItem = ({
                 {authors.length > 0 && license && ' '}
                 {license && `(${getLicenseByAbbreviation(license, locale).abbreviation})`}
                 {onReferenceClick && (
-                  <Button link onClick={onReferenceClick}>
+                  <ButtonV2 variant="link" onClick={onReferenceClick}>
                     {t('article.cite')}
-                  </Button>
+                  </ButtonV2>
                 )}
               </p>
             }

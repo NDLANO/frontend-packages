@@ -12,32 +12,6 @@
   margin-top: 0;
 }
 
-ol {
-  .ol-list--roman {
-    li:before {
-      text-transform: lowercase;
-    }
-  }
-}
-
-.ol-list--roman {
-  counter-reset: item;
-}
-
-// For resetting starting-point for ordered lists. 50 is a random large number.
-@for $i from 1 through 50 {
-  .ol-reset-#{$i} {
-    counter-reset: item $i - 1;
-  }
-}
-
-.ol-list--roman > li {
-  &:before {
-    content: counter(item, lower-latin);
-    counter-increment: item;
-  }
-}
-
 .o-list--colors {
   margin: 0;
   padding: 0;

@@ -21,6 +21,10 @@ const listsStyle = css`
     margin-left: 0;
     ${fonts.sizes('18px', '29px')};
 
+    // Due to displayment issues in the editor. The editor wraps all text with a <p> tag
+    p {
+      display: inline;
+    }
     // Child unordered lists
     ul {
       padding-left: 20px;

@@ -26,10 +26,14 @@ export const Template = (args) => <Codeblock {...args} />;
     name="Codeblock"
     args={{
       title: 'Tittel til ressurs',
-      code: '<div>Hei</div>',
+      code: `<div>
+  <h1>Hva er Lorem Ipsum?</h1>
+  <p><span>Lorem Ipsum</span> er rett og slett dummytekst fra og for trykkeindustrien.</p>
+</div>`,
       format: 'HMTL',
       showCopy: true,
-    }}>
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

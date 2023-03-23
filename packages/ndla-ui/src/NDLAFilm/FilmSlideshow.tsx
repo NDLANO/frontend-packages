@@ -106,20 +106,15 @@ const InfoWrapper = styled.div`
   }
 `;
 
-const StyledFigure = styled.figure`
-  max-height: 550px;
+const StyledImg = styled.img`
+  max-height: 650px;
+  min-height: 650px;
   width: 100%;
+  aspect-ratio: 16/9;
   ${mq.range({ until: breakpoints.tablet })} {
     min-height: 440px;
     max-height: 440px;
   }
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-`;
-
-const StyledImg = styled.img`
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 `;
 
@@ -153,9 +148,7 @@ const FilmSlideshow = ({ slideshow }: Props) => {
       {(autoSizedProps) => (
         <section>
           <StyledSafeLink to={currentSlide.path} tabIndex={-1} aria-hidden>
-            <StyledFigure>
-              <StyledImg src={currentSlide.metaImage?.url ?? ''} alt={currentSlide.metaImage?.alt ?? ''} />
-            </StyledFigure>
+            <StyledImg src={currentSlide.metaImage?.url ?? ''} alt={currentSlide.metaImage?.alt ?? ''} />
             <SlideInfoWrapper>
               <InfoWrapper>
                 <h3>{currentSlide.title}</h3>

@@ -84,7 +84,7 @@ const lineNumberStyle: CSSProperties = {
 
 type Props = {
   code: string;
-  format: string;
+  format: HTMLElement;
   title?: string | null;
   actionButton?: JSX.Element | null;
   showCopy?: boolean;

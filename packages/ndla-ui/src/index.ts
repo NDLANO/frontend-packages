@@ -269,3 +269,5 @@ export type { TreeStructureProps } from './TreeStructure';
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
 export { default as LetterFilter } from './LetterFilter';
+
+export { OrderedList, UnorderedList } from './List';

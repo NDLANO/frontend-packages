@@ -16,6 +16,11 @@ const StyledUl = styled.ul`
   margin-left: 0;
   ${fonts.sizes('18px', '29px')};
 
+  // List item
+  li {
+    margin-top: 24px;
+  }
+
   // Child unordered lists
   ul {
     padding-left: 20px;

@@ -39,18 +39,14 @@ const StyledOl = styled.ol`
         padding-right: 0.25em;
       }
 
-      > ol.ol-list--roman {
-        > li {
-          &:before {
-            content: counter(item, lower-alpha) '.';
-          }
-          ol.ol-list--roman {
-            padding-left: 28px;
-            > li {
-              &:before {
-                content: counter(item, lower-roman) '.';
-              }
-            }
+      > ol[data-type='letters'] {
+        > li:before {
+          content: counter(item, lower-alpha) '.';
+        }
+        ol[data-type='letters'] {
+          padding-left: 28px;
+          > li:before {
+            content: counter(item, lower-roman) '.';
           }
         }
       }
@@ -60,7 +56,7 @@ const StyledOl = styled.ol`
   &:not([data-type='letters']) {
     list-style-type: none;
     counter-reset: item;
-    li {
+    > li {
       counter-increment: item;
       &:before {
         position: absolute;
@@ -69,15 +65,15 @@ const StyledOl = styled.ol`
         content: counters(item, '.') '.';
       }
 
-      > ol:not(.ol-list--roman) {
+      > ol:not([data-type='letters']) {
         padding-left: 32px;
         > li {
-          > ol:not(.ol-list--roman) {
+          > ol:not([data-type='letters']) {
             padding-left: 48px;
             > li {
-              > ol:not(.ol-list--roman) {
+              > ol:not([data-type='letters']) {
                 padding-left: 64px;
-                ol:not(.ol-list--roman) {
+                ol:not([data-type='letters']) {
                   padding-left: 80px;
                 }
               }

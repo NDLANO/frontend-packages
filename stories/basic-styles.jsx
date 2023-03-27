@@ -1,10 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Translation, TranslationLine } from '@ndla/ui';
+import { OrderedList, Translation, TranslationLine } from '@ndla/ui';
 import { colors, lists } from '@ndla/core';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
 import Table from './molecules/TableExample';
+import UnOrderedList from '@ndla/ui/lib/List/UnOrderedList';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -1653,7 +1654,7 @@ storiesOf('Grunnstiler', module)
     </div>
   ))
   .add('Lister', () => (
-    <div css={lists.listsStyle}>
+    <div>
       <StoryIntro title="Lister">
         <p>
           Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet
@@ -1662,125 +1663,125 @@ storiesOf('Grunnstiler', module)
       </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Nummerert liste, tall</h2>
-        <ol>
+        <OrderedList>
           <li>Listepunkt 1</li>
           <li>Listepunkt 2</li>
           <li>
             Listepunkt 3
-            <ol>
+            <OrderedList>
               <li>Listepunkt 1</li>
               <li>
                 Listepunkt 2
-                <ol>
+                <OrderedList>
                   <li>Listepunkt 1</li>
                   <li>Listepunkt 2</li>
                   <li>Listepunkt 3</li>
                   <li>Listepunkt 4</li>
-                </ol>
+                </OrderedList>
               </li>
               <li>
                 Listepunkt 3
-                <ol>
+                <OrderedList>
                   <li>Listepunkt 1</li>
                   <li>Listepunkt 2</li>
                   <li>
                     Listepunkt 3
-                    <ol>
+                    <OrderedList>
                       <li>Listepunkt 1</li>
                       <li>Listepunkt 2</li>
                       <li>Listepunkt 3</li>
-                    </ol>
+                    </OrderedList>
                   </li>
-                </ol>
+                </OrderedList>
               </li>
-            </ol>
+            </OrderedList>
           </li>
           <li>Listepunkt 4</li>
-        </ol>
+        </OrderedList>
         <h2 className="u-heading">Punktliste</h2>
-        <ul>
+        <UnOrderedList>
           <li>Listepunkt 1</li>
           <li>Listepunkt 2</li>
           <li>
             Listepunkt 3
-            <ul>
+            <UnOrderedList>
               <li>Listepunkt 1</li>
               <li>Listepunkt 2</li>
               <li>
                 Listepunkt 3
-                <ul>
+                <UnOrderedList>
                   <li>Listepunkt 1</li>
                   <li>Listepunkt 2</li>
                   <li>
                     Listepunkt 3
-                    <ul>
+                    <UnOrderedList>
                       <li>Listepunkt 1</li>
                       <li>Listepunkt 2</li>
                       <li>Listepunkt 3</li>
-                    </ul>
+                    </UnOrderedList>
                   </li>
-                </ul>
+                </UnOrderedList>
               </li>
-            </ul>
+            </UnOrderedList>
           </li>
           <li>Listepunkt 4</li>
-        </ul>
+        </UnOrderedList>
         <h2 className="u-heading">Nummerert liste, alfabetisk</h2>
-        <ol className="ol-list--roman">
+        <OrderedList data-type="letters">
           <li>Listepunkt 1</li>
           <li>Listepunkt 2</li>
           <li>
             Listepunkt 3
-            <ol className="ol-list--roman">
+            <OrderedList data-type="letters">
               <li>Listepunkt 1</li>
               <li>Listepunkt 2</li>
               <li>
                 Listepunkt 3
-                <ol className="ol-list--roman">
+                <OrderedList data-type="letters">
                   <li>Listepunkt 1</li>
                   <li>Listepunkt 2</li>
                   <li>
                     Listepunkt 3
-                    <ol className="ol-list--roman">
+                    <OrderedList data-type="letters">
                       <li>Listepunkt 1</li>
                       <li>Listepunkt 2</li>
                       <li>Listepunkt 3</li>
-                    </ol>
+                    </OrderedList>
                   </li>
-                </ol>
+                </OrderedList>
               </li>
-            </ol>
+            </OrderedList>
           </li>
           <li>Listepunkt 4</li>
-        </ol>
+        </OrderedList>
         <h2 className="u-heading">Nummerert liste, med bokstaver i tillegg</h2>
-        <ol>
+        <OrderedList>
           <li>Listepunkt 1</li>
           <li>Listepunkt 2</li>
           <li>
             Listepunkt 3
-            <ol className="ol-list--roman">
+            <OrderedList data-type="letters">
               <li>Listepunkt 1</li>
               <li>Listepunkt 2</li>
               <li>
                 Listepunkt 3
-                <ol className="ol-list--roman">
+                <OrderedList data-type="letters">
                   <li>Listepunkt 1</li>
                   <li>Listepunkt 2</li>
                   <li>
                     Listepunkt 3
-                    <ol className="ol-list--roman">
+                    <OrderedList data-type="letters">
                       <li>Listepunkt 1</li>
                       <li>Listepunkt 2</li>
                       <li>Listepunkt 3</li>
-                    </ol>
+                    </OrderedList>
                   </li>
-                </ol>
+                </OrderedList>
               </li>
-            </ol>
+            </OrderedList>
           </li>
           <li>Listepunkt 4</li>
-        </ol>
+        </OrderedList>
       </StoryBody>
     </div>
   ))

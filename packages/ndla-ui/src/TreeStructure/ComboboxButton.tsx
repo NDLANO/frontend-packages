@@ -144,7 +144,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             onKeyDown={onKeyDown}
             onClick={() => {
               innerRef.current?.focus();
-              onToggleTree(!showTree);
+              onToggleTree(showTree);
             }}
           >
             {selectedFolder?.name}

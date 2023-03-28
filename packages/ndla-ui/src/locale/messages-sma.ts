@@ -967,6 +967,8 @@ const messages = {
   title: 'Tihtele',
   cancel: 'Orrejh',
   save: 'Vöörhkh',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bildetekst',

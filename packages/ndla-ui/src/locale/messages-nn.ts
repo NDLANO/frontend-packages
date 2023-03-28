@@ -963,6 +963,8 @@ const messages = {
   loading: 'Laster',
   title: 'Tittel',
   save: 'Lagre',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bilettekst',

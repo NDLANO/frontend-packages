@@ -8,14 +8,13 @@
 
 import styled from '@emotion/styled';
 import { IImageMetaInformationV2 } from '@ndla/types-image-api';
-import Image from '../Image';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import { getCreditString } from '@ndla/licenses/lib/getCopyString';
-
+import Image from '../Image';
 interface Props {
-  image: IImageMetaInformationV2;
+  image?: IImageMetaInformationV2;
   title: string;
   summary: string;
   greenBlob: boolean;
@@ -86,11 +85,15 @@ const ContactBlock = ({ image, title, summary, name, email, greenBlob }: Props) 
     transform: translate(10%, 0);
   `;
 
+  if (!image) {
+    return null;
+  }
+
   return (
     <CardWrapper>
       <div>
         <StyledImage alt={image.alttext.alttext} src={image.imageUrl} />
-        {`Foto: ${getCreditString(image.copyright, { combineCreatorsAndRightsholders: true }, t)}  ${
+        {`${t('photo')}: ${getCreditString(image.copyright, { combineCreatorsAndRightsholders: true }, t)}  ${
           image.copyright.license.license
         }`}
       </div>

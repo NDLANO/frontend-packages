@@ -15,7 +15,7 @@ export type BlogPostEmbedData = {
   language: string;
   title: string;
   size?: 'normal' | 'large';
-  author: string;
+  author?: string;
   url: string;
 };
 

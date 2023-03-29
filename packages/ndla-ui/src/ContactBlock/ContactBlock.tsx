@@ -12,12 +12,14 @@ import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import { getCreditString } from '@ndla/licenses/lib/getCopyString';
+import { css } from '@emotion/react';
 import Image from '../Image';
+import { errorSvgSrc } from '../Embed/ImageEmbed';
 interface Props {
   image?: IImageMetaInformationV2;
   title: string;
   summary: string;
-  greenBlob: boolean;
+  color?: 'pink' | 'green';
   name: string;
   email: string;
 }
@@ -29,7 +31,9 @@ const CardWrapper = styled.div`
   font-family: ${fonts.sans};
   justify-content: center;
 
-  ${mq.range({ from: breakpoints.tablet })} {
+  border-radius: 4px;
+  border: 1px solid ${colors.brand.lighter};
+  ${mq.range({ from: breakpoints.tabletWide })} {
     flex-direction: row;
     padding: 0 0 ${spacing.medium} ${spacing.medium};
     width: 773px;
@@ -37,10 +41,10 @@ const CardWrapper = styled.div`
   }
 `;
 
-const StyledHeader = styled.h4`
+const StyledHeader = styled.div`
   ${fonts.sizes('22px', '30px')};
   font-weight: ${fonts.weight.bold};
-  margin: ${spacing.medium} 0 ${spacing.xsmall} 0;
+  margin: ${spacing.mediumlarge} 0 ${spacing.xsmall} 0;
 `;
 
 const StyledDescriptionInformation = styled.div`
@@ -65,33 +69,37 @@ const ContentWrapper = styled.div`
 
 const StyledImage = styled(Image)`
   padding: ${spacing.medium} 0 ${spacing.small} 0;
+  min-height: 286px;
+  min-width: 286px;
 `;
 
 const BlobWrapper = styled.div`
   height: 165px;
   width: 90px;
 `;
+const BlobStyle = css`
+  width: 165px;
+  height: 180px;
+  transform: translate(10%, 0);
+`;
 
-const ContactBlock = ({ image, title, summary, name, email, greenBlob }: Props) => {
+const ContactBlock = ({ image, title, summary, name, email, color = 'green' }: Props) => {
   const { t } = useTranslation();
-
-  const StyledBlob = styled(greenBlob ? BlobRound : BlobPointy)`
-    width: 165px;
-    height: 180px;
-    transform: translate(10%, 0);
-  `;
-
-  if (!image) {
-    return null;
-  }
-
+  const isGreen = color === 'green';
+  const Blob = isGreen ? BlobRound : BlobPointy;
   return (
     <CardWrapper>
       <div>
-        <StyledImage alt={image.alttext.alttext} src={image.imageUrl} />
-        {`${t('photo')}: ${getCreditString(image.copyright, { combineCreatorsAndRightsholders: true }, t)}  ${
-          image.copyright.license.license
-        }`}
+        {image ? (
+          <>
+            <StyledImage alt={image.alttext.alttext} src={image.imageUrl} />
+            {`${t('photo')}: ${getCreditString(image.copyright, { combineCreatorsAndRightsholders: true }, t)}  ${
+              image.copyright.license.license
+            }`}
+          </>
+        ) : (
+          <StyledImage alt={t('image.error.url')} src={errorSvgSrc} />
+        )}
       </div>
       <div>
         <ContentWrapper>
@@ -104,7 +112,7 @@ const ContactBlock = ({ image, title, summary, name, email, greenBlob }: Props) 
             </StyledDescriptionInformation>
           </div>
           <BlobWrapper>
-            <StyledBlob color={greenBlob ? '#CAE4DA' : '#FAB0A4'} />
+            <Blob css={BlobStyle} color={isGreen ? '#CAE4DA' : '#FAB0A4'} />
           </BlobWrapper>
         </ContentWrapper>
         <SummaryBlock>{summary}</SummaryBlock>

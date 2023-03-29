@@ -67,7 +67,7 @@ export default {
       'Sigurd har variert ledererfaring fra utdanningssektoren, både fra videregående skole, nasjonalt senter og fra universitets/høgskolesektoren. Ansvarsområdene dekker bl.a. utdanning/opplæring/studiekvalitet, økonomi, HR, stratgi og IT-utvikling/-drift.',
     name: 'Sigurd Trageton',
     email: 'sigurd@ndla.no',
-    greenBlob: true,
+    color: 'green',
   },
   parameters: {
     ...defaultParameters,

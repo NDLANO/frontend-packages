@@ -532,7 +532,7 @@ storiesOf('Grunnstiler', module)
         </div>
 
         <div>
-          <h2 className="u-heading">NDLA Film</h2>
+          <h2 className="u-heading">NDLA film</h2>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
               <div className="o-list__bgcolor" style={{ backgroundColor: colors.ndlaFilm.filmColor }} />

@@ -19,8 +19,8 @@ export type BlogPostEmbedData = {
   url: string;
 };
 
-export interface BlogPostMetaData {
+export interface BlogPostMeta {
   metaImage?: IImageMetaInformationV2;
 }
 
-export type BlogPostMeta = MetaData<BlogPostEmbedData, BlogPostMetaData>;
+export type BlogPostMetaData = MetaData<BlogPostEmbedData, BlogPostMeta>;

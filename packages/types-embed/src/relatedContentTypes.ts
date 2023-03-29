@@ -6,7 +6,7 @@
  *
  */
 
-import { IArticleV2 } from '@ndla/types-article-api';
+import { IArticleV2 } from '@ndla/types-backend/article-api';
 import { MetaData } from '.';
 
 export interface RelatedContentEmbedData {

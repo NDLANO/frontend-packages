@@ -14,7 +14,7 @@ import { Done } from '@ndla/icons/editor';
 import { ButtonV2 as Button } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { IFolder } from '@ndla/types-learningpath-api';
+import { IFolder } from '@ndla/types-backend/learningpath-api';
 import { CommonFolderItemsProps } from './types';
 import { arrowNavigation } from './arrowNavigation';
 import { treestructureId } from './helperFunctions';

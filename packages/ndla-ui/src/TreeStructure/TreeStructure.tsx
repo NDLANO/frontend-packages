@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { colors, fonts, misc, utils } from '@ndla/core';
 import { css } from '@emotion/react';
 import uniq from 'lodash/uniq';
-import { IFolder } from '@ndla/types-learningpath-api';
+import { IFolder } from '@ndla/types-backend/learningpath-api';
 import FolderItems from './FolderItems';
 import { flattenFolders, treestructureId } from './helperFunctions';
 import { CommonTreeStructureProps, NewFolderInputFunc, TreeStructureType } from './types';

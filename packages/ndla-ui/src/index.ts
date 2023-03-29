@@ -271,3 +271,4 @@ export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleS
 export { default as LetterFilter } from './LetterFilter';
 
 export { OrderedList, UnorderedList } from './List';
+export { BlogPostV2 } from './BlogPost';

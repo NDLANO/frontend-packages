@@ -16,38 +16,51 @@ export default {
   component: ContactBlock,
   args: {
     image: {
-      id: '21',
-      metaUrl:
-        'https://i0.wp.com/om.ndla.no/wp-content/uploads/2022/10/trageton_sigurd_f_002.jpg?resize=240%2C300&ssl=1https://api.test.ndla.no/image-api/raw/sza9651a.jpg',
-      title: { title: 'Lett brønnintervensjon – RLWI', language: 'nb' },
-      alttext: { alttext: '', language: 'nb' },
-      size: 123,
-      contentType: 'asda',
+      id: '65750',
+      metaUrl: 'https://api.test.ndla.no/image-api/v2/images/65750',
+      title: {
+        title: 'Sigurd Trageton',
+        language: 'nb',
+      },
+      alttext: {
+        alttext: 'Sigurd Trageton',
+        language: 'nb',
+      },
+      imageUrl: 'https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg',
+      size: 404340,
+      contentType: 'image/jpeg',
       copyright: {
-        origin: '',
         license: {
-          license: 'CC-BY-SA 4.0',
-          description: '',
-          url: '',
+          license: 'CC-BY-SA-4.0',
+          description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+          url: 'https://creativecommons.org/licenses/by-sa/4.0/',
         },
-        creators: [{ type: 'photographer', name: 'Nils Arnulfsen' }],
-        rightsholders: [{ type: 'rightsholder', name: 'Arnold Paulsen' }],
-        processors: [{ type: 'processors', name: 'Arnold Nilsen' }],
+        origin: '',
+        creators: [
+          {
+            type: 'photographer',
+            name: 'Tom Knudsen',
+          },
+        ],
+        processors: [],
+        rightsholders: [],
       },
       tags: {
-        tags: ['asd'],
+        tags: ['Sigurd', 'Trageton', 'Portrett'],
         language: 'nb',
       },
       caption: {
-        caption: 'asd',
+        caption: 'Sigurd Trageton',
         language: 'nb',
       },
-      supportedLanguages: ['nb'],
-      created: 'Tester evensen',
-      createdBy: 'Tom Knudsen',
-      modelRelease: 'asdasda',
-      imageUrl:
-        'https://i0.wp.com/om.ndla.no/wp-content/uploads/2022/10/trageton_sigurd_f_002.jpg?resize=240%2C300&ssl=1https://api.test.ndla.no/image-api/raw/sx9965f8.jpg',
+      supportedLanguages: ['nb', 'nn'],
+      created: '2023-03-29T07:15:50Z',
+      createdBy: 'f-jBTU8O8kYbUW20lMeIuTSv',
+      modelRelease: 'not-set',
+      imageDimensions: {
+        width: 1600,
+        height: 2000,
+      },
     },
     title: 'Daglig leder og ansvarlig redaktør, Vestland fylkeskommune',
     summary:

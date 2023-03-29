@@ -64,10 +64,6 @@ const ContentWrapper = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  min-width: 286px;
-  max-width: 286px;
-  min-height: 286px;
-  max-height: 286px;
   padding: ${spacing.medium} 0 ${spacing.small} 0;
 `;
 

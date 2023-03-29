@@ -36,7 +36,7 @@
     "pretty-bytes": "^5.6.0"
   },
   "devDependencies": {
-    "@ndla/types-image-api": "^0.0.8"
+    "@ndla/types-backend": "^0.2.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

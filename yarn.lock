@@ -1884,55 +1884,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@ndla/types-article-api@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@ndla/types-article-api/-/types-article-api-0.0.7.tgz#4d02b658c3defbf674e6d99e083056b60f276406"
-  integrity sha512-lzRUo85xjNnQ/ED7Og+kQV52NSHPnadl266MES6Ekd8fFzqLyXnM2RIVSAb0PQkQuPFXcstFYzB8t+mNZ4BE7w==
-
-"@ndla/types-audio-api@0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@ndla/types-audio-api/-/types-audio-api-0.0.12.tgz#cb2acb5cf873eb14cd60c505b75b788d0f743858"
-  integrity sha512-g+suRp9YV6kzPD7obQ1b4O1HO/DogfcLtXegT3KVTeFs5S6lZjK7JXWALqGZ0wnZHSNV6Via9LPHaoh4jKTijw==
-
-"@ndla/types-audio-api@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@ndla/types-audio-api/-/types-audio-api-0.0.10.tgz#008cbd2c420fb7993133b42489b24dc3b7b034c8"
-  integrity sha512-M40Za9h7L1FIFgw4LYU1CsLWRRJ2QWdnD+22xBAKyhDHrWmaRVg/Vqu5QWRHWjcSmZEtUnT/fs7g6HNKR26Yog==
-
-"@ndla/types-backend@^0.2.1":
+"@ndla/types-backend@0.2.1", "@ndla/types-backend@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@ndla/types-backend/-/types-backend-0.2.1.tgz#c22e87235e67e28e7c60abd031a905c2548e054f"
   integrity sha512-nvyOI+ep8s+qVimT5Dg4l23xglAqQ/irnF2ZzvQlFUbF3dezDdzGNddA6D3TTvNxI1Wk5fwH7MnY8iopLXpuxw==
-
-"@ndla/types-concept-api@0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@ndla/types-concept-api/-/types-concept-api-0.0.10.tgz#43bd9dcfede1c1680e52bdc0f1ffa31246fbca9c"
-  integrity sha512-btJNLpUuSaQXH1RYAhF4867Ka8dYLFo1gAbwcXQj3uQdo6BWJfPKMHoRHGXJ9Qww+MuZArlLgWc+YEh2Hd0aJg==
-
-"@ndla/types-draft-api@0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@ndla/types-draft-api/-/types-draft-api-0.0.29.tgz#4f004b214e71839e471f984cfe11fa023fe1319a"
-  integrity sha512-elsNLyEk1NJWjVV3YsY6I7WRKGRQLs1HDL/C0J6DN4SJgl/O55Ir4dfn2Rd0lElsV71Wa+OcqiQTXj/fpcTYew==
-
-"@ndla/types-frontpage-api@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@ndla/types-frontpage-api/-/types-frontpage-api-0.0.4.tgz#e8657dd94135164f921c02924090f9e578adba87"
-  integrity sha512-A6WAsDLDcw2U6xN98RytvPFpUEvZlJDe0UfSZQd6NR3EGRXaH8FgDu4mKlqvL4NXMt1zHVtBquah5jDU8qhupQ==
-
-"@ndla/types-image-api@0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@ndla/types-image-api/-/types-image-api-0.0.10.tgz#0b358825e5ded24d602576997019492ffdd77160"
-  integrity sha512-/wlnvskF8xHzNx4ZPsxgaJDqs3jGURgC28mMljlPtgOgK07/1QemKaJIPAmSGNcxBIzMhNiBkkFDYbHw8pxOGw==
-
-"@ndla/types-image-api@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@ndla/types-image-api/-/types-image-api-0.0.8.tgz#4d1c7d830bb90ede23ac311c8f860811f83a0c39"
-  integrity sha512-O8nVTzA8nLqawNArweLRcYgAyCRdhw/MK5T1pcOYJDnORllTgKCrbeaemWZH0Fu5jd4perFwCI1P+50FteNY6w==
-
-"@ndla/types-learningpath-api@^0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@ndla/types-learningpath-api/-/types-learningpath-api-0.0.20.tgz#5794c7300834fb857199f26fa934823102003b2e"
-  integrity sha512-uiM43AhkqSYFGVpwitixQM1ksmn4QqMqNN0O3S2wssAWT9koWxa4o1GjysUm8WwlCz774qOVWqnZJ0dEXjHTeQ==
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"

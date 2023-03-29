@@ -6,7 +6,7 @@
  *
  */
 
-import { IImageMetaInformationV2 } from '@ndla/types-image-api';
+import { IImageMetaInformationV2 } from '@ndla/types-backend/image-api';
 import { MetaData } from '.';
 
 export type BlogPostEmbedData = {
@@ -15,7 +15,7 @@ export type BlogPostEmbedData = {
   language: string;
   title: string;
   size?: 'normal' | 'large';
-  author: string;
+  author?: string;
   url: string;
 };
 

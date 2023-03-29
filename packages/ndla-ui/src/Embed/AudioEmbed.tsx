@@ -7,7 +7,7 @@
  */
 
 import { AudioMetaData } from '@ndla/types-embed';
-import { ICopyright } from '@ndla/types-image-api';
+import { ICopyright } from '@ndla/types-backend/image-api';
 import {
   figureApa7CopyString,
   getGroupedContributorDescriptionList,

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/types-embed",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Types used for NDLA embeds",
   "license": "GPL-3.0",
   "types": "lib/index.d.ts",
@@ -23,13 +23,7 @@
     "es"
   ],
   "devDependencies": {
-    "@ndla/types-article-api": "0.0.7",
-    "@ndla/types-audio-api": "0.0.12",
-    "@ndla/types-concept-api": "0.0.10",
-    "@ndla/types-draft-api": "0.0.29",
-    "@ndla/types-frontpage-api": "0.0.4",
-    "@ndla/types-image-api": "0.0.10",
-    "@ndla/types-learningpath-api": "^0.0.20"
+    "@ndla/types-backend": "^0.2.1"
   },
   "publishConfig": {
     "access": "public"

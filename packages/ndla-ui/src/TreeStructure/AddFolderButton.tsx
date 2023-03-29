@@ -12,7 +12,7 @@ import Tooltip from '@ndla/tooltip';
 import styled from '@emotion/styled';
 import { ButtonV2 as Button } from '@ndla/button';
 import { Plus } from '@ndla/icons/action';
-import { IFolder } from '@ndla/types-learningpath-api';
+import { IFolder } from '@ndla/types-backend/learningpath-api';
 
 interface AddFolderButtonProps {
   canAddFolder: boolean;

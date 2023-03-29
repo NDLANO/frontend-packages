@@ -68,6 +68,7 @@ export default {
     name: 'Sigurd Trageton',
     email: 'sigurd@ndla.no',
     color: 'green',
+    blob: 'pointy',
   },
   parameters: {
     ...defaultParameters,

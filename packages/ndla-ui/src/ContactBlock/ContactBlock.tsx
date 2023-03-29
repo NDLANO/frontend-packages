@@ -6,20 +6,20 @@
  *
  */
 
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { IImageMetaInformationV2 } from '@ndla/types-image-api';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
-import { getCreditString } from '@ndla/licenses/lib/getCopyString';
-import { css } from '@emotion/react';
-import Image from '../Image';
+import concat from 'lodash/concat';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
 interface Props {
   image?: IImageMetaInformationV2;
   title: string;
   summary: string;
   color?: 'pink' | 'green';
+  blob?: 'pointy' | 'round';
   name: string;
   email: string;
 }
@@ -67,14 +67,15 @@ const ContentWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
-const StyledImage = styled(Image)`
+const StyledImage = styled.img`
   padding: ${spacing.medium} 0 ${spacing.small} 0;
   min-height: 286px;
+  max-width: 286px;
   min-width: 286px;
 `;
 
 const BlobWrapper = styled.div`
-  height: 165px;
+  height: 180px;
   width: 90px;
 `;
 const BlobStyle = css`
@@ -83,17 +84,19 @@ const BlobStyle = css`
   transform: translate(10%, 0);
 `;
 
-const ContactBlock = ({ image, title, summary, name, email, color = 'green' }: Props) => {
+const ContactBlock = ({ image, title, summary, name, email, color = 'green', blob = 'pointy' }: Props) => {
   const { t } = useTranslation();
   const isGreen = color === 'green';
-  const Blob = isGreen ? BlobRound : BlobPointy;
+  const Blob = blob === 'pointy' ? BlobRound : BlobPointy;
+  const authors = concat(image?.copyright.processors, image?.copyright.creators, image?.copyright.rightsholders);
+
   return (
     <CardWrapper>
       <div>
         {image ? (
           <>
             <StyledImage alt={image.alttext.alttext} src={image.imageUrl} />
-            {`${t('photo')}: ${getCreditString(image.copyright, { combineCreatorsAndRightsholders: true }, t)}  ${
+            {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
               image.copyright.license.license
             }`}
           </>

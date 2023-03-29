@@ -8,7 +8,7 @@
 
 import { ContactBlock } from '@ndla/ui';
 import { attributesToProps } from 'html-react-parser';
-import { ContactBlockMetaData } from '@ndla/types-embed/src/contactBlockTypes';
+import { ContactBlockMetaData } from '@ndla/types-embed';
 import { PluginType } from '../types';
 
 export const contactBlockEmbedPlugin: PluginType = (element) => {

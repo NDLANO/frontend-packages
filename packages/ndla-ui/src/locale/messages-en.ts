@@ -1186,6 +1186,7 @@ const messages = {
         info3:
           'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
       },
+      willOpenInNewTab: 'Opens in a new tab.',
     },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",

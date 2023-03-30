@@ -11,7 +11,7 @@ import { MetaData } from '.';
 
 export type BlogPostEmbedData = {
   resource: 'blog-post';
-  imageId: number;
+  imageId: string;
   language: string;
   title: string;
   size?: 'normal' | 'large';
@@ -19,8 +19,8 @@ export type BlogPostEmbedData = {
   url: string;
 };
 
-export interface BlogPostMetaData {
+export interface BlogPostMeta {
   metaImage?: IImageMetaInformationV2;
 }
 
-export type BlogPostMeta = MetaData<BlogPostEmbedData, BlogPostMetaData>;
+export type BlogPostMetaData = MetaData<BlogPostEmbedData, BlogPostMeta>;

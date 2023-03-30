@@ -9,7 +9,8 @@ const FrontpageProgramMenu = ({}) => {
     <div>
       <FrontpageProgramCard
         programTitel="Helse- og oppvekstfag"
-        programIMG="https://api.test.ndla.no/image-api/raw/twPSlbya.svg?width=600&ts=1680164639160"
+        programIMGDesk="https://api.test.ndla.no/image-api/raw/twPSlbya.svg?width=600&ts=1680164639160"
+        programIMGMob="https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg"
       />
     </div>
   );

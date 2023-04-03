@@ -6,6 +6,8 @@ const StyledCardContainer = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     height: 350px;
     width: 250px;
+    margin-bottom: 22px;
+    margin-left: 22px;
   }
   width: 350px;
   height: 195px;
@@ -14,6 +16,12 @@ const StyledCardContainer = styled.div`
   background-color: #ffffff;
   border: 1px solid #deebf6;
   border-radius: 4px;
+  margin-bottom: 22px;
+  align-self: center;
+  :hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;
 
 const StyledCardIMG = styled.img`
@@ -34,9 +42,15 @@ const StyledCardIMGMob = styled.img`
   }
 `;
 
+const StyledTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 70px;
+`;
+
 const StyledCardTitle = styled.p`
   color: #444444;
-  margin: 23px 20px;
+  margin: 0 20px;
   font-family: Source Sans Pro;
   font-weight: 600;
   font-size: 16px;
@@ -53,7 +67,9 @@ const FrontpageProgramCard = ({ programTitel, programIMGDesk, programIMGMob }: P
     <StyledCardContainer>
       <StyledCardIMG src={programIMGDesk} />
       <StyledCardIMGMob src={programIMGMob} />
-      <StyledCardTitle>{programTitel}</StyledCardTitle>
+      <StyledTitleContainer>
+        <StyledCardTitle>{programTitel}</StyledCardTitle>
+      </StyledTitleContainer>
     </StyledCardContainer>
   );
 };

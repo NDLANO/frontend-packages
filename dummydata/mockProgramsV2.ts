@@ -1,0 +1,98 @@
+export default [
+  {
+    label: 'Bygg- og anleggsteknikk',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_1',
+  },
+  {
+    label: 'Elektro og datateknologi',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_2',
+  },
+  {
+    label: 'Frisør, blomster, interiør og eksponeringsdesign',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_3',
+  },
+  {
+    label: 'Helse- og oppvekstfag',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_4',
+  },
+  {
+    label: 'Håndverk, design og produktutvikling',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_5',
+  },
+  {
+    label: 'Idrett',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_6',
+  },
+  {
+    label: 'Informasjonsteknologi og medieproduksjon',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_7',
+  },
+  {
+    label: 'Kunst, design og arkitektur',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_8',
+  },
+  {
+    label: 'Medier og kommunikasjon',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_9',
+  },
+  {
+    label: 'Musikk, dans og drama',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_10',
+  },
+  {
+    label: 'Naturbruk',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_11',
+  },
+  {
+    label: 'Påbygg',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_12',
+  },
+  {
+    label: 'Restaurant- og matfag',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_13',
+  },
+  {
+    label: 'Salg, service og reiseliv (Service og samferdsel)',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_14',
+  },
+  {
+    label: 'Studiespesialisering',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_15',
+  },
+  {
+    label: 'Teknologi- og industrifag',
+    url: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg',
+    url2: 'https://api.test.ndla.no/image-api/raw/BCQEgA9V.svg',
+    id: 'programme_16',
+  },
+];

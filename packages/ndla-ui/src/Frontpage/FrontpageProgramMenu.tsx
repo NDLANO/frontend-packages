@@ -43,7 +43,7 @@ const StyledProgramsCardsContainer = styled.div`
 
 interface Props {}
 
-const FrontpageProgramMenu: React.FC<Props> = ({}) => {
+const FrontpageProgramMenu: React.FC<Props> = () => {
   return (
     <StyledProgramsContainer>
       <StyledProgramsHeaderContainer>

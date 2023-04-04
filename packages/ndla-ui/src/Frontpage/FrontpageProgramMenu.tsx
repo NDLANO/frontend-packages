@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { fonts, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import FrontpageProgramCard from './FrontpageProgramCard';
-import data from '../../../../dummydata/mockProgramsV2.ts';
+import data from '../../../../dummydata/mockProgramsV2';
 
 const StyledProgramsContainer = styled.div`
   background-color: #f7fafd;
@@ -41,7 +41,9 @@ const StyledProgramsCardsContainer = styled.div`
   }
 `;
 
-const FrontpageProgramMenu: React.FC<{}> = ({}) => {
+interface Props {}
+
+const FrontpageProgramMenu: React.FC<Props> = ({}) => {
   return (
     <StyledProgramsContainer>
       <StyledProgramsHeaderContainer>

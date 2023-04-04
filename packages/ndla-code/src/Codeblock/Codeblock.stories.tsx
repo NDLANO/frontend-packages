@@ -1,7 +1,7 @@
-import * as React from 'react';
 import Codeblock from './Codeblock';
 
-export default {
+const codeblock = {
   title: 'Enkle komponenter/Kodeblokk',
   component: Codeblock,
 };
+export default codeblock;

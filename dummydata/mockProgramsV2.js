@@ -1,4 +1,4 @@
-export default [
+export const mockProgramsV2 = [
   {
     label: 'Bygg- og anleggsteknikk',
     url: 'https://api.test.ndla.no/image-api/raw/N8X0h6Ns.svg?width=600&ts=1680525340295',

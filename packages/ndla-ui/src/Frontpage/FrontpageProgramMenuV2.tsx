@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { fonts, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import FrontpageProgramCard from './FrontpageProgramCard';
-import data from '../../../../dummydata/mockProgramsV2';
 
 const StyledProgramsContainer = styled.div`
   background-color: #f7fafd;
@@ -41,9 +40,17 @@ const StyledProgramsCardsContainer = styled.div`
   }
 `;
 
-interface Props {}
+interface Programs {
+  label: string;
+  url: string;
+  url2: string;
+  id: string;
+}
+interface Props {
+  programs: Programs[];
+}
 
-const FrontpageProgramMenu: React.FC<Props> = () => {
+const FrontpageProgramMenuV2 = ({ programs }: Props) => {
   return (
     <StyledProgramsContainer>
       <StyledProgramsHeaderContainer>
@@ -53,7 +60,7 @@ const FrontpageProgramMenu: React.FC<Props> = () => {
         </StyledProgramsIngress>
       </StyledProgramsHeaderContainer>
       <StyledProgramsCardsContainer>
-        {data.map((program) => (
+        {programs.map((program) => (
           <FrontpageProgramCard
             key={program.id}
             programTitel={program.label}
@@ -66,4 +73,4 @@ const FrontpageProgramMenu: React.FC<Props> = () => {
   );
 };
 
-export default FrontpageProgramMenu;
+export default FrontpageProgramMenuV2;

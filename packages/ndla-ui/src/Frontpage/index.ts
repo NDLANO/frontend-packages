@@ -6,6 +6,7 @@ export { default as FrontpageMultidisciplinarySubject } from './FrontpageMultidi
 export { default as FrontpageSearch } from './FrontpageSearch';
 export { default as FrontpageSubjectIllustration } from './illustrations/FrontpageSubjectIllustration';
 export { default as FrontpageProgramMenu } from './FrontpageProgramMenu';
+export { default as FrontpageProgramMenuV2 } from './FrontpageProgramMenuV2';
 
 export {
   Fellesfag,

@@ -1,68 +1,85 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
 import { fonts, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import FrontpageProgramCard from './FrontpageProgramCard';
-import data from '../../../../dummydata/mockProgramsV2';
+import NavigationBox, { ItemProps } from '../Navigation/NavigationBox';
+import FrontpageAllSubjects, { subjectsProps } from './FrontpageAllSubjects';
 
-const StyledProgramsContainer = styled.div`
-  background-color: #f7fafd;
-`;
-
-const StyledProgramsHeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const StyledProgramsHeader = styled.h1`
-  color: #444444;
-  font-family: Source Serif Pro;
-  font-weight: 700;
-  font-size: 48px;
-`;
-
-const StyledProgramsIngress = styled.p`
-  color: #444444;
-  font-family: Source Sans Pro;
-  font-weight: 400;
-  font-size: 24px;
-`;
-
-const StyledProgramsCardsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  ${mq.range({ from: breakpoints.tablet })} {
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    margin-right: 22px;
+const StyledWrapper = styled.div`
+  margin: 0 0 60px;
+  padding-top: 4px;
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding-top: 16px;
+    margin: 0 0 134px;
   }
 `;
 
-interface Props {}
+const StyledMenu = styled.div`
+  position: relative;
+  margin-bottom: 28px;
+  > *:first-of-type {
+    margin-right: 10px;
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: 40px;
+  }
+`;
+const StyledMenuItem = styled.span`
+  font-weight: ${fonts.weight.semibold};
+`;
 
-const FrontpageProgramMenu: React.FC<Props> = () => {
+type Props = {
+  programItems: ItemProps[];
+  subjectCategories: subjectsProps['categories'];
+  showBetaCursor?: boolean;
+};
+
+const FrontpageProgramMenu = ({ programItems, subjectCategories }: Props) => {
+  const { t } = useTranslation();
+  const [showSubjects, setShowSubjects] = useState(false);
+  const isWindowContext = typeof window !== 'undefined';
+
+  useEffect(() => {
+    if (isWindowContext) {
+      const rememberSubjects = window.localStorage.getItem('frontpageShowSubjects') || '';
+      setShowSubjects(rememberSubjects.localeCompare('true') === 0);
+    }
+  }, [isWindowContext]);
+
+  const toggleSubjects = (toggle: boolean) => {
+    setShowSubjects(toggle);
+    if (isWindowContext) {
+      window.localStorage.setItem('frontpageShowSubjects', `${toggle}`);
+    }
+  };
+
   return (
-    <StyledProgramsContainer>
-      <StyledProgramsHeaderContainer>
-        <StyledProgramsHeader>Se våre utdanningsprogram</StyledProgramsHeader>
-        <StyledProgramsIngress>
-          Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.
-        </StyledProgramsIngress>
-      </StyledProgramsHeaderContainer>
-      <StyledProgramsCardsContainer>
-        {data.map((program) => (
-          <FrontpageProgramCard
-            key={program.id}
-            programTitel={program.label}
-            programIMGDesk={program.url}
-            programIMGMob={program.url2}
-          />
-        ))}
-      </StyledProgramsCardsContainer>
-    </StyledProgramsContainer>
+    <StyledWrapper>
+      <StyledMenu>
+        <ButtonV2
+          onClick={() => toggleSubjects(false)}
+          colorTheme={showSubjects ? 'lighter' : undefined}
+          size="medium"
+          shape="pill"
+        >
+          <StyledMenuItem>{t('frontpageMenu.program')}</StyledMenuItem>
+        </ButtonV2>
+        <ButtonV2
+          onClick={() => toggleSubjects(true)}
+          colorTheme={!showSubjects ? 'lighter' : undefined}
+          size="medium"
+          shape="pill"
+        >
+          <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
+        </ButtonV2>
+      </StyledMenu>
+      {showSubjects ? (
+        <FrontpageAllSubjects categories={subjectCategories} />
+      ) : (
+        <NavigationBox colorMode="greyLightest" items={programItems} listDirection="vertical" />
+      )}
+    </StyledWrapper>
   );
 };
 

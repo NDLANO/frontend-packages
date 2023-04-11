@@ -11,6 +11,7 @@ import { MetaData } from '.';
 export interface FileEmbedData {
   resource: 'file';
   path: string;
+  display?: 'block' | 'inline';
   title: string;
   type: string;
   url: string;

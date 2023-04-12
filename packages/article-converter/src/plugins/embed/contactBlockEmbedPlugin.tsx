@@ -14,15 +14,16 @@ import { PluginType } from '../types';
 export const contactBlockEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const embedData = JSON.parse(props['data-json']) as ContactBlockMetaData;
-  const { title, name, email, color, summary } = embedData.embedData;
+  const { jobTitle, name, email, blobColor, description, blob } = embedData.embedData;
   return (
     <ContactBlock
-      title={title}
-      name={name}
-      email={email}
-      color={color}
-      summary={summary}
       image={embedData.status === 'success' ? embedData.data.image : undefined}
+      description={description}
+      email={email}
+      blobColor={blobColor}
+      jobTitle={jobTitle}
+      name={name}
+      blob={blob}
     />
   );
 };

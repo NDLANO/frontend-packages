@@ -8,17 +8,18 @@
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { IImageMetaInformationV2 } from '@ndla/types-image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import concat from 'lodash/concat';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
+
 interface Props {
-  image?: IImageMetaInformationV2;
-  title: string;
-  summary: string;
-  color?: 'pink' | 'green';
+  image?: IImageMetaInformationV3;
+  jobTitle: string;
+  description: string;
+  blobColor?: 'pink' | 'green';
   blob?: 'pointy' | 'round';
   name: string;
   email: string;
@@ -51,9 +52,14 @@ const StyledDescriptionInformation = styled.div`
   display: flex;
   color: ${colors.text.light};
   gap: ${spacing.xxsmall};
+
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    width: 335px;
+  }
 `;
 const EmailLink = styled.a`
   color: ${colors.text.light};
+  text-decoration-color: ${colors.text.light};
 `;
 
 const SummaryBlock = styled.div`
@@ -84,9 +90,9 @@ const BlobStyle = css`
   transform: translate(10%, 0);
 `;
 
-const ContactBlock = ({ image, title, summary, name, email, color = 'green', blob = 'pointy' }: Props) => {
+const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = 'green', blob = 'pointy' }: Props) => {
   const { t } = useTranslation();
-  const isGreen = color === 'green';
+  const isGreenBlob = blobColor === 'green';
   const Blob = blob === 'pointy' ? BlobRound : BlobPointy;
   const authors = concat(image?.copyright.processors, image?.copyright.creators, image?.copyright.rightsholders);
 
@@ -95,7 +101,7 @@ const ContactBlock = ({ image, title, summary, name, email, color = 'green', blo
       <div>
         {image ? (
           <>
-            <StyledImage alt={image.alttext.alttext} src={image.imageUrl} />
+            <StyledImage alt={image.alttext.alttext} src={image.image.imageUrl} />
             {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
               image.copyright.license.license
             }`}
@@ -108,17 +114,17 @@ const ContactBlock = ({ image, title, summary, name, email, color = 'green', blo
         <ContentWrapper>
           <div>
             <StyledHeader>{name}</StyledHeader>
-            <StyledDescriptionInformation>{title}</StyledDescriptionInformation>
+            <StyledDescriptionInformation>{jobTitle}</StyledDescriptionInformation>
             <StyledDescriptionInformation>
               {`${t('email')}:   `}
-              <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
+              <EmailLink href={`mailto:${email}?subject=Contact us`}>{email}</EmailLink>
             </StyledDescriptionInformation>
           </div>
           <BlobWrapper>
-            <Blob css={BlobStyle} color={isGreen ? '#CAE4DA' : '#FAB0A4'} />
+            <Blob css={BlobStyle} color={isGreenBlob ? '#CAE4DA' : '#FAB0A4'} />
           </BlobWrapper>
         </ContentWrapper>
-        <SummaryBlock>{summary}</SummaryBlock>
+        <SummaryBlock>{description}</SummaryBlock>
       </div>
     </CardWrapper>
   );

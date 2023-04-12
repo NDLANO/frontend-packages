@@ -17,7 +17,7 @@ export default {
   args: {
     image: {
       id: '65750',
-      metaUrl: 'https://api.test.ndla.no/image-api/v2/images/65750',
+      metaUrl: 'https://api.test.ndla.no/image-api/v3/images/65750',
       title: {
         title: 'Sigurd Trageton',
         language: 'nb',
@@ -26,9 +26,6 @@ export default {
         alttext: 'Sigurd Trageton',
         language: 'nb',
       },
-      imageUrl: 'https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg',
-      size: 404340,
-      contentType: 'image/jpeg',
       copyright: {
         license: {
           license: 'CC-BY-SA-4.0',
@@ -57,17 +54,24 @@ export default {
       created: '2023-03-29T07:15:50Z',
       createdBy: 'f-jBTU8O8kYbUW20lMeIuTSv',
       modelRelease: 'not-set',
-      imageDimensions: {
-        width: 1600,
-        height: 2000,
+      image: {
+        fileName: 'RVrVQIKh.jpg',
+        size: 404340,
+        contentType: 'image/jpeg',
+        imageUrl: 'https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg',
+        dimensions: {
+          width: 1600,
+          height: 2000,
+        },
+        language: 'nb',
       },
     },
-    title: 'Daglig leder og ansvarlig redaktør, Vestland fylkeskommune',
-    summary:
+    jobTitle: 'Daglig leder og ansvarlig redaktør, Vestland fylkeskommune',
+    description:
       'Sigurd har variert ledererfaring fra utdanningssektoren, både fra videregående skole, nasjonalt senter og fra universitets/høgskolesektoren. Ansvarsområdene dekker bl.a. utdanning/opplæring/studiekvalitet, økonomi, HR, stratgi og IT-utvikling/-drift.',
     name: 'Sigurd Trageton',
     email: 'sigurd@ndla.no',
-    color: 'green',
+    blobColor: 'green',
     blob: 'pointy',
   },
   parameters: {

@@ -14,7 +14,7 @@ import { PluginType } from '../types';
 export const contactBlockEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const embedData = JSON.parse(props['data-json']) as ContactBlockMetaData;
-  const { jobTitle, name, email, blobColor, description, blob } = embedData.embedData;
+  const { name, email, description, blob, blobColor, jobTitle } = embedData.embedData;
   return (
     <ContactBlock
       image={embedData.status === 'success' ? embedData.data.image : undefined}

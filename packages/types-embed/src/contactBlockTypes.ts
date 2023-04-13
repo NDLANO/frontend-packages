@@ -13,7 +13,7 @@ export interface ContactBlockEmbedData {
   jobTitle: string;
   name: string;
   email: string;
-  metaImageId: string;
+  imageId: string;
   description: string;
   blobColor?: 'pink' | 'green';
   blob?: 'pointy' | 'round';

@@ -16,6 +16,7 @@ const TwoImages: boolean = true;
 
 const StyledFilmContainer = styled.div`
   display: flex;
+  flex-direction: column;
   background-color: lightblue;
   margin-top: 48px;
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -26,20 +27,51 @@ const StyledFilmContainer = styled.div`
 `;
 
 const StyledHeading = styled.h2`
-  margin: 48px 0 24px 20px;
+  margin: 32px 0 0 165px;
+  font-family: Source Sans Pro;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  ${!TwoImages &&
+  css`
+    margin: 32px 0 0 32px;
+  `}
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 160px;
+    margin: 48px 0 24px 20px;
+    font-size: 28px;
+    line-height: 36px;
+  }
 `;
 
 const StyledContentContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  ${!TwoImages &&
-  css`
-    flex-direction: column-reverse;
-  `}
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    ${!TwoImages &&
+    css`
+      flex-direction: row-reverse;
+    `}
+  }
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-direction: column;
+    ${!TwoImages &&
+    css`
+      flex-direction: column-reverse;
+    `}
+  }
 `;
 
 const StyledLeftIllustration = styled.img`
   margin-right: 5px;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    margin-top: -24px;
+    ${!TwoImages &&
+    css`
+      width: 288px;
+      max-height: 216px;
+      margin: -24px 32px 0 18px;
+    `}
+  }
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 160px;
     margin-bottom: 24px;
@@ -68,12 +100,26 @@ const StyledText = styled.p`
   font-size: 18px;
   line-height: 29px;
   margin: 0;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding: 24px 0;
+    ${!TwoImages &&
+    css`
+      margin: 0 0 0 32px;
+    `}
+  }
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding: 0 20px;
   }
 `;
 
 const StyledLinkContainer = styled.div`
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    margin: 0 0 32px 165px;
+    ${!TwoImages &&
+    css`
+      margin: 0 0 32px 32px;
+    `}
+  }
   ${mq.range({ until: breakpoints.tabletWide })} {
     position: relative;
     bottom: 120px;

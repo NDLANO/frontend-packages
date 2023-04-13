@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "35.0.25",
+  "version": "35.0.26",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -75,7 +75,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@ndla/types-backend": "0.2.1",
-    "@ndla/types-embed": "^1.0.10",
+    "@ndla/types-embed": "^1.0.11",
     "@types/reach__dialog": "^0.1.0",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.2",

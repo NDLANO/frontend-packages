@@ -1226,8 +1226,8 @@ const messages = {
         text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
       sharing: {
-        title: 'How you share your folders with others',
-        text: 'Click on the share-button in the folder to share. You will get a link you can share with others.',
+        title: 'Teachers can now share folders',
+        text: 'Click on the share-button to get a link you can share.',
       },
       favoriteSubjects: {
         title: 'How to save your favorite subjects from NDLA',

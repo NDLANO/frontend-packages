@@ -65,6 +65,10 @@ const EmailLink = styled.a`
 const SummaryBlock = styled.div`
   font-family: ${fonts.serif};
   padding: ${spacing.nsmall} ${spacing.medium} 0 0;
+
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding-top: 0;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -78,6 +82,7 @@ const StyledImage = styled.img`
   min-height: 286px;
   max-width: 286px;
   min-width: 286px;
+  max-height: 286px;
 `;
 
 const BlobWrapper = styled.div`

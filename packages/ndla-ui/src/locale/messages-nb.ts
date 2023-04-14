@@ -1133,7 +1133,7 @@ const messages = {
           shared:
             'Nå kan du dele denne lenka med elever eller andre lærere. Hvis du gjør endringer i mappa, blir de synlige for alle du har delt lenka med.',
           unShare:
-            'Når du avslutter deling, vil lenka til den delte mappa slutte å virke. Dersom du har delt lenka med noen, kan de ikke lenger se innholdet i mappa.',
+            'Når du avslutter deling, slutter lenka til den delte mappa og eventuelle undermapper å virke. Hvis du har delt lenka med noen, kan de ikke lenger se innholdet i mappa. Dette gjelder også lenker til eventuelle undermapper.',
         },
         button: {
           share: 'Del mappen',

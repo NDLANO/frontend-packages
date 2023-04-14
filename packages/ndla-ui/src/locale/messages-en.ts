@@ -1135,7 +1135,7 @@ const messages = {
           shared:
             'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
           unShare:
-            'When you stop sharing, the link to the shared folder is no longer active. If you have shared the link with someone, they can no longer see the content in the folder.',
+            'When you stop sharing, the link to the shared folder and potential subfolders is no longer active. If you have shared the link with someone, they can no longer see the content in the folder. This also applies to potential subfolders.',
         },
         button: {
           share: 'Share folder',

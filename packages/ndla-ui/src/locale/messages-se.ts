@@ -1184,6 +1184,7 @@ const messages = {
         info3:
           'Jus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
       },
+      willOpenInNewTab: 'Åpnes i ny fane.',
     },
     myPage: {
       noRecents: 'Don it leat lasihan makkárge resurssa vel. Ná boađát johtui:',
@@ -1226,8 +1227,8 @@ const messages = {
         text: 'Klikk på hjarteknappen for å lagre et fag. Du vil då få muligheit til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
       },
       sharing: {
-        title: 'Slik deler du mappene dine med andre',
-        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+        title: 'No kan lærarar dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Ná ordnet iežat oiddotresurssaid máhpaide',

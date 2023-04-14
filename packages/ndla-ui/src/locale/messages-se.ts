@@ -1101,7 +1101,7 @@ const messages = {
     resources_plural: '{{count}} resurssat',
     folders: '{{count}} máhpat',
     folders_plural: '{{count}} máhpat',
-    settings: 'Instillinger',
+    settings: 'Válljemat',
     folder: {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
@@ -1130,7 +1130,7 @@ const messages = {
           copy: 'Máŋge ja juoge dán liŋkka:',
           private:
             'Go juogát máhpa ráhkadat liŋkka mii lea rabas buohkaide geas lea liŋka. Sáhtát rievdadit sisdoalu dahje loahpahit juogadeami go háliidat.',
-          private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
+          private2: 'Go juogadat máhpa juogát buot máhpa sisdoalu, oktan vuollemáhpaiguin ja resursaiguin',
           shared:
             'Dál sáhtát juogadit dán liŋkka ohppiiguin dahje eará oahpaheddjiiguin. Jus rievdadat maidege máhpas šaddá rievdan oinnolaš buohkaide geaidda leat juogadan liŋkka',
           unShare:
@@ -1172,17 +1172,17 @@ const messages = {
     shortView: 'Oanehis listu',
     sharedFolder: {
       info: 'Dán máhpas lea NDLA fágasisdoallu ja bargobihtát, čohkkejuvvon oahpaheaddjis.',
-      firstShared: 'Mappa vart delt første gong {{date}}',
-      drawerButton: 'Vis mapper og ressursar',
-      drawerTitle: 'Mapper og ressursar',
+      firstShared: 'Máhppa juogaduvvui vuosttaš geardde {{date}}',
+      drawerButton: 'Čájet máhpaid ja resurssaid',
+      drawerTitle: 'Máhpat ja resurssat',
       learningpathUnsupported:
-        'Læringsstiar kan ikke visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+        'Oahppanbálgát eai sáhte njuolga čájehuvvot juogaduvvon máhpain. Jus deaddilat liŋkka navigerenfálus gurut bealde, rahpasa bálggis ođđa siiddus.',
       description: {
         info1:
-          'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
-        info2: 'Du kan bla i artiklane ved å bruke menyen.',
+          'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.',
+        info2: 'Sáhtát bláđet artihkkaliid fálu vehkiin.',
         info3:
-          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+          'Jus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
       },
     },
     myPage: {

@@ -9,7 +9,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
+import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import concat from 'lodash/concat';
@@ -31,9 +31,9 @@ const CardWrapper = styled.div`
   padding: 0 ${spacing.medium} ${spacing.medium} ${spacing.medium};
   font-family: ${fonts.sans};
   justify-content: center;
-
-  border-radius: 4px;
+  border-radius: ${misc.borderRadius};
   border: 1px solid ${colors.brand.lighter};
+  margin-top: ${spacing.mediumlarge};
   ${mq.range({ from: breakpoints.tabletWide })} {
     flex-direction: row;
     padding: 0 0 ${spacing.medium} ${spacing.medium};
@@ -45,14 +45,15 @@ const CardWrapper = styled.div`
 const StyledHeader = styled.div`
   ${fonts.sizes('22px', '30px')};
   font-weight: ${fonts.weight.bold};
-  margin: ${spacing.mediumlarge} 0 ${spacing.xsmall} 0;
+  margin: 0 0 ${spacing.xsmall} 0;
+  padding-top: ${spacing.mediumlarge};
 `;
 
 const StyledDescriptionInformation = styled.div`
   display: flex;
+  overflow-wrap: anywhere;
   color: ${colors.text.light};
   gap: ${spacing.xxsmall};
-
   ${mq.range({ from: breakpoints.tabletWide })} {
     width: 335px;
   }
@@ -65,10 +66,6 @@ const EmailLink = styled.a`
 const SummaryBlock = styled.div`
   font-family: ${fonts.serif};
   padding: ${spacing.nsmall} ${spacing.medium} 0 0;
-
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    padding-top: 0;
-  }
 `;
 
 const ContentWrapper = styled.div`
@@ -77,19 +74,20 @@ const ContentWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
-const StyledImage = styled.img`
-  padding: ${spacing.medium} 0 ${spacing.small} 0;
-  min-height: 286px;
-  max-width: 286px;
-  min-width: 286px;
-  max-height: 286px;
-`;
-
 const BlobWrapper = styled.div`
   height: 180px;
   width: 90px;
 `;
-const BlobStyle = css`
+
+const ImageWrapper = styled.div`
+  min-width: 286px;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
+  padding-top: ${spacing.medium};
+`;
+
+const blobStyle = css`
   width: 165px;
   height: 180px;
   transform: translate(10%, 0);
@@ -103,30 +101,30 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
 
   return (
     <CardWrapper>
-      <div>
+      <ImageWrapper>
         {image ? (
           <>
-            <StyledImage alt={image.alttext.alttext} src={image.image.imageUrl} />
+            <img alt={image.alttext.alttext} src={image.image.imageUrl} />
             {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
               image.copyright.license.license
             }`}
           </>
         ) : (
-          <StyledImage alt={t('image.error.url')} src={errorSvgSrc} />
+          <img alt={t('image.error.url')} src={errorSvgSrc} />
         )}
-      </div>
+      </ImageWrapper>
       <div>
         <ContentWrapper>
           <div>
             <StyledHeader>{name}</StyledHeader>
             <StyledDescriptionInformation>{jobTitle}</StyledDescriptionInformation>
             <StyledDescriptionInformation>
-              {`${t('email')}:   `}
+              {`${t('email')}:`}
               <EmailLink href={`mailto:${email}?subject=Contact us`}>{email}</EmailLink>
             </StyledDescriptionInformation>
           </div>
           <BlobWrapper>
-            <Blob css={BlobStyle} color={isGreenBlob ? '#CAE4DA' : '#FAB0A4'} />
+            <Blob css={blobStyle} color={isGreenBlob ? '#CAE4DA' : '#FAB0A4'} />
           </BlobWrapper>
         </ContentWrapper>
         <SummaryBlock>{description}</SummaryBlock>

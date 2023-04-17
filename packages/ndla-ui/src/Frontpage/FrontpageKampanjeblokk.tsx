@@ -17,7 +17,6 @@ const TwoImages: boolean = true;
 const StyledFilmContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: lightblue;
   margin-top: 48px;
   ${mq.range({ until: breakpoints.tabletWide })} {
     flex-direction: column;
@@ -65,6 +64,7 @@ const StyledLeftIllustration = styled.img`
   margin-right: 5px;
   ${mq.range({ from: breakpoints.tabletWide })} {
     margin-top: -24px;
+    padding-right: 3px;
     ${!TwoImages &&
     css`
       width: 288px;
@@ -133,7 +133,7 @@ const StyledLinkContainer = styled.div`
   }
 `;
 
-const FrontpageFilm = ({ url }: Props) => {
+const FrontpageKampanjeblokk = ({ url }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledFilmContainer>
@@ -153,4 +153,4 @@ const FrontpageFilm = ({ url }: Props) => {
   );
 };
 
-export default FrontpageFilm;
+export default FrontpageKampanjeblokk;

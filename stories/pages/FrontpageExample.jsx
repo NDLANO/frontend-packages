@@ -6,7 +6,7 @@ import {
   FrontpageSearch,
   OneColumn,
   FrontpageInfo,
-  FrontpageFilm,
+  FrontpageKampanjeblokk,
   FrontpageToolbox,
   FrontpageMultidisciplinarySubject,
   InfoWidget,
@@ -270,7 +270,7 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
               />
             </BlogPostWrapper>
           </section>
-          <FrontpageFilm imageUrl={NdlaFilmIllustration} url="https://ndla.no/nb/film" />
+          <FrontpageKampanjeblokk imageUrl={NdlaFilmIllustration} url="https://ndla.no/nb/film" />
           <FrontpageInfo>
             <InfoWidget
               heading={t('newsLetter.heading')}

@@ -4,152 +4,107 @@ import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
-import SectionHeading from '../SectionHeading';
-import NdlaFilmIllustrasjon from '../../../../images/ndla-film/illustrasjon_film.svg';
-import NdlaFilmIllustrasjonRull from '../../../../images/ndla-film/illustrasjon_filmrull.svg';
+import Image from '../Image';
+import { isMobile } from 'react-device-detect';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
+
+interface ImageProps {
+  width: number;
+}
 
 type Props = {
+  title: string;
+  description: string;
   url: string;
+  firstImage?: IImageMetaInformationV3;
+  secondImage: IImageMetaInformationV3;
 };
 
-const TwoImages: boolean = true;
+const TwoImages: boolean = false;
 
-const StyledFilmContainer = styled.div`
+const StyledContentWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-top: 48px;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    flex-direction: column;
-    max-width: 390px;
-    margin: 48px auto;
+  flex-direction: row;
+  gap: ${spacing.xsmall};
+`;
+
+const StyledDescription = styled.div`
+  font-weight: ${fonts.weight.normal};
+  ${fonts.sizes('18px', '29px')};
+  padding: ${spacing.normal} 0;
+`;
+
+const StyledImage = styled(Image)<ImageProps>`
+  max-width: ${(props) => props.width}px;
+`;
+
+const StyledHeader = styled.h2<IsTwoImagesProps>`
+  font-weight: ${fonts.weight.bold};
+  ${fonts.sizes('30px', '38px')};
+  ${(props) =>
+    props.isTwoImages &&
+    css`
+      padding-left: 165px;
+    `}
+`;
+
+const Wrapper = styled.div`
+  padding: ${spacing.large} 0;
+  max-width: 390px;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding: ${spacing.medium} 0;
+    max-width: 1100px;
   }
 `;
 
-const StyledHeading = styled.h2`
-  margin: 32px 0 0 165px;
-  font-family: Source Sans Pro;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 38px;
-  ${!TwoImages &&
-  css`
-    margin: 32px 0 0 32px;
-  `}
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 160px;
-    margin: 48px 0 24px 20px;
-    font-size: 28px;
-    line-height: 36px;
-  }
-`;
+interface IsTwoImagesProps {
+  isTwoImages: boolean;
+}
 
-const StyledContentContainer = styled.div`
+const StyledLinkContainer = styled.div<IsTwoImagesProps>`
   display: flex;
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    ${!TwoImages &&
-    css`
-      flex-direction: row-reverse;
-    `}
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    flex-direction: column;
-    ${!TwoImages &&
-    css`
-      flex-direction: column-reverse;
-    `}
-  }
+  flex-direction: ${(props) => (props.isTwoImages ? 'column' : 'row')};
 `;
 
-const StyledLeftIllustration = styled.img`
-  margin-right: 5px;
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    margin-top: -24px;
-    padding-right: 3px;
-    ${!TwoImages &&
-    css`
-      width: 288px;
-      max-height: 216px;
-      margin: -24px 32px 0 18px;
-    `}
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 160px;
-    margin-bottom: 24px;
-  }
-  ${!TwoImages &&
-  css`
-    width: 290px;
-    margin: 24px auto;
-  `}
-`;
+interface SafeLinkContainerProps {
+  url: string;
+  urlText: string;
+}
 
-const StyledRightIllustration = styled.img`
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 200px;
-    align-self: flex-end;
-  }
-  ${!TwoImages &&
-  css`
-    display: none;
-  `}
-`;
+const SafeLinkContainer = ({ url, urlText }: SafeLinkContainerProps) => (
+  <>
+    <SafeLink className="o-text-link" to={url}>
+      {urlText}
+      <Forward />
+    </SafeLink>
+  </>
+);
 
-const StyledText = styled.p`
-  font-family: Source Seriff Pro;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 29px;
-  margin: 0;
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: 24px 0;
-    ${!TwoImages &&
-    css`
-      margin: 0 0 0 32px;
-    `}
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    padding: 0 20px;
-  }
-`;
-
-const StyledLinkContainer = styled.div`
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    margin: 0 0 32px 165px;
-    ${!TwoImages &&
-    css`
-      margin: 0 0 32px 32px;
-    `}
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    position: relative;
-    bottom: 120px;
-    padding-left: 20px;
-    ${!TwoImages &&
-    css`
-      position: static;
-      justify-self: flex-end;
-      margin-bottom: 48px;
-    `}
-  }
-`;
-
-const FrontpageKampanjeblokk = ({ url }: Props) => {
+const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, description }: Props) => {
   const { t } = useTranslation();
+  const isTwoImages = !!firstImage && !!secondImage;
+  const UrlText = 'NDLA film her';
   return (
-    <StyledFilmContainer>
-      <StyledHeading>{t('welcomePage.film.header')}</StyledHeading>
-      <StyledContentContainer>
-        <StyledLeftIllustration src={NdlaFilmIllustrasjon}></StyledLeftIllustration>
-        <StyledText>{t('welcomePage.film.text')}</StyledText>
-        <StyledRightIllustration src={NdlaFilmIllustrasjonRull}></StyledRightIllustration>
-      </StyledContentContainer>
-      <StyledLinkContainer>
-        <SafeLink className="o-text-link" to={url}>
-          {t('welcomePage.film.linkLabel')}
-          <Forward />
-        </SafeLink>
-      </StyledLinkContainer>
-    </StyledFilmContainer>
+    <Wrapper>
+      <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
+      <StyledContentWrapper>
+        {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
+        <div>
+          <StyledDescription>{description}</StyledDescription>
+          {!isMobile && <SafeLinkContainer url={url} urlText={UrlText} />}
+        </div>
+        {!isMobile && secondImage && (
+          <StyledImage alt={secondImage.alttext.alttext} width={200} src={secondImage.image.imageUrl} />
+        )}
+      </StyledContentWrapper>
+      {isMobile && (
+        <StyledLinkContainer isTwoImages={isTwoImages}>
+          {isTwoImages && <SafeLinkContainer url={url} urlText={UrlText} />}
+          <StyledImage alt={secondImage.alttext.alttext} width={288} src={secondImage.image.imageUrl} />
+          {!isTwoImages && <SafeLinkContainer url={url} urlText={UrlText} />}
+        </StyledLinkContainer>
+      )}
+    </Wrapper>
   );
 };
 

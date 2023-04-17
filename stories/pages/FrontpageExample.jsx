@@ -54,6 +54,58 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
     setTimeoutLoading(timeoutId);
   };
 
+  const image1 = {
+    id: '65750',
+    metaUrl: 'https://api.test.ndla.no/image-api/v3/images/65750',
+    title: {
+      title: 'Sigurd Trageton',
+      language: 'nb',
+    },
+    alttext: {
+      alttext: 'Sigurd Trageton',
+      language: 'nb',
+    },
+    copyright: {
+      license: {
+        license: 'CC-BY-SA-4.0',
+        description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+        url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      },
+      origin: '',
+      creators: [
+        {
+          type: 'photographer',
+          name: 'Tom Knudsen',
+        },
+      ],
+      processors: [],
+      rightsholders: [],
+    },
+    tags: {
+      tags: ['Sigurd', 'Trageton', 'Portrett'],
+      language: 'nb',
+    },
+    caption: {
+      caption: 'Sigurd Trageton',
+      language: 'nb',
+    },
+    supportedLanguages: ['nb', 'nn'],
+    created: '2023-03-29T07:15:50Z',
+    createdBy: 'f-jBTU8O8kYbUW20lMeIuTSv',
+    modelRelease: 'not-set',
+    image: {
+      fileName: 'RVrVQIKh.jpg',
+      size: 404340,
+      contentType: 'image/jpeg',
+      imageUrl: 'https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg',
+      dimensions: {
+        width: 1600,
+        height: 2000,
+      },
+      language: 'nb',
+    },
+  };
+
   return (
     <>
       <FrontpageHeader locale="nb">
@@ -270,7 +322,13 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
               />
             </BlogPostWrapper>
           </section>
-          <FrontpageKampanjeblokk imageUrl={NdlaFilmIllustration} url="https://ndla.no/nb/film" />
+          <FrontpageKampanjeblokk
+            firstImage={image1}
+            secondImage={image1}
+            title="Putt noe her"
+            description="Legg in lksadlasl dsaøhfø lshfsdøfgh sødfhøjsdf ksføjh adas  asdasdas asdas sadasdas asdasdas asdsa"
+            url="https://ndla.no/nb/film"
+          />
           <FrontpageInfo>
             <InfoWidget
               heading={t('newsLetter.heading')}

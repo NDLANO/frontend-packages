@@ -5,22 +5,20 @@ import { Forward } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
 import Image from '../Image';
-import { isMobile } from 'react-device-detect';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
+import { isMobile } from 'react-device-detect';
 
 interface ImageProps {
   width: number;
 }
 
-type Props = {
+interface Props {
   title: string;
   description: string;
   url: string;
   firstImage?: IImageMetaInformationV3;
   secondImage: IImageMetaInformationV3;
-};
-
-const TwoImages: boolean = false;
+}
 
 const StyledContentWrapper = styled.div`
   display: flex;
@@ -72,37 +70,39 @@ interface SafeLinkContainerProps {
 }
 
 const SafeLinkContainer = ({ url, urlText }: SafeLinkContainerProps) => (
-  <>
-    <SafeLink className="o-text-link" to={url}>
-      {urlText}
-      <Forward />
-    </SafeLink>
-  </>
+  <SafeLink className="o-text-link" to={url}>
+    {urlText}
+    <Forward />
+  </SafeLink>
 );
 
 const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, description }: Props) => {
-  const { t } = useTranslation();
-  const isTwoImages = !!firstImage && !!secondImage;
+  const isTwoImages = !!firstImage;
   const UrlText = 'NDLA film her';
   return (
     <Wrapper>
       <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
-      <StyledContentWrapper>
-        {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
-        <div>
-          <StyledDescription>{description}</StyledDescription>
-          {!isMobile && <SafeLinkContainer url={url} urlText={UrlText} />}
-        </div>
-        {!isMobile && secondImage && (
+      {isMobile ? (
+        <>
+          <StyledContentWrapper>
+            {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
+            <StyledDescription>{description}</StyledDescription>
+          </StyledContentWrapper>
+          <StyledLinkContainer isTwoImages={isTwoImages}>
+            {isTwoImages && <SafeLinkContainer url={url} urlText={UrlText} />}
+            <StyledImage alt={secondImage.alttext.alttext} width={288} src={secondImage.image.imageUrl} />
+            {!isTwoImages && <SafeLinkContainer url={url} urlText={UrlText} />}
+          </StyledLinkContainer>
+        </>
+      ) : (
+        <StyledContentWrapper>
+          {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
+          <div>
+            <StyledDescription>{description}</StyledDescription>
+            <SafeLinkContainer url={url} urlText={UrlText} />
+          </div>
           <StyledImage alt={secondImage.alttext.alttext} width={200} src={secondImage.image.imageUrl} />
-        )}
-      </StyledContentWrapper>
-      {isMobile && (
-        <StyledLinkContainer isTwoImages={isTwoImages}>
-          {isTwoImages && <SafeLinkContainer url={url} urlText={UrlText} />}
-          <StyledImage alt={secondImage.alttext.alttext} width={288} src={secondImage.image.imageUrl} />
-          {!isTwoImages && <SafeLinkContainer url={url} urlText={UrlText} />}
-        </StyledLinkContainer>
+        </StyledContentWrapper>
       )}
     </Wrapper>
   );

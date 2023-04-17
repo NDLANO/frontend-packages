@@ -83,31 +83,6 @@ article table {
 
   // scrolling shadows on left/right
 
-  @include chinese() {
-    th {
-      @include font-size(18px, 22px);
-
-      @include mq(tablet) {
-        @include font-size(18px, 30px);
-      }
-    }
-
-    thead tr:nth-child(2) th {
-      @include font-size(16px, 18px);
-
-      @include mq(tablet) {
-        @include font-size(18px, 26px);
-      }
-    }
-
-    td {
-      @include font-size(16px, 22px);
-      @include mq(tablet) {
-        @include font-size(18px, 30px);
-      }
-    }
-  }
-
   &:after,
   &:before {
     content: '';
@@ -144,13 +119,6 @@ article table {
     @include mq(tablet) {
       @include font-size(16px, 30px);
     }
-
-    @include chinese() {
-      @include font-size(18px, 22px);
-      @include mq(tablet) {
-        @include font-size(18px, 30px);
-      }
-    }
   }
 
   tbody th {
@@ -174,13 +142,6 @@ article table {
     &:empty {
       background-color: transparent;
     }
-
-    @include chinese() {
-      @include font-size(16px, 18px);
-      @include mq(tablet) {
-        @include font-size(18px, 26px);
-      }
-    }
   }
 
   td {
@@ -191,13 +152,6 @@ article table {
     @include font-size(14px, 22px);
     @include mq(tablet) {
       @include font-size(15px, 30px);
-    }
-
-    @include chinese() {
-      @include font-size(16px, 22px);
-      @include mq(tablet) {
-        @include font-size(18px, 30px);
-      }
     }
 
     p {

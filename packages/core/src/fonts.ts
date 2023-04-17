@@ -7,14 +7,11 @@ const baseLineHeightUnit = 26;
 function sizes(fontSize: string | number, lineHeight?: string | number) {
   const fontSizeUnit = parseInt(fontSize as string, 10);
   const fontSizeRem = parseInt(fontSize as string, 10) / baseFontSizeUnit;
+  const _lineHeight = lineHeight ?? Math.ceil(fontSizeUnit / baseLineHeightUnit) * (baseLineHeightUnit / fontSizeUnit);
 
   const fontSizeStyling = `font-size: ${fontSize};font-size: ${fontSizeRem}rem;`;
-  if (lineHeight) {
-    return `${fontSizeStyling} line-height: ${lineHeight}`;
-  }
-
-  const defaultLineHeight = Math.ceil(fontSizeUnit / baseLineHeightUnit) * (baseLineHeightUnit / fontSizeUnit);
-  return `${fontSizeStyling} line-height: ${defaultLineHeight}`;
+  const chineseStyling = `&[lang='zh'], &[lang='zh-Hans'], &[lang='zh-Hant'] {font-size: calc(${fontSize} * 1.11); font-size: calc(${fontSizeRem}rem * 1.11)}`;
+  return `${fontSizeStyling} line-height: ${_lineHeight}; ${chineseStyling}`;
 }
 
 const fonts = {

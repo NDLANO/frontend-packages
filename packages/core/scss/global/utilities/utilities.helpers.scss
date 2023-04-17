@@ -6,7 +6,7 @@
   background: transparent;
   border: none;
   color: $brand-color;
-  @include font-size(20px);
+  @include font-size(20px, 1.33);
   font-weight: $font-weight-normal;
   z-index: 9;
   cursor: pointer;

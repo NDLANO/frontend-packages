@@ -7,7 +7,7 @@
  */
 
 import { Cross } from '@ndla/icons/action';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { defaultParameters } from '../../../stories/defaults';
 import IconButtonV2 from './IconButtonV2';
@@ -15,6 +15,7 @@ import IconButtonV2 from './IconButtonV2';
 export default {
   title: 'Enkle komponenter/Knapper/IconButton',
   component: IconButtonV2,
+  tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
@@ -32,9 +33,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof IconButtonV2>;
+} as Meta<typeof IconButtonV2>;
 
-export const IconButtonStory: ComponentStory<typeof IconButtonV2> = (args) => {
+export const IconButtonStory: StoryFn<typeof IconButtonV2> = (args) => {
   return <IconButtonV2 {...args} />;
 };
 

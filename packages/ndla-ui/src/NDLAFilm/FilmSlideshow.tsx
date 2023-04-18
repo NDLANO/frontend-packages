@@ -60,7 +60,7 @@ export const slideshowBreakpoints: {
     arrowOffset: 0,
   },
   {
-    columnsPrSlide: 4,
+    columnsPrSlide: 3,
     distanceBetweenItems: spacingUnit,
     margin: spacingUnit * 3.5,
     arrowOffset: 0,
@@ -133,8 +133,6 @@ const SlideshowButton = styled(IconButtonV2)`
 const shouldForwardProp = (p: string) => p !== 'current';
 
 const StyledFilmContentCard = styled(FilmContentCard, { shouldForwardProp })<StyledFilmContentCardProps>`
-  min-height: 252px;
-  max-height: 252px;
   margin-bottom: 2%;
   transform: ${(p) => (p.current ? 'translateY(0%)' : 'translateY(10%)')};
   transition: all 200ms;

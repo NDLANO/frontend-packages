@@ -16,6 +16,7 @@ interface Props {
   title: string;
   description: string;
   url: string;
+  urlText: string;
   firstImage?: IImageMetaInformationV3;
   secondImage: IImageMetaInformationV3;
 }
@@ -59,26 +60,16 @@ interface IsTwoImagesProps {
   isTwoImages: boolean;
 }
 
-const StyledLinkContainer = styled.div<IsTwoImagesProps>`
-  display: flex;
-  flex-direction: ${(props) => (props.isTwoImages ? 'column' : 'row')};
-`;
-
-interface SafeLinkContainerProps {
-  url: string;
-  urlText: string;
-}
-
-const SafeLinkContainer = ({ url, urlText }: SafeLinkContainerProps) => (
+const SafeLinkContainer = (url: string, urlText: string) => (
   <SafeLink className="o-text-link" to={url}>
     {urlText}
     <Forward />
   </SafeLink>
 );
 
-const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, description }: Props) => {
+const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, description }: Props) => {
   const isTwoImages = !!firstImage;
-  const UrlText = 'NDLA film her';
+  const safeLink = SafeLinkContainer(url, urlText);
   return (
     <Wrapper>
       <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
@@ -88,18 +79,15 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, descripti
             {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
             <StyledDescription>{description}</StyledDescription>
           </StyledContentWrapper>
-          <StyledLinkContainer isTwoImages={isTwoImages}>
-            {isTwoImages && <SafeLinkContainer url={url} urlText={UrlText} />}
-            <StyledImage alt={secondImage.alttext.alttext} width={288} src={secondImage.image.imageUrl} />
-            {!isTwoImages && <SafeLinkContainer url={url} urlText={UrlText} />}
-          </StyledLinkContainer>
+          <StyledImage alt={secondImage.alttext.alttext} width={288} src={secondImage.image.imageUrl} />
+          {safeLink}
         </>
       ) : (
         <StyledContentWrapper>
           {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
           <div>
             <StyledDescription>{description}</StyledDescription>
-            <SafeLinkContainer url={url} urlText={UrlText} />
+            {safeLink}
           </div>
           <StyledImage alt={secondImage.alttext.alttext} width={200} src={secondImage.image.imageUrl} />
         </StyledContentWrapper>

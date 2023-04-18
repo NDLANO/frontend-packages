@@ -59,7 +59,7 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
       {
         id: '2',
         name: 'Eksamen',
-        status: 'private',
+        status: 'shared',
         breadcrumbs: [
           { id: '1', name: 'Mine Favoritter' },
           { id: '2', name: 'Eksamen' },
@@ -71,7 +71,7 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
           {
             id: '3',
             name: 'Eksamens oppgaver',
-            status: 'private',
+            status: 'shared',
             breadcrumbs: [
               { id: '1', name: 'Mine Favoritter' },
               { id: '2', name: 'Eksamen' },
@@ -101,7 +101,7 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
       {
         id: '5',
         name: 'Oppgaver',
-        status: 'private',
+        status: 'shared',
         breadcrumbs: [
           { id: '1', name: 'Mine Favoritter' },
           { id: '5', name: 'Oppgaver' },

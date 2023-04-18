@@ -1134,7 +1134,7 @@ const messages = {
           shared:
             'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
           unShare:
-            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+            'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
           share: 'Del mappen',
@@ -1184,6 +1184,7 @@ const messages = {
         info3:
           'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
       },
+      willOpenInNewTab: 'Åpnes i ny fane.',
     },
     myPage: {
       noRecents: 'Don it leat lasihan makkárge resurssa vel. Ná boađát johtui:',
@@ -1226,8 +1227,8 @@ const messages = {
         text: 'Klikk på hjarteknappen for å lagre et fag. Du vil då få muligheit til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
       },
       sharing: {
-        title: 'Slik deler du mappene dine med andre',
-        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+        title: 'No kan lærarar dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Ná ordnet iežat oiddotresurssaid máhpaide',

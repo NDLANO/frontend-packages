@@ -29,8 +29,7 @@ const StyledDrawer = styled(Drawer)`
   }
 `;
 
-const Ul = styled.ul`
-  margin: 0;
+const StyledUl = styled.ul`
   padding: 0;
   list-style: none;
 `;
@@ -39,7 +38,7 @@ const StyledModalBody = styled(ModalBody)`
   padding: 0 0 ${spacing.large} 0px;
 `;
 
-const Li = styled.li`
+const StyledLi = styled.li`
   border-bottom: 1px solid ${colors.brand.neutral7};
 `;
 
@@ -66,9 +65,9 @@ const SettingsMenu = ({ menuItems, children }: Props) => {
             <StyledModalBody>
               {children?.(close)}
               {!!menuItems?.length && (
-                <Ul>
+                <StyledUl>
                   {menuItems.map((item, i) => (
-                    <Li key={i}>
+                    <StyledLi key={i}>
                       <ButtonV2
                         fontWeight="normal"
                         variant="ghost"
@@ -81,9 +80,9 @@ const SettingsMenu = ({ menuItems, children }: Props) => {
                         {item.icon}
                         {item.text}
                       </ButtonV2>
-                    </Li>
+                    </StyledLi>
                   ))}
-                </Ul>
+                </StyledUl>
               )}
             </StyledModalBody>
           </>

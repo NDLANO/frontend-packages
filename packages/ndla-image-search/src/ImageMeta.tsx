@@ -10,7 +10,7 @@ import React from 'react';
 import prettyBytes from 'pretty-bytes';
 import styled from '@emotion/styled';
 import { fonts } from '@ndla/core';
-import { IImageDimensions } from '@ndla/types-image-api';
+import { IImageDimensions } from '@ndla/types-backend/image-api';
 
 const StyledDiv = styled.div`
   ${fonts.sizes('16px', 1.3)}

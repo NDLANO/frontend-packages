@@ -1133,7 +1133,7 @@ const messages = {
           shared:
             'No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.',
           unShare:
-            'Når du avsluttar deling, vil lenka til den delte mappa slutte å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa.',
+            'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
           share: 'Del mappa',
@@ -1183,6 +1183,7 @@ const messages = {
         info3:
           'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
       },
+      willOpenInNewTab: 'Opnast i ny fane.',
     },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
@@ -1221,8 +1222,8 @@ const messages = {
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',
       },
       sharing: {
-        title: 'Slik deler du mappene dine med andre',
-        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+        title: 'No kan lærarar dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for få ei lenke som du kan dele med andre.',
       },
       favoriteSubjects: {
         title: 'Slik lagrar du favorittfaga dine frå NDLA',

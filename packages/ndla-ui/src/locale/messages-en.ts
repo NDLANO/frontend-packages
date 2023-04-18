@@ -1135,7 +1135,7 @@ const messages = {
           shared:
             'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
           unShare:
-            'When you stop sharing, the link to the shared folder is no longer active. If you have shared the link with someone, they can no longer see the content in the folder.',
+            'When you stop sharing, the link to the shared folder and potential subfolders is no longer active. If you have shared the link with someone, they can no longer see the content in the folder. This also applies to potential subfolders.',
         },
         button: {
           share: 'Share folder',
@@ -1186,6 +1186,7 @@ const messages = {
         info3:
           'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
       },
+      willOpenInNewTab: 'Opens in a new tab.',
     },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",
@@ -1225,8 +1226,8 @@ const messages = {
         text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
       sharing: {
-        title: 'How you share your folders with others',
-        text: 'Click on the share-button in the folder to share. You will get a link you can share with others.',
+        title: 'Teachers can now share folders',
+        text: 'Click on the share-button to get a link you can share.',
       },
       favoriteSubjects: {
         title: 'How to save your favorite subjects from NDLA',

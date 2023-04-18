@@ -84,8 +84,8 @@ const SlideInfoWrapper = styled.div`
     min-width: 60%;
   }
   ${mq.range({ until: breakpoints.tablet })} {
-    max-width: 100%;
-    min-width: 100%;
+    max-width: 90%;
+    min-width: 90%;
     left: 5%;
   }
 `;

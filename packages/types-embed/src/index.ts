@@ -43,6 +43,7 @@ import {
 } from './conceptTypes';
 import { FileEmbedData, FileMetaData } from './fileTypes';
 import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
+import { KeyNumberEmbedData, KeyNumberMetaData } from './keyNumberTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -59,7 +60,8 @@ export type EmbedData =
   | ConceptListEmbedData
   | OembedEmbedData
   | FileEmbedData
-  | BlogPostEmbedData;
+  | BlogPostEmbedData
+  | KeyNumberEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -75,7 +77,9 @@ export type EmbedMetaData =
   | CodeMetaData
   | FootnoteMetaData
   | FileMetaData
-  | BlogPostMetaData;
+  | BlogPostMetaData
+  | KeyNumberMetaData;
+
 export type {
   ConceptMetaData,
   ImageMetaData,
@@ -90,6 +94,7 @@ export type {
   ConceptListMetaData,
   FileMetaData,
   BlogPostMetaData,
+  KeyNumberMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -105,7 +110,9 @@ export type {
   ConceptListEmbedData,
   FileEmbedData,
   BlogPostEmbedData,
+  KeyNumberEmbedData,
 };
+
 export type { BlogPostMeta };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };

@@ -119,7 +119,13 @@ const StyledImg = styled.img`
 `;
 
 const CarouselContainer = styled.div`
-  transform: translateY(-30%);
+  margin-top: -50px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-top: -70px;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-top: -150px;
+  }
 `;
 
 interface StyledFilmContentCardProps {

@@ -27,6 +27,7 @@ export { default as ChevronDown } from './ChevronDown';
 export { default as ChevronLeft } from './ChevronLeft';
 export { default as ChevronRight } from './ChevronRight';
 export { default as ChevronUp } from './ChevronUp';
+export { default as Comment } from './Comment';
 export { default as Core } from './Core';
 export { default as Document } from './Document';
 export { default as DocumentDetails } from './DocumentDetails';

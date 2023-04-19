@@ -1135,7 +1135,7 @@ const messages = {
           shared:
             'Nå kan du dele denne lenka med elever eller andre lærere. Hvis du gjør endringer i mappa, blir de synlige for alle du har delt lenka med.',
           unShare:
-            'Når du avslutter deling, vil lenka til den delte mappa slutte å virke. Dersom du har delt lenka med noen, kan de ikke lenger se innholdet i mappa.',
+            'Når du avslutter deling, slutter lenka til den delte mappa og eventuelle undermapper å virke. Hvis du har delt lenka med noen, kan de ikke lenger se innholdet i mappa. Dette gjelder også lenker til eventuelle undermapper.',
         },
         button: {
           share: 'Del mappen',
@@ -1185,6 +1185,7 @@ const messages = {
         info3:
           'Hvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
       },
+      willOpenInNewTab: 'Åpnes i ny fane.',
     },
     myPage: {
       noRecents: 'Du har ikke lagt til noen ressurser ennå. Slik kommer du i gang:',
@@ -1227,8 +1228,8 @@ const messages = {
         text: 'Klikk på hjerteknappen for å lagre et fag. Du vil da få mulighet til å lagre favorittfagene dine til senere. Du kan finne de igjen i Min NDLA eller på siden med alle fag.',
       },
       sharing: {
-        title: 'Slik deler du mappene dine med andre',
-        text: 'Klikk på dele-knappen i mappa for å dele. Du vil da få ei lenke som du kan dele med andre.',
+        title: 'Nå kan lærere dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for å få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',

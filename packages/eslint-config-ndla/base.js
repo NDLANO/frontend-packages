@@ -42,6 +42,12 @@ module.exports = {
   },
 
   rules: {
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: ['@ndla/*/lib/**', '@ndla/*/lib', '@ndla/*/es/**', '@ndla/*/es', '@ndla/*/src/**', '@ndla/*/src'],
+      },
+    ],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'array-callback-return': 'warn',
     'default-case': 'warn',

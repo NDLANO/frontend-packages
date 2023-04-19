@@ -102,7 +102,8 @@ const PopupFilter = ({
       animationDuration={50}
       onClose={onClose}
       isOpen={isOpen}
-      size="fullscreen">
+      size="fullscreen"
+    >
       {() => (
         <ModalBody>
           <ModalWrapper>
@@ -117,7 +118,8 @@ const PopupFilter = ({
                     onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
                     colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : undefined}
                     size="normal"
-                    shape="pill">
+                    shape="pill"
+                  >
                     {t('frontpageMenu.allsubjects')}
                   </ButtonV2>
                 </MainFilterButtonWrapper>
@@ -127,7 +129,8 @@ const PopupFilter = ({
                   onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
                   colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : undefined}
                   size="normal"
-                  shape="pill">
+                  shape="pill"
+                >
                   {t('frontpageMenu.program')}
                 </ButtonV2>
               )}

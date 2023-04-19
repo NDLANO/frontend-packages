@@ -1101,6 +1101,7 @@ const messages = {
     resources_plural: '{{count}} resurssat',
     folders: '{{count}} máhpat',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
@@ -1129,14 +1130,15 @@ const messages = {
           copy: 'Kopier og del denne lenken:',
           private:
             'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
+          private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
           shared:
             'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
           unShare:
-            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+            'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
           share: 'Del mappen',
-          preview: 'Forhåndsvis delt mappe',
+          preview: 'Forhåndsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
@@ -1164,6 +1166,7 @@ const messages = {
     examLockInfo: 'Mu NDLA sisdoalu redigeren ii leat doaimmas ohppiide eksámenáigodagas.',
     help: 'Veahkki',
     more: 'Eanet válljejumit',
+    selectView: 'Velg visning',
     listView: 'Oppalašlistu',
     detailView: 'Bienalaš oppalašlistu',
     shortView: 'Oanehis listu',
@@ -1181,6 +1184,7 @@ const messages = {
         info3:
           'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
       },
+      willOpenInNewTab: 'Åpnes i ny fane.',
     },
     myPage: {
       noRecents: 'Don it leat lasihan makkárge resurssa vel. Ná boađát johtui:',
@@ -1218,9 +1222,13 @@ const messages = {
         title: 'Ná vurket iežat oiddotresurssaid NDLA:s',
         text: 'Deaddil váibmoboalu vurken dihtii resurssa.',
       },
+      favoriteSubjects: {
+        title: 'Slik lagrar du favorittfaga dine frå NDLA',
+        text: 'Klikk på hjarteknappen for å lagre et fag. Du vil då få muligheit til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
+      },
       sharing: {
-        title: 'Slik deler du mappene dine med andre',
-        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+        title: 'No kan lærarar dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Ná ordnet iežat oiddotresurssaid máhpaide',
@@ -1253,6 +1261,14 @@ const messages = {
       onDragEndMissingOver: 'Resursa {{name}} lea luitojuvvon',
       onDragCancel: 'Sirdin botkejuvvui. Resursa {{name}} lea luitojuvvon',
       dragHandle: 'Ordne resurssa {{name}}',
+    },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
     },
   },
   snackbar: {

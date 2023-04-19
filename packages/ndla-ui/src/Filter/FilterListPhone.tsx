@@ -144,7 +144,8 @@ const FilterListPhone = ({
             <ButtonV2 variant="outline" {...classes('modal-button')}>
               {messages.openFilter}
             </ButtonV2>
-          }>
+          }
+        >
           {(onClose) => (
             <>
               <ModalHeader modifier={['left-align']}>
@@ -167,7 +168,8 @@ const FilterListPhone = ({
                       'aligned-grouping': !!alignedGroup,
                       'collapse-mobile': !!collapseMobile,
                       'grouped-options': !!isGroupedOptions,
-                    })}>
+                    })}
+                  >
                     {options.map((option) => {
                       const itemModifiers = [];
 
@@ -254,7 +256,8 @@ const FilterListPhone = ({
               type="button"
               onClick={() => {
                 setVisibleCount((prev) => (prev === defaultVisibleCount ? options.length : defaultVisibleCount));
-              }}>
+              }}
+            >
               {visibleCount === defaultVisibleCount ? (
                 <>
                   <span>{showLabel}</span> <ChevronDown />

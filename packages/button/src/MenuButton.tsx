@@ -98,7 +98,7 @@ const StyledMenuItem = styled(DropdownMenu.Item)<StyledMenuItemProps>`
 export interface MenuItemProps {
   icon?: ReactNode;
   text?: string;
-  onClick: (e?: MouseEvent<HTMLDivElement>) => void;
+  onClick: (e?: MouseEvent<HTMLElement>) => void;
   type?: 'danger';
 }
 
@@ -126,7 +126,8 @@ export const MenuButton = ({
         tabIndex={tabIndex}
         className={className}
         svgSize={svgSizes[size || 'normal']}
-        {...rest}>
+        {...rest}
+      >
         <MenuIconWrapper svgSize={svgSizes[size || 'normal']}>{menuIcon || <StyledHorizontalMenu />}</MenuIconWrapper>
       </StyledMenuButton>
       <DropdownMenu.Portal>

@@ -169,7 +169,8 @@ class NdlaFilmExample extends Component {
                 },
               });
             }}
-            activateButton={<ButtonV2>Lag ny gruppe</ButtonV2>}>
+            activateButton={<ButtonV2>Lag ny gruppe</ButtonV2>}
+          >
             {(onClose) => (
               <NdlaFilmThemeEditorModal
                 onClose={onClose}
@@ -212,7 +213,8 @@ class NdlaFilmExample extends Component {
                     <button type="button" css={FieldHeaderIconStyle} tabIndex={-1}>
                       <Pencil />
                     </button>
-                  }>
+                  }
+                >
                   {(onClose) => (
                     <NdlaFilmThemeEditorModal
                       onClose={onClose}
@@ -230,12 +232,14 @@ class NdlaFilmExample extends Component {
                 <Tooltip
                   tooltip={t('ndlaFilm.editor.deleteMovieGroup', {
                     name: theme.name.nb,
-                  })}>
+                  })}
+                >
                   <button
                     type="button"
                     css={FieldHeaderIconStyle}
                     tabIndex={-1}
-                    onClick={() => this.onDeleteTheme(index)}>
+                    onClick={() => this.onDeleteTheme(index)}
+                  >
                     <DeleteForever />
                   </button>
                 </Tooltip>
@@ -244,7 +248,8 @@ class NdlaFilmExample extends Component {
                     type="button"
                     css={FieldHeaderIconStyle}
                     tabIndex={-1}
-                    onClick={() => this.onMoveTheme(index, -1)}>
+                    onClick={() => this.onMoveTheme(index, -1)}
+                  >
                     <ChevronUp />
                   </button>
                 </Tooltip>
@@ -253,7 +258,8 @@ class NdlaFilmExample extends Component {
                     type="button"
                     css={FieldHeaderIconStyle}
                     tabIndex={-1}
-                    onClick={() => this.onMoveTheme(index, 1)}>
+                    onClick={() => this.onMoveTheme(index, 1)}
+                  >
                     <ChevronDown />
                   </button>
                 </Tooltip>

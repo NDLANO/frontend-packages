@@ -6,64 +6,64 @@
  *
  */
 
-module.exports = {
-  stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx)'],
+import { StorybookConfig } from '@storybook/react-webpack5';
 
+const config: StorybookConfig = {
+  stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx)'],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-actions',
     '@storybook/addon-viewport',
     {
-      name: '@storybook/addon-docs',
+      name: '@storybook/addon-styling',
       options: {
-        configureJSX: true,
-        transcludeMarkdown: true,
-        babelOptions: {},
+        sass: {
+          implementation: require('sass'),
+        },
       },
     },
+    '@storybook/addon-docs',
     '@storybook/addon-controls',
     '@storybook/addon-backgrounds',
     '@storybook/addon-toolbars',
     '@storybook/addon-measure',
     '@storybook/addon-outline',
   ],
-  framework: '@storybook/react',
-
-  webpackFinal: (config) => {
-    config.module.rules.push({
-      test: /\.scss$/,
-      loaders: [
-        'style-loader',
-        'css-loader',
-        {
-          loader: 'postcss-loader',
-          options: {
-            config: {
-              path: './.storybook/postcss.config.js',
-            },
-          },
-        },
-        'sass-loader',
-      ],
-    });
-    config.module.rules.push({
-      test: /\.mjs$/,
-      include: /node_modules/,
-      type: 'javascript/auto',
-    });
-    return config;
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
+  features: {
+    // This can be removed once we've stopped using storiesOf.
+    storyStoreV7: false,
   },
   babel: async (options) => {
     return {
       ...options,
       presets: [
-        ['@babel/preset-env', { modules: false }],
+        [
+          '@babel/preset-env',
+          {
+            modules: false,
+          },
+        ],
         '@babel/preset-typescript',
-        ['@babel/preset-react', { runtime: 'automatic', importSource: '@emotion/react' }],
+        [
+          '@babel/preset-react',
+          {
+            runtime: 'automatic',
+            importSource: '@emotion/react',
+          },
+        ],
       ],
       plugins: [
-        ['@emotion', { autoLabel: 'always' }],
+        [
+          '@emotion',
+          {
+            autoLabel: 'always',
+          },
+        ],
         '@babel/plugin-proposal-object-rest-spread',
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-syntax-dynamic-import',
@@ -79,4 +79,9 @@ module.exports = {
     }
   </style>
   ${head}`,
+  docs: {
+    autodocs: 'tag',
+  },
 };
+
+export default config;

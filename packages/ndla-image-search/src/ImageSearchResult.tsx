@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { IImageMetaInformationV3 } from '@ndla/types-image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { ButtonV2 } from '@ndla/button';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';

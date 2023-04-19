@@ -7,7 +7,7 @@
  */
 
 import { DeleteForever, Folder } from '@ndla/icons/editor';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { defaultParameters } from '../../../stories/defaults';
 import MenuButton from './MenuButton';
@@ -15,6 +15,7 @@ import MenuButton from './MenuButton';
 export default {
   title: 'Enkle komponenter/Knapper/MenuButton',
   component: MenuButton,
+  tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
@@ -37,9 +38,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof MenuButton>;
+} as Meta<typeof MenuButton>;
 
-export const MenuButtonStory: ComponentStory<typeof MenuButton> = (args) => {
+export const MenuButtonStory: StoryFn<typeof MenuButton> = (args) => {
   return <MenuButton {...args} />;
 };
 

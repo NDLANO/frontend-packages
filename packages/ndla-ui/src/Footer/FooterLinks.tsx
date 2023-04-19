@@ -110,7 +110,8 @@ const FooterLinks = ({ links }: FooterLinksProps) => {
                   aria-label={t(`footer.ndlaLinks.${link.key}`)}
                   to={link.url}
                   target="_blank"
-                  rel="noopener noreferrer">
+                  rel="noopener noreferrer"
+                >
                   {t(`footer.ndlaLinks.${link.key}`)}
                 </StyledSafeLink>
               </div>

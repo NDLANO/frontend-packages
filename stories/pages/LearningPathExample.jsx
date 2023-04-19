@@ -277,7 +277,8 @@ const LearningPathExample = ({ invertedStyle }) => {
                 <LearningPathLastStepNavigation
                   learningPathName={learningStepsData.title.title}
                   subject={{ url: '#', name: 'Samfunnsfag' }}
-                  topic={{ url: '#', name: 'Eksempel på fag' }}>
+                  topic={{ url: '#', name: 'Eksempel på fag' }}
+                >
                   <Resources key="resources" />
                 </LearningPathLastStepNavigation>
               )}
@@ -318,7 +319,8 @@ const LearningPathExample = ({ invertedStyle }) => {
             css={css`
               float: right;
             `}
-            onClick={() => toggleHelp(false)}>
+            onClick={() => toggleHelp(false)}
+          >
             <Cross /> Lukk
           </ButtonV2>
           <p>Demo: Bruk pil-tastene for å navigere</p>

@@ -430,7 +430,8 @@ const SearchResult = ({ showCompetenceGoals }) => {
           totalCount={2}
           onRemove={() => {
             setHideNotionsResult(true);
-          }}>
+          }}
+        >
           <NotionBlock type="image" />
           <NotionBlock type="video" />
           <NotionBlock type="H5P" />

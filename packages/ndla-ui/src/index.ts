@@ -255,7 +255,7 @@ export { Notion, ConceptNotion } from './Notion';
 export type { NotionVisualElementType, ConceptNotionType } from './Notion';
 
 export { BannerCard } from './BannerCard';
-export { Folder, FolderInput } from './MyNdla';
+export { Folder, FolderInput, FolderMenu } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';
@@ -269,3 +269,4 @@ export type { TreeStructureProps } from './TreeStructure';
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
 export { default as LetterFilter } from './LetterFilter';
+export { BlogPostV2 } from './BlogPost';

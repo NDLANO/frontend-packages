@@ -16,7 +16,7 @@ export const divPlugin: PluginType = (node, opts) => {
 
     return (
       <RelatedArticleListV2 {...props} headingLevel="h3">
-        {/* @ts-ignore          */}
+        {/* @ts-ignore */}
         {domToReact(node.children, opts)}
       </RelatedArticleListV2>
     );
@@ -34,6 +34,16 @@ export const divPlugin: PluginType = (node, opts) => {
         {files.length ? <FileListV2>{domToReact(files, opts)}</FileListV2> : undefined}
         {domToReact(pdfs, opts)}
       </>
+    );
+  } else if (
+    node.attribs['class']?.includes('c-bodybox') &&
+    node.childNodes.filter((c): c is Element => 'attribs' in c).some((c) => c.name === 'table')
+  ) {
+    const props = attributesToProps(node.attribs);
+    return (
+      <div {...props} className={`${props.className} c-bodybox--contains-table`}>
+        {domToReact(node.children, opts)}
+      </div>
     );
   }
   return null;

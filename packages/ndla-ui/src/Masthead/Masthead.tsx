@@ -118,7 +118,8 @@ export const Masthead = ({ children, fixed, ndlaFilm, skipToMainContentId, messa
           <MessageBanner
             key={message.number}
             showCloseButton={message.closable}
-            onClose={() => onCloseAlert?.(message.number)}>
+            onClose={() => onCloseAlert?.(message.number)}
+          >
             {message.content}
           </MessageBanner>
         ))}

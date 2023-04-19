@@ -59,7 +59,8 @@ class ComponentInfo extends Component {
                 );
               }}
               variant="outline"
-              title="Kopier til clipboard">
+              title="Kopier til clipboard"
+            >
               <Fragment>
                 <Copy /> {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
               </Fragment>

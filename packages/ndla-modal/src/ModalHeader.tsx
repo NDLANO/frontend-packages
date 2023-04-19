@@ -94,7 +94,8 @@ const ModalHeader = ({ children, modifier }: Props) => (
   <div
     data-cy="modal-header"
     css={headerStyles}
-    className={`modal-header ${Array.isArray(modifier) ? modifier.join(' ') : modifier}`}>
+    className={`modal-header ${Array.isArray(modifier) ? modifier.join(' ') : modifier}`}
+  >
     {children}
   </div>
 );

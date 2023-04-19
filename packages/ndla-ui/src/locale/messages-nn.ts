@@ -1100,6 +1100,7 @@ const messages = {
     resources_plural: '{{count}} ressursar',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1128,14 +1129,15 @@ const messages = {
           copy: 'Kopier og del denne lenka:',
           private:
             'Når du deler ei mappe, lagar du ei lenke som er open for alle som har lenka. Du kan endre innhaldet eller avslutte delinga når du ønsker det.',
+          private2: 'Når du deler ei mappe deler du alt innhaldet i mappa, inkludert undermapper og ressursar',
           shared:
             'No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.',
           unShare:
-            'Når du avsluttar deling, vil lenka til den delte mappa slutte å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa.',
+            'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
           share: 'Del mappa',
-          preview: 'Førehandsvis delt mappe',
+          preview: 'Førehandsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
@@ -1163,6 +1165,7 @@ const messages = {
     examLockInfo: 'Redigering av innhald på Min NDLA er deaktivert for elevar i eksamensperioden.',
     help: 'Hjelp',
     more: 'Fleire val',
+    selectView: 'Velg visning',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
@@ -1180,6 +1183,7 @@ const messages = {
         info3:
           'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
       },
+      willOpenInNewTab: 'Opnast i ny fane.',
     },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
@@ -1218,8 +1222,12 @@ const messages = {
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',
       },
       sharing: {
-        title: 'Slik deler du mappene dine med andre',
-        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+        title: 'No kan lærarar dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for få ei lenke som du kan dele med andre.',
+      },
+      favoriteSubjects: {
+        title: 'Slik lagrar du favorittfaga dine frå NDLA',
+        text: 'Klikk på hjarteknappen for å lagre eit fag. Du vil då få høve til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
@@ -1252,6 +1260,14 @@ const messages = {
       onDragEndMissingOver: 'Ressursen blei sleppt',
       onDragCancel: 'Flytting avbrutt. Ressursen {{name}} blei sleppt',
       dragHandle: 'Sorter ressursen {{name}}',
+    },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
     },
   },
   snackbar: {

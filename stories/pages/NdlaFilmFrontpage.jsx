@@ -115,7 +115,8 @@ class NdlaFilmExample extends Component {
                 href="https://www.facebook.com/NDLAfilm/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Besøk Facebooksiden til NDLA-film">
+                aria-label="Besøk Facebooksiden til NDLA-film"
+              >
                 Facebook-siden
               </a>{' '}
               vår.

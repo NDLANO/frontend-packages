@@ -34,7 +34,8 @@ class IconItem extends Component {
           padding: '13px',
           margin: '13px',
           wordBreak: 'break-all',
-        }}>
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', lineHeight: 1.5 }}>
           {createElement(icon, {
             className: 'c-icon--large',
@@ -48,7 +49,8 @@ class IconItem extends Component {
               variant="stripped"
               onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)}
               style={{ float: 'right' }}
-              title="Kopier import kode">
+              title="Kopier import kode"
+            >
               <Copy />
             </ButtonV2>
           )}

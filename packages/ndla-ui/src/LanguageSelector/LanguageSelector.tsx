@@ -84,7 +84,8 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Pro
                 variant="ghost"
                 shape="sharp"
                 aria-label={t(`changeLanguage.${locale}`)}
-                onClick={() => onSelect(locale)}>
+                onClick={() => onSelect(locale)}
+              >
                 <ActivityIndicator>{i18n.language === locale && <ActiveIndicator />}</ActivityIndicator>
                 <Text>{t(`languages.${locale}`)}</Text>
               </LanguageChoice>

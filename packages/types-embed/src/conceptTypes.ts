@@ -6,7 +6,7 @@
  *
  */
 
-import { IConcept, IConceptSummary } from '@ndla/types-concept-api';
+import { IConcept, IConceptSummary } from '@ndla/types-backend/concept-api';
 import { BrightcoveEmbedData, BrightcoveMetaData, IframeEmbedData, IframeMetaData, MetaData } from '.';
 import { OembedEmbedData, OembedMetaData } from './externalTypes';
 import { H5pEmbedData, H5pMetaData } from './h5pTypes';

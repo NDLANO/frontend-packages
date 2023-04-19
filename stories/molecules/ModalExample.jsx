@@ -16,7 +16,8 @@ const ModalDemo = ({ title, size, animation, backgroundColor, headerColorModifie
     animation={animation}
     backgroundColor={backgroundColor}
     position={position}
-    activateButton={<ButtonV2 variant="outline">{title}</ButtonV2>}>
+    activateButton={<ButtonV2 variant="outline">{title}</ButtonV2>}
+  >
     {(onClose) => (
       <Fragment>
         <ModalHeader modifier={headerColorModifier}>
@@ -155,7 +156,8 @@ class ModalExample extends Component {
           'Kommer med 3 hjelpe komponenter; <ModalHeader>, <ModalBody> og <ModalCloseButton>',
           'Hjelpekomponentene er ment å hjelpe for å få et mer unisont design.',
           'Vil etterhvert erstatte <Dialog /> komponenten.',
-        ]}>
+        ]}
+      >
         <p>
           Modal som håndterer åpne/lukke states og håndterer automatisk lås av pagescroll, scroll på content, focus-trap
           samt ESC-exit. Krever at minst ett child-element er focusable. Animasjon inn/ut, størrelser og bakgrunn kan
@@ -211,7 +213,8 @@ class ModalExample extends Component {
             <ButtonV2 variant="stripped" tabIndex={-1}>
               <HelpCircle />
             </ButtonV2>
-          }>
+          }
+        >
           {(onClose) => (
             <Fragment>
               <ModalHeader>

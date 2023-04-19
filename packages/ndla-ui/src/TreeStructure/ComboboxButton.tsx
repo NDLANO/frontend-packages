@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { useForwardedRef } from '@ndla/util';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
-import { IFolder } from '@ndla/types-learningpath-api';
+import { IFolder } from '@ndla/types-backend/learningpath-api';
 import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { treestructureId } from './helperFunctions';
 import { TreeStructureType } from './types';
@@ -118,7 +118,8 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             onToggleTree(!showTree);
             innerRef.current?.focus();
           }
-        }}>
+        }}
+      >
         {loading && (
           <ContentLoader width={1000} height={40}>
             <rect x="15" y="0" width="1000" rx="3" ry="3" r="15" height="40" />
@@ -143,8 +144,9 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             onKeyDown={onKeyDown}
             onClick={() => {
               innerRef.current?.focus();
-              onToggleTree(!showTree);
-            }}>
+              onToggleTree(showTree);
+            }}
+          >
             {selectedFolder?.name}
           </StyledSelectedFolder>
         )}
@@ -160,7 +162,8 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           onClick={() => {
             innerRef.current?.focus();
             onToggleTree(!showTree);
-          }}>
+          }}
+        >
           {showTree ? <ChevronUp /> : <ChevronDown />}
         </IconButton>
       </StyledRow>

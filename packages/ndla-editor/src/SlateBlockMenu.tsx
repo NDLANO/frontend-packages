@@ -155,7 +155,8 @@ const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
           tabIndex={0}
           aria-expanded={isOpen}
           aria-controls={cy}
-          aria-label={isOpen ? t('slateBlockMenu.close') : t('slateBlockMenu.open')}>
+          aria-label={isOpen ? t('slateBlockMenu.close') : t('slateBlockMenu.open')}
+        >
           <Plus aria-hidden="true" />
         </div>
         {isOpen && (
@@ -165,7 +166,8 @@ const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
               onDeactivate: () => onToggleOpen(false),
               clickOutsideDeactivates: true,
               escapeDeactivates: true,
-            }}>
+            }}
+          >
             <Wrapper>
               <div data-cy="slate-block-picker-menu" id={cy}>
                 <HeaderLabel>{heading}</HeaderLabel>
@@ -175,7 +177,8 @@ const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
                       css={itemButton}
                       data-cy={`create-${action.data.object}`}
                       type="button"
-                      onClick={() => clickItem(action.data)}>
+                      onClick={() => clickItem(action.data)}
+                    >
                       {action.icon && action.icon}
                       <span>{action.label}</span>
                     </button>

@@ -87,7 +87,8 @@ class BannerList extends Component {
                     );
                   }}
                   outline
-                  title="Kopier mobil banner til importskjema">
+                  title="Kopier mobil banner til importskjema"
+                >
                   <Fragment>
                     <Copy /> Kopier mobil banner
                   </Fragment>
@@ -106,7 +107,8 @@ class BannerList extends Component {
                       this.buttonContainer,
                     );
                   }}
-                  title="Kopier mobil banner til importskjema">
+                  title="Kopier mobil banner til importskjema"
+                >
                   <Fragment>
                     <Copy /> Kopier desktop banner
                   </Fragment>

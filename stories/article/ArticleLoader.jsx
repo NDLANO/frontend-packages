@@ -40,7 +40,8 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
         showAdditionalResources={showAdditionalCores}
       />
     }
-    id="resourcesListId"></ResourcesWrapper>
+    id="resourcesListId"
+  ></ResourcesWrapper>
 );
 
 ResourcesSubTopics.propTypes = {
@@ -174,7 +175,8 @@ class ArticleLoader extends Component {
                 modifier={articleModifier}
                 messages={messages}
                 licenseBox={<LicenseBox />}
-                competenceGoals={!hideCompetenceGoals ? <CompetenceGoalListExample /> : null}>
+                competenceGoals={!hideCompetenceGoals ? <CompetenceGoalListExample /> : null}
+              >
                 {articleChildren}
               </Article>
             </OneColumn>

@@ -213,6 +213,10 @@ const ListWrapper = styled.div`
   align-items: center;
 `;
 
+const StyledNotionDialogContent = styled(NotionDialogContent)`
+  padding-top: ${spacing.small};
+`;
+
 const StyledList = styled.ul`
   display: flex;
   gap: ${spacing.small};
@@ -292,7 +296,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
           </h1>
           {closeButton}
         </NotionHeader>
-        <NotionDialogContent>
+        <StyledNotionDialogContent>
           {notionVisualElement && (
             <StyledFigure resizeIframe type={'full-column'}>
               {notionVisualElement.image?.src ? (
@@ -318,7 +322,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                       modalButton={<></>}
                       reuseLabel={t('reuse')}
                       authors={visualElementAuthors}
-                      licenseRights={visualElementLicense.rights}>
+                      licenseRights={visualElementLicense.rights}
+                    >
                       {visualElementLicense.abbreviation && (
                         <Header>
                           <Trigger asChild>
@@ -344,7 +349,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                           authors={visualElementGroupedAuthors}
                           title={notionVisualElement?.title}
                           origin={notionVisualElement?.copyright?.origin}
-                          messages={{ source: t('source'), title: t('title') }}>
+                          messages={{ source: t('source'), title: t('title') }}
+                        >
                           {visualElementType === 'image' ? (
                             <ImageLicenseButtons
                               imageUrl={notionVisualElement.image?.src ?? ''}
@@ -362,7 +368,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
             </StyledFigure>
           )}
           <NotionDialogText>{parseMarkdown(content ?? '', 'body')}</NotionDialogText>
-        </NotionDialogContent>
+        </StyledNotionDialogContent>
         {tags && (
           <ListWrapper>
             {`${t('notions.tags')}:`}

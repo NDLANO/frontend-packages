@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
-import { IFolder } from '@ndla/types-learningpath-api';
+import { IFolder } from '@ndla/types-backend/learningpath-api';
 import FolderItem from './FolderItem';
 import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc, TreeStructureType } from './types';
 import { treestructureId } from './helperFunctions';
@@ -72,7 +72,8 @@ const FolderItems = ({
     }
     tabIndex={-1}
     aria-labelledby={level === 0 && type === 'picker' ? treestructureId(type, 'label') : undefined}
-    role={level === 0 ? 'tree' : 'group'}>
+    role={level === 0 ? 'tree' : 'group'}
+  >
     {children}
     {folders.map((folder, index) => {
       const { subfolders, id } = folder;
@@ -102,7 +103,8 @@ const FolderItems = ({
               openFolders={openFolders}
               newFolderInput={newFolderInput}
               onCreate={onCreate}
-              {...rest}>
+              {...rest}
+            >
               {newFolderParentId === id && (
                 <li role="none">{newFolderInput?.({ parentId: id, onClose: onCancelNewFolder, onCreate })}</li>
               )}

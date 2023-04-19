@@ -52,7 +52,8 @@ class AudioExample extends Component<Props> {
           authors={authors}
           origin="https://www.wikimedia.com"
           title={caption}
-          messages={messages}>
+          messages={messages}
+        >
           <ButtonV2 variant="outline">Kopier referanse</ButtonV2>
           <ButtonV2 variant="outline">Last ned lydklipp</ButtonV2>
         </FigureLicenseDialog>

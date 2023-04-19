@@ -62,7 +62,8 @@ const LetterFilter = ({ value, onChange, enabledLetters }: Props) => {
               variant={!selected ? 'ghost' : undefined}
               colorTheme={!selected ? 'lighter' : 'primary'}
               disabled={disabled}
-              size="xsmall">
+              size="xsmall"
+            >
               {letter}
             </StyledButton>
           </li>

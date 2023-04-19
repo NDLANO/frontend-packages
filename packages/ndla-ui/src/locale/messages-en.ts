@@ -1101,6 +1101,7 @@ const messages = {
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
     folders_plural: '{{count}} Folders',
+    settings: 'Settings',
     folder: {
       folder: 'Folder',
       delete: 'Delete folder',
@@ -1129,14 +1130,16 @@ const messages = {
           copy: 'Copy and share this link:',
           private:
             'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
+          private2:
+            'When you share a folder you share all content within the folder, including subfolders and resources',
           shared:
             'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
           unShare:
-            'When you stop sharing, the link to the shared folder is no longer active. If you have shared the link with someone, they can no longer see the content in the folder.',
+            'When you stop sharing, the link to the shared folder and potential subfolders is no longer active. If you have shared the link with someone, they can no longer see the content in the folder. This also applies to potential subfolders.',
         },
         button: {
           share: 'Share folder',
-          preview: 'Preview shared folder',
+          preview: 'Preview folder',
           unShare: 'Stop sharing',
           shareLink: 'Copy link',
         },
@@ -1165,6 +1168,7 @@ const messages = {
     examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     help: 'Help',
     more: 'More options',
+    selectView: 'Select view',
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',
@@ -1182,6 +1186,7 @@ const messages = {
         info3:
           'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
       },
+      willOpenInNewTab: 'Opens in a new tab.',
     },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",
@@ -1221,8 +1226,12 @@ const messages = {
         text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
       sharing: {
-        title: 'How you share your folders with others',
-        text: 'Click on the share-button in the folder to share. You will get a link you can share with others.',
+        title: 'Teachers can now share folders',
+        text: 'Click on the share-button to get a link you can share.',
+      },
+      favoriteSubjects: {
+        title: 'How to save your favorite subjects from NDLA',
+        text: 'Click on the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
@@ -1255,6 +1264,14 @@ const messages = {
       onDragEndMissingOver: 'The resource {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The resource {{name}} was dropped',
       dragHandle: 'Drag the resource {{name}}',
+    },
+    favoriteSubjects: {
+      title: 'My favorite subjects',
+      subjects: '{{count}} subject',
+      subjects_0: '{{count}} subjects',
+      subjects_plural: '{{count}} subjects',
+      noFavorites: 'You do not have any favorite subjects!',
+      goToAllSubjects: 'Go to all subjects',
     },
   },
   snackbar: {

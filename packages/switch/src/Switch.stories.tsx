@@ -7,13 +7,14 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import Switch from './Switch';
 import { defaultParameters } from '../../../stories/defaults';
 
-export default {
+const meta: Meta<typeof Switch> = {
   title: 'Enkle komponenter/Switch',
   component: Switch,
+  tags: ['autodocs'],
   args: {
     checked: false,
     label: 'Switch me!',
@@ -26,9 +27,11 @@ export default {
   parameters: {
     ...defaultParameters,
   },
-} as ComponentMeta<typeof Switch>;
+};
 
-export const SwitchStory: ComponentStory<typeof Switch> = ({ ...args }) => {
+export default meta;
+
+export const SwitchStory: StoryFn<typeof Switch> = ({ ...args }) => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => setChecked(args.checked), [args.checked]);

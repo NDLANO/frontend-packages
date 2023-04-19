@@ -5,6 +5,12 @@
 @import '~@ndla/core/scss/utilities';
 @import '~@ndla/video-search/scss/video-search';
 
+h2 > a,
+h3 > a {
+  text-decoration: none;
+  box-shadow: none;
+}
+
 .c-componentinfo {
   > .c-tabs {
     margin-left: 0 !important;

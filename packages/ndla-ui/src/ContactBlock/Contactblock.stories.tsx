@@ -7,13 +7,14 @@
  */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import ContactBlock from './ContactBlock';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Enkle komponenter/ContactBlock',
   component: ContactBlock,
+  tags: ['autodocs'],
   args: {
     image: {
       id: '65750',
@@ -58,7 +59,7 @@ export default {
         fileName: 'RVrVQIKh.jpg',
         size: 404340,
         contentType: 'image/jpeg',
-        imageUrl: 'https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg',
+        imageUrl: 'https://api.test.ndla.no/image-api/raw/typewriter-1248089_1280.jpg',
         dimensions: {
           width: 1600,
           height: 2000,
@@ -76,10 +77,11 @@ export default {
   },
   parameters: {
     ...defaultParameters,
+    layout: 'centered',
   },
-} as ComponentMeta<typeof ContactBlock>;
+} as Meta<typeof ContactBlock>;
 
-export const ContactBlockStory: ComponentStory<typeof ContactBlock> = ({ ...args }) => {
+export const ContactBlockStory: StoryFn<typeof ContactBlock> = ({ ...args }) => {
   return <ContactBlock {...args} />;
 };
 

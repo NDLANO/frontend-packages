@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
 import Image from '../Image';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { isMobile } from 'react-device-detect';
+import { TabletView, isMobile } from 'react-device-detect';
 
 interface ImageProps {
   width: number;
@@ -22,10 +22,26 @@ interface Props {
   secondImage: IImageMetaInformationV3;
 }
 
+const Wrapper = styled.div`
+  padding: ${spacing.large} 0;
+  max-width: 390px;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding: ${spacing.medium} 0;
+    max-width: 1100px;
+  }
+`;
+
 const StyledContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: ${spacing.xsmall};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-direction: column;
+  }
+  [class*='StyledImageWrapper'] {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const StyledDescription = styled.div`
@@ -37,6 +53,8 @@ const StyledDescription = styled.div`
 const StyledImage = styled(Image)<ImageProps>`
   max-width: ${(props) => props.width}px;
   margin-top: ${(props) => props.marginTopp}px;
+  display: flex;
+  justify-content: center;
 `;
 
 const StyledHeader = styled.h2<IsTwoImagesProps>`
@@ -48,15 +66,6 @@ const StyledHeader = styled.h2<IsTwoImagesProps>`
     css`
       padding-left: 165px;
     `}
-`;
-
-const Wrapper = styled.div`
-  padding: ${spacing.large} 0;
-  max-width: 390px;
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.medium} 0;
-    max-width: 1100px;
-  }
 `;
 
 interface IsTwoImagesProps {
@@ -75,15 +84,15 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
   const safeLink = SafeLinkContainer(url, urlText);
   return (
     <Wrapper>
-      {isMobile ? (
+      {TabletView ? (
         <>
           <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
           <StyledContentWrapper>
             {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
             <StyledDescription>{description}</StyledDescription>
+            <StyledImage alt={secondImage.alttext.alttext} width={288} src={secondImage.image.imageUrl} />
+            {safeLink}
           </StyledContentWrapper>
-          <StyledImage alt={secondImage.alttext.alttext} width={288} src={secondImage.image.imageUrl} />
-          {safeLink}
         </>
       ) : (
         <StyledContentWrapper>
@@ -95,7 +104,7 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
           </div>
           <StyledImage
             alt={secondImage.alttext.alttext}
-            width={200}
+            width={288}
             marginTopp={32.5}
             src={secondImage.image.imageUrl}
           />

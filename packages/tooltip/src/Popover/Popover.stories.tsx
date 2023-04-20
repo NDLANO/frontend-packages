@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
 import { defaultParameters } from '../../../../stories/defaults';
 import Popover from './Popover';
@@ -29,9 +29,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Popover>;
+} as Meta<typeof Popover>;
 
-export const PopoverStory: ComponentStory<typeof Popover> = ({ children, ...args }) => {
+export const PopoverStory: StoryFn<typeof Popover> = ({ children, ...args }) => {
   return (
     <div style={{ display: 'flex' }}>
       <Popover {...args}>

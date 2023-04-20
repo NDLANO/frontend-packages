@@ -12,7 +12,7 @@ import ContactBlock from './ContactBlock';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'Enkle komponenter/ContactBlock',
+  title: 'Enkle komponenter/Kontaktblokk',
   component: ContactBlock,
   tags: ['autodocs'],
   args: {
@@ -59,7 +59,7 @@ export default {
         fileName: 'RVrVQIKh.jpg',
         size: 404340,
         contentType: 'image/jpeg',
-        imageUrl: 'https://api.test.ndla.no/image-api/raw/typewriter-1248089_1280.jpg',
+        imageUrl: 'https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg',
         dimensions: {
           width: 1600,
           height: 2000,
@@ -85,4 +85,4 @@ export const ContactBlockStory: StoryFn<typeof ContactBlock> = ({ ...args }) => 
   return <ContactBlock {...args} />;
 };
 
-ContactBlockStory.storyName = 'ContactBlock';
+ContactBlockStory.storyName = 'Kontaktblokk';

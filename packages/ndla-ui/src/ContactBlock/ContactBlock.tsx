@@ -21,6 +21,7 @@ interface Props {
   description: string;
   blobColor?: 'pink' | 'green';
   blob?: 'pointy' | 'round';
+  imageWidth?: number;
   name: string;
   email: string;
 }
@@ -84,6 +85,7 @@ const BlobWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   min-width: 286px;
+  aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
@@ -111,7 +113,7 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
       <ImageWrapper>
         {image ? (
           <>
-            <img alt={image.alttext.alttext} src={image.image.imageUrl} />
+            <img alt={image.alttext.alttext} src={`${image.image.imageUrl}?width=286`} />
             {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
               image.copyright.license.license
             }`}

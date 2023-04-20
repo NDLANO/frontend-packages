@@ -108,48 +108,48 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
 
   const image2 = {
     id: '65859',
-    metaUrl: 'https://api.test.ndla.no/image-api/v3/images/65750',
+    metaUrl: '',
     title: {
-      title: 'Sigurd Trageton',
+      title: 'Illustrasjonsbilde Kampanjeblokk',
       language: 'nb',
     },
     alttext: {
-      alttext: 'Sigurd Trageton',
+      alttext: 'illlustrasjonsbildet',
       language: 'nb',
     },
     copyright: {
       license: {
-        license: 'CC-BY-SA-4.0',
-        description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+        license: '',
+        description: '',
         url: 'https://creativecommons.org/licenses/by-sa/4.0/',
       },
       origin: '',
       creators: [
         {
-          type: 'photographer',
-          name: 'Tom Knudsen',
+          type: 'Designer',
+          name: 'Hedvig Myklebust',
         },
       ],
       processors: [],
       rightsholders: [],
     },
     tags: {
-      tags: ['Sigurd', 'Trageton', 'Portrett'],
+      tags: ['Illustrasjon', 'FN', 'Flagg'],
       language: 'nb',
     },
     caption: {
-      caption: 'Sigurd Trageton',
+      caption: 'Illustrasjonsbilde Kampanjeblokk',
       language: 'nb',
     },
     supportedLanguages: ['nb', 'nn'],
     created: '2023-03-29T07:15:50Z',
-    createdBy: 'f-jBTU8O8kYbUW20lMeIuTSv',
+    createdBy: '',
     modelRelease: 'not-set',
     image: {
       fileName: 'RVrVQIKh.jpg',
       size: 404340,
-      contentType: 'image/jpeg',
-      imageUrl: 'https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg',
+      contentType: 'image/svg',
+      imageUrl: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png?width=600&ts=1681988188301',
       dimensions: {
         width: 1600,
         height: 2000,
@@ -375,8 +375,8 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
             </BlogPostWrapper>
           </section>
           <FrontpageKampanjeblokk
-            firstImage={image1}
-            secondImage={image1}
+            // firstImage={image2}
+            secondImage={image2}
             title="NDLA film"
             description="NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!"
             url="https://ndla.no/nb/film"

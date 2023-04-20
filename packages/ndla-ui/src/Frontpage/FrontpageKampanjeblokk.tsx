@@ -31,23 +31,34 @@ const Wrapper = styled.div`
   }
 `;
 
+const DeskWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const StyledContentWrapper = styled.div<IsTwoImagesProps>`
   display: flex;
   flex-direction: row;
   gap: ${spacing.xsmall};
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    [class*='StyledImageWrapper'] {
+      display: flex;
+      justify-content: center;
+    }
+  }
   ${mq.range({ until: breakpoints.tabletWide })} {
     flex-direction: column;
-  }
-  [class*='StyledImageWrapper'] {
-    display: flex;
-    justify-content: center;
-    ${(props) =>
-      props.isTwoImages &&
-      css`
-        justify-content: flex-start;
-      `}
-    & ~ [class*='StyledImageWrapper'] {
+    [class*='StyledImageWrapper'] {
+      display: flex;
       justify-content: center;
+      ${(props) =>
+        props.isTwoImages &&
+        css`
+          justify-content: flex-start;
+        `}
+      & ~ [class*='StyledImageWrapper'] {
+        justify-content: center;
+      }
     }
   }
 `;
@@ -134,11 +145,11 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
               src={firstImage.image.imageUrl}
             />
           )}
-          <div>
+          <DeskWrapper>
             <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
             <StyledDescription>{description}</StyledDescription>
             {safeLink}
-          </div>
+          </DeskWrapper>
           <StyledImage
             alt={secondImage.alttext.alttext}
             isTwoImages={isTwoImages}

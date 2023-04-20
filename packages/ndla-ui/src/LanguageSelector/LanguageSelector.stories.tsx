@@ -7,13 +7,14 @@
  */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { LanguageSelector } from '@ndla/ui';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import { defaultParameters } from '../../../../stories/defaults';
 export default {
   title: 'Enkle komponenter/LanguageSelector',
+  tags: ['autodocs'],
   component: LanguageSelector,
   parameters: {
     ...defaultParameters,
@@ -24,7 +25,7 @@ export default {
     // eslint-disable-next-line no-console
     onSelect: (locale) => console.log(`selected ${locale}`),
   },
-} as ComponentMeta<typeof LanguageSelector>;
+} as Meta<typeof LanguageSelector>;
 
 interface ButtonWrapperProps {
   inverted?: boolean;
@@ -37,7 +38,7 @@ const ButtonWrapper = styled('div', { shouldForwardProp })<ButtonWrapperProps>`
   padding: ${spacing.normal};
 `;
 
-export const LanguageSelectorStory: ComponentStory<typeof LanguageSelector> = (args) => {
+export const LanguageSelectorStory: StoryFn<typeof LanguageSelector> = (args) => {
   return (
     <ButtonWrapper inverted={args.inverted}>
       <LanguageSelector {...args} />

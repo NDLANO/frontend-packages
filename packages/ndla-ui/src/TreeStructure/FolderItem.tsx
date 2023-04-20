@@ -10,6 +10,7 @@ import React, { KeyboardEvent, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ArrowDropDownRounded } from '@ndla/icons/common';
+import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
 import { Done } from '@ndla/icons/editor';
 import { ButtonV2 as Button } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
@@ -45,6 +46,17 @@ const StyledName = styled.span`
   text-align: left;
 `;
 
+const IconWrapper = styled.div`
+  display: flex;
+`;
+
+const FolderIconWrapper = styled.div`
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+`;
+
 const shouldForwardProp = (name: string) => !['selected', 'level', 'focused', 'isCreatingFolder'].includes(name);
 
 interface FolderNameProps {
@@ -56,8 +68,7 @@ interface FolderNameProps {
 
 const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
   display: grid;
-  grid-template-columns: ${spacing.medium} 1fr auto;
-
+  grid-template-columns: auto 1fr auto;
   padding-left: ${({ level }) => 0.75 * spacingUnit * level}px;
   gap: ${spacing.xxsmall};
   border: none;
@@ -171,6 +182,8 @@ const FolderItem = ({
   const isMaxDepth = level > maxLevel;
   const hideArrow = isMaxDepth || emptyFolder;
 
+  const FolderIcon = folder.status === 'shared' ? FolderShared : FolderOutlined;
+
   const tabable = selected || focused || (!focusedFolder && !folder.parentId && index === 0);
 
   return type === 'navigation' ? (
@@ -225,6 +238,7 @@ const FolderItem = ({
       aria-selected={selected}
       focused={focusedFolder?.id === folder.id}
       aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
+      aria-label={`${name}${folder.status === 'shared' ? `, ${t('myNdla.folder.sharing.shared')}` : ''}`}
       variant="ghost"
       shape="sharp"
       fontWeight="normal"
@@ -239,24 +253,29 @@ const FolderItem = ({
       onClick={handleClickFolder}
       isCreatingFolder={isCreatingFolder}
     >
-      {!hideArrow && (
-        <OpenButton
-          aria-hidden
-          tabIndex={-1}
-          isOpen={isOpen}
-          onClick={(e) => {
-            e.stopPropagation();
-            setFocusedFolder(folder);
-            if (isOpen) {
-              onCloseFolder(id);
-            } else {
-              onOpenFolder(id);
-            }
-          }}
-        >
-          <ArrowDropDownRounded />
-        </OpenButton>
-      )}
+      <IconWrapper>
+        {!hideArrow && (
+          <OpenButton
+            aria-hidden
+            tabIndex={-1}
+            isOpen={isOpen}
+            onClick={(e) => {
+              e.stopPropagation();
+              setFocusedFolder(folder);
+              if (isOpen) {
+                onCloseFolder(id);
+              } else {
+                onOpenFolder(id);
+              }
+            }}
+          >
+            <ArrowDropDownRounded />
+          </OpenButton>
+        )}
+        <FolderIconWrapper>
+          <FolderIcon />
+        </FolderIconWrapper>
+      </IconWrapper>
       <StyledName>{name}</StyledName>
       {containsResource && (
         <StyledDone

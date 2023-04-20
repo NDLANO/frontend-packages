@@ -6,10 +6,10 @@ import { useTranslation } from 'react-i18next';
 import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
 import Image from '../Image';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { TabletView, isMobile } from 'react-device-detect';
+import { MobileView, TabletView, isMobile } from 'react-device-detect';
 
 interface ImageProps {
-  width: number;
+  isTwoImages: boolean;
   marginTopp?: number;
 }
 
@@ -50,22 +50,30 @@ const StyledDescription = styled.div`
   padding: ${spacing.normal} 0;
 `;
 
-const StyledImage = styled(Image)<ImageProps>`
-  max-width: ${(props) => props.width}px;
+const StyledFirstImage = styled(Image)<ImageProps>`
+  max-width: 160px;
   margin-top: ${(props) => props.marginTopp}px;
   display: flex;
   justify-content: center;
+`;
+
+const StyledImage = styled(Image)<ImageProps>`
+  max-width: 288px;
+  margin-top: ${(props) => props.marginTopp}px;
+  display: flex;
+  justify-content: center;
+  ${(props) =>
+    props.isTwoImages &&
+    css`
+      max-width: 200px;
+      border: 2px solid red;
+    `}
 `;
 
 const StyledHeader = styled.h2<IsTwoImagesProps>`
   font-weight: ${fonts.weight.bold};
   ${fonts.sizes('30px', '38px')};
   margin-top: ${spacing.medium};
-  ${(props) =>
-    props.isTwoImages &&
-    css`
-      padding-left: 165px;
-    `}
 `;
 
 interface IsTwoImagesProps {
@@ -84,19 +92,31 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
   const safeLink = SafeLinkContainer(url, urlText);
   return (
     <Wrapper>
-      {TabletView ? (
+      {MobileView ? (
         <>
           <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
           <StyledContentWrapper>
-            {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
+            {firstImage && (
+              <StyledFirstImage
+                alt={firstImage.alttext.alttext}
+                isTwoImages={isTwoImages}
+                src={firstImage.image.imageUrl}
+              />
+            )}
             <StyledDescription>{description}</StyledDescription>
-            <StyledImage alt={secondImage.alttext.alttext} width={288} src={secondImage.image.imageUrl} />
+            <StyledImage alt={secondImage.alttext.alttext} isTwoImages={isTwoImages} src={secondImage.image.imageUrl} />
             {safeLink}
           </StyledContentWrapper>
         </>
       ) : (
         <StyledContentWrapper>
-          {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
+          {firstImage && (
+            <StyledFirstImage
+              alt={firstImage.alttext.alttext}
+              isTwoImages={isTwoImages}
+              src={firstImage.image.imageUrl}
+            />
+          )}
           <div>
             <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
             <StyledDescription>{description}</StyledDescription>
@@ -104,7 +124,7 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
           </div>
           <StyledImage
             alt={secondImage.alttext.alttext}
-            width={288}
+            isTwoImages={isTwoImages}
             marginTopp={32.5}
             src={secondImage.image.imageUrl}
           />

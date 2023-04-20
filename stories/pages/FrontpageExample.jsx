@@ -325,9 +325,10 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
           <FrontpageKampanjeblokk
             firstImage={image1}
             secondImage={image1}
-            title="Putt noe her"
-            description="Legg in lksadlasl dsaøhfø lshfsdøfgh sødfhøjsdf ksføjh adas  asdasdas asdas sadasdas asdasdas asdsa"
+            title="NDLA film"
+            description="NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!"
             url="https://ndla.no/nb/film"
+            urlText="Gå til NDLA film"
           />
           <FrontpageInfo>
             <InfoWidget

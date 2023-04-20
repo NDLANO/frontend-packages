@@ -53,7 +53,7 @@ interface Props {
   subTitle: string;
 }
 
-const KeyNumber = ({ image, title, subTitle }: Props) => {
+const KeyPerformanceIndicator = ({ image, title, subTitle }: Props) => {
   return (
     <ContentWrapper>
       <StyledImage src={image?.image.imageUrl} alt={image?.alttext.alttext} />
@@ -63,4 +63,4 @@ const KeyNumber = ({ image, title, subTitle }: Props) => {
   );
 };
 
-export default KeyNumber;
+export default KeyPerformanceIndicator;

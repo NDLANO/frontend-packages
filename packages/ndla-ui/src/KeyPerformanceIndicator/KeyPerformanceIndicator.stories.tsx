@@ -7,13 +7,14 @@
  */
 
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import KeyNumber from './KeyNumber';
+import { Meta, StoryFn } from '@storybook/react';
 import { defaultParameters } from '../../../../stories/defaults';
+import KeyPerformanceIndicator from './KeyPerformanceIndicator';
 
 export default {
-  title: 'Enkle komponenter/Blog Post',
-  component: KeyNumber,
+  title: 'Enkle komponenter/Nøkkeltall',
+  component: KeyPerformanceIndicator,
+  tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
     layout: 'centered',
@@ -69,10 +70,10 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof KeyNumber>;
+} as Meta<typeof KeyPerformanceIndicator>;
 
-export const KeyNumberStory: ComponentStory<typeof KeyNumber> = ({ ...args }) => {
-  return <KeyNumber {...args} />;
+export const KeyPerformanceIndicatorStory: StoryFn<typeof KeyPerformanceIndicator> = ({ ...args }) => {
+  return <KeyPerformanceIndicator {...args} />;
 };
 
-KeyNumberStory.storyName = 'KeyNumber';
+KeyPerformanceIndicatorStory.storyName = 'Nøkkeltall';

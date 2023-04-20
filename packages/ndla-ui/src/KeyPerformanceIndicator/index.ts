@@ -6,4 +6,4 @@
  *
  */
 
-export { default as KeyNumber } from './KeyNumber';
+export { default as KeyPerformanceIndicator } from './KeyPerformanceIndicator';

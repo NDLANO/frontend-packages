@@ -43,7 +43,7 @@ import {
 } from './conceptTypes';
 import { FileEmbedData, FileMetaData } from './fileTypes';
 import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
-import { KeyNumberEmbedData, KeyNumberMetaData } from './keyNumberTypes';
+import { KeyPerformanceIndicatorEmbedData, KeyPerformanceIndicatorMetaData } from './KeyPerformanceIndicatorTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -61,7 +61,7 @@ export type EmbedData =
   | OembedEmbedData
   | FileEmbedData
   | BlogPostEmbedData
-  | KeyNumberEmbedData;
+  | KeyPerformanceIndicatorEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -78,7 +78,7 @@ export type EmbedMetaData =
   | FootnoteMetaData
   | FileMetaData
   | BlogPostMetaData
-  | KeyNumberMetaData;
+  | KeyPerformanceIndicatorMetaData;
 
 export type {
   ConceptMetaData,
@@ -94,7 +94,7 @@ export type {
   ConceptListMetaData,
   FileMetaData,
   BlogPostMetaData,
-  KeyNumberMetaData,
+  KeyPerformanceIndicatorMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -110,7 +110,7 @@ export type {
   ConceptListEmbedData,
   FileEmbedData,
   BlogPostEmbedData,
-  KeyNumberEmbedData,
+  KeyPerformanceIndicatorEmbedData,
 };
 
 export type { BlogPostMeta };

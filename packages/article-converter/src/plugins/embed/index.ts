@@ -21,7 +21,7 @@ import { conceptListEmbedPlugin } from './conceptListEmbedPlugin';
 import { fileEmbedPlugin } from './fileEmbedPlugin';
 import { codeEmbedPlugin } from './codeEmbedPlugin';
 import { blogPostEmbedPlugin } from './blogPostEmbedPlugin';
-import { keyNumberEmbedPlugin } from './keyNumberEmbedPlugin';
+import { keyPerformanceIndicatorEmbedPlugin } from './keyPerformanceIndicatorEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: imageEmbedPlugin,
@@ -38,5 +38,5 @@ export const embedPlugins: Record<string, PluginType> = {
   'concept-list': conceptListEmbedPlugin,
   'blog-post': blogPostEmbedPlugin,
   file: fileEmbedPlugin,
-  'key-number': keyNumberEmbedPlugin,
+  'key-performance-indicator': keyPerformanceIndicatorEmbedPlugin,
 };

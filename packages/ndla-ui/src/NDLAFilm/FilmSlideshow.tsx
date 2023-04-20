@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from '@emotion/styled';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { breakpoints, colors, misc, mq, spacing, spacingUnit } from '@ndla/core';
@@ -173,14 +173,12 @@ const FilmSlideshow = ({ slideshow }: Props) => {
                 </SlideshowButton>
               }
               items={slideshow.map((movie) => (
-                <StyledFilmContentCard
-                  onFocus={() => setCurrentSlide(movie)}
-                  current={movie.id === currentSlide.id}
-                  aria-describedby={'currentMovieDescription'}
+                <FilmCard
                   key={movie.id}
+                  current={movie.id === currentSlide.id}
                   movie={movie}
                   columnWidth={autoSizedProps.columnWidth}
-                  resourceTypes={[]}
+                  setCurrentSlide={() => setCurrentSlide(movie)}
                 />
               ))}
               {...autoSizedProps}
@@ -189,6 +187,41 @@ const FilmSlideshow = ({ slideshow }: Props) => {
         </section>
       )}
     </CarouselAutosize>
+  );
+};
+
+interface FilmCardProps {
+  setCurrentSlide: () => void;
+  movie: MovieType;
+  current: boolean;
+  columnWidth: number;
+}
+
+const FilmCard = ({ setCurrentSlide, movie, current, columnWidth }: FilmCardProps) => {
+  const [hoverCallback, setHoverCallback] = useState<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  const onHover = useCallback(() => {
+    const timeout = setTimeout(() => setCurrentSlide(), 500);
+    setHoverCallback(timeout);
+  }, [setCurrentSlide]);
+
+  return (
+    <StyledFilmContentCard
+      onMouseEnter={onHover}
+      onMouseLeave={() => {
+        if (hoverCallback) {
+          clearTimeout(hoverCallback);
+          setHoverCallback(undefined);
+        }
+      }}
+      onFocus={() => setCurrentSlide()}
+      current={current}
+      aria-describedby={'currentMovieDescription'}
+      key={movie.id}
+      movie={movie}
+      columnWidth={columnWidth}
+      resourceTypes={[]}
+    />
   );
 };
 

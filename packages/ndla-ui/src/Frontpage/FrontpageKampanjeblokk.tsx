@@ -10,6 +10,7 @@ import { isMobile } from 'react-device-detect';
 
 interface ImageProps {
   width: number;
+  marginTopp?: number;
 }
 
 interface Props {
@@ -35,11 +36,13 @@ const StyledDescription = styled.div`
 
 const StyledImage = styled(Image)<ImageProps>`
   max-width: ${(props) => props.width}px;
+  margin-top: ${(props) => props.marginTopp}px;
 `;
 
 const StyledHeader = styled.h2<IsTwoImagesProps>`
   font-weight: ${fonts.weight.bold};
   ${fonts.sizes('30px', '38px')};
+  margin-top: ${spacing.medium};
   ${(props) =>
     props.isTwoImages &&
     css`
@@ -72,9 +75,9 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
   const safeLink = SafeLinkContainer(url, urlText);
   return (
     <Wrapper>
-      <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
       {isMobile ? (
         <>
+          <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
           <StyledContentWrapper>
             {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
             <StyledDescription>{description}</StyledDescription>
@@ -86,10 +89,16 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
         <StyledContentWrapper>
           {firstImage && <StyledImage alt={firstImage.alttext.alttext} width={160} src={firstImage.image.imageUrl} />}
           <div>
+            <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
             <StyledDescription>{description}</StyledDescription>
             {safeLink}
           </div>
-          <StyledImage alt={secondImage.alttext.alttext} width={200} src={secondImage.image.imageUrl} />
+          <StyledImage
+            alt={secondImage.alttext.alttext}
+            width={200}
+            marginTopp={32.5}
+            src={secondImage.image.imageUrl}
+          />
         </StyledContentWrapper>
       )}
     </Wrapper>

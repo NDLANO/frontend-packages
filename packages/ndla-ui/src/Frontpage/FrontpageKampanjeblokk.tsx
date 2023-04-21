@@ -6,11 +6,12 @@ import { useTranslation } from 'react-i18next';
 import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
 import Image from '../Image';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { MobileView, TabletView, isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
 interface ImageProps {
   isTwoImages: boolean;
-  marginTopp?: number;
+  marginTopp?: any;
+  marginBottom?: any;
 }
 
 interface Props {
@@ -34,6 +35,7 @@ const Wrapper = styled.div`
 const DeskWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 ${spacing.normal};
 `;
 
 const StyledContentWrapper = styled.div<IsTwoImagesProps>`
@@ -43,7 +45,15 @@ const StyledContentWrapper = styled.div<IsTwoImagesProps>`
   ${mq.range({ from: breakpoints.tabletWide })} {
     [class*='StyledImageWrapper'] {
       display: flex;
-      justify-content: center;
+      align-items: center;
+      ${(props) =>
+        !props.isTwoImages &&
+        css`
+          align-items: center;
+        `}
+      & ~ [class*='StyledImageWrapper'] {
+        align-items: center;
+      }
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -72,17 +82,14 @@ const StyledDescription = styled.div`
 const StyledFirstImage = styled(Image)<ImageProps>`
   min-width: 160px;
   max-width: 160px;
-  margin-top: ${(props) => props.marginTopp}px;
-  margin-left: -26px;
-  display: flex;
-  justify-content: center;
+  margin-top: ${(props) => props.marginTopp};
 `;
 
 const StyledImage = styled(Image)<ImageProps>`
   min-width: 288px;
   max-width: 288px;
-  margin-top: ${(props) => props.marginTopp}px;
-  margin-bottom: ${spacing.normal};
+  margin-top: ${(props) => props.marginTopp};
+  margin-bottom: ${(props) => props.marginBottom};
   display: flex;
   justify-content: center;
   ${(props) =>
@@ -119,20 +126,25 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
   const safeLink = SafeLinkContainer(url, urlText);
   return (
     <Wrapper>
-      {MobileView ? (
+      {!isMobile ? (
         <>
           <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
           <StyledContentWrapper isTwoImages={isTwoImages}>
             {firstImage && (
               <StyledFirstImage
                 alt={firstImage.alttext.alttext}
-                marginTopp={24}
+                marginTopp={`${spacing.normal}`}
                 isTwoImages={isTwoImages}
                 src={firstImage.image.imageUrl}
               />
             )}
             <StyledDescription>{description}</StyledDescription>
-            <StyledImage alt={secondImage.alttext.alttext} isTwoImages={isTwoImages} src={secondImage.image.imageUrl} />
+            <StyledImage
+              alt={secondImage.alttext.alttext}
+              isTwoImages={isTwoImages}
+              marginBottom={`${spacing.normal}`}
+              src={secondImage.image.imageUrl}
+            />
             {safeLink}
           </StyledContentWrapper>
         </>
@@ -142,6 +154,7 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
             <StyledFirstImage
               alt={firstImage.alttext.alttext}
               isTwoImages={isTwoImages}
+              marginTopp={`${spacing.normal}`}
               src={firstImage.image.imageUrl}
             />
           )}
@@ -153,7 +166,7 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
           <StyledImage
             alt={secondImage.alttext.alttext}
             isTwoImages={isTwoImages}
-            marginTopp={32.5}
+            marginTopp={isTwoImages ? `${spacing.normal}` : `${spacing.medium}`}
             src={secondImage.image.imageUrl}
           />
         </StyledContentWrapper>

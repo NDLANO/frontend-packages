@@ -4,9 +4,9 @@ import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
-import Image from '../Image';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { isMobile } from 'react-device-detect';
+import Image from '../Image';
 
 interface ImageProps {
   isTwoImages: boolean;

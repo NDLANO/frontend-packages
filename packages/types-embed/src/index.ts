@@ -43,6 +43,11 @@ import {
 } from './conceptTypes';
 import { FileEmbedData, FileMetaData } from './fileTypes';
 import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
+import {
+  KeyPerformanceIndicatorEmbedData,
+  KeyPerformanceIndicatorMeta,
+  KeyPerformanceIndicatorMetaData,
+} from './KeyPerformanceIndicatorTypes';
 import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
 
 export type EmbedData =
@@ -61,6 +66,7 @@ export type EmbedData =
   | OembedEmbedData
   | FileEmbedData
   | BlogPostEmbedData
+  | KeyPerformanceIndicatorEmbedData
   | ContactBlockEmbedData;
 
 export type EmbedMetaData =
@@ -78,6 +84,7 @@ export type EmbedMetaData =
   | FootnoteMetaData
   | FileMetaData
   | BlogPostMetaData
+  | KeyPerformanceIndicatorMetaData
   | ContactBlockMetaData;
 export type {
   ConceptMetaData,
@@ -93,6 +100,7 @@ export type {
   ConceptListMetaData,
   FileMetaData,
   BlogPostMetaData,
+  KeyPerformanceIndicatorMetaData,
   ContactBlockMetaData,
 };
 export type {
@@ -109,9 +117,12 @@ export type {
   ConceptListEmbedData,
   FileEmbedData,
   BlogPostEmbedData,
+  KeyPerformanceIndicatorEmbedData,
   ContactBlockEmbedData,
 };
+
 export type { BlogPostMeta };
+export type { KeyPerformanceIndicatorMeta };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };

@@ -271,4 +271,5 @@ export type { TreeStructureProps } from './TreeStructure';
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
 export { default as LetterFilter } from './LetterFilter';
 export { BlogPostV2 } from './BlogPost';
+export { KeyPerformanceIndicator } from './KeyPerformanceIndicator';
 export { default as ContactBlock } from './ContactBlock';

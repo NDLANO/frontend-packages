@@ -114,11 +114,16 @@ interface IsTwoImagesProps {
   isTwoImages: boolean;
 }
 
+const StyledSafeLink = styled(SafeLink)`
+  text-decoration: underline;
+  box-shadow: none;
+`;
+
 const SafeLinkContainer = (url: string, urlText: string) => (
-  <SafeLink className="o-text-link" to={url}>
+  <StyledSafeLink className="o-text-link" to={url}>
     {urlText}
     <Forward />
-  </SafeLink>
+  </StyledSafeLink>
 );
 
 const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, description }: Props) => {
@@ -126,7 +131,7 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
   const safeLink = SafeLinkContainer(url, urlText);
   return (
     <Wrapper>
-      {isMobile ? (
+      {!isMobile ? (
         <>
           <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
           <StyledContentWrapper isTwoImages={isTwoImages}>

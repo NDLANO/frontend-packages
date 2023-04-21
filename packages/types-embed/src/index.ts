@@ -43,7 +43,11 @@ import {
 } from './conceptTypes';
 import { FileEmbedData, FileMetaData } from './fileTypes';
 import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
-import { KeyPerformanceIndicatorEmbedData, KeyPerformanceIndicatorMetaData } from './KeyPerformanceIndicatorTypes';
+import {
+  KeyPerformanceIndicatorEmbedData,
+  KeyPerformanceIndicatorMeta,
+  KeyPerformanceIndicatorMetaData,
+} from './KeyPerformanceIndicatorTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -114,6 +118,7 @@ export type {
 };
 
 export type { BlogPostMeta };
+export type { KeyPerformanceIndicatorMeta };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };

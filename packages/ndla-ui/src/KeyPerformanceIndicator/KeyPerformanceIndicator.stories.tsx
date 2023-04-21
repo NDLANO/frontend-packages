@@ -26,11 +26,11 @@ export default {
       id: '65797',
       metaUrl: 'https://api.test.ndla.no/image-api/v3/images/65797',
       title: {
-        title: 'Nøkkeltall tverfagelig',
+        title: 'Nøkkeltall tverrfaglig',
         language: 'nb',
       },
       alttext: {
-        alttext: 'Nøkkeltall tverfagelig',
+        alttext: 'Nøkkeltall tverrfaglig',
         language: 'nb',
       },
       copyright: {
@@ -50,7 +50,7 @@ export default {
         rightsholders: [],
       },
       tags: {
-        tags: ['Nøkkeltall', 'Tverfagelig', 'svg'],
+        tags: ['Nøkkeltall', 'Tverrfaglig', 'svg'],
         language: 'nb',
       },
       caption: {

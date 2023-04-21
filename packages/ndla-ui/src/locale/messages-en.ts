@@ -964,6 +964,8 @@ const messages = {
   loading: 'Loading',
   title: 'Title',
   save: 'Save',
+  photo: 'Photo',
+  email: 'Email',
   image: {
     altText: 'Alt-text',
     caption: 'Caption',

@@ -964,6 +964,8 @@ const messages = {
   title: 'Tihttel',
   cancel: 'Botkke',
   save: 'Vurke',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Molssaevttolaš teaksta',
     caption: 'Govvateaksta',

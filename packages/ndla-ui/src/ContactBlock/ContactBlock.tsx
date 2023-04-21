@@ -64,7 +64,7 @@ const EmailLink = styled.a`
   text-decoration-color: ${colors.text.light};
 `;
 
-const SummaryBlock = styled.div`
+const SummaryBlock = styled.p`
   font-family: ${fonts.serif};
   padding: ${spacing.nsmall} ${spacing.medium} 0 0;
   ${mq.range({ from: breakpoints.tabletWide })} {

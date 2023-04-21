@@ -963,6 +963,8 @@ const messages = {
   title: 'Tittel',
   cancel: 'Avbryt',
   save: 'Lagre',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bildetekst',

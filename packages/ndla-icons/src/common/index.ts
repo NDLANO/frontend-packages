@@ -17,6 +17,8 @@ export { default as Audio } from './Audio';
 export { default as Audiobook } from './Audiobook';
 export { default as AudioDocument } from './AudioDocument';
 export { default as Back } from './Back';
+export { default as BlobPointy } from './BlobPointy';
+export { default as BlobRound } from './BlobRound';
 export { default as BlocksDark } from './BlocksDark';
 export { default as BlocksLight } from './BlocksLight';
 export { default as BookOpen } from './BookOpen';

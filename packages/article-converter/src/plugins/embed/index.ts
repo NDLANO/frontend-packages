@@ -22,6 +22,7 @@ import { fileEmbedPlugin } from './fileEmbedPlugin';
 import { codeEmbedPlugin } from './codeEmbedPlugin';
 import { blogPostEmbedPlugin } from './blogPostEmbedPlugin';
 import { keyPerformanceIndicatorEmbedPlugin } from './keyPerformanceIndicatorEmbedPlugin';
+import { contactBlockEmbedPlugin } from './contactBlockEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: imageEmbedPlugin,
@@ -39,4 +40,5 @@ export const embedPlugins: Record<string, PluginType> = {
   'blog-post': blogPostEmbedPlugin,
   file: fileEmbedPlugin,
   'key-performance-indicator': keyPerformanceIndicatorEmbedPlugin,
+  'contact-block': contactBlockEmbedPlugin,
 };

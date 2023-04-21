@@ -48,6 +48,7 @@ import {
   KeyPerformanceIndicatorMeta,
   KeyPerformanceIndicatorMetaData,
 } from './KeyPerformanceIndicatorTypes';
+import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -66,6 +67,7 @@ export type EmbedData =
   | FileEmbedData
   | BlogPostEmbedData
   | KeyPerformanceIndicatorEmbedData;
+  | ContactBlockEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -84,6 +86,7 @@ export type EmbedMetaData =
   | BlogPostMetaData
   | KeyPerformanceIndicatorMetaData;
 
+  | ContactBlockMetaData;
 export type {
   ConceptMetaData,
   ImageMetaData,
@@ -99,6 +102,7 @@ export type {
   FileMetaData,
   BlogPostMetaData,
   KeyPerformanceIndicatorMetaData,
+  ContactBlockMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -115,6 +119,7 @@ export type {
   FileEmbedData,
   BlogPostEmbedData,
   KeyPerformanceIndicatorEmbedData,
+  ContactBlockEmbedData,
 };
 
 export type { BlogPostMeta };

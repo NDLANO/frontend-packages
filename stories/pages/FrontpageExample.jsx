@@ -375,7 +375,7 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
             </BlogPostWrapper>
           </section>
           <FrontpageKampanjeblokk
-            // firstImage={image2}
+            firstImage={image2}
             secondImage={image2}
             title="NDLA film"
             description="NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!"

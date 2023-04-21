@@ -126,7 +126,7 @@ const FrontpageKampanjeblokk = ({ url, firstImage, secondImage, title, urlText, 
   const safeLink = SafeLinkContainer(url, urlText);
   return (
     <Wrapper>
-      {!isMobile ? (
+      {isMobile ? (
         <>
           <StyledHeader isTwoImages={isTwoImages}>{title}</StyledHeader>
           <StyledContentWrapper isTwoImages={isTwoImages}>

@@ -28,7 +28,6 @@ interface Props {
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 350px;
   padding: 0 0 ${spacing.medium} ${spacing.medium};
   font-family: ${fonts.sans};
   justify-content: center;
@@ -38,7 +37,6 @@ const CardWrapper = styled.div`
   ${mq.range({ from: breakpoints.tabletWide })} {
     flex-direction: row;
     padding: 0 0 ${spacing.medium} ${spacing.medium};
-    width: 773px;
     gap: ${spacing.nsmall};
   }
 `;
@@ -55,18 +53,18 @@ const StyledDescriptionInformation = styled.div`
   overflow-wrap: anywhere;
   color: ${colors.text.light};
   gap: ${spacing.xxsmall};
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    width: 335px;
-  }
 `;
 const EmailLink = styled.a`
   color: ${colors.text.light};
   text-decoration-color: ${colors.text.light};
+  text-decoration-style: solid;
+  text-decoration: underline;
+  box-shadow: unset;
 `;
 
 const SummaryBlock = styled.p`
   font-family: ${fonts.serif};
-  padding: ${spacing.nsmall} ${spacing.medium} 0 0;
+  padding: 0 ${spacing.medium} 0 0;
   ${mq.range({ from: breakpoints.tabletWide })} {
     padding-top: 0;
   }
@@ -75,7 +73,7 @@ const SummaryBlock = styled.p`
 const ContentWrapper = styled.div`
   display: flex;
   overflow: hidden;
-  gap: ${spacing.small};
+  justify-content: space-between;
 `;
 
 const BlobWrapper = styled.div`
@@ -84,7 +82,6 @@ const BlobWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  min-width: 286px;
   aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
@@ -101,7 +98,9 @@ const blobStyle = css`
   height: 180px;
   transform: translate(10%, 0);
 `;
-
+const Email = styled.div`
+  min-width: 60px;
+`;
 const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = 'green', blob = 'pointy' }: Props) => {
   const { t } = useTranslation();
   const isGreenBlob = blobColor === 'green';
@@ -128,7 +127,7 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
             <StyledHeader>{name}</StyledHeader>
             <StyledDescriptionInformation>{jobTitle}</StyledDescriptionInformation>
             <StyledDescriptionInformation>
-              {`${t('email')}:`}
+              <Email>{`${t('email')}:`}</Email>
               <EmailLink href={`mailto:${email}?subject=Contact us`}>{email}</EmailLink>
             </StyledDescriptionInformation>
           </div>

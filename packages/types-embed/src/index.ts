@@ -66,7 +66,7 @@ export type EmbedData =
   | OembedEmbedData
   | FileEmbedData
   | BlogPostEmbedData
-  | KeyPerformanceIndicatorEmbedData;
+  | KeyPerformanceIndicatorEmbedData
   | ContactBlockEmbedData;
 
 export type EmbedMetaData =
@@ -84,8 +84,7 @@ export type EmbedMetaData =
   | FootnoteMetaData
   | FileMetaData
   | BlogPostMetaData
-  | KeyPerformanceIndicatorMetaData;
-
+  | KeyPerformanceIndicatorMetaData
   | ContactBlockMetaData;
 export type {
   ConceptMetaData,

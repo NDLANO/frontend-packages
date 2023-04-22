@@ -275,5 +275,9 @@ export { OrderedList, UnOrderedList } from './List';
 export { BlogPostV2 } from './BlogPost';
 export { KeyFigure } from './KeyFigure';
 export { default as ContactBlock } from './ContactBlock';
+<<<<<<< HEAD
 export type { HeartButtonType } from './Embed';
 export { CampaignBlock } from './CampaignBlock';
+=======
+export { Grid } from './Grid';
+>>>>>>> 75876aa27 (Initial work grid-plugin)

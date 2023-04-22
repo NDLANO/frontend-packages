@@ -28,6 +28,7 @@ const TitleWrapper = styled.div`
   font-weight: ${fonts.weight.bold};
   overflow-wrap: break-word;
   ${fonts.sizes('38px', '48px')};
+  text-align: center;
   ${mq.range({ until: breakpoints.tabletWide })} {
     ${fonts.sizes('30px', '36px')};
   }
@@ -36,6 +37,7 @@ const TitleWrapper = styled.div`
 
 const SubTitleWrapper = styled.div`
   overflow-wrap: 'break-word';
+  text-align: center;
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding-top: ${spacing.xxsmall};
     ${fonts.sizes('18px', '29px')};

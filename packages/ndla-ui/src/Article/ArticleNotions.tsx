@@ -179,7 +179,8 @@ export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight
           </NotionsTrigger>
         }
         size="large"
-        backgroundColor="white">
+        backgroundColor="white"
+      >
         {(onClose: () => void) => (
           <div>
             <ModalHeader modifier="notions-modal-header no-padding">

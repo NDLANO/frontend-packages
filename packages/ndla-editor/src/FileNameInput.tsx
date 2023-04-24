@@ -52,7 +52,8 @@ const getButtonComponent = (file: File, isMissing: boolean, messages: FileListMe
           type="button"
           css={css`
             color: red;
-          `}>
+          `}
+        >
           {file.title === '' ? messages.missingTitle : file.title}
           {` `}
           <span>
@@ -66,7 +67,8 @@ const getButtonComponent = (file: File, isMissing: boolean, messages: FileListMe
       <div
         css={css`
           max-width: 100%;
-        `}>
+        `}
+      >
         <Tooltip tooltip={`${file.title} (${file.type.toUpperCase()})`}>
           <LinkButton type="button" onClick={() => window.open(file.url)}>
             {file.title === '' ? messages.missingTitle : file.title}

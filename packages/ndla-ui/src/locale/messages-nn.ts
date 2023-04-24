@@ -963,6 +963,8 @@ const messages = {
   loading: 'Laster',
   title: 'Tittel',
   save: 'Lagre',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bilettekst',
@@ -1100,6 +1102,7 @@ const messages = {
     resources_plural: '{{count}} ressursar',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1122,20 +1125,21 @@ const messages = {
         header: {
           private: 'Vil du dele denne mappa?',
           shared: 'Denne mappa er delt',
-          unShare: 'Vil du slutte å dele denne mappa?',
+          unShare: 'Vil du avslutte deling av denne mappa?',
         },
         description: {
           copy: 'Kopier og del denne lenka:',
           private:
             'Når du deler ei mappe, lagar du ei lenke som er open for alle som har lenka. Du kan endre innhaldet eller avslutte delinga når du ønsker det.',
+          private2: 'Når du deler ei mappe deler du alt innhaldet i mappa, inkludert undermapper og ressursar',
           shared:
             'No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.',
           unShare:
-            'Når du avsluttar deling, vil lenka til den delte mappa slutte å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa.',
+            'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
           share: 'Del mappa',
-          preview: 'Førehandsvis delt mappe',
+          preview: 'Førehandsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
@@ -1163,11 +1167,25 @@ const messages = {
     examLockInfo: 'Redigering av innhald på Min NDLA er deaktivert for elevar i eksamensperioden.',
     help: 'Hjelp',
     more: 'Fleire val',
+    selectView: 'Velg visning',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
     sharedFolder: {
-      info: 'Denne mappa inneheld fagstoff og innhald frå NDLA, samla av ein lærar. ',
+      info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
+      firstShared: 'Mappa vart delt første gong {{date}}',
+      drawerButton: 'Vis mapper og ressursar',
+      drawerTitle: 'Mapper og ressursar',
+      learningpathUnsupported:
+        'Læringsstiar kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+      description: {
+        info1:
+          'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
+        info2: 'Du kan bla i artiklane ved å bruke menyen.',
+        info3:
+          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+      },
+      willOpenInNewTab: 'Opnast i ny fane.',
     },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
@@ -1204,6 +1222,14 @@ const messages = {
       storageInfo: {
         title: 'Slik lagrar du favorittressursane dine frå NDLA',
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',
+      },
+      sharing: {
+        title: 'No kan lærarar dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for få ei lenke som du kan dele med andre.',
+      },
+      favoriteSubjects: {
+        title: 'Slik lagrar du favorittfaga dine frå NDLA',
+        text: 'Klikk på hjarteknappen for å lagre eit fag. Du vil då få høve til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
@@ -1242,6 +1268,14 @@ const messages = {
         audio: 'Lyd',
         concept: 'Forklaring',
       },
+    },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
     },
   },
   snackbar: {

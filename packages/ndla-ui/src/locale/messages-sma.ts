@@ -967,6 +967,8 @@ const messages = {
   title: 'Tihtele',
   cancel: 'Orrejh',
   save: 'Vöörhkh',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bildetekst',
@@ -1104,6 +1106,7 @@ const messages = {
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1132,14 +1135,15 @@ const messages = {
           copy: 'Kopier og del denne lenken:',
           private:
             'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
+          private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
           shared:
             'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
           unShare:
-            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+            'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
           share: 'Del mappen',
-          preview: 'Forhåndsvis delt mappe',
+          preview: 'Forhåndsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
@@ -1168,11 +1172,25 @@ const messages = {
     examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     help: 'Hjelp',
     more: 'Flere valg',
+    selectView: 'Velg visning',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
     sharedFolder: {
-      info: 'Denne mappen inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
+      info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
+      firstShared: 'Mappa vart delt første gong {{date}}',
+      drawerButton: 'Vis mapper og ressursar',
+      drawerTitle: 'Mapper og ressursar',
+      learningpathUnsupported:
+        'Læringsstiar kan ikke visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+      description: {
+        info1:
+          'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
+        info2: 'Du kan bla i artiklane ved å bruke menyen.',
+        info3:
+          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+      },
+      willOpenInNewTab: 'Åpnes i ny fane.',
     },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
@@ -1209,6 +1227,14 @@ const messages = {
       storageInfo: {
         title: 'Slik lagrer du favorittressursene dine fra NDLA',
         text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',
+      },
+      favoriteSubjects: {
+        title: 'Slik lagrar du favorittfaga dine frå NDLA',
+        text: 'Klikk på hjarteknappen for å lagre et fag. Du vil då få muligheit til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
+      },
+      sharing: {
+        title: 'No kan lærarar dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
@@ -1247,6 +1273,14 @@ const messages = {
         audio: 'Lyd',
         concept: 'Forklaring',
       },
+    },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
     },
   },
   snackbar: {

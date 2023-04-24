@@ -6,7 +6,7 @@
  *
  */
 
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
 import React from 'react';
 import { defaultParameters } from '../../../../stories/defaults';
@@ -15,6 +15,7 @@ import Tooltip from './Tooltip';
 export default {
   title: 'Enkle komponenter/Tooltip',
   component: Tooltip,
+  tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
@@ -29,9 +30,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;
 
-export const TooltipStory: ComponentStory<typeof Tooltip> = ({ children, ...args }) => {
+export const TooltipStory: StoryFn<typeof Tooltip> = ({ children, ...args }) => {
   return (
     <Tooltip {...args}>
       <ButtonV2>{children}</ButtonV2>

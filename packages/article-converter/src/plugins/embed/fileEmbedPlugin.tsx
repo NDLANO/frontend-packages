@@ -14,8 +14,8 @@ import { PluginType } from '../types';
 export const fileEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as FileMetaData;
-  const { type, title, url } = data.embedData;
-  if (type === 'pdf') {
+  const { type, title, url, display } = data.embedData;
+  if (type === 'pdf' && display === 'block') {
     return <PdfFile title={title} url={url} />;
   } else {
     return (

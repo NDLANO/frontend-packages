@@ -145,7 +145,8 @@ export const Input = ({
       white={white}
       warningText={warningText}
       customCss={customCss}
-      label={label}>
+      label={label}
+    >
       <input ref={ref} value={value} {...rest} />
     </BaseInput>
   );
@@ -186,7 +187,8 @@ export const TextArea = ({
       white={white}
       warningText={warningText}
       customCss={customCss}
-      label={label}>
+      label={label}
+    >
       <textarea
         ref={inputRef}
         onChange={(e) => {

@@ -83,7 +83,8 @@ const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalsLoadin
         colorTheme="light"
         shape="pill"
         onClick={openDialog}
-        disabled={competenceGoalsLoading}>
+        disabled={competenceGoalsLoading}
+      >
         <FooterHeaderIcon />
         <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
       </ButtonV2>

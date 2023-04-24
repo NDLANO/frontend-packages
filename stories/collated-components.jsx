@@ -552,16 +552,6 @@ storiesOf('Sammensatte moduler', module)
     </div>
   ))
 
-  .add('Paginering', () => (
-    <Center>
-      <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
-      <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
-    </Center>
-  ))
-
   .add('Radiobuttons', () => (
     <div>
       <StoryIntro title="Filter">
@@ -603,7 +593,8 @@ storiesOf('Sammensatte moduler', module)
                 'Lager unike id på input og label. Sørger for at ikke htmlFor og input name/id ikke krasjer med andre komponenter på siden',
             },
           ]}
-          status={2}>
+          status={2}
+        >
           <h2 className="u-heading">Radiobuttons (group) uten label</h2>
           <div className="c-filter u-margin-top">
             <RadioButtonGroup
@@ -670,8 +661,9 @@ storiesOf('Sammensatte moduler', module)
       <Center>
         <Footer
           links={mockFooterLinks}
-          languageSelector={<LanguageSelector locales={['nb', 'nn']} onSelect={() => {}} />}
-          privacyLinks={privacyLinks}>
+          languageSelector={<LanguageSelector inverted locales={['nb', 'nn']} onSelect={() => {}} />}
+          privacyLinks={privacyLinks}
+        >
           <FooterText>
             <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
           </FooterText>

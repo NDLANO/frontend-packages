@@ -84,7 +84,8 @@ const BaseControl = <T extends boolean>({
     disabled={rest.isDisabled}
     ref={innerRef}
     {...innerProps}
-    {...rest}>
+    {...rest}
+  >
     {children}
   </StyledBaseControl>
 );

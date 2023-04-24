@@ -39,7 +39,8 @@ const DemoExample = () => (
           distanceBetweenItems: 0,
           margin: 92,
         },
-      ]}>
+      ]}
+    >
       {(autoSizedProps) => (
         <Carousel
           {...autoSizedProps}
@@ -53,7 +54,8 @@ const DemoExample = () => (
                 height: `${autoSizedProps.columnWidth}px`,
               }}
               key={cardKey}
-              css={cardCSS}>
+              css={cardCSS}
+            >
               <div>{index}</div>
             </div>
           ))}
@@ -175,7 +177,8 @@ const CarouselExample = () => (
         description: 'Disables scroll',
       },
     ]}
-    status={2}>
+    status={2}
+  >
     <p>
       Carousel med (valgfritt) tilhørende hjelpe komponent for utregning av størrelser. Har swipe funksjonalitet
       innebygget.

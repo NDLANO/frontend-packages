@@ -158,7 +158,8 @@ const SearchNotionItem = ({
           animation="subtle"
           animationDuration={50}
           backgroundColor="white"
-          size="medium">
+          size="medium"
+        >
           {(onClose: () => void) => (
             <>
               <ModalHeader>

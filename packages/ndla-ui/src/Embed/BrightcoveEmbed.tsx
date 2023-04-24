@@ -145,7 +145,8 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
             variant="outline"
             shape="pill"
             size="small"
-            onClick={() => setShowOriginalVideo((p) => !p)}>
+            onClick={() => setShowOriginalVideo((p) => !p)}
+          >
             {t(`figure.button.${showOriginalVideo ? 'original' : 'alternative'}`)}
           </LinkedVideoButton>
         }
@@ -161,7 +162,8 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
             locale={i18n.language}
             license={license}
             authors={contributors}
-            type="video">
+            type="video"
+          >
             <VideoLicenseButtons
               download={download}
               licenseCode={data.copyright?.license.license}
@@ -198,7 +200,8 @@ const VideoLicenseButtons = ({ download, src, width, height, name, licenseCode }
       <CopyButton
         variant="outline"
         copyNode={t('license.hasCopiedTitle')}
-        onClick={() => navigator.clipboard.writeText(makeIframeString(src, width, height, name))}>
+        onClick={() => navigator.clipboard.writeText(makeIframeString(src, width, height, name))}
+      >
         {t('license.embed')}
       </CopyButton>
     </>

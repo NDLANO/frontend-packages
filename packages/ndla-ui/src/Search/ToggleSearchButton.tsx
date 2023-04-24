@@ -64,7 +64,8 @@ const ToggleSearchButton = ({ children, ndlaFilm, hideOnNarrowScreen, hideOnWide
     hideOnNarrowScreen={hideOnNarrowScreen}
     hideOnWideScreen={hideOnWideScreen}
     type="button"
-    {...rest}>
+    {...rest}
+  >
     <StyledSpan>{children}</StyledSpan>
     <Search />
   </StyledButton>

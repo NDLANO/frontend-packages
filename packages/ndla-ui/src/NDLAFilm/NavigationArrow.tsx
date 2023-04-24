@@ -98,7 +98,8 @@ const NavigationArrow = ({ slideIndexTarget, gotoSlide, rightArrow }: Props) => 
         tabIndex={-1}
         onClick={() => {
           gotoSlide(slideIndexTarget, true);
-        }}>
+        }}
+      >
         <Chevron css={chevronCss} />
       </NavigationArrowButton>
     </StyledNavigationArrow>

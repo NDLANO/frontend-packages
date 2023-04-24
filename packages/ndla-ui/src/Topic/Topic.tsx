@@ -279,7 +279,8 @@ const Topic = ({
                 activateButton={
                   <VisualElementButton
                     variant="stripped"
-                    title={topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')}>
+                    title={topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')}
+                  >
                     <ShowVisualElementWrapper>
                       <TopicHeaderImage
                         src={`${topic.image.url}?${makeSrcQueryString(800, topic.image.crop, topic.image.focalPoint)}`}
@@ -292,7 +293,8 @@ const Topic = ({
                 }
                 animation="subtle"
                 animationDuration={50}
-                size="large">
+                size="large"
+              >
                 {(onClose: () => void) => (
                   <>
                     <ModalHeader>
@@ -319,7 +321,8 @@ const Topic = ({
               aria-expanded={!!showContent}
               aria-controls={contentId}
               variant="link"
-              onClick={() => onToggleShowContent()}>
+              onClick={() => onToggleShowContent()}
+            >
               {showContent ? (
                 <>
                   {t('navigation.showShorterDescription')} <ChevronUp />

@@ -46,7 +46,8 @@ const FooterLinkButton = ({ children, bold, ...rest }: Props) => {
         ${bold ? boldLink : linkStyle}
       `}
       variant="stripped"
-      {...rest}>
+      {...rest}
+    >
       {children}
     </ButtonV2>
   );

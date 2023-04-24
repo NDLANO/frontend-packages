@@ -5,8 +5,8 @@ export const themes: Record<ButtonColor, ButtonTheme> = {
   primary: {
     foreground: colors.white,
     background: colors.brand.primary,
-    hoverForeground: colors.white,
-    hoverBackground: colors.brand.dark,
+    hoverForeground: colors.brand.primary,
+    hoverBackground: colors.brand.light,
   },
   light: {
     foreground: colors.brand.primary,

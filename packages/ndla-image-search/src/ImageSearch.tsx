@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
-import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from '@ndla/types-image-api';
+import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from '@ndla/types-backend/image-api';
 import { Input } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import ImageSearchResult from './ImageSearchResult';
@@ -385,7 +385,8 @@ class ImageSearch extends Component<Props, State> {
               type="button"
               onClick={() => {
                 this.searchImages({ query: queryString, page: 1 });
-              }}>
+              }}
+            >
               <SearchIcon />
             </button>
           }

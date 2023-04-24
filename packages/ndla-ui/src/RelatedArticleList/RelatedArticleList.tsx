@@ -83,7 +83,8 @@ const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetIn
           data-type="related-article-button"
           data-showmore={messages.showMore}
           data-showless={messages.showLess}
-          variant="outline">
+          variant="outline"
+        >
           {messages.showMore}
         </ButtonV2>
       )}

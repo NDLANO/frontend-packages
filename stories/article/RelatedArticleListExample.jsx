@@ -140,7 +140,8 @@ class ExpandExample extends Component {
           title: t('related.title'),
           showMore: t('related.showMore'),
           showLess: t('related.showLess'),
-        }}>
+        }}
+      >
         {articles}
       </RelatedArticleList>
     );

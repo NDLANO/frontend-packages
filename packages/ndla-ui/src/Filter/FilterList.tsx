@@ -69,7 +69,8 @@ const FilterList = ({
         {...classes('item-wrapper', {
           'aligned-grouping': !!alignedGroup,
           'collapse-mobile': !!collapseMobile,
-        })}>
+        })}
+      >
         {options.map((option, index) => {
           const itemModifiers = [];
 
@@ -116,7 +117,8 @@ const FilterList = ({
           type="button"
           onClick={() => {
             setVisibleCount((prev) => (prev === defaultVisibleCount ? options.length : defaultVisibleCount));
-          }}>
+          }}
+        >
           {visibleCount === defaultVisibleCount ? (
             <>
               <span>{showLabel}</span> <ChevronDown />

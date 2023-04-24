@@ -154,7 +154,8 @@ const ImageEmbed = ({ embed, articlePath, previewAlt, heartButton: HeartButton }
     <Figure
       id={figureId}
       type={imageSizes ? undefined : figureType}
-      className={imageSizes ? 'c-figure--right expanded' : ''}>
+      className={imageSizes ? 'c-figure--right expanded' : ''}
+    >
       {HeartButton && <HeartButton embed={embed} />}
       <ImageWrapper src={data.imageUrl} crop={crop} size={embedData.size}>
         <Image
@@ -189,7 +190,8 @@ const ImageEmbed = ({ embed, articlePath, previewAlt, heartButton: HeartButton }
         }
         licenseRights={license.rights}
         authors={captionAuthors}
-        locale={i18n.language}>
+        locale={i18n.language}
+      >
         <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)} labelledBy="license-dialog-rules-heading">
           {(close) => (
             <FigureLicenseDialogContent
@@ -199,7 +201,8 @@ const ImageEmbed = ({ embed, articlePath, previewAlt, heartButton: HeartButton }
               authors={contributors}
               origin={data.copyright.origin}
               locale={i18n.language}
-              type="image">
+              type="image"
+            >
               <ImageLicenseButtons
                 articlePath={articlePath}
                 title={data.title.title}
@@ -258,7 +261,8 @@ export const ImageLicenseButtons = ({ imageUrl, title, articlePath, copyright }:
         variant="outline"
         onClick={() => navigator.clipboard.writeText(copyString)}
         copyNode={t('license.hasCopiedTitle')}
-        aria-live="assertive">
+        aria-live="assertive"
+      >
         {t('license.copyTitle')}
       </CopyButton>
       <SafeLinkButton to={`${imageUrl}?download=true`} download variant="outline">
@@ -297,7 +301,8 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
         type="button"
         className="c-figure__fullscreen-btn"
         aria-label={t(`license.images.itemImage.zoom${expanded ? 'Out' : ''}ImageButtonLabel`)}
-        onClick={onExpand}>
+        onClick={onExpand}
+      >
         {expanded ? <ArrowCollapse /> : <ExpandTwoArrows />}
       </button>
     );
@@ -307,7 +312,8 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
         type="button"
         className="c-figure__show-byline-btn"
         aria-label={t(`license.images.itemImage.${bylineHidden ? 'expandByline' : 'minimizeByline'}`)}
-        onClick={onHideByline}>
+        onClick={onHideByline}
+      >
         {bylineHidden ? <ChevronDown /> : <ChevronUp />}
       </button>
     );

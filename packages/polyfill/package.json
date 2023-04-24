@@ -1,15 +1,15 @@
 {
   "name": "@ndla/polyfill",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "NDLA polyfills for various browser",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "yarn build:types",
+    "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build:types"
   },
   "repository": {
     "type": "git",
@@ -26,8 +26,7 @@
   ],
   "dependencies": {
     "core-js": "^3.10.2",
-    "details-polyfill": "^1.1.0",
-    "react-app-polyfill": "^0.2.1"
+    "details-polyfill": "^1.1.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

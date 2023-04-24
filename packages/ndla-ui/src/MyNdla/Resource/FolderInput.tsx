@@ -91,7 +91,8 @@ const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClo
                   aria-label={t('save')}
                   title={t('save')}
                   size="small"
-                  onClick={onSave}>
+                  onClick={onSave}
+                >
                   <Done />
                 </IconButtonV2>
               )}

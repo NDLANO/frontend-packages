@@ -24,7 +24,8 @@ import Accordion, { AccordionWrapper, AccordionPanel, AccordionBar } from '@ndla
             panelId={`panel-${index}`}
             ariaTitle={`Panel ${index + 1}`}
             onClick={() => handleItemClick(index)}
-            isOpen={openIndexes.includes(index)}>
+            isOpen={openIndexes.includes(index)}
+          >
             Panel {index + 1}
           </AccordionBar>
           <AccordionPanel id={`panel-${index}`} isOpen={openIndexes.includes(index)}>

@@ -124,7 +124,8 @@ const LearningPathMenu = ({
             <div
               css={css`
                 padding-left: ${spacing.small};
-              `}>
+              `}
+            >
               <Tooltip tooltip={t('learningPath.openMenuTooltip')}>
                 <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
                   {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}

@@ -16,6 +16,7 @@ import {
   H5pPreviewResponse,
   H5pOembedData,
   H5pLicenseInformation,
+  H5pInfo,
 } from './h5pTypes';
 import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
 import { CodeEmbedData, CodeMetaData } from './codeTypes';
@@ -41,6 +42,13 @@ import {
   ConceptVisualElementMeta,
 } from './conceptTypes';
 import { FileEmbedData, FileMetaData } from './fileTypes';
+import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
+import {
+  KeyPerformanceIndicatorEmbedData,
+  KeyPerformanceIndicatorMeta,
+  KeyPerformanceIndicatorMetaData,
+} from './KeyPerformanceIndicatorTypes';
+import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -56,7 +64,10 @@ export type EmbedData =
   | FootnoteEmbedData
   | ConceptListEmbedData
   | OembedEmbedData
-  | FileEmbedData;
+  | FileEmbedData
+  | BlogPostEmbedData
+  | KeyPerformanceIndicatorEmbedData
+  | ContactBlockEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -71,7 +82,10 @@ export type EmbedMetaData =
   | OembedMetaData
   | CodeMetaData
   | FootnoteMetaData
-  | FileMetaData;
+  | FileMetaData
+  | BlogPostMetaData
+  | KeyPerformanceIndicatorMetaData
+  | ContactBlockMetaData;
 export type {
   ConceptMetaData,
   ImageMetaData,
@@ -85,6 +99,9 @@ export type {
   FootnoteMetaData,
   ConceptListMetaData,
   FileMetaData,
+  BlogPostMetaData,
+  KeyPerformanceIndicatorMetaData,
+  ContactBlockMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -99,7 +116,13 @@ export type {
   FootnoteEmbedData,
   ConceptListEmbedData,
   FileEmbedData,
+  BlogPostEmbedData,
+  KeyPerformanceIndicatorEmbedData,
+  ContactBlockEmbedData,
 };
+
+export type { BlogPostMeta };
+export type { KeyPerformanceIndicatorMeta };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };
@@ -108,7 +131,7 @@ export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, Brightco
 export type { RelatedContentData, NodeType };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
 
-export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation };
+export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 
 interface MetaDataFailure<T extends EmbedData> {
   resource: T['resource'];

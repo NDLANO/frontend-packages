@@ -59,7 +59,8 @@ export const FigureCaption = ({
                     variant="outline"
                     size="small"
                     data-dialog-trigger-id={id}
-                    data-dialog-source-id={figureId}>
+                    data-dialog-source-id={figureId}
+                  >
                     {reuseLabel}
                   </ButtonV2>
                 )}
@@ -83,7 +84,8 @@ export const FigureCaption = ({
                 to={link.url}
                 {...classes('link')}
                 target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}>
+                rel={link.external ? 'noopener noreferrer' : undefined}
+              >
                 <span {...classes('link-text')}>{link.text}</span>
                 <LinkIcon />
               </SafeLink>
@@ -140,7 +142,8 @@ const Figure = ({ children, type = 'full', resizeIframe, className, ...rest }: P
     <figure
       data-sizetype={type}
       {...classes('', { resize: !!resizeIframe, right }, `${typeClass} ${className ?? ''}`)}
-      {...rest}>
+      {...rest}
+    >
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );

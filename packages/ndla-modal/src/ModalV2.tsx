@@ -189,7 +189,8 @@ const ModalV2 = ({
         isOpen={!!isOpen}
         onDismiss={closeModal}
         animateIn={animateIn}
-        animationDuration={animationDuration}>
+        animationDuration={animationDuration}
+      >
         <StyledDialogContent
           aria-label={label}
           aria-labelledby={labelledBy}
@@ -202,7 +203,8 @@ const ModalV2 = ({
           expands={expands}
           dialogSize={dialogSize}
           size={size}
-          {...rest}>
+          {...rest}
+        >
           {children(closeModal)}
         </StyledDialogContent>
       </StyledDialogOverlay>

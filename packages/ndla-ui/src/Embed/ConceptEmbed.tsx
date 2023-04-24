@@ -336,7 +336,8 @@ export const BlockConcept = ({
                     typeof document !== 'undefined'
                       ? (document.querySelector('.c-article') as HTMLElement | null) || undefined
                       : undefined
-                  }>
+                  }
+                >
                   <PopoverWrapper top={modalPos}>
                     <Content avoidCollisions={false} asChild side="bottom">
                       <ConceptNotionV2
@@ -373,12 +374,14 @@ export const BlockConcept = ({
               <ButtonV2 variant="outline" size="small" shape="pill" onClick={() => setIsOpen(true)}>
                 {t('concept.reuse')}
               </ButtonV2>
-            }>
+            }
+          >
             <ModalV2
               controlled
               isOpen={isOpen}
               onClose={() => setIsOpen(false)}
-              labelledBy="license-dialog-rules-heading">
+              labelledBy="license-dialog-rules-heading"
+            >
               {(close) => (
                 <FigureLicenseDialogContent
                   authors={groupedAuthors}

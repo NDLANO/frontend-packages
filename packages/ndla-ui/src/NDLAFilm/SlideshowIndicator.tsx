@@ -71,7 +71,8 @@ const SlideshowIndicator = ({ slideshow, activeSlide, gotoSlide }: Props) => {
           active={index === activeSlide}
           key={`indicator_${index}`}
           type="button"
-          onClick={() => gotoSlide(index, true)}>
+          onClick={() => gotoSlide(index, true)}
+        >
           <span />
         </SlideshowIndicatorDot>
       ))}

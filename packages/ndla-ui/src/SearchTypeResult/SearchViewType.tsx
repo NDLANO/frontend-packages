@@ -86,7 +86,8 @@ const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => 
           type="button"
           size="normal"
           title={t('searchPage.resultType.gridView')}
-          onClick={() => onClickHandler('grid')}>
+          onClick={() => onClickHandler('grid')}
+        >
           <ButtonContent selected={viewType === 'grid'}>
             <Grid aria-hidden title="" />
           </ButtonContent>
@@ -97,7 +98,8 @@ const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => 
           variant="stripped"
           size="normal"
           title={t('searchPage.resultType.listView')}
-          onClick={() => onClickHandler('list')}>
+          onClick={() => onClickHandler('list')}
+        >
           <ButtonContent selected={viewType === 'list'}>
             <ListCircle aria-hidden title="" />
           </ButtonContent>

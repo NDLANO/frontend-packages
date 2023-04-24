@@ -43,13 +43,15 @@ const FilmContentCard = ({
       to={path}
       aria-describedby={contentTypeId}
       columnWidth={columnWidth}
-      style={{ marginRight: `${distanceBetweenItems}px` }}>
+      style={{ marginRight: `${distanceBetweenItems}px` }}
+    >
       <StyledImage
         role="img"
         columnWidth={columnWidth}
         style={{
           backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(600)})`,
-        }}>
+        }}
+      >
         {movieResourceTypes && !hideTags && (
           <FilmContentCardTags
             id={contentTypeId}

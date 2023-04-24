@@ -1,6 +1,6 @@
 # NDLA embed types
 
-TypeScript definitions for the different embed types supported in NDLA articles.
+TypeScript definitions for the different embed types supported in NDLA articles
 
 ## Installation
 

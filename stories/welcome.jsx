@@ -14,7 +14,8 @@ const Welcome = () => (
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-          }}>
+          }}
+        >
           <Logo label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
         </Center>
@@ -32,7 +33,8 @@ const Welcome = () => (
           <a
             href="https://ndla.zendesk.com/hc/no/categories/4405379912082-Plattform-for-brukskvalitet"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             brukskvalitetsplattformen.
           </a>
         </p>
@@ -53,8 +55,6 @@ const Welcome = () => (
           fontene du trenger, og importer deretter fontene du trenger i inngangspunktet til appen.{' '}
         </p>
         <p>Følgende fonter tas i bruk: </p>
-        <code>import '@fontsource/shadows-into-light-two/index.css';</code>
-        <br />
         <code>import '@fontsource/source-sans-pro/index.css';</code>
         <br />
         <code>import '@fontsource/source-sans-pro/400-italic.css';</code>

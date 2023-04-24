@@ -169,7 +169,8 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 colorTheme="light"
                 onClick={() => setLayout('list')}
                 size="small"
-                aria-label={t('myNdla.listView')}>
+                aria-label={t('myNdla.listView')}
+              >
                 <FourlineHamburger />
               </StyledIconButton>
             </Tooltip>
@@ -179,7 +180,8 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 colorTheme="light"
                 onClick={() => setLayout('listLarger')}
                 size="small"
-                aria-label={t('myNdla.detailView')}>
+                aria-label={t('myNdla.detailView')}
+              >
                 <List />
               </StyledIconButton>
             </Tooltip>
@@ -189,7 +191,8 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 colorTheme="light"
                 onClick={() => setLayout('block')}
                 size="small"
-                aria-label={t('myNdla.shortView')}>
+                aria-label={t('myNdla.shortView')}
+              >
                 <GridListView />
               </StyledIconButton>
             </Tooltip>

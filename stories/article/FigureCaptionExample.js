@@ -45,7 +45,8 @@ function FigureCaptionExample({
       reuseLabel={messages.reuse}
       licenseRights={license.rights}
       authors={authors}
-      link={link}>
+      link={link}
+    >
       <FigureLicenseDialog
         id={id}
         authors={authors}
@@ -53,7 +54,8 @@ function FigureCaptionExample({
         origin="https://www.wikimedia.com"
         title="Mann med lupe"
         locale="nb"
-        messages={messages}>
+        messages={messages}
+      >
         <ButtonV2 variant="outline">{t('license.copyTitle')}</ButtonV2>
         {messages.download && <ButtonV2 variant="outline">{messages.download}</ButtonV2>}
       </FigureLicenseDialog>

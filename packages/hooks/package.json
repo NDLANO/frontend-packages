@@ -1,15 +1,15 @@
 {
   "name": "@ndla/hooks",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Collection of React hooks used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "yarn build:types",
+    "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build:types"
   },
   "sideEffects": false,
   "repository": {
@@ -32,7 +32,7 @@
     "react": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {
-    "@ndla/util": "^3.1.10",
+    "@ndla/util": "^3.1.12",
     "react-device-detect": "^2.2.3"
   },
   "publishConfig": {

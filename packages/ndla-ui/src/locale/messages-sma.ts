@@ -1111,6 +1111,7 @@ const messages = {
       folder: 'Mappe',
       delete: 'Slett mappe',
       edit: 'Rediger mappe',
+      updated: 'Mappa har blitt oppdatert',
       missingName: 'Skriv navn på mappe',
       folderDeleted: '"{{folderName}}" er slettet',
       folderCreated: '"{{folderName}}" er oppretta',
@@ -1121,6 +1122,7 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sloppe',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sloppe',
       dragHandle: 'Sorter mappen {{name}}',
+      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',

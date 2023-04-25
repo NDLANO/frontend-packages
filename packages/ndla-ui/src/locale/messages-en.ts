@@ -1108,6 +1108,7 @@ const messages = {
       folder: 'Folder',
       delete: 'Delete folder',
       edit: 'Edit folder',
+      updated: 'Folder updated',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
       folderCreated: '"{{folderName}} created',
@@ -1118,6 +1119,7 @@ const messages = {
       onDragEndMissingOver: 'The folder {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
       dragHandle: 'Drag the folder {{name}}',
+      sharedWarning: 'Name and description will be visible for everyone you share the folder with',
       sharing: {
         share: 'Share folder',
         shared: 'Shared',

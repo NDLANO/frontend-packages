@@ -1109,6 +1109,7 @@ const messages = {
       delete: 'Delete folder',
       edit: 'Edit folder',
       updated: 'Folder updated',
+      defaultPageDescription: 'Add a description by editing the folder',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
       folderCreated: '"{{folderName}} created',

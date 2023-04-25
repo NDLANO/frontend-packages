@@ -1109,6 +1109,7 @@ const messages = {
       delete: 'Sihko máhpa',
       edit: 'Rievdat máhpa',
       updated: 'Mappa har blitt oppdatert',
+      defaultPageDescription: 'Legg til beskrivelse ved å redigere mappa',
       missingName: 'Čále nama máhppii',
       folderDeleted: '"{{folderName}}" lea sihkkojuvvon',
       folderCreated: '"{{folderName}}" lea ráhkaduvvon',

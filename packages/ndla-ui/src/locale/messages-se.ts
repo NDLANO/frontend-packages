@@ -1108,6 +1108,8 @@ const messages = {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
       edit: 'Rievdat máhpa',
+      updated: 'Mappa har blitt oppdatert',
+      defaultPageDescription: 'Legg til beskrivelse ved å redigere mappa',
       missingName: 'Čále nama máhppii',
       folderDeleted: '"{{folderName}}" lea sihkkojuvvon',
       folderCreated: '"{{folderName}}" lea ráhkaduvvon',
@@ -1118,6 +1120,7 @@ const messages = {
       onDragEndMissingOver: 'Máhppa {{name}} lea luitojuvvon',
       onDragCancel: 'Sirdin botkejuvvui. Máhppa {{name}} lea luitojuvvon.',
       dragHandle: 'Ordne máhpa {{name}}',
+      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med',
       sharing: {
         share: 'Juoge máhpa',
         shared: 'Juogaduvvon',

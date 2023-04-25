@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
 import { attributesToProps } from 'html-react-parser';
 import { BlogPostMetaData } from '@ndla/types-embed';
 import { BlogPostV2 } from '@ndla/ui';

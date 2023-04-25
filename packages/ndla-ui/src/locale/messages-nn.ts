@@ -1108,7 +1108,7 @@ const messages = {
       delete: 'Slett mappe',
       edit: 'Rediger mappe',
       updated: 'Mappa har blitt oppdatert',
-      defaultPageDescription: 'Legg til beskrivelse ved å redigere mappa',
+      defaultPageDescription: 'Legg til skildring ved å redigere mappa',
       missingName: 'Skriv namn på mappe',
       folderDeleted: '"{{folderName}}" er sletta',
       folderCreated: '"{{folderName}}" er oppretta',
@@ -1119,7 +1119,7 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sleppt',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sleppt',
       dragHandle: 'Sorter mappa {{name}}',
-      sharedWarning: 'Namn og beskrivelse blir synleg for alle du deler mappa med',
+      sharedWarning: 'Namn og skildring blir synleg for alle du deler mappa med',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',

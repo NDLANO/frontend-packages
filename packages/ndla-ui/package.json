@@ -74,7 +74,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
-    "@ndla/types-backend": "0.2.1",
+    "@ndla/types-backend": "^0.2.5",
     "@ndla/types-embed": "^1.1.0",
     "@types/reach__dialog": "^0.1.0",
     "css-loader": "^6.7.3",

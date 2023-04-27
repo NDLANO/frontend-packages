@@ -1141,7 +1141,7 @@ const messages = {
             'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
-          share: 'Del mappa',
+          share: 'Del mappe',
           preview: 'Førehandsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',

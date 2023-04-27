@@ -9,9 +9,8 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
-import { breakpoints, colors, fonts, spacing, spacingUnit, mq } from '@ndla/core';
-import { HeadingLevel } from '../types';
 import { Forward } from '@ndla/icons/common';
+import { breakpoints, colors, fonts, spacing, mq } from '@ndla/core';
 
 interface Props {
   title: {

@@ -7,7 +7,7 @@
  */
 
 import { ImageEmbedData, ImageMetaData } from './imageTypes';
-import { AudioMetaData, AudioEmbedData } from './audioTypes';
+import { AudioMetaData, AudioEmbedData, AudioMeta } from './audioTypes';
 import { IframeMetaData, IframeEmbedData, IframeData } from './iframeTypes';
 import {
   H5pMetaData,
@@ -130,6 +130,7 @@ export type { FootnoteData };
 export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, BrightcoveCopyright };
 export type { RelatedContentData, NodeType };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
+export type { AudioMeta };
 
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 

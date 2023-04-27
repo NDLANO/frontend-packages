@@ -1300,6 +1300,13 @@ const messages = {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',
     linkError: 'Klarte ikkje å vise lenke.',
     unsupported: `Embed {{type}} er ikkje støtta.`,
+    type: {
+      image: 'Bilde',
+      video: 'Video',
+      audio: 'Lyd',
+      podcast: 'Podkast',
+      concept: 'Forklaring',
+    },
   },
 };
 

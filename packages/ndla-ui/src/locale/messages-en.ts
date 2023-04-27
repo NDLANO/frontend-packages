@@ -1304,6 +1304,13 @@ const messages = {
     conceptListError: 'Failed to show concept list',
     linkError: 'Failed to show link.',
     unsupported: `Embed {{type}} not supported.`,
+    type: {
+      image: 'Image',
+      video: 'Video',
+      audio: 'Audio',
+      podcast: 'Podcast',
+      concept: 'Concept',
+    },
   },
 };
 

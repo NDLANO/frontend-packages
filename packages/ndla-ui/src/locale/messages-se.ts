@@ -1301,6 +1301,13 @@ const messages = {
     conceptListError: 'Ii sáhttán čájehit čilgehuslisttu',
     linkError: 'Ii sáhttán čájehit liŋkka.',
     unsupported: `Embed {{type}} ii dorjojuvvo.`,
+    type: {
+      image: 'Bilde',
+      video: 'Video',
+      audio: 'Lyd',
+      podcast: 'Podkast',
+      concept: 'Forklaring',
+    },
   },
 };
 

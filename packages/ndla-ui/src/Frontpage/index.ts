@@ -1,6 +1,6 @@
 export { default as FrontpageHeader } from './FrontpageHeader';
 export { default as FrontpageInfo } from './FrontpageInfo';
-export { default as FrontpageKampanjeblokk } from './FrontpageKampanjeblokk';
+export { default as FrontpageFilm } from './FrontpageFilm';
 export { default as FrontpageToolbox } from './FrontpageToolbox';
 export { default as FrontpageMultidisciplinarySubject } from './FrontpageMultidisciplinarySubject';
 export { default as FrontpageSearch } from './FrontpageSearch';

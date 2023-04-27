@@ -6,7 +6,7 @@ import {
   FrontpageSearch,
   OneColumn,
   FrontpageInfo,
-  FrontpageKampanjeblokk,
+  FrontpageFilm,
   FrontpageToolbox,
   FrontpageMultidisciplinarySubject,
   InfoWidget,
@@ -98,58 +98,6 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
       size: 404340,
       contentType: 'image/jpeg',
       imageUrl: 'https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg',
-      dimensions: {
-        width: 1600,
-        height: 2000,
-      },
-      language: 'nb',
-    },
-  };
-
-  const image2 = {
-    id: '65859',
-    metaUrl: '',
-    title: {
-      title: 'Illustrasjonsbilde Kampanjeblokk',
-      language: 'nb',
-    },
-    alttext: {
-      alttext: 'illlustrasjonsbildet',
-      language: 'nb',
-    },
-    copyright: {
-      license: {
-        license: '',
-        description: '',
-        url: 'https://creativecommons.org/licenses/by-sa/4.0/',
-      },
-      origin: '',
-      creators: [
-        {
-          type: 'Designer',
-          name: 'Hedvig Myklebust',
-        },
-      ],
-      processors: [],
-      rightsholders: [],
-    },
-    tags: {
-      tags: ['Illustrasjon', 'FN', 'Flagg'],
-      language: 'nb',
-    },
-    caption: {
-      caption: 'Illustrasjonsbilde Kampanjeblokk',
-      language: 'nb',
-    },
-    supportedLanguages: ['nb', 'nn'],
-    created: '2023-03-29T07:15:50Z',
-    createdBy: '',
-    modelRelease: 'not-set',
-    image: {
-      fileName: 'RVrVQIKh.jpg',
-      size: 404340,
-      contentType: 'image/svg',
-      imageUrl: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png?width=600&ts=1681988188301',
       dimensions: {
         width: 1600,
         height: 2000,
@@ -374,14 +322,7 @@ const FrontpageExample = ({ showLoadingSubjects = false }) => {
               />
             </BlogPostWrapper>
           </section>
-          <FrontpageKampanjeblokk
-            firstImage={image2}
-            secondImage={image2}
-            title="NDLA film"
-            description="NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!"
-            url="https://ndla.no/nb/film"
-            urlText="Gå til NDLA film"
-          />
+          <FrontpageFilm imageUrl={NdlaFilmIllustration} url="https://ndla.no/nb/film" />
           <FrontpageInfo>
             <InfoWidget
               heading={t('newsLetter.heading')}

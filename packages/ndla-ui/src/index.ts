@@ -70,7 +70,7 @@ export { default as InfoWidget } from './InfoWidget';
 
 export {
   FrontpageInfo,
-  FrontpageKampanjeblokk,
+  FrontpageFilm,
   FrontpageToolbox,
   FrontpageMultidisciplinarySubject,
   FrontpageHeader,

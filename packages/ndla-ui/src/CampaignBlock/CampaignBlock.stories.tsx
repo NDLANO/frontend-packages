@@ -28,11 +28,11 @@ export default {
       url: '#',
       text: 'Les mer om FN-dagen',
     },
-    topLeftImage: {
+    imageBefore: {
       alt: 'FN-symbol',
       url: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
     },
-    bottomRightImage: {
+    imageAfter: {
       alt: 'FN-symbol',
       url: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
     },

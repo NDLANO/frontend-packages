@@ -29,8 +29,8 @@ interface Props {
     url: string;
     text: string;
   };
-  topLeftImage: Image;
-  bottomRightImage: Image;
+  imageBefore: Image;
+  imageAfter: Image;
 }
 
 interface ImageProps {
@@ -43,133 +43,64 @@ interface IsTwoImagesProps {
 
 const Container = styled.div<IsTwoImagesProps>`
   width: 390px;
-  display: grid;
-  grid-template-columns: 20px 350px 20px;
-  grid-template-rows: auto auto auto auto auto;
-  padding: ${spacing.large} 0;
+  display: flex;
+  flex-direction: column;
   border: 1px #deebf6 solid;
   border-radius: 4px;
+  padding: ${spacing.large} ${spacing.nsmall};
   ${mq.range({ from: breakpoints.tabletWide })} {
     width: 1100px;
-    grid-template-columns: 180px 640px 205px;
-    grid-template-rows: auto auto auto;
+    flex-direction: row;
     padding: ${spacing.medium};
-    ${(Props) =>
-      !Props.isTwoImages &&
-      css`
-        grid-template-columns: 32px 655px 338px;
-      `}
   }
 `;
 
+const TextWrapper = styled.div``;
+
 const StyledHeader = styled.h2<IsTwoImagesProps>`
-  grid-column: 2/3;
-  grid-row: 1/2;
-  margin-top: 0;
-  margin-bottom: ${spacing.small};
-  ${(Props) =>
-    !Props.isTwoImages &&
-    css`
-      margin-bottom: 0;
-    `}
+  margin: 0;
 `;
 
 const StyledDescription = styled.p`
-  grid-column: 2/3;
-  grid-row: 3/4;
-  margin: 0;
   font-family: ${fonts.serif};
-  padding: ${spacing.small} 0 ${spacing.medium};
+  margin: ${spacing.normal} 0 ${spacing.medium};
   ${mq.range({ from: breakpoints.tabletWide })} {
-    grid-row: 2/3;
-    padding-right: ${spacing.medium};
   }
 `;
 
-const LeftImage = styled.img<ImageProps>`
+const ImageBefore = styled.img<ImageProps>`
   max-width: 160px;
-  min-width: 160px;
-  grid-column: 2/3;
-  grid-row: 2/3;
-  ${(Props) =>
-    !Props.isTwoImages &&
-    css`
-      min-width: 288px;
-      grid-column: 2/3;
-      grid-row: 5/6;
-      justify-self: center;
-    `}
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    grid-column: 1/2;
-    align-self: center;
-    ${(Props) =>
-      !Props.isTwoImages &&
-      css`
-        grid-column: 3/4;
-        justify-self: center;
-        grid-row: 1/4;
-      `}
-  }
+  padding-bottom: ${spacing.nsmall};
 `;
 
-const RightImage = styled.img<ImageProps>`
+const ImageAfter = styled.img<ImageProps>`
   max-width: 200px;
-  min-width: 200px;
-  grid-column: 2/3;
-  grid-row: 5/6;
-  ${(Props) =>
-    !Props.isTwoImages &&
-    css`
-      min-width: 288px;
-      grid-row: 5/6;
-      justify-self: center;
-    `}
+  padding-top: ${spacing.nsmall};
+
   ${mq.range({ from: breakpoints.tabletWide })} {
-    grid-column: 3/4;
-    grid-row: 2/3;
-    align-self: center;
-    ${(Props) =>
-      !Props.isTwoImages &&
-      css`
-        min-width: 288px;
-        grid-column: 3/4;
-        justify-self: center;
-        grid-row: 1/4;
-      `}
   }
 `;
 
 const StyledLink = styled(SafeLink)<IsTwoImagesProps>`
-  grid-column: 2/3;
-  grid-row: 4/5;
   box-shadow: none;
   text-decoration: underline;
   color: ${colors.brand.primary};
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    padding-bottom: ${spacing.small};
-  }
-  ${(Props) =>
-    !Props.isTwoImages &&
-    css`
-      grid-row: 4/5;
-      ${mq.range({ from: breakpoints.tabletWide })} {
-        grid-row: 3/4;
-      }
-    `};
 `;
 
-const CampaignBlock = ({ title, topLeftImage, description, bottomRightImage, url }: Props) => {
-  const isTwoImages = !!topLeftImage.url && !!bottomRightImage.url;
+const CampaignBlock = ({ title, imageBefore, description, imageAfter, url }: Props) => {
+  const isTwoImages = !!imageBefore.url && !!imageAfter.url;
   return (
     <Container isTwoImages={isTwoImages}>
-      <StyledHeader isTwoImages={isTwoImages}>{title.title}</StyledHeader>
-      <LeftImage isTwoImages={isTwoImages} src={topLeftImage.url} />
-      <StyledDescription>{description.text}</StyledDescription>
-      <StyledLink isTwoImages={isTwoImages} to={url.url}>
-        {url.text}
-        <Forward />
-      </StyledLink>
-      <RightImage isTwoImages={isTwoImages} src={bottomRightImage.url} />
+      {imageBefore.url && <ImageBefore isTwoImages={isTwoImages} src={imageBefore.url} />}
+      <TextWrapper>
+        <StyledHeader isTwoImages={isTwoImages}>{title.title}</StyledHeader>
+        <StyledDescription>{description.text}</StyledDescription>
+        <StyledLink isTwoImages={isTwoImages} to={url.url}>
+          {url.text}
+          <Forward />
+        </StyledLink>
+      </TextWrapper>
+      {imageAfter.url && <ImageAfter isTwoImages={isTwoImages} src={imageAfter.url} />}
     </Container>
   );
 };

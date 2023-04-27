@@ -12,25 +12,25 @@ import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq } from '@ndla/core';
 
+interface Image {
+  url: string;
+  alt: string;
+}
 interface Props {
   title: {
     title: string;
     language: string;
   };
-  description: string;
+  description: {
+    text: string;
+    language: string;
+  };
   url: {
     url: string;
     text: string;
   };
-  urlText: string;
-  topLeftImage: {
-    url: string;
-    alt: string;
-  };
-  bottomRightImage: {
-    url: string;
-    alt: string;
-  };
+  topLeftImage: Image;
+  bottomRightImage: Image;
 }
 
 interface ImageProps {
@@ -164,7 +164,7 @@ const CampaignBlock = ({ title, topLeftImage, description, bottomRightImage, url
     <Container isTwoImages={isTwoImages}>
       <StyledHeader isTwoImages={isTwoImages}>{title.title}</StyledHeader>
       <LeftImage isTwoImages={isTwoImages} src={topLeftImage.url} />
-      <StyledDescription>{description}</StyledDescription>
+      <StyledDescription>{description.text}</StyledDescription>
       <StyledLink isTwoImages={isTwoImages} to={url.url}>
         {url.text}
         <Forward />

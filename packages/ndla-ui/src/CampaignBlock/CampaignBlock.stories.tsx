@@ -20,15 +20,17 @@ export default {
   },
   args: {
     title: { title: 'FN-dagen 24.oktober!', language: 'nb-no' },
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation  quis nostrud exercitation',
+    description: {
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation  quis nostrud exercitation',
+      language: 'nb-no',
+    },
     url: {
       url: '#',
       text: 'Les mer om FN-dagen',
     },
     topLeftImage: {
       alt: 'FN-symbol',
-      url: '',
+      url: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
     },
     bottomRightImage: {
       alt: 'FN-symbol',

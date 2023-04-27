@@ -71,11 +71,11 @@ const conceptMetaData: ConceptData['concept'] = {
 
 const visualElementData: ConceptData['visualElement'] = {
   resource: 'image',
-  status: 'error',
+  status: 'success',
   seq: 6,
   embedData: {
     resource: 'image',
-    resourceId: 52863,
+    resourceId: '52863',
     alt: 'Eksempel på hvordan borevæsken kan trenge ut i formasjonen fra borehullet og skade formasjonens permeabilitet. Illustrasjon.',
     size: 'full',
     align: '',

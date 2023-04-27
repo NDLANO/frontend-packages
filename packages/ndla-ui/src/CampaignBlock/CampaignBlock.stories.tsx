@@ -18,7 +18,23 @@ export default {
   parameters: {
     ...defaultParameters,
   },
-  args: {},
+  args: {
+    title: { title: 'FN-dagen 24.oktober!', language: 'nb-no' },
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation  quis nostrud exercitation',
+    url: {
+      url: '#',
+      text: 'Les mer om FN-dagen',
+    },
+    topLeftImage: {
+      alt: 'FN-symbol',
+      url: '',
+    },
+    bottomRightImage: {
+      alt: 'FN-symbol',
+      url: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
+    },
+  },
 } as Meta<typeof CampaignBlock>;
 
 export const CampaignBlockStory: StoryFn<typeof CampaignBlock> = ({ ...args }) => {

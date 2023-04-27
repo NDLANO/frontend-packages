@@ -1883,10 +1883,10 @@
     pump "^3.0.0"
     tar-fs "^2.1.1"
 
-"@ndla/types-backend@0.2.1", "@ndla/types-backend@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@ndla/types-backend/-/types-backend-0.2.1.tgz#c22e87235e67e28e7c60abd031a905c2548e054f"
-  integrity sha512-nvyOI+ep8s+qVimT5Dg4l23xglAqQ/irnF2ZzvQlFUbF3dezDdzGNddA6D3TTvNxI1Wk5fwH7MnY8iopLXpuxw==
+"@ndla/types-backend@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@ndla/types-backend/-/types-backend-0.2.5.tgz#36b4411c0190c6f78f6165ea1a54fb7f2987a1fe"
+  integrity sha512-BqSBLcW4M+otGxoix1tISb6PuWn/THm+xzdH4/rudblIcqz+zQwU46WIxKBtcfYK2U5LjsHgCUH8vjmi4nA1Pw==
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"

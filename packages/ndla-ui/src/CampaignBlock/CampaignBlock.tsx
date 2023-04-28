@@ -28,19 +28,19 @@ interface Props {
     url: string;
     text: string;
   };
-  imageBefore: undefined | Image;
-  imageAfter: Image | undefined;
+  imageBefore?: Image;
+  imageAfter?: Image;
 }
 
 const Container = styled.div`
-  width: 390px;
+  max-width: 390px;
   display: flex;
   flex-direction: column;
-  border: 1px #deebf6 solid;
+  border: 1px ${colors.brand.lighter} solid;
   border-radius: 4px;
   padding: ${spacing.large} ${spacing.nsmall};
   ${mq.range({ from: breakpoints.tabletWide })} {
-    width: 1100px;
+    max-width: 1100px;
     flex-direction: row;
     padding: ${spacing.medium};
   }
@@ -88,7 +88,7 @@ const StyledLink = styled(SafeLink)`
 const CampaignBlock = ({ title, imageBefore, description, imageAfter, url }: Props) => {
   return (
     <Container>
-      {imageBefore.url && <ImageBefore src={imageBefore.url} />}
+      {imageBefore && imageBefore.url && <ImageBefore src={imageBefore.url} />}
       <TextWrapper>
         <StyledHeader>{title.title}</StyledHeader>
         <StyledDescription>{description.text}</StyledDescription>
@@ -97,7 +97,7 @@ const CampaignBlock = ({ title, imageBefore, description, imageAfter, url }: Pro
           <Forward />
         </StyledLink>
       </TextWrapper>
-      {imageAfter.url && <ImageAfter src={imageAfter.url} />}
+      {imageAfter && imageAfter.url && <ImageAfter src={imageAfter.url} />}
     </Container>
   );
 };

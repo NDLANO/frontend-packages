@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { BrightcoveData, BrightcoveEmbedData } from '@ndla/types-embed';
+import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from '@ndla/types-embed';
 import BrightcoveEmbed from './BrightcoveEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
 
@@ -80,6 +80,78 @@ const metaData: BrightcoveData = {
   ],
 };
 
+const visuallyInterpretedEmbedMetaData: BrightcoveMetaData = {
+  resource: 'brightcove',
+  seq: 3,
+  status: 'success',
+  embedData: {
+    resource: 'brightcove',
+    videoid: '6243811329001',
+    caption: '',
+    account: '4806596774001',
+    player: 'BkLm8fT',
+    title: 'Frivillighet i helse og omsorgstjenesten (synstolket)',
+  },
+  data: {
+    id: '6243811329001',
+    account_id: '4806596774001',
+    custom_fields: {
+      licenseinfo: 'Leverandør: film_konsulentene',
+      yt_privacy_status: 'unlisted',
+      license: 'Navngivelse-Ikkekommersiell-Del på samme vilkår',
+    },
+    description: null,
+    images: {
+      poster: {
+        src: 'https://cf-images.eu-west-1.prod.boltdns.net/v1/static/4806596774001/a09bcb7b-ffe1-4c3a-98ea-bf997340a8cd/23f01e33-413e-418c-a4de-2c87c8b05c26/1280x720/match/image.jpg',
+      },
+    },
+    link: { text: '6242635463001' },
+    long_description: null,
+    name: 'Frivillighet i helse og omsorgstjenesten (synstolket)',
+    published_at: '2021-03-25T11:40:38.476Z',
+    copyright: {
+      license: {
+        license: 'CC-BY-NC-SA-4.0',
+        description:
+          'This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms.',
+        url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en',
+      },
+      creators: [],
+      processors: [],
+      rightsholders: [{ type: 'supplier', name: 'film_konsulentene' }],
+    },
+    sources: [
+      {
+        src: 'http://manifest.prod.boltdns.net/manifest/v1/hls/v4/clear/4806596774001/a09bcb7b-ffe1-4c3a-98ea-bf997340a8cd/10s/master.m3u8?fastly_token=NjQ0YmMyY2JfMTBmN2ZlOGUxNTAwYzQ0YmUwNDIzMDY3YWE1MGVkNjNmY2U2MDJhMDRkYjRhNzljNjZiZDJkNTA1MDM1Njg5Yg%3D%3D',
+      },
+      {
+        src: 'https://manifest.prod.boltdns.net/manifest/v1/hls/v4/clear/4806596774001/a09bcb7b-ffe1-4c3a-98ea-bf997340a8cd/10s/master.m3u8?fastly_token=NjQ0YmMyY2JfMTBmN2ZlOGUxNTAwYzQ0YmUwNDIzMDY3YWE1MGVkNjNmY2U2MDJhMDRkYjRhNzljNjZiZDJkNTA1MDM1Njg5Yg%3D%3D',
+      },
+      {
+        src: 'http://manifest.prod.boltdns.net/manifest/v1/dash/live-baseurl/clear/4806596774001/a09bcb7b-ffe1-4c3a-98ea-bf997340a8cd/6s/manifest.mpd?fastly_token=NjQ0YmMyY2JfZjhmNTUzZDc4MWI2YjdmNGEzOWUzOGMxYzkyYWU2NWVhZGVjZDY3ZWJiMmYxYjgzOThiNzQ1ZjMzOWRiZmRiYQ%3D%3D',
+      },
+      {
+        src: 'https://manifest.prod.boltdns.net/manifest/v1/dash/live-baseurl/clear/4806596774001/a09bcb7b-ffe1-4c3a-98ea-bf997340a8cd/6s/manifest.mpd?fastly_token=NjQ0YmMyY2JfZjhmNTUzZDc4MWI2YjdmNGEzOWUzOGMxYzkyYWU2NWVhZGVjZDY3ZWJiMmYxYjgzOThiNzQ1ZjMzOWRiZmRiYQ%3D%3D',
+      },
+      {
+        src: 'http://house-fastly-signed-eu-west-1-prod.brightcovecdn.com/media/v1/pmp4/static/clear/4806596774001/a09bcb7b-ffe1-4c3a-98ea-bf997340a8cd/494f17bd-2cee-4c49-8f27-99c76f3720d5/main.mp4?fastly_token=NjQ0YmMyY2JfYjQzM2YwNzQxMTg5YzAwNjUyNzI2MGE0NWVhZmNhZTQ5Y2QwMzIyMGExOGMyMzFhMmNiNmU3NWY1YTY0ZWNmM18vL2hvdXNlLWZhc3RseS1zaWduZWQtZXUtd2VzdC0xLXByb2QuYnJpZ2h0Y292ZWNkbi5jb20vbWVkaWEvdjEvcG1wNC9zdGF0aWMvY2xlYXIvNDgwNjU5Njc3NDAwMS9hMDliY2I3Yi1mZmUxLTRjM2EtOThlYS1iZjk5NzM0MGE4Y2QvNDk0ZjE3YmQtMmNlZS00YzQ5LThmMjctOTljNzZmMzcyMGQ1L21haW4ubXA0',
+        container: 'MP4',
+        height: 720,
+        width: 1280,
+        size: 138996555,
+      },
+      {
+        src: 'https://house-fastly-signed-eu-west-1-prod.brightcovecdn.com/media/v1/pmp4/static/clear/4806596774001/a09bcb7b-ffe1-4c3a-98ea-bf997340a8cd/494f17bd-2cee-4c49-8f27-99c76f3720d5/main.mp4?fastly_token=NjQ0YmMyY2JfYjQzM2YwNzQxMTg5YzAwNjUyNzI2MGE0NWVhZmNhZTQ5Y2QwMzIyMGExOGMyMzFhMmNiNmU3NWY1YTY0ZWNmM18vL2hvdXNlLWZhc3RseS1zaWduZWQtZXUtd2VzdC0xLXByb2QuYnJpZ2h0Y292ZWNkbi5jb20vbWVkaWEvdjEvcG1wNC9zdGF0aWMvY2xlYXIvNDgwNjU5Njc3NDAwMS9hMDliY2I3Yi1mZmUxLTRjM2EtOThlYS1iZjk5NzM0MGE4Y2QvNDk0ZjE3YmQtMmNlZS00YzQ5LThmMjctOTljNzZmMzcyMGQ1L21haW4ubXA0',
+        container: 'MP4',
+        height: 720,
+        width: 1280,
+        size: 138996555,
+      },
+    ],
+  },
+};
+
 const meta: Meta<typeof BrightcoveEmbed> = {
   title: 'Enkle komponenter/Embeds/BrightcoveEmbed',
   component: BrightcoveEmbed,
@@ -114,6 +186,12 @@ export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
       embedData: embedData,
       data: metaData,
     },
+  },
+};
+
+export const VisuallyInterrupted: StoryObj<typeof BrightcoveEmbed> = {
+  args: {
+    embed: visuallyInterpretedEmbedMetaData,
   },
 };
 

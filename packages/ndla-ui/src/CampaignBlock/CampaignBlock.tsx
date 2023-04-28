@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
-import { breakpoints, colors, fonts, spacing, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
 
 interface Image {
   src: string;
@@ -37,7 +37,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px ${colors.brand.lighter} solid;
-  border-radius: 4px;
+  border-radius: ${misc.borderRadius};
   padding: ${spacing.large} ${spacing.nsmall};
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 1100px;
@@ -53,8 +53,6 @@ const StyledHeader = styled.h2`
 const StyledDescription = styled.p`
   font-family: ${fonts.serif};
   margin: ${spacing.normal} 0 ${spacing.medium};
-  ${mq.range({ from: breakpoints.tabletWide })} {
-  }
 `;
 
 const ImageBefore = styled.img`

@@ -81,8 +81,8 @@ const StyledLink = styled(SafeLink)`
   box-shadow: none;
   text-decoration: underline;
   color: ${colors.brand.primary};
-  :hover,
-  :focus-visible {
+  &:hover,
+  &:focus-visible {
     text-decoration: none;
   }
 `;
@@ -97,7 +97,7 @@ const CampaignBlock = ({
 }: Props) => {
   return (
     <Container>
-      {imageBefore && imageBefore.src && <ImageBefore src={imageBefore.src} />}
+      {imageBefore && <ImageBefore src={imageBefore.src} />}
       <div>
         <StyledHeader>{title.title}</StyledHeader>
         <StyledDescription>{description.text}</StyledDescription>
@@ -106,7 +106,7 @@ const CampaignBlock = ({
           <Forward />
         </StyledLink>
       </div>
-      {imageAfter && imageAfter.src && <ImageAfter src={imageAfter.src} />}
+      {imageAfter && <ImageAfter src={imageAfter.src} />}
     </Container>
   );
 };

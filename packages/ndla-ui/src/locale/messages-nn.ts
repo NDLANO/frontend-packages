@@ -1141,7 +1141,7 @@ const messages = {
             'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
-          share: 'Del mappa',
+          share: 'Del mappe',
           preview: 'Førehandsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
@@ -1182,6 +1182,7 @@ const messages = {
       learningpathUnsupported:
         'Læringsstiar kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
+        all: 'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.\n\nDu kan bla i artiklane ved å bruke menyen.\n\nDersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
         info1:
           'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
         info2: 'Du kan bla i artiklane ved å bruke menyen.',

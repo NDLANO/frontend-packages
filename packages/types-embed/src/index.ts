@@ -7,7 +7,7 @@
  */
 
 import { ImageEmbedData, ImageMetaData } from './imageTypes';
-import { AudioMetaData, AudioEmbedData } from './audioTypes';
+import { AudioMetaData, AudioEmbedData, AudioMeta } from './audioTypes';
 import { IframeMetaData, IframeEmbedData, IframeData } from './iframeTypes';
 import {
   H5pMetaData,
@@ -43,6 +43,12 @@ import {
 } from './conceptTypes';
 import { FileEmbedData, FileMetaData } from './fileTypes';
 import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
+import {
+  KeyPerformanceIndicatorEmbedData,
+  KeyPerformanceIndicatorMeta,
+  KeyPerformanceIndicatorMetaData,
+} from './KeyPerformanceIndicatorTypes';
+import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -59,7 +65,9 @@ export type EmbedData =
   | ConceptListEmbedData
   | OembedEmbedData
   | FileEmbedData
-  | BlogPostEmbedData;
+  | BlogPostEmbedData
+  | KeyPerformanceIndicatorEmbedData
+  | ContactBlockEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -75,7 +83,9 @@ export type EmbedMetaData =
   | CodeMetaData
   | FootnoteMetaData
   | FileMetaData
-  | BlogPostMetaData;
+  | BlogPostMetaData
+  | KeyPerformanceIndicatorMetaData
+  | ContactBlockMetaData;
 export type {
   ConceptMetaData,
   ImageMetaData,
@@ -90,6 +100,8 @@ export type {
   ConceptListMetaData,
   FileMetaData,
   BlogPostMetaData,
+  KeyPerformanceIndicatorMetaData,
+  ContactBlockMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -105,8 +117,12 @@ export type {
   ConceptListEmbedData,
   FileEmbedData,
   BlogPostEmbedData,
+  KeyPerformanceIndicatorEmbedData,
+  ContactBlockEmbedData,
 };
+
 export type { BlogPostMeta };
+export type { KeyPerformanceIndicatorMeta };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };
@@ -114,6 +130,7 @@ export type { FootnoteData };
 export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, BrightcoveCopyright };
 export type { RelatedContentData, NodeType };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
+export type { AudioMeta };
 
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 

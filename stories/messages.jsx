@@ -10,6 +10,8 @@ import {
   messagesNN,
   messagesNB,
   messagesEN,
+  messagesSE,
+  messagesSMA,
   formatNestedMessages,
 } from '@ndla/ui';
 import { Center } from './helpers';
@@ -34,6 +36,8 @@ class Messages extends Component {
     this.flattenedNb = formatNestedMessages(messagesNB);
     this.flattenedNn = formatNestedMessages(messagesNN);
     this.flattenedEn = formatNestedMessages(messagesEN);
+    this.flattenedSe = formatNestedMessages(messagesSE);
+    this.flattenedSma = formatNestedMessages(messagesSMA);
   }
 
   onSearchChange(e) {
@@ -56,7 +60,11 @@ class Messages extends Component {
               !this.flattenedNn[key] ||
               this.flattenedNn[key].substr(0, 1) === '*' ||
               !this.flattenedEn[key] ||
-              this.flattenedEn[key].substr(0, 1) === '*',
+              this.flattenedEn[key].substr(0, 1) === '*' ||
+              !this.flattenedSe[key] ||
+              this.flattenedSe[key].substr(0, 1) === '*' ||
+              !this.flattenedSma[key] ||
+              this.flattenedSma[key].substr(0, 1) === '*',
           )
           .reduce((result, key) => ({ ...result, [key]: this.flattenedNb[key] }), {})
       : this.flattenedNb;
@@ -69,7 +77,9 @@ class Messages extends Component {
         key.search(new RegExp(searchText, 'i')) !== -1 ||
         (this.flattenedNb[key] && this.flattenedNb[key].search(new RegExp(searchText, 'i')) !== -1) ||
         (this.flattenedNn[key] && this.flattenedNn[key].search(new RegExp(searchText, 'i')) !== -1) ||
-        (this.flattenedEn[key] && this.flattenedEn[key].search(new RegExp(searchText, 'i')) !== -1),
+        (this.flattenedEn[key] && this.flattenedEn[key].search(new RegExp(searchText, 'i')) !== -1) ||
+        (this.flattenedSe[key] && this.flattenedSe[key].search(new RegExp(searchText, 'i')) !== -1) ||
+        (this.flattenedSma[key] && this.flattenedSma[key].search(new RegExp(searchText, 'i')) !== -1),
     );
     return filtered.reduce((result, key) => ({ ...result, [key]: flattened[key] }), {});
   }
@@ -83,6 +93,7 @@ class Messages extends Component {
         <td className={phraseApprovedClass(this.flattenedNb[key])}>{this.flattenedNb[key]}</td>
         <td className={phraseApprovedClass(this.flattenedNn[key])}>{this.flattenedNn[key]}</td>
         <td className={phraseApprovedClass(this.flattenedEn[key])}>{this.flattenedEn[key]}</td>
+        <td className={phraseApprovedClass(this.flattenedSe[key])}>{this.flattenedSe[key]}</td>
       </tr>
     ));
   }
@@ -131,6 +142,8 @@ class Messages extends Component {
                         <th>Norsk bokmål</th>
                         <th>Norsk nynorsk</th>
                         <th>Engelsk</th>
+                        <th>Nordsamisk</th>
+                        <th>Sørsamisk</th>
                       </tr>
                     </thead>
                     <tbody>{this.renderAllPhrases()}</tbody>

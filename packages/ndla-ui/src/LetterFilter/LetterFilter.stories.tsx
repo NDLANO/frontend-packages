@@ -6,7 +6,7 @@
  *
  */
 
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import React from 'react';
 import { defaultParameters } from '../../../../stories/defaults';
@@ -15,6 +15,7 @@ import LetterFilter from './LetterFilter';
 export default {
   title: 'Enkle komponenter/LetterFilter',
   component: LetterFilter,
+  tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
@@ -22,9 +23,9 @@ export default {
     enabledLetters: ['a', 'c'],
     onChange: (value?: string) => {},
   },
-} as ComponentMeta<typeof LetterFilter>;
+} as Meta<typeof LetterFilter>;
 
-export const LetterFilterStory: ComponentStory<typeof LetterFilter> = (args) => {
+export const LetterFilterStory: StoryFn<typeof LetterFilter> = (args) => {
   const [, updateArgs] = useArgs();
 
   return <LetterFilter {...args} onChange={(val) => updateArgs({ value: val })} />;

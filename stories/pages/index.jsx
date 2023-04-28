@@ -40,7 +40,6 @@ import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
 import LearningPathExample from './LearningPathExample';
 import banners from '../../images/banners';
-import ExplanationService from './ExplanationService';
 import ProgrammePage from './ProgrammePage';
 import SubjectPage from './SubjectPage';
 import { subjectBreadcrumb, topics } from '../../dummydata/mockPrograms';
@@ -520,21 +519,3 @@ storiesOf('Ndla film', module)
       <FooterExample />
     </PageContainer>
   ));
-storiesOf('Forklaringstjenesten', module).add('Forklaringstjenesten', () => (
-  <PageContainer>
-    <StoryIntro title="Forklaringstjenesten">
-      <p>
-        Ett eller flere fag må velges før filtrering vises. Velges flere fag vises alle begrep som er tilknyttet minst
-        ett av fagene.
-      </p>
-      <p>
-        Filtre som alene ikke gir treff skal ikke vises. Begrep som vises i listen må inneholde alle filtre som er
-        valgt. Dersom bruker velger ett eller flere filtre skal de resterende filtrene som ikke gir treff i kombinasjon
-        med valgte filtre være deaktivert
-      </p>
-    </StoryIntro>
-    <OneColumn>
-      <ExplanationService />
-    </OneColumn>
-  </PageContainer>
-));

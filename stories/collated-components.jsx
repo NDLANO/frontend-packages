@@ -18,10 +18,8 @@ import {
   EditorName,
   FooterText,
   LanguageSelector,
-  OneColumn,
   Content,
 } from '@ndla/ui';
-import Pager from '@ndla/pager';
 import { Translation as I18nTranslate } from 'react-i18next';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
@@ -53,7 +51,6 @@ import Oops from '../images/oops.gif';
 import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
 
-import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
 import FooterExample from './molecules/footers';
 import NotionBlockExample from './organisms/NotionBlockExample';
@@ -418,15 +415,6 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
     </PageContainer>
   ))
-  .add('Listevisning', () => (
-    <PageContainer>
-      <StoryIntro title="Listevisning" />
-      <OneColumn>
-        <ListViewExample />
-      </OneColumn>
-    </PageContainer>
-  ))
-
   .add('Læringsressurser', () => (
     <div>
       <StoryIntro title="Læringsressurser/launchpad">

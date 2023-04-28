@@ -7,14 +7,13 @@
  */
 
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq } from '@ndla/core';
 
 interface Image {
-  url: string;
-  alt: string;
+  url?: string;
+  alt?: string;
 }
 interface Props {
   title: {
@@ -33,15 +32,7 @@ interface Props {
   imageAfter: Image;
 }
 
-interface ImageProps {
-  isTwoImages: boolean;
-}
-
-interface IsTwoImagesProps {
-  isTwoImages: boolean;
-}
-
-const Container = styled.div<IsTwoImagesProps>`
+const Container = styled.div`
   width: 390px;
   display: flex;
   flex-direction: column;
@@ -57,7 +48,7 @@ const Container = styled.div<IsTwoImagesProps>`
 
 const TextWrapper = styled.div``;
 
-const StyledHeader = styled.h2<IsTwoImagesProps>`
+const StyledHeader = styled.h2`
   margin: 0;
 `;
 
@@ -68,39 +59,45 @@ const StyledDescription = styled.p`
   }
 `;
 
-const ImageBefore = styled.img<ImageProps>`
+const ImageBefore = styled.img`
   max-width: 160px;
+  max-height: 145px;
   padding-bottom: ${spacing.nsmall};
-`;
-
-const ImageAfter = styled.img<ImageProps>`
-  max-width: 200px;
-  padding-top: ${spacing.nsmall};
-
   ${mq.range({ from: breakpoints.tabletWide })} {
+    align-self: center;
+    padding-right: ${spacing.nsmall};
   }
 `;
 
-const StyledLink = styled(SafeLink)<IsTwoImagesProps>`
+const ImageAfter = styled.img`
+  max-width: 200px;
+  max-height: 155px;
+  padding-top: ${spacing.nsmall};
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    align-self: center;
+    padding-left: ${spacing.nsmall};
+  }
+`;
+
+const StyledLink = styled(SafeLink)`
   box-shadow: none;
   text-decoration: underline;
   color: ${colors.brand.primary};
 `;
 
 const CampaignBlock = ({ title, imageBefore, description, imageAfter, url }: Props) => {
-  const isTwoImages = !!imageBefore.url && !!imageAfter.url;
   return (
-    <Container isTwoImages={isTwoImages}>
-      {imageBefore.url && <ImageBefore isTwoImages={isTwoImages} src={imageBefore.url} />}
+    <Container>
+      {imageBefore.url && <ImageBefore src={imageBefore.url} />}
       <TextWrapper>
-        <StyledHeader isTwoImages={isTwoImages}>{title.title}</StyledHeader>
+        <StyledHeader>{title.title}</StyledHeader>
         <StyledDescription>{description.text}</StyledDescription>
-        <StyledLink isTwoImages={isTwoImages} to={url.url}>
+        <StyledLink to={url.url}>
           {url.text}
           <Forward />
         </StyledLink>
       </TextWrapper>
-      {imageAfter.url && <ImageAfter isTwoImages={isTwoImages} src={imageAfter.url} />}
+      {imageAfter.url && <ImageAfter src={imageAfter.url} />}
     </Container>
   );
 };

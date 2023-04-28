@@ -1182,6 +1182,7 @@ const messages = {
       drawerButton: 'Vis mapper og ressurser',
       drawerTitle: 'Mapper og ressurser',
       description: {
+        all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
         info1:
           'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.',
         info2: 'Du kan bla i artiklene ved å bruke menyen.',

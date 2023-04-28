@@ -1183,6 +1183,7 @@ const messages = {
       learningpathUnsupported:
         'Oahppanbálgát eai sáhte njuolga čájehuvvot juogaduvvon máhpain. Jus deaddilat liŋkka navigerenfálus gurut bealde, rahpasa bálggis ođđa siiddus.',
       description: {
+        all: 'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.\n\nSáhtát bláđet artihkkaliid fálu vehkiin.\n\nJus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
         info1:
           'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.',
         info2: 'Sáhtát bláđet artihkkaliid fálu vehkiin.',

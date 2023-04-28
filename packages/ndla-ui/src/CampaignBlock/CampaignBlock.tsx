@@ -12,8 +12,8 @@ import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq } from '@ndla/core';
 
 interface Image {
-  url?: string;
-  alt?: string;
+  url: string;
+  alt: string;
 }
 interface Props {
   title: {
@@ -28,8 +28,8 @@ interface Props {
     url: string;
     text: string;
   };
-  imageBefore: Image;
-  imageAfter: Image;
+  imageBefore: undefined | Image;
+  imageAfter: Image | undefined;
 }
 
 const Container = styled.div`

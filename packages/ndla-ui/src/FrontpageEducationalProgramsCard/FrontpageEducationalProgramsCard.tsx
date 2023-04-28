@@ -61,14 +61,7 @@ const StyledTitleContainer = styled.div`
   display: flex;
   align-items: center;
   height: 70px;
-`;
-
-const StyledCardTitle = styled.p`
   color: #444444;
-  margin: 0 20px;
-  font-family: Source Sans Pro;
-  font-weight: 600;
-  font-size: 16px;
 `;
 
 const FrontpageEducationalProgramsCard = ({

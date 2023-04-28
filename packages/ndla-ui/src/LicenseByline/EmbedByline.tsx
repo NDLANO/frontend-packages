@@ -19,9 +19,10 @@ import LicenseLink from './LicenseLink';
 import LicenseDescription from './LicenseDescription';
 
 interface BaseProps {
-  rounded?: boolean;
+  topRounded?: boolean;
   description?: string;
   children?: ReactNode;
+  visibleAlt?: string;
 }
 
 interface ImageProps extends BaseProps {
@@ -63,7 +64,7 @@ const BylineWrapper = styled.div`
   border-bottom-right-radius: ${misc.borderRadius};
   border-bottom-left-radius: ${misc.borderRadius};
 
-  &[data-rounded='true'] {
+  &[data-top-rounded='true'] {
     border-radius: ${misc.borderRadius};
   }
 `;
@@ -80,21 +81,27 @@ const RightsWrapper = styled.div`
   }
 `;
 
+const StyledSpan = styled.span`
+  font-style: italic;
+  color: grey;
+`;
+
 const LicenseInformationWrapper = styled.div`
   flex: 1;
 `;
 
-const EmbedByline = ({ type, rounded, description, copyright, children }: Props) => {
+const EmbedByline = ({ type, topRounded, description, copyright, children, visibleAlt }: Props) => {
   const { t, i18n } = useTranslation();
   const license = getLicenseByAbbreviation(copyright.license?.license ?? '', i18n.language);
   const authors = getLicenseCredits(copyright);
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
   return (
-    <BylineWrapper data-rounded={rounded}>
+    <BylineWrapper data-top-rounded={topRounded}>
       {!!description && <LicenseDescription description={description} />}
+      {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
       <RightsWrapper>
-        <LicenseLink license={license} />
+        <LicenseLink license={license} asLink={!!license.url.length} />
         <LicenseInformationWrapper>
           <span>
             <b>{t(`embed.type.${type}`)}: </b>

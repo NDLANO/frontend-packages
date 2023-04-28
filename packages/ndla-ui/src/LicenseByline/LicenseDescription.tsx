@@ -19,8 +19,19 @@ const StyledParagraph = styled.p`
   border-bottom: 1px solid ${colors.brand.tertiary};
 `;
 
+const StyledFigCaption = styled.figcaption`
+  background: unset;
+  padding: unset;
+  font-size: unset;
+  color: unset;
+`;
+
 const LicenseDescription = ({ description }: Props) => {
-  return <StyledParagraph>{description}</StyledParagraph>;
+  return (
+    <StyledFigCaption>
+      <StyledParagraph>{description}</StyledParagraph>
+    </StyledFigCaption>
+  );
 };
 
 export default LicenseDescription;

@@ -35,9 +35,9 @@ export default {
     ...defaultParameters,
   },
   args: {
-    rounded: true,
+    topRounded: true,
+    visibleAlt: 'Synlig alt-tekst kan legges her, eller fjernes helt',
     type: 'image',
-    license: 'CC-BY-NC-ND-4.0',
     children: (
       <ButtonWrapper>
         <Switch checked={false} label="Bytt til synstolket video" onChange={() => {}} id="switch" />

@@ -13,6 +13,7 @@ import { LicenseType } from './EmbedByline';
 
 interface Props {
   license: LicenseType;
+  asLink?: boolean;
 }
 
 const StyledSafeLink = styled(SafeLink)`
@@ -26,8 +27,16 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const LicenseLink = ({ license }: Props) => {
-  return <StyledSafeLink to={license.url}>{license.abbreviation}</StyledSafeLink>;
+const StyledSpan = styled.span`
+  font-weight: ${fonts.weight.bold};
+`;
+
+const LicenseLink = ({ license, asLink = true }: Props) => {
+  if (asLink) {
+    return <StyledSafeLink to={license.url}>{license.abbreviation}</StyledSafeLink>;
+  } else {
+    return <StyledSpan>{license.abbreviation}</StyledSpan>;
+  }
 };
 
 export default LicenseLink;

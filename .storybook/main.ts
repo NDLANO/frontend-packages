@@ -9,7 +9,7 @@
 import { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
-  stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx)'],
+  stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx)', '../stories/*/*.stories.tsx'],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',

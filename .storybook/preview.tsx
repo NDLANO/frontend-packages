@@ -38,7 +38,6 @@ const preview: Preview = {
           'Grunnstiler',
           'Enkle komponenter',
           'Sammensatte moduler',
-          'Fag- og emnesider',
           'Lisensgivning',
           'Produksjonssystem',
           'Eksperimentelle komponenter',

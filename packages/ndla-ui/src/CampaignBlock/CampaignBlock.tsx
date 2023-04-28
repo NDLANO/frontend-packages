@@ -81,9 +81,7 @@ const StyledLink = styled(SafeLink)`
   box-shadow: none;
   text-decoration: underline;
   color: ${colors.brand.primary};
-  :hover {
-    text-decoration: none;
-  }
+  :hover,
   :focus-visible {
     text-decoration: none;
   }

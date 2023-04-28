@@ -12,7 +12,7 @@ import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq } from '@ndla/core';
 
 interface Image {
-  url: string;
+  src: string;
   alt: string;
 }
 interface Props {
@@ -45,8 +45,6 @@ const Container = styled.div`
     padding: ${spacing.medium};
   }
 `;
-
-const TextWrapper = styled.div``;
 
 const StyledHeader = styled.h2`
   margin: 0;
@@ -94,16 +92,16 @@ const StyledLink = styled(SafeLink)`
 const CampaignBlock = ({ title, imageBefore, description, imageAfter, url }: Props) => {
   return (
     <Container>
-      {imageBefore && imageBefore.url && <ImageBefore src={imageBefore.url} />}
-      <TextWrapper>
+      {imageBefore && imageBefore.src && <ImageBefore src={imageBefore.src} />}
+      <div>
         <StyledHeader>{title.title}</StyledHeader>
         <StyledDescription>{description.text}</StyledDescription>
         <StyledLink to={url.url}>
           {url.text}
           <Forward />
         </StyledLink>
-      </TextWrapper>
-      {imageAfter && imageAfter.url && <ImageAfter src={imageAfter.url} />}
+      </div>
+      {imageAfter && imageAfter.src && <ImageAfter src={imageAfter.src} />}
     </Container>
   );
 };

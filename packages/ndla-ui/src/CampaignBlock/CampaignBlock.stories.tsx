@@ -30,11 +30,11 @@ export default {
     },
     imageBefore: {
       alt: 'FN-symbol',
-      url: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
+      src: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
     },
     imageAfter: {
       alt: 'FN-symbol',
-      url: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
+      src: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
     },
   },
 } as Meta<typeof CampaignBlock>;

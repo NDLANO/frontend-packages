@@ -1,6 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, breakpoints, mq } from '@ndla/core';
+import { HeadingLevel } from '../types';
+
+interface Image {
+  src: string;
+  alt: string;
+}
+interface Props {
+  programTitel: {
+    title: string;
+    language: string;
+  };
+  headingLevel?: HeadingLevel;
+  programIMGDesk: Image;
+  programIMGMob: Image;
+}
 
 const StyledCardContainer = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
@@ -56,19 +71,18 @@ const StyledCardTitle = styled.p`
   font-size: 16px;
 `;
 
-type Props = {
-  programTitel: string;
-  programIMGDesk: string;
-  programIMGMob: string;
-};
-
-const FrontpageEducationalProgramsCard = ({ programTitel, programIMGDesk, programIMGMob }: Props) => {
+const FrontpageEducationalProgramsCard = ({
+  programTitel,
+  programIMGDesk,
+  programIMGMob,
+  headingLevel: StyledCardTitle = 'h4',
+}: Props) => {
   return (
     <StyledCardContainer>
-      <StyledCardIMG src={programIMGDesk} />
-      <StyledCardIMGMob src={programIMGMob} />
+      <StyledCardIMG src={programIMGDesk.src} />
+      <StyledCardIMGMob src={programIMGMob.src} />
       <StyledTitleContainer>
-        <StyledCardTitle>{programTitel}</StyledCardTitle>
+        <StyledCardTitle>{programTitel.title}</StyledCardTitle>
       </StyledTitleContainer>
     </StyledCardContainer>
   );

@@ -20,7 +20,7 @@ export default {
   },
   args: {
     programTitel: { title: 'Elektro og datateknologi', language: 'nb-no' },
-    headingLevel: 'h2',
+    headingLevel: 'h4',
     programIMGDesk: {
       src: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993',
       alt: 'Elektro og datateknologi illustrasjon',

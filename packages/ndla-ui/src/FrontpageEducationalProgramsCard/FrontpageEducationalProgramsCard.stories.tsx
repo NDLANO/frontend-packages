@@ -19,9 +19,17 @@ export default {
     ...defaultParameters,
   },
   args: {
-    programTitel: 'Elektro og datateknologi',
-    programIMGDesk: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993',
-    programIMGMob: 'https://api.test.ndla.no/image-api/raw/YIAprLg9.svg?width=600&ts=1682592022017',
+    programTitel: { title: 'Elektro og datateknologi', language: 'nb-no' },
+    headingLevel: 'h2',
+    programIMGDesk: {
+      src: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993',
+      alt: 'Elektro og datateknologi illustrasjon',
+    },
+    programIMGMob: {
+      src: 'https://api.test.ndla.no/image-api/raw/YIAprLg9.svg?width=600&ts=1682592022017',
+      alt: 'Elektro og datateknologi illustrasjon',
+    },
+    url: '#',
   },
 } as Meta<typeof FrontpageEducationalProgramsCard>;
 

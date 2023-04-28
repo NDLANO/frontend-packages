@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
+import { HeadingLevel } from '../types';
 
 interface Image {
   src: string;
@@ -24,6 +25,7 @@ interface Props {
     text: string;
     language: string;
   };
+  headingLevel?: HeadingLevel;
   url: {
     url: string;
     text: string;
@@ -87,7 +89,14 @@ const StyledLink = styled(SafeLink)`
   }
 `;
 
-const CampaignBlock = ({ title, imageBefore, description, imageAfter, url }: Props) => {
+const CampaignBlock = ({
+  title,
+  imageBefore,
+  description,
+  headingLevel: StyledHeader = 'h2',
+  imageAfter,
+  url,
+}: Props) => {
   return (
     <Container>
       {imageBefore && imageBefore.src && <ImageBefore src={imageBefore.src} />}

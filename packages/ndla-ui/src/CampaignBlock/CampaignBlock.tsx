@@ -83,6 +83,12 @@ const StyledLink = styled(SafeLink)`
   box-shadow: none;
   text-decoration: underline;
   color: ${colors.brand.primary};
+  :hover {
+    text-decoration: none;
+  }
+  :focus-visible {
+    text-decoration: none;
+  }
 `;
 
 const CampaignBlock = ({ title, imageBefore, description, imageAfter, url }: Props) => {

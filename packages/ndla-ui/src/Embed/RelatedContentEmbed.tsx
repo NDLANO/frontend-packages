@@ -33,7 +33,7 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
       data.resource?.paths.find((p) => p.split('/')[1] === subject?.replace('urn:', '')) ?? data.resource?.path;
     return (
       <RelatedArticleV2
-        title={data.article.title.title ?? ''}
+        title={data.article.title?.title ?? ''}
         introduction={data.article.metaDescription?.metaDescription ?? ''}
         target={isOembed ? '_blank' : undefined}
         to={`${ndlaFrontendDomain ?? ''}${path ?? ''}`}

@@ -1,4 +1,3 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg" width="100" height="100" data-license="CC-BY 4.0" data-source="Netlife" viewBox="0 0 50 50">
-  <path d="M 19 0 L 19 6 L 21 8 L 21 2 L 36 2 L 36 13 L 36 14 L 37 14 L 48 14 L 48 40 L 33 40 L 33 42 L 50 42 L 50 12.59375 L 37.40625 0 L 19 0 z M 38 3.40625 L 46.59375 12 L 38 12 L 38 3.40625 z M 0 8 L 0 9 L 0 49 L 0 50 L 1 50 L 30 50 L 31 50 L 31 49 L 31 21 L 31 20.59375 L 30.71875 20.28125 L 18.71875 8.28125 L 18.40625 8 L 18 8 L 1 8 L 0 8 z M 2 10 L 17 10 L 17 21 L 17 22 L 18 22 L 29 22 L 29 48 L 2 48 L 2 10 z M 19 11.4375 L 27.5625 20 L 19 20 L 19 11.4375 z" />
+<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" data-license="Apache License 2.0" data-source="Material Design">
+  <path d="M180 975q-24 0-42-18t-18-42V312h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42V235q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440V235H300v560Zm0 0V235v560Z"/>
 </svg>

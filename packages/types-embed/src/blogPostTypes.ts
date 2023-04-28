@@ -6,21 +6,21 @@
  *
  */
 
-import { IImageMetaInformationV2 } from '@ndla/types-image-api';
+import { IImageMetaInformationV2 } from '@ndla/types-backend/image-api';
 import { MetaData } from '.';
 
 export type BlogPostEmbedData = {
   resource: 'blog-post';
-  imageId: number;
+  imageId: string;
   language: string;
   title: string;
   size?: 'normal' | 'large';
-  author: string;
+  author?: string;
   url: string;
 };
 
-export interface BlogPostMetaData {
+export interface BlogPostMeta {
   metaImage?: IImageMetaInformationV2;
 }
 
-export type BlogPostMeta = MetaData<BlogPostEmbedData, BlogPostMetaData>;
+export type BlogPostMetaData = MetaData<BlogPostEmbedData, BlogPostMeta>;

@@ -7,7 +7,7 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { BlogPostMeta } from '@ndla/types-embed';
+import { BlogPostMetaData } from '@ndla/types-embed';
 import { BlogPostV2 } from '@ndla/ui';
 import { PluginType } from '../types';
 
@@ -15,7 +15,7 @@ export const errorSvgSrc = `data:image/svg+xml;charset=UTF-8,%3Csvg fill='%238A8
 
 export const blogPostEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as BlogPostMeta;
+  const data = JSON.parse(props['data-json']) as BlogPostMetaData;
   const { title, author, url, size, language } = data.embedData;
   return (
     <BlogPostV2

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/switch",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Switch button for NDLA",
   "license": "GPL-3.0",
   "sideEffects": false,

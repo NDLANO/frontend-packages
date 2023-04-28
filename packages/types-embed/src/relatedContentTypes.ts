@@ -6,7 +6,8 @@
  *
  */
 
-import { IArticleV2 } from '@ndla/types-article-api';
+import { IArticleV2 } from '@ndla/types-backend/article-api';
+import { IArticle } from '@ndla/types-backend/draft-api';
 import { MetaData } from '.';
 
 export interface RelatedContentEmbedData {
@@ -49,7 +50,7 @@ interface TaxonomyMetadata {
 }
 
 export interface RelatedContentData {
-  article: IArticleV2;
+  article: IArticleV2 | IArticle;
   resource: NodeType;
 }
 

@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { useForwardedRef } from '@ndla/util';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
-import { IFolder } from '@ndla/types-learningpath-api';
+import { IFolder } from '@ndla/types-backend/learningpath-api';
 import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { treestructureId } from './helperFunctions';
 import { TreeStructureType } from './types';

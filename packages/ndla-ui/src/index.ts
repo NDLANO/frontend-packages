@@ -181,6 +181,7 @@ export { default as messagesNB } from './locale/messages-nb';
 export { default as messagesNN } from './locale/messages-nn';
 export { default as messagesEN } from './locale/messages-en';
 export { default as messagesSE } from './locale/messages-se';
+export { default as messagesSMA } from './locale/messages-sma';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
 
@@ -272,3 +273,5 @@ export { default as LetterFilter } from './LetterFilter';
 
 export { OrderedList, UnorderedList } from './List';
 export { BlogPostV2 } from './BlogPost';
+export { KeyPerformanceIndicator } from './KeyPerformanceIndicator';
+export { default as ContactBlock } from './ContactBlock';

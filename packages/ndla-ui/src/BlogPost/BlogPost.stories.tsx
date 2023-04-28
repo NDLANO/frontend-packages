@@ -7,13 +7,14 @@
  */
 
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import BlogPost from './BlogPost';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Enkle komponenter/Blog Post',
   component: BlogPost,
+  tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
@@ -28,9 +29,9 @@ export default {
       url: 'https://api.test.ndla.no/image-api/raw/20080101-032119-ag.jpg',
     },
   },
-} as ComponentMeta<typeof BlogPost>;
+} as Meta<typeof BlogPost>;
 
-export const BlogPostStory: ComponentStory<typeof BlogPost> = ({ ...args }) => {
+export const BlogPostStory: StoryFn<typeof BlogPost> = ({ ...args }) => {
   return <BlogPost {...args} />;
 };
 

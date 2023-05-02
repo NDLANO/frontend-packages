@@ -46,11 +46,6 @@ module.exports = {
         'sass-loader',
       ],
     });
-    config.module.rules.push({
-      test: /\.mjs$/,
-      include: /node_modules/,
-      type: 'javascript/auto',
-    });
     return config;
   },
   babel: async (options) => {

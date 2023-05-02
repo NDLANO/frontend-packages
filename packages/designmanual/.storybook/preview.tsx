@@ -13,7 +13,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
-
 import './designmanual.scss';
 
 export const parameters = {

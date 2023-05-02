@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { fonts, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import FrontpageEducationalProgramsCard from '../FrontpageEducationalProgramsCard/FrontpageEducationalProgramsCard';
+import ProgramCard from '../ProgramCard/ProgramCard';
 
 const StyledProgramsContainer = styled.div`
   background-color: #f7fafd;
@@ -61,7 +61,7 @@ const FrontpageProgramMenuV2 = ({ programs }: Props) => {
       </StyledProgramsHeaderContainer>
       <StyledProgramsCardsContainer>
         {programs.map((program) => (
-          <FrontpageEducationalProgramsCard
+          <ProgramCard
             key={program.id}
             programTitel={program.label}
             programIMGDesk={program.url}

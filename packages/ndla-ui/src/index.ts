@@ -270,5 +270,5 @@ export type { TreeStructureProps } from './TreeStructure';
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
 export { default as LetterFilter } from './LetterFilter';
 export { BlogPostV2 } from './BlogPost';
-export { FrontpageEducationalProgramsCard } from './FrontpageEducationalProgramsCard';
+export { FrontpageEducationalProgramsCard } from './ProgramCard';
 export { FrontpageEducationalPrograms } from './FrontpageEducationalPrograms';

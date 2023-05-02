@@ -8,12 +8,12 @@
 
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import FrontpageEducationalProgramsCard from './FrontpageEducationalProgramsCard';
+import ProgramCard from './ProgramCard';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'Enkle komponenter/FrontpageEducationalProgramsCard',
-  component: FrontpageEducationalProgramsCard,
+  title: 'Enkle komponenter/ProgramCard',
+  component: ProgramCard,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
@@ -31,12 +31,10 @@ export default {
     },
     url: '#',
   },
-} as Meta<typeof FrontpageEducationalProgramsCard>;
+} as Meta<typeof ProgramCard>;
 
-export const FrontpageEducationalProgramsCardStory: StoryFn<typeof FrontpageEducationalProgramsCard> = ({
-  ...args
-}) => {
-  return <FrontpageEducationalProgramsCard {...args} />;
+export const ProgramCardStory: StoryFn<typeof ProgramCard> = ({ ...args }) => {
+  return <ProgramCard {...args} />;
 };
 
-FrontpageEducationalProgramsCardStory.storyName = 'FrontpageEducationalProgramsCard';
+ProgramCardStory.storyName = 'ProgramCard';

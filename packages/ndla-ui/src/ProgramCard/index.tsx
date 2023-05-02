@@ -6,4 +6,4 @@
  *
  */
 
-export { default as FrontpageEducationalProgramsCard } from './FrontpageEducationalProgramsCard';
+export { default as FrontpageEducationalProgramsCard } from './ProgramCard';

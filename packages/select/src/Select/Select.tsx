@@ -47,6 +47,7 @@ interface Props<T extends boolean> {
   required?: boolean;
   isDisabled?: boolean;
   id?: string;
+  defaultValue?: PropsValue<Option>;
 }
 
 const Select = <T extends boolean>({

@@ -6,30 +6,24 @@
  *
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
-import { breakpoints, mq } from '@ndla/core';
+import { spacing } from '@ndla/core';
+import { SafeLinkButton } from '@ndla/safelink';
 import { NavigationBox } from '../Navigation';
 import { MessageBox } from '../Messages';
 
-const GradesMenu = styled.div`
-  margin-bottom: 28px;
-  > * {
-    margin-right: 10px;
-  }
-  > *:last-of-type {
-    margin-right: 0;
-  }
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin-bottom: 40px;
+const GradesMenu = styled.ul`
+  display: flex;
+  gap: ${spacing.small};
+  li {
+    list-style: none;
   }
 `;
 
 export type GradesProps = {
   selectedGrade?: string;
-  onChangeGrade: (newGrade: string) => void;
   grades: {
     missingProgrammeSubjects?: boolean;
     name: string;
@@ -47,22 +41,33 @@ type Props = GradesProps & {
   onNavigate?: () => void;
 };
 
-const ProgrammeSubjects = ({ grades, onNavigate, onChangeGrade, selectedGrade = 'vg1' }: Props) => {
+const ProgrammeSubjects = ({ grades, onNavigate, selectedGrade = 'vg1' }: Props) => {
   const { t } = useTranslation();
-  const grade = grades.find((grade) => grade.name.toLowerCase() === selectedGrade) ?? grades[0];
+
+  const grade = useMemo(
+    () => grades.find((grade) => grade.name.toLowerCase() === selectedGrade) ?? grades[0],
+    [grades, selectedGrade],
+  );
+
   return (
     <>
-      <GradesMenu>
-        {grades.map((item) => (
-          <Button
-            key={item.name}
-            onClick={() => onChangeGrade(item.name.toLowerCase())}
-            lighter={item !== grade}
-            size="normal"
-            borderShape="rounded">
-            {item.name}
-          </Button>
-        ))}
+      <GradesMenu aria-label={t('programme.grades')}>
+        {grades.map((item) => {
+          const current = item.name.toLowerCase() === selectedGrade;
+          return (
+            <li key={item.name}>
+              <SafeLinkButton
+                to={current ? '' : item.name.toLowerCase()}
+                colorTheme={item !== grade ? 'lighter' : undefined}
+                shape="pill"
+                size="normal"
+                aria-current={current}
+              >
+                {item.name}
+              </SafeLinkButton>
+            </li>
+          );
+        })}
       </GradesMenu>
       {grade.missingProgrammeSubjects && <MessageBox>{t('messageBoxInfo.noContent')}</MessageBox>}
       {grade.categories.map((category) => (

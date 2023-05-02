@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Fag',
+    subject_plural: 'Fag',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Endre mappenavn',
@@ -110,12 +114,13 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Kommende',
-    [subjectTypes.RESOURCE_COLLECTION]: 'Andre ressurser',
+    [subjectCategories.OTHER]: 'Andre ressurser',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamlinger',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafag',
-    [subjectTypes.SUBJECT]: 'Fag',
     [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
+    [subjectTypes.SUBJECT]: 'Fag',
   },
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {{query}}',
@@ -251,8 +256,24 @@ const messages = {
     archived: 'Dette er et utgått fag som ikke vedlikeholdes.',
   },
   subjectsPage: {
+    filterSubjects: 'Filtrer fag',
+    scrollToGroup: 'Hopp til gruppe',
+    goToTop: 'Gå til toppen',
+    alphabeticSort: 'Fag gruppert alfabetisk',
+    subjectGroup: 'Gruppe "{{ category }}"',
+    allSubjects: 'Alle fag',
+    myFavoriteSubjects: 'Mine favorittfag',
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     chooseSubject: 'Velg fag',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    removeConfirmed: '{{subject}} er fjernet fra favorittfag',
+    addConfirmed: '{{subject}} er lagt til som favorittfag',
+    subjectFavoritePitch: 'Ønsker du å favorittmerke dette faget?',
+    subjectFavoriteGuide:
+      'For å favorittmerke et fag må du logge inn på Min NDLA. Du finner faget øverst på denne siden etter at du har logget inn.',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Beklager, en feil oppstod under lasting av emnebeskrivelsen.',
@@ -313,25 +334,35 @@ const messages = {
       multidisciplinarySubjects: 'Tverrfaglige tema',
       toolboxStudents: 'Verktøykassa - for elever',
       toolboxTeachers: 'Verktøykassa - for lærere',
-      film: 'NDLA Film',
+      film: 'NDLA film',
       about: {
         title: 'Om NDLA',
-        whatIs: 'Hva er NDLA?',
-        organization: 'Organisasjonen',
-        numbers: 'Tall og bruk',
+        numbers: 'Tall og rapporter',
         keyPersonnel: 'Nøkkelpersoner',
-        vacancies: 'Ledige stillinger',
-        newsletter: 'Nyhetsbrev',
-        contact: 'Kontakt',
+        vacancies: 'Utlysninger',
+        vision: 'Visjon og verdier',
+        communityPurpose: 'Vårt samfunnsoppdrag',
+        history: 'NDLAs historie',
+        cooperation: 'Våre samarbeid',
+        faq: 'Ofte stilte spørsmål',
+        follow: 'Følg våre sosiale medier',
+        whoAreWe: 'Hvem er vi?',
+        whatWeDo: 'Hva gjør vi?',
+        careers: 'Jobb hos oss',
+        contactUs: 'Kontakt oss',
+        organizing: 'Organisering',
+        articlesOfAssociation: 'Vedtekter',
       },
     },
     menu: {
+      button: 'Meny',
+      goToMainMenu: 'Gå til hovedmeny',
       close: 'Lukk',
       goTo: 'Gå til',
       search: 'Søk',
       toFrontpage: 'Til forsiden',
       subjectOverview: 'Alle fag',
-      title: 'Innhold',
+      title: 'Åpne meny',
       modalLabel: 'Velg innhold',
       subjectPage: 'Fagforside',
       backToSubjectFrontpage: 'Tilbake til fagforsiden',
@@ -420,7 +451,7 @@ const messages = {
       'Utgåtte fag undervises det ikke i lenger, men det kan fortsatt være mulig å ta eksamen i faga som privatist.',
   },
   article: {
-    lastUpdated: 'Sist oppdatert',
+    lastUpdated: 'Sist faglig oppdatert',
     edition: 'Utgave',
     publisher: 'Utgiver',
     useContent: 'Regler for bruk',
@@ -457,7 +488,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
-    competenceGoalResourceSearchText: 'Søk på alle ressurser som passer til dette kompetansemålet',
+    competenceGoalResourceSearchText: 'Vis ressurser til kompetansemål {{goal}}',
     competenceGoalShowExtra: 'Vis støtte til læreplanen',
     competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
     competenceCoreLabel: 'Kjerneelement',
@@ -468,9 +499,10 @@ const messages = {
     competenceSubjectSearchText: 'Gå til fagsiden',
     competenceGoalClose: 'Lukk',
     competenceGoalTitle: 'Målet er at eleven skal kunne:',
-    competenceTabLK06label: 'Kompetansemål (LK06)',
-    competenceTabLK20label: 'Kompetansemål (LK20)',
+    competenceTabLK20label: 'Kompetansemål',
+    competenceTabLK20Tooltip: 'Vis kompetansemål',
     competenceTabCorelabel: 'Kjerneelement',
+    competenceTabCoreTooltip: 'Vis kjerneelementer',
     competenceGoalItem: {
       title: 'Kompetansemål og vurdering',
     },
@@ -598,6 +630,7 @@ const messages = {
     published: 'Publiseringsdato',
     rightsholder: 'Rettighetshaver',
     source: 'Kilde',
+    info: 'Lisensinformasjon',
   },
   errorMessage: {
     title: 'Ops, noe gikk galt',
@@ -614,13 +647,15 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'Om NDLA',
+    socialMedia: 'Sosiale medier',
     selectLanguage: 'Velg språk (language): ',
     vision: 'Sammen skaper vi framtidas læring',
-    footerLinksHeader: 'Andre NDLA-nettsteder',
-    footerInfo: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
-    footerEditiorInChief: 'Ansvarlig redaktør: ',
-    footerManagingEditor: 'Utgaveansvarlig: ',
-    footerPrivacyLink: 'Personvernerklæring og cookies',
+    linksHeader: 'Andre NDLA-nettsteder',
+    info: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
+    editorInChief: 'Ansvarlig redaktør:',
+    availabilityLink: 'Tilgjengelighetserklæring',
+    privacyLink: 'Personvernerklæring',
+    cookiesLink: 'Erklæring om informasjonskapsler',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',
@@ -679,12 +714,14 @@ const messages = {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
     se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
     se: 'Siiddut leat davvisámegiellii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -728,6 +765,7 @@ const messages = {
     hits: '{{count}} treff',
   },
   notions: {
+    tags: 'Liste og filter',
     usedIn: 'Brukes i',
     closeNotion: 'Lukk',
   },
@@ -749,13 +787,14 @@ const messages = {
     copyCode: 'Kopier kode til utklippstavle',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll fremover',
     movieMatchInCategory: 'Treff',
     loadingMovies: 'Henter filmer...',
     subjectsInMovies: 'Emner i film',
     about: {
-      heading: 'Om NDLA Film',
+      heading: 'Om NDLA film',
       more: 'Les mer om NDLA film',
       text: 'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
     },
@@ -795,8 +834,9 @@ const messages = {
       shortFilm: 'Kortfilm',
       all: 'Alle filmer A-Å',
     },
+    allMovieGroupTitleLabel: 'Filmer som starter på {{letter}}',
     moreAboutNdlaFilm: {
-      header: 'NDLA Film',
+      header: 'NDLA film',
       firstParagraph:
         'Filmene i filmtjenesten er hentet fra norsk og internasjonal filmarv og kobles mot læreplaner i flere fag. De er valgt ut av NDLAs redaksjoner i samarbeid med Norgesfilm AS.',
       secondParagraph:
@@ -841,6 +881,7 @@ const messages = {
     searching: 'Søker...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
+    selected: '{{count}} valgte',
   },
   blogPosts: {
     blog1: {
@@ -922,6 +963,8 @@ const messages = {
   title: 'Tittel',
   cancel: 'Avbryt',
   save: 'Lagre',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bildetekst',
@@ -1011,7 +1054,8 @@ const messages = {
     loggedInAs: 'Du er pålogget som {{role}}.',
     loggedInAsButton: 'Du er pålogget som {{role}}',
     role: {
-      employee: 'lærer',
+      employee: 'ansatt',
+      faculty: 'ansatt',
       staff: 'ansatt',
       student: 'elev',
     },
@@ -1058,10 +1102,13 @@ const messages = {
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
       edit: 'Rediger mappe',
+      updated: 'Mappen har blitt oppdatert',
+      defaultPageDescription: 'Legg til beskrivelse ved å redigere mappen',
       missingName: 'Skriv navn på mappe',
       folderDeleted: '"{{folderName}}" er slettet',
       folderCreated: '"{{folderName}}" er opprettet',
@@ -1072,6 +1119,34 @@ const messages = {
       onDragEndMissingOver: 'Mappen {{name}} ble sluppet',
       onDragCancel: 'Flytting avbrutt. Mappen {{name}} ble sluppet',
       dragHandle: 'Sorter mappen {{name}}',
+      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med',
+      sharing: {
+        share: 'Del mappe',
+        shared: 'Delt',
+        unShare: 'Delingen er avsluttet. Mappen er ikke lenger delt.',
+        link: 'Lenken er kopiert',
+        header: {
+          private: 'Vil du dele denne mappa?',
+          shared: 'Denne mappa er delt.',
+          unShare: 'Vil du avslutte deling av denne mappa?',
+        },
+        description: {
+          copy: 'Kopier og del denne lenka:',
+          private:
+            'Når du deler ei mappe, lager du ei lenke som er åpen for alle som har lenka. Du kan endre innholdet eller avslutte delinga når du ønsker det. ',
+          private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
+          shared:
+            'Nå kan du dele denne lenka med elever eller andre lærere. Hvis du gjør endringer i mappa, blir de synlige for alle du har delt lenka med.',
+          unShare:
+            'Når du avslutter deling, slutter lenka til den delte mappa og eventuelle undermapper å virke. Hvis du har delt lenka med noen, kan de ikke lenger se innholdet i mappa. Dette gjelder også lenker til eventuelle undermapper.',
+        },
+        button: {
+          share: 'Del mappe',
+          preview: 'Forhåndsvis mappe',
+          unShare: 'Avslutt deling',
+          shareLink: 'Kopier lenke',
+        },
+      },
     },
     tagList: 'Emneknagger',
     tags: '{{count}} emneknagg',
@@ -1083,6 +1158,7 @@ const messages = {
     confirmDeleteTag: 'Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.',
     myFolders: 'Mine mapper',
     myTags: 'Mine emneknagger',
+    mySubjects: 'Mine fag',
     newFolder: 'Ny mappe',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
@@ -1094,9 +1170,27 @@ const messages = {
     examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     help: 'Hjelp',
     more: 'Flere valg',
+    selectView: 'Velg visning',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
+    sharedFolder: {
+      info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
+      firstShared: 'Mappa ble delt første gang {{date}}',
+      learningpathUnsupported:
+        'Læringsstier kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
+      drawerButton: 'Vis mapper og ressurser',
+      drawerTitle: 'Mapper og ressurser',
+      description: {
+        all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
+        info1:
+          'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.',
+        info2: 'Du kan bla i artiklene ved å bruke menyen.',
+        info3:
+          'Hvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
+      },
+      willOpenInNewTab: 'Åpnes i ny fane.',
+    },
     myPage: {
       noRecents: 'Du har ikke lagt til noen ressurser ennå. Slik kommer du i gang:',
       imageAlt:
@@ -1128,10 +1222,18 @@ const messages = {
       newFavourite: 'Nylig lagt til',
       feide: 'Dette henter vi om deg gjennom Feide',
       feideWrongInfo:
-        'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstøtte',
+        'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstotte',
       storageInfo: {
         title: 'Slik lagrer du favorittressursene dine fra NDLA',
         text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',
+      },
+      favoriteSubjects: {
+        title: 'Slik lagrer du favorittfagene dine fra NDLA',
+        text: 'Klikk på hjerteknappen for å lagre et fag. Du vil da få mulighet til å lagre favorittfagene dine til senere. Du kan finne de igjen i Min NDLA eller på siden med alle fag.',
+      },
+      sharing: {
+        title: 'Nå kan lærere dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for å få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
@@ -1165,6 +1267,14 @@ const messages = {
       onDragCancel: 'Flytting avbrutt. Ressursen {{name}} ble sluppet',
       dragHandle: 'Sorter ressursen {{name}}',
     },
+    favoriteSubjects: {
+      title: 'Mine favorittfag',
+      subjects: '{{count}} fag',
+      subjects_0: '{{count}} fag',
+      subjects_plural: '{{count}} fag',
+      noFavorites: 'Du har ingen favorittfag!',
+      goToAllSubjects: 'Gå til alle fag',
+    },
   },
   snackbar: {
     close: 'Lukk melding',
@@ -1183,6 +1293,14 @@ const messages = {
     search: 'Søk',
     contact: 'Kontakt',
     help: 'Hjelp',
+  },
+  programme: {
+    grades: 'Trinn',
+  },
+  embed: {
+    conceptListError: 'Klarte ikke å vise forklaringsliste',
+    linkError: 'Klarte ikke å vise lenke.',
+    unsupported: `Embed {{type}} er ikke støttet.`,
   },
 };
 

@@ -1,18 +1,27 @@
-import React from 'react';
-import { spacing, colors, fonts, breakpoints } from '@ndla/core';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import React, { HTMLAttributes } from 'react';
+import { spacing, colors, fonts, breakpoints, misc } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { makeSrcQueryString } from '../Image';
 import FilmContentCardTags from './FilmContentCardTags';
 import { MovieResourceType, MovieType } from './types';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLElement> {
   movie: MovieType;
   columnWidth: number;
   distanceBetweenItems?: number;
   resourceTypes: MovieResourceType[];
   resizeThumbnailImages?: boolean;
   hideTags?: boolean;
+  className?: string;
 }
 
 const FilmContentCard = ({
@@ -22,56 +31,63 @@ const FilmContentCard = ({
   resourceTypes,
   resizeThumbnailImages,
   hideTags = false,
+  className,
+  ...rest
 }: Props) => {
   let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
+  const contentTypeId = `content-type-${id}`;
   if (resizeThumbnailImages && metaImage) {
     backgroundImage += '?width=480';
   }
 
   return (
-    <StyledSlideWrapper key={id} columnWidth={columnWidth} style={{ marginRight: `${distanceBetweenItems}px` }}>
-      <SafeLink to={path}>
-        <StyledImage
-          role="img"
-          columnWidth={columnWidth}
-          aria-label={(metaImage && metaImage.alt) || ''}
-          style={{
-            backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(600)})`,
-          }}>
-          {movieResourceTypes && !hideTags && (
-            <FilmContentCardTags movieResourceTypes={movieResourceTypes} resourceTypes={resourceTypes} />
-          )}
-        </StyledImage>
-        <StyledMovieTitle>{title}</StyledMovieTitle>
-      </SafeLink>
-    </StyledSlideWrapper>
+    <StyledSafeLink
+      onMouseDown={(e) => e.preventDefault()}
+      to={path}
+      aria-describedby={contentTypeId}
+      columnWidth={columnWidth}
+      className={className}
+      style={{ marginRight: `${distanceBetweenItems}px` }}
+      {...rest}
+    >
+      <StyledImage
+        role="img"
+        style={{
+          backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(600)})`,
+        }}
+      >
+        {movieResourceTypes && !hideTags && (
+          <FilmContentCardTags
+            id={contentTypeId}
+            movieResourceTypes={movieResourceTypes}
+            resourceTypes={resourceTypes}
+          />
+        )}
+      </StyledImage>
+      <StyledMovieTitle>{title}</StyledMovieTitle>
+    </StyledSafeLink>
   );
 };
 
-const StyledMovieTitle = styled.h2`
+const StyledMovieTitle = styled.span`
   ${fonts.sizes('14px', '20px')};
   font-weight: ${fonts.weight.semibold};
   color: #fff;
-  margin: ${spacing.xsmall} 0 ${spacing.normal};
-  min-height: ${spacing.large};
   @media (min-width: ${breakpoints.mobileWide}) {
     ${fonts.sizes('16px', '22px')};
   }
   @media (min-width: ${breakpoints.tablet}) {
-    margin: ${spacing.small} 0;
     ${fonts.sizes('18px', '24px')};
   }
 `;
 
-interface StyledImageProps {
-  columnWidth: number;
-}
-const StyledImage = styled.div<StyledImageProps>`
-  height: ${(props) => props.columnWidth * 0.5625}px;
+const StyledImage = styled.div`
+  aspect-ratio: 16/9;
   background-size: cover;
   background-color: ${colors.ndlaFilm.filmColorLight};
   background-position-x: center;
   background-position-y: center;
+  border-radius: ${misc.borderRadius};
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -93,11 +109,18 @@ interface StyledSlideWrapperProps {
   columnWidth: number;
 }
 
-const StyledSlideWrapper = styled.div<StyledSlideWrapperProps>`
+const shouldForwardProp = (p: string) => p !== 'columnWidth';
+
+const StyledSafeLink = styled(SafeLink, { shouldForwardProp })<StyledSlideWrapperProps>`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
   width: ${(props) => props.columnWidth}px;
   color: #fff;
   box-shadow: none;
   &:hover,
+  &:focus-within,
+  &:active,
   &:focus {
     ${StyledMovieTitle} {
       text-decoration: underline;

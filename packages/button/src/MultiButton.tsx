@@ -1,12 +1,10 @@
 /**
- * Copyright (c) 2020-present, NDLA.
+ * Copyright (c) 2022-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-// Deprecated. Use MultiButtonV2.
 
 import React, { useState, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -15,8 +13,19 @@ import { colors, misc } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
 import { css } from '@emotion/react';
 import { ChevronDown } from '@ndla/icons/common';
+import Button from './ButtonV2';
 
-import { Button, buttonStyle, outlineStyle, largeStyle } from './Button';
+const clipLeft = css`
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+`;
+
+const clipRight = css`
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+`;
 
 const StyledWrapper = styled.div`
   display: inline-flex;
@@ -24,15 +33,15 @@ const StyledWrapper = styled.div`
 `;
 
 type SpacerProps = {
-  outline?: boolean;
-  disabled?: boolean;
+  outline: boolean | undefined;
+  disabled: boolean | undefined;
 };
 
 const Spacer = styled.div<SpacerProps>`
-  background-color: ${(props) => (props.outline && !props.disabled ? colors.brand.primary : 'white')};
+  background-color: ${({ outline, disabled }) => (outline && !disabled ? colors.brand.primary : 'white')};
   width: 1px;
-  border-top: 2px solid ${(props) => (props.disabled ? colors.background.dark : colors.brand.primary)};
-  border-bottom: 2px solid ${(props) => (props.disabled ? colors.background.dark : colors.brand.primary)};
+  border-top: 2px solid ${({ disabled }) => (disabled ? colors.background.dark : colors.brand.primary)};
+  border-bottom: 2px solid ${({ disabled }) => (disabled ? colors.background.dark : colors.brand.primary)};
 `;
 
 const StyledMenuWrapper = styled.div`
@@ -45,55 +54,36 @@ const PopUpMenu = styled.ul`
   list-style: none;
 `;
 
-type StyledOptionProps = {
-  verticalPosition?: 'top' | 'bottom';
-  offsetY?: number | string;
-};
+interface StyledOptionProps {
+  verticalPosition: 'top' | 'bottom';
+  large: boolean | undefined;
+}
 
 const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
+  display: flex;
+  flex-direction: column;
+  background: ${colors.white};
+  border-radius: ${misc.borderRadius};
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4));
   position: absolute;
   right: 0;
-  ${(props) => {
-    if (props.verticalPosition === 'top') {
-      return css`
-        top: ${props.offsetY};
-      `;
-    } else if (props.verticalPosition === 'bottom') {
-      return css`
-        bottom: ${props.offsetY};
-      `;
-    }
-    return '';
+  ${({ large, verticalPosition }) => {
+    return css`
+      ${verticalPosition}: ${large ? 52 : 38}px;
+    `;
   }}
   z-index: 1;
 `;
 
-const StyledOptionContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-`;
+interface StyledButtonProps {
+  outline: boolean | undefined;
+}
 
-const StyledOptionWrapper = styled.div`
-  background: #fff;
-  border-radius: ${misc.borderRadius};
-  display: flex;
-  flex-direction: column;
-`;
-
-type StyledButtonProps = {
-  outline?: boolean;
-  large?: boolean;
-};
-const ButtonItem = styled.button<StyledButtonProps>`
-  ${buttonStyle};
-  ${(props) => props.outline && outlineStyle};
-  ${(props) => props.large && largeStyle};
+const ButtonItem = styled(Button)<StyledButtonProps>`
   ${(props) =>
     props.outline &&
     css`
-      border-color: white;
+      border-color: ${colors.white};
       &:hover,
       &:focus {
         border: 2px solid ${colors.brand.primary};
@@ -109,9 +99,10 @@ const ButtonItem = styled.button<StyledButtonProps>`
     transform: translateY(0) translateX(0);
   }
 `;
+
 const MenuItem = styled.li<StyledButtonProps>`
   margin: 0;
-  border-bottom: 1px solid ${(props) => (props.outline ? colors.brand.primary : `white`)};
+  border-bottom: 1px solid ${(props) => (props.outline ? colors.brand.primary : colors.white)};
   line-height: normal;
   border-radius: 0;
   &:first-of-type {
@@ -120,7 +111,7 @@ const MenuItem = styled.li<StyledButtonProps>`
       border-top-right-radius: ${misc.borderRadius};
     }
   }
-  &:last-child {
+  &:last-of-type {
     border-bottom: 0;
     ${ButtonItem} {
       border-bottom-left-radius: ${misc.borderRadius};
@@ -130,21 +121,21 @@ const MenuItem = styled.li<StyledButtonProps>`
 `;
 
 type StyledIconProps = {
-  rotate: number;
+  isOpen: boolean;
 };
 
 const StyledIcon = styled(ChevronDown)<StyledIconProps>`
   transition: transform 200ms ease;
-  transform: rotate(${(props) => props.rotate}deg);
+  transform: rotate(${({ isOpen }) => (isOpen ? 180 : 0)}deg);
 `;
 
-type ButtonProps = {
+interface ButtonProps {
   label: string;
   value: string;
   enable?: boolean;
-};
+}
 
-type Props = {
+interface Props {
   mainButton: ButtonProps;
   secondaryButtons: Array<ButtonProps>;
   onClick: (value: string) => void;
@@ -153,7 +144,7 @@ type Props = {
   large?: boolean;
   menuPosition?: 'top' | 'bottom';
   children?: ReactElement;
-};
+}
 
 export const MultiButton = ({
   mainButton,
@@ -167,90 +158,77 @@ export const MultiButton = ({
 }: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const { t } = useTranslation();
-  const setPopupState = (newState?: boolean) => {
-    toggleIsOpen(!!newState);
+  const setPopupState = (newState: boolean) => {
+    toggleIsOpen(newState);
   };
   const hideSecondaryButton = secondaryButtons.length === 0;
 
-  const clippedButtonProps = {
-    disabled: disabled,
-    large: large,
-    clippedButton: !hideSecondaryButton,
-    clippedButtonOutline: false,
-  };
-
-  const clippedButtonAttachmentOutline = {
-    disabled: secondaryButtons.find((button) => button.enable) ? false : disabled,
-    large: large,
-    clippedButtonAttachment: true,
-    clippedButtonAttachmentOutline: false,
-  };
-
-  if (outline) {
-    clippedButtonProps.clippedButton = false;
-    clippedButtonProps.clippedButtonOutline = true;
-    clippedButtonAttachmentOutline.clippedButtonAttachment = false;
-    clippedButtonAttachmentOutline.clippedButtonAttachmentOutline = true;
-  }
-
-  const popUpOffsetY = large ? '52px' : '38px';
   const verticalPosition = menuPosition === 'top' ? 'bottom' : 'top';
+
+  const isDisabled = secondaryButtons.find((button) => button.enable) ? false : disabled;
 
   return (
     <StyledWrapper>
       <Button
-        {...clippedButtonProps}
+        css={clipRight}
+        size={large ? 'large' : undefined}
+        disabled={disabled}
+        variant={outline && !disabled ? 'outline' : undefined}
         onClick={() => {
           onClick(mainButton.value);
-        }}>
+        }}
+      >
         {children || mainButton.label}
       </Button>
-      {!hideSecondaryButton && <Spacer outline={outline} disabled={disabled} />}
       {!hideSecondaryButton && (
-        <StyledMenuWrapper>
+        <>
+          <Spacer outline={outline} disabled={disabled} />
           <FocusTrapReact
             active={isOpen}
             focusTrapOptions={{
               onDeactivate: () => setPopupState(false),
               clickOutsideDeactivates: true,
               escapeDeactivates: true,
-            }}>
-            <div>
+            }}
+          >
+            <StyledMenuWrapper>
               <Button
-                {...clippedButtonAttachmentOutline}
+                css={clipLeft}
+                size={large ? 'large' : undefined}
+                variant={outline && !disabled ? 'outline' : undefined}
+                disabled={isDisabled}
                 onClick={() => setPopupState(!isOpen)}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
-                aria-label={isOpen ? t('multibutton.close') : t('multibutton.open')}>
-                <StyledIcon rotate={isOpen ? 180 : 0} aria-hidden="true" />
+                aria-label={isOpen ? t('multibutton.close') : t('multibutton.open')}
+              >
+                <StyledIcon isOpen={isOpen} aria-hidden="true" />
               </Button>
               {isOpen && (
-                <StyledOptionWrapperAnimation offsetY={popUpOffsetY} verticalPosition={verticalPosition}>
-                  <StyledOptionWrapper>
-                    <StyledOptionContent>
-                      <PopUpMenu role="menu">
-                        {secondaryButtons.map((button) => (
-                          <MenuItem key={button.value} outline={outline} role="menuitem">
-                            <ButtonItem
-                              disabled={!(button.enable ?? !disabled)}
-                              outline={outline}
-                              large={large}
-                              onClick={() => {
-                                onClick(button.value);
-                                setPopupState();
-                              }}>
-                              {button.label}
-                            </ButtonItem>
-                          </MenuItem>
-                        ))}
-                      </PopUpMenu>
-                    </StyledOptionContent>
-                  </StyledOptionWrapper>
+                <StyledOptionWrapperAnimation large={large} verticalPosition={verticalPosition}>
+                  <PopUpMenu role="menu">
+                    {secondaryButtons.map((button) => (
+                      <MenuItem key={button.value} outline={outline} role="menuitem">
+                        <ButtonItem
+                          disabled={!(button.enable ?? !disabled)}
+                          variant={outline ? 'outline' : undefined}
+                          outline={outline}
+                          size={large ? 'large' : undefined}
+                          onClick={() => {
+                            onClick(button.value);
+                            setPopupState(false);
+                          }}
+                        >
+                          {button.label}
+                        </ButtonItem>
+                      </MenuItem>
+                    ))}
+                  </PopUpMenu>
                 </StyledOptionWrapperAnimation>
               )}
-            </div>
+            </StyledMenuWrapper>
           </FocusTrapReact>
-        </StyledMenuWrapper>
+        </>
       )}
     </StyledWrapper>
   );

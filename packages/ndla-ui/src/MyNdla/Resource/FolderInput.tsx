@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { IconButton, IconButtonV2 } from '@ndla/button';
+import { IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import React, { ComponentProps, forwardRef, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -91,13 +91,14 @@ const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClo
                   aria-label={t('save')}
                   title={t('save')}
                   size="small"
-                  onClick={onSave}>
+                  onClick={onSave}
+                >
                   <Done />
                 </IconButtonV2>
               )}
-              <IconButton aria-label={t('close')} title={t('close')} size="small" ghostPill onClick={onClose}>
+              <IconButtonV2 aria-label={t('close')} title={t('close')} size="small" variant="ghost" onClick={onClose}>
                 <Cross />
-              </IconButton>
+              </IconButtonV2>
             </>
           )}
           <div aria-live="assertive">

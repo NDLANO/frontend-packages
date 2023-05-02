@@ -9,7 +9,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { IconButton } from '@ndla/button';
+import { IconButtonV2 } from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq, shadows, spacing } from '@ndla/core';
 import { Cross } from '@ndla/icons/action';
 import { Snack, useSnack } from './SnackbarProvider';
@@ -29,19 +29,6 @@ const DefaultSnackContainer = styled.div`
   align-items: center;
 `;
 
-const StyledCloseButton = styled(IconButton)`
-  svg {
-    color: ${colors.brand.greyMedium};
-  }
-  &:hover,
-  &:focus {
-    background: ${colors.brand.greyDark};
-    svg {
-      color: ${colors.brand.greyLightest};
-    }
-  }
-`;
-
 const ButtonWrapper = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     gap: ${spacing.xxsmall};
@@ -58,9 +45,15 @@ const DefaultSnack = (snack: Snack) => {
       {snack.content}
       <ButtonWrapper>
         {closable && (
-          <StyledCloseButton size="xsmall" outline onClick={() => closeSnack(snack)} aria-label={t('snackbar.close')}>
+          <IconButtonV2
+            size="xsmall"
+            variant="outline"
+            colorTheme="greyLighter"
+            onClick={() => closeSnack(snack)}
+            aria-label={t('snackbar.close')}
+          >
             <Cross />
-          </StyledCloseButton>
+          </IconButtonV2>
         )}
       </ButtonWrapper>
     </DefaultSnackContainer>

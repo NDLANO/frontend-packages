@@ -11,8 +11,8 @@ import SafeLink from '@ndla/safelink';
 import { Additional, Core } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import Button from '@ndla/button';
-import Modal, { ModalCloseButton } from '@ndla/modal';
+import { ButtonV2 } from '@ndla/button';
+import { ModalV2, ModalCloseButton } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
 
 const BreadcrumbPath = styled.div`
@@ -24,7 +24,9 @@ const BreadcrumbPath = styled.div`
   }
 `;
 
-const ModalButton = styled(Button)`
+const ModalButton = styled(ButtonV2)`
+  z-index: 1;
+  position: relative;
   ${fonts.sizes('14px', '20px')};
   box-shadow: none;
   &:hover {
@@ -97,10 +99,10 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
     <Breadcrumb breadcrumb={mainContext.breadcrumb}>
       &nbsp;
       {contexts.length > 1 && (
-        <Modal
+        <ModalV2
           label={t('searchPage.contextModal.ariaLabel')}
           activateButton={
-            <ModalButton link>
+            <ModalButton variant="link">
               {t('searchPage.contextModal.button', {
                 count: contexts.length - 1,
               })}
@@ -108,8 +110,7 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
           }
           animation="subtle"
           animationDuration={50}
-          backgroundColor="white"
-          size="medium">
+        >
           {(onClose: () => void) => (
             <>
               <ModalHeader>
@@ -130,7 +131,7 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
               </ModalContent>
             </>
           )}
-        </Modal>
+        </ModalV2>
       )}
     </Breadcrumb>
   );

@@ -171,7 +171,8 @@ function DropdownMenuItem({ disableSelected, item, isSelected, highlighted, ...r
       isSelected={isSelected}
       disabled={!!item.disabledText || (disableSelected && isSelected)}
       highlighted={highlighted}
-      {...rest}>
+      {...rest}
+    >
       {<DropdownMenuImage image={item.image} alt={item.alt} />}
       <StyledText>
         <StyledTitle>{item.title}</StyledTitle>

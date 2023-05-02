@@ -6,10 +6,11 @@
  *
  */
 
-import React, { ReactNode, useRef, useState } from 'react';
-import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
-import { SwipeEventData, useSwipeable } from 'react-swipeable';
-import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
+import React, { cloneElement, ReactElement, UIEvent, useMemo, useRef, useState } from 'react';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { breakpoints, mq, spacing } from '@ndla/core';
+import { ButtonWrapper, StyledSlideContent } from './Styles';
 
 export interface CalculatedProps {
   columnsPrSlide: number;
@@ -20,137 +21,154 @@ export interface CalculatedProps {
 }
 
 interface Props extends CalculatedProps {
-  items: ReactNode[];
-  slideBackwardsLabel: string;
-  slideForwardsLabel: string;
-  buttonClass: string;
-  wrapperClass: string;
-  disableScroll: boolean;
+  items: ReactElement[];
+  leftButton?: ReactElement;
+  rightButton?: ReactElement;
 }
+
+const CarouselWrapper = styled.div`
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  &:hover {
+    ${mq.range({ from: breakpoints.desktop })} {
+      ${ButtonWrapper} {
+        display: block;
+      }
+    }
+  }
+`;
+
+const SliderWrapper = styled.div`
+  display: flex;
+  position: relative;
+  overflow-x: scroll;
+  padding: ${spacing.xxsmall} 0;
+
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+`;
 
 export const Carousel = ({
   items = [],
   columnWidth,
   columnsPrSlide,
-  slideBackwardsLabel,
-  slideForwardsLabel,
-  disableScroll,
-  arrowOffset = 0,
   distanceBetweenItems = 0,
+  leftButton,
+  rightButton,
   margin = 0,
-  buttonClass = '',
-  wrapperClass = '',
 }: Props) => {
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [swiping, setSwiping] = useState(false);
-  const [swipeDistance, setSwipeDistance] = useState(0);
-  const [swipeSpeed, setSwipeSpeed] = useState(0);
   const slideshowRef = useRef<HTMLDivElement>(null);
+  const slideContainer = useRef<HTMLDivElement>(null);
+  const [showLeft, setShowLeft] = useState(false);
+  const [showRight, setShowRight] = useState(true);
+  const roundedColumnsPrSlide = useMemo(() => Math.floor(columnsPrSlide), [columnsPrSlide]);
+  const hideButtons = useMemo(() => columnsPrSlide >= items.length, [columnsPrSlide, items.length]);
 
-  const hideButtons = columnsPrSlide >= items.length;
-  const transformX = swipeDistance + slideIndex * (columnWidth + distanceBetweenItems);
-
-  // Callback methods
-  const slidePage = (direction: number) => {
-    const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
-    if (roundedColumnsPrSlide < items.length) {
-      let newSlideIndex = slideIndex + roundedColumnsPrSlide * direction;
-      if (newSlideIndex > 0) {
-        newSlideIndex = 0;
-      } else if (newSlideIndex < -(items.length - roundedColumnsPrSlide)) {
-        newSlideIndex = -(items.length - roundedColumnsPrSlide);
-      }
-      setSlideIndex(newSlideIndex);
-    }
-  };
-
-  // Swipe handler functions
-  const onSwipe = (eventData: SwipeEventData) => {
-    const moved = eventData.deltaX;
-    if (Math.abs(moved) < 15 || eventData.dir === 'Up' || eventData.dir === 'Down') {
-      return;
-    }
-    setSwiping(true);
-    setSwipeSpeed(swipeDistance - moved);
-    setSwipeDistance(moved);
-    const transformX = swipeDistance + slideIndex * columnWidth;
-
+  const onScroll = (e: UIEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    setShowLeft(target.scrollLeft !== 0);
     if (slideshowRef.current) {
-      slideshowRef.current.style.transform = `translateX(${transformX}px)`;
+      setShowRight(slideshowRef.current.offsetWidth > target.offsetWidth + target.scrollLeft);
     }
   };
 
-  const onSwipeEnd = () => {
-    if (!swiping) {
-      return;
+  const slidePage = (direction: 'left' | 'right') => {
+    const amount = columnWidth * roundedColumnsPrSlide;
+    const parent = slideshowRef.current?.parentElement;
+    parent?.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
+  };
+
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    const pos = {
+      left: slideContainer.current?.scrollLeft || 0,
+      x: e.clientX,
+    };
+
+    const slider = slideContainer.current;
+    const sliderContent = slideshowRef.current;
+
+    if (slider) {
+      slider.style.cursor = 'grabbing';
     }
+    document.body.style.cursor = 'grabbing';
 
-    const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
+    const mouseMoveHandler = (e: MouseEvent) => {
+      const dx = e.clientX - pos.x;
 
-    const moved = Math.round(
-      (-Math.min(columnWidth / 2, swipeSpeed * 5) + swipeDistance) / (columnWidth + distanceBetweenItems),
-    );
-    setSwipeDistance(0);
-    if (moved !== 0) {
-      let newSlideIndex = slideIndex + moved;
-      if (newSlideIndex > 0) {
-        newSlideIndex = 0;
-      } else if (newSlideIndex < -(items.length - columnsPrSlide)) {
-        newSlideIndex = -(items.length - roundedColumnsPrSlide);
+      if (sliderContent && !sliderContent?.style.pointerEvents) {
+        sliderContent.style.pointerEvents = 'none';
       }
+      if (slider) {
+        slider.style.userSelect = 'none';
+        slider.scrollLeft = pos.left - dx;
+      }
+    };
 
-      setSlideIndex(newSlideIndex);
-      setSwiping(false);
-    } else {
-      setSwiping(false);
-    }
+    const mouseUpHandler = () => {
+      document.removeEventListener('mousemove', mouseMoveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
+
+      sliderContent?.style.removeProperty('pointer-events');
+      slider?.style.removeProperty('user-select');
+      document.body.style.removeProperty('cursor');
+
+      if (slider) {
+        slider.style.cursor = 'grab';
+      }
+    };
+
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler, { once: true });
   };
-
-  const handlers = useSwipeable({
-    onSwiping: onSwipe,
-    onSwiped: onSwipeEnd,
-  });
 
   return (
-    <section {...handlers}>
-      <div>
-        <div css={slideWrapperCSS} className={wrapperClass}>
-          {!disableScroll && (
-            <>
-              <StyledButton
-                type="button"
-                aria-label={slideBackwardsLabel}
-                className={buttonClass}
-                prev
-                arrowOffset={arrowOffset}
-                dontShow={slideIndex === 0 || hideButtons}
-                onClick={() => slidePage(1)}>
-                <ChevronLeft />
-              </StyledButton>
-              <StyledButton
-                type="button"
-                aria-label={slideForwardsLabel}
-                className={buttonClass}
-                dontShow={hideButtons || Math.floor(columnsPrSlide) === items.length + slideIndex}
-                next
-                arrowOffset={arrowOffset}
-                onClick={() => slidePage(-1)}>
-                <ChevronRight />
-              </StyledButton>
-            </>
-          )}
-          <StyledSlideContent
-            swiping={swiping}
-            ref={slideshowRef}
-            style={{
-              padding: `0 ${margin}px`,
-              width: `${items.length * columnWidth + distanceBetweenItems * (items.length - 1) + margin * 2}px`,
-              transform: `translateX(${transformX}px)`,
-            }}>
-            {items.map((item) => item)}
-          </StyledSlideContent>
-        </div>
-      </div>
-    </section>
+    <CarouselWrapper>
+      <InteractButton
+        position="left"
+        button={leftButton}
+        onClick={() => slidePage('left')}
+        hidden={hideButtons || !showLeft}
+      />
+      <InteractButton
+        position="right"
+        button={rightButton}
+        onClick={() => slidePage('right')}
+        hidden={hideButtons || !showRight}
+      />
+      <SliderWrapper ref={slideContainer} tabIndex={-1} onScroll={onScroll} onMouseDown={onMouseDown}>
+        <StyledSlideContent margin={margin} ref={slideshowRef} gap={distanceBetweenItems}>
+          {items.map((item) => item)}
+        </StyledSlideContent>
+      </SliderWrapper>
+    </CarouselWrapper>
   );
+};
+
+interface InteractButtonProps {
+  position: 'left' | 'right';
+  onClick: () => void;
+  hidden?: boolean;
+  button?: ReactElement;
+}
+
+const leftStyle = css`
+  left: 0px;
+  margin-left: 10px;
+`;
+
+const rightStyle = css`
+  right: 0px;
+  margin-right: 10px;
+`;
+
+const InteractButton = ({ position, onClick, button, hidden }: InteractButtonProps) => {
+  if (!button || hidden) {
+    return null;
+  }
+  const style = position === 'left' ? leftStyle : rightStyle;
+
+  return <ButtonWrapper css={style}>{cloneElement(button, { onClick, 'tab-index': '0' })}</ButtonWrapper>;
 };

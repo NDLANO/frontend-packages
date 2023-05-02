@@ -1,6 +1,22 @@
 import React from 'react';
 import { FactBox } from '@ndla/ui';
-import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
+import { BY, NC, ND } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
+import { colors, fonts, spacing } from '@ndla/core';
+import styled from '@emotion/styled';
+
+const SourceList = styled.div`
+  display: flex;
+  border-top: 1px solid ${colors.brand.tertiary};
+  padding-top: ${spacing.small};
+  margin-top: ${spacing.small};
+  color: ${colors.brand.grey};
+  align-items: center;
+  ${fonts.sizes('15px')};
+  span {
+    margin-right: ${spacing.small};
+  }
+`;
 
 const FactBoxExample = () => (
   <FactBox>
@@ -12,11 +28,11 @@ const FactBoxExample = () => (
       Faktaboksen kan også brukes til å oppsummere innhold i slutten av en artikkel, og den kan inneholde lisensiering
       om eksternt innhold er brukt.
     </p>
-    <div className="c-source-list">
+    <SourceList>
       <LicenseByline marginRight locale="nb" licenseRights={[BY, NC, ND]} />
-      <span className="c-source-list__item">Gary Waters</span>
-      <span className="c-source-list__item">Kilde: SNL.no</span>
-    </div>
+      <span>Gary Waters</span>
+      <span>Kilde: SNL.no</span>
+    </SourceList>
   </FactBox>
 );
 

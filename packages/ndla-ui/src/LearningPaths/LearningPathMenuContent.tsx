@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { LearningPathRead } from '@ndla/icons/contentType';
 import { StepProps } from './LearningPathMenu';
@@ -142,6 +142,10 @@ const StyledContentType = styled.div`
   max-height: 36px;
 `;
 
+const HiddenSpan = styled.span`
+  ${utils.visuallyHidden};
+`;
+
 type StyledNavigationProps = {
   isOpen: boolean;
   invertedStyle?: boolean;
@@ -235,12 +239,6 @@ const LearningPathMenuContent = ({
   invertedStyle,
   onStepNavigate,
 }: Props) => {
-  const getContentTypeBadge = (type?: string) => {
-    if (!type) {
-      return <ContentTypeBadge type={constants.contentTypes.LEARNING_PATH} background size="small" />;
-    }
-    return <ContentTypeBadge type={type} background size="small" />;
-  };
   return (
     <StyledNavigation isOpen={isOpen} invertedStyle={invertedStyle}>
       <ul>
@@ -251,14 +249,22 @@ const LearningPathMenuContent = ({
             afterCurrent={index > currentIndex}
             isOpen={isOpen}
             invertedStyle={invertedStyle}
-            indexNumber={index}>
-            <SafeLink onClick={onStepNavigate} to={toLearningPathUrl(learningPathId, id)}>
+            indexNumber={index}
+          >
+            <SafeLink
+              onClick={onStepNavigate}
+              to={toLearningPathUrl(learningPathId, id)}
+              aria-describedby={`read-${id}`}
+            >
               <StyledContentType>
-                {getContentTypeBadge(type)}
+                <ContentTypeBadge type={type ?? constants.contentTypes.LEARNING_PATH} background size="small" />
                 {hasRead(id, cookies) && (
-                  <ReadIcon>
-                    <LearningPathRead />
-                  </ReadIcon>
+                  <div id={`read-${id}`} aria-hidden>
+                    <HiddenSpan>Lest</HiddenSpan>
+                    <ReadIcon>
+                      <LearningPathRead />
+                    </ReadIcon>
+                  </div>
                 )}
               </StyledContentType>
               <span>{title}</span>

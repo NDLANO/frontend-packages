@@ -6,11 +6,11 @@
  *
  */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { spacing, fonts } from '@ndla/core';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 
 export const StyledActiveFilterTitle = styled.span`
@@ -19,7 +19,7 @@ export const StyledActiveFilterTitle = styled.span`
   font-weight: ${fonts.weight.semibold};
 `;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(ButtonV2)`
   display: grid;
   grid-template-columns: 1fr auto;
 `;
@@ -35,21 +35,21 @@ type Props = {
   onFilterRemove: (value: string, name: string) => void;
 };
 
-const ActiveFilterContent = ({ filter, onFilterRemove }: Props) => {
+const ActiveFilterContent = forwardRef<HTMLButtonElement, Props>(({ filter, onFilterRemove }, ref) => {
   const { t } = useTranslation();
   return (
     <StyledButton
       aria-label={t('searchPage.searchFilterMessages.removeFilter', {
         filterName: filter.title,
       })}
-      type="button"
-      size="normal"
-      borderShape="rounded"
-      onClick={() => onFilterRemove(filter.value, filter.name)}>
+      ref={ref}
+      shape="pill"
+      onClick={() => onFilterRemove(filter.value, filter.name)}
+    >
       <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>
       <Cross />
     </StyledButton>
   );
-};
+});
 
 export default ActiveFilterContent;

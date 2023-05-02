@@ -1,0 +1,31 @@
+{
+  "name": "@ndla/types-embed",
+  "version": "1.1.1",
+  "description": "Types used for NDLA embeds",
+  "license": "GPL-3.0",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "tsc -p tsconfig.build.json"
+  },
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/types-embed"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "devDependencies": {
+    "@ndla/types-backend": "^0.2.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

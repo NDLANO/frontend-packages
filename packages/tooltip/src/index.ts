@@ -6,8 +6,11 @@
  *
  */
 
-import Tooltip from './Tooltip';
-import initTooltips from './initTooltips';
+import Tooltip from './Tooltip/Tooltip';
+import initTooltips from './Tooltip/initTooltips';
 
-export { initTooltips };
+import Popover from './Popover/Popover';
+import initPopovers from './Popover/initPopover';
+
+export { initTooltips, Popover, initPopovers };
 export default Tooltip;

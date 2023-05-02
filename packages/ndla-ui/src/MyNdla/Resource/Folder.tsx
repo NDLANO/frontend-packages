@@ -7,26 +7,26 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
-import { FolderOutlined } from '@ndla/icons/contentType';
-import { FileDocumentOutline } from '@ndla/icons/common';
+import React from 'react';
+import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
+import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
-import SafeLink from '@ndla/safelink';
-import { MenuButton, MenuItemProps } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
+import { ResourceTitleLink } from '../../Resource/resourceComponents';
+import FolderMenu from './FolderMenu';
 
-type LayoutType = 'list' | 'listLarger' | 'block';
+export type LayoutType = 'list' | 'listLarger' | 'block';
 interface LayoutProps {
   type: LayoutType;
 }
 
 const FolderWrapper = styled.div<LayoutProps>`
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
-  padding: ${spacing.nsmall};
-  gap: ${spacing.small};
 
   ${mq.range({ until: breakpoints.mobileWide })} {
     ${({ type }) =>
@@ -55,8 +55,10 @@ const FolderWrapper = styled.div<LayoutProps>`
   }
 `;
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled.div<LayoutProps>`
   display: flex;
+  margin: ${spacing.nsmall};
+  margin-bottom: ${({ type }) => type === 'block' && 0};
   flex-direction: row;
   align-items: center;
   gap: ${spacing.xsmall};
@@ -73,12 +75,6 @@ const IconWrapper = styled.div`
   }
 `;
 
-const StyledLink = styled(SafeLink)`
-  box-shadow: none;
-  color: ${colors.brand.primary};
-  flex: 1;
-`;
-
 const FolderTitle = styled.h2`
   ${fonts.sizes('16px', '20px')};
   font-weight: ${fonts.weight.semibold};
@@ -87,7 +83,7 @@ const FolderTitle = styled.h2`
 
   overflow: hidden;
   text-overflow: ellipsis;
-  // Unfortunate css needed for multi-line text overflow ellipsis.
+  /* Unfortunate css needed for multi-line text overflow ellipsis. */
   display: -webkit-box;
   -webkit-line-clamp: 1;
   line-clamp: 1;
@@ -99,28 +95,25 @@ const FolderTitle = styled.h2`
   }
 `;
 
-interface MenuWrapperProps {
-  hasMenuButton: boolean;
-}
-
-const MenuWrapper = styled.div<MenuWrapperProps>`
+const MenuWrapper = styled.div`
   overflow: hidden;
   display: flex;
+  z-index: 1;
   flex-direction: row;
   align-items: center;
-  gap: ${spacing.xsmall};
   justify-content: space-between;
-  margin: -${spacing.nsmall} -${(props) => (props.hasMenuButton ? spacing.nsmall : 0)} -${spacing.nsmall} 0;
 `;
 
 const CountContainer = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: row;
+  min-height: 44px;
   gap: ${spacing.small};
+  margin: 0 ${spacing.small} 0 ${spacing.nsmall};
 `;
 
-const IconCountWrapper = styled.div<LayoutProps>`
+const IconTextWrapper = styled.div<LayoutProps>`
   display: flex;
   align-items: center;
   gap: ${spacing.xxsmall};
@@ -152,10 +145,10 @@ const Count = ({ type, count, layoutType }: IconCountProps) => {
   if (!count) return null;
 
   return (
-    <IconCountWrapper type={layoutType}>
-      <Icon aria-label={t(`myNdla.${type}s`)} />
+    <IconTextWrapper type={layoutType}>
+      <Icon />
       <span>{t(`myNdla.${type}s`, { count })}</span>
-    </IconCountWrapper>
+    </IconTextWrapper>
   );
 };
 
@@ -166,34 +159,53 @@ interface Props {
   subResources?: number;
   description?: string;
   link: string;
-  type: LayoutType;
+  type?: LayoutType;
+  onViewTypeChange?: (type: LayoutType) => void;
   menuItems?: MenuItemProps[];
+  isShared?: boolean;
 }
 
-const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
+const Folder = ({
+  id,
+  link,
+  title,
+  subFolders,
+  subResources,
+  type = 'list',
+  menuItems,
+  isShared,
+  onViewTypeChange,
+}: Props) => {
   const { t } = useTranslation();
-  const linkRef = useRef<HTMLAnchorElement | null>(null);
-
-  const onClick = () => {
-    linkRef?.current?.click();
-  };
+  const Icon = isShared ? FolderShared : FolderOutlined;
 
   return (
-    <FolderWrapper type={type} onClick={onClick} id={id}>
-      <TitleWrapper>
-        <IconWrapper>
-          <FolderOutlined aria-label={t('myNdla.folder.folder')} />
+    <FolderWrapper type={type} id={id}>
+      <TitleWrapper type={type}>
+        <IconWrapper
+          aria-label={`${isShared ? `${t('myNdla.folder.sharing.shared')} ` : ''}${t('myNdla.folder.folder')}`}
+        >
+          <Icon />
         </IconWrapper>
-        <StyledLink to={link} ref={linkRef}>
+        <ResourceTitleLink to={link}>
           <FolderTitle title={title}>{title}</FolderTitle>
-        </StyledLink>
+        </ResourceTitleLink>
       </TitleWrapper>
-      <MenuWrapper hasMenuButton={!!menuItems?.length}>
+      <MenuWrapper>
         <CountContainer>
+          {isShared && (
+            // Information regarding the shared status of a folder is read previously, ignore this
+            <IconTextWrapper type={type} aria-hidden>
+              <Share />
+              <span>{t('myNdla.folder.sharing.shared')}</span>
+            </IconTextWrapper>
+          )}
           <Count layoutType={type} type={'folder'} count={subFolders} />
           <Count layoutType={type} type={'resource'} count={subResources} />
         </CountContainer>
-        {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && (
+          <FolderMenu menuItems={menuItems} viewType={type} onViewTypeChange={onViewTypeChange} />
+        )}
       </MenuWrapper>
     </FolderWrapper>
   );

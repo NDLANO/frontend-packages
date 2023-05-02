@@ -1,10 +1,9 @@
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
+import { ModalHeader, ModalBody, ModalCloseButton, ModalV2 } from '@ndla/modal';
+import { colors, spacing, mq, breakpoints } from '@ndla/core';
 import { ButtonV2 as Button } from '@ndla/button';
-import { OneColumn } from '..';
 import VisualElement from './VisualElement';
 
 const StyledAside = styled.aside`
@@ -15,9 +14,7 @@ const StyledAside = styled.aside`
   > div {
     padding: ${spacing.normal};
     width: 50%;
-    h1 {
-      @include font-size(22px, 26px);
-      font-weight: ${fonts.weight.bold};
+    h2 {
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: #fff;
@@ -25,7 +22,6 @@ const StyledAside = styled.aside`
     }
   }
   button {
-    text-align: left;
     color: #fff;
     &:hover,
     &:focus {
@@ -58,25 +54,26 @@ interface Props {
 
 const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm }: Props) => {
   const { t } = useTranslation();
+  const titleId = 'about-ndla-film-title';
   return (
     <div className="o-wrapper">
-      <StyledAside>
+      <StyledAside aria-labelledby={titleId}>
         <div>
           <VisualElement visualElement={aboutNDLAVideo.visualElement} />
         </div>
         <div>
-          <h1>{aboutNDLAVideo.title}</h1>
+          <h2 id={titleId}>{aboutNDLAVideo.title}</h2>
           <p>{aboutNDLAVideo.description}</p>
-          <Modal size="fullscreen" activateButton={<Button variant="link">{t('ndlaFilm.about.more')}</Button>}>
+          <ModalV2 size="full" activateButton={<Button variant="link">{t('ndlaFilm.about.more')}</Button>}>
             {(onClose) => (
-              <OneColumn cssModifier="medium">
+              <>
                 <ModalHeader>
-                  <ModalCloseButton onClick={onClose} title="Lukk" />
+                  <ModalCloseButton onClick={onClose} />
                 </ModalHeader>
                 <ModalBody>{moreAboutNdlaFilm}</ModalBody>
-              </OneColumn>
+              </>
             )}
-          </Modal>
+          </ModalV2>
         </div>
       </StyledAside>
     </div>

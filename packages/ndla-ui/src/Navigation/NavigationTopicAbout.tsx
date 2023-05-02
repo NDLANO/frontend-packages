@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 
@@ -145,12 +145,13 @@ export const NavigationTopicAbout = ({
           <StyledIngress invertedStyle={invertedStyle}>
             {parse(renderMarkdown(introduction))}
             <StyledButtonWrapper invertedStyle={invertedStyle}>
-              <Button
+              <ButtonV2
                 aria-expanded={!!showContent}
-                link
+                variant="link"
                 onClick={() => {
                   onToggleShowContent();
-                }}>
+                }}
+              >
                 {showContent ? (
                   <>
                     {t('navigation.showShorterDescription')} <ChevronUp />
@@ -160,7 +161,7 @@ export const NavigationTopicAbout = ({
                     {t('navigation.showLongerDescription')} <ChevronDown />
                   </>
                 )}
-              </Button>
+              </ButtonV2>
             </StyledButtonWrapper>
           </StyledIngress>
           {showContent && <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>}

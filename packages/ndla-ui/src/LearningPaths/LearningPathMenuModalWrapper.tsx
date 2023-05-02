@@ -10,7 +10,7 @@ import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { css } from '@emotion/react';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { LearningPath } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
 
@@ -43,11 +43,12 @@ const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
         animationDuration={200}
         size="fullscreen"
         activateButton={
-          <Button css={buttonToggleCss}>
+          <ButtonV2 css={buttonToggleCss}>
             <LearningPath />
             <span>{t('learningPath.openMenuTooltip')}</span>
-          </Button>
-        }>
+          </ButtonV2>
+        }
+      >
         {(closeModal: VoidFunction) => (
           <>
             <ModalHeader>

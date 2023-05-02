@@ -8,17 +8,18 @@ import { useTranslation } from 'react-i18next';
 const StyledLinksWrapper = styled.div`
   display: flex;
   align-items: flex-start;
-  section:first-of-type {
+  gap: ${spacing.normal};
+  div:first-of-type {
     margin-right: ${spacing.large};
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    section:first-of-type {
+    div:first-of-type {
       margin-right: ${spacingUnit * 4}px;
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
     flex-direction: column;
-    > section {
+    > div {
       margin-top: ${spacing.large};
     }
   }
@@ -86,7 +87,7 @@ const StyledSocialMediaLinkWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledHeaderLinks = styled.h1`
+const StyledHeaderLinks = styled.h3`
   ${fonts.sizes(16, 1.5)};
   font-weight: ${fonts.weight.semibold};
   margin: ${spacing.xsmall} 0;
@@ -97,11 +98,11 @@ const FooterLinks = ({ links }: FooterLinksProps) => {
   return (
     <>
       <StyledLinksWrapper>
-        <section>
-          <StyledHeaderLinks>
-            {t('footer.footerLinksHeader')} <Launch />
+        <div>
+          <StyledHeaderLinks id="otherLinks">
+            {t('footer.linksHeader')} <Launch />
           </StyledHeaderLinks>
-          <StyledNav>
+          <StyledNav aria-labelledby="otherLinks">
             {commonLinks.map((link) => (
               <div key={link.url}>
                 <StyledSafeLink
@@ -109,26 +110,25 @@ const FooterLinks = ({ links }: FooterLinksProps) => {
                   aria-label={t(`footer.ndlaLinks.${link.key}`)}
                   to={link.url}
                   target="_blank"
-                  rel="noopener noreferrer">
+                  rel="noopener noreferrer"
+                >
                   {t(`footer.ndlaLinks.${link.key}`)}
                 </StyledSafeLink>
               </div>
             ))}
           </StyledNav>
-        </section>
-        <section>
-          <StyledNav>
-            {links.map((link) => (
-              <StyledSocialMediaLinkWrapper key={link.to}>
-                <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
-                <StyledSafeLink to={link.to}>
-                  {link.text}
-                  <Forward />
-                </StyledSafeLink>
-              </StyledSocialMediaLinkWrapper>
-            ))}
-          </StyledNav>
-        </section>
+        </div>
+        <StyledNav aria-label={t('footer.socialMedia')}>
+          {links.map((link) => (
+            <StyledSocialMediaLinkWrapper key={link.to}>
+              <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
+              <StyledSafeLink to={link.to}>
+                {link.text}
+                <Forward />
+              </StyledSafeLink>
+            </StyledSocialMediaLinkWrapper>
+          ))}
+        </StyledNav>
       </StyledLinksWrapper>
     </>
   );

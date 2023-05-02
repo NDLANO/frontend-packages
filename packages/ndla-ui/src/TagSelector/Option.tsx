@@ -43,7 +43,8 @@ const Option = ({ innerProps, innerRef, children, isSelected, isFocused }: Optio
       selected={isSelected}
       css={buttonStyle({ colorTheme: 'lighter', variant: 'ghost', shape: 'sharp' })}
       ref={innerRef}
-      {...innerProps}>
+      {...innerProps}
+    >
       {children}
       {isSelected && <StyledCheck />}
     </StyledMenuOption>

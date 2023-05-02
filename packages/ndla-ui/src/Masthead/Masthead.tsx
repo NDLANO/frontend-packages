@@ -9,7 +9,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode } from 'react';
 import { MessageBanner } from '../Messages';
 import SkipToMainContent from './SkipToMainContent';
 
@@ -59,13 +59,6 @@ const MastheadContent = styled.div`
   display: flex;
   height: 84px;
   justify-content: space-between;
-  ${mq.range({ from: breakpoints.tablet })} {
-    flex-direction: row;
-    padding: ${spacing.small} ${spacing.normal};
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    padding: ${spacing.small} ${spacing.large};
-  }
 `;
 
 interface StyledMastheadProps {
@@ -117,26 +110,6 @@ interface Props {
 }
 
 export const Masthead = ({ children, fixed, ndlaFilm, skipToMainContentId, messages, onCloseAlert }: Props) => {
-  const mastheadRef = useRef<HTMLDivElement>(null);
-  const focusHandler = (evt: FocusEvent) => {
-    const mastheadHeight = (mastheadRef.current && mastheadRef.current.offsetHeight) || 0;
-    const { target } = evt;
-    const rect = (target as HTMLElement).getBoundingClientRect();
-    // Focused target is hidden behind Masthead
-    if (rect.y < mastheadHeight) {
-      window.scrollTo(window.scrollX, window.scrollY - (mastheadHeight + 10));
-    }
-  };
-
-  useEffect(() => {
-    if (fixed) {
-      document.addEventListener('focusin', focusHandler);
-      return () => {
-        document.removeEventListener('focusin', focusHandler);
-      };
-    }
-  }, [fixed]);
-
   return (
     <>
       {skipToMainContentId && <SkipToMainContent skipToMainContentId={skipToMainContentId} />}
@@ -145,7 +118,8 @@ export const Masthead = ({ children, fixed, ndlaFilm, skipToMainContentId, messa
           <MessageBanner
             key={message.number}
             showCloseButton={message.closable}
-            onClose={() => onCloseAlert?.(message.number)}>
+            onClose={() => onCloseAlert?.(message.number)}
+          >
             {message.content}
           </MessageBanner>
         ))}

@@ -16,7 +16,7 @@ import SearchItems from './SearchItems';
 import { SearchItemProps } from './SearchItem';
 import ResultNavigation, { PaginationType } from './ResultNavigation';
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -81,7 +81,7 @@ const SearchTypeResult = ({
     )}
     <SearchTypeHeader onFilterClick={onFilterClick} filters={filters} totalCount={totalCount} type={type} />
     <SearchItems items={items} type={type} viewType={viewType} />
-    {pagination && <ResultNavigation {...pagination} />}
+    {pagination && <ResultNavigation {...pagination} type={type} />}
     {children}
   </Wrapper>
 );

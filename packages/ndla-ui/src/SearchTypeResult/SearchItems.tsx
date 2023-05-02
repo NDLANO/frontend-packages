@@ -8,6 +8,7 @@
 
 import React, { memo } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import SearchItem, { SearchItemProps } from './SearchItem';
 import { ContentType } from './SearchTypeResult';
@@ -18,41 +19,49 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-type ContainerProps = {
+interface ContainerProps {
   viewType: Props['viewType'];
-};
+}
 
-const Container = styled.div<ContainerProps>`
+const Container = styled.ul<ContainerProps>`
   display: grid;
+  align-items: flex-start;
+  list-style: none;
   row-gap: ${spacing.normal};
   grid-template-columns: repeat(1, 1fr);
 
   ${(props) =>
     props.viewType === 'grid' &&
-    `
-          ${mq.range({ from: breakpoints.tablet })} {
-    column-gap: ${spacing.normal};
-    grid-template-columns: repeat(2, 1fr);
-  }
+    css`
+      ${mq.range({ from: breakpoints.tablet })} {
+        column-gap: ${spacing.normal};
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-  ${mq.range({ from: breakpoints.desktop })} {
-    grid-template-columns: repeat(3, 1fr);
-  }`}
+      ${mq.range({ from: breakpoints.desktop })} {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    `}
 `;
 
-type Props = {
+interface Props {
   items: SearchItemProps[];
   type?: ContentType;
   viewType?: 'grid' | 'list';
-};
+}
+
 const SearchItems = ({ items, type, viewType = 'grid' }: Props) => {
   return (
     <Wrapper>
-      <Container viewType={viewType}>
+      <Container aria-labelledby={`searchitem-header-${type}`} viewType={viewType}>
         {items.map((item) => {
           const contentType = type || item.type;
           const Component = viewType === 'list' ? SearchItemList : SearchItem;
-          return <Component item={item} key={`${item.id}`} type={contentType} />;
+          return (
+            <li key={`${item.id}`}>
+              <Component item={item} type={contentType} />
+            </li>
+          );
         })}
       </Container>
     </Wrapper>

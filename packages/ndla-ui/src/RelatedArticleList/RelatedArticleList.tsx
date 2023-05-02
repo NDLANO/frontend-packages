@@ -1,8 +1,9 @@
 import React, { Children, cloneElement, ReactElement } from 'react';
 import BEMHelper from 'react-bem-helper';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
+import { HeadingLevel } from '../types';
 
 const classes = new BEMHelper({
   name: 'related-articles',
@@ -51,13 +52,14 @@ interface Props {
     showMore: string;
     showLess: string;
   };
+  headingLevel: HeadingLevel;
   children?: ReactElement;
   dangerouslySetInnerHTML?: {
     __html: string;
   };
   articleCount?: number;
 }
-const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML }: Props) => {
+const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML, headingLevel }: Props) => {
   const clonedChildren =
     !dangerouslySetInnerHTML && children
       ? Children.map(children, (article, i) =>
@@ -70,18 +72,21 @@ const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetIn
 
   return (
     <section {...classes('')}>
-      <SectionHeading className={classes('component-title').className}>{messages.title}</SectionHeading>
+      <SectionHeading headingLevel={headingLevel} className={classes('component-title').className}>
+        {messages.title}
+      </SectionHeading>
       <div {...classes('articles')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
         {clonedChildren}
       </div>
       {childrenCount > 2 && (
-        <Button
+        <ButtonV2
           data-type="related-article-button"
           data-showmore={messages.showMore}
           data-showless={messages.showLess}
-          outline>
+          variant="outline"
+        >
           {messages.showMore}
-        </Button>
+        </ButtonV2>
       )}
     </section>
   );

@@ -8,14 +8,16 @@
 import React from 'react';
 import { Carousel, CalculatedCarouselProps } from '@ndla/carousel';
 import styled from '@emotion/styled';
+import { IconButtonV2 } from '@ndla/button';
+import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import FilmContentCard from './FilmContentCard';
 import { MovieResourceType, MovieType } from './types';
-import { StyledHeadingH1 } from './filmStyles';
+import { StyledHeadingH2 } from './filmStyles';
 
 interface Props {
   movies: MovieType[];
-  name: string;
+  name?: string;
   slideBackwardsLabel: string;
   slideForwardsLabel: string;
   resourceTypes: MovieResourceType[];
@@ -40,13 +42,18 @@ const FilmMovieList = ({
   resizeThumbnailImages,
 }: Props) => (
   <StyledSection>
-    <StyledHeadingH1 marginLeft={autoSizedProps.margin}>{name}</StyledHeadingH1>
+    {!!name && <StyledHeadingH2 marginLeft={autoSizedProps.margin}>{name}</StyledHeadingH2>}
     <Carousel
-      disableScroll={false}
-      slideBackwardsLabel={slideBackwardsLabel}
-      slideForwardsLabel={slideForwardsLabel}
-      buttonClass="c-film-movielist__carousel-buttons"
-      wrapperClass="c-film-movielist__carousel-wrapper-buttons"
+      leftButton={
+        <IconButtonV2 aria-label={slideBackwardsLabel}>
+          <ChevronLeft />
+        </IconButtonV2>
+      }
+      rightButton={
+        <IconButtonV2 aria-label={slideForwardsLabel}>
+          <ChevronRight />
+        </IconButtonV2>
+      }
       items={movies.map((movie) => (
         <FilmContentCard
           key={movie.id}

@@ -7,9 +7,9 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
+import React from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
-import { MenuButton, MenuItemProps } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
 import Image from '../Image';
 import {
   CompressedTagList,
@@ -23,10 +23,12 @@ import {
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { contentTypeMapping } from '../model/ContentType';
+import { SettingsMenu } from '../MyNdla';
 
 const ListResourceWrapper = styled.div`
   flex: 1;
   display: grid;
+  position: relative;
   grid-template-columns: auto minmax(50px, 1fr) auto;
   grid-template-areas:
     'image  topicAndTitle   tags'
@@ -39,8 +41,6 @@ const ListResourceWrapper = styled.div`
       'tags                 tags';
   }
 
-  padding: ${spacing.small};
-  column-gap: ${spacing.small};
   cursor: pointer;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
@@ -64,10 +64,12 @@ const ImageWrapper = styled.div<StyledImageProps>`
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
   ${mq.range({ until: breakpoints.mobileWide })} {
     width: 56px;
+    margin-bottom: 0;
   }
   overflow: hidden;
   border-radius: 2px;
   display: flex;
+  margin: ${spacing.small};
   align-items: center;
   justify-content: center;
   aspect-ratio: 4/3;
@@ -83,8 +85,10 @@ const StyledResourceDescription = styled.p`
   line-clamp: 2;
   line-height: 1em;
   height: 3.1em;
-  margin: 0;
-  margin-top: ${spacing.xxsmall};
+  margin: 0 ${spacing.small} ${spacing.small} 0;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    margin: 0 ${spacing.small};
+  }
   overflow: hidden;
   ${fonts.sizes(16)};
   text-overflow: ellipsis;
@@ -95,30 +99,31 @@ const StyledResourceDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-interface TagsAndActionProps {
-  hasMenuButton: boolean;
-}
-
-const TagsandActionMenu = styled.div<TagsAndActionProps>`
+const TagsandActionMenu = styled.div`
   grid-area: tags;
+  z-index: 1;
   box-sizing: content-box;
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
   align-self: flex-start;
   justify-items: flex-end;
-  margin: -${spacing.small} -${(props) => (props.hasMenuButton ? spacing.small : 0)} 0 0;
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;
-  }
   overflow: hidden;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    min-height: ${spacing.small};
+  }
 `;
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
   display: flex;
+  margin: ${spacing.small} 0;
   flex-direction: column;
   overflow: hidden;
+  margin-right: ${spacing.small};
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    margin-bottom: 0;
+  }
 `;
 
 interface ListResourceImageProps {
@@ -192,7 +197,6 @@ export interface ListResourceProps {
   tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   resourceTypes: { id: string; name: string }[];
   tags?: string[];
   description?: string;
@@ -209,7 +213,6 @@ const ListResource = ({
   tags,
   resourceImage,
   resourceTypes,
-  headingLevel = 'h2',
   description,
   menuItems,
   isLoading = false,
@@ -217,17 +220,10 @@ const ListResource = ({
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
-  const linkRef = useRef<HTMLAnchorElement>(null);
   const firstContentType = resourceTypes?.[0]?.id ?? '';
-  const Title = ResourceTitle.withComponent(headingLevel);
-  const handleClick = () => {
-    if (linkRef.current) {
-      linkRef.current.click();
-    }
-  };
 
   return (
-    <ListResourceWrapper onClick={handleClick} id={id}>
+    <ListResourceWrapper id={id}>
       <ImageWrapper imageSize={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}
@@ -238,16 +234,16 @@ const ListResource = ({
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
-            <Title title={title}>{title}</Title>
+          <StyledLink to={link} target={targetBlank ? '_blank' : undefined}>
+            <ResourceTitle title={title}>{title}</ResourceTitle>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>
       </TopicAndTitleWrapper>
       {showDescription && <Description description={description} loading={isLoading} />}
-      <TagsandActionMenu hasMenuButton={!!(tags && tags.length > 3) || !!(menuItems && menuItems.length)}>
+      <TagsandActionMenu>
         {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-        {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && <SettingsMenu menuItems={menuItems} />}
       </TagsandActionMenu>
     </ListResourceWrapper>
   );

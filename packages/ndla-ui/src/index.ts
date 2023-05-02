@@ -9,10 +9,22 @@
 // Ignore typescript implicit any warning and export all javascript components
 // Move components to this file when they are migrated to typescript
 
-/** @ts-ignore */
-export * from './index-javascript';
-
 export { default as SectionHeading } from './SectionHeading';
+export {
+  ConceptNotionV2,
+  ImageEmbed,
+  AudioEmbed,
+  H5pEmbed,
+  ExternalEmbed,
+  IframeEmbed,
+  FootnoteEmbed,
+  BrightcoveEmbed,
+  ContentLinkEmbed,
+  RelatedContentEmbed,
+  ConceptEmbed,
+  ConceptListEmbed,
+  UnknownEmbed,
+} from './Embed';
 
 export {
   ArticleByline,
@@ -28,11 +40,9 @@ export {
 
 export { CompetenceGoalsDialog } from './CompetenceGoals';
 
-export { default as TopicIntroductionList } from './TopicIntroductionList';
-
 export { default as Table } from './Table';
 
-export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
+export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
 
 export { createUniversalPortal } from './utils/createUniversalPortal';
 
@@ -44,11 +54,11 @@ export { default as Portrait } from './Portrait';
 
 export { default as ContentLoader } from './ContentLoader';
 
-export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
+export { default as RelatedArticleList, RelatedArticle, RelatedArticleListV2 } from './RelatedArticleList';
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
-export { default as FileList, File } from './FileList';
+export { default as FileList, File, FileListV2, FileV2, PdfFile } from './FileList';
 
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
 
@@ -69,7 +79,7 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
-export { default as FactBox } from './FactBox';
+export { default as FactBox, FactBoxV2 } from './FactBox';
 
 export { default as Image, ImageLink, makeSrcQueryString } from './Image';
 export type { ImageCrop, ImageFocalPoint } from './Image';
@@ -126,7 +136,17 @@ export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
 export { default as MastheadAuthModal } from './Masthead/MastheadAuthModal';
 export { UserInfo } from './User';
 export { default as AuthModal } from './User';
-export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType, FeideMembershipType, FeideUser } from './User';
+export type {
+  AffiliationType,
+  FeideGoGroup,
+  FeideGroup,
+  FeideOrg,
+  FeideUserApiType,
+  FeideMembershipType,
+  FeideUser,
+} from './User';
+
+export { default as resourceTypeColor } from './utils/resourceTypeColor';
 
 export { default as CreatedBy } from './CreatedBy';
 
@@ -161,6 +181,7 @@ export { default as messagesNB } from './locale/messages-nb';
 export { default as messagesNN } from './locale/messages-nn';
 export { default as messagesEN } from './locale/messages-en';
 export { default as messagesSE } from './locale/messages-se';
+export { default as messagesSMA } from './locale/messages-sma';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
 
@@ -211,19 +232,13 @@ export {
 } from './ContentTypeBadge';
 
 export {
-  SubjectAbout,
-  SubjectArchive,
-  SubjectCarousel,
   SubjectChildContent,
   SubjectContent,
-  SubjectFlexChild,
   SubjectFlexWrapper,
   SubjectHeader,
-  SubjectLinks,
   SubjectNewContent,
   SubjectSecondaryContent,
   SubjectSectionTitle,
-  SubjectShortcuts,
   SubjectSidebarWrapper,
   SubjectSocialContent,
   SubjectSocialSection,
@@ -233,7 +248,7 @@ export {
 
 export { default as ContentCard } from './ContentCard';
 
-export { default as CopyParagraphButton } from './CopyParagraphButton';
+export { default as CopyParagraphButton, CopyParagraphButtonV2 } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 
@@ -241,7 +256,7 @@ export { Notion, ConceptNotion } from './Notion';
 export type { NotionVisualElementType, ConceptNotionType } from './Notion';
 
 export { BannerCard } from './BannerCard';
-export { Folder, FolderInput } from './MyNdla';
+export { Folder, FolderInput, FolderMenu } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';
@@ -255,3 +270,6 @@ export type { TreeStructureProps } from './TreeStructure';
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
 export { default as LetterFilter } from './LetterFilter';
+export { BlogPostV2 } from './BlogPost';
+export { KeyPerformanceIndicator } from './KeyPerformanceIndicator';
+export { default as ContactBlock } from './ContactBlock';

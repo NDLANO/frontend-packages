@@ -76,13 +76,11 @@ const MessageBoxWrapper = styled.div`
 
 type subjectProps = {
   name: string;
-  url?: string;
   path?: string;
   id?: string;
 };
 type categoryProps = {
   type?: string;
-  name?: string;
   visible?: boolean;
   message?: string;
   subjects: subjectProps[];
@@ -165,7 +163,8 @@ const renderList = (
                           onNavigate();
                         }
                       }}
-                      to={subject.url || subject.path || ''}>
+                      to={subject.path || ''}
+                    >
                       {subject.name}
                     </SafeLink>
                     <StyledSpacingElement />
@@ -213,22 +212,12 @@ const FrontpageAllSubjects = ({
     allSubjects.push(...category.subjects);
     category.visible &&
       data.push({
-        title: category.name || t(`subjectCategories.${category.type}`),
+        title: t(`subjectCategories.${category.type}`),
         content: (
           <>
             {category.message && (
               <MessageBoxWrapper>
                 <MessageBox>{category.message}</MessageBox>
-              </MessageBoxWrapper>
-            )}
-            {category.name === t('subjectCategories.beta') && (
-              <MessageBoxWrapper>
-                <MessageBox>{t('messageBoxInfo.frontPageBeta')}</MessageBox>
-              </MessageBoxWrapper>
-            )}
-            {category.name === t('subjectCategories.archive') && (
-              <MessageBoxWrapper>
-                <MessageBox>{t('messageBoxInfo.frontPageExpired')}</MessageBox>
               </MessageBoxWrapper>
             )}
             {renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects)}

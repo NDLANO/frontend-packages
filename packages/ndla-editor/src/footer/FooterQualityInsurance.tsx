@@ -59,14 +59,16 @@ const FooterQualityInsurance = ({ children, messages }: Props) => {
         &:focus {
           text-decoration: underline;
         }
-      `}>
+      `}
+    >
       {(onClosePopup: () => void) => (
         <StyledWrapper>
           <h1
             css={css`
               ${typography.smallerHeadingUppercase};
               margin: ${spacing.xsmall} 0 ${spacing.small} 0;
-            `}>
+            `}
+          >
             {messages.heading}
           </h1>
           {children(onClosePopup)}

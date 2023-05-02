@@ -8,47 +8,42 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
-import { OneColumn } from '../Layout';
-import { Locale } from '../types';
-
-import PrivacyNb from './privacy_nb';
-import PrivacyNn from './privacy_nn';
-import PrivacyEn from './privacy_en';
 
 type FooterPrivacyProps = {
-  label: string;
-  lang: Locale;
+  privacyLinks: {
+    label: string;
+    url: string;
+  }[];
 };
 
-const privacyTexts = (lang: string) => {
-  if (lang === 'nn') {
-    return <PrivacyNn />;
-  }
-  if (lang === 'en') {
-    return <PrivacyEn />;
-  }
-  return <PrivacyNb />;
-};
-
-const StyledPrivacyButton = styled.button`
+const StyledPrivacyLink = styled.a`
   background: none;
   color: #fff;
   border: 0;
   padding: 0;
   box-shadow: ${misc.textLinkBoxShadow};
   cursor: pointer;
-  margin-bottom: ${spacing.large};
   &:hover,
   &:focus {
     box-shadow: none;
   }
 `;
+
+const StyledLinkSpacer = styled.span`
+  margin-left: ${spacing.xxsmall};
+  margin-right: ${spacing.xxsmall};
+  margin-bottom: ${spacing.large};
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    visibility: hidden;
+  }
+`;
+
 const StyledFooterText = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   > span {
     padding: ${spacing.xsmall} 0;
     text-align: center;
@@ -64,25 +59,22 @@ const StyledFooterText = styled.div`
     > span {
       padding-bottom: ${spacing.xsmall};
     }
+    flex-direction: column;
   }
+  margin-bottom: ${spacing.large};
 `;
 
-const FooterPrivacy = ({ lang, label }: FooterPrivacyProps) => (
-  <StyledFooterText>
-    <Modal
-      label={label}
-      activateButton={<StyledPrivacyButton type="button">{label}</StyledPrivacyButton>}
-      size="fullscreen">
-      {(onClose: () => void) => (
-        <OneColumn cssModifier="medium">
-          <ModalHeader>
-            <ModalCloseButton onClick={onClose} title="Lukk" />
-          </ModalHeader>
-          <ModalBody>{privacyTexts(lang)}</ModalBody>
-        </OneColumn>
-      )}
-    </Modal>
-  </StyledFooterText>
-);
+const FooterPrivacy = ({ privacyLinks }: FooterPrivacyProps) => {
+  return (
+    <StyledFooterText>
+      {privacyLinks.map((link, index) => (
+        <div key={link.label}>
+          {index > 0 && <StyledLinkSpacer aria-hidden>|</StyledLinkSpacer>}
+          <StyledPrivacyLink href={link.url}>{link.label}</StyledPrivacyLink>
+        </div>
+      ))}
+    </StyledFooterText>
+  );
+};
 
 export default FooterPrivacy;

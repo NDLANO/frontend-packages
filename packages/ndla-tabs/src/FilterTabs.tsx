@@ -198,7 +198,8 @@ class FilterTabs extends Component<Props, State> {
             }}
             onKeyDown={(event) => {
               this.changeMainTabs(mainTabIndex, event);
-            }}>
+            }}
+          >
             {option.title}
           </button>
         </li>
@@ -264,7 +265,8 @@ class FilterTabs extends Component<Props, State> {
               } else {
                 this.changeMainTabs(mainTabIndex, event);
               }
-            }}>
+            }}
+          >
             {option.title}
           </button>
         </li>
@@ -307,7 +309,8 @@ class FilterTabs extends Component<Props, State> {
               });
             }
           }}
-          ref={this.dropdownTabRef}>
+          ref={this.dropdownTabRef}
+        >
           {moreLabel} <ArrowDropDown />
         </button>
         <div {...classes('tab-dropdown', tabDropdownModifier)} style={{ width: `${minimumWidthDropdownContainer}px` }}>

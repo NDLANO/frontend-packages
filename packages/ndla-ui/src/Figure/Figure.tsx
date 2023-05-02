@@ -13,9 +13,9 @@ import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { isFunction as isFunctionHelper, parseMarkdown } from '@ndla/util';
 import { Link as LinkIcon } from '@ndla/icons/common';
-import { LicenseByline } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
 import SafeLink from '@ndla/safelink';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { isMobile } from 'react-device-detect';
 const classes = new BEMHelper({
   name: 'figure',
@@ -25,6 +25,7 @@ const classes = new BEMHelper({
 export const FigureCaption = ({
   figureId,
   id,
+  modalButton,
   children,
   caption,
   authors,
@@ -36,9 +37,11 @@ export const FigureCaption = ({
   hasLinkedVideo,
   hideIconsAndAuthors,
   linkedVideoMessages,
+  linkedVideoButton,
+  className,
 }: FigureCaptionProps) => {
   return (
-    <figcaption {...classes('caption', hideFigcaption && !isMobile ? 'hidden-caption' : undefined)}>
+    <figcaption {...classes('caption', hideFigcaption && !isMobile ? 'hidden-caption' : undefined, className)}>
       {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
       <footer {...classes('byline')}>
         <div {...classes('byline-licenselist')}>
@@ -48,26 +51,28 @@ export const FigureCaption = ({
                 <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
               )}
               <div>
-                <Button
-                  borderShape="rounded"
-                  outline
-                  size="small"
-                  type="button"
-                  data-dialog-trigger-id={id}
-                  data-dialog-source-id={figureId}>
-                  {reuseLabel}
-                </Button>
-                {hasLinkedVideo && (
-                  <Button
-                    borderShape="rounded"
-                    outline
+                {modalButton ? (
+                  modalButton
+                ) : (
+                  <ButtonV2
+                    shape="pill"
+                    variant="outline"
                     size="small"
-                    type="button"
-                    {...classes('toggleAlternativeVideo')}>
-                    <span className="original">{linkedVideoMessages?.alternative}</span>
-                    <span className="alternative hidden">{linkedVideoMessages?.original}</span>
-                  </Button>
+                    data-dialog-trigger-id={id}
+                    data-dialog-source-id={figureId}
+                  >
+                    {reuseLabel}
+                  </ButtonV2>
                 )}
+                {hasLinkedVideo &&
+                  (linkedVideoButton ? (
+                    linkedVideoButton
+                  ) : (
+                    <ButtonV2 shape="pill" variant="outline" size="small" {...classes('toggleAlternativeVideo')}>
+                      <span className="original">{linkedVideoMessages?.alternative}</span>
+                      <span className="alternative hidden">{linkedVideoMessages?.original}</span>
+                    </ButtonV2>
+                  ))}
               </div>
               {children}
             </div>
@@ -79,7 +84,8 @@ export const FigureCaption = ({
                 to={link.url}
                 {...classes('link')}
                 target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}>
+                rel={link.external ? 'noopener noreferrer' : undefined}
+              >
                 <span {...classes('link-text')}>{link.text}</span>
                 <LinkIcon />
               </SafeLink>
@@ -103,12 +109,15 @@ export interface FigureLicense {
 }
 
 interface FigureCaptionProps {
+  className?: string;
   figureId: string;
   id?: string;
   caption?: string;
-  reuseLabel: string;
+  reuseLabel?: string;
   licenseRights: string[];
   children?: ReactNode;
+  modalButton?: ReactNode;
+  linkedVideoButton?: ReactNode;
   authors?: { name: string }[];
   link?: {
     url: string;
@@ -126,11 +135,15 @@ interface FigureCaptionProps {
   };
 }
 
-const Figure = ({ children, type = 'full', resizeIframe, ...rest }: Props) => {
+const Figure = ({ children, type = 'full', resizeIframe, className, ...rest }: Props) => {
   const typeClass = type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
   const right = ['small-right', 'xsmall-right'].includes(type);
   return (
-    <figure data-sizetype={type} {...classes('', { resize: !!resizeIframe, right }, typeClass)} {...rest}>
+    <figure
+      data-sizetype={type}
+      {...classes('', { resize: !!resizeIframe, right }, `${typeClass} ${className ?? ''}`)}
+      {...rest}
+    >
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
@@ -156,6 +169,7 @@ interface Props {
   type?: FigureType;
   resizeIframe?: boolean;
   noFigcaption?: boolean;
+  className?: string;
 }
 
 export default Figure;

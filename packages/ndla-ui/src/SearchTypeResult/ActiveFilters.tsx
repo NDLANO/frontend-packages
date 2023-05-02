@@ -12,7 +12,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
 
 type StyledActiveFiltersProps = {
@@ -122,7 +122,8 @@ const ActiveFilters = ({
           <Tooltip
             tooltip={t('searchPage.searchFilterMessages.removeFilter', {
               filterName: filter.title,
-            })}>
+            })}
+          >
             <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
           </Tooltip>
         ) : (
@@ -138,20 +139,20 @@ const ActiveFilters = ({
       {filterLength > showFilterCount && (
         <StyledActiveFilterWrapper>
           <Tooltip tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
-            <Button
+            <ButtonV2
               aria-label={t('searchPage.searchFilterMessages.additionalSubjectFilters', {
                 count: filterLength - showFilterCount + 1,
               })}
-              type="button"
               size="normal"
-              borderShape="rounded"
-              onClick={onClickShowHiddenSubjects}>
+              shape="pill"
+              onClick={onClickShowHiddenSubjects}
+            >
               <StyledActiveFilterTitle>
                 {t('searchPage.searchFilterMessages.additionalSubjectFilters', {
                   count: filterLength - showFilterCount + 1,
                 })}
               </StyledActiveFilterTitle>
-            </Button>
+            </ButtonV2>
           </Tooltip>
         </StyledActiveFilterWrapper>
       )}

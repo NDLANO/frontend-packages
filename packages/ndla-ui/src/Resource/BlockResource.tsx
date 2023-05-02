@@ -7,16 +7,15 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
+import React from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
-import { MenuButton, MenuItemProps } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
 import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
 import {
   CompressedTagList,
   ResourceImageProps,
   ResourceTitle,
-  Row,
   ResourceTypeList,
   ResourceTitleLink,
   LoaderProps,
@@ -24,9 +23,11 @@ import {
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import { contentTypeMapping } from '../model/ContentType';
+import { SettingsMenu } from '../MyNdla';
 
 const BlockElementWrapper = styled.div`
   display: flex;
+  position: relative;
   text-decoration: none;
   box-shadow: none;
   flex-direction: column;
@@ -66,19 +67,21 @@ const BlockDescription = styled.p`
   }
 `;
 
-const RightRow = styled(Row)`
+const TagsAndActionMenu = styled.div`
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
-  margin: 0 -${spacing.small} -${spacing.small} 0;
+  z-index: 1;
 `;
 
 const BlockInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${spacing.small};
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
+  margin: ${spacing.small} ${spacing.small} 0 ${spacing.small};
   flex-direction: column;
 `;
 
@@ -162,18 +165,11 @@ const BlockResource = ({
   targetBlank,
   resourceTypes,
 }: Props) => {
-  const linkRef = useRef<HTMLAnchorElement>(null);
   const firstResourceType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
 
-  const handleClick = () => {
-    if (linkRef.current) {
-      linkRef.current.click();
-    }
-  };
-
   return (
-    <BlockElementWrapper onClick={handleClick} id={id}>
+    <BlockElementWrapper id={id}>
       <ImageWrapper>
         <BlockImage
           image={resourceImage}
@@ -184,17 +180,17 @@ const BlockResource = ({
       <BlockInfoWrapper>
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
-            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
+            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link}>
               <Title>{title}</Title>
             </ResourceTitleLink>
           </ResourceTypeAndTitleLoader>
           <ResourceTypeList resourceTypes={resourceTypes} />
           <BlockDescription>{description}</BlockDescription>
         </ContentWrapper>
-        <RightRow>
+        <TagsAndActionMenu>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-          {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
-        </RightRow>
+          {menuItems && menuItems.length > 0 && <SettingsMenu menuItems={menuItems} />}
+        </TagsAndActionMenu>
       </BlockInfoWrapper>
     </BlockElementWrapper>
   );

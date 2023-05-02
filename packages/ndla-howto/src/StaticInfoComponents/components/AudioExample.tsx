@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { AudioPlayer, Figure, FigureCaption, FigureLicenseDialog } from '@ndla/ui';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 //@ts-ignore
@@ -52,9 +52,10 @@ class AudioExample extends Component<Props> {
           authors={authors}
           origin="https://www.wikimedia.com"
           title={caption}
-          messages={messages}>
-          <Button outline>Kopier referanse</Button>
-          <Button outline>Last ned lydklipp</Button>
+          messages={messages}
+        >
+          <ButtonV2 variant="outline">Kopier referanse</ButtonV2>
+          <ButtonV2 variant="outline">Last ned lydklipp</ButtonV2>
         </FigureLicenseDialog>
         <FigureCaption
           figureId={figureId}

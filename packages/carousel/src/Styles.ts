@@ -7,57 +7,28 @@
  */
 
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 
-export const slideWrapperCSS = css`
-  width: 100%;
-  overflow: hidden;
-  position: relative;
+interface SlideContentProps {
+  gap: number;
+  margin: number;
+}
+
+export const StyledSlideContent = styled.div<SlideContentProps>`
+  display: flex;
+  gap: ${(p) => p.gap}px;
+  margin: 0 ${(p) => p.margin}px;
+  justify-content: space-between;
 `;
 
-type ButtonProps = {
-  prev?: boolean;
-  next?: boolean;
-  dontShow?: boolean;
-  arrowOffset: number;
-};
+export const ButtonWrapper = styled.div`
+  display: none;
+  position: absolute;
+  top: 30%;
+  transform: translateY(-20%);
+  z-index: 1;
+`;
 
-export const StyledButton = styled.button<ButtonProps>(
-  {
-    position: 'absolute',
-    zIndex: 1,
-  },
-  (props) =>
-    props.prev && {
-      left: `${props.arrowOffset}px`,
-    },
-  (props) =>
-    props.next && {
-      right: `${props.arrowOffset}px`,
-    },
-  (props) =>
-    props.dontShow && {
-      display: 'none !important',
-    },
-);
-
-export const StyledSlideContent = styled.div<{ swiping?: boolean }>(
-  {
-    display: 'flex',
-    justifyContent: 'space-between',
-    transition: 'transform 600ms ease',
-  },
-  (props) =>
-    props.swiping && {
-      transition: 'none',
-    },
-);
-
-export const StyledWrapperAutosizer = styled.div<{ width: string }>(
-  {
-    margin: '0 auto',
-  },
-  (props) => ({
-    width: props.width,
-  }),
-);
+export const StyledWrapperAutosizer = styled.div<{ width: string }>`
+  margin: 0px auto;
+  width: ${(p) => p.width};
+`;

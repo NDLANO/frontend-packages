@@ -15,6 +15,7 @@ type EditorNameProps = {
 
 export const EditorName = ({ title, name }: EditorNameProps) => (
   <span>
-    <strong>{title}</strong> {name}
+    <strong>{title}</strong>
+    {` ${name}`}
   </span>
 );

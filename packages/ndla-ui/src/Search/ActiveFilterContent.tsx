@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { spacing, mq, breakpoints, colors, misc, fonts } from '@ndla/core';
@@ -41,14 +41,16 @@ interface Props {
   ariaLabel: string;
 }
 
-const ActiveFilterContent = ({ filter, onFilterRemove, ariaLabel }: Props) => (
+const ActiveFilterContent = forwardRef<HTMLButtonElement, Props>(({ filter, onFilterRemove, ariaLabel }, ref) => (
   <StyledActiveFilter
     aria-label={ariaLabel}
     type="button"
-    onClick={() => onFilterRemove(filter.value, filter.filterName)}>
+    ref={ref}
+    onClick={() => onFilterRemove(filter.value, filter.filterName)}
+  >
     <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>
     <Cross />
   </StyledActiveFilter>
-);
+));
 
 export default ActiveFilterContent;

@@ -76,21 +76,6 @@ const StyledAside = styled.aside<StyledAsideProps>`
   }
 `;
 
-type StyledSafeLinkButtonProps = {
-  invertedStyle?: boolean;
-};
-
-const StyledSafeLinkButton = styled(SafeLinkButton)<StyledSafeLinkButtonProps>`
-  ${(props) =>
-    props.invertedStyle &&
-    css`
-      ${mq.range({ from: breakpoints.tablet })} {
-        border-color: #fff;
-        color: #fff;
-      }
-    `}
-`;
-
 type Props = {
   isOpen: boolean;
   lastUpdated: string;
@@ -119,14 +104,15 @@ const LearningPathMenuAside = ({ lastUpdated, learningPathURL, copyright, isOpen
       </div>
       {copyright.contributors && <LearningPathMenuAsideCopyright copyright={copyright} />}
       <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
-      <StyledSafeLinkButton
+      <SafeLinkButton
         to={learningPathURL}
         target="_blank"
         rel="noopener noreferrer"
-        outline
-        invertedStyle={invertedStyle}>
+        variant="outline"
+        inverted={invertedStyle}
+      >
         {t('learningPath.createLearningPathButtonText')}
-      </StyledSafeLinkButton>
+      </SafeLinkButton>
     </StyledAside>
   );
 };

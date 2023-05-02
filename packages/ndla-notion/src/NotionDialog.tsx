@@ -187,7 +187,8 @@ const NotionDialog = ({ title, children, id, subTitle, ariaHidden = true, custom
     data-concept-id={id}
     aria-labelledby={id}
     aria-describedby={id}
-    css={customCSS}>
+    css={customCSS}
+  >
     <NotionHeader title={title} subTitle={subTitle}>
       {headerContent}
     </NotionHeader>

@@ -59,13 +59,14 @@ const fadeInAdditionalsKeyframe = keyframes`
   }
 `;
 
-type ListElementProps = {
+interface ListElementProps {
   additional?: boolean;
   extraBottomMargin?: boolean;
   contentType?: string;
   active?: boolean;
   hidden?: boolean;
-};
+}
+
 const ListElement = styled.li<ListElementProps>`
   border: 1px solid #d1d6db;
   border-radius: 5px;
@@ -74,15 +75,15 @@ const ListElement = styled.li<ListElementProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 1rem;
+  padding: ${spacing.small};
 
   ${(props) =>
     props.additional &&
     css`
       border-style: dashed;
-      animation-name: ${fadeInAdditionalsKeyframe};
       animation-duration: 0.8s;
       animation-fill-mode: forwards;
+      animation: ${fadeInAdditionalsKeyframe};
     `}
   ${(props) => props.extraBottomMargin && `margin-bottom: ${spacing.large};`}
 
@@ -108,51 +109,12 @@ const ListElement = styled.li<ListElementProps>`
   ${({ hidden }) => hidden && `display:none; opacity:0;`}
 `;
 
-const LinkStyle = css`
-  display: flex;
-  color: ${colors.brand.dark};
-  align-items: center;
-  width: auto;
-  padding: ${spacing.small};
-  box-shadow: none;
-  min-height: 70px;
-`;
-
-const ActiveWrapper = styled.div`
-  ${LinkStyle}
-`;
 const ResourceLink = styled(SafeLink)`
-  ${LinkStyle}
-  &:hover .c-content-type-badge {
-    width: 38px;
-    height: 38px;
-
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-    &.c-content-type-badge--subject-material,
-    &.c-content-type-badge--learning-path,
-    &.c-content-type-badge--source-material,
-    &.c-content-type-badge--external-learning-resources {
-      svg {
-        width: 26px;
-        height: 26px;
-      }
-    }
-  }
-`;
-
-type ActiveProps = {
-  active?: boolean;
-};
-const Heading = styled.h2<ActiveProps>`
   font-weight: ${fonts.weight.semibold};
-  transform: translateY(-1px);
-  text-transform: none;
-  letter-spacing: 0;
-  margin: 0;
-  display: inline;
+  box-shadow: none;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  color: ${colors.brand.dark};
   ${fonts.sizes('16px', '26px')};
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes('18px', '26px')};
@@ -160,32 +122,12 @@ const Heading = styled.h2<ActiveProps>`
   ${mq.range({ from: breakpoints.desktop })} {
     ${fonts.sizes('20px', '26px')};
   }
-
-  span {
-    box-shadow: ${colors.link};
+  &:hover {
+    text-decoration: none;
   }
-
-  ${ResourceLink}:hover &,
-  ${ResourceLink}:focus & {
-    span {
-      box-shadow: ${colors.linkHover};
-    }
-  }
-  ${(props) =>
-    props.active &&
-    css`
-      color: ${colors.brand.greyDark};
-      span {
-        box-shadow: none;
-      }
-      small {
-        padding-left: ${spacing.small};
-        font-weight: ${fonts.weight.normal};
-      }
-    `}
 `;
 
-const IconWrapper = styled.div`
+const ContentBadgeWrapper = styled.div`
   display: flex;
   flex: 0 0 auto;
   text-align: center;
@@ -218,7 +160,41 @@ const ContentTypeName = styled.span`
   text-align: right;
 `;
 
-type Props = {
+const InlineContainer = styled.div`
+  display: inline;
+`;
+
+const ResourceWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.xsmall};
+  align-items: center;
+  :hover {
+    .c-content-type-badge {
+      width: 38px;
+      height: 38px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+      &.c-content-type-badge--subject-material,
+      &.c-content-type-badge--learning-path,
+      &.c-content-type-badge--source-material,
+      &.c-content-type-badge--external-learning-resources {
+        svg {
+          width: 26px;
+          height: 26px;
+        }
+      }
+    }
+  }
+`;
+
+const CurrentSmall = styled.small`
+  margin-left: ${spacing.xsmall};
+`;
+
+interface Props {
   id: string;
   showContentTypeDescription?: boolean;
   contentTypeName?: string;
@@ -227,7 +203,16 @@ type Props = {
   showAdditionalResources?: boolean;
   access?: 'teacher';
   heartButton?: (path: string) => ReactNode;
-};
+}
+
+const IconWrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+`;
 
 const ResourceItem = ({
   id,
@@ -244,62 +229,54 @@ const ResourceItem = ({
   heartButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
+  const accessId = `${id}-teacher`;
+  const coreId = `${id}-core`;
+  const additionalId = `${id}-additional`;
+  const describedBy = `${coreId} ${additionalId} ${accessId}`;
   const hidden = additional ? !showAdditionalResources : false;
   return (
     <ListElement
+      aria-current={active ? 'page' : undefined}
       contentType={contentType}
       hidden={hidden && !active}
       active={active}
       additional={additional}
-      extraBottomMargin={extraBottomMargin}>
-      {active ? (
-        <ActiveWrapper>
-          <IconWrapper>
-            <ContentTypeBadge type={contentType ?? ''} background border={false} />
-          </IconWrapper>
-          <Heading active>
-            <span>
-              {name}
-              <small>{t('resource.youAreHere')}</small>
-            </span>
-          </Heading>
-        </ActiveWrapper>
-      ) : (
-        <ResourceLink to={path}>
-          <IconWrapper>
-            <ContentTypeBadge type={contentType ?? ''} background border={false} />
-          </IconWrapper>
-          <Heading>
-            <span>{name}</span>
-          </Heading>
-        </ResourceLink>
-      )}
+      extraBottomMargin={extraBottomMargin}
+    >
+      <ResourceWrapper>
+        <ContentBadgeWrapper>
+          <ContentTypeBadge type={contentType ?? ''} background border={false} />
+        </ContentBadgeWrapper>
+        <InlineContainer>
+          <ResourceLink to={path} aria-current={active ? 'page' : undefined} aria-describedby={describedBy}>
+            {name}
+          </ResourceLink>
+          {active ? <CurrentSmall>{t('resource.youAreHere')}</CurrentSmall> : undefined}
+        </InlineContainer>
+      </ResourceWrapper>
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === 'teacher' && (
           <Tooltip tooltip={t('article.access.onlyTeacher')}>
-            <HumanMaleBoard
-              className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-              aria-label={t('article.access.onlyTeacher')}
-            />
+            <IconWrapper>
+              <HumanMaleBoard id={accessId} aria-label={t('article.access.onlyTeacher')} />
+            </IconWrapper>
           </Tooltip>
         )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <Additional
-                  className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-                  aria-label={contentTypeDescription}
-                />
+                <IconWrapper>
+                  <Additional id={additionalId} aria-label={contentTypeDescription} />
+                </IconWrapper>
               </Tooltip>
             )}
             {!additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <Core
-                  className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
-                  aria-label={contentTypeDescription}
-                />
+                <IconWrapper>
+                  <Core id={coreId} aria-label={contentTypeDescription} />
+                </IconWrapper>
               </Tooltip>
             )}
           </>

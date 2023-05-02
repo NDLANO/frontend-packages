@@ -1,0 +1,43 @@
+{
+  "name": "@ndla/select",
+  "version": "2.2.13",
+  "description": "Select component library for NDLA.",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "node ../../scripts/build.js package",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build:types"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/select"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "dependencies": {
+    "@ndla/core": "^3.1.3",
+    "@ndla/icons": "^2.2.13",
+    "react-select": "^5.7.0"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "react": "^16.8.4 || ^17.0.0",
+    "react-i18next": "^11.18.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "f767a48efedffff1904be8bfb39097d6bc6eba6f"
+}

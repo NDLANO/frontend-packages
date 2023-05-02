@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, utils } from '@ndla/core';
 import { uuid } from '@ndla/util';
@@ -14,6 +14,7 @@ import { uuid } from '@ndla/util';
 const CheckboxInput = styled.input`
   position: absolute;
   opacity: 0;
+  width: auto;
   cursor: pointer;
   &:checked {
     & + label > span:first-of-type {
@@ -116,26 +117,29 @@ interface Props {
   label?: string;
 }
 
-const CheckboxItem = ({ label = '', checked, value, id, onChange, disabled }: Props) => {
-  const uniqueID = uuid();
-  return (
-    <>
-      <CheckboxInput
-        disabled={disabled}
-        aria-checked={checked}
-        checked={checked}
-        type="checkbox"
-        value={value}
-        id={uniqueID}
-        name={id?.toString()}
-        onChange={() => onChange?.(id)}
-      />
-      <CheckboxLabel htmlFor={uniqueID} hasLabel={label !== ''}>
-        <span />
-        <span>{label}</span>
-      </CheckboxLabel>
-    </>
-  );
-};
+const CheckboxItem = forwardRef<HTMLInputElement, Props>(
+  ({ label = '', checked, value, id, onChange, disabled }, ref) => {
+    const uniqueID = uuid();
+    return (
+      <>
+        <CheckboxInput
+          ref={ref}
+          disabled={disabled}
+          aria-checked={checked}
+          checked={checked}
+          type="checkbox"
+          value={value}
+          id={uniqueID}
+          name={id?.toString()}
+          onChange={() => onChange?.(id)}
+        />
+        <CheckboxLabel htmlFor={uniqueID} hasLabel={label !== ''}>
+          <span />
+          <span>{label}</span>
+        </CheckboxLabel>
+      </>
+    );
+  },
+);
 
 export default CheckboxItem;

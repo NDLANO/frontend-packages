@@ -6,26 +6,27 @@
  *
  */
 
-import React, { ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
+import React, { HTMLAttributes, ReactNode } from 'react';
+import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 
-export const classes = new BEMHelper({
-  name: 'resources',
-  prefix: 'c-',
-});
-
-interface Props {
+interface Props extends HTMLAttributes<HTMLElement> {
   header?: ReactNode;
   children: ReactNode;
-  subjectPage?: boolean;
+  className?: string;
   id?: string;
 }
 
-const ResourcesWrapper = ({ children, header, subjectPage = false, id }: Props) => (
-  <section {...classes('', { subjectPage })} id={id}>
+const StyledSection = styled.section`
+  padding-top: ${spacing.normal};
+  padding-bottom: ${spacing.normal};
+`;
+
+const ResourcesWrapper = ({ children, header, ...rest }: Props) => (
+  <StyledSection {...rest}>
     {header}
-    <div {...classes('content')}>{children}</div>
-  </section>
+    {children}
+  </StyledSection>
 );
 
 export default ResourcesWrapper;

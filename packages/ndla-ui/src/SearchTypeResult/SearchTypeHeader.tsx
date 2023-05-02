@@ -8,7 +8,7 @@
 
 import React, { MouseEvent, memo } from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
@@ -42,10 +42,13 @@ const BadgeWrapper = styled.span`
   margin-right: ${spacing.small};
 `;
 
-const SubjectName = styled.span`
+const SubjectName = styled.div`
+  display: flex;
+  gap: ${spacing.small};
   ${fonts.sizes('18px', '24px')};
   margin: 2px 0;
-  b {
+  h2 {
+    margin: 0;
     ${fonts.sizes('18px', '24px')};
     margin-right: 4px;
   }
@@ -97,7 +100,9 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
             </BadgeWrapper>
           )}
           <SubjectName>
-            <b>{type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}</b>{' '}
+            <h2 id={`searchitem-header-${type}`}>
+              {type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}
+            </h2>
             {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
           </SubjectName>
         </TypeWrapper>
@@ -106,23 +111,25 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
         <CategoryItems>
           {filters.map((option: FilterOptionsType) => (
             <CategoryTypeButtonWrapper key={option.id}>
-              <Button
+              <ButtonV2
+                aria-current={option.active}
                 size="xsmall"
-                borderShape="rounded"
-                greyLighter={!option.active}
+                shape="pill"
+                colorTheme={!option.active ? 'greyLighter' : undefined}
                 onClick={(e: MouseEvent<HTMLButtonElement>) => {
                   if (e.currentTarget && option.active) {
                     e.currentTarget.blur();
                   }
                   onFilterClick?.(option.id);
-                }}>
+                }}
+              >
                 {option.name}
                 {option.active && (
                   <CategoryTypeCrossWrapper>
                     <Cross />
                   </CategoryTypeCrossWrapper>
                 )}
-              </Button>
+              </ButtonV2>
             </CategoryTypeButtonWrapper>
           ))}
         </CategoryItems>

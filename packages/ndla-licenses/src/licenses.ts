@@ -35,7 +35,7 @@ const byncnd: LicenseType = {
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
     description:
-      'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavspersonen, men dei kan ikkje endra det på nokon måte, eller bruka det kommersielt.',
+      'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavspersonen, men dei kan ikkje endra det på nokon måte, eller bruke det kommersielt.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -231,7 +231,7 @@ const pd: LicenseType = {
     title: 'PD Public domain merket: Offentleg eigedom',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
-    linkText: 'Lær meir om public domain-merker',
+    linkText: 'Lær meir om public domain-merke',
     description:
       'Dette merket let andre kopiere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
   },
@@ -240,7 +240,7 @@ const pd: LicenseType = {
     title: 'PD Public domain merket: Offentlig eiendom',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
-    linkText: 'Lær mer om public domain-merker',
+    linkText: 'Lær mer om public domain-merke',
     description:
       'Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.',
   },
@@ -250,7 +250,7 @@ const pd: LicenseType = {
     title: 'PD: Public Domain Mark',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/',
-    linkText: 'Learn more about public domain marks',
+    linkText: 'Learn more about public domain mark',
 
     description:
       'This mark lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.',
@@ -265,7 +265,7 @@ const cc0: LicenseType = {
     title: 'CC0 Public domain dedication: Gitt til fellesskapet',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/zero/1.0/deed.no',
-    linkText: 'Lær meir om public domain-merker',
+    linkText: 'Lær meir om public domain-merke',
     description:
       'Dette merket let andre kopiere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
   },
@@ -274,7 +274,7 @@ const cc0: LicenseType = {
     title: 'CC0 Public domain dedication: Gitt til fellesskapet',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/zero/1.0/deed.no',
-    linkText: 'Lær mer om public domain-merker',
+    linkText: 'Lær mer om public domain-merke',
     description:
       'Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.',
   },

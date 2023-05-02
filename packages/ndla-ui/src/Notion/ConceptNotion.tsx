@@ -81,7 +81,8 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
       licenseString={concept.copyright?.license?.license ?? ''}
       type="concept"
       hideIconsAndAuthors={hideIconsAndAuthors}
-      figureType={figureType}>
+      figureType={figureType}
+    >
       <UINotion
         id={notionId}
         title={concept.title}
@@ -108,7 +109,8 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
                       source={concept.source}
                     />
                   </>
-                }>
+                }
+              >
                 {concept.visualElement.image && (
                   <NotionImage
                     type={type}
@@ -146,7 +148,8 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
                       source={concept.source}
                     />
                   </>
-                }>
+                }
+              >
                 {concept.image && (
                   <NotionImage
                     type={type}
@@ -158,7 +161,8 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
               </Notion>
             </ImageWrapper>
           ) : undefined
-        }></UINotion>
+        }
+      ></UINotion>
     </FigureNotion>
   );
 };

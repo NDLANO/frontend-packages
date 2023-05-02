@@ -10,7 +10,6 @@ import React, { ReactNode, forwardRef } from 'react';
 import { spacingUnit } from '@ndla/core';
 import { css } from '@emotion/react';
 import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
-import { ButtonSize } from './types';
 
 export const svgSizes = {
   xsmall: spacingUnit * 0.75,
@@ -20,12 +19,8 @@ export const svgSizes = {
   large: spacingUnit * 2.5,
 };
 
-interface IconButtonStyleProps extends ButtonStyleProps {
-  size: ButtonSize;
-}
-
-export const iconButtonStyle = ({ size, ...props }: IconButtonStyleProps) => css`
-  ${buttonStyle({ size, ...props })}
+export const iconButtonStyle = ({ size = 'small', colorTheme = 'primary', ...props }: ButtonStyleProps) => css`
+  ${buttonStyle({ size, colorTheme, ...props })}
 
   border-radius: 100%;
   padding: ${spacingUnit * (svgSizes[size] > spacingUnit ? 0.5 : 0.25)}px;

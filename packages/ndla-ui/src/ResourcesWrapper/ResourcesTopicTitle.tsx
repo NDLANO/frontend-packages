@@ -1,22 +1,60 @@
 import React, { Fragment, ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { HelpCircleDual } from '@ndla/icons/common';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { Switch } from '@ndla/switch';
-import { useTranslation } from 'react-i18next';
-
-import { classes } from './ResourcesWrapper';
+import { LearningPathQuiz } from '@ndla/icons/contentType';
 
 interface HelpIconProps {
   invertedStyle: boolean;
 }
+
+const StyledTopicTitleIcon = styled.div`
+  color: ${colors.brand.light};
+  flex-grow: 1;
+  justify-content: flex-end;
+  border: 0;
+  display: flex;
+  padding: 5px;
+  border-radius: 100%;
+  align-items: center;
+  outline: 0;
+  background-color: ${colors.brand.light};
+  svg {
+    fill: ${colors.brand.primary};
+    height: 10px;
+    width: 10px;
+  }
+  &:hover,
+  &:focus {
+    background-color: ${colors.brand.primary};
+    svg {
+      fill: ${colors.white};
+    }
+  }
+`;
+
+const invertedTopicTitleIconStyle = css`
+  background-color: ${colors.white};
+  svg {
+    fill: ${colors.brand.primary};
+  }
+  &:hover,
+  &:focus {
+    background-color: ${colors.white};
+    svg: {
+      fill: ${colors.brand.primary};
+    }
+  }
+`;
+
 const HelpIcon = ({ invertedStyle }: HelpIconProps) => (
-  <div {...classes('topic-title-icon', { invertedStyle })}>
-    <HelpCircleDual className={`c-icon--22 u-margin-left-tiny ${classes('icon').className}`} />
-  </div>
+  <StyledTopicTitleIcon css={invertedStyle ? invertedTopicTitleIconStyle : undefined}>
+    <LearningPathQuiz />
+  </StyledTopicTitleIcon>
 );
 
 const switchCSS = css`
@@ -37,6 +75,71 @@ const TooltipButton = styled.button`
   padding: 0;
   line-height: unset;
   cursor: pointer;
+`;
+
+const StyledTopicTitleParagraph = styled.p`
+  font-family: ${fonts.sans};
+  ${fonts.sizes('18px', '24px')};
+  font-weight: ${fonts.weight.bold};
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 ${spacing.xsmall} 0 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-right: ${spacing.small};
+    ${fonts.sizes('20px', '26px')};
+  }
+`;
+
+const TopicTitleWrapper = styled.header`
+  display: inline-flex;
+  flex-flow: wrap;
+  align-items: center;
+  margin-top: ${spacing.large};
+  padding-bottom: ${spacing.small};
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  > div {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    &:last-child {
+      padding: ${spacing.xsmall} 0;
+    }
+  }
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    > div {
+      display: block;
+    }
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: block;
+  }
+`;
+
+const invertedTopicTitleWrapperStyle = css`
+  color: #fff;
+`;
+
+const TopicTitle = styled.h1`
+  font-weight: ${fonts.weight.normal};
+  margin: 0;
+  ${fonts.sizes('18px', '24px')};
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${fonts.sizes('20px', '26px')};
+  }
+`;
+
+const topicTitleSingleStyle = css`
+  font-weight: ${fonts.weight.bold};
+  text-transform: uppercase;
+`;
+
+const StyledRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing.xsmall};
 `;
 
 interface Props {
@@ -62,21 +165,21 @@ const ResourcesTopicTitle = ({
   // Fix for heading while title not required when ready.
   let heading;
   if (title) {
-    heading = <h1 {...classes('topic-title')}>{title}</h1>;
+    heading = <TopicTitle>{title}</TopicTitle>;
   } else {
-    heading = <h1 {...classes('topic-title', 'single')}>{messages.label}</h1>;
+    heading = <TopicTitle css={topicTitleSingleStyle}>{messages.label}</TopicTitle>;
   }
 
   const tooltipId = 'popupDialogTooltip';
 
   return (
-    <header {...classes('topic-title-wrapper', { invertedStyle })}>
+    <TopicTitleWrapper css={invertedStyle ? invertedTopicTitleWrapperStyle : undefined}>
       <div>
-        {title && <p {...classes('topic-title-label')}>{messages.label}</p>}
+        {title && <StyledTopicTitleParagraph>{messages.label}</StyledTopicTitleParagraph>}
         {heading}
       </div>
       {hasAdditionalResources && (
-        <div>
+        <StyledRow>
           <Switch
             id="toggleAdditionID"
             checked={showAdditionalResources}
@@ -96,7 +199,8 @@ const ResourcesTopicTitle = ({
               <TooltipButton id={tooltipId} aria-label={t('resource.dialogTooltip')}>
                 <HelpIcon invertedStyle={invertedStyle} />
               </TooltipButton>
-            }>
+            }
+          >
             {(onClose: () => void) => (
               <>
                 <ModalHeader>
@@ -111,9 +215,9 @@ const ResourcesTopicTitle = ({
               </>
             )}
           </Modal>
-        </div>
+        </StyledRow>
       )}
-    </header>
+    </TopicTitleWrapper>
   );
 };
 

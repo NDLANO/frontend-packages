@@ -30,18 +30,18 @@ type StyledFooterProps = {
   addMargin?: boolean;
 };
 
-const StyledFooter = styled.footer<StyledFooterProps>`
+const StyledDiv = styled.div<StyledFooterProps>`
   color: #fff;
   position: relative;
   background: ${colors.brand.dark};
   overflow: hidden;
   z-index: 0;
   ${(props) => props.addMargin && `margin-top: ${spacingUnit * 4}px;`}
+`;
 
-  > div:first-of-type {
-    position: relative;
-    z-index: 1;
-  }
+const StyledOneColumn = styled(OneColumn)`
+  z-index: 1;
+  position: relative;
 `;
 
 const StyledHeader = styled.h2`
@@ -102,7 +102,9 @@ const StyledHr = styled.hr`
 `;
 
 const StyledLanguageWrapper = styled.div`
-  margin: ${spacing.large} 0 ${spacingUnit * 3}px;
+  position: relative;
+  z-index: 1;
+  margin-top: ${spacing.normal};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,16 +122,21 @@ type Props = {
       twitter: string;
     },
   ];
+  privacyLinks?: {
+    url: string;
+    label: string;
+  }[];
   languageSelector?: ReactNode;
   auth?: ReactNode;
 };
 
-const Footer = ({ lang, children, links, languageSelector, auth }: Props) => {
+const Footer = ({ children, links, languageSelector, auth, privacyLinks }: Props) => {
   const { t } = useTranslation();
+
   const mainContent = (
     <>
       {children}
-      <FooterPrivacy lang={lang} label={t('footer.footerPrivacyLink')} />
+      {privacyLinks && <FooterPrivacy privacyLinks={privacyLinks} />}
     </>
   );
 
@@ -153,12 +160,14 @@ const Footer = ({ lang, children, links, languageSelector, auth }: Props) => {
 
   return (
     <>
-      {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
-      <StyledFooter addMargin={!languageSelector}>
-        <OneColumn cssModifier="large">{footerContent}</OneColumn>
-        <StyledBackground />
-      </StyledFooter>
-      {auth}
+      <footer>
+        <StyledDiv addMargin={!languageSelector}>
+          {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
+          <StyledOneColumn cssModifier="large">{footerContent}</StyledOneColumn>
+          <StyledBackground />
+        </StyledDiv>
+        {auth}
+      </footer>
     </>
   );
 };

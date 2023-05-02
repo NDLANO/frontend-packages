@@ -100,7 +100,7 @@ const pd: RightType = {
   nn: {
     title: 'Offentleg eigedom',
     userFriendlyTitle: 'Offentleg eigedom',
-    description: 'Innhaldet er så gammalt at du kan bruka det som du vil.',
+    description: 'Innhaldet er så gammalt at du kan bruke det som du vil.',
   },
   nb: {
     title: 'Offentlig eiendom',
@@ -119,7 +119,7 @@ const cc0: RightType = {
   nn: {
     title: 'Gjeve til fellesskapet',
     userFriendlyTitle: 'Gjeve til fellesskapet',
-    description: 'Du kan bruka innhaldet fritt.',
+    description: 'Du kan bruke innhaldet fritt.',
   },
   nb: {
     title: 'Gitt til fellesskapet',
@@ -139,7 +139,7 @@ const copyrighted: RightType = {
     title: 'Opphavsrett',
     userFriendlyTitle: 'Opphavsrett',
     description:
-      'Det er berre den som har laga innhaldet som kan endre, publisera og gje andre rett til å bruka innhaldet.',
+      'Det er berre den som har laga innhaldet som kan endre, publisera og gje andre rett til å bruke innhaldet.',
   },
   nb: {
     title: 'Opphavsrett',
@@ -159,7 +159,7 @@ const cc: RightType = {
   nn: {
     title: 'Creative Commons',
     userFriendlyTitle: 'Opphavsrett',
-    description: 'Denne lisensen gjev deg rett til å dela og bruka dette innhaldet på visse vilkår.',
+    description: 'Denne lisensen gjev deg rett til å dela og bruke dette innhaldet på visse vilkår.',
   },
   nb: {
     title: 'Creative Commons',

@@ -18,7 +18,7 @@ type TrackableComponent<P> = ComponentType<P> & {
   willTrackPageView?: (callback: (p: P) => void, p: P) => void;
 };
 
-function withTracker<P>(WrappedComponent: TrackableComponent<P>): ComponentType<P> {
+function withTracker<P>(WrappedComponent: TrackableComponent<P>) {
   const Tracker = class extends Component<P> {
     static trackPageView(props: P) {
       const lastMountedInstance = mountedInstances[mountedInstances.length - 1];

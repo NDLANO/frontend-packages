@@ -21,7 +21,7 @@ const HeaderWrapper = styled.div`
   width: 100%;
 `;
 
-const HeadingWrapper = styled.h2`
+const HeadingWrapper = styled.h1`
   display: flex;
   align-items: center;
   ${fonts.sizes('18px', '32px')};
@@ -70,7 +70,8 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
       onClose={onClose}
       size="fullscreen"
       backgroundColor="light-gradient"
-      narrow>
+      narrow
+    >
       {(close) => (
         <>
           <ModalHeader modifier="menu">

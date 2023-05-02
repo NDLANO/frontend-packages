@@ -7,7 +7,6 @@
  */
 
 import React, { HTMLProps, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { spacing, colors, fonts } from '@ndla/core';
@@ -169,7 +168,8 @@ const ItemNameBar = ({
         lastItemClickable={lastItemClickable}
         arrowDirection={isOpen ? 90 : 0}
         onClick={() => toggleOpen(path)}
-        isVisible={isVisible}>
+        isVisible={isVisible}
+      >
         {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
         {title}
       </ItemTitleButton>
@@ -192,25 +192,5 @@ interface RoundIconProps {
 const RoundIcon = ({ smallIcon, ...rest }: RoundIconProps & Omit<HTMLProps<HTMLButtonElement>, 'as'>) => (
   <StyledIcon {...rest}>{smallIcon}</StyledIcon>
 );
-
-RoundIcon.propTypes = {
-  smallIcon: PropTypes.node,
-  clicked: PropTypes.bool,
-};
-
-ItemNameBar.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  path: PropTypes.string.isRequired,
-  toggleOpen: PropTypes.func.isRequired,
-  hasSubtopics: PropTypes.bool.isRequired,
-  isOpen: PropTypes.bool,
-  lastItemClickable: PropTypes.bool,
-  id: PropTypes.string,
-  isSubject: PropTypes.bool,
-  isVisible: PropTypes.bool,
-  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
-  toggleFavorite: PropTypes.func,
-};
 
 export default ItemNameBar;

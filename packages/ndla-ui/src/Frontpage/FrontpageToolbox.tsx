@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { SafeLinkButton } from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
-import ComponentCursor from '../ComponentCursor';
 import { ToolboxIllustration as Illustration } from './illustrations/FrontpageIllustrations';
+import { HeadingLevel } from '../types';
 
 const StyledSection = styled.section`
   margin-top: ${spacing.large};
@@ -44,21 +44,23 @@ const StyledStudentsButton = styled(SafeLinkButton)`
 type Props = {
   urlStudents: string;
   urlTeachers: string;
+  headingLevel: HeadingLevel;
 };
 
-const FrontpageToolbox = ({ urlStudents, urlTeachers }: Props) => {
+const FrontpageToolbox = ({ urlStudents, urlTeachers, headingLevel }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledSection>
-      <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
-      <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
+      <SectionHeading headingLevel={headingLevel} large>
+        {t('frontPageToolbox.heading')}
+      </SectionHeading>
       <ToolboxWrapper>
         <StyledText>{t('frontPageToolbox.text')}</StyledText>
       </ToolboxWrapper>
-      <StyledStudentsButton to={urlStudents} buttonSize="medium" borderShape="rounded">
+      <StyledStudentsButton to={urlStudents} size="medium" shape="pill">
         {t('frontPageToolbox.linkTextStudents')}
       </StyledStudentsButton>
-      <SafeLinkButton to={urlTeachers} buttonSize="medium" borderShape="rounded">
+      <SafeLinkButton to={urlTeachers} size="medium" shape="pill">
         {t('frontPageToolbox.linkTextTeachers')}
       </SafeLinkButton>
       <Illustration />

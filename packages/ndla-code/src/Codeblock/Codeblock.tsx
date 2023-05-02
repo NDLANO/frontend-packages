@@ -6,17 +6,21 @@
  *
  */
 
+/**
+ * Be advised! This component breaks on SSR if you import CodeBlockEditor or languages.tsx.
+ */
+
 import React, { useState, useEffect, CSSProperties } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
-import { getTitleFromFormat } from '../CodeBlockEditor';
+import { ICodeLangugeOption, languageOptions } from '../languageOptions';
 
 const Wrapper = styled.div`
   margin: 15px 0;
@@ -26,8 +30,16 @@ const Wrapper = styled.div`
   }
   [class^='language-'] {
     & > span:first-of-type {
-      margin-top: 10px;
-      display: block;
+      & span:first-of-type {
+        padding-top: 10px;
+        display: block;
+      }
+    }
+    & > span:last-of-type {
+      & span:first-of-type {
+        padding-bottom: 10px;
+        display: block;
+      }
     }
   }
 `;
@@ -61,12 +73,11 @@ const syntaxHighlighterStyle = {
   },
 };
 
-const lineNumberContainerStyle: CSSProperties = {
-  padding: '10px',
-  float: 'left',
+const lineNumberStyle: CSSProperties = {
   borderRight: '1px solid #D8D8D8',
   borderLeft: 0,
   marginRight: '10px',
+  marginLeft: '10px',
   userSelect: 'none',
   color: '#979797',
 };
@@ -77,6 +88,14 @@ type Props = {
   title?: string | null;
   actionButton?: JSX.Element | null;
   showCopy?: boolean;
+};
+
+const getTitleFromFormat = (format: string) => {
+  const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === format);
+  if (selectedLanguage) {
+    return selectedLanguage.title;
+  }
+  return;
 };
 
 export const Codeblock = ({ actionButton, code, format, showCopy = false, title }: Props) => {
@@ -100,16 +119,17 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
         {actionButton}
       </TitleBar>
       <SyntaxHighlighter
-        lineNumberContainerStyle={lineNumberContainerStyle}
+        lineNumberStyle={lineNumberStyle}
         style={syntaxHighlighterStyle}
         language={format}
         wrapLines
-        showInlineLineNumbers={false}
-        showLineNumbers>
+        showInlineLineNumbers
+        showLineNumbers
+      >
         {code}
       </SyntaxHighlighter>
       {showCopy && (
-        <Button
+        <ButtonV2
           title={t('codeBlock.copyButton')}
           disabled={isCopied}
           data-copied-title={t('codeBlock.copiedCode')}
@@ -117,10 +137,11 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
           onClick={() => {
             copyTextToClipboard(code);
             setIsCopied(true);
-          }}>
+          }}
+        >
           {isCopied ? <Done aria-hidden="true" /> : <Copy aria-hidden="true" />}{' '}
           {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
-        </Button>
+        </ButtonV2>
       )}
     </Wrapper>
   );

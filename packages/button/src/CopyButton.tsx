@@ -6,72 +6,40 @@
  *
  */
 
-import React, { Component, ReactNode, MouseEvent } from 'react';
-import { Button, ButtonProps } from './Button';
+import React, { ReactNode, MouseEvent, useState, useEffect, forwardRef } from 'react';
+import ButtonV2, { ButtonProps } from './ButtonV2';
 
 interface Props extends ButtonProps {
   children: ReactNode;
   copyNode: ReactNode;
   onClick: (e?: MouseEvent<HTMLButtonElement>) => void;
-  showCopyTimer: number;
+  showCopyTimer?: number;
 }
 
-interface State {
-  showCopyState: boolean;
-}
+const CopyButton = forwardRef<HTMLButtonElement, Props>(
+  ({ children, copyNode, onClick, showCopyTimer = 4000, ...rest }, ref) => {
+    const [showCopyState, setShowCopyState] = useState(false);
 
-class CopyButton extends Component<Props, State> {
-  static defaultProps = {
-    showCopyTimer: 4000,
-  };
+    useEffect(() => {
+      if (showCopyState) {
+        const timer = setTimeout(() => setShowCopyState(false), showCopyTimer);
+        return () => clearTimeout(timer);
+      }
+    }, [showCopyState, showCopyTimer]);
 
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      showCopyState: false,
+    const handleCopy = (e?: MouseEvent<HTMLButtonElement>) => {
+      onClick(e);
+      if (!showCopyState) {
+        setShowCopyState(true);
+      }
     };
-    this.timer = null;
-    this.handleCopy = this.handleCopy.bind(this);
-    this.exitCopyState = this.exitCopyState.bind(this);
-  }
-
-  timer: ReturnType<typeof setTimeout> | null;
-
-  componentWillUnmount() {
-    if (this.timer) {
-      clearTimeout(this.timer);
-    }
-  }
-
-  exitCopyState() {
-    this.setState({
-      showCopyState: false,
-    });
-  }
-
-  handleCopy(e?: MouseEvent<HTMLButtonElement>) {
-    this.props.onClick(e);
-    if (!this.state.showCopyState) {
-      this.setState(
-        {
-          showCopyState: true,
-        },
-        () => {
-          this.timer = setTimeout(this.exitCopyState, this.props.showCopyTimer);
-        },
-      );
-    }
-  }
-
-  render() {
-    const { children, onClick, copyNode, showCopyTimer, ...rest } = this.props;
 
     return (
-      <Button onClick={this.handleCopy} {...rest}>
-        {this.state.showCopyState ? copyNode : children}
-      </Button>
+      <ButtonV2 onClick={handleCopy} {...rest} ref={ref}>
+        {showCopyState ? copyNode : children}
+      </ButtonV2>
     );
-  }
-}
+  },
+);
 
 export default CopyButton;

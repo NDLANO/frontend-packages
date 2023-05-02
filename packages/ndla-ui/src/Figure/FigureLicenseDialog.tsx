@@ -20,9 +20,9 @@ export const FigureLicenseDialog = ({ children, messages, id, authors, origin, t
   return (
     <Dialog id={id} labelledby={headingLabelId} messages={messages}>
       <div {...classLicenses()}>
-        <h3 id={headingLabelId} {...classLicenses('title')}>
+        <h1 id={headingLabelId} {...classLicenses('title')}>
           {messages.rulesForUse}
-        </h3>
+        </h1>
         <FigureLicenseByline license={license} messages={messages} locale={locale} />
         <FigureLicenseCta authors={authors} title={title} origin={origin} messages={messages}>
           {children}

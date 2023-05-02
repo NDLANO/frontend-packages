@@ -4,6 +4,8 @@
 
 ## Installation
 
+Using windows? See notes at the bottom.
+
 ```js
 yarn add [package-name]
 ```
@@ -101,3 +103,7 @@ Navigate to the root of frontend-packages and run `node scripts/createTsIconComp
 ### Upcoming updates to the designmanual can be previewed here.
 
 [Designmanual WIP](https://designmanual.ndla.no/?path=/story/velkommen--til-ndlas-designmanual)
+
+## Windows
+
+Powershell is currently not supported as it does not recognize `cp` commands for copying in the package.json scripts. GitBash or equivalent will work. WSL is also recommended if you want to use Windows.

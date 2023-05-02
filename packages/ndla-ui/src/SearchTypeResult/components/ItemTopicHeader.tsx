@@ -15,11 +15,8 @@ import { SearchItemType } from '../SearchItem';
 import ContentTypeBadge from '../../ContentTypeBadge';
 import { ContentType } from '../SearchTypeResult';
 
-const Wrapper = styled.div`
-  padding: ${spacing.small} ${spacing.normal};
-  position: relative;
-  min-height: 0;
-  flex: 1;
+const Wrapper = styled.header`
+  padding: ${spacing.small} ${spacing.normal} 0;
 `;
 
 const Label = styled.div`
@@ -28,7 +25,7 @@ const Label = styled.div`
   height: 26px;
   display: flex;
   align-items: center;
-  margin-top: ${spacing.small};
+  margin: ${spacing.small} 0;
 
   .c-content-type-badge {
     width: 26px;
@@ -46,12 +43,9 @@ const Label = styled.div`
 const TopicHeaderVisualElementWrapper = styled.div`
   float: right;
   margin-left: ${spacing.small};
-  position: relative;
-  width: 112px;
-  height: 112px;
+  width: 110px;
+  height: 110px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
   border-radius: 50%;
 `;
@@ -63,18 +57,19 @@ const TopicHeaderImage = styled.img`
   max-width: unset;
 `;
 
-type Props = {
+interface Props {
   children: ReactNode;
   image?: SearchItemType['item']['img'] | null;
   type?: ContentType;
-};
+}
+
 const ItemTopicHeader = ({ children, image, type }: Props) => {
   const { t } = useTranslation();
   return (
     <Wrapper>
       {image && (
         <TopicHeaderVisualElementWrapper>
-          <TopicHeaderImage className="topic-header-image" src={image.url} alt={image.alt} />
+          <TopicHeaderImage className="topic-header-image" src={image.url} alt="" />
         </TopicHeaderVisualElementWrapper>
       )}
       <Label className="topic-label">

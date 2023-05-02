@@ -6,62 +6,102 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core';
+import throttle from 'lodash/throttle';
+import React, { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { ZoomOutMap } from '@ndla/icons/common';
 
-import { uuid } from '@ndla/util';
-import Dialog from '../Dialog';
+type ScrollPosition = 'start' | 'end' | 'center';
 
 const classes = BEMHelper('c-table');
 
+const MARGIN = 5;
+
 interface Props {
   id?: string;
-  messages: {
-    dialogCloseButton: string;
-    expandButtonLabel: string;
-  };
   children?: ReactNode;
   dangerouslySetInnerHTML?: {
     __html: string;
   };
 }
 
-const Table = ({ children, messages, id, ...rest }: Props) => {
-  const tableId = id || uuid();
-  const dialogId = `dialog-${tableId}`;
+interface StyledProps {
+  show: boolean;
+}
+
+const ScrollBorder = styled.div<StyledProps>`
+  position: absolute;
+  top: 0;
+  height: calc(100% - ${spacing.mediumlarge});
+  width: 3px;
+  background: ${colors.background.dark};
+  display: ${({ show }) => (show ? 'block' : 'none')};
+`;
+
+const RightScrollBorder = styled(ScrollBorder)`
+  right: 0;
+`;
+
+const LeftScrollBorder = styled(ScrollBorder)`
+  left: 0;
+`;
+
+const Table = ({ children, id, ...rest }: Props) => {
+  const [scrollPosition, setScrollPosition] = useState<ScrollPosition | undefined>(undefined);
+  const tableRef = useRef<HTMLTableElement>(null);
+
+  const checkScrollPosition = useCallback((el: HTMLTableElement) => {
+    const { scrollLeft, offsetWidth, scrollWidth, clientWidth } = el;
+    const hasScrollbar = scrollWidth > clientWidth;
+
+    if (!hasScrollbar) {
+      setScrollPosition(undefined);
+      return;
+    }
+
+    const isStart = scrollLeft <= MARGIN;
+    const isEnd = offsetWidth + scrollLeft >= scrollWidth - MARGIN;
+
+    if (isStart) {
+      setScrollPosition('start');
+    } else if (isEnd) {
+      setScrollPosition('end');
+    } else {
+      setScrollPosition('center');
+    }
+  }, []);
+
+  const onScroll = useMemo(
+    () =>
+      throttle((event: UIEvent<HTMLTableElement>) => {
+        const el = event.target as HTMLTableElement | undefined;
+        if (el) {
+          checkScrollPosition(el);
+        }
+      }, 100),
+    [checkScrollPosition],
+  );
+
+  useEffect(() => {
+    const el = tableRef.current;
+    if (el) {
+      checkScrollPosition(el);
+    }
+  }, [checkScrollPosition]);
 
   return (
     <div {...classes('wrapper')}>
       <div {...classes('content')}>
-        <div {...classes('left-shadow')} />
-        <table id={tableId} {...classes({ extra: ['o-table'] })} {...rest}>
+        <LeftScrollBorder show={scrollPosition === 'end' || scrollPosition === 'center'} {...classes('left-shadow')} />
+        <table ref={tableRef} id={id} onScroll={onScroll} {...classes({ extra: ['o-table'] })} {...rest}>
           {children}
         </table>
-        <button
-          type="button"
-          data-dialog-trigger-id={dialogId}
-          data-dialog-source-id={tableId}
-          data-table-id={tableId}
-          {...classes('expand-button')}
-          aria-label={messages.expandButtonLabel}>
-          <ZoomOutMap />
-        </button>
-        <div {...classes('right-shadow')} />
+        <RightScrollBorder
+          show={scrollPosition === 'start' || scrollPosition === 'center'}
+          {...classes('right-shadow')}
+        />
       </div>
-      <Dialog
-        id={dialogId}
-        label={messages.expandButtonLabel}
-        messages={{
-          close: messages.dialogCloseButton,
-        }}
-        modifier="fullscreen">
-        <div {...classes('dialog')}>
-          <div {...classes('expanded-table-wrapper')}>
-            <div {...classes('content')} />
-          </div>
-        </div>
-      </Dialog>
     </div>
   );
 };

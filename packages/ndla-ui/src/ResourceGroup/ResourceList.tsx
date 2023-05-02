@@ -10,6 +10,7 @@ import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
+import { fonts } from '@ndla/core';
 import NoContentBox from '../NoContentBox';
 import ResourceItem from './ResourceItem';
 import { Resource } from '../types';
@@ -33,6 +34,7 @@ const StyledResourceList = styled.ul<StyledListProps>`
   list-style: none;
   margin: 0;
   padding: 0;
+  font-family: ${fonts.sans};
   ${({ showAdditionalResources }) =>
     showAdditionalResources &&
     css`

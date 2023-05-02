@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import React, { ReactNode } from 'react';
+import { HeadingLevel } from '../types';
 import { SubjectSectionTitle } from './Subject';
 
 const StyledSubjectSocialContent = styled.div`
@@ -21,9 +22,15 @@ const StyledSection = styled.section`
   }
 `;
 
-export const SubjectSocialSection = ({ children, title = '' }: { children: ReactNode; title?: string }) => (
+interface SubjectSocialSectionProps {
+  children: ReactNode;
+  title?: string;
+  headingLevel: HeadingLevel;
+}
+
+export const SubjectSocialSection = ({ children, title = '', headingLevel }: SubjectSocialSectionProps) => (
   <StyledSection>
-    <SubjectSectionTitle>{title}</SubjectSectionTitle>
+    <SubjectSectionTitle headingLevel={headingLevel}>{title}</SubjectSectionTitle>
     {children}
   </StyledSection>
 );

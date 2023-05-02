@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { fonts, spacing, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 
@@ -59,7 +59,11 @@ export type PaginationType = {
   contentType?: string;
 };
 
-const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '' }: PaginationType) => {
+interface Props extends PaginationType {
+  type?: string;
+}
+
+const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '', type }: Props) => {
   const { t } = useTranslation();
   const isMore = toCount < totalCount;
   const progress = Math.ceil((toCount / totalCount) * 100);
@@ -87,13 +91,13 @@ const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '' }:
         <Progress width={progress} />
       </ProgressBar>
       {isMore ? (
-        <Button className="nav" outline onClick={onShowMore}>
+        <ButtonV2 className="nav" variant="outline" onClick={onShowMore} aria-describedby={`searchitem-header-${type}`}>
           {t('searchPage.resultType.showMore')}
-        </Button>
+        </ButtonV2>
       ) : (
-        <Button className="nav" outline onClick={onToTopHandler}>
+        <ButtonV2 className="nav" variant="outline" onClick={onToTopHandler}>
           {t('searchPage.resultType.toTopOfPage')}
-        </Button>
+        </ButtonV2>
       )}
     </ResultNav>
   );

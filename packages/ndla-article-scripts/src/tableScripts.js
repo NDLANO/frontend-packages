@@ -49,24 +49,6 @@ const eventListener = (event) => {
   toggleShadows(targetEl);
 };
 
-const expandButtonEventListner = (event) => {
-  const el = event.currentTarget;
-
-  const dialogId = el.getAttribute('data-dialog-trigger-id');
-  const tableId = el.getAttribute('data-table-id');
-
-  const dialog = document.querySelector(`[data-dialog-id='${dialogId}']`);
-
-  const expandedTableWrapper = dialog.querySelector('.c-table__content');
-
-  if (!expandedTableWrapper.hasChildNodes()) {
-    const table = document.getElementById(tableId);
-    const clonedTable = table.cloneNode(true);
-    clonedTable.setAttribute('id', `${tableId}_dup`);
-    expandedTableWrapper.appendChild(clonedTable);
-  }
-};
-
 const throttledEventListner = throttle(eventListener, 100);
 
 export const initTableScript = () => {
@@ -90,8 +72,6 @@ export const initTableScript = () => {
         el.classList.remove('c-table__wrapper');
       }
     });
-
-    forEachElement('.c-table__expand-button', (el) => el.addEventListener('click', expandButtonEventListner));
   }, 0);
 };
 

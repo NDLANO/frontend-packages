@@ -16,6 +16,8 @@ declare global {
     dataLayer: any;
     google_tag_manager: any;
     originalLocation: unknown;
+    _mtm: any;
+    _paq: any;
   }
 }
 
@@ -109,6 +111,7 @@ export const sendPageView = ({
   }
 
   const dim = dimensions || { ga: {}, gtm: {} };
+  window.document.title = title;
 
   window.ga('send', {
     hitType: 'pageview',
@@ -118,6 +121,13 @@ export const sendPageView = ({
   });
 
   window.dataLayer.push({
+    page_title: title,
+    event: 'Pageview',
+    url: current.url,
+    ...dim.gtm,
+  });
+
+  window._mtm.push({
     page_title: title,
     event: 'Pageview',
     url: current.url,

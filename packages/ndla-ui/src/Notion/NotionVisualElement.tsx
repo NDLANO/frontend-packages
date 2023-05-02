@@ -21,7 +21,7 @@ const StyledIframe = styled.iframe<{ type: string }>`
 
 export type NotionVisualElementType = {
   element?: ReactNode;
-  type?: 'video' | 'image' | 'h5p';
+  type?: 'video' | 'image' | 'h5p' | 'iframe';
   resource?: string;
   title?: string;
   url?: string;
@@ -66,7 +66,8 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
       copyright={visualElement.copyright}
       licenseString={visualElement.copyright?.license?.license ?? ''}
       licenseButtons={visualElement.licenseButtons}
-      type={type}>
+      type={type}
+    >
       {visualElement.image?.src ? (
         <img src={visualElement.image?.src} alt={visualElement.image.alt} />
       ) : (

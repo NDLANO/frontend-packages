@@ -2,6 +2,4 @@
 /*
 !/packages
 /packages/*
-!/packages/designmanual
-/packages/designmanual/*
-!/packages/designmanual/storybook-static
+!/storybook-static

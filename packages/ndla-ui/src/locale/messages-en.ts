@@ -14,6 +14,10 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  common: {
+    subject: 'Subject',
+    subject_plural: 'Subjects',
+  },
   treeStructure: {
     folderChildOptions: {
       edit: 'Edit foldername',
@@ -110,12 +114,13 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Active',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Expired',
     [subjectCategories.BETA_SUBJECTS]: 'Revised',
-    [subjectTypes.RESOURCE_COLLECTION]: 'Other resources',
+    [subjectCategories.OTHER]: 'Other resources',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Resource collections',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafag',
-    [subjectTypes.SUBJECT]: 'Subject',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resource collection',
+    [subjectTypes.SUBJECT]: 'Subject',
   },
   searchPage: {
     noHits: 'Your search - {{query}} - did not match any articles. ',
@@ -252,8 +257,24 @@ const messages = {
     archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
+    filterSubjects: 'Filter subjects',
+    scrollToGroup: 'Scroll to group',
+    goToTop: 'Scroll to top',
+    alphabeticSort: 'Subjects grouped alphabetically',
+    subjectGroup: 'Group "{{ category }}"',
+    allSubjects: 'All subjects',
+    myFavoriteSubjects: 'My favorite subjects',
     chooseSubject: 'Choose subject',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',
+    confirmRemove: 'Are you sure you want to remove {{subject}} from your favorite subjects?',
+    addFavorite: 'Add favorite subject',
+    removeFavorite: 'Remove favorite subject',
+    removeConfirmed: '{{subject}} is removed from your favorite subjects',
+    addConfirmed: '{{subject}} is added to your favorite subjects',
+    subjectFavoritePitch: 'Do you want to favorite this subject?',
+    subjectFavoriteGuide:
+      'To favorite a subject you must log in to My NDLA. You will find the subject on the top of this page after logging in.',
+    shows: 'Shows',
   },
   topicPage: {
     articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
@@ -314,19 +335,29 @@ const messages = {
       multidisciplinarySubjects: 'Multidisciplinary subjects',
       toolboxStudents: 'Toolbox - for students',
       toolboxTeachers: 'Toolbox - for teachers',
-      film: 'NDLA Film',
+      film: 'NDLA film',
       about: {
         title: 'About NDLA',
-        whatIs: 'What is NDLA?',
-        organization: 'The organization',
-        numbers: 'Numbers and usage',
+        numbers: 'Numbers and reports',
         keyPersonnel: 'Key personnel',
         vacancies: 'Vacancies',
-        newsletter: 'Newsletter',
-        contact: 'Contact',
+        vision: 'Vision and values',
+        communityPurpose: 'Our community mission',
+        history: 'NDLAs history',
+        cooperation: 'Our cooperations',
+        faq: 'Frequently asked questions',
+        follow: 'Follow us on social media',
+        whoAreWe: 'Who are we?',
+        whatWeDo: 'What do we do?',
+        careers: 'Come work with us',
+        contactUs: 'Contact us',
+        organizing: 'Organizing',
+        articlesOfAssociation: 'Article of associations',
       },
     },
     menu: {
+      button: 'Menu',
+      goToMainMenu: 'Go to main menu',
       close: 'Close',
       goTo: 'Go to',
       search: 'Search',
@@ -334,7 +365,7 @@ const messages = {
       subjectOverview: 'All subjects',
       modalLabel: 'Choose content',
       backToSubjectFrontpage: 'Back to subject frontpage',
-      title: 'Content',
+      title: 'Open menu',
       subjectPage: 'Subject front page',
       openFilter: 'Filter',
       useFilter: 'Use filter',
@@ -423,7 +454,7 @@ const messages = {
   article: {
     edition: 'Edition',
     publisher: 'Publisher',
-    lastUpdated: 'Last updated',
+    lastUpdated: 'Last revised date',
     closeLabel: 'Close',
     useContent: 'Cite or use',
     additionalLabel: 'Additional content',
@@ -458,7 +489,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Use filter',
     closeCompentenceGoalsFilter: 'Close filter',
     competenceGoalsNarrowBackButton: 'Go back',
-    competenceGoalResourceSearchText: 'Search all resources appropriate to this goal',
+    competenceGoalResourceSearchText: 'View resources to competence goal {{goal}}',
     competenceGoalShowExtra: 'Show',
     competenceGoalCloseExtra: 'Hide',
     competenceCoreLabel: 'Core element',
@@ -469,9 +500,10 @@ const messages = {
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
     competenceGoalTitle: 'The pupil is expected to be able to:',
-    competenceTabLK06label: 'Competence goal (LK06)',
-    competenceTabLK20label: 'Competence goal (LK20)',
+    competenceTabLK20label: 'Competence goal',
+    competenceTabLK20Tooltip: 'Show competence goals',
     competenceTabCorelabel: 'Core element',
+    competenceTabCoreTooltip: 'Show core elements',
     competenceGoalItem: {
       title: 'Competence goals and assessment',
     },
@@ -599,6 +631,7 @@ const messages = {
     rightsholder: 'Rightsholder',
     source: 'Source',
     published: 'Published',
+    info: 'License information',
   },
   errorMessage: {
     title: 'Oops, something went wrong',
@@ -615,13 +648,15 @@ const messages = {
   },
   footer: {
     aboutNDLA: 'About NDLA',
+    socialMedia: 'Social media',
     selectLanguage: 'Choose language (språk): ',
-    footerInfo: 'This webapplication is developed by NDLA as Open Source code.',
-    footerEditiorInChief: 'Editor in chief: ',
-    footerManagingEditor: 'Managing editor: ',
-    footerPrivacyLink: 'Cookies Policy',
+    info: 'This webapplication is developed by NDLA as Open Source code.',
+    editorInChief: 'Editor in chief:',
+    linksHeader: 'Other NDLA sites',
+    availabilityLink: 'Availability statement',
+    privacyLink: 'Privacy statement',
+    cookiesLink: 'Statement about cookies',
     vision: 'We create the learning of the future together',
-    footerLinksHeader: 'Other NDLA sites',
     socialMediaLinks: {
       facebook: 'NDLA on Facebook',
       facebookAria: 'Visit NDLA on Facebook',
@@ -680,12 +715,14 @@ const messages = {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
     se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
     se: 'Siiddut leat davvisámegiellii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -729,6 +766,7 @@ const messages = {
     hits: '{{count}} hits',
   },
   notions: {
+    tags: 'List and filters',
     usedIn: 'Used in',
     closeNotion: 'Close',
   },
@@ -750,13 +788,14 @@ const messages = {
     copyCode: 'Copy code',
   },
   ndlaFilm: {
+    heading: 'NDLA film',
     slideBackwardsLabel: 'Scroll backwards',
     slideForwardsLabel: 'Scroll forwards',
     movieMatchInCategory: 'Matches',
     loadingMovies: 'Loading movies..',
     subjectsInMovies: 'Subjects in film',
     about: {
-      heading: 'About NDLA Film',
+      heading: 'About NDLA film',
       more: 'Read more about NDLA film',
       text: 'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
     },
@@ -796,8 +835,9 @@ const messages = {
       shortFilm: 'Short film',
       all: 'All movies A-Z',
     },
+    allMovieGroupTitleLabel: 'Movies starting with {{letter}}',
     moreAboutNdlaFilm: {
-      header: 'NDLA Film',
+      header: 'NDLA film',
       firstParagraph:
         "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS.",
       secondParagraph:
@@ -842,6 +882,7 @@ const messages = {
     searching: 'Searching...',
     create: 'Create new',
     isSelectedItem: 'Added',
+    selected: '{{count}} selected',
   },
   blogPosts: {
     blog1: {
@@ -923,6 +964,8 @@ const messages = {
   loading: 'Loading',
   title: 'Title',
   save: 'Save',
+  photo: 'Photo',
+  email: 'Email',
   image: {
     altText: 'Alt-text',
     caption: 'Caption',
@@ -1012,8 +1055,9 @@ const messages = {
     loggedInAs: 'You are logged in as {{role}}.',
     loggedInAsButton: 'You are logged in as {{role}}',
     role: {
-      employee: 'Teacher',
-      staff: 'Staff',
+      employee: 'Employee',
+      faculty: 'Employee',
+      staff: 'Employee',
       student: 'Student',
     },
     buttonLogIn: 'Log in with Feide',
@@ -1059,10 +1103,13 @@ const messages = {
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
     folders_plural: '{{count}} Folders',
+    settings: 'Settings',
     folder: {
       folder: 'Folder',
       delete: 'Delete folder',
       edit: 'Edit folder',
+      updated: 'Folder updated',
+      defaultPageDescription: 'Add a description by editing the folder',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
       folderCreated: '"{{folderName}} created',
@@ -1073,6 +1120,35 @@ const messages = {
       onDragEndMissingOver: 'The folder {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
       dragHandle: 'Drag the folder {{name}}',
+      sharedWarning: 'Name and description will be visible for everyone you share the folder with',
+      sharing: {
+        share: 'Share folder',
+        shared: 'Shared',
+        unShare: 'Sharing stopped. The folder is no longer shared',
+        link: 'Link is copied',
+        header: {
+          private: 'Do you want to share this folder?',
+          shared: 'This folder is shared',
+          unShare: 'Do you want to stop sharing this folder?',
+        },
+        description: {
+          copy: 'Copy and share this link:',
+          private:
+            'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
+          private2:
+            'When you share a folder you share all content within the folder, including subfolders and resources',
+          shared:
+            'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
+          unShare:
+            'When you stop sharing, the link to the shared folder and potential subfolders is no longer active. If you have shared the link with someone, they can no longer see the content in the folder. This also applies to potential subfolders.',
+        },
+        button: {
+          share: 'Share folder',
+          preview: 'Preview folder',
+          unShare: 'Stop sharing',
+          shareLink: 'Copy link',
+        },
+      },
     },
     tagList: 'Tags',
     tags: '{{count}} tag',
@@ -1085,6 +1161,7 @@ const messages = {
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',
     myTags: 'My tags',
+    mySubjects: 'My subjects',
     newFolder: 'New folder',
     newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
@@ -1096,9 +1173,27 @@ const messages = {
     examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     help: 'Help',
     more: 'More options',
+    selectView: 'Select view',
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',
+    sharedFolder: {
+      info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
+      firstShared: 'The folder was shared for the first time {{date}}',
+      learningpathUnsupported:
+        'Learning paths cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
+      drawerButton: 'Show folders and resources',
+      drawerTitle: 'Folders and resources',
+      description: {
+        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
+        info1:
+          'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
+        info2: 'You can use the menu to navigate through the articles.',
+        info3:
+          'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
+      },
+      willOpenInNewTab: 'Opens in a new tab.',
+    },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",
       imageAlt:
@@ -1136,6 +1231,14 @@ const messages = {
         title: 'How to save your favourite resources from NDLA',
         text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
+      sharing: {
+        title: 'Teachers can now share folders',
+        text: 'Click on the share-button to get a link you can share.',
+      },
+      favoriteSubjects: {
+        title: 'How to save your favorite subjects from NDLA',
+        text: 'Click on the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
+      },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
         text: 'You can get to the folder overview by clicking on <strong>My folders</strong> on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
@@ -1168,6 +1271,14 @@ const messages = {
       onDragCancel: 'Dragging was cancelled. The resource {{name}} was dropped',
       dragHandle: 'Drag the resource {{name}}',
     },
+    favoriteSubjects: {
+      title: 'My favorite subjects',
+      subjects: '{{count}} subject',
+      subjects_0: '{{count}} subjects',
+      subjects_plural: '{{count}} subjects',
+      noFavorites: 'You do not have any favorite subjects!',
+      goToAllSubjects: 'Go to all subjects',
+    },
   },
   snackbar: {
     close: 'Close notification',
@@ -1186,6 +1297,14 @@ const messages = {
     search: 'Search',
     contact: 'Contact',
     help: 'Help',
+  },
+  programme: {
+    grades: 'Grades',
+  },
+  embed: {
+    conceptListError: 'Failed to show concept list',
+    linkError: 'Failed to show link.',
+    unsupported: `Embed {{type}} not supported.`,
   },
 };
 

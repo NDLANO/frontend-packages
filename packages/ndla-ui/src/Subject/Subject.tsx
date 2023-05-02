@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { breakpoints, colors, mq, spacing, spacingUnit } from '@ndla/core';
 import SectionHeading from '../SectionHeading';
+import { HeadingLevel } from '../types';
 
 const SubjectContentWrapper = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
@@ -178,10 +179,6 @@ const StyledSubjectFlexChild = styled.div`
   }
 `;
 
-export const SubjectFlexChild = ({ children }: { children: ReactNode }) => (
-  <StyledSubjectFlexChild>{children}</StyledSubjectFlexChild>
-);
-
 const StyledSectionHeading = styled(SectionHeading)`
   margin: 0 0 ${spacing.small} 0;
 
@@ -190,6 +187,13 @@ const StyledSectionHeading = styled(SectionHeading)`
   }
 `;
 
-export const SubjectSectionTitle = ({ children }: { children: ReactNode }) => (
-  <StyledSectionHeading large>{children}</StyledSectionHeading>
+interface SubjectSectionTitleProps {
+  headingLevel: HeadingLevel;
+  children: ReactNode;
+}
+
+export const SubjectSectionTitle = ({ children, headingLevel = 'h2' }: SubjectSectionTitleProps) => (
+  <StyledSectionHeading large headingLevel={headingLevel}>
+    {children}
+  </StyledSectionHeading>
 );

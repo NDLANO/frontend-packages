@@ -35,7 +35,8 @@ const MovieListItem = ({
     <StyledMovieItem
       key={movie.id}
       delete={deleteIndex === index}
-      onAnimationEnd={deleteIndex === index ? executeDeleteFile : undefined}>
+      onAnimationEnd={deleteIndex === index ? executeDeleteFile : undefined}
+    >
       <div>
         <StyledMovieImage src={movie.metaImage.url} alt={movie.metaImage.alt} />
         {movie.title}
@@ -48,7 +49,8 @@ const MovieListItem = ({
               tabIndex={-1}
               type="button"
               onMouseDown={(e) => onDragStart(e, index)}
-              onMouseUp={onDragEnd}>
+              onMouseUp={onDragEnd}
+            >
               <DragHorizontal aria-hidden={true} />
             </ButtonIcons>
           </Tooltip>
@@ -59,7 +61,8 @@ const MovieListItem = ({
             tabIndex={-1}
             type="button"
             onMouseDown={(e) => onDragStart(e, index)}
-            onMouseUp={onDragEnd}>
+            onMouseUp={onDragEnd}
+          >
             <DragHorizontal aria-hidden={true} />
           </ButtonIcons>
         )}

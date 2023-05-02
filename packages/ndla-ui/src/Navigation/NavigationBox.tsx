@@ -1,7 +1,7 @@
-import React, { MouseEvent, ChangeEventHandler } from 'react';
+import React, { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import { Switch } from '@ndla/switch';
@@ -172,6 +172,12 @@ const StyledButtonContentSelected = styled.span`
   margin-left: ${spacing.small};
 `;
 
+const listElementStyle = css`
+  display: flex;
+  flex: 1;
+  text-align: left;
+`;
+
 export type ItemProps = {
   url?: string;
   label: string;
@@ -182,7 +188,7 @@ export type ItemProps = {
 };
 type Props = {
   heading?: string;
-  colorMode?: 'dark' | 'light' | 'greyLightest' | 'greyLighter';
+  colorMode?: 'primary' | 'darker' | 'light' | 'greyLightest' | 'greyLighter';
   isButtonElements?: boolean;
   items: ItemProps[];
   onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
@@ -190,12 +196,12 @@ type Props = {
   showAdditionalResources?: boolean;
   listDirection?: listProps['direction'];
   invertedStyle?: boolean;
-  onToggleAdditionalResources?: ChangeEventHandler<HTMLInputElement>;
+  onToggleAdditionalResources?: (checked: boolean) => void;
 };
 
 export const NavigationBox = ({
   heading,
-  colorMode = 'dark',
+  colorMode = 'primary',
   items,
   isButtonElements,
   onClick,
@@ -206,7 +212,7 @@ export const NavigationBox = ({
   onToggleAdditionalResources = () => {},
 }: Props) => {
   const { t } = useTranslation();
-  const ListElementType = isButtonElements ? Button : SafeLinkButton;
+  const ListElementType = isButtonElements ? ButtonV2 : SafeLinkButton;
   return (
     <StyledWrapper>
       <StyledHeadingWrapper>
@@ -227,28 +233,26 @@ export const NavigationBox = ({
             <StyledListElementWrapper
               isAdditionalResource={item.isAdditionalResource}
               lighter={colorMode === 'light'}
-              selected={item.selected}>
+              selected={item.selected}
+            >
               <ListElementType
                 to={item.url ?? ''}
-                lighter={!item.selected && colorMode === 'light'}
-                greyLighter={!item.selected && colorMode === 'greyLighter'}
-                greyLightest={!item.selected && colorMode === 'greyLightest'}
-                darker={item.selected}
-                buttonSize="medium"
+                colorTheme={item.selected ? 'darker' : colorMode}
                 size="medium"
-                borderShape="sharpened"
-                width="full"
-                textAlign="left"
+                shape="sharp"
+                css={listElementStyle}
                 onClick={(e: MouseEvent<HTMLElement>) => {
                   if (onClick) {
                     onClick(e, item.id);
                   }
-                }}>
+                }}
+              >
                 <StyledButtonContent>
                   <StyledButtonContentText
                     isAdditionalResource={item.isAdditionalResource}
                     isRestrictedResource={item.isRestrictedResource}
-                    lighter={colorMode === 'light'}>
+                    lighter={colorMode === 'light'}
+                  >
                     <StyledMarksWrapper>
                       {item.isAdditionalResource && (
                         <StyledAdditionalResourceMark lighter={colorMode === 'light'} selected={item.selected}>

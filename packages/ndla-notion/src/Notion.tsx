@@ -6,9 +6,8 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { ShortText } from '@ndla/icons/common';
 import { Interpolation } from '@emotion/react';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
@@ -16,14 +15,9 @@ import { useTranslation } from 'react-i18next';
 import Tooltip from '@ndla/tooltip';
 import NotionDialog from './NotionDialog';
 
-const BaselineIcon = styled(ShortText)`
-  position: absolute;
-  margin: calc(0.5em + 1px) auto 0;
-  left: -2px;
-  color: ${colors.brand.secondary};
-  height: 1.1em;
-  width: 1.1em;
-  transition-duration: 0.5s;
+const BaselineIcon = styled.span`
+  display: block;
+  border-bottom: 5px double currentColor;
 `;
 
 const StyledButton = styled.button`
@@ -35,17 +29,26 @@ const StyledButton = styled.button`
   padding: 0 0 4px 0;
   margin-bottom: -4px;
   text-decoration: none;
-  color: #000;
   position: relative;
+  text-align: left;
+  display: inline;
+  color: ${colors.notion.dark};
   cursor: pointer;
   &:focus,
   &:hover {
-    color: ${colors.brand.primary};
+    background-color: ${colors.notion.dark};
+    color: ${colors.white};
     outline: none;
     ${BaselineIcon} {
-      color: ${colors.brand.primary};
-      transform: scale(1.2, 1);
-      transform-origin: top left;
+      border-color: transparent;
+    }
+  }
+
+  &:active {
+    color: ${colors.notion.dark};
+    background-color: ${colors.notion.light};
+    ${BaselineIcon} {
+      border-color: currentColor;
     }
   }
 `;
@@ -66,8 +69,10 @@ const Notion = ({ id, content, children, title, subTitle, customCSS, headerConte
     <span id={id} data-notion>
       <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })} data-notion-link>
         <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
-          {children}
-          {!hideBaselineIcon && <BaselineIcon />}
+          <div>
+            {children}
+            {!hideBaselineIcon && <BaselineIcon />}
+          </div>
         </Tooltip>
       </StyledButton>
       {createUniversalPortal(

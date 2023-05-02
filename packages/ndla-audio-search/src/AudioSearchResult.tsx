@@ -8,9 +8,10 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
-import Button from '@ndla/button';
-import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/notion';
+import { ButtonV2 } from '@ndla/button';
+import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-backend/audio-api';
 import { colors, spacing } from '@ndla/core';
 import AudioBar from './AudioBar';
 
@@ -49,9 +50,9 @@ export default function AudioSearchResult({ audio, fetchAudio, onError, locale, 
         </LicenseWrapper>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
       </div>
-      <Button outline onClick={() => onAudioSelect(audio)}>
+      <ButtonV2 variant="outline" onClick={() => onAudioSelect(audio)}>
         {translations.useAudio}
-      </Button>
+      </ButtonV2>
     </StyledListItem>
   );
 }

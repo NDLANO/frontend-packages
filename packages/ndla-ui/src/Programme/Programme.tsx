@@ -67,15 +67,7 @@ type Props = GradesProps & {
   headingId?: string;
 };
 
-export const Programme = ({
-  heading,
-  image,
-  grades,
-  selectedGrade,
-  onChangeGrade,
-  messageBoxText,
-  headingId,
-}: Props) => {
+export const Programme = ({ heading, image, grades, selectedGrade, messageBoxText, headingId }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledWrapper>
@@ -87,7 +79,7 @@ export const Programme = ({
               <NavigationHeading headingId={headingId}>{heading}</NavigationHeading>
               {messageBoxText && <MessageBox>{t(messageBoxText)}</MessageBox>}
               <SubjectsWrapper>
-                <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} onChangeGrade={onChangeGrade} />
+                <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} />
               </SubjectsWrapper>
             </StyledContentWrapper>
           </LayoutItem>

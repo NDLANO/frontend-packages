@@ -6,7 +6,7 @@ import Tooltip from '@ndla/tooltip';
 import React from 'react';
 import { FileFormat, FileType } from './FileList';
 
-const LinkText = styled.span`
+const LinkTextWrapper = styled.div`
   & > span {
     box-shadow: inset 0 -1px;
   }
@@ -26,7 +26,7 @@ const FileLink = styled(SafeLink)`
   &:hover,
   &:focus,
   &:active {
-    ${LinkText} {
+    ${LinkTextWrapper} {
       box-shadow: none;
     }
   }
@@ -50,9 +50,9 @@ const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, id:
     <FileLink key={format.url} to={format.url} target="_blank" aria-label={titleWithFormat} aria-describedby={formatId}>
       <Download />
       <Tooltip tooltip={format.tooltip}>
-        <LinkText>
+        <LinkTextWrapper>
           <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-        </LinkText>
+        </LinkTextWrapper>
       </Tooltip>
     </FileLink>
   );

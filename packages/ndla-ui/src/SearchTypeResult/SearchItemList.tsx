@@ -99,6 +99,7 @@ const ImageWrapper = styled.div<{ isTopic: boolean }>`
   margin: ${spacing.small};
   overflow: hidden;
   ${(props) => props.isTopic && `border-radius: 50%;`};
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 `;
 
 const ImageElement = styled.img`

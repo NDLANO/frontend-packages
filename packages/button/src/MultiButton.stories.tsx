@@ -7,10 +7,10 @@
  */
 
 import styled from '@emotion/styled';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import { defaultParameters } from '../../designmanual/stories/defaults';
-import MultiButton from './MultiButtonV2';
+import { defaultParameters } from '../../../stories/defaults';
+import MultiButton from './MultiButton';
 
 const Wrapper = styled.div`
   margin: 5em;
@@ -19,6 +19,7 @@ const Wrapper = styled.div`
 export default {
   title: 'Enkle komponenter/Knapper/MultiButton',
   component: MultiButton,
+  tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
@@ -41,9 +42,9 @@ export default {
       },
     ],
   },
-} as ComponentMeta<typeof MultiButton>;
+} as Meta<typeof MultiButton>;
 
-export const MultiButtonStory: ComponentStory<typeof MultiButton> = (args) => {
+export const MultiButtonStory: StoryFn<typeof MultiButton> = (args) => {
   return (
     <Wrapper>
       <MultiButton {...args} />

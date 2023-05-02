@@ -1,6 +1,6 @@
 {
   "name": "@ndla/switch",
-  "version": "1.0.3",
+  "version": "1.0.9",
   "description": "Switch button for NDLA",
   "license": "GPL-3.0",
   "sideEffects": false,
@@ -8,9 +8,9 @@
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "yarn build:types",
+    "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build:types"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^3.0.3"
+    "@ndla/core": "^3.1.3",
+    "@radix-ui/react-switch": "^1.0.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

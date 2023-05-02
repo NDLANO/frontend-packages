@@ -119,25 +119,29 @@ type Props = {
   article: ArticleType;
   icon?: ReactNode;
   licenseBox?: ReactNode;
+  competenceGoalsLoading?: boolean;
   modifier?: string;
   children?: ReactNode;
   messages: Messages;
+  contentTransformed?: boolean;
   locale: Locale;
   messageBoxLinks?: [];
+  copyText?: string;
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | ReactNode
     | null;
-  competenceGoalTypes?: string[];
   id: string;
   renderMarkdown: (text: string) => string;
-  copyPageUrlLink?: string;
   printUrl?: string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
 };
 
-const getArticleContent = (content: any, locale: Locale) => {
+const getArticleContent = (content: any, locale: Locale, contentTransformed?: boolean) => {
+  if (contentTransformed) {
+    return content;
+  }
   switch (typeof content) {
     case 'string':
       return <ArticleContent content={content} locale={locale} />;
@@ -157,8 +161,7 @@ export const Article = ({
   messageBoxLinks,
   children,
   competenceGoals,
-  competenceGoalTypes,
-  copyPageUrlLink,
+  competenceGoalsLoading,
   id,
   locale,
   notions,
@@ -166,14 +169,17 @@ export const Article = ({
   renderMarkdown,
   accessMessage,
   heartButton,
+  copyText,
+  contentTransformed,
 }: Props) => {
-  const [articleRef, { entry }] = useIntersectionObserver({
-    root: null,
+  const articleRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const { entry } = useIntersectionObserver({
     rootMargin: '400px',
+    target: articleRef.current,
     threshold: 0.1,
   });
   const [articlePositionRight, setArticlePositionRight] = useState(0);
-  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const showExplainNotions = entry && entry.isIntersecting;
 
@@ -214,7 +220,7 @@ export const Article = ({
               <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
             </MSGboxWrapper>
           )}
-          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
+          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalsLoading={competenceGoalsLoading}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
 
             <ArticleTitle icon={icon} label={messages.label}>
@@ -231,17 +237,17 @@ export const Article = ({
               buttonOffsetRight={articlePositionRight}
             />
           )}
-          {getArticleContent(content, locale)}
+          {getArticleContent(content, locale, contentTransformed)}
         </LayoutItem>
 
         <LayoutItem layout="center">
           {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
           <ArticleByline
-            copyPageUrlLink={copyPageUrlLink}
+            copySourceReference={copyText}
             authors={authors}
             suppliers={rightsholders}
             published={published}
-            license={licenseObj.license}
+            license={licenseObj?.license ?? ''}
             licenseBox={licenseBox}
             printUrl={printUrl}
           />

@@ -9,9 +9,8 @@
 import React, { ComponentType, ReactNode, useEffect, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { useTranslation } from 'react-i18next';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { isMobile } from 'react-device-detect';
-import { fonts, colors } from '@ndla/core';
 
 import styled from '@emotion/styled';
 import { FooterHeaderIcon } from '@ndla/icons/common';
@@ -22,48 +21,8 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-type OpenButtonProps = {
-  onClick: () => void;
-  children: ReactNode;
-};
-
-export const OpenButton = ({ children, onClick }: OpenButtonProps) => (
-  <Button size="xsmall" lighter borderShape="rounded" onClick={onClick}>
-    {children}
-  </Button>
-);
-
-const CompetenceWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const CompetenceBadge = styled.span`
-  display: inline-flex;
-  background: ${colors.brand.greyLighter};
-  border-radius: 36px;
-  font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes('12px', '15px')};
-  align-items: center;
-  color: ${colors.text.primary};
-  font-family: ${fonts.sans};
-  padding: 0 6px;
-  height: 25px;
-  margin-right: 7px;
-`;
-
 const CompetenceBadgeText = styled.span`
   padding: 0 5px;
-`;
-
-type CompetenceButtonWrapperProps = {
-  addSpace: boolean | undefined;
-};
-
-const CompetenceButtonWrapper = styled.div<CompetenceButtonWrapperProps>`
-  display: flex;
-  align-items: center;
-  ${(props) => props.addSpace && `padding-left: 12px;`}
 `;
 
 type Props = {
@@ -71,11 +30,11 @@ type Props = {
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | ReactNode
     | null;
-  competenceGoalTypes?: string[];
+  competenceGoalsLoading?: boolean;
   children: ReactNode;
 };
 
-const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalTypes }: Props) => {
+const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalsLoading }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -118,21 +77,17 @@ const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalTypes }
   return (
     <div {...classes('header')}>
       {children}
-      <CompetenceWrapper>
-        {competenceGoalTypes &&
-          competenceGoalTypes.map((type) => (
-            <CompetenceBadge key={type}>
-              <FooterHeaderIcon />
-              <CompetenceBadgeText>{type}</CompetenceBadgeText>
-            </CompetenceBadge>
-          ))}
-        <CompetenceButtonWrapper addSpace={competenceGoalTypes && competenceGoalTypes.length > 0}>
-          <OpenButton onClick={openDialog}>
-            <FooterHeaderIcon />
-            <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
-          </OpenButton>
-        </CompetenceButtonWrapper>
-      </CompetenceWrapper>
+      <ButtonV2
+        aria-busy={competenceGoalsLoading}
+        size="xsmall"
+        colorTheme="light"
+        shape="pill"
+        onClick={openDialog}
+        disabled={competenceGoalsLoading}
+      >
+        <FooterHeaderIcon />
+        <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
+      </ButtonV2>
       {dialog}
     </div>
   );

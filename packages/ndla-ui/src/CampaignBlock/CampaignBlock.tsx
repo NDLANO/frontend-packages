@@ -6,7 +6,9 @@
  *
  */
 
+import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
@@ -38,17 +40,17 @@ const Container = styled.div`
   max-width: 390px;
   display: flex;
   flex-direction: column;
+  gap: ${spacing.xsmall};
   border: 1px ${colors.brand.lighter} solid;
   border-radius: ${misc.borderRadius};
-  padding: ${spacing.large} ${spacing.nsmall};
+  padding: ${spacing.normal} ${spacing.small};
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 1100px;
     flex-direction: row;
-    padding: ${spacing.medium};
   }
 `;
 
-const StyledHeader = styled.h2`
+const headingStyle = css`
   margin: 0;
 `;
 
@@ -57,23 +59,13 @@ const StyledDescription = styled.p`
   margin: ${spacing.normal} 0 ${spacing.medium};
 `;
 
-const ImageBefore = styled.img`
-  max-width: 160px;
-  max-height: 145px;
-  padding-bottom: ${spacing.nsmall};
-  ${mq.range({ from: breakpoints.tabletWide })} {
+const StyledImg = styled.img`
+  max-height: 200px;
+  ${mq.range({ until: breakpoints.tabletWide })} {
     align-self: center;
-    padding-right: ${spacing.nsmall};
   }
-`;
-
-const ImageAfter = styled.img`
-  max-width: 200px;
-  max-height: 155px;
-  padding-top: ${spacing.nsmall};
   ${mq.range({ from: breakpoints.tabletWide })} {
     align-self: center;
-    padding-left: ${spacing.nsmall};
   }
 `;
 
@@ -87,26 +79,19 @@ const StyledLink = styled(SafeLink)`
   }
 `;
 
-const CampaignBlock = ({
-  title,
-  imageBefore,
-  description,
-  headingLevel: StyledHeader = 'h2',
-  imageAfter,
-  url,
-}: Props) => {
+const CampaignBlock = ({ title, imageBefore, description, headingLevel: Heading = 'h2', imageAfter, url }: Props) => {
   return (
     <Container>
-      {imageBefore && <ImageBefore src={imageBefore.src} />}
+      {imageBefore && <StyledImg src={imageBefore.src} data-left={true} />}
       <div>
-        <StyledHeader>{title.title}</StyledHeader>
+        <Heading css={headingStyle}>{title.title}</Heading>
         <StyledDescription>{description.text}</StyledDescription>
         <StyledLink to={url.url}>
           {url.text}
           <Forward />
         </StyledLink>
       </div>
-      {imageAfter && <ImageAfter src={imageAfter.src} />}
+      {imageAfter && <StyledImg src={imageAfter.src} data-right={true} />}
     </Container>
   );
 };

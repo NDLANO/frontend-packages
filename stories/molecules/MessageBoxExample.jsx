@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
 import { MessageBoxTag, MessageBox, MessageBanner } from '@ndla/ui';
-import MessageBoxTabs from '../molecules/MessageBoxTabs';
 import ComponentInfo from '../ComponentInfo';
 const Wrapper = styled.div`
   width: 50%;
@@ -99,7 +98,6 @@ const MessageBoxExample = () => {
               </MessageBoxWrapper>
             </>
           }
-          onSite={[<MessageBoxTabs key={1}></MessageBoxTabs>]}
           reactCode={`import { MessageBoxTag, messagesNB, MessageBox, MessageBanner } from '@ndla/ui';
   
 //Direkte kall på fullpage meldingsboks

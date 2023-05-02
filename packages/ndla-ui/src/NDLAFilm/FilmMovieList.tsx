@@ -17,7 +17,7 @@ import { StyledHeadingH2 } from './filmStyles';
 
 interface Props {
   movies: MovieType[];
-  name: string;
+  name?: string;
   slideBackwardsLabel: string;
   slideForwardsLabel: string;
   resourceTypes: MovieResourceType[];
@@ -42,7 +42,7 @@ const FilmMovieList = ({
   resizeThumbnailImages,
 }: Props) => (
   <StyledSection>
-    <StyledHeadingH2 marginLeft={autoSizedProps.margin}>{name}</StyledHeadingH2>
+    {!!name && <StyledHeadingH2 marginLeft={autoSizedProps.margin}>{name}</StyledHeadingH2>}
     <Carousel
       leftButton={
         <IconButtonV2 aria-label={slideBackwardsLabel}>

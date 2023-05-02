@@ -29,6 +29,6 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const StyledWrapperAutosizer = styled.div<{ width: string }>`
-  margin: '0 auto';
+  margin: 0px auto;
   width: ${(p) => p.width};
 `;

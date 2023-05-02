@@ -189,7 +189,7 @@ export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
   },
 };
 
-export const VisuallyInterrupted: StoryObj<typeof BrightcoveEmbed> = {
+export const VisuallyInterpreted: StoryObj<typeof BrightcoveEmbed> = {
   args: {
     embed: visuallyInterpretedEmbedMetaData,
   },

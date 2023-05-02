@@ -46,6 +46,7 @@ interface Props<T extends boolean> {
   matchFrom?: 'any' | 'start';
   required?: boolean;
   isDisabled?: boolean;
+  id?: string;
 }
 
 const Select = <T extends boolean>({

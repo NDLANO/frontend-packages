@@ -25,7 +25,7 @@ const StyledOl = styled.ol`
   margin-top: 0;
   margin-left: 0;
   ${fonts.sizes('18px', '29px')};
-
+  list-style-type: none;
   // Child ordered lists
   ol {
     padding-left: 20px;
@@ -36,25 +36,24 @@ const StyledOl = styled.ol`
   }
 
   &[data-type='letters'] {
-    list-style-type: none;
-    counter-reset: item;
+    counter-reset: letter 0;
     > li {
-      counter-increment: item;
+      counter-increment: letter;
       &:before {
         position: absolute;
         transform: translateX(-100%);
-        content: counter(item, upper-alpha) '.';
+        content: counter(letter, upper-alpha) '.';
         padding-right: 0.25em;
       }
 
       > ol[data-type='letters'] {
         > li:before {
-          content: counter(item, lower-alpha) '.';
+          content: counter(letter, lower-alpha) '.';
         }
         ol[data-type='letters'] {
           padding-left: 28px;
           > li:before {
-            content: counter(item, lower-roman) '.';
+            content: counter(letter, lower-roman) '.';
           }
         }
       }
@@ -62,8 +61,7 @@ const StyledOl = styled.ol`
   }
 
   &:not([data-type='letters']) {
-    list-style-type: none;
-    counter-reset: item;
+    counter-reset: item 0;
     > li {
       counter-increment: item;
       &:before {
@@ -96,12 +94,16 @@ const StyledOl = styled.ol`
 `;
 
 interface Props extends HTMLAttributes<HTMLOListElement> {
-  start?: number;
   type?: 'letters';
+  start?: number;
 }
 
-const OrderedList = ({ type, children, start, ...rest }: Props) => {
-  return <StyledOl {...rest}>{children}</StyledOl>;
+const OrderedList = ({ type, children, ...rest }: Props) => {
+  return (
+    <StyledOl data-type={type} {...rest}>
+      {children}
+    </StyledOl>
+  );
 };
 
 export default OrderedList;

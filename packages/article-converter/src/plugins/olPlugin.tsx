@@ -17,7 +17,7 @@ export const olPlugin: PluginType = (node, opts) => {
   const classes = [node.attribs.class ?? false, letterClass, numClass].filter((c): c is string => !!c).join(' ');
 
   return (
-    <OrderedList {...props} data-type={undefined} className={classes.length ? classes : undefined}>
+    <OrderedList {...props} className={classes.length ? classes : undefined}>
       {domToReact(node.children, opts)}
     </OrderedList>
   );

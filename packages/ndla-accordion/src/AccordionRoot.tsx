@@ -6,7 +6,9 @@
  *
  */
 
-import { AccordionMultipleProps, AccordionSingleProps, Root } from '@radix-ui/react-accordion';
+import styled from '@emotion/styled';
+import { Root } from '@radix-ui/react-accordion';
+import { spacing } from '@ndla/core';
 import { HTMLAttributes } from 'react';
 
 interface SingleProps extends HTMLAttributes<HTMLDivElement> {
@@ -26,8 +28,14 @@ interface MultipleProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
 }
 
+const StyledRoot = styled(Root)`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
+`;
+
 const AccordionRoot = ({ children, ...rest }: SingleProps | MultipleProps) => {
-  return <Root {...rest}>{children}</Root>;
+  return <StyledRoot {...rest}>{children}</StyledRoot>;
 };
 
 export default AccordionRoot;

@@ -6,10 +6,10 @@
  *
  */
 
-import { css, keyframes } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { AccordionContentProps, Content } from '@radix-ui/react-accordion';
+import { Content } from '@radix-ui/react-accordion';
 import { HTMLAttributes, ReactNode } from 'react';
 
 const slideDown = keyframes`
@@ -29,23 +29,19 @@ const slideUp = keyframes`
   }
 `;
 
-interface AnimationProps {
-  animate: boolean;
-}
-
-const shouldForwardProp = (p: string) => p !== 'animate';
-const AnimationWrapper = styled(Content, { shouldForwardProp })<AnimationProps>`
+const AnimationWrapper = styled(Content)`
   overflow: hidden;
-  ${({ animate }) =>
-    animate &&
-    css`
-      &[data-state='open'] {
-        animation: ${slideDown} 300ms ease-out;
-      }
-      &[data-state='closed'] {
-        animation: ${slideUp} 300ms ease-out;
-      }
-    `}
+
+  &[data-state='open'] {
+    animation: ${slideDown} 300ms ease-out;
+  }
+  &[data-state='closed'] {
+    animation: ${slideUp} 300ms ease-out;
+  }
+
+  &[data-disable-animate='true'] {
+    animation: none;
+  }
 `;
 
 const StyledContent = styled.div`
@@ -59,7 +55,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 const AccordionContent = ({ disableAnimation, children, ...rest }: Props) => {
   return (
-    <AnimationWrapper animate={!disableAnimation}>
+    <AnimationWrapper data-disable-animate={disableAnimation}>
       <StyledContent {...rest}>{children}</StyledContent>
     </AnimationWrapper>
   );

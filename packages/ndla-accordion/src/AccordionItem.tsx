@@ -6,6 +6,8 @@
  *
  */
 
+import styled from '@emotion/styled';
+import { colors } from '@ndla/core';
 import { Item } from '@radix-ui/react-accordion';
 import { HTMLAttributes, ReactNode } from 'react';
 
@@ -16,8 +18,15 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
+const StyledItem = styled(Item)`
+  border: 1px solid ${colors.brand.light};
+  &[data-state='open'] {
+    border-color: ${colors.brand.primary};
+  }
+`;
+
 const AccordionItem = ({ children, ...rest }: Props) => {
-  return <Item {...rest}>{children}</Item>;
+  return <StyledItem {...rest}>{children}</StyledItem>;
 };
 
 export default AccordionItem;

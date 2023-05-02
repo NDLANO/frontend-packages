@@ -8,10 +8,10 @@
 
 import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors, misc, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
 import { Header, Trigger } from '@radix-ui/react-accordion';
-import { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode } from 'react';
 
 const StyledHeader = styled(Header)`
   display: flex;
@@ -20,20 +20,34 @@ const StyledHeader = styled(Header)`
 
 const StyledTrigger = styled(Trigger)`
   display: flex;
-  background: ${colors.brand.lighter};
-  border-radius: ${misc.borderRadius};
-  padding-left: ${spacing.small};
+  background-color: transparent;
   flex: 1;
-  min-height: 40px;
+  padding: ${spacing.normal} ${spacing.medium};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: none;
   cursor: pointer;
+  border: none;
+  color: ${colors.brand.primary};
+  font-weight: ${fonts.weight.semibold};
+  transition: all 200ms ease-in-out;
+  &[data-state='open'] {
+    background-color: ${colors.brand.lighter};
+    border-bottom: 1px solid ${colors.brand.primary};
+  }
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: ${spacing.xxsmall};
+  }
+  &:focus-visible {
+    outline: 2px solid ${colors.brand.primary};
+  }
 `;
 
 const StyledChevron = styled(ChevronDown)`
-  margin-left: auto;
+  color: ${colors.brand.primary};
+  transition: all 200ms ease-in-out;
   ${StyledTrigger}[data-state='open'] > & {
     transform: rotate(180deg);
   }
@@ -42,16 +56,16 @@ const StyledChevron = styled(ChevronDown)`
 `;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-  indicatorCSS?: SerializedStyles;
+  indicator?: ReactNode;
   headerCSS?: SerializedStyles;
 }
 
-const AccordionHeader = forwardRef<HTMLButtonElement, Props>(({ indicatorCSS, headerCSS, children, ...rest }, ref) => {
+const AccordionHeader = forwardRef<HTMLButtonElement, Props>(({ indicator, headerCSS, children, ...rest }, ref) => {
   return (
     <StyledHeader css={headerCSS}>
       <StyledTrigger ref={ref} {...rest}>
         {children}
-        <StyledChevron css={indicatorCSS} />
+        {indicator ?? <StyledChevron />}
       </StyledTrigger>
     </StyledHeader>
   );

@@ -9,11 +9,13 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import ProgramCard from './ProgramCard';
+import EducationalPrograms from './EducationalPrograms';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Enkle komponenter/ProgramCard',
   component: ProgramCard,
+  EducationalPrograms,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
@@ -38,3 +40,9 @@ export const ProgramCardStory: StoryFn<typeof ProgramCard> = ({ ...args }) => {
 };
 
 ProgramCardStory.storyName = 'ProgramCard';
+
+export const EducationalProgramsStory: StoryFn<typeof EducationalPrograms> = ({ ...args }) => {
+  return <EducationalPrograms {...args} />;
+};
+
+EducationalProgramsStory.storyName = 'EducationalPrograms';

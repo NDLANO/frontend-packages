@@ -144,7 +144,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
             size="small"
             onClick={() => setShowOriginalVideo((p) => !p)}
           >
-            {t(`figure.button.${showOriginalVideo ? 'original' : 'alternative'}`)}
+            {t(`figure.button.${!showOriginalVideo ? 'original' : 'alternative'}`)}
           </LinkedVideoButton>
         }
         licenseRights={license.rights}

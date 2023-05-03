@@ -26,9 +26,11 @@ const StyledOl = styled.ol`
   margin-left: 0;
   ${fonts.sizes('18px', '29px')};
   list-style-type: none;
+  padding-left: 24px;
+
   // Child ordered lists
   ol {
-    padding-left: 20px;
+    padding-left: 24px;
   }
   // List item
   li {
@@ -36,24 +38,24 @@ const StyledOl = styled.ol`
   }
 
   &[data-type='letters'] {
-    counter-reset: letter 0;
+    counter-reset: item 0;
     > li {
-      counter-increment: letter;
+      counter-increment: item;
       &:before {
         position: absolute;
         transform: translateX(-100%);
-        content: counter(letter, upper-alpha) '.';
+        content: counter(item, upper-alpha) '.';
         padding-right: 0.25em;
       }
 
       > ol[data-type='letters'] {
         > li:before {
-          content: counter(letter, lower-alpha) '.';
+          content: counter(item, lower-alpha) '.';
         }
         ol[data-type='letters'] {
           padding-left: 28px;
           > li:before {
-            content: counter(letter, lower-roman) '.';
+            content: counter(item, lower-roman) '.';
           }
         }
       }

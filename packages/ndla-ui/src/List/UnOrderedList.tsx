@@ -17,9 +17,7 @@ const StyledUl = styled.ul`
       color: ${colors.brand.secondary};
     }
   }
-  ul {
-    padding-left: 44px;
-  }
+  padding-left: 44px;
   margin-top: 0;
   margin-left: 0;
   ${fonts.sizes('18px', '29px')};

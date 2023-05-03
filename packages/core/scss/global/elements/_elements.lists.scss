@@ -33,35 +33,11 @@ li ol {
 }
 ol {
   counter-reset: item;
+  counter-reset: letter;
 }
 
 $diameter: 26px;
 
-ol > li {
-  display: block;
-  position: relative;
-  margin-left: $spacing;
-  @include mq(desktop) {
-    margin-left: 0;
-  }
-  &:before {
-    content: counter(item);
-    counter-increment: item;
-    color: $brand-grey;
-    display: inline-block;
-    position: absolute;
-    top: -1px;
-    left: -55px;
-    line-height: 20px;
-    height: $diameter;
-    width: $diameter;
-    text-align: center;
-    border: 2px solid $brand-grey;
-    border-radius: 50%;
-    font-family: $font;
-    font-size: 16px;
-  }
-}
 blockquote > ol {
   position: relative;
   left: 50px;

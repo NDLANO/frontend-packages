@@ -30,7 +30,7 @@ interface BaseProps {
 }
 
 interface ErrorProps extends BaseProps {
-  type: TypeProps['type'];
+  type: EmbedBylineTypeProps['type'];
   error: true;
 }
 
@@ -59,9 +59,9 @@ interface ConceptProps extends BaseProps {
   copyright: ConceptCopyright;
 }
 
-type TypeProps = ImageProps | BrightcoveProps | AudioProps | PodcastProps | ConceptProps;
+export type EmbedBylineTypeProps = ImageProps | BrightcoveProps | AudioProps | PodcastProps | ConceptProps;
 
-type Props = TypeProps | ErrorProps;
+type Props = EmbedBylineTypeProps | ErrorProps;
 
 export type LicenseType = ReturnType<typeof getLicenseByAbbreviation>;
 
@@ -88,7 +88,7 @@ const BylineWrapper = styled.div`
 
   &[data-error='true'] {
     border: none;
-    background-color: ${colors.support.redLight};
+    background-color: ${colors.support.redLightest};
   }
   &[data-first='true'] {
     border-top: 1px solid ${colors.brand.tertiary};

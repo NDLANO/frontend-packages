@@ -20,8 +20,8 @@ import { Notion as UINotion } from '../Notion';
 import { Figure } from '../Figure';
 import { NotionImage } from '../Notion/NotionImage';
 import { ConceptNotionV2, ConceptNotionData } from './conceptComponents';
-import { MessageBox } from '../Messages';
 import { EmbedByline } from '../LicenseByline';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 
 const BottomBorder = styled.div`
   margin-top: ${spacing.normal};
@@ -96,7 +96,7 @@ export const ConceptEmbed = ({ embed, fullWidth }: Props) => {
   if (embed.status === 'error' && embed.embedData.type === 'inline') {
     return <span>{embed.embedData.linkText}</span>;
   } else if (embed.status === 'error') {
-    return <MessageBox type="danger">En feil oppstod ved lasting av forklaring</MessageBox>;
+    return <EmbedErrorPlaceholder type="concept" />;
   }
 
   const {

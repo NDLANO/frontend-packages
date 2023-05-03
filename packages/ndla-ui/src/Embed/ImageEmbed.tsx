@@ -15,6 +15,7 @@ import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 
 interface Props {
   embed: ImageMetaData;
@@ -98,18 +99,10 @@ const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 const ImageEmbed = ({ embed, previewAlt }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
-  const { t } = useTranslation();
   if (embed.status === 'error') {
     const { align, size } = embed.embedData;
     const figureType = getFigureType(size, align);
-    return (
-      <Figure type={figureType}>
-        <div className="c-figure__img">
-          <img alt={t('image.error.url')} src={errorSvgSrc} />
-        </div>
-        <EmbedByline error type="image" bottomRounded />
-      </Figure>
-    );
+    return <EmbedErrorPlaceholder type={'image'} figureType={figureType} />;
   }
 
   const { data, embedData, seq } = embed;

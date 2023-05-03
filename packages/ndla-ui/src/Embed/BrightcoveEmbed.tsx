@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
 import { Figure } from '../Figure';
 import { EmbedByline } from '../LicenseByline';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 
 interface Props {
   embed: BrightcoveMetaData;
@@ -70,7 +71,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
   }, []);
   if (embed.status === 'error') {
     return (
-      <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
+      <EmbedErrorPlaceholder type="video">
         <BrightcoveIframe
           ref={iframeRef}
           title={`Video: ${embedData.videoid ?? ''}`}
@@ -79,8 +80,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
           {...getIframeProps(embedData, [])}
           allowFullScreen
         />
-        <EmbedByline error type="video" bottomRounded />
-      </Figure>
+      </EmbedErrorPlaceholder>
     );
   }
   const { data, seq } = embed;

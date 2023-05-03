@@ -1302,7 +1302,7 @@ const messages = {
     conceptListError: 'Ii sáhttán čájehit čilgehuslisttu',
     linkError: 'Ii sáhttán čájehit liŋkka.',
     unsupported: `Embed {{type}} ii dorjojuvvo.`,
-    embedError: `Klarte ikkje å vise {{type}}`,
+    embedError: `Orsak, ein feil oppstod ved lasting av {{type}}. Prøv å laste inn sida på nytt.`,
     type: {
       image: 'Bilde',
       video: 'Video',

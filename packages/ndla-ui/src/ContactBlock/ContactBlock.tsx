@@ -25,16 +25,16 @@ interface Props {
   name: string;
   email: string;
 }
-const CardWrapper = styled.div`
+const BlockWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 0 ${spacing.medium} ${spacing.medium};
   font-family: ${fonts.sans};
-  justify-content: center;
   border-radius: ${misc.borderRadius};
   border: 1px solid ${colors.brand.lighter};
-  margin-top: ${spacing.mediumlarge};
+  max-width: 350px;
   ${mq.range({ from: breakpoints.tabletWide })} {
+    max-width: 773px;
     flex-direction: row;
     padding: 0 0 ${spacing.medium} ${spacing.medium};
     gap: ${spacing.nsmall};
@@ -48,12 +48,13 @@ const StyledHeader = styled.div`
   padding-top: ${spacing.medium};
 `;
 
-const StyledDescriptionInformation = styled.div`
+const StyledText = styled.div`
   display: flex;
   overflow-wrap: anywhere;
   color: ${colors.text.light};
   gap: ${spacing.xxsmall};
 `;
+
 const EmailLink = styled.a`
   color: ${colors.text.light};
   text-decoration-color: ${colors.text.light};
@@ -70,7 +71,7 @@ const SummaryBlock = styled.p`
   }
 `;
 
-const ContentWrapper = styled.div`
+const TextWrapper = styled.div`
   display: flex;
   overflow: hidden;
   justify-content: space-between;
@@ -82,18 +83,16 @@ const BlobWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
   padding: ${spacing.medium} ${spacing.medium} 0 0;
-
   ${mq.range({ from: breakpoints.tabletWide })} {
     padding-right: 0;
   }
 `;
 
-const blobStyle = css`
+const blobStyling = css`
   width: 165px;
   height: 180px;
   transform: translate(10%, 0);
@@ -101,6 +100,15 @@ const blobStyle = css`
 const Email = styled.div`
   min-width: 60px;
 `;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+`;
+
+const StyledImage = styled.img`
+  object-fit: cover;
+`;
+
 const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = 'green', blob = 'pointy' }: Props) => {
   const { t } = useTranslation();
   const isGreenBlob = blobColor === 'green';
@@ -108,11 +116,11 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
   const authors = concat(image?.copyright.processors, image?.copyright.creators, image?.copyright.rightsholders);
 
   return (
-    <CardWrapper>
+    <BlockWrapper>
       <ImageWrapper>
         {image ? (
           <>
-            <img alt={image.alttext.alttext} src={`${image.image.imageUrl}?width=286`} />
+            <StyledImage alt={image.alttext.alttext} src={`${image.image.imageUrl}?width=286`} />
             {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
               image.copyright.license.license
             }`}
@@ -121,23 +129,23 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
           <img alt={t('image.error.url')} src={errorSvgSrc} />
         )}
       </ImageWrapper>
-      <div>
-        <ContentWrapper>
+      <ContentWrapper>
+        <TextWrapper>
           <div>
             <StyledHeader>{name}</StyledHeader>
-            <StyledDescriptionInformation>{jobTitle}</StyledDescriptionInformation>
-            <StyledDescriptionInformation>
+            <StyledText>{jobTitle}</StyledText>
+            <StyledText>
               <Email>{`${t('email')}:`}</Email>
               <EmailLink href={`mailto:${email}?subject=Contact us`}>{email}</EmailLink>
-            </StyledDescriptionInformation>
+            </StyledText>
           </div>
           <BlobWrapper>
-            <Blob css={blobStyle} color={isGreenBlob ? colors.support.greenLight : colors.support.redLight} />
+            <Blob css={blobStyling} color={isGreenBlob ? colors.support.greenLight : colors.support.redLight} />
           </BlobWrapper>
-        </ContentWrapper>
+        </TextWrapper>
         <SummaryBlock>{description}</SummaryBlock>
-      </div>
-    </CardWrapper>
+      </ContentWrapper>
+    </BlockWrapper>
   );
 };
 

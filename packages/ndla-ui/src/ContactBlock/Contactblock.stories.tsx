@@ -77,7 +77,6 @@ export default {
   },
   parameters: {
     ...defaultParameters,
-    layout: 'centered',
   },
 } as Meta<typeof ContactBlock>;
 

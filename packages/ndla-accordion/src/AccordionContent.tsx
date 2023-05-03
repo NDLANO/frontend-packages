@@ -45,7 +45,7 @@ const AnimationWrapper = styled(Content)`
 `;
 
 const StyledContent = styled.div`
-  padding: ${spacing.xsmall} ${spacing.small};
+  padding: ${spacing.normal};
 `;
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

@@ -32,7 +32,7 @@ const BlockWrapper = styled.div`
   font-family: ${fonts.sans};
   border-radius: ${misc.borderRadius};
   border: 1px solid ${colors.brand.lighter};
-  max-width: 350px;
+  max-width: 348px;
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 773px;
     flex-direction: row;

@@ -69,12 +69,7 @@ const EducationalPrograms = ({ programs }: Props) => {
       </StyledProgramsHeaderContainer>
       <StyledProgramsCardsContainer>
         {programs.map((program) => (
-          <ProgramCard
-            key={program.id}
-            programTitel={program.label}
-            programIMGDesk={program.url}
-            programIMGMob={program.url2}
-          />
+          <ProgramCard key={program.id} programTitel={program} programIMGDesk={program} programIMGMob={program} />
         ))}
       </StyledProgramsCardsContainer>
     </StyledProgramsContainer>

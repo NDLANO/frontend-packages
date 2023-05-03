@@ -11,6 +11,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import ProgramCard from './ProgramCard';
 import EducationalPrograms from './EducationalPrograms';
 import { defaultParameters } from '../../../../stories/defaults';
+import { mockProgramsV2 } from '../../../../dummydata/mockProgramsV2';
 
 export default {
   title: 'Enkle komponenter/ProgramCard',
@@ -32,6 +33,7 @@ export default {
       alt: 'Elektro og datateknologi illustrasjon',
     },
     url: '#',
+    programs: mockProgramsV2,
   },
 } as Meta<typeof ProgramCard>;
 
@@ -41,8 +43,8 @@ export const ProgramCardStory: StoryFn<typeof ProgramCard> = ({ ...args }) => {
 
 ProgramCardStory.storyName = 'ProgramCard';
 
-export const EducationalProgramsStory: StoryFn<typeof EducationalPrograms> = ({ ...args }) => {
-  return <EducationalPrograms {...args} />;
+export const EducationalProgramsStory: StoryFn<typeof EducationalPrograms> = ({ ...mockProgramsV2 }) => {
+  return <EducationalPrograms {...mockProgramsV2} />;
 };
 
 EducationalProgramsStory.storyName = 'EducationalPrograms';

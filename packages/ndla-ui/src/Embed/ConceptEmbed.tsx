@@ -11,18 +11,17 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { isMobile } from 'react-device-detect';
 import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
-import { ButtonV2, IconButtonV2 } from '@ndla/button';
+import { IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { getGroupedContributorDescriptionList, getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
-import { ModalV2 } from '@ndla/modal';
 import { ConceptMetaData } from '@ndla/types-embed';
 import Tooltip from '@ndla/tooltip';
 import { Notion as UINotion } from '../Notion';
-import { Figure, FigureCaption } from '../Figure';
-import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
+import { Figure } from '../Figure';
 import { NotionImage } from '../Notion/NotionImage';
 import { ConceptNotionV2, ConceptNotionData } from './conceptComponents';
+import { EmbedByline } from '../LicenseByline';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 
 const BottomBorder = styled.div`
   margin-top: ${spacing.normal};
@@ -94,8 +93,10 @@ const StyledButton = styled.button`
 `;
 
 export const ConceptEmbed = ({ embed, fullWidth }: Props) => {
-  if (embed.status === 'error') {
+  if (embed.status === 'error' && embed.embedData.type === 'inline') {
     return <span>{embed.embedData.linkText}</span>;
+  } else if (embed.status === 'error') {
+    return <EmbedErrorPlaceholder type="concept" />;
   }
 
   const {
@@ -268,22 +269,12 @@ export const BlockConcept = ({
   visualElement,
   fullWidth,
 }: ConceptProps) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
   const [modalPos, setModalPos] = useState(-9999);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const licenseCredits = getLicenseCredits(copyright);
-  const { creators, rightsholders, processors } = licenseCredits;
-  const authors = creators.length || rightsholders.length ? creators.concat(rightsholders) : processors;
   const visualElementType =
     visualElement?.embedData.resource === 'brightcove' ? 'video' : visualElement?.embedData.resource;
-
-  const groupedAuthors = getGroupedContributorDescriptionList(licenseCredits, i18n.language).map((item) => ({
-    name: item.description,
-    type: item.label,
-  }));
-  const license = copyright?.license && getLicenseByAbbreviation(copyright?.license?.license, i18n.language);
 
   const onOpenChange = useCallback((open: boolean) => {
     if (open) {
@@ -362,42 +353,7 @@ export const BlockConcept = ({
             )
           }
         />
-        {copyright?.license && license ? (
-          <FigureCaption
-            figureId=""
-            id=""
-            authors={authors}
-            licenseRights={license.rights}
-            locale={i18n.language}
-            hideIconsAndAuthors
-            modalButton={
-              <ButtonV2 variant="outline" size="small" shape="pill" onClick={() => setIsOpen(true)}>
-                {t('concept.reuse')}
-              </ButtonV2>
-            }
-          >
-            <ModalV2
-              controlled
-              isOpen={isOpen}
-              onClose={() => setIsOpen(false)}
-              labelledBy="license-dialog-rules-heading"
-            >
-              {(close) => (
-                <FigureLicenseDialogContent
-                  authors={groupedAuthors}
-                  locale={i18n.language}
-                  title={title}
-                  origin={copyright.origin}
-                  license={license}
-                  onClose={close}
-                  type="concept"
-                />
-              )}
-            </ModalV2>
-          </FigureCaption>
-        ) : (
-          <BottomBorder />
-        )}
+        {copyright ? <EmbedByline copyright={copyright} bottomRounded topRounded type="concept" /> : <BottomBorder />}
       </Figure>
     </Root>
   );

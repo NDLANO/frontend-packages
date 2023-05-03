@@ -17,6 +17,7 @@ import {
   H5pOembedData,
   H5pLicenseInformation,
   H5pInfo,
+  H5pData,
 } from './h5pTypes';
 import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
 import { CodeEmbedData, CodeMetaData } from './codeTypes';
@@ -131,6 +132,7 @@ export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, Brightco
 export type { RelatedContentData, NodeType };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
 export type { AudioMeta };
+export type { H5pData };
 
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 

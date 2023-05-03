@@ -12,7 +12,7 @@ import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Figure } from '../Figure';
 import { ResourceBox } from '../ResourceBox';
-import { errorSvgSrc } from './ImageEmbed';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 
 interface Props {
   embed: OembedMetaData;
@@ -39,12 +39,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
     }
   }, []);
   if (embed.status === 'error') {
-    return (
-      <figure className={isConcept ? '' : 'c-figure'}>
-        <img alt={t('external.error')} src={errorSvgSrc} />
-        <figcaption>{t('external.error')}</figcaption>
-      </figure>
-    );
+    return <EmbedErrorPlaceholder type="external" />;
   }
 
   const { embedData, data } = embed;

@@ -10,16 +10,12 @@ import sortBy from 'lodash/sortBy';
 import isNumber from 'lodash/isNumber';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
 import { useEffect, useRef, useState } from 'react';
-import { ModalV2 } from '@ndla/modal';
-import { SafeLinkButton } from '@ndla/safelink';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
-import { ButtonV2, CopyButton } from '@ndla/button';
-import { Figure, FigureCaption } from '../Figure';
-import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
-import { getFirstNonEmptyLicenseCredits } from './AudioEmbed';
+import { ButtonV2 } from '@ndla/button';
+import { Figure } from '../Figure';
+import { EmbedByline } from '../LicenseByline';
 
 interface Props {
   embed: BrightcoveMetaData;
@@ -58,9 +54,8 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
   };
 };
 const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { embedData } = embed;
 
@@ -84,7 +79,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
           {...getIframeProps(embedData, [])}
           allowFullScreen
         />
-        <figcaption>{t('video.error')}</figcaption>
+        <EmbedByline error type="video" bottomRounded />
       </Figure>
     );
   }
@@ -92,27 +87,11 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
 
   const linkedVideoId = isNumeric(data.link?.text) ? data.link?.text : undefined;
 
-  const license = getLicenseByAbbreviation(data.copyright?.license.license ?? '', i18n.language);
-  const contributors = data.copyright
-    ? getGroupedContributorDescriptionList(data.copyright, i18n.language).map((item) => ({
-        name: item.description,
-        type: item.label,
-      }))
-    : [];
-
-  const { rightsholders = [], creators = [], processors = [] } = data.copyright ?? {};
-
-  const download = sortBy(
-    data.sources.filter((src) => src.container === 'MP4' && src.src),
-    (src) => src.size,
-  )?.[0]?.src;
-
   const figureId = `figure-${seq}-${data.id}`;
   const originalVideoProps = getIframeProps(embedData, data.sources);
   const alternativeVideoProps = linkedVideoId
     ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
     : undefined;
-  const captionAuthors = getFirstNonEmptyLicenseCredits({ rightsholders, creators, processors });
 
   return (
     <Figure id={figureId} type={isConcept ? 'full-column' : 'full'} resizeIframe>
@@ -127,17 +106,8 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
           allowFullScreen
         />
       </div>
-      <FigureCaption
-        figureId={figureId}
-        id={data.id}
-        locale={i18n.language}
-        caption={embedData.caption ?? ''}
-        modalButton={
-          <ButtonV2 variant="outline" shape="pill" size="small" onClick={() => setIsOpen(true)}>
-            {t('video.reuse')}
-          </ButtonV2>
-        }
-        linkedVideoButton={
+      <EmbedByline type="video" copyright={data.copyright!} description={data.description ?? ''} bottomRounded>
+        {!!linkedVideoId && (
           <LinkedVideoButton
             variant="outline"
             shape="pill"
@@ -146,62 +116,9 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
           >
             {t(`figure.button.${showOriginalVideo ? 'original' : 'alternative'}`)}
           </LinkedVideoButton>
-        }
-        licenseRights={license.rights}
-        authors={captionAuthors}
-        hasLinkedVideo={!!linkedVideoId}
-      />
-      <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)} labelledBy="license-dialog-rules-heading">
-        {(close) => (
-          <FigureLicenseDialogContent
-            onClose={close}
-            title={data.name}
-            locale={i18n.language}
-            license={license}
-            authors={contributors}
-            type="video"
-          >
-            <VideoLicenseButtons
-              download={download}
-              licenseCode={data.copyright?.license.license}
-              src={originalVideoProps.src}
-              width={originalVideoProps.width}
-              height={originalVideoProps.height}
-              name={data.name}
-            />
-          </FigureLicenseDialogContent>
         )}
-      </ModalV2>
+      </EmbedByline>
     </Figure>
-  );
-};
-
-interface VideoLicenseButtonsProps {
-  download: string;
-  licenseCode?: string;
-  src: string;
-  width: string | number;
-  height: string | number;
-  name?: string;
-}
-
-const VideoLicenseButtons = ({ download, src, width, height, name, licenseCode }: VideoLicenseButtonsProps) => {
-  const { t } = useTranslation();
-  return (
-    <>
-      {licenseCode !== 'COPYRIGHTED' && (
-        <SafeLinkButton key="download" to={download} variant="outline" download>
-          {t('video.download')}
-        </SafeLinkButton>
-      )}
-      <CopyButton
-        variant="outline"
-        copyNode={t('license.hasCopiedTitle')}
-        onClick={() => navigator.clipboard.writeText(makeIframeString(src, width, height, name))}
-      >
-        {t('license.embed')}
-      </CopyButton>
-    </>
   );
 };
 

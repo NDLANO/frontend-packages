@@ -8,27 +8,33 @@
 
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
+import { ReactNode } from 'react';
 
 interface Props {
   description: string;
+  icon?: ReactNode;
 }
 
 const StyledParagraph = styled.p`
   margin: 0;
-  padding-bottom: ${spacing.xsmall};
-  border-bottom: 1px solid ${colors.brand.tertiary};
 `;
 
 const StyledFigCaption = styled.figcaption`
+  display: flex;
+  gap: ${spacing.small};
+  align-items: center;
   background: unset;
   padding: unset;
   font-size: unset;
   color: unset;
+  padding-bottom: ${spacing.xsmall};
+  border-bottom: inherit;
 `;
 
-const LicenseDescription = ({ description }: Props) => {
+const LicenseDescription = ({ description, icon }: Props) => {
   return (
     <StyledFigCaption>
+      {icon}
       <StyledParagraph>{description}</StyledParagraph>
     </StyledFigCaption>
   );

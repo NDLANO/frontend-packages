@@ -31,6 +31,7 @@
     "types"
   ],
   "dependencies": {
+    "@ndla/accordion": "^2.1.32",
     "@ndla/article-scripts": "^3.0.17",
     "@ndla/button": "^10.0.13",
     "@ndla/carousel": "^3.0.14",
@@ -46,7 +47,6 @@
     "@ndla/tabs": "^2.1.20",
     "@ndla/tooltip": "^4.0.21",
     "@ndla/util": "^3.1.12",
-    "@radix-ui/react-accordion": "1.1.0",
     "@radix-ui/react-dropdown-menu": "2.0.2",
     "@radix-ui/react-popover": "^1.0.3",
     "@reach/menu-button": "^0.16.2",

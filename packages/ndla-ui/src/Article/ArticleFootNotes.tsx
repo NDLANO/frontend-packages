@@ -7,6 +7,8 @@
  */
 
 import React from 'react';
+import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core';
 import { FootNote as FootNoteType } from '../types';
 
 const citeDetailString = (description: string | undefined) => (description ? `${description}. ` : '');
@@ -15,14 +17,26 @@ type FootNoteProps = {
   footNote: FootNoteType;
 };
 
+const Cite = styled.cite`
+  display: flex;
+  gap: ${spacing.small};
+  a {
+    box-shadow: none;
+    text-decoration: underline;
+    text-underline-offset: ${spacing.xxsmall};
+    &:hover,
+    &:focus-visible {
+      text-decoration: none;
+    }
+  }
+`;
+
 const FootNote = ({ footNote }: FootNoteProps) => (
-  <li className="c-footnotes__item">
-    <cite className="c-footnotes__cite" id={`note${footNote.ref}`}>
-      <sup>
-        <a href={`#ref${footNote.ref}`} target="_self">
-          {footNote.ref}
-        </a>
-      </sup>
+  <li>
+    <Cite id={`note${footNote.ref}`}>
+      <a href={`#ref${footNote.ref}`} target="_self">
+        {footNote.ref}
+      </a>
       {`«${footNote.title}». ${footNote.authors.join(' ')}. ${citeDetailString(footNote.edition)}${citeDetailString(
         footNote.publisher,
       )}${footNote.year}. `}
@@ -32,7 +46,7 @@ const FootNote = ({ footNote }: FootNoteProps) => (
           {'.'}
         </a>
       ) : null}
-    </cite>
+    </Cite>
   </li>
 );
 
@@ -40,12 +54,21 @@ type ArticleFootNotesProps = {
   footNotes: Array<FootNoteType>;
 };
 
+const FootnoteList = styled.ol`
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: ${spacing.small};
+  color: ${colors.text.light};
+`;
+
 const ArticleFootNotes = ({ footNotes }: ArticleFootNotesProps) => (
-  <ol className="c-footnotes">
+  <FootnoteList>
     {footNotes.map((footNote) => (
       <FootNote key={footNote.ref} footNote={footNote} />
     ))}
-  </ol>
+  </FootnoteList>
 );
 
 export default ArticleFootNotes;

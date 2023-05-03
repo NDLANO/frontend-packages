@@ -1305,6 +1305,7 @@ const messages = {
     conceptListError: 'Failed to show concept list',
     linkError: 'Failed to show link.',
     unsupported: `Embed {{type}} not supported.`,
+    embedError: `Failed to show {{type}}`,
     type: {
       image: 'Image',
       video: 'Video',

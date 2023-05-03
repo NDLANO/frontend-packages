@@ -22,7 +22,7 @@ const StyledTrigger = styled(Trigger)`
   display: flex;
   background-color: transparent;
   flex: 1;
-  padding: ${spacing.normal} ${spacing.medium};
+  padding: ${spacing.normal};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

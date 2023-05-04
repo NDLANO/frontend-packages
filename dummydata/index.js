@@ -29,7 +29,6 @@ import {
 import { mockTypeahead } from './mockTypeahead';
 import { mockFooterLinks } from './mockFooter';
 import { ResourceData } from './mockResourceData';
-import { mockProgramsV2 } from './mockProgramsV2';
 
 export {
   topicList,
@@ -61,5 +60,4 @@ export {
   mockExplanationService,
   contentTypeResults,
   ResourceData,
-  mockProgramsV2,
 };

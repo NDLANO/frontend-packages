@@ -8,8 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, breakpoints, mq, colors } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
+import { fonts, breakpoints, mq, colors, spacing } from '@ndla/core';
 import ProgramCard from '../ProgramCard/ProgramCard';
 import { Program } from '../ProgramCard/ProgramCard';
 import { HeadingLevel } from '../types';
@@ -20,10 +19,11 @@ const StyledProgramsHeaderContainer = styled.div`
   align-items: center;
 `;
 
-const StyledProgramsIngress = styled.p`
+const StyledProgramsPreamble = styled.p`
   color: ${colors.text.primary};
+  ${fonts.sizes('24px', '35px')};
   font-weight: 400;
-  font-size: 24px;
+  margin: 0 0 ${spacing.mediumlarge};
 `;
 
 const StyledProgramsCardsContainer = styled.div`
@@ -42,7 +42,7 @@ interface Programs {
     title: string;
     language: string;
   };
-  headingLevel: HeadingLevel;
+  programsHeadingLevel?: HeadingLevel;
   preamble: {
     text: string;
     language: string;
@@ -53,14 +53,14 @@ interface Programs {
 const EducationalPrograms = ({
   programsTitle,
   programs,
-  headingLevel: StyledProgramsTitle = 'h1',
+  programsHeadingLevel: StyledProgramsTitle = 'h1',
   preamble,
 }: Programs) => {
   return (
     <div>
       <StyledProgramsHeaderContainer>
         <StyledProgramsTitle>{programsTitle.title}</StyledProgramsTitle>
-        <StyledProgramsIngress>{preamble.text}</StyledProgramsIngress>
+        <StyledProgramsPreamble>{preamble.text}</StyledProgramsPreamble>
       </StyledProgramsHeaderContainer>
       <StyledProgramsCardsContainer>
         {programs.map((program) => (

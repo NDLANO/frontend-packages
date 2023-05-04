@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
-import { spacing, colors, misc, fonts, breakpoints, mq } from '@ndla/core';
+import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 import { HeadingLevel } from '../types';
 
 interface Image {

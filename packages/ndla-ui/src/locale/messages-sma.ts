@@ -1313,6 +1313,8 @@ const messages = {
       audio: 'Lyd',
       podcast: 'Podkast',
       concept: 'Forklaring',
+      h5p: 'H5P',
+      external: 'Ekstern ressurs',
     },
   },
 };

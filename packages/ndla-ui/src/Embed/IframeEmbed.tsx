@@ -18,7 +18,7 @@ interface Props {
   isConcept?: boolean;
 }
 
-const ExternalEmbed = ({ embed, isConcept }: Props) => {
+const IframeEmbed = ({ embed, isConcept }: Props) => {
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -83,4 +83,4 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   );
 };
 
-export default ExternalEmbed;
+export default IframeEmbed;

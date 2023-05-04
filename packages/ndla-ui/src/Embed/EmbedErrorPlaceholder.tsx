@@ -12,10 +12,10 @@ import { WarningOutline } from '@ndla/icons/common';
 import { colors, spacing } from '@ndla/core';
 import { Figure, FigureType } from '../Figure';
 import { EmbedByline } from '../LicenseByline';
-import { EmbedBylineTypeProps } from '../LicenseByline/EmbedByline';
+import { EmbedBylineErrorProps } from '../LicenseByline/EmbedByline';
 
 interface Props {
-  type: EmbedBylineTypeProps['type'];
+  type: EmbedBylineErrorProps['type'];
   figureType?: FigureType;
   children?: ReactNode;
 }

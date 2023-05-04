@@ -1312,6 +1312,8 @@ const messages = {
       audio: 'Audio',
       podcast: 'Podcast',
       concept: 'Concept',
+      h5p: 'H5P',
+      external: 'External resource',
     },
   },
 };

@@ -36,6 +36,12 @@ export default {
       alt: 'Elektro og datateknologi illustrasjon',
     },
     url: '#',
+    programsTitle: { title: 'Se våre utdanningsprogram', language: 'nb-no' },
+    programsHeadingLevel: 'h1',
+    preamble: {
+      text: 'Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.',
+      language: 'nb-no',
+    },
     programs,
   },
 } as Meta<typeof ProgramCard>;
@@ -46,8 +52,8 @@ export const ProgramCardStory: StoryFn<typeof ProgramCard> = ({ ...args }) => {
 
 ProgramCardStory.storyName = 'ProgramCard';
 
-export const EducationalProgramsStory: StoryFn<typeof EducationalPrograms> = ({ ...programs }) => {
-  return <EducationalPrograms {...programs} />;
+export const EducationalProgramsStory: StoryFn<typeof EducationalPrograms> = ({ ...args }) => {
+  return <EducationalPrograms {...args} />;
 };
 
 EducationalProgramsStory.storyName = 'EducationalPrograms';

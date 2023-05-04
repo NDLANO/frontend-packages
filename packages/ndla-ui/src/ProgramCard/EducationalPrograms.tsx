@@ -8,14 +8,11 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, breakpoints, mq } from '@ndla/core';
+import { fonts, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import ProgramCard from '../ProgramCard/ProgramCard';
 import { Program } from '../ProgramCard/ProgramCard';
-
-const StyledProgramsContainer = styled.div`
-  background-color: #f7fafd;
-`;
+import { HeadingLevel } from '../types';
 
 const StyledProgramsHeaderContainer = styled.div`
   display: flex;
@@ -23,16 +20,8 @@ const StyledProgramsHeaderContainer = styled.div`
   align-items: center;
 `;
 
-const StyledProgramsHeader = styled.h1`
-  color: #444444;
-  font-family: Source Serif Pro;
-  font-weight: 700;
-  font-size: 48px;
-`;
-
 const StyledProgramsIngress = styled.p`
-  color: #444444;
-  font-family: Source Sans Pro;
+  color: ${colors.text.primary};
   font-weight: 400;
   font-size: 24px;
 `;
@@ -45,22 +34,33 @@ const StyledProgramsCardsContainer = styled.div`
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    margin-right: 22px;
   }
 `;
 
 interface Programs {
+  programsTitle: {
+    title: string;
+    language: string;
+  };
+  headingLevel: HeadingLevel;
+  preamble: {
+    text: string;
+    language: string;
+  };
   programs: Program[];
 }
 
-const EducationalPrograms = ({ programs }: Programs) => {
+const EducationalPrograms = ({
+  programsTitle,
+  programs,
+  headingLevel: StyledProgramsTitle = 'h1',
+  preamble,
+}: Programs) => {
   return (
-    <StyledProgramsContainer>
+    <div>
       <StyledProgramsHeaderContainer>
-        <StyledProgramsHeader>Se våre utdanningsprogram</StyledProgramsHeader>
-        <StyledProgramsIngress>
-          Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.
-        </StyledProgramsIngress>
+        <StyledProgramsTitle>{programsTitle.title}</StyledProgramsTitle>
+        <StyledProgramsIngress>{preamble.text}</StyledProgramsIngress>
       </StyledProgramsHeaderContainer>
       <StyledProgramsCardsContainer>
         {programs.map((program) => (
@@ -74,7 +74,7 @@ const EducationalPrograms = ({ programs }: Programs) => {
           />
         ))}
       </StyledProgramsCardsContainer>
-    </StyledProgramsContainer>
+    </div>
   );
 };
 

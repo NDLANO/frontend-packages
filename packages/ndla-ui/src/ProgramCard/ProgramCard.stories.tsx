@@ -11,9 +11,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import ProgramCard from './ProgramCard';
 import EducationalPrograms from './EducationalPrograms';
 import { defaultParameters } from '../../../../stories/defaults';
-import { mockProgramsV3 } from '../../../../dummydata/mockProgramsV3';
-
-const programs = mockProgramsV3;
+import { mockProgramsV3 as programmes } from '../../../../dummydata/mockProgramsV3';
 
 export default {
   title: 'Enkle komponenter/ProgramCard',
@@ -42,7 +40,7 @@ export default {
       text: 'Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.',
       language: 'nb-no',
     },
-    programs,
+    programmes,
   },
 } as Meta<typeof ProgramCard>;
 

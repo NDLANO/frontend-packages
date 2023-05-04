@@ -21,7 +21,7 @@ const StyledProgramsHeaderContainer = styled.div`
 const StyledProgramsPreamble = styled.p`
   color: ${colors.text.primary};
   ${fonts.sizes('24px', '35px')};
-  font-weight: 400;
+  ${fonts.weight.normal}
   margin: 0 0 ${spacing.mediumlarge};
 `;
 
@@ -32,7 +32,7 @@ const StyledProgramsCardsContainer = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
   }
 `;
 
@@ -46,12 +46,12 @@ interface Programs {
     text: string;
     language: string;
   };
-  programs: Program[];
+  programmes: Program[];
 }
 
 const EducationalPrograms = ({
   programsTitle,
-  programs,
+  programmes,
   programsHeadingLevel: StyledProgramsTitle = 'h1',
   preamble,
 }: Programs) => {
@@ -62,7 +62,7 @@ const EducationalPrograms = ({
         <StyledProgramsPreamble>{preamble.text}</StyledProgramsPreamble>
       </StyledProgramsHeaderContainer>
       <StyledProgramsCardsContainer>
-        {programs.map((program) => (
+        {programmes.map((program) => (
           <ProgramCard
             id={program.id}
             key={program.id}

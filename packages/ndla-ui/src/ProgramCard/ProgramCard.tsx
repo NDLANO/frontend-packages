@@ -32,20 +32,19 @@ const StyledCardContainer = styled(SafeLink)`
   ${mq.range({ from: breakpoints.tablet })} {
     height: 350px;
     width: 250px;
-    margin: 0 ${spacing.small} ${spacing.nsmall};
   }
   max-width: 350px;
   height: 195px;
   display: flex;
   flex-direction: column;
   background-color: ${colors.background.default};
-  border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   margin-bottom: ${spacing.nsmall};
   align-self: center;
   box-shadow: none;
-  :hover {
-    text-decoration: underline;
+  &:hover {
+    text-decoration: underline ${colors.text.primary};
+    text-underline-offset: 3px;
     cursor: pointer;
   }
 `;
@@ -71,9 +70,10 @@ const StyledCardIMGMob = styled.img`
 const StyledTitleContainer = styled.div`
   display: flex;
   align-items: center;
-  height: 70px;
   color: ${colors.text.primary};
-  padding: 0 ${spacing.nsmall};
+  padding: ${spacing.nsmall};
+  border: 1px solid ${colors.brand.lighter};
+  border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
   * {
     margin: 0;
   }

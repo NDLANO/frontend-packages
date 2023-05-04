@@ -6,21 +6,22 @@
  *
  */
 
-import React from 'react';
-import { spacing, colors, fonts, breakpoints } from '@ndla/core';
+import React, { HTMLAttributes } from 'react';
+import { spacing, colors, fonts, breakpoints, misc } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { makeSrcQueryString } from '../Image';
 import FilmContentCardTags from './FilmContentCardTags';
 import { MovieResourceType, MovieType } from './types';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLElement> {
   movie: MovieType;
   columnWidth: number;
   distanceBetweenItems?: number;
   resourceTypes: MovieResourceType[];
   resizeThumbnailImages?: boolean;
   hideTags?: boolean;
+  className?: string;
 }
 
 const FilmContentCard = ({
@@ -30,6 +31,8 @@ const FilmContentCard = ({
   resourceTypes,
   resizeThumbnailImages,
   hideTags = false,
+  className,
+  ...rest
 }: Props) => {
   let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
   const contentTypeId = `content-type-${id}`;
@@ -43,11 +46,12 @@ const FilmContentCard = ({
       to={path}
       aria-describedby={contentTypeId}
       columnWidth={columnWidth}
+      className={className}
       style={{ marginRight: `${distanceBetweenItems}px` }}
+      {...rest}
     >
       <StyledImage
         role="img"
-        columnWidth={columnWidth}
         style={{
           backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(600)})`,
         }}
@@ -77,15 +81,13 @@ const StyledMovieTitle = styled.span`
   }
 `;
 
-interface StyledImageProps {
-  columnWidth: number;
-}
-const StyledImage = styled.div<StyledImageProps>`
-  height: ${(props) => props.columnWidth * 0.5625}px;
+const StyledImage = styled.div`
+  aspect-ratio: 16/9;
   background-size: cover;
   background-color: ${colors.ndlaFilm.filmColorLight};
   background-position-x: center;
   background-position-y: center;
+  border-radius: ${misc.borderRadius};
   position: relative;
   display: flex;
   align-items: flex-end;

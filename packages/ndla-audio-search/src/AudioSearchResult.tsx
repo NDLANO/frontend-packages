@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
 import { ButtonV2 } from '@ndla/button';
-import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
+import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-backend/audio-api';
 import { colors, spacing } from '@ndla/core';
 import AudioBar from './AudioBar';
 

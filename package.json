@@ -120,7 +120,6 @@
     "sass-loader": "^13.2.2",
     "serve": "^14.1.1",
     "sinon": "^7.2.3",
-    "slate-react":"0.94.0",
     "storybook": "^7.0.5",
     "style-loader": "^3.3.2",
     "ts-jest": "^29.0.5",

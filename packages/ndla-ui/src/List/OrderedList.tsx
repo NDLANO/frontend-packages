@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { fonts } from '@ndla/core';
+import { fonts, spacing, spacingUnit } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
 
 export const generateListResets = () => {
@@ -21,6 +21,11 @@ export const generateListResets = () => {
   return styles;
 };
 
+const listSpacing = {
+  xlarge: `${spacingUnit * 2.5}px`,
+  xxlarge: `${spacingUnit * 3}px`,
+};
+
 const StyledOl = styled.ol`
   margin-top: 0;
   margin-left: 0;
@@ -29,11 +34,11 @@ const StyledOl = styled.ol`
 
   // Child ordered lists
   ol {
-    padding-left: 24px;
+    padding-left: ${spacing.normal};
   }
   // List item
   li {
-    margin-top: 24px;
+    margin-top: ${spacing.normal};
   }
 
   &[data-type='letters'] {
@@ -52,7 +57,7 @@ const StyledOl = styled.ol`
           content: counter(item, lower-alpha) '.';
         }
         ol[data-type='letters'] {
-          padding-left: 28px;
+          padding-left: ${spacing.normal};
           > li:before {
             content: counter(item, lower-roman) '.';
           }
@@ -73,15 +78,15 @@ const StyledOl = styled.ol`
       }
 
       > ol:not([data-type='letters']) {
-        padding-left: 32px;
+        padding-left: ${spacing.medium};
         > li {
           > ol:not([data-type='letters']) {
-            padding-left: 48px;
+            padding-left: ${spacing.large};
             > li {
               > ol:not([data-type='letters']) {
-                padding-left: 64px;
+                padding-left: ${listSpacing.xlarge};
                 ol:not([data-type='letters']) {
-                  padding-left: 80px;
+                  padding-left: ${listSpacing.xxlarge};
                 }
               }
             }

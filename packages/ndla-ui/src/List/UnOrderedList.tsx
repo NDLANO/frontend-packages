@@ -7,18 +7,20 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, fonts } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
 import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
+  list-style-image = none;
+
   > li {
     ::marker {
       color: ${colors.brand.secondary};
     }
   }
   ul {
-    padding-left: 44px;
+    padding-left: ${spacing.mediumlarge};
   }
   margin-top: 0;
   margin-left: 0;
@@ -26,12 +28,12 @@ const StyledUl = styled.ul`
 
   // List item
   li {
-    margin-top: 24px;
+    margin-top: ${spacing.normal};
   }
 
   // Child unordered lists
   ul {
-    padding-left: 20px;
+    padding-left: ${spacing.nsmall};
   }
   // List reset classes
   ${generateListResets()}

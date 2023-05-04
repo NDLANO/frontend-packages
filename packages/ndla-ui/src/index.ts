@@ -271,4 +271,3 @@ export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleS
 export { default as LetterFilter } from './LetterFilter';
 export { BlogPostV2 } from './BlogPost';
 export { FrontpageEducationalProgramsCard } from './ProgramCard';
-export { FrontpageEducationalPrograms } from './FrontpageEducationalPrograms';

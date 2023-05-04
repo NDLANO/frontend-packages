@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, breakpoints, mq, colors, spacing } from '@ndla/core';
-import ProgramCard from '../ProgramCard/ProgramCard';
-import { Program } from '../ProgramCard/ProgramCard';
+import ProgramCard, { Program } from '../ProgramCard/ProgramCard';
 import { HeadingLevel } from '../types';
 
 const StyledProgramsHeaderContainer = styled.div`

@@ -14,7 +14,7 @@ export const ulPlugin: PluginType = (node, opts) => {
     const props = attributesToProps(node.attribs);
     const classes = [node.attribs.class ?? '', 'o-list--two-columns'].filter((c) => !!c).join(' ');
     return (
-      <UnOrderedList {...props} data-type={undefined} className={classes}>
+      <UnOrderedList {...props} className={classes}>
         {domToReact(node.children, opts)}
       </UnOrderedList>
     );

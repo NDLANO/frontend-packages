@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { colors, fonts } from '@ndla/core';
-import { HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
@@ -17,7 +17,9 @@ const StyledUl = styled.ul`
       color: ${colors.brand.secondary};
     }
   }
-  padding-left: 44px;
+  ul {
+    padding-left: 44px;
+  }
   margin-top: 0;
   margin-left: 0;
   ${fonts.sizes('18px', '29px')};
@@ -35,10 +37,12 @@ const StyledUl = styled.ul`
   ${generateListResets()}
 `;
 
-interface Props extends HTMLAttributes<HTMLUListElement> {}
-
-const UnOrderedList = ({ children, ...rest }: Props) => {
-  return <StyledUl {...rest}>{children}</StyledUl>;
-};
+const UnOrderedList = forwardRef<HTMLUListElement, HTMLAttributes<HTMLUListElement>>(({ children, ...rest }, ref) => {
+  return (
+    <StyledUl ref={ref} {...rest}>
+      {children}
+    </StyledUl>
+  );
+});
 
 export default UnOrderedList;

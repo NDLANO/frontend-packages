@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { fonts } from '@ndla/core';
-import { HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 
 export const generateListResets = () => {
   let styles = '';
@@ -26,7 +26,6 @@ const StyledOl = styled.ol`
   margin-left: 0;
   ${fonts.sizes('18px', '29px')};
   list-style-type: none;
-  padding-left: 24px;
 
   // Child ordered lists
   ol {
@@ -100,12 +99,12 @@ interface Props extends HTMLAttributes<HTMLOListElement> {
   start?: number;
 }
 
-const OrderedList = ({ type, children, ...rest }: Props) => {
+const OrderedList = forwardRef<HTMLOListElement, Props>(({ type, children, ...rest }, ref) => {
   return (
-    <StyledOl data-type={type} {...rest}>
+    <StyledOl data-type={type} ref={ref} {...rest}>
       {children}
     </StyledOl>
   );
-};
+});
 
 export default OrderedList;

@@ -12,14 +12,13 @@ import { forwardRef, HTMLAttributes } from 'react';
 import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
-  list-style-image = none;
-
   > li {
     ::marker {
       color: ${colors.brand.secondary};
     }
   }
   ul {
+    list-style-image: none;
     padding-left: ${spacing.mediumlarge};
   }
   margin-top: 0;

@@ -16,8 +16,9 @@ interface Image {
   src: string;
   alt: string;
 }
-interface Props {
-  programTitel: {
+export interface Program {
+  id: string;
+  programTitle: {
     title: string;
     language: string;
   };
@@ -79,18 +80,18 @@ const StyledTitleContainer = styled.div`
 `;
 
 const ProgramCard = ({
-  programTitel,
+  programTitle,
   programIMGDesk,
   programIMGMob,
   headingLevel: StyledCardTitle = 'h4',
   url,
-}: Props) => {
+}: Program) => {
   return (
     <StyledCardContainer to={url}>
       <StyledCardIMG src={programIMGDesk.src} />
       <StyledCardIMGMob src={programIMGMob.src} />
       <StyledTitleContainer>
-        <StyledCardTitle>{programTitel.title}</StyledCardTitle>
+        <StyledCardTitle>{programTitle.title}</StyledCardTitle>
       </StyledTitleContainer>
     </StyledCardContainer>
   );

@@ -1,6 +1,6 @@
 export const mockProgramsV2 = [
   {
-    title: 'Bygg- og anleggsteknikk',
+    programTitel: { title: 'Bygg- og anleggsteknikk' },
     url: 'https://api.test.ndla.no/image-api/raw/N8X0h6Ns.svg?width=600&ts=1680525340295',
     url2: 'https://api.test.ndla.no/image-api/raw/FFHsjf6w.svg?width=600&ts=1680524932596',
     id: 'programme_1',

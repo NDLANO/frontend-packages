@@ -11,7 +11,9 @@ import { Meta, StoryFn } from '@storybook/react';
 import ProgramCard from './ProgramCard';
 import EducationalPrograms from './EducationalPrograms';
 import { defaultParameters } from '../../../../stories/defaults';
-import { mockProgramsV2 } from '../../../../dummydata/mockProgramsV2';
+import { mockProgramsV3 } from '../../../../dummydata/mockProgramsV3';
+
+const programs = mockProgramsV3;
 
 export default {
   title: 'Enkle komponenter/ProgramCard',
@@ -22,7 +24,8 @@ export default {
     ...defaultParameters,
   },
   args: {
-    programTitel: { title: 'Elektro og datateknologi', language: 'nb-no' },
+    id: 'test ID',
+    programTitle: { title: 'Elektro og datateknologi', language: 'nb-no' },
     headingLevel: 'h4',
     programIMGDesk: {
       src: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993',
@@ -33,7 +36,7 @@ export default {
       alt: 'Elektro og datateknologi illustrasjon',
     },
     url: '#',
-    programs: mockProgramsV2,
+    programs,
   },
 } as Meta<typeof ProgramCard>;
 
@@ -43,8 +46,8 @@ export const ProgramCardStory: StoryFn<typeof ProgramCard> = ({ ...args }) => {
 
 ProgramCardStory.storyName = 'ProgramCard';
 
-export const EducationalProgramsStory: StoryFn<typeof EducationalPrograms> = ({ ...mockProgramsV2 }) => {
-  return <EducationalPrograms {...mockProgramsV2} />;
+export const EducationalProgramsStory: StoryFn<typeof EducationalPrograms> = ({ ...programs }) => {
+  return <EducationalPrograms {...programs} />;
 };
 
 EducationalProgramsStory.storyName = 'EducationalPrograms';

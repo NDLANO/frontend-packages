@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { fonts, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import ProgramCard from '../ProgramCard/ProgramCard';
+import { Program } from '../ProgramCard/ProgramCard';
 
 const StyledProgramsContainer = styled.div`
   background-color: #f7fafd;
@@ -49,16 +50,10 @@ const StyledProgramsCardsContainer = styled.div`
 `;
 
 interface Programs {
-  label: string;
-  url: string;
-  url2: string;
-  id: string;
-}
-interface Props {
-  programs: Programs[];
+  programs: Program[];
 }
 
-const EducationalPrograms = ({ programs }: Props) => {
+const EducationalPrograms = ({ programs }: Programs) => {
   return (
     <StyledProgramsContainer>
       <StyledProgramsHeaderContainer>
@@ -69,7 +64,14 @@ const EducationalPrograms = ({ programs }: Props) => {
       </StyledProgramsHeaderContainer>
       <StyledProgramsCardsContainer>
         {programs.map((program) => (
-          <ProgramCard key={program.id} programTitel={program} programIMGDesk={program} programIMGMob={program} />
+          <ProgramCard
+            id={program.id}
+            key={program.id}
+            programTitle={program.programTitle}
+            programIMGDesk={program.programIMGDesk}
+            programIMGMob={program.programIMGMob}
+            url={program.url}
+          />
         ))}
       </StyledProgramsCardsContainer>
     </StyledProgramsContainer>

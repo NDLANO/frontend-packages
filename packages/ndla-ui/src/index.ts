@@ -271,3 +271,5 @@ export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleS
 export { default as LetterFilter } from './LetterFilter';
 export { BlogPostV2 } from './BlogPost';
 export { FrontpageEducationalProgramsCard } from './ProgramCard';
+export { KeyPerformanceIndicator } from './KeyPerformanceIndicator';
+export { default as ContactBlock } from './ContactBlock';

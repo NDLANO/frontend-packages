@@ -8,7 +8,7 @@
 
 /* eslint jsx-a11y/media-has-caption: 0 */
 
-import { IAudioMetaInformation } from '@ndla/types-audio-api';
+import { IAudioMetaInformation } from '@ndla/types-backend/audio-api';
 import React, { Component } from 'react';
 
 interface Props {

@@ -17,6 +17,7 @@ import withTracker from '../withTracker';
 import * as tracker from '../tracker';
 
 window.dataLayer = [];
+window._mtm = [];
 const history = createMemoryHistory();
 tracker.configureTracker({ listen: history.listen });
 

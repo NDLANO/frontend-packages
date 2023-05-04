@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { CheckboxItem } from '@ndla/forms';
-import { IImageMetaInformationV3 } from '@ndla/types-image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 
 import { getSrcSets } from './util/imageUtil';
 import ImageMeta from './ImageMeta';

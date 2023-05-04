@@ -964,6 +964,8 @@ const messages = {
   loading: 'Loading',
   title: 'Title',
   save: 'Save',
+  photo: 'Photo',
+  email: 'Email',
   image: {
     altText: 'Alt-text',
     caption: 'Caption',
@@ -1106,6 +1108,8 @@ const messages = {
       folder: 'Folder',
       delete: 'Delete folder',
       edit: 'Edit folder',
+      updated: 'Folder updated',
+      defaultPageDescription: 'Add a description by editing the folder',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
       folderCreated: '"{{folderName}} created',
@@ -1116,6 +1120,7 @@ const messages = {
       onDragEndMissingOver: 'The folder {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
       dragHandle: 'Drag the folder {{name}}',
+      sharedWarning: 'Name and description will be visible for everyone you share the folder with',
       sharing: {
         share: 'Share folder',
         shared: 'Shared',
@@ -1135,7 +1140,7 @@ const messages = {
           shared:
             'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
           unShare:
-            'When you stop sharing, the link to the shared folder is no longer active. If you have shared the link with someone, they can no longer see the content in the folder.',
+            'When you stop sharing, the link to the shared folder and potential subfolders is no longer active. If you have shared the link with someone, they can no longer see the content in the folder. This also applies to potential subfolders.',
         },
         button: {
           share: 'Share folder',
@@ -1180,12 +1185,14 @@ const messages = {
       drawerButton: 'Show folders and resources',
       drawerTitle: 'Folders and resources',
       description: {
+        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
         info1:
           'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
         info2: 'You can use the menu to navigate through the articles.',
         info3:
           'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
       },
+      willOpenInNewTab: 'Opens in a new tab.',
     },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",
@@ -1225,8 +1232,8 @@ const messages = {
         text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
       sharing: {
-        title: 'How you share your folders with others',
-        text: 'Click on the share-button in the folder to share. You will get a link you can share with others.',
+        title: 'Teachers can now share folders',
+        text: 'Click on the share-button to get a link you can share.',
       },
       favoriteSubjects: {
         title: 'How to save your favorite subjects from NDLA',
@@ -1298,6 +1305,14 @@ const messages = {
     conceptListError: 'Failed to show concept list',
     linkError: 'Failed to show link.',
     unsupported: `Embed {{type}} not supported.`,
+    embedError: `An error occurred while loading the {{type}}. Try reloading the page.`,
+    type: {
+      image: 'Image',
+      video: 'Video',
+      audio: 'Audio',
+      podcast: 'Podcast',
+      concept: 'Concept',
+    },
   },
 };
 

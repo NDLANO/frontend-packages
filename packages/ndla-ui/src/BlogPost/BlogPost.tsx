@@ -33,18 +33,14 @@ const Container = styled(SafeLink)`
   flex-direction: column;
   color: ${colors.text.primary};
   max-width: 350px;
-  min-width: 350px;
   max-height: 415px;
-  min-height: 415px;
   gap: ${spacing.nsmall};
   box-shadow: none;
   border: 1px solid ${colors.brand.lightest};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.medium};
   &[data-size='large'] {
-    min-width: 532px;
     max-width: 532px;
-    min-height: 550px;
     max-height: 550px;
   }
   &:hover,

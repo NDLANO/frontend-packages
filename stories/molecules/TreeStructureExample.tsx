@@ -14,7 +14,7 @@ import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
 import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
 import { FolderInput } from '@ndla/ui';
 import { colors, spacing } from '@ndla/core';
-import { IFolder } from '@ndla/types-learningpath-api';
+import { IFolder } from '@ndla/types-backend/learningpath-api';
 
 const Container = styled.div<{ type?: TreeStructureType }>`
   display: flex;
@@ -59,7 +59,7 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
       {
         id: '2',
         name: 'Eksamen',
-        status: 'private',
+        status: 'shared',
         breadcrumbs: [
           { id: '1', name: 'Mine Favoritter' },
           { id: '2', name: 'Eksamen' },
@@ -71,7 +71,7 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
           {
             id: '3',
             name: 'Eksamens oppgaver',
-            status: 'private',
+            status: 'shared',
             breadcrumbs: [
               { id: '1', name: 'Mine Favoritter' },
               { id: '2', name: 'Eksamen' },
@@ -101,7 +101,7 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
       {
         id: '5',
         name: 'Oppgaver',
-        status: 'private',
+        status: 'shared',
         breadcrumbs: [
           { id: '1', name: 'Mine Favoritter' },
           { id: '5', name: 'Oppgaver' },

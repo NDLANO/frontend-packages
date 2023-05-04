@@ -6,9 +6,10 @@
  *
  */
 
-import { Children, useMemo, useState } from 'react';
+import { Children, HTMLProps, ReactNode, useMemo, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
@@ -54,12 +55,25 @@ export const RelatedArticleV2 = ({
   );
 };
 
-interface Props {
+const HeadingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+interface Props extends HTMLProps<HTMLElement> {
   children?: JSX.Element[];
   articleCount?: number;
   headingLevel?: HeadingLevel;
+  headingButtons?: ReactNode;
 }
-export const RelatedArticleListV2 = ({ children = [], articleCount, headingLevel = 'h3' }: Props) => {
+export const RelatedArticleListV2 = ({
+  children = [],
+  articleCount,
+  headingLevel = 'h3',
+  headingButtons,
+  ...rest
+}: Props) => {
   const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation();
   const childCount = useMemo(() => articleCount ?? Children.count(children), [children, articleCount]);
@@ -69,10 +83,13 @@ export const RelatedArticleListV2 = ({ children = [], articleCount, headingLevel
   );
 
   return (
-    <section {...classes('')}>
-      <SectionHeading headingLevel={headingLevel} className={classes('component-title').className}>
-        {t('related.title')}
-      </SectionHeading>
+    <section {...classes('')} {...rest}>
+      <HeadingWrapper>
+        <SectionHeading headingLevel={headingLevel} className={classes('component-title').className}>
+          {t('related.title')}
+        </SectionHeading>
+        {headingButtons}
+      </HeadingWrapper>
       <div {...classes('articles')}>{childrenToShow}</div>
       {childCount > 2 ? (
         <ButtonV2 onClick={() => setExpanded((p) => !p)} variant="outline">

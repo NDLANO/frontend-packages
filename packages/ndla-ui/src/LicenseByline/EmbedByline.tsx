@@ -9,29 +9,20 @@
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 import { getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import { ICopyright as ImageCopyright } from '@ndla/types-backend/image-api';
 import { ICopyright as AudioCopyright } from '@ndla/types-backend/audio-api';
 import { ICopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
 import { BrightcoveCopyright } from '@ndla/types-embed';
-import { WarningOutline } from '@ndla/icons/common';
 import LicenseLink from './LicenseLink';
 import LicenseDescription from './LicenseDescription';
 
 interface BaseProps {
   topRounded?: boolean;
-  bottomRounded?: boolean;
   description?: string;
   children?: ReactNode;
   visibleAlt?: string;
-  error?: true | false;
-  first?: boolean;
-}
-
-interface ErrorProps extends BaseProps {
-  type: EmbedBylineTypeProps['type'];
-  error: true;
 }
 
 interface ImageProps extends BaseProps {
@@ -59,9 +50,7 @@ interface ConceptProps extends BaseProps {
   copyright: ConceptCopyright;
 }
 
-export type EmbedBylineTypeProps = ImageProps | BrightcoveProps | AudioProps | PodcastProps | ConceptProps;
-
-type Props = EmbedBylineTypeProps | ErrorProps;
+type Props = ImageProps | BrightcoveProps | AudioProps | PodcastProps | ConceptProps;
 
 export type LicenseType = ReturnType<typeof getLicenseByAbbreviation>;
 
@@ -69,29 +58,14 @@ const BylineWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
-  font-family: ${fonts.sans};
-  ${fonts.sizes('18px', '24px')};
   background-color: ${colors.brand.lightest};
-  padding: ${spacing.nsmall} ${spacing.normal};
+  padding: ${spacing.small} ${spacing.normal};
   border: 1px solid ${colors.brand.tertiary};
-  border-top: none;
+  border-bottom-right-radius: ${misc.borderRadius};
+  border-bottom-left-radius: ${misc.borderRadius};
 
   &[data-top-rounded='true'] {
-    border-top-right-radius: ${misc.borderRadius};
-    border-top-left-radius: ${misc.borderRadius};
-  }
-
-  &[data-bottom-rounded='true'] {
-    border-bottom-right-radius: ${misc.borderRadius};
-    border-bottom-left-radius: ${misc.borderRadius};
-  }
-
-  &[data-error='true'] {
-    border: none;
-    background-color: ${colors.support.redLightest};
-  }
-  &[data-first='true'] {
-    border-top: 1px solid ${colors.brand.tertiary};
+    border-radius: ${misc.borderRadius};
   }
 `;
 
@@ -116,37 +90,14 @@ const LicenseInformationWrapper = styled.div`
   flex: 1;
 `;
 
-const EmbedByline = ({
-  type,
-  topRounded,
-  bottomRounded,
-  description,
-  children,
-  visibleAlt,
-  first = true,
-  ...props
-}: Props) => {
+const EmbedByline = ({ type, topRounded, description, copyright, children, visibleAlt }: Props) => {
   const { t, i18n } = useTranslation();
-
-  if (props.error) {
-    return (
-      <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-error={true}>
-        <LicenseDescription
-          description={t('embed.embedError', { type: t(`embed.type.${type}`).toLowerCase() })}
-          icon={<WarningOutline />}
-        />
-      </BylineWrapper>
-    );
-  }
-
-  const { copyright } = props;
-
   const license = getLicenseByAbbreviation(copyright.license?.license ?? '', i18n.language);
   const authors = getLicenseCredits(copyright);
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
   return (
-    <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-first={first}>
+    <BylineWrapper data-top-rounded={topRounded}>
       {!!description && <LicenseDescription description={description} />}
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
       <RightsWrapper>

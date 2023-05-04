@@ -1301,7 +1301,6 @@ const messages = {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',
     linkError: 'Klarte ikkje å vise lenke.',
     unsupported: `Embed {{type}} er ikkje støtta.`,
-    embedError: `Orsak, ein feil oppstod ved lasting av {{type}}. Prøv å laste inn sida på nytt.`,
     type: {
       image: 'Bilde',
       video: 'Video',

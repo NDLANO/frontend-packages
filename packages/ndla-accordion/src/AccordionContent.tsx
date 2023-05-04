@@ -51,7 +51,6 @@ const StyledContent = styled.div`
 interface Props extends HTMLAttributes<HTMLDivElement> {
   disableAnimation?: boolean;
   children: ReactNode;
-  forceMount?: boolean;
 }
 
 const AccordionContent = ({ disableAnimation, children, ...rest }: Props) => {

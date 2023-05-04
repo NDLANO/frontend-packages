@@ -14,5 +14,5 @@ import { PluginType } from '../types';
 export const imageEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as ImageMetaData;
-  return <ImageEmbed embed={data} previewAlt={opts.previewAlt} />;
+  return <ImageEmbed embed={data} articlePath={opts.path} previewAlt={opts.previewAlt} />;
 };

@@ -36,7 +36,6 @@ export default {
   },
   args: {
     topRounded: true,
-    bottomRounded: true,
     visibleAlt: 'Synlig alt-tekst kan legges her, eller fjernes helt',
     type: 'image',
     children: (

@@ -16,6 +16,7 @@ import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
 import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
 import { Article as ArticleType, Locale } from '../types';
+import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
@@ -125,12 +126,14 @@ type Props = {
   contentTransformed?: boolean;
   locale: Locale;
   messageBoxLinks?: [];
+  copyText?: string;
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | ReactNode
     | null;
   id: string;
   renderMarkdown: (text: string) => string;
+  printUrl?: string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
 };
@@ -162,9 +165,11 @@ export const Article = ({
   id,
   locale,
   notions,
+  printUrl,
   renderMarkdown,
   accessMessage,
   heartButton,
+  copyText,
   contentTransformed,
 }: Props) => {
   const articleRef = useRef<HTMLDivElement>(null);
@@ -236,13 +241,15 @@ export const Article = ({
         </LayoutItem>
 
         <LayoutItem layout="center">
+          {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
           <ArticleByline
-            footnotes={footNotes}
+            copySourceReference={copyText}
             authors={authors}
             suppliers={rightsholders}
             published={published}
             license={licenseObj?.license ?? ''}
             licenseBox={licenseBox}
+            printUrl={printUrl}
           />
         </LayoutItem>
         <LayoutItem layout="extend">{children}</LayoutItem>

@@ -156,6 +156,9 @@ const meta: Meta<typeof AudioEmbed> = {
   title: 'Enkle komponenter/Embeds/AudioEmbed',
   component: AudioEmbed,
   tags: ['autodocs'],
+  args: {
+    articlePath: undefined,
+  },
   decorators: [
     (Story) => (
       <div className="o-wrapper">

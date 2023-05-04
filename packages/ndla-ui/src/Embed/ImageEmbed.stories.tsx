@@ -59,6 +59,7 @@ const meta: Meta<typeof ImageEmbed> = {
   component: ImageEmbed,
   tags: ['autodocs'],
   args: {
+    articlePath: undefined,
     previewAlt: true,
   },
   decorators: [

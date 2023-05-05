@@ -10,11 +10,11 @@ import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { MetaData } from '.';
 
 export type KeyFigureEmbedData = {
-  resource: 'key-figures';
+  resource: 'key-figure';
   imageId: string;
   language: string;
   title: string;
-  subTitle: string;
+  subtitle: string;
 };
 
 export interface KeyFigureMeta {

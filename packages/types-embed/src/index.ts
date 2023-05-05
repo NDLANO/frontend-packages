@@ -45,7 +45,7 @@ import {
 import { FileEmbedData, FileMetaData } from './fileTypes';
 import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
 import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
-import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './KeyFigureTypes';
+import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './keyFigureTypes';
 
 export type EmbedData =
   | AudioEmbedData

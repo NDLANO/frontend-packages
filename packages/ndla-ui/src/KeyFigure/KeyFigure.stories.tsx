@@ -21,7 +21,7 @@ export default {
   },
   args: {
     title: '500',
-    subTitle: 'TVERRFAGLIGE RESSURSER',
+    subtitle: 'TVERRFAGLIGE RESSURSER',
     image: {
       alt: 'Nøkkeltall tverrfaglig',
       src: 'https://api.test.ndla.no/image-api/raw/wMowCjRg.svg',

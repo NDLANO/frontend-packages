@@ -8,9 +8,11 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 import { HeadingLevel } from '../types';
+import { reduce } from 'lodash';
 
 interface Image {
   src: string;
@@ -67,17 +69,13 @@ const StyledCardIMGMob = styled.img`
   }
 `;
 
-const StyledTitleContainer = styled.div`
-  display: flex;
-  align-items: center;
-  color: ${colors.text.primary};
-  padding: ${spacing.nsmall};
-  border: 1px solid ${colors.brand.lighter};
-  border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
-  * {
-    margin: 0;
-  }
-`;
+const headingCss = css({
+  color: `${colors.text.primary}`,
+  padding: `${spacing.normal} 0 ${spacing.normal} ${spacing.nsmall}`,
+  border: `1px solid ${colors.brand.lighter}`,
+  borderRadius: `0 0 ${misc.borderRadius} ${misc.borderRadius}`,
+  margin: `0`,
+});
 
 const ProgrammeCard = ({
   programmeTitle,
@@ -90,9 +88,7 @@ const ProgrammeCard = ({
     <StyledCardContainer to={url}>
       <StyledCardIMG src={programmeIMGDesk.src} />
       <StyledCardIMGMob src={programmeIMGMob.src} />
-      <StyledTitleContainer>
-        <StyledCardTitle>{programmeTitle.title}</StyledCardTitle>
-      </StyledTitleContainer>
+      <StyledCardTitle css={headingCss}>{programmeTitle.title}</StyledCardTitle>
     </StyledCardContainer>
   );
 };

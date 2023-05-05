@@ -9,14 +9,11 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import ProgrammeCard from './ProgrammeCard';
-import EducationalProgrammes from './EducationalProgrammes';
 import { defaultParameters } from '../../../../stories/defaults';
-import { mockProgrammesV3 as programmes } from '../../../../dummydata/mockProgrammesV3';
 
 export default {
   title: 'Enkle komponenter/ProgrammeCard',
   component: ProgrammeCard,
-  EducationalProgrammes,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
@@ -34,13 +31,6 @@ export default {
       alt: 'Elektro og datateknologi illustrasjon',
     },
     url: '#',
-    programmesTitle: { title: 'Se våre utdanningsprogram', language: 'nb-no' },
-    programmesHeadingLevel: 'h1',
-    preamble: {
-      text: 'Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.',
-      language: 'nb-no',
-    },
-    programmes,
   },
 } as Meta<typeof ProgrammeCard>;
 
@@ -49,9 +39,3 @@ export const ProgrammeCardStory: StoryFn<typeof ProgrammeCard> = ({ ...args }) =
 };
 
 ProgrammeCardStory.storyName = 'ProgrammeCard';
-
-export const EducationalProgrammesStory: StoryFn<typeof EducationalProgrammes> = ({ ...args }) => {
-  return <EducationalProgrammes {...args} />;
-};
-
-EducationalProgrammesStory.storyName = 'EducationalProgrammes';

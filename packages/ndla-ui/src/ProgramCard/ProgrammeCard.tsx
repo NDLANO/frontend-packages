@@ -16,15 +16,15 @@ interface Image {
   src: string;
   alt: string;
 }
-export interface Program {
+export interface Programme {
   id: string;
-  programTitle: {
+  programmeTitle: {
     title: string;
     language: string;
   };
   headingLevel?: HeadingLevel;
-  programIMGDesk: Image;
-  programIMGMob: Image;
+  programmeIMGDesk: Image;
+  programmeIMGMob: Image;
   url: string;
 }
 
@@ -79,22 +79,22 @@ const StyledTitleContainer = styled.div`
   }
 `;
 
-const ProgramCard = ({
-  programTitle,
-  programIMGDesk,
-  programIMGMob,
+const ProgrammeCard = ({
+  programmeTitle,
+  programmeIMGDesk,
+  programmeIMGMob,
   headingLevel: StyledCardTitle = 'h4',
   url,
-}: Program) => {
+}: Programme) => {
   return (
     <StyledCardContainer to={url}>
-      <StyledCardIMG src={programIMGDesk.src} />
-      <StyledCardIMGMob src={programIMGMob.src} />
+      <StyledCardIMG src={programmeIMGDesk.src} />
+      <StyledCardIMGMob src={programmeIMGMob.src} />
       <StyledTitleContainer>
-        <StyledCardTitle>{programTitle.title}</StyledCardTitle>
+        <StyledCardTitle>{programmeTitle.title}</StyledCardTitle>
       </StyledTitleContainer>
     </StyledCardContainer>
   );
 };
 
-export default ProgramCard;
+export default ProgrammeCard;

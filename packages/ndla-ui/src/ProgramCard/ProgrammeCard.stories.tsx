@@ -8,50 +8,50 @@
 
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import ProgramCard from './ProgramCard';
-import EducationalPrograms from './EducationalPrograms';
+import ProgrammeCard from './ProgrammeCard';
+import EducationalProgrammes from './EducationalProgrammes';
 import { defaultParameters } from '../../../../stories/defaults';
-import { mockProgramsV3 as programmes } from '../../../../dummydata/mockProgramsV3';
+import { mockProgrammesV3 as programmes } from '../../../../dummydata/mockProgrammesV3';
 
 export default {
-  title: 'Enkle komponenter/ProgramCard',
-  component: ProgramCard,
-  EducationalPrograms,
+  title: 'Enkle komponenter/ProgrammeCard',
+  component: ProgrammeCard,
+  EducationalProgrammes,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
   args: {
     id: 'test ID',
-    programTitle: { title: 'Elektro og datateknologi', language: 'nb-no' },
+    programmeTitle: { title: 'Elektro og datateknologi', language: 'nb-no' },
     headingLevel: 'h4',
-    programIMGDesk: {
+    programmeIMGDesk: {
       src: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993',
       alt: 'Elektro og datateknologi illustrasjon',
     },
-    programIMGMob: {
+    programmeIMGMob: {
       src: 'https://api.test.ndla.no/image-api/raw/YIAprLg9.svg?width=600&ts=1682592022017',
       alt: 'Elektro og datateknologi illustrasjon',
     },
     url: '#',
-    programsTitle: { title: 'Se våre utdanningsprogram', language: 'nb-no' },
-    programsHeadingLevel: 'h1',
+    programmesTitle: { title: 'Se våre utdanningsprogram', language: 'nb-no' },
+    programmesHeadingLevel: 'h1',
     preamble: {
       text: 'Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.',
       language: 'nb-no',
     },
     programmes,
   },
-} as Meta<typeof ProgramCard>;
+} as Meta<typeof ProgrammeCard>;
 
-export const ProgramCardStory: StoryFn<typeof ProgramCard> = ({ ...args }) => {
-  return <ProgramCard {...args} />;
+export const ProgrammeCardStory: StoryFn<typeof ProgrammeCard> = ({ ...args }) => {
+  return <ProgrammeCard {...args} />;
 };
 
-ProgramCardStory.storyName = 'ProgramCard';
+ProgrammeCardStory.storyName = 'ProgrammeCard';
 
-export const EducationalProgramsStory: StoryFn<typeof EducationalPrograms> = ({ ...args }) => {
-  return <EducationalPrograms {...args} />;
+export const EducationalProgrammesStory: StoryFn<typeof EducationalProgrammes> = ({ ...args }) => {
+  return <EducationalProgrammes {...args} />;
 };
 
-EducationalProgramsStory.storyName = 'EducationalPrograms';
+EducationalProgrammesStory.storyName = 'EducationalProgrammes';

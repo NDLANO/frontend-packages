@@ -48,19 +48,22 @@ const SubTitleWrapper = styled.div`
 `;
 
 interface Props {
-  image?: IImageMetaInformationV3;
+  image?: {
+    src?: string;
+    alt?: string;
+  };
   title: string;
   subTitle: string;
 }
 
-const KeyPerformanceIndicator = ({ image, title, subTitle }: Props) => {
+const KeyFigure = ({ image, title, subTitle }: Props) => {
   return (
     <ContentWrapper>
-      <StyledImage src={image?.image.imageUrl} alt={image?.alttext.alttext} />
+      <StyledImage src={image?.src} alt={image?.alt} />
       <TitleWrapper>{title}</TitleWrapper>
       <SubTitleWrapper>{subTitle}</SubTitleWrapper>
     </ContentWrapper>
   );
 };
 
-export default KeyPerformanceIndicator;
+export default KeyFigure;

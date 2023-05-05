@@ -6,20 +6,24 @@
  *
  */
 
-import { KeyPerformanceIndicator } from '@ndla/ui';
 import { attributesToProps } from 'html-react-parser';
-import { KeyPerformanceIndicatorMetaData } from '@ndla/types-embed';
+import { KeyFigureMetaData } from '@ndla/types-embed';
 import { PluginType } from '../types';
+import { KeyFigure } from '@ndla/ui/src';
 
-export const keyPerformanceIndicatorEmbedPlugin: PluginType = (element, _, opts) => {
+export const keyFigureEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as KeyPerformanceIndicatorMetaData;
+  const data = JSON.parse(props['data-json']) as KeyFigureMetaData;
   const { title, subTitle } = data.embedData;
   return (
-    <KeyPerformanceIndicator
+    <KeyFigure
       title={title}
       subTitle={subTitle}
-      image={data.status === 'success' ? data.data.metaImage : undefined}
+      image={
+        data.status === 'success'
+          ? { src: data.data.metaImage?.image.imageUrl, alt: data.data.metaImage?.alttext.alttext }
+          : undefined
+      }
     />
   );
 };

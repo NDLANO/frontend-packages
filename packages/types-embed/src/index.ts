@@ -44,12 +44,8 @@ import {
 } from './conceptTypes';
 import { FileEmbedData, FileMetaData } from './fileTypes';
 import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
-import {
-  KeyPerformanceIndicatorEmbedData,
-  KeyPerformanceIndicatorMeta,
-  KeyPerformanceIndicatorMetaData,
-} from './KeyPerformanceIndicatorTypes';
 import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
+import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './KeyFigureTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -67,7 +63,7 @@ export type EmbedData =
   | OembedEmbedData
   | FileEmbedData
   | BlogPostEmbedData
-  | KeyPerformanceIndicatorEmbedData
+  | KeyFigureEmbedData
   | ContactBlockEmbedData;
 
 export type EmbedMetaData =
@@ -85,8 +81,9 @@ export type EmbedMetaData =
   | FootnoteMetaData
   | FileMetaData
   | BlogPostMetaData
-  | KeyPerformanceIndicatorMetaData
+  | KeyFigureMetaData
   | ContactBlockMetaData;
+
 export type {
   ConceptMetaData,
   ImageMetaData,
@@ -101,7 +98,7 @@ export type {
   ConceptListMetaData,
   FileMetaData,
   BlogPostMetaData,
-  KeyPerformanceIndicatorMetaData,
+  KeyFigureMetaData,
   ContactBlockMetaData,
 };
 export type {
@@ -118,12 +115,12 @@ export type {
   ConceptListEmbedData,
   FileEmbedData,
   BlogPostEmbedData,
-  KeyPerformanceIndicatorEmbedData,
+  KeyFigureEmbedData,
   ContactBlockEmbedData,
 };
 
 export type { BlogPostMeta };
-export type { KeyPerformanceIndicatorMeta };
+export type { KeyFigureMeta };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };

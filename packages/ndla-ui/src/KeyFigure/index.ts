@@ -6,4 +6,4 @@
  *
  */
 
-export { default as KeyPerformanceIndicator } from './KeyPerformanceIndicator';
+export { default as KeyFigure } from './KeyFigure';

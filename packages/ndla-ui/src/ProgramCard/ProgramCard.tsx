@@ -42,10 +42,10 @@ const StyledCardContainer = styled(SafeLink)`
   margin-bottom: ${spacing.nsmall};
   align-self: center;
   box-shadow: none;
-  &:hover {
+  &:hover,
+  &:focus-visible {
     text-decoration: underline ${colors.text.primary};
     text-underline-offset: 3px;
-    cursor: pointer;
   }
 `;
 

@@ -8,11 +8,10 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
+import { css } from '@emotion/react';
 import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 import { HeadingLevel } from '../types';
-import { reduce } from 'lodash';
 
 interface Image {
   src: string;

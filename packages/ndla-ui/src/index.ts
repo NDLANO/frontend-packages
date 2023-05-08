@@ -275,3 +275,4 @@ export { OrderedList, UnOrderedList } from './List';
 export { BlogPostV2 } from './BlogPost';
 export { KeyFigure } from './KeyFigure';
 export { default as ContactBlock } from './ContactBlock';
+export { CampaignBlock } from './CampaignBlock';

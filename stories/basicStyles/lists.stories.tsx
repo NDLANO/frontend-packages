@@ -6,6 +6,7 @@
  *
  */
 
+import { OrderedList, UnOrderedList } from '@ndla/ui';
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { defaultParameters } from '../defaults';
@@ -27,106 +28,126 @@ export const Lister: StoryFn = () => (
       </p>
     </StoryIntro>
     <StoryBody>
-      <h2 className="u-heading">Ren liste</h2>
-      <ul className="o-list--bullets">
+      <h2 className="u-heading">Nummerert liste, tall</h2>
+      <OrderedList>
         <li>Listepunkt 1</li>
         <li>Listepunkt 2</li>
-        <li>Listepunkt 3</li>
         <li>
-          Underliste:
-          <ul>
-            <li>Underlistepunkt 1</li>
-            <li>Underlistepunkt 2</li>
-            <li>Underlistepunkt 3</li>
-          </ul>
+          Listepunkt 3
+          <OrderedList>
+            <li>Listepunkt 1</li>
+            <li>
+              Listepunkt 2
+              <OrderedList>
+                <li>Listepunkt 1</li>
+                <li>Listepunkt 2</li>
+                <li>Listepunkt 3</li>
+                <li>Listepunkt 4</li>
+              </OrderedList>
+            </li>
+            <li>
+              Listepunkt 3
+              <OrderedList>
+                <li>Listepunkt 1</li>
+                <li>Listepunkt 2</li>
+                <li>
+                  Listepunkt 3
+                  <OrderedList>
+                    <li>Listepunkt 1</li>
+                    <li>Listepunkt 2</li>
+                    <li>Listepunkt 3</li>
+                  </OrderedList>
+                </li>
+              </OrderedList>
+            </li>
+          </OrderedList>
         </li>
-      </ul>
-      <h2 className="u-heading">Lister med lenker</h2>
-      <ul className="o-list--bullets">
-        <li>
-          <a href="https://example.com">Listepunkt 1</a>
-        </li>
-        <li>
-          <a href="https://example.com">Listepunkt 2</a>
-        </li>
-        <li>
-          <a href="https://example.com">Listepunkt 3</a>
-        </li>
-      </ul>
-      <h2 className="u-heading">Nummererte lister</h2>
-      <ol>
-        <li>Listepunkt</li>
-        <li>Listepunkt</li>
-        <li>
-          Underliste:
-          <ol className="ol-list--roman">
-            <li>Underlistepunkt</li>
-            <li>Underlistepunkt</li>
-            <li>Underlistepunkt</li>
-          </ol>
-        </li>
-      </ol>
-      <h2 className="u-heading">Nummererte lister som starter på 3</h2>
-      <ol className="ol-reset-3">
-        <li>Listepunkt</li>
-        <li>Listepunkt</li>
-        <li>
-          Underliste:
-          <ol className="ol-list--roman">
-            <li>Underlistepunkt</li>
-            <li>Underlistepunkt</li>
-            <li>Underlistepunkt</li>
-          </ol>
-        </li>
-      </ol>
-      <h2 className="u-heading">Alfabetiserte lister</h2>
-      <ol className="ol-list--roman">
-        <li>Listepunkt</li>
-        <li>Listepunkt</li>
-        <li>Listepunkt</li>
-      </ol>
-      <h2 className="u-heading">Alfabetiserte lister som starter på b</h2>
-      <ol className="ol-list--roman ol-reset-2">
-        <li>Listepunkt</li>
-        <li>Listepunkt</li>
-        <li>Listepunkt</li>
-      </ol>
-      <h2 className="u-heading">Kombinasjonsliste punkt, alfabetisert og nummerisk</h2>
-      <ul className="o-list--bullets">
+        <li>Listepunkt 4</li>
+      </OrderedList>
+      <h2 className="u-heading">Punktliste</h2>
+      <UnOrderedList>
         <li>Listepunkt 1</li>
         <li>Listepunkt 2</li>
-        <li>Listepunkt 3</li>
         <li>
-          Underliste alfabetisert:
-          <ol className="ol-list--roman">
-            <li>Listepunkt</li>
-            <li>Listepunkt</li>
-            <li>Listepunkt</li>
-          </ol>
-        </li>
-        <li>
-          Underliste nummerert:
-          <ol>
-            <li>Listepunkt</li>
-            <li>Listepunkt</li>
-            <li>Listepunkt</li>
-          </ol>
-        </li>
-      </ul>
-      <h2 className="u-heading">Kombinasjonsliste nummerisk og punkt</h2>
-      <ol>
-        <li>Listepunkt</li>
-        <li>Listepunkt</li>
-        <li>Listepunkt</li>
-        <li>
-          Underliste punktliste:
-          <ul className="o-list--bullets">
+          Listepunkt 3
+          <UnOrderedList>
             <li>Listepunkt 1</li>
             <li>Listepunkt 2</li>
-            <li>Listepunkt 3</li>
-          </ul>
+            <li>
+              Listepunkt 3
+              <UnOrderedList>
+                <li>Listepunkt 1</li>
+                <li>Listepunkt 2</li>
+                <li>
+                  Listepunkt 3
+                  <UnOrderedList>
+                    <li>Listepunkt 1</li>
+                    <li>Listepunkt 2</li>
+                    <li>Listepunkt 3</li>
+                  </UnOrderedList>
+                </li>
+              </UnOrderedList>
+            </li>
+          </UnOrderedList>
         </li>
-      </ol>
+        <li>Listepunkt 4</li>
+      </UnOrderedList>
+      <h2 className="u-heading">Nummerert liste, alfabetisk</h2>
+      <OrderedList data-type="letters">
+        <li>Listepunkt 1</li>
+        <li>Listepunkt 2</li>
+        <li>
+          Listepunkt 3
+          <OrderedList data-type="letters">
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>
+              Listepunkt 3
+              <OrderedList data-type="letters">
+                <li>Listepunkt 1</li>
+                <li>Listepunkt 2</li>
+                <li>
+                  Listepunkt 3
+                  <OrderedList data-type="letters">
+                    <li>Listepunkt 1</li>
+                    <li>Listepunkt 2</li>
+                    <li>Listepunkt 3</li>
+                  </OrderedList>
+                </li>
+              </OrderedList>
+            </li>
+          </OrderedList>
+        </li>
+        <li>Listepunkt 4</li>
+      </OrderedList>
+      <h2 className="u-heading">Nummerert liste, med bokstaver i tillegg</h2>
+      <OrderedList>
+        <li>Listepunkt 1</li>
+        <li>Listepunkt 2</li>
+        <li>
+          Listepunkt 3
+          <OrderedList data-type="letters">
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>
+              Listepunkt 3
+              <OrderedList data-type="letters">
+                <li>Listepunkt 1</li>
+                <li>Listepunkt 2</li>
+                <li>
+                  Listepunkt 3
+                  <OrderedList data-type="letters">
+                    <li>Listepunkt 1</li>
+                    <li>Listepunkt 2</li>
+                    <li>Listepunkt 3</li>
+                  </OrderedList>
+                </li>
+              </OrderedList>
+            </li>
+          </OrderedList>
+        </li>
+        <li>Listepunkt 4</li>
+      </OrderedList>
     </StoryBody>
   </div>
 );

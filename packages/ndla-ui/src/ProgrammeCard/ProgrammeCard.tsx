@@ -9,9 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
-import { css } from '@emotion/react';
 import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
-import { HeadingLevel } from '../types';
 
 interface Image {
   src: string;
@@ -23,9 +21,8 @@ export interface Programme {
     title: string;
     language: string;
   };
-  headingLevel?: HeadingLevel;
-  programmeIMGDesk: Image;
-  programmeIMGMob: Image;
+  programmeImgDesk: Image;
+  programmeImgMob: Image;
   url: string;
 }
 
@@ -40,7 +37,6 @@ const StyledCardContainer = styled(SafeLink)`
   flex-direction: column;
   background-color: ${colors.background.default};
   border-radius: ${misc.borderRadius};
-  margin-bottom: ${spacing.nsmall};
   align-self: center;
   box-shadow: none;
   &:hover,
@@ -50,7 +46,7 @@ const StyledCardContainer = styled(SafeLink)`
   }
 `;
 
-const StyledCardIMG = styled.img`
+const StyledCardImg = styled.img`
   display: none;
   ${mq.range({ from: breakpoints.tablet })} {
     width: auto;
@@ -59,7 +55,7 @@ const StyledCardIMG = styled.img`
   }
 `;
 
-const StyledCardIMGMob = styled.img`
+const StyledCardImgMob = styled.img`
   display: none;
   ${mq.range({ until: breakpoints.tablet })} {
     width: 350px;
@@ -68,26 +64,19 @@ const StyledCardIMGMob = styled.img`
   }
 `;
 
-const headingCss = css({
-  color: `${colors.text.primary}`,
-  padding: `${spacing.normal} 0 ${spacing.normal} ${spacing.nsmall}`,
-  border: `1px solid ${colors.brand.lighter}`,
-  borderRadius: `0 0 ${misc.borderRadius} ${misc.borderRadius}`,
-  margin: `0`,
-});
+const StyledCardTitle = styled.span`
+  color: ${colors.text.primary};
+  padding: ${spacing.normal} 0 ${spacing.normal} ${spacing.nsmall};
+  border: 1px solid ${colors.brand.lighter};
+  border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
+`;
 
-const ProgrammeCard = ({
-  programmeTitle,
-  programmeIMGDesk,
-  programmeIMGMob,
-  headingLevel: StyledCardTitle = 'h4',
-  url,
-}: Programme) => {
+const ProgrammeCard = ({ programmeTitle, programmeImgDesk, programmeImgMob, url }: Programme) => {
   return (
     <StyledCardContainer to={url}>
-      <StyledCardIMG src={programmeIMGDesk.src} />
-      <StyledCardIMGMob src={programmeIMGMob.src} />
-      <StyledCardTitle css={headingCss}>{programmeTitle.title}</StyledCardTitle>
+      <StyledCardImg src={programmeImgDesk.src} alt={programmeImgDesk.alt} />
+      <StyledCardImgMob src={programmeImgMob.src} alt={programmeImgMob.alt} />
+      <StyledCardTitle>{programmeTitle.title}</StyledCardTitle>
     </StyledCardContainer>
   );
 };

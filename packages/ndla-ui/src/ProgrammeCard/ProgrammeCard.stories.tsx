@@ -21,14 +21,13 @@ export default {
   args: {
     id: 'test ID',
     programmeTitle: { title: 'Elektro og datateknologi', language: 'nb-no' },
-    headingLevel: 'h4',
-    programmeIMGDesk: {
+    programmeImgDesk: {
       src: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993',
-      alt: 'Elektro og datateknologi illustrasjon',
+      alt: '',
     },
-    programmeIMGMob: {
+    programmeImgMob: {
       src: 'https://api.test.ndla.no/image-api/raw/YIAprLg9.svg?width=600&ts=1682592022017',
-      alt: 'Elektro og datateknologi illustrasjon',
+      alt: '',
     },
     url: '#',
   },

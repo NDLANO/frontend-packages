@@ -8,7 +8,6 @@
 
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/build/image-api';
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -48,19 +47,22 @@ const SubTitleWrapper = styled.div`
 `;
 
 interface Props {
-  image?: IImageMetaInformationV3;
+  image?: {
+    src?: string;
+    alt?: string;
+  };
   title: string;
-  subTitle: string;
+  subtitle: string;
 }
 
-const KeyPerformanceIndicator = ({ image, title, subTitle }: Props) => {
+const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper>
-      <StyledImage src={image?.image.imageUrl} alt={image?.alttext.alttext} />
+      <StyledImage src={image?.src} alt={image?.alt} />
       <TitleWrapper>{title}</TitleWrapper>
-      <SubTitleWrapper>{subTitle}</SubTitleWrapper>
+      <SubTitleWrapper>{subtitle}</SubTitleWrapper>
     </ContentWrapper>
   );
 };
 
-export default KeyPerformanceIndicator;
+export default KeyFigure;

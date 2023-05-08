@@ -9,16 +9,16 @@
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { MetaData } from '.';
 
-export type KeyPerformanceIndicatorEmbedData = {
-  resource: 'key-performance-indicator';
+export type KeyFigureEmbedData = {
+  resource: 'key-figure';
   imageId: string;
   language: string;
   title: string;
-  subTitle: string;
+  subtitle: string;
 };
 
-export interface KeyPerformanceIndicatorMeta {
+export interface KeyFigureMeta {
   metaImage?: IImageMetaInformationV3;
 }
 
-export type KeyPerformanceIndicatorMetaData = MetaData<KeyPerformanceIndicatorEmbedData, KeyPerformanceIndicatorMeta>;
+export type KeyFigureMetaData = MetaData<KeyFigureEmbedData, KeyFigureMeta>;

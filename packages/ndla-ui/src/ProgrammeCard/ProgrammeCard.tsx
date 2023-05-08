@@ -8,10 +8,8 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
-import { isMobile } from 'react-device-detect';
 
 interface StyledImage {
   isMobile: boolean;

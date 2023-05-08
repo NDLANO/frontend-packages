@@ -270,7 +270,10 @@ export type { TreeStructureProps } from './TreeStructure';
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
 export { default as LetterFilter } from './LetterFilter';
+
+export { OrderedList, UnOrderedList } from './List';
 export { BlogPostV2 } from './BlogPost';
 export { EducationalProgrammesCard } from './ProgrammeCard';
 export { KeyPerformanceIndicator } from './KeyPerformanceIndicator';
+export { KeyFigure } from './KeyFigure';
 export { default as ContactBlock } from './ContactBlock';

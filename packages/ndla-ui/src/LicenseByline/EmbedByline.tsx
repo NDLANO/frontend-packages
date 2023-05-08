@@ -29,8 +29,8 @@ interface BaseProps {
   first?: boolean;
 }
 
-interface ErrorProps extends BaseProps {
-  type: EmbedBylineTypeProps['type'];
+export interface EmbedBylineErrorProps extends BaseProps {
+  type: EmbedBylineTypeProps['type'] | 'h5p' | 'external';
   error: true;
 }
 
@@ -61,7 +61,7 @@ interface ConceptProps extends BaseProps {
 
 export type EmbedBylineTypeProps = ImageProps | BrightcoveProps | AudioProps | PodcastProps | ConceptProps;
 
-type Props = EmbedBylineTypeProps | ErrorProps;
+type Props = EmbedBylineTypeProps | EmbedBylineErrorProps;
 
 export type LicenseType = ReturnType<typeof getLicenseByAbbreviation>;
 
@@ -127,14 +127,13 @@ const EmbedByline = ({
   ...props
 }: Props) => {
   const { t, i18n } = useTranslation();
+  const strippedDescription = description?.trim();
 
   if (props.error) {
+    const typeString = type === 'h5p' ? 'H5P' : t(`embed.type.${type}`).toLowerCase();
     return (
       <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-error={true}>
-        <LicenseDescription
-          description={t('embed.embedError', { type: t(`embed.type.${type}`).toLowerCase() })}
-          icon={<WarningOutline />}
-        />
+        <LicenseDescription description={t('embed.embedError', { type: typeString })} icon={<WarningOutline />} />
       </BylineWrapper>
     );
   }
@@ -147,7 +146,7 @@ const EmbedByline = ({
 
   return (
     <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-first={first}>
-      {!!description && <LicenseDescription description={description} />}
+      {!!strippedDescription?.length && description && <LicenseDescription description={description} />}
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
       <RightsWrapper>
         <LicenseLink license={license} asLink={!!license.url.length} />

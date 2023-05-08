@@ -8,9 +8,14 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
+import { isMobile } from 'react-device-detect';
 
+interface StyledImage {
+  isMobile: boolean;
+}
 interface Image {
   src: string;
   alt: string;
@@ -46,21 +51,13 @@ const StyledCardContainer = styled(SafeLink)`
   }
 `;
 
-const StyledCardImg = styled.img`
-  display: none;
+const StyledCardImg = styled.img<StyledImage>`
+  display: ${(props) => (props.isMobile ? 'block' : 'none')};
+  width: 350px;
+  border-radius: ${misc.borderRadius} ${misc.borderRadius} 0 0;
   ${mq.range({ from: breakpoints.tablet })} {
+    display: ${(props) => (props.isMobile ? 'none' : 'block')};
     width: auto;
-    border-radius: ${misc.borderRadius} ${misc.borderRadius} 0 0;
-    display: block;
-  }
-`;
-
-const StyledCardImgMob = styled.img`
-  display: none;
-  ${mq.range({ until: breakpoints.tablet })} {
-    width: 350px;
-    border-radius: ${misc.borderRadius} ${misc.borderRadius} 0 0;
-    display: block;
   }
 `;
 
@@ -74,8 +71,8 @@ const StyledCardTitle = styled.span`
 const ProgrammeCard = ({ programmeTitle, programmeImgDesk, programmeImgMob, url }: Programme) => {
   return (
     <StyledCardContainer to={url}>
-      <StyledCardImg src={programmeImgDesk.src} alt={programmeImgDesk.alt} />
-      <StyledCardImgMob src={programmeImgMob.src} alt={programmeImgMob.alt} />
+      <StyledCardImg isMobile={false} src={programmeImgDesk.src} alt={programmeImgDesk.alt} />
+      <StyledCardImg isMobile={true} src={programmeImgMob.src} alt={programmeImgMob.alt} />
       <StyledCardTitle>{programmeTitle.title}</StyledCardTitle>
     </StyledCardContainer>
   );

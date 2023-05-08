@@ -21,7 +21,7 @@ import { conceptListEmbedPlugin } from './conceptListEmbedPlugin';
 import { fileEmbedPlugin } from './fileEmbedPlugin';
 import { codeEmbedPlugin } from './codeEmbedPlugin';
 import { blogPostEmbedPlugin } from './blogPostEmbedPlugin';
-import { keyPerformanceIndicatorEmbedPlugin } from './keyPerformanceIndicatorEmbedPlugin';
+import { keyFigureEmbedPlugin } from './KeyFigureEmbedPlugin';
 import { contactBlockEmbedPlugin } from './contactBlockEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
@@ -39,6 +39,6 @@ export const embedPlugins: Record<string, PluginType> = {
   'concept-list': conceptListEmbedPlugin,
   'blog-post': blogPostEmbedPlugin,
   file: fileEmbedPlugin,
-  'key-performance-indicator': keyPerformanceIndicatorEmbedPlugin,
+  'key-figure': keyFigureEmbedPlugin,
   'contact-block': contactBlockEmbedPlugin,
 };

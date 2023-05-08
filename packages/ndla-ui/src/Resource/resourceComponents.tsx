@@ -8,13 +8,15 @@
 
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import React, { MouseEvent, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuButton } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import { useNavigate } from 'react-router-dom';
 import { HashTag } from '@ndla/icons/common';
 import resourceTypeColor from '../utils/resourceTypeColor';
+import { resourceTypeMapping } from '../model/ContentType';
+
 export interface ResourceImageProps {
   alt: string;
   src: string;
@@ -196,7 +198,7 @@ export const ResourceTypeList = ({ resourceTypes }: ResourceTypeListProps) => {
     <StyledResourceTypeList aria-label={t('navigation.topics')}>
       {resourceTypes.map((resource, i) => (
         <StyledResourceListElement key={resource.id}>
-          {resource.name}
+          {resourceTypeMapping[resource.id] ? t(`embed.type.${resourceTypeMapping[resource.id]}`) : resource.name}
           {i !== resourceTypes.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
         </StyledResourceListElement>
       ))}

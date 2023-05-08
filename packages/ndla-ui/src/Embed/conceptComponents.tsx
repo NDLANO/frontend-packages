@@ -18,7 +18,7 @@ import { Copyright } from '../types';
 import ImageEmbed from './ImageEmbed';
 import BrightcoveEmbed from './BrightcoveEmbed';
 import H5pEmbed from './H5pEmbed';
-import { ExternalEmbed, IframeEmbed } from '.';
+import { ExternalEmbed, HeartButtonType, IframeEmbed } from '.';
 import { EmbedByline } from '../LicenseByline';
 
 export interface ConceptNotionData {
@@ -40,6 +40,8 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
   inPopover?: boolean;
   tags?: string[];
   subjects?: string[];
+  heartButton?: HeartButtonType;
+  conceptHeartButton?: ReactNode;
 }
 
 const ContentPadding = styled.div`
@@ -135,7 +137,21 @@ const StyledList = styled.ul`
 
 export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
   (
-    { visualElement, title, content, source, copyright, closeButton, inPopover, previewAlt, tags, subjects, ...rest },
+    {
+      visualElement,
+      title,
+      content,
+      source,
+      copyright,
+      closeButton,
+      inPopover,
+      previewAlt,
+      tags,
+      subjects,
+      heartButton,
+      conceptHeartButton,
+      ...rest
+    },
     ref,
   ) => {
     const { t } = useTranslation();
@@ -151,9 +167,9 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
           </NotionHeader>
           <StyledNotionDialogContent>
             {visualElement?.resource === 'image' ? (
-              <ImageEmbed embed={visualElement} />
+              <ImageEmbed embed={visualElement} heartButton={heartButton} />
             ) : visualElement?.resource === 'brightcove' ? (
-              <BrightcoveEmbed embed={visualElement} />
+              <BrightcoveEmbed embed={visualElement} heartButton={heartButton} />
             ) : visualElement?.resource === 'h5p' ? (
               <H5pEmbed embed={visualElement} />
             ) : visualElement?.resource === 'iframe' ? (
@@ -184,7 +200,11 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
             </ListWrapper>
           )}
         </ContentPadding>
-        {copyright && <EmbedByline copyright={copyright} type="concept" />}
+        {copyright && (
+          <EmbedByline copyright={copyright} type="concept">
+            {conceptHeartButton}
+          </EmbedByline>
+        )}
       </div>
     );
   },

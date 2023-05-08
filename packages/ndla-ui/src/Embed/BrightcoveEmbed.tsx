@@ -17,10 +17,12 @@ import { ButtonV2 } from '@ndla/button';
 import { Figure } from '../Figure';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: BrightcoveMetaData;
   isConcept?: boolean;
+  heartButton?: HeartButtonType;
 }
 
 const LinkedVideoButton = styled(ButtonV2)`
@@ -54,7 +56,7 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? '640',
   };
 };
-const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
+const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -117,6 +119,7 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
             {t(`figure.button.${!showOriginalVideo ? 'original' : 'alternative'}`)}
           </LinkedVideoButton>
         )}
+        {HeartButton && <HeartButton embed={embed} />}
       </EmbedByline>
     </Figure>
   );

@@ -10,6 +10,9 @@ $spacing--large: $inuit-global-spacing-unit * 2;
   --spacing--large: #{$spacing--large};
 }
 
-@mixin font-size($args...) {
-  @include inuit-font-size($args...);
+@mixin font-size($font-size, $line-height, $modifier: 0, $important: false) {
+  @include inuit-font-size($font-size, $line-height, $modifier, $important);
+  @include chinese() {
+    @include inuit-font-size(calc($font-size * 1.11), calc($line-height * 1.11), $modifier, true);
+  }
 }

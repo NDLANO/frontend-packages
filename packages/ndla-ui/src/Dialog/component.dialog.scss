@@ -17,12 +17,12 @@
   }
   &:not(&--large, &--fullscreen) {
     h1 {
-      @include inuit-font-size(22px, 26px);
+      @include font-size(22px, 26px);
     }
   }
   &--small-heading {
     h1 {
-      @include inuit-font-size(22px, 26px);
+      @include font-size(22px, 26px);
     }
   }
 
@@ -45,7 +45,7 @@
     @include mq(tablet) {
       min-width: 20rem;
     }
-    @include font-size(18px);
+    @include font-size(18px, 1.33);
   }
 
   &--active &__content {
@@ -90,7 +90,7 @@
     background: transparent;
     border: none;
     color: $brand-color;
-    @include font-size(20px);
+    @include font-size(18px, 1.33);
     font-weight: $font-weight-normal;
     padding: 0;
     box-shadow: $link;
@@ -123,7 +123,6 @@
       min-height: 100vh;
     }
   }
-
 
   &--fullscreen &__content {
     @include mq(tablet) {

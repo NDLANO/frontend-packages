@@ -1,29 +1,12 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { breakpoints, fonts, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, mq } from '@ndla/core';
+import { Heading } from '../Typography';
 
-type InvertItProps = {
-  invertedStyle?: boolean;
-};
-
-const StyledH1 = styled.h1<InvertItProps>`
-  ${fonts.sizes('24px', '28px')};
-  margin: 30px 0 20px 0;
-  font-weight: ${fonts.weight.bold};
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin: 40px 0 22px;
-    ${fonts.sizes('40px', '48px')};
+const StyledHeading = styled(Heading)`
+  &[data-inverted='true'] {
+    color: ${colors.white};
   }
-  ${mq.range({ from: breakpoints.desktop })} {
-    margin: 50px 0 24px;
-    ${fonts.sizes('52px', '65px')};
-  }
-  ${(props) =>
-    props.invertedStyle &&
-    css`
-      color: #fff;
-    `}
 `;
 const StyledMainText = styled.span`
   display: block;
@@ -49,10 +32,18 @@ type Props = {
 };
 
 export const NavigationHeading = ({ subHeading, children, invertedStyle, headingId }: Props) => (
-  <StyledH1 invertedStyle={invertedStyle} id={headingId} tabIndex={-1}>
+  <StyledHeading
+    element="h1"
+    margin="xlarge"
+    headingStyle="h1"
+    serif
+    data-inverted={invertedStyle}
+    id={headingId}
+    tabIndex={-1}
+  >
     {subHeading && <StyledSubText>{subHeading}</StyledSubText>}
     <StyledMainText>{children}</StyledMainText>
-  </StyledH1>
+  </StyledHeading>
 );
 
 export default NavigationHeading;

@@ -1,4 +1,6 @@
-aside, article aside, .c-article aside {
+aside,
+article aside,
+.c-article aside {
   width: 100%;
   display: inline-block;
   margin: $spacing 0 $spacing 0;
@@ -14,22 +16,22 @@ aside, article aside, .c-article aside {
     padding: $spacing / 2;
     overflow: hidden;
     max-height: 150px;
-    transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
+    transition: max-height 0.4s cubic-bezier(1, 1.05, 0, 1);
     position: relative;
     &:after {
-      content: "";
+      content: '';
       text-align: center;
       position: absolute;
       top: 0;
       bottom: 0;
       right: 0;
       width: 100%;
-      transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
-      background: linear-gradient(rgba($brand-color--light,0),$white)
+      transition: background 0.5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
+      background: linear-gradient(rgba($brand-color--light, 0), $white);
     }
     &:hover {
-      &:after{
-        background: linear-gradient(rgba($white,0),rgba($white, 0.4))
+      &:after {
+        background: linear-gradient(rgba($white, 0), rgba($white, 0.4));
       }
     }
   }
@@ -40,7 +42,7 @@ aside, article aside, .c-article aside {
       background: none;
     }
     &:hover {
-      &:after{
+      &:after {
         background: none;
       }
     }
@@ -49,7 +51,10 @@ aside, article aside, .c-article aside {
   *:first-child {
     margin-top: 0;
   }
-  h2,h3,h4,h5 {
+  h2,
+  h3,
+  h4,
+  h5 {
     display: block;
     margin-top: $spacing--small;
     margin-bottom: $spacing--small;
@@ -69,12 +74,12 @@ aside, article aside, .c-article aside {
   }
 
   @include mq(desktop) {
-    @include font-size(16px);
+    @include font-size(16px, 1.5);
     float: right;
     left: 720px;
     clear: both;
     max-width: 300px;
-    padding: 0 0 0 $spacing*1.5;
+    padding: 0 0 0 $spacing * 1.5;
     border: none;
     border-left: 1px solid $brand-color--light;
     background: none;
@@ -87,7 +92,6 @@ aside, article aside, .c-article aside {
       &:after {
         display: none;
       }
-
     }
   }
 }

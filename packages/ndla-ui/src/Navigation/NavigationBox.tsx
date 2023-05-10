@@ -8,6 +8,7 @@ import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 import { HumanMaleBoard } from '@ndla/icons/common';
+import { Heading } from '../Typography';
 
 const StyledWrapper = styled.nav`
   margin: 20px 0 34px;
@@ -18,19 +19,10 @@ const StyledHeadingWrapper = styled.div`
   align-items: baseline;
 `;
 
-type InvertItProps = {
-  invertedStyle?: boolean;
-};
-
-const StyledHeading = styled.h2<InvertItProps>`
-  ${fonts.sizes('18px', '32px')};
-  text-transform: uppercase;
-  margin: 0 0 10px;
-  ${(props) =>
-    props.invertedStyle &&
-    css`
-      color: #fff;
-    `}
+const StyledHeading = styled(Heading)`
+  &[data-inverted='true'] {
+    color: ${colors.white};
+  }
 `;
 
 type listProps = {
@@ -216,7 +208,11 @@ export const NavigationBox = ({
   return (
     <StyledWrapper>
       <StyledHeadingWrapper>
-        {heading && <StyledHeading invertedStyle={invertedStyle}>{heading}</StyledHeading>}
+        {heading && (
+          <StyledHeading element="h2" margin="small" headingStyle="list-title" data-inverted={invertedStyle}>
+            {heading}
+          </StyledHeading>
+        )}
         {hasAdditionalResources && (
           <Switch
             id={uuid()}

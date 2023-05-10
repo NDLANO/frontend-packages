@@ -1,10 +1,11 @@
 input {
   padding: $spacing/3;
-  @include font-size(18px);
+  @include font-size(18px, 1.33);
   border-style: solid;
   border-color: $brand-grey--light;
 }
-input::-ms-clear { // Remove X-button on input for IE
+input::-ms-clear {
+  // Remove X-button on input for IE
   width: 0;
   height: 0;
 }

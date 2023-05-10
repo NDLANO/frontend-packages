@@ -38,12 +38,10 @@
   margin-left: 0;
 }
 .c-translation__line-body {
-  @include chinese() {
-    @include font-size(18px, 28px);
+  @include font-size(16px, 26px);
 
-    @include mq(tablet) {
-      @include font-size(20px, 32px);
-    }
+  @include mq(tablet) {
+    @include font-size(18px, 30px);
   }
 }
 

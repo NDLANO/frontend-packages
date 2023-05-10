@@ -35,18 +35,6 @@ export const RESOURCE_TYPE_ASSESSMENT_RESOURCES = 'urn:resourcetype:reviewResour
 export const RESOURCE_TYPE_EXTERNAL_LEARNING_RESOURCES = 'urn:resourcetype:externalResource';
 export const RESOURCE_TYPE_SOURCE_MATERIAL = 'urn:resourcetype:SourceMaterial';
 
-export const RESOURCE_TYPE_RESOURCE_IMAGE = 'urn:resourcetype:image';
-export const RESOURCE_TYPE_RESOURCE_VIDEO = 'urn:resourcetype:video';
-export const RESOURCE_TYPE_RESOURCE_CONCEPT = 'urn:resourcetype:concept';
-export const RESOURCE_TYPE_RESOURCE_AUDIO = 'urn:resourcetype:audio';
-
-export const RESOURCE_TYPE_RESOURCES = [
-  RESOURCE_TYPE_RESOURCE_IMAGE,
-  RESOURCE_TYPE_RESOURCE_VIDEO,
-  RESOURCE_TYPE_RESOURCE_CONCEPT,
-  RESOURCE_TYPE_RESOURCE_AUDIO,
-];
-
 export const ListOfContentTypes = [
   'SUBJECT_MATERIAL',
   'TASKS_AND_ACTIVITIES',
@@ -70,8 +58,8 @@ export const contentTypeMapping: Record<string, string> = {
 };
 
 export const resourceTypeMapping: Record<string, string> = {
-  [RESOURCE_TYPE_RESOURCE_IMAGE]: 'image',
-  [RESOURCE_TYPE_RESOURCE_VIDEO]: 'video',
-  [RESOURCE_TYPE_RESOURCE_CONCEPT]: 'concept',
-  [RESOURCE_TYPE_RESOURCE_AUDIO]: 'audio',
+  image: 'image',
+  video: 'video',
+  concept: 'concept',
+  audio: 'audio',
 };

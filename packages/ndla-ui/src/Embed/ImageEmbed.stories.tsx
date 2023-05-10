@@ -12,6 +12,7 @@ import { ImageEmbedData } from '@ndla/types-embed';
 import { IImageMetaInformationV2 } from '@ndla/types-backend/build/image-api';
 import ImageEmbed from './ImageEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
+import StoryFavoriteButton from '../../../../stories/StoryFavoriteButton';
 
 const embedData: ImageEmbedData = {
   resource: 'image',
@@ -81,6 +82,7 @@ export default meta;
 
 export const ImageEmbedStory: StoryObj<typeof ImageEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: {
       resource: 'image',
       status: 'success',
@@ -93,6 +95,7 @@ export const ImageEmbedStory: StoryObj<typeof ImageEmbed> = {
 
 export const Failed: StoryObj<typeof ImageEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: {
       resource: 'image',
       status: 'error',

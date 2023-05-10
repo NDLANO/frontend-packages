@@ -16,10 +16,12 @@ import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
+  heartButton?: HeartButtonType;
 }
 
 export interface Author {
@@ -96,7 +98,7 @@ const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, previewAlt }: Props) => {
+const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   if (embed.status === 'error') {
@@ -149,7 +151,9 @@ const ImageEmbed = ({ embed, previewAlt }: Props) => {
           description={data.caption.caption}
           bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ''}
-        />
+        >
+          {HeartButton && <HeartButton embed={embed} />}
+        </EmbedByline>
       )}
     </Figure>
   );

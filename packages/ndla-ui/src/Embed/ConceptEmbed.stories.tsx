@@ -11,6 +11,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ConceptData, ConceptEmbedData } from '@ndla/types-embed';
 import ConceptEmbed from './ConceptEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
+import StoryFavoriteButton from '../../../../stories/StoryFavoriteButton';
 
 const blockEmbedData: ConceptEmbedData = {
   contentId: '35',
@@ -145,6 +146,7 @@ export default meta;
 
 export const Block: StoryObj<typeof ConceptEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: {
       resource: 'concept',
       status: 'success',
@@ -157,6 +159,7 @@ export const Block: StoryObj<typeof ConceptEmbed> = {
 
 export const BlockFailed: StoryObj<typeof ConceptEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: {
       resource: 'concept',
       status: 'error',
@@ -168,6 +171,7 @@ export const BlockFailed: StoryObj<typeof ConceptEmbed> = {
 
 export const Inline: StoryObj<typeof ConceptEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: {
       resource: 'concept',
       status: 'success',
@@ -180,6 +184,7 @@ export const Inline: StoryObj<typeof ConceptEmbed> = {
 
 export const InlineFailed: StoryObj<typeof ConceptEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: {
       resource: 'concept',
       status: 'error',

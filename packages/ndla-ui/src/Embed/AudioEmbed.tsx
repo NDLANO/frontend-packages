@@ -6,7 +6,7 @@
  *
  */
 
-import { AudioMetaData } from '@ndla/types-embed';
+import { AudioMetaData, ImageMetaData } from '@ndla/types-embed';
 //@ts-ignore
 import { Remarkable } from 'remarkable';
 import AudioPlayer from '../AudioPlayer';
@@ -14,10 +14,13 @@ import { Figure } from '../Figure';
 import { Author } from './ImageEmbed';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: AudioMetaData;
+  heartButton?: HeartButtonType;
 }
+
 export const getFirstNonEmptyLicenseCredits = (authors: {
   creators: Author[];
   rightsholders: Author[];
@@ -30,7 +33,23 @@ const renderMarkdown = (text: string) => {
   return <span dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 
-const AudioEmbed = ({ embed }: Props) => {
+const imageMetaToMockEmbed = (
+  imageMeta: Extract<AudioMetaData, { status: 'success' }>,
+): Extract<ImageMetaData, { status: 'success' }> => ({
+  resource: 'image',
+  status: 'success',
+  // Make sure the seq is unused. It's rarely used, but it's nice to ensure uniqueness.
+  seq: imageMeta.seq + 0.1,
+  // We check that this exists where the function is used.
+  data: imageMeta.data.imageMeta!,
+  embedData: {
+    resource: 'image',
+    resourceId: imageMeta.data.imageMeta?.id?.toString() || '',
+    alt: imageMeta.data.imageMeta?.alttext.alttext ?? '',
+  },
+});
+
+const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
   if (embed.status === 'error') {
     return <EmbedErrorPlaceholder type={embed.embedData.type === 'standard' ? 'audio' : 'podcast'} />;
   }
@@ -68,7 +87,9 @@ const AudioEmbed = ({ embed }: Props) => {
         topRounded={false}
         bottomRounded={!data.imageMeta}
         copyright={embed.data.copyright}
-      />
+      >
+        {HeartButton && <HeartButton embed={embed} />}
+      </EmbedByline>
       {data.imageMeta && (
         <EmbedByline
           error={false}
@@ -77,7 +98,9 @@ const AudioEmbed = ({ embed }: Props) => {
           topRounded={false}
           bottomRounded
           copyright={data.imageMeta.copyright}
-        />
+        >
+          {HeartButton && <HeartButton embed={imageMetaToMockEmbed(embed)} />}
+        </EmbedByline>
       )}
     </Figure>
   );

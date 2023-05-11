@@ -62,8 +62,7 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
 
   const subtitle = data.series ? { title: data.series.title.title, url: `/podkast/${data.series.id}` } : undefined;
 
-  const textVersion = data.manuscript && renderMarkdown(data.manuscript.manuscript);
-  const description = renderMarkdown(data.podcastMeta?.introduction ?? '');
+  const textVersion = data.manuscript?.manuscript.length ? renderMarkdown(data.manuscript.manuscript) : undefined;
 
   const coverPhoto = data.podcastMeta?.coverPhoto;
 
@@ -74,7 +73,7 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
   return (
     <Figure id={figureId} type="full">
       <AudioPlayer
-        description={description}
+        description={data.podcastMeta?.introduction ?? ''}
         img={img}
         src={data.audioFile.url}
         textVersion={textVersion}

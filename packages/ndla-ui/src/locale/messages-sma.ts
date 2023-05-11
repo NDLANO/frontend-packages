@@ -1010,6 +1010,7 @@ const messages = {
       close: 'Dahph teeksteversjovnem',
     },
     readMoreDescriptionLabel: 'vis mer',
+    readLessDescriptionLabel: 'vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',

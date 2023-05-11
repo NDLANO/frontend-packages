@@ -1006,6 +1006,7 @@ const messages = {
       close: 'Lukk tekstversjon',
     },
     readMoreDescriptionLabel: 'vis meir',
+    readLessDescriptionLabel: 'vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',

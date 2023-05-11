@@ -1007,6 +1007,7 @@ const messages = {
       close: 'Close text version',
     },
     readMoreDescriptionLabel: 'show more',
+    readLessDescriptionLabel: 'show less',
   },
   h5p: {
     reuse: 'Use H5P',

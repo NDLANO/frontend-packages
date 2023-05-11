@@ -108,7 +108,12 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
           allowFullScreen
         />
       </div>
-      <EmbedByline type="video" copyright={data.copyright!} description={data.description ?? ''} bottomRounded>
+      <EmbedByline
+        type="video"
+        copyright={data.copyright!}
+        description={embedData.caption ?? data.description ?? ''}
+        bottomRounded
+      >
         {!!linkedVideoId && (
           <LinkedVideoButton
             variant="outline"

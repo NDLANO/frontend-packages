@@ -1007,6 +1007,7 @@ const messages = {
       close: 'Govčča teakstavearšuvnna',
     },
     readMoreDescriptionLabel: 'Čájet eanet',
+    readLessDescriptionLabel: 'vis mindre',
   },
   h5p: {
     reuse: 'Geavat H5P',

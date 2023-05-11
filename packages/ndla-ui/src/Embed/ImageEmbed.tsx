@@ -144,11 +144,11 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton }: Props) => {
           }
         />
       </ImageWrapper>
-      {(!isSmall(embedData.size) || !isBylineHidden) && (
+      {isBylineHidden || (isSmall(embedData.size) && !imageSizes) ? null : (
         <EmbedByline
           type="image"
           copyright={data.copyright}
-          description={data.caption.caption}
+          description={embedData.caption ?? data.caption.caption}
           bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ''}
         >

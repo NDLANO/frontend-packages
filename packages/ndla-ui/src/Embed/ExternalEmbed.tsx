@@ -45,7 +45,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const { embedData, data } = embed;
 
   if (embedData.type === 'fullscreen') {
-    const image = { src: data.iframeImage?.imageUrl ?? '', alt: data.iframeImage?.alttext?.alttext ?? '' };
+    const image = { src: data.iframeImage?.image.imageUrl ?? '', alt: data.iframeImage?.alttext?.alttext ?? '' };
     return (
       <Figure type="full">
         <ResourceBox

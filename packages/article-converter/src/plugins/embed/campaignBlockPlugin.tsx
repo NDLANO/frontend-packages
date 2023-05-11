@@ -22,12 +22,12 @@ export const campaignBlockPlugin: PluginType = (element) => {
       url={{ url: embed.url, text: embed.urlText }}
       imageAfter={
         data.status === 'success' && data.data.imageAfter
-          ? { src: data.data.imageAfter.imageUrl, alt: data.data.imageAfter.alttext.alttext }
+          ? { src: data.data.imageAfter.image.imageUrl, alt: data.data.imageAfter.alttext.alttext }
           : undefined
       }
       imageBefore={
         data.status === 'success' && data.data.imageBefore
-          ? { src: data.data.imageBefore.imageUrl, alt: data.data.imageBefore.alttext.alttext }
+          ? { src: data.data.imageBefore.image.imageUrl, alt: data.data.imageBefore.alttext.alttext }
           : undefined
       }
     />

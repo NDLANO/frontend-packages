@@ -332,7 +332,7 @@ export const BlockConcept = ({
                           <NotionImage
                             type={visualElementType}
                             id={''}
-                            src={visualElement.data.imageUrl}
+                            src={visualElement.data.image.imageUrl}
                             alt={visualElement.data.alttext.alttext}
                           />
                         ) : metaImage ? (

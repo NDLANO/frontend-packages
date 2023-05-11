@@ -36,7 +36,7 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
 
   if (embedData.type === 'fullscreen') {
     const iframeImage = embed.status === 'success' ? embed.data.iframeImage : undefined;
-    const image = { src: iframeImage?.imageUrl ?? '', alt: iframeImage?.alttext?.alttext ?? '' };
+    const image = { src: iframeImage?.image.imageUrl ?? '', alt: iframeImage?.alttext?.alttext ?? '' };
     return (
       <Figure type="full">
         <ResourceBox

@@ -6,7 +6,7 @@
  *
  */
 
-import { ICopyright, IImageMetaInformationV2 } from '@ndla/types-backend/image-api';
+import { ICopyright, IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { MetaData } from '.';
 
 export interface ImageEmbedData {
@@ -34,4 +34,4 @@ export interface ImageData {
   copyText: string;
 }
 
-export type ImageMetaData = MetaData<ImageEmbedData, IImageMetaInformationV2>;
+export type ImageMetaData = MetaData<ImageEmbedData, IImageMetaInformationV3>;

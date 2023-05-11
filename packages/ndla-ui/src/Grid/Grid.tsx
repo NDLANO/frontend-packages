@@ -6,41 +6,49 @@
  *
  */
 import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ReactNode } from 'react';
 
 interface Props {
-  columns: 2 | 4;
-  size: 'small' | 'medium' | 'large';
+  columns: '2' | '4';
   children?: ReactNode[];
 }
 
 const StyledGrid = styled.div`
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-  row-gap: ${spacing.medium};
 
+  left: ${spacing.xxsmall};
+  border: 1px solid ${colors.brand.light};
+  border-radius: 4px;
+  min-width: 10%;
   &[data-columns='2'] {
-    div,
-    a {
-      flex: 0 1 50%;
+    > div,
+    > a {
+      flex: 0 0 49%;
+      border-right: 1px solid ${colors.brand.light};
     }
   }
 
   &[data-columns='4'] {
-    div,
-    a {
-      flex: 0 1 50%;
+    > div,
+    > a {
+      flex: 0 0 49%;
+      border-right: 1px solid ${colors.brand.light};
     }
   }
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     &[data-columns='4'] {
-      div,
-      a {
-        flex: 0 1 25%;
+      > div,
+      > a {
+        flex: 0 0 24%;
+      }
+    }
+    &[data-columns='2'] {
+      > div,
+      > a {
+        flex: 0 0 49%;
       }
     }
   }
@@ -50,23 +58,11 @@ const GridWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-  &[data-size='small'] {
-    max-width: 410px;
-  }
-
-  &[data-size='medium'] {
-    max-width: 560px;
-  }
-
-  &[data-size='large'] {
-    max-width: 100%;
-  }
 `;
 
-const Grid = ({ columns, size, children }: Props) => {
+const Grid = ({ columns, children }: Props) => {
   return (
-    <GridWrapper data-size={size}>
+    <GridWrapper>
       <StyledGrid data-columns={columns}>{children}</StyledGrid>
     </GridWrapper>
   );

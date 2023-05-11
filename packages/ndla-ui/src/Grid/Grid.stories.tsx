@@ -11,7 +11,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import Grid from './Grid';
 import { defaultParameters } from '../../../../stories/defaults';
 import { BlogPostStory } from '../BlogPost/BlogPost.stories';
-import { KeyPerformanceIndicatorStory } from '../KeyPerformanceIndicator/KeyPerformanceIndicator.stories';
+import { KeyFigureStory } from '../KeyFigure/KeyFigure.stories';
 
 export default {
   title: 'Enkle komponenter/Grid',
@@ -22,7 +22,7 @@ export default {
     layout: 'centered',
   },
   args: {
-    columns: 2,
+    columns: '2',
     size: 'medium',
   },
 } as Meta<typeof Grid>;
@@ -30,25 +30,25 @@ export default {
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   return (
     <Grid {...args}>
-      <KeyPerformanceIndicatorStory
-        title={KeyPerformanceIndicatorStory.args?.title!}
-        subTitle={KeyPerformanceIndicatorStory.args?.subTitle!}
-        image={KeyPerformanceIndicatorStory.args?.image}
+      <KeyFigureStory
+        title={KeyFigureStory.args?.title!}
+        subtitle={KeyFigureStory.args?.subtitle!}
+        image={KeyFigureStory.args?.image}
       />
-      <KeyPerformanceIndicatorStory
-        title={KeyPerformanceIndicatorStory.args?.title!}
-        subTitle={KeyPerformanceIndicatorStory.args?.subTitle!}
-        image={KeyPerformanceIndicatorStory.args?.image}
+      <KeyFigureStory
+        title={KeyFigureStory.args?.title!}
+        subtitle={KeyFigureStory.args?.subtitle!}
+        image={KeyFigureStory.args?.image}
       />
-      <KeyPerformanceIndicatorStory
-        title={KeyPerformanceIndicatorStory.args?.title!}
-        subTitle={KeyPerformanceIndicatorStory.args?.subTitle!}
-        image={KeyPerformanceIndicatorStory.args?.image}
+      <KeyFigureStory
+        title={KeyFigureStory.args?.title!}
+        subtitle={KeyFigureStory.args?.subtitle!}
+        image={KeyFigureStory.args?.image}
       />
-      <KeyPerformanceIndicatorStory
-        title={KeyPerformanceIndicatorStory.args?.title!}
-        subTitle={KeyPerformanceIndicatorStory.args?.subTitle!}
-        image={KeyPerformanceIndicatorStory.args?.image}
+      <KeyFigureStory
+        title={KeyFigureStory.args?.title!}
+        subtitle={KeyFigureStory.args?.subtitle!}
+        image={KeyFigureStory.args?.image}
       />
     </Grid>
   );

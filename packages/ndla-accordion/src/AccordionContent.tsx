@@ -42,22 +42,37 @@ const AnimationWrapper = styled(Content)`
   &[data-disable-animate='true'] {
     animation: none;
   }
+
+  &[data-wide='true'] {
+    display: flex;
+    flex-flow: column;
+
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const StyledContent = styled.div`
   padding: ${spacing.normal};
+  &[data-wide='true'] {
+    width: 1200px !important;
+    left: 0 !important;
+  }
 `;
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   disableAnimation?: boolean;
   children: ReactNode;
   forceMount?: boolean;
+  wide?: boolean;
 }
 
-const AccordionContent = ({ disableAnimation, children, ...rest }: Props) => {
+const AccordionContent = ({ disableAnimation, children, wide, ...rest }: Props) => {
   return (
-    <AnimationWrapper data-disable-animate={disableAnimation}>
-      <StyledContent {...rest}>{children}</StyledContent>
+    <AnimationWrapper data-wide={wide} data-disable-animate={disableAnimation}>
+      <StyledContent data-wide={wide} {...rest}>
+        {children}
+      </StyledContent>
     </AnimationWrapper>
   );
 };

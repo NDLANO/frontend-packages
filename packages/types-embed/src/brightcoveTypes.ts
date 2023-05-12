@@ -17,6 +17,7 @@ export type BrightcoveEmbedData = {
   player: string;
   title: string;
   metaData?: any;
+  alt?: string;
 };
 
 interface Author {

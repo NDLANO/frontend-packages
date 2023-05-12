@@ -61,6 +61,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { embedData } = embed;
+  const fallbackTitle = `${t('embed.type.video')}: ${embedData.videoid}`;
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -76,8 +77,8 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
       <EmbedErrorPlaceholder type="video">
         <BrightcoveIframe
           ref={iframeRef}
-          title={`Video: ${embedData.videoid ?? ''}`}
-          aria-label={`Video: ${embedData.videoid ?? ''}`}
+          title={embedData.alt ?? fallbackTitle}
+          aria-label={embedData.alt ?? fallbackTitle}
           frameBorder="0"
           {...getIframeProps(embedData, [])}
           allowFullScreen
@@ -101,8 +102,8 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
         <BrightcoveIframe
           ref={iframeRef}
           className="original"
-          title={`Video: ${data.name}`}
-          aria-label={`Video: ${data.name}`}
+          title={embedData.alt ?? data.name ?? fallbackTitle}
+          aria-label={embedData.alt ?? data.name ?? fallbackTitle}
           frameBorder="0"
           {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
           allowFullScreen

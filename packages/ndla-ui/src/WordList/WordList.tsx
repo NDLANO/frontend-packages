@@ -8,20 +8,17 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import AccordionRoot from '../../../ndla-accordion';
-import AccordionItem from '../../../ndla-accordion';
-import AccordionHeader from '../../../ndla-accordion';
-import AccordionContent from '../../../ndla-accordion';
-import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
+import SpeechControl from '../AudioPlayer/SpeechControl';
+import { colors, spacing, misc } from '@ndla/core';
 
 interface Props {
   sourceWord: {
     word: string;
     language: string;
   };
-  args: {
-    type: 'single';
-    collapsible: true;
+  audio: {
+    title: string;
+    src: string;
   };
 }
 
@@ -32,6 +29,7 @@ const Container = styled.div`
   padding: ${spacing.nsmall} ${spacing.normal};
   border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
+  margin-bottom: ${spacing.xsmall};
 `;
 
 const WordSoundWrapper = styled.div`
@@ -64,27 +62,20 @@ const WordClassSpan = styled.span`
   font-style: italic;
 `;
 
-const SampleButton = styled.button`
-  height: 26px;
-  margin-bottom: 20px;
-`;
-
-const WordList = ({ sourceWord }: Props) => {
+const WordList = ({ sourceWord, audio }: Props) => {
   return (
-    <>
-      <Container>
-        <WordSoundWrapper>
-          <WordContainer>
-            <SourceSpan>{sourceWord.word}</SourceSpan>
-            <TraditionalSpan>( Trad )</TraditionalSpan>
-            <PinyinSpan>Pinyin</PinyinSpan>
-            <WordClassSpan>Ordklasse</WordClassSpan>
-          </WordContainer>
-          <SampleButton>Spill av lyd</SampleButton>
-        </WordSoundWrapper>
-        <span>etternavn + fornavn</span>
-      </Container>
-    </>
+    <Container>
+      <WordSoundWrapper>
+        <WordContainer>
+          <SourceSpan>{sourceWord.word}</SourceSpan>
+          <TraditionalSpan>( Trad )</TraditionalSpan>
+          <PinyinSpan>Pinyin</PinyinSpan>
+          <WordClassSpan>Ordklasse</WordClassSpan>
+        </WordContainer>
+        <SpeechControl src={audio.src} title={audio.title}></SpeechControl>
+      </WordSoundWrapper>
+      <span>etternavn + fornavn</span>
+    </Container>
   );
 };
 

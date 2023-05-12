@@ -9,27 +9,50 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import WordList from './WordList';
-import AccordionRoot from '../../../ndla-accordion';
+import AccordionRoot from '../../../ndla-accordion/src/AccordionRoot';
 import { defaultParameters } from '../../../../stories/defaults';
-import AccordionItem from '../../../ndla-accordion';
-import AccordionHeader from '../../../ndla-accordion';
-import AccordionContent from '../../../ndla-accordion';
+import AccordionItem from '../../../ndla-accordion/src/AccordionItem';
+import AccordionHeader from '../../../ndla-accordion/src/AccordionHeader';
+import AccordionContent from '../../../ndla-accordion/src/AccordionContent';
 
-export default {
+const meta: Meta<typeof WordList> = {
   title: 'Enkle komponenter/Word List',
   component: WordList,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
-  args: {},
-} as Meta<typeof WordList>;
-
-export const WordListStory: StoryObj<typeof WordList> = {
   args: {
     sourceWord: {
       word: 'Kildeord',
       language: 'nb-no',
     },
+    audio: {
+      title: 'Spill av lyd',
+      src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
+    },
+  },
+};
+
+export default meta;
+
+export const WordListStory: StoryObj<typeof WordList> = {
+  render: function Render(args) {
+    return (
+      <>
+        <WordList {...args}></WordList>
+        <AccordionRoot type="single" collapsible>
+          <AccordionItem value={'1'}>
+            <AccordionHeader>Tittel</AccordionHeader>
+            <AccordionContent>
+              <div>
+                <strong>Undertittel</strong>
+              </div>
+              <div>En kort paragraf</div>
+            </AccordionContent>
+          </AccordionItem>
+        </AccordionRoot>
+      </>
+    );
   },
 };

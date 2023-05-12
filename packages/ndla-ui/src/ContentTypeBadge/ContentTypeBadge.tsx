@@ -88,7 +88,7 @@ export const ContentTypeBadge = ({ type, background, title, size = 'small', bord
   if (embedResource) {
     modifiers.push('embed-resource');
   }
-  if (background || embedResource) {
+  if (background) {
     modifiers.push('background');
   }
   if (border) {

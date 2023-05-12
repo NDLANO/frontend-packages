@@ -22,7 +22,7 @@ import {
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
-import { contentTypeMapping } from '../model/ContentType';
+import { contentTypeMapping, resourceTypeMapping } from '../model/ContentType';
 import { SettingsMenu } from '../MyNdla';
 
 const ListResourceWrapper = styled.div`
@@ -229,7 +229,11 @@ const ListResource = ({
           resourceImage={resourceImage}
           loading={isLoading}
           type={imageType}
-          contentType={contentTypeMapping[firstContentType] ?? contentTypeMapping['default']}
+          contentType={
+            contentTypeMapping[firstContentType] ??
+            resourceTypeMapping[firstContentType] ??
+            contentTypeMapping['default']
+          }
         />
       </ImageWrapper>
       <TopicAndTitleWrapper>

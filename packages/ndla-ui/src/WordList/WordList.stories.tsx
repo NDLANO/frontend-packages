@@ -9,11 +9,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import WordList from './WordList';
-import AccordionRoot from '../../../ndla-accordion/src/AccordionRoot';
 import { defaultParameters } from '../../../../stories/defaults';
-import AccordionItem from '../../../ndla-accordion/src/AccordionItem';
-import AccordionHeader from '../../../ndla-accordion/src/AccordionHeader';
-import AccordionContent from '../../../ndla-accordion/src/AccordionContent';
 
 const meta: Meta<typeof WordList> = {
   title: 'Enkle komponenter/Word List',
@@ -24,13 +20,26 @@ const meta: Meta<typeof WordList> = {
   },
   args: {
     sourceWord: {
-      word: 'Kildeord',
+      word: 'angreifen',
       language: 'nb-no',
+      twoLanguages: false,
+      wordClass: 'verb',
+      norwegianTranslation: 'Å angripe',
     },
     audio: {
       title: 'Spill av lyd',
       src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
     },
+    examples: [
+      {
+        exampleSentence: 'Hitler greift die Sowjetunion an',
+        translation: 'Hitler angriper Sovjetunionen',
+      },
+      {
+        exampleSentence: 'Ich greife an',
+        translation: 'Jeg griper an',
+      },
+    ],
   },
 };
 
@@ -41,17 +50,6 @@ export const WordListStory: StoryObj<typeof WordList> = {
     return (
       <>
         <WordList {...args}></WordList>
-        <AccordionRoot type="single" collapsible>
-          <AccordionItem value={'1'}>
-            <AccordionHeader>Tittel</AccordionHeader>
-            <AccordionContent>
-              <div>
-                <strong>Undertittel</strong>
-              </div>
-              <div>En kort paragraf</div>
-            </AccordionContent>
-          </AccordionItem>
-        </AccordionRoot>
       </>
     );
   },

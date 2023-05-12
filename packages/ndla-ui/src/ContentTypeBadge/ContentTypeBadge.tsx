@@ -13,6 +13,7 @@ import {
 } from '@ndla/icons/contentType';
 
 import { MenuBook } from '@ndla/icons/action';
+import { Concept, Media, SquareAudio, SquareVideo } from '@ndla/icons/editor';
 
 import * as contentTypes from '../model/ContentType';
 
@@ -32,12 +33,8 @@ interface Props {
 
 export const ContentTypeBadge = ({ type, background, title, size = 'small', border = true, className }: Props) => {
   const modifiers = [type, size];
-  if (background) {
-    modifiers.push('background');
-  }
-  if (border) {
-    modifiers.push('border');
-  }
+
+  let embedResource = false;
 
   let icon = null;
   switch (type) {
@@ -68,8 +65,34 @@ export const ContentTypeBadge = ({ type, background, title, size = 'small', bord
     case contentTypes.MULTIDISCIPLINARY_TOPIC:
       icon = <MultidisciplinaryTopic />;
       break;
+    case contentTypes.resourceTypeMapping.image:
+      icon = <Media />;
+      embedResource = true;
+      break;
+    case contentTypes.resourceTypeMapping.audio:
+      icon = <SquareAudio />;
+      embedResource = true;
+      break;
+    case contentTypes.resourceTypeMapping.video:
+      icon = <SquareVideo />;
+      embedResource = true;
+      break;
+    case contentTypes.resourceTypeMapping.concept:
+      icon = <Concept />;
+      embedResource = true;
+      break;
     default:
       break;
+  }
+
+  if (embedResource) {
+    modifiers.push('embed-resource');
+  }
+  if (background || embedResource) {
+    modifiers.push('background');
+  }
+  if (border) {
+    modifiers.push('border');
   }
   return <div {...classes('', modifiers, className)}>{icon}</div>;
 };

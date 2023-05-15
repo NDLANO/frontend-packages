@@ -17,6 +17,7 @@ import AccordionContent from '../../../ndla-accordion/src/AccordionContent';
 
 interface Example {
   exampleSentence: string;
+  exampleSentencsPinyin?: string;
   translation: string;
 }
 export interface Props {
@@ -76,6 +77,28 @@ const WordClassSpan = styled.span`
   font-style: italic;
 `;
 
+const AccordianContainer = styled(AccordionContent)`
+  padding: 0;
+`;
+
+const ExampleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ExampleText = styled.span`
+  color: ${colors.brand.dark};
+  font-weight: 700;
+  background-color: #f7fafd;
+  border-bottom: 1px solid ${colors.brand.lighter};
+  padding: ${spacing.small} ${spacing.normal};
+`;
+
+const ExampleTextTranslated = styled.span`
+  border-bottom: 1px solid ${colors.brand.lighter};
+  padding: ${spacing.small} ${spacing.normal};
+`;
+
 const WordList = ({ sourceWord, audio, examples }: Props) => {
   return (
     <>
@@ -91,18 +114,21 @@ const WordList = ({ sourceWord, audio, examples }: Props) => {
         </WordSoundWrapper>
         <span>{sourceWord.norwegianTranslation}</span>
       </Container>
-      {!!examples && (
+      {examples && (
         <AccordionRoot type="single" collapsible>
           <AccordionItem value={'1'}>
             <AccordionHeader>Eksempler</AccordionHeader>
-            <AccordionContent>
+            <AccordianContainer>
               {examples.map((example) => (
-                <div>
-                  <span>{example.exampleSentence}</span>
-                  <span>{example.translation}</span>
-                </div>
+                <ExampleContainer>
+                  <ExampleText>{example.exampleSentence}</ExampleText>
+                  {example.exampleSentencsPinyin && (
+                    <ExampleTextTranslated>{example.exampleSentencsPinyin}</ExampleTextTranslated>
+                  )}
+                  <ExampleTextTranslated>{example.translation}</ExampleTextTranslated>
+                </ExampleContainer>
               ))}
-            </AccordionContent>
+            </AccordianContainer>
           </AccordionItem>
         </AccordionRoot>
       )}

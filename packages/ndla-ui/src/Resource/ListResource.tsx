@@ -22,7 +22,7 @@ import {
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
-import { contentTypeMapping, resourceTypeMapping } from '../model/ContentType';
+import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
 import { SettingsMenu } from '../MyNdla';
 
 const ListResourceWrapper = styled.div`
@@ -222,7 +222,7 @@ const ListResource = ({
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
   const firstContentType = resourceTypes?.[0]?.id ?? '';
-  const embedResourceType = resourceTypeMapping[firstContentType];
+  const embedResourceType = resourceEmbedTypeMapping[firstContentType];
 
   return (
     <ListResourceWrapper id={id}>

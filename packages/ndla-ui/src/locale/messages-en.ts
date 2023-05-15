@@ -694,6 +694,12 @@ const messages = {
     'assessment-resources': 'Assessment resource',
     topic: 'Topic',
     'multidisciplinary-topic': 'Multidisciplinary case',
+    image: 'Image',
+    concept: 'Concept',
+    audio: 'Audio',
+    podcast: 'Podcast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Close',

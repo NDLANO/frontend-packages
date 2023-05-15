@@ -694,6 +694,12 @@ const messages = {
     'assessment-resources': 'Árvoštallanresursa',
     topic: 'Fáddá',
     'multidisciplinary-topic': 'Fágaidrasttideaddji fáddá',
+    image: 'Bilde',
+    concept: 'Forklaring',
+    audio: 'Lyd',
+    podcast: 'Podkast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Govčča',

@@ -57,7 +57,7 @@ export const contentTypeMapping: Record<string, string> = {
   default: SUBJECT_MATERIAL,
 };
 
-export const resourceTypeMapping: Record<string, string> = {
+export const resourceEmbedTypeMapping: Record<string, string> = {
   image: 'image',
   video: 'video',
   concept: 'concept',

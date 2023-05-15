@@ -996,6 +996,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Play',
     download: 'Download audio',
     reuse: 'Use audio',
     error: {

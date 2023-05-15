@@ -999,6 +999,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Spill av',
     download: 'Veedtjh tjoeje-fijlem',
     reuse: 'Nuhtjh tjoeje-fijlem',
     error: {

@@ -65,19 +65,19 @@ export const ContentTypeBadge = ({ type, background, title, size = 'small', bord
     case contentTypes.MULTIDISCIPLINARY_TOPIC:
       icon = <MultidisciplinaryTopic />;
       break;
-    case contentTypes.resourceTypeMapping.image:
+    case contentTypes.resourceEmbedTypeMapping.image:
       icon = <Media />;
       embedResource = true;
       break;
-    case contentTypes.resourceTypeMapping.audio:
+    case contentTypes.resourceEmbedTypeMapping.audio:
       icon = <SquareAudio />;
       embedResource = true;
       break;
-    case contentTypes.resourceTypeMapping.video:
+    case contentTypes.resourceEmbedTypeMapping.video:
       icon = <SquareVideo />;
       embedResource = true;
       break;
-    case contentTypes.resourceTypeMapping.concept:
+    case contentTypes.resourceEmbedTypeMapping.concept:
       icon = <Concept />;
       embedResource = true;
       break;

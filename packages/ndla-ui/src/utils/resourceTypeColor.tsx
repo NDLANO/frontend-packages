@@ -8,7 +8,7 @@
 
 import { colors } from '@ndla/core';
 import constants from '../model';
-import { resourceTypeMapping } from '../model/ContentType';
+import { resourceEmbedTypeMapping } from '../model/ContentType';
 const { contentTypes } = constants;
 
 export const resourceTypeColor = (type: string) => {
@@ -31,10 +31,10 @@ export const resourceTypeColor = (type: string) => {
       return colors.learningPath.light;
     case contentTypes.MULTIDISCIPLINARY_TOPIC:
       return colors.learningPath.background;
-    case resourceTypeMapping.image:
-    case resourceTypeMapping.video:
-    case resourceTypeMapping.concept:
-    case resourceTypeMapping.audio:
+    case resourceEmbedTypeMapping.image:
+    case resourceEmbedTypeMapping.video:
+    case resourceEmbedTypeMapping.concept:
+    case resourceEmbedTypeMapping.audio:
       return colors.brand.greyLight;
     default:
       return '';

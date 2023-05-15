@@ -697,6 +697,12 @@ const messages = {
     'assessment-resources': 'Vuarjasjimmievierhtie',
     topic: 'Teema',
     'multidisciplinary-topic': 'Tverrfaglig case',
+    image: 'Bilde',
+    concept: 'Forklaring',
+    audio: 'Lyd',
+    podcast: 'Podkast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Dahph',

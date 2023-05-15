@@ -10,7 +10,6 @@ import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
-import { HeadingLevel } from '@ndla/ui';
 import { Header, Trigger } from '@radix-ui/react-accordion';
 import { forwardRef, HTMLAttributes, ReactNode } from 'react';
 
@@ -59,7 +58,7 @@ const StyledChevron = styled(ChevronDown)`
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   indicator?: ReactNode;
   headerCSS?: SerializedStyles;
-  headingLevel?: HeadingLevel;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 const AccordionHeader = forwardRef<HTMLButtonElement, Props>(

@@ -8,12 +8,12 @@
 
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import WordList from './Gloss';
+import Gloss from './Gloss';
 import { defaultParameters } from '../../../../stories/defaults';
 
-const meta: Meta<typeof WordList> = {
+const meta: Meta<typeof Gloss> = {
   title: 'Enkle komponenter/Gloss',
-  component: WordList,
+  component: Gloss,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
@@ -22,13 +22,14 @@ const meta: Meta<typeof WordList> = {
     sourceWord: {
       word: 'angreifen',
       language: 'de',
-      twoLanguages: false,
+      traditionalChinese: '',
+      pinyin: '',
       wordClass: 'verb',
       norwegianTranslation: 'Å angripe',
     },
     audio: {
-      title: 'Spill av lyd',
-      src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
+      title: '',
+      src: '',
     },
     examples: [
       {
@@ -45,11 +46,42 @@ const meta: Meta<typeof WordList> = {
 
 export default meta;
 
-export const GlossStory: StoryObj<typeof WordList> = {
+export const GlossStory: StoryObj<typeof Gloss> = {
   render: function Render(args) {
     return (
       <>
-        <WordList {...args}></WordList>
+        <Gloss {...args}></Gloss>
+      </>
+    );
+  },
+};
+
+export const GlossChineseStory: StoryObj<typeof Gloss> = {
+  args: {
+    sourceWord: {
+      word: '马红',
+      language: 'de',
+      traditionalChinese: '馬紅',
+      pinyin: 'Mǎ Hóng',
+      wordClass: 'Egn',
+      norwegianTranslation: 'Ma Hong',
+    },
+    audio: {
+      title: 'Spill av lyd',
+      src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
+    },
+    examples: [
+      {
+        exampleSentence: '我叫马红',
+        exampleSentencePinyin: 'Wǒ jiào Mǎ Hóng.',
+        translation: 'Jeg heter ma hong',
+      },
+    ],
+  },
+  render: function Render(args) {
+    return (
+      <>
+        <Gloss {...args}></Gloss>
       </>
     );
   },

@@ -17,7 +17,7 @@ import AccordionContent from '@ndla/accordion/src/AccordionContent';
 
 interface Example {
   exampleSentence: string;
-  exampleSentencsPinyin?: string;
+  exampleSentencePinyin?: string;
   translation: string;
 }
 export interface Props {
@@ -26,12 +26,12 @@ export interface Props {
     language: string;
     traditionalChinese?: string;
     pinyin?: string;
-    wordClass: string;
-    norwegianTranslation: string;
+    wordClass?: string;
+    norwegianTranslation?: string;
   };
   audio: {
     title: string;
-    src: string;
+    src?: string;
   };
   examples?: Example[];
 }
@@ -76,6 +76,10 @@ const WordClassSpan = styled.span`
   font-style: italic;
 `;
 
+const ExampleAccordianHeader = styled(AccordionHeader)`
+  background-color: #f7fafd;
+`;
+
 const AccordianContainer = styled(AccordionContent)`
   padding: 0;
 `;
@@ -98,7 +102,7 @@ const ExampleTextTranslated = styled.span`
   padding: ${spacing.small} ${spacing.normal};
 `;
 
-const WordList = ({ sourceWord, audio, examples }: Props) => {
+const Gloss = ({ sourceWord, audio, examples }: Props) => {
   return (
     <>
       <Container>
@@ -107,22 +111,22 @@ const WordList = ({ sourceWord, audio, examples }: Props) => {
             <SourceSpan>{sourceWord.word}</SourceSpan>
             {sourceWord.traditionalChinese && <TraditionalSpan>( {sourceWord.traditionalChinese} )</TraditionalSpan>}
             {sourceWord.pinyin && <PinyinSpan>{sourceWord.pinyin}</PinyinSpan>}
-            <WordClassSpan>{sourceWord.wordClass}</WordClassSpan>
+            {sourceWord.wordClass && <WordClassSpan>{sourceWord.wordClass}</WordClassSpan>}
           </WordContainer>
-          <SpeechControl src={audio.src} title={audio.title}></SpeechControl>
+          {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
         </WordSoundWrapper>
-        <span>{sourceWord.norwegianTranslation}</span>
+        {sourceWord.norwegianTranslation && <span>{sourceWord.norwegianTranslation}</span>}
       </Container>
       {examples && (
         <AccordionRoot type="single" collapsible>
           <AccordionItem value={'1'}>
-            <AccordionHeader>Eksempler</AccordionHeader>
+            <ExampleAccordianHeader>Eksempler</ExampleAccordianHeader>
             <AccordianContainer>
               {examples.map((example) => (
                 <ExampleContainer>
                   <ExampleText>{example.exampleSentence}</ExampleText>
-                  {example.exampleSentencsPinyin && (
-                    <ExampleTextTranslated>{example.exampleSentencsPinyin}</ExampleTextTranslated>
+                  {example.exampleSentencePinyin && (
+                    <ExampleTextTranslated>{example.exampleSentencePinyin}</ExampleTextTranslated>
                   )}
                   <ExampleTextTranslated>{example.translation}</ExampleTextTranslated>
                 </ExampleContainer>
@@ -135,4 +139,4 @@ const WordList = ({ sourceWord, audio, examples }: Props) => {
   );
 };
 
-export default WordList;
+export default Gloss;

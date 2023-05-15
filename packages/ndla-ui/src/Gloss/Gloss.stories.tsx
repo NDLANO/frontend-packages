@@ -8,11 +8,11 @@
 
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import WordList from './WordList';
+import WordList from './Gloss';
 import { defaultParameters } from '../../../../stories/defaults';
 
 const meta: Meta<typeof WordList> = {
-  title: 'Enkle komponenter/Word List',
+  title: 'Enkle komponenter/Gloss',
   component: WordList,
   tags: ['autodocs'],
   parameters: {
@@ -21,7 +21,7 @@ const meta: Meta<typeof WordList> = {
   args: {
     sourceWord: {
       word: 'angreifen',
-      language: 'nb-no',
+      language: 'de',
       twoLanguages: false,
       wordClass: 'verb',
       norwegianTranslation: 'Å angripe',
@@ -45,7 +45,7 @@ const meta: Meta<typeof WordList> = {
 
 export default meta;
 
-export const WordListStory: StoryObj<typeof WordList> = {
+export const GlossStory: StoryObj<typeof WordList> = {
   render: function Render(args) {
     return (
       <>

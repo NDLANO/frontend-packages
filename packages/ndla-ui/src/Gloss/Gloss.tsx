@@ -10,10 +10,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 import SpeechControl from '../AudioPlayer/SpeechControl';
 import { colors, spacing, misc } from '@ndla/core';
-import AccordionRoot from '../../../ndla-accordion/src/AccordionRoot';
-import AccordionItem from '../../../ndla-accordion/src/AccordionItem';
-import AccordionHeader from '../../../ndla-accordion/src/AccordionHeader';
-import AccordionContent from '../../../ndla-accordion/src/AccordionContent';
+import AccordionRoot from '@ndla/accordion/src/AccordionRoot';
+import AccordionItem from '@ndla/accordion/src/AccordionItem';
+import AccordionHeader from '@ndla/accordion/src/AccordionHeader';
+import AccordionContent from '@ndla/accordion/src/AccordionContent';
 
 interface Example {
   exampleSentence: string;
@@ -24,7 +24,6 @@ export interface Props {
   sourceWord: {
     word: string;
     language: string;
-    twoLanguages: boolean;
     traditionalChinese?: string;
     pinyin?: string;
     wordClass: string;
@@ -106,8 +105,8 @@ const WordList = ({ sourceWord, audio, examples }: Props) => {
         <WordSoundWrapper>
           <WordContainer>
             <SourceSpan>{sourceWord.word}</SourceSpan>
-            {sourceWord.twoLanguages && <TraditionalSpan>( {sourceWord.traditionalChinese} )</TraditionalSpan>}
-            {sourceWord.twoLanguages && <PinyinSpan>{sourceWord.pinyin}</PinyinSpan>}
+            {sourceWord.traditionalChinese && <TraditionalSpan>( {sourceWord.traditionalChinese} )</TraditionalSpan>}
+            {sourceWord.pinyin && <PinyinSpan>{sourceWord.pinyin}</PinyinSpan>}
             <WordClassSpan>{sourceWord.wordClass}</WordClassSpan>
           </WordContainer>
           <SpeechControl src={audio.src} title={audio.title}></SpeechControl>

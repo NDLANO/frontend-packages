@@ -996,6 +996,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Spill av',
     download: 'Viečča jietnafiilla',
     reuse: 'Geavat jietnafiilla',
     error: {

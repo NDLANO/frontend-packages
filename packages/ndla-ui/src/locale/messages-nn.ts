@@ -995,6 +995,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Spill av',
     download: 'Last ned lydfil',
     reuse: 'Bruk lydfil',
     error: {

@@ -21,11 +21,6 @@ export const generateListResets = () => {
   return styles;
 };
 
-const listSpacing = {
-  xlarge: `${spacingUnit * 2.5}px`,
-  xxlarge: `${spacingUnit * 3.5}px`,
-};
-
 const StyledOl = styled.ol`
   margin-top: 0;
   margin-left: 0;
@@ -62,7 +57,6 @@ const StyledOl = styled.ol`
           content: counter(item, lower-alpha) '.';
         }
         ol[data-type='letters'] {
-          padding-left: ${spacing.normal};
           > li:before {
             content: counter(item, lower-roman) '.';
           }
@@ -78,20 +72,19 @@ const StyledOl = styled.ol`
       &:before {
         position: absolute;
         transform: translateX(-100%);
-        padding-right: ${spacing.nsmall};
         content: counters(item, '.') '.';
+        padding-right: ${spacing.nsmall};
       }
 
       > ol:not([data-type='letters']) {
-        padding-left: ${spacing.medium};
         > li {
+          padding-left: ${spacing.nsmall};
           > ol:not([data-type='letters']) {
-            padding-left: ${spacing.large};
             > li {
+              padding-left: ${spacing.medium};
               > ol:not([data-type='letters']) {
-                padding-left: ${listSpacing.xlarge};
-                ol:not([data-type='letters']) {
-                  padding-left: ${listSpacing.xxlarge};
+                > li {
+                  padding-left: ${spacing.large};
                 }
               }
             }

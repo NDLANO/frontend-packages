@@ -31,6 +31,7 @@ const StyledOl = styled.ol`
   margin-left: 0;
   ${fonts.sizes('18px', '29px')};
   list-style-type: none;
+  padding-left: ${spacing.normal};
 
   // Child ordered lists
   ol {
@@ -39,6 +40,10 @@ const StyledOl = styled.ol`
   // List item
   li {
     margin-top: ${spacing.normal};
+
+    p {
+      margin-bottom: ${spacing.normal} !important;
+    }
   }
 
   &[data-type='letters'] {

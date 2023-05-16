@@ -12,6 +12,7 @@ import { forwardRef, HTMLAttributes } from 'react';
 import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
+  padding-left: ${spacing.normal} !important;
   > li {
     ::marker {
       color: ${colors.brand.secondary};
@@ -28,6 +29,9 @@ const StyledUl = styled.ul`
   // List item
   li {
     margin-top: ${spacing.normal};
+    p {
+      margin-bottom: ${spacing.normal} !important;
+    }
   }
 
   // Child unordered lists

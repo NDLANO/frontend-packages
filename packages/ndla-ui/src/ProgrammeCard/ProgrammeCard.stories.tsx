@@ -20,12 +20,12 @@ export default {
   },
   args: {
     id: 'test ID',
-    programmeTitle: { title: 'Elektro og datateknologi', language: 'nb-no' },
-    programmeImgDesk: {
+    title: { title: 'Elektro og datateknologi', language: 'nb' },
+    desktopImage: {
       src: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993',
       alt: '',
     },
-    programmeImgMob: {
+    mobileImage: {
       src: 'https://api.test.ndla.no/image-api/raw/YIAprLg9.svg?width=600&ts=1682592022017',
       alt: '',
     },

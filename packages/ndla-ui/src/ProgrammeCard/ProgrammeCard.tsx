@@ -11,21 +11,18 @@ import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 
-interface StyledImage {
-  isMobile: boolean;
-}
 interface Image {
   src: string;
   alt: string;
 }
 export interface Programme {
   id: string;
-  programmeTitle: {
+  title: {
     title: string;
     language: string;
   };
-  programmeImgDesk: Image;
-  programmeImgMob: Image;
+  desktopImage: Image;
+  mobileImage: Image;
   url: string;
 }
 
@@ -49,29 +46,36 @@ const StyledCardContainer = styled(SafeLink)`
   }
 `;
 
-const StyledCardImg = styled.img<StyledImage>`
-  display: ${(props) => (props.isMobile ? 'block' : 'none')};
-  width: 350px;
+const StyledImg = styled.img`
+  display: none;
   border-radius: ${misc.borderRadius} ${misc.borderRadius} 0 0;
-  ${mq.range({ from: breakpoints.tablet })} {
-    display: ${(props) => (props.isMobile ? 'none' : 'block')};
-    width: auto;
+  &[data-is-mobile='true'] {
+    ${mq.range({ until: breakpoints.tablet })} {
+      display: block;
+      width: auto;
+    }
+  }
+  &[data-is-mobile='false'] {
+    ${mq.range({ from: breakpoints.tablet })} {
+      display: block;
+      width: 350px;
+    }
   }
 `;
 
-const StyledCardTitle = styled.span`
+const StyledTitle = styled.span`
   color: ${colors.text.primary};
   padding: ${spacing.normal} 0 ${spacing.normal} ${spacing.nsmall};
   border: 1px solid ${colors.brand.lighter};
   border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
 `;
 
-const ProgrammeCard = ({ programmeTitle, programmeImgDesk, programmeImgMob, url }: Programme) => {
+const ProgrammeCard = ({ title, desktopImage, mobileImage, url }: Programme) => {
   return (
     <StyledCardContainer to={url}>
-      <StyledCardImg isMobile={false} src={programmeImgDesk.src} alt={programmeImgDesk.alt} />
-      <StyledCardImg isMobile={true} src={programmeImgMob.src} alt={programmeImgMob.alt} />
-      <StyledCardTitle>{programmeTitle.title}</StyledCardTitle>
+      <StyledImg data-is-mobile="false" src={desktopImage.src} alt={desktopImage.alt} />
+      <StyledImg data-is-mobile="true" src={mobileImage.src} alt={mobileImage.alt} />
+      <StyledTitle>{title.title}</StyledTitle>
     </StyledCardContainer>
   );
 };

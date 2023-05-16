@@ -6,4 +6,4 @@
  *
  */
 
-export { default as EducationalProgrammesCard } from './ProgrammeCard';
+export { default as ProgrammeCard } from './ProgrammeCard';

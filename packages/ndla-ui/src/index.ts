@@ -278,3 +278,4 @@ export { default as ContactBlock } from './ContactBlock';
 export type { HeartButtonType } from './Embed';
 export { CampaignBlock } from './CampaignBlock';
 export { Heading } from './Typography';
+export type { HeadingLevel } from './types';

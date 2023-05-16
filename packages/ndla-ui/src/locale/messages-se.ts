@@ -478,6 +478,7 @@ const messages = {
       onlyTeacher: 'Dát resursa lea dušše olamuttus oahpaheddjiide geat leat Feide bokte sisaloggejuvvon.',
     },
     possiblyOutdated: 'Artihkal lea boarásmuvvan.',
+    references: 'Referanser',
   },
   competenceGoals: {
     competenceGoal: 'Gealbomihttomearri',

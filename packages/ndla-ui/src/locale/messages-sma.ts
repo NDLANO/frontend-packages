@@ -478,6 +478,7 @@ const messages = {
       onlyTeacher: 'Daate vierhtie ajve dïllesisnie lohkehtæjjide mah tjaangeme Feidine.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
+    references: 'Referanser',
   },
   competenceGoals: {
     competenceGoal: 'maahtoe-ulmie',

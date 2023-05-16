@@ -149,14 +149,14 @@ const ArticleByline = ({
       <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
         {licenseBox && (
           <AccordionItem value="rulesForUse">
-            <AccordionHeader>{t('article.useContent')}</AccordionHeader>
+            <AccordionHeader headingLevel="h2">{t('article.useContent')}</AccordionHeader>
             <AccordionContent>{licenseBox}</AccordionContent>
           </AccordionItem>
         )}
 
         {!!footnotes?.length && (
           <AccordionItem value={referencesAccordionId}>
-            <AccordionHeader>Referanser</AccordionHeader>
+            <AccordionHeader headingLevel="h2">{t('article.references')}</AccordionHeader>
             <AccordionContent forceMount>
               <ArticleFootNotes footNotes={footnotes} />
             </AccordionContent>

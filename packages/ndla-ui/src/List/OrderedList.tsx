@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { fonts, spacing, spacingUnit } from '@ndla/core';
+import { fonts, spacing } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
 
 export const generateListResets = () => {
@@ -23,14 +23,15 @@ export const generateListResets = () => {
 
 const StyledOl = styled.ol`
   margin-top: 0;
-  margin-left: 0;
+  margin-left: ${spacing.medium};
   ${fonts.sizes('18px', '29px')};
   list-style-type: none;
-  padding-left: ${spacing.normal};
+  padding-left: ${spacing.medium} !important;
 
   // Child ordered lists
   ol {
     padding-left: ${spacing.medium};
+    margin-left: 0;
   }
   // List item
   li {

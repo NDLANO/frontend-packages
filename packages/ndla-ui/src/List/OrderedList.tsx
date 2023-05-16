@@ -23,7 +23,7 @@ export const generateListResets = () => {
 
 const listSpacing = {
   xlarge: `${spacingUnit * 2.5}px`,
-  xxlarge: `${spacingUnit * 3}px`,
+  xxlarge: `${spacingUnit * 3.5}px`,
 };
 
 const StyledOl = styled.ol`
@@ -35,7 +35,7 @@ const StyledOl = styled.ol`
 
   // Child ordered lists
   ol {
-    padding-left: ${spacing.normal};
+    padding-left: ${spacing.medium};
   }
   // List item
   li {
@@ -54,7 +54,7 @@ const StyledOl = styled.ol`
         position: absolute;
         transform: translateX(-100%);
         content: counter(item, upper-alpha) '.';
-        padding-right: 0.25em;
+        padding-right: ${spacing.nsmall};
       }
 
       > ol[data-type='letters'] {
@@ -78,7 +78,7 @@ const StyledOl = styled.ol`
       &:before {
         position: absolute;
         transform: translateX(-100%);
-        padding-right: 0.25em;
+        padding-right: ${spacing.nsmall};
         content: counters(item, '.') '.';
       }
 

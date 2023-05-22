@@ -23,7 +23,7 @@ export default {
   },
   args: {
     columns: '2',
-    size: 'medium',
+    border: false,
   },
 } as Meta<typeof Grid>;
 

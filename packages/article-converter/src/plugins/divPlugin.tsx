@@ -49,17 +49,8 @@ export const divPlugin: PluginType = (node, opts) => {
   } else if (node.attribs['data-type'] === 'grid' && node.children.length) {
     const props = attributesToProps(node.attribs);
 
-    const isAllowedNumberColumns = (number: Number): number is 2 | 4 => number === 4 || number === 2;
-    const isAllowedSize = (size: string): size is 'large' | 'medium' | 'small' =>
-      size === 'large' || size === 'medium' || size === 'small';
-
     return (
-      <Grid
-        columns={
-          isAllowedNumberColumns(Number.parseInt(props['columns'])) ? (Number.parseInt(props['columns']) as 2 | 4) : 2
-        }
-        size={isAllowedSize(props['size']) ? props['size'] : 'medium'}
-      >
+      <Grid border={false} columns={props['columns'] as '2' | '4'}>
         {node.children}
       </Grid>
     );

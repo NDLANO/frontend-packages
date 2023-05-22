@@ -11,60 +11,40 @@ import { ReactNode } from 'react';
 
 interface Props {
   columns: '2' | '4';
+  border?: boolean;
   children?: ReactNode[];
 }
 
-const StyledGrid = styled.div`
-  display: flex;
-  flex-flow: row wrap;
+const GridContainer = styled.div`
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  grid-template-columns: 1fr;
 
-  left: ${spacing.xxsmall};
-  border: 1px solid ${colors.brand.light};
-  border-radius: 4px;
-  min-width: 10%;
-  &[data-columns='2'] {
-    > div,
-    > a {
-      flex: 0 0 49%;
-      border-right: 1px solid ${colors.brand.light};
-    }
-  }
-
-  &[data-columns='4'] {
-    > div,
-    > a {
-      flex: 0 0 49%;
-      border-right: 1px solid ${colors.brand.light};
-    }
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    grid-template-columns: 1fr 1fr;
   }
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     &[data-columns='4'] {
-      > div,
-      > a {
-        flex: 0 0 24%;
-      }
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
     &[data-columns='2'] {
-      > div,
-      > a {
-        flex: 0 0 49%;
-      }
+      grid-template-columns: 1fr 1fr;
     }
+  }
+
+  &[data-border='true'] {
+    border: 1px solid ${colors.brand.light};
+    border-radius: 4px;
   }
 `;
 
-const GridWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-const Grid = ({ columns, children }: Props) => {
+const Grid = ({ columns, border = false, children }: Props) => {
   return (
-    <GridWrapper>
-      <StyledGrid data-columns={columns}>{children}</StyledGrid>
-    </GridWrapper>
+    <GridContainer data-border={border} data-columns={columns}>
+      {children}
+    </GridContainer>
   );
 };
 

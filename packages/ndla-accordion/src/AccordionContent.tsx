@@ -42,22 +42,10 @@ const AnimationWrapper = styled(Content)`
   &[data-disable-animate='true'] {
     animation: none;
   }
-
-  &[data-wide='true'] {
-    display: flex;
-    flex-flow: column;
-
-    justify-content: center;
-    align-items: center;
-  }
 `;
 
 const StyledContent = styled.div`
   padding: ${spacing.normal};
-  &[data-wide='true'] {
-    width: 1200px !important;
-    left: 0 !important;
-  }
 `;
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -67,12 +55,10 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   wide?: boolean;
 }
 
-const AccordionContent = ({ disableAnimation, children, wide, ...rest }: Props) => {
+const AccordionContent = ({ disableAnimation, children, ...rest }: Props) => {
   return (
-    <AnimationWrapper data-wide={wide} data-disable-animate={disableAnimation}>
-      <StyledContent data-wide={wide} {...rest}>
-        {children}
-      </StyledContent>
+    <AnimationWrapper data-disable-animate={disableAnimation}>
+      <StyledContent {...rest}>{children}</StyledContent>
     </AnimationWrapper>
   );
 };

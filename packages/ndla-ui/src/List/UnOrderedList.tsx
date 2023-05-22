@@ -33,7 +33,7 @@ const StyledUl = styled.ul`
     padding-left: ${spacing.nsmall};
     margin-top: ${spacing.normal};
     p {
-      margin-bottom: ${spacing.medium} !important;
+      margin-bottom: ${spacing.normal} !important;
     }
   }
 

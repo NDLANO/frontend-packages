@@ -16,6 +16,7 @@ import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ConceptMetaData } from '@ndla/types-embed';
 import Tooltip from '@ndla/tooltip';
+import { COPYRIGHTED } from '@ndla/licenses';
 import { Notion as UINotion } from '../Notion';
 import { Figure } from '../Figure';
 import { NotionImage } from '../Notion/NotionImage';
@@ -382,7 +383,7 @@ export const BlockConcept = ({
         />
         {copyright ? (
           <EmbedByline copyright={copyright} bottomRounded topRounded type="concept">
-            {conceptHeartButton}
+            {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
           </EmbedByline>
         ) : (
           <BottomBorder />

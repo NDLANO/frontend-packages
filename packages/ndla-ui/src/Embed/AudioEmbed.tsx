@@ -7,6 +7,7 @@
  */
 
 import { AudioMetaData, ImageMetaData } from '@ndla/types-embed';
+import { COPYRIGHTED } from '@ndla/licenses';
 //@ts-ignore
 import { Remarkable } from 'remarkable';
 import AudioPlayer from '../AudioPlayer';
@@ -87,7 +88,9 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
         bottomRounded={!data.imageMeta}
         copyright={embed.data.copyright}
       >
-        {HeartButton && <HeartButton embed={embed} />}
+        {HeartButton && embed.data.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
+          <HeartButton embed={embed} />
+        )}
       </EmbedByline>
       {data.imageMeta && (
         <EmbedByline
@@ -98,7 +101,9 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
           bottomRounded
           copyright={data.imageMeta.copyright}
         >
-          {HeartButton && <HeartButton embed={imageMetaToMockEmbed(embed)} />}
+          {HeartButton && data.imageMeta.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
+            <HeartButton embed={imageMetaToMockEmbed(embed)} />
+          )}
         </EmbedByline>
       )}
     </Figure>

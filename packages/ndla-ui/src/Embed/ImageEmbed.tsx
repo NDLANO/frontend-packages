@@ -11,6 +11,7 @@ import { ImageEmbedData, ImageMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { MouseEventHandler, useState } from 'react';
 import { ExpandTwoArrows } from '@ndla/icons/action';
+import { COPYRIGHTED } from '@ndla/licenses';
 import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
@@ -152,7 +153,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton }: Props) => {
           bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ''}
         >
-          {HeartButton && <HeartButton embed={embed} />}
+          {HeartButton && data.copyright.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
         </EmbedByline>
       )}
     </Figure>

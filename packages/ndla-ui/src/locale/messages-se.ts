@@ -1141,7 +1141,7 @@ const messages = {
           unShare: 'Háliidat go loahpahit máhpa juogadeami?',
         },
         description: {
-          copy: 'Máŋge ja juoge dán liŋkka:',
+          copy: 'Trykk på lenke for å kopiere',
           private:
             'Go juogát máhpa ráhkadat liŋkka mii lea rabas buohkaide geas lea liŋka. Sáhtát rievdadit sisdoalu dahje loahpahit juogadeami go háliidat.',
           private2: 'Go juogadat máhpa juogát buot máhpa sisdoalu, oktan vuollemáhpaiguin ja resursaiguin',

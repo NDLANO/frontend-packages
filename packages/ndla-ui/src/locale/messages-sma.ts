@@ -1144,7 +1144,7 @@ const messages = {
           unShare: 'Vil du avslutte deling av denne mappen?',
         },
         description: {
-          copy: 'Kopier og del denne lenken:',
+          copy: 'Trykk på lenke for å kopiere',
           private:
             'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
           private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',

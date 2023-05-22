@@ -1141,7 +1141,7 @@ const messages = {
           unShare: 'Do you want to stop sharing this folder?',
         },
         description: {
-          copy: 'Copy and share this link:',
+          copy: 'Press the link to copy',
           private:
             'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
           private2:

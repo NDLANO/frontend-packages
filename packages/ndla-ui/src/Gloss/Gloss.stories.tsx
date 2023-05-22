@@ -19,28 +19,40 @@ const meta: Meta<typeof Gloss> = {
     ...defaultParameters,
   },
   args: {
-    sourceWord: {
-      word: 'angreifen',
-      language: 'de',
+    glossData: {
+      gloss: 'angreifen',
+      originalLanguage: 'de',
       traditionalChinese: '',
       pinyin: '',
-      wordClass: 'verb',
+      glossType: 'verb',
       norwegianTranslation: 'Å angripe',
-    },
-    audio: {
-      title: '',
-      src: '',
-    },
-    examples: [
-      {
-        exampleSentence: 'Hitler greift die Sowjetunion an',
-        translation: 'Hitler angriper Sovjetunionen',
+      examples: [
+        [
+          {
+            example: 'Hitler greift die Sowjetunion an',
+            language: 'de',
+          },
+          {
+            example: 'Hitler angriper Sovjetunionen',
+            language: 'nb',
+          },
+        ],
+        [
+          {
+            example: 'Ich greife an',
+            language: 'de',
+          },
+          {
+            example: 'Jeg griper an',
+            language: 'nb',
+          },
+        ],
+      ],
+      audio: {
+        title: '',
+        src: '',
       },
-      {
-        exampleSentence: 'Ich greife an',
-        translation: 'Jeg griper an',
-      },
-    ],
+    },
   },
 };
 
@@ -58,25 +70,34 @@ export const GlossStory: StoryObj<typeof Gloss> = {
 
 export const GlossChineseStory: StoryObj<typeof Gloss> = {
   args: {
-    sourceWord: {
-      word: '马红',
-      language: 'de',
+    glossData: {
+      gloss: '马红',
+      originalLanguage: 'zh',
       traditionalChinese: '馬紅',
       pinyin: 'Mǎ Hóng',
-      wordClass: 'Egn',
+      glossType: 'Egn',
       norwegianTranslation: 'Ma Hong',
-    },
-    audio: {
-      title: 'Spill av lyd',
-      src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
-    },
-    examples: [
-      {
-        exampleSentence: '我叫马红',
-        exampleSentencePinyin: 'Wǒ jiào Mǎ Hóng.',
-        translation: 'Jeg heter ma hong',
+      examples: [
+        [
+          {
+            example: '我叫马红',
+            language: 'zh',
+          },
+          {
+            example: 'wo jiao ma hong',
+            language: 'pinyin',
+          },
+          {
+            example: 'Jeg heter ma hong',
+            language: 'nb',
+          },
+        ],
+      ],
+      audio: {
+        title: 'Spill av lyd',
+        src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
       },
-    ],
+    },
   },
   render: function Render(args) {
     return (

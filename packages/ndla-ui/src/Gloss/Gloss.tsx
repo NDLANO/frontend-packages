@@ -16,24 +16,23 @@ import AccordionHeader from '@ndla/accordion/src/AccordionHeader';
 import AccordionContent from '@ndla/accordion/src/AccordionContent';
 
 interface Example {
-  exampleSentence: string;
-  exampleSentencePinyin?: string;
-  translation: string;
+  example: string;
+  language: string;
 }
 export interface Props {
-  sourceWord: {
-    word: string;
-    language: string;
+  glossData: {
+    gloss: string;
+    originalLanguage: string;
     traditionalChinese?: string;
     pinyin?: string;
-    wordClass?: string;
+    glossType?: string;
     norwegianTranslation?: string;
+    examples?: Example[][];
+    audio: {
+      title: string;
+      src?: string;
+    };
   };
-  audio: {
-    title: string;
-    src?: string;
-  };
-  examples?: Example[];
 }
 
 const Container = styled.div`
@@ -46,18 +45,18 @@ const Container = styled.div`
   margin-bottom: ${spacing.xsmall};
 `;
 
-const WordSoundWrapper = styled.div`
+const GlossSoundWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 `;
 
-const WordContainer = styled.div`
+const GlossContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 
-const SourceSpan = styled.span`
+const GlossSpan = styled.span`
   font-weight: 700;
   padding-right: ${spacing.nsmall};
 `;
@@ -70,13 +69,13 @@ const PinyinSpan = styled.span`
   padding-right: ${spacing.nsmall};
 `;
 
-const WordClassSpan = styled.span`
+const GlossTypeSpan = styled.span`
   padding-right: ${spacing.nsmall};
   margin-bottom: 20px;
   font-style: italic;
 `;
 
-const ExampleAccordianHeader = styled(AccordionHeader)`
+const ExampleHeader = styled(AccordionHeader)`
   background-color: #f7fafd;
 `;
 
@@ -97,38 +96,38 @@ const ExampleText = styled.span`
   padding: ${spacing.small} ${spacing.normal};
 `;
 
-const ExampleTextTranslated = styled.span`
+const TranslatedText = styled.span`
   border-bottom: 1px solid ${colors.brand.lighter};
   padding: ${spacing.small} ${spacing.normal};
 `;
 
-const Gloss = ({ sourceWord, audio, examples }: Props) => {
+const Gloss = ({ glossData }: Props) => {
   return (
     <>
       <Container>
-        <WordSoundWrapper>
-          <WordContainer>
-            <SourceSpan>{sourceWord.word}</SourceSpan>
-            {sourceWord.traditionalChinese && <TraditionalSpan>( {sourceWord.traditionalChinese} )</TraditionalSpan>}
-            {sourceWord.pinyin && <PinyinSpan>{sourceWord.pinyin}</PinyinSpan>}
-            {sourceWord.wordClass && <WordClassSpan>{sourceWord.wordClass}</WordClassSpan>}
-          </WordContainer>
-          {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
-        </WordSoundWrapper>
-        {sourceWord.norwegianTranslation && <span>{sourceWord.norwegianTranslation}</span>}
+        <GlossSoundWrapper>
+          <GlossContainer>
+            <GlossSpan>{glossData.gloss}</GlossSpan>
+            {glossData.traditionalChinese && <TraditionalSpan>( {glossData.traditionalChinese} )</TraditionalSpan>}
+            {glossData.pinyin && <PinyinSpan>{glossData.pinyin}</PinyinSpan>}
+            {glossData.glossType && <GlossTypeSpan>{glossData.glossType}</GlossTypeSpan>}
+          </GlossContainer>
+          {glossData.audio.src && (
+            <SpeechControl src={glossData.audio.src} title={glossData.audio.title}></SpeechControl>
+          )}
+        </GlossSoundWrapper>
+        {glossData.norwegianTranslation && <span>{glossData.norwegianTranslation}</span>}
       </Container>
-      {examples && (
+      {glossData.examples && (
         <AccordionRoot type="single" collapsible>
           <AccordionItem value={'1'}>
-            <ExampleAccordianHeader>Eksempler</ExampleAccordianHeader>
+            <ExampleHeader>Eksempler</ExampleHeader>
             <AccordianContainer>
-              {examples.map((example) => (
+              {glossData.examples.map((example) => (
                 <ExampleContainer>
-                  <ExampleText>{example.exampleSentence}</ExampleText>
-                  {example.exampleSentencePinyin && (
-                    <ExampleTextTranslated>{example.exampleSentencePinyin}</ExampleTextTranslated>
-                  )}
-                  <ExampleTextTranslated>{example.translation}</ExampleTextTranslated>
+                  <ExampleText>{example[0].example}</ExampleText>
+                  <TranslatedText>{example[1].example}</TranslatedText>
+                  {example[2]?.example && <TranslatedText>{example[2].example}</TranslatedText>}
                 </ExampleContainer>
               ))}
             </AccordianContainer>

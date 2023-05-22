@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "37.0.3",
+  "version": "37.0.4",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/accordion": "^2.2.0",
+    "@ndla/accordion": "^2.2.1",
     "@ndla/article-scripts": "^3.0.17",
     "@ndla/button": "^10.1.0",
     "@ndla/carousel": "^3.1.0",

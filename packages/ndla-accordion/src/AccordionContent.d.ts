@@ -7,9 +7,13 @@
  */
 import { HTMLAttributes, ReactNode } from 'react';
 interface Props extends HTMLAttributes<HTMLDivElement> {
-    disableAnimation?: boolean;
-    children: ReactNode;
-    forceMount?: boolean;
+  disableAnimation?: boolean;
+  children: ReactNode;
+  forceMount?: boolean;
 }
-declare const AccordionContent: ({ disableAnimation, children, ...rest }: Props) => import("@emotion/react/jsx-runtime").JSX.Element;
+declare const AccordionContent: ({
+  disableAnimation,
+  children,
+  ...rest
+}: Props) => import('@emotion/react/jsx-runtime').JSX.Element;
 export default AccordionContent;

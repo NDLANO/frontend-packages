@@ -7,10 +7,10 @@
  */
 import { HTMLAttributes, ReactNode } from 'react';
 interface Props extends HTMLAttributes<HTMLDivElement> {
-    disabled?: boolean;
-    /** Unique id for state handling */
-    value: string;
-    children: ReactNode;
+  disabled?: boolean;
+  /** Unique id for state handling */
+  value: string;
+  children: ReactNode;
 }
-declare const AccordionItem: ({ children, ...rest }: Props) => import("@emotion/react/jsx-runtime").JSX.Element;
+declare const AccordionItem: ({ children, ...rest }: Props) => import('@emotion/react/jsx-runtime').JSX.Element;
 export default AccordionItem;

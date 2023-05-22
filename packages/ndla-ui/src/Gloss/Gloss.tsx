@@ -8,12 +8,9 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import SpeechControl from '../AudioPlayer/SpeechControl';
 import { colors, spacing, misc } from '@ndla/core';
-import AccordionRoot from '@ndla/accordion/src/AccordionRoot';
-import AccordionItem from '@ndla/accordion/src/AccordionItem';
-import AccordionHeader from '@ndla/accordion/src/AccordionHeader';
-import AccordionContent from '@ndla/accordion/src/AccordionContent';
+import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
+import SpeechControl from '../AudioPlayer/SpeechControl';
 
 interface Example {
   example: string;
@@ -123,8 +120,8 @@ const Gloss = ({ glossData }: Props) => {
           <AccordionItem value={'1'}>
             <ExampleHeader>Eksempler</ExampleHeader>
             <AccordianContainer>
-              {glossData.examples.map((example) => (
-                <ExampleContainer>
+              {glossData.examples.map((example, index) => (
+                <ExampleContainer key={index}>
                   <ExampleText>{example[0].example}</ExampleText>
                   <TranslatedText>{example[1].example}</TranslatedText>
                   {example[2]?.example && <TranslatedText>{example[2].example}</TranslatedText>}

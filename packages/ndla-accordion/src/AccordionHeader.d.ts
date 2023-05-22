@@ -8,8 +8,10 @@
 import { SerializedStyles } from '@emotion/react';
 import { HTMLAttributes, ReactNode } from 'react';
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-    indicator?: ReactNode;
-    headerCSS?: SerializedStyles;
+  indicator?: ReactNode;
+  headerCSS?: SerializedStyles;
 }
-declare const AccordionHeader: import("react").ForwardRefExoticComponent<Props & import("react").RefAttributes<HTMLButtonElement>>;
+declare const AccordionHeader: import('react').ForwardRefExoticComponent<
+  Props & import('react').RefAttributes<HTMLButtonElement>
+>;
 export default AccordionHeader;

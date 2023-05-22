@@ -7,19 +7,22 @@
  */
 import { HTMLAttributes } from 'react';
 interface SingleProps extends HTMLAttributes<HTMLDivElement> {
-    type: 'single';
-    collapsible?: boolean;
-    value?: string;
-    defaultValue?: string;
-    onValueChange?: (value: string) => void;
-    disabled?: boolean;
+  type: 'single';
+  collapsible?: boolean;
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  disabled?: boolean;
 }
 interface MultipleProps extends HTMLAttributes<HTMLDivElement> {
-    type: 'multiple';
-    value?: string[];
-    defaultValue?: string[];
-    onValueChange?: (value: string[]) => void;
-    disabled?: boolean;
+  type: 'multiple';
+  value?: string[];
+  defaultValue?: string[];
+  onValueChange?: (value: string[]) => void;
+  disabled?: boolean;
 }
-declare const AccordionRoot: ({ children, ...rest }: SingleProps | MultipleProps) => import("@emotion/react/jsx-runtime").JSX.Element;
+declare const AccordionRoot: ({
+  children,
+  ...rest
+}: SingleProps | MultipleProps) => import('@emotion/react/jsx-runtime').JSX.Element;
 export default AccordionRoot;

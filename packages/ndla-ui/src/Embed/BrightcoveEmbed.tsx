@@ -10,6 +10,7 @@ import sortBy from 'lodash/sortBy';
 import isNumber from 'lodash/isNumber';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
+import { COPYRIGHTED } from '@ndla/licenses';
 import { useEffect, useRef, useState } from 'react';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
@@ -125,7 +126,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
             {t(`figure.button.${!showOriginalVideo ? 'original' : 'alternative'}`)}
           </LinkedVideoButton>
         )}
-        {HeartButton && <HeartButton embed={embed} />}
+        {HeartButton && data.copyright?.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
       </EmbedByline>
     </Figure>
   );

@@ -1190,7 +1190,7 @@ const messages = {
       drawerButton: 'Čájet máhpaid ja resurssaid',
       drawerTitle: 'Máhpat ja resurssat',
       learningpathUnsupported:
-        'Oahppanbálgát eai sáhte njuolga čájehuvvot juogaduvvon máhpain. Jus deaddilat liŋkka navigerenfálus gurut bealde, rahpasa bálggis ođđa siiddus.',
+        'Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
         all: 'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.\n\nSáhtát bláđet artihkkaliid fálu vehkiin.\n\nJus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
         info1:

@@ -1187,7 +1187,7 @@ const messages = {
       info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
       firstShared: 'Mappa ble delt første gang {{date}}',
       learningpathUnsupported:
-        'Læringsstier kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
+        'Læringsstier og tverrfaglige caser kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
       drawerButton: 'Vis mapper og ressurser',
       drawerTitle: 'Mapper og ressurser',
       description: {

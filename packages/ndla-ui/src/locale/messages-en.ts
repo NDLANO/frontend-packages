@@ -1141,7 +1141,7 @@ const messages = {
           unShare: 'Do you want to stop sharing this folder?',
         },
         description: {
-          copy: 'Copy and share this link:',
+          copy: 'Press the link to copy',
           private:
             'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
           private2:
@@ -1190,7 +1190,7 @@ const messages = {
       info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
       firstShared: 'The folder was shared for the first time {{date}}',
       learningpathUnsupported:
-        'Learning paths cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
+        'Learning paths and multidisciplinary cases cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
       drawerButton: 'Show folders and resources',
       drawerTitle: 'Folders and resources',
       description: {

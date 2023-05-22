@@ -939,7 +939,7 @@ const messages = {
   frontpageMultidisciplinarySubject: {
     heading: 'Tverrfaglege tema',
     text: 'Dei tre tverrfaglege temaa i læreplanverket tek utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
-    linkText: 'Sjå casar for tverrfaglege tema',
+    linkText: 'Sjå caser for tverrfaglege tema',
     publicHealthTopic: 'Folkehelse og livsmeistring',
     democracyTopic: 'Demokrati og medborgarskap',
     sustainableTopic: 'Bærekraftig utvikling',
@@ -1140,7 +1140,7 @@ const messages = {
           unShare: 'Vil du avslutte deling av denne mappa?',
         },
         description: {
-          copy: 'Kopier og del denne lenka:',
+          copy: 'Trykk på lenke for å kopiere',
           private:
             'Når du deler ei mappe, lagar du ei lenke som er open for alle som har lenka. Du kan endre innhaldet eller avslutte delinga når du ønsker det.',
           private2: 'Når du deler ei mappe deler du alt innhaldet i mappa, inkludert undermapper og ressursar',
@@ -1189,7 +1189,7 @@ const messages = {
       drawerButton: 'Vis mapper og ressursar',
       drawerTitle: 'Mapper og ressursar',
       learningpathUnsupported:
-        'Læringsstiar kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+        'Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
         all: 'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.\n\nDu kan bla i artiklane ved å bruke menyen.\n\nDersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
         info1:

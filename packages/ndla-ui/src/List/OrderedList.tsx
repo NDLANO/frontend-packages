@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { fonts, spacing, spacingUnit } from '@ndla/core';
+import { fonts, spacing } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
 
 export const generateListResets = () => {
@@ -21,24 +21,25 @@ export const generateListResets = () => {
   return styles;
 };
 
-const listSpacing = {
-  xlarge: `${spacingUnit * 2.5}px`,
-  xxlarge: `${spacingUnit * 3}px`,
-};
-
 const StyledOl = styled.ol`
   margin-top: 0;
-  margin-left: 0;
+  margin-left: ${spacing.medium};
   ${fonts.sizes('18px', '29px')};
   list-style-type: none;
+  padding-left: ${spacing.medium} !important;
 
   // Child ordered lists
   ol {
-    padding-left: ${spacing.normal};
+    padding-left: ${spacing.medium};
+    margin-left: 0;
   }
   // List item
   li {
     margin-top: ${spacing.normal};
+
+    p {
+      margin-bottom: ${spacing.normal} !important;
+    }
   }
 
   &[data-type='letters'] {
@@ -49,7 +50,7 @@ const StyledOl = styled.ol`
         position: absolute;
         transform: translateX(-100%);
         content: counter(item, upper-alpha) '.';
-        padding-right: 0.25em;
+        padding-right: ${spacing.nsmall};
       }
 
       > ol[data-type='letters'] {
@@ -57,7 +58,6 @@ const StyledOl = styled.ol`
           content: counter(item, lower-alpha) '.';
         }
         ol[data-type='letters'] {
-          padding-left: ${spacing.normal};
           > li:before {
             content: counter(item, lower-roman) '.';
           }
@@ -73,20 +73,19 @@ const StyledOl = styled.ol`
       &:before {
         position: absolute;
         transform: translateX(-100%);
-        padding-right: 0.25em;
         content: counters(item, '.') '.';
+        padding-right: ${spacing.nsmall};
       }
 
       > ol:not([data-type='letters']) {
-        padding-left: ${spacing.medium};
         > li {
+          padding-left: ${spacing.nsmall};
           > ol:not([data-type='letters']) {
-            padding-left: ${spacing.large};
             > li {
+              padding-left: ${spacing.medium};
               > ol:not([data-type='letters']) {
-                padding-left: ${listSpacing.xlarge};
-                ol:not([data-type='letters']) {
-                  padding-left: ${listSpacing.xxlarge};
+                > li {
+                  padding-left: ${spacing.large};
                 }
               }
             }

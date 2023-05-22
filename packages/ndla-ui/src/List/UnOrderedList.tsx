@@ -12,6 +12,8 @@ import { forwardRef, HTMLAttributes } from 'react';
 import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
+  padding-left: ${spacing.small} !important;
+  margin-left: ${spacing.medium} !important;
   > li {
     ::marker {
       color: ${colors.brand.secondary};
@@ -19,15 +21,20 @@ const StyledUl = styled.ul`
   }
   ul {
     list-style-image: none;
-    padding-left: ${spacing.mediumlarge};
+    padding-left: ${spacing.small};
+
+    margin-left: 0 !important;
   }
   margin-top: 0;
-  margin-left: 0;
   ${fonts.sizes('18px', '29px')};
 
   // List item
   li {
+    padding-left: ${spacing.nsmall};
     margin-top: ${spacing.normal};
+    p {
+      margin-bottom: ${spacing.normal} !important;
+    }
   }
 
   // Child unordered lists

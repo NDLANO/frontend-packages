@@ -12,22 +12,23 @@ import { forwardRef, HTMLAttributes } from 'react';
 import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
-  padding-left: ${spacing.small} !important;
-  margin-left: ${spacing.medium} !important;
+  padding-left: ${spacing.nsmall} !important;
+  margin-left: ${spacing.normal} !important;
+  margin-top: 0;
+  ${fonts.sizes('18px', '29px')};
+
+  ul {
+    list-style-image: none;
+    padding-left: ${spacing.nsmall};
+
+    margin-left: 0 !important;
+  }
+
   > li {
     ::marker {
       color: ${colors.brand.secondary};
     }
   }
-  ul {
-    list-style-image: none;
-    padding-left: ${spacing.small};
-
-    margin-left: 0 !important;
-  }
-  margin-top: 0;
-  ${fonts.sizes('18px', '29px')};
-
   // List item
   li {
     padding-left: ${spacing.nsmall};
@@ -37,10 +38,6 @@ const StyledUl = styled.ul`
     }
   }
 
-  // Child unordered lists
-  ul {
-    padding-left: ${spacing.nsmall};
-  }
   // List reset classes
   ${generateListResets()}
 `;

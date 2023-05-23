@@ -23,14 +23,14 @@ export const generateListResets = () => {
 
 const StyledOl = styled.ol`
   margin-top: 0;
-  margin-left: ${spacing.medium};
+  margin-left: ${spacing.normal};
   ${fonts.sizes('18px', '29px')};
   list-style-type: none;
-  padding-left: ${spacing.medium} !important;
+  padding-left: ${spacing.normal} !important;
 
   // Child ordered lists
   ol {
-    padding-left: ${spacing.medium};
+    padding-left: ${spacing.normal};
     margin-left: 0;
   }
   // List item

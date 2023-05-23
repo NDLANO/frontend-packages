@@ -47,10 +47,10 @@ export const divPlugin: PluginType = (node, opts) => {
       </div>
     );
   } else if (node.attribs['data-type'] === 'grid' && node.children.length) {
-    const props = attributesToProps(node.attribs);
+    const columns = attributesToProps(node.attribs)['columns'] as '2' | '4';
 
     return (
-      <Grid border={false} columns={props['columns'] as '2' | '4'}>
+      <Grid border={false} columns={columns}>
         {node.children}
       </Grid>
     );

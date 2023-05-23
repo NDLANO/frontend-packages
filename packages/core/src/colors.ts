@@ -136,6 +136,7 @@ const colors = {
     darker: '#ccc',
     backgroundGray: brandGreyLightest,
     grayDark: '#e4e4e4',
+    lightBlue: '#f7fafd',
   },
 };
 

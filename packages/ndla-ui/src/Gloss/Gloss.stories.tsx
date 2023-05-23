@@ -19,13 +19,13 @@ const meta: Meta<typeof Gloss> = {
     ...defaultParameters,
   },
   args: {
+    title: {
+      title: 'angreifen',
+      language: 'de',
+    },
     glossData: {
-      gloss: 'angreifen',
-      originalLanguage: 'de',
-      traditionalChinese: '',
-      pinyin: '',
       glossType: 'verb',
-      norwegianTranslation: 'Å angripe',
+      originalLanguage: 'de',
       examples: [
         [
           {
@@ -48,10 +48,10 @@ const meta: Meta<typeof Gloss> = {
           },
         ],
       ],
-      audio: {
-        title: '',
-        src: '',
-      },
+    },
+    audio: {
+      title: '',
+      src: '',
     },
   },
 };
@@ -70,13 +70,23 @@ export const GlossStory: StoryObj<typeof Gloss> = {
 
 export const GlossChineseStory: StoryObj<typeof Gloss> = {
   args: {
+    title: {
+      title: '马红',
+      language: 'zh',
+    },
     glossData: {
-      gloss: '马红',
-      originalLanguage: 'zh',
-      traditionalChinese: '馬紅',
-      pinyin: 'Mǎ Hóng',
       glossType: 'Egn',
-      norwegianTranslation: 'Ma Hong',
+      alternatives: [
+        {
+          alternative: '(馬紅)',
+          language: 'zh-CHT',
+        },
+        {
+          alternative: 'Mǎ Hóng',
+          language: 'pny',
+        },
+      ],
+      originalLanguage: 'zh',
       examples: [
         [
           {
@@ -93,10 +103,10 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
           },
         ],
       ],
-      audio: {
-        title: 'Spill av lyd',
-        src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
-      },
+    },
+    audio: {
+      title: 'Spill av lyd',
+      src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
     },
   },
   render: function Render(args) {

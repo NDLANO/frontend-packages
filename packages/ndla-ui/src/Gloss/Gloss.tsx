@@ -16,33 +16,39 @@ interface Example {
   example: string;
   language: string;
 }
+
+interface Alternative {
+  alternative: string;
+  language: string;
+}
 export interface Props {
+  title: {
+    title: string;
+    language: string;
+  };
   glossData: {
-    gloss: string;
-    originalLanguage: string;
-    traditionalChinese?: string;
-    pinyin?: string;
     glossType?: string;
-    norwegianTranslation?: string;
+    alternatives?: Alternative[];
+    originalLanguage: string;
     examples?: Example[][];
-    audio: {
-      title: string;
-      src?: string;
-    };
+  };
+  audio: {
+    title: string;
+    src?: string;
   };
 }
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #f7fafd; //Denne må byttes, ny farge er ikke i color variablene
+  background-color: ${colors.background.lightBlue};
   padding: ${spacing.nsmall} ${spacing.normal};
   border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   margin-bottom: ${spacing.xsmall};
 `;
 
-const GlossSoundWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -58,11 +64,7 @@ const GlossSpan = styled.span`
   padding-right: ${spacing.nsmall};
 `;
 
-const TraditionalSpan = styled.span`
-  padding-right: ${spacing.nsmall};
-`;
-
-const PinyinSpan = styled.span`
+const AlternativeSpan = styled.span`
   padding-right: ${spacing.nsmall};
 `;
 
@@ -73,7 +75,7 @@ const GlossTypeSpan = styled.span`
 `;
 
 const ExampleHeader = styled(AccordionHeader)`
-  background-color: #f7fafd;
+  background-color: ${colors.background.lightBlue};
 `;
 
 const AccordianContainer = styled(AccordionContent)`
@@ -88,7 +90,7 @@ const ExampleContainer = styled.div`
 const ExampleText = styled.span`
   color: ${colors.brand.dark};
   font-weight: 700;
-  background-color: #f7fafd;
+  background-color: ${colors.background.lightBlue};
   border-bottom: 1px solid ${colors.brand.lighter};
   padding: ${spacing.small} ${spacing.normal};
 `;
@@ -98,22 +100,22 @@ const TranslatedText = styled.span`
   padding: ${spacing.small} ${spacing.normal};
 `;
 
-const Gloss = ({ glossData }: Props) => {
+const Gloss = ({ title, glossData, audio }: Props) => {
   return (
     <>
       <Container>
-        <GlossSoundWrapper>
+        <Wrapper>
           <GlossContainer>
-            <GlossSpan>{glossData.gloss}</GlossSpan>
-            {glossData.traditionalChinese && <TraditionalSpan>( {glossData.traditionalChinese} )</TraditionalSpan>}
-            {glossData.pinyin && <PinyinSpan>{glossData.pinyin}</PinyinSpan>}
+            <GlossSpan>{title.title}</GlossSpan>
+            {glossData.alternatives &&
+              glossData.alternatives.map((alternative, index) => (
+                <AlternativeSpan key={index}>{alternative.alternative}</AlternativeSpan>
+              ))}
             {glossData.glossType && <GlossTypeSpan>{glossData.glossType}</GlossTypeSpan>}
           </GlossContainer>
-          {glossData.audio.src && (
-            <SpeechControl src={glossData.audio.src} title={glossData.audio.title}></SpeechControl>
-          )}
-        </GlossSoundWrapper>
-        {glossData.norwegianTranslation && <span>{glossData.norwegianTranslation}</span>}
+          {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+        </Wrapper>
+        <span>Translation here</span>
       </Container>
       {glossData.examples && (
         <AccordionRoot type="single" collapsible>

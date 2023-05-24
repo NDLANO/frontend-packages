@@ -17,9 +17,10 @@ interface Example {
   language: string;
 }
 
-interface Alternative {
-  alternative: string;
-  language: string;
+interface Alternatives {
+  traditionalChinese?: string;
+  pinyin?: string;
+  norwegianTranslation: string;
 }
 export interface Props {
   title: {
@@ -28,7 +29,7 @@ export interface Props {
   };
   glossData: {
     glossType?: string;
-    alternatives?: Alternative[];
+    alternatives: Alternatives;
     originalLanguage: string;
     examples?: Example[][];
   };
@@ -68,10 +69,14 @@ const AlternativeSpan = styled.span`
   padding-right: ${spacing.nsmall};
 `;
 
-const GlossTypeSpan = styled.span`
+const TypeSpan = styled.span`
   padding-right: ${spacing.nsmall};
   margin-bottom: 20px;
   font-style: italic;
+`;
+
+const AudioExample = styled.div`
+  padding-bottom: ${spacing.normal};
 `;
 
 const ExampleHeader = styled(AccordionHeader)`
@@ -107,15 +112,17 @@ const Gloss = ({ title, glossData, audio }: Props) => {
         <Wrapper>
           <GlossContainer>
             <GlossSpan>{title.title}</GlossSpan>
-            {glossData.alternatives &&
-              glossData.alternatives.map((alternative, index) => (
-                <AlternativeSpan key={index}>{alternative.alternative}</AlternativeSpan>
-              ))}
-            {glossData.glossType && <GlossTypeSpan>{glossData.glossType}</GlossTypeSpan>}
+            {glossData.alternatives.traditionalChinese && (
+              <AlternativeSpan>{glossData.alternatives.traditionalChinese}</AlternativeSpan>
+            )}
+            {glossData.alternatives.pinyin && <AlternativeSpan>{glossData.alternatives.pinyin}</AlternativeSpan>}
+            {glossData.glossType && <TypeSpan>{glossData.glossType}</TypeSpan>}
           </GlossContainer>
-          {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+          <AudioExample>
+            {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+          </AudioExample>
         </Wrapper>
-        <span>Translation here</span>
+        {glossData.alternatives.norwegianTranslation && <span>{glossData.alternatives.norwegianTranslation}</span>}
       </Container>
       {glossData.examples && (
         <AccordionRoot type="single" collapsible>

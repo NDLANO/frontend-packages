@@ -25,6 +25,9 @@ const meta: Meta<typeof Gloss> = {
     },
     glossData: {
       glossType: 'verb',
+      alternatives: {
+        norwegianTranslation: 'Å angripe',
+      },
       originalLanguage: 'de',
       examples: [
         [
@@ -76,16 +79,11 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
     },
     glossData: {
       glossType: 'Egn',
-      alternatives: [
-        {
-          alternative: '(馬紅)',
-          language: 'zh-CHT',
-        },
-        {
-          alternative: 'Mǎ Hóng',
-          language: 'pny',
-        },
-      ],
+      alternatives: {
+        traditionalChinese: '(馬紅)',
+        pinyin: 'Mǎ Hóng',
+        norwegianTranslation: 'Ma Hong',
+      },
       originalLanguage: 'zh',
       examples: [
         [

@@ -17,20 +17,20 @@ interface Props {
 
 const GridContainer = styled.div`
   display: grid;
-  gap: 10px;
-  width: 100%;
-  grid-template-columns: 1fr;
+  width: fit-content;
+  grid-template-columns: auto;
+  justify-content: center;
 
   ${mq.range({ from: breakpoints.mobileWide })} {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
   }
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     &[data-columns='4'] {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: auto auto auto auto;
     }
     &[data-columns='2'] {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: auto auto;
     }
   }
 

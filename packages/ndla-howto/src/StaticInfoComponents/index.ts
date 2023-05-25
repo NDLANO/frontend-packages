@@ -295,4 +295,19 @@ export const stories: Record<string, Story> = {
       },
     ],
   },
+  BlogPost: {
+    title: 'Blogginnlegg',
+    lead: 'Legg til et blogginnlegg',
+    body: [{ type: 'text', content: 'Lim inn lenke til artikkel og legg til tittel for å generere en bloggpost.' }],
+  },
+  ContactBlock: {
+    title: 'Kontaktblokk',
+    lead: 'Legg til kontaktblokk',
+    body: [{ type: 'text', content: 'Lag en kontaktblokk ved å legge til tittel, beskrivelse, bilde.' }],
+  },
+  GridBlock: {
+    title: 'Grid',
+    lead: 'Legg til grid',
+    body: [{ type: 'text', content: 'Gjør det mulig å plassere embeds i grid på enten 2x2 eller 1x4.' }],
+  },
 };

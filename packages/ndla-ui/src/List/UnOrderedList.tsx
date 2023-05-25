@@ -15,7 +15,7 @@ const StyledUl = styled.ul`
   padding-left: ${spacing.nsmall} !important;
   margin-left: ${spacing.normal} !important;
   margin-top: 0;
-  ${fonts.sizes('18px', '29px')};
+  ${fonts.sizes('20px', '29px')};
 
   ul {
     list-style-image: none;
@@ -32,9 +32,9 @@ const StyledUl = styled.ul`
   // List item
   li {
     padding-left: ${spacing.nsmall};
-    margin-top: ${spacing.normal};
+    margin-top: ${spacing.nsmall};
     p {
-      margin-bottom: ${spacing.normal} !important;
+      margin-bottom: ${spacing.nsmall} !important;
     }
   }
 

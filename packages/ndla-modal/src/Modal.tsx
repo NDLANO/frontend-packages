@@ -57,14 +57,14 @@ const panelStyle = css`
   padding-top: env(safe-area-inset-top);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
+  ${positionStyles};
+  ${sizeStyles};
   &[data-expands='true'] {
     width: unset;
     height: unset;
     max-width: 100%;
     max-height: 100%;
   }
-  ${positionStyles};
-  ${sizeStyles};
   ${mq.range({ until: breakpoints.tablet })} {
     min-width: 100%;
     min-height: 100%;

@@ -20,7 +20,7 @@ const GridContainer = styled.div`
   width: fit-content;
   grid-template-columns: auto;
   justify-content: center;
-
+  gap: ${spacing.xxsmall};
   ${mq.range({ from: breakpoints.mobileWide })} {
     grid-template-columns: auto auto;
   }

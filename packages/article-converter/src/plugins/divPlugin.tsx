@@ -46,12 +46,13 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(node.children, opts)}
       </div>
     );
-  } else if (node.attribs['data-type'] === 'grid' && node.children.length) {
-    const columns = attributesToProps(node.attribs)['columns'] as '2' | '4';
-
+  } else if (node.attribs['data-type'] === 'grid' && node.children.length > 0) {
+    const props = attributesToProps(node.attribs);
+    const columns = props['data-columns'] as '2' | '4';
     return (
-      <Grid border={false} columns={columns}>
-        {node.children}
+      <Grid border={false} columns={columns} {...props}>
+        {/* @ts-ignore */}
+        {domToReact(node.children, opts)}
       </Grid>
     );
   }

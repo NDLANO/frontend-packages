@@ -1,9 +1,9 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
+import { ModalBody, ModalHeader, ModalCloseButton, Modal, ModalTitle } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { Switch } from '@ndla/switch';
 import { LearningPathQuiz } from '@ndla/icons/contentType';
@@ -170,8 +170,6 @@ const ResourcesTopicTitle = ({
     heading = <TopicTitle css={topicTitleSingleStyle}>{messages.label}</TopicTitle>;
   }
 
-  const tooltipId = 'popupDialogTooltip';
-
   return (
     <TopicTitleWrapper css={invertedStyle ? invertedTopicTitleWrapperStyle : undefined}>
       <div>
@@ -188,15 +186,13 @@ const ResourcesTopicTitle = ({
             css={invertedStyle ? invertedSwitchCSS : switchCSS}
           />
           <Modal
-            labelledBy={tooltipId}
-            narrow
             wrapperFunctionForButton={(activateButton: ReactNode) => (
               <TooltipWrapper>
                 <Tooltip tooltip={t('resource.dialogTooltip')}>{activateButton}</Tooltip>
               </TooltipWrapper>
             )}
             activateButton={
-              <TooltipButton id={tooltipId} aria-label={t('resource.dialogTooltip')}>
+              <TooltipButton aria-label={t('resource.dialogTooltip')}>
                 <HelpIcon invertedStyle={invertedStyle} />
               </TooltipButton>
             }
@@ -204,10 +200,10 @@ const ResourcesTopicTitle = ({
             {(onClose: () => void) => (
               <>
                 <ModalHeader>
+                  <ModalTitle>{t('resource.dialogHeading')}</ModalTitle>
                   <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
                 </ModalHeader>
                 <ModalBody>
-                  <h1>{t('resource.dialogHeading')}</h1>
                   <hr />
                   <p>{t('resource.dialogText1')}</p>
                   <p>{t('resource.dialogText2')}</p>

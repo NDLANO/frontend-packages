@@ -19,7 +19,6 @@ import {
   SearchResultSleeve,
   MastheadSearchModal,
   SearchFieldForm,
-  MastheadAuthModal,
   HeaderBreadcrumb,
 } from '@ndla/ui';
 import { Menu } from '@ndla/icons/common';
@@ -28,8 +27,6 @@ import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults } from '../../dummydata';
-
-import { feideUserLaerer } from './feideUser';
 
 const BreadcrumbWrapper = styled.div`
   ${mq.range({ until: breakpoints.tablet })} {
@@ -123,28 +120,8 @@ class MastheadWithTopicMenu extends Component {
   };
 
   render() {
-    const {
-      skipToMainContentId,
-      ndlaFilm,
-      beta,
-      betaInfoContent,
-      hideMenuButton,
-      breadcrumbItems,
-      isAuthed,
-      t,
-      i18n,
-      messages,
-    } = this.props;
-
-    const authedProps = isAuthed
-      ? {
-          isAuthenticated: true,
-          ...feideUserLaerer,
-          onAuthenticateClick: () => {},
-        }
-      : {
-          onAuthenticateClick: () => {},
-        };
+    const { skipToMainContentId, ndlaFilm, beta, betaInfoContent, hideMenuButton, breadcrumbItems, t, i18n, messages } =
+      this.props;
 
     return (
       <Masthead
@@ -176,7 +153,6 @@ class MastheadWithTopicMenu extends Component {
               onSelect={(lang) => i18n.changeLanguage(lang)}
             />
           </DisplayOnPageYOffset>
-          <MastheadAuthModal inverted={ndlaFilm} {...authedProps} />
           {this.renderSearchButtonView(true, ndlaFilm)}
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"

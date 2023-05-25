@@ -8,13 +8,13 @@
 
 import React, { useState } from 'react';
 import {
-  ModalHeaderV2,
+  ModalHeader,
   ModalAnimation,
   ModalCloseButton,
-  ModalV2,
   ModalPosition,
   ModalSize,
   ModalSizeType,
+  Modal,
 } from '@ndla/modal';
 import { FilterList } from '@ndla/ui';
 import { ButtonV2 } from '@ndla/button';
@@ -110,14 +110,14 @@ const ModalExample = () => {
           values={animation ? [animation] : []}
           onChange={(e: ModalAnimation[]) => setAnimation(e.pop()!)}
         />
-        <ModalV2 label="Modal" activateButton={<ButtonV2>Open</ButtonV2>} size={size} position={position}>
+        <Modal label="Modal" activateButton={<ButtonV2>Open</ButtonV2>} size={size} position={position}>
           {(close) => (
-            <ModalHeaderV2>
+            <ModalHeader>
               <h1>Tittel</h1>
               <ModalCloseButton onClick={close} />
-            </ModalHeaderV2>
+            </ModalHeader>
           )}
-        </ModalV2>
+        </Modal>
       </StoryBody>
     </>
   );

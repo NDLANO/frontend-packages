@@ -125,10 +125,10 @@ type Props = {
   contentTransformed?: boolean;
   locale: Locale;
   messageBoxLinks?: [];
-  competenceGoals?:
-    | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
-    | ReactNode
-    | null;
+  competenceGoals?: (inp: {
+    Dialog: ComponentType;
+    dialogProps: { isOpen: boolean; onClose: () => void };
+  }) => ReactNode;
   id: string;
   renderMarkdown: (text: string) => string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };

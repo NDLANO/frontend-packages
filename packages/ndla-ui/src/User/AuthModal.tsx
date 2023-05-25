@@ -6,10 +6,10 @@
  *
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import Modal, { ModalCloseButton } from '@ndla/modal';
+import { ModalCloseButton, Modal, ModalProps } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import { FeideText, LogIn, LogOut, HumanMaleBoard } from '@ndla/icons/common';
 import { fonts, spacing } from '@ndla/core';
@@ -52,17 +52,14 @@ const StyledButtonWrapper = styled.div`
   margin-top: ${spacing.normal};
 `;
 
-export type AuthModalProps = {
+export interface AuthModalProps extends Omit<ModalProps, 'children'> {
   isAuthenticated?: boolean;
   user?: FeideUserApiType;
   showGeneralMessage?: boolean;
   onAuthenticateClick: () => void;
   position?: 'top' | 'bottom';
-  activateButton?: ReactElement;
   children?: ReactNode;
-  isOpen?: boolean;
-  onClose?: () => void;
-};
+}
 
 const AuthModal = ({
   isAuthenticated,
@@ -70,21 +67,15 @@ const AuthModal = ({
   showGeneralMessage = true,
   onAuthenticateClick,
   position = 'top',
-  activateButton,
   children,
-  isOpen,
-  onClose,
+  ...modalProps
 }: AuthModalProps) => {
   const { t } = useTranslation();
   return (
     <Modal
-      backgroundColor="white"
-      activateButton={activateButton}
       position={position}
-      isOpen={isOpen}
-      onClose={onClose}
-      controllable={!activateButton}
-      label={isAuthenticated ? t('user.modal.isAuth') : t('user.modal.isNotAuth')}
+      {...(modalProps as ModalProps)}
+      aria-label={isAuthenticated ? t('user.modal.isAuth') : t('user.modal.isNotAuth')}
     >
       {(onClose: () => void) => (
         <StyledModalBody>

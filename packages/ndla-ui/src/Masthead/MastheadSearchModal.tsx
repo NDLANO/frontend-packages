@@ -1,5 +1,5 @@
 import React, { ReactChild, ReactChildren, ReactNode } from 'react';
-import Modal from '@ndla/modal';
+import { Modal } from '@ndla/modal';
 import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { isFunction } from '@ndla/util';
@@ -95,11 +95,12 @@ const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScr
   const { t } = useTranslation();
   return (
     <Modal
-      label={t('searchPage.searchFieldPlaceholder')}
-      backgroundColor="grey"
-      animation="slide-down"
+      aria-label={t('searchPage.searchFieldPlaceholder')}
+      position="top"
+      modalMargin="none"
+      animation="slideIn"
       animationDuration={200}
-      size="full-width"
+      size={{ width: 'full', height: 'normal' }}
       onClose={onSearchClose}
       css={modalStyles}
       activateButton={

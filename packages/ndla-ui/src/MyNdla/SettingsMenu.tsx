@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { isMobile, isTablet } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import { IconButtonV2, MenuItemProps, MenuButton, ButtonV2 } from '@ndla/button';
-import { Drawer, ModalBody, ModalCloseButton, ModalHeaderV2 } from '@ndla/modal';
+import { Drawer, ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 
@@ -58,10 +58,10 @@ const SettingsMenu = ({ menuItems, children }: Props) => {
       >
         {(close) => (
           <>
-            <ModalHeaderV2>
+            <ModalHeader>
               <h1>{t('myNdla.settings')}</h1>
               <ModalCloseButton onClick={close} />
-            </ModalHeaderV2>
+            </ModalHeader>
             <StyledModalBody>
               {children?.(close)}
               {!!menuItems?.length && (

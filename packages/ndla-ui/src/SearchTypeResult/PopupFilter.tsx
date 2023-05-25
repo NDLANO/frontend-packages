@@ -8,8 +8,8 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { ModalCloseButton, ModalBody, Modal, ModalTitle } from '@ndla/modal';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import { ToggleItem } from '../Filter';
@@ -27,10 +27,6 @@ const ModalHeaderWrapper = styled.div`
   margin-bottom: ${spacing.normal};
 `;
 
-const ModalHeading = styled.h1`
-  ${fonts.sizes('22px', 1.2)};
-  margin: 0;
-`;
 const ModalContent = styled.div`
   max-width: 1040px;
   flex-grow: 1;
@@ -96,20 +92,19 @@ const PopupFilter = ({
   return (
     <Modal
       labelledBy={headingId}
-      controllable
-      backgroundColor="white"
+      controlled
       animation="subtle"
       animationDuration={50}
       onClose={onClose}
       isOpen={isOpen}
-      size="fullscreen"
+      size="full"
     >
       {() => (
         <ModalBody>
           <ModalWrapper>
             <ModalContent>
               <ModalHeaderWrapper>
-                <ModalHeading id={headingId}>{t('searchPage.searchFilterMessages.filterLabel')}</ModalHeading>
+                <ModalTitle>{t('searchPage.searchFilterMessages.filterLabel')}</ModalTitle>
                 <ModalCloseButton onClick={() => onClose()} title={t('searchPage.close')} />
               </ModalHeaderWrapper>
               {subjectCategories && programmes && (

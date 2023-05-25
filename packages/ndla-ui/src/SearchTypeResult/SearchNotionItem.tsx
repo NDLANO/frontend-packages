@@ -15,7 +15,7 @@ import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { ButtonV2 } from '@ndla/button';
 import { Play } from '@ndla/icons/common';
 import { ArrowExpand } from '@ndla/icons/editor';
-import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
+import { ModalCloseButton, ModalHeader, ModalBody, Modal } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
 import { joinArrayWithConjunction } from '@ndla/util';
 import { NotionMedia } from '../types';
@@ -157,8 +157,7 @@ const SearchNotionItem = ({
           }
           animation="subtle"
           animationDuration={50}
-          backgroundColor="white"
-          size="medium"
+          size="normal"
         >
           {(onClose: () => void) => (
             <>

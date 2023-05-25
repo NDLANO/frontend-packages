@@ -7,9 +7,8 @@
  */
 
 import { keyframes } from '@emotion/react';
-import { DialogContentProps } from '@reach/dialog';
-import { HTMLAttributes, ReactElement, ReactNode } from 'react';
-import { animations } from './animations';
+import { HTMLMotionProps } from 'framer-motion';
+import { ReactElement, ReactNode } from 'react';
 
 export type ModalSize = 'xsmall' | 'small' | 'normal' | 'large' | 'full';
 export type ModalSizeType = ModalSize | { width: ModalSize; height: ModalSize };
@@ -18,7 +17,7 @@ export type ModalMargin = 'none' | 'small';
 
 export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
-interface DialogProps extends DialogContentProps, Omit<HTMLAttributes<HTMLDivElement>, 'size'> {
+interface DialogProps extends Omit<HTMLMotionProps<'div'>, 'size'> {
   controlled?: boolean;
   animation?: ModalAnimation;
   animationDuration?: number;
@@ -51,4 +50,4 @@ export interface DirectionalAnimation extends Partial<Record<ModalPosition, Anim
   type: 'directional';
 }
 
-export type ModalAnimation = keyof typeof animations;
+export type ModalAnimation = 'fade' | 'zoom' | 'subtle' | 'slideIn';

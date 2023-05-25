@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import Modal, { ModalHeader, ModalCloseButton, ModalBody } from '@ndla/modal';
+import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle } from '@ndla/modal';
 import { mq, breakpoints, fonts, colors } from '@ndla/core';
 import { Explanation, NotionFlip } from '@ndla/icons/common';
 import { ConceptNotion } from '../Notion';
@@ -179,18 +179,17 @@ export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight
           </NotionsTrigger>
         }
         size="large"
-        backgroundColor="white"
       >
         {(onClose: () => void) => (
           <div>
-            <ModalHeader modifier="notions-modal-header no-padding">
+            <ModalHeader className="no-padding">
+              <ModalHeadingContainer>
+                <Explanation />
+                <ModalTitle>{t('article.notionsPrompt')}</ModalTitle>
+              </ModalHeadingContainer>
               <ModalCloseButton onClick={onClose} title="Lukk" />
             </ModalHeader>
             <ModalBody modifier="notions-modal-body no-padding">
-              <ModalHeadingContainer>
-                <Explanation />
-                <h1>{t('article.notionsPrompt')}</h1>
-              </ModalHeadingContainer>
               <NotionsContainer>
                 {notions.map((notion) => (
                   <ConceptNotion key={notion.id} concept={notion} type={type} />

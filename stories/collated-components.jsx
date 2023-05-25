@@ -45,7 +45,6 @@ import RelatedArticleListExample, {
 import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
-import ModalExample from './molecules/ModalExample';
 
 import Oops from '../images/oops.gif';
 import cecilie from '../images/cecilie.png';
@@ -472,19 +471,6 @@ storiesOf('Sammensatte moduler', module)
       </Content>
       <FooterExample />
     </PageContainer>
-  ))
-
-  .add('Modalboks (utdatert)', () => (
-    <div>
-      <StoryIntro title="Modalboks (utdatert)">
-        <p>
-          Utdatert. Se eksempelet "Modaler" under <b>Enkle komponenter</b>
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <ModalExample />
-      </StoryBody>
-    </div>
   ))
 
   .add('Oversettelse', () => (

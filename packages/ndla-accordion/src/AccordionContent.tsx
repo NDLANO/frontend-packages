@@ -52,7 +52,6 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   disableAnimation?: boolean;
   children: ReactNode;
   forceMount?: boolean;
-  wide?: boolean;
 }
 
 const AccordionContent = ({ disableAnimation, children, ...rest }: Props) => {

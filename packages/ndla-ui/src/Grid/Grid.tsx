@@ -1,15 +1,16 @@
 /**
- * Copyright (c) 2021-present, NDLA.
+ * Copyright (c) 2023-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
+
 import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ReactNode } from 'react';
 
-interface Props {
+export interface Props {
   columns: '2' | '4';
   border?: boolean;
   children?: ReactNode[];

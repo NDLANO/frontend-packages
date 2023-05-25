@@ -8,7 +8,7 @@
 
 import partition from 'lodash/partition';
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
-import { FileListV2, RelatedArticleListV2, Grid } from '@ndla/ui';
+import { FileListV2, RelatedArticleListV2, Grid, GridType } from '@ndla/ui';
 import { PluginType } from './types';
 
 export const divPlugin: PluginType = (node, opts) => {
@@ -48,7 +48,7 @@ export const divPlugin: PluginType = (node, opts) => {
     );
   } else if (node.attribs['data-type'] === 'grid' && node.children.length > 0) {
     const props = attributesToProps(node.attribs);
-    const columns = props['data-columns'] as '2' | '4';
+    const columns = props['data-columns'] as GridType['columns'];
     return (
       <Grid border={false} columns={columns} {...props}>
         {/* @ts-ignore */}

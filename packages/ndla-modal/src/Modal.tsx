@@ -126,6 +126,7 @@ const UncontrolledModal = ({ activateButton, wrapperFunctionForButton, ...rest }
 
 interface InternalModalProps extends Omit<ControlledProps, 'controlled'>, DialogProps {
   modalButton?: ReactNode;
+  controlled?: boolean;
 }
 
 const InternalModal = ({
@@ -139,6 +140,8 @@ const InternalModal = ({
   animationDuration = 400,
   animation = 'zoom',
   expands,
+  // This needs to be here in order to avoid passing it to the dom
+  controlled: _controlled,
   ...rest
 }: InternalModalProps) => {
   const { size, height, width }: Record<string, string> = useMemo(() => {

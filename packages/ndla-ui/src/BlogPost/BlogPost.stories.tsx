@@ -8,24 +8,8 @@
 
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import BlogPost from './BlogPost';
+import BlogPost, { Props } from './BlogPost';
 import { defaultParameters } from '../../../../stories/defaults';
-import { HeadingLevel } from '../types';
-
-interface Props {
-  title: {
-    title: string;
-    language: string;
-  };
-  author?: string;
-  url: string;
-  headingLevel?: HeadingLevel;
-  size?: 'normal' | 'large';
-  metaImage: {
-    url: string;
-    alt: string;
-  };
-}
 
 const args: Props = {
   title: { title: 'Min bloggpost', language: 'nb-no' },

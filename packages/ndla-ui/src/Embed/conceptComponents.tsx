@@ -14,6 +14,7 @@ import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { parseMarkdown } from '@ndla/util';
 import styled from '@emotion/styled';
 import { NotionDialogContent, NotionDialogText } from '@ndla/notion';
+import { COPYRIGHTED } from '@ndla/licenses';
 import { Copyright } from '../types';
 import ImageEmbed from './ImageEmbed';
 import BrightcoveEmbed from './BrightcoveEmbed';
@@ -202,7 +203,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
         </ContentPadding>
         {copyright && (
           <EmbedByline copyright={copyright} type="concept">
-            {conceptHeartButton}
+            {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
           </EmbedByline>
         )}
       </div>

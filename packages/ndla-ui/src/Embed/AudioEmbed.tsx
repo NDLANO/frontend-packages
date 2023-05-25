@@ -7,6 +7,7 @@
  */
 
 import { AudioMetaData, ImageMetaData } from '@ndla/types-embed';
+import { COPYRIGHTED } from '@ndla/licenses';
 //@ts-ignore
 import { Remarkable } from 'remarkable';
 import AudioPlayer from '../AudioPlayer';
@@ -62,8 +63,7 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
 
   const subtitle = data.series ? { title: data.series.title.title, url: `/podkast/${data.series.id}` } : undefined;
 
-  const textVersion = data.manuscript && renderMarkdown(data.manuscript.manuscript);
-  const description = renderMarkdown(data.podcastMeta?.introduction ?? '');
+  const textVersion = data.manuscript?.manuscript.length ? renderMarkdown(data.manuscript.manuscript) : undefined;
 
   const coverPhoto = data.podcastMeta?.coverPhoto;
 
@@ -74,7 +74,7 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
   return (
     <Figure id={figureId} type="full">
       <AudioPlayer
-        description={description}
+        description={data.podcastMeta?.introduction ?? ''}
         img={img}
         src={data.audioFile.url}
         textVersion={textVersion}
@@ -88,7 +88,9 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
         bottomRounded={!data.imageMeta}
         copyright={embed.data.copyright}
       >
-        {HeartButton && <HeartButton embed={embed} />}
+        {HeartButton && embed.data.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
+          <HeartButton embed={embed} />
+        )}
       </EmbedByline>
       {data.imageMeta && (
         <EmbedByline
@@ -99,7 +101,9 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
           bottomRounded
           copyright={data.imageMeta.copyright}
         >
-          {HeartButton && <HeartButton embed={imageMetaToMockEmbed(embed)} />}
+          {HeartButton && data.imageMeta.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
+            <HeartButton embed={imageMetaToMockEmbed(embed)} />
+          )}
         </EmbedByline>
       )}
     </Figure>

@@ -12,28 +12,32 @@ import { forwardRef, HTMLAttributes } from 'react';
 import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
+  padding-left: ${spacing.nsmall} !important;
+  margin-left: ${spacing.normal} !important;
+  margin-top: 0;
+  ${fonts.sizes('20px', '29px')};
+
+  ul {
+    list-style-image: none;
+    padding-left: ${spacing.nsmall};
+
+    margin-left: 0 !important;
+  }
+
   > li {
     ::marker {
       color: ${colors.brand.secondary};
     }
   }
-  ul {
-    list-style-image: none;
-    padding-left: ${spacing.mediumlarge};
-  }
-  margin-top: 0;
-  margin-left: 0;
-  ${fonts.sizes('18px', '29px')};
-
   // List item
   li {
-    margin-top: ${spacing.normal};
+    padding-left: ${spacing.nsmall};
+    margin-top: ${spacing.nsmall};
+    p {
+      margin-bottom: ${spacing.nsmall} !important;
+    }
   }
 
-  // Child unordered lists
-  ul {
-    padding-left: ${spacing.nsmall};
-  }
   // List reset classes
   ${generateListResets()}
 `;

@@ -477,6 +477,7 @@ const messages = {
       onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
+    references: 'Referanser',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -693,6 +694,12 @@ const messages = {
     'assessment-resources': 'Vurderingsressurs',
     topic: 'Emne',
     'multidisciplinary-topic': 'Tverrfaglig case',
+    image: 'Bilde',
+    concept: 'Forklaring',
+    audio: 'Lyd',
+    podcast: 'Podkast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Lukk',
@@ -989,6 +996,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Spill av',
     download: 'Last ned lydfil',
     reuse: 'Bruk lydfil',
     error: {
@@ -1006,6 +1014,7 @@ const messages = {
       close: 'Lukk tekstversjon',
     },
     readMoreDescriptionLabel: 'vis mer',
+    readLessDescriptionLabel: 'vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',
@@ -1131,7 +1140,7 @@ const messages = {
           unShare: 'Vil du avslutte deling av denne mappa?',
         },
         description: {
-          copy: 'Kopier og del denne lenka:',
+          copy: 'Trykk på lenke for å kopiere',
           private:
             'Når du deler ei mappe, lager du ei lenke som er åpen for alle som har lenka. Du kan endre innholdet eller avslutte delinga når du ønsker det. ',
           private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
@@ -1178,7 +1187,7 @@ const messages = {
       info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
       firstShared: 'Mappa ble delt første gang {{date}}',
       learningpathUnsupported:
-        'Læringsstier kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
+        'Læringsstier og tverrfaglige caser kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
       drawerButton: 'Vis mapper og ressurser',
       drawerTitle: 'Mapper og ressurser',
       description: {

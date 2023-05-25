@@ -478,6 +478,7 @@ const messages = {
       onlyTeacher: 'Dát resursa lea dušše olamuttus oahpaheddjiide geat leat Feide bokte sisaloggejuvvon.',
     },
     possiblyOutdated: 'Artihkal lea boarásmuvvan.',
+    references: 'Referanser',
   },
   competenceGoals: {
     competenceGoal: 'Gealbomihttomearri',
@@ -694,6 +695,12 @@ const messages = {
     'assessment-resources': 'Árvoštallanresursa',
     topic: 'Fáddá',
     'multidisciplinary-topic': 'Fágaidrasttideaddji fáddá',
+    image: 'Bilde',
+    concept: 'Forklaring',
+    audio: 'Lyd',
+    podcast: 'Podkast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Govčča',
@@ -990,6 +997,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Spill av',
     download: 'Viečča jietnafiilla',
     reuse: 'Geavat jietnafiilla',
     error: {
@@ -1007,6 +1015,7 @@ const messages = {
       close: 'Govčča teakstavearšuvnna',
     },
     readMoreDescriptionLabel: 'Čájet eanet',
+    readLessDescriptionLabel: 'vis mindre',
   },
   h5p: {
     reuse: 'Geavat H5P',
@@ -1132,7 +1141,7 @@ const messages = {
           unShare: 'Háliidat go loahpahit máhpa juogadeami?',
         },
         description: {
-          copy: 'Máŋge ja juoge dán liŋkka:',
+          copy: 'Trykk på lenke for å kopiere',
           private:
             'Go juogát máhpa ráhkadat liŋkka mii lea rabas buohkaide geas lea liŋka. Sáhtát rievdadit sisdoalu dahje loahpahit juogadeami go háliidat.',
           private2: 'Go juogadat máhpa juogát buot máhpa sisdoalu, oktan vuollemáhpaiguin ja resursaiguin',
@@ -1181,7 +1190,7 @@ const messages = {
       drawerButton: 'Čájet máhpaid ja resurssaid',
       drawerTitle: 'Máhpat ja resurssat',
       learningpathUnsupported:
-        'Oahppanbálgát eai sáhte njuolga čájehuvvot juogaduvvon máhpain. Jus deaddilat liŋkka navigerenfálus gurut bealde, rahpasa bálggis ođđa siiddus.',
+        'Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
         all: 'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.\n\nSáhtát bláđet artihkkaliid fálu vehkiin.\n\nJus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
         info1:

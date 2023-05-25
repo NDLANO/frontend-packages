@@ -478,6 +478,7 @@ const messages = {
       onlyTeacher: 'Daate vierhtie ajve dïllesisnie lohkehtæjjide mah tjaangeme Feidine.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
+    references: 'Referanser',
   },
   competenceGoals: {
     competenceGoal: 'maahtoe-ulmie',
@@ -697,6 +698,12 @@ const messages = {
     'assessment-resources': 'Vuarjasjimmievierhtie',
     topic: 'Teema',
     'multidisciplinary-topic': 'Tverrfaglig case',
+    image: 'Bilde',
+    concept: 'Forklaring',
+    audio: 'Lyd',
+    podcast: 'Podkast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Dahph',
@@ -993,6 +1000,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Spill av',
     download: 'Veedtjh tjoeje-fijlem',
     reuse: 'Nuhtjh tjoeje-fijlem',
     error: {
@@ -1010,6 +1018,7 @@ const messages = {
       close: 'Dahph teeksteversjovnem',
     },
     readMoreDescriptionLabel: 'vis mer',
+    readLessDescriptionLabel: 'vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',
@@ -1135,7 +1144,7 @@ const messages = {
           unShare: 'Vil du avslutte deling av denne mappen?',
         },
         description: {
-          copy: 'Kopier og del denne lenken:',
+          copy: 'Trykk på lenke for å kopiere',
           private:
             'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
           private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
@@ -1185,7 +1194,7 @@ const messages = {
       drawerButton: 'Vis mapper og ressursar',
       drawerTitle: 'Mapper og ressursar',
       learningpathUnsupported:
-        'Læringsstiar kan ikke visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+        'Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
         all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
         info1:

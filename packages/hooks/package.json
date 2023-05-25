@@ -32,8 +32,7 @@
     "react": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {
-    "@ndla/util": "^3.1.12",
-    "react-device-detect": "^2.2.3"
+    "@ndla/util": "^3.1.12"
   },
   "publishConfig": {
     "access": "public"

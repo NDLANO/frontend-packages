@@ -15,7 +15,7 @@ import SafeLink from '@ndla/safelink';
 import { useNavigate } from 'react-router-dom';
 import { HashTag } from '@ndla/icons/common';
 import resourceTypeColor from '../utils/resourceTypeColor';
-import { resourceTypeMapping } from '../model/ContentType';
+import { resourceEmbedTypeMapping } from '../model/ContentType';
 
 export interface ResourceImageProps {
   alt: string;
@@ -198,7 +198,9 @@ export const ResourceTypeList = ({ resourceTypes }: ResourceTypeListProps) => {
     <StyledResourceTypeList aria-label={t('navigation.topics')}>
       {resourceTypes.map((resource, i) => (
         <StyledResourceListElement key={resource.id}>
-          {resourceTypeMapping[resource.id] ? t(`embed.type.${resourceTypeMapping[resource.id]}`) : resource.name}
+          {resourceEmbedTypeMapping[resource.id]
+            ? t(`embed.type.${resourceEmbedTypeMapping[resource.id]}`)
+            : resource.name}
           {i !== resourceTypes.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
         </StyledResourceListElement>
       ))}

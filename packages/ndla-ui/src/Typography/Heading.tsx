@@ -8,7 +8,7 @@
 
 import { css } from '@emotion/react';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import { HTMLAttributes, ReactNode } from 'react';
+import { ComponentProps, ElementType, ReactNode } from 'react';
 import { HeadingLevel } from '../types';
 
 const style = css`
@@ -63,8 +63,8 @@ const style = css`
 
 type AllowedElements = HeadingLevel | 'p' | 'span';
 
-interface Props<T extends AllowedElements> extends HTMLAttributes<T> {
-  element: HeadingLevel | 'p' | 'span';
+interface Props<T extends AllowedElements> {
+  element: T;
   headingStyle: 'h1' | 'h2' | 'h3' | 'list-title' | 'default';
   serif?: boolean;
   /**
@@ -75,19 +75,19 @@ interface Props<T extends AllowedElements> extends HTMLAttributes<T> {
    */
   margin?: 'xlarge' | 'large' | 'normal' | 'small' | 'none';
   children: ReactNode;
-  className?: string;
 }
 
 const Heading = <T extends AllowedElements>({
-  element: Element,
+  element,
   children,
   headingStyle,
   margin = 'normal',
   serif,
-  className,
-}: Props<T>) => {
+  ...rest
+}: Props<T> & ComponentProps<T>) => {
+  const Element = element as ElementType;
   return (
-    <Element css={style} data-serif={serif} data-style={headingStyle} data-margin={margin} className={className}>
+    <Element css={style} data-serif={serif} data-style={headingStyle} data-margin={margin} {...rest}>
       {children}
     </Element>
   );

@@ -7,9 +7,9 @@
  */
 
 import sortBy from 'lodash/sortBy';
-import isNumber from 'lodash/isNumber';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
+import { COPYRIGHTED } from '@ndla/licenses';
 import { useEffect, useRef, useState } from 'react';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
@@ -34,8 +34,8 @@ const BrightcoveIframe = styled.iframe`
 `;
 
 export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = '') => {
-  const strippedWidth = isNumber(width) ? width : width.replace(/\s*px/, '');
-  const strippedHeight = isNumber(height) ? height : height.replace(/\s*px/, '');
+  const strippedWidth = typeof width === 'number' ? width : width.replace(/\s*px/, '');
+  const strippedHeight = typeof height === 'number' ? height : height.replace(/\s*px/, '');
   const urlOrTitle = title || url;
   return `<iframe title="${urlOrTitle}" aria-label="${urlOrTitle}" src="${url}" width="${strippedWidth}" height="${strippedHeight}" allowfullscreen scrolling="no" frameborder="0" loading="lazy"></iframe>`;
 };
@@ -61,6 +61,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { embedData } = embed;
+  const fallbackTitle = `${t('embed.type.video')}: ${embedData.videoid}`;
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -76,8 +77,8 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
       <EmbedErrorPlaceholder type="video">
         <BrightcoveIframe
           ref={iframeRef}
-          title={`Video: ${embedData.videoid ?? ''}`}
-          aria-label={`Video: ${embedData.videoid ?? ''}`}
+          title={embedData.alt ?? fallbackTitle}
+          aria-label={embedData.alt ?? fallbackTitle}
           frameBorder="0"
           {...getIframeProps(embedData, [])}
           allowFullScreen
@@ -101,14 +102,19 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
         <BrightcoveIframe
           ref={iframeRef}
           className="original"
-          title={`Video: ${data.name}`}
-          aria-label={`Video: ${data.name}`}
+          title={embedData.alt ?? data.name ?? fallbackTitle}
+          aria-label={embedData.alt ?? data.name ?? fallbackTitle}
           frameBorder="0"
           {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
           allowFullScreen
         />
       </div>
-      <EmbedByline type="video" copyright={data.copyright!} description={data.description ?? ''} bottomRounded>
+      <EmbedByline
+        type="video"
+        copyright={data.copyright!}
+        description={embedData.caption ?? data.description ?? ''}
+        bottomRounded
+      >
         {!!linkedVideoId && (
           <LinkedVideoButton
             variant="outline"
@@ -119,7 +125,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
             {t(`figure.button.${!showOriginalVideo ? 'original' : 'alternative'}`)}
           </LinkedVideoButton>
         )}
-        {HeartButton && <HeartButton embed={embed} />}
+        {HeartButton && data.copyright?.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
       </EmbedByline>
     </Figure>
   );

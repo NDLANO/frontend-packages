@@ -6,11 +6,11 @@
  *
  */
 
-import isNumber from 'lodash/isNumber';
 import { ImageEmbedData, ImageMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { MouseEventHandler, useState } from 'react';
 import { ExpandTwoArrows } from '@ndla/icons/action';
+import { COPYRIGHTED } from '@ndla/licenses';
 import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
@@ -73,7 +73,7 @@ const getSizes = (size?: string, align?: string) => {
 };
 
 const getFocalPoint = (data: ImageEmbedData) => {
-  if (isNumber(data.focalX) && isNumber(data.focalY)) {
+  if (typeof data.focalX === 'number' && typeof data.focalY === 'number') {
     return { x: data.focalX, y: data.focalY };
   }
   return undefined;
@@ -81,10 +81,10 @@ const getFocalPoint = (data: ImageEmbedData) => {
 
 const getCrop = (data: ImageEmbedData) => {
   if (
-    isNumber(data.lowerRightX) &&
-    isNumber(data.lowerRightY) &&
-    isNumber(data.upperLeftX) &&
-    isNumber(data.upperLeftY)
+    typeof data.lowerRightX === 'number' &&
+    typeof data.lowerRightY === 'number' &&
+    typeof data.upperLeftX === 'number' &&
+    typeof data.upperLeftY === 'number'
   ) {
     return {
       startX: data.lowerRightX,
@@ -144,15 +144,15 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton }: Props) => {
           }
         />
       </ImageWrapper>
-      {(!isSmall(embedData.size) || !isBylineHidden) && (
+      {isBylineHidden || (isSmall(embedData.size) && !imageSizes) ? null : (
         <EmbedByline
           type="image"
           copyright={data.copyright}
-          description={data.caption.caption}
+          description={embedData.caption ?? data.caption.caption}
           bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ''}
         >
-          {HeartButton && <HeartButton embed={embed} />}
+          {HeartButton && data.copyright.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
         </EmbedByline>
       )}
     </Figure>

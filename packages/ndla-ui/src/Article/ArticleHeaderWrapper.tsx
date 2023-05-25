@@ -28,7 +28,7 @@ const CompetenceBadgeText = styled.span`
 type Props = {
   competenceGoals?: (inp: {
     Dialog: ComponentType;
-    dialogProps: { isOpen: boolean; onClose: () => void };
+    dialogProps: { isOpen: boolean; onClose: () => void; controlled: true };
   }) => ReactNode;
   competenceGoalsLoading?: boolean;
   children: ReactNode;
@@ -65,6 +65,7 @@ const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalsLoadin
     dialogProps: {
       isOpen: isOpen,
       onClose: closeDialog,
+      controlled: true,
     },
   });
   return (

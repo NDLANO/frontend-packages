@@ -21,7 +21,7 @@ const HeaderWrapper = styled.div`
   width: 100%;
 `;
 
-interface Props extends Omit<ModalProps, 'children'> {
+interface Props {
   children?: ReactNode;
   subjectName?: string;
 }
@@ -38,7 +38,11 @@ const CompetenceGoalsWrapper = styled.div`
   }
 `;
 
-export const CompetenceGoalsDialog = ({ children, subjectName, ...modalProps }: Props) => {
+export const CompetenceGoalsDialog = ({
+  children,
+  subjectName,
+  ...modalProps
+}: Props & Omit<ModalProps, 'children'>) => {
   const { t } = useTranslation();
 
   return (

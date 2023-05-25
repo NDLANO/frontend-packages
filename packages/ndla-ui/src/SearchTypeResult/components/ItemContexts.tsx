@@ -12,7 +12,7 @@ import { Additional, Core } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
-import { Modal, ModalCloseButton, ModalTitle } from '@ndla/modal';
+import { Modal, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
 
 const BreadcrumbPath = styled.div`
@@ -31,16 +31,6 @@ const ModalButton = styled(ButtonV2)`
   box-shadow: none;
   &:hover {
     box-shadow: inset 0 -1px;
-  }
-`;
-
-const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${spacing.normal} ${spacing.small};
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.normal} ${spacing.large};
   }
 `;
 

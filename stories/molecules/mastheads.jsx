@@ -114,7 +114,7 @@ class MastheadWithTopicMenu extends Component {
           this.closeAllModals[1] = null;
         }}
       >
-        {this.renderSearchField()}
+        {() => this.renderSearchField()}
       </MastheadSearchModal>
     );
   };

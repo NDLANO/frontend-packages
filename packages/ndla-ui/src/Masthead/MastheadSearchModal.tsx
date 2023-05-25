@@ -74,7 +74,6 @@ const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScr
         position="top"
         expands
         size="small"
-        // modalMargin="none"
         animation="slideIn"
         animationDuration={200}
         isOpen={isOpen}

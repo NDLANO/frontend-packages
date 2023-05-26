@@ -1,6 +1,6 @@
 # ndla-editor
 
-Editor for ndla content. Work in progress.
+Editor for ndla content. Work in progress
 
 ## Installation
 

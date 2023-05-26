@@ -10,7 +10,7 @@ $ yarn ndla-accordion
 
 ## Usage
 
-### Simple example where panel is open on render.
+### Simple example where panel is open on render
 
 ```js
 import Accordion, { AccordionWrapper, AccordionPanel, AccordionBar } from '@ndla/accordion';
@@ -38,7 +38,7 @@ import Accordion, { AccordionWrapper, AccordionPanel, AccordionBar } from '@ndla
 </Accordion>;
 ```
 
-### Simple example where panel is open on render. (with Accordions)
+### Simple example where panel is open on render (with Accordions)
 
 ```js
 <Accordions single>

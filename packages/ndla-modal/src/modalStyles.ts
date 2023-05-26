@@ -62,7 +62,7 @@ export const sizeStyles = css`
     height: 500px;
   }
   &[data-height='normal'] {
-    height: 500px;
+    height: 700px;
   }
   &[data-height='large'] {
     height: 1100px;

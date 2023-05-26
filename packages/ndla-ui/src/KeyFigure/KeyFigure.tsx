@@ -28,24 +28,22 @@ const TitleWrapper = styled.div`
   font-weight: ${fonts.weight.bold};
   overflow-wrap: break-word;
   ${fonts.sizes('38px', '48px')};
-  text-align: center;
-  max-width: 240px;
   ${mq.range({ until: breakpoints.tabletWide })} {
     ${fonts.sizes('30px', '36px')};
   }
+  max-width: 240px;
 `;
 
 const SubTitleWrapper = styled.div`
   overflow-wrap: 'break-word';
-  text-align: center;
-  ${fonts.sizes('18px', '29px')};
-  color: ${colors.text.primary};
-  font-weight: ${fonts.weight.normal};
-  font-family: ${fonts.sans};
-  max-width: 240px;
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding-top: ${spacing.xxsmall};
+    ${fonts.sizes('18px', '29px')};
+    color: ${colors.text.primary};
+    font-weight: ${fonts.weight.normal};
+    font-family: ${fonts.sans};
   }
+  max-width: 240px;
 `;
 
 interface Props {

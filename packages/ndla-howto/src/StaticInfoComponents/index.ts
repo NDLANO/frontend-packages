@@ -303,9 +303,9 @@ export const stories: Record<string, Story> = {
   ContactBlock: {
     title: 'Kontaktblokk',
     lead: 'Legg til kontaktblokk',
-    body: [{ type: 'text', content: 'Lag en kontaktblokk ved å legge til tittel, beskrivelse, bilde.' }],
+    body: [{ type: 'text', content: 'Lag en kontaktblokk ved å legge til tittel, beskrivelse og bilde.' }],
   },
-  GridBlock: {
+  Grid: {
     title: 'Grid',
     lead: 'Legg til grid',
     body: [{ type: 'text', content: 'Gjør det mulig å plassere embeds i grid på enten 2x2 eller 1x4.' }],

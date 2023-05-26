@@ -134,7 +134,6 @@ export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
 export { UserInfo } from './User';
-export { default as AuthModal } from './User';
 export type {
   AffiliationType,
   FeideGoGroup,

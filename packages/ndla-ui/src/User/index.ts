@@ -6,7 +6,6 @@
  *
  */
 
-import AuthModal from './AuthModal';
 import { UserInfo } from './UserInfo';
 import type {
   AffiliationType,
@@ -20,4 +19,3 @@ import type {
 
 export { UserInfo };
 export type { AffiliationType, FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType, FeideMembershipType, FeideUser };
-export default AuthModal;

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/editor",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Editor components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,12 +25,12 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/button": "^10.1.0",
+    "@ndla/button": "^10.1.1",
     "@ndla/core": "^4.0.0",
-    "@ndla/forms": "^4.3.0",
+    "@ndla/forms": "^4.3.1",
     "@ndla/icons": "^2.3.0",
     "@ndla/modal": "^2.3.0",
-    "@ndla/tooltip": "^4.1.0",
+    "@ndla/tooltip": "^4.1.1",
     "focus-trap-react": "^8.9.2"
   },
   "peerDependencies": {

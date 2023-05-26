@@ -1,6 +1,6 @@
 {
   "name": "@ndla/accordion",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "A simple accordion from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,7 +25,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^10.1.0",
+    "@ndla/button": "^10.1.1",
     "@ndla/core": "^4.0.0",
     "@ndla/icons": "^2.3.0",
     "@radix-ui/react-accordion": "^1.0.1"

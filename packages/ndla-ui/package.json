@@ -51,6 +51,7 @@
     "@radix-ui/react-popover": "^1.0.3",
     "@reach/menu-button": "^0.16.2",
     "@reach/slider": "^0.16.0",
+    "@headlessui/react": "^1.7.14",
     "focus-trap-react": "^8.9.2",
     "framer-motion": "^6.5.1",
     "html-react-parser": "^3.0.8",

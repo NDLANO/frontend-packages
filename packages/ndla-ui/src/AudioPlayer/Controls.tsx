@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems, MenuItemProps } from '@reach/menu-button';
 import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderOrientation } from '@reach/slider';
+import { Popover } from '@headlessui/react';
 import { Play, Pause, VolumeUp } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -235,7 +236,7 @@ const ProgressHandle = styled(SliderHandle)`
   top: -8px;
 `;
 
-const VolumeWrapper = styled.div`
+const VolumeWrapper = styled(Popover)`
   position: relative;
   display: flex;
   justify-content: center;
@@ -256,7 +257,7 @@ const WardButtonWrapper = styled.div<{ order: number }>`
   }
 `;
 
-const VolumeButton = styled(MenuButton)`
+const VolumeButton = styled(Popover.Button)`
   background-color: inherit;
   width: 48px;
   height: 48px;
@@ -280,13 +281,10 @@ const VolumeButton = styled(MenuButton)`
   }
 `;
 
-const VolumeMenu = styled(MenuPopover)`
+const VolumeList = styled(Popover.Panel)`
   position: absolute;
   bottom: 52px;
   z-index: 99;
-`;
-
-const VolumeList = styled.div`
   box-shadow: 0 14px 20px -5px rgba(32, 88, 143, 0.17);
   border-radius: 60px;
   background: #ffffff;
@@ -507,33 +505,23 @@ const Controls = ({ src, title }: Props) => {
           <Time>-{formatTime(remainingTime)}</Time>
         </ProgressWrapper>
         <VolumeWrapper>
-          <Menu>
-            {/* @ts-ignore */}
-            <VolumeButton
-              type="button"
-              as="button"
-              title={t('audio.controls.adjustVolume')}
-              aria-label={t('audio.controls.adjustVolume')}
-            >
-              <VolumeUp />
-            </VolumeButton>
-            <VolumeMenu as="div" portal={false}>
-              <VolumeList>
-                <VolumeSliderWrapper>
-                  <SliderInput
-                    orientation={SliderOrientation.Vertical}
-                    onChange={handleVolumeSliderChange}
-                    value={volumeValue}
-                  >
-                    <VolumeSliderBackground as="div">
-                      <VolumeSliderSelected as="div" />
-                      <VolumeSliderHandle as="div" />
-                    </VolumeSliderBackground>
-                  </SliderInput>
-                </VolumeSliderWrapper>
-              </VolumeList>
-            </VolumeMenu>
-          </Menu>
+          <VolumeButton aria-label={t('audio.controls.adjustVolume')}>
+            <VolumeUp />
+          </VolumeButton>
+          <VolumeList>
+            <VolumeSliderWrapper>
+              <SliderInput
+                orientation={SliderOrientation.Vertical}
+                onChange={handleVolumeSliderChange}
+                value={volumeValue}
+              >
+                <VolumeSliderBackground as="div">
+                  <VolumeSliderSelected as="div" />
+                  <VolumeSliderHandle as="div" />
+                </VolumeSliderBackground>
+              </SliderInput>
+            </VolumeSliderWrapper>
+          </VolumeList>
         </VolumeWrapper>
       </ControlsWrapper>
     </div>

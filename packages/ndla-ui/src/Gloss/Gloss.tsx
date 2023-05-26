@@ -17,7 +17,7 @@ interface Example {
   language: string;
 }
 
-interface Alternatives {
+interface Transcription {
   traditionalChinese?: string;
   pinyin?: string;
   norwegianTranslation: string;
@@ -28,8 +28,8 @@ export interface Props {
     language: string;
   };
   glossData: {
-    glossType?: string;
-    alternatives: Alternatives;
+    wordClass?: string;
+    transcriptions: Transcription;
     originalLanguage: string;
     examples?: Example[][];
   };
@@ -112,17 +112,17 @@ const Gloss = ({ title, glossData, audio }: Props) => {
         <Wrapper>
           <GlossContainer>
             <GlossSpan>{title.title}</GlossSpan>
-            {glossData.alternatives.traditionalChinese && (
-              <AlternativeSpan>{glossData.alternatives.traditionalChinese}</AlternativeSpan>
+            {glossData.transcriptions.traditionalChinese && (
+              <AlternativeSpan>{glossData.transcriptions.traditionalChinese}</AlternativeSpan>
             )}
-            {glossData.alternatives.pinyin && <AlternativeSpan>{glossData.alternatives.pinyin}</AlternativeSpan>}
-            {glossData.glossType && <TypeSpan>{glossData.glossType}</TypeSpan>}
+            {glossData.transcriptions.pinyin && <AlternativeSpan>{glossData.transcriptions.pinyin}</AlternativeSpan>}
+            {glossData.wordClass && <TypeSpan>{glossData.wordClass}</TypeSpan>}
           </GlossContainer>
           <AudioExample>
             {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
           </AudioExample>
         </Wrapper>
-        {glossData.alternatives.norwegianTranslation && <span>{glossData.alternatives.norwegianTranslation}</span>}
+        {glossData.transcriptions.norwegianTranslation && <span>{glossData.transcriptions.norwegianTranslation}</span>}
       </Container>
       {glossData.examples && (
         <AccordionRoot type="single" collapsible>

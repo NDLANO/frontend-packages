@@ -24,8 +24,8 @@ const meta: Meta<typeof Gloss> = {
       language: 'de',
     },
     glossData: {
-      glossType: 'verb',
-      alternatives: {
+      wordClass: 'verb',
+      transcriptions: {
         norwegianTranslation: 'Å angripe',
       },
       originalLanguage: 'de',
@@ -78,8 +78,8 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
       language: 'zh',
     },
     glossData: {
-      glossType: 'Egn',
-      alternatives: {
+      wordClass: 'Egn',
+      transcriptions: {
         traditionalChinese: '(馬紅)',
         pinyin: 'Mǎ Hóng',
         norwegianTranslation: 'Ma Hong',

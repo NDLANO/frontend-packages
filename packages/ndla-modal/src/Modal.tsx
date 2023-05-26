@@ -168,9 +168,9 @@ const InternalModal = ({
               aria-hidden
               key="modal-backdrop"
               variants={variants}
-              initial={'fadeStart'}
-              animate={'fadeEnd'}
-              exit={'fadeStart'}
+              initial="fadeStart"
+              animate="fadeEnd"
+              exit="fadeStart"
             />
             <DialogWrapper>
               <Dialog.Panel<typeof m.div>

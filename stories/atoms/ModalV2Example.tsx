@@ -110,7 +110,7 @@ const ModalExample = () => {
           values={animation ? [animation] : []}
           onChange={(e: ModalAnimation[]) => setAnimation(e.pop()!)}
         />
-        <Modal label="Modal" activateButton={<ButtonV2>Open</ButtonV2>} size={size} position={position}>
+        <Modal aria-label="Modal" activateButton={<ButtonV2>Open</ButtonV2>} size={size} position={position}>
           {(close) => (
             <ModalHeader>
               <h1>Tittel</h1>

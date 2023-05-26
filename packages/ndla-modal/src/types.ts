@@ -21,8 +21,6 @@ interface DialogProps extends Omit<HTMLMotionProps<'div'>, 'size'> {
   controlled?: boolean;
   animation?: ModalAnimation;
   animationDuration?: number;
-  labelledBy?: string;
-  label?: string;
   children: (close: () => void) => ReactNode;
 }
 

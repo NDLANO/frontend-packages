@@ -91,7 +91,7 @@ const PopupFilter = ({
 
   return (
     <Modal
-      labelledBy={headingId}
+      aria-labelledby={headingId}
       controlled
       animation="subtle"
       animationDuration={50}

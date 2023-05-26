@@ -71,7 +71,7 @@ interface Props {
 
 const ArticleInModal = ({ pageId, tooltip, activateButton }: Props) => (
   <Modal
-    labelledBy={headingId}
+    aria-labelledby={headingId}
     wrapperFunctionForButton={tooltip ? (btn: ReactElement) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : undefined}
     activateButton={activateButton}
   >

@@ -170,7 +170,7 @@ export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight
   return (
     <ArticleNotionsContainer>
       <Modal
-        labelledBy={headingId}
+        aria-labelledby={headingId}
         activateButton={
           <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')} style={{ left: leftOffset }}>
             <NotionFlip />

@@ -57,7 +57,7 @@ const DrawerExample = () => {
           values={position ? [position] : []}
           onChange={(e: DrawerPosition[]) => setPosition(e.pop()!)}
         />
-        <Drawer label="Skuff" position={position} size={size} activateButton={<ButtonV2>Open</ButtonV2>}>
+        <Drawer aria-label="Skuff" position={position} size={size} activateButton={<ButtonV2>Open</ButtonV2>}>
           {(close) => (
             <ModalHeader>
               <h1>Tittel</h1>

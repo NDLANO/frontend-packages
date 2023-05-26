@@ -1,6 +1,6 @@
 # ndla-code
 
-Editor and preview for ndla code block.
+Editor and preview for ndla code block
 
 ## Installation
 

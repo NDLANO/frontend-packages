@@ -1,6 +1,6 @@
 # ndla-tabs
 
-A simple tabs component. Mainly a wrapper for [react-tabs](https://github.com/reactjs/react-tabs).
+A simple tabs component. Mainly a wrapper for [react-tabs](https://github.com/reactjs/react-tabs)
 
 ## Installation
 

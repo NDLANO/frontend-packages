@@ -1,6 +1,6 @@
 # ndla-pager
 
-A pager component.
+A pager component
 
 ## Installation
 

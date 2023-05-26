@@ -1,6 +1,6 @@
 # ndla-howto
 
-This package will be removed and is only temporary
+This package will be removed and is only temporary.
 
 ## Installation
 

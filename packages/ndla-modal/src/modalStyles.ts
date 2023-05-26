@@ -76,8 +76,3 @@ export const sizeStyles = css`
     bottom: 0;
   }
 `;
-
-export const margins: Record<ModalMargin, string> = {
-  none: '0px',
-  small: spacing.normal,
-};

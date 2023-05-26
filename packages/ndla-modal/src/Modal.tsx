@@ -9,8 +9,8 @@ import { ReactNode, cloneElement, useCallback, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Dialog } from '@headlessui/react';
-import { breakpoints, colors, mq } from '@ndla/core';
-import { m, AnimatePresence, LazyMotion, domAnimation, Variants, MotionStyle } from 'framer-motion';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import { m, AnimatePresence, LazyMotion, domAnimation, Variants } from 'framer-motion';
 import {
   BaseProps,
   ControlledProps,
@@ -20,7 +20,7 @@ import {
   ModalSizeType,
   UncontrolledProps,
 } from './types';
-import { margins, positionStyles, sizeStyles } from './modalStyles';
+import { positionStyles, sizeStyles } from './modalStyles';
 
 interface DialogProps {
   size?: ModalSizeType;
@@ -46,6 +46,7 @@ const DialogWrapper = styled.div`
 `;
 
 const panelStyle = css`
+  --margin: 0px;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -53,6 +54,11 @@ const panelStyle = css`
   max-width: 95%;
   overflow-y: auto;
   background-color: ${colors.white};
+  ${mq.range({ from: breakpoints.tablet })} {
+    &[data-margin='small'] {
+      --margin: ${spacing.normal};
+    }
+  }
   padding-bottom: env(safe-area-inset-bottom);
   padding-top: env(safe-area-inset-top);
   padding-left: env(safe-area-inset-left);
@@ -68,7 +74,6 @@ const panelStyle = css`
   ${mq.range({ until: breakpoints.tablet })} {
     min-width: 100%;
     min-height: 100%;
-    inset: unset !important;
   }
 `;
 
@@ -180,11 +185,7 @@ const InternalModal = ({
                 data-width={width}
                 data-size={size}
                 data-expands={expands}
-                style={
-                  {
-                    '--margin': margins[modalMargin],
-                  } as MotionStyle
-                }
+                data-margin={modalMargin}
                 {...rest}
               >
                 {children(onClose)}

@@ -12,7 +12,7 @@ yarn add @ndla/article-converter
 
 Articles rendered on [NDLA.no](https://ndla.no) can contain different embeds, each having their own data requirements. In order to keep embed data fresh, it is fetched directly from its source instead of being embedded within the stored article. As such, a transformation process is required.
 
-In order to allow for flexibility in how and when an article is transformed, the process has been split up in several different steps:
+In order to allow for flexibility in how and when an article is transformed, the process has been split up into several different steps:
 
 1. An article is created in our CMS, Editorial. The content is stored in a database. Embeds are stored as custom `<ndlaembed />` html elements.
 2. A web application fetches an article through our [GraphQL api](https://api.ndla.no/graphql). GraphQL fetches the article from the database, extracts the `<ndlaembed />` tags and fetches the required embed metadata. The metadata is then serialized and stored in a `data-json` attribute on the `<ndlaembed>`.

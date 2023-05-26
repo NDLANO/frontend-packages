@@ -1,6 +1,6 @@
 # ndla-forms
 
-Forms elements and helper components
+Forms elements and helper components.
 
 ## Installation
 

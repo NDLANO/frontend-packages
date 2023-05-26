@@ -7,8 +7,6 @@
  */
 
 import { css } from '@emotion/react';
-import { spacing } from '@ndla/core';
-import { ModalMargin } from './types';
 
 export const positionStyles = css`
   &[data-position='top'] {

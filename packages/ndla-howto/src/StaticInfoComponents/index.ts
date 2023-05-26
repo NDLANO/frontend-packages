@@ -308,6 +308,13 @@ export const stories: Record<string, Story> = {
   Grid: {
     title: 'Grid',
     lead: 'Legg til grid',
-    body: [{ type: 'text', content: 'Gjør det mulig å plassere embeds i grid på enten 2x2 eller 1x4.' }],
+    body: [{ type: 'text', content: 'Gjør det mulig å plassere embeds eller tekst i grid på enten 1x2 eller 1x4.' }],
+  },
+  KeyFigure: {
+    title: 'Nøkkeltall',
+    lead: 'Legg til nøkkeltall',
+    body: [
+      { type: 'text', content: 'Embed for å kunne legge til nøkkelinformasjon i form av bilde, tittel og deltittel.' },
+    ],
   },
 };

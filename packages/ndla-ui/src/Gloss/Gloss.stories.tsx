@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj, StoryFn } from '@storybook/react';
 import Gloss from './Gloss';
 import { defaultParameters } from '../../../../stories/defaults';
 
@@ -61,14 +61,8 @@ const meta: Meta<typeof Gloss> = {
 
 export default meta;
 
-export const GlossStory: StoryObj<typeof Gloss> = {
-  render: function Render(args) {
-    return (
-      <>
-        <Gloss {...args}></Gloss>
-      </>
-    );
-  },
+export const GlossStory: StoryFn<typeof Gloss> = ({ ...args }) => {
+  return <Gloss {...args} />;
 };
 
 export const GlossChineseStory: StoryObj<typeof Gloss> = {
@@ -106,12 +100,5 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
       title: 'Spill av lyd',
       src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
     },
-  },
-  render: function Render(args) {
-    return (
-      <>
-        <Gloss {...args}></Gloss>
-      </>
-    );
   },
 };

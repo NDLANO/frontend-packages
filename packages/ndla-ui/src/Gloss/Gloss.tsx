@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing, misc } from '@ndla/core';
+import { colors, spacing, misc, fonts } from '@ndla/core';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
 import SpeechControl from '../AudioPlayer/SpeechControl';
 
@@ -58,20 +58,15 @@ const Wrapper = styled.div`
 const GlossContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: ${spacing.nsmall};
 `;
 
 const GlossSpan = styled.span`
-  font-weight: 700;
-  padding-right: ${spacing.nsmall};
-`;
-
-const AlternativeSpan = styled.span`
-  padding-right: ${spacing.nsmall};
+  font-weight: ${fonts.weight.bold};
 `;
 
 const TypeSpan = styled.span`
-  padding-right: ${spacing.nsmall};
-  margin-bottom: 20px;
+  margin-bottom: ${spacing.nsmall};
   font-style: italic;
 `;
 
@@ -79,11 +74,11 @@ const AudioExample = styled.div`
   padding-bottom: ${spacing.normal};
 `;
 
-const ExampleHeader = styled(AccordionHeader)`
+const StyledAccordionHeader = styled(AccordionHeader)`
   background-color: ${colors.background.lightBlue};
 `;
 
-const AccordianContainer = styled(AccordionContent)`
+const StyledAccordionContent = styled(AccordionContent)`
   padding: 0;
 `;
 
@@ -92,17 +87,14 @@ const ExampleContainer = styled.div`
   flex-direction: column;
 `;
 
-const ExampleText = styled.span`
-  color: ${colors.brand.dark};
-  font-weight: 700;
-  background-color: ${colors.background.lightBlue};
-  border-bottom: 1px solid ${colors.brand.lighter};
-  padding: ${spacing.small} ${spacing.normal};
-`;
-
 const TranslatedText = styled.span`
   border-bottom: 1px solid ${colors.brand.lighter};
   padding: ${spacing.small} ${spacing.normal};
+  :first-child {
+    color: ${colors.brand.dark};
+    font-weight: ${fonts.weight.bold};
+    background-color: ${colors.background.lightBlue};
+  }
 `;
 
 const Gloss = ({ title, glossData, audio }: Props) => {
@@ -112,10 +104,8 @@ const Gloss = ({ title, glossData, audio }: Props) => {
         <Wrapper>
           <GlossContainer>
             <GlossSpan>{title.title}</GlossSpan>
-            {glossData.transcriptions.traditionalChinese && (
-              <AlternativeSpan>{glossData.transcriptions.traditionalChinese}</AlternativeSpan>
-            )}
-            {glossData.transcriptions.pinyin && <AlternativeSpan>{glossData.transcriptions.pinyin}</AlternativeSpan>}
+            {glossData.transcriptions.traditionalChinese && <span>{glossData.transcriptions.traditionalChinese}</span>}
+            {glossData.transcriptions.pinyin && <span>{glossData.transcriptions.pinyin}</span>}
             {glossData.wordClass && <TypeSpan>{glossData.wordClass}</TypeSpan>}
           </GlossContainer>
           <AudioExample>
@@ -127,16 +117,16 @@ const Gloss = ({ title, glossData, audio }: Props) => {
       {glossData.examples && (
         <AccordionRoot type="single" collapsible>
           <AccordionItem value={'1'}>
-            <ExampleHeader>Eksempler</ExampleHeader>
-            <AccordianContainer>
+            <StyledAccordionHeader>Eksempler</StyledAccordionHeader>
+            <StyledAccordionContent>
               {glossData.examples.map((example, index) => (
                 <ExampleContainer key={index}>
-                  <ExampleText>{example[0].example}</ExampleText>
+                  <TranslatedText>{example[0].example}</TranslatedText>
                   <TranslatedText>{example[1].example}</TranslatedText>
                   {example[2]?.example && <TranslatedText>{example[2].example}</TranslatedText>}
                 </ExampleContainer>
               ))}
-            </AccordianContainer>
+            </StyledAccordionContent>
           </AccordionItem>
         </AccordionRoot>
       )}

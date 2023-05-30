@@ -6,7 +6,6 @@
  *
  */
 
-import isNumber from 'lodash/isNumber';
 import { useEffect, useRef } from 'react';
 import { IframeMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
@@ -58,8 +57,8 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
 
   const { width, height, title, url } = embedData;
 
-  const strippedWidth = isNumber(width) ? width : width?.replace(/\s*px/, '');
-  const strippedHeight = isNumber(height) ? height : height?.replace(/\s*px/, '');
+  const strippedWidth = typeof width === 'number' ? width : width?.replace(/\s*px/, '');
+  const strippedHeight = typeof height === 'number' ? height : height?.replace(/\s*px/, '');
   const urlOrTitle = title || url;
 
   return (

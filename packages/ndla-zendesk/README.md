@@ -1,6 +1,6 @@
 # Zendesk
 
-Exports a Zendesk button which should ideally be placed in the [`packages/ndla-ui/src/Footer/Footer.jsx`](Footer) component. The component also ensures that required zendesk script(s) are loaded asynchronously.
+Exports a Zendesk button which should ideally be placed in the [`packages/ndla-ui/src/Footer/Footer.jsx`](Footer) component. The component also ensures that required zendesk script(s) are loaded asynchronously
 
 ## Installation
 

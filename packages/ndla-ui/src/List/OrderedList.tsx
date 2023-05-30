@@ -26,19 +26,19 @@ const StyledOl = styled.ol`
   margin-left: ${spacing.normal};
   ${fonts.sizes('18px', '29px')};
   list-style-type: none;
-  padding-left: ${spacing.normal} !important;
+  padding-left: ${spacing.medium} !important;
 
   // Child ordered lists
   ol {
-    padding-left: ${spacing.normal};
+    padding-left: ${spacing.medium};
     margin-left: 0;
   }
   // List item
   li {
-    margin-top: ${spacing.normal};
+    margin-top: ${spacing.nsmall};
 
     p {
-      margin-bottom: ${spacing.normal} !important;
+      margin-bottom: ${spacing.nsmall} !important;
     }
   }
 

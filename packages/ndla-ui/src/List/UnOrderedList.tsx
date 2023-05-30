@@ -32,9 +32,9 @@ const StyledUl = styled.ul`
   // List item
   li {
     padding-left: ${spacing.nsmall};
-    margin-top: ${spacing.normal};
+    margin-top: ${spacing.nsmall};
     p {
-      margin-bottom: ${spacing.normal} !important;
+      margin-bottom: ${spacing.nsmall} !important;
     }
   }
 

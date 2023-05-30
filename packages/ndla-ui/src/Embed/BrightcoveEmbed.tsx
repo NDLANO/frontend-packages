@@ -7,7 +7,6 @@
  */
 
 import sortBy from 'lodash/sortBy';
-import isNumber from 'lodash/isNumber';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { COPYRIGHTED } from '@ndla/licenses';
@@ -35,8 +34,8 @@ const BrightcoveIframe = styled.iframe`
 `;
 
 export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = '') => {
-  const strippedWidth = isNumber(width) ? width : width.replace(/\s*px/, '');
-  const strippedHeight = isNumber(height) ? height : height.replace(/\s*px/, '');
+  const strippedWidth = typeof width === 'number' ? width : width.replace(/\s*px/, '');
+  const strippedHeight = typeof height === 'number' ? height : height.replace(/\s*px/, '');
   const urlOrTitle = title || url;
   return `<iframe title="${urlOrTitle}" aria-label="${urlOrTitle}" src="${url}" width="${strippedWidth}" height="${strippedHeight}" allowfullscreen scrolling="no" frameborder="0" loading="lazy"></iframe>`;
 };

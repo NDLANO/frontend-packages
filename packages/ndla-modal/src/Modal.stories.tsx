@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
 import Modal from './Modal';
@@ -14,34 +14,89 @@ import ModalBody from './ModalBody';
 import ModalHeader from './ModalHeader';
 import ModalTitle from './ModalTitle';
 import ModalCloseButton from './ModalCloseButton';
+import { defaultParameters } from '../../../stories/defaults';
+import { DialogProps } from './types';
 
 const meta: Meta<typeof Modal> = {
   title: 'Enkle komponenter/Modal',
-  component: Modal,
   tags: ['autodocs'],
+  component: Modal,
+  parameters: {
+    ...defaultParameters,
+    docs: {
+      controls: { include: ['animation', 'animationDuration', 'size', 'position', 'modalMargin', 'expands'] },
+    },
+  },
   args: {
     animationDuration: 300,
-    controlled: false,
-    title: 'Hello',
-    size: 'full',
-    position: 'top',
-    activateButton: <ButtonV2>Åpne</ButtonV2>,
-    children: (close) => (
-      <>
-        <ModalHeader>
-          <ModalTitle>Tittel</ModalTitle>
-          <ModalCloseButton onClick={close} />
-        </ModalHeader>
-        <ModalBody>Hello</ModalBody>
-      </>
-    ),
+    animation: 'zoom',
+    size: 'normal',
+    position: 'center',
+    modalMargin: 'none',
+    expands: false,
   },
 };
 
 export default meta;
 
-export const ModalStory: StoryFn<typeof Modal> = (args) => {
-  return <Modal {...args} />;
+export const Story: StoryFn<DialogProps> = (args) => {
+  return (
+    <Modal activateButton={<ButtonV2>Åpne</ButtonV2>} {...args}>
+      {(close) => (
+        <>
+          <ModalHeader>
+            <ModalTitle>Tittel</ModalTitle>
+            <ModalCloseButton onClick={close} />
+          </ModalHeader>
+          <ModalBody>Hello</ModalBody>
+        </>
+      )}
+    </Modal>
+  );
 };
 
-ModalStory.storyName = 'Modal';
+Story.storyName = 'Modal';
+
+export const Controlled: StoryFn<DialogProps> = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <ButtonV2 onClick={() => setIsOpen(true)}>Åpne</ButtonV2>
+      <Modal controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        {(close) => (
+          <ModalHeader>
+            <ModalTitle>Opened</ModalTitle>
+            <ModalCloseButton onClick={close} />
+          </ModalHeader>
+        )}
+      </Modal>
+    </>
+  );
+};
+
+export const Uncontrolled: StoryFn<DialogProps> = () => {
+  return (
+    <Modal activateButton={<ButtonV2>Åpne</ButtonV2>}>
+      {(close) => (
+        <ModalHeader>
+          <ModalTitle>Opened</ModalTitle>
+          <ModalCloseButton onClick={close} />
+        </ModalHeader>
+      )}
+    </Modal>
+  );
+};
+
+export const CustomHeightAndWidth: StoryFn<DialogProps> = () => {
+  return (
+    <Modal size={{ width: 'large', height: 'xsmall' }} activateButton={<ButtonV2>Åpne</ButtonV2>}>
+      {(close) => (
+        <ModalHeader>
+          <ModalTitle>Opened</ModalTitle>
+          <ModalCloseButton onClick={close} />
+        </ModalHeader>
+      )}
+    </Modal>
+  );
+};

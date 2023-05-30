@@ -11,24 +11,8 @@ import { css } from '@emotion/react';
 import { Dialog } from '@headlessui/react';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { m, AnimatePresence, LazyMotion, domAnimation, Variants } from 'framer-motion';
-import {
-  BaseProps,
-  ControlledProps,
-  ModalAnimation,
-  ModalMargin,
-  ModalPosition,
-  ModalSizeType,
-  UncontrolledProps,
-} from './types';
+import { BaseProps, ControlledProps, DialogProps, UncontrolledProps } from './types';
 import { positionStyles, sizeStyles } from './modalStyles';
-
-interface DialogProps {
-  size?: ModalSizeType;
-  position?: ModalPosition;
-  animation?: ModalAnimation;
-  modalMargin?: ModalMargin;
-  expands?: boolean;
-}
 
 const StyledOverlay = styled(m.div)`
   position: fixed;
@@ -105,7 +89,7 @@ const animations = (durationMs: number): Variants => {
   };
 };
 
-export type ModalProps = BaseProps & DialogProps;
+export type ModalProps = DialogProps & BaseProps;
 
 const Modal = (props: ModalProps) => {
   if (props.controlled) {
@@ -153,11 +137,15 @@ const InternalModal = ({
     return typeof sizeProp === 'string' ? { size: sizeProp } : sizeProp;
   }, [sizeProp]);
   const variants = useMemo(() => animations(animationDuration), [animationDuration]);
-  const animationName = useMemo(
-    () =>
-      animation === 'slideIn' ? `${animation}${position.replace(position[0], position[0].toUpperCase())}` : animation,
-    [animation, position],
-  );
+  const [animationStart, animationEnd] = useMemo(() => {
+    if (animation === 'fade') {
+      return [undefined, undefined];
+    }
+    const anim =
+      animation === 'slideIn' ? `${animation}${position.replace(position[0], position[0].toUpperCase())}` : animation;
+    return [`${anim}Start`, `${anim}End`];
+  }, [animation, position]);
+
   return (
     <LazyMotion features={domAnimation}>
       {modalButton}
@@ -176,9 +164,9 @@ const InternalModal = ({
               <Dialog.Panel<typeof m.div>
                 as={m.div}
                 css={panelStyle}
-                initial={[`${animationName}Start`, 'fadeStart']}
-                animate={[`${animationName}End`, 'fadeEnd']}
-                exit={[`${animationName}Start`, 'fadeStart']}
+                initial={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
+                animate={animationEnd ? [animationEnd, 'fadeEnd'] : ['fadeEnd']}
+                exit={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
                 variants={variants}
                 data-position={position}
                 data-height={height}

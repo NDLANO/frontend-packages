@@ -21,6 +21,11 @@ export interface DialogProps extends Omit<HTMLMotionProps<'div'>, 'size'> {
   animation?: ModalAnimation;
   animationDuration?: number;
   children: (close: () => void) => ReactNode;
+  /**
+   * Can be either a string or an object with height and width properties.
+   * Allow string values are `xsmall | small | normal | large | full`. This applies both
+   * for the string variant and the object variant
+   */
   size?: ModalSizeType;
   position?: ModalPosition;
   modalMargin?: ModalMargin;

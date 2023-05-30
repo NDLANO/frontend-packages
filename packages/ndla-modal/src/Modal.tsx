@@ -8,9 +8,9 @@
 import { ReactNode, cloneElement, useCallback, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Dialog } from '@headlessui/react';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { m, AnimatePresence, LazyMotion, domAnimation, Variants } from 'framer-motion';
+import { Content, Overlay, Portal, Root } from '@radix-ui/react-dialog';
 import { BaseProps, ControlledProps, DialogProps, UncontrolledProps } from './types';
 import { positionStyles, sizeStyles } from './modalStyles';
 
@@ -18,6 +18,7 @@ const StyledOverlay = styled(m.div)`
   position: fixed;
   inset: 0;
   background: rgba(1, 1, 1, 0.3);
+  z-index: 100;
 `;
 
 const DialogWrapper = styled.div`
@@ -27,6 +28,7 @@ const DialogWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100;
 `;
 
 const panelStyle = css`
@@ -61,7 +63,7 @@ const panelStyle = css`
   }
 `;
 
-const StyledDialog = styled(Dialog)`
+const StyledDialog = styled(Root)`
   position: fixed;
   inset: 0;
   width: 100vw;
@@ -151,34 +153,39 @@ const InternalModal = ({
       {modalButton}
       <AnimatePresence>
         {isOpen && (
-          <StyledDialog open={isOpen} onClose={onClose} static>
-            <StyledOverlay
-              aria-hidden
-              key="modal-backdrop"
-              variants={variants}
-              initial="fadeStart"
-              animate="fadeEnd"
-              exit="fadeStart"
-            />
-            <DialogWrapper>
-              <Dialog.Panel<typeof m.div>
-                as={m.div}
-                css={panelStyle}
-                initial={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
-                animate={animationEnd ? [animationEnd, 'fadeEnd'] : ['fadeEnd']}
-                exit={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
-                variants={variants}
-                data-position={position}
-                data-height={height}
-                data-width={width}
-                data-size={size}
-                data-expands={expands}
-                data-margin={modalMargin}
-                {...rest}
-              >
-                {children(onClose)}
-              </Dialog.Panel>
-            </DialogWrapper>
+          <StyledDialog open={isOpen} onOpenChange={onClose}>
+            <Portal>
+              <Overlay asChild>
+                <StyledOverlay
+                  aria-hidden
+                  key="modal-backdrop"
+                  variants={variants}
+                  initial="fadeStart"
+                  animate="fadeEnd"
+                  exit="fadeStart"
+                />
+              </Overlay>
+              <DialogWrapper>
+                <Content asChild>
+                  <m.div
+                    css={panelStyle}
+                    initial={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
+                    animate={animationEnd ? [animationEnd, 'fadeEnd'] : ['fadeEnd']}
+                    exit={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
+                    variants={variants}
+                    data-position={position}
+                    data-height={height}
+                    data-width={width}
+                    data-size={size}
+                    data-expands={expands}
+                    data-margin={modalMargin}
+                    {...rest}
+                  >
+                    {children(onClose)}
+                  </m.div>
+                </Content>
+              </DialogWrapper>
+            </Portal>
           </StyledDialog>
         )}
       </AnimatePresence>

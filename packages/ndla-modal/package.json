@@ -27,7 +27,7 @@
   "dependencies": {
     "@ndla/core": "^4.0.0",
     "@ndla/icons": "^2.3.0",
-    "@headlessui/react": "^1.7.14",
+    "@radix-ui/react-dialog": "^1.0.4",
     "framer-motion": "^6.5.1"
   },
   "peerDependencies": {

@@ -28,8 +28,8 @@
   "dependencies": {
     "@ndla/core": "^4.0.0",
     "@ndla/icons": "^2.3.0",
-    "@radix-ui/react-popover": "^1.0.2",
-    "@radix-ui/react-tooltip": "^1.0.2",
+    "@radix-ui/react-popover": "^1.0.6",
+    "@radix-ui/react-tooltip": "^1.0.6",
     "html-react-parser": "^3.0.8"
   },
   "peerDependencies": {

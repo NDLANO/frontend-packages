@@ -51,7 +51,7 @@ const MessageBoxWrapper = styled.div<StyledProps>`
     type === 'danger' &&
     css`
       background: ${colors.support.redLightest};
-      color: ${colors.support.red};
+      color: ${colors.text.primary};
     `}
 `;
 

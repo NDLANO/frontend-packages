@@ -478,6 +478,7 @@ const messages = {
       onlyTeacher: 'This resource is accessible only to teachers who are logged in with Feide.',
     },
     possiblyOutdated: 'The article is outdated',
+    references: 'References',
   },
   competenceGoals: {
     competenceGoal: 'competence-goal',
@@ -694,6 +695,12 @@ const messages = {
     'assessment-resources': 'Assessment resource',
     topic: 'Topic',
     'multidisciplinary-topic': 'Multidisciplinary case',
+    image: 'Image',
+    concept: 'Concept',
+    audio: 'Audio',
+    podcast: 'Podcast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Close',
@@ -964,6 +971,8 @@ const messages = {
   loading: 'Loading',
   title: 'Title',
   save: 'Save',
+  photo: 'Photo',
+  email: 'Email',
   image: {
     altText: 'Alt-text',
     caption: 'Caption',
@@ -988,6 +997,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Play',
     download: 'Download audio',
     reuse: 'Use audio',
     error: {
@@ -1005,6 +1015,7 @@ const messages = {
       close: 'Close text version',
     },
     readMoreDescriptionLabel: 'show more',
+    readLessDescriptionLabel: 'show less',
   },
   h5p: {
     reuse: 'Use H5P',
@@ -1101,10 +1112,13 @@ const messages = {
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
     folders_plural: '{{count}} Folders',
+    settings: 'Settings',
     folder: {
       folder: 'Folder',
       delete: 'Delete folder',
       edit: 'Edit folder',
+      updated: 'Folder updated',
+      defaultPageDescription: 'Add a description by editing the folder',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
       folderCreated: '"{{folderName}} created',
@@ -1115,6 +1129,7 @@ const messages = {
       onDragEndMissingOver: 'The folder {{name}} was dropped',
       onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
       dragHandle: 'Drag the folder {{name}}',
+      sharedWarning: 'Name and description will be visible for everyone you share the folder with',
       sharing: {
         share: 'Share folder',
         shared: 'Shared',
@@ -1126,7 +1141,7 @@ const messages = {
           unShare: 'Do you want to stop sharing this folder?',
         },
         description: {
-          copy: 'Copy and share this link:',
+          copy: 'Press the link to copy',
           private:
             'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
           private2:
@@ -1134,11 +1149,11 @@ const messages = {
           shared:
             'Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.',
           unShare:
-            'When you stop sharing, the link to the shared folder is no longer active. If you have shared the link with someone, they can no longer see the content in the folder.',
+            'When you stop sharing, the link to the shared folder and potential subfolders is no longer active. If you have shared the link with someone, they can no longer see the content in the folder. This also applies to potential subfolders.',
         },
         button: {
           share: 'Share folder',
-          preview: 'Preview shared folder',
+          preview: 'Preview folder',
           unShare: 'Stop sharing',
           shareLink: 'Copy link',
         },
@@ -1167,6 +1182,7 @@ const messages = {
     examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     help: 'Help',
     more: 'More options',
+    selectView: 'Select view',
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',
@@ -1174,16 +1190,18 @@ const messages = {
       info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
       firstShared: 'The folder was shared for the first time {{date}}',
       learningpathUnsupported:
-        'Learning paths cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
+        'Learning paths and multidisciplinary cases cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
       drawerButton: 'Show folders and resources',
       drawerTitle: 'Folders and resources',
       description: {
+        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
         info1:
           'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
         info2: 'You can use the menu to navigate through the articles.',
         info3:
           'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
       },
+      willOpenInNewTab: 'Opens in a new tab.',
     },
     myPage: {
       noRecents: "You haven't added any resources yet. This is how you get started:",
@@ -1223,8 +1241,8 @@ const messages = {
         text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
       sharing: {
-        title: 'How you share your folders with others',
-        text: 'Click on the share-button in the folder to share. You will get a link you can share with others.',
+        title: 'Teachers can now share folders',
+        text: 'Click on the share-button to get a link you can share.',
       },
       favoriteSubjects: {
         title: 'How to save your favorite subjects from NDLA',
@@ -1296,6 +1314,16 @@ const messages = {
     conceptListError: 'Failed to show concept list',
     linkError: 'Failed to show link.',
     unsupported: `Embed {{type}} not supported.`,
+    embedError: `An error occurred while loading the {{type}}. Try reloading the page.`,
+    type: {
+      image: 'Image',
+      video: 'Video',
+      audio: 'Audio',
+      podcast: 'Podcast',
+      concept: 'Concept',
+      h5p: 'H5P',
+      external: 'External resource',
+    },
   },
 };
 

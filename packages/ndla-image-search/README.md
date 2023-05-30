@@ -1,6 +1,6 @@
 # ndla-licenses
 
-A simple library for selecting images from NDLA
+A simple library for selecting images from NDLA.
 
 ## Installation
 

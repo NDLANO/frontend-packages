@@ -17,7 +17,7 @@ $highlight-color: $brand-grey--lighter;
   display: block;
   border-top: 2px solid $brand-grey--lighter;
   color: gray;
-  @include inuit-font-size(15px);
+  @include font-size(15px, 1.6);
 }
 .c-footnotes__item {
   margin-bottom: $spacing--small;
@@ -37,7 +37,7 @@ $highlight-color: $brand-grey--lighter;
       padding: 10px 15px;
       box-shadow: none;
       text-decoration: underline;
-      @include inuit-font-size(15px);
+      @include font-size(15px, 1.6);
 
       &:hover,
       &:active,

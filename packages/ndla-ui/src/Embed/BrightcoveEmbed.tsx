@@ -7,23 +7,22 @@
  */
 
 import sortBy from 'lodash/sortBy';
-import isNumber from 'lodash/isNumber';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
+import { COPYRIGHTED } from '@ndla/licenses';
 import { useEffect, useRef, useState } from 'react';
-import { ModalV2 } from '@ndla/modal';
-import { SafeLinkButton } from '@ndla/safelink';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
-import { ButtonV2, CopyButton } from '@ndla/button';
-import { Figure, FigureCaption } from '../Figure';
-import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
-import { getFirstNonEmptyLicenseCredits } from './AudioEmbed';
+import { ButtonV2 } from '@ndla/button';
+import { Figure } from '../Figure';
+import { EmbedByline } from '../LicenseByline';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: BrightcoveMetaData;
   isConcept?: boolean;
+  heartButton?: HeartButtonType;
 }
 
 const LinkedVideoButton = styled(ButtonV2)`
@@ -35,8 +34,8 @@ const BrightcoveIframe = styled.iframe`
 `;
 
 export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = '') => {
-  const strippedWidth = isNumber(width) ? width : width.replace(/\s*px/, '');
-  const strippedHeight = isNumber(height) ? height : height.replace(/\s*px/, '');
+  const strippedWidth = typeof width === 'number' ? width : width.replace(/\s*px/, '');
+  const strippedHeight = typeof height === 'number' ? height : height.replace(/\s*px/, '');
   const urlOrTitle = title || url;
   return `<iframe title="${urlOrTitle}" aria-label="${urlOrTitle}" src="${url}" width="${strippedWidth}" height="${strippedHeight}" allowfullscreen scrolling="no" frameborder="0" loading="lazy"></iframe>`;
 };
@@ -57,12 +56,12 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? '640',
   };
 };
-const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
+const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { embedData } = embed;
+  const fallbackTitle = `${t('embed.type.video')}: ${embedData.videoid}`;
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -75,44 +74,27 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
   }, []);
   if (embed.status === 'error') {
     return (
-      <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
+      <EmbedErrorPlaceholder type="video">
         <BrightcoveIframe
           ref={iframeRef}
-          title={`Video: ${embedData.videoid ?? ''}`}
-          aria-label={`Video: ${embedData.videoid ?? ''}`}
+          title={embedData.alt ?? fallbackTitle}
+          aria-label={embedData.alt ?? fallbackTitle}
           frameBorder="0"
           {...getIframeProps(embedData, [])}
           allowFullScreen
         />
-        <figcaption>{t('video.error')}</figcaption>
-      </Figure>
+      </EmbedErrorPlaceholder>
     );
   }
   const { data, seq } = embed;
 
   const linkedVideoId = isNumeric(data.link?.text) ? data.link?.text : undefined;
 
-  const license = getLicenseByAbbreviation(data.copyright?.license.license ?? '', i18n.language);
-  const contributors = data.copyright
-    ? getGroupedContributorDescriptionList(data.copyright, i18n.language).map((item) => ({
-        name: item.description,
-        type: item.label,
-      }))
-    : [];
-
-  const { rightsholders = [], creators = [], processors = [] } = data.copyright ?? {};
-
-  const download = sortBy(
-    data.sources.filter((src) => src.container === 'MP4' && src.src),
-    (src) => src.size,
-  )?.[0]?.src;
-
   const figureId = `figure-${seq}-${data.id}`;
   const originalVideoProps = getIframeProps(embedData, data.sources);
   const alternativeVideoProps = linkedVideoId
     ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
     : undefined;
-  const captionAuthors = getFirstNonEmptyLicenseCredits({ rightsholders, creators, processors });
 
   return (
     <Figure id={figureId} type={isConcept ? 'full-column' : 'full'} resizeIframe>
@@ -120,88 +102,32 @@ const BrightcoveEmbed = ({ embed, isConcept }: Props) => {
         <BrightcoveIframe
           ref={iframeRef}
           className="original"
-          title={`Video: ${data.name}`}
-          aria-label={`Video: ${data.name}`}
+          title={embedData.alt ?? data.name ?? fallbackTitle}
+          aria-label={embedData.alt ?? data.name ?? fallbackTitle}
           frameBorder="0"
           {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
           allowFullScreen
         />
       </div>
-      <FigureCaption
-        figureId={figureId}
-        id={data.id}
-        locale={i18n.language}
-        caption={embedData.caption ?? ''}
-        modalButton={
-          <ButtonV2 variant="outline" shape="pill" size="small" onClick={() => setIsOpen(true)}>
-            {t('video.reuse')}
-          </ButtonV2>
-        }
-        linkedVideoButton={
+      <EmbedByline
+        type="video"
+        copyright={data.copyright!}
+        description={embedData.caption ?? data.description ?? ''}
+        bottomRounded
+      >
+        {!!linkedVideoId && (
           <LinkedVideoButton
             variant="outline"
             shape="pill"
             size="small"
             onClick={() => setShowOriginalVideo((p) => !p)}
           >
-            {t(`figure.button.${showOriginalVideo ? 'original' : 'alternative'}`)}
+            {t(`figure.button.${!showOriginalVideo ? 'original' : 'alternative'}`)}
           </LinkedVideoButton>
-        }
-        licenseRights={license.rights}
-        authors={captionAuthors}
-        hasLinkedVideo={!!linkedVideoId}
-      />
-      <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)} labelledBy="license-dialog-rules-heading">
-        {(close) => (
-          <FigureLicenseDialogContent
-            onClose={close}
-            title={data.name}
-            locale={i18n.language}
-            license={license}
-            authors={contributors}
-            type="video"
-          >
-            <VideoLicenseButtons
-              download={download}
-              licenseCode={data.copyright?.license.license}
-              src={originalVideoProps.src}
-              width={originalVideoProps.width}
-              height={originalVideoProps.height}
-              name={data.name}
-            />
-          </FigureLicenseDialogContent>
         )}
-      </ModalV2>
+        {HeartButton && data.copyright?.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
+      </EmbedByline>
     </Figure>
-  );
-};
-
-interface VideoLicenseButtonsProps {
-  download: string;
-  licenseCode?: string;
-  src: string;
-  width: string | number;
-  height: string | number;
-  name?: string;
-}
-
-const VideoLicenseButtons = ({ download, src, width, height, name, licenseCode }: VideoLicenseButtonsProps) => {
-  const { t } = useTranslation();
-  return (
-    <>
-      {licenseCode !== 'COPYRIGHTED' && (
-        <SafeLinkButton key="download" to={download} variant="outline" download>
-          {t('video.download')}
-        </SafeLinkButton>
-      )}
-      <CopyButton
-        variant="outline"
-        copyNode={t('license.hasCopiedTitle')}
-        onClick={() => navigator.clipboard.writeText(makeIframeString(src, width, height, name))}
-      >
-        {t('license.embed')}
-      </CopyButton>
-    </>
   );
 };
 

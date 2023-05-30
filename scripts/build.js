@@ -12,7 +12,6 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 const mkdirp = require('mkdirp');
-const stringLength = require('string-length');
 const getPackages = require('./_getPackages');
 const babelOptions = require('../babel.config');
 
@@ -27,7 +26,8 @@ const OK = chalk.reset.inverse.bold.green(' DONE ');
 
 const adjustToTerminalWidth = (str) => {
   const columns = process.stdout.columns || 80;
-  const width = columns - stringLength(OK) + 1;
+  // Account for ' DONE '
+  const width = columns - 7;
   const strs = str.match(new RegExp(`(.{1,${width}})`, 'g'));
   let lastString = strs[strs.length - 1];
   if (lastString.length < width) {

@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
-import { MenuButton, MenuItemProps } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
 import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
 import {
@@ -22,7 +22,8 @@ import {
   StyledContentIconWrapper,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
-import { contentTypeMapping } from '../model/ContentType';
+import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
+import { SettingsMenu } from '../MyNdla';
 
 const BlockElementWrapper = styled.div`
   display: flex;
@@ -173,7 +174,11 @@ const BlockResource = ({
         <BlockImage
           image={resourceImage}
           loading={isLoading}
-          contentType={contentTypeMapping[firstResourceType] ?? contentTypeMapping['default']}
+          contentType={
+            contentTypeMapping[firstResourceType] ??
+            resourceEmbedTypeMapping[firstResourceType] ??
+            contentTypeMapping['default']
+          }
         />
       </ImageWrapper>
       <BlockInfoWrapper>
@@ -188,7 +193,7 @@ const BlockResource = ({
         </ContentWrapper>
         <TagsAndActionMenu>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-          {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
+          {menuItems && menuItems.length > 0 && <SettingsMenu menuItems={menuItems} />}
         </TagsAndActionMenu>
       </BlockInfoWrapper>
     </BlockElementWrapper>

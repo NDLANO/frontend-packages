@@ -20,6 +20,10 @@ import { conceptEmbedPlugin } from './conceptEmbedPlugin';
 import { conceptListEmbedPlugin } from './conceptListEmbedPlugin';
 import { fileEmbedPlugin } from './fileEmbedPlugin';
 import { codeEmbedPlugin } from './codeEmbedPlugin';
+import { blogPostEmbedPlugin } from './blogPostEmbedPlugin';
+import { keyFigureEmbedPlugin } from './KeyFigureEmbedPlugin';
+import { contactBlockEmbedPlugin } from './contactBlockEmbedPlugin';
+import { campaignBlockPlugin } from './campaignBlockPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: imageEmbedPlugin,
@@ -34,5 +38,9 @@ export const embedPlugins: Record<string, PluginType> = {
   'content-link': contentLinkEmbedPlugin,
   concept: conceptEmbedPlugin,
   'concept-list': conceptListEmbedPlugin,
+  'blog-post': blogPostEmbedPlugin,
   file: fileEmbedPlugin,
+  'key-figure': keyFigureEmbedPlugin,
+  'contact-block': contactBlockEmbedPlugin,
+  'campaign-block': campaignBlockPlugin,
 };

@@ -9,8 +9,7 @@
 import styled from '@emotion/styled';
 import { H5pMetaData } from '@ndla/types-embed';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { errorSvgSrc } from './ImageEmbed';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 
 interface Props {
   embed: H5pMetaData;
@@ -24,21 +23,14 @@ const StyledFigure = styled.figure`
 `;
 
 const H5pEmbed = ({ embed, isConcept }: Props) => {
-  const { t } = useTranslation();
-
   if (embed.status === 'error') {
-    return (
-      <figure className={isConcept ? '' : 'c-figure'}>
-        <img alt={t('h5p.error')} src={errorSvgSrc} />
-        <figcaption>{t('h5p.error')}</figcaption>
-      </figure>
-    );
+    return <EmbedErrorPlaceholder type="h5p" />;
   }
   const fullColumnClass = isConcept ? 'c-figure--full-column' : '';
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
   if (embed.data.oembed) {
-    return <StyledFigure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
+    return <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
   }
 
   return (

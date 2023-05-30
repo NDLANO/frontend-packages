@@ -6,8 +6,8 @@
  *
  */
 
-import { IAudioMetaInformation } from '@ndla/types-audio-api';
-import { IImageMetaInformationV2 } from '@ndla/types-image-api';
+import { IAudioMetaInformation } from '@ndla/types-backend/audio-api';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { MetaData } from '.';
 
 export type AudioEmbedData = {
@@ -18,7 +18,7 @@ export type AudioEmbedData = {
 };
 
 export interface AudioMeta extends IAudioMetaInformation {
-  imageMeta?: IImageMetaInformationV2;
+  imageMeta?: IImageMetaInformationV3;
 }
 
 export type AudioMetaData = MetaData<AudioEmbedData, AudioMeta>;

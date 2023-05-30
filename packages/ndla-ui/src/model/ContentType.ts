@@ -56,3 +56,10 @@ export const contentTypeMapping: Record<string, string> = {
   [RESOURCE_TYPE_SOURCE_MATERIAL]: SOURCE_MATERIAL,
   default: SUBJECT_MATERIAL,
 };
+
+export const resourceEmbedTypeMapping: Record<string, string> = {
+  image: 'image',
+  video: 'video',
+  concept: 'concept',
+  audio: 'audio',
+};

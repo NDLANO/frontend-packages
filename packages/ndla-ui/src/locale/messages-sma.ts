@@ -478,6 +478,7 @@ const messages = {
       onlyTeacher: 'Daate vierhtie ajve dïllesisnie lohkehtæjjide mah tjaangeme Feidine.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
+    references: 'Referanser',
   },
   competenceGoals: {
     competenceGoal: 'maahtoe-ulmie',
@@ -697,6 +698,12 @@ const messages = {
     'assessment-resources': 'Vuarjasjimmievierhtie',
     topic: 'Teema',
     'multidisciplinary-topic': 'Tverrfaglig case',
+    image: 'Bilde',
+    concept: 'Forklaring',
+    audio: 'Lyd',
+    podcast: 'Podkast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Dahph',
@@ -967,6 +974,8 @@ const messages = {
   title: 'Tihtele',
   cancel: 'Orrejh',
   save: 'Vöörhkh',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bildetekst',
@@ -991,6 +1000,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Spill av',
     download: 'Veedtjh tjoeje-fijlem',
     reuse: 'Nuhtjh tjoeje-fijlem',
     error: {
@@ -1008,6 +1018,7 @@ const messages = {
       close: 'Dahph teeksteversjovnem',
     },
     readMoreDescriptionLabel: 'vis mer',
+    readLessDescriptionLabel: 'vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',
@@ -1104,10 +1115,13 @@ const messages = {
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
       edit: 'Rediger mappe',
+      updated: 'Mappa har blitt oppdatert',
+      defaultPageDescription: 'Legg til beskrivelse ved å redigere mappa',
       missingName: 'Skriv navn på mappe',
       folderDeleted: '"{{folderName}}" er slettet',
       folderCreated: '"{{folderName}}" er oppretta',
@@ -1118,6 +1132,7 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sloppe',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sloppe',
       dragHandle: 'Sorter mappen {{name}}',
+      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',
@@ -1129,18 +1144,18 @@ const messages = {
           unShare: 'Vil du avslutte deling av denne mappen?',
         },
         description: {
-          copy: 'Kopier og del denne lenken:',
+          copy: 'Trykk på lenke for å kopiere',
           private:
             'Når du deler en mappe lager du en lenke som er åpen for alle som har lenken. Du kan endre innholdet eller avslutte delingen når du ønsker.',
           private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
           shared:
             'Nå kan du dele denne lenken med elever eller andre lærere. Hvis du gjør endringer i mappen vil de bli synlige for alle du har delt lenken med.',
           unShare:
-            'Når du avslutter deling vil lenken til den delte mappen slutte å virke. Dersom du har delt lenken med noen vil de ikke lengre kunne se innholdet i mappen.',
+            'Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.',
         },
         button: {
-          share: 'Del mappen',
-          preview: 'Forhåndsvis delt mappe',
+          share: 'Del mappe',
+          preview: 'Forhåndsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
@@ -1169,6 +1184,7 @@ const messages = {
     examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     help: 'Hjelp',
     more: 'Flere valg',
+    selectView: 'Velg visning',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
@@ -1178,14 +1194,16 @@ const messages = {
       drawerButton: 'Vis mapper og ressursar',
       drawerTitle: 'Mapper og ressursar',
       learningpathUnsupported:
-        'Læringsstiar kan ikke visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
+        'Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
+        all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
         info1:
           'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
         info2: 'Du kan bla i artiklane ved å bruke menyen.',
         info3:
           'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
       },
+      willOpenInNewTab: 'Åpnes i ny fane.',
     },
     myPage: {
       noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
@@ -1228,8 +1246,8 @@ const messages = {
         text: 'Klikk på hjarteknappen for å lagre et fag. Du vil då få muligheit til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
       },
       sharing: {
-        title: 'Slik deler du mappene dine med andre',
-        text: 'Klikk på dele-knappen i mappa for å dele. Du vil då få ei lenke som du kan dele med andre.',
+        title: 'No kan lærarar dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
@@ -1297,6 +1315,16 @@ const messages = {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',
     linkError: 'Klarte ikkje å vise lenke.',
     unsupported: `Embed {{type}} er ikkje støtta.`,
+    embedError: `Orsak, ein feil oppstod ved lasting av {{type}}. Prøv å laste inn sida på nytt.`,
+    type: {
+      image: 'Bilde',
+      video: 'Video',
+      audio: 'Lyd',
+      podcast: 'Podkast',
+      concept: 'Forklaring',
+      h5p: 'H5P',
+      external: 'Ekstern ressurs',
+    },
   },
 };
 

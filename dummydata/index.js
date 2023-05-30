@@ -14,9 +14,6 @@ import { firstYouTubeList, secondYouTubeList, youTubeMockVideo } from './mockYou
 import { mockDownloadArticleText } from './mockDownloadArticleText';
 import { contentTypeResults } from './mockSearch';
 
-import { mockListView } from './mockListView';
-import { mockExplanationService } from './mockExplanationService';
-
 import {
   mockAllMovies,
   mockHighlightedMovies,
@@ -48,7 +45,6 @@ export {
   sourceMaterialResources,
   externalLearningResources,
   mockDownloadArticleText,
-  mockListView,
   mockAllMovies,
   mockHighlightedMovies,
   movieTopics,
@@ -57,7 +53,6 @@ export {
   mockMovieResourceTypes,
   mockTypeahead,
   mockFooterLinks,
-  mockExplanationService,
   contentTypeResults,
   ResourceData,
 };

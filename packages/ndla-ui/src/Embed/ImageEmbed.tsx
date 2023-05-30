@@ -6,26 +6,22 @@
  *
  */
 
-import isNumber from 'lodash/isNumber';
-import styled from '@emotion/styled';
-import { figureApa7CopyString, getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
 import { ImageEmbedData, ImageMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
-import { ModalV2 } from '@ndla/modal';
-import { SafeLinkButton } from '@ndla/safelink';
 import { MouseEventHandler, useState } from 'react';
-import { ButtonV2, CopyButton } from '@ndla/button';
 import { ExpandTwoArrows } from '@ndla/icons/action';
+import { COPYRIGHTED } from '@ndla/licenses';
 import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { Figure, FigureCaption, FigureType } from '../Figure';
+import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
-import { FigureLicenseDialogContent } from '../Figure/FigureLicenseDialogContent';
-import { Copyright } from '../types';
+import { EmbedByline } from '../LicenseByline';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: ImageMetaData;
-  articlePath?: string;
   previewAlt?: boolean;
+  heartButton?: HeartButtonType;
 }
 
 export interface Author {
@@ -77,7 +73,7 @@ const getSizes = (size?: string, align?: string) => {
 };
 
 const getFocalPoint = (data: ImageEmbedData) => {
-  if (isNumber(data.focalX) && isNumber(data.focalY)) {
+  if (typeof data.focalX === 'number' && typeof data.focalY === 'number') {
     return { x: data.focalX, y: data.focalY };
   }
   return undefined;
@@ -85,10 +81,10 @@ const getFocalPoint = (data: ImageEmbedData) => {
 
 const getCrop = (data: ImageEmbedData) => {
   if (
-    isNumber(data.lowerRightX) &&
-    isNumber(data.lowerRightY) &&
-    isNumber(data.upperLeftX) &&
-    isNumber(data.upperLeftY)
+    typeof data.lowerRightX === 'number' &&
+    typeof data.lowerRightY === 'number' &&
+    typeof data.upperLeftX === 'number' &&
+    typeof data.upperLeftY === 'number'
   ) {
     return {
       startX: data.lowerRightX,
@@ -100,38 +96,20 @@ const getCrop = (data: ImageEmbedData) => {
   return undefined;
 };
 
-const StyledSpan = styled.span`
-  font-style: italic;
-  color: grey;
-`;
-
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
+const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
-  const { t, i18n } = useTranslation();
   if (embed.status === 'error') {
     const { align, size } = embed.embedData;
     const figureType = getFigureType(size, align);
-    return (
-      <Figure type={figureType}>
-        <div className="c-figure__img">
-          <img alt={t('image.error.url')} src={errorSvgSrc} />
-        </div>
-        <figcaption>{t('image.error.caption')}</figcaption>
-      </Figure>
-    );
+    return <EmbedErrorPlaceholder type={'image'} figureType={figureType} />;
   }
 
   const { data, embedData, seq } = embed;
 
-  const authors = getLicenseCredits(data.copyright);
-
   const altText = embedData.alt || '';
-  const caption = embedData.caption || '';
-  const license = getLicenseByAbbreviation(data.copyright.license.license, i18n.language);
 
   const figureType = getFigureType(embedData.size, embedData.align);
   const sizes = getSizes(embedData.size, embedData.align);
@@ -139,29 +117,22 @@ const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
   const focalPoint = getFocalPoint(embedData);
   const crop = getCrop(embedData);
 
-  const contributors = getGroupedContributorDescriptionList(data.copyright, i18n.language).map((item) => ({
-    name: item.description,
-    type: item.label,
-  }));
-
   const figureId = `figure-${seq}-${data.id}`;
 
-  const { creators, rightsholders, processors } = authors;
-  const captionAuthors = creators.length || rightsholders.length ? [...creators, ...rightsholders] : processors;
   return (
     <Figure
       id={figureId}
       type={imageSizes ? undefined : figureType}
       className={imageSizes ? 'c-figure--right expanded' : ''}
     >
-      <ImageWrapper src={data.imageUrl} crop={crop} size={embedData.size}>
+      <ImageWrapper src={data.image.imageUrl} crop={crop} size={embedData.size}>
         <Image
           focalPoint={focalPoint}
-          contentType={data.contentType}
+          contentType={data.image.contentType}
           crop={crop}
           sizes={imageSizes ?? sizes}
           alt={altText}
-          src={data.imageUrl}
+          src={data.image.imageUrl}
           expandButton={
             <ExpandButton
               size={embedData.size}
@@ -173,43 +144,17 @@ const ImageEmbed = ({ embed, articlePath, previewAlt }: Props) => {
           }
         />
       </ImageWrapper>
-      {previewAlt ? <StyledSpan>{`Alt: ${embedData.alt}`}</StyledSpan> : null}
-      <FigureCaption
-        hideFigcaption={isSmall(embedData.size) || isBylineHidden}
-        figureId={figureId}
-        id={figureId}
-        caption={caption}
-        reuseLabel={t('image.reuse')}
-        modalButton={
-          <ButtonV2 shape="pill" variant="outline" size="small" onClick={() => setIsOpen(true)}>
-            {t('image.reuse')}
-          </ButtonV2>
-        }
-        licenseRights={license.rights}
-        authors={captionAuthors}
-        locale={i18n.language}
-      >
-        <ModalV2 controlled isOpen={isOpen} onClose={() => setIsOpen(false)} labelledBy="license-dialog-rules-heading">
-          {(close) => (
-            <FigureLicenseDialogContent
-              title={data.title.title}
-              license={license}
-              onClose={close}
-              authors={contributors}
-              origin={data.copyright.origin}
-              locale={i18n.language}
-              type="image"
-            >
-              <ImageLicenseButtons
-                articlePath={articlePath}
-                title={data.title.title}
-                imageUrl={data.imageUrl}
-                copyright={data.copyright}
-              />
-            </FigureLicenseDialogContent>
-          )}
-        </ModalV2>
-      </FigureCaption>
+      {isBylineHidden || (isSmall(embedData.size) && !imageSizes) ? null : (
+        <EmbedByline
+          type="image"
+          copyright={data.copyright}
+          description={embedData.caption ?? data.caption.caption}
+          bottomRounded
+          visibleAlt={previewAlt ? embed.embedData.alt : ''}
+        >
+          {HeartButton && data.copyright.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
+        </EmbedByline>
+      )}
     </Figure>
   );
 };
@@ -227,46 +172,6 @@ interface ImageWrapperProps {
 }
 const hideByline = (size?: string): boolean => {
   return !!size && size.endsWith('-hide-byline');
-};
-
-interface ImageLicenseButtonsProps {
-  imageUrl: string;
-  title?: string;
-  articlePath?: string;
-  copyright?: Partial<Copyright>;
-}
-
-export const ImageLicenseButtons = ({ imageUrl, title, articlePath, copyright }: ImageLicenseButtonsProps) => {
-  const { t, i18n } = useTranslation();
-  if (!copyright?.license?.license || copyright?.license?.license === 'COPYRIGHTED') return null;
-
-  const copyString = figureApa7CopyString(
-    title,
-    undefined,
-    imageUrl,
-    articlePath,
-    copyright,
-    copyright?.license?.license,
-    '',
-    t,
-    i18n.language,
-  );
-
-  return (
-    <>
-      <CopyButton
-        variant="outline"
-        onClick={() => navigator.clipboard.writeText(copyString)}
-        copyNode={t('license.hasCopiedTitle')}
-        aria-live="assertive"
-      >
-        {t('license.copyTitle')}
-      </CopyButton>
-      <SafeLinkButton to={`${imageUrl}?download=true`} download variant="outline">
-        {t('image.download')}
-      </SafeLinkButton>
-    </>
-  );
 };
 
 const ImageWrapper = ({ src, crop, size, children }: ImageWrapperProps) => {

@@ -6,7 +6,6 @@
  *
  */
 
-import isNumber from 'lodash/isNumber';
 import { useEffect, useRef } from 'react';
 import { IframeMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +17,7 @@ interface Props {
   isConcept?: boolean;
 }
 
-const ExternalEmbed = ({ embed, isConcept }: Props) => {
+const IframeEmbed = ({ embed, isConcept }: Props) => {
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -36,7 +35,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
 
   if (embedData.type === 'fullscreen') {
     const iframeImage = embed.status === 'success' ? embed.data.iframeImage : undefined;
-    const image = { src: iframeImage?.imageUrl ?? '', alt: iframeImage?.alttext?.alttext ?? '' };
+    const image = { src: iframeImage?.image.imageUrl ?? '', alt: iframeImage?.alttext?.alttext ?? '' };
     return (
       <Figure type="full">
         <ResourceBox
@@ -58,8 +57,8 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
 
   const { width, height, title, url } = embedData;
 
-  const strippedWidth = isNumber(width) ? width : width?.replace(/\s*px/, '');
-  const strippedHeight = isNumber(height) ? height : height?.replace(/\s*px/, '');
+  const strippedWidth = typeof width === 'number' ? width : width?.replace(/\s*px/, '');
+  const strippedHeight = typeof height === 'number' ? height : height?.replace(/\s*px/, '');
   const urlOrTitle = title || url;
 
   return (
@@ -83,4 +82,4 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   );
 };
 
-export default ExternalEmbed;
+export default IframeEmbed;

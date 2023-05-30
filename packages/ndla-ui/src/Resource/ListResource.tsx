@@ -7,9 +7,9 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
+import React from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
-import { MenuButton, MenuItemProps } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
 import Image from '../Image';
 import {
   CompressedTagList,
@@ -22,7 +22,8 @@ import {
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
-import { contentTypeMapping } from '../model/ContentType';
+import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
+import { SettingsMenu } from '../MyNdla';
 
 const ListResourceWrapper = styled.div`
   flex: 1;
@@ -130,14 +131,15 @@ interface ListResourceImageProps {
   loading?: boolean;
   type: 'normal' | 'compact';
   contentType: string;
+  background?: boolean;
 }
 
-const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {
+const ListResourceImage = ({ resourceImage, loading, type, contentType, background }: ListResourceImageProps) => {
   if (!loading) {
     if (resourceImage.src === '') {
       return (
         <StyledContentIconWrapper contentType={contentType}>
-          <ContentTypeBadge type={contentType} size="x-small" />
+          <ContentTypeBadge type={contentType} background={background} size="x-small" />
         </StyledContentIconWrapper>
       );
     } else {
@@ -196,7 +198,6 @@ export interface ListResourceProps {
   tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   resourceTypes: { id: string; name: string }[];
   tags?: string[];
   description?: string;
@@ -213,7 +214,6 @@ const ListResource = ({
   tags,
   resourceImage,
   resourceTypes,
-  headingLevel = 'h2',
   description,
   menuItems,
   isLoading = false,
@@ -222,7 +222,7 @@ const ListResource = ({
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
   const firstContentType = resourceTypes?.[0]?.id ?? '';
-  const Title = ResourceTitle.withComponent(headingLevel);
+  const embedResourceType = resourceEmbedTypeMapping[firstContentType];
 
   return (
     <ListResourceWrapper id={id}>
@@ -231,13 +231,14 @@ const ListResource = ({
           resourceImage={resourceImage}
           loading={isLoading}
           type={imageType}
-          contentType={contentTypeMapping[firstContentType] ?? contentTypeMapping['default']}
+          background={!!embedResourceType}
+          contentType={contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping['default']}
         />
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink to={link} target={targetBlank ? '_blank' : undefined}>
-            <Title title={title}>{title}</Title>
+            <ResourceTitle title={title}>{title}</ResourceTitle>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>
@@ -245,7 +246,7 @@ const ListResource = ({
       {showDescription && <Description description={description} loading={isLoading} />}
       <TagsandActionMenu>
         {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-        {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && <SettingsMenu menuItems={menuItems} />}
       </TagsandActionMenu>
     </ListResourceWrapper>
   );

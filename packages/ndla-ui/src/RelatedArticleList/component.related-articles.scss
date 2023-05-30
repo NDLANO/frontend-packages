@@ -77,14 +77,10 @@
   }
 
   &__title {
-    @include font-size(18px);
+    @include font-size(18px, 1.33);
     margin: 0 0 $spacing--small 0;
     font-weight: $font-weight-semibold;
     display: flex;
-
-    @include chinese() {
-      @include font-size(20px);
-    }
 
     .c-content-type-badge {
       flex-shrink: 0;
@@ -93,16 +89,10 @@
   }
 
   &__description {
-    @include font-size(16px);
-
-    @include chinese() {
-      @include font-size(18px);
-    }
+    @include font-size(16px, 1.5);
 
     span {
-      @include chinese() {
-        @include font-size(18px);
-      }
+      @include font-size(16px, 1.5);
     }
 
     margin: 0;

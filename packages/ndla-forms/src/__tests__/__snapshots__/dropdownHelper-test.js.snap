@@ -5,7 +5,7 @@ exports[`getFieldValue with field assigned 1`] = `"test"`;
 exports[`getFieldValue with field undefined 1`] = `"test"`;
 
 exports[`getFieldValue with field undefined 2`] = `
-Object {
+{
   "test": "test",
 }
 `;

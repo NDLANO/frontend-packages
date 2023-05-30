@@ -477,6 +477,7 @@ const messages = {
       onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
+    references: 'Referanser',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -693,6 +694,12 @@ const messages = {
     'assessment-resources': 'Vurderingsressurs',
     topic: 'Emne',
     'multidisciplinary-topic': 'Tverrfaglig case',
+    image: 'Bilde',
+    concept: 'Forklaring',
+    audio: 'Lyd',
+    podcast: 'Podkast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Lukk',
@@ -963,6 +970,8 @@ const messages = {
   title: 'Tittel',
   cancel: 'Avbryt',
   save: 'Lagre',
+  photo: 'Foto',
+  email: 'E-post',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bildetekst',
@@ -987,6 +996,7 @@ const messages = {
     },
   },
   audio: {
+    play: 'Spill av',
     download: 'Last ned lydfil',
     reuse: 'Bruk lydfil',
     error: {
@@ -1004,6 +1014,7 @@ const messages = {
       close: 'Lukk tekstversjon',
     },
     readMoreDescriptionLabel: 'vis mer',
+    readLessDescriptionLabel: 'vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',
@@ -1100,10 +1111,13 @@ const messages = {
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
+    settings: 'Instillinger',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
       edit: 'Rediger mappe',
+      updated: 'Mappen har blitt oppdatert',
+      defaultPageDescription: 'Legg til beskrivelse ved å redigere mappen',
       missingName: 'Skriv navn på mappe',
       folderDeleted: '"{{folderName}}" er slettet',
       folderCreated: '"{{folderName}}" er opprettet',
@@ -1114,6 +1128,7 @@ const messages = {
       onDragEndMissingOver: 'Mappen {{name}} ble sluppet',
       onDragCancel: 'Flytting avbrutt. Mappen {{name}} ble sluppet',
       dragHandle: 'Sorter mappen {{name}}',
+      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',
@@ -1125,18 +1140,18 @@ const messages = {
           unShare: 'Vil du avslutte deling av denne mappa?',
         },
         description: {
-          copy: 'Kopier og del denne lenka:',
+          copy: 'Trykk på lenke for å kopiere',
           private:
             'Når du deler ei mappe, lager du ei lenke som er åpen for alle som har lenka. Du kan endre innholdet eller avslutte delinga når du ønsker det. ',
           private2: 'Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser',
           shared:
             'Nå kan du dele denne lenka med elever eller andre lærere. Hvis du gjør endringer i mappa, blir de synlige for alle du har delt lenka med.',
           unShare:
-            'Når du avslutter deling, vil lenka til den delte mappa slutte å virke. Dersom du har delt lenka med noen, kan de ikke lenger se innholdet i mappa.',
+            'Når du avslutter deling, slutter lenka til den delte mappa og eventuelle undermapper å virke. Hvis du har delt lenka med noen, kan de ikke lenger se innholdet i mappa. Dette gjelder også lenker til eventuelle undermapper.',
         },
         button: {
-          share: 'Del mappen',
-          preview: 'Forhåndsvis delt mappe',
+          share: 'Del mappe',
+          preview: 'Forhåndsvis mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
@@ -1164,6 +1179,7 @@ const messages = {
     examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     help: 'Hjelp',
     more: 'Flere valg',
+    selectView: 'Velg visning',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
@@ -1171,16 +1187,18 @@ const messages = {
       info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
       firstShared: 'Mappa ble delt første gang {{date}}',
       learningpathUnsupported:
-        'Læringsstier kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
+        'Læringsstier og tverrfaglige caser kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
       drawerButton: 'Vis mapper og ressurser',
       drawerTitle: 'Mapper og ressurser',
       description: {
+        all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
         info1:
           'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.',
         info2: 'Du kan bla i artiklene ved å bruke menyen.',
         info3:
           'Hvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
       },
+      willOpenInNewTab: 'Åpnes i ny fane.',
     },
     myPage: {
       noRecents: 'Du har ikke lagt til noen ressurser ennå. Slik kommer du i gang:',
@@ -1223,8 +1241,8 @@ const messages = {
         text: 'Klikk på hjerteknappen for å lagre et fag. Du vil da få mulighet til å lagre favorittfagene dine til senere. Du kan finne de igjen i Min NDLA eller på siden med alle fag.',
       },
       sharing: {
-        title: 'Slik deler du mappene dine med andre',
-        text: 'Klikk på dele-knappen i mappa for å dele. Du vil da få ei lenke som du kan dele med andre.',
+        title: 'Nå kan lærere dele mapper med andre',
+        text: 'Klikk på dele-knappen i mappa for å få ei lenke som du kan dele med andre.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
@@ -1292,6 +1310,16 @@ const messages = {
     conceptListError: 'Klarte ikke å vise forklaringsliste',
     linkError: 'Klarte ikke å vise lenke.',
     unsupported: `Embed {{type}} er ikke støttet.`,
+    embedError: `Beklager, en feil oppstod ved lasting av {{type}}. Prøv å laste inn siden på nytt.`,
+    type: {
+      image: 'Bilde',
+      video: 'Video',
+      audio: 'Lyd',
+      podcast: 'Podkast',
+      concept: 'Forklaring',
+      h5p: 'H5P',
+      external: 'Ekstern ressurs',
+    },
   },
 };
 

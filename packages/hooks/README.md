@@ -54,7 +54,7 @@ function MyComponent() {
   return (
     <div>
       {windowSize.innerWidth < 768 ? (
-        <p>This document is less than 768px wide</p>
+        <p>This document is less than 768px wide.</p>
       ) : (
         <p>The document is at least 768px wide.</p>
       )}

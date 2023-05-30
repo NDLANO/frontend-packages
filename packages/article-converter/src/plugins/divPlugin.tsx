@@ -36,7 +36,7 @@ export const divPlugin: PluginType = (node, opts) => {
       </>
     );
   } else if (
-    node.attribs['class'].includes('c-bodybox') &&
+    node.attribs['class']?.includes('c-bodybox') &&
     node.childNodes.filter((c): c is Element => 'attribs' in c).some((c) => c.name === 'table')
   ) {
     const props = attributesToProps(node.attribs);

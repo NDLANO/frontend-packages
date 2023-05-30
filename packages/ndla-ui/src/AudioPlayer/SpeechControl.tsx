@@ -7,30 +7,10 @@
  */
 
 import React, { useRef } from 'react';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 import { VolumeUp } from '@ndla/icons/common';
-
-const SpeechPlayButton = styled.button`
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  cursor: pointer;
-  color: ${colors.brand.primary};
-  margin-right: 0;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: ${colors.brand.secondary};
-  }
-  .c-icon {
-    width: 24px;
-    height: 24px;
-  }
-`;
+import Tooltip from '@ndla/tooltip';
+import { IconButtonV2 } from '@ndla/button';
 
 type Props = {
   src: string;
@@ -38,6 +18,7 @@ type Props = {
 };
 
 const SpeechControl = ({ src, title }: Props) => {
+  const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const togglePlay = () => {
@@ -54,9 +35,11 @@ const SpeechControl = ({ src, title }: Props) => {
     <div>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
-      <SpeechPlayButton type="button" onClick={togglePlay}>
-        <VolumeUp role="img" aria-label="play" title="play" />
-      </SpeechPlayButton>
+      <Tooltip tooltip={t('audio.play')}>
+        <IconButtonV2 type="button" onClick={togglePlay} aria-label={t('audio.play')} variant="ghost">
+          <VolumeUp />
+        </IconButtonV2>
+      </Tooltip>
     </div>
   );
 };

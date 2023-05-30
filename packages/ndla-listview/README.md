@@ -1,6 +1,6 @@
 # ndla-listview
 
-listview for NDLA
+Listview for NDLA.
 
 ## Installation
 

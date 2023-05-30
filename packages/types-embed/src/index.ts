@@ -7,7 +7,7 @@
  */
 
 import { ImageEmbedData, ImageMetaData } from './imageTypes';
-import { AudioMetaData, AudioEmbedData } from './audioTypes';
+import { AudioMetaData, AudioEmbedData, AudioMeta } from './audioTypes';
 import { IframeMetaData, IframeEmbedData, IframeData } from './iframeTypes';
 import {
   H5pMetaData,
@@ -16,6 +16,8 @@ import {
   H5pPreviewResponse,
   H5pOembedData,
   H5pLicenseInformation,
+  H5pInfo,
+  H5pData,
 } from './h5pTypes';
 import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
 import { CodeEmbedData, CodeMetaData } from './codeTypes';
@@ -41,6 +43,10 @@ import {
   ConceptVisualElementMeta,
 } from './conceptTypes';
 import { FileEmbedData, FileMetaData } from './fileTypes';
+import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
+import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
+import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './keyFigureTypes';
+import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from './campaignBlockTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -56,7 +62,11 @@ export type EmbedData =
   | FootnoteEmbedData
   | ConceptListEmbedData
   | OembedEmbedData
-  | FileEmbedData;
+  | FileEmbedData
+  | BlogPostEmbedData
+  | KeyFigureEmbedData
+  | ContactBlockEmbedData
+  | CampaignBlockEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -71,7 +81,12 @@ export type EmbedMetaData =
   | OembedMetaData
   | CodeMetaData
   | FootnoteMetaData
-  | FileMetaData;
+  | FileMetaData
+  | BlogPostMetaData
+  | KeyFigureMetaData
+  | ContactBlockMetaData
+  | CampaignBlockMetaData;
+
 export type {
   ConceptMetaData,
   ImageMetaData,
@@ -85,6 +100,10 @@ export type {
   FootnoteMetaData,
   ConceptListMetaData,
   FileMetaData,
+  BlogPostMetaData,
+  KeyFigureMetaData,
+  ContactBlockMetaData,
+  CampaignBlockMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -99,7 +118,14 @@ export type {
   FootnoteEmbedData,
   ConceptListEmbedData,
   FileEmbedData,
+  BlogPostEmbedData,
+  KeyFigureEmbedData,
+  ContactBlockEmbedData,
+  CampaignBlockEmbedData,
 };
+
+export type { BlogPostMeta };
+export type { KeyFigureMeta };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };
 export type { ContentLinkData };
@@ -107,8 +133,11 @@ export type { FootnoteData };
 export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, BrightcoveCopyright };
 export type { RelatedContentData, NodeType };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
+export type { AudioMeta };
+export type { H5pData };
+export type { CampaignBlockMeta };
 
-export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation };
+export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 
 interface MetaDataFailure<T extends EmbedData> {
   resource: T['resource'];

@@ -6,36 +6,36 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import { CopyButton, ButtonV2 } from '@ndla/button';
-import { colors, fonts, spacing } from '@ndla/core';
-import { copyTextToClipboard, printPage } from '@ndla/util';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { LicenseByline } from '@ndla/notion';
+import { AccordionRoot, AccordionHeader, AccordionContent, AccordionItem } from '@ndla/accordion';
 import { TFunction } from 'i18next';
+import { FootNote } from '../types';
+import ArticleFootNotes from './ArticleFootNotes';
+import LicenseLink from '../LicenseByline/LicenseLink';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
   padding-top: ${spacing.normal};
   padding-bottom: ${spacing.xsmall};
   border-top: 1px solid ${colors.brand.greyLight};
-  ${fonts.sizes('14px', '18px')};
+  ${fonts.sizes('16px', '24px')};
   font-family: ${fonts.sans};
   color: ${colors.brand.greyDark};
 `;
 
 const TextWrapper = styled.div`
-  margin-top: 10px;
-`;
-
-const ButtonWrapper = styled.div`
-  margin-top: 18px;
-  button {
-    margin-bottom: 10px;
-    margin-right: 16px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: ${spacing.mediumlarge};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-direction: column;
+    flex-direction: column-reverse;
+    gap: ${spacing.xsmall};
   }
 `;
 
@@ -57,11 +57,8 @@ type Props = {
   published: string;
   license: string;
   licenseBox?: ReactNode;
-  copyPageUrlLink?: string;
-  printUrl?: string;
   locale?: string;
-  copyEmbedLink?: string;
-  copySourceReference?: string;
+  footnotes?: FootNote[];
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -85,133 +82,87 @@ const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
     : t('article.supplierLabel', { name: renderContributors(suppliers, t), interpolation: { escapeValue: false } });
 };
 
+const LicenseWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+`;
+
+const refRegexp = /note\d/;
+const referencesAccordionId = 'references';
+
 const ArticleByline = ({
   authors = [],
   suppliers = [],
-  license,
+  footnotes,
+  license: licenseString,
   licenseBox,
   published,
-  copyPageUrlLink,
-  printUrl,
   locale,
-  copyEmbedLink,
-  copySourceReference,
 }: Props) => {
   const { t } = useTranslation();
+  const [openAccordions, setOpenAccordions] = useState<string[]>([]);
 
-  const copyLinkHandler = () => {
-    if (copyPageUrlLink) {
-      copyTextToClipboard(copyPageUrlLink);
-    }
-  };
-  const licenseRights = getLicenseByAbbreviation(license, locale).rights;
+  const onHashChange = useCallback(
+    (e: HashChangeEvent) => {
+      const hash = e.newURL.split('#')[1];
+      if (hash.match(refRegexp) && !openAccordions.includes(referencesAccordionId)) {
+        setOpenAccordions([...openAccordions, referencesAccordionId]);
+        const el = document.getElementById(`#${hash}`);
+        el?.click();
+        el?.focus();
+      }
+    },
+    [openAccordions],
+  );
 
-  const copyLicense = () => {
-    if (copySourceReference) {
-      copyTextToClipboard(copySourceReference);
-    }
-  };
-  const copyEmbededLink = () => {
-    if (copyEmbedLink) {
-      copyTextToClipboard(copyEmbedLink);
-    }
-  };
+  useEffect(() => {
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, [onHashChange]);
+
+  const license = getLicenseByAbbreviation(licenseString, locale);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
 
-  const buttonId = 'popupUseContent';
-
   return (
     <Wrapper>
-      <div>
-        {t('article.lastUpdated')} {published}
-      </div>
-      {(showPrimaryContributors || licenseRights.length > 0) && (
-        <TextWrapper>
-          <LicenseByline licenseRights={licenseRights}>
-            {showPrimaryContributors && (
-              <PrimaryContributorsWrapper>
-                {authors.length > 0
-                  ? t('article.authorsLabel', {
-                      names: renderContributors(authors, t),
-                      interpolation: { escapeValue: false },
-                    })
-                  : getSuppliersText(suppliers, t)}
-              </PrimaryContributorsWrapper>
-            )}
-          </LicenseByline>
-        </TextWrapper>
-      )}
+      <TextWrapper>
+        <LicenseWrapper>
+          <LicenseLink license={license} />
+          {showPrimaryContributors && (
+            <PrimaryContributorsWrapper>
+              {authors.length > 0
+                ? t('article.authorsLabel', {
+                    names: renderContributors(authors, t),
+                    interpolation: { escapeValue: false },
+                  })
+                : getSuppliersText(suppliers, t)}
+            </PrimaryContributorsWrapper>
+          )}
+        </LicenseWrapper>
+        <div>
+          {t('article.lastUpdated')} {published}
+        </div>
+      </TextWrapper>
       {showSecondaryContributors && <TextWrapper>{getSuppliersText(suppliers, t)}</TextWrapper>}
-      <ButtonWrapper>
+      <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
         {licenseBox && (
-          <Modal
-            labelledBy={buttonId}
-            activateButton={
-              <ButtonV2 id={buttonId} size="small" shape="pill" variant="outline">
-                {t('article.useContent')}
-              </ButtonV2>
-            }
-            backgroundColor="white"
-            position="top"
-            size="medium"
-          >
-            {(onClose: () => void) => (
-              <>
-                <ModalHeader modifier="no-bottom-padding">
-                  <ModalCloseButton onClick={onClose} title="Lukk" />
-                </ModalHeader>
-                <ModalBody>{licenseBox}</ModalBody>
-              </>
-            )}
-          </Modal>
+          <AccordionItem value="rulesForUse">
+            <AccordionHeader headingLevel="h2">{t('article.useContent')}</AccordionHeader>
+            <AccordionContent>{licenseBox}</AccordionContent>
+          </AccordionItem>
         )}
-        {copySourceReference && (
-          <CopyButton
-            size="small"
-            shape="pill"
-            variant="outline"
-            aria-live="assertive"
-            copyNode={t('license.hasCopiedTitle')}
-            data-copy-string={copySourceReference}
-            onClick={copyLicense}
-          >
-            {`${t('license.copy')} ${t('license.copyTitle').toLowerCase()}`}
-          </CopyButton>
+
+        {!!footnotes?.length && (
+          <AccordionItem value={referencesAccordionId}>
+            <AccordionHeader headingLevel="h2">{t('article.references')}</AccordionHeader>
+            <AccordionContent forceMount>
+              <ArticleFootNotes footNotes={footnotes} />
+            </AccordionContent>
+          </AccordionItem>
         )}
-        {copyPageUrlLink && (
-          <CopyButton
-            onClick={copyLinkHandler}
-            size="small"
-            shape="pill"
-            variant="outline"
-            aria-live="assertive"
-            data-copy-string={copyPageUrlLink}
-            copyNode={t('article.copyPageLinkCopied')}
-          >
-            {t('article.copyPageLink')}
-          </CopyButton>
-        )}
-        {copyEmbedLink && (
-          <CopyButton
-            size="small"
-            shape="pill"
-            variant="outline"
-            aria-live="assertive"
-            copyNode={t('license.hasCopiedTitle')}
-            data-copy-string={copyEmbedLink}
-            onClick={copyEmbededLink}
-          >
-            {`${t('license.copy')}  ${t('license.tabs.embedlink').toLowerCase()}`}
-          </CopyButton>
-        )}
-        {printUrl && (
-          <ButtonV2 size="small" shape="pill" variant="outline" onClick={() => printPage(printUrl)}>
-            {t('article.printPage')}
-          </ButtonV2>
-        )}
-      </ButtonWrapper>
+      </AccordionRoot>
     </Wrapper>
   );
 };

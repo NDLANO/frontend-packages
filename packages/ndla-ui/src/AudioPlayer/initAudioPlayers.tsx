@@ -7,11 +7,16 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import shave from 'shave';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
 import { Locale } from '../types';
-import { truncateDescription } from './AudioPlayer';
+
+export const truncateDescription = (el: HTMLElement, readMoreLabel: string | null) => {
+  shave(el, 90, {
+    character: `... <a href="#" onclick="(function(e){e.preventDefault(); const parentNode = e.target.parentNode; parentNode.nextSibling.style.display = 'inline'; parentNode.remove();return false;})(arguments[0]);return false;">${readMoreLabel}</a>`,
+  });
+};
 
 const forEachElement = (selector: string, callback: Function) => {
   const nodeList = document.querySelectorAll(selector);

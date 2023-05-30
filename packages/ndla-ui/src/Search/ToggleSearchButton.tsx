@@ -24,7 +24,11 @@ interface StyledButtonProps {
   ndlaFilm?: boolean;
 }
 
-const StyledButton = styled(ButtonV2)<StyledButtonProps>`
+const props = ['hideOnNarrowScreen', 'hideOnWideScreen', 'ndlaFilm'];
+
+const shouldForwardProp = (p: string) => !props.includes(p);
+
+const StyledButton = styled(ButtonV2, { shouldForwardProp })<StyledButtonProps>`
   background: ${(p) => (p.ndlaFilm ? colors.ndlaFilm.filmColorBright : colors.brand.greyLighter)};
   border-radius: ${misc.borderRadius};
   border: 0;

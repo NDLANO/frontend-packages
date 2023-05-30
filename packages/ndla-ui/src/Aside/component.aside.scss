@@ -6,7 +6,7 @@
 .c-aside {
   position: relative;
   margin: $spacing--large 0;
-  @include inuit-font-size(16px);
+  @include font-size(16px, 1.5);
   z-index: 1;
 
   @include mq(tablet) {
@@ -59,7 +59,7 @@
 .c-aside h1 {
   margin-top: 0;
   margin-bottom: $spacing;
-  @include inuit-font-size(22px, 34px);
+  @include font-size(22px, 34px);
   font-weight: $font-weight-bold;
   position: relative;
   z-index: 2;
@@ -70,7 +70,7 @@
 .c-aside h4,
 .c-aside h5 {
   display: block;
-  @include inuit-font-size(16px);
+  @include font-size(16px, 1.5);
   letter-spacing: 0.1em;
   margin-top: $spacing;
   margin-bottom: $spacing--small;

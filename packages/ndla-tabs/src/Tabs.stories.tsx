@@ -6,7 +6,7 @@
  *
  */
 
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { defaultParameters } from '../../../stories/defaults';
 import TabsV2 from './TabsV2';
@@ -14,6 +14,7 @@ import TabsV2 from './TabsV2';
 export default {
   title: 'Enkle komponenter/Tabs',
   component: TabsV2,
+  tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
@@ -40,9 +41,9 @@ export default {
       },
     ],
   },
-} as ComponentMeta<typeof TabsV2>;
+} as Meta<typeof TabsV2>;
 
-export const TabsStory: ComponentStory<typeof TabsV2> = ({ ...args }) => {
+export const TabsStory: StoryFn<typeof TabsV2> = ({ ...args }) => {
   return <TabsV2 {...args}></TabsV2>;
 };
 

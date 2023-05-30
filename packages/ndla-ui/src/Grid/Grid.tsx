@@ -11,7 +11,7 @@ import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ReactNode } from 'react';
 
 export interface Props {
-  columns: '2' | '4';
+  columns: 2 | 4;
   border?: boolean;
   children?: ReactNode[];
 }
@@ -21,7 +21,8 @@ const GridContainer = styled.div`
   width: fit-content;
   grid-template-columns: auto;
   justify-content: center;
-  gap: ${spacing.xxsmall};
+  align-items: center;
+  gap: ${spacing.small};
   ${mq.range({ from: breakpoints.mobileWide })} {
     grid-template-columns: auto auto;
   }

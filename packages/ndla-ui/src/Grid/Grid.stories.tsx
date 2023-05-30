@@ -22,7 +22,7 @@ export default {
     layout: 'centered',
   },
   args: {
-    columns: '2',
+    columns: 2,
     border: false,
   },
 } as Meta<typeof Grid>;

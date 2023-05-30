@@ -48,7 +48,7 @@ export const divPlugin: PluginType = (node, opts) => {
     );
   } else if (node.attribs['data-type'] === 'grid' && node.children.length > 0) {
     const props = attributesToProps(node.attribs);
-    const columns = props['data-columns'] as GridType['columns'];
+    const columns = Number.parseInt(props['data-columns']) as GridType['columns'];
     return (
       <Grid border={false} columns={columns} {...props}>
         {/* @ts-ignore */}

@@ -40,16 +40,6 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
         subtitle={KeyFigureStory.args?.subtitle!}
         image={KeyFigureStory.args?.image}
       />
-      <KeyFigureStory
-        title={KeyFigureStory.args?.title!}
-        subtitle={KeyFigureStory.args?.subtitle!}
-        image={KeyFigureStory.args?.image}
-      />
-      <KeyFigureStory
-        title={KeyFigureStory.args?.title!}
-        subtitle={KeyFigureStory.args?.subtitle!}
-        image={KeyFigureStory.args?.image}
-      />
     </Grid>
   );
 };

@@ -17,7 +17,6 @@ import FigureWithLicense from './article/FigureWithLicense';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
-import ModalV2Example from './atoms/ModalV2Example';
 import DrawerExample from './atoms/DrawerExample';
 import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
@@ -666,7 +665,6 @@ storiesOf('Enkle komponenter', module)
       </OneColumn>
     </div>
   ))
-  .add('Modaler', () => <ModalV2Example />)
   .add('Skuff', () => <DrawerExample />)
 
   .add('Logo', () => (

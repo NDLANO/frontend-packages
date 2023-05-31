@@ -23,6 +23,7 @@ const GridContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: ${spacing.small};
+  padding-top: ${spacing.medium};
   ${mq.range({ from: breakpoints.mobileWide })} {
     grid-template-columns: auto auto;
   }
@@ -39,6 +40,10 @@ const GridContainer = styled.div`
   &[data-border='true'] {
     border: 1px solid ${colors.brand.light};
     border-radius: 4px;
+  }
+
+  p {
+    word-break: break-word;
   }
 `;
 

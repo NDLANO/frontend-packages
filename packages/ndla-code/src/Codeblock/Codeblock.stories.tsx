@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import DeleteForever from '@ndla/icons';
 import { IconButtonV2 } from '@ndla/button';
 import { defaultParameters } from '../../../../stories/defaults';
 import Codeblock from './Codeblock';
-import { DeleteForever } from '@ndla/icons/lib/editor';
 
 export default {
   title: 'Enkle komponenter/Codeblock',

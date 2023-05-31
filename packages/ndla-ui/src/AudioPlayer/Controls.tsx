@@ -148,9 +148,6 @@ const VolumeWrapper = styled(PopoverRoot)`
   position: relative;
   display: flex;
   justify-content: center;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    grid-area: volume;
-  }
 `;
 
 const VolumeList = styled(PopoverContent)`
@@ -171,6 +168,12 @@ const VolumeSliderWrapper = styled(SliderRoot)`
   align-items: center;
   user-select: none;
   touch-action: none;
+`;
+
+const VolumeButton = styled(IconButtonV2)`
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    grid-area: volume;
+  }
 `;
 
 const VolumeSliderBackground = styled(Track)`
@@ -359,9 +362,9 @@ const Controls = ({ src, title }: Props) => {
         </ProgressWrapper>
         <VolumeWrapper>
           <PopoverTrigger asChild>
-            <IconButtonV2 variant="ghost" colorTheme="greyLighter" aria-label={t('audio.controls.adjustVolume')}>
+            <VolumeButton variant="ghost" colorTheme="greyLighter" aria-label={t('audio.controls.adjustVolume')}>
               <VolumeUp />
-            </IconButtonV2>
+            </VolumeButton>
           </PopoverTrigger>
           <PopoverPortal>
             <VolumeList side="top">

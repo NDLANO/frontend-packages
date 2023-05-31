@@ -8,9 +8,9 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { Root, Trigger, Item, Content } from '@radix-ui/react-dropdown-menu';
+import { Root, Trigger, Item, Content, DropdownMenuPortal } from '@radix-ui/react-dropdown-menu';
 import { Root as SliderRoot, Track, Range, SliderThumb } from '@radix-ui/react-slider';
-import { Root as PopoverRoot, PopoverContent, PopoverTrigger } from '@radix-ui/react-popover';
+import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from '@radix-ui/react-popover';
 import { Play, Pause, VolumeUp } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -322,13 +322,15 @@ const Controls = ({ src, title }: Props) => {
               {speedValue}x
             </SpeedButton>
           </Trigger>
-          <SpeedList side="top">
-            {speedValues.map((speed) => (
-              <SpeedValueButton key={speed} onSelect={() => setSpeedValue(speed)}>
-                {speed}x{speed === speedValue && <SpeedSelectedMark />}
-              </SpeedValueButton>
-            ))}
-          </SpeedList>
+          <DropdownMenuPortal>
+            <SpeedList side="top">
+              {speedValues.map((speed) => (
+                <SpeedValueButton key={speed} onSelect={() => setSpeedValue(speed)}>
+                  {speed}x{speed === speedValue && <SpeedSelectedMark />}
+                </SpeedValueButton>
+              ))}
+            </SpeedList>
+          </DropdownMenuPortal>
         </Root>
         <Forward15SecButton
           colorTheme="greyLighter"
@@ -361,21 +363,23 @@ const Controls = ({ src, title }: Props) => {
               <VolumeUp />
             </IconButtonV2>
           </PopoverTrigger>
-          <VolumeList side="top">
-            <VolumeSliderWrapper
-              orientation="vertical"
-              value={[volumeValue]}
-              min={0}
-              defaultValue={[100]}
-              step={1}
-              onValueChange={handleVolumeSliderChange}
-            >
-              <VolumeSliderBackground>
-                <VolumeSliderSelected />
-              </VolumeSliderBackground>
-              <VolumeSliderHandle />
-            </VolumeSliderWrapper>
-          </VolumeList>
+          <PopoverPortal>
+            <VolumeList side="top">
+              <VolumeSliderWrapper
+                orientation="vertical"
+                value={[volumeValue]}
+                min={0}
+                defaultValue={[100]}
+                step={1}
+                onValueChange={handleVolumeSliderChange}
+              >
+                <VolumeSliderBackground>
+                  <VolumeSliderSelected />
+                </VolumeSliderBackground>
+                <VolumeSliderHandle />
+              </VolumeSliderWrapper>
+            </VolumeList>
+          </PopoverPortal>
         </VolumeWrapper>
       </ControlsWrapper>
     </div>

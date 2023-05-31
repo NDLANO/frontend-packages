@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { ButtonV2 } from '@ndla/button';
+import { IconButtonV2 } from '@ndla/button';
 import { defaultParameters } from '../../../../stories/defaults';
 import Codeblock from './Codeblock';
+import { DeleteForever } from '@ndla/icons/lib/editor';
 
 export default {
   title: 'Enkle komponenter/Codeblock',
@@ -30,8 +31,20 @@ export default {
     <span>is simply dummy text of the printing and typesetting industry</span>
   </p>
 </div>`,
-    actionButton: <ButtonV2>Button</ButtonV2>,
+    actionButton: <IconButtonV2 aria-label="Slett" variant="ghost" colorTheme="danger"><DeleteForever /></IconButtonV2>,
     showCopy: true,
+  },
+  argTypes: {
+    actionButton: {
+      table: {
+        type: {
+          detail: "Takes any ReactNode, but as the name implies: use a button component, preferably an icon-button"
+        }
+      },
+      control: {
+        type: null,
+      },
+    },
   },
 } as Meta<typeof Codeblock>;
 

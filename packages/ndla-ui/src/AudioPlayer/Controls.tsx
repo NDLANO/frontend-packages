@@ -15,7 +15,7 @@ import { Play, Pause, VolumeUp } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Back15, Forward15 } from '@ndla/icons/action';
-import { ButtonV2, IconButtonV2 } from '../../../button/src';
+import { ButtonV2, IconButtonV2 } from '@ndla/button';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};

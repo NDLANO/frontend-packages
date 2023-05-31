@@ -20,7 +20,6 @@ const GridContainer = styled.div`
   width: fit-content;
   grid-template-columns: auto;
   justify-content: center;
-  align-items: center;
   gap: ${spacing.small};
   padding-top: ${spacing.medium};
   ${mq.range({ from: breakpoints.mobileWide })} {
@@ -38,6 +37,13 @@ const GridContainer = styled.div`
 
   p {
     word-break: break-word;
+  }
+
+  /** Styling for å håndtere figurer/tekst inntil ny figur element*/
+  figure,
+  iframe {
+    inset: 0;
+    width: 100% !important;
   }
 `;
 

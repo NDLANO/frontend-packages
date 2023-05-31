@@ -1001,6 +1001,7 @@ const messages = {
   },
   audio: {
     play: 'Spill av',
+    pause: 'Pause',
     download: 'Veedtjh tjoeje-fijlem',
     reuse: 'Nuhtjh tjoeje-fijlem',
     error: {

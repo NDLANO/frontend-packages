@@ -998,6 +998,7 @@ const messages = {
   },
   audio: {
     play: 'Play',
+    pause: 'Pause',
     download: 'Download audio',
     reuse: 'Use audio',
     error: {

@@ -7,12 +7,11 @@
  */
 
 import styled from '@emotion/styled';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import { ReactNode } from 'react';
 
 export interface Props {
   columns: 2 | 4;
-  border?: boolean;
   children?: ReactNode[];
 }
 
@@ -37,22 +36,13 @@ const GridContainer = styled.div`
     }
   }
 
-  &[data-border='true'] {
-    border: 1px solid ${colors.brand.light};
-    border-radius: 4px;
-  }
-
   p {
     word-break: break-word;
   }
 `;
 
-const Grid = ({ columns, border = false, children }: Props) => {
-  return (
-    <GridContainer data-border={border} data-columns={columns}>
-      {children}
-    </GridContainer>
-  );
+const Grid = ({ columns, children }: Props) => {
+  return <GridContainer data-columns={columns}>{children}</GridContainer>;
 };
 
 export default Grid;

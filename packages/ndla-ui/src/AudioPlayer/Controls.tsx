@@ -322,7 +322,7 @@ const Controls = ({ src, title }: Props) => {
               {speedValue}x
             </SpeedButton>
           </Trigger>
-          <SpeedList>
+          <SpeedList side="top">
             {speedValues.map((speed) => (
               <SpeedValueButton key={speed} onSelect={() => setSpeedValue(speed)}>
                 {speed}x{speed === speedValue && <SpeedSelectedMark />}

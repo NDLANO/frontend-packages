@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Footer, FooterText, EditorName, LanguageSelector, FooterAuth } from '@ndla/ui';
+import { Footer, FooterText, EditorName, LanguageSelector } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
 import { withTranslation } from 'react-i18next';
 import { mockFooterLinks } from '../../dummydata';
-import { feideUserLaerer } from './feideUser';
 
-const FooterExample = ({ t, hideLanguageSelector, i18n, isAuthenticated }) => {
+const FooterExample = ({ t, hideLanguageSelector, i18n }) => {
   const privacyLinks = [
     { label: t('footer.privacyLink'), url: 'https://om.ndla.no/gpdr' },
     { label: t('footer.cookiesLink'), url: 'https://om.ndla.no/cookies' },
@@ -24,7 +23,6 @@ const FooterExample = ({ t, hideLanguageSelector, i18n, isAuthenticated }) => {
           <LanguageSelector inverted={true} locales={i18n.options.supportedLngs} onSelect={i18n.changeLanguage} />
         )
       }
-      auth={<FooterAuth isAuthenticated={!!isAuthenticated} user={feideUserLaerer} onAuthenticateClick={() => {}} />}
       privacyLinks={privacyLinks}
     >
       <FooterText>

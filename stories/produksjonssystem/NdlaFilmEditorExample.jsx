@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { MovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
 import { FieldHeader, Select, FieldHeaderIconStyle } from '@ndla/forms';
-import Modal from '@ndla/modal';
+import { Modal } from '@ndla/modal';
 import { spacing, spacingUnit } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
@@ -152,7 +152,7 @@ class NdlaFilmExample extends Component {
         <StyledSection>
           <h1>{t('ndlaFilm.editor.movieGroupHeader')}</h1>
           <Modal
-            narrow
+            size="small"
             onClick={() => {
               this.setState({
                 newTheme: {
@@ -189,7 +189,7 @@ class NdlaFilmExample extends Component {
             <StyledThemeWrapper key={theme.id}>
               <FieldHeader title={theme.name.nb} subTitle={` | ${theme.name.nn} | ${theme.name.en}`}>
                 <Modal
-                  narrow
+                  size="small"
                   onClick={() => {
                     this.setState({
                       newTheme: {

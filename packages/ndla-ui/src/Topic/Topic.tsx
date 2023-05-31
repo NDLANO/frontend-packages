@@ -12,7 +12,7 @@ import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core'
 
 import parse from 'html-react-parser';
 import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
-import { ModalCloseButton, ModalV2, ModalHeaderV2 } from '@ndla/modal';
+import { ModalCloseButton, Modal, ModalHeader } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/react';
@@ -182,7 +182,7 @@ const StyledContentWrapper = styled.div<InvertItProps>`
   background-color: ${colors.white};
 `;
 
-const ModalHeader = styled(ModalHeaderV2)`
+const StyledModalHeader = styled(ModalHeader)`
   padding: ${spacing.small} ${spacing.nsmall};
 `;
 
@@ -274,8 +274,8 @@ const Topic = ({
         {topic.image && (
           <TopicHeaderVisualElementWrapper>
             {topic.visualElement ? (
-              <ModalV2
-                label={t('topicPage.imageModal')}
+              <Modal
+                aria-label={t('topicPage.imageModal')}
                 activateButton={
                   <VisualElementButton
                     variant="stripped"
@@ -297,13 +297,13 @@ const Topic = ({
               >
                 {(onClose: () => void) => (
                   <>
-                    <ModalHeader>
+                    <StyledModalHeader>
                       <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
-                    </ModalHeader>
+                    </StyledModalHeader>
                     {topic.visualElement && topic.visualElement.element}
                   </>
                 )}
-              </ModalV2>
+              </Modal>
             ) : (
               <TopicHeaderImage
                 src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}

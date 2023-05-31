@@ -12,7 +12,7 @@ import { Additional, Core } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
-import { ModalV2, ModalCloseButton } from '@ndla/modal';
+import { Modal, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
 
 const BreadcrumbPath = styled.div`
@@ -32,22 +32,6 @@ const ModalButton = styled(ButtonV2)`
   &:hover {
     box-shadow: inset 0 -1px;
   }
-`;
-
-const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${spacing.normal} ${spacing.small};
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.normal} ${spacing.large};
-  }
-`;
-
-const ModalHeading = styled.h2`
-  margin: 0;
-  ${fonts.sizes('16px', '20px')};
-  font-weight: 600;
 `;
 
 const ModalContent = styled.div`
@@ -99,8 +83,7 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
     <Breadcrumb breadcrumb={mainContext.breadcrumb}>
       &nbsp;
       {contexts.length > 1 && (
-        <ModalV2
-          label={t('searchPage.contextModal.ariaLabel')}
+        <Modal
           activateButton={
             <ModalButton variant="link">
               {t('searchPage.contextModal.button', {
@@ -114,7 +97,7 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
           {(onClose: () => void) => (
             <>
               <ModalHeader>
-                <ModalHeading>{t('searchPage.contextModal.heading')}</ModalHeading>
+                <ModalTitle>{t('searchPage.contextModal.heading')}</ModalTitle>
                 <ModalCloseButton onClick={onClose} title={t('searchPage.close')} />
               </ModalHeader>
               <ModalContent>
@@ -131,7 +114,7 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
               </ModalContent>
             </>
           )}
-        </ModalV2>
+        </Modal>
       )}
     </Breadcrumb>
   );

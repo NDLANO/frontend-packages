@@ -86,7 +86,7 @@ type Props = {
   code: string;
   format: string;
   title?: string | null;
-  actionButton?: ReactNode | null;
+  actionButton?: ReactNode;
   showCopy?: boolean;
 };
 

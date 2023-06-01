@@ -1,4 +1,4 @@
-export const spacingUnit = 26;
+export const spacingUnit = 24;
 
 export type SpacingNames = 'xxsmall' | 'xsmall' | 'small' | 'nsmall' | 'normal' | 'medium' | 'mediumlarge' | 'large';
 

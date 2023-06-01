@@ -278,3 +278,4 @@ export type { HeartButtonType } from './Embed';
 export { CampaignBlock } from './CampaignBlock';
 export { Heading } from './Typography';
 export type { HeadingLevel } from './types';
+export { DefinitionTerm, DefinitionDescription } from './DefinitionList';

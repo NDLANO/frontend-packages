@@ -18,6 +18,8 @@ import { divPlugin } from './divPlugin';
 import { tablePlugin } from './tablePlugin';
 import { asidePlugin } from './asidePlugin';
 import { ulPlugin } from './ulPlugin';
+import { ddPlugin } from './ddPlugin';
+import { dtPlugin } from './dtPlugin';
 
 export const basePlugins: Record<string, PluginType> = {
   h2: copyParagraphPlugin,
@@ -30,6 +32,8 @@ export const basePlugins: Record<string, PluginType> = {
   table: tablePlugin,
   aside: asidePlugin,
   ul: ulPlugin,
+  dd: ddPlugin,
+  dt: dtPlugin,
 };
 
 export const oembedPlugins: Record<string, PluginType> = {

@@ -11,7 +11,7 @@ import { ButtonV2 } from '@ndla/button';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
 import ToggleItem from './ToggleItem';
 import FilterCarousel from './FilterCarousel';
 
@@ -127,10 +127,9 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
             </StyledButtonElementWrapper>
           ))}
           <Modal
-            label={t('searchPage.searchFilterMessages.resourceTypeFilter.button')}
-            size="fullscreen"
+            aria-label={t('searchPage.searchFilterMessages.resourceTypeFilter.button')}
+            size="full"
             animation="subtle"
-            backgroundColor="white"
             activateButton={
               <StyledButtonElementWrapper>
                 <ButtonV2 colorTheme="light" size="normal" shape="pill">
@@ -144,7 +143,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
           >
             {(onClose: () => void) => (
               <>
-                <ModalHeader modifier={['left-align']}>
+                <ModalHeader>
                   <h1>{heading}</h1>
                   <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
                 </ModalHeader>

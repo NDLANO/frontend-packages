@@ -7,12 +7,13 @@
  */
 
 import React, { ReactChild, ReactChildren, ReactNode } from 'react';
-import { spacing, mq, breakpoints } from '@ndla/core';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { spacing, mq, breakpoints, colors } from '@ndla/core';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
 import { css } from '@emotion/react';
 import { ButtonV2 } from '@ndla/button';
 import { LearningPath } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 
 const buttonToggleCss = css`
   ${mq.range({ from: breakpoints.tablet })} {
@@ -29,6 +30,10 @@ const buttonToggleCss = css`
   }
 `;
 
+const StyledModal = styled(Modal)`
+  background-color: ${colors.brand.greyLightest};
+`;
+
 type ModalWrapperProps = {
   innerWidth: number;
   children: (arg: VoidFunction) => ReactChild | ReactChildren | ReactNode;
@@ -38,10 +43,9 @@ const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
   const { t } = useTranslation();
   if (innerWidth < 601) {
     return (
-      <Modal
-        backgroundColor="grey"
+      <StyledModal
         animationDuration={200}
-        size="fullscreen"
+        size="full"
         activateButton={
           <ButtonV2 css={buttonToggleCss}>
             <LearningPath />
@@ -57,7 +61,7 @@ const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
             <ModalBody>{children(closeModal)}</ModalBody>
           </>
         )}
-      </Modal>
+      </StyledModal>
     );
   }
   return <>{children(() => {})}</>;

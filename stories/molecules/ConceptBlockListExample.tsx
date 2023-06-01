@@ -97,7 +97,11 @@ const ConceptBlockListExample = () => {
           },
         }}
         licenseBox={<LicenseBox />}
-        competenceGoals={<CompetenceGoalListExample />}
+        competenceGoals={({ Dialog, dialogProps }) => (
+          <Dialog {...dialogProps}>
+            <CompetenceGoalListExample />
+          </Dialog>
+        )}
         icon={<TasksAndActivitiesBadge background size="large" />}
         id="mainContentId"
         locale="nb"

@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { ModalV2 } from '.';
+import Modal from './Modal';
 import { ModalSizeType, ModalAnimation, DrawerPosition, BaseProps, ModalSize } from './types';
 
 interface Props {
@@ -20,7 +20,7 @@ interface Props {
 const Drawer = ({ size = 'normal', position = 'left', ...rest }: Props & BaseProps) => {
   const modalSize: ModalSizeType =
     position === 'bottom' || position === 'top' ? { width: 'full', height: size } : { height: 'full', width: size };
-  return <ModalV2 animation="slideIn" position={position} size={modalSize} modalMargin="none" {...rest} />;
+  return <Modal animation="slideIn" position={position} size={modalSize} modalMargin="none" {...rest} />;
 };
 
 export default Drawer;

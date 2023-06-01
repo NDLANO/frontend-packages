@@ -998,6 +998,7 @@ const messages = {
   },
   audio: {
     play: 'Spill av',
+    pause: 'Pause',
     download: 'Viečča jietnafiilla',
     reuse: 'Geavat jietnafiilla',
     error: {

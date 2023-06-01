@@ -8,178 +8,85 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems, MenuItemProps } from '@reach/menu-button';
-import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderOrientation } from '@reach/slider';
+import { Root, Trigger, Item, Content, DropdownMenuPortal } from '@radix-ui/react-dropdown-menu';
+import { Root as SliderRoot, Track, Range, SliderThumb } from '@radix-ui/react-slider';
+import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from '@radix-ui/react-popover';
 import { Play, Pause, VolumeUp } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Back15, Forward15 } from '@ndla/icons/action';
+import { ButtonV2, IconButtonV2 } from '@ndla/button';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
+  background: ${colors.white};
   font-family: ${fonts.sans};
+  gap: ${spacing.xsmall};
+  padding: ${spacing.small} ${spacing.normal};
   ${mq.range({ until: breakpoints.tabletWide })} {
-    flex-wrap: wrap;
-  }
-  padding: ${spacing.small};
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.small} ${spacing.normal};
+    display: grid;
+    padding: ${spacing.small};
+    grid-template-columns: 1fr repeat(5, auto) 1fr;
+    grid-template-areas:
+      'track  track track     track track     track   track'
+      '.      speed backwards play  forwards  volume  .';
   }
 `;
 
-const PlayButton = styled.button`
-  background: ${colors.brand.lighter};
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  cursor: pointer;
-  color: ${colors.brand.primary};
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  transition: ${misc.transition.default};
-  margin-right: ${spacing.small};
+const PlayButton = styled(IconButtonV2)`
   ${mq.range({ until: breakpoints.tabletWide })} {
-    order: 4;
-    margin-left: ${spacing.small};
-  }
-
-  &:hover,
-  &:active,
-  &:focus {
-    background: ${colors.brand.primary};
-    color: #ffffff;
-  }
-
-  .c-icon {
-    width: 24px;
-    height: 24px;
+    grid-area: play;
   }
 `;
 
-const ForwardRewindButton = styled.button`
-  background-color: inherit;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 42px;
-  height: 42px;
-  border: 0;
-  border-radius: 50%;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 9px;
-  line-height: 23px;
-  color: ${colors.brand.dark};
-  font-family: ${fonts.sans};
-  transition: ${misc.transition.default};
-
-  &:hover {
-    background-color: ${colors.brand.greyLighter};
-  }
-`;
-
-const Forward15SecButton = styled(ForwardRewindButton)`
-  svg {
-    fill: ${colors.brand.primary};
-    width: 24px;
-    height: 24px;
-  }
+const Forward15SecButton = styled(IconButtonV2)`
   ${mq.range({ until: breakpoints.tabletWide })} {
-    order: 3;
+    grid-area: forwards;
   }
 `;
-const Back15SecButton = styled(ForwardRewindButton)`
-  svg {
-    fill: ${colors.brand.primary};
-    width: 24px;
-    height: 24px;
-  }
+const Back15SecButton = styled(IconButtonV2)`
   ${mq.range({ until: breakpoints.tabletWide })} {
-    order: 5;
+    grid-area: backwards;
   }
 `;
 
-const SpeedWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
+const SpeedButton = styled(ButtonV2)`
   ${mq.range({ until: breakpoints.tabletWide })} {
-    order: 2;
-  }
-`;
-const SpeedButton = styled(MenuButton)`
-  height: 32px;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 12px;
-  text-align: center;
-  width: 52px;
-  &:hover,
-  &:active,
-  &:focus,
-  &[aria-expanded='true'] {
-    background: ${colors.brand.greyLighter};
-    border-radius: 27px;
-    color: ${colors.text.primary};
+    grid-area: speed;
   }
 `;
 
-const SpeedMenu = styled(MenuPopover)`
-  position: absolute;
-  bottom: 36px;
-  z-index: 99;
-`;
-
-const SpeedList = styled(MenuItems)`
-  background: #ffffff;
+const SpeedList = styled(Content)`
+  background: ${colors.white};
   border: 1px solid ${colors.brand.lighter};
-  border-radius: 5px;
+  border-radius: ${misc.borderRadius};
   padding: 5px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
 `;
 
-interface SpeedValueButtonProps extends MenuItemProps {
-  selected?: boolean;
-}
-
-const SpeedValueButton = styled(MenuItem)<SpeedValueButtonProps>`
+const SpeedValueButton = styled(Item)`
   height: 28px;
-  position: relative;
-  background: none;
-  border: 0;
   padding: 0 14px;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: ${fonts.weight.semibold};
+  ${fonts.sizes('14px')};
   color: ${colors.text.light};
   display: flex;
   justify-content: center;
-  align-items: center;
   &:hover,
   &:active,
   &:focus,
-  &[data-selected] {
+  &[data-highlighted] {
     background: ${colors.brand.greyLighter};
     border-radius: 5px;
+    outline: none;
     color: ${colors.text.primary};
   }
-  ${(props) =>
-    props.selected &&
-    `
-    color: ${colors.text.primary};
-    
-  `}
 `;
 
 const SpeedSelectedMark = styled.span`
@@ -187,145 +94,108 @@ const SpeedSelectedMark = styled.span`
   background: #d1372e;
   width: 6px;
   height: 6px;
-  display: inline-block;
-  align-self: flex-start;
   margin: 6px 0 0 2px;
 `;
 
 const Time = styled.div`
-  font-size: 16px;
+  ${fonts.sizes('16px')};
 `;
 
 const ProgressWrapper = styled.div`
-  flex: 1 1 auto;
+  flex: 1;
   display: flex;
   align-items: center;
-  margin: 0 ${spacing.small};
+  gap: ${spacing.small};
   ${mq.range({ until: breakpoints.tabletWide })} {
-    order: 1;
-    width: 100%;
-    margin: 0;
-    margin-bottom: ${spacing.normal};
+    grid-area: track;
   }
 `;
-const SliderWrapper = styled.div`
+
+const SliderWrapper = styled(SliderRoot)`
   cursor: pointer;
-  flex: 1 1 auto;
-  margin: 0 ${spacing.small};
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
 `;
 
-const ProgressBackground = styled(SliderTrack)`
+const StyledTrack = styled(Track)`
   height: 4px;
   width: 100%;
   background: ${colors.brand.lighter};
   border-radius: 7px;
 `;
 
-const ProgressPlayed = styled(SliderRange)`
+const StyledRange = styled(Range)`
+  position: absolute;
   height: 4px;
   background: #5cbc80;
   border-radius: 7px;
 `;
 
-const ProgressHandle = styled(SliderHandle)`
+const StyledThumb = styled(SliderThumb)`
+  display: block;
   width: 20px;
   height: 20px;
   background: #5cbc80;
   border-radius: 50%;
-  top: -8px;
+  outline: none;
 `;
 
-const VolumeWrapper = styled.div`
+const VolumeWrapper = styled(PopoverRoot)`
   position: relative;
   display: flex;
   justify-content: center;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    order: 6;
-  }
 `;
 
-const WardButtonWrapper = styled.div<{ order: number }>`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    ${(props) =>
-      `
-    order: ${props.order};
-  `}
-  }
-`;
-
-const VolumeButton = styled(MenuButton)`
-  background-color: inherit;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-
-  svg {
-    fill: ${colors.brand.primary};
-    width: 32px;
-    height: 32px;
-  }
-
-  &:hover,
-  &:active,
-  &:focus,
-  &[aria-expanded='true'] {
-    background-color: ${colors.brand.greyLighter};
-  }
-`;
-
-const VolumeMenu = styled(MenuPopover)`
-  position: absolute;
-  bottom: 52px;
-  z-index: 99;
-`;
-
-const VolumeList = styled.div`
+const VolumeList = styled(PopoverContent)`
   box-shadow: 0 14px 20px -5px rgba(32, 88, 143, 0.17);
   border-radius: 60px;
-  background: #ffffff;
+  background: ${colors.white};
+  padding: ${spacing.small};
   border: 1px solid ${colors.brand.lighter};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 32px;
   height: 128px;
 `;
 
-const VolumeSliderWrapper = styled.div`
+const VolumeSliderWrapper = styled(SliderRoot)`
   cursor: pointer;
-  flex: 1 1 auto;
+  height: 100%;
+  position: relative;
   display: flex;
-  justify-content: center;
-  padding: 16px 0;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
 `;
 
-const VolumeSliderBackground = styled(SliderTrack)`
+const VolumeButton = styled(IconButtonV2)`
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    grid-area: volume;
+  }
+`;
+
+const VolumeSliderBackground = styled(Track)`
   height: 100%;
   width: 5px;
   background: ${colors.brand.lighter};
   border-radius: 7px;
 `;
 
-const VolumeSliderSelected = styled(SliderRange)`
+const VolumeSliderSelected = styled(Range)`
+  position: absolute;
   width: 5px;
   background: ${colors.brand.secondary};
   border-radius: 7px;
-  bottom: 0;
 `;
 
-const VolumeSliderHandle = styled(SliderHandle)`
+const VolumeSliderHandle = styled(SliderThumb)`
+  display: block;
   width: 20px;
   height: 20px;
   background: ${colors.brand.primary};
   border-radius: 50%;
-  left: -8px;
 `;
 
 const formatTime = (seconds: number) => {
@@ -338,16 +208,15 @@ const formatTime = (seconds: number) => {
 
 const speedValues = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
 
-type Props = {
+interface Props {
   src: string;
   title: string;
-};
+}
 
 const Controls = ({ src, title }: Props) => {
   const { t } = useTranslation();
   const [speedValue, setSpeedValue] = useState(1);
   const [volumeValue, setVolumeValue] = useState(100);
-  const [sliderValue, setSliderValue] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [remainingTime, setRemainingTime] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -364,8 +233,6 @@ const Controls = ({ src, title }: Props) => {
       const audioElement = audioRef.current;
       const handleTimeUpdate = () => {
         const { currentTime, duration } = audioElement;
-        const percent = Math.round((currentTime / duration) * 100);
-        setSliderValue(percent);
         setCurrentTime(Math.round(currentTime));
         setRemainingTime(Math.round(duration - currentTime));
       };
@@ -373,7 +240,6 @@ const Controls = ({ src, title }: Props) => {
       const handleLoadedMetaData = () => {
         const { currentTime, duration } = audioElement;
         setCurrentTime(Math.round(currentTime));
-        setRemainingTime(Math.round(duration - currentTime));
         setRemainingTime(Math.round(duration - currentTime));
       };
 
@@ -410,16 +276,16 @@ const Controls = ({ src, title }: Props) => {
     }
   };
 
-  const handleSliderChange = (value: number) => {
+  const handleSliderChange = (value: number[]) => {
     if (audioRef.current) {
-      audioRef.current.currentTime = (value / 100) * audioRef.current.duration;
+      audioRef.current.currentTime = value[0];
     }
   };
 
-  const handleVolumeSliderChange = (value: number) => {
+  const handleVolumeSliderChange = (values: number[]) => {
     if (audioRef.current) {
-      audioRef.current.volume = value / 100;
-      setVolumeValue(value);
+      audioRef.current.volume = values[0] / 100;
+      setVolumeValue(values[0]);
     }
   };
 
@@ -428,112 +294,95 @@ const Controls = ({ src, title }: Props) => {
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <ControlsWrapper>
-        <PlayButton type="button" onClick={togglePlay} title="play" aria-label="play">
-          <span aria-hidden>
-            {playing ? (
-              <Pause role="img" aria-label="Pause" title="Pause" />
-            ) : (
-              <Play role="img" aria-label="Play" title="Play" />
-            )}
-          </span>
+        <PlayButton
+          aria-label={t(playing ? t('audio.pause') : t('audio.play'))}
+          colorTheme="lighter"
+          size="normal"
+          onClick={togglePlay}
+        >
+          {playing ? <Pause /> : <Play />}
         </PlayButton>
-        <WardButtonWrapper order={3}>
-          <Back15SecButton
-            type="button"
-            title={t('audio.controls.rewind15sec')}
-            aria-label={t('audio.controls.rewind15sec')}
-            onClick={() => {
-              onSeekSeconds(-15);
-            }}
-          >
-            <Back15 />
-          </Back15SecButton>
-        </WardButtonWrapper>
+        <Back15SecButton
+          variant="ghost"
+          colorTheme="greyLighter"
+          title={t('audio.controls.rewind15sec')}
+          aria-label={t('audio.controls.rewind15sec')}
+          onClick={() => onSeekSeconds(-15)}
+        >
+          <Back15 />
+        </Back15SecButton>
 
-        <SpeedWrapper>
-          <Menu>
+        <Root>
+          <Trigger asChild>
             <SpeedButton
-              type="button"
-              as="button"
+              shape="pill"
+              variant="ghost"
+              size="normal"
+              colorTheme="greyLighter"
               title={t('audio.controls.selectSpeed')}
               aria-label={t('audio.controls.selectSpeed')}
             >
               {speedValue}x
             </SpeedButton>
-            <SpeedMenu as="div" portal={false}>
-              <div>
-                <SpeedList as="div">
-                  {speedValues.map((speed) => (
-                    <SpeedValueButton
-                      type="button"
-                      //@ts-ignore
-                      as="button"
-                      key={speed}
-                      selected={speed === speedValue}
-                      onSelect={() => {
-                        setSpeedValue(speed);
-                      }}
-                    >
-                      {speed}x{speed === speedValue && <SpeedSelectedMark />}
-                    </SpeedValueButton>
-                  ))}
-                </SpeedList>
-              </div>
-            </SpeedMenu>
-          </Menu>
-        </SpeedWrapper>
-        <WardButtonWrapper order={5}>
-          <Forward15SecButton
-            type="button"
-            title={t('audio.controls.forward15sec')}
-            aria-label={t('audio.controls.forward15sec')}
-            onClick={() => {
-              onSeekSeconds(15);
-            }}
-          >
-            <Forward15 />
-          </Forward15SecButton>
-        </WardButtonWrapper>
+          </Trigger>
+          <DropdownMenuPortal>
+            <SpeedList side="top">
+              {speedValues.map((speed) => (
+                <SpeedValueButton key={speed} onSelect={() => setSpeedValue(speed)}>
+                  {speed}x{speed === speedValue && <SpeedSelectedMark />}
+                </SpeedValueButton>
+              ))}
+            </SpeedList>
+          </DropdownMenuPortal>
+        </Root>
+        <Forward15SecButton
+          colorTheme="greyLighter"
+          variant="ghost"
+          title={t('audio.controls.forward15sec')}
+          aria-label={t('audio.controls.forward15sec')}
+          onClick={() => onSeekSeconds(15)}
+        >
+          <Forward15 />
+        </Forward15SecButton>
         <ProgressWrapper>
           <Time>{formatTime(currentTime)}</Time>
-          <SliderWrapper>
-            <SliderInput onChange={handleSliderChange} value={sliderValue}>
-              <ProgressBackground as="div">
-                <ProgressPlayed as="div" />
-                <ProgressHandle as="div" />
-              </ProgressBackground>
-            </SliderInput>
+          <SliderWrapper
+            value={[audioRef.current?.currentTime ?? 0]}
+            defaultValue={[0]}
+            step={1}
+            max={audioRef.current?.duration ?? 0}
+            onValueChange={handleSliderChange}
+          >
+            <StyledTrack>
+              <StyledRange />
+            </StyledTrack>
+            <StyledThumb />
           </SliderWrapper>
           <Time>-{formatTime(remainingTime)}</Time>
         </ProgressWrapper>
         <VolumeWrapper>
-          <Menu>
-            {/* @ts-ignore */}
-            <VolumeButton
-              type="button"
-              as="button"
-              title={t('audio.controls.adjustVolume')}
-              aria-label={t('audio.controls.adjustVolume')}
-            >
+          <PopoverTrigger asChild>
+            <VolumeButton variant="ghost" colorTheme="greyLighter" aria-label={t('audio.controls.adjustVolume')}>
               <VolumeUp />
             </VolumeButton>
-            <VolumeMenu as="div" portal={false}>
-              <VolumeList>
-                <VolumeSliderWrapper>
-                  <SliderInput
-                    orientation={SliderOrientation.Vertical}
-                    onChange={handleVolumeSliderChange}
-                    value={volumeValue}
-                  >
-                    <VolumeSliderBackground as="div">
-                      <VolumeSliderSelected as="div" />
-                      <VolumeSliderHandle as="div" />
-                    </VolumeSliderBackground>
-                  </SliderInput>
-                </VolumeSliderWrapper>
-              </VolumeList>
-            </VolumeMenu>
-          </Menu>
+          </PopoverTrigger>
+          <PopoverPortal>
+            <VolumeList side="top">
+              <VolumeSliderWrapper
+                orientation="vertical"
+                value={[volumeValue]}
+                min={0}
+                defaultValue={[100]}
+                step={1}
+                onValueChange={handleVolumeSliderChange}
+              >
+                <VolumeSliderBackground>
+                  <VolumeSliderSelected />
+                </VolumeSliderBackground>
+                <VolumeSliderHandle />
+              </VolumeSliderWrapper>
+            </VolumeList>
+          </PopoverPortal>
         </VolumeWrapper>
       </ControlsWrapper>
     </div>

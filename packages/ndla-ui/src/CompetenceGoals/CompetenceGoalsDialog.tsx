@@ -6,10 +6,10 @@
  *
  */
 
-import React, { ComponentProps, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { breakpoints, fonts, mq } from '@ndla/core';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { breakpoints, mq } from '@ndla/core';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTitle, ModalProps } from '@ndla/modal';
 import { FooterHeaderIcon } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 
@@ -21,28 +21,9 @@ const HeaderWrapper = styled.div`
   width: 100%;
 `;
 
-const HeadingWrapper = styled.h1`
-  display: flex;
-  align-items: center;
-  ${fonts.sizes('18px', '32px')};
-  margin: 0;
-  font-weight: ${fonts.weight.semibold};
-`;
-
 interface Props {
   children?: ReactNode;
-  modalProps?: ComponentProps<typeof Modal>;
-  isOpen?: boolean;
-  onClose?: () => void;
   subjectName?: string;
-  curriculums?: {
-    id: string;
-    name: string;
-    goals?: {
-      id: string;
-      name: string;
-    }[];
-  }[];
 }
 
 const CompetenceGoalsWrapper = styled.div`
@@ -57,29 +38,23 @@ const CompetenceGoalsWrapper = styled.div`
   }
 `;
 
-export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, modalProps }: Props) => {
+export const CompetenceGoalsDialog = ({
+  children,
+  subjectName,
+  ...modalProps
+}: Props & Omit<ModalProps, 'children'>) => {
   const { t } = useTranslation();
-  const iconId = 'popupCompetenceGoals';
 
   return (
-    <Modal
-      labelledBy={iconId}
-      {...modalProps}
-      controllable
-      isOpen={isOpen}
-      onClose={onClose}
-      size="fullscreen"
-      backgroundColor="light-gradient"
-      narrow
-    >
+    <Modal {...(modalProps as ModalProps)} size="full">
       {(close) => (
         <>
-          <ModalHeader modifier="menu">
+          <ModalHeader>
             <HeaderWrapper>
-              <HeadingWrapper>
-                <FooterHeaderIcon id={iconId} size="24px" style={{ marginRight: '20px' }} />
+              <ModalTitle>
+                <FooterHeaderIcon size="24px" style={{ marginRight: '20px' }} />
                 {t('competenceGoals.modalText')} {subjectName && ` \u2022 ${subjectName}`}
-              </HeadingWrapper>
+              </ModalTitle>
               <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />
             </HeaderWrapper>
           </ModalHeader>

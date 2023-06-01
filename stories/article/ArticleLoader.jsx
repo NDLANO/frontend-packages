@@ -175,7 +175,15 @@ class ArticleLoader extends Component {
                 modifier={articleModifier}
                 messages={messages}
                 licenseBox={<LicenseBox />}
-                competenceGoals={!hideCompetenceGoals ? <CompetenceGoalListExample /> : null}
+                competenceGoals={
+                  !hideCompetenceGoals
+                    ? ({ Dialog, dialogProps }) => (
+                        <Dialog {...dialogProps}>
+                          <CompetenceGoalListExample />
+                        </Dialog>
+                      )
+                    : null
+                }
               >
                 {articleChildren}
               </Article>

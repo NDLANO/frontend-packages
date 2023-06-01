@@ -8,8 +8,9 @@
 
 import partition from 'lodash/partition';
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
-import { FileListV2, RelatedArticleListV2 } from '@ndla/ui';
+import { FileListV2, RelatedArticleListV2, Grid, GridType } from '@ndla/ui';
 import { PluginType } from './types';
+
 export const divPlugin: PluginType = (node, opts) => {
   if (node.attribs['data-type'] === 'related-content' && node.children.length) {
     const props = attributesToProps(node.attribs);
@@ -44,6 +45,16 @@ export const divPlugin: PluginType = (node, opts) => {
       <div {...props} className={`${props.className} c-bodybox--contains-table`}>
         {domToReact(node.children, opts)}
       </div>
+    );
+  } else if (node.attribs['data-type'] === 'grid' && node.children.length > 0) {
+    const props = attributesToProps(node.attribs);
+    const columns = Number.parseInt(props['data-columns']) as GridType['columns'];
+    const border = props['data-border'] as GridType['border'];
+    return (
+      <Grid border={border} columns={columns} {...props}>
+        {/* @ts-ignore */}
+        {domToReact(node.children, opts)}
+      </Grid>
     );
   }
   return null;

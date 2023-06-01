@@ -13,7 +13,7 @@ import { colors, fonts, misc, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
 import { HeadingLevel } from '../types';
 
-interface Props {
+export interface Props {
   title: {
     title: string;
     language: string;

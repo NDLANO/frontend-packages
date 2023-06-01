@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 import { ReactNode } from 'react';
 
 export interface GridProps {
@@ -24,7 +24,7 @@ const GridContainer = styled.div`
   gap: ${spacing.large};
   padding-top: ${spacing.medium};
 
-  border-radius: 4px;
+  border-radius: ${misc.borderRadius};
 
   &[data-border='lightBlue'] {
     border: 1px solid ${colors.brand.light};

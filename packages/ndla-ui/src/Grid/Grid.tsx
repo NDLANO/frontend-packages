@@ -18,11 +18,10 @@ export interface GridProps {
 
 const GridContainer = styled.div`
   display: grid;
-  width: fit-content;
   grid-template-columns: auto;
   justify-content: center;
   gap: ${spacing.large};
-  padding-top: ${spacing.medium};
+  padding: ${spacing.medium};
 
   border-radius: ${misc.borderRadius};
 
@@ -31,7 +30,7 @@ const GridContainer = styled.div`
   }
 
   ${mq.range({ from: breakpoints.mobileWide })} {
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, auto);
   }
 
   ${mq.range({ from: breakpoints.tabletWide })} {

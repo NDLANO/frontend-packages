@@ -7,4 +7,4 @@
  */
 
 export { default as Grid } from './Grid';
-export type { Props as GridType } from './Grid';
+export type { GridProps as GridType } from './Grid';

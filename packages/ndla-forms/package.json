@@ -29,8 +29,7 @@
     "@ndla/core": "^4.0.0",
     "@ndla/icons": "^2.3.1",
     "@ndla/pager": "^2.2.3",
-    "@ndla/util": "^3.1.12",
-    "focus-trap-react": "^8.9.2"
+    "@ndla/util": "^3.1.12"
   },
   "devDependencies": {
     "prop-types": "^15.8.1"

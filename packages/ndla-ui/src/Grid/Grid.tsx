@@ -12,8 +12,8 @@ import { ReactNode } from 'react';
 
 export interface GridProps {
   columns: 2 | 4;
-  border: 'none' | 'lightBlue';
-  background: 'transparent' | 'white';
+  border?: 'none' | 'lightBlue';
+  background?: 'transparent' | 'white';
   children?: ReactNode[];
 }
 

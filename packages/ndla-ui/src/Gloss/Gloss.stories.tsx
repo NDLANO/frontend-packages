@@ -20,34 +20,37 @@ const meta: Meta<typeof Gloss> = {
   },
   args: {
     title: {
-      title: 'angreifen',
-      language: 'de',
+      title: 'Å angripe',
+      language: 'nb',
     },
     glossData: {
+      gloss: 'angreifen',
       wordClass: 'verb',
-      transcriptions: {
-        norwegianTranslation: 'Å angripe',
-      },
       originalLanguage: 'de',
+      transcriptions: [],
       examples: [
         [
           {
             example: 'Hitler greift die Sowjetunion an',
             language: 'de',
+            transcriptions: {},
           },
           {
             example: 'Hitler angriper Sovjetunionen',
             language: 'nb',
+            transcriptions: {},
           },
         ],
         [
           {
             example: 'Ich greife an',
             language: 'de',
+            transcriptions: {},
           },
           {
             example: 'Jeg griper an',
             language: 'nb',
+            transcriptions: {},
           },
         ],
       ],
@@ -68,30 +71,30 @@ export const GlossStory: StoryFn<typeof Gloss> = ({ ...args }) => {
 export const GlossChineseStory: StoryObj<typeof Gloss> = {
   args: {
     title: {
-      title: '马红',
-      language: 'zh',
+      title: 'Ma Hong',
+      language: 'nb',
     },
     glossData: {
+      gloss: '马红',
       wordClass: 'Egn',
-      transcriptions: {
-        traditionalChinese: '(馬紅)',
-        pinyin: 'Mǎ Hóng',
-        norwegianTranslation: 'Ma Hong',
-      },
       originalLanguage: 'zh',
+      transcriptions: {
+        trad: '(馬紅)',
+        pinyin: 'Mǎ Hóng',
+      },
       examples: [
         [
           {
             example: '我叫马红',
             language: 'zh',
-          },
-          {
-            example: 'wo jiao ma hong',
-            language: 'pinyin',
+            transcriptions: {
+              pinyin: 'wo jiao ma hong',
+            },
           },
           {
             example: 'Jeg heter ma hong',
             language: 'nb',
+            transcriptions: {},
           },
         ],
       ],

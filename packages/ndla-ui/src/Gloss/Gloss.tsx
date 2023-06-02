@@ -15,12 +15,12 @@ import SpeechControl from '../AudioPlayer/SpeechControl';
 interface Example {
   example: string;
   language: string;
+  transcriptions: Transcription;
 }
 
 interface Transcription {
-  traditionalChinese?: string;
+  trad?: string;
   pinyin?: string;
-  norwegianTranslation: string;
 }
 export interface Props {
   title: {
@@ -28,9 +28,10 @@ export interface Props {
     language: string;
   };
   glossData: {
+    gloss: string;
     wordClass?: string;
-    transcriptions: Transcription;
     originalLanguage: string;
+    transcriptions: Transcription;
     examples?: Example[][];
   };
   audio: {
@@ -103,8 +104,8 @@ const Gloss = ({ title, glossData, audio }: Props) => {
       <Container>
         <Wrapper>
           <GlossContainer>
-            <GlossSpan>{title.title}</GlossSpan>
-            {glossData.transcriptions.traditionalChinese && <span>{glossData.transcriptions.traditionalChinese}</span>}
+            <GlossSpan>{glossData.gloss}</GlossSpan>
+            {glossData.transcriptions.trad && <span>{glossData.transcriptions.trad}</span>}
             {glossData.transcriptions.pinyin && <span>{glossData.transcriptions.pinyin}</span>}
             {glossData.wordClass && <TypeSpan>{glossData.wordClass}</TypeSpan>}
           </GlossContainer>
@@ -112,7 +113,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
           </AudioExample>
         </Wrapper>
-        {glossData.transcriptions.norwegianTranslation && <span>{glossData.transcriptions.norwegianTranslation}</span>}
+        <span>{title.title}</span>
       </Container>
       {glossData.examples && (
         <AccordionRoot type="single" collapsible>
@@ -122,8 +123,11 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               {glossData.examples.map((example, index) => (
                 <ExampleContainer key={index}>
                   <TranslatedText>{example[0].example}</TranslatedText>
+                  {example[0].transcriptions.trad && <TranslatedText>{example[0].transcriptions.trad}</TranslatedText>}
+                  {example[0].transcriptions.pinyin && (
+                    <TranslatedText>{example[0].transcriptions.pinyin}</TranslatedText>
+                  )}
                   <TranslatedText>{example[1].example}</TranslatedText>
-                  {example[2]?.example && <TranslatedText>{example[2].example}</TranslatedText>}
                 </ExampleContainer>
               ))}
             </StyledAccordionContent>

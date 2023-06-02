@@ -17,12 +17,12 @@ export interface GridProps {
 }
 
 const GridContainer = styled.div`
-  display: grid;
+  display: inline-grid;
   grid-template-columns: auto;
   justify-content: center;
-  gap: ${spacing.large};
-  padding: ${spacing.medium};
+  grid-gap: ${spacing.large};
 
+  padding: ${spacing.xsmall};
   border-radius: ${misc.borderRadius};
 
   &[data-border='lightBlue'] {
@@ -52,11 +52,19 @@ const GridContainer = styled.div`
   }
 `;
 
+const OuterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Grid = ({ columns, border, children, ...rest }: GridProps) => {
   return (
-    <GridContainer data-border={border} data-columns={columns} {...rest}>
-      {children}
-    </GridContainer>
+    <OuterContainer>
+      <GridContainer data-border={border} data-columns={columns} {...rest}>
+        {children}
+      </GridContainer>
+    </OuterContainer>
   );
 };
 

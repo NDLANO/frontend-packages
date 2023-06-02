@@ -8,10 +8,26 @@
 
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
+import styled from '@emotion/styled';
+import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
 import Grid from './Grid';
 import { defaultParameters } from '../../../../stories/defaults';
 import { BlogPostStory } from '../BlogPost/BlogPost.stories';
 import { KeyFigureStory } from '../KeyFigure/KeyFigure.stories';
+
+const GridWrapper = styled.div`
+  .docs-story {
+    background-color: #f7fafd;
+  }
+`;
+
+const GridDocsContainer = ({ ...props }: DocsContainerProps) => {
+  return (
+    <GridWrapper>
+      <DocsContainer {...props} />
+    </GridWrapper>
+  );
+};
 
 export default {
   title: 'Enkle komponenter/Grid',
@@ -20,16 +36,26 @@ export default {
   parameters: {
     ...defaultParameters,
     layout: 'centered',
+    docs: {
+      container: GridDocsContainer,
+    },
   },
   args: {
     columns: 2,
     border: 'none',
   },
+  decorators: [
+    (Story) => (
+      <GridWrapper>
+        <Story />
+      </GridWrapper>
+    ),
+  ],
 } as Meta<typeof Grid>;
 
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   return (
-    <Grid {...args}>
+    <Grid {...args} background="white">
       <KeyFigureStory
         title={KeyFigureStory.args?.title!}
         subtitle={KeyFigureStory.args?.subtitle!}

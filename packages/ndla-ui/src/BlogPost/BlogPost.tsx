@@ -32,6 +32,7 @@ const Container = styled(SafeLink)`
   display: flex;
   flex-direction: column;
   color: ${colors.text.primary};
+  background-color: ${colors.white};
   max-width: 350px;
   max-height: 415px;
   gap: ${spacing.nsmall};

@@ -41,45 +41,31 @@ export default {
   args: {
     columns: 2,
     border: 'none',
+    background: 'white',
   },
 } as Meta<typeof Grid>;
 
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
-  return (
-    <Grid {...args} background="white">
-      <KeyFigureStory
-        title={KeyFigureStory.args?.title!}
-        subtitle={KeyFigureStory.args?.subtitle!}
-        image={KeyFigureStory.args?.image}
-      />
-      <KeyFigureStory
-        title={KeyFigureStory.args?.title!}
-        subtitle={KeyFigureStory.args?.subtitle!}
-        image={KeyFigureStory.args?.image}
-      />
-    </Grid>
+  const items = new Array(args.columns).fill(
+    <KeyFigureStory
+      title={KeyFigureStory.args?.title!}
+      subtitle={KeyFigureStory.args?.subtitle!}
+      image={KeyFigureStory.args?.image!}
+    />,
   );
+  return <Grid {...args}>{items}</Grid>;
 };
 
 export const GridBlogPostStory: StoryFn<typeof Grid> = ({ ...args }) => {
-  return (
-    <Grid {...args}>
-      <BlogPostStory
-        metaImage={BlogPostStory.args?.metaImage!}
-        title={BlogPostStory.args?.title!}
-        size={BlogPostStory.args?.size}
-        headingLevel={BlogPostStory.args?.headingLevel}
-        url={BlogPostStory.args?.url!}
-        author={BlogPostStory.args?.author}
-      />
-      <BlogPostStory
-        metaImage={BlogPostStory.args?.metaImage!}
-        title={BlogPostStory.args?.title!}
-        size={BlogPostStory.args?.size}
-        headingLevel={BlogPostStory.args?.headingLevel}
-        url={BlogPostStory.args?.url!}
-        author={BlogPostStory.args?.author}
-      />
-    </Grid>
+  const items = new Array(args.columns).fill(
+    <BlogPostStory
+      metaImage={BlogPostStory.args?.metaImage!}
+      title={BlogPostStory.args?.title!}
+      size={BlogPostStory.args?.size}
+      headingLevel={BlogPostStory.args?.headingLevel}
+      url={BlogPostStory.args?.url!}
+      author={BlogPostStory.args?.author}
+    />,
   );
+  return <Grid {...args}>{items}</Grid>;
 };

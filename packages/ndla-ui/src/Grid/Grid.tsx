@@ -13,6 +13,7 @@ import { ReactNode } from 'react';
 export interface GridProps {
   columns: 2 | 4;
   border: 'none' | 'lightBlue';
+  background: 'transparent' | 'white';
   children?: ReactNode[];
 }
 
@@ -28,6 +29,10 @@ const GridContainer = styled.div`
 
   &[data-border='lightBlue'] {
     border: 1px solid ${colors.brand.light};
+  }
+
+  &[data-background='white'] {
+    background-color: ${colors.white};
   }
 
   ${mq.range({ from: breakpoints.mobileWide })} {
@@ -60,10 +65,10 @@ const OuterContainer = styled.div`
   align-items: center;
 `;
 
-const Grid = ({ columns, border, children, ...rest }: GridProps) => {
+const Grid = ({ columns, border, children, background, ...rest }: GridProps) => {
   return (
     <OuterContainer>
-      <GridContainer data-border={border} data-columns={columns} {...rest}>
+      <GridContainer data-border={border} data-columns={columns} data-background={background} {...rest}>
         {children}
       </GridContainer>
     </OuterContainer>

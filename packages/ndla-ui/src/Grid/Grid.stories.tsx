@@ -10,6 +10,7 @@ import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
 import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
+import { colors } from '@ndla/core';
 import Grid from './Grid';
 import { defaultParameters } from '../../../../stories/defaults';
 import { BlogPostStory } from '../BlogPost/BlogPost.stories';
@@ -17,7 +18,7 @@ import { KeyFigureStory } from '../KeyFigure/KeyFigure.stories';
 
 const GridWrapper = styled.div`
   .docs-story {
-    background-color: #f7fafd;
+    background-color: ${colors.background.frontpageArticle};
   }
 `;
 

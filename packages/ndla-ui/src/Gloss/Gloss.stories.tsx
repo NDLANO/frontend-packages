@@ -27,7 +27,7 @@ const meta: Meta<typeof Gloss> = {
       gloss: 'angreifen',
       wordClass: 'verb',
       originalLanguage: 'de',
-      transcriptions: [],
+      transcriptions: {},
       examples: [
         [
           {

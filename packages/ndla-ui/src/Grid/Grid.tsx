@@ -17,6 +17,7 @@ export interface GridProps {
 }
 
 const GridContainer = styled.div`
+  width: 100%;
   display: inline-grid;
   grid-template-columns: auto;
   justify-content: center;
@@ -30,12 +31,12 @@ const GridContainer = styled.div`
   }
 
   ${mq.range({ from: breakpoints.mobileWide })} {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     &[data-columns='4'] {
-      grid-template-columns: repeat(4, auto);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -54,6 +55,7 @@ const GridContainer = styled.div`
 
 const OuterContainer = styled.div`
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
 `;

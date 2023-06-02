@@ -21,13 +21,11 @@ const GridWrapper = styled.div`
   }
 `;
 
-const GridDocsContainer = ({ ...props }: DocsContainerProps) => {
-  return (
-    <GridWrapper>
-      <DocsContainer {...props} />
-    </GridWrapper>
-  );
-};
+const GridDocsContainer = ({ ...props }: DocsContainerProps) => (
+  <GridWrapper>
+    <DocsContainer {...props} />
+  </GridWrapper>
+);
 
 export default {
   title: 'Enkle komponenter/Grid',
@@ -44,13 +42,6 @@ export default {
     columns: 2,
     border: 'none',
   },
-  decorators: [
-    (Story) => (
-      <GridWrapper>
-        <Story />
-      </GridWrapper>
-    ),
-  ],
 } as Meta<typeof Grid>;
 
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {

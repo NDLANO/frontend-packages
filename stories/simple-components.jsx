@@ -20,7 +20,6 @@ import ArticleBylineExample from './molecules/ArticleBylineExample';
 import ModalV2Example from './atoms/ModalV2Example';
 import DrawerExample from './atoms/DrawerExample';
 import SolutionTableExample from './molecules/SolutionExample';
-import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';

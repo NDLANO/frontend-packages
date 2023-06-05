@@ -6,7 +6,7 @@
  *
  */
 
-import { contentTypes, contentTypeMapping } from './ContentType';
+import { contentTypes, contentTypeMapping, resourceEmbedTypeMapping } from './ContentType';
 import * as subjectCategories from './SubjectCategories';
 import * as subjectTypes from './SubjectTypes';
 
@@ -15,6 +15,7 @@ const model = {
   subjectCategories,
   subjectTypes,
   contentTypeMapping,
+  resourceEmbedTypeMapping,
 };
 
 export default model;

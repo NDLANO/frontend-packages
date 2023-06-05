@@ -8,7 +8,6 @@
 
 import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
-import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 
@@ -80,7 +79,7 @@ export const ArticleIntroduction = ({
     return text;
   },
 }: ArticleIntroductionProps) => {
-  if (isString(children)) {
+  if (typeof children === 'string') {
     return <div className="article_introduction">{parse(renderMarkdown(children))}</div>;
   }
   if (children) {
@@ -125,10 +124,10 @@ type Props = {
   contentTransformed?: boolean;
   locale: Locale;
   messageBoxLinks?: [];
-  competenceGoals?:
-    | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
-    | ReactNode
-    | null;
+  competenceGoals?: (inp: {
+    Dialog: ComponentType;
+    dialogProps: { isOpen: boolean; onClose: () => void };
+  }) => ReactNode;
   id: string;
   renderMarkdown: (text: string) => string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };

@@ -9,7 +9,7 @@
 import React, { FormEvent } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { ModalBody, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
 import { spacing, spacingUnit } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
 import { Input } from '@ndla/forms';
@@ -44,10 +44,10 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
   return (
     <>
       <ModalHeader>
+        <ModalTitle>{title}</ModalTitle>
         <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
       </ModalHeader>
       <ModalBody>
-        <h1>{title}</h1>
         <StyledInputWrapper>
           <div>
             <Input

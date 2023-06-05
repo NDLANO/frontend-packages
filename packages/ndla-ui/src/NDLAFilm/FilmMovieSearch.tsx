@@ -27,31 +27,30 @@ const TopicNavigation = styled.div`
     align-items: flex-start;
     padding: 0 ${spacing.normal};
   }
-  ul {
-    list-style-type: none;
-    list-style-image: none;
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: ${spacing.small} 0;
-    ${mq.range({ from: breakpoints.tablet })} {
-      padding-left: ${spacing.normal};
-    }
-    li {
-      padding: 0;
-      width: 100%;
-      ${mq.range({ from: breakpoints.tablet })} {
-        width: 50%;
-      }
-      a {
-        color: #fff;
-        &:hover,
-        &:focus {
-          color: ${colors.brand.light};
-        }
+`;
+
+const StyledUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  list-style-image: none;
+  li {
+    flex: 1;
+    width: 100%;
+    a {
+      color: ${colors.white};
+      &:hover,
+      &:focus-within {
+        color: ${colors.brand.light};
       }
     }
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+    column-gap: ${spacing.normal};
   }
 `;
 
@@ -81,7 +80,7 @@ const FilmMovieSearch = ({
             {`${t('ndlaFilm.subjectsInMovies')}:`}
           </StyledHeadingH2>
           <nav className="u-12/12 u-8/12@tablet" aria-labelledby={skipToContentId}>
-            <ul>
+            <StyledUl>
               {topics.map((topic) => (
                 <li key={topic.id}>
                   <SafeLink to={topic.path} key={topic.id}>
@@ -89,7 +88,7 @@ const FilmMovieSearch = ({
                   </SafeLink>
                 </li>
               ))}
-            </ul>
+            </StyledUl>
           </nav>
         </TopicNavigation>
         <CategorySelect

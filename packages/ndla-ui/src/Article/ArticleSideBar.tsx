@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { CopyButton, ButtonV2 } from '@ndla/button';
 import styled from '@emotion/styled';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
 import { copyTextToClipboard } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 
@@ -54,11 +54,11 @@ const ArticleSideBar = ({ copyPageUrlLink, licenseBox }: Props) => {
               {t('article.useContent')}
             </ButtonV2>
           }
-          size="medium"
+          size="normal"
         >
           {(onClose: () => void) => (
             <>
-              <ModalHeader modifier="no-bottom-padding">
+              <ModalHeader>
                 <ModalCloseButton onClick={onClose} title={t('article.closeLabel')} />
               </ModalHeader>
               <ModalBody>{licenseBox}</ModalBody>

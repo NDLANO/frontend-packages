@@ -6,7 +6,8 @@
  *
  */
 
-import { AudioMetaData } from '@ndla/types-embed';
+import { AudioMetaData, ImageMetaData } from '@ndla/types-embed';
+import { COPYRIGHTED } from '@ndla/licenses';
 //@ts-ignore
 import { Remarkable } from 'remarkable';
 import AudioPlayer from '../AudioPlayer';
@@ -14,10 +15,13 @@ import { Figure } from '../Figure';
 import { Author } from './ImageEmbed';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { HeartButtonType } from './types';
 
 interface Props {
   embed: AudioMetaData;
+  heartButton?: HeartButtonType;
 }
+
 export const getFirstNonEmptyLicenseCredits = (authors: {
   creators: Author[];
   rightsholders: Author[];
@@ -30,7 +34,23 @@ const renderMarkdown = (text: string) => {
   return <span dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 
-const AudioEmbed = ({ embed }: Props) => {
+const imageMetaToMockEmbed = (
+  imageMeta: Extract<AudioMetaData, { status: 'success' }>,
+): Extract<ImageMetaData, { status: 'success' }> => ({
+  resource: 'image',
+  status: 'success',
+  // Make sure the seq is unused. It's rarely used, but it's nice to ensure uniqueness.
+  seq: imageMeta.seq + 0.1,
+  // We check that this exists where the function is used.
+  data: imageMeta.data.imageMeta!,
+  embedData: {
+    resource: 'image',
+    resourceId: imageMeta.data.imageMeta?.id?.toString() || '',
+    alt: imageMeta.data.imageMeta?.alttext.alttext ?? '',
+  },
+});
+
+const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
   if (embed.status === 'error') {
     return <EmbedErrorPlaceholder type={embed.embedData.type === 'standard' ? 'audio' : 'podcast'} />;
   }
@@ -43,8 +63,7 @@ const AudioEmbed = ({ embed }: Props) => {
 
   const subtitle = data.series ? { title: data.series.title.title, url: `/podkast/${data.series.id}` } : undefined;
 
-  const textVersion = data.manuscript && renderMarkdown(data.manuscript.manuscript);
-  const description = renderMarkdown(data.podcastMeta?.introduction ?? '');
+  const textVersion = data.manuscript?.manuscript.length ? renderMarkdown(data.manuscript.manuscript) : undefined;
 
   const coverPhoto = data.podcastMeta?.coverPhoto;
 
@@ -55,7 +74,7 @@ const AudioEmbed = ({ embed }: Props) => {
   return (
     <Figure id={figureId} type="full">
       <AudioPlayer
-        description={description}
+        description={data.podcastMeta?.introduction ?? ''}
         img={img}
         src={data.audioFile.url}
         textVersion={textVersion}
@@ -68,7 +87,11 @@ const AudioEmbed = ({ embed }: Props) => {
         topRounded={false}
         bottomRounded={!data.imageMeta}
         copyright={embed.data.copyright}
-      />
+      >
+        {HeartButton && embed.data.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
+          <HeartButton embed={embed} />
+        )}
+      </EmbedByline>
       {data.imageMeta && (
         <EmbedByline
           error={false}
@@ -77,7 +100,11 @@ const AudioEmbed = ({ embed }: Props) => {
           topRounded={false}
           bottomRounded
           copyright={data.imageMeta.copyright}
-        />
+        >
+          {HeartButton && data.imageMeta.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
+            <HeartButton embed={imageMetaToMockEmbed(embed)} />
+          )}
+        </EmbedByline>
       )}
     </Figure>
   );

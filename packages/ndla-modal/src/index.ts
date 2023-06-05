@@ -6,14 +6,11 @@
  *
  */
 
-import Modal from './Modal';
-export { default as ModalHeader } from './ModalHeader';
 export { default as ModalBody } from './ModalBody';
 export { default as ModalCloseButton } from './ModalCloseButton';
-export { Backdrop } from './Backdrop';
-export { default as ModalV2 } from './ModalV2';
-export { default as ModalHeaderV2 } from './ModalHeaderV2';
+export { default as ModalHeader } from './ModalHeader';
 export { default as Drawer } from './Drawer';
+export { default as Modal } from './Modal';
+export { default as ModalTitle } from './ModalTitle';
 export type { ModalSize, ModalPosition, ModalSizeType, ModalAnimation, ModalMargin, DrawerPosition } from './types';
-
-export default Modal;
+export type { ModalProps } from './Modal';

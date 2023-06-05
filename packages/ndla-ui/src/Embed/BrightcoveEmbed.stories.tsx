@@ -8,9 +8,10 @@
 
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from '@ndla/types-embed';
+import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData, EmbedMetaData } from '@ndla/types-embed';
 import BrightcoveEmbed from './BrightcoveEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
+import StoryFavoriteButton from '../../../../stories/StoryFavoriteButton';
 
 const embedData: BrightcoveEmbedData = {
   resource: 'brightcove',
@@ -179,6 +180,7 @@ export default meta;
 
 export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: {
       resource: 'brightcove',
       status: 'success',
@@ -191,12 +193,14 @@ export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
 
 export const VisuallyInterpreted: StoryObj<typeof BrightcoveEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: visuallyInterpretedEmbedMetaData,
   },
 };
 
 export const BrightcoveFailed: StoryObj<typeof BrightcoveEmbed> = {
   args: {
+    heartButton: StoryFavoriteButton,
     embed: {
       resource: 'brightcove',
       status: 'error',

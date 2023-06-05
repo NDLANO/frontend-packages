@@ -1,6 +1,6 @@
 # ndla-notion
 
-Notions for NDLA
+Notions for NDLA.
 
 ## Installation
 

@@ -7,7 +7,7 @@ $padding-bottom: 17px;
   overflow: hidden;
   padding-bottom: $padding-bottom;
 
-  @include inuit-font-size(16px);
+  @include font-size(16px, 1.5);
 
   &__content {
     position: relative;
@@ -148,7 +148,7 @@ $padding-bottom: 17px;
     border-bottom: 2px solid $brand-color;
     margin-top: 0;
     margin-bottom: $spacing;
-    @include inuit-font-size(22px, 34px);
+    @include font-size(22px, 34px);
     font-weight: $font-weight-bold;
     position: relative;
     z-index: 2;
@@ -159,7 +159,7 @@ $padding-bottom: 17px;
   h4,
   h5 {
     display: block;
-    @include inuit-font-size(16px);
+    @include font-size(16px, 1.5);
     letter-spacing: 0.1em;
     margin-top: $spacing;
     margin-bottom: $spacing--small;

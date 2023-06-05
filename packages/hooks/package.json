@@ -1,6 +1,6 @@
 {
   "name": "@ndla/hooks",
-  "version": "2.0.4",
+  "version": "2.0.7",
   "description": "Collection of React hooks used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -29,11 +29,10 @@
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "lodash": "^4.17.20",
-    "react": "^16.8.0 || ^17.0.0"
+    "react": ">= 16.8.0"
   },
   "dependencies": {
-    "@ndla/util": "^3.1.12",
-    "react-device-detect": "^2.2.3"
+    "@ndla/util": "^3.1.13"
   },
   "publishConfig": {
     "access": "public"

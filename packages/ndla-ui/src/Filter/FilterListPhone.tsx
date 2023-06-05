@@ -8,7 +8,7 @@
 
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import debounce from 'lodash/debounce';
 import { classes } from './filterClasses';
@@ -138,8 +138,7 @@ const FilterListPhone = ({
           />
         )}
         <Modal
-          size="fullscreen"
-          backgroundColor="grey"
+          size="full"
           activateButton={
             <ButtonV2 variant="outline" {...classes('modal-button')}>
               {messages.openFilter}
@@ -148,7 +147,7 @@ const FilterListPhone = ({
         >
           {(onClose) => (
             <>
-              <ModalHeader modifier={['left-align']}>
+              <ModalHeader>
                 <div {...classes('modal-header')}>
                   <div {...classes('modal-heading')}>
                     {!isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}

@@ -1,6 +1,6 @@
 # ndla-ui
 
-Main UI component library for NDLA
+Main UI component library for NDLA.
 
 ## Installation
 
@@ -18,7 +18,7 @@ The following dependencies are optional, but some components may depend on one o
 
 ```js
 react-router
-@ndla/article-scripts
+@ndla/article-converter
 @ndla/button
 @ndla/licenses
 @ndla/icons

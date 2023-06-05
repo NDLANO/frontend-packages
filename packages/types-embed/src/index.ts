@@ -46,6 +46,7 @@ import { FileEmbedData, FileMetaData } from './fileTypes';
 import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
 import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
 import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './keyFigureTypes';
+import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from './campaignBlockTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -64,7 +65,8 @@ export type EmbedData =
   | FileEmbedData
   | BlogPostEmbedData
   | KeyFigureEmbedData
-  | ContactBlockEmbedData;
+  | ContactBlockEmbedData
+  | CampaignBlockEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -82,7 +84,8 @@ export type EmbedMetaData =
   | FileMetaData
   | BlogPostMetaData
   | KeyFigureMetaData
-  | ContactBlockMetaData;
+  | ContactBlockMetaData
+  | CampaignBlockMetaData;
 
 export type {
   ConceptMetaData,
@@ -100,6 +103,7 @@ export type {
   BlogPostMetaData,
   KeyFigureMetaData,
   ContactBlockMetaData,
+  CampaignBlockMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -117,6 +121,7 @@ export type {
   BlogPostEmbedData,
   KeyFigureEmbedData,
   ContactBlockEmbedData,
+  CampaignBlockEmbedData,
 };
 
 export type { BlogPostMeta };
@@ -130,6 +135,7 @@ export type { RelatedContentData, NodeType };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
 export type { AudioMeta };
 export type { H5pData };
+export type { CampaignBlockMeta };
 
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 

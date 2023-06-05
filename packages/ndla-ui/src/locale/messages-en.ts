@@ -478,6 +478,7 @@ const messages = {
       onlyTeacher: 'This resource is accessible only to teachers who are logged in with Feide.',
     },
     possiblyOutdated: 'The article is outdated',
+    references: 'References',
   },
   competenceGoals: {
     competenceGoal: 'competence-goal',
@@ -694,6 +695,12 @@ const messages = {
     'assessment-resources': 'Assessment resource',
     topic: 'Topic',
     'multidisciplinary-topic': 'Multidisciplinary case',
+    image: 'Image',
+    concept: 'Concept',
+    audio: 'Audio',
+    podcast: 'Podcast',
+    h5p: 'H5P',
+    video: 'Video',
   },
   modal: {
     closeModal: 'Close',
@@ -990,6 +997,8 @@ const messages = {
     },
   },
   audio: {
+    play: 'Play',
+    pause: 'Pause',
     download: 'Download audio',
     reuse: 'Use audio',
     error: {
@@ -1007,6 +1016,7 @@ const messages = {
       close: 'Close text version',
     },
     readMoreDescriptionLabel: 'show more',
+    readLessDescriptionLabel: 'show less',
   },
   h5p: {
     reuse: 'Use H5P',
@@ -1132,7 +1142,7 @@ const messages = {
           unShare: 'Do you want to stop sharing this folder?',
         },
         description: {
-          copy: 'Copy and share this link:',
+          copy: 'Press the link to copy',
           private:
             'When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.',
           private2:
@@ -1181,7 +1191,7 @@ const messages = {
       info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
       firstShared: 'The folder was shared for the first time {{date}}',
       learningpathUnsupported:
-        'Learning paths cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
+        'Learning paths and multidisciplinary cases cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',
       drawerButton: 'Show folders and resources',
       drawerTitle: 'Folders and resources',
       description: {

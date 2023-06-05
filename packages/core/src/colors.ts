@@ -137,6 +137,7 @@ const colors = {
     backgroundGray: brandGreyLightest,
     grayDark: '#e4e4e4',
     lightBlue: '#f7fafd',
+    frontpageArticle: '#f7fafd',
   },
 };
 

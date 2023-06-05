@@ -30,7 +30,7 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
   if (embed.data.oembed) {
-    return <StyledFigure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
+    return <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
   }
 
   return (

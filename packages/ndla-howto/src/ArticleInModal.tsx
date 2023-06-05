@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import Modal, { ModalCloseButton } from '@ndla/modal';
+import { ModalCloseButton, Modal } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';
 
@@ -71,18 +71,11 @@ interface Props {
 
 const ArticleInModal = ({ pageId, tooltip, activateButton }: Props) => (
   <Modal
-    labelledBy={headingId}
-    size="medium"
-    backgroundColor="white"
+    aria-labelledby={headingId}
     wrapperFunctionForButton={tooltip ? (btn: ReactElement) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : undefined}
     activateButton={activateButton}
   >
-    {(onClose: () => void) =>
-      ModalContent({
-        pageId,
-        onClose,
-      })
-    }
+    {(onClose) => <ModalContent pageId={pageId} onClose={onClose} />}
   </Modal>
 );
 

@@ -22,7 +22,7 @@ import {
   StyledContentIconWrapper,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
-import { contentTypeMapping } from '../model/ContentType';
+import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
 import { SettingsMenu } from '../MyNdla';
 
 const BlockElementWrapper = styled.div`
@@ -174,7 +174,11 @@ const BlockResource = ({
         <BlockImage
           image={resourceImage}
           loading={isLoading}
-          contentType={contentTypeMapping[firstResourceType] ?? contentTypeMapping['default']}
+          contentType={
+            contentTypeMapping[firstResourceType] ??
+            resourceEmbedTypeMapping[firstResourceType] ??
+            contentTypeMapping['default']
+          }
         />
       </ImageWrapper>
       <BlockInfoWrapper>

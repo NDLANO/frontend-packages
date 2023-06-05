@@ -98,7 +98,7 @@ export {
 
 export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter';
 
-export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
+export { Footer, EditorName, FooterText } from './Footer';
 
 export {
   Figure,
@@ -133,9 +133,7 @@ export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
-export { default as MastheadAuthModal } from './Masthead/MastheadAuthModal';
 export { UserInfo } from './User';
-export { default as AuthModal } from './User';
 export type {
   AffiliationType,
   FeideGoGroup,
@@ -273,5 +271,12 @@ export { default as LetterFilter } from './LetterFilter';
 
 export { OrderedList, UnOrderedList } from './List';
 export { BlogPostV2 } from './BlogPost';
+export { ProgrammeCard } from './ProgrammeCard';
 export { KeyFigure } from './KeyFigure';
 export { default as ContactBlock } from './ContactBlock';
+export type { HeartButtonType } from './Embed';
+export { CampaignBlock } from './CampaignBlock';
+export { Grid } from './Grid';
+export type { GridType } from './Grid';
+export { Heading } from './Typography';
+export type { HeadingLevel } from './types';

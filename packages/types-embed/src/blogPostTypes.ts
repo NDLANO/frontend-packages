@@ -6,7 +6,7 @@
  *
  */
 
-import { IImageMetaInformationV2 } from '@ndla/types-backend/image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { MetaData } from '.';
 
 export type BlogPostEmbedData = {
@@ -20,7 +20,7 @@ export type BlogPostEmbedData = {
 };
 
 export interface BlogPostMeta {
-  metaImage?: IImageMetaInformationV2;
+  metaImage?: IImageMetaInformationV3;
 }
 
 export type BlogPostMetaData = MetaData<BlogPostEmbedData, BlogPostMeta>;

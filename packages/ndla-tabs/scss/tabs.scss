@@ -106,7 +106,8 @@ $tabs-spacing: 12px;
           padding-right: $spacing--small;
           white-space: nowrap;
           //transform: translateX(-$spacing--small);
-          &:focus, &:hover {
+          &:focus,
+          &:hover {
             background-color: $brand-grey--light;
             color: $brand-color;
           }
@@ -128,7 +129,7 @@ $tabs-spacing: 12px;
 
   &__list {
     max-width: 100%;
-    @include font-size(18px);
+    @include font-size(18px, 1.33);
     font-weight: $font-weight-bold;
     list-style: none;
     margin: $spacing/1.4 0 $spacing--small;
@@ -168,7 +169,7 @@ $tabs-spacing: 12px;
         margin-left: $spacing;
       }
       &:last-child:after {
-        content: "";
+        content: '';
         display: inline-flex;
         width: $spacing;
       }

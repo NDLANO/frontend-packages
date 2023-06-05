@@ -1,6 +1,6 @@
 # Tooltip component
 
-A Tooltip component that can be used to wrap any element. A tooltip is shown when the mouse pointer is hovering the wrapped element.
+A Tooltip component that can be used to wrap any element. A tooltip is shown when the mouse pointer is hovering the wrapped element
 
 ## Installation
 

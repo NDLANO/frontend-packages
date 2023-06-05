@@ -7,7 +7,7 @@
 **/
 
 .c-figure-license {
-  @include font-size(16px);
+  @include font-size(16px, 1.5);
   font-family: $font-serif;
 }
 
@@ -57,7 +57,7 @@
   background: transparent;
   border: none;
   color: $brand-color;
-  @include font-size(20px);
+  @include font-size(18px, 1.33);
   font-weight: $font-weight-normal;
   z-index: 9;
   cursor: pointer;
@@ -71,7 +71,7 @@
 
 .c-figure-license__title {
   margin: 0 0 $spacing--small;
-  @include inuit-font-size(18px);
+  @include font-size(18px, 1.33);
   color: $brand-color;
 }
 .c-figure-license--fullscreen {
@@ -84,7 +84,7 @@
 }
 
 .c-figure-license__image-title {
-  @include inuit-font-size(28px);
+  @include font-size(28px, 30px);
   margin: $spacing 0 0;
   text-align: left;
 }

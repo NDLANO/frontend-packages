@@ -6,14 +6,13 @@
  *
  */
 
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
 import { Cross as CrossIcon } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
-import shave from 'shave';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
 
@@ -163,11 +162,7 @@ const TextVersionText = styled.div`
   max-width: 670px;
 `;
 
-export const truncateDescription = (el: HTMLElement, readMoreLabel: string | null) => {
-  shave(el, 90, {
-    character: `... <a href="#" onclick="(function(e){e.preventDefault(); const parentNode = e.target.parentNode; parentNode.nextSibling.style.display = 'inline'; parentNode.remove();return false;})(arguments[0]);return false;">${readMoreLabel}</a>`,
-  });
-};
+const DESCRIPTION_MAX_LENGTH = 200;
 
 type Props = {
   src: string;
@@ -177,7 +172,7 @@ type Props = {
     url?: string;
   };
   speech?: boolean;
-  description?: ReactNode;
+  description?: string;
   textVersion?: ReactNode;
   img?: {
     url: string;
@@ -189,15 +184,8 @@ type Props = {
 const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersion, staticRenderId }: Props) => {
   const { t } = useTranslation();
   const [showTextVersion, setShowTextVersion] = useState(false);
-
-  const descriptionRef = useRef<HTMLDivElement>(null);
-  const readMoreDescriptionLabel = t('audio.readMoreDescriptionLabel');
-
-  useEffect(() => {
-    if (descriptionRef?.current) {
-      truncateDescription(descriptionRef.current, readMoreDescriptionLabel);
-    }
-  }, [readMoreDescriptionLabel]);
+  const [showFullDescription, setShowFullDescription] = useState(false);
+  const truncatedDescription = useMemo(() => description?.slice(0, DESCRIPTION_MAX_LENGTH), [description]);
 
   if (speech) {
     return (
@@ -244,13 +232,12 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
           </TitleWrapper>
           {description && (
             <StyledDescription>
-              <div
-                ref={descriptionRef}
-                data-audio-player-description={1}
-                data-read-more-text={t('audio.readMoreDescriptionLabel')}
-              >
-                {description}
-              </div>
+              {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
+                ? description
+                : `${truncatedDescription}...`}
+              <ButtonV2 variant="link" onClick={() => setShowFullDescription((p) => !p)}>
+                {t(`audio.${showFullDescription ? 'readLessDescriptionLabel' : 'readMoreDescriptionLabel'}`)}
+              </ButtonV2>
             </StyledDescription>
           )}
           {textVersion && img && <TextVersionComponent />}

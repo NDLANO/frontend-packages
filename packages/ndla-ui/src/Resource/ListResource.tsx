@@ -22,7 +22,7 @@ import {
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
-import { contentTypeMapping } from '../model/ContentType';
+import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
 import { SettingsMenu } from '../MyNdla';
 
 const ListResourceWrapper = styled.div`
@@ -131,14 +131,15 @@ interface ListResourceImageProps {
   loading?: boolean;
   type: 'normal' | 'compact';
   contentType: string;
+  background?: boolean;
 }
 
-const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {
+const ListResourceImage = ({ resourceImage, loading, type, contentType, background }: ListResourceImageProps) => {
   if (!loading) {
     if (resourceImage.src === '') {
       return (
         <StyledContentIconWrapper contentType={contentType}>
-          <ContentTypeBadge type={contentType} size="x-small" />
+          <ContentTypeBadge type={contentType} background={background} size="x-small" />
         </StyledContentIconWrapper>
       );
     } else {
@@ -221,6 +222,7 @@ const ListResource = ({
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
   const firstContentType = resourceTypes?.[0]?.id ?? '';
+  const embedResourceType = resourceEmbedTypeMapping[firstContentType];
 
   return (
     <ListResourceWrapper id={id}>
@@ -229,7 +231,8 @@ const ListResource = ({
           resourceImage={resourceImage}
           loading={isLoading}
           type={imageType}
-          contentType={contentTypeMapping[firstContentType] ?? contentTypeMapping['default']}
+          background={!!embedResourceType}
+          contentType={contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping['default']}
         />
       </ImageWrapper>
       <TopicAndTitleWrapper>

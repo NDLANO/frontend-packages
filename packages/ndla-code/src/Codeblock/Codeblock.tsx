@@ -10,7 +10,7 @@
  * Be advised! This component breaks on SSR if you import CodeBlockEditor or languages.tsx.
  */
 
-import React, { useState, useEffect, CSSProperties } from 'react';
+import { useState, useEffect, CSSProperties, ReactNode } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
 import { colors } from '@ndla/core';
@@ -86,7 +86,7 @@ type Props = {
   code: string;
   format: string;
   title?: string | null;
-  actionButton?: JSX.Element | null;
+  actionButton?: ReactNode;
   showCopy?: boolean;
 };
 

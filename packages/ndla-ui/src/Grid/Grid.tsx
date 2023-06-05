@@ -18,8 +18,7 @@ export interface GridProps {
 }
 
 const GridContainer = styled.div`
-  width: 100%;
-  display: inline-grid;
+  display: grid;
   grid-template-columns: auto;
   justify-content: center;
   grid-gap: ${spacing.large};

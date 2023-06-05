@@ -8,6 +8,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
+import { spacing } from '@ndla/core';
 import { LayoutItem, OneColumn, PageContainer, SubjectHeader } from '@ndla/ui';
 import { InputV2 } from '@ndla/forms';
 import { CopyButton } from '@ndla/button';
@@ -54,7 +55,7 @@ const BannerList = () => {
         </LayoutItem>
       </OneColumn>
       {banners.map((banner) => (
-        <div key={banner.desktop} style={{ marginTop: '26px' }}>
+        <div key={banner.desktop} style={{ marginTop: spacing.normal }}>
           <SubjectHeader
             heading={banner.name}
             images={[
@@ -65,7 +66,7 @@ const BannerList = () => {
               { url: banner.mobile, types: ['mobile'] },
             ]}
           />
-          <div style={{ margin: '13px' }}>
+          <div style={{ margin: spacing.small }}>
             <CopyButton
               copyNode={
                 <>

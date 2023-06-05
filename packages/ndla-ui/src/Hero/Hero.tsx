@@ -34,8 +34,10 @@ interface HeroProps {
   contentType?: HeroContentType;
 }
 
-export const Hero = ({ children, contentType }: HeroProps) => (
-  <div {...classes('', contentType)}>{children || null}</div>
+export const Hero = ({ children, contentType, ...rest }: HeroProps) => (
+  <div {...classes('', contentType)} {...rest}>
+    {children || null}
+  </div>
 );
 
 interface Props {

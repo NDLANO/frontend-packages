@@ -1,0 +1,74 @@
+/**
+** FOOTNOTES
+**
+** EXAMPLE:
+** <ol class="c-footnotes">
+**  <li class="c-footnotes__item">
+**    <cite class="c-footnotes__cite">Tekst her</cite>
+**  </li>
+** </ol>
+**/
+
+$highlight-color: $brand-grey--lighter;
+
+.c-footnotes {
+  margin: $spacing--large 0 0 0;
+  padding: $spacing--large 0 0 0;
+  display: block;
+  border-top: 2px solid $brand-grey--lighter;
+  color: gray;
+  @include font-size(15px, 1.6);
+}
+.c-footnotes__item {
+  margin-bottom: $spacing--small;
+  margin-left: 0;
+  &:before {
+    display: none;
+  }
+}
+
+.c-footnotes__cite {
+  position: relative;
+  sup {
+    position: absolute;
+    left: -45px;
+    top: -5px;
+    a {
+      padding: 10px 15px;
+      box-shadow: none;
+      text-decoration: underline;
+      @include font-size(15px, 1.6);
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $highlight-color;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.c-footnotes__ref {
+  &:target {
+    background-color: $highlight-color;
+    padding: 3px 4px;
+    box-shadow: 4px 0 0 $highlight-color, -4px 0 0 $highlight-color;
+  }
+
+  sup {
+    a {
+      margin-left: -2px;
+      padding: 10px 4px;
+      box-shadow: none;
+      text-decoration: underline;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $highlight-color;
+        text-decoration: underline;
+      }
+    }
+  }
+}

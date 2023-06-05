@@ -280,3 +280,5 @@ export { Grid } from './Grid';
 export type { GridType } from './Grid';
 export { Heading } from './Typography';
 export type { HeadingLevel } from './types';
+
+export { default as FrontpageArticle } from './FrontpageArticle';

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/code",
-  "version": "2.2.8",
+  "version": "2.2.9",
   "description": "Code components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import { breakpoints, mq, fonts } from '@ndla/core';
+import { breakpoints, mq, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import {
   ClimateIllustration,
@@ -12,6 +12,7 @@ import {
   PublicHealthDemocracyIllustration,
   PublicHealthIllustration,
 } from './Illustrations';
+import { HomeBreadcrumb, SimpleBreadcrumbItem } from '../Breadcrumb';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -33,6 +34,9 @@ const ContentWrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding: 26px 26px 0;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
   width: 100%;
   z-index: 2;
   ${mq.range({ from: breakpoints.tablet })} {
@@ -68,9 +72,10 @@ type subjectLink = {
 type Props = {
   subjects?: subjects[];
   subjectsLinks?: subjectLink[];
+  breadcrumbs: SimpleBreadcrumbItem[];
 };
 
-const MultidisciplinarySubjectHeader = ({ subjects = [], subjectsLinks = [] }: Props) => {
+const MultidisciplinarySubjectHeader = ({ subjects = [], subjectsLinks = [], breadcrumbs }: Props) => {
   const { t } = useTranslation();
   const getIllustration = () => {
     if (subjects.length === 3) {
@@ -97,6 +102,7 @@ const MultidisciplinarySubjectHeader = ({ subjects = [], subjectsLinks = [] }: P
     <StyledWrapper>
       <ContentWrapper>
         <TextWrapper>
+          <HomeBreadcrumb items={breadcrumbs} />
           <Heading>{t('frontpageMultidisciplinarySubject.heading')}</Heading>
           <SubjectsWrapper>
             {t('multidisciplinarySubject.subjectsLinksDescription')}:{' '}

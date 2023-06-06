@@ -77,6 +77,9 @@ const AudioExample = styled.div`
 `;
 
 const StyledAccordionHeader = styled(AccordionHeader)`
+  font-family: ${fonts.sans};
+  font-size: ${fonts.sizes('16px', 1.3)};
+  font-weight: ${fonts.weight.semibold};
   background-color: ${colors.background.lightBlue};
 `;
 
@@ -92,12 +95,27 @@ const ExampleContainer = styled.div`
 const TranslatedText = styled.span`
   border-bottom: 1px solid ${colors.brand.lighter};
   padding: ${spacing.small} ${spacing.normal};
+  font-family: ${fonts.sans};
+  font-size: ${fonts.sizes('18px', 1.3)};
   :first-child {
     color: ${colors.brand.dark};
     font-weight: ${fonts.weight.bold};
     background-color: ${colors.background.lightBlue};
   }
 `;
+
+const Example = (ex: Example) => {
+  console.log(ex);
+  console.log(ex.transcriptions);
+  return (
+    <>
+      <TranslatedText>{ex.example}</TranslatedText>
+      {Object.keys(ex.transcriptions).map((key) => (
+        <TranslatedText>{(ex.transcriptions as any)[key]}</TranslatedText>
+      ))}
+    </>
+  );
+};
 
 const Gloss = ({ title, glossData, audio }: Props) => {
   return (
@@ -112,9 +130,11 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               ))}
             {glossData.wordClass && <TypeSpan>{glossData.wordClass}</TypeSpan>}
           </GlossContainer>
-          <AudioExample>
-            {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
-          </AudioExample>
+          {audio.src && (
+            <AudioExample>
+              {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+            </AudioExample>
+          )}
         </Wrapper>
         <span>{title.title}</span>
       </Container>
@@ -124,14 +144,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             <StyledAccordionHeader>Eksempler</StyledAccordionHeader>
             <StyledAccordionContent>
               {glossData.examples.map((example, index) => (
-                <ExampleContainer key={index}>
-                  <TranslatedText>{example[0].example}</TranslatedText>
-                  {example[0].transcriptions.trad && <TranslatedText>{example[0].transcriptions.trad}</TranslatedText>}
-                  {example[0].transcriptions.pinyin && (
-                    <TranslatedText>{example[0].transcriptions.pinyin}</TranslatedText>
-                  )}
-                  <TranslatedText>{example[1].example}</TranslatedText>
-                </ExampleContainer>
+                <ExampleContainer key={index}>{example.map((ex) => Example(ex))}</ExampleContainer>
               ))}
             </StyledAccordionContent>
           </AccordionItem>

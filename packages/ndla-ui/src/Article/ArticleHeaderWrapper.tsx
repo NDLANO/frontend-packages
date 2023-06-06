@@ -26,10 +26,10 @@ const CompetenceBadgeText = styled.span`
 `;
 
 type Props = {
-  competenceGoals?:
-    | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
-    | ReactNode
-    | null;
+  competenceGoals?: (inp: {
+    Dialog: ComponentType;
+    dialogProps: { isOpen: boolean; onClose: () => void; controlled: true };
+  }) => ReactNode;
   competenceGoalsLoading?: boolean;
   children: ReactNode;
 };
@@ -60,20 +60,14 @@ const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalsLoadin
     return <div {...classes('header')}>{children}</div>;
   }
 
-  const dialog =
-    typeof competenceGoals === 'function' ? (
-      competenceGoals({
-        Dialog: CompetenceGoalsDialog,
-        dialogProps: {
-          isOpen: isOpen,
-          onClose: closeDialog,
-        },
-      })
-    ) : (
-      <CompetenceGoalsDialog onClose={closeDialog} isOpen={isOpen}>
-        {competenceGoals}
-      </CompetenceGoalsDialog>
-    );
+  const dialog = competenceGoals({
+    Dialog: CompetenceGoalsDialog,
+    dialogProps: {
+      isOpen: isOpen,
+      onClose: closeDialog,
+      controlled: true,
+    },
+  });
   return (
     <div {...classes('header')}>
       {children}

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/howto",
-  "version": "3.2.10",
+  "version": "3.2.19",
   "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,24 +25,24 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^10.1.2",
-    "@ndla/core": "^4.0.0",
-    "@ndla/icons": "^2.3.0",
+    "@ndla/button": "^10.1.5",
+    "@ndla/core": "^4.0.1",
+    "@ndla/icons": "^3.0.1",
     "@ndla/licenses": "^7.0.4",
-    "@ndla/modal": "^2.3.0",
-    "@ndla/notion": "^4.3.2",
-    "@ndla/tooltip": "^4.1.2",
-    "@ndla/ui": "^37.1.3",
-    "@ndla/util": "^3.1.12",
+    "@ndla/modal": "^3.0.2",
+    "@ndla/notion": "^5.0.2",
+    "@ndla/tooltip": "^4.1.5",
+    "@ndla/ui": "^39.1.1",
+    "@ndla/util": "^3.1.13",
     "remarkable": "^2.0.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "react": "^16.7.0 || ^17.0.0"
+    "react": ">= 16.8.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
+  "gitHead": "ebeb8a1d86cba369e1156719ebaecb58a6e2cdfc"
 }

@@ -7,9 +7,8 @@
  */
 
 import { keyframes } from '@emotion/react';
-import { DialogContentProps } from '@reach/dialog';
-import { HTMLAttributes, ReactElement, ReactNode } from 'react';
-import { animations } from './animations';
+import { HTMLMotionProps } from 'framer-motion';
+import { ReactElement, ReactNode } from 'react';
 
 export type ModalSize = 'xsmall' | 'small' | 'normal' | 'large' | 'full';
 export type ModalSizeType = ModalSize | { width: ModalSize; height: ModalSize };
@@ -18,13 +17,19 @@ export type ModalMargin = 'none' | 'small';
 
 export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
-interface DialogProps extends DialogContentProps, Omit<HTMLAttributes<HTMLDivElement>, 'size'> {
-  controlled?: boolean;
+export interface DialogProps extends Omit<HTMLMotionProps<'div'>, 'size'> {
   animation?: ModalAnimation;
   animationDuration?: number;
-  labelledBy?: string;
-  label?: string;
   children: (close: () => void) => ReactNode;
+  /**
+   * Can be either a string or an object with height and width properties.
+   * Allow string values are `xsmall | small | normal | large | full`. This applies both
+   * for the string variant and the object variant
+   */
+  size?: ModalSizeType;
+  position?: ModalPosition;
+  modalMargin?: ModalMargin;
+  expands?: boolean;
 }
 
 export interface ControlledProps extends DialogProps {
@@ -51,4 +56,4 @@ export interface DirectionalAnimation extends Partial<Record<ModalPosition, Anim
   type: 'directional';
 }
 
-export type ModalAnimation = keyof typeof animations;
+export type ModalAnimation = 'fade' | 'zoom' | 'subtle' | 'slideIn';

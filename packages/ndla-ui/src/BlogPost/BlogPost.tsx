@@ -13,7 +13,7 @@ import { colors, fonts, misc, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
 import { HeadingLevel } from '../types';
 
-interface Props {
+export interface Props {
   title: {
     title: string;
     language: string;
@@ -32,6 +32,7 @@ const Container = styled(SafeLink)`
   display: flex;
   flex-direction: column;
   color: ${colors.text.primary};
+  background-color: ${colors.white};
   max-width: 350px;
   max-height: 415px;
   gap: ${spacing.nsmall};

@@ -11,7 +11,7 @@ import { Root } from '@radix-ui/react-accordion';
 import { spacing } from '@ndla/core';
 import { HTMLAttributes } from 'react';
 
-interface SingleProps extends HTMLAttributes<HTMLDivElement> {
+interface SingleProps extends Omit<HTMLAttributes<HTMLDivElement>, 'dir'> {
   type: 'single';
   collapsible?: boolean;
   value?: string;
@@ -20,7 +20,7 @@ interface SingleProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
 }
 
-interface MultipleProps extends HTMLAttributes<HTMLDivElement> {
+interface MultipleProps extends Omit<HTMLAttributes<HTMLDivElement>, 'dir'> {
   type: 'multiple';
   value?: string[];
   defaultValue?: string[];

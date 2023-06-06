@@ -1,25 +1,27 @@
-import React, { ReactChild, ReactChildren, ReactNode } from 'react';
-import Modal from '@ndla/modal';
+import React, { ReactChild, ReactChildren, ReactNode, useState } from 'react';
+import { Drawer } from '@ndla/modal';
 import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
-import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { spacing, mq, breakpoints, colors, shadows } from '@ndla/core';
+import { spacing, mq, breakpoints, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {
   onClose: VoidFunction;
-  children: (arg: Function) => ReactChild | ReactChildren | ReactNode;
+  children: (arg: () => void) => ReactChild | ReactChildren | ReactNode;
   hideOnNarrowScreen?: boolean;
   ndlaFilm?: boolean;
 }
 
+const StyledDrawer = styled(Drawer)`
+  background-color: ${colors.brand.greyLightest};
+`;
+
 const StyledHeader = styled.div`
   display: flex;
   gap: ${spacing.small};
-  align-items: center;
+  align-items: flex-start;
   ${mq.range({ from: breakpoints.tablet })} {
     width: 1024px;
     max-width: calc(100vw - 100px);
@@ -33,11 +35,14 @@ const StyledHeader = styled.div`
 
   display: flex;
   padding-top: ${spacing.small};
+  padding-bottom: ${spacing.small};
   ${mq.range({ from: breakpoints.tablet })} {
     padding-top: ${spacing.normal};
+    padding-bottom: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.desktop })} {
     padding-top: calc(${spacing.normal} + ${spacing.small});
+    padding-bottom: calc(${spacing.normal} + ${spacing.small});
   }
   > input {
     width: 100%;
@@ -55,76 +60,45 @@ const StyledHeader = styled.div`
   }
 `;
 
-const modalStyles = css`
-  & > [data-reach-dialog-content] {
-    position: fixed;
-    background: none;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 74px;
-    ${mq.range({ from: breakpoints.tablet })} {
-      height: 110px;
-    }
-    ${mq.range({ from: breakpoints.desktop })} {
-      height: 136px;
-    }
-    overflow-y: visible;
-    box-shadow: none;
-  }
-`;
-
-const extraBackdrop = css`
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 74px;
-  background: ${colors.brand.greyLighter};
-  ${mq.range({ from: breakpoints.tablet })} {
-    height: 110px;
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    height: 136px;
-  }
-  box-shadow: ${shadows.searchHeader};
-`;
-
 const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScreen, ndlaFilm }: Props) => {
   const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Modal
-      label={t('searchPage.searchFieldPlaceholder')}
-      backgroundColor="grey"
-      animation="slide-down"
-      animationDuration={200}
-      size="full-width"
-      onClose={onSearchClose}
-      css={modalStyles}
-      activateButton={
-        <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} ndlaFilm={ndlaFilm}>
-          {t('masthead.menu.search')}
-        </ToggleSearchButton>
-      }
-    >
-      {(closeModal: VoidFunction) => (
-        <>
-          <div css={extraBackdrop} />
-          <StyledHeader>
-            {isFunction(children) ? children(closeModal) : children}
-            <IconButton
-              aria-label={t('welcomePage.closeSearch')}
-              variant="ghost"
-              colorTheme="light"
-              onClick={closeModal}
-            >
-              <Cross className="c-icon--medium" />
-            </IconButton>
-          </StyledHeader>
-        </>
-      )}
-    </Modal>
+    <>
+      <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} onClick={() => setIsOpen(true)} ndlaFilm={ndlaFilm}>
+        {t('masthead.menu.search')}
+      </ToggleSearchButton>
+      <StyledDrawer
+        controlled
+        aria-label={t('searchPage.searchFieldPlaceholder')}
+        position="top"
+        expands
+        size="small"
+        animation="slideIn"
+        animationDuration={200}
+        isOpen={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+          onSearchClose();
+        }}
+      >
+        {(closeModal) => (
+          <>
+            <StyledHeader>
+              {children(closeModal)}
+              <IconButton
+                aria-label={t('welcomePage.closeSearch')}
+                variant="ghost"
+                colorTheme="light"
+                onClick={closeModal}
+              >
+                <Cross className="c-icon--medium" />
+              </IconButton>
+            </StyledHeader>
+          </>
+        )}
+      </StyledDrawer>
+    </>
   );
 };
 

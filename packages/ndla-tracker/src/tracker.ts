@@ -30,17 +30,6 @@ type PageViewHistoryType = {
 
 const pageViewHistory: PageViewHistoryType[] = [];
 
-function initializeGA(gaTrackingId?: string) {
-  window.ga =
-    window.ga ||
-    function () {
-      // @ts-ignore
-      (ga.q = ga.q || []).push(arguments);
-    }; //eslint-disable-line
-  window.ga.l = +new Date();
-  window.ga('create', gaTrackingId, 'auto');
-}
-
 function resetDataLayer(googleTagManagerId?: string) {
   if (window.dataLayer && window.google_tag_manager && googleTagManagerId) {
     window.google_tag_manager[googleTagManagerId].dataLayer.reset();
@@ -53,15 +42,12 @@ export type UnregisterCallback = () => void;
 export const configureTracker = ({
   listen,
   debug,
-  gaTrackingId,
   googleTagManagerId,
 }: {
   listen: History['listen'];
   debug?: boolean;
-  gaTrackingId?: string;
   googleTagManagerId?: string;
 }) => {
-  initializeGA(gaTrackingId);
   // Push current page and start listning
   pageViewHistory.push({
     url: `${location.pathname}${location.search}${location.hash}`,
@@ -112,13 +98,6 @@ export const sendPageView = ({
 
   const dim = dimensions || { ga: {}, gtm: {} };
   window.document.title = title;
-
-  window.ga('send', {
-    hitType: 'pageview',
-    page: current.url,
-    title,
-    ...dim.ga,
-  });
 
   window.dataLayer.push({
     page_title: title,

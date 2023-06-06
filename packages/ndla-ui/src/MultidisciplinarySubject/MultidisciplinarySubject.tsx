@@ -5,6 +5,7 @@ import { breakpoints, fonts, mq } from '@ndla/core';
 import LayoutItem, { OneColumn } from '../Layout';
 import List from './List';
 import { ListItemProps } from './ListItem';
+import { HomeBreadcrumb, SimpleBreadcrumbItem } from '../Breadcrumb';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -15,11 +16,6 @@ const StyledBackground = styled.div`
   width: 100%;
   background: linear-gradient(179.64deg, rgba(255, 255, 255, 0.6) 80.1%, rgba(255, 255, 255) 99.05%),
     linear-gradient(318.9deg, rgb(239, 238, 220, 0.6) 35.53%, rgb(250, 246, 235) 74.23%), rgb(221, 216, 175);
-
-  ${mq.range({ until: breakpoints.tablet })} {
-  }
-  ${mq.range({ until: breakpoints.mobileWide })} {
-  }
 `;
 
 const StyledLayoutWrapper = styled.div`
@@ -31,6 +27,7 @@ const Header = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 32px;
+  margin-top: 32px;
 `;
 
 const Heading = styled.h1`
@@ -87,13 +84,21 @@ const Illustration = styled.div`
 
 type Props = {
   cards: ListItemProps[];
+  breadcrumbs?: SimpleBreadcrumbItem[];
   children: ReactNode;
   totalCardCount: number;
   hideCards?: boolean;
   id?: string;
 };
 
-export const MultidisciplinarySubject = ({ cards, children, totalCardCount, hideCards, id }: Props) => {
+export const MultidisciplinarySubject = ({
+  cards,
+  children,
+  totalCardCount,
+  hideCards,
+  breadcrumbs = [],
+  id,
+}: Props) => {
   const { t } = useTranslation();
   return (
     <StyledWrapper>
@@ -101,6 +106,7 @@ export const MultidisciplinarySubject = ({ cards, children, totalCardCount, hide
         <OneColumn wide>
           <Header>
             <LayoutItem layout="extend">
+              <HomeBreadcrumb items={breadcrumbs} />
               <Heading id={id} tabIndex={-1}>
                 {t('frontpageMultidisciplinarySubject.heading')}
               </Heading>

@@ -6,83 +6,71 @@
  *
  */
 
-import { css, SerializedStyles } from '@emotion/react';
-import { spacing } from '@ndla/core';
-import { ModalMargin, ModalSize } from './types';
+import { css } from '@emotion/react';
 
-export const widths = {
-  xsmall: '300px',
-  small: '500px',
-  normal: '700px',
-  large: '1100px',
-  full: '100%',
-};
+export const positionStyles = css`
+  &[data-position='top'] {
+    top: var(--margin);
+    bottom: unset;
+  }
+  &[data-position='bottom'] {
+    bottom: var(--margin);
+    top: unset;
+  }
+  &[data-position='left'] {
+    left: var(--margin);
+    right: unset;
+  }
+  &[data-position='right'] {
+    right: var(--margin);
+    left: unset;
+  }
+`;
 
-export const heights = {
-  xsmall: 'auto',
-  small: '500px',
-  normal: '700px',
-  large: '1100px',
-  full: '100%',
-};
-
-export const sizeCombos: Record<ModalSize, SerializedStyles> = {
-  xsmall: css`
-    width: ${widths.xsmall};
-  `,
-  small: css`
-    width: ${widths.small};
-  `,
-  normal: css`
-    width: ${widths.normal};
-  `,
-  large: css`
-    width: ${widths.large};
-  `,
-  full: css`
-    min-width: ${widths.full};
-    min-height: ${heights.full};
-  `,
-};
-
-export const sizes: Record<'width' | 'height', Record<ModalSize, SerializedStyles>> = {
-  width: {
-    xsmall: css`
-      width: ${widths.xsmall};
-    `,
-    small: css`
-      width: ${widths.small};
-    `,
-    normal: css`
-      width: ${widths.normal};
-    `,
-    large: css`
-      width: ${widths.large};
-    `,
-    full: css`
-      width: ${widths.full};
-    `,
-  },
-  height: {
-    xsmall: css`
-      width: ${heights.xsmall};
-    `,
-    small: css`
-      width: ${heights.small};
-    `,
-    normal: css`
-      width: ${heights.normal};
-    `,
-    large: css`
-      width: ${heights.large};
-    `,
-    full: css`
-      min-height: ${heights.full};
-    `,
-  },
-};
-
-export const margins: Record<ModalMargin, string> = {
-  none: '0px',
-  small: spacing.normal,
-};
+export const sizeStyles = css`
+  &[data-size='full'] {
+    min-height: 100%;
+    min-width: 100%;
+    inset: 0;
+  }
+  &[data-width='xsmall'],
+  &[data-size='xsmall'] {
+    width: 300px;
+  }
+  &[data-width='small'],
+  &[data-size='small'] {
+    width: 500px;
+  }
+  &[data-width='normal'],
+  &[data-size='normal'] {
+    width: 700px;
+  }
+  &[data-width='large'],
+  &[data-size='large'] {
+    width: 1100px;
+  }
+  &[data-width='full'] {
+    width: 100%;
+    min-width: 100%;
+    left: 0;
+    right: 0;
+  }
+  &[data-height='xsmall'] {
+    height: 300px;
+  }
+  &[data-height='small'] {
+    height: 500px;
+  }
+  &[data-height='normal'] {
+    height: 700px;
+  }
+  &[data-height='large'] {
+    height: 1100px;
+  }
+  &[data-height='full'] {
+    height: 100%;
+    min-height: 100%;
+    top: 0;
+    bottom: 0;
+  }
+`;

@@ -19,7 +19,7 @@ export default {
     ...defaultParameters,
   },
   args: {
-    ariaLabel: 'Oversikt over farge og figur',
+    'aria-label': 'Oversikt over farge og figur',
     variant: 'underlined',
     tabs: [
       {

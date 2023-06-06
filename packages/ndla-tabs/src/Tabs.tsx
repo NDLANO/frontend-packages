@@ -14,6 +14,7 @@ import { HTMLAttributes, ReactNode } from 'react';
 interface TabType {
   title: string;
   id: string;
+  disabled?: boolean;
   content: ReactNode;
 }
 
@@ -54,6 +55,14 @@ const TabsRoot = styled(Root)`
       &:not(:first-child) {
         margin-left: -16px;
       }
+      &:hover {
+        color: ${colors.text.primary};
+      }
+      &[data-disabled] {
+        background-color: ${colors.brand.greyLight};
+        color: ${colors.brand.grey};
+        cursor: not-allowed;
+      }
     }
     [data-tab-panel] {
       background-color: ${colors.brand.lighter};
@@ -91,17 +100,22 @@ const TabsRoot = styled(Root)`
         color: ${colors.brand.primary};
         border-bottom-color: ${colors.brand.primary};
       }
+      &[data-disabled] {
+        color: ${colors.brand.grey};
+        cursor: not-allowed;
+      }
     }
   }
 `;
 
 const Tabs = ({ tabs, variant = 'underlined', defaultValue: defaultValueProp, ...rest }: Props) => {
-  const defaultValue = defaultValueProp ?? tabs[0]?.id;
+  const defaultValue =
+    tabs.find((tab) => tab.id === defaultValueProp && !tab.disabled)?.id ?? tabs.find((t) => t.disabled !== true)?.id;
   return (
     <TabsRoot defaultValue={defaultValue} data-variant={variant} {...rest}>
       <List data-tab-list="">
         {tabs.map((tab) => (
-          <Trigger key={tab.id} value={tab.id} data-tab-trigger="">
+          <Trigger key={tab.id} value={tab.id} data-tab-trigger="" disabled={tab.disabled}>
             {tab.title}
           </Trigger>
         ))}

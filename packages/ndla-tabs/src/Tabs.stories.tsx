@@ -21,6 +21,7 @@ export default {
   args: {
     'aria-label': 'Oversikt over farge og figur',
     variant: 'underlined',
+    defaultValue: 'colors',
     tabs: [
       {
         title: 'Farge',
@@ -39,6 +40,17 @@ export default {
           <>
             <h2 style={{ margin: 0 }}>Oversikt over figurer</h2>
             <p>Sirkel, trekant og firkant.</p>
+          </>
+        ),
+      },
+      {
+        title: 'Hemmelig',
+        disabled: true,
+        id: 'secret',
+        content: (
+          <>
+            <h2 style={{ margin: 0 }}>Ikke hemmelig</h2>
+            <p>Egentlig ikke så spennende.</p>
           </>
         ),
       },

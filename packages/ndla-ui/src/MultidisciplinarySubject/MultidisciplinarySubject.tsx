@@ -84,14 +84,21 @@ const Illustration = styled.div`
 
 type Props = {
   cards: ListItemProps[];
-  breadcrumbs: SimpleBreadcrumbItem[];
+  breadcrumbs?: SimpleBreadcrumbItem[];
   children: ReactNode;
   totalCardCount: number;
   hideCards?: boolean;
   id?: string;
 };
 
-export const MultidisciplinarySubject = ({ cards, children, totalCardCount, hideCards, breadcrumbs, id }: Props) => {
+export const MultidisciplinarySubject = ({
+  cards,
+  children,
+  totalCardCount,
+  hideCards,
+  breadcrumbs = [],
+  id,
+}: Props) => {
   const { t } = useTranslation();
   return (
     <StyledWrapper>

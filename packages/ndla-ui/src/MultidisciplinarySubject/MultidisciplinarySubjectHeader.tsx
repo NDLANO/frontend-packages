@@ -72,10 +72,10 @@ type subjectLink = {
 type Props = {
   subjects?: subjects[];
   subjectsLinks?: subjectLink[];
-  breadcrumbs: SimpleBreadcrumbItem[];
+  breadcrumbs?: SimpleBreadcrumbItem[];
 };
 
-const MultidisciplinarySubjectHeader = ({ subjects = [], subjectsLinks = [], breadcrumbs }: Props) => {
+const MultidisciplinarySubjectHeader = ({ subjects = [], subjectsLinks = [], breadcrumbs = [] }: Props) => {
   const { t } = useTranslation();
   const getIllustration = () => {
     if (subjects.length === 3) {

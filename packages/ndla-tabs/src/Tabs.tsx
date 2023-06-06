@@ -95,7 +95,7 @@ const TabsRoot = styled(Root)`
   }
 `;
 
-const TabsV3 = ({ tabs, variant = 'underlined', defaultValue: defaultValueProp, ...rest }: Props) => {
+const Tabs = ({ tabs, variant = 'underlined', defaultValue: defaultValueProp, ...rest }: Props) => {
   const defaultValue = defaultValueProp ?? tabs[0]?.id;
   return (
     <TabsRoot defaultValue={defaultValue} data-variant={variant} {...rest}>
@@ -115,4 +115,4 @@ const TabsV3 = ({ tabs, variant = 'underlined', defaultValue: defaultValueProp, 
   );
 };
 
-export default TabsV3;
+export default Tabs;

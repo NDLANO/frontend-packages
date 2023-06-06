@@ -123,10 +123,10 @@ class NotionExample extends Component {
                       <Fragment>
                         <NotionDialogContent>
                           <Tabs
-                            singleLine
                             tabs={[
                               {
                                 title: 'Forklaring',
+                                id: 'concept',
                                 content: (
                                   <Fragment>
                                     <NotionDialogImage
@@ -144,6 +144,7 @@ class NotionExample extends Component {
                               },
                               {
                                 title: 'Ordbok',
+                                id: 'dictionary',
                                 content: (
                                   <Fragment>
                                     <NotionDialogText>

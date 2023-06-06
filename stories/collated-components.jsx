@@ -27,7 +27,6 @@ import ArticleLoader from './article/ArticleLoader';
 import FigureImage from './article/FigureImage';
 import { mockFooterLinks } from '../dummydata/index';
 import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
-import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import NotionExample from './organisms/NotionExample';
@@ -44,7 +43,6 @@ import RelatedArticleListExample, {
 } from './article/RelatedArticleListExample';
 import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
-import TranslationBoxExample from './organisms/TranslationBoxExample';
 
 import Oops from '../images/oops.gif';
 import cecilie from '../images/cecilie.png';
@@ -236,25 +234,6 @@ storiesOf('Sammensatte moduler', module)
       <ArticleLoader articleId="13661" reset />
     </Center>
   ))
-  .add('Faner', () => (
-    <Center>
-      <h2 className="u-heading">Faner</h2>
-      <div className="o-wrapper--inner">
-        <p>Klikk på fane-tittel for å vise innhold.</p>
-        <Tabs />
-      </div>
-      <h2 className="u-heading">Kontrollerte faner</h2>
-      <div className="o-wrapper--inner">
-        <p>
-          Knapper kan også brukes til å kontrollere fanene. En mulighet her er f.eks. å ha en knapp nederst inni en fane
-          for å la brukeren gå til neste fane uten å først måtte scrolle opp til fanetoppen. Dette benyttes ikke
-          foreløpig, men kan brukes ved behov i senere utvikling.
-        </p>
-        <TabsControlled />
-      </div>
-    </Center>
-  ))
-
   .add('Feilmelding', () => (
     <div className="u-margin-bottom">
       <div>
@@ -520,8 +499,6 @@ storiesOf('Sammensatte moduler', module)
             Du er student.
           </TranslationLine>
         </Translation>
-        <h2 className="u-heading">Språkvelger</h2>
-        <TranslationBoxExample />
       </StoryBody>
     </div>
   ))

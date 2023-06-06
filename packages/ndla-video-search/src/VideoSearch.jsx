@@ -182,6 +182,7 @@ class VideoSearch extends Component {
 
     const searchListTabs = enabledSources.map((source) => ({
       title: source,
+      id: source,
       content: (
         <div {...classes('list')}>
           {selectedType === source.toLowerCase() && (

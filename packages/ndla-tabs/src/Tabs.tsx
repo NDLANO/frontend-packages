@@ -1,135 +1,118 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2023-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import React, { Component, createRef, MutableRefObject, ReactNode } from 'react';
-import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
-import { isMobile } from 'react-device-detect';
-import { isFunction } from '@ndla/util';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { colors, fonts, spacing } from '@ndla/core';
+import { Root, List, Trigger, Content } from '@radix-ui/react-tabs';
+import { HTMLAttributes, ReactNode } from 'react';
 
-const classes = new BEMHelper({
-  name: 'tabs',
-  prefix: 'c-',
-});
-
-type TabType = {
-  key?: string;
+interface TabType {
   title: string;
-  content: (() => ReactNode) | ReactNode;
-  disabled?: boolean;
-};
+  id: string;
+  content: ReactNode;
+}
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'dir'> {
   tabs: TabType[];
-  singleLine?: boolean;
-  onSelect?: (index: number, last: number) => void;
-  modifier?: string;
-  forceRenderTabPanel?: boolean;
-  selectedIndex?: number;
+  variant?: 'rounded' | 'underlined';
+  defaultValue?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
 }
 
-interface State {
-  index: number;
-  singleLineState: boolean;
-}
-
-const assertIsFunction = (maybeFunc: (() => ReactNode) | ReactNode): maybeFunc is () => ReactNode =>
-  isFunction(maybeFunc);
-
-class Tabs extends Component<Props, State> {
-  tabRef: MutableRefObject<HTMLDivElement | null>;
-  constructor(props: Props) {
-    super(props);
-    this.handleSelect = this.handleSelect.bind(this);
-    this.state = {
-      index: props.selectedIndex || 0,
-      singleLineState: false,
-    };
-    this.tabRef = createRef();
+const TabsRoot = styled(Root)`
+  [data-tab-trigger] {
+    border: none;
+    user-select: none;
+    cursor: pointer;
   }
 
-  componentDidMount() {
-    if (this.props.singleLine && isMobile) {
-      // We only allow horisontal scrolling for phones..
-      const widthTotal = this.tabRef.current?.offsetWidth ?? 0;
-      let childrensWidthsTotal = 0;
-      this.tabRef.current?.querySelectorAll<HTMLLIElement>('.c-tabs__list li').forEach((el) => {
-        childrensWidthsTotal += el.offsetWidth;
-      });
-      if (childrensWidthsTotal > widthTotal) {
-        this.setState({
-          singleLineState: true,
-        });
+  [data-tab-list] {
+    position: relative;
+  }
+
+  &[data-variant='rounded'] {
+    [data-tab-trigger] {
+      ${fonts.sizes('12px')};
+      padding: 0 30px;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      color: ${colors.brand.primary};
+      font-weight: ${fonts.weight.semibold};
+      background-color: ${colors.brand.light};
+      z-index: 1;
+      position: relative;
+      &[data-state='active'] {
+        background-color: ${colors.brand.lighter};
+        z-index: 2;
+      }
+      &:not(:first-child) {
+        margin-left: -16px;
+      }
+    }
+    [data-tab-panel] {
+      background-color: ${colors.brand.lighter};
+      border-radius: 0px 10px 10px 10px;
+      padding: ${spacing.nsmall};
+      position: relative;
+    }
+    [data-tab-panel]:focus-within,
+    [data-tab-trigger]:focus-within {
+      z-index: 3;
+      box-shadow: 0 0 0 2px ${colors.brand.primary};
+    }
+  }
+  &[data-variant='underlined'] {
+    [data-tab-list]:after {
+      border-bottom: 1px solid ${colors.brand.tertiary};
+      position: absolute;
+      bottom: 1.5px;
+      left: 0px;
+      content: '';
+      width: 100%;
+      z-index: -1;
+    }
+
+    [data-tab-trigger] {
+      font-weight: ${fonts.weight.bold};
+      border-bottom: 5px solid transparent;
+      background-color: transparent;
+      color: inherit;
+      padding: ${spacing.xsmall} ${spacing.nsmall};
+      &:hover {
+        color: ${colors.brand.primary};
+      }
+      &[data-state='active'] {
+        color: ${colors.brand.primary};
+        border-bottom-color: ${colors.brand.primary};
       }
     }
   }
+`;
 
-  componentDidUpdate(_: Props, __: State) {
-    const { index } = this.state;
-    if (this.props.selectedIndex !== undefined && this.props.selectedIndex !== index) {
-      this.setState({ index: this.props.selectedIndex });
-    }
-  }
+const TabsV3 = ({ tabs, variant = 'underlined', defaultValue: defaultValueProp, ...rest }: Props) => {
+  const defaultValue = defaultValueProp ?? tabs[0]?.id;
+  return (
+    <TabsRoot defaultValue={defaultValue} data-variant={variant} {...rest}>
+      <List data-tab-list="">
+        {tabs.map((tab) => (
+          <Trigger key={tab.id} value={tab.id} data-tab-trigger="">
+            {tab.title}
+          </Trigger>
+        ))}
+      </List>
+      {tabs.map((tab) => (
+        <Content key={tab.id} value={tab.id} data-tab-panel="">
+          {tab.content}
+        </Content>
+      ))}
+    </TabsRoot>
+  );
+};
 
-  handleSelect(index: number, last: number) {
-    this.setState({
-      index,
-    });
-
-    if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect(index, last);
-    }
-  }
-
-  render() {
-    const { tabs, forceRenderTabPanel, modifier } = this.props;
-    const { index } = this.state;
-
-    const baseClass = modifier ? { [modifier]: modifier } : {};
-
-    return (
-      <div ref={this.tabRef}>
-        <ReactTabs
-          {...classes({ modifier })}
-          onSelect={this.handleSelect}
-          selectedIndex={this.state.index}
-          forceRenderTabPanel={forceRenderTabPanel}
-        >
-          <TabList
-            {...classes('list', {
-              ...baseClass,
-              singleLine: this.state.singleLineState,
-            })}
-          >
-            {tabs.map((tab, i) => (
-              <Tab
-                {...classes('tab', {
-                  selected: i === index,
-                  disabled: !!tab.disabled,
-                  ...baseClass,
-                })}
-                key={tab.key ? tab.key : i}
-                disabled={tab.disabled}
-                data-cy={`${tab.title}-video-tab`}
-              >
-                {tab.title}
-              </Tab>
-            ))}
-          </TabList>
-          {tabs.map((tab, i) => (
-            <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>
-              {assertIsFunction(tab.content) ? tab.content() : tab.content}
-            </TabPanel>
-          ))}
-        </ReactTabs>
-      </div>
-    );
-  }
-}
-
-export default Tabs;
+export default TabsV3;

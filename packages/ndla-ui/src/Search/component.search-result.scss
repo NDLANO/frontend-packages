@@ -40,14 +40,6 @@
     }
   }
 
-  .c-tabs {
-    display: none;
-
-    @include mq(desktop) {
-      display: block;
-    }
-  }
-
   .c-search-filter {
     display: none;
 

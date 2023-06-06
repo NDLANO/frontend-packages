@@ -67,21 +67,3 @@ const MyPage = ({ topicPath, topic, article }) => {
   );
 };
 ```
-
-### Only import specific components
-
-```jsx
-import Hero from '@ndla/ui/es/hero/Hero';
-
-const MyPage = () => {
-  return (
-    <Hero>
-      <MyAwesomeComponent />
-    </Hero>
-  );
-};
-```
-
-### Important
-
-Components to be used as part of article rendered in article-converter can _not_ use useTranslation hook. This is because article-converter generates static html without dynamics, and this locks all texts inserted via the hook to be 'nb'.

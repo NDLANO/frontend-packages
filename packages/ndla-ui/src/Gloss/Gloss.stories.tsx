@@ -10,6 +10,7 @@ import React from 'react';
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
 import Gloss from './Gloss';
 import { defaultParameters } from '../../../../stories/defaults';
+import { Ordklasse, OrdklasseKinesisk } from '../model/WordClass';
 
 const meta: Meta<typeof Gloss> = {
   title: 'Enkle komponenter/Gloss',
@@ -25,7 +26,7 @@ const meta: Meta<typeof Gloss> = {
     },
     glossData: {
       gloss: 'angreifen',
-      wordClass: 'verb',
+      wordClass: Ordklasse.Verb,
       originalLanguage: 'de',
       transcriptions: {},
       examples: [
@@ -76,7 +77,7 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
     },
     glossData: {
       gloss: '马红',
-      wordClass: 'Egn',
+      wordClass: OrdklasseKinesisk.Egennavn,
       originalLanguage: 'zh',
       transcriptions: {
         trad: '(馬紅)',

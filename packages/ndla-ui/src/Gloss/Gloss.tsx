@@ -10,6 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, misc, fonts } from '@ndla/core';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
+import { Ordklasse, OrdklasseKinesisk, WordClass, WordClassChinese } from '../model/WordClass';
 import SpeechControl from '../AudioPlayer/SpeechControl';
 
 interface Example {
@@ -29,7 +30,7 @@ export interface Props {
   };
   glossData: {
     gloss: string;
-    wordClass?: string;
+    wordClass?: Ordklasse | OrdklasseKinesisk | WordClass | WordClassChinese;
     originalLanguage: string;
     transcriptions: Transcription;
     examples?: Example[][];

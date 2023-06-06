@@ -1,0 +1,101 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+export enum Ordklasse {
+  Substantiv = 'substantiv',
+  Verb = 'verb',
+  Pronomen = 'pronomen',
+  Bestemmerord = 'bestemmerord',
+  Adjektiv = 'adjektiv',
+  Adverb = 'adverb',
+  Preposisjon = 'preposisjon',
+  Konjunksjon = 'konjunksjon',
+  Subjunksjon = 'subjunksjon',
+  Interjeksjon = 'interjeksjon',
+  Uttrykk = 'uttrykk',
+}
+
+export enum WordClass {
+  Noun = 'noun',
+  Verb = 'verb',
+  Pronoun = 'pronoun',
+  Determiner = 'determiner',
+  Adjective = 'adjective',
+  Adverb = 'adverb',
+  Preposition = 'preposition',
+  Conjunction = 'conjunction',
+  SubordinatingConjunction = 'subordinating conjunction',
+  Interjection = 'interjection',
+  Expression = 'expression',
+}
+
+export enum OrdklasseKinesisk {
+  Adjektiv = 'adjektiv',
+  Adverb = 'adverb',
+  Egennavn = 'egennavn',
+  Hjelpeord = 'hjelpeord',
+  Komplement = 'komplement',
+  Konjunksjon = 'konjunksjon',
+  Koverb = 'koverb',
+  Kvantor = 'kvantor',
+  Markør = 'markør',
+  Modalverb = 'modalverb',
+  Målord = 'målord',
+  Nomen = 'nomen',
+  Nominalfrase = 'nominalfrase',
+  Onomatopoetikon = 'onomatopoetikon',
+  Partikkel = 'partikkel',
+  Pekeord = 'pekeord',
+  PersonligPronomen = 'personlig pronomen',
+  Preposisjon = 'preposisjon',
+  Spørreord = 'spørreord',
+  Stedsord = 'stedsord',
+  Suffiks = 'suffiks',
+  Tallord = 'tallord',
+  Tidsord = 'tidsord',
+  Tidsuttrykk = 'tidsuttrykk',
+  Tilstandsverb = 'tilstandsverb',
+  Utropsord = 'utropsord',
+  Uttrykk = 'uttrykk',
+  Verb = 'verb',
+  VerbKomplement = 'verb-komplement',
+  VerbObjekt = 'verb-objekt',
+}
+
+export enum WordClassChinese {
+  Adjective = 'adjective',
+  Adverb = 'adverb',
+  ProperNoun = 'proper noun',
+  Auxiliary = 'auxiliary',
+  Complement = 'complement',
+  Conjunction = 'conjunction',
+  Coverb = 'coverb',
+  Quantifier = 'quantifier',
+  Marker = 'marker',
+  ModalVerb = 'modal verb',
+  MeasureWord = 'measure word',
+  Noun = 'noun',
+  NounPhrase = 'noun phrase',
+  Onomatopoeia = 'onomatopoeia',
+  Particle = 'particle',
+  Demonstrative = 'demonstrative',
+  PersonalPronoun = 'personal pronoun',
+  Preposition = 'preposition',
+  QuestionWord = 'question word',
+  LocationWord = 'location word',
+  Suffix = 'suffix',
+  Numeral = 'numeral',
+  TimeWord = 'time word',
+  TimeExpression = 'time expression',
+  StativeVerb = 'stative verb',
+  ExclamationWord = 'exclamation word',
+  Expression = 'expression',
+  Verb = 'verb',
+  VerbComplement = 'verb-complement',
+  VerbObject = 'verb-object',
+}

@@ -8,9 +8,10 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, spacing, spacingUnit, breakpoints, mq, colors } from '@ndla/core';
+import { spacing, spacingUnit, breakpoints, mq, colors } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
+import { Heading } from '../Typography';
 
 type StyledWrapperProps = {
   invertedStyle?: boolean;
@@ -18,15 +19,6 @@ type StyledWrapperProps = {
 
 const StyledWrapper = styled.div<StyledWrapperProps>`
   background: transparent;
-  font-family: ${fonts.serif};
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: ${fonts.serif};
-  }
   max-width: 720px;
   margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
   ${mq.range({ from: breakpoints.desktop })} {
@@ -59,7 +51,7 @@ const LicenseWrapper = styled.div`
   }
 `;
 
-const StyledHeader = styled.h1`
+const StyledHeader = styled(Heading)`
   margin-bottom: ${spacing.small};
 `;
 
@@ -79,7 +71,9 @@ export const LearningPathInformation = ({ description, title, license, invertedS
     <section className="o-wrapper">
       <StyledWrapper invertedStyle={invertedStyle} className="c-article">
         <LicenseWrapper>
-          <StyledHeader id={id}>{title}</StyledHeader>
+          <StyledHeader element="h1" headingStyle="h1" tabIndex={-1} id={id}>
+            {title}
+          </StyledHeader>
           <LicenseByline licenseRights={rights} color={colors.brand.tertiary} />
         </LicenseWrapper>
         {description && <div dangerouslySetInnerHTML={{ __html: description }} />}

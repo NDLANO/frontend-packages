@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import LayoutItem, { OneColumn } from '../Layout';
 import ProgrammeSubjects, { GradesProps } from './ProgrammeSubjects';
 import MessageBox from '../Messages/MessageBox';
-import { NavigationHeading } from '..';
+import { Heading } from '..';
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -76,7 +76,9 @@ export const Programme = ({ heading, image, grades, selectedGrade, messageBoxTex
         <StyledLayoutWrapper>
           <LayoutItem layout="extend">
             <StyledContentWrapper>
-              <NavigationHeading headingId={headingId}>{heading}</NavigationHeading>
+              <Heading element="h1" margin="xlarge" headingStyle="h1" serif id={headingId} tabIndex={-1}>
+                {heading}
+              </Heading>
               {messageBoxText && <MessageBox>{t(messageBoxText)}</MessageBox>}
               <SubjectsWrapper>
                 <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} />

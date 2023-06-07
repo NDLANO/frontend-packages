@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactChildren, ReactNode, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { Drawer } from '@ndla/modal';
 import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
@@ -9,7 +9,7 @@ import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {
   onClose: VoidFunction;
-  children: (arg: () => void) => ReactChild | ReactChildren | ReactNode;
+  children: (arg: () => void) => ReactNode;
   hideOnNarrowScreen?: boolean;
   ndlaFilm?: boolean;
 }

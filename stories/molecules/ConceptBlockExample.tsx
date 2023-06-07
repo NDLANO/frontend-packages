@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useMemo } from 'react';
-import { Article, CompetenceGoalsDialog, OneColumn, TasksAndActivitiesBadge, constants } from '@ndla/ui';
+import { Article, OneColumn, TasksAndActivitiesBadge, constants } from '@ndla/ui';
 // @ts-ignore
 import { Remarkable } from 'remarkable';
 
@@ -94,11 +94,7 @@ const ConceptBlockExample = () => {
           },
         }}
         licenseBox={<LicenseBox />}
-        competenceGoals={({ Dialog, dialogProps }) => (
-          <Dialog {...dialogProps}>
-            <CompetenceGoalListExample />
-          </Dialog>
-        )}
+        competenceGoals={() => <CompetenceGoalListExample />}
         icon={<TasksAndActivitiesBadge background size="large" />}
         id="mainContentId"
         locale="nb"

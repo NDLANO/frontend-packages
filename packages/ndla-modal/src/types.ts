@@ -17,7 +17,7 @@ export type ModalMargin = 'none' | 'small';
 
 export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
-export interface DialogProps extends Omit<HTMLMotionProps<'div'>, 'size'> {
+export interface DialogProps extends Omit<HTMLMotionProps<'div'>, 'size' | 'children'> {
   animation?: ModalAnimation;
   animationDuration?: number;
   children: (close: () => void) => ReactNode;

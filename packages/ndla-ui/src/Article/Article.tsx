@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
+import React, { ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
@@ -127,10 +127,7 @@ type Props = {
   contentTransformed?: boolean;
   locale: Locale;
   messageBoxLinks?: [];
-  competenceGoals?: (inp: {
-    Dialog: ComponentType;
-    dialogProps: { isOpen: boolean; onClose: () => void };
-  }) => ReactNode;
+  competenceGoals?: (close: () => void) => ReactNode;
   id: string;
   renderMarkdown: (text: string) => string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };

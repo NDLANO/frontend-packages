@@ -105,14 +105,12 @@ const TranslatedText = styled.span`
   }
 `;
 
-const Example = (ex: Example) => {
-  console.log(ex);
-  console.log(ex.transcriptions);
+const ExampleFunction = (ex: Example) => {
   return (
     <>
       <TranslatedText>{ex.example}</TranslatedText>
-      {Object.keys(ex.transcriptions).map((key) => (
-        <TranslatedText>{(ex.transcriptions as any)[key]}</TranslatedText>
+      {Object.keys(ex.transcriptions).map((key, i) => (
+        <TranslatedText key={key + i}>{(ex.transcriptions as any)[key]}</TranslatedText>
       ))}
     </>
   );
@@ -147,7 +145,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             <StyledAccordionHeader>{t('gloss.examples')}</StyledAccordionHeader>
             <StyledAccordionContent>
               {glossData.examples.map((example, index) => (
-                <ExampleContainer key={index}>{example.map((ex) => Example(ex))}</ExampleContainer>
+                <ExampleContainer key={index}>{example.map((ex) => ExampleFunction(ex))}</ExampleContainer>
               ))}
             </StyledAccordionContent>
           </AccordionItem>

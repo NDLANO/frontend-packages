@@ -94,7 +94,7 @@ const ConceptBlockExample = () => {
           },
         }}
         licenseBox={<LicenseBox />}
-        competenceGoals={() => <CompetenceGoalListExample />}
+        competenceGoals={<CompetenceGoalListExample />}
         icon={<TasksAndActivitiesBadge background size="large" />}
         id="mainContentId"
         locale="nb"

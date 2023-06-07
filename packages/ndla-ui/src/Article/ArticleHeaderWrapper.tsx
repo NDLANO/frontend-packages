@@ -8,32 +8,19 @@
 
 import React, { ReactNode, useEffect } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { useTranslation } from 'react-i18next';
-import { ButtonV2 } from '@ndla/button';
 import { isMobile } from 'react-device-detect';
-
-import styled from '@emotion/styled';
-import { FooterHeaderIcon } from '@ndla/icons/common';
-import { Modal } from '@ndla/modal';
 
 const classes = new BEMHelper({
   name: 'article',
   prefix: 'c-',
 });
 
-const CompetenceBadgeText = styled.span`
-  padding: 0 5px;
-`;
-
 type Props = {
-  competenceGoals?: (close: () => void) => ReactNode;
-  competenceGoalsLoading?: boolean;
+  competenceGoals?: ReactNode;
   children: ReactNode;
 };
 
-const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalsLoading }: Props) => {
-  const { t } = useTranslation();
-
+const ArticleHeaderWrapper = ({ children, competenceGoals }: Props) => {
   useEffect(() => {
     if (isMobile) {
       const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll('.c-article__header');
@@ -44,29 +31,10 @@ const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalsLoadin
     }
   }, []);
 
-  if (!competenceGoals) {
-    return <div {...classes('header')}>{children}</div>;
-  }
-
   return (
     <div {...classes('header')}>
       {children}
-      <Modal
-        activateButton={
-          <ButtonV2
-            aria-busy={competenceGoalsLoading}
-            size="xsmall"
-            colorTheme="light"
-            shape="pill"
-            disabled={competenceGoalsLoading}
-          >
-            <FooterHeaderIcon />
-            <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
-          </ButtonV2>
-        }
-      >
-        {(close) => competenceGoals(close)}
-      </Modal>
+      {competenceGoals}
     </div>
   );
 };

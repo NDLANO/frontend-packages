@@ -120,14 +120,13 @@ type Props = {
   article: ArticleType;
   icon?: ReactNode;
   licenseBox?: ReactNode;
-  competenceGoalsLoading?: boolean;
   modifier?: string;
   children?: ReactNode;
   messages: Messages;
   contentTransformed?: boolean;
   locale: Locale;
   messageBoxLinks?: [];
-  competenceGoals?: (close: () => void) => ReactNode;
+  competenceGoals?: ReactNode;
   id: string;
   renderMarkdown: (text: string) => string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
@@ -157,7 +156,6 @@ export const Article = ({
   messageBoxLinks,
   children,
   competenceGoals,
-  competenceGoalsLoading,
   id,
   locale,
   notions,
@@ -214,7 +212,7 @@ export const Article = ({
               <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
             </MSGboxWrapper>
           )}
-          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalsLoading={competenceGoalsLoading}>
+          <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
 
             <ArticleTitle icon={icon} label={messages.label}>

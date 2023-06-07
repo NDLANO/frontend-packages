@@ -175,7 +175,7 @@ class ArticleLoader extends Component {
                 modifier={articleModifier}
                 messages={messages}
                 licenseBox={<LicenseBox />}
-                competenceGoals={!hideCompetenceGoals ? () => <CompetenceGoalListExample /> : null}
+                competenceGoals={!hideCompetenceGoals ? <CompetenceGoalListExample /> : null}
               >
                 {articleChildren}
               </Article>

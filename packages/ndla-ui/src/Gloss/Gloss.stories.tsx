@@ -26,7 +26,7 @@ const meta: Meta<typeof Gloss> = {
     },
     glossData: {
       gloss: 'angreifen',
-      wordClass: WordClass.Verb,
+      wordClass: WordClass.Noun,
       originalLanguage: 'de',
       transcriptions: {},
       examples: [

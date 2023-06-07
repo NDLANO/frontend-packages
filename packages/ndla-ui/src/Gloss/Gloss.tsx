@@ -31,7 +31,7 @@ export interface Props {
   };
   glossData: {
     gloss: string;
-    wordClass?: WordClass | WordClassChinese;
+    wordClass?: string;
     originalLanguage: string;
     transcriptions: Transcription;
     examples?: Example[][];
@@ -118,6 +118,7 @@ const ExampleFunction = (ex: Example) => {
 
 const Gloss = ({ title, glossData, audio }: Props) => {
   const { t } = useTranslation();
+  const wordClassKey = `wordClass.${glossData.wordClass}`;
 
   return (
     <>
@@ -129,7 +130,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               Object.keys(glossData.transcriptions).map((keyName, i) => (
                 <span key={keyName + i}>{(glossData.transcriptions as any)[keyName]}</span>
               ))}
-            {glossData.wordClass && <TypeSpan>{glossData.wordClass}</TypeSpan>}
+            {glossData.wordClass && <TypeSpan>{t(wordClassKey)}</TypeSpan>}
           </GlossContainer>
           {audio.src && (
             <AudioExample>

@@ -1326,6 +1326,9 @@ const messages = {
       external: 'External resource',
     },
   },
+  gloss: {
+    examples: 'examples',
+  },
 };
 
 export default messages;

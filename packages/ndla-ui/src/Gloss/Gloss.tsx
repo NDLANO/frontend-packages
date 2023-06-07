@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, misc, fonts } from '@ndla/core';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
 import { Ordklasse, OrdklasseKinesisk, WordClass, WordClassChinese } from '../model/WordClass';
@@ -118,6 +119,8 @@ const Example = (ex: Example) => {
 };
 
 const Gloss = ({ title, glossData, audio }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Container>
@@ -141,7 +144,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
       {glossData.examples && (
         <AccordionRoot type="single" collapsible>
           <AccordionItem value={'1'}>
-            <StyledAccordionHeader>Eksempler</StyledAccordionHeader>
+            <StyledAccordionHeader>{t('gloss.examples')}</StyledAccordionHeader>
             <StyledAccordionContent>
               {glossData.examples.map((example, index) => (
                 <ExampleContainer key={index}>{example.map((ex) => Example(ex))}</ExampleContainer>

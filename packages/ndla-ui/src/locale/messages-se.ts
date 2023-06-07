@@ -1323,6 +1323,9 @@ const messages = {
       external: 'Ekstern ressurs',
     },
   },
+  gloss: {
+    examples: 'eksempler',
+  },
 };
 
 export default messages;

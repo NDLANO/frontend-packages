@@ -50,16 +50,8 @@ const bodyStyles = css`
       content: none;
     }
   }
-  .c-tabs {
-    margin-left: 0;
-    margin-right: 0;
-  }
   .c-medialist {
     padding-right: 0;
-  }
-  .react-tabs__tab-panel--selected {
-    animation-name: fadeInLeft;
-    animation-duration: 500ms;
   }
 `;
 

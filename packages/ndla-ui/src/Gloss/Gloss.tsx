@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing, misc, fonts } from '@ndla/core';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
-import { Ordklasse, OrdklasseKinesisk, WordClass, WordClassChinese } from '../model/WordClass';
+import { WordClass, WordClassChinese } from '../model/WordClass';
 import SpeechControl from '../AudioPlayer/SpeechControl';
 
 interface Example {
@@ -31,7 +31,7 @@ export interface Props {
   };
   glossData: {
     gloss: string;
-    wordClass?: Ordklasse | OrdklasseKinesisk | WordClass | WordClassChinese;
+    wordClass?: WordClass | WordClassChinese;
     originalLanguage: string;
     transcriptions: Transcription;
     examples?: Example[][];

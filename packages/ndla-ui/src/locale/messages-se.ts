@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, WordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -1325,6 +1325,51 @@ const messages = {
   },
   gloss: {
     examples: 'eksempler',
+  },
+  wordClass: {
+    [WordClass.WordClass.Noun]: 'substantiv',
+    [WordClass.WordClass.Verb]: 'verb',
+    [WordClass.WordClass.Pronoun]: 'pronomen',
+    [WordClass.WordClass.Determiner]: 'bestemmerord',
+    [WordClass.WordClass.Adjective]: 'adjektiv',
+    [WordClass.WordClass.Adverb]: 'adverb',
+    [WordClass.WordClass.Preposition]: 'preposisjon',
+    [WordClass.WordClass.Conjunction]: 'konjunksjon',
+    [WordClass.WordClass.SubordinatingConjunction]: 'subjunksjon',
+    [WordClass.WordClass.Interjection]: 'interjeksjon',
+    [WordClass.WordClass.Expression]: 'uttrykk',
+  },
+  wordClassChinese: {
+    [WordClass.WordClassChinese.Adjective]: 'adjektiv',
+    [WordClass.WordClassChinese.Adverb]: 'adverb',
+    [WordClass.WordClassChinese.ProperNoun]: 'egennavn',
+    [WordClass.WordClassChinese.Auxiliary]: 'hjelpeord',
+    [WordClass.WordClassChinese.Complement]: 'komplement',
+    [WordClass.WordClassChinese.Conjunction]: 'konjunksjon',
+    [WordClass.WordClassChinese.Coverb]: 'koverb',
+    [WordClass.WordClassChinese.Quantifier]: 'kvantor',
+    [WordClass.WordClassChinese.Marker]: 'markør',
+    [WordClass.WordClassChinese.ModalVerb]: 'modalverb',
+    [WordClass.WordClassChinese.MeasureWord]: 'målord',
+    [WordClass.WordClassChinese.Noun]: 'nomen',
+    [WordClass.WordClassChinese.NounPhrase]: 'nominalfrase',
+    [WordClass.WordClassChinese.Onomatopoeia]: 'onomatopoetikon',
+    [WordClass.WordClassChinese.Particle]: 'partikkel',
+    [WordClass.WordClassChinese.Demonstrative]: 'pekeord',
+    [WordClass.WordClassChinese.PersonalPronoun]: 'personlig pronomen',
+    [WordClass.WordClassChinese.Preposition]: 'preposisjon',
+    [WordClass.WordClassChinese.QuestionWord]: 'spørreord',
+    [WordClass.WordClassChinese.LocationWord]: 'stedsord',
+    [WordClass.WordClassChinese.Suffix]: 'suffiks',
+    [WordClass.WordClassChinese.Numeral]: 'tallord',
+    [WordClass.WordClassChinese.TimeWord]: 'tidsord',
+    [WordClass.WordClassChinese.TimeExpression]: 'tidsuttrykk',
+    [WordClass.WordClassChinese.StativeVerb]: 'tilstandsverb',
+    [WordClass.WordClassChinese.ExclamationWord]: 'utropsord',
+    [WordClass.WordClassChinese.Expression]: 'uttrykk',
+    [WordClass.WordClassChinese.Verb]: 'verb',
+    [WordClass.WordClassChinese.VerbComplement]: 'verb-komplement',
+    [WordClass.WordClassChinese.VerbObject]: 'verb-objekt',
   },
 };
 

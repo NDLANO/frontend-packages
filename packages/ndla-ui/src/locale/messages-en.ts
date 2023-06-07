@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, WordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -1328,6 +1328,51 @@ const messages = {
   },
   gloss: {
     examples: 'examples',
+  },
+  wordClass: {
+    [WordClass.WordClass.Noun]: 'Noun',
+    [WordClass.WordClass.Verb]: 'verb',
+    [WordClass.WordClass.Pronoun]: 'pronoun',
+    [WordClass.WordClass.Determiner]: 'determiner',
+    [WordClass.WordClass.Adjective]: 'adjective',
+    [WordClass.WordClass.Adverb]: 'adverb',
+    [WordClass.WordClass.Preposition]: 'preposition',
+    [WordClass.WordClass.Conjunction]: 'conjunction',
+    [WordClass.WordClass.SubordinatingConjunction]: 'subordinating conjunction',
+    [WordClass.WordClass.Interjection]: 'interjection',
+    [WordClass.WordClass.Expression]: 'expression',
+  },
+  wordClassChinese: {
+    [WordClass.WordClassChinese.Adjective]: 'adjective',
+    [WordClass.WordClassChinese.Adverb]: 'adverb',
+    [WordClass.WordClassChinese.ProperNoun]: 'proper noun',
+    [WordClass.WordClassChinese.Auxiliary]: 'auxiliary',
+    [WordClass.WordClassChinese.Complement]: 'complement',
+    [WordClass.WordClassChinese.Conjunction]: 'conjunction',
+    [WordClass.WordClassChinese.Coverb]: 'coverb',
+    [WordClass.WordClassChinese.Quantifier]: 'quantifier',
+    [WordClass.WordClassChinese.Marker]: 'marker',
+    [WordClass.WordClassChinese.ModalVerb]: 'modal verb',
+    [WordClass.WordClassChinese.MeasureWord]: 'measure word',
+    [WordClass.WordClassChinese.Noun]: 'noun',
+    [WordClass.WordClassChinese.NounPhrase]: 'noun phrase',
+    [WordClass.WordClassChinese.Onomatopoeia]: 'onomatopoeia',
+    [WordClass.WordClassChinese.Particle]: 'particle',
+    [WordClass.WordClassChinese.Demonstrative]: 'demonstrative',
+    [WordClass.WordClassChinese.PersonalPronoun]: 'personal pronoun',
+    [WordClass.WordClassChinese.Preposition]: 'preposition',
+    [WordClass.WordClassChinese.QuestionWord]: 'question word',
+    [WordClass.WordClassChinese.LocationWord]: 'location word',
+    [WordClass.WordClassChinese.Suffix]: 'suffix',
+    [WordClass.WordClassChinese.Numeral]: 'numeral',
+    [WordClass.WordClassChinese.TimeWord]: 'time word',
+    [WordClass.WordClassChinese.TimeExpression]: 'time expression',
+    [WordClass.WordClassChinese.StativeVerb]: 'stative verb',
+    [WordClass.WordClassChinese.ExclamationWord]: 'exclamation word',
+    [WordClass.WordClassChinese.Expression]: 'expression',
+    [WordClass.WordClassChinese.Verb]: 'verb',
+    [WordClass.WordClassChinese.VerbComplement]: 'verb-complement',
+    [WordClass.WordClassChinese.VerbObject]: 'verb-object',
   },
 };
 

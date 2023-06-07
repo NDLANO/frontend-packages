@@ -156,7 +156,7 @@ export { ResourceBox } from './ResourceBox';
 
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
-export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Navigation';
+export { NavigationBox, NavigationTopicAbout } from './Navigation';
 
 export { default as Programme } from './Programme';
 

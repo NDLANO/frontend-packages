@@ -22,6 +22,7 @@ import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
+import { Heading } from '../Typography';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -257,9 +258,9 @@ const Topic = ({
       <TopicIntroductionWrapper>
         <div>
           <HeadingWrapper>
-            <h1 id={id} tabIndex={-1}>
+            <Heading element="h1" headingStyle="h2" id={id} tabIndex={-1}>
               {topic.title}
-            </h1>
+            </Heading>
             {isAdditionalTopic && (
               <>
                 <AdditionalIcon aria-hidden="true">T</AdditionalIcon>

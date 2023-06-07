@@ -23,6 +23,7 @@ import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
 import ArticleAccessMessage from './ArticleAccessMessage';
 import MessageBox from '../Messages/MessageBox';
 import { ConceptNotionType } from '../Notion/ConceptNotion';
+import { Heading } from '../Typography';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -63,7 +64,9 @@ export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <h1 tabIndex={-1}>{children}</h1>
+      <Heading element="h1" headingStyle="h1" tabIndex={-1}>
+        {children}
+      </Heading>
     </div>
   );
 };

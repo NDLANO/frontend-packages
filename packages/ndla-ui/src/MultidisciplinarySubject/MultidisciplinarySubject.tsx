@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { breakpoints, fonts, mq } from '@ndla/core';
+import { breakpoints, mq } from '@ndla/core';
 import LayoutItem, { OneColumn } from '../Layout';
 import List from './List';
 import { ListItemProps } from './ListItem';
 import { HomeBreadcrumb, SimpleBreadcrumbItem } from '../Breadcrumb';
+import { Heading } from '../Typography';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -28,23 +29,6 @@ const Header = styled.div`
   justify-content: space-between;
   margin-bottom: 32px;
   margin-top: 32px;
-`;
-
-const Heading = styled.h1`
-  margin: 10px 0 10px 0;
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: ${fonts.weight.bold};
-
-  ${mq.range({ from: breakpoints.mobileWide })} {
-    margin: 40px 0 22px;
-    ${fonts.sizes('40px', '48px')};
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    margin: 50px 0 24px;
-    ${fonts.sizes('52px', '65px')};
-  }
 `;
 
 const InfoText = styled.div`
@@ -107,7 +91,7 @@ export const MultidisciplinarySubject = ({
           <Header>
             <LayoutItem layout="extend">
               <HomeBreadcrumb items={breadcrumbs} />
-              <Heading id={id} tabIndex={-1}>
+              <Heading element="h1" headingStyle="h1" id={id} tabIndex={-1}>
                 {t('frontpageMultidisciplinarySubject.heading')}
               </Heading>
               <InfoText>{t('frontpageMultidisciplinarySubject.text')}</InfoText>

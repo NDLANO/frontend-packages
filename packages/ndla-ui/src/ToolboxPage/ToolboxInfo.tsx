@@ -12,18 +12,7 @@ import { breakpoints, fonts, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
-
-const Heading = styled.h1`
-  ${fonts.sizes('30px', '35px')};
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('36px', '46px')};
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('52px', '65px')};
-  }
-`;
+import { Heading } from '../Typography';
 
 const Introduction = styled.p`
   max-width: 800px;
@@ -51,7 +40,7 @@ const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, id }: Props) 
   const { t } = useTranslation();
   return (
     <>
-      <Heading id={id} tabIndex={-1}>
+      <Heading element="h1" headingStyle="h1" id={id} tabIndex={-1}>
         {title}
       </Heading>
       <Introduction>{introduction}</Introduction>

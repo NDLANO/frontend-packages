@@ -85,11 +85,7 @@ const ReferenceBoxExample = () => {
             },
           }}
           licenseBox={<LicenseBox />}
-          competenceGoals={({ Dialog, dialogProps }) => (
-            <Dialog {...dialogProps}>
-              <CompetenceGoalListExample />
-            </Dialog>
-          )}
+          competenceGoals={<CompetenceGoalListExample />}
           printUrl={window.location.href}
           icon={<TasksAndActivitiesBadge background size="large" />}
           id="mainContentId"

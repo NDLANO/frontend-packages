@@ -12,12 +12,13 @@ import { ReactNode } from 'react';
 
 export interface GridProps {
   columns: 2 | 4;
-  border: 'none' | 'lightBlue';
+  border?: 'none' | 'lightBlue';
+  background?: 'transparent' | 'white';
   children?: ReactNode[];
 }
 
 const GridContainer = styled.div`
-  display: inline-grid;
+  display: grid;
   grid-template-columns: auto;
   justify-content: center;
   grid-gap: ${spacing.large};
@@ -29,13 +30,17 @@ const GridContainer = styled.div`
     border: 1px solid ${colors.brand.light};
   }
 
+  &[data-background='white'] {
+    background-color: ${colors.white};
+  }
+
   ${mq.range({ from: breakpoints.mobileWide })} {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     &[data-columns='4'] {
-      grid-template-columns: repeat(4, auto);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -54,14 +59,15 @@ const GridContainer = styled.div`
 
 const OuterContainer = styled.div`
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
 `;
 
-const Grid = ({ columns, border, children, ...rest }: GridProps) => {
+const Grid = ({ columns, border, children, background, ...rest }: GridProps) => {
   return (
     <OuterContainer>
-      <GridContainer data-border={border} data-columns={columns} {...rest}>
+      <GridContainer data-border={border} data-columns={columns} data-background={background} {...rest}>
         {children}
       </GridContainer>
     </OuterContainer>

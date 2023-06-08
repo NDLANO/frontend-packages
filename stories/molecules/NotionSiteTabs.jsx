@@ -27,6 +27,7 @@ const NotionSiteTabs = () => {
         tabs={[
           {
             title: 'Enkel i artikkel',
+            id: 'simple',
             content: (
               <Wrapper>
                 <ConceptBlockExample />
@@ -35,6 +36,7 @@ const NotionSiteTabs = () => {
           },
           {
             title: 'Liste i artikkel',
+            id: 'list',
             content: (
               <Wrapper>
                 <ConceptBlockListExample />

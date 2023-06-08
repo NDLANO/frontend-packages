@@ -10,26 +10,6 @@ import { ToggleItem } from '../Filter';
 
 const StyledWrapper = styled.nav`
   margin: 32px 0 0;
-  .c-tabs--subjects {
-    margin: 0;
-  }
-  .c-tabs__list--subjects {
-    margin: 0;
-  }
-  .c-tabs__tab--subjects {
-    ${mq.range({ until: breakpoints.tablet })} {
-      margin: 0;
-      font-size: 12px;
-      padding-left: 8px;
-      padding-right: 8px;
-      :first-of-type {
-        padding-left: 0;
-      }
-      :last-of-type {
-        padding-right: 0;
-      }
-    }
-  }
 `;
 
 const StyledList = styled.ul`
@@ -213,6 +193,7 @@ const FrontpageAllSubjects = ({
     category.visible &&
       data.push({
         title: t(`subjectCategories.${category.type}`),
+        id: category.type,
         content: (
           <>
             {category.message && (
@@ -228,12 +209,13 @@ const FrontpageAllSubjects = ({
 
   data.push({
     title: t('frontpageMenu.allsubjects'),
+    id: 'allsubjects',
     content: renderList(allSubjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
   });
 
   return (
     <StyledWrapper>
-      <Tabs modifier="subjects" tabs={data} />
+      <Tabs tabs={data} />
     </StyledWrapper>
   );
 };

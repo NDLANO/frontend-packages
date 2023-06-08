@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "39.0.2",
+  "version": "41.0.0",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,21 +31,21 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/accordion": "^2.2.5",
+    "@ndla/accordion": "^2.2.7",
     "@ndla/article-scripts": "^3.0.18",
-    "@ndla/button": "^10.1.4",
-    "@ndla/carousel": "^3.1.2",
-    "@ndla/core": "^4.0.0",
-    "@ndla/forms": "^4.3.4",
+    "@ndla/button": "^10.1.6",
+    "@ndla/carousel": "^3.1.4",
+    "@ndla/core": "^4.1.0",
+    "@ndla/forms": "^4.3.6",
     "@ndla/hooks": "^2.0.7",
-    "@ndla/icons": "^3.0.0",
+    "@ndla/icons": "^3.0.2",
     "@ndla/licenses": "^7.0.4",
-    "@ndla/modal": "^3.0.1",
-    "@ndla/notion": "^5.0.1",
-    "@ndla/safelink": "^4.1.4",
-    "@ndla/switch": "^1.1.2",
-    "@ndla/tabs": "^2.2.4",
-    "@ndla/tooltip": "^4.1.4",
+    "@ndla/modal": "^3.0.4",
+    "@ndla/notion": "^5.0.4",
+    "@ndla/safelink": "^4.1.6",
+    "@ndla/switch": "^1.1.4",
+    "@ndla/tabs": "^3.0.0",
+    "@ndla/tooltip": "^4.1.6",
     "@ndla/util": "^3.1.13",
     "@radix-ui/react-dropdown-menu": "^2.0.5",
     "@radix-ui/react-popover": "^1.0.6",
@@ -85,5 +85,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
+  "gitHead": "ebeb8a1d86cba369e1156719ebaecb58a6e2cdfc"
 }

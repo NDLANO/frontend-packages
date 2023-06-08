@@ -527,16 +527,15 @@ const LicenseBox = () => {
     <Fragment>
       <h1>{t('license.heading')}</h1>
       <Tabs
-        singleLine
         tabs={[
-          { title: t('license.tabs.text'), content: <TextContent t={t} /> },
-          { title: t('license.tabs.images'), content: <ImageContent t={t} /> },
-          { title: t('license.tabs.video'), content: <VideoContent t={t} /> },
-          { title: t('license.tabs.audio'), content: <AudioContent t={t} /> },
-          { title: t('license.tabs.podcast'), content: <PodcastContent t={t} /> },
-          { title: t('license.tabs.files'), content: <Files t={t} /> },
-          { title: t('license.tabs.embedlink'), content: <LinkContent t={t} /> },
-          { title: t('license.tabs.other'), content: <OtherContent t={t} /> },
+          { title: t('license.tabs.text'), id: 'text', content: <TextContent t={t} /> },
+          { title: t('license.tabs.images'), id: 'images', content: <ImageContent t={t} /> },
+          { title: t('license.tabs.video'), video: 'video', content: <VideoContent t={t} /> },
+          { title: t('license.tabs.audio'), id: 'audio', content: <AudioContent t={t} /> },
+          { title: t('license.tabs.podcast'), id: 'podcast', content: <PodcastContent t={t} /> },
+          { title: t('license.tabs.files'), id: 'files', content: <Files t={t} /> },
+          { title: t('license.tabs.embedlink'), id: 'embedLink', content: <LinkContent t={t} /> },
+          { title: t('license.tabs.other'), id: 'other', content: <OtherContent t={t} /> },
         ]}
       />
     </Fragment>

@@ -38,8 +38,6 @@ export {
   default as Article,
 } from './Article';
 
-export { CompetenceGoalsDialog } from './CompetenceGoals';
-
 export { default as Table } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
@@ -124,7 +122,7 @@ export {
   LearningPathMobileStepInfo,
   LearningPathMobileHeader,
 } from './LearningPaths';
-export { Translation, TranslationLine, TranslationBox } from './Translation';
+export { Translation, TranslationLine } from './Translation';
 
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
 
@@ -156,7 +154,7 @@ export { ResourceBox } from './ResourceBox';
 
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
-export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Navigation';
+export { NavigationBox, NavigationTopicAbout } from './Navigation';
 
 export { default as Programme } from './Programme';
 
@@ -282,3 +280,4 @@ export { Heading } from './Typography';
 export type { HeadingLevel } from './types';
 
 export { default as FrontpageArticle } from './FrontpageArticle';
+export { DefinitionTerm, DefinitionDescription } from './DefinitionList';

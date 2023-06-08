@@ -1,5 +1,5 @@
 const baseFontSizeUnit = 18;
-const baseLineHeightUnit = 26;
+const baseLineHeightUnit = 24;
 
 /**
  * Should do the same as: https://github.com/inuitcss/inuitcss/blob/c14029caf75b7b69d7551a5e22036ec280b02e9f/tools/_tools.font-size.scss

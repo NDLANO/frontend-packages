@@ -48,6 +48,7 @@ interface Props<T extends boolean> {
   isDisabled?: boolean;
   id?: string;
   defaultValue?: PropsValue<Option>;
+  inModal?: boolean;
 }
 
 const Select = <T extends boolean>({
@@ -58,10 +59,11 @@ const Select = <T extends boolean>({
   colorTheme = 'blue',
   isSearchable = false,
   matchFrom = 'start',
+  inModal,
   isMulti,
   ...rest
 }: Props<T>) => {
-  const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
+  const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document.body : null), []);
 
   return (
     <ReactSelect<Option, T>
@@ -74,7 +76,8 @@ const Select = <T extends boolean>({
       menuPlacement={menuPlacement}
       hideSelectedOptions={false}
       unstyled
-      menuPortalTarget={portalTarget}
+      // wait for https://github.com/radix-ui/primitives/issues/1159 to be closed to remove this.
+      menuPortalTarget={inModal ? null : portalTarget}
       filterOption={matchFrom === 'start' ? createFilter({ matchFrom: 'start' }) : undefined}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{

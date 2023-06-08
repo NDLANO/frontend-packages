@@ -19,7 +19,6 @@ import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import DrawerExample from './atoms/DrawerExample';
 import SolutionTableExample from './molecules/SolutionExample';
-import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
@@ -715,18 +714,6 @@ storiesOf('Enkle komponenter', module)
           url="https://ndla.no/subject:26/topic:1:191103/topic:1:4352/resource:1:2052"
         />
       </StoryBody>
-    </div>
-  ))
-  .add('Kodeblokk', () => (
-    <div>
-      <StoryIntro title="Kodeblokk">
-        <p>Lær deg HTML, CSS og Javascript.</p>
-      </StoryIntro>
-      <OneColumn>
-        <LayoutItem layout="extend">
-          <CodeblockExample />
-        </LayoutItem>
-      </OneColumn>
     </div>
   ))
 

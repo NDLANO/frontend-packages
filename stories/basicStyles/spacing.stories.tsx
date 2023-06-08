@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
+import { spacing } from '@ndla/core';
 import { defaultParameters } from '../defaults';
 import { StoryIntro } from '../wrappers';
 
@@ -24,7 +25,7 @@ export const Story: StoryFn = () => (
       <p>Vi baserer oss hovedsaklig på tre nivåer av luft/avstand:</p>
       <code>--spacing --spacing--small --spacing--large</code>
       <p>Hvor:</p>
-      <div style={{ padding: '52px', background: '#eee' }}>
+      <div style={{ padding: spacing.large, background: '#eee' }}>
         <span
           style={{
             position: 'absolute',
@@ -32,9 +33,9 @@ export const Story: StoryFn = () => (
             fontSize: '13px',
           }}
         >
-          Spacing large (Store avstander): 52px
+          Spacing large (Store avstander): {spacing.large}
         </span>
-        <div style={{ padding: '26px', background: '#ddd' }}>
+        <div style={{ padding: spacing.normal, background: '#ddd' }}>
           <span
             style={{
               position: 'absolute',
@@ -42,16 +43,16 @@ export const Story: StoryFn = () => (
               fontSize: '13px',
             }}
           >
-            Spacing (vanlig avstand): 26px
+            Spacing (vanlig avstand): {spacing.normal}
           </span>
           <div
             style={{
-              padding: '13px',
+              padding: spacing.small,
               background: '#ccc',
               fontSize: '13px',
             }}
           >
-            <span>Spacing small (Små avstander): 13px</span>
+            <span>Spacing small (Små avstander): {spacing.small}</span>
           </div>
         </div>
       </div>

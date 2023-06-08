@@ -6,20 +6,6 @@
  *
  */
 
-export enum Ordklasse {
-  Substantiv = 'substantiv',
-  Verb = 'verb',
-  Pronomen = 'pronomen',
-  Bestemmerord = 'bestemmerord',
-  Adjektiv = 'adjektiv',
-  Adverb = 'adverb',
-  Preposisjon = 'preposisjon',
-  Konjunksjon = 'konjunksjon',
-  Subjunksjon = 'subjunksjon',
-  Interjeksjon = 'interjeksjon',
-  Uttrykk = 'uttrykk',
-}
-
 export enum WordClass {
   Noun = 'noun',
   Verb = 'verb',
@@ -32,39 +18,6 @@ export enum WordClass {
   SubordinatingConjunction = 'subordinating conjunction',
   Interjection = 'interjection',
   Expression = 'expression',
-}
-
-export enum OrdklasseKinesisk {
-  Adjektiv = 'adjektiv',
-  Adverb = 'adverb',
-  Egennavn = 'egennavn',
-  Hjelpeord = 'hjelpeord',
-  Komplement = 'komplement',
-  Konjunksjon = 'konjunksjon',
-  Koverb = 'koverb',
-  Kvantor = 'kvantor',
-  Markør = 'markør',
-  Modalverb = 'modalverb',
-  Målord = 'målord',
-  Nomen = 'nomen',
-  Nominalfrase = 'nominalfrase',
-  Onomatopoetikon = 'onomatopoetikon',
-  Partikkel = 'partikkel',
-  Pekeord = 'pekeord',
-  PersonligPronomen = 'personlig pronomen',
-  Preposisjon = 'preposisjon',
-  Spørreord = 'spørreord',
-  Stedsord = 'stedsord',
-  Suffiks = 'suffiks',
-  Tallord = 'tallord',
-  Tidsord = 'tidsord',
-  Tidsuttrykk = 'tidsuttrykk',
-  Tilstandsverb = 'tilstandsverb',
-  Utropsord = 'utropsord',
-  Uttrykk = 'uttrykk',
-  Verb = 'verb',
-  VerbKomplement = 'verb-komplement',
-  VerbObjekt = 'verb-objekt',
 }
 
 export enum WordClassChinese {

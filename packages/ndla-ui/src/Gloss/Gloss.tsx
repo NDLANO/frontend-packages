@@ -118,8 +118,12 @@ const ExampleFunction = (ex: Example) => {
 
 const Gloss = ({ title, glossData, audio }: Props) => {
   const { t } = useTranslation();
-  const wordClassKey = `wordClass.${glossData.wordClass}`;
-  const wordClassChineseKey = `wordClassChinese.${glossData.wordClass}`;
+  let wordClassKey = '';
+  {
+    glossData.originalLanguage === 'zh'
+      ? (wordClassKey = `wordClassChinese.${glossData.wordClass}`)
+      : (wordClassKey = `wordClass.${glossData.wordClass}`);
+  }
 
   return (
     <>
@@ -131,9 +135,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               Object.keys(glossData.transcriptions).map((keyName, i) => (
                 <span key={keyName + i}>{(glossData.transcriptions as any)[keyName]}</span>
               ))}
-            {(glossData.originalLanguage === 'zh' && <TypeSpan>{t(wordClassChineseKey)}</TypeSpan>) || (
-              <TypeSpan>{t(wordClassKey)}</TypeSpan>
-            )}
+            {glossData.wordClass && <TypeSpan>{t(wordClassKey)}</TypeSpan>}
           </GlossContainer>
           {audio.src && (
             <AudioExample>

@@ -119,11 +119,10 @@ const ExampleFunction = (ex: Example) => {
 const Gloss = ({ title, glossData, audio }: Props) => {
   const { t } = useTranslation();
   let wordClassKey = '';
-  {
-    glossData.originalLanguage === 'zh'
-      ? (wordClassKey = `wordClassChinese.${glossData.wordClass}`)
-      : (wordClassKey = `wordClass.${glossData.wordClass}`);
-  }
+
+  glossData.originalLanguage === 'zh'
+    ? (wordClassKey = `wordClassChinese.${glossData.wordClass}`)
+    : (wordClassKey = `wordClass.${glossData.wordClass}`);
 
   return (
     <>

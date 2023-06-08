@@ -49,7 +49,7 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
     padding: 0 0 ${spacing.medium} ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    margin-left: ${spacingUnit + BORDER_WIDTH / 2}px;
+    margin-left: ${spacingUnit + BORDER_WIDTH}px;
     margin-top: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {

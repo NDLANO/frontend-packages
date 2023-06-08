@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { colors, spacing, misc, fonts } from '@ndla/core';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
 import { WordClass, WordClassChinese } from '../model/WordClass';
+import { Transcription } from '../model/Transcriptions';
 import SpeechControl from '../AudioPlayer/SpeechControl';
 
 interface Example {
@@ -20,10 +21,6 @@ interface Example {
   transcriptions: Transcription;
 }
 
-interface Transcription {
-  trad?: string;
-  pinyin?: string;
-}
 export interface Props {
   title: {
     title: string;
@@ -50,6 +47,7 @@ const Container = styled.div`
   border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   margin-bottom: ${spacing.xsmall};
+  gap: ${spacing.nsmall};
 `;
 
 const Wrapper = styled.div`
@@ -69,12 +67,11 @@ const GlossSpan = styled.span`
 `;
 
 const TypeSpan = styled.span`
-  margin-bottom: ${spacing.nsmall};
   font-style: italic;
 `;
 
 const AudioExample = styled.div`
-  padding-bottom: ${spacing.normal};
+  max-height: 20px;
 `;
 
 const StyledAccordionHeader = styled(AccordionHeader)`

@@ -5,8 +5,3 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-export enum Transcriptions {
-  TraditionalChinese = 'traditional Chinese',
-  Pinyin = 'pinyin',
-}

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "40.0.0",
+  "version": "41.0.0",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -40,8 +40,8 @@
     "@ndla/hooks": "^2.0.7",
     "@ndla/icons": "^3.0.2",
     "@ndla/licenses": "^7.0.4",
-    "@ndla/modal": "^3.0.3",
-    "@ndla/notion": "^5.0.3",
+    "@ndla/modal": "^3.0.4",
+    "@ndla/notion": "^5.0.4",
     "@ndla/safelink": "^4.1.6",
     "@ndla/switch": "^1.1.4",
     "@ndla/tabs": "^3.0.0",

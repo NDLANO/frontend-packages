@@ -39,8 +39,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@types/reach__dialog": "^0.1.0"
-  },
   "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
 }

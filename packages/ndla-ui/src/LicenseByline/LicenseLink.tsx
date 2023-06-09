@@ -33,7 +33,11 @@ const StyledSpan = styled.span`
 
 const LicenseLink = ({ license, asLink = true }: Props) => {
   if (asLink) {
-    return <StyledSafeLink to={license.url}>{license.abbreviation}</StyledSafeLink>;
+    return (
+      <StyledSafeLink to={license.url} rel="license">
+        {license.abbreviation}
+      </StyledSafeLink>
+    );
   } else {
     return <StyledSpan>{license.abbreviation}</StyledSpan>;
   }

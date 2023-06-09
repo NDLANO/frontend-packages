@@ -125,7 +125,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton }: Props) => {
       type={imageSizes ? undefined : figureType}
       className={imageSizes ? 'c-figure--right expanded' : ''}
     >
-      <ImageWrapper src={data.image.imageUrl} crop={crop} size={embedData.size}>
+      <ImageWrapper src={embedData.url || data.image.imageUrl} crop={crop} size={embedData.size}>
         <Image
           focalPoint={focalPoint}
           contentType={data.image.contentType}

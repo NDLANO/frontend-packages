@@ -23,8 +23,8 @@ export default {
 
 export const AnnouncementExample: StoryObj<typeof LinkBlock> = {
   args: {
-    title: { title: 'Redaksjonell medarbeider i faget spansk 2', language: 'nb'},
+    title: { title: 'Redaksjonell medarbeider i faget spansk 2', language: 'nb' },
     date: '05. mars 2023',
     url: '',
-  }
+  },
 };

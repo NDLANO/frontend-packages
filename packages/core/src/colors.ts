@@ -138,12 +138,12 @@ const colors = {
     grayDark: '#e4e4e4',
     frontpageArticle: '#f7fafd',
   },
-    /**
+  /**
    * Icon colors
    * */
   icon: {
     iconBlue: '#4E51F2',
-  }
+  },
 };
 
 export default colors;

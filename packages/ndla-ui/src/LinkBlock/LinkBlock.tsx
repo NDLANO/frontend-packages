@@ -7,10 +7,9 @@
  */
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Forward, CalendarEd } from '@ndla/icons/common';
-import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
+import { breakpoints, colors, spacing, mq } from '@ndla/core';
 
 interface Props {
   title: {
@@ -43,7 +42,7 @@ const StyledSafeLink = styled(SafeLink)`
     &:focus-visible {
       border: 2px solid ${colors.brand.dark};
     }
-  };
+  }
   ${mq.range({ until: breakpoints.tabletWide })} {
     & .styled-h3 {
       text-decoration: underline;
@@ -54,7 +53,7 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const InfoWrapper = styled.div`       
+const InfoWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
@@ -70,7 +69,7 @@ const StyledDateContainer = styled.div`
 `;
 
 const StyledCalenderEd = styled(CalendarEd)`
-  color: ${colors.icon.iconBlue}; 
+  color: ${colors.icon.iconBlue};
 `;
 
 const StyledForward = styled(Forward)`
@@ -84,12 +83,14 @@ const LinkBlock = ({ title, date, url }: Props) => {
     <StyledSafeLink to={url}>
       <InfoWrapper>
         <StyledH3 className="styled-h3">{title.title}</StyledH3>
-        {date && <StyledDateContainer>
-          <StyledCalenderEd />
-          <span>{date}</span>
-        </StyledDateContainer>}
+        {date && (
+          <StyledDateContainer>
+            <StyledCalenderEd />
+            <span>{date}</span>
+          </StyledDateContainer>
+        )}
       </InfoWrapper>
-      <StyledForward className='forward-icon' />
+      <StyledForward className="forward-icon" />
     </StyledSafeLink>
   );
 };

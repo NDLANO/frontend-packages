@@ -17,7 +17,7 @@ interface Props {
     title: string;
     language: string;
   };
-  date: Date;
+  date: string;
   url: string;
 }
 
@@ -28,6 +28,11 @@ const StyledSafeLink = styled(SafeLink)`
   align-items: center;
   box-shadow: none;
   color: inherit;
+  border: 1px solid ${colors.brand.lighter};
+  padding: ${spacing.normal};
+  :last-child & :hover  {
+    width: 32px; height: 32px;
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -41,6 +46,7 @@ const StyledH3 = styled.h3`
 const StyledDateContainer = styled.div`
   display: flex;
   align-items: center;
+  padding-top: ${spacing.xsmall};
   gap: ${spacing.small};
 `;
 
@@ -48,17 +54,23 @@ const StyledCalenderEd = styled(CalendarEd)`
   color: ${colors.icon.iconBlue}; 
 `;
 
-const LinkBlock = ({ url }: Props) => {
+const StyledForward = styled(Forward)`
+  margin-right: ${spacing.nsmall};
+  width: 20px;
+  height: 20px;
+`;
+
+const LinkBlock = ({ title, date, url }: Props) => {
   return (
     <StyledSafeLink to={url}>
       <InfoWrapper>
-        <StyledH3>Redaksjonell medarbeider i faget spansk 2</StyledH3>
-        <StyledDateContainer>
+        <StyledH3>{title.title}</StyledH3>
+        {date && <StyledDateContainer>
           <StyledCalenderEd />
-          <div>05. mars 2023</div>
-        </StyledDateContainer>
+          <span>{date}</span>
+        </StyledDateContainer>}
       </InfoWrapper>
-      <Forward />
+      <StyledForward />
     </StyledSafeLink>
   );
 };

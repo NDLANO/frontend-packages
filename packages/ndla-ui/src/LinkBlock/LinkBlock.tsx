@@ -30,12 +30,31 @@ const StyledSafeLink = styled(SafeLink)`
   color: inherit;
   border: 1px solid ${colors.brand.lighter};
   padding: ${spacing.normal};
-  :last-child & :hover  {
-    width: 32px; height: 32px;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    &:hover {
+      & .styled-h3 {
+        text-decoration: underline;
+      }
+      & .forward-icon {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    &:focus-visible {
+      border: 2px solid ${colors.brand.dark};
+    }
+  };
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    & .styled-h3 {
+      text-decoration: underline;
+    }
+    :active .styled-h3 {
+      text-decoration: none;
+    }
   }
 `;
 
-const InfoWrapper = styled.div`
+const InfoWrapper = styled.div`       
   gap: ${spacing.small};
 `;
 
@@ -55,22 +74,22 @@ const StyledCalenderEd = styled(CalendarEd)`
 `;
 
 const StyledForward = styled(Forward)`
-  margin-right: ${spacing.nsmall};
-  width: 20px;
-  height: 20px;
+  margin: 0 ${spacing.nsmall};
+  min-width: 20px;
+  min-height: 20px;
 `;
 
 const LinkBlock = ({ title, date, url }: Props) => {
   return (
     <StyledSafeLink to={url}>
       <InfoWrapper>
-        <StyledH3>{title.title}</StyledH3>
+        <StyledH3 className="styled-h3">{title.title}</StyledH3>
         {date && <StyledDateContainer>
           <StyledCalenderEd />
           <span>{date}</span>
         </StyledDateContainer>}
       </InfoWrapper>
-      <StyledForward />
+      <StyledForward className='forward-icon' />
     </StyledSafeLink>
   );
 };

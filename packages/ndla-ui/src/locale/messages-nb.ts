@@ -477,7 +477,7 @@ const messages = {
       onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
-    references: 'Referanser',
+    footnotes: 'Fotnoter',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',

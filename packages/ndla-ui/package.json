@@ -75,7 +75,6 @@
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@ndla/types-backend": "^0.2.5",
     "@ndla/types-embed": "^2.0.3",
-    "@types/reach__dialog": "^0.1.0",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.5",
     "sass-loader": "^13.2.2",

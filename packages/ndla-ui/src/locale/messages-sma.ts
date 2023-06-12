@@ -611,7 +611,7 @@ const messages = {
     },
     concept: {
       heading: 'Slik gjenbruker du forklaringer',
-      description: 'Datne njoelkedassh sisvege-åtnoen bïjre gaavnh buerkiestimmiebiehkesne',
+      description: 'Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten',
       rules: 'Njoelkedassh guktie buerkiestimmiem nuhtjh:',
       title: 'Tihtele',
       embedlink: {

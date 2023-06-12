@@ -594,7 +594,7 @@ const messages = {
     },
     concept: {
       heading: 'How to reuse concept content',
-      description: 'You will find guidelines for use of concept content in the asset',
+      description: 'Remember that built-in content might have a different license than the explanation text',
       rules: 'Rules for use of concept:',
       title: 'Title',
       embedlink: {

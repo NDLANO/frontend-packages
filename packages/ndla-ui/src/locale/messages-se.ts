@@ -609,7 +609,7 @@ const messages = {
     },
     concept: {
       heading: 'Ná geavahat čilgehusaid ođđasit',
-      description: 'Njuolggadusaid sisdoalu geavaheapmái gávnnat čilgehus-elemeanttas',
+      description: 'Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten',
       rules: 'Njuolggadusat čilgehusa geavaheapmái:',
       title: 'Tihttel',
       embedlink: {

@@ -614,7 +614,7 @@ const messages = {
         hasCopiedTitle: 'Innbyggingslenke kopiert',
       },
       heading: 'Slik gjenbruker du forklaringar',
-      description: 'Du finn retningslinjene for bruk av innhaldet i forklaring-elementet',
+      description: 'Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten',
       rules: 'Reglar for bruk av forklaring:',
       title: 'Tittel',
     },

@@ -608,7 +608,7 @@ const messages = {
     },
     concept: {
       heading: 'Slik gjenbruker du forklaringer',
-      description: 'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
+      description: 'Husk at innebygd innhold i en forklaring kan ha en annen lisens enn selve forklaringsteksten',
       rules: 'Regler for bruk av forklaring:',
       title: 'Tittel',
       embedlink: {

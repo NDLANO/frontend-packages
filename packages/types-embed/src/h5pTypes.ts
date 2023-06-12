@@ -13,6 +13,7 @@ export interface H5pEmbedData {
   path: string;
   url: string;
   title?: string;
+  pageUrl?: string;
 }
 
 export interface H5pLicenseInformation {

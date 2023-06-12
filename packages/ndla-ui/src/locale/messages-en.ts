@@ -1315,6 +1315,7 @@ const messages = {
     conceptListError: 'Failed to show concept list',
     linkError: 'Failed to show link.',
     unsupported: `Embed {{type}} not supported.`,
+    goTo: 'Go to {{type}}',
     embedError: `An error occurred while loading the {{type}}. Try reloading the page.`,
     type: {
       image: 'Image',

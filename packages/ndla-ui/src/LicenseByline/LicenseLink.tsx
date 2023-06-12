@@ -32,7 +32,7 @@ const StyledSpan = styled.span`
 `;
 
 const LicenseLink = ({ license, asLink = true }: Props) => {
-  if(license.abbreviation === 'unknown') {
+  if (license.abbreviation === 'unknown') {
     return null;
   }
   if (asLink) {

@@ -88,7 +88,7 @@ const LicenseWrapper = styled.div`
 `;
 
 const refRegexp = /note\d/;
-const referencesAccordionId = 'references';
+const footnotesAccordionId = 'footnotes';
 
 const ArticleByline = ({
   authors = [],
@@ -105,8 +105,8 @@ const ArticleByline = ({
   const onHashChange = useCallback(
     (e: HashChangeEvent) => {
       const hash = e.newURL.split('#')[1];
-      if (hash.match(refRegexp) && !openAccordions.includes(referencesAccordionId)) {
-        setOpenAccordions([...openAccordions, referencesAccordionId]);
+      if (hash.match(refRegexp) && !openAccordions.includes(footnotesAccordionId)) {
+        setOpenAccordions([...openAccordions, footnotesAccordionId]);
         const el = document.getElementById(`#${hash}`);
         el?.click();
         el?.focus();
@@ -155,8 +155,8 @@ const ArticleByline = ({
         )}
 
         {!!footnotes?.length && (
-          <AccordionItem value={referencesAccordionId}>
-            <AccordionHeader headingLevel="h2">{t('article.references')}</AccordionHeader>
+          <AccordionItem value={footnotesAccordionId}>
+            <AccordionHeader headingLevel="h2">{t('article.footnotes')}</AccordionHeader>
             <AccordionContent forceMount>
               <ArticleFootNotes footNotes={footnotes} />
             </AccordionContent>

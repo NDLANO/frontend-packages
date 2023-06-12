@@ -478,7 +478,7 @@ const messages = {
       onlyTeacher: 'This resource is accessible only to teachers who are logged in with Feide.',
     },
     possiblyOutdated: 'The article is outdated',
-    references: 'References',
+    footnotes: 'Footnotes',
   },
   competenceGoals: {
     competenceGoal: 'competence-goal',

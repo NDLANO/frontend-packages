@@ -5,23 +5,32 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
 import React from 'react';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { Forward, CalendarEd } from '@ndla/icons/common';
-import { breakpoints, colors, spacing, mq } from '@ndla/core';
+import { breakpoints, colors, spacing, mq, misc } from '@ndla/core';
+import language from 'react-syntax-highlighter/dist/esm/languages/hljs/1c';
 
 interface Props {
-  title: {
-    title: string;
-    language: string;
-  };
+  title: string;
+  language: string;
   date: string;
   url: string;
 }
 
+const StyledForward = styled(Forward)`
+  margin: 0 ${spacing.nsmall};
+  min-width: 20px;
+  min-height: 20px;
+  `;
+
+  const StyledH3 = styled.h3`
+    margin: 0;
+  `;
+
 const StyledSafeLink = styled(SafeLink)`
-  text-decoration: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,10 +40,10 @@ const StyledSafeLink = styled(SafeLink)`
   padding: ${spacing.normal};
   ${mq.range({ from: breakpoints.tabletWide })} {
     &:hover {
-      & .styled-h3 {
+      & ${StyledH3} {
         text-decoration: underline;
       }
-      & .forward-icon {
+      & ${StyledForward} {
         width: 32px;
         height: 32px;
       }
@@ -44,21 +53,19 @@ const StyledSafeLink = styled(SafeLink)`
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
-    & .styled-h3 {
+    & ${StyledH3} {
       text-decoration: underline;
     }
-    :active .styled-h3 {
+    :active ${StyledH3} {
       text-decoration: none;
     }
   }
 `;
 
 const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: ${spacing.small};
-`;
-
-const StyledH3 = styled.h3`
-  margin: 0;
 `;
 
 const StyledDateContainer = styled.div`
@@ -72,17 +79,11 @@ const StyledCalenderEd = styled(CalendarEd)`
   color: ${colors.icon.iconBlue};
 `;
 
-const StyledForward = styled(Forward)`
-  margin: 0 ${spacing.nsmall};
-  min-width: 20px;
-  min-height: 20px;
-`;
-
-const LinkBlock = ({ title, date, url }: Props) => {
+const LinkBlock = ({ title, language, date, url }: Props) => {
   return (
     <StyledSafeLink to={url}>
       <InfoWrapper>
-        <StyledH3 className="styled-h3">{title.title}</StyledH3>
+        <StyledH3 lang={language}>{title}</StyledH3>
         {date && (
           <StyledDateContainer>
             <StyledCalenderEd />
@@ -90,7 +91,7 @@ const LinkBlock = ({ title, date, url }: Props) => {
           </StyledDateContainer>
         )}
       </InfoWrapper>
-      <StyledForward className="forward-icon" />
+      <StyledForward/>
     </StyledSafeLink>
   );
 };

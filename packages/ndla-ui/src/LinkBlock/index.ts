@@ -6,4 +6,4 @@
  *
  */
 
-export { default as LinkeBlock } from './LinkBlock';
+export { default as LinkBlock } from './LinkBlock';

@@ -10,8 +10,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { Forward, CalendarEd } from '@ndla/icons/common';
-import { breakpoints, colors, spacing, mq, misc } from '@ndla/core';
-import language from 'react-syntax-highlighter/dist/esm/languages/hljs/1c';
+import { breakpoints, colors, spacing, mq } from '@ndla/core';
+import { Heading } from '..';
 
 interface Props {
   title: string;
@@ -24,11 +24,13 @@ const StyledForward = styled(Forward)`
   margin: 0 ${spacing.nsmall};
   min-width: 20px;
   min-height: 20px;
-  `;
+`;
 
-  const StyledH3 = styled.h3`
-    margin: 0;
-  `;
+const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
+`;
 
 const StyledSafeLink = styled(SafeLink)`
   display: flex;
@@ -40,7 +42,7 @@ const StyledSafeLink = styled(SafeLink)`
   padding: ${spacing.normal};
   ${mq.range({ from: breakpoints.tabletWide })} {
     &:hover {
-      & ${StyledH3} {
+      & ${InfoWrapper} :first-child {
         text-decoration: underline;
       }
       & ${StyledForward} {
@@ -53,19 +55,13 @@ const StyledSafeLink = styled(SafeLink)`
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
-    & ${StyledH3} {
+    & ${InfoWrapper} :first-child {
       text-decoration: underline;
     }
-    :active ${StyledH3} {
+    :active :first-child {
       text-decoration: none;
     }
   }
-`;
-
-const InfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing.small};
 `;
 
 const StyledDateContainer = styled.div`
@@ -83,7 +79,9 @@ const LinkBlock = ({ title, language, date, url }: Props) => {
   return (
     <StyledSafeLink to={url}>
       <InfoWrapper>
-        <StyledH3 lang={language}>{title}</StyledH3>
+        <Heading element="h3" margin="none" headingStyle="h3" lang={language}>
+          {title}
+        </Heading>
         {date && (
           <StyledDateContainer>
             <StyledCalenderEd />
@@ -91,7 +89,7 @@ const LinkBlock = ({ title, language, date, url }: Props) => {
           </StyledDateContainer>
         )}
       </InfoWrapper>
-      <StyledForward/>
+      <StyledForward />
     </StyledSafeLink>
   );
 };

@@ -138,7 +138,7 @@ const colors = {
     grayDark: '#e4e4e4',
     frontpageArticle: '#f7fafd',
   },
-  
+
   /**
    * Icon colors
    * */

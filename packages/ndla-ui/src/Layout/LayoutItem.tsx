@@ -6,14 +6,14 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
   layout?: string;
 }
 
-export const LayoutItem = ({ children, layout }: Props) => {
+export const LayoutItem = ({ children, layout, ...rest }: Props) => {
   switch (layout) {
     case 'extend': {
       return (
@@ -29,7 +29,11 @@ export const LayoutItem = ({ children, layout }: Props) => {
       return <section className="u-1/1@desktop">{children}</section>;
     }
     default: {
-      return <section className="o-layout__item">{children}</section>;
+      return (
+        <section className="o-layout__item" {...rest}>
+          {children}
+        </section>
+      );
     }
   }
 };

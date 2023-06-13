@@ -18,16 +18,16 @@ export interface GridProps {
 }
 
 const GridContainer = styled.div`
-  display: grid;
+  display: inline-grid;
   grid-template-columns: auto;
   justify-content: center;
   grid-gap: ${spacing.large};
 
-  padding: ${spacing.xsmall};
   border-radius: ${misc.borderRadius};
 
   &[data-border='lightBlue'] {
     border: 1px solid ${colors.brand.light};
+    padding: ${spacing.small};
   }
 
   &[data-background='white'] {
@@ -36,9 +36,17 @@ const GridContainer = styled.div`
 
   ${mq.range({ from: breakpoints.mobileWide })} {
     grid-template-columns: repeat(2, 1fr);
+
+    > div:nth-child(3):last-child {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      grid-column: span 2;
+    }
   }
 
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  ${mq.range({ from: breakpoints.desktop })} {
     &[data-columns='4'] {
       grid-template-columns: repeat(4, 1fr);
     }

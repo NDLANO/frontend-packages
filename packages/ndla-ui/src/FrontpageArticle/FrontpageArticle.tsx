@@ -7,50 +7,64 @@
  */
 
 import { ReactNode } from 'react';
-import { Article as ArticleType, Locale } from '../types';
-import LayoutItem from '../Layout';
-import FrontpageArticleAccessMessage from './FrontpageArticleAccessMessage';
 import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-
-type Messages = {
-  label: string;
-  messageBox?: string;
-};
+import { spacing } from '@ndla/core';
+import { Article as ArticleType } from '../types';
+import LayoutItem from '../Layout';
 
 type Props = {
   article: ArticleType;
   icon?: ReactNode;
-  licenseBox?: ReactNode;
   children?: ReactNode;
-  messages: Messages;
-  locale: Locale;
   id: string;
-  accessMessage?: string;
+  isWide?: boolean;
 };
 
 const StyledArticle = styled.article`
-  width: 1100px;
-  background-color: ${colors.background.grayDark};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  padding: ${spacing.small};
 `;
 
-export const FrontpageArticle = ({ article, icon, messages, id, accessMessage }: Props) => {
+const StyledLayoutItem = styled(LayoutItem)`
+  &[data-wide='true'] {
+    max-width: 1100px;
+
+    > section {
+      > figure,
+      > iframe {
+        width: 100% !important;
+        left: 0;
+      }
+    }
+  }
+`;
+const StyledHeader = styled.h1`
+  &[data-wide='true'] {
+    position: absolute;
+    top: -100000000%;
+    right: -10000000000%;
+  }
+`;
+
+export const FrontpageArticle = ({ article, icon, id, isWide }: Props) => {
   const { title, introduction, content } = article;
 
   return (
     <>
       <StyledArticle id={id}>
-        <LayoutItem layout="center">
-          {accessMessage && <FrontpageArticleAccessMessage message={accessMessage} />}
+        <StyledLayoutItem data-wide={!!isWide}>
           <div>
             {icon}
-            {messages.label ? <p>{messages.label}</p> : null}
-            <h1 tabIndex={-1}>{title}</h1>
-            {title}
-            <div className="article_introduction">{introduction}</div>
+            <StyledHeader data-wide={!!isWide} tabIndex={-1}>
+              {title}
+            </StyledHeader>
+            <div>{introduction}</div>
           </div>
-        </LayoutItem>
-        <LayoutItem layout="center">{content}</LayoutItem>
+        </StyledLayoutItem>
+        <StyledLayoutItem data-wide={!!isWide}>{content}</StyledLayoutItem>
       </StyledArticle>
     </>
   );

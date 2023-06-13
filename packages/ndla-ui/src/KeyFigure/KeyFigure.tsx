@@ -16,10 +16,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   padding: ${spacing.small};
   align-items: center;
-`;
-
-const StyledImage = styled.img`
-  max-width: 150px;
+  max-width: 240px;
 `;
 
 const TitleWrapper = styled.div`
@@ -29,7 +26,6 @@ const TitleWrapper = styled.div`
   overflow-wrap: break-word;
   ${fonts.sizes('38px', '48px')};
   text-align: center;
-  max-width: 240px;
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     ${fonts.sizes('30px', '36px')};
@@ -38,13 +34,11 @@ const TitleWrapper = styled.div`
 
 const SubTitleWrapper = styled.div`
   overflow-wrap: 'break-word';
-  text-align: center;
   ${fonts.sizes('18px', '29px')};
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
   font-family: ${fonts.sans};
-  max-width: 240px;
-
+  text-align: center;
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding-top: ${spacing.xxsmall};
   }
@@ -62,7 +56,7 @@ interface Props {
 const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper>
-      <StyledImage src={image?.src} alt={image?.alt} />
+      <img src={image?.src} alt={image?.alt} />
       <TitleWrapper>{title}</TitleWrapper>
       <SubTitleWrapper>{subtitle}</SubTitleWrapper>
     </ContentWrapper>

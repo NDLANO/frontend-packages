@@ -1870,10 +1870,20 @@
     pump "^3.0.0"
     tar-fs "^2.1.1"
 
+"@ndla/types-backend@^0.2.12":
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/@ndla/types-backend/-/types-backend-0.2.12.tgz#c06a29ba924c86c8c9b96a76ecd2d13be0a813e4"
+  integrity sha512-n3b41tyw/Of07bhNIvRJ6Qz/kMYbGM9mlvDvCkYDLDQpq9zSnFpsGASD1tPBRydmz9oDApM8F2GvQVT6Zk7jKA==
+
 "@ndla/types-backend@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@ndla/types-backend/-/types-backend-0.2.5.tgz#36b4411c0190c6f78f6165ea1a54fb7f2987a1fe"
   integrity sha512-BqSBLcW4M+otGxoix1tISb6PuWn/THm+xzdH4/rudblIcqz+zQwU46WIxKBtcfYK2U5LjsHgCUH8vjmi4nA1Pw==
+
+"@ndla/types-taxonomy@1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@ndla/types-taxonomy/-/types-taxonomy-1.0.17.tgz#fe8020347013d35a5c4ac2e656fda53b5b32c1bc"
+  integrity sha512-pjgnVA9+/PtAUb8Iyvh9ZX2OwKhyy6L9JRXOWpsnEzbZzIaNiLhYXhqzvjG2KT6MrvQhLi+9HxiCE/f2KnYFtQ==
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"

@@ -8,6 +8,7 @@
 
 import { IArticleV2 } from '@ndla/types-backend/article-api';
 import { IArticle } from '@ndla/types-backend/draft-api';
+import { Node } from '@ndla/types-taxonomy';
 import { MetaData } from '.';
 
 export interface RelatedContentEmbedData {
@@ -15,27 +16,6 @@ export interface RelatedContentEmbedData {
   articleId?: string;
   url?: string;
   title?: string;
-}
-
-export interface NodeType {
-  nodeType: 'RESOURCE' | 'TOPIC' | 'SUBJECT' | 'NODE';
-  contentUri?: string;
-  id: string;
-  metadata: TaxonomyMetadata;
-  name: string;
-  path: string;
-  paths: string[];
-  relevanceId?: string;
-  supportedLanguages: string[];
-  translations: TaxonomyTranslation[];
-  resourceTypes: {
-    id: string;
-    name: string;
-    parentId?: string;
-    translations: { name: string; language: string }[];
-    supportedLanguages: string[];
-    connectionId: string;
-  }[];
 }
 
 interface TaxonomyTranslation {
@@ -51,7 +31,7 @@ interface TaxonomyMetadata {
 
 export interface RelatedContentData {
   article: IArticleV2 | IArticle;
-  resource: NodeType;
+  resource: Node;
 }
 
 export type RelatedContentMetaData = MetaData<RelatedContentEmbedData, RelatedContentData | undefined>;

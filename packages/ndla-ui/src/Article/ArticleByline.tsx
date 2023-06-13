@@ -87,6 +87,11 @@ const LicenseWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
+const StyledAccordionHeader = styled(AccordionHeader)`
+  font-size: ${fonts.sizes('16px', '29px')};
+  font-weight: ${fonts.weight.semibold};
+`;
+
 const refRegexp = /note\d/;
 const footnotesAccordionId = 'footnotes';
 
@@ -149,14 +154,14 @@ const ArticleByline = ({
       <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
         {licenseBox && (
           <AccordionItem value="rulesForUse">
-            <AccordionHeader headingLevel="h2">{t('article.useContent')}</AccordionHeader>
+            <StyledAccordionHeader headingLevel="h2">{t('article.useContent')}</StyledAccordionHeader>
             <AccordionContent>{licenseBox}</AccordionContent>
           </AccordionItem>
         )}
 
         {!!footnotes?.length && (
           <AccordionItem value={footnotesAccordionId}>
-            <AccordionHeader headingLevel="h2">{t('article.footnotes')}</AccordionHeader>
+            <StyledAccordionHeader headingLevel="h2">{t('article.footnotes')}</StyledAccordionHeader>
             <AccordionContent forceMount>
               <ArticleFootNotes footNotes={footnotes} />
             </AccordionContent>

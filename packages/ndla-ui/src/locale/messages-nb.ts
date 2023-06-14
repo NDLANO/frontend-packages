@@ -477,7 +477,7 @@ const messages = {
       onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
-    references: 'Referanser',
+    footnotes: 'Fotnoter',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -608,7 +608,7 @@ const messages = {
     },
     concept: {
       heading: 'Slik gjenbruker du forklaringer',
-      description: 'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
+      description: 'Husk at innebygd innhold i en forklaring kan ha en annen lisens enn selve forklaringsteksten',
       rules: 'Regler for bruk av forklaring:',
       title: 'Tittel',
       embedlink: {
@@ -1311,6 +1311,7 @@ const messages = {
     conceptListError: 'Klarte ikke å vise forklaringsliste',
     linkError: 'Klarte ikke å vise lenke.',
     unsupported: `Embed {{type}} er ikke støttet.`,
+    goTo: 'Gå til {{type}}',
     embedError: `Beklager, en feil oppstod ved lasting av {{type}}. Prøv å laste inn siden på nytt.`,
     type: {
       image: 'Bilde',

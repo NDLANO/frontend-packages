@@ -477,7 +477,7 @@ const messages = {
       onlyTeacher: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
-    references: 'Referanser',
+    footnotes: 'Fotnotar',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -614,7 +614,7 @@ const messages = {
         hasCopiedTitle: 'Innbyggingslenke kopiert',
       },
       heading: 'Slik gjenbruker du forklaringar',
-      description: 'Du finn retningslinjene for bruk av innhaldet i forklaring-elementet',
+      description: 'Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten',
       rules: 'Reglar for bruk av forklaring:',
       title: 'Tittel',
     },
@@ -1311,6 +1311,7 @@ const messages = {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',
     linkError: 'Klarte ikkje å vise lenke.',
     unsupported: `Embed {{type}} er ikkje støtta.`,
+    goTo: 'Gå til {{type}}',
     embedError: `Orsak, ein feil oppstod ved lasting av {{type}}. Prøv å laste inn sida på nytt.`,
     type: {
       image: 'Bilde',

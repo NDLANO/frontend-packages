@@ -18,6 +18,7 @@ export type BrightcoveEmbedData = {
   title: string;
   metaData?: any;
   alt?: string;
+  pageUrl?: string;
 };
 
 interface Author {

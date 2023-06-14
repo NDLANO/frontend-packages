@@ -6,13 +6,14 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
 import warning from 'tiny-warning';
 import withTracker from './withTracker';
 
 interface Props {
   title: string;
+  children?: ReactNode;
 }
 
 /**

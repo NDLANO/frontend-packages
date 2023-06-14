@@ -38,8 +38,6 @@ export {
   default as Article,
 } from './Article';
 
-export { CompetenceGoalsDialog } from './CompetenceGoals';
-
 export { default as Table } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';

@@ -31,7 +31,7 @@ import {
   BrightcoveApiType,
   BrightcoveCopyright,
 } from './brightcoveTypes';
-import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData, NodeType } from './relatedContentTypes';
+import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from './relatedContentTypes';
 import {
   ConceptListData,
   ConceptData,
@@ -131,7 +131,7 @@ export type { IframeData };
 export type { ContentLinkData };
 export type { FootnoteData };
 export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, BrightcoveCopyright };
-export type { RelatedContentData, NodeType };
+export type { RelatedContentData };
 export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
 export type { AudioMeta };
 export type { H5pData };

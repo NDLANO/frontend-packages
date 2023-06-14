@@ -23,6 +23,7 @@ const menuStyle = css`
 const StyledBaseMenu = styled.div<StyledProps>`
   overflow: hidden;
   background-color: ${colors.white};
+  pointer-events: auto;
   border: 1px solid ${colors.brand.light};
   border-radius: ${({ small }) => (small ? '4px' : '8px')};
   margin: 4px 0;

@@ -5,7 +5,7 @@ import { defaultParameters } from '../../../../stories/defaults';
 import Select from './Select';
 
 export default {
-  title: 'Enkle komponenter/Select',
+  title: 'Components/Select',
   component: Select,
   tags: ['autodocs'],
   parameters: {

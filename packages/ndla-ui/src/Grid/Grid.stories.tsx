@@ -29,7 +29,7 @@ const GridDocsContainer = ({ ...props }: DocsContainerProps) => (
 );
 
 export default {
-  title: 'Enkle komponenter/Grid',
+  title: 'Components/Grid',
   component: Grid,
   tags: ['autodocs'],
   parameters: {

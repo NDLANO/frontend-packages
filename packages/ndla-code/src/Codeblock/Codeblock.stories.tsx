@@ -14,7 +14,7 @@ import { defaultParameters } from '../../../../stories/defaults';
 import Codeblock from './Codeblock';
 
 export default {
-  title: 'Enkle komponenter/Codeblock',
+  title: 'Components/Codeblock',
   component: Codeblock,
   tags: ['autodocs'],
   parameters: {

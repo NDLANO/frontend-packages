@@ -35,6 +35,10 @@ const GridContainer = styled.div`
 
   &[data-columns='2'] {
     grid-template-columns: repeat(2, 1fr);
+
+    ${mq.range({ from: breakpoints.mobileWide })} {
+      grid-template-columns: 1fr;
+    }
   }
 
   ${mq.range({ from: breakpoints.mobileWide, until: breakpoints.desktop })} {

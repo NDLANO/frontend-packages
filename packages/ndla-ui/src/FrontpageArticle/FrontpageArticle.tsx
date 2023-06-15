@@ -8,7 +8,6 @@
 
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
 import { Article as ArticleType } from '../types';
 import LayoutItem from '../Layout';
 
@@ -21,23 +20,17 @@ type Props = {
 };
 
 const StyledArticle = styled.article`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-  padding: ${spacing.small};
+  &[data-wide='true'] {
+    max-width: 1100px;
+  }
 `;
 
 const StyledLayoutItem = styled(LayoutItem)`
-  &[data-wide='true'] {
-    max-width: 1100px;
-
-    > section {
-      > figure,
-      > iframe {
-        width: 100% !important;
-        left: 0;
-      }
+  > section {
+    > figure,
+    > iframe {
+      width: 100% !important;
+      left: 0;
     }
   }
 `;
@@ -54,17 +47,17 @@ export const FrontpageArticle = ({ article, icon, id, isWide }: Props) => {
 
   return (
     <>
-      <StyledArticle id={id}>
-        <StyledLayoutItem data-wide={!!isWide}>
+      <StyledArticle data-wide={isWide} id={id}>
+        <StyledLayoutItem>
           <div>
             {icon}
-            <StyledHeader data-wide={!!isWide} tabIndex={-1}>
+            <StyledHeader data-wide={isWide} tabIndex={-1}>
               {title}
             </StyledHeader>
             <div>{introduction}</div>
           </div>
         </StyledLayoutItem>
-        <StyledLayoutItem data-wide={!!isWide}>{content}</StyledLayoutItem>
+        <StyledLayoutItem>{content}</StyledLayoutItem>
       </StyledArticle>
     </>
   );

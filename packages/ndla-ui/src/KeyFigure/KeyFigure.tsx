@@ -16,7 +16,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   padding: ${spacing.small};
   align-items: center;
-  max-width: 240px;
+  max-width: 225px;
 `;
 
 const TitleWrapper = styled.div`
@@ -44,6 +44,10 @@ const SubTitleWrapper = styled.div`
   }
 `;
 
+const StyledImage = styled.img`
+  width: 100%;
+`;
+
 interface Props {
   image?: {
     src?: string;
@@ -56,7 +60,7 @@ interface Props {
 const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper>
-      <img src={image?.src} alt={image?.alt} />
+      <StyledImage src={image?.src} alt={image?.alt} />
       <TitleWrapper>{title}</TitleWrapper>
       <SubTitleWrapper>{subtitle}</SubTitleWrapper>
     </ContentWrapper>

@@ -18,25 +18,26 @@ export interface GridProps {
 }
 
 const GridContainer = styled.div`
-  display: inline-grid;
-  grid-template-columns: auto;
+  display: grid;
+  grid-template-columns: 1fr;
   justify-content: center;
   grid-gap: ${spacing.large};
-
   border-radius: ${misc.borderRadius};
 
   &[data-border='lightBlue'] {
     border: 1px solid ${colors.brand.light};
-    padding: ${spacing.small};
+    padding: ${spacing.medium};
   }
 
   &[data-background='white'] {
     background-color: ${colors.white};
   }
 
-  ${mq.range({ from: breakpoints.mobileWide })} {
+  &[data-columns='2'] {
     grid-template-columns: repeat(2, 1fr);
+  }
 
+  ${mq.range({ from: breakpoints.mobileWide, until: breakpoints.desktop })} {
     > div:nth-child(3):last-child {
       display: flex;
       flex-flow: column;
@@ -46,9 +47,17 @@ const GridContainer = styled.div`
     }
   }
 
+  ${mq.range({ from: breakpoints.tablet })} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   ${mq.range({ from: breakpoints.desktop })} {
     &[data-columns='4'] {
       grid-template-columns: repeat(4, 1fr);
+    }
+
+    &[data-columns='3'] {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -72,10 +81,10 @@ const OuterContainer = styled.div`
   align-items: center;
 `;
 
-const Grid = ({ columns, border, children, background, ...rest }: GridProps) => {
+const Grid = ({ border, children, background, columns }: GridProps) => {
   return (
     <OuterContainer>
-      <GridContainer data-border={border} data-columns={columns} data-background={background} {...rest}>
+      <GridContainer data-border={border} data-columns={children?.length ?? columns} data-background={background}>
         {children}
       </GridContainer>
     </OuterContainer>

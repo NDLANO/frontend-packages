@@ -1323,7 +1323,7 @@ const messages = {
     },
   },
   gloss: {
-    examples: 'eksempler',
+    examples: 'Eksempler',
   },
   wordClass: {
     [WordClass.WordClass.Noun]: 'substantiv',

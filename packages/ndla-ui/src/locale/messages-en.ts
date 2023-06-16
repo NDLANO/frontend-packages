@@ -1327,7 +1327,7 @@ const messages = {
     },
   },
   gloss: {
-    examples: 'examples',
+    examples: 'Examples',
   },
   wordClass: {
     [WordClass.WordClass.Noun]: 'Noun',

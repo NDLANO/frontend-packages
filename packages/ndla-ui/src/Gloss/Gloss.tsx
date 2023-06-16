@@ -6,12 +6,10 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing, misc, fonts } from '@ndla/core';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
-import { WordClass, WordClassChinese } from '../model/WordClass';
 import { Transcription } from '../model/Transcriptions';
 import SpeechControl from '../AudioPlayer/SpeechControl';
 
@@ -28,7 +26,7 @@ export interface Props {
   };
   glossData: {
     gloss: string;
-    wordClass?: WordClass | WordClassChinese;
+    wordClass?: string;
     originalLanguage: string;
     transcriptions: Transcription;
     examples?: Example[][];
@@ -76,7 +74,7 @@ const AudioExample = styled.div`
 
 const StyledAccordionHeader = styled(AccordionHeader)`
   font-family: ${fonts.sans};
-  font-size: ${fonts.sizes('16px', 1.3)};
+  ${fonts.sizes('16px', '24px')};
   font-weight: ${fonts.weight.semibold};
   background-color: ${colors.background.lightBlue};
 `;
@@ -85,16 +83,11 @@ const StyledAccordionContent = styled(AccordionContent)`
   padding: 0;
 `;
 
-const ExampleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const TranslatedText = styled.span`
+const TranslatedText = styled.div`
   border-bottom: 1px solid ${colors.brand.lighter};
   padding: ${spacing.small} ${spacing.normal};
   font-family: ${fonts.sans};
-  font-size: ${fonts.sizes('18px', 1.3)};
+  ${fonts.sizes('18px', '24px')};
   :first-child {
     color: ${colors.brand.dark};
     font-weight: ${fonts.weight.bold};
@@ -102,24 +95,12 @@ const TranslatedText = styled.span`
   }
 `;
 
-const ExampleFunction = (ex: Example) => {
-  return (
-    <>
-      <TranslatedText>{ex.example}</TranslatedText>
-      {Object.keys(ex.transcriptions).map((key, i) => (
-        <TranslatedText key={key + i}>{(ex.transcriptions as any)[key]}</TranslatedText>
-      ))}
-    </>
-  );
-};
-
 const Gloss = ({ title, glossData, audio }: Props) => {
   const { t } = useTranslation();
-  let wordClassKey = '';
-
-  glossData.originalLanguage === 'zh'
-    ? (wordClassKey = `wordClassChinese.${glossData.wordClass}`)
-    : (wordClassKey = `wordClass.${glossData.wordClass}`);
+  const wordClassKey =
+    glossData.originalLanguage === 'zh'
+      ? `wordClassChinese.${glossData.wordClass}`
+      : `wordClass.${glossData.wordClass}`;
 
   return (
     <>
@@ -133,7 +114,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
           </GlossContainer>
           {audio.src && (
             <AudioExample>
-              {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+              <SpeechControl src={audio.src} title={audio.title}></SpeechControl>
             </AudioExample>
           )}
         </Wrapper>
@@ -145,7 +126,19 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             <StyledAccordionHeader>{t('gloss.examples')}</StyledAccordionHeader>
             <StyledAccordionContent>
               {glossData.examples.map((example, index) => (
-                <ExampleContainer key={index}>{example.map((ex) => ExampleFunction(ex))}</ExampleContainer>
+                <div key={index}>
+                  {example.map((translation) => (
+                    <>
+                      <TranslatedText>{translation.example}</TranslatedText>
+                      {translation.transcriptions.pinyin && (
+                        <TranslatedText>{translation.transcriptions?.pinyin}</TranslatedText>
+                      )}
+                      {translation.transcriptions.trad && (
+                        <TranslatedText>{translation.transcriptions?.trad}</TranslatedText>
+                      )}
+                    </>
+                  ))}
+                </div>
               ))}
             </StyledAccordionContent>
           </AccordionItem>

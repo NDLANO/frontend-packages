@@ -8,10 +8,10 @@
 
 import styled from '@emotion/styled';
 import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
-export interface GridProps {
-  columns: 2 | 4;
+export interface GridProps extends HTMLAttributes<HTMLDivElement> {
+  columns: '2' | '4' | '2x2';
   border?: 'none' | 'lightBlue';
   background?: 'transparent' | 'white';
   children?: ReactNode[];
@@ -19,29 +19,19 @@ export interface GridProps {
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   justify-content: center;
-  grid-gap: ${spacing.large};
   border-radius: ${misc.borderRadius};
+  grid-template-columns: 1fr;
 
-  &[data-border='lightBlue'] {
-    border: 1px solid ${colors.brand.light};
-    padding: ${spacing.medium};
-  }
-
-  &[data-background='white'] {
-    background-color: ${colors.white};
-  }
-
-  &[data-columns='2'] {
+  &[data-columns='2x2'],
+  &[data-columns='3'],
+  &[data-columns='4'] {
+    grid-gap: unset;
+    padding: ${spacing.normal};
     grid-template-columns: repeat(2, 1fr);
-
-    ${mq.range({ from: breakpoints.mobileWide })} {
-      grid-template-columns: 1fr;
-    }
   }
 
-  ${mq.range({ from: breakpoints.mobileWide, until: breakpoints.desktop })} {
+  ${mq.range({ until: breakpoints.desktop })} {
     > div:nth-child(3):last-child {
       display: flex;
       flex-flow: column;
@@ -51,18 +41,26 @@ const GridContainer = styled.div`
     }
   }
 
-  ${mq.range({ from: breakpoints.tablet })} {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    &[data-columns='4'] {
-      grid-template-columns: repeat(4, 1fr);
-    }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-gap: ${spacing.large} !important;
+    padding: ${spacing.medium} !important;
 
     &[data-columns='3'] {
       grid-template-columns: repeat(3, 1fr);
     }
+
+    &[data-columns='4'] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &[data-border='lightBlue'] {
+    border: 1px solid ${colors.brand.light};
+  }
+
+  &[data-background='white'] {
+    background-color: ${colors.white};
   }
 
   p {
@@ -81,14 +79,19 @@ const GridContainer = styled.div`
 const OuterContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: center;
   align-items: center;
+
+  &[data-columns='2x2'] {
+    justify-content: center;
+  }
 `;
 
-const Grid = ({ border, children, background, columns }: GridProps) => {
+const Grid = ({ border, children, background, columns, ...rest }: GridProps) => {
+  const amountOfColumns = children?.length === 3 ? '3' : columns;
+
   return (
-    <OuterContainer>
-      <GridContainer data-border={border} data-columns={children?.length ?? columns} data-background={background}>
+    <OuterContainer {...rest}>
+      <GridContainer data-border={border} data-columns={amountOfColumns} data-background={background}>
         {children}
       </GridContainer>
     </OuterContainer>

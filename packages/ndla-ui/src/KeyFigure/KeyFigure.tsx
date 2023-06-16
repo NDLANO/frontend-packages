@@ -16,7 +16,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   padding: ${spacing.small};
   align-items: center;
-  max-width: 225px;
+  max-width: 215px;
 `;
 
 const TitleWrapper = styled.div`

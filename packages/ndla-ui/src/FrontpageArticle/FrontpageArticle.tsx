@@ -8,11 +8,11 @@
 
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { Article as ArticleType } from '../types';
+import { Article } from '../types';
 import LayoutItem from '../Layout';
 
 type Props = {
-  article: ArticleType;
+  article: Article;
   icon?: ReactNode;
   children?: ReactNode;
   id: string;

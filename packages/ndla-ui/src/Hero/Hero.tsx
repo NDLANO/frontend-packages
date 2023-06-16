@@ -27,17 +27,16 @@ export type HeroContentType =
   | 'topic'
   | 'beta'
   | 'ndla-film'
-  | 'ndla-film has-image';
+  | 'ndla-film has-image'
+  | 'frontpage-article';
 
 interface HeroProps {
   children?: ReactNode;
   contentType?: HeroContentType;
 }
 
-export const Hero = ({ children, contentType, ...rest }: HeroProps) => (
-  <div {...classes('', contentType)} {...rest}>
-    {children || null}
-  </div>
+export const Hero = ({ children, contentType }: HeroProps) => (
+  <div {...classes('', contentType)}>{children || null}</div>
 );
 
 interface Props {

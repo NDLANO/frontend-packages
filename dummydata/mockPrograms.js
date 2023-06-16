@@ -205,7 +205,7 @@ export const programme = {
 export const programmeV2 = [
   {
     id: 'Bygg og anleggsteknikk',
-    title: { title: 'Bygg og anleggsteknikk', language: 'nb'},
+    title: { title: 'Bygg og anleggsteknikk', language: 'nb' },
     desktopImage: {
       src: 'https://api.test.ndla.no/image-api/raw/N8X0h6Ns.svg?width=600&ts=1686832638131',
       alt: '',
@@ -218,7 +218,7 @@ export const programmeV2 = [
   },
   {
     id: 'Elektro og datateknologi',
-    title: { title: 'Elektro og datateknologi', language: 'nb'},
+    title: { title: 'Elektro og datateknologi', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -231,7 +231,7 @@ export const programmeV2 = [
   },
   {
     id: 'Frisør, blomster, interiør og eksponeringsdesign',
-    title: { title: 'Frisør, blomster, interiør og eksponeringsdesign', language: 'nb'},
+    title: { title: 'Frisør, blomster, interiør og eksponeringsdesign', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -244,7 +244,7 @@ export const programmeV2 = [
   },
   {
     id: 'Helse- og oppvekstfag',
-    title: { title: 'Helse- og oppvekstfag', language: 'nb'},
+    title: { title: 'Helse- og oppvekstfag', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -257,7 +257,7 @@ export const programmeV2 = [
   },
   {
     id: 'Håndverk, design og produktutvikling',
-    title: { title: 'Håndverk, design og produktutvikling', language: 'nb'},
+    title: { title: 'Håndverk, design og produktutvikling', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -270,7 +270,7 @@ export const programmeV2 = [
   },
   {
     id: 'Idrett',
-    title: { title: 'Idrett', language: 'nb'},
+    title: { title: 'Idrett', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -283,7 +283,7 @@ export const programmeV2 = [
   },
   {
     id: 'Informasjonsteknologi og medieproduksjon',
-    title: { title: 'Informasjonsteknologi og medieproduksjon', language: 'nb'},
+    title: { title: 'Informasjonsteknologi og medieproduksjon', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -296,7 +296,7 @@ export const programmeV2 = [
   },
   {
     id: 'Kunst, design og arkitektur',
-    title: { title: 'Kunst, design og arkitektur', language: 'nb'},
+    title: { title: 'Kunst, design og arkitektur', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -309,7 +309,7 @@ export const programmeV2 = [
   },
   {
     id: 'Medie og kommunikasjon',
-    title: { title: 'Medie og kommunikasjon', language: 'nb'},
+    title: { title: 'Medie og kommunikasjon', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -322,7 +322,7 @@ export const programmeV2 = [
   },
   {
     id: 'Musikk, dans og drama',
-    title: { title: 'Musikk, dans og drama', language: 'nb'},
+    title: { title: 'Musikk, dans og drama', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -335,7 +335,7 @@ export const programmeV2 = [
   },
   {
     id: 'Naturbruk',
-    title: { title: 'Naturbruk', language: 'nb'},
+    title: { title: 'Naturbruk', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -348,7 +348,7 @@ export const programmeV2 = [
   },
   {
     id: 'Påbygg',
-    title: { title: 'Påbygg', language: 'nb'},
+    title: { title: 'Påbygg', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -361,7 +361,7 @@ export const programmeV2 = [
   },
   {
     id: 'Resturant og matfag',
-    title: { title: 'Resturant og matfag', language: 'nb'},
+    title: { title: 'Resturant og matfag', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -374,7 +374,7 @@ export const programmeV2 = [
   },
   {
     id: 'Salg, service og reiseliv',
-    title: { title: 'Salg, service og reiseliv', language: 'nb'},
+    title: { title: 'Salg, service og reiseliv', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -387,7 +387,7 @@ export const programmeV2 = [
   },
   {
     id: 'Studiespesialiserende',
-    title: { title: 'Studiespesialiserende', language: 'nb'},
+    title: { title: 'Studiespesialiserende', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -400,7 +400,7 @@ export const programmeV2 = [
   },
   {
     id: 'Teknologi og industrifag',
-    title: { title: 'Teknologi og industrifag', language: 'nb'},
+    title: { title: 'Teknologi og industrifag', language: 'nb' },
     desktopImage: {
       src: '',
       alt: '',
@@ -411,7 +411,7 @@ export const programmeV2 = [
     },
     url: '#',
   },
-]
+];
 
 const contentTypeResultsMenu = [contentTypeResults[0], contentTypeResults[1], contentTypeResults[2]];
 

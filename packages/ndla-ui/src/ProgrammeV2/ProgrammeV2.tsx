@@ -12,20 +12,20 @@ import SafeLink from '@ndla/safelink';
 import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 
 const HeaderContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const ProgrammeV2 = ({}) => {
-    return (
-        <div>
-            <HeaderContainer>
-                <span>Se våre utdanningsprogram</span>
-                <span>Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.</span>
-            </HeaderContainer>
-        </div>
-    );
+const ProgrammeV2 = () => {
+  return (
+    <div>
+      <HeaderContainer>
+        <span>Se våre utdanningsprogram</span>
+        <span>Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.</span>
+      </HeaderContainer>
+    </div>
+  );
 };
 
 export default ProgrammeV2;

@@ -127,10 +127,8 @@ const Gloss = ({ title, glossData, audio }: Props) => {
         <Wrapper>
           <GlossContainer>
             <GlossSpan>{glossData.gloss}</GlossSpan>
-            {glossData.transcriptions &&
-              Object.keys(glossData.transcriptions).map((keyName, i) => (
-                <span key={keyName + i}>{(glossData.transcriptions as any)[keyName]}</span>
-              ))}
+            {glossData.transcriptions.trad && <span>{glossData.transcriptions.trad}</span>}
+            {glossData.transcriptions.pinyin && <span>{glossData.transcriptions.pinyin}</span>}
             {glossData.wordClass && <TypeSpan>{t(wordClassKey)}</TypeSpan>}
           </GlossContainer>
           {audio.src && (

@@ -80,7 +80,7 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
       wordClass: WordClassChinese.ProperNoun,
       originalLanguage: 'zh',
       transcriptions: {
-        trad: '(馬紅)',
+        traditional: '(馬紅)',
         pinyin: 'Mǎ Hóng',
       },
       examples: [

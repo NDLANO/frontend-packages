@@ -108,7 +108,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
         <Wrapper>
           <GlossContainer>
             <GlossSpan>{glossData.gloss}</GlossSpan>
-            {glossData.transcriptions.trad && <span>{glossData.transcriptions.trad}</span>}
+            {glossData.transcriptions.traditional && <span>{glossData.transcriptions.traditional}</span>}
             {glossData.transcriptions.pinyin && <span>{glossData.transcriptions.pinyin}</span>}
             {glossData.wordClass && <TypeSpan>{t(wordClassKey)}</TypeSpan>}
           </GlossContainer>
@@ -133,8 +133,8 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                       {translation.transcriptions.pinyin && (
                         <TranslatedText>{translation.transcriptions?.pinyin}</TranslatedText>
                       )}
-                      {translation.transcriptions.trad && (
-                        <TranslatedText>{translation.transcriptions?.trad}</TranslatedText>
+                      {translation.transcriptions.traditional && (
+                        <TranslatedText>{translation.transcriptions?.traditional}</TranslatedText>
                       )}
                     </>
                   ))}

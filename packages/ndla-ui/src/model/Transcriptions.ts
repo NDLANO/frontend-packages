@@ -6,6 +6,6 @@
  *
  */
 export interface Transcription {
-  trad?: string;
+  traditional?: string;
   pinyin?: string;
 }

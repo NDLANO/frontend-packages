@@ -70,9 +70,9 @@ const StyledTitle = styled.span`
   border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
 `;
 
-const ProgrammeCard = ({ title, desktopImage, mobileImage, url }: Programme) => {
+const ProgrammeCard = ({id, title, desktopImage, mobileImage, url }: Programme) => {
   return (
-    <StyledCardContainer to={url}>
+    <StyledCardContainer key={id} to={url}>
       <StyledImg data-is-mobile="false" src={desktopImage.src} alt={desktopImage.alt} />
       <StyledImg data-is-mobile="true" src={mobileImage.src} alt={mobileImage.alt} />
       <StyledTitle>{title.title}</StyledTitle>

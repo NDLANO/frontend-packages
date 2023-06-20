@@ -9,6 +9,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import ProgrammeV2 from './ProgrammeV2';
+import { programmeV2 } from '../../../../dummydata/mockPrograms';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
@@ -18,7 +19,7 @@ export default {
   parameters: {
     ...defaultParameters,
   },
-  args: {},
+  args: {programmes: programmeV2},
 } as Meta<typeof ProgrammeV2>;
 
 export const ProgrammeV2Story: StoryFn<typeof ProgrammeV2> = ({ ...args }) => {

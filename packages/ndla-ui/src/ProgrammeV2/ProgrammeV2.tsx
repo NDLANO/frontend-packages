@@ -8,23 +8,22 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import SafeLink from '@ndla/safelink';
 import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
+import  ProgrammeCard, { Programme } from '../ProgrammeCard/ProgrammeCard';
 
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ProgrammeV2 = () => {
+const ProgrammeV2 = ({programmes}: { programmes: Programme[] }) => {
   return (
-    <div>
-      <HeaderContainer>
-        <span>Se våre utdanningsprogram</span>
-        <span>Vi ønsker å tilby dei beste læringsressursene innen tradisjonelle og nye medier.</span>
-      </HeaderContainer>
-    </div>
+      <div>
+        { programmes.map((programme) => (
+          <ProgrammeCard 
+          id={programme.id}
+          title={programme.title}
+          desktopImage={programme.desktopImage}
+          mobileImage={programme.mobileImage}
+          url={programme.url}
+          />
+        ))}
+      </div>
   );
 };
 

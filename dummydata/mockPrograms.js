@@ -220,7 +220,7 @@ export const programmeV2 = [
     id: 'Elektro og datateknologi',
     title: { title: 'Elektro og datateknologi', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1687161897845',
       alt: '',
     },
     mobileImage: {
@@ -233,7 +233,7 @@ export const programmeV2 = [
     id: 'Frisør, blomster, interiør og eksponeringsdesign',
     title: { title: 'Frisør, blomster, interiør og eksponeringsdesign', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/HOpbfdEN.svg?width=600&ts=1687161692506',
       alt: '',
     },
     mobileImage: {
@@ -246,7 +246,7 @@ export const programmeV2 = [
     id: 'Helse- og oppvekstfag',
     title: { title: 'Helse- og oppvekstfag', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/twPSlbya.svg?width=600&ts=1687161979051',
       alt: '',
     },
     mobileImage: {
@@ -259,7 +259,7 @@ export const programmeV2 = [
     id: 'Håndverk, design og produktutvikling',
     title: { title: 'Håndverk, design og produktutvikling', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/jeBYkPch.svg?width=600&ts=1687161756903',
       alt: '',
     },
     mobileImage: {
@@ -272,7 +272,7 @@ export const programmeV2 = [
     id: 'Idrett',
     title: { title: 'Idrett', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/L688LsSK.svg?width=600&ts=1687161944101',
       alt: '',
     },
     mobileImage: {
@@ -285,7 +285,7 @@ export const programmeV2 = [
     id: 'Informasjonsteknologi og medieproduksjon',
     title: { title: 'Informasjonsteknologi og medieproduksjon', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/30gBrWT8.svg?width=600&ts=1687161807044',
       alt: '',
     },
     mobileImage: {
@@ -298,7 +298,7 @@ export const programmeV2 = [
     id: 'Kunst, design og arkitektur',
     title: { title: 'Kunst, design og arkitektur', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/kam1TYh2.svg?width=600&ts=1687161784488',
       alt: '',
     },
     mobileImage: {
@@ -311,7 +311,7 @@ export const programmeV2 = [
     id: 'Medie og kommunikasjon',
     title: { title: 'Medie og kommunikasjon', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/30gBrWT8.svg?width=600&ts=1687162057423',
       alt: '',
     },
     mobileImage: {
@@ -324,7 +324,7 @@ export const programmeV2 = [
     id: 'Musikk, dans og drama',
     title: { title: 'Musikk, dans og drama', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/N3cG9YCv.svg?width=600&ts=1687161847807',
       alt: '',
     },
     mobileImage: {
@@ -337,7 +337,7 @@ export const programmeV2 = [
     id: 'Naturbruk',
     title: { title: 'Naturbruk', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/ycv7E3Gz.svg?width=600&ts=1687161863325',
       alt: '',
     },
     mobileImage: {
@@ -350,7 +350,7 @@ export const programmeV2 = [
     id: 'Påbygg',
     title: { title: 'Påbygg', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/h3H0Q3Au.svg?width=600&ts=1687161637695',
       alt: '',
     },
     mobileImage: {
@@ -363,7 +363,7 @@ export const programmeV2 = [
     id: 'Resturant og matfag',
     title: { title: 'Resturant og matfag', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/sDXXoqps.svg?width=600&ts=1687161605145',
       alt: '',
     },
     mobileImage: {
@@ -376,7 +376,7 @@ export const programmeV2 = [
     id: 'Salg, service og reiseliv',
     title: { title: 'Salg, service og reiseliv', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/f8opWO5y.svg?width=600&ts=1687161736148',
       alt: '',
     },
     mobileImage: {
@@ -389,7 +389,7 @@ export const programmeV2 = [
     id: 'Studiespesialiserende',
     title: { title: 'Studiespesialiserende', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/c3oZ4Czy.svg?width=600&ts=1687161709890',
       alt: '',
     },
     mobileImage: {
@@ -402,7 +402,7 @@ export const programmeV2 = [
     id: 'Teknologi og industrifag',
     title: { title: 'Teknologi og industrifag', language: 'nb' },
     desktopImage: {
-      src: '',
+      src: 'https://api.test.ndla.no/image-api/raw/bfRtsr7h.svg?width=600&ts=1687161658994',
       alt: '',
     },
     mobileImage: {

@@ -10,6 +10,7 @@ import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
+import { Heading } from '../Typography';
 
 type Props = {
   article: Article;
@@ -35,7 +36,7 @@ const StyledLayoutItem = styled(LayoutItem)`
     }
   }
 `;
-const StyledHeader = styled.h1`
+const StyledHeading = styled(Heading)`
   &[data-wide='true'] {
     position: absolute;
     top: -100000000%;
@@ -52,9 +53,9 @@ export const FrontpageArticle = ({ article, icon, id, isWide }: Props) => {
         <StyledLayoutItem>
           <div>
             {icon}
-            <StyledHeader data-wide={isWide} tabIndex={-1}>
+            <StyledHeading headingStyle="h1" element="h1" data-wide={isWide} tabIndex={-1}>
               {title}
-            </StyledHeader>
+            </StyledHeading>
             <div>{introduction}</div>
           </div>
         </StyledLayoutItem>

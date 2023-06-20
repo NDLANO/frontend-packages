@@ -393,7 +393,7 @@ export const programmeV2 = [
       alt: '',
     },
     mobileImage: {
-      src: 'https://api.test.ndla.no/image-api/raw/XRJl0bfy.svg?width=600&ts=1686901107920',
+      src: 'https://api.test.ndla.no/image-api/raw/M37scG26.png?width=600&ts=1687253614052s',
       alt: '',
     },
     url: '#',

@@ -1306,6 +1306,7 @@ const messages = {
   },
   programme: {
     grades: 'Trinn',
+    accordianHeader: 'Alle utdanningsprogram',
   },
   embed: {
     conceptListError: 'Klarte ikke å vise forklaringsliste',
@@ -1323,6 +1324,7 @@ const messages = {
       external: 'Ekstern ressurs',
     },
   },
+
 };
 
 export default messages;

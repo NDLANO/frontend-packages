@@ -64,8 +64,11 @@ const StyledImg = styled.img`
 `;
 
 const StyledTitle = styled.span`
+display: flex;
+align-items: center;
   color: ${colors.text.primary};
-  padding: ${spacing.normal} 0 ${spacing.normal} ${spacing.nsmall};
+  height: 70px;
+  padding-left: ${spacing.nsmall};
   border: 1px solid ${colors.brand.lighter};
   border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
 `;

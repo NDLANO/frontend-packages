@@ -1307,6 +1307,7 @@ const messages = {
   },
   programme: {
     grades: 'Ceahkki',
+    accordianHeader: 'Alle utdanningsprogram',
   },
   embed: {
     conceptListError: 'Ii sáhttán čájehit čilgehuslisttu',

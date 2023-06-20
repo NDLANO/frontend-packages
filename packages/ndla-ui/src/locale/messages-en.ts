@@ -1310,6 +1310,7 @@ const messages = {
   },
   programme: {
     grades: 'Grades',
+    accordianHeader: 'All educational programs',
   },
   embed: {
     conceptListError: 'Failed to show concept list',

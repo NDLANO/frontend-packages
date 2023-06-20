@@ -64,8 +64,8 @@ const StyledImg = styled.img`
 `;
 
 const StyledTitle = styled.span`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
   color: ${colors.text.primary};
   height: 70px;
   padding-left: ${spacing.nsmall};
@@ -73,7 +73,7 @@ align-items: center;
   border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
 `;
 
-const ProgrammeCard = ({id, title, desktopImage, mobileImage, url }: Programme) => {
+const ProgrammeCard = ({ id, title, desktopImage, mobileImage, url }: Programme) => {
   return (
     <StyledCardContainer key={id} to={url}>
       <StyledImg data-is-mobile="false" src={desktopImage.src} alt={desktopImage.alt} />

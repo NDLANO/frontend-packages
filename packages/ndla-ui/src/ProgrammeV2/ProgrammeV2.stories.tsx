@@ -19,7 +19,7 @@ export default {
   parameters: {
     ...defaultParameters,
   },
-  args: {programmes: programmeV2},
+  args: { programmes: programmeV2 },
 } as Meta<typeof ProgrammeV2>;
 
 export const ProgrammeV2Story: StoryFn<typeof ProgrammeV2> = ({ ...args }) => {

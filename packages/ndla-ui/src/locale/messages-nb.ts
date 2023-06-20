@@ -1324,7 +1324,6 @@ const messages = {
       external: 'Ekstern ressurs',
     },
   },
-
 };
 
 export default messages;

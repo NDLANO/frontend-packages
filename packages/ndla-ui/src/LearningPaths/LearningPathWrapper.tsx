@@ -8,14 +8,9 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { spacing, spacingUnit, breakpoints, mq } from '@ndla/core';
 
-type PropStyledWrapper = {
-  invertedStyle?: boolean;
-};
-
-const StyledWrapper = styled.section<PropStyledWrapper>`
+const StyledWrapper = styled.section`
   max-width: ${1402 + spacingUnit}px;
   padding: 0 ${spacing.normal};
   margin: 0 auto;
@@ -23,21 +18,12 @@ const StyledWrapper = styled.section<PropStyledWrapper>`
     padding-right: 0;
     padding-left: 0;
   }
-  .c-hero__content {
-    display: none;
-  }
-  ${mq.range({ from: breakpoints.tablet })} {
-    .c-hero__content {
-      display: flex;
+
+  &[data-inverted='true'] {
+    ${mq.range({ until: breakpoints.tablet })} {
+      background: #fff;
     }
   }
-  ${(props) =>
-    props.invertedStyle &&
-    css`
-      ${mq.range({ until: breakpoints.tablet })} {
-        background: #fff;
-      }
-    `}
 `;
 
 interface Props {
@@ -46,5 +32,5 @@ interface Props {
 }
 
 export const LearningPathWrapper = ({ children, invertedStyle }: Props) => (
-  <StyledWrapper invertedStyle={invertedStyle}>{children}</StyledWrapper>
+  <StyledWrapper data-inverted={!!invertedStyle}>{children}</StyledWrapper>
 );

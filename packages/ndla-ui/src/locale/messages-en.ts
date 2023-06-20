@@ -1199,8 +1199,7 @@ const messages = {
         info1:
           'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
         info2: 'You can use the menu to navigate through the articles.',
-        info3:
-          'If you want to come back to the folder later, you can use the link, or you can bookmark the page.',
+        info3: 'If you want to come back to the folder later, you can use the link, or you can bookmark the page.',
       },
       willOpenInNewTab: 'Opens in a new tab.',
     },

@@ -1201,8 +1201,7 @@ const messages = {
         info1:
           'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
         info2: 'Du kan bla i artiklane ved å bruke menyen.',
-        info3:
-          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk, eller du kan bokmerke sida.',
+        info3: 'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk, eller du kan bokmerke sida.',
       },
       willOpenInNewTab: 'Åpnes i ny fane.',
     },

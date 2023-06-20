@@ -20,6 +20,7 @@ type Props = {
 };
 
 const StyledArticle = styled.article`
+  max-width: 773px;
   &[data-wide='true'] {
     max-width: 1100px;
   }

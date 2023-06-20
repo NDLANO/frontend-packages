@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, misc, mq, spacing, spacingUnit } from '@ndla/core';
 import { HTMLAttributes, ReactNode } from 'react';
 
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
@@ -28,7 +28,7 @@ const GridContainer = styled.div`
   &[data-columns='4'] {
     grid-gap: unset;
     padding: ${spacing.normal};
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   ${mq.range({ until: breakpoints.desktop })} {
@@ -42,16 +42,24 @@ const GridContainer = styled.div`
   }
 
   ${mq.range({ from: breakpoints.tabletWide })} {
-    grid-template-columns: repeat(2, 1fr) !important;
-    grid-gap: ${spacing.large} !important;
-    padding: ${spacing.medium} !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: ${spacing.large};
+    padding: ${spacing.medium};
 
     &[data-columns='3'] {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-gap: ${spacing.large};
+      padding: ${spacing.medium};
     }
 
     &[data-columns='4'] {
-      grid-template-columns: repeat(4, 1fr);
+      grid-gap: ${spacing.large};
+      padding: ${spacing.medium};
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    &[data-columns='2x2'] {
+      grid-gap: ${spacing.large};
     }
   }
 

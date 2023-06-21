@@ -66,8 +66,8 @@ const ProgrammeV2 = ({ programmes }: { programmes: Programme[] }) => {
       <DesktopContainer>{renderProgrammeCards()}</DesktopContainer>
       <MobilContainer>
         <AccordionRoot type="single" collapsible>
+          <img src="https://api.test.ndla.no/image-api/raw/IW5TJg5I.svg?width=600&ts=1687342895410" alt="" />
           <AccordionItem value={'1'}>
-            <img src="https://api.test.ndla.no/image-api/raw/v2xBSX7.jpeg?width=600&ts=1687260934465" alt="" />
             <StyledAccordionHeader>{t('programme.accordianHeader')}</StyledAccordionHeader>
             <AccordionContent>{renderProgrammeCards()}</AccordionContent>
           </AccordionItem>

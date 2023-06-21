@@ -477,7 +477,7 @@ const messages = {
       onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
-    references: 'Referanser',
+    footnotes: 'Fotnoter',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -608,7 +608,7 @@ const messages = {
     },
     concept: {
       heading: 'Slik gjenbruker du forklaringer',
-      description: 'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
+      description: 'Husk at innebygd innhold i en forklaring kan ha en annen lisens enn selve forklaringsteksten',
       rules: 'Regler for bruk av forklaring:',
       title: 'Tittel',
       embedlink: {
@@ -1192,12 +1192,11 @@ const messages = {
       drawerButton: 'Vis mapper og ressurser',
       drawerTitle: 'Mapper og ressurser',
       description: {
-        all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
+        all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk, eller du kan bokmerke sida.',
         info1:
           'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.',
         info2: 'Du kan bla i artiklene ved å bruke menyen.',
-        info3:
-          'Hvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk av læreren din, eller du kan bokmerke sida.',
+        info3: 'Hvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk, eller du kan bokmerke sida.',
       },
       willOpenInNewTab: 'Åpnes i ny fane.',
     },
@@ -1311,6 +1310,7 @@ const messages = {
     conceptListError: 'Klarte ikke å vise forklaringsliste',
     linkError: 'Klarte ikke å vise lenke.',
     unsupported: `Embed {{type}} er ikke støttet.`,
+    goTo: 'Gå til {{type}}',
     embedError: `Beklager, en feil oppstod ved lasting av {{type}}. Prøv å laste inn siden på nytt.`,
     type: {
       image: 'Bilde',

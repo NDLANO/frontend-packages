@@ -15,6 +15,5 @@ import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
 export { MovieList, NdlaFilmThemeEditorModal, FileListEditor };
 export { VersionHistory, VersionLogTag };
 export { default as Structure } from './structure/Structure';
-export { default as Footer } from './footer/Footer';
 export { default as FooterLinkButton } from './footer/FooterLinkButton';
 export { default as SlateBlockMenu } from './SlateBlockMenu';

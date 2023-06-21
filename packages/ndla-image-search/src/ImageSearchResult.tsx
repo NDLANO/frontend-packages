@@ -7,10 +7,16 @@
  */
 
 import React from 'react';
+import styled from '@emotion/styled';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { ButtonV2 } from '@ndla/button';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';
+
+const StyledButton = styled(ButtonV2)`
+  display: flex;
+  flex-direction: column;
+`;
 
 interface Props {
   image: IImageMetaInformationV3;
@@ -37,7 +43,7 @@ export default function ImageSearchResult({
   return (
     <div key={image.id} className={`list-item ${active}`}>
       <div className="list-item-inner">
-        <ButtonV2 variant="stripped" data-cy="select-image-from-list" onClick={() => onImageClick(image)}>
+        <StyledButton variant="stripped" data-cy="select-image-from-list" onClick={() => onImageClick(image)}>
           <img
             role="presentation"
             alt="presentation"
@@ -45,7 +51,7 @@ export default function ImageSearchResult({
             src={image.image.imageUrl}
           />
           <span className="list-item-title">{image.title.title}</span>
-        </ButtonV2>
+        </StyledButton>
       </div>
       {selectedImage && selectedImage.id === image.id ? (
         <PreviewImage

@@ -478,7 +478,7 @@ const messages = {
       onlyTeacher: 'Dát resursa lea dušše olamuttus oahpaheddjiide geat leat Feide bokte sisaloggejuvvon.',
     },
     possiblyOutdated: 'Artihkal lea boarásmuvvan.',
-    references: 'Referanser',
+    footnotes: 'Fotnotar',
   },
   competenceGoals: {
     competenceGoal: 'Gealbomihttomearri',
@@ -609,7 +609,7 @@ const messages = {
     },
     concept: {
       heading: 'Ná geavahat čilgehusaid ođđasit',
-      description: 'Njuolggadusaid sisdoalu geavaheapmái gávnnat čilgehus-elemeanttas',
+      description: 'Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten',
       rules: 'Njuolggadusat čilgehusa geavaheapmái:',
       title: 'Tihttel',
       embedlink: {
@@ -1312,6 +1312,7 @@ const messages = {
     conceptListError: 'Ii sáhttán čájehit čilgehuslisttu',
     linkError: 'Ii sáhttán čájehit liŋkka.',
     unsupported: `Embed {{type}} ii dorjojuvvo.`,
+    goTo: 'Gå til {{type}}',
     embedError: `Orsak, ein feil oppstod ved lasting av {{type}}. Prøv å laste inn sida på nytt.`,
     type: {
       image: 'Bilde',

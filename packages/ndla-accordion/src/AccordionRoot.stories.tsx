@@ -15,7 +15,7 @@ import AccordionHeader from './AccordionHeader';
 import AccordionContent from './AccordionContent';
 
 const meta: Meta<typeof AccordionRoot> = {
-  title: 'Enkle komponenter/Accordion',
+  title: 'Components/Accordion',
   component: AccordionRoot,
   parameters: defaultParameters,
   tags: ['autodocs'],

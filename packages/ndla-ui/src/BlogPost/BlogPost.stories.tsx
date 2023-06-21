@@ -24,7 +24,7 @@ const args: Props = {
 };
 
 export default {
-  title: 'Enkle komponenter/Blog Post',
+  title: 'Components/Blog Post',
   component: BlogPost,
   tags: ['autodocs'],
   parameters: {

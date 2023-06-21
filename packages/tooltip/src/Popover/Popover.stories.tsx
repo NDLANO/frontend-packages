@@ -13,7 +13,7 @@ import { defaultParameters } from '../../../../stories/defaults';
 import Popover from './Popover';
 
 export default {
-  title: 'Enkle komponenter/Popover',
+  title: 'Components/Popover',
   component: Popover,
   parameters: {
     ...defaultParameters,

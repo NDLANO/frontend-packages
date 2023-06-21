@@ -8,7 +8,7 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, mq, spacing, spacingUnit } from '@ndla/core';
 import {
   ASSESSMENT_RESOURCES,
   EXTERNAL_LEARNING_RESOURCES,
@@ -25,7 +25,7 @@ const StyledDiv = styled.div`
 
   ${mq.range({ from: breakpoints.tablet })} {
     min-height: 246px;
-    padding-bottom: 156px;
+    padding-bottom: ${spacingUnit * 6.5}px;
   }
 
   &[data-contenttype='subject-material'] {

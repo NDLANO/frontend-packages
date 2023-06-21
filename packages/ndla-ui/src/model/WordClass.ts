@@ -21,7 +21,7 @@ export const WordClass = {
   ModalVerb: 'modal verb',
   MeasureWord: 'measure word',
   Noun: 'noun',
-  ['Noun-zh']: 'noun',
+  'Noun-zh': 'noun',
   Nounzh: 'noun',
   NounPhrase: 'noun phrase',
   Onomatopoeia: 'onomatopoeia',

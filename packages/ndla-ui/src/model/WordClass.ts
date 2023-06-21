@@ -22,7 +22,6 @@ export const WordClass = {
   MeasureWord: 'measure word',
   Noun: 'noun',
   'Noun-zh': 'noun',
-  Nounzh: 'noun',
   NounPhrase: 'noun phrase',
   Onomatopoeia: 'onomatopoeia',
   Particle: 'particle',

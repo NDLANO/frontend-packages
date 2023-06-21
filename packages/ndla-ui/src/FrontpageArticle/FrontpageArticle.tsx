@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
 import { Heading } from '../Typography';
+import { utils } from '@ndla/core';
 
 type Props = {
   article: Article;
@@ -36,11 +37,10 @@ const StyledLayoutItem = styled(LayoutItem)`
     }
   }
 `;
+
 const StyledHeading = styled(Heading)`
   &[data-wide='true'] {
-    position: absolute;
-    top: -100000000%;
-    right: -10000000000%;
+    ${utils.visuallyHidden};
   }
 `;
 

@@ -41,25 +41,20 @@ const GridContainer = styled.div`
     }
   }
 
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  ${mq.range({ from: breakpoints.tablet })} {
     grid-gap: ${spacing.large};
     padding: ${spacing.medium};
 
-    &[data-columns='3'] {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-gap: ${spacing.large};
-      padding: ${spacing.medium};
-    }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     &[data-columns='4'] {
-      grid-gap: ${spacing.large};
-      padding: ${spacing.medium};
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
+  }
 
-    &[data-columns='2x2'] {
-      grid-gap: ${spacing.large};
+  ${mq.range({ from: breakpoints.desktop })} {
+    &[data-columns='3'] {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 

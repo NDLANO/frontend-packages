@@ -68,10 +68,6 @@ const TypeSpan = styled.span`
   font-style: italic;
 `;
 
-const AudioExample = styled.div`
-  max-height: 20px;
-`;
-
 const StyledAccordionHeader = styled(AccordionHeader)`
   font-family: ${fonts.sans};
   ${fonts.sizes('16px', '24px')};
@@ -97,10 +93,7 @@ const TranslatedText = styled.div`
 
 const Gloss = ({ title, glossData, audio }: Props) => {
   const { t } = useTranslation();
-  const wordClassKey =
-    glossData.originalLanguage === 'zh'
-      ? `wordClassChinese.${glossData.wordClass}`
-      : `wordClass.${glossData.wordClass}`;
+  const wordClassKey = `wordClass.${glossData.wordClass}`;
 
   return (
     <>
@@ -112,11 +105,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             {glossData.transcriptions.pinyin && <span>{glossData.transcriptions.pinyin}</span>}
             {glossData.wordClass && <TypeSpan>{t(wordClassKey)}</TypeSpan>}
           </GlossContainer>
-          {audio.src && (
-            <AudioExample>
-              <SpeechControl src={audio.src} title={audio.title}></SpeechControl>
-            </AudioExample>
-          )}
+          {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
         </Wrapper>
         <span>{title.title}</span>
       </Container>

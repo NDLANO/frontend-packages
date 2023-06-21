@@ -10,7 +10,7 @@ import React from 'react';
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
 import Gloss from './Gloss';
 import { defaultParameters } from '../../../../stories/defaults';
-import { WordClass, WordClassChinese } from '../model/WordClass';
+import { WordClass } from '../model/WordClass';
 
 const meta: Meta<typeof Gloss> = {
   title: 'Enkle komponenter/Gloss',
@@ -77,7 +77,7 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
     },
     glossData: {
       gloss: '马红',
-      wordClass: WordClassChinese.ProperNoun,
+      wordClass: WordClass.ProperNoun,
       originalLanguage: 'zh',
       transcriptions: {
         traditional: '(馬紅)',

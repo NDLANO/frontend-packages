@@ -6,4 +6,4 @@
  *
  */
 
-export { default as WordList } from './Gloss';
+export { default as Gloss } from './Gloss';

@@ -50,7 +50,7 @@ const args = {
 };
 
 export default {
-  title: 'Patterns/Patterns/Læringssti-meny',
+  title: 'Patterns/Læringssti-meny',
   component: LearningPathMenu,
   tags: ['autodocs'],
   parameters: {

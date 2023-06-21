@@ -57,7 +57,7 @@ import ResourceBoxExample from './pages/ResourceBoxExample';
 import TagSelectorExample from './molecules/TagSelectorExample';
 import SnackbarExample from './molecules/SnackbarExample';
 
-storiesOf('Patterns/Patterns', module)
+storiesOf('Patterns', module)
   .add('Artikkel info linje', () => (
     <div>
       <StoryIntro title="Artikkel informasjonslinje">

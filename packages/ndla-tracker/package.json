@@ -37,8 +37,7 @@
   },
   "dependencies": {
     "hoist-non-react-statics": "^3.3.2",
-    "tiny-warning": "^1.0.3",
-    "warning": "^4.0.3"
+    "tiny-warning": "^1.0.3"
   },
   "devDependencies": {
     "@types/hoist-non-react-statics": "^3.3.1"

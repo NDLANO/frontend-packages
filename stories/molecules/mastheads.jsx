@@ -14,25 +14,15 @@ import {
   MastheadItem,
   LanguageSelector,
   Logo,
-  DisplayOnPageYOffset,
   SearchField,
   SearchResultSleeve,
   MastheadSearchModal,
   SearchFieldForm,
-  HeaderBreadcrumb,
 } from '@ndla/ui';
 import { Menu } from '@ndla/icons/common';
 import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
-import styled from '@emotion/styled';
-import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults } from '../../dummydata';
-
-const BreadcrumbWrapper = styled.div`
-  ${mq.range({ until: breakpoints.tablet })} {
-    display: none;
-  }
-`;
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
   <Masthead fixed skipToMainContentId={skipToMainContentId}>
@@ -120,8 +110,7 @@ class MastheadWithTopicMenu extends Component {
   };
 
   render() {
-    const { skipToMainContentId, ndlaFilm, beta, betaInfoContent, hideMenuButton, breadcrumbItems, t, i18n, messages } =
-      this.props;
+    const { skipToMainContentId, ndlaFilm, beta, betaInfoContent, hideMenuButton, t, i18n, messages } = this.props;
 
     return (
       <Masthead
@@ -137,22 +126,13 @@ class MastheadWithTopicMenu extends Component {
               <Menu /> {t('masthead.menu.title')}
             </ButtonV2>
           )}
-          {breadcrumbItems && (
-            <DisplayOnPageYOffset yOffsetMin={150}>
-              <BreadcrumbWrapper>
-                <HeaderBreadcrumb items={breadcrumbItems} />
-              </BreadcrumbWrapper>
-            </DisplayOnPageYOffset>
-          )}
         </MastheadItem>
         <MastheadItem right>
-          <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
-            <LanguageSelector
-              inverted={ndlaFilm}
-              locales={i18n.options.supportedLngs}
-              onSelect={(lang) => i18n.changeLanguage(lang)}
-            />
-          </DisplayOnPageYOffset>
+          <LanguageSelector
+            inverted={ndlaFilm}
+            locales={i18n.options.supportedLngs}
+            onSelect={(lang) => i18n.changeLanguage(lang)}
+          />
           {this.renderSearchButtonView(true, ndlaFilm)}
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
@@ -176,7 +156,6 @@ MastheadWithTopicMenu.propTypes = {
   t: PropTypes.func.isRequired,
   ndlaFilm: PropTypes.bool,
   skipToMainContentId: PropTypes.string,
-  breadcrumbItems: PropTypes.array,
   isAuthed: PropTypes.bool,
   messages: PropTypes.arrayOf(PropTypes.string),
 };

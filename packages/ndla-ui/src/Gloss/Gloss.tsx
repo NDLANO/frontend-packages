@@ -93,7 +93,6 @@ const TranslatedText = styled.div`
 
 const Gloss = ({ title, glossData, audio }: Props) => {
   const { t } = useTranslation();
-  const wordClassKey = `wordClass.${glossData.wordClass}`;
 
   return (
     <>
@@ -103,7 +102,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             <GlossSpan>{glossData.gloss}</GlossSpan>
             {glossData.transcriptions.traditional && <span>{glossData.transcriptions.traditional}</span>}
             {glossData.transcriptions.pinyin && <span>{glossData.transcriptions.pinyin}</span>}
-            {glossData.wordClass && <TypeSpan>{t(wordClassKey)}</TypeSpan>}
+            {glossData.wordClass && <TypeSpan>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>}
           </GlossContainer>
           {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
         </Wrapper>

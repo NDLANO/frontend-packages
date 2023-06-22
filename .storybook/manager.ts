@@ -5,12 +5,15 @@ const theme = create({
   base: 'light',
   brandTitle: 'NDLA Designmanual',
   brandUrl: 'https://designmanual.ndla.sh',
+  brandImage: '/ndla-logo.svg',
+  colorSecondary: '#20588f',
 });
 
 addons.setConfig({
   theme: theme,
   showPanel: false,
   sidebar: {
-    showRoots: false,
+    showRoots: true,
+    collapsedRoots: ['base-styles', 'components', 'patterns', 'other'],
   },
 });

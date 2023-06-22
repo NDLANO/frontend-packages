@@ -32,7 +32,7 @@ import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 import ProductionToolVersionLog from './ProductionToolVersionLog';
 import CodeBlockEditorExample from './CodeBlockEditorExample';
 
-storiesOf('Produksjonssystem', module)
+storiesOf('Other/Produksjonssystem', module)
   .add('Trekkspill', () => (
     <div
       style={{

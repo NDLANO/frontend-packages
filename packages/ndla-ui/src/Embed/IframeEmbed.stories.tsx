@@ -22,7 +22,7 @@ const embedData: IframeEmbedData = {
 };
 
 const meta: Meta<typeof IframeEmbed> = {
-  title: 'Enkle komponenter/Embeds/IframeEmbed',
+  title: 'Components/Embeds/IframeEmbed',
   component: IframeEmbed,
   tags: ['autodocs'],
   decorators: [

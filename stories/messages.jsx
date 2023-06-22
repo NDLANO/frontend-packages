@@ -158,4 +158,4 @@ class Messages extends Component {
   }
 }
 
-storiesOf('Tekster og labels', module).add('Tekster og labels', () => <Messages />);
+storiesOf('Other/Tekster og labels', module).add('Tekster og labels', () => <Messages />);

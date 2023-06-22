@@ -1,20 +1,6 @@
 @mixin svg_icon($id, $color) {
-  $color-rgb: 'rgb(' + red($color) + '%2C' + green($color) + '%2C' +
-    blue($color) + ')';
-
-  @if $id == close {
-    background-image: url('data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2014.7%2012.6%22%20style%3D%22enable-background%3Anew%200%200%2014.7%2012.6%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cline%20class%3D%22st0%22%20x1%3D%224.4%22%20y1%3D%223%22%20x2%3D%2210.6%22%20y2%3D%229.2%22%20stroke%3D%22#{$color-rgb}%22/%3E%0A%3Cline%20class%3D%22st0%22%20x1%3D%2210.6%22%20y1%3D%223%22%20x2%3D%224.4%22%20y2%3D%229.3%22%20stroke%3D%22#{$color-rgb}%22/%3E%0A%3C/svg%3E');
-  }
-
-  @if $id == openInNew {
-    background-image: url('data:image/svg+xml,%3Csvg fill="#{$color-rgb}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" data-license="Apache License 2.0" data-source="Material Design"%3E%3Cpath d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" /%3E%3C/svg%3E');
-  }
-
+  $color-rgb: 'rgb(' + red($color) + '%2C' + green($color) + '%2C' + blue($color) + ')';
   @if $id == search {
     background-image: url('data:image/svg+xml,%3Csvg fill="#{$color-rgb}" height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg" data-license="Apache License 2.0" data-source="Material Design"%3E%3Cpath d="M31 28h-1.59l-.55-.55C30.82 25.18 32 22.23 32 19c0-7.18-5.82-13-13-13S6 11.82 6 19s5.82 13 13 13c3.23 0 6.18-1.18 8.45-3.13l.55.55V31l10 9.98L40.98 38 31 28zm-12 0c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z" /%3E%3C/svg%3E');
-  }
-
-  @if $id == done {
-    background-image: url('data:image/svg+xml,%3Csvg fill="#{$color-rgb}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" data-license="Apache License 2.0" data-source="Material Design"%3E%3Cpath d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /%3E%3C/svg%3E');
   }
 }

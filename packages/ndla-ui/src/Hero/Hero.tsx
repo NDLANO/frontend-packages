@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing, spacingUnit } from '@ndla/core';
 import {
@@ -20,7 +20,7 @@ import {
 
 const StyledDiv = styled.div`
   background-repeat: repeat;
-  background-size: 20px;
+  background-size: ${spacing.normal};
   background-color: ${colors.brand.greyLightest};
 
   ${mq.range({ from: breakpoints.tablet })} {
@@ -53,7 +53,7 @@ const StyledDiv = styled.div`
   }
 
   &[data-contenttype='beta'] {
-    background-color: ${colors.brand.light};
+    background-color: ${colors.brand.primary};
   }
 
   &[data-contenttype='ndla-film has-image'],
@@ -104,8 +104,7 @@ export type HeroContentType =
   | 'ndla-film'
   | 'ndla-film has-image';
 
-interface HeroProps {
-  children?: ReactNode;
+interface HeroProps extends HTMLAttributes<HTMLDivElement> {
   contentType?: HeroContentType;
 }
 

@@ -8,8 +8,8 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import LazyLoadImage from './LazyLoadImage';
+import { colors } from '@ndla/core';
 
 export interface ImageCrop {
   startX: number;
@@ -38,22 +38,30 @@ const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFo
   return widths.map((width) => `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`).join(', ');
 };
 
-interface StyledImageWrapperProps {
-  svg?: boolean;
-}
-
-const StyledImageWrapper = styled.div<StyledImageWrapperProps>`
+const StyledImageWrapper = styled.div`
   position: relative;
-  ${({ svg }) => {
-    return (
-      svg &&
-      css`
-      display: flex
-      justify-content: center;
-    `
-    );
-  }}
+
+  &[data-svg='true'] {
+    display: flex;
+    justify-content: center;
+  }
+  &[data-ingrid='true'] {
+    border: 1px solid ${colors.brand.tertiary};
+    border-bottom: 0;
+    border-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 `;
+
+const StyledImage = styled.img`
+  &[data-ingrid='true'] {
+    border-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`;
+
 interface Props {
   alt: string;
   src: string;
@@ -66,6 +74,7 @@ interface Props {
   expandButton?: ReactNode;
   crop?: ImageCrop;
   focalPoint?: ImageFocalPoint;
+  inGrid?: boolean;
 }
 
 const Image = ({
@@ -79,6 +88,7 @@ const Image = ({
   sizes = '(min-width: 1024px) 1024px, 100vw',
   expandButton,
   fallbackWidth = 1024,
+  inGrid,
   ...rest
 }: Props) => {
   const srcSet = rest.srcSet ?? getSrcSet(src, crop, focalPoint);
@@ -86,8 +96,8 @@ const Image = ({
 
   if (contentType && contentType === 'image/gif') {
     return (
-      <StyledImageWrapper>
-        <img alt={alt} src={`${src}`} {...rest} />
+      <StyledImageWrapper data-inGrid={inGrid}>
+        <StyledImage alt={alt} src={`${src}`} {...rest} data-inGrid={inGrid} />
       </StyledImageWrapper>
     );
   }
@@ -107,10 +117,10 @@ const Image = ({
   }
 
   return (
-    <StyledImageWrapper svg={contentType === 'image/svg+xml'}>
+    <StyledImageWrapper data-svg={contentType === 'image/svg+xml'} data-inGrid={inGrid}>
       <picture>
         <source type={contentType} srcSet={srcSet} sizes={sizes} />
-        <img alt={alt} src={`${src}?${queryString}`} {...rest} />
+        <StyledImage alt={alt} src={`${src}?${queryString}`} {...rest} data-inGrid={inGrid} />
       </picture>
       {expandButton}
     </StyledImageWrapper>

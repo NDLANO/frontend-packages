@@ -134,6 +134,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
           sizes={imageSizes ?? sizes}
           alt={altText}
           src={data.image.imageUrl}
+          inGrid={inGrid}
           expandButton={
             <ExpandButton
               size={embedData.size}

@@ -97,7 +97,7 @@ const BylineWrapper = styled.div`
   }
 `;
 
-const MobileStyling = css`
+const mobileStyling = css`
   align-items: flex-start;
   gap: ${spacing.xsmall};
   flex-direction: column;
@@ -109,11 +109,11 @@ const RightsWrapper = styled.div`
   gap: ${spacing.nsmall};
 
   &[data-grid='true'] {
-    ${MobileStyling}
+    ${mobileStyling}
   }
 
   ${mq.range({ until: breakpoints.tablet })} {
-    ${MobileStyling}
+    ${mobileStyling}
   }
 `;
 

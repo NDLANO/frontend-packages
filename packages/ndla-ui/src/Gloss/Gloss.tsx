@@ -101,12 +101,16 @@ const Gloss = ({ title, glossData, audio }: Props) => {
       <Container>
         <Wrapper>
           <GlossContainer>
-            <GlossSpan>{glossData.gloss}</GlossSpan>
+            <GlossSpan lang={glossData.originalLanguage}>{glossData.gloss}</GlossSpan>
             {glossData.transcriptions.traditional && (
-              <span key={t(`gloss.transcriptions.traditional`)}>{glossData.transcriptions.traditional}</span>
+              <span key={t(`gloss.transcriptions.traditional`)} lang={glossData.originalLanguage}>
+                {glossData.transcriptions.traditional}
+              </span>
             )}
             {glossData.transcriptions.pinyin && (
-              <span key={t(`gloss.transcriptions.pinyin`)}>{glossData.transcriptions.pinyin}</span>
+              <span key={t(`gloss.transcriptions.pinyin`)} lang={glossData.originalLanguage}>
+                {glossData.transcriptions.pinyin}
+              </span>
             )}
             {glossData.wordClass && <TypeSpan>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>}
           </GlossContainer>
@@ -125,12 +129,12 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                     <>
                       <TranslatedText>{translation.example}</TranslatedText>
                       {translation.transcriptions.pinyin && (
-                        <TranslatedText key={t(`gloss.transcriptions.pinyin`)}>
+                        <TranslatedText key={t(`gloss.transcriptions.pinyin`)} lang={glossData.originalLanguage}>
                           {translation.transcriptions?.pinyin}
                         </TranslatedText>
                       )}
                       {translation.transcriptions.traditional && (
-                        <TranslatedText key={t(`gloss.transcriptions.traditional`)}>
+                        <TranslatedText key={t(`gloss.transcriptions.traditional`)} lang={glossData.originalLanguage}>
                           {translation.transcriptions?.traditional}
                         </TranslatedText>
                       )}

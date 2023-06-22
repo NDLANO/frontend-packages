@@ -199,8 +199,6 @@ export {
   AllMoviesAlphabetically,
 } from './NDLAFilm';
 
-export { DisplayOnPageYOffset } from './Animation';
-
 export {
   MediaList,
   MediaListItem,

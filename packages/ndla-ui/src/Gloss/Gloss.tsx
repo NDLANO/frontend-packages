@@ -79,7 +79,9 @@ const StyledAccordionContent = styled(AccordionContent)`
   padding: 0;
 `;
 
-const TranslatedText = styled.div`
+const TranslatedText = styled.span`
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid ${colors.brand.lighter};
   padding: ${spacing.small} ${spacing.normal};
   font-family: ${fonts.sans};
@@ -100,9 +102,11 @@ const Gloss = ({ title, glossData, audio }: Props) => {
         <Wrapper>
           <GlossContainer>
             <GlossSpan>{glossData.gloss}</GlossSpan>
-            {glossData.transcriptions.traditional && <span>{glossData.transcriptions.traditional}</span>}
+            {glossData.transcriptions.traditional && (
+              <span key={t(`gloss.transcriptions.traditional`)}>{glossData.transcriptions.traditional}</span>
+            )}
             {glossData.transcriptions.pinyin && (
-              <span key={t(`gloss.Transcriptions.pinyin`)}>{glossData.transcriptions.pinyin}</span>
+              <span key={t(`gloss.transcriptions.pinyin`)}>{glossData.transcriptions.pinyin}</span>
             )}
             {glossData.wordClass && <TypeSpan>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>}
           </GlossContainer>
@@ -121,12 +125,14 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                     <>
                       <TranslatedText>{translation.example}</TranslatedText>
                       {translation.transcriptions.pinyin && (
-                        <TranslatedText key={t(`gloss.Transcriptions.pinyin`)}>
+                        <TranslatedText key={t(`gloss.transcriptions.pinyin`)}>
                           {translation.transcriptions?.pinyin}
                         </TranslatedText>
                       )}
                       {translation.transcriptions.traditional && (
-                        <TranslatedText>{translation.transcriptions?.traditional}</TranslatedText>
+                        <TranslatedText key={t(`gloss.transcriptions.traditional`)}>
+                          {translation.transcriptions?.traditional}
+                        </TranslatedText>
                       )}
                     </>
                   ))}

@@ -22,6 +22,7 @@ interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
   heartButton?: HeartButtonType;
+  inGrid?: boolean;
 }
 
 export interface Author {
@@ -98,7 +99,7 @@ const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton }: Props) => {
+const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   if (embed.status === 'error') {
@@ -151,6 +152,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton }: Props) => {
           description={embedData.caption ?? data.caption.caption}
           bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ''}
+          inGrid={inGrid}
         >
           {HeartButton && data.copyright.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
         </EmbedByline>

@@ -5,7 +5,7 @@ import { defaultParameters } from '../../../stories/defaults';
 import ButtonV2 from './ButtonV2';
 
 export default {
-  title: 'Enkle komponenter/Knapper/Button',
+  title: 'Components/Buttons/Button',
   component: ButtonV2,
   tags: ['autodocs'],
   parameters: {

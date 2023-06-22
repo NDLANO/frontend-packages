@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `;
 
 export default {
-  title: 'Enkle komponenter/Knapper/MultiButton',
+  title: 'Components/Buttons/MultiButton',
   component: MultiButton,
   tags: ['autodocs'],
   parameters: {

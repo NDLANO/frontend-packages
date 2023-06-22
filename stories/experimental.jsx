@@ -7,7 +7,7 @@ import { Image, ContentLoader } from '@ndla/ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import ResourceStats from './molecules/ResourceStats';
 
-storiesOf('Eksperimentelle komponenter', module)
+storiesOf('Other/Eksperimentelle komponenter', module)
   .add('Lazyload bilder', () => (
     <div>
       <StoryIntro title="Lazyload">

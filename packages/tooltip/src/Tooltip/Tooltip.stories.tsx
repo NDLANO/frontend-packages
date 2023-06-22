@@ -13,7 +13,7 @@ import { defaultParameters } from '../../../../stories/defaults';
 import Tooltip from './Tooltip';
 
 export default {
-  title: 'Enkle komponenter/Tooltip',
+  title: 'Components/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
   parameters: {

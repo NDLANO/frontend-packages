@@ -109,16 +109,3 @@
 .u-no-wrap {
   white-space: nowrap;
 }
-
-.u-horisontal-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  &:not(:empty) {
-    margin-bottom: -$spacing--small;
-  }
-  > * {
-    margin-bottom: $spacing--small;
-    margin-right: $spacing--small;
-  }
-}

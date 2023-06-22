@@ -26,7 +26,7 @@ const Heading = ({ level }: HeadingProps) => {
 };
 
 const meta: Meta = {
-  title: 'Grunnstiler/Typografi',
+  title: 'Base styles/Typografi',
   parameters: defaultParameters,
 };
 
@@ -331,7 +331,7 @@ export const Typografi: StoryFn = () => {
           </p>
         </div>
 
-        <p>Se også «Bruk av lenker» under «Enkle komponenter».</p>
+        <p>Se også «Bruk av lenker» under «Components».</p>
 
         <h2 id="midtstilttekst" className="u-heading">
           Midtstilt tekst

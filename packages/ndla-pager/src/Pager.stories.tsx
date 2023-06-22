@@ -12,7 +12,7 @@ import { defaultParameters } from '../../../stories/defaults';
 import Pager from './Pager';
 
 export default {
-  title: 'Enkle komponenter/Pager',
+  title: 'Components/Pager',
   component: Pager,
   tags: ['autodocs'],
   parameters: {

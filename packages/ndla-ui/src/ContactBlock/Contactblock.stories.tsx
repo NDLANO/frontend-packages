@@ -12,7 +12,7 @@ import ContactBlock from './ContactBlock';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'Enkle komponenter/Kontaktblokk',
+  title: 'Components/Kontaktblokk',
   component: ContactBlock,
   tags: ['autodocs'],
   args: {

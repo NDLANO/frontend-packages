@@ -18,7 +18,7 @@ import { defaultParameters } from '../../../stories/defaults';
 import { DialogProps } from './types';
 
 const meta: Meta<typeof Modal> = {
-  title: 'Enkle komponenter/Modal',
+  title: 'Components/Modal',
   tags: ['autodocs'],
   component: Modal,
   parameters: {

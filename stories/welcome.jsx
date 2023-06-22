@@ -99,4 +99,4 @@ Welcome.propTypes = {
   showApp: PropTypes.func,
 };
 
-storiesOf('Velkommen', module).add('til NDLAs designmanual', () => <Welcome />);
+storiesOf('Velkommen', module).add('Velkommen', () => <Welcome />);

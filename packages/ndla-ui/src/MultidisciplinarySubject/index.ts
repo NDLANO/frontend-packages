@@ -7,7 +7,5 @@
  */
 
 import MultidisciplinarySubject from './MultidisciplinarySubject';
-import MultidisciplinarySubjectHeader from './MultidisciplinarySubjectHeader';
 
-export { MultidisciplinarySubjectHeader };
 export default MultidisciplinarySubject;

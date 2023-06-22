@@ -13,7 +13,7 @@ import { defaultParameters } from '../../../../stories/defaults';
 import { WordClass } from '../model/WordClass';
 
 const meta: Meta<typeof Gloss> = {
-  title: 'Enkle komponenter/Gloss',
+  title: 'Components/Gloss',
   component: Gloss,
   tags: ['autodocs'],
   parameters: {

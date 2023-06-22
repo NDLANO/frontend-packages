@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes, WordClass } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, WordClass, Transcriptions } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -1365,6 +1365,10 @@ const messages = {
     [WordClass.WordClass.Verb]: 'Verb',
     [WordClass.WordClass.VerbComplement]: 'Verb-Complement',
     [WordClass.WordClass.VerbObject]: 'Verb-Object',
+  },
+  Transcriptions: {
+    traditional: 'Traditional',
+    pinyin: 'Pinyin',
   },
 };
 

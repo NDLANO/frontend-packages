@@ -1329,6 +1329,10 @@ const messages = {
   },
   gloss: {
     examples: 'Eksempler',
+    Transcriptions: {
+      traditional: 'Tradisjonell',
+      pinyin: 'Pinyin',
+    },
   },
   wordClass: {
     [WordClass.WordClass.Adjective]: 'Adjektiv',

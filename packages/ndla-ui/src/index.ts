@@ -156,7 +156,7 @@ export { default as Programme } from './Programme';
 
 export { default as CompetenceGoalTab } from './CompetenceGoalTab';
 
-export { default as MultidisciplinarySubject, MultidisciplinarySubjectHeader } from './MultidisciplinarySubject';
+export { default as MultidisciplinarySubject } from './MultidisciplinarySubject';
 
 export {
   SearchTypeResult,

@@ -1328,6 +1328,10 @@ const messages = {
   },
   gloss: {
     examples: 'Examples',
+    Transcriptions: {
+      traditional: 'Traditional',
+      pinyin: 'Pinyin',
+    },
   },
   wordClass: {
     [WordClass.WordClass.Adjective]: 'Adjective',
@@ -1365,10 +1369,6 @@ const messages = {
     [WordClass.WordClass.Verb]: 'Verb',
     [WordClass.WordClass.VerbComplement]: 'Verb-Complement',
     [WordClass.WordClass.VerbObject]: 'Verb-Object',
-  },
-  Transcriptions: {
-    traditional: 'Traditional',
-    pinyin: 'Pinyin',
   },
 };
 

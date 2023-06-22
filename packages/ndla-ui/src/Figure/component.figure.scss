@@ -18,24 +18,6 @@
 
 /* 1. */
 
-@keyframes rightFloatTransition {
-  0% {
-    left: 75%;
-  }
-  100% {
-    left: -16.6%;
-  }
-}
-
-@keyframes smallRightFloatTransition {
-  0% {
-    left: 78.5%;
-  }
-  100% {
-    left: -16.6%;
-  }
-}
-
 .c-figure {
   img {
     width: 100%;
@@ -54,11 +36,7 @@
   // display: flex; // TODO: Makes h5p-iframes appear small and not fullsize
   margin: $spacing 0 $spacing;
   position: relative;
-
-  @include mq($from: desktop) {
-    margin: $spacing--large 0 $spacing--large;
-    @include grids-expand(4, 6, 2);
-  }
+  width: 100%;
   transition: transform 0.4s, width 0.4s, height 0.4s;
 
   &--full-column {
@@ -70,20 +48,11 @@
     padding-bottom: $spacing--large;
     margin-bottom: 0;
   }
+  &--left {
+    float: left;
+  }
   &--right {
-    &.expanded {
-      @include mq($from: desktop) {
-        animation-name: rightFloatTransition;
-        animation-duration: 0.4s;
-      }
-
-      &[data-sizetype='xsmall-right'] {
-        @include mq($from: desktop) {
-          animation-name: smallRightFloatTransition;
-          animation-duration: 0.4s;
-        }
-      }
-    }
+    float: right;
   }
   &.expanded {
     .c-figure__caption--hidden-caption {

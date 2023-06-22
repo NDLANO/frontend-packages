@@ -44,6 +44,7 @@ class ComponentInfo extends Component {
     const tabContent = [
       {
         title: 'Kodeeksempel',
+        id: 'codeExample',
         content: (
           <Fragment>
             <ButtonV2
@@ -74,6 +75,7 @@ class ComponentInfo extends Component {
       },
       {
         title: 'PropTypes',
+        id: 'propTypes',
         content: (
           <table className="c-table o-table">
             <thead>
@@ -101,24 +103,28 @@ class ComponentInfo extends Component {
     if (messages) {
       tabContent.push({
         title: 'Annet',
+        id: 'other',
         content: messages.map((msg) => <p key={uuid()}>{msg}</p>),
       });
     }
     if (onSite) {
       tabContent.push({
         title: 'På side',
+        id: 'onSite',
         content: onSite,
       });
     }
     if (children) {
       tabContent.unshift({
         title: 'Eksempel',
+        id: 'example',
         content: children,
       });
     }
     if (components) {
       tabContent.unshift({
         title: 'Komponenter',
+        id: 'components',
         content: components,
       });
     }

@@ -9,20 +9,23 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { defaultParameters } from '../../../stories/defaults';
-import TabsV2 from './TabsV2';
+import Tabs from './Tabs';
 
 export default {
   title: 'Enkle komponenter/Tabs',
-  component: TabsV2,
+  component: Tabs,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
   args: {
-    ariaLabel: 'Oversikt over farge og figur',
+    'aria-label': 'Oversikt over farge og figur',
+    variant: 'underlined',
+    defaultValue: 'colors',
     tabs: [
       {
         title: 'Farge',
+        id: 'colors',
         content: (
           <>
             <h2 style={{ margin: 0 }}>Oversikt over farger</h2>
@@ -32,6 +35,7 @@ export default {
       },
       {
         title: 'Figur',
+        id: 'shapes',
         content: (
           <>
             <h2 style={{ margin: 0 }}>Oversikt over figurer</h2>
@@ -39,12 +43,23 @@ export default {
           </>
         ),
       },
+      {
+        title: 'Hemmelig',
+        disabled: true,
+        id: 'secret',
+        content: (
+          <>
+            <h2 style={{ margin: 0 }}>Ikke hemmelig</h2>
+            <p>Egentlig ikke så spennende.</p>
+          </>
+        ),
+      },
     ],
   },
-} as Meta<typeof TabsV2>;
+} as Meta<typeof Tabs>;
 
-export const TabsStory: StoryFn<typeof TabsV2> = ({ ...args }) => {
-  return <TabsV2 {...args}></TabsV2>;
+export const TabsStory: StoryFn<typeof Tabs> = ({ ...args }) => {
+  return <Tabs {...args}></Tabs>;
 };
 
 TabsStory.storyName = 'Tabs';

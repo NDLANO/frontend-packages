@@ -1870,10 +1870,20 @@
     pump "^3.0.0"
     tar-fs "^2.1.1"
 
+"@ndla/types-backend@^0.2.12":
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/@ndla/types-backend/-/types-backend-0.2.12.tgz#c06a29ba924c86c8c9b96a76ecd2d13be0a813e4"
+  integrity sha512-n3b41tyw/Of07bhNIvRJ6Qz/kMYbGM9mlvDvCkYDLDQpq9zSnFpsGASD1tPBRydmz9oDApM8F2GvQVT6Zk7jKA==
+
 "@ndla/types-backend@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@ndla/types-backend/-/types-backend-0.2.5.tgz#36b4411c0190c6f78f6165ea1a54fb7f2987a1fe"
   integrity sha512-BqSBLcW4M+otGxoix1tISb6PuWn/THm+xzdH4/rudblIcqz+zQwU46WIxKBtcfYK2U5LjsHgCUH8vjmi4nA1Pw==
+
+"@ndla/types-taxonomy@1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@ndla/types-taxonomy/-/types-taxonomy-1.0.17.tgz#fe8020347013d35a5c4ac2e656fda53b5b32c1bc"
+  integrity sha512-pjgnVA9+/PtAUb8Iyvh9ZX2OwKhyy6L9JRXOWpsnEzbZzIaNiLhYXhqzvjG2KT6MrvQhLi+9HxiCE/f2KnYFtQ==
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
@@ -4108,13 +4118,6 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/reach__dialog@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@types/reach__dialog/-/reach__dialog-0.1.0.tgz#64db9b1634eebe2fce395c07a7b0dd68aec5a994"
-  integrity sha512-nHP7sj5st9RTIOWmXlghev1+b/Mv5TtNvyDGPhJ+OW8ESklQSs7CvaHt+pLjjFzDqCsoL4qbVQ3Edlx6zIyfaQ==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-dom@*", "@types/react-dom@^17.0.13":
   version "17.0.17"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.17.tgz#2e3743277a793a96a99f1bf87614598289da68a1"
@@ -4126,13 +4129,6 @@
   version "15.5.5"
   resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-15.5.5.tgz#4d3b51f8956195f1f63360ff03f8822c5d74c516"
   integrity sha512-QH3JZQXa2usAvJvSsdSUJ4Yu4j8ReuZpgRrEW+XP+Rmosbn425YshW9iGEb/pAARm8496axHhHUPRH3UmTiB6A==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-tabs@^2.3.4":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/@types/react-tabs/-/react-tabs-2.3.4.tgz#b63662ee52e59a86ec33b78b9721d8163a46394c"
-  integrity sha512-HQzhKW+RF/7h14APw/2cu4Nnt+GmsTvfBKbFdn/NbYpb8Q+iB65wIkPHz4VRKDxWtOpNFpOUtzt5r0LRmQMfOA==
   dependencies:
     "@types/react" "*"
 
@@ -6049,11 +6045,6 @@ clone@^1.0.2, clone@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
-
-clsx@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
-  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
 
 cmd-shim@5.0.0, cmd-shim@^5.0.0:
   version "5.0.0"
@@ -12712,7 +12703,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.5.0, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -13109,14 +13100,6 @@ react-syntax-highlighter@^15.5.0:
     lowlight "^1.17.0"
     prismjs "^1.27.0"
     refractor "^3.6.0"
-
-react-tabs@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/react-tabs/-/react-tabs-3.2.3.tgz#ccbb3e1241ad3f601047305c75db661239977f2f"
-  integrity sha512-jx325RhRVnS9DdFbeF511z0T0WEqEoMl1uCE3LoZ6VaZZm7ytatxbum0B8bCTmaiV0KsU+4TtLGTGevCic7SWg==
-  dependencies:
-    clsx "^1.1.0"
-    prop-types "^15.5.0"
 
 react-transition-group@^4.3.0:
   version "4.4.5"

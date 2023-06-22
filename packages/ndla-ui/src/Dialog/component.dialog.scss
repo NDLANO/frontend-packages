@@ -63,10 +63,6 @@
     width: 100vw;
     -webkit-overflow-scrolling: touch;
 
-    .c-tabs {
-      margin-left: 0;
-    }
-
     @include mq(tablet) {
       width: 90%;
       max-height: 85vh;

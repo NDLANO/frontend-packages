@@ -6,36 +6,27 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@ndla/tabs';
 
-class VideoTabs extends Component {
-  constructor(props) {
-    super(props);
-    this.handleOnSelect = this.handleOnSelect.bind(this);
-  }
+const VideoTabs = ({ onSearchTypeChange, tabs }) => {
+  const [selectedTab, setSelectedTab] = useState(undefined);
 
-  handleOnSelect(index, last) {
-    const { onSearchTypeChange, tabs } = this.props;
-    if (index !== last) {
-      onSearchTypeChange(tabs[index].title.toLowerCase());
-    }
-  }
+  const handleOnSelect = (value) => {
+    setSelectedTab(value);
+    onSearchTypeChange(value);
+  };
 
-  render() {
-    const { tabs } = this.props;
-
-    return <Tabs onSelect={this.handleOnSelect} tabs={tabs} />;
-  }
-}
+  return <Tabs value={selectedTab} onValueChange={handleOnSelect} tabs={tabs} />;
+};
 
 VideoTabs.propTypes = {
-  searchTypes: PropTypes.string,
   onSearchTypeChange: PropTypes.func.isRequired,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.string,
+      id: PropTypes.string,
       content: PropTypes.node,
     }),
   ).isRequired,

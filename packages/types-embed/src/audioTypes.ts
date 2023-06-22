@@ -15,6 +15,7 @@ export type AudioEmbedData = {
   resourceId: string;
   type: string;
   url: string;
+  pageUrl?: string;
 };
 
 export interface AudioMeta extends IAudioMetaInformation {

@@ -46,7 +46,7 @@ export default function AudioSearchResult({ audio, fetchAudio, onError, locale, 
       <div>
         <StyledHeading>{audio.title?.title}</StyledHeading>
         <LicenseWrapper>
-          {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license}
+          {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license.title}
         </LicenseWrapper>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
       </div>

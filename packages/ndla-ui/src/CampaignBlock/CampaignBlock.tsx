@@ -34,6 +34,7 @@ interface Props {
   };
   imageBefore?: Image;
   imageAfter?: Image;
+  className?: string;
 }
 
 const Container = styled.div`
@@ -70,8 +71,12 @@ const StyledImg = styled.img`
 `;
 
 const StyledLink = styled(SafeLink)`
+  display: flex;
+  align-items: center;
+  gap: ${spacing.xxsmall};
   box-shadow: none;
   text-decoration: underline;
+  font-weight: ${fonts.weight.semibold};
   color: ${colors.brand.primary};
   &:hover,
   &:focus-visible {
@@ -79,9 +84,17 @@ const StyledLink = styled(SafeLink)`
   }
 `;
 
-const CampaignBlock = ({ title, imageBefore, description, headingLevel: Heading = 'h2', imageAfter, url }: Props) => {
+const CampaignBlock = ({
+  title,
+  imageBefore,
+  description,
+  headingLevel: Heading = 'h2',
+  imageAfter,
+  url,
+  className,
+}: Props) => {
   return (
-    <Container>
+    <Container className={className}>
       {imageBefore && <StyledImg src={imageBefore.src} data-left={true} />}
       <div>
         <Heading css={headingStyle}>{title.title}</Heading>

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
+import React, { ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
@@ -23,6 +23,7 @@ import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
 import ArticleAccessMessage from './ArticleAccessMessage';
 import MessageBox from '../Messages/MessageBox';
 import { ConceptNotionType } from '../Notion/ConceptNotion';
+import { Heading } from '../Typography';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -63,7 +64,9 @@ export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <h1 tabIndex={-1}>{children}</h1>
+      <Heading element="h1" headingStyle="h1" tabIndex={-1}>
+        {children}
+      </Heading>
     </div>
   );
 };
@@ -117,17 +120,13 @@ type Props = {
   article: ArticleType;
   icon?: ReactNode;
   licenseBox?: ReactNode;
-  competenceGoalsLoading?: boolean;
   modifier?: string;
   children?: ReactNode;
   messages: Messages;
   contentTransformed?: boolean;
   locale: Locale;
   messageBoxLinks?: [];
-  competenceGoals?: (inp: {
-    Dialog: ComponentType;
-    dialogProps: { isOpen: boolean; onClose: () => void };
-  }) => ReactNode;
+  competenceGoals?: ReactNode;
   id: string;
   renderMarkdown: (text: string) => string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
@@ -157,7 +156,6 @@ export const Article = ({
   messageBoxLinks,
   children,
   competenceGoals,
-  competenceGoalsLoading,
   id,
   locale,
   notions,
@@ -214,7 +212,7 @@ export const Article = ({
               <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
             </MSGboxWrapper>
           )}
-          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalsLoading={competenceGoalsLoading}>
+          <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
 
             <ArticleTitle icon={icon} label={messages.label}>

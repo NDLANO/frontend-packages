@@ -478,7 +478,7 @@ const messages = {
       onlyTeacher: 'This resource is accessible only to teachers who are logged in with Feide.',
     },
     possiblyOutdated: 'The article is outdated',
-    references: 'References',
+    footnotes: 'Footnotes',
   },
   competenceGoals: {
     competenceGoal: 'competence-goal',
@@ -594,7 +594,7 @@ const messages = {
     },
     concept: {
       heading: 'How to reuse concept content',
-      description: 'You will find guidelines for use of concept content in the asset',
+      description: 'Remember that built-in content might have a different license than the explanation text',
       rules: 'Rules for use of concept:',
       title: 'Title',
       embedlink: {
@@ -1195,12 +1195,11 @@ const messages = {
       drawerButton: 'Show folders and resources',
       drawerTitle: 'Folders and resources',
       description: {
-        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
+        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link, or you can bookmark the page.',
         info1:
           'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
         info2: 'You can use the menu to navigate through the articles.',
-        info3:
-          'If you want to come back to the folder later, you can use the link the teacher gave you, or you can bookmark the page.',
+        info3: 'If you want to come back to the folder later, you can use the link, or you can bookmark the page.',
       },
       willOpenInNewTab: 'Opens in a new tab.',
     },
@@ -1315,6 +1314,7 @@ const messages = {
     conceptListError: 'Failed to show concept list',
     linkError: 'Failed to show link.',
     unsupported: `Embed {{type}} not supported.`,
+    goTo: 'Go to {{type}}',
     embedError: `An error occurred while loading the {{type}}. Try reloading the page.`,
     type: {
       image: 'Image',

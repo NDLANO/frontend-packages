@@ -477,7 +477,7 @@ const messages = {
       onlyTeacher: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
     },
     possiblyOutdated: 'Artikkelen er foreldet.',
-    references: 'Referanser',
+    footnotes: 'Fotnotar',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -614,7 +614,7 @@ const messages = {
         hasCopiedTitle: 'Innbyggingslenke kopiert',
       },
       heading: 'Slik gjenbruker du forklaringar',
-      description: 'Du finn retningslinjene for bruk av innhaldet i forklaring-elementet',
+      description: 'Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten',
       rules: 'Reglar for bruk av forklaring:',
       title: 'Tittel',
     },
@@ -1192,12 +1192,11 @@ const messages = {
       learningpathUnsupported:
         'Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
-        all: 'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.\n\nDu kan bla i artiklane ved å bruke menyen.\n\nDersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+        all: 'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.\n\nDu kan bla i artiklane ved å bruke menyen.\n\nDersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk, eller du kan bokmerke sida.',
         info1:
           'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.',
         info2: 'Du kan bla i artiklane ved å bruke menyen.',
-        info3:
-          'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk av læraren din, eller du kan bokmerke sida.',
+        info3: 'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk, eller du kan bokmerke sida.',
       },
       willOpenInNewTab: 'Opnast i ny fane.',
     },
@@ -1311,6 +1310,7 @@ const messages = {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',
     linkError: 'Klarte ikkje å vise lenke.',
     unsupported: `Embed {{type}} er ikkje støtta.`,
+    goTo: 'Gå til {{type}}',
     embedError: `Orsak, ein feil oppstod ved lasting av {{type}}. Prøv å laste inn sida på nytt.`,
     type: {
       image: 'Bilde',

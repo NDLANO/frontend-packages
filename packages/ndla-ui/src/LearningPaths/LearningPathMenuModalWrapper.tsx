@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactChild, ReactChildren, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { spacing, mq, breakpoints, colors } from '@ndla/core';
 import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
 import { css } from '@emotion/react';
@@ -36,7 +36,7 @@ const StyledModal = styled(Modal)`
 
 type ModalWrapperProps = {
   innerWidth: number;
-  children: (arg: VoidFunction) => ReactChild | ReactChildren | ReactNode;
+  children: (arg: VoidFunction) => ReactNode;
 };
 
 const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {

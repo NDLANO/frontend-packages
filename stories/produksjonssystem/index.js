@@ -29,17 +29,10 @@ import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
 import NdlaFilmEditorExample from './NdlaFilmEditorExample';
-import FooterExample from './FooterExample';
 import ProductionToolVersionLog from './ProductionToolVersionLog';
 import CodeBlockEditorExample from './CodeBlockEditorExample';
 
 storiesOf('Produksjonssystem', module)
-  .add('Footer for produksjonssystem', () => (
-    <div>
-      <StoryIntro title="Footer for produksjonssystemet" />
-      <FooterExample />
-    </div>
-  ))
   .add('Trekkspill', () => (
     <div
       style={{

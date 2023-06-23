@@ -7,9 +7,9 @@
  */
 
 import React, { ReactNode } from 'react';
+import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
-import { colors } from '@ndla/core';
 
 export interface ImageCrop {
   startX: number;
@@ -45,7 +45,7 @@ const StyledImageWrapper = styled.div`
     display: flex;
     justify-content: center;
   }
-  &[data-ingrid='true'] {
+  &[data-in-grid='true'] {
     border: 1px solid ${colors.brand.tertiary};
     border-bottom: 0;
     border-radius: 4px;
@@ -55,7 +55,7 @@ const StyledImageWrapper = styled.div`
 `;
 
 const StyledImage = styled.img`
-  &[data-ingrid='true'] {
+  &[data-in-grid='true'] {
     border-radius: 3px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -97,7 +97,7 @@ const Image = ({
   if (contentType && contentType === 'image/gif') {
     return (
       <StyledImageWrapper data-inGrid={inGrid}>
-        <StyledImage alt={alt} src={`${src}`} {...rest} data-inGrid={inGrid} />
+        <StyledImage alt={alt} src={`${src}`} {...rest} data-in-grid={inGrid} />
       </StyledImageWrapper>
     );
   }
@@ -117,10 +117,10 @@ const Image = ({
   }
 
   return (
-    <StyledImageWrapper data-svg={contentType === 'image/svg+xml'} data-inGrid={inGrid}>
+    <StyledImageWrapper data-svg={contentType === 'image/svg+xml'} data-in-grid={inGrid}>
       <picture>
         <source type={contentType} srcSet={srcSet} sizes={sizes} />
-        <StyledImage alt={alt} src={`${src}?${queryString}`} {...rest} data-inGrid={inGrid} />
+        <StyledImage alt={alt} src={`${src}?${queryString}`} {...rest} data-in-grid={inGrid} />
       </picture>
       {expandButton}
     </StyledImageWrapper>

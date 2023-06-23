@@ -34,7 +34,7 @@ const Container = styled(SafeLink)`
   color: ${colors.text.primary};
   background-color: ${colors.white};
   max-width: 350px;
-  max-height: fit-content;
+  max-height: 415px;
   gap: ${spacing.nsmall};
   box-shadow: none;
   border: 1px solid ${colors.brand.lightest};
@@ -42,7 +42,7 @@ const Container = styled(SafeLink)`
   padding: ${spacing.normal} ${spacing.medium};
   &[data-size='large'] {
     max-width: 532px;
-    max-height: fit-content;
+    max-height: 550px;
   }
   &:hover,
   &:focus-within {

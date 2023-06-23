@@ -23,12 +23,7 @@ const GridContainer = styled.div`
   justify-content: center;
   border-radius: ${misc.borderRadius};
   grid-template-columns: 1fr;
-
   grid-gap: ${spacing.normal};
-
-  &[data-frontpage='true'] {
-    grid-gap: ${spacing.large};
-  }
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     &[data-columns='2x2'],
@@ -51,7 +46,6 @@ const GridContainer = styled.div`
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     padding: ${spacing.medium};
 
     &[data-columns='3'] {
@@ -61,6 +55,10 @@ const GridContainer = styled.div`
     &[data-columns='4'] {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
+  }
+
+  &[data-frontpage='true'] {
+    grid-gap: ${spacing.large};
   }
 
   &[data-border='lightBlue'] {

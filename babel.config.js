@@ -1,16 +1,18 @@
 module.exports = {
   presets: [
-    ['@babel/preset-env', { modules: false }],
+    [
+      '@babel/preset-env',
+      {
+        modules: false,
+        targets: {
+          browsers: ['> 0.25%', 'not dead'],
+        },
+      },
+    ],
     '@babel/preset-typescript',
     ['@babel/preset-react', { runtime: 'automatic', importSource: '@emotion/react' }],
   ],
-  plugins: [
-    ['@emotion', { autoLabel: 'always' }],
-    '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-proposal-optional-chaining',
-  ],
+  plugins: [['@emotion', { autoLabel: 'always' }]],
   env: {
     test: {
       presets: [

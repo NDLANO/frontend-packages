@@ -103,7 +103,17 @@ function buildNodePackage(p) {
     buildFile(file, 'lib', {
       silent: true,
       override: {
-        presets: ['@babel/preset-env', ...babelOptions.presets.slice(1)],
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                browsers: ['> 0.25%', 'not dead'],
+              },
+            },
+          ],
+          ...babelOptions.presets.slice(1),
+        ],
       },
     });
   });

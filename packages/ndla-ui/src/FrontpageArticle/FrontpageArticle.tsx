@@ -7,11 +7,11 @@
  */
 
 import { ReactNode } from 'react';
+import { utils } from '@ndla/core';
 import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
 import { Heading } from '../Typography';
-import { utils } from '@ndla/core';
 
 type Props = {
   article: Article;

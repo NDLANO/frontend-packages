@@ -20,6 +20,7 @@ const StyledSafeLink = styled(SafeLink)`
   color: ${colors.brand.primary};
   font-weight: ${fonts.weight.bold};
   text-decoration: underline;
+  white-space: nowrap;
   box-shadow: none;
   &:hover,
   &:focus-within {

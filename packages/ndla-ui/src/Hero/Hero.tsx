@@ -102,7 +102,8 @@ export type HeroContentType =
   | 'topic'
   | 'beta'
   | 'ndla-film'
-  | 'ndla-film has-image';
+  | 'ndla-film has-image'
+  | 'frontpage-article';
 
 interface HeroProps extends HTMLAttributes<HTMLDivElement> {
   contentType?: HeroContentType;

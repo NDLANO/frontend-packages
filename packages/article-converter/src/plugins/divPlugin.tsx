@@ -48,11 +48,12 @@ export const divPlugin: PluginType = (node, opts) => {
     );
   } else if (node.attribs['data-type'] === 'grid' && node.children.length > 0) {
     const props = attributesToProps(node.attribs);
-    const columns = Number.parseInt(props['data-columns']) as GridType['columns'];
+    const columns = props['data-columns'] as GridType['columns'];
     const border = props['data-border'] as GridType['border'];
     const background = props['data-background'] as GridType['background'];
+    const frontpage = !!props['data-size'] as GridType['size'];
     return (
-      <Grid border={border} columns={columns} background={background} {...props}>
+      <Grid isFrontpage={frontpage} border={border} columns={columns} background={background} {...props}>
         {/* @ts-ignore */}
         {domToReact(node.children, opts)}
       </Grid>

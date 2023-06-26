@@ -20,6 +20,7 @@ const StyledSafeLink = styled(SafeLink)`
   color: ${colors.brand.primary};
   font-weight: ${fonts.weight.bold};
   text-decoration: underline;
+  white-space: nowrap;
   box-shadow: none;
   &:hover,
   &:focus-within {
@@ -32,8 +33,15 @@ const StyledSpan = styled.span`
 `;
 
 const LicenseLink = ({ license, asLink = true }: Props) => {
+  if (license.abbreviation === 'unknown') {
+    return null;
+  }
   if (asLink) {
-    return <StyledSafeLink to={license.url}>{license.abbreviation}</StyledSafeLink>;
+    return (
+      <StyledSafeLink to={license.url} rel="license">
+        {license.abbreviation}
+      </StyledSafeLink>
+    );
   } else {
     return <StyledSpan>{license.abbreviation}</StyledSpan>;
   }

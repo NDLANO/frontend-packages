@@ -56,7 +56,7 @@ const metaData: IImageMetaInformationV2 = {
 };
 
 const meta: Meta<typeof ImageEmbed> = {
-  title: 'Enkle komponenter/Embeds/ImageEmbed',
+  title: 'Components/Embeds/ImageEmbed',
   component: ImageEmbed,
   tags: ['autodocs'],
   args: {

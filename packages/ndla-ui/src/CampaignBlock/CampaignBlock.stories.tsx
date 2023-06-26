@@ -12,7 +12,7 @@ import CampaignBlock from './CampaignBlock';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'Enkle komponenter/Campaign Block',
+  title: 'Components/Campaign Block',
   component: CampaignBlock,
   tags: ['autodocs'],
   parameters: {

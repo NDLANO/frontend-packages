@@ -16,10 +16,11 @@ const ContentWrapper = styled.div`
   align-items: center;
   padding: ${spacing.small};
   align-items: center;
+  max-width: 215px;
 `;
 
 const StyledImage = styled.img`
-  max-width: 150px;
+  width: 100%;
 `;
 
 const TitleWrapper = styled.div`
@@ -29,7 +30,6 @@ const TitleWrapper = styled.div`
   overflow-wrap: break-word;
   ${fonts.sizes('38px', '48px')};
   text-align: center;
-  max-width: 240px;
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     ${fonts.sizes('30px', '36px')};
@@ -43,7 +43,6 @@ const SubTitleWrapper = styled.div`
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
   font-family: ${fonts.sans};
-  max-width: 240px;
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding-top: ${spacing.xxsmall};

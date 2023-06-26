@@ -12,7 +12,7 @@ import ProgrammeCard from './ProgrammeCard';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'Enkle komponenter/ProgrammeCard',
+  title: 'Components/ProgrammeCard',
   component: ProgrammeCard,
   tags: ['autodocs'],
   parameters: {

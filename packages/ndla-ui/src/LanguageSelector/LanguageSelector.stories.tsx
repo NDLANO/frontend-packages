@@ -13,7 +13,7 @@ import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import { defaultParameters } from '../../../../stories/defaults';
 export default {
-  title: 'Enkle komponenter/LanguageSelector',
+  title: 'Components/LanguageSelector',
   tags: ['autodocs'],
   component: LanguageSelector,
   parameters: {

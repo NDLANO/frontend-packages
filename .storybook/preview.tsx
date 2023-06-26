@@ -32,19 +32,7 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: [
-          'Velkommen',
-          'Konsepter',
-          'Grunnstiler',
-          'Enkle komponenter',
-          'Sammensatte moduler',
-          'Lisensgivning',
-          'Produksjonssystem',
-          'Eksperimentelle komponenter',
-          'Tekster og labels',
-          'NDLA lenker',
-          'Min NDLA',
-        ],
+        order: ['Velkommen', 'NDLA lenker', 'Base styles', 'Components', 'Patterns', 'Other'],
       },
     },
   },

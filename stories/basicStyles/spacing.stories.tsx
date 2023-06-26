@@ -13,7 +13,7 @@ import { defaultParameters } from '../defaults';
 import { StoryIntro } from '../wrappers';
 
 const meta: Meta = {
-  title: 'Grunnstiler/Luft og Avstand',
+  title: 'Base styles/Luft og Avstand',
   parameters: defaultParameters,
 };
 

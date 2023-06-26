@@ -13,7 +13,7 @@ import { defaultParameters } from '../../../../stories/defaults';
 import LetterFilter from './LetterFilter';
 
 export default {
-  title: 'Enkle komponenter/LetterFilter',
+  title: 'Components/LetterFilter',
   component: LetterFilter,
   tags: ['autodocs'],
   parameters: {

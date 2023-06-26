@@ -24,6 +24,7 @@ export interface ImageEmbedData {
   upperLeftY?: string;
   upperLeftX?: string;
   metaData?: any;
+  pageUrl?: string;
 }
 
 export interface ImageData {

@@ -120,7 +120,7 @@ const blockMetaData: ConceptData = {
 };
 
 const meta: Meta<typeof ConceptEmbed> = {
-  title: 'Enkle komponenter/Embeds/ConceptEmbed',
+  title: 'Components/Embeds/ConceptEmbed',
   component: ConceptEmbed,
   tags: ['autodocs'],
   args: {

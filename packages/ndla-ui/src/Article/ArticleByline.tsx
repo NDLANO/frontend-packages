@@ -85,10 +85,18 @@ const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
 const LicenseWrapper = styled.div`
   display: flex;
   gap: ${spacing.small};
+  padding-right: ${spacing.xsmall}}
+`;
+
+const StyledAccordionHeader = styled(AccordionHeader)`
+  background-color: ${colors.brand.lightest};
+  border: 1px solid ${colors.brand.tertiary};
+  font-size: ${fonts.sizes('16px', '29px')};
+  font-weight: ${fonts.weight.semibold};
 `;
 
 const refRegexp = /note\d/;
-const referencesAccordionId = 'references';
+const footnotesAccordionId = 'footnotes';
 
 const ArticleByline = ({
   authors = [],
@@ -105,8 +113,8 @@ const ArticleByline = ({
   const onHashChange = useCallback(
     (e: HashChangeEvent) => {
       const hash = e.newURL.split('#')[1];
-      if (hash.match(refRegexp) && !openAccordions.includes(referencesAccordionId)) {
-        setOpenAccordions([...openAccordions, referencesAccordionId]);
+      if (hash.match(refRegexp) && !openAccordions.includes(footnotesAccordionId)) {
+        setOpenAccordions([...openAccordions, footnotesAccordionId]);
         const el = document.getElementById(`#${hash}`);
         el?.click();
         el?.focus();
@@ -149,14 +157,14 @@ const ArticleByline = ({
       <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
         {licenseBox && (
           <AccordionItem value="rulesForUse">
-            <AccordionHeader headingLevel="h2">{t('article.useContent')}</AccordionHeader>
+            <StyledAccordionHeader headingLevel="h2">{t('article.useContent')}</StyledAccordionHeader>
             <AccordionContent>{licenseBox}</AccordionContent>
           </AccordionItem>
         )}
 
         {!!footnotes?.length && (
-          <AccordionItem value={referencesAccordionId}>
-            <AccordionHeader headingLevel="h2">{t('article.references')}</AccordionHeader>
+          <AccordionItem value={footnotesAccordionId}>
+            <StyledAccordionHeader headingLevel="h2">{t('article.footnotes')}</StyledAccordionHeader>
             <AccordionContent forceMount>
               <ArticleFootNotes footNotes={footnotes} />
             </AccordionContent>

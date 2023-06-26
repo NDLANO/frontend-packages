@@ -20,7 +20,7 @@ const args = {
 };
 
 export default {
-  title: 'Enkle komponenter/Nøkkeltall',
+  title: 'Components/Nøkkeltall',
   component: KeyFigure,
   tags: ['autodocs'],
   parameters: {

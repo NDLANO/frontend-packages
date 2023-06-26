@@ -40,8 +40,8 @@ $diameter: 26px;
 
 blockquote > ol {
   position: relative;
-  left: 50px;
+  left: $spacing--large;
   @include mq($until: desktop) {
-    left: -20px;
+    left: -$spacing;
   }
 }

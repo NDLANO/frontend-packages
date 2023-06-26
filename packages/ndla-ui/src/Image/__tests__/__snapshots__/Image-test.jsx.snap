@@ -5,8 +5,34 @@ exports[`Image renderers correctly 1`] = `
   position: relative;
 }
 
+.emotion-0[data-svg='true'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.emotion-0[data-in-grid='true'] {
+  border: 1px solid #a5bcd3;
+  border-bottom: 0;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1[data-in-grid='true'] {
+  border-radius: 3px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 <div
   class="emotion-0"
+  data-svg="false"
 >
   <picture>
     <source
@@ -15,6 +41,7 @@ exports[`Image renderers correctly 1`] = `
     />
     <img
       alt="example"
+      class="emotion-1"
       src="https://example.com/image.png?width=1024"
     />
   </picture>
@@ -26,8 +53,34 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   position: relative;
 }
 
+.emotion-0[data-svg='true'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.emotion-0[data-in-grid='true'] {
+  border: 1px solid #a5bcd3;
+  border-bottom: 0;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1[data-in-grid='true'] {
+  border-radius: 3px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 <div
   class="emotion-0"
+  data-svg="false"
 >
   <picture>
     <source
@@ -36,6 +89,7 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
     />
     <img
       alt="example"
+      class="emotion-1"
       src="https://example.com/image.png?width=1024&cropStartX=14.59&cropEndX=79.63&cropStartY=20&cropEndY=100&focalX=65.08&focalY=45.28"
     />
   </picture>
@@ -45,6 +99,25 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 exports[`Lazyloaded image renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+}
+
+.emotion-0[data-svg='true'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.emotion-0[data-in-grid='true'] {
+  border: 1px solid #a5bcd3;
+  border-bottom: 0;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 <div

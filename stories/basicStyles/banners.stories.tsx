@@ -19,7 +19,7 @@ import { StoryIntro } from '../wrappers';
 import allBanners from '../../images/banners';
 
 const meta: Meta = {
-  title: 'Grunnstiler/Bannere',
+  title: 'Base styles/Bannere',
   parameters: defaultParameters,
 };
 

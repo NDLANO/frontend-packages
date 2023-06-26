@@ -75,7 +75,7 @@ const floatVideo = (left) => (
   </Fragment>
 );
 
-storiesOf('Enkle komponenter', module)
+storiesOf('Components', module)
   .add('Bilde', () => (
     <div>
       <StoryIntro title="Bilde">

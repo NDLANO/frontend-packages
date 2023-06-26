@@ -13,7 +13,7 @@ import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 
 const meta: Meta = {
-  title: 'Grunnstiler/Oversettelser',
+  title: 'Base styles/Oversettelser',
   parameters: defaultParameters,
 };
 

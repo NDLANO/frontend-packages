@@ -47,6 +47,7 @@ export { default as ImageNormal } from './ImageNormal';
 export { default as ImageSmall } from './ImageSmall';
 export { default as ImageXsmall } from './ImageXsmall';
 export { default as ImageXxSmall } from './ImageXxSmall';
+export { default as InProgress } from './InProgress';
 export { default as Italic } from './Italic';
 export { default as Keyhole } from './Keyhole';
 export { default as LastUsed } from './LastUsed';

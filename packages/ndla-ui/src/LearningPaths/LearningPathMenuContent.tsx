@@ -139,7 +139,7 @@ const StyledContentType = styled.div`
   position: relative;
   z-index: 1;
   margin-right: ${spacingUnit * 0.75}px;
-  max-height: 36px;
+  max-height: 35px;
 `;
 
 const HiddenSpan = styled.span`

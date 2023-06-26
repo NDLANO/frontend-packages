@@ -96,7 +96,7 @@ const Image = ({
 
   if (contentType && contentType === 'image/gif') {
     return (
-      <StyledImageWrapper data-inGrid={inGrid}>
+      <StyledImageWrapper data-in-grid={inGrid}>
         <StyledImage alt={alt} src={`${src}`} {...rest} data-in-grid={inGrid} />
       </StyledImageWrapper>
     );

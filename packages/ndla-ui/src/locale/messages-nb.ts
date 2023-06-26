@@ -1213,7 +1213,7 @@ const messages = {
         'For å kunne bruke tjenesten Min NDLA må du være elev eller jobbe på en skole i et fylke som er med i NDLA-samarbeidet. Vi ber om at du ikke skriver noe støtende, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
       loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre vilkår for bruk',
-      loginResourcePitch: 'Ønsker du å favorittmerke denne siden?',
+      loginResourcePitch: 'Ønsker du å favorittmerke denne ressursen?',
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
         'Velkommen til Min NDLA! Nå kan du lagre favorittressursene dine fra NDLA og organisere dem i mapper og med emneknagger.',

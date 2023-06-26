@@ -90,6 +90,7 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
+  HeroContent,
 } from './Hero';
 
 export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter';

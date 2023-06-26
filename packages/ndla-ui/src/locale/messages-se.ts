@@ -1215,7 +1215,7 @@ const messages = {
         'Jus galggat sáhttit geavahit bálvalusa Mu NDLA fertet leat oahppi dahje bargat muhtin skuvllas fylkkas mii lea mielde NDLA-ovttasbarggus. Mii bivdit ahte it čále maidege unohasaid, persovdnasensitiivvalaš dieđuid dahje eará persovdnadáhtaid min teakstagieddái. Loga min ',
       loginTextLink: 'personsuodjalusjulggaštusa dákko',
       loginTerms: 'Logge Feide bokte vai oaččut beassanlobi. Go logget sisa de dohkkehat min geavahaneavttuid.',
-      loginResourcePitch: 'Dáhtut go merket siiddu oiddohin?',
+      loginResourcePitch: 'Ønsker du å favorittmerke denne ressursen?',
       loginWelcome: 'Bures boahtin NDLA:ii! Dáppe sáhtát fágaávdnasiid ordnet iežat vuogi mielde',
       welcome:
         'Bures boahtin Mu NDLA:ii! Dál sáhtát vurket iežat oiddotresurssaid NDLA:s ja ordnet daid nu go dáhtut máhpaide ja fáddágilkoriiguin.',

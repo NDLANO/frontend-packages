@@ -37,12 +37,6 @@ const StyledLayoutItem = styled(LayoutItem)`
   }
 `;
 
-const StyledHeading = styled(Heading)`
-  &[data-wide='true'] {
-    ${utils.visuallyHidden};
-  }
-`;
-
 const StyledIntroduction = styled.div`
   font-weight: ${fonts.weight.light};
   font-family: ${fonts.sans};
@@ -58,30 +52,30 @@ const StyledIntroduction = styled.div`
 export const FrontpageArticle = ({ article, id, isWide }: Props) => {
   const { title, introduction, content } = article;
 
+  if (isWide) {
+    return (
+      <StyledArticle data-wide={isWide}>
+        <StyledLayoutItem>
+          <Heading id={id} headingStyle="h2" element="h2" serif={true} tabIndex={-1}>
+            {title}
+          </Heading>
+          <StyledIntroduction>{introduction}</StyledIntroduction>
+        </StyledLayoutItem>
+        <StyledLayoutItem>{content}</StyledLayoutItem>
+      </StyledArticle>
+    );
+  }
+
   return (
-    <>
-      {isWide ? (
-        <StyledArticle data-wide={isWide}>
-          <StyledLayoutItem>
-            <StyledHeading id={id} headingStyle="h1" element="h1" data-wide={isWide} tabIndex={-1}>
-              {title}
-            </StyledHeading>
-            <StyledIntroduction>{introduction}</StyledIntroduction>
-          </StyledLayoutItem>
-          <StyledLayoutItem>{content}</StyledLayoutItem>
-        </StyledArticle>
-      ) : (
-        <StyledArticle>
-          <StyledLayoutItem>
-            <StyledHeading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
-              {title}
-            </StyledHeading>
-            <StyledIntroduction>{introduction}</StyledIntroduction>
-          </StyledLayoutItem>
-          <StyledLayoutItem>{content}</StyledLayoutItem>
-        </StyledArticle>
-      )}
-    </>
+    <StyledArticle>
+      <StyledLayoutItem>
+        <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
+          {title}
+        </Heading>
+        <StyledIntroduction>{introduction}</StyledIntroduction>
+      </StyledLayoutItem>
+      <StyledLayoutItem>{content}</StyledLayoutItem>
+    </StyledArticle>
   );
 };
 

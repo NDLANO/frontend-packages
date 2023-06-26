@@ -25,6 +25,7 @@ const StyledWrapper = styled.div`
     height: 10px;
     width: 10px;
     transform: rotate(45deg);
+    pointer-events: none;
   }
 `;
 

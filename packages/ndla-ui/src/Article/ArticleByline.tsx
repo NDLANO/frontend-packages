@@ -85,9 +85,12 @@ const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
 const LicenseWrapper = styled.div`
   display: flex;
   gap: ${spacing.small};
+  padding-right: ${spacing.xsmall}}
 `;
 
 const StyledAccordionHeader = styled(AccordionHeader)`
+  background-color: ${colors.brand.lightest};
+  border: 1px solid ${colors.brand.tertiary};
   font-size: ${fonts.sizes('16px', '29px')};
   font-weight: ${fonts.weight.semibold};
 `;

@@ -41,7 +41,7 @@ const metaData: OembedData = {
 };
 
 const meta: Meta<typeof ExternalEmbed> = {
-  title: 'Enkle komponenter/Embeds/ExternalEmbed',
+  title: 'Components/Embeds/ExternalEmbed',
   component: ExternalEmbed,
   tags: ['autodocs'],
   decorators: [

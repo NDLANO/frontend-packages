@@ -40,7 +40,7 @@ const licenses = {
   })),
 };
 
-storiesOf('Lisensgivning', module)
+storiesOf('Other/Lisensgivning', module)
   .add('Lisenser', () => (
     <div>
       <StoryIntro title="Lisenser">

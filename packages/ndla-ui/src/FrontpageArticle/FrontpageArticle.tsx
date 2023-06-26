@@ -55,12 +55,6 @@ export const FrontpageArticle = ({ article, id, isWide }: Props) => {
   if (isWide) {
     return (
       <StyledArticle data-wide={isWide}>
-        <StyledLayoutItem>
-          <Heading id={id} headingStyle="h2" element="h2" serif={true} tabIndex={-1}>
-            {title}
-          </Heading>
-          <StyledIntroduction>{introduction}</StyledIntroduction>
-        </StyledLayoutItem>
         <StyledLayoutItem>{content}</StyledLayoutItem>
       </StyledArticle>
     );

@@ -13,7 +13,7 @@ import { StoryBody, StoryIntro } from '../wrappers';
 import Table from '../molecules/TableExample';
 
 const meta: Meta = {
-  title: 'Grunnstiler/Tabeller',
+  title: 'Base styles/Tabeller',
   parameters: defaultParameters,
 };
 

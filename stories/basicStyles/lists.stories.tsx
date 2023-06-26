@@ -13,7 +13,7 @@ import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 
 const meta: Meta = {
-  title: 'Grunnstiler/Lister',
+  title: 'Base styles/Lister',
   parameters: defaultParameters,
 };
 

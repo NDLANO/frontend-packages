@@ -48,8 +48,6 @@ export { default as NoContentBox } from './NoContentBox';
 
 export { default as Masthead, MastheadItem, getMastheadHeight, useMastheadHeight, SkipToMainContent } from './Masthead';
 
-export { default as Portrait } from './Portrait';
-
 export { default as ContentLoader } from './ContentLoader';
 
 export { default as RelatedArticleList, RelatedArticle, RelatedArticleListV2 } from './RelatedArticleList';
@@ -147,8 +145,6 @@ export { default as resourceTypeColor } from './utils/resourceTypeColor';
 
 export { default as CreatedBy } from './CreatedBy';
 
-export { default as Breadcrumblist } from './Breadcrumblist';
-
 export { MessageBox, MessageBoxTag, MessageBanner } from './Messages';
 
 export { ResourceBox } from './ResourceBox';
@@ -161,7 +157,7 @@ export { default as Programme } from './Programme';
 
 export { default as CompetenceGoalTab } from './CompetenceGoalTab';
 
-export { default as MultidisciplinarySubject, MultidisciplinarySubjectHeader } from './MultidisciplinarySubject';
+export { default as MultidisciplinarySubject } from './MultidisciplinarySubject';
 
 export {
   SearchTypeResult,
@@ -186,12 +182,10 @@ export { ToolboxInfo } from './ToolboxPage';
 export { default as Topic } from './Topic';
 export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
-export { default as AuthorInfo } from './AuthorInfo';
 
 export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
-export type { BreadcrumbItemProps } from './Breadcrumblist';
 export { i18nInstance, formatNestedMessages } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
 
@@ -205,8 +199,6 @@ export {
   FilmMovieList,
   AllMoviesAlphabetically,
 } from './NDLAFilm';
-
-export { DisplayOnPageYOffset } from './Animation';
 
 export {
   MediaList,
@@ -242,8 +234,6 @@ export {
   SubjectTopics,
   SubjectBanner,
 } from './Subject';
-
-export { default as ContentCard } from './ContentCard';
 
 export { default as CopyParagraphButton, CopyParagraphButtonV2 } from './CopyParagraphButton';
 

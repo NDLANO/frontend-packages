@@ -18,8 +18,6 @@ import { StoryIntro, StoryBody } from '../wrappers';
 import ImageSearcher from '../molecules/imageSearch';
 import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
-import AccordionExample from './AccordionExample';
-import AccordionExample2 from './AccordionExample2';
 import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
@@ -32,47 +30,7 @@ import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 import ProductionToolVersionLog from './ProductionToolVersionLog';
 import CodeBlockEditorExample from './CodeBlockEditorExample';
 
-storiesOf('Produksjonssystem', module)
-  .add('Trekkspill', () => (
-    <div
-      style={{
-        backgroundColor: colors.brand.greyLightest,
-        paddingBottom: spacing.large,
-        minHeight: '100vh',
-      }}
-    >
-      <StoryIntro title="Trekkspill">
-        <p>
-          Trekkspill (Accordion). Importeres via ndla-accordion. Innbygget kontroll for åpning og lukking gjennom render
-          props. Støtter feil-status via boolean prop på paneler.
-        </p>
-      </StoryIntro>
-      <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
-        <AccordionExample />
-      </div>
-    </div>
-  ))
-  .add('Trekkspill 2', () => (
-    <div
-      style={{
-        backgroundColor: colors.brand.greyLightest,
-        paddingBottom: spacing.large,
-        minHeight: '100vh',
-      }}
-    >
-      <StoryIntro title="Trekkspill">
-        <p>
-          Trekkspill (Accordions). Importeres via ndla-accordion. Innbygget kontroll for åpning og lukking gjennom
-          render props. Støtter feil-status via boolean prop på paneler.
-        </p>
-        <p>Denne versjonen bruker Accordions og AccordionSection komponentene for å forenkle koden</p>
-      </StoryIntro>
-
-      <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
-        <AccordionExample2 />
-      </div>
-    </div>
-  ))
+storiesOf('Other/Produksjonssystem', module)
   .add('Bildeutsnitt og fokuspunkt', () => (
     <div>
       <StoryIntro title="Bildesøk">

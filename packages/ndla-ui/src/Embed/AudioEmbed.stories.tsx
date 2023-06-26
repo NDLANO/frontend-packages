@@ -154,7 +154,7 @@ const podcastSuccessData: AudioMeta = {
 };
 
 const meta: Meta<typeof AudioEmbed> = {
-  title: 'Enkle komponenter/Embeds/AudioEmbed',
+  title: 'Components/Embeds/AudioEmbed',
   component: AudioEmbed,
   tags: ['autodocs'],
   decorators: [

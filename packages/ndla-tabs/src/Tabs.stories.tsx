@@ -12,7 +12,7 @@ import { defaultParameters } from '../../../stories/defaults';
 import Tabs from './Tabs';
 
 export default {
-  title: 'Enkle komponenter/Tabs',
+  title: 'Components/Tabs',
   component: Tabs,
   tags: ['autodocs'],
   parameters: {

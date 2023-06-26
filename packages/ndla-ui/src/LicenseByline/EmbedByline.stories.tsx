@@ -28,7 +28,7 @@ const ButtonWrapper = styled.div`
 `;
 
 export default {
-  title: 'Enkle komponenter/EmbedByline',
+  title: 'Components/EmbedByline',
   component: EmbedByline,
   tags: ['autodocs'],
   parameters: {

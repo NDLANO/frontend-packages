@@ -13,7 +13,7 @@ import { defaultParameters } from '../../../stories/defaults';
 import IconButtonV2 from './IconButtonV2';
 
 export default {
-  title: 'Enkle komponenter/Knapper/IconButton',
+  title: 'Components/Buttons/IconButton',
   component: IconButtonV2,
   tags: ['autodocs'],
   parameters: {

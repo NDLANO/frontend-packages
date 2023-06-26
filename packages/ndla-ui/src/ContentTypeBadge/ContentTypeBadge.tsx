@@ -13,7 +13,7 @@ import {
 } from '@ndla/icons/contentType';
 
 import { MenuBook } from '@ndla/icons/action';
-import { Concept, Media, SquareAudio, SquareVideo } from '@ndla/icons/editor';
+import { Concept, ImageNormal, SquareAudio, SquareVideo } from '@ndla/icons/editor';
 
 import * as contentTypes from '../model/ContentType';
 
@@ -66,7 +66,7 @@ export const ContentTypeBadge = ({ type, background, title, size = 'small', bord
       icon = <MultidisciplinaryTopic />;
       break;
     case contentTypes.resourceEmbedTypeMapping.image:
-      icon = <Media />;
+      icon = <ImageNormal />;
       embedResource = true;
       break;
     case contentTypes.resourceEmbedTypeMapping.audio:

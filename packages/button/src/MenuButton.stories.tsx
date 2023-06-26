@@ -13,7 +13,7 @@ import { defaultParameters } from '../../../stories/defaults';
 import MenuButton from './MenuButton';
 
 export default {
-  title: 'Enkle komponenter/Knapper/MenuButton',
+  title: 'Components/Buttons/MenuButton',
   component: MenuButton,
   tags: ['autodocs'],
   parameters: {

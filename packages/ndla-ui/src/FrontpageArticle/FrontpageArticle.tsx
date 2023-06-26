@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from 'react';
-import { utils } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing, utils } from '@ndla/core';
 import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
@@ -15,7 +15,6 @@ import { Heading } from '../Typography';
 
 interface Props {
   article: Article;
-  icon?: ReactNode;
   children?: ReactNode;
   id: string;
   isWide?: boolean;
@@ -44,23 +43,44 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-export const FrontpageArticle = ({ article, icon, id, isWide }: Props) => {
+const StyledIntroduction = styled.div`
+  font-weight: ${fonts.weight.light};
+  font-family: ${fonts.sans};
+  margin-top: ${spacing.small};
+  ${fonts.sizes('22px', '30px')};
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-top: ${spacing.mediumlarge};
+    ${fonts.sizes('26px', '36px')};
+  }
+`;
+
+export const FrontpageArticle = ({ article, id, isWide }: Props) => {
   const { title, introduction, content } = article;
 
   return (
     <>
-      <StyledArticle data-wide={isWide} id={id}>
-        <StyledLayoutItem>
-          <div>
-            {icon}
-            <StyledHeading headingStyle="h1" element="h1" data-wide={isWide} tabIndex={-1}>
+      {isWide ? (
+        <StyledArticle data-wide={isWide}>
+          <StyledLayoutItem>
+            <StyledHeading id={id} headingStyle="h1" element="h1" data-wide={isWide} tabIndex={-1}>
               {title}
             </StyledHeading>
-            <div>{introduction}</div>
-          </div>
-        </StyledLayoutItem>
-        <StyledLayoutItem>{content}</StyledLayoutItem>
-      </StyledArticle>
+            <StyledIntroduction>{introduction}</StyledIntroduction>
+          </StyledLayoutItem>
+          <StyledLayoutItem>{content}</StyledLayoutItem>
+        </StyledArticle>
+      ) : (
+        <StyledArticle>
+          <StyledLayoutItem>
+            <StyledHeading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
+              {title}
+            </StyledHeading>
+            <StyledIntroduction>{introduction}</StyledIntroduction>
+          </StyledLayoutItem>
+          <StyledLayoutItem>{content}</StyledLayoutItem>
+        </StyledArticle>
+      )}
     </>
   );
 };

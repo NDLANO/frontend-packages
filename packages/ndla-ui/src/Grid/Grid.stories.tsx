@@ -40,14 +40,15 @@ export default {
     },
   },
   args: {
-    columns: 2,
+    columns: '2',
     border: 'none',
     background: 'white',
   },
 } as Meta<typeof Grid>;
 
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
-  const items = new Array(args.columns).fill(
+  const columns = args.columns === '2x2' ? 4 : parseInt(args.columns);
+  const items = new Array(columns).fill(
     <KeyFigureStory
       title={KeyFigureStory.args?.title!}
       subtitle={KeyFigureStory.args?.subtitle!}
@@ -58,7 +59,8 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
 };
 
 export const GridBlogPostStory: StoryFn<typeof Grid> = ({ ...args }) => {
-  const items = new Array(args.columns).fill(
+  const columns = args.columns === '2x2' ? 4 : parseInt(args.columns);
+  const items = new Array(columns).fill(
     <BlogPostStory
       metaImage={BlogPostStory.args?.metaImage!}
       title={BlogPostStory.args?.title!}

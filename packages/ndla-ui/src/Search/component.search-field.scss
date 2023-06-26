@@ -103,20 +103,6 @@
       position: relative;
       padding: 0;
     }
-
-    &--with-icon {
-      &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        @include svg_icon(search, $brand-grey);
-        background-size: 24px 24px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        width: $spacing--large;
-        height: 24px;
-      }
-    }
   }
 
   /** Header adjustments... */

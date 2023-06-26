@@ -18,6 +18,7 @@ const StyledValueContainer = styled.div`
   display: grid;
   min-width: 0;
   align-items: center;
+  line-height: normal;
 `;
 
 const ValueContainer = <T extends boolean>({

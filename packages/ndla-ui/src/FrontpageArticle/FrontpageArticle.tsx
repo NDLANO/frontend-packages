@@ -13,13 +13,13 @@ import { Article } from '../types';
 import LayoutItem from '../Layout';
 import { Heading } from '../Typography';
 
-type Props = {
+interface Props {
   article: Article;
   icon?: ReactNode;
   children?: ReactNode;
   id: string;
   isWide?: boolean;
-};
+}
 
 const StyledArticle = styled.article`
   max-width: 773px;

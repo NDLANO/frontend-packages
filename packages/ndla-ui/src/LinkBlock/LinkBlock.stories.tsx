@@ -12,7 +12,7 @@ import LinkBlock from './LinkBlock';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'Enkle komponenter/Link Block',
+  title: 'COMPONENTS/Link Block',
   component: LinkBlock,
   tags: ['autodocs'],
   parameters: {

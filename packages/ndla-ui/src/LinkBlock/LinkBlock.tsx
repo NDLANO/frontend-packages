@@ -85,7 +85,7 @@ const LinkBlock = ({ title, language, date, url }: Props) => {
         {date && (
           <StyledDateContainer>
             <StyledCalenderEd />
-            <span>{date}</span>
+            {date}
           </StyledDateContainer>
         )}
       </InfoWrapper>

@@ -6,10 +6,9 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import { spacing, colors, fonts, breakpoints, mq } from '@ndla/core';
+import { spacing, fonts, breakpoints, mq } from '@ndla/core';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
 import ProgrammeCard, { Programme } from '../ProgrammeCard/ProgrammeCard';
 
@@ -40,7 +39,7 @@ const StyledAccordianRoot = styled(AccordionRoot)`
 const StyledAccordionHeader = styled(AccordionHeader)`
   font-family: ${fonts.sans};
   ${fonts.sizes('16px', '24px')};
-  font-weight: ${fonts.weight.semibold};
+  ${fonts.weight.semibold};
   :hover {
     text-decoration: none;
   }

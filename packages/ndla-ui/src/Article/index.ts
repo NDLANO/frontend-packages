@@ -11,14 +11,12 @@ import ArticleByline from './ArticleByline';
 import ArticleContent from './ArticleContent';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
-import ArticleSideBar from './ArticleSideBar';
 
 export {
   ArticleByline,
   ArticleContent,
   ArticleFootNotes,
   ArticleHeaderWrapper,
-  ArticleSideBar,
   ArticleTitle,
   ArticleIntroduction,
   ArticleWrapper,

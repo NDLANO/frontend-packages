@@ -34,7 +34,6 @@ export {
   ArticleTitle,
   ArticleWrapper,
   ArticleHeaderWrapper,
-  ArticleSideBar,
   default as Article,
 } from './Article';
 

@@ -17,7 +17,7 @@ const StyledDiv = styled.div`
 `;
 
 export default {
-  title: 'Enkle komponenter/Hero',
+  title: 'Components/Hero',
   component: Hero,
   tags: ['autodocs'],
   parameters: {

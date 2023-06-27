@@ -6,10 +6,9 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
-import { spacing, colors, misc, breakpoints, mq } from '@ndla/core';
+import { spacing, colors, misc, breakpoints, mq, fonts } from '@ndla/core';
 
 interface Image {
   src: string;
@@ -27,50 +26,58 @@ export interface Programme {
 }
 
 const StyledCardContainer = styled(SafeLink)`
-  ${mq.range({ from: breakpoints.tablet })} {
-    height: 350px;
-    width: 250px;
-  }
-  max-width: 350px;
-  height: 195px;
   display: flex;
   flex-direction: column;
   background-color: ${colors.background.default};
   border-radius: ${misc.borderRadius};
-  align-self: center;
   box-shadow: none;
+
   &:hover,
   &:focus-visible {
     text-decoration: underline ${colors.text.primary};
     text-underline-offset: 3px;
+  }
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    max-height: 350px;
+    max-width: 250px;
   }
 `;
 
 const StyledImg = styled.img`
   display: none;
   border-radius: ${misc.borderRadius} ${misc.borderRadius} 0 0;
+  width: 100%;
+
   &[data-is-mobile='true'] {
     ${mq.range({ until: breakpoints.tablet })} {
       display: block;
-      width: auto;
     }
   }
   &[data-is-mobile='false'] {
     ${mq.range({ from: breakpoints.tablet })} {
       display: block;
-      width: 350px;
     }
   }
 `;
 
 const StyledTitle = styled.span`
   display: flex;
+  min-height: 70px;
   align-items: center;
-  color: ${colors.text.primary};
-  height: 70px;
   padding-left: ${spacing.nsmall};
+
   border: 1px solid ${colors.brand.lighter};
   border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
+
+  weight: ${fonts.weight.semibold};
+  font-family: ${fonts.sans};
+  color: ${colors.text.primary};
+  ${fonts.sizes('16px', '24px')};
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${fonts.sizes('16px', '18px')};
+  }
 `;
 
 const ProgrammeCard = ({ id, title, desktopImage, mobileImage, url }: Programme) => {

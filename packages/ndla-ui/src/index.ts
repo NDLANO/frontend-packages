@@ -269,3 +269,4 @@ export type { GridType } from './Grid';
 export { Heading } from './Typography';
 export type { HeadingLevel } from './types';
 export { DefinitionTerm, DefinitionDescription } from './DefinitionList';
+export type { ProgrammeV2 } from './ProgrammeCard';

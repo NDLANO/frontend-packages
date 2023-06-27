@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import LinkBlock from './LinkBlock';
 import { defaultParameters } from '../../../../stories/defaults';

@@ -6,12 +6,11 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { Forward, CalendarEd } from '@ndla/icons/common';
 import { breakpoints, colors, spacing, mq } from '@ndla/core';
-import { Heading } from '..';
+import Heading from '../Typography/Heading';
 
 interface Props {
   title: string;
@@ -22,8 +21,8 @@ interface Props {
 
 const StyledForward = styled(Forward)`
   margin: 0 ${spacing.nsmall};
-  min-width: 20px;
-  min-height: 20px;
+  min-width: ${spacing.normal};
+  min-height: ${spacing.normal};
 `;
 
 const InfoWrapper = styled.div`

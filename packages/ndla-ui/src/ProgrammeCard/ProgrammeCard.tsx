@@ -70,8 +70,7 @@ const StyledTitle = styled.span`
   border: 1px solid ${colors.brand.lighter};
   border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
 
-  weight: ${fonts.weight.semibold};
-  font-family: ${fonts.sans};
+  font-weight: ${fonts.weight.semibold};
   color: ${colors.text.primary};
   ${fonts.sizes('16px', '24px')};
 
@@ -80,9 +79,9 @@ const StyledTitle = styled.span`
   }
 `;
 
-const ProgrammeCard = ({ id, title, desktopImage, mobileImage, url }: Programme) => {
+const ProgrammeCard = ({ title, desktopImage, mobileImage, url }: Programme) => {
   return (
-    <StyledCardContainer key={id} to={url}>
+    <StyledCardContainer to={url}>
       <StyledImg data-is-mobile="false" src={desktopImage.src} alt={desktopImage.alt} />
       <StyledImg data-is-mobile="true" src={mobileImage.src} alt={mobileImage.alt} />
       <StyledTitle>{title.title}</StyledTitle>

@@ -1195,11 +1195,11 @@ const messages = {
       drawerButton: 'Show folders and resources',
       drawerTitle: 'Folders and resources',
       description: {
-        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link, or you can bookmark the page.',
+        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link you received or bookmark the page.',
         info1:
           'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
         info2: 'You can use the menu to navigate through the articles.',
-        info3: 'If you want to come back to the folder later, you can use the link, or you can bookmark the page.',
+        info3: 'If you want to come back to the folder later, you can use the link you received or bookmark the page.',
       },
       willOpenInNewTab: 'Opens in a new tab.',
     },
@@ -1238,19 +1238,19 @@ const messages = {
 
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
-        text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
+        text: 'Use the heart button to save a resource. You will then get an option to store the resource in a folder.',
       },
       sharing: {
         title: 'Teachers can now share folders',
-        text: 'Click on the share-button to get a link you can share.',
+        text: 'Use the share button to get a link you can share.',
       },
       favoriteSubjects: {
         title: 'How to save your favorite subjects from NDLA',
-        text: 'Click on the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
+        text: 'Use the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
-        text: 'You can get to the folder overview by clicking on <strong>My folders</strong> on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+        text: 'Choose <strong>My folders</strong> to create new folders and subfolders. You can also create a new folder in the dialogue window that is activated when you mark the heart in a resource.',
       },
       tagInfo: {
         title: 'How to tag your favourite resources',

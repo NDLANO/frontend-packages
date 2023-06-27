@@ -70,7 +70,7 @@ const ProgrammeV2 = ({ programmes }: { programmes: Programme[] }) => {
       <MobilContainer>
         <StyledAccordianRoot type="single" collapsible>
           <img src="https://api.test.ndla.no/image-api/raw/IW5TJg5I.svg?width=600&ts=1687342895410" alt="" />
-          <AccordionItem value={'1'}>
+          <AccordionItem value="1">
             <StyledAccordionHeader>{t('programme.accordianHeader')}</StyledAccordionHeader>
             <AccordionContent>{renderProgrammeCards()}</AccordionContent>
           </AccordionItem>

@@ -13,7 +13,7 @@ import { programmeV2 } from '../../../../dummydata/mockPrograms';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'PATTERNS/ProgrammeV2',
+  title: 'Patterns/ProgrammeV2',
   component: ProgrammeV2,
   tags: ['autodocs'],
   parameters: {

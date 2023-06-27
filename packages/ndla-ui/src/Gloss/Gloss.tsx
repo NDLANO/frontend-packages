@@ -103,16 +103,26 @@ const Gloss = ({ title, glossData, audio }: Props) => {
           <GlossContainer>
             <GlossSpan lang={glossData.originalLanguage}>{glossData.gloss}</GlossSpan>
             {glossData.transcriptions.traditional && (
-              <span key={t(`gloss.transcriptions.traditional`)} lang={glossData.originalLanguage}>
+              <span
+                key={t(`gloss.transcriptions.traditional`)}
+                aria-label={t(`gloss.transcriptions.traditional`)}
+                lang={glossData.originalLanguage}
+              >
                 {glossData.transcriptions.traditional}
               </span>
             )}
             {glossData.transcriptions.pinyin && (
-              <span key={t(`gloss.transcriptions.pinyin`)} lang={glossData.originalLanguage}>
+              <span
+                key={t(`gloss.transcriptions.pinyin`)}
+                aria-label={t(`gloss.transcriptions.pinyin`)}
+                lang={glossData.originalLanguage}
+              >
                 {glossData.transcriptions.pinyin}
               </span>
             )}
-            {glossData.wordClass && <TypeSpan>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>}
+            {glossData.wordClass && (
+              <TypeSpan aria-label={t(`gloss.wordClass`)}>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>
+            )}
           </GlossContainer>
           {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
         </Wrapper>

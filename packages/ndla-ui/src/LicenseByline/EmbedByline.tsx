@@ -9,6 +9,7 @@
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import { ICopyright as ImageCopyright } from '@ndla/types-backend/image-api';
@@ -27,6 +28,7 @@ interface BaseProps {
   visibleAlt?: string;
   error?: true | false;
   first?: boolean;
+  inGrid?: boolean;
 }
 
 export interface EmbedBylineErrorProps extends BaseProps {
@@ -95,15 +97,23 @@ const BylineWrapper = styled.div`
   }
 `;
 
+const mobileStyling = css`
+  align-items: flex-start;
+  gap: ${spacing.xsmall};
+  flex-direction: column;
+`;
+
 const RightsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: ${spacing.nsmall};
 
+  &[data-grid='true'] {
+    ${mobileStyling}
+  }
+
   ${mq.range({ until: breakpoints.tablet })} {
-    align-items: flex-start;
-    gap: ${spacing.xsmall};
-    flex-direction: column;
+    ${mobileStyling}
   }
 `;
 
@@ -125,6 +135,7 @@ const EmbedByline = ({
   children,
   visibleAlt,
   first = true,
+  inGrid = false,
   ...props
 }: Props) => {
   const { t, i18n } = useTranslation();
@@ -149,7 +160,7 @@ const EmbedByline = ({
     <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-first={first}>
       {!!strippedDescription?.length && description && <LicenseDescription description={description} />}
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
-      <RightsWrapper>
+      <RightsWrapper data-grid={inGrid}>
         <LicenseLink license={license} asLink={!!license.url.length} />
         <LicenseInformationWrapper>
           <span>

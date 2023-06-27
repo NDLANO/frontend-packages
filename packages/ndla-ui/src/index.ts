@@ -34,7 +34,6 @@ export {
   ArticleTitle,
   ArticleWrapper,
   ArticleHeaderWrapper,
-  ArticleSideBar,
   default as Article,
 } from './Article';
 
@@ -90,6 +89,7 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
+  HeroContent,
 } from './Hero';
 
 export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter';
@@ -268,4 +268,6 @@ export { Grid } from './Grid';
 export type { GridType } from './Grid';
 export { Heading } from './Typography';
 export type { HeadingLevel } from './types';
+
+export { default as FrontpageArticle } from './FrontpageArticle';
 export { DefinitionTerm, DefinitionDescription } from './DefinitionList';

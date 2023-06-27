@@ -6,15 +6,90 @@
  *
  */
 
-import React, { ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
+import React, { HTMLAttributes, ReactNode } from 'react';
+import styled from '@emotion/styled';
+import { breakpoints, colors, mq, spacing, spacingUnit } from '@ndla/core';
+import {
+  ASSESSMENT_RESOURCES,
+  EXTERNAL_LEARNING_RESOURCES,
+  SOURCE_MATERIAL,
+  SUBJECT,
+  SUBJECT_MATERIAL,
+  TASKS_AND_ACTIVITIES,
+} from '../model/ContentType';
 
-import * as contentTypes from '../model/ContentType';
+const StyledDiv = styled.div`
+  background-repeat: repeat;
+  background-size: ${spacing.normal};
+  background-color: ${colors.brand.greyLightest};
 
-const classes = new BEMHelper({
-  name: 'hero',
-  prefix: 'c-',
-});
+  ${mq.range({ from: breakpoints.tablet })} {
+    min-height: 246px;
+    padding-bottom: ${spacingUnit * 6.5}px;
+  }
+
+  &[data-contenttype='subject-material'] {
+    background-color: ${colors.subjectMaterial.light};
+  }
+
+  &[data-contenttype='tasks-and-activities'] {
+    background-color: ${colors.tasksAndActivities.background};
+  }
+
+  &[data-contenttype='assessment-resources'] {
+    background-color: ${colors.assessmentResource.background};
+  }
+
+  &[data-contenttype='subject'] {
+    background-color: ${colors.subject.light};
+  }
+
+  &[data-contenttype='external-learning-resources'] {
+    background-color: ${colors.externalLearningResource.background};
+  }
+
+  &[data-contenttype='source-material'] {
+    background-color: ${colors.sourceMaterial.light};
+  }
+
+  &[data-contenttype='beta'] {
+    background-color: ${colors.brand.primary};
+  }
+
+  &[data-contenttype='ndla-film has-image'],
+  &[data-contenttype='ndla-film'] {
+    background: ${colors.ndlaFilm.filmColor};
+
+    ${mq.range({ from: breakpoints.tablet })} {
+      height: 2000px;
+      margin-bottom: -1910px;
+    }
+
+    &[data-contenttype='ndla-film has-image'] {
+      ${mq.range({ from: breakpoints.tablet })} {
+        margin-bottom: -1800px;
+        @media (min-height: 720px) {
+          margin-bottom: -1750px;
+        }
+        @media (min-height: 1020px) {
+          margin-bottom: -1700px;
+        }
+      }
+    }
+
+    ${mq.range({ until: breakpoints.tablet })} {
+      + div article.c-article {
+        margin-left: -${spacing.normal};
+        margin-right: -${spacing.normal};
+        margin-top: 0;
+        background: ${colors.white};
+        padding-left: ${spacing.normal};
+        padding-right: ${spacing.normal};
+        padding-top: ${spacing.large};
+      }
+    }
+  }
+`;
 
 export type HeroContentType =
   | 'subject-material'
@@ -27,32 +102,29 @@ export type HeroContentType =
   | 'topic'
   | 'beta'
   | 'ndla-film'
-  | 'ndla-film has-image';
+  | 'ndla-film has-image'
+  | 'frontpage-article';
 
-interface HeroProps {
-  children?: ReactNode;
+interface HeroProps extends HTMLAttributes<HTMLDivElement> {
   contentType?: HeroContentType;
 }
 
 export const Hero = ({ children, contentType }: HeroProps) => (
-  <div {...classes('', contentType)}>{children || null}</div>
+  <StyledDiv data-contenttype={contentType}>{children || null}</StyledDiv>
 );
 
 interface Props {
   children?: ReactNode;
+  hasImage?: boolean;
 }
-export const SubjectMaterialHero = (props: Props) => <Hero contentType={contentTypes.SUBJECT_MATERIAL} {...props} />;
-export const TasksAndActivitiesHero = (props: Props) => (
-  <Hero contentType={contentTypes.TASKS_AND_ACTIVITIES} {...props} />
-);
-export const AssessmentResourcesHero = (props: Props) => (
-  <Hero contentType={contentTypes.ASSESSMENT_RESOURCES} {...props} />
-);
-export const SubjectHero = (props: Props) => <Hero contentType={contentTypes.SUBJECT} {...props} />;
+export const SubjectMaterialHero = (props: Props) => <Hero contentType={SUBJECT_MATERIAL} {...props} />;
+export const TasksAndActivitiesHero = (props: Props) => <Hero contentType={TASKS_AND_ACTIVITIES} {...props} />;
+export const AssessmentResourcesHero = (props: Props) => <Hero contentType={ASSESSMENT_RESOURCES} {...props} />;
+export const SubjectHero = (props: Props) => <Hero contentType={SUBJECT} {...props} />;
 export const ExternalLearningResourcesHero = (props: Props) => (
-  <Hero contentType={contentTypes.EXTERNAL_LEARNING_RESOURCES} {...props} />
+  <Hero contentType={EXTERNAL_LEARNING_RESOURCES} {...props} />
 );
-export const SourceMaterialHero = (props: Props) => <Hero contentType={contentTypes.SOURCE_MATERIAL} {...props} />;
-export const NdlaFilmHero = ({ hasImage, ...rest }: Props & { hasImage?: boolean }) => (
+export const SourceMaterialHero = (props: Props) => <Hero contentType={SOURCE_MATERIAL} {...props} />;
+export const NdlaFilmHero = ({ hasImage, ...rest }: Props) => (
   <Hero {...rest} contentType={hasImage ? 'ndla-film has-image' : 'ndla-film'} />
 );

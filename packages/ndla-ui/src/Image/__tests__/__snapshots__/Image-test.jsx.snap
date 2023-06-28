@@ -5,6 +5,10 @@ exports[`Image renderers correctly 1`] = `
   position: relative;
 }
 
+.emotion-0 picture {
+  width: 100%;
+}
+
 .emotion-0[data-svg='true'] {
   display: -webkit-box;
   display: -webkit-flex;
@@ -53,6 +57,10 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   position: relative;
 }
 
+.emotion-0 picture {
+  width: 100%;
+}
+
 .emotion-0[data-svg='true'] {
   display: -webkit-box;
   display: -webkit-flex;
@@ -99,6 +107,10 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 exports[`Lazyloaded image renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+}
+
+.emotion-0 picture {
+  width: 100%;
 }
 
 .emotion-0[data-svg='true'] {

@@ -27,16 +27,6 @@ const StyledArticle = styled.article`
   }
 `;
 
-const StyledLayoutItem = styled(LayoutItem)`
-  > section {
-    > figure,
-    > iframe {
-      width: 100% !important;
-      left: 0;
-    }
-  }
-`;
-
 const StyledIntroduction = styled.div`
   font-weight: ${fonts.weight.light};
   font-family: ${fonts.sans};
@@ -55,20 +45,20 @@ export const FrontpageArticle = ({ article, id, isWide }: Props) => {
   if (isWide) {
     return (
       <StyledArticle data-wide={isWide}>
-        <StyledLayoutItem>{content}</StyledLayoutItem>
+        <LayoutItem>{content}</LayoutItem>
       </StyledArticle>
     );
   }
 
   return (
     <StyledArticle>
-      <StyledLayoutItem>
+      <LayoutItem>
         <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
           {title}
         </Heading>
         <StyledIntroduction>{introduction}</StyledIntroduction>
-      </StyledLayoutItem>
-      <StyledLayoutItem>{content}</StyledLayoutItem>
+      </LayoutItem>
+      <LayoutItem>{content}</LayoutItem>
     </StyledArticle>
   );
 };

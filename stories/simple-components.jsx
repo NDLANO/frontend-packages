@@ -18,7 +18,6 @@ import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import DrawerExample from './atoms/DrawerExample';
-import SolutionTableExample from './molecules/SolutionExample';
 import AudioExample from './article/AudioExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
@@ -580,13 +579,6 @@ storiesOf('Components', module)
     <div>
       <StoryIntro title="Fasitboks" />
       <StoryBody>
-        <details className="c-details--solution-box ">
-          <summary>Vis fasit (ekspanderende på desktop)</summary>
-          <div className="c-details__content">
-            <SolutionTableExample />
-          </div>
-        </details>
-
         <details className="c-details--solution-box ">
           <summary>Vis fasit</summary>
           <div className="c-details__content">

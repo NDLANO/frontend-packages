@@ -47,7 +47,7 @@ const VideoContent = ({ t }) => (
         { id: 'video-2', title: 'Betydning og behov' },
       ].map((el) => (
         <MediaListItem key={el.id}>
-          <MediaListItemImage>
+          <MediaListItemImage canOpen>
             <a
               href="https://www.youtube.com/watch?v=hjujTTRB01E"
               target="_blank"
@@ -406,7 +406,7 @@ const OtherContent = ({ t }) => (
     <MediaList>
       {H5PExamples.map((example) => (
         <MediaListItem key={example.id}>
-          <MediaListItemImage>
+          <MediaListItemImage canOpen>
             <a
               href={example.url}
               target="_blank"

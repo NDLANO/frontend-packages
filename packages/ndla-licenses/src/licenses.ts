@@ -10,7 +10,7 @@ import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA } from './licenseRights';
 import { getLocaleOrDefault, LicenseType, Locale } from './types';
 
 const freeUseNB = 'Offentlig eie';
-const freeUseNN = 'Offentleg eie';
+const freeUseNN = 'Offentleg eige';
 const freeUseEN = 'Public domain';
 const restrictedUseNB = 'Begrenset bruk';
 const restrictedUseNN = 'Begrenset bruk';

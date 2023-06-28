@@ -143,7 +143,7 @@ const colors = {
    * Icon colors
    * */
   icon: {
-    iconBlue: '#4E51F2',
+    iconBlue: '#4e51f2',
   },
 };
 

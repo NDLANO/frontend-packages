@@ -1310,6 +1310,7 @@ const messages = {
   },
   programme: {
     grades: 'Trinn',
+    accordianHeader: 'Alle utdanningsprogram',
   },
   embed: {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',

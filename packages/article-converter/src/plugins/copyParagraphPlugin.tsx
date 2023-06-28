@@ -7,12 +7,15 @@
  */
 
 import { CopyParagraphButtonV2 } from '@ndla/ui';
-import { domToReact } from 'html-react-parser';
+import { Element, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
 export const copyParagraphPlugin: PluginType = (node, opts) => {
-  return (
-    <CopyParagraphButtonV2 copyText={node.attribs['data-text']}>
-      {domToReact(node.children, opts)}
-    </CopyParagraphButtonV2>
-  );
+  if ((node.parent as Element | undefined)?.name === 'section') {
+    return (
+      <CopyParagraphButtonV2 copyText={node.attribs['data-text']}>
+        {domToReact(node.children, opts)}
+      </CopyParagraphButtonV2>
+    );
+  }
+  return null;
 };

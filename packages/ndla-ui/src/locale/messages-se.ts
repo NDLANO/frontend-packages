@@ -1193,12 +1193,11 @@ const messages = {
       learningpathUnsupported:
         'Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
-        all: 'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.\n\nSáhtát bláđet artihkkaliid fálu vehkiin.\n\nJus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
+        all: 'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.\n\nDu kan bla i artiklane ved å bruke menyen.\n\nDersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk, eller du kan bokmerke sida.',
         info1:
           'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.',
         info2: 'Sáhtát bláđet artihkkaliid fálu vehkiin.',
-        info3:
-          'Jus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
+        info3: 'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk, eller du kan bokmerke sida.',
       },
       willOpenInNewTab: 'Åpnes i ny fane.',
     },

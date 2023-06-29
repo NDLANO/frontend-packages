@@ -120,13 +120,19 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
 
   const figureId = `figure-${seq}-${data.id}`;
 
+  const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
+
   return (
     <Figure
       id={figureId}
       type={imageSizes ? undefined : figureType}
       className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
     >
-      <ImageWrapper src={embedData.pageUrl || data.image.imageUrl} crop={crop} size={embedData.size}>
+      <ImageWrapper
+        src={!isCopyrighted ? embedData.pageUrl || data.image.imageUrl : undefined}
+        crop={crop}
+        size={embedData.size}
+      >
         <Image
           focalPoint={focalPoint}
           contentType={data.image.contentType}
@@ -155,7 +161,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
           visibleAlt={previewAlt ? embed.embedData.alt : ''}
           inGrid={inGrid}
         >
-          {HeartButton && data.copyright.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
+          {HeartButton && !isCopyrighted && <HeartButton embed={embed} />}
         </EmbedByline>
       )}
     </Figure>
@@ -163,7 +169,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
 };
 
 interface ImageWrapperProps {
-  src: string;
+  src?: string;
   children: React.ReactNode;
   crop?: {
     startX: number;
@@ -179,7 +185,7 @@ const hideByline = (size?: string): boolean => {
 
 const ImageWrapper = ({ src, crop, size, children }: ImageWrapperProps) => {
   const { t } = useTranslation();
-  if (isSmall(size) || hideByline(size)) {
+  if (isSmall(size) || hideByline(size) || !src) {
     return <>{children}</>;
   }
 

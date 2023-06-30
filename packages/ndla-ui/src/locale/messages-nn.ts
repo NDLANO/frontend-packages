@@ -451,7 +451,7 @@ const messages = {
       'Utgåtte fag blir det ikkje undervist i lenger, men det kan framleis vere mogleg å ta eksamen i faget som privatist.',
   },
   article: {
-    lastUpdated: 'Sist faglig oppdatert',
+    lastUpdated: 'Sist fagleg oppdatert',
     edition: 'Utgåve',
     publisher: 'Utgjevar',
     closeLabel: 'Lukk',

@@ -13,14 +13,14 @@ const freeUseNB = 'Offentlig eie';
 const freeUseNN = 'Offentleg eige';
 const freeUseEN = 'Public domain';
 const restrictedUseNB = 'Begrenset bruk';
-const restrictedUseNN = 'Begrenset bruk';
+const restrictedUseNN = 'Begrensa bruk';
 const restrictedUseEN = 'Restricted use';
 const restrictedReuseNB = 'Begrenset gjenbruk';
-const restrictedReuseNN = 'Begrenset gjenbruk';
+const restrictedReuseNN = 'Begrensa gjenbruk';
 const restrictedReuseEN = 'Restricted reuse';
 
 const openLicenseLinkTextNB = 'Lær mer om åpne lisenser';
-const openLicenseLinkTextNN = 'Lær mer om åpne lisenser';
+const openLicenseLinkTextNN = 'Lær meir om opne lisensar';
 const openLicenseLinkTextEN = 'Learn more about open licenses';
 
 const naNB = 'N/A - ikke relevant';
@@ -38,7 +38,7 @@ const byncnd: LicenseType = {
     linkText: openLicenseLinkTextNN,
     abbreviation: byncndAbbrev,
     description:
-      'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavspersonen, men dei kan ikkje endra det på nokon måte, eller bruke det kommersielt.',
+      'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavar, men dei kan ikkje endra det på nokon måte, eller bruke det kommersielt.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -48,7 +48,7 @@ const byncnd: LicenseType = {
     linkText: openLicenseLinkTextNB,
     abbreviation: byncndAbbrev,
     description:
-      'Denne lisensen er den mest restriktive av våre seks kjernelisenser. Den tillater andre å laste ned ditt verk og dele det med andre så lenge du er navngitt som opphavspersonen, men de kan ikke endre det på noen måte, eller bruke det kommersielt.',
+      'Denne lisensen er den mest restriktive av våre seks kjernelisenser. Den tillater andre å laste ned ditt verk og dele det med andre så lenge du er navngitt som opphaver, men de kan ikke endre det på noen måte, eller bruke det kommersielt.',
   },
 
   en: {
@@ -75,7 +75,7 @@ const byncsa: LicenseType = {
     linkText: openLicenseLinkTextNN,
     abbreviation: byncsaAbbrev,
     description:
-      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt for ikkje-kommersielle formål. Deira verk må namngje deg som den opprinnelige opphavspersonen og avleia verk må bera ein lisens som svarar til denne.',
+      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt for ikkje-kommersielle formål. Deira verk må namngje deg som den opprinnelige opphavaren og avleia verk må bera ein lisens som svarar til denne.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -85,7 +85,7 @@ const byncsa: LicenseType = {
     linkText: openLicenseLinkTextNB,
     abbreviation: byncsaAbbrev,
     description:
-      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som den opprinnelige opphavspersonen og avledete verk må bære en tilsvarende lisens.',
+      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som den opprinnelige opphaveren og avledete verk må bære en tilsvarende lisens.',
   },
 
   en: {
@@ -112,7 +112,7 @@ const bync: LicenseType = {
     linkText: openLicenseLinkTextNN,
     abbreviation: byncAbbrev,
     description:
-      'Denne lisensen let andre distribuer, endre, remixe, og byggje videre på verket ditt for ikkje-kommersielle formål. Verket deira må namngje deg som opphavsperson og også vera ikkje-kommersielle, men dei treng ikkje krevja at verk avleda av deira ber dei same vilkåra.',
+      'Denne lisensen let andre distribuer, endre, remixe, og byggje videre på verket ditt for ikkje-kommersielle formål. Verket deira må namngje deg som opphavar og også vera ikkje-kommersielle, men dei treng ikkje krevja at verk avleda av deira ber dei same vilkåra.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -122,7 +122,7 @@ const bync: LicenseType = {
     linkText: openLicenseLinkTextNB,
     abbreviation: byncAbbrev,
     description:
-      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som opphavsperson og også være ikke-kommersielle, men de behøver ikke kreve at verk avledet fra deres bærer de samme vilkårene.',
+      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som opphaver og også være ikke-kommersielle, men de behøver ikke kreve at verk avledet fra deres bærer de samme vilkårene.',
   },
 
   en: {
@@ -186,7 +186,7 @@ const bysa: LicenseType = {
     linkText: openLicenseLinkTextNN,
     abbreviation: bysaAbbrev,
     description:
-      'Fri gjenbruk ved namngiving. Namngiving vil seie at du oppgir namnet til opphavspersonen/ane. Om du deler, må andre også få lov til å dele vidare på same vilkår. Dette sikrar vidare gjenbruk og bidreg til delingskultur.',
+      'Fri gjenbruk ved namngiving. Namngiving vil seie at du oppgir namnet til opphavar(ane). Om du deler, må andre også få lov til å dele vidare på same vilkår. Dette sikrar vidare gjenbruk og bidreg til delingskultur.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -196,7 +196,7 @@ const bysa: LicenseType = {
     linkText: openLicenseLinkTextNB,
     abbreviation: bysaAbbrev,
     description:
-      'Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til opphavspersonen(e). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.',
+      'Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til opphaver(ene). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.',
   },
 
   en: {
@@ -223,7 +223,7 @@ const by: LicenseType = {
     linkText: openLicenseLinkTextNN,
     abbreviation: byAbbrev,
     description:
-      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, så lenge dei namngir deg som den opphavlege opphavspersonen. Dette er den mest fleksible og opne lisensen vi tilbyr. Den vert tilrådd om du ynsker maksimal spreiing og bruk av materiale under ein CC-lisens.',
+      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, så lenge dei namngir deg som den opphavlege opphavaren. Dette er den mest fleksible og opne lisensen vi tilbyr. Den vert tilrådd om du ynsker maksimal spreiing og bruk av materiale under ein CC-lisens.',
   },
   nb: {
     short: freeUseNB,
@@ -233,7 +233,7 @@ const by: LicenseType = {
     linkText: openLicenseLinkTextNB,
     abbreviation: byAbbrev,
     description:
-      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphavspersonen. Dette er den mest fleksible og åpne lisensen vi tilbyr. Den anbefales dersom du ønsker maksimal spredning og bruk av materiale under en CC-lisens.',
+      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphaveren. Dette er den mest fleksible og åpne lisensen vi tilbyr. Den anbefales dersom du ønsker maksimal spredning og bruk av materiale under en CC-lisens.',
   },
 
   en: {

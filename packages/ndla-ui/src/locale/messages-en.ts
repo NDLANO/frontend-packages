@@ -491,6 +491,7 @@ const messages = {
     closeCompentenceGoalsFilter: 'Close filter',
     competenceGoalsNarrowBackButton: 'Go back',
     competenceGoalResourceSearchText: 'View resources to competence goal {{goal}}',
+    coreResourceSearchText: 'View resources to core element {{coreResourceText}}',
     competenceGoalShowExtra: 'Show',
     competenceGoalCloseExtra: 'Hide',
     competenceCoreLabel: 'Core element',

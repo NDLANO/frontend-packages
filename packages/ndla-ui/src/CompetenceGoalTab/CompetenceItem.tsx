@@ -12,7 +12,8 @@ import { MenuBook } from '@ndla/icons/action';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import CompetenceGoalItem from './CompetenceGoalItem';
-import { CompetenceGoalsItemType } from '../types';
+import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
+import CoreElementItem from './CoreElementItem';
 
 const GroupedGoalsWrapper = styled.div`
   margin: 24px 0 52px;
@@ -53,11 +54,7 @@ export type CompetenceGoals = {
 };
 export type CoreElementItems = {
   title?: string;
-  elements: {
-    id: string;
-    name: string;
-    text: string;
-  }[];
+  elements: CoreElementsItemType[];
 };
 export type ListItemProp = {
   id: string;
@@ -74,6 +71,7 @@ export type ListItemProps = {
 const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
   const { t } = useTranslation();
   const { type, groupedCompetenceGoals, groupedCoreElementItems } = item;
+
   switch (type) {
     case 'competenceGoals':
       return (
@@ -115,12 +113,17 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
                 <MenuBook />
                 {group.title}
               </GroupedGoalsTitle>
-              {group.elements.map((coreItem) => (
-                <div key={coreItem.id}>
-                  <h3>{coreItem.name}</h3>
-                  <p>{coreItem.text}</p>
-                </div>
-              ))}
+              <GoalList>
+                {group.elements.map((coreItem) => (
+                  <CoreElementItem
+                    key={coreItem.id}
+                    id={coreItem.id}
+                    title={coreItem.title}
+                    text={coreItem.text}
+                    url={coreItem.url}
+                  />
+                ))}
+              </GoalList>
             </GroupedCoreItemsWrapper>
           ))}
         </>

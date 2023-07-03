@@ -490,6 +490,7 @@ const messages = {
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
     competenceGoalResourceSearchText: 'Vis ressursar til kompetansemål {{goal}}',
+    coreResourceSearchText: 'Vis ressursar til kjerneelement {{coreResourceText}}',
     competenceGoalShowExtra: 'Vis støtte til læreplanen',
     competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
     competenceCoreLabel: 'Kjerneelement',

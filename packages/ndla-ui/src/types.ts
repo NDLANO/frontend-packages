@@ -104,17 +104,25 @@ export type elementRectType = {
   fromScale: number;
 };
 
-export type CompetenceGoalsItemType = {
+interface CompetenceGoals {
   id: string;
   title: string;
+  isOembed?: boolean;
+}
+
+export interface CompetenceGoalsItemType extends CompetenceGoals {
   goals: {
     id: string;
     text: string;
     url?: string;
   }[];
   selected?: boolean;
-  isOembed?: boolean;
-};
+}
+
+export interface CoreElementsItemType extends CompetenceGoals {
+  text?: string;
+  url?: string;
+}
 
 export type NotionMedia = {
   type: 'video' | 'other';

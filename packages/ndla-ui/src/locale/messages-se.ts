@@ -491,6 +491,7 @@ const messages = {
     closeCompentenceGoalsFilter: 'Govčča filtara',
     competenceGoalsNarrowBackButton: 'Ruovttoluotta',
     competenceGoalResourceSearchText: 'Vis ressursar til kompetansemål {{goal}}',
+    coreResourceSearchText: 'Vis ressurser til kjerneelement {{coreResourceText}}',
     competenceGoalShowExtra: 'Čájet oahppoplána doarjaga',
     competenceGoalCloseExtra: 'Čiega oahppoplána doarjaga',
     competenceCoreLabel: 'Guovddášelemeanta',

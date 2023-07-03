@@ -491,6 +491,7 @@ const messages = {
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
     competenceGoalResourceSearchText: 'Ohtsh gaajhkh vierhtieh mah daan maahtoeålman sjiehtieh',
+    coreResourceSearchText: 'Vis ressurser til kjerneelement {{coreResourceText}}',
     competenceGoalShowExtra: 'Vuesehth learoesoejkesjen dåarjoem',
     competenceGoalCloseExtra: 'Tjïekh learoesoejkesjen dåarjoem',
     competenceCoreLabel: 'Jarngebiehkie',

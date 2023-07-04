@@ -19,99 +19,117 @@ const meta: Meta<typeof AccordionMenu> = {
     ...defaultParameters,
   },
   args: {
-    data: [
+    Menu: [
       {
         title: 'Om NDLA',
         language: 'nb',
-        subMeny: [
+        slug: 'om-ndla',
+        menu: [
           {
             title: 'Om NDLA',
             language: 'nb',
-            link: '',
+            slug: 'om-ndla',
+            path: '',
           },
         ],
       },
       {
         title: 'Hvem er vi?',
         language: 'nb',
-        subMeny: [
+        slug: 'hvem-er vi',
+        menu: [
           {
             title: 'Organisering',
             language: 'nb',
-            link: '',
+            slug: 'organisering',
+            path: '',
           },
           {
             title: 'Nøkkelpersoner',
             language: 'nb',
-            link: '',
+            slug: 'nøkkelpersoner',
+            path: '',
           },
           {
             title: 'Vedtekter',
             language: 'nb',
-            link: '',
+            slug: 'vedtekter',
+            path: '',
           },
           {
             title: 'NDLAs historie',
             language: 'nb',
-            link: '',
+            slug: 'ndlas-historie',
+            path: '',
           },
         ],
       },
       {
         title: 'Hva gjør vi?',
+        slug: 'hva-gjør-vi',
         language: 'nb',
-        subMeny: [
+        menu: [
           {
             title: 'Vårt samfunnsoppdrag',
             language: 'nb',
-            link: '',
+            slug: 'vårt-samfunnsoppdrag',
+            path: '',
           },
           {
             title: 'Visjoner og verdier',
             language: 'nb',
-            link: '',
+            slug: 'visjoner-og-verdier',
+            path: '',
           },
           {
             title: 'Våre samarbeid',
             language: 'nb',
-            link: '',
+            slug: 'våre-samarbeid',
+            path: '',
           },
           {
             title: 'Tall og rapporter',
             language: 'nb',
-            link: '',
+            slug: 'tall-og-rapporter',
+            path: '',
           },
         ],
       },
       {
         title: 'Jobb hos oss',
         language: 'nb',
-        subMeny: [
+        slug: 'jobb-hos-oss',
+        menu: [
           {
             title: 'Jobb hos NDLA',
             language: 'nb',
-            link: '',
+            slug: 'jobb-hos-ndla',
+            path: '',
           },
           {
             title: 'Ledige stillinger',
             language: 'nb',
-            link: '',
+            slug: 'ledige-stillinger',
+            path: '',
           },
         ],
       },
       {
         title: 'Kontakt oss',
+        slug: 'kontakt-oss',
         language: 'nb',
-        subMeny: [
+        menu: [
           {
             title: 'Kontaktinformasjon',
             language: 'nb',
-            link: '',
+            slug: 'kontaktinformasjon',
+            path: '',
           },
           {
             title: 'Følg NDLA',
+            slug: 'følg-ndla',
             language: 'nb',
-            link: '',
+            path: '',
           },
         ],
       },

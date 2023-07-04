@@ -12,13 +12,15 @@ import SafeLink from '@ndla/safelink';
 import { spacing, colors, fonts, breakpoints, mq } from '@ndla/core';
 
 export interface Props {
-  data: {
+  Menu: {
     title: string;
     language: string;
-    subMeny: {
+    slug: String;
+    menu: {
       title: string;
       language: string;
-      link: string;
+      slug: String;
+      path: string;
     }[];
   }[];
 }
@@ -66,16 +68,16 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const AccordionMenu = ({ data }: Props) => {
+const AccordionMenu = ({ Menu }: Props) => {
   return (
     <AccordionContainer>
-      {data.map((item, index) => (
+      {Menu.map((item, index) => (
         <AccordionRoot key={index} type="single" collapsible>
           <StyledAccordionItem value="1">
             <StyledAccordionHeader lang={item.language}>{item.title}</StyledAccordionHeader>
             <StyledAccordionContent>
-              {item.subMeny.map((subItem, subIndex) => (
-                <StyledSafeLink key={subIndex} to={subItem.link}>
+              {item.menu.map((subItem, subIndex) => (
+                <StyledSafeLink key={subIndex} to={subItem.path}>
                   {subItem.title}
                 </StyledSafeLink>
               ))}

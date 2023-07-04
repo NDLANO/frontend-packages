@@ -121,6 +121,7 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
                     title={coreItem.title}
                     text={coreItem.text}
                     url={coreItem.url}
+                    isOembed={isOembed}
                   />
                 ))}
               </GoalList>

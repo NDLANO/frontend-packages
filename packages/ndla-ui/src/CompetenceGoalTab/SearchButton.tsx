@@ -14,14 +14,14 @@ import { SafeLinkButton } from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
 
 const StyledSearch = styled(Search)`
-  height: 24px;
-  width: 24px;
-  min-width: 24px;
+  height: ${spacing.normal};
+  width: ${spacing.normal};
+  min-width: ${spacing.normal};
 `;
 
 const GoalSearchWrapper = styled.div`
   margin-left: ${spacing.normal};
-  flex: 0 0 289px;
+  flex: 1 0 30%;
   span {
     text-align: left;
   }

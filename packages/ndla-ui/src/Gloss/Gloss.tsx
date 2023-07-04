@@ -121,7 +121,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               </span>
             )}
             {glossData.wordClass && (
-              <TypeSpan aria-label={t(`gloss.wordClass`)}>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>
+              <TypeSpan aria-label={t('gloss.wordClass')}>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>
             )}
           </GlossContainer>
           {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}

@@ -26,7 +26,7 @@ const CompetenceGoalItem = ({ title, goals, isOembed }: CompetenceGoalsItemType)
                 <SearchButton
                   url={goal.url}
                   isOembed={isOembed}
-                  searchText={t('competenceGoals.competenceGoalResourceSearchText', { goal: goal.id })}
+                  searchText={t('competenceGoals.competenceGoalResourceSearchText', { code: goal.id })}
                 />
               )}
             </ListItemContent>

@@ -25,7 +25,7 @@ const CoreElementItem = ({ title, text, url, id, isOembed }: CoreElementsItemTyp
               <SearchButton
                 url={url}
                 isOembed={isOembed}
-                searchText={t('competenceGoals.coreResourceSearchText', { coreResourceText: id })}
+                searchText={t('competenceGoals.coreResourceSearchText', { code: id })}
               />
             )}
           </ListItemContent>

@@ -104,8 +104,8 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             <GlossSpan lang={glossData.originalLanguage}>{glossData.gloss}</GlossSpan>
             {glossData.transcriptions.traditional && (
               <span
-                key={t(`gloss.transcriptions.traditional`)}
-                aria-label={t(`gloss.transcriptions.traditional`)}
+                key={t('gloss.transcriptions.traditional')}
+                aria-label={t('gloss.transcriptions.traditional')}
                 lang={glossData.originalLanguage}
               >
                 {glossData.transcriptions.traditional}
@@ -113,8 +113,8 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             )}
             {glossData.transcriptions.pinyin && (
               <span
-                key={t(`gloss.transcriptions.pinyin`)}
-                aria-label={t(`gloss.transcriptions.pinyin`)}
+                key={t('gloss.transcriptions.pinyin')}
+                aria-label={t('gloss.transcriptions.pinyin')}
                 lang={glossData.originalLanguage}
               >
                 {glossData.transcriptions.pinyin}

@@ -104,24 +104,25 @@ export type elementRectType = {
   fromScale: number;
 };
 
-interface CompetenceGoals {
+interface GrepCode {
   id: string;
   title: string;
-  isOembed?: boolean;
 }
 
-export interface CompetenceGoalsItemType extends CompetenceGoals {
+export interface CompetenceGoalsItemType extends GrepCode {
   goals: {
     id: string;
     text: string;
     url?: string;
   }[];
   selected?: boolean;
+  isOembed?: boolean;
 }
 
-export interface CoreElementsItemType extends CompetenceGoals {
+export interface CoreElementsItemType extends GrepCode {
   text?: string;
   url?: string;
+  isOembed?: boolean;
 }
 
 export type NotionMedia = {

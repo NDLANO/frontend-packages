@@ -139,7 +139,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                     <>
                       <TranslatedText>{translation.example}</TranslatedText>
                       {translation.transcriptions.pinyin && (
-                        <TranslatedText key={t(`gloss.transcriptions.pinyin`)} lang={glossData.originalLanguage}>
+                        <TranslatedText key={t('gloss.transcriptions.pinyin')} lang={glossData.originalLanguage}>
                           {translation.transcriptions?.pinyin}
                         </TranslatedText>
                       )}

@@ -7,11 +7,13 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { CompetenceGoalsItemType } from '../types';
 import SearchButton from './SearchButton';
 import { GoalItem, GoalList, GoalText, GoalsHeading, ListItemContent } from './styles';
 
 const CompetenceGoalItem = ({ title, goals, isOembed }: CompetenceGoalsItemType) => {
+  const { t } = useTranslation();
   return (
     <GoalItem>
       <GoalsHeading>{title}</GoalsHeading>
@@ -20,7 +22,13 @@ const CompetenceGoalItem = ({ title, goals, isOembed }: CompetenceGoalsItemType)
           <li key={`${goal.text}${index}`}>
             <ListItemContent>
               <GoalText>{goal.text}</GoalText>
-              {goal.url && <SearchButton url={goal.url} id={goal.id} isOembed={isOembed} />}
+              {goal.url && (
+                <SearchButton
+                  url={goal.url}
+                  isOembed={isOembed}
+                  searchText={t('competenceGoals.competenceGoalResourceSearchText', { goal: goal.id })}
+                />
+              )}
             </ListItemContent>
           </li>
         ))}

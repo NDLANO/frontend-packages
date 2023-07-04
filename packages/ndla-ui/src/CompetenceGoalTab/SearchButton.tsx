@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
-import { useTranslation } from 'react-i18next';
 
 const StyledSearch = styled(Search)`
   height: ${spacing.normal};
@@ -35,23 +34,16 @@ const GoalSearchWrapper = styled.div`
 
 interface SearchButtonProps {
   url: string;
-  id: string;
+  searchText: string;
   isOembed?: boolean;
-  variant?: 'competenceGoal' | 'coreElement';
 }
 
-const SearchButton = ({ url, id, isOembed, variant = 'competenceGoal' }: SearchButtonProps) => {
-  const { t } = useTranslation();
-  const isCompetenceGoal = variant === 'competenceGoal';
+const SearchButton = ({ url, isOembed, searchText }: SearchButtonProps) => {
   return (
     <GoalSearchWrapper>
       <SafeLinkButton variant="outline" to={url} target={isOembed ? '_blank' : '_self'}>
         <StyledSearch size="large" />
-        <span>
-          {isCompetenceGoal
-            ? t('competenceGoals.competenceGoalResourceSearchText', { goal: id })
-            : t('competenceGoals.coreResourceSearchText', { coreResourceText: id })}
-        </span>
+        <span>{searchText}</span>
       </SafeLinkButton>
     </GoalSearchWrapper>
   );

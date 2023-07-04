@@ -7,11 +7,13 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { CoreElementsItemType } from '../types';
 import SearchButton from './SearchButton';
 import { GoalItem, GoalList, GoalText, GoalsHeading, ListItemContent } from './styles';
 
 const CoreElementItem = ({ title, text, url, id, isOembed }: CoreElementsItemType) => {
+  const { t } = useTranslation();
   return (
     <GoalItem>
       <GoalsHeading>{title}</GoalsHeading>
@@ -19,7 +21,13 @@ const CoreElementItem = ({ title, text, url, id, isOembed }: CoreElementsItemTyp
         <li>
           <ListItemContent>
             <GoalText>{text}</GoalText>
-            {url && <SearchButton url={url} id={id} variant="coreElement" isOembed={isOembed} />}
+            {url && (
+              <SearchButton
+                url={url}
+                isOembed={isOembed}
+                searchText={t('competenceGoals.coreResourceSearchText', { coreResourceText: id })}
+              />
+            )}
           </ListItemContent>
         </li>
       </GoalList>

@@ -40,8 +40,8 @@ const licenses = {
   })),
 };
 
-storiesOf('Other/Lisensgivning', module)
-  .add('Lisenser', () => (
+storiesOf('Other/Licensing', module)
+  .add('Licenses', () => (
     <div>
       <StoryIntro title="Lisenser">
         <p>Liste over lisenser som brukes på ndla</p>
@@ -88,7 +88,7 @@ storiesOf('Other/Lisensgivning', module)
       </StoryBody>
     </div>
   ))
-  .add('Lisenstekster', () => (
+  .add('License texts', () => (
     <div>
       <StoryIntro title="Lisenstekster">
         <p>Lisenstekster og merking</p>
@@ -107,7 +107,7 @@ storiesOf('Other/Lisensgivning', module)
       </StoryBody>
     </div>
   ))
-  .add('Modellklarering', () => (
+  .add('Model clearance', () => (
     <div>
       <StoryIntro title="Modellklarering på personbilder" />
       <StoryBody>

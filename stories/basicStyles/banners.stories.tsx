@@ -19,7 +19,7 @@ import { StoryIntro } from '../wrappers';
 import allBanners from '../../images/banners';
 
 const meta: Meta = {
-  title: 'Base styles/Bannere',
+  title: 'Base styles/Banners',
   parameters: defaultParameters,
 };
 
@@ -106,7 +106,7 @@ const BannerList = () => {
 
 export default meta;
 
-export const Bannere: StoryFn = () => (
+export const Banners: StoryFn = () => (
   <div>
     <StoryIntro title="Bannerbilder">
       <p>

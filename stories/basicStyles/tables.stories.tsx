@@ -13,13 +13,13 @@ import { StoryBody, StoryIntro } from '../wrappers';
 import Table from '../molecules/TableExample';
 
 const meta: Meta = {
-  title: 'Base styles/Tabeller',
+  title: 'Base styles/Tables',
   parameters: defaultParameters,
 };
 
 export default meta;
 
-export const Tabeller: StoryFn = () => (
+export const Tables: StoryFn = () => (
   <div>
     <StoryIntro title="Tabeller">
       <p>

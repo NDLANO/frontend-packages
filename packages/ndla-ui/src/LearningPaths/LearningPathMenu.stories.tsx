@@ -50,7 +50,7 @@ const args = {
 };
 
 export default {
-  title: 'Patterns/Læringssti-meny',
+  title: 'Patterns/Learning path menu',
   component: LearningPathMenu,
   tags: ['autodocs'],
   parameters: {
@@ -65,4 +65,4 @@ export const LearningPathMenuStory: StoryFn<typeof LearningPathMenu> = ({ ...arg
 };
 
 LearningPathMenuStory.args = args;
-LearningPathMenuStory.storyName = 'Læringssti-meny';
+LearningPathMenuStory.storyName = 'Learning path menu';

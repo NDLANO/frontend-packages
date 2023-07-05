@@ -30,8 +30,8 @@ import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 import ProductionToolVersionLog from './ProductionToolVersionLog';
 import CodeBlockEditorExample from './CodeBlockEditorExample';
 
-storiesOf('Other/Produksjonssystem', module)
-  .add('Bildeutsnitt og fokuspunkt', () => (
+storiesOf('Other/Production system', module)
+  .add('Image section and focal point', () => (
     <div>
       <StoryIntro title="Bildesøk">
         <p>
@@ -67,7 +67,7 @@ storiesOf('Other/Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
-  .add('Bildesøk', () => (
+  .add('Image search', () => (
     <div>
       <StoryIntro title="Bildesøk">
         <p>Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api.</p>
@@ -77,7 +77,7 @@ storiesOf('Other/Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
-  .add('Lydsøk', () => (
+  .add('Audio search', () => (
     <div>
       <StoryIntro title="Lydsøk">
         <p>Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api..</p>
@@ -87,7 +87,7 @@ storiesOf('Other/Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
-  .add('Videosøk', () => (
+  .add('Video search', () => (
     <div>
       <StoryIntro title="Videosøk">
         <p>
@@ -162,7 +162,7 @@ storiesOf('Other/Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
-  .add('Sidestruktur og taksonomi', () => (
+  .add('Page structure and taxonomy', () => (
     <div>
       <StoryIntro title="Sidestruktur og taksonomi">
         <p>Emnevelger for taksonomi</p>
@@ -184,7 +184,7 @@ storiesOf('Other/Produksjonssystem', module)
       </Center>
     </div>
   ))
-  .add('Ndla film editor', () => (
+  .add('Ndla movie editor', () => (
     <div>
       <StoryIntro title="Redigering av NDLA film forside" />
       <Center>
@@ -192,7 +192,7 @@ storiesOf('Other/Produksjonssystem', module)
       </Center>
     </div>
   ))
-  .add('Versjonslogg og historikk', () => (
+  .add('Version log and history', () => (
     <div
       style={{
         backgroundColor: colors.brand.greyLightest,
@@ -211,7 +211,7 @@ storiesOf('Other/Produksjonssystem', module)
       </div>
     </div>
   ))
-  .add('Kode editor', () => (
+  .add('Code editor', () => (
     <div>
       <StoryIntro title="Kodesnutter">
         <p>Visning av formatert kode</p>

@@ -20,7 +20,7 @@ const args = {
 };
 
 export default {
-  title: 'Components/Nøkkeltall',
+  title: 'Components/Key figures',
   component: KeyFigure,
   tags: ['autodocs'],
   parameters: {
@@ -35,4 +35,4 @@ export const KeyFigureStory: StoryFn<typeof KeyFigure> = ({ ...args }) => {
 };
 
 KeyFigureStory.args = args;
-KeyFigureStory.storyName = 'Nøkkeltall';
+KeyFigureStory.storyName = 'Key figures';

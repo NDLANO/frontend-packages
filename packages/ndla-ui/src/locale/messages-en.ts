@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, WordClass, Transcriptions } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -1326,6 +1326,51 @@ const messages = {
       h5p: 'H5P',
       external: 'External resource',
     },
+  },
+  gloss: {
+    examples: 'Examples',
+    wordClass: 'Word class',
+    transcriptions: {
+      traditional: 'Traditional spelling',
+      pinyin: 'Pinyin',
+    },
+  },
+  wordClass: {
+    [WordClass.WordClass.Adjective]: 'Adjective',
+    [WordClass.WordClass.Adverb]: 'Adverb',
+    [WordClass.WordClass.ProperNoun]: 'Proper Noun',
+    [WordClass.WordClass.Auxiliary]: 'Auxiliary',
+    [WordClass.WordClass.Complement]: 'Complement',
+    [WordClass.WordClass.Conjunction]: 'Conjunction',
+    [WordClass.WordClass.Coverb]: 'Coverb',
+    [WordClass.WordClass.Determiner]: 'Determiner',
+    [WordClass.WordClass.Interjection]: 'Interjection',
+    [WordClass.WordClass.Quantifier]: 'Quantifier',
+    [WordClass.WordClass.Marker]: 'Marker',
+    [WordClass.WordClass.ModalVerb]: 'Modal Verb',
+    [WordClass.WordClass.MeasureWord]: 'Measure Word',
+    [WordClass.WordClass.Noun]: 'Noun',
+    [WordClass.WordClass['Noun-zh']]: 'Noun',
+    [WordClass.WordClass.NounPhrase]: 'Noun Phrase',
+    [WordClass.WordClass.Onomatopoeia]: 'Onomatopoeia',
+    [WordClass.WordClass.Particle]: 'Particle',
+    [WordClass.WordClass.Demonstrative]: 'Demonstrative',
+    [WordClass.WordClass.PersonalPronoun]: 'Personal Pronoun',
+    [WordClass.WordClass.Preposition]: 'Preposition',
+    [WordClass.WordClass.Pronoun]: 'Pronoun',
+    [WordClass.WordClass.QuestionWord]: 'Question Word',
+    [WordClass.WordClass.LocationWord]: 'Location Word',
+    [WordClass.WordClass.Suffix]: 'Suffix',
+    [WordClass.WordClass.Numeral]: 'Numeral',
+    [WordClass.WordClass.TimeWord]: 'Time word',
+    [WordClass.WordClass.TimeExpression]: 'Time Expression',
+    [WordClass.WordClass.StativeVerb]: 'Stative Verb',
+    [WordClass.WordClass.SubordinatingConjunction]: 'Subordinating Conjunction',
+    [WordClass.WordClass.ExclamationWord]: 'Exclamation Word',
+    [WordClass.WordClass.Expression]: 'Expression',
+    [WordClass.WordClass.Verb]: 'Verb',
+    [WordClass.WordClass.VerbComplement]: 'Verb-Complement',
+    [WordClass.WordClass.VerbObject]: 'Verb-Object',
   },
 };
 

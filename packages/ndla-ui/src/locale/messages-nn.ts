@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, WordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -1322,6 +1322,51 @@ const messages = {
       h5p: 'H5P',
       external: 'Ekstern ressurs',
     },
+  },
+  gloss: {
+    examples: 'Eksempler',
+    wordClass: 'Ordklasse',
+    transcriptions: {
+      traditional: 'Tradisjonell skrivemåte',
+      pinyin: 'Pinyin',
+    },
+  },
+  wordClass: {
+    [WordClass.WordClass.Adjective]: 'Adjektiv',
+    [WordClass.WordClass.Adverb]: 'Adverb',
+    [WordClass.WordClass.ProperNoun]: 'Egennavn',
+    [WordClass.WordClass.Auxiliary]: 'Hjelpeord',
+    [WordClass.WordClass.Complement]: 'Komplement',
+    [WordClass.WordClass.Conjunction]: 'Konjunksjon',
+    [WordClass.WordClass.Coverb]: 'Koverb',
+    [WordClass.WordClass.Determiner]: 'Bestemmerord',
+    [WordClass.WordClass.Interjection]: 'Interjeksjon',
+    [WordClass.WordClass.Quantifier]: 'Kvantor',
+    [WordClass.WordClass.Marker]: 'Markør',
+    [WordClass.WordClass.ModalVerb]: 'Modalverb',
+    [WordClass.WordClass.MeasureWord]: 'Målord',
+    [WordClass.WordClass.Noun]: 'Substantiv',
+    [WordClass.WordClass['Noun-zh']]: 'Nomen',
+    [WordClass.WordClass.NounPhrase]: 'Nominalfrase',
+    [WordClass.WordClass.Onomatopoeia]: 'Onomatopoetikon',
+    [WordClass.WordClass.Particle]: 'Partikkel',
+    [WordClass.WordClass.Demonstrative]: 'Pekeord',
+    [WordClass.WordClass.PersonalPronoun]: 'Personlig Pronomen',
+    [WordClass.WordClass.Preposition]: 'Preposisjon',
+    [WordClass.WordClass.Pronoun]: 'Pronomen',
+    [WordClass.WordClass.QuestionWord]: 'Spørreord',
+    [WordClass.WordClass.LocationWord]: 'Stedsord',
+    [WordClass.WordClass.Suffix]: 'Suffiks',
+    [WordClass.WordClass.Numeral]: 'Tallord',
+    [WordClass.WordClass.TimeWord]: 'Tidsord',
+    [WordClass.WordClass.TimeExpression]: 'Tidsuttrykk',
+    [WordClass.WordClass.StativeVerb]: 'Tilstandsverb',
+    [WordClass.WordClass.SubordinatingConjunction]: 'Subjunksjon',
+    [WordClass.WordClass.ExclamationWord]: 'Utropsord',
+    [WordClass.WordClass.Expression]: 'Uttrykk',
+    [WordClass.WordClass.Verb]: 'Verb',
+    [WordClass.WordClass.VerbComplement]: 'Verb-Komplement',
+    [WordClass.WordClass.VerbObject]: 'Verb-Objekt',
   },
 };
 

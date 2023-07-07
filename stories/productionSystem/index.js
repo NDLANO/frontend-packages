@@ -31,7 +31,7 @@ import ProductionToolVersionLog from './ProductionToolVersionLog';
 import CodeBlockEditorExample from './CodeBlockEditorExample';
 
 storiesOf('Other/Production system', module)
-  .add('Image section and focal point', () => (
+  .add('Image crop and focal point', () => (
     <div>
       <StoryIntro title="Bildesøk">
         <p>

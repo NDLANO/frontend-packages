@@ -210,7 +210,7 @@ storiesOf('Patterns', module)
       </Center>
     </div>
   ))
-  .add('Breadcrumb trail', () => (
+  .add('Breadcrumb', () => (
     <Center>
       <h2 className="u-heading">Enkel brødsmulesti</h2>
       <BreadcrumbDefault />
@@ -342,17 +342,17 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Main head', () => (
+  .add('Masthead', () => (
     <div>
       <MastheadWithLogo />
     </div>
   ))
-  .add('Main header with content', () => (
+  .add('Masthead with content', () => (
     <div>
       <MastheadWithTopicMenu />
     </div>
   ))
-  .add('Main header with message box', () => (
+  .add('Masthead with message box', () => (
     <I18nTranslate>
       {(t) => (
         <div>
@@ -603,7 +603,7 @@ storiesOf('Patterns', module)
       )}
     </I18nTranslate>
   ))
-  .add('Side foot', () => {
+  .add('Footer', () => {
     const privacyLinks = [
       { label: 'Personvernerklæring', url: 'https://om.ndla.no/gdpr' },
       { label: 'Erklæring om informasjonskapsler', url: 'https://om.ndla.no/cookies' },
@@ -636,7 +636,7 @@ storiesOf('Patterns', module)
     </PageContainer>
   ))
 
-  .add('Snack bar', () => (
+  .add('Snackbar', () => (
     <PageContainer>
       <StoryIntro title="Snackbar" />
       <StoryBody>

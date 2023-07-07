@@ -490,7 +490,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
-    competenceGoalResourceSearchText: 'Ohtsh gaajhkh vierhtieh mah daan maahtoeålman sjiehtieh',
+    competenceGoalResourceSearchText: 'Ohtsh gaajhkh vierhtieh mah daan maahtoeålman sjiehtieh {{code}}',
     coreResourceSearchText: 'Vis ressurser til kjerneelement {{code}}',
     competenceGoalShowExtra: 'Vuesehth learoesoejkesjen dåarjoem',
     competenceGoalCloseExtra: 'Tjïekh learoesoejkesjen dåarjoem',

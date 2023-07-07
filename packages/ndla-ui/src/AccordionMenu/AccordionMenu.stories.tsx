@@ -19,7 +19,7 @@ const meta: Meta<typeof AccordionMenu> = {
     ...defaultParameters,
   },
   args: {
-    Menu: [
+    menu: [
       {
         title: 'Om NDLA',
         language: 'nb',

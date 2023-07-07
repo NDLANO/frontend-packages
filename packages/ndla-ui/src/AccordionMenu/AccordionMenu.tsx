@@ -12,7 +12,7 @@ import SafeLink from '@ndla/safelink';
 import { spacing, colors, fonts, breakpoints, mq } from '@ndla/core';
 
 export interface Props {
-  Menu: {
+  menu: {
     title: string;
     language: string;
     slug: String;
@@ -36,7 +36,7 @@ const StyledAccordionItem = styled(AccordionItem)`
 `;
 
 const StyledAccordionHeader = styled(AccordionHeader)`
-  padding-left: 32px;
+  padding-left: ${spacing.medium};
   ${fonts.sizes('16px', '29px')};
   color: ${colors.brand.dark};
   border: solid 1px ${colors.brand.tertiary};
@@ -62,16 +62,16 @@ const StyledSafeLink = styled(SafeLink)`
   color: ${colors.text.primary};
   ${fonts.sizes('16px', '24px')};
   font-weight: ${fonts.weight.semibold};
-  padding: 8px 8px 8px 32px;
+  padding: ${spacing.xsmall} ${spacing.medium};
   :hover {
     text-decoration: underline;
   }
 `;
 
-const AccordionMenu = ({ Menu }: Props) => {
+const AccordionMenu = ({ menu }: Props) => {
   return (
     <AccordionContainer>
-      {Menu.map((item, index) => (
+      {menu.map((item, index) => (
         <AccordionRoot key={index} type="single" collapsible>
           <StyledAccordionItem value="1">
             <StyledAccordionHeader lang={item.language}>{item.title}</StyledAccordionHeader>

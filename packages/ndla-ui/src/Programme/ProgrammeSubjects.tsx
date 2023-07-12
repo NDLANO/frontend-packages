@@ -27,9 +27,9 @@ export type GradesProps = {
   grades: {
     missingProgrammeSubjects?: boolean;
     name: string;
-    categories: {
+    categories?: {
       name: string;
-      subjects: {
+      subjects?: {
         label: string;
         url: string;
       }[];
@@ -70,7 +70,7 @@ const ProgrammeSubjects = ({ grades, onNavigate, selectedGrade = 'vg1' }: Props)
         })}
       </GradesMenu>
       {grade.missingProgrammeSubjects && <MessageBox>{t('messageBoxInfo.noContent')}</MessageBox>}
-      {grade.categories.map((category) => (
+      {grade.categories?.map((category) => (
         <NavigationBox key={category.name} heading={category.name} items={category.subjects} onClick={onNavigate} />
       ))}
     </>

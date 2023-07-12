@@ -182,7 +182,7 @@ type Props = {
   heading?: string;
   colorMode?: 'primary' | 'darker' | 'light' | 'greyLightest' | 'greyLighter';
   isButtonElements?: boolean;
-  items: ItemProps[];
+  items?: ItemProps[];
   onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
@@ -224,7 +224,7 @@ export const NavigationBox = ({
         )}
       </StyledHeadingWrapper>
       <StyledList data-testid="nav-box-list" direction={listDirection}>
-        {items.map((item: ItemProps) => (
+        {items?.map((item: ItemProps) => (
           <StyledListItem key={item.label} listDirection={listDirection} data-testid="nav-box-item">
             <StyledListElementWrapper
               isAdditionalResource={item.isAdditionalResource}

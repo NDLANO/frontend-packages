@@ -31,22 +31,6 @@
   }
 }
 
-/* Hacks for complex content fetched inside bodybox */
-.c-bodybox > ul:not([class]),
-.c-bodybox :not(li) > ul:not([class]) {
-  @include mq(desktop) {
-    margin-left: $spacing;
-  }
-}
-
-.c-bodybox > ol:not([class]),
-.c-bodybox :not(li) > ol:not([class]),
-.c-bodybox .ol-list--roman {
-  @include mq(desktop) {
-    margin-left: $spacing--large;
-  }
-}
-
 .c-bodybox {
   .c-figure {
     width: 100% !important;

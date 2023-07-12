@@ -12,7 +12,7 @@ import { defaultParameters } from '../../../../stories/defaults';
 import ListResource from './ListResource';
 
 export default {
-  title: 'Components/Ressurser/ListResource',
+  title: 'Components/Resources/ListResource',
   component: ListResource,
   tags: ['autodocs'],
   parameters: {

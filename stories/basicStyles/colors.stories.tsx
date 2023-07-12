@@ -13,7 +13,7 @@ import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 
 const meta: Meta = {
-  title: 'Base styles/Farger',
+  title: 'Base styles/Colors',
   parameters: defaultParameters,
 };
 
@@ -21,7 +21,7 @@ const swatchBorder = '1px solid #979797';
 
 export default meta;
 
-export const Farger: StoryFn = () => {
+export const Colors: StoryFn = () => {
   return (
     <div>
       <StoryIntro title="Farger på NDLA">

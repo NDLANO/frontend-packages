@@ -7,8 +7,8 @@ import { Image, ContentLoader } from '@ndla/ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import ResourceStats from './molecules/ResourceStats';
 
-storiesOf('Other/Eksperimentelle komponenter', module)
-  .add('Lazyload bilder', () => (
+storiesOf('Other/Experimental components', module)
+  .add('Lazyload images', () => (
     <div>
       <StoryIntro title="Lazyload">
         <p>Test av lazy loading</p>
@@ -32,7 +32,7 @@ storiesOf('Other/Eksperimentelle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Innholdlaster', () => (
+  .add('Content loader', () => (
     <div>
       <StoryIntro title="Innholdlaster">
         <p>Placeholder som kan brukes inntil et bilde/video/artikkel er lastet.</p>
@@ -63,7 +63,7 @@ storiesOf('Other/Eksperimentelle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Statistikk', () => (
+  .add('Statistics', () => (
     <div>
       <StoryIntro title="Statistikk">
         <p>

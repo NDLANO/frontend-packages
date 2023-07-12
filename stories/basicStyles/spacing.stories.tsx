@@ -13,7 +13,7 @@ import { defaultParameters } from '../defaults';
 import { StoryIntro } from '../wrappers';
 
 const meta: Meta = {
-  title: 'Base styles/Luft og Avstand',
+  title: 'Base styles/Spacing and margin',
   parameters: defaultParameters,
 };
 
@@ -74,4 +74,4 @@ export const Story: StoryFn = () => (
   </div>
 );
 
-Story.storyName = 'Luft og Avstand';
+Story.storyName = 'Spacing and margin';

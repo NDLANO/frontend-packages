@@ -7,7 +7,7 @@ import { defaultParameters } from '../../../../../stories/defaults';
 import Folder from './Folder';
 
 export default {
-  title: 'Components/Mappe',
+  title: 'Components/Folder',
   component: Folder,
   tags: ['autodocs'],
   parameters: {

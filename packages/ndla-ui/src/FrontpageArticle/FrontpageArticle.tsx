@@ -12,12 +12,13 @@ import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
 import { Heading } from '../Typography';
+import { ArticleByline } from '../Article';
 
 interface Props {
   article: Article;
   children?: ReactNode;
-  id: string;
   isWide?: boolean;
+  id: string;
 }
 
 const StyledArticle = styled.article`
@@ -59,6 +60,11 @@ export const FrontpageArticle = ({ article, id, isWide }: Props) => {
         <StyledIntroduction>{introduction}</StyledIntroduction>
       </LayoutItem>
       <LayoutItem>{content}</LayoutItem>
+      <ArticleByline
+        authors={article.copyright.creators}
+        license={article.copyright.license?.license!}
+        published={article.published}
+      />
     </StyledArticle>
   );
 };

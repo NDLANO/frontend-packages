@@ -51,7 +51,7 @@ const ProgrammeSubjects = ({ grades, onNavigate, selectedGrade = 'vg1' }: Props)
 
   return (
     <>
-      <GradesMenu aria-label={t('programme.grades')}>
+      <GradesMenu aria-label={t('programmes.grades')}>
         {grades?.map((item) => {
           const current = item.name.toLowerCase() === selectedGrade;
           return (

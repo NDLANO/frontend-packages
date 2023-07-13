@@ -20,8 +20,8 @@ export interface Programme {
     title: string;
     language: string;
   };
-  desktopImage: Image;
-  mobileImage: Image;
+  narrowImage?: Image;
+  wideImage?: Image;
   url: string;
 }
 
@@ -79,11 +79,11 @@ const StyledTitle = styled.span`
   }
 `;
 
-const ProgrammeCard = ({ title, desktopImage, mobileImage, url }: Programme) => {
+const ProgrammeCard = ({ title, narrowImage, wideImage, url }: Programme) => {
   return (
     <StyledCardContainer to={url}>
-      <StyledImg data-is-mobile="false" src={desktopImage.src} alt={desktopImage.alt} />
-      <StyledImg data-is-mobile="true" src={mobileImage.src} alt={mobileImage.alt} />
+      {narrowImage && <StyledImg data-is-mobile="false" src={narrowImage.src} alt={narrowImage.alt} />}
+      {wideImage && <StyledImg data-is-mobile="true" src={wideImage.src} alt={wideImage.alt} />}
       <StyledTitle>{title.title}</StyledTitle>
     </StyledCardContainer>
   );

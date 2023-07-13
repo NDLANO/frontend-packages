@@ -1303,9 +1303,11 @@ const messages = {
     contact: 'Kontakt',
     help: 'Hjelp',
   },
-  programme: {
+  programmes: {
+    header: 'Se våre utdanningsprogram',
+    description: 'Vi ønsker å tilby de beste læringsressursene innen tradisjonelle og nye medier.',
     grades: 'Trinn',
-    accordianHeader: 'Alle utdanningsprogram',
+    accordionHeader: 'Alle utdanningsprogram',
   },
   embed: {
     conceptListError: 'Klarte ikke å vise forklaringsliste',

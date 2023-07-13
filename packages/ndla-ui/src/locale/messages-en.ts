@@ -1307,7 +1307,7 @@ const messages = {
     contact: 'Contact',
     help: 'Help',
   },
-  programme: {
+  programmes: {
     header: 'View our educational programmes',
     description: 'We strive to offer the best learning resources within traditional and new media.',
     grades: 'Grades',

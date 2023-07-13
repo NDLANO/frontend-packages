@@ -1303,7 +1303,7 @@ const messages = {
     contact: 'Kontakt',
     help: 'Hjelp',
   },
-  programme: {
+  programmes: {
     header: 'Se våre utdanningsprogram',
     description: 'Vi ønsker å tilby de beste læringsressursene innen tradisjonelle og nye medier.',
     grades: 'Trinn',

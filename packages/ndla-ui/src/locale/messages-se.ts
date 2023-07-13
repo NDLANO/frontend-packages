@@ -1305,8 +1305,10 @@ const messages = {
     help: 'Veahket',
   },
   programme: {
+    header: 'Se våre utdanningsprogram',
+    description: 'Vi ønsker å tilby de beste læringsressursene innen tradisjonelle og nye medier.',
     grades: 'Ceahkki',
-    accordianHeader: 'Alle utdanningsprogram',
+    accordionHeader: 'Alle utdanningsprogram',
   },
   embed: {
     conceptListError: 'Ii sáhttán čájehit čilgehuslisttu',

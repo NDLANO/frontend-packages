@@ -1308,8 +1308,10 @@ const messages = {
     help: 'Help',
   },
   programme: {
+    header: 'View our educational programmes',
+    description: 'We strive to offer the best learning resources within traditional and new media.',
     grades: 'Grades',
-    accordianHeader: 'All educational programmes',
+    accordionHeader: 'All educational programmes',
   },
   embed: {
     conceptListError: 'Failed to show concept list',

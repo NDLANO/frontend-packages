@@ -1305,7 +1305,7 @@ const messages = {
   },
   programme: {
     header: 'Se våre utdanningsprogram',
-    description: 'Vi ønsker å tilby dei beste læringsressursane innan tradisjonelle og nye medier.',
+    description: 'Vi ønsker å tilby dei beste læringsressursane innan tradisjonelle og nye media.',
     grades: 'Trinn',
     accordionHeader: 'Alle utdanningsprogram',
   },

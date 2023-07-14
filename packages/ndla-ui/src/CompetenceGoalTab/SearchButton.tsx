@@ -20,7 +20,7 @@ const StyledSearch = styled(Search)`
 
 const GoalSearchWrapper = styled.div`
   margin-left: ${spacing.normal};
-  flex: 1 0 30%;
+  flex: 0 0 30%;
   span {
     text-align: left;
   }

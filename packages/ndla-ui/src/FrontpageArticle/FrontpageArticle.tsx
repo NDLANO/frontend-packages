@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from 'react';
-import { breakpoints, fonts, mq, spacing, utils } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
@@ -17,8 +17,9 @@ import { ArticleByline } from '../Article';
 interface Props {
   article: Article;
   children?: ReactNode;
-  isWide?: boolean;
   id: string;
+  isWide?: boolean;
+  licenseBox?: ReactNode;
 }
 
 const StyledArticle = styled.article`
@@ -40,7 +41,7 @@ const StyledIntroduction = styled.div`
   }
 `;
 
-export const FrontpageArticle = ({ article, id, isWide }: Props) => {
+export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => {
   const { title, introduction, content } = article;
 
   if (isWide) {
@@ -51,6 +52,10 @@ export const FrontpageArticle = ({ article, id, isWide }: Props) => {
     );
   }
 
+  const authors =
+    article.copyright.creators.length || article.copyright.rightsholders.length
+      ? article.copyright.creators
+      : article.copyright.processors;
   return (
     <StyledArticle>
       <LayoutItem>
@@ -61,9 +66,13 @@ export const FrontpageArticle = ({ article, id, isWide }: Props) => {
       </LayoutItem>
       <LayoutItem>{content}</LayoutItem>
       <ArticleByline
-        authors={article.copyright.creators}
+        authors={authors}
+        suppliers={article.copyright.rightsholders}
         license={article.copyright.license?.license!}
         published={article.published}
+        footnotes={article.footNotes}
+        isFrontpageArticle={true}
+        licenseBox={licenseBox}
       />
     </StyledArticle>
   );

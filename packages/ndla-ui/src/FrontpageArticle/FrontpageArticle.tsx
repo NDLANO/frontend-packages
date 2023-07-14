@@ -71,7 +71,7 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
         license={article.copyright.license?.license!}
         published={article.published}
         footnotes={article.footNotes}
-        isFrontpageArticle={true}
+        accordionHeaderVariant={'white'}
         licenseBox={licenseBox}
       />
     </StyledArticle>

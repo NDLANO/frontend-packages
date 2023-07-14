@@ -51,6 +51,8 @@ type SupplierProps = {
   name: string;
 };
 
+type AccordionHeaderVariants = 'white' | 'blue';
+
 type Props = {
   authors?: AuthorProps[];
   suppliers?: SupplierProps[];
@@ -59,7 +61,7 @@ type Props = {
   licenseBox?: ReactNode;
   locale?: string;
   footnotes?: FootNote[];
-  isFrontpageArticle?: boolean;
+  accordionHeaderVariant?: AccordionHeaderVariants;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -111,7 +113,7 @@ const ArticleByline = ({
   licenseBox,
   published,
   locale,
-  isFrontpageArticle,
+  accordionHeaderVariant = 'blue',
 }: Props) => {
   const { t } = useTranslation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
@@ -163,7 +165,7 @@ const ArticleByline = ({
       <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
         {licenseBox && (
           <AccordionItem value="rulesForUse">
-            <StyledAccordionHeader headingLevel="h2" data-background-color={!!isFrontpageArticle && 'white'}>
+            <StyledAccordionHeader headingLevel="h2" data-background-color={accordionHeaderVariant}>
               {t('article.useContent')}
             </StyledAccordionHeader>
             <AccordionContent>{licenseBox}</AccordionContent>

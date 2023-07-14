@@ -40,7 +40,7 @@ const StyledCardContainer = styled(SafeLink)`
 
   ${mq.range({ from: breakpoints.tablet })} {
     max-height: 350px;
-    max-width: 250px;
+    width: 250px;
   }
 `;
 

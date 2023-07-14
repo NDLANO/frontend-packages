@@ -30,8 +30,8 @@ const ButtonWrapper = styled.div`
 `;
 
 const LicenseIconsTextWrapper = styled.span`
-  padding-bottom: 5px;
-  margin-left: 5px;
+  padding-bottom: ${spacing.xxsmall};
+  margin-left: ${spacing.xxsmall};
 `;
 
 const CompetenceGoalTab = ({ list, isOembed }: CompetenceProps) => {

@@ -9,26 +9,26 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { MenuBook } from '@ndla/icons/action';
-import { spacing } from '@ndla/core';
+import { colors, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import CompetenceGoalItem from './CompetenceGoalItem';
 import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
 import CoreElementItem from './CoreElementItem';
 
-const GroupedGoalsWrapper = styled.div`
-  margin: 24px 0 52px;
+const GroupedElementWrapper = styled.div`
+  margin: ${spacing.normal} 0 ${spacing.large};
 `;
 
 const GroupedGoalsTitleWrapper = styled.div`
-  border-bottom: 1px solid #d1d6db;
+  border-bottom: 1px solid ${colors.brand.neutral7};
 `;
 const GroupedGoalsTitle = styled.h2`
   display: flex;
   align-items: center;
   gap: ${spacing.xsmall};
   svg {
-    width: 24px;
-    height: 24px;
+    width: ${spacing.normal};
+    height: ${spacing.normal};
   }
 `;
 
@@ -41,10 +41,6 @@ const GoalList = styled.ul`
   padding: 0;
   list-style-type: none;
   list-style-image: none;
-`;
-
-const GroupedCoreItemsWrapper = styled.div`
-  margin: 24px 0 52px;
 `;
 
 export type CompetenceTypeProps = 'competenceGoals' | 'coreElement';
@@ -77,7 +73,7 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
       return (
         <>
           {groupedCompetenceGoals?.map((group) => (
-            <GroupedGoalsWrapper key={group.title}>
+            <GroupedElementWrapper key={group.title}>
               <GroupedGoalsTitleWrapper>
                 <hgroup>
                   <GroupedGoalsTitle>
@@ -100,7 +96,7 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
                   ))}
                 </GoalList>
               )}
-            </GroupedGoalsWrapper>
+            </GroupedElementWrapper>
           ))}
         </>
       );
@@ -108,7 +104,7 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
       return (
         <>
           {groupedCoreElementItems?.map((group) => (
-            <GroupedCoreItemsWrapper key={group.title}>
+            <GroupedElementWrapper key={group.title}>
               <GroupedGoalsTitle>
                 <MenuBook />
                 {group.title}
@@ -125,7 +121,7 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
                   />
                 ))}
               </GoalList>
-            </GroupedCoreItemsWrapper>
+            </GroupedElementWrapper>
           ))}
         </>
       );

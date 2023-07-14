@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
 export const ListItemContent = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ export const ListItemContent = styled.div`
 
 export const GoalItem = styled.li`
   margin: ${spacing.medium} 0;
-  border-bottom: 1px solid #d1d6db;
+  border-bottom: 1px solid ${colors.brand.neutral7};
 `;
 
 export const GoalsHeading = styled.h3`

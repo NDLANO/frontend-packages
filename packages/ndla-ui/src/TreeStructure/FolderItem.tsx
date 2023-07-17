@@ -165,9 +165,10 @@ const FolderItem = ({
         ref.current?.focus();
       }
       if (type === 'picker') {
+        ref.current?.focus();
         ref.current?.scrollIntoView({
           behavior: 'smooth',
-          block: 'nearest',
+          block: 'start',
         });
       }
     }

@@ -56,6 +56,10 @@ const StyledDiv = styled.div`
     background-color: ${colors.brand.primary};
   }
 
+  &[data-contenttype='frontpage-article'] {
+    background-color: ${colors.background.lightBlue};
+  }
+
   &[data-contenttype='ndla-film has-image'],
   &[data-contenttype='ndla-film'] {
     background: ${colors.ndlaFilm.filmColor};
@@ -112,7 +116,6 @@ interface HeroProps extends HTMLAttributes<HTMLDivElement> {
 export const Hero = ({ children, contentType }: HeroProps) => (
   <StyledDiv data-contenttype={contentType}>{children || null}</StyledDiv>
 );
-
 interface Props {
   children?: ReactNode;
   hasImage?: boolean;

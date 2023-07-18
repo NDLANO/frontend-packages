@@ -17,8 +17,8 @@ interface Props extends IconProps {
 const Person = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z" />
     </g>
   </Icon>
 );

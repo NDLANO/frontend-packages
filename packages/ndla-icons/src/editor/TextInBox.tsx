@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const TextInBox = (props: Props) => (
   <Icon viewBox="0 0 29 32" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
-      <path fill="none" stroke="#444" d="M.5.5h28v31H.5V.5zM7 7.778h16M7 13.11h16M7 18.444h16M7 23.778h16" />
+      <path fill="none" stroke="#444" d="M.5.5h28v31H.5V.5zM7 7.8h16M7 13h16M7 18.4h16M7 23.8h16" />
     </g>
   </Icon>
 );

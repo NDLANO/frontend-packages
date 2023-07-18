@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const Pause = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M14.016 5.016h3.984v13.969h-3.984v-13.969zM6 18.984v-13.969h3.984v13.969h-3.984z" />
+      <path d="M14 5h4v14h-4V5zM6 19V5h4v14H6z" />
     </g>
   </Icon>
 );

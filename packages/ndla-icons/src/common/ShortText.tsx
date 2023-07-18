@@ -17,16 +17,8 @@ interface Props extends IconProps {
 const ShortText = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="W3" {...props}>
     <g>
-      <g>
-        <rect fill="none" height="24" width="24" x="0" />
-      </g>
-      <g>
-        <g>
-          <g>
-            <path d="M4,9h16v2H4V9z M4,13h10v2H4V13z" />
-          </g>
-        </g>
-      </g>
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="M4 9h16v2H4V9zm0 4h10v2H4v-2z" />
     </g>
   </Icon>
 );

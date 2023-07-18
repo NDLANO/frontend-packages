@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const ExclamationMark = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M0 0h24v24H0z" fill="none" />
+      <path fill="none" d="M0 0h24v24H0z" />
       <circle cx="12" cy="19" r="2" />
       <path d="M10 3h4v12h-4z" />
     </g>

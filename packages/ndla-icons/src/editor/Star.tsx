@@ -17,9 +17,9 @@ interface Props extends IconProps {
 const Star = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-      <path d="M0 0h24v24H0z" fill="none" />
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="m12 17.3 6.2 3.7-1.7-7L22 9.2l-7.2-.6L12 2 9.2 8.6 2 9.2 7.5 14l-1.7 7z" />
+      <path fill="none" d="M0 0h24v24H0z" />
     </g>
   </Icon>
 );

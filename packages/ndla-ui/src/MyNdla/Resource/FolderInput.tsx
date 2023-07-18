@@ -24,6 +24,10 @@ interface Props extends ComponentProps<typeof InputV2> {
   onSave: () => void;
 }
 
+const StyledSpinner = styled(Spinner)`
+  margin: ${spacing.small};
+`;
+
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = (error?: boolean) =>
   `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
@@ -102,7 +106,7 @@ const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClo
             </>
           )}
           <div aria-live="assertive">
-            {loading && <Spinner size="normal" margin={spacing.small} id="folder-spinner" aria-label={t('loading')} />}
+            {loading && <StyledSpinner size="normal" id="folder-spinner" aria-label={t('loading')} />}
           </div>
         </Row>
       }

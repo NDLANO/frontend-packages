@@ -12,7 +12,12 @@ import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
 import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from '@ndla/forms';
 import { Spinner } from '@ndla/icons';
 import { Search } from '@ndla/icons/common';
+import styled from '@emotion/styled';
 import { mockTypeahead } from '../../dummydata';
+
+const StyledSpinner = styled(Spinner)`
+  margin: 0;
+`;
 
 const fetchData = (lowerCaseValue) => {
   return new Promise((resolve) => {
@@ -195,7 +200,7 @@ class MultiSelectDropdownExample extends Component {
                   data-testid={'dropdownInput'}
                   idField="title"
                   labelField="title"
-                  iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
+                  iconRight={loading ? <StyledSpinner size="normal" /> : <Search />}
                   values={useTags === '1' && addedData}
                   removeItem={this.removeItem}
                 />

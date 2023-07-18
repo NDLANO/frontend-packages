@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, memo } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
@@ -26,17 +26,15 @@ const StyledBackground = styled.div`
   background: linear-gradient(96deg, rgba(0, 117, 160, 1) 0%, rgba(32, 88, 143, 0) 100%);
 `;
 
-type StyledFooterProps = {
-  addMargin?: boolean;
-};
-
-const StyledDiv = styled.div<StyledFooterProps>`
+const StyledDiv = styled.div`
   color: #fff;
   position: relative;
   background: ${colors.brand.dark};
   overflow: hidden;
   z-index: 0;
-  ${(props) => props.addMargin && `margin-top: ${spacingUnit * 4}px;`}
+  &[data-add-margin='true'] {
+    margin-top: ${spacingUnit * 4}px;
+  }
 `;
 
 const StyledOneColumn = styled(OneColumn)`
@@ -113,15 +111,11 @@ const StyledLanguageWrapper = styled.div`
 type Props = {
   children: ReactNode;
   lang: Locale;
-  links?: [
-    {
-      to: string;
-      text: string;
-      icon: ReactNode;
-      facebook: string;
-      twitter: string;
-    },
-  ];
+  links?: {
+    to: string;
+    text: string;
+    icon: ReactNode;
+  }[];
   privacyLinks?: {
     url: string;
     label: string;
@@ -133,43 +127,38 @@ type Props = {
 const Footer = ({ children, links, languageSelector, auth, privacyLinks }: Props) => {
   const { t } = useTranslation();
 
-  const mainContent = (
-    <>
-      {children}
-      {privacyLinks && <FooterPrivacy privacyLinks={privacyLinks} />}
-    </>
-  );
-
-  const footerContent = links ? (
-    <>
-      <StyledColumns>
-        <div>
-          <StyledFooterHeaderIcon />
-        </div>
-        <div>
-          <StyledHeader>{t('footer.vision')}</StyledHeader>
-          <FooterLinks links={links} />
-        </div>
-      </StyledColumns>
-      <StyledHr />
-      {mainContent}
-    </>
-  ) : (
-    mainContent
-  );
-
   return (
-    <>
-      <footer>
-        <StyledDiv addMargin={!languageSelector}>
-          {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
-          <StyledOneColumn cssModifier="large">{footerContent}</StyledOneColumn>
-          <StyledBackground />
-        </StyledDiv>
-        {auth}
-      </footer>
-    </>
+    <footer>
+      <StyledDiv data-add-margin={!languageSelector}>
+        {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
+        <StyledOneColumn cssModifier="large">
+          {links ? (
+            <>
+              <StyledColumns>
+                <div>
+                  <StyledFooterHeaderIcon />
+                </div>
+                <div>
+                  <StyledHeader>{t('footer.vision')}</StyledHeader>
+                  <FooterLinks links={links} />
+                </div>
+              </StyledColumns>
+              <StyledHr />
+              {children}
+              {privacyLinks && <FooterPrivacy privacyLinks={privacyLinks} />}
+            </>
+          ) : (
+            <>
+              {children}
+              {privacyLinks && <FooterPrivacy privacyLinks={privacyLinks} />}
+            </>
+          )}
+        </StyledOneColumn>
+        <StyledBackground />
+      </StyledDiv>
+      {auth}
+    </footer>
   );
 };
 
-export default Footer;
+export default memo(Footer);

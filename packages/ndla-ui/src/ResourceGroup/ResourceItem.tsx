@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css, keyframes } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
@@ -17,26 +17,6 @@ import Tooltip from '@ndla/tooltip';
 import { Resource } from '../types';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
-
-const listElementActiveColor = (contentType?: string) => {
-  switch (contentType) {
-    case contentTypes.SUBJECT_MATERIAL:
-      return colors.subjectMaterial.dark;
-    case contentTypes.TASKS_AND_ACTIVITIES:
-      return colors.tasksAndActivities.dark;
-    case contentTypes.ASSESSMENT_RESOURCES:
-      return colors.assessmentResource.dark;
-    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      return colors.externalLearningResource.dark;
-    case contentTypes.SOURCE_MATERIAL:
-      return colors.sourceMaterial.dark;
-    case contentTypes.LEARNING_PATH:
-      return colors.learningPath.dark;
-    default:
-      break;
-  }
-  return 'none';
-};
 
 const fadeInAdditionalsKeyframe = keyframes`
   0% {
@@ -59,15 +39,7 @@ const fadeInAdditionalsKeyframe = keyframes`
   }
 `;
 
-interface ListElementProps {
-  additional?: boolean;
-  extraBottomMargin?: boolean;
-  contentType?: string;
-  active?: boolean;
-  hidden?: boolean;
-}
-
-const ListElement = styled.li<ListElementProps>`
+const ListElement = styled.li`
   border: 1px solid #d1d6db;
   border-radius: 5px;
   background: ${colors.white};
@@ -76,37 +48,56 @@ const ListElement = styled.li<ListElementProps>`
   justify-content: space-between;
   align-items: center;
   padding: ${spacing.small};
+  &[data-additional='true'] {
+    border-style: dashed;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation: ${fadeInAdditionalsKeyframe};
+  }
+  &[data-extra-bottom-margin='true'] {
+    margin-bottom: ${spacing.large};
+  }
+  &[data-hidden='true'] {
+    display: none;
+    opacity: 0;
+  }
 
-  ${(props) =>
-    props.additional &&
-    css`
-      border-style: dashed;
-      animation-duration: 0.8s;
-      animation-fill-mode: forwards;
-      animation: ${fadeInAdditionalsKeyframe};
-    `}
-  ${(props) => props.extraBottomMargin && `margin-bottom: ${spacing.large};`}
+  &[data-active='true'] {
+    &:before {
+      ${mq.range({ from: breakpoints.tablet })} {
+        content: '';
+        display: block;
+        position: absolute;
+        width: ${spacing.small};
+        height: ${spacing.small};
+        border-radius: 100%;
+        transform: translate(calc(-${spacing.normal} - ${spacing.small}));
+        background-color: none;
+        &[data-content-type='${contentTypes.SUBJECT_MATERIAL}'] {
+          background-color: ${colors.subjectMaterial.dark};
+        }
+        &[data-content-type='${contentTypes.TASKS_AND_ACTIVITIES}'] {
+          background-color: ${colors.tasksAndActivities.dark};
+        }
+        &[data-content-type='${contentTypes.ASSESSMENT_RESOURCES}'] {
+          background-color: ${colors.assessmentResource.dark};
+        }
+        &[data-content-type='${contentTypes.EXTERNAL_LEARNING_RESOURCES}'] {
+          background-color: ${colors.externalLearningResource.dark};
+        }
+        &[data-content-type='${contentTypes.SOURCE_MATERIAL}'] {
+          background-color: ${colors.sourceMaterial.dark};
+        }
+        &[data-content-type='${contentTypes.LEARNING_PATH}'] {
+          background-color: ${colors.learningPath.dark};
+        }
+      }
+    }
+  }
 
   * {
     transition: height ease-out 0.2s, width ease-out 0.2s;
   }
-  ${(props) =>
-    props.active &&
-    css`
-      &:before {
-        ${mq.range({ from: breakpoints.tablet })} {
-          content: '';
-          display: block;
-          position: absolute;
-          width: ${spacing.small};
-          height: ${spacing.small};
-          border-radius: 100%;
-          transform: translate(calc(-${spacing.normal} - ${spacing.small}));
-          background-color: ${listElementActiveColor(props.contentType)};
-        }
-      }
-    `}
-  ${({ hidden }) => hidden && `display:none; opacity:0;`}
 `;
 
 const ResourceLink = styled(SafeLink)`
@@ -237,11 +228,11 @@ const ResourceItem = ({
   return (
     <ListElement
       aria-current={active ? 'page' : undefined}
-      contentType={contentType}
-      hidden={hidden && !active}
-      active={active}
-      additional={additional}
-      extraBottomMargin={extraBottomMargin}
+      data-content-type={contentType}
+      data-hidden={hidden && !active}
+      data-active={active}
+      data-additional={additional}
+      data-extra-bottom-margin={extraBottomMargin}
     >
       <ResourceWrapper>
         <ContentBadgeWrapper>

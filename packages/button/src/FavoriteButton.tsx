@@ -6,10 +6,9 @@
  *
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Heart, HeartOutline } from '@ndla/icons/action';
-import Tooltip from '@ndla/tooltip';
 import IconButtonV2, { IconButtonProps } from './IconButtonV2';
 
 export interface Props extends Omit<IconButtonProps, 'aria-label'> {
@@ -18,15 +17,21 @@ export interface Props extends Omit<IconButtonProps, 'aria-label'> {
 
 const FavoriteButton = ({ isFavorite, onClick }: Props) => {
   const { t } = useTranslation();
-  const labelModifier = isFavorite ? 'added' : 'add';
-  const ariaLabel = isFavorite ? t('myNdla.alreadyFavourited') : t('myNdla.addToFavourites');
-  const Icon = isFavorite ? Heart : HeartOutline;
+
+  const tooltip = useMemo(() => {
+    return isFavorite ? t('myNdla.resource.addedToMyNdla') : t('myNdla.resource.addToMyNdla');
+  }, [t, isFavorite]);
+
+  const ariaLabel = useMemo(() => {
+    return isFavorite ? t('myNdla.alreadyFavourited') : t('myNdla.addToFavourites');
+  }, [t, isFavorite]);
+
+  const Icon = useMemo(() => (isFavorite ? Heart : HeartOutline), [isFavorite]);
+
   return (
-    <Tooltip tooltip={t(`myNdla.resource.${labelModifier}ToMyNdla`)}>
-      <IconButtonV2 colorTheme="light" variant="ghost" onClick={onClick} aria-label={ariaLabel}>
-        <Icon />
-      </IconButtonV2>
-    </Tooltip>
+    <IconButtonV2 colorTheme="light" variant="ghost" title={tooltip} onClick={onClick} aria-label={ariaLabel}>
+      <Icon />
+    </IconButtonV2>
   );
 };
 

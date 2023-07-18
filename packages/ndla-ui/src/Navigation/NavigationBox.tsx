@@ -1,8 +1,8 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, memo, useCallback, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
 import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
@@ -25,77 +25,91 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-type listProps = {
-  direction?: 'horizontal' | 'vertical' | 'floating';
-};
-const StyledList = styled.ul<listProps>`
+const StyledList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  ${(props) =>
-    props.direction !== 'floating' &&
-    css`
-      ${mq.range({ from: breakpoints.tablet })} {
-        column-count: 2;
-        column-gap: 20px;
-        ${props.direction === 'horizontal' &&
-        css`
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-        `}
+  &[data-direction='vertical'],
+  &[data-direction='horizontal'] {
+    ${mq.range({ from: breakpoints.tablet })} {
+      column-count: 2;
+      column-gap: 20px;
+      &[data-direction='horizontal'] {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
       }
-      ${mq.range({ from: breakpoints.tabletWide })} {
-        column-count: 3;
-        column-gap: 20px;
-        ${props.direction === 'horizontal' &&
-        css`
-          grid-template-columns: repeat(3, 1fr);
-        `}
+    }
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      column-count: 3;
+      column-gap: 20px;
+      &[data-direction='horizontal'] {
+        grid-template-columns: repeat(3, 1fr);
       }
-    `};
+    }
+  }
+  &[data-direction='horizontal'] {
+    ${mq.range({ from: breakpoints.tablet })} {
+      column-count: 2;
+      column-gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 `;
-type additionalResourceProps = {
-  isAdditionalResource?: boolean;
-  isRestrictedResource?: boolean;
-  lighter?: boolean;
-  selected?: boolean;
-  listDirection?: listProps['direction'];
-};
 
-const StyledListItem = styled.li<additionalResourceProps>`
+const StyledListItem = styled.li`
   margin-bottom: 0;
   break-inside: avoid;
-  ${(props) =>
-    props.listDirection === 'floating' &&
-    css`
-      display: inline-block;
-      margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
-      ${mq.range({ until: breakpoints.mobileWide })} {
-        display: block;
-      }
-    `}
+  &[data-direction='floating'] {
+    display: inline-block;
+    margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
+    ${mq.range({ until: breakpoints.mobileWide })} {
+      display: block;
+    }
+  }
 `;
 
-const StyledListElementWrapper = styled.div<additionalResourceProps>`
+const StyledAdditionalResourceMark = styled.span`
+  color: ${colors.white};
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid ${colors.white};
+  border-radius: 100px;
+  transition: ${misc.transition.default};
+  &[data-lighter='true'][data-selected='false'] {
+    color: ${colors.brand.dark};
+    border-color: ${colors.brand.dark};
+  }
+`;
+
+const StyledListElementWrapper = styled.div`
   position: relative;
-  ${(props) =>
-    props.isAdditionalResource &&
-    css`
-      & > * {
-        border: 1px dashed ${props.lighter && !props.selected ? `${colors.brand.tertiary}` : `${colors.brand.dark}`};
+  &[data-additional='true'] {
+    & > * {
+      border-width: 1px;
+      border-style: dashed;
+      background-clip: padding-box;
+      border-color: ${colors.brand.dark};
+      &[data-selected='true'][data-ligher='true'] {
+        border-color: ${colors.brand.tertiary};
+      }
+      :hover,
+      :focus {
+        border: 1px dashed ${colors.brand.dark};
         background-clip: padding-box;
-        :hover,
-        :focus {
-          border: 1px dashed ${colors.brand.dark};
-          background-clip: padding-box;
+        color: ${colors.white};
+        ${StyledAdditionalResourceMark} {
           color: ${colors.white};
-          ${StyledAdditionalResourceMark} {
-            color: ${colors.white};
-            border-color: ${colors.white};
-          }
+          border-color: ${colors.white};
         }
       }
-    `}
+    }
+  }
 `;
 
 const StyledSpacingElement = styled.span`
@@ -114,15 +128,14 @@ const StyledButtonContent = styled.span`
   align-items: center;
 `;
 
-const StyledButtonContentText = styled.span<additionalResourceProps>`
-  ${(props) => {
-    if (props.isAdditionalResource && props.isRestrictedResource) {
-      return `padding-left: ${spacing.medium};`;
-    }
-    if (props.isAdditionalResource || props.isRestrictedResource) {
-      return `padding-left: ${spacing.small};`;
-    }
-  }}
+const StyledButtonContentText = styled.span`
+  &[data-additional='true'],
+  &[data-restricted='true'] {
+    padding-left: ${spacing.small};
+  }
+  &[data-additional='true'][data-restricted='true'] {
+    padding-left: ${spacing.medium};
+  }
 `;
 
 const StyledMarksWrapper = styled.span`
@@ -137,19 +150,6 @@ const StyledMarksWrapper = styled.span`
   span:first-of-type {
     margin-left: 0;
   }
-`;
-const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
-  color: ${(props) => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
-  text-align: center;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid ${(props) => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
-  border-radius: 100px;
-  transition: ${misc.transition.default};
 `;
 
 const StyledHumanBoardIconWrapper = styled.span`
@@ -178,15 +178,19 @@ export type ItemProps = {
   isAdditionalResource?: boolean;
   isRestrictedResource?: boolean;
 };
+
+type ColorMode = 'primary' | 'darker' | 'light' | 'greyLightest' | 'greyLighter';
+type ListDirection = 'horizontal' | 'vertical' | 'floating';
+
 type Props = {
   heading?: string;
-  colorMode?: 'primary' | 'darker' | 'light' | 'greyLightest' | 'greyLighter';
+  colorMode?: ColorMode;
   isButtonElements?: boolean;
   items?: ItemProps[];
   onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
-  listDirection?: listProps['direction'];
+  listDirection?: ListDirection;
   invertedStyle?: boolean;
   onToggleAdditionalResources?: (checked: boolean) => void;
 };
@@ -204,7 +208,7 @@ export const NavigationBox = ({
   onToggleAdditionalResources = () => {},
 }: Props) => {
   const { t } = useTranslation();
-  const ListElementType = isButtonElements ? ButtonV2 : SafeLinkButton;
+
   return (
     <StyledWrapper>
       <StyledHeadingWrapper>
@@ -223,56 +227,76 @@ export const NavigationBox = ({
           />
         )}
       </StyledHeadingWrapper>
-      <StyledList data-testid="nav-box-list" direction={listDirection}>
+      <StyledList data-testid="nav-box-list" data-direction={listDirection}>
         {items?.map((item: ItemProps) => (
-          <StyledListItem key={item.label} listDirection={listDirection} data-testid="nav-box-item">
-            <StyledListElementWrapper
-              isAdditionalResource={item.isAdditionalResource}
-              lighter={colorMode === 'light'}
-              selected={item.selected}
-            >
-              <ListElementType
-                to={item.url ?? ''}
-                colorTheme={item.selected ? 'darker' : colorMode}
-                size="medium"
-                shape="sharp"
-                css={listElementStyle}
-                onClick={(e: MouseEvent<HTMLElement>) => {
-                  if (onClick) {
-                    onClick(e, item.id);
-                  }
-                }}
-              >
-                <StyledButtonContent>
-                  <StyledButtonContentText
-                    isAdditionalResource={item.isAdditionalResource}
-                    isRestrictedResource={item.isRestrictedResource}
-                    lighter={colorMode === 'light'}
-                  >
-                    <StyledMarksWrapper>
-                      {item.isAdditionalResource && (
-                        <StyledAdditionalResourceMark lighter={colorMode === 'light'} selected={item.selected}>
-                          T
-                        </StyledAdditionalResourceMark>
-                      )}
-                      {item.isRestrictedResource && (
-                        <StyledHumanBoardIconWrapper>
-                          <HumanMaleBoard />
-                        </StyledHumanBoardIconWrapper>
-                      )}
-                    </StyledMarksWrapper>
-                    {item.label}
-                  </StyledButtonContentText>
-                  {item.selected && <StyledButtonContentSelected />}
-                </StyledButtonContent>
-              </ListElementType>
-            </StyledListElementWrapper>
-            {listDirection !== 'floating' && <StyledSpacingElement />}
-          </StyledListItem>
+          <BoxItem
+            item={item}
+            key={item.id}
+            isButtonElements={isButtonElements}
+            colorMode={colorMode}
+            onClick={onClick}
+            listDirection={listDirection}
+          />
         ))}
       </StyledList>
     </StyledWrapper>
   );
 };
+
+interface BoxItemProps {
+  item: ItemProps;
+  colorMode: ColorMode;
+  onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
+  listDirection: ListDirection;
+  isButtonElements?: boolean;
+}
+
+const BoxItem = memo(({ item, colorMode, isButtonElements, onClick, listDirection }: BoxItemProps) => {
+  const ListElementType = useMemo(() => (isButtonElements ? ButtonV2 : SafeLinkButton), [isButtonElements]);
+
+  const onElementClick = useCallback((e: MouseEvent<HTMLElement>) => onClick?.(e, item.id), [item.id, onClick]);
+
+  return (
+    <StyledListItem key={item.label} data-direction={listDirection} data-testid="nav-box-item">
+      <StyledListElementWrapper
+        data-additional={item.isAdditionalResource}
+        data-lighter={colorMode === 'light'}
+        data-selected={item.selected}
+      >
+        <ListElementType
+          to={item.url ?? ''}
+          colorTheme={item.selected ? 'darker' : colorMode}
+          size="medium"
+          shape="sharp"
+          css={listElementStyle}
+          onClick={onElementClick}
+        >
+          <StyledButtonContent>
+            <StyledButtonContentText
+              data-additional={item.isAdditionalResource}
+              data-restricted={item.isRestrictedResource}
+            >
+              <StyledMarksWrapper>
+                {item.isAdditionalResource && (
+                  <StyledAdditionalResourceMark data-lighter={colorMode === 'light'} data-selected={item.selected}>
+                    T
+                  </StyledAdditionalResourceMark>
+                )}
+                {item.isRestrictedResource && (
+                  <StyledHumanBoardIconWrapper>
+                    <HumanMaleBoard />
+                  </StyledHumanBoardIconWrapper>
+                )}
+              </StyledMarksWrapper>
+              {item.label}
+            </StyledButtonContentText>
+            {item.selected && <StyledButtonContentSelected />}
+          </StyledButtonContent>
+        </ListElementType>
+      </StyledListElementWrapper>
+      {listDirection !== 'floating' && <StyledSpacingElement />}
+    </StyledListItem>
+  );
+});
 
 export default NavigationBox;

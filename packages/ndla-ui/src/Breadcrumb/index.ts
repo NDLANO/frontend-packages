@@ -10,8 +10,6 @@ import Breadcrumb from './Breadcrumb';
 
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './BreadcrumbItem';
 
-export { default as HeaderBreadcrumb } from './HeaderBreadcrumb';
-
 export { default as HomeBreadcrumb } from './HomeBreadcrumb';
 
 export { default as ActionBreadcrumb } from './ActionBreadcrumb';

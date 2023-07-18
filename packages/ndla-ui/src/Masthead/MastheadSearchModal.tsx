@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useCallback, useState } from 'react';
 import { Drawer } from '@ndla/modal';
 import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
@@ -63,9 +63,17 @@ const StyledHeader = styled.div`
 const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScreen, ndlaFilm }: Props) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+
+  const onOpen = useCallback(() => setIsOpen(true), []);
+
+  const onClose = useCallback(() => {
+    setIsOpen(false);
+    onSearchClose();
+  }, [onSearchClose]);
+
   return (
     <>
-      <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} onClick={() => setIsOpen(true)} ndlaFilm={ndlaFilm}>
+      <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} onClick={onOpen} ndlaFilm={ndlaFilm}>
         {t('masthead.menu.search')}
       </ToggleSearchButton>
       <StyledDrawer
@@ -77,10 +85,7 @@ const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScr
         animation="slideIn"
         animationDuration={200}
         isOpen={isOpen}
-        onClose={() => {
-          setIsOpen(false);
-          onSearchClose();
-        }}
+        onClose={onClose}
       >
         {(closeModal) => (
           <>

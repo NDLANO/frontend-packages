@@ -30,12 +30,7 @@ import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import NotionExample from './organisms/NotionExample';
-import {
-  BreadcrumbDefault,
-  BreadcrumbWithHeader,
-  BreadcrumbWithHome,
-  BreadcrumbWithAction,
-} from './molecules/breadcrumbs';
+import { BreadcrumbDefault, BreadcrumbWithHome, BreadcrumbWithAction } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
@@ -216,8 +211,6 @@ storiesOf('Patterns', module)
       <BreadcrumbDefault />
       <h2 className="u-heading">Enkel brødsmulesti. Automatisk redusering av bredde</h2>
       <BreadcrumbDefault autoCollapse />
-      <h2 className="u-heading">Brødsmulesti med header og styling</h2>
-      <BreadcrumbWithHeader />
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
       <BreadcrumbWithHome />
       <h2 className="u-heading">Brødsmulesti med Menuknapp</h2>

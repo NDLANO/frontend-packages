@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import Modal from './Modal';
 import { ModalSizeType, ModalAnimation, DrawerPosition, BaseProps, ModalSize } from './types';
 
@@ -18,8 +18,12 @@ interface Props {
 }
 
 const Drawer = ({ size = 'normal', position = 'left', ...rest }: Props & BaseProps) => {
-  const modalSize: ModalSizeType =
-    position === 'bottom' || position === 'top' ? { width: 'full', height: size } : { height: 'full', width: size };
+  const modalSize: ModalSizeType = useMemo(
+    () =>
+      position === 'bottom' || position === 'top' ? { width: 'full', height: size } : { height: 'full', width: size },
+    [position, size],
+  );
+
   return <Modal animation="slideIn" position={position} size={modalSize} modalMargin="none" {...rest} />;
 };
 

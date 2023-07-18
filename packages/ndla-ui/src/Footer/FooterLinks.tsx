@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, memo } from 'react';
 import styled from '@emotion/styled';
 import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
@@ -25,17 +25,13 @@ const StyledLinksWrapper = styled.div`
   }
 `;
 
-type FooterLinksProps = {
-  links: [
-    {
-      to: string;
-      text: string;
-      icon: ReactNode;
-      facebook: string;
-      twitter: string;
-    },
-  ];
-};
+interface FooterLinksProps {
+  links: {
+    to: string;
+    text: string;
+    icon: ReactNode;
+  }[];
+}
 
 const commonLinks = [
   { key: 'omNdla', url: 'https://om.ndla.no' },
@@ -96,42 +92,40 @@ const StyledHeaderLinks = styled.h3`
 const FooterLinks = ({ links }: FooterLinksProps) => {
   const { t } = useTranslation();
   return (
-    <>
-      <StyledLinksWrapper>
-        <div>
-          <StyledHeaderLinks id="otherLinks">
-            {t('footer.linksHeader')} <Launch />
-          </StyledHeaderLinks>
-          <StyledNav aria-labelledby="otherLinks">
-            {commonLinks.map((link) => (
-              <div key={link.url}>
-                <StyledSafeLink
-                  key={t<string>(`footer.ndlaLinks.${link.key}`)}
-                  aria-label={t(`footer.ndlaLinks.${link.key}`)}
-                  to={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t(`footer.ndlaLinks.${link.key}`)}
-                </StyledSafeLink>
-              </div>
-            ))}
-          </StyledNav>
-        </div>
-        <StyledNav aria-label={t('footer.socialMedia')}>
-          {links.map((link) => (
-            <StyledSocialMediaLinkWrapper key={link.to}>
-              <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
-              <StyledSafeLink to={link.to}>
-                {link.text}
-                <Forward />
+    <StyledLinksWrapper>
+      <div>
+        <StyledHeaderLinks id="otherLinks">
+          {t('footer.linksHeader')} <Launch />
+        </StyledHeaderLinks>
+        <StyledNav aria-labelledby="otherLinks">
+          {commonLinks.map((link) => (
+            <div key={link.url}>
+              <StyledSafeLink
+                key={t<string>(`footer.ndlaLinks.${link.key}`)}
+                aria-label={t(`footer.ndlaLinks.${link.key}`)}
+                to={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t(`footer.ndlaLinks.${link.key}`)}
               </StyledSafeLink>
-            </StyledSocialMediaLinkWrapper>
+            </div>
           ))}
         </StyledNav>
-      </StyledLinksWrapper>
-    </>
+      </div>
+      <StyledNav aria-label={t('footer.socialMedia')}>
+        {links.map((link) => (
+          <StyledSocialMediaLinkWrapper key={link.to}>
+            <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
+            <StyledSafeLink to={link.to}>
+              {link.text}
+              <Forward />
+            </StyledSafeLink>
+          </StyledSocialMediaLinkWrapper>
+        ))}
+      </StyledNav>
+    </StyledLinksWrapper>
   );
 };
 
-export default FooterLinks;
+export default memo(FooterLinks);

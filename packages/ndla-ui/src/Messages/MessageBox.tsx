@@ -14,7 +14,6 @@ import { InformationOutline, HumanMaleBoard, Forward, WarningOutline } from '@nd
 // @ts-ignore
 import { Remarkable } from 'remarkable';
 import { CloseButton } from '@ndla/button';
-import { css } from '@emotion/react';
 
 const markdown = new Remarkable({ breaks: true });
 markdown.inline.ruler.enable(['sub', 'sup']);
@@ -38,21 +37,15 @@ const MessageBoxWrapper = styled.div<StyledProps>`
   ${mq.range({ until: breakpoints.tabletWide })} {
     ${fonts.sizes('16px')};
   }
-
-  ${({ type }) =>
-    type === 'ghost' &&
-    css`
-      background: transparent;
-      border: 1px solid ${colors.brand.neutral7};
-      color: ${colors.brand.greyDark};
-    `}
-
-  ${({ type }) =>
-    type === 'danger' &&
-    css`
-      background: ${colors.support.redLightest};
-      color: ${colors.text.primary};
-    `}
+  &[data-type='ghost'] {
+    background: transparent;
+    border: 1px solid ${colors.brand.neutral7};
+    color: ${colors.brand.greyDark};
+  }
+  &[data-type='danger'] {
+    background: ${colors.support.redLightest};
+    color: ${colors.text.primary};
+  }
 `;
 
 const InfoWrapper = styled.div`

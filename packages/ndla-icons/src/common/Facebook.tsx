@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const Facebook = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="SIL Open Font License 1.1" data-source="Material Community Icons" {...props}>
     <g>
-      <path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" />
+      <path d="M17 2v4h-2c-.7 0-1 .8-1 1.5V10h3v4h-3v8h-4v-8H7v-4h3V6a4 4 0 0 1 4-4h3Z" />
     </g>
   </Icon>
 );

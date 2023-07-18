@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const PresentationPlay = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M2,3H10A2,2 0 0,1 12,1A2,2 0 0,1 14,3H22V5H21V16H15.25L17,22H15L13.25,16H10.75L9,22H7L8.75,16H3V5H2V3M5,5V14H19V5H5M11.85,11.85C11.76,11.94 11.64,12 11.5,12A0.5,0.5 0 0,1 11,11.5V7.5A0.5,0.5 0 0,1 11.5,7C11.64,7 11.76,7.06 11.85,7.15L13.25,8.54C13.57,8.86 13.89,9.18 13.89,9.5C13.89,9.82 13.57,10.14 13.25,10.46L11.85,11.85Z" />
+      <path d="M2 3h8a2 2 0 0 1 2-2 2 2 0 0 1 2 2h8v2h-1v11h-5.8l1.8 6h-2l-1.8-6h-2.4L9 22H7l1.8-6H3V5H2V3m3 2v9h14V5H5m6.8 6.8-.3.2a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5c.1 0 .3 0 .3.2l1.4 1.3c.4.4.7.7.7 1 0 .3-.3.6-.7 1L12 11.8Z" />
     </g>
   </Icon>
 );

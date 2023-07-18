@@ -17,8 +17,8 @@ interface Props extends IconProps {
 const FolderOutlined = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M9.17 6l2 2H20v10H4V6h5.17M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+      <path fill="none" d="M0 0h24v24H0V0z" />
+      <path d="m9.2 6 2 2H20v10H4V6h5.2m.8-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z" />
     </g>
   </Icon>
 );

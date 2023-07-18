@@ -19,10 +19,8 @@ const FactBox = (props: Props) => (
     <g>
       <path
         fill="#444"
-        fillRule="evenodd"
         stroke="#444"
-        strokeLinecap="square"
-        d="M7 7.84h16.552M15 20l-3-6h6l-3 6zM.5.5v16-16zm0 16h10M.5.5h29m0 0v16m0 0h-10M15 22a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"
+        d="M7 7.8h16.6M15 20l-3-6h6l-3 6zM.5.5v16-16zm0 16h10M.5.5h29m0 0v16m0 0h-10M15 22a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"
       />
     </g>
   </Icon>

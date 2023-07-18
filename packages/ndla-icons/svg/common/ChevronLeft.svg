@@ -1,4 +1,4 @@
-<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" data-license="Apache License 2.0" data-source="Material Design">
-    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-    <path d="M0 0h24v24H0z" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" data-license="Apache License 2.0" data-source="Material Design" viewBox="0 0 24 24">
+  <path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4-4.6-4.6z"/>
+  <path fill="none" d="M0 0h24v24H0z"/>
 </svg>

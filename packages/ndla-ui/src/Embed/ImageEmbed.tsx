@@ -73,14 +73,14 @@ const getSizes = (size?: string, align?: string) => {
   return '(min-width: 1024px) 1024px, 100vw';
 };
 
-const getFocalPoint = (data: ImageEmbedData) => {
+export const getFocalPoint = (data: ImageEmbedData) => {
   if (typeof data.focalX === 'number' && typeof data.focalY === 'number') {
     return { x: data.focalX, y: data.focalY };
   }
   return undefined;
 };
 
-const getCrop = (data: ImageEmbedData) => {
+export const getCrop = (data: ImageEmbedData) => {
   if (
     typeof data.lowerRightX === 'number' &&
     typeof data.lowerRightY === 'number' &&

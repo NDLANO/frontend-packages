@@ -12,7 +12,6 @@ import React, { Component, ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { createMemoryHistory } from 'history';
-import sinon from 'sinon';
 import withTracker from '../withTracker';
 import * as tracker from '../tracker';
 
@@ -68,47 +67,47 @@ test('withTracker HOC renderers Page correctly', () => {
 
 test('sendPageView is called on component mounth ', () => {
   const PageWithTracker = withTracker(Page);
-  const spy = sinon.spy(tracker, 'sendPageView');
+  const spy = jest.spyOn(tracker, 'sendPageView');
 
   history.push('/test');
   render(<PageWithTracker world="world" />);
 
-  expect(spy.calledOnce).toBe(true);
-  expect(spy.args[0]).toMatchSnapshot();
-  spy.restore();
+  expect(spy).toBeCalledTimes(1);
+  expect(spy).toBeCalledWith({ dimensions: undefined, title: 'Hello world' });
+  spy.mockRestore();
 });
 
 test('sendPageView is called on component update if url is untracked', () => {
   const PageWithTracker = withTracker(Page);
-  const spy = sinon.spy(tracker, 'sendPageView');
+  const spy = jest.spyOn(tracker, 'sendPageView');
 
   history.push('/test1');
   const { rerender } = render(<PageWithTracker world="world" />);
+  expect(spy).lastCalledWith({ dimensions: undefined, title: 'Hello world' });
   history.push('/test2');
   rerender(<PageWithTracker world="world" />);
-
-  expect(spy.calledTwice).toBe(true);
-  expect(spy.args).toMatchSnapshot();
-  spy.restore();
+  expect(spy).lastCalledWith({ dimensions: undefined, title: 'Hello world' });
+  expect(spy).toHaveBeenCalledTimes(2);
+  spy.mockRestore();
 });
 
 test('sendPageView is not called on component update if url is tracked', () => {
   const PageWithTracker = withTracker(Page);
-  const spy = sinon.spy(tracker, 'sendPageView');
+  const spy = jest.spyOn(tracker, 'sendPageView');
 
   history.push('/test1');
   const { rerender } = render(<PageWithTracker world="world" />);
   rerender(<PageWithTracker world="world" />);
 
-  expect(spy.calledOnce).toBe(true);
-  expect(spy.args[0]).toMatchSnapshot();
-  spy.restore();
+  expect(spy).toHaveBeenCalledTimes(1);
+  expect(spy).lastCalledWith({ dimensions: undefined, title: 'Hello world' });
+  spy.mockRestore();
 });
 
 test('sendPageView is called from child component if two page tracking compontents are in the same hierarchy', () => {
+  const spy = jest.spyOn(tracker, 'sendPageView');
   const PageWithTracker = withTracker(Page);
   const ChildPageWithTracker = withTracker(ChildPage);
-  const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test');
   render(
@@ -117,7 +116,7 @@ test('sendPageView is called from child component if two page tracking componten
     </PageWithTracker>,
   );
 
-  expect(spy.calledOnce).toBe(true);
-  expect(spy.args[0]).toMatchSnapshot();
-  spy.restore();
+  expect(spy).toHaveBeenCalledTimes(1);
+  expect(spy).lastCalledWith({ dimensions: undefined, title: 'Hello world from child page' });
+  spy.mockRestore();
 });

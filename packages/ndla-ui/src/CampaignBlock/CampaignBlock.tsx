@@ -64,10 +64,6 @@ const StyledDescription = styled.p`
 const StyledImg = styled.img`
   max-height: 200px;
   align-self: center;
-
-  &[data-align-start='true'] {
-    align-self: flex-start;
-  }
 `;
 
 const StyledLink = styled(SafeLink)`
@@ -99,7 +95,7 @@ const CampaignBlock = ({
 }: Props) => {
   return (
     <Container className={className}>
-      {imageBefore && <StyledImg src={imageBefore.src} data-align-start={true} />}
+      {imageBefore && <StyledImg src={imageBefore.src} />}
       <TextWrapper>
         <Heading css={headingStyle}>{title.title}</Heading>
         <StyledDescription>{description.text}</StyledDescription>

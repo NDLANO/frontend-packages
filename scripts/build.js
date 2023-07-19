@@ -11,7 +11,6 @@ const babel = require('@babel/core');
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
-const mkdirp = require('mkdirp');
 const getPackages = require('./_getPackages');
 const babelOptions = require('../babel.config');
 
@@ -70,7 +69,7 @@ function removeBuildFile(file, dest) {
 
 function buildFile(file, dest, { silent = false, override = {} } = {}) {
   const destPath = resolveDestPath(file, dest);
-  mkdirp.sync(path.dirname(destPath));
+  fs.mkdirSync(path.dirname(destPath), { recursive: true });
   try {
     const options = {
       ...babelOptions,

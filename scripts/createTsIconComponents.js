@@ -4,7 +4,6 @@ const camelcase = require('camelcase');
 const glob = require('glob');
 const path = require('path');
 const chalk = require('chalk');
-const rimraf = require('rimraf');
 const prettier = require('prettier');
 const prettierOptions = require('../.prettierrc');
 
@@ -165,7 +164,7 @@ function deleteComponents() {
       .filter(isDirectory);
   getDirectories(path.join(rootDir, 'src')).forEach((directory) => {
     console.log(`${chalk.yellow(`Deleted`)} ${chalk.dim(`${directory}/*`)}`);
-    rimraf.sync(`${directory}/*`);
+    fs.rmSync(directory, { recursive: true });
   });
 }
 

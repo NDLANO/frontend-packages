@@ -47,7 +47,7 @@ import { Audio } from '@ndla/icons/lib/common/Audio';
 
 ## Development
 
-_TLDR:_ Change/Add/Remove svg file(s). Run `node scripts/createIconComponents.js`. Commit.
+_TLDR:_ Change/Add/Remove svg file(s). Run `node scripts/createTsIconComponents.js`. Commit.
 
 ### Add new svg file:
 

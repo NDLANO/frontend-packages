@@ -25,14 +25,7 @@ import { FileDocumentOutline, AudioDocument, Podcast } from '@ndla/icons/common'
 
 import { COPYRIGHTED, metaTypes } from '@ndla/licenses';
 
-import { mockDownloadArticleText } from '../../dummydata';
 import H5PExamples from '../../images/h5p-contenttype';
-
-const triggerDownloadText = async () => {
-  const { default: downloadPdf } = await import('./downloadPdf');
-  downloadPdf({ content: mockDownloadArticleText, title: 'Eksempel artikkel' });
-  // TODO: Fetch texts and name from article..
-};
 
 const byncndLicenseAbbreviation = 'CC-BY-ND-4.0';
 const bysaLicenseAbbreviation = 'CC-BY-SA-4.0';
@@ -146,12 +139,7 @@ export const TextContent = ({ t }) => (
                 <CopyButton variant="outline" copyNode={t('license.hasCopiedTitle')}>
                   {t('license.copyTitle')}
                 </CopyButton>
-                <ButtonV2
-                  variant="outline"
-                  onClick={() => {
-                    triggerDownloadText();
-                  }}
-                >
+                <ButtonV2 variant="outline" onClick={() => console.log('DOWNLOAD')}>
                   {t('license.download')}
                 </ButtonV2>
               </div>

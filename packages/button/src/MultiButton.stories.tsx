@@ -36,6 +36,11 @@ export default {
         enable: true,
       },
       {
+        label: 'Hemmelig',
+        value: 'secret',
+        enable: true,
+      },
+      {
         label: 'Lagre og avslutt',
         value: 'lagreogavslutt',
         enable: true,

@@ -208,6 +208,7 @@ export const NavigationBox = ({
   onToggleAdditionalResources = () => {},
 }: Props) => {
   const { t } = useTranslation();
+  const switchId = useMemo(() => uuid(), []);
 
   return (
     <StyledWrapper>
@@ -219,7 +220,7 @@ export const NavigationBox = ({
         )}
         {hasAdditionalResources && (
           <Switch
-            id={uuid()}
+            id={switchId}
             checked={showAdditionalResources}
             label={t('navigation.additionalTopics')}
             onChange={onToggleAdditionalResources}
@@ -231,7 +232,7 @@ export const NavigationBox = ({
         {items?.map((item: ItemProps) => (
           <BoxItem
             item={item}
-            key={item.id}
+            key={item.id ?? item.url}
             isButtonElements={isButtonElements}
             colorMode={colorMode}
             onClick={onClick}

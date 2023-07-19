@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { CSSProperties, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
@@ -39,6 +39,15 @@ const fadeInAdditionalsKeyframe = keyframes`
   }
 `;
 
+const contentTypeColorMap: Record<string, string> = {
+  [contentTypes.SUBJECT_MATERIAL]: colors.subjectMaterial.dark,
+  [contentTypes.TASKS_AND_ACTIVITIES]: colors.tasksAndActivities.dark,
+  [contentTypes.ASSESSMENT_RESOURCES]: colors.assessmentResource.dark,
+  [contentTypes.EXTERNAL_LEARNING_RESOURCES]: colors.externalLearningResource.dark,
+  [contentTypes.SOURCE_MATERIAL]: colors.sourceMaterial.dark,
+  [contentTypes.LEARNING_PATH]: colors.learningPath.dark,
+};
+
 const ListElement = styled.li`
   border: 1px solid #d1d6db;
   border-radius: 5px;
@@ -63,7 +72,7 @@ const ListElement = styled.li`
   }
 
   &[data-active='true'] {
-    &:before {
+    &::before {
       ${mq.range({ from: breakpoints.tablet })} {
         content: '';
         display: block;
@@ -72,25 +81,7 @@ const ListElement = styled.li`
         height: ${spacing.small};
         border-radius: 100%;
         transform: translate(calc(-${spacing.normal} - ${spacing.small}));
-        background-color: none;
-        &[data-content-type='${contentTypes.SUBJECT_MATERIAL}'] {
-          background-color: ${colors.subjectMaterial.dark};
-        }
-        &[data-content-type='${contentTypes.TASKS_AND_ACTIVITIES}'] {
-          background-color: ${colors.tasksAndActivities.dark};
-        }
-        &[data-content-type='${contentTypes.ASSESSMENT_RESOURCES}'] {
-          background-color: ${colors.assessmentResource.dark};
-        }
-        &[data-content-type='${contentTypes.EXTERNAL_LEARNING_RESOURCES}'] {
-          background-color: ${colors.externalLearningResource.dark};
-        }
-        &[data-content-type='${contentTypes.SOURCE_MATERIAL}'] {
-          background-color: ${colors.sourceMaterial.dark};
-        }
-        &[data-content-type='${contentTypes.LEARNING_PATH}'] {
-          background-color: ${colors.learningPath.dark};
-        }
+        background-color: var(--contentTypeBg);
       }
     }
   }
@@ -225,10 +216,14 @@ const ResourceItem = ({
   const additionalId = `${id}-additional`;
   const describedBy = `${coreId} ${additionalId} ${accessId}`;
   const hidden = additional ? !showAdditionalResources : false;
+  const listElementVars = useMemo(() => {
+    if (!contentType) return {};
+    return { '--contentTypeBg': contentTypeColorMap[contentType] } as unknown as CSSProperties;
+  }, [contentType]);
   return (
     <ListElement
       aria-current={active ? 'page' : undefined}
-      data-content-type={contentType}
+      style={listElementVars}
       data-hidden={hidden && !active}
       data-active={active}
       data-additional={additional}

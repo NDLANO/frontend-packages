@@ -12,17 +12,19 @@ import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';
 import MissingRouterContext from './MissingRouterContext';
 
-const isExternalLink = (to?: LinkProps['to']) =>
-  to && typeof to === 'string' && (to.startsWith('https://') || to.startsWith('http://'));
+const oldNdlaRegex = /(.*)\/?node\/(\d+).*/;
 
-export const isOldNdlaLink = (to?: LinkProps['to']) =>
-  to && typeof to === 'string' && to.match(/(.*)\/?node\/(\d+).*/) !== null;
+const isExternalLink = (to?: LinkProps['to']) =>
+  typeof to === 'string' && (to.startsWith('https://') || to.startsWith('http://'));
+
+export const isOldNdlaLink = (to?: LinkProps['to']) => typeof to === 'string' && to.match(oldNdlaRegex) !== null;
 
 const LaunchIcon = styled(Launch)`
   margin-left: 6px;
   height: auto;
   width: auto;
   margin-top: 1px;
+  vertical-align: text-top;
 `;
 
 type Props = {
@@ -53,7 +55,7 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
           {...rest}
         >
           {children}
-          {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
+          {showNewWindowIcon && <LaunchIcon />}
         </a>
       );
     }
@@ -62,7 +64,7 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
       // RR6 link immediately fails if to is somehow undefined, so we provide an empty fallback to recover.
       <Link ref={ref} tabIndex={tabIndex ?? 0} to={to ?? ''} replace={replace} {...rest}>
         {children}
-        {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
+        {showNewWindowIcon && <LaunchIcon />}
       </Link>
     );
   },

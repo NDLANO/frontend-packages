@@ -6,12 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints, colors } from '@ndla/core';
-import CategorySelect from './CategorySelect';
+import { Option, Select, SingleValue } from '@ndla/select';
 import { MovieResourceType } from './types';
 import { OneColumn } from '..';
 import { StyledHeadingH2 } from './filmStyles';
@@ -59,7 +59,6 @@ interface Props {
   onChangeResourceType: (resourceType?: string) => void;
   resourceTypeSelected?: MovieResourceType;
   resourceTypes: MovieResourceType[];
-  ariaControlId: string;
   skipToContentId?: string;
 }
 
@@ -68,10 +67,32 @@ const FilmMovieSearch = ({
   onChangeResourceType,
   resourceTypes,
   resourceTypeSelected,
-  ariaControlId,
   skipToContentId,
 }: Props) => {
   const { t } = useTranslation();
+  const selectedOption = useMemo(() => {
+    if (resourceTypeSelected) {
+      return { value: resourceTypeSelected.id, label: resourceTypeSelected.name };
+    }
+    return { value: 'fromNdla', label: t('ndlaFilm.search.categoryFromNdla') };
+  }, [resourceTypeSelected, t]);
+
+  const options: Option[] = useMemo(() => {
+    const fromNdla = { value: 'fromNdla', label: t('ndlaFilm.search.categoryFromNdla') };
+    return [fromNdla].concat(resourceTypes.map((rt) => ({ value: rt.id, label: rt.name })));
+  }, [resourceTypes, t]);
+
+  const onChange = useCallback(
+    (value: SingleValue) => {
+      if (value?.value === 'fromNdla') {
+        onChangeResourceType();
+      } else {
+        onChangeResourceType(value?.value);
+      }
+    },
+    [onChangeResourceType],
+  );
+
   return (
     <FilmMovieSearchContainer>
       <OneColumn>
@@ -91,11 +112,13 @@ const FilmMovieSearch = ({
             </StyledUl>
           </nav>
         </TopicNavigation>
-        <CategorySelect
-          onChangeResourceType={onChangeResourceType}
-          resourceTypes={resourceTypes}
-          resourceTypeSelected={resourceTypeSelected}
-          ariaControlId={ariaControlId}
+        <Select<false>
+          options={options}
+          value={selectedOption}
+          onChange={onChange}
+          colorTheme="white"
+          placeholder={`${t('ndlaFilm.search.chooseCategory')}`}
+          prefix={`${t('ndlaFilm.search.chooseCategory')} `}
         />
       </OneColumn>
     </FilmMovieSearchContainer>

@@ -18,7 +18,7 @@ import { KeyFigureStory } from '../KeyFigure/KeyFigure.stories';
 
 const GridWrapper = styled.div`
   .docs-story {
-    background-color: ${colors.background.frontpageArticle};
+    background-color: ${colors.background.lightBlue};
   }
 `;
 

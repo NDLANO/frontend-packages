@@ -271,3 +271,6 @@ export type { HeadingLevel } from './types';
 
 export { default as FrontpageArticle } from './FrontpageArticle';
 export { DefinitionTerm, DefinitionDescription } from './DefinitionList';
+export type { ProgrammeV2 } from './ProgrammeCard';
+
+export { Gloss } from './Gloss';

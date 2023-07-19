@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const Video = (props: Props) => (
   <Icon viewBox="0 0 32 32" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
-      <path fill="none" stroke="#444" d="M31.06 16L.942 31.06V.94z" />
+      <path fill="none" stroke="#444" d="M31 16 1 31V1z" />
     </g>
   </Icon>
 );

@@ -1,20 +1,3 @@
-$numerator: auto;
-$denominator: auto;
-
-// Expand item
-@mixin grids-expand($numerator, $denominator, $expand) {
-  $unit: $numerator / $denominator * 100%;
-  $width: ($numerator / $denominator) * 100%;
-  position: relative !important;
-  right: auto !important;
-  left: -($denominator - $numerator - $expand/2) / $denominator * 100%;
-  width: $width + $unit !important;
-  padding-left: $spacing;
-  padding-right: $spacing;
-}
-// compensate for line-height
-$extra-margin: 10px;
-
 @mixin float($cols, $maxcols, $direction) {
   z-index: 1;
   $colDifference: $maxcols - $cols;
@@ -30,11 +13,10 @@ $extra-margin: 10px;
       width: ($cols-tablet/$maxcols) * 100% !important;
       left: auto !important;
       padding: 0;
-      margin: $spacing ($spacing + $extra-margin) 35px 0;
+      padding-right: $spacing--small;
     }
     @include mq(desktop) {
       width: ($cols/$maxcols) * 100% !important;
-      margin: 0 ($spacing + $extra-margin) 35px -25%;
     }
   }
   @if $direction == right {
@@ -44,11 +26,10 @@ $extra-margin: 10px;
       width: ($cols-tablet/$maxcols) * 100% !important;
       left: auto !important;
       padding: 0;
-      margin: 0 0 35px ($spacing + $extra-margin);
+      padding-left: $spacing--small;
     }
     @include mq(desktop) {
       width: ($cols/$maxcols) * 100% !important;
-      margin: 0 -25% 35px ($spacing + $extra-margin);
     }
   }
 }

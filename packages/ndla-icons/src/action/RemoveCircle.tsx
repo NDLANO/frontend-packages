@@ -17,8 +17,8 @@ interface Props extends IconProps {
 const RemoveCircle = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="M7 11v2h10v-2H7zm5-9a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
     </g>
   </Icon>
 );

@@ -16,7 +16,7 @@ require('./concepts');
 require('./simple-components');
 require('./collated-components');
 require('./licenses');
-require('./produksjonssystem');
+require('./productionSystem');
 require('./experimental');
 require('./messages');
 require('./ndla-urls');

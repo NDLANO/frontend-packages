@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -15,7 +15,7 @@ const classes = BEMHelper({
   outputIsString: true,
 });
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   className?: string;
   cssModifier?: string;
@@ -24,7 +24,7 @@ interface Props {
   extraPadding?: boolean;
 }
 
-export const OneColumn = ({ children, className, cssModifier, wide, noPadding, extraPadding }: Props) => {
+export const OneColumn = ({ children, className, cssModifier, wide, noPadding, extraPadding, ...rest }: Props) => {
   const modifiers = [];
 
   if (cssModifier) {
@@ -43,7 +43,11 @@ export const OneColumn = ({ children, className, cssModifier, wide, noPadding, e
     modifiers.push('extra-padding');
   }
 
-  return <div className={`${classes('', modifiers)} ${className}`}>{children}</div>;
+  return (
+    <div className={`${classes('', modifiers)} ${className}`} {...rest}>
+      {children}
+    </div>
+  );
 };
 
 export default OneColumn;

@@ -24,12 +24,12 @@ const GradesMenu = styled.ul`
 
 export type GradesProps = {
   selectedGrade?: string;
-  grades: {
+  grades?: {
     missingProgrammeSubjects?: boolean;
     name: string;
-    categories: {
+    categories?: {
       name: string;
-      subjects: {
+      subjects?: {
         label: string;
         url: string;
       }[];
@@ -45,14 +45,14 @@ const ProgrammeSubjects = ({ grades, onNavigate, selectedGrade = 'vg1' }: Props)
   const { t } = useTranslation();
 
   const grade = useMemo(
-    () => grades.find((grade) => grade.name.toLowerCase() === selectedGrade) ?? grades[0],
+    () => grades?.find((grade) => grade.name.toLowerCase() === selectedGrade) ?? grades?.[0],
     [grades, selectedGrade],
   );
 
   return (
     <>
-      <GradesMenu aria-label={t('programme.grades')}>
-        {grades.map((item) => {
+      <GradesMenu aria-label={t('programmes.grades')}>
+        {grades?.map((item) => {
           const current = item.name.toLowerCase() === selectedGrade;
           return (
             <li key={item.name}>
@@ -69,8 +69,8 @@ const ProgrammeSubjects = ({ grades, onNavigate, selectedGrade = 'vg1' }: Props)
           );
         })}
       </GradesMenu>
-      {grade.missingProgrammeSubjects && <MessageBox>{t('messageBoxInfo.noContent')}</MessageBox>}
-      {grade.categories.map((category) => (
+      {grade?.missingProgrammeSubjects && <MessageBox>{t('messageBoxInfo.noContent')}</MessageBox>}
+      {grade?.categories?.map((category) => (
         <NavigationBox key={category.name} heading={category.name} items={category.subjects} onClick={onNavigate} />
       ))}
     </>

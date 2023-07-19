@@ -24,6 +24,10 @@ interface StyledStructureItemProps {
   connectionId?: string;
 }
 
+const StyledSpinner = styled(Spinner)`
+  margin: 4px 26px;
+`;
+
 const StyledStructureItem = styled.li<StyledStructureItemProps>`
   margin: 0;
   padding: 0;
@@ -175,7 +179,7 @@ const Structure = ({
               </ItemNameBar>
               {loading ? (
                 <span>
-                  <Spinner size="normal" margin="4px 26px" />
+                  <StyledSpinner size="normal" />
                 </span>
               ) : (
                 <Structure

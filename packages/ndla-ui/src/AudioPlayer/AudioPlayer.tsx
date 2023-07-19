@@ -113,6 +113,7 @@ const LinkToTextVersionWrapper = styled.div<LinkToTextVersionWrapperProps>`
 `;
 
 const TextVersionWrapper = styled.div`
+  white-space: pre-wrap;
   border: 1px solid ${colors.brand.lighter};
   border-top: 0;
   ${fonts.sizes('16px', '30px')};

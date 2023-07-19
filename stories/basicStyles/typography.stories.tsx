@@ -26,13 +26,13 @@ const Heading = ({ level }: HeadingProps) => {
 };
 
 const meta: Meta = {
-  title: 'Base styles/Typografi',
+  title: 'Base styles/Typography',
   parameters: defaultParameters,
 };
 
 export default meta;
 
-export const Typografi: StoryFn = () => {
+export const Typography: StoryFn = () => {
   return (
     <div>
       <StoryIntro title="Typografi">

@@ -11,7 +11,6 @@ import { subjectList, subjectConcepts } from './mockSubjects';
 import { firstBrightcoveList, secondBrightcoveList, brightCoveMockVideo } from './mockBrightcove';
 import { firstYouTubeList, secondYouTubeList, youTubeMockVideo } from './mockYouTube';
 
-import { mockDownloadArticleText } from './mockDownloadArticleText';
 import { contentTypeResults } from './mockSearch';
 
 import {
@@ -44,7 +43,6 @@ export {
   assessmentResources,
   sourceMaterialResources,
   externalLearningResources,
-  mockDownloadArticleText,
   mockAllMovies,
   mockHighlightedMovies,
   movieTopics,

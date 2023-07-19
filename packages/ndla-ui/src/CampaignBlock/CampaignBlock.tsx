@@ -18,6 +18,7 @@ interface Image {
   src: string;
   alt: string;
 }
+
 interface Props {
   title: {
     title: string;
@@ -62,12 +63,7 @@ const StyledDescription = styled.p`
 
 const StyledImg = styled.img`
   max-height: 200px;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    align-self: center;
-  }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    align-self: center;
-  }
+  align-self: center;
 `;
 
 const StyledLink = styled(SafeLink)`
@@ -84,6 +80,10 @@ const StyledLink = styled(SafeLink)`
   }
 `;
 
+const TextWrapper = styled.div`
+  flex-grow: 1;
+`;
+
 const CampaignBlock = ({
   title,
   imageBefore,
@@ -95,16 +95,16 @@ const CampaignBlock = ({
 }: Props) => {
   return (
     <Container className={className}>
-      {imageBefore && <StyledImg src={imageBefore.src} data-left={true} />}
-      <div>
+      {imageBefore && <StyledImg src={imageBefore.src} />}
+      <TextWrapper>
         <Heading css={headingStyle}>{title.title}</Heading>
         <StyledDescription>{description.text}</StyledDescription>
         <StyledLink to={url.url}>
           {url.text}
           <Forward />
         </StyledLink>
-      </div>
-      {imageAfter && <StyledImg src={imageAfter.src} data-right={true} />}
+      </TextWrapper>
+      {imageAfter && <StyledImg src={imageAfter.src} />}
     </Container>
   );
 };

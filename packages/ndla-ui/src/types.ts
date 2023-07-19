@@ -68,7 +68,7 @@ export interface FootNote {
 export interface Article {
   title: string;
   introduction: string;
-  content: string | (() => ReactNode) | ReactNode;
+  content: string | ReactNode;
   footNotes: Array<FootNote>;
   copyright: Copyright;
   published: string;
@@ -104,9 +104,12 @@ export type elementRectType = {
   fromScale: number;
 };
 
-export type CompetenceGoalsItemType = {
+interface GrepCode {
   id: string;
   title: string;
+}
+
+export interface CompetenceGoalsItemType extends GrepCode {
   goals: {
     id: string;
     text: string;
@@ -114,7 +117,13 @@ export type CompetenceGoalsItemType = {
   }[];
   selected?: boolean;
   isOembed?: boolean;
-};
+}
+
+export interface CoreElementsItemType extends GrepCode {
+  text?: string;
+  url?: string;
+  isOembed?: boolean;
+}
 
 export type NotionMedia = {
   type: 'video' | 'other';

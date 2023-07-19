@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const Table = (props: Props) => (
   <Icon viewBox="0 0 32 32" data-license="CC-BY 4.0" data-source="Icomoon" {...props}>
     <g>
-      <path d="M0 6v22h32v-22h-32zM12 20v-4h8v4h-8zM20 22v4h-8v-4h8zM20 10v4h-8v-4h8zM10 10v4h-8v-4h8zM2 16h8v4h-8v-4zM22 16h8v4h-8v-4zM22 14v-4h8v4h-8zM2 22h8v4h-8v-4zM22 26v-4h8v4h-8z" />
+      <path d="M0 6v22h32V6H0zm12 14v-4h8v4h-8zm8 2v4h-8v-4h8zm0-12v4h-8v-4h8zm-10 0v4H2v-4h8zm-8 6h8v4H2v-4zm20 0h8v4h-8v-4zm0-2v-4h8v4h-8zM2 22h8v4H2v-4zm20 4v-4h8v4h-8z" />
     </g>
   </Icon>
 );

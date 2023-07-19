@@ -41,6 +41,10 @@ const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFo
 const StyledImageWrapper = styled.div`
   position: relative;
 
+  picture {
+    width: 100%;
+  }
+
   &[data-svg='true'] {
     display: flex;
     justify-content: center;

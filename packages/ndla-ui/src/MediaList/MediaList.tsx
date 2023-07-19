@@ -16,6 +16,9 @@ import {
 import { LicenseDescription } from '@ndla/notion';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
+import styled from '@emotion/styled';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import { Launch } from '@ndla/icons/common';
 
 const oClasses = new BEMHelper({
   name: 'media',
@@ -42,11 +45,57 @@ export const MediaListItem = ({ children }: MediaListItemProps) => (
 
 interface MediaListItemImageProps {
   children: ReactNode;
+  canOpen?: boolean;
 }
-export const MediaListItemImage = ({ children }: MediaListItemImageProps) => (
-  <div {...oClasses('img', undefined, cClasses('img').className)}>
-    <div>{children}</div>
-  </div>
+
+const ImageWrapper = styled.div`
+  position: relative;
+  align-self: flex-start;
+  margin-right: ${spacing.small};
+  ${mq.range({ from: breakpoints.tablet })} {
+    width: 25%;
+  }
+  a {
+    display: block;
+    box-shadow: none;
+  }
+  &:hover,
+  &:focus-visible {
+    [data-open-indicator] {
+      background-color: ${colors.brand.dark};
+      padding: ${spacing.xsmall};
+    }
+  }
+`;
+
+const OpenIndicator = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: ${spacing.xsmall};
+  bottom: ${spacing.xsmall};
+  padding: ${spacing.xxsmall};
+  transition: all 50ms ease-in;
+  background-color: ${colors.brand.primary};
+  border-radius: 100%;
+  pointer-events: none;
+  z-index: 1;
+  svg {
+    color: ${colors.white};
+    width: ${spacing.normal};
+    height: ${spacing.normal};
+  }
+`;
+
+export const MediaListItemImage = ({ children, canOpen }: MediaListItemImageProps) => (
+  <ImageWrapper>
+    {canOpen && (
+      <OpenIndicator data-open-indicator>
+        <Launch />
+      </OpenIndicator>
+    )}
+    {children}
+  </ImageWrapper>
 );
 
 interface MediaListCCLinkProps {

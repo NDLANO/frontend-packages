@@ -17,8 +17,8 @@ interface Props extends IconProps {
 const ChevronUp = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
-      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="m12 8-6 6 1.4 1.4 4.6-4.6 4.6 4.6L18 14z" />
+      <path fill="none" d="M0 0h24v24H0z" />
     </g>
   </Icon>
 );

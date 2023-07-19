@@ -9,6 +9,8 @@
 import { contentTypes, contentTypeMapping, resourceEmbedTypeMapping } from './ContentType';
 import * as subjectCategories from './SubjectCategories';
 import * as subjectTypes from './SubjectTypes';
+import * as WordClass from './WordClass';
+import * as Transcriptions from './Transcriptions';
 
 const model = {
   contentTypes,
@@ -16,6 +18,8 @@ const model = {
   subjectTypes,
   contentTypeMapping,
   resourceEmbedTypeMapping,
+  WordClass,
+  Transcriptions,
 };
 
 export default model;

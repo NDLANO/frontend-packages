@@ -9,23 +9,25 @@
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA } from './licenseRights';
 import { getLocaleOrDefault, LicenseType, Locale } from './types';
 
-const freeUseNB = 'Fri gjenbruk';
-const freeUseNN = 'Fri gjenbruk';
-const freeUseEN = 'Free reuse';
+const freeUseNB = 'Offentlig eie';
+const freeUseNN = 'Offentleg eige';
+const freeUseEN = 'Public domain';
 const restrictedUseNB = 'Begrenset bruk';
-const restrictedUseNN = 'Begrenset bruk';
+const restrictedUseNN = 'Begrensa bruk';
 const restrictedUseEN = 'Restricted use';
 const restrictedReuseNB = 'Begrenset gjenbruk';
-const restrictedReuseNN = 'Begrenset gjenbruk';
+const restrictedReuseNN = 'Begrensa gjenbruk';
 const restrictedReuseEN = 'Restricted reuse';
 
 const openLicenseLinkTextNB = 'Lær mer om åpne lisenser';
-const openLicenseLinkTextNN = 'Lær mer om åpne lisenser';
+const openLicenseLinkTextNN = 'Lær meir om opne lisensar';
 const openLicenseLinkTextEN = 'Learn more about open licenses';
 
 const naNB = 'N/A - ikke relevant';
 const naNN = 'N/A - ikkje relevant';
 const naEN = 'N/A - not applicable';
+
+const byncndAbbrev = `${CC} ${BY}-${NC}-${ND}`.toUpperCase();
 
 const byncnd: LicenseType = {
   nn: {
@@ -34,8 +36,9 @@ const byncnd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
+    abbreviation: byncndAbbrev,
     description:
-      'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavspersonen, men dei kan ikkje endra det på nokon måte, eller bruke det kommersielt.',
+      'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavar, men dei kan ikkje endra det på nokon måte, eller bruke det kommersielt.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -43,8 +46,9 @@ const byncnd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
+    abbreviation: byncndAbbrev,
     description:
-      'Denne lisensen er den mest restriktive av våre seks kjernelisenser. Den tillater andre å laste ned ditt verk og dele det med andre så lenge du er navngitt som opphavspersonen, men de kan ikke endre det på noen måte, eller bruke det kommersielt.',
+      'Denne lisensen er den mest restriktive av våre seks kjernelisenser. Den tillater andre å laste ned ditt verk og dele det med andre så lenge du er navngitt som opphaver, men de kan ikke endre det på noen måte, eller bruke det kommersielt.',
   },
 
   en: {
@@ -53,12 +57,14 @@ const byncnd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
+    abbreviation: byncndAbbrev,
     description:
       'This license is the most restrictive of our six main licenses, only allowing others to download your works and share them with others as long as they credit you, but they can’t change them in any way or use them commercially.',
   },
   rights: [CC, BY, NC, ND],
-  abbreviation: `${CC} ${BY}-${NC}-${ND}`.toUpperCase(),
 };
+
+const byncsaAbbrev = `${CC} ${BY}-${NC}-${SA}`.toUpperCase();
 
 const byncsa: LicenseType = {
   nn: {
@@ -67,8 +73,9 @@ const byncsa: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
+    abbreviation: byncsaAbbrev,
     description:
-      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt for ikkje-kommersielle formål. Deira verk må namngje deg som den opprinnelige opphavspersonen og avleia verk må bera ein lisens som svarar til denne.',
+      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt for ikkje-kommersielle formål. Deira verk må namngje deg som den opprinnelige opphavaren og avleia verk må bera ein lisens som svarar til denne.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -76,8 +83,9 @@ const byncsa: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
+    abbreviation: byncsaAbbrev,
     description:
-      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som den opprinnelige opphavspersonen og avledete verk må bære en tilsvarende lisens.',
+      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som den opprinnelige opphaveren og avledete verk må bære en tilsvarende lisens.',
   },
 
   en: {
@@ -86,12 +94,14 @@ const byncsa: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
+    abbreviation: byncsaAbbrev,
     description:
       'This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms.',
   },
   rights: [CC, BY, NC, SA],
-  abbreviation: `${CC} ${BY}-${NC}-${SA}`.toUpperCase(),
 };
+
+const byncAbbrev = `${CC} ${BY}-${NC}`.toUpperCase();
 
 const bync: LicenseType = {
   nn: {
@@ -100,8 +110,9 @@ const bync: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
+    abbreviation: byncAbbrev,
     description:
-      'Denne lisensen let andre distribuer, endre, remixe, og byggje videre på verket ditt for ikkje-kommersielle formål. Verket deira må namngje deg som opphavsperson og også vera ikkje-kommersielle, men dei treng ikkje krevja at verk avleda av deira ber dei same vilkåra.',
+      'Denne lisensen let andre distribuer, endre, remixe, og byggje videre på verket ditt for ikkje-kommersielle formål. Verket deira må namngje deg som opphavar og også vera ikkje-kommersielle, men dei treng ikkje krevja at verk avleda av deira ber dei same vilkåra.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -109,8 +120,9 @@ const bync: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
+    abbreviation: byncAbbrev,
     description:
-      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som opphavsperson og også være ikke-kommersielle, men de behøver ikke kreve at verk avledet fra deres bærer de samme vilkårene.',
+      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som opphaver og også være ikke-kommersielle, men de behøver ikke kreve at verk avledet fra deres bærer de samme vilkårene.',
   },
 
   en: {
@@ -119,12 +131,14 @@ const bync: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
+    abbreviation: byncAbbrev,
     description:
       'This license lets others remix, tweak, and build upon your work non-commercially, and although their new works must also acknowledge you and be non-commercial, they don’t have to license their derivative works on the same terms.',
   },
   rights: [CC, BY, NC],
-  abbreviation: `${CC} ${BY}-${NC}`.toUpperCase(),
 };
+
+const byndAbbrev = `${CC} ${BY}-${ND}`.toUpperCase();
 
 const bynd: LicenseType = {
   nn: {
@@ -133,6 +147,7 @@ const bynd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
+    abbreviation: byndAbbrev,
     description:
       'Denne lisensen gjev høve til å distribuera verket vidare, både for kommersielle og ikkje-kommersielle formål, så lenge det vert gjeve vidare uendra og i sitt heile, og at du vert namngjeven som den som har skapt verket.',
   },
@@ -142,6 +157,7 @@ const bynd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
+    abbreviation: byndAbbrev,
     description:
       'Denne lisensen gir mulighet for å videredistribuere verket, både for kommersielle og ikke-kommersielle formål, så lenge det gis videre uendret og i sin helhet, og at du navngis som den som har skapt verket.',
   },
@@ -152,12 +168,14 @@ const bynd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
+    abbreviation: byndAbbrev,
     description:
       'This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.',
   },
   rights: [CC, BY, ND],
-  abbreviation: `${CC} ${BY}-${ND}`.toUpperCase(),
 };
+
+const bysaAbbrev = `${CC} ${BY}-${SA}`.toUpperCase();
 
 const bysa: LicenseType = {
   nn: {
@@ -166,8 +184,9 @@ const bysa: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
+    abbreviation: bysaAbbrev,
     description:
-      'Fri gjenbruk ved namngiving. Namngiving vil seie at du oppgir namnet til opphavspersonen/ane. Om du deler, må andre også få lov til å dele vidare på same vilkår. Dette sikrar vidare gjenbruk og bidreg til delingskultur.',
+      'Fri gjenbruk ved namngiving. Namngiving vil seie at du oppgir namnet til opphavar(ane). Om du deler, må andre også få lov til å dele vidare på same vilkår. Dette sikrar vidare gjenbruk og bidreg til delingskultur.',
   },
   nb: {
     short: restrictedReuseNB,
@@ -175,8 +194,9 @@ const bysa: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
+    abbreviation: bysaAbbrev,
     description:
-      'Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til opphavspersonen(e). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.',
+      'Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til opphaver(ene). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.',
   },
 
   en: {
@@ -185,12 +205,14 @@ const bysa: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
+    abbreviation: bysaAbbrev,
     description:
       'This license lets others remix, tweak, and build upon your work even for commercial purposes, as long as they credit you and license their new creations under the identical terms. This license is often compared to “copyleft” free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content from Wikipedia and similarly licensed projects.',
   },
   rights: [CC, BY, SA],
-  abbreviation: `${CC} ${BY}-${SA}`.toUpperCase(),
 };
+
+const byAbbrev = `${CC} ${BY}`.toUpperCase();
 
 const by: LicenseType = {
   nn: {
@@ -199,8 +221,9 @@ const by: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
+    abbreviation: byAbbrev,
     description:
-      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, så lenge dei namngir deg som den opphavlege opphavspersonen. Dette er den mest fleksible og opne lisensen vi tilbyr. Den vert tilrådd om du ynsker maksimal spreiing og bruk av materiale under ein CC-lisens.',
+      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, så lenge dei namngir deg som den opphavlege opphavaren. Dette er den mest fleksible og opne lisensen vi tilbyr. Den vert tilrådd om du ynsker maksimal spreiing og bruk av materiale under ein CC-lisens.',
   },
   nb: {
     short: freeUseNB,
@@ -208,8 +231,9 @@ const by: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
+    abbreviation: byAbbrev,
     description:
-      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphavspersonen. Dette er den mest fleksible og åpne lisensen vi tilbyr. Den anbefales dersom du ønsker maksimal spredning og bruk av materiale under en CC-lisens.',
+      'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphaveren. Dette er den mest fleksible og åpne lisensen vi tilbyr. Den anbefales dersom du ønsker maksimal spredning og bruk av materiale under en CC-lisens.',
   },
 
   en: {
@@ -218,11 +242,11 @@ const by: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
+    abbreviation: byAbbrev,
     description:
       'This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials.',
   },
   rights: [CC, BY],
-  abbreviation: `${CC} ${BY}`.toUpperCase(),
 };
 
 const pd: LicenseType = {
@@ -232,6 +256,7 @@ const pd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
     linkText: 'Lær meir om public domain-merke',
+    abbreviation: freeUseNN.toUpperCase(),
     description:
       'Dette merket let andre kopiere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
   },
@@ -241,6 +266,7 @@ const pd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
     linkText: 'Lær mer om public domain-merke',
+    abbreviation: freeUseNB.toUpperCase(),
     description:
       'Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.',
   },
@@ -251,13 +277,14 @@ const pd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/',
     linkText: 'Learn more about public domain mark',
-
+    abbreviation: freeUseEN.toUpperCase(),
     description:
       'This mark lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.',
   },
   rights: [PD],
-  abbreviation: PD.toUpperCase(),
 };
+
+const cc0Abbrev = CC0.toUpperCase();
 
 const cc0: LicenseType = {
   nn: {
@@ -266,6 +293,7 @@ const cc0: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/zero/1.0/deed.no',
     linkText: 'Lær meir om public domain-merke',
+    abbreviation: cc0Abbrev,
     description:
       'Dette merket let andre kopiere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
   },
@@ -275,6 +303,7 @@ const cc0: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/zero/1.0/deed.no',
     linkText: 'Lær mer om public domain-merke',
+    abbreviation: cc0Abbrev,
     description:
       'Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.',
   },
@@ -285,11 +314,11 @@ const cc0: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/zero/1.0/',
     linkText: 'Learn more about public domain marks',
+    abbreviation: cc0Abbrev,
     description:
       'This mark lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.',
   },
   rights: [CC0],
-  abbreviation: CC0.toUpperCase(),
 };
 
 const copy: LicenseType = {
@@ -299,6 +328,7 @@ const copy: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Lær meir om opphavsrett',
+    abbreviation: restrictedUseNN.toUpperCase(),
     description:
       'Det er berre den som har laga innhaldet som kan endra, publisera og gje andre rett til å nytte innhaldet.',
   },
@@ -308,6 +338,7 @@ const copy: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Lær mer om opphavsrett',
+    abbreviation: restrictedUseNB.toUpperCase(),
     description:
       'Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.',
   },
@@ -318,12 +349,14 @@ const copy: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Learn more about copyright',
+    abbreviation: restrictedUseEN.toUpperCase(),
     description:
       'Only those who have created the content can modify, publish, and give others permission to use the content.',
   },
   rights: [COPYRIGHTED],
-  abbreviation: COPYRIGHTED.toUpperCase(),
 };
+
+const naAbbreviation = NA.toUpperCase();
 
 const na: LicenseType = {
   nn: {
@@ -332,6 +365,7 @@ const na: LicenseType = {
     userFriendlyTitle: '',
     url: '',
     linkText: 'N/A',
+    abbreviation: naAbbreviation,
     description: 'Dette merket er meint for innhald som ikkje treng lisens.',
   },
   nb: {
@@ -340,6 +374,7 @@ const na: LicenseType = {
     userFriendlyTitle: '',
     url: '',
     linkText: 'N/A',
+    abbreviation: naAbbreviation,
     description: 'Dette merket er ment for innhold som ikke trenger lisens.',
   },
 
@@ -349,10 +384,10 @@ const na: LicenseType = {
     userFriendlyTitle: '',
     url: '',
     linkText: 'N/A',
+    abbreviation: naAbbreviation,
     description: 'This mark is intended for content that does not require a license.',
   },
   rights: [NA],
-  abbreviation: NA.toUpperCase(),
 };
 
 function licenseByLocale(license: LicenseType, locale: Locale | string | undefined) {
@@ -362,7 +397,6 @@ function licenseByLocale(license: LicenseType, locale: Locale | string | undefin
   return {
     ...texts,
     rights: license.rights,
-    abbreviation: license.abbreviation,
   };
 }
 

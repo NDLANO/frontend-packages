@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 import { Item } from '@radix-ui/react-accordion';
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, memo } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
@@ -30,4 +30,4 @@ const AccordionItem = ({ children, ...rest }: Props) => {
   return <StyledItem {...rest}>{children}</StyledItem>;
 };
 
-export default AccordionItem;
+export default memo(AccordionItem);

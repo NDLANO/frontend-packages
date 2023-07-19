@@ -117,7 +117,7 @@ const FilmMovieSearch = ({
           value={selectedOption}
           onChange={onChange}
           colorTheme="white"
-          placeholder={`${t('ndlaFilm.search.chooseCategory')}`}
+          placeholder={t('ndlaFilm.search.chooseCategory')}
           prefix={`${t('ndlaFilm.search.chooseCategory')} `}
         />
       </OneColumn>

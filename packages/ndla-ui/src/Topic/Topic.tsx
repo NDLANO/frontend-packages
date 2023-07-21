@@ -24,8 +24,7 @@ import { NavigationBox } from '../Navigation';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
 import { Heading } from '../Typography';
-import ImageEmbed, { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
-import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed } from '../Embed';
+import { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -35,10 +34,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
-`;
-
-const EmbedWrapper = styled.div`
-  padding: 0 ${spacing.small};
 `;
 
 const frameStyle = css`
@@ -215,6 +210,7 @@ export type TopicProps = {
   frame?: boolean;
   messageBox?: string;
   children?: ReactNode;
+  visualElement?: ReactNode;
 };
 
 interface MetaImageType {
@@ -242,6 +238,7 @@ const Topic = ({
   messageBox,
   visualElementEmbedMeta,
   children,
+  visualElement,
 }: TopicProps) => {
   const { t } = useTranslation();
   const contentId = `expanded-description-${id}`;
@@ -322,19 +319,7 @@ const Topic = ({
                     <StyledModalHeader>
                       <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
                     </StyledModalHeader>
-                    <EmbedWrapper>
-                      {visualElementEmbedMeta?.resource === 'image' ? (
-                        <ImageEmbed embed={visualElementEmbedMeta} />
-                      ) : visualElementEmbedMeta?.resource === 'brightcove' ? (
-                        <BrightcoveEmbed embed={visualElementEmbedMeta} />
-                      ) : visualElementEmbedMeta?.resource === 'h5p' ? (
-                        <H5pEmbed embed={visualElementEmbedMeta} />
-                      ) : visualElementEmbedMeta?.resource === 'iframe' ? (
-                        <IframeEmbed embed={visualElementEmbedMeta} />
-                      ) : visualElementEmbedMeta?.resource === 'external' ? (
-                        <ExternalEmbed embed={visualElementEmbedMeta} />
-                      ) : null}
-                    </EmbedWrapper>
+                    {visualElement}
                   </>
                 )}
               </Modal>

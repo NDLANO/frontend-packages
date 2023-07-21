@@ -10,19 +10,18 @@ import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ChevronRight, Home } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
-import React from 'react';
+import React, { useCallback } from 'react';
 import Breadcrumb from './Breadcrumb';
 import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
 
-interface ThemeProps {
-  light: boolean | undefined;
-}
-
-const StyledSeparator = styled.div<ThemeProps>`
+const StyledSeparator = styled.div`
   ${fonts.sizes('14px')};
   margin: 0 ${spacing.small};
   user-select: none;
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
+  color: ${colors.text.primary};
+  &[data-light='true'] {
+    color: ${colors.white};
+  }
   ${mq.range({ until: breakpoints.tablet })} {
     display: none;
   }
@@ -32,20 +31,32 @@ const StyledIconSafeLink = styled(SafeLink)`
   box-shadow: none;
   border-bottom: none;
 `;
-const StyledHome = styled(Home)<ThemeProps>`
+const StyledHome = styled(Home)`
   width: 20px;
   height: 20px;
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
+  color: ${colors.text.primary};
+  &[data-light='true'] {
+    color: ${colors.white};
+  }
 `;
-const StyledRightChevron = styled(ChevronRight)<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
+const StyledRightChevron = styled(ChevronRight)`
+  color: ${colors.text.primary};
+  &[data-light='true'] {
+    color: ${colors.white};
+  }
   margin: ${spacing.xxsmall};
 `;
-const StyledSpan = styled.span<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
+const StyledSpan = styled.span`
+  color: ${colors.text.primary};
+  &[data-light='true'] {
+    color: ${colors.white};
+  }
 `;
-const StyledSafeLink = styled(SafeLink)<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
+const StyledSafeLink = styled(SafeLink)`
+  color: ${colors.text.primary};
+  &[data-light='true'] {
+    color: ${colors.white};
+  }
 `;
 
 interface Props {
@@ -54,33 +65,39 @@ interface Props {
 }
 
 const HomeBreadcrumb = ({ items, light }: Props) => {
-  const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
-    if (item.index === totalCount - 1) {
-      return <StyledSpan light={light}>{item.name}</StyledSpan>;
-    }
-    if (item.index === 0) {
+  const renderItem = useCallback(
+    (item: IndexedBreadcrumbItem, totalCount: number) => {
+      if (item.index === totalCount - 1) {
+        return <StyledSpan data-light={light}>{item.name}</StyledSpan>;
+      }
+      if (item.index === 0) {
+        return (
+          <StyledIconSafeLink aria-label={item.name} to={item.to}>
+            <StyledHome title={item.name} data-light={light} />
+          </StyledIconSafeLink>
+        );
+      }
       return (
-        <StyledIconSafeLink aria-label={item.name} to={item.to}>
-          <StyledHome title={item.name} light={light} />
-        </StyledIconSafeLink>
+        <StyledSafeLink data-light={light} to={item.to}>
+          {item.name}
+        </StyledSafeLink>
       );
-    }
-    return (
-      <StyledSafeLink light={light} to={item.to}>
-        {item.name}
-      </StyledSafeLink>
-    );
-  };
+    },
+    [light],
+  );
 
-  const renderSeparator = (item: IndexedBreadcrumbItem, totalCount: number) => {
-    if (item.index === totalCount - 1) {
-      return null;
-    }
-    if (item.index === 0) {
-      return <StyledSeparator light={light}>|</StyledSeparator>;
-    }
-    return <StyledRightChevron light={light} />;
-  };
+  const renderSeparator = useCallback(
+    (item: IndexedBreadcrumbItem, totalCount: number) => {
+      if (item.index === totalCount - 1) {
+        return null;
+      }
+      if (item.index === 0) {
+        return <StyledSeparator data-light={light}>|</StyledSeparator>;
+      }
+      return <StyledRightChevron data-light={light} />;
+    },
+    [light],
+  );
 
   return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;
 };

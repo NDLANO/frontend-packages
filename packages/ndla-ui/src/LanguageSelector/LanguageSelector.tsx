@@ -6,17 +6,17 @@
  *
  */
 
-import React from 'react';
+import React, { memo } from 'react';
 import { Root, Trigger, Item, Content, Portal, Arrow } from '@radix-ui/react-dropdown-menu';
 import { ButtonV2 } from '@ndla/button';
-import { useTranslation } from 'react-i18next';
+import { TFunction, useTranslation } from 'react-i18next';
 import { ChevronDown } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 
 interface Props<T extends string> {
   locales: T[];
-  onSelect: (locale: T) => void;
+  onSelect: (locale: T) => Promise<TFunction>;
   inverted?: boolean;
 }
 
@@ -97,4 +97,4 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Pro
   );
 };
 
-export default LanguageSelector;
+export default memo(LanguageSelector);

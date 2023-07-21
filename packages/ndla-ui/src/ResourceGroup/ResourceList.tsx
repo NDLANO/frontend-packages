@@ -6,9 +6,9 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import styled from '@emotion/styled';
-import { css, keyframes } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { fonts } from '@ndla/core';
 import NoContentBox from '../NoContentBox';
@@ -27,20 +27,15 @@ const fakeLoadingAnimation = keyframes`
   }
 `;
 
-type StyledListProps = {
-  showAdditionalResources?: boolean;
-};
-const StyledResourceList = styled.ul<StyledListProps>`
+const StyledResourceList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
   font-family: ${fonts.sans};
-  ${({ showAdditionalResources }) =>
-    showAdditionalResources &&
-    css`
-      animation-name: ${fakeLoadingAnimation};
-      animation-duration: 0.4s;
-    `}
+  &[data-show-additional='true'] {
+    animation-name: ${fakeLoadingAnimation};
+    animation-duration: 0.4s;
+  }
 `;
 
 export type ResourceListProps = {
@@ -61,14 +56,17 @@ const ResourceList = ({
   heartButton,
 }: ResourceListProps) => {
   const { t } = useTranslation();
-  const renderAdditionalResourceTrigger =
-    !showAdditionalResources &&
-    resources.filter((res) => res.additional).length > 0 &&
-    resources.filter((res) => !res.additional).length === 0;
+  const renderAdditionalResourceTrigger = useMemo(
+    () =>
+      !showAdditionalResources &&
+      resources.filter((res) => res.additional).length > 0 &&
+      resources.filter((res) => !res.additional).length === 0,
+    [resources, showAdditionalResources],
+  );
 
   return (
     <div>
-      <StyledResourceList showAdditionalResources={showAdditionalResources}>
+      <StyledResourceList data-show-additional={showAdditionalResources}>
         {resources.map(({ id, ...resource }) => (
           <ResourceItem
             id={id}

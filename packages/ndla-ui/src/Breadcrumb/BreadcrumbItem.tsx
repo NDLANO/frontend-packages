@@ -6,12 +6,11 @@
  *
  */
 
-import React, { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react';
+import React, { useRef, useImperativeHandle, ReactNode, forwardRef, useMemo } from 'react';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { mq, spacing, breakpoints } from '@ndla/core';
-import { css } from '@emotion/react';
 
 export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;
@@ -27,11 +26,7 @@ export interface BreadcrumbRenderProps {
   totalCount: number;
 }
 
-interface AutoCollapseProps {
-  autoCollapse?: boolean;
-}
-
-const StyledListItem = styled.li<AutoCollapseProps>`
+const StyledListItem = styled.li`
   margin-bottom: 0;
   margin-left: 0;
   display: inline-flex;
@@ -39,27 +34,22 @@ const StyledListItem = styled.li<AutoCollapseProps>`
   :before {
     display: none;
   }
-
-  ${({ autoCollapse }) =>
-    !autoCollapse &&
-    css`
-      ${mq.range({ until: breakpoints.tablet })} {
-        display: block;
-      }
-    `}
+  &[data-autocollapse='false'] {
+    ${mq.range({ until: breakpoints.tablet })} {
+      display: block;
+    }
+  }
 `;
 
-const CollapseContainer = styled.div<AutoCollapseProps>`
+const CollapseContainer = styled.div`
   display: inline-block;
   color: inherit;
-  ${({ autoCollapse }) =>
-    autoCollapse &&
-    css`
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      display: inline-block;
-    `}
+  &[data-autocollapse='false'] {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+  }
 `;
 
 const StyledChevron = styled(ChevronRight)`
@@ -90,10 +80,10 @@ const BreadcrumbItem = forwardRef<any, Props>(
     }));
 
     const { to, name, index } = item;
-    const isLast = index === totalCount - 1;
+    const isLast = useMemo(() => index === totalCount - 1, [index, totalCount]);
     return (
-      <StyledListItem ref={liRef} autoCollapse={autoCollapse} aria-current={isLast ? 'page' : undefined}>
-        <CollapseContainer autoCollapse={autoCollapse}>
+      <StyledListItem ref={liRef} data-autocollapse={autoCollapse} aria-current={isLast ? 'page' : undefined}>
+        <CollapseContainer data-autocollapse={autoCollapse}>
           {renderItem ? (
             renderItem(item, totalCount)
           ) : isLast ? (

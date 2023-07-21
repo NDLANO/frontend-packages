@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, MouseEvent, ComponentType } from 'react';
+import React, { ReactNode, MouseEvent, ComponentType, useMemo, memo } from 'react';
 import styled from '@emotion/styled';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
@@ -15,7 +15,6 @@ import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import { ModalCloseButton, Modal, ModalHeader } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
-import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
@@ -24,31 +23,25 @@ import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
 import { Heading } from '../Typography';
 
-type InvertItProps = {
-  invertedStyle?: boolean;
-};
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
-`;
-
-const frameStyle = css`
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: 40px 40px;
-    border: 2px solid ${colors.brand.neutral7};
+  &[data-inverted='true'] {
+    color: ${colors.white};
   }
-  ${mq.range({ from: breakpoints.desktop })} {
-    padding: 40px 80px;
+  &[data-framed='true'] {
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      padding: 40px 40px;
+      border: 2px solid ${colors.brand.neutral7};
+    }
+    ${mq.range({ from: breakpoints.desktop })} {
+      padding: 40px 80px;
+    }
+    ${mq.range({ from: '1180px' })} {
+      padding: 60px 160px;
+    }
   }
-  ${mq.range({ from: '1180px' })} {
-    padding: 60px 160px;
-  }
-`;
-
-const _invertedStyle = css`
-  color: ${colors.white};
 `;
 
 const TopicHeaderVisualElementWrapper = styled.div`
@@ -150,21 +143,19 @@ const TopicIntroduction = styled.div`
   }
 `;
 
-const StyledButtonWrapper = styled.div<InvertItProps>`
+const StyledButtonWrapper = styled.div`
   margin-top: ${spacing.small};
   padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
   border-left: 6px solid ${colors.brand.light};
-  ${(props) =>
-    props.invertedStyle &&
-    css`
-      button {
+  &[data-inverted='true'] {
+    button {
+      color: #fff;
+      &:hover,
+      &:focus {
         color: #fff;
-        &:hover,
-        &:focus {
-          color: #fff;
-        }
       }
-    `}
+    }
+  }
 `;
 
 const AdditionalIcon = styled.span`
@@ -176,7 +167,7 @@ const AdditionalIcon = styled.span`
   text-align: center;
 `;
 
-const StyledContentWrapper = styled.div<InvertItProps>`
+const StyledContentWrapper = styled.div`
   padding-top: ${spacing.normal};
   border-left: 6px solid ${colors.brand.light};
   color: ${colors.text.primary};
@@ -198,20 +189,22 @@ type VisualElementProps = {
   element: ReactNode;
 };
 
+interface TopicType {
+  title: string;
+  introduction: string;
+  image?: {
+    url: string;
+    alt: string;
+    crop?: ImageCrop;
+    focalPoint?: ImageFocalPoint;
+  };
+  visualElement?: VisualElementProps;
+  resources?: ReactNode;
+}
+
 export type TopicProps = {
   id?: string;
-  topic?: {
-    title: string;
-    introduction: string;
-    image?: {
-      url: string;
-      alt: string;
-      crop?: ImageCrop;
-      focalPoint?: ImageFocalPoint;
-    };
-    visualElement?: VisualElementProps;
-    resources?: ReactNode;
-  };
+  topic?: TopicType;
   subTopics?: ItemProps[] | null | undefined;
   onSubTopicSelected?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   isLoading?: boolean;
@@ -224,6 +217,8 @@ export type TopicProps = {
   messageBox?: string;
   children?: ReactNode;
 };
+
+const testId = 'nav-topic-about';
 
 const Topic = ({
   id,
@@ -242,19 +237,17 @@ const Topic = ({
 }: TopicProps) => {
   const { t } = useTranslation();
   const contentId = `expanded-description-${id}`;
-  const testId = 'nav-topic-about';
-  const VisualElementIcon = topic?.visualElement?.type ? icons[topic.visualElement.type] : null;
-  const wrapperStyle = [frame ? frameStyle : undefined, invertedStyle ? _invertedStyle : undefined];
+
   if (isLoading || !topic) {
     return (
-      <Wrapper css={wrapperStyle} data-testid={testId}>
+      <Wrapper data-framed={frame} data-inverted={invertedStyle} data-testid={testId}>
         {isLoading ? <Loader /> : null}
       </Wrapper>
     );
   }
 
   return (
-    <Wrapper css={wrapperStyle} data-testid={testId}>
+    <Wrapper data-framed={frame} data-inverted={invertedStyle} data-testid={testId}>
       <TopicIntroductionWrapper>
         <div>
           <HeadingWrapper>
@@ -272,57 +265,17 @@ const Topic = ({
             {renderMarkdown ? parse(renderMarkdown(topic.introduction)) : topic.introduction}
           </TopicIntroduction>
         </div>
-        {topic.image && (
-          <TopicHeaderVisualElementWrapper>
-            {topic.visualElement ? (
-              <Modal
-                aria-label={t('topicPage.imageModal')}
-                activateButton={
-                  <VisualElementButton
-                    variant="stripped"
-                    title={topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')}
-                  >
-                    <ShowVisualElementWrapper>
-                      <TopicHeaderImage
-                        src={`${topic.image.url}?${makeSrcQueryString(800, topic.image.crop, topic.image.focalPoint)}`}
-                        alt={topic.image.alt}
-                      />
-                      <TopicHeaderOverlay />
-                    </ShowVisualElementWrapper>
-                    <ExpandVisualElementButton>{VisualElementIcon && <VisualElementIcon />}</ExpandVisualElementButton>
-                  </VisualElementButton>
-                }
-                animation="subtle"
-                animationDuration={50}
-                size="large"
-              >
-                {(onClose: () => void) => (
-                  <>
-                    <StyledModalHeader>
-                      <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
-                    </StyledModalHeader>
-                    {topic.visualElement && topic.visualElement.element}
-                  </>
-                )}
-              </Modal>
-            ) : (
-              <TopicHeaderImage
-                src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}
-                alt={topic.image.alt}
-              />
-            )}
-          </TopicHeaderVisualElementWrapper>
-        )}
+        {topic.image && <TopicVisualElement topic={topic} />}
       </TopicIntroductionWrapper>
       {messageBox && <MessageBox>{messageBox}</MessageBox>}
       <div>
         {onToggleShowContent && (
-          <StyledButtonWrapper invertedStyle={invertedStyle}>
+          <StyledButtonWrapper data-inverted={invertedStyle}>
             <ButtonV2
               aria-expanded={!!showContent}
               aria-controls={contentId}
               variant="link"
-              onClick={() => onToggleShowContent()}
+              onClick={onToggleShowContent}
             >
               {showContent ? (
                 <>
@@ -337,7 +290,7 @@ const Topic = ({
           </StyledButtonWrapper>
         )}
         {showContent && (
-          <StyledContentWrapper id={contentId} invertedStyle={invertedStyle}>
+          <StyledContentWrapper id={contentId} data-inverted={invertedStyle}>
             {children}
           </StyledContentWrapper>
         )}
@@ -355,4 +308,66 @@ const Topic = ({
     </Wrapper>
   );
 };
+
+interface TopicVisualElementProps {
+  topic: TopicType;
+}
+
+const TopicVisualElement = memo(({ topic }: TopicVisualElementProps) => {
+  const { t } = useTranslation();
+
+  const VisualElementIcon = useMemo(
+    () => (topic?.visualElement?.type ? icons[topic.visualElement.type] : null),
+    [topic?.visualElement?.type],
+  );
+
+  if (!topic.image) return null;
+
+  if (topic.visualElement) {
+    return (
+      <TopicHeaderVisualElementWrapper>
+        <Modal
+          aria-label={t('topicPage.imageModal')}
+          activateButton={
+            <VisualElementButton
+              variant="stripped"
+              title={topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')}
+            >
+              <ShowVisualElementWrapper>
+                <TopicHeaderImage
+                  src={`${topic.image.url}?${makeSrcQueryString(800, topic.image.crop, topic.image.focalPoint)}`}
+                  alt={topic.image.alt}
+                />
+                <TopicHeaderOverlay />
+              </ShowVisualElementWrapper>
+              <ExpandVisualElementButton>{VisualElementIcon && <VisualElementIcon />}</ExpandVisualElementButton>
+            </VisualElementButton>
+          }
+          animation="subtle"
+          animationDuration={50}
+          size="large"
+        >
+          {(onClose: () => void) => (
+            <>
+              <StyledModalHeader>
+                <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
+              </StyledModalHeader>
+              {topic.visualElement && topic.visualElement.element}
+            </>
+          )}
+        </Modal>
+      </TopicHeaderVisualElementWrapper>
+    );
+  }
+
+  return (
+    <TopicHeaderVisualElementWrapper>
+      <TopicHeaderImage
+        src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}
+        alt={topic.image.alt}
+      />
+    </TopicHeaderVisualElementWrapper>
+  );
+});
+
 export default Topic;

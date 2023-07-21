@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode, memo, useRef } from 'react';
 import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
@@ -101,4 +101,4 @@ const Breadcrumb = ({
   );
 };
 
-export default Breadcrumb;
+export default memo(Breadcrumb);

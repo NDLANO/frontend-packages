@@ -182,7 +182,7 @@ export { default as Topic } from './Topic';
 export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
 
-export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
+export { default as Breadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export { i18nInstance, formatNestedMessages } from './i18n';

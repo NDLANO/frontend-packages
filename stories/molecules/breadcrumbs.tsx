@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from '@ndla/ui';
+import { Breadcrumb, HomeBreadcrumb, ActionBreadcrumb } from '@ndla/ui';
 import { DeleteForever, Link } from '@ndla/icons/editor';
 import { FolderOutlined } from '@ndla/icons/contentType';
 
@@ -37,14 +37,6 @@ interface BreadcrumbDefaultProps {
 export const BreadcrumbDefault = ({ autoCollapse }: BreadcrumbDefaultProps) => (
   <Breadcrumb autoCollapse={autoCollapse} items={items} />
 );
-
-export const BreadcrumbWithHeader = () => {
-  return <HeaderBreadcrumb items={items} />;
-};
-
-export const BreadcrumbWhiteWithHeader = () => {
-  return <HeaderBreadcrumb light items={items} />;
-};
 
 export const BreadcrumbWithHome = () => {
   return <HomeBreadcrumb items={items} />;

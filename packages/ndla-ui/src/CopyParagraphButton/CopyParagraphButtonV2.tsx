@@ -6,11 +6,10 @@
  *
  */
 
-import { MouseEvent, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
 import { Link } from '@ndla/icons/common';
 import { copyTextToClipboard } from '@ndla/util';
 
@@ -66,14 +65,16 @@ const CopyParagraphButtonV2 = ({ children, copyText }: Props) => {
     copyTextToClipboard(urlToCopy);
   }, [sanitizedTitle]);
 
-  const tooltip = hasCopied ? t('article.copyPageLinkCopied') : t('article.copyHeaderLink');
+  const tooltip = useMemo(
+    () => (hasCopied ? t('article.copyPageLinkCopied') : t('article.copyHeaderLink')),
+    [hasCopied, t],
+  );
+
   return (
     <ContainerDiv>
-      <Tooltip tooltip={tooltip}>
-        <IconButton onClick={onCopyClick} aria-label={`${tooltip}: ${copyText}`}>
-          <Link />
-        </IconButton>
-      </Tooltip>
+      <IconButton onClick={onCopyClick} title={tooltip} aria-label={`${tooltip}: ${copyText}`}>
+        <Link />
+      </IconButton>
       <h2 id={sanitizedTitle} tabIndex={-1}>
         {children}
       </h2>

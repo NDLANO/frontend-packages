@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode, useMemo } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -25,26 +25,30 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const OneColumn = ({ children, className, cssModifier, wide, noPadding, extraPadding, ...rest }: Props) => {
-  const modifiers = [];
+  const modifiers = useMemo(() => {
+    const mod = [];
+    if (cssModifier) {
+      mod.push(cssModifier);
+    }
 
-  if (cssModifier) {
-    modifiers.push(cssModifier);
-  }
+    if (wide) {
+      mod.push('wide');
+    }
 
-  if (wide) {
-    modifiers.push('wide');
-  }
+    if (noPadding) {
+      mod.push('no-padding');
+    }
 
-  if (noPadding) {
-    modifiers.push('no-padding');
-  }
+    if (extraPadding) {
+      mod.push('extra-padding');
+    }
+    return mod;
+  }, [cssModifier, extraPadding, noPadding, wide]);
 
-  if (extraPadding) {
-    modifiers.push('extra-padding');
-  }
+  const cls = useMemo(() => `${classes('', modifiers)} ${className}`, [modifiers, className]);
 
   return (
-    <div className={`${classes('', modifiers)} ${className}`} {...rest}>
+    <div className={cls} {...rest}>
       {children}
     </div>
   );

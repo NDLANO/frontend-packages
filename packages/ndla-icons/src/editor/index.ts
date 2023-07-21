@@ -37,7 +37,7 @@ export { default as FocalPoint } from './FocalPoint';
 export { default as Folder } from './Folder';
 export { default as FormatList } from './FormatList';
 export { default as Framed } from './Framed';
-export { default as Gloss } from './Gloss';
+export { default as Globe } from './Globe';
 export { default as Grid } from './Grid';
 export { default as H5P } from './H5P';
 export { default as H5PBold } from './H5PBold';

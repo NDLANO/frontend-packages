@@ -28,7 +28,6 @@ export {
 
 export {
   ArticleByline,
-  ArticleContent,
   ArticleFootNotes,
   ArticleIntroduction,
   ArticleTitle,

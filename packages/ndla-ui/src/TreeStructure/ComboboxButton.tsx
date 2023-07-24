@@ -18,15 +18,13 @@ import { TreeStructureType } from './types';
 import { arrowNavigation } from './arrowNavigation';
 import ContentLoader from '../ContentLoader';
 
-interface StyledRowProps {
-  isOpen: boolean;
-}
-
-const StyledRow = styled.div<StyledRowProps>`
+const StyledRow = styled.div`
   display: flex;
   padding: ${spacing.xxsmall};
   align-items: center;
-  border-bottom: ${({ isOpen }) => isOpen && `1px solid ${colors.brand.tertiary}`};
+  &[data-open='true'] {
+    border-bottom: 1px solid ${colors.brand.tertiary};
+  }
 `;
 const StyledSelectedFolder = styled(Button)`
   flex: 1;
@@ -110,7 +108,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
 
     return (
       <StyledRow
-        isOpen={showTree}
+        data-open={showTree}
         onMouseDown={(e) => {
           if (!e.defaultPrevented) {
             e.preventDefault();

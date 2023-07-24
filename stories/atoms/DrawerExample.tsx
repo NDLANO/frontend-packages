@@ -8,7 +8,16 @@
 
 import React, { useState } from 'react';
 import { FilterList } from '@ndla/ui';
-import { Drawer, DrawerPosition, ModalSize, ModalCloseButton, ModalHeader } from '@ndla/modal';
+import {
+  Drawer,
+  DrawerPosition,
+  ModalSize,
+  ModalCloseButton,
+  ModalHeader,
+  Modal,
+  ModalTrigger,
+  ModalTitle,
+} from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 //@ts-ignore
 import { StoryBody, StoryIntro } from '../wrappers';
@@ -57,14 +66,17 @@ const DrawerExample = () => {
           values={position ? [position] : []}
           onChange={(e: DrawerPosition[]) => setPosition(e.pop()!)}
         />
-        <Drawer aria-label="Skuff" position={position} size={size} activateButton={<ButtonV2>Open</ButtonV2>}>
-          {(close) => (
+        <Modal>
+          <ModalTrigger>
+            <ButtonV2>Open</ButtonV2>
+          </ModalTrigger>
+          <Drawer position={position} size={size}>
             <ModalHeader>
-              <h1>Tittel</h1>
-              <ModalCloseButton onClick={close} />
+              <ModalTitle>Tittel</ModalTitle>
+              <ModalCloseButton />
             </ModalHeader>
-          )}
-        </Drawer>
+          </Drawer>
+        </Modal>
       </StoryBody>
     </>
   );

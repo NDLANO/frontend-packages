@@ -6,18 +6,18 @@
  *
  */
 
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
 import { isMobile, isTablet } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import { IconButtonV2, MenuItemProps, MenuButton, ButtonV2 } from '@ndla/button';
-import { Drawer, ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
+import { Drawer, Modal, ModalBody, ModalCloseButton, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 
 interface Props {
   menuItems?: MenuItemProps[];
-  children?: (close: () => void) => ReactNode;
+  children?: ReactNode;
 }
 
 const StyledDrawer = styled(Drawer)`
@@ -43,51 +43,47 @@ const StyledLi = styled.li`
 `;
 
 const SettingsMenu = ({ menuItems, children }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+
   if (isMobile || isTablet) {
     return (
-      <StyledDrawer
-        expands
-        position="bottom"
-        size="small"
-        activateButton={
+      <Modal open={isOpen} onOpenChange={setIsOpen}>
+        <ModalTrigger>
           <IconButtonV2 aria-label={t('myNdla.more')} colorTheme="light" variant="ghost">
             <HorizontalMenu />
           </IconButtonV2>
-        }
-      >
-        {(close) => (
-          <>
-            <ModalHeader>
-              <h1>{t('myNdla.settings')}</h1>
-              <ModalCloseButton onClick={close} />
-            </ModalHeader>
-            <StyledModalBody>
-              {children?.(close)}
-              {!!menuItems?.length && (
-                <StyledUl>
-                  {menuItems.map((item, i) => (
-                    <StyledLi key={i}>
-                      <ButtonV2
-                        fontWeight="normal"
-                        variant="ghost"
-                        colorTheme={item.type}
-                        onClick={(e) => {
-                          close();
-                          item.onClick(e);
-                        }}
-                      >
-                        {item.icon}
-                        {item.text}
-                      </ButtonV2>
-                    </StyledLi>
-                  ))}
-                </StyledUl>
-              )}
-            </StyledModalBody>
-          </>
-        )}
-      </StyledDrawer>
+        </ModalTrigger>
+        <StyledDrawer expands position="bottom" size="small">
+          <ModalHeader>
+            <h1>{t('myNdla.settings')}</h1>
+            <ModalCloseButton />
+          </ModalHeader>
+          <StyledModalBody>
+            {children}
+            {!!menuItems?.length && (
+              <StyledUl>
+                {menuItems.map((item, i) => (
+                  <StyledLi key={i}>
+                    <ButtonV2
+                      fontWeight="normal"
+                      variant="ghost"
+                      colorTheme={item.type}
+                      onClick={(e) => {
+                        setIsOpen(false);
+                        item.onClick(e);
+                      }}
+                    >
+                      {item.icon}
+                      {item.text}
+                    </ButtonV2>
+                  </StyledLi>
+                ))}
+              </StyledUl>
+            )}
+          </StyledModalBody>
+        </StyledDrawer>
+      </Modal>
     );
   }
   return <MenuButton align="end" size="small" menuItems={menuItems} />;

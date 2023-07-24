@@ -6,14 +6,16 @@
  *
  */
 
-import React, { HTMLAttributes } from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 
 import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
 import { colors } from '@ndla/core';
+import { Close } from '@radix-ui/react-dialog';
 
-interface Props extends HTMLAttributes<HTMLButtonElement> {
+interface Props {
+  children?: ReactNode;
   title?: string;
 }
 
@@ -33,12 +35,15 @@ const StyledCross = styled(Cross)`
   width: 24px;
 `;
 
-const ModalClose = ({ title, ...rest }: Props) => {
+const ModalClose = ({ children, title }: Props) => {
   const { t } = useTranslation();
+  if (children) return <Close asChild>{children}</Close>;
   return (
-    <StyledButton data-cy="close-modal-button" aria-label={t('close')} {...rest}>
-      <StyledCross title={title} />
-    </StyledButton>
+    <Close asChild>
+      <StyledButton data-cy="close-modal-button" aria-label={title ?? t('close')}>
+        <StyledCross />
+      </StyledButton>
+    </Close>
   );
 };
 

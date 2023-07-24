@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { ModalCloseButton, Modal } from '@ndla/modal';
+import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';
 
@@ -8,12 +8,11 @@ import { stories } from './StaticInfoComponents';
 
 interface ModalContentProps {
   pageId: string;
-  onClose: () => void;
 }
 
 const headingId = 'popupModalHeader';
 
-const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
+const Content = ({ pageId }: ModalContentProps) => {
   const useStory = stories[pageId] || {
     title: `Fant ingen veiledningstekster "${pageId}"`,
     lead: 'Sjekk key-names i @ndla-howto/src/StaticInfoComponents og propType pageId til <ArticleInModal />',
@@ -27,7 +26,7 @@ const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
           <Heading id={headingId} inModal>
             {useStory.title}
           </Heading>
-          <ModalCloseButton onClick={onClose} />
+          <ModalCloseButton />
         </InModalHeader>
         {useStory.imageUrl && (
           <ImageWrapper>
@@ -70,12 +69,13 @@ interface Props {
 }
 
 const ArticleInModal = ({ pageId, tooltip, activateButton }: Props) => (
-  <Modal
-    aria-labelledby={headingId}
-    wrapperFunctionForButton={tooltip ? (btn: ReactElement) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : undefined}
-    activateButton={activateButton}
-  >
-    {(onClose) => <ModalContent pageId={pageId} onClose={onClose} />}
+  <Modal aria-labelledby={headingId}>
+    <ModalTrigger wrapper={tooltip ? (btn) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : undefined}>
+      {activateButton}
+    </ModalTrigger>
+    <ModalContent>
+      <Content pageId={pageId} />
+    </ModalContent>
   </Modal>
 );
 

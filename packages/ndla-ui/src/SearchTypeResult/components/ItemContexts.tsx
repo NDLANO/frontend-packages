@@ -12,7 +12,7 @@ import { Additional, Core } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
-import { Modal, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
+import { Modal, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
 
 const BreadcrumbPath = styled.div`
@@ -34,7 +34,7 @@ const ModalButton = styled(ButtonV2)`
   }
 `;
 
-const ModalContent = styled.div`
+const Content = styled.div`
   padding: 0 ${spacing.small} ${spacing.normal};
   ${mq.range({ from: breakpoints.tablet })} {
     padding: 0 ${spacing.large} ${spacing.normal};
@@ -83,37 +83,32 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
     <Breadcrumb breadcrumb={mainContext.breadcrumb}>
       &nbsp;
       {contexts.length > 1 && (
-        <Modal
-          activateButton={
+        <Modal>
+          <ModalTrigger>
             <ModalButton variant="link">
               {t('searchPage.contextModal.button', {
                 count: contexts.length - 1,
               })}
             </ModalButton>
-          }
-          animation="subtle"
-          animationDuration={50}
-        >
-          {(onClose: () => void) => (
-            <>
-              <ModalHeader>
-                <ModalTitle>{t('searchPage.contextModal.heading')}</ModalTitle>
-                <ModalCloseButton onClick={onClose} title={t('searchPage.close')} />
-              </ModalHeader>
-              <ModalContent>
-                <ContextList>
-                  {contexts.map((context) => (
-                    <ContextListItem key={context.url}>
-                      <SafeLink to={context.url}>{title}</SafeLink>
-                      <Breadcrumb breadcrumb={context.breadcrumb}>
-                        {context.isAdditional ? <Additional style={iconStyle} /> : <Core style={iconStyle} />}
-                      </Breadcrumb>
-                    </ContextListItem>
-                  ))}
-                </ContextList>
-              </ModalContent>
-            </>
-          )}
+          </ModalTrigger>
+          <ModalContent animation="subtle" animationDuration={50}>
+            <ModalHeader>
+              <ModalTitle>{t('searchPage.contextModal.heading')}</ModalTitle>
+              <ModalCloseButton />
+            </ModalHeader>
+            <Content>
+              <ContextList>
+                {contexts.map((context) => (
+                  <ContextListItem key={context.url}>
+                    <SafeLink to={context.url}>{title}</SafeLink>
+                    <Breadcrumb breadcrumb={context.breadcrumb}>
+                      {context.isAdditional ? <Additional style={iconStyle} /> : <Core style={iconStyle} />}
+                    </Breadcrumb>
+                  </ContextListItem>
+                ))}
+              </ContextList>
+            </Content>
+          </ModalContent>
         </Modal>
       )}
     </Breadcrumb>

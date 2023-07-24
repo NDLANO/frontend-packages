@@ -8,7 +8,7 @@
 
 import { keyframes } from '@emotion/react';
 import { HTMLMotionProps } from 'framer-motion';
-import { ReactElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export type ModalSize = 'xsmall' | 'small' | 'normal' | 'large' | 'full';
 export type ModalSizeType = ModalSize | { width: ModalSize; height: ModalSize };
@@ -17,10 +17,10 @@ export type ModalMargin = 'none' | 'small';
 
 export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
-export interface DialogProps extends Omit<HTMLMotionProps<'div'>, 'size' | 'children'> {
+export interface ModalContentProps extends Omit<HTMLMotionProps<'div'>, 'size' | 'children'> {
   animation?: ModalAnimation;
   animationDuration?: number;
-  children: (close: () => void) => ReactNode;
+  children: ReactNode;
   /**
    * Can be either a string or an object with height and width properties.
    * Allow string values are `xsmall | small | normal | large | full`. This applies both
@@ -31,20 +31,6 @@ export interface DialogProps extends Omit<HTMLMotionProps<'div'>, 'size' | 'chil
   modalMargin?: ModalMargin;
   expands?: boolean;
 }
-
-export interface ControlledProps extends DialogProps {
-  controlled: true;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export interface UncontrolledProps extends DialogProps {
-  controlled?: false;
-  activateButton: ReactElement;
-  wrapperFunctionForButton?: (button: ReactElement) => ReactNode;
-}
-
-export type BaseProps = ControlledProps | UncontrolledProps;
 
 export interface Animation {
   in: ReturnType<typeof keyframes>;

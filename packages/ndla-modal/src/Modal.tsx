@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { ReactNode, cloneElement, useCallback, useMemo, useState } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { m, AnimatePresence, LazyMotion, domAnimation, Variants } from 'framer-motion';
-import { Content, Overlay, Portal, Root } from '@radix-ui/react-dialog';
-import { BaseProps, ControlledProps, DialogProps, UncontrolledProps } from './types';
+import { Content, DialogProps, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import { ModalContentProps } from './types';
 import { positionStyles, sizeStyles } from './modalStyles';
 
 const StyledOverlay = styled(m.div)`
@@ -91,50 +91,38 @@ const animations = (durationMs: number): Variants => {
   };
 };
 
-export type ModalProps = DialogProps & BaseProps;
-
-const Modal = (props: ModalProps) => {
-  if (props.controlled) {
-    return <InternalModal {...props} />;
-  } else {
-    return <UncontrolledModal {...props} />;
-  }
+export const Modal = ({ children, ...rest }: DialogProps) => {
+  return (
+    <LazyMotion features={domAnimation}>
+      <AnimatePresence>
+        <StyledDialog {...rest}>{children}</StyledDialog>
+      </AnimatePresence>
+    </LazyMotion>
+  );
 };
 
-const UncontrolledModal = ({ activateButton, wrapperFunctionForButton, ...rest }: UncontrolledProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const onOpen = useCallback(() => setIsOpen(true), []);
-  const onClose = useCallback(() => setIsOpen(false), []);
-
-  const modalButton = useMemo(() => {
-    const clonedComponent = cloneElement(activateButton, { onClick: onOpen });
-    return wrapperFunctionForButton?.(clonedComponent) ?? clonedComponent;
-  }, [activateButton, onOpen, wrapperFunctionForButton]);
-
-  return <InternalModal isOpen={isOpen} onClose={onClose} modalButton={modalButton} {...rest} />;
-};
-
-interface InternalModalProps extends Omit<ControlledProps, 'controlled'>, DialogProps {
-  modalButton?: ReactNode;
-  controlled?: boolean;
+interface ModalTriggerProps {
+  children: ReactNode;
+  wrapper?: (children: ReactNode) => JSX.Element;
 }
 
-const InternalModal = ({
+export const ModalTrigger = ({ children, wrapper }: ModalTriggerProps) => {
+  if (wrapper) {
+    return wrapper(<Trigger asChild>{children}</Trigger>);
+  }
+  return <Trigger asChild>{children}</Trigger>;
+};
+
+export const ModalContent = ({
   children,
-  isOpen,
-  onClose,
-  modalButton,
   modalMargin = 'small',
   position = 'center',
   size: sizeProp = 'normal',
   animationDuration = 400,
   animation = 'zoom',
   expands,
-  // This needs to be here in order to avoid passing it to the dom
-  controlled: _controlled,
   ...rest
-}: InternalModalProps) => {
+}: ModalContentProps) => {
   const { size, height, width }: Record<string, string> = useMemo(() => {
     return typeof sizeProp === 'string' ? { size: sizeProp } : sizeProp;
   }, [sizeProp]);
@@ -149,48 +137,37 @@ const InternalModal = ({
   }, [animation, position]);
 
   return (
-    <LazyMotion features={domAnimation}>
-      {modalButton}
-      <AnimatePresence>
-        {isOpen && (
-          <StyledDialog open={isOpen} onOpenChange={onClose}>
-            <Portal>
-              <Overlay asChild>
-                <StyledOverlay
-                  aria-hidden
-                  key="modal-backdrop"
-                  variants={variants}
-                  initial="fadeStart"
-                  animate="fadeEnd"
-                  exit="fadeStart"
-                />
-              </Overlay>
-              <DialogWrapper>
-                <Content asChild>
-                  <m.div
-                    css={panelStyle}
-                    initial={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
-                    animate={animationEnd ? [animationEnd, 'fadeEnd'] : ['fadeEnd']}
-                    exit={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
-                    variants={variants}
-                    data-position={position}
-                    data-height={height}
-                    data-width={width}
-                    data-size={size}
-                    data-expands={expands}
-                    data-margin={modalMargin}
-                    {...rest}
-                  >
-                    {children(onClose)}
-                  </m.div>
-                </Content>
-              </DialogWrapper>
-            </Portal>
-          </StyledDialog>
-        )}
-      </AnimatePresence>
-    </LazyMotion>
+    <Portal>
+      <Overlay asChild>
+        <StyledOverlay
+          aria-hidden
+          key="modal-backdrop"
+          variants={variants}
+          initial="fadeStart"
+          animate="fadeEnd"
+          exit="fadeStart"
+        />
+      </Overlay>
+      <DialogWrapper>
+        <Content asChild>
+          <m.div
+            css={panelStyle}
+            initial={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
+            animate={animationEnd ? [animationEnd, 'fadeEnd'] : ['fadeEnd']}
+            exit={animationStart ? [animationStart, 'fadeStart'] : ['fadeStart']}
+            variants={variants}
+            data-position={position}
+            data-height={height}
+            data-width={width}
+            data-size={size}
+            data-expands={expands}
+            data-margin={modalMargin}
+            {...rest}
+          >
+            {children}
+          </m.div>
+        </Content>
+      </DialogWrapper>
+    </Portal>
   );
 };
-
-export default Modal;

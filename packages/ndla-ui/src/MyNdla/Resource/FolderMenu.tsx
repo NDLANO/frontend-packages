@@ -63,38 +63,33 @@ const FolderMenu = ({ menuItems, viewType, onViewTypeChange }: Props) => {
   const { t } = useTranslation();
   return (
     <SettingsMenu menuItems={menuItems}>
-      {(_) => {
-        if (!viewType || !onViewTypeChange) {
-          return null;
-        }
-        return (
-          <ViewTypeWrapper>
-            <span>{t('myNdla.selectView')}</span>
-            <ViewButtonWrapper>
-              <Tooltip tooltip={t('myNdla.listView')}>
-                <ViewButton
-                  size="large"
-                  aria-current={viewType === 'list'}
-                  colorTheme="primary"
-                  onClick={() => onViewTypeChange('list')}
-                >
-                  <FourlineHamburger />
-                </ViewButton>
-              </Tooltip>
-              <Tooltip tooltip={t('myNdla.detailView')}>
-                <ViewButton
-                  size="large"
-                  aria-current={viewType === 'listLarger'}
-                  colorTheme="primary"
-                  onClick={() => onViewTypeChange('listLarger')}
-                >
-                  <List />
-                </ViewButton>
-              </Tooltip>
-            </ViewButtonWrapper>
-          </ViewTypeWrapper>
-        );
-      }}
+      {!viewType || !onViewTypeChange ? null : (
+        <ViewTypeWrapper>
+          <span>{t('myNdla.selectView')}</span>
+          <ViewButtonWrapper>
+            <Tooltip tooltip={t('myNdla.listView')}>
+              <ViewButton
+                size="large"
+                aria-current={viewType === 'list'}
+                colorTheme="primary"
+                onClick={() => onViewTypeChange('list')}
+              >
+                <FourlineHamburger />
+              </ViewButton>
+            </Tooltip>
+            <Tooltip tooltip={t('myNdla.detailView')}>
+              <ViewButton
+                size="large"
+                aria-current={viewType === 'listLarger'}
+                colorTheme="primary"
+                onClick={() => onViewTypeChange('listLarger')}
+              >
+                <List />
+              </ViewButton>
+            </Tooltip>
+          </ViewButtonWrapper>
+        </ViewTypeWrapper>
+      )}
     </SettingsMenu>
   );
 };

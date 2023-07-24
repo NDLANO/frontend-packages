@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { ModalCloseButton, ModalBody, Modal, ModalTitle } from '@ndla/modal';
+import { ModalCloseButton, ModalBody, ModalTitle, ModalContent } from '@ndla/modal';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +27,7 @@ const ModalHeaderWrapper = styled.div`
   margin-bottom: ${spacing.normal};
 `;
 
-const ModalContent = styled.div`
+const Content = styled.div`
   max-width: 1040px;
   flex-grow: 1;
 `;
@@ -69,10 +69,8 @@ export type PopupFilterProps = {
   subjectCategories?: { categories: subjectsProps['categories'] };
   subjectValues: string[];
   programmesValues: string[];
-  onClose: () => void;
   onToggleSubject: (value: string) => void;
   onToggleProgramme: (value: string) => void;
-  isOpen: boolean;
 };
 
 const PopupFilter = ({
@@ -82,82 +80,69 @@ const PopupFilter = ({
   programmesValues,
   onToggleSubject,
   onToggleProgramme,
-  onClose,
-  isOpen,
 }: PopupFilterProps) => {
   const { t } = useTranslation();
   const [selectedMenu, setSelectedMenu] = useState(MENU_ALL_SUBJECTS);
-  const headingId = 'popupFilterHeading';
 
   return (
-    <Modal
-      aria-labelledby={headingId}
-      controlled
-      animation="subtle"
-      animationDuration={50}
-      onClose={onClose}
-      isOpen={isOpen}
-      size="full"
-    >
-      {() => (
-        <ModalBody>
-          <ModalWrapper>
-            <ModalContent>
-              <ModalHeaderWrapper>
-                <ModalTitle>{t('searchPage.searchFilterMessages.filterLabel')}</ModalTitle>
-                <ModalCloseButton onClick={() => onClose()} title={t('searchPage.close')} />
-              </ModalHeaderWrapper>
-              {subjectCategories && programmes && (
-                <MainFilterButtonWrapper>
-                  <ButtonV2
-                    onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                    colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : undefined}
-                    size="normal"
-                    shape="pill"
-                  >
-                    {t('frontpageMenu.allsubjects')}
-                  </ButtonV2>
-                </MainFilterButtonWrapper>
-              )}
-              {programmes && (
+    <ModalContent animation="subtle" animationDuration={50} size="full">
+      <ModalBody>
+        <ModalWrapper>
+          <Content>
+            <ModalHeaderWrapper>
+              <ModalTitle>{t('searchPage.searchFilterMessages.filterLabel')}</ModalTitle>
+              <ModalCloseButton />
+            </ModalHeaderWrapper>
+            {subjectCategories && programmes && (
+              <MainFilterButtonWrapper>
                 <ButtonV2
-                  onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                  colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : undefined}
+                  onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
+                  colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : undefined}
                   size="normal"
                   shape="pill"
                 >
-                  {t('frontpageMenu.program')}
+                  {t('frontpageMenu.allsubjects')}
                 </ButtonV2>
-              )}
-              {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
-                <FrontpageAllSubjects
-                  categories={subjectCategories.categories}
-                  selectedSubjects={subjectValues}
-                  onToggleSubject={onToggleSubject}
-                  subjectViewType="checkbox"
-                />
-              )}
-              {selectedMenu === MENU_PROGRAMMES && programmes && (
-                <StyledList>
-                  {programmes.options.map((item: ProgrammeOptionProps) => (
-                    <StyledListItem key={item.id}>
-                      <ToggleItem
-                        id={item.id}
-                        value={item.id}
-                        checked={programmesValues.includes(item.id)}
-                        label={item.name}
-                        component="div"
-                        onChange={() => onToggleProgramme(item.id)}
-                      />
-                    </StyledListItem>
-                  ))}
-                </StyledList>
-              )}
-            </ModalContent>
-          </ModalWrapper>
-        </ModalBody>
-      )}
-    </Modal>
+              </MainFilterButtonWrapper>
+            )}
+            {programmes && (
+              <ButtonV2
+                onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
+                colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : undefined}
+                size="normal"
+                shape="pill"
+              >
+                {t('frontpageMenu.program')}
+              </ButtonV2>
+            )}
+            {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
+              <FrontpageAllSubjects
+                categories={subjectCategories.categories}
+                selectedSubjects={subjectValues}
+                onToggleSubject={onToggleSubject}
+                subjectViewType="checkbox"
+              />
+            )}
+            {selectedMenu === MENU_PROGRAMMES && programmes && (
+              <StyledList>
+                {programmes.options.map((item: ProgrammeOptionProps) => (
+                  <StyledListItem key={item.id}>
+                    <ToggleItem
+                      id={item.id}
+                      value={item.id}
+                      checked={programmesValues.includes(item.id)}
+                      label={item.name}
+                      component="div"
+                      onChange={() => onToggleProgramme(item.id)}
+                    />
+                  </StyledListItem>
+                ))}
+              </StyledList>
+            )}
+          </Content>
+        </ModalWrapper>
+      </ModalBody>
+    </ModalContent>
   );
 };
 

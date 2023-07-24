@@ -13,7 +13,7 @@ import { ArrowDropDownRounded } from '@ndla/icons/common';
 import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
 import { Done } from '@ndla/icons/editor';
 import { ButtonV2 as Button } from '@ndla/button';
-import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
+import { colors, spacing, animations, misc, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
 import { CommonFolderItemsProps } from './types';
@@ -62,8 +62,6 @@ const FolderIconWrapper = styled.div`
   }
 `;
 
-const shouldForwardProp = (name: string) => !['selected', 'level', 'focused', 'isCreatingFolder'].includes(name);
-
 const FolderName = styled(Button)`
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -106,7 +104,7 @@ const StyledDone = styled(Done)`
   color: ${colors.support.green};
 `;
 
-const FolderNameLink = styled(SafeLink, { shouldForwardProp })`
+const FolderNameLink = styled(SafeLink)`
   display: grid;
   align-items: center;
   grid-template-columns: ${spacing.medium} 1fr auto;

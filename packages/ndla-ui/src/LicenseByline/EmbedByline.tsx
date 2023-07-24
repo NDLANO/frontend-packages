@@ -124,7 +124,7 @@ const StyledSpan = styled.span`
 
 const LicenseInformationWrapper = styled.div`
   flex: 1;
-  padding-right: ${spacing.xsmall}}
+  padding-right: ${spacing.xsmall};
 `;
 
 const EmbedByline = ({

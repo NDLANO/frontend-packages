@@ -5,6 +5,7 @@ export interface LicenseLocaleType {
   url: string;
   linkText: string;
   description: string;
+  abbreviation: string;
 }
 
 export interface LicenseType {
@@ -12,7 +13,6 @@ export interface LicenseType {
   nb: LicenseLocaleType;
   en: LicenseLocaleType;
   rights: string[];
-  abbreviation: string;
 }
 
 export interface RightLocaleInfo {

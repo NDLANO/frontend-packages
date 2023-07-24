@@ -18,7 +18,6 @@ import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import DrawerExample from './atoms/DrawerExample';
-import SolutionTableExample from './molecules/SolutionExample';
 import AudioExample from './article/AudioExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
@@ -76,7 +75,7 @@ const floatVideo = (left) => (
 );
 
 storiesOf('Components', module)
-  .add('Bilde', () => (
+  .add('Image', () => (
     <div>
       <StoryIntro title="Bilde">
         <p>
@@ -219,7 +218,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Visuelt element under ingress', () => (
+  .add('Visual element below intro', () => (
     <div>
       <StoryIntro title="Visuelt element under ingress">
         <p>
@@ -241,7 +240,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Lydavspiller', () => (
+  .add('Audio player', () => (
     <div>
       <StoryIntro title="Lydavspiller" />
       <OneColumn>
@@ -288,7 +287,7 @@ storiesOf('Components', module)
       </OneColumn>
     </div>
   ))
-  .add('Tekst i ramme', () => (
+  .add('Text in frame', () => (
     <div>
       <StoryIntro title="Tekst i ramme">
         <p>
@@ -380,7 +379,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Embedded innhold', () => (
+  .add('Embedded content', () => (
     <div>
       <StoryIntro title="Embedded innhold (Youtube, brightcove, HP5 osv.)">
         <p>
@@ -456,7 +455,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Bruk av lenker', () => (
+  .add('Use of links', () => (
     <div>
       <StoryIntro title="Bruk av lenker">
         <p>
@@ -491,7 +490,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Faktaboks', () => (
+  .add('Fact box', () => (
     <div>
       <StoryIntro title="Faktaboks">
         <p>
@@ -558,7 +557,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Ekspanderbar boks', () => (
+  .add('Expandable box', () => (
     <div>
       <StoryIntro title="Ekspanderbar boks" />
       <StoryBody>
@@ -576,17 +575,10 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Fasitboks', () => (
+  .add('Summary box', () => (
     <div>
       <StoryIntro title="Fasitboks" />
       <StoryBody>
-        <details className="c-details--solution-box ">
-          <summary>Vis fasit (ekspanderende på desktop)</summary>
-          <div className="c-details__content">
-            <SolutionTableExample />
-          </div>
-        </details>
-
         <details className="c-details--solution-box ">
           <summary>Vis fasit</summary>
           <div className="c-details__content">
@@ -601,7 +593,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Kildehenvisninger', () => (
+  .add('References', () => (
     <div>
       <StoryIntro title="Kildehenvisninger">
         <p>
@@ -619,7 +611,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Ikoner', () => (
+  .add('Icons', () => (
     <div>
       <StoryIntro title="Ikoner" />
       <OneColumn>
@@ -664,7 +656,7 @@ storiesOf('Components', module)
       </OneColumn>
     </div>
   ))
-  .add('Skuff', () => <DrawerExample />)
+  .add('Drawer', () => <DrawerExample />)
 
   .add('Logo', () => (
     <div>
@@ -695,7 +687,7 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Utarbeidet av', () => (
+  .add('Prepared by', () => (
     <div>
       <StoryIntro title="Utarbeidet av">
         <p>
@@ -717,7 +709,7 @@ storiesOf('Components', module)
     </div>
   ))
 
-  .add('Ukraina Banner', () => (
+  .add('Ukraine Banner', () => (
     <div>
       <StoryIntro title="Ukraina Banner">
         <p>Banner for læringsressurser på Ukrainsk.</p>
@@ -728,7 +720,7 @@ storiesOf('Components', module)
     </div>
   ))
 
-  .add('Treestruktur komponent', () => (
+  .add('Tree structure component', () => (
     <div>
       <StoryIntro title="Trestruktur komponent">
         <p>Tree struktur</p>

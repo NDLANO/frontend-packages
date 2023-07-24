@@ -12,7 +12,7 @@ import { defaultParameters } from '../../../../stories/defaults';
 import BlockResource from './BlockResource';
 
 export default {
-  title: 'Components/Ressurser/BlockResource',
+  title: 'Components/Resources/BlockResource',
   component: BlockResource,
   tags: ['autodocs'],
   parameters: {

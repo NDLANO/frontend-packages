@@ -7,33 +7,25 @@
  */
 
 import { ReactNode } from 'react';
-import { breakpoints, fonts, mq, spacing, utils } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
 import { Heading } from '../Typography';
+import { ArticleByline } from '../Article';
 
 interface Props {
   article: Article;
   children?: ReactNode;
   id: string;
   isWide?: boolean;
+  licenseBox?: ReactNode;
 }
 
 const StyledArticle = styled.article`
   max-width: 773px;
   &[data-wide='true'] {
     max-width: 1100px;
-  }
-`;
-
-const StyledLayoutItem = styled(LayoutItem)`
-  > section {
-    > figure,
-    > iframe {
-      width: 100% !important;
-      left: 0;
-    }
   }
 `;
 
@@ -49,26 +41,39 @@ const StyledIntroduction = styled.div`
   }
 `;
 
-export const FrontpageArticle = ({ article, id, isWide }: Props) => {
+export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => {
   const { title, introduction, content } = article;
 
   if (isWide) {
     return (
       <StyledArticle data-wide={isWide}>
-        <StyledLayoutItem>{content}</StyledLayoutItem>
+        <LayoutItem>{content}</LayoutItem>
       </StyledArticle>
     );
   }
 
+  const authors =
+    article.copyright.creators.length || article.copyright.rightsholders.length
+      ? article.copyright.creators
+      : article.copyright.processors;
   return (
     <StyledArticle>
-      <StyledLayoutItem>
+      <LayoutItem>
         <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
           {title}
         </Heading>
         <StyledIntroduction>{introduction}</StyledIntroduction>
-      </StyledLayoutItem>
-      <StyledLayoutItem>{content}</StyledLayoutItem>
+      </LayoutItem>
+      <LayoutItem>{content}</LayoutItem>
+      <ArticleByline
+        authors={authors}
+        suppliers={article.copyright.rightsholders}
+        license={article.copyright.license?.license!}
+        published={article.published}
+        footnotes={article.footNotes}
+        accordionHeaderVariant={'white'}
+        licenseBox={licenseBox}
+      />
     </StyledArticle>
   );
 };

@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const FileDownloadOutline = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="SIL Open Font License 1.1" data-source="Material Community Icons" {...props}>
     <g>
-      <path d="M14,2L20,8V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V4A2,2 0 0,1 6,2H14M18,20V9H13V4H6V20H18M12,19L8,15H10.5V12H13.5V15H16L12,19Z" />
+      <path d="m14 2 6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8m4 18V9h-5V4H6v16h12m-6-1-4-4h2.5v-3h3v3H16l-4 4Z" />
     </g>
   </Icon>
 );

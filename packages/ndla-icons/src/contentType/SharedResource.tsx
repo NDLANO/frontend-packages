@@ -17,17 +17,9 @@ interface Props extends IconProps {
 const SharedResource = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Keyteq" {...props}>
     <g>
-      <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
-        <g>
-          <g>
-            <polygon points="0 0 24 0 24 24 0 24" />
-            <path
-              d="M6,17 L9,17 L11,13 L11,7 L5,7 L5,13 L8,13 L6,17 Z M14,17 L17,17 L19,13 L19,7 L13,7 L13,13 L16,13 L14,17 Z"
-              fill="currentColor"
-              fillRule="nonzero"
-            />
-          </g>
-        </g>
+      <g fill="none" fillRule="evenodd">
+        <path d="M0 0h24v24H0z" />
+        <path fill="currentColor" d="M6 17h3l2-4V7H5v6h3l-2 4Zm8 0h3l2-4V7h-6v6h3l-2 4Z" fillRule="nonzero" />
       </g>
     </g>
   </Icon>

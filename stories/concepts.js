@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { StoryIntro, StoryBody } from './wrappers';
 
-storiesOf('Other/Konsepter', module).add('Navngivning av innholdstyper', () => (
+storiesOf('Other/Concepts', module).add('Naming content types', () => (
   <div>
     <StoryIntro title="Navngivning av innholdstyper" />
     <StoryBody>

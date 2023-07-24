@@ -18,5 +18,10 @@
       "outputs": ["{projectRoot}/lib"]
     }
   },
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
+  }
 }

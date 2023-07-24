@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
 import FolderItem from './FolderItem';
-import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc, TreeStructureType } from './types';
+import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from './types';
 import { treestructureId } from './helperFunctions';
 
 const StyledUL = styled.ul`
@@ -25,16 +25,14 @@ const StyledUL = styled.ul`
   padding: 0;
 `;
 
-interface StyledLiProps {
-  type?: TreeStructureType;
-}
-
-const StyledLI = styled.li<StyledLiProps>`
+const StyledLI = styled.li`
   display: flex;
   flex-direction: column;
-  align-items: ${({ type }) => type === 'navigation' && 'flex-start'};
   margin: 0;
   padding: 0;
+  &[data-type='navigation'] {
+    align-items: flex-start;
+  }
 `;
 
 export interface FolderItemsProps extends CommonFolderItemsProps {
@@ -80,7 +78,7 @@ const FolderItems = ({
       const isOpen = openFolders?.includes(id);
 
       return (
-        <StyledLI key={id} tabIndex={-1} role="none" type={type}>
+        <StyledLI key={id} tabIndex={-1} role="none" data-type={type}>
           <FolderItem
             index={index}
             folder={folder}

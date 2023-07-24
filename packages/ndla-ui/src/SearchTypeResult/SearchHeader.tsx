@@ -13,9 +13,10 @@ import { ButtonV2 } from '@ndla/button';
 import { Spinner } from '@ndla/icons';
 
 import SearchFieldHeader from './SearchFieldHeader';
-import { CompetenceGoalsItemType } from '../types';
+import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
 import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
 import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
+import CoreElementItem from '../CompetenceGoalTab/CoreElementItem';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -36,13 +37,13 @@ const PhraseWrapper = styled.div`
   margin: ${spacing.normal} 0 ${spacing.medium};
 `;
 
-const CompetenceGoalsWrapper = styled.div`
+const GrepCodesWrapper = styled.div`
   font-size: 16px;
   width: 100%;
   margin-top: ${spacing.normal};
 `;
 
-const CompetenceGoalsList = styled.ul`
+const GrepCodesList = styled.ul`
   padding: 0;
   margin: 0;
   li {
@@ -56,7 +57,7 @@ const PhraseText = styled.div`
 `;
 const PhraseSuggestionText = styled.div``;
 
-const GoalsLabel = styled.div`
+const GrepCodesLabel = styled.div`
   ${fonts.sizes('16px', '32px')};
   text-transform: uppercase;
 `;
@@ -69,6 +70,7 @@ type Props = {
   filters: SubjectFilterProps['filters'];
   activeFilters?: SubjectFilterProps['activeFilters'];
   competenceGoals?: CompetenceGoalsItemType[];
+  coreElements?: CoreElementsItemType[];
   onSearchValueChange: (value: string) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   noResults?: boolean;
@@ -85,6 +87,7 @@ const SearchHeader = ({
   activeFilters,
   filters,
   competenceGoals,
+  coreElements,
   noResults,
   loading,
 }: Props) => {
@@ -143,18 +146,30 @@ const SearchHeader = ({
           </PhraseSuggestionText>
         )}
         {!!competenceGoals?.length && (
-          <CompetenceGoalsWrapper>
+          <GrepCodesWrapper>
             {competenceGoals?.length && (
               <>
-                <GoalsLabel>{t('competenceGoals.competenceGoalItem.title')}</GoalsLabel>
-                <CompetenceGoalsList>
+                <GrepCodesLabel>{t('competenceGoals.competenceGoalItem.title')}</GrepCodesLabel>
+                <GrepCodesList>
                   {competenceGoals.map((e) => (
                     <CompetenceGoalItem key={e.id} id={e.id} title={e.title} goals={e.goals} />
                   ))}
-                </CompetenceGoalsList>
+                </GrepCodesList>
               </>
             )}
-          </CompetenceGoalsWrapper>
+          </GrepCodesWrapper>
+        )}
+        {!!coreElements?.length && (
+          <GrepCodesWrapper>
+            <>
+              <GrepCodesLabel>{t('competenceGoals.competenceTabCorelabel')}</GrepCodesLabel>
+              <GrepCodesList>
+                {coreElements.map((e) => (
+                  <CoreElementItem key={e.id} id={e.id} title={e.title} text={e.text} url={e.url} />
+                ))}
+              </GrepCodesList>
+            </>
+          </GrepCodesWrapper>
         )}
       </PhraseWrapper>
       {isNarrowScreen && (

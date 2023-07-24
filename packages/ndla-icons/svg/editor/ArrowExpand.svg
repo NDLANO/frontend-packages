@@ -1,3 +1,3 @@
-<svg width="24" height="24" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design">
-    <path d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z" />
+<svg data-license="Apache License 2.0" data-source="Material Design" viewBox="0 0 24 24">
+  <path d="M10 21v-2H6.4l4.5-4.5-1.4-1.4L5 17.6V14H3v7h7m4.5-10L19 6.3V10h2V3h-7v2h3.6L13 9.5l1.4 1.4Z"/>
 </svg>

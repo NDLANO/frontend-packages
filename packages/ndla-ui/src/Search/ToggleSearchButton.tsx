@@ -18,22 +18,12 @@ interface Props extends ButtonProps {
   ndlaFilm?: boolean;
 }
 
-interface StyledButtonProps {
-  hideOnNarrowScreen?: boolean;
-  hideOnWideScreen?: boolean;
-  ndlaFilm?: boolean;
-}
-
-const props = ['hideOnNarrowScreen', 'hideOnWideScreen', 'ndlaFilm'];
-
-const shouldForwardProp = (p: string) => !props.includes(p);
-
-const StyledButton = styled(ButtonV2, { shouldForwardProp })<StyledButtonProps>`
-  background: ${(p) => (p.ndlaFilm ? colors.ndlaFilm.filmColorBright : colors.brand.greyLighter)};
+const StyledButton = styled(ButtonV2)`
+  background: ${colors.brand.greyLight};
+  color: ${colors.brand.primary};
   border-radius: ${misc.borderRadius};
   border: 0;
-  display: ${(p) => (p.hideOnNarrowScreen ? 'none' : 'flex')};
-  color: ${(p) => (p.ndlaFilm ? '#fff' : colors.brand.primary)};
+  display: flex;
   padding: ${spacing.small} ${spacingUnit * 0.75}px ${spacing.small} ${spacing.normal};
   align-items: center;
   margin-left: ${spacing.medium};
@@ -45,10 +35,23 @@ const StyledButton = styled(ButtonV2, { shouldForwardProp })<StyledButtonProps>`
 
   ${fonts.sizes('16px', '32px')};
 
+  &[data-hide-on-narrow='true'] {
+    display: none;
+  }
+
+  &[data-ndla-film='true'] {
+    background: ${colors.ndlaFilm.filmColorBright};
+    color: ${colors.white};
+  }
+
   ${mq.range({ from: breakpoints.desktop })} {
-    display: ${(p) => (p.hideOnWideScreen ? 'none' : 'flex')};
+    display: flex;
     margin-right: ${spacing.nsmall};
     padding: ${spacing.small} ${spacing.normal};
+
+    &[data-hide-on-wide='true'] {
+      display: none;
+    }
   }
   &:hover,
   &:focus,
@@ -64,9 +67,9 @@ const StyledSpan = styled.span`
 
 const ToggleSearchButton = ({ children, ndlaFilm, hideOnNarrowScreen, hideOnWideScreen, ...rest }: Props) => (
   <StyledButton
-    ndlaFilm={ndlaFilm}
-    hideOnNarrowScreen={hideOnNarrowScreen}
-    hideOnWideScreen={hideOnWideScreen}
+    data-ndla-film={ndlaFilm}
+    data-hide-on-narrow={hideOnNarrowScreen}
+    data-hide-on-wide={hideOnWideScreen}
     type="button"
     {...rest}
   >

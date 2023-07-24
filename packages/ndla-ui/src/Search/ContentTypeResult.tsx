@@ -4,6 +4,8 @@ import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { animations, breakpoints, colors, fonts, mq, spacing, spacingUnit } from '@ndla/core';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentTypeResultType, Resource } from '../types';
 import {
@@ -11,13 +13,95 @@ import {
   noWidthhighlightStyle,
   showAllButtonStyle,
   StyledHeader,
-  StyledList,
-  StyledListItem,
-  StyledNoHit,
   StyledTag,
   StyledWrapper,
 } from './ContentTypeResultStyles';
 import { isPathToHighlight } from './IsPathToHighlight';
+
+const StyledNoHit = styled.p`
+  color: ${colors.text.light};
+  margin: 0;
+  font-style: italic;
+  ${fonts.sizes(16, 1.1)};
+  &[data-in-menu='true'] {
+    ${mq.range({ from: breakpoints.desktop })} {
+      margin-left: ${spacingUnit * 1.5}px;
+    }
+  }
+`;
+
+const StyledListItem = styled.li`
+  &[data-delay-animation='true'] {
+    ${animations.fadeInLeftFromZero()}
+    animation-delay: ${animations.durations.normal};
+  }
+  &[data-delay-animation='false'] {
+    ${animations.fadeInLeft()}
+  }
+`;
+
+export const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  &[data-animate-list='true'] {
+    &[data-odd='true'] {
+      ${(animations.toggledContentWithSwitchAnimation(animations.durations.normal), `contentTypeResultAnimation1`)}
+    }
+    &[data-odd='false'] {
+      ${(animations.toggledContentWithSwitchAnimation(animations.durations.normal), `contentTypeResultAnimation2`)}
+    }
+  }
+  li {
+    margin: 0 -${spacing.small};
+    a {
+      > div {
+        margin-right: ${spacing.small};
+      }
+      color: ${colors.brand.primary};
+      box-shadow: none;
+      display: inline-flex;
+      flex-grow: 1;
+      align-items: center;
+      padding: ${spacing.xsmall} ${spacing.small};
+      small {
+        color: ${colors.text.light};
+        padding-left: ${spacing.xsmall};
+        ${mq.range({ until: breakpoints.tablet })} {
+          display: none;
+        }
+      }
+      &:focus {
+        ${highlightStyle};
+      }
+
+      strong {
+        font-weight: ${fonts.weight.semibold};
+      }
+      &:hover {
+        strong {
+          text-decoration: underline;
+        }
+      }
+      &[data-in-menu='true'] {
+        ${mq.range({ from: breakpoints.desktop })} {
+          &[data-ungrouped='false'] {
+            margin-left: ${spacing.mediumlarge};
+          }
+        }
+        strong {
+          text-decoration: underline;
+          font-weight: ${fonts.weight.normal};
+        }
+        &:hover {
+          strong {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+`;
 
 const renderAdditionalIcon = (label: string, isAdditional?: boolean): ReactElement | null => {
   if (isAdditional && label) {
@@ -104,7 +188,7 @@ const ContentTypeResult = ({
         </StyledHeader>
       )}
       {resources.length > 0 ? (
-        <StyledList inMenu={inMenu} animateList={animateList} unGrouped={unGrouped}>
+        <StyledList data-in-menu={inMenu} data-animate-list={!!animateList} data-ungrouped={unGrouped}>
           {resources.map((resource) => {
             const { path, name, resourceTypes, subject, additional } = resource;
 
@@ -129,7 +213,7 @@ const ContentTypeResult = ({
             const shouldHighlight = isPathToHighlight(path, anchorHref);
 
             return (
-              <StyledListItem key={path} delayAnimation={delayAnimation}>
+              <StyledListItem key={path} data-delay-animation={delayAnimation}>
                 <SafeLink
                   css={shouldHighlight && highlightStyle}
                   data-highlighted={shouldHighlight || false}
@@ -166,7 +250,7 @@ const ContentTypeResult = ({
           )}
         </StyledList>
       ) : (
-        <StyledNoHit inMenu={inMenu}>{messages.noHit}</StyledNoHit>
+        <StyledNoHit data-in-menu={inMenu}>{messages.noHit}</StyledNoHit>
       )}
     </StyledWrapper>
   );

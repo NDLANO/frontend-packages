@@ -11,38 +11,30 @@ import React from 'react';
 import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
 import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
-import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { MenuItemProps } from '@ndla/button';
 import { ResourceTitleLink } from '../../Resource/resourceComponents';
 import FolderMenu from './FolderMenu';
 
 export type LayoutType = 'list' | 'listLarger' | 'block';
-interface LayoutProps {
-  type: LayoutType;
-}
 
-const FolderWrapper = styled.div<LayoutProps>`
+const FolderWrapper = styled.div`
   display: flex;
   position: relative;
   align-items: center;
   justify-content: space-between;
 
   ${mq.range({ until: breakpoints.mobileWide })} {
-    ${({ type }) =>
-      type !== 'list' &&
-      css`
-        flex-direction: column;
-        align-items: unset;
-      `}
-  }
-
-  ${({ type }) =>
-    type === 'block' &&
-    css`
+    &:not([data-type='list']) {
       flex-direction: column;
       align-items: unset;
-    `}
+    }
+  }
+
+  &[data-type='block'] {
+    flex-direction: column;
+    align-items: unset;
+  }
 
   border: 1px solid ${colors.brand.neutral7};
   cursor: pointer;
@@ -52,17 +44,23 @@ const FolderWrapper = styled.div<LayoutProps>`
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
+    [data-title] {
+      color: ${colors.brand.primary};
+      text-decoration: underline;
+    }
   }
 `;
 
-const TitleWrapper = styled.div<LayoutProps>`
+const TitleWrapper = styled.div`
   display: flex;
   margin: ${spacing.nsmall};
-  margin-bottom: ${({ type }) => type === 'block' && 0};
   flex-direction: row;
   align-items: center;
   gap: ${spacing.xsmall};
   justify-content: space-between;
+  &[data-type='block'] {
+    margin-bottom: 0;
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -88,11 +86,6 @@ const FolderTitle = styled.h2`
   -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
-
-  ${FolderWrapper}:hover & {
-    color: ${colors.brand.primary};
-    text-decoration: underline;
-  }
 `;
 
 const MenuWrapper = styled.div`
@@ -113,7 +106,7 @@ const CountContainer = styled.div`
   margin: 0 ${spacing.small} 0 ${spacing.nsmall};
 `;
 
-const IconTextWrapper = styled.div<LayoutProps>`
+const IconTextWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: ${spacing.xxsmall};
@@ -125,11 +118,9 @@ const IconTextWrapper = styled.div<LayoutProps>`
   }
   ${fonts.sizes(16)};
   ${mq.range({ until: breakpoints.mobileWide })} {
-    ${({ type }) =>
-      type === 'list' &&
-      css`
-        display: none;
-      `}
+    &[data-type='list'] {
+      display: none;
+    }
   }
 `;
 
@@ -145,7 +136,7 @@ const Count = ({ type, count, layoutType }: IconCountProps) => {
   if (!count) return null;
 
   return (
-    <IconTextWrapper type={layoutType}>
+    <IconTextWrapper data-type={layoutType}>
       <Icon />
       <span>{t(`myNdla.${type}s`, { count })}</span>
     </IconTextWrapper>
@@ -180,22 +171,24 @@ const Folder = ({
   const Icon = isShared ? FolderShared : FolderOutlined;
 
   return (
-    <FolderWrapper type={type} id={id}>
-      <TitleWrapper type={type}>
+    <FolderWrapper data-type={type} id={id}>
+      <TitleWrapper data-type={type}>
         <IconWrapper
           aria-label={`${isShared ? `${t('myNdla.folder.sharing.shared')} ` : ''}${t('myNdla.folder.folder')}`}
         >
           <Icon />
         </IconWrapper>
         <ResourceTitleLink to={link}>
-          <FolderTitle title={title}>{title}</FolderTitle>
+          <FolderTitle data-title="" title={title}>
+            {title}
+          </FolderTitle>
         </ResourceTitleLink>
       </TitleWrapper>
       <MenuWrapper>
         <CountContainer>
           {isShared && (
             // Information regarding the shared status of a folder is read previously, ignore this
-            <IconTextWrapper type={type} aria-hidden>
+            <IconTextWrapper data-type={type} aria-hidden>
               <Share />
               <span>{t('myNdla.folder.sharing.shared')}</span>
             </IconTextWrapper>

@@ -94,7 +94,7 @@ const StyledDescription = styled.div`
 `;
 
 const LinkToTextVersionWrapper = styled.div`
-  &[data-no-margin='false'] {
+  &[data-margin='true'] {
     margin-top: ${spacing.small};
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -191,10 +191,10 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   };
 
   type TextVersionComponentProps = {
-    noMargin?: boolean;
+    margin?: boolean;
   };
-  const TextVersionComponent = ({ noMargin }: TextVersionComponentProps) => (
-    <LinkToTextVersionWrapper data-no-margin={noMargin}>
+  const TextVersionComponent = ({ margin }: TextVersionComponentProps) => (
+    <LinkToTextVersionWrapper data-margin={margin}>
       <ButtonV2 size="normal" shape="pill" onClick={toggleTextVersion} data-audio-text-button-id={staticRenderId}>
         {t('audio.textVersion.heading')}
       </ButtonV2>
@@ -219,7 +219,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
               )}
               <Title data-has-desc={!!description}>{title}</Title>
             </div>
-            {textVersion && !img && <TextVersionComponent noMargin />}
+            {textVersion && !img && <TextVersionComponent />}
           </TitleWrapper>
           {description && (
             <StyledDescription>
@@ -231,7 +231,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
               </ButtonV2>
             </StyledDescription>
           )}
-          {textVersion && img && <TextVersionComponent />}
+          {textVersion && img && <TextVersionComponent margin />}
         </TextWrapper>
       </InfoWrapper>
       <div data-audio-player={1} data-src={src} data-title={title}>

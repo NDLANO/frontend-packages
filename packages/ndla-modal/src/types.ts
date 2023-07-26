@@ -7,8 +7,7 @@
  */
 
 import { keyframes } from '@emotion/react';
-import { HTMLMotionProps } from 'framer-motion';
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 export type ModalSize = 'xsmall' | 'small' | 'normal' | 'large' | 'full';
 export type ModalSizeType = ModalSize | { width: ModalSize; height: ModalSize };
@@ -17,7 +16,7 @@ export type ModalMargin = 'none' | 'small';
 
 export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
-export interface ModalContentProps extends Omit<HTMLMotionProps<'div'>, 'size' | 'children'> {
+export interface ModalContentProps extends Omit<HTMLAttributes<HTMLDivElement>, 'size' | 'children'> {
   animation?: ModalAnimation;
   animationDuration?: number;
   children: ReactNode;

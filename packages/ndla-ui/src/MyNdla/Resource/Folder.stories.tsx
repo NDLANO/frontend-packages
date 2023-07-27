@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
-import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown';
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { defaultParameters } from '../../../../../stories/defaults';
@@ -30,7 +30,7 @@ export default {
     link: '',
     type: 'list',
     menu: (
-      <Dropdown>
+      <DropdownMenu>
         <DropdownTrigger>
           <IconButtonV2 aria-label="Show more" title="Show more" variant="ghost" colorTheme="light">
             <HorizontalMenu />
@@ -50,7 +50,7 @@ export default {
             </ButtonV2>
           </DropdownItem>
         </DropdownContent>
-      </Dropdown>
+      </DropdownMenu>
     ),
     isShared: true,
   },

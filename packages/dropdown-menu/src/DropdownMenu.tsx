@@ -10,8 +10,8 @@ import { DropdownMenuProps, Root } from '@radix-ui/react-dropdown-menu';
 
 interface Props extends DropdownMenuProps {}
 
-const Dropdown = (props: Props) => {
+const DropdownMenu = (props: Props) => {
   return <Root {...props} />;
 };
 
-export default Dropdown;
+export default DropdownMenu;

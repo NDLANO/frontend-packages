@@ -12,7 +12,7 @@ import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
 //@ts-ignore
 import { HorizontalMenu } from '@ndla/icons/contentType';
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown';
+import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown-menu';
 import ResourcesExample from '../organisms/ResourcesExample';
 import FolderResourcesExample from '../organisms/FolderResourcesExample';
 import FolderInputExample from '../organisms/FolderInputExample';
@@ -24,7 +24,7 @@ const tags = ['tag', 'tag', 'tag', 'tag'];
 const resourceTypes = [{ id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' }];
 
 export const ResourceMenu = () => (
-  <Dropdown>
+  <DropdownMenu>
     <DropdownTrigger>
       <IconButtonV2 aria-label="Show more" title="Show more" variant="ghost" colorTheme="light">
         <HorizontalMenu />
@@ -44,7 +44,7 @@ export const ResourceMenu = () => (
         </ButtonV2>
       </DropdownItem>
     </DropdownContent>
-  </Dropdown>
+  </DropdownMenu>
 );
 
 export const MyNdla = () => {

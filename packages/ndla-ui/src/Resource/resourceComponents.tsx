@@ -14,7 +14,7 @@ import { IconButtonV2 } from '@ndla/button';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import { HashTag } from '@ndla/icons/common';
 import { css } from '@emotion/react';
-import { Dropdown, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown';
+import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown-menu';
 import resourceTypeColor from '../utils/resourceTypeColor';
 import { resourceEmbedTypeMapping } from '../model/ContentType';
 
@@ -185,7 +185,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
     <>
       <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
-        <Dropdown>
+        <DropdownMenu>
           <DropdownTrigger>
             <StyledTrigger
               size="xsmall"
@@ -210,7 +210,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
               </DropdownItem>
             ))}
           </DropdownContent>
-        </Dropdown>
+        </DropdownMenu>
       )}
     </>
   );

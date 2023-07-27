@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "@ndla/core": "^4.1.4",
-    "@ndla/dropdown": "^0.1.0",
+    "@ndla/dropdown-menu": "^0.1.0",
     "@ndla/icons": "^4.0.1",
     "@ndla/tooltip": "^4.1.13"
   },

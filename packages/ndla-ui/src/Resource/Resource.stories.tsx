@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown';
+import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown-menu';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { Pencil } from '@ndla/icons/action';
@@ -17,7 +17,7 @@ import ListResource from './ListResource';
 import { defaultParameters } from '../../../../stories/defaults';
 
 const StoryResourceMenu = () => (
-  <Dropdown>
+  <DropdownMenu>
     <DropdownTrigger>
       <IconButtonV2 aria-label="Show more" title="Show more" variant="ghost" colorTheme="light">
         <HorizontalMenu />
@@ -37,7 +37,7 @@ const StoryResourceMenu = () => (
         </ButtonV2>
       </DropdownItem>
     </DropdownContent>
-  </Dropdown>
+  </DropdownMenu>
 );
 
 export default {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022-present, NDLA.
+ * Copyright (c) 2023-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -13,10 +13,10 @@ import { ButtonV2, IconButtonV2 } from '@ndla/button';
 import { DeleteForever, Folder } from '@ndla/icons/editor';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { defaultParameters } from '../../../stories/defaults';
-import { Dropdown, DropdownTrigger, DropdownItem, DropdownContent } from '.';
+import { DropdownMenu, DropdownTrigger, DropdownItem, DropdownContent } from '.';
 
 export default {
-  title: 'Components/Dropdown',
+  title: 'Components/DropdownMenu',
   component: DropdownContent,
   tags: ['autodocs'],
   parameters: {
@@ -31,9 +31,9 @@ const StyledButton = styled(ButtonV2)`
   justify-content: flex-start;
 `;
 
-export const DropdownStory: StoryFn<typeof Dropdown> = (args) => {
+export const DropdownStory: StoryFn<typeof DropdownMenu> = (args) => {
   return (
-    <Dropdown>
+    <DropdownMenu>
       <DropdownTrigger>
         <IconButtonV2 aria-label="Show more" title="Show more" variant="ghost" colorTheme="light">
           <HorizontalMenu />
@@ -53,7 +53,7 @@ export const DropdownStory: StoryFn<typeof Dropdown> = (args) => {
           </StyledButton>
         </DropdownItem>
       </DropdownContent>
-    </Dropdown>
+    </DropdownMenu>
   );
 };
 

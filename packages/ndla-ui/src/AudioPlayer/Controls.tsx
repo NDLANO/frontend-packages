@@ -15,7 +15,7 @@ import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Back15, Forward15 } from '@ndla/icons/action';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown';
+import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown-menu';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
@@ -303,7 +303,7 @@ const Controls = ({ src, title }: Props) => {
         >
           <Back15 />
         </Back15SecButton>
-        <Dropdown>
+        <DropdownMenu>
           <DropdownTrigger>
             <SpeedButton
               shape="pill"
@@ -330,7 +330,7 @@ const Controls = ({ src, title }: Props) => {
               </DropdownItem>
             ))}
           </SpeedList>
-        </Dropdown>
+        </DropdownMenu>
         <Forward15SecButton
           colorTheme="greyLighter"
           variant="ghost"

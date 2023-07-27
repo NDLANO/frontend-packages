@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown';
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
 import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown } from '@ndla/icons/common';
@@ -64,7 +64,7 @@ const Text = styled.span`
 const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Props<T>) => {
   const { t, i18n } = useTranslation();
   return (
-    <Dropdown>
+    <DropdownMenu>
       <DropdownTrigger>
         <ButtonV2 variant="outline" shape="pill" inverted={inverted} aria-label={t('footer.selectLanguage')}>
           {t(`languages.prefixChangeLanguage`)} <ChevronDown />
@@ -87,7 +87,7 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Pro
           </DropdownItem>
         ))}
       </StyledDropdownContent>
-    </Dropdown>
+    </DropdownMenu>
   );
 };
 

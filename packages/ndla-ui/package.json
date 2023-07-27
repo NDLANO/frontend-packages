@@ -36,7 +36,7 @@
     "@ndla/button": "^10.2.0",
     "@ndla/carousel": "^3.1.11",
     "@ndla/core": "^4.1.4",
-    "@ndla/dropdown": "^0.1.0",
+    "@ndla/dropdown-menu": "^0.1.0",
     "@ndla/forms": "^4.3.14",
     "@ndla/hooks": "^2.0.8",
     "@ndla/icons": "^4.0.1",

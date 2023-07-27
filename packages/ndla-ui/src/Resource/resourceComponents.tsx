@@ -10,11 +10,11 @@ import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import React, { CSSProperties, HTMLAttributes, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MenuButton } from '@ndla/button';
-import SafeLink from '@ndla/safelink';
-import { useNavigate } from 'react-router-dom';
+import { IconButtonV2 } from '@ndla/button';
+import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import { HashTag } from '@ndla/icons/common';
 import { css } from '@emotion/react';
+import { Dropdown, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown';
 import resourceTypeColor from '../utils/resourceTypeColor';
 import { resourceEmbedTypeMapping } from '../model/ContentType';
 
@@ -36,6 +36,10 @@ export const ResourceTitleLink = styled(SafeLink)`
     bottom: 0;
     left: 0;
   }
+`;
+
+const StyledTrigger = styled(IconButtonV2)`
+  margin: 0px ${spacing.xsmall};
 `;
 
 export const resourceHeadingStyle = css`
@@ -173,34 +177,40 @@ interface CompressedTagListProps {
 }
 
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const visibleTags = useMemo(() => tags.slice(0, 3), [tags]);
-  const remainingTags = useMemo(
-    () =>
-      tags.slice(3, tags.length).map((tag) => {
-        return {
-          icon: <HashTag />,
-          text: tag,
-          onClick: () => {
-            navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`);
-          },
-        };
-      }),
-    [navigate, tagLinkPrefix, tags],
-  );
+  const remainingTags = useMemo(() => tags.slice(3, tags.length), [tags]);
 
   return (
     <>
       <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
-        <MenuButton
-          size="small"
-          menuIcon={<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
-          menuItems={remainingTags}
-          align="end"
-          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
-        />
+        <Dropdown>
+          <DropdownTrigger>
+            <StyledTrigger
+              size="xsmall"
+              variant="ghost"
+              colorTheme="light"
+              aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
+            >
+              {<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
+            </StyledTrigger>
+          </DropdownTrigger>
+          <DropdownContent showArrow>
+            {remainingTags.map((tag, i) => (
+              <DropdownItem key={`tag-${i}`}>
+                <SafeLinkButton
+                  to={`${tagLinkPrefix ?? ''}/${encodeURIComponent(tag)}`}
+                  variant="ghost"
+                  colorTheme="light"
+                >
+                  <HashTag />
+                  {tag}
+                </SafeLinkButton>
+              </DropdownItem>
+            ))}
+          </DropdownContent>
+        </Dropdown>
       )}
     </>
   );

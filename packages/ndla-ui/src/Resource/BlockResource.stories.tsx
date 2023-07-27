@@ -28,7 +28,7 @@ export default {
     headingLevel: {
       control: false,
     },
-    menuItems: {
+    menu: {
       control: false,
     },
   },

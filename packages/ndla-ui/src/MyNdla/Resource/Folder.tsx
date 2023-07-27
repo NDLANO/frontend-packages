@@ -7,14 +7,12 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
 import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { MenuItemProps } from '@ndla/button';
 import { ResourceTitleLink } from '../../Resource/resourceComponents';
-import FolderMenu from './FolderMenu';
 
 export type LayoutType = 'list' | 'listLarger' | 'block';
 
@@ -151,22 +149,11 @@ interface Props {
   description?: string;
   link: string;
   type?: LayoutType;
-  onViewTypeChange?: (type: LayoutType) => void;
-  menuItems?: MenuItemProps[];
+  menu?: ReactNode;
   isShared?: boolean;
 }
 
-const Folder = ({
-  id,
-  link,
-  title,
-  subFolders,
-  subResources,
-  type = 'list',
-  menuItems,
-  isShared,
-  onViewTypeChange,
-}: Props) => {
+const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu, isShared }: Props) => {
   const { t } = useTranslation();
   const Icon = isShared ? FolderShared : FolderOutlined;
 
@@ -196,9 +183,7 @@ const Folder = ({
           <Count layoutType={type} type={'folder'} count={subFolders} />
           <Count layoutType={type} type={'resource'} count={subResources} />
         </CountContainer>
-        {menuItems && menuItems.length > 0 && (
-          <FolderMenu menuItems={menuItems} viewType={type} onViewTypeChange={onViewTypeChange} />
-        )}
+        {menu}
       </MenuWrapper>
     </FolderWrapper>
   );

@@ -1,4 +1,4 @@
-# ndla-dropdown
+# ndla-dropdown-menu
 
 Dropdown menu component based on @radix-ui/react-dropdown-menu
 

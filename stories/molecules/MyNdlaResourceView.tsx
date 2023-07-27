@@ -18,7 +18,7 @@ import { FolderOutlined } from '@ndla/icons/contentType';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import { Folder, ListResource, BlockResource } from '@ndla/ui';
-import { menuItems } from '../pages/MyNdla';
+import { ResourceMenu } from '../pages/MyNdla';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -214,7 +214,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
             link={link}
             subFolders={3}
             subResources={3}
-            menuItems={menuItems}
+            menu={<ResourceMenu />}
           />
         ))}
       </BlockWrapper>
@@ -232,7 +232,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
               src: resourceImage.src,
             }}
             link={link}
-            menuItems={menuItems}
+            menu={<ResourceMenu />}
           />
         ))}
       </BlockWrapper>

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import { ListResource, BlockResource } from '@ndla/ui';
@@ -29,7 +29,7 @@ const BlockResourceExample = styled.div`
 interface BlockExampleProps {
   resourceTypes: { id: string; name: string }[];
   tags: string[];
-  menuItems: any[];
+  menu?: ReactNode;
 }
 
 const resourceTypesArr = [
@@ -41,7 +41,7 @@ const resourceTypesArr = [
   { id: 'urn:resourcetype:SourceMaterial', name: 'Kildemateriale' },
 ];
 
-export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampleProps) => {
+export const ResourcesExample = ({ resourceTypes, tags, menu }: BlockExampleProps) => {
   return (
     <>
       <BlockResourceWrapper>
@@ -59,7 +59,7 @@ export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampl
               alt: '',
             }}
             link={''}
-            menuItems={menuItems}
+            menu={menu}
           />
         </BlockResourceExample>
         <BlockResourceExample>
@@ -76,7 +76,7 @@ export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampl
               alt: '',
             }}
             link={''}
-            menuItems={menuItems}
+            menu={menu}
           />
         </BlockResourceExample>
       </BlockResourceWrapper>
@@ -94,7 +94,7 @@ export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampl
           alt: '',
         }}
         link={''}
-        menuItems={menuItems}
+        menu={menu}
       />
       <h3> Standard Ressurs</h3>
       <ListResource
@@ -109,7 +109,7 @@ export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampl
           alt: '',
         }}
         link={''}
-        menuItems={menuItems}
+        menu={menu}
       />
       <h3>Ressurs med tom beskrivelse</h3>
       <ListResource
@@ -124,7 +124,7 @@ export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampl
           alt: '',
         }}
         link={''}
-        menuItems={menuItems}
+        menu={menu}
       />
 
       <h3>Ressurs uten beskrivelse, tags og meny</h3>
@@ -138,7 +138,7 @@ export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampl
           alt: '',
         }}
         link={''}
-        menuItems={menuItems}
+        menu={menu}
       />
       <h3>Ressurs uten beskrivelse, tags og meny. Uten bilde</h3>
 
@@ -155,7 +155,7 @@ export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampl
                 alt: '',
               }}
               link={''}
-              menuItems={menuItems}
+              menu={menu}
             />
           </ListResourceWrapper>
         );

@@ -7,9 +7,8 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
-import { MenuItemProps } from '@ndla/button';
 import Image from '../Image';
 import {
   CompressedTagList,
@@ -23,7 +22,6 @@ import {
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
-import { SettingsMenu } from '../MyNdla';
 
 const ListResourceWrapper = styled.div`
   flex: 1;
@@ -204,7 +202,7 @@ export interface ListResourceProps {
   resourceTypes: { id: string; name: string }[];
   tags?: string[];
   description?: string;
-  menuItems?: MenuItemProps[];
+  menu?: ReactNode;
   isLoading?: boolean;
   targetBlank?: boolean;
 }
@@ -218,7 +216,7 @@ const ListResource = ({
   resourceImage,
   resourceTypes,
   description,
-  menuItems,
+  menu,
   isLoading = false,
   targetBlank,
 }: ListResourceProps) => {
@@ -251,7 +249,7 @@ const ListResource = ({
       {showDescription && <Description description={description} loading={isLoading} />}
       <TagsandActionMenu>
         {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-        {menuItems && menuItems.length > 0 && <SettingsMenu menuItems={menuItems} />}
+        {menu}
       </TagsandActionMenu>
     </ListResourceWrapper>
   );

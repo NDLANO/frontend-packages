@@ -1139,6 +1139,7 @@ const messages = {
         share: 'Del mappe',
         shared: 'Delt',
         unShare: 'Delingen er avsluttet. Mappen er ikke lenger delt.',
+        copyLink: 'Kopier lenke til mappa',
         link: 'Lenken er kopiert',
         header: {
           private: 'Vil du dele denne mappen?',

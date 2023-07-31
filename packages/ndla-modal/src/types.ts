@@ -7,7 +7,8 @@
  */
 
 import { keyframes } from '@emotion/react';
-import { HTMLAttributes, ReactNode } from 'react';
+import { DialogContentProps } from '@radix-ui/react-dialog';
+import { ReactNode } from 'react';
 
 export type ModalSize = 'xsmall' | 'small' | 'normal' | 'large' | 'full';
 export type ModalSizeType = ModalSize | { width: ModalSize; height: ModalSize };
@@ -16,7 +17,7 @@ export type ModalMargin = 'none' | 'small';
 
 export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
-export interface ModalContentProps extends Omit<HTMLAttributes<HTMLDivElement>, 'size' | 'children'> {
+export interface ModalContentProps extends DialogContentProps {
   animation?: ModalAnimation;
   animationDuration?: number;
   children: ReactNode;

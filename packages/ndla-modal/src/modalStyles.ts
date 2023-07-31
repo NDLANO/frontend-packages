@@ -141,7 +141,7 @@ export const modalAnimations = css`
       transform: translateY(0);
     }
   }
-  @keyframes modalSubleOut {
+  @keyframes modalSubtleOut {
     from {
       opacity: 1;
       transform: translateY(0px);

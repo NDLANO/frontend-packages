@@ -1,6 +1,5 @@
 import React, { FormEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 
 interface Props {
@@ -9,36 +8,7 @@ interface Props {
   onSubmit?: (event: FormEvent) => void;
 }
 
-type StyledProps = {
-  inputHasFocus?: boolean;
-};
-
-const hasFocusStyles = css`
-  .c-search-field__search-result {
-    left: 0px;
-    @supports (-webkit-overflow-scrolling: touch) {
-      padding-bottom: 300px;
-    }
-  }
-  display: flex;
-  align-self: flex-start;
-  align-items: center;
-  z-index: 9001;
-  ${mq.range({ until: breakpoints.tablet })} {
-    position: fixed;
-    display: block;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: ${spacing.small};
-    z-index: 9001;
-    .c-search-field__search-result {
-      width: 100vw;
-    }
-  }
-`;
-
-const StyledForm = styled.form<StyledProps>`
+const StyledForm = styled.form`
   display: flex;
   align-items: center;
   text-align: left;
@@ -49,16 +19,33 @@ const StyledForm = styled.form<StyledProps>`
   > div {
     padding: 0;
   }
-  ${(props) =>
-    props.inputHasFocus &&
-    css`
-      ${hasFocusStyles}
-    `}
+  &[data-focused='true'] {
+    .c-search-field__search-result {
+      left: 0px;
+      @supports (-webkit-overflow-scrolling: touch) {
+        padding-bottom: 300px;
+      }
+    }
+    align-self: flex-start;
+    z-index: 9001;
+    ${mq.range({ until: breakpoints.tablet })} {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: ${spacing.small};
+      z-index: 9001;
+      .c-search-field__search-result {
+        width: 100vw;
+      }
+    }
+  }
 `;
 
 export const SearchFieldForm = ({ children, inputHasFocus, onSubmit }: Props) => {
   return (
-    <StyledForm role="search" action="/search/" inputHasFocus={inputHasFocus} onSubmit={onSubmit}>
+    <StyledForm role="search" action="/search/" data-focused={inputHasFocus} onSubmit={onSubmit}>
       {children}
     </StyledForm>
   );

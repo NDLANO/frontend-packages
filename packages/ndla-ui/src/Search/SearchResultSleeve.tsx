@@ -80,18 +80,17 @@ const StyledSearchLink = styled(SafeLink)`
   }
 `;
 
-type WrapperProps = {
-  frontpage?: boolean;
-};
-
-const StyledSearchResultsWrapper = styled.section<WrapperProps>`
+const StyledSearchResultsWrapper = styled.section`
   background: #fff;
   width: 100%;
-  position: ${(props) => (props.frontpage ? 'absolute' : 'static')};
   left: 0;
   right: 0;
   top: 62px;
   border-radius: ${misc.borderRadius};
+  position: static;
+  &[data-frontpage='true'] {
+    position: absolute;
+  }
   ${mq.range({ until: breakpoints.tablet })} {
     position: fixed;
     left: 0;
@@ -101,20 +100,21 @@ const StyledSearchResultsWrapper = styled.section<WrapperProps>`
   }
 `;
 
-type StyledScrollableContentProps = {
-  extendHeight: number;
-};
-
-const StyledScrollableContent = styled.div<StyledScrollableContentProps>`
-  max-height: calc(100vh - ${(props) => 260 - props.extendHeight}px);
+const StyledScrollableContent = styled.div`
+  max-height: calc(100vh - 260px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
-  // prettier-ignore
-  padding: ${(props) =>
-    props.extendHeight ? spacing.normal : spacing.large} ${spacing.large} ${spacing.large} ${spacing.large};
+  padding: ${spacing.large};
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
-    max-height: calc(100vh - ${(props) => 200 - props.extendHeight});
+    max-height: calc(100vh - 200px);
+  }
+  &[data-extend-height='true'] {
+    max-height: calc(100vh - 208px);
+    padding-top: ${spacing.normal};
+    ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
+      max-height: calc(100vh - 148px);
+    }
   }
   ${mq.range({ until: breakpoints.tablet })} {
     padding: 0 ${spacing.normal} ${spacing.large};
@@ -305,8 +305,8 @@ const SearchResultSleeve = ({
   }, [keyboardPathNavigation]);
 
   return (
-    <StyledSearchResultsWrapper frontpage={frontpage} ref={contentRef}>
-      <StyledScrollableContent extendHeight={frontpage ? 0 : 52}>
+    <StyledSearchResultsWrapper data-frontpage={frontpage} ref={contentRef}>
+      <StyledScrollableContent data-extend-height={!frontpage}>
         {infoText && (
           <StyledAside>
             <Wrench className="c-icon--22" />

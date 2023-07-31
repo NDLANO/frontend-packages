@@ -1,17 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import ActiveFilterContent, { StyledActiveFilterTitle } from './ActiveFilterContent';
+import ActiveFilterContent from './ActiveFilterContent';
 
-interface StyledActiveFiltersProps {
-  showOnSmallScreen?: boolean;
-  filterLength?: number;
-}
-
-const StyledActiveFilters = styled('ul')<StyledActiveFiltersProps>`
+const StyledActiveFilters = styled('ul')`
   margin: 0;
   padding: 0;
   flex-direction: column;
@@ -19,43 +13,28 @@ const StyledActiveFilters = styled('ul')<StyledActiveFiltersProps>`
   flex-wrap: wrap;
   display: none;
 
-  ${({ showOnSmallScreen }) =>
-    showOnSmallScreen &&
-    css`
-      ${mq.range({ until: breakpoints.desktop })} {
-        display: flex;
-      }
-    `}
+  &[data-show-on-small='true'] {
+    ${mq.range({ until: breakpoints.desktop })} {
+      display: flex;
+    }
+  }
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     display: flex;
     flex-direction: row;
     align-items: center;
 
-    ${StyledActiveFilterTitle} {
-      ${({ filterLength }) =>
-        filterLength &&
-        filterLength >= 2 &&
-        css`
-          text-overflow: ellipsis;
-          overflow: hidden;
-          padding-right: ${spacing.small};
-          display: block;
-        `}
-
-      ${({ filterLength }) =>
-        filterLength &&
-        filterLength === 2 &&
-        css`
-          max-width: 90px;
-        `}
-
-    ${({ filterLength }) =>
-        filterLength &&
-        filterLength > 2 &&
-        css`
-          max-width: 70px;
-        `}
+    [data-filter-title] {
+      &[data-filter-gte-2='true'] {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-right: ${spacing.small};
+        display: block;
+        max-width: 70px;
+      }
+      &[data-filter-length='2'] {
+        max-width: 90px;
+      }
     }
   }
 `;
@@ -127,7 +106,11 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }: Props) =>
     });
 
     return (
-      <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
+      <StyledActiveFilters
+        data-show-on-small={showOnSmallScreen}
+        data-filter-length={filterLength}
+        data-filter-gte-2={filterLength >= 2}
+      >
         {filterItems}
       </StyledActiveFilters>
     );

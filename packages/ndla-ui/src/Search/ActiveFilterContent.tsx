@@ -48,7 +48,7 @@ const ActiveFilterContent = forwardRef<HTMLButtonElement, Props>(({ filter, onFi
     ref={ref}
     onClick={() => onFilterRemove(filter.value, filter.filterName)}
   >
-    <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>
+    <StyledActiveFilterTitle data-filter-title="">{filter.title}</StyledActiveFilterTitle>
     <Cross />
   </StyledActiveFilter>
 ));

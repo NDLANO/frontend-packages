@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { colors, spacing, spacingUnit, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts, misc, mq, breakpoints } from '@ndla/core';
 
 export const highlightStyle = css`
   background: ${colors.brand.light};
@@ -17,26 +17,6 @@ export const noWidthhighlightStyle = css`
   small {
     color: ${colors.text.primary} !important;
   }
-`;
-
-type inMenuProps = {
-  inMenu?: boolean;
-  animateList?: number;
-  unGrouped?: boolean;
-};
-
-export const StyledNoHit = styled.p<inMenuProps>`
-  color: ${colors.text.light};
-  margin: 0;
-  font-style: italic;
-  ${fonts.sizes(16, 1.1)};
-  ${(props) =>
-    props.inMenu &&
-    css`
-      ${mq.range({ from: breakpoints.desktop })} {
-        margin-left: ${spacingUnit * 1.5}px;
-      }
-    `}
 `;
 
 export const showAllButtonStyle = css`
@@ -66,84 +46,6 @@ export const StyledHeader = styled.header`
     small {
       font-weight: ${fonts.weight.normal};
       font-size: inherit;
-    }
-  }
-`;
-
-type StyledListItemProps = {
-  delayAnimation?: boolean;
-};
-
-export const StyledListItem = styled.li<StyledListItemProps>`
-  ${(props) =>
-    props.delayAnimation &&
-    css`
-      ${animations.fadeInLeftFromZero()}
-      animation-delay: ${animations.durations.normal};
-    `}
-  ${(props) => !props.delayAnimation && animations.fadeInLeft()}
-`;
-
-export const StyledList = styled.ul<inMenuProps>`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  ${(props) => {
-    if (props.animateList && props.animateList > 0) {
-      return animations.toggledContentWithSwitchAnimation(
-        animations.durations.normal,
-        `contentTypeResultAnimation${props.animateList % 2 ? '1' : '2'}`,
-      );
-    }
-  }}
-  li {
-    margin: 0 -${spacing.small};
-    a {
-      > div {
-        margin-right: ${spacing.small};
-      }
-      color: ${colors.brand.primary};
-      box-shadow: none;
-      display: inline-flex;
-      flex-grow: 1;
-      align-items: center;
-      padding: ${spacing.xsmall} ${spacing.small};
-      small {
-        color: ${colors.text.light};
-        padding-left: ${spacing.xsmall};
-        ${mq.range({ until: breakpoints.tablet })} {
-          display: none;
-        }
-      }
-      &:focus {
-        ${highlightStyle};
-      }
-      ${(props) =>
-        props.inMenu
-          ? css`
-              ${mq.range({ from: breakpoints.desktop })} {
-                margin-left: ${!props.unGrouped && spacingUnit * 1.5}px;
-              }
-              strong {
-                text-decoration: underline;
-                font-weight: ${fonts.weight.normal};
-              }
-              &:hover {
-                strong {
-                  text-decoration: none;
-                }
-              }
-            `
-          : css`
-              strong {
-                font-weight: ${fonts.weight.semibold};
-              }
-              &:hover {
-                strong {
-                  text-decoration: underline;
-                }
-              }
-            `}
     }
   }
 `;

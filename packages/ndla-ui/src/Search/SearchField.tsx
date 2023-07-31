@@ -9,7 +9,6 @@
 import React, { FocusEvent, MouseEvent, RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 import BEMHelper from 'react-bem-helper';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
@@ -19,17 +18,12 @@ import LoadingWrapper from './LoadingWrapper';
 
 const classes = new BEMHelper('c-search-field');
 
-interface StyledInputProps {
-  frontPageSearch?: boolean;
-  hasFilters?: boolean;
-}
-
-const StyledInput = styled.input<StyledInputProps>`
+const StyledInput = styled.input`
   width: 100%;
   height: 48px;
   line-height: 28px;
   border: 1px solid ${colors.brand.greyLight};
-  border-radius: ${(p) => (p.frontPageSearch ? '100px' : misc.borderRadius)};
+  border-radius: ${misc.borderRadius};
   padding-right: ${spacing.large};
   padding-left: ${spacing.normal};
   flex-grow: 1;
@@ -39,33 +33,35 @@ const StyledInput = styled.input<StyledInputProps>`
     border-color: ${colors.brand.primary};
   }
 
+  &[data-frontpage='true'] {
+    border-radius: 100px;
+  }
+
   ${mq.range({ from: breakpoints.tablet })} {
     height: 58px;
     line-height: 58px;
     ${fonts.sizes('18px', '24px')};
   }
 
-  ${(p) =>
-    p.hasFilters &&
-    css`
-      ${mq.range({ from: breakpoints.desktop })} {
-        padding-left: ${spacing.normal};
-      }
-      padding-left: 0;
+  &[data-has-filters='true'] {
+    ${mq.range({ from: breakpoints.desktop })} {
+      padding-left: ${spacing.normal};
+    }
+    padding-left: 0;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    &:focus {
+      border: 1px solid ${colors.brand.primary};
       border-left: 0;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
 
-      &:focus {
+      & + .c-search-field__filters {
         border: 1px solid ${colors.brand.primary};
-        border-left: 0;
-
-        & + .c-search-field__filters {
-          border: 1px solid ${colors.brand.primary};
-          border-right: 0;
-        }
+        border-right: 0;
       }
-    `};
+    }
+  }
 `;
 
 interface Props {
@@ -105,8 +101,8 @@ const SearchField = ({
     <div {...classes('input-wrapper')}>
       {loading && <LoadingWrapper value={value} />}
       <StyledInput
-        frontPageSearch={frontPageSearch}
-        hasFilters={!!filters?.length}
+        data-frontpage={frontPageSearch}
+        data-has-filters={!!filters?.length}
         ref={inputRef}
         type="search"
         aria-autocomplete="list"

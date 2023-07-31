@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
-import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';
 
 import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
@@ -65,14 +64,11 @@ const Content = ({ pageId }: ModalContentProps) => {
 interface Props {
   pageId: string;
   activateButton: ReactElement;
-  tooltip?: string;
 }
 
-const ArticleInModal = ({ pageId, tooltip, activateButton }: Props) => (
+const ArticleInModal = ({ pageId, activateButton }: Props) => (
   <Modal aria-labelledby={headingId}>
-    <ModalTrigger wrapper={tooltip ? (btn) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : undefined}>
-      {activateButton}
-    </ModalTrigger>
+    <ModalTrigger>{activateButton}</ModalTrigger>
     <ModalContent>
       <Content pageId={pageId} />
     </ModalContent>

@@ -7,23 +7,21 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
-import { MenuItemProps } from '@ndla/button';
 import Image from '../Image';
 import {
   CompressedTagList,
   ResourceImageProps,
-  ResourceTitle,
+  resourceHeadingStyle,
   ResourceTitleLink as StyledLink,
   ResourceTypeList,
-  StyledContentIconWrapper,
   LoaderProps,
+  ContentIconWrapper,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
-import { SettingsMenu } from '../MyNdla';
 
 const ListResourceWrapper = styled.div`
   flex: 1;
@@ -48,7 +46,7 @@ const ListResourceWrapper = styled.div`
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
-    ${() => StyledLink} {
+    [data-link] {
       color: ${colors.brand.primary};
       text-decoration: underline;
     }
@@ -61,11 +59,7 @@ interface StyledImageProps {
 
 const ImageWrapper = styled.div<StyledImageProps>`
   grid-area: image;
-  width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    width: 56px;
-    margin-bottom: 0;
-  }
+  width: 56px;
   overflow: hidden;
   border-radius: 2px;
   display: flex;
@@ -73,6 +67,13 @@ const ImageWrapper = styled.div<StyledImageProps>`
   align-items: center;
   justify-content: center;
   aspect-ratio: 4/3;
+  &[data-image-size='normal'] {
+    width: 136px;
+  }
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    width: 56px;
+    margin-bottom: 0;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -138,9 +139,9 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType, backgrou
   if (!loading) {
     if (resourceImage.src === '') {
       return (
-        <StyledContentIconWrapper contentType={contentType}>
+        <ContentIconWrapper contentType={contentType}>
           <ContentTypeBadge type={contentType} background={background} size="x-small" />
-        </StyledContentIconWrapper>
+        </ContentIconWrapper>
       );
     } else {
       return (
@@ -201,7 +202,7 @@ export interface ListResourceProps {
   resourceTypes: { id: string; name: string }[];
   tags?: string[];
   description?: string;
-  menuItems?: MenuItemProps[];
+  menu?: ReactNode;
   isLoading?: boolean;
   targetBlank?: boolean;
 }
@@ -215,7 +216,7 @@ const ListResource = ({
   resourceImage,
   resourceTypes,
   description,
-  menuItems,
+  menu,
   isLoading = false,
   targetBlank,
 }: ListResourceProps) => {
@@ -237,8 +238,10 @@ const ListResource = ({
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} target={targetBlank ? '_blank' : undefined}>
-            <ResourceTitle title={title}>{title}</ResourceTitle>
+          <StyledLink to={link} data-link="" target={targetBlank ? '_blank' : undefined}>
+            <h1 css={resourceHeadingStyle} title={title}>
+              {title}
+            </h1>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>
@@ -246,7 +249,7 @@ const ListResource = ({
       {showDescription && <Description description={description} loading={isLoading} />}
       <TagsandActionMenu>
         {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-        {menuItems && menuItems.length > 0 && <SettingsMenu menuItems={menuItems} />}
+        {menu}
       </TagsandActionMenu>
     </ListResourceWrapper>
   );

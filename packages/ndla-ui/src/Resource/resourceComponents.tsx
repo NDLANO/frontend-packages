@@ -8,12 +8,13 @@
 
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import React, { ReactNode } from 'react';
+import React, { CSSProperties, HTMLAttributes, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MenuButton } from '@ndla/button';
-import SafeLink from '@ndla/safelink';
-import { useNavigate } from 'react-router-dom';
+import { IconButtonV2 } from '@ndla/button';
+import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import { HashTag } from '@ndla/icons/common';
+import { css } from '@emotion/react';
+import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown-menu';
 import resourceTypeColor from '../utils/resourceTypeColor';
 import { resourceEmbedTypeMapping } from '../model/ContentType';
 
@@ -37,7 +38,11 @@ export const ResourceTitleLink = styled(SafeLink)`
   }
 `;
 
-export const ResourceTitle = styled.span`
+const StyledTrigger = styled(IconButtonV2)`
+  margin: 0px ${spacing.xsmall};
+`;
+
+export const resourceHeadingStyle = css`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -113,18 +118,31 @@ const TagCounterWrapper = styled.span`
   ${fonts.sizes('14px', '14px')};
 `;
 
-export interface ContentIconProps {
+interface ContentIconProps extends HTMLAttributes<HTMLSpanElement> {
   contentType: string;
+  children?: ReactNode;
 }
 
-export const StyledContentIconWrapper = styled.span<ContentIconProps>`
+const StyledContentIconWrapper = styled.span`
   width: 100%;
   aspect-ratio: 4/3;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ contentType }) => resourceTypeColor(contentType)};
+  background-color: var(--content-background-color);
 `;
+
+export const ContentIconWrapper = ({ contentType, children, ...props }: ContentIconProps) => {
+  const contentIconWrapperVars = useMemo(
+    () => ({ '--content-background-color': resourceTypeColor(contentType) } as unknown as CSSProperties),
+    [contentType],
+  );
+  return (
+    <StyledContentIconWrapper {...props} style={contentIconWrapperVars}>
+      {children}
+    </StyledContentIconWrapper>
+  );
+};
 
 interface TagListProps {
   tags?: string[];
@@ -159,29 +177,40 @@ interface CompressedTagListProps {
 }
 
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
-  const visibleTags = tags.slice(0, 3);
-  const remainingTags = tags.slice(3, tags.length).map((tag) => {
-    return {
-      icon: <HashTag />,
-      text: tag,
-      onClick: () => {
-        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`);
-      },
-    };
-  });
+  const visibleTags = useMemo(() => tags.slice(0, 3), [tags]);
+  const remainingTags = useMemo(() => tags.slice(3, tags.length), [tags]);
+
   return (
     <>
       <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
-        <MenuButton
-          size="small"
-          menuIcon={<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
-          menuItems={remainingTags}
-          align="end"
-          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
-        />
+        <DropdownMenu>
+          <DropdownTrigger>
+            <StyledTrigger
+              size="xsmall"
+              variant="ghost"
+              colorTheme="light"
+              aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
+            >
+              {<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
+            </StyledTrigger>
+          </DropdownTrigger>
+          <DropdownContent showArrow>
+            {remainingTags.map((tag, i) => (
+              <DropdownItem key={`tag-${i}`}>
+                <SafeLinkButton
+                  to={`${tagLinkPrefix ?? ''}/${encodeURIComponent(tag)}`}
+                  variant="ghost"
+                  colorTheme="light"
+                >
+                  <HashTag />
+                  {tag}
+                </SafeLinkButton>
+              </DropdownItem>
+            ))}
+          </DropdownContent>
+        </DropdownMenu>
       )}
     </>
   );

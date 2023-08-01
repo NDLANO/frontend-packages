@@ -1,7 +1,7 @@
 {
-  "name": "@ndla/hooks",
-  "version": "2.0.8",
-  "description": "Collection of React hooks used by NDLA",
+  "name": "@ndla/dropdown-menu",
+  "version": "1.0.0",
+  "description": "Dropdown menu component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -15,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",
-    "directory": "packages/hooks"
+    "directory": "packages/dropdown-menu"
   },
   "keywords": [
     "ndla"
@@ -23,16 +23,16 @@
   "author": "ndla@knowit.no",
   "files": [
     "lib",
-    "types",
     "es"
   ],
-  "peerDependencies": {
-    "@emotion/react": "^11.10.4",
-    "lodash": "^4.17.20",
-    "react": ">= 16.8.0"
-  },
   "dependencies": {
-    "@ndla/util": "^3.1.14"
+    "@ndla/core": "^4.1.4",
+    "@radix-ui/react-dropdown-menu": "^2.0.5",
+    "@radix-ui/react-slot": "^1.0.2"
+  },
+  "peerDependencies": {
+    "@emotion/styled": "^11.10.4",
+    "react": ">= 16.8.0"
   },
   "publishConfig": {
     "access": "public"

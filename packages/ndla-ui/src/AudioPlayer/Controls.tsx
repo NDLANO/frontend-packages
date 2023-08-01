@@ -8,14 +8,14 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { Root, Trigger, Item, Content, DropdownMenuPortal } from '@radix-ui/react-dropdown-menu';
 import { Root as SliderRoot, Track, Range, SliderThumb } from '@radix-ui/react-slider';
 import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from '@radix-ui/react-popover';
 import { Play, Pause, VolumeUp } from '@ndla/icons/common';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Back15, Forward15 } from '@ndla/icons/action';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
+import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown-menu';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
@@ -59,22 +59,15 @@ const SpeedButton = styled(ButtonV2)`
   }
 `;
 
-const SpeedList = styled(Content)`
-  background: ${colors.white};
+const SpeedList = styled(DropdownContent)`
   border: 1px solid ${colors.brand.lighter};
-  border-radius: ${misc.borderRadius};
   padding: 5px 10px;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
 `;
 
-const SpeedValueButton = styled(Item)`
-  height: 28px;
+const SpeedValueButton = styled(ButtonV2)`
   padding: 0 14px;
-  cursor: pointer;
-  font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes('14px')};
+  gap: 0px;
   color: ${colors.text.light};
   display: flex;
   justify-content: center;
@@ -82,14 +75,13 @@ const SpeedValueButton = styled(Item)`
   &:active,
   &:focus,
   &[data-highlighted] {
-    background: ${colors.brand.greyLighter};
-    border-radius: 5px;
     outline: none;
     color: ${colors.text.primary};
   }
 `;
 
 const SpeedSelectedMark = styled.span`
+  align-self: flex-start;
   border-radius: 50%;
   background: #d1372e;
   width: 6px;
@@ -311,9 +303,8 @@ const Controls = ({ src, title }: Props) => {
         >
           <Back15 />
         </Back15SecButton>
-
-        <Root>
-          <Trigger asChild>
+        <DropdownMenu>
+          <DropdownTrigger>
             <SpeedButton
               shape="pill"
               variant="ghost"
@@ -324,17 +315,22 @@ const Controls = ({ src, title }: Props) => {
             >
               {speedValue}x
             </SpeedButton>
-          </Trigger>
-          <DropdownMenuPortal>
-            <SpeedList side="top">
-              {speedValues.map((speed) => (
-                <SpeedValueButton key={speed} onSelect={() => setSpeedValue(speed)}>
+          </DropdownTrigger>
+          <SpeedList side="top">
+            {speedValues.map((speed) => (
+              <DropdownItem key={speed}>
+                <SpeedValueButton
+                  variant="ghost"
+                  colorTheme="greyLighter"
+                  size="small"
+                  onSelect={() => setSpeedValue(speed)}
+                >
                   {speed}x{speed === speedValue && <SpeedSelectedMark />}
                 </SpeedValueButton>
-              ))}
-            </SpeedList>
-          </DropdownMenuPortal>
-        </Root>
+              </DropdownItem>
+            ))}
+          </SpeedList>
+        </DropdownMenu>
         <Forward15SecButton
           colorTheme="greyLighter"
           variant="ghost"

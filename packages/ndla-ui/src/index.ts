@@ -182,7 +182,7 @@ export { default as Topic } from './Topic';
 export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
 
-export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
+export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from './Breadcrumb';
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export { i18nInstance, formatNestedMessages } from './i18n';
@@ -242,7 +242,7 @@ export { Notion, ConceptNotion } from './Notion';
 export type { NotionVisualElementType, ConceptNotionType } from './Notion';
 
 export { BannerCard } from './BannerCard';
-export { Folder, FolderInput, FolderMenu } from './MyNdla';
+export { Folder, FolderInput } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';

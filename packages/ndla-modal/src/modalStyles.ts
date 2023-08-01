@@ -118,7 +118,7 @@ export const modalAnimations = css`
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0px);
     }
   }
   @keyframes modalZoomOut {
@@ -138,7 +138,7 @@ export const modalAnimations = css`
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0px);
     }
   }
   @keyframes modalSubtleOut {

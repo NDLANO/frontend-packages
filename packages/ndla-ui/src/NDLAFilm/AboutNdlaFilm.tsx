@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import { colors, spacing, mq, breakpoints } from '@ndla/core';
 import { ButtonV2 as Button } from '@ndla/button';
 import VisualElement from './VisualElement';
@@ -64,15 +64,16 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm }: Props) => {
         <div>
           <h2 id={titleId}>{aboutNDLAVideo.title}</h2>
           <p>{aboutNDLAVideo.description}</p>
-          <Modal size="full" activateButton={<Button variant="link">{t('ndlaFilm.about.more')}</Button>}>
-            {(onClose) => (
-              <>
-                <ModalHeader>
-                  <ModalCloseButton onClick={onClose} />
-                </ModalHeader>
-                <ModalBody>{moreAboutNdlaFilm}</ModalBody>
-              </>
-            )}
+          <Modal>
+            <ModalTrigger>
+              <Button variant="link">{t('ndlaFilm.about.more')}</Button>
+            </ModalTrigger>
+            <ModalContent size="full">
+              <ModalHeader>
+                <ModalCloseButton />
+              </ModalHeader>
+              <ModalBody>{moreAboutNdlaFilm}</ModalBody>
+            </ModalContent>
           </Modal>
         </div>
       </StyledAside>

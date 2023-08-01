@@ -15,8 +15,7 @@ import SlateBlockMenuExample from './SlateBlockMenuExample';
 const renderArticleInModal = ({ pageId, tooltip }) => (
   <ArticleInModal
     pageId={pageId}
-    tooltip={tooltip}
-    activateButton={<InformationOutline css={FieldHeaderIconStyle} />}
+    activateButton={<InformationOutline aria-label={tooltip} title={tooltip} css={FieldHeaderIconStyle} />}
   />
 );
 

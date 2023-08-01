@@ -11,7 +11,7 @@ import { ButtonV2 } from '@ndla/button';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
-import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import ToggleItem from './ToggleItem';
 import FilterCarousel from './FilterCarousel';
 
@@ -126,45 +126,39 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
               </ButtonV2>
             </StyledButtonElementWrapper>
           ))}
-          <Modal
-            aria-label={t('searchPage.searchFilterMessages.resourceTypeFilter.button')}
-            size="full"
-            animation="subtle"
-            activateButton={
-              <StyledButtonElementWrapper>
+          <Modal aria-label={t('searchPage.searchFilterMessages.resourceTypeFilter.button')}>
+            <StyledButtonElementWrapper>
+              <ModalTrigger>
                 <ButtonV2 colorTheme="light" size="normal" shape="pill">
                   <StyledButtonContent>{labels.openFilter}</StyledButtonContent>
                   <StyledButtonContentSelected>
                     <PlusIcon />
                   </StyledButtonContentSelected>
                 </ButtonV2>
-              </StyledButtonElementWrapper>
-            }
-          >
-            {(onClose: () => void) => (
-              <>
-                <ModalHeader>
-                  <h1>{heading}</h1>
-                  <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
-                </ModalHeader>
-                <ModalBody modifier="slide-in-left">
-                  <StyledList>
-                    {items.map((item: ItemProps) => (
-                      <StyledListItem key={item.value}>
-                        <ToggleItem
-                          id={item.value}
-                          value={item.value}
-                          checked={item.selected}
-                          label={item.label}
-                          component="div"
-                          onChange={() => onFilterToggle(item.value)}
-                        />
-                      </StyledListItem>
-                    ))}
-                  </StyledList>
-                </ModalBody>
-              </>
-            )}
+              </ModalTrigger>
+            </StyledButtonElementWrapper>
+            <ModalContent size="full" animation="subtle">
+              <ModalHeader>
+                <h1>{heading}</h1>
+                <ModalCloseButton />
+              </ModalHeader>
+              <ModalBody modifier="slide-in-left">
+                <StyledList>
+                  {items.map((item: ItemProps) => (
+                    <StyledListItem key={item.value}>
+                      <ToggleItem
+                        id={item.value}
+                        value={item.value}
+                        checked={item.selected}
+                        label={item.label}
+                        component="div"
+                        onChange={() => onFilterToggle(item.value)}
+                      />
+                    </StyledListItem>
+                  ))}
+                </StyledList>
+              </ModalBody>
+            </ModalContent>
           </Modal>
         </StyledButtonsWrapper>
       )}

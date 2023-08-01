@@ -7,20 +7,18 @@
  */
 
 import React from 'react';
-import Modal from './Modal';
-import { ModalSizeType, ModalAnimation, DrawerPosition, BaseProps, ModalSize } from './types';
+import { ModalContent } from './Modal';
+import { ModalSizeType, DrawerPosition, ModalSize, ModalContentProps } from './types';
 
-interface Props {
+interface Props extends Omit<ModalContentProps, 'size' | 'position' | 'animation'> {
   size?: ModalSize;
   position?: DrawerPosition;
-  animation?: ModalAnimation;
-  expands?: boolean;
 }
 
-const Drawer = ({ size = 'normal', position = 'left', ...rest }: Props & BaseProps) => {
+const Drawer = ({ size = 'normal', position = 'left', ...rest }: Props) => {
   const modalSize: ModalSizeType =
     position === 'bottom' || position === 'top' ? { width: 'full', height: size } : { height: 'full', width: size };
-  return <Modal animation="slideIn" position={position} size={modalSize} modalMargin="none" {...rest} />;
+  return <ModalContent animation="slideIn" position={position} size={modalSize} modalMargin="none" {...rest} />;
 };
 
 export default Drawer;

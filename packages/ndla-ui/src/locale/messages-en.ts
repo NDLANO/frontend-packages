@@ -1136,6 +1136,7 @@ const messages = {
         share: 'Share folder',
         shared: 'Shared',
         unShare: 'Sharing stopped. The folder is no longer shared',
+        copyLink: 'Copy link to folder',
         link: 'Link is copied',
         header: {
           private: 'Do you want to share this folder?',

@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle } from '@ndla/modal';
+import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle, ModalTrigger, ModalContent } from '@ndla/modal';
 import { mq, breakpoints, fonts, colors } from '@ndla/core';
 import { Explanation, NotionFlip } from '@ndla/icons/common';
 import { ConceptNotion } from '../Notion';
@@ -165,48 +165,42 @@ type ArticleNotionsProps = {
 export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight, type }: ArticleNotionsProps) => {
   const { t } = useTranslation();
   const leftOffset = `${buttonOffsetRight - 32}px`;
-  const headingId = 'popupNotionHeading';
 
   return (
     <ArticleNotionsContainer>
-      <Modal
-        aria-labelledby={headingId}
-        activateButton={
+      <Modal>
+        <ModalTrigger>
           <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')} style={{ left: leftOffset }}>
             <NotionFlip />
             <Explanation />
-            <span id={headingId}>{t('article.notionsPrompt')}</span>
+            <span>{t('article.notionsPrompt')}</span>
           </NotionsTrigger>
-        }
-        size="large"
-      >
-        {(onClose: () => void) => (
-          <div>
-            <ModalHeader className="no-padding">
-              <ModalHeadingContainer>
-                <Explanation />
-                <ModalTitle>{t('article.notionsPrompt')}</ModalTitle>
-              </ModalHeadingContainer>
-              <ModalCloseButton onClick={onClose} title="Lukk" />
-            </ModalHeader>
-            <ModalBody modifier="notions-modal-body no-padding">
-              <NotionsContainer>
-                {notions.map((notion) => (
-                  <ConceptNotion key={notion.id} concept={notion} type={type} />
+        </ModalTrigger>
+        <ModalContent size="large">
+          <ModalHeader className="no-padding">
+            <ModalHeadingContainer>
+              <Explanation />
+              <ModalTitle>{t('article.notionsPrompt')}</ModalTitle>
+            </ModalHeadingContainer>
+            <ModalCloseButton />
+          </ModalHeader>
+          <ModalBody modifier="notions-modal-body no-padding">
+            <NotionsContainer>
+              {notions.map((notion) => (
+                <ConceptNotion key={notion.id} concept={notion} type={type} />
+              ))}
+            </NotionsContainer>
+            {relatedContent.length > 0 && (
+              <RelatedContentContainer>
+                {relatedContent.map((content, i) => (
+                  <li key={`notion-related-item-${i + 1}`}>
+                    <a href={content.url}>{content.label}</a>
+                  </li>
                 ))}
-              </NotionsContainer>
-              {relatedContent.length > 0 && (
-                <RelatedContentContainer>
-                  {relatedContent.map((content, i) => (
-                    <li key={`notion-related-item-${i + 1}`}>
-                      <a href={content.url}>{content.label}</a>
-                    </li>
-                  ))}
-                </RelatedContentContainer>
-              )}
-            </ModalBody>
-          </div>
-        )}
+              </RelatedContentContainer>
+            )}
+          </ModalBody>
+        </ModalContent>
       </Modal>
     </ArticleNotionsContainer>
   );

@@ -1136,6 +1136,7 @@ const messages = {
         share: 'Juoge máhpa',
         shared: 'Juogaduvvon',
         unShare: 'Juohkin lea loahpahuvvon. Máhppa ii leat šat juogaduvvon.',
+        copyLink: 'Kopier lenke til mappa',
         link: 'Liŋka lea máŋgejuvvon.',
         header: {
           private: 'Áiggut go juogadit dán máhpa?',

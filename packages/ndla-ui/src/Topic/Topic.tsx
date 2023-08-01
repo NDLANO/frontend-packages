@@ -12,7 +12,7 @@ import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core'
 
 import parse from 'html-react-parser';
 import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
-import { ModalCloseButton, Modal, ModalHeader } from '@ndla/modal';
+import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/react';
@@ -275,9 +275,8 @@ const Topic = ({
         {topic.image && (
           <TopicHeaderVisualElementWrapper>
             {topic.visualElement ? (
-              <Modal
-                aria-label={t('topicPage.imageModal')}
-                activateButton={
+              <Modal>
+                <ModalTrigger>
                   <VisualElementButton
                     variant="stripped"
                     title={topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')}
@@ -291,19 +290,18 @@ const Topic = ({
                     </ShowVisualElementWrapper>
                     <ExpandVisualElementButton>{VisualElementIcon && <VisualElementIcon />}</ExpandVisualElementButton>
                   </VisualElementButton>
-                }
-                animation="subtle"
-                animationDuration={50}
-                size="large"
-              >
-                {(onClose: () => void) => (
-                  <>
-                    <StyledModalHeader>
-                      <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
-                    </StyledModalHeader>
-                    {topic.visualElement && topic.visualElement.element}
-                  </>
-                )}
+                </ModalTrigger>
+                <ModalContent
+                  aria-label={t('topicPage.imageModal')}
+                  animation="subtle"
+                  animationDuration={50}
+                  size="large"
+                >
+                  <StyledModalHeader>
+                    <ModalCloseButton />
+                  </StyledModalHeader>
+                  {topic.visualElement && topic.visualElement.element}
+                </ModalContent>
               </Modal>
             ) : (
               <TopicHeaderImage

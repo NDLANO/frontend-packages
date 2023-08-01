@@ -6,15 +6,19 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { Trigger } from '@radix-ui/react-dropdown-menu';
+import { ReactNode, forwardRef } from 'react';
+import { DropdownMenuTriggerProps, Trigger } from '@radix-ui/react-dropdown-menu';
 
-interface Props {
+interface Props extends DropdownMenuTriggerProps {
   children: ReactNode;
 }
 
-const DropdownTrigger = ({ children }: Props) => {
-  return <Trigger asChild>{children}</Trigger>;
-};
+const DropdownTrigger = forwardRef<HTMLButtonElement, Props>(({ children, ...props }, ref) => {
+  return (
+    <Trigger asChild ref={ref} {...props}>
+      {children}
+    </Trigger>
+  );
+});
 
 export default DropdownTrigger;

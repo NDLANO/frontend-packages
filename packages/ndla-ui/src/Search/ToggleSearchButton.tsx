@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { spacing, spacingUnit, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
 import { ButtonProps, ButtonV2 } from '@ndla/button';
@@ -62,17 +62,20 @@ const StyledSpan = styled.span`
   font-weight: ${fonts.weight.normal};
 `;
 
-const ToggleSearchButton = ({ children, ndlaFilm, hideOnNarrowScreen, hideOnWideScreen, ...rest }: Props) => (
-  <StyledButton
-    ndlaFilm={ndlaFilm}
-    hideOnNarrowScreen={hideOnNarrowScreen}
-    hideOnWideScreen={hideOnWideScreen}
-    type="button"
-    {...rest}
-  >
-    <StyledSpan>{children}</StyledSpan>
-    <Search />
-  </StyledButton>
+const ToggleSearchButton = forwardRef<HTMLButtonElement, Props>(
+  ({ children, ndlaFilm, hideOnNarrowScreen, hideOnWideScreen, ...rest }, ref) => (
+    <StyledButton
+      ndlaFilm={ndlaFilm}
+      hideOnNarrowScreen={hideOnNarrowScreen}
+      hideOnWideScreen={hideOnWideScreen}
+      type="button"
+      ref={ref}
+      {...rest}
+    >
+      <StyledSpan>{children}</StyledSpan>
+      <Search />
+    </StyledButton>
+  ),
 );
 
 export default ToggleSearchButton;

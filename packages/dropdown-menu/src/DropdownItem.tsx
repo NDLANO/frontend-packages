@@ -7,10 +7,15 @@
  */
 
 import { DropdownMenuItem, DropdownMenuItemProps } from '@radix-ui/react-dropdown-menu';
+import { forwardRef } from 'react';
 
 interface Props extends DropdownMenuItemProps {}
-const DropdownItem = ({ children }: Props) => {
-  return <DropdownMenuItem asChild>{children}</DropdownMenuItem>;
-};
+const DropdownItem = forwardRef<HTMLDivElement, Props>(({ children, ...rest }, ref) => {
+  return (
+    <DropdownMenuItem asChild ref={ref} {...rest}>
+      {children}
+    </DropdownMenuItem>
+  );
+});
 
 export default DropdownItem;

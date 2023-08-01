@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { CSSProperties, ReactNode, useMemo } from 'react';
+import React, { CSSProperties, ReactNode, Ref, forwardRef, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { Content, DialogProps, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import { Content, DialogProps, DialogTriggerProps, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
 import { ModalContentProps } from './types';
 import { modalAnimations, overlayAnimations, positionStyles, sizeStyles } from './modalStyles';
 
@@ -133,17 +133,17 @@ export const Modal = ({ children, ...rest }: DialogProps) => {
   return <StyledDialog {...rest}>{children}</StyledDialog>;
 };
 
-interface ModalTriggerProps {
+interface ModalTriggerProps extends DialogTriggerProps {
   children: ReactNode;
-  wrapper?: (children: ReactNode) => JSX.Element;
 }
 
-export const ModalTrigger = ({ children, wrapper }: ModalTriggerProps) => {
-  if (wrapper) {
-    return wrapper(<Trigger asChild>{children}</Trigger>);
-  }
-  return <Trigger asChild>{children}</Trigger>;
-};
+export const ModalTrigger = forwardRef(({ children, ...rest }: ModalTriggerProps, ref: Ref<HTMLButtonElement>) => {
+  return (
+    <Trigger asChild ref={ref} {...rest}>
+      {children}
+    </Trigger>
+  );
+});
 
 export const ModalContent = ({
   children,

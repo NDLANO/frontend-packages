@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { defaultParameters } from '../../../../stories/defaults';
 import BlockResource from './BlockResource';
@@ -28,7 +27,7 @@ export default {
     headingLevel: {
       control: false,
     },
-    menuItems: {
+    menu: {
       control: false,
     },
   },

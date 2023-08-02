@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
 import { defaultParameters } from '../../../../stories/defaults';

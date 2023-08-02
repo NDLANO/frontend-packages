@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { animations, breakpoints, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';

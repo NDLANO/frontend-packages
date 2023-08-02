@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils } from '@ndla/core';

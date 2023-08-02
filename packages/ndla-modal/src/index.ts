@@ -10,7 +10,14 @@ export { default as ModalBody } from './ModalBody';
 export { default as ModalCloseButton } from './ModalCloseButton';
 export { default as ModalHeader } from './ModalHeader';
 export { default as Drawer } from './Drawer';
-export { default as Modal } from './Modal';
+export { Modal, ModalTrigger, ModalContent } from './Modal';
 export { default as ModalTitle } from './ModalTitle';
-export type { ModalSize, ModalPosition, ModalSizeType, ModalAnimation, ModalMargin, DrawerPosition } from './types';
-export type { ModalProps } from './Modal';
+export type {
+  ModalSize,
+  ModalContentProps,
+  ModalPosition,
+  ModalSizeType,
+  ModalAnimation,
+  ModalMargin,
+  DrawerPosition,
+} from './types';

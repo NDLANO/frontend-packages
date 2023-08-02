@@ -12,16 +12,17 @@ import { colors, fonts, spacing } from '@ndla/core';
 import { GroupHeadingProps } from 'react-select';
 import { Option } from './types';
 
-interface StyledProps {
-  bold?: boolean;
-  small?: boolean;
-}
-
-const StyledGroupHeader = styled.div<StyledProps>`
+const StyledGroupHeader = styled.div`
   padding: ${spacing.xsmall};
   color: ${colors.brand.grey};
-  font-weight: ${({ bold }) => (bold ? fonts.weight.bold : fonts.weight.semibold)};
-  ${({ small }) => (small ? fonts.sizes('16px', '18px') : fonts.sizes('18px', '24px'))};
+  font-weight: ${fonts.weight.semibold};
+  ${fonts.sizes('18px', '24px')};
+  &[data-bold='true'] {
+    font-weight: ${fonts.weight.bold};
+  }
+  &[data-small='true'] {
+    ${fonts.sizes('16px', '18px')};
+  }
 `;
 
 const BaseGroupHeading = <T extends boolean>({
@@ -30,7 +31,7 @@ const BaseGroupHeading = <T extends boolean>({
   ...rest
 }: GroupHeadingProps<Option, T>) => {
   return (
-    <StyledGroupHeader small={small} bold={bold} {...rest}>
+    <StyledGroupHeader data-small={small} data-bold={bold} {...rest}>
       {children}
     </StyledGroupHeader>
   );

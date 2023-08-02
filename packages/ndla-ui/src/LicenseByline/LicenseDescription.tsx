@@ -7,17 +7,13 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
+import { spacing } from '@ndla/core';
 import { ReactNode } from 'react';
 
 interface Props {
-  description: string;
+  description: ReactNode;
   icon?: ReactNode;
 }
-
-const StyledParagraph = styled.p`
-  margin: 0;
-`;
 
 const StyledFigCaption = styled.figcaption`
   display: flex;
@@ -29,13 +25,16 @@ const StyledFigCaption = styled.figcaption`
   color: unset;
   padding-bottom: ${spacing.xsmall};
   border-bottom: inherit;
+  p {
+    margin: 0;
+  }
 `;
 
 const LicenseDescription = ({ description, icon }: Props) => {
   return (
     <StyledFigCaption>
       {icon}
-      <StyledParagraph>{description}</StyledParagraph>
+      {description}
     </StyledFigCaption>
   );
 };

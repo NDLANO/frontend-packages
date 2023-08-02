@@ -1,6 +1,6 @@
 import React from 'react';
 import { CompetenceGoalTab } from '@ndla/ui';
-import { Modal, ModalBody, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
+import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import { FooterHeaderIcon } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
@@ -137,29 +137,25 @@ const CompetenceGoalTabdata = [
 export const CompetenceGoalListExample = () => {
   const { t } = useTranslation();
   return (
-    <Modal
-      size="full"
-      activateButton={
+    <Modal>
+      <ModalTrigger>
         <ButtonV2 size="xsmall" colorTheme="light" shape="pill">
           <FooterHeaderIcon />
           {t('competenceGoals.showCompetenceGoals')}
         </ButtonV2>
-      }
-    >
-      {(close) => (
-        <>
-          <ModalHeader>
-            <ModalTitle>
-              <FooterHeaderIcon size="24px" style={{ marginRight: '20px' }} />
-              {t('competenceGoals.modalText')}
-            </ModalTitle>
-            <ModalCloseButton onClick={close} />
-          </ModalHeader>
-          <ModalBody>
-            <CompetenceGoalTab list={CompetenceGoalTabdata} />
-          </ModalBody>
-        </>
-      )}
+      </ModalTrigger>
+      <ModalContent size="full">
+        <ModalHeader>
+          <ModalTitle>
+            <FooterHeaderIcon size="24px" style={{ marginRight: '20px' }} />
+            {t('competenceGoals.modalText')}
+          </ModalTitle>
+          <ModalCloseButton />
+        </ModalHeader>
+        <ModalBody>
+          <CompetenceGoalTab list={CompetenceGoalTabdata} />
+        </ModalBody>
+      </ModalContent>
     </Modal>
   );
 };

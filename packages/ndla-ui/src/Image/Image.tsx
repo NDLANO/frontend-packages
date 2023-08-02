@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';

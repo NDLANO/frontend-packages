@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import {
   getLicenseByAbbreviation,
   getResourceTypeNamespace,

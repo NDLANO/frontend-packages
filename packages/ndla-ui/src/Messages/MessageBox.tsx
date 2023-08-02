@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { InformationOutline, HumanMaleBoard, Forward, WarningOutline } from '@ndla/icons/common';

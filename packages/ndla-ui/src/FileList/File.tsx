@@ -3,7 +3,6 @@ import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
-import React from 'react';
 import { FileFormat, FileType } from './FileList';
 
 const LinkTextWrapper = styled.div`

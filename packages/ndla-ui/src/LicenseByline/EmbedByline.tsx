@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -17,6 +17,7 @@ import { ICopyright as AudioCopyright } from '@ndla/types-backend/audio-api';
 import { ICopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
 import { BrightcoveCopyright } from '@ndla/types-embed';
 import { WarningOutline } from '@ndla/icons/common';
+import { parseMarkdown } from '@ndla/util';
 import LicenseLink from './LicenseLink';
 import LicenseDescription from './LicenseDescription';
 
@@ -124,14 +125,14 @@ const StyledSpan = styled.span`
 
 const LicenseInformationWrapper = styled.div`
   flex: 1;
-  padding-right: ${spacing.xsmall}}
+  padding-right: ${spacing.xsmall};
 `;
 
 const EmbedByline = ({
   type,
   topRounded,
   bottomRounded,
-  description,
+  description: descriptionProp,
   children,
   visibleAlt,
   first = true,
@@ -139,7 +140,12 @@ const EmbedByline = ({
   ...props
 }: Props) => {
   const { t, i18n } = useTranslation();
-  const strippedDescription = description?.trim();
+  const strippedDescription = descriptionProp?.trim();
+
+  const description = useMemo(() => {
+    const stripped = strippedDescription?.trim() ?? '';
+    return parseMarkdown(stripped, 'caption');
+  }, [strippedDescription]);
 
   if (props.error) {
     const typeString = type === 'h5p' ? 'H5P' : t(`embed.type.${type}`).toLowerCase();

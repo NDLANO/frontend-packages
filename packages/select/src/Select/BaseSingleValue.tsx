@@ -19,12 +19,14 @@ export const TextEllipsis = styled.span`
   white-space: nowrap;
 `;
 
-const StyledPostfix = styled.span<StyledProps>`
+const StyledPostfix = styled.span`
   font-weight: ${fonts.weight.semibold};
-  font-weight: ${({ small, bold }) => !small && bold && fonts.weight.bold};
+  &[data-small='false'][data-bold='true'] {
+    font-weight: ${fonts.weight.bold};
+  }
 `;
 
-interface StyledProps {
+interface Props<T extends boolean> extends SingleValueProps<Option, T, GroupBase<Option>> {
   small?: boolean;
   bold?: boolean;
 }
@@ -33,10 +35,10 @@ const BaseSingleValue = <T extends boolean>({
   innerProps,
   selectProps: { small, prefix, postfix, bold },
   children,
-}: StyledProps & SingleValueProps<Option, T, GroupBase<Option>>) => {
+}: Props<T>) => {
   return (
     <TextEllipsis {...innerProps}>
-      <StyledPostfix small={small} bold={bold}>
+      <StyledPostfix data-small={small} data-bold={bold}>
         {prefix}
       </StyledPostfix>
       {children}

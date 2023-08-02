@@ -10,7 +10,6 @@ import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
-import React from 'react';
 import Breadcrumb from './Breadcrumb';
 import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
 

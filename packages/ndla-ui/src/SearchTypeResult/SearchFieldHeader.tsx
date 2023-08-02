@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { spacing, colors } from '@ndla/core';

@@ -6,20 +6,19 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 import { OneColumn, LayoutItem } from '@ndla/ui';
 
-const StoryBody = ({ children }) => (
+interface Props {
+  children?: ReactNode;
+}
+
+const StoryBody = ({ children }: Props) => (
   <OneColumn>
     <LayoutItem layout="center">
       <article className="c-article c-article--clean">{children}</article>
     </LayoutItem>
   </OneColumn>
 );
-
-StoryBody.propTypes = {
-  children: PropTypes.node,
-};
 
 export default StoryBody;

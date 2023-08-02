@@ -1,4 +1,4 @@
-import React, { ElementType, Fragment, ReactNode } from 'react';
+import { ElementType, Fragment, ReactNode } from 'react';
 import { ChevronRight } from '@ndla/icons/common';
 import { uuid } from '@ndla/util';
 import { useTranslation } from 'react-i18next';

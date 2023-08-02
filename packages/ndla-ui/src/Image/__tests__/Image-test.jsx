@@ -8,7 +8,6 @@
 
 /* eslint-env jest */
 
-import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Image, { makeSrcQueryString } from '../Image';

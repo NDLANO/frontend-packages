@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import Tabs from '@ndla/tabs';

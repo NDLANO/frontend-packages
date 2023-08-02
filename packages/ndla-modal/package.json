@@ -1,6 +1,6 @@
 {
   "name": "@ndla/modal",
-  "version": "3.0.10",
+  "version": "4.0.0",
   "description": "A smart Modal NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,9 +26,8 @@
   ],
   "dependencies": {
     "@ndla/core": "^4.1.4",
-    "@ndla/icons": "^4.0.0",
-    "@radix-ui/react-dialog": "^1.0.4",
-    "framer-motion": "^6.5.1"
+    "@ndla/icons": "^4.0.1",
+    "@radix-ui/react-dialog": "^1.0.4"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

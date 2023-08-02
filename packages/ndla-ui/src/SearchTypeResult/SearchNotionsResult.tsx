@@ -6,11 +6,12 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing, colors } from '@ndla/core';
-import { ModalCloseButton } from '@ndla/modal';
+import { IconButtonV2 } from '@ndla/button';
+import { Cross } from '@ndla/icons/action';
 
 const Wrapper = styled.div`
   display: flex;
@@ -67,7 +68,9 @@ const SearchNotionsResult = ({ totalCount, onRemove, children }: Props) => {
           {t(`searchPage.resultType.notionsHeading`)}
           <HeadingCount>{t(`searchPage.resultType.hits`, { count: totalCount })}</HeadingCount>
         </Heading>
-        <ModalCloseButton onClick={onRemove} title={t(`searchPage.resultType.notionsRemove`)} />
+        <IconButtonV2 onClick={onRemove} aria-label={t(`searchPage.resultType.notionsRemove`)}>
+          <Cross />
+        </IconButtonV2>
       </HeadingWrapper>
       {children}
     </Wrapper>

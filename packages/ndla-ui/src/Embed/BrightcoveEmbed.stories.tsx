@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData, EmbedMetaData } from '@ndla/types-embed';
 import BrightcoveEmbed from './BrightcoveEmbed';

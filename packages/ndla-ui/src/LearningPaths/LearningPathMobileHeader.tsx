@@ -8,7 +8,6 @@
 
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { LearningPathBadge } from '../ContentTypeBadge';
 

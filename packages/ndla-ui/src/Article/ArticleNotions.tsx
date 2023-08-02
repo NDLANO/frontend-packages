@@ -6,10 +6,10 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle } from '@ndla/modal';
+import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle, ModalTrigger, ModalContent } from '@ndla/modal';
 import { mq, breakpoints, fonts, colors } from '@ndla/core';
 import { Explanation, NotionFlip } from '@ndla/icons/common';
 
@@ -110,33 +110,27 @@ type ArticleNotionsProps = {
 export const ArticleNotions = ({ buttonOffsetRight, children }: ArticleNotionsProps) => {
   const { t } = useTranslation();
   const leftOffset = `${buttonOffsetRight - 32}px`;
-  const headingId = 'popupNotionHeading';
 
   return (
     <ArticleNotionsContainer>
-      <Modal
-        aria-labelledby={headingId}
-        activateButton={
+      <Modal>
+        <ModalTrigger>
           <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')} style={{ left: leftOffset }}>
             <NotionFlip />
             <Explanation />
-            <span id={headingId}>{t('article.notionsPrompt')}</span>
+            <span>{t('article.notionsPrompt')}</span>
           </NotionsTrigger>
-        }
-        size="large"
-      >
-        {(onClose: () => void) => (
-          <div>
-            <StyledModalHeader>
-              <ModalHeadingContainer>
-                <Explanation />
-                <ModalTitle>{t('article.notionsPrompt')}</ModalTitle>
-              </ModalHeadingContainer>
-              <ModalCloseButton onClick={onClose} title="Lukk" />
-            </StyledModalHeader>
-            <ModalBody modifier="notions-modal-body no-padding">{children}</ModalBody>
-          </div>
-        )}
+        </ModalTrigger>
+        <ModalContent size="large">
+          <StyledModalHeader>
+            <ModalHeadingContainer>
+              <Explanation />
+              <ModalTitle>{t('article.notionsPrompt')}</ModalTitle>
+            </ModalHeadingContainer>
+            <ModalCloseButton />
+          </StyledModalHeader>
+          <ModalBody modifier="notions-modal-body no-padding">{children}</ModalBody>
+        </ModalContent>
       </Modal>
     </ArticleNotionsContainer>
   );

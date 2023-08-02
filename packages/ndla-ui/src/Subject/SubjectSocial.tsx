@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { HeadingLevel } from '../types';
 import { SubjectSectionTitle } from './Subject';
 

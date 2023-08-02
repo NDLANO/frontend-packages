@@ -6,13 +6,13 @@
  *
  */
 
-import React, { ReactNode, MouseEvent, useMemo } from 'react';
+import { ReactNode, MouseEvent, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
 import parse from 'html-react-parser';
 import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
-import { ModalCloseButton, Modal, ModalHeader } from '@ndla/modal';
+import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/react';
@@ -73,6 +73,7 @@ const ShowVisualElementWrapper = styled.div`
   height: 100%;
   overflow: hidden;
   aspect-ratio: 1;
+  mask-image: radial-gradient(white, black);
   -webkit-mask-image: -webkit-radial-gradient(white, black); /* Safari fix */
 `;
 
@@ -293,9 +294,8 @@ const Topic = ({
         {metaImage && (
           <TopicHeaderVisualElementWrapper>
             {visualElementEmbedMeta?.status === 'success' ? (
-              <Modal
-                aria-label={t('topicPage.imageModal')}
-                activateButton={
+              <Modal>
+                <ModalTrigger>
                   <VisualElementButton
                     variant="stripped"
                     title={visualElementEmbedMeta.resource === 'image' ? t('image.largeSize') : t('visualElement.show')}
@@ -309,19 +309,18 @@ const Topic = ({
                     </ShowVisualElementWrapper>
                     <ExpandVisualElementButton>{VisualElementIcon && <VisualElementIcon />}</ExpandVisualElementButton>
                   </VisualElementButton>
-                }
-                animation="subtle"
-                animationDuration={50}
-                size="large"
-              >
-                {(onClose) => (
-                  <>
-                    <StyledModalHeader>
-                      <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
-                    </StyledModalHeader>
-                    {visualElement}
-                  </>
-                )}
+                </ModalTrigger>
+                <ModalContent
+                  aria-label={t('topicPage.imageModal')}
+                  animation="subtle"
+                  animationDuration={50}
+                  size="large"
+                >
+                  <StyledModalHeader>
+                    <ModalCloseButton />
+                  </StyledModalHeader>
+                  {visualElement}
+                </ModalContent>
               </Modal>
             ) : (
               <TopicHeaderImage

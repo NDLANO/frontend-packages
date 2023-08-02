@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ChangeEvent, ElementType } from 'react';
+import { ChangeEvent, ElementType } from 'react';
 import { classes } from './filterClasses';
 
 interface Props {

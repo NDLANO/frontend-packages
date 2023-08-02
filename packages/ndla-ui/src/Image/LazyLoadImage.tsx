@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 interface Props {
   alt: string;
   src: string;

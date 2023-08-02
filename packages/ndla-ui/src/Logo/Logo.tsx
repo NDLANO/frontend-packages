@@ -7,7 +7,6 @@
  */
 /* eslint-disable max-len */
 
-import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
 import SvgLogo from './SvgLogo';

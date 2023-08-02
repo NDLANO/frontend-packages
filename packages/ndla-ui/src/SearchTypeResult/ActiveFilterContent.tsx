@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { spacing, fonts } from '@ndla/core';

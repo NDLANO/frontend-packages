@@ -8,7 +8,6 @@
 
 import styled from '@emotion/styled';
 import { spacing, utils } from '@ndla/core';
-import React from 'react';
 import { ControlProps } from 'react-select';
 import { TagType } from './types';
 

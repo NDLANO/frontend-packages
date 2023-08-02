@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, spacing } from '@ndla/core';
 import SearchSubjectItem, { SearchSubjecItemType } from './SearchSubjectItem';

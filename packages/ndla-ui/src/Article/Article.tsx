@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
+import { ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';

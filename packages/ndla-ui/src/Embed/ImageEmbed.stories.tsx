@@ -6,10 +6,9 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { ImageEmbedData } from '@ndla/types-embed';
-import { IImageMetaInformationV2 } from '@ndla/types-backend/build/image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/build/image-api';
 import ImageEmbed from './ImageEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
 import StoryFavoriteButton from '../../../../stories/StoryFavoriteButton';
@@ -24,17 +23,17 @@ const embedData: ImageEmbedData = {
   url: 'https://api.test.ndla.no/image-api/v2/images/61181',
 };
 
-const metaData: IImageMetaInformationV2 = {
+const metaData: IImageMetaInformationV3 = {
   id: '61181',
-  metaUrl: 'https://api.test.ndla.no/image-api/v2/images/61181',
+  metaUrl: 'https://api.test.ndla.no/image-api/v3/images/61181',
   title: {
     title: '\nHigh angle view of teenage girl with tousled dyed hair dancing at skateboard park\n',
     language: 'nb',
   },
-  alttext: { alttext: 'Tenåringsjente med lyse fletter slenger på håret. Foto. ', language: 'nb' },
-  imageUrl: 'https://api.test.ndla.no/image-api/raw/S81WiNgl.jpg',
-  size: 1685455,
-  contentType: 'image/jpeg',
+  alttext: {
+    alttext: 'Tenåringsjente med lyse fletter slenger på håret. Foto. ',
+    language: 'nb',
+  },
   copyright: {
     license: {
       license: 'CC-BY-NC-4.0',
@@ -42,17 +41,43 @@ const metaData: IImageMetaInformationV2 = {
       url: 'https://creativecommons.org/licenses/by-nc/4.0/',
     },
     origin: 'https://bilder.ntb.no/r/preview/creative/EXuziiZGWno',
-    creators: [{ type: 'photographer', name: 'Maskot' }],
+    creators: [
+      {
+        type: 'photographer',
+        name: 'Maskot',
+      },
+    ],
     processors: [],
-    rightsholders: [{ type: 'rightsholder', name: 'NTB' }],
+    rightsholders: [
+      {
+        type: 'rightsholder',
+        name: 'NTB',
+      },
+    ],
   },
-  tags: { tags: ['danser', 'kultur', 'identitet'], language: 'nb' },
-  caption: { caption: 'Modellklarert.', language: 'nb' },
+  tags: {
+    tags: ['danser', 'kultur', 'identitet'],
+    language: 'nb',
+  },
+  caption: {
+    caption: 'Modellklarert.',
+    language: 'nb',
+  },
   supportedLanguages: ['nb'],
   created: '2022-01-07T08:26:01Z',
   createdBy: 'lA2KgVfhY-fpmgHCYAy5W1DX',
   modelRelease: 'yes',
-  imageDimensions: { width: 2000, height: 1333 },
+  image: {
+    fileName: 'S81WiNgl.jpg',
+    size: 1685455,
+    contentType: 'image/jpeg',
+    imageUrl: 'https://api.test.ndla.no/image-api/raw/S81WiNgl.jpg',
+    dimensions: {
+      width: 2000,
+      height: 1333,
+    },
+    language: 'nb',
+  },
 };
 
 const meta: Meta<typeof ImageEmbed> = {

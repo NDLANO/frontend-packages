@@ -7,7 +7,7 @@
  */
 
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { DropdownIndicatorProps, components } from 'react-select';

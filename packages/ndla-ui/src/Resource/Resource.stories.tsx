@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown-menu';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';

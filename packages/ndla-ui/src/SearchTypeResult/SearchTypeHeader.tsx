@@ -6,7 +6,7 @@
  *
  */
 
-import React, { MouseEvent, memo } from 'react';
+import { MouseEvent, memo } from 'react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';

@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { ConceptData, ConceptEmbedData } from '@ndla/types-embed';
 import ConceptEmbed from './ConceptEmbed';
@@ -84,15 +83,15 @@ const visualElementData: ConceptData['visualElement'] = {
   },
   data: {
     id: '52863',
-    metaUrl: 'https://api.test.ndla.no/image-api/v2/images/52863',
-    title: { title: 'Skin - formasjonsskade', language: 'nb' },
+    metaUrl: 'https://api.test.ndla.no/image-api/v3/images/52863',
+    title: {
+      title: 'Skin - formasjonsskade',
+      language: 'nb',
+    },
     alttext: {
       alttext: 'Skissen viser hvordan borevæsken trenger inn i formasjonen i området nær hullet. Illustrasjon.',
       language: 'nb',
     },
-    imageUrl: 'https://api.test.ndla.no/image-api/raw/6WbfcOmr.png',
-    size: 194971,
-    contentType: 'image/png',
     copyright: {
       license: {
         license: 'CC-BY-SA-4.0',
@@ -100,17 +99,38 @@ const visualElementData: ConceptData['visualElement'] = {
         url: 'https://creativecommons.org/licenses/by-sa/4.0/',
       },
       origin: '',
-      creators: [{ type: 'Illustrator', name: 'Sissel Paaske' }],
+      creators: [
+        {
+          type: 'Illustrator',
+          name: 'Sissel Paaske',
+        },
+      ],
       processors: [],
       rightsholders: [],
     },
-    tags: { tags: ['skin', 'formasjonsskade', 'nærbrønn', 'permeabilitet'], language: 'nb' },
-    caption: { caption: 'Formasjonsskade i nærbrønnområdet kalles "skin". Illustrasjon.', language: 'nb' },
+    tags: {
+      tags: ['skin', 'formasjonsskade', 'nærbrønn', 'permeabilitet'],
+      language: 'nb',
+    },
+    caption: {
+      caption: 'Formasjonsskade i nærbrønnområdet kalles "skin". Illustrasjon.',
+      language: 'nb',
+    },
     supportedLanguages: ['nb'],
     created: '2020-10-26T15:02:47Z',
     createdBy: 'KBAJskRqPXZUv9LFjAbz8btB',
     modelRelease: 'not-set',
-    imageDimensions: { width: 429, height: 565 },
+    image: {
+      fileName: '6WbfcOmr.png',
+      size: 194971,
+      contentType: 'image/png',
+      imageUrl: 'https://api.test.ndla.no/image-api/raw/6WbfcOmr.png',
+      dimensions: {
+        width: 429,
+        height: 565,
+      },
+      language: 'nb',
+    },
   },
 };
 

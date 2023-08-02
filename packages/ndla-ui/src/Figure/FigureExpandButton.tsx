@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { ArrowCollapse } from '@ndla/icons/common';
 import { ExpandTwoArrows } from '@ndla/icons/action';
 

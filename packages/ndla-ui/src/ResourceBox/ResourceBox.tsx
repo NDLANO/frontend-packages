@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
+
 import { breakpoints, fonts, mq, colors, spacing } from '@ndla/core';
 import { Launch } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';

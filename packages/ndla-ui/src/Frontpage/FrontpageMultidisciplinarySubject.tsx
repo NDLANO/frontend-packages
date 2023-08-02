@@ -1,4 +1,3 @@
-import React from 'react';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';

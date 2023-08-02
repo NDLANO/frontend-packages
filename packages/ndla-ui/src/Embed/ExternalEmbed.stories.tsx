@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { H5pEmbedData, H5pData, OembedEmbedData, OembedData } from '@ndla/types-embed';
 import ExternalEmbed from './ExternalEmbed';

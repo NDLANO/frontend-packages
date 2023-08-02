@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';

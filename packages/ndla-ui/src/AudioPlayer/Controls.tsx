@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { Root as SliderRoot, Track, Range, SliderThumb } from '@radix-ui/react-slider';
 import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from '@radix-ui/react-popover';

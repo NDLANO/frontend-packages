@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { fonts, breakpoints, mq } from '@ndla/core';

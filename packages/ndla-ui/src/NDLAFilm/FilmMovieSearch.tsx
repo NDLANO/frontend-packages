@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';

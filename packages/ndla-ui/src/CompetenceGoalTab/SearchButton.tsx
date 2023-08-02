@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import { Search } from '@ndla/icons/common';

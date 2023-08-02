@@ -6,7 +6,7 @@
  *
  */
 
-import React, { FocusEvent, MouseEvent, RefObject } from 'react';
+import { FocusEvent, MouseEvent, RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 import BEMHelper from 'react-bem-helper';
 import { css } from '@emotion/react';

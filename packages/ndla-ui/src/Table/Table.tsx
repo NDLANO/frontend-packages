@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import throttle from 'lodash/throttle';
-import React, { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 type ScrollPosition = 'start' | 'end' | 'center';

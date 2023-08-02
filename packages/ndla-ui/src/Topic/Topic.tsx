@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, MouseEvent, ComponentType } from 'react';
+import { ReactNode, MouseEvent, ComponentType } from 'react';
 import styled from '@emotion/styled';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 

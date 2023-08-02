@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { IconButtonV2 as IconButton } from '@ndla/button';

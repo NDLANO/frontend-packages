@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
 import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';

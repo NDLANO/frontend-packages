@@ -9,7 +9,7 @@
 // N.B This component is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Dialog from '../Dialog';
 import { classLicenses, FigureLicenseByline, FigureLicenseCta } from './FigureLicense';
 import { FigureLicense } from './Figure';

@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { CSSProperties, ReactNode } from 'react';
 import { uuid } from '@ndla/util';
 import styled from '@emotion/styled';
 import { spacing, colors, breakpoints, mq } from '@ndla/core';
 
-export const Center = ({ children, style }) => (
+interface CenterProps {
+  children?: ReactNode;
+  style?: CSSProperties;
+}
+
+export const Center = ({ children, style }: CenterProps) => (
   <div
     style={{
       margin: '0 auto',
@@ -17,34 +21,29 @@ export const Center = ({ children, style }) => (
   </div>
 );
 
-Center.propTypes = {
-  children: PropTypes.node.isRequired,
-  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-};
+interface ChildrenProps {
+  children?: ReactNode;
+}
 
-export const GapHelper = ({ children }) => (
+export const GapHelper = ({ children }: ChildrenProps) => (
   <div style={{ gap: '12px', display: 'flex', alignItems: 'center' }}>{children}</div>
 );
 
-export const InlineContainer = ({ children }) => <div className="inline-container">{children}</div>;
+export const InlineContainer = ({ children }: ChildrenProps) => <div className="inline-container">{children}</div>;
 
-InlineContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+export const DottedContainer = ({ children }: ChildrenProps) => <div className="dotted-container">{children}</div>;
 
-export const DottedContainer = ({ children }) => <div className="dotted-container">{children}</div>;
-
-DottedContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export const articleUrl = (id) => (
+export const articleUrl = (id: number | string) => (
   <span>
     Hentet fra <a href={`http://api.test.ndla.no:8082/article/${id}`}>{`http://api.test.ndla.no:8082/article/${id}`}</a>
   </span>
 );
 
-export const AnchorNavigation = ({ links }) => (
+interface AnchorNavigationProps {
+  links: ReactNode[];
+}
+
+export const AnchorNavigation = ({ links }: AnchorNavigationProps) => (
   <ul
     style={{
       display: 'flex',
@@ -60,10 +59,6 @@ export const AnchorNavigation = ({ links }) => (
     ))}
   </ul>
 );
-
-AnchorNavigation.propTypes = {
-  links: PropTypes.arrayOf(PropTypes.node),
-};
 
 export const LayoutWithSidebarWrapper = styled.div`
   display: flex;

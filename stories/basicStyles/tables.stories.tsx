@@ -7,10 +7,9 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
+import { Table } from '@ndla/ui';
 import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
-import Table from '../molecules/TableExample';
 
 const meta: Meta = {
   title: 'Base styles/Tables',
@@ -42,7 +41,7 @@ export const Tables: StoryFn = () => (
     </StoryIntro>
     <StoryBody>
       <h2 className="u-heading">Eksempel</h2>
-      <Table runScripts>
+      <Table>
         <caption>Tabelltittel</caption>
         <thead>
           <tr>

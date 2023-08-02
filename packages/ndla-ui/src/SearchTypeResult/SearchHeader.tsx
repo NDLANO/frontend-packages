@@ -5,12 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
-import { Spinner } from '@ndla/icons';
 
 import SearchFieldHeader from './SearchFieldHeader';
 import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';

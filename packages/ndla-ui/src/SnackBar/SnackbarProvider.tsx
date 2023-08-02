@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useCallback, useMemo, createContext, ReactNode, useState, useContext, useEffect } from 'react';
+import { useCallback, useMemo, createContext, ReactNode, useState, useContext, useEffect } from 'react';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';

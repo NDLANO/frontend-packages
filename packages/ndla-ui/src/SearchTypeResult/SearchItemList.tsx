@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';

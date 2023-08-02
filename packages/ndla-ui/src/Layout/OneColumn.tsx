@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({

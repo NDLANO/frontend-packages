@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import React, { CSSProperties, HTMLAttributes, ReactNode, useMemo } from 'react';
+import { CSSProperties, HTMLAttributes, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IconButtonV2 } from '@ndla/button';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';

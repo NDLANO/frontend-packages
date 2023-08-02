@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
 import { IFolder } from '@ndla/types-backend/learningpath-api';

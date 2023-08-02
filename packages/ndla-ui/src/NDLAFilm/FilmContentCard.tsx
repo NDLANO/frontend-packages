@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import { spacing, colors, fonts, breakpoints, misc } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';

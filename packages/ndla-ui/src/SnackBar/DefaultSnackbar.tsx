@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { IconButtonV2 } from '@ndla/button';

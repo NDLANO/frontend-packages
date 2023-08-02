@@ -8,7 +8,7 @@
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import { getGroupedContributorDescriptionList, getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Figure, FigureCaption, FigureLicenseDialog, FigureType } from '../Figure';
 import { Copyright } from '../types';

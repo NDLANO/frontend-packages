@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface Props {
   children?: ReactNode;

@@ -8,7 +8,6 @@
 
 import { css } from '@emotion/react';
 import { colors, spacing } from '@ndla/core';
-import React from 'react';
 import { components, InputProps } from 'react-select';
 import { TagType } from './types';
 import { StyledValueButton } from './ValueButton';

@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CompetenceGoalsItemType } from '../types';
 import SearchButton from './SearchButton';

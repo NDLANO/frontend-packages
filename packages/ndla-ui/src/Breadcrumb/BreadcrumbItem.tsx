@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react';
+import { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';

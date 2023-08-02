@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
-import React, { ComponentProps, forwardRef, useEffect } from 'react';
+import { ComponentProps, forwardRef, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment, Component, ChangeEvent } from 'react';
+import { Fragment, Component, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { uuid } from '@ndla/util';
 import { spacing, fonts, colors } from '@ndla/core';

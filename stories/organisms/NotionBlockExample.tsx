@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 //@ts-ignore
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 import { OneColumn } from '@ndla/ui';

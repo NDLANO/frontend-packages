@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, createRef } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 import format from 'date-fns/format';

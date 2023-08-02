@@ -8,7 +8,6 @@
 
 import { Cross } from '@ndla/icons/action';
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
 import { defaultParameters } from '../../../stories/defaults';
 import IconButtonV2 from './IconButtonV2';
 

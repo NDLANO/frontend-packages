@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { ModalContent } from './Modal';
 import { ModalSizeType, DrawerPosition, ModalSize, ModalContentProps } from './types';
 

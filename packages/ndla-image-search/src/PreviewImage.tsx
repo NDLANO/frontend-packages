@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
 import { uuid } from '@ndla/util';

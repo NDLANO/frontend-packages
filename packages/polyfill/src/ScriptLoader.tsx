@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { featureDetect } from './featureDetect';
 
 interface Props {

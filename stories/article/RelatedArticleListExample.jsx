@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toggleRelatedArticles } from '@ndla/article-scripts';
 import { withTranslation } from 'react-i18next';

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import { Component, Fragment } from 'react';
 import { ButtonV2 } from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { FieldHeader, FieldSection, Input, Select, FieldSplitter, FieldRemoveButton, TextArea } from '@ndla/forms';

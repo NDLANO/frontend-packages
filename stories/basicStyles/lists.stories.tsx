@@ -8,7 +8,6 @@
 
 import { OrderedList, UnOrderedList } from '@ndla/ui';
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
 import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 

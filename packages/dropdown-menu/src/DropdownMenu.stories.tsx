@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants } from '@ndla/ui';
 // @ts-ignore
 import { Remarkable } from 'remarkable';

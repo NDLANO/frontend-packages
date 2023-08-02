@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { PlaceholderProps } from 'react-select';
 import { Option } from './types';
 import { TextEllipsis } from './BaseSingleValue';

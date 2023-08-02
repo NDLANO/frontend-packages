@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { CSSProperties, ReactNode, Ref, forwardRef, useMemo } from 'react';
+import { CSSProperties, ReactNode, Ref, forwardRef, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { Content, DialogProps, DialogTriggerProps, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';

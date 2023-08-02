@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, ReactNode } from 'react';
+import { Component, ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
 import warning from 'tiny-warning';
 import withTracker from './withTracker';

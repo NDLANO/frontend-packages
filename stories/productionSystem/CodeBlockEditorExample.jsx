@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { CodeBlockEditor } from '@ndla/code';
 
 export const CodeBlockEditorExample = () => {

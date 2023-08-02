@@ -1,4 +1,3 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Logo, PageContainer } from '@ndla/ui';
 import SafeLink from '@ndla/safelink';

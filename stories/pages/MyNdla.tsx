@@ -5,18 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
 import { LayoutItem, OneColumn } from '@ndla/ui';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
-//@ts-ignore
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown-menu';
 import ResourcesExample from '../organisms/ResourcesExample';
 import FolderResourcesExample from '../organisms/FolderResourcesExample';
 import FolderInputExample from '../organisms/FolderInputExample';
-//@ts-ignore
 import { StoryIntro } from '../wrappers';
 
 const tags = ['tag', 'tag', 'tag', 'tag'];

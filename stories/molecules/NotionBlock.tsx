@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { ConceptNotion, FigureType } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';

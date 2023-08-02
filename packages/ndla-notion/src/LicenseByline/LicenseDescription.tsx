@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { colors, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';

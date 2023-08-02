@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import Switch from './Switch';
 import { defaultParameters } from '../../../stories/defaults';

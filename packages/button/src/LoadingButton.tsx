@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { Spinner } from '@ndla/icons';

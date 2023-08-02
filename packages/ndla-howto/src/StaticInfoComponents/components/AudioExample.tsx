@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import { AudioPlayer, Figure, FigureCaption, FigureLicenseDialog } from '@ndla/ui';
 import { ButtonV2 } from '@ndla/button';

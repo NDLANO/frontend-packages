@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, forwardRef } from 'react';
+import { ReactNode, forwardRef } from 'react';
 import { spacingUnit } from '@ndla/core';
 import { css } from '@emotion/react';
 import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';

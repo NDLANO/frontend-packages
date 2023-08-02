@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Downshift from 'downshift';
 import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
 import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from '@ndla/forms';

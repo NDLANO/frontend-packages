@@ -19,6 +19,7 @@ const initCopyParagraphButtons = () => {
   forEachElement('[data-header-copy-container]', (el: HTMLElement) => {
     const title = el.getAttribute('data-title');
 
+    // eslint-disable-next-line react/no-deprecated
     ReactDOM.hydrate(<CopyParagraphButton title={title} content={title} hydrate />, el);
   });
 };

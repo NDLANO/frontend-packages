@@ -33,6 +33,7 @@ const initPopovers = () => {
       document.head.appendChild(el.children[0]);
     }
 
+    // eslint-disable-next-line react/no-deprecated
     ReactDOM.hydrate(<Popover popover={popover!} hydrateHTML={outerHTML} />, el);
   });
 };

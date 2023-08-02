@@ -32,8 +32,10 @@ const initAudioPlayers = (locale: Locale) => {
     const speech = el.getAttribute('data-speech');
     if (src && title) {
       if (speech) {
+        // eslint-disable-next-line react/no-deprecated
         ReactDOM.hydrate(<SpeechControl src={src} title={title} />, el);
       } else {
+        // eslint-disable-next-line react/no-deprecated
         ReactDOM.hydrate(<Controls src={src} title={title} />, el);
       }
     }

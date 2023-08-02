@@ -109,17 +109,17 @@ const SearchFieldHeader = ({
       {value && (
         <ClearButton
           type="button"
-          value={t<string>('welcomePage.resetSearch')}
+          value={t('welcomePage.resetSearch')}
           onClick={() => {
             onChange('');
             inputRef.current?.focus();
           }}
         >
-          <CrossIcon style={iconStyle} title={t<string>('welcomePage.resetSearch')} />
+          <CrossIcon style={iconStyle} title={t('welcomePage.resetSearch')} />
         </ClearButton>
       )}
-      <SearchButton type="submit" value={t<string>('searchPage.search')}>
-        <SearchIcon style={iconStyle} title={t<string>('searchPage.search')} />
+      <SearchButton type="submit" value={t('searchPage.search')}>
+        <SearchIcon style={iconStyle} title={t('searchPage.search')} />
       </SearchButton>
     </StyledForm>
   );

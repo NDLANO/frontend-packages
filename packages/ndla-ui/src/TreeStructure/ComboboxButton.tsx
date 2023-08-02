@@ -6,7 +6,7 @@
  *
  */
 
-import React, { KeyboardEvent, forwardRef } from 'react';
+import { KeyboardEvent, forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { useForwardedRef } from '@ndla/util';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';

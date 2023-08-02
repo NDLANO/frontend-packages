@@ -8,7 +8,6 @@
 
 import styled from '@emotion/styled';
 import { H5pMetaData } from '@ndla/types-embed';
-import React from 'react';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 
 interface Props {

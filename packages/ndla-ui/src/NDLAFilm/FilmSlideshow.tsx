@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import styled from '@emotion/styled';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { breakpoints, colors, misc, mq, spacing, spacingUnit } from '@ndla/core';

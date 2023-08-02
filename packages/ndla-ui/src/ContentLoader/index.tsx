@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, SVGProps } from 'react';
+import { ReactNode, SVGProps } from 'react';
 import { uuid } from '@ndla/util';
 
 interface Props extends Omit<SVGProps<SVGSVGElement>, 'viewBox'> {

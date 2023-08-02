@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, Fragment } from 'react';
+import { ReactNode, Fragment } from 'react';
 import SafeLink from '@ndla/safelink';
 import { Additional, Core } from '@ndla/icons/common';
 import styled from '@emotion/styled';

@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Play } from '@ndla/icons/common';
 import { ExpandTwoArrows, CursorClick } from '@ndla/icons/action';
 

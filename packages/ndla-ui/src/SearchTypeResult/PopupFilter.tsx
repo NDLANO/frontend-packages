@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import { ModalCloseButton, ModalBody, ModalTitle, ModalContent } from '@ndla/modal';
 import { breakpoints, mq, spacing } from '@ndla/core';

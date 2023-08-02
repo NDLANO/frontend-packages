@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import Image from '../Image';
 import {

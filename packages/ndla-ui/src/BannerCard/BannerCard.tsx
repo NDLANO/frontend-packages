@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
+
 import { colors, fonts, breakpoints, mq } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';

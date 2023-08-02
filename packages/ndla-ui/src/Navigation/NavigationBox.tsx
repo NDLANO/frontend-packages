@@ -1,8 +1,8 @@
-import React, { MouseEvent } from 'react';
+import { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
 import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';

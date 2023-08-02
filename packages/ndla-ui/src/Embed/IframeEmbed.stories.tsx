@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { IframeData, IframeEmbedData } from '@ndla/types-embed';
 import IframeEmbed from './IframeEmbed';
@@ -78,14 +77,20 @@ const opensInNewEmbedData: IframeEmbedData = {
 const opensInnewMetaData: IframeData = {
   iframeImage: {
     id: '65086',
-    metaUrl: 'https://api.test.ndla.no/image-api/v2/images/65086',
-    title: { title: '\nSamtale ', language: 'nb' },
-    alttext: { alttext: ' To ungdommer sitter og snakker. Foto. ', language: 'nb' },
-    imageUrl: 'https://api.test.ndla.no/image-api/raw/IgOjO6og.jpg',
-    size: 176667,
-    contentType: 'image/jpeg',
+    metaUrl: 'https://api.test.ndla.no/image-api/v3/images/65086',
+    title: {
+      title: '\nSamtale ',
+      language: 'nb',
+    },
+    alttext: {
+      alttext: ' To ungdommer sitter og snakker. Foto. ',
+      language: 'nb',
+    },
     copyright: {
-      license: { license: 'COPYRIGHTED', description: 'Copyrighted' },
+      license: {
+        license: 'COPYRIGHTED',
+        description: 'Copyrighted',
+      },
       origin: '',
       creators: [],
       processors: [],
@@ -96,13 +101,29 @@ const opensInnewMetaData: IframeData = {
         },
       ],
     },
-    tags: { tags: ['samtale', 'Dialog', 'gutter'], language: 'nb' },
-    caption: { caption: 'Dette bildet skal bare brukes i casen "Livet på sosiale medier". ', language: 'nb' },
+    tags: {
+      tags: ['samtale', 'Dialog', 'gutter'],
+      language: 'nb',
+    },
+    caption: {
+      caption: 'Dette bildet skal bare brukes i casen "Livet på sosiale medier". ',
+      language: 'nb',
+    },
     supportedLanguages: ['nb'],
     created: '2022-12-02T14:24:19Z',
     createdBy: 'oltQx44eGQp0DwkiR1NRo5qE',
     modelRelease: 'yes',
-    imageDimensions: { width: 1920, height: 804 },
+    image: {
+      fileName: 'IgOjO6og.jpg',
+      size: 176667,
+      contentType: 'image/jpeg',
+      imageUrl: 'https://api.test.ndla.no/image-api/raw/IgOjO6og.jpg',
+      dimensions: {
+        width: 1920,
+        height: 804,
+      },
+      language: 'nb',
+    },
   },
 };
 

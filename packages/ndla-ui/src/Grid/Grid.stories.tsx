@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
 import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';

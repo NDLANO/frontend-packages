@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import BlogPost, { Props } from './BlogPost';
 import { defaultParameters } from '../../../../stories/defaults';

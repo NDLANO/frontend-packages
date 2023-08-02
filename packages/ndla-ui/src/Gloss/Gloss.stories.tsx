@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
 import Gloss from './Gloss';
 import { defaultParameters } from '../../../../stories/defaults';

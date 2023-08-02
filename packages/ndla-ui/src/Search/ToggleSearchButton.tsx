@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { spacing, spacingUnit, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
 import { ButtonProps, ButtonV2 } from '@ndla/button';

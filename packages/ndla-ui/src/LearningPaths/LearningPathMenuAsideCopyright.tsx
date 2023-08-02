@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { User } from '@ndla/icons/common';
 import { spacing, fonts, colors } from '@ndla/core';

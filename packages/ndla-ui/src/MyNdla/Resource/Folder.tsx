@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
 import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';

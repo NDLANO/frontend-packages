@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 
 import { classes } from './filterClasses';

@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { css } from '@emotion/react';
 
 const cssStyle = css`

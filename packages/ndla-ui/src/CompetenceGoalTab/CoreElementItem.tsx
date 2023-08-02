@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CoreElementsItemType } from '../types';
 import SearchButton from './SearchButton';

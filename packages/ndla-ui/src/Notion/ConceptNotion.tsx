@@ -6,7 +6,7 @@
  */
 import styled from '@emotion/styled';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 //@ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { useTranslation } from 'react-i18next';

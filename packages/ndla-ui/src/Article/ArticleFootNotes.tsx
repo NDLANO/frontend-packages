@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import { FootNote as FootNoteType } from '../types';

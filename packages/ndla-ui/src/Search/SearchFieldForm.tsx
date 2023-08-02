@@ -1,4 +1,4 @@
-import React, { FormEvent, ReactNode } from 'react';
+import { FormEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { spacing, mq, breakpoints } from '@ndla/core';

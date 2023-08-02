@@ -6,7 +6,7 @@
  *
  */
 
-import React, { RefObject, useMemo, useRef } from 'react';
+import { RefObject, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing, spacingUnit, colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';

@@ -7,7 +7,6 @@
 
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FeideUserApiType } from './apiTypes';
 import { parseUserObject } from './parseUserObject';

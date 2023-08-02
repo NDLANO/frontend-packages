@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
 import { Drawer, Modal, ModalTrigger } from '@ndla/modal';
 import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { CSSProperties, KeyboardEvent, useEffect, useMemo, useRef } from 'react';
+import { CSSProperties, KeyboardEvent, useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ArrowDropDownRounded } from '@ndla/icons/common';

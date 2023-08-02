@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { LanguageSelector } from '@ndla/ui';
 import styled from '@emotion/styled';

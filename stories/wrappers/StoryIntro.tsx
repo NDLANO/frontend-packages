@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { OneColumn, LayoutItem } from '@ndla/ui';
 
@@ -16,7 +15,12 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const StoryIntro = ({ title, children }) => (
+interface Props {
+  title?: string;
+  children?: ReactNode;
+}
+
+const StoryIntro = ({ title, children }: Props) => (
   <section {...classes()}>
     <OneColumn>
       <LayoutItem layout="center">
@@ -26,10 +30,5 @@ const StoryIntro = ({ title, children }) => (
     </OneColumn>
   </section>
 );
-
-StoryIntro.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.node,
-};
 
 export default StoryIntro;

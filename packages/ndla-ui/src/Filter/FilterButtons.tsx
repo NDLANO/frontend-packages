@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';

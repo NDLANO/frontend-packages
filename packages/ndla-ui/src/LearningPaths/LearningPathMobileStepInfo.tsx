@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, typography } from '@ndla/core';
 import { useTranslation } from 'react-i18next';

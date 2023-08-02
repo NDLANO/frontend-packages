@@ -8,7 +8,6 @@
 
 import { css } from '@emotion/react';
 import { colors } from '@ndla/core';
-import React from 'react';
 import { MenuProps, components } from 'react-select';
 import { StyledMenuList } from './MenuList';
 import { TagType } from './types';

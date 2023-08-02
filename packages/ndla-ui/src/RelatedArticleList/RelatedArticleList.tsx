@@ -1,4 +1,4 @@
-import React, { Children, cloneElement, ReactElement } from 'react';
+import { Children, cloneElement, ReactElement } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';

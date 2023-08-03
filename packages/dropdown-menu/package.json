@@ -1,6 +1,6 @@
 {
   "name": "@ndla/dropdown-menu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Dropdown menu component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

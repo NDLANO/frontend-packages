@@ -1,6 +1,6 @@
 {
   "name": "@ndla/zendesk",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "description": "Zendesk button (and loading) for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -30,7 +30,7 @@
     "react": ">= 16.8.0"
   },
   "dependencies": {
-    "@ndla/button": "^11.0.1",
+    "@ndla/button": "^11.0.2",
     "@ndla/core": "^4.1.4"
   },
   "publishConfig": {

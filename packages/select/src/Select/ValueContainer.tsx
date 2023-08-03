@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { ValueContainerProps } from 'react-select';
 import isArray from 'lodash/isArray';

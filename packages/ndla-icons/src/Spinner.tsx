@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, SpacingNames } from '@ndla/core';
 

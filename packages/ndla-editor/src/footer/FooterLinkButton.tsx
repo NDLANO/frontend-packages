@@ -1,4 +1,3 @@
-import React from 'react';
 import { colors, spacing, fonts, spacingUnit } from '@ndla/core';
 import { ButtonProps, ButtonV2 } from '@ndla/button';
 import styled from '@emotion/styled';

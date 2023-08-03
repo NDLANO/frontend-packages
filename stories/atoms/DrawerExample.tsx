@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FilterList } from '@ndla/ui';
 import {
   Drawer,
@@ -19,7 +19,6 @@ import {
   ModalTitle,
 } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
-//@ts-ignore
 import { StoryBody, StoryIntro } from '../wrappers';
 
 interface Option<T> {

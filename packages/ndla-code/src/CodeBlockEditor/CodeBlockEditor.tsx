@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ChangeEvent, createRef, useState } from 'react';
+import { ChangeEvent, createRef, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import { useTranslation } from 'react-i18next';
 import { Code } from '@ndla/icons/editor';

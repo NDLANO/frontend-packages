@@ -1,4 +1,3 @@
-import React from 'react';
 import { FactBox } from '@ndla/ui';
 import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';

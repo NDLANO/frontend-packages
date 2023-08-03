@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { colors, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';

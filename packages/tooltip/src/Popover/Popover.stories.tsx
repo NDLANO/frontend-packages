@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
 import { defaultParameters } from '../../../../stories/defaults';

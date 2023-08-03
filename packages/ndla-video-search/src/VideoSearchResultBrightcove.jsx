@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ButtonV2 } from '@ndla/button';
 import { getLicenseByNBTitle } from '@ndla/licenses';

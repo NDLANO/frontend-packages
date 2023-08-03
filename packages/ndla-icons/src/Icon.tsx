@@ -1,4 +1,4 @@
-import React, { ReactNode, SVGAttributes, useMemo } from 'react';
+import { ReactNode, SVGAttributes, useMemo } from 'react';
 
 export interface Props extends SVGAttributes<SVGSVGElement> {
   title?: string;

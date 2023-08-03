@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { storiesOf } from '@storybook/react';
 import {

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@ndla/tabs';
 import { uuid } from '@ndla/util';

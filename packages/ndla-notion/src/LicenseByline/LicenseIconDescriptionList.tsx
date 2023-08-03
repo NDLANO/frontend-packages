@@ -9,7 +9,6 @@
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { Popover } from '@ndla/tooltip';
-import React from 'react';
 import { getLicenseRightByAbbreviation } from '@ndla/licenses';
 import LicenseIcon from './LicenseIcon';
 import { StyledLicenseIcon, StyledListItem } from './LicenseIconList';

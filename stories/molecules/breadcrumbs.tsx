@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from '@ndla/ui';
 
 const items = [

@@ -7,7 +7,6 @@
  */
 
 /* eslint-env jest */
-/* eslint-disable react/no-multi-comp */
 import React, { Component, ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';

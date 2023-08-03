@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Heart, HeartOutline } from '@ndla/icons/action';
 import Tooltip from '@ndla/tooltip';

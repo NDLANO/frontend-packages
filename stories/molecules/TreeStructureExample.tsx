@@ -6,17 +6,18 @@
  *
  */
 
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { TreeStructure, TreeStructureProps } from '@ndla/ui/src/TreeStructure';
+import { TreeStructure, TreeStructureProps, FolderInput } from '@ndla/ui';
 import { uuid } from '@ndla/util';
+// eslint-disable-next-line no-restricted-imports
 import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
-import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
-import { FolderInput } from '@ndla/ui';
 import { colors, spacing } from '@ndla/core';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
 
-const Container = styled.div<{ type?: TreeStructureType }>`
+type TreeStructureType = 'navigation' | 'picker';
+
+const Container = styled.div<{ type?: 'navigation' | 'picker' }>`
   display: flex;
   margin-top: 40px;
   max-width: 600px;

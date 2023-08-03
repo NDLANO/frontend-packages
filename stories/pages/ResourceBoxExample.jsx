@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants, ResourceBox, Figure } from '@ndla/ui';
 import LicenseBox from '../article/LicenseBox';

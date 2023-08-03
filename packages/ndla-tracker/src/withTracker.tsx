@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, ComponentType } from 'react';
+import { Component, ComponentType } from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import { hasCurrentPageBeenTracked, sendPageView } from './tracker';
 

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, utils } from '@ndla/core';
 import { uuid } from '@ndla/util';

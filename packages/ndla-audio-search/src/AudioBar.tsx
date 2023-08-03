@@ -9,7 +9,7 @@
 /* eslint jsx-a11y/media-has-caption: 0 */
 
 import { IAudioMetaInformation } from '@ndla/types-backend/audio-api';
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 interface Props {
   audio: { id: number };

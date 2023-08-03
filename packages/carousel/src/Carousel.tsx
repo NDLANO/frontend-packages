@@ -6,7 +6,7 @@
  *
  */
 
-import React, { cloneElement, ReactElement, UIEvent, useMemo, useRef, useState } from 'react';
+import { cloneElement, MouseEvent as ReactMouseEvent, ReactElement, UIEvent, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { breakpoints, mq, spacing } from '@ndla/core';
@@ -81,7 +81,7 @@ export const Carousel = ({
     parent?.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
   };
 
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onMouseDown = (e: ReactMouseEvent<HTMLDivElement>) => {
     const pos = {
       left: slideContainer.current?.scrollLeft || 0,
       x: e.clientX,

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ChangeEvent, KeyboardEvent, MouseEvent, Component } from 'react';
+import { ChangeEvent, KeyboardEvent, MouseEvent, Component } from 'react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { QueryObject } from './AudioSearch';

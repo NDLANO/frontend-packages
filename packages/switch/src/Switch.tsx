@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Root, Thumb, SwitchProps } from '@radix-ui/react-switch';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';

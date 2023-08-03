@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { ChevronDown } from '@ndla/icons/common';
 import { DropdownIndicatorProps } from 'react-select';

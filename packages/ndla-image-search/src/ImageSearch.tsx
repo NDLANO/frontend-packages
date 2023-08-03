@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ChangeEvent, Component, ReactNode, KeyboardEvent } from 'react';
+import { ChangeEvent, Component, ReactNode, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';

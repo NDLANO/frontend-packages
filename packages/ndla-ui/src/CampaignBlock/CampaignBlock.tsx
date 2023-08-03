@@ -45,6 +45,7 @@ const Container = styled.div`
   border: 1px ${colors.brand.lighter} solid;
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.small};
+  background-color: ${colors.white};
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 1100px;
     flex-direction: row;

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, createRef, MouseEvent as ReactMouseEvent, MutableRefObject } from 'react';
+import { Component, createRef, MouseEvent as ReactMouseEvent, MutableRefObject } from 'react';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, shadows } from '@ndla/core';
 

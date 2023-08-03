@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLProps, MutableRefObject, useEffect, useRef } from 'react';
+import { HTMLProps, MutableRefObject, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, spacingUnit, fonts, colors } from '@ndla/core';

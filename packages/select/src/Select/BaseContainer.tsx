@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { ContainerProps, GroupBase } from 'react-select';
 import styled from '@emotion/styled';
 import { Option } from './types';

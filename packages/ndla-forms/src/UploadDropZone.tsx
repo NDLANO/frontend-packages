@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useEffect, useState, useRef, ChangeEvent } from 'react';
+import { ReactNode, useEffect, useState, useRef, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Spinner } from '@ndla/icons';

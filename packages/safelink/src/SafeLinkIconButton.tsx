@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { ButtonStyleProps, iconButtonStyle } from '@ndla/button';
 import SafeLink, { SafeLinkProps } from './SafeLink';
 

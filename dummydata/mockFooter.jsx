@@ -6,7 +6,6 @@
  *
  */
 import { EmailOutline, Facebook, Instagram, LinkedIn, Share, Youtube } from '@ndla/icons/common';
-import React from 'react';
 
 export const mockFooterLinks = [
   {

@@ -59,7 +59,6 @@ console.log(licenseRight);
 ### License right constants
 
 ```js
-import React from 'react';
 import { BY, SA } from '@ndla/licenses';
 import Icon from './Icons';
 

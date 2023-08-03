@@ -1,4 +1,4 @@
-import React, { HTMLProps, ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Interpolation } from '@emotion/react';
 import styled from '@emotion/styled';

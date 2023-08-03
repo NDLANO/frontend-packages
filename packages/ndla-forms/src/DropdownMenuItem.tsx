@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLProps, ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';

@@ -1,4 +1,4 @@
-import React, { KeyboardEvent } from 'react';
+import { KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
 import { spacing, fonts, colors, misc, mq, breakpoints } from '@ndla/core';
 import { DocumentDetails } from '@ndla/icons/common';

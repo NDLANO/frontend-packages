@@ -1,4 +1,3 @@
-import React from 'react';
 import { CompetenceGoalTab } from '@ndla/ui';
 import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';

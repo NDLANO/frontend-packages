@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import { TagSelector } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';

@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { fonts } from '@ndla/core';
 import NotionBlock from '../molecules/NotionBlock';

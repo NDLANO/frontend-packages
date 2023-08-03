@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import prettyBytes from 'pretty-bytes';
 import styled from '@emotion/styled';
 import { fonts } from '@ndla/core';

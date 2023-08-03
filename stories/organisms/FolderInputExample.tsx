@@ -7,7 +7,6 @@
  */
 
 import { FolderInput } from '@ndla/ui';
-import React from 'react';
 
 export const FolderInputExample = () => {
   return (

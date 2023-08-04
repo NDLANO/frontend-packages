@@ -274,3 +274,6 @@ export { DefinitionTerm, DefinitionDescription } from './DefinitionList';
 export type { ProgrammeV2 } from './ProgrammeCard';
 
 export { Gloss } from './Gloss';
+
+export { LinkBlock, LinkBlockSection } from './LinkBlock';
+export type { LinkBlockType } from './LinkBlock';

@@ -12,7 +12,7 @@ import { Forward, CalendarEd } from '@ndla/icons/common';
 import { breakpoints, colors, spacing, mq } from '@ndla/core';
 import Heading from '../Typography/Heading';
 
-interface Props {
+export interface LinkBlockType {
   title: string;
   language: string;
   date: string;
@@ -74,7 +74,7 @@ const StyledCalenderEd = styled(CalendarEd)`
   color: ${colors.icon.iconBlue};
 `;
 
-const LinkBlock = ({ title, language, date, url }: Props) => {
+const LinkBlock = ({ title, language, date, url }: LinkBlockType) => {
   return (
     <StyledSafeLink to={url}>
       <InfoWrapper>

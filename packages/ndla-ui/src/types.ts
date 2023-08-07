@@ -68,7 +68,7 @@ export interface FootNote {
 export interface Article {
   title: string;
   introduction: string;
-  content: string | ReactNode;
+  content: ReactNode;
   footNotes: Array<FootNote>;
   copyright: Copyright;
   published: string;

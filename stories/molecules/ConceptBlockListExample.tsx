@@ -18,7 +18,6 @@ import FigureImage from '../article/FigureImage';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 //@ts-ignore
 import LicenseBox from '../article/LicenseBox';
-import NotionExample from './NotionExample';
 import NotionList from './NotionList';
 const { contentTypes } = constants;
 
@@ -100,12 +99,7 @@ const ConceptBlockListExample = () => {
         competenceGoals={<CompetenceGoalListExample />}
         icon={<TasksAndActivitiesBadge background size="large" />}
         id="mainContentId"
-        locale="nb"
         modifier={contentTypes.TASKS_AND_ACTIVITIES}
-        notions={{
-          list: [NotionExample],
-          related: [],
-        }}
       />
     </OneColumn>
   );

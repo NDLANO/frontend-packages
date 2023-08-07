@@ -10,7 +10,6 @@ import styled from '@emotion/styled';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants, ResourceBox, Figure } from '@ndla/ui';
 import LicenseBox from '../article/LicenseBox';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
-import NotionExample from '../molecules/NotionExample';
 const { contentTypes } = constants;
 
 const ReferenceBoxExample = () => {
@@ -88,11 +87,7 @@ const ReferenceBoxExample = () => {
           printUrl={window.location.href}
           icon={<TasksAndActivitiesBadge background size="large" />}
           id="mainContentId"
-          locale="nb"
           modifier={contentTypes.TASKS_AND_ACTIVITIES}
-          notions={{
-            list: [NotionExample],
-          }}
         />
       </OneColumn>
     </Wrapper>

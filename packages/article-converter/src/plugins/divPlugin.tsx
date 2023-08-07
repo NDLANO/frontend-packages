@@ -48,7 +48,7 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(node.children, opts)}
       </Grid>
     );
-  } else if (node.attribs['data-parallax-cell'] === 'true' && node.childNodes.length) {
+  } else if (node.attribs['data-parallax-cell'] === 'true' && node.children.length) {
     return <GridParallaxItem>{domToReact(node.children, opts)}</GridParallaxItem>;
   }
   return null;

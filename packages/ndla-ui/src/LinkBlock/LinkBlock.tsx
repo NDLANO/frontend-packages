@@ -10,14 +10,8 @@ import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { Forward, CalendarEd } from '@ndla/icons/common';
 import { breakpoints, colors, spacing, mq } from '@ndla/core';
+import { LinkBlockEmbedData } from '@ndla/types-embed';
 import Heading from '../Typography/Heading';
-
-interface Props {
-  title: string;
-  language: string;
-  date: string;
-  url: string;
-}
 
 const StyledForward = styled(Forward)`
   margin: 0 ${spacing.nsmall};
@@ -74,7 +68,7 @@ const StyledCalenderEd = styled(CalendarEd)`
   color: ${colors.icon.iconBlue};
 `;
 
-const LinkBlock = ({ title, language, date, url }: Props) => {
+const LinkBlock = ({ title, language, date, url }: Omit<LinkBlockEmbedData, 'resource'>) => {
   return (
     <StyledSafeLink to={url}>
       <InfoWrapper>

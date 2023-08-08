@@ -89,3 +89,13 @@ export const Text: StoryObj<typeof Codeblock> = {
     format: 'text',
   },
 };
+
+export const Python: StoryObj<typeof Codeblock> = {
+  args: {
+    code: `lengde = 6
+bredde = 8
+areal = lengde*bredde
+print(areal)`,
+    format: 'python',
+  },
+};

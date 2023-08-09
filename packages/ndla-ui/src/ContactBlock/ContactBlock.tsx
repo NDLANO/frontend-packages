@@ -33,6 +33,9 @@ const BlockWrapper = styled.div`
   border-radius: ${misc.borderRadius};
   border: 1px solid ${colors.brand.lighter};
   max-width: 348px;
+  & ~ & {
+    margin-top: 32px;
+  }
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 773px;
     flex-direction: row;

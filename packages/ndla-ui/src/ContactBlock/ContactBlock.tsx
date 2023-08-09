@@ -34,7 +34,7 @@ const BlockWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
   max-width: 348px;
   & ~ & {
-    margin-top: 32px;
+    margin-top: ${spacing.medium};
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 773px;

@@ -6,11 +6,14 @@
  *
  */
 
+import { format } from 'date-fns';
+import { enGB, nb, nn } from 'date-fns/locale';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { Forward, CalendarEd } from '@ndla/icons/common';
 import { breakpoints, colors, spacing, mq } from '@ndla/core';
 import { LinkBlockEmbedData } from '@ndla/types-embed';
+import { useMemo } from 'react';
 import Heading from '../Typography/Heading';
 
 const StyledForward = styled(Forward)`
@@ -69,6 +72,12 @@ const StyledCalenderEd = styled(CalendarEd)`
 `;
 
 const LinkBlock = ({ title, language, date, url }: Omit<LinkBlockEmbedData, 'resource'>) => {
+  const formattedDate = useMemo(() => {
+    if (!date) return null;
+    const locale = language === 'nb' ? nb : language === 'nn' ? nn : enGB;
+    return format(new Date(date), 'dd. LLLL. yyyy', { locale });
+  }, [date, language]);
+
   return (
     <StyledSafeLink to={url}>
       <InfoWrapper>
@@ -78,7 +87,7 @@ const LinkBlock = ({ title, language, date, url }: Omit<LinkBlockEmbedData, 'res
         {date && (
           <StyledDateContainer>
             <StyledCalenderEd />
-            {date}
+            {formattedDate}
           </StyledDateContainer>
         )}
       </InfoWrapper>

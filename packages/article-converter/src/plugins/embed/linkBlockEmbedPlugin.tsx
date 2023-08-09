@@ -11,7 +11,7 @@ import { attributesToProps } from 'html-react-parser';
 import { LinkBlockMetaData } from '@ndla/types-embed';
 import { PluginType } from '../types';
 
-export const imageEmbedPlugin: PluginType = (element) => {
+export const linkBlockPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as LinkBlockMetaData;
 

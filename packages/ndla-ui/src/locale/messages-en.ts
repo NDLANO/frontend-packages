@@ -1119,6 +1119,8 @@ const messages = {
       folder: 'Folder',
       delete: 'Delete folder',
       edit: 'Edit folder',
+      open: 'Open folder',
+      close: 'Close folder',
       updated: 'Folder updated',
       defaultPageDescription: 'Add a description by editing the folder',
       missingName: 'Folder name required',

@@ -1119,6 +1119,8 @@ const messages = {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
       edit: 'Rievdat máhpa',
+      open: 'Åpne mappe',
+      close: 'Lukk mappe',
       updated: 'Mappa har blitt oppdatert',
       defaultPageDescription: 'Legg til beskrivelse ved å redigere mappa',
       missingName: 'Čále nama máhppii',

@@ -23,6 +23,7 @@ interface Props {
 }
 
 const StyledArticle = styled.article`
+  width: 100%;
   max-width: 773px;
   &[data-wide='true'] {
     max-width: 1100px;

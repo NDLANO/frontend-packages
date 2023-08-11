@@ -21,6 +21,7 @@ import { HeartButtonType } from './types';
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
+  path?: string;
   heartButton?: HeartButtonType;
   inGrid?: boolean;
 }
@@ -99,7 +100,7 @@ export const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Props) => {
+const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   if (embed.status === 'error') {
@@ -132,6 +133,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
         src={!isCopyrighted ? embedData.pageUrl || data.image.imageUrl : undefined}
         crop={crop}
         size={embedData.size}
+        pagePath={path}
       >
         <Image
           focalPoint={focalPoint}
@@ -171,6 +173,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
 interface ImageWrapperProps {
   src?: string;
   children: React.ReactNode;
+  pagePath?: string;
   crop?: {
     startX: number;
     startY: number;
@@ -183,9 +186,9 @@ const hideByline = (size?: string): boolean => {
   return !!size && size.endsWith('-hide-byline');
 };
 
-const ImageWrapper = ({ src, crop, size, children }: ImageWrapperProps) => {
+const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps) => {
   const { t } = useTranslation();
-  if (isSmall(size) || hideByline(size) || !src) {
+  if (isSmall(size) || hideByline(size) || !src || (pagePath && src.endsWith(pagePath))) {
     return <>{children}</>;
   }
 

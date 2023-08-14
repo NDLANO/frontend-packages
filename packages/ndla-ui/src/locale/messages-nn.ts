@@ -1119,6 +1119,8 @@ const messages = {
       delete: 'Slett mappe',
       edit: 'Rediger mappe',
       copy: 'Kopier mappe',
+      open: 'Åpne mappe',
+      close: 'Lukk mappe',
       updated: 'Mappa har blitt oppdatert',
       defaultPageDescription: 'Legg til beskriving ved å redigere mappa',
       missingName: 'Skriv namn på mappe',

@@ -8,17 +8,8 @@
 
 import Article, { ArticleTitle, ArticleIntroduction, ArticleWrapper } from './Article';
 import ArticleByline from './ArticleByline';
-import ArticleContent from './ArticleContent';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 
-export {
-  ArticleByline,
-  ArticleContent,
-  ArticleFootNotes,
-  ArticleHeaderWrapper,
-  ArticleTitle,
-  ArticleIntroduction,
-  ArticleWrapper,
-};
+export { ArticleByline, ArticleFootNotes, ArticleHeaderWrapper, ArticleTitle, ArticleIntroduction, ArticleWrapper };
 export default Article;

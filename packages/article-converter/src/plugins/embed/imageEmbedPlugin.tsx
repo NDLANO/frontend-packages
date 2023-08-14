@@ -17,6 +17,12 @@ export const imageEmbedPlugin: PluginType = (element, _, opts) => {
   const inGrid = (element.parentNode?.parentNode as Element)?.attribs?.['data-type'] === 'grid';
 
   return (
-    <ImageEmbed inGrid={inGrid} embed={data} previewAlt={opts.previewAlt} heartButton={opts.components?.heartButton} />
+    <ImageEmbed
+      inGrid={inGrid}
+      embed={data}
+      path={opts.path}
+      previewAlt={opts.previewAlt}
+      heartButton={opts.components?.heartButton}
+    />
   );
 };

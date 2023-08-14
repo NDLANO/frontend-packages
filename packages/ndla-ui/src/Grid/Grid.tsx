@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 export interface GridProps {
   columns: '2' | '4' | '2x2';
@@ -86,5 +86,19 @@ const Grid = ({ columns, border, children, background, size, ...rest }: GridProp
     </GridContainer>
   );
 };
+
+const StyledGridParallaxItem = styled.div`
+  position: relative;
+  > div {
+    top: 0px;
+    position: sticky;
+  }
+`;
+
+export const GridParallaxItem = ({ children, ...rest }: HTMLAttributes<HTMLDivElement>) => (
+  <StyledGridParallaxItem {...rest}>
+    <div>{children}</div>
+  </StyledGridParallaxItem>
+);
 
 export default Grid;

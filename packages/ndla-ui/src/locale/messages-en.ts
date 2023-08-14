@@ -1120,6 +1120,8 @@ const messages = {
       delete: 'Delete folder',
       edit: 'Edit folder',
       copy: 'Copy folder',
+      open: 'Open folder',
+      close: 'Close folder',
       updated: 'Folder updated',
       defaultPageDescription: 'Add a description by editing the folder',
       missingName: 'Folder name required',

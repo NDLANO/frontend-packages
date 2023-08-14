@@ -40,7 +40,7 @@ See: [package.json](package.json) for version requirements.
 @import '../path/to/node_modules/ndla-ui/scss/main'; // direct reference
 ```
 
-### Simplified example
+### Component Usage
 
 ```jsx
 import { Breadcrumb, Hero, OneColumn, Article } from '@ndla/ui';

@@ -14,15 +14,13 @@ import styled from '@emotion/styled';
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
 import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
-import { Article as ArticleType, Locale } from '../types';
-import ArticleContent from './ArticleContent';
+import { Article as ArticleType } from '../types';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
-import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
+import ArticleNotions from './ArticleNotions';
 import ArticleAccessMessage from './ArticleAccessMessage';
 import MessageBox from '../Messages/MessageBox';
-import { ConceptNotionType } from '../Notion/ConceptNotion';
 import { Heading } from '../Typography';
 
 const classes = new BEMHelper({
@@ -124,22 +122,19 @@ type Props = {
   children?: ReactNode;
   messages: Messages;
   contentTransformed?: boolean;
-  locale: Locale;
   messageBoxLinks?: [];
   competenceGoals?: ReactNode;
   id: string;
   renderMarkdown: (text: string) => string;
-  notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
+  notions?: ReactNode;
   accessMessage?: string;
 };
 
-const getArticleContent = (content: any, locale: Locale, contentTransformed?: boolean) => {
+const getArticleContent = (content: any, contentTransformed?: boolean) => {
   if (contentTransformed) {
     return content;
   }
   switch (typeof content) {
-    case 'string':
-      return <ArticleContent content={content} locale={locale} />;
     case 'function':
       return content();
     default:
@@ -157,7 +152,6 @@ export const Article = ({
   children,
   competenceGoals,
   id,
-  locale,
   notions,
   renderMarkdown,
   accessMessage,
@@ -223,13 +217,9 @@ export const Article = ({
         </LayoutItem>
         <LayoutItem layout="center">
           {notions && showExplainNotions && (
-            <ArticleNotions
-              notions={notions.list}
-              relatedContent={notions.related}
-              buttonOffsetRight={articlePositionRight}
-            />
+            <ArticleNotions buttonOffsetRight={articlePositionRight}>{notions}</ArticleNotions>
           )}
-          {getArticleContent(content, locale, contentTransformed)}
+          {getArticleContent(content, contentTransformed)}
         </LayoutItem>
 
         <LayoutItem layout="center">

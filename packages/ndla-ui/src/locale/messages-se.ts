@@ -1120,6 +1120,8 @@ const messages = {
       delete: 'Sihko máhpa',
       edit: 'Rievdat máhpa',
       copy: 'Kopier mappe',
+      open: 'Åpne mappe',
+      close: 'Lukk mappe',
       updated: 'Mappa har blitt oppdatert',
       defaultPageDescription: 'Legg til beskrivelse ved å redigere mappa',
       missingName: 'Čále nama máhppii',

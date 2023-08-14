@@ -256,7 +256,7 @@ const pd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
     linkText: 'Lær meir om public domain-merke',
-    abbreviation: freeUseNN.toUpperCase(),
+    abbreviation: freeUseNN,
     description:
       'Dette merket let andre kopiere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
   },
@@ -266,7 +266,7 @@ const pd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
     linkText: 'Lær mer om public domain-merke',
-    abbreviation: freeUseNB.toUpperCase(),
+    abbreviation: freeUseNB,
     description:
       'Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.',
   },
@@ -277,7 +277,7 @@ const pd: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/',
     linkText: 'Learn more about public domain mark',
-    abbreviation: freeUseEN.toUpperCase(),
+    abbreviation: freeUseEN,
     description:
       'This mark lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.',
   },
@@ -328,7 +328,7 @@ const copy: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Lær meir om opphavsrett',
-    abbreviation: restrictedUseNN.toUpperCase(),
+    abbreviation: restrictedUseNN,
     description:
       'Det er berre den som har laga innhaldet som kan endra, publisera og gje andre rett til å nytte innhaldet.',
   },
@@ -338,7 +338,7 @@ const copy: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Lær mer om opphavsrett',
-    abbreviation: restrictedUseNB.toUpperCase(),
+    abbreviation: restrictedUseNB,
     description:
       'Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.',
   },
@@ -349,7 +349,7 @@ const copy: LicenseType = {
     userFriendlyTitle: '',
     url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Learn more about copyright',
-    abbreviation: restrictedUseEN.toUpperCase(),
+    abbreviation: restrictedUseEN,
     description:
       'Only those who have created the content can modify, publish, and give others permission to use the content.',
   },

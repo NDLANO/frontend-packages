@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, breakpoints } from '@ndla/core';
 import SafeLink from '@ndla/safelink';

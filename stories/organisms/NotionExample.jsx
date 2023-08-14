@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import { Component, Fragment } from 'react';
 import { OneColumn, LayoutItem } from '@ndla/ui';
 import Notion, { NotionDialogContent, NotionDialogText, NotionDialogImage, NotionDialogLicenses } from '@ndla/notion';
 import Tabs from '@ndla/tabs';

@@ -8,7 +8,7 @@
 
 import partition from 'lodash/partition';
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
-import { FileListV2, RelatedArticleListV2, Grid, GridType } from '@ndla/ui';
+import { FileListV2, RelatedArticleListV2, Grid, GridType, GridParallaxItem } from '@ndla/ui';
 import { PluginType } from './types';
 
 export const divPlugin: PluginType = (node, opts) => {
@@ -36,16 +36,6 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(pdfs, opts)}
       </>
     );
-  } else if (
-    node.attribs['class']?.includes('c-bodybox') &&
-    node.childNodes.filter((c): c is Element => 'attribs' in c).some((c) => c.name === 'table')
-  ) {
-    const props = attributesToProps(node.attribs);
-    return (
-      <div {...props} className={`${props.className} c-bodybox--contains-table`}>
-        {domToReact(node.children, opts)}
-      </div>
-    );
   } else if (node.attribs['data-type'] === 'grid' && node.children.length > 0) {
     const props = attributesToProps(node.attribs);
     const columns = props['data-columns'] as GridType['columns'];
@@ -58,6 +48,8 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(node.children, opts)}
       </Grid>
     );
+  } else if (node.attribs['data-parallax-cell'] === 'true' && node.children.length) {
+    return <GridParallaxItem>{domToReact(node.children, opts)}</GridParallaxItem>;
   }
   return null;
 };

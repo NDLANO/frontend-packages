@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useContext } from 'react';
+import { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useContext } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';

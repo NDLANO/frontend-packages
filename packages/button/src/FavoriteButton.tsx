@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Heart, HeartOutline } from '@ndla/icons/action';
 import Tooltip from '@ndla/tooltip';
@@ -16,18 +16,18 @@ export interface Props extends Omit<IconButtonProps, 'aria-label'> {
   isFavorite?: boolean;
 }
 
-const FavoriteButton = ({ isFavorite, onClick }: Props) => {
+const FavoriteButton = forwardRef<HTMLButtonElement, Props>(({ isFavorite, onClick }, ref) => {
   const { t } = useTranslation();
   const labelModifier = isFavorite ? 'added' : 'add';
   const ariaLabel = isFavorite ? t('myNdla.alreadyFavourited') : t('myNdla.addToFavourites');
   const Icon = isFavorite ? Heart : HeartOutline;
   return (
     <Tooltip tooltip={t(`myNdla.resource.${labelModifier}ToMyNdla`)}>
-      <IconButtonV2 colorTheme="light" variant="ghost" onClick={onClick} aria-label={ariaLabel}>
+      <IconButtonV2 colorTheme="light" variant="ghost" ref={ref} onClick={onClick} aria-label={ariaLabel}>
         <Icon />
       </IconButtonV2>
     </Tooltip>
   );
-};
+});
 
 export default FavoriteButton;

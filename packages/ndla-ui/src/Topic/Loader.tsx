@@ -1,4 +1,3 @@
-import React from 'react';
 import ContentLoader from '../ContentLoader';
 
 const Loader = () => (

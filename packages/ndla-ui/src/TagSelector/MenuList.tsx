@@ -8,7 +8,6 @@
 
 import styled from '@emotion/styled';
 import { utils } from '@ndla/core';
-import React from 'react';
 import { MenuListProps } from 'react-select';
 import { TagType } from './types';
 

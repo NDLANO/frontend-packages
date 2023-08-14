@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import LicenseIconList from './LicenseIconList';
 import StyledLicenseByline from './StyledLicenseByline';
 

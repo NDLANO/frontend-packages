@@ -28,7 +28,6 @@ export {
 
 export {
   ArticleByline,
-  ArticleContent,
   ArticleFootNotes,
   ArticleIntroduction,
   ArticleTitle,
@@ -182,7 +181,7 @@ export { default as Topic } from './Topic';
 export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
 
-export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
+export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from './Breadcrumb';
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export { i18nInstance, formatNestedMessages } from './i18n';
@@ -242,7 +241,7 @@ export { Notion, ConceptNotion } from './Notion';
 export type { NotionVisualElementType, ConceptNotionType } from './Notion';
 
 export { BannerCard } from './BannerCard';
-export { Folder, FolderInput, FolderMenu } from './MyNdla';
+export { Folder, FolderInput } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';
@@ -264,7 +263,7 @@ export { KeyFigure } from './KeyFigure';
 export { default as ContactBlock } from './ContactBlock';
 export type { HeartButtonType } from './Embed';
 export { CampaignBlock } from './CampaignBlock';
-export { Grid } from './Grid';
+export { Grid, GridParallaxItem } from './Grid';
 export type { GridType } from './Grid';
 export { Heading } from './Typography';
 export type { HeadingLevel } from './types';
@@ -272,3 +271,8 @@ export { AccordionMenu } from './AccordionMenu';
 
 export { default as FrontpageArticle } from './FrontpageArticle';
 export { DefinitionTerm, DefinitionDescription } from './DefinitionList';
+export type { ProgrammeV2 } from './ProgrammeCard';
+
+export { Gloss } from './Gloss';
+
+export { LinkBlock, LinkBlockSection } from './LinkBlock';

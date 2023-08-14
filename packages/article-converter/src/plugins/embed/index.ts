@@ -24,6 +24,7 @@ import { blogPostEmbedPlugin } from './blogPostEmbedPlugin';
 import { keyFigureEmbedPlugin } from './KeyFigureEmbedPlugin';
 import { contactBlockEmbedPlugin } from './contactBlockEmbedPlugin';
 import { campaignBlockPlugin } from './campaignBlockPlugin';
+import { linkBlockPlugin } from './linkBlockEmbedPlugin';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: imageEmbedPlugin,
@@ -43,4 +44,5 @@ export const embedPlugins: Record<string, PluginType> = {
   'key-figure': keyFigureEmbedPlugin,
   'contact-block': contactBlockEmbedPlugin,
   'campaign-block': campaignBlockPlugin,
+  'link-block': linkBlockPlugin,
 };

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { breakpoints as breakpointFromCore } from '@ndla/core';
 import { Breakpoint } from '@ndla/core/types';
 import { CalculatedProps as CalculatedCarouselProps } from './Carousel';

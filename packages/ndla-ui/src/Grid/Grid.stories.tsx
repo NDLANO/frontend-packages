@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
 import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
@@ -18,7 +17,7 @@ import { KeyFigureStory } from '../KeyFigure/KeyFigure.stories';
 
 const GridWrapper = styled.div`
   .docs-story {
-    background-color: ${colors.background.frontpageArticle};
+    background-color: ${colors.background.lightBlue};
   }
 `;
 

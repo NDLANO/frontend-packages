@@ -47,6 +47,7 @@ import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTyp
 import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
 import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './keyFigureTypes';
 import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from './campaignBlockTypes';
+import { LinkBlockEmbedData, LinkBlockMetaData } from './linkBlockTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -66,7 +67,8 @@ export type EmbedData =
   | BlogPostEmbedData
   | KeyFigureEmbedData
   | ContactBlockEmbedData
-  | CampaignBlockEmbedData;
+  | CampaignBlockEmbedData
+  | LinkBlockEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -85,7 +87,8 @@ export type EmbedMetaData =
   | BlogPostMetaData
   | KeyFigureMetaData
   | ContactBlockMetaData
-  | CampaignBlockMetaData;
+  | CampaignBlockMetaData
+  | LinkBlockMetaData;
 
 export type {
   ConceptMetaData,
@@ -104,6 +107,7 @@ export type {
   KeyFigureMetaData,
   ContactBlockMetaData,
   CampaignBlockMetaData,
+  LinkBlockMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -122,6 +126,7 @@ export type {
   KeyFigureEmbedData,
   ContactBlockEmbedData,
   CampaignBlockEmbedData,
+  LinkBlockEmbedData,
 };
 
 export type { BlogPostMeta };

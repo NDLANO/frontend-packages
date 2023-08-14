@@ -7,23 +7,21 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
+import { ReactNode } from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
-import { MenuItemProps } from '@ndla/button';
 import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
 import {
   CompressedTagList,
   ResourceImageProps,
-  ResourceTitle,
   ResourceTypeList,
   ResourceTitleLink,
   LoaderProps,
-  StyledContentIconWrapper,
+  ContentIconWrapper,
+  resourceHeadingStyle,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
-import { SettingsMenu } from '../MyNdla';
 
 const BlockElementWrapper = styled.div`
   display: flex;
@@ -41,9 +39,21 @@ const BlockElementWrapper = styled.div`
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
-    ${() => ResourceTitleLink} {
+    [data-link] {
       color: ${colors.brand.primary};
       text-decoration: underline;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    [data-description] {
+      /* Unfortunate css needed for multi-line text overflow ellipsis. */
+      height: 3.1em;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 `;
@@ -57,14 +67,6 @@ const BlockDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: height 0.2s ease-out;
-  ${() => BlockElementWrapper}:hover &, ${() => BlockElementWrapper}:focus & ,  ${() =>
-    BlockElementWrapper}:focus-within & {
-    // Unfortunate css needed for multi-line text overflow ellipsis.
-    height: 3.1em;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
 `;
 
 const TagsAndActionMenu = styled.div`
@@ -114,9 +116,9 @@ const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
   }
   if (image.src === '') {
     return (
-      <StyledContentIconWrapper contentType={contentType}>
+      <ContentIconWrapper contentType={contentType}>
         <ContentTypeBadge type={contentType} size="large" />
-      </StyledContentIconWrapper>
+      </ContentIconWrapper>
     );
   } else {
     return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
@@ -145,7 +147,7 @@ interface Props {
   tags?: string[];
   description?: string;
   headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  menuItems?: MenuItemProps[];
+  menu?: ReactNode;
   isLoading?: boolean;
   targetBlank?: boolean;
   resourceTypes?: { id: string; name: string }[];
@@ -159,14 +161,13 @@ const BlockResource = ({
   tags,
   resourceImage,
   description,
-  menuItems,
+  menu,
   isLoading,
-  headingLevel = 'h2',
+  headingLevel: Heading = 'h2',
   targetBlank,
   resourceTypes,
 }: Props) => {
   const firstResourceType = resourceTypes?.[0]?.id ?? '';
-  const Title = ResourceTitle.withComponent(headingLevel);
 
   return (
     <BlockElementWrapper id={id}>
@@ -184,16 +185,16 @@ const BlockResource = ({
       <BlockInfoWrapper>
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
-            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link}>
-              <Title>{title}</Title>
+            <ResourceTitleLink data-link="" title={title} target={targetBlank ? '_blank' : undefined} to={link}>
+              <Heading css={resourceHeadingStyle}>{title}</Heading>
             </ResourceTitleLink>
           </ResourceTypeAndTitleLoader>
           <ResourceTypeList resourceTypes={resourceTypes} />
-          <BlockDescription>{description}</BlockDescription>
+          <BlockDescription data-description="">{description}</BlockDescription>
         </ContentWrapper>
         <TagsAndActionMenu>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-          {menuItems && menuItems.length > 0 && <SettingsMenu menuItems={menuItems} />}
+          {menu}
         </TagsAndActionMenu>
       </BlockInfoWrapper>
     </BlockElementWrapper>

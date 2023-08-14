@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';

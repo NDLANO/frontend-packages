@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
 import ReactDOM from 'react-dom';
 import CopyParagraphButton from './CopyParagraphButton';
 
@@ -20,6 +19,7 @@ const initCopyParagraphButtons = () => {
   forEachElement('[data-header-copy-container]', (el: HTMLElement) => {
     const title = el.getAttribute('data-title');
 
+    // eslint-disable-next-line react/no-deprecated
     ReactDOM.hydrate(<CopyParagraphButton title={title} content={title} hydrate />, el);
   });
 };

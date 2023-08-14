@@ -1,4 +1,3 @@
-import React from 'react';
 import { spacing, spacingUnit, colors, fonts, misc } from '@ndla/core';
 import styled from '@emotion/styled';
 import { MovieResourceType } from './types';

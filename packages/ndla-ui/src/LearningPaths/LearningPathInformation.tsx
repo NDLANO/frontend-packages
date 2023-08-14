@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, breakpoints, mq, colors } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';

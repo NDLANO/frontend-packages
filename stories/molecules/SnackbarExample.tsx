@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { ButtonV2 } from '@ndla/button';
 import { SnackbarProvider, useSnack } from '@ndla/ui';
 import { uuid } from '@ndla/util';

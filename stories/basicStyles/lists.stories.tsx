@@ -8,18 +8,17 @@
 
 import { OrderedList, UnOrderedList } from '@ndla/ui';
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
 import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 
 const meta: Meta = {
-  title: 'Base styles/Lister',
+  title: 'Base styles/Lists',
   parameters: defaultParameters,
 };
 
 export default meta;
 
-export const Lister: StoryFn = () => (
+export const Lists: StoryFn = () => (
   <div>
     <StoryIntro title="Lister">
       <p>

@@ -21,6 +21,7 @@ import { HeartButtonType } from './types';
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
+  path?: string;
   heartButton?: HeartButtonType;
   inGrid?: boolean;
 }
@@ -73,14 +74,14 @@ const getSizes = (size?: string, align?: string) => {
   return '(min-width: 1024px) 1024px, 100vw';
 };
 
-const getFocalPoint = (data: ImageEmbedData) => {
+export const getFocalPoint = (data: ImageEmbedData) => {
   if (typeof data.focalX === 'number' && typeof data.focalY === 'number') {
     return { x: data.focalX, y: data.focalY };
   }
   return undefined;
 };
 
-const getCrop = (data: ImageEmbedData) => {
+export const getCrop = (data: ImageEmbedData) => {
   if (
     typeof data.lowerRightX === 'number' &&
     typeof data.lowerRightY === 'number' &&
@@ -99,7 +100,7 @@ const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Props) => {
+const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   if (embed.status === 'error') {
@@ -120,13 +121,20 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
 
   const figureId = `figure-${seq}-${data.id}`;
 
+  const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
+
   return (
     <Figure
       id={figureId}
       type={imageSizes ? undefined : figureType}
-      className={imageSizes ? 'c-figure--right expanded' : ''}
+      className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
     >
-      <ImageWrapper src={embedData.pageUrl || data.image.imageUrl} crop={crop} size={embedData.size}>
+      <ImageWrapper
+        src={!isCopyrighted ? embedData.pageUrl || data.image.imageUrl : undefined}
+        crop={crop}
+        size={embedData.size}
+        pagePath={path}
+      >
         <Image
           focalPoint={focalPoint}
           contentType={data.image.contentType}
@@ -134,7 +142,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
           sizes={imageSizes ?? sizes}
           alt={altText}
           src={data.image.imageUrl}
-          inGrid={inGrid}
+          border={embedData.border}
           expandButton={
             <ExpandButton
               size={embedData.size}
@@ -155,7 +163,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
           visibleAlt={previewAlt ? embed.embedData.alt : ''}
           inGrid={inGrid}
         >
-          {HeartButton && data.copyright.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
+          {HeartButton && !isCopyrighted && <HeartButton embed={embed} />}
         </EmbedByline>
       )}
     </Figure>
@@ -163,8 +171,9 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
 };
 
 interface ImageWrapperProps {
-  src: string;
+  src?: string;
   children: React.ReactNode;
+  pagePath?: string;
   crop?: {
     startX: number;
     startY: number;
@@ -177,9 +186,9 @@ const hideByline = (size?: string): boolean => {
   return !!size && size.endsWith('-hide-byline');
 };
 
-const ImageWrapper = ({ src, crop, size, children }: ImageWrapperProps) => {
+const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps) => {
   const { t } = useTranslation();
-  if (isSmall(size) || hideByline(size)) {
+  if (isSmall(size) || hideByline(size) || !src || (pagePath && src.endsWith(pagePath))) {
     return <>{children}</>;
   }
 

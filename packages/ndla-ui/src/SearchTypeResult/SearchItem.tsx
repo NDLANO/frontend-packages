@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 

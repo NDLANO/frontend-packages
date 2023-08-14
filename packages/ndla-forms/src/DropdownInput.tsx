@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
-import React from 'react';
+import styled from '@emotion/styled';
 import { Spinner } from '@ndla/icons';
 import { Search } from '@ndla/icons/common';
 //@ts-ignore
@@ -24,6 +24,10 @@ interface Props<T extends object> extends InputProps {
   testid?: string;
 }
 
+const StyledSpinner = styled(Spinner)`
+  margin: 0;
+`;
+
 const DropdownInput = <T extends object>({
   multiSelect,
   testid,
@@ -35,7 +39,7 @@ const DropdownInput = <T extends object>({
   ...rest
 }: Props<T>) => (
   <Input
-    iconRight={loading ? <Spinner size="normal" margin="0" aria-hidden="true" /> : <Search aria-hidden="true" />}
+    iconRight={loading ? <StyledSpinner size="normal" aria-hidden="true" /> : <Search aria-hidden="true" />}
     {...rest}
     tags={
       multiSelect &&

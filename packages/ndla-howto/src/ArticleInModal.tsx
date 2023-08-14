@@ -1,6 +1,5 @@
-import React, { ReactElement } from 'react';
-import { ModalCloseButton, Modal } from '@ndla/modal';
-import Tooltip from '@ndla/tooltip';
+import { ReactElement } from 'react';
+import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import { InformationOutline } from '@ndla/icons/common';
 
 import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
@@ -8,12 +7,11 @@ import { stories } from './StaticInfoComponents';
 
 interface ModalContentProps {
   pageId: string;
-  onClose: () => void;
 }
 
 const headingId = 'popupModalHeader';
 
-const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
+const Content = ({ pageId }: ModalContentProps) => {
   const useStory = stories[pageId] || {
     title: `Fant ingen veiledningstekster "${pageId}"`,
     lead: 'Sjekk key-names i @ndla-howto/src/StaticInfoComponents og propType pageId til <ArticleInModal />',
@@ -27,7 +25,7 @@ const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
           <Heading id={headingId} inModal>
             {useStory.title}
           </Heading>
-          <ModalCloseButton onClick={onClose} />
+          <ModalCloseButton />
         </InModalHeader>
         {useStory.imageUrl && (
           <ImageWrapper>
@@ -66,16 +64,14 @@ const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
 interface Props {
   pageId: string;
   activateButton: ReactElement;
-  tooltip?: string;
 }
 
-const ArticleInModal = ({ pageId, tooltip, activateButton }: Props) => (
-  <Modal
-    aria-labelledby={headingId}
-    wrapperFunctionForButton={tooltip ? (btn: ReactElement) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : undefined}
-    activateButton={activateButton}
-  >
-    {(onClose) => <ModalContent pageId={pageId} onClose={onClose} />}
+const ArticleInModal = ({ pageId, activateButton }: Props) => (
+  <Modal aria-labelledby={headingId}>
+    <ModalTrigger>{activateButton}</ModalTrigger>
+    <ModalContent>
+      <Content pageId={pageId} />
+    </ModalContent>
   </Modal>
 );
 

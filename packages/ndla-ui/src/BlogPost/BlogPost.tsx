@@ -40,6 +40,7 @@ const Container = styled(SafeLink)`
   border: 1px solid ${colors.brand.lightest};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.medium};
+  height: 100%;
   &[data-size='large'] {
     max-width: 532px;
   }

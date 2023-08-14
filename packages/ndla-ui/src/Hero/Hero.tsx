@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing, spacingUnit } from '@ndla/core';
 import {
@@ -54,6 +54,10 @@ const StyledDiv = styled.div`
 
   &[data-contenttype='beta'] {
     background-color: ${colors.brand.primary};
+  }
+
+  &[data-contenttype='frontpage-article'] {
+    background-color: ${colors.background.lightBlue};
   }
 
   &[data-contenttype='ndla-film has-image'],
@@ -112,7 +116,6 @@ interface HeroProps extends HTMLAttributes<HTMLDivElement> {
 export const Hero = ({ children, contentType }: HeroProps) => (
   <StyledDiv data-contenttype={contentType}>{children || null}</StyledDiv>
 );
-
 interface Props {
   children?: ReactNode;
   hasImage?: boolean;

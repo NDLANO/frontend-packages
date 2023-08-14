@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import Tabs from '@ndla/tabs';
 import styled from '@emotion/styled';
 import ConceptBlockExample from './ConceptBlockExample';

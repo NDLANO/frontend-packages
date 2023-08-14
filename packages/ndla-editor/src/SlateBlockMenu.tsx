@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import FocusTrap from 'focus-trap-react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';

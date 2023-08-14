@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useRef } from 'react';
+import { FormEvent, useEffect, useRef } from 'react';
 import { isIE, browserVersion, isMobileSafari } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';

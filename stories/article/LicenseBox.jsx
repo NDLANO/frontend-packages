@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@ndla/tabs';
 import { uuid } from '@ndla/util';
@@ -25,14 +25,7 @@ import { FileDocumentOutline, AudioDocument, Podcast } from '@ndla/icons/common'
 
 import { COPYRIGHTED, metaTypes } from '@ndla/licenses';
 
-import { mockDownloadArticleText } from '../../dummydata';
 import H5PExamples from '../../images/h5p-contenttype';
-
-const triggerDownloadText = async () => {
-  const { default: downloadPdf } = await import('./downloadPdf');
-  downloadPdf({ content: mockDownloadArticleText, title: 'Eksempel artikkel' });
-  // TODO: Fetch texts and name from article..
-};
 
 const byncndLicenseAbbreviation = 'CC-BY-ND-4.0';
 const bysaLicenseAbbreviation = 'CC-BY-SA-4.0';
@@ -47,7 +40,7 @@ const VideoContent = ({ t }) => (
         { id: 'video-2', title: 'Betydning og behov' },
       ].map((el) => (
         <MediaListItem key={el.id}>
-          <MediaListItemImage>
+          <MediaListItemImage canOpen>
             <a
               href="https://www.youtube.com/watch?v=hjujTTRB01E"
               target="_blank"
@@ -146,12 +139,7 @@ export const TextContent = ({ t }) => (
                 <CopyButton variant="outline" copyNode={t('license.hasCopiedTitle')}>
                   {t('license.copyTitle')}
                 </CopyButton>
-                <ButtonV2
-                  variant="outline"
-                  onClick={() => {
-                    triggerDownloadText();
-                  }}
-                >
+                <ButtonV2 variant="outline" onClick={() => console.log('DOWNLOAD')}>
                   {t('license.download')}
                 </ButtonV2>
               </div>
@@ -406,7 +394,7 @@ const OtherContent = ({ t }) => (
     <MediaList>
       {H5PExamples.map((example) => (
         <MediaListItem key={example.id}>
-          <MediaListItemImage>
+          <MediaListItemImage canOpen>
             <a
               href={example.url}
               target="_blank"

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;

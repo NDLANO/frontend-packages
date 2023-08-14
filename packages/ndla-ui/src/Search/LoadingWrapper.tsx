@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, animations } from '@ndla/core';
 import { Spinner } from '@ndla/icons';

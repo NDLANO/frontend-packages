@@ -6,7 +6,7 @@
  *
  */
 
-import React, { FormEvent } from 'react';
+import { FormEvent } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ModalBody, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
@@ -45,7 +45,7 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
     <>
       <ModalHeader>
         <ModalTitle>{title}</ModalTitle>
-        <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
+        <ModalCloseButton />
       </ModalHeader>
       <ModalBody>
         <StyledInputWrapper>

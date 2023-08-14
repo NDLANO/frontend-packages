@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import DeleteForever from '@ndla/icons';
 import { IconButtonV2 } from '@ndla/button';

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, createRef } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 import format from 'date-fns/format';
@@ -76,7 +76,7 @@ class ArticleLoader extends Component {
       this.setState({
         article: {
           ...article,
-          published: format(article.published, 'DD.MM.YYYY'),
+          published: format(new Date(article.published), 'dd.MM.yyyy'),
         },
         message: '',
       });

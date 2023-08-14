@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -30,8 +30,8 @@ const ButtonWrapper = styled.div`
 `;
 
 const LicenseIconsTextWrapper = styled.span`
-  padding-bottom: 5px;
-  margin-left: 5px;
+  padding-bottom: ${spacing.xxsmall};
+  margin-left: ${spacing.xxsmall};
 `;
 
 const CompetenceGoalTab = ({ list, isOembed }: CompetenceProps) => {

@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { OptionProps } from 'react-select';
 import { buttonStyleV2 as buttonStyle } from '@ndla/button';
 import styled from '@emotion/styled';

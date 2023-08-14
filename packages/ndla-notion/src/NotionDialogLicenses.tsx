@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode, isValidElement } from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing, colors } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
@@ -49,7 +49,7 @@ const NotionDialogLicenses = ({ license, authors = [], source, locale, licenseBo
     }
     return source;
   };
-  const sourceElem = React.isValidElement(source) ? source : <span>{wrapLink(source)}</span>;
+  const sourceElem = isValidElement(source) ? source : <span>{wrapLink(source)}</span>;
 
   return (
     <NotionDialogLicensesWrapper>

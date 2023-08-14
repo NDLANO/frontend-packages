@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, Children, ReactNode, isValidElement, cloneElement } from 'react';
+import { useState, Children, ReactNode, isValidElement, cloneElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
 

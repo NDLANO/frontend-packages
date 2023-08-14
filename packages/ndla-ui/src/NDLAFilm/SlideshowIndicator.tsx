@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { MovieType } from './types';

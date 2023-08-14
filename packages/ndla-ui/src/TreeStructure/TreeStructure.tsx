@@ -6,15 +6,14 @@
  *
  */
 
-import React, { useEffect, useState, useMemo, useRef } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, utils } from '@ndla/core';
-import { css } from '@emotion/react';
 import uniq from 'lodash/uniq';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
 import FolderItems from './FolderItems';
 import { flattenFolders, treestructureId } from './helperFunctions';
-import { CommonTreeStructureProps, NewFolderInputFunc, TreeStructureType } from './types';
+import { CommonTreeStructureProps, NewFolderInputFunc } from './types';
 import ComboboxButton from './ComboboxButton';
 import AddFolderButton from './AddFolderButton';
 
@@ -36,35 +35,27 @@ const Row = styled.div`
   justify-content: space-between;
 `;
 
-const TreeStructureWrapper = styled.div<{ type: TreeStructureType }>`
+const TreeStructureWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  ${({ type }) =>
-    type === 'picker' &&
-    css`
-      overflow: hidden;
-      border: 1px solid ${colors.brand.neutral7};
-      border-radius: ${misc.borderRadius};
-      scroll-behavior: smooth;
-    `}
   transition: ${misc.transition.default};
+  &[data-type='picker'] {
+    overflow: hidden;
+    border: 1px solid ${colors.brand.neutral7};
+    border-radius: ${misc.borderRadius};
+    scroll-behavior: smooth;
+  }
   &:focus-within {
     border-color: ${colors.brand.tertiary};
   }
 `;
 
-interface ScrollableDivProps {
-  type: TreeStructureType;
-}
-
-const ScrollableDiv = styled.div<ScrollableDivProps>`
-  ${({ type }) =>
-    type === 'picker' &&
-    css`
-      overflow: auto;
-      overflow: overlay;
-      ${utils.scrollbar}
-    `}
+const ScrollableDiv = styled.div`
+  &[data-type='picker'] {
+    overflow: auto;
+    overflow: overlay;
+    ${utils.scrollbar}
+  }
 `;
 
 export interface TreeStructureProps extends CommonTreeStructureProps {
@@ -198,7 +189,7 @@ const TreeStructure = ({
           />
         )}
       </Row>
-      <TreeStructureWrapper aria-label={label} type={type}>
+      <TreeStructureWrapper aria-label={label} data-type={type}>
         {type === 'picker' && (
           <ComboboxButton
             ref={ref}
@@ -218,7 +209,7 @@ const TreeStructure = ({
           />
         )}
         {showTree && (
-          <ScrollableDiv type={type}>
+          <ScrollableDiv data-type={type}>
             <FolderItems
               focusedFolder={focusedFolder}
               folders={folders}

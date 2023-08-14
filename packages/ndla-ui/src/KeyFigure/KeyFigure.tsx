@@ -16,7 +16,6 @@ const ContentWrapper = styled.div`
   align-items: center;
   padding: ${spacing.small};
   align-items: center;
-  max-width: 215px;
 `;
 
 const StyledImage = styled.img`

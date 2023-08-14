@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
+
 import ReactDOM from 'react-dom';
 import shave from 'shave';
 import Controls from './Controls';
@@ -32,8 +32,10 @@ const initAudioPlayers = (locale: Locale) => {
     const speech = el.getAttribute('data-speech');
     if (src && title) {
       if (speech) {
+        // eslint-disable-next-line react/no-deprecated
         ReactDOM.hydrate(<SpeechControl src={src} title={title} />, el);
       } else {
+        // eslint-disable-next-line react/no-deprecated
         ReactDOM.hydrate(<Controls src={src} title={title} />, el);
       }
     }

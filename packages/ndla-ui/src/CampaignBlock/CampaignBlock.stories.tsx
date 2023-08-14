@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import CampaignBlock from './CampaignBlock';
 import { defaultParameters } from '../../../../stories/defaults';

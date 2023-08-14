@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, fonts, mq, breakpoints } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';

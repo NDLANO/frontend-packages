@@ -136,7 +136,14 @@ const colors = {
     darker: '#ccc',
     backgroundGray: brandGreyLightest,
     grayDark: '#e4e4e4',
-    frontpageArticle: '#f7fafd',
+    lightBlue: '#f7fafd',
+  },
+
+  /**
+   * Icon colors
+   * */
+  icon: {
+    iconBlue: '#4e51f2',
   },
 };
 

@@ -1,5 +1,5 @@
-import React, { ReactNode, useState } from 'react';
-import { Drawer } from '@ndla/modal';
+import { ReactNode, useCallback, useState } from 'react';
+import { Drawer, Modal, ModalTrigger } from '@ndla/modal';
 import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import styled from '@emotion/styled';
@@ -63,42 +63,34 @@ const StyledHeader = styled.div`
 const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScreen, ndlaFilm }: Props) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = useCallback(() => {
+    onSearchClose();
+    setIsOpen(false);
+  }, [onSearchClose]);
+
   return (
-    <>
-      <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} onClick={() => setIsOpen(true)} ndlaFilm={ndlaFilm}>
-        {t('masthead.menu.search')}
-      </ToggleSearchButton>
+    <Modal open={isOpen} onOpenChange={setIsOpen}>
+      <ModalTrigger>
+        <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} onClick={() => setIsOpen(true)} ndlaFilm={ndlaFilm}>
+          {t('masthead.menu.search')}
+        </ToggleSearchButton>
+      </ModalTrigger>
       <StyledDrawer
-        controlled
         aria-label={t('searchPage.searchFieldPlaceholder')}
         position="top"
         expands
         size="small"
-        animation="slideIn"
         animationDuration={200}
-        isOpen={isOpen}
-        onClose={() => {
-          setIsOpen(false);
-          onSearchClose();
-        }}
       >
-        {(closeModal) => (
-          <>
-            <StyledHeader>
-              {children(closeModal)}
-              <IconButton
-                aria-label={t('welcomePage.closeSearch')}
-                variant="ghost"
-                colorTheme="light"
-                onClick={closeModal}
-              >
-                <Cross className="c-icon--medium" />
-              </IconButton>
-            </StyledHeader>
-          </>
-        )}
+        <StyledHeader>
+          {children(closeModal)}
+          <IconButton aria-label={t('welcomePage.closeSearch')} variant="ghost" colorTheme="light" onClick={closeModal}>
+            <Cross className="c-icon--medium" />
+          </IconButton>
+        </StyledHeader>
       </StyledDrawer>
-    </>
+    </Modal>
   );
 };
 

@@ -85,8 +85,6 @@ details .c-figure {
 
 details.c-details--exploded {
   @include mq(desktop) {
-    @include grids-expand(4, 6, 2);
-
     .c-details__content {
       opacity: 0;
       animation: fadeIn 150ms;

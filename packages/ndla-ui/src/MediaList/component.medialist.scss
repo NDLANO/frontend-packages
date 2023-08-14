@@ -37,64 +37,6 @@
   }
 }
 
-.c-medialist__img {
-  float: none;
-  margin: 0 0 $spacing--small;
-  @include mq(tablet) {
-    width: 30% !important;
-  }
-  @include mq(970px) {
-    width: 25% !important;
-  }
-  img {
-    &.other-content-image {
-      max-width: 70%;
-      margin: $spacing;
-    }
-  }
-  > div {
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: lighten($brand-color--tertiary, 10);
-    @include mq(tablet) {
-      margin-right: $spacing;
-    }
-    a {
-      box-shadow: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: $border-radius;
-      width: 100%;
-      position: relative;
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        right: $spacing--small;
-        bottom: $spacing--small;
-        border-radius: 100%;
-        @include svg_icon(openInNew, #fff);
-        background-color: $brand-color;
-        background-size: 18px 18px;
-        background-position-x: center;
-        background-position-y: center;
-        background-repeat: no-repeat;
-        width: $spacing--medium;
-        height: $spacing--medium;
-      }
-      &:hover {
-        &:before {
-          background-color: $brand-color--dark;
-          transform: scale3d(1.1, 1.1, 1);
-        }
-      }
-    }
-  }
-}
-
 .c-medialist__actions {
   margin-top: $spacing--small;
   margin-bottom: $spacing--small;

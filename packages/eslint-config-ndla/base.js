@@ -87,7 +87,6 @@ module.exports = {
     'no-sequences': 'warn',
     'no-template-curly-in-string': 'warn',
     'no-throw-literal': 'warn',
-    'no-duplicate-imports': 'error',
     'no-restricted-globals': ['error'].concat(restrictedGlobals),
     'no-unused-expressions': 'error',
     'no-use-before-define': [
@@ -128,6 +127,7 @@ module.exports = {
 
     'import/first': 'error',
     'import/no-amd': 'error',
+    'import/no-duplicates': 'error',
     'import/no-anonymous-default-export': 'error',
     'import/no-webpack-loader-syntax': 'error',
     'import/order': ['warn', { groups: [['builtin', 'external', 'internal']] }],
@@ -168,8 +168,6 @@ module.exports = {
         'react/prop-types': 'off',
         'no-array-constructor': 'off',
         'no-redeclare': 'off',
-        'no-duplicate-imports': 'off',
-        '@typescript-eslint/no-duplicate-imports': 'error',
         '@typescript-eslint/no-redeclare': 'warn',
         'no-use-before-define': 'off',
         '@typescript-eslint/no-use-before-define': [

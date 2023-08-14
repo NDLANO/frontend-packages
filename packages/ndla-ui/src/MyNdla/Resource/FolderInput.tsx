@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
-import React, { ComponentProps, forwardRef, useEffect } from 'react';
+import { ComponentProps, forwardRef, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';
@@ -23,6 +23,10 @@ interface Props extends ComponentProps<typeof InputV2> {
   onClose?: () => void;
   onSave: () => void;
 }
+
+const StyledSpinner = styled(Spinner)`
+  margin: ${spacing.small};
+`;
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = (error?: boolean) =>
@@ -102,7 +106,7 @@ const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClo
             </>
           )}
           <div aria-live="assertive">
-            {loading && <Spinner size="normal" margin={spacing.small} id="folder-spinner" aria-label={t('loading')} />}
+            {loading && <StyledSpinner size="normal" id="folder-spinner" aria-label={t('loading')} />}
           </div>
         </Row>
       }

@@ -7,3 +7,4 @@
  */
 
 export { default as ProgrammeCard } from './ProgrammeCard';
+export type { Programme as ProgrammeV2 } from './ProgrammeCard';

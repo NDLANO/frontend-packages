@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
@@ -23,6 +23,10 @@ interface StyledStructureItemProps {
   greyedOut?: boolean;
   connectionId?: string;
 }
+
+const StyledSpinner = styled(Spinner)`
+  margin: 4px 26px;
+`;
 
 const StyledStructureItem = styled.li<StyledStructureItemProps>`
   margin: 0;
@@ -175,7 +179,7 @@ const Structure = ({
               </ItemNameBar>
               {loading ? (
                 <span>
-                  <Spinner size="normal" margin="4px 26px" />
+                  <StyledSpinner size="normal" />
                 </span>
               ) : (
                 <Structure

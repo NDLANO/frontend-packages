@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, WordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -489,7 +489,8 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
-    competenceGoalResourceSearchText: 'Vis ressurser til kompetansemål {{goal}}',
+    competenceGoalResourceSearchText: 'Vis ressurser til kompetansemål {{code}}',
+    coreResourceSearchText: 'Vis ressurser til kjerneelement {{code}}',
     competenceGoalShowExtra: 'Vis støtte til læreplanen',
     competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
     competenceCoreLabel: 'Kjerneelement',
@@ -1117,6 +1118,8 @@ const messages = {
       folder: 'Mappe',
       delete: 'Slett mappe',
       edit: 'Rediger mappe',
+      open: 'Åpne mappe',
+      close: 'Lukk mappe',
       updated: 'Mappen har blitt oppdatert',
       defaultPageDescription: 'Legg til beskrivelse ved å redigere mappen',
       missingName: 'Skriv navn på mappe',
@@ -1134,6 +1137,7 @@ const messages = {
         share: 'Del mappe',
         shared: 'Delt',
         unShare: 'Delingen er avsluttet. Mappen er ikke lenger delt.',
+        copyLink: 'Kopier lenke til mappa',
         link: 'Lenken er kopiert',
         header: {
           private: 'Vil du dele denne mappa?',
@@ -1192,11 +1196,11 @@ const messages = {
       drawerButton: 'Vis mapper og ressurser',
       drawerTitle: 'Mapper og ressurser',
       description: {
-        all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk, eller du kan bokmerke sida.',
+        all: 'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.\n\nHvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk eller bokmerke sida.',
         info1:
           'I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.',
         info2: 'Du kan bla i artiklene ved å bruke menyen.',
-        info3: 'Hvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk, eller du kan bokmerke sida.',
+        info3: 'Hvis du vil finne igjen mappa seinere, kan du bruke lenka du fikk eller bokmerke sida.',
       },
       willOpenInNewTab: 'Åpnes i ny fane.',
     },
@@ -1234,19 +1238,19 @@ const messages = {
         'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstotte',
       storageInfo: {
         title: 'Slik lagrer du favorittressursene dine fra NDLA',
-        text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',
+        text: 'Bruk hjerteknappen for å lagre en ressurs. Du får da mulighet til å lagre ressursen i ei mappe.',
       },
       favoriteSubjects: {
         title: 'Slik lagrer du favorittfagene dine fra NDLA',
-        text: 'Klikk på hjerteknappen for å lagre et fag. Du vil da få mulighet til å lagre favorittfagene dine til senere. Du kan finne de igjen i Min NDLA eller på siden med alle fag.',
+        text: 'Bruk hjerteknappen for å lagre et fag. Du får da mulighet til å lagre favorittfagene dine til senere. Du kan finne dem igjen i Min NDLA eller på sida med alle fag.',
       },
       sharing: {
         title: 'Nå kan lærere dele mapper med andre',
-        text: 'Klikk på dele-knappen i mappa for å få ei lenke som du kan dele med andre.',
+        text: 'Bruk deleknappen i mappa for å få ei lenke du kan dele med andre.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
-        text: 'Klikk på <strong>Mine mapper</strong> i menyen til venstre for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette ei ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
+        text: 'Velg <strong>Mine mapper</strong> for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette ei ny mappe i dialogvinduet som kommer opp når du hjertemerker en ressurs.',
       },
       tagInfo: {
         title: 'Slik tagger du favorittressursene dine',
@@ -1303,8 +1307,11 @@ const messages = {
     contact: 'Kontakt',
     help: 'Hjelp',
   },
-  programme: {
+  programmes: {
+    header: 'Se våre utdanningsprogram',
+    description: 'Vi ønsker å tilby de beste læringsressursene innen tradisjonelle og nye medier.',
     grades: 'Trinn',
+    accordionHeader: 'Alle utdanningsprogram',
   },
   embed: {
     conceptListError: 'Klarte ikke å vise forklaringsliste',
@@ -1321,6 +1328,51 @@ const messages = {
       h5p: 'H5P',
       external: 'Ekstern ressurs',
     },
+  },
+  gloss: {
+    examples: 'Eksempler',
+    wordClass: 'Ordklasse',
+    transcriptions: {
+      traditional: 'Tradisjonell skrivemåte',
+      pinyin: 'Pinyin',
+    },
+  },
+  wordClass: {
+    [WordClass.WordClass.Adjective]: 'Adjektiv',
+    [WordClass.WordClass.Adverb]: 'Adverb',
+    [WordClass.WordClass.ProperNoun]: 'Egennavn',
+    [WordClass.WordClass.Auxiliary]: 'Hjelpeord',
+    [WordClass.WordClass.Complement]: 'Komplement',
+    [WordClass.WordClass.Conjunction]: 'Konjunksjon',
+    [WordClass.WordClass.Coverb]: 'Koverb',
+    [WordClass.WordClass.Determiner]: 'Bestemmerord',
+    [WordClass.WordClass.Interjection]: 'Interjeksjon',
+    [WordClass.WordClass.Quantifier]: 'Kvantor',
+    [WordClass.WordClass.Marker]: 'Markør',
+    [WordClass.WordClass.ModalVerb]: 'Modalverb',
+    [WordClass.WordClass.MeasureWord]: 'Målord',
+    [WordClass.WordClass.Noun]: 'Substantiv',
+    [WordClass.WordClass['Noun-zh']]: 'Nomen',
+    [WordClass.WordClass.NounPhrase]: 'Nominalfrase',
+    [WordClass.WordClass.Onomatopoeia]: 'Onomatopoetikon',
+    [WordClass.WordClass.Particle]: 'Partikkel',
+    [WordClass.WordClass.Demonstrative]: 'Pekeord',
+    [WordClass.WordClass.PersonalPronoun]: 'Personlig Pronomen',
+    [WordClass.WordClass.Preposition]: 'Preposisjon',
+    [WordClass.WordClass.Pronoun]: 'Pronomen',
+    [WordClass.WordClass.QuestionWord]: 'Spørreord',
+    [WordClass.WordClass.LocationWord]: 'Stedsord',
+    [WordClass.WordClass.Suffix]: 'Suffiks',
+    [WordClass.WordClass.Numeral]: 'Tallord',
+    [WordClass.WordClass.TimeWord]: 'Tidsord',
+    [WordClass.WordClass.TimeExpression]: 'Tidsuttrykk',
+    [WordClass.WordClass.StativeVerb]: 'Tilstandsverb',
+    [WordClass.WordClass.SubordinatingConjunction]: 'Subjunksjon',
+    [WordClass.WordClass.ExclamationWord]: 'Utropsord',
+    [WordClass.WordClass.Expression]: 'Uttrykk',
+    [WordClass.WordClass.Verb]: 'Verb',
+    [WordClass.WordClass.VerbComplement]: 'Verb-Komplement',
+    [WordClass.WordClass.VerbObject]: 'Verb-Objekt',
   },
 };
 

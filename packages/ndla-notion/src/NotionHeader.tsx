@@ -6,7 +6,7 @@
  *
  */
 
-import React, { MouseEventHandler, ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors, fonts, misc } from '@ndla/core';
 import { CloseButton } from '@ndla/button';

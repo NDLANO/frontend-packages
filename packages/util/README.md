@@ -77,13 +77,7 @@ copyTextToClipboard('Hello world!');
 Finds translation for a specific language in an array named tags from an object. Prefered locales is a fallback option if the given locale translation does not exist.
 If no preferdLocales is defined, it is default sat to `['nb', 'nn', 'en']`.
 
-````js
+```js
 import { tagsI18N } from '@ndla/util';
 tagsI18N(object, 'nb', false, ['nb', 'nn', 'en']);
-
-### `downloadPdf({ title, content })`
-Creates a PDF document based of content. Content is an array of objects with keys 'content' and 'style'. Content is pure text, style must be one of 'heading', 'ingress' or 'paragraph'.
-```js
-import { downloadPdf } from '@ndla/util';
-downloadPdf({ title: 'myPdf', content: [{ text: 'PDF example', style: 'header'}, { text: 'Ingress text', style: 'ingress'}, { text: 'paragraph text #1', style: 'paragraph'}, { text: 'paragraph text #2', style: 'paragraph'}]);
-````
+```

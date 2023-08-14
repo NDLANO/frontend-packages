@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 type EditorNameProps = {
   title: string;
   name: string;

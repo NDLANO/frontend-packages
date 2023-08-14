@@ -1,23 +1,20 @@
-import React, { ReactNode } from 'react';
-import { Modal } from '@ndla/modal';
+import { ReactNode } from 'react';
+import { Modal, ModalContent } from '@ndla/modal';
 import NotionHeader from './NotionHeader';
 import NotionBody from './NotionBody';
 
 interface Props {
   title: string;
   children?: ReactNode;
-  closeCallback?: () => void;
   subTitle?: string;
 }
 
-const NotionDialogWrapper = ({ title, children, closeCallback, subTitle }: Props) => (
-  <Modal controlled isOpen animation="subtle" onClose={() => closeCallback?.()}>
-    {(onCloseModal: () => void) => (
-      <>
-        <NotionHeader title={title} subTitle={subTitle} onClose={onCloseModal} />
-        <NotionBody>{children}</NotionBody>
-      </>
-    )}
+const NotionDialogWrapper = ({ title, children, subTitle }: Props) => (
+  <Modal defaultOpen>
+    <ModalContent animation="subtle">
+      <NotionHeader title={title} subTitle={subTitle} />
+      <NotionBody>{children}</NotionBody>
+    </ModalContent>
   </Modal>
 );
 

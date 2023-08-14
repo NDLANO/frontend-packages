@@ -5,7 +5,6 @@
  *
  */
 
-import React from 'react';
 import { Carousel, CalculatedCarouselProps } from '@ndla/carousel';
 import styled from '@emotion/styled';
 import { IconButtonV2 } from '@ndla/button';

@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, WordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -490,7 +490,8 @@ const messages = {
     useCompentenceGoalsFilter: 'Geavat filtara',
     closeCompentenceGoalsFilter: 'Govčča filtara',
     competenceGoalsNarrowBackButton: 'Ruovttoluotta',
-    competenceGoalResourceSearchText: 'Vis ressursar til kompetansemål {{goal}}',
+    competenceGoalResourceSearchText: 'Vis ressursar til kompetansemål {{code}}',
+    coreResourceSearchText: 'Vis ressurser til kjerneelement {{code}}',
     competenceGoalShowExtra: 'Čájet oahppoplána doarjaga',
     competenceGoalCloseExtra: 'Čiega oahppoplána doarjaga',
     competenceCoreLabel: 'Guovddášelemeanta',
@@ -1118,6 +1119,8 @@ const messages = {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
       edit: 'Rievdat máhpa',
+      open: 'Åpne mappe',
+      close: 'Lukk mappe',
       updated: 'Mappa har blitt oppdatert',
       defaultPageDescription: 'Legg til beskrivelse ved å redigere mappa',
       missingName: 'Čále nama máhppii',
@@ -1135,6 +1138,7 @@ const messages = {
         share: 'Juoge máhpa',
         shared: 'Juogaduvvon',
         unShare: 'Juohkin lea loahpahuvvon. Máhppa ii leat šat juogaduvvon.',
+        copyLink: 'Kopier lenke til mappa',
         link: 'Liŋka lea máŋgejuvvon.',
         header: {
           private: 'Áiggut go juogadit dán máhpa?',
@@ -1193,12 +1197,11 @@ const messages = {
       learningpathUnsupported:
         'Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.',
       description: {
-        all: 'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.\n\nSáhtát bláđet artihkkaliid fálu vehkiin.\n\nJus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
+        all: 'I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.\n\nDu kan bla i artiklane ved å bruke menyen.\n\nDersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk, eller du kan bokmerke sida.',
         info1:
           'Dán máhpas gávnnat fágaávdnasiid ja bargobihtáid NDLAs. Oahpaheaddji lea čohkken artihkkaliid ja bidjan daid ortnetvurrui.',
         info2: 'Sáhtát bláđet artihkkaliid fálu vehkiin.',
-        info3:
-          'Jus háliidat gávdnat máhpa maŋŋel fas, sáhtát geavahit seamma liŋkka maid oahpaheaddjis leat ožžon, dahje sáhtát girjemearka bidjat siidui.',
+        info3: 'Dersom du vil finne igjen mappa seinare, kan du bruke lenka du fekk, eller du kan bokmerke sida.',
       },
       willOpenInNewTab: 'Åpnes i ny fane.',
     },
@@ -1305,8 +1308,11 @@ const messages = {
     contact: 'Váldde oktavuođa',
     help: 'Veahket',
   },
-  programme: {
+  programmes: {
+    header: 'Se våre utdanningsprogram',
+    description: 'Vi ønsker å tilby de beste læringsressursene innen tradisjonelle og nye medier.',
     grades: 'Ceahkki',
+    accordionHeader: 'Alle utdanningsprogram',
   },
   embed: {
     conceptListError: 'Ii sáhttán čájehit čilgehuslisttu',
@@ -1323,6 +1329,51 @@ const messages = {
       h5p: 'H5P',
       external: 'Ekstern ressurs',
     },
+  },
+  gloss: {
+    examples: 'Eksempler',
+    wordClass: 'Ordklasse',
+    transcriptions: {
+      traditional: 'Tradisjonell skrivemåte',
+      pinyin: 'Pinyin',
+    },
+  },
+  wordClass: {
+    [WordClass.WordClass.Adjective]: 'Adjektiv',
+    [WordClass.WordClass.Adverb]: 'Adverb',
+    [WordClass.WordClass.ProperNoun]: 'Egennavn',
+    [WordClass.WordClass.Auxiliary]: 'Hjelpeord',
+    [WordClass.WordClass.Complement]: 'Komplement',
+    [WordClass.WordClass.Conjunction]: 'Konjunksjon',
+    [WordClass.WordClass.Coverb]: 'Koverb',
+    [WordClass.WordClass.Determiner]: 'Bestemmerord',
+    [WordClass.WordClass.Interjection]: 'Interjeksjon',
+    [WordClass.WordClass.Quantifier]: 'Kvantor',
+    [WordClass.WordClass.Marker]: 'Markør',
+    [WordClass.WordClass.ModalVerb]: 'Modalverb',
+    [WordClass.WordClass.MeasureWord]: 'Målord',
+    [WordClass.WordClass.Noun]: 'Substantiv',
+    [WordClass.WordClass['Noun-zh']]: 'Nomen',
+    [WordClass.WordClass.NounPhrase]: 'Nominalfrase',
+    [WordClass.WordClass.Onomatopoeia]: 'Onomatopoetikon',
+    [WordClass.WordClass.Particle]: 'Partikkel',
+    [WordClass.WordClass.Demonstrative]: 'Pekeord',
+    [WordClass.WordClass.PersonalPronoun]: 'Personlig Pronomen',
+    [WordClass.WordClass.Preposition]: 'Preposisjon',
+    [WordClass.WordClass.Pronoun]: 'Pronomen',
+    [WordClass.WordClass.QuestionWord]: 'Spørreord',
+    [WordClass.WordClass.LocationWord]: 'Stedsord',
+    [WordClass.WordClass.Suffix]: 'Suffiks',
+    [WordClass.WordClass.Numeral]: 'Tallord',
+    [WordClass.WordClass.TimeWord]: 'Tidsord',
+    [WordClass.WordClass.TimeExpression]: 'Tidsuttrykk',
+    [WordClass.WordClass.StativeVerb]: 'Tilstandsverb',
+    [WordClass.WordClass.SubordinatingConjunction]: 'Subjunksjon',
+    [WordClass.WordClass.ExclamationWord]: 'Utropsord',
+    [WordClass.WordClass.Expression]: 'Uttrykk',
+    [WordClass.WordClass.Verb]: 'Verb',
+    [WordClass.WordClass.VerbComplement]: 'Verb-Komplement',
+    [WordClass.WordClass.VerbObject]: 'Verb-Objekt',
   },
 };
 

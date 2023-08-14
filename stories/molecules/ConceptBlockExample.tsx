@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants } from '@ndla/ui';
 // @ts-ignore
 import { Remarkable } from 'remarkable';
@@ -19,7 +19,6 @@ import FigureImage from '../article/FigureImage';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 //@ts-ignore
 import LicenseBox from '../article/LicenseBox';
-import NotionExample from './NotionExample';
 import NotionBlock from './NotionBlock';
 
 const { contentTypes } = constants;
@@ -97,12 +96,7 @@ const ConceptBlockExample = () => {
         competenceGoals={<CompetenceGoalListExample />}
         icon={<TasksAndActivitiesBadge background size="large" />}
         id="mainContentId"
-        locale="nb"
         modifier={contentTypes.TASKS_AND_ACTIVITIES}
-        notions={{
-          list: [NotionExample],
-          related: [],
-        }}
       />
     </OneColumn>
   );

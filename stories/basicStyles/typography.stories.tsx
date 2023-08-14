@@ -7,11 +7,10 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
+import { Table } from '@ndla/ui';
 import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 import { AnchorNavigation } from '../helpers';
-import Table from '../molecules/TableExample';
 
 type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -26,13 +25,13 @@ const Heading = ({ level }: HeadingProps) => {
 };
 
 const meta: Meta = {
-  title: 'Base styles/Typografi',
+  title: 'Base styles/Typography',
   parameters: defaultParameters,
 };
 
 export default meta;
 
-export const Typografi: StoryFn = () => {
+export const Typography: StoryFn = () => {
   return (
     <div>
       <StoryIntro title="Typografi">
@@ -71,7 +70,7 @@ export const Typografi: StoryFn = () => {
           <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Source Sans Pro</a> og{' '}
           <a href="https://fonts.google.com/specimen/Source+Code+Pro">Source Code Pro</a>.
         </p>
-        <Table runScripts>
+        <Table>
           <thead>
             <tr>
               <th>Type tekst</th>

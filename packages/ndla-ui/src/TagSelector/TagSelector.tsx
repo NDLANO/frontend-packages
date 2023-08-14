@@ -6,7 +6,7 @@
  *
  */
 
-import React, { KeyboardEvent, useMemo, useState } from 'react';
+import { KeyboardEvent, useMemo, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import { MultiValue, StylesConfig } from 'react-select';
 import styled from '@emotion/styled';

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';

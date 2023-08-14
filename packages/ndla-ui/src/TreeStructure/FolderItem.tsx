@@ -6,21 +6,21 @@
  *
  */
 
-import React, { KeyboardEvent, useEffect, useRef } from 'react';
+import { CSSProperties, KeyboardEvent, useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ArrowDropDownRounded } from '@ndla/icons/common';
 import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
 import { Done } from '@ndla/icons/editor';
 import { ButtonV2 as Button } from '@ndla/button';
-import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
+import { colors, spacing, animations, misc, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
 import { CommonFolderItemsProps } from './types';
 import { arrowNavigation } from './arrowNavigation';
 import { treestructureId } from './helperFunctions';
 
-const OpenButton = styled.span<{ isOpen: boolean }>`
+const OpenButton = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +34,12 @@ const OpenButton = styled.span<{ isOpen: boolean }>`
   svg {
     width: 24px;
     height: 24px;
-    transform: rotate(${({ isOpen }) => (isOpen ? '0' : '-90')}deg);
+    transform: rotate(-90deg);
+  }
+  &[data-open='true'] {
+    svg {
+      transform: rotate(0deg);
+    }
   }
 `;
 
@@ -57,34 +62,41 @@ const FolderIconWrapper = styled.div`
   }
 `;
 
-const shouldForwardProp = (name: string) => !['selected', 'level', 'focused', 'isCreatingFolder'].includes(name);
-
-interface FolderNameProps {
-  selected?: boolean;
-  level: number;
-  isCreatingFolder?: boolean;
-  focused?: boolean;
-}
-
-const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
+const FolderName = styled(Button)`
   display: grid;
   grid-template-columns: auto 1fr auto;
-  padding-left: ${({ level }) => 0.75 * spacingUnit * level}px;
+  padding-left: calc(0.75 * ${spacing.normal} * var(--level));
   gap: ${spacing.xxsmall};
   border: none;
   outline: none;
-  background: ${({ selected, isCreatingFolder, focused }) =>
-    isCreatingFolder ? 'none' : selected ? colors.brand.lighter : focused && colors.brand.lightest};
-  color: ${({ isCreatingFolder, focused }) =>
-    isCreatingFolder && focused ? colors.brand.primary : colors.text.primary};
+  color: ${colors.text.primary};
   transition: ${animations.durations.superFast};
   word-break: break-word;
 
   &:hover {
     box-shadow: none;
     outline: none;
-    background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
+    background: ${colors.brand.lightest};
     color: ${colors.text.primary};
+  }
+
+  &[data-focused='true'] {
+    background: ${colors.brand.lightest};
+  }
+
+  &[data-selected='true'] {
+    background: ${colors.brand.lighter};
+    &:hover {
+      background: ${colors.brand.light};
+    }
+  }
+
+  &[data-creating='true'][data-focused='true'] {
+    color: ${colors.brand.primary};
+  }
+
+  &[data-creating='true'] {
+    background: none;
   }
 `;
 
@@ -92,22 +104,25 @@ const StyledDone = styled(Done)`
   color: ${colors.support.green};
 `;
 
-const FolderNameLink = styled(SafeLink, { shouldForwardProp })<FolderNameProps>`
+const FolderNameLink = styled(SafeLink)`
   display: grid;
   align-items: center;
   grid-template-columns: ${spacing.medium} 1fr auto;
   padding: ${spacing.small} ${spacing.xxsmall};
-  margin-left: ${({ level }) => 0.75 * spacingUnit * level}px;
+  padding-left: calc(0.75 * ${spacing.normal} * var(--level));
   gap: ${spacing.xxsmall};
   cursor: pointer;
 
   border: none;
   box-shadow: none;
-  color: ${({ selected }) => (selected ? colors.brand.primary : colors.text.primary)};
-  font-weight: ${({ selected }) => selected && fonts.weight.semibold};
+  color: ${colors.text.primary};
   font-size: ${fonts.sizes('16px')};
   transition: ${animations.durations.superFast};
   word-break: break-word;
+  &[data-selected='true'] {
+    color: ${colors.brand.primary};
+    font-weight: ${fonts.weight.semibold};
+  }
   &:hover,
   &:focus {
     color: ${colors.brand.primary};
@@ -145,6 +160,8 @@ const FolderItem = ({
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const selected = selectedFolder ? selectedFolder.id === id : false;
 
+  const levelVariable = useMemo(() => ({ '--level': level } as unknown as CSSProperties), [level]);
+
   const focused = focusedFolder?.id === id;
 
   const handleClickFolder = () => {
@@ -165,9 +182,10 @@ const FolderItem = ({
         ref.current?.focus();
       }
       if (type === 'picker') {
+        ref.current?.focus();
         ref.current?.scrollIntoView({
           behavior: 'smooth',
-          block: 'nearest',
+          block: 'start',
         });
       }
     }
@@ -194,7 +212,7 @@ const FolderItem = ({
       aria-current={selected ? 'page' : undefined}
       aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
       ref={ref}
-      level={level}
+      style={levelVariable}
       onKeyDown={(e: KeyboardEvent<HTMLElement>) => {
         if (e.key === 'Enter') {
           setSelectedFolder(folder);
@@ -204,7 +222,7 @@ const FolderItem = ({
       }}
       to={loading ? '' : linkPath}
       tabIndex={tabable ? 0 : -1}
-      selected={selected}
+      data-selected={selected}
       onFocus={() => setFocusedFolder(folder)}
       onClick={handleClickFolder}
     >
@@ -212,7 +230,7 @@ const FolderItem = ({
         <OpenButton
           aria-hidden
           tabIndex={-1}
-          isOpen={isOpen}
+          data-open={isOpen}
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
@@ -236,7 +254,7 @@ const FolderItem = ({
       id={treestructureId(type, folder.id)}
       aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
       aria-selected={selected}
-      focused={focusedFolder?.id === folder.id}
+      data-focused={focusedFolder?.id === folder.id}
       aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
       aria-label={`${name}${folder.status === 'shared' ? `, ${t('myNdla.folder.sharing.shared')}` : ''}`}
       variant="ghost"
@@ -244,21 +262,19 @@ const FolderItem = ({
       fontWeight="normal"
       colorTheme="light"
       ref={ref}
-      level={level}
-      selected={selected}
+      style={levelVariable}
+      data-selected={selected}
       disabled={loading}
-      onFocus={(e) => {
-        setFocusedFolder(focusedFolder || folder);
-      }}
+      onFocus={() => setFocusedFolder(focusedFolder || folder)}
       onClick={handleClickFolder}
-      isCreatingFolder={isCreatingFolder}
+      data-creating={isCreatingFolder}
     >
       <IconWrapper>
         {!hideArrow && (
           <OpenButton
             aria-hidden
             tabIndex={-1}
-            isOpen={isOpen}
+            data-open={isOpen}
             onClick={(e) => {
               e.stopPropagation();
               setFocusedFolder(folder);

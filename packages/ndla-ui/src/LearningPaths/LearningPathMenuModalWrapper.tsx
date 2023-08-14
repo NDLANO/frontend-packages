@@ -6,9 +6,9 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
 import { spacing, mq, breakpoints, colors } from '@ndla/core';
-import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
+import { ModalHeader, ModalBody, ModalTrigger, ModalCloseButton, Modal, ModalContent } from '@ndla/modal';
 import { css } from '@emotion/react';
 import { ButtonV2 } from '@ndla/button';
 import { LearningPath } from '@ndla/icons/contentType';
@@ -30,7 +30,7 @@ const buttonToggleCss = css`
   }
 `;
 
-const StyledModal = styled(Modal)`
+const StyledModalContent = styled(ModalContent)`
   background-color: ${colors.brand.greyLightest};
 `;
 
@@ -40,28 +40,29 @@ type ModalWrapperProps = {
 };
 
 const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
+  const [open, setIsOpen] = useState(false);
   const { t } = useTranslation();
+
+  const onClose = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   if (innerWidth < 601) {
     return (
-      <StyledModal
-        animationDuration={200}
-        size="full"
-        activateButton={
+      <Modal open={open} onOpenChange={setIsOpen}>
+        <ModalTrigger>
           <ButtonV2 css={buttonToggleCss}>
             <LearningPath />
             <span>{t('learningPath.openMenuTooltip')}</span>
           </ButtonV2>
-        }
-      >
-        {(closeModal: VoidFunction) => (
-          <>
-            <ModalHeader>
-              <ModalCloseButton title={t('modal.closeModal')} onClick={closeModal} />
-            </ModalHeader>
-            <ModalBody>{children(closeModal)}</ModalBody>
-          </>
-        )}
-      </StyledModal>
+        </ModalTrigger>
+        <StyledModalContent animationDuration={200} size="full">
+          <ModalHeader>
+            <ModalCloseButton />
+          </ModalHeader>
+          <ModalBody>{children(onClose)}</ModalBody>
+        </StyledModalContent>
+      </Modal>
     );
   }
   return <>{children(() => {})}</>;

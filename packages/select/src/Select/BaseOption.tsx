@@ -6,50 +6,45 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import { css } from '@emotion/react';
 import { Done } from '@ndla/icons/editor';
 import { OptionProps } from 'react-select';
 import { Option } from './types';
 
-interface CheckProps {
-  isSelected: boolean;
-}
-
-const shouldForwardProp = (prop: string) => prop !== 'isVisible';
-
-const StyledCheck = styled(Done, { shouldForwardProp })<CheckProps>`
-  visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
+const StyledCheck = styled(Done)`
+  visibility: hidden;
   flex-shrink: 0;
+  &[data-selected='true'] {
+    visibility: visible;
+  }
 `;
 
-interface StyledProps {
-  small?: boolean;
-  bold?: boolean;
-  isFocused: boolean;
-}
-
-const StyledBaseOption = styled.div<StyledProps>`
+const StyledBaseOption = styled.div`
   ${fonts.sizes('18px', '24px')};
   padding: ${spacing.small};
   display: flex;
   align-items: center;
   gap: ${spacing.xxsmall};
   cursor: pointer;
-  background-color: ${({ isFocused }) => (isFocused ? colors.brand.lighter : colors.white)};
   padding-right: 20px;
   color: ${colors.brand.dark};
-  font-weight: ${({ bold }) => (bold ? fonts.weight.bold : fonts.weight.semibold)};
-
-  ${({ small, bold }) =>
-    small &&
-    css`
-      font-weight: ${bold ? fonts.weight.semibold : fonts.weight.normal};
-      ${fonts.sizes('16px', '16px')};
-      padding: ${spacing.xsmall};
-    `}
+  background-color: ${colors.white};
+  font-weight: ${fonts.weight.semibold};
+  &[data-focused='true'] {
+    background-color: ${colors.brand.lighter};
+  }
+  &[data-bold='true'] {
+    font-weight: ${fonts.weight.bold};
+  }
+  &[data-small='true'] {
+    font-weight: ${fonts.weight.normal};
+    ${fonts.sizes('16px', '16px')};
+    padding: ${spacing.xsmall};
+    &[data-bold='true'] {
+      font-weight: ${fonts.weight.semibold};
+    }
+  }
 `;
 
 const BaseOption = <T extends boolean>({
@@ -61,8 +56,8 @@ const BaseOption = <T extends boolean>({
   children,
 }: OptionProps<Option, T>) => {
   return (
-    <StyledBaseOption small={small} bold={bold} ref={innerRef} {...innerProps} isFocused={isFocused}>
-      <StyledCheck isSelected={isSelected} />
+    <StyledBaseOption data-small={small} data-bold={bold} ref={innerRef} {...innerProps} data-focused={isFocused}>
+      <StyledCheck data-selected={isSelected} />
       {children}
     </StyledBaseOption>
   );

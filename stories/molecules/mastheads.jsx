@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, createRef } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import {

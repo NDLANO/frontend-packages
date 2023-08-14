@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
@@ -53,22 +53,17 @@ const ImageWrapper = styled.div`
   }
 `;
 
-type TextWrapperProps = {
-  hasImage?: boolean;
-};
-
-const TextWrapper = styled.div<TextWrapperProps>`
+const TextWrapper = styled.div`
   padding: ${spacing.small};
   width: 100%;
-
-  ${(props) =>
-    props.hasImage &&
-    `${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.small} ${spacing.normal};
+  &[data-has-image='true'] {
+    ${mq.range({ from: breakpoints.tablet })} {
+      padding: ${spacing.small} ${spacing.normal};
+    }
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      padding: ${spacing.small} ${spacing.medium};
+    }
   }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.small} ${spacing.medium};
-  }`}
 `;
 
 const TitleWrapper = styled.div`
@@ -78,13 +73,12 @@ const TitleWrapper = styled.div`
   }
 `;
 
-type TitleProps = {
-  hasDescription?: boolean;
-};
-
-const Title = styled.h2<TitleProps>`
+const Title = styled.h2`
   ${fonts.sizes('22px', '30px')};
-  margin: 0 0 ${(props) => props.hasDescription && `${spacing.small}`};
+  margin: 0px;
+  &[data-has-desc='true'] {
+    margin: 0 0 ${spacing.small};
+  }
 `;
 
 const Subtitle = styled.h3`
@@ -99,20 +93,17 @@ const StyledDescription = styled.div`
   margin: 0;
 `;
 
-type LinkToTextVersionWrapperProps = {
-  noMargin?: boolean;
-};
-const LinkToTextVersionWrapper = styled.div<LinkToTextVersionWrapperProps>`
-  ${(props) =>
-    !props.noMargin &&
-    `margin-top: ${spacing.normal};
-  `}
+const LinkToTextVersionWrapper = styled.div`
+  &[data-margin='true'] {
+    margin-top: ${spacing.small};
+  }
   ${mq.range({ until: breakpoints.tabletWide })} {
     margin: ${spacing.small} 0;
   }
 `;
 
 const TextVersionWrapper = styled.div`
+  white-space: pre-wrap;
   border: 1px solid ${colors.brand.lighter};
   border-top: 0;
   ${fonts.sizes('16px', '30px')};
@@ -200,10 +191,10 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   };
 
   type TextVersionComponentProps = {
-    noMargin?: boolean;
+    margin?: boolean;
   };
-  const TextVersionComponent = ({ noMargin }: TextVersionComponentProps) => (
-    <LinkToTextVersionWrapper noMargin={noMargin}>
+  const TextVersionComponent = ({ margin }: TextVersionComponentProps) => (
+    <LinkToTextVersionWrapper data-margin={margin}>
       <ButtonV2 size="normal" shape="pill" onClick={toggleTextVersion} data-audio-text-button-id={staticRenderId}>
         {t('audio.textVersion.heading')}
       </ButtonV2>
@@ -218,7 +209,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
             <img src={img.url} alt={img.alt} />
           </ImageWrapper>
         )}
-        <TextWrapper hasImage={!!img}>
+        <TextWrapper data-has-image={!!img}>
           <TitleWrapper>
             <div>
               {subtitle && (
@@ -226,9 +217,9 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
                   {subtitle.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle.title}
                 </Subtitle>
               )}
-              <Title hasDescription={!!description}>{title}</Title>
+              <Title data-has-desc={!!description}>{title}</Title>
             </div>
-            {textVersion && !img && <TextVersionComponent noMargin />}
+            {textVersion && !img && <TextVersionComponent />}
           </TitleWrapper>
           {description && (
             <StyledDescription>
@@ -240,7 +231,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
               </ButtonV2>
             </StyledDescription>
           )}
-          {textVersion && img && <TextVersionComponent />}
+          {textVersion && img && <TextVersionComponent margin />}
         </TextWrapper>
       </InfoWrapper>
       <div data-audio-player={1} data-src={src} data-title={title}>

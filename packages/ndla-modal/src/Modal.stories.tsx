@@ -6,21 +6,21 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
-import Modal from './Modal';
+import { Modal, ModalContent, ModalTrigger } from './Modal';
 import ModalBody from './ModalBody';
 import ModalHeader from './ModalHeader';
 import ModalTitle from './ModalTitle';
 import ModalCloseButton from './ModalCloseButton';
 import { defaultParameters } from '../../../stories/defaults';
-import { DialogProps } from './types';
+import { ModalContentProps } from './types';
 
-const meta: Meta<typeof Modal> = {
+const meta: Meta<typeof ModalContent> = {
   title: 'Components/Modal',
   tags: ['autodocs'],
-  component: Modal,
+  component: ModalContent,
   parameters: {
     ...defaultParameters,
     docs: {
@@ -39,64 +39,80 @@ const meta: Meta<typeof Modal> = {
 
 export default meta;
 
-export const Story: StoryFn<DialogProps> = (args) => {
+export const Story: StoryFn<ModalContentProps> = (args) => {
   return (
-    <Modal activateButton={<ButtonV2>Åpne</ButtonV2>} {...args}>
-      {(close) => (
-        <>
-          <ModalHeader>
-            <ModalTitle>Tittel</ModalTitle>
-            <ModalCloseButton onClick={close} />
-          </ModalHeader>
-          <ModalBody>Hello</ModalBody>
-        </>
-      )}
+    <Modal {...args}>
+      <ModalTrigger>
+        <ButtonV2>Åpne</ButtonV2>
+      </ModalTrigger>
+      <ModalContent {...args}>
+        <ModalHeader>
+          <ModalTitle>Tittel</ModalTitle>
+          <ModalCloseButton />
+        </ModalHeader>
+        <ModalBody>Hello</ModalBody>
+      </ModalContent>
     </Modal>
   );
 };
 
 Story.storyName = 'Modal';
 
-export const Controlled: StoryFn<DialogProps> = () => {
+export const Controlled: StoryFn<ModalContentProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <>
-      <ButtonV2 onClick={() => setIsOpen(true)}>Åpne</ButtonV2>
-      <Modal controlled isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        {(close) => (
-          <ModalHeader>
-            <ModalTitle>Opened</ModalTitle>
-            <ModalCloseButton onClick={close} />
-          </ModalHeader>
-        )}
-      </Modal>
-    </>
-  );
-};
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => setIsOpen(false), 10000);
+    }
+  }, [isOpen]);
 
-export const Uncontrolled: StoryFn<DialogProps> = () => {
   return (
-    <Modal activateButton={<ButtonV2>Åpne</ButtonV2>}>
-      {(close) => (
+    <Modal open={isOpen} onOpenChange={setIsOpen}>
+      <ModalTrigger>
+        <ButtonV2>Åpne</ButtonV2>
+      </ModalTrigger>
+      <ModalContent>
         <ModalHeader>
           <ModalTitle>Opened</ModalTitle>
-          <ModalCloseButton onClick={close} />
+          <ModalCloseButton />
         </ModalHeader>
-      )}
+        <ModalBody>
+          <p>This modal will be closed by an external useEffect in 10 seconds</p>
+        </ModalBody>
+      </ModalContent>
     </Modal>
   );
 };
 
-export const CustomHeightAndWidth: StoryFn<DialogProps> = () => {
+export const Uncontrolled: StoryFn<ModalContentProps> = () => {
   return (
-    <Modal size={{ width: 'large', height: 'xsmall' }} activateButton={<ButtonV2>Åpne</ButtonV2>}>
-      {(close) => (
+    <Modal>
+      <ModalTrigger>
+        <ButtonV2>Åpne</ButtonV2>
+      </ModalTrigger>
+      <ModalContent>
         <ModalHeader>
           <ModalTitle>Opened</ModalTitle>
-          <ModalCloseButton onClick={close} />
+          <ModalCloseButton />
         </ModalHeader>
-      )}
+      </ModalContent>
+    </Modal>
+  );
+};
+
+export const CustomHeightAndWidth: StoryFn<ModalContentProps> = () => {
+  return (
+    <Modal>
+      <ModalTrigger>
+        <ButtonV2>Åpne</ButtonV2>
+      </ModalTrigger>
+      <ModalContent size={{ width: 'large', height: 'xsmall' }}>
+        <ModalHeader>
+          <ModalTitle>Opened</ModalTitle>
+          <ModalCloseButton />
+        </ModalHeader>
+      </ModalContent>
     </Modal>
   );
 };

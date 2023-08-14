@@ -41,51 +41,60 @@ const StyledOl = styled.ol`
       margin-bottom: ${spacing.nsmall} !important;
     }
   }
+  counter-reset: level1;
 
   &[data-type='letters'] {
-    counter-reset: item 0;
     > li {
-      counter-increment: item;
       &:before {
-        position: absolute;
-        transform: translateX(-100%);
-        content: counter(item, upper-alpha) '.';
-        padding-right: ${spacing.nsmall};
+        content: counter(level1, upper-alpha) '.';
       }
 
       > ol[data-type='letters'] {
         > li:before {
-          content: counter(item, lower-alpha) '.';
+          content: counter(level1, lower-alpha) '.';
         }
         ol[data-type='letters'] {
           > li:before {
-            content: counter(item, lower-roman) '.';
+            content: counter(level1, lower-roman) '.';
           }
         }
       }
     }
   }
 
-  &:not([data-type='letters']) {
-    counter-reset: item 0;
-    > li {
-      counter-increment: item;
-      &:before {
-        position: absolute;
-        transform: translateX(-100%);
-        content: counters(item, '.') '.';
-        padding-right: ${spacing.nsmall};
-      }
+  > li {
+    counter-increment: level1;
+    &:before {
+      position: absolute;
+      transform: translateX(-100%);
+      content: counter(level1, decimal) '.';
+      padding-right: ${spacing.nsmall};
+    }
 
-      > ol:not([data-type='letters']) {
-        > li {
-          padding-left: ${spacing.nsmall};
-          > ol:not([data-type='letters']) {
-            > li {
-              padding-left: ${spacing.medium};
-              > ol:not([data-type='letters']) {
-                > li {
-                  padding-left: ${spacing.large};
+    > ol:not([data-type='letters']) {
+      counter-reset: level2;
+      > li {
+        padding-left: ${spacing.nsmall};
+        counter-increment: level2;
+        &:before {
+          content: counter(level1, decimal) '.' counter(level2, decimal) '.';
+        }
+        > ol:not([data-type='letters']) {
+          counter-reset: level3;
+          > li {
+            padding-left: ${spacing.medium};
+            counter-increment: level3;
+            &:before {
+              content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.';
+            }
+            > ol:not([data-type='letters']) {
+              counter-reset: level4;
+              > li {
+                padding-left: ${spacing.large};
+                counter-increment: level4;
+                &:before {
+                  content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.'
+                    counter(level4, decimal) '.';
                 }
               }
             }

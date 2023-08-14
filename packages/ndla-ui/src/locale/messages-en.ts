@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, WordClass, Transcriptions } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -490,7 +490,8 @@ const messages = {
     useCompentenceGoalsFilter: 'Use filter',
     closeCompentenceGoalsFilter: 'Close filter',
     competenceGoalsNarrowBackButton: 'Go back',
-    competenceGoalResourceSearchText: 'View resources to competence goal {{goal}}',
+    competenceGoalResourceSearchText: 'View resources to competence goal {{code}}',
+    coreResourceSearchText: 'View resources to core element {{code}}',
     competenceGoalShowExtra: 'Show',
     competenceGoalCloseExtra: 'Hide',
     competenceCoreLabel: 'Core element',
@@ -1118,6 +1119,8 @@ const messages = {
       folder: 'Folder',
       delete: 'Delete folder',
       edit: 'Edit folder',
+      open: 'Open folder',
+      close: 'Close folder',
       updated: 'Folder updated',
       defaultPageDescription: 'Add a description by editing the folder',
       missingName: 'Folder name required',
@@ -1135,6 +1138,7 @@ const messages = {
         share: 'Share folder',
         shared: 'Shared',
         unShare: 'Sharing stopped. The folder is no longer shared',
+        copyLink: 'Copy link to folder',
         link: 'Link is copied',
         header: {
           private: 'Do you want to share this folder?',
@@ -1195,11 +1199,11 @@ const messages = {
       drawerButton: 'Show folders and resources',
       drawerTitle: 'Folders and resources',
       description: {
-        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link, or you can bookmark the page.',
+        all: 'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.\n\nIf you want to come back to the folder later, you can use the link you received or bookmark the page.',
         info1:
           'In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.',
         info2: 'You can use the menu to navigate through the articles.',
-        info3: 'If you want to come back to the folder later, you can use the link, or you can bookmark the page.',
+        info3: 'If you want to come back to the folder later, you can use the link you received or bookmark the page.',
       },
       willOpenInNewTab: 'Opens in a new tab.',
     },
@@ -1238,19 +1242,19 @@ const messages = {
 
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
-        text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
+        text: 'Use the heart button to save a resource. You will then get an option to store the resource in a folder.',
       },
       sharing: {
         title: 'Teachers can now share folders',
-        text: 'Click on the share-button to get a link you can share.',
+        text: 'Use the share button to get a link you can share.',
       },
       favoriteSubjects: {
         title: 'How to save your favorite subjects from NDLA',
-        text: 'Click on the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
+        text: 'Use the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
-        text: 'You can get to the folder overview by clicking on <strong>My folders</strong> on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+        text: 'Choose <strong>My folders</strong> to create new folders and subfolders. You can also create a new folder in the dialogue window that is activated when you mark the heart in a resource.',
       },
       tagInfo: {
         title: 'How to tag your favourite resources',
@@ -1307,8 +1311,11 @@ const messages = {
     contact: 'Contact',
     help: 'Help',
   },
-  programme: {
+  programmes: {
+    header: 'View our educational programmes',
+    description: 'We strive to offer the best learning resources within traditional and new media.',
     grades: 'Grades',
+    accordionHeader: 'All educational programmes',
   },
   embed: {
     conceptListError: 'Failed to show concept list',
@@ -1325,6 +1332,51 @@ const messages = {
       h5p: 'H5P',
       external: 'External resource',
     },
+  },
+  gloss: {
+    examples: 'Examples',
+    wordClass: 'Word class',
+    transcriptions: {
+      traditional: 'Traditional spelling',
+      pinyin: 'Pinyin',
+    },
+  },
+  wordClass: {
+    [WordClass.WordClass.Adjective]: 'Adjective',
+    [WordClass.WordClass.Adverb]: 'Adverb',
+    [WordClass.WordClass.ProperNoun]: 'Proper Noun',
+    [WordClass.WordClass.Auxiliary]: 'Auxiliary',
+    [WordClass.WordClass.Complement]: 'Complement',
+    [WordClass.WordClass.Conjunction]: 'Conjunction',
+    [WordClass.WordClass.Coverb]: 'Coverb',
+    [WordClass.WordClass.Determiner]: 'Determiner',
+    [WordClass.WordClass.Interjection]: 'Interjection',
+    [WordClass.WordClass.Quantifier]: 'Quantifier',
+    [WordClass.WordClass.Marker]: 'Marker',
+    [WordClass.WordClass.ModalVerb]: 'Modal Verb',
+    [WordClass.WordClass.MeasureWord]: 'Measure Word',
+    [WordClass.WordClass.Noun]: 'Noun',
+    [WordClass.WordClass['Noun-zh']]: 'Noun',
+    [WordClass.WordClass.NounPhrase]: 'Noun Phrase',
+    [WordClass.WordClass.Onomatopoeia]: 'Onomatopoeia',
+    [WordClass.WordClass.Particle]: 'Particle',
+    [WordClass.WordClass.Demonstrative]: 'Demonstrative',
+    [WordClass.WordClass.PersonalPronoun]: 'Personal Pronoun',
+    [WordClass.WordClass.Preposition]: 'Preposition',
+    [WordClass.WordClass.Pronoun]: 'Pronoun',
+    [WordClass.WordClass.QuestionWord]: 'Question Word',
+    [WordClass.WordClass.LocationWord]: 'Location Word',
+    [WordClass.WordClass.Suffix]: 'Suffix',
+    [WordClass.WordClass.Numeral]: 'Numeral',
+    [WordClass.WordClass.TimeWord]: 'Time word',
+    [WordClass.WordClass.TimeExpression]: 'Time Expression',
+    [WordClass.WordClass.StativeVerb]: 'Stative Verb',
+    [WordClass.WordClass.SubordinatingConjunction]: 'Subordinating Conjunction',
+    [WordClass.WordClass.ExclamationWord]: 'Exclamation Word',
+    [WordClass.WordClass.Expression]: 'Expression',
+    [WordClass.WordClass.Verb]: 'Verb',
+    [WordClass.WordClass.VerbComplement]: 'Verb-Complement',
+    [WordClass.WordClass.VerbObject]: 'Verb-Object',
   },
 };
 

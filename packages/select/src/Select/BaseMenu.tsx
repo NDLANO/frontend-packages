@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
@@ -20,22 +19,21 @@ const menuStyle = css`
   }
 `;
 
-const StyledBaseMenu = styled.div<StyledProps>`
+const StyledBaseMenu = styled.div`
   overflow: hidden;
   background-color: ${colors.white};
   pointer-events: auto;
   border: 1px solid ${colors.brand.light};
-  border-radius: ${({ small }) => (small ? '4px' : '8px')};
+  border-radius: 8px;
   margin: 4px 0;
+  &[data-small='true'] {
+    border-radius: 4px;
+  }
 `;
-
-interface StyledProps {
-  small?: boolean;
-}
 
 const BaseMenu = <T extends boolean>({ selectProps, children, ...props }: MenuProps<Option, T>) => (
   <components.Menu<Option, T, GroupBase<Option>> {...props} selectProps={selectProps} css={menuStyle}>
-    <StyledBaseMenu small={selectProps.small}>{children}</StyledBaseMenu>
+    <StyledBaseMenu data-small={selectProps.small}>{children}</StyledBaseMenu>
   </components.Menu>
 );
 

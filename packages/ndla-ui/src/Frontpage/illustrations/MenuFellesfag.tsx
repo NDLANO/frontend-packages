@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 const Illustration = () => (
   <svg width="940px" height="175px" viewBox="0 0 940 175" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="MenuOpen3" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

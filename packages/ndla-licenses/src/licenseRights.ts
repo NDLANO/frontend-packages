@@ -98,12 +98,12 @@ const nd: RightType = {
 const pd: RightType = {
   short: PD,
   nn: {
-    title: 'Offentleg eigedom',
+    title: 'Offentleg eige',
     userFriendlyTitle: 'Offentleg eigedom',
     description: 'Innhaldet er så gammalt at du kan bruke det som du vil.',
   },
   nb: {
-    title: 'Offentlig eiendom',
+    title: 'Offentlig eie',
     userFriendlyTitle: 'Offentlig eiendom',
     description: 'Innholdet er så gammelt at du kan bruke det som du vil.',
   },

@@ -70,6 +70,7 @@ export { default as PanoramaPhotosphere } from './PanoramaPhotosphere';
 export { default as Pause } from './Pause';
 export { default as Person } from './Person';
 export { default as PersonOutlined } from './PersonOutlined';
+export { default as Pin } from './Pin';
 export { default as Play } from './Play';
 export { default as PlayCircleFilled } from './PlayCircleFilled';
 export { default as Podcast } from './Podcast';

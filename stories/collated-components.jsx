@@ -1,7 +1,5 @@
 /* eslint-disable no-alert */
 
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import { LicenseDescription } from '@ndla/notion';
@@ -58,7 +56,7 @@ import TagSelectorExample from './molecules/TagSelectorExample';
 import SnackbarExample from './molecules/SnackbarExample';
 
 storiesOf('Patterns', module)
-  .add('Artikkel info linje', () => (
+  .add('Article info line', () => (
     <div>
       <StoryIntro title="Artikkel informasjonslinje">
         <p>
@@ -187,7 +185,7 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Bildekarusell', () => (
+  .add('Image carousel', () => (
     <div>
       <StoryIntro title="Bildekarusell">
         <p>
@@ -200,7 +198,7 @@ storiesOf('Patterns', module)
       </StoryBody>
     </div>
   ))
-  .add('Blokkvisning begrepsforklaring', () => (
+  .add('Block display term explanation', () => (
     <div>
       <StoryIntro title="Blokkvisning begrepsforklaring">
         <p>Brukes ved visning i artikkel og søk</p>
@@ -210,7 +208,7 @@ storiesOf('Patterns', module)
       </Center>
     </div>
   ))
-  .add('Brødsmulesti', () => (
+  .add('Breadcrumb', () => (
     <Center>
       <h2 className="u-heading">Enkel brødsmulesti</h2>
       <BreadcrumbDefault />
@@ -224,17 +222,17 @@ storiesOf('Patterns', module)
       <BreadcrumbWithAction />
     </Center>
   ))
-  .add('Begrepsforklaring', () => (
+  .add('Explanation of terms', () => (
     <Center>
       <NotionExample />
     </Center>
   ))
-  .add('Emnebeskrivelse', () => (
+  .add('Subject description', () => (
     <Center>
       <ArticleLoader articleId="13661" reset />
     </Center>
   ))
-  .add('Feilmelding', () => (
+  .add('Error message', () => (
     <div className="u-margin-bottom">
       <div>
         <StoryIntro title="Feilmelding">
@@ -342,17 +340,17 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Hovedhode', () => (
+  .add('Masthead', () => (
     <div>
       <MastheadWithLogo />
     </div>
   ))
-  .add('Hovedhode med innhold', () => (
+  .add('Masthead with content', () => (
     <div>
       <MastheadWithTopicMenu />
     </div>
   ))
-  .add('Hovedhode med meldingsboks', () => (
+  .add('Masthead with message box', () => (
     <I18nTranslate>
       {(t) => (
         <div>
@@ -361,7 +359,7 @@ storiesOf('Patterns', module)
       )}
     </I18nTranslate>
   ))
-  .add('Lisensikoner', () => (
+  .add('License icons', () => (
     <Center>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
@@ -381,7 +379,7 @@ storiesOf('Patterns', module)
       </LayoutItem>
     </Center>
   ))
-  .add('Lisensboks', () => (
+  .add('License box', () => (
     <PageContainer>
       <LayoutItem layout="wide">
         <h2 className="u-heading">Lisensboks</h2>
@@ -393,7 +391,7 @@ storiesOf('Patterns', module)
       </LayoutItem>
     </PageContainer>
   ))
-  .add('Læringsressurser', () => (
+  .add('Learning resources', () => (
     <div>
       <StoryIntro title="Læringsressurser/launchpad">
         <p>
@@ -411,7 +409,7 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Nedlasting av filer', () => (
+  .add('Downloading files', () => (
     <div>
       <StoryIntro title="Nedlasting av filer" />
       <StoryBody>
@@ -437,7 +435,7 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Meldings- og infoboks', () => (
+  .add('Message and info box', () => (
     <PageContainer>
       <StoryIntro title="Meldings- og infoboks">
         <p>
@@ -452,7 +450,7 @@ storiesOf('Patterns', module)
     </PageContainer>
   ))
 
-  .add('Oversettelse', () => (
+  .add('Translation', () => (
     <div>
       <StoryIntro title="Oversettelse">
         <p>
@@ -503,7 +501,7 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Radiobuttons', () => (
+  .add('Radio buttons', () => (
     <div>
       <StoryIntro title="Filter">
         <p>Radiobutton group komponent som håndterer states og gir callback ved endring</p>
@@ -581,7 +579,7 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Relatert innhold', () => (
+  .add('Related content', () => (
     <I18nTranslate>
       {(t) => (
         <div>
@@ -603,7 +601,7 @@ storiesOf('Patterns', module)
       )}
     </I18nTranslate>
   ))
-  .add('Sidefot', () => {
+  .add('Footer', () => {
     const privacyLinks = [
       { label: 'Personvernerklæring', url: 'https://om.ndla.no/gdpr' },
       { label: 'Erklæring om informasjonskapsler', url: 'https://om.ndla.no/cookies' },
@@ -624,7 +622,7 @@ storiesOf('Patterns', module)
     );
   })
 
-  .add('Ressurs fra lenke', () => (
+  .add('Resource from link', () => (
     <PageContainer>
       <StoryIntro title="Ressurs fra lenke">
         <p>Her kan du se forskjellige typer referansebokser. De brukes gjerne i artikler for å lenke til en ressurs.</p>
@@ -648,7 +646,7 @@ storiesOf('Patterns', module)
     </PageContainer>
   ))
 
-  .add('Velg tag', () => (
+  .add('Select tag', () => (
     <PageContainer>
       <StoryIntro title="Tag-velger">
         <p>Komponent for å tagge noe, primært tiltenkt Min NDLA</p>
@@ -659,7 +657,7 @@ storiesOf('Patterns', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('Ugrupperte læringsressurser', () => (
+  .add('Ungrouped learning resources', () => (
     <div>
       <StoryIntro title="Ugrupperte ressurser">
         <p>Brukere av ed kan spesifisere at ressurser skal vises ugruppert. Da vises alle ressurser i ei liste.</p>

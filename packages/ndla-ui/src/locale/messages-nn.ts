@@ -1185,7 +1185,7 @@ const messages = {
     examLockInfo: 'Redigering av innhald på Min NDLA er deaktivert for elevar i eksamensperioden.',
     copyFolderDisclaimer:
       'Dette lagar ein kopi av mappa. Eventuelle endringar i originalmappa vil ikkje bli oppdatert her.',
-    loginCopyFolderPitch: 'Ønskjer du å kopiera denne mappa?',
+    loginCopyFolderPitch: 'Ønsker du å kopiere denne mappa?',
     help: 'Hjelp',
     more: 'Fleire val',
     selectView: 'Velg visning',

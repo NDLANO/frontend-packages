@@ -40,7 +40,7 @@ export const Logo = ({ name = true, to, cssModifier, color, large = false, local
   }
 
   const logo = to ? (
-    <SafeLink to={to} aria-label={label}>
+    <SafeLink to={to} aria-label={label} title={label}>
       <SvgLogo name={name} color={color} locale={locale} />
     </SafeLink>
   ) : (

@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from 'react';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing, spacingUnit } from '@ndla/core';
 import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
@@ -15,18 +15,39 @@ import { Heading } from '../Typography';
 import { ArticleByline } from '../Article';
 
 interface Props {
-  article: Article;
-  children?: ReactNode;
+  article: Omit<Article, 'footNotes'>;
   id: string;
   isWide?: boolean;
   licenseBox?: ReactNode;
 }
 
+export const FRONTPAGE_ARTICLE_MAX_WIDTH = '773px';
+export const WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH = '1100px';
+
 const StyledArticle = styled.article`
   width: 100%;
   max-width: 773px;
+  h2[id] {
+    margin-top: ${spacing.large};
+  }
+  div[data-type='campaign-block'] {
+    margin: ${spacing.large} 0px;
+  }
+  div[data-type='grid'] {
+    h2,
+    h3,
+    h4 {
+      margin-top: 0px;
+    }
+  }
   &[data-wide='true'] {
     max-width: 1100px;
+    h2[id] {
+      margin-top: ${spacingUnit * 4}px;
+    }
+    div[data-type='campaign-block'] {
+      margin: ${spacingUnit * 4}px 0px;
+    }
   }
 `;
 
@@ -71,7 +92,6 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
         suppliers={article.copyright.rightsholders}
         license={article.copyright.license?.license!}
         published={article.published}
-        footnotes={article.footNotes}
         accordionHeaderVariant={'white'}
         licenseBox={licenseBox}
       />

@@ -1138,6 +1138,7 @@ const messages = {
       sharing: {
         share: 'Share folder',
         shared: 'Shared',
+        sharedFolder: 'Shared folder',
         unShare: 'Sharing stopped. The folder is no longer shared',
         copyLink: 'Copy link to folder',
         link: 'Link is copied',

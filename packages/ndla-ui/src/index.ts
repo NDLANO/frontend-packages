@@ -268,7 +268,11 @@ export type { GridType } from './Grid';
 export { Heading } from './Typography';
 export type { HeadingLevel } from './types';
 
-export { default as FrontpageArticle } from './FrontpageArticle';
+export {
+  default as FrontpageArticle,
+  FRONTPAGE_ARTICLE_MAX_WIDTH,
+  WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH,
+} from './FrontpageArticle';
 export { DefinitionTerm, DefinitionDescription } from './DefinitionList';
 export type { ProgrammeV2 } from './ProgrammeCard';
 

@@ -94,7 +94,7 @@ const CampaignBlock = ({
   className,
 }: Props) => {
   return (
-    <Container className={className}>
+    <Container className={className} data-type="campaign-block">
       {imageBefore && <StyledImg src={imageBefore.src} />}
       <TextWrapper>
         <Heading css={headingStyle}>{title.title}</Heading>

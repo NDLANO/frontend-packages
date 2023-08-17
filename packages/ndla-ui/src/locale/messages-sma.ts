@@ -1385,6 +1385,9 @@ const messages = {
     [WordClass.WordClass.VerbComplement]: 'Verb-Komplement',
     [WordClass.WordClass.VerbObject]: 'Verb-Objekt',
   },
+  about: {
+    menuTitle: 'Om NDLA',
+  },
 };
 
 export default messages;

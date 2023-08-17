@@ -6,13 +6,14 @@
  *
  */
 
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode, useMemo } from 'react';
 import { breakpoints, fonts, mq, spacing, spacingUnit } from '@ndla/core';
 import styled from '@emotion/styled';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
 import { Heading } from '../Typography';
 import { ArticleByline } from '../Article';
+import { useMastheadHeight } from '../Masthead';
 
 interface Props {
   article: Omit<Article, 'footNotes'>;
@@ -64,11 +65,13 @@ const StyledIntroduction = styled.div`
 `;
 
 export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => {
+  const { height = 0 } = useMastheadHeight();
+  const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` } as unknown as CSSProperties), [height]);
   const { title, introduction, content } = article;
 
   if (isWide) {
     return (
-      <StyledArticle data-wide={isWide}>
+      <StyledArticle data-wide={isWide} style={cssVars}>
         <LayoutItem>{content}</LayoutItem>
       </StyledArticle>
     );
@@ -79,7 +82,7 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
       ? article.copyright.creators
       : article.copyright.processors;
   return (
-    <StyledArticle>
+    <StyledArticle style={cssVars}>
       <LayoutItem>
         <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
           {title}

@@ -90,7 +90,7 @@ const Grid = ({ columns, border, children, background, size, ...rest }: GridProp
 const StyledGridParallaxItem = styled.div`
   position: relative;
   > div {
-    top: 0px;
+    top: var(--masthead-height, 0px);
     position: sticky;
   }
 `;

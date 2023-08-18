@@ -39,6 +39,8 @@ const StyledCardContainer = styled(SafeLink)`
   }
 
   ${mq.range({ from: breakpoints.tablet })} {
+    min-height: 350px;
+    min-width: 250px;
     max-height: 350px;
     width: 250px;
   }
@@ -46,6 +48,7 @@ const StyledCardContainer = styled(SafeLink)`
 
 const StyledImg = styled.img`
   display: none;
+  flex: 1;
   border-radius: ${misc.borderRadius} ${misc.borderRadius} 0 0;
   width: 100%;
 
@@ -66,6 +69,7 @@ const StyledTitle = styled.span`
   min-height: 70px;
   align-items: center;
   padding-left: ${spacing.nsmall};
+  margin-top: auto;
 
   border: 1px solid ${colors.brand.lighter};
   border-radius: 0 0 ${misc.borderRadius} ${misc.borderRadius};
@@ -82,8 +86,8 @@ const StyledTitle = styled.span`
 const ProgrammeCard = ({ title, narrowImage, wideImage, url }: Programme) => {
   return (
     <StyledCardContainer to={url}>
-      {narrowImage && <StyledImg data-is-mobile="false" src={narrowImage.src} alt={narrowImage.alt} />}
-      {wideImage && <StyledImg data-is-mobile="true" src={wideImage.src} alt={wideImage.alt} />}
+      {narrowImage && <StyledImg data-is-mobile="false" src={narrowImage.src} loading="lazy" alt={narrowImage.alt} />}
+      {wideImage && <StyledImg data-is-mobile="true" src={wideImage.src} loading="lazy" alt={wideImage.alt} />}
       <StyledTitle>{title.title}</StyledTitle>
     </StyledCardContainer>
   );

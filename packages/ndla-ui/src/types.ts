@@ -70,7 +70,7 @@ export interface Article {
   introduction: string;
   content: ReactNode;
   footNotes: Array<FootNote>;
-  copyright: Copyright;
+  copyright?: Copyright;
   published: string;
 }
 

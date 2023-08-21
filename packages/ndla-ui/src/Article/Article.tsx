@@ -29,13 +29,12 @@ const classes = new BEMHelper({
 });
 
 type ArticleWrapperProps = {
-  id: string;
   modifier?: string;
   children: ReactNode;
 };
 
-export const ArticleWrapper = forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
-  <article id={id} {...classes(undefined, modifier)} ref={ref}>
+export const ArticleWrapper = forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier }, ref) => (
+  <article {...classes(undefined, modifier)} ref={ref}>
     {children}
   </article>
 ));
@@ -44,9 +43,10 @@ type ArticleTitleProps = {
   icon?: ReactNode;
   label?: string;
   children: ReactNode;
+  id: string;
 };
 
-export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
+export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) => {
   const modifiers = [];
   if (icon) {
     modifiers.push('icon');
@@ -62,7 +62,7 @@ export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <Heading element="h1" headingStyle="h1" tabIndex={-1}>
+      <Heading element="h1" headingStyle="h1" id={id} tabIndex={-1}>
         {children}
       </Heading>
     </div>
@@ -197,7 +197,7 @@ export const Article = ({
 
   return (
     <div ref={wrapperRef}>
-      <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
+      <ArticleWrapper modifier={modifier} ref={articleRef}>
         <LayoutItem layout="center">
           {accessMessage && <ArticleAccessMessage message={accessMessage} />}
 
@@ -209,7 +209,7 @@ export const Article = ({
           <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
 
-            <ArticleTitle icon={icon} label={messages.label}>
+            <ArticleTitle id={id} icon={icon} label={messages.label}>
               {title}
             </ArticleTitle>
             <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>

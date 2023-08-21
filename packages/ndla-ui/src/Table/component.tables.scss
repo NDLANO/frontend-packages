@@ -150,6 +150,11 @@ article table {
       @include font-size(15px, 30px);
     }
 
+    ol,
+    ul {
+      font-size: unset !important;
+    }
+
     p {
       line-height: 1.6em;
     }

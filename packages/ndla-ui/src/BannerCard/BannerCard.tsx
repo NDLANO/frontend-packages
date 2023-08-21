@@ -58,7 +58,7 @@ const ContentText = styled.p`
 `;
 const LinkText = styled(SafeLink)`
   font-size: ${fonts.sizes(16)};
-  color: ${colors.brand.grey};
+  color: ${colors.brand.primary};
 `;
 const TitleText = styled.h2`
   margin-top: 7px;

@@ -160,7 +160,7 @@ const EmbedByline = ({
 
   const license = getLicenseByAbbreviation(copyright.license?.license ?? '', i18n.language);
   const authors = getLicenseCredits(copyright);
-  const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
+  const captionAuthors = authors.creators.length ? authors.creators : authors.processors;
 
   return (
     <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-first={first}>
@@ -170,8 +170,20 @@ const EmbedByline = ({
         <LicenseLink license={license} asLink={!!license.url.length} />
         <LicenseInformationWrapper>
           <span>
-            <b>{t(`embed.type.${type}`)}: </b>
-            {captionAuthors.map((author) => author.name).join(', ')}
+            <b>{t(`embed.type.${type}`)} - </b>
+            {!!captionAuthors.length && (
+              // Mind the period and the space at the end.
+              <span>
+                {t('article.writtenBy', { authors: captionAuthors.map((author) => author.name).join(', ') })}.{' '}
+              </span>
+            )}
+            {authors.rightsholders.length === 1 ? (
+              <span>{t('article.supplierLabel', { name: authors.rightsholders[0].name })}</span>
+            ) : authors.rightsholders.length > 1 ? (
+              <span>
+                {t('article.multipleSuppliersLabel', { names: authors.rightsholders.map((rh) => rh.name).join(', ') })}
+              </span>
+            ) : null}
           </span>
         </LicenseInformationWrapper>
         {children}

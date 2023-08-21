@@ -78,9 +78,9 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
   }
 
   const authors =
-    article.copyright.creators.length || article.copyright.rightsholders.length
+    article.copyright?.creators.length || article.copyright?.rightsholders.length
       ? article.copyright.creators
-      : article.copyright.processors;
+      : article.copyright?.processors;
   return (
     <StyledArticle style={cssVars}>
       <LayoutItem>
@@ -92,8 +92,8 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
       <LayoutItem>{content}</LayoutItem>
       <ArticleByline
         authors={authors}
-        suppliers={article.copyright.rightsholders}
-        license={article.copyright.license?.license!}
+        suppliers={article.copyright?.rightsholders}
+        license={article.copyright?.license?.license!}
         published={article.published}
         accordionHeaderVariant={'white'}
         licenseBox={licenseBox}

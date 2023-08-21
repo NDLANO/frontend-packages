@@ -184,16 +184,10 @@ export const Article = ({
     }
   }, [wrapperRef]);
 
-  const {
-    title,
-    introduction,
-    published,
-    content,
-    footNotes,
-    copyright: { license: licenseObj, creators, rightsholders, processors },
-  } = article;
+  const { title, introduction, published, content, footNotes, copyright } = article;
 
-  const authors = creators.length || rightsholders.length ? creators : processors;
+  const authors =
+    copyright?.creators.length || copyright?.rightsholders.length ? copyright.creators : copyright?.processors;
 
   return (
     <div ref={wrapperRef}>
@@ -226,9 +220,9 @@ export const Article = ({
           <ArticleByline
             footnotes={footNotes}
             authors={authors}
-            suppliers={rightsholders}
+            suppliers={copyright?.rightsholders}
             published={published}
-            license={licenseObj?.license ?? ''}
+            license={copyright?.license?.license ?? ''}
             licenseBox={licenseBox}
           />
         </LayoutItem>

@@ -1195,6 +1195,7 @@ const messages = {
     detailView: 'Bienalaš oppalašlistu',
     shortView: 'Oanehis listu',
     sharedFolder: {
+      folderCopied: 'Mappen har blitt kopiert.',
       info: 'Dán máhpas lea NDLA fágasisdoallu ja bargobihtát, čohkkejuvvon oahpaheaddjis.',
       firstShared: 'Máhppa juogaduvvui vuosttaš geardde {{date}}',
       drawerButton: 'Čájet máhpaid ja resurssaid',

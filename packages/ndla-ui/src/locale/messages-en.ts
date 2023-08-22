@@ -1197,6 +1197,7 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Card view',
     sharedFolder: {
+      folderCopied: 'The folder was copied.',
       info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
       firstShared: 'The folder was shared for the first time {{date}}',
       learningpathUnsupported:

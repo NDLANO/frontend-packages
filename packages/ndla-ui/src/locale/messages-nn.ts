@@ -1194,6 +1194,7 @@ const messages = {
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
     sharedFolder: {
+      folderCopied: 'Mappa vart kopiert.',
       info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
       firstShared: 'Mappa vart delt første gong {{date}}',
       drawerButton: 'Vis mapper og ressursar',

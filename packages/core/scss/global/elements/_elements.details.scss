@@ -34,6 +34,13 @@ details {
       font-family: $font;
     }
   }
+
+  table {
+    position: static !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 details > ul:not([class]),

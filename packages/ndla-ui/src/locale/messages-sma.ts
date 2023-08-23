@@ -1070,8 +1070,6 @@ const messages = {
     loggedInAsButton: 'Datne tjaangeme goh {{role}}',
     role: {
       employee: 'barkije',
-      faculty: 'barkije',
-      staff: 'barkije',
       student: 'learohke',
     },
     buttonLogIn: 'Tjaangh Feidine',

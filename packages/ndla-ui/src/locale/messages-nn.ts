@@ -1066,8 +1066,6 @@ const messages = {
     loggedInAsButton: 'Du er pålogga som {{role}}',
     role: {
       employee: 'tilsett',
-      faculty: 'tilsett',
-      staff: 'tilsett',
       student: 'elev',
     },
     buttonLogIn: 'Logg inn med Feide',

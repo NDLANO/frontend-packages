@@ -23,6 +23,8 @@ const ShortInfoDiv = styled.div`
   margin: 2rem auto;
 `;
 
+const isTeacher = (affiliations: FeideUserApiType['eduPersonAffiliation']) => affiliations.includes('employee');
+
 export const UserInfo = ({ user }: Props) => {
   const { t } = useTranslation();
 
@@ -33,7 +35,7 @@ export const UserInfo = ({ user }: Props) => {
       {
         <p>
           {t('user.loggedInAs', {
-            role: t(`user.role.${parsedUser.primaryAffiliation}`),
+            role: t(`user.role.${isTeacher(parsedUser.eduPersonAffiliation) ? 'employee' : 'student'}`),
           })}
         </p>
       }

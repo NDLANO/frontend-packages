@@ -80,7 +80,7 @@ export const parseUserObject = (user: FeideUserApiType) => {
 
   return {
     uid: user.uid,
-    primaryAffiliation: user.eduPersonPrimaryAffiliation,
+    eduPersonAffiliation: user.eduPersonAffiliation,
     displayName: user.displayName,
     mail: user.mail,
     organizations: roots,

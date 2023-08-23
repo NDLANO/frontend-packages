@@ -10,7 +10,6 @@ import ToggleSearchButton from '../Search/ToggleSearchButton';
 interface Props {
   onClose: VoidFunction;
   children: (arg: () => void) => ReactNode;
-  hideOnNarrowScreen?: boolean;
   ndlaFilm?: boolean;
 }
 
@@ -60,7 +59,7 @@ const StyledHeader = styled.div`
   }
 `;
 
-const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScreen, ndlaFilm }: Props) => {
+const MastheadSearchModal = ({ onClose: onSearchClose, children, ndlaFilm }: Props) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -72,7 +71,7 @@ const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScr
   return (
     <Modal open={isOpen} onOpenChange={setIsOpen}>
       <ModalTrigger>
-        <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} onClick={() => setIsOpen(true)} ndlaFilm={ndlaFilm}>
+        <ToggleSearchButton onClick={() => setIsOpen(true)} ndlaFilm={ndlaFilm}>
           {t('masthead.menu.search')}
         </ToggleSearchButton>
       </ModalTrigger>

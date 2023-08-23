@@ -162,9 +162,9 @@ describe('parseUserObject', () => {
   it('Correctly parses Feide user', () => {
     const expected = {
       uid: ['david_laerervgs'],
-      primaryAffiliation: 'employee',
       displayName: 'David LærerVGS Jonsen',
       mail: ['david_laerervgs@feide.no'],
+      eduPersonAffiliation: ['member', 'employee', 'faculty'],
       grepCodes: [],
       organizations: [
         {

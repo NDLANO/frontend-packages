@@ -139,7 +139,6 @@ const ArticleByline = ({
   const license = getLicenseByAbbreviation(licenseString, locale);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
-  const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
 
   return (
     <Wrapper>
@@ -148,12 +147,12 @@ const ArticleByline = ({
           <LicenseLink license={license} />
           {showPrimaryContributors && (
             <PrimaryContributorsWrapper>
-              {authors.length > 0
-                ? t('article.authorsLabel', {
-                    names: renderContributors(authors, t),
-                    interpolation: { escapeValue: false },
-                  })
-                : getSuppliersText(suppliers, t)}
+              {authors.length > 0 &&
+                `${t('article.authorsLabel', {
+                  names: renderContributors(authors, t),
+                  interpolation: { escapeValue: false },
+                })}. `}
+              {getSuppliersText(suppliers, t)}
             </PrimaryContributorsWrapper>
           )}
         </LicenseWrapper>
@@ -161,7 +160,6 @@ const ArticleByline = ({
           {t('article.lastUpdated')} {published}
         </div>
       </TextWrapper>
-      {showSecondaryContributors && <TextWrapper>{getSuppliersText(suppliers, t)}</TextWrapper>}
       <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
         {licenseBox && (
           <AccordionItem value="rulesForUse">

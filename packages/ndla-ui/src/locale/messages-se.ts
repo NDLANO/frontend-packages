@@ -1067,8 +1067,6 @@ const messages = {
     loggedInAsButton: 'Don leat sisaloggejuvvon {{role}}',
     role: {
       employee: 'bargi',
-      faculty: 'bargi',
-      staff: 'bargi',
       student: 'oahppi',
     },
     buttonLogIn: 'Logge sisa Feide bokte',
@@ -1195,6 +1193,7 @@ const messages = {
     detailView: 'Bienalaš oppalašlistu',
     shortView: 'Oanehis listu',
     sharedFolder: {
+      folderCopied: 'Mappen har blitt kopiert.',
       info: 'Dán máhpas lea NDLA fágasisdoallu ja bargobihtát, čohkkejuvvon oahpaheaddjis.',
       firstShared: 'Máhppa juogaduvvui vuosttaš geardde {{date}}',
       drawerButton: 'Čájet máhpaid ja resurssaid',

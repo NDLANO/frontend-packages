@@ -1067,8 +1067,6 @@ const messages = {
     loggedInAsButton: 'You are logged in as {{role}}',
     role: {
       employee: 'Employee',
-      faculty: 'Employee',
-      staff: 'Employee',
       student: 'Student',
     },
     buttonLogIn: 'Log in with Feide',
@@ -1197,6 +1195,7 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Card view',
     sharedFolder: {
+      folderCopied: 'The folder was copied.',
       info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
       firstShared: 'The folder was shared for the first time {{date}}',
       learningpathUnsupported:

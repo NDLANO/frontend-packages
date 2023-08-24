@@ -1070,8 +1070,6 @@ const messages = {
     loggedInAsButton: 'Datne tjaangeme goh {{role}}',
     role: {
       employee: 'barkije',
-      faculty: 'barkije',
-      staff: 'barkije',
       student: 'learohke',
     },
     buttonLogIn: 'Tjaangh Feidine',
@@ -1199,6 +1197,7 @@ const messages = {
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
     sharedFolder: {
+      folderCopied: 'Mappen har blitt kopiert.',
       info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
       firstShared: 'Mappa vart delt første gong {{date}}',
       drawerButton: 'Vis mapper og ressursar',

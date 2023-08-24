@@ -1066,8 +1066,6 @@ const messages = {
     loggedInAsButton: 'Du er pålogget som {{role}}',
     role: {
       employee: 'ansatt',
-      faculty: 'ansatt',
-      staff: 'ansatt',
       student: 'elev',
     },
     buttonLogIn: 'Logg inn med Feide',
@@ -1194,6 +1192,7 @@ const messages = {
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
     sharedFolder: {
+      folderCopied: 'Mappen har blitt kopiert.',
       info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
       firstShared: 'Mappa ble delt første gang {{date}}',
       learningpathUnsupported:

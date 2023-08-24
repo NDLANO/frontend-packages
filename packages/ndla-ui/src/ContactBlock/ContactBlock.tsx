@@ -32,6 +32,7 @@ const BlockWrapper = styled.div`
   font-family: ${fonts.sans};
   border-radius: ${misc.borderRadius};
   border: 1px solid ${colors.brand.lighter};
+  background-color: ${colors.white};
   max-width: 348px;
   & ~ & {
     margin-top: ${spacing.medium};

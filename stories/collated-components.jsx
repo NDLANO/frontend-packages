@@ -24,7 +24,7 @@ import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureImage from './article/FigureImage';
 import { mockFooterLinks } from '../dummydata/index';
-import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
+import MastheadWithTopicMenu from './molecules/mastheads';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import NotionExample from './organisms/NotionExample';
@@ -340,11 +340,6 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Masthead', () => (
-    <div>
-      <MastheadWithLogo />
-    </div>
-  ))
   .add('Masthead with content', () => (
     <div>
       <MastheadWithTopicMenu />

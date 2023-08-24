@@ -36,7 +36,7 @@ export {
   default as Article,
 } from './Article';
 
-export { default as Table } from './Table';
+export { default as Table, TableStyling } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
 

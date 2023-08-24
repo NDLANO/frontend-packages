@@ -34,6 +34,7 @@ const StyledSafeLink = styled(SafeLink)`
   align-items: center;
   box-shadow: none;
   color: inherit;
+  background-color: ${colors.white};
   border: 1px solid ${colors.brand.lighter};
   padding: ${spacing.normal};
   ${mq.range({ from: breakpoints.tabletWide })} {

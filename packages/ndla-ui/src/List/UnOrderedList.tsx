@@ -37,9 +37,6 @@ const StyledUl = styled.ul`
       margin-bottom: ${spacing.nsmall} !important;
     }
   }
-
-  // List reset classes
-  ${generateListResets()}
 `;
 
 const UnOrderedList = forwardRef<HTMLUListElement, HTMLAttributes<HTMLUListElement>>(({ children, ...rest }, ref) => {

@@ -6,19 +6,20 @@
  *
  */
 
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
 
-export const generateListResets = () => {
+export const generateListResets = (counterName: string) => {
   let styles = '';
   for (let $i = 0; $i < 50; $i++) {
     styles += ` 
-      ol.ol-reset-${$i} { counter-reset: item ${$i - 1} }  
+      &.ol-reset-${$i} { counter-reset: ${counterName} ${$i - 1}; }  
     `;
   }
 
-  return styles;
+  return css(styles);
 };
 
 const StyledOl = styled.ol`
@@ -104,7 +105,10 @@ const StyledOl = styled.ol`
     }
   }
   // List reset classes
-  ${generateListResets()}
+  ${generateListResets('level1')};
+  ${generateListResets('level2')};
+  ${generateListResets('level3')};
+  ${generateListResets('level4')};
 `;
 
 interface Props extends HTMLAttributes<HTMLOListElement> {

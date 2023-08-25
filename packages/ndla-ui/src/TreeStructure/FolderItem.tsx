@@ -41,7 +41,7 @@ const OpenButton = styled.span`
       transform: rotate(0deg);
     }
   }
-  &[data-hideArrow='true'] {
+  &[data-hide-arrow='true'] {
     visibility: hidden;
   }
 `;
@@ -233,7 +233,7 @@ const FolderItem = ({
         aria-hidden
         tabIndex={-1}
         data-open={isOpen}
-        data-hideArrow={hideArrow}
+        data-hide-arrow={hideArrow}
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();
@@ -276,7 +276,7 @@ const FolderItem = ({
           aria-hidden
           tabIndex={-1}
           data-open={isOpen}
-          data-hideArrow={hideArrow}
+          data-hide-arrow={hideArrow}
           onClick={(e) => {
             e.stopPropagation();
             setFocusedFolder(folder);

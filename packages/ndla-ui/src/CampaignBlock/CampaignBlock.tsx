@@ -95,7 +95,7 @@ const CampaignBlock = ({
 }: Props) => {
   return (
     <Container className={className} data-type="campaign-block">
-      {imageBefore && <StyledImg src={imageBefore.src} alt="" />}
+      {imageBefore && <StyledImg src={imageBefore.src} height={200} width={240} alt="" />}
       <TextWrapper>
         <Heading css={headingStyle}>{title.title}</Heading>
         <StyledDescription>{description.text}</StyledDescription>
@@ -104,7 +104,7 @@ const CampaignBlock = ({
           <Forward />
         </StyledLink>
       </TextWrapper>
-      {imageAfter && <StyledImg src={imageAfter.src} alt="" />}
+      {imageAfter && <StyledImg src={imageAfter.src} height={200} width={240} alt="" />}
     </Container>
   );
 };

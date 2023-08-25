@@ -60,7 +60,7 @@ interface Props {
 const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper>
-      <StyledImage src={image?.src} alt={image?.alt} />
+      <StyledImage src={image?.src} width={250} height={200} alt={image?.alt} />
       <TitleWrapper>{title}</TitleWrapper>
       <SubTitleWrapper>{subtitle}</SubTitleWrapper>
     </ContentWrapper>

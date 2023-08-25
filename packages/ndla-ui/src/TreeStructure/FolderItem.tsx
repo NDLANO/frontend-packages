@@ -41,6 +41,9 @@ const OpenButton = styled.span`
       transform: rotate(0deg);
     }
   }
+  &[data-hide-arrow='true'] {
+    visibility: hidden;
+  }
 `;
 
 const StyledName = styled.span`
@@ -226,25 +229,24 @@ const FolderItem = ({
       onFocus={() => setFocusedFolder(folder)}
       onClick={handleClickFolder}
     >
-      {!hideArrow && (
-        <OpenButton
-          aria-hidden
-          tabIndex={-1}
-          data-open={isOpen}
-          onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            ref.current?.focus();
-            if (isOpen) {
-              onCloseFolder(id);
-            } else {
-              onOpenFolder(id);
-            }
-          }}
-        >
-          <ArrowDropDownRounded />
-        </OpenButton>
-      )}
+      <OpenButton
+        aria-hidden
+        tabIndex={-1}
+        data-open={isOpen}
+        data-hide-arrow={hideArrow}
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          ref.current?.focus();
+          if (isOpen) {
+            onCloseFolder(id);
+          } else {
+            onOpenFolder(id);
+          }
+        }}
+      >
+        <ArrowDropDownRounded />
+      </OpenButton>
       <StyledName>{name}</StyledName>
     </FolderNameLink>
   ) : (
@@ -270,24 +272,23 @@ const FolderItem = ({
       data-creating={isCreatingFolder}
     >
       <IconWrapper>
-        {!hideArrow && (
-          <OpenButton
-            aria-hidden
-            tabIndex={-1}
-            data-open={isOpen}
-            onClick={(e) => {
-              e.stopPropagation();
-              setFocusedFolder(folder);
-              if (isOpen) {
-                onCloseFolder(id);
-              } else {
-                onOpenFolder(id);
-              }
-            }}
-          >
-            <ArrowDropDownRounded />
-          </OpenButton>
-        )}
+        <OpenButton
+          aria-hidden
+          tabIndex={-1}
+          data-open={isOpen}
+          data-hide-arrow={hideArrow}
+          onClick={(e) => {
+            e.stopPropagation();
+            setFocusedFolder(folder);
+            if (isOpen) {
+              onCloseFolder(id);
+            } else {
+              onOpenFolder(id);
+            }
+          }}
+        >
+          <ArrowDropDownRounded />
+        </OpenButton>
         <FolderIconWrapper>
           <FolderIcon />
         </FolderIconWrapper>

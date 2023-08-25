@@ -42,6 +42,7 @@ const StyledOl = styled.ol`
     }
   }
   counter-reset: level1;
+  ${generateListResets('level1')};
 
   &[data-type='letters'] {
     > li {
@@ -73,6 +74,7 @@ const StyledOl = styled.ol`
 
     > ol:not([data-type='letters']) {
       counter-reset: level2;
+      ${generateListResets('level2')};
       > li {
         padding-left: ${spacing.nsmall};
         counter-increment: level2;
@@ -81,6 +83,7 @@ const StyledOl = styled.ol`
         }
         > ol:not([data-type='letters']) {
           counter-reset: level3;
+          ${generateListResets('level3')};
           > li {
             padding-left: ${spacing.medium};
             counter-increment: level3;
@@ -89,6 +92,7 @@ const StyledOl = styled.ol`
             }
             > ol:not([data-type='letters']) {
               counter-reset: level4;
+              ${generateListResets('level4')};
               > li {
                 padding-left: ${spacing.large};
                 counter-increment: level4;
@@ -103,11 +107,6 @@ const StyledOl = styled.ol`
       }
     }
   }
-  // List reset classes
-  ${generateListResets('level1')};
-  ${generateListResets('level2')};
-  ${generateListResets('level3')};
-  ${generateListResets('level4')};
 `;
 
 interface Props extends HTMLAttributes<HTMLOListElement> {

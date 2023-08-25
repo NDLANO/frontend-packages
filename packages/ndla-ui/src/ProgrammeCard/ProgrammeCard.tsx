@@ -86,8 +86,8 @@ const StyledTitle = styled.span`
 const ProgrammeCard = ({ title, narrowImage, wideImage, url }: Programme) => {
   return (
     <StyledCardContainer to={url}>
-      {narrowImage && <StyledImg data-is-mobile="false" src={narrowImage.src} loading="lazy" alt={narrowImage.alt} />}
-      {wideImage && <StyledImg data-is-mobile="true" src={wideImage.src} loading="lazy" alt={wideImage.alt} />}
+      {narrowImage && <StyledImg data-is-mobile="false" src={narrowImage.src} alt={narrowImage.alt} />}
+      {wideImage && <StyledImg data-is-mobile="true" src={wideImage.src} alt={wideImage.alt} />}
       <StyledTitle>{title.title}</StyledTitle>
     </StyledCardContainer>
   );

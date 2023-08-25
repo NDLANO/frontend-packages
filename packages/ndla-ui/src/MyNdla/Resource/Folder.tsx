@@ -74,7 +74,7 @@ const IconWrapper = styled.div`
 const FolderTitle = styled.h2`
   ${fonts.sizes('16px', '20px')};
   font-weight: ${fonts.weight.semibold};
-  margin: 0;
+  margin: 0px !important;
   flex: 1;
 
   overflow: hidden;

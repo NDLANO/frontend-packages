@@ -12,6 +12,8 @@ import { MouseEventHandler, useState } from 'react';
 import { ExpandTwoArrows } from '@ndla/icons/action';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
+import { utils } from '@ndla/core';
+import styled from '@emotion/styled';
 import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
@@ -170,6 +172,10 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path 
   );
 };
 
+const HiddenSpan = styled.span`
+  ${utils.visuallyHidden};
+`;
+
 interface ImageWrapperProps {
   src?: string;
   children: React.ReactNode;
@@ -193,8 +199,9 @@ const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps
   }
 
   return (
-    <ImageLink src={src} crop={crop} aria-label={t('license.images.itemImage.ariaLabel')}>
+    <ImageLink src={src} crop={crop}>
       {children}
+      <HiddenSpan>{t('license.images.itemImage.ariaLabel')}</HiddenSpan>
     </ImageLink>
   );
 };

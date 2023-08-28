@@ -147,6 +147,34 @@ export const Lists: StoryFn = () => (
         </li>
         <li>Listepunkt 4</li>
       </OrderedList>
+      <h2 className="u-heading">Nummerert liste, med start nummer 5</h2>
+      <OrderedList start={5} className="ol-reset-5">
+        <li>Listepunkt 1</li>
+        <li>Listepunkt 2</li>
+        <li>
+          Listepunkt 3
+          <OrderedList data-type="letters">
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>
+              Listepunkt 3
+              <OrderedList data-type="letters">
+                <li>Listepunkt 1</li>
+                <li>Listepunkt 2</li>
+                <li>
+                  Listepunkt 3
+                  <OrderedList className="ol-reset-5" data-type="letters" start={5}>
+                    <li>Listepunkt 1</li>
+                    <li>Listepunkt 2</li>
+                    <li>Listepunkt 3</li>
+                  </OrderedList>
+                </li>
+              </OrderedList>
+            </li>
+          </OrderedList>
+        </li>
+        <li>Listepunkt 4</li>
+      </OrderedList>
     </StoryBody>
   </div>
 );

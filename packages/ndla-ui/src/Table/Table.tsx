@@ -194,6 +194,9 @@ export const TableStyling = css`
 const TableWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const OverflowWrapper = styled.div`
   overflow-x: auto;
 `;
 
@@ -242,13 +245,13 @@ const Table = ({ children, id, ...rest }: Props) => {
 
   return (
     <TableWrapper>
-      <div>
+      <OverflowWrapper>
         <LeftScrollBorder data-block={scrollPosition === 'end' || scrollPosition === 'center'} />
         <table ref={tableRef} id={id} onScroll={onScroll} css={TableStyling} {...rest}>
           {children}
         </table>
         <RightScrollBorder data-block={scrollPosition === 'start' || scrollPosition === 'center'} />
-      </div>
+      </OverflowWrapper>
     </TableWrapper>
   );
 };

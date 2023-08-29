@@ -194,7 +194,7 @@ export const TableStyling = css`
 const TableWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: ${spacing.small} 0;
+  overflow-x: auto;
 `;
 
 const Table = ({ children, id, ...rest }: Props) => {

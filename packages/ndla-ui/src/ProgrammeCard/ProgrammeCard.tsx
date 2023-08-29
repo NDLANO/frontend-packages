@@ -47,21 +47,10 @@ const StyledCardContainer = styled(SafeLink)`
 `;
 
 const StyledImg = styled.img`
-  display: none;
+  display: block;
   flex: 1;
   border-radius: ${misc.borderRadius} ${misc.borderRadius} 0 0;
   width: 100%;
-
-  &[data-is-mobile='true'] {
-    ${mq.range({ until: breakpoints.tablet })} {
-      display: block;
-    }
-  }
-  &[data-is-mobile='false'] {
-    ${mq.range({ from: breakpoints.tablet })} {
-      display: block;
-    }
-  }
 `;
 
 const StyledTitle = styled.span`
@@ -86,12 +75,8 @@ const StyledTitle = styled.span`
 const ProgrammeCard = ({ title, narrowImage, wideImage, url }: Programme) => {
   return (
     <StyledCardContainer to={url}>
-      {narrowImage && (
-        <StyledImg data-is-mobile="false" height={280} width={250} src={narrowImage.src} alt={narrowImage.alt} />
-      )}
-      {wideImage && (
-        <StyledImg data-is-mobile="true" height={280} width={250} src={wideImage.src} alt={wideImage.alt} />
-      )}
+      {narrowImage && <StyledImg height={280} width={250} src={narrowImage.src} alt={narrowImage.alt} />}
+      {wideImage && <StyledImg height={330} width={120} src={wideImage.src} alt={wideImage.alt} />}
       <StyledTitle>{title.title}</StyledTitle>
     </StyledCardContainer>
   );

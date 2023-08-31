@@ -97,6 +97,12 @@ const StyledAccordionHeader = styled(AccordionHeader)`
   font-size: ${fonts.sizes('16px', '29px')};
   font-weight: ${fonts.weight.semibold};
 
+  &[data-background-color='white'][data-state='closed'] {
+    background-color: ${colors.background.default};
+  }
+`;
+
+const StyledAccordionContent = styled(AccordionContent)`
   &[data-background-color='white'] {
     background-color: ${colors.background.default};
   }
@@ -166,16 +172,16 @@ const ArticleByline = ({
             <StyledAccordionHeader headingLevel="h2" data-background-color={accordionHeaderVariant}>
               {t('article.useContent')}
             </StyledAccordionHeader>
-            <AccordionContent>{licenseBox}</AccordionContent>
+            <StyledAccordionContent data-background-color={accordionHeaderVariant}>{licenseBox}</StyledAccordionContent>
           </AccordionItem>
         )}
 
         {!!footnotes?.length && (
           <AccordionItem value={footnotesAccordionId}>
             <StyledAccordionHeader headingLevel="h2">{t('article.footnotes')}</StyledAccordionHeader>
-            <AccordionContent forceMount>
+            <StyledAccordionContent forceMount data-background-color={accordionHeaderVariant}>
               <ArticleFootNotes footNotes={footnotes} />
-            </AccordionContent>
+            </StyledAccordionContent>
           </AccordionItem>
         )}
       </AccordionRoot>

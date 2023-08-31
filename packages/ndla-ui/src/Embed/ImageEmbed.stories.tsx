@@ -111,7 +111,6 @@ export const ImageEmbedStory: StoryObj<typeof ImageEmbed> = {
     embed: {
       resource: 'image',
       status: 'success',
-      seq: 1,
       embedData: embedData,
       data: metaData,
     },
@@ -124,7 +123,6 @@ export const Failed: StoryObj<typeof ImageEmbed> = {
     embed: {
       resource: 'image',
       status: 'error',
-      seq: 1,
       embedData: embedData,
     },
   },

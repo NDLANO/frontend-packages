@@ -72,7 +72,6 @@ const conceptMetaData: ConceptData['concept'] = {
 const visualElementData: ConceptData['visualElement'] = {
   resource: 'image',
   status: 'success',
-  seq: 6,
   embedData: {
     resource: 'image',
     resourceId: '52863',
@@ -170,7 +169,6 @@ export const Block: StoryObj<typeof ConceptEmbed> = {
     embed: {
       resource: 'concept',
       status: 'success',
-      seq: 1,
       embedData: blockEmbedData,
       data: blockMetaData,
     },
@@ -183,7 +181,6 @@ export const BlockFailed: StoryObj<typeof ConceptEmbed> = {
     embed: {
       resource: 'concept',
       status: 'error',
-      seq: 1,
       embedData: blockEmbedData,
     },
   },
@@ -195,7 +192,6 @@ export const Inline: StoryObj<typeof ConceptEmbed> = {
     embed: {
       resource: 'concept',
       status: 'success',
-      seq: 1,
       embedData: inlineEmbedData,
       data: blockMetaData,
     },
@@ -208,7 +204,6 @@ export const InlineFailed: StoryObj<typeof ConceptEmbed> = {
     embed: {
       resource: 'concept',
       status: 'error',
-      seq: 1,
       embedData: inlineEmbedData,
     },
   },

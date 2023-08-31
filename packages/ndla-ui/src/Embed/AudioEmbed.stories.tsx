@@ -203,7 +203,6 @@ export const AudioEmbedStory: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'success',
-      seq: 1,
       embedData: embedData,
       data: successData,
     },
@@ -216,7 +215,6 @@ export const AudioEmbedFailed: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'error',
-      seq: 1,
       embedData: embedData,
     },
   },
@@ -228,7 +226,6 @@ export const Podcast: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'success',
-      seq: 1,
       embedData: podcastEmbedData,
       data: podcastSuccessData,
     },
@@ -241,7 +238,6 @@ export const PodcastFailed: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'error',
-      seq: 1,
       embedData: podcastEmbedData,
     },
   },

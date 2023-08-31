@@ -47,7 +47,6 @@ export const Regular: StoryObj<typeof IframeEmbed> = {
     embed: {
       resource: 'iframe',
       status: 'success',
-      seq: 3,
       embedData: embedData,
       data: {},
     },
@@ -59,7 +58,6 @@ export const Failed: StoryObj<typeof IframeEmbed> = {
     embed: {
       resource: 'iframe',
       status: 'error',
-      seq: 3,
       embedData: embedData,
     },
   },
@@ -132,7 +130,6 @@ export const OpensInNewWindow: StoryObj<typeof IframeEmbed> = {
     embed: {
       resource: 'iframe',
       status: 'success',
-      seq: 4,
       embedData: opensInNewEmbedData,
       data: opensInnewMetaData,
     },
@@ -144,7 +141,6 @@ export const OpensInNewWindowFailed: StoryObj<typeof IframeEmbed> = {
     embed: {
       resource: 'iframe',
       status: 'error',
-      seq: 4,
       embedData: opensInNewEmbedData,
     },
   },

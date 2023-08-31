@@ -148,7 +148,6 @@ interface MetaDataFailure<T extends EmbedData> {
   resource: T['resource'];
   embedData: T;
   status: 'error';
-  seq: number;
   message?: string;
 }
 
@@ -156,7 +155,6 @@ interface MetaDataSuccess<T extends EmbedData, Data> {
   resource: T['resource'];
   embedData: T;
   data: Data;
-  seq: number;
   status: 'success';
 }
 

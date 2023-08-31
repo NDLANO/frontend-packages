@@ -111,7 +111,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path 
     return <EmbedErrorPlaceholder type={'image'} figureType={figureType} />;
   }
 
-  const { data, embedData, seq } = embed;
+  const { data, embedData } = embed;
 
   const altText = embedData.alt || '';
 
@@ -121,13 +121,10 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path 
   const focalPoint = getFocalPoint(embedData);
   const crop = getCrop(embedData);
 
-  const figureId = `figure-${seq}-${data.id}`;
-
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
   return (
     <Figure
-      id={figureId}
       type={imageSizes ? undefined : figureType}
       className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
     >

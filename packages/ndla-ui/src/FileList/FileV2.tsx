@@ -10,19 +10,17 @@ import { useTranslation } from 'react-i18next';
 import File from './File';
 
 interface Props {
-  id: string;
   title: string;
   url: string;
   fileExists: boolean;
   fileType: string;
 }
 
-const FileV2 = ({ title, url, id, fileExists, fileType }: Props) => {
+const FileV2 = ({ title, url, fileExists, fileType }: Props) => {
   const { t } = useTranslation();
   const tooltip = `${t('download')} ${url.split('/').pop()}`;
   return (
     <File
-      id={id}
       file={{
         title,
         fileExists,

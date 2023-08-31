@@ -55,7 +55,7 @@ const FileList = ({ files, heading, id }: Props) => (
     <FileListHeading>{heading}</FileListHeading>
     <FilesList>
       {files.map((file) => (
-        <File key={`file-${id}-${file.title}`} file={file} id={id} />
+        <File key={`file-${id}-${file.title}`} file={file} />
       ))}
     </FilesList>
   </FileListSection>

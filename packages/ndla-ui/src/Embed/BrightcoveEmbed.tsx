@@ -86,18 +86,17 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
       </EmbedErrorPlaceholder>
     );
   }
-  const { data, seq } = embed;
+  const { data } = embed;
 
   const linkedVideoId = isNumeric(data.link?.text) ? data.link?.text : undefined;
 
-  const figureId = `figure-${seq}-${data.id}`;
   const originalVideoProps = getIframeProps(embedData, data.sources);
   const alternativeVideoProps = linkedVideoId
     ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
     : undefined;
 
   return (
-    <Figure id={figureId} type={isConcept ? 'full-column' : 'full'} resizeIframe>
+    <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}

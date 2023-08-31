@@ -37,7 +37,7 @@ const Container = styled(SafeLink)`
   max-height: fit-content;
   gap: ${spacing.nsmall};
   box-shadow: none;
-  border: 1px solid ${colors.brand.lightest};
+  border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.medium};
   height: 100%;
@@ -47,7 +47,7 @@ const Container = styled(SafeLink)`
   &:hover,
   &:focus-within {
     .blog-title {
-      box-shadow: inset 0 -1px;
+      text-decoration: underline;
     }
   }
 `;

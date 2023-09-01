@@ -126,11 +126,7 @@ class Resources extends Component {
       });
     }
 
-    const allResources = showUngrouped
-      ? flattenResources.map((r, index) => {
-          return { ...r, extraBottomMargin: (index + 1) % 4 === 0 };
-        })
-      : [];
+    const allResources = showUngrouped ? flattenResources : [];
 
     return (
       <ResourcesWrapper

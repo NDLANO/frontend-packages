@@ -881,8 +881,8 @@ const messages = {
     },
     openMenuTooltip: 'Vis læringssti',
     mobileStepInfo: '{{currentPage}} av {{totalPages}}',
-    nextArrow: 'Neste',
-    previousArrow: 'Førre',
+    nextArrow: 'Gå til neste steg',
+    previousArrow: 'Gå til førre steg',
   },
   dropdown: {
     numberHits: `Søket gav {{hits}} treff`,

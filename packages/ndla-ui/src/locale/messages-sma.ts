@@ -885,8 +885,8 @@ const messages = {
     },
     openMenuTooltip: 'Vuesehth lïeremebaalkam',
     mobileStepInfo: '{{currentPage}} ållesth {{totalPages}}:ste',
-    nextArrow: 'Åvtese',
-    previousArrow: 'Övtebe',
+    nextArrow: 'Gå til neste steg',
+    previousArrow: 'Gå til førre steg',
   },
   dropdown: {
     numberHits: `Datne {{hits}} gaavnedimmieh åadtjoejih`,

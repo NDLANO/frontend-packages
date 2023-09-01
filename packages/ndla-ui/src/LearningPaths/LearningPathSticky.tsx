@@ -12,6 +12,7 @@ import { css } from '@emotion/react';
 import { colors, spacing, animations, mq, breakpoints } from '@ndla/core';
 import { Back, Forward } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import { useTranslation } from 'react-i18next';
 
 const FOOTER_HEIGHT = '78px';
 const FOOTER_HEIGHT_MOBILE = spacing.large;
@@ -114,14 +115,21 @@ type PropsSiblings = {
   stepId: number;
 };
 
-export const LearningPathStickySibling = ({ title, toLearningPathUrl, pathId, stepId, arrow }: PropsSiblings) => (
-  <SafeLink to={toLearningPathUrl(pathId, stepId)} css={SafeLinkCSS}>
-    {arrow === 'left' && <Back className="c-icon--medium" />}
-    <div>
-      <StyledTitle>{title}</StyledTitle>
-    </div>
-    {arrow === 'right' && <Forward className="c-icon--medium" />}
-  </SafeLink>
-);
+export const LearningPathStickySibling = ({ title, toLearningPathUrl, pathId, stepId, arrow }: PropsSiblings) => {
+  const { t } = useTranslation();
+  return (
+    <SafeLink
+      to={toLearningPathUrl(pathId, stepId)}
+      css={SafeLinkCSS}
+      aria-label={arrow === 'left' ? t('learningPath.previousArrow') : t('learningPath.nextArrow')}
+    >
+      {arrow === 'left' && <Back className="c-icon--medium" />}
+      <div>
+        <StyledTitle>{title}</StyledTitle>
+      </div>
+      {arrow === 'right' && <Forward className="c-icon--medium" />}
+    </SafeLink>
+  );
+};
 
 export const LearningPathStickyPlaceholder = () => <div css={SafeLinkCSS} />;

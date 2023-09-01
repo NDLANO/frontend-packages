@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
+import { spacing, fonts, mq, breakpoints } from '@ndla/core';
 
 type FooterPrivacyProps = {
   privacyLinks: {
@@ -17,60 +17,51 @@ type FooterPrivacyProps = {
 };
 
 const StyledPrivacyLink = styled.a`
-  background: none;
   color: #fff;
-  border: 0;
-  padding: 0;
-  box-shadow: ${misc.textLinkBoxShadow};
-  cursor: pointer;
+  box-shadow: none;
+  text-decoration: underline;
   &:hover,
   &:focus {
-    box-shadow: none;
+    text-decoration: none;
   }
 `;
 
 const StyledLinkSpacer = styled.span`
-  margin-left: ${spacing.xxsmall};
-  margin-right: ${spacing.xxsmall};
-  margin-bottom: ${spacing.large};
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    visibility: hidden;
+  margin: 0 ${spacing.small};
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
   }
 `;
 
 const StyledFooterText = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  > span {
-    padding: ${spacing.xsmall} 0;
-    text-align: center;
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    ${fonts.sizes(16, 1.5)};
-    > span {
-      padding: 0;
-    }
-  }
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    ${fonts.sizes(14, 1.3)};
-    > span {
-      padding-bottom: ${spacing.xsmall};
-    }
+  ${fonts.sizes(16, 1.5)};
+  ${mq.range({ until: breakpoints.tablet })} {
     flex-direction: column;
+    gap: ${spacing.small};
   }
   margin-bottom: ${spacing.large};
+`;
+
+const TextWrapper = styled.div`
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    text-align: center;
+  }
 `;
 
 const FooterPrivacy = ({ privacyLinks }: FooterPrivacyProps) => {
   return (
     <StyledFooterText>
       {privacyLinks.map((link, index) => (
-        <div key={link.label}>
+        <TextWrapper key={link.label}>
           {index > 0 && <StyledLinkSpacer aria-hidden>|</StyledLinkSpacer>}
           <StyledPrivacyLink href={link.url}>{link.label}</StyledPrivacyLink>
-        </div>
+        </TextWrapper>
       ))}
     </StyledFooterText>
   );

@@ -882,8 +882,8 @@ const messages = {
     },
     openMenuTooltip: 'Open menu',
     mobileStepInfo: '{{currentPage}} out of {{totalPages}}',
-    nextArrow: 'Next',
-    previousArrow: 'Previous',
+    nextArrow: 'Gå til neste steg',
+    previousArrow: 'Gå til forrige steg',
   },
   dropdown: {
     numberHits: `Search returned {{hits}} hits`,

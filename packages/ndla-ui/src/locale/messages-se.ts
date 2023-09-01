@@ -882,8 +882,8 @@ const messages = {
     },
     openMenuTooltip: 'Čájet oahppobálgá',
     mobileStepInfo: '{{currentPage}} oktiibuot {{totalPages}} siidduin',
-    nextArrow: 'Boahtte',
-    previousArrow: 'Ovddit',
+    nextArrow: 'Gå til neste steg',
+    previousArrow: 'Gå til førre steg',
   },
   dropdown: {
     numberHits: `Ohcamis ledje {{hits}} deaivama`,

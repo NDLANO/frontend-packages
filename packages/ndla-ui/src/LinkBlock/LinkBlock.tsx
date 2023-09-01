@@ -15,6 +15,7 @@ import { breakpoints, colors, spacing, mq } from '@ndla/core';
 import { LinkBlockEmbedData } from '@ndla/types-embed';
 import { useMemo } from 'react';
 import Heading from '../Typography/Heading';
+import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 const StyledForward = styled(Forward)`
   margin: 0 ${spacing.nsmall};
@@ -72,7 +73,12 @@ const StyledCalenderEd = styled(CalendarEd)`
   color: ${colors.icon.iconBlue};
 `;
 
-const LinkBlock = ({ title, language, date, url }: Omit<LinkBlockEmbedData, 'resource'>) => {
+interface Props extends Omit<LinkBlockEmbedData, 'resource'> {
+  path?: string;
+}
+
+const LinkBlock = ({ title, language, date, url, path }: Props) => {
+  const href = usePossiblyRelativeUrl(url, path);
   const formattedDate = useMemo(() => {
     if (!date) return null;
     const locale = language === 'nb' ? nb : language === 'nn' ? nn : enGB;
@@ -80,7 +86,7 @@ const LinkBlock = ({ title, language, date, url }: Omit<LinkBlockEmbedData, 'res
   }, [date, language]);
 
   return (
-    <StyledSafeLink to={url}>
+    <StyledSafeLink to={href}>
       <InfoWrapper>
         <Heading element="h3" margin="none" headingStyle="h3" lang={language}>
           {title}

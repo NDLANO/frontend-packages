@@ -8,39 +8,17 @@
 
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css, keyframes } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { fonts } from '@ndla/core';
 import NoContentBox from '../NoContentBox';
 import ResourceItem from './ResourceItem';
 import { Resource } from '../types';
 
-const fakeLoadingAnimation = keyframes`
-  0% {
-    opacity: 0.5;
-  }
-  99% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
-type StyledListProps = {
-  showAdditionalResources?: boolean;
-};
-const StyledResourceList = styled.ul<StyledListProps>`
+const StyledResourceList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
   font-family: ${fonts.sans};
-  ${({ showAdditionalResources }) =>
-    showAdditionalResources &&
-    css`
-      animation-name: ${fakeLoadingAnimation};
-      animation-duration: 0.4s;
-    `}
 `;
 
 export type ResourceListProps = {
@@ -68,7 +46,7 @@ const ResourceList = ({
 
   return (
     <div>
-      <StyledResourceList showAdditionalResources={showAdditionalResources}>
+      <StyledResourceList>
         {resources.map(({ id, ...resource }) => (
           <ResourceItem
             id={id}

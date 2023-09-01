@@ -60,7 +60,7 @@ const GridContainer = styled.div`
   }
 
   &[data-border='lightBlue'] {
-    border: 1px solid ${colors.brand.light};
+    border: 1px solid ${colors.brand.lighter};
   }
   &[data-background='white'] {
     background-color: ${colors.white};

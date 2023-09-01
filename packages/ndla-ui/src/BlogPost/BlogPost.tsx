@@ -12,6 +12,7 @@ import SafeLink from '@ndla/safelink';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
 import { HeadingLevel } from '../types';
+import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 export interface Props {
   title: {
@@ -26,6 +27,7 @@ export interface Props {
     url: string;
     alt: string;
   };
+  path?: string;
 }
 
 const Container = styled(SafeLink)`
@@ -37,7 +39,7 @@ const Container = styled(SafeLink)`
   max-height: fit-content;
   gap: ${spacing.nsmall};
   box-shadow: none;
-  border: 1px solid ${colors.brand.lightest};
+  border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.medium};
   height: 100%;
@@ -47,7 +49,7 @@ const Container = styled(SafeLink)`
   &:hover,
   &:focus-within {
     .blog-title {
-      box-shadow: inset 0 -1px;
+      text-decoration: underline;
     }
   }
 `;
@@ -79,9 +81,10 @@ const StyledImg = styled.img`
   border: 0;
 `;
 
-const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal' }: Props) => {
+const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal', path }: Props) => {
+  const href = usePossiblyRelativeUrl(url, path);
   return (
-    <Container data-size={size} to={url}>
+    <Container data-size={size} to={href}>
       <Heading className="blog-title" css={headingCss} lang={title.language}>
         {title.title}
       </Heading>

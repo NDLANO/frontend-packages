@@ -12,6 +12,7 @@ import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
 import { HeadingLevel } from '../types';
+import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 interface Image {
   src: string;
@@ -35,6 +36,7 @@ interface Props {
   imageBefore?: Image;
   imageAfter?: Image;
   className?: string;
+  path?: string;
 }
 
 const Container = styled.div`
@@ -91,15 +93,17 @@ const CampaignBlock = ({
   headingLevel: Heading = 'h2',
   imageAfter,
   url,
+  path,
   className,
 }: Props) => {
+  const href = usePossiblyRelativeUrl(url.url, path);
   return (
     <Container className={className} data-type="campaign-block">
       {imageBefore && <StyledImg src={imageBefore.src} height={200} width={240} alt="" />}
       <TextWrapper>
         <Heading css={headingStyle}>{title.title}</Heading>
         <StyledDescription>{description.text}</StyledDescription>
-        <StyledLink to={url.url}>
+        <StyledLink to={href}>
           {url.text}
           <Forward />
         </StyledLink>

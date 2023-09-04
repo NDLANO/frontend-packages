@@ -44,9 +44,10 @@ type ArticleTitleProps = {
   label?: string;
   children: ReactNode;
   id: string;
+  lang?: string;
 };
 
-export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) => {
+export const ArticleTitle = ({ children, icon, label, id, lang }: ArticleTitleProps) => {
   const modifiers = [];
   if (icon) {
     modifiers.push('icon');
@@ -62,7 +63,7 @@ export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) =
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <Heading element="h1" headingStyle="h1" id={id} tabIndex={-1}>
+      <Heading element="h1" headingStyle="h1" id={id} tabIndex={-1} lang={lang}>
         {children}
       </Heading>
     </div>
@@ -72,19 +73,29 @@ export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) =
 type ArticleIntroductionProps = {
   children: ReactNode;
   renderMarkdown: (text: string) => string;
+  lang?: string;
 };
 
 export const ArticleIntroduction = ({
   children,
+  lang,
   renderMarkdown = (text) => {
     return text;
   },
 }: ArticleIntroductionProps) => {
   if (typeof children === 'string') {
-    return <div className="article_introduction">{parse(renderMarkdown(children))}</div>;
+    return (
+      <div className="article_introduction" lang={lang}>
+        {parse(renderMarkdown(children))}
+      </div>
+    );
   }
   if (children) {
-    return <div className="article_introduction">{children}</div>;
+    return (
+      <div className="article_introduction" lang={lang}>
+        {children}
+      </div>
+    );
   }
   return null;
 };
@@ -128,6 +139,7 @@ type Props = {
   renderMarkdown: (text: string) => string;
   notions?: ReactNode;
   accessMessage?: string;
+  locale?: string;
 };
 
 const getArticleContent = (content: any, contentTransformed?: boolean) => {
@@ -157,6 +169,7 @@ export const Article = ({
   accessMessage,
   heartButton,
   contentTransformed,
+  locale,
 }: Props) => {
   const articleRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -202,11 +215,12 @@ export const Article = ({
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
-
-            <ArticleTitle id={id} icon={icon} label={messages.label}>
+            <ArticleTitle id={id} icon={icon} label={messages.label} lang={locale}>
               {title}
             </ArticleTitle>
-            <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
+            <ArticleIntroduction renderMarkdown={renderMarkdown} lang={locale}>
+              {introduction}
+            </ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">

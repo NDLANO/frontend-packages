@@ -6,7 +6,7 @@
  *
  */
 
-import { Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from '@ndla/ui';
+import { Breadcrumb, HomeBreadcrumb } from '@ndla/ui';
 
 const items = [
   {
@@ -14,11 +14,11 @@ const items = [
     to: '#1',
   },
   {
-    name: 'Hovedemne tittel',
+    name: 'Hovedemne tittel Hovedemne tittel',
     to: '#2',
   },
   {
-    name: 'Underemne tittel',
+    name: 'Underemne tittel Underemne tittel Underemne tittel',
     to: '#3',
   },
   {
@@ -27,21 +27,7 @@ const items = [
   },
 ];
 
-interface BreadcrumbDefaultProps {
-  autoCollapse?: boolean;
-}
-
-export const BreadcrumbDefault = ({ autoCollapse }: BreadcrumbDefaultProps) => (
-  <Breadcrumb autoCollapse={autoCollapse} items={items} />
-);
-
-export const BreadcrumbWithHeader = () => {
-  return <HeaderBreadcrumb items={items} />;
-};
-
-export const BreadcrumbWhiteWithHeader = () => {
-  return <HeaderBreadcrumb light items={items} />;
-};
+export const BreadcrumbDefault = () => <Breadcrumb items={items} />;
 
 export const BreadcrumbWithHome = () => {
   return <HomeBreadcrumb items={items} />;

@@ -207,10 +207,6 @@ storiesOf('Patterns', module)
     <Center>
       <h2 className="u-heading">Enkel brødsmulesti</h2>
       <BreadcrumbDefault />
-      <h2 className="u-heading">Enkel brødsmulesti. Automatisk redusering av bredde</h2>
-      <BreadcrumbDefault autoCollapse />
-      <h2 className="u-heading">Brødsmulesti med header og styling</h2>
-      <BreadcrumbWithHeader />
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
       <BreadcrumbWithHome />
     </Center>

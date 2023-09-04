@@ -101,7 +101,6 @@ const ArticleFavoritesButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   transform: translate(${spacing.xsmall}, -${spacing.normal});
-  height: 0;
   ${mq.range({ from: breakpoints.tablet })} {
     transform: translate(${spacing.normal}, -${spacing.medium});
   }

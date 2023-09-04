@@ -37,13 +37,6 @@ const StyledCardContainer = styled(SafeLink)`
     text-decoration: underline ${colors.text.primary};
     text-underline-offset: 3px;
   }
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    min-height: 350px;
-    min-width: 250px;
-    max-height: 350px;
-    width: 250px;
-  }
 `;
 
 const StyledImg = styled.img`

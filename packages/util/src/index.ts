@@ -22,3 +22,4 @@ export { validateTranslationFiles } from './translationValidation';
 export { default as useForwardedRef } from './useForwardedRef';
 export { default as NoSSR } from './nossr/NoSSR';
 export { default as withNoSSR } from './nossr/withNoSSR';
+export { default as usePrevious } from './usePrevious';

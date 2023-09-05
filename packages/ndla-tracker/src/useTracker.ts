@@ -6,7 +6,9 @@
  *
  */
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { usePrevious } from '@ndla/util';
+import { useLocation } from 'react-router-dom';
 
 interface TrackPageViewProps {
   title: string;
@@ -15,6 +17,14 @@ interface TrackPageViewProps {
 
 const useTracker = () => {
   const [hasTracked, setHasTracked] = useState(false);
+  const { pathname } = useLocation();
+  const previousPath = usePrevious(pathname);
+
+  useEffect(() => {
+    if (hasTracked && previousPath !== pathname) {
+      setHasTracked(false);
+    }
+  }, [hasTracked, pathname, previousPath]);
 
   const trackPageView = useCallback(
     ({ title, dimensions = {} }: TrackPageViewProps) => {

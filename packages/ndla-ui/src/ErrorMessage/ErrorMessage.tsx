@@ -69,7 +69,7 @@ export const ErrorMessage = ({ children, messages, illustration, illustrationEle
     {messages.description && <Description>{messages.description}</Description>}
     {customElement && <CustomElementWrapper>{customElement}</CustomElementWrapper>}
     {messages.linksTitle && <h2>{messages.linksTitle}</h2>}
-    {messages.back && typeof window !== 'undefined' && window.history.length > 1 && (
+    {messages.back && (
       <SafeLink to={`/#${encodeURI(messages.back)}`} onClick={() => window.history.back()}>
         {messages.back}
       </SafeLink>

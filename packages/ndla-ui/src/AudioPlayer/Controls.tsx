@@ -149,6 +149,7 @@ const VolumeList = styled(PopoverContent)`
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.lighter};
   height: 128px;
+  z-index: 2;
 `;
 
 const VolumeSliderWrapper = styled(SliderRoot)`

@@ -143,7 +143,14 @@ export const TableStyling = css`
 
     ol,
     ul {
-      font-size: unset !important;
+      li,
+      li p {
+        ${fonts.sizes('14px', '22px')};
+        ${mq.range({ from: breakpoints.tablet })} {
+          ${fonts.sizes('15px', '30px')};
+        }
+        margin: ${spacing.xsmall} 0 !important;
+      }
     }
 
     p {

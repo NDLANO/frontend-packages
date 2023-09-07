@@ -19,7 +19,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 const StyledItem = styled(Item)`
-  border: 1px solid ${colors.brand.lighter};
+  border: 1px solid ${colors.brand.light};
   border-radius: 2px;
   &[data-state='open'] {
     border-color: ${colors.brand.primary};

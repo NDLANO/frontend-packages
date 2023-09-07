@@ -17,6 +17,7 @@ export interface CodeEmbedData {
 
 export interface CodeData {
   decodedContent: string;
+  highlightedCode: string;
 }
 
 export type CodeMetaData = MetaData<CodeEmbedData, CodeData>;

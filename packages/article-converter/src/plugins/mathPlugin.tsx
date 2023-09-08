@@ -9,6 +9,7 @@
 import { attributesToProps } from 'html-react-parser';
 import { PluginType } from './types';
 export const mathPlugin: PluginType = (node) => {
-  const props = attributesToProps(node.attribs);
-  return <span dangerouslySetInnerHTML={{ __html: props['data-math'] }} />;
+  const { 'data-math': mathContent, ...props } = attributesToProps(node.attribs);
+  // @ts-ignore
+  return <math {...props} dangerouslySetInnerHTML={{ __html: mathContent }} />;
 };

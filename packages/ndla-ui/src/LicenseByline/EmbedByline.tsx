@@ -76,7 +76,7 @@ const BylineWrapper = styled.div`
   ${fonts.sizes('18px', '24px')};
   background-color: ${colors.brand.lightest};
   padding: ${spacing.nsmall} ${spacing.normal};
-  border: 1px solid ${colors.brand.tertiary};
+  border: 1px solid ${colors.brand.light};
   border-top: none;
 
   &[data-top-rounded='true'] {
@@ -94,7 +94,7 @@ const BylineWrapper = styled.div`
     background-color: ${colors.support.redLightest};
   }
   &[data-first='true'] {
-    border-top: 1px solid ${colors.brand.tertiary};
+    border-top: 1px solid ${colors.brand.light};
   }
 `;
 

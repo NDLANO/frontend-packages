@@ -130,6 +130,8 @@ const AllMoviesAlphabetically = ({ movies }: Props) => {
             <MovieItem key={movie.id}>
               <StyledSafeLink to={movie.path}>
                 <MovieImage
+                  alt=""
+                  loading="lazy"
                   src={
                     movie?.metaImage?.url ? `${movie.metaImage?.url}?${makeSrcQueryString(IMAGE_WIDTH * 2)}` : undefined
                   }

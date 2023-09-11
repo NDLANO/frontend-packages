@@ -113,7 +113,7 @@ const RightsWrapper = styled.div`
     ${mobileStyling}
   }
 
-  ${mq.range({ until: breakpoints.tablet })} {
+  ${mq.range({ until: breakpoints.tabletWide })} {
     ${mobileStyling}
   }
 `;

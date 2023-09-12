@@ -33,7 +33,6 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   list-style-type: none;
-  list-style-image: none;
   li {
     flex: 1;
     width: 100%;

@@ -17,9 +17,7 @@ const StyledUl = styled.ul`
   ${fonts.sizes('18px', '29px')};
 
   ul {
-    list-style-image: none;
     padding-left: ${spacing.nsmall};
-
     margin-left: 0 !important;
   }
 

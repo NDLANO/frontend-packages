@@ -9,7 +9,6 @@
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
-import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
   padding-left: ${spacing.nsmall} !important;

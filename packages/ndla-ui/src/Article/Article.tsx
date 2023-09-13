@@ -216,7 +216,7 @@ export const Article = ({
           <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
             <ArticleTitle id={id} icon={icon} label={messages.label} lang={lang}>
-              {title.title}
+              {title}
             </ArticleTitle>
             <ArticleIntroduction renderMarkdown={renderMarkdown} lang={lang}>
               {introduction}

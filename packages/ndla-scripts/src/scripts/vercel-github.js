@@ -4,10 +4,10 @@
  * Forked/Inspired by: https://github.com/kentcdodds/glamorous-website/blob/master/other/now-travis
  */
 
-const { Octokit } = require('octokit');
+import { Octokit } from 'octokit';
+import normalizeUrl from 'normalize-url';
 const spawn = require('cross-spawn-promise');
-const normalizeUrl = require('normalize-url');
-const urlRegex = require('url-regex');
+const urlRegex = require('url-regex-safe');
 
 if (!process.env.CI || !process.env.GITHUB_ACTIONS) {
   throw new Error('Could not detect Github Actions CI environment');

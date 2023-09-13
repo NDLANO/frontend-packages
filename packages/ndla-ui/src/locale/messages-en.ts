@@ -1052,6 +1052,7 @@ const messages = {
     showLess: 'Show less',
   },
   files: 'Files',
+  fileTypesNotSupported: 'Filetype(s) not supported: {{fileTypes}}',
   download: 'Download file: ',
   expandButton: 'Show large version',
   ...contributorTypes.en,

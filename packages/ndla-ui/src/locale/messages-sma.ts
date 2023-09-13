@@ -1055,6 +1055,7 @@ const messages = {
     showLess: 'Vis mindre',
   },
   files: 'Filer',
+  fileTypesNotSupported: 'Filtypen(e) støttast ikkje: {{fileTypes}}',
   download: 'Veedtjh fijlem: ',
   expandButton: 'Vuesehth stoerre versjovnem',
   ...contributorTypes.nb,

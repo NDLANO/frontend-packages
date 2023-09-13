@@ -6,8 +6,8 @@
 
 import { Octokit } from 'octokit';
 import normalizeUrl from 'normalize-url';
-const spawn = require('cross-spawn-promise');
-const urlRegex = require('url-regex-safe');
+import spawn from 'cross-spawn-promise';
+import urlRegex from 'url-regex-safe';
 
 if (!process.env.CI || !process.env.GITHUB_ACTIONS) {
   throw new Error('Could not detect Github Actions CI environment');

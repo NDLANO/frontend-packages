@@ -1222,7 +1222,7 @@ const messages = {
       loginTextLink: 'privacy policy here',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this resource?',
-      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your <i>own</i> way!',
+      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your own way!',
       deleteAccount: 'Delete My NDLA',
       welcome:
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',

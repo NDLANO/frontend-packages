@@ -1220,7 +1220,7 @@ const messages = {
       loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne resursen?',
-      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
+      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!',
       welcome:
         'Velkommen til Min NDLA! No kan du lagre favorittressursane dine frå NDLA og organisere dei i mapper og med emneknaggar.',
       read: { read: 'Les', our: ' vår.' },

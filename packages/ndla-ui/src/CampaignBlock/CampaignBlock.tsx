@@ -69,17 +69,10 @@ const StyledImg = styled.img`
 `;
 
 const StyledLink = styled(SafeLink)`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: ${spacing.xxsmall};
-  box-shadow: none;
-  text-decoration: underline;
-  font-weight: ${fonts.weight.semibold};
   color: ${colors.brand.primary};
-  &:hover,
-  &:focus-visible {
-    text-decoration: none;
-  }
 `;
 
 const TextWrapper = styled.div`

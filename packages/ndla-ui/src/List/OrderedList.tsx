@@ -64,6 +64,7 @@ const StyledOl = styled.ol`
   }
 
   > li {
+    min-height: ${spacing.normal};
     counter-increment: level1;
     &:before {
       position: absolute;

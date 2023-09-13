@@ -4,6 +4,7 @@
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",
   "main": "src/index.js",
+  "type": "module",
   "bin": {
     "ndla-scripts": "src/index.js"
   },

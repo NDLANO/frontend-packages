@@ -1,6 +1,6 @@
-const path = require('path');
-const spawn = require('cross-spawn');
-const glob = require('glob');
+import { join } from 'path';
+import spawn from 'cross-spawn';
+import { sync } from 'glob';
 
 const [executor, ignoredBin, script, ...args] = process.argv;
 
@@ -20,7 +20,7 @@ function handleSignal(result) {
 }
 
 function spawnScript() {
-  const relativeScriptPath = path.join(__dirname, './scripts', script);
+  const relativeScriptPath = join(__dirname, './scripts', script);
   const scriptPath = attemptResolve(relativeScriptPath);
 
   if (!scriptPath) {
@@ -41,8 +41,8 @@ function spawnScript() {
 if (script) {
   spawnScript();
 } else {
-  const scriptsPath = path.join(__dirname, 'scripts/');
-  const scriptsAvailable = glob.sync(path.join(__dirname, 'scripts', '*'));
+  const scriptsPath = join(__dirname, 'scripts/');
+  const scriptsAvailable = sync(join(__dirname, 'scripts', '*'));
   const scriptsAvailableMessage = scriptsAvailable
     .map((s) => s.replace(scriptsPath, '').replace(/\.js$/, ''))
     .filter(Boolean)

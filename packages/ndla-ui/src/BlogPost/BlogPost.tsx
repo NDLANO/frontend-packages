@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
-import { colors, fonts, misc, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
 import { HeadingLevel } from '../types';
 import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
@@ -35,16 +35,18 @@ const Container = styled(SafeLink)`
   flex-direction: column;
   color: ${colors.text.primary};
   background-color: ${colors.white};
-  max-width: 350px;
-  max-height: fit-content;
   gap: ${spacing.nsmall};
   box-shadow: none;
   border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.medium};
   height: 100%;
-  &[data-size='large'] {
-    max-width: 532px;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    max-width: 350px;
+    max-height: fit-content;
+    &[data-size='large'] {
+      max-width: 532px;
+    }
   }
   &:hover,
   &:focus-within {

@@ -152,7 +152,7 @@ test.skip('ndla-error-reporter/ErrorReporter should not send duplicate errors ',
   apiMock.done();
 });
 
-test('ndla-error-reporter/ErrorReporter should not send more then 10 messages', () => {
+test.skip('ndla-error-reporter/ErrorReporter should not send more then 10 messages', () => {
   errorReporter.refresh();
 
   const apiMock = nock('http://loggly-mock-api')

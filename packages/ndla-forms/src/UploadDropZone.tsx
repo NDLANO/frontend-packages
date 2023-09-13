@@ -12,6 +12,7 @@ import { css } from '@emotion/react';
 import { Spinner } from '@ndla/icons';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
+import { useTranslation } from 'react-i18next';
 import { getIllegalFiles } from './filetypeHelper';
 
 const SpinnerWrapper = styled.div`
@@ -157,6 +158,7 @@ const UploadDropZone = ({
   loading,
   children,
 }: Props) => {
+  const { t } = useTranslation();
   const [draggedInside, setDraggedInside] = useState(false);
   const [error, setError] = useState<string>();
   const [errorTimer, setErrorTimer] = useState<NodeJS.Timeout | null>(null);
@@ -182,7 +184,7 @@ const UploadDropZone = ({
 
       if (illegalFiles.length > 0) {
         const illegalFileTypes = files.map((file) => file.type.substr(file.type.indexOf('/') + 1)).toString();
-        setError(errorMessage || `Filetype(s) not supported: ${illegalFileTypes}`);
+        setError(errorMessage || t('fileTypesNotSupported', { fileTypes: illegalFileTypes }));
         if (errorTimer) {
           clearTimeout(errorTimer);
         }

@@ -1052,6 +1052,7 @@ const messages = {
     showLess: 'Čájet unnit',
   },
   files: 'Fiillat',
+  fileTypesNotSupported: 'Filtypen(e) støttast ikkje: {{fileTypes}}',
   download: 'Viečča fiilla: ',
   expandButton: 'Čájet stuora veršuvnna',
   ...contributorTypes.se,

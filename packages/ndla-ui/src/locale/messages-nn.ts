@@ -1051,6 +1051,7 @@ const messages = {
   },
   source: 'Kjelde',
   files: 'Filer',
+  fileTypesNotSupported: 'Filtypen(e) støttast ikkje: {{fileTypes}}',
   download: 'Last ned fil: ',
   expandButton: 'Vis stor versjon',
   ...contributorTypes.nn,

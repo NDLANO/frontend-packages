@@ -139,7 +139,7 @@ type Props = {
   renderMarkdown: (text: string) => string;
   notions?: ReactNode;
   accessMessage?: string;
-  locale?: string;
+  lang?: string;
 };
 
 const getArticleContent = (content: any, contentTransformed?: boolean) => {
@@ -169,7 +169,7 @@ export const Article = ({
   accessMessage,
   heartButton,
   contentTransformed,
-  locale,
+  lang,
 }: Props) => {
   const articleRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -215,10 +215,10 @@ export const Article = ({
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
-            <ArticleTitle id={id} icon={icon} label={messages.label} lang={locale}>
+            <ArticleTitle id={id} icon={icon} label={messages.label} lang={lang}>
               {title.title}
             </ArticleTitle>
-            <ArticleIntroduction renderMarkdown={renderMarkdown} lang={locale}>
+            <ArticleIntroduction renderMarkdown={renderMarkdown} lang={lang}>
               {introduction}
             </ArticleIntroduction>
           </ArticleHeaderWrapper>

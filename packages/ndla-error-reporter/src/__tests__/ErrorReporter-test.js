@@ -103,7 +103,7 @@ test('ndla-error-reporter/ErrorReporter can capture error with additional info',
 });
 
 test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error to loggly', async () => {
-  const apiMock = nock('http://loggly-mock-api')
+  nock('http://loggly-mock-api')
     .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
         level: 'error',
@@ -125,8 +125,6 @@ test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
   } catch (e) {
     await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
-
-  apiMock.done();
 });
 
 test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', async () => {

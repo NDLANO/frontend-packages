@@ -304,7 +304,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Čuovo min',
-      description: 'NDLAs leat máŋga Facebook- ja Twitter-konttu. Gávnna dan mii dutnje heive ja čuovo min!',
+      description: 'NDLAs leat máŋga Facebook- ja X-konttu. Gávnna dan mii dutnje heive ja čuovo min!',
       mainLink: {
         name: 'Čuovo min',
       },

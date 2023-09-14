@@ -18,13 +18,12 @@ export interface CampaignBlockEmbedData {
   headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
   url: string;
   urlText: string;
-  imageBeforeId?: string;
-  imageAfterId?: string;
+  imageId?: string;
+  imageSide?: 'left' | 'right';
 }
 
 export interface CampaignBlockMeta {
-  imageBefore?: IImageMetaInformationV3;
-  imageAfter?: IImageMetaInformationV3;
+  image?: IImageMetaInformationV3;
 }
 
 export type CampaignBlockMetaData = MetaData<CampaignBlockEmbedData, CampaignBlockMeta>;

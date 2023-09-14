@@ -10,7 +10,6 @@ env:
   GH_PR_NUMBER: ${{ github.event.number }}
   GH_PR_REPO: ${{ github.event.pull_request.head.repo.full_name }}
   GH_PR_SHA: ${{ github.event.pull_request.head.sha }}
-  NODE_OPTIONS: '--no-experiemental-fetch'
 jobs:
   unit_tests:
     name: 'Unit tests'
@@ -25,7 +24,9 @@ jobs:
       - name: 'Bootstrap'
         run: yarn bootstrap:ci
       - name: 'Check-all'
-        run: yarn check-all
+        run: |
+          export NODE_OPTIONS='--no-experiemental-fetch'
+          yarn check-all
       - name: 'Build storybook'
         run: yarn build-storybook
       - name: 'Deploy vercel build'

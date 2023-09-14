@@ -1,12 +1,15 @@
-import { join } from 'path';
+import { join, dirname } from 'path';
 import spawn from 'cross-spawn';
-import { sync } from 'glob';
+import glob from 'glob';
+
+const { sync } = glob;
+const __dirname = dirname(new URL(import.meta.url).pathname);
 
 const [executor, ignoredBin, script, ...args] = process.argv;
 
 function attemptResolve(...resolveArgs) {
   try {
-    return require.resolve(...resolveArgs);
+    return import.meta.resolve(...resolveArgs);
   } catch (error) {
     return null;
   }
@@ -27,7 +30,7 @@ function spawnScript() {
     throw new Error(`Unknown script "${script}".`);
   }
 
-  const result = spawn.sync(executor, [scriptPath, ...args], {
+  const result = spawn.sync(executor, [scriptPath.pathname, ...args], {
     stdio: 'inherit',
   });
 

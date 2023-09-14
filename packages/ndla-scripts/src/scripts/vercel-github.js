@@ -4,6 +4,7 @@
  * Forked/Inspired by: https://github.com/kentcdodds/glamorous-website/blob/master/other/now-travis
  */
 
+import { inspect } from 'util';
 import { Octokit } from 'octokit';
 import normalizeUrl from 'normalize-url';
 import spawn from 'cross-spawn-promise';
@@ -47,9 +48,8 @@ function getUrl(content) {
 function logError(message) {
   return function logIfError(error) {
     if (error) {
-      const util = require('util');
-      console.log(util.inspect(message, false, null, true));
-      console.log(util.inspect(error, false, null, true));
+      console.log(inspect(message, false, null, true));
+      console.log(inspect(error, false, null, true));
       // console.log(message, error);
     }
   };

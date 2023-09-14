@@ -3,9 +3,10 @@
   "version": "1.0.4",
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",
-  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "type": "module",
   "bin": {
-    "ndla-scripts": "src/index.js"
+    "ndla-scripts": "./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,9 @@
   "keywords": [
     "ndla"
   ],
+  "engines": {
+    "node": ">= 18.0.0"
+  },
   "author": "ndla@knowit.no",
   "files": [
     "src"

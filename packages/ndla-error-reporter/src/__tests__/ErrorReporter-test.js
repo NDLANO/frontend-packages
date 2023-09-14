@@ -142,12 +142,12 @@ test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', asyn
     const someVal = null;
     someVal.foo = 1;
   } catch (e) {
-    await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
-    await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
-    await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
 
-  apiMock.done();
+  expect(apiMock.pendingMocks()).toHaveLength(1);
 });
 
 test('ndla-error-reporter/ErrorReporter should not send more then 10 messages', async () => {

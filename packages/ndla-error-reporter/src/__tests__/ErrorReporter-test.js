@@ -23,11 +23,11 @@ const errorReporter = ErrorReporter.getInstance({
   ignoreUrls: ['https://example.com/script.js'],
 });
 
-test.skip('ndla-error-reporter/ErrorReporter is singleton', () => {
+test('ndla-error-reporter/ErrorReporter is singleton', () => {
   expect(errorReporter).toBe(ErrorReporter.getInstance());
 });
 
-test.skip('ndla-error-reporter/ErrorReporter can capture message', () => {
+test('ndla-error-reporter/ErrorReporter can capture message', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', {
       level: 'info',
@@ -38,12 +38,12 @@ test.skip('ndla-error-reporter/ErrorReporter can capture message', () => {
     })
     .reply(200);
 
-  errorReporter.captureMessage('Log message');
+  await errorReporter.captureMessage('Log message');
 
   apiMock.done();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter can capture warning', () => {
+test('ndla-error-reporter/ErrorReporter can capture warning', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
@@ -58,12 +58,12 @@ test.skip('ndla-error-reporter/ErrorReporter can capture warning', () => {
     })
     .reply(200);
 
-  errorReporter.captureWarning(new Error('Some generic warning'));
+  await errorReporter.captureWarning(new Error('Some generic warning'));
 
   apiMock.done();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter can capture error', () => {
+test('ndla-error-reporter/ErrorReporter can capture error', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
@@ -78,12 +78,12 @@ test.skip('ndla-error-reporter/ErrorReporter can capture error', () => {
     })
     .reply(200);
 
-  errorReporter.captureError(new Error('Some generic error'));
+  await errorReporter.captureError(new Error('Some generic error'));
 
   apiMock.done();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter can capture error with additional info', () => {
+test('ndla-error-reporter/ErrorReporter can capture error with additional info', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
@@ -95,14 +95,14 @@ test.skip('ndla-error-reporter/ErrorReporter can capture error with additional i
     })
     .reply(200);
 
-  errorReporter.captureError(new Error('Some other generic error'), {
+  await errorReporter.captureError(new Error('Some other generic error'), {
     from: 'unittest',
   });
 
   apiMock.done();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter captures onerror calls and sends error to loggly', () => {
+test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error to loggly', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
@@ -123,13 +123,13 @@ test.skip('ndla-error-reporter/ErrorReporter captures onerror calls and sends er
   try {
     someUndefinedFunction(); // eslint-disable-line no-undef
   } catch (e) {
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
 
   apiMock.done();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () => {
+test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
@@ -144,15 +144,15 @@ test.skip('ndla-error-reporter/ErrorReporter should not send duplicate errors ',
     const someVal = null;
     someVal.foo = 1;
   } catch (e) {
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
 
   apiMock.done();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter should not send more then 10 messages', () => {
+test('ndla-error-reporter/ErrorReporter should not send more then 10 messages', async () => {
   errorReporter.refresh();
 
   const apiMock = nock('http://loggly-mock-api')
@@ -166,43 +166,43 @@ test.skip('ndla-error-reporter/ErrorReporter should not send more then 10 messag
     .reply(200);
 
   for (let i = 0; i < 15; i += 1) {
-    errorReporter.captureMessage('Log message');
+    await errorReporter.captureMessage('Log message');
   }
 
   apiMock.done();
   errorReporter.refresh();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter should ignore script errors', () => {
+test('ndla-error-reporter/ErrorReporter should ignore script errors', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', () => true)
     .reply(200);
 
-  window.onerror.call(window, 'Script error.', document.location.toString(), 0, 0);
+  await window.onerror.call(window, 'Script error.', document.location.toString(), 0, 0);
 
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);
   nock.cleanAll();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter should ignore resizeobserver errors', () => {
+test('ndla-error-reporter/ErrorReporter should ignore resizeobserver errors', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', () => true)
     .reply(200);
 
-  window.onerror.call(window, 'ResizeObserver loop limit exceeded', document.location.toString(), 0, 0);
+  await window.onerror.call(window, 'ResizeObserver loop limit exceeded', document.location.toString(), 0, 0);
 
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);
   nock.cleanAll();
 });
 
-test.skip('ndla-error-reporter/ErrorReporter should ignore provided urls', () => {
+test('ndla-error-reporter/ErrorReporter should ignore provided urls', async () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', () => true)
     .reply(200);
 
-  window.onerror.call(window, 'Some error', 'https://example.com/script.js', 0, 0);
+  await window.onerror.call(window, 'Some error', 'https://example.com/script.js', 0, 0);
 
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);

@@ -304,7 +304,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Fulkh mijjem',
-      description: 'NDLA gellie Facebook- jïh Xkontoeh åtna. Gaavnh dam mij dutnjien sjeahta jïh fulkh mijjem!',
+      description: 'NDLA gellie Facebook- jïh X-kontoeh åtna. Gaavnh dam mij dutnjien sjeahta jïh fulkh mijjem!',
       mainLink: {
         name: 'Fulkh mijjem',
       },

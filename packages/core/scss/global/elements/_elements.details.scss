@@ -51,8 +51,7 @@ details :not(li) > ul:not([class]) {
 }
 
 details > ol:not([class]),
-details :not(li) > ol:not([class]),
-details .ol-list--roman {
+details :not(li) > ol:not([class]) {
   @include mq(desktop) {
     margin-left: $spacing--large;
   }

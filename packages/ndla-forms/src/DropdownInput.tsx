@@ -21,7 +21,6 @@ interface Props<T extends object> extends InputProps {
   name?: string;
   loading?: boolean;
   values?: T[];
-  testid?: string;
 }
 
 const StyledSpinner = styled(Spinner)`
@@ -30,7 +29,6 @@ const StyledSpinner = styled(Spinner)`
 
 const DropdownInput = <T extends object>({
   multiSelect,
-  testid,
   loading = false,
   values = [],
   removeItem,
@@ -53,7 +51,6 @@ const DropdownInput = <T extends object>({
         />
       ))
     }
-    data-testid={testid}
   />
 );
 

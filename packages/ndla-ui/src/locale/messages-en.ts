@@ -305,7 +305,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Follow us',
-      description: 'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
+      description: 'NDLA has several accounts in social media. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
       },

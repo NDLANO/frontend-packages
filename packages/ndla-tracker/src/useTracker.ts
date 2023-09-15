@@ -15,6 +15,12 @@ interface TrackPageViewProps {
   dimensions?: Record<string | number, any>;
 }
 
+declare global {
+  interface Window {
+    _mtm: any;
+  }
+}
+
 const useTracker = () => {
   const [hasTracked, setHasTracked] = useState(false);
   const { pathname } = useLocation();

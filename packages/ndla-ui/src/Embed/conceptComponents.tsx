@@ -75,7 +75,7 @@ const notionContentCss = css`
 
   ${mq.range({ until: breakpoints.tablet })} {
     padding: ${spacing.small};
-    z-index: 9999;
+    z-index: 100;
     height: 100%;
     width: 100%;
     overflow: auto;

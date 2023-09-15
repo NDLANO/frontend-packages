@@ -6,25 +6,60 @@
  *
  */
 
-import { cloneElement, MouseEvent as ReactMouseEvent, ReactElement, UIEvent, useMemo, useRef, useState } from 'react';
+import {
+  cloneElement,
+  MouseEvent as ReactMouseEvent,
+  ReactElement,
+  UIEvent,
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import { ButtonWrapper, StyledSlideContent } from './Styles';
+import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
 
-export interface CalculatedProps {
-  columnsPrSlide: number;
-  columnWidth: number;
-  distanceBetweenItems?: number;
-  arrowOffset?: number;
-  margin?: number;
-}
+type Gap = 'none' | 'small' | 'normal';
 
-interface Props extends CalculatedProps {
+interface Props {
   items: ReactElement[];
   leftButton?: ReactElement;
   rightButton?: ReactElement;
+  gap?: Gap;
 }
+
+interface SlideContentProps {
+  'data-gap': 'none' | 'small' | 'normal';
+}
+
+const StyledSlideContent = styled.div<SlideContentProps>`
+  display: flex;
+  justify-content: space-between;
+  margin-left: ${spacing.normal};
+  margin-right: ${spacing.normal};
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-left: ${spacingUnit * 3}px;
+    margin-right: ${spacingUnit * 3}px;
+  }
+  &[data-gap='small'] {
+    gap: ${spacing.small};
+  }
+  &[data-gap='normal'] {
+    gap: ${spacing.small};
+    ${mq.range({ from: breakpoints.desktop })} {
+      gap: ${spacing.normal};
+    }
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: none;
+  position: absolute;
+  top: 30%;
+  transform: translateY(-20%);
+  z-index: 1;
+`;
 
 const CarouselWrapper = styled.div`
   overflow: hidden;
@@ -51,21 +86,11 @@ const SliderWrapper = styled.div`
   }
 `;
 
-export const Carousel = ({
-  items = [],
-  columnWidth,
-  columnsPrSlide,
-  distanceBetweenItems = 0,
-  leftButton,
-  rightButton,
-  margin = 0,
-}: Props) => {
+export const Carousel = ({ items = [], leftButton, rightButton, gap = 'normal' }: Props) => {
   const slideshowRef = useRef<HTMLDivElement>(null);
   const slideContainer = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(true);
-  const roundedColumnsPrSlide = useMemo(() => Math.floor(columnsPrSlide), [columnsPrSlide]);
-  const hideButtons = useMemo(() => columnsPrSlide >= items.length, [columnsPrSlide, items.length]);
 
   const onScroll = (e: UIEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
@@ -75,10 +100,23 @@ export const Carousel = ({
     }
   };
 
+  const onResize = useCallback(() => {
+    if (slideContainer.current) {
+      setShowRight(slideContainer.current.scrollWidth > slideContainer.current.clientWidth);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize);
+    onResize();
+    return () => window.removeEventListener('resize', onResize);
+  }, [onResize]);
+
   const slidePage = (direction: 'left' | 'right') => {
-    const amount = columnWidth * roundedColumnsPrSlide;
-    const parent = slideshowRef.current?.parentElement;
-    parent?.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
+    const firstChild = slideshowRef.current?.firstChild as HTMLElement;
+    if (!firstChild) return;
+    const amount = firstChild.clientWidth * 3;
+    slideContainer.current?.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
   };
 
   const onMouseDown = (e: ReactMouseEvent<HTMLDivElement>) => {
@@ -126,20 +164,10 @@ export const Carousel = ({
 
   return (
     <CarouselWrapper>
-      <InteractButton
-        position="left"
-        button={leftButton}
-        onClick={() => slidePage('left')}
-        hidden={hideButtons || !showLeft}
-      />
-      <InteractButton
-        position="right"
-        button={rightButton}
-        onClick={() => slidePage('right')}
-        hidden={hideButtons || !showRight}
-      />
+      <InteractButton position="left" button={leftButton} onClick={() => slidePage('left')} hidden={!showLeft} />
+      <InteractButton position="right" button={rightButton} onClick={() => slidePage('right')} hidden={!showRight} />
       <SliderWrapper ref={slideContainer} tabIndex={-1} onScroll={onScroll} onMouseDown={onMouseDown}>
-        <StyledSlideContent margin={margin} ref={slideshowRef} gap={distanceBetweenItems}>
+        <StyledSlideContent ref={slideshowRef} data-gap={gap}>
           {items.map((item) => item)}
         </StyledSlideContent>
       </SliderWrapper>

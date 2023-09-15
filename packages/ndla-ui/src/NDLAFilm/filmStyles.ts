@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { fonts, spacing, colors } from '@ndla/core';
+import { fonts, spacing, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
 
 export const setAnimations = () => {
   const styles: any = {};
@@ -11,22 +11,23 @@ export const setAnimations = () => {
   return styles;
 };
 
-interface StyledHeadingProps {
-  marginLeft?: number;
-}
-
-export const StyledHeadingH1 = styled.h1<StyledHeadingProps>`
+export const StyledHeadingH1 = styled.h1`
   ${fonts.sizes('22px', '26px')};
   font-weight: ${fonts.weight.semibold};
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: ${colors.white};
   margin: ${spacing.xsmall} 0;
-  margin-left: ${(props) => props.marginLeft && `${props.marginLeft}px`};
   small {
     font-weight: normal;
     padding-left: ${spacing.small};
     color: ${colors.brand.grey};
+  }
+  margin-left: ${spacing.normal};
+  margin-right: ${spacing.normal};
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-left: ${spacingUnit * 3}px;
+    margin-right: ${spacingUnit * 3}px;
   }
 `;
 

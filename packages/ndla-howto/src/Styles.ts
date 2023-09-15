@@ -97,42 +97,6 @@ export const ImageWrapper = styled.div`
   }
 `;
 
-export const RichTextBlock = styled.div`
-  margin-top: ${spacing.normal};
-  h2 {
-    margin: ${spacing.large} 0 ${spacing.small};
-    ${fonts.sizes(32, 1.4)};
-    font-weight: ${fonts.weight.semibold};
-    color: ${colors.text.primary};
-  }
-  h3 {
-    margin: ${spacing.normal} 0 ${spacing.small};
-    ${fonts.sizes(22, 1.4)};
-    font-weight: ${fonts.weight.semibold};
-    color: ${colors.text.primary};
-  }
-  p {
-    margin: ${spacing.normal} 0;
-    ${fonts.sizes(20, 1.75)};
-    font-family: ${fonts.serif};
-    font-weight: ${fonts.weight.normal};
-    color: ${colors.text.primary};
-    min-height: ${spacing.normal};
-  }
-  blockquote {
-    border-left: 4px solid ${colors.brand.tertiary};
-    ${fonts.sizes(26, 1.4)};
-    font-weight: ${fonts.weight.light};
-    color: ${colors.text.primary};
-  }
-  img {
-    margin: ${spacing.normal} 0;
-  }
-  ul {
-    list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><circle cx='6' cy='14' r='6' fill='%23507aa4 ' /></svg>");
-  }
-`;
-
 export const BreadCrumbs = styled.div`
   colors: ${colors.text.light};
   ${fonts.sizes(14, 1.1)};

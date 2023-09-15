@@ -54,55 +54,19 @@ export default SomeTrackableComponent;
 or you can customize when the tracking should be done and add dimensions:
 
 ```javascript
-import { Helmet } from 'react-helmet-async'
-import { withTracker } from '@ndla/tracker';
+import { useTracker } from '@ndla/tracker';
+const TestComponent = () => {
+  const { trackPageView } = useTracker();
 
-class SomeTrackableComponent extends Component {
-  static getDocumentTitle(currentProps) {
-    return currentProps.title;
-  }
+  useEffect(() => {
+    if (!article || !condB) return;
+    // We recommend creating a custom function for converting to matomo dimensions
+    const dims = getAllDimensions({ article });
+    trackPageView({ dimensions: dims, title: 'Test title' });
+  }, [condA, condB]);
 
-  static willTrackPageView(trackPageView, currentProps) {
-    const { condition } = currentProps;
-    if (condition) {
-      trackPageView(currentProps);
-    }
-  }
+  return <div>Test</div>;
+};
 
-  /*
-    Add this function if you want to add custom dimensions to google tag manager or google analytics.
-  */
-  static getDimensions(props) {
-    return {
-      ga: {
-        dimensionGAOne: 'Some dimension in ga',
-      },
-      gtm: {
-        dimensionGTMOne: 'Some dimension in gtm',
-      },
-    };
-  }
-
-  render() {
-    const ({ title }) = this.props;
-    return (
-      <div>
-        <Helmet>
-          <title>{`${this.constructor.getDocumentTitle(this.props)}`}</title>
-        </Helmet>
-        <p>A paragraph (hopefully)</p>
-      </div>
-    );
-  }
-}
-
-export default withTracker(SomeTrackableComponent);
+export default TestComponent;
 ```
-
-## PropTypes
-
-### PropTypes for HelmetWithTracker
-
-| Props |  Type  | Required | Description                          |
-| ----- | :----: | :------: | :----------------------------------- |
-| title | String |    \*    | A title (meta) used for the tracker. |

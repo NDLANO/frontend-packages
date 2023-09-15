@@ -33,8 +33,8 @@ interface Props {
     url: string;
     text: string;
   };
-  imageBefore?: Image;
-  imageAfter?: Image;
+  image?: Image;
+  imageSide?: 'left' | 'right';
   className?: string;
   path?: string;
 }
@@ -43,14 +43,20 @@ const Container = styled.div`
   max-width: 390px;
   display: flex;
   flex-direction: column;
-  gap: ${spacing.xsmall};
+  gap: ${spacing.normal};
   border: 1px ${colors.brand.lighter} solid;
   border-radius: ${misc.borderRadius};
-  padding: ${spacing.normal} ${spacing.small};
+  padding: ${spacing.normal};
   background-color: ${colors.white};
+  &[data-image-side='right'] {
+    flex-direction: column-reverse;
+  }
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 1100px;
     flex-direction: row;
+    &[data-image-side='right'] {
+      flex-direction: row-reverse;
+    }
   }
 `;
 
@@ -81,18 +87,18 @@ const TextWrapper = styled.div`
 
 const CampaignBlock = ({
   title,
-  imageBefore,
+  image,
+  imageSide = 'left',
   description,
   headingLevel: Heading = 'h2',
-  imageAfter,
   url,
   path,
   className,
 }: Props) => {
   const href = usePossiblyRelativeUrl(url.url, path);
   return (
-    <Container className={className} data-type="campaign-block">
-      {imageBefore && <StyledImg src={imageBefore.src} height={200} width={240} alt="" />}
+    <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
+      {image && <StyledImg src={image.src} height={200} width={240} alt="" />}
       <TextWrapper>
         <Heading css={headingStyle}>{title.title}</Heading>
         <StyledDescription>{description.text}</StyledDescription>
@@ -101,7 +107,6 @@ const CampaignBlock = ({
           <Forward />
         </StyledLink>
       </TextWrapper>
-      {imageAfter && <StyledImg src={imageAfter.src} height={200} width={240} alt="" />}
     </Container>
   );
 };

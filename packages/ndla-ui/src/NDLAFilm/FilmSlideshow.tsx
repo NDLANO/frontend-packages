@@ -8,64 +8,14 @@
 
 import { useCallback, useState } from 'react';
 import styled from '@emotion/styled';
-import { Carousel, CarouselAutosize } from '@ndla/carousel';
-import { breakpoints, colors, misc, mq, spacing, spacingUnit } from '@ndla/core';
+import { Carousel } from '@ndla/carousel';
+import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { IconButtonV2 } from '@ndla/button';
 import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 import FilmContentCard from './FilmContentCard';
 import { MovieType } from './types';
-
-export const slideshowBreakpoints: {
-  until?: keyof typeof breakpoints;
-  columnsPrSlide: number;
-  distanceBetweenItems: number;
-  arrowOffset: number;
-  margin?: number;
-  maxColumnWidth?: number;
-}[] = [
-  {
-    until: 'mobileWide',
-    columnsPrSlide: 2,
-    distanceBetweenItems: spacingUnit / 2,
-    margin: spacingUnit,
-    arrowOffset: 13,
-  },
-  {
-    until: 'tabletWide',
-    columnsPrSlide: 3,
-    distanceBetweenItems: spacingUnit / 2,
-    margin: spacingUnit,
-    arrowOffset: 13,
-  },
-  {
-    until: 'desktop',
-    columnsPrSlide: 3,
-    distanceBetweenItems: spacingUnit,
-    margin: spacingUnit * 2,
-    arrowOffset: 0,
-  },
-  {
-    until: 'wide',
-    columnsPrSlide: 3,
-    distanceBetweenItems: spacingUnit,
-    margin: spacingUnit * 2,
-    arrowOffset: 0,
-  },
-  {
-    until: 'ultraWide',
-    columnsPrSlide: 3,
-    distanceBetweenItems: spacingUnit,
-    margin: spacingUnit * 3.5,
-    arrowOffset: 0,
-  },
-  {
-    columnsPrSlide: 3,
-    distanceBetweenItems: spacingUnit,
-    margin: spacingUnit * 3.5,
-    arrowOffset: 0,
-  },
-];
+import Image from '../Image';
 
 interface Props {
   slideshow: MovieType[];
@@ -106,8 +56,9 @@ const InfoWrapper = styled.div`
   }
 `;
 
-const StyledImg = styled.img`
+const StyledImg = styled(Image)`
   max-height: 600px;
+  min-height: 600px;
   object-position: top;
   width: 100%;
   aspect-ratio: 16/9;
@@ -124,7 +75,7 @@ const CarouselContainer = styled.div`
     margin-top: -70px;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-top: -150px;
+    margin-top: -160px;
   }
 `;
 
@@ -148,62 +99,59 @@ const FilmSlideshow = ({ slideshow }: Props) => {
   const [currentSlide, setCurrentSlide] = useState(slideshow[0]);
 
   return (
-    <CarouselAutosize breakpoints={slideshowBreakpoints} itemsLength={slideshow.length}>
-      {(autoSizedProps) => (
-        <section>
-          <StyledSafeLink to={currentSlide.path} tabIndex={-1} aria-hidden>
-            <StyledImg src={currentSlide.metaImage?.url ?? ''} alt={currentSlide.metaImage?.alt ?? ''} />
-            <SlideInfoWrapper>
-              <InfoWrapper>
-                <h3>{currentSlide.title}</h3>
-                <span id="currentMovieDescription">{currentSlide.metaDescription}</span>
-              </InfoWrapper>
-            </SlideInfoWrapper>
-          </StyledSafeLink>
-          <CarouselContainer>
-            <Carousel
-              leftButton={
-                <SlideshowButton aria-label={''}>
-                  <ChevronLeft />
-                </SlideshowButton>
-              }
-              rightButton={
-                <SlideshowButton aria-label={''}>
-                  <ChevronRight />
-                </SlideshowButton>
-              }
-              items={slideshow.map((movie) => (
-                <FilmCard
-                  key={movie.id}
-                  current={movie.id === currentSlide.id}
-                  movie={movie}
-                  columnWidth={autoSizedProps.columnWidth}
-                  setCurrentSlide={() => setCurrentSlide(movie)}
-                />
-              ))}
-              {...autoSizedProps}
+    <section>
+      <StyledSafeLink to={currentSlide.path} tabIndex={-1} aria-hidden>
+        <StyledImg
+          src={currentSlide.metaImage?.url ?? ''}
+          sizes="(min-width: 1140px) 1140px, (min-width: 720px) 100vw, 100vw"
+          alt=""
+        />
+        <SlideInfoWrapper>
+          <InfoWrapper>
+            <h3>{currentSlide.title}</h3>
+            <span id="currentMovieDescription">{currentSlide.metaDescription}</span>
+          </InfoWrapper>
+        </SlideInfoWrapper>
+      </StyledSafeLink>
+      <CarouselContainer>
+        <Carousel
+          leftButton={
+            <SlideshowButton aria-label="">
+              <ChevronLeft />
+            </SlideshowButton>
+          }
+          rightButton={
+            <SlideshowButton aria-label="">
+              <ChevronRight />
+            </SlideshowButton>
+          }
+          items={slideshow.map((movie) => (
+            <FilmCard
+              key={movie.id}
+              current={movie.id === currentSlide.id}
+              movie={movie}
+              setCurrentSlide={setCurrentSlide}
             />
-          </CarouselContainer>
-        </section>
-      )}
-    </CarouselAutosize>
+          ))}
+        />
+      </CarouselContainer>
+    </section>
   );
 };
 
 interface FilmCardProps {
-  setCurrentSlide: () => void;
+  setCurrentSlide: (movie: MovieType) => void;
   movie: MovieType;
   current: boolean;
-  columnWidth: number;
 }
 
-const FilmCard = ({ setCurrentSlide, movie, current, columnWidth }: FilmCardProps) => {
+const FilmCard = ({ setCurrentSlide, movie, current }: FilmCardProps) => {
   const [hoverCallback, setHoverCallback] = useState<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const onHover = useCallback(() => {
-    const timeout = setTimeout(() => setCurrentSlide(), 500);
+    const timeout = setTimeout(() => setCurrentSlide(movie), 500);
     setHoverCallback(timeout);
-  }, [setCurrentSlide]);
+  }, [movie, setCurrentSlide]);
 
   return (
     <StyledFilmContentCard
@@ -214,12 +162,11 @@ const FilmCard = ({ setCurrentSlide, movie, current, columnWidth }: FilmCardProp
           setHoverCallback(undefined);
         }
       }}
-      onFocus={() => setCurrentSlide()}
+      onFocus={() => setCurrentSlide(movie)}
       current={current}
       aria-describedby={'currentMovieDescription'}
       key={movie.id}
       movie={movie}
-      columnWidth={columnWidth}
       resourceTypes={[]}
     />
   );

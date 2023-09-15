@@ -41,8 +41,7 @@ $padding-bottom: 17px;
     }
 
     & > ol:not([class]),
-    :not(li) > ol:not([class]),
-    .ol-list--roman {
+    :not(li) > ol:not([class]) {
       @include mq(desktop) {
         margin-left: $spacing--large;
       }

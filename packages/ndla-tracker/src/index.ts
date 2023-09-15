@@ -6,9 +6,7 @@
  *
  */
 
-export { default as withTracker } from './withTracker';
 export { default as HelmetWithTracker } from './HelmetWithTracker';
 export { default as MatomoTagManager } from './MatomoTagManager';
 export { default as MatomoTracker } from './MatomoTracker';
-export { configureTracker, sendPageView } from './tracker';
 export { default as useTracker } from './useTracker';

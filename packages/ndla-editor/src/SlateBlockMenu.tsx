@@ -168,7 +168,7 @@ const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
             }}
           >
             <Wrapper>
-              <div data-testid="slate-block-picker-menu" id={'slate-block-picker'}>
+              <div data-testid="slate-block-picker-menu" id="slate-block-picker">
                 <HeaderLabel>{heading}</HeaderLabel>
                 {actions.map((action) => (
                   <Item key={action.data.object}>

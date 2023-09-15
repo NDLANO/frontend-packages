@@ -197,7 +197,7 @@ class MultiSelectDropdownExample extends Component {
                 <DropdownInput
                   multiSelect={useTags === '1'}
                   {...getInputProps(inputProps)}
-                  data-testid={'dropdownInput'}
+                  data-testid="dropdown-input"
                   idField="title"
                   labelField="title"
                   iconRight={loading ? <StyledSpinner size="normal" /> : <Search />}

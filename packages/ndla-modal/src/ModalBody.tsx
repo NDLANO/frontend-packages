@@ -62,7 +62,7 @@ interface Props {
 }
 
 const ModalBody = ({ children, modifier, className }: Props) => (
-  <div data-cy="modal-body" css={bodyStyles} className={`modal-body ${modifier} ${className}`}>
+  <div data-testid="modal-body" css={bodyStyles} className={`modal-body ${modifier} ${className}`}>
     {children}
   </div>
 );

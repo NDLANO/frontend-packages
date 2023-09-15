@@ -138,23 +138,22 @@ interface Props {
     data: { type: string; object: string };
     helpIcon?: ReactNode;
   }[];
-  cy?: string;
 }
 
 const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
-  ({ heading, actions, clickItem, onToggleOpen, isOpen, cy = 'slate-block-menu' }: Props, ref) => {
+  ({ heading, actions, clickItem, onToggleOpen, isOpen }: Props, ref) => {
     const { t } = useTranslation();
     return (
       <>
         <div
           ref={ref}
           css={[buttonCSS, isOpen && buttonOpen]}
-          data-cy={cy}
+          data-testid="slate-block-picker"
           onMouseDown={() => onToggleOpen(!isOpen)}
           role="button"
           tabIndex={0}
           aria-expanded={isOpen}
-          aria-controls={cy}
+          aria-controls="slate-block-picker"
           aria-label={isOpen ? t('slateBlockMenu.close') : t('slateBlockMenu.open')}
         >
           <Plus aria-hidden="true" />
@@ -169,13 +168,13 @@ const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
             }}
           >
             <Wrapper>
-              <div data-cy="slate-block-picker-menu" id={cy}>
+              <div data-testid="slate-block-picker-menu" id="slate-block-picker">
                 <HeaderLabel>{heading}</HeaderLabel>
                 {actions.map((action) => (
                   <Item key={action.data.object}>
                     <button
                       css={itemButton}
-                      data-cy={`create-${action.data.object}`}
+                      data-testid={`create-${action.data.object}`}
                       type="button"
                       onClick={() => clickItem(action.data)}
                     >

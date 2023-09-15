@@ -112,38 +112,23 @@ ${element === 'content' &&
   `}
 `;
 
-type AllowedElements =
-  | 'h1'
-  | 'h1-resource'
-  | 'h2'
-  | 'h3'
-  | 'h4'
-  | 'list-title'
-  | 'ingress'
-  | 'button-text'
-  | 'content' // Brødtekst
-  | 'content-alt' // Brødtekst alt
-  | 'meta-text-small'
-  | 'meta-text-large';
+const ElementMap = {
+  h1: 'h1',
+  'h1-resource': 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  'list-title': 'h2',
+  ingress: 'p',
+  'button-text': 'span',
+  content: 'p', // Brødtekst
+  'content-alt': 'p', // Brødtekst alt
+  'meta-text-small': 'p',
+  'meta-text-large': 'p',
+} as const;
 
-const getElementByElementName = (el: AllowedElements): ElementType => {
-  switch (el) {
-    case 'h1-resource':
-      return 'h1';
-    case 'list-title':
-      return 'h2';
-    case 'ingress':
-    case 'content':
-    case 'content-alt':
-    case 'meta-text-small':
-    case 'meta-text-large':
-      return 'p';
-    case 'button-text':
-      return 'span';
-    default:
-      return el as ElementType;
-  }
-};
+type AllowedElements = keyof typeof ElementMap;
+type MappedToValidHtmlElement<T extends AllowedElements> = (typeof ElementMap)[T];
 
 interface Props<T extends AllowedElements> {
   element: T;
@@ -154,8 +139,12 @@ interface Props<T extends AllowedElements> {
  * Typography-komponent som definerer styling for alle tekst-elementer som brukes i ed, ndla-frontend, listing.
  * Resize siden for å se font-størrelser på mindre skjermer.
  */
-const Typography = <T extends AllowedElements>({ element, children, ...rest }: Props<T> & ComponentProps<T>) => {
-  const Element = getElementByElementName(element);
+const Typography = <T extends AllowedElements>({
+  element,
+  children,
+  ...rest
+}: Props<T> & ComponentProps<MappedToValidHtmlElement<T>>) => {
+  const Element = ElementMap[element] as ElementType;
   return (
     <Element css={style({ element })} {...rest}>
       {children}

@@ -6,53 +6,21 @@
  *
  */
 
-import { ChangeEvent, createRef, useState } from 'react';
+import { ChangeEvent, createRef, useCallback, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import { useTranslation } from 'react-i18next';
 import { Code } from '@ndla/icons/editor';
 import { ButtonV2 } from '@ndla/button';
 // @ts-ignore
-import { highlight, languages } from 'prismjs/components/prism-core';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Wrapper, FlexContainer, FlexElement } from './style';
 import { languageOptions, ICodeLangugeOption } from '../languageOptions';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-markup';
-import 'prismjs/components/prism-markup-templating';
-import 'prismjs/components/prism-php';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-c';
-import 'prismjs/components/prism-csharp';
-import 'prismjs/components/prism-cpp';
-import 'prismjs/components/prism-diff';
-import 'prismjs/components/prism-ini';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-java';
-import 'prismjs/components/prism-kotlin';
-import 'prismjs/components/prism-lua';
-import 'prismjs/components/prism-markdown';
-import 'prismjs/components/prism-matlab';
-import 'prismjs/components/prism-nsis';
-import 'prismjs/components/prism-python';
-import 'prismjs/components/prism-ruby';
-import 'prismjs/components/prism-rust';
-import 'prismjs/components/prism-sql';
-import 'prismjs/components/prism-powershell';
-import 'prismjs/components/prism-vhdl';
-import 'prismjs/components/prism-bash';
-
-const hightlightWithLineNumbers = (input: string, language: string) =>
-  highlight(input, language)
-    .split('\n')
-    .map((line: string, i: number) => `<span class='editorLineNumber'>${i + 1}</span>${line}`)
-    .join('\n');
 
 type Props = {
   onSave: Function;
   onAbort: Function;
+  highlight: (code: string, language: string) => string;
   content: {
     code: string;
     title: string;
@@ -88,7 +56,7 @@ interface CodeContentState {
   format: string;
 }
 
-const CodeBlockEditor = ({ onSave, onAbort, content = null }: Props) => {
+const CodeBlockEditor = ({ onSave, onAbort, highlight, content = null }: Props) => {
   const { t } = useTranslation();
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState<CodeContentState>({
@@ -96,6 +64,15 @@ const CodeBlockEditor = ({ onSave, onAbort, content = null }: Props) => {
     title: content ? content.title : defaultLang.title,
     format: content ? content.format : defaultLang.format,
   });
+
+  const highlightWithLineNumbers = useCallback(
+    (input: string, language: string) =>
+      highlight(input, language)
+        .split('\n')
+        .map((line: string, i: number) => `<span class='editorLineNumber'>${i + 1}</span>${line}`)
+        .join('\n'),
+    [highlight],
+  );
 
   const titleRef = createRef<HTMLInputElement>();
 
@@ -170,9 +147,7 @@ const CodeBlockEditor = ({ onSave, onAbort, content = null }: Props) => {
         onValueChange={(code) => {
           setCodeContent({ ...codeContent, code });
         }}
-        highlight={(code) =>
-          hightlightWithLineNumbers(code, languages[codeContent.format] ? languages[codeContent.format] : '')
-        }
+        highlight={(code) => highlightWithLineNumbers(code, codeContent.format)}
         padding={10}
         textareaId="codeArea"
         style={{

@@ -157,7 +157,7 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
             <StyledText>{jobTitle}</StyledText>
             <StyledText>
               <Email>{`${t('email')}:`}</Email>
-              <EmailLink href={`mailto:${email}?subject=Contact us`}>{email}</EmailLink>
+              <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
             </StyledText>
           </InfoWrapper>
           <BlobWrapper>

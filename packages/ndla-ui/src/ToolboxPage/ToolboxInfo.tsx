@@ -10,9 +10,9 @@ import { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+import { Heading } from '@ndla/typography';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
-import { Heading } from '../Typography';
 
 const Introduction = styled.p`
   max-width: 800px;

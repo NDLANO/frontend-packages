@@ -9,9 +9,9 @@
 import { CSSProperties, ReactNode, useMemo } from 'react';
 import { breakpoints, fonts, mq, spacing, spacingUnit } from '@ndla/core';
 import styled from '@emotion/styled';
+import { Heading } from '@ndla/typography';
 import { Article } from '../types';
 import LayoutItem from '../Layout';
-import { Heading } from '../Typography';
 import { ArticleByline } from '../Article';
 import { useMastheadHeight } from '../Masthead';
 

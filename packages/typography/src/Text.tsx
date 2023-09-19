@@ -19,10 +19,10 @@ const baseStyle = css`
 
 const elementStyle: { [key in AllowedElements]: SerializedStyles } = {
   ingress: css`
-    ${fonts.sizes('24px', '35px')};
+    ${fonts.sizes('20px', '31px')};
 
-    ${mq.range({ until: breakpoints.tablet })} {
-      ${fonts.sizes('20px', '31px')};
+    ${mq.range({ from: breakpoints.tablet })} {
+      ${fonts.sizes('24px', '35px')};
     }
   `,
   button: css`

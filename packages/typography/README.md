@@ -1,6 +1,6 @@
 # Typography
 
-Typography components.
+Typography components. We have two typography components: `Heading` and `Text`.
 
 ## Installation
 

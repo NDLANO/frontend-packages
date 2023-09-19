@@ -49,6 +49,7 @@
     "@ndla/tabs": "^3.0.8",
     "@ndla/tooltip": "^4.1.18",
     "@ndla/util": "^3.2.0",
+    "@ndla/typography":"1.0.0",
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-slider": "^1.1.2",
     "date-fns": "^2.30.0",

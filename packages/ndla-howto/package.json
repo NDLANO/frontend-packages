@@ -1,6 +1,6 @@
 {
   "name": "@ndla/howto",
-  "version": "3.3.31",
+  "version": "3.3.32",
   "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
     "@ndla/modal": "^4.0.7",
     "@ndla/notion": "^5.0.23",
     "@ndla/tooltip": "^4.1.18",
-    "@ndla/ui": "^45.0.3",
+    "@ndla/ui": "^45.0.4",
     "@ndla/util": "^3.2.0",
     "remarkable": "^2.0.1"
   },

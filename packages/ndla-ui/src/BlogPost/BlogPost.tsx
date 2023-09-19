@@ -11,6 +11,7 @@ import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
+import { useTranslation } from 'react-i18next';
 import { HeadingLevel } from '../types';
 import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
@@ -84,6 +85,7 @@ const StyledImg = styled.img`
 `;
 
 const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal', path }: Props) => {
+  const { t } = useTranslation();
   const href = usePossiblyRelativeUrl(url, path);
   return (
     <Container data-size={size} to={href}>
@@ -92,7 +94,7 @@ const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3',
       </Heading>
       <StyledImg src={metaImage.url} alt={metaImage.alt} />
       {!!author && (
-        <AuthorContainer>
+        <AuthorContainer aria-label={t('article.writtenBy', { authors: author })}>
           <Quote />
           {author}
         </AuthorContainer>

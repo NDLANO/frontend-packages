@@ -56,6 +56,11 @@ const style = css`
       ${fonts.sizes('26px', '36px')};
     }
   }
+  &[data-style='h4'] {
+    ${mq.range({ from: breakpoints.tablet })} {
+      font-family: ${fonts.serif};
+    }
+  }
   &[data-style='list-title'] {
     ${fonts.sizes('18px', '24px')};
     text-transform: uppercase;
@@ -66,7 +71,7 @@ type AllowedElements = HeadingLevel | 'p' | 'span';
 
 interface Props<T extends AllowedElements> {
   element: T;
-  headingStyle: 'h1' | 'h2' | 'h3' | 'list-title' | 'default';
+  headingStyle: 'h1' | 'h2' | 'h3' | 'h4' | 'list-title' | 'default';
   serif?: boolean;
   /**
    * General usage

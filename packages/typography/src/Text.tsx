@@ -17,7 +17,7 @@ const baseStyle = css`
   font-weight: ${fonts.weight.normal};
 `;
 
-const elementStyle: { [key in AllowedElements]: SerializedStyles } = {
+const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   ingress: css`
     ${fonts.sizes('20px', '31px')};
 
@@ -53,11 +53,11 @@ const elementStyle: { [key in AllowedElements]: SerializedStyles } = {
   `,
 };
 
-type AllowedElements = 'ingress' | 'button' | 'content' | 'content-alt' | 'meta-text-small' | 'meta-text-large';
+type TextVariant = 'ingress' | 'button' | 'content' | 'content-alt' | 'meta-text-small' | 'meta-text-large';
 
 interface Props<T extends ElementType> {
   element?: T;
-  textStyle: AllowedElements;
+  textStyle: TextVariant;
   children: ReactNode;
 }
 
@@ -69,7 +69,7 @@ const Text = <T extends ElementType>({
   textStyle,
   children,
   ...rest
-}: Props<T> & Omit<ComponentProps<T>, keyof Props<T>>) => {
+}: Props<T> & Omit<ComponentProps<T>, 'children'>) => {
   const Element = element ?? 'p';
   return (
     <Element css={[baseStyle, elementStyle[textStyle]]} {...rest}>

@@ -9,9 +9,10 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
-import { colors, fonts, misc, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
 import { HeadingLevel } from '@ndla/typography';
+import { useTranslation } from 'react-i18next';
 import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 export interface Props {
@@ -35,16 +36,18 @@ const Container = styled(SafeLink)`
   flex-direction: column;
   color: ${colors.text.primary};
   background-color: ${colors.white};
-  max-width: 350px;
-  max-height: fit-content;
   gap: ${spacing.nsmall};
   box-shadow: none;
   border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.medium};
   height: 100%;
-  &[data-size='large'] {
-    max-width: 532px;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    max-width: 350px;
+    max-height: fit-content;
+    &[data-size='large'] {
+      max-width: 532px;
+    }
   }
   &:hover,
   &:focus-within {
@@ -82,6 +85,7 @@ const StyledImg = styled.img`
 `;
 
 const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal', path }: Props) => {
+  const { t } = useTranslation();
   const href = usePossiblyRelativeUrl(url, path);
   return (
     <Container data-size={size} to={href}>
@@ -90,7 +94,7 @@ const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3',
       </Heading>
       <StyledImg src={metaImage.url} alt={metaImage.alt} />
       {!!author && (
-        <AuthorContainer>
+        <AuthorContainer aria-label={t('article.writtenBy', { authors: author })}>
           <Quote />
           {author}
         </AuthorContainer>

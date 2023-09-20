@@ -40,7 +40,6 @@ interface Props {
 }
 
 const Container = styled.div`
-  max-width: 390px;
   display: flex;
   flex-direction: column;
   gap: ${spacing.normal};

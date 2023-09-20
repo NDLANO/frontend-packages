@@ -52,7 +52,7 @@ const PopoverWrapper = styled.div<PopoverPosition>`
       top: 0 !important;
       left: 0 !important;
       width: 100vw;
-      z-index: 9999 !important;
+      z-index: 100 !important;
       height: 100vh;
       min-width: 100vw !important;
     }

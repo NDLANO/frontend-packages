@@ -48,6 +48,7 @@ type Props = {
 
 const StyledPre = styled.pre`
   border-left: 4px solid ${colors.brand.dark};
+  background-color: ${colors.brand.greyLighter};
   box-sizing: border-box;
   overflow-x: auto;
   .linenumber {

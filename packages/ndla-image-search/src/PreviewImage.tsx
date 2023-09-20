@@ -74,7 +74,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>
           ))}
         </div>
-        <ButtonV2 data-cy="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
+        <ButtonV2 data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
           {useImageTitle}
         </ButtonV2>
         {showCheckbox && (

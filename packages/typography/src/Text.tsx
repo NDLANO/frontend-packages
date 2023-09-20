@@ -8,10 +8,9 @@
 
 import { ComponentProps, ElementType, ReactNode, ComponentPropsWithoutRef } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
-import { breakpoints, colors, fonts, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
 const baseStyle = css`
-  all: unset;
   font-family: ${fonts.sans};
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
@@ -44,11 +43,33 @@ const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   `,
 };
 
+const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
+  xlarge: css`
+    margin: ${spacing.normal} 0 ${spacing.small} 0;
+    ${mq.range({ from: breakpoints.tablet })} {
+      margin-bottom: ${spacing.normal};
+    }
+  `,
+  large: css`
+    margin-top: ${spacing.large};
+    margin-bottom: ${spacing.small};
+  `,
+  small: css`
+    margin-top: ${spacing.normal};
+    margin-bottom: ${spacing.small};
+  `,
+  none: css`
+    margin: 0px;
+  `,
+};
+
 type TextVariant = 'ingress' | 'button' | 'content' | 'content-alt' | 'meta-text-small' | 'meta-text-large';
+type MarginVariant = 'xlarge' | 'large' | 'small' | 'none';
 
 interface Props<T extends ElementType> {
   element?: T;
   textStyle: TextVariant;
+  margin?: MarginVariant;
   children: ReactNode;
 }
 
@@ -58,12 +79,13 @@ interface Props<T extends ElementType> {
 const Text = <T extends ElementType>({
   element,
   textStyle,
+  margin,
   children,
   ...rest
 }: Props<T> & Omit<ComponentProps<T>, 'children'>) => {
   const Element = element ?? 'p';
   return (
-    <Element css={[baseStyle, elementStyle[textStyle]]} {...rest}>
+    <Element css={[baseStyle, elementStyle[textStyle], elementMarginStyle[margin]]} {...rest}>
       {children}
     </Element>
   );

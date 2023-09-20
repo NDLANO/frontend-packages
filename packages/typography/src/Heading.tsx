@@ -11,6 +11,7 @@ import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { ComponentProps, ElementType, ReactNode } from 'react';
 
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+export type MarginVariant = 'xlarge' | 'large' | 'normal' | 'small' | 'none';
 
 const style = css`
   font-weight: ${fonts.weight.bold};
@@ -79,7 +80,7 @@ interface Props<T extends AllowedElements> {
    * large -> h2
    * normal -> anything else
    */
-  margin?: 'xlarge' | 'large' | 'normal' | 'small' | 'none';
+  margin?: MarginVariant;
   children: ReactNode;
 }
 

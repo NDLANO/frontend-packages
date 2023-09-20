@@ -9,6 +9,7 @@
 import { ComponentProps, ElementType, ReactNode, ComponentPropsWithoutRef } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { MarginVariant } from './Heading';
 
 const baseStyle = css`
   font-family: ${fonts.sans};
@@ -61,10 +62,10 @@ const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
   none: css`
     margin: 0px;
   `,
+  normal: css``,
 };
 
 type TextVariant = 'ingress' | 'button' | 'content' | 'content-alt' | 'meta-text-small' | 'meta-text-large';
-type MarginVariant = 'xlarge' | 'large' | 'small' | 'none';
 
 interface Props<T extends ElementType> {
   element?: T;
@@ -79,7 +80,7 @@ interface Props<T extends ElementType> {
 const Text = <T extends ElementType>({
   element,
   textStyle,
-  margin,
+  margin = 'normal',
   children,
   ...rest
 }: Props<T> & Omit<ComponentProps<T>, 'children'>) => {

@@ -31,7 +31,7 @@ Can be controlles using `headingStyle`, `element`, `serif`, `margin` props. The 
 ```js
 import { Text } from '@ndla/typography';
 
-<Text textStyle="ingress" element="span" margin="small" />;
+<Text textStyle="ingress" element="span" margin="normal" />;
 ```
 
 Can be controlles using `textStyle`, `element`, `margin` props. The rendered element could be updated using the element prop.

@@ -11,7 +11,7 @@ import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
-import { HeadingLevel } from '../types';
+import { HeadingLevel } from '@ndla/typography';
 import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 export interface Props {

@@ -10,7 +10,7 @@ import { css } from '@emotion/react';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { ComponentProps, ElementType, ReactNode } from 'react';
 
-type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
 const style = css`
   font-weight: ${fonts.weight.bold};

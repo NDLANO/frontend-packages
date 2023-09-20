@@ -11,7 +11,7 @@ import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
-import { HeadingLevel } from '../types';
+import { HeadingLevel } from '@ndla/typography';
 import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 interface Image {

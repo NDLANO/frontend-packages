@@ -129,5 +129,3 @@ export type NotionMedia = {
   type: 'video' | 'other';
   element: ReactNode;
 };
-
-export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';

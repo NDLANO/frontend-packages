@@ -7,4 +7,5 @@
  */
 
 export { default as Text } from './Text';
+export type { HeadingLevel } from './Heading';
 export { default as Heading } from './Heading';

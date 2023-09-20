@@ -265,7 +265,6 @@ export type { HeartButtonType } from './Embed';
 export { CampaignBlock } from './CampaignBlock';
 export { Grid, GridParallaxItem } from './Grid';
 export type { GridType } from './Grid';
-export type { HeadingLevel } from './types';
 
 export {
   default as FrontpageArticle,

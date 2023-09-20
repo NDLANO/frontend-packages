@@ -631,6 +631,7 @@ const messages = {
     title: 'Tihttel',
     originator: 'Ásaheaddji',
     published: 'Almmuhanbeaivi',
+    processed: 'Innhaldet har vorte omarbeidd',
     rightsholder: 'Vuoigatvuođaguoddi',
     source: 'Gáldu',
     info: 'Lisensinformasjon',

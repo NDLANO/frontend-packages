@@ -35,10 +35,11 @@ export const getResourceTypeNamespace = (type: ResourceTypes | undefined | null)
   }
 };
 
-export const metaTypes = {
-  author: 'author',
-  copyrightHolder: 'copyrightHolder',
-  contributor: 'contributor',
-  title: 'title',
-  other: 'other',
-};
+export enum metaTypes {
+  author = 'author',
+  copyrightHolder = 'copyrightHolder',
+  contributor = 'contributor',
+  title = 'title',
+  other = 'other',
+  otherWithoutDescription = 'otherWithoutDescription',
+}

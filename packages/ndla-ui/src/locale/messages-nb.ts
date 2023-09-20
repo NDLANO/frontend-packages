@@ -630,6 +630,7 @@ const messages = {
     title: 'Tittel',
     originator: 'Opphaver',
     published: 'Publiseringsdato',
+    processed: 'Innholdet har blitt bearbeidet',
     rightsholder: 'Rettighetshaver',
     source: 'Kilde',
     info: 'Lisensinformasjon',

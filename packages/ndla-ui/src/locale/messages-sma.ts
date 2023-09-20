@@ -634,6 +634,7 @@ const messages = {
     title: 'Tihtele',
     originator: 'Opphaver',
     published: 'Publiseringsdato',
+    processed: 'Innhaldet har vorte omarbeidd',
     rightsholder: 'Rettighetshaver',
     source: 'Gaaltije',
     info: 'Lisensinformasjon',

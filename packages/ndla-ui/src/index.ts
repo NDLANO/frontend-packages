@@ -207,6 +207,8 @@ export {
   MediaListItemMeta,
 } from './MediaList';
 
+export type { ItemType } from './MediaList';
+
 export {
   default as ContentTypeBadge,
   SubjectMaterialBadge,

@@ -19,37 +19,28 @@ const baseStyle = css`
 
 const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   ingress: css`
-    ${fonts.sizes('20px', '31px')};
-
+    ${fonts.size.text.ingress};
     ${mq.range({ from: breakpoints.tablet })} {
       ${fonts.sizes('24px', '35px')};
     }
   `,
   button: css`
     font-weight: ${fonts.weight.semibold};
-    ${fonts.sizes('16px', '24px')};
+    ${fonts.size.text.button};
     color: ${colors.brand.primary};
   `,
   content: css`
     font-family: ${fonts.serif};
-    ${fonts.sizes('18px', '29px')};
-
-    > a {
-      color: ${colors.brand.primary};
-    }
+    ${fonts.size.text.content};
   `,
   'content-alt': css`
-    ${fonts.sizes('18px', '24px')};
-
-    > a {
-      color: ${colors.brand.primary};
-    }
+    ${fonts.size.text.metaTextLarge};
   `,
   'meta-text-small': css`
-    ${fonts.sizes('16px', '24px')};
+    ${fonts.size.text.metaTextSmall};
   `,
   'meta-text-large': css`
-    ${fonts.sizes('18px', '24px')};
+    ${fonts.size.text.metaTextLarge};
   `,
 };
 

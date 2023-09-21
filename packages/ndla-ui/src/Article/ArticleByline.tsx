@@ -93,7 +93,6 @@ const LicenseWrapper = styled.div`
 
 const StyledAccordionHeader = styled(AccordionHeader)`
   background-color: ${colors.brand.lightest};
-  border: 1px solid ${colors.brand.tertiary};
   font-size: ${fonts.sizes('16px', '29px')};
   font-weight: ${fonts.weight.semibold};
 

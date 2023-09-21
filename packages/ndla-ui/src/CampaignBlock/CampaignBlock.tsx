@@ -69,8 +69,8 @@ const StyledDescription = styled.p`
 `;
 
 const StyledImg = styled.img`
-  max-height: 200px;
   align-self: center;
+  object-fit: contain;
 `;
 
 const StyledLink = styled(SafeLink)`

@@ -44,7 +44,6 @@ const Container = styled(SafeLink)`
   height: 100%;
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 350px;
-    max-height: fit-content;
     &[data-size='large'] {
       max-width: 532px;
     }

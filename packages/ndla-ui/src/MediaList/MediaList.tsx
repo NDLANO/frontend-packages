@@ -13,6 +13,7 @@ import {
   isCreativeCommonsLicense,
   metaTypes,
 } from '@ndla/licenses';
+import type { MetaType } from '@ndla/licenses';
 import { LicenseDescription } from '@ndla/notion';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
@@ -187,12 +188,12 @@ export type ItemType = ItemTypeWithDescription | DescriptionLessItemType;
 interface ItemTypeWithDescription {
   label: string;
   description: string;
-  metaType: Omit<metaTypes, 'otherWithoutDescription'>;
+  metaType: Omit<MetaType, 'otherWithoutDescription'>;
 }
 
 interface DescriptionLessItemType {
   label: string;
-  metaType: metaTypes.otherWithoutDescription;
+  metaType: 'otherWithoutDescription';
 }
 
 function isOtherWithoutDescription(item: ItemType): item is DescriptionLessItemType {

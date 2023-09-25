@@ -31,7 +31,7 @@ export interface Props {
     transcriptions: Transcription;
     examples?: Example[][];
   };
-  audio: {
+  audio?: {
     title: string;
     src?: string;
   };
@@ -124,7 +124,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               <TypeSpan aria-label={t('gloss.wordClass')}>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>
             )}
           </GlossContainer>
-          {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+          {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
         </Wrapper>
         <span>{title.title}</span>
       </Container>

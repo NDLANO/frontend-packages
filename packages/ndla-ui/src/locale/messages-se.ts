@@ -631,6 +631,7 @@ const messages = {
     title: 'Tihttel',
     originator: 'Ásaheaddji',
     published: 'Almmuhanbeaivi',
+    processed: 'Sisdoallu lea rievdaduvvon.',
     rightsholder: 'Vuoigatvuođaguoddi',
     source: 'Gáldu',
     info: 'Lisensinformasjon',

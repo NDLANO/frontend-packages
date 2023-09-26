@@ -98,6 +98,7 @@ const opensInnewMetaData: IframeData = {
           name: 'Folkehelseprosjektet Helsefremmende miljø på sosial medier, Bergen kommune 2019-2022',
         },
       ],
+      processed: false,
     },
     tags: {
       tags: ['samtale', 'Dialog', 'gutter'],

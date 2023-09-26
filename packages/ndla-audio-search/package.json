@@ -32,7 +32,7 @@
     "@ndla/pager": "^2.2.21"
   },
   "devDependencies": {
-    "@ndla/types-backend": "^0.2.5"
+    "@ndla/types-backend": "^0.2.21"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

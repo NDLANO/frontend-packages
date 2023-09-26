@@ -54,6 +54,7 @@ const metaData: IImageMetaInformationV3 = {
         name: 'NTB',
       },
     ],
+    processed: false,
   },
   tags: {
     tags: ['danser', 'kultur', 'identitet'],

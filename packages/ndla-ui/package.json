@@ -72,7 +72,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
-    "@ndla/types-backend": "^0.2.5",
+    "@ndla/types-backend": "^0.2.21",
     "@ndla/types-embed": "^4.0.0",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.5",

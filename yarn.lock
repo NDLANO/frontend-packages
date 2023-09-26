@@ -1890,10 +1890,10 @@
     pump "^3.0.0"
     tar-fs "^2.1.1"
 
-"@ndla/types-backend@^0.2.12", "@ndla/types-backend@^0.2.5":
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/@ndla/types-backend/-/types-backend-0.2.12.tgz#c06a29ba924c86c8c9b96a76ecd2d13be0a813e4"
-  integrity sha512-n3b41tyw/Of07bhNIvRJ6Qz/kMYbGM9mlvDvCkYDLDQpq9zSnFpsGASD1tPBRydmz9oDApM8F2GvQVT6Zk7jKA==
+"@ndla/types-backend@0.2.21", "@ndla/types-backend@^0.2.21":
+  version "0.2.21"
+  resolved "https://registry.npmjs.org/@ndla/types-backend/-/types-backend-0.2.21.tgz#2bc89233e45c8ed25c54aeff967ba4fc1c33d8ed"
+  integrity sha512-g3RD8NRaieKj5CO4JdJm9jDUELGl2dtTL6ch4jQ2HlqrfibNqU3m8hYvmVpvIt1DROFtRg16zVTLkzahOo1Znw==
 
 "@ndla/types-taxonomy@1.0.17":
   version "1.0.17"

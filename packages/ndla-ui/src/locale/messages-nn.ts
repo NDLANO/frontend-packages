@@ -629,6 +629,7 @@ const messages = {
     },
     title: 'Tittel',
     originator: 'Opphavar',
+    processed: 'Innhaldet har vorte omarbeidd',
     rightsholder: 'Rettshavar',
     source: 'Kjelde',
     published: 'Publiseringsdato',

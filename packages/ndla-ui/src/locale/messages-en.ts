@@ -631,6 +631,7 @@ const messages = {
     title: 'Title',
     originator: 'Originator',
     rightsholder: 'Rightsholder',
+    processed: 'The content has been processed',
     source: 'Source',
     published: 'Published',
     info: 'License information',

@@ -71,7 +71,7 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
 
   if (isWide) {
     return (
-      <StyledArticle data-wide={isWide} style={cssVars}>
+      <StyledArticle data-wide={isWide} style={cssVars} id={id}>
         <LayoutItem>{content}</LayoutItem>
       </StyledArticle>
     );

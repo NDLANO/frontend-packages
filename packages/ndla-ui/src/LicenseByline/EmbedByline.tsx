@@ -14,7 +14,7 @@ import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import { ICopyright as ImageCopyright } from '@ndla/types-backend/image-api';
 import { ICopyright as AudioCopyright } from '@ndla/types-backend/audio-api';
-import { ICopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
+import { IDraftCopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
 import { BrightcoveCopyright } from '@ndla/types-embed';
 import { WarningOutline } from '@ndla/icons/common';
 import { parseMarkdown } from '@ndla/util';

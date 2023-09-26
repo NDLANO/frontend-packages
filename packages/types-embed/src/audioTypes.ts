@@ -12,7 +12,7 @@ import { MetaData } from '.';
 
 export type AudioEmbedData = {
   resource: 'audio';
-  resourceId: string;
+  resource_id: string;
   type: string;
   url: string;
   pageUrl?: string;

@@ -135,8 +135,8 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             <StyledAccordionContent>
               {glossData.examples.map((example, index) => (
                 <div key={index}>
-                  {example.map((translation) => (
-                    <>
+                  {example.map((translation, innerIndex) => (
+                    <div key={`${index}_${innerIndex}`}>
                       <TranslatedText>{translation.example}</TranslatedText>
                       {translation.transcriptions.pinyin && (
                         <TranslatedText key={t('gloss.transcriptions.pinyin')} lang={glossData.originalLanguage}>
@@ -148,7 +148,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                           {translation.transcriptions?.traditional}
                         </TranslatedText>
                       )}
-                    </>
+                    </div>
                   ))}
                 </div>
               ))}

@@ -10,7 +10,7 @@ import { Play } from '@ndla/icons/common';
 import { ExpandTwoArrows, CursorClick } from '@ndla/icons/action';
 
 interface Props {
-  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
+  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | 'audio';
   messages: {
     zoomImageButtonLabel: string;
     zoomOutImageButtonLabel: string;

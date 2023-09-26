@@ -14,7 +14,7 @@ import StoryFavoriteButton from '../../../../stories/StoryFavoriteButton';
 
 const embedData: AudioEmbedData = {
   resource: 'audio',
-  resource_id: '3000',
+  resourceId: '3000',
   type: 'standard',
   url: 'https://api.test.ndla.no/audio-api/v1/audio/3000',
 };
@@ -50,7 +50,7 @@ const successData: AudioMeta = {
 
 const podcastEmbedData: AudioEmbedData = {
   resource: 'audio',
-  resource_id: '2712',
+  resourceId: '2712',
   type: 'podcast',
   url: 'https://api.test.ndla.no/audio-api/v1/audio/2712',
 };

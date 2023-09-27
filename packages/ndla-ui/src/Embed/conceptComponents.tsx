@@ -7,7 +7,7 @@
  */
 
 import { forwardRef, ReactNode, RefAttributes } from 'react';
-import { ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
+import { AudioMeta, AudioMetaData, ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
@@ -23,7 +23,7 @@ import { ExternalEmbed, HeartButtonType, IframeEmbed } from '.';
 import { EmbedByline } from '../LicenseByline';
 import { Gloss } from '../Gloss';
 
-type ConceptType = 'concept' | 'gloss';
+export type ConceptType = 'concept' | 'gloss';
 
 export interface ConceptNotionData {
   title: ConceptData['concept']['title'];
@@ -164,11 +164,6 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
   ) => {
     const { t } = useTranslation();
 
-    const audio =
-      visualElement?.embedData.resource === 'audio'
-        ? { src: visualElement.embedData.url, title: visualElement.embedData.type }
-        : undefined;
-
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <ContentPadding>
@@ -216,7 +211,15 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
               )}
             </>
           ) : (
-            <Gloss title={title} glossData={glossData!} audio={audio} />
+            <Gloss
+              title={title}
+              glossData={glossData!}
+              audio={
+                visualElement?.status === 'success' && visualElement.resource === 'audio'
+                  ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
+                  : undefined
+              }
+            />
           )}
         </ContentPadding>
         {copyright && (

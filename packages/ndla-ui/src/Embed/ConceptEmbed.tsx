@@ -14,16 +14,17 @@ import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-p
 import { IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { ConceptMetaData } from '@ndla/types-embed';
+import { AudioMeta, ConceptMetaData } from '@ndla/types-embed';
 import Tooltip from '@ndla/tooltip';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { Notion as UINotion } from '../Notion';
 import { Figure } from '../Figure';
 import { NotionImage } from '../Notion/NotionImage';
-import { ConceptNotionV2, ConceptNotionData } from './conceptComponents';
+import { ConceptNotionV2, ConceptNotionData, ConceptType } from './conceptComponents';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 import { HeartButtonType } from './types';
+import { Gloss } from '../Gloss';
 
 const BottomBorder = styled.div`
   margin-top: ${spacing.normal};
@@ -330,73 +331,85 @@ export const BlockConcept = ({
     <Root modal={isMobile} onOpenChange={onOpenChange}>
       <StyledAnchor ref={anchorRef} />
       <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
-        <UINotion
-          id=""
-          title={title.title}
-          text={content}
-          visualElement={
-            visualElement?.status === 'success' && (
-              <>
-                <ImageWrapper>
-                  <Tooltip tooltip={t(`searchPage.resultType.${conceptType}`)}>
-                    <Trigger asChild>
-                      <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
-                        {visualElement.resource === 'image' ? (
-                          <NotionImage
-                            type={visualElementType}
-                            id={''}
-                            src={visualElement.data.image.imageUrl}
-                            alt={visualElement.data.alttext.alttext}
-                          />
-                        ) : metaImage ? (
-                          <NotionImage
-                            type={visualElementType}
-                            id={''}
-                            src={metaImage?.url ?? ''}
-                            alt={metaImage?.alt ?? ''}
-                          />
-                        ) : undefined}
-                      </StyledButton>
-                    </Trigger>
-                  </Tooltip>
-                </ImageWrapper>
-                <Portal
-                  container={
-                    typeof document !== 'undefined'
-                      ? (document.querySelector('.c-article') as HTMLElement | null) || undefined
-                      : undefined
-                  }
-                >
-                  <PopoverWrapper top={modalPos}>
-                    <Content avoidCollisions={false} asChild side="bottom">
-                      <ConceptNotionV2
-                        title={title}
-                        content={content}
-                        copyright={copyright}
-                        source={source}
-                        visualElement={visualElement}
-                        heartButton={heartButton}
-                        conceptHeartButton={conceptHeartButton}
-                        inPopover
-                        closeButton={
-                          <Close asChild>
-                            <IconButtonV2 aria-label={t('close')} variant="ghost">
-                              <Cross />
-                            </IconButtonV2>
-                          </Close>
-                        }
-                        conceptType={conceptType}
-                        glossData={glossData}
-                      />
-                    </Content>
-                  </PopoverWrapper>
-                </Portal>
-              </>
-            )
-          }
-        />
+        {conceptType === 'concept' ? (
+          <UINotion
+            id=""
+            title={title.title}
+            text={content}
+            visualElement={
+              visualElement?.status === 'success' && (
+                <>
+                  <ImageWrapper>
+                    <Tooltip tooltip={t(`searchPage.resultType.${conceptType}`)}>
+                      <Trigger asChild>
+                        <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
+                          {visualElement.resource === 'image' ? (
+                            <NotionImage
+                              type={visualElementType}
+                              id={''}
+                              src={visualElement.data.image.imageUrl}
+                              alt={visualElement.data.alttext.alttext}
+                            />
+                          ) : metaImage ? (
+                            <NotionImage
+                              type={visualElementType}
+                              id={''}
+                              src={metaImage?.url ?? ''}
+                              alt={metaImage?.alt ?? ''}
+                            />
+                          ) : undefined}
+                        </StyledButton>
+                      </Trigger>
+                    </Tooltip>
+                  </ImageWrapper>
+                  <Portal
+                    container={
+                      typeof document !== 'undefined'
+                        ? (document.querySelector('.c-article') as HTMLElement | null) || undefined
+                        : undefined
+                    }
+                  >
+                    <PopoverWrapper top={modalPos}>
+                      <Content avoidCollisions={false} asChild side="bottom">
+                        <ConceptNotionV2
+                          title={title}
+                          content={content}
+                          copyright={copyright}
+                          source={source}
+                          visualElement={visualElement}
+                          heartButton={heartButton}
+                          conceptHeartButton={conceptHeartButton}
+                          inPopover
+                          closeButton={
+                            <Close asChild>
+                              <IconButtonV2 aria-label={t('close')} variant="ghost">
+                                <Cross />
+                              </IconButtonV2>
+                            </Close>
+                          }
+                          conceptType={conceptType}
+                          glossData={glossData}
+                        />
+                      </Content>
+                    </PopoverWrapper>
+                  </Portal>
+                </>
+              )
+            }
+          />
+        ) : (
+          <Gloss
+            glossData={glossData!}
+            title={title}
+            audio={
+              visualElement?.status === 'success' && visualElement.resource === 'audio'
+                ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
+                : undefined
+            }
+          />
+        )}
         {copyright ? (
-          <EmbedByline copyright={copyright} bottomRounded topRounded type="concept">
+          <EmbedByline copyright={copyright} bottomRounded topRounded type={conceptType as ConceptType}>
             {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
           </EmbedByline>
         ) : (

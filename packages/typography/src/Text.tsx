@@ -9,11 +9,10 @@
 import { ComponentProps, ElementType, ReactNode, ComponentPropsWithoutRef } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { MarginVariant } from './Heading';
+import { MarginVariant } from './types';
 
 const baseStyle = css`
   font-family: ${fonts.sans};
-  color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
 `;
 
@@ -27,7 +26,6 @@ const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   button: css`
     font-weight: ${fonts.weight.semibold};
     ${fonts.size.text.button};
-    color: ${colors.brand.primary};
   `,
   content: css`
     font-family: ${fonts.serif};

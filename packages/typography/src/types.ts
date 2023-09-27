@@ -6,6 +6,5 @@
  *
  */
 
-export { default as Text } from './Text';
-export type { HeadingLevel } from './types';
-export { default as Heading } from './Heading';
+export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+export type MarginVariant = 'xlarge' | 'large' | 'normal' | 'small' | 'none';

@@ -24,7 +24,7 @@ import { Heading } from '@ndla/typography';
 </Heading>;
 ```
 
-Can be controlles using `headingStyle`, `element`, `serif`, `margin` props. The rendered element could be updated using the element prop.
+Can be controlles using `headingStyle`, `element`, `serif`, `margin` props. The rendered element can be updated using the element prop.
 
 ### Text
 
@@ -34,4 +34,4 @@ import { Text } from '@ndla/typography';
 <Text textStyle="ingress" element="span" margin="normal" />;
 ```
 
-Can be controlles using `textStyle`, `element`, `margin` props. The rendered element could be updated using the element prop.
+Can be controlles using `textStyle`, `element`, `margin` props. The rendered element can be updated using the element prop.

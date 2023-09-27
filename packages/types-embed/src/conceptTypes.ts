@@ -7,7 +7,15 @@
  */
 
 import { IConcept, IConceptSummary } from '@ndla/types-backend/concept-api';
-import { BrightcoveEmbedData, BrightcoveMetaData, IframeEmbedData, IframeMetaData, MetaData } from '.';
+import {
+  AudioEmbedData,
+  AudioMetaData,
+  BrightcoveEmbedData,
+  BrightcoveMetaData,
+  IframeEmbedData,
+  IframeMetaData,
+  MetaData,
+} from '.';
 import { OembedEmbedData, OembedMetaData } from './externalTypes';
 import { H5pEmbedData, H5pMetaData } from './h5pTypes';
 import { ImageEmbedData, ImageMetaData } from './imageTypes';
@@ -25,13 +33,15 @@ export type ConceptVisualElement =
   | H5pEmbedData
   | OembedEmbedData
   | BrightcoveEmbedData
-  | IframeEmbedData;
+  | IframeEmbedData
+  | AudioEmbedData;
 export type ConceptVisualElementMeta =
   | ImageMetaData
   | H5pMetaData
   | OembedMetaData
   | BrightcoveMetaData
-  | IframeMetaData;
+  | IframeMetaData
+  | AudioMetaData;
 
 export interface ConceptData {
   concept: IConcept;

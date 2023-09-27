@@ -58,7 +58,7 @@ interface PodcastProps extends BaseProps {
 }
 
 interface ConceptProps extends BaseProps {
-  type: 'concept';
+  type: 'concept' | 'gloss';
   copyright: ConceptCopyright | undefined;
 }
 

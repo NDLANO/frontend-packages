@@ -45,12 +45,13 @@ const ConceptListEmbed = ({ embed }: Props) => {
             {data.concepts.map(({ concept, visualElement }) => (
               <li key={concept.id}>
                 <BlockConcept
-                  title={concept.title.title}
+                  title={concept.title}
                   content={concept.content.content}
                   metaImage={concept.metaImage}
                   copyright={concept.copyright}
                   source={concept.source}
                   visualElement={visualElement}
+                  conceptType={concept.conceptType}
                 />
               </li>
             ))}

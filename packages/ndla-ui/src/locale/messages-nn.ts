@@ -213,7 +213,7 @@ const messages = {
       concept: 'Sjå forklaring',
       gridView: 'Gallerivisning',
       listView: 'Listevisning',
-      gloss: 'Se glose',
+      gloss: 'Sjå glose',
     },
     contextModal: {
       button: '+ {{count}} fleire stader',

@@ -7,7 +7,7 @@
  */
 
 import { forwardRef, ReactNode, RefAttributes } from 'react';
-import { ConceptData, ConceptEmbedData, ConceptVisualElementMeta } from '@ndla/types-embed';
+import { ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
@@ -164,6 +164,11 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
   ) => {
     const { t } = useTranslation();
 
+    const audio =
+      visualElement?.embedData.resource === 'audio'
+        ? { src: visualElement.embedData.url, title: visualElement.embedData.type }
+        : undefined;
+
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <ContentPadding>
@@ -211,7 +216,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
               )}
             </>
           ) : (
-            <Gloss title={title} glossData={glossData!} />
+            <Gloss title={title} glossData={glossData!} audio={audio} />
           )}
         </ContentPadding>
         {copyright && (

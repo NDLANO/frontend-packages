@@ -82,6 +82,9 @@ interface Props<T extends AllowedElements> {
   children: ReactNode;
 }
 
+/**
+ * Heading-komponent som definerer styling for alle heading-elementer (h1, h2, h3, h4, listetittel) som brukes i ed, ndla-frontend, listing.
+ */
 const Heading = <T extends AllowedElements>({
   element,
   children,

@@ -7,54 +7,54 @@
  */
 
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import Text from './Text';
+import Heading from './Heading';
 import { defaultParameters } from '../../../stories/defaults';
 
 const exampleText = 'Nasjonal digital læringsarena';
 
 export default {
-  title: 'Components/Typography',
-  component: Text,
+  title: 'Components/Typography/Heading',
+  component: Heading,
   tags: ['autodocs'],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    element: 'p',
-    textStyle: 'ingress',
+    element: 'h1',
+    headingStyle: 'h1',
     children: exampleText,
   },
-} as Meta<typeof Text>;
+} as Meta<typeof Heading>;
 
-export const Ingress: StoryFn<typeof Text> = (args) => {
-  return <Text {...args} />;
+export const H1: StoryFn<typeof Heading> = (args) => {
+  return <Heading {...args} />;
 };
 
-export const Content: StoryObj<typeof Text> = {
+export const H2: StoryObj<typeof Heading> = {
   args: {
-    textStyle: 'content',
-    children: exampleText,
-  },
-};
-
-export const ContentAlt: StoryObj<typeof Text> = {
-  args: {
-    textStyle: 'content-alt',
+    headingStyle: 'h2',
     children: exampleText,
   },
 };
 
-export const MetaTextLarge: StoryObj<typeof Text> = {
+export const H3: StoryObj<typeof Heading> = {
   args: {
-    textStyle: 'meta-text-large',
+    headingStyle: 'h3',
     children: exampleText,
   },
 };
 
-export const MetaTextSmall: StoryObj<typeof Text> = {
+export const H4: StoryObj<typeof Heading> = {
   args: {
-    textStyle: 'meta-text-small',
+    headingStyle: 'h4',
+    children: exampleText,
+  },
+};
+
+export const listTitle: StoryObj<typeof Heading> = {
+  args: {
+    headingStyle: 'list-title',
     children: exampleText,
   },
 };

@@ -110,7 +110,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
     return (
       <BlockConcept
         fullWidth={fullWidth}
-        title={concept.title.title}
+        title={concept.title}
         content={concept.content?.content}
         metaImage={concept.metaImage}
         copyright={concept.copyright}
@@ -118,12 +118,14 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         visualElement={visualElement}
         heartButton={HeartButton}
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
+        conceptType={concept.conceptType}
+        glossData={concept.glossData}
       />
     );
   } else if (embed.embedData.type === 'inline') {
     return (
       <InlineConcept
-        title={concept.title.title}
+        title={concept.title}
         content={concept.content?.content}
         metaImage={concept.metaImage}
         copyright={concept.copyright}
@@ -132,12 +134,14 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         linkText={embed.embedData.linkText}
         heartButton={HeartButton}
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
+        conceptType={concept.conceptType}
+        glossData={concept.glossData}
       />
     );
   } else {
     return (
       <ConceptNotionV2
-        title={concept.title.title}
+        title={concept.title}
         content={concept.content?.content}
         metaImage={concept.metaImage}
         copyright={concept.copyright}
@@ -145,6 +149,8 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         visualElement={visualElement}
         heartButton={HeartButton}
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
+        conceptType={concept.conceptType}
+        glossData={concept.glossData}
       />
     );
   }
@@ -223,6 +229,8 @@ const InlineConcept = ({
   linkText,
   heartButton,
   conceptHeartButton,
+  glossData,
+  conceptType,
 }: InlineConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -270,6 +278,8 @@ const InlineConcept = ({
                   </IconButtonV2>
                 </Close>
               }
+              conceptType={conceptType}
+              glossData={glossData}
             />
           </Content>
         </PopoverWrapper>
@@ -294,6 +304,8 @@ export const BlockConcept = ({
   fullWidth,
   heartButton,
   conceptHeartButton,
+  glossData,
+  conceptType,
 }: ConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -320,13 +332,13 @@ export const BlockConcept = ({
       <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
         <UINotion
           id=""
-          title={title}
+          title={title.title}
           text={content}
           visualElement={
             visualElement?.status === 'success' && (
               <>
                 <ImageWrapper>
-                  <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
+                  <Tooltip tooltip={t(`searchPage.resultType.${conceptType}`)}>
                     <Trigger asChild>
                       <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
                         {visualElement.resource === 'image' ? (
@@ -373,6 +385,8 @@ export const BlockConcept = ({
                             </IconButtonV2>
                           </Close>
                         }
+                        conceptType={conceptType}
+                        glossData={glossData}
                       />
                     </Content>
                   </PopoverWrapper>

@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
       showVideo: 'Sjå video',
-      showNotion: 'Sjå forklaring',
+      concept: 'Sjå forklaring',
       gridView: 'Gallerivisning',
       listView: 'Listevisning',
+      gloss: 'Se glose',
     },
     contextModal: {
       button: '+ {{count}} fleire stader',
@@ -1332,6 +1333,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
+      gloss: 'Glose',
     },
   },
   gloss: {

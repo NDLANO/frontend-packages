@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Doabačilgehus',
       notionsRemove: 'Sihko',
       showVideo: 'Geahča video',
-      showNotion: 'Geahča čilgehusa',
+      concept: 'Geahča čilgehusa',
       gridView: 'Galleriijačájáhus',
       listView: 'Čájáhus listtu vuođul',
+      gloss: 'Se glose',
     },
     contextModal: {
       button: '+ {{count}} eanet sajiin',
@@ -1333,6 +1334,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
+      gloss: 'Glose',
     },
   },
   gloss: {

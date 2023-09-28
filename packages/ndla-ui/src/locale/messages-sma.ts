@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Baakoebuerkiestimmie',
       notionsRemove: 'Skubph',
       showVideo: 'Gïehtjh videjovem',
-      showNotion: 'Gïehtjh buerkiestimmiem ',
+      concept: 'Gïehtjh buerkiestimmiem ',
       gridView: 'Gallerivisning',
       listView: 'Listevisning',
+      gloss: 'Se glose',
     },
     contextModal: {
       button: '+ {{count}} jieniebinie sijjine',
@@ -304,7 +305,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Fulkh mijjem',
-      description: 'NDLA gellie Facebook- jïh Twitterkontoeh åtna. Gaavnh dam mij dutnjien sjeahta jïh fulkh mijjem!',
+      description: 'NDLA gellie Facebook- jïh X-kontoeh åtna. Gaavnh dam mij dutnjien sjeahta jïh fulkh mijjem!',
       mainLink: {
         name: 'Fulkh mijjem',
       },
@@ -634,6 +635,7 @@ const messages = {
     title: 'Tihtele',
     originator: 'Opphaver',
     published: 'Publiseringsdato',
+    processed: 'Innhaldet har vorte omarbeidd',
     rightsholder: 'Rettighetshaver',
     source: 'Gaaltije',
     info: 'Lisensinformasjon',
@@ -885,8 +887,8 @@ const messages = {
     },
     openMenuTooltip: 'Vuesehth lïeremebaalkam',
     mobileStepInfo: '{{currentPage}} ållesth {{totalPages}}:ste',
-    nextArrow: 'Åvtese',
-    previousArrow: 'Övtebe',
+    nextArrow: 'Gå til neste steg',
+    previousArrow: 'Gå til førre steg',
   },
   dropdown: {
     numberHits: `Datne {{hits}} gaavnedimmieh åadtjoejih`,
@@ -1055,6 +1057,7 @@ const messages = {
     showLess: 'Vis mindre',
   },
   files: 'Filer',
+  fileTypesNotSupported: 'Filtypen(e) støttast ikkje: {{fileTypes}}',
   download: 'Veedtjh fijlem: ',
   expandButton: 'Vuesehth stoerre versjovnem',
   ...contributorTypes.nb,
@@ -1225,7 +1228,7 @@ const messages = {
       loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne ressursen?',
-      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
+      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!',
       welcome:
         'Velkommen til Min NDLA! Nå kan du lagre favorittressursene dine fra NDLA og organisere dem i mapper og med emneknagger.',
       read: { read: 'Les', our: ' vår.' },
@@ -1335,6 +1338,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
+      gloss: 'Glose',
     },
   },
   gloss: {

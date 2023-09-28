@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Explanations',
       notionsRemove: 'Remove',
       showVideo: 'Watch video',
-      showNotion: 'Show notion',
+      concept: 'Show notion',
       gridView: 'Grid-view',
       listView: 'List-view',
+      gloss: 'Show gloss',
     },
     contextModal: {
       button: '+ {{count}} more contexts',
@@ -305,7 +306,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Follow us',
-      description: 'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
+      description: 'NDLA has several Facebook- and X-accounts. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
       },
@@ -631,6 +632,7 @@ const messages = {
     title: 'Title',
     originator: 'Originator',
     rightsholder: 'Rightsholder',
+    processed: 'The content has been processed',
     source: 'Source',
     published: 'Published',
     info: 'License information',
@@ -882,8 +884,8 @@ const messages = {
     },
     openMenuTooltip: 'Open menu',
     mobileStepInfo: '{{currentPage}} out of {{totalPages}}',
-    nextArrow: 'Next',
-    previousArrow: 'Previous',
+    nextArrow: 'Go to next step',
+    previousArrow: 'Go to previous step',
   },
   dropdown: {
     numberHits: `Search returned {{hits}} hits`,
@@ -1052,6 +1054,7 @@ const messages = {
     showLess: 'Show less',
   },
   files: 'Files',
+  fileTypesNotSupported: 'Filetype(s) not supported: {{fileTypes}}',
   download: 'Download file: ',
   expandButton: 'Show large version',
   ...contributorTypes.en,
@@ -1222,7 +1225,7 @@ const messages = {
       loginTextLink: 'privacy policy here',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this resource?',
-      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your <i>own</i> way!',
+      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your own way!',
       deleteAccount: 'Delete My NDLA',
       welcome:
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
@@ -1334,6 +1337,7 @@ const messages = {
       concept: 'Concept',
       h5p: 'H5P',
       external: 'External resource',
+      gloss: 'Gloss',
     },
   },
   gloss: {

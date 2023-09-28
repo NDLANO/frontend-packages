@@ -40,7 +40,7 @@ const ModalClose = ({ children, title }: Props) => {
   if (children) return <Close asChild>{children}</Close>;
   return (
     <Close asChild>
-      <StyledButton data-cy="close-modal-button" aria-label={title ?? t('close')}>
+      <StyledButton data-testid="close-modal-button" aria-label={title ?? t('close')}>
         <StyledCross />
       </StyledButton>
     </Close>

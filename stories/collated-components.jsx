@@ -41,7 +41,6 @@ import Oops from '../images/oops.gif';
 import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
 
-import CarouselExample from './organisms/CarouselExample';
 import FooterExample from './molecules/footers';
 import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
@@ -180,19 +179,6 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Image carousel', () => (
-    <div>
-      <StoryIntro title="Bildekarusell">
-        <p>
-          Bildekarusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av størrelser, og selve
-          bildekarusellen.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <CarouselExample />
-      </StoryBody>
-    </div>
-  ))
   .add('Block display term explanation', () => (
     <div>
       <StoryIntro title="Blokkvisning begrepsforklaring">

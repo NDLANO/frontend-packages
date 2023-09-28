@@ -71,7 +71,12 @@ const MastheadSearchModal = ({ onClose: onSearchClose, children, ndlaFilm }: Pro
   return (
     <Modal open={isOpen} onOpenChange={setIsOpen}>
       <ModalTrigger>
-        <ToggleSearchButton onClick={() => setIsOpen(true)} ndlaFilm={ndlaFilm}>
+        <ToggleSearchButton
+          onClick={() => setIsOpen(true)}
+          ndlaFilm={ndlaFilm}
+          aria-label={t('masthead.menu.search')}
+          title={t('masthead.menu.search')}
+        >
           {t('masthead.menu.search')}
         </ToggleSearchButton>
       </ModalTrigger>

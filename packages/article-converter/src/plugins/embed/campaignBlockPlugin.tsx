@@ -21,14 +21,10 @@ export const campaignBlockPlugin: PluginType = (element, _, opts) => {
       description={{ text: embed.description, language: embed.descriptionLanguage }}
       url={{ url: embed.url, text: embed.urlText }}
       path={opts.path}
-      imageAfter={
-        data.status === 'success' && data.data.imageAfter
-          ? { src: data.data.imageAfter.image.imageUrl, alt: data.data.imageAfter.alttext.alttext }
-          : undefined
-      }
-      imageBefore={
-        data.status === 'success' && data.data.imageBefore
-          ? { src: data.data.imageBefore.image.imageUrl, alt: data.data.imageBefore.alttext.alttext }
+      imageSide={embed.imageSide}
+      image={
+        data.status === 'success' && data.data.image
+          ? { src: data.data.image.image.imageUrl, alt: data.data.image.alttext.alttext }
           : undefined
       }
     />

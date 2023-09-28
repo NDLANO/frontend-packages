@@ -14,6 +14,7 @@ import { BlobPointy, BlobRound } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import concat from 'lodash/concat';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
+import Image from '../Image';
 
 const BLOB_WIDTH = 90;
 
@@ -36,11 +37,10 @@ const BlockWrapper = styled.div`
   border-radius: ${misc.borderRadius};
   border: 1px solid ${colors.brand.lighter};
   background-color: ${colors.white};
-  max-width: 348px;
   & ~ & {
     margin-top: ${spacing.medium};
   }
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     max-width: 773px;
     flex-direction: row;
     padding: 0 0 ${spacing.medium} ${spacing.medium};
@@ -104,7 +104,7 @@ const ImageWrapper = styled.div`
   gap: ${spacing.xsmall};
   ${fonts.sizes('16px', '26px')};
   padding: ${spacing.medium} ${spacing.medium} 0 0;
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     padding-right: 0;
   }
 `;
@@ -122,7 +122,7 @@ const ContentWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledImage = styled.img`
+const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
@@ -137,7 +137,11 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
       <ImageWrapper>
         {image ? (
           <>
-            <StyledImage alt={image.alttext.alttext} src={`${image.image.imageUrl}?width=286`} />
+            <StyledImage
+              alt={image.alttext.alttext}
+              src={image.image.imageUrl}
+              sizes={`(min-width: ${breakpoints.tablet}) 240px, (max-width: ${breakpoints.tablet}) 500px`}
+            />
             {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
               image.copyright.license.license
             }`}
@@ -153,7 +157,7 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
             <StyledText>{jobTitle}</StyledText>
             <StyledText>
               <Email>{`${t('email')}:`}</Email>
-              <EmailLink href={`mailto:${email}?subject=Contact us`}>{email}</EmailLink>
+              <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
             </StyledText>
           </InfoWrapper>
           <BlobWrapper>

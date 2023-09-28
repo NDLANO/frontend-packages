@@ -243,7 +243,6 @@ const Topic = ({
 }: TopicProps) => {
   const { t } = useTranslation();
   const contentId = `expanded-description-${id}`;
-  const testId = 'nav-topic-about';
 
   const VisualElementIcon = useMemo(() => {
     if (!visualElementEmbedMeta || visualElementEmbedMeta.status === 'error') return null;
@@ -267,15 +266,11 @@ const Topic = ({
 
   const wrapperStyle = [frame ? frameStyle : undefined, invertedStyle ? _invertedStyle : undefined];
   if (isLoading) {
-    return (
-      <Wrapper css={wrapperStyle} data-testid={testId}>
-        {isLoading ? <Loader /> : null}
-      </Wrapper>
-    );
+    return <Wrapper css={wrapperStyle}>{isLoading ? <Loader /> : null}</Wrapper>;
   }
 
   return (
-    <Wrapper css={wrapperStyle} data-testid={testId}>
+    <Wrapper css={wrapperStyle}>
       <TopicIntroductionWrapper>
         <div>
           <HeadingWrapper>

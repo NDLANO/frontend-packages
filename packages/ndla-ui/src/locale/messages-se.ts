@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Doabačilgehus',
       notionsRemove: 'Sihko',
       showVideo: 'Geahča video',
-      showNotion: 'Geahča čilgehusa',
+      concept: 'Geahča čilgehusa',
       gridView: 'Galleriijačájáhus',
       listView: 'Čájáhus listtu vuođul',
+      gloss: 'Se glose',
     },
     contextModal: {
       button: '+ {{count}} eanet sajiin',
@@ -304,7 +305,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Čuovo min',
-      description: 'NDLAs leat máŋga Facebook- ja Twitter-konttu. Gávnna dan mii dutnje heive ja čuovo min!',
+      description: 'NDLAs leat máŋga Facebook- ja X-konttu. Gávnna dan mii dutnje heive ja čuovo min!',
       mainLink: {
         name: 'Čuovo min',
       },
@@ -631,6 +632,7 @@ const messages = {
     title: 'Tihttel',
     originator: 'Ásaheaddji',
     published: 'Almmuhanbeaivi',
+    processed: 'Sisdoallu lea rievdaduvvon.',
     rightsholder: 'Vuoigatvuođaguoddi',
     source: 'Gáldu',
     info: 'Lisensinformasjon',
@@ -882,8 +884,8 @@ const messages = {
     },
     openMenuTooltip: 'Čájet oahppobálgá',
     mobileStepInfo: '{{currentPage}} oktiibuot {{totalPages}} siidduin',
-    nextArrow: 'Boahtte',
-    previousArrow: 'Ovddit',
+    nextArrow: 'Gå til neste steg',
+    previousArrow: 'Gå til førre steg',
   },
   dropdown: {
     numberHits: `Ohcamis ledje {{hits}} deaivama`,
@@ -1052,6 +1054,7 @@ const messages = {
     showLess: 'Čájet unnit',
   },
   files: 'Fiillat',
+  fileTypesNotSupported: 'Filtypen(e) støttast ikkje: {{fileTypes}}',
   download: 'Viečča fiilla: ',
   expandButton: 'Čájet stuora veršuvnna',
   ...contributorTypes.se,
@@ -1331,6 +1334,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
+      gloss: 'Glose',
     },
   },
   gloss: {

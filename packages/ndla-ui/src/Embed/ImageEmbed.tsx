@@ -77,24 +77,25 @@ const getSizes = (size?: string, align?: string) => {
 };
 
 export const getFocalPoint = (data: ImageEmbedData) => {
-  if (typeof data.focalX === 'number' && typeof data.focalY === 'number') {
-    return { x: data.focalX, y: data.focalY };
+  const focalX = parseFloat(data.focalX ?? '');
+  const focalY = parseFloat(data.focalY ?? '');
+  if (!!focalX && !!focalY) {
+    return { x: focalX, y: focalY };
   }
   return undefined;
 };
 
 export const getCrop = (data: ImageEmbedData) => {
-  if (
-    typeof data.lowerRightX === 'number' &&
-    typeof data.lowerRightY === 'number' &&
-    typeof data.upperLeftX === 'number' &&
-    typeof data.upperLeftY === 'number'
-  ) {
+  const lowerRightX = parseFloat(data.lowerRightX ?? '');
+  const lowerRightY = parseFloat(data.lowerRightY ?? '');
+  const upperLeftX = parseFloat(data.upperLeftX ?? '');
+  const upperLeftY = parseFloat(data.upperLeftY ?? '');
+  if (!!lowerRightX && !!lowerRightY && !!upperLeftX && !!upperLeftY) {
     return {
-      startX: data.lowerRightX,
-      startY: data.lowerRightY,
-      endX: data.upperLeftX,
-      endY: data.upperLeftY,
+      startX: lowerRightX,
+      startY: lowerRightY,
+      endX: upperLeftX,
+      endY: upperLeftY,
     };
   }
   return undefined;

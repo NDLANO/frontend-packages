@@ -31,7 +31,7 @@ export interface Props {
     transcriptions: Transcription;
     examples?: Example[][];
   };
-  audio: {
+  audio?: {
     title: string;
     src?: string;
   };
@@ -86,7 +86,7 @@ const TranslatedText = styled.span`
   padding: ${spacing.small} ${spacing.normal};
   font-family: ${fonts.sans};
   ${fonts.sizes('18px', '24px')};
-  :first-child {
+  &[data-first='true'] {
     color: ${colors.brand.dark};
     font-weight: ${fonts.weight.bold};
     background-color: ${colors.background.lightBlue};
@@ -124,7 +124,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               <TypeSpan aria-label={t('gloss.wordClass')}>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>
             )}
           </GlossContainer>
-          {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+          {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
         </Wrapper>
         <span>{title.title}</span>
       </Container>
@@ -135,9 +135,9 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             <StyledAccordionContent>
               {glossData.examples.map((example, index) => (
                 <div key={index}>
-                  {example.map((translation) => (
-                    <>
-                      <TranslatedText>{translation.example}</TranslatedText>
+                  {example.map((translation, innerIndex) => (
+                    <div key={`${index}_${innerIndex}`}>
+                      <TranslatedText data-first={innerIndex === 0}>{translation.example}</TranslatedText>
                       {translation.transcriptions.pinyin && (
                         <TranslatedText key={t('gloss.transcriptions.pinyin')} lang={glossData.originalLanguage}>
                           {translation.transcriptions?.pinyin}
@@ -148,7 +148,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                           {translation.transcriptions?.traditional}
                         </TranslatedText>
                       )}
-                    </>
+                    </div>
                   ))}
                 </div>
               ))}

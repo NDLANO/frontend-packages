@@ -79,9 +79,9 @@ type BannerProps = {
   content: { content: string; lang?: string };
   linkText: { text: string; lang?: string };
 };
-export const BannerCard = ({ link, title, content, linkText, image }: BannerProps) => {
+export const BannerCard = ({ link, title, content, linkText, image, ...rest }: BannerProps) => {
   return (
-    <BannerWrapper>
+    <BannerWrapper {...rest}>
       <ImageWrapper>
         <StyledImage alt={image.altText} src={image.imageSrc} />
       </ImageWrapper>

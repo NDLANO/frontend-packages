@@ -33,24 +33,29 @@ interface Props {
     url: string;
     text: string;
   };
-  imageBefore?: Image;
-  imageAfter?: Image;
+  image?: Image;
+  imageSide?: 'left' | 'right';
   className?: string;
   path?: string;
 }
 
 const Container = styled.div`
-  max-width: 390px;
   display: flex;
   flex-direction: column;
-  gap: ${spacing.xsmall};
+  gap: ${spacing.normal};
   border: 1px ${colors.brand.lighter} solid;
   border-radius: ${misc.borderRadius};
-  padding: ${spacing.normal} ${spacing.small};
+  padding: ${spacing.normal};
   background-color: ${colors.white};
+  &[data-image-side='right'] {
+    flex-direction: column-reverse;
+  }
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 1100px;
     flex-direction: row;
+    &[data-image-side='right'] {
+      flex-direction: row-reverse;
+    }
   }
 `;
 
@@ -64,22 +69,15 @@ const StyledDescription = styled.p`
 `;
 
 const StyledImg = styled.img`
-  max-height: 200px;
   align-self: center;
+  object-fit: contain;
 `;
 
 const StyledLink = styled(SafeLink)`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: ${spacing.xxsmall};
-  box-shadow: none;
-  text-decoration: underline;
-  font-weight: ${fonts.weight.semibold};
   color: ${colors.brand.primary};
-  &:hover,
-  &:focus-visible {
-    text-decoration: none;
-  }
 `;
 
 const TextWrapper = styled.div`
@@ -88,18 +86,18 @@ const TextWrapper = styled.div`
 
 const CampaignBlock = ({
   title,
-  imageBefore,
+  image,
+  imageSide = 'left',
   description,
   headingLevel: Heading = 'h2',
-  imageAfter,
   url,
   path,
   className,
 }: Props) => {
   const href = usePossiblyRelativeUrl(url.url, path);
   return (
-    <Container className={className} data-type="campaign-block">
-      {imageBefore && <StyledImg src={imageBefore.src} height={200} width={240} alt="" />}
+    <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
+      {image && <StyledImg src={image.src} height={200} width={240} alt={image.src} />}
       <TextWrapper>
         <Heading css={headingStyle}>{title.title}</Heading>
         <StyledDescription>{description.text}</StyledDescription>
@@ -108,7 +106,6 @@ const CampaignBlock = ({
           <Forward />
         </StyledLink>
       </TextWrapper>
-      {imageAfter && <StyledImg src={imageAfter.src} height={200} width={240} alt="" />}
     </Container>
   );
 };

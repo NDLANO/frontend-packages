@@ -153,6 +153,7 @@ export const ModalContent = ({
   animationDuration = 400,
   animation = 'zoom',
   expands,
+  forceOverlay,
   ...rest
 }: ModalContentProps) => {
   const styledVars = useMemo(
@@ -165,9 +166,13 @@ export const ModalContent = ({
 
   return (
     <Portal>
-      <Overlay asChild>
+      {forceOverlay ? (
         <StyledOverlay aria-hidden key="modal-backdrop" style={styledVars} />
-      </Overlay>
+      ) : (
+        <Overlay asChild>
+          <StyledOverlay aria-hidden key="modal-backdrop" style={styledVars} />
+        </Overlay>
+      )}
       <DialogContent
         data-animation-name={animation}
         data-position={position}

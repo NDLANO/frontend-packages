@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
       showVideo: 'Sjå video',
-      showNotion: 'Sjå forklaring',
+      concept: 'Sjå forklaring',
       gridView: 'Gallerivisning',
       listView: 'Listevisning',
+      gloss: 'Sjå glose',
     },
     contextModal: {
       button: '+ {{count}} fleire stader',
@@ -304,7 +305,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Følg oss',
-      description: 'NDLA har mange Facebook- og Twitter-kontoar. Finn den som passar for deg, og følg oss!',
+      description: 'NDLA har mange Facebook- og X-kontoar. Finn den som passar for deg, og følg oss',
       mainLink: {
         name: 'Følg oss',
       },
@@ -629,6 +630,7 @@ const messages = {
     },
     title: 'Tittel',
     originator: 'Opphavar',
+    processed: 'Innhaldet har vorte omarbeidd',
     rightsholder: 'Rettshavar',
     source: 'Kjelde',
     published: 'Publiseringsdato',
@@ -881,8 +883,8 @@ const messages = {
     },
     openMenuTooltip: 'Vis læringssti',
     mobileStepInfo: '{{currentPage}} av {{totalPages}}',
-    nextArrow: 'Neste',
-    previousArrow: 'Førre',
+    nextArrow: 'Gå til neste steg',
+    previousArrow: 'Gå til førre steg',
   },
   dropdown: {
     numberHits: `Søket gav {{hits}} treff`,
@@ -1051,6 +1053,7 @@ const messages = {
   },
   source: 'Kjelde',
   files: 'Filer',
+  fileTypesNotSupported: 'Filtypen(e) støttast ikkje: {{fileTypes}}',
   download: 'Last ned fil: ',
   expandButton: 'Vis stor versjon',
   ...contributorTypes.nn,
@@ -1220,7 +1223,7 @@ const messages = {
       loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne resursen?',
-      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
+      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!',
       welcome:
         'Velkommen til Min NDLA! No kan du lagre favorittressursane dine frå NDLA og organisere dei i mapper og med emneknaggar.',
       read: { read: 'Les', our: ' vår.' },
@@ -1330,6 +1333,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
+      gloss: 'Glose',
     },
   },
   gloss: {

@@ -86,7 +86,7 @@ const TranslatedText = styled.span`
   padding: ${spacing.small} ${spacing.normal};
   font-family: ${fonts.sans};
   ${fonts.sizes('18px', '24px')};
-  :first-child {
+  &[data-first='true'] {
     color: ${colors.brand.dark};
     font-weight: ${fonts.weight.bold};
     background-color: ${colors.background.lightBlue};
@@ -137,7 +137,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                 <div key={index}>
                   {example.map((translation, innerIndex) => (
                     <div key={`${index}_${innerIndex}`}>
-                      <TranslatedText>{translation.example}</TranslatedText>
+                      <TranslatedText data-first={innerIndex === 0}>{translation.example}</TranslatedText>
                       {translation.transcriptions.pinyin && (
                         <TranslatedText key={t('gloss.transcriptions.pinyin')} lang={glossData.originalLanguage}>
                           {translation.transcriptions?.pinyin}

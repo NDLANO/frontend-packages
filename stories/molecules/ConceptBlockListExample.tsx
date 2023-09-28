@@ -93,6 +93,7 @@ const ConceptBlockListExample = () => {
             ],
             processors: [],
             rightsholders: [{ name: 'Riksarkivet', type: 'owner' }],
+            processed: false,
           },
         }}
         licenseBox={<LicenseBox />}

@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Explanations',
       notionsRemove: 'Remove',
       showVideo: 'Watch video',
-      showNotion: 'Show notion',
+      concept: 'Show notion',
       gridView: 'Grid-view',
       listView: 'List-view',
+      gloss: 'Show gloss',
     },
     contextModal: {
       button: '+ {{count}} more contexts',
@@ -631,6 +632,7 @@ const messages = {
     title: 'Title',
     originator: 'Originator',
     rightsholder: 'Rightsholder',
+    processed: 'The content has been processed',
     source: 'Source',
     published: 'Published',
     info: 'License information',
@@ -1335,6 +1337,7 @@ const messages = {
       concept: 'Concept',
       h5p: 'H5P',
       external: 'External resource',
+      gloss: 'Gloss',
     },
   },
   gloss: {

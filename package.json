@@ -55,7 +55,7 @@
     "@fontsource/source-code-pro": "^4.5.9",
     "@fontsource/source-sans-pro": "^4.5.9",
     "@fontsource/source-serif-pro": "^4.5.7",
-    "@ndla/types-backend": "^0.2.5",
+    "@ndla/types-backend": "0.2.21",
     "@storybook/addon-a11y": "^7.0.23",
     "@storybook/addon-docs": "^7.0.23",
     "@storybook/addon-essentials": "^7.0.23",

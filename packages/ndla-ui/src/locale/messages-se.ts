@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Doabačilgehus',
       notionsRemove: 'Sihko',
       showVideo: 'Geahča video',
-      showNotion: 'Geahča čilgehusa',
+      concept: 'Geahča čilgehusa',
       gridView: 'Galleriijačájáhus',
       listView: 'Čájáhus listtu vuođul',
+      gloss: 'Geahča sánit',
     },
     contextModal: {
       button: '+ {{count}} eanet sajiin',
@@ -631,6 +632,7 @@ const messages = {
     title: 'Tihttel',
     originator: 'Ásaheaddji',
     published: 'Almmuhanbeaivi',
+    processed: 'Sisdoallu lea rievdaduvvon.',
     rightsholder: 'Vuoigatvuođaguoddi',
     source: 'Gáldu',
     info: 'Lisensinformasjon',
@@ -1331,6 +1333,7 @@ const messages = {
       concept: 'Čilgehus',
       h5p: 'H5P',
       external: 'Olgguldas resursa',
+      gloss: 'Glose',
     },
   },
   gloss: {

@@ -31,7 +31,7 @@ export interface Props {
     transcriptions: Transcription;
     examples?: Example[][];
   };
-  audio: {
+  audio?: {
     title: string;
     src?: string;
   };
@@ -124,7 +124,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               <TypeSpan aria-label={t('gloss.wordClass')}>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>
             )}
           </GlossContainer>
-          {audio.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+          {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
         </Wrapper>
         <span>{title.title}</span>
       </Container>
@@ -135,8 +135,8 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             <StyledAccordionContent>
               {glossData.examples.map((example, index) => (
                 <div key={index}>
-                  {example.map((translation) => (
-                    <>
+                  {example.map((translation, innerIndex) => (
+                    <div key={`${index}_${innerIndex}`}>
                       <TranslatedText>{translation.example}</TranslatedText>
                       {translation.transcriptions.pinyin && (
                         <TranslatedText key={t('gloss.transcriptions.pinyin')} lang={glossData.originalLanguage}>
@@ -148,7 +148,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                           {translation.transcriptions?.traditional}
                         </TranslatedText>
                       )}
-                    </>
+                    </div>
                   ))}
                 </div>
               ))}

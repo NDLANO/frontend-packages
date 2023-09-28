@@ -7,7 +7,7 @@
  */
 
 import { forwardRef, ReactNode, RefAttributes } from 'react';
-import { ConceptVisualElementMeta } from '@ndla/types-embed';
+import { AudioMeta, AudioMetaData, ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
@@ -21,9 +21,12 @@ import BrightcoveEmbed from './BrightcoveEmbed';
 import H5pEmbed from './H5pEmbed';
 import { ExternalEmbed, HeartButtonType, IframeEmbed } from '.';
 import { EmbedByline } from '../LicenseByline';
+import { Gloss } from '../Gloss';
+
+export type ConceptType = 'concept' | 'gloss';
 
 export interface ConceptNotionData {
-  title: string;
+  title: ConceptData['concept']['title'];
   content?: string;
   metaImage?: {
     url?: string;
@@ -32,6 +35,8 @@ export interface ConceptNotionData {
   copyright?: Copyright;
   source?: string;
   visualElement?: ConceptVisualElementMeta;
+  conceptType: ConceptData['concept']['conceptType'];
+  glossData?: ConceptData['concept']['glossData'];
 }
 
 interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotionData {
@@ -151,6 +156,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       subjects,
       heartButton,
       conceptHeartButton,
+      conceptType,
+      glossData,
       ...rest
     },
     ref,
@@ -162,47 +169,61 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
         <ContentPadding>
           <NotionHeader>
             <h1>
-              {title} {<small>{t('searchPage.resultType.notionsHeading')}</small>}
+              {title.title} {<small>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
             {closeButton}
           </NotionHeader>
-          <StyledNotionDialogContent>
-            {visualElement?.resource === 'image' ? (
-              <ImageEmbed embed={visualElement} heartButton={heartButton} />
-            ) : visualElement?.resource === 'brightcove' ? (
-              <BrightcoveEmbed embed={visualElement} heartButton={heartButton} />
-            ) : visualElement?.resource === 'h5p' ? (
-              <H5pEmbed embed={visualElement} />
-            ) : visualElement?.resource === 'iframe' ? (
-              <IframeEmbed embed={visualElement} />
-            ) : visualElement?.resource === 'external' ? (
-              <ExternalEmbed embed={visualElement} />
-            ) : null}
-            <NotionDialogText>{parseMarkdown(content ?? '', 'body')}</NotionDialogText>
-          </StyledNotionDialogContent>
-          {tags && (
-            <ListWrapper>
-              {`${t('notions.tags')}:`}
-              <StyledList>
-                {tags.map((tag, index) => (
-                  <li key={index}>{tag}</li>
-                ))}
-              </StyledList>
-            </ListWrapper>
-          )}
-          {subjects && (
-            <ListWrapper>
-              {`${t('notions.usedIn')}:`}
-              <StyledList>
-                {subjects.map((subject, index) => (
-                  <li key={index}>{subject}</li>
-                ))}
-              </StyledList>
-            </ListWrapper>
+          {conceptType !== 'gloss' ? (
+            <>
+              <StyledNotionDialogContent>
+                {visualElement?.resource === 'image' ? (
+                  <ImageEmbed embed={visualElement} heartButton={heartButton} />
+                ) : visualElement?.resource === 'brightcove' ? (
+                  <BrightcoveEmbed embed={visualElement} heartButton={heartButton} />
+                ) : visualElement?.resource === 'h5p' ? (
+                  <H5pEmbed embed={visualElement} />
+                ) : visualElement?.resource === 'iframe' ? (
+                  <IframeEmbed embed={visualElement} />
+                ) : visualElement?.resource === 'external' ? (
+                  <ExternalEmbed embed={visualElement} />
+                ) : null}
+                <NotionDialogText>{parseMarkdown(content ?? '', 'body')}</NotionDialogText>
+              </StyledNotionDialogContent>
+              {tags && (
+                <ListWrapper>
+                  {`${t('notions.tags')}:`}
+                  <StyledList>
+                    {tags.map((tag, index) => (
+                      <li key={index}>{tag}</li>
+                    ))}
+                  </StyledList>
+                </ListWrapper>
+              )}
+              {subjects && (
+                <ListWrapper>
+                  {`${t('notions.usedIn')}:`}
+                  <StyledList>
+                    {subjects.map((subject, index) => (
+                      <li key={index}>{subject}</li>
+                    ))}
+                  </StyledList>
+                </ListWrapper>
+              )}
+            </>
+          ) : (
+            <Gloss
+              title={title}
+              glossData={glossData!}
+              audio={
+                visualElement?.status === 'success' && visualElement.resource === 'audio'
+                  ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
+                  : undefined
+              }
+            />
           )}
         </ContentPadding>
         {copyright && (
-          <EmbedByline copyright={copyright} type="concept">
+          <EmbedByline copyright={copyright} type={conceptType as ConceptType}>
             {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
           </EmbedByline>
         )}

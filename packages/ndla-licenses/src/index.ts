@@ -14,6 +14,7 @@ export {
 } from './contributorTypes';
 
 export { resourceTypes, getResourceTypeNamespace, metaTypes } from './CCRel';
+export type { MetaType } from './CCRel';
 
 export { BY, SA, NA, NC, ND, PD, CC0, CC, COPYRIGHTED, getLicenseRightByAbbreviation } from './licenseRights';
 

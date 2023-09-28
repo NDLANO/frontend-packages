@@ -39,6 +39,7 @@ const successData: AudioMeta = {
     creators: [{ type: 'originator', name: 'Radio Metro AS' }],
     processors: [],
     rightsholders: [],
+    processed: false,
   },
   tags: { tags: ["Ain't I a Woman?", 'Sojourner Truth', 'speech', 'abolitionist'], language: 'nb' },
   supportedLanguages: ['nb'],
@@ -79,6 +80,7 @@ const podcastSuccessData: AudioMeta = {
       { type: 'editorial', name: 'Maren Aftret-Sandal' },
     ],
     rightsholders: [{ type: 'rightsholder', name: 'Både Og' }],
+    processed: false,
   },
   tags: { tags: ['reklame', 'radio', 'lyddesign'], language: 'nb' },
   supportedLanguages: ['nb', 'nn'],
@@ -148,6 +150,7 @@ const podcastSuccessData: AudioMeta = {
         },
       ],
       rightsholders: [],
+      processed: false,
     },
     tags: {
       tags: ['lytt gjennom mediefaget', 'podcastserie', 'podcast', 'mediefaget', 'medier', 'podkastserie', 'podkast'],

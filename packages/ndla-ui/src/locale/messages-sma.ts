@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Baakoebuerkiestimmie',
       notionsRemove: 'Skubph',
       showVideo: 'Gïehtjh videjovem',
-      showNotion: 'Gïehtjh buerkiestimmiem ',
+      concept: 'Gïehtjh buerkiestimmiem ',
       gridView: 'Gallerivisning',
       listView: 'Listevisning',
+      gloss: 'Se glose',
     },
     contextModal: {
       button: '+ {{count}} jieniebinie sijjine',
@@ -634,6 +635,7 @@ const messages = {
     title: 'Tihtele',
     originator: 'Opphaver',
     published: 'Publiseringsdato',
+    processed: 'Innhaldet har vorte omarbeidd',
     rightsholder: 'Rettighetshaver',
     source: 'Gaaltije',
     info: 'Lisensinformasjon',
@@ -1336,6 +1338,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
+      gloss: 'Glose',
     },
   },
   gloss: {

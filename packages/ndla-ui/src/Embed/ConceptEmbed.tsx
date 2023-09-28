@@ -408,7 +408,7 @@ export const BlockConcept = ({
             }
           />
         )}
-        {copyright ? (
+        {copyright && conceptType === 'concept' ? (
           <EmbedByline copyright={copyright} bottomRounded topRounded type={conceptType as ConceptType}>
             {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
           </EmbedByline>

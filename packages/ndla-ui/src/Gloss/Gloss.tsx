@@ -128,7 +128,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
         </Wrapper>
         <span>{title.title}</span>
       </Container>
-      {glossData.examples && (
+      {glossData.examples && glossData.examples.length > 0 && (
         <AccordionRoot type="single" collapsible>
           <AccordionItem value="1">
             <StyledAccordionHeader>{t('gloss.examples')}</StyledAccordionHeader>

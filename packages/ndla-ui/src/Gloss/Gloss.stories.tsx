@@ -9,7 +9,7 @@
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
 import Gloss from './Gloss';
 import { defaultParameters } from '../../../../stories/defaults';
-import { WordClass } from '../model/WordClass';
+import { wordClass } from '../model/WordClass';
 
 const meta: Meta<typeof Gloss> = {
   title: 'Components/Gloss',
@@ -25,7 +25,7 @@ const meta: Meta<typeof Gloss> = {
     },
     glossData: {
       gloss: 'angreifen',
-      wordClass: WordClass.Verb,
+      wordClass: wordClass.verb,
       originalLanguage: 'de',
       transcriptions: {},
       examples: [
@@ -76,7 +76,7 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
     },
     glossData: {
       gloss: '马红',
-      wordClass: WordClass.ProperNoun,
+      wordClass: wordClass.properNoun,
       originalLanguage: 'zh',
       transcriptions: {
         traditional: '(馬紅)',

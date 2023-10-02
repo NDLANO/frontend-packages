@@ -57,7 +57,7 @@
     "i18next-browser-languagedetector": "^6.1.1",
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^2.2.3",
-    "react-select": "^5.7.0",
+    "react-select": "^5.7.5",
     "react-swipeable": "^7.0.0",
     "remarkable": "^2.0.1",
     "shave": "^2.5.10"

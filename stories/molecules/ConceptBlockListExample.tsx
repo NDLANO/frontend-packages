@@ -6,9 +6,7 @@
  *
  */
 
-import { useEffect, useMemo } from 'react';
-// @ts-ignore
-import { Remarkable } from 'remarkable';
+import { useEffect } from 'react';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants, Figure } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
@@ -22,13 +20,6 @@ import NotionList from './NotionList';
 const { contentTypes } = constants;
 
 const ConceptBlockListExample = () => {
-  const markdown = useMemo(() => {
-    const md = new Remarkable({ breaks: true });
-    md.inline.ruler.enable(['sub', 'sup']);
-    md.block.ruler.disable(['list']);
-    return md;
-  }, []);
-
   useEffect(() => {
     initArticleScripts();
   }, []);
@@ -38,10 +29,9 @@ const ConceptBlockListExample = () => {
         messages={{
           label: 'Fagstoff',
         }}
-        renderMarkdown={(text: string) => markdown.render(text)}
         article={{
           title: 'Artikkel fagstoff',
-          introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
+          introduction: <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.</p>,
           published: '24.04.2018',
           content: (
             <>

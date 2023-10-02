@@ -6,10 +6,8 @@
  *
  */
 
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants } from '@ndla/ui';
-// @ts-ignore
-import { Remarkable } from 'remarkable';
 
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
@@ -24,13 +22,6 @@ import NotionBlock from './NotionBlock';
 const { contentTypes } = constants;
 
 const ConceptBlockExample = () => {
-  const markdown = useMemo(() => {
-    const md = new Remarkable({ breaks: true });
-    md.inline.ruler.enable(['sub', 'sup']);
-    md.block.ruler.disable(['list']);
-    return md;
-  }, []);
-
   useEffect(() => {
     initArticleScripts();
   }, []);
@@ -38,13 +29,12 @@ const ConceptBlockExample = () => {
   return (
     <OneColumn cssModifier="narrow">
       <Article
-        renderMarkdown={(text: string) => markdown.render(text)}
         messages={{
           label: 'Fagstoff',
         }}
         article={{
           title: 'Artikkel fagstoff',
-          introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
+          introduction: <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.</p>,
           published: '24.04.2018',
           content: (
             <>

@@ -10,7 +10,6 @@ import { ReactNode, MouseEvent, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
-import parse from 'html-react-parser';
 import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
@@ -197,13 +196,12 @@ export type TopicProps = {
     alt: string;
   };
   title: string;
-  introduction: string;
+  introduction: ReactNode;
   resources?: ReactNode;
   visualElementEmbedMeta?: EmbedMetaData;
   subTopics?: ItemProps[] | null | undefined;
   onSubTopicSelected?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   isLoading?: boolean;
-  renderMarkdown?: (text: string) => string;
   invertedStyle?: boolean;
   onToggleShowContent?: () => void;
   showContent?: boolean;
@@ -229,7 +227,6 @@ const Topic = ({
   subTopics,
   onSubTopicSelected,
   isLoading,
-  renderMarkdown,
   invertedStyle,
   onToggleShowContent,
   showContent,
@@ -284,7 +281,7 @@ const Topic = ({
               </>
             )}
           </HeadingWrapper>
-          <TopicIntroduction>{renderMarkdown ? parse(renderMarkdown(introduction)) : introduction}</TopicIntroduction>
+          <TopicIntroduction>{introduction}</TopicIntroduction>
         </div>
         {metaImage && (
           <TopicHeaderVisualElementWrapper>

@@ -8,7 +8,6 @@
 
 import { ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
-import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 
 import { useIntersectionObserver } from '@ndla/hooks';
@@ -71,18 +70,9 @@ export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) =
 
 type ArticleIntroductionProps = {
   children: ReactNode;
-  renderMarkdown: (text: string) => string;
 };
 
-export const ArticleIntroduction = ({
-  children,
-  renderMarkdown = (text) => {
-    return text;
-  },
-}: ArticleIntroductionProps) => {
-  if (typeof children === 'string') {
-    return <div className="article_introduction">{parse(renderMarkdown(children))}</div>;
-  }
+export const ArticleIntroduction = ({ children }: ArticleIntroductionProps) => {
   if (children) {
     return <div className="article_introduction">{children}</div>;
   }
@@ -124,7 +114,6 @@ type Props = {
   messageBoxLinks?: [];
   competenceGoals?: ReactNode;
   id: string;
-  renderMarkdown: (text: string) => string;
   notions?: ReactNode;
   accessMessage?: string;
 };
@@ -152,7 +141,6 @@ export const Article = ({
   competenceGoals,
   id,
   notions,
-  renderMarkdown,
   accessMessage,
   heartButton,
   contentTransformed,
@@ -205,7 +193,7 @@ export const Article = ({
             <ArticleTitle id={id} icon={icon} label={messages.label}>
               {title}
             </ArticleTitle>
-            <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
+            <ArticleIntroduction>{introduction}</ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">

@@ -35,10 +35,17 @@ const style = css`
     margin-bottom: ${spacing.small};
   }
   &[data-style='h1'] {
+    font-family: ${fonts.serif};
     ${fonts.sizes('30px', '36px')};
     ${mq.range({ from: breakpoints.tablet })} {
       ${fonts.sizes('48px', '60px')};
       margin-bottom: ${spacing.normal};
+    }
+  }
+  &[data-style='h1-resource'] {
+    ${fonts.sizes('30px', '36px')};
+    ${mq.range({ from: breakpoints.tablet })} {
+      ${fonts.sizes('38px', '48px')};
     }
   }
 
@@ -55,11 +62,6 @@ const style = css`
       ${fonts.sizes('26px', '36px')};
     }
   }
-  &[data-style='h4'] {
-    ${mq.range({ from: breakpoints.tablet })} {
-      font-family: ${fonts.serif};
-    }
-  }
   &[data-style='list-title'] {
     ${fonts.sizes('18px', '24px')};
     text-transform: uppercase;
@@ -70,7 +72,7 @@ type AllowedElements = HeadingLevel | 'p' | 'span';
 
 interface Props<T extends AllowedElements> {
   element: T;
-  headingStyle: 'h1' | 'h2' | 'h3' | 'h4' | 'list-title' | 'default';
+  headingStyle: 'h1' | 'h2' | 'h3' | 'h1-resource' | 'list-title' | 'default';
   serif?: boolean;
   /**
    * General usage
@@ -83,7 +85,7 @@ interface Props<T extends AllowedElements> {
 }
 
 /**
- * Heading-komponent som definerer styling for alle heading-elementer (h1, h2, h3, h4, listetittel) som brukes i ed, ndla-frontend, listing.
+ * Heading-komponent som definerer styling for alle heading-elementer (h1, h1-ressurs, h2, h3, listetittel) som brukes i ed, ndla-frontend, listing.
  */
 const Heading = <T extends AllowedElements>({
   element,

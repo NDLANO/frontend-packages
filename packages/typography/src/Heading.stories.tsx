@@ -31,6 +31,13 @@ export const H1: StoryFn<typeof Heading> = (args) => {
   return <Heading {...args} />;
 };
 
+export const H1Resource: StoryObj<typeof Heading> = {
+  args: {
+    headingStyle: 'h1-resource',
+    children: exampleText,
+  },
+};
+
 export const H2: StoryObj<typeof Heading> = {
   args: {
     headingStyle: 'h2',
@@ -41,13 +48,6 @@ export const H2: StoryObj<typeof Heading> = {
 export const H3: StoryObj<typeof Heading> = {
   args: {
     headingStyle: 'h3',
-    children: exampleText,
-  },
-};
-
-export const H4: StoryObj<typeof Heading> = {
-  args: {
-    headingStyle: 'h4',
     children: exampleText,
   },
 };

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/select",
-  "version": "2.4.12",
+  "version": "2.4.13",
   "description": "Select component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",

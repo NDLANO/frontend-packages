@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "45.0.12",
+  "version": "45.0.13",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -44,7 +44,7 @@
     "@ndla/modal": "^4.0.7",
     "@ndla/notion": "^5.0.25",
     "@ndla/safelink": "^4.1.21",
-    "@ndla/select": "^2.4.12",
+    "@ndla/select": "^2.4.13",
     "@ndla/switch": "^1.1.12",
     "@ndla/tabs": "^3.0.8",
     "@ndla/tooltip": "^4.1.18",
@@ -73,7 +73,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@ndla/types-backend": "^0.2.21",
-    "@ndla/types-embed": "^4.0.1",
+    "@ndla/types-embed": "^4.0.2",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.5",
     "sass-loader": "^13.2.2",

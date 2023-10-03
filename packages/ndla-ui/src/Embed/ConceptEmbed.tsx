@@ -14,7 +14,7 @@ import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-p
 import { IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { AudioMeta, ConceptMetaData } from '@ndla/types-embed';
+import { ConceptMetaData } from '@ndla/types-embed';
 import Tooltip from '@ndla/tooltip';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { Notion as UINotion } from '../Notion';
@@ -74,6 +74,7 @@ const ImageWrapper = styled.div`
 interface Props {
   embed: ConceptMetaData;
   fullWidth?: boolean;
+  headerButtons?: ReactNode;
   heartButton?: HeartButtonType;
 }
 
@@ -96,7 +97,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, headerButtons }: Props) => {
   if (embed.status === 'error' && embed.embedData.type === 'inline') {
     return <span>{embed.embedData.linkText}</span>;
   } else if (embed.status === 'error') {
@@ -133,6 +134,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         source={concept.source}
         visualElement={visualElement}
         linkText={embed.embedData.linkText}
+        headerButtons={headerButtons}
         heartButton={HeartButton}
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
@@ -160,6 +162,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
 interface InlineConceptProps extends ConceptNotionData {
   linkText: string;
   heartButton?: HeartButtonType;
+  headerButtons?: ReactNode;
   conceptHeartButton?: ReactNode;
 }
 
@@ -232,6 +235,7 @@ const InlineConcept = ({
   conceptHeartButton,
   glossData,
   conceptType,
+  headerButtons,
 }: InlineConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -271,6 +275,7 @@ const InlineConcept = ({
               visualElement={visualElement}
               inPopover
               heartButton={heartButton}
+              headerButtons={headerButtons}
               conceptHeartButton={conceptHeartButton}
               closeButton={
                 <Close asChild>

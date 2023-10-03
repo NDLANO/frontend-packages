@@ -7,7 +7,7 @@
  */
 
 import { forwardRef, ReactNode, RefAttributes } from 'react';
-import { AudioMeta, AudioMetaData, ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
+import { ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
@@ -46,6 +46,7 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
   inPopover?: boolean;
   tags?: string[];
   subjects?: string[];
+  headerButtons?: ReactNode;
   heartButton?: HeartButtonType;
   conceptHeartButton?: ReactNode;
 }
@@ -125,6 +126,12 @@ const StyledNotionDialogContent = styled(NotionDialogContent)`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.xsmall};
+  align-items: center;
+`;
+
 const StyledList = styled.ul`
   display: flex;
   gap: ${spacing.small};
@@ -158,6 +165,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       conceptHeartButton,
       conceptType,
       glossData,
+      headerButtons,
       ...rest
     },
     ref,
@@ -171,7 +179,10 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
             <h1>
               {title.title} {<small>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
-            {closeButton}
+            <ButtonWrapper>
+              {headerButtons}
+              {closeButton}
+            </ButtonWrapper>
           </NotionHeader>
           {conceptType !== 'gloss' ? (
             <>

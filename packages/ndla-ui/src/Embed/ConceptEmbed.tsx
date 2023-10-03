@@ -74,7 +74,6 @@ const ImageWrapper = styled.div`
 interface Props {
   embed: ConceptMetaData;
   fullWidth?: boolean;
-  headerButtons?: ReactNode;
   heartButton?: HeartButtonType;
 }
 
@@ -97,7 +96,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, headerButtons }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Props) => {
   if (embed.status === 'error' && embed.embedData.type === 'inline') {
     return <span>{embed.embedData.linkText}</span>;
   } else if (embed.status === 'error') {
@@ -134,7 +133,6 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, heade
         source={concept.source}
         visualElement={visualElement}
         linkText={embed.embedData.linkText}
-        headerButtons={headerButtons}
         heartButton={HeartButton}
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
@@ -160,7 +158,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, heade
 };
 
 interface InlineConceptProps extends ConceptNotionData {
-  linkText: string;
+  linkText: ReactNode;
   heartButton?: HeartButtonType;
   headerButtons?: ReactNode;
   conceptHeartButton?: ReactNode;
@@ -224,7 +222,7 @@ const getModalPosition = (anchor: HTMLElement) => {
   return anchorPos.top - (articlePos?.top || -window.scrollY);
 };
 
-const InlineConcept = ({
+export const InlineConcept = ({
   title,
   content,
   copyright,

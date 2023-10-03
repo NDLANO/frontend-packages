@@ -153,8 +153,9 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
 };
 
 interface InlineConceptProps extends ConceptNotionData {
-  linkText: string;
+  linkText: ReactNode;
   heartButton?: HeartButtonType;
+  headerButtons?: ReactNode;
   conceptHeartButton?: ReactNode;
 }
 
@@ -216,7 +217,7 @@ const getModalPosition = (anchor: HTMLElement) => {
   return anchorPos.top - (articlePos?.top || -window.scrollY);
 };
 
-const InlineConcept = ({
+export const InlineConcept = ({
   title,
   content,
   copyright,
@@ -227,6 +228,7 @@ const InlineConcept = ({
   conceptHeartButton,
   glossData,
   conceptType,
+  headerButtons,
 }: InlineConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -266,6 +268,7 @@ const InlineConcept = ({
               visualElement={visualElement}
               inPopover
               heartButton={heartButton}
+              headerButtons={headerButtons}
               conceptHeartButton={conceptHeartButton}
               closeButton={
                 <Close asChild>

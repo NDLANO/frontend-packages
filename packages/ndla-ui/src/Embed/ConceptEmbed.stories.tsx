@@ -19,9 +19,23 @@ const blockEmbedData: ConceptEmbedData = {
   linkText: '',
 };
 
+const glossBlockEmbedData: ConceptEmbedData = {
+  contentId: '4942',
+  resource: 'concept',
+  type: 'block',
+  linkText: '',
+};
+
 const inlineEmbedData: ConceptEmbedData = {
   contentId: '2318',
   linkText: 'forklaring',
+  resource: 'concept',
+  type: 'inline',
+};
+
+const glossInlineEmbedData: ConceptEmbedData = {
+  contentId: '23',
+  linkText: 'glose',
   resource: 'concept',
   type: 'inline',
 };
@@ -68,7 +82,68 @@ const conceptMetaData: ConceptData['concept'] = {
       '<ndlaembed data-resource="image" data-resource_id="52863" data-alt="Eksempel på hvordan borevæsken kan trenge ut i formasjonen fra borehullet og skade formasjonens permeabilitet. Illustrasjon." data-size="full" data-align="" data-url="https://api.test.ndla.no/image-api/v2/images/52863"></ndlaembed>',
     language: 'nb',
   },
-  conceptType: 'standard',
+  conceptType: 'concept',
+};
+
+const glossMetaData: ConceptData['concept'] = {
+  id: 4942,
+  revision: 6,
+  title: {
+    title: 'Ma Hong',
+    language: 'nb',
+  },
+  content: {
+    content: 'Hei',
+    language: 'nb',
+  },
+  copyright: {
+    creators: [],
+    processors: [],
+    rightsholders: [],
+    processed: false,
+  },
+  source: '',
+  metaImage: {
+    url: '',
+    alt: '',
+    language: 'und',
+  },
+  created: '2023-07-19T09:30:40.000Z',
+  updated: '2023-09-19T17:13:56.573Z',
+  updatedBy: ['XxnkdI7rApMl58MeG3p4g4B8', 'hd5ZL5Lm4kKkumWgN2gjy9wx'],
+  supportedLanguages: ['nb'],
+  articleIds: [],
+  status: {
+    current: 'IN_PROGRESS',
+    other: [],
+  },
+  responsible: {
+    responsibleId: 'XxnkdI7rApMl58MeG3p4g4B8',
+    lastUpdated: '2023-07-19T09:30:40.000Z',
+  },
+  conceptType: 'gloss',
+  glossData: {
+    gloss: '马红',
+    wordClass: 'personal-pronoun',
+    originalLanguage: 'zh',
+    transcriptions: {},
+    examples: [
+      [
+        {
+          example: '我叫马红',
+          language: 'zh',
+          transcriptions: {
+            pinyin: 'wo jiao ma hong ',
+          },
+        },
+        {
+          example: 'Jeg heter ma hong',
+          language: 'nb',
+          transcriptions: {},
+        },
+      ],
+    ],
+  },
 };
 
 const visualElementData: ConceptData['visualElement'] = {
@@ -141,6 +216,10 @@ const blockMetaData: ConceptData = {
   visualElement: visualElementData,
 };
 
+const glossBlockData: ConceptData = {
+  concept: glossMetaData,
+};
+
 const meta: Meta<typeof ConceptEmbed> = {
   title: 'Components/Embeds/ConceptEmbed',
   component: ConceptEmbed,
@@ -177,6 +256,11 @@ export const Block: StoryObj<typeof ConceptEmbed> = {
     },
   },
 };
+export const GlossBlock: StoryObj<typeof ConceptEmbed> = {
+  args: {
+    embed: { resource: 'concept', status: 'success', embedData: glossBlockEmbedData, data: glossBlockData },
+  },
+};
 
 export const BlockFailed: StoryObj<typeof ConceptEmbed> = {
   args: {
@@ -197,6 +281,17 @@ export const Inline: StoryObj<typeof ConceptEmbed> = {
       status: 'success',
       embedData: inlineEmbedData,
       data: blockMetaData,
+    },
+  },
+};
+
+export const GlossInline: StoryObj<typeof ConceptEmbed> = {
+  args: {
+    embed: {
+      resource: 'concept',
+      status: 'success',
+      embedData: glossInlineEmbedData,
+      data: glossBlockData,
     },
   },
 };

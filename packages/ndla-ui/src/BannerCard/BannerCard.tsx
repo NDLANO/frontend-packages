@@ -51,7 +51,7 @@ const TextWrapper = styled.div`
 
 const ContentText = styled.p`
   font-size: ${fonts.sizes(16)};
-  color: ${colors.brand.grey};
+  color: ${colors.brand.primary};
   margin: 0;
   padding-top: 10px;
   padding-bottom: 10px;

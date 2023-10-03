@@ -68,7 +68,7 @@ const conceptMetaData: ConceptData['concept'] = {
       '<ndlaembed data-resource="image" data-resource_id="52863" data-alt="Eksempel på hvordan borevæsken kan trenge ut i formasjonen fra borehullet og skade formasjonens permeabilitet. Illustrasjon." data-size="full" data-align="" data-url="https://api.test.ndla.no/image-api/v2/images/52863"></ndlaembed>',
     language: 'nb',
   },
-  conceptType: 'standard',
+  conceptType: 'concept',
 };
 
 const visualElementData: ConceptData['visualElement'] = {

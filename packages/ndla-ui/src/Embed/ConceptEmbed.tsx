@@ -399,7 +399,7 @@ export const BlockConcept = ({
           />
         ) : (
           <Gloss
-            glossData={glossData!}
+            glossData={glossData}
             title={title}
             audio={
               visualElement?.status === 'success' && visualElement.resource === 'audio'

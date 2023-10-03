@@ -14,7 +14,7 @@ import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-p
 import { IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { AudioMeta, ConceptMetaData } from '@ndla/types-embed';
+import { ConceptMetaData } from '@ndla/types-embed';
 import Tooltip from '@ndla/tooltip';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { Notion as UINotion } from '../Notion';
@@ -25,11 +25,6 @@ import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 import { HeartButtonType } from './types';
 import { Gloss } from '../Gloss';
-
-const BottomBorder = styled.div`
-  margin-top: ${spacing.normal};
-  border-bottom: 1px solid ${colors.brand.greyLight};
-`;
 
 interface PopoverPosition {
   top?: number;
@@ -408,12 +403,10 @@ export const BlockConcept = ({
             }
           />
         )}
-        {copyright && conceptType === 'concept' ? (
+        {copyright && conceptType === 'concept' && (
           <EmbedByline copyright={copyright} bottomRounded topRounded type={conceptType as ConceptType}>
             {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
           </EmbedByline>
-        ) : (
-          <BottomBorder />
         )}
       </Figure>
     </Root>

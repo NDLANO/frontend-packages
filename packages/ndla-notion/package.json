@@ -1,6 +1,6 @@
 {
   "name": "@ndla/notion",
-  "version": "5.0.25",
+  "version": "5.0.26",
   "description": "Notions and dictionary-notions for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,12 +25,12 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^4.1.7",
-    "@ndla/icons": "^4.0.6",
+    "@ndla/core": "^4.1.8",
+    "@ndla/icons": "^4.0.7",
     "@ndla/licenses": "^7.1.4",
-    "@ndla/modal": "^4.0.7",
-    "@ndla/safelink": "^4.1.21",
-    "@ndla/tooltip": "^4.1.18",
+    "@ndla/modal": "^4.0.8",
+    "@ndla/safelink": "^4.1.22",
+    "@ndla/tooltip": "^4.1.19",
     "@ndla/util": "^3.2.0"
   },
   "peerDependencies": {

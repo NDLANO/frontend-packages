@@ -24,6 +24,7 @@ export {
   ConceptEmbed,
   ConceptListEmbed,
   UnknownEmbed,
+  InlineConcept,
 } from './Embed';
 
 export {

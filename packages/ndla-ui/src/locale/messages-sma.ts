@@ -210,10 +210,10 @@ const messages = {
       notionsHeading: 'Baakoebuerkiestimmie',
       notionsRemove: 'Skubph',
       showVideo: 'Gïehtjh videjovem',
-      concept: 'Gïehtjh buerkiestimmiem ',
+      concept: 'Begrepsforklaring',
       gridView: 'Gallerivisning',
       listView: 'Listevisning',
-      gloss: 'Se glose',
+      gloss: 'Glose',
     },
     contextModal: {
       button: '+ {{count}} jieniebinie sijjine',

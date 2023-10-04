@@ -210,10 +210,10 @@ const messages = {
       notionsHeading: 'Explanations',
       notionsRemove: 'Remove',
       showVideo: 'Watch video',
-      concept: 'Show notion',
+      concept: 'Concept',
       gridView: 'Grid-view',
       listView: 'List-view',
-      gloss: 'Show gloss',
+      gloss: 'Gloss',
     },
     contextModal: {
       button: '+ {{count}} more contexts',

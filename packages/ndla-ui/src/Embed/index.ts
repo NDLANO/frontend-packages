@@ -19,5 +19,5 @@ export { default as ConceptEmbed } from './ConceptEmbed';
 export { ConceptNotionV2 } from './conceptComponents';
 export { default as ConceptListEmbed } from './ConceptListEmbed';
 export { default as UnknownEmbed } from './UnknownEmbed';
-export { InlineConcept } from './ConceptEmbed';
+export { InlineConcept, BlockConcept } from './ConceptEmbed';
 export type { HeartButtonType } from './types';

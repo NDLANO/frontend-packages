@@ -5,8 +5,8 @@ import { Forward } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, spacing } from '@ndla/core';
 
+import { HeadingLevel } from '@ndla/typography';
 import SectionHeading from '../SectionHeading';
-import { HeadingLevel } from '../types';
 
 interface InfoWidgetSectionProps {
   center?: boolean;

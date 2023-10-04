@@ -14,6 +14,7 @@ import styled from '@emotion/styled';
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
 import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
+import { Heading } from '@ndla/typography';
 import { Article as ArticleType } from '../types';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
@@ -21,7 +22,6 @@ import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions from './ArticleNotions';
 import ArticleAccessMessage from './ArticleAccessMessage';
 import MessageBox from '../Messages/MessageBox';
-import { Heading } from '../Typography';
 
 const classes = new BEMHelper({
   name: 'article',

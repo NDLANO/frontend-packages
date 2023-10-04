@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import { ReactNode } from 'react';
-import { HeadingLevel } from '../types';
+import { HeadingLevel } from '@ndla/typography';
 import { SubjectSectionTitle } from './Subject';
 
 const StyledSubjectSocialContent = styled.div`

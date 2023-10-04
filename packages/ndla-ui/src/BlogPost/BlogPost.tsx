@@ -11,8 +11,8 @@ import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
+import { HeadingLevel } from '@ndla/typography';
 import { useTranslation } from 'react-i18next';
-import { HeadingLevel } from '../types';
 import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 export interface Props {

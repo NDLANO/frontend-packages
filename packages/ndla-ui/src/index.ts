@@ -24,6 +24,7 @@ export {
   ConceptEmbed,
   ConceptListEmbed,
   UnknownEmbed,
+  InlineConcept,
 } from './Embed';
 
 export {
@@ -206,6 +207,8 @@ export {
   MediaListItemImage,
   MediaListItemMeta,
 } from './MediaList';
+
+export type { ItemType } from './MediaList';
 
 export {
   default as ContentTypeBadge,

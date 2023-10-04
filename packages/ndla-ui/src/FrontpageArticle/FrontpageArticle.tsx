@@ -11,7 +11,6 @@ import { breakpoints, fonts, mq, spacing, spacingUnit } from '@ndla/core';
 import styled from '@emotion/styled';
 import { Heading } from '@ndla/typography';
 import { Article } from '../types';
-import LayoutItem from '../Layout';
 import { ArticleByline } from '../Article';
 import { useMastheadHeight } from '../Masthead';
 
@@ -41,6 +40,11 @@ const StyledArticle = styled.article`
       margin-top: 0px;
     }
   }
+
+  div[data-type='grid'] + div[data-type='grid'] {
+    margin-top: ${spacingUnit * 4}px;
+  }
+
   &[data-wide='true'] {
     max-width: 1100px;
     h2[id] {
@@ -71,8 +75,8 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
 
   if (isWide) {
     return (
-      <StyledArticle data-wide={isWide} style={cssVars}>
-        <LayoutItem>{content}</LayoutItem>
+      <StyledArticle data-wide={isWide} style={cssVars} id={id}>
+        {content}
       </StyledArticle>
     );
   }
@@ -83,13 +87,11 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
       : article.copyright?.processors;
   return (
     <StyledArticle style={cssVars}>
-      <LayoutItem>
-        <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
-          {title}
-        </Heading>
-        <StyledIntroduction>{introduction}</StyledIntroduction>
-      </LayoutItem>
-      <LayoutItem>{content}</LayoutItem>
+      <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
+        {title}
+      </Heading>
+      <StyledIntroduction>{introduction}</StyledIntroduction>
+      {content}
       <ArticleByline
         authors={authors}
         suppliers={article.copyright?.rightsholders}

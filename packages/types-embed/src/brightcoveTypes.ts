@@ -54,6 +54,7 @@ export interface BrightcoveApiType {
       src?: string;
     };
   };
+  projection?: string;
   long_description?: string | null;
   description?: string | null;
   custom_fields: Record<string, string>;

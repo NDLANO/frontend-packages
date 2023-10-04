@@ -210,10 +210,10 @@ const messages = {
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
       showVideo: 'Sjå video',
-      concept: 'Sjå forklaring',
+      concept: 'Begrepsforklaring',
       gridView: 'Gallerivisning',
       listView: 'Listevisning',
-      gloss: 'Sjå glose',
+      gloss: 'Glose',
     },
     contextModal: {
       button: '+ {{count}} fleire stader',

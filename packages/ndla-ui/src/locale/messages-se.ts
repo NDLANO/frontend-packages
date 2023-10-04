@@ -210,10 +210,10 @@ const messages = {
       notionsHeading: 'Doabačilgehus',
       notionsRemove: 'Sihko',
       showVideo: 'Geahča video',
-      concept: 'Geahča čilgehusa',
+      concept: 'Begrepsforklaring',
       gridView: 'Galleriijačájáhus',
       listView: 'Čájáhus listtu vuođul',
-      gloss: 'Geahča sánit',
+      gloss: 'Glose',
     },
     contextModal: {
       button: '+ {{count}} eanet sajiin',

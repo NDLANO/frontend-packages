@@ -1294,6 +1294,18 @@ const messages = {
       noFavorites: 'Du har ingen favorittfag!',
       goToAllSubjects: 'Gå til alle fag',
     },
+    arena: {
+      title: 'Arena',
+      notification: {
+        title: 'Varslinger',
+        description:
+          'Velkommen til NDLAs Arena. Her kan du diskutere, dele og samarbeide med andre lærere fra hele Norge. Du finner forum for ulike fag og tema.',
+        markAll: 'Marker alle som lest',
+        commentedOn: 'svarte på ditt innlegg',
+        showAll: 'Se alle varslinger',
+        myNotification: 'Mine varslinger',
+      },
+    },
   },
   snackbar: {
     close: 'Lukk melding',

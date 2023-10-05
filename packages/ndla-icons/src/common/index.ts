@@ -65,6 +65,8 @@ export { default as LinkedIn } from './LinkedIn';
 export { default as LogIn } from './LogIn';
 export { default as LogOut } from './LogOut';
 export { default as Menu } from './Menu';
+export { default as NotificationsFilled } from './NotificationsFilled';
+export { default as NotificationsUnfilled } from './NotificationsUnfilled';
 export { default as NotionFlip } from './NotionFlip';
 export { default as PanoramaPhotosphere } from './PanoramaPhotosphere';
 export { default as Pause } from './Pause';

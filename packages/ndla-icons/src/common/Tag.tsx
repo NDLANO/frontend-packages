@@ -10,9 +10,9 @@
 import Icon, { Props } from '../Icon';
 
 const Tag = (props: Props) => (
-  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
+  <Icon viewBox="0 0 21 21" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M20 10V8h-4V4h-2v4h-4V4H8v4H4v2h4v4H4v2h4v4h2v-4h4v4h2v-4h4v-2h-4v-4h4zm-6 4h-4v-4h4v4z" />
+      <path d="M12 19.6c-.3.3-.7.4-1.1.4-.4 0-.8-.1-1.1-.4L.4 10.2c-.1-.2-.3-.3-.3-.5L0 9V1.5A1.5 1.5 0 0 1 1.5 0h8.2l.6.4 9.3 9.3c.3.4.4.7.4 1.2 0 .4-.1.8-.4 1L12 19.7ZM4 5.4c.4 0 .7-.1 1-.4.2-.2.3-.5.3-.9 0-.3-.1-.7-.4-1-.2-.2-.5-.3-.9-.3-.3 0-.6.1-.9.4-.2.2-.4.5-.4.9s.2.7.4 1c.3.2.6.3 1 .3Z" />
     </g>
   </Icon>
 );

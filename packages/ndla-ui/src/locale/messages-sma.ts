@@ -1169,6 +1169,11 @@ const messages = {
         },
       },
     },
+    iconMenu: {
+      folders: 'Mapper',
+      tags: 'Knagger',
+      subjects: 'Favorittfag',
+    },
     tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknagger',

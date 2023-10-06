@@ -1167,6 +1167,11 @@ const messages = {
         },
       },
     },
+    iconMenu: {
+      folders: 'Folders',
+      tags: 'Tags',
+      subjects: 'Favourite subjects',
+    },
     tagList: 'Tags',
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',

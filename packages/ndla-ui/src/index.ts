@@ -241,8 +241,7 @@ export { default as CopyParagraphButton, CopyParagraphButtonV2 } from './CopyPar
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 
-export { Notion, ConceptNotion } from './Notion';
-export type { NotionVisualElementType, ConceptNotionType } from './Notion';
+export { Notion } from './Notion';
 
 export { BannerCard } from './BannerCard';
 export { Folder, FolderInput } from './MyNdla';

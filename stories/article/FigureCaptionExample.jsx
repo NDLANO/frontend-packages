@@ -8,7 +8,7 @@
 import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { useTranslation } from 'react-i18next';
-import { FigureCaption, FigureLicenseDialog } from '@ndla/ui';
+import { FigureCaption } from '@ndla/ui';
 import { ButtonV2 } from '@ndla/button';
 
 function FigureCaptionExample({
@@ -46,18 +46,8 @@ function FigureCaptionExample({
       authors={authors}
       link={link}
     >
-      <FigureLicenseDialog
-        id={id}
-        authors={authors}
-        license={license}
-        origin="https://www.wikimedia.com"
-        title="Mann med lupe"
-        locale="nb"
-        messages={messages}
-      >
-        <ButtonV2 variant="outline">{t('license.copyTitle')}</ButtonV2>
-        {messages.download && <ButtonV2 variant="outline">{messages.download}</ButtonV2>}
-      </FigureLicenseDialog>
+      <ButtonV2 variant="outline">{t('license.copyTitle')}</ButtonV2>
+      {messages.download && <ButtonV2 variant="outline">{messages.download}</ButtonV2>}
     </FigureCaption>
   );
 }

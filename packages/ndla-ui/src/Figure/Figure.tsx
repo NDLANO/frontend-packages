@@ -98,16 +98,6 @@ export const FigureCaption = ({
   );
 };
 
-export interface FigureLicense {
-  short: string;
-  title: string;
-  userFriendlyTitle: string;
-  description: string;
-  rights: string[];
-  linkText?: string;
-  url?: string;
-}
-
 interface FigureCaptionProps {
   className?: string;
   figureId: string;

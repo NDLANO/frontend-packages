@@ -42,8 +42,6 @@ export { default as Table, TableStyling } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
 
-export { createUniversalPortal } from './utils/createUniversalPortal';
-
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as Masthead, getMastheadHeight, useMastheadHeight, SkipToMainContent } from './Masthead';
@@ -97,14 +95,7 @@ export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter
 
 export { Footer, EditorName, FooterText } from './Footer';
 
-export {
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-  FigureExpandButton,
-  FigureOpenDialogButton,
-  FigureBylineExpandButton,
-} from './Figure';
+export { Figure, FigureCaption, FigureExpandButton, FigureOpenDialogButton, FigureBylineExpandButton } from './Figure';
 export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';

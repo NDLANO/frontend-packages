@@ -1166,6 +1166,11 @@ const messages = {
         },
       },
     },
+    iconMenu: {
+      folders: 'Mapper',
+      tags: 'Knagger',
+      subjects: 'Favorittfag',
+    },
     tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',
     tags_plural: '{{count}} fáddágilkorat',

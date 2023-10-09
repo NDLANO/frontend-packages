@@ -89,9 +89,10 @@ storiesOf('Components', module)
       </StoryIntro>
       <StoryBody>
         <FigureImage
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          alt=""
-          src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
+          embedData={{
+            caption: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
+            alt: '',
+          }}
         />
       </StoryBody>
     </div>
@@ -129,7 +130,7 @@ storiesOf('Components', module)
           </p>
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
-            <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" type="right" />
+            <FigureImage embedData={{ alt: '', align: 'right' }} />
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
               filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
@@ -393,9 +394,11 @@ storiesOf('Components', module)
           <div className="c-details__content">
             f(x) = x<sup>2</sup> + 10x - 20
             <FigureImage
-              caption="Eksempel på graf"
-              alt="Matematisk graf"
-              src="https://api.ndla.no/image-api/raw/oppg_2_2_a_vekstfart_spraknoytral.png"
+              type="math"
+              embedData={{
+                caption: 'Eksempel på graf',
+                alt: 'Matematisk graf',
+              }}
             />
           </div>
         </details>

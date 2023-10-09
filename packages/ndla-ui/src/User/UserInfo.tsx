@@ -44,9 +44,15 @@ export const UserInfo = ({ user }: Props) => {
         </span>
       }
       <ShortInfoDiv>
-        {t('user.username')}: {user.uid}
-        {t('user.name')}: {user.displayName}
-        {t('user.mail')}: {user.mail?.join(', ')}
+        <div>
+          {t('user.username')}: {user.uid}
+        </div>
+        <div>
+          {t('user.name')}: {user.displayName}
+        </div>
+        <div>
+          {t('user.mail')}: {user.mail?.join(', ')}
+        </div>
         {user.preferredLanguage && (
           <div>
             {t('user.preferredLanguage')}:{t(`languages.${user.preferredLanguage}`)}

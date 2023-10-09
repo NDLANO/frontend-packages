@@ -9,7 +9,7 @@ import * as editorIcons from '@ndla/icons/editor';
 import * as actionIcons from '@ndla/icons/action';
 import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { Aside, FactBox, Logo, LayoutItem, AudioPlayer, OneColumn, CreatedBy } from '@ndla/ui';
+import { Aside, FactBox, Logo, LayoutItem, OneColumn, CreatedBy } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
@@ -18,7 +18,6 @@ import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import DrawerExample from './atoms/DrawerExample';
-import AudioExample from './article/AudioExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
 
@@ -75,149 +74,6 @@ const floatVideo = (left) => (
 );
 
 storiesOf('Components', module)
-  .add('Image', () => (
-    <div>
-      <StoryIntro title="Bilde">
-        <p>
-          Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og høyrestilt. Bilder kan være i
-          størrelsene ekstra liten, liten, medium og stor (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes
-          på klikk.
-        </p>
-        <p>
-          Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk bildet» som gjør at brukeren får opp
-          lisensboksen for bildet. Små bilder kan være uten metainfo og lisensinfo.
-        </p>
-        <p>Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned fullversjonen av bildet.</p>
-      </StoryIntro>
-      <StoryBody>
-        <h2>Fullbredde</h2>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <FigureImage
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          alt="Forstørrelsesglass"
-          src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
-        />
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <h2>Flyt til venstre</h2>
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
-          av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-        </p>
-        <FigureImage
-          type="left"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          alt="Forstørrelsesglass"
-          src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
-        />
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-
-        <h2>Flyt til høyre</h2>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <FigureImage
-          type="right"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          alt="Forstørrelsesglass"
-          src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
-        />
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <h2>Flyt til høyre, liten versjon</h2>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <FigureImage
-          type="small-right"
-          hasHiddenCaption
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          alt="Forstørrelsesglass"
-          src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
-        />
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <h2>Flyt til venstre, liten versjon</h2>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <FigureImage
-          type="small-left"
-          hasHiddenCaption
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          alt="Forstørrelsesglass"
-          src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
-        />
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <h2>Flyt til høyre, ekstra liten versjon</h2>
-        <FigureImage
-          type="xsmall-right"
-          hasHiddenCaption
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          alt="Forstørrelsesglass"
-          src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
-        />
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-      </StoryBody>
-    </div>
-  ))
   .add('Visual element below intro', () => (
     <div>
       <StoryIntro title="Visuelt element under ingress">
@@ -238,53 +94,6 @@ storiesOf('Components', module)
           src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
         />
       </StoryBody>
-    </div>
-  ))
-  .add('Audio player', () => (
-    <div>
-      <StoryIntro title="Lydavspiller" />
-      <OneColumn>
-        <LayoutItem layout="extend">
-          <h2 className="u-heading">Podcast</h2>
-          <AudioExample showSubtitle showImage showDescription showTextVersion />
-          <AudioExample showSubtitle showDescription showTextVersion />
-          <h2 className="u-heading">Lydavspiller med tekstversjon</h2>
-          <AudioExample showTextVersion />
-          <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
-          <AudioExample />
-          <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>
-          <div className="c-article c-article--clean">
-            <table>
-              <thead>
-                <tr>
-                  <th>Forenklet</th>
-                  <th>Trad.</th>
-                  <th>Pinyin</th>
-                  <th>Ordkl.</th>
-                  <th>Oversettelse</th>
-                  <th>Uttale</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>旅游</td>
-                  <td>旅遊</td>
-                  <td>lǚyóu</td>
-                  <td>v/n</td>
-                  <td>å reise (rundt); å dra på tur; reise(liv)</td>
-                  <td>
-                    <AudioPlayer
-                      src="https://api.staging.ndla.no/audio/files/shu3jia4.mp3"
-                      speech
-                      title="Oversettelse"
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </LayoutItem>
-      </OneColumn>
     </div>
   ))
   .add('Text in frame', () => (

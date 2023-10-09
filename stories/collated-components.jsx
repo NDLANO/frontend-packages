@@ -28,11 +28,6 @@ import MastheadWithTopicMenu from './molecules/mastheads';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
-import RelatedArticleListExample, {
-  RelatedArticleExerciseList,
-  RelatedArticleMixedList,
-  RelatedArticleExternal,
-} from './article/RelatedArticleListExample';
 import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 
@@ -533,29 +528,6 @@ storiesOf('Patterns', module)
         </ComponentInfo>
       </StoryBody>
     </div>
-  ))
-
-  .add('Related content', () => (
-    <I18nTranslate>
-      {(t) => (
-        <div>
-          <StoryIntro title="Relatert innhold">
-            <p>Kan brukes i slutten av artikler, eller midt i.</p>
-          </StoryIntro>
-          <StoryBody>
-            <h2 className="u-heading">Oppgave og aktivitet eksempel</h2>
-            <RelatedArticleExerciseList t={t} />
-            <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
-            <RelatedArticleMixedList t={t} />
-            <h2 className="u-heading">Eksterne ressurser eksempel</h2>
-            <p>Dersom eksternt relatert innhold ikke har metatekst, skal url vise.</p>
-            <RelatedArticleExternal t={t} />
-            <h2 className="u-heading">Eksempel med vis mer</h2>
-            <RelatedArticleListExample t={t} />
-          </StoryBody>
-        </div>
-      )}
-    </I18nTranslate>
   ))
   .add('Footer', () => {
     const privacyLinks = [

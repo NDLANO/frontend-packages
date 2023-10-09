@@ -32,7 +32,6 @@
   ],
   "dependencies": {
     "@ndla/accordion": "^2.2.24",
-    "@ndla/article-scripts": "^3.0.21",
     "@ndla/button": "^11.0.9",
     "@ndla/carousel": "^4.0.2",
     "@ndla/core": "^4.1.8",

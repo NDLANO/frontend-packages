@@ -7,7 +7,6 @@
  */
 
 // N.B These components is used to render static markup serverside
-// Any interactivty is added by scripts located in the ndla-article-scripts package
 
 import { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';

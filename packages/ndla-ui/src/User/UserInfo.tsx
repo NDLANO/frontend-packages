@@ -27,10 +27,6 @@ const ShortInfoDiv = styled.div`
   margin: 2rem auto;
 `;
 
-const StyledLoggedInAsText = styled.p`
-  margin: 0 0;
-`;
-
 const isTeacher = (affiliations: FeideUserApiType['eduPersonAffiliation']) => affiliations.includes('employee');
 
 export const UserInfo = ({ user }: Props) => {
@@ -41,11 +37,11 @@ export const UserInfo = ({ user }: Props) => {
   return (
     <StyledComponentContainer>
       {
-        <StyledLoggedInAsText>
+        <span>
           {t('user.loggedInAs', {
             role: t(`user.role.${isTeacher(parsedUser.eduPersonAffiliation) ? 'employee' : 'student'}`),
           })}
-        </StyledLoggedInAsText>
+        </span>
       }
       <ShortInfoDiv>
         <div data-hj-suppress>

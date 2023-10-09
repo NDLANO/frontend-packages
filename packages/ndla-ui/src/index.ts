@@ -140,7 +140,7 @@ export { MessageBox, MessageBoxTag, MessageBanner } from './Messages';
 
 export { ResourceBox } from './ResourceBox';
 
-export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
+export { default as AudioPlayer } from './AudioPlayer';
 
 export { NavigationBox, NavigationTopicAbout } from './Navigation';
 

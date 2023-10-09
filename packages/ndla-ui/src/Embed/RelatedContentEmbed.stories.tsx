@@ -351,24 +351,10 @@ const learningResourceMeta: RelatedContentMetaData = {
   },
 };
 
-// const embedData: RelatedContentEmbedData = {
-//   resource: 'related-content',
-//   articleId:
-//   resourceId: '61181',
-//   size: 'full',
-//   align: '',
-//   alt: 'Tenåringsjente med lyse fletter slenger på håret. Foto. ',
-//   caption: 'Modellklarert.',
-//   url: 'https://api.test.ndla.no/image-api/v2/images/61181',
-// };
-
 const meta: Meta<typeof RelatedContentEmbed> = {
   title: 'Components/Embeds/RelatedContentEmbed',
   component: RelatedContentEmbed,
   tags: ['autodocs'],
-  // args: {
-  //   previewAlt: true,
-  // },
   decorators: [
     (Story) => (
       <div className="o-wrapper">

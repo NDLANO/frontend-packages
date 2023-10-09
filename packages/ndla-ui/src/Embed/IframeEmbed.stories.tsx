@@ -137,6 +137,21 @@ export const OpensInNewWindow: StoryObj<typeof IframeEmbed> = {
   },
 };
 
+export const NoDimensions: StoryObj<typeof IframeEmbed> = {
+  args: {
+    embed: {
+      resource: 'iframe',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        width: undefined,
+        height: undefined,
+      },
+      data: opensInnewMetaData,
+    },
+  },
+};
+
 export const OpensInNewWindowFailed: StoryObj<typeof IframeEmbed> = {
   args: {
     embed: {

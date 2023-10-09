@@ -44,27 +44,21 @@ export const UserInfo = ({ user }: Props) => {
         </span>
       }
       <ShortInfoDiv>
-        <div data-hj-suppress>
-          {t('user.username')}: {user.uid}
-        </div>
-        <div data-hj-suppress>
-          {t('user.name')}: {user.displayName}
-        </div>
-        <div data-hj-suppress>
-          {t('user.mail')}: {user.mail?.join(', ')}
-        </div>
+        {t('user.username')}: {user.uid}
+        {t('user.name')}: {user.displayName}
+        {t('user.mail')}: {user.mail?.join(', ')}
         {user.preferredLanguage && (
-          <div data-hj-suppress>
+          <div>
             {t('user.preferredLanguage')}:{t(`languages.${user.preferredLanguage}`)}
           </div>
         )}
         {user.mobile && (
-          <div data-hj-suppress>
+          <div>
             {t('user.mobile')}: {user.mobile}
           </div>
         )}
       </ShortInfoDiv>
-      <InfoList data-hj-suppress>
+      <InfoList>
         {parsedUser.organizations.map((org) => (
           <li key={org.id}>
             {`${org.displayName}${org.membership.primarySchool ? ` (${t('user.primarySchool')})` : ''}`}
@@ -87,7 +81,7 @@ export const UserInfo = ({ user }: Props) => {
         ))}
       </InfoList>
       {parsedUser.grepCodes.length > 0 && (
-        <InfoList data-hj-suppress>
+        <InfoList>
           <li key="grepCodes">
             {t('user.groupTypes.grepCode')}
             <InfoList>

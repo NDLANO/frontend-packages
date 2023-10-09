@@ -19,8 +19,16 @@ interface Props {
   user: FeideUserApiType;
 }
 
+const StyledComponentContainer = styled.div`
+  max-width: 700px;
+`;
+
 const ShortInfoDiv = styled.div`
   margin: 2rem auto;
+`;
+
+const StyledLoggedInAsText = styled.p`
+  margin: 0 0;
 `;
 
 const isTeacher = (affiliations: FeideUserApiType['eduPersonAffiliation']) => affiliations.includes('employee');
@@ -31,37 +39,35 @@ export const UserInfo = ({ user }: Props) => {
   const parsedUser = parseUserObject(user);
 
   return (
-    <div>
+    <StyledComponentContainer>
       {
-        <p>
+        <StyledLoggedInAsText>
           {t('user.loggedInAs', {
             role: t(`user.role.${isTeacher(parsedUser.eduPersonAffiliation) ? 'employee' : 'student'}`),
           })}
-        </p>
+        </StyledLoggedInAsText>
       }
-
       <ShortInfoDiv>
         <div data-hj-suppress>
-          {t('user.username')}: <b>{user.uid}</b>
+          {t('user.username')}: {user.uid}
         </div>
         <div data-hj-suppress>
-          {t('user.name')}: <b>{user.displayName}</b>
+          {t('user.name')}: {user.displayName}
         </div>
         <div data-hj-suppress>
-          {t('user.mail')}: <b>{user.mail?.join(', ')}</b>
+          {t('user.mail')}: {user.mail?.join(', ')}
         </div>
         {user.preferredLanguage && (
           <div data-hj-suppress>
-            {t('user.preferredLanguage')}: <b>{t(`languages.${user.preferredLanguage}`)}</b>
+            {t('user.preferredLanguage')}:{t(`languages.${user.preferredLanguage}`)}
           </div>
         )}
         {user.mobile && (
           <div data-hj-suppress>
-            {t('user.mobile')}: <b>{user.mobile}</b>
+            {t('user.mobile')}: {user.mobile}
           </div>
         )}
       </ShortInfoDiv>
-
       <InfoList data-hj-suppress>
         {parsedUser.organizations.map((org) => (
           <li key={org.id}>
@@ -96,6 +102,6 @@ export const UserInfo = ({ user }: Props) => {
           </li>
         </InfoList>
       )}
-    </div>
+    </StyledComponentContainer>
   );
 };

@@ -7,9 +7,9 @@
  */
 
 import { CSSProperties, ReactNode, useMemo } from 'react';
-import { breakpoints, fonts, mq, spacing, spacingUnit } from '@ndla/core';
+import { spacing, spacingUnit } from '@ndla/core';
 import styled from '@emotion/styled';
-import { Heading } from '@ndla/typography';
+import { Heading, Text } from '@ndla/typography';
 import { Article } from '../types';
 import { ArticleByline } from '../Article';
 import { useMastheadHeight } from '../Masthead';
@@ -56,18 +56,6 @@ const StyledArticle = styled.article`
   }
 `;
 
-const StyledIntroduction = styled.div`
-  font-weight: ${fonts.weight.light};
-  font-family: ${fonts.sans};
-  margin-top: ${spacing.small};
-  ${fonts.sizes('22px', '30px')};
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin-top: ${spacing.mediumlarge};
-    ${fonts.sizes('26px', '36px')};
-  }
-`;
-
 export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => {
   const { height = 0 } = useMastheadHeight();
   const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` } as unknown as CSSProperties), [height]);
@@ -87,10 +75,10 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
       : article.copyright?.processors;
   return (
     <StyledArticle style={cssVars}>
-      <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
+      <Heading id={id} headingStyle="h1-resource" element="h1" margin="normal" tabIndex={-1}>
         {title}
       </Heading>
-      <StyledIntroduction>{introduction}</StyledIntroduction>
+      <Text textStyle="ingress">{introduction}</Text>
       {content}
       <ArticleByline
         authors={authors}

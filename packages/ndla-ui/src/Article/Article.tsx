@@ -14,7 +14,7 @@ import styled from '@emotion/styled';
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
 import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
-import { Heading } from '@ndla/typography';
+import { Heading, Text } from '@ndla/typography';
 import { Article as ArticleType } from '../types';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
@@ -81,10 +81,10 @@ export const ArticleIntroduction = ({
   },
 }: ArticleIntroductionProps) => {
   if (typeof children === 'string') {
-    return <div className="article_introduction">{parse(renderMarkdown(children))}</div>;
+    return <Text textStyle="ingress">{parse(renderMarkdown(children))}</Text>;
   }
   if (children) {
-    return <div className="article_introduction">{children}</div>;
+    return <Text textStyle="ingress">{children}</Text>;
   }
   return null;
 };

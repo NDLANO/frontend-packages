@@ -21,7 +21,6 @@ import {
 import { Translation as I18nTranslate } from 'react-i18next';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
-import ArticleLoader from './article/ArticleLoader';
 import { mockFooterLinks } from '../dummydata/index';
 import MastheadWithTopicMenu from './molecules/mastheads';
 import Resources from './molecules/resources';
@@ -180,11 +179,6 @@ storiesOf('Patterns', module)
       <BreadcrumbWithHeader />
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
       <BreadcrumbWithHome />
-    </Center>
-  ))
-  .add('Subject description', () => (
-    <Center>
-      <ArticleLoader articleId="13661" reset />
     </Center>
   ))
   .add('Error message', () => (

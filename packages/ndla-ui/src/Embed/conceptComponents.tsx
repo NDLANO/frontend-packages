@@ -7,13 +7,12 @@
  */
 
 import { forwardRef, ReactNode, RefAttributes } from 'react';
-import { AudioMeta, AudioMetaData, ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
+import { ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { parseMarkdown } from '@ndla/util';
 import styled from '@emotion/styled';
-import { NotionDialogContent, NotionDialogText } from '@ndla/notion';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { Copyright } from '../types';
 import ImageEmbed from './ImageEmbed';
@@ -46,9 +45,23 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
   inPopover?: boolean;
   tags?: string[];
   subjects?: string[];
+  headerButtons?: ReactNode;
   heartButton?: HeartButtonType;
   conceptHeartButton?: ReactNode;
 }
+
+const NotionDialogText = styled.div`
+  font-weight: ${fonts.weight.normal};
+  ${fonts.sizes('18px', 1.3)};
+  color: ${colors.text.primary};
+  font-family: ${fonts.sans};
+`;
+
+const NotionDialogContent = styled.div`
+  padding-bottom: ${spacing.normal};
+  display: flex;
+  flex-direction: column;
+`;
 
 const ContentPadding = styled.div`
   padding: ${spacing.normal};
@@ -125,6 +138,12 @@ const StyledNotionDialogContent = styled(NotionDialogContent)`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.xsmall};
+  align-items: center;
+`;
+
 const StyledList = styled.ul`
   display: flex;
   gap: ${spacing.small};
@@ -158,6 +177,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       conceptHeartButton,
       conceptType,
       glossData,
+      headerButtons,
       ...rest
     },
     ref,
@@ -171,7 +191,10 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
             <h1>
               {title.title} {<small>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
-            {closeButton}
+            <ButtonWrapper>
+              {headerButtons}
+              {closeButton}
+            </ButtonWrapper>
           </NotionHeader>
           {conceptType !== 'gloss' ? (
             <>

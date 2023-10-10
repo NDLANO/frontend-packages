@@ -20,7 +20,6 @@ import VideoSearcher from '../molecules/videoSearch';
 import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
-import StructureExample from './StructureExample';
 import MultiSelectDropdownExample from './MultiSelectDropdownExample';
 import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
@@ -159,18 +158,6 @@ storiesOf('Other/Production system', module)
       <StoryBody>
         <HowtoExamples />
       </StoryBody>
-    </div>
-  ))
-  .add('Page structure and taxonomy', () => (
-    <div>
-      <StoryIntro title="Sidestruktur og taksonomi">
-        <p>Emnevelger for taksonomi</p>
-      </StoryIntro>
-      <Center>
-        <StructureExample />
-        <h3>Strukturredigering</h3>
-        <StructureExample structureEditor />
-      </Center>
     </div>
   ))
   .add('Loading', () => (

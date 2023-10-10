@@ -8,7 +8,8 @@
 
 import { Meta, StoryObj } from '@storybook/react';
 import { ImageEmbedData } from '@ndla/types-embed';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/build/image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
+import { ReactNode } from 'react';
 import ImageEmbed from './ImageEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
 import StoryFavoriteButton from '../../../../stories/StoryFavoriteButton';
@@ -81,6 +82,7 @@ const metaData: IImageMetaInformationV3 = {
   },
 };
 
+/** Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og høyrestilt. Bilder kan være i størrelsene ekstra liten, liten, medium og stor (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes på klikk. */
 const meta: Meta<typeof ImageEmbed> = {
   title: 'Components/Embeds/ImageEmbed',
   component: ImageEmbed,
@@ -118,6 +120,8 @@ export const ImageEmbedStory: StoryObj<typeof ImageEmbed> = {
   },
 };
 
+ImageEmbedStory.storyName = 'ImageEmbed';
+
 export const Failed: StoryObj<typeof ImageEmbed> = {
   args: {
     heartButton: StoryFavoriteButton,
@@ -129,4 +133,167 @@ export const Failed: StoryObj<typeof ImageEmbed> = {
   },
 };
 
-ImageEmbedStory.storyName = 'ImageEmbed';
+export const FullWidth: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: embedData,
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+const TextWrapper = ({ children }: { children: ReactNode }) => (
+  <>
+    <p>
+      Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig av
+      at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+    </p>
+    {children}
+
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+  </>
+);
+
+export const FloatLeft: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        align: 'left',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatRight: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        align: 'right',
+      },
+      data: metaData,
+    },
+  },
+
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatRightSmall: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        size: 'small',
+        align: 'right',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatLeftSmall: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        size: 'small',
+        align: 'left',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatRightExtraSmall: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        size: 'xsmall',
+        align: 'right',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatLeftExtraSmall: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        size: 'xsmall',
+        align: 'left',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};

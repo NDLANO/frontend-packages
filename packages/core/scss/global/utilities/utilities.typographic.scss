@@ -22,7 +22,6 @@
 
   @include mq(tablet) {
     font-weight: $font-weight-light;
-    margin-top: $spacing * 1.5;
     @include font-size(26px, 36px);
   }
   span {

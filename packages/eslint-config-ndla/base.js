@@ -45,7 +45,15 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
-        patterns: ['@ndla/*/lib/**', '@ndla/*/lib', '@ndla/*/es/**', '@ndla/*/es', '@ndla/*/src/**', '@ndla/*/src'],
+        patterns: [
+          '@ndla/*/lib/**',
+          '@ndla/*/lib',
+          '@ndla/*/es/**',
+          '@ndla/*/es',
+          '@ndla/*/src/**',
+          '@ndla/*/src',
+          '@ndla/*/build/*',
+        ],
       },
     ],
     'no-console': ['warn', { allow: ['warn', 'error'] }],

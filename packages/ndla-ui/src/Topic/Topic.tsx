@@ -17,12 +17,12 @@ import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { EmbedMetaData } from '@ndla/types-embed';
+import { Heading } from '@ndla/typography';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
-import { Heading } from '../Typography';
 import { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
 
 type InvertItProps = {

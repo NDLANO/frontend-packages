@@ -73,10 +73,6 @@ export type NotionProps = {
   children?: ReactNode;
 };
 
-const InlineDiv = styled.div`
-  display: inline;
-`;
-
 const Notion = ({ id, labels = [], text, title, visualElement, imageElement, children }: NotionProps) => {
   const { t } = useTranslation();
 
@@ -86,11 +82,8 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
         {imageElement}
         {visualElement}
         <TextWrapper hasVisualElement={!!(imageElement || visualElement)}>
-          <InlineDiv>
-            <b>{title.trim()}</b>
-            {' - '}
-            {text}
-          </InlineDiv>
+          <b>{title.trim()}</b>
+          {text}
           {!!labels.length && (
             <LabelsContainer>
               {t('searchPage.resultType.notionLabels')}

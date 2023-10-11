@@ -93,11 +93,10 @@ const StyledButton = styled.button`
 `;
 
 export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Props) => {
-  const parsedContent = useMemo(
-    () =>
-      embed.status === 'success' && embed.data.concept.content ? parse(embed.data.concept.content.content) : undefined,
-    [embed],
-  );
+  const parsedContent = useMemo(() => {
+    if (embed.status === 'error' || !embed.data.concept.content) return undefined;
+    return parse(embed.data.concept.content.content);
+  }, [embed]);
   if (embed.status === 'error' && embed.embedData.type === 'inline') {
     return <span>{embed.embedData.linkText}</span>;
   } else if (embed.status === 'error') {

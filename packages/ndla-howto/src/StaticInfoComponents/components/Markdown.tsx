@@ -3,8 +3,22 @@ import { Table } from '@ndla/ui';
 const markdownSyntax = [
   { md: '**Bold**', html: <b>Bold</b> },
   { md: '*Italics*', html: <i>Italics</i> },
-  { md: 'super^script^', html: <sup>super^script^</sup> },
-  { md: 'sub~script~', html: <sub>sub~script</sub> },
+  {
+    md: 'super^script^',
+    html: (
+      <span>
+        super<sup>script</sup>
+      </span>
+    ),
+  },
+  {
+    md: 'sub~script~',
+    html: (
+      <span>
+        sub<sub>script</sub>
+      </span>
+    ),
+  },
 ];
 
 const Markdown = () => (

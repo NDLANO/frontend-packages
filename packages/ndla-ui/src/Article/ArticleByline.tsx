@@ -62,7 +62,7 @@ type Props = {
   locale?: string;
   footnotes?: FootNote[];
   accordionHeaderVariant?: AccordionHeaderVariants;
-  isFrontpageArticle?: boolean;
+  displayByline?: boolean;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {

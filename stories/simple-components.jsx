@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import * as licenseIcons from '@ndla/icons/licenses';
@@ -13,7 +11,6 @@ import { Aside, FactBox, Logo, LayoutItem, OneColumn, CreatedBy } from '@ndla/ui
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
-import FigureWithLicense from './article/FigureWithLicense';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
@@ -34,45 +31,6 @@ const SourceList = styled.div`
   }
 `;
 
-const floatVideo = (left) => (
-  <Fragment>
-    <h2 className="u-heading">{`Eksempel ${!left ? 'høyrestilt' : 'venstrestilt'}`}</h2>
-    <p>
-      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
-      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-    </p>
-
-    <FigureWithLicense
-      type={left ? 'left' : 'right'}
-      resizeIframe
-      caption="Utholdenhet - animasjon av oksygentransporten"
-    >
-      <iframe
-        title="Video: Utholdenhet - animasjon av oksygentransporten"
-        height="270"
-        width="480"
-        frameBorder="0"
-        src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
-        // eslint-disable-next-line react/no-unknown-property
-        allowFullScreen
-      />
-    </FigureWithLicense>
-
-    <p>
-      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
-      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-    </p>
-    <p>
-      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
-      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-    </p>
-    <p>
-      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
-      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-    </p>
-  </Fragment>
-);
-
 storiesOf('Components', module)
   .add('Visual element below intro', () => (
     <div>
@@ -89,9 +47,10 @@ storiesOf('Components', module)
       </StoryIntro>
       <StoryBody>
         <FigureImage
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          alt=""
-          src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
+          embedData={{
+            caption: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
+            alt: '',
+          }}
         />
       </StoryBody>
     </div>
@@ -129,7 +88,7 @@ storiesOf('Components', module)
           </p>
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
-            <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" type="right" />
+            <FigureImage embedData={{ alt: '', align: 'right' }} />
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
               filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
@@ -185,82 +144,6 @@ storiesOf('Components', module)
           <p className="c-componentinfo__status-label--warn">Status: Inaktiv</p>
           <div className="c-bodybox">En tekstboks i midten av teksten som ikke fyller bredden.</div>
         </LayoutItem>
-      </StoryBody>
-    </div>
-  ))
-  .add('Embedded content', () => (
-    <div>
-      <StoryIntro title="Embedded innhold (Youtube, brightcove, HP5 osv.)">
-        <p>
-          Embedded innhold skal bruke Figure komponenten (må ikke være iframe):
-          <code>{`<Figure>\n  <iframe ... />\n</Figure>`}</code>
-        </p>
-        <p>
-          Om det er en iframe der resize script skal kjøres må resizeIframe settes til true
-          <code>{`<Figure resizeIframe>\n  <iframe ... />\n</Figure>`}</code>
-        </p>
-        <p>
-          Om det er satt høyde og bredde på iframen (som vist under) vil den beholde forholdet mellom høyde og bredde
-          (så lenge resize scriptet er kjørt).
-          <code>{`<iframe width="400" height="300" ... />`}</code>
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe hasHiddenCaption>
-          <iframe
-            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
-            title="Title"
-            width="600"
-            height="338"
-          />
-        </FigureWithLicense>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <h2 className="u-heading">Iframe uten satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe hasHiddenCaption>
-          <iframe src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed" title="Video without dimensions" />
-        </FigureWithLicense>
-
-        <h2 className="u-heading">Embedded innhold (brightcove) med lisens og caption</h2>
-        <FigureWithLicense resizeIframe caption="Utholdenhet - animasjon av oksygentransporten">
-          <iframe
-            title="Video: Utholdenhet - animasjon av oksygentransporten"
-            height="270"
-            width="480"
-            frameBorder="0"
-            src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
-            // eslint-disable-next-line react/no-unknown-property
-            allowFullScreen
-          />
-        </FigureWithLicense>
-        {floatVideo(true)}
-        {floatVideo(false)}
-        <h2 className="u-heading">Embedded innhold med høyrekolonne</h2>
-        <Aside>
-          <h1>Høyrespalte</h1>
-          <p>Høyrespalten skal fases ut.</p>
-          <p>
-            I en midlertidig fase under flytting av innhold fra gammelt til nytt nettsted kan høyrespalten likevel
-            brukes. Innholdet skal etter hvert flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet innhold
-            kan bakes inn i artikkelteksten, eller slettes.
-          </p>
-          <p>Om artikkelen har et bilde under ingressen, må høyrespalten plasseres under denne.</p>
-          <p>På mobil skal høyrespalten alltid havne på slutten av artikkelen.</p>
-        </Aside>
-        <p>
-          Dette er måte å vise embedded innhold sidestilt med høyrekolonne. Denne varianten skal kun brukes om det er
-          nødvendig. Visningen fases bort når høyrespalte fases bort.
-        </p>
-        <FigureWithLicense resizeIframe noCaption>
-          <iframe src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed" title="Video without dimensions" />
-        </FigureWithLicense>
       </StoryBody>
     </div>
   ))
@@ -393,9 +276,11 @@ storiesOf('Components', module)
           <div className="c-details__content">
             f(x) = x<sup>2</sup> + 10x - 20
             <FigureImage
-              caption="Eksempel på graf"
-              alt="Matematisk graf"
-              src="https://api.ndla.no/image-api/raw/oppg_2_2_a_vekstfart_spraknoytral.png"
+              type="math"
+              embedData={{
+                caption: 'Eksempel på graf',
+                alt: 'Matematisk graf',
+              }}
             />
           </div>
         </details>

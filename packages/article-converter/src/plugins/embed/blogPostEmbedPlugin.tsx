@@ -24,9 +24,8 @@ export const blogPostEmbedPlugin: PluginType = (element, _, opts) => {
       url={url}
       size={size}
       path={opts.path}
-      alt={alt}
       metaImage={{
-        alt: '',
+        alt: alt ? alt : data.status === 'success' ? data.data.metaImage?.alttext.alttext ?? '' : '',
         url: data.status === 'success' ? data.data.metaImage?.image.imageUrl ?? errorSvgSrc : errorSvgSrc,
       }}
     />

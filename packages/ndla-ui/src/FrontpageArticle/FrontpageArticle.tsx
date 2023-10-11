@@ -88,7 +88,7 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
       </Heading>
       <StyledIntroduction>{introduction}</StyledIntroduction>
       {content}
-      <ArticleByline accordionHeaderVariant={'white'} licenseBox={licenseBox} isFrontpageArticle />
+      <ArticleByline accordionHeaderVariant={'white'} licenseBox={licenseBox} displayByline={false} />
     </StyledArticle>
   );
 };

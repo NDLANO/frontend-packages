@@ -120,7 +120,7 @@ const ArticleByline = ({
   published,
   locale,
   accordionHeaderVariant = 'blue',
-  isFrontpageArticle = false,
+  displayByline = true,
 }: Props) => {
   const { t } = useTranslation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);

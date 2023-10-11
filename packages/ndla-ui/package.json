@@ -57,8 +57,7 @@
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^2.2.3",
     "react-select": "^5.7.5",
-    "react-swipeable": "^7.0.0",
-    "remarkable": "^2.0.1"
+    "react-swipeable": "^7.0.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

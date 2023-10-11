@@ -107,7 +107,6 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-textarea-autosize": "^8.5.2",
     "regenerator-runtime": "^0.13.1",
-    "remarkable": "^2.0.1",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2",
     "serve": "^14.2.0",

@@ -81,10 +81,6 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
     );
   }
 
-  const authors =
-    article.copyright?.creators.length || article.copyright?.rightsholders.length
-      ? article.copyright.creators
-      : article.copyright?.processors;
   return (
     <StyledArticle style={cssVars}>
       <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
@@ -92,14 +88,7 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
       </Heading>
       <StyledIntroduction>{introduction}</StyledIntroduction>
       {content}
-      <ArticleByline
-        authors={authors}
-        suppliers={article.copyright?.rightsholders}
-        license={article.copyright?.license?.license!}
-        published={article.published}
-        accordionHeaderVariant={'white'}
-        licenseBox={licenseBox}
-      />
+      <ArticleByline accordionHeaderVariant={'white'} licenseBox={licenseBox} displayByline={false} />
     </StyledArticle>
   );
 };

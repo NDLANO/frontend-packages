@@ -22,6 +22,7 @@ export const campaignBlockPlugin: PluginType = (element, _, opts) => {
       url={{ url: embed.url, text: embed.urlText }}
       path={opts.path}
       imageSide={embed.imageSide}
+      alt={embed.alt}
       image={
         data.status === 'success' && data.data.image
           ? { src: data.data.image.image.imageUrl, alt: data.data.image.alttext.alttext }

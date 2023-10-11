@@ -29,6 +29,7 @@ export interface Props {
     alt: string;
   };
   path?: string;
+  alt?: string;
 }
 
 const Container = styled(SafeLink)`
@@ -83,7 +84,16 @@ const StyledImg = styled.img`
   border: 0;
 `;
 
-const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal', path }: Props) => {
+const BlogPost = ({
+  title,
+  author,
+  url,
+  metaImage,
+  headingLevel: Heading = 'h3',
+  size = 'normal',
+  path,
+  alt,
+}: Props) => {
   const { t } = useTranslation();
   const href = usePossiblyRelativeUrl(url, path);
   return (
@@ -91,7 +101,7 @@ const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3',
       <Heading className="blog-title" css={headingCss} lang={title.language}>
         {title.title}
       </Heading>
-      <StyledImg src={metaImage.url} alt={metaImage.alt} />
+      <StyledImg src={metaImage.url} alt={alt ? alt : metaImage.alt} />
       {!!author && (
         <AuthorContainer aria-label={t('article.writtenBy', { authors: author })}>
           <Quote />

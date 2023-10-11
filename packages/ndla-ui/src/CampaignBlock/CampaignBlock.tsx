@@ -37,6 +37,7 @@ interface Props {
   imageSide?: 'left' | 'right';
   className?: string;
   path?: string;
+  alt?: string;
 }
 
 const Container = styled.div`
@@ -93,11 +94,12 @@ const CampaignBlock = ({
   url,
   path,
   className,
+  alt,
 }: Props) => {
   const href = usePossiblyRelativeUrl(url.url, path);
   return (
     <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
-      {image && <StyledImg src={image.src} height={200} width={240} alt={image.src} />}
+      {image && <StyledImg src={image.src} height={200} width={240} alt={alt ? alt : image.alt} />}
       <TextWrapper>
         <Heading css={headingStyle}>{title.title}</Heading>
         <StyledDescription>{description.text}</StyledDescription>

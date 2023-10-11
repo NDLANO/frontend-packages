@@ -24,6 +24,15 @@ const fonts = {
     bold: 700,
   },
   sizes,
+  size: {
+    text: {
+      ingress: sizes('20px', '31px'),
+      button: sizes('16px', '24px'),
+      content: sizes('18px', '29px'),
+      metaTextSmall: sizes('16px', '24px'),
+      metaTextLarge: sizes('18px', '24px'),
+    },
+  },
 };
 
 export default fonts;

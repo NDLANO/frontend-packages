@@ -27,7 +27,6 @@ import { mockFooterLinks } from '../dummydata/index';
 import MastheadWithTopicMenu from './molecules/mastheads';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
-import NotionExample from './organisms/NotionExample';
 import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
@@ -42,7 +41,6 @@ import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
 
 import FooterExample from './molecules/footers';
-import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
@@ -178,17 +176,6 @@ storiesOf('Patterns', module)
       </StoryBody>
     </div>
   ))
-
-  .add('Block display term explanation', () => (
-    <div>
-      <StoryIntro title="Blokkvisning begrepsforklaring">
-        <p>Brukes ved visning i artikkel og søk</p>
-      </StoryIntro>
-      <Center>
-        <NotionBlockExample />
-      </Center>
-    </div>
-  ))
   .add('Breadcrumb', () => (
     <Center>
       <h2 className="u-heading">Enkel brødsmulesti</h2>
@@ -199,11 +186,6 @@ storiesOf('Patterns', module)
       <BreadcrumbWithHeader />
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
       <BreadcrumbWithHome />
-    </Center>
-  ))
-  .add('Explanation of terms', () => (
-    <Center>
-      <NotionExample />
     </Center>
   ))
   .add('Subject description', () => (

@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { SafeLinkButton } from '@ndla/safelink';
+import { HeadingLevel } from '@ndla/typography';
 import SectionHeading from '../SectionHeading';
 import { ToolboxIllustration as Illustration } from './illustrations/FrontpageIllustrations';
-import { HeadingLevel } from '../types';
 
 const StyledSection = styled.section`
   margin-top: ${spacing.large};

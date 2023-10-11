@@ -6,32 +6,6 @@
  *
  */
 
-import Notion from './Notion';
-import NotionDialogWrapper from './NotionDialogWrapper';
-import NotionDialogLicenses from './NotionDialogLicenses';
-import { NotionHeaderWithoutExitButton } from './NotionHeader';
 import { LicenseByline, LicenseDescription } from './LicenseByline';
 
-import NotionDialog, {
-  NotionDialogContent,
-  NotionDialogText,
-  NotionDialogImage,
-  NotionDialogTags,
-  NotionDialogRelatedLinks,
-} from './NotionDialog';
-
-export {
-  NotionDialogContent,
-  NotionDialogText,
-  NotionDialogImage,
-  NotionDialog,
-  NotionDialogTags,
-  NotionDialogWrapper,
-  NotionDialogLicenses,
-  NotionDialogRelatedLinks,
-  NotionHeaderWithoutExitButton,
-  LicenseByline,
-  LicenseDescription,
-};
-
-export default Notion;
+export { LicenseByline, LicenseDescription };

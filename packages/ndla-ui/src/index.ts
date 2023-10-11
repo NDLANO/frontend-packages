@@ -25,6 +25,7 @@ export {
   ConceptListEmbed,
   UnknownEmbed,
   InlineConcept,
+  BlockConcept,
 } from './Embed';
 
 export {
@@ -40,8 +41,6 @@ export {
 export { default as Table, TableStyling } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
-
-export { createUniversalPortal } from './utils/createUniversalPortal';
 
 export { default as NoContentBox } from './NoContentBox';
 
@@ -96,14 +95,7 @@ export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter
 
 export { Footer, EditorName, FooterText } from './Footer';
 
-export {
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-  FigureExpandButton,
-  FigureOpenDialogButton,
-  FigureBylineExpandButton,
-} from './Figure';
+export { Figure, FigureCaption, FigureExpandButton, FigureOpenDialogButton, FigureBylineExpandButton } from './Figure';
 export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
@@ -148,7 +140,7 @@ export { MessageBox, MessageBoxTag, MessageBanner } from './Messages';
 
 export { ResourceBox } from './ResourceBox';
 
-export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
+export { default as AudioPlayer } from './AudioPlayer';
 
 export { NavigationBox, NavigationTopicAbout } from './Navigation';
 
@@ -240,8 +232,7 @@ export { default as CopyParagraphButton, CopyParagraphButtonV2 } from './CopyPar
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 
-export { Notion, ConceptNotion } from './Notion';
-export type { NotionVisualElementType, ConceptNotionType } from './Notion';
+export { Notion } from './Notion';
 
 export { BannerCard } from './BannerCard';
 export { Folder, FolderInput } from './MyNdla';
@@ -268,8 +259,6 @@ export type { HeartButtonType } from './Embed';
 export { CampaignBlock } from './CampaignBlock';
 export { Grid, GridParallaxItem } from './Grid';
 export type { GridType } from './Grid';
-export { Heading } from './Typography';
-export type { HeadingLevel } from './types';
 
 export {
   default as FrontpageArticle,

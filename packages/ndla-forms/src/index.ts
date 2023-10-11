@@ -16,7 +16,6 @@ export { default as FieldHeader } from './FieldHeader';
 export { default as FieldSection } from './FieldSection';
 export { default as FieldSplitter } from './FieldSplitter';
 export { default as FieldRemoveButton } from './FieldRemoveButton';
-export { default as Radiobuttonitem } from './RadiobuttonItem';
 export { default as Select } from './Select';
 export { StyledButtonWrapper, FieldHeaderIconStyle } from './Styles';
 export { FormPill, FormPills } from './FormPill';

@@ -7,7 +7,6 @@
  */
 
 // N.B These components is used to render static markup serverside
-// Any interactivty is added by scripts located in the ndla-article-scripts package
 
 import { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
@@ -97,16 +96,6 @@ export const FigureCaption = ({
     </figcaption>
   );
 };
-
-export interface FigureLicense {
-  short: string;
-  title: string;
-  userFriendlyTitle: string;
-  description: string;
-  rights: string[];
-  linkText?: string;
-  url?: string;
-}
 
 interface FigureCaptionProps {
   className?: string;

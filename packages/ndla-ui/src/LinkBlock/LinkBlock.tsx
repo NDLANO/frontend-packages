@@ -14,7 +14,7 @@ import { Forward, CalendarEd } from '@ndla/icons/common';
 import { breakpoints, colors, spacing, mq } from '@ndla/core';
 import { LinkBlockEmbedData } from '@ndla/types-embed';
 import { useMemo } from 'react';
-import Heading from '../Typography/Heading';
+import { Heading } from '@ndla/typography';
 import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 const StyledForward = styled(Forward)`

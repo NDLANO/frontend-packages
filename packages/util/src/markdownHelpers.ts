@@ -45,6 +45,7 @@ export const parseMarkdown = (content: string, parser: ParseType = 'caption') =>
     ]);
   }
   const rendered = markdown.render(content);
+  console.log(rendered);
   const parsed = parse(rendered);
 
   return parsed;

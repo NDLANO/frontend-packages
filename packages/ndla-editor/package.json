@@ -30,8 +30,7 @@
     "@ndla/forms": "^4.3.25",
     "@ndla/icons": "^4.0.8",
     "@ndla/modal": "^4.0.9",
-    "@ndla/tooltip": "^4.1.20",
-    "focus-trap-react": "^8.9.2"
+    "@ndla/tooltip": "^4.1.20"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

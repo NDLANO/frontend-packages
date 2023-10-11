@@ -14,4 +14,3 @@ import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
 
 export { MovieList, NdlaFilmThemeEditorModal, FileListEditor };
 export { VersionHistory, VersionLogTag };
-export { default as SlateBlockMenu } from './SlateBlockMenu';

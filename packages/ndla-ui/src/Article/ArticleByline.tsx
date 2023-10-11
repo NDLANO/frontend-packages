@@ -149,7 +149,7 @@ const ArticleByline = ({
 
   return (
     <Wrapper>
-      {!isFrontpageArticle && (
+      {displayByline && (
         <TextWrapper>
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}

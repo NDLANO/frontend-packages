@@ -8,16 +8,19 @@
 
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const paragraphPlugin: PluginType = (node, opts) => {
+export const paragraphPlugin: PluginType = (node, converterOpts, opts) => {
+  const props = attributesToProps(node.attribs);
   if (node.attribs['data-align'] === 'center') {
-    const props = attributesToProps(node.attribs);
     const classes = [node.attribs.class ?? '', 'u-text-center'].filter((c) => !!c).join(' ');
     return (
-      <p {...props} data-align={undefined} className={classes}>
-        {domToReact(node.children, opts)}
+      <p {...props} lang={opts.articleLanguage} data-align={undefined} className={classes}>
+        {domToReact(node.children, converterOpts)}
       </p>
     );
   }
-
-  return null;
+  return (
+    <p {...props} lang={opts.articleLanguage}>
+      {domToReact(node.children, converterOpts)}
+    </p>
+  );
 };

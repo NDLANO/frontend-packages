@@ -9,14 +9,14 @@
 import { UnOrderedList } from '@ndla/ui';
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const ulPlugin: PluginType = (node, opts) => {
+export const ulPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
   const classes = [node.attribs.class ?? '', node.attribs['data-type'] === 'two-column' ? 'o-list--two-columns' : '']
     .filter((c) => !!c)
     .join(' ');
   return (
-    <UnOrderedList {...props} className={classes}>
-      {domToReact(node.children, opts)}
+    <UnOrderedList {...props} className={classes} lang={opts.articleLanguage}>
+      {domToReact(node.children, converterOpts)}
     </UnOrderedList>
   );
 };

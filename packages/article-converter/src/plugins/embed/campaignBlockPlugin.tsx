@@ -24,7 +24,10 @@ export const campaignBlockPlugin: PluginType = (element, _, opts) => {
       imageSide={embed.imageSide}
       image={
         data.status === 'success' && data.data.image
-          ? { src: data.data.image.image.imageUrl, alt: embed.alt ? embed.alt : data.data.image.alttext.alttext }
+          ? {
+              src: data.data.image.image.imageUrl,
+              alt: embed.isDecorative ? '' : embed.alt ? embed.alt : data.data.image.alttext.alttext,
+            }
           : undefined
       }
     />

@@ -21,7 +21,6 @@ export interface CampaignBlockEmbedData {
   imageId?: string;
   imageSide?: 'left' | 'right';
   alt?: string;
-  isDecorative?: boolean;
 }
 
 export interface CampaignBlockMeta {

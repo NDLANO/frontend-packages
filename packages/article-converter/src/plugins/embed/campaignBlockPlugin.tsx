@@ -15,6 +15,7 @@ export const campaignBlockPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as CampaignBlockMetaData;
   const embed = data.embedData;
+
   return (
     <CampaignBlock
       title={{ title: embed.title, language: embed.titleLanguage }}
@@ -26,7 +27,7 @@ export const campaignBlockPlugin: PluginType = (element, _, opts) => {
         data.status === 'success' && data.data.image
           ? {
               src: data.data.image.image.imageUrl,
-              alt: embed.isDecorative ? '' : embed.alt ? embed.alt : data.data.image.alttext.alttext,
+              alt: embed.alt === undefined ? '' : embed.alt === '' ? data.data.image.alttext.alttext : embed.alt,
             }
           : undefined
       }

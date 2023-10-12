@@ -20,18 +20,11 @@ import {
 import { Translation as I18nTranslate } from 'react-i18next';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
-import ArticleLoader from './article/ArticleLoader';
-import FigureImage from './article/FigureImage';
 import { mockFooterLinks } from '../dummydata/index';
 import MastheadWithTopicMenu from './molecules/mastheads';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
-import RelatedArticleListExample, {
-  RelatedArticleExerciseList,
-  RelatedArticleMixedList,
-  RelatedArticleExternal,
-} from './article/RelatedArticleListExample';
 import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 
@@ -186,11 +179,6 @@ storiesOf('Patterns', module)
       <BreadcrumbWithHome />
     </Center>
   ))
-  .add('Subject description', () => (
-    <Center>
-      <ArticleLoader articleId="13661" reset />
-    </Center>
-  ))
   .add('Error message', () => (
     <div className="u-margin-bottom">
       <div>
@@ -327,10 +315,6 @@ storiesOf('Patterns', module)
           />
         </div>
       </LayoutItem>
-      <LayoutItem layout="center">
-        <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
-        <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
-      </LayoutItem>
     </Center>
   ))
   .add('License box', () => (
@@ -453,28 +437,6 @@ storiesOf('Patterns', module)
         </Translation>
       </StoryBody>
     </div>
-  ))
-  .add('Related content', () => (
-    <I18nTranslate>
-      {(t) => (
-        <div>
-          <StoryIntro title="Relatert innhold">
-            <p>Kan brukes i slutten av artikler, eller midt i.</p>
-          </StoryIntro>
-          <StoryBody>
-            <h2 className="u-heading">Oppgave og aktivitet eksempel</h2>
-            <RelatedArticleExerciseList t={t} />
-            <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
-            <RelatedArticleMixedList t={t} />
-            <h2 className="u-heading">Eksterne ressurser eksempel</h2>
-            <p>Dersom eksternt relatert innhold ikke har metatekst, skal url vise.</p>
-            <RelatedArticleExternal t={t} />
-            <h2 className="u-heading">Eksempel med vis mer</h2>
-            <RelatedArticleListExample t={t} />
-          </StoryBody>
-        </div>
-      )}
-    </I18nTranslate>
   ))
   .add('Footer', () => {
     const privacyLinks = [

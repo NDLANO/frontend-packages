@@ -95,7 +95,7 @@ export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter
 
 export { Footer, EditorName, FooterText } from './Footer';
 
-export { Figure, FigureCaption, FigureExpandButton, FigureOpenDialogButton, FigureBylineExpandButton } from './Figure';
+export { Figure, FigureExpandButton, FigureOpenDialogButton, FigureBylineExpandButton } from './Figure';
 export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';

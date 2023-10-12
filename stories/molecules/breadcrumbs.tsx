@@ -47,8 +47,4 @@ export const BreadcrumbWithHome = () => {
   return <HomeBreadcrumb items={items} />;
 };
 
-export const BreadcrumbWhiteWithHome = () => {
-  return <HomeBreadcrumb items={items} light />;
-};
-
 export default BreadcrumbDefault;

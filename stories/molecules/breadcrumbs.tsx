@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from '@ndla/ui';
 
 const items = [
@@ -46,10 +45,6 @@ export const BreadcrumbWhiteWithHeader = () => {
 
 export const BreadcrumbWithHome = () => {
   return <HomeBreadcrumb items={items} />;
-};
-
-export const BreadcrumbWhiteWithHome = () => {
-  return <HomeBreadcrumb items={items} light />;
 };
 
 export default BreadcrumbDefault;

@@ -11,23 +11,24 @@ import { CampaignBlockMetaData } from '@ndla/types-embed';
 import { CampaignBlock } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const campaignBlockPlugin: PluginType = (element) => {
+export const campaignBlockPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as CampaignBlockMetaData;
   const embed = data.embedData;
+
   return (
     <CampaignBlock
       title={{ title: embed.title, language: embed.titleLanguage }}
       description={{ text: embed.description, language: embed.descriptionLanguage }}
       url={{ url: embed.url, text: embed.urlText }}
-      imageAfter={
-        data.status === 'success' && data.data.imageAfter
-          ? { src: data.data.imageAfter.image.imageUrl, alt: data.data.imageAfter.alttext.alttext }
-          : undefined
-      }
-      imageBefore={
-        data.status === 'success' && data.data.imageBefore
-          ? { src: data.data.imageBefore.image.imageUrl, alt: data.data.imageBefore.alttext.alttext }
+      path={opts.path}
+      imageSide={embed.imageSide}
+      image={
+        data.status === 'success' && data.data.image
+          ? {
+              src: data.data.image.image.imageUrl,
+              alt: embed.alt === undefined ? '' : embed.alt === '' ? data.data.image.alttext.alttext : embed.alt,
+            }
           : undefined
       }
     />

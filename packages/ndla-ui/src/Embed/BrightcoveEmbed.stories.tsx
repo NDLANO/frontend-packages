@@ -82,7 +82,6 @@ const metaData: BrightcoveData = {
 
 const visuallyInterpretedEmbedMetaData: BrightcoveMetaData = {
   resource: 'brightcove',
-  seq: 3,
   status: 'success',
   embedData: {
     resource: 'brightcove',
@@ -183,7 +182,6 @@ export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
     embed: {
       resource: 'brightcove',
       status: 'success',
-      seq: 1,
       embedData: embedData,
       data: metaData,
     },
@@ -203,7 +201,6 @@ export const BrightcoveFailed: StoryObj<typeof BrightcoveEmbed> = {
     embed: {
       resource: 'brightcove',
       status: 'error',
-      seq: 1,
       embedData: embedData,
     },
   },

@@ -13,3 +13,5 @@ export {
   MediaListItemImage,
   MediaListItemMeta,
 } from './MediaList';
+
+export type { ItemType } from './MediaList';

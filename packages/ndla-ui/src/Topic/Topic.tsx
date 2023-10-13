@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, MouseEvent, ComponentType } from 'react';
+import { ReactNode, MouseEvent, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
@@ -17,12 +17,14 @@ import { ButtonV2 } from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
+import { EmbedMetaData } from '@ndla/types-embed';
+import { Heading } from '@ndla/typography';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
-import { Heading } from '../Typography';
+import { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -71,6 +73,7 @@ const ShowVisualElementWrapper = styled.div`
   height: 100%;
   overflow: hidden;
   aspect-ratio: 1;
+  mask-image: radial-gradient(white, black);
   -webkit-mask-image: -webkit-radial-gradient(white, black); /* Safari fix */
 `;
 
@@ -187,31 +190,16 @@ const StyledModalHeader = styled(ModalHeader)`
   padding: ${spacing.small} ${spacing.nsmall};
 `;
 
-const icons: Record<VisualElementProps['type'], ComponentType> = {
-  image: ExpandTwoArrows,
-  video: PlayCircleFilled,
-  other: CursorClick,
-};
-
-type VisualElementProps = {
-  type: 'image' | 'video' | 'other';
-  element: ReactNode;
-};
-
 export type TopicProps = {
   id?: string;
-  topic?: {
-    title: string;
-    introduction: string;
-    image?: {
-      url: string;
-      alt: string;
-      crop?: ImageCrop;
-      focalPoint?: ImageFocalPoint;
-    };
-    visualElement?: VisualElementProps;
-    resources?: ReactNode;
+  metaImage?: {
+    url: string;
+    alt: string;
   };
+  title: string;
+  introduction: string;
+  resources?: ReactNode;
+  visualElementEmbedMeta?: EmbedMetaData;
   subTopics?: ItemProps[] | null | undefined;
   onSubTopicSelected?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   isLoading?: boolean;
@@ -223,11 +211,21 @@ export type TopicProps = {
   frame?: boolean;
   messageBox?: string;
   children?: ReactNode;
+  visualElement?: ReactNode;
 };
+
+interface MetaImageType {
+  url: string;
+  alt: string;
+  crop?: ImageCrop;
+  focalPoint?: ImageFocalPoint;
+}
 
 const Topic = ({
   id,
-  topic,
+  title,
+  introduction,
+  resources,
   subTopics,
   onSubTopicSelected,
   isLoading,
@@ -235,31 +233,49 @@ const Topic = ({
   invertedStyle,
   onToggleShowContent,
   showContent,
+  metaImage: articleMetaImage,
   isAdditionalTopic,
   frame,
   messageBox,
+  visualElementEmbedMeta,
   children,
+  visualElement,
 }: TopicProps) => {
   const { t } = useTranslation();
   const contentId = `expanded-description-${id}`;
-  const testId = 'nav-topic-about';
-  const VisualElementIcon = topic?.visualElement?.type ? icons[topic.visualElement.type] : null;
+
+  const VisualElementIcon = useMemo(() => {
+    if (!visualElementEmbedMeta || visualElementEmbedMeta.status === 'error') return null;
+    else if (visualElementEmbedMeta.resource === 'brightcove') {
+      return PlayCircleFilled;
+    } else if (visualElementEmbedMeta.resource === 'image') {
+      return ExpandTwoArrows;
+    } else return CursorClick;
+  }, [visualElementEmbedMeta]);
+
+  const metaImage: MetaImageType | undefined = useMemo(() => {
+    if (visualElementEmbedMeta?.resource === 'image' && visualElementEmbedMeta.status === 'success') {
+      return {
+        url: visualElementEmbedMeta.data.image?.imageUrl,
+        alt: visualElementEmbedMeta.data.alttext?.alttext,
+        crop: getCrop(visualElementEmbedMeta.embedData),
+        focalPoint: getFocalPoint(visualElementEmbedMeta.embedData),
+      };
+    } else return articleMetaImage;
+  }, [articleMetaImage, visualElementEmbedMeta]);
+
   const wrapperStyle = [frame ? frameStyle : undefined, invertedStyle ? _invertedStyle : undefined];
-  if (isLoading || !topic) {
-    return (
-      <Wrapper css={wrapperStyle} data-testid={testId}>
-        {isLoading ? <Loader /> : null}
-      </Wrapper>
-    );
+  if (isLoading) {
+    return <Wrapper css={wrapperStyle}>{isLoading ? <Loader /> : null}</Wrapper>;
   }
 
   return (
-    <Wrapper css={wrapperStyle} data-testid={testId}>
+    <Wrapper css={wrapperStyle}>
       <TopicIntroductionWrapper>
         <div>
           <HeadingWrapper>
             <Heading element="h1" headingStyle="h2" id={id} tabIndex={-1}>
-              {topic.title}
+              {title}
             </Heading>
             {isAdditionalTopic && (
               <>
@@ -268,23 +284,21 @@ const Topic = ({
               </>
             )}
           </HeadingWrapper>
-          <TopicIntroduction>
-            {renderMarkdown ? parse(renderMarkdown(topic.introduction)) : topic.introduction}
-          </TopicIntroduction>
+          <TopicIntroduction>{renderMarkdown ? parse(renderMarkdown(introduction)) : introduction}</TopicIntroduction>
         </div>
-        {topic.image && (
+        {metaImage && (
           <TopicHeaderVisualElementWrapper>
-            {topic.visualElement ? (
+            {visualElementEmbedMeta?.status === 'success' ? (
               <Modal>
                 <ModalTrigger>
                   <VisualElementButton
                     variant="stripped"
-                    title={topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')}
+                    title={visualElementEmbedMeta.resource === 'image' ? t('image.largeSize') : t('visualElement.show')}
                   >
                     <ShowVisualElementWrapper>
                       <TopicHeaderImage
-                        src={`${topic.image.url}?${makeSrcQueryString(800, topic.image.crop, topic.image.focalPoint)}`}
-                        alt={topic.image.alt}
+                        src={`${metaImage.url}?${makeSrcQueryString(800, metaImage.crop, metaImage.focalPoint)}`}
+                        alt={metaImage.alt}
                       />
                       <TopicHeaderOverlay />
                     </ShowVisualElementWrapper>
@@ -300,13 +314,13 @@ const Topic = ({
                   <StyledModalHeader>
                     <ModalCloseButton />
                   </StyledModalHeader>
-                  {topic.visualElement && topic.visualElement.element}
+                  {visualElement}
                 </ModalContent>
               </Modal>
             ) : (
               <TopicHeaderImage
-                src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}
-                alt={topic.image.alt}
+                src={`${metaImage.url}?${makeSrcQueryString(400, metaImage.crop, metaImage.focalPoint)}`}
+                alt={metaImage.alt}
               />
             )}
           </TopicHeaderVisualElementWrapper>
@@ -349,7 +363,7 @@ const Topic = ({
           invertedStyle={invertedStyle}
         />
       )}
-      {topic.resources}
+      {resources}
     </Wrapper>
   );
 };

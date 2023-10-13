@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { breakpoints, colors, mq, spacing, spacingUnit } from '@ndla/core';
+import { HeadingLevel } from '@ndla/typography';
 import SectionHeading from '../SectionHeading';
-import { HeadingLevel } from '../types';
 
 const SubjectContentWrapper = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {

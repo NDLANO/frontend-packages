@@ -84,8 +84,7 @@
 }
 
 .c-aside__content > ol:not([class]),
-.c-aside__content :not(li) > ol:not([class]),
-.c-aside__content .ol-list--roman {
+.c-aside__content :not(li) > ol:not([class]) {
   @include mq(desktop) {
     margin-left: $spacing--large;
   }

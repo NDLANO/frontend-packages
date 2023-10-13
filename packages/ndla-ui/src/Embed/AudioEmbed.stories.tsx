@@ -39,6 +39,7 @@ const successData: AudioMeta = {
     creators: [{ type: 'originator', name: 'Radio Metro AS' }],
     processors: [],
     rightsholders: [],
+    processed: false,
   },
   tags: { tags: ["Ain't I a Woman?", 'Sojourner Truth', 'speech', 'abolitionist'], language: 'nb' },
   supportedLanguages: ['nb'],
@@ -79,6 +80,7 @@ const podcastSuccessData: AudioMeta = {
       { type: 'editorial', name: 'Maren Aftret-Sandal' },
     ],
     rightsholders: [{ type: 'rightsholder', name: 'Både Og' }],
+    processed: false,
   },
   tags: { tags: ['reklame', 'radio', 'lyddesign'], language: 'nb' },
   supportedLanguages: ['nb', 'nn'],
@@ -148,6 +150,7 @@ const podcastSuccessData: AudioMeta = {
         },
       ],
       rightsholders: [],
+      processed: false,
     },
     tags: {
       tags: ['lytt gjennom mediefaget', 'podcastserie', 'podcast', 'mediefaget', 'medier', 'podkastserie', 'podkast'],
@@ -203,7 +206,6 @@ export const AudioEmbedStory: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'success',
-      seq: 1,
       embedData: embedData,
       data: successData,
     },
@@ -216,7 +218,6 @@ export const AudioEmbedFailed: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'error',
-      seq: 1,
       embedData: embedData,
     },
   },
@@ -228,7 +229,6 @@ export const Podcast: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'success',
-      seq: 1,
       embedData: podcastEmbedData,
       data: podcastSuccessData,
     },
@@ -241,7 +241,6 @@ export const PodcastFailed: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'error',
-      seq: 1,
       embedData: podcastEmbedData,
     },
   },

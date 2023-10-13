@@ -7,7 +7,6 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
 import AccordionRoot from './AccordionRoot';
 import { defaultParameters } from '../../../stories/defaults';
 import AccordionItem from './AccordionItem';

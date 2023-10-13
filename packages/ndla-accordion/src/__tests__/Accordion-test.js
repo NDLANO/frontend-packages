@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '../';

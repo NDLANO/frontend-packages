@@ -18,17 +18,6 @@ export interface RelatedContentEmbedData {
   title?: string;
 }
 
-interface TaxonomyTranslation {
-  name: string;
-  language: string;
-}
-
-interface TaxonomyMetadata {
-  customFields: Record<string, string>;
-  grepCodes: string[];
-  visible: boolean;
-}
-
 export interface RelatedContentData {
   article: IArticleV2 | IArticle;
   resource: Node;

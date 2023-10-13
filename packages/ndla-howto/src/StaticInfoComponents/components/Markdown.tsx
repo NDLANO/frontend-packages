@@ -1,4 +1,3 @@
-import React from 'react';
 //@ts-ignore
 import { Remarkable } from 'remarkable';
 import { Table } from '@ndla/ui';

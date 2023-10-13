@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import { InformationOutline } from '@ndla/icons/common';
 

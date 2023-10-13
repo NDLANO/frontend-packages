@@ -9,7 +9,7 @@
 /* eslint jsx-a11y/media-has-caption: 0 */
 
 import { IAudioMetaInformation } from '@ndla/types-backend/audio-api';
-import React, { Component } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Props {
   audio: { id: number };
@@ -17,44 +17,28 @@ interface Props {
   onError: (err: any) => void;
 }
 
-interface State {
-  audioSource?: string;
-  audioType?: string;
-}
+const AudioBar = ({ audio, fetchAudio, onError }: Props) => {
+  const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
+  const [audioType, setAudioType] = useState<string | undefined>(undefined);
 
-class AudioBar extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      audioSource: undefined,
-      audioType: undefined,
-    };
-
-    this.loadAudio = this.loadAudio.bind(this);
-  }
-
-  componentDidMount() {
-    this.loadAudio();
-  }
-
-  loadAudio() {
-    const { fetchAudio, audio, onError } = this.props;
+  const loadAudio = () => {
     fetchAudio(audio.id)
       .then((result) => {
-        this.setState({
-          audioSource: result.audioFile.url,
-          audioType: result.audioFile.mimeType,
-        });
+        setAudioSource(result.audioFile.url);
+        setAudioType(result.audioFile.mimeType);
       })
       .catch((err) => {
         onError(err);
       });
-  }
+  };
 
-  render() {
-    const { audioSource, audioType } = this.state;
-    return <audio controls>{audioSource && <source src={audioSource} type={audioType} />}</audio>;
-  }
-}
+  useEffect(
+    () => loadAudio(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
+  return <audio controls>{audioSource && <source src={audioSource} type={audioType} />}</audio>;
+};
 
 export default AudioBar;

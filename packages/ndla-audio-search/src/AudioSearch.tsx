@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from '@ndla/types-backend/audio-api';
@@ -42,98 +42,84 @@ export interface QueryObject {
   locale: string;
 }
 
-interface State {
-  queryObject: QueryObject;
-  audios: IAudioSummary[];
-  lastPage: number;
-  searching: boolean;
-}
+const AudioSearch = ({
+  queryObject: query,
+  searchAudios: search,
+  onError,
+  translations,
+  fetchAudio,
+  onAudioSelect,
+}: Props) => {
+  const [queryObject, setQueryObject] = useState<QueryObject>(query);
+  const [audios, setAudios] = useState<IAudioSummary[]>([]);
+  const [lastPage, setLastPage] = useState(0);
+  const [searching, setSearching] = useState(false);
 
-class AudioSearch extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      queryObject: props.queryObject,
-      audios: [],
-      lastPage: 0,
-      searching: false,
-    };
+  const { page, locale } = queryObject ?? {};
 
-    this.submitAudioSearchQuery = this.submitAudioSearchQuery.bind(this);
-    this.searchAudios = this.searchAudios.bind(this);
-  }
+  const searchAudios = (queryObject: QueryObject) => {
+    setSearching(true);
+    search(queryObject)
+      .then((result) => {
+        setQueryObject({
+          query: queryObject.query,
+          page: queryObject.page,
+          pageSize: result.pageSize,
+          locale: queryObject.locale,
+          audioType: queryObject.audioType || 'standard',
+        });
+        setAudios(result.results);
+        setLastPage(Math.ceil(result.totalCount / result.pageSize));
+        setSearching(false);
+      })
+      .catch((err) => {
+        onError(err);
+        setSearching(false);
+      });
+  };
 
-  componentDidMount() {
-    this.searchAudios(this.state.queryObject);
-  }
+  useEffect(() => {
+    searchAudios(queryObject);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  submitAudioSearchQuery(queryObject: QueryObject) {
-    this.searchAudios({
+  const submitAudioSearchQuery = (queryObject: QueryObject) => {
+    searchAudios({
       query: queryObject.query,
       page: 1,
       pageSize: queryObject.pageSize,
       locale: queryObject.locale,
       audioType: queryObject.audioType || 'standard',
     });
-  }
+  };
 
-  searchAudios(queryObject: QueryObject) {
-    this.setState({ searching: true });
-    this.props
-      .searchAudios(queryObject)
-      .then((result) => {
-        this.setState({
-          queryObject: {
-            query: queryObject.query,
-            page: queryObject.page,
-            pageSize: result.pageSize,
-            locale: queryObject.locale,
-            audioType: queryObject.audioType || 'standard',
-          },
-          audios: result.results,
-          lastPage: Math.ceil(result.totalCount / result.pageSize),
-          searching: false,
-        });
-      })
-      .catch((err) => {
-        this.props.onError(err);
-        this.setState({ searching: false });
-      });
-  }
-
-  render() {
-    const { fetchAudio, onError, translations, onAudioSelect } = this.props;
-    const { queryObject, audios, lastPage, searching } = this.state;
-    const { page, locale } = queryObject ?? {};
-
-    return (
-      <AudioSearchWrapper>
-        <AudioSearchForm
-          onSearchQuerySubmit={this.submitAudioSearchQuery}
-          queryObject={queryObject}
-          searching={searching}
-          translations={translations}
-        />
-        <AudioSearchList
-          audios={audios}
-          searching={searching}
-          locale={locale}
-          translations={translations}
-          onError={onError}
-          fetchAudio={fetchAudio}
-          onAudioSelect={onAudioSelect}
-        />
-        <Pager
-          page={page ?? 1}
-          pathname=""
-          lastPage={lastPage}
-          query={queryObject}
-          onClick={this.searchAudios}
-          pageItemComponentClass="button"
-        />
-      </AudioSearchWrapper>
-    );
-  }
-}
+  return (
+    <AudioSearchWrapper>
+      <AudioSearchForm
+        onSearchQuerySubmit={submitAudioSearchQuery}
+        queryObject={queryObject}
+        searching={searching}
+        translations={translations}
+      />
+      <AudioSearchList
+        audios={audios}
+        searching={searching}
+        locale={locale}
+        translations={translations}
+        onError={onError}
+        fetchAudio={fetchAudio}
+        onAudioSelect={onAudioSelect}
+      />
+      <Pager
+        page={page ?? 1}
+        pathname=""
+        lastPage={lastPage}
+        query={queryObject}
+        onClick={searchAudios}
+        pageItemComponentClass="button"
+      />
+    </AudioSearchWrapper>
+  );
+};
 
 export default AudioSearch;

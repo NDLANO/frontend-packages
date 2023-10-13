@@ -6,13 +6,12 @@
  *
  */
 
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle, ModalTrigger, ModalContent } from '@ndla/modal';
 import { mq, breakpoints, fonts, colors } from '@ndla/core';
 import { Explanation, NotionFlip } from '@ndla/icons/common';
-import { ConceptNotion } from '../Notion';
-import { ConceptNotionType } from '../Notion/ConceptNotion';
 
 const ArticleNotionsContainer = styled.div`
   margin-bottom: 26px;
@@ -81,14 +80,6 @@ const NotionsTrigger = styled.div`
 const ModalHeadingContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-bottom: 2rem;
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
-  }
 
   svg {
     display: block;
@@ -103,65 +94,20 @@ const ModalHeadingContainer = styled.div`
       margin: 0 1.5rem 0 -0.5rem;
     }
   }
-
-  h1 {
-    margin: 0;
-  }
 `;
 
-const NotionsContainer = styled.div`
-  padding: 0 20px;
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: 0 3.5rem;
-  }
-`;
-
-const RelatedContentContainer = styled.ul`
+const StyledModalHeader = styled(ModalHeader)`
   display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0 0 2rem;
-  padding: 0 20px;
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: 0 3.5rem;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 1.5rem;
-  }
-
-  > li {
-    width: 100%;
-
-    &:not(:nth-child(2n)) {
-      margin-right: 0;
-    }
-
-    ${mq.range({ from: breakpoints.tablet })} {
-      width: calc(100% * (1 / 3));
-
-      &:not(:nth-child(2n)) {
-        margin-right: 0.5rem;
-      }
-    }
-  }
+  justify-content: space-between;
+  align-items: center;
 `;
-
-export type NotionRelatedContent = {
-  url: string;
-  label: string;
-};
 
 type ArticleNotionsProps = {
-  notions: ConceptNotionType[];
-  relatedContent?: NotionRelatedContent[];
+  children?: ReactNode;
   buttonOffsetRight: number;
-  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
 };
 
-export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight, type }: ArticleNotionsProps) => {
+export const ArticleNotions = ({ buttonOffsetRight, children }: ArticleNotionsProps) => {
   const { t } = useTranslation();
   const leftOffset = `${buttonOffsetRight - 32}px`;
 
@@ -176,29 +122,14 @@ export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight
           </NotionsTrigger>
         </ModalTrigger>
         <ModalContent size="large">
-          <ModalHeader className="no-padding">
+          <StyledModalHeader>
             <ModalHeadingContainer>
               <Explanation />
               <ModalTitle>{t('article.notionsPrompt')}</ModalTitle>
             </ModalHeadingContainer>
             <ModalCloseButton />
-          </ModalHeader>
-          <ModalBody modifier="notions-modal-body no-padding">
-            <NotionsContainer>
-              {notions.map((notion) => (
-                <ConceptNotion key={notion.id} concept={notion} type={type} />
-              ))}
-            </NotionsContainer>
-            {relatedContent.length > 0 && (
-              <RelatedContentContainer>
-                {relatedContent.map((content, i) => (
-                  <li key={`notion-related-item-${i + 1}`}>
-                    <a href={content.url}>{content.label}</a>
-                  </li>
-                ))}
-              </RelatedContentContainer>
-            )}
-          </ModalBody>
+          </StyledModalHeader>
+          <ModalBody modifier="notions-modal-body no-padding">{children}</ModalBody>
         </ModalContent>
       </Modal>
     </ArticleNotionsContainer>

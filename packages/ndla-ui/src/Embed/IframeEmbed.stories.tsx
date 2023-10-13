@@ -47,7 +47,6 @@ export const Regular: StoryObj<typeof IframeEmbed> = {
     embed: {
       resource: 'iframe',
       status: 'success',
-      seq: 3,
       embedData: embedData,
       data: {},
     },
@@ -59,7 +58,6 @@ export const Failed: StoryObj<typeof IframeEmbed> = {
     embed: {
       resource: 'iframe',
       status: 'error',
-      seq: 3,
       embedData: embedData,
     },
   },
@@ -100,6 +98,7 @@ const opensInnewMetaData: IframeData = {
           name: 'Folkehelseprosjektet Helsefremmende miljø på sosial medier, Bergen kommune 2019-2022',
         },
       ],
+      processed: false,
     },
     tags: {
       tags: ['samtale', 'Dialog', 'gutter'],
@@ -132,8 +131,22 @@ export const OpensInNewWindow: StoryObj<typeof IframeEmbed> = {
     embed: {
       resource: 'iframe',
       status: 'success',
-      seq: 4,
       embedData: opensInNewEmbedData,
+      data: opensInnewMetaData,
+    },
+  },
+};
+
+export const NoDimensions: StoryObj<typeof IframeEmbed> = {
+  args: {
+    embed: {
+      resource: 'iframe',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        width: undefined,
+        height: undefined,
+      },
       data: opensInnewMetaData,
     },
   },
@@ -144,7 +157,6 @@ export const OpensInNewWindowFailed: StoryObj<typeof IframeEmbed> = {
     embed: {
       resource: 'iframe',
       status: 'error',
-      seq: 4,
       embedData: opensInNewEmbedData,
     },
   },

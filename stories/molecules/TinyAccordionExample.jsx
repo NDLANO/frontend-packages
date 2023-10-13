@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { css } from '@emotion/react';
 import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '@ndla/accordion';
 import { colors, spacing } from '@ndla/core';

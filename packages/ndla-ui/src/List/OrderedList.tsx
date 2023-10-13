@@ -10,11 +10,11 @@ import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
 
-export const generateListResets = () => {
+export const generateListResets = (counterName: string) => {
   let styles = '';
   for (let $i = 0; $i < 50; $i++) {
     styles += ` 
-      ol.ol-reset-${$i} { counter-reset: item ${$i - 1} }  
+      &.ol-reset-${$i} { counter-reset: ${counterName} ${$i - 1}; }  
     `;
   }
 
@@ -42,6 +42,7 @@ const StyledOl = styled.ol`
     }
   }
   counter-reset: level1;
+  ${generateListResets('level1')};
 
   &[data-type='letters'] {
     > li {
@@ -63,6 +64,7 @@ const StyledOl = styled.ol`
   }
 
   > li {
+    min-height: ${spacing.normal};
     counter-increment: level1;
     &:before {
       position: absolute;
@@ -73,6 +75,7 @@ const StyledOl = styled.ol`
 
     > ol:not([data-type='letters']) {
       counter-reset: level2;
+      ${generateListResets('level2')};
       > li {
         padding-left: ${spacing.nsmall};
         counter-increment: level2;
@@ -81,6 +84,7 @@ const StyledOl = styled.ol`
         }
         > ol:not([data-type='letters']) {
           counter-reset: level3;
+          ${generateListResets('level3')};
           > li {
             padding-left: ${spacing.medium};
             counter-increment: level3;
@@ -89,6 +93,7 @@ const StyledOl = styled.ol`
             }
             > ol:not([data-type='letters']) {
               counter-reset: level4;
+              ${generateListResets('level4')};
               > li {
                 padding-left: ${spacing.large};
                 counter-increment: level4;
@@ -103,8 +108,6 @@ const StyledOl = styled.ol`
       }
     }
   }
-  // List reset classes
-  ${generateListResets()}
 `;
 
 interface Props extends HTMLAttributes<HTMLOListElement> {

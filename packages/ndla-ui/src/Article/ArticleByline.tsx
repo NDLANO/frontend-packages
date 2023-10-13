@@ -56,12 +56,13 @@ type AccordionHeaderVariants = 'white' | 'blue';
 type Props = {
   authors?: AuthorProps[];
   suppliers?: SupplierProps[];
-  published: string;
-  license: string;
+  published?: string;
+  license?: string;
   licenseBox?: ReactNode;
   locale?: string;
   footnotes?: FootNote[];
   accordionHeaderVariant?: AccordionHeaderVariants;
+  displayByline?: boolean;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -93,10 +94,15 @@ const LicenseWrapper = styled.div`
 
 const StyledAccordionHeader = styled(AccordionHeader)`
   background-color: ${colors.brand.lightest};
-  border: 1px solid ${colors.brand.tertiary};
   font-size: ${fonts.sizes('16px', '29px')};
   font-weight: ${fonts.weight.semibold};
 
+  &[data-background-color='white'][data-state='closed'] {
+    background-color: ${colors.background.default};
+  }
+`;
+
+const StyledAccordionContent = styled(AccordionContent)`
   &[data-background-color='white'] {
     background-color: ${colors.background.default};
   }
@@ -114,6 +120,7 @@ const ArticleByline = ({
   published,
   locale,
   accordionHeaderVariant = 'blue',
+  displayByline = true,
 }: Props) => {
   const { t } = useTranslation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
@@ -136,48 +143,48 @@ const ArticleByline = ({
     return () => window.removeEventListener('hashchange', onHashChange);
   }, [onHashChange]);
 
-  const license = getLicenseByAbbreviation(licenseString, locale);
+  const license = licenseString && getLicenseByAbbreviation(licenseString, locale);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
-  const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
 
   return (
     <Wrapper>
-      <TextWrapper>
-        <LicenseWrapper>
-          <LicenseLink license={license} />
-          {showPrimaryContributors && (
-            <PrimaryContributorsWrapper>
-              {authors.length > 0
-                ? t('article.authorsLabel', {
+      {displayByline && (
+        <TextWrapper>
+          <LicenseWrapper>
+            {license && <LicenseLink license={license} />}
+            {showPrimaryContributors && (
+              <PrimaryContributorsWrapper>
+                {authors.length > 0 &&
+                  `${t('article.authorsLabel', {
                     names: renderContributors(authors, t),
                     interpolation: { escapeValue: false },
-                  })
-                : getSuppliersText(suppliers, t)}
-            </PrimaryContributorsWrapper>
-          )}
-        </LicenseWrapper>
-        <div>
-          {t('article.lastUpdated')} {published}
-        </div>
-      </TextWrapper>
-      {showSecondaryContributors && <TextWrapper>{getSuppliersText(suppliers, t)}</TextWrapper>}
+                  })}. `}
+                {getSuppliersText(suppliers, t)}
+              </PrimaryContributorsWrapper>
+            )}
+          </LicenseWrapper>
+          <div>
+            {t('article.lastUpdated')} {published}
+          </div>
+        </TextWrapper>
+      )}
       <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
         {licenseBox && (
           <AccordionItem value="rulesForUse">
             <StyledAccordionHeader headingLevel="h2" data-background-color={accordionHeaderVariant}>
               {t('article.useContent')}
             </StyledAccordionHeader>
-            <AccordionContent>{licenseBox}</AccordionContent>
+            <StyledAccordionContent data-background-color={accordionHeaderVariant}>{licenseBox}</StyledAccordionContent>
           </AccordionItem>
         )}
 
         {!!footnotes?.length && (
           <AccordionItem value={footnotesAccordionId}>
             <StyledAccordionHeader headingLevel="h2">{t('article.footnotes')}</StyledAccordionHeader>
-            <AccordionContent forceMount>
+            <StyledAccordionContent forceMount data-background-color={accordionHeaderVariant}>
               <ArticleFootNotes footNotes={footnotes} />
-            </AccordionContent>
+            </StyledAccordionContent>
           </AccordionItem>
         )}
       </AccordionRoot>

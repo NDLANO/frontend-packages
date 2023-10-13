@@ -14,6 +14,9 @@ import { BlobPointy, BlobRound } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import concat from 'lodash/concat';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
+import Image from '../Image';
+
+const BLOB_WIDTH = 90;
 
 interface Props {
   image?: IImageMetaInformationV3;
@@ -27,13 +30,17 @@ interface Props {
 }
 const BlockWrapper = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   padding: 0 0 ${spacing.medium} ${spacing.medium};
   font-family: ${fonts.sans};
   border-radius: ${misc.borderRadius};
   border: 1px solid ${colors.brand.lighter};
-  max-width: 348px;
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  background-color: ${colors.white};
+  & ~ & {
+    margin-top: ${spacing.medium};
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
     max-width: 773px;
     flex-direction: row;
     padding: 0 0 ${spacing.medium} ${spacing.medium};
@@ -50,6 +57,7 @@ const StyledHeader = styled.div`
 
 const StyledText = styled.div`
   display: flex;
+  ${fonts.sizes('16px', '26px')};
   overflow-wrap: anywhere;
   color: ${colors.text.light};
   gap: ${spacing.xxsmall};
@@ -64,11 +72,16 @@ const EmailLink = styled.a`
 `;
 
 const SummaryBlock = styled.p`
-  font-family: ${fonts.serif};
-  padding: 0 ${spacing.medium} 0 0;
+  font-family: ${fonts.sans};
+  padding: 0;
+  max-width: calc(100% - (${BLOB_WIDTH}px / 2));
   ${mq.range({ from: breakpoints.tabletWide })} {
     padding-top: 0;
   }
+`;
+
+const InfoWrapper = styled.div`
+  max-width: calc(100% - ${BLOB_WIDTH}px);
 `;
 
 const TextWrapper = styled.div`
@@ -79,15 +92,19 @@ const TextWrapper = styled.div`
 
 const BlobWrapper = styled.div`
   height: 180px;
-  width: 90px;
+  width: ${BLOB_WIDTH}px;
+  position: absolute;
+  overflow: hidden;
+  right: 0px;
 `;
 
 const ImageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.small};
+  gap: ${spacing.xsmall};
+  ${fonts.sizes('16px', '26px')};
   padding: ${spacing.medium} ${spacing.medium} 0 0;
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     padding-right: 0;
   }
 `;
@@ -98,14 +115,14 @@ const blobStyling = css`
   transform: translate(10%, 0);
 `;
 const Email = styled.div`
-  min-width: 60px;
+  white-space: nowrap;
 `;
 
 const ContentWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledImage = styled.img`
+const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
@@ -120,7 +137,11 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
       <ImageWrapper>
         {image ? (
           <>
-            <StyledImage alt={image.alttext.alttext} src={`${image.image.imageUrl}?width=286`} />
+            <StyledImage
+              alt={image.alttext.alttext}
+              src={image.image.imageUrl}
+              sizes={`(min-width: ${breakpoints.tablet}) 240px, (max-width: ${breakpoints.tablet}) 500px`}
+            />
             {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
               image.copyright.license.license
             }`}
@@ -131,14 +152,14 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
       </ImageWrapper>
       <ContentWrapper>
         <TextWrapper>
-          <div>
+          <InfoWrapper>
             <StyledHeader>{name}</StyledHeader>
             <StyledText>{jobTitle}</StyledText>
             <StyledText>
               <Email>{`${t('email')}:`}</Email>
-              <EmailLink href={`mailto:${email}?subject=Contact us`}>{email}</EmailLink>
+              <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
             </StyledText>
-          </div>
+          </InfoWrapper>
           <BlobWrapper>
             <Blob css={blobStyling} color={isGreenBlob ? colors.support.greenLight : colors.support.redLight} />
           </BlobWrapper>

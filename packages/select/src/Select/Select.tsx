@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import ReactSelect, { PropsValue, createFilter, OptionsOrGroups, StylesConfig } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';

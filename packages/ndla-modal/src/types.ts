@@ -30,6 +30,7 @@ export interface ModalContentProps extends DialogContentProps {
   position?: ModalPosition;
   modalMargin?: ModalMargin;
   expands?: boolean;
+  forceOverlay?: boolean;
 }
 
 export interface Animation {

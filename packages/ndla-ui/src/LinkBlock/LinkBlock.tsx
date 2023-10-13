@@ -6,18 +6,16 @@
  *
  */
 
+import { format } from 'date-fns';
+import { enGB, nb, nn } from 'date-fns/locale';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { Forward, CalendarEd } from '@ndla/icons/common';
 import { breakpoints, colors, spacing, mq } from '@ndla/core';
-import Heading from '../Typography/Heading';
-
-interface Props {
-  title: string;
-  language: string;
-  date: string;
-  url: string;
-}
+import { LinkBlockEmbedData } from '@ndla/types-embed';
+import { useMemo } from 'react';
+import { Heading } from '@ndla/typography';
+import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 const StyledForward = styled(Forward)`
   margin: 0 ${spacing.nsmall};
@@ -37,6 +35,7 @@ const StyledSafeLink = styled(SafeLink)`
   align-items: center;
   box-shadow: none;
   color: inherit;
+  background-color: ${colors.white};
   border: 1px solid ${colors.brand.lighter};
   padding: ${spacing.normal};
   ${mq.range({ from: breakpoints.tabletWide })} {
@@ -74,9 +73,20 @@ const StyledCalenderEd = styled(CalendarEd)`
   color: ${colors.icon.iconBlue};
 `;
 
-const LinkBlock = ({ title, language, date, url }: Props) => {
+interface Props extends Omit<LinkBlockEmbedData, 'resource'> {
+  path?: string;
+}
+
+const LinkBlock = ({ title, language, date, url, path }: Props) => {
+  const href = usePossiblyRelativeUrl(url, path);
+  const formattedDate = useMemo(() => {
+    if (!date) return null;
+    const locale = language === 'nb' ? nb : language === 'nn' ? nn : enGB;
+    return format(new Date(date), 'dd. LLLL. yyyy', { locale });
+  }, [date, language]);
+
   return (
-    <StyledSafeLink to={url}>
+    <StyledSafeLink to={href}>
       <InfoWrapper>
         <Heading element="h3" margin="none" headingStyle="h3" lang={language}>
           {title}
@@ -84,7 +94,7 @@ const LinkBlock = ({ title, language, date, url }: Props) => {
         {date && (
           <StyledDateContainer>
             <StyledCalenderEd />
-            {date}
+            {formattedDate}
           </StyledDateContainer>
         )}
       </InfoWrapper>

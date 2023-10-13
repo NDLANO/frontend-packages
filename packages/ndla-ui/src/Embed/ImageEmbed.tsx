@@ -12,6 +12,8 @@ import { MouseEventHandler, useState } from 'react';
 import { ExpandTwoArrows } from '@ndla/icons/action';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
+import { utils } from '@ndla/core';
+import styled from '@emotion/styled';
 import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
@@ -21,6 +23,7 @@ import { HeartButtonType } from './types';
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
+  path?: string;
   heartButton?: HeartButtonType;
   inGrid?: boolean;
 }
@@ -73,25 +76,26 @@ const getSizes = (size?: string, align?: string) => {
   return '(min-width: 1024px) 1024px, 100vw';
 };
 
-const getFocalPoint = (data: ImageEmbedData) => {
-  if (typeof data.focalX === 'number' && typeof data.focalY === 'number') {
-    return { x: data.focalX, y: data.focalY };
+export const getFocalPoint = (data: ImageEmbedData) => {
+  const focalX = parseFloat(data.focalX ?? '');
+  const focalY = parseFloat(data.focalY ?? '');
+  if (!!focalX && !!focalY) {
+    return { x: focalX, y: focalY };
   }
   return undefined;
 };
 
-const getCrop = (data: ImageEmbedData) => {
-  if (
-    typeof data.lowerRightX === 'number' &&
-    typeof data.lowerRightY === 'number' &&
-    typeof data.upperLeftX === 'number' &&
-    typeof data.upperLeftY === 'number'
-  ) {
+export const getCrop = (data: ImageEmbedData) => {
+  const lowerRightX = parseFloat(data.lowerRightX ?? '');
+  const lowerRightY = parseFloat(data.lowerRightY ?? '');
+  const upperLeftX = parseFloat(data.upperLeftX ?? '');
+  const upperLeftY = parseFloat(data.upperLeftY ?? '');
+  if (!!lowerRightX && !!lowerRightY && !!upperLeftX && !!upperLeftY) {
     return {
-      startX: data.lowerRightX,
-      startY: data.lowerRightY,
-      endX: data.upperLeftX,
-      endY: data.upperLeftY,
+      startX: lowerRightX,
+      startY: lowerRightY,
+      endX: upperLeftX,
+      endY: upperLeftY,
     };
   }
   return undefined;
@@ -99,7 +103,7 @@ const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Props) => {
+const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   if (embed.status === 'error') {
@@ -108,7 +112,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
     return <EmbedErrorPlaceholder type={'image'} figureType={figureType} />;
   }
 
-  const { data, embedData, seq } = embed;
+  const { data, embedData } = embed;
 
   const altText = embedData.alt || '';
 
@@ -118,13 +122,10 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
   const focalPoint = getFocalPoint(embedData);
   const crop = getCrop(embedData);
 
-  const figureId = `figure-${seq}-${data.id}`;
-
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
   return (
     <Figure
-      id={figureId}
       type={imageSizes ? undefined : figureType}
       className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
     >
@@ -132,6 +133,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
         src={!isCopyrighted ? embedData.pageUrl || data.image.imageUrl : undefined}
         crop={crop}
         size={embedData.size}
+        pagePath={path}
       >
         <Image
           focalPoint={focalPoint}
@@ -140,7 +142,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
           sizes={imageSizes ?? sizes}
           alt={altText}
           src={data.image.imageUrl}
-          inGrid={inGrid}
+          border={embedData.border}
           expandButton={
             <ExpandButton
               size={embedData.size}
@@ -168,9 +170,14 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid }: Pro
   );
 };
 
+const HiddenSpan = styled.span`
+  ${utils.visuallyHidden};
+`;
+
 interface ImageWrapperProps {
   src?: string;
   children: React.ReactNode;
+  pagePath?: string;
   crop?: {
     startX: number;
     startY: number;
@@ -183,15 +190,16 @@ const hideByline = (size?: string): boolean => {
   return !!size && size.endsWith('-hide-byline');
 };
 
-const ImageWrapper = ({ src, crop, size, children }: ImageWrapperProps) => {
+const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps) => {
   const { t } = useTranslation();
-  if (isSmall(size) || hideByline(size) || !src) {
+  if (isSmall(size) || hideByline(size) || !src || (pagePath && src.endsWith(pagePath))) {
     return <>{children}</>;
   }
 
   return (
-    <ImageLink src={src} crop={crop} aria-label={t('license.images.itemImage.ariaLabel')}>
+    <ImageLink src={src} crop={crop}>
       {children}
+      <HiddenSpan>{t('license.images.itemImage.ariaLabel')}</HiddenSpan>
     </ImageLink>
   );
 };

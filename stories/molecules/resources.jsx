@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { ResourcesWrapper, ResourceGroup, ResourcesTopicTitle, ContentTypeBadge, constants } from '@ndla/ui';
@@ -126,11 +126,7 @@ class Resources extends Component {
       });
     }
 
-    const allResources = showUngrouped
-      ? flattenResources.map((r, index) => {
-          return { ...r, extraBottomMargin: (index + 1) % 4 === 0 };
-        })
-      : [];
+    const allResources = showUngrouped ? flattenResources : [];
 
     return (
       <ResourcesWrapper

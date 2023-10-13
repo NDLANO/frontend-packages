@@ -20,6 +20,7 @@ import { HeartButtonType } from './types';
 interface Props {
   embed: AudioMetaData;
   heartButton?: HeartButtonType;
+  lang?: string;
 }
 
 export const getFirstNonEmptyLicenseCredits = (authors: {
@@ -39,8 +40,6 @@ const imageMetaToMockEmbed = (
 ): Extract<ImageMetaData, { status: 'success' }> => ({
   resource: 'image',
   status: 'success',
-  // Make sure the seq is unused. It's rarely used, but it's nice to ensure uniqueness.
-  seq: imageMeta.seq + 0.1,
   // We check that this exists where the function is used.
   data: imageMeta.data.imageMeta!,
   embedData: {
@@ -50,12 +49,12 @@ const imageMetaToMockEmbed = (
   },
 });
 
-const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
+const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
   if (embed.status === 'error') {
     return <EmbedErrorPlaceholder type={embed.embedData.type === 'standard' ? 'audio' : 'podcast'} />;
   }
 
-  const { data, embedData, seq } = embed;
+  const { data, embedData } = embed;
 
   if (embedData.type === 'minimal') {
     return <AudioPlayer speech src={data.audioFile.url} title={data.title.title} />;
@@ -69,10 +68,8 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
 
   const img = coverPhoto && { url: coverPhoto.url, alt: coverPhoto.altText };
 
-  const figureId = `figure-${seq}-${data.id}`;
-
   return (
-    <Figure id={figureId} type="full">
+    <Figure type="full" lang={lang}>
       <AudioPlayer
         description={data.podcastMeta?.introduction ?? ''}
         img={img}

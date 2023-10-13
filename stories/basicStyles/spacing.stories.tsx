@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { spacing } from '@ndla/core';
 import { defaultParameters } from '../defaults';

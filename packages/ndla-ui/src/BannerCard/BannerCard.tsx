@@ -51,14 +51,14 @@ const TextWrapper = styled.div`
 
 const ContentText = styled.p`
   font-size: ${fonts.sizes(16)};
-  color: ${colors.brand.grey};
+  color: ${colors.text.primary};
   margin: 0;
   padding-top: 10px;
   padding-bottom: 10px;
 `;
 const LinkText = styled(SafeLink)`
   font-size: ${fonts.sizes(16)};
-  color: ${colors.brand.grey};
+  color: ${colors.brand.primary};
 `;
 const TitleText = styled.h2`
   margin-top: 7px;
@@ -79,9 +79,9 @@ type BannerProps = {
   content: { content: string; lang?: string };
   linkText: { text: string; lang?: string };
 };
-export const BannerCard = ({ link, title, content, linkText, image }: BannerProps) => {
+export const BannerCard = ({ link, title, content, linkText, image, ...rest }: BannerProps) => {
   return (
-    <BannerWrapper>
+    <BannerWrapper {...rest}>
       <ImageWrapper>
         <StyledImage alt={image.altText} src={image.imageSrc} />
       </ImageWrapper>

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
 import { Modal, ModalContent, ModalTrigger } from './Modal';

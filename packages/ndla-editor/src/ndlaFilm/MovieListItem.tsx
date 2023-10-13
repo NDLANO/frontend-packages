@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import { MouseEvent } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, colors, fonts, animations } from '@ndla/core';

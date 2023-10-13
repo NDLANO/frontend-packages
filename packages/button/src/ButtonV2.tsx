@@ -8,7 +8,7 @@
 
 import { css, SerializedStyles } from '@emotion/react';
 import { colors, fonts, misc, spacing } from '@ndla/core';
-import React, { ButtonHTMLAttributes, forwardRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { themes } from './themes';
 import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonFontWeight } from './types';
 

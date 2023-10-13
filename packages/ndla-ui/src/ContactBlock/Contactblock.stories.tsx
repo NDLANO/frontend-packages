@@ -41,6 +41,7 @@ export default {
         ],
         processors: [],
         rightsholders: [],
+        processed: false,
       },
       tags: {
         tags: ['Sigurd', 'Trageton', 'Portrett'],

@@ -5,7 +5,7 @@
  *
  */
 
-import { Carousel, CalculatedCarouselProps } from '@ndla/carousel';
+import { Carousel } from '@ndla/carousel';
 import styled from '@emotion/styled';
 import { IconButtonV2 } from '@ndla/button';
 import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
@@ -20,8 +20,6 @@ interface Props {
   slideBackwardsLabel: string;
   slideForwardsLabel: string;
   resourceTypes: MovieResourceType[];
-  autoSizedProps: CalculatedCarouselProps;
-  resizeThumbnailImages?: boolean;
 }
 
 const StyledSection = styled.section`
@@ -31,17 +29,9 @@ const StyledSection = styled.section`
   }
 `;
 
-const FilmMovieList = ({
-  name,
-  movies = [],
-  slideBackwardsLabel,
-  slideForwardsLabel,
-  resourceTypes = [],
-  autoSizedProps,
-  resizeThumbnailImages,
-}: Props) => (
+const FilmMovieList = ({ name, movies = [], slideBackwardsLabel, slideForwardsLabel, resourceTypes = [] }: Props) => (
   <StyledSection>
-    {!!name && <StyledHeadingH2 marginLeft={autoSizedProps.margin}>{name}</StyledHeadingH2>}
+    {!!name && <StyledHeadingH2>{name}</StyledHeadingH2>}
     <Carousel
       leftButton={
         <IconButtonV2 aria-label={slideBackwardsLabel}>
@@ -54,15 +44,8 @@ const FilmMovieList = ({
         </IconButtonV2>
       }
       items={movies.map((movie) => (
-        <FilmContentCard
-          key={movie.id}
-          movie={movie}
-          columnWidth={autoSizedProps.columnWidth}
-          resourceTypes={resourceTypes}
-          resizeThumbnailImages={resizeThumbnailImages}
-        />
+        <FilmContentCard key={movie.id} movie={movie} type="list" lazy resourceTypes={resourceTypes} />
       ))}
-      {...autoSizedProps}
     />
   </StyledSection>
 );

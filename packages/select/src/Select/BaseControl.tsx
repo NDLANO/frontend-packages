@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { ControlProps } from 'react-select';
@@ -96,7 +95,6 @@ const BaseControl = <T extends boolean>({
     data-has-value={hasValue}
     ref={innerRef}
     {...innerProps}
-    {...rest}
   >
     {children}
   </StyledBaseControl>

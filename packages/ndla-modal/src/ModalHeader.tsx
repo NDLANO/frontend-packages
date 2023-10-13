@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLProps, ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 `;
 const ModalHeader = ({ children, ...rest }: Props) => {
   return (
-    <Wrapper data-cy="modal-header" {...rest}>
+    <Wrapper data-testid="modal-header" {...rest}>
       {children}
     </Wrapper>
   );

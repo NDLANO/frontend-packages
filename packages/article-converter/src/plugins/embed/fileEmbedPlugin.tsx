@@ -20,7 +20,6 @@ export const fileEmbedPlugin: PluginType = (element) => {
   } else {
     return (
       <FileV2
-        id={`file-${data.seq}`}
         url={url}
         title={title}
         fileExists={data.status === 'success' ? !!data.data.exists : false}

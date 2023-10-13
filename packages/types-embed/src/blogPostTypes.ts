@@ -17,6 +17,7 @@ export type BlogPostEmbedData = {
   size?: 'normal' | 'large';
   author?: string;
   url: string;
+  alt?: string;
 };
 
 export interface BlogPostMeta {

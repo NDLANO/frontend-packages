@@ -16,11 +16,14 @@ const ContentWrapper = styled.div`
   align-items: center;
   padding: ${spacing.small};
   align-items: center;
-  max-width: 215px;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding: ${spacing.medium} ${spacing.large};
+  }
 `;
 
 const StyledImage = styled.img`
-  width: 100%;
+  height: 150px;
+  width: 150px;
 `;
 
 const TitleWrapper = styled.div`
@@ -61,7 +64,7 @@ interface Props {
 const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper>
-      <StyledImage src={image?.src} alt={image?.alt} />
+      <StyledImage src={image?.src} width={150} height={150} alt={image?.alt} />
       <TitleWrapper>{title}</TitleWrapper>
       <SubTitleWrapper>{subtitle}</SubTitleWrapper>
     </ContentWrapper>

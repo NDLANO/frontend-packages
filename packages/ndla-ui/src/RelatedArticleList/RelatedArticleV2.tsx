@@ -12,8 +12,8 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
+import { HeadingLevel } from '@ndla/typography';
 import SectionHeading from '../SectionHeading';
-import { HeadingLevel } from '../types';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { contentTypes } from '../model/ContentType';
 

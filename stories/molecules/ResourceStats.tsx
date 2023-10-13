@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ButtonV2 } from '@ndla/button';
 import { Spinner } from '@ndla/icons';
 

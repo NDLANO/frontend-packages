@@ -6,7 +6,7 @@
  *
  */
 
-import React, { FormEvent } from 'react';
+import { FormEvent } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ModalBody, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';

@@ -9,7 +9,6 @@
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
-import { generateListResets } from './OrderedList';
 
 const StyledUl = styled.ul`
   padding-left: ${spacing.nsmall} !important;
@@ -18,9 +17,7 @@ const StyledUl = styled.ul`
   ${fonts.sizes('18px', '29px')};
 
   ul {
-    list-style-image: none;
     padding-left: ${spacing.nsmall};
-
     margin-left: 0 !important;
   }
 
@@ -37,9 +34,6 @@ const StyledUl = styled.ul`
       margin-bottom: ${spacing.nsmall} !important;
     }
   }
-
-  // List reset classes
-  ${generateListResets()}
 `;
 
 const UnOrderedList = forwardRef<HTMLUListElement, HTMLAttributes<HTMLUListElement>>(({ children, ...rest }, ref) => {

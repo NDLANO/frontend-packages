@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ChangeEvent, KeyboardEvent, MouseEvent, Component } from 'react';
+import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from 'react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { QueryObject } from './AudioSearch';
@@ -54,59 +54,41 @@ interface Props {
   onSearchQuerySubmit: (query: QueryObject) => void;
 }
 
-interface State {
-  queryObject: QueryObject;
-}
+const AudioSearchForm = ({ queryObject: query, translations, searching, onSearchQuerySubmit }: Props) => {
+  const [queryObject, setQueryObject] = useState(query);
 
-class AudioSearchForm extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      queryObject: props.queryObject,
-    };
-    this.onKeyPress = this.onKeyPress.bind(this);
-    this.handleQueryChange = this.handleQueryChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  onKeyPress(evt: KeyboardEvent<HTMLInputElement>) {
+  const onKeyPress = (evt: KeyboardEvent<HTMLInputElement>) => {
     if (evt.key === 'Enter') {
-      this.handleSubmit(evt);
+      handleSubmit(evt);
     }
-  }
+  };
 
-  handleQueryChange({ target: { value } }: ChangeEvent<HTMLInputElement>) {
-    this.setState((prevState) => ({
-      queryObject: {
-        ...prevState.queryObject,
-        query: value,
-      },
+  const handleQueryChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+    setQueryObject((prevState) => ({
+      ...prevState,
+      query: value,
     }));
-  }
+  };
 
-  handleSubmit(evt: KeyboardEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement>) {
+  const handleSubmit = (evt: KeyboardEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
-    this.props.onSearchQuerySubmit(this.state.queryObject);
-  }
+    onSearchQuerySubmit(queryObject);
+  };
 
-  render() {
-    const { searching, translations } = this.props;
-
-    return (
-      <AudioSearchFormWrapper>
-        <FormInput
-          type="text"
-          onChange={this.handleQueryChange}
-          onKeyPress={this.onKeyPress}
-          value={this.state.queryObject?.query}
-          placeholder={translations.searchPlaceholder}
-        />
-        <FormButton onClick={this.handleSubmit} disabled={searching}>
-          {translations.searchButtonTitle}
-        </FormButton>
-      </AudioSearchFormWrapper>
-    );
-  }
-}
+  return (
+    <AudioSearchFormWrapper>
+      <FormInput
+        type="text"
+        onChange={handleQueryChange}
+        onKeyPress={onKeyPress}
+        value={queryObject?.query}
+        placeholder={translations.searchPlaceholder}
+      />
+      <FormButton onClick={handleSubmit} disabled={searching}>
+        {translations.searchButtonTitle}
+      </FormButton>
+    </AudioSearchFormWrapper>
+  );
+};
 
 export default AudioSearchForm;

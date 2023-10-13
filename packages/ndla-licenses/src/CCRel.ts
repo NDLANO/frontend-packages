@@ -41,4 +41,7 @@ export const metaTypes = {
   contributor: 'contributor',
   title: 'title',
   other: 'other',
-};
+  otherWithoutDescription: 'otherWithoutDescription',
+} as const;
+
+export type MetaType = keyof typeof metaTypes;

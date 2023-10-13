@@ -14,16 +14,14 @@ import styled from '@emotion/styled';
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
 import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
-import { Article as ArticleType, Locale } from '../types';
-import ArticleContent from './ArticleContent';
+import { Heading } from '@ndla/typography';
+import { Article as ArticleType } from '../types';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
-import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
+import ArticleNotions from './ArticleNotions';
 import ArticleAccessMessage from './ArticleAccessMessage';
 import MessageBox from '../Messages/MessageBox';
-import { ConceptNotionType } from '../Notion/ConceptNotion';
-import { Heading } from '../Typography';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -31,13 +29,12 @@ const classes = new BEMHelper({
 });
 
 type ArticleWrapperProps = {
-  id: string;
   modifier?: string;
   children: ReactNode;
 };
 
-export const ArticleWrapper = forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
-  <article id={id} {...classes(undefined, modifier)} ref={ref}>
+export const ArticleWrapper = forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier }, ref) => (
+  <article {...classes(undefined, modifier)} ref={ref}>
     {children}
   </article>
 ));
@@ -46,9 +43,11 @@ type ArticleTitleProps = {
   icon?: ReactNode;
   label?: string;
   children: ReactNode;
+  id: string;
+  lang?: string;
 };
 
-export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
+export const ArticleTitle = ({ children, icon, label, id, lang }: ArticleTitleProps) => {
   const modifiers = [];
   if (icon) {
     modifiers.push('icon');
@@ -64,7 +63,7 @@ export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <Heading element="h1" headingStyle="h1" tabIndex={-1}>
+      <Heading element="h1" headingStyle="h1-resource" id={id} tabIndex={-1} lang={lang}>
         {children}
       </Heading>
     </div>
@@ -74,19 +73,29 @@ export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
 type ArticleIntroductionProps = {
   children: ReactNode;
   renderMarkdown: (text: string) => string;
+  lang?: string;
 };
 
 export const ArticleIntroduction = ({
   children,
+  lang,
   renderMarkdown = (text) => {
     return text;
   },
 }: ArticleIntroductionProps) => {
   if (typeof children === 'string') {
-    return <div className="article_introduction">{parse(renderMarkdown(children))}</div>;
+    return (
+      <div className="article_introduction" lang={lang}>
+        {parse(renderMarkdown(children))}
+      </div>
+    );
   }
   if (children) {
-    return <div className="article_introduction">{children}</div>;
+    return (
+      <div className="article_introduction" lang={lang}>
+        {children}
+      </div>
+    );
   }
   return null;
 };
@@ -103,7 +112,6 @@ const ArticleFavoritesButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   transform: translate(${spacing.xsmall}, -${spacing.normal});
-  height: 0;
   ${mq.range({ from: breakpoints.tablet })} {
     transform: translate(${spacing.normal}, -${spacing.medium});
   }
@@ -124,22 +132,20 @@ type Props = {
   children?: ReactNode;
   messages: Messages;
   contentTransformed?: boolean;
-  locale: Locale;
   messageBoxLinks?: [];
   competenceGoals?: ReactNode;
   id: string;
   renderMarkdown: (text: string) => string;
-  notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
+  notions?: ReactNode;
   accessMessage?: string;
+  lang?: string;
 };
 
-const getArticleContent = (content: any, locale: Locale, contentTransformed?: boolean) => {
+const getArticleContent = (content: any, contentTransformed?: boolean) => {
   if (contentTransformed) {
     return content;
   }
   switch (typeof content) {
-    case 'string':
-      return <ArticleContent content={content} locale={locale} />;
     case 'function':
       return content();
     default:
@@ -157,12 +163,12 @@ export const Article = ({
   children,
   competenceGoals,
   id,
-  locale,
   notions,
   renderMarkdown,
   accessMessage,
   heartButton,
   contentTransformed,
+  lang,
 }: Props) => {
   const articleRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -190,20 +196,14 @@ export const Article = ({
     }
   }, [wrapperRef]);
 
-  const {
-    title,
-    introduction,
-    published,
-    content,
-    footNotes,
-    copyright: { license: licenseObj, creators, rightsholders, processors },
-  } = article;
+  const { title, introduction, published, content, footNotes, copyright } = article;
 
-  const authors = creators.length || rightsholders.length ? creators : processors;
+  const authors =
+    copyright?.creators.length || copyright?.rightsholders.length ? copyright.creators : copyright?.processors;
 
   return (
     <div ref={wrapperRef}>
-      <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
+      <ArticleWrapper modifier={modifier} ref={articleRef}>
         <LayoutItem layout="center">
           {accessMessage && <ArticleAccessMessage message={accessMessage} />}
 
@@ -214,31 +214,28 @@ export const Article = ({
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
-
-            <ArticleTitle icon={icon} label={messages.label}>
+            <ArticleTitle id={id} icon={icon} label={messages.label} lang={lang}>
               {title}
             </ArticleTitle>
-            <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
+            <ArticleIntroduction renderMarkdown={renderMarkdown} lang={lang}>
+              {introduction}
+            </ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">
           {notions && showExplainNotions && (
-            <ArticleNotions
-              notions={notions.list}
-              relatedContent={notions.related}
-              buttonOffsetRight={articlePositionRight}
-            />
+            <ArticleNotions buttonOffsetRight={articlePositionRight}>{notions}</ArticleNotions>
           )}
-          {getArticleContent(content, locale, contentTransformed)}
+          {getArticleContent(content, contentTransformed)}
         </LayoutItem>
 
         <LayoutItem layout="center">
           <ArticleByline
             footnotes={footNotes}
             authors={authors}
-            suppliers={rightsholders}
+            suppliers={copyright?.rightsholders}
             published={published}
-            license={licenseObj?.license ?? ''}
+            license={copyright?.license?.license ?? ''}
             licenseBox={licenseBox}
           />
         </LayoutItem>

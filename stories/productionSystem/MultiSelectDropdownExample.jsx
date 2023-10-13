@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Downshift from 'downshift';
 import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
 import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from '@ndla/forms';
@@ -197,7 +197,7 @@ class MultiSelectDropdownExample extends Component {
                 <DropdownInput
                   multiSelect={useTags === '1'}
                   {...getInputProps(inputProps)}
-                  data-testid={'dropdownInput'}
+                  data-testid="dropdown-input"
                   idField="title"
                   labelField="title"
                   iconRight={loading ? <StyledSpinner size="normal" /> : <Search />}

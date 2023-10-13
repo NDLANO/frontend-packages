@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Translation, TranslationLine } from '@ndla/ui';
 import { defaultParameters } from '../defaults';

@@ -6,147 +6,180 @@
  *
  */
 
-import { Fragment, Component, ChangeEvent } from 'react';
+import { useMemo } from 'react';
 import styled from '@emotion/styled';
-import { uuid } from '@ndla/util';
-import { spacing, fonts, colors } from '@ndla/core';
+import { uuid as uuidFunc } from '@ndla/util';
+import { Text } from '@ndla/typography';
+import { spacing, fonts, colors, misc } from '@ndla/core';
+import { Indicator, Item, RadioGroupItemProps, RadioGroupProps, Root } from '@radix-ui/react-radio-group';
 
 interface Props {
   selected?: string;
+  className?: string;
   options: {
     title: string;
     value: string;
     disabled?: boolean;
   }[];
+  direction?: 'horizontal' | 'vertical';
   label?: string;
   uniqeIds?: boolean;
   onChange: (value: string) => void;
 }
 
-interface State {
-  selected: string;
-}
-
-const RadioButtonGroupWrapper = styled.div`
-  padding: ${spacing.small} 0;
+const GroupLabel = styled(Text)`
   font-family: ${fonts.sans};
+  font-weight: ${fonts.weight.semibold};
+`;
+
+const RadioButtonGroupLabel = styled(Text)`
+  color: ${colors.brand.primary};
+  font-family: ${fonts.sans};
+  &[data-disabled='true'] {
+    color: ${colors.brand.light};
+  }
+`;
+
+const RadioButtonWrapper = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const RadioButtonGroupLabelHeading = styled.h1`
-  ${fonts.sizes('16px', '20px')};
-  margin: 0 ${spacing.normal} 0 0;
-  font-weight: 600;
-`;
-
-const RadioButtonGroupLabel = styled.label`
-  ${fonts.sizes('16px', '28px')};
-  color: ${colors.brand.primary};
-  align-items: center;
-  display: inline-flex;
-  &:before {
-    content: '';
-    margin-right: ${spacing.small};
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    border: 2px solid ${colors.brand.tertiary};
-    transition: 200ms border-color ease;
+  padding: 0px ${spacing.small};
+  gap: ${spacing.small};
+  &:focus-within {
+    outline: 2px solid ${colors.brand.primary};
+    border-radius: ${misc.borderRadius};
   }
-  &:after {
+`;
+
+export const StyledRadioGroupItem = styled(Item)`
+  all: unset;
+  transition: 200ms all ease;
+  box-shadow: 0 0 0 2px ${colors.brand.light};
+  min-width: ${spacing.nsmall};
+  min-height: ${spacing.nsmall};
+  width: ${spacing.nsmall};
+  height: ${spacing.nsmall};
+  border-radius: 100%;
+  &[data-state='checked'] {
+    box-shadow: 0 0 0 2px ${colors.brand.primary};
+  }
+`;
+
+const RadioButtonIndicator = styled(Indicator)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  &::after {
     content: '';
-    background: transparent;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    position: absolute;
-    transform: translateX(5px) scale(0, 0);
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    background-color: ${colors.brand.light};
     transition: 200ms all ease;
   }
-  &:not(:last-child) {
-    margin-right: ${spacing.medium};
+  &:hover,
+  &:focus-visible,
+  &[data-state='checked'] {
+    &::after {
+      width: ${spacing.small};
+      height: ${spacing.small};
+    }
   }
-`;
+  &[data-disabled] {
+    &::after {
+      width: 0px;
+      height: 0px;
+    }
+  }
 
-const RadioButtonGroupInput = styled.input`
-  opacity: 0;
-  position: absolute;
-  width: auto;
-  &:hover + ${RadioButtonGroupLabel} {
-    outline: 1px dotted #212121;
-    outline: -webkit-focus-ring-color auto 5px;
-    &:after {
-      transform: translateX(5px) scale(1, 1);
-      background: ${colors.brand.tertiary};
-    }
-  }
-  // emotion does not seem to support several selectors combined with targeting another emotion component
-  // so we duplicate the css for :hover and :focus.
-  &:focus + ${RadioButtonGroupLabel} {
-    outline: 1px dotted #212121;
-    outline: -webkit-focus-ring-color auto 5px;
-    &:after {
-      transform: translateX(5px) scale(1, 1);
-      background: ${colors.brand.tertiary};
-    }
-  }
-  &:checked + ${RadioButtonGroupLabel} {
-    &:before {
-      border-color: ${colors.brand.primary};
-    }
-    &:after {
-      transform: translateX(5px) scale(1, 1);
-      background: ${colors.brand.primary};
+  &[data-state='checked'] {
+    &::after {
+      background-color: ${colors.brand.primary};
     }
   }
 `;
 
-class RadioButtonGroup extends Component<Props, State> {
-  private readonly uuid?: string;
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      selected: props.selected || props.options[0].value,
-    };
-    this.handleOnChange = this.handleOnChange.bind(this);
-    this.uuid = this.props.uniqeIds ? uuid() : undefined;
+export const StyledRadioButtonGroupRoot = styled(Root)`
+  padding: ${spacing.small} 0;
+  gap: ${spacing.small};
+  display: flex;
+  font-family: ${fonts.sans};
+  align-items: center;
+  &[data-direction='vertical'] {
+    flex-direction: column;
+    align-items: unset;
   }
+`;
 
-  handleOnChange(e: ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      selected: e.target.value,
-    });
-    this.props.onChange(e.target.value);
-  }
+interface ItemProps extends RadioGroupItemProps {}
 
-  render() {
-    return (
-      <section>
-        <RadioButtonGroupWrapper role="radiogroup">
-          {this.props.label && <RadioButtonGroupLabelHeading>{this.props.label}</RadioButtonGroupLabelHeading>}
-          {this.props.options.map((option) => {
-            const id = this.uuid ? `${this.uuid}_${option.value}` : option.value;
-            return (
-              <Fragment key={option.value}>
-                <RadioButtonGroupInput
-                  disabled={option.disabled}
-                  aria-checked={this.state.selected === option.value}
-                  checked={this.state.selected === option.value}
-                  type="radio"
-                  value={option.value}
-                  id={id}
-                  name={id}
-                  onChange={this.handleOnChange}
-                />
-                <RadioButtonGroupLabel htmlFor={id}>{option.title}</RadioButtonGroupLabel>
-              </Fragment>
-            );
-          })}
-        </RadioButtonGroupWrapper>
-      </section>
-    );
-  }
+export const RadioGroupItem = ({ value, disabled, id, title, className }: ItemProps) => {
+  return (
+    <RadioButtonWrapper key={value} className={className}>
+      <StyledRadioGroupItem disabled={disabled} value={value} id={id}>
+        <RadioButtonIndicator forceMount />
+      </StyledRadioGroupItem>
+      <RadioButtonGroupLabel element="label" textStyle="content" margin="none" htmlFor={id} data-disabled={disabled}>
+        {title}
+      </RadioButtonGroupLabel>
+    </RadioButtonWrapper>
+  );
+};
+
+interface RootProps extends RadioGroupProps {
+  direction?: 'horizontal' | 'vertical';
 }
+
+export const RadioButtonGroupRoot = ({ children, direction, ...rest }: RootProps) => {
+  return (
+    <StyledRadioButtonGroupRoot data-direction={direction} {...rest}>
+      {children}
+    </StyledRadioButtonGroupRoot>
+  );
+};
+
+const RadioButtonGroup = ({
+  selected,
+  options,
+  label,
+  uniqeIds,
+  onChange,
+  direction = 'horizontal',
+  className,
+}: Props) => {
+  const uuid = useMemo(() => (uniqeIds ? uuidFunc() : undefined), [uniqeIds]);
+
+  return (
+    <RadioButtonGroupRoot
+      data-direction={direction}
+      value={selected}
+      defaultValue={selected ?? options[0].value}
+      className={className}
+      onValueChange={onChange}
+    >
+      {label && (
+        <GroupLabel element="span" textStyle="content">
+          {label}
+        </GroupLabel>
+      )}
+      {options.map((option) => {
+        const id = uuid ? `${uuid}_${option.value}` : option.value;
+        return (
+          <RadioGroupItem
+            key={option.value}
+            disabled={option.disabled}
+            value={option.value}
+            id={id}
+            title={option.title}
+          />
+        );
+      })}
+    </RadioButtonGroupRoot>
+  );
+};
 
 export default RadioButtonGroup;

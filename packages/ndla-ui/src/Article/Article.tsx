@@ -8,7 +8,6 @@
 
 import { ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
-import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 
 import { useIntersectionObserver } from '@ndla/hooks';
@@ -72,24 +71,10 @@ export const ArticleTitle = ({ children, icon, label, id, lang }: ArticleTitlePr
 
 type ArticleIntroductionProps = {
   children: ReactNode;
-  renderMarkdown: (text: string) => string;
   lang?: string;
 };
 
-export const ArticleIntroduction = ({
-  children,
-  lang,
-  renderMarkdown = (text) => {
-    return text;
-  },
-}: ArticleIntroductionProps) => {
-  if (typeof children === 'string') {
-    return (
-      <Text textStyle="ingress" lang={lang}>
-        {parse(renderMarkdown(children))}
-      </Text>
-    );
-  }
+export const ArticleIntroduction = ({ children, lang }: ArticleIntroductionProps) => {
   if (children) {
     return (
       <Text textStyle="ingress" lang={lang}>
@@ -135,7 +120,6 @@ type Props = {
   messageBoxLinks?: [];
   competenceGoals?: ReactNode;
   id: string;
-  renderMarkdown: (text: string) => string;
   notions?: ReactNode;
   accessMessage?: string;
   lang?: string;
@@ -164,7 +148,6 @@ export const Article = ({
   competenceGoals,
   id,
   notions,
-  renderMarkdown,
   accessMessage,
   heartButton,
   contentTransformed,
@@ -217,9 +200,7 @@ export const Article = ({
             <ArticleTitle id={id} icon={icon} label={messages.label} lang={lang}>
               {title}
             </ArticleTitle>
-            <ArticleIntroduction renderMarkdown={renderMarkdown} lang={lang}>
-              {introduction}
-            </ArticleIntroduction>
+            <ArticleIntroduction lang={lang}>{introduction}</ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">

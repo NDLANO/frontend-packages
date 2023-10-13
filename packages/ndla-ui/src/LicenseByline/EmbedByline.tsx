@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useMemo } from 'react';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -17,14 +17,13 @@ import { ICopyright as AudioCopyright } from '@ndla/types-backend/audio-api';
 import { IDraftCopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
 import { BrightcoveCopyright } from '@ndla/types-embed';
 import { WarningOutline } from '@ndla/icons/common';
-import { parseMarkdown } from '@ndla/util';
 import LicenseLink from './LicenseLink';
 import LicenseDescription from './LicenseDescription';
 
 interface BaseProps {
   topRounded?: boolean;
   bottomRounded?: boolean;
-  description?: string;
+  description?: ReactNode;
   children?: ReactNode;
   visibleAlt?: string;
   error?: true | false;
@@ -132,7 +131,7 @@ const EmbedByline = ({
   type,
   topRounded,
   bottomRounded,
-  description: descriptionProp,
+  description,
   children,
   visibleAlt,
   first = true,
@@ -140,12 +139,6 @@ const EmbedByline = ({
   ...props
 }: Props) => {
   const { t, i18n } = useTranslation();
-  const strippedDescription = descriptionProp?.trim();
-
-  const description = useMemo(() => {
-    const stripped = strippedDescription?.trim() ?? '';
-    return parseMarkdown(stripped, 'caption');
-  }, [strippedDescription]);
 
   if (props.error) {
     const typeString = type === 'h5p' ? 'H5P' : t(`embed.type.${type}`).toLowerCase();
@@ -164,7 +157,7 @@ const EmbedByline = ({
 
   return (
     <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-first={first}>
-      {!!strippedDescription?.length && description && <LicenseDescription description={description} />}
+      {description && <LicenseDescription description={description} />}
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
       <RightsWrapper data-grid={inGrid}>
         {license ? <LicenseLink license={license} asLink={!!license.url.length} /> : null}

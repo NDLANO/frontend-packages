@@ -8,7 +8,6 @@
 import { Fragment, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import { parseMarkdown } from '@ndla/util';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
 const ContentWrapper = styled.div`
@@ -83,7 +82,8 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
         {imageElement}
         {visualElement}
         <TextWrapper hasVisualElement={!!(imageElement || visualElement)}>
-          {parseMarkdown(`**${title.trim()}** \u2013 ${text}`, 'body')}
+          <b>{title.trim()}</b>
+          {text}
           {!!labels.length && (
             <LabelsContainer>
               {t('searchPage.resultType.notionLabels')}

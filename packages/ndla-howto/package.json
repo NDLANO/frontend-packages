@@ -33,8 +33,7 @@
     "@ndla/notion": "^6.0.0",
     "@ndla/tooltip": "^4.1.21",
     "@ndla/ui": "^46.1.0",
-    "@ndla/util": "^3.2.0",
-    "remarkable": "^2.0.1"
+    "@ndla/util": "^3.2.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

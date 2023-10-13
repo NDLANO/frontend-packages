@@ -17,7 +17,6 @@ export { resizeObserver } from './resizeObserver';
 export { setCookie, getCookie, deleteCookie, isValidCookie } from './cookieHandler';
 export { printPage } from './printPage';
 export { default as joinArrayWithConjunction } from './joinArrayWithConjunction';
-export { parseMarkdown } from './markdownHelpers';
 export { validateTranslationFiles } from './translationValidation';
 export { default as useForwardedRef } from './useForwardedRef';
 export { default as NoSSR } from './nossr/NoSSR';

@@ -49,7 +49,7 @@
     "@ndla/tooltip": "^4.1.21",
     "@ndla/typography": "^0.2.1",
     "@ndla/util": "^3.2.0",
-    "@radix-ui/react-popover": "^1.0.6",
+    "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-radio-group": "^1.1.3",
     "@radix-ui/react-slider": "^1.1.2",
     "date-fns": "^2.30.0",

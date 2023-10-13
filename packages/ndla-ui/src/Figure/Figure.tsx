@@ -51,6 +51,7 @@ interface Props {
   resizeIframe?: boolean;
   noFigcaption?: boolean;
   className?: string;
+  lang?: string;
 }
 
 export default Figure;

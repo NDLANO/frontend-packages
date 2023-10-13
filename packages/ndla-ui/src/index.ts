@@ -121,16 +121,6 @@ export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
-export { UserInfo } from './User';
-export type {
-  AffiliationType,
-  FeideGoGroup,
-  FeideGroup,
-  FeideOrg,
-  FeideUserApiType,
-  FeideMembershipType,
-  FeideUser,
-} from './User';
 
 export { default as resourceTypeColor } from './utils/resourceTypeColor';
 

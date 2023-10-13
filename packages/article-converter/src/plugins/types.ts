@@ -20,6 +20,7 @@ export interface TransformOptions {
   previewAlt?: boolean;
   frontendDomain?: string;
   components?: DynamicComponents;
+  articleLanguage?: string;
 }
 
 export type PluginType = (

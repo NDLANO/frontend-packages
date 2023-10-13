@@ -9,7 +9,7 @@
 import { OrderedList } from '@ndla/ui';
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
-export const olPlugin: PluginType = (node, opts) => {
+export const olPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
   const letterClass = node.attribs['data-type'] === 'letters' ? 'ol-list--roman' : false;
   const num = node.attribs['start'];
@@ -17,8 +17,8 @@ export const olPlugin: PluginType = (node, opts) => {
   const classes = [node.attribs.class ?? false, letterClass, numClass].filter((c): c is string => !!c).join(' ');
 
   return (
-    <OrderedList {...props} className={classes.length ? classes : undefined}>
-      {domToReact(node.children, opts)}
+    <OrderedList {...props} className={classes.length ? classes : undefined} lang={opts.articleLanguage}>
+      {domToReact(node.children, converterOpts)}
     </OrderedList>
   );
 };

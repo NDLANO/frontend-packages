@@ -43,9 +43,10 @@ type ArticleTitleProps = {
   label?: string;
   children: ReactNode;
   id: string;
+  lang?: string;
 };
 
-export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) => {
+export const ArticleTitle = ({ children, icon, label, id, lang }: ArticleTitleProps) => {
   const modifiers = [];
   if (icon) {
     modifiers.push('icon');
@@ -61,7 +62,7 @@ export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) =
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <Heading element="h1" headingStyle="h1-resource" id={id} tabIndex={-1}>
+      <Heading element="h1" headingStyle="h1-resource" id={id} tabIndex={-1} lang={lang}>
         {children}
       </Heading>
     </div>
@@ -70,11 +71,16 @@ export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) =
 
 type ArticleIntroductionProps = {
   children: ReactNode;
+  lang?: string;
 };
 
 export const ArticleIntroduction = ({ children }: ArticleIntroductionProps) => {
   if (children) {
-    return <div className="article_introduction">{children}</div>;
+    return (
+      <div className="article_introduction" lang={lang}>
+        {children}
+      </div>
+    );
   }
   return null;
 };
@@ -116,6 +122,7 @@ type Props = {
   id: string;
   notions?: ReactNode;
   accessMessage?: string;
+  lang?: string;
 };
 
 const getArticleContent = (content: any, contentTransformed?: boolean) => {
@@ -144,6 +151,7 @@ export const Article = ({
   accessMessage,
   heartButton,
   contentTransformed,
+  lang,
 }: Props) => {
   const articleRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -189,11 +197,10 @@ export const Article = ({
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
-
-            <ArticleTitle id={id} icon={icon} label={messages.label}>
+            <ArticleTitle id={id} icon={icon} label={messages.label} lang={lang}>
               {title}
             </ArticleTitle>
-            <ArticleIntroduction>{introduction}</ArticleIntroduction>
+            <ArticleIntroduction lang={lang}>{introduction}</ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">

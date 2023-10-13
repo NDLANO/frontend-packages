@@ -18,6 +18,7 @@ import { HeartButtonType } from './types';
 interface Props {
   embed: AudioMetaData;
   heartButton?: HeartButtonType;
+  lang?: string;
 }
 
 export const getFirstNonEmptyLicenseCredits = (authors: {
@@ -40,7 +41,7 @@ const imageMetaToMockEmbed = (
   },
 });
 
-const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
+const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
   if (embed.status === 'error') {
     return <EmbedErrorPlaceholder type={embed.embedData.type === 'standard' ? 'audio' : 'podcast'} />;
   }
@@ -58,7 +59,7 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
   const img = coverPhoto && { url: coverPhoto.url, alt: coverPhoto.altText };
 
   return (
-    <Figure type="full">
+    <Figure type="full" lang={lang}>
       <AudioPlayer
         description={data.podcastMeta?.introduction ?? ''}
         img={img}

@@ -74,7 +74,7 @@ type ArticleIntroductionProps = {
   lang?: string;
 };
 
-export const ArticleIntroduction = ({ children }: ArticleIntroductionProps) => {
+export const ArticleIntroduction = ({ children, lang }: ArticleIntroductionProps) => {
   if (children) {
     return (
       <div className="article_introduction" lang={lang}>

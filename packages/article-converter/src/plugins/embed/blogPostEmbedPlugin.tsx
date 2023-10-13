@@ -16,7 +16,7 @@ export const errorSvgSrc = `data:image/svg+xml;charset=UTF-8,%3Csvg fill='%238A8
 export const blogPostEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as BlogPostMetaData;
-  const { title, author, url, size, language } = data.embedData;
+  const { title, author, url, size, language, alt } = data.embedData;
   return (
     <BlogPostV2
       title={{ title, language }}
@@ -25,7 +25,7 @@ export const blogPostEmbedPlugin: PluginType = (element, _, opts) => {
       size={size}
       path={opts.path}
       metaImage={{
-        alt: '',
+        alt: alt ? alt : data.status === 'success' ? data.data.metaImage?.alttext.alttext ?? '' : '',
         url: data.status === 'success' ? data.data.metaImage?.image.imageUrl ?? errorSvgSrc : errorSvgSrc,
       }}
     />

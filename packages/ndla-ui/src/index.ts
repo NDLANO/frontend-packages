@@ -42,8 +42,6 @@ export { default as Table, TableStyling } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
 
-export { createUniversalPortal } from './utils/createUniversalPortal';
-
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as Masthead, getMastheadHeight, useMastheadHeight, SkipToMainContent } from './Masthead';
@@ -97,14 +95,7 @@ export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter
 
 export { Footer, EditorName, FooterText } from './Footer';
 
-export {
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-  FigureExpandButton,
-  FigureOpenDialogButton,
-  FigureBylineExpandButton,
-} from './Figure';
+export { Figure, FigureExpandButton, FigureOpenDialogButton, FigureBylineExpandButton } from './Figure';
 export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
@@ -130,16 +121,6 @@ export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
-export { UserInfo } from './User';
-export type {
-  AffiliationType,
-  FeideGoGroup,
-  FeideGroup,
-  FeideOrg,
-  FeideUserApiType,
-  FeideMembershipType,
-  FeideUser,
-} from './User';
 
 export { default as resourceTypeColor } from './utils/resourceTypeColor';
 
@@ -149,7 +130,7 @@ export { MessageBox, MessageBoxTag, MessageBanner } from './Messages';
 
 export { ResourceBox } from './ResourceBox';
 
-export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
+export { default as AudioPlayer } from './AudioPlayer';
 
 export { NavigationBox, NavigationTopicAbout } from './Navigation';
 
@@ -241,8 +222,7 @@ export { default as CopyParagraphButton, CopyParagraphButtonV2 } from './CopyPar
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 
-export { Notion, ConceptNotion } from './Notion';
-export type { NotionVisualElementType, ConceptNotionType } from './Notion';
+export { Notion } from './Notion';
 
 export { BannerCard } from './BannerCard';
 export { Folder, FolderInput } from './MyNdla';

@@ -13,7 +13,6 @@ import { css } from '@emotion/react';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { parseMarkdown } from '@ndla/util';
 import styled from '@emotion/styled';
-import { NotionDialogContent, NotionDialogText } from '@ndla/notion';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { Copyright } from '../types';
 import ImageEmbed from './ImageEmbed';
@@ -50,6 +49,19 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
   heartButton?: HeartButtonType;
   conceptHeartButton?: ReactNode;
 }
+
+const NotionDialogText = styled.div`
+  font-weight: ${fonts.weight.normal};
+  ${fonts.sizes('18px', 1.3)};
+  color: ${colors.text.primary};
+  font-family: ${fonts.sans};
+`;
+
+const NotionDialogContent = styled.div`
+  padding-bottom: ${spacing.normal};
+  display: flex;
+  flex-direction: column;
+`;
 
 const ContentPadding = styled.div`
   padding: ${spacing.normal};

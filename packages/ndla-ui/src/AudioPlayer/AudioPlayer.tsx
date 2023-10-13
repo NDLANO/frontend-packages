@@ -103,7 +103,6 @@ const LinkToTextVersionWrapper = styled.div`
 `;
 
 const TextVersionWrapper = styled.div`
-  white-space: pre-wrap;
   border: 1px solid ${colors.brand.lighter};
   border-top: 0;
   ${fonts.sizes('16px', '30px')};
@@ -151,6 +150,9 @@ const CloseText = styled.span`
 
 const TextVersionText = styled.div`
   max-width: 670px;
+  & span > * {
+    white-space: pre-wrap;
+  }
 `;
 
 const DESCRIPTION_MAX_LENGTH = 200;

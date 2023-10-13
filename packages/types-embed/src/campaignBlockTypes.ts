@@ -20,6 +20,7 @@ export interface CampaignBlockEmbedData {
   urlText: string;
   imageId?: string;
   imageSide?: 'left' | 'right';
+  alt?: string;
 }
 
 export interface CampaignBlockMeta {

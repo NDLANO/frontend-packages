@@ -1267,6 +1267,19 @@ const messages = {
         text: 'Go vurket muhtin resurssa de lea vejolaš merket resurssa fáddágilkoriin. Fáddágilkor lea čoavddasátni man sáhtát geavahit gávdnan dihte ruovttoluotta resurssaide máhpaid rastá. Gávnnat buot fáddágilkoriid maid leat geavahan go válljet mu fáddágilkoriid gurut bealde fálus. Das oainnát maiddái maid resurssaid don leat merken juohke fáddágilkoriin.',
       },
     },
+    minProfil: {
+      title: 'Mun profil',
+      disclaimerTitle: 'Gos eai geavahuvvo mu foto ja namma?',
+      disclaimerText: 'Foto ja nama doarjjaduvvo go doalut diskusijovuodjima arenai.',
+      preferenceTitle: 'Vali sáhtát geavahit nammas go dahkat mappa',
+      preferenceText:
+        'Ditne sáhtát olmmoš sáhttá váldit dát, áigi go dahket mappaid. Vali galgá sihkkarastit buot mappain ja lea válljen sáhttá movttiduvvot. Jus movtta, de addá namma dušše ovdal dáhtu maid dahkat mappaid.',
+      editButtonText: 'Jorgalit profiilagovva',
+      radioButtonText: {
+        option1: 'Namma doarjjaduvvo go dan dahkan mappii',
+        option2: 'Eai doarjjaduvvo namma go dahkan mappii',
+      },
+    },
     resource: {
       add: 'Lasit máhpa/fáddágilkora',
       remove: 'Sihko',

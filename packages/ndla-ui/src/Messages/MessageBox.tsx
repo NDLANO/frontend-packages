@@ -10,14 +10,9 @@ import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { InformationOutline, HumanMaleBoard, Forward, WarningOutline } from '@ndla/icons/common';
 
-// @ts-ignore
-import { Remarkable } from 'remarkable';
 import { CloseButton } from '@ndla/button';
 import { css } from '@emotion/react';
-
-const markdown = new Remarkable({ breaks: true });
-markdown.inline.ruler.enable(['sub', 'sup']);
-markdown.block.ruler.disable(['list', 'table']);
+import { ReactNode } from 'react';
 
 type MessageBoxType = 'ghost' | 'danger';
 
@@ -109,7 +104,7 @@ interface LinkProps {
 
 interface Props {
   type?: MessageBoxType;
-  children?: string;
+  children?: ReactNode;
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
@@ -133,7 +128,7 @@ export const MessageBox = ({ type, children = '', links, showCloseButton, onClos
           <Icon type={type} />
         </IconWrapper>
         <div>
-          <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }} />
+          <TextWrapper>{children}</TextWrapper>
           {links && (
             <LinkWrapper>
               {links.map((x) => (

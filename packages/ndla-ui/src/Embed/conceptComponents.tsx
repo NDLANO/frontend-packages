@@ -11,7 +11,6 @@ import { ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { parseMarkdown } from '@ndla/util';
 import styled from '@emotion/styled';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { Copyright } from '../types';
@@ -26,7 +25,7 @@ export type ConceptType = 'concept' | 'gloss';
 
 export interface ConceptNotionData {
   title: ConceptData['concept']['title'];
-  content?: string;
+  content?: ReactNode;
   metaImage?: {
     url?: string;
     alt?: string;
@@ -210,7 +209,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                 ) : visualElement?.resource === 'external' ? (
                   <ExternalEmbed embed={visualElement} />
                 ) : null}
-                <NotionDialogText>{parseMarkdown(content ?? '', 'body')}</NotionDialogText>
+                {content && <NotionDialogText>{content}</NotionDialogText>}
               </StyledNotionDialogContent>
               {tags && (
                 <ListWrapper>

@@ -10,7 +10,8 @@ import sortBy from 'lodash/sortBy';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { COPYRIGHTED } from '@ndla/licenses';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import parse from 'html-react-parser';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
@@ -62,6 +63,13 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { embedData } = embed;
   const fallbackTitle = `${t('embed.type.video')}: ${embedData.videoid}`;
+  const parsedDescription = useMemo(() => {
+    if (embed.embedData.caption) {
+      return parse(embed.embedData.caption);
+    } else if (embed.status === 'success' && embed.data.description) {
+      return parse(embed.data.description);
+    }
+  }, [embed]);
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -108,12 +116,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
           allowFullScreen
         />
       </div>
-      <EmbedByline
-        type="video"
-        copyright={data.copyright!}
-        description={embedData.caption ?? data.description ?? ''}
-        bottomRounded
-      >
+      <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription} bottomRounded>
         {!!linkedVideoId && (
           <LinkedVideoButton
             variant="outline"

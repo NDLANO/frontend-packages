@@ -30,7 +30,7 @@
     "@ndla/icons": "^4.0.9",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-tooltip": "^1.0.7",
-    "html-react-parser": "^3.0.8"
+    "html-react-parser": "^4.2.2"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

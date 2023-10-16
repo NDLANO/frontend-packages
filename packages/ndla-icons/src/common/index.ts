@@ -58,6 +58,7 @@ export { default as HelpCircle } from './HelpCircle';
 export { default as HelpCircleDual } from './HelpCircleDual';
 export { default as HelpCircleOutline } from './HelpCircleOutline';
 export { default as Home } from './Home';
+export { default as HomeOutline } from './HomeOutline';
 export { default as HumanMaleBoard } from './HumanMaleBoard';
 export { default as Information } from './Information';
 export { default as InformationOutline } from './InformationOutline';

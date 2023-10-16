@@ -1267,7 +1267,7 @@ const messages = {
         text: 'Go vurket muhtin resurssa de lea vejolaš merket resurssa fáddágilkoriin. Fáddágilkor lea čoavddasátni man sáhtát geavahit gávdnan dihte ruovttoluotta resurssaide máhpaid rastá. Gávnnat buot fáddágilkoriid maid leat geavahan go válljet mu fáddágilkoriid gurut bealde fálus. Das oainnát maiddái maid resurssaid don leat merken juohke fáddágilkoriin.',
       },
     },
-    minProfil: {
+    myProfile: {
       title: 'Mun profil',
       disclaimerTitle: 'Gos eai geavahuvvo mu foto ja namma?',
       disclaimerText: 'Foto ja nama doarjjaduvvo go doalut diskusijovuodjima arenai.',

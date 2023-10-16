@@ -77,7 +77,7 @@ type ArticleIntroductionProps = {
 export const ArticleIntroduction = ({ children, lang }: ArticleIntroductionProps) => {
   if (children) {
     return (
-      <Text textStyle="ingress" lang={lang}>
+      <Text textStyle="ingress" element="div" lang={lang}>
         {children}
       </Text>
     );

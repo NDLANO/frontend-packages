@@ -1271,19 +1271,6 @@ const messages = {
         text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting <strong>My tags</strong> on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
       },
     },
-    myProfile: {
-      title: 'My Profile',
-      disclaimerTitle: 'Where is my picture and name used?',
-      disclaimerText: 'Your picture and name are displayed when you participate in discussions in the arena.',
-      preferenceTitle: 'Choose whether you want to display name when sharing a folder',
-      preferenceText:
-        'Here you can choose whether you want to display your name when you share a folder. The selected option applies to all your folders and can be changed later. If you later change the option, your name will appear on all your shared folders.',
-      editButtonText: 'Change profile picture',
-      radioButtonText: {
-        option1: 'Show my name when I share a folder',
-        option2: 'Do not show my name when I share a folder',
-      },
-    },
     resource: {
       add: 'Add folder/tag',
       remove: 'Remove',

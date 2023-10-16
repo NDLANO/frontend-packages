@@ -1267,19 +1267,6 @@ const messages = {
         text: 'Når du lagrer en ressurs, får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt, ved å velge <strong>Mine emneknagger</strong> i venstremenyen. Her kan du også se hvilke ressurser du har markert med hvilken emneknagg.',
       },
     },
-    myProfile: {
-      title: 'Min Profil',
-      disclaimerTitle: 'Hvor brukes bildet og navnet mitt?',
-      disclaimerText: 'Bilde og navn vises når du deltar i diskusjoner i arenaen.',
-      preferenceTitle: 'Velg om du vil vise navn når du deler en mappe',
-      preferenceText:
-        'Her kan du selv velge om du vil vise navnet ditt når du deler en mappe. Valget gjelder for alle mappene dine og kan endres senere. Dersom du endrer vil navnet ditt vises på alle dine delte mapper.',
-      editButtonText: 'Endre profilbilde',
-      radioButtonText: {
-        option1: 'Vis navnet mitt når jeg deler en mappe',
-        option2: 'Ikke vis navnet mitt når jeg deler mappe',
-      },
-    },
     resource: {
       add: 'Legg til mappe/emneknagg',
       remove: 'Fjern',

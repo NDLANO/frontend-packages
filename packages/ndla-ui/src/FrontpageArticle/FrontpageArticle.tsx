@@ -74,7 +74,9 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
       <Heading id={id} headingStyle="h1-resource" element="h1" margin="normal" tabIndex={-1}>
         {title}
       </Heading>
-      <Text textStyle="ingress">{introduction}</Text>
+      <Text textStyle="ingress" element="div">
+        {introduction}
+      </Text>
       {content}
       <ArticleByline accordionHeaderVariant={'white'} licenseBox={licenseBox} displayByline={false} />
     </StyledArticle>

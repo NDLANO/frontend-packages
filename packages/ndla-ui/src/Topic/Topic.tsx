@@ -273,7 +273,9 @@ const Topic = ({
               </>
             )}
           </HeadingWrapper>
-          <Text textStyle="ingress">{introduction}</Text>
+          <Text textStyle="ingress" element="div">
+            {introduction}
+          </Text>
         </div>
         {metaImage && (
           <TopicHeaderVisualElementWrapper>

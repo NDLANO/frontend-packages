@@ -1268,16 +1268,16 @@ const messages = {
       },
     },
     myProfile: {
-      title: 'Mun profil',
-      disclaimerTitle: 'Gos eai geavahuvvo mu foto ja namma?',
-      disclaimerText: 'Foto ja nama doarjjaduvvo go doalut diskusijovuodjima arenai.',
-      preferenceTitle: 'Vali sáhtát geavahit nammas go dahkat mappa',
+      title: 'Mu profiila',
+      disclaimerTitle: 'Gos geavahit mu gova ja mu nama?',
+      disclaimerText: 'Govva ja namma čájehuvvojit go searvat digaštallamii arenain.',
+      preferenceTitle: 'Vállje jos namma čájehuvvo máhpa juohkkedettiin',
       preferenceText:
-        'Ditne sáhtát olmmoš sáhttá váldit dát, áigi go dahket mappaid. Vali galgá sihkkarastit buot mappain ja lea válljen sáhttá movttiduvvot. Jus movtta, de addá namma dušše ovdal dáhtu maid dahkat mappaid.',
-      editButtonText: 'Jorgalit profiilagovva',
+        'Dás válljet jos iežat namma čájehuvvo juohkkedettiin máhpa. Dát molssaeaktu guoská buot máhpaide ja sáhttá rievdaduvvot maŋŋil. Jos rievdadat dán, de čájehuvvo du namma buot juogaduvvon máhpain.',
+      editButtonText: 'Rievdat profiilagova',
       radioButtonText: {
-        option1: 'Namma doarjjaduvvo go dan dahkan mappii',
-        option2: 'Eai doarjjaduvvo namma go dahkan mappii',
+        option1: 'Čájet mu nama máhpa juohkkedettiin',
+        option2: 'Ale čájet mu nama máhpa juohkkedettiin',
       },
     },
     resource: {

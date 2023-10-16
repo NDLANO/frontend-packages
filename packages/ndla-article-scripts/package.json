@@ -1,6 +1,6 @@
 {
   "name": "@ndla/article-scripts",
-  "version": "3.0.21",
+  "version": "3.0.22",
   "description": "A collection of functions for making article content responsive (and interactive)",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -22,7 +22,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/util": "^3.2.0",
+    "@ndla/util": "^4.0.0",
     "focus-trap": "^6.7.3",
     "jump.js": "^1.0.2",
     "react-bem-helper": "^1.4.1"

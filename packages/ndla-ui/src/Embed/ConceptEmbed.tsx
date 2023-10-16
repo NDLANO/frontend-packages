@@ -6,7 +6,8 @@
  *
  */
 
-import { ReactElement, ReactNode, useCallback, useRef, useState } from 'react';
+import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import parse from 'html-react-parser';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { isMobile } from 'react-device-detect';
@@ -92,6 +93,10 @@ const StyledButton = styled.button`
 `;
 
 export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Props) => {
+  const parsedContent = useMemo(() => {
+    if (embed.status === 'error' || !embed.data.concept.content) return undefined;
+    return parse(embed.data.concept.content.content);
+  }, [embed]);
   if (embed.status === 'error' && embed.embedData.type === 'inline') {
     return <span>{embed.embedData.linkText}</span>;
   } else if (embed.status === 'error') {
@@ -107,7 +112,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
       <BlockConcept
         fullWidth={fullWidth}
         title={concept.title}
-        content={concept.content?.content}
+        content={parsedContent}
         metaImage={concept.metaImage}
         copyright={concept.copyright}
         source={concept.source}
@@ -122,7 +127,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
     return (
       <InlineConcept
         title={concept.title}
-        content={concept.content?.content}
+        content={parsedContent}
         metaImage={concept.metaImage}
         copyright={concept.copyright}
         source={concept.source}
@@ -138,7 +143,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
     return (
       <ConceptNotionV2
         title={concept.title}
-        content={concept.content?.content}
+        content={parsedContent}
         metaImage={concept.metaImage}
         copyright={concept.copyright}
         source={concept.source}

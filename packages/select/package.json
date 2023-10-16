@@ -1,6 +1,6 @@
 {
   "name": "@ndla/select",
-  "version": "2.4.16",
+  "version": "3.0.0",
   "description": "Select component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -34,7 +34,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "react": ">= 16.8.0",
-    "react-i18next": "^11.18.6"
+    "react-i18next": "^13.3.0"
   },
   "publishConfig": {
     "access": "public"

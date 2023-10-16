@@ -106,7 +106,7 @@ const FooterLinks = ({ links }: FooterLinksProps) => {
             {commonLinks.map((link) => (
               <div key={link.url}>
                 <StyledSafeLink
-                  key={t<string>(`footer.ndlaLinks.${link.key}`)}
+                  key={t(`footer.ndlaLinks.${link.key}`)}
                   aria-label={t(`footer.ndlaLinks.${link.key}`)}
                   to={link.url}
                   target="_blank"

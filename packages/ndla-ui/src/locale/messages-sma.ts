@@ -1272,6 +1272,19 @@ const messages = {
         text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Mine emneknaggar</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
       },
     },
+    myProfile: {
+      title: 'Mov Profijle',
+      disclaimerTitle: 'Gusnie guvvie jïh nomme åtnasuvvieh?',
+      disclaimerText: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+      preferenceTitle: 'Sjïehtedh jis edtja nommem vuesiehtidh gosse maabpam juekedh',
+      preferenceText:
+        'Daesnie jïjtje veeljh mejtie sïjhth dov nommem vuesiehtidh gosse maabpam juekedh . Daate veeljeme lea gaajhkine dov maabpojne, jïh maahta dam mænngan jarkelidh. Jis jeatjahdahtah , dov nomme sæjhta våajnoes årrodh gaajhkine dov joekedamme maabpojne.',
+      editButtonText: 'Naemhtie profijleguvviem jarkelidh',
+      radioButtonText: {
+        option1: 'Vuesehth mov nommem gosse maabpam juekieh',
+        option2: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
+      },
+    },
     resource: {
       add: 'Legg til mappe/emneknagg',
       remove: 'Fjern',

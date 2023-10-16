@@ -1170,6 +1170,7 @@ const messages = {
       folders: 'Mapper',
       tags: 'Knagger',
       subjects: 'Favorittfag',
+      more: 'Mer',
     },
     tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',
@@ -1312,6 +1313,9 @@ const messages = {
       noFavorites: 'Dus ii leat oktage favorihttafága!',
       goToAllSubjects: 'Mana buot fágaide',
     },
+    tools: 'Verktøy',
+    simpleList: 'Enkel liste',
+    detailedList: 'Med ingress',
   },
   snackbar: {
     close: 'Govčča dieđu',

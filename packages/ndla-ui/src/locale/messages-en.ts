@@ -1171,6 +1171,7 @@ const messages = {
       folders: 'Folders',
       tags: 'Tags',
       subjects: 'Favourite subjects',
+      more: 'More',
     },
     tagList: 'Tags',
     tags: '{{count}} tag',
@@ -1316,6 +1317,9 @@ const messages = {
       noFavorites: 'You do not have any favorite subjects!',
       goToAllSubjects: 'Go to all subjects',
     },
+    tools: 'Tools',
+    simpleList: 'Simple list',
+    detailedList: 'With preamble',
   },
   snackbar: {
     close: 'Close notification',

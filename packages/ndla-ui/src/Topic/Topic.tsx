@@ -8,7 +8,8 @@
 
 import { ReactNode, MouseEvent, useMemo } from 'react';
 import styled from '@emotion/styled';
-import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
+import { Text, Heading } from '@ndla/typography';
 
 import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
@@ -17,7 +18,6 @@ import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { EmbedMetaData } from '@ndla/types-embed';
-import { Heading } from '@ndla/typography';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
@@ -141,14 +141,6 @@ const HeadingWrapper = styled.hgroup`
   gap: ${spacing.small};
   h1 {
     margin: 0;
-  }
-`;
-
-const TopicIntroduction = styled.div`
-  font-weight: ${fonts.weight.light};
-  max-width: 612px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('22px', '32px')};
   }
 `;
 
@@ -281,7 +273,7 @@ const Topic = ({
               </>
             )}
           </HeadingWrapper>
-          <TopicIntroduction>{introduction}</TopicIntroduction>
+          <Text textStyle="ingress">{introduction}</Text>
         </div>
         {metaImage && (
           <TopicHeaderVisualElementWrapper>

@@ -10,6 +10,7 @@ import { LicenseByline } from '@ndla/notion';
 import { Aside, FactBox, Logo, LayoutItem, OneColumn, CreatedBy } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
+import { Text } from '@ndla/typography';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
@@ -66,9 +67,9 @@ storiesOf('Components', module)
       </StoryIntro>
       <StoryBody>
         <h1 className="c-article__title">Eksempelartikkel</h1>
-        <p className="article_introduction">
+        <Text textStyle="ingress">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
-        </p>
+        </Text>
         <ArticleBylineExample />
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
@@ -192,9 +193,9 @@ storiesOf('Components', module)
       </StoryIntro>
       <StoryBody>
         <h1 className="c-article__title">Eksempelartikkel</h1>
-        <p className="article_introduction">
+        <Text textStyle="ingress">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
-        </p>
+        </Text>
         <section>
           <p>
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du

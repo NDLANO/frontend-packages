@@ -13,7 +13,7 @@ import styled from '@emotion/styled';
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
 import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
-import { Heading } from '@ndla/typography';
+import { Heading, Text } from '@ndla/typography';
 import { Article as ArticleType } from '../types';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
@@ -77,9 +77,9 @@ type ArticleIntroductionProps = {
 export const ArticleIntroduction = ({ children, lang }: ArticleIntroductionProps) => {
   if (children) {
     return (
-      <div className="article_introduction" lang={lang}>
+      <Text textStyle="ingress" lang={lang}>
         {children}
-      </div>
+      </Text>
     );
   }
   return null;

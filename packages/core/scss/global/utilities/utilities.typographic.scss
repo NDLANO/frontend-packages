@@ -13,21 +13,3 @@
 .u-text-center {
   text-align: center;
 }
-
-.article_introduction {
-  font-weight: $font-weight-light;
-  font-family: $font;
-  margin-top: $spacing--small;
-  @include font-size(22px, 30px);
-
-  @include mq(tablet) {
-    font-weight: $font-weight-light;
-    @include font-size(26px, 36px);
-  }
-  span {
-    @include font-size(22px, 30px);
-    @include mq(tablet) {
-      @include font-size(26px, 36px);
-    }
-  }
-}

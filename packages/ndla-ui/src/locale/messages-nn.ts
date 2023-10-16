@@ -1169,6 +1169,7 @@ const messages = {
       folders: 'Mappar',
       tags: 'Knaggar',
       subjects: 'Favorittfag',
+      more: 'Meire',
     },
     tagList: 'Emneknaggar',
     tags: '{{count}} emneknagg',
@@ -1299,6 +1300,9 @@ const messages = {
       noFavorites: 'Du har ingen favorittfag!',
       goToAllSubjects: 'Gå til alle fag',
     },
+    tools: 'Verktøy',
+    simpleList: 'Enkel liste',
+    detailedList: 'Med ingress',
   },
   snackbar: {
     close: 'Lukk melding',

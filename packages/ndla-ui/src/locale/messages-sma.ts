@@ -1273,16 +1273,16 @@ const messages = {
       },
     },
     myProfile: {
-      title: 'Min Profil',
-      disclaimerTitle: 'Hvor brukes bildet og navnet mitt?',
-      disclaimerText: 'Bilde og navn vises når du deltar i diskusjoner i arenaen.',
-      preferenceTitle: 'Velg om du vil vise navn når du deler en mappe',
+      title: 'Mov Profijle',
+      disclaimerTitle: 'Gusnie guvvie jïh nomme åtnasuvvieh?',
+      disclaimerText: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+      preferenceTitle: 'Sjïehtedh jis edtja nommem vuesiehtidh gosse maabpam juekedh',
       preferenceText:
-        'Her kan du selv velge om du vil vise navnet ditt når du deler en mappe. Valget gjelder for alle mappene dine og kan endres senere. Dersom du endrer vil navnet ditt vises på alle dine delte mapper.',
-      editButtonText: 'Endre profilbilde',
+        'Daesnie jïjtje veeljh mejtie sïjhth dov nommem vuesiehtidh gosse maabpam juekedh . Daate veeljeme lea gaajhkine dov maabpojne, jïh maahta dam mænngan jarkelidh. Jis jeatjahdahtah , dov nomme sæjhta våajnoes årrodh gaajhkine dov joekedamme maabpojne.',
+      editButtonText: 'Naemhtie profijleguvviem jarkelidh',
       radioButtonText: {
-        option1: 'Vis navnet mitt når jeg deler en mappe',
-        option2: 'Ikke vis navnet mitt når jeg deler mappe',
+        option1: 'Vuesehth mov nommem gosse maabpam juekieh',
+        option2: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
       },
     },
     resource: {

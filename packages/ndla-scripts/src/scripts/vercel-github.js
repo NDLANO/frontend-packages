@@ -7,7 +7,7 @@
 const { Octokit } = require('octokit');
 const spawn = require('cross-spawn-promise');
 const normalizeUrl = require('normalize-url');
-const urlRegex = require('url-regex');
+const urlRegex = require('url-regex-safe');
 
 if (!process.env.CI || !process.env.GITHUB_ACTIONS) {
   throw new Error('Could not detect Github Actions CI environment');
@@ -39,7 +39,7 @@ function isFork() {
 }
 
 export function getUrl(content) {
-  const urls = content.match(urlRegex()) || [];
+  const urls = content.match(urlRegex({ re2: false, strict: true })) || [];
 
   return urls.map((url) => normalizeUrl(url.trim().replace(/\.+$/, '')))[0];
 }

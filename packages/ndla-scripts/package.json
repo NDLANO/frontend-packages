@@ -23,7 +23,7 @@
     "cross-spawn-promise": "^0.10.2",
     "normalize-url": "^4.1.0",
     "octokit": "^2.0.14",
-    "url-regex": "^4.1.1",
+    "url-regex-safe": "^4.0.0",
     "vercel": "^27.2.0"
   },
   "publishConfig": {

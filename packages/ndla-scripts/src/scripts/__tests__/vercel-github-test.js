@@ -8,6 +8,8 @@
 
 /* eslint-env jest */
 
+const OLD_ENV = process.env;
+
 test('get url works as intended', () => {
   process.env.CI = true;
   process.env.GITHUB_ACTIONS = true;
@@ -21,4 +23,8 @@ test('get url works as intended', () => {
   expect(getUrl('https://ndla.sh')).toBe('https://ndla.sh');
   expect(getUrl('https://ndla.sh?param=1')).toBe('https://ndla.sh/?param=1'); // Not very happy normalizeUrl adds / but whatever
   expect(getUrl('This is a string with the domain https://ndla.no in it.')).toBe('https://ndla.no');
+});
+
+afterAll(() => {
+  process.env = OLD_ENV;
 });

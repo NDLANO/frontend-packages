@@ -57,6 +57,8 @@ const StyledDiv = styled.div`
   }
 
   &[data-contenttype='frontpage-article'] {
+    min-height: unset;
+    padding-bottom: unset;
     background-color: ${colors.background.lightBlue};
   }
 
@@ -83,13 +85,9 @@ const StyledDiv = styled.div`
 
     ${mq.range({ until: breakpoints.tablet })} {
       + div article.c-article {
-        margin-left: -${spacing.normal};
-        margin-right: -${spacing.normal};
-        margin-top: 0;
         background: ${colors.white};
-        padding-left: ${spacing.normal};
-        padding-right: ${spacing.normal};
-        padding-top: ${spacing.large};
+        margin: 0 -${spacing.normal};
+        padding: ${spacing.large} ${spacing.normal} ${spacing.normal} 0;
       }
     }
   }

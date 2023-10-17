@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';

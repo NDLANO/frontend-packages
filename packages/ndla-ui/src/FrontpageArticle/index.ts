@@ -6,6 +6,8 @@
  *
  */
 
-import FrontpageArticle from './FrontpageArticle';
+import FrontpageArticle, { FRONTPAGE_ARTICLE_MAX_WIDTH, WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH } from './FrontpageArticle';
+
+export { FRONTPAGE_ARTICLE_MAX_WIDTH, WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH };
 
 export default FrontpageArticle;

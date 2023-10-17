@@ -1,81 +1,60 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
+import { AudioEmbed, AudioPlayer } from '@ndla/ui';
 
-import { AudioPlayer, Figure, FigureCaption, FigureLicenseDialog } from '@ndla/ui';
-import { ButtonV2 } from '@ndla/button';
-import { uuid } from '@ndla/util';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
-//@ts-ignore
-import { addCloseDialogClickListeners, addShowDialogClickListeners } from '@ndla/article-scripts';
+const embedData = {
+  resource: 'audio' as const,
+  resourceId: '3000',
+  type: 'standard',
+  url: 'https://api.test.ndla.no/audio-api/v1/audio/3000',
+};
 
-interface Props {
-  runScripts?: boolean;
-}
-class AudioExample extends Component<Props> {
-  id: string;
-  constructor(props: Props) {
-    super(props);
-    this.id = uuid();
-  }
+const successData = {
+  id: 3000,
+  revision: 1,
+  title: { title: "\nAin't I a Woman? by Sojourner Truth ", language: 'nb' },
+  audioFile: {
+    url: 'https://api.test.ndla.no/audio/files/ZZ1gkRc7.mp3',
+    mimeType: 'audio/mpeg',
+    fileSize: 3025206,
+    language: 'nb',
+  },
+  copyright: {
+    license: {
+      license: 'CC-BY-SA-4.0',
+      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    },
+    origin: '',
+    creators: [{ type: 'originator', name: 'Radio Metro AS' }],
+    processors: [],
+    rightsholders: [],
+    processed: false,
+  },
+  tags: { tags: ["Ain't I a Woman?", 'Sojourner Truth', 'speech', 'abolitionist'], language: 'nb' },
+  supportedLanguages: ['nb'],
+  audioType: 'standard',
+  manuscript: { manuscript: '', language: 'nb' },
+  created: '2022-02-28T17:09:28Z',
+  updated: '2022-02-28T17:09:28Z',
+};
 
-  componentDidMount() {
-    if (this.props.runScripts) {
-      addShowDialogClickListeners();
-      addCloseDialogClickListeners();
-    }
-  }
+const audioEmbedMetaData = {
+  resource: 'audio' as const,
+  status: 'success' as const,
+  embedData: embedData,
+  data: successData,
+} as const;
 
+class AudioExample extends Component {
   render() {
-    const license = getLicenseByAbbreviation('CC-BY-ND-4.0', 'nb');
-
-    const messages = {
-      close: 'Lukk',
-      rulesForUse: 'Regler for bruk av lydklippet',
-      learnAboutLicenses: license.linkText,
-      source: 'Kilde',
-      title: 'Tittel',
-    };
-
-    const caption = 'Familien som spela vekk jula';
-    const reuseLabel = 'Bruk lydklipp';
-    const authors = [{ type: 'Opphaver', name: 'Gary Waters' }];
-
-    const figureId = `figure-${this.id}`;
-
-    return (
-      <Figure id={figureId} type="full-column">
-        <AudioPlayer src="https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3" title={caption} />
-        <FigureLicenseDialog
-          id={this.id}
-          locale="nb"
-          key="details"
-          license={license}
-          authors={authors}
-          origin="https://www.wikimedia.com"
-          title={caption}
-          messages={messages}
-        >
-          <ButtonV2 variant="outline">Kopier referanse</ButtonV2>
-          <ButtonV2 variant="outline">Last ned lydklipp</ButtonV2>
-        </FigureLicenseDialog>
-        <FigureCaption
-          figureId={figureId}
-          id={this.id}
-          locale="nb"
-          key="caption"
-          caption={caption}
-          reuseLabel={reuseLabel}
-          licenseRights={license.rights}
-          authors={authors}
-        />
-      </Figure>
-    );
+    return <AudioEmbed embed={audioEmbedMetaData} />;
   }
 }
 
 const AudioPlayerExamples = () => (
   <div>
     <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
-    <AudioExample runScripts />
+    <AudioExample />
     <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>
     <table className="c-table o-table">
       <thead>

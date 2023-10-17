@@ -1,4 +1,3 @@
-import React from 'react';
 import { spacing, spacingUnit, colors, fonts, misc } from '@ndla/core';
 import styled from '@emotion/styled';
 import { MovieResourceType } from './types';
@@ -7,7 +6,9 @@ const StyledWrapperDiv = styled.div`
   transition: opacity 200ms ease;
   padding: ${spacing.xsmall} ${spacing.xsmall};
   opacity: 0;
-  display: relative;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
   z-index: 1;
 `;
 
@@ -36,7 +37,8 @@ const FilmContentCardTags = ({ movieResourceTypes, resourceTypes, id }: Props) =
     }
   });
   return (
-    <StyledWrapperDiv id={id}>
+    // data-content-cards is used to set the opacity of tags on hover/focus
+    <StyledWrapperDiv id={id} data-content-cards="">
       {Object.keys(resources).map((resourceName) => (
         <StyledMovieTags key={resourceName}>{resourceName}</StyledMovieTags>
       ))}

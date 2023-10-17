@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
@@ -106,7 +106,7 @@ const FooterLinks = ({ links }: FooterLinksProps) => {
             {commonLinks.map((link) => (
               <div key={link.url}>
                 <StyledSafeLink
-                  key={t<string>(`footer.ndlaLinks.${link.key}`)}
+                  key={t(`footer.ndlaLinks.${link.key}`)}
                   aria-label={t(`footer.ndlaLinks.${link.key}`)}
                   to={link.url}
                   target="_blank"

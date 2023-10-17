@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
@@ -8,31 +7,30 @@ interface Props {
 }
 
 const StyledSkipToMainContent = styled.a`
-  left: -999px;
   position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: ${colors.white};
+  background: ${colors.brand.primary};
+  left: auto;
   top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  z-index: -999;
-  &:focus,
-  &:active {
-    color: ${colors.white};
-    background: ${colors.brand.primary};
-    left: auto;
-    top: auto;
-    width: 30%;
-    height: auto;
-    overflow: auto;
-    margin: 10px 35%;
-    padding: 5px;
-    border-radius: 15px;
-    border: 4px solid ${colors.brand.tertiary};
-    text-align: center;
-    font-size: 1.2em;
-    z-index: 9999;
-    animation-name: fadeIn;
-    animation-duration: 0.3s;
+  width: 30%;
+  height: auto;
+  overflow: auto;
+  margin: 10px 35%;
+  padding: 5px;
+  border-radius: 15px;
+  border: 4px solid ${colors.brand.tertiary};
+  text-align: center;
+  font-size: 1.2em;
+  z-index: 9999;
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  transform: translateY(-150%);
+  &:focus {
+    transform: translateY(0);
   }
 `;
 

@@ -1,20 +1,22 @@
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
+import { ButtonV2, IconButtonV2 } from '@ndla/button';
+import { HorizontalMenu } from '@ndla/icons/contentType';
 import { defaultParameters } from '../../../../../stories/defaults';
 
 import Folder from './Folder';
 
 export default {
-  title: 'Components/Mappe',
+  title: 'Components/Folder',
   component: Folder,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
   },
   argTypes: {
-    menuItems: {
+    menu: {
       control: false,
     },
   },
@@ -26,10 +28,29 @@ export default {
     description: '',
     link: '',
     type: 'list',
-    menuItems: [
-      { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
-      { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
-    ],
+    menu: (
+      <DropdownMenu>
+        <DropdownTrigger>
+          <IconButtonV2 aria-label="Show more" title="Show more" variant="ghost" colorTheme="light">
+            <HorizontalMenu />
+          </IconButtonV2>
+        </DropdownTrigger>
+        <DropdownContent>
+          <DropdownItem>
+            <ButtonV2 variant="ghost" colorTheme="light" shape="sharp" size="small" fontWeight="normal">
+              <Pencil />
+              Rediger
+            </ButtonV2>
+          </DropdownItem>
+          <DropdownItem>
+            <ButtonV2 variant="ghost" colorTheme="danger" shape="sharp" size="small" fontWeight="normal">
+              <DeleteForever />
+              Slett
+            </ButtonV2>
+          </DropdownItem>
+        </DropdownContent>
+      </DropdownMenu>
+    ),
     isShared: true,
   },
 } as Meta<typeof Folder>;

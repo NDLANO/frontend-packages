@@ -1,11 +1,10 @@
-import React from 'react';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+import { HeadingLevel } from '@ndla/typography';
 import SectionHeading from '../SectionHeading';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
-import { HeadingLevel } from '../types';
 
 export const StyledSection = styled.section`
   position: relative;

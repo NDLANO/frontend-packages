@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
-import React from 'react';
 import { defaultParameters } from '../../../../stories/defaults';
 import LetterFilter from './LetterFilter';
 

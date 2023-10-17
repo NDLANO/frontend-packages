@@ -8,18 +8,17 @@
 
 import { OrderedList, UnOrderedList } from '@ndla/ui';
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
 import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 
 const meta: Meta = {
-  title: 'Base styles/Lister',
+  title: 'Base styles/Lists',
   parameters: defaultParameters,
 };
 
 export default meta;
 
-export const Lister: StoryFn = () => (
+export const Lists: StoryFn = () => (
   <div>
     <StoryIntro title="Lister">
       <p>
@@ -137,6 +136,34 @@ export const Lister: StoryFn = () => (
                 <li>
                   Listepunkt 3
                   <OrderedList data-type="letters">
+                    <li>Listepunkt 1</li>
+                    <li>Listepunkt 2</li>
+                    <li>Listepunkt 3</li>
+                  </OrderedList>
+                </li>
+              </OrderedList>
+            </li>
+          </OrderedList>
+        </li>
+        <li>Listepunkt 4</li>
+      </OrderedList>
+      <h2 className="u-heading">Nummerert liste, med start nummer 5</h2>
+      <OrderedList start={5} className="ol-reset-5">
+        <li>Listepunkt 1</li>
+        <li>Listepunkt 2</li>
+        <li>
+          Listepunkt 3
+          <OrderedList data-type="letters">
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>
+              Listepunkt 3
+              <OrderedList data-type="letters">
+                <li>Listepunkt 1</li>
+                <li>Listepunkt 2</li>
+                <li>
+                  Listepunkt 3
+                  <OrderedList className="ol-reset-5" data-type="letters" start={5}>
                     <li>Listepunkt 1</li>
                     <li>Listepunkt 2</li>
                     <li>Listepunkt 3</li>

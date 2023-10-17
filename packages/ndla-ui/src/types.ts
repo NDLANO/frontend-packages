@@ -53,6 +53,7 @@ export interface Copyright {
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;
   origin?: string;
+  processed: boolean;
 }
 
 export interface FootNote {
@@ -67,10 +68,10 @@ export interface FootNote {
 
 export interface Article {
   title: string;
-  introduction: string;
-  content: string | ReactNode;
+  introduction: ReactNode;
+  content: ReactNode;
   footNotes: Array<FootNote>;
-  copyright: Copyright;
+  copyright?: Copyright;
   published: string;
 }
 
@@ -104,9 +105,12 @@ export type elementRectType = {
   fromScale: number;
 };
 
-export type CompetenceGoalsItemType = {
+interface GrepCode {
   id: string;
   title: string;
+}
+
+export interface CompetenceGoalsItemType extends GrepCode {
   goals: {
     id: string;
     text: string;
@@ -114,11 +118,15 @@ export type CompetenceGoalsItemType = {
   }[];
   selected?: boolean;
   isOembed?: boolean;
-};
+}
+
+export interface CoreElementsItemType extends GrepCode {
+  text?: string;
+  url?: string;
+  isOembed?: boolean;
+}
 
 export type NotionMedia = {
   type: 'video' | 'other';
   element: ReactNode;
 };
-
-export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';

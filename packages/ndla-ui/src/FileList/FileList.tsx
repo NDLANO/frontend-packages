@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import File from './File';
@@ -56,7 +55,7 @@ const FileList = ({ files, heading, id }: Props) => (
     <FileListHeading>{heading}</FileListHeading>
     <FilesList>
       {files.map((file) => (
-        <File key={`file-${id}-${file.title}`} file={file} id={id} />
+        <File key={`file-${id}-${file.title}`} file={file} />
       ))}
     </FilesList>
   </FileListSection>

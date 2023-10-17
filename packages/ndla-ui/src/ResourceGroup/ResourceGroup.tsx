@@ -6,13 +6,13 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { colors, fonts, spacing } from '@ndla/core';
 
+import { HeadingLevel } from '@ndla/typography';
 import ResourceList, { ResourceListProps } from './ResourceList';
-import { HeadingLevel } from '../types';
 
 const Wrapper = styled.section`
   margin-bottom: ${spacing.large};

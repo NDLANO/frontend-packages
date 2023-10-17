@@ -1,12 +1,25 @@
-import React from 'react';
-//@ts-ignore
-import { Remarkable } from 'remarkable';
 import { Table } from '@ndla/ui';
 
-const md = new Remarkable();
-md.inline.ruler.enable(['sub', 'sup']);
-
-const markdownSyntax = ['**Bold**', '*Italics*', 'super^script^', 'sub~script~'];
+const markdownSyntax = [
+  { md: '**Bold**', html: <b>Bold</b> },
+  { md: '*Italics*', html: <i>Italics</i> },
+  {
+    md: 'super^script^',
+    html: (
+      <span>
+        super<sup>script</sup>
+      </span>
+    ),
+  },
+  {
+    md: 'sub~script~',
+    html: (
+      <span>
+        sub<sub>script</sub>
+      </span>
+    ),
+  },
+];
 
 const Markdown = () => (
   <>
@@ -22,15 +35,11 @@ const Markdown = () => (
         </tr>
       </thead>
       <tbody>
-        {markdownSyntax.map((item, i) => (
-          <tr key={item}>
-            <td>{item}</td>
+        {markdownSyntax.map((item) => (
+          <tr key={item.md}>
+            <td>{item.md}</td>
             <td>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: md.render(item),
-                }}
-              />
+              <span>{item.html}</span>
             </td>
           </tr>
         ))}

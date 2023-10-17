@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
 import { Header, Trigger } from '@radix-ui/react-accordion';
-import { forwardRef, HTMLAttributes, ReactNode } from 'react';
+import { forwardRef, HTMLAttributes, memo, ReactNode, useMemo } from 'react';
 
 const StyledHeader = styled(Header)`
   display: flex;
@@ -63,12 +63,13 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
 
 const AccordionHeader = forwardRef<HTMLButtonElement, Props>(
   ({ indicator, headingLevel: Heading = 'h3', headerCSS, children, ...rest }, ref) => {
+    const indicatorElement = useMemo(() => indicator ?? <StyledChevron />, [indicator]);
     return (
       <StyledHeader css={headerCSS} asChild>
         <Heading>
           <StyledTrigger ref={ref} {...rest}>
             {children}
-            {indicator ?? <StyledChevron />}
+            {indicatorElement}
           </StyledTrigger>
         </Heading>
       </StyledHeader>
@@ -76,4 +77,4 @@ const AccordionHeader = forwardRef<HTMLButtonElement, Props>(
   },
 );
 
-export default AccordionHeader;
+export default memo(AccordionHeader);

@@ -1,7 +1,7 @@
-import React, { ElementType, ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import { HeadingLevel } from '../types';
+import { HeadingLevel } from '@ndla/typography';
 
 const headingStyle = css`
   font-weight: ${fonts.weight.bold};

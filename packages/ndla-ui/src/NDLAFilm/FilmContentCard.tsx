@@ -6,8 +6,8 @@
  *
  */
 
-import React, { HTMLAttributes } from 'react';
-import { spacing, colors, fonts, breakpoints, misc } from '@ndla/core';
+import { HTMLAttributes } from 'react';
+import { spacing, colors, fonts, breakpoints, misc, mq } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { makeSrcQueryString } from '../Image';
@@ -16,46 +16,36 @@ import { MovieResourceType, MovieType } from './types';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   movie: MovieType;
-  columnWidth: number;
-  distanceBetweenItems?: number;
   resourceTypes: MovieResourceType[];
-  resizeThumbnailImages?: boolean;
   hideTags?: boolean;
   className?: string;
+  lazy?: boolean;
+  type?: 'slideshow' | 'list';
 }
 
 const FilmContentCard = ({
   movie: { metaImage, resourceTypes: movieResourceTypes, title, id, path },
-  columnWidth,
-  distanceBetweenItems,
   resourceTypes,
-  resizeThumbnailImages,
   hideTags = false,
   className,
+  type = 'slideshow',
+  lazy,
   ...rest
 }: Props) => {
-  let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
-  const contentTypeId = `content-type-${id}`;
-  if (resizeThumbnailImages && metaImage) {
-    backgroundImage += '?width=480';
-  }
+  const backgroundImage = metaImage ? `${metaImage.url}?${makeSrcQueryString(600)}` : '';
+  const contentTypeId = `${type}-content-type-${id}`;
 
   return (
     <StyledSafeLink
       onMouseDown={(e) => e.preventDefault()}
       to={path}
+      data-type={type}
       aria-describedby={contentTypeId}
-      columnWidth={columnWidth}
       className={className}
-      style={{ marginRight: `${distanceBetweenItems}px` }}
       {...rest}
     >
-      <StyledImage
-        role="img"
-        style={{
-          backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(600)})`,
-        }}
-      >
+      <ImageWrapper>
+        <StyledImage src={backgroundImage} loading={lazy ? 'lazy' : 'eager'} alt="" />
         {movieResourceTypes && !hideTags && (
           <FilmContentCardTags
             id={contentTypeId}
@@ -63,7 +53,7 @@ const FilmContentCard = ({
             resourceTypes={resourceTypes}
           />
         )}
-      </StyledImage>
+      </ImageWrapper>
       <StyledMovieTitle>{title}</StyledMovieTitle>
     </StyledSafeLink>
   );
@@ -81,32 +71,21 @@ const StyledMovieTitle = styled.span`
   }
 `;
 
-const StyledImage = styled.div`
-  aspect-ratio: 16/9;
-  background-size: cover;
-  background-color: ${colors.ndlaFilm.filmColorLight};
-  background-position-x: center;
-  background-position-y: center;
-  border-radius: ${misc.borderRadius};
+const ImageWrapper = styled.div`
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  &:before {
-    content: '';
-    transition: 200ms ease;
-    display: block;
-    background: ${colors.ndlaFilm.filmColor};
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+  background-color: ${colors.ndlaFilm.filmColorLight};
+  border-radius: ${misc.borderRadius};
+  overflow: hidden;
+`;
+
+const StyledImage = styled.img`
+  aspect-ratio: 16/9;
+  width: 100%;
+  object-fit: cover;
 `;
 
 interface StyledSlideWrapperProps {
-  columnWidth: number;
+  columnWidth?: number;
 }
 
 const shouldForwardProp = (p: string) => p !== 'columnWidth';
@@ -115,8 +94,7 @@ const StyledSafeLink = styled(SafeLink, { shouldForwardProp })<StyledSlideWrappe
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
-  width: ${(props) => props.columnWidth}px;
-  color: #fff;
+  color: ${colors.white};
   box-shadow: none;
   &:hover,
   &:focus-within,
@@ -125,13 +103,32 @@ const StyledSafeLink = styled(SafeLink, { shouldForwardProp })<StyledSlideWrappe
     ${StyledMovieTitle} {
       text-decoration: underline;
     }
-    ${StyledImage} {
-      &:before {
-        opacity: 0.3;
-      }
-      > div {
-        opacity: 1;
-      }
+    [data-content-cards] {
+      opacity: 1;
+    }
+    img {
+      opacity: 0.7;
+    }
+  }
+  &[data-type='slideshow'] {
+    width: 30vw;
+    ${mq.range({ until: breakpoints.tablet })} {
+      width: 40vw;
+    }
+    ${mq.range({ from: breakpoints.desktop })} {
+      width: 30vw;
+    }
+  }
+  &[data-type='list'] {
+    width: 40vw;
+    ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
+      width: 28vw;
+    }
+    ${mq.range({ from: breakpoints.desktop })} {
+      width: 20vw;
+    }
+    ${mq.range({ from: breakpoints.ultraWide })} {
+      width: 14vw;
     }
   }
 `;

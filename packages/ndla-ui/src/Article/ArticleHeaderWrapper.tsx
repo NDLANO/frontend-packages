@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 

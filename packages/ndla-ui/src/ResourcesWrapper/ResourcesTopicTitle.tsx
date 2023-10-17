@@ -1,9 +1,8 @@
-import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { ModalBody, ModalHeader, ModalCloseButton, Modal, ModalTitle } from '@ndla/modal';
+import { ModalBody, ModalHeader, ModalCloseButton, Modal, ModalTitle, ModalTrigger, ModalContent } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { Switch } from '@ndla/switch';
 import { LearningPathQuiz } from '@ndla/icons/contentType';
@@ -185,31 +184,27 @@ const ResourcesTopicTitle = ({
             onChange={toggleAdditionalResources}
             css={invertedStyle ? invertedSwitchCSS : switchCSS}
           />
-          <Modal
-            wrapperFunctionForButton={(activateButton: ReactNode) => (
-              <TooltipWrapper>
-                <Tooltip tooltip={t('resource.dialogTooltip')}>{activateButton}</Tooltip>
-              </TooltipWrapper>
-            )}
-            activateButton={
-              <TooltipButton aria-label={t('resource.dialogTooltip')}>
-                <HelpIcon invertedStyle={invertedStyle} />
-              </TooltipButton>
-            }
-          >
-            {(onClose: () => void) => (
-              <>
-                <ModalHeader>
-                  <ModalTitle>{t('resource.dialogHeading')}</ModalTitle>
-                  <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
-                </ModalHeader>
-                <ModalBody>
-                  <hr />
-                  <p>{t('resource.dialogText1')}</p>
-                  <p>{t('resource.dialogText2')}</p>
-                </ModalBody>
-              </>
-            )}
+          <Modal>
+            <TooltipWrapper>
+              <Tooltip tooltip={t('resource.dialogTooltip')}>
+                <ModalTrigger>
+                  <TooltipButton aria-label={t('resource.dialogTooltip')}>
+                    <HelpIcon invertedStyle={invertedStyle} />
+                  </TooltipButton>
+                </ModalTrigger>
+              </Tooltip>
+            </TooltipWrapper>
+            <ModalContent>
+              <ModalHeader>
+                <ModalTitle>{t('resource.dialogHeading')}</ModalTitle>
+                <ModalCloseButton />
+              </ModalHeader>
+              <ModalBody>
+                <hr />
+                <p>{t('resource.dialogText1')}</p>
+                <p>{t('resource.dialogText2')}</p>
+              </ModalBody>
+            </ModalContent>
           </Modal>
         </StyledRow>
       )}

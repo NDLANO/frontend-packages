@@ -9,9 +9,11 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
-import { colors, fonts, misc, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { Quote } from '@ndla/icons/editor';
-import { HeadingLevel } from '../types';
+import { HeadingLevel } from '@ndla/typography';
+import { useTranslation } from 'react-i18next';
+import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
 
 export interface Props {
   title: {
@@ -26,6 +28,7 @@ export interface Props {
     url: string;
     alt: string;
   };
+  path?: string;
 }
 
 const Container = styled(SafeLink)`
@@ -33,20 +36,22 @@ const Container = styled(SafeLink)`
   flex-direction: column;
   color: ${colors.text.primary};
   background-color: ${colors.white};
-  max-width: 350px;
-  max-height: fit-content;
   gap: ${spacing.nsmall};
   box-shadow: none;
-  border: 1px solid ${colors.brand.lightest};
+  border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.medium};
-  &[data-size='large'] {
-    max-width: 532px;
+  height: 100%;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    max-width: 350px;
+    &[data-size='large'] {
+      max-width: 532px;
+    }
   }
   &:hover,
   &:focus-within {
     .blog-title {
-      box-shadow: inset 0 -1px;
+      text-decoration: underline;
     }
   }
 `;
@@ -78,15 +83,17 @@ const StyledImg = styled.img`
   border: 0;
 `;
 
-const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal' }: Props) => {
+const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal', path }: Props) => {
+  const { t } = useTranslation();
+  const href = usePossiblyRelativeUrl(url, path);
   return (
-    <Container data-size={size} to={url}>
+    <Container data-size={size} to={href}>
       <Heading className="blog-title" css={headingCss} lang={title.language}>
         {title.title}
       </Heading>
       <StyledImg src={metaImage.url} alt={metaImage.alt} />
       {!!author && (
-        <AuthorContainer>
+        <AuthorContainer aria-label={t('article.writtenBy', { authors: author })}>
           <Quote />
           {author}
         </AuthorContainer>

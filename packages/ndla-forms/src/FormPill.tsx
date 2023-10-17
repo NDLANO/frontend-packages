@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { colors, fonts, spacing, spacingUnit, misc } from '@ndla/core';

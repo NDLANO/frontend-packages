@@ -6,27 +6,11 @@
  *
  */
 
-import React, { MouseEvent } from 'react';
-import styled from '@emotion/styled';
-import { breakpoints, fonts, mq } from '@ndla/core';
+import { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Heading, Text } from '@ndla/typography';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
-import { Heading } from '../Typography';
-
-const Introduction = styled.p`
-  max-width: 800px;
-  font-weight: ${fonts.weight.light};
-  ${fonts.sizes('18px', '28px')};
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('22px', '32px')};
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('26px', '36px')};
-  }
-`;
 
 interface Props {
   id?: string;
@@ -40,10 +24,10 @@ const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, id }: Props) 
   const { t } = useTranslation();
   return (
     <>
-      <Heading element="h1" headingStyle="h1" id={id} tabIndex={-1}>
+      <Heading element="h1" headingStyle="h1-resource" id={id} tabIndex={-1}>
         {title}
       </Heading>
-      <Introduction>{introduction}</Introduction>
+      <Text textStyle="ingress">{introduction}</Text>
       <NavigationBox
         items={topics}
         listDirection="floating"

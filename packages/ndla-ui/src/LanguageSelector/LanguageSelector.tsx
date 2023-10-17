@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import { Root, Trigger, Item, Content, Portal, Arrow } from '@radix-ui/react-dropdown-menu';
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
 import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown } from '@ndla/icons/common';
@@ -20,15 +19,12 @@ interface Props<T extends string> {
   inverted?: boolean;
 }
 
-const PopoverContent = styled(Content)`
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background-color: ${colors.white};
+const StyledDropdownContent = styled(DropdownContent)`
   border-radius: ${spacing.small};
   border: 1px solid ${colors.brand.tertiary};
-  fill: ${colors.brand.tertiary};
+  [data-arrow] {
+    fill: ${colors.brand.tertiary};
+  }
 `;
 
 const LanguageChoice = styled(ButtonV2)`
@@ -67,33 +63,30 @@ const Text = styled.span`
 const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Props<T>) => {
   const { t, i18n } = useTranslation();
   return (
-    <Root>
-      <Trigger asChild>
+    <DropdownMenu>
+      <DropdownTrigger>
         <ButtonV2 variant="outline" shape="pill" inverted={inverted} aria-label={t('footer.selectLanguage')}>
           {t(`languages.prefixChangeLanguage`)} <ChevronDown />
         </ButtonV2>
-      </Trigger>
-      <Portal>
-        <PopoverContent sideOffset={4}>
-          <Arrow aria-hidden />
-          {locales.map((locale) => (
-            <Item asChild key={locale}>
-              <LanguageChoice
-                role="link"
-                aria-current={i18n.language === locale}
-                variant="ghost"
-                shape="sharp"
-                aria-label={t(`changeLanguage.${locale}`)}
-                onClick={() => onSelect(locale)}
-              >
-                <ActivityIndicator>{i18n.language === locale && <ActiveIndicator />}</ActivityIndicator>
-                <Text>{t(`languages.${locale}`)}</Text>
-              </LanguageChoice>
-            </Item>
-          ))}
-        </PopoverContent>
-      </Portal>
-    </Root>
+      </DropdownTrigger>
+      <StyledDropdownContent sideOffset={4} showArrow>
+        {locales.map((locale) => (
+          <DropdownItem key={locale}>
+            <LanguageChoice
+              role="link"
+              aria-current={i18n.language === locale}
+              variant="ghost"
+              shape="sharp"
+              aria-label={t(`changeLanguage.${locale}`)}
+              onClick={() => onSelect(locale)}
+            >
+              <ActivityIndicator>{i18n.language === locale && <ActiveIndicator />}</ActivityIndicator>
+              <Text>{t(`languages.${locale}`)}</Text>
+            </LanguageChoice>
+          </DropdownItem>
+        ))}
+      </StyledDropdownContent>
+    </DropdownMenu>
   );
 };
 

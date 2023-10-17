@@ -6,20 +6,19 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Translation, TranslationLine } from '@ndla/ui';
 import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 
 const meta: Meta = {
-  title: 'Base styles/Oversettelser',
+  title: 'Base styles/Translations',
   parameters: defaultParameters,
 };
 
 export default meta;
 
-export const Oversettelser: StoryFn = () => (
+export const Translations: StoryFn = () => (
   <div>
     <StoryIntro title="Oversettelser">
       <p>

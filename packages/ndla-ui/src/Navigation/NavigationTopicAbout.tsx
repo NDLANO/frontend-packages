@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import parse from 'html-react-parser';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
@@ -105,13 +104,12 @@ const StyledContentWrapper = styled.div<InvertItProps>`
 
 type Props = {
   heading: string;
-  introduction: string;
+  introduction: ReactNode;
   onToggleShowContent: () => void;
   showContent: boolean;
   isLoading: boolean;
   isAdditionalTopic?: boolean;
   invertedStyle?: boolean;
-  renderMarkdown: (text: string) => string;
   children: ReactNode;
 };
 
@@ -123,7 +121,6 @@ export const NavigationTopicAbout = ({
   isLoading,
   isAdditionalTopic,
   invertedStyle,
-  renderMarkdown,
   children,
 }: Props) => {
   const { t } = useTranslation();
@@ -143,7 +140,7 @@ export const NavigationTopicAbout = ({
       ) : (
         <>
           <StyledIngress invertedStyle={invertedStyle}>
-            {parse(renderMarkdown(introduction))}
+            {introduction}
             <StyledButtonWrapper invertedStyle={invertedStyle}>
               <ButtonV2
                 aria-expanded={!!showContent}

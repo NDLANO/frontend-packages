@@ -6,10 +6,10 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { ImageEmbedData } from '@ndla/types-embed';
-import { IImageMetaInformationV2 } from '@ndla/types-backend/build/image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
+import { ReactNode } from 'react';
 import ImageEmbed from './ImageEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
 import StoryFavoriteButton from '../../../../stories/StoryFavoriteButton';
@@ -24,17 +24,17 @@ const embedData: ImageEmbedData = {
   url: 'https://api.test.ndla.no/image-api/v2/images/61181',
 };
 
-const metaData: IImageMetaInformationV2 = {
+const metaData: IImageMetaInformationV3 = {
   id: '61181',
-  metaUrl: 'https://api.test.ndla.no/image-api/v2/images/61181',
+  metaUrl: 'https://api.test.ndla.no/image-api/v3/images/61181',
   title: {
     title: '\nHigh angle view of teenage girl with tousled dyed hair dancing at skateboard park\n',
     language: 'nb',
   },
-  alttext: { alttext: 'Tenåringsjente med lyse fletter slenger på håret. Foto. ', language: 'nb' },
-  imageUrl: 'https://api.test.ndla.no/image-api/raw/S81WiNgl.jpg',
-  size: 1685455,
-  contentType: 'image/jpeg',
+  alttext: {
+    alttext: 'Tenåringsjente med lyse fletter slenger på håret. Foto. ',
+    language: 'nb',
+  },
   copyright: {
     license: {
       license: 'CC-BY-NC-4.0',
@@ -42,19 +42,47 @@ const metaData: IImageMetaInformationV2 = {
       url: 'https://creativecommons.org/licenses/by-nc/4.0/',
     },
     origin: 'https://bilder.ntb.no/r/preview/creative/EXuziiZGWno',
-    creators: [{ type: 'photographer', name: 'Maskot' }],
+    creators: [
+      {
+        type: 'photographer',
+        name: 'Maskot',
+      },
+    ],
     processors: [],
-    rightsholders: [{ type: 'rightsholder', name: 'NTB' }],
+    rightsholders: [
+      {
+        type: 'rightsholder',
+        name: 'NTB',
+      },
+    ],
+    processed: false,
   },
-  tags: { tags: ['danser', 'kultur', 'identitet'], language: 'nb' },
-  caption: { caption: 'Modellklarert.', language: 'nb' },
+  tags: {
+    tags: ['danser', 'kultur', 'identitet'],
+    language: 'nb',
+  },
+  caption: {
+    caption: 'Modellklarert.',
+    language: 'nb',
+  },
   supportedLanguages: ['nb'],
   created: '2022-01-07T08:26:01Z',
   createdBy: 'lA2KgVfhY-fpmgHCYAy5W1DX',
   modelRelease: 'yes',
-  imageDimensions: { width: 2000, height: 1333 },
+  image: {
+    fileName: 'S81WiNgl.jpg',
+    size: 1685455,
+    contentType: 'image/jpeg',
+    imageUrl: 'https://api.test.ndla.no/image-api/raw/S81WiNgl.jpg',
+    dimensions: {
+      width: 2000,
+      height: 1333,
+    },
+    language: 'nb',
+  },
 };
 
+/** Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og høyrestilt. Bilder kan være i størrelsene ekstra liten, liten, medium og stor (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes på klikk. */
 const meta: Meta<typeof ImageEmbed> = {
   title: 'Components/Embeds/ImageEmbed',
   component: ImageEmbed,
@@ -86,12 +114,13 @@ export const ImageEmbedStory: StoryObj<typeof ImageEmbed> = {
     embed: {
       resource: 'image',
       status: 'success',
-      seq: 1,
       embedData: embedData,
       data: metaData,
     },
   },
 };
+
+ImageEmbedStory.storyName = 'ImageEmbed';
 
 export const Failed: StoryObj<typeof ImageEmbed> = {
   args: {
@@ -99,10 +128,172 @@ export const Failed: StoryObj<typeof ImageEmbed> = {
     embed: {
       resource: 'image',
       status: 'error',
-      seq: 1,
       embedData: embedData,
     },
   },
 };
 
-ImageEmbedStory.storyName = 'ImageEmbed';
+export const FullWidth: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: embedData,
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+const TextWrapper = ({ children }: { children: ReactNode }) => (
+  <>
+    <p>
+      Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig av
+      at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+    </p>
+    {children}
+
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+  </>
+);
+
+export const FloatLeft: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        align: 'left',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatRight: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        align: 'right',
+      },
+      data: metaData,
+    },
+  },
+
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatRightSmall: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        size: 'small',
+        align: 'right',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatLeftSmall: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        size: 'small',
+        align: 'left',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatRightExtraSmall: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        size: 'xsmall',
+        align: 'right',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const FloatLeftExtraSmall: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        size: 'xsmall',
+        align: 'left',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};

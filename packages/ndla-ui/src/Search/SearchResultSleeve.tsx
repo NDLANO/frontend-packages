@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { ChevronDown, ChevronUp, Esc, KeyboardReturn, Search as SearchIcon, Wrench } from '@ndla/icons/common';
@@ -253,28 +253,17 @@ const SearchResultSleeve = ({
           return findPathForKeyboardNavigation(contentRef.current, prevKeyPath, -1);
         });
       } else if (e.code === 'Enter') {
-        e.stopPropagation();
-        e.preventDefault();
         if (keyboardPathNavigation === GO_TO_SUGGESTION) {
-          const anchorTag =
-            searchSuggestionRef && searchSuggestionRef.current && searchSuggestionRef.current.closest('a');
-          if (anchorTag) {
-            anchorTag.click();
-          }
-        } else if (keyboardPathNavigation === GO_TO_SEARCHPAGE || keyboardPathNavigation === undefined) {
-          const anchorTag = searchAllRef && searchAllRef.current && searchAllRef.current.closest('a');
-          if (anchorTag) {
-            anchorTag.click();
-          }
-        } else {
-          if (keyboardPathNavigation instanceof HTMLElement) {
-            const toClick =
-              keyboardPathNavigation &&
-              keyboardPathNavigation.querySelector &&
-              (keyboardPathNavigation.querySelector('a') || keyboardPathNavigation.querySelector('button'));
+          searchSuggestionRef?.current?.closest('a')?.click();
+        } else if (keyboardPathNavigation instanceof HTMLElement) {
+          e.stopPropagation();
+          e.preventDefault();
+          const toClick =
+            keyboardPathNavigation &&
+            keyboardPathNavigation.querySelector &&
+            (keyboardPathNavigation.querySelector('a') || keyboardPathNavigation.querySelector('button'));
 
-            toClick && toClick.click();
-          }
+          toClick && toClick.click();
         }
       } else if (e.code === 'Tab') {
         setKeyNavigation('');

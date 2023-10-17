@@ -1,7 +1,5 @@
 /* eslint-disable no-alert */
 
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import { LicenseDescription } from '@ndla/notion';
@@ -14,7 +12,6 @@ import {
   Translation,
   TranslationLine,
   ArticleByline,
-  RadioButtonGroup,
   EditorName,
   FooterText,
   LanguageSelector,
@@ -23,34 +20,18 @@ import {
 import { Translation as I18nTranslate } from 'react-i18next';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
-import ArticleLoader from './article/ArticleLoader';
-import FigureImage from './article/FigureImage';
 import { mockFooterLinks } from '../dummydata/index';
-import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
+import MastheadWithTopicMenu from './molecules/mastheads';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
-import NotionExample from './organisms/NotionExample';
-import {
-  BreadcrumbDefault,
-  BreadcrumbWithHeader,
-  BreadcrumbWithHome,
-  BreadcrumbWithAction,
-} from './molecules/breadcrumbs';
-import RelatedArticleListExample, {
-  RelatedArticleExerciseList,
-  RelatedArticleMixedList,
-  RelatedArticleExternal,
-} from './article/RelatedArticleListExample';
+import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
 import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 
 import Oops from '../images/oops.gif';
 import cecilie from '../images/cecilie.png';
-import ComponentInfo from './ComponentInfo';
 
-import CarouselExample from './organisms/CarouselExample';
 import FooterExample from './molecules/footers';
-import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
@@ -58,7 +39,7 @@ import TagSelectorExample from './molecules/TagSelectorExample';
 import SnackbarExample from './molecules/SnackbarExample';
 
 storiesOf('Patterns', module)
-  .add('Artikkel info linje', () => (
+  .add('Article info line', () => (
     <div>
       <StoryIntro title="Artikkel informasjonslinje">
         <p>
@@ -186,31 +167,7 @@ storiesOf('Patterns', module)
       </StoryBody>
     </div>
   ))
-
-  .add('Bildekarusell', () => (
-    <div>
-      <StoryIntro title="Bildekarusell">
-        <p>
-          Bildekarusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av størrelser, og selve
-          bildekarusellen.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <CarouselExample />
-      </StoryBody>
-    </div>
-  ))
-  .add('Blokkvisning begrepsforklaring', () => (
-    <div>
-      <StoryIntro title="Blokkvisning begrepsforklaring">
-        <p>Brukes ved visning i artikkel og søk</p>
-      </StoryIntro>
-      <Center>
-        <NotionBlockExample />
-      </Center>
-    </div>
-  ))
-  .add('Brødsmulesti', () => (
+  .add('Breadcrumb', () => (
     <Center>
       <h2 className="u-heading">Enkel brødsmulesti</h2>
       <BreadcrumbDefault />
@@ -220,21 +177,9 @@ storiesOf('Patterns', module)
       <BreadcrumbWithHeader />
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
       <BreadcrumbWithHome />
-      <h2 className="u-heading">Brødsmulesti med Menuknapp</h2>
-      <BreadcrumbWithAction />
     </Center>
   ))
-  .add('Begrepsforklaring', () => (
-    <Center>
-      <NotionExample />
-    </Center>
-  ))
-  .add('Emnebeskrivelse', () => (
-    <Center>
-      <ArticleLoader articleId="13661" reset />
-    </Center>
-  ))
-  .add('Feilmelding', () => (
+  .add('Error message', () => (
     <div className="u-margin-bottom">
       <div>
         <StoryIntro title="Feilmelding">
@@ -342,17 +287,12 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Hovedhode', () => (
-    <div>
-      <MastheadWithLogo />
-    </div>
-  ))
-  .add('Hovedhode med innhold', () => (
+  .add('Masthead with content', () => (
     <div>
       <MastheadWithTopicMenu />
     </div>
   ))
-  .add('Hovedhode med meldingsboks', () => (
+  .add('Masthead with message box', () => (
     <I18nTranslate>
       {(t) => (
         <div>
@@ -361,7 +301,7 @@ storiesOf('Patterns', module)
       )}
     </I18nTranslate>
   ))
-  .add('Lisensikoner', () => (
+  .add('License icons', () => (
     <Center>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
@@ -375,13 +315,9 @@ storiesOf('Patterns', module)
           />
         </div>
       </LayoutItem>
-      <LayoutItem layout="center">
-        <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
-        <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
-      </LayoutItem>
     </Center>
   ))
-  .add('Lisensboks', () => (
+  .add('License box', () => (
     <PageContainer>
       <LayoutItem layout="wide">
         <h2 className="u-heading">Lisensboks</h2>
@@ -393,7 +329,7 @@ storiesOf('Patterns', module)
       </LayoutItem>
     </PageContainer>
   ))
-  .add('Læringsressurser', () => (
+  .add('Learning resources', () => (
     <div>
       <StoryIntro title="Læringsressurser/launchpad">
         <p>
@@ -411,7 +347,7 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Nedlasting av filer', () => (
+  .add('Downloading files', () => (
     <div>
       <StoryIntro title="Nedlasting av filer" />
       <StoryBody>
@@ -437,7 +373,7 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Meldings- og infoboks', () => (
+  .add('Message and info box', () => (
     <PageContainer>
       <StoryIntro title="Meldings- og infoboks">
         <p>
@@ -452,7 +388,7 @@ storiesOf('Patterns', module)
     </PageContainer>
   ))
 
-  .add('Oversettelse', () => (
+  .add('Translation', () => (
     <div>
       <StoryIntro title="Oversettelse">
         <p>
@@ -502,108 +438,7 @@ storiesOf('Patterns', module)
       </StoryBody>
     </div>
   ))
-
-  .add('Radiobuttons', () => (
-    <div>
-      <StoryIntro title="Filter">
-        <p>Radiobutton group komponent som håndterer states og gir callback ved endring</p>
-      </StoryIntro>
-      <StoryBody>
-        <ComponentInfo
-          reactCode={`
-  <RadioButtonGroup
-    options={[
-      { title: '1T', value: '1T' },
-      { title: 'R1', value: 'R1' },
-      { title: 'R2', value: 'R2' },
-      { title: 'S1', value: 'S1' }
-    ]}
-    onChange={(value) => {
-      console.log('changed to', value);
-    }}
-  />
-          `}
-          usesPropTypes={[
-            {
-              name: 'options',
-              type: 'ArrayOf(Shape)',
-              default: 'Required',
-              description: `[{ title: '1T', value '1T' }, { title: 'R1', value: 'R1' }]`,
-            },
-            {
-              name: 'onChange',
-              type: 'Function',
-              default: 'Required',
-              description: '(val) => {}',
-            },
-            {
-              name: 'uniqeIds',
-              type: 'Bool',
-              default: 'null',
-              description:
-                'Lager unike id på input og label. Sørger for at ikke htmlFor og input name/id ikke krasjer med andre komponenter på siden',
-            },
-          ]}
-          status={2}
-        >
-          <h2 className="u-heading">Radiobuttons (group) uten label</h2>
-          <div className="c-filter u-margin-top">
-            <RadioButtonGroup
-              options={[
-                { title: '1T', value: '1T' },
-                { title: 'R1', value: 'R1' },
-                { title: 'R2', value: 'R2' },
-                { title: 'S1', value: 'S1' },
-              ]}
-              onChange={(value) => {
-                console.log('changed to', value); // eslint-disable-line no-console
-              }}
-            />
-          </div>
-          <h2 className="u-heading">Radiobuttons (group) med label</h2>
-          <div className="c-filter u-margin-top">
-            <RadioButtonGroup
-              options={[
-                { title: '1T', value: '1T' },
-                { title: 'R1', value: 'R1' },
-                { title: 'R2', value: 'R2' },
-                { title: 'S1', value: 'S1' },
-              ]}
-              uniqeIds
-              label="Velg fag"
-              onChange={(value) => {
-                console.log('changed to', value); // eslint-disable-line no-console
-              }}
-            />
-          </div>
-        </ComponentInfo>
-      </StoryBody>
-    </div>
-  ))
-
-  .add('Relatert innhold', () => (
-    <I18nTranslate>
-      {(t) => (
-        <div>
-          <StoryIntro title="Relatert innhold">
-            <p>Kan brukes i slutten av artikler, eller midt i.</p>
-          </StoryIntro>
-          <StoryBody>
-            <h2 className="u-heading">Oppgave og aktivitet eksempel</h2>
-            <RelatedArticleExerciseList t={t} />
-            <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
-            <RelatedArticleMixedList t={t} />
-            <h2 className="u-heading">Eksterne ressurser eksempel</h2>
-            <p>Dersom eksternt relatert innhold ikke har metatekst, skal url vise.</p>
-            <RelatedArticleExternal t={t} />
-            <h2 className="u-heading">Eksempel med vis mer</h2>
-            <RelatedArticleListExample t={t} />
-          </StoryBody>
-        </div>
-      )}
-    </I18nTranslate>
-  ))
-  .add('Sidefot', () => {
+  .add('Footer', () => {
     const privacyLinks = [
       { label: 'Personvernerklæring', url: 'https://om.ndla.no/gdpr' },
       { label: 'Erklæring om informasjonskapsler', url: 'https://om.ndla.no/cookies' },
@@ -624,7 +459,7 @@ storiesOf('Patterns', module)
     );
   })
 
-  .add('Ressurs fra lenke', () => (
+  .add('Resource from link', () => (
     <PageContainer>
       <StoryIntro title="Ressurs fra lenke">
         <p>Her kan du se forskjellige typer referansebokser. De brukes gjerne i artikler for å lenke til en ressurs.</p>
@@ -648,7 +483,7 @@ storiesOf('Patterns', module)
     </PageContainer>
   ))
 
-  .add('Velg tag', () => (
+  .add('Select tag', () => (
     <PageContainer>
       <StoryIntro title="Tag-velger">
         <p>Komponent for å tagge noe, primært tiltenkt Min NDLA</p>
@@ -659,7 +494,7 @@ storiesOf('Patterns', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('Ugrupperte læringsressurser', () => (
+  .add('Ungrouped learning resources', () => (
     <div>
       <StoryIntro title="Ugrupperte ressurser">
         <p>Brukere av ed kan spesifisere at ressurser skal vises ugruppert. Da vises alle ressurser i ei liste.</p>

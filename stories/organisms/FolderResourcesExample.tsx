@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { Folder } from '@ndla/ui';
@@ -22,9 +22,9 @@ const FolderWrapper = styled.div`
 `;
 
 interface FolderExampleProps {
-  menuItems: any[];
+  menu?: ReactNode;
 }
-export const FolderResourcesExample = ({ menuItems }: FolderExampleProps) => {
+export const FolderResourcesExample = ({ menu }: FolderExampleProps) => {
   return (
     <>
       <FolderWrapper>
@@ -36,7 +36,7 @@ export const FolderResourcesExample = ({ menuItems }: FolderExampleProps) => {
           subFolders={3}
           subResources={3}
           type={'list'}
-          menuItems={menuItems}
+          menu={menu}
         />
         <Folder
           id={'2cd1579a-4e1a-4213-ba73-02373aae504c'}
@@ -58,7 +58,7 @@ export const FolderResourcesExample = ({ menuItems }: FolderExampleProps) => {
           subFolders={3}
           subResources={3}
           type={'block'}
-          menuItems={menuItems}
+          menu={menu}
         />
         <Folder
           id={'2cd86f5d-6d8e-44cf-9803-40fed974bde7'}
@@ -68,7 +68,7 @@ export const FolderResourcesExample = ({ menuItems }: FolderExampleProps) => {
           subFolders={3}
           subResources={3}
           type={'block'}
-          menuItems={menuItems}
+          menu={menu}
         />
         <Folder
           id={'9aeaf3c5-8b3f-454a-9bdd-4fd1af3543df'}
@@ -78,7 +78,7 @@ export const FolderResourcesExample = ({ menuItems }: FolderExampleProps) => {
           subFolders={3}
           subResources={3}
           type={'block'}
-          menuItems={menuItems}
+          menu={menu}
         />
       </BlockFolderWrapper>
     </>

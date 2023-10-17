@@ -6,12 +6,11 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, breakpoints, mq, colors } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { Heading } from '../Typography';
+import { Heading } from '@ndla/typography';
 
 type StyledWrapperProps = {
   invertedStyle?: boolean;

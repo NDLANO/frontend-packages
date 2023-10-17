@@ -6,14 +6,13 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css, keyframes } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { Resource } from '../types';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
@@ -59,54 +58,42 @@ const fadeInAdditionalsKeyframe = keyframes`
   }
 `;
 
-interface ListElementProps {
-  additional?: boolean;
-  extraBottomMargin?: boolean;
-  contentType?: string;
-  active?: boolean;
-  hidden?: boolean;
-}
-
-const ListElement = styled.li<ListElementProps>`
-  border: 1px solid #d1d6db;
-  border-radius: 5px;
+const ListElement = styled.li`
+  border: 1px solid ${colors.brand.neutral7};
+  border-radius: ${misc.borderRadius};
   background: ${colors.white};
   margin-bottom: ${spacing.xsmall};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: ${spacing.small};
-
-  ${(props) =>
-    props.additional &&
-    css`
-      border-style: dashed;
-      animation-duration: 0.8s;
-      animation-fill-mode: forwards;
-      animation: ${fadeInAdditionalsKeyframe};
-    `}
-  ${(props) => props.extraBottomMargin && `margin-bottom: ${spacing.large};`}
+  &[data-additional='true'] {
+    border-style: dashed;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation: ${fadeInAdditionalsKeyframe};
+  }
 
   * {
     transition: height ease-out 0.2s, width ease-out 0.2s;
   }
-  ${(props) =>
-    props.active &&
-    css`
-      &:before {
-        ${mq.range({ from: breakpoints.tablet })} {
-          content: '';
-          display: block;
-          position: absolute;
-          width: ${spacing.small};
-          height: ${spacing.small};
-          border-radius: 100%;
-          transform: translate(calc(-${spacing.normal} - ${spacing.small}));
-          background-color: ${listElementActiveColor(props.contentType)};
-        }
+  &[data-active='true'] {
+    &:before {
+      ${mq.range({ from: breakpoints.tablet })} {
+        content: '';
+        display: block;
+        position: absolute;
+        width: ${spacing.small};
+        height: ${spacing.small};
+        border-radius: 100%;
+        transform: translate(-${spacing.mediumlarge});
+        background-color: var(--contentTypeBg);
       }
-    `}
-  ${({ hidden }) => hidden && `display:none; opacity:0;`}
+    }
+  }
+  &[hidden] {
+    display: none;
+  }
 `;
 
 const ResourceLink = styled(SafeLink)`
@@ -223,7 +210,6 @@ const ResourceItem = ({
   contentType,
   active,
   additional,
-  extraBottomMargin,
   showAdditionalResources,
   access,
   heartButton,
@@ -234,14 +220,18 @@ const ResourceItem = ({
   const additionalId = `${id}-additional`;
   const describedBy = `${coreId} ${additionalId} ${accessId}`;
   const hidden = additional ? !showAdditionalResources : false;
+  const listElementVars = useMemo(() => {
+    if (!contentType) return {};
+    return { '--contentTypeBg': listElementActiveColor(contentType) } as unknown as CSSProperties;
+  }, [contentType]);
+
   return (
     <ListElement
       aria-current={active ? 'page' : undefined}
-      contentType={contentType}
       hidden={hidden && !active}
-      active={active}
-      additional={additional}
-      extraBottomMargin={extraBottomMargin}
+      data-active={active}
+      data-additional={additional}
+      style={listElementVars}
     >
       <ResourceWrapper>
         <ContentBadgeWrapper>
@@ -257,27 +247,21 @@ const ResourceItem = ({
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === 'teacher' && (
-          <Tooltip tooltip={t('article.access.onlyTeacher')}>
-            <IconWrapper>
-              <HumanMaleBoard id={accessId} aria-label={t('article.access.onlyTeacher')} />
-            </IconWrapper>
-          </Tooltip>
+          <IconWrapper aria-label={t('article.access.onlyTeacher')} title={t('article.access.onlyTeacher')}>
+            <HumanMaleBoard id={accessId} />
+          </IconWrapper>
         )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (
-              <Tooltip tooltip={contentTypeDescription}>
-                <IconWrapper>
-                  <Additional id={additionalId} aria-label={contentTypeDescription} />
-                </IconWrapper>
-              </Tooltip>
+              <IconWrapper id={additionalId} aria-label={contentTypeDescription} title={contentTypeDescription}>
+                <Additional />
+              </IconWrapper>
             )}
             {!additional && (
-              <Tooltip tooltip={contentTypeDescription}>
-                <IconWrapper>
-                  <Core id={coreId} aria-label={contentTypeDescription} />
-                </IconWrapper>
-              </Tooltip>
+              <IconWrapper id={coreId} aria-label={contentTypeDescription} title={contentTypeDescription}>
+                <Core />
+              </IconWrapper>
             )}
           </>
         )}

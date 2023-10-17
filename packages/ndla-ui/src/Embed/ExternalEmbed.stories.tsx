@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { H5pEmbedData, H5pData, OembedEmbedData, OembedData } from '@ndla/types-embed';
 import ExternalEmbed from './ExternalEmbed';
@@ -67,7 +66,6 @@ export const Regular: StoryObj<typeof ExternalEmbed> = {
     embed: {
       resource: 'external',
       status: 'success',
-      seq: 8,
       embedData: embedData,
       data: metaData,
     },
@@ -79,7 +77,6 @@ export const Failed: StoryObj<typeof ExternalEmbed> = {
     embed: {
       resource: 'external',
       status: 'error',
-      seq: 3,
       embedData: embedData,
     },
   },

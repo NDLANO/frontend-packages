@@ -6,13 +6,14 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import {
   getLicenseByAbbreviation,
   getResourceTypeNamespace,
   isCreativeCommonsLicense,
   metaTypes,
 } from '@ndla/licenses';
+import type { MetaType } from '@ndla/licenses';
 import { LicenseDescription } from '@ndla/notion';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
@@ -182,25 +183,54 @@ export const HandleLink = ({ text, children }: HandleLinkProps) => {
 
 const attributionTypes = [metaTypes.author, metaTypes.copyrightHolder, metaTypes.contributor];
 
+export type ItemType = ItemTypeWithDescription | DescriptionLessItemType;
+
+interface ItemTypeWithDescription {
+  label: string;
+  description: string;
+  metaType: Omit<MetaType, 'otherWithoutDescription'>;
+}
+
+interface DescriptionLessItemType {
+  label: string;
+  metaType: 'otherWithoutDescription';
+}
+
+function isOtherWithoutDescription(item: ItemType): item is DescriptionLessItemType {
+  return item.metaType === metaTypes.otherWithoutDescription;
+}
+
 interface MediaListItemMetaProps {
-  items?: {
-    label: string;
-    description: string;
-    metaType: string;
-  }[];
+  items?: ItemType[];
+}
+
+const ItemText = ({ item }: { item: ItemType }) => {
+  if (isOtherWithoutDescription(item)) {
+    return <>{item.label}</>;
+  }
+
+  return (
+    <>
+      {item.label}: <HandleLink text={item.description}>{item.description}</HandleLink>
+    </>
+  );
+};
+
+function isAttributionItem(item: ItemType): item is ItemTypeWithDescription {
+  if (isOtherWithoutDescription(item)) return false;
+  return attributionTypes.some((type) => type === item.metaType);
 }
 
 export const MediaListItemMeta = ({ items = [] }: MediaListItemMetaProps) => {
-  const attributionItems = items.filter((item) => attributionTypes.some((type) => type === item.metaType));
+  const attributionItems = items.filter(isAttributionItem);
   const attributionMeta = attributionItems.map((item) => `${item.label}: ${item.description}`).join(', ');
 
   return (
-    //@ts-ignore
     // eslint-disable-next-line react/no-unknown-property
     <ul {...cClasses('actions')} property="cc:attributionName" content={attributionMeta}>
       {items.map((item) => (
         <li key={uuid()} className="c-medialist__meta-item">
-          {item.label}: <HandleLink text={item.description}>{item.description}</HandleLink>
+          <ItemText item={item} />
         </li>
       ))}
     </ul>

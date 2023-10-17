@@ -9,7 +9,7 @@
 import { contentTypes, contentTypeMapping, resourceEmbedTypeMapping } from './ContentType';
 import * as subjectCategories from './SubjectCategories';
 import * as subjectTypes from './SubjectTypes';
-import * as WordClass from './WordClass';
+import * as wordClass from './WordClass';
 import * as Transcriptions from './Transcriptions';
 
 const model = {
@@ -18,7 +18,7 @@ const model = {
   subjectTypes,
   contentTypeMapping,
   resourceEmbedTypeMapping,
-  WordClass,
+  wordClass,
   Transcriptions,
 };
 

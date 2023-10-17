@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Children, cloneElement, ReactElement } from 'react';
+import { Children, cloneElement, ReactElement } from 'react';
 import { css } from '@emotion/react';
 import { spacing } from '@ndla/core';
 

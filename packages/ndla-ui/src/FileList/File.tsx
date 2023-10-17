@@ -3,7 +3,6 @@ import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
-import React from 'react';
 import { FileFormat, FileType } from './FileList';
 
 const LinkTextWrapper = styled.div`
@@ -32,10 +31,8 @@ const FileLink = styled(SafeLink)`
   }
 `;
 
-const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, id: string, isDeadLink: boolean) => {
+const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, isDeadLink: boolean) => {
   const titleWithFormat = `${title} (${format.fileType.toUpperCase()})`;
-
-  const formatId = `${id}_${format.fileType}`;
 
   if (isDeadLink) {
     return (
@@ -47,7 +44,7 @@ const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, id:
   }
 
   return (
-    <FileLink key={format.url} to={format.url} target="_blank" aria-label={titleWithFormat} aria-describedby={formatId}>
+    <FileLink key={format.url} to={format.url} target="_blank" aria-label={titleWithFormat}>
       <Download />
       <Tooltip tooltip={format.tooltip}>
         <LinkTextWrapper>
@@ -59,7 +56,6 @@ const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, id:
 };
 
 interface Props {
-  id: string;
   file: FileType;
 }
 
@@ -78,9 +74,9 @@ const FileListItem = styled.li`
   }
 `;
 
-const File = ({ file, id }: Props) => {
+const File = ({ file }: Props) => {
   const formatLinks = file.formats.map((format, index) =>
-    renderFormat(format, file.title, index === 0, id, !file.fileExists),
+    renderFormat(format, file.title, index === 0, !file.fileExists),
   );
 
   return <FileListItem key={file.title}>{formatLinks}</FileListItem>;

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { RefObject, useMemo, useRef } from 'react';
+import { RefObject, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing, spacingUnit, colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
@@ -130,6 +130,8 @@ const AllMoviesAlphabetically = ({ movies }: Props) => {
             <MovieItem key={movie.id}>
               <StyledSafeLink to={movie.path}>
                 <MovieImage
+                  alt=""
+                  loading="lazy"
                   src={
                     movie?.metaImage?.url ? `${movie.metaImage?.url}?${makeSrcQueryString(IMAGE_WIDTH * 2)}` : undefined
                   }

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
@@ -49,7 +49,7 @@ const StyledImageWrapper = styled.div`
     display: flex;
     justify-content: center;
   }
-  &[data-in-grid='true'] {
+  &[data-border='true'] {
     border: 1px solid ${colors.brand.tertiary};
     border-bottom: 0;
     border-radius: 4px;
@@ -59,7 +59,7 @@ const StyledImageWrapper = styled.div`
 `;
 
 const StyledImage = styled.img`
-  &[data-in-grid='true'] {
+  &[data-border='true'] {
     border-radius: 3px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -78,7 +78,7 @@ interface Props {
   expandButton?: ReactNode;
   crop?: ImageCrop;
   focalPoint?: ImageFocalPoint;
-  inGrid?: boolean;
+  border?: string;
 }
 
 const Image = ({
@@ -92,7 +92,7 @@ const Image = ({
   sizes = '(min-width: 1024px) 1024px, 100vw',
   expandButton,
   fallbackWidth = 1024,
-  inGrid,
+  border,
   ...rest
 }: Props) => {
   const srcSet = rest.srcSet ?? getSrcSet(src, crop, focalPoint);
@@ -100,8 +100,8 @@ const Image = ({
 
   if (contentType && contentType === 'image/gif') {
     return (
-      <StyledImageWrapper data-in-grid={inGrid}>
-        <StyledImage alt={alt} src={`${src}`} {...rest} data-in-grid={inGrid} />
+      <StyledImageWrapper data-border={border}>
+        <StyledImage alt={alt} src={`${src}`} {...rest} data-border={border} />
       </StyledImageWrapper>
     );
   }
@@ -121,10 +121,10 @@ const Image = ({
   }
 
   return (
-    <StyledImageWrapper data-svg={contentType === 'image/svg+xml'} data-in-grid={inGrid}>
+    <StyledImageWrapper data-svg={contentType === 'image/svg+xml'} data-border={border}>
       <picture>
         <source type={contentType} srcSet={srcSet} sizes={sizes} />
-        <StyledImage alt={alt} src={`${src}?${queryString}`} {...rest} data-in-grid={inGrid} />
+        <StyledImage alt={alt} src={`${src}?${queryString}`} {...rest} data-border={border} />
       </picture>
       {expandButton}
     </StyledImageWrapper>

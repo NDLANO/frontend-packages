@@ -6,12 +6,13 @@
  *
  */
 
-import React, { Component, createRef } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 import {
   Masthead,
-  MastheadItem,
   LanguageSelector,
   Logo,
   SearchField,
@@ -24,13 +25,24 @@ import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import { contentTypeResults } from '../../dummydata';
 
-export const MastheadWithLogo = ({ skipToMainContentId }) => (
-  <Masthead fixed skipToMainContentId={skipToMainContentId}>
-    <MastheadItem right>
-      <Logo to="#" label="Nasjonal digital læringsarena" />
-    </MastheadItem>
-  </Masthead>
-);
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.xsmall};
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+`;
+
+const DrawerWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 class MastheadWithTopicMenu extends Component {
   constructor(props) {
@@ -91,14 +103,10 @@ class MastheadWithTopicMenu extends Component {
     );
   }
 
-  renderSearchButtonView = (hideOnNarrowScreen, ndlaFilm) => {
-    if (this.props.hideSearchButton) {
-      return null;
-    }
+  renderSearchButtonView = (ndlaFilm) => {
     return (
       <MastheadSearchModal
         ndlaFilm={ndlaFilm}
-        hideOnNarrowScreen={hideOnNarrowScreen}
         onClose={() => {
           this.setState({ value: '' });
           this.closeAllModals[1] = null;
@@ -110,7 +118,7 @@ class MastheadWithTopicMenu extends Component {
   };
 
   render() {
-    const { skipToMainContentId, ndlaFilm, beta, betaInfoContent, hideMenuButton, t, i18n, messages } = this.props;
+    const { skipToMainContentId, ndlaFilm, beta, betaInfoContent, t, i18n, messages } = this.props;
 
     return (
       <Masthead
@@ -120,27 +128,27 @@ class MastheadWithTopicMenu extends Component {
         infoContent={beta && betaInfoContent}
         messages={messages}
       >
-        <MastheadItem left>
-          {!hideMenuButton && (
-            <ButtonV2 inverted={ndlaFilm} variant="outline" shape="pill">
-              <Menu /> {t('masthead.menu.title')}
-            </ButtonV2>
-          )}
-        </MastheadItem>
-        <MastheadItem right>
-          <LanguageSelector
-            inverted={ndlaFilm}
-            locales={i18n.options.supportedLngs}
-            onSelect={(lang) => i18n.changeLanguage(lang)}
-          />
-          {this.renderSearchButtonView(true, ndlaFilm)}
+        <DrawerWrapper>
+          <ButtonV2 inverted={ndlaFilm} variant="outline" shape="pill">
+            <Menu /> {t('masthead.menu.title')}
+          </ButtonV2>
+        </DrawerWrapper>
+        <LogoWrapper>
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
             label="Nasjonal digital læringsarena"
             isBeta={beta}
             cssModifier={ndlaFilm && 'white'}
           />
-        </MastheadItem>
+        </LogoWrapper>
+        <ButtonWrapper>
+          {this.renderSearchButtonView(ndlaFilm)}
+          <LanguageSelector
+            inverted={ndlaFilm}
+            locales={i18n.options.supportedLngs}
+            onSelect={(lang) => i18n.changeLanguage(lang)}
+          />
+        </ButtonWrapper>
       </Masthead>
     );
   }
@@ -148,9 +156,6 @@ class MastheadWithTopicMenu extends Component {
 
 MastheadWithTopicMenu.propTypes = {
   searchFieldExpanded: PropTypes.bool,
-  hideOnNarrowScreen: PropTypes.bool,
-  hideSearchButton: PropTypes.bool,
-  hideMenuButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
   t: PropTypes.func.isRequired,

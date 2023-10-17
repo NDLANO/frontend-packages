@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -14,7 +14,7 @@ const classes = new BEMHelper({
   prefix: 'o-',
 });
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   background?: boolean;
   backgroundWide?: boolean;
@@ -28,6 +28,11 @@ export const PageContainer = ({
   backgroundWide = false,
   ndlaFilm = false,
   learningPath = false,
-}: Props) => <div {...classes('', { background, backgroundWide, ndlaFilm, learningPath })}>{children}</div>;
+  ...rest
+}: Props) => (
+  <div {...classes('', { background, backgroundWide, ndlaFilm, learningPath })} {...rest}>
+    {children}
+  </div>
+);
 
 export default PageContainer;

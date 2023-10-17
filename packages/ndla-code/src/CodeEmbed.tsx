@@ -18,6 +18,7 @@ const CodeEmbed = ({ embed }: Props) => {
       <Codeblock
         title={embed.embedData.title}
         code={embed.status === 'success' ? embed.data.decodedContent : ''}
+        highlightedCode={embed.status === 'success' ? embed.data.highlightedCode : ''}
         format={embed.embedData.codeFormat}
         showCopy
       />

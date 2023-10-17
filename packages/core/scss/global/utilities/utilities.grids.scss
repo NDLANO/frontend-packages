@@ -1,9 +1,12 @@
-@mixin float($cols, $maxcols, $direction) {
+@mixin float($cols, $maxcols, $direction, $override-cols-tablet: null) {
   z-index: 1;
   $colDifference: $maxcols - $cols;
   $cols-tablet: $cols - 1;
   @if ($cols == 1) {
     $cols-tablet: 1;
+  }
+  @if $override-cols-tablet {
+    $cols-tablet: $override-cols-tablet;
   }
 
   @if $direction == left {

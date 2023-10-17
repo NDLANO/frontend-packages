@@ -6,13 +6,12 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import ContactBlock from './ContactBlock';
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'Components/Kontaktblokk',
+  title: 'Components/Contact block',
   component: ContactBlock,
   tags: ['autodocs'],
   args: {
@@ -42,6 +41,7 @@ export default {
         ],
         processors: [],
         rightsholders: [],
+        processed: false,
       },
       tags: {
         tags: ['Sigurd', 'Trageton', 'Portrett'],
@@ -84,4 +84,4 @@ export const ContactBlockStory: StoryFn<typeof ContactBlock> = ({ ...args }) => 
   return <ContactBlock {...args} />;
 };
 
-ContactBlockStory.storyName = 'Kontaktblokk';
+ContactBlockStory.storyName = 'Contact block';

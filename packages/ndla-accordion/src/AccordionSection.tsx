@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Children, useState, useEffect, ReactNode, isValidElement, cloneElement } from 'react';
+import { Children, useState, useEffect, ReactNode, isValidElement, cloneElement } from 'react';
 import { AccordionBar, AccordionPanel } from './';
 
 export interface Props {

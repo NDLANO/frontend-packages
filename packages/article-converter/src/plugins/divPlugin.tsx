@@ -8,7 +8,7 @@
 
 import partition from 'lodash/partition';
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
-import { FileListV2, RelatedArticleListV2, Grid, GridType } from '@ndla/ui';
+import { FileListV2, RelatedArticleListV2, Grid, GridType, GridParallaxItem } from '@ndla/ui';
 import { PluginType } from './types';
 
 export const divPlugin: PluginType = (node, opts) => {
@@ -48,6 +48,8 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(node.children, opts)}
       </Grid>
     );
+  } else if (node.attribs['data-parallax-cell'] === 'true' && node.children.length) {
+    return <GridParallaxItem>{domToReact(node.children, opts)}</GridParallaxItem>;
   }
   return null;
 };

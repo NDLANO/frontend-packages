@@ -1,9 +1,9 @@
-import React, { Children, cloneElement, ReactElement } from 'react';
+import { Children, cloneElement, ReactElement } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ButtonV2 } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
+import { HeadingLevel } from '@ndla/typography';
 import SectionHeading from '../SectionHeading';
-import { HeadingLevel } from '../types';
 
 const classes = new BEMHelper({
   name: 'related-articles',

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import { memo } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { breakpoints, mq, spacing } from '@ndla/core';

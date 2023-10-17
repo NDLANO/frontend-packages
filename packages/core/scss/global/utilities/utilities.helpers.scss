@@ -14,10 +14,10 @@
 
 /* Float article objects */
 .u-float-left {
-  @include float(3, 4, 'left');
+  @include float(13, 20, 'left', 10);
 }
 .u-float-right {
-  @include float(3, 4, 'right');
+  @include float(13, 20, 'right', 10);
 }
 .u-float-small-left {
   @include float(2, 4, 'left');

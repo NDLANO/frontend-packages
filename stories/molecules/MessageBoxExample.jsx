@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
@@ -126,9 +125,9 @@ links={[
 //Aktivere meldingsboks på programside
 <Programme
 messageBoxText={'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.'}
-heading={programme.label}
-grades={programme.grades}
-image={programme.image}
+heading={programmes.label}
+grades={programmes.grades}
+image={programmes.image}
 />
 
 //Aktivere meldingsboks i artikkel 

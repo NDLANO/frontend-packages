@@ -9,56 +9,24 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { MessageBanner } from '../Messages';
 import SkipToMainContent from './SkipToMainContent';
-
-interface MastheadItemProps {
-  children?: ReactNode;
-  right?: boolean;
-  left?: boolean;
-}
-
-const LeftMastheadItem = styled.div`
-  display: flex;
-  align-items: center;
-  button {
-    white-space: nowrap;
-  }
-  > div:last-child {
-    flex-grow: 1;
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    flex-grow: 1;
-    text-align: left;
-  }
-`;
-
-const RightMastheadItem = styled.div`
-  display: flex;
-  gap: ${spacing.small};
-  align-items: center;
-  justify-content: flex-end;
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.small} 0;
-    padding: 0;
-  }
-`;
-
-export const MastheadItem = ({ children, left = false, right = false }: MastheadItemProps) => {
-  const Wrapper = left ? LeftMastheadItem : right ? RightMastheadItem : 'div';
-  return <Wrapper>{children}</Wrapper>;
-};
 
 const MastheadContent = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: ${spacing.small};
+  padding: ${spacing.small} ${spacing.normal};
   font-weight: ${fonts.weight.normal};
   display: flex;
   height: 84px;
   justify-content: space-between;
+  gap: ${spacing.xsmall};
+  ${mq.range({ until: breakpoints.tablet })} {
+    padding: ${spacing.small};
+    gap: ${spacing.xsmall};
+  }
 `;
 
 interface StyledMastheadProps {

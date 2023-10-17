@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { ButtonV2 } from '@ndla/button';
 
 interface Props {

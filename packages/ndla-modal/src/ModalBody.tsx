@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { spacing, breakpoints, mq, colors } from '@ndla/core';
 
@@ -62,7 +62,7 @@ interface Props {
 }
 
 const ModalBody = ({ children, modifier, className }: Props) => (
-  <div data-cy="modal-body" css={bodyStyles} className={`modal-body ${modifier} ${className}`}>
+  <div data-testid="modal-body" css={bodyStyles} className={`modal-body ${modifier} ${className}`}>
     {children}
   </div>
 );

@@ -19,6 +19,8 @@ import { Codeblock } from '@ndla/code';
 ```
 
 editor:
+The user is responsible for loading prism syntaxes, the code editor does not do it for you.
+The `highlight` function is expecting a properly tokenized Prism string as its return value.
 
 ```js
 import { CodeBlockEditor } from '@ndla/code';

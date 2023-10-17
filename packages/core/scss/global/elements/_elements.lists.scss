@@ -13,7 +13,9 @@ ol {
 }
 
 ul {
-  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='3' cy='5' r='3' fill='#{urlEncodeColor($brand-color--secondary)} ' /></svg>");
+  li::marker {
+    color: $brand-color--secondary;
+  }
 }
 
 li {

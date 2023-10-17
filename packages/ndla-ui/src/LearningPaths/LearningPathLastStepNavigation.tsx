@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
@@ -14,15 +14,19 @@ import { useTranslation } from 'react-i18next';
 import { fonts, spacing, spacingUnit } from '@ndla/core';
 import { OneColumn, LayoutItem } from '../index';
 
-const StyledHeader = styled.h1`
+const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: ${spacing.normal};
+  padding-bottom: ${spacing.medium};
+  h1 {
+    margin-bottom: 0px;
+  }
 `;
 
 const StyledSmallText = styled.small`
   ${fonts.sizes(20, 1.3)};
   font-weight: ${fonts.weight.semibold};
-  margin-top: ${spacing.normal};
 `;
 
 const StyledLinkWrapper = styled.div`
@@ -56,14 +60,14 @@ const LearningPathLastStepNavigation = ({ subject, topic, learningPathName, chil
   return (
     <OneColumn css={OneColumnCss}>
       <LayoutItem layout="center">
-        <StyledHeader className="c-article__title">
-          <span>{t('learningPath.lastStep.heading')}</span>
+        <TextWrapper>
+          <h1>{t('learningPath.lastStep.heading')}</h1>
           <StyledSmallText>
             {t('learningPath.lastStep.headingSmall', {
               learningPathName,
             })}
           </StyledSmallText>
-        </StyledHeader>
+        </TextWrapper>
         {subject && (
           <StyledLinkWrapper>
             {t('learningPath.lastStep.subjectHeading')}

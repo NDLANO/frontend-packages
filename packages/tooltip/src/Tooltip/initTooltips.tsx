@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import ReactDOM from 'react-dom';
 import Tooltip from './Tooltip';
 
@@ -27,6 +26,7 @@ const initTooltips = () => {
 
     const outerHTML = inner?.outerHTML;
 
+    // eslint-disable-next-line react/no-deprecated
     ReactDOM.hydrate(<Tooltip tooltip={tooltip!} hydrateHTML={outerHTML} />, el);
   });
 };

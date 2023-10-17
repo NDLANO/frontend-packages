@@ -7,7 +7,6 @@
  */
 /* eslint-disable max-len */
 
-import React from 'react';
 import { logoClasses } from './Logo';
 
 const LogoText = (locale?: string) => {

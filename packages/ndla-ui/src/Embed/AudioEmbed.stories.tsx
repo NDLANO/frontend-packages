@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { AudioEmbedData, AudioMeta } from '@ndla/types-embed';
 import AudioEmbed from './AudioEmbed';
@@ -40,6 +39,7 @@ const successData: AudioMeta = {
     creators: [{ type: 'originator', name: 'Radio Metro AS' }],
     processors: [],
     rightsholders: [],
+    processed: false,
   },
   tags: { tags: ["Ain't I a Woman?", 'Sojourner Truth', 'speech', 'abolitionist'], language: 'nb' },
   supportedLanguages: ['nb'],
@@ -80,6 +80,7 @@ const podcastSuccessData: AudioMeta = {
       { type: 'editorial', name: 'Maren Aftret-Sandal' },
     ],
     rightsholders: [{ type: 'rightsholder', name: 'Både Og' }],
+    processed: false,
   },
   tags: { tags: ['reklame', 'radio', 'lyddesign'], language: 'nb' },
   supportedLanguages: ['nb', 'nn'],
@@ -120,15 +121,15 @@ const podcastSuccessData: AudioMeta = {
   updated: '2022-03-26T07:49:09Z',
   imageMeta: {
     id: '60913',
-    metaUrl: 'https://api.test.ndla.no/image-api/v2/images/60913',
-    title: { title: 'Podkastserie: Lytt deg gjennom mediefaget (samme på bm og nn)', language: 'nb' },
+    metaUrl: 'https://api.test.ndla.no/image-api/v3/images/60913',
+    title: {
+      title: 'Podkastserie: Lytt deg gjennom mediefaget (samme på bm og nn)',
+      language: 'nb',
+    },
     alttext: {
       alttext: 'Foto av smilende jente som kikker oppover mot teksten "Lytt deg gjennom mediefaget". ',
       language: 'nb',
     },
-    imageUrl: 'https://api.test.ndla.no/image-api/raw/NkEZw98N.jpg',
-    size: 525903,
-    contentType: 'image/jpeg',
     copyright: {
       license: {
         license: 'CC-BY-SA-4.0',
@@ -136,20 +137,44 @@ const podcastSuccessData: AudioMeta = {
         url: 'https://creativecommons.org/licenses/by-sa/4.0/',
       },
       origin: '',
-      creators: [{ type: 'photographer', name: 'Tom Knudsen' }],
-      processors: [{ type: 'processor', name: 'Thomas Nupen' }],
+      creators: [
+        {
+          type: 'photographer',
+          name: 'Tom Knudsen',
+        },
+      ],
+      processors: [
+        {
+          type: 'processor',
+          name: 'Thomas Nupen',
+        },
+      ],
       rightsholders: [],
+      processed: false,
     },
     tags: {
       tags: ['lytt gjennom mediefaget', 'podcastserie', 'podcast', 'mediefaget', 'medier', 'podkastserie', 'podkast'],
       language: 'nb',
     },
-    caption: { caption: ' ', language: 'nb' },
+    caption: {
+      caption: ' ',
+      language: 'nb',
+    },
     supportedLanguages: ['nb', 'nn'],
     created: '2021-12-15T13:32:03Z',
     createdBy: 'lwkLpeEV_VUmCkly1SJ3WTkg',
     modelRelease: 'yes',
-    imageDimensions: { width: 1405, height: 1405 },
+    image: {
+      fileName: 'NkEZw98N.jpg',
+      size: 525903,
+      contentType: 'image/jpeg',
+      imageUrl: 'https://api.test.ndla.no/image-api/raw/NkEZw98N.jpg',
+      dimensions: {
+        width: 1405,
+        height: 1405,
+      },
+      language: 'nb',
+    },
   },
 };
 
@@ -181,7 +206,6 @@ export const AudioEmbedStory: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'success',
-      seq: 1,
       embedData: embedData,
       data: successData,
     },
@@ -194,7 +218,6 @@ export const AudioEmbedFailed: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'error',
-      seq: 1,
       embedData: embedData,
     },
   },
@@ -206,7 +229,6 @@ export const Podcast: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'success',
-      seq: 1,
       embedData: podcastEmbedData,
       data: podcastSuccessData,
     },
@@ -219,7 +241,6 @@ export const PodcastFailed: StoryObj<typeof AudioEmbed> = {
     embed: {
       resource: 'audio',
       status: 'error',
-      seq: 1,
       embedData: podcastEmbedData,
     },
   },

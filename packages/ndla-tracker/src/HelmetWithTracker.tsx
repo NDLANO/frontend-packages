@@ -6,10 +6,11 @@
  *
  */
 
-import React, { Component, ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import warning from 'tiny-warning';
-import withTracker from './withTracker';
+import { usePrevious } from '@ndla/util';
+import useTracker from './useTracker';
 
 interface Props {
   title: string;
@@ -21,21 +22,23 @@ interface Props {
  *
  * Since we only can track a page once, changes to the title prop will trigger a warning.
  */
-class HelmetWithTracker extends Component<Props> {
-  componentDidUpdate(prevProps: Props) {
-    warning(
-      !(prevProps.title !== this.props.title),
-      'N.B! Title changes are not supported because of page view tracking. \n\n Please use willTrackPageView provided by withTracker for more lowlevel control over which title to track.',
-    );
-  }
 
-  static getDocumentTitle(props: Props) {
-    return props.title;
-  }
+const HelmetWithTracker = ({ title, children }: Props) => {
+  const { hasTracked, trackPageView } = useTracker();
+  const previousTitle = usePrevious(title);
 
-  render() {
-    return <Helmet {...this.props} />;
-  }
-}
+  useEffect(() => {
+    if (hasTracked && title !== previousTitle) {
+      warning(
+        true,
+        'N.B! Title changes are not supported because of page view tracking. \n\n Please use trackPageView provided by useTracker for more lowlevel control over when to track a page view.',
+      );
+    } else {
+      trackPageView({ title });
+    }
+  }, [hasTracked, previousTitle, title, trackPageView]);
 
-export default withTracker(HelmetWithTracker);
+  return <Helmet title={title}>{children}</Helmet>;
+};
+
+export default HelmetWithTracker;

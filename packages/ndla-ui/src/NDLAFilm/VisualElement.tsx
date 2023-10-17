@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import Image from '../Image';
 
@@ -30,8 +29,7 @@ const VisualElement = ({ visualElement }: Props) => {
   if (type === 'image') {
     return <Image src={url} alt={alt ?? ''} />;
   } else if (type === 'brightcove') {
-    //@ts-ignore react does not recognize fullscreen properties.
-    return <StylediFrame allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src={url} />;
+    return <StylediFrame allowFullScreen={true} src={url} />;
   } else {
     return null;
   }

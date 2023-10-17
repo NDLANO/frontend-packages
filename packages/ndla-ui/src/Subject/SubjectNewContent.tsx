@@ -1,10 +1,9 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { HeadingLevel } from '@ndla/typography';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { SubjectSectionTitle } from './Subject';
-import { HeadingLevel } from '../types';
 
 interface Props {
   headingLevel: HeadingLevel;

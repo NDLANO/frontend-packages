@@ -14,7 +14,7 @@ import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import { ICopyright as ImageCopyright } from '@ndla/types-backend/image-api';
 import { ICopyright as AudioCopyright } from '@ndla/types-backend/audio-api';
-import { ICopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
+import { IDraftCopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
 import { BrightcoveCopyright } from '@ndla/types-embed';
 import { WarningOutline } from '@ndla/icons/common';
 import LicenseLink from './LicenseLink';
@@ -23,7 +23,7 @@ import LicenseDescription from './LicenseDescription';
 interface BaseProps {
   topRounded?: boolean;
   bottomRounded?: boolean;
-  description?: string;
+  description?: ReactNode;
   children?: ReactNode;
   visibleAlt?: string;
   error?: true | false;
@@ -38,27 +38,27 @@ export interface EmbedBylineErrorProps extends BaseProps {
 
 interface ImageProps extends BaseProps {
   type: 'image';
-  copyright: ImageCopyright;
+  copyright: ImageCopyright | undefined;
 }
 
 interface BrightcoveProps extends BaseProps {
   type: 'video';
-  copyright: BrightcoveCopyright;
+  copyright: BrightcoveCopyright | undefined;
 }
 
 interface AudioProps extends BaseProps {
   type: 'audio';
-  copyright: AudioCopyright;
+  copyright: AudioCopyright | undefined;
 }
 
 interface PodcastProps extends BaseProps {
   type: 'podcast';
-  copyright: AudioCopyright;
+  copyright: AudioCopyright | undefined;
 }
 
 interface ConceptProps extends BaseProps {
-  type: 'concept';
-  copyright: ConceptCopyright;
+  type: 'concept' | 'gloss';
+  copyright: ConceptCopyright | undefined;
 }
 
 export type EmbedBylineTypeProps = ImageProps | BrightcoveProps | AudioProps | PodcastProps | ConceptProps;
@@ -75,7 +75,7 @@ const BylineWrapper = styled.div`
   ${fonts.sizes('18px', '24px')};
   background-color: ${colors.brand.lightest};
   padding: ${spacing.nsmall} ${spacing.normal};
-  border: 1px solid ${colors.brand.tertiary};
+  border: 1px solid ${colors.brand.light};
   border-top: none;
 
   &[data-top-rounded='true'] {
@@ -93,7 +93,7 @@ const BylineWrapper = styled.div`
     background-color: ${colors.support.redLightest};
   }
   &[data-first='true'] {
-    border-top: 1px solid ${colors.brand.tertiary};
+    border-top: 1px solid ${colors.brand.light};
   }
 `;
 
@@ -112,7 +112,7 @@ const RightsWrapper = styled.div`
     ${mobileStyling}
   }
 
-  ${mq.range({ until: breakpoints.tablet })} {
+  ${mq.range({ until: breakpoints.tabletWide })} {
     ${mobileStyling}
   }
 `;
@@ -124,7 +124,7 @@ const StyledSpan = styled.span`
 
 const LicenseInformationWrapper = styled.div`
   flex: 1;
-  padding-right: ${spacing.xsmall}}
+  padding-right: ${spacing.xsmall};
 `;
 
 const EmbedByline = ({
@@ -139,7 +139,6 @@ const EmbedByline = ({
   ...props
 }: Props) => {
   const { t, i18n } = useTranslation();
-  const strippedDescription = description?.trim();
 
   if (props.error) {
     const typeString = type === 'h5p' ? 'H5P' : t(`embed.type.${type}`).toLowerCase();
@@ -152,16 +151,16 @@ const EmbedByline = ({
 
   const { copyright } = props;
 
-  const license = getLicenseByAbbreviation(copyright.license?.license ?? '', i18n.language);
+  const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? '', i18n.language) : undefined;
   const authors = getLicenseCredits(copyright);
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
   return (
     <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-first={first}>
-      {!!strippedDescription?.length && description && <LicenseDescription description={description} />}
+      {description && <LicenseDescription description={description} />}
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
       <RightsWrapper data-grid={inGrid}>
-        <LicenseLink license={license} asLink={!!license.url.length} />
+        {license ? <LicenseLink license={license} asLink={!!license.url.length} /> : null}
         <LicenseInformationWrapper>
           <span>
             <b>{t(`embed.type.${type}`)}: </b>

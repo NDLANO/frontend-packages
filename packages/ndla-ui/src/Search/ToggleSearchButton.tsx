@@ -6,49 +6,38 @@
  *
  */
 
-import React from 'react';
-import { spacing, spacingUnit, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
+import { forwardRef } from 'react';
+import { spacing, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
 import { ButtonProps, ButtonV2 } from '@ndla/button';
 import styled from '@emotion/styled';
 
 interface Props extends ButtonProps {
-  hideOnNarrowScreen?: boolean;
-  hideOnWideScreen?: boolean;
   ndlaFilm?: boolean;
 }
 
-interface StyledButtonProps {
-  hideOnNarrowScreen?: boolean;
-  hideOnWideScreen?: boolean;
-  ndlaFilm?: boolean;
-}
-
-const props = ['hideOnNarrowScreen', 'hideOnWideScreen', 'ndlaFilm'];
-
-const shouldForwardProp = (p: string) => !props.includes(p);
-
-const StyledButton = styled(ButtonV2, { shouldForwardProp })<StyledButtonProps>`
-  background: ${(p) => (p.ndlaFilm ? colors.ndlaFilm.filmColorBright : colors.brand.greyLighter)};
+const StyledButton = styled(ButtonV2)`
   border-radius: ${misc.borderRadius};
   border: 0;
-  display: ${(p) => (p.hideOnNarrowScreen ? 'none' : 'flex')};
-  color: ${(p) => (p.ndlaFilm ? '#fff' : colors.brand.primary)};
-  padding: ${spacing.small} ${spacingUnit * 0.75}px ${spacing.small} ${spacing.normal};
+  color: ${colors.brand.primary};
   align-items: center;
-  margin-left: ${spacing.medium};
+  background: transparent;
 
-  .c-icon {
+  svg {
     height: 24px;
     width: 24px;
   }
 
   ${fonts.sizes('16px', '32px')};
 
-  ${mq.range({ from: breakpoints.desktop })} {
-    display: ${(p) => (p.hideOnWideScreen ? 'none' : 'flex')};
-    margin-right: ${spacing.nsmall};
+  &[data-film='true'] {
+    background: ${colors.ndlaFilm.filmColorBright};
+    color: ${colors.white};
+  }
+
+  ${mq.range({ from: breakpoints.tabletWide })} {
     padding: ${spacing.small} ${spacing.normal};
+    background: ${colors.brand.greyLighter};
   }
   &:hover,
   &:focus,
@@ -60,19 +49,16 @@ const StyledButton = styled(ButtonV2, { shouldForwardProp })<StyledButtonProps>`
 const StyledSpan = styled.span`
   margin-right: ${spacing.normal};
   font-weight: ${fonts.weight.normal};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: none;
+  }
 `;
 
-const ToggleSearchButton = ({ children, ndlaFilm, hideOnNarrowScreen, hideOnWideScreen, ...rest }: Props) => (
-  <StyledButton
-    ndlaFilm={ndlaFilm}
-    hideOnNarrowScreen={hideOnNarrowScreen}
-    hideOnWideScreen={hideOnWideScreen}
-    type="button"
-    {...rest}
-  >
+const ToggleSearchButton = forwardRef<HTMLButtonElement, Props>(({ children, ndlaFilm, ...rest }, ref) => (
+  <StyledButton data-film={ndlaFilm} type="button" ref={ref} {...rest}>
     <StyledSpan>{children}</StyledSpan>
     <Search />
   </StyledButton>
-);
+));
 
 export default ToggleSearchButton;

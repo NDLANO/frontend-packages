@@ -1,4 +1,4 @@
-import React, { Component, Fragment, Suspense, lazy } from 'react';
+import { Component, Fragment, Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 

@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 const FrontpageHeaderIllustration = () => (
   <svg width="482" height="68" viewBox="68 48 779 100" xmlns="http://www.w3.org/2000/svg">
     <style>

@@ -41,7 +41,7 @@ export const stories: Record<string, Story> = {
     lead: 'Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles opp i flere tabeller.',
   },
   BodyBox: {
-    title: 'Tekst i ramme',
+    title: '',
     lead: 'Tekst i ramme kan brukes for å framheve noe av særlig interesse, annet enn sitat',
     body: [
       {

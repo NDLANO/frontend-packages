@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { H5pEmbedData, H5pData } from '@ndla/types-embed';
 import H5pEmbed from './H5pEmbed';
@@ -73,7 +72,6 @@ export const Regular: StoryObj<typeof H5pEmbed> = {
     embed: {
       resource: 'h5p',
       status: 'success',
-      seq: 5,
       embedData: embedData,
       data: metaData,
     },
@@ -85,7 +83,6 @@ export const Failed: StoryObj<typeof H5pEmbed> = {
     embed: {
       resource: 'h5p',
       status: 'error',
-      seq: 3,
       embedData: embedData,
     },
   },

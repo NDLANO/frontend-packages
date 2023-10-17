@@ -6,8 +6,8 @@
  *
  */
 
-import React, { ReactNode, useMemo } from 'react';
-import ReactSelect, { PropsValue, createFilter, OptionsOrGroups } from 'react-select';
+import { ReactNode, useMemo } from 'react';
+import ReactSelect, { PropsValue, createFilter, OptionsOrGroups, StylesConfig } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
@@ -65,6 +65,29 @@ const Select = <T extends boolean>({
 }: Props<T>) => {
   const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document.body : null), []);
 
+  const components = useMemo(
+    () => ({
+      SelectContainer: BaseContainer,
+      IndicatorSeparator: null,
+      Option: BaseOption,
+      Control: BaseControl,
+      SingleValue: BaseSingleValue,
+      DropdownIndicator: hideArrow ? null : BaseDropdownIndicator,
+      Menu: BaseMenu,
+      MultiValue: BaseMultiValue,
+      Placeholder: BasePlaceholder,
+      ValueContainer: ValueContainer,
+      GroupHeading: BaseGroupHeading,
+    }),
+    [hideArrow],
+  );
+
+  const styles: StylesConfig<Option, T> = useMemo(() => ({ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }), []);
+  const filterOption = useMemo(
+    () => (matchFrom === 'start' ? createFilter({ matchFrom: 'start' }) : undefined),
+    [matchFrom],
+  );
+
   return (
     <ReactSelect<Option, T>
       {...rest}
@@ -78,21 +101,9 @@ const Select = <T extends boolean>({
       unstyled
       // wait for https://github.com/radix-ui/primitives/issues/1159 to be closed to remove this.
       menuPortalTarget={inModal ? null : portalTarget}
-      filterOption={matchFrom === 'start' ? createFilter({ matchFrom: 'start' }) : undefined}
-      styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
-      components={{
-        SelectContainer: BaseContainer,
-        IndicatorSeparator: null,
-        Option: BaseOption,
-        Control: BaseControl,
-        SingleValue: BaseSingleValue,
-        DropdownIndicator: hideArrow ? null : BaseDropdownIndicator,
-        Menu: BaseMenu,
-        MultiValue: BaseMultiValue,
-        Placeholder: BasePlaceholder,
-        ValueContainer: ValueContainer,
-        GroupHeading: BaseGroupHeading,
-      }}
+      filterOption={filterOption}
+      styles={styles}
+      components={components}
     />
   );
 };

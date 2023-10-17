@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import CampaignBlock from './CampaignBlock';
 import { defaultParameters } from '../../../../stories/defaults';
@@ -21,7 +20,7 @@ export default {
   args: {},
 } as Meta<typeof CampaignBlock>;
 
-export const BothImages: StoryObj<typeof CampaignBlock> = {
+export const ImageLeft: StoryObj<typeof CampaignBlock> = {
   args: {
     title: { title: 'NDLA film', language: 'nb-no' },
     description: {
@@ -33,18 +32,14 @@ export const BothImages: StoryObj<typeof CampaignBlock> = {
       url: '#',
       text: 'Gå til NDLA film',
     },
-    imageBefore: {
+    image: {
       alt: '',
       src: 'https://api.test.ndla.no/image-api/raw/n2UYRxEG.png',
-    },
-    imageAfter: {
-      alt: '',
-      src: 'https://api.test.ndla.no/image-api/raw/8GOxOhjr.png',
     },
   },
 };
 
-export const SingleImage: StoryObj<typeof CampaignBlock> = {
+export const ImageRight: StoryObj<typeof CampaignBlock> = {
   args: {
     title: { title: 'FN-dagen 24. oktober!', language: 'nb-no' },
     description: {
@@ -55,9 +50,10 @@ export const SingleImage: StoryObj<typeof CampaignBlock> = {
       url: '#',
       text: 'Les mer om FN-dagen',
     },
-    imageAfter: {
+    image: {
       alt: 'FN-symbol',
       src: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
     },
+    imageSide: 'right',
   },
 };

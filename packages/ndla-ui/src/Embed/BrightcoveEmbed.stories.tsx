@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData, EmbedMetaData } from '@ndla/types-embed';
 import BrightcoveEmbed from './BrightcoveEmbed';
@@ -83,7 +82,6 @@ const metaData: BrightcoveData = {
 
 const visuallyInterpretedEmbedMetaData: BrightcoveMetaData = {
   resource: 'brightcove',
-  seq: 3,
   status: 'success',
   embedData: {
     resource: 'brightcove',
@@ -184,7 +182,6 @@ export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
     embed: {
       resource: 'brightcove',
       status: 'success',
-      seq: 1,
       embedData: embedData,
       data: metaData,
     },
@@ -204,7 +201,6 @@ export const BrightcoveFailed: StoryObj<typeof BrightcoveEmbed> = {
     embed: {
       resource: 'brightcove',
       status: 'error',
-      seq: 1,
       embedData: embedData,
     },
   },

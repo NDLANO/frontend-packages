@@ -10,7 +10,7 @@ import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { Content } from '@radix-ui/react-accordion';
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, memo } from 'react';
 
 const slideDown = keyframes`
   from {
@@ -62,4 +62,4 @@ const AccordionContent = ({ disableAnimation, children, ...rest }: Props) => {
   );
 };
 
-export default AccordionContent;
+export default memo(AccordionContent);

@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Forward } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, spacing } from '@ndla/core';
 
+import { HeadingLevel } from '@ndla/typography';
 import SectionHeading from '../SectionHeading';
-import { HeadingLevel } from '../types';
 
 interface InfoWidgetSectionProps {
   center?: boolean;

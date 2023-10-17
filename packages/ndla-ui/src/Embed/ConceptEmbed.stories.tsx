@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { ConceptData, ConceptEmbedData } from '@ndla/types-embed';
 import ConceptEmbed from './ConceptEmbed';
@@ -20,9 +19,23 @@ const blockEmbedData: ConceptEmbedData = {
   linkText: '',
 };
 
+const glossBlockEmbedData: ConceptEmbedData = {
+  contentId: '4942',
+  resource: 'concept',
+  type: 'block',
+  linkText: '',
+};
+
 const inlineEmbedData: ConceptEmbedData = {
   contentId: '2318',
   linkText: 'forklaring',
+  resource: 'concept',
+  type: 'inline',
+};
+
+const glossInlineEmbedData: ConceptEmbedData = {
+  contentId: '23',
+  linkText: 'glose',
   resource: 'concept',
   type: 'inline',
 };
@@ -33,7 +46,7 @@ const conceptMetaData: ConceptData['concept'] = {
   title: { title: 'skin – formasjonsskade', language: 'nb' },
   content: {
     content:
-      'Ordet «skin» er engelsk og brukes om formasjonsskade som oppstår i boreprosessen i området som grenser inn til brønnen. Skaden er størst i området nærmest hullet, men den kan bre seg utover et stykke fra brønnen. Skin forteller om bergartens permeabilitet i reservoarsonen. \n\nHullveggen skades både av borekronen, små partikler og væsken som brukes i brønnen.\n\nSkaden i bergarten gir dårligere forhold for oljen som skal strømme til brønnen. Gangene i bergarten plugges, og det oppstår et trykkfall som reduserer produksjonstrykket i brønnen.\n\nDet er viktig å redusere omfanget av skaden ved å velge væsker som passer godt til bergartsegenskapene, og å bore med en borekrone som skader minst mulig.\n\nSkader som er dannet av borevæske, kan repareres ved å syrebehandle hullets overflate.\n',
+      ' <p>Ordet «skin» er engelsk og brukes om formasjonsskade som oppstår i boreprosessen i området som grenser inn til brønnen. Skaden er størst i området nærmest hullet, men den kan bre seg utover et stykke fra brønnen. Skin forteller om bergartens permeabilitet i reservoarsonen.</p> <p>Hullveggen skades både av borekronen, små partikler og væsken som brukes i brønnen.</p> <p>Skaden i bergarten gir dårligere forhold for oljen som skal strømme til brønnen. Gangene i bergarten plugges, og det oppstår et trykkfall som reduserer produksjonstrykket i brønnen.</p> <p>Det er viktig å redusere omfanget av skaden ved å velge væsker som passer godt til bergartsegenskapene, og å bore med en borekrone som skader minst mulig.</p> <p>Skader som er dannet av borevæske, kan repareres ved å syrebehandle hullets overflate.</p>',
     language: 'nb',
   },
   copyright: {
@@ -48,6 +61,7 @@ const conceptMetaData: ConceptData['concept'] = {
       { type: 'Correction', name: 'Arbeidets art' },
     ],
     rightsholders: [],
+    processed: false,
   },
   source: '',
   metaImage: {
@@ -68,12 +82,73 @@ const conceptMetaData: ConceptData['concept'] = {
       '<ndlaembed data-resource="image" data-resource_id="52863" data-alt="Eksempel på hvordan borevæsken kan trenge ut i formasjonen fra borehullet og skade formasjonens permeabilitet. Illustrasjon." data-size="full" data-align="" data-url="https://api.test.ndla.no/image-api/v2/images/52863"></ndlaembed>',
     language: 'nb',
   },
+  conceptType: 'concept',
+};
+
+const glossMetaData: ConceptData['concept'] = {
+  id: 4942,
+  revision: 6,
+  title: {
+    title: 'Ma Hong',
+    language: 'nb',
+  },
+  content: {
+    content: 'Hei',
+    language: 'nb',
+  },
+  copyright: {
+    creators: [],
+    processors: [],
+    rightsholders: [],
+    processed: false,
+  },
+  source: '',
+  metaImage: {
+    url: '',
+    alt: '',
+    language: 'und',
+  },
+  created: '2023-07-19T09:30:40.000Z',
+  updated: '2023-09-19T17:13:56.573Z',
+  updatedBy: ['XxnkdI7rApMl58MeG3p4g4B8', 'hd5ZL5Lm4kKkumWgN2gjy9wx'],
+  supportedLanguages: ['nb'],
+  articleIds: [],
+  status: {
+    current: 'IN_PROGRESS',
+    other: [],
+  },
+  responsible: {
+    responsibleId: 'XxnkdI7rApMl58MeG3p4g4B8',
+    lastUpdated: '2023-07-19T09:30:40.000Z',
+  },
+  conceptType: 'gloss',
+  glossData: {
+    gloss: '马红',
+    wordClass: 'personal-pronoun',
+    originalLanguage: 'zh',
+    transcriptions: {},
+    examples: [
+      [
+        {
+          example: '我叫马红',
+          language: 'zh',
+          transcriptions: {
+            pinyin: 'wo jiao ma hong ',
+          },
+        },
+        {
+          example: 'Jeg heter ma hong',
+          language: 'nb',
+          transcriptions: {},
+        },
+      ],
+    ],
+  },
 };
 
 const visualElementData: ConceptData['visualElement'] = {
   resource: 'image',
   status: 'success',
-  seq: 6,
   embedData: {
     resource: 'image',
     resourceId: '52863',
@@ -84,15 +159,15 @@ const visualElementData: ConceptData['visualElement'] = {
   },
   data: {
     id: '52863',
-    metaUrl: 'https://api.test.ndla.no/image-api/v2/images/52863',
-    title: { title: 'Skin - formasjonsskade', language: 'nb' },
+    metaUrl: 'https://api.test.ndla.no/image-api/v3/images/52863',
+    title: {
+      title: 'Skin - formasjonsskade',
+      language: 'nb',
+    },
     alttext: {
       alttext: 'Skissen viser hvordan borevæsken trenger inn i formasjonen i området nær hullet. Illustrasjon.',
       language: 'nb',
     },
-    imageUrl: 'https://api.test.ndla.no/image-api/raw/6WbfcOmr.png',
-    size: 194971,
-    contentType: 'image/png',
     copyright: {
       license: {
         license: 'CC-BY-SA-4.0',
@@ -100,23 +175,49 @@ const visualElementData: ConceptData['visualElement'] = {
         url: 'https://creativecommons.org/licenses/by-sa/4.0/',
       },
       origin: '',
-      creators: [{ type: 'Illustrator', name: 'Sissel Paaske' }],
+      creators: [
+        {
+          type: 'Illustrator',
+          name: 'Sissel Paaske',
+        },
+      ],
       processors: [],
       rightsholders: [],
+      processed: false,
     },
-    tags: { tags: ['skin', 'formasjonsskade', 'nærbrønn', 'permeabilitet'], language: 'nb' },
-    caption: { caption: 'Formasjonsskade i nærbrønnområdet kalles "skin". Illustrasjon.', language: 'nb' },
+    tags: {
+      tags: ['skin', 'formasjonsskade', 'nærbrønn', 'permeabilitet'],
+      language: 'nb',
+    },
+    caption: {
+      caption: 'Formasjonsskade i nærbrønnområdet kalles "skin". Illustrasjon.',
+      language: 'nb',
+    },
     supportedLanguages: ['nb'],
     created: '2020-10-26T15:02:47Z',
     createdBy: 'KBAJskRqPXZUv9LFjAbz8btB',
     modelRelease: 'not-set',
-    imageDimensions: { width: 429, height: 565 },
+    image: {
+      fileName: '6WbfcOmr.png',
+      size: 194971,
+      contentType: 'image/png',
+      imageUrl: 'https://api.test.ndla.no/image-api/raw/6WbfcOmr.png',
+      dimensions: {
+        width: 429,
+        height: 565,
+      },
+      language: 'nb',
+    },
   },
 };
 
 const blockMetaData: ConceptData = {
   concept: conceptMetaData,
   visualElement: visualElementData,
+};
+
+const glossBlockData: ConceptData = {
+  concept: glossMetaData,
 };
 
 const meta: Meta<typeof ConceptEmbed> = {
@@ -150,10 +251,14 @@ export const Block: StoryObj<typeof ConceptEmbed> = {
     embed: {
       resource: 'concept',
       status: 'success',
-      seq: 1,
       embedData: blockEmbedData,
       data: blockMetaData,
     },
+  },
+};
+export const GlossBlock: StoryObj<typeof ConceptEmbed> = {
+  args: {
+    embed: { resource: 'concept', status: 'success', embedData: glossBlockEmbedData, data: glossBlockData },
   },
 };
 
@@ -163,7 +268,6 @@ export const BlockFailed: StoryObj<typeof ConceptEmbed> = {
     embed: {
       resource: 'concept',
       status: 'error',
-      seq: 1,
       embedData: blockEmbedData,
     },
   },
@@ -175,9 +279,19 @@ export const Inline: StoryObj<typeof ConceptEmbed> = {
     embed: {
       resource: 'concept',
       status: 'success',
-      seq: 1,
       embedData: inlineEmbedData,
       data: blockMetaData,
+    },
+  },
+};
+
+export const GlossInline: StoryObj<typeof ConceptEmbed> = {
+  args: {
+    embed: {
+      resource: 'concept',
+      status: 'success',
+      embedData: glossInlineEmbedData,
+      data: glossBlockData,
     },
   },
 };
@@ -188,7 +302,6 @@ export const InlineFailed: StoryObj<typeof ConceptEmbed> = {
     embed: {
       resource: 'concept',
       status: 'error',
-      seq: 1,
       embedData: inlineEmbedData,
     },
   },

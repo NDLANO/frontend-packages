@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ButtonV2 } from '@ndla/button';
 import BEMHelper from 'react-bem-helper';
@@ -44,7 +43,7 @@ export default function VideoSearchResultYouTube({
             <ButtonV2 {...classes('button')} variant="outline" onClick={() => onVideoPreview(video)}>
               {translations.previewVideo}
             </ButtonV2>
-            <ButtonV2 data-cy="use-video" {...classes('button')} onClick={() => onSelectVideo(video)}>
+            <ButtonV2 data-testid="use-video" {...classes('button')} onClick={() => onSelectVideo(video)}>
               {translations.addVideo}
             </ButtonV2>
           </div>

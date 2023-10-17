@@ -6,12 +6,13 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { Plus as PlusIcon } from '@ndla/icons/action';
 
+import { Modal, ModalTrigger } from '@ndla/modal';
 import PopupFilter, { PopupFilterProps } from '../PopupFilter';
 import ActiveFilters from '../ActiveFilters';
 import { FilterProps } from '../ActiveFilterContent';
@@ -101,15 +102,13 @@ const SubjectFilters = ({ filters, activeFilters, isNarrowScreen }: SubjectFilte
     setIsOpen(true);
   };
 
-  const handleModalClose = () => {
-    setIsOpen(false);
-  };
-
   const OpenModalButton = () => (
-    <ButtonV2 type="button" size="normal" colorTheme="greyLighter" shape="pill" onClick={handlePopupOpen}>
-      <FilterButtonText>{t('searchPage.searchFilterMessages.noValuesButtonText')}</FilterButtonText>
-      <PlusIcon />
-    </ButtonV2>
+    <ModalTrigger>
+      <ButtonV2 type="button" size="normal" colorTheme="greyLighter" shape="pill">
+        <FilterButtonText>{t('searchPage.searchFilterMessages.noValuesButtonText')}</FilterButtonText>
+        <PlusIcon />
+      </ButtonV2>
+    </ModalTrigger>
   );
 
   const ActiveFiltersElement = ({ showModalButton }: { showModalButton?: boolean }) => {
@@ -126,7 +125,7 @@ const SubjectFilters = ({ filters, activeFilters, isNarrowScreen }: SubjectFilte
   };
 
   return (
-    <>
+    <Modal open={isOpen} onOpenChange={setIsOpen}>
       {isNarrowScreen ? (
         <ActiveFiltersElement showModalButton />
       ) : isNarrowScreen === false ? (
@@ -140,12 +139,10 @@ const SubjectFilters = ({ filters, activeFilters, isNarrowScreen }: SubjectFilte
         subjectCategories={subjectCategories}
         subjectValues={subjectValues}
         programmesValues={programmesValues}
-        onClose={handleModalClose}
         onToggleSubject={onToggleSubject}
         onToggleProgramme={onToggleProgramme}
-        isOpen={isOpen}
       />
-    </>
+    </Modal>
   );
 };
 

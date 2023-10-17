@@ -6,9 +6,9 @@
  * FRI OG BEGRENSET
  */
 
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { ModalHeader, ModalBody, ModalCloseButton, Modal } from '@ndla/modal';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import debounce from 'lodash/debounce';
 import { classes } from './filterClasses';
@@ -69,6 +69,7 @@ const FilterListPhone = ({
   isGroupedOptions,
   showActiveFiltersOnSmallScreen,
 }: Props) => {
+  const [open, setOpen] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(defaultVisibleCount);
 
@@ -92,6 +93,10 @@ const FilterListPhone = ({
     }
     /* eslint react/no-did-mount-set-state: 1 */
   };
+
+  const onClose = useCallback(() => {
+    setOpen(false);
+  }, []);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>, option: Option) => {
     let newValues = null;
@@ -137,74 +142,70 @@ const FilterListPhone = ({
             }}
           />
         )}
-        <Modal
-          size="full"
-          activateButton={
+        <Modal open={open} onOpenChange={setOpen}>
+          <ModalTrigger>
             <ButtonV2 variant="outline" {...classes('modal-button')}>
               {messages.openFilter}
             </ButtonV2>
-          }
-        >
-          {(onClose) => (
-            <>
-              <ModalHeader>
-                <div {...classes('modal-header')}>
-                  <div {...classes('modal-heading')}>
-                    {!isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}
-                    <ButtonV2 variant="outline" onClick={onClose}>
-                      {messages.useFilter}
-                    </ButtonV2>
-                  </div>
-                  <ModalCloseButton title={messages.closeFilter} onClick={onClose} />
-                </div>
-              </ModalHeader>
-              <ModalBody modifier="no-side-padding-mobile">
-                {isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}
-                {groupedOptions.map((options, index) => (
-                  <ul
-                    key={index}
-                    {...classes('item-wrapper', {
-                      'aligned-grouping': !!alignedGroup,
-                      'collapse-mobile': !!collapseMobile,
-                      'grouped-options': !!isGroupedOptions,
-                    })}
-                  >
-                    {options.map((option) => {
-                      const itemModifiers = [];
-
-                      const checked = values.some((value) => value === option.value);
-
-                      if (option.noResults) {
-                        itemModifiers.push('no-results');
-                      }
-
-                      if (option.disabled) {
-                        itemModifiers.push('disabled');
-                      }
-                      return (
-                        <ToggleItem
-                          key={option.value}
-                          id={preid + option.value}
-                          value={option.value}
-                          checked={checked}
-                          onChange={(event) => handleChange(event, option)}
-                          label={option.title}
-                          disabled={option.disabled}
-                          modifiers={itemModifiers}
-                        />
-                      );
-                    })}
-                  </ul>
-                ))}
-
-                <div {...classes('usefilter-wrapper')}>
+          </ModalTrigger>
+          <ModalContent size="full">
+            <ModalHeader>
+              <div {...classes('modal-header')}>
+                <div {...classes('modal-heading')}>
+                  {!isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}
                   <ButtonV2 variant="outline" onClick={onClose}>
                     {messages.useFilter}
                   </ButtonV2>
                 </div>
-              </ModalBody>
-            </>
-          )}
+                <ModalCloseButton title={messages.closeFilter} />
+              </div>
+            </ModalHeader>
+            <ModalBody modifier="no-side-padding-mobile">
+              {isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}
+              {groupedOptions.map((options, index) => (
+                <ul
+                  key={index}
+                  {...classes('item-wrapper', {
+                    'aligned-grouping': !!alignedGroup,
+                    'collapse-mobile': !!collapseMobile,
+                    'grouped-options': !!isGroupedOptions,
+                  })}
+                >
+                  {options.map((option) => {
+                    const itemModifiers = [];
+
+                    const checked = values.some((value) => value === option.value);
+
+                    if (option.noResults) {
+                      itemModifiers.push('no-results');
+                    }
+
+                    if (option.disabled) {
+                      itemModifiers.push('disabled');
+                    }
+                    return (
+                      <ToggleItem
+                        key={option.value}
+                        id={preid + option.value}
+                        value={option.value}
+                        checked={checked}
+                        onChange={(event) => handleChange(event, option)}
+                        label={option.title}
+                        disabled={option.disabled}
+                        modifiers={itemModifiers}
+                      />
+                    );
+                  })}
+                </ul>
+              ))}
+
+              <div {...classes('usefilter-wrapper')}>
+                <ButtonV2 variant="outline" onClick={onClose}>
+                  {messages.useFilter}
+                </ButtonV2>
+              </div>
+            </ModalBody>
+          </ModalContent>
         </Modal>
       </div>
     );

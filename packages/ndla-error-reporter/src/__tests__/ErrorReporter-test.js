@@ -20,7 +20,7 @@ const errorReporter = ErrorReporter.getInstance({
   environment: 'unittest',
   componentName: 'ndla-frontend',
   store: { getState: () => state },
-  ignoreUrls: [/https:\/\/.*\.hotjar.com.*/, 'https://example.com/script.js'],
+  ignoreUrls: ['https://example.com/script.js'],
 });
 
 test('ndla-error-reporter/ErrorReporter is singleton', () => {
@@ -201,10 +201,6 @@ test('ndla-error-reporter/ErrorReporter should ignore provided urls', () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', () => true)
     .reply(200);
-
-  window.onerror.call(window, 'Some error', 'https://cdn.hotjar.com/some/path/to/script.js', 0, 0);
-  // hack to check that no api calls was made
-  expect(apiMock.isDone()).toBe(false);
 
   window.onerror.call(window, 'Some error', 'https://example.com/script.js', 0, 0);
 

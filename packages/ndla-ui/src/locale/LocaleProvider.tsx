@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import { i18nInstance } from '../i18n';
 import { Locale } from '../types';

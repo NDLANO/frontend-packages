@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
+import { Heading } from '@ndla/typography';
 import LayoutItem, { OneColumn } from '../Layout';
 import List from './List';
 import { ListItemProps } from './ListItem';
 import { HomeBreadcrumb, SimpleBreadcrumbItem } from '../Breadcrumb';
-import { Heading } from '../Typography';
 
 const StyledWrapper = styled.div`
   display: flex;

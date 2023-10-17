@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { storiesOf } from '@storybook/react';
 import {
@@ -158,4 +158,4 @@ class Messages extends Component {
   }
 }
 
-storiesOf('Other/Tekster og labels', module).add('Tekster og labels', () => <Messages />);
+storiesOf('Other/Texts and labels', module).add('Texts and labels', () => <Messages />);

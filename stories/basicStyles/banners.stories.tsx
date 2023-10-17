@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { spacing } from '@ndla/core';
 import { LayoutItem, OneColumn, PageContainer, SubjectHeader } from '@ndla/ui';
@@ -15,11 +15,11 @@ import { CopyButton } from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { defaultParameters } from '../defaults';
 import { StoryIntro } from '../wrappers';
-
+//@ts-ignore
 import allBanners from '../../images/banners';
 
 const meta: Meta = {
-  title: 'Base styles/Bannere',
+  title: 'Base styles/Banners',
   parameters: defaultParameters,
 };
 
@@ -33,8 +33,8 @@ const BannerList = () => {
   useEffect(() => {
     const lowerCase = bannerSearch.toLowerCase();
     const matchedBanners = allBanners
-      .filter((banner) => banner.name.toLowerCase().indexOf(lowerCase) > -1)
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .filter((banner: any) => banner.name.toLowerCase().indexOf(lowerCase) > -1)
+      .sort((a: any, b: any) => a.name.localeCompare(b.name));
     setBanners(matchedBanners);
   }, [bannerSearch]);
 
@@ -54,7 +54,7 @@ const BannerList = () => {
           </article>
         </LayoutItem>
       </OneColumn>
-      {banners.map((banner) => (
+      {banners.map((banner: any) => (
         <div key={banner.desktop} style={{ marginTop: spacing.normal }}>
           <SubjectHeader
             heading={banner.name}
@@ -106,7 +106,7 @@ const BannerList = () => {
 
 export default meta;
 
-export const Bannere: StoryFn = () => (
+export const Banners: StoryFn = () => (
   <div>
     <StoryIntro title="Bannerbilder">
       <p>

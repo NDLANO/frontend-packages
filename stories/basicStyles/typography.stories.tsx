@@ -7,11 +7,11 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
+import { Table } from '@ndla/ui';
+import { Text } from '@ndla/typography';
 import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
 import { AnchorNavigation } from '../helpers';
-import Table from '../molecules/TableExample';
 
 type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -26,13 +26,13 @@ const Heading = ({ level }: HeadingProps) => {
 };
 
 const meta: Meta = {
-  title: 'Base styles/Typografi',
+  title: 'Base styles/Typography',
   parameters: defaultParameters,
 };
 
 export default meta;
 
-export const Typografi: StoryFn = () => {
+export const Typography: StoryFn = () => {
   return (
     <div>
       <StoryIntro title="Typografi">
@@ -71,7 +71,7 @@ export const Typografi: StoryFn = () => {
           <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Source Sans Pro</a> og{' '}
           <a href="https://fonts.google.com/specimen/Source+Code+Pro">Source Code Pro</a>.
         </p>
-        <Table runScripts>
+        <Table>
           <thead>
             <tr>
               <th>Type tekst</th>
@@ -206,12 +206,10 @@ export const Typografi: StoryFn = () => {
         </h2>
         <p>Ingresser skal være 1-3 setninger, og gi en oppsummering.</p>
         <div className="c-bodybox">
-          <section className="article_introduction">
-            <p className="article_introduction">
-              Idéutvikling er en viktig del av alt profesjonelt arbeid med medieuttrykk. I verktøykassa si har
-              medieprodusenten et knippe fortelleteknikker og virkemidler innen design, tekst, lyd og bilde.
-            </p>
-          </section>
+          <Text textStyle="ingress">
+            Idéutvikling er en viktig del av alt profesjonelt arbeid med medieuttrykk. I verktøykassa si har
+            medieprodusenten et knippe fortelleteknikker og virkemidler innen design, tekst, lyd og bilde.
+          </Text>
         </div>
         <h2 id="avsnitt" className="u-heading">
           Avsnitt
@@ -303,9 +301,9 @@ export const Typografi: StoryFn = () => {
           <h3>人人生而自由</h3>
         </div>
         <h3>Ingress</h3>
-        <p className="article_introduction" lang="zh-Hans">
+        <Text textStyle="ingress" lang="zh-Hans">
           人人生而自由,在尊严和权利上一律平等。
-        </p>
+        </Text>
         <h3>Brødtekst</h3>
         <p lang="zh-Hans">人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。</p>
         <h2 id="lenker" className="u-heading">

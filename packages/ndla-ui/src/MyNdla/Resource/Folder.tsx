@@ -21,6 +21,9 @@ const FolderWrapper = styled.div`
   position: relative;
   align-items: center;
   justify-content: space-between;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
 
   ${mq.range({ until: breakpoints.mobileWide })} {
     &:not([data-type='list']) {
@@ -87,7 +90,6 @@ const FolderTitle = styled.h2`
 `;
 
 const MenuWrapper = styled.div`
-  overflow: hidden;
   display: flex;
   z-index: 1;
   flex-direction: row;
@@ -102,6 +104,12 @@ const CountContainer = styled.div`
   min-height: 44px;
   gap: ${spacing.small};
   margin: 0 ${spacing.small} 0 ${spacing.nsmall};
+
+  ${mq.range({ until: breakpoints.tablet })} {
+    &[data-type='list'] {
+      display: none;
+    }
+  }
 `;
 
 const IconTextWrapper = styled.div`
@@ -115,11 +123,6 @@ const IconTextWrapper = styled.div`
     height: 13px;
   }
   ${fonts.sizes(16)};
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    &[data-type='list'] {
-      display: none;
-    }
-  }
 `;
 
 interface IconCountProps {
@@ -172,10 +175,10 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
         </ResourceTitleLink>
       </TitleWrapper>
       <MenuWrapper>
-        <CountContainer>
+        <CountContainer data-type={type}>
           {isShared && (
             // Information regarding the shared status of a folder is read previously, ignore this
-            <IconTextWrapper data-type={type} aria-hidden>
+            <IconTextWrapper aria-hidden>
               <Share />
               <span>{t('myNdla.folder.sharing.shared')}</span>
             </IconTextWrapper>

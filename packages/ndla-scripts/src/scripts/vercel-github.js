@@ -38,7 +38,7 @@ function isFork() {
   return owner !== prOwner;
 }
 
-export function getUrl(content) {
+function getUrl(content) {
   const urls = content.match(urlRegex({ re2: false, strict: true })) || [];
 
   return urls.map((url) => normalizeUrl(url.trim().replace(/\.+$/, '')))[0];

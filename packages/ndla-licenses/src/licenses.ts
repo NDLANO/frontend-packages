@@ -326,7 +326,7 @@ const copy: LicenseType = {
     short: restrictedUseNN,
     title: 'Opphavsrett',
     userFriendlyTitle: '',
-    url: 'https://delrett.no/nb/artikler/om-opphavsrett',
+    url: 'https://ndla.no/nn/article/opphavsrett',
     linkText: 'Lær meir om opphavsrett',
     abbreviation: restrictedUseNN,
     description:
@@ -336,7 +336,7 @@ const copy: LicenseType = {
     short: restrictedUseNB,
     title: 'Opphavsrett',
     userFriendlyTitle: '',
-    url: 'https://delrett.no/nb/artikler/om-opphavsrett',
+    url: 'https://ndla.no/nb/article/opphavsrett',
     linkText: 'Lær mer om opphavsrett',
     abbreviation: restrictedUseNB,
     description:
@@ -347,7 +347,7 @@ const copy: LicenseType = {
     short: restrictedUseEN,
     title: 'Copyright',
     userFriendlyTitle: '',
-    url: 'https://delrett.no/nb/artikler/om-opphavsrett',
+    url: 'https://ndla.no/en/article/opphavsrett',
     linkText: 'Learn more about copyright',
     abbreviation: restrictedUseEN,
     description:

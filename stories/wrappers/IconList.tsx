@@ -6,68 +6,76 @@
  *
  */
 
-import { ComponentProps, ReactElement, createElement, useMemo, useState } from 'react';
+import { ComponentProps, ReactElement, createElement, useMemo } from 'react';
 import { copyTextToClipboard } from '@ndla/util';
+import { spacing } from '@ndla/core';
 import { Copy } from '@ndla/icons/action';
-import { ButtonV2 } from '@ndla/button';
+import { IconButtonV2 } from '@ndla/button';
 import Icon from '@ndla/icons';
+import styled from '@emotion/styled';
 
 interface IconItemProps {
-  icon: () => ReactElement<ComponentProps<typeof Icon>>;
+  icon: (props: ComponentProps<typeof Icon>) => ReactElement<ComponentProps<typeof Icon>>;
   folder: string;
   name: string;
 }
 
 const IconItem = ({ icon, folder, name }: IconItemProps) => {
-  const [hover, setHover] = useState(false);
-
-  const iconProps = useMemo(() => icon().props as Record<string, any>, [icon]);
+  const iconProps = useMemo(() => icon({}).props as Record<string, any>, [icon]);
 
   return (
-    <li
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      style={{
-        listStyle: 'none',
-        backgroundColor: '#EFF0F2',
-        width: '210px',
-        padding: '13px',
-        margin: '13px',
-        wordBreak: 'break-all',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', lineHeight: 1.5 }}>
+    <li>
+      <div>
         {createElement(icon, { className: 'c-icon--large' })}
-        <strong style={{ marginLeft: '13px' }}>{name}</strong>
+        <strong>{name}</strong>
       </div>
-      <div style={{ marginTop: '6.5px' }} title={`Kilde: ${iconProps['data-source']}`}>
+      <div title={`Kilde: ${iconProps['data-source']}`}>
         {iconProps['data-license']}
-        {hover && (
-          <ButtonV2
-            variant="stripped"
-            onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)}
-            style={{ float: 'right' }}
-            title="Kopier import kode"
-          >
-            <Copy />
-          </ButtonV2>
-        )}
+        <IconButtonV2
+          variant="ghost"
+          onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)}
+          title="Kopier import-kode"
+          aria-label="Kopier import-kode"
+        >
+          <Copy />
+        </IconButtonV2>
       </div>
     </li>
   );
 };
 
 interface Props {
-  icons: Record<string, () => ReactElement<ComponentProps<typeof Icon>>>;
+  icons: Record<string, (props: ComponentProps<typeof Icon>) => ReactElement<ComponentProps<typeof Icon>>>;
   folder: string;
 }
 
+const StyledList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    list-style: none;
+    background-color: #eff0f2;
+    width: 210px;
+    padding: ${spacing.small};
+    margin: ${spacing.small};
+    word-break: break-all;
+    display: flex;
+    flex-direction: column;
+    gap: ${spacing.small};
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+`;
+
 const IconList = ({ icons, folder }: Props) => (
-  <ul style={{ display: 'flex', flexWrap: 'wrap' }}>
+  <StyledList>
     {Object.keys(icons).map((key) => (
       <IconItem key={key} name={key} icon={icons[key]} folder={folder} />
     ))}
-  </ul>
+  </StyledList>
 );
 
 export default IconList;

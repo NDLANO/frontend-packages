@@ -1,17 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
-import * as licenseIcons from '@ndla/icons/licenses';
-import * as contentTypeIcons from '@ndla/icons/contentType';
-import * as commonIcons from '@ndla/icons/common';
-import * as editorIcons from '@ndla/icons/editor';
-import * as actionIcons from '@ndla/icons/action';
 import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
 import { Aside, FactBox, Logo, LayoutItem, OneColumn, CreatedBy } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Text } from '@ndla/typography';
-import { StoryIntro, IconList, StoryBody } from './wrappers';
+import { StoryIntro, StoryBody } from './wrappers';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
@@ -304,51 +299,6 @@ storiesOf('Components', module)
       <StoryBody>
         <FootnotesExample />
       </StoryBody>
-    </div>
-  ))
-  .add('Icons', () => (
-    <div>
-      <StoryIntro title="Ikoner" />
-      <OneColumn>
-        <LayoutItem layout="center">
-          <h2>Systemikoner</h2>
-          <p>
-            Systemikonene identifiserer handlinger en bruker kan ta på en gitt skjerm, de kan også representere objekter
-            og områder.
-          </p>
-          <p>
-            Systemikonene er hentet fra Google sitt Material Design som er open source og tilgjengelig med Apache
-            License Version 2.0. Hvis det er behov for flere eller nye systemikoner skal disse hentes her:{' '}
-            <a href="https://material.io/icons/">https://material.io/icons/</a> og hvis det ikke finnes et passende ikon
-            i denne pakken kan man lage nye ikoner ved å bruke disse retningslinjene:{' '}
-            <a href="https://material.io/guidelines/">https://material.io/guidelines/</a>. Ikoner kan i nød også hentes
-            fra: <a href="https://materialdesignicons.com">https://materialdesignicons.com</a>, som også er Apache
-            License Version 2.0.
-          </p>
-        </LayoutItem>
-
-        <IconList icons={commonIcons} folder="common" />
-        <LayoutItem layout="center">
-          <h2>Innholdstypeikoner</h2>
-          <p>
-            Hver innholdstype i NDLA systemet har et ikon knyttet til seg. Ikonene er visuelle representasjoner av
-            innholdstypen og skal sammen med innholdstypefargen skape en gjenkjennelseseffekt for brukerne.
-          </p>
-          <p>
-            Hvis det skal lages nye innholdstypeikoner er det viktig at de kommuniserer innholdstypens kjernefunksjon og
-            hensikt. De må også ha lik visuell utførelse og fremtoning som de eksisterende. Alle innholdstypeikonene er
-            bygget ut fra Material Design sine ikoner;
-            <a href="https://material.io/icons/">https://material.io/icons/</a>
-          </p>
-        </LayoutItem>
-        <IconList icons={contentTypeIcons} folder="contentType" />
-        <h2>Lisens</h2>
-        <IconList icons={licenseIcons} folder="license" />
-        <h2>Handling</h2>
-        <IconList icons={actionIcons} folder="editor" />
-        <h2>Editor</h2>
-        <IconList icons={editorIcons} folder="editor" />
-      </OneColumn>
     </div>
   ))
   .add('Drawer', () => <DrawerExample />)

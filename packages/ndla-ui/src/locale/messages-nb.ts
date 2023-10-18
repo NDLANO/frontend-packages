@@ -1097,6 +1097,7 @@ const messages = {
     },
     wrongUserInfoDisclaimer:
       'Dersom informasjonen er feil, må den oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: ',
+    moderator: 'Moderator',
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {

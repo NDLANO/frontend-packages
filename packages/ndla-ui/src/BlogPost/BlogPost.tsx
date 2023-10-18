@@ -10,7 +10,6 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { Quote } from '@ndla/icons/editor';
 import { HeadingLevel } from '@ndla/typography';
 import { useTranslation } from 'react-i18next';
 import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
@@ -92,12 +91,7 @@ const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3',
         {title.title}
       </Heading>
       <StyledImg src={metaImage.url} alt={metaImage.alt} />
-      {!!author && (
-        <AuthorContainer aria-label={t('article.writtenBy', { authors: author })}>
-          <Quote />
-          {author}
-        </AuthorContainer>
-      )}
+      {!!author && <AuthorContainer aria-label={t('article.writtenBy', { authors: author })}>{author}</AuthorContainer>}
     </Container>
   );
 };

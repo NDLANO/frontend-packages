@@ -1098,6 +1098,7 @@ const messages = {
     },
     wrongUserInfoDisclaimer:
       'Jus leat boasttudieđut, de ferte organisašuvdna/skuvlaeaiggát masá geavaheaddji gullá ođasmahttit dan. Visogova geavaheaddjidoarjaga ektui gávnnat dás: ',
+    moderator: 'Muddenplána',
   },
   checkOutNewFeature: 'Iskka ođđa doaibmilvuođa',
   slateBlockMenu: {

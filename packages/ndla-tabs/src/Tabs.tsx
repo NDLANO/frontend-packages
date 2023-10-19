@@ -70,8 +70,8 @@ const TabsRoot = styled(Root)`
       padding: ${spacing.nsmall};
       position: relative;
     }
-    [data-tab-panel]:focus-within,
-    [data-tab-trigger]:focus-within {
+    [data-tab-panel]:focus-visible,
+    [data-tab-trigger]:focus-visible {
       z-index: 3;
       box-shadow: 0 0 0 2px ${colors.brand.primary};
     }

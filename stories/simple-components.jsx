@@ -236,26 +236,6 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Summary box', () => (
-    <div>
-      <StoryIntro title="Fasitboks" />
-      <StoryBody>
-        <details className="c-details--solution-box ">
-          <summary>Vis fasit</summary>
-          <div className="c-details__content">
-            f(x) = x<sup>2</sup> + 10x - 20
-            <FigureImage
-              type="math"
-              embedData={{
-                caption: 'Eksempel på graf',
-                alt: 'Matematisk graf',
-              }}
-            />
-          </div>
-        </details>
-      </StoryBody>
-    </div>
-  ))
   .add('References', () => (
     <div>
       <StoryIntro title="Kildehenvisninger">

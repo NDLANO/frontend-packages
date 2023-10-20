@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { Aside, FactBox, Logo, LayoutItem, OneColumn, CreatedBy } from '@ndla/ui';
+import { Aside, FactBox, Logo, LayoutItem, OneColumn } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Text } from '@ndla/typography';
@@ -302,27 +302,6 @@ storiesOf('Components', module)
         <Logo cssModifier="large" name to="/" label="Nasjonal digital læringsarena" />
         <h2>Engelsk logo</h2>
         <Logo cssModifier="large" locale="en" name label="Norwegian digital learning arena" />
-      </StoryBody>
-    </div>
-  ))
-  .add('Prepared by', () => (
-    <div>
-      <StoryIntro title="Utarbeidet av">
-        <p>
-          LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i bunnen. "NDLA" og logoen lenker til
-          ndla.no. "Artikkel" kan være en lenke til artikkelen på ndla.no om den fins. Begge lenker åpner som standard i
-          ny fane men det kan overstyres med target-parameter.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2>Uten artikkellenke</h2>
-        <CreatedBy name={'Artikkelen'} description={'er utarbeidet av'} />
-        <h2>Med artikkellenke</h2>
-        <CreatedBy
-          name={'Artikkelen'}
-          description={'er utarbeidet av'}
-          url="https://ndla.no/subject:26/topic:1:191103/topic:1:4352/resource:1:2052"
-        />
       </StoryBody>
     </div>
   ))

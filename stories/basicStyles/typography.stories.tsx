@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import { Table } from '@ndla/ui';
+import { FramedContent, Table } from '@ndla/ui';
 import { Text } from '@ndla/typography';
 import { defaultParameters } from '../defaults';
 import { StoryBody, StoryIntro } from '../wrappers';
@@ -196,21 +196,21 @@ export const Typography: StoryFn = () => {
           Det er tre nivåer av overskrifter. Bruker man likevel overskrifts-tag for nivå 4, 5 osv, vil de få samme stil
           som nivå 3 nedenfor:
         </p>
-        <div className="c-bodybox">
+        <FramedContent>
           <Heading level="h1" />
           <Heading level="h2" />
           <Heading level="h3" />
-        </div>
+        </FramedContent>
         <h2 id="ingress" className="u-heading">
           Ingress
         </h2>
         <p>Ingresser skal være 1-3 setninger, og gi en oppsummering.</p>
-        <div className="c-bodybox">
+        <FramedContent>
           <Text textStyle="ingress">
             Idéutvikling er en viktig del av alt profesjonelt arbeid med medieuttrykk. I verktøykassa si har
             medieprodusenten et knippe fortelleteknikker og virkemidler innen design, tekst, lyd og bilde.
           </Text>
-        </div>
+        </FramedContent>
         <h2 id="avsnitt" className="u-heading">
           Avsnitt
         </h2>
@@ -223,13 +223,13 @@ export const Typography: StoryFn = () => {
           En tekstlinje i full bredde skal utgjøre omtrent 50–75 tegn. Om <span className="u-mark">*</span>-tegnene i
           setningen under kommer på samme linje, er den for lang:
         </p>
-        <div className="c-bodybox">
+        <FramedContent>
           <p className="u-serif">
             Lorem ipsum dolor sit amet, consectetur adip
             <span className="u-mark">*</span>isicing elit, sed do eiusmod <span className="u-mark">*</span>tempor
             incididunt ut labore et dolore magna aliqua.
           </p>
-        </div>
+        </FramedContent>
         <h2 className="u-heading">Kinesisk</h2>
         <p>Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten skal være lesbar.</p>
         <table>
@@ -318,7 +318,7 @@ export const Typography: StoryFn = () => {
           -attributt på for eksempel en overskrift.
         </p>
         <p>Det skal vurderes i framtiden om det er behov for markering av eksterne lenker.</p>
-        <div className="c-bodybox">
+        <FramedContent>
           <p>
             Dette er en{' '}
             <a href="http://ndla.no" target="blank">
@@ -327,7 +327,7 @@ export const Typography: StoryFn = () => {
             som åpnes i nytt vindu. Dette er en <a href="/">intern lenke</a>, og dette er en{' '}
             <a href="#overskrift">lenke som viser til innhold på samme side</a>.
           </p>
-        </div>
+        </FramedContent>
 
         <p>Se også «Bruk av lenker» under «Components».</p>
 

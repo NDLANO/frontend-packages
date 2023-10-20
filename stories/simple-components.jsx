@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { Aside, FactBox, Logo, LayoutItem, OneColumn } from '@ndla/ui';
+import { Aside, FactBox, LayoutItem, OneColumn } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Text } from '@ndla/typography';
@@ -275,36 +275,6 @@ storiesOf('Components', module)
     </div>
   ))
   .add('Drawer', () => <DrawerExample />)
-
-  .add('Logo', () => (
-    <div>
-      <StoryIntro title="Logo">
-        <p>
-          Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for kommunikasjon. Den skal inspirere
-          målgruppen elever og lærere i videregående opplæring og gjøre dem nysgjerrige på NDLA.
-        </p>
-        <p>
-          Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
-          Logo uten undertekst kan benyttes i tilfeller der det kommer godt fram andre steder hva NDLA er, eksempelvis
-          på ndla.no.
-        </p>
-        <p>
-          Logo uten undertekst kan kompletteres med en beskrivende tekst til høyre. Logoen kan benyttes i blått, eller i
-          svart eller hvitt avhengig av bakgrunn. Den skal plasseres i det øverste eller nederste hjørnet av en
-          ytterkant. Logoen skal ikke sentreres.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2>Logo uten url</h2>
-        <Logo cssModifier="large" name label="Nasjonal digital læringsarena" />
-
-        <h2>Logo med url</h2>
-        <Logo cssModifier="large" name to="/" label="Nasjonal digital læringsarena" />
-        <h2>Engelsk logo</h2>
-        <Logo cssModifier="large" locale="en" name label="Norwegian digital learning arena" />
-      </StoryBody>
-    </div>
-  ))
   .add('Tree structure component', () => (
     <div>
       <StoryIntro title="Trestruktur komponent">

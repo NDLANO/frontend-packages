@@ -9,9 +9,7 @@ import { Text } from '@ndla/typography';
 import { StoryIntro, StoryBody } from './wrappers';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
-import ArticleBylineExample from './molecules/ArticleBylineExample';
 import DrawerExample from './atoms/DrawerExample';
-import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
 
 const SourceList = styled.div`
@@ -28,29 +26,6 @@ const SourceList = styled.div`
 `;
 
 storiesOf('Components', module)
-  .add('Visual element below intro', () => (
-    <div>
-      <StoryIntro title="Visuelt element under ingress">
-        <p>
-          Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk helst bilder av mennesker og bilder som
-          er relevante og naturlige. Bildet må være i landskapsformat, slik at det ikke blir så høyt at det skyver
-          brødteksten for langt ned på siden.
-        </p>
-        <p>
-          Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />
-          Anbefalt bildestørrelse minimum: 1000px (bredde) x 500px (høyde).
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <FigureImage
-          embedData={{
-            caption: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
-            alt: '',
-          }}
-        />
-      </StoryBody>
-    </div>
-  ))
   .add('Text in frame', () => (
     <div>
       <StoryIntro title="Tekst i ramme">
@@ -65,7 +40,6 @@ storiesOf('Components', module)
         <Text textStyle="ingress">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
         </Text>
-        <ArticleBylineExample />
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
           av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
@@ -241,7 +215,6 @@ storiesOf('Components', module)
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
           du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
-        <ArticleBylineExample />
       </StoryBody>
     </div>
   ))
@@ -353,18 +326,6 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-
-  .add('Ukraine Banner', () => (
-    <div>
-      <StoryIntro title="Ukraina Banner">
-        <p>Banner for læringsressurser på Ukrainsk.</p>
-      </StoryIntro>
-      <OneColumn>
-        <UkraineBannerExample />
-      </OneColumn>
-    </div>
-  ))
-
   .add('Tree structure component', () => (
     <div>
       <StoryIntro title="Trestruktur komponent">

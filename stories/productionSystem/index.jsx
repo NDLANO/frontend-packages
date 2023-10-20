@@ -19,7 +19,6 @@ import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
-import SlateBlockMenuExample from './SlateBlockMenuExample';
 import MultiSelectDropdownExample from './MultiSelectDropdownExample';
 import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
@@ -125,16 +124,6 @@ storiesOf('Other/Production system', module)
       </StoryIntro>
       <StoryBody>
         <UploaderExample />
-      </StoryBody>
-    </div>
-  ))
-  .add('Editor', () => (
-    <div>
-      <StoryIntro title="Editor komponenter">
-        <p>Tekst kommer</p>
-      </StoryIntro>
-      <StoryBody>
-        <SlateBlockMenuExample />
       </StoryBody>
     </div>
   ))

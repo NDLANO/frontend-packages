@@ -105,12 +105,4 @@ storiesOf('Other/Licensing', module)
         </LanguageSelectorNonMessages>
       </StoryBody>
     </div>
-  ))
-  .add('Model clearance', () => (
-    <div>
-      <StoryIntro title="Modellklarering på personbilder" />
-      <StoryBody>
-        <p>Modellklarering er noe som kommer ved en senere anledning.</p>
-      </StoryBody>
-    </div>
   ));

@@ -8,9 +8,6 @@
 
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-//@ts-ignore
-import LicenseBox from '../../../../stories/article/LicenseBox';
-
 import { defaultParameters } from '../../../../stories/defaults';
 import ArticleByline from './ArticleByline';
 
@@ -38,11 +35,10 @@ export const ArticleBylineStory: StoryFn<typeof ArticleByline> = (args) => {
 
 ArticleBylineStory.storyName = 'ArticleByline';
 
-export const WithLicenseBox: StoryObj<typeof ArticleByline> = {
+export const SeveralAuthors: StoryObj<typeof ArticleByline> = {
   args: {
     published: '21.06.2018',
     license: 'CC BY-SA',
-    licenseBox: <LicenseBox />,
     authors: [{ name: 'Frida Forfatter' }, { name: 'Ida Illustratør' }, { name: 'Fred Forfatter' }],
   },
 };

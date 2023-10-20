@@ -11,7 +11,6 @@ import {
   LayoutItem,
   Translation,
   TranslationLine,
-  ArticleByline,
   EditorName,
   FooterText,
   LanguageSelector,
@@ -25,11 +24,9 @@ import MastheadWithTopicMenu from './molecules/mastheads';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
-import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 
 import Oops from '../images/oops.gif';
-import cecilie from '../images/cecilie.png';
 
 import FooterExample from './molecules/footers';
 import MessageBox from './molecules/MessageBoxExample';
@@ -39,134 +36,6 @@ import TagSelectorExample from './molecules/TagSelectorExample';
 import SnackbarExample from './molecules/SnackbarExample';
 
 storiesOf('Patterns', module)
-  .add('Article info line', () => (
-    <div>
-      <StoryIntro title="Artikkel informasjonslinje">
-        <p>
-          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse av regler ved bruk av innhold, ikon hvis
-          artikkel er tilleggsstoff og dato for forrige oppdatering.
-        </p>
-      </StoryIntro>
-      <StoryBody layout="extend">
-        <LanguageSelectorStory />
-        <h2 className="u-heading">Linje artikkel enkel variant</h2>
-        <ArticleByline
-          authors={[
-            {
-              name: 'Frida Forfatter',
-              shortName: 'Frida',
-              role: 'Forfatter',
-            },
-            {
-              name: 'Fred Forfatter',
-              shortName: 'Fred',
-              role: 'Manusforfatter',
-            },
-          ]}
-          published="21.06.2018"
-          license="CC BY-SA"
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-        />
-        <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
-        <ArticleByline
-          authors={[
-            {
-              name: 'Frida Forfatter',
-              shortName: 'Frida',
-            },
-          ]}
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-          additional
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-        />
-        <h2 className="u-heading">Linje med detaljert opphaver informasjon</h2>
-        <ArticleByline
-          authors={[
-            {
-              role: 'rolle',
-              name: 'Frida Forfatter',
-              shortName: 'Frida',
-              urlContributions: '#',
-              urlAuthor: '#',
-              licenses: 'CC BY-SA',
-              title: 'Stilling',
-              phone: '+47 123 45 678',
-              email: 'cecilie@ndla.no',
-              image: cecilie,
-              introduction:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-            },
-          ]}
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-          additional
-          embedLink="https://ndla.no/article-iframe/nb/urn:resource:2c243daf-f335-4bae-a022-95cc7f5e34b3/21844"
-        />
-        <h2 className="u-heading">Linje med flere opphavere med detaljert informasjon</h2>
-        <ArticleByline
-          authors={[
-            {
-              role: 'Forfatter',
-              name: 'Frida Forfatter',
-              shortName: 'Frida',
-              urlContributions: '#',
-              urlAuthor: '#',
-              licenses: 'CC BY-SA',
-              title: 'Stilling',
-              phone: '+47 123 45 678',
-              email: 'fridaforfatter@ndla.no',
-              image: cecilie,
-              introduction:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-            },
-            {
-              role: 'Illustratør',
-              name: 'Ida Illustratør',
-              shortName: 'Ida',
-              urlContributions: '#',
-              urlAuthor: '#',
-              licenses: 'CC BY-SA',
-              title: 'Stilling',
-              phone: '+47 123 45 678',
-              email: 'idaillustrator@ndla.no',
-              image: cecilie,
-              introduction:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-            },
-            {
-              role: 'Manusforfatter',
-              name: 'Fred Forfatter',
-              shortName: 'Fred',
-              urlContributions: '#',
-              urlAuthor: '#',
-              licenses: 'CC BY-SA',
-              title: 'Stilling',
-              phone: '+47 123 45 678',
-              email: 'paal.fronsdal@ndla.no',
-              image: cecilie,
-              introduction:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-            },
-          ]}
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-        />
-        <h2 className="u-heading">Linje uten opphavere detaljert informasjon</h2>
-        <ArticleByline
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-        />
-      </StoryBody>
-    </div>
-  ))
   .add('Breadcrumb', () => (
     <Center>
       <h2 className="u-heading">Enkel brødsmulesti</h2>

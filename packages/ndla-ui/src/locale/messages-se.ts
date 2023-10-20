@@ -1271,8 +1271,11 @@ const messages = {
     },
     myProfile: {
       title: 'Mu profiila',
-      disclaimerTitle: 'Gos geavahit mu gova ja mu nama?',
-      disclaimerText: 'Govva ja namma čájehuvvojit go searvat digaštallamii arenain.',
+      disclaimerTitle: { teachers: 'Gos geavahit mu gova ja mu nama?', students: 'Gos geavahit mu nama?' },
+      disclaimerText: {
+        teachers: 'Govva ja namma čájehuvvojit go searvat digaštallamii arenain.',
+        students: 'Du namma čájehuvvo dušše go leat sisačálihuvvon',
+      },
       preferenceTitle: 'Vállje jos namma čájehuvvo máhpa juohkkedettiin',
       preferenceText:
         'Dás válljet jos iežat namma čájehuvvo juohkkedettiin máhpa. Dát molssaeaktu guoská buot máhpaide ja sáhttá rievdaduvvot maŋŋil. Jos rievdadat dán, de čájehuvvo du namma buot juogaduvvon máhpain.',

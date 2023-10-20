@@ -1275,8 +1275,11 @@ const messages = {
     },
     myProfile: {
       title: 'My Profile',
-      disclaimerTitle: 'Where is my picture and name used?',
-      disclaimerText: 'Your picture and name are displayed when you participate in discussions in the arena.',
+      disclaimerTitle: { teachers: 'Where is my picture and name used?', students: 'Where is my name used?' },
+      disclaimerText: {
+        teachers: 'Your picture and name are displayed when you participate in discussions in the arena.',
+        students: 'Your name is only displayed for you',
+      },
       preferenceTitle: 'Choose whether you want to display name when sharing a folder',
       preferenceText:
         'Here you can choose whether you want to display your name when you share a folder. The selected option applies to all your folders and can be changed later. If you later change the option, your name will appear on all your shared folders.',

@@ -12,8 +12,13 @@ import { defaultParameters } from '../../../stories/defaults';
 
 const exampleText = 'Nasjonal digital læringsarena';
 
+/**
+ * NDLA bruker fontene [ Source Serif Pro ](https://fonts.google.com/specimen/Source+Serif+Pro), [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro) og [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
+ *
+ * Tilbakefallsfonter er Helvetica og Arial
+ */
 export default {
-  title: 'Components/Typography/Heading',
+  title: 'Base styles/Typography/Heading',
   component: Heading,
   tags: ['autodocs'],
   parameters: {
@@ -57,4 +62,21 @@ export const listTitle: StoryObj<typeof Heading> = {
     headingStyle: 'list-title',
     children: exampleText,
   },
+};
+
+/**
+ * Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten skal være lesbar. Tekststil blir automatisk endret når en setter kinesisk som språk på en Heading-komponent.
+ */
+export const Chinese: StoryObj<typeof Heading> = {
+  args: { lang: 'zh-Hans', children: '人人生而自由,在尊严和权利上一律平等。' },
+  render: (args) => (
+    <>
+      <Heading {...args} />
+      <Heading {...args} headingStyle="h1" />
+      <Heading {...args} headingStyle="h1-resource" />
+      <Heading {...args} headingStyle="h2" />
+      <Heading {...args} headingStyle="h3" />
+      <Heading {...args} headingStyle="list-title" />
+    </>
+  ),
 };

@@ -4,7 +4,6 @@ import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
 import { Aside, FactBox, OneColumn } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
 import { Text } from '@ndla/typography';
 import { StoryIntro, StoryBody } from './wrappers';
 import FootnotesExample from './article/FootnotesExample';
@@ -24,41 +23,6 @@ const SourceList = styled.div`
 `;
 
 storiesOf('Components', module)
-  .add('Use of links', () => (
-    <div>
-      <StoryIntro title="Bruk av lenker">
-        <p>
-          Lenker på <a href="//ndla.no">ndla.no</a> bruker den vanlige konvensjonen med underlinje. Lenker skal i
-          hovedsak åpne seg i samme vindu (det vil si at vi bruker <code>target=&quot;_self&quot;</code> eller ingen
-          target-attributt). Unntaket er hvis lenken inngår i et skjema eller læringssammenhengen gjør det er nødvendig
-          at brukerne beholder vinduet eller fanen de står i. Når lenker går til et annet nettsted (eksterne lenker)
-          skal disse alltid åpnes i ny fane
-        </p>
-        <p>
-          Når det finnes flere kontekster til en lenke/node skal den ta konteksten/fag til det en stod i før en klikket
-          seg videre, hvis ikke den finnes i samme, skal den ta primærkoblingen til noden. Dette gjelder både for
-          relaterte artikler og interne lenker.
-        </p>
-        <p>
-          Interne lenker blir styrt av html innstilling i nettleser (samme vindu eller ny fane) avhengig av koden som
-          ligger der, brukerens/browserens preferanser skal styre
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2>Lenke som åpnes i nytt vindu</h2>
-        <p>
-          <SafeLink showNewWindowIcon to="https://api.ndla.no/" target="_blank">
-            https://api.ndla.no/
-          </SafeLink>
-        </p>
-        <p>
-          <SafeLink showNewWindowIcon to="https://api.ndla.no/" target="_blank">
-            NDLA API
-          </SafeLink>
-        </p>
-      </StoryBody>
-    </div>
-  ))
   .add('Fact box', () => (
     <div>
       <StoryIntro title="Faktaboks">

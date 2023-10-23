@@ -25,6 +25,7 @@ import Table from './Table';
  */
 
 const meta: Meta = {
+  component: Table,
   tags: ['autodocs'],
   decorators: [
     (Story) => (

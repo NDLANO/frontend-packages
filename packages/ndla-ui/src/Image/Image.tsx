@@ -79,6 +79,7 @@ interface Props {
   crop?: ImageCrop;
   focalPoint?: ImageFocalPoint;
   border?: string;
+  lang?: string;
 }
 
 const Image = ({
@@ -93,6 +94,7 @@ const Image = ({
   expandButton,
   fallbackWidth = 1024,
   border,
+  lang,
   ...rest
 }: Props) => {
   const srcSet = rest.srcSet ?? getSrcSet(src, crop, focalPoint);
@@ -101,7 +103,7 @@ const Image = ({
   if (contentType && contentType === 'image/gif') {
     return (
       <StyledImageWrapper data-border={border}>
-        <StyledImage alt={alt} src={`${src}`} {...rest} data-border={border} />
+        <StyledImage alt={alt} src={`${src}`} {...rest} data-border={border} lang={lang} />
       </StyledImageWrapper>
     );
   }
@@ -124,7 +126,7 @@ const Image = ({
     <StyledImageWrapper data-svg={contentType === 'image/svg+xml'} data-border={border}>
       <picture>
         <source type={contentType} srcSet={srcSet} sizes={sizes} />
-        <StyledImage alt={alt} src={`${src}?${queryString}`} {...rest} data-border={border} />
+        <StyledImage alt={alt} src={`${src}?${queryString}`} {...rest} data-border={border} lang={lang} />
       </picture>
       {expandButton}
     </StyledImageWrapper>

@@ -35,6 +35,7 @@ export interface ConceptNotionData {
   visualElement?: ConceptVisualElementMeta;
   conceptType: ConceptData['concept']['conceptType'];
   glossData?: ConceptData['concept']['glossData'];
+  lang?: string;
 }
 
 interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotionData {
@@ -177,6 +178,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       conceptType,
       glossData,
       headerButtons,
+      lang,
       ...rest
     },
     ref,
@@ -199,7 +201,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
             <>
               <StyledNotionDialogContent>
                 {visualElement?.resource === 'image' ? (
-                  <ImageEmbed embed={visualElement} heartButton={heartButton} />
+                  <ImageEmbed embed={visualElement} heartButton={heartButton} lang={lang} />
                 ) : visualElement?.resource === 'brightcove' ? (
                   <BrightcoveEmbed embed={visualElement} heartButton={heartButton} />
                 ) : visualElement?.resource === 'h5p' ? (
@@ -209,7 +211,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                 ) : visualElement?.resource === 'external' ? (
                   <ExternalEmbed embed={visualElement} />
                 ) : null}
-                {content && <NotionDialogText>{content}</NotionDialogText>}
+                {content && <NotionDialogText lang={lang}>{content}</NotionDialogText>}
               </StyledNotionDialogContent>
               {tags && (
                 <ListWrapper>

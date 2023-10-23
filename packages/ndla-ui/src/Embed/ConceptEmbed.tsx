@@ -71,6 +71,7 @@ interface Props {
   embed: ConceptMetaData;
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
+  lang?: string;
 }
 
 const StyledButton = styled.button`
@@ -92,7 +93,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === 'error' || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.content);
@@ -121,6 +122,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
         glossData={concept.glossData}
+        lang={lang}
       />
     );
   } else if (embed.embedData.type === 'inline') {
@@ -137,6 +139,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
         glossData={concept.glossData}
+        lang={lang}
       />
     );
   } else {
@@ -152,6 +155,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
         glossData={concept.glossData}
+        lang={lang}
       />
     );
   }
@@ -234,6 +238,7 @@ export const InlineConcept = ({
   glossData,
   conceptType,
   headerButtons,
+  lang,
 }: InlineConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -275,6 +280,7 @@ export const InlineConcept = ({
               heartButton={heartButton}
               headerButtons={headerButtons}
               conceptHeartButton={conceptHeartButton}
+              lang={lang}
               closeButton={
                 <Close asChild>
                   <IconButtonV2 aria-label={t('close')} variant="ghost">
@@ -310,6 +316,7 @@ export const BlockConcept = ({
   conceptHeartButton,
   glossData,
   conceptType,
+  lang,
 }: ConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -339,6 +346,7 @@ export const BlockConcept = ({
             id=""
             title={title.title}
             text={content}
+            lang={lang}
             visualElement={
               visualElement?.status === 'success' && (
                 <>
@@ -383,6 +391,7 @@ export const BlockConcept = ({
                           heartButton={heartButton}
                           conceptHeartButton={conceptHeartButton}
                           inPopover
+                          lang={lang}
                           closeButton={
                             <Close asChild>
                               <IconButtonV2 aria-label={t('close')} variant="ghost">

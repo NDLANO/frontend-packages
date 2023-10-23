@@ -11,8 +11,8 @@ import { ConceptListMetaData } from '@ndla/types-embed';
 import { ConceptListEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
-export const conceptListEmbedPlugin: PluginType = (element) => {
+export const conceptListEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as ConceptListMetaData;
-  return <ConceptListEmbed embed={data} />;
+  return <ConceptListEmbed embed={data} lang={opts.articleLanguage} />;
 };

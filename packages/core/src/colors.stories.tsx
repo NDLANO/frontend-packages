@@ -132,6 +132,7 @@ export const ContentTypeColors: StoryFn = () => (
     </ColorBlocks>
     <ColorBlocks title="External learning resource">
       <ColorBlock color={colors.externalLearningResource.dark} name="Dark" />
+      <ColorBlock color={colors.externalLearningResource.background} name="Background" />
       <ColorBlock color={colors.externalLearningResource.light} name="Light" />
     </ColorBlocks>
     <ColorBlocks title="Source material">
@@ -140,14 +141,17 @@ export const ContentTypeColors: StoryFn = () => (
     </ColorBlocks>
     <ColorBlocks title="Tasks and activities">
       <ColorBlock color={colors.tasksAndActivities.dark} name="Dark" />
+      <ColorBlock color={colors.tasksAndActivities.background} name="Background" />
       <ColorBlock color={colors.tasksAndActivities.light} name="Light" />
     </ColorBlocks>
     <ColorBlocks title="Assessment resource">
       <ColorBlock color={colors.assessmentResource.dark} name="Dark" />
+      <ColorBlock color={colors.assessmentResource.background} name="Background" />
       <ColorBlock color={colors.assessmentResource.light} name="Light" />
     </ColorBlocks>
     <ColorBlocks title="Learning path">
       <ColorBlock color={colors.learningPath.dark} name="Dark" />
+      <ColorBlock color={colors.learningPath.background} name="Background" />
       <ColorBlock color={colors.learningPath.light} name="Light" />
     </ColorBlocks>
     <ColorBlocks

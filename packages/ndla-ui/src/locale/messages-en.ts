@@ -1275,10 +1275,10 @@ const messages = {
     },
     myProfile: {
       title: 'My Profile',
-      disclaimerTitle: { teachers: 'Where is my picture and name used?', students: 'Where is my name used?' },
+      disclaimerTitle: { employee: 'Where is my picture and name used?', student: 'Where is my name used?' },
       disclaimerText: {
-        teachers: 'Your picture and name are displayed when you participate in discussions in the arena.',
-        students: 'Your name is only displayed for you',
+        employee: 'Your picture and name are displayed when you participate in discussions in the arena.',
+        student: 'Your name is only displayed for you',
       },
       preferenceTitle: 'Choose whether you want to display name when sharing a folder',
       preferenceText:

@@ -1276,10 +1276,10 @@ const messages = {
     },
     myProfile: {
       title: 'Mov Profijle',
-      disclaimerTitle: { teachers: 'Gusnie guvvie jïh nomme åtnasuvvieh?', students: 'Gusnie mov nomme' },
+      disclaimerTitle: { employee: 'Gusnie guvvie jïh nomme åtnasuvvieh?', student: 'Gusnie mov nomme' },
       disclaimerText: {
-        teachers: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
-        students: 'Dov nomme ajve tjaalasåvva dutnjien gosse sïjse loggedh',
+        employee: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+        student: 'Dov nomme ajve tjaalasåvva dutnjien gosse sïjse loggedh',
       },
       preferenceTitle: 'Sjïehtedh jis edtja nommem vuesiehtidh gosse maabpam juekedh',
       preferenceText:

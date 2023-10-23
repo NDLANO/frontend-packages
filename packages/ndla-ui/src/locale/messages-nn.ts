@@ -1272,12 +1272,12 @@ const messages = {
     myProfile: {
       title: 'Min Profil',
       disclaimerTitle: {
-        teachers: 'Kvar blir biletet og namnet mitt brukt?',
-        students: 'Kvar blir namnet mitt brukt?',
+        employee: 'Kvar blir biletet og namnet mitt brukt?',
+        student: 'Kvar blir namnet mitt brukt?',
       },
       disclaimerText: {
-        teachers: 'Bilete og namn vert vist når du deltek i diskusjonar i arenaen.',
-        students: 'Namnet ditt blir berre vist for deg sjølv når du er logga inn.',
+        employee: 'Bilete og namn vert vist når du deltek i diskusjonar i arenaen.',
+        student: 'Namnet ditt blir berre vist for deg sjølv når du er logga inn.',
       },
       preferenceTitle: 'Vel om du vil vise namn når du deler ei mappe',
       preferenceText:

@@ -1271,10 +1271,10 @@ const messages = {
     },
     myProfile: {
       title: 'Mu profiila',
-      disclaimerTitle: { teachers: 'Gos geavahit mu gova ja mu nama?', students: 'Gos geavahit mu nama?' },
+      disclaimerTitle: { employee: 'Gos geavahit mu gova ja mu nama?', student: 'Gos geavahit mu nama?' },
       disclaimerText: {
-        teachers: 'Govva ja namma čájehuvvojit go searvat digaštallamii arenain.',
-        students: 'Du namma čájehuvvo dušše go leat sisačálihuvvon',
+        employee: 'Govva ja namma čájehuvvojit go searvat digaštallamii arenain.',
+        student: 'Du namma čájehuvvo dušše go leat sisačálihuvvon',
       },
       preferenceTitle: 'Vállje jos namma čájehuvvo máhpa juohkkedettiin',
       preferenceText:

@@ -3,170 +3,21 @@
 import { storiesOf } from '@storybook/react';
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import { LicenseDescription } from '@ndla/notion';
-import {
-  ErrorMessage,
-  FilterList,
-  Footer,
-  PageContainer,
-  LayoutItem,
-  Translation,
-  TranslationLine,
-  ArticleByline,
-  EditorName,
-  FooterText,
-  LanguageSelector,
-  Content,
-} from '@ndla/ui';
-import { Translation as I18nTranslate } from 'react-i18next';
+import { Footer, PageContainer, LayoutItem, EditorName, FooterText, LanguageSelector, Content } from '@ndla/ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import { mockFooterLinks } from '../dummydata/index';
-import MastheadWithTopicMenu from './molecules/mastheads';
 import Resources from './molecules/resources';
-import LicenseBox from './article/LicenseBox';
 import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
-import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
-
-import Oops from '../images/oops.gif';
-import cecilie from '../images/cecilie.png';
 
 import FooterExample from './molecules/footers';
 import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
-import TagSelectorExample from './molecules/TagSelectorExample';
 import SnackbarExample from './molecules/SnackbarExample';
 
 storiesOf('Patterns', module)
-  .add('Article info line', () => (
-    <div>
-      <StoryIntro title="Artikkel informasjonslinje">
-        <p>
-          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse av regler ved bruk av innhold, ikon hvis
-          artikkel er tilleggsstoff og dato for forrige oppdatering.
-        </p>
-      </StoryIntro>
-      <StoryBody layout="extend">
-        <LanguageSelectorStory />
-        <h2 className="u-heading">Linje artikkel enkel variant</h2>
-        <ArticleByline
-          authors={[
-            {
-              name: 'Frida Forfatter',
-              shortName: 'Frida',
-              role: 'Forfatter',
-            },
-            {
-              name: 'Fred Forfatter',
-              shortName: 'Fred',
-              role: 'Manusforfatter',
-            },
-          ]}
-          published="21.06.2018"
-          license="CC BY-SA"
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-        />
-        <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
-        <ArticleByline
-          authors={[
-            {
-              name: 'Frida Forfatter',
-              shortName: 'Frida',
-            },
-          ]}
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-          additional
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-        />
-        <h2 className="u-heading">Linje med detaljert opphaver informasjon</h2>
-        <ArticleByline
-          authors={[
-            {
-              role: 'rolle',
-              name: 'Frida Forfatter',
-              shortName: 'Frida',
-              urlContributions: '#',
-              urlAuthor: '#',
-              licenses: 'CC BY-SA',
-              title: 'Stilling',
-              phone: '+47 123 45 678',
-              email: 'cecilie@ndla.no',
-              image: cecilie,
-              introduction:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-            },
-          ]}
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-          additional
-          embedLink="https://ndla.no/article-iframe/nb/urn:resource:2c243daf-f335-4bae-a022-95cc7f5e34b3/21844"
-        />
-        <h2 className="u-heading">Linje med flere opphavere med detaljert informasjon</h2>
-        <ArticleByline
-          authors={[
-            {
-              role: 'Forfatter',
-              name: 'Frida Forfatter',
-              shortName: 'Frida',
-              urlContributions: '#',
-              urlAuthor: '#',
-              licenses: 'CC BY-SA',
-              title: 'Stilling',
-              phone: '+47 123 45 678',
-              email: 'fridaforfatter@ndla.no',
-              image: cecilie,
-              introduction:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-            },
-            {
-              role: 'Illustratør',
-              name: 'Ida Illustratør',
-              shortName: 'Ida',
-              urlContributions: '#',
-              urlAuthor: '#',
-              licenses: 'CC BY-SA',
-              title: 'Stilling',
-              phone: '+47 123 45 678',
-              email: 'idaillustrator@ndla.no',
-              image: cecilie,
-              introduction:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-            },
-            {
-              role: 'Manusforfatter',
-              name: 'Fred Forfatter',
-              shortName: 'Fred',
-              urlContributions: '#',
-              urlAuthor: '#',
-              licenses: 'CC BY-SA',
-              title: 'Stilling',
-              phone: '+47 123 45 678',
-              email: 'paal.fronsdal@ndla.no',
-              image: cecilie,
-              introduction:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-            },
-          ]}
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-        />
-        <h2 className="u-heading">Linje uten opphavere detaljert informasjon</h2>
-        <ArticleByline
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
-        />
-      </StoryBody>
-    </div>
-  ))
   .add('Breadcrumb', () => (
     <Center>
       <h2 className="u-heading">Enkel brødsmulesti</h2>
@@ -178,128 +29,6 @@ storiesOf('Patterns', module)
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
       <BreadcrumbWithHome />
     </Center>
-  ))
-  .add('Error message', () => (
-    <div className="u-margin-bottom">
-      <div>
-        <StoryIntro title="Feilmelding">
-          <p>
-            Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått
-            en feil i systemet, f.eks. ved 404- eller 503-feil.
-          </p>
-        </StoryIntro>
-        <Center>
-          <h2 className="u-heading">Standard feilmelding ved 404: </h2>
-        </Center>
-        <ErrorMessage
-          illustration={{
-            url: Oops,
-            altText: 'Systemfeil',
-          }}
-          messages={{
-            title: 'Oisann, her gikk noe galt',
-            description: 'En kort beskrivelse av feilen som oppsto.',
-            linksTitle: 'Kom igang:',
-            back: 'Gå tilbake',
-            goToFrontPage: 'Gå til forsiden',
-          }}
-        />
-      </div>
-      <Center>
-        <h2 className="u-heading">Login feilet Min NDLA: </h2>
-      </Center>
-      <div className="u-margin-bottom">
-        <ErrorMessage
-          illustration={{
-            url: Oops,
-            altText: 'Systemfeil',
-          }}
-          messages={{
-            title: 'Ops, her gikk noe galt',
-            linksTitle: 'Prøv igjen',
-            logInFailed: 'Logg inn',
-          }}
-        />
-      </div>
-    </div>
-  ))
-
-  .add('Filter', () => (
-    <div>
-      <StoryIntro title="Filter">
-        <p>
-          Alle elementer vises enten ingen eller alle filtervalg er valgt. Når brukeren klikker på et filter, skal dette
-          umiddelbart reflekteres i innholdet som filtreres, uten at siden lastes på nytt.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2 className="u-heading">Filter (ufiltrert)</h2>
-        <div className="c-filter u-margin-top">
-          <FilterList
-            options={[
-              { title: '1T', value: '1T' },
-              { title: 'R1', value: 'R1' },
-              { title: 'R2', value: 'R2' },
-              { title: 'S1', value: 'S1' },
-            ]}
-            values={[]}
-          />
-        </div>
-        <h2 className="u-heading">Filter med forhåndsvalgte elementer</h2>
-        <div className="c-filter u-margin-top">
-          <FilterList
-            options={[
-              { title: '1T', value: '1T' },
-              { title: 'R1', value: 'R1' },
-              { title: 'R2', value: 'R2' },
-              { title: 'S1', value: 'S1' },
-            ]}
-            values={['1T', 'R1']}
-          />
-        </div>
-        <h2 className="u-heading">Eksempler fra fagene</h2>
-        <div className="c-filter u-margin-top">
-          <h3>Norsk</h3>
-          <FilterList
-            options={[
-              { title: 'SF VG1', value: 'SF VG1' },
-              { title: 'SF VG2', value: 'SF VG2' },
-              { title: 'SF VG3', value: 'SF VG3' },
-              { title: 'YF VG1', value: 'YF VG1' },
-              { title: 'YF VG2', value: 'YF VG2' },
-              { title: 'PB VG3', value: 'PB VG3' },
-            ]}
-            values={['SF VG1', 'SF VG2']}
-          />
-        </div>
-        <div className="c-filter u-margin-top">
-          <h3>Medieuttrykk og mediesamfunnet</h3>
-          <FilterList
-            options={[
-              { title: 'VG1', value: 'VG1' },
-              { title: 'VG2', value: 'VG2' },
-              { title: 'VG3', value: 'VG3' },
-            ]}
-            values={['VG1']}
-          />
-        </div>
-      </StoryBody>
-    </div>
-  ))
-
-  .add('Masthead with content', () => (
-    <div>
-      <MastheadWithTopicMenu />
-    </div>
-  ))
-  .add('Masthead with message box', () => (
-    <I18nTranslate>
-      {(t) => (
-        <div>
-          <MastheadWithTopicMenu messages={[{ content: t('messageBoxInfo.updateBrowser'), number: 1 }]} />
-        </div>
-      )}
-    </I18nTranslate>
   ))
   .add('License icons', () => (
     <Center>
@@ -316,18 +45,6 @@ storiesOf('Patterns', module)
         </div>
       </LayoutItem>
     </Center>
-  ))
-  .add('License box', () => (
-    <PageContainer>
-      <LayoutItem layout="wide">
-        <h2 className="u-heading">Lisensboks</h2>
-        <article className="article">
-          <LayoutItem layout="center">
-            <LicenseBox headingId="licenseBox-headingId" />
-          </LayoutItem>
-        </article>
-      </LayoutItem>
-    </PageContainer>
   ))
   .add('Learning resources', () => (
     <div>
@@ -387,57 +104,6 @@ storiesOf('Patterns', module)
       <FooterExample />
     </PageContainer>
   ))
-
-  .add('Translation', () => (
-    <div>
-      <StoryIntro title="Oversettelse">
-        <p>
-          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor kan man i disse tilfellene heller
-          bruke en oversettelse-liste.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2 className="u-heading">Oversettelseliste enkel</h2>
-        <Translation index={1}>
-          <TranslationLine>你叫什么名字？//你叫什麼名字？</TranslationLine>
-          <TranslationLine>
-            Nǐ jiào <strong>shénme</strong> míngzi?
-          </TranslationLine>
-          <TranslationLine>Hva heter du?</TranslationLine>
-        </Translation>
-        <Translation index={2}>
-          <TranslationLine>你是学生。//你是學生。</TranslationLine>
-          <TranslationLine>Nǐ shì xuésheng.</TranslationLine>
-          <TranslationLine>Du er student.</TranslationLine>
-        </Translation>
-      </StoryBody>
-      <StoryBody>
-        <h2 className="u-heading">Oversettelseliste (Med props lang og langName definert)</h2>
-        <Translation index={1}>
-          <TranslationLine lang="cn" langName="Kinesisk">
-            你叫什么名字？//你叫什麼名字？
-          </TranslationLine>
-          <TranslationLine lang="pn" langName="Pinyin">
-            Nǐ jiào shénme míngzi?
-          </TranslationLine>
-          <TranslationLine lang="nb" langName="Norsk">
-            Hva heter du?
-          </TranslationLine>
-        </Translation>
-        <Translation index={2}>
-          <TranslationLine lang="cn" langName="Kinesisk">
-            你是学生。//你是學生。
-          </TranslationLine>
-          <TranslationLine lang="pn" langName="Pinyin">
-            Nǐ shì xuésheng.
-          </TranslationLine>
-          <TranslationLine lang="nb" langName="Norsk">
-            Du er student.
-          </TranslationLine>
-        </Translation>
-      </StoryBody>
-    </div>
-  ))
   .add('Footer', () => {
     const privacyLinks = [
       { label: 'Personvernerklæring', url: 'https://om.ndla.no/gdpr' },
@@ -479,18 +145,6 @@ storiesOf('Patterns', module)
           <SnackbarExample />
         </Center>
       </StoryBody>
-      <FooterExample />
-    </PageContainer>
-  ))
-
-  .add('Select tag', () => (
-    <PageContainer>
-      <StoryIntro title="Tag-velger">
-        <p>Komponent for å tagge noe, primært tiltenkt Min NDLA</p>
-      </StoryIntro>
-      <Content>
-        <TagSelectorExample />
-      </Content>
       <FooterExample />
     </PageContainer>
   ))

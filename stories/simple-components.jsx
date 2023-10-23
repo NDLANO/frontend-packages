@@ -2,12 +2,11 @@ import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { Aside, FactBox, LayoutItem, OneColumn, FramedContent } from '@ndla/ui';
+import { Aside, FactBox, OneColumn } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Text } from '@ndla/typography';
 import { StoryIntro, StoryBody } from './wrappers';
-import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
 
@@ -25,97 +24,6 @@ const SourceList = styled.div`
 `;
 
 storiesOf('Components', module)
-  .add('Text in frame', () => (
-    <div>
-      <StoryIntro title="Tekst i ramme">
-        <p>
-          Tekst i ramme kan brukes for å framheve noe av særlig interesse, annet enn sitat (som det fins egen sitatstil
-          til).
-        </p>
-        <p>Tekst i ramme bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
-      </StoryIntro>
-      <StoryBody>
-        <h1 className="c-article__title">Eksempelartikkel</h1>
-        <Text textStyle="ingress">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
-        </Text>
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
-          av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <LayoutItem layout="full">
-          <FramedContent>
-            <p>En tekstboks som fyller spaltebredden.</p>
-          </FramedContent>
-          <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-          </p>
-          <FramedContent>
-            <p>En boks med flytelementer</p>
-            <FigureImage embedData={{ alt: '', align: 'right' }} />
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-          </FramedContent>
-          <FramedContent>
-            <h2>
-              Tekst i ramme fungerer <em>dårlig</em> med mye tekst.
-            </h2>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-            <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-            </p>
-          </FramedContent>
-          <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
-            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-          </p>
-        </LayoutItem>
-        <LayoutItem layout="center">
-          <p className="c-componentinfo__status-label--warn">Status: Inaktiv</p>
-          <FramedContent>En tekstboks i midten av teksten som ikke fyller bredden.</FramedContent>
-        </LayoutItem>
-      </StoryBody>
-    </div>
-  ))
   .add('Use of links', () => (
     <div>
       <StoryIntro title="Bruk av lenker">

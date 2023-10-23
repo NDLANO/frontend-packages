@@ -9,7 +9,6 @@ import { Text } from '@ndla/typography';
 import { StoryIntro, StoryBody } from './wrappers';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
-import DrawerExample from './atoms/DrawerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
 
 const SourceList = styled.div`
@@ -254,7 +253,6 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Drawer', () => <DrawerExample />)
   .add('Tree structure component', () => (
     <div>
       <StoryIntro title="Trestruktur komponent">

@@ -9,6 +9,7 @@
 import styled from '@emotion/styled';
 import { Meta, StoryObj } from '@storybook/react';
 import { spacing } from '@ndla/core';
+import { Heading, Text } from '@ndla/typography';
 import FactBoxV2 from './FactBoxV2';
 import { defaultParameters } from '../../../../stories/defaults';
 
@@ -37,16 +38,22 @@ export default {
   args: {
     children: (
       <>
-        <h2>Faktaboks</h2>
-        <p>En faktaboks kan inneholde punktlister eller korte fakta som er relevant for artikkelens innhold.</p>
-        <p>
+        <Heading element="h2" headingStyle="h2">
+          Faktaboks
+        </Heading>
+        <Text textStyle="content">
+          En faktaboks kan inneholde punktlister eller korte fakta som er relevant for artikkelens innhold.
+        </Text>
+        <Text textStyle="content">
           Det anbefales å ikke ha for mye innhold i faktaboks, slik at lese-konteksten i størst mulig grad beholdes.
-        </p>
-        <h2>Enkel tittel</h2>
-        <p>
+        </Text>
+        <Heading element="h2" headingStyle="h2">
+          Enkel tittel
+        </Heading>
+        <Text textStyle="content">
           Faktaboksen kan også brukes til å oppsummere innhold i slutten av en artikkel, og den kan inneholde
           lisensiering om eksternt innhold er brukt.
-        </p>
+        </Text>
       </>
     ),
   },

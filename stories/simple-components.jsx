@@ -10,7 +10,6 @@ import { StoryIntro, StoryBody } from './wrappers';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
-import DrawerExample from './atoms/DrawerExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
 
@@ -301,7 +300,6 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-  .add('Drawer', () => <DrawerExample />)
 
   .add('Logo', () => (
     <div>

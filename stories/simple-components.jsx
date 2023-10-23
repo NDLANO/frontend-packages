@@ -2,15 +2,13 @@ import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { Aside, FactBox, Logo, LayoutItem, OneColumn, CreatedBy } from '@ndla/ui';
+import { Aside, FactBox, LayoutItem, OneColumn } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Text } from '@ndla/typography';
 import { StoryIntro, StoryBody } from './wrappers';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
-import ArticleBylineExample from './molecules/ArticleBylineExample';
-import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
 
 const SourceList = styled.div`
@@ -27,29 +25,6 @@ const SourceList = styled.div`
 `;
 
 storiesOf('Components', module)
-  .add('Visual element below intro', () => (
-    <div>
-      <StoryIntro title="Visuelt element under ingress">
-        <p>
-          Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk helst bilder av mennesker og bilder som
-          er relevante og naturlige. Bildet må være i landskapsformat, slik at det ikke blir så høyt at det skyver
-          brødteksten for langt ned på siden.
-        </p>
-        <p>
-          Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />
-          Anbefalt bildestørrelse minimum: 1000px (bredde) x 500px (høyde).
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <FigureImage
-          embedData={{
-            caption: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
-            alt: '',
-          }}
-        />
-      </StoryBody>
-    </div>
-  ))
   .add('Text in frame', () => (
     <div>
       <StoryIntro title="Tekst i ramme">
@@ -64,7 +39,6 @@ storiesOf('Components', module)
         <Text textStyle="ingress">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
         </Text>
-        <ArticleBylineExample />
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
           av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
@@ -240,7 +214,6 @@ storiesOf('Components', module)
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
           du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
-        <ArticleBylineExample />
       </StoryBody>
     </div>
   ))
@@ -258,26 +231,6 @@ storiesOf('Components', module)
             Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
             filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
-        </details>
-      </StoryBody>
-    </div>
-  ))
-  .add('Summary box', () => (
-    <div>
-      <StoryIntro title="Fasitboks" />
-      <StoryBody>
-        <details className="c-details--solution-box ">
-          <summary>Vis fasit</summary>
-          <div className="c-details__content">
-            f(x) = x<sup>2</sup> + 10x - 20
-            <FigureImage
-              type="math"
-              embedData={{
-                caption: 'Eksempel på graf',
-                alt: 'Matematisk graf',
-              }}
-            />
-          </div>
         </details>
       </StoryBody>
     </div>
@@ -300,69 +253,6 @@ storiesOf('Components', module)
       </StoryBody>
     </div>
   ))
-
-  .add('Logo', () => (
-    <div>
-      <StoryIntro title="Logo">
-        <p>
-          Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for kommunikasjon. Den skal inspirere
-          målgruppen elever og lærere i videregående opplæring og gjøre dem nysgjerrige på NDLA.
-        </p>
-        <p>
-          Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
-          Logo uten undertekst kan benyttes i tilfeller der det kommer godt fram andre steder hva NDLA er, eksempelvis
-          på ndla.no.
-        </p>
-        <p>
-          Logo uten undertekst kan kompletteres med en beskrivende tekst til høyre. Logoen kan benyttes i blått, eller i
-          svart eller hvitt avhengig av bakgrunn. Den skal plasseres i det øverste eller nederste hjørnet av en
-          ytterkant. Logoen skal ikke sentreres.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2>Logo uten url</h2>
-        <Logo cssModifier="large" name label="Nasjonal digital læringsarena" />
-
-        <h2>Logo med url</h2>
-        <Logo cssModifier="large" name to="/" label="Nasjonal digital læringsarena" />
-        <h2>Engelsk logo</h2>
-        <Logo cssModifier="large" locale="en" name label="Norwegian digital learning arena" />
-      </StoryBody>
-    </div>
-  ))
-  .add('Prepared by', () => (
-    <div>
-      <StoryIntro title="Utarbeidet av">
-        <p>
-          LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i bunnen. "NDLA" og logoen lenker til
-          ndla.no. "Artikkel" kan være en lenke til artikkelen på ndla.no om den fins. Begge lenker åpner som standard i
-          ny fane men det kan overstyres med target-parameter.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2>Uten artikkellenke</h2>
-        <CreatedBy name={'Artikkelen'} description={'er utarbeidet av'} />
-        <h2>Med artikkellenke</h2>
-        <CreatedBy
-          name={'Artikkelen'}
-          description={'er utarbeidet av'}
-          url="https://ndla.no/subject:26/topic:1:191103/topic:1:4352/resource:1:2052"
-        />
-      </StoryBody>
-    </div>
-  ))
-
-  .add('Ukraine Banner', () => (
-    <div>
-      <StoryIntro title="Ukraina Banner">
-        <p>Banner for læringsressurser på Ukrainsk.</p>
-      </StoryIntro>
-      <OneColumn>
-        <UkraineBannerExample />
-      </OneColumn>
-    </div>
-  ))
-
   .add('Tree structure component', () => (
     <div>
       <StoryIntro title="Trestruktur komponent">

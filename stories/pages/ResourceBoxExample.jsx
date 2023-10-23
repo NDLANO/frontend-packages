@@ -8,8 +8,6 @@
 
 import styled from '@emotion/styled';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants, ResourceBox, Figure } from '@ndla/ui';
-import LicenseBox from '../article/LicenseBox';
-import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 const { contentTypes } = constants;
 
 const ReferenceBoxExample = () => {
@@ -82,8 +80,6 @@ const ReferenceBoxExample = () => {
               rightsholders: [{ name: 'Riksarkivet' }],
             },
           }}
-          licenseBox={<LicenseBox />}
-          competenceGoals={<CompetenceGoalListExample />}
           printUrl={window.location.href}
           icon={<TasksAndActivitiesBadge background size="large" />}
           id="mainContentId"

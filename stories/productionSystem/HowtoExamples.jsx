@@ -9,7 +9,6 @@
 import { FieldHeader, FieldHeaderIconStyle } from '@ndla/forms';
 import { InformationOutline } from '@ndla/icons/common';
 import { ArticleInModal } from '@ndla/howto';
-import SlateBlockMenuExample from './SlateBlockMenuExample';
 
 const renderArticleInModal = ({ pageId, tooltip }) => (
   <ArticleInModal
@@ -20,10 +19,6 @@ const renderArticleInModal = ({ pageId, tooltip }) => (
 
 const HowToExamples = () => (
   <div>
-    <h1>Innholdstyper:</h1>
-    <SlateBlockMenuExample height={100} />
-    <br />
-    <br />
     <h1>Lisens og bruker:</h1>
     <FieldHeader title="Koble til avtale">
       {renderArticleInModal({

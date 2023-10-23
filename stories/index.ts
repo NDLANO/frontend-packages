@@ -12,7 +12,6 @@ import '@fontsource/source-serif-pro/400-italic.css';
 import '@fontsource/source-serif-pro/700.css';
 
 require('./welcome');
-require('./concepts');
 require('./simple-components');
 require('./collated-components');
 require('./licenses');

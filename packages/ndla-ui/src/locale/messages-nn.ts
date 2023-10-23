@@ -1271,8 +1271,14 @@ const messages = {
     },
     myProfile: {
       title: 'Min Profil',
-      disclaimerTitle: 'Kvar blir biletet og namnet mitt brukt?',
-      disclaimerText: 'Bilete og namn vert vist når du deltek i diskusjonar i arenaen.',
+      disclaimerTitle: {
+        employee: 'Kvar blir biletet og namnet mitt brukt?',
+        student: 'Kvar blir namnet mitt brukt?',
+      },
+      disclaimerText: {
+        employee: 'Bilete og namn vert vist når du deltek i diskusjonar i arenaen.',
+        student: 'Namnet ditt blir berre vist for deg sjølv når du er logga inn.',
+      },
       preferenceTitle: 'Vel om du vil vise namn når du deler ei mappe',
       preferenceText:
         'Her kan du sjølv velje om du vil vise namnet ditt når du deler ei mappe. Valet gjeld for alle mappene dine og kan endrast seinare. Dersom du endrar vil namnet ditt visast på alle dine delte mapper.',

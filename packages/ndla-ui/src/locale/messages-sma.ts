@@ -1276,8 +1276,11 @@ const messages = {
     },
     myProfile: {
       title: 'Mov Profijle',
-      disclaimerTitle: 'Gusnie guvvie jïh nomme åtnasuvvieh?',
-      disclaimerText: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+      disclaimerTitle: { employee: 'Gusnie guvvie jïh nomme åtnasuvvieh?', student: 'Gusnie mov nomme' },
+      disclaimerText: {
+        employee: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+        student: 'Dov nomme ajve tjaalasåvva dutnjien gosse sïjse loggedh',
+      },
       preferenceTitle: 'Sjïehtedh jis edtja nommem vuesiehtidh gosse maabpam juekedh',
       preferenceText:
         'Daesnie jïjtje veeljh mejtie sïjhth dov nommem vuesiehtidh gosse maabpam juekedh . Daate veeljeme lea gaajhkine dov maabpojne, jïh maahta dam mænngan jarkelidh. Jis jeatjahdahtah , dov nomme sæjhta våajnoes årrodh gaajhkine dov joekedamme maabpojne.',

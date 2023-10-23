@@ -1345,10 +1345,10 @@ const messages = {
     help: 'Hjelp',
   },
   programmes: {
-    header: 'Se våre utdanningsprogram',
-    description: 'Vi ønsker å tilby de beste læringsressursene innen tradisjonelle og nye medier.',
-    grades: 'Trinn',
-    accordionHeader: 'Alle utdanningsprogram',
+    header: 'Maam sïjhth daan biejjien lïeredh ?',
+    description: 'Veeljh ööhpehtimmieprogrammem juktie dov faagide vuartasjidh',
+    grades: 'Daltesasse',
+    accordionHeader: 'Gaajhkh ööhpehtimmieprogrammh',
   },
   embed: {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',

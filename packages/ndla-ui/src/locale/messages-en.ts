@@ -1344,8 +1344,8 @@ const messages = {
     help: 'Help',
   },
   programmes: {
-    header: 'View our educational programmes',
-    description: 'We strive to offer the best learning resources within traditional and new media.',
+    header: 'What do you want to learn today?',
+    description: 'Choose a programme to see your subjects',
     grades: 'Grades',
     accordionHeader: 'All educational programmes',
   },

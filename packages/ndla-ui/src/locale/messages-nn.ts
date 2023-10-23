@@ -1343,8 +1343,8 @@ const messages = {
     help: 'Hjelp',
   },
   programmes: {
-    header: 'Se våre utdanningsprogram',
-    description: 'Vi ønsker å tilby dei beste læringsressursane innan tradisjonelle og nye media.',
+    header: 'Kva vil du lære om i dag?',
+    description: 'Vel utdanningsprogram for å sjå faga dine',
     grades: 'Trinn',
     accordionHeader: 'Alle utdanningsprogram',
   },

@@ -12,7 +12,6 @@ import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './m
 import FileListExample from './molecules/FileListExample';
 
 import FooterExample from './molecules/footers';
-import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
 import SnackbarExample from './molecules/SnackbarExample';
@@ -88,21 +87,6 @@ storiesOf('Patterns', module)
         </p>
       </StoryBody>
     </div>
-  ))
-
-  .add('Message and info box', () => (
-    <PageContainer>
-      <StoryIntro title="Meldings- og infoboks">
-        <p>
-          Her kan du se forskjellige typer meldings- og infobokser. Disse kan anvendes ulike steder på sidene og
-          forteller brukeren om at det foregår noe utenom det vanlige.
-        </p>
-      </StoryIntro>
-      <Content>
-        <MessageBox />
-      </Content>
-      <FooterExample />
-    </PageContainer>
   ))
   .add('Footer', () => {
     const privacyLinks = [

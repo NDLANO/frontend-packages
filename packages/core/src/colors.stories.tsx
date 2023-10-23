@@ -130,11 +130,6 @@ export const ContentTypeColors: StoryFn = () => (
       <ColorBlock color={colors.subjectMaterial.dark} name="Dark" />
       <ColorBlock color={colors.subjectMaterial.light} name="Light" />
     </ColorBlocks>
-    <ColorBlocks title="External learning resource">
-      <ColorBlock color={colors.externalLearningResource.dark} name="Dark" />
-      <ColorBlock color={colors.externalLearningResource.background} name="Background" />
-      <ColorBlock color={colors.externalLearningResource.light} name="Light" />
-    </ColorBlocks>
     <ColorBlocks title="Source material">
       <ColorBlock color={colors.sourceMaterial.dark} name="Dark" />
       <ColorBlock color={colors.sourceMaterial.light} name="Light" />

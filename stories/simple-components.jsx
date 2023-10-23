@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import { BY, NC, ND } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { Aside, FactBox, LayoutItem, OneColumn } from '@ndla/ui';
+import { Aside, FactBox, LayoutItem, OneColumn, FramedContent } from '@ndla/ui';
 import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Text } from '@ndla/typography';
@@ -48,14 +48,14 @@ storiesOf('Components', module)
           du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <LayoutItem layout="full">
-          <div className="c-bodybox c-bodybox--extended">
+          <FramedContent>
             <p>En tekstboks som fyller spaltebredden.</p>
-          </div>
+          </FramedContent>
           <p>
             Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
             filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
-          <div className="c-bodybox c-bodybox--extended">
+          <FramedContent>
             <p>En boks med flytelementer</p>
             <FigureImage embedData={{ alt: '', align: 'right' }} />
             <p>
@@ -66,8 +66,8 @@ storiesOf('Components', module)
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
               filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
-          </div>
-          <div className="c-bodybox c-bodybox--extended">
+          </FramedContent>
+          <FramedContent>
             <h2>
               Tekst i ramme fungerer <em>dårlig</em> med mye tekst.
             </h2>
@@ -103,7 +103,7 @@ storiesOf('Components', module)
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
               filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
-          </div>
+          </FramedContent>
           <p>
             Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
             filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
@@ -111,7 +111,7 @@ storiesOf('Components', module)
         </LayoutItem>
         <LayoutItem layout="center">
           <p className="c-componentinfo__status-label--warn">Status: Inaktiv</p>
-          <div className="c-bodybox">En tekstboks i midten av teksten som ikke fyller bredden.</div>
+          <FramedContent>En tekstboks i midten av teksten som ikke fyller bredden.</FramedContent>
         </LayoutItem>
       </StoryBody>
     </div>

@@ -1,9 +1,7 @@
 /* eslint-disable no-alert */
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
-import { LicenseDescription } from '@ndla/notion';
-import { Footer, PageContainer, LayoutItem, EditorName, FooterText, LanguageSelector, Content } from '@ndla/ui';
+import { Footer, PageContainer, EditorName, FooterText, LanguageSelector, Content } from '@ndla/ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import { mockFooterLinks } from '../dummydata/index';
@@ -27,22 +25,6 @@ storiesOf('Patterns', module)
       <BreadcrumbWithHeader />
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
       <BreadcrumbWithHome />
-    </Center>
-  ))
-  .add('License icons', () => (
-    <Center>
-      <LayoutItem layout="center">
-        <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
-        <div className="o-wrapper--inner">
-          <LicenseDescription
-            locale="nb"
-            messages={{
-              modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
-            }}
-            licenseRights={[BY, SA, NC, ND, PD, CC0, COPYRIGHTED]}
-          />
-        </div>
-      </LayoutItem>
     </Center>
   ))
   .add('Learning resources', () => (

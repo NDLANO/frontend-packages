@@ -1,5 +1,3 @@
-import 'lazysizes';
-
 import { storiesOf } from '@storybook/react';
 import { ContentLoader } from '@ndla/ui';
 

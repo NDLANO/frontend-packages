@@ -14,7 +14,7 @@ interface Props {
   srcSet?: string;
   lazyLoadSrc?: string;
 }
-// Lazyload image with lazysizes (https://github.com/aFarkas/lazysizes)
+
 const LazyLoadImage = ({ alt, src, srcSet, lazyLoadSrc, sizes, ...rest }: Props) => (
   <>
     <noscript key="noscript">
@@ -26,6 +26,7 @@ const LazyLoadImage = ({ alt, src, srcSet, lazyLoadSrc, sizes, ...rest }: Props)
       style={{ width: '100%' }}
       className="lazyload"
       src={lazyLoadSrc}
+      loading="lazy"
       data-src={src}
       data-src-set={srcSet}
       data-sizes={sizes}

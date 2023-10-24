@@ -27,6 +27,7 @@ interface Props {
   imageWidth?: number;
   name: string;
   email: string;
+  lang?: string;
 }
 const BlockWrapper = styled.div`
   display: flex;
@@ -126,7 +127,16 @@ const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
-const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = 'green', blob = 'pointy' }: Props) => {
+const ContactBlock = ({
+  image,
+  jobTitle,
+  description,
+  name,
+  email,
+  blobColor = 'green',
+  blob = 'pointy',
+  lang,
+}: Props) => {
   const { t } = useTranslation();
   const isGreenBlob = blobColor === 'green';
   const Blob = blob === 'pointy' ? BlobPointy : BlobRound;
@@ -153,8 +163,8 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
       <ContentWrapper>
         <TextWrapper>
           <InfoWrapper>
-            <StyledHeader>{name}</StyledHeader>
-            <StyledText>{jobTitle}</StyledText>
+            <StyledHeader lang={lang}>{name}</StyledHeader>
+            <StyledText lang={lang}>{jobTitle}</StyledText>
             <StyledText>
               <Email>{`${t('email')}:`}</Email>
               <EmailLink href={`mailto:${email}`}>{email}</EmailLink>

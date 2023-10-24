@@ -112,9 +112,11 @@ const NotionHeader = styled.div`
     ${fonts.sizes('22px', 1.2)};
   }
   small {
-    padding-left: ${spacing.small};
-    margin-left: ${spacing.xsmall};
-    border-left: 1px solid ${colors.brand.greyLight};
+    &[data-show-separator='true'] {
+      border-left: 1px solid ${colors.brand.greyLight};
+      padding-left: ${spacing.small};
+      margin-left: ${spacing.xsmall};
+    }
     ${fonts.sizes('20px', 1.2)};
     font-weight: ${fonts.weight.normal};
   }
@@ -182,20 +184,21 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
     ref,
   ) => {
     const { t } = useTranslation();
-
+    const isGloss = conceptType === 'gloss';
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <ContentPadding>
-          <NotionHeader>
+          <NotionHeader data-show-separator={!isGloss}>
             <h1>
-              {title.title} {<small>{t(`searchPage.resultType.${conceptType}`)}</small>}
+              {!isGloss && title.title}
+              {<small data-show-separator={!isGloss}>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
             <ButtonWrapper>
               {headerButtons}
               {closeButton}
             </ButtonWrapper>
           </NotionHeader>
-          {conceptType !== 'gloss' ? (
+          {!isGloss ? (
             <>
               <StyledNotionDialogContent>
                 {visualElement?.resource === 'image' ? (

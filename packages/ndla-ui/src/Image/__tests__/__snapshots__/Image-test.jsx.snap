@@ -142,6 +142,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
     data-sizes="(min-width: 1024px) 1024px, 100vw"
     data-src="https://example.com/image.png?width=1024"
     data-src-set="https://example.com/image.png?width=2720 2720w, https://example.com/image.png?width=2080 2080w, https://example.com/image.png?width=1760 1760w, https://example.com/image.png?width=1440 1440w, https://example.com/image.png?width=1120 1120w, https://example.com/image.png?width=1000 1000w, https://example.com/image.png?width=960 960w, https://example.com/image.png?width=800 800w, https://example.com/image.png?width=640 640w, https://example.com/image.png?width=480 480w, https://example.com/image.png?width=320 320w, https://example.com/image.png?width=240 240w, https://example.com/image.png?width=180 180w"
+    loading="lazy"
     src="https://example.com/blurry.png"
     style="width: 100%;"
   />

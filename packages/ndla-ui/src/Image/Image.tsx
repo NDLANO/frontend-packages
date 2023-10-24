@@ -9,7 +9,6 @@
 import { ReactNode } from 'react';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
-import LazyLoadImage from './LazyLoadImage';
 
 export interface ImageCrop {
   startX: number;
@@ -97,25 +96,12 @@ const Image = ({
 }: Props) => {
   const srcSet = rest.srcSet ?? getSrcSet(src, crop, focalPoint);
   const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
+  const loading = lazyLoad ? 'lazy' : 'eager';
 
   if (contentType && contentType === 'image/gif') {
     return (
       <StyledImageWrapper data-border={border}>
-        <StyledImage alt={alt} src={`${src}`} {...rest} data-border={border} />
-      </StyledImageWrapper>
-    );
-  }
-
-  if (lazyLoad) {
-    return (
-      <StyledImageWrapper>
-        <LazyLoadImage
-          alt={alt}
-          src={`${src}?${queryString}`}
-          srcSet={srcSet}
-          sizes={sizes}
-          lazyLoadSrc={lazyLoadSrc}
-        />
+        <StyledImage alt={alt} loading={loading} src={`${src}`} {...rest} data-border={border} />
       </StyledImageWrapper>
     );
   }
@@ -124,7 +110,7 @@ const Image = ({
     <StyledImageWrapper data-svg={contentType === 'image/svg+xml'} data-border={border}>
       <picture>
         <source type={contentType} srcSet={srcSet} sizes={sizes} />
-        <StyledImage alt={alt} src={`${src}?${queryString}`} {...rest} data-border={border} />
+        <StyledImage alt={alt} loading={loading} src={`${src}?${queryString}`} {...rest} data-border={border} />
       </picture>
       {expandButton}
     </StyledImageWrapper>

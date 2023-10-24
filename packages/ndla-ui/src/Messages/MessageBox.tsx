@@ -18,6 +18,8 @@ type MessageBoxType = 'ghost' | 'danger';
 
 interface StyledProps {
   type?: MessageBoxType;
+  icon?: ReactNode;
+  noIcon?: boolean;
 }
 
 const MessageBoxWrapper = styled.div<StyledProps>`
@@ -63,11 +65,14 @@ const TextWrapper = styled.div`
   }
 `;
 
-const IconWrapper = styled.div`
+const IconWrapper = styled.div<StyledProps>`
   display: flex;
   align-items: flex-start;
-  padding-right: ${spacing.small};
-
+  ${({ noIcon }) =>
+    !noIcon &&
+    css`
+      padding-right: ${spacing.small};
+    `}
   svg {
     width: 24px;
     height: 24px;
@@ -108,9 +113,17 @@ interface Props {
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
+  icon?: ReactNode;
+  noIcon?: boolean;
 }
 
-const Icon = ({ type }: StyledProps) => {
+const Icon = ({ type, icon, noIcon }: StyledProps) => {
+  if (icon) {
+    return icon;
+  }
+  if (noIcon || (type && noIcon)) {
+    return;
+  }
   if (type === 'ghost') {
     return <HumanMaleBoard />;
   }
@@ -120,12 +133,12 @@ const Icon = ({ type }: StyledProps) => {
   return <InformationOutline />;
 };
 
-export const MessageBox = ({ type, children = '', links, showCloseButton, onClose }: Props) => {
+export const MessageBox = ({ type, children = '', links, showCloseButton, onClose, icon, noIcon }: Props) => {
   return (
     <MessageBoxWrapper type={type}>
       <InfoWrapper>
-        <IconWrapper>
-          <Icon type={type} />
+        <IconWrapper noIcon={noIcon}>
+          <Icon type={type} icon={icon} noIcon={noIcon} />
         </IconWrapper>
         <div>
           <TextWrapper>{children}</TextWrapper>

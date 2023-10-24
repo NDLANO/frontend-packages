@@ -8,6 +8,7 @@
 
 import { useTranslation } from 'react-i18next';
 import { Meta, StoryFn } from '@storybook/react';
+import { Alarm } from '@ndla/icons/common';
 import MessageBox from './MessageBox';
 import { defaultParameters } from '../../../../stories/defaults';
 
@@ -57,4 +58,22 @@ export const Ghost: StoryFn<typeof MessageBox> = () => {
 export const Danger: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return <MessageBox type="danger">{t('messageBoxInfo.feide')}</MessageBox>;
+};
+
+export const WithCustomIcon: StoryFn<typeof MessageBox> = () => {
+  const { t } = useTranslation();
+  return (
+    <MessageBox type="danger" icon={<Alarm />}>
+      {t('messageBoxInfo.feide')}
+    </MessageBox>
+  );
+};
+
+export const NoIcon: StoryFn<typeof MessageBox> = () => {
+  const { t } = useTranslation();
+  return (
+    <MessageBox type="danger" noIcon>
+      {t('messageBoxInfo.feide')}
+    </MessageBox>
+  );
 };

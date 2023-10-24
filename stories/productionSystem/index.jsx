@@ -10,7 +10,6 @@
 
 import { storiesOf } from '@storybook/react';
 import { Image } from '@ndla/ui';
-import { Spinner } from '@ndla/icons';
 import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
@@ -147,16 +146,6 @@ storiesOf('Other/Production system', module)
       <StoryBody>
         <HowtoExamples />
       </StoryBody>
-    </div>
-  ))
-  .add('Loading', () => (
-    <div>
-      <StoryIntro title="Loading komponent" />
-      <Center>
-        <Spinner />
-        <Spinner size="medium" />
-        <Spinner size="normal" />
-      </Center>
     </div>
   ))
   .add('Ndla movie editor', () => (

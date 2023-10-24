@@ -12,8 +12,13 @@ import { defaultParameters } from '../../../stories/defaults';
 
 const exampleText = 'Nasjonal digital læringsarena';
 
+/**
+ * NDLA bruker fontene [ Source Serif Pro ](https://fonts.google.com/specimen/Source+Serif+Pro), [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro) og [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
+ *
+ * Tilbakefallsfonter er Helvetica og Arial
+ */
 export default {
-  title: 'Components/Typography/Text',
+  title: 'Base styles/Typography/Text',
   component: Text,
   tags: ['autodocs'],
   parameters: {
@@ -61,4 +66,21 @@ export const MetaTextSmall: StoryObj<typeof Text> = {
     textStyle: 'meta-text-small',
     children: exampleText,
   },
+};
+
+/**
+ * Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten skal være lesbar. Tekststil blir automatisk endret når en setter kinesisk som språk på en Text-komponent.
+ */
+export const Chinese: StoryObj<typeof Text> = {
+  args: { lang: 'zh-Hans', children: '人人生而自由,在尊严和权利上一律平等。' },
+  render: (args) => (
+    <>
+      <Text {...args} />
+      <Text {...args} textStyle="button" />
+      <Text {...args} textStyle="content" />
+      <Text {...args} textStyle="content-alt" />
+      <Text {...args} textStyle="meta-text-large" />
+      <Text {...args} textStyle="meta-text-small" />
+    </>
+  ),
 };

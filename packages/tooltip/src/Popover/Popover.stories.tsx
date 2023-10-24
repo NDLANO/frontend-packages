@@ -13,6 +13,7 @@ import Popover from './Popover';
 
 export default {
   title: 'Components/Popover',
+  tags: ['autodocs'],
   component: Popover,
   parameters: {
     ...defaultParameters,

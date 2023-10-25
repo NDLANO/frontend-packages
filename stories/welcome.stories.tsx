@@ -1,23 +1,26 @@
-import PropTypes from 'prop-types';
-import { storiesOf } from '@storybook/react';
-import { Logo, PageContainer } from '@ndla/ui';
-import { StoryBody } from './wrappers';
-import { Center } from './helpers';
+/**
+ * Copyright (c) 2023-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
-const Welcome = () => (
+import { LayoutItem, Logo, PageContainer } from '@ndla/ui';
+import { Meta, StoryFn } from '@storybook/react';
+
+export default {
+  title: 'Welcome',
+} as Meta;
+
+export const Welcome: StoryFn = () => (
   <PageContainer>
-    <div style={{ marginTop: '30px' }}>
-      <StoryBody>
-        <Center
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
+    <LayoutItem layout="center">
+      <article className="c-article c-article--clean">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Logo label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
-        </Center>
+        </div>
         <h2 style={{ marginTop: '26px' }}>Hva designmanualen er, og hva den ikke er</h2>
         <p>
           Designmanualen inneholder retningslinjer for formatering, visuelt uttrykk, interaksjon og innholdselementer.
@@ -87,15 +90,7 @@ const Welcome = () => (
         <code>@import '~@ndla/ui/src/main';</code>
         <br />
         Osv.
-        <h3>Utkommentert funksjonalitet</h3>
-        <p>Utkommentert funksjonalitet kan finnes ved å søke på "Stored for later". </p>
-      </StoryBody>
-    </div>
+      </article>
+    </LayoutItem>
   </PageContainer>
 );
-
-Welcome.propTypes = {
-  showApp: PropTypes.func,
-};
-
-storiesOf('Velkommen', module).add('Velkommen', () => <Welcome />);

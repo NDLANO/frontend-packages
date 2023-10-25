@@ -11,8 +11,6 @@ import '@fontsource/source-serif-pro/index.css';
 import '@fontsource/source-serif-pro/400-italic.css';
 import '@fontsource/source-serif-pro/700.css';
 
-require('./welcome');
 require('./simple-components');
 require('./collated-components');
 require('./productionSystem');
-require('./ndla-urls');

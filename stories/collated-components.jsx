@@ -1,12 +1,8 @@
 /* eslint-disable no-alert */
 
 import { storiesOf } from '@storybook/react';
-import { Footer, EditorName, FooterText, LanguageSelector } from '@ndla/ui';
 import { StoryIntro, StoryBody } from './wrappers';
-import { Center } from './helpers';
-import { mockFooterLinks } from '../dummydata/index';
 import Resources from './molecules/resources';
-import FileListExample from './molecules/FileListExample';
 
 storiesOf('Patterns', module)
   .add('Learning resources', () => (
@@ -27,51 +23,6 @@ storiesOf('Patterns', module)
     </div>
   ))
 
-  .add('Downloading files', () => (
-    <div>
-      <StoryIntro title="Nedlasting av filer" />
-      <StoryBody>
-        <h2>Overskrift</h2>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <FileListExample />
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-      </StoryBody>
-    </div>
-  ))
-  .add('Footer', () => {
-    const privacyLinks = [
-      { label: 'Personvernerklæring', url: 'https://om.ndla.no/gdpr' },
-      { label: 'Erklæring om informasjonskapsler', url: 'https://om.ndla.no/cookies' },
-    ];
-    return (
-      <Center>
-        <Footer
-          links={mockFooterLinks}
-          languageSelector={<LanguageSelector inverted locales={['nb', 'nn']} onSelect={() => {}} />}
-          privacyLinks={privacyLinks}
-        >
-          <FooterText>
-            <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
-          </FooterText>
-          <FooterText>Nettstedet er utarbeidet av NDLA med åpen kildekode.</FooterText>
-        </Footer>
-      </Center>
-    );
-  })
   .add('Ungrouped learning resources', () => (
     <div>
       <StoryIntro title="Ugrupperte ressurser">

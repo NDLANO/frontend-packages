@@ -16,13 +16,22 @@ import { ReactNode } from 'react';
 
 type MessageBoxType = 'ghost' | 'danger';
 
-interface StyledProps {
+interface LinkProps {
+  href?: string;
+  text?: string;
+}
+
+interface MessageBoxProps {
   type?: MessageBoxType;
+  children?: ReactNode;
+  links?: LinkProps[];
+  showCloseButton?: boolean;
+  onClose?: () => void;
   icon?: ReactNode;
   noIcon?: boolean;
 }
 
-const MessageBoxWrapper = styled.div<StyledProps>`
+const MessageBoxWrapper = styled.div<MessageBoxProps>`
   display: flex;
   padding: ${spacing.small};
   font-family: ${fonts.sans};
@@ -63,7 +72,7 @@ const TextWrapper = styled.div`
   }
 `;
 
-const IconWrapper = styled.div<StyledProps>`
+const IconWrapper = styled.div<MessageBoxProps>`
   display: flex;
   align-items: flex-start;
   ${({ noIcon }) =>
@@ -100,22 +109,7 @@ const StyledClosebutton = styled(CloseButton)`
   padding: 0;
 `;
 
-interface LinkProps {
-  href?: string;
-  text?: string;
-}
-
-interface Props {
-  type?: MessageBoxType;
-  children?: ReactNode;
-  links?: LinkProps[];
-  showCloseButton?: boolean;
-  onClose?: () => void;
-  icon?: ReactNode;
-  noIcon?: boolean;
-}
-
-const Icon = ({ type, icon, noIcon }: StyledProps) => {
+const Icon = ({ type, icon, noIcon }: MessageBoxProps) => {
   if (icon) {
     return icon;
   }
@@ -124,7 +118,7 @@ const Icon = ({ type, icon, noIcon }: StyledProps) => {
   }
 };
 
-export const MessageBox = ({ type, children = '', links, showCloseButton, onClose, icon, noIcon }: Props) => {
+export const MessageBox = ({ type, children = '', links, showCloseButton, onClose, icon, noIcon }: MessageBoxProps) => {
   return (
     <MessageBoxWrapper type={type}>
       <InfoWrapper>

@@ -15,5 +15,4 @@ require('./welcome');
 require('./simple-components');
 require('./collated-components');
 require('./productionSystem');
-require('./experimental');
 require('./ndla-urls');

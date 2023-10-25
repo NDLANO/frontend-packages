@@ -6,22 +6,9 @@ import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import { mockFooterLinks } from '../dummydata/index';
 import Resources from './molecules/resources';
-import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
 import FileListExample from './molecules/FileListExample';
 
 storiesOf('Patterns', module)
-  .add('Breadcrumb', () => (
-    <Center>
-      <h2 className="u-heading">Enkel brødsmulesti</h2>
-      <BreadcrumbDefault />
-      <h2 className="u-heading">Enkel brødsmulesti. Automatisk redusering av bredde</h2>
-      <BreadcrumbDefault autoCollapse />
-      <h2 className="u-heading">Brødsmulesti med header og styling</h2>
-      <BreadcrumbWithHeader />
-      <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
-      <BreadcrumbWithHome />
-    </Center>
-  ))
   .add('Learning resources', () => (
     <div>
       <StoryIntro title="Læringsressurser/launchpad">

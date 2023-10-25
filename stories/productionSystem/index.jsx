@@ -9,7 +9,6 @@
 /* eslint max-len: 0 */
 
 import { storiesOf } from '@storybook/react';
-import { Image } from '@ndla/ui';
 import { Spinner } from '@ndla/icons';
 import { StoryIntro, StoryBody } from '../wrappers';
 
@@ -26,42 +25,6 @@ import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 import CodeBlockEditorExample from './CodeBlockEditorExample';
 
 storiesOf('Other/Production system', module)
-  .add('Image crop and focal point', () => (
-    <div>
-      <StoryIntro title="Bildesøk">
-        <p>
-          I produksjonssystemet til nye NDLA så er det mulig å definere et utsnitt og/eller et fokuspunkt på et bilde.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2>Orginalbilde</h2>
-        <Image alt="Mann med maske" src="https://api.test.ndla.no/image-api/raw/id/604" />
-        <h2>Utsnitt</h2>
-        <p>Et utsnitt fører til at kun en mindre del av bildet vises. </p>
-        <Image
-          alt="Mann med maske"
-          crop={{
-            startX: 14.59,
-            endX: 79.63,
-            startY: 20,
-            endY: 100,
-          }}
-          src="https://api.test.ndla.no/image-api/raw/id/604"
-        />
-        <h2>Fokuspunkt</h2>
-        <p>Et fokuspunkt sikrer at ansikt/objekt er i fokus når bildet tilpasses for visning på mindre flater.</p>
-        <Image
-          alt="Mann med maske"
-          focalPoint={{
-            x: 65.08,
-            y: 45.28,
-          }}
-          sizes="(min-width: 320px) 320px"
-          src="https://api.test.ndla.no/image-api/raw/id/604"
-        />
-      </StoryBody>
-    </div>
-  ))
   .add('Image search', () => (
     <div>
       <StoryIntro title="Bildesøk">

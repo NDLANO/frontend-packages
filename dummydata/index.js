@@ -23,7 +23,6 @@ import {
 } from './mockFilm';
 
 import { mockTypeahead } from './mockTypeahead';
-import { mockFooterLinks } from './mockFooter';
 import { ResourceData } from './mockResourceData';
 
 export {
@@ -50,7 +49,6 @@ export {
   mockMovieTopics,
   mockMovieResourceTypes,
   mockTypeahead,
-  mockFooterLinks,
   contentTypeResults,
   ResourceData,
 };

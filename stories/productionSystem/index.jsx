@@ -9,7 +9,6 @@
 /* eslint max-len: 0 */
 
 import { storiesOf } from '@storybook/react';
-import { Spinner } from '@ndla/icons';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';
@@ -108,16 +107,6 @@ storiesOf('Other/Production system', module)
       <StoryBody>
         <HowtoExamples />
       </StoryBody>
-    </div>
-  ))
-  .add('Loading', () => (
-    <div>
-      <StoryIntro title="Loading komponent" />
-      <Center>
-        <Spinner />
-        <Spinner size="medium" />
-        <Spinner size="normal" />
-      </Center>
     </div>
   ))
   .add('Ndla movie editor', () => (

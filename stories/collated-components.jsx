@@ -1,16 +1,13 @@
 /* eslint-disable no-alert */
 
 import { storiesOf } from '@storybook/react';
-import { Footer, PageContainer, EditorName, FooterText, LanguageSelector, Content } from '@ndla/ui';
+import { Footer, EditorName, FooterText, LanguageSelector } from '@ndla/ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import { mockFooterLinks } from '../dummydata/index';
 import Resources from './molecules/resources';
 import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
 import FileListExample from './molecules/FileListExample';
-
-import FooterExample from './molecules/footers';
-import ResourceBoxExample from './pages/ResourceBoxExample';
 
 storiesOf('Patterns', module)
   .add('Breadcrumb', () => (
@@ -88,18 +85,6 @@ storiesOf('Patterns', module)
       </Center>
     );
   })
-
-  .add('Resource from link', () => (
-    <PageContainer>
-      <StoryIntro title="Ressurs fra lenke">
-        <p>Her kan du se forskjellige typer referansebokser. De brukes gjerne i artikler for å lenke til en ressurs.</p>
-      </StoryIntro>
-      <Content>
-        <ResourceBoxExample />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
   .add('Ungrouped learning resources', () => (
     <div>
       <StoryIntro title="Ugrupperte ressurser">

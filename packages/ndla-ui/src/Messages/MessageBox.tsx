@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { InformationOutline, HumanMaleBoard, Forward, WarningOutline } from '@ndla/icons/common';
+import { Forward } from '@ndla/icons/common';
 
 import { CloseButton } from '@ndla/button';
 import { css } from '@emotion/react';
@@ -39,7 +39,6 @@ const MessageBoxWrapper = styled.div<StyledProps>`
     type === 'ghost' &&
     css`
       background: transparent;
-      border: 1px solid ${colors.brand.neutral7};
       color: ${colors.brand.greyDark};
     `}
 
@@ -56,7 +55,6 @@ const InfoWrapper = styled.div`
   flex-direction: row;
   flex: 1;
   padding: ${spacing.small};
-  padding-right: 0;
 `;
 
 const TextWrapper = styled.div`
@@ -124,13 +122,6 @@ const Icon = ({ type, icon, noIcon }: StyledProps) => {
   if (noIcon || (type && noIcon)) {
     return;
   }
-  if (type === 'ghost') {
-    return <HumanMaleBoard />;
-  }
-  if (type === 'danger') {
-    return <WarningOutline />;
-  }
-  return <InformationOutline />;
 };
 
 export const MessageBox = ({ type, children = '', links, showCloseButton, onClose, icon, noIcon }: Props) => {

@@ -14,4 +14,3 @@ import '@fontsource/source-serif-pro/700.css';
 require('./simple-components');
 require('./collated-components');
 require('./productionSystem');
-require('./experimental');

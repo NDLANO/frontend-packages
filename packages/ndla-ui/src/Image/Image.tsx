@@ -96,7 +96,7 @@ const Image = ({
 }: Props) => {
   const srcSet = rest.srcSet ?? getSrcSet(src, crop, focalPoint);
   const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
-  const loading = lazyLoad ? 'lazy' : 'eager';
+  const loading = lazyLoad ? 'lazy' : undefined;
 
   if (contentType && contentType === 'image/gif') {
     return (

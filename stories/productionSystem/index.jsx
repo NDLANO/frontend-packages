@@ -17,7 +17,6 @@ import VideoSearcher from '../molecules/videoSearch';
 import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
 import MultiSelectDropdownExample from './MultiSelectDropdownExample';
-import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
 import NdlaFilmEditorExample from './NdlaFilmEditorExample';
@@ -74,16 +73,6 @@ storiesOf('Other/Production system', module)
       </StoryIntro>
       <StoryBody>
         <MultiSelectDropdownExample />
-      </StoryBody>
-    </div>
-  ))
-  .add('Uploader', () => (
-    <div>
-      <StoryIntro title="Uploader">
-        <p>Komponent for filopplasting</p>
-      </StoryIntro>
-      <StoryBody>
-        <UploaderExample />
       </StoryBody>
     </div>
   ))

@@ -516,6 +516,11 @@ const messages = {
   subject: {
     associatedTopics: 'Gullevaš fáttát',
   },
+  subjectFrontPage: {
+    buildsOn: 'Bygger på',
+    connectedTo: 'Felles programfag sammen med',
+    leadsTo: 'Leder til',
+  },
   accordion: {
     closeAll: 'Govčča buot',
     openAll: 'Raba buot',

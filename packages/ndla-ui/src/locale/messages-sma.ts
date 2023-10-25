@@ -516,6 +516,11 @@ const messages = {
   subject: {
     associatedTopics: 'Teemah mah govlehtuvvieh',
   },
+  subjectFrontPage: {
+    buildsOn: 'Bygger på',
+    connectedTo: 'Felles programfag sammen med',
+    leadsTo: 'Leder til',
+  },
   accordion: {
     closeAll: 'Dahph gaajhkh',
     openAll: 'Rïhpesth gaajhkh',

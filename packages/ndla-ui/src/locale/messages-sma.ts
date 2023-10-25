@@ -517,9 +517,9 @@ const messages = {
     associatedTopics: 'Teemah mah govlehtuvvieh',
   },
   subjectFrontPage: {
-    buildsOn: 'Bygger på',
-    connectedTo: 'Felles programfag sammen med',
-    leadsTo: 'Leder til',
+    buildsOn: 'Bigkie bæjjese',
+    connectedTo: 'Tjåenghkies programmefaage aalkoealmetjidie',
+    leadsTo: 'Goh ryökneme',
   },
   accordion: {
     closeAll: 'Dahph gaajhkh',

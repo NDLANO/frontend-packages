@@ -517,9 +517,9 @@ const messages = {
     associatedTopics: 'Gullevaš fáttát',
   },
   subjectFrontPage: {
-    buildsOn: 'Bygger på',
-    connectedTo: 'Felles programfag sammen med',
-    leadsTo: 'Leder til',
+    buildsOn: 'Duddjo dása',
+    connectedTo: 'Oktasaš prográmmafáddán lea',
+    leadsTo: 'Dát doalvu',
   },
   accordion: {
     closeAll: 'Govčča buot',

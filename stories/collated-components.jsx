@@ -12,8 +12,6 @@ import FileListExample from './molecules/FileListExample';
 import FooterExample from './molecules/footers';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
-import SnackbarExample from './molecules/SnackbarExample';
-
 storiesOf('Patterns', module)
   .add('Breadcrumb', () => (
     <Center>
@@ -99,18 +97,6 @@ storiesOf('Patterns', module)
       <Content>
         <ResourceBoxExample />
       </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-
-  .add('Snackbar', () => (
-    <PageContainer>
-      <StoryIntro title="Snackbar" />
-      <StoryBody>
-        <Center>
-          <SnackbarExample />
-        </Center>
-      </StoryBody>
       <FooterExample />
     </PageContainer>
   ))

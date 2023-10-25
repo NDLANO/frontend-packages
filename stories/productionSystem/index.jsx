@@ -10,7 +10,6 @@
 
 import { storiesOf } from '@storybook/react';
 import { Image } from '@ndla/ui';
-import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';
@@ -23,7 +22,6 @@ import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
 import NdlaFilmEditorExample from './NdlaFilmEditorExample';
-import ProductionToolVersionLog from './ProductionToolVersionLog';
 import CodeBlockEditorExample from './CodeBlockEditorExample';
 
 storiesOf('Other/Production system', module)
@@ -154,25 +152,6 @@ storiesOf('Other/Production system', module)
       <Center>
         <NdlaFilmEditorExample />
       </Center>
-    </div>
-  ))
-  .add('Version log and history', () => (
-    <div
-      style={{
-        backgroundColor: colors.brand.greyLightest,
-        paddingBottom: spacing.large,
-        minHeight: '100vh',
-      }}
-    >
-      <StoryIntro title="Versjonslogg og historikk">
-        <p>
-          Versjonshistorikk og logg for emner/læringssressurser i ED. Mulighet for å se eller tilbakestille til
-          tidligere versjon eller kommentere på versjonen man står i.
-        </p>
-      </StoryIntro>
-      <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
-        <ProductionToolVersionLog />
-      </div>
     </div>
   ))
   .add('Code editor', () => (

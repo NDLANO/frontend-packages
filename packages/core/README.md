@@ -1,6 +1,6 @@
 # ndla-core
 
-ndla-core contains common styling for all NDLA components. It includes all global variables for stuff like typography, colors, etc.
+ndla-core contains common styling for all NDLA components. It includes all global variables for stuff like typography, colors, etc
 
 ## Installation
 

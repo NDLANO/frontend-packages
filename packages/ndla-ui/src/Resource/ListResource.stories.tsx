@@ -6,16 +6,16 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import ListResource from './ListResource';
 import { defaultParameters } from '../../../../stories/defaults';
-import BlockResource from './BlockResource';
 import { StoryResourceMenu, resourceTypesArr } from './storyComponents';
+import { spacing } from '../../../core/src';
 
 export default {
-  title: 'My NDLA/BlockResource',
-  component: BlockResource,
+  title: 'My NDLA/ListResource',
+  component: ListResource,
   tags: ['autodocs'],
   parameters: {
     ...defaultParameters,
@@ -38,7 +38,6 @@ export default {
     id: '1234',
     link: '',
     title: 'Tittel til ressurs',
-    description: 'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet',
     resourceImage: {
       src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
       alt: '',
@@ -46,52 +45,54 @@ export default {
     resourceTypes: [{ id: 'urn:resourcetype:learningPath', name: 'Læringssti' }],
     tags: ['tag', 'tag', 'tag', 'tag'],
   },
-} as Meta<typeof BlockResource>;
+} as Meta<typeof ListResource>;
 
-export const WithImage: StoryFn<typeof BlockResource> = (args) => {
-  return <BlockResource {...args} />;
+export const WithImage: StoryFn<typeof ListResource> = (args) => {
+  return <ListResource {...args} />;
 };
 
-export const WithoutImage: StoryObj<typeof BlockResource> = {
-  args: { resourceImage: { src: '', alt: '' } },
-};
-
-export const WithoutTags: StoryObj<typeof BlockResource> = {
-  args: { tags: [] },
-};
-
-export const WithOverflowingDescription: StoryObj<typeof BlockResource> = {
+export const WithoutImage: StoryObj<typeof ListResource> = {
   args: {
-    description:
-      'Beskrivelser trenger ikke å være så veldig lange. Det er ganske vanskelig å få plass til en livshistorie. Det lærte jeg da jeg var ung',
+    resourceImage: { src: '', alt: '' },
   },
 };
 
-export const WithMenu: StoryObj<typeof BlockResource> = {
+export const WithoutTags: StoryObj<typeof ListResource> = {
+  args: { tags: [] },
+};
+
+export const WithOverflowingDescription: StoryObj<typeof ListResource> = {
+  args: {
+    description:
+      'Beskrivelser trenger ikke å være så veldig lange. Det er ganske vanskelig å få plass til en livshistorie. Det lærte jeg da jeg var en ung utvikler og utviklet denne komponenten. Jeg husker det nærmest som om det var i går, men det var det egentlig ikke. Det var i det gode år 2022',
+  },
+};
+
+export const WithMenu: StoryObj<typeof ListResource> = {
   args: {
     menu: <StoryResourceMenu />,
   },
 };
 
-export const Loading: StoryObj<typeof BlockResource> = {
+export const Loading: StoryObj<typeof ListResource> = {
   args: {
     isLoading: true,
   },
 };
 
-const BlockWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: ${spacing.small};
-  flex-wrap: wrap;
 `;
 
-export const BlockView: StoryObj<typeof BlockResource> = {
+export const BlockView: StoryObj<typeof ListResource> = {
   args: { resourceImage: { src: '', alt: '' } },
   render: ({ ...args }) => (
-    <BlockWrapper>
+    <Wrapper>
       {resourceTypesArr.map((rt) => (
-        <BlockResource {...args} key={rt.id} resourceTypes={[rt]} />
+        <ListResource {...args} key={rt.id} resourceTypes={[rt]} />
       ))}
-    </BlockWrapper>
+    </Wrapper>
   ),
 };

@@ -20,7 +20,6 @@ import MultiSelectDropdownExample from './MultiSelectDropdownExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
 import NdlaFilmEditorExample from './NdlaFilmEditorExample';
-import CodeBlockEditorExample from './CodeBlockEditorExample';
 
 storiesOf('Other/Production system', module)
   .add('Image search', () => (
@@ -103,16 +102,6 @@ storiesOf('Other/Production system', module)
       <StoryIntro title="Redigering av NDLA film forside" />
       <Center>
         <NdlaFilmEditorExample />
-      </Center>
-    </div>
-  ))
-  .add('Code editor', () => (
-    <div>
-      <StoryIntro title="Kodesnutter">
-        <p>Visning av formatert kode</p>
-      </StoryIntro>
-      <Center>
-        <CodeBlockEditorExample />
       </Center>
     </div>
   ));

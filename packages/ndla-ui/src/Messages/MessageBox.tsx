@@ -9,7 +9,6 @@
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { Forward } from '@ndla/icons/common';
-
 import { CloseButton } from '@ndla/button';
 import { css } from '@emotion/react';
 import { ReactNode } from 'react';
@@ -31,7 +30,7 @@ interface MessageBoxProps {
   noIcon?: boolean;
 }
 
-const MessageBoxWrapper = styled.div<MessageBoxProps>`
+const MessageBoxWrapper = styled.div`
   display: flex;
   padding: ${spacing.small};
   font-family: ${fonts.sans};
@@ -43,20 +42,14 @@ const MessageBoxWrapper = styled.div<MessageBoxProps>`
   ${mq.range({ until: breakpoints.tabletWide })} {
     ${fonts.sizes('16px')};
   }
-
-  ${({ type }) =>
-    type === 'ghost' &&
-    css`
-      background: transparent;
-      color: ${colors.brand.greyDark};
-    `}
-
-  ${({ type }) =>
-    type === 'danger' &&
-    css`
-      background: ${colors.support.redLightest};
-      color: ${colors.text.primary};
-    `}
+  &[data-type='ghost'] {
+    background: transparent;
+    color: ${colors.brand.greyDark};
+  }
+  &[data-type='danger'] {
+    background: ${colors.support.redLightest};
+    color: ${colors.text.primary};
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -72,14 +65,12 @@ const TextWrapper = styled.div`
   }
 `;
 
-const IconWrapper = styled.div<MessageBoxProps>`
+const IconWrapper = styled.div`
   display: flex;
   align-items: flex-start;
-  ${({ noIcon }) =>
-    !noIcon &&
-    css`
-      padding-right: ${spacing.small};
-    `}
+  &[data-noIcon='false'] {
+    padding-right: ${spacing.small};
+  }
   svg {
     width: 24px;
     height: 24px;
@@ -120,9 +111,9 @@ const Icon = ({ type, icon, noIcon }: MessageBoxProps) => {
 
 export const MessageBox = ({ type, children = '', links, showCloseButton, onClose, icon, noIcon }: MessageBoxProps) => {
   return (
-    <MessageBoxWrapper type={type}>
+    <MessageBoxWrapper data-type={type}>
       <InfoWrapper>
-        <IconWrapper noIcon={noIcon}>
+        <IconWrapper data-noIcon={!!noIcon}>
           <Icon type={type} icon={icon} noIcon={noIcon} />
         </IconWrapper>
         <div>

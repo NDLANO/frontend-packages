@@ -44,7 +44,7 @@ const Container = styled.div`
   padding: ${spacing.nsmall} ${spacing.normal};
   border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
-  margin: ${spacing.normal} 0 ${spacing.xsmall};
+  margin-bottom: ${spacing.xsmall};
   gap: ${spacing.nsmall};
 `;
 

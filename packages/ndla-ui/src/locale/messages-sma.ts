@@ -516,6 +516,11 @@ const messages = {
   subject: {
     associatedTopics: 'Teemah mah govlehtuvvieh',
   },
+  subjectFrontPage: {
+    buildsOn: 'Bigkie bæjjese',
+    connectedTo: 'Tjåenghkies programmefaage aalkoealmetjidie',
+    leadsTo: 'Goh ryökneme',
+  },
   accordion: {
     closeAll: 'Dahph gaajhkh',
     openAll: 'Rïhpesth gaajhkh',

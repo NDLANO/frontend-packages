@@ -516,6 +516,11 @@ const messages = {
   subject: {
     associatedTopics: 'Gullevaš fáttát',
   },
+  subjectFrontPage: {
+    buildsOn: 'Duddjo dása',
+    connectedTo: 'Oktasaš prográmmafáddán lea',
+    leadsTo: 'Dát doalvu',
+  },
   accordion: {
     closeAll: 'Govčča buot',
     openAll: 'Raba buot',

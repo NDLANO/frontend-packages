@@ -515,6 +515,11 @@ const messages = {
   subject: {
     associatedTopics: 'Tilhøyrande emne',
   },
+  subjectFrontPage: {
+    buildsOn: 'Byggjer på',
+    connectedTo: 'Felles programfag saman med',
+    leadsTo: 'Leier til',
+  },
   accordion: {
     closeAll: 'Lukk alle',
     openAll: 'Åpne alle',

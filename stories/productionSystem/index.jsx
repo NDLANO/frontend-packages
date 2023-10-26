@@ -11,21 +11,10 @@
 import { storiesOf } from '@storybook/react';
 import { StoryIntro, StoryBody } from '../wrappers';
 
-import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
 import MultiSelectDropdownExample from './MultiSelectDropdownExample';
 
 storiesOf('Other/Production system', module)
-  .add('Form elements', () => (
-    <div>
-      <StoryIntro title="Form elementer">
-        <p>Tekst kommer</p>
-      </StoryIntro>
-      <StoryBody>
-        <FormExampleAuthors />
-      </StoryBody>
-    </div>
-  ))
   .add('Dropdown with multiselect', () => (
     <div>
       <StoryIntro title="Dropdown with multiselect">

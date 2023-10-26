@@ -113,15 +113,11 @@ const StyledLanguageWrapper = styled.div`
 type Props = {
   children: ReactNode;
   lang: Locale;
-  links?: [
-    {
-      to: string;
-      text: string;
-      icon: ReactNode;
-      facebook: string;
-      twitter: string;
-    },
-  ];
+  links?: {
+    to: string;
+    text: string;
+    icon: ReactNode;
+  }[];
   privacyLinks?: {
     url: string;
     label: string;

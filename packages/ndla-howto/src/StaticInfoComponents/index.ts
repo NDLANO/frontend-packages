@@ -4,7 +4,7 @@ import FactBoxExample from './components/FactBoxExample';
 import SolutionExample from './components/SolutionExample';
 import Markdown from './components/Markdown';
 
-interface Story {
+export interface Story {
   title?: string;
   lead?: string;
   imageUrl?: string;
@@ -21,12 +21,47 @@ type ComponentBody = Body<'component', ComponentType>;
 type TextBody = Body<'text', string>;
 type LinkBody = Body<'link', { href: string; text: string }>;
 
-export const stories: Record<string, Story> = {
+export type StoryType =
+  | 'Paragraph'
+  | 'FactAside'
+  | 'Table'
+  | 'FramedContent'
+  | 'Details'
+  | 'Blueprint'
+  | 'Images'
+  | 'Videos'
+  | 'Audios'
+  | 'Podcasts'
+  | 'H5P'
+  | 'ResourceFromLink'
+  | 'File'
+  | 'RelatedArticle'
+  | 'userAgreements'
+  | 'userLicense'
+  | 'MetaKeyword'
+  | 'MetaDescription'
+  | 'MetaImage'
+  | 'VisualElement'
+  | 'TaxonomyContentTypes'
+  | 'TaxonomySubjectConnections'
+  | 'TaxonomyTopicConnections'
+  | 'TaxonomySubjectFilters'
+  | 'Markdown'
+  | 'CodeBlock'
+  | 'Concept'
+  | 'ConceptList'
+  | 'BlogPost'
+  | 'status'
+  | 'ContactBlock'
+  | 'Grid'
+  | 'KeyFigure';
+
+export const stories: Record<StoryType, Story> = {
   Paragraph: {
     title: 'Paragraf',
     lead: 'Dette lager en ny seksjon i teksten. Det skiller seg fra et hard linjeskrift..',
   },
-  FactASide: {
+  FactAside: {
     title: 'Faktaboks',
     lead: 'Denne funksjonen setter inn en faktaboks i teksten. En faktaboks er et avgrenset område i teksten med en ramme rundt seg. Den kan ha en overskrift og en kort mengde tekst. Marker teksten du ønsker som tittel og velg H1 fra verktøyslinjen.',
     body: [
@@ -40,8 +75,8 @@ export const stories: Record<string, Story> = {
     title: 'Tabeller',
     lead: 'Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles opp i flere tabeller.',
   },
-  BodyBox: {
-    title: '',
+  FramedContent: {
+    title: 'Tekst i ramme',
     lead: 'Tekst i ramme kan brukes for å framheve noe av særlig interesse, annet enn sitat',
     body: [
       {

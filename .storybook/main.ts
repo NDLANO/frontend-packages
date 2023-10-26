@@ -9,7 +9,7 @@
 import { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
-  stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx)', '../stories/*/*.stories.tsx'],
+  stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx|jsx)', '../stories/**/*.stories.@(tsx|mdx)'],
   staticDirs: ['static'],
   addons: [
     '@storybook/addon-a11y',

@@ -400,6 +400,19 @@ function licenseByLocale(license: LicenseType, locale: Locale | string | undefin
   };
 }
 
+export const ALL_ABBREVIATIONS = [
+  'CC-BY-NC-ND-4.0',
+  'CC-BY-NC-SA-4.0',
+  'CC-BY-NC-4.0',
+  'CC-BY-ND-4.0',
+  'CC-BY-SA-4.0',
+  'CC-BY-4.0',
+  'PD',
+  'CC0-1.0',
+  'COPYRIGHTED',
+  'N/A',
+] as const;
+
 export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | string | undefined) {
   switch (abbreviation) {
     case 'CC-BY-NC-ND-4.0':

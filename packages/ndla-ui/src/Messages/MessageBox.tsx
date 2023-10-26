@@ -71,6 +71,7 @@ const LinkWrapper = styled.div`
   flex-wrap: wrap;
   gap: ${spacing.normal};
   padding-top: ${spacing.nsmall};
+  padding-left: ${spacing.mediumlarge};
   svg {
     flex-shrink: 0;
   }

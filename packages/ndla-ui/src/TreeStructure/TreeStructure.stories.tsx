@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022-present, NDLA.
+ * Copyright (c) 2023-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,21 +7,25 @@
  */
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
-import { TreeStructure, TreeStructureProps, FolderInput } from '@ndla/ui';
-import { uuid } from '@ndla/util';
-// eslint-disable-next-line no-restricted-imports
-import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
-import { colors, spacing } from '@ndla/core';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
+import { colors, spacing } from '@ndla/core';
+import { uuid } from '@ndla/util';
+import TreeStructure, { TreeStructureProps } from './TreeStructure';
+import { defaultParameters } from '../../../../stories/defaults';
+import { flattenFolders } from './helperFunctions';
+import { FolderInput } from '../MyNdla';
 
-type TreeStructureType = 'navigation' | 'picker';
+const MY_FOLDERS_ID = 'folders';
 
-const Container = styled.div<{ type?: 'navigation' | 'picker' }>`
+const Container = styled.div`
   display: flex;
   margin-top: 40px;
   max-width: 600px;
-  max-height: ${({ type }) => type !== 'navigation' && '250px'};
+  &[data-type='picker'] {
+    height: 250px;
+  }
 `;
 
 const StyledFolderInput = styled(FolderInput)`
@@ -30,13 +34,11 @@ const StyledFolderInput = styled(FolderInput)`
   &:focus-within {
     border-color: ${colors.brand.light};
   }
-  // Not good practice, but necessary to give error message same padding as caused by border.
+  /* Not good practice, but necessary to give error message same padding as caused by border. */
   & + span {
     padding: 0 ${spacing.xsmall};
   }
 `;
-
-export const MY_FOLDERS_ID = 'folders';
 
 const targetResource: TreeStructureProps['targetResource'] = {
   id: 'test-resource',
@@ -47,7 +49,7 @@ const targetResource: TreeStructureProps['targetResource'] = {
   created: '',
 };
 
-export const STRUCTURE_EXAMPLE: IFolder[] = [
+const STRUCTURE_EXAMPLE: IFolder[] = [
   {
     id: '1',
     name: 'Mine favoritter',
@@ -116,7 +118,7 @@ export const STRUCTURE_EXAMPLE: IFolder[] = [
   },
 ];
 
-export const FOLDER_TREE_STRUCTURE: IFolder[] = [
+const FOLDER_TREE_STRUCTURE: IFolder[] = [
   {
     id: MY_FOLDERS_ID,
     name: 'Mine mapper',
@@ -129,6 +131,64 @@ export const FOLDER_TREE_STRUCTURE: IFolder[] = [
   },
 ];
 
+export default {
+  title: 'Components/TreeStructure',
+  tags: ['autodocs'],
+  component: TreeStructure,
+  parameters: {
+    inlineStories: true,
+    ...defaultParameters,
+  },
+  args: {
+    defaultOpenFolders: [MY_FOLDERS_ID],
+    targetResource: targetResource,
+    label: 'Velg mappe',
+    maxLevel: 5,
+    type: 'picker',
+    // eslint-disable-next-line no-console
+    onSelectFolder: console.log,
+  },
+  argTypes: {
+    folders: { control: false },
+  },
+} as Meta<typeof TreeStructure>;
+
+export const Default: StoryFn<typeof TreeStructure> = ({ ...args }) => {
+  const [structure, setStructure] = useState<IFolder[]>(
+    args.type === 'picker' ? FOLDER_TREE_STRUCTURE : STRUCTURE_EXAMPLE,
+  );
+
+  useEffect(() => {
+    setStructure(args.type === 'picker' ? FOLDER_TREE_STRUCTURE : STRUCTURE_EXAMPLE);
+  }, [args.type]);
+
+  return (
+    <Container data-type={args.type}>
+      <TreeStructure
+        {...args}
+        folders={structure}
+        newFolderInput={({ parentId, onClose, onCreate }) => (
+          <NewFolder
+            structure={structure}
+            setStructure={setStructure}
+            parentId={parentId}
+            onClose={onClose}
+            onCreate={onCreate}
+          />
+        )}
+      />
+    </Container>
+  );
+};
+
+interface NewFolderProps {
+  parentId: string;
+  structure: IFolder[];
+  setStructure: Dispatch<SetStateAction<IFolder[]>>;
+  onClose?: () => void;
+  onCreate?: (folder: IFolder, parentId: string) => void;
+}
+
 const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; name: string }[]): IFolder => ({
   id,
   name,
@@ -139,87 +199,6 @@ const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; 
   created: '2023-03-03T08:40:23.444Z',
   updated: '2023-03-03T08:40:23.444Z',
 });
-
-export const TreeStructureExampleComponent = ({
-  structure: initalStructure,
-  label,
-  type,
-  onSelectFolder,
-  openOnFolderClick,
-  defaultOpenFolders,
-  targetResource,
-  onNewFolder,
-}: {
-  structure: IFolder[];
-  label?: string;
-  type: TreeStructureType;
-  onSelectFolder?: (id: string) => void;
-  openOnFolderClick: boolean;
-  defaultOpenFolders?: string[];
-  targetResource?: TreeStructureProps['targetResource'];
-  onNewFolder?: boolean;
-}) => {
-  const [structure, setStructure] = useState<IFolder[]>(initalStructure);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 2000);
-  }, []);
-
-  return (
-    <Container type={type}>
-      <TreeStructure
-        targetResource={targetResource}
-        onSelectFolder={onSelectFolder}
-        label={label}
-        type={type}
-        defaultOpenFolders={defaultOpenFolders}
-        newFolderInput={({ parentId, onClose, onCreate }) => (
-          <NewFolder
-            structure={structure}
-            setStructure={setStructure}
-            parentId={parentId}
-            onClose={onClose}
-            onCreate={onCreate}
-          />
-        )}
-        folders={structure}
-        loading={loading}
-      />
-    </Container>
-  );
-};
-
-const TreeStructureExample = () => (
-  <div>
-    <h1>Trestruktur velger</h1>
-    <TreeStructureExampleComponent
-      label="Velg mappe"
-      openOnFolderClick={false}
-      onSelectFolder={(id: string) => {}}
-      structure={FOLDER_TREE_STRUCTURE}
-      defaultOpenFolders={[MY_FOLDERS_ID]}
-      targetResource={targetResource}
-      onNewFolder
-      type="picker"
-    />
-    <h1>Trestruktur navigasjon</h1>
-    <TreeStructureExampleComponent
-      openOnFolderClick
-      type="navigation"
-      defaultOpenFolders={[MY_FOLDERS_ID]}
-      structure={STRUCTURE_EXAMPLE}
-    />
-  </div>
-);
-
-interface NewFolderProps {
-  parentId: string;
-  structure: IFolder[];
-  setStructure: Dispatch<SetStateAction<IFolder[]>>;
-  onClose?: () => void;
-  onCreate?: (folder: IFolder, parentId: string) => void;
-}
 
 const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: NewFolderProps) => {
   const [name, setName] = useState('');
@@ -290,5 +269,3 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
     />
   );
 };
-
-export default TreeStructureExample;

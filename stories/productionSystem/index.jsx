@@ -14,7 +14,6 @@ import { StoryIntro, StoryBody } from '../wrappers';
 import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
 import MultiSelectDropdownExample from './MultiSelectDropdownExample';
-import FileListEditorExample from './FileListEditorExample';
 
 storiesOf('Other/Production system', module)
   .add('Form elements', () => (
@@ -34,18 +33,6 @@ storiesOf('Other/Production system', module)
       </StoryIntro>
       <StoryBody>
         <MultiSelectDropdownExample />
-      </StoryBody>
-    </div>
-  ))
-  .add('FileListEditor', () => (
-    <div>
-      <StoryIntro title="Editor for redigering av fillister" />
-      <StoryBody>
-        <FileListEditorExample />
-      </StoryBody>
-      <StoryBody>
-        <h1>Med markering av pdf-filer:</h1>
-        <FileListEditorExample withCheckboxes />
       </StoryBody>
     </div>
   ))

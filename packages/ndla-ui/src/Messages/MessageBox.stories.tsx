@@ -29,7 +29,7 @@ export const Default: StoryFn<typeof MessageBox> = ({ ...args }) => {
   const { t } = useTranslation();
   return (
     <MessageBox {...args}>
-      {<InformationOutline />}
+      <InformationOutline />
       {t('messageBoxInfo.noContent')}
     </MessageBox>
   );
@@ -55,7 +55,7 @@ export const WithLinks: StoryFn<typeof MessageBox> = () => {
         { text: 'link 3', href: '#' },
       ]}
     >
-      {<InformationOutline />}
+      <InformationOutline />
       {t('messageBoxInfo.newVersion')}
     </MessageBox>
   );
@@ -65,7 +65,7 @@ export const Ghost: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox type="ghost">
-      {<HumanMaleBoard />}
+      <HumanMaleBoard />
       {t('messageBoxInfo.feide')}
     </MessageBox>
   );
@@ -75,7 +75,7 @@ export const Danger: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox type="danger">
-      {<WarningOutline />}
+      <WarningOutline />
       {t('messageBoxInfo.feide')}
     </MessageBox>
   );
@@ -85,7 +85,7 @@ export const WithCustomIcon: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox type="danger">
-      {<Alarm />}
+      <Alarm />
       {t('messageBoxInfo.feide')}
     </MessageBox>
   );

@@ -62,12 +62,11 @@ const NotionDialogContent = styled.div`
   flex-direction: column;
 `;
 
-const ContentPaddingMargin = css`
-  margin-bottom: ${spacing.normal};
-`;
-
 const ContentPadding = styled.div`
   padding: ${spacing.normal};
+  &[data-margin-bottom] {
+    margin-bottom: ${spacing.normal};
+  }
 `;
 
 const notionContentCss = css`
@@ -103,10 +102,6 @@ const notionContentCss = css`
   }
 `;
 
-const NotionHeaderMargin = css`
-  margin-bottom: ${spacing.large};
-`;
-
 const NotionHeader = styled.div`
   display: flex;
   align-items: center;
@@ -125,6 +120,9 @@ const NotionHeader = styled.div`
     border-left: 1px solid ${colors.brand.greyLight};
     ${fonts.sizes('20px', 1.2)};
     font-weight: ${fonts.weight.normal};
+  }
+  &[data-margin-bottom] {
+    margin-bottom: ${spacing.large};
   }
 `;
 
@@ -193,8 +191,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
 
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
-        <ContentPadding css={conceptType === 'gloss' ? ContentPaddingMargin : ''}>
-          <NotionHeader css={conceptType === 'gloss' ? NotionHeaderMargin : ''}>
+        <ContentPadding data-margin-bottom={conceptType === 'gloss'}>
+          <NotionHeader data-margin-bottom={conceptType === 'gloss'}>
             <h1>
               {title.title} {<small>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>

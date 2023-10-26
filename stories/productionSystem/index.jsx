@@ -19,7 +19,6 @@ import HowtoExamples from './HowtoExamples';
 import MultiSelectDropdownExample from './MultiSelectDropdownExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
-import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 import CodeBlockEditorExample from './CodeBlockEditorExample';
 
 storiesOf('Other/Production system', module)
@@ -96,14 +95,6 @@ storiesOf('Other/Production system', module)
       <StoryBody>
         <HowtoExamples />
       </StoryBody>
-    </div>
-  ))
-  .add('Ndla movie editor', () => (
-    <div>
-      <StoryIntro title="Redigering av NDLA film forside" />
-      <Center>
-        <NdlaFilmEditorExample />
-      </Center>
     </div>
   ))
   .add('Code editor', () => (

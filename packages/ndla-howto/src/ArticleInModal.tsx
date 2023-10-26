@@ -3,10 +3,10 @@ import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal
 import { InformationOutline } from '@ndla/icons/common';
 
 import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
-import { stories } from './StaticInfoComponents';
+import { StoryType, stories } from './StaticInfoComponents';
 
 interface ModalContentProps {
-  pageId: string;
+  pageId: StoryType;
 }
 
 const headingId = 'popupModalHeader';
@@ -70,7 +70,7 @@ const ArticleInModal = ({ pageId, activateButton }: Props) => (
   <Modal aria-labelledby={headingId}>
     <ModalTrigger>{activateButton}</ModalTrigger>
     <ModalContent>
-      <Content pageId={pageId} />
+      <Content pageId={pageId as StoryType} />
     </ModalContent>
   </Modal>
 );

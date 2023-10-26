@@ -11,27 +11,15 @@
 import { storiesOf } from '@storybook/react';
 import { StoryIntro, StoryBody } from '../wrappers';
 
-import HowtoExamples from './HowtoExamples';
 import MultiSelectDropdownExample from './MultiSelectDropdownExample';
 
-storiesOf('Other/Production system', module)
-  .add('Dropdown with multiselect', () => (
-    <div>
-      <StoryIntro title="Dropdown with multiselect">
-        <p>Tekst kommer</p>
-      </StoryIntro>
-      <StoryBody>
-        <MultiSelectDropdownExample />
-      </StoryBody>
-    </div>
-  ))
-  .add('How-to', () => (
-    <div>
-      <StoryIntro title="Veiledningstekster">
-        <p>Midlertidige og statiske veiledningstekster</p>
-      </StoryIntro>
-      <StoryBody>
-        <HowtoExamples />
-      </StoryBody>
-    </div>
-  ));
+storiesOf('Other/Production system', module).add('Dropdown with multiselect', () => (
+  <div>
+    <StoryIntro title="Dropdown with multiselect">
+      <p>Tekst kommer</p>
+    </StoryIntro>
+    <StoryBody>
+      <MultiSelectDropdownExample />
+    </StoryBody>
+  </div>
+));

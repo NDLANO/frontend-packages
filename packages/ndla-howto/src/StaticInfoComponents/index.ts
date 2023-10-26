@@ -4,7 +4,7 @@ import FactBoxExample from './components/FactBoxExample';
 import SolutionExample from './components/SolutionExample';
 import Markdown from './components/Markdown';
 
-interface Story {
+export interface Story {
   title?: string;
   lead?: string;
   imageUrl?: string;
@@ -21,7 +21,42 @@ type ComponentBody = Body<'component', ComponentType>;
 type TextBody = Body<'text', string>;
 type LinkBody = Body<'link', { href: string; text: string }>;
 
-export const stories: Record<string, Story> = {
+export type StoryType =
+  | 'Paragraph'
+  | 'FactAside'
+  | 'Table'
+  | 'FramedContent'
+  | 'Details'
+  | 'Blueprint'
+  | 'Images'
+  | 'Videos'
+  | 'Audios'
+  | 'Podcasts'
+  | 'H5P'
+  | 'ResourceFromLink'
+  | 'File'
+  | 'RelatedArticle'
+  | 'userAgreements'
+  | 'userLicense'
+  | 'MetaKeyword'
+  | 'MetaDescription'
+  | 'MetaImage'
+  | 'VisualElement'
+  | 'TaxonomyContentTypes'
+  | 'TaxonomySubjectConnections'
+  | 'TaxonomyTopicConnections'
+  | 'TaxonomySubjectFilters'
+  | 'Markdown'
+  | 'CodeBlock'
+  | 'Concept'
+  | 'ConceptList'
+  | 'BlogPost'
+  | 'status'
+  | 'ContactBlock'
+  | 'Grid'
+  | 'KeyFigure';
+
+export const stories: Record<StoryType, Story> = {
   Paragraph: {
     title: 'Paragraf',
     lead: 'Dette lager en ny seksjon i teksten. Det skiller seg fra et hard linjeskrift..',

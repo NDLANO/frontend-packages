@@ -10,5 +10,3 @@ import '@fontsource/source-code-pro/700.css';
 import '@fontsource/source-serif-pro/index.css';
 import '@fontsource/source-serif-pro/400-italic.css';
 import '@fontsource/source-serif-pro/700.css';
-
-require('./productionSystem');

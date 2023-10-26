@@ -7,11 +7,10 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, fonts } from '@ndla/core';
+import { fonts } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
 
 const StyledDD = styled.dd`
-  color: ${colors.text.light};
   font-weight: ${fonts.weight.normal};
   ${fonts.sizes('18px', '29px')};
 `;

@@ -14,6 +14,15 @@ addons.setConfig({
   showPanel: false,
   sidebar: {
     showRoots: true,
-    collapsedRoots: ['base-styles', 'components', 'patterns', 'other', 'licenses', 'my-ndla', 'production-system'],
+    collapsedRoots: [
+      'base-styles',
+      'components',
+      'patterns',
+      'other',
+      'licenses',
+      'my-ndla',
+      'production-system',
+      'forms',
+    ],
   },
 });

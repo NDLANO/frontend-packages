@@ -28,7 +28,8 @@ export default {
 export const Default: StoryFn<typeof MessageBox> = ({ ...args }) => {
   const { t } = useTranslation();
   return (
-    <MessageBox icon={<InformationOutline />} {...args}>
+    <MessageBox {...args}>
+      {<InformationOutline />}
       {t('messageBoxInfo.noContent')}
     </MessageBox>
   );
@@ -36,20 +37,25 @@ export const Default: StoryFn<typeof MessageBox> = ({ ...args }) => {
 
 export const WithoutCloseButton: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
-  return <MessageBox icon={<InformationOutline />}>{t('messageBoxInfo.subjectOutdated')}</MessageBox>;
+  return (
+    <MessageBox>
+      <InformationOutline />
+      {t('messageBoxInfo.subjectOutdated')}
+    </MessageBox>
+  );
 };
 
 export const WithLinks: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox
-      icon={<InformationOutline />}
       links={[
         { text: 'link 1', href: '#' },
         { text: 'link 2', href: '#' },
         { text: 'link 3', href: '#' },
       ]}
     >
+      {<InformationOutline />}
       {t('messageBoxInfo.newVersion')}
     </MessageBox>
   );
@@ -58,7 +64,8 @@ export const WithLinks: StoryFn<typeof MessageBox> = () => {
 export const Ghost: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
-    <MessageBox type="ghost" icon={<HumanMaleBoard />}>
+    <MessageBox type="ghost">
+      {<HumanMaleBoard />}
       {t('messageBoxInfo.feide')}
     </MessageBox>
   );
@@ -67,7 +74,8 @@ export const Ghost: StoryFn<typeof MessageBox> = () => {
 export const Danger: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
-    <MessageBox type="danger" icon={<WarningOutline />}>
+    <MessageBox type="danger">
+      {<WarningOutline />}
       {t('messageBoxInfo.feide')}
     </MessageBox>
   );
@@ -76,7 +84,8 @@ export const Danger: StoryFn<typeof MessageBox> = () => {
 export const WithCustomIcon: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
-    <MessageBox type="danger" icon={<Alarm />}>
+    <MessageBox type="danger">
+      {<Alarm />}
       {t('messageBoxInfo.feide')}
     </MessageBox>
   );
@@ -84,9 +93,5 @@ export const WithCustomIcon: StoryFn<typeof MessageBox> = () => {
 
 export const WithoutIcon: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
-  return (
-    <MessageBox type="danger" noIcon>
-      {t('messageBoxInfo.feide')}
-    </MessageBox>
-  );
+  return <MessageBox type="danger">{t('messageBoxInfo.feide')}</MessageBox>;
 };

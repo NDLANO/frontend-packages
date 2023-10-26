@@ -26,8 +26,6 @@ interface MessageBoxProps {
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
-  icon?: ReactNode;
-  noIcon?: boolean;
 }
 
 const MessageBoxWrapper = styled.div`
@@ -59,21 +57,12 @@ const InfoWrapper = styled.div`
   padding: ${spacing.small};
 `;
 
-const TextWrapper = styled.div`
-  & p {
-    margin: 0;
-  }
-`;
-
-const IconWrapper = styled.div`
+const ChildrenWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
-  &[data-noIcon='false'] {
-    padding-right: ${spacing.small};
-  }
+  gap: ${spacing.small};
   svg {
-    width: 24px;
-    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
   }
 `;
 
@@ -82,7 +71,6 @@ const LinkWrapper = styled.div`
   flex-wrap: wrap;
   gap: ${spacing.normal};
   padding-top: ${spacing.nsmall};
-
   svg {
     flex-shrink: 0;
   }
@@ -100,24 +88,12 @@ const StyledClosebutton = styled(CloseButton)`
   padding: 0;
 `;
 
-const Icon = ({ type, icon, noIcon }: MessageBoxProps) => {
-  if (icon) {
-    return icon;
-  }
-  if (noIcon || (type && noIcon)) {
-    return;
-  }
-};
-
-export const MessageBox = ({ type, children = '', links, showCloseButton, onClose, icon, noIcon }: MessageBoxProps) => {
+export const MessageBox = ({ type, children, links, showCloseButton, onClose }: MessageBoxProps) => {
   return (
     <MessageBoxWrapper data-type={type}>
       <InfoWrapper>
-        <IconWrapper data-noIcon={!!noIcon}>
-          <Icon type={type} icon={icon} noIcon={noIcon} />
-        </IconWrapper>
         <div>
-          <TextWrapper>{children}</TextWrapper>
+          <ChildrenWrapper>{children}</ChildrenWrapper>
           {links && (
             <LinkWrapper>
               {links.map((x) => (

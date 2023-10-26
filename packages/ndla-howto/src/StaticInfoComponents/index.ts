@@ -23,9 +23,9 @@ type LinkBody = Body<'link', { href: string; text: string }>;
 
 export type StoryType =
   | 'Paragraph'
-  | 'FactASide'
+  | 'FactAside'
   | 'Table'
-  | 'BodyBox'
+  | 'FramedContent'
   | 'Details'
   | 'Blueprint'
   | 'Images'

@@ -82,7 +82,7 @@ const LinkBlock = ({ title, language, date, url, path }: Props) => {
   const formattedDate = useMemo(() => {
     if (!date) return null;
     const locale = language === 'nb' ? nb : language === 'nn' ? nn : enGB;
-    return format(new Date(date), 'dd. LLLL. yyyy', { locale });
+    return format(new Date(date), 'dd. LLLL yyyy', { locale });
   }, [date, language]);
 
   return (

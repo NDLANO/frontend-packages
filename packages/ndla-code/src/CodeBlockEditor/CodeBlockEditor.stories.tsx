@@ -6,6 +6,7 @@
  *
  */
 
+//@ts-ignore
 import { highlight, languages } from 'prismjs';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-markup';
@@ -33,27 +34,35 @@ import 'prismjs/components/prism-sql';
 import 'prismjs/components/prism-powershell';
 import 'prismjs/components/prism-vhdl';
 import 'prismjs/components/prism-bash';
-import { CodeBlockEditor } from '@ndla/code';
+import { Meta, StoryObj } from '@storybook/react';
+import CodeBlockEditor from './CodeBlockEditor';
+import { defaultParameters } from '../../../../stories/defaults';
 
-const highlightCode = (code, language) => {
+const highlightCode = (code: string, language: string) => {
   const highlighted = highlight(code, languages[language], language);
   return highlighted;
 };
 
-export const CodeBlockEditorExample = () => {
-  const handleSave = (codeContent) => {
-    console.log('save codeContent: ', codeContent); // eslint-disable-line no-console
-  };
-  const handleAbort = () => {
-    console.log('aborted'); // eslint-disable-line no-console
-  };
+export default {
+  title: 'Production System/CodeBlockEditor',
+  tags: ['autodocs'],
+  component: CodeBlockEditor,
+  parameters: {
+    inlineStories: true,
+    ...defaultParameters,
+  },
+  args: {
+    content: {
+      code: 'const foo = "bar";',
+      title: 'Javascript',
+      format: 'js',
+    },
+    // eslint-disable-next-line no-console
+    onSave: console.log,
+    // eslint-disable-next-line no-console
+    onAbort: console.log,
+    highlight: highlightCode,
+  },
+} as Meta<typeof CodeBlockEditor>;
 
-  const demoContent = {
-    code: 'const foo = "bar";',
-    title: 'Javascript',
-    format: 'js',
-  };
-
-  return <CodeBlockEditor onSave={handleSave} onAbort={handleAbort} content={demoContent} highlight={highlightCode} />;
-};
-export default CodeBlockEditorExample;
+export const Default: StoryObj<typeof CodeBlockEditor> = {};

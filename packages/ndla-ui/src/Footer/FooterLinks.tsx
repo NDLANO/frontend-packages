@@ -26,15 +26,11 @@ const StyledLinksWrapper = styled.div`
 `;
 
 type FooterLinksProps = {
-  links: [
-    {
-      to: string;
-      text: string;
-      icon: ReactNode;
-      facebook: string;
-      twitter: string;
-    },
-  ];
+  links: {
+    to: string;
+    text: string;
+    icon: ReactNode;
+  }[];
 };
 
 const commonLinks = [

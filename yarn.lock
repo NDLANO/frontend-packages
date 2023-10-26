@@ -9833,11 +9833,6 @@ lazy-universal-dotenv@^4.0.0:
     dotenv "^16.0.0"
     dotenv-expand "^10.0.0"
 
-lazysizes@^5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-5.3.2.tgz#27f974c26f5fcc33e7db765c0f4930488c8a2984"
-  integrity sha512-22UzWP+Vedi/sMeOr8O7FWimRVtiNJV2HCa+V8+peZOw6QbswN9k58VUhd7i6iK5bw5QkYrF01LJbeJe0PV8jg==
-
 lerna@^7.1.4:
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/lerna/-/lerna-7.1.4.tgz#0778732f4c77ead71a20ba1e9b0a77edc75cb383"

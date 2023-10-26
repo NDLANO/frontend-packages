@@ -1,18 +1,29 @@
-import { storiesOf } from '@storybook/react';
-import { Logo, PageContainer } from '@ndla/ui';
+/**
+ * Copyright (c) 2023-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { Meta, StoryFn } from '@storybook/react';
+import { Logo, OneColumn, PageContainer } from '@ndla/ui';
 import SafeLink from '@ndla/safelink';
 import { StoryBody } from './wrappers';
-import { Center } from './helpers';
 
-const NDLAUrls = () => (
+export default {
+  title: 'NDLA urls',
+} as Meta;
+
+export const NDLAUrls: StoryFn = () => (
   <PageContainer>
     <div style={{ marginTop: '30px' }}>
-      <Center>
+      <OneColumn>
         <center>
           <Logo label="Nasjonal digital læringsarena" />
           <h1>Lenker i NDLA</h1>
         </center>
-      </Center>
+      </OneColumn>
       <StoryBody>
         <h2>NDLA.no</h2>
         <p>
@@ -57,4 +68,4 @@ const NDLAUrls = () => (
   </PageContainer>
 );
 
-storiesOf('NDLA lenker', module).add('NDLA lenker', () => <NDLAUrls />);
+NDLAUrls.storyName = 'NDLA urls';

@@ -516,6 +516,11 @@ const messages = {
   subject: {
     associatedTopics: 'Associated topics',
   },
+  subjectFrontPage: {
+    buildsOn: 'Builds on',
+    connectedTo: 'Common programme subject with',
+    leadsTo: 'Leads to',
+  },
   accordion: {
     closeAll: 'Close all',
     openAll: 'Open all',

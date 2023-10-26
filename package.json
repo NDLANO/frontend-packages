@@ -22,7 +22,7 @@
     "watch:tsc": "nx watch --all -- nx prepublish \\$NX_PROJECT_NAME",
     "watch": "concurrently 'yarn watch:src' 'yarn watch:tsc'",
     "start": "yarn build && concurrently -k -p \"[{name}]\" -n \"Babel,Storybook,Typescript\" -c \"yellow.bold,magenta.bold,blue.bold\" \"yarn watch\" \"yarn start-storybook\" \"yarn type-check-watch\"",
-    "start-storybook": "storybook dev -p 6006",
+    "start-storybook": "storybook dev -p 6006 --no-open",
     "prebuild-storybook": "yarn bootstrap:ci",
     "build-storybook": "cross-env NODE_ENV=production storybook build",
     "serve-storybook": "cross-env NODE_ENV=production serve -l 5000 ./storybook-static",

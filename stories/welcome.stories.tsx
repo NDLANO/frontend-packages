@@ -28,7 +28,7 @@ export const Welcome: StoryFn = () => (
         <p>
           En del lenker, knapper og lignende funksjonalitet har foreløpig ikke reelt innhold. De er ment som eksempler
           til videre utvikling oppimot APIer og reelt innhold på nye ndla.no. Etter hvert som innholdselementer utvikles
-          videre med reell funksjonalitet, kan de tas inn i designmanualen og erstatte de gamle elementene.{' '}
+          videre med reell funksjonalitet, kan de tas inn i designmanualen og erstatte de gamle elementene.
         </p>
         <p>
           Den er ikke en brukermanual for innholdsproduksjon. Råd og retningslinjer for produksjon av innhold ligger i{' '}
@@ -45,7 +45,7 @@ export const Welcome: StoryFn = () => (
           Designmanual er for produksjon av teknisk innhold. Den består av hovedsakelig to deler: et CSS-bibliotek som
           styler de mest brukte HTML-elementene, og et komponent-bibliotek for{' '}
           <a href="https://facebook.github.io/react/">React</a>. Den er også publisert på{' '}
-          <a href="https://www.npmjs.com/package/ndla-ui">npm</a>.
+          <a href="https://www.npmjs.com/package/@ndla/ui">npm</a>.
         </p>
         <h3>Hente inn prosjekt direkte via npm</h3>
         <code>npm install @ndla/ui --save</code>
@@ -54,7 +54,7 @@ export const Welcome: StoryFn = () => (
         <h3>Fonter</h3>
         <p>
           Vi henter fonter ved hjelp av <a href="https://github.com/fontsource/fontsource">Fontsource</a>. Installer
-          fontene du trenger, og importer deretter fontene du trenger i inngangspunktet til appen.{' '}
+          fontene du trenger, og importer deretter fontene du trenger i inngangspunktet til appen.
         </p>
         <p>Følgende fonter tas i bruk: </p>
         <code>import '@fontsource/source-sans-pro/index.css';</code>

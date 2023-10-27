@@ -62,10 +62,6 @@ const NotionDialogContent = styled.div`
   flex-direction: column;
 `;
 
-const ContentPaddingMargin = css`
-  margin-bottom: ${spacing.normal};
-`;
-
 const ContentPadding = styled.div`
   padding: ${spacing.normal};
 `;
@@ -101,10 +97,6 @@ const notionContentCss = css`
     width: 100%;
     overflow: auto;
   }
-`;
-
-const NotionHeaderMargin = css`
-  margin-bottom: ${spacing.large};
 `;
 
 const NotionHeader = styled.div`
@@ -193,8 +185,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
 
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
-        <ContentPadding css={conceptType === 'gloss' ? ContentPaddingMargin : ''}>
-          <NotionHeader css={conceptType === 'gloss' ? NotionHeaderMargin : ''}>
+        <ContentPadding>
+          <NotionHeader>
             <h1>
               {title.title} {<small>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>

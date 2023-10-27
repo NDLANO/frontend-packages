@@ -64,7 +64,7 @@ const NotionDialogContent = styled.div`
 
 const ContentPadding = styled.div`
   padding: ${spacing.normal};
-  &[data-margin-bottom] {
+  &[data-margin-bottom='true'] {
     margin-bottom: ${spacing.normal};
   }
 `;
@@ -121,7 +121,7 @@ const NotionHeader = styled.div`
     ${fonts.sizes('20px', 1.2)};
     font-weight: ${fonts.weight.normal};
   }
-  &[data-margin-bottom] {
+  &[data-margin-bottom='true'] {
     margin-bottom: ${spacing.large};
   }
 `;

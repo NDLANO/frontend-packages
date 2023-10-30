@@ -184,21 +184,21 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
     ref,
   ) => {
     const { t } = useTranslation();
-    const isGloss = conceptType === 'gloss';
+    const isConcept = conceptType === 'concept';
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <ContentPadding>
-          <NotionHeader data-show-separator={!isGloss}>
+          <NotionHeader data-show-separator={isConcept}>
             <h1>
-              {!isGloss && title.title}
-              {<small data-show-separator={!isGloss}>{t(`searchPage.resultType.${conceptType}`)}</small>}
+              {isConcept && title.title}
+              {<small data-show-separator={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
             <ButtonWrapper>
               {headerButtons}
               {closeButton}
             </ButtonWrapper>
           </NotionHeader>
-          {!isGloss ? (
+          {isConcept ? (
             <>
               <StyledNotionDialogContent>
                 {visualElement?.resource === 'image' ? (

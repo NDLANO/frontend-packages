@@ -14,14 +14,17 @@ import { PluginType } from '../types';
 export const keyFigureEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as KeyFigureMetaData;
-  const { title, subtitle } = data.embedData;
+  const { title, subtitle, alt } = data.embedData;
   return (
     <KeyFigure
       title={title}
       subtitle={subtitle}
       image={
-        data.status === 'success'
-          ? { src: data.data.metaImage?.image.imageUrl, alt: data.data.metaImage?.alttext.alttext }
+        data.status === 'success' && data.data.metaImage
+          ? {
+              src: data.data.metaImage.image.imageUrl,
+              alt: alt === undefined ? '' : alt === '' ? data.data.metaImage.alttext.alttext : alt,
+            }
           : undefined
       }
       lang={opts.articleLanguage}

@@ -32,7 +32,7 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: ['Velkommen', 'NDLA lenker', 'Base styles', 'Components', 'Patterns', 'Other'],
+        order: ['Welcome', 'NDLA urls', 'Base styles', 'Components', 'Patterns', 'Other'],
       },
     },
   },

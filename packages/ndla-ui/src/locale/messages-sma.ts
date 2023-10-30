@@ -516,6 +516,11 @@ const messages = {
   subject: {
     associatedTopics: 'Teemah mah govlehtuvvieh',
   },
+  subjectFrontPage: {
+    buildsOn: 'Bigkie bæjjese',
+    connectedTo: 'Tjåenghkies programmefaage aalkoealmetjidie',
+    leadsTo: 'Goh ryökneme',
+  },
   accordion: {
     closeAll: 'Dahph gaajhkh',
     openAll: 'Rïhpesth gaajhkh',
@@ -1276,8 +1281,11 @@ const messages = {
     },
     myProfile: {
       title: 'Mov Profijle',
-      disclaimerTitle: 'Gusnie guvvie jïh nomme åtnasuvvieh?',
-      disclaimerText: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+      disclaimerTitle: { employee: 'Gusnie guvvie jïh nomme åtnasuvvieh?', student: 'Gusnie mov nomme' },
+      disclaimerText: {
+        employee: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+        student: 'Dov nomme ajve tjaalasåvva dutnjien gosse sïjse loggedh',
+      },
       preferenceTitle: 'Sjïehtedh jis edtja nommem vuesiehtidh gosse maabpam juekedh',
       preferenceText:
         'Daesnie jïjtje veeljh mejtie sïjhth dov nommem vuesiehtidh gosse maabpam juekedh . Daate veeljeme lea gaajhkine dov maabpojne, jïh maahta dam mænngan jarkelidh. Jis jeatjahdahtah , dov nomme sæjhta våajnoes årrodh gaajhkine dov joekedamme maabpojne.',
@@ -1342,10 +1350,10 @@ const messages = {
     help: 'Hjelp',
   },
   programmes: {
-    header: 'Se våre utdanningsprogram',
-    description: 'Vi ønsker å tilby de beste læringsressursene innen tradisjonelle og nye medier.',
-    grades: 'Trinn',
-    accordionHeader: 'Alle utdanningsprogram',
+    header: 'Maam sïjhth daan biejjien lïeredh ?',
+    description: 'Veeljh ööhpehtimmieprogrammem juktie dov faagide vuartasjidh',
+    grades: 'Daltesasse',
+    accordionHeader: 'Gaajhkh ööhpehtimmieprogrammh',
   },
   embed: {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',

@@ -1,4 +1,14 @@
-import { Meta, StoryFn } from '@storybook/react';
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import styled from '@emotion/styled';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { spacing } from '@ndla/core';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
 import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
@@ -9,7 +19,7 @@ import { defaultParameters } from '../../../../../stories/defaults';
 import Folder from './Folder';
 
 export default {
-  title: 'Components/Folder',
+  title: 'My NDLA/Folder',
   component: Folder,
   tags: ['autodocs'],
   parameters: {
@@ -55,6 +65,23 @@ export default {
   },
 } as Meta<typeof Folder>;
 
-export const FolderStory: StoryFn<typeof Folder> = (args) => {
-  return <Folder {...args} />;
+export const FolderStory: StoryObj<typeof Folder> = {};
+
+export const WithoutMenu: StoryObj<typeof Folder> = {
+  args: { menu: undefined },
+};
+
+const BlockWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+`;
+
+export const BlockFolder: StoryFn<typeof Folder> = (args) => {
+  return (
+    <BlockWrapper>
+      <Folder {...args} type="block" />
+      <Folder {...args} type="block" />
+      <Folder {...args} type="block" />
+    </BlockWrapper>
+  );
 };

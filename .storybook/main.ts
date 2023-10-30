@@ -9,7 +9,7 @@
 import { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
-  stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx)', '../stories/*/*.stories.tsx'],
+  stories: ['../packages/**/*.stories.@(tsx|mdx|jsx)', '../stories/**/*.stories.@(tsx|mdx)'],
   staticDirs: ['static'],
   addons: [
     '@storybook/addon-a11y',
@@ -34,10 +34,6 @@ const config: StorybookConfig = {
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
-  },
-  features: {
-    // This can be removed once we've stopped using storiesOf.
-    storyStoreV7: false,
   },
   babel: async (options) => {
     return {

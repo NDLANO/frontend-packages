@@ -516,6 +516,11 @@ const messages = {
   subject: {
     associatedTopics: 'Gullevaš fáttát',
   },
+  subjectFrontPage: {
+    buildsOn: 'Duddjo dása',
+    connectedTo: 'Oktasaš prográmmafáddán lea',
+    leadsTo: 'Dát doalvu',
+  },
   accordion: {
     closeAll: 'Govčča buot',
     openAll: 'Raba buot',
@@ -1271,8 +1276,11 @@ const messages = {
     },
     myProfile: {
       title: 'Mu profiila',
-      disclaimerTitle: 'Gos geavahit mu gova ja mu nama?',
-      disclaimerText: 'Govva ja namma čájehuvvojit go searvat digaštallamii arenain.',
+      disclaimerTitle: { employee: 'Gos geavahit mu gova ja mu nama?', student: 'Gos geavahit mu nama?' },
+      disclaimerText: {
+        employee: 'Govva ja namma čájehuvvojit go searvat digaštallamii arenain.',
+        student: 'Du namma čájehuvvo dušše go leat sisačálihuvvon',
+      },
       preferenceTitle: 'Vállje jos namma čájehuvvo máhpa juohkkedettiin',
       preferenceText:
         'Dás válljet jos iežat namma čájehuvvo juohkkedettiin máhpa. Dát molssaeaktu guoská buot máhpaide ja sáhttá rievdaduvvot maŋŋil. Jos rievdadat dán, de čájehuvvo du namma buot juogaduvvon máhpain.',

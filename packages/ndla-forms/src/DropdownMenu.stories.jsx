@@ -13,7 +13,31 @@ import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from '@ndla/forms
 import { Spinner } from '@ndla/icons';
 import { Search } from '@ndla/icons/common';
 import styled from '@emotion/styled';
-import { mockTypeahead } from '../../dummydata';
+import { mockTypeahead } from '../../../dummydata';
+import defaultParameters from '../../../stories/defaults';
+
+const meta = {
+  title: 'Forms/DropdownMenu',
+  component: DropdownMenu,
+  parameters: {
+    inlineStories: true,
+    ...defaultParameters,
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ padding: '100px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  render: () => <MultiSelectDropdownExample />,
+};
+
+export default meta;
+
+export const Default = {};
+
+Default.storyName = 'DropdownMenu';
 
 const StyledSpinner = styled(Spinner)`
   margin: 0;
@@ -226,5 +250,3 @@ class MultiSelectDropdownExample extends Component {
     );
   }
 }
-
-export default MultiSelectDropdownExample;

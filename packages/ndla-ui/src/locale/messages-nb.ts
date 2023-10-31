@@ -1206,7 +1206,7 @@ const messages = {
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
-    userPictureAltText: 'profil bilde',
+    userPictureAltText: 'Profil bilde',
     sharedFolder: {
       folderCopied: 'Mappen har blitt kopiert.',
       info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',

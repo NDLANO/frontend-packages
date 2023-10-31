@@ -1209,7 +1209,7 @@ const messages = {
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',
-    profilePicture: { altText: 'profile picture' },
+    userPictureAltText: 'profile picture',
     sharedFolder: {
       folderCopied: 'The folder was copied.',
       info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',

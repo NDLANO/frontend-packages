@@ -1206,6 +1206,7 @@ const messages = {
     listView: 'Oppalašlistu',
     detailView: 'Bienalaš oppalašlistu',
     shortView: 'Oanehis listu',
+    userPictureAltText: 'Profiilagova',
     sharedFolder: {
       folderCopied: 'Máŋgejuvvon máhppa.',
       info: 'Dán máhpas lea NDLA fágasisdoallu ja bargobihtát, čohkkejuvvon oahpaheaddjis.',

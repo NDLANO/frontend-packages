@@ -516,7 +516,7 @@ const messages = {
     associatedTopics: 'Tilhøyrande emne',
   },
   subjectFrontPage: {
-    buildsOn: 'Byggjer på',
+    buildsOn: 'Bygger på',
     connectedTo: 'Felles programfag saman med',
     leadsTo: 'Leier til',
   },

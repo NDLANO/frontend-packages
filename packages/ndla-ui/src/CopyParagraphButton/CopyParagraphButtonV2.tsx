@@ -44,8 +44,9 @@ interface Props {
   // What to render within the h2
   children: ReactNode;
   copyText: string;
+  lang?: string;
 }
-const CopyParagraphButtonV2 = ({ children, copyText }: Props) => {
+const CopyParagraphButtonV2 = ({ children, copyText, lang }: Props) => {
   const [hasCopied, setHasCopied] = useState(false);
   const { t } = useTranslation();
   const sanitizedTitle = useMemo(() => encodeURIComponent(copyText.replace(/ /g, '-')), [copyText]);
@@ -74,7 +75,7 @@ const CopyParagraphButtonV2 = ({ children, copyText }: Props) => {
           <Link />
         </IconButton>
       </Tooltip>
-      <h2 id={sanitizedTitle} tabIndex={-1}>
+      <h2 id={sanitizedTitle} tabIndex={-1} lang={lang}>
         {children}
       </h2>
     </ContainerDiv>

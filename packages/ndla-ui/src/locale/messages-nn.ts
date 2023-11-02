@@ -664,7 +664,7 @@ const messages = {
     editorInChief: 'Ansvarleg redaktør:',
     availabilityLink: 'Tilgjengelegheitserklæring',
     privacyLink: 'Personvernerklæring',
-    cookiesLink: 'Erklæring om informasjonskapslar',
+    cookiesLink: 'Erklæring for informasjonskapslar',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',

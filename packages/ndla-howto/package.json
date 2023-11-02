@@ -1,6 +1,6 @@
 {
   "name": "@ndla/howto",
-  "version": "4.1.7",
+  "version": "4.1.8",
   "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
     "@ndla/modal": "^5.0.6",
     "@ndla/notion": "^6.0.8",
     "@ndla/tooltip": "^5.0.6",
-    "@ndla/ui": "^47.3.1",
+    "@ndla/ui": "^47.4.0",
     "@ndla/util": "^4.0.0"
   },
   "peerDependencies": {

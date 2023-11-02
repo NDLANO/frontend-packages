@@ -23,7 +23,7 @@ export const keyFigureEmbedPlugin: PluginType = (element, _, opts) => {
         data.status === 'success' && data.data.metaImage
           ? {
               src: data.data.metaImage.image.imageUrl,
-              alt: alt === undefined ? '' : alt === '' ? data.data.metaImage.alttext.alttext : alt,
+              alt: alt === undefined ? '' : alt,
             }
           : undefined
       }

@@ -14,6 +14,24 @@ import { FooterText } from './FooterText';
 import { EditorName } from './EditorName';
 import { LanguageSelector } from '../LanguageSelector';
 
+const mockCommonLinks = [
+  {
+    to: 'https://ndla.no/about/om-ndla',
+    text: 'Om NDLA',
+    external: false,
+  },
+  {
+    to: 'https://ndla.no/about/about-ndla',
+    text: 'About NDLA',
+    external: false,
+  },
+  {
+    to: 'https://blogg.ndla.no/',
+    text: 'NDLA fagblogg',
+    external: true,
+  },
+];
+
 const mockFooterLinks = [
   {
     to: 'https://www.facebook.com/ndla.no',
@@ -84,6 +102,7 @@ export const Default: StoryObj<typeof Footer> = {};
 export const WithContentAndLinks: StoryObj<typeof Footer> = {
   args: {
     privacyLinks: privacyLinks,
+    commonLinks: mockCommonLinks,
     links: mockFooterLinks,
   },
 };
@@ -91,6 +110,7 @@ export const WithContentAndLinks: StoryObj<typeof Footer> = {
 export const WithoutContent: StoryObj<typeof Footer> = {
   args: {
     children: undefined,
+    commonLinks: mockCommonLinks,
     links: mockFooterLinks,
     privacyLinks: privacyLinks,
   },
@@ -99,6 +119,7 @@ export const WithoutContent: StoryObj<typeof Footer> = {
 export const WithLanguageSelector: StoryObj<typeof Footer> = {
   args: {
     privacyLinks: privacyLinks,
+    commonLinks: mockCommonLinks,
     links: mockFooterLinks,
     // eslint-disable-next-line no-console
     languageSelector: <LanguageSelector inverted locales={['nn', 'nb']} onSelect={console.log} />,
@@ -108,6 +129,7 @@ export const WithLanguageSelector: StoryObj<typeof Footer> = {
 export const WithAuthBlock: StoryObj<typeof Footer> = {
   args: {
     privacyLinks: privacyLinks,
+    commonLinks: mockCommonLinks,
     links: mockFooterLinks,
     // eslint-disable-next-line no-console
     languageSelector: <LanguageSelector inverted locales={['nn', 'nb']} onSelect={console.log} />,

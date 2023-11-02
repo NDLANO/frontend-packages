@@ -26,23 +26,17 @@ const StyledLinksWrapper = styled.div`
 `;
 
 type FooterLinksProps = {
-  links: {
+  commonLinks?: {
+    to: string;
+    text: string;
+    external: boolean;
+  }[];
+  links?: {
     to: string;
     text: string;
     icon: ReactNode;
   }[];
 };
-
-const commonLinks = [
-  { key: 'omNdla', url: 'https://om.ndla.no' },
-  {
-    key: 'aboutNdla',
-    url: 'https://om.ndla.no/about-ndla',
-  },
-  { key: 'blog', url: 'https://blogg.ndla.no' },
-  { key: 'tips', url: 'https://blogg.ndla.no/elever' },
-  { key: 'vacancies', url: 'https://om.ndla.no/jobb-for-ndla/' },
-];
 
 const StyledNav = styled.nav`
   display: flex;
@@ -89,33 +83,32 @@ const StyledHeaderLinks = styled.h3`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks = ({ links }: FooterLinksProps) => {
+const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
   const { t } = useTranslation();
   return (
     <>
       <StyledLinksWrapper>
         <div>
-          <StyledHeaderLinks id="otherLinks">
-            {t('footer.linksHeader')} <Launch />
-          </StyledHeaderLinks>
+          <StyledHeaderLinks id="otherLinks">{t('footer.linksHeader')}</StyledHeaderLinks>
           <StyledNav aria-labelledby="otherLinks">
-            {commonLinks.map((link) => (
-              <div key={link.url}>
+            {commonLinks?.map((link) => (
+              <div key={link.to}>
                 <StyledSafeLink
-                  key={t(`footer.ndlaLinks.${link.key}`)}
-                  aria-label={t(`footer.ndlaLinks.${link.key}`)}
-                  to={link.url}
-                  target="_blank"
+                  key={link.text}
+                  aria-label={link.text}
+                  to={link.to}
+                  target={link.external ? '_blank' : ''}
                   rel="noopener noreferrer"
                 >
-                  {t(`footer.ndlaLinks.${link.key}`)}
+                  {link.text}
+                  {link.external && <Launch />}
                 </StyledSafeLink>
               </div>
             ))}
           </StyledNav>
         </div>
         <StyledNav aria-label={t('footer.socialMedia')}>
-          {links.map((link) => (
+          {links?.map((link) => (
             <StyledSocialMediaLinkWrapper key={link.to}>
               <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
               <StyledSafeLink to={link.to}>

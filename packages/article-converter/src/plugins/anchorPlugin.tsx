@@ -7,16 +7,17 @@
  */
 
 import { attributesToProps, domToReact } from 'html-react-parser';
-import { getPossiblyRelativeUrl } from '@ndla/ui';
 import SafeLink from '@ndla/safelink';
-import { PluginType } from '../types';
+import { getPossiblyRelativeUrl } from '@ndla/ui';
+import { PluginType } from './types';
 
-export const anchorPlugin: PluginType = (node, options, { path }) => {
+export const anchorPlugin: PluginType = (node, opts, { path }) => {
   const props = attributesToProps(node.attribs);
   const href = getPossiblyRelativeUrl(props.href, path);
+
   return (
-    <SafeLink {...props} target="_blank" to={href} rel="noreferrer">
-      {domToReact(node.children, options)}
+    <SafeLink {...props} to={href}>
+      {domToReact(node.children, opts)}
     </SafeLink>
   );
 };

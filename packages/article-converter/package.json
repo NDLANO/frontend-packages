@@ -32,6 +32,7 @@
   "dependencies": {
     "@ndla/code": "^5.0.7",
     "@ndla/ui": "^47.4.0",
+    "@ndla/safelink": "^4.1.31",
     "html-react-parser": "^4.2.2",
     "lodash": "^4.17.20"
   },

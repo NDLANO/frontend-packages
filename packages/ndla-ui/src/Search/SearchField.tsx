@@ -20,7 +20,6 @@ import LoadingWrapper from './LoadingWrapper';
 const classes = new BEMHelper('c-search-field');
 
 interface StyledInputProps {
-  frontPageSearch?: boolean;
   hasFilters?: boolean;
 }
 
@@ -29,7 +28,7 @@ const StyledInput = styled.input<StyledInputProps>`
   height: 48px;
   line-height: 28px;
   border: 1px solid ${colors.brand.greyLight};
-  border-radius: ${(p) => (p.frontPageSearch ? '100px' : misc.borderRadius)};
+  border-radius: ${misc.borderRadius};
   padding-right: ${spacing.large};
   padding-left: ${spacing.normal};
   flex-grow: 1;
@@ -79,7 +78,6 @@ interface Props {
   onClick?: (event: MouseEvent<HTMLInputElement>) => void;
   loading?: boolean;
   inputRef?: RefObject<HTMLInputElement>;
-  frontPageSearch?: boolean;
 }
 
 const SearchField = ({
@@ -93,7 +91,6 @@ const SearchField = ({
   loading,
   onFilterRemove,
   inputRef,
-  frontPageSearch = false,
 }: Props) => {
   const { t } = useTranslation();
   const handleOnFilterRemove = (value: string, filterName?: string) => {
@@ -105,7 +102,6 @@ const SearchField = ({
     <div {...classes('input-wrapper')}>
       {loading && <LoadingWrapper value={value} />}
       <StyledInput
-        frontPageSearch={frontPageSearch}
         hasFilters={!!filters?.length}
         ref={inputRef}
         type="search"

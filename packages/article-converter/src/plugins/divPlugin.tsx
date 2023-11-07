@@ -8,7 +8,7 @@
 
 import partition from 'lodash/partition';
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
-import { FileListV2, RelatedArticleList, Grid, GridType, GridParallaxItem } from '@ndla/ui';
+import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem } from '@ndla/ui';
 import { PluginType } from './types';
 
 export const divPlugin: PluginType = (node, opts) => {
@@ -32,7 +32,7 @@ export const divPlugin: PluginType = (node, opts) => {
 
     return (
       <>
-        {files.length ? <FileListV2>{domToReact(files, opts)}</FileListV2> : undefined}
+        {files.length ? <FileList>{domToReact(files, opts)}</FileList> : undefined}
         {domToReact(pdfs, opts)}
       </>
     );

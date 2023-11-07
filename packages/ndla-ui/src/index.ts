@@ -54,7 +54,7 @@ export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleL
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
-export { default as FileList, File, FileListV2, FileV2, PdfFile } from './FileList';
+export { default as FileList, File, PdfFile } from './FileList';
 
 export { default as Logo } from './Logo';
 

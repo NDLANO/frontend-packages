@@ -58,7 +58,7 @@ export { default as FileList, File, FileListV2, FileV2, PdfFile } from './FileLi
 
 export { default as Logo } from './Logo';
 
-export { default as FactBox, FactBoxV2 } from './FactBox';
+export { default as FactBox } from './FactBox';
 
 export { default as Image, ImageLink, makeSrcQueryString } from './Image';
 export type { ImageCrop, ImageFocalPoint } from './Image';

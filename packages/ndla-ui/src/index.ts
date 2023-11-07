@@ -97,7 +97,6 @@ export {
   LearningPathMobileStepInfo,
   LearningPathMobileHeader,
 } from './LearningPaths';
-export { Translation, TranslationLine } from './Translation';
 
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
 

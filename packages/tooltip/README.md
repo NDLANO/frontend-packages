@@ -17,13 +17,3 @@ import Tooltip from '@ndla/tooltip';
 
 <Tooltip tooltip="Tooltip text">{children}</Tooltip>;
 ```
-
-### Popover wrapper for any element. Requires button as children for keyboard actions to work
-
-```js
-import { Popover } from '@ndla/tooltip';
-
-<Popover popover="Popover text">
-  <button>{children}</button>
-</Popover>;
-```

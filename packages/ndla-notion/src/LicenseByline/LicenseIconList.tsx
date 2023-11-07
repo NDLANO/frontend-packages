@@ -8,10 +8,10 @@
 
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import { Popover } from '@ndla/tooltip';
 import { getLicenseRightByAbbreviation } from '@ndla/licenses';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
+import LicensePopover from './LicensePopover';
 
 interface StyledListItemProps {
   horizontal?: boolean;
@@ -73,11 +73,11 @@ const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: Lic
 
   return (
     <StyledListItem horizontal={horizontal}>
-      <Popover popover={description}>
+      <LicensePopover popover={description}>
         <StyledLicenseIcon light={light} fill={color} horizontal={horizontal}>
           <LicenseIcon licenseRight={licenseRight} description={title} />
         </StyledLicenseIcon>
-      </Popover>
+      </LicensePopover>
     </StyledListItem>
   );
 };

@@ -80,7 +80,7 @@ export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter
 
 export { Footer, EditorName, FooterText } from './Footer';
 
-export { Figure, FigureExpandButton, FigureOpenDialogButton, FigureBylineExpandButton } from './Figure';
+export { Figure, FigureOpenDialogButton } from './Figure';
 export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
@@ -105,25 +105,21 @@ export { default as ContentTypeResult } from './Search/ContentTypeResult';
 
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
-export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
-
 export { default as resourceTypeColor } from './utils/resourceTypeColor';
 
 export { default as CreatedBy } from './CreatedBy';
 
-export { MessageBox, MessageBoxTag, MessageBanner } from './Messages';
+export { MessageBox, MessageBanner } from './Messages';
 
 export { ResourceBox } from './ResourceBox';
 
 export { default as AudioPlayer } from './AudioPlayer';
 
-export { NavigationBox, NavigationTopicAbout } from './Navigation';
+export { NavigationBox } from './Navigation';
 
 export { default as Programme } from './Programme';
 
 export { default as CompetenceGoalTab } from './CompetenceGoalTab';
-
-export { default as MultidisciplinarySubject } from './MultidisciplinarySubject';
 
 export {
   SearchTypeResult,
@@ -208,7 +204,7 @@ export type { Snack, SnackContext } from './SnackBar';
 export { TreeStructure } from './TreeStructure';
 export type { TreeStructureProps } from './TreeStructure';
 
-export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
+export { SearchField, SearchResultList, SearchResultItem, ActiveFilters } from './Search';
 export { default as LetterFilter } from './LetterFilter';
 
 export { OrderedList, UnOrderedList } from './List';

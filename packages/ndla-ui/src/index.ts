@@ -186,7 +186,7 @@ export {
 
 export { SubjectHeader, SubjectBanner } from './Subject';
 
-export { default as CopyParagraphButton, CopyParagraphButtonV2 } from './CopyParagraphButton';
+export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 

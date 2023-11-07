@@ -7,7 +7,6 @@
  */
 
 import CopyParagraphButton from './CopyParagraphButton';
-import CopyParagraphButtonV2 from './CopyParagraphButtonV2';
 
-export { CopyParagraphButton, CopyParagraphButtonV2 };
+export { CopyParagraphButton };
 export default CopyParagraphButton;

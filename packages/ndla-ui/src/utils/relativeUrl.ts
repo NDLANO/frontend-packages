@@ -22,8 +22,8 @@ export const getPossiblyRelativeUrl = (url: string, path?: string) => {
   const pathObj = new URL(path.replace(ENV_REGEX, ''));
   // If the host is the same, return the relative path
   if (urlObj.host === pathObj.host) {
-    // Replace the language part of the path with the language part of the page path
-    // If the page language part does not exist, remove it.
+    // Replace the language part of the url with the language part of the path
+    // If the path language part does not exist, remove it.
     const urlMatch = urlObj.pathname.match(LANGUAGE_REGEX);
     const pathMatch = pathObj.pathname.match(LANGUAGE_REGEX);
     if (urlMatch?.[1] && urlMatch?.[1] !== pathMatch?.[1]) {

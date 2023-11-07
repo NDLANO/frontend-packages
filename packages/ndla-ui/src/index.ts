@@ -50,7 +50,7 @@ export { default as Masthead, getMastheadHeight, useMastheadHeight, SkipToMainCo
 
 export { default as ContentLoader } from './ContentLoader';
 
-export { default as RelatedArticleList, RelatedArticle, RelatedArticleListV2 } from './RelatedArticleList';
+export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 

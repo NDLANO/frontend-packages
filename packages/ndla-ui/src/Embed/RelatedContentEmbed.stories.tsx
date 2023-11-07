@@ -10,7 +10,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { RelatedContentMetaData } from '@ndla/types-embed';
 import { defaultParameters } from '../../../../stories/defaults';
 import RelatedContentEmbed from './RelatedContentEmbed';
-import { RelatedArticleListV2 } from '../RelatedArticleList';
+import RelatedArticleList from '../RelatedArticleList';
 
 const filmResourceMeta: RelatedContentMetaData = {
   resource: 'related-content',
@@ -397,41 +397,41 @@ const linkEmbed2: RelatedContentMetaData = {
 
 export const RelatedContentStory: StoryObj<typeof RelatedContentEmbed> = {
   render: () => (
-    <RelatedArticleListV2>
+    <RelatedArticleList>
       <RelatedContentEmbed embed={learningResourceMeta} />
       <RelatedContentEmbed embed={learningResourceMeta} />
-    </RelatedArticleListV2>
+    </RelatedArticleList>
   ),
 };
 
 export const HideAllAboveTwo: StoryObj<typeof RelatedContentEmbed> = {
   render: () => (
-    <RelatedArticleListV2>
+    <RelatedArticleList>
       <RelatedContentEmbed embed={learningResourceMeta} />
       <RelatedContentEmbed embed={filmResourceMeta} />
       <RelatedContentEmbed embed={learningResourceMeta} />
       <RelatedContentEmbed embed={filmResourceMeta} />
-    </RelatedArticleListV2>
+    </RelatedArticleList>
   ),
 };
 
 export const WithLinks: StoryObj<typeof RelatedContentEmbed> = {
   render: () => (
-    <RelatedArticleListV2>
+    <RelatedArticleList>
       <RelatedContentEmbed embed={linkEmbed1} />
       <RelatedContentEmbed embed={linkEmbed2} />
-    </RelatedArticleListV2>
+    </RelatedArticleList>
   ),
 };
 
 export const Mixed: StoryObj<typeof RelatedContentEmbed> = {
   render: () => (
-    <RelatedArticleListV2>
+    <RelatedArticleList>
       <RelatedContentEmbed embed={linkEmbed1} />
       <RelatedContentEmbed embed={learningResourceMeta} />
       <RelatedContentEmbed embed={filmResourceMeta} />
       <RelatedContentEmbed embed={linkEmbed2} />
-    </RelatedArticleListV2>
+    </RelatedArticleList>
   ),
 };
 

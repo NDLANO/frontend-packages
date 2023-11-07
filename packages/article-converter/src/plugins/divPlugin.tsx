@@ -8,7 +8,7 @@
 
 import partition from 'lodash/partition';
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
-import { FileListV2, RelatedArticleListV2, Grid, GridType, GridParallaxItem } from '@ndla/ui';
+import { FileListV2, RelatedArticleList, Grid, GridType, GridParallaxItem } from '@ndla/ui';
 import { PluginType } from './types';
 
 export const divPlugin: PluginType = (node, opts) => {
@@ -16,10 +16,10 @@ export const divPlugin: PluginType = (node, opts) => {
     const props = attributesToProps(node.attribs);
 
     return (
-      <RelatedArticleListV2 {...props} headingLevel="h3">
+      <RelatedArticleList {...props} headingLevel="h3">
         {/* @ts-ignore */}
         {domToReact(node.children, opts)}
-      </RelatedArticleListV2>
+      </RelatedArticleList>
     );
   } else if (node.attribs['data-type'] === 'file' && node.childNodes.length) {
     const elements = node.childNodes.filter(

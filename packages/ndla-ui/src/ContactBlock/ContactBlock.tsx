@@ -6,15 +6,17 @@
  *
  */
 
+import { useTranslation } from 'react-i18next';
+import concat from 'lodash/concat';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
-import { useTranslation } from 'react-i18next';
-import concat from 'lodash/concat';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
 import Image from '../Image';
+import LicenseLink from '../LicenseByline/LicenseLink';
 
 const BLOB_WIDTH = 90;
 
@@ -137,10 +139,13 @@ const ContactBlock = ({
   blob = 'pointy',
   lang,
 }: Props) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isGreenBlob = blobColor === 'green';
   const Blob = blob === 'pointy' ? BlobPointy : BlobRound;
   const authors = concat(image?.copyright.processors, image?.copyright.creators, image?.copyright.rightsholders);
+  const license = image?.copyright
+    ? getLicenseByAbbreviation(image.copyright.license.license, i18n.language)
+    : undefined;
 
   return (
     <BlockWrapper>
@@ -152,9 +157,10 @@ const ContactBlock = ({
               src={image.image.imageUrl}
               sizes={`(min-width: ${breakpoints.tablet}) 240px, (max-width: ${breakpoints.tablet}) 500px`}
             />
-            {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
-              image.copyright.license.license
-            }`}
+            <span>
+              {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')} `}
+              {!!license && <LicenseLink license={license} asLink={!!license.url.length} />}
+            </span>
           </>
         ) : (
           <img alt={t('image.error.url')} src={errorSvgSrc} />

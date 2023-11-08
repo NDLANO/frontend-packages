@@ -11,6 +11,5 @@ import SearchField from './SearchField';
 import { SearchResultList, SearchResultItem } from './SearchResult';
 
 import ActiveFilters from './ActiveFilters';
-export { default as ToggleSearchButton } from './ToggleSearchButton';
 
 export { SearchField, SearchResultItem, SearchResultList, ActiveFilters };

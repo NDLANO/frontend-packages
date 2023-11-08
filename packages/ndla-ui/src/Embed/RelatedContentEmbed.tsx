@@ -9,7 +9,7 @@
 import { RelatedContentMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { contentTypeMapping } from '../model/ContentType';
-import { RelatedArticleV2 } from '../RelatedArticleList/RelatedArticleV2';
+import { RelatedArticle } from '../RelatedArticleList/RelatedArticleList';
 
 interface Props {
   embed: RelatedContentMetaData;
@@ -34,7 +34,7 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
       data.resource?.path ??
       `/article/${embedData.articleId}`;
     return (
-      <RelatedArticleV2
+      <RelatedArticle
         title={data.article.title?.title ?? ''}
         introduction={data.article.metaDescription?.metaDescription ?? ''}
         target={isOembed ? '_blank' : undefined}
@@ -44,7 +44,7 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
     );
   } else if (typeof embedData.url === 'string') {
     return (
-      <RelatedArticleV2
+      <RelatedArticle
         title={embedData.title ?? ''}
         introduction=""
         to={embedData.url}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022-present, NDLA.
+ * Copyright (c) 2023-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,7 +7,6 @@
  */
 
 import { ReactNode } from 'react';
-import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import { Arrow, Close, Content, Root, Trigger, Portal } from '@radix-ui/react-popover';
@@ -47,17 +46,15 @@ interface Props {
   children?: ReactNode;
   popover: ReactNode;
   className?: string;
-  /** outerHTML of Trigger. Only used when hydrating tooltips */
-  hydrateHTML?: string;
 }
 
-const CorePopover = ({ children, popover, className, hydrateHTML }: Props) => {
+const LicensePopover = ({ children, popover, className }: Props) => {
   const { t } = useTranslation();
 
   return (
     <Root>
       <Trigger data-trigger asChild>
-        {hydrateHTML ? parse(hydrateHTML) : children}
+        {children}
       </Trigger>
       <Portal>
         <StyledContent arrowPadding={6} className={className} side={'bottom'} align={'center'} sideOffset={5}>
@@ -72,24 +69,4 @@ const CorePopover = ({ children, popover, className, hydrateHTML }: Props) => {
   );
 };
 
-const Popover = ({ children, popover, className, hydrateHTML }: Props) => {
-  const popoverString = typeof popover === 'string' ? popover : undefined;
-
-  if (hydrateHTML) {
-    return (
-      <CorePopover className={className} hydrateHTML={hydrateHTML} popover={popover}>
-        {children}
-      </CorePopover>
-    );
-  }
-
-  return (
-    <div data-popover-container data-popover={popoverString}>
-      <CorePopover className={className} popover={popover}>
-        {children}
-      </CorePopover>
-    </div>
-  );
-};
-
-export default Popover;
+export default LicensePopover;

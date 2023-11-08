@@ -52,15 +52,15 @@ export { default as Masthead, getMastheadHeight, useMastheadHeight, SkipToMainCo
 
 export { default as ContentLoader } from './ContentLoader';
 
-export { default as RelatedArticleList, RelatedArticle, RelatedArticleListV2 } from './RelatedArticleList';
+export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
-export { default as FileList, File, FileListV2, FileV2, PdfFile } from './FileList';
+export { default as FileList, File, PdfFile } from './FileList';
 
 export { default as Logo } from './Logo';
 
-export { default as FactBox, FactBoxV2 } from './FactBox';
+export { default as FactBox } from './FactBox';
 
 export { default as Image, ImageLink, makeSrcQueryString } from './Image';
 export type { ImageCrop, ImageFocalPoint } from './Image';
@@ -82,7 +82,7 @@ export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter
 
 export { Footer, EditorName, FooterText } from './Footer';
 
-export { Figure, FigureExpandButton, FigureOpenDialogButton, FigureBylineExpandButton } from './Figure';
+export { Figure, FigureOpenDialogButton } from './Figure';
 export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
@@ -99,7 +99,6 @@ export {
   LearningPathMobileStepInfo,
   LearningPathMobileHeader,
 } from './LearningPaths';
-export { Translation, TranslationLine } from './Translation';
 
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
 
@@ -107,25 +106,21 @@ export { default as ContentTypeResult } from './Search/ContentTypeResult';
 
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
-export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
-
 export { default as resourceTypeColor } from './utils/resourceTypeColor';
 
 export { default as CreatedBy } from './CreatedBy';
 
-export { MessageBox, MessageBoxTag, MessageBanner } from './Messages';
+export { MessageBox, MessageBanner } from './Messages';
 
 export { ResourceBox } from './ResourceBox';
 
 export { default as AudioPlayer } from './AudioPlayer';
 
-export { NavigationBox, NavigationTopicAbout } from './Navigation';
+export { NavigationBox } from './Navigation';
 
 export { default as Programme } from './Programme';
 
 export { default as CompetenceGoalTab } from './CompetenceGoalTab';
-
-export { default as MultidisciplinarySubject } from './MultidisciplinarySubject';
 
 export {
   SearchTypeResult,
@@ -192,7 +187,7 @@ export {
 
 export { SubjectHeader, SubjectBanner } from './Subject';
 
-export { default as CopyParagraphButton, CopyParagraphButtonV2 } from './CopyParagraphButton';
+export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 
@@ -210,7 +205,7 @@ export type { Snack, SnackContext } from './SnackBar';
 export { TreeStructure } from './TreeStructure';
 export type { TreeStructureProps } from './TreeStructure';
 
-export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
+export { SearchField, SearchResultList, SearchResultItem, ActiveFilters } from './Search';
 export { default as LetterFilter } from './LetterFilter';
 
 export { OrderedList, UnOrderedList } from './List';

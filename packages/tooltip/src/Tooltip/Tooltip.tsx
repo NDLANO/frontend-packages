@@ -7,7 +7,6 @@
  */
 
 import { ReactNode } from 'react';
-import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import * as RadixTooltip from '@radix-ui/react-tooltip';
@@ -32,16 +31,14 @@ interface Props {
   children?: ReactNode;
   tooltip: ReactNode;
   className?: string;
-  /** outerHTML of Trigger. Only used when hydrating tooltips */
-  hydrateHTML?: string;
 }
 
-const CoreTooltip = ({ children, tooltip, className, hydrateHTML }: Props) => {
+const Tooltip = ({ children, tooltip, className }: Props) => {
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
         <RadixTooltip.Trigger data-trigger asChild>
-          {hydrateHTML ? parse(hydrateHTML) : children}
+          {children}
         </RadixTooltip.Trigger>
         <RadixTooltip.Portal>
           <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
@@ -50,26 +47,6 @@ const CoreTooltip = ({ children, tooltip, className, hydrateHTML }: Props) => {
         </RadixTooltip.Portal>
       </RadixTooltip.Root>
     </RadixTooltip.Provider>
-  );
-};
-
-const Tooltip = ({ children, tooltip, className, hydrateHTML }: Props) => {
-  const tooltipString = typeof tooltip === 'string' ? tooltip : undefined;
-
-  if (hydrateHTML) {
-    return (
-      <CoreTooltip className={className} hydrateHTML={hydrateHTML} tooltip={tooltip}>
-        {children}
-      </CoreTooltip>
-    );
-  }
-
-  return (
-    <div data-tooltip-container data-tooltip={tooltipString}>
-      <CoreTooltip className={className} tooltip={tooltip}>
-        {children}
-      </CoreTooltip>
-    </div>
   );
 };
 

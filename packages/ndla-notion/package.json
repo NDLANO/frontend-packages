@@ -28,7 +28,7 @@
     "@ndla/core": "^4.2.3",
     "@ndla/icons": "^4.1.4",
     "@ndla/licenses": "^7.2.2",
-    "@ndla/tooltip": "^5.0.6"
+    "@radix-ui/react-popover": "^1.0.7"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

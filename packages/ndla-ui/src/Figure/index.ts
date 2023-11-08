@@ -7,8 +7,6 @@
  */
 
 export { default as Figure } from './Figure';
-export { FigureExpandButton } from './FigureExpandButton';
-export { FigureBylineExpandButton } from './FigureBylineExpandButton';
 export { FigureOpenDialogButton } from './FigureOpenDialogButton';
 
 export type { FigureType } from './Figure';

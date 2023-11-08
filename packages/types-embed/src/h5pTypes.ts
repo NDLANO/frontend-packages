@@ -14,6 +14,7 @@ export interface H5pEmbedData {
   url: string;
   title?: string;
   pageUrl?: string;
+  alt?: string;
 }
 
 export interface H5pLicenseInformation {

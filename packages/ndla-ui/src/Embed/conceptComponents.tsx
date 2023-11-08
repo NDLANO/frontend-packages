@@ -65,7 +65,7 @@ const NotionDialogContent = styled.div`
 
 const ContentPadding = styled.div`
   padding: ${spacing.normal};
-  &[data-margin-bottom='true'] {
+  &[data-is-concept='false'] {
     margin-bottom: ${spacing.normal};
   }
 `;
@@ -116,7 +116,7 @@ const NotionHeader = styled.div`
     ${fonts.sizes('22px', 1.2)};
   }
   small {
-    &[data-show-separator='true'] {
+    &[data-is-concept='true'] {
       border-left: 1px solid ${colors.brand.greyLight};
       padding-left: ${spacing.small};
       margin-left: ${spacing.xsmall};
@@ -124,7 +124,7 @@ const NotionHeader = styled.div`
     ${fonts.sizes('20px', 1.2)};
     font-weight: ${fonts.weight.normal};
   }
-  &[data-margin-bottom='true'] {
+  &[data-is-concept='false'] {
     margin-bottom: ${spacing.large};
   }
 `;
@@ -195,8 +195,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
     const isConcept = conceptType === 'concept';
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
-        <ContentPadding data-margin-bottom={conceptType === 'gloss'}>
-          <NotionHeader data-margin-bottom={conceptType === 'gloss'} data-show-separator={isConcept}>
+        <ContentPadding data-is-concept={isConcept}>
+          <NotionHeader data-is-concept={isConcept}>
             <h1>
               {isConcept && title.title}
               {<small data-show-separator={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}

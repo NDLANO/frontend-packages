@@ -57,4 +57,16 @@ describe('getPossibleRelativeUrl', () => {
 
     expect(getPossiblyRelativeUrl(url, pathname)).toEqual('/');
   });
+  it('handles www', () => {
+    const url = 'https://www.ndla.no';
+    const pathname = 'https://ndla.no/about/hvem-er-vi';
+
+    expect(getPossiblyRelativeUrl(url, pathname)).toEqual('/');
+  });
+  it('handles ports', () => {
+    const url = 'https://www.ndla.no:8080';
+    const pathname = 'https://ndla.no/about/hvem-er-vi';
+
+    expect(getPossiblyRelativeUrl(url, pathname)).toEqual('/');
+  });
 });

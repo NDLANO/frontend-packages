@@ -199,7 +199,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
           <NotionHeader data-is-concept={isConcept}>
             <h1>
               {isConcept && title.title}
-              {<small data-show-separator={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
+              {<small data-is-concept={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
             <ButtonWrapper>
               {headerButtons}

@@ -63,7 +63,7 @@ const NotionDialogContent = styled.div`
   flex-direction: column;
 `;
 
-const ContentPadding = styled.div`
+const ContentSpacing = styled.div`
   padding: ${spacing.normal};
   &[data-is-concept='false'] {
     margin-bottom: ${spacing.normal};
@@ -195,7 +195,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
     const isConcept = conceptType === 'concept';
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
-        <ContentPadding data-is-concept={isConcept}>
+        <ContentSpacing data-is-concept={isConcept}>
           <NotionHeader data-is-concept={isConcept}>
             <h1>
               {isConcept && title.title}
@@ -254,7 +254,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
               }
             />
           )}
-        </ContentPadding>
+        </ContentSpacing>
         {copyright && (
           <EmbedByline copyright={copyright} type={conceptType as ConceptType}>
             {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}

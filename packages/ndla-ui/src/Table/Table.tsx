@@ -22,6 +22,7 @@ interface Props {
   dangerouslySetInnerHTML?: {
     __html: string;
   };
+  lang?: string;
 }
 
 const ScrollBorder = styled.div`

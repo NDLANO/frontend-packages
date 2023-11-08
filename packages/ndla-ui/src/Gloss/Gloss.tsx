@@ -38,6 +38,7 @@ export interface Props {
 }
 
 const Container = styled.div`
+  font-family: ${fonts.sans};
   display: flex;
   flex-direction: column;
   background-color: ${colors.background.lightBlue};

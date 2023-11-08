@@ -35,6 +35,7 @@ export interface ConceptNotionData {
   visualElement?: ConceptVisualElementMeta;
   conceptType: ConceptData['concept']['conceptType'];
   glossData?: ConceptData['concept']['glossData'];
+  lang?: string;
 }
 
 interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotionData {
@@ -115,9 +116,11 @@ const NotionHeader = styled.div`
     ${fonts.sizes('22px', 1.2)};
   }
   small {
-    padding-left: ${spacing.small};
-    margin-left: ${spacing.xsmall};
-    border-left: 1px solid ${colors.brand.greyLight};
+    &[data-show-separator='true'] {
+      border-left: 1px solid ${colors.brand.greyLight};
+      padding-left: ${spacing.small};
+      margin-left: ${spacing.xsmall};
+    }
     ${fonts.sizes('20px', 1.2)};
     font-weight: ${fonts.weight.normal};
   }
@@ -183,29 +186,31 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       conceptType,
       glossData,
       headerButtons,
+      lang,
       ...rest
     },
     ref,
   ) => {
     const { t } = useTranslation();
-
+    const isConcept = conceptType === 'concept';
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <ContentPadding data-margin-bottom={conceptType === 'gloss'}>
-          <NotionHeader data-margin-bottom={conceptType === 'gloss'}>
+          <NotionHeader data-margin-bottom={conceptType === 'gloss'} data-show-separator={isConcept}>
             <h1>
-              {title.title} {<small>{t(`searchPage.resultType.${conceptType}`)}</small>}
+              {isConcept && title.title}
+              {<small data-show-separator={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
             <ButtonWrapper>
               {headerButtons}
               {closeButton}
             </ButtonWrapper>
           </NotionHeader>
-          {conceptType !== 'gloss' ? (
+          {isConcept ? (
             <>
               <StyledNotionDialogContent>
                 {visualElement?.resource === 'image' ? (
-                  <ImageEmbed embed={visualElement} heartButton={heartButton} />
+                  <ImageEmbed embed={visualElement} heartButton={heartButton} lang={lang} />
                 ) : visualElement?.resource === 'brightcove' ? (
                   <BrightcoveEmbed embed={visualElement} heartButton={heartButton} />
                 ) : visualElement?.resource === 'h5p' ? (
@@ -215,7 +220,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                 ) : visualElement?.resource === 'external' ? (
                   <ExternalEmbed embed={visualElement} />
                 ) : null}
-                {content && <NotionDialogText>{content}</NotionDialogText>}
+                {content && <NotionDialogText lang={lang}>{content}</NotionDialogText>}
               </StyledNotionDialogContent>
               {tags && (
                 <ListWrapper>

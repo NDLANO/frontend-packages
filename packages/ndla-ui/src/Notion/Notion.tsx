@@ -71,9 +71,10 @@ export type NotionProps = {
   visualElement: ReactNode;
   imageElement?: ReactNode;
   children?: ReactNode;
+  lang?: string;
 };
 
-const Notion = ({ id, labels = [], text, title, visualElement, imageElement, children }: NotionProps) => {
+const Notion = ({ id, labels = [], text, title, visualElement, imageElement, children, lang }: NotionProps) => {
   const { t } = useTranslation();
 
   return (
@@ -81,7 +82,7 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
       <ContentWrapper>
         {imageElement}
         {visualElement}
-        <TextWrapper hasVisualElement={!!(imageElement || visualElement)}>
+        <TextWrapper hasVisualElement={!!(imageElement || visualElement)} lang={lang}>
           <b>{title.trim()}</b>
           {text}
           {!!labels.length && (

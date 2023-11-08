@@ -56,24 +56,7 @@ export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessa
 
 export { default as FileList, File, FileListV2, FileV2, PdfFile } from './FileList';
 
-export { BlogPost, BlogPostWrapper } from './BlogPosts';
-
 export { default as Logo } from './Logo';
-
-export { InfoBox } from './InfoBox';
-
-export { default as InfoWidget } from './InfoWidget';
-
-export {
-  FrontpageInfo,
-  FrontpageFilm,
-  FrontpageToolbox,
-  FrontpageMultidisciplinarySubject,
-  FrontpageHeader,
-  FrontpageSubjectIllustration,
-  FrontpageSearch,
-  FrontpageProgramMenu,
-} from './Frontpage';
 
 export { default as FactBox, FactBoxV2 } from './FactBox';
 
@@ -205,20 +188,7 @@ export {
   SourceMaterialBadge,
 } from './ContentTypeBadge';
 
-export {
-  SubjectChildContent,
-  SubjectContent,
-  SubjectFlexWrapper,
-  SubjectHeader,
-  SubjectNewContent,
-  SubjectSecondaryContent,
-  SubjectSectionTitle,
-  SubjectSidebarWrapper,
-  SubjectSocialContent,
-  SubjectSocialSection,
-  SubjectTopics,
-  SubjectBanner,
-} from './Subject';
+export { SubjectHeader, SubjectBanner } from './Subject';
 
 export { default as CopyParagraphButton, CopyParagraphButtonV2 } from './CopyParagraphButton';
 
@@ -235,7 +205,6 @@ export { TagSelector } from './TagSelector';
 
 export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from './SnackBar';
 export type { Snack, SnackContext } from './SnackBar';
-export { InfoBlock } from './InfoBlock';
 export { TreeStructure } from './TreeStructure';
 export type { TreeStructureProps } from './TreeStructure';
 

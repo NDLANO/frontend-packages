@@ -19,6 +19,7 @@ interface Props {
   id: string;
   isWide?: boolean;
   licenseBox?: ReactNode;
+  lang?: string;
 }
 
 export const FRONTPAGE_ARTICLE_MAX_WIDTH = '773px';
@@ -56,7 +57,7 @@ const StyledArticle = styled.article`
   }
 `;
 
-export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => {
+export const FrontpageArticle = ({ article, id, isWide, licenseBox, lang }: Props) => {
   const { height = 0 } = useMastheadHeight();
   const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` } as unknown as CSSProperties), [height]);
   const { title, introduction, content } = article;
@@ -71,10 +72,10 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
 
   return (
     <StyledArticle style={cssVars}>
-      <Heading id={id} headingStyle="h1-resource" element="h1" margin="normal" tabIndex={-1}>
+      <Heading id={id} headingStyle="h1-resource" element="h1" margin="normal" tabIndex={-1} lang={lang}>
         {title}
       </Heading>
-      <Text textStyle="ingress" element="div">
+      <Text textStyle="ingress" element="div" lang={lang}>
         {introduction}
       </Text>
       {content}

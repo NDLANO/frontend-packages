@@ -516,7 +516,7 @@ const messages = {
     associatedTopics: 'Tilhøyrande emne',
   },
   subjectFrontPage: {
-    buildsOn: 'Byggjer på',
+    buildsOn: 'Bygger på',
     connectedTo: 'Felles programfag saman med',
     leadsTo: 'Leier til',
   },
@@ -664,7 +664,7 @@ const messages = {
     editorInChief: 'Ansvarleg redaktør:',
     availabilityLink: 'Tilgjengelegheitserklæring',
     privacyLink: 'Personvernerklæring',
-    cookiesLink: 'Erklæring om informasjonskapslar',
+    cookiesLink: 'Erklæring for informasjonskapslar',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',
@@ -1206,6 +1206,7 @@ const messages = {
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
+    userPictureAltText: 'Profilbilete',
     sharedFolder: {
       folderCopied: 'Mappa vart kopiert.',
       info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',

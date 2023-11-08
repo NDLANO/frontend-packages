@@ -100,7 +100,7 @@ const colors = {
    */
   text: {
     primary: '#444',
-    light: '#757575',
+    light: '#595959',
   },
   white: '#fff',
   black: '#272728',

@@ -63,6 +63,10 @@ export const NDLAUrls: StoryFn = () => (
           <br />
           <SafeLink to="https://api.ndla.no/">https://api.ndla.no/</SafeLink>
         </p>
+        <h2>Design</h2>
+        <SafeLink to="https://www.figma.com/file/aGuqdNB8y8gPZsiK9YJ2An/NDLA-components">Komponenter (Figma)</SafeLink>
+        <br />
+        <SafeLink to="https://www.figma.com/file/jiZ86RzWFZZZHrjZUse866/NDLA-pages">Sider (Figma)</SafeLink>
       </StoryBody>
     </div>
   </PageContainer>

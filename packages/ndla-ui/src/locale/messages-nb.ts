@@ -664,7 +664,7 @@ const messages = {
     editorInChief: 'Ansvarlig redaktør:',
     availabilityLink: 'Tilgjengelighetserklæring',
     privacyLink: 'Personvernerklæring',
-    cookiesLink: 'Erklæring om informasjonskapsler',
+    cookiesLink: 'Erklæring for informasjonskapsler',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',
@@ -1206,6 +1206,7 @@ const messages = {
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
+    userPictureAltText: 'Profilbilde',
     sharedFolder: {
       folderCopied: 'Mappen har blitt kopiert.',
       info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',

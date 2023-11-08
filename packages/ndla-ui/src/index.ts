@@ -40,6 +40,8 @@ export {
   default as Article,
 } from './Article';
 
+export { getPossiblyRelativeUrl } from './utils/relativeUrl';
+
 export { default as Table, TableStyling } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';

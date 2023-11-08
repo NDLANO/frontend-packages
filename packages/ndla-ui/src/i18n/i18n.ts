@@ -21,13 +21,14 @@ const DETECTION_OPTIONS = {
   lookupLocalStorage: 'i18nextLng',
 };
 
+export const supportedTranslationLanguages = ['nb', 'nn', 'en', 'se', 'sma'] as const;
 const i18nInstance = i18n.use(initReactI18next).use(LanguageDetector);
 
 i18nInstance.init({
   compatibilityJSON: 'v3',
   detection: DETECTION_OPTIONS,
   fallbackLng: 'nb',
-  supportedLngs: ['nb', 'nn', 'en', 'se', 'sma'],
+  supportedLngs: supportedTranslationLanguages,
   resources: {
     en: {
       translation: messagesEN,

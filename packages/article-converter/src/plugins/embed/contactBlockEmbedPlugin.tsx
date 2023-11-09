@@ -25,6 +25,7 @@ export const contactBlockEmbedPlugin: PluginType = (element, _, opts) => {
       name={name}
       blob={blob}
       lang={opts.articleLanguage}
+      imageCanonicalUrl={opts.canonicalUrls?.image}
     />
   );
 };

@@ -20,4 +20,4 @@ export { ConceptNotionV2 } from './conceptComponents';
 export { default as ConceptListEmbed } from './ConceptListEmbed';
 export { default as UnknownEmbed } from './UnknownEmbed';
 export { InlineConcept, BlockConcept } from './ConceptEmbed';
-export type { HeartButtonType } from './types';
+export type { HeartButtonType, CanonicalUrlFunc } from './types';

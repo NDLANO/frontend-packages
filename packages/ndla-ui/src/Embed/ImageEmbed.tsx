@@ -19,13 +19,14 @@ import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
+import { CanonicalUrlFunc, HeartButtonType } from './types';
 
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
   path?: string;
   heartButton?: HeartButtonType;
+  canonicalUrl?: CanonicalUrlFunc<'image'>;
   inGrid?: boolean;
   lang?: string;
 }
@@ -105,7 +106,7 @@ export const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path, lang }: Props) => {
+const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path, lang, canonicalUrl }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
 
@@ -140,12 +141,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path,
       type={imageSizes ? undefined : figureType}
       className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
     >
-      <ImageWrapper
-        src={!isCopyrighted ? embedData.pageUrl || data.image.imageUrl : undefined}
-        crop={crop}
-        size={embedData.size}
-        pagePath={path}
-      >
+      <ImageWrapper src={canonicalUrl?.(embed)} crop={crop} size={embedData.size} pagePath={path}>
         <Image
           focalPoint={focalPoint}
           contentType={data.image.contentType}

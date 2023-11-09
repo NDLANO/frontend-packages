@@ -24,6 +24,7 @@ export const imageEmbedPlugin: PluginType = (element, _, opts) => {
       previewAlt={opts.previewAlt}
       heartButton={opts.components?.heartButton}
       lang={opts.articleLanguage}
+      renderContext={opts.renderContext}
     />
   );
 };

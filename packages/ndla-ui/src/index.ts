@@ -213,7 +213,7 @@ export { BlogPostV2 } from './BlogPost';
 export { ProgrammeCard } from './ProgrammeCard';
 export { KeyFigure } from './KeyFigure';
 export { default as ContactBlock } from './ContactBlock';
-export type { HeartButtonType } from './Embed';
+export type { HeartButtonType, RenderContext } from './Embed';
 export { CampaignBlock } from './CampaignBlock';
 export { Grid, GridParallaxItem } from './Grid';
 export type { GridType } from './Grid';

@@ -11,4 +11,4 @@ import { EmbedMetaData } from '@ndla/types-embed';
 
 export type HeartButtonType = ElementType<{ embed: Extract<EmbedMetaData, { status: 'success' }> }>;
 
-export type RenderContext = 'article' | 'embed';
+export type RenderContext = 'article' | 'embed' | 'editor';

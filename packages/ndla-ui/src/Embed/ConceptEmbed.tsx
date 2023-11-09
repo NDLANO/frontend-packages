@@ -24,7 +24,7 @@ import { NotionImage } from '../Notion/NotionImage';
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from './conceptComponents';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
+import { HeartButtonType, RenderContext } from './types';
 import { Gloss } from '../Gloss';
 
 interface PopoverPosition {
@@ -72,6 +72,7 @@ interface Props {
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
   lang?: string;
+  renderContext?: RenderContext;
 }
 
 const StyledButton = styled.button`
@@ -93,7 +94,13 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang }: Props) => {
+export const ConceptEmbed = ({
+  embed,
+  fullWidth,
+  heartButton: HeartButton,
+  lang,
+  renderContext = 'article',
+}: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === 'error' || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.content);
@@ -101,6 +108,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
   if (embed.status === 'error' && embed.embedData.type === 'inline') {
     return <span>{embed.embedData.linkText}</span>;
   } else if (embed.status === 'error') {
+    if (renderContext === 'article') return undefined;
     return <EmbedErrorPlaceholder type="concept" />;
   }
 

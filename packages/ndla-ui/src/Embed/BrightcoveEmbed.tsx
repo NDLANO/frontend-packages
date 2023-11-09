@@ -18,12 +18,13 @@ import { ButtonV2 } from '@ndla/button';
 import { Figure } from '../Figure';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
+import { HeartButtonType, RenderContext } from './types';
 
 interface Props {
   embed: BrightcoveMetaData;
   isConcept?: boolean;
   heartButton?: HeartButtonType;
+  renderContext?: RenderContext;
 }
 
 const LinkedVideoButton = styled(ButtonV2)`
@@ -57,19 +58,19 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? '640',
   };
 };
-const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) => {
+const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderContext = 'article' }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { embedData } = embed;
   const fallbackTitle = `${t('embed.type.video')}: ${embedData.videoid}`;
   const parsedDescription = useMemo(() => {
-    if (embed.embedData.caption) {
-      return parse(embed.embedData.caption);
+    if (embed.embedData.caption || renderContext === 'article') {
+      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
     } else if (embed.status === 'success' && embed.data.description) {
       return parse(embed.data.description);
     }
-  }, [embed]);
+  }, [embed, renderContext]);
 
   useEffect(() => {
     const iframe = iframeRef.current;

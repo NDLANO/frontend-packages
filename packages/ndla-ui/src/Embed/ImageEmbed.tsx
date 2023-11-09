@@ -19,7 +19,7 @@ import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
+import { HeartButtonType, RenderContext } from './types';
 
 interface Props {
   embed: ImageMetaData;
@@ -28,6 +28,7 @@ interface Props {
   heartButton?: HeartButtonType;
   inGrid?: boolean;
   lang?: string;
+  renderContext?: RenderContext;
 }
 
 export interface Author {
@@ -105,17 +106,25 @@ export const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path, lang }: Props) => {
+const ImageEmbed = ({
+  embed,
+  previewAlt,
+  heartButton: HeartButton,
+  inGrid,
+  path,
+  lang,
+  renderContext = 'article',
+}: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
 
   const parsedDescription = useMemo(() => {
-    if (embed.embedData.caption) {
-      return parse(embed.embedData.caption);
+    if (embed.embedData.caption || renderContext === 'article') {
+      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
     } else if (embed.status === 'success' && embed.data.caption.caption) {
       return parse(embed.data.caption.caption);
     }
-  }, [embed]);
+  }, [embed, renderContext]);
 
   if (embed.status === 'error') {
     const { align, size } = embed.embedData;

@@ -1004,17 +1004,17 @@ const messages = {
     },
   },
   audio: {
-    play: 'Spill av',
+    play: 'Spel av',
     pause: 'Pause',
     download: 'Last ned lydfil',
     reuse: 'Bruk lydfil',
     error: {
-      url: 'Feil ved lasting av lydfila.',
+      url: 'Feil ved lasting av lydfil.',
       caption: 'Orsak, ein feil oppstod ved lasting av lydfil.',
     },
     controls: {
-      forward15sec: 'Spol 15 sekundar fram',
-      rewind15sec: 'Spol 15 sekundar tilbake',
+      forward15sec: 'Spol 15 sekund fram',
+      rewind15sec: 'Spol 15 sekund tilbake',
       selectSpeed: 'Velg avspelingshastigheit',
       adjustVolume: 'Endre volum',
     },

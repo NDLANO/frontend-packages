@@ -1295,6 +1295,17 @@ const messages = {
         option1: 'Vuesehth mov nommem gosse maabpam juekieh',
         option2: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
       },
+      modalTexts: {
+        title: 'Orre profijleguvviem bæjhkoehtidh',
+        uploadSection: {
+          title: 'Gïesh jïh luajhth',
+          subTitle: 'jallh diedtieh juktie guvviem bæjjese vaeltedh',
+        },
+        fileName: 'Bijjiedamme tjaatsege:',
+        fileTypes: 'Fïjlesaemieh mah leah jååhkesjamme: PNG , JPG (Maakseme 5 MB)',
+        savePicture: 'Vurkehth profijleguvviem',
+        deletePicture: 'Prefikse guvviem sliejhtedh',
+      },
     },
     resource: {
       add: 'Legg til mappe/emneknagg',

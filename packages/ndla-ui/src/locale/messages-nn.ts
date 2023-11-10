@@ -1293,6 +1293,17 @@ const messages = {
         option1: 'Vis namnet mitt når eg deler ei mappe',
         option2: 'Ikkje vis namnet mitt når eg deler mappe',
       },
+      modalTexts: {
+        title: 'Last opp nytt profilbilete',
+        uploadSection: {
+          title: 'Dra og slepp',
+          subTitle: 'eller trykk for å lasta opp bilete',
+        },
+        fileName: 'Opplasta fil:',
+        fileTypes: 'Filtypar som er aksepterte: PNG, JPG (Maks 5MB)',
+        savePicture: 'Lagre profilbilete',
+        deletePicture: 'Slett profilbilete',
+      },
     },
     resource: {
       add: 'Legg til mappe/emneknagg',

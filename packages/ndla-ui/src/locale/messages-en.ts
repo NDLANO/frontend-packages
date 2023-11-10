@@ -1023,8 +1023,8 @@ const messages = {
       heading: 'Text version',
       close: 'Close text version',
     },
-    readMoreDescriptionLabel: 'show more',
-    readLessDescriptionLabel: 'show less',
+    readMoreDescriptionLabel: 'Show more',
+    readLessDescriptionLabel: 'Show less',
   },
   h5p: {
     reuse: 'Use H5P',

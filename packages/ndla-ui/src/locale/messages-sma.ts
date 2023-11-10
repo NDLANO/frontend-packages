@@ -1026,8 +1026,8 @@ const messages = {
       heading: 'Teeksteversjovne',
       close: 'Dahph teeksteversjovnem',
     },
-    readMoreDescriptionLabel: 'vis mer',
-    readLessDescriptionLabel: 'vis mindre',
+    readMoreDescriptionLabel: 'Vis mer',
+    readLessDescriptionLabel: 'Vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',

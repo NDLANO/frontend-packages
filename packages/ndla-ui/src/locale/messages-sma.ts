@@ -552,6 +552,7 @@ const messages = {
       files: 'Fijlh',
       embedlink: 'Sïjsebïejemesvaalhtese',
       concept: 'Buerkiestimmieh',
+      gloss: 'Glosa',
       podcast: 'Podkast',
       other: 'Jeatjah sisvege',
     },
@@ -626,6 +627,18 @@ const messages = {
         description: 'Denne lenken viser forklaringen uten kontekst (meny og bunntekst)',
         copyTitle: 'Kopier innbyggingslenke',
         hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
+    },
+    gloss: {
+      heading: 'Naemhtie gïelem ikth vielie nåhtadidh',
+      description: 'Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie',
+      rules: 'Njoelkedassh guktie diejvesem nåhtadidh:',
+      title: 'Tihtele',
+      embedlink: {
+        heading: 'Naemhtie gïelem jeatjah sisvegisnie vuesehte',
+        description: 'Daate lïenghke vuesehte tjoejh konteksten namhtah (meny jïh nueliekapihtele)',
+        copyTitle: 'Kopijerh svaalhtesem sïjse loggedh',
+        hasCopiedTitle: 'Bigkeme svaalhtese kopijeradamme',
       },
     },
     files: {
@@ -1370,7 +1383,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
-      gloss: 'Glose',
+      gloss: 'Glosa',
     },
   },
   gloss: {

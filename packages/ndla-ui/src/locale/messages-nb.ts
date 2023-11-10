@@ -551,6 +551,7 @@ const messages = {
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       concept: 'Forklaringer',
+      gloss: 'Gloser',
       podcast: 'Podkast',
       other: 'Annet innhold',
     },
@@ -621,6 +622,18 @@ const messages = {
       embedlink: {
         heading: 'Slik viser du forklaringen i annet innhold',
         description: 'Denne lenken viser forklaringen uten kontekst (meny og bunntekst)',
+        copyTitle: 'Kopier innbyggingslenke',
+        hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
+    },
+    gloss: {
+      heading: 'Slik gjenbruker du gloser',
+      description: 'Husk at innebygd innhold i en glose kan ha en annen lisens enn selve gloseteksten',
+      rules: 'Regler for bruk av glose:',
+      title: 'Tittel',
+      embedlink: {
+        heading: 'Slik viser du glosen i annet innhold',
+        description: 'Denne lenken viser glosen uten kontekst (meny og bunntekst)',
         copyTitle: 'Kopier innbyggingslenke',
         hasCopiedTitle: 'Innbyggingslenke kopiert',
       },

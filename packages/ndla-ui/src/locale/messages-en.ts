@@ -537,6 +537,7 @@ const messages = {
       files: 'Files',
       embedlink: 'Embedded link',
       concept: 'Concepts',
+      gloss: 'Glossary',
       podcast: 'Podcast',
       other: 'Other content',
     },
@@ -607,6 +608,18 @@ const messages = {
       embedlink: {
         heading: 'How to show the concept in other content',
         description: 'This url shows the concept without menu and footer',
+        copyTitle: 'Copy embed link',
+        hasCopiedTitle: 'Embed link copied',
+      },
+    },
+    gloss: {
+      heading: 'How to reuse gloss content',
+      description: 'Remember that built-in content might have a different license than the gloss text',
+      rules: 'Rules for use of gloss:',
+      title: 'Title',
+      embedlink: {
+        heading: 'How to show the gloss in other content',
+        description: 'This url shows the gloss without menu and footer',
         copyTitle: 'Copy embed link',
         hasCopiedTitle: 'Embed link copied',
       },

@@ -552,6 +552,7 @@ const messages = {
       files: 'Fiillat',
       embedlink: 'Sisahuksenliŋka',
       concept: 'Čilgehusat',
+      gloss: 'Gloser',
       podcast: 'Podkásta',
       other: 'Eará sisdoallu',
     },
@@ -624,6 +625,19 @@ const messages = {
         description: 'Dát liŋka čájeha čilgehusa konteavstta haga (fállu ja vuolleteaksta)',
         copyTitle: 'Máŋge sisahuksenliŋkka',
         hasCopiedTitle: 'Sisahuksenliŋka máŋgejuvvon',
+      },
+    },
+    gloss: {
+      heading: 'Movt geavahit ođđasit dajaldagaid',
+      description:
+        'Muitte ahte sisdoalus mii lea vuojuhuvvon ovtta gihppagii sáhttá leat eará liseansa go dušše jietnadat.',
+      rules: 'Glossa geavaheami njuolggadusat:',
+      title: 'Namahus',
+      embedlink: {
+        heading: 'Čájet jietnadaga eará sisdoaluin',
+        description: 'Dát liŋka čájeha teavstta konteavstta haga (fállu ja juolgeteaksta)',
+        copyTitle: 'Máŋge sisačálihanliŋkka',
+        hasCopiedTitle: 'Sajáiduhttinliŋka mángejuvvon',
       },
     },
     files: {

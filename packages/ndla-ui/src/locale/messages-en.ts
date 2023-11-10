@@ -1167,6 +1167,18 @@ const messages = {
         },
       },
     },
+    arena: {
+      title: 'Arena',
+      notification: {
+        title: 'Notifications',
+        showAll: 'View all notifications',
+        description:
+          'Welcome to NDLAs Arena. Here you can discuss, share and cooparate with other teachers from the entire country. You will find forums for the different subjects and themes.',
+        myNotification: 'My notifications',
+        markAll: 'Mark all as read',
+        commentedOn: 'commented on your post',
+      },
+    },
     iconMenu: {
       folders: 'Folders',
       tags: 'Tags',

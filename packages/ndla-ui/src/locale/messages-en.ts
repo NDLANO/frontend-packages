@@ -1279,6 +1279,30 @@ const messages = {
         text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting <strong>My tags</strong> on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
       },
     },
+    arena: {
+      header: 'Arena',
+      description:
+        "Welcome to NDLA's Arena. Here you can discuss, share and collaborate with other teachers from all over Norway.",
+      title: 'Categories',
+      category: {
+        posts: 'Posts',
+        newPost: 'New post',
+      },
+      topic: {
+        responses: 'Responses',
+      },
+      posts: {
+        notify: 'Get notified of new answers',
+        dropdownMenu: {
+          report: 'Report post to moderator',
+          edit: 'Edit post',
+          delete: 'Delete post',
+        },
+        comment: 'Comment',
+      },
+      bottomText:
+        'Are you missing a category? You can request new categories. Use "Ask NDLA" or send an email to moderator@ndla.no',
+    },
     myProfile: {
       title: 'My Profile',
       disclaimerTitle: { employee: 'Where is my picture and name used?', student: 'Where is my name used?' },

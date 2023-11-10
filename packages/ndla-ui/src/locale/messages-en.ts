@@ -537,7 +537,7 @@ const messages = {
       files: 'Files',
       embedlink: 'Embedded link',
       concept: 'Concepts',
-      gloss: 'Glossary',
+      gloss: 'Glosses',
       podcast: 'Podcast',
       other: 'Other content',
     },

@@ -633,9 +633,9 @@ const messages = {
         copyTitle: 'Kopier innbyggingslenke',
         hasCopiedTitle: 'Innbyggingslenke kopiert',
       },
-      heading: 'Slik gjenbruker du glosar',
+      heading: 'Slik gjenbruker du gloser',
       description: 'Husk at innebygd innhald i ei glose kan ha ein anna lisens enn sjølve gloseteksten',
-      rules: 'Reglar for bruk av glose:',
+      rules: 'Regler for bruk av glose:',
       title: 'Tittel',
     },
     files: {

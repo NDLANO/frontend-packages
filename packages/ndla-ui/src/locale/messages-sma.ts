@@ -552,7 +552,7 @@ const messages = {
       files: 'Fijlh',
       embedlink: 'Sïjsebïejemesvaalhtese',
       concept: 'Buerkiestimmieh',
-      gloss: 'Gloser',
+      gloss: 'Glosa',
       podcast: 'Podkast',
       other: 'Jeatjah sisvege',
     },

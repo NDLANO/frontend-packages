@@ -16,3 +16,5 @@ export type EmbedParameter<T extends EmbedMetaData['resource']> = Partial<
 >;
 
 export type CanonicalUrlFunc<T extends EmbedMetaData['resource']> = (embed: EmbedParameter<T>) => string | undefined;
+
+export type RenderContext = 'article' | 'embed';

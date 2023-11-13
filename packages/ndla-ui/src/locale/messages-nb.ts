@@ -551,6 +551,7 @@ const messages = {
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       concept: 'Forklaringer',
+      gloss: 'Gloser',
       podcast: 'Podkast',
       other: 'Annet innhold',
     },
@@ -621,6 +622,18 @@ const messages = {
       embedlink: {
         heading: 'Slik viser du forklaringen i annet innhold',
         description: 'Denne lenken viser forklaringen uten kontekst (meny og bunntekst)',
+        copyTitle: 'Kopier innbyggingslenke',
+        hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
+    },
+    gloss: {
+      heading: 'Slik gjenbruker du gloser',
+      description: 'Husk at innebygd innhold i en glose kan ha en annen lisens enn selve gloseteksten',
+      rules: 'Regler for bruk av glose:',
+      title: 'Tittel',
+      embedlink: {
+        heading: 'Slik viser du glosen i annet innhold',
+        description: 'Denne lenken viser glosen uten kontekst (meny og bunntekst)',
         copyTitle: 'Kopier innbyggingslenke',
         hasCopiedTitle: 'Innbyggingslenke kopiert',
       },
@@ -1009,11 +1022,11 @@ const messages = {
     download: 'Last ned lydfil',
     reuse: 'Bruk lydfil',
     error: {
-      url: 'Feil ved lasting av lydfila.',
+      url: 'Feil ved lasting av lydfil.',
       caption: 'Beklager, en feil oppstod ved lasting av lydfil.',
     },
     controls: {
-      forward15sec: 'Spol 15 sekunder frem',
+      forward15sec: 'Spol 15 sekunder fram',
       rewind15sec: 'Spol 15 sekunder tilbake',
       selectSpeed: 'Velg avspillingshastighet',
       adjustVolume: 'Endre volum',
@@ -1022,8 +1035,8 @@ const messages = {
       heading: 'Tekstversjon',
       close: 'Lukk tekstversjon',
     },
-    readMoreDescriptionLabel: 'vis mer',
-    readLessDescriptionLabel: 'vis mindre',
+    readMoreDescriptionLabel: 'Vis mer',
+    readLessDescriptionLabel: 'Vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',
@@ -1292,6 +1305,17 @@ const messages = {
       radioButtonText: {
         option1: 'Vis navnet mitt når jeg deler en mappe',
         option2: 'Ikke vis navnet mitt når jeg deler mappe',
+      },
+      modalTexts: {
+        title: 'Last opp nytt profilbilde',
+        uploadSection: {
+          title: 'Dra og slipp',
+          subTitle: 'eller trykk for å laste opp bilde',
+        },
+        fileName: 'Opplastet fil:',
+        fileTypes: 'Godkjente filtyper: PNG, JPG (Maks 5MB)',
+        savePicture: 'Lagre profilbilde',
+        deletePicture: 'Slett profilbilde',
       },
     },
     resource: {

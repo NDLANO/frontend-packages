@@ -17,6 +17,7 @@ interface Props<T extends string> {
   locales: T[];
   onSelect: (locale: T) => void;
   inverted?: boolean;
+  triggerId?: string;
 }
 
 const StyledDropdownContent = styled(DropdownContent)`
@@ -60,12 +61,18 @@ const Text = styled.span`
   font-weight: ${fonts.weight.semibold};
 `;
 
-const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Props<T>) => {
+const LanguageSelector = <T extends string>({ locales, onSelect, inverted, triggerId }: Props<T>) => {
   const { t, i18n } = useTranslation();
   return (
     <DropdownMenu>
       <DropdownTrigger>
-        <ButtonV2 variant="outline" shape="pill" inverted={inverted} aria-label={t('footer.selectLanguage')}>
+        <ButtonV2
+          variant="outline"
+          shape="pill"
+          inverted={inverted}
+          aria-label={t('footer.selectLanguage')}
+          id={triggerId}
+        >
           {t(`languages.prefixChangeLanguage`)} <ChevronDown />
         </ButtonV2>
       </DropdownTrigger>

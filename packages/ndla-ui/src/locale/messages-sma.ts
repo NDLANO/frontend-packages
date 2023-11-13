@@ -552,6 +552,7 @@ const messages = {
       files: 'Fijlh',
       embedlink: 'Sïjsebïejemesvaalhtese',
       concept: 'Buerkiestimmieh',
+      gloss: 'Glosa',
       podcast: 'Podkast',
       other: 'Jeatjah sisvege',
     },
@@ -626,6 +627,18 @@ const messages = {
         description: 'Denne lenken viser forklaringen uten kontekst (meny og bunntekst)',
         copyTitle: 'Kopier innbyggingslenke',
         hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
+    },
+    gloss: {
+      heading: 'Naemhtie gïelem ikth vielie nåhtadidh',
+      description: 'Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie',
+      rules: 'Njoelkedassh guktie diejvesem nåhtadidh:',
+      title: 'Tihtele',
+      embedlink: {
+        heading: 'Naemhtie gïelem jeatjah sisvegisnie vuesehte',
+        description: 'Daate lïenghke vuesehte tjoejh konteksten namhtah (meny jïh nueliekapihtele)',
+        copyTitle: 'Kopijerh svaalhtesem sïjse loggedh',
+        hasCopiedTitle: 'Bigkeme svaalhtese kopijeradamme',
       },
     },
     files: {
@@ -1026,8 +1039,8 @@ const messages = {
       heading: 'Teeksteversjovne',
       close: 'Dahph teeksteversjovnem',
     },
-    readMoreDescriptionLabel: 'vis mer',
-    readLessDescriptionLabel: 'vis mindre',
+    readMoreDescriptionLabel: 'Vis mer',
+    readLessDescriptionLabel: 'Vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',
@@ -1295,6 +1308,17 @@ const messages = {
         option1: 'Vuesehth mov nommem gosse maabpam juekieh',
         option2: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
       },
+      modalTexts: {
+        title: 'Orre profijleguvviem bæjhkoehtidh',
+        uploadSection: {
+          title: 'Gïesh jïh luajhth',
+          subTitle: 'jallh diedtieh juktie guvviem bæjjese vaeltedh',
+        },
+        fileName: 'Bijjiedamme tjaatsege:',
+        fileTypes: 'Nænnoestamme tjaatsegh: PNG , JPG (Maakseme 5 MB)',
+        savePicture: 'Vurkehth profijleguvviem',
+        deletePicture: 'Prefikse guvviem sliejhtedh',
+      },
     },
     resource: {
       add: 'Legg til mappe/emneknagg',
@@ -1370,7 +1394,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
-      gloss: 'Glose',
+      gloss: 'Glosa',
     },
   },
   gloss: {

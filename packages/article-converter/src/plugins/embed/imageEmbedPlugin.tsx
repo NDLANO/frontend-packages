@@ -25,6 +25,7 @@ export const imageEmbedPlugin: PluginType = (element, _, opts) => {
       heartButton={opts.components?.heartButton}
       canonicalUrl={opts.canonicalUrls?.image}
       lang={opts.articleLanguage}
+      renderContext={opts.renderContext}
     />
   );
 };

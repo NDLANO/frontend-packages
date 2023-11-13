@@ -537,6 +537,7 @@ const messages = {
       files: 'Files',
       embedlink: 'Embedded link',
       concept: 'Concepts',
+      gloss: 'Glosses',
       podcast: 'Podcast',
       other: 'Other content',
     },
@@ -607,6 +608,18 @@ const messages = {
       embedlink: {
         heading: 'How to show the concept in other content',
         description: 'This url shows the concept without menu and footer',
+        copyTitle: 'Copy embed link',
+        hasCopiedTitle: 'Embed link copied',
+      },
+    },
+    gloss: {
+      heading: 'How to reuse gloss content',
+      description: 'Remember that built-in content might have a different license than the gloss text',
+      rules: 'Rules for use of gloss:',
+      title: 'Title',
+      embedlink: {
+        heading: 'How to show the gloss in other content',
+        description: 'This url shows the gloss without menu and footer',
         copyTitle: 'Copy embed link',
         hasCopiedTitle: 'Embed link copied',
       },
@@ -1023,8 +1036,8 @@ const messages = {
       heading: 'Text version',
       close: 'Close text version',
     },
-    readMoreDescriptionLabel: 'show more',
-    readLessDescriptionLabel: 'show less',
+    readMoreDescriptionLabel: 'Show more',
+    readLessDescriptionLabel: 'Show less',
   },
   h5p: {
     reuse: 'Use H5P',
@@ -1293,6 +1306,17 @@ const messages = {
       radioButtonText: {
         option1: 'Show my name when I share a folder',
         option2: 'Do not show my name when I share a folder',
+      },
+      modalTexts: {
+        title: 'Upload a new profile picture',
+        uploadSection: {
+          title: 'Drag and drop',
+          subTitle: 'or press to upload picture',
+        },
+        fileName: 'Uploaded file:',
+        fileTypes: 'Accepted file types: PNG, JPG (Max 5MB)',
+        savePicture: 'Save profile picture',
+        deletePicture: 'Delete profile picture',
       },
     },
     resource: {

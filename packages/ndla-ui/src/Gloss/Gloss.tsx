@@ -57,6 +57,7 @@ const Wrapper = styled.div`
 
 const GlossContainer = styled.div`
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
   span {

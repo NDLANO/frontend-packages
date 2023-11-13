@@ -53,6 +53,17 @@ export default {
           </>
         ),
       },
+      {
+        title: 'Hemmelig 2',
+        disabled: false,
+        id: 'secret2',
+        content: (
+          <>
+            <h2 style={{ margin: 0 }}>Ikke hemmelig</h2>
+            <p>Egentlig ikke så spennende.</p>
+          </>
+        ),
+      },
     ],
   },
 } as Meta<typeof Tabs>;

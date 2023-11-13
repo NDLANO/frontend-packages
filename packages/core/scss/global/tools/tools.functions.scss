@@ -19,9 +19,7 @@
 }
 
 @mixin chinese() {
-  [lang='zh'],
-  [lang='zh-Hans'],
-  [lang='zh-Hant'],
+  :where([lang='zh'], [lang='zh-Hans'], [lang='zh-Hant']):not([data-pinyin]),
   .u-large-body-text {
     @content;
   }

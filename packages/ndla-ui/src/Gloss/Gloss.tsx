@@ -59,6 +59,9 @@ const GlossContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
+  span {
+    ${fonts.sizes('16px', '24px')};
+  }
 `;
 
 const GlossSpan = styled.span`
@@ -112,6 +115,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                 )}
                 {glossData.transcriptions.pinyin && (
                   <span
+                    data-pinyin=""
                     key={t('gloss.transcriptions.pinyin')}
                     aria-label={t('gloss.transcriptions.pinyin')}
                     lang={glossData.originalLanguage}
@@ -140,7 +144,11 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                             {translation.example}
                           </TranslatedText>
                           {translation.transcriptions.pinyin && (
-                            <TranslatedText key={t('gloss.transcriptions.pinyin')} lang={glossData.originalLanguage}>
+                            <TranslatedText
+                              key={t('gloss.transcriptions.pinyin')}
+                              data-pinyin=""
+                              lang={glossData.originalLanguage}
+                            >
                               {translation.transcriptions?.pinyin}
                             </TranslatedText>
                           )}

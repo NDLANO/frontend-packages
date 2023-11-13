@@ -14,11 +14,11 @@ import styled from '@emotion/styled';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { COPYRIGHTED, getLicenseByAbbreviation } from '@ndla/licenses';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
 import Image, { ImageLink } from '../Image';
 import LicenseLink from '../LicenseByline/LicenseLink';
-import { CanonicalUrlFunc } from '../Embed';
+import { CanonicalUrlFuncs } from '../Embed';
 
 const BLOB_WIDTH = 90;
 
@@ -32,7 +32,7 @@ interface Props {
   name: string;
   email: string;
   lang?: string;
-  imageCanonicalUrl?: CanonicalUrlFunc<'image'>;
+  imageCanonicalUrl?: CanonicalUrlFuncs['image'];
 }
 const BlockWrapper = styled.div`
   display: flex;
@@ -163,12 +163,14 @@ const ContactBlock = ({
     ? getLicenseByAbbreviation(image.copyright.license.license, i18n.language)
     : undefined;
 
+  const isCopyrighted = image?.copyright.license.license.toLowerCase() === COPYRIGHTED;
+
   return (
     <BlockWrapper>
       <ImageWrapper>
         {image ? (
           <>
-            <LinkWrapper src={imageCanonicalUrl?.({ data: image })}>
+            <LinkWrapper src={!isCopyrighted && image ? imageCanonicalUrl?.(image) : undefined}>
               <StyledImage
                 alt={image.alttext.alttext}
                 src={image.image.imageUrl}

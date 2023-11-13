@@ -19,14 +19,14 @@ import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { CanonicalUrlFunc, HeartButtonType, RenderContext } from './types';
+import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from './types';
 
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
   path?: string;
   heartButton?: HeartButtonType;
-  canonicalUrl?: CanonicalUrlFunc<'image'>;
+  canonicalUrl?: CanonicalUrlFuncs['image'];
   inGrid?: boolean;
   lang?: string;
   renderContext?: RenderContext;
@@ -151,7 +151,12 @@ const ImageEmbed = ({
       type={imageSizes ? undefined : figureType}
       className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
     >
-      <ImageWrapper src={canonicalUrl?.(embed)} crop={crop} size={embedData.size} pagePath={path}>
+      <ImageWrapper
+        src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
+        crop={crop}
+        size={embedData.size}
+        pagePath={path}
+      >
         <Image
           focalPoint={focalPoint}
           contentType={data.image.contentType}

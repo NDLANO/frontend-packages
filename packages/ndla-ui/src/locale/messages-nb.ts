@@ -1306,6 +1306,17 @@ const messages = {
         option1: 'Vis navnet mitt når jeg deler en mappe',
         option2: 'Ikke vis navnet mitt når jeg deler mappe',
       },
+      modalTexts: {
+        title: 'Last opp nytt profilbilde',
+        uploadSection: {
+          title: 'Dra og slipp',
+          subTitle: 'eller trykk for å laste opp bilde',
+        },
+        fileName: 'Opplastet fil:',
+        fileTypes: 'Godkjente filtyper: PNG, JPG (Maks 5MB)',
+        savePicture: 'Lagre profilbilde',
+        deletePicture: 'Slett profilbilde',
+      },
     },
     resource: {
       add: 'Legg til mappe/emneknagg',

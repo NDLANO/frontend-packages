@@ -1304,6 +1304,17 @@ const messages = {
         option1: 'Čájet mu nama máhpa juohkkedettiin',
         option2: 'Ale čájet mu nama máhpa juohkkedettiin',
       },
+      modalTexts: {
+        title: 'Viečča ođđa profiila gova',
+        uploadSection: {
+          title: 'Gease ja luoitte',
+          subTitle: 'dahje coahkkal vai viežžat gova',
+        },
+        fileName: 'Sáddejuvvon fiila:',
+        fileTypes: 'Dohkkehuvvon fiilašlájat: PNG, JPG (Máksá 5MB)',
+        savePicture: 'Vurke profiilagova',
+        deletePicture: 'Sihko profiilagova',
+      },
     },
     resource: {
       add: 'Lasit máhpa/fáddágilkora',

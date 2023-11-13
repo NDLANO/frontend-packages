@@ -1307,6 +1307,17 @@ const messages = {
         option1: 'Show my name when I share a folder',
         option2: 'Do not show my name when I share a folder',
       },
+      modalTexts: {
+        title: 'Upload a new profile picture',
+        uploadSection: {
+          title: 'Drag and drop',
+          subTitle: 'or press to upload picture',
+        },
+        fileName: 'Uploaded file:',
+        fileTypes: 'Accepted file types: PNG, JPG (Max 5MB)',
+        savePicture: 'Save profile picture',
+        deletePicture: 'Delete profile picture',
+      },
     },
     resource: {
       add: 'Add folder/tag',

@@ -65,10 +65,6 @@ const GlossSpan = styled.span`
   font-weight: ${fonts.weight.bold};
 `;
 
-const TypeSpan = styled.span`
-  font-style: italic;
-`;
-
 const StyledAccordionHeader = styled(AccordionHeader)`
   font-family: ${fonts.sans};
   ${fonts.sizes('16px', '24px')};
@@ -124,9 +120,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                   </span>
                 )}
                 {glossData.wordClass && (
-                  <TypeSpan aria-label={t('gloss.wordClass')}>
-                    {t(`wordClass.${glossData.wordClass}`).toLowerCase()}
-                  </TypeSpan>
+                  <span aria-label={t('gloss.wordClass')}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
                 )}
               </GlossContainer>
               {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}

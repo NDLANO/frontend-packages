@@ -1302,7 +1302,7 @@ const messages = {
           subTitle: 'jallh diedtieh juktie guvviem bæjjese vaeltedh',
         },
         fileName: 'Bijjiedamme tjaatsege:',
-        fileTypes: 'Fïjlesaemieh mah leah jååhkesjamme: PNG , JPG (Maakseme 5 MB)',
+        fileTypes: 'Nænnoestamme tjaatsegh: PNG , JPG (Maakseme 5 MB)',
         savePicture: 'Vurkehth profijleguvviem',
         deletePicture: 'Prefikse guvviem sliejhtedh',
       },

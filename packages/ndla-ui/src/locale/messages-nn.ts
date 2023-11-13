@@ -1300,7 +1300,7 @@ const messages = {
           subTitle: 'eller trykk for å lasta opp bilete',
         },
         fileName: 'Opplasta fil:',
-        fileTypes: 'Filtypar som er aksepterte: PNG, JPG (Maks 5MB)',
+        fileTypes: 'Godkjente filtyper: PNG, JPG (Maks 5MB)',
         savePicture: 'Lagre profilbilete',
         deletePicture: 'Slett profilbilete',
       },

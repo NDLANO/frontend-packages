@@ -129,7 +129,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
               </GlossContainer>
               {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
             </Wrapper>
-            <span>{title.title}</span>
+            <span lang={title.language}>{title.title}</span>
           </Container>
           {glossData.examples && glossData.examples.length > 0 && (
             <AccordionRoot type="single" collapsible>
@@ -140,7 +140,9 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                     <div key={index}>
                       {example.map((translation, innerIndex) => (
                         <div key={`${index}_${innerIndex}`}>
-                          <TranslatedText data-first={innerIndex === 0}>{translation.example}</TranslatedText>
+                          <TranslatedText data-first={innerIndex === 0} lang={translation.language}>
+                            {translation.example}
+                          </TranslatedText>
                           {translation.transcriptions.pinyin && (
                             <TranslatedText key={t('gloss.transcriptions.pinyin')} lang={glossData.originalLanguage}>
                               {translation.transcriptions?.pinyin}

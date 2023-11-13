@@ -78,7 +78,7 @@ export const Chinese: StoryObj<typeof Heading> = {
       <Heading {...args} headingStyle="h3" />
       <Heading {...args} headingStyle="list-title" />
       <Heading {...args} data-pinyin="">
-        Pinyin does not get larger
+        Pinyin does not get larger if marked with data-pinyin
       </Heading>
     </>
   ),

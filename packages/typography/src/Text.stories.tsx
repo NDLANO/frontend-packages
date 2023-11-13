@@ -82,7 +82,7 @@ export const Chinese: StoryObj<typeof Text> = {
       <Text {...args} textStyle="meta-text-large" />
       <Text {...args} textStyle="meta-text-small" />
       <Text {...args} data-pinyin="">
-        Pinyin does not get larger
+        Pinyin does not get larger if marked with data-pinyin
       </Text>
     </>
   ),

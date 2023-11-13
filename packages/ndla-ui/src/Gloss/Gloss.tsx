@@ -62,6 +62,9 @@ const GlossContainer = styled.div`
   span {
     ${fonts.sizes('16px', '24px')};
   }
+  span[data-pinyin] {
+    font-style: italic;
+  }
 `;
 
 const GlossSpan = styled.span`
@@ -90,6 +93,9 @@ const TranslatedText = styled.span`
     color: ${colors.brand.dark};
     font-weight: ${fonts.weight.bold};
     background-color: ${colors.background.lightBlue};
+  }
+  &[data-pinyin] {
+    font-style: italic;
   }
 `;
 

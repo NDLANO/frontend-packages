@@ -31,6 +31,8 @@ const fonts = {
       content: sizes('18px', '29px'),
       metaTextSmall: sizes('16px', '24px'),
       metaTextLarge: sizes('18px', '24px'),
+      labelLarge: sizes('24px', '36px'),
+      labelSmall: sizes('18px', '32px'),
     },
   },
 };

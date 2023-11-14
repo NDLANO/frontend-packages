@@ -47,6 +47,7 @@ const TabsRoot = styled(Root)`
       z-index: 1;
       position: relative;
       &[data-state='active'] {
+        cursor: default;
         background-color: ${colors.brand.lighter};
         border-bottom: none;
         z-index: 2;
@@ -60,7 +61,7 @@ const TabsRoot = styled(Root)`
       &:last-of-type {
         border-top-right-radius: ${misc.borderRadius};
       }
-      &:hover {
+      &[data-state='inactive']:hover {
         color: ${colors.text.primary};
       }
       &[data-disabled] {
@@ -102,6 +103,7 @@ const TabsRoot = styled(Root)`
         color: ${colors.brand.primary};
       }
       &[data-state='active'] {
+        cursor: default;
         color: ${colors.brand.primary};
         border-bottom-color: ${colors.brand.primary};
       }

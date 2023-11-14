@@ -27,11 +27,7 @@
     "types"
   ],
   "peerDependencies": {
-    "@emotion/react": "^11.10.4",
     "react": ">= 16.8.0"
-  },
-  "dependencies": {
-    "html-react-parser": "^4.2.2"
   },
   "publishConfig": {
     "access": "public"

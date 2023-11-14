@@ -40,6 +40,14 @@ const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   'meta-text-large': css`
     ${fonts.size.text.metaTextLarge};
   `,
+  'label-large': css`
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.size.text.labelLarge};
+  `,
+  'label-small': css`
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.size.text.labelSmall};
+  `,
 };
 
 const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
@@ -63,7 +71,15 @@ const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
   normal: css``,
 };
 
-type TextVariant = 'ingress' | 'button' | 'content' | 'content-alt' | 'meta-text-small' | 'meta-text-large';
+type TextVariant =
+  | 'ingress'
+  | 'button'
+  | 'content'
+  | 'content-alt'
+  | 'meta-text-small'
+  | 'meta-text-large'
+  | 'label-large'
+  | 'label-small';
 
 interface Props<T extends ElementType> {
   element?: T;

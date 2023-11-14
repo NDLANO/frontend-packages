@@ -68,6 +68,12 @@ export const MetaTextSmall: StoryObj<typeof Text> = {
   },
 };
 
+export const Polymorphic: StoryFn<typeof Text> = () => (
+  <Text element="a" href="https://www.ndla.no">
+    Text components can be transformed to anything with the element prop!
+  </Text>
+);
+
 /**
  * Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten skal være lesbar. Tekststil blir automatisk endret når en setter kinesisk som språk på en Text-komponent.
  */

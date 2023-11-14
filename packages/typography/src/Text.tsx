@@ -6,9 +6,10 @@
  *
  */
 
-import { ComponentProps, ElementType, ReactNode, ComponentPropsWithoutRef } from 'react';
+import { ReactNode } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { PolymorphicProps, polymorphicForwardRef } from '@ndla/util';
 import { MarginVariant } from './types';
 
 const baseStyle = css`
@@ -81,29 +82,18 @@ type TextVariant =
   | 'label-large'
   | 'label-small';
 
-interface Props<T extends ElementType> {
-  element?: T;
-  textStyle: TextVariant;
+export interface TextProps {
+  textStyle?: TextVariant;
   margin?: MarginVariant;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 /**
  * Text-komponent som definerer styling for alle tekst-elementer (ingress, brødtekst, metatekst, knappetekst) som brukes i ed, ndla-frontend, listing.
  */
-const Text = <T extends ElementType>({
-  element,
-  textStyle,
-  margin = 'normal',
-  children,
-  ...rest
-}: Props<T> & Omit<ComponentProps<T>, 'children'>) => {
-  const Element = element ?? 'p';
-  return (
-    <Element css={[baseStyle, elementStyle[textStyle], elementMarginStyle[margin]]} {...rest}>
-      {children}
-    </Element>
-  );
-};
+const Text = polymorphicForwardRef<PolymorphicProps<'p'> & TextProps, 'p'>((props, ref) => {
+  const { element: Element = 'p', textStyle = 'content', margin = 'normal', ...rest } = props;
+  return <Element css={[baseStyle, elementStyle[textStyle], elementMarginStyle[margin]]} {...rest} ref={ref} />;
+});
 
 export default Text;

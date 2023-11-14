@@ -17,6 +17,7 @@ export interface IframeEmbedData {
   height?: string;
   title?: string;
   caption?: string;
+  alt?: string;
   imageid?: string;
 }
 

@@ -29,6 +29,7 @@ interface Props {
   imageWidth?: number;
   name: string;
   email: string;
+  embedAlt?: string;
   lang?: string;
 }
 const BlockWrapper = styled.div`
@@ -135,6 +136,7 @@ const ContactBlock = ({
   description,
   name,
   email,
+  embedAlt,
   blobColor = 'green',
   blob = 'pointy',
   lang,
@@ -153,7 +155,7 @@ const ContactBlock = ({
         {image ? (
           <>
             <StyledImage
-              alt={image.alttext.alttext}
+              alt={embedAlt !== undefined ? embedAlt : image.alttext.alttext}
               src={image.image.imageUrl}
               sizes={`(min-width: ${breakpoints.tablet}) 240px, (max-width: ${breakpoints.tablet}) 500px`}
             />

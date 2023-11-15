@@ -61,9 +61,30 @@ export const MetaTextLarge: StoryObj<typeof Text> = {
   },
 };
 
+export const MetaTextMedium: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'meta-text-small',
+    children: exampleText,
+  },
+};
+
 export const MetaTextSmall: StoryObj<typeof Text> = {
   args: {
     textStyle: 'meta-text-small',
+    children: exampleText,
+  },
+};
+
+export const MetaTextXSmall: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'meta-text-xsmall',
+    children: exampleText,
+  },
+};
+
+export const MetaTextXXSmall: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'meta-text-xxsmall',
     children: exampleText,
   },
 };
@@ -80,7 +101,10 @@ export const Chinese: StoryObj<typeof Text> = {
       <Text {...args} textStyle="content" />
       <Text {...args} textStyle="content-alt" />
       <Text {...args} textStyle="meta-text-large" />
+      <Text {...args} textStyle="meta-text-medium" />
       <Text {...args} textStyle="meta-text-small" />
+      <Text {...args} textStyle="meta-text-xsmall" />
+      <Text {...args} textStyle="meta-text-xxsmall" />
       <Text {...args} data-pinyin="">
         Pinyin does not get larger if marked with data-pinyin
       </Text>

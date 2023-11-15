@@ -31,6 +31,7 @@ interface Props {
   imageWidth?: number;
   name: string;
   email: string;
+  embedAlt?: string;
   lang?: string;
   imageCanonicalUrl?: CanonicalUrlFuncs['image'];
 }
@@ -150,6 +151,7 @@ const ContactBlock = ({
   description,
   name,
   email,
+  embedAlt,
   blobColor = 'green',
   blob = 'pointy',
   imageCanonicalUrl,
@@ -172,7 +174,7 @@ const ContactBlock = ({
           <>
             <LinkWrapper src={!isCopyrighted && image ? imageCanonicalUrl?.(image) : undefined}>
               <StyledImage
-                alt={image.alttext.alttext}
+                alt={embedAlt !== undefined ? embedAlt : image.alttext.alttext}
                 src={image.image.imageUrl}
                 sizes={`(min-width: ${breakpoints.tablet}) 240px, (max-width: ${breakpoints.tablet}) 500px`}
               />

@@ -19,13 +19,14 @@ import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType, RenderContext } from './types';
+import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from './types';
 
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
   path?: string;
   heartButton?: HeartButtonType;
+  canonicalUrl?: CanonicalUrlFuncs['image'];
   inGrid?: boolean;
   lang?: string;
   renderContext?: RenderContext;
@@ -113,6 +114,7 @@ const ImageEmbed = ({
   inGrid,
   path,
   lang,
+  canonicalUrl,
   renderContext = 'article',
 }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
@@ -150,7 +152,7 @@ const ImageEmbed = ({
       className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
     >
       <ImageWrapper
-        src={!isCopyrighted ? embedData.pageUrl || data.image.imageUrl : undefined}
+        src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}
         size={embedData.size}
         pagePath={path}

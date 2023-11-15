@@ -6,6 +6,7 @@
  *
  */
 
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import concat from 'lodash/concat';
 import { css } from '@emotion/react';
@@ -13,10 +14,11 @@ import styled from '@emotion/styled';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { COPYRIGHTED, getLicenseByAbbreviation } from '@ndla/licenses';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
-import Image from '../Image';
+import Image, { ImageLink } from '../Image';
 import LicenseLink from '../LicenseByline/LicenseLink';
+import { CanonicalUrlFuncs } from '../Embed';
 
 const BLOB_WIDTH = 90;
 
@@ -31,6 +33,7 @@ interface Props {
   email: string;
   embedAlt?: string;
   lang?: string;
+  imageCanonicalUrl?: CanonicalUrlFuncs['image'];
 }
 const BlockWrapper = styled.div`
   display: flex;
@@ -130,6 +133,18 @@ const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
+interface LinkWrapperProps {
+  src?: string;
+  children: ReactNode;
+}
+
+const LinkWrapper = ({ src, children }: LinkWrapperProps) => {
+  if (src) {
+    return <ImageLink src={src}>{children}</ImageLink>;
+  }
+  return children;
+};
+
 const ContactBlock = ({
   image,
   jobTitle,
@@ -139,6 +154,7 @@ const ContactBlock = ({
   embedAlt,
   blobColor = 'green',
   blob = 'pointy',
+  imageCanonicalUrl,
   lang,
 }: Props) => {
   const { t, i18n } = useTranslation();
@@ -149,16 +165,20 @@ const ContactBlock = ({
     ? getLicenseByAbbreviation(image.copyright.license.license, i18n.language)
     : undefined;
 
+  const isCopyrighted = image?.copyright.license.license.toLowerCase() === COPYRIGHTED;
+
   return (
     <BlockWrapper>
       <ImageWrapper>
         {image ? (
           <>
-            <StyledImage
-              alt={embedAlt !== undefined ? embedAlt : image.alttext.alttext}
-              src={image.image.imageUrl}
-              sizes={`(min-width: ${breakpoints.tablet}) 240px, (max-width: ${breakpoints.tablet}) 500px`}
-            />
+            <LinkWrapper src={!isCopyrighted && image ? imageCanonicalUrl?.(image) : undefined}>
+              <StyledImage
+                alt={embedAlt !== undefined ? embedAlt : image.alttext.alttext}
+                src={image.image.imageUrl}
+                sizes={`(min-width: ${breakpoints.tablet}) 240px, (max-width: ${breakpoints.tablet}) 500px`}
+              />
+            </LinkWrapper>
             <span>
               {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')} `}
               {!!license && <LicenseLink license={license} asLink={!!license.url.length} />}

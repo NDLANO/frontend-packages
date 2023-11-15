@@ -23,6 +23,7 @@ export const imageEmbedPlugin: PluginType = (element, _, opts) => {
       path={opts.path}
       previewAlt={opts.previewAlt}
       heartButton={opts.components?.heartButton}
+      canonicalUrl={opts.canonicalUrls?.image}
       lang={opts.articleLanguage}
       renderContext={opts.renderContext}
     />

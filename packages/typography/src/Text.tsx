@@ -6,9 +6,9 @@
  *
  */
 
-import { ComponentProps, ElementType, ReactNode, ComponentPropsWithoutRef } from 'react';
+import { ComponentProps, ElementType, ReactNode } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { MarginVariant } from './types';
 
 const baseStyle = css`
@@ -33,6 +33,9 @@ const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   `,
   'content-alt': css`
     ${fonts.size.text.metaTextLarge};
+  `,
+  'meta-text-extra-small': css`
+    ${fonts.size.text.metaTextExtraSmall};
   `,
   'meta-text-small': css`
     ${fonts.size.text.metaTextSmall};
@@ -63,7 +66,14 @@ const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
   normal: css``,
 };
 
-type TextVariant = 'ingress' | 'button' | 'content' | 'content-alt' | 'meta-text-small' | 'meta-text-large';
+type TextVariant =
+  | 'ingress'
+  | 'button'
+  | 'content'
+  | 'content-alt'
+  | 'meta-text-extra-small'
+  | 'meta-text-small'
+  | 'meta-text-large';
 
 interface Props<T extends ElementType> {
   element?: T;

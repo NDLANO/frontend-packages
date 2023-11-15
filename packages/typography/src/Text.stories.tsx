@@ -68,6 +68,13 @@ export const MetaTextSmall: StoryObj<typeof Text> = {
   },
 };
 
+export const MetaTextExtraSmall: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'meta-text-extra-small',
+    children: exampleText,
+  },
+};
+
 /**
  * Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten skal være lesbar. Tekststil blir automatisk endret når en setter kinesisk som språk på en Text-komponent.
  */
@@ -81,6 +88,7 @@ export const Chinese: StoryObj<typeof Text> = {
       <Text {...args} textStyle="content-alt" />
       <Text {...args} textStyle="meta-text-large" />
       <Text {...args} textStyle="meta-text-small" />
+      <Text {...args} textStyle="meta-text-extra-small" />
     </>
   ),
 };

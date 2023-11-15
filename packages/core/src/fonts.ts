@@ -29,6 +29,7 @@ const fonts = {
       ingress: sizes('20px', '31px'),
       button: sizes('16px', '24px'),
       content: sizes('18px', '29px'),
+      metaTextExtraSmall: sizes('10px', '12px'),
       metaTextSmall: sizes('16px', '24px'),
       metaTextLarge: sizes('18px', '24px'),
     },

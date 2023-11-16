@@ -6,9 +6,9 @@
  *
  */
 
-import { ComponentProps, ElementType, ReactNode, ComponentPropsWithoutRef } from 'react';
+import { ComponentProps, ElementType, ReactNode } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { MarginVariant } from './types';
 
 const baseStyle = css`
@@ -32,13 +32,25 @@ const elementStyle: { [key in TextVariant]: SerializedStyles } = {
     ${fonts.size.text.content};
   `,
   'content-alt': css`
-    ${fonts.size.text.metaTextLarge};
+    ${fonts.size.text.metaText.large};
+  `,
+  'meta-text-xxsmall': css`
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.size.text.metaText.xxsmall};
+  `,
+  'meta-text-xsmall': css`
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.size.text.metaText.xsmall};
   `,
   'meta-text-small': css`
-    ${fonts.size.text.metaTextSmall};
+    ${fonts.size.text.metaText.small};
+  `,
+  'meta-text-medium': css`
+    ${fonts.size.text.metaText.medium};
   `,
   'meta-text-large': css`
-    ${fonts.size.text.metaTextLarge};
+    font-weight: ${fonts.weight.bold};
+    ${fonts.size.text.metaText.large};
   `,
 };
 
@@ -63,7 +75,16 @@ const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
   normal: css``,
 };
 
-type TextVariant = 'ingress' | 'button' | 'content' | 'content-alt' | 'meta-text-small' | 'meta-text-large';
+type TextVariant =
+  | 'ingress'
+  | 'button'
+  | 'content'
+  | 'content-alt'
+  | 'meta-text-xxsmall'
+  | 'meta-text-xsmall'
+  | 'meta-text-small'
+  | 'meta-text-medium'
+  | 'meta-text-large';
 
 interface Props<T extends ElementType> {
   element?: T;

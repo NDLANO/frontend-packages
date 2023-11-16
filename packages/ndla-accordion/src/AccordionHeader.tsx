@@ -58,7 +58,7 @@ const StyledChevron = styled(ChevronDown)`
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   indicator?: ReactNode;
   headerCSS?: SerializedStyles;
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
 }
 
 const AccordionHeader = forwardRef<HTMLButtonElement, Props>(

@@ -6,9 +6,10 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import Text from './Text';
+import { ArgTypes, Meta, StoryFn, StoryObj } from '@storybook/react';
+import Text, { TextVariant, elementMarginStyle, elementStyle } from './Text';
 import { defaultParameters } from '../../../stories/defaults';
+import { MarginVariant } from './types';
 
 const exampleText = 'Nasjonal digital læringsarena';
 
@@ -29,7 +30,30 @@ export default {
     element: 'p',
     textStyle: 'ingress',
     children: exampleText,
+    margin: 'normal',
   },
+  argTypes: {
+    margin: {
+      control: {
+        type: 'radio',
+      },
+      description: 'Available margin styles',
+      options: Object.keys(elementMarginStyle) as MarginVariant[],
+    },
+    textStyle: {
+      type: 'select',
+      description: 'Available text styles',
+      options: Object.keys(elementStyle) as TextVariant[],
+    },
+    children: {
+      description: 'What to render within the text',
+      type: 'string',
+    },
+    element: {
+      type: 'text',
+      description: 'Any ElementType',
+    },
+  } as ArgTypes<typeof Text>,
 } as Meta<typeof Text>;
 
 export const Ingress: StoryFn<typeof Text> = (args) => {
@@ -61,9 +85,44 @@ export const MetaTextLarge: StoryObj<typeof Text> = {
   },
 };
 
+export const MetaTextMedium: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'meta-text-medium',
+    children: exampleText,
+  },
+};
+
 export const MetaTextSmall: StoryObj<typeof Text> = {
   args: {
     textStyle: 'meta-text-small',
+    children: exampleText,
+  },
+};
+
+export const LabelSmall: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'label-small',
+    children: exampleText,
+  },
+};
+
+export const LabelLarge: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'label-large',
+    children: exampleText,
+  },
+};
+
+export const MetaTextXSmall: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'meta-text-xsmall',
+    children: exampleText,
+  },
+};
+
+export const MetaTextXXSmall: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'meta-text-xxsmall',
     children: exampleText,
   },
 };
@@ -86,7 +145,10 @@ export const Chinese: StoryObj<typeof Text> = {
       <Text {...args} textStyle="content" />
       <Text {...args} textStyle="content-alt" />
       <Text {...args} textStyle="meta-text-large" />
+      <Text {...args} textStyle="meta-text-medium" />
       <Text {...args} textStyle="meta-text-small" />
+      <Text {...args} textStyle="meta-text-xsmall" />
+      <Text {...args} textStyle="meta-text-xxsmall" />
       <Text {...args} data-pinyin="">
         Pinyin does not get larger if marked with data-pinyin
       </Text>

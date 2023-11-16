@@ -17,7 +17,7 @@ const baseStyle = css`
   font-weight: ${fonts.weight.normal};
 `;
 
-const elementStyle: { [key in TextVariant]: SerializedStyles } = {
+export const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   ingress: css`
     ${fonts.size.text.ingress};
     ${mq.range({ from: breakpoints.tablet })} {
@@ -33,25 +33,37 @@ const elementStyle: { [key in TextVariant]: SerializedStyles } = {
     ${fonts.size.text.content};
   `,
   'content-alt': css`
-    ${fonts.size.text.metaTextLarge};
+    ${fonts.size.text.metaText.large};
+  `,
+  'meta-text-xxsmall': css`
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.size.text.metaText.xxsmall};
+  `,
+  'meta-text-xsmall': css`
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.size.text.metaText.xsmall};
   `,
   'meta-text-small': css`
-    ${fonts.size.text.metaTextSmall};
+    ${fonts.size.text.metaText.small};
+  `,
+  'meta-text-medium': css`
+    ${fonts.size.text.metaText.medium};
   `,
   'meta-text-large': css`
-    ${fonts.size.text.metaTextLarge};
+    font-weight: ${fonts.weight.bold};
+    ${fonts.size.text.metaText.large};
   `,
   'label-large': css`
     font-weight: ${fonts.weight.semibold};
-    ${fonts.size.text.labelLarge};
+    ${fonts.size.text.label.large};
   `,
   'label-small': css`
     font-weight: ${fonts.weight.semibold};
-    ${fonts.size.text.labelSmall};
+    ${fonts.size.text.label.small};
   `,
 };
 
-const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
+export const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
   xlarge: css`
     margin: ${spacing.normal} 0 ${spacing.small} 0;
     ${mq.range({ from: breakpoints.tablet })} {
@@ -72,12 +84,15 @@ const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
   normal: css``,
 };
 
-type TextVariant =
+export type TextVariant =
   | 'ingress'
   | 'button'
   | 'content'
   | 'content-alt'
+  | 'meta-text-xxsmall'
+  | 'meta-text-xsmall'
   | 'meta-text-small'
+  | 'meta-text-medium'
   | 'meta-text-large'
   | 'label-large'
   | 'label-small';

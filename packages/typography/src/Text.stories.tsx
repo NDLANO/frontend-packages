@@ -63,7 +63,7 @@ export const MetaTextLarge: StoryObj<typeof Text> = {
 
 export const MetaTextMedium: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'meta-text-small',
+    textStyle: 'meta-text-medium',
     children: exampleText,
   },
 };

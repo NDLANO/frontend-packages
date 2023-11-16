@@ -32,25 +32,25 @@ const elementStyle: { [key in TextVariant]: SerializedStyles } = {
     ${fonts.size.text.content};
   `,
   'content-alt': css`
-    ${fonts.size.text.metaTextLarge};
+    ${fonts.size.text.metaText.large};
   `,
   'meta-text-xxsmall': css`
     font-weight: ${fonts.weight.semibold};
-    ${fonts.size.text.metaTextxxsmall};
+    ${fonts.size.text.metaText.xxsmall};
   `,
   'meta-text-xsmall': css`
     font-weight: ${fonts.weight.semibold};
-    ${fonts.size.text.metaTextxsmall};
+    ${fonts.size.text.metaText.xsmall};
   `,
   'meta-text-small': css`
-    ${fonts.size.text.metaTextSmall};
+    ${fonts.size.text.metaText.small};
   `,
   'meta-text-medium': css`
-    ${fonts.size.text.metaTextMedium};
+    ${fonts.size.text.metaText.medium};
   `,
   'meta-text-large': css`
     font-weight: ${fonts.weight.bold};
-    ${fonts.size.text.metaTextLarge};
+    ${fonts.size.text.metaText.large};
   `,
 };
 

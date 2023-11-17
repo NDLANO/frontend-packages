@@ -1186,6 +1186,18 @@ const messages = {
         },
       },
     },
+    arena: {
+      title: 'Arena',
+      notification: {
+        title: 'Muittuhusat',
+        showAll: 'Čájet buot dieđuid',
+        description:
+          'Bures boahtin NDLA Arenai. Dáppe sáhtát digaštallat, juogadit ja ovttasbargat eará oahpaheddjiiguin olles Norggas. Sierra fágaide ja fáttáide gávdnojit forumat.',
+        myNotification: 'Mu signállat',
+        markAll: 'Merke visot lohkon',
+        commentedOn: 'vástidedje du sáhkavuoru',
+      },
+    },
     iconMenu: {
       folders: 'Mapper',
       tags: 'Knagger',

@@ -1188,6 +1188,18 @@ const messages = {
         },
       },
     },
+    arena: {
+      title: 'Sijjie',
+      notification: {
+        title: 'Bïeljelimmie',
+        showAll: 'Gaajhkh bæjhkoehtimmieh vuartasjidh',
+        description:
+          'Buerie båeteme NDLA Aernesne . Daesnie maahtah digkiedidh , juekedh jïh laavenjostedh jeatjah lohkehtæjjajgujmie abpe Nöörjeste . Datne gaavnh forume, ovmessie faagh jïh aamhtesh .',
+        myNotification: 'Mov tjoejemolseme',
+        markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
+        commentedOn: 'vaestiedi gåessie dov saarnoeh',
+      },
+    },
     iconMenu: {
       folders: 'Mapper',
       tags: 'Knagger',

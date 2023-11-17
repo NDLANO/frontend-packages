@@ -1184,6 +1184,18 @@ const messages = {
         },
       },
     },
+    arena: {
+      title: 'Arena',
+      notification: {
+        title: 'Varslingar',
+        showAll: 'Sjå alle varslingar',
+        description:
+          'Velkomen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærarar frå heile Noreg. Du finn forum for ulike fag og tema.',
+        myNotification: 'Mine varsler',
+        markAll: 'Merk alle som lest',
+        commentedOn: 'svarte på ditt innlegg',
+      },
+    },
     iconMenu: {
       folders: 'Mappar',
       tags: 'Knaggar',

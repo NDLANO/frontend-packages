@@ -1184,6 +1184,18 @@ const messages = {
         },
       },
     },
+    arena: {
+      title: 'Arena',
+      notification: {
+        title: 'Varslinger',
+        showAll: 'Se alle varslinger',
+        description:
+          'Velkommen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærere fra hele Norge. Du finner forum for ulike fag og tema.',
+        myNotification: 'Mine varsler',
+        markAll: 'Merk alle som lest',
+        commentedOn: 'svarte på ditt innlegg',
+      },
+    },
     iconMenu: {
       folders: 'Mapper',
       tags: 'Knagger',

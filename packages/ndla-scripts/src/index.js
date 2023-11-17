@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('./run-script');
+import('./run-script.js');

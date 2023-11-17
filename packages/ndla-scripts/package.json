@@ -3,9 +3,10 @@
   "version": "1.0.4",
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",
-  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "type": "module",
   "bin": {
-    "ndla-scripts": "src/index.js"
+    "ndla-scripts": "./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,9 @@
   "keywords": [
     "ndla"
   ],
+  "engines": {
+    "node": ">= 20.6.0"
+  },
   "author": "ndla@knowit.no",
   "files": [
     "src"
@@ -21,10 +25,10 @@
   "dependencies": {
     "cross-spawn": "^7.0.3",
     "cross-spawn-promise": "^0.10.2",
-    "normalize-url": "^4.1.0",
-    "octokit": "^2.0.14",
-    "url-regex": "^4.1.1",
-    "vercel": "^27.2.0"
+    "normalize-url": "^8.0.0",
+    "octokit": "^3.1.2",
+    "url-regex-safe": "^4.0.0",
+    "vercel": "^32.2.5"
   },
   "publishConfig": {
     "access": "public"

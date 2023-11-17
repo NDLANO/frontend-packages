@@ -99,20 +99,6 @@ export const MetaTextSmall: StoryObj<typeof Text> = {
   },
 };
 
-export const LabelSmall: StoryObj<typeof Text> = {
-  args: {
-    textStyle: 'label-small',
-    children: exampleText,
-  },
-};
-
-export const LabelLarge: StoryObj<typeof Text> = {
-  args: {
-    textStyle: 'label-large',
-    children: exampleText,
-  },
-};
-
 export const MetaTextXSmall: StoryObj<typeof Text> = {
   args: {
     textStyle: 'meta-text-xsmall',
@@ -123,6 +109,20 @@ export const MetaTextXSmall: StoryObj<typeof Text> = {
 export const MetaTextXXSmall: StoryObj<typeof Text> = {
   args: {
     textStyle: 'meta-text-xxsmall',
+    children: exampleText,
+  },
+};
+
+export const LabelSmall: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'label-small',
+    children: exampleText,
+  },
+};
+
+export const LabelLarge: StoryObj<typeof Text> = {
+  args: {
+    textStyle: 'label-large',
     children: exampleText,
   },
 };

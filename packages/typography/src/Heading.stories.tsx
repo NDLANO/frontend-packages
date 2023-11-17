@@ -57,6 +57,13 @@ export const H3: StoryObj<typeof Heading> = {
   },
 };
 
+export const H4: StoryObj<typeof Heading> = {
+  args: {
+    headingStyle: 'h4',
+    children: exampleText,
+  },
+};
+
 export const listTitle: StoryObj<typeof Heading> = {
   args: {
     headingStyle: 'list-title',

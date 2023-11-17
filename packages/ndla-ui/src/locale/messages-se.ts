@@ -1169,13 +1169,13 @@ const messages = {
     arena: {
       title: 'Arena',
       notification: {
-        title: 'Varslingar',
-        showAll: 'Sjå alle varslingar',
+        title: 'Muittuhusat',
+        showAll: 'Čájet buot dieđuid',
         description:
-          'Velkommen til NDLAs Arena. Her kan du diskutera, dela og samarbeide med andre lærare frå heile Noreg. Du finner forum for ulike fag og tema.',
-        myNotification: 'Mine varsler',
-        markAll: 'Merk alle som lest',
-        commentedOn: 'svarte på ditt innlegg',
+          'Bures boahtin NDLA Arenai. Dáppe sáhtát digaštallat, juogadit ja ovttasbargat eará oahpaheddjiiguin olles Norggas. Sierra fágaide ja fáttáide gávdnojit forumat.',
+        myNotification: 'Mu signállat',
+        markAll: 'Merke visot lohkon',
+        commentedOn: 'vástidedje du sáhkavuoru',
       },
     },
     iconMenu: {

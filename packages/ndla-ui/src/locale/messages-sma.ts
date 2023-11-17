@@ -1170,15 +1170,15 @@ const messages = {
       },
     },
     arena: {
-      title: 'Arena',
+      title: 'Sijjie',
       notification: {
-        title: 'Varslingar',
-        showAll: 'Sjå alle varslingar',
+        title: 'Bïeljelimmie',
+        showAll: 'Gaajhkh bæjhkoehtimmieh vuartasjidh',
         description:
-          'Velkommen til NDLAs Arena. Her kan du diskutera, dela og samarbeide med andre lærare frå heile Noreg. Du finner forum for ulike fag og tema.',
-        myNotification: 'Mine varsler',
-        markAll: 'Merk alle som lest',
-        commentedOn: 'svarte på ditt innlegg',
+          'Buerie båeteme NDLA Aernesne . Daesnie maahtah digkiedidh , juekedh jïh laavenjostedh jeatjah lohkehtæjjajgujmie abpe Nöörjeste . Datne gaavnh forume , ovmessie faagh jïh aamhtesh .',
+        myNotification: 'Mov tjoejemolseme',
+        markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
+        commentedOn: 'vaestiedi gåessie dov saarnoeh',
       },
     },
     iconMenu: {

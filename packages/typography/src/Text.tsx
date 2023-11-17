@@ -6,9 +6,10 @@
  *
  */
 
-import { ComponentProps, ElementType, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { PolymorphicProps, polymorphicForwardRef } from '@ndla/util';
 import { MarginVariant } from './types';
 
 const baseStyle = css`
@@ -16,7 +17,7 @@ const baseStyle = css`
   font-weight: ${fonts.weight.normal};
 `;
 
-const elementStyle: { [key in TextVariant]: SerializedStyles } = {
+export const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   ingress: css`
     ${fonts.size.text.ingress};
     ${mq.range({ from: breakpoints.tablet })} {
@@ -52,9 +53,17 @@ const elementStyle: { [key in TextVariant]: SerializedStyles } = {
     font-weight: ${fonts.weight.bold};
     ${fonts.size.text.metaText.large};
   `,
+  'label-large': css`
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.size.text.label.large};
+  `,
+  'label-small': css`
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.size.text.label.small};
+  `,
 };
 
-const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
+export const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
   xlarge: css`
     margin: ${spacing.normal} 0 ${spacing.small} 0;
     ${mq.range({ from: breakpoints.tablet })} {
@@ -75,7 +84,7 @@ const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = {
   normal: css``,
 };
 
-type TextVariant =
+export type TextVariant =
   | 'ingress'
   | 'button'
   | 'content'
@@ -84,31 +93,22 @@ type TextVariant =
   | 'meta-text-xsmall'
   | 'meta-text-small'
   | 'meta-text-medium'
-  | 'meta-text-large';
+  | 'meta-text-large'
+  | 'label-large'
+  | 'label-small';
 
-interface Props<T extends ElementType> {
-  element?: T;
-  textStyle: TextVariant;
+export interface TextProps {
+  textStyle?: TextVariant;
   margin?: MarginVariant;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 /**
  * Text-komponent som definerer styling for alle tekst-elementer (ingress, brødtekst, metatekst, knappetekst) som brukes i ed, ndla-frontend, listing.
  */
-const Text = <T extends ElementType>({
-  element,
-  textStyle,
-  margin = 'normal',
-  children,
-  ...rest
-}: Props<T> & Omit<ComponentProps<T>, 'children'>) => {
-  const Element = element ?? 'p';
-  return (
-    <Element css={[baseStyle, elementStyle[textStyle], elementMarginStyle[margin]]} {...rest}>
-      {children}
-    </Element>
-  );
-};
+const Text = polymorphicForwardRef<PolymorphicProps<'p'> & TextProps, 'p'>((props, ref) => {
+  const { element: Element = 'p', textStyle = 'content', margin = 'normal', ...rest } = props;
+  return <Element css={[baseStyle, elementStyle[textStyle], elementMarginStyle[margin]]} {...rest} ref={ref} />;
+});
 
 export default Text;

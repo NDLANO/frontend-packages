@@ -36,6 +36,10 @@ const fonts = {
         medium: sizes('18px', '24px'),
         large: sizes('22px', '30px'),
       },
+      label: {
+        large: sizes('24px', '36px'),
+        small: sizes('18px', '32px'),
+      },
     },
   },
 };

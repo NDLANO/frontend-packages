@@ -1173,7 +1173,7 @@ const messages = {
         title: 'Notifications',
         showAll: 'View all notifications',
         description:
-          'Welcome to NDLAs Arena. Here you can discuss, share and cooperate with other teachers from the entire country. You will find forums for the different subjects and themes.',
+          'Welcome to NDLA Arena. Here you can discuss, share and cooperate with other teachers from all of Norway. You will find forums for the different subjects and themes.',
         myNotification: 'My notifications',
         markAll: 'Mark all as read',
         commentedOn: 'commented on your post',

@@ -9,10 +9,10 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
-import { colors, fonts, misc, spacing } from '@ndla/core';
-import { Quote } from '@ndla/icons/editor';
-import { HeadingLevel } from '../types';
-import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
+import { HeadingLevel } from '@ndla/typography';
+import { useTranslation } from 'react-i18next';
+import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
 
 export interface Props {
   title: {
@@ -35,16 +35,17 @@ const Container = styled(SafeLink)`
   flex-direction: column;
   color: ${colors.text.primary};
   background-color: ${colors.white};
-  max-width: 350px;
-  max-height: fit-content;
   gap: ${spacing.nsmall};
   box-shadow: none;
   border: 1px solid ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal} ${spacing.medium};
   height: 100%;
-  &[data-size='large'] {
-    max-width: 532px;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    max-width: 350px;
+    &[data-size='large'] {
+      max-width: 532px;
+    }
   }
   &:hover,
   &:focus-within {
@@ -82,19 +83,15 @@ const StyledImg = styled.img`
 `;
 
 const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal', path }: Props) => {
-  const href = usePossiblyRelativeUrl(url, path);
+  const { t } = useTranslation();
+  const href = getPossiblyRelativeUrl(url, path);
   return (
     <Container data-size={size} to={href}>
       <Heading className="blog-title" css={headingCss} lang={title.language}>
         {title.title}
       </Heading>
       <StyledImg src={metaImage.url} alt={metaImage.alt} />
-      {!!author && (
-        <AuthorContainer>
-          <Quote />
-          {author}
-        </AuthorContainer>
-      )}
+      {!!author && <AuthorContainer aria-label={t('article.writtenBy', { authors: author })}>{author}</AuthorContainer>}
     </Container>
   );
 };

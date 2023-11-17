@@ -1,3 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" data-license="Apache License 2.0" data-source="Material Design" viewBox="0 0 48 48">
-  <path d="M20 40V28h8v12h10V24h6L24 6 4 24h6v16z"/>
+<svg width="24" height="24" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 21V9L12 3L20 9V21H14V14H10V21H4Z" />
 </svg>

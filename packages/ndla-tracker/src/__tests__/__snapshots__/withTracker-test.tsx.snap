@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`withTracker HOC renderers Page correctly 1`] = `
-<div>
-  <h1>
-    Main Page
-  </h1>
-</div>
-`;

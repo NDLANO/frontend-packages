@@ -6,14 +6,19 @@
  *
  */
 
+import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
+import concat from 'lodash/concat';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
-import { useTranslation } from 'react-i18next';
-import concat from 'lodash/concat';
+import { COPYRIGHTED, getLicenseByAbbreviation } from '@ndla/licenses';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
+import Image, { ImageLink } from '../Image';
+import LicenseLink from '../LicenseByline/LicenseLink';
+import { CanonicalUrlFuncs } from '../Embed';
 
 const BLOB_WIDTH = 90;
 
@@ -26,6 +31,9 @@ interface Props {
   imageWidth?: number;
   name: string;
   email: string;
+  embedAlt?: string;
+  lang?: string;
+  imageCanonicalUrl?: CanonicalUrlFuncs['image'];
 }
 const BlockWrapper = styled.div`
   display: flex;
@@ -36,11 +44,10 @@ const BlockWrapper = styled.div`
   border-radius: ${misc.borderRadius};
   border: 1px solid ${colors.brand.lighter};
   background-color: ${colors.white};
-  max-width: 348px;
   & ~ & {
     margin-top: ${spacing.medium};
   }
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     max-width: 773px;
     flex-direction: row;
     padding: 0 0 ${spacing.medium} ${spacing.medium};
@@ -104,7 +111,7 @@ const ImageWrapper = styled.div`
   gap: ${spacing.xsmall};
   ${fonts.sizes('16px', '26px')};
   padding: ${spacing.medium} ${spacing.medium} 0 0;
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     padding-right: 0;
   }
 `;
@@ -122,25 +129,60 @@ const ContentWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledImage = styled.img`
+const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
-const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = 'green', blob = 'pointy' }: Props) => {
-  const { t } = useTranslation();
+interface LinkWrapperProps {
+  src?: string;
+  children: ReactNode;
+}
+
+const LinkWrapper = ({ src, children }: LinkWrapperProps) => {
+  if (src) {
+    return <ImageLink src={src}>{children}</ImageLink>;
+  }
+  return children;
+};
+
+const ContactBlock = ({
+  image,
+  jobTitle,
+  description,
+  name,
+  email,
+  embedAlt,
+  blobColor = 'green',
+  blob = 'pointy',
+  imageCanonicalUrl,
+  lang,
+}: Props) => {
+  const { t, i18n } = useTranslation();
   const isGreenBlob = blobColor === 'green';
   const Blob = blob === 'pointy' ? BlobPointy : BlobRound;
   const authors = concat(image?.copyright.processors, image?.copyright.creators, image?.copyright.rightsholders);
+  const license = image?.copyright
+    ? getLicenseByAbbreviation(image.copyright.license.license, i18n.language)
+    : undefined;
+
+  const isCopyrighted = image?.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
   return (
     <BlockWrapper>
       <ImageWrapper>
         {image ? (
           <>
-            <StyledImage alt={image.alttext.alttext} src={`${image.image.imageUrl}?width=286`} />
-            {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')}  ${
-              image.copyright.license.license
-            }`}
+            <LinkWrapper src={!isCopyrighted && image ? imageCanonicalUrl?.(image) : undefined}>
+              <StyledImage
+                alt={embedAlt !== undefined ? embedAlt : image.alttext.alttext}
+                src={image.image.imageUrl}
+                sizes={`(min-width: ${breakpoints.tablet}) 240px, (max-width: ${breakpoints.tablet}) 500px`}
+              />
+            </LinkWrapper>
+            <span>
+              {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')} `}
+              {!!license && <LicenseLink license={license} asLink={!!license.url.length} />}
+            </span>
           </>
         ) : (
           <img alt={t('image.error.url')} src={errorSvgSrc} />
@@ -149,11 +191,11 @@ const ContactBlock = ({ image, jobTitle, description, name, email, blobColor = '
       <ContentWrapper>
         <TextWrapper>
           <InfoWrapper>
-            <StyledHeader>{name}</StyledHeader>
-            <StyledText>{jobTitle}</StyledText>
+            <StyledHeader lang={lang}>{name}</StyledHeader>
+            <StyledText lang={lang}>{jobTitle}</StyledText>
             <StyledText>
               <Email>{`${t('email')}:`}</Email>
-              <EmailLink href={`mailto:${email}?subject=Contact us`}>{email}</EmailLink>
+              <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
             </StyledText>
           </InfoWrapper>
           <BlobWrapper>

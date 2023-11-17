@@ -8,9 +8,9 @@
 
 import { ReactNode, MouseEvent, useMemo } from 'react';
 import styled from '@emotion/styled';
-import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
+import { Text, Heading } from '@ndla/typography';
 
-import parse from 'html-react-parser';
 import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
@@ -23,7 +23,6 @@ import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
-import { Heading } from '../Typography';
 import { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
 
 type InvertItProps = {
@@ -145,14 +144,6 @@ const HeadingWrapper = styled.hgroup`
   }
 `;
 
-const TopicIntroduction = styled.div`
-  font-weight: ${fonts.weight.light};
-  max-width: 612px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('22px', '32px')};
-  }
-`;
-
 const StyledButtonWrapper = styled.div<InvertItProps>`
   margin-top: ${spacing.small};
   padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
@@ -197,13 +188,12 @@ export type TopicProps = {
     alt: string;
   };
   title: string;
-  introduction: string;
+  introduction: ReactNode;
   resources?: ReactNode;
   visualElementEmbedMeta?: EmbedMetaData;
   subTopics?: ItemProps[] | null | undefined;
   onSubTopicSelected?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   isLoading?: boolean;
-  renderMarkdown?: (text: string) => string;
   invertedStyle?: boolean;
   onToggleShowContent?: () => void;
   showContent?: boolean;
@@ -229,7 +219,6 @@ const Topic = ({
   subTopics,
   onSubTopicSelected,
   isLoading,
-  renderMarkdown,
   invertedStyle,
   onToggleShowContent,
   showContent,
@@ -243,7 +232,6 @@ const Topic = ({
 }: TopicProps) => {
   const { t } = useTranslation();
   const contentId = `expanded-description-${id}`;
-  const testId = 'nav-topic-about';
 
   const VisualElementIcon = useMemo(() => {
     if (!visualElementEmbedMeta || visualElementEmbedMeta.status === 'error') return null;
@@ -267,15 +255,11 @@ const Topic = ({
 
   const wrapperStyle = [frame ? frameStyle : undefined, invertedStyle ? _invertedStyle : undefined];
   if (isLoading) {
-    return (
-      <Wrapper css={wrapperStyle} data-testid={testId}>
-        {isLoading ? <Loader /> : null}
-      </Wrapper>
-    );
+    return <Wrapper css={wrapperStyle}>{isLoading ? <Loader /> : null}</Wrapper>;
   }
 
   return (
-    <Wrapper css={wrapperStyle} data-testid={testId}>
+    <Wrapper css={wrapperStyle}>
       <TopicIntroductionWrapper>
         <div>
           <HeadingWrapper>
@@ -289,7 +273,9 @@ const Topic = ({
               </>
             )}
           </HeadingWrapper>
-          <TopicIntroduction>{renderMarkdown ? parse(renderMarkdown(introduction)) : introduction}</TopicIntroduction>
+          <Text textStyle="ingress" element="div">
+            {introduction}
+          </Text>
         </div>
         {metaImage && (
           <TopicHeaderVisualElementWrapper>

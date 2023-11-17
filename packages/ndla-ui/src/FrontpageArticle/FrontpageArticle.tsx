@@ -7,11 +7,10 @@
  */
 
 import { CSSProperties, ReactNode, useMemo } from 'react';
-import { breakpoints, fonts, mq, spacing, spacingUnit } from '@ndla/core';
+import { spacing, spacingUnit } from '@ndla/core';
 import styled from '@emotion/styled';
+import { Heading, Text } from '@ndla/typography';
 import { Article } from '../types';
-import LayoutItem from '../Layout';
-import { Heading } from '../Typography';
 import { ArticleByline } from '../Article';
 import { useMastheadHeight } from '../Masthead';
 
@@ -20,6 +19,7 @@ interface Props {
   id: string;
   isWide?: boolean;
   licenseBox?: ReactNode;
+  lang?: string;
 }
 
 export const FRONTPAGE_ARTICLE_MAX_WIDTH = '773px';
@@ -41,6 +41,11 @@ const StyledArticle = styled.article`
       margin-top: 0px;
     }
   }
+
+  div[data-type='grid'] + div[data-type='grid'] {
+    margin-top: ${spacingUnit * 4}px;
+  }
+
   &[data-wide='true'] {
     max-width: 1100px;
     h2[id] {
@@ -52,52 +57,29 @@ const StyledArticle = styled.article`
   }
 `;
 
-const StyledIntroduction = styled.div`
-  font-weight: ${fonts.weight.light};
-  font-family: ${fonts.sans};
-  margin-top: ${spacing.small};
-  ${fonts.sizes('22px', '30px')};
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin-top: ${spacing.mediumlarge};
-    ${fonts.sizes('26px', '36px')};
-  }
-`;
-
-export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => {
+export const FrontpageArticle = ({ article, id, isWide, licenseBox, lang }: Props) => {
   const { height = 0 } = useMastheadHeight();
   const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` } as unknown as CSSProperties), [height]);
   const { title, introduction, content } = article;
 
   if (isWide) {
     return (
-      <StyledArticle data-wide={isWide} style={cssVars}>
-        <LayoutItem>{content}</LayoutItem>
+      <StyledArticle data-wide={isWide} style={cssVars} id={id}>
+        {content}
       </StyledArticle>
     );
   }
 
-  const authors =
-    article.copyright?.creators.length || article.copyright?.rightsholders.length
-      ? article.copyright.creators
-      : article.copyright?.processors;
   return (
     <StyledArticle style={cssVars}>
-      <LayoutItem>
-        <Heading id={id} headingStyle="h1" element="h1" margin="normal" tabIndex={-1}>
-          {title}
-        </Heading>
-        <StyledIntroduction>{introduction}</StyledIntroduction>
-      </LayoutItem>
-      <LayoutItem>{content}</LayoutItem>
-      <ArticleByline
-        authors={authors}
-        suppliers={article.copyright?.rightsholders}
-        license={article.copyright?.license?.license!}
-        published={article.published}
-        accordionHeaderVariant={'white'}
-        licenseBox={licenseBox}
-      />
+      <Heading id={id} headingStyle="h1-resource" element="h1" margin="normal" tabIndex={-1} lang={lang}>
+        {title}
+      </Heading>
+      <Text textStyle="ingress" element="div" lang={lang}>
+        {introduction}
+      </Text>
+      {content}
+      <ArticleByline accordionHeaderVariant={'white'} licenseBox={licenseBox} displayByline={false} />
     </StyledArticle>
   );
 };

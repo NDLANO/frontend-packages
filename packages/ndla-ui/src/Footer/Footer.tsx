@@ -113,15 +113,16 @@ const StyledLanguageWrapper = styled.div`
 type Props = {
   children: ReactNode;
   lang: Locale;
-  links?: [
-    {
-      to: string;
-      text: string;
-      icon: ReactNode;
-      facebook: string;
-      twitter: string;
-    },
-  ];
+  commonLinks?: {
+    to: string;
+    text: string;
+    external: boolean;
+  }[];
+  links?: {
+    to: string;
+    text: string;
+    icon: ReactNode;
+  }[];
   privacyLinks?: {
     url: string;
     label: string;
@@ -130,7 +131,7 @@ type Props = {
   auth?: ReactNode;
 };
 
-const Footer = ({ children, links, languageSelector, auth, privacyLinks }: Props) => {
+const Footer = ({ children, commonLinks, links, languageSelector, auth, privacyLinks }: Props) => {
   const { t } = useTranslation();
 
   const mainContent = (
@@ -140,23 +141,24 @@ const Footer = ({ children, links, languageSelector, auth, privacyLinks }: Props
     </>
   );
 
-  const footerContent = links ? (
-    <>
-      <StyledColumns>
-        <div>
-          <StyledFooterHeaderIcon />
-        </div>
-        <div>
-          <StyledHeader>{t('footer.vision')}</StyledHeader>
-          <FooterLinks links={links} />
-        </div>
-      </StyledColumns>
-      <StyledHr />
-      {mainContent}
-    </>
-  ) : (
-    mainContent
-  );
+  const footerContent =
+    links || commonLinks ? (
+      <>
+        <StyledColumns>
+          <div>
+            <StyledFooterHeaderIcon />
+          </div>
+          <div>
+            <StyledHeader>{t('footer.vision')}</StyledHeader>
+            <FooterLinks commonLinks={commonLinks} links={links} />
+          </div>
+        </StyledColumns>
+        <StyledHr />
+        {mainContent}
+      </>
+    ) : (
+      mainContent
+    );
 
   return (
     <>

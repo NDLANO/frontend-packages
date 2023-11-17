@@ -14,7 +14,7 @@ export default {
     placeholder: 'Velg en farge',
     options: [
       { value: 'Gul', label: 'Gul' },
-      { value: 'Blå', label: 'Blå' },
+      { value: 'Blå', label: 'Blå', isDisabled: true },
       { value: 'Grønn', label: 'Grønn' },
     ],
   },

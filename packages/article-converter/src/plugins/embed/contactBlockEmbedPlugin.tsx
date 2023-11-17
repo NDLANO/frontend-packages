@@ -11,19 +11,22 @@ import { attributesToProps } from 'html-react-parser';
 import { ContactBlockMetaData } from '@ndla/types-embed';
 import { PluginType } from '../types';
 
-export const contactBlockEmbedPlugin: PluginType = (element) => {
+export const contactBlockEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const embedData = JSON.parse(props['data-json']) as ContactBlockMetaData;
-  const { name, email, description, blob, blobColor, jobTitle } = embedData.embedData;
+  const { name, email, description, blob, blobColor, jobTitle, alt } = embedData.embedData;
   return (
     <ContactBlock
       image={embedData.status === 'success' ? embedData.data.image : undefined}
+      embedAlt={alt}
       description={description}
       email={email}
       blobColor={blobColor}
       jobTitle={jobTitle}
       name={name}
       blob={blob}
+      lang={opts.articleLanguage}
+      imageCanonicalUrl={opts.canonicalUrls?.image}
     />
   );
 };

@@ -8,24 +8,27 @@
 
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { InformationOutline, HumanMaleBoard, Forward, WarningOutline } from '@ndla/icons/common';
-
-// @ts-ignore
-import { Remarkable } from 'remarkable';
+import { Forward } from '@ndla/icons/common';
 import { CloseButton } from '@ndla/button';
 import { css } from '@emotion/react';
-
-const markdown = new Remarkable({ breaks: true });
-markdown.inline.ruler.enable(['sub', 'sup']);
-markdown.block.ruler.disable(['list', 'table']);
+import { ReactNode } from 'react';
 
 type MessageBoxType = 'ghost' | 'danger';
 
-interface StyledProps {
-  type?: MessageBoxType;
+interface LinkProps {
+  href?: string;
+  text?: string;
 }
 
-const MessageBoxWrapper = styled.div<StyledProps>`
+interface MessageBoxProps {
+  type?: MessageBoxType;
+  children?: ReactNode;
+  links?: LinkProps[];
+  showCloseButton?: boolean;
+  onClose?: () => void;
+}
+
+const MessageBoxWrapper = styled.div`
   display: flex;
   padding: ${spacing.small};
   font-family: ${fonts.sans};
@@ -37,21 +40,14 @@ const MessageBoxWrapper = styled.div<StyledProps>`
   ${mq.range({ until: breakpoints.tabletWide })} {
     ${fonts.sizes('16px')};
   }
-
-  ${({ type }) =>
-    type === 'ghost' &&
-    css`
-      background: transparent;
-      border: 1px solid ${colors.brand.neutral7};
-      color: ${colors.brand.greyDark};
-    `}
-
-  ${({ type }) =>
-    type === 'danger' &&
-    css`
-      background: ${colors.support.redLightest};
-      color: ${colors.text.primary};
-    `}
+  &[data-type='ghost'] {
+    background: transparent;
+    color: ${colors.brand.greyDark};
+  }
+  &[data-type='danger'] {
+    background: ${colors.support.redLightest};
+    color: ${colors.text.primary};
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -59,23 +55,14 @@ const InfoWrapper = styled.div`
   flex-direction: row;
   flex: 1;
   padding: ${spacing.small};
-  padding-right: 0;
 `;
 
-const TextWrapper = styled.div`
-  & p {
-    margin: 0;
-  }
-`;
-
-const IconWrapper = styled.div`
+const ChildrenWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
-  padding-right: ${spacing.small};
-
+  gap: ${spacing.small};
   svg {
-    width: 24px;
-    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
   }
 `;
 
@@ -84,7 +71,7 @@ const LinkWrapper = styled.div`
   flex-wrap: wrap;
   gap: ${spacing.normal};
   padding-top: ${spacing.nsmall};
-
+  padding-left: ${spacing.mediumlarge};
   svg {
     flex-shrink: 0;
   }
@@ -102,38 +89,12 @@ const StyledClosebutton = styled(CloseButton)`
   padding: 0;
 `;
 
-interface LinkProps {
-  href?: string;
-  text?: string;
-}
-
-interface Props {
-  type?: MessageBoxType;
-  children?: string;
-  links?: LinkProps[];
-  showCloseButton?: boolean;
-  onClose?: () => void;
-}
-
-const Icon = ({ type }: StyledProps) => {
-  if (type === 'ghost') {
-    return <HumanMaleBoard />;
-  }
-  if (type === 'danger') {
-    return <WarningOutline />;
-  }
-  return <InformationOutline />;
-};
-
-export const MessageBox = ({ type, children = '', links, showCloseButton, onClose }: Props) => {
+export const MessageBox = ({ type, children, links, showCloseButton, onClose }: MessageBoxProps) => {
   return (
-    <MessageBoxWrapper type={type}>
+    <MessageBoxWrapper data-type={type}>
       <InfoWrapper>
-        <IconWrapper>
-          <Icon type={type} />
-        </IconWrapper>
         <div>
-          <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }} />
+          <ChildrenWrapper>{children}</ChildrenWrapper>
           {links && (
             <LinkWrapper>
               {links.map((x) => (

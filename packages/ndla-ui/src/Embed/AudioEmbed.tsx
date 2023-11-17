@@ -8,8 +8,6 @@
 
 import { AudioMetaData, ImageMetaData } from '@ndla/types-embed';
 import { COPYRIGHTED } from '@ndla/licenses';
-//@ts-ignore
-import { Remarkable } from 'remarkable';
 import AudioPlayer from '../AudioPlayer';
 import { Figure } from '../Figure';
 import { Author } from './ImageEmbed';
@@ -20,6 +18,7 @@ import { HeartButtonType } from './types';
 interface Props {
   embed: AudioMetaData;
   heartButton?: HeartButtonType;
+  lang?: string;
 }
 
 export const getFirstNonEmptyLicenseCredits = (authors: {
@@ -27,12 +26,6 @@ export const getFirstNonEmptyLicenseCredits = (authors: {
   rightsholders: Author[];
   processors: Author[];
 }) => Object.values(authors).find((i) => i.length > 0) ?? [];
-
-const renderMarkdown = (text: string) => {
-  const md = new Remarkable();
-  const rendered = md.render(text);
-  return <span dangerouslySetInnerHTML={{ __html: rendered }} />;
-};
 
 const imageMetaToMockEmbed = (
   imageMeta: Extract<AudioMetaData, { status: 'success' }>,
@@ -48,7 +41,7 @@ const imageMetaToMockEmbed = (
   },
 });
 
-const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
+const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
   if (embed.status === 'error') {
     return <EmbedErrorPlaceholder type={embed.embedData.type === 'standard' ? 'audio' : 'podcast'} />;
   }
@@ -61,19 +54,21 @@ const AudioEmbed = ({ embed, heartButton: HeartButton }: Props) => {
 
   const subtitle = data.series ? { title: data.series.title.title, url: `/podkast/${data.series.id}` } : undefined;
 
-  const textVersion = data.manuscript?.manuscript.length ? renderMarkdown(data.manuscript.manuscript) : undefined;
-
   const coverPhoto = data.podcastMeta?.coverPhoto;
 
   const img = coverPhoto && { url: coverPhoto.url, alt: coverPhoto.altText };
 
   return (
-    <Figure type="full">
+    <Figure type="full" lang={lang}>
       <AudioPlayer
         description={data.podcastMeta?.introduction ?? ''}
         img={img}
         src={data.audioFile.url}
-        textVersion={textVersion}
+        textVersion={
+          data.manuscript?.manuscript.length ? (
+            <span dangerouslySetInnerHTML={{ __html: data.manuscript.manuscript }} />
+          ) : undefined
+        }
         title={data.title.title}
         subtitle={subtitle}
       />

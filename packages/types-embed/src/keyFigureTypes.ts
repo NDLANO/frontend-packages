@@ -14,6 +14,7 @@ export type KeyFigureEmbedData = {
   imageId: string;
   title: string;
   subtitle: string;
+  alt?: string;
 };
 
 export interface KeyFigureMeta {

@@ -8,9 +8,8 @@
 
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
-// @ts-ignore
-import { Remarkable } from 'remarkable';
 import { CloseButton } from '@ndla/button';
+import { ReactNode } from 'react';
 
 interface WrapperProps {
   small?: boolean;
@@ -44,19 +43,15 @@ const StyledClosebutton = styled(CloseButton)`
 
 interface Props {
   small?: boolean;
-  children?: string;
+  children?: ReactNode;
   showCloseButton?: boolean;
   onClose?: () => void;
 }
 
-const markdown = new Remarkable({ breaks: true });
-markdown.inline.ruler.enable(['sub', 'sup']);
-markdown.block.ruler.disable(['list', 'table']);
-
 const MessageBanner = ({ children, onClose, showCloseButton, small }: Props) => {
   return (
     <MessageBannerWrapper small={small}>
-      <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }} />
+      <TextWrapper>{children}</TextWrapper>
       {showCloseButton && <StyledClosebutton onClick={onClose} />}
     </MessageBannerWrapper>
   );

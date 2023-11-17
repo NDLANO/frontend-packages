@@ -10,8 +10,12 @@ import { DefinitionTerm } from '@ndla/ui';
 import { attributesToProps, domToReact } from 'html-react-parser';
 import { PluginType } from './types';
 
-export const dtPlugin: PluginType = (node, opts) => {
+export const dtPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
 
-  return <DefinitionTerm {...props}>{domToReact(node.children, opts)}</DefinitionTerm>;
+  return (
+    <DefinitionTerm {...props} lang={opts.articleLanguage}>
+      {domToReact(node.children, converterOpts)}
+    </DefinitionTerm>
+  );
 };

@@ -8,7 +8,8 @@
 
 import { ImageEmbedData, ImageMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler, useMemo, useState } from 'react';
+import parse from 'html-react-parser';
 import { ExpandTwoArrows } from '@ndla/icons/action';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
@@ -18,14 +19,17 @@ import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
+import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from './types';
 
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
   path?: string;
   heartButton?: HeartButtonType;
+  canonicalUrl?: CanonicalUrlFuncs['image'];
   inGrid?: boolean;
+  lang?: string;
+  renderContext?: RenderContext;
 }
 
 export interface Author {
@@ -103,9 +107,27 @@ export const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
 
-const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path }: Props) => {
+const ImageEmbed = ({
+  embed,
+  previewAlt,
+  heartButton: HeartButton,
+  inGrid,
+  path,
+  lang,
+  canonicalUrl,
+  renderContext = 'article',
+}: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
+
+  const parsedDescription = useMemo(() => {
+    if (embed.embedData.caption || renderContext === 'article') {
+      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
+    } else if (embed.status === 'success' && embed.data.caption.caption) {
+      return parse(embed.data.caption.caption);
+    }
+  }, [embed, renderContext]);
+
   if (embed.status === 'error') {
     const { align, size } = embed.embedData;
     const figureType = getFigureType(size, align);
@@ -130,7 +152,7 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path 
       className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
     >
       <ImageWrapper
-        src={!isCopyrighted ? embedData.pageUrl || data.image.imageUrl : undefined}
+        src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}
         size={embedData.size}
         pagePath={path}
@@ -152,13 +174,14 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path 
               onHideByline={() => setIsBylineHidden((p) => !p)}
             />
           }
+          lang={lang}
         />
       </ImageWrapper>
       {isBylineHidden || (isSmall(embedData.size) && !imageSizes) ? null : (
         <EmbedByline
           type="image"
           copyright={data.copyright}
-          description={embedData.caption ?? data.caption.caption}
+          description={parsedDescription}
           bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ''}
           inGrid={inGrid}

@@ -14,5 +14,5 @@ import { PluginType } from '../types';
 export const brightcoveEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as BrightcoveMetaData;
-  return <BrightcoveEmbed embed={data} heartButton={opts.components?.heartButton} />;
+  return <BrightcoveEmbed embed={data} heartButton={opts.components?.heartButton} renderContext={opts.renderContext} />;
 };

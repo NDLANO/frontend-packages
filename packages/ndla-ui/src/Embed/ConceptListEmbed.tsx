@@ -15,6 +15,7 @@ import { BlockConcept } from './ConceptEmbed';
 
 interface Props {
   embed: ConceptListMetaData;
+  lang?: string;
 }
 
 const ConceptList = styled.div`
@@ -30,7 +31,7 @@ const StyledSpan = styled.span`
   color: ${colors.support.red};
 `;
 
-const ConceptListEmbed = ({ embed }: Props) => {
+const ConceptListEmbed = ({ embed, lang }: Props) => {
   const { t } = useTranslation();
   if (embed.status === 'error') {
     return <StyledSpan>{t('embed.conceptListError')}</StyledSpan>;
@@ -39,18 +40,19 @@ const ConceptListEmbed = ({ embed }: Props) => {
   return (
     <div>
       <Figure type="full" resizeIframe>
-        {embedData.title && <h2>{embedData.title}</h2>}
+        {embedData.title && <h2 lang={lang}>{embedData.title}</h2>}
         <ConceptList>
-          <ul>
+          <ul lang={lang}>
             {data.concepts.map(({ concept, visualElement }) => (
               <li key={concept.id}>
                 <BlockConcept
-                  title={concept.title.title}
+                  title={concept.title}
                   content={concept.content.content}
                   metaImage={concept.metaImage}
                   copyright={concept.copyright}
                   source={concept.source}
                   visualElement={visualElement}
+                  conceptType={concept.conceptType}
                 />
               </li>
             ))}

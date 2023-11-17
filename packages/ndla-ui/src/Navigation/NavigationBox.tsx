@@ -8,7 +8,7 @@ import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 import { HumanMaleBoard } from '@ndla/icons/common';
-import { Heading } from '../Typography';
+import { Heading } from '@ndla/typography';
 
 const StyledWrapper = styled.nav`
   margin: 20px 0 34px;

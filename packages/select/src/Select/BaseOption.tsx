@@ -45,6 +45,9 @@ const StyledBaseOption = styled.div`
       font-weight: ${fonts.weight.semibold};
     }
   }
+  &[data-disabled='true'] {
+    color: ${colors.brand.greyMedium};
+  }
 `;
 
 const BaseOption = <T extends boolean>({
@@ -52,11 +55,19 @@ const BaseOption = <T extends boolean>({
   innerProps,
   isFocused,
   isSelected,
+  isDisabled,
   selectProps: { small, bold },
   children,
 }: OptionProps<Option, T>) => {
   return (
-    <StyledBaseOption data-small={small} data-bold={bold} ref={innerRef} {...innerProps} data-focused={isFocused}>
+    <StyledBaseOption
+      data-small={small}
+      data-bold={bold}
+      data-disabled={isDisabled}
+      ref={innerRef}
+      {...innerProps}
+      data-focused={isFocused}
+    >
       <StyledCheck data-selected={isSelected} />
       {children}
     </StyledBaseOption>

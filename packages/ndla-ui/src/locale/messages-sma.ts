@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes, WordClass } = constants;
+export const { contentTypes, subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -210,9 +210,10 @@ const messages = {
       notionsHeading: 'Baakoebuerkiestimmie',
       notionsRemove: 'Skubph',
       showVideo: 'Gïehtjh videjovem',
-      showNotion: 'Gïehtjh buerkiestimmiem ',
+      concept: 'Begrepsforklaring',
       gridView: 'Gallerivisning',
       listView: 'Listevisning',
+      gloss: 'Glose',
     },
     contextModal: {
       button: '+ {{count}} jieniebinie sijjine',
@@ -304,7 +305,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Fulkh mijjem',
-      description: 'NDLA gellie Facebook- jïh Twitterkontoeh åtna. Gaavnh dam mij dutnjien sjeahta jïh fulkh mijjem!',
+      description: 'NDLA gellie Facebook- jïh X-kontoeh åtna. Gaavnh dam mij dutnjien sjeahta jïh fulkh mijjem!',
       mainLink: {
         name: 'Fulkh mijjem',
       },
@@ -515,6 +516,11 @@ const messages = {
   subject: {
     associatedTopics: 'Teemah mah govlehtuvvieh',
   },
+  subjectFrontPage: {
+    buildsOn: 'Bigkie bæjjese',
+    connectedTo: 'Tjåenghkies programmefaage aalkoealmetjidie',
+    leadsTo: 'Goh ryökneme',
+  },
   accordion: {
     closeAll: 'Dahph gaajhkh',
     openAll: 'Rïhpesth gaajhkh',
@@ -546,6 +552,7 @@ const messages = {
       files: 'Fijlh',
       embedlink: 'Sïjsebïejemesvaalhtese',
       concept: 'Buerkiestimmieh',
+      gloss: 'Glosa',
       podcast: 'Podkast',
       other: 'Jeatjah sisvege',
     },
@@ -622,6 +629,18 @@ const messages = {
         hasCopiedTitle: 'Innbyggingslenke kopiert',
       },
     },
+    gloss: {
+      heading: 'Naemhtie gïelem ikth vielie nåhtadidh',
+      description: 'Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie',
+      rules: 'Njoelkedassh guktie diejvesem nåhtadidh:',
+      title: 'Tihtele',
+      embedlink: {
+        heading: 'Naemhtie gïelem jeatjah sisvegisnie vuesehte',
+        description: 'Daate lïenghke vuesehte tjoejh konteksten namhtah (meny jïh nueliekapihtele)',
+        copyTitle: 'Kopijerh svaalhtesem sïjse loggedh',
+        hasCopiedTitle: 'Bigkeme svaalhtese kopijeradamme',
+      },
+    },
     files: {
       heading: 'Slik gjenbruker du filer',
       description:
@@ -634,6 +653,7 @@ const messages = {
     title: 'Tihtele',
     originator: 'Opphaver',
     published: 'Publiseringsdato',
+    processed: 'Innhaldet har vorte omarbeidd',
     rightsholder: 'Rettighetshaver',
     source: 'Gaaltije',
     info: 'Lisensinformasjon',
@@ -1019,8 +1039,8 @@ const messages = {
       heading: 'Teeksteversjovne',
       close: 'Dahph teeksteversjovnem',
     },
-    readMoreDescriptionLabel: 'vis mer',
-    readLessDescriptionLabel: 'vis mindre',
+    readMoreDescriptionLabel: 'Vis mer',
+    readLessDescriptionLabel: 'Vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',
@@ -1099,6 +1119,7 @@ const messages = {
     },
     wrongUserInfoDisclaimer:
       'Dersom informasjonen er feil, må den oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: ',
+    moderator: 'Moderatijve',
   },
   checkOutNewFeature: 'Gïehtjh orre funksjonaliteetem',
   slateBlockMenu: {
@@ -1167,6 +1188,12 @@ const messages = {
         },
       },
     },
+    iconMenu: {
+      folders: 'Mapper',
+      tags: 'Knagger',
+      subjects: 'Favorittfag',
+      more: 'Mer',
+    },
     tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknagger',
@@ -1197,6 +1224,7 @@ const messages = {
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
+    userPictureAltText: 'Profijleguvviem',
     sharedFolder: {
       folderCopied: 'Mappen har blitt kopiert.',
       info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
@@ -1265,6 +1293,33 @@ const messages = {
         text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Mine emneknaggar</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
       },
     },
+    myProfile: {
+      title: 'Mov Profijle',
+      disclaimerTitle: { employee: 'Gusnie guvvie jïh nomme åtnasuvvieh?', student: 'Gusnie mov nomme' },
+      disclaimerText: {
+        employee: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+        student: 'Dov nomme ajve tjaalasåvva dutnjien gosse sïjse loggedh',
+      },
+      preferenceTitle: 'Sjïehtedh jis edtja nommem vuesiehtidh gosse maabpam juekedh',
+      preferenceText:
+        'Daesnie jïjtje veeljh mejtie sïjhth dov nommem vuesiehtidh gosse maabpam juekedh . Daate veeljeme lea gaajhkine dov maabpojne, jïh maahta dam mænngan jarkelidh. Jis jeatjahdahtah , dov nomme sæjhta våajnoes årrodh gaajhkine dov joekedamme maabpojne.',
+      editButtonText: 'Naemhtie profijleguvviem jarkelidh',
+      radioButtonText: {
+        option1: 'Vuesehth mov nommem gosse maabpam juekieh',
+        option2: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
+      },
+      modalTexts: {
+        title: 'Orre profijleguvviem bæjhkoehtidh',
+        uploadSection: {
+          title: 'Gïesh jïh luajhth',
+          subTitle: 'jallh diedtieh juktie guvviem bæjjese vaeltedh',
+        },
+        fileName: 'Bijjiedamme tjaatsege:',
+        fileTypes: 'Nænnoestamme tjaatsegh: PNG , JPG (Maakseme 5 MB)',
+        savePicture: 'Vurkehth profijleguvviem',
+        deletePicture: 'Prefikse guvviem sliejhtedh',
+      },
+    },
     resource: {
       add: 'Legg til mappe/emneknagg',
       remove: 'Fjern',
@@ -1297,6 +1352,9 @@ const messages = {
       noFavorites: 'Du har ingen favorittfag!',
       goToAllSubjects: 'Gå til alle fag',
     },
+    tools: 'Verktøy',
+    simpleList: 'Enkel liste',
+    detailedList: 'Med ingress',
   },
   snackbar: {
     close: 'Lukk melding',
@@ -1317,10 +1375,10 @@ const messages = {
     help: 'Hjelp',
   },
   programmes: {
-    header: 'Se våre utdanningsprogram',
-    description: 'Vi ønsker å tilby de beste læringsressursene innen tradisjonelle og nye medier.',
-    grades: 'Trinn',
-    accordionHeader: 'Alle utdanningsprogram',
+    header: 'Maam sïjhth daan biejjien lïeredh ?',
+    description: 'Veeljh ööhpehtimmieprogrammem juktie dov faagide vuartasjidh',
+    grades: 'Daltesasse',
+    accordionHeader: 'Gaajhkh ööhpehtimmieprogrammh',
   },
   embed: {
     conceptListError: 'Klarte ikkje å vise forklaringsliste',
@@ -1336,6 +1394,7 @@ const messages = {
       concept: 'Forklaring',
       h5p: 'H5P',
       external: 'Ekstern ressurs',
+      gloss: 'Glosa',
     },
   },
   gloss: {
@@ -1347,41 +1406,41 @@ const messages = {
     },
   },
   wordClass: {
-    [WordClass.WordClass.Adjective]: 'Adjektiv',
-    [WordClass.WordClass.Adverb]: 'Adverb',
-    [WordClass.WordClass.ProperNoun]: 'Egennavn',
-    [WordClass.WordClass.Auxiliary]: 'Hjelpeord',
-    [WordClass.WordClass.Complement]: 'Komplement',
-    [WordClass.WordClass.Conjunction]: 'Konjunksjon',
-    [WordClass.WordClass.Coverb]: 'Koverb',
-    [WordClass.WordClass.Determiner]: 'Bestemmerord',
-    [WordClass.WordClass.Interjection]: 'Interjeksjon',
-    [WordClass.WordClass.Quantifier]: 'Kvantor',
-    [WordClass.WordClass.Marker]: 'Markør',
-    [WordClass.WordClass.ModalVerb]: 'Modalverb',
-    [WordClass.WordClass.MeasureWord]: 'Målord',
-    [WordClass.WordClass.Noun]: 'Substantiv',
-    [WordClass.WordClass['Noun-zh']]: 'Nomen',
-    [WordClass.WordClass.NounPhrase]: 'Nominalfrase',
-    [WordClass.WordClass.Onomatopoeia]: 'Onomatopoetikon',
-    [WordClass.WordClass.Particle]: 'Partikkel',
-    [WordClass.WordClass.Demonstrative]: 'Pekeord',
-    [WordClass.WordClass.PersonalPronoun]: 'Personlig Pronomen',
-    [WordClass.WordClass.Preposition]: 'Preposisjon',
-    [WordClass.WordClass.Pronoun]: 'Pronomen',
-    [WordClass.WordClass.QuestionWord]: 'Spørreord',
-    [WordClass.WordClass.LocationWord]: 'Stedsord',
-    [WordClass.WordClass.Suffix]: 'Suffiks',
-    [WordClass.WordClass.Numeral]: 'Tallord',
-    [WordClass.WordClass.TimeWord]: 'Tidsord',
-    [WordClass.WordClass.TimeExpression]: 'Tidsuttrykk',
-    [WordClass.WordClass.StativeVerb]: 'Tilstandsverb',
-    [WordClass.WordClass.SubordinatingConjunction]: 'Subjunksjon',
-    [WordClass.WordClass.ExclamationWord]: 'Utropsord',
-    [WordClass.WordClass.Expression]: 'Uttrykk',
-    [WordClass.WordClass.Verb]: 'Verb',
-    [WordClass.WordClass.VerbComplement]: 'Verb-Komplement',
-    [WordClass.WordClass.VerbObject]: 'Verb-Objekt',
+    [wordClass.wordClass.adjective]: 'Adjektiv',
+    [wordClass.wordClass.adverb]: 'Adverb',
+    [wordClass.wordClass.properNoun]: 'Egennavn',
+    [wordClass.wordClass.auxiliary]: 'Hjelpeord',
+    [wordClass.wordClass.complement]: 'Komplement',
+    [wordClass.wordClass.conjunction]: 'Konjunksjon',
+    [wordClass.wordClass.coverb]: 'Koverb',
+    [wordClass.wordClass.determiner]: 'Bestemmerord',
+    [wordClass.wordClass.interjection]: 'Interjeksjon',
+    [wordClass.wordClass.quantifier]: 'Kvantor',
+    [wordClass.wordClass.marker]: 'Markør',
+    [wordClass.wordClass.modalVerb]: 'Modalverb',
+    [wordClass.wordClass.measureWord]: 'Målord',
+    [wordClass.wordClass.noun]: 'Substantiv',
+    [wordClass.wordClass['noun-zh']]: 'Nomen',
+    [wordClass.wordClass.nounPhrase]: 'Nominalfrase',
+    [wordClass.wordClass.onomatopoeia]: 'Onomatopoetikon',
+    [wordClass.wordClass.particle]: 'Partikkel',
+    [wordClass.wordClass.demonstrative]: 'Pekeord',
+    [wordClass.wordClass.personalPronoun]: 'Personlig Pronomen',
+    [wordClass.wordClass.preposition]: 'Preposisjon',
+    [wordClass.wordClass.pronoun]: 'Pronomen',
+    [wordClass.wordClass.questionWord]: 'Spørreord',
+    [wordClass.wordClass.locationWord]: 'Stedsord',
+    [wordClass.wordClass.suffix]: 'Suffiks',
+    [wordClass.wordClass.numeral]: 'Tallord',
+    [wordClass.wordClass.timeWord]: 'Tidsord',
+    [wordClass.wordClass.timeExpression]: 'Tidsuttrykk',
+    [wordClass.wordClass.stativeVerb]: 'Tilstandsverb',
+    [wordClass.wordClass.subordinatingConjunction]: 'Subjunksjon',
+    [wordClass.wordClass.exclamationWord]: 'Utropsord',
+    [wordClass.wordClass.expression]: 'Uttrykk',
+    [wordClass.wordClass.verb]: 'Verb',
+    [wordClass.wordClass.verbComplement]: 'Verb-Komplement',
+    [wordClass.wordClass.verbObject]: 'Verb-Objekt',
   },
   about: {
     menuTitle: 'Om NDLA',

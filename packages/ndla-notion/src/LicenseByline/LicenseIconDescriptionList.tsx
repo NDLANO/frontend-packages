@@ -8,11 +8,11 @@
 
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { Popover } from '@ndla/tooltip';
 import { getLicenseRightByAbbreviation } from '@ndla/licenses';
 import LicenseIcon from './LicenseIcon';
 import { StyledLicenseIcon, StyledListItem } from './LicenseIconList';
 import StyledLicenseIconList from './StyledLicenseIconList';
+import LicensePopover from './LicensePopover';
 
 const StyledLicenseLabel = styled.div`
   margin-left: ${spacing.small};
@@ -34,11 +34,11 @@ const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
   return (
     <StyledListItem>
       <IconLineWrapper>
-        <Popover popover={description}>
+        <LicensePopover popover={description}>
           <StyledLicenseIcon>
             <LicenseIcon licenseRight={licenseRight} description={description} />
           </StyledLicenseIcon>
-        </Popover>
+        </LicensePopover>
         <StyledLicenseLabel>{description}</StyledLicenseLabel>
       </IconLineWrapper>
     </StyledListItem>

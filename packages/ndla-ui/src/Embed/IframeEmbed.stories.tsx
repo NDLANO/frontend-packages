@@ -98,6 +98,7 @@ const opensInnewMetaData: IframeData = {
           name: 'Folkehelseprosjektet Helsefremmende miljø på sosial medier, Bergen kommune 2019-2022',
         },
       ],
+      processed: false,
     },
     tags: {
       tags: ['samtale', 'Dialog', 'gutter'],
@@ -131,6 +132,21 @@ export const OpensInNewWindow: StoryObj<typeof IframeEmbed> = {
       resource: 'iframe',
       status: 'success',
       embedData: opensInNewEmbedData,
+      data: opensInnewMetaData,
+    },
+  },
+};
+
+export const NoDimensions: StoryObj<typeof IframeEmbed> = {
+  args: {
+    embed: {
+      resource: 'iframe',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        width: undefined,
+        height: undefined,
+      },
       data: opensInnewMetaData,
     },
   },

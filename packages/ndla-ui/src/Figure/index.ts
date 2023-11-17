@@ -6,11 +6,7 @@
  *
  */
 
-import Figure, { FigureCaption } from './Figure';
-export { Figure, FigureCaption };
-export { FigureLicenseDialog } from './FigureLicenseDialog';
-export { FigureExpandButton } from './FigureExpandButton';
-export { FigureBylineExpandButton } from './FigureBylineExpandButton';
+export { default as Figure } from './Figure';
 export { FigureOpenDialogButton } from './FigureOpenDialogButton';
 
 export type { FigureType } from './Figure';

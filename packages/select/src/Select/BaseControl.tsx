@@ -95,7 +95,6 @@ const BaseControl = <T extends boolean>({
     data-has-value={hasValue}
     ref={innerRef}
     {...innerProps}
-    {...rest}
   >
     {children}
   </StyledBaseControl>

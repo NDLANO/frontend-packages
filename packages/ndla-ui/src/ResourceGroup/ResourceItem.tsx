@@ -188,6 +188,7 @@ interface Props {
   contentTypeDescription?: string;
   extraBottomMargin?: boolean;
   showAdditionalResources?: boolean;
+  language?: string;
   access?: 'teacher';
   heartButton?: (path: string) => ReactNode;
 }
@@ -212,6 +213,7 @@ const ResourceItem = ({
   additional,
   showAdditionalResources,
   access,
+  language,
   heartButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
@@ -238,7 +240,12 @@ const ResourceItem = ({
           <ContentTypeBadge type={contentType ?? ''} background border={false} />
         </ContentBadgeWrapper>
         <InlineContainer>
-          <ResourceLink to={path} aria-current={active ? 'page' : undefined} aria-describedby={describedBy}>
+          <ResourceLink
+            to={path}
+            lang={language}
+            aria-current={active ? 'page' : undefined}
+            aria-describedby={describedBy}
+          >
             {name}
           </ResourceLink>
           {active ? <CurrentSmall>{t('resource.youAreHere')}</CurrentSmall> : undefined}

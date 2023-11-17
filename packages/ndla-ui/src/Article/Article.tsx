@@ -8,12 +8,12 @@
 
 import { ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
-import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
 import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
+import { Heading, Text } from '@ndla/typography';
 import { Article as ArticleType } from '../types';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
@@ -21,7 +21,6 @@ import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions from './ArticleNotions';
 import ArticleAccessMessage from './ArticleAccessMessage';
 import MessageBox from '../Messages/MessageBox';
-import { Heading } from '../Typography';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -44,9 +43,10 @@ type ArticleTitleProps = {
   label?: string;
   children: ReactNode;
   id: string;
+  lang?: string;
 };
 
-export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) => {
+export const ArticleTitle = ({ children, icon, label, id, lang }: ArticleTitleProps) => {
   const modifiers = [];
   if (icon) {
     modifiers.push('icon');
@@ -62,7 +62,7 @@ export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) =
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <Heading element="h1" headingStyle="h1" id={id} tabIndex={-1}>
+      <Heading element="h1" headingStyle="h1-resource" id={id} tabIndex={-1} lang={lang}>
         {children}
       </Heading>
     </div>
@@ -71,20 +71,16 @@ export const ArticleTitle = ({ children, icon, label, id }: ArticleTitleProps) =
 
 type ArticleIntroductionProps = {
   children: ReactNode;
-  renderMarkdown: (text: string) => string;
+  lang?: string;
 };
 
-export const ArticleIntroduction = ({
-  children,
-  renderMarkdown = (text) => {
-    return text;
-  },
-}: ArticleIntroductionProps) => {
-  if (typeof children === 'string') {
-    return <div className="article_introduction">{parse(renderMarkdown(children))}</div>;
-  }
+export const ArticleIntroduction = ({ children, lang }: ArticleIntroductionProps) => {
   if (children) {
-    return <div className="article_introduction">{children}</div>;
+    return (
+      <Text textStyle="ingress" element="div" lang={lang}>
+        {children}
+      </Text>
+    );
   }
   return null;
 };
@@ -124,9 +120,9 @@ type Props = {
   messageBoxLinks?: [];
   competenceGoals?: ReactNode;
   id: string;
-  renderMarkdown: (text: string) => string;
   notions?: ReactNode;
   accessMessage?: string;
+  lang?: string;
 };
 
 const getArticleContent = (content: any, contentTransformed?: boolean) => {
@@ -152,10 +148,10 @@ export const Article = ({
   competenceGoals,
   id,
   notions,
-  renderMarkdown,
   accessMessage,
   heartButton,
   contentTransformed,
+  lang,
 }: Props) => {
   const articleRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -201,11 +197,10 @@ export const Article = ({
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
-
-            <ArticleTitle id={id} icon={icon} label={messages.label}>
+            <ArticleTitle id={id} icon={icon} label={messages.label} lang={lang}>
               {title}
             </ArticleTitle>
-            <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
+            <ArticleIntroduction lang={lang}>{introduction}</ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">

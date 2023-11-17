@@ -53,6 +53,7 @@ export interface Copyright {
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;
   origin?: string;
+  processed: boolean;
 }
 
 export interface FootNote {
@@ -67,7 +68,7 @@ export interface FootNote {
 
 export interface Article {
   title: string;
-  introduction: string;
+  introduction: ReactNode;
   content: ReactNode;
   footNotes: Array<FootNote>;
   copyright?: Copyright;
@@ -129,5 +130,3 @@ export type NotionMedia = {
   type: 'video' | 'other';
   element: ReactNode;
 };
-
-export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';

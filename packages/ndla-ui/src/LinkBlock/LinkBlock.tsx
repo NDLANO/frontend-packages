@@ -14,8 +14,8 @@ import { Forward, CalendarEd } from '@ndla/icons/common';
 import { breakpoints, colors, spacing, mq } from '@ndla/core';
 import { LinkBlockEmbedData } from '@ndla/types-embed';
 import { useMemo } from 'react';
-import Heading from '../Typography/Heading';
-import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
+import { Heading } from '@ndla/typography';
+import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
 
 const StyledForward = styled(Forward)`
   margin: 0 ${spacing.nsmall};
@@ -78,11 +78,11 @@ interface Props extends Omit<LinkBlockEmbedData, 'resource'> {
 }
 
 const LinkBlock = ({ title, language, date, url, path }: Props) => {
-  const href = usePossiblyRelativeUrl(url, path);
+  const href = getPossiblyRelativeUrl(url, path);
   const formattedDate = useMemo(() => {
     if (!date) return null;
     const locale = language === 'nb' ? nb : language === 'nn' ? nn : enGB;
-    return format(new Date(date), 'dd. LLLL. yyyy', { locale });
+    return format(new Date(date), 'dd. LLLL yyyy', { locale });
   }, [date, language]);
 
   return (

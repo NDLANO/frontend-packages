@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 `;
 const ModalHeader = ({ children, ...rest }: Props) => {
   return (
-    <Wrapper data-cy="modal-header" {...rest}>
+    <Wrapper data-testid="modal-header" {...rest}>
       {children}
     </Wrapper>
   );

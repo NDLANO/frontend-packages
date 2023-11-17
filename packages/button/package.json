@@ -1,6 +1,6 @@
 {
   "name": "@ndla/button",
-  "version": "11.0.6",
+  "version": "12.0.10",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,16 +26,16 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^4.1.6",
-    "@ndla/dropdown-menu": "^1.0.4",
-    "@ndla/icons": "^4.0.5",
-    "@ndla/tooltip": "^4.1.17"
+    "@ndla/core": "^4.2.6",
+    "@ndla/dropdown-menu": "^1.0.15",
+    "@ndla/icons": "^4.1.7",
+    "@ndla/tooltip": "^6.0.3"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "react": ">= 16.8.0",
-    "react-i18next": "^11.18.6"
+    "react-i18next": "^13.3.0"
   },
   "publishConfig": {
     "access": "public"

@@ -1171,7 +1171,7 @@ const messages = {
         title: 'Varslingar',
         showAll: 'Sjå alle varslingar',
         description:
-          'Velkommen til NDLAs Arena. Her kan du diskutera, dela og samarbeide med andre lærare frå heile Noreg. Du finner forum for ulike fag og tema.',
+          'Velkomen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærarar frå heile Noreg. Du finn forum for ulike fag og tema.',
         myNotification: 'Mine varsler',
         markAll: 'Merk alle som lest',
         commentedOn: 'svarte på ditt innlegg',

@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { colors, fonts, misc, spacing } from '@ndla/core';
 import { Root, List, Trigger, Content } from '@radix-ui/react-tabs';
 import { HTMLAttributes, ReactNode } from 'react';
 
@@ -40,22 +40,28 @@ const TabsRoot = styled(Root)`
   &[data-variant='rounded'] {
     [data-tab-trigger] {
       ${fonts.sizes('12px')};
-      padding: 0 30px;
-      border-top-right-radius: 10px;
-      border-top-left-radius: 10px;
+      padding: 0 ${spacing.normal};
       color: ${colors.brand.primary};
       font-weight: ${fonts.weight.semibold};
       background-color: ${colors.brand.light};
       z-index: 1;
       position: relative;
       &[data-state='active'] {
+        cursor: default;
         background-color: ${colors.brand.lighter};
+        border-bottom: none;
         z-index: 2;
       }
-      &:not(:first-child) {
-        margin-left: -16px;
+      &:not(:last-of-type) {
+        border-right: 1px solid ${colors.brand.tertiary};
       }
-      &:hover {
+      &:first-of-type {
+        border-top-left-radius: ${misc.borderRadius};
+      }
+      &:last-of-type {
+        border-top-right-radius: ${misc.borderRadius};
+      }
+      &[data-state='inactive']:hover {
         color: ${colors.text.primary};
       }
       &[data-disabled] {
@@ -97,6 +103,7 @@ const TabsRoot = styled(Root)`
         color: ${colors.brand.primary};
       }
       &[data-state='active'] {
+        cursor: default;
         color: ${colors.brand.primary};
         border-bottom-color: ${colors.brand.primary};
       }

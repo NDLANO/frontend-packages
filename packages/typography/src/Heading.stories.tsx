@@ -57,6 +57,13 @@ export const H3: StoryObj<typeof Heading> = {
   },
 };
 
+export const H4: StoryObj<typeof Heading> = {
+  args: {
+    headingStyle: 'h4',
+    children: exampleText,
+  },
+};
+
 export const listTitle: StoryObj<typeof Heading> = {
   args: {
     headingStyle: 'list-title',
@@ -77,6 +84,9 @@ export const Chinese: StoryObj<typeof Heading> = {
       <Heading {...args} headingStyle="h2" />
       <Heading {...args} headingStyle="h3" />
       <Heading {...args} headingStyle="list-title" />
+      <Heading {...args} data-pinyin="">
+        Pinyin does not get larger if marked with data-pinyin
+      </Heading>
     </>
   ),
 };

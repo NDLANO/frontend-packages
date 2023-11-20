@@ -552,6 +552,7 @@ const messages = {
       files: 'Fiillat',
       embedlink: 'Sisahuksenliŋka',
       concept: 'Čilgehusat',
+      gloss: 'Gloser',
       podcast: 'Podkásta',
       other: 'Eará sisdoallu',
     },
@@ -624,6 +625,19 @@ const messages = {
         description: 'Dát liŋka čájeha čilgehusa konteavstta haga (fállu ja vuolleteaksta)',
         copyTitle: 'Máŋge sisahuksenliŋkka',
         hasCopiedTitle: 'Sisahuksenliŋka máŋgejuvvon',
+      },
+    },
+    gloss: {
+      heading: 'Movt geavahit ođđasit dajaldagaid',
+      description:
+        'Muitte ahte sisdoalus mii lea vuojuhuvvon ovtta gihppagii sáhttá leat eará liseansa go dušše jietnadat.',
+      rules: 'Glossa geavaheami njuolggadusat:',
+      title: 'Namahus',
+      embedlink: {
+        heading: 'Čájet jietnadaga eará sisdoaluin',
+        description: 'Dát liŋka čájeha teavstta konteavstta haga (fállu ja juolgeteaksta)',
+        copyTitle: 'Máŋge sisačálihanliŋkka',
+        hasCopiedTitle: 'Sajáiduhttinliŋka mángejuvvon',
       },
     },
     files: {
@@ -1172,6 +1186,18 @@ const messages = {
         },
       },
     },
+    arena: {
+      title: 'Arena',
+      notification: {
+        title: 'Muittuhusat',
+        showAll: 'Čájet buot dieđuid',
+        description:
+          'Bures boahtin NDLA Arenai. Dáppe sáhtát digaštallat, juogadit ja ovttasbargat eará oahpaheddjiiguin olles Norggas. Sierra fágaide ja fáttáide gávdnojit forumat.',
+        myNotification: 'Mu signállat',
+        markAll: 'Merke visot lohkon',
+        commentedOn: 'vástidedje du sáhkavuoru',
+      },
+    },
     iconMenu: {
       folders: 'Mapper',
       tags: 'Knagger',
@@ -1313,6 +1339,17 @@ const messages = {
       radioButtonText: {
         option1: 'Čájet mu nama máhpa juohkkedettiin',
         option2: 'Ale čájet mu nama máhpa juohkkedettiin',
+      },
+      modalTexts: {
+        title: 'Viečča ođđa profiila gova',
+        uploadSection: {
+          title: 'Gease ja luoitte',
+          subTitle: 'dahje coahkkal vai viežžat gova',
+        },
+        fileName: 'Sáddejuvvon fiila:',
+        fileTypes: 'Dohkkehuvvon fiilašlájat: PNG, JPG (Máksá 5MB)',
+        savePicture: 'Vurke profiilagova',
+        deletePicture: 'Sihko profiilagova',
       },
     },
     resource: {

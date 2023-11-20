@@ -22,13 +22,6 @@ export default {
     children: 'Button',
     tooltip: 'Tooltip',
   },
-  argTypes: {
-    hydrateHTML: {
-      control: {
-        type: null,
-      },
-    },
-  },
 } as Meta<typeof Tooltip>;
 
 export const TooltipStory: StoryFn<typeof Tooltip> = ({ children, ...args }) => {

@@ -1,9 +1,35 @@
+/**
+ * Copyright (c) 2023-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
+import SafeLink from '@ndla/safelink';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
-import Tooltip from '@ndla/tooltip';
-import { FileFormat, FileType } from './FileList';
+
+interface Props {
+  title: string;
+  url: string;
+  fileExists: boolean;
+  fileType: string;
+}
+
+export interface FileType {
+  title: string;
+  formats: FileFormat[];
+  fileExists?: boolean;
+}
+
+export interface FileFormat {
+  url: string;
+  fileType: string;
+  tooltip: string;
+}
 
 const LinkTextWrapper = styled.div`
   & > span {
@@ -31,34 +57,6 @@ const FileLink = styled(SafeLink)`
   }
 `;
 
-const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, isDeadLink: boolean) => {
-  const titleWithFormat = `${title} (${format.fileType.toUpperCase()})`;
-
-  if (isDeadLink) {
-    return (
-      <span key={format.url}>
-        <Download />
-        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-      </span>
-    );
-  }
-
-  return (
-    <FileLink key={format.url} to={format.url} target="_blank" aria-label={titleWithFormat}>
-      <Download />
-      <Tooltip tooltip={format.tooltip}>
-        <LinkTextWrapper>
-          <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-        </LinkTextWrapper>
-      </Tooltip>
-    </FileLink>
-  );
-};
-
-interface Props {
-  file: FileType;
-}
-
 const FileListItem = styled.li`
   ${fonts.sizes('18px', '26px')};
   font-weight: ${fonts.weight.semibold};
@@ -74,12 +72,44 @@ const FileListItem = styled.li`
   }
 `;
 
-const File = ({ file }: Props) => {
-  const formatLinks = file.formats.map((format, index) =>
-    renderFormat(format, file.title, index === 0, !file.fileExists),
-  );
+interface FormatProps {
+  format: FileFormat;
+  title: string;
+  isPrimary: boolean;
+  isDeadLink: boolean;
+}
 
-  return <FileListItem key={file.title}>{formatLinks}</FileListItem>;
+const Format = ({ format, title, isPrimary, isDeadLink }: FormatProps) => {
+  const titleWithFormat = `${title} (${format.fileType.toUpperCase()})`;
+
+  if (isDeadLink) {
+    return (
+      <span key={format.url}>
+        <Download />
+        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
+      </span>
+    );
+  }
+
+  return (
+    <FileLink key={format.url} to={format.url} target="_blank" aria-label={titleWithFormat}>
+      <Download />
+      <LinkTextWrapper aria-label={format.tooltip}>
+        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
+      </LinkTextWrapper>
+    </FileLink>
+  );
+};
+
+const File = ({ title, url, fileExists, fileType }: Props) => {
+  const { t } = useTranslation();
+  const tooltip = `${t('download')} ${url.split('/').pop()}`;
+
+  return (
+    <FileListItem>
+      <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />
+    </FileListItem>
+  );
 };
 
 export default File;

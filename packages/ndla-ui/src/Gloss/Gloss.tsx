@@ -57,16 +57,19 @@ const Wrapper = styled.div`
 
 const GlossContainer = styled.div`
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
+  span {
+    ${fonts.sizes('16px', '24px')};
+  }
+  span[data-pinyin] {
+    font-style: italic;
+  }
 `;
 
 const GlossSpan = styled.span`
   font-weight: ${fonts.weight.bold};
-`;
-
-const TypeSpan = styled.span`
-  font-style: italic;
 `;
 
 const StyledAccordionHeader = styled(AccordionHeader)`
@@ -92,6 +95,9 @@ const TranslatedText = styled.span`
     font-weight: ${fonts.weight.bold};
     background-color: ${colors.background.lightBlue};
   }
+  &[data-pinyin] {
+    font-style: italic;
+  }
 `;
 
 const Gloss = ({ title, glossData, audio }: Props) => {
@@ -116,6 +122,7 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                 )}
                 {glossData.transcriptions.pinyin && (
                   <span
+                    data-pinyin=""
                     key={t('gloss.transcriptions.pinyin')}
                     aria-label={t('gloss.transcriptions.pinyin')}
                     lang={glossData.originalLanguage}
@@ -124,25 +131,31 @@ const Gloss = ({ title, glossData, audio }: Props) => {
                   </span>
                 )}
                 {glossData.wordClass && (
-                  <TypeSpan aria-label={t('gloss.wordClass')}>{t(`wordClass.${glossData.wordClass}`)}</TypeSpan>
+                  <span aria-label={t('gloss.wordClass')}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
                 )}
               </GlossContainer>
               {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
             </Wrapper>
-            <span>{title.title}</span>
+            <span lang={title.language}>{title.title}</span>
           </Container>
           {glossData.examples && glossData.examples.length > 0 && (
             <AccordionRoot type="single" collapsible>
               <AccordionItem value="1">
-                <StyledAccordionHeader>{t('gloss.examples')}</StyledAccordionHeader>
+                <StyledAccordionHeader headingLevel="span">{t('gloss.examples')}</StyledAccordionHeader>
                 <StyledAccordionContent>
                   {glossData.examples.map((example, index) => (
                     <div key={index}>
                       {example.map((translation, innerIndex) => (
                         <div key={`${index}_${innerIndex}`}>
-                          <TranslatedText data-first={innerIndex === 0}>{translation.example}</TranslatedText>
+                          <TranslatedText data-first={innerIndex === 0} lang={translation.language}>
+                            {translation.example}
+                          </TranslatedText>
                           {translation.transcriptions.pinyin && (
-                            <TranslatedText key={t('gloss.transcriptions.pinyin')} lang={glossData.originalLanguage}>
+                            <TranslatedText
+                              key={t('gloss.transcriptions.pinyin')}
+                              data-pinyin=""
+                              lang={glossData.originalLanguage}
+                            >
                               {translation.transcriptions?.pinyin}
                             </TranslatedText>
                           )}

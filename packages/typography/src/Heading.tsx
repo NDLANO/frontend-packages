@@ -48,19 +48,20 @@ const style = css`
       ${fonts.sizes('38px', '48px')};
     }
   }
-
   &[data-style='h2'] {
     ${fonts.sizes('28px', '36px')};
     ${mq.range({ from: breakpoints.tablet })} {
       ${fonts.sizes('30px', '38px')};
     }
   }
-
   &[data-style='h3'] {
     ${fonts.sizes('26px', '35px')};
     ${mq.range({ from: breakpoints.tablet })} {
       ${fonts.sizes('26px', '36px')};
     }
+  }
+  &[data-style='h4'] {
+    ${fonts.sizes('22px', '30px')};
   }
   &[data-style='list-title'] {
     ${fonts.sizes('18px', '24px')};
@@ -72,7 +73,7 @@ type AllowedElements = HeadingLevel | 'p' | 'span';
 
 interface Props<T extends AllowedElements> {
   element: T;
-  headingStyle: 'h1' | 'h2' | 'h3' | 'h1-resource' | 'list-title' | 'default';
+  headingStyle: 'h1' | 'h2' | 'h3' | 'h4' | 'h1-resource' | 'list-title' | 'default';
   serif?: boolean;
   /**
    * General usage

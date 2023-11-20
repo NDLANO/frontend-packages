@@ -7,14 +7,14 @@
  */
 
 import { Meta, StoryObj } from '@storybook/react';
-import FileV2 from './FileV2';
+import File from './File';
 import { defaultParameters } from '../../../../stories/defaults';
-import FileListV2 from './FileListV2';
+import FileList from './FileList';
 
 export default {
   title: 'Components/FileList',
   tags: ['autodocs'],
-  component: FileV2,
+  component: File,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
@@ -26,23 +26,23 @@ export default {
     fileType: 'pdf',
   },
   render: (args) => (
-    <FileListV2>
-      <FileV2 {...args} />
-    </FileListV2>
+    <FileList>
+      <File {...args} />
+    </FileList>
   ),
-} as Meta<typeof FileV2>;
+} as Meta<typeof File>;
 
-export const FileNotFound: StoryObj<typeof FileV2> = {
+export const FileNotFound: StoryObj<typeof File> = {
   args: { fileExists: false },
 };
 
-export const SeveralFiles: StoryObj<typeof FileV2> = {
+export const SeveralFiles: StoryObj<typeof File> = {
   render: () => (
-    <FileListV2>
-      <FileV2 title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" />
-      <FileV2 title="Fil 2" url="https://ndla.no/2" fileExists={false} fileType="pdf" />
-      <FileV2 title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" />
-      <FileV2 title="Fil 4" url="https://ndla.no/4" fileExists fileType="docx" />
-    </FileListV2>
+    <FileList>
+      <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" />
+      <File title="Fil 2" url="https://ndla.no/2" fileExists={false} fileType="pdf" />
+      <File title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" />
+      <File title="Fil 4" url="https://ndla.no/4" fileExists fileType="docx" />
+    </FileList>
   ),
 };

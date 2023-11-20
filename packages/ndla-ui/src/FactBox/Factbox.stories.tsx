@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { Meta, StoryObj } from '@storybook/react';
 import { spacing } from '@ndla/core';
 import { Heading, Text } from '@ndla/typography';
-import FactBoxV2 from './FactBoxV2';
+import FactBox from './FactBox';
 import { defaultParameters } from '../../../../stories/defaults';
 
 const Wrapper = styled.div`
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
  */
 export default {
   title: 'Components/FactBox',
-  component: FactBoxV2,
+  component: FactBox,
   tags: ['autodocs'],
   paramemeters: {
     inlineStories: true,
@@ -57,6 +57,6 @@ export default {
       </>
     ),
   },
-} as Meta<typeof FactBoxV2>;
+} as Meta<typeof FactBox>;
 
-export const Default: StoryObj<typeof FactBoxV2> = {};
+export const Default: StoryObj<typeof FactBox> = {};

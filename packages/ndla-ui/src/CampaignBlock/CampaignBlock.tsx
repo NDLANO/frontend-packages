@@ -12,7 +12,7 @@ import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
 import { HeadingLevel } from '@ndla/typography';
-import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
+import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
 
 interface Image {
   src: string;
@@ -94,7 +94,7 @@ const CampaignBlock = ({
   path,
   className,
 }: Props) => {
-  const href = usePossiblyRelativeUrl(url.url, path);
+  const href = getPossiblyRelativeUrl(url.url, path);
   return (
     <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
       {image && <StyledImg src={image.src} height={200} width={240} alt={image.alt} />}

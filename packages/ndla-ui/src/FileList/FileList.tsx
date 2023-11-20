@@ -1,23 +1,18 @@
+/**
+ * Copyright (c) 2023-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import File from './File';
-
-export interface FileType {
-  title: string;
-  formats: FileFormat[];
-  fileExists?: boolean;
-}
-
-export interface FileFormat {
-  url: string;
-  fileType: string;
-  tooltip: string;
-}
+import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
-  id: string;
-  heading: string;
-  files: FileType[];
+  children: ReactNode;
 }
 
 const FileListSection = styled.section`
@@ -35,7 +30,7 @@ const FileListSection = styled.section`
   }
 `;
 
-const FileListHeading = styled.h1`
+const FileListHeading = styled.h3`
   ${fonts.sizes('16px', '18px')};
   letter-spacing: 0.05em;
   margin: 0 0 ${spacing.xsmall} 0;
@@ -50,15 +45,14 @@ const FilesList = styled.ul`
   padding: 0;
 `;
 
-const FileList = ({ files, heading, id }: Props) => (
-  <FileListSection>
-    <FileListHeading>{heading}</FileListHeading>
-    <FilesList>
-      {files.map((file) => (
-        <File key={`file-${id}-${file.title}`} file={file} />
-      ))}
-    </FilesList>
-  </FileListSection>
-);
+const FileList = ({ children }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <FileListSection>
+      <FileListHeading>{t('files')}</FileListHeading>
+      <FilesList>{children}</FilesList>
+    </FileListSection>
+  );
+};
 
 export default FileList;

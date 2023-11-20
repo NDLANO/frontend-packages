@@ -15,6 +15,7 @@ export interface ContactBlockEmbedData {
   email: string;
   imageId: string;
   description: string;
+  alt?: string;
   blobColor?: 'pink' | 'green';
   blob?: 'pointy' | 'round';
 }

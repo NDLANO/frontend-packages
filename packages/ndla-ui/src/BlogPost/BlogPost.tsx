@@ -12,7 +12,7 @@ import SafeLink from '@ndla/safelink';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { HeadingLevel } from '@ndla/typography';
 import { useTranslation } from 'react-i18next';
-import { usePossiblyRelativeUrl } from '../utils/relativeUrl';
+import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
 
 export interface Props {
   title: {
@@ -84,7 +84,7 @@ const StyledImg = styled.img`
 
 const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal', path }: Props) => {
   const { t } = useTranslation();
-  const href = usePossiblyRelativeUrl(url, path);
+  const href = getPossiblyRelativeUrl(url, path);
   return (
     <Container data-size={size} to={href}>
       <Heading className="blog-title" css={headingCss} lang={title.language}>

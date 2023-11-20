@@ -1,12 +1,15 @@
-const path = require('path');
-const spawn = require('cross-spawn');
-const glob = require('glob');
+import { join, dirname } from 'path';
+import spawn from 'cross-spawn';
+import glob from 'glob';
+
+const { sync } = glob;
+const __dirname = dirname(new URL(import.meta.url).pathname);
 
 const [executor, ignoredBin, script, ...args] = process.argv;
 
 function attemptResolve(...resolveArgs) {
   try {
-    return require.resolve(...resolveArgs);
+    return import.meta.resolve(...resolveArgs);
   } catch (error) {
     return null;
   }
@@ -20,14 +23,14 @@ function handleSignal(result) {
 }
 
 function spawnScript() {
-  const relativeScriptPath = path.join(__dirname, './scripts', script);
+  const relativeScriptPath = join(__dirname, './scripts', script);
   const scriptPath = attemptResolve(relativeScriptPath);
 
   if (!scriptPath) {
     throw new Error(`Unknown script "${script}".`);
   }
 
-  const result = spawn.sync(executor, [scriptPath, ...args], {
+  const result = spawn.sync(executor, [scriptPath.pathname, ...args], {
     stdio: 'inherit',
   });
 
@@ -41,8 +44,8 @@ function spawnScript() {
 if (script) {
   spawnScript();
 } else {
-  const scriptsPath = path.join(__dirname, 'scripts/');
-  const scriptsAvailable = glob.sync(path.join(__dirname, 'scripts', '*'));
+  const scriptsPath = join(__dirname, 'scripts/');
+  const scriptsAvailable = sync(join(__dirname, 'scripts', '*'));
   const scriptsAvailableMessage = scriptsAvailable
     .map((s) => s.replace(scriptsPath, '').replace(/\.js$/, ''))
     .filter(Boolean)

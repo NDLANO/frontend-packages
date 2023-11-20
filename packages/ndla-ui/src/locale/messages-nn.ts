@@ -551,6 +551,7 @@ const messages = {
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       concept: 'Forklaringar',
+      gloss: 'Glosar',
       podcast: 'Podkast',
       other: 'Anna innhald',
     },
@@ -623,6 +624,18 @@ const messages = {
       heading: 'Slik gjenbruker du forklaringar',
       description: 'Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten',
       rules: 'Reglar for bruk av forklaring:',
+      title: 'Tittel',
+    },
+    gloss: {
+      embedlink: {
+        heading: 'Slik viser du glosen i anna innhald',
+        description: 'Denne lenka viser glosen utan kontekst (meny og botntekst)',
+        copyTitle: 'Kopier innbyggingslenke',
+        hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
+      heading: 'Slik gjenbruker du gloser',
+      description: 'Husk at innebygd innhald i ei glose kan ha ein anna lisens enn sjølve gloseteksten',
+      rules: 'Regler for bruk av glose:',
       title: 'Tittel',
     },
     files: {
@@ -1004,17 +1017,17 @@ const messages = {
     },
   },
   audio: {
-    play: 'Spill av',
+    play: 'Spel av',
     pause: 'Pause',
     download: 'Last ned lydfil',
     reuse: 'Bruk lydfil',
     error: {
-      url: 'Feil ved lasting av lydfila.',
+      url: 'Feil ved lasting av lydfil.',
       caption: 'Orsak, ein feil oppstod ved lasting av lydfil.',
     },
     controls: {
-      forward15sec: 'Spol 15 sekundar fram',
-      rewind15sec: 'Spol 15 sekundar tilbake',
+      forward15sec: 'Spol 15 sekund fram',
+      rewind15sec: 'Spol 15 sekund tilbake',
       selectSpeed: 'Velg avspelingshastigheit',
       adjustVolume: 'Endre volum',
     },
@@ -1022,8 +1035,8 @@ const messages = {
       heading: 'Tekstversjon',
       close: 'Lukk tekstversjon',
     },
-    readMoreDescriptionLabel: 'vis meir',
-    readLessDescriptionLabel: 'vis mindre',
+    readMoreDescriptionLabel: 'Vis meir',
+    readLessDescriptionLabel: 'Vis mindre',
   },
   h5p: {
     reuse: 'Bruk H5P',
@@ -1171,6 +1184,18 @@ const messages = {
         },
       },
     },
+    arena: {
+      title: 'Arena',
+      notification: {
+        title: 'Varslingar',
+        showAll: 'Sjå alle varslingar',
+        description:
+          'Velkomen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærarar frå heile Noreg. Du finn forum for ulike fag og tema.',
+        myNotification: 'Mine varsler',
+        markAll: 'Merk alle som lest',
+        commentedOn: 'svarte på ditt innlegg',
+      },
+    },
     iconMenu: {
       folders: 'Mappar',
       tags: 'Knaggar',
@@ -1316,6 +1341,17 @@ const messages = {
       radioButtonText: {
         option1: 'Vis namnet mitt når eg deler ei mappe',
         option2: 'Ikkje vis namnet mitt når eg deler mappe',
+      },
+      modalTexts: {
+        title: 'Last opp nytt profilbilete',
+        uploadSection: {
+          title: 'Dra og slepp',
+          subTitle: 'eller trykk for å lasta opp bilete',
+        },
+        fileName: 'Opplasta fil:',
+        fileTypes: 'Godkjente filtyper: PNG, JPG (Maks 5MB)',
+        savePicture: 'Lagre profilbilete',
+        deletePicture: 'Slett profilbilete',
       },
     },
     resource: {

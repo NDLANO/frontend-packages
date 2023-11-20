@@ -205,6 +205,7 @@ const TableWrapper = styled.div`
 `;
 
 const OverflowWrapper = styled.div`
+  position: relative;
   overflow-x: auto;
 `;
 

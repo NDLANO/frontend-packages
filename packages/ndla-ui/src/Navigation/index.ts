@@ -7,6 +7,5 @@
  */
 
 import NavigationBox from './NavigationBox';
-import NavigationTopicAbout from './NavigationTopicAbout';
 
-export { NavigationBox, NavigationTopicAbout };
+export { NavigationBox };

@@ -32,12 +32,8 @@ export const Welcome: StoryFn = () => (
         </p>
         <p>
           Den er ikke en brukermanual for innholdsproduksjon. Råd og retningslinjer for produksjon av innhold ligger i{' '}
-          <a
-            href="https://ndla.zendesk.com/hc/no/categories/4405379912082-Plattform-for-brukskvalitet"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            brukskvalitetsplattformen.
+          <a href="https://kvalitet.ndla.no" target="_blank" rel="noopener noreferrer">
+            kvalitet i NDLA.
           </a>
         </p>
         <h2>Hvordan bruke designmanualen?</h2>

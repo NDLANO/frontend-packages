@@ -29,6 +29,7 @@
     "@ndla/core": "^4.2.6",
     "@ndla/icons": "^4.1.7",
     "@ndla/pager": "^2.2.35",
+    "@ndla/typography": "^0.3.0",
     "@ndla/util": "^4.0.0"
   },
   "devDependencies": {

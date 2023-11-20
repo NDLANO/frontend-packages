@@ -1188,6 +1188,25 @@ const messages = {
     },
     arena: {
       title: 'Arena',
+      category: {
+        title: 'Lágit',
+        posts: 'Sáhkavuorru',
+        newPost: 'Ođđa reivvet',
+      },
+      topic: {
+        responses: 'Vástidan',
+      },
+      posts: {
+        notify: 'Oaččo dieđu ođđa vástádusaid birra',
+        dropdownMenu: {
+          report: 'Raportere čállosa moderatorii',
+          edit: 'Doaimmat čállosa',
+          delete: 'Sihko čállosa',
+        },
+        comment: 'Čále vástádusa',
+      },
+      bottomText:
+        'Váillahat go ovtta lági? Sáhtát jearrat ođđa lágiid. Geavat "Gihtten NDLA" dahje sádde e-poastta moderatator@ndla.no',
       notification: {
         title: 'Muittuhusat',
         showAll: 'Čájet buot dieđuid',
@@ -1300,30 +1319,6 @@ const messages = {
         title: 'Ná gilkorasttát iežat oiddotresurssaid',
         text: 'Go vurket muhtin resurssa de lea vejolaš merket resurssa fáddágilkoriin. Fáddágilkor lea čoavddasátni man sáhtát geavahit gávdnan dihte ruovttoluotta resurssaide máhpaid rastá. Gávnnat buot fáddágilkoriid maid leat geavahan go válljet mu fáddágilkoriid gurut bealde fálus. Das oainnát maiddái maid resurssaid don leat merken juohke fáddágilkoriin.',
       },
-    },
-    arena: {
-      header: 'Arena',
-      description:
-        'Bures boahtin NDLA Arena. Das sáhtát digaštallat, juogadit ja ovttasbargat eará oahpaheddjiiguin miehtá Norgga.',
-      title: 'Lágit',
-      category: {
-        posts: 'Sáhkavuorru',
-        newPost: 'Ođđa reivvet',
-      },
-      topic: {
-        responses: 'Vástidan',
-      },
-      posts: {
-        notify: 'Oaččo dieđu ođđa vástádusaid birra',
-        dropdownMenu: {
-          report: 'Raportere čállosa moderatorii',
-          edit: 'Doaimmat čállosa',
-          delete: 'Sihko čállosa',
-        },
-        comment: 'Čále vástádusa',
-      },
-      bottomText:
-        'Váillahat go ovtta lági? Sáhtát jearrat ođđa lágiid. Geavat "Gihtten NDLA" dahje sádde e-poastta moderatator@ndla.no',
     },
     myProfile: {
       title: 'Mu profiila',

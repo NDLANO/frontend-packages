@@ -1186,6 +1186,25 @@ const messages = {
     },
     arena: {
       title: 'Arena',
+      category: {
+        title: 'Kategorier',
+        posts: 'Innlegg',
+        newPost: 'Nytt innlegg',
+      },
+      topic: {
+        responses: 'Svar',
+      },
+      posts: {
+        notify: 'Få varsel om nye svar',
+        dropdownMenu: {
+          report: 'Rapporter innlegg til moderator',
+          edit: 'Rediger innlegg',
+          delete: 'Slett innlegget',
+        },
+        comment: 'Skriv et svar',
+      },
+      bottomText:
+        'Savner du en kategori? Du kan be om nye kategorier. Bruk “Spør NDLA” eller send en epost til moderator@ndla.no',
       notification: {
         title: 'Varslinger',
         showAll: 'Se alle varslinger',
@@ -1299,30 +1318,6 @@ const messages = {
         title: 'Slik tagger du favorittressursene dine',
         text: 'Når du lagrer en ressurs, får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt, ved å velge <strong>Mine emneknagger</strong> i venstremenyen. Her kan du også se hvilke ressurser du har markert med hvilken emneknagg.',
       },
-    },
-    arena: {
-      header: 'Arena',
-      description:
-        'Velkommen til NDLAs Arena. Her kan du diskutere, dele og samarbeide med andre lærere fra hele Norge.',
-      title: 'Kategorier',
-      category: {
-        posts: 'Innlegg',
-        newPost: 'Nytt innlegg',
-      },
-      topic: {
-        responses: 'Svar',
-      },
-      posts: {
-        notify: 'Få varsel om nye svar',
-        dropdownMenu: {
-          report: 'Rapporter innlegg til moderator',
-          edit: 'Rediger innlegg',
-          delete: 'Slett innlegget',
-        },
-        comment: 'Skriv et svar',
-      },
-      bottomText:
-        'Savner du en kategori? Du kan be om nye kategorier. Bruk “Spør NDLA” eller send en epost til moderator@ndla.no',
     },
     myProfile: {
       title: 'Min Profil',

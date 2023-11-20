@@ -1190,6 +1190,25 @@ const messages = {
     },
     arena: {
       title: 'Sijjie',
+      category: {
+        title: 'Lïhtsh',
+        posts: 'Håaleme',
+        newPost: 'Orre lahtese',
+      },
+      topic: {
+        responses: 'Vaestiedasse',
+      },
+      posts: {
+        notify: 'Bïeljelh mejtie orre vaestiedassh',
+        dropdownMenu: {
+          report: 'Reekth håalemem moderatovrese',
+          edit: 'Jarkelimmie håalemistie',
+          delete: 'Slett innlegget',
+        },
+        comment: 'Tjaelieh vaastoem',
+      },
+      bottomText:
+        'Akte kategorije datne ohtsedh ? Datne maahtah orre kategoriji bïjre rohkelidh Nuhtjh "Gihtjh NDLA" jallh seedth e-påastem moderaator@ndla.no',
       notification: {
         title: 'Bïeljelimmie',
         showAll: 'Gaajhkh bæjhkoehtimmieh vuartasjidh',
@@ -1304,30 +1323,6 @@ const messages = {
         title: 'Slik taggar du favorittressursane dine',
         text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Mine emneknaggar</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
       },
-    },
-    arena: {
-      header: 'Arena',
-      description:
-        'Buerie båeteme NDLA Arena se . Daesnie maahtah digkiedidh , juekedh jïh laavenjostedh jeatjah lohkehtæjjajgujmie abpe Nöörjeste .',
-      title: 'Lïhtsh',
-      category: {
-        posts: 'Håaleme',
-        newPost: 'Orre lahtese',
-      },
-      topic: {
-        responses: 'Vaestiedasse',
-      },
-      posts: {
-        notify: 'Bïeljelh mejtie orre vaestiedassh',
-        dropdownMenu: {
-          report: 'Reekth håalemem moderatovrese',
-          edit: 'Jarkelimmie håalemistie',
-          delete: 'Slett innlegget',
-        },
-        comment: 'Tjaelieh vaastoem',
-      },
-      bottomText:
-        'Akte kategorije datne ohtsedh ? Datne maahtah orre kategoriji bïjre rohkelidh Nuhtjh "Gihtjh NDLA" jallh seedth e-påastem moderaator@ndla.no',
     },
     myProfile: {
       title: 'Mov Profijle',

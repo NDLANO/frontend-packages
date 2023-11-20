@@ -21,3 +21,7 @@ export { StyledButtonWrapper, FieldHeaderIconStyle } from './Styles';
 export { FormPill, FormPills } from './FormPill';
 export { default as CheckboxItem } from './CheckboxItem';
 export { default as UploadDropZone } from './UploadDropZone';
+export { Label } from './Label';
+export { FormControl } from './FormControl';
+export { Input as InputV3, InputContainer } from './InputV3';
+export { FieldErrorMessage } from './FieldErrorMessage';

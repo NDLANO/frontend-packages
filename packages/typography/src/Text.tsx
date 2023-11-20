@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from 'react';
+import { ElementType, ForwardedRef, ReactNode } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { PolymorphicProps, polymorphicForwardRef } from '@ndla/util';
@@ -106,9 +106,9 @@ export interface TextProps {
 /**
  * Text-komponent som definerer styling for alle tekst-elementer (ingress, brødtekst, metatekst, knappetekst) som brukes i ed, ndla-frontend, listing.
  */
-const Text = polymorphicForwardRef<PolymorphicProps<'p'> & TextProps, 'p'>((props, ref) => {
+const Text = <T extends ElementType = 'p'>(props: PolymorphicProps<T> & TextProps, ref: ForwardedRef<any>) => {
   const { element: Element = 'p', textStyle = 'content', margin = 'normal', ...rest } = props;
   return <Element css={[baseStyle, elementStyle[textStyle], elementMarginStyle[margin]]} {...rest} ref={ref} />;
-});
+};
 
-export default Text;
+export default polymorphicForwardRef(Text);

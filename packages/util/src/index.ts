@@ -22,5 +22,6 @@ export { default as useForwardedRef } from './useForwardedRef';
 export { default as NoSSR } from './nossr/NoSSR';
 export { default as withNoSSR } from './nossr/withNoSSR';
 export { default as usePrevious } from './usePrevious';
+export { composeRefs } from './composeRefs';
 export { polymorphicForwardRef } from './polymorphicForwardRef';
 export type { PolymorphicProps } from './polymorphicForwardRef';

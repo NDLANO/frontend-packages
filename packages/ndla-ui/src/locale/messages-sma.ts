@@ -1223,6 +1223,7 @@ const messages = {
       folders: 'Mapper',
       tags: 'Knagger',
       subjects: 'Favorittfag',
+      profile: 'Profijle',
       more: 'Mer',
     },
     tagList: 'Emneknagg',
@@ -1326,9 +1327,10 @@ const messages = {
     },
     myProfile: {
       title: 'Mov Profijle',
-      disclaimerTitle: { employee: 'Gusnie guvvie jïh nomme åtnasuvvieh?', student: 'Gusnie mov nomme' },
+      disclaimerTitle: { employee: 'Gusnie mov nomme?', student: 'Gusnie mov nomme?' },
       disclaimerText: {
-        employee: 'Guvvie jïh nomme våajnoes sjidtieh gosse meatan digkiedimmesne sijjesne.',
+        employee:
+          'Dov nomme ajve jijtje vååjnoes gosse datne leah Min NDLA sïjse loggedeminie, jïh jis datne veeljh dam vuesiehtidh gosse maabpah juakedh.',
         student: 'Dov nomme ajve tjaalasåvva dutnjien gosse sïjse loggedh',
       },
       preferenceTitle: 'Sjïehtedh jis edtja nommem vuesiehtidh gosse maabpam juekedh',

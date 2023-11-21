@@ -1221,6 +1221,7 @@ const messages = {
       folders: 'Mapper',
       tags: 'Knagger',
       subjects: 'Favorittfag',
+      profile: 'Profiila',
       more: 'Mer',
     },
     tagList: 'Fáddágilkor',
@@ -1322,9 +1323,10 @@ const messages = {
     },
     myProfile: {
       title: 'Mu profiila',
-      disclaimerTitle: { employee: 'Gos geavahit mu gova ja mu nama?', student: 'Gos geavahit mu nama?' },
+      disclaimerTitle: { employee: 'Gos geavahit mu nama?', student: 'Gos geavahit mu nama?' },
       disclaimerText: {
-        employee: 'Govva ja namma čájehuvvojit go searvat digaštallamii arenain.',
+        employee:
+          'Du namma čájehuvvo dušše dutnje alccesat go leat loggen sisa Mu NDLA, ja jos válljet dan čájehit juohkkehettiin máhpaid.',
         student: 'Du namma čájehuvvo dušše go leat sisačálihuvvon',
       },
       preferenceTitle: 'Vállje jos namma čájehuvvo máhpa juohkkedettiin',

@@ -1323,7 +1323,7 @@ const messages = {
     myProfile: {
       title: 'Min Profil',
       disclaimerTitle: {
-        employee: 'Hvor brukes bildet mitt?',
+        employee: 'Hvor brukes navnet mitt?',
         student: 'Hvor brukes navnet mitt?',
       },
       disclaimerText: {

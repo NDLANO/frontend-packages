@@ -1329,7 +1329,7 @@ const messages = {
       disclaimerTitle: { employee: 'Where is my name used?', student: 'Where is my name used?' },
       disclaimerText: {
         employee:
-          'Your name is only displayed for you while you are logged into My NDLA, and if you choose to display it while sharing forlders.',
+          'Your name is only displayed for you while you are logged into My NDLA, and if you choose to display it while sharing folders.',
         student: 'Your name is only displayed for you',
       },
       preferenceTitle: 'Choose whether you want to display name when sharing a folder',

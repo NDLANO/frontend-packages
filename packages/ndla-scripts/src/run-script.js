@@ -30,7 +30,9 @@ function spawnScript() {
     throw new Error(`Unknown script "${script}".`);
   }
 
-  const result = spawn.sync(executor, [scriptPath.pathname, ...args], {
+  const properFilePath = scriptPath.replace(/^file:\/\//, '').concat('.js');
+
+  const result = spawn.sync(executor, [properFilePath, ...args], {
     stdio: 'inherit',
   });
 

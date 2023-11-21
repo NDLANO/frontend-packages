@@ -1221,6 +1221,7 @@ const messages = {
       folders: 'Folders',
       tags: 'Tags',
       subjects: 'Favourite subjects',
+      profile: 'Profile',
       more: 'More',
     },
     tagList: 'Tags',
@@ -1325,9 +1326,10 @@ const messages = {
     },
     myProfile: {
       title: 'My Profile',
-      disclaimerTitle: { employee: 'Where is my picture and name used?', student: 'Where is my name used?' },
+      disclaimerTitle: { employee: 'Where is my name used?', student: 'Where is my name used?' },
       disclaimerText: {
-        employee: 'Your picture and name are displayed when you participate in discussions in the arena.',
+        employee:
+          'Your name is only displayed for you while you are logged into My NDLA, and if you choose to display it while sharing forlders.',
         student: 'Your name is only displayed for you',
       },
       preferenceTitle: 'Choose whether you want to display name when sharing a folder',

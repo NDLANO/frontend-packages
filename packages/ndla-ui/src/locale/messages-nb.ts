@@ -1219,6 +1219,7 @@ const messages = {
       folders: 'Mapper',
       tags: 'Knagger',
       subjects: 'Favorittfag',
+      profile: 'Profil',
       more: 'Mer',
     },
     tagList: 'Emneknagger',
@@ -1322,11 +1323,12 @@ const messages = {
     myProfile: {
       title: 'Min Profil',
       disclaimerTitle: {
-        employee: 'Hvor brukes bildet og navnet mitt?',
+        employee: 'Hvor brukes bildet mitt?',
         student: 'Hvor brukes navnet mitt?',
       },
       disclaimerText: {
-        employee: 'Bilde og navn vises når du deltar i diskusjoner i arenaen.',
+        employee:
+          'Navnet ditt vises bare for deg selv når du er logget inn i Min NDLA, og dersom du velger å vise det ved deling av mapper.',
         student: 'Navnet ditt vises bare for deg selv når du er logget inn.',
       },
       preferenceTitle: 'Velg om du vil vise navn når du deler en mappe',

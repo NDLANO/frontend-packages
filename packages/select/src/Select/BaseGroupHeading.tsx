@@ -27,10 +27,9 @@ const StyledGroupHeader = styled.div`
 const BaseGroupHeading = <T extends boolean>({
   children,
   selectProps: { small, bold },
-  ...rest
 }: GroupHeadingProps<Option, T>) => {
   return (
-    <StyledGroupHeader data-small={small} data-bold={bold} {...rest}>
+    <StyledGroupHeader data-small={small} data-bold={bold}>
       {children}
     </StyledGroupHeader>
   );

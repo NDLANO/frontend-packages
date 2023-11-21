@@ -1188,6 +1188,25 @@ const messages = {
     },
     arena: {
       title: 'Arena',
+      category: {
+        title: 'Categories',
+        posts: 'Posts',
+        newPost: 'New post',
+      },
+      topic: {
+        responses: 'Responses',
+      },
+      posts: {
+        notify: 'Get notified of new answers',
+        dropdownMenu: {
+          report: 'Report post to moderator',
+          edit: 'Edit post',
+          delete: 'Delete post',
+        },
+        comment: 'Comment',
+      },
+      bottomText:
+        'Are you missing a category? You can request new categories. Use "Ask NDLA" or send an email to moderator@ndla.no',
       notification: {
         title: 'Notifications',
         showAll: 'View all notifications',

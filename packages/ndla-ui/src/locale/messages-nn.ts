@@ -1186,6 +1186,25 @@ const messages = {
     },
     arena: {
       title: 'Arena',
+      category: {
+        title: 'Kategoriar',
+        posts: 'Innlegg',
+        newPost: 'Nytt innlegg',
+      },
+      topic: {
+        responses: 'Svar',
+      },
+      posts: {
+        notify: 'Få varsel om nye svar',
+        dropdownMenu: {
+          report: 'Rapporter innlegg til moderator',
+          edit: 'Rediger innlegg',
+          delete: 'Slett innlegget',
+        },
+        comment: 'Skriv eit svar',
+      },
+      bottomText:
+        'Saknar du ein kategori? Du kan be om nye kategoriar. Bruk "Spør NDLA" eller send ein epost til moderator@ndla.no',
       notification: {
         title: 'Varslingar',
         showAll: 'Sjå alle varslingar',

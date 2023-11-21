@@ -1188,6 +1188,25 @@ const messages = {
     },
     arena: {
       title: 'Arena',
+      category: {
+        title: 'Lágit',
+        posts: 'Sáhkavuorru',
+        newPost: 'Ođđa reivvet',
+      },
+      topic: {
+        responses: 'Vástidan',
+      },
+      posts: {
+        notify: 'Oaččo dieđu ođđa vástádusaid birra',
+        dropdownMenu: {
+          report: 'Raportere čállosa moderatorii',
+          edit: 'Doaimmat čállosa',
+          delete: 'Sihko čállosa',
+        },
+        comment: 'Čále vástádusa',
+      },
+      bottomText:
+        'Váillahat go ovtta lági? Sáhtát jearrat ođđa lágiid. Geavat "Gihtten NDLA" dahje sádde e-poastta moderatator@ndla.no',
       notification: {
         title: 'Muittuhusat',
         showAll: 'Čájet buot dieđuid',

@@ -1190,6 +1190,25 @@ const messages = {
     },
     arena: {
       title: 'Sijjie',
+      category: {
+        title: 'Lïhtsh',
+        posts: 'Håaleme',
+        newPost: 'Orre lahtese',
+      },
+      topic: {
+        responses: 'Vaestiedasse',
+      },
+      posts: {
+        notify: 'Bïeljelh mejtie orre vaestiedassh',
+        dropdownMenu: {
+          report: 'Reekth håalemem moderatovrese',
+          edit: 'Jarkelimmie håalemistie',
+          delete: 'Slett innlegget',
+        },
+        comment: 'Tjaelieh vaastoem',
+      },
+      bottomText:
+        'Akte kategorije datne ohtsedh ? Datne maahtah orre kategoriji bïjre rohkelidh Nuhtjh "Gihtjh NDLA" jallh seedth e-påastem moderaator@ndla.no',
       notification: {
         title: 'Bïeljelimmie',
         showAll: 'Gaajhkh bæjhkoehtimmieh vuartasjidh',

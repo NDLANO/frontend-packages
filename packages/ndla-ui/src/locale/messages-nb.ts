@@ -1335,9 +1335,9 @@ const messages = {
       preferenceText:
         'Her kan du selv velge om du vil vise navnet ditt når du deler en mappe. Valget gjelder for alle mappene dine og kan endres senere. Dersom du endrer vil navnet ditt vises på alle dine delte mapper.',
       editButtonText: 'Endre profilbilde',
-      radioButtonText: {
-        option1: 'Vis navnet mitt når jeg deler en mappe',
-        option2: 'Ikke vis navnet mitt når jeg deler mappe',
+      namePreference: {
+        showName: 'Vis navnet mitt når jeg deler en mappe',
+        dontShowName: 'Ikke vis navnet mitt når jeg deler mappe',
       },
       modalTexts: {
         title: 'Last opp nytt profilbilde',

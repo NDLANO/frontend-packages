@@ -1333,9 +1333,9 @@ const messages = {
       preferenceText:
         'Dás válljet jos iežat namma čájehuvvo juohkkedettiin máhpa. Dát molssaeaktu guoská buot máhpaide ja sáhttá rievdaduvvot maŋŋil. Jos rievdadat dán, de čájehuvvo du namma buot juogaduvvon máhpain.',
       editButtonText: 'Rievdat profiilagova',
-      radioButtonText: {
-        option1: 'Čájet mu nama máhpa juohkkedettiin',
-        option2: 'Ale čájet mu nama máhpa juohkkedettiin',
+      namePreference: {
+        showName: 'Čájet mu nama máhpa juohkkedettiin',
+        dontShowName: 'Ale čájet mu nama máhpa juohkkedettiin',
       },
       modalTexts: {
         title: 'Viečča ođđa profiila gova',

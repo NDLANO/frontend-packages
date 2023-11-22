@@ -34,7 +34,7 @@ const LicenseDescription = ({ description, icon }: Props) => {
   return (
     <StyledFigCaption>
       {icon}
-      {description}
+      <span>{description}</span>
     </StyledFigCaption>
   );
 };

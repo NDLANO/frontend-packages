@@ -1337,9 +1337,9 @@ const messages = {
       preferenceText:
         'Daesnie jïjtje veeljh mejtie sïjhth dov nommem vuesiehtidh gosse maabpam juekedh . Daate veeljeme lea gaajhkine dov maabpojne, jïh maahta dam mænngan jarkelidh. Jis jeatjahdahtah , dov nomme sæjhta våajnoes årrodh gaajhkine dov joekedamme maabpojne.',
       editButtonText: 'Naemhtie profijleguvviem jarkelidh',
-      radioButtonText: {
-        option1: 'Vuesehth mov nommem gosse maabpam juekieh',
-        option2: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
+      namePreference: {
+        showName: 'Vuesehth mov nommem gosse maabpam juekieh',
+        dontShowName: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
       },
       modalTexts: {
         title: 'Orre profijleguvviem bæjhkoehtidh',

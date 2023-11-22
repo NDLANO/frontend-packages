@@ -1336,9 +1336,9 @@ const messages = {
       preferenceText:
         'Here you can choose whether you want to display your name when you share a folder. The selected option applies to all your folders and can be changed later. If you later change the option, your name will appear on all your shared folders.',
       editButtonText: 'Change profile picture',
-      radioButtonText: {
-        option1: 'Show my name when I share a folder',
-        option2: 'Do not show my name when I share a folder',
+      namePreference: {
+        showName: 'Show my name when I share a folder',
+        dontShowName: 'Do not show my name when I share a folder',
       },
       modalTexts: {
         title: 'Upload a new profile picture',

@@ -82,7 +82,7 @@ const BaseControl = <T extends boolean>({
   innerRef,
   innerProps,
   children,
-  ...rest
+  isDisabled,
 }: ControlProps<Option, T>) => (
   <StyledBaseControl
     data-small={small}
@@ -90,7 +90,7 @@ const BaseControl = <T extends boolean>({
     data-color-theme={colorTheme}
     data-outline={outline}
     data-required={required}
-    data-disabled={rest.isDisabled}
+    data-disabled={isDisabled}
     data-menu-open={menuIsOpen}
     data-has-value={hasValue}
     ref={innerRef}

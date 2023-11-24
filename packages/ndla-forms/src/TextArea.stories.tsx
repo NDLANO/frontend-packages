@@ -6,6 +6,7 @@
  *
  */
 
+import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Search } from '@ndla/icons/common';
 import { Check } from '@ndla/icons/editor';
@@ -38,15 +39,19 @@ export const WithRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   </InputContainer>
 );
 
-export const WithExistingText: StoryFn<typeof TextArea> = ({ ...args }) => (
-  <InputContainer>
-    <TextArea
-      value={`I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.
+export const WithExistingText: StoryFn<typeof TextArea> = ({ ...args }) => {
+  const [value, setValue] = useState(
+    `I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer. 
 
-Du kan bla i artiklene ved å bruke menyen.`}
-    />
-  </InputContainer>
-);
+    Du kan bla i artiklene ved å bruke menyen.`,
+  );
+
+  return (
+    <InputContainer>
+      <TextArea value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+    </InputContainer>
+  );
+};
 
 export const WithLeftAndRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   <InputContainer>

@@ -15,7 +15,7 @@ import { css } from '@emotion/react';
 
 export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;
-  name: string;
+  name: ReactNode;
 }
 
 export interface IndexedBreadcrumbItem extends SimpleBreadcrumbItem {

@@ -38,6 +38,16 @@ export const WithRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   </InputContainer>
 );
 
+export const WithExistingText: StoryFn<typeof TextArea> = ({ ...args }) => (
+  <InputContainer>
+    <TextArea
+      value={`I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.
+
+Du kan bla i artiklene ved å bruke menyen.`}
+    />
+  </InputContainer>
+);
+
 export const WithLeftAndRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   <InputContainer>
     <Search />

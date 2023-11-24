@@ -10,7 +10,6 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
-import { colors, spacing } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import TreeStructure, { TreeStructureProps } from './TreeStructure';
 import { defaultParameters } from '../../../../stories/defaults';
@@ -25,18 +24,6 @@ const Container = styled.div`
   max-width: 600px;
   &[data-type='picker'] {
     height: 250px;
-  }
-`;
-
-const StyledFolderInput = styled(FolderInput)`
-  border-left: ${spacing.xsmall} solid ${colors.brand.light};
-  border-right: ${spacing.xsmall} solid ${colors.brand.light};
-  &:focus-within {
-    border-color: ${colors.brand.light};
-  }
-  /* Not good practice, but necessary to give error message same padding as caused by border. */
-  & + span {
-    padding: 0 ${spacing.xsmall};
   }
 `;
 
@@ -240,10 +227,9 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
   }, [name]);
 
   return (
-    <StyledFolderInput
+    <FolderInput
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus
-      labelHidden
       name="name"
       label={'Mine mapper'}
       placeholder={'Skriv inn mappenavn'}

@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { LicenseDescription } from '@ndla/notion';
 import { licenseRights } from '@ndla/licenses';
-import { RadioButtonGroup } from '@ndla/ui';
+import { RadioButtonGroup } from '@ndla/forms';
 import { defaultParameters } from './defaults';
 
 /**

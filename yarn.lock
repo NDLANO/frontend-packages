@@ -2563,6 +2563,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
   languageName: unknown
   linkType: soft
@@ -2580,8 +2581,11 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
+    i18next: ">= 23.0.0"
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
+    react-router-dom: ">= 6.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2613,6 +2617,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
   languageName: unknown
   linkType: soft
@@ -2644,6 +2649,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
   languageName: unknown
   linkType: soft
@@ -2669,6 +2675,7 @@ __metadata:
   peerDependencies:
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
   languageName: unknown
   linkType: soft
 
@@ -2716,6 +2723,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
   languageName: unknown
   linkType: soft
@@ -2748,7 +2756,12 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
+    i18next: ">= 23.0.0"
+    lodash: ">= 4"
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
+    react-i18next: ">= 13.0.0"
+    react-router-dom: ">= 6.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2780,7 +2793,12 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
+    i18next: ">= 23.0.0"
+    lodash: ">= 4.0.0"
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
+    react-i18next: ">= 13.0.0"
+    react-router-dom: ">= 6.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2800,9 +2818,13 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
+    i18next: ">= 23.0.0"
+    lodash: ">= 4.0.0"
     react: ">= 16.8.0"
     react-bem-helper: ^1.4.1
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
+    react-router-dom: ">= 6.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2817,6 +2839,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
   languageName: unknown
   linkType: soft
@@ -2904,6 +2927,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
   languageName: unknown
   linkType: soft
 
@@ -2916,6 +2940,7 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
   languageName: unknown
   linkType: soft
 
@@ -2929,6 +2954,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
   languageName: unknown
   linkType: soft
@@ -3025,7 +3051,9 @@ __metadata:
     i18next: ^23.5.1
     lodash: ^4.17.20
     react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
     react-i18next: ^13.3.0
+    react-router-dom: "> 6.0.0"
   languageName: unknown
   linkType: soft
 
@@ -10536,6 +10564,9 @@ __metadata:
     eslint-plugin-lodash: "npm:^7.4.0"
     eslint-plugin-react: "npm:^7.33.2"
     eslint-plugin-react-hooks: "npm:^4.6.0"
+  peerDependencies:
+    "@babel/core": ">= 7.0.0"
+    eslint: ">= 8.0.0"
   languageName: unknown
   linkType: soft
 

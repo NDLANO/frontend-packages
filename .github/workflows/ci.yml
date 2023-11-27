@@ -28,7 +28,7 @@ jobs:
             ~/.npm
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: 'Install'
-        run: yarn install --immutable
+        run: yarn install --frozen-lockfile
       - name: 'Bootstrap'
         run: yarn bootstrap:ci
       - name: 'Check-all'

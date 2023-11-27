@@ -106,10 +106,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, r
   }, []);
 
   useEffect(() => {
-    window.addEventListener('keydown', onKeydown);
+    window.addEventListener('keyup', onKeydown);
     window.addEventListener('resize', resize);
+    resize();
     return () => {
-      window.removeEventListener('keydown', onKeydown);
+      window.removeEventListener('keyup', onKeydown);
       window.removeEventListener('resize', resize);
     };
   }, [resize]);

@@ -12,7 +12,7 @@ import { css } from '@emotion/react';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
 import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from '@ndla/types-backend/image-api';
-import { Input } from '@ndla/forms';
+import { InputContainer, InputV3 } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import ImageSearchResult from './ImageSearchResult';
 
@@ -374,31 +374,31 @@ class ImageSearch extends Component<Props, State> {
 
     return (
       <ImageSearchWrapper>
-        <Input
-          placeholder={searchPlaceholder}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus
-          iconRight={
-            <button
-              css={searchIconCss}
-              aria-label={searchButtonTitle}
-              type="button"
-              onClick={() => {
+        <InputContainer>
+          <InputV3
+            placeholder={searchPlaceholder}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+            value={queryString}
+            onChange={(evt: ChangeEvent<HTMLInputElement>) => this.setState({ queryString: evt.target.value })}
+            onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {
+              if (evt.key === 'Enter') {
+                evt.preventDefault();
                 this.searchImages({ query: queryString, page: 1 });
-              }}
-            >
-              <SearchIcon />
-            </button>
-          }
-          value={queryString}
-          onChange={(evt: ChangeEvent<HTMLInputElement>) => this.setState({ queryString: evt.target.value })}
-          onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {
-            if (evt.key === 'Enter') {
-              evt.preventDefault();
+              }
+            }}
+          />
+          <button
+            css={searchIconCss}
+            aria-label={searchButtonTitle}
+            type="button"
+            onClick={() => {
               this.searchImages({ query: queryString, page: 1 });
-            }
-          }}
-        />
+            }}
+          >
+            <SearchIcon />
+          </button>
+        </InputContainer>
         {noResultsFound && this.props.noResults}
         <div className="list">
           {images.map((image) => (

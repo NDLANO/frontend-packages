@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { spacing } from '@ndla/core';
 import { LayoutItem, OneColumn, PageContainer, SubjectHeader } from '@ndla/ui';
-import { InputV2 } from '@ndla/forms';
+import { FormControl, InputV3, Label } from '@ndla/forms';
 import { CopyButton } from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { defaultParameters } from '../defaults';
@@ -43,14 +43,15 @@ const BannerList = () => {
       <OneColumn>
         <LayoutItem layout="full">
           <article className="c-article c-article--clean">
-            <InputV2
-              name="banner"
-              label="Søk etter bannere"
-              labelHidden
-              placeholder="Søk etter fag"
-              value={bannerSearch}
-              onChange={(e) => setBannerSearch(e.currentTarget.value)}
-            />
+            <FormControl id="search">
+              <Label visuallyHidden>Søk etter bannere</Label>
+              <InputV3
+                name="banner"
+                placeholder="Søk etter fag"
+                value={bannerSearch}
+                onChange={(e) => setBannerSearch(e.currentTarget.value)}
+              />
+            </FormControl>
           </article>
         </LayoutItem>
       </OneColumn>

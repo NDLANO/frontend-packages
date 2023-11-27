@@ -57,7 +57,7 @@ const HomeBreadcrumb = ({ items, light }: Props) => {
     if (item.index === totalCount - 1) {
       return <StyledSpan light={light}>{item.name}</StyledSpan>;
     }
-    if (item.index === 0) {
+    if (item.index === 0 && typeof item.name === 'string') {
       return (
         <StyledIconSafeLink aria-label={item.name} to={item.to}>
           <StyledHome title={item.name} light={light} />

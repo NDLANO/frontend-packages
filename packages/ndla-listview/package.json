@@ -33,9 +33,13 @@
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "i18next": ">= 23.0.0",
+    "lodash": ">= 4.0.0",
     "react": ">= 16.8.0",
     "react-bem-helper": "^1.4.1",
-    "react-i18next": "^13.3.0"
+    "react-dom": ">= 16.8.0",
+    "react-i18next": "^13.3.0",
+    "react-router-dom": ">= 6.0.0"
   },
   "publishConfig": {
     "access": "public"

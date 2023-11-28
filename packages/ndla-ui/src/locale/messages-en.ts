@@ -1303,8 +1303,14 @@ const messages = {
       feide: 'We have retrieved this information from Feide',
       feideWrongInfo:
         'If the information is incorrect, it has to be updated by the host organizationg or the school that the account is associated with. An overview of user support can be found here: feide.no/brukerstotte',
-      newFavourite: 'Recently favourited',
-
+      recentFavourites: {
+        title: 'Recently added to my favourites',
+        link: 'View all of your folders',
+      },
+      recentArenaPosts: {
+        title: 'Recent posts in the arena',
+        link: 'View all posts in the arena',
+      },
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
         text: 'Use the heart button to save a resource. You will then get an option to store the resource in a folder.',

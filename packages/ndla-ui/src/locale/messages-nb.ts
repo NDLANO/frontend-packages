@@ -1297,7 +1297,14 @@ const messages = {
         term2: 'Ikke skriv noe støtende i tekstfelt.',
         term3: 'NDLA forbeholder seg retten til å oppdatere eller slette utdaterte ressurser.',
       },
-      newFavourite: 'Nylig lagt til',
+      recentFavourites: {
+        title: 'Nylig til i mine favoritter',
+        link: 'Se alle mappene dine',
+      },
+      recentArenaPosts: {
+        title: 'Nye innlegg i arenaen',
+        link: 'Se alle innlegg i arenaen',
+      },
       feide: 'Dette henter vi om deg gjennom Feide',
       feideWrongInfo:
         'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstotte',

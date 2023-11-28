@@ -1254,7 +1254,9 @@ const messages = {
     userPictureAltText: 'Profilbilde',
     sharedFolder: {
       folderCopied: 'Mappen har blitt kopiert.',
-      info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
+      info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av {{shared}}.',
+      shared: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av {{sharedBy}}.',
+      aTeacher: 'en lærer',
       firstShared: 'Mappa ble delt første gang {{date}}',
       learningpathUnsupported:
         'Læringsstier og tverrfaglige caser kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',
@@ -1319,6 +1321,7 @@ const messages = {
         title: 'Slik tagger du favorittressursene dine',
         text: 'Når du lagrer en ressurs, får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt, ved å velge <strong>Mine emneknagger</strong> i venstremenyen. Her kan du også se hvilke ressurser du har markert med hvilken emneknagg.',
       },
+      recentArenaTopics: 'Nye innlegg i arenaen',
     },
     myProfile: {
       title: 'Min Profil',

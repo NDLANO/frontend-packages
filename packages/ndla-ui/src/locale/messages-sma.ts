@@ -1260,6 +1260,8 @@ const messages = {
     sharedFolder: {
       folderCopied: 'Mappen har blitt kopiert.',
       info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
+      shared: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av {{sharedBy}}.',
+      aTeacher: 'en lærer',
       firstShared: 'Mappa vart delt første gong {{date}}',
       drawerButton: 'Vis mapper og ressursar',
       drawerTitle: 'Mapper og ressursar',
@@ -1324,6 +1326,7 @@ const messages = {
         title: 'Slik taggar du favorittressursane dine',
         text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Mine emneknaggar</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
       },
+      recentArenaTopics: 'Nye innlegg i arenaen',
     },
     myProfile: {
       title: 'Mov Profijle',

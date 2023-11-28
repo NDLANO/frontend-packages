@@ -139,8 +139,6 @@ export { default as messagesEN } from './locale/messages-en';
 export { default as messagesSE } from './locale/messages-se';
 export { default as messagesSMA } from './locale/messages-sma';
 
-export { default as RadioButtonGroup } from './RadioButtonGroup';
-
 export { ToolboxInfo } from './ToolboxPage';
 export { default as Topic } from './Topic';
 export type { TopicProps } from './Topic';

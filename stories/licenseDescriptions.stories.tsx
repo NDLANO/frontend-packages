@@ -8,7 +8,8 @@
 
 import { useState } from 'react';
 import { ALL_ABBREVIATIONS, getLicenseByAbbreviation } from '@ndla/licenses';
-import { RadioButtonGroup, Table } from '@ndla/ui';
+import { Table } from '@ndla/ui';
+import { RadioButtonGroup } from '@ndla/forms';
 import { Meta, StoryFn } from '@storybook/react';
 import { defaultParameters } from './defaults';
 

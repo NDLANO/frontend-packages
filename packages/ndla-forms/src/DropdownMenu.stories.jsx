@@ -8,13 +8,14 @@
 
 import { Component } from 'react';
 import Downshift from 'downshift';
-import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
+import { SubjectMaterialBadge } from '@ndla/ui';
 import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from '@ndla/forms';
 import { Spinner } from '@ndla/icons';
 import { Search } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { mockTypeahead } from '../../../dummydata';
 import defaultParameters from '../../../stories/defaults';
+import RadioButtonGroup from './RadioButtonGroup';
 
 const meta = {
   title: 'Forms/DropdownMenu',

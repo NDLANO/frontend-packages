@@ -13,7 +13,7 @@ import RadioButtonGroup, { RadioButtonGroupRoot, RadioGroupItem } from './RadioB
 import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
-  title: 'Components/RadioButtonGroup',
+  title: 'Forms/RadioButtonGroup',
   component: RadioButtonGroup,
   tags: ['autodocs'],
   parameters: {

@@ -1189,10 +1189,18 @@ const messages = {
       category: {
         title: 'Kategorier',
         posts: 'Innlegg',
-        newPost: 'Nytt innlegg',
       },
       topic: {
         responses: 'Svar',
+        new: {
+          post: 'Skriv et svar',
+          topic: 'Nytt innlegg'
+        },
+        topicContent: 'Skriv innlegget ditt her',
+        warning: {
+          post: 'Svaret ditt er synlig for alle lærere som er logget på Min NDLA.',
+          topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.'
+        }
       },
       posts: {
         notify: 'Få varsel om nye svar',
@@ -1201,7 +1209,6 @@ const messages = {
           edit: 'Rediger innlegg',
           delete: 'Slett innlegget',
         },
-        comment: 'Skriv et svar',
       },
       bottomText:
         'Savner du en kategori? Du kan be om nye kategorier. Bruk “Spør NDLA” eller send en epost til moderator@ndla.no',

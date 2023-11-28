@@ -1191,10 +1191,18 @@ const messages = {
       category: {
         title: 'Lágit',
         posts: 'Sáhkavuorru',
-        newPost: 'Ođđa reivvet',
       },
       topic: {
-        responses: 'Vástidan',
+        responses: 'Vástidan', new: {
+          post: 'Skriv et svar',
+          topic: 'Nytt innlegg'
+        },
+        topicContent: 'Skriv innlegget ditt her',
+        warning: {
+          post: 'Svaret ditt er synlig for alle lærere som er logget på Min NDLA.',
+          topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.'
+        }
+
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',
@@ -1203,7 +1211,6 @@ const messages = {
           edit: 'Doaimmat čállosa',
           delete: 'Sihko čállosa',
         },
-        comment: 'Čále vástádusa',
       },
       bottomText:
         'Váillahat go ovtta lági? Sáhtát jearrat ođđa lágiid. Geavat "Gihtten NDLA" dahje sádde e-poastta moderatator@ndla.no',

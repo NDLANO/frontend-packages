@@ -1191,10 +1191,19 @@ const messages = {
       category: {
         title: 'Categories',
         posts: 'Posts',
-        newPost: 'New post',
       },
+      publish: 'Publish',
       topic: {
         responses: 'Responses',
+        new: {
+          post: 'Write a reply',
+          topic: 'New topic',
+        },
+        topicContent: 'Write your topic here',
+        warning: {
+          post: 'Your answer is visible for every teacher who is logged on to Min NDLA.',
+          topic: 'Your topic is visible for every teacher who is logged on to Min NDLA.',
+        },
       },
       posts: {
         notify: 'Get notified of new answers',
@@ -1204,7 +1213,6 @@ const messages = {
           edit: 'Edit post',
           delete: 'Delete post',
         },
-        comment: 'Comment',
       },
       bottomText:
         'Are you missing a category? You can request new categories. Use "Ask NDLA" or send an email to moderator@ndla.no',

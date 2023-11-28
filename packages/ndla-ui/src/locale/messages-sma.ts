@@ -1193,10 +1193,19 @@ const messages = {
       category: {
         title: 'Lïhtsh',
         posts: 'Håaleme',
-        newPost: 'Orre lahtese',
       },
+      publish: 'Bæjhkoehtidh',
       topic: {
         responses: 'Vaestiedasse',
+        new: {
+          post: 'Tjaelieh vaastoem',
+          topic: 'Orre lahtese',
+        },
+        topicContent: 'Tjaelieh dov håalemem daesnie',
+        warning: {
+          post: 'Dov vaestiedasse lea våajnoes gaajhkide lohkehtæjjide mah leah tjaalasovveme Mov NDLA.',
+          topic: 'Dov håaleme lea våajnoes gaajhkide lohkehtæjjide mah leah tjaalasovveme Mov NDLA.',
+        },
       },
       posts: {
         notify: 'Bïeljelh mejtie orre vaestiedassh',
@@ -1206,7 +1215,6 @@ const messages = {
           edit: 'Jarkelimmie håalemistie',
           delete: 'Slett innlegget',
         },
-        comment: 'Tjaelieh vaastoem',
       },
       bottomText:
         'Akte kategorije datne ohtsedh ? Datne maahtah orre kategoriji bïjre rohkelidh Nuhtjh "Gihtjh NDLA" jallh seedth e-påastem moderaator@ndla.no',

@@ -1191,10 +1191,19 @@ const messages = {
       category: {
         title: 'Lágit',
         posts: 'Sáhkavuorru',
-        newPost: 'Ođđa reivvet',
       },
+      publish: 'Almmuheaddji',
       topic: {
         responses: 'Vástidan',
+        new: {
+          post: 'Čále vástádusa',
+          topic: 'Ođđa reivvet',
+        },
+        topicContent: 'Čále sáhkavuoru dása',
+        warning: {
+          post: 'Du vástádus lea oidnosis buot oahpaheddjiide geat leat loggejuvvon Mu NDLA.',
+          topic: 'Du sáhkavuorru lea oidnosis buot oahpaheddjiide geat leat loggejuvvon Mu NDLA.',
+        },
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',
@@ -1204,7 +1213,6 @@ const messages = {
           edit: 'Doaimmat čállosa',
           delete: 'Sihko čállosa',
         },
-        comment: 'Čále vástádusa',
       },
       bottomText:
         'Váillahat go ovtta lági? Sáhtát jearrat ođđa lágiid. Geavat "Gihtten NDLA" dahje sádde e-poastta moderatator@ndla.no',

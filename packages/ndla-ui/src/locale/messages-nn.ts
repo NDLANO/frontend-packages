@@ -1255,6 +1255,8 @@ const messages = {
     sharedFolder: {
       folderCopied: 'Mappa vart kopiert.',
       info: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av ein lærar.',
+      shared: 'Denne mappa inneheld fagstoff og oppgåver frå NDLA, samla av {{sharedBy}}.',
+      aTeacher: 'ein lærar',
       firstShared: 'Mappa vart delt første gong {{date}}',
       drawerButton: 'Vis mapper og ressursar',
       drawerTitle: 'Mapper og ressursar',

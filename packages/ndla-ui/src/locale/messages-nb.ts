@@ -1254,7 +1254,9 @@ const messages = {
     userPictureAltText: 'Profilbilde',
     sharedFolder: {
       folderCopied: 'Mappen har blitt kopiert.',
-      info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av en lærer. ',
+      info: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av {{shared}}.',
+      shared: 'Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av {{sharedBy}}.',
+      aTeacher: 'en lærer',
       firstShared: 'Mappa ble delt første gang {{date}}',
       learningpathUnsupported:
         'Læringsstier og tverrfaglige caser kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.',

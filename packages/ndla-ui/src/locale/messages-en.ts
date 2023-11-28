@@ -1258,6 +1258,8 @@ const messages = {
     sharedFolder: {
       folderCopied: 'The folder was copied.',
       info: 'This folder contains learning resources and tasks from NDLA, gathered by a teacher.',
+      shared: 'This folder contains learning resources and tasks from NDLA, gathered by {{sharedBy}}.',
+      aTeacher: 'a teacher',
       firstShared: 'The folder was shared for the first time {{date}}',
       learningpathUnsupported:
         'Learning paths and multidisciplinary cases cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.',

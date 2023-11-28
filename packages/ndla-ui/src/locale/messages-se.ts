@@ -1256,6 +1256,8 @@ const messages = {
     sharedFolder: {
       folderCopied: 'Máŋgejuvvon máhppa.',
       info: 'Dán máhpas lea NDLA fágasisdoallu ja bargobihtát, čohkkejuvvon oahpaheaddjis.',
+      shared: 'Dán máhpas lea NDLA fágasisdoallu ja bargobihtát, čohkkejuvvon {{sharedBy}}.',
+      aTeacher: 'oahpaheaddjis',
       firstShared: 'Máhppa juogaduvvui vuosttaš geardde {{date}}',
       drawerButton: 'Čájet máhpaid ja resurssaid',
       drawerTitle: 'Máhpat ja resurssat',

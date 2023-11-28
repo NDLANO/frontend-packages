@@ -76,7 +76,6 @@ const baseInputCss = css`
 const baseTextAreaCss = css`
   padding: ${spacing.small};
   resize: none;
-  height: ${spacing.large};
   overflow-y: hidden;
 `;
 

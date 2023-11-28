@@ -1215,6 +1215,7 @@ const messages = {
         markAll: 'Merk alle som lest',
         commentedOn: 'svarte på ditt innlegg',
       },
+      topicsBy: 'Innlegg av',
     },
     iconMenu: {
       folders: 'Mapper',

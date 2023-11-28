@@ -1219,6 +1219,7 @@ const messages = {
         markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
         commentedOn: 'vaestiedi gåessie dov saarnoeh',
       },
+      topicsBy: 'Vuesiehtimmien gaavhtan',
     },
     iconMenu: {
       folders: 'Mapper',

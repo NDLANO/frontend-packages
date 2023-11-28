@@ -1196,6 +1196,7 @@ const messages = {
       },
       posts: {
         notify: 'Få varsel om nye svar',
+        showEditOptions: 'Vis redigeringsmuligheter',
         dropdownMenu: {
           report: 'Rapporter innlegg til moderator',
           edit: 'Rediger innlegg',

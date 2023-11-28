@@ -1200,6 +1200,7 @@ const messages = {
       },
       posts: {
         notify: 'Bïeljelh mejtie orre vaestiedassh',
+        showEditOptions: 'Vuesehth guktie edtja øørnedh',
         dropdownMenu: {
           report: 'Reekth håalemem moderatovrese',
           edit: 'Jarkelimmie håalemistie',

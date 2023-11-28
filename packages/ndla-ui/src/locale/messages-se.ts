@@ -1198,6 +1198,7 @@ const messages = {
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',
+        showEditOptions: 'Čájet doaimmahanmolssaeavttuid',
         dropdownMenu: {
           report: 'Raportere čállosa moderatorii',
           edit: 'Doaimmat čállosa',

@@ -1198,8 +1198,8 @@ const messages = {
         },
         topicContent: 'Skriv innlegget ditt her',
         warning: {
-          post: 'Svaret ditt er synlig for alle lærere som er logget på Min NDLA.',
-          topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.'
+          post: 'Svaret ditt er synleg for alle lærerar som er logga på Min NDLA.',
+          topic: 'Innlegget ditt er synlig for alle lærerar som er logga på Min NDLA.'
         }
       },
       posts: {

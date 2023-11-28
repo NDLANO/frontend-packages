@@ -13,6 +13,7 @@ import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { ResourceTitleLink } from '../../Resource/resourceComponents';
+import { FolderSharedOutlined } from '@ndla/icons/src/contentType';
 
 export type LayoutType = 'list' | 'listLarger' | 'block';
 
@@ -158,7 +159,7 @@ interface Props {
 
 const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu, isShared }: Props) => {
   const { t } = useTranslation();
-  const Icon = isShared ? FolderShared : FolderOutlined;
+  const Icon = isShared ? FolderSharedOutlined : FolderOutlined;
 
   return (
     <FolderWrapper data-type={type} id={id}>

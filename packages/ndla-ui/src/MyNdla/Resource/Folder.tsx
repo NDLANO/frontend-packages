@@ -8,12 +8,11 @@
 
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
-import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
+import { FolderOutlined, FolderSharedOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { ResourceTitleLink } from '../../Resource/resourceComponents';
-import { FolderSharedOutlined } from '@ndla/icons/src/contentType';
 
 export type LayoutType = 'list' | 'listLarger' | 'block';
 

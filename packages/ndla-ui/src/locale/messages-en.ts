@@ -1192,6 +1192,7 @@ const messages = {
         title: 'Categories',
         posts: 'Posts',
       },
+      publish: 'Publish',
       topic: {
         responses: 'Responses',
         new: {

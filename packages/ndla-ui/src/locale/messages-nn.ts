@@ -1190,6 +1190,7 @@ const messages = {
         title: 'Kategoriar',
         posts: 'Innlegg',
       },
+      publish: 'Publiser',
       topic: {
         responses: 'Svar',
         new: {

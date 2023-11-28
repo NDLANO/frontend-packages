@@ -1192,6 +1192,7 @@ const messages = {
         title: 'Lágit',
         posts: 'Sáhkavuorru',
       },
+      publish: 'Almmuheaddji',
       topic: {
         responses: 'Vástidan',
         new: {

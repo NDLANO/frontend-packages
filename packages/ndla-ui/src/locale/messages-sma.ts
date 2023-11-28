@@ -1194,6 +1194,7 @@ const messages = {
         title: 'Lïhtsh',
         posts: 'Håaleme',
       },
+      publish: 'Bæjhkoehtidh',
       topic: {
         responses: 'Vaestiedasse',
         new: {

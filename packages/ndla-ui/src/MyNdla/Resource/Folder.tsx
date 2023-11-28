@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
-import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
+import { FolderOutlined, FolderSharedOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline, Share } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -158,7 +158,7 @@ interface Props {
 
 const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu, isShared }: Props) => {
   const { t } = useTranslation();
-  const Icon = isShared ? FolderShared : FolderOutlined;
+  const Icon = isShared ? FolderSharedOutlined : FolderOutlined;
 
   return (
     <FolderWrapper data-type={type} id={id}>

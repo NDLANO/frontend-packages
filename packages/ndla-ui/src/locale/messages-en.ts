@@ -1325,6 +1325,7 @@ const messages = {
         title: 'How to tag your favourite resources',
         text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting <strong>My tags</strong> on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
       },
+      recentArenaTopics: 'New posts in the arena',
     },
     myProfile: {
       title: 'My Profile',

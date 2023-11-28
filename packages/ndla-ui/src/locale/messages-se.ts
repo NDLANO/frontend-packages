@@ -1322,6 +1322,7 @@ const messages = {
         title: 'Ná gilkorasttát iežat oiddotresurssaid',
         text: 'Go vurket muhtin resurssa de lea vejolaš merket resurssa fáddágilkoriin. Fáddágilkor lea čoavddasátni man sáhtát geavahit gávdnan dihte ruovttoluotta resurssaide máhpaid rastá. Gávnnat buot fáddágilkoriid maid leat geavahan go válljet mu fáddágilkoriid gurut bealde fálus. Das oainnát maiddái maid resurssaid don leat merken juohke fáddágilkoriin.',
       },
+      recentArenaTopics: 'Ođđa mearkkašumit arenas',
     },
     myProfile: {
       title: 'Mu profiila',

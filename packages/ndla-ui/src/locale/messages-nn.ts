@@ -1193,7 +1193,7 @@ const messages = {
       topic: {
         responses: 'Svar',
         new: {
-          post: 'Skriv et svar',
+          post: 'Skriv eit svar',
           topic: 'Nytt innlegg'
         },
         topicContent: 'Skriv innlegget ditt her',

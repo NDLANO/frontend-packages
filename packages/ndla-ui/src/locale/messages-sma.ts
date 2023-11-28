@@ -1198,14 +1198,13 @@ const messages = {
         responses: 'Vaestiedasse',
         new: {
           post: 'Tjaelieh vaastoem',
-          topic: 'Orre lahtese'
+          topic: 'Orre lahtese',
         },
         topicContent: 'Tjaelieh dov håalemem daesnie',
         warning: {
           post: 'Dov vaestiedasse lea våajnoes gaajhkide lohkehtæjjide mah leah tjaalasovveme Mov NDLA.',
-          topic: 'Dov håaleme lea våajnoes gaajhkide lohkehtæjjide mah leah tjaalasovveme Mov NDLA.'
-        }
-
+          topic: 'Dov håaleme lea våajnoes gaajhkide lohkehtæjjide mah leah tjaalasovveme Mov NDLA.',
+        },
       },
       posts: {
         notify: 'Bïeljelh mejtie orre vaestiedassh',

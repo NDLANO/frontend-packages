@@ -1193,16 +1193,16 @@ const messages = {
         posts: 'Sáhkavuorru',
       },
       topic: {
-        responses: 'Vástidan', new: {
-          post: 'Skriv et svar',
-          topic: 'Nytt innlegg'
+        responses: 'Vástidan',
+        new: {
+          post: 'Čále vástádusa',
+          topic: 'Ođđa reivvet',
         },
-        topicContent: 'Skriv innlegget ditt her',
+        topicContent: 'Čále sáhkavuoru dása',
         warning: {
-          post: 'Svaret ditt er synlig for alle lærere som er logget på Min NDLA.',
-          topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.'
-        }
-
+          post: 'Du vástádus lea oidnosis buot oahpaheddjiide geat leat loggejuvvon Mu NDLA.',
+          topic: 'Du sáhkavuorru lea oidnosis buot oahpaheddjiide geat leat loggejuvvon Mu NDLA.',
+        },
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',

@@ -1196,13 +1196,13 @@ const messages = {
         responses: 'Responses',
         new: {
           post: 'Write a reply',
-          topic: 'New topic'
+          topic: 'New topic',
         },
         topicContent: 'Write your topic here',
         warning: {
           post: 'Your answer is visible for every teacher who is logged on to Min NDLA.',
-          topic: 'Your topic is visible for every teacher who is logged on to Min NDLA.'
-        }
+          topic: 'Your topic is visible for every teacher who is logged on to Min NDLA.',
+        },
       },
       posts: {
         notify: 'Get notified of new answers',

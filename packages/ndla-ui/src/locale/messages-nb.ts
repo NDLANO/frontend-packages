@@ -1194,13 +1194,13 @@ const messages = {
         responses: 'Svar',
         new: {
           post: 'Skriv et svar',
-          topic: 'Nytt innlegg'
+          topic: 'Nytt innlegg',
         },
         topicContent: 'Skriv innlegget ditt her',
         warning: {
           post: 'Svaret ditt er synlig for alle lærere som er logget på Min NDLA.',
-          topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.'
-        }
+          topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.',
+        },
       },
       posts: {
         notify: 'Få varsel om nye svar',

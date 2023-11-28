@@ -1300,7 +1300,14 @@ const messages = {
         term2: 'Ale čále maidege unohasaid teakstaoassái.',
         term3: 'NDLA bisuha rievtti ođasmahttit dahje sihkkut boarásmuvvan resurssaid.',
       },
-      newFavourite: 'Aitto lasihuvvon',
+      recentFavourites: {
+        title: 'Easka lasihuvvon favorihtaide',
+        link: 'Čájet buot máhpaid',
+      },
+      recentArenaPosts: {
+        title: 'Ođđa sáhkavuorut arenat',
+        link: 'Geahča buot artihkkaliid arenas',
+      },
       feide: 'Dát vižžojuvvo du birra Feide:s',
       feideWrongInfo:
         'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot organisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogova geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstotte',

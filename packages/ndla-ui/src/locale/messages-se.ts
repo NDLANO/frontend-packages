@@ -1217,7 +1217,7 @@ const messages = {
         markAll: 'Merke visot lohkon',
         commentedOn: 'vástidedje du sáhkavuoru',
       },
-      topicsBy: 'Topics by Kåven',
+      topicsBy: 'Sáhkavuorru maid',
     },
     iconMenu: {
       folders: 'Mapper',

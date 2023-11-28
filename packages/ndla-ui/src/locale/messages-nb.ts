@@ -1298,7 +1298,7 @@ const messages = {
         term3: 'NDLA forbeholder seg retten til å oppdatere eller slette utdaterte ressurser.',
       },
       recentFavourites: {
-        title: 'Nylig til i mine favoritter',
+        title: 'Nylig lagt til i mine favoritter',
         link: 'Se alle mappene dine',
       },
       recentArenaPosts: {

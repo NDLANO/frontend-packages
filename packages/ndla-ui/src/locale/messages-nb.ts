@@ -1196,6 +1196,7 @@ const messages = {
       },
       posts: {
         notify: 'Få varsel om nye svar',
+        showEditOptions: 'Vis redigeringsmuligheter',
         dropdownMenu: {
           report: 'Rapporter innlegg til moderator',
           edit: 'Rediger innlegg',
@@ -1214,6 +1215,7 @@ const messages = {
         markAll: 'Merk alle som lest',
         commentedOn: 'svarte på ditt innlegg',
       },
+      topicsBy: 'Innlegg av',
     },
     iconMenu: {
       folders: 'Mapper',

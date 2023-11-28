@@ -1200,6 +1200,7 @@ const messages = {
       },
       posts: {
         notify: 'Bïeljelh mejtie orre vaestiedassh',
+        showEditOptions: 'Vuesehth guktie edtja øørnedh',
         dropdownMenu: {
           report: 'Reekth håalemem moderatovrese',
           edit: 'Jarkelimmie håalemistie',
@@ -1218,6 +1219,7 @@ const messages = {
         markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
         commentedOn: 'vaestiedi gåessie dov saarnoeh',
       },
+      topicsBy: 'Vuesiehtimmien gaavhtan',
     },
     iconMenu: {
       folders: 'Mapper',

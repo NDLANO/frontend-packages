@@ -1198,6 +1198,7 @@ const messages = {
       },
       posts: {
         notify: 'Get notified of new answers',
+        showEditOptions: 'Show editing options',
         dropdownMenu: {
           report: 'Report post to moderator',
           edit: 'Edit post',
@@ -1216,6 +1217,7 @@ const messages = {
         markAll: 'Mark all as read',
         commentedOn: 'commented on your post',
       },
+      topicsBy: 'Topics by',
     },
     iconMenu: {
       folders: 'Folders',

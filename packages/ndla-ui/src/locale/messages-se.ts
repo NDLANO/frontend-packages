@@ -1198,6 +1198,7 @@ const messages = {
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',
+        showEditOptions: 'Čájet doaimmahanmolssaeavttuid',
         dropdownMenu: {
           report: 'Raportere čállosa moderatorii',
           edit: 'Doaimmat čállosa',
@@ -1216,6 +1217,7 @@ const messages = {
         markAll: 'Merke visot lohkon',
         commentedOn: 'vástidedje du sáhkavuoru',
       },
+      topicsBy: 'Sáhkavuorru maid',
     },
     iconMenu: {
       folders: 'Mapper',

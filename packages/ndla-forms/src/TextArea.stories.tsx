@@ -13,6 +13,11 @@ import { Check } from '@ndla/icons/editor';
 import { InputContainer, TextArea } from './InputV3';
 import { defaultParameters } from '../../../stories/defaults';
 
+/**
+ * A textbox that automatically resizes itself based on its content.
+ * If you want to set a different height than the default, it should be done using the `min-height` css property,
+ * as the component overrides any height set on the component itself.
+ */
 export default {
   title: 'Forms/TextArea',
   tags: ['autodocs'],

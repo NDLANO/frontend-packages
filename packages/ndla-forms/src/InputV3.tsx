@@ -87,12 +87,6 @@ export const Input = forwardRef<HTMLInputElement, ComponentProps<'input'>>((prop
 
 interface TextAreaProps extends ComponentProps<'textarea'> {}
 
-const onKeydown = (e: KeyboardEvent) => {
-  const el = e.target as HTMLTextAreaElement;
-  el.style.height = '0';
-  el.style.height = `${el.scrollHeight + 3}px`;
-};
-
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const context = useContext(InputContext);
   const field = useFormControl(props);
@@ -105,11 +99,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, r
   }, []);
 
   useEffect(() => {
-    window.addEventListener('keyup', onKeydown);
+    window.addEventListener('input', resize);
     window.addEventListener('resize', resize);
     resize();
     return () => {
-      window.removeEventListener('keyup', onKeydown);
+      window.removeEventListener('input', resize);
       window.removeEventListener('resize', resize);
     };
   }, [resize]);

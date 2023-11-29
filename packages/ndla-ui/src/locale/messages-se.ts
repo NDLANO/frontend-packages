@@ -1214,6 +1214,20 @@ const messages = {
           delete: 'Sihko čállosa',
         },
       },
+      flag: {
+        title: 'Rapportere čállosa / kommentára',
+        spam: 'Dat lea spambota',
+        offensive: 'Lea suorggahahtti',
+        other: 'Eará áššit',
+        reason: 'Sivva manne raporteret sisdoalu',
+        send: 'Sádde raportta',
+        disclaimer:
+          'Giitu go raporteret sisdoalu mii ii čuovo min njuolggadusaid. Mii lea sivvan dasa ahte almmuhat dán dieđu?',
+        success:
+          'Giitu go raporteret sisdoalu mii ii čuovo min njuolggadusaid. Raporta lea sáddejuvvon min doaimmaheaddjái ja galgá ođđasit geahčaduvvot nu jođánit go vejolaš.',
+        maxLength: 'Teakstagieddeguhkkodat lea joavdan',
+        error: 'Fealta gáibiduvvo',
+      },
       bottomText:
         'Váillahat go ovtta lági? Sáhtát jearrat ođđa lágiid. Geavat "Gihtten NDLA" dahje sádde e-poastta moderatator@ndla.no',
       notification: {

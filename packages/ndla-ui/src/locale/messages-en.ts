@@ -1214,6 +1214,20 @@ const messages = {
           delete: 'Delete post',
         },
       },
+      flag: {
+        title: 'Report post / comment',
+        spam: 'It is spam',
+        offensive: 'It is offensive',
+        other: 'Something else',
+        reason: 'Reason for reporting content',
+        send: 'Send report',
+        disclaimer:
+          'Thank you for reporting content that does not conform to our guidelines. Why are you reporting this content?',
+        success:
+          'Thank you for reporting content that does not conform to our guidelines. The report has been sent to our moderator and will be reviewed as soon as possible.',
+        maxLength: 'The maximum length for the text field is reached',
+        error: 'The field is required',
+      },
       bottomText:
         'Are you missing a category? You can request new categories. Use "Ask NDLA" or send an email to moderator@ndla.no',
       notification: {

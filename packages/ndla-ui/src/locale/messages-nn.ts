@@ -1212,6 +1212,20 @@ const messages = {
           delete: 'Slett innlegget',
         },
       },
+      flag: {
+        title: 'Rapporter innlegg / kommentar',
+        spam: 'Det er spam',
+        offensive: 'Det er støytande',
+        other: 'Noko anna',
+        reason: 'Årsak til rapportering av innhald',
+        send: 'Send inn rapport',
+        disclaimer:
+          'Takk for at du rapporterer innhald som ikkje er i tråd med retningslinjene våre. Kva er grunnen til at du rapporterer dette innhaldet?',
+        success:
+          'Takk for at du rapporterer innhald som ikkje er i tråd med retningslinjene våre. Rapporten er send til moderatoren vår og vil bli gjennomgått så fort som mogleg. ',
+        maxLength: 'Maksimal lengd for tekstfeltet er nådd',
+        error: 'Feltet er påkravd',
+      },
       bottomText:
         'Saknar du ein kategori? Du kan be om nye kategoriar. Bruk "Spør NDLA" eller send ein epost til moderator@ndla.no',
       notification: {

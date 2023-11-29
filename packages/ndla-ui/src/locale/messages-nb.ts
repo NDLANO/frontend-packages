@@ -1325,7 +1325,7 @@ const messages = {
         'Velkommen til Min NDLA! Nå kan du lagre favorittressursene dine fra NDLA og organisere dem i mapper og med emneknagger.',
       read: { read: 'Les', our: ' vår.' },
       privacy: 'personvernerklæringa',
-      privacyLink: 'https://om.ndla.no/gdpr',
+      privacyLink: 'https://ndla.no/article/personvernerklaering',
       questions: { question: 'Lurer du på noe?', ask: 'Spør NDLA' },
       wishToDelete: 'Vil du ikke ha brukerprofil hos oss lenger?',
       terms: {

@@ -54,7 +54,7 @@ const mockFooterLinks = [
     icon: <Youtube />,
   },
   {
-    to: 'https://om.ndla.no/nyhetsbrev/',
+    to: 'https://ndla.us6.list-manage.com/subscribe?u=99d41bbb28de0128915adebed&id=9a1d3ad1ea',
     text: 'Meld deg på vårt nyhetsbrev',
     icon: <EmailOutline />,
   },
@@ -66,8 +66,8 @@ const mockFooterLinks = [
 ];
 
 const privacyLinks = [
-  { label: 'Personvernerklæring', url: 'https://om.ndla.no/gdpr' },
-  { label: 'Erklæring om informasjonskapsler', url: 'https://om.ndla.no/cookies' },
+  { label: 'Personvernerklæring', url: 'https://ndla.no/article/personvernerklaering' },
+  { label: 'Erklæring om informasjonskapsler', url: 'https://ndla.no/article/erklaering-for-informasjonskapsler' },
 ];
 
 export default {

@@ -116,5 +116,5 @@
     "webpack": "^5.79.0",
     "yarn-deduplicate": "^6.0.2"
   },
-  "dependencies": {}
+  "packageManager": "yarn@4.0.2"
 }

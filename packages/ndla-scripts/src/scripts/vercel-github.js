@@ -88,7 +88,7 @@ async function updateStatus(sha, options) {
 
   await fetch(`https://api.github.com/repos/${owner}/${repo}/statuses/${sha}`, {
     method: 'POST',
-    body: { state, target_url, description },
+    body: JSON.stringify({ state, target_url, description }),
     headers: {
       Accept: 'application/vnd.github+json',
       Authorization: `Bearer ${githubToken}`,

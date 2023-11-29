@@ -1227,6 +1227,8 @@ const messages = {
           'Gæjhtoe juktie sisvegem reektehtidh mij ij leah mijjen njoelkedassi mietie . Mannasinie daam sisvegem reektehtidh?',
         success:
           'Gæjhtoe juktie sisvegem reektehtidh mij ij leah mijjen njoelkedassi mietie. Mijjen reektehtsem lea mijjen moderatovrese seedteme, jïh dam sïjhtebe gïehtjedidh dan varke gåarede.',
+        maxLength: 'Jeenjemes gåhkoe tjaalegegievleste båateme',
+        error: 'Bielie daerpies',
       },
       bottomText:
         'Akte kategorije datne ohtsedh ? Datne maahtah orre kategoriji bïjre rohkelidh Nuhtjh "Gihtjh NDLA" jallh seedth e-påastem moderaator@ndla.no',

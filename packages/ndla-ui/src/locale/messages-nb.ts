@@ -1223,6 +1223,8 @@ const messages = {
           'Takk for at du rapporterer innhold som ikke er i tråd med våre retningslinjer. Hva er grunnen til at du rapporterer dette innholdet?',
         success:
           'Takk for at du rapporterer innhold som ikke er i tråd med våre retningslinjer. Rapporten er sendt til vår moderator og vil bli gjennomgått så fort som mulig.',
+        maxLength: 'Maksimal lengde for tekstfeltet er nådd',
+        error: 'Feltet er påkrevd',
       },
       bottomText:
         'Savner du en kategori? Du kan be om nye kategorier. Bruk “Spør NDLA” eller send en epost til moderator@ndla.no',

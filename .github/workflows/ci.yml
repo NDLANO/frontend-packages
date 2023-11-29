@@ -40,7 +40,7 @@ jobs:
       - name: 'Build storybook'
         run: yarn build-storybook
       - name: 'Deploy vercel build'
-        run: yarn ndla-scripts vercel-github
+        run: yarn deploy-pr
         continue-on-error: true
       - name: 'Deploy designmanual'
         if: github.ref == 'refs/heads/master'

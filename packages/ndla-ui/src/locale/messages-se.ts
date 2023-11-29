@@ -1193,17 +1193,30 @@ const messages = {
         posts: 'Sáhkavuorru',
       },
       publish: 'Almmuheaddji',
+      new: {
+        post: 'Čále vástádusa',
+        topic: 'Ođđa reivvet',
+      },
+      warning: {
+        post: 'Du vástádus lea oidnosis buot oahpaheddjiide geat leat loggejuvvon Mu NDLA.',
+        topic: 'Du sáhkavuorru lea oidnosis buot oahpaheddjiide geat leat loggejuvvon Mu NDLA.',
+      },
+      removeText: {
+        post: 'Sihko kommentára',
+        topic: 'Sihko čállosa',
+      },
+      description: {
+        post: 'Hálidatgo sihkkut dán kommeantta? Ii leat vejolaš gáhtat go sihkko merkoša.',
+        topic:
+          'Hálidatgo sihkkut dán čállosa? Jus čállosis leat mearkkašumit, de sihkkojuvvojit maiddái buot mearkkašumit. Ii leat vejolaš gáhtat go sihkko čállosa.',
+      },
+      deleteTitle: {
+        post: 'Sihko kommentára',
+        topic: 'Sihko čállosa',
+      },
       topic: {
         responses: 'Vástidan',
-        new: {
-          post: 'Čále vástádusa',
-          topic: 'Ođđa reivvet',
-        },
         topicContent: 'Čále sáhkavuoru dása',
-        warning: {
-          post: 'Du vástádus lea oidnosis buot oahpaheddjiide geat leat loggejuvvon Mu NDLA.',
-          topic: 'Du sáhkavuorru lea oidnosis buot oahpaheddjiide geat leat loggejuvvon Mu NDLA.',
-        },
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',

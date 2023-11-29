@@ -1191,17 +1191,30 @@ const messages = {
         posts: 'Innlegg',
       },
       publish: 'Publiser',
+      new: {
+        post: 'Skriv et svar',
+        topic: 'Nytt innlegg',
+      },
+      warning: {
+        post: 'Svaret ditt er synlig for alle lærere som er logget på Min NDLA.',
+        topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.',
+      },
+      removeText: {
+        post: 'Slett kommentar',
+        topic: 'Slett innlegg',
+      },
+      description: {
+        post: 'Vil du slette denne kommentaren? Det er ikke mulig å angre hvis du sletter en kommentar. ',
+        topic:
+          'Vil du slette dette innlegget? Dersom innlegget har kommentarer vil alle kommentarene også bli slettet. Det er ikke mulig å angre hvis du sletter et innlegg.  ',
+      },
+      deleteTitle: {
+        post: 'Slett kommentar',
+        topic: 'Slett innlegg',
+      },
       topic: {
         responses: 'Svar',
-        new: {
-          post: 'Skriv et svar',
-          topic: 'Nytt innlegg',
-        },
         topicContent: 'Skriv innlegget ditt her',
-        warning: {
-          post: 'Svaret ditt er synlig for alle lærere som er logget på Min NDLA.',
-          topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.',
-        },
       },
       posts: {
         notify: 'Få varsel om nye svar',

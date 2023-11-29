@@ -1204,9 +1204,9 @@ const messages = {
         topic: 'Slett innlegg',
       },
       description: {
-        post: 'Vil du slette denne kommentaren? Det er ikke mulig å angre hvis du sletter en kommentar. ',
+        post: 'Vil du slette denne kommentaren? Det er ikkje mogeleg å angre dersom du sletter ein kommentar. ',
         topic:
-          'Vil du slette dette innlegget? Dersom innlegget har kommentarer vil alle kommentarene også bli slettet. Det er ikke mulig å angre hvis du sletter et innlegg.  ',
+          'Vil du slette dette innlegget? Dersom innlegget har kommentarar vil alle kommentarane også bli sletta. Det er ikkje mogeleg å angre dersom du sletter eit innlegg.  ',
       },
       deleteTitle: {
         post: 'Slett kommentar',

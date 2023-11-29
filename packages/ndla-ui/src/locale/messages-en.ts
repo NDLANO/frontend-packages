@@ -1192,18 +1192,31 @@ const messages = {
         title: 'Categories',
         posts: 'Posts',
       },
+      new: {
+        post: 'Write a reply',
+        topic: 'New topic',
+      },
+      warning: {
+        post: 'Your answer is visible for every teacher who is logged on to Min NDLA.',
+        topic: 'Your topic is visible for every teacher who is logged on to Min NDLA.',
+      },
+      removeText: {
+        post: 'Delete comment',
+        topic: 'Delete topic',
+      },
+      description: {
+        post: 'Do you want to delete your comment? It is not possible to undo if you delete a comment.',
+        topic:
+          'Do you want to delete this topic? If the topic has comments, all comments will also be deleted. It is not possible to undo if you delete a topic. ',
+      },
+      deleteTitle: {
+        post: 'Delete comment',
+        topic: 'Delete topic',
+      },
       publish: 'Publish',
       topic: {
         responses: 'Responses',
-        new: {
-          post: 'Write a reply',
-          topic: 'New topic',
-        },
         topicContent: 'Write your topic here',
-        warning: {
-          post: 'Your answer is visible for every teacher who is logged on to Min NDLA.',
-          topic: 'Your topic is visible for every teacher who is logged on to Min NDLA.',
-        },
       },
       posts: {
         notify: 'Get notified of new answers',

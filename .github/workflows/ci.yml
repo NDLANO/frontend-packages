@@ -19,15 +19,20 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20.9.0'
+      - name: 'Enable yarn v4'
+        run: |
+          corepack enable
+          yarn set version berry
       - uses: actions/cache@v3
         with:
           path: |
             **/node_modules
             .eslintcache
+            .yarn/cache
             ~/.npm
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: 'Install'
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - name: 'Bootstrap'
         run: yarn bootstrap:ci
       - name: 'Check-all'
@@ -35,7 +40,7 @@ jobs:
       - name: 'Build storybook'
         run: yarn build-storybook
       - name: 'Deploy vercel build'
-        run: yarn ndla-scripts vercel-github
+        run: yarn deploy-pr
         continue-on-error: true
       - name: 'Deploy designmanual'
         if: github.ref == 'refs/heads/master'

@@ -65,7 +65,9 @@
     "i18next": "^23.5.1",
     "lodash": "^4.17.20",
     "react": ">= 16.8.0",
-    "react-i18next": "^13.3.0"
+    "react-dom": ">= 16.8.0",
+    "react-i18next": "^13.3.0",
+    "react-router-dom": "> 6.0.0"
   },
   "devDependencies": {
     "@ndla/types-backend": "^0.2.21",

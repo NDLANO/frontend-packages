@@ -15,6 +15,7 @@
     "check-all": "yarn type-check && yarn format-check && yarn lint-es && yarn test",
     "deploy": "vercel --token $VERCEL_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.no && vercel --token $VERCEL_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
     "clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist ./packages/*/tsconfig.build.tsbuildinfo",
+    "deploy-pr": "node ./packages/ndla-scripts/src/run-script.js vercel-github",
     "bootstrap": "yarn nx run-many --target build prepublish",
     "bootstrap:ci": "yarn && yarn nx run-many --target build prepublish --skip-nx-cache",
     "publish": "yarn clean && yarn bootstrap:ci && lerna publish",
@@ -116,5 +117,5 @@
     "webpack": "^5.79.0",
     "yarn-deduplicate": "^6.0.2"
   },
-  "dependencies": {}
+  "packageManager": "yarn@4.0.2"
 }

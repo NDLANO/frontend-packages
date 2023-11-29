@@ -5,7 +5,6 @@
  */
 
 import { inspect } from 'util';
-import { Octokit } from 'octokit';
 import normalizeUrl from 'normalize-url';
 import spawn from 'cross-spawn-promise';
 import urlRegex from 'url-regex-safe';
@@ -24,9 +23,9 @@ const {
   GITHUB_RUN_ID,
   GITHUB_SERVER_URL,
   GITHUB_SHA,
+  VERCEL_TOKEN: vercelToken,
+  GH_TOKEN: githubToken,
 } = process.env;
-const { VERCEL_TOKEN: vercelToken, GH_TOKEN: githubToken } = process.env;
-const octokit = new Octokit({ auth: githubToken });
 const providedArgs = process.argv.slice(2);
 
 function isFork() {
@@ -83,19 +82,19 @@ function safeError(...args) {
 }
 
 async function updateStatus(sha, options) {
-  const { description, target_url: url } = options;
+  const { description, target_url, state } = options;
   const [owner, repo] = GITHUB_REPOSITORY.split('/');
-  console.log(`${description}: ${url}`);
-  await octokit.rest.repos
-    .createCommitStatus({
-      sha,
-      owner,
-      repo,
-      target_url: url,
-      description,
-      state: options.state,
-    })
-    .catch(logError('setting complete status'));
+  console.log(`${description}: ${target_url}`);
+
+  await fetch(`https://api.github.com/repos/${owner}/${repo}/statuses/${sha}`, {
+    method: 'POST',
+    body: { state, target_url, description },
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${githubToken}`,
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
+  }).catch(logError('setting complete status'));
 }
 
 function onError(sha, err) {

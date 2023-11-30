@@ -39,33 +39,11 @@ const config: StorybookConfig = {
     return {
       ...options,
       presets: [
-        [
-          '@babel/preset-env',
-          {
-            modules: false,
-          },
-        ],
+        ['@babel/preset-env', { modules: false }],
         '@babel/preset-typescript',
-        [
-          '@babel/preset-react',
-          {
-            runtime: 'automatic',
-            importSource: '@emotion/react',
-          },
-        ],
+        ['@babel/preset-react', { runtime: 'automatic', importSource: '@emotion/react' }],
       ],
-      plugins: [
-        [
-          '@emotion',
-          {
-            autoLabel: 'always',
-          },
-        ],
-        '@babel/plugin-proposal-object-rest-spread',
-        '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-syntax-dynamic-import',
-        '@babel/plugin-proposal-optional-chaining',
-      ],
+      plugins: [['@emotion', { autoLabel: 'always' }]],
     };
   },
   /* For at "Show code" skal legge seg bakerst slik at elementer som drop-down ikke blir skjult bak den */

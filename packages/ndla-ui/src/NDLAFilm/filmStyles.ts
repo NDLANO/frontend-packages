@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { fonts, spacing, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
 
@@ -11,7 +12,7 @@ export const setAnimations = () => {
   return styles;
 };
 
-export const StyledHeadingH1 = styled.h1`
+const headingStyle = css`
   ${fonts.sizes('22px', '26px')};
   font-weight: ${fonts.weight.semibold};
   text-transform: uppercase;
@@ -31,4 +32,10 @@ export const StyledHeadingH1 = styled.h1`
   }
 `;
 
-export const StyledHeadingH2 = StyledHeadingH1.withComponent('h2');
+export const StyledHeadingH1 = styled.h1`
+  ${headingStyle};
+`;
+
+export const StyledHeadingH2 = styled.h2`
+  ${headingStyle};
+`;

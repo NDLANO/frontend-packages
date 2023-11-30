@@ -100,7 +100,7 @@ const messages = {
   },
   notFoundPage: {
     title: 'Sida finst ikkje',
-    errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
+    errorDescription: 'Orsak, vi fann ikkje sida du prøvde å komme til.',
   },
   movedResourcePage: {
     title: 'Sida har flytta, men du kan finne den her:',
@@ -277,7 +277,7 @@ const messages = {
     shows: 'Viser',
   },
   topicPage: {
-    articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emneskildringa.',
+    articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emnebeskrivinga.',
     topic: 'EMNE',
     topics: 'Emne',
     imageModal: 'Sjå biletet i full storleik',
@@ -421,7 +421,7 @@ const messages = {
     shortcutsTooltip: 'Vis {{count}} artiklar i dette emnet',
     dialogTooltip: 'Kva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
-    dialogText1: 'Når du lærer deg kjernestoffet, får du den kompetansen som blir beskrive i læreplanen for faget.',
+    dialogText1: 'Når du lærer deg kjernestoffet, får du den kompetansen som blir beskriven i læreplanen for faget.',
     dialogText2:
       'Tilleggsstoff er innhald du kan velje i tillegg til kjernestoffet. Gjennom dette kan du fordjupe deg i eit emne eller nærme deg emnet på ein annan måte.',
     showLess: 'Vis mindre',
@@ -972,8 +972,8 @@ const messages = {
     cursorText: 'Sjå smakebitar frå fag under utvikling.',
   },
   navigation: {
-    showLongerDescription: 'Vis heile emneskildringa',
-    showShorterDescription: 'Skjul emneskildringa',
+    showLongerDescription: 'Vis heile emnebeskrivinga',
+    showShorterDescription: 'Skjul emnebeskrivinga',
     topics: 'Emne',
     additionalTopic: 'Tilleggsemne',
     additionalTopics: 'Tilleggsemne',
@@ -1060,7 +1060,7 @@ const messages = {
     reuse: 'Bruk forklaring',
     error: {
       title: 'Ein feil oppstod',
-      content: 'Kunne ikkje laste skildringa av forklaringa.',
+      content: 'Kunne ikkje laste beskrivinga av forklaringa.',
     },
   },
   related: {
@@ -1153,7 +1153,7 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sleppt',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sleppt',
       dragHandle: 'Sorter mappa {{name}}',
-      sharedWarning: 'Namn og skildring blir synleg for alle du deler mappa med',
+      sharedWarning: 'Namn og beskriving blir synleg for alle du deler mappa med',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',

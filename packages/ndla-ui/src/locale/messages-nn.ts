@@ -1179,6 +1179,7 @@ const messages = {
         button: {
           share: 'Del mappe',
           preview: 'Førehandsvis mappe',
+          goTo: 'Gå til delt mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },

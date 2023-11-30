@@ -1181,6 +1181,7 @@ const messages = {
         button: {
           share: 'Juoge máhpa',
           preview: 'Čájet ovdagihtii juogaduvvon máhpa',
+          goTo: 'Mana juogaduvvon máhppii',
           unShare: 'Loahpat juogdeami',
           shareLink: 'Máŋge liŋkka',
         },

@@ -1181,6 +1181,7 @@ const messages = {
         button: {
           share: 'Share folder',
           preview: 'Preview folder',
+          goTo: 'Go to shared folder',
           unShare: 'Stop sharing',
           shareLink: 'Copy link',
         },

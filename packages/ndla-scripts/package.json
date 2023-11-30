@@ -1,6 +1,6 @@
 {
   "name": "@ndla/scripts",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",
   "exports": "./src/index.js",

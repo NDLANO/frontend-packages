@@ -1,6 +1,6 @@
 {
   "name": "@ndla/forms",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "description": "Forms components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,7 +28,7 @@
   "dependencies": {
     "@ndla/core": "^4.2.7",
     "@ndla/icons": "^4.2.2",
-    "@ndla/pager": "^2.2.39",
+    "@ndla/pager": "^2.2.40",
     "@ndla/typography": "^0.4.0",
     "@ndla/util": "^4.0.1",
     "@radix-ui/react-radio-group": "^1.1.3"

@@ -2526,11 +2526,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/accordion@npm:^3.0.9, @ndla/accordion@workspace:packages/ndla-accordion":
+"@ndla/accordion@npm:^3.0.10, @ndla/accordion@workspace:packages/ndla-accordion":
   version: 0.0.0-use.local
   resolution: "@ndla/accordion@workspace:packages/ndla-accordion"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/core": "npm:^4.2.7"
     "@ndla/icons": "npm:^4.2.2"
     "@radix-ui/react-accordion": "npm:^1.1.2"
@@ -2547,10 +2547,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/article-converter@workspace:packages/article-converter"
   dependencies:
-    "@ndla/code": "npm:^5.0.17"
+    "@ndla/code": "npm:^5.0.18"
     "@ndla/types-backend": "npm:^0.2.21"
     "@ndla/types-embed": "npm:^4.0.7"
-    "@ndla/ui": "npm:^50.1.0"
+    "@ndla/ui": "npm:^50.1.1"
     html-react-parser: "npm:^4.2.2"
     lodash: "npm:^4.17.20"
   peerDependencies:
@@ -2568,10 +2568,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/audio-search@workspace:packages/ndla-audio-search"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/licenses": "npm:^7.2.2"
     "@ndla/notion": "npm:^6.0.16"
-    "@ndla/pager": "npm:^2.2.39"
+    "@ndla/pager": "npm:^2.2.40"
     "@ndla/types-backend": "npm:^0.2.21"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2580,14 +2580,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/button@npm:^12.0.14, @ndla/button@workspace:packages/button":
+"@ndla/button@npm:^12.0.15, @ndla/button@workspace:packages/button":
   version: 0.0.0-use.local
   resolution: "@ndla/button@workspace:packages/button"
   dependencies:
     "@ndla/core": "npm:^4.2.7"
-    "@ndla/dropdown-menu": "npm:^1.0.16"
+    "@ndla/dropdown-menu": "npm:^1.0.17"
     "@ndla/icons": "npm:^4.2.2"
-    "@ndla/tooltip": "npm:^6.0.4"
+    "@ndla/tooltip": "npm:^6.0.5"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -2610,11 +2610,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/code@npm:^5.0.17, @ndla/code@workspace:packages/ndla-code":
+"@ndla/code@npm:^5.0.18, @ndla/code@workspace:packages/ndla-code":
   version: 0.0.0-use.local
   resolution: "@ndla/code@workspace:packages/ndla-code"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/core": "npm:^4.2.7"
     "@ndla/icons": "npm:^4.2.2"
     "@ndla/types-embed": "npm:^4.0.7"
@@ -2640,7 +2640,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/dropdown-menu@npm:^1.0.16, @ndla/dropdown-menu@workspace:packages/dropdown-menu":
+"@ndla/dropdown-menu@npm:^1.0.17, @ndla/dropdown-menu@workspace:packages/dropdown-menu":
   version: 0.0.0-use.local
   resolution: "@ndla/dropdown-menu@workspace:packages/dropdown-menu"
   dependencies:
@@ -2658,12 +2658,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/editor@workspace:packages/ndla-editor"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/core": "npm:^4.2.7"
-    "@ndla/forms": "npm:^5.2.1"
+    "@ndla/forms": "npm:^5.2.2"
     "@ndla/icons": "npm:^4.2.2"
-    "@ndla/modal": "npm:^5.0.13"
-    "@ndla/tooltip": "npm:^6.0.4"
+    "@ndla/modal": "npm:^5.0.14"
+    "@ndla/tooltip": "npm:^6.0.5"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -2683,13 +2683,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/forms@npm:^5.2.1, @ndla/forms@workspace:packages/ndla-forms":
+"@ndla/forms@npm:^5.2.2, @ndla/forms@workspace:packages/ndla-forms":
   version: 0.0.0-use.local
   resolution: "@ndla/forms@workspace:packages/ndla-forms"
   dependencies:
     "@ndla/core": "npm:^4.2.7"
     "@ndla/icons": "npm:^4.2.2"
-    "@ndla/pager": "npm:^2.2.39"
+    "@ndla/pager": "npm:^2.2.40"
     "@ndla/typography": "npm:^0.4.0"
     "@ndla/util": "npm:^4.0.1"
     "@radix-ui/react-radio-group": "npm:^1.1.3"
@@ -2719,14 +2719,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/howto@workspace:packages/ndla-howto"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/core": "npm:^4.2.7"
     "@ndla/icons": "npm:^4.2.2"
     "@ndla/licenses": "npm:^7.2.2"
-    "@ndla/modal": "npm:^5.0.13"
+    "@ndla/modal": "npm:^5.0.14"
     "@ndla/notion": "npm:^6.0.16"
-    "@ndla/tooltip": "npm:^6.0.4"
-    "@ndla/ui": "npm:^50.1.0"
+    "@ndla/tooltip": "npm:^6.0.5"
+    "@ndla/ui": "npm:^50.1.1"
     "@ndla/util": "npm:^4.0.1"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2756,13 +2756,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/image-search@workspace:packages/ndla-image-search"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/core": "npm:^4.2.7"
-    "@ndla/forms": "npm:^5.2.1"
+    "@ndla/forms": "npm:^5.2.2"
     "@ndla/icons": "npm:^4.2.2"
-    "@ndla/pager": "npm:^2.2.39"
+    "@ndla/pager": "npm:^2.2.40"
     "@ndla/types-backend": "npm:^0.2.21"
-    "@ndla/ui": "npm:^50.1.0"
+    "@ndla/ui": "npm:^50.1.1"
     "@ndla/util": "npm:^4.0.1"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
@@ -2789,7 +2789,7 @@ __metadata:
   dependencies:
     "@ndla/core": "npm:^4.2.7"
     "@ndla/icons": "npm:^4.2.2"
-    "@ndla/ui": "npm:^50.1.0"
+    "@ndla/ui": "npm:^50.1.1"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -2803,7 +2803,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/modal@npm:^5.0.13, @ndla/modal@workspace:packages/ndla-modal":
+"@ndla/modal@npm:^5.0.14, @ndla/modal@workspace:packages/ndla-modal":
   version: 0.0.0-use.local
   resolution: "@ndla/modal@workspace:packages/ndla-modal"
   dependencies:
@@ -2835,12 +2835,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/pager@npm:^2.2.39, @ndla/pager@workspace:packages/ndla-pager":
+"@ndla/pager@npm:^2.2.40, @ndla/pager@workspace:packages/ndla-pager":
   version: 0.0.0-use.local
   resolution: "@ndla/pager@workspace:packages/ndla-pager"
   dependencies:
     "@ndla/core": "npm:^4.2.7"
-    "@ndla/safelink": "npm:^4.1.39"
+    "@ndla/safelink": "npm:^4.1.40"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -2848,11 +2848,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^4.1.39, @ndla/safelink@workspace:packages/safelink":
+"@ndla/safelink@npm:^4.1.40, @ndla/safelink@workspace:packages/safelink":
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/icons": "npm:^4.2.2"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2891,7 +2891,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/switch@npm:^1.1.22, @ndla/switch@workspace:packages/switch":
+"@ndla/switch@npm:^1.1.23, @ndla/switch@workspace:packages/switch":
   version: 0.0.0-use.local
   resolution: "@ndla/switch@workspace:packages/switch"
   dependencies:
@@ -2905,7 +2905,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/tabs@npm:^3.2.2, @ndla/tabs@workspace:packages/ndla-tabs":
+"@ndla/tabs@npm:^3.2.3, @ndla/tabs@workspace:packages/ndla-tabs":
   version: 0.0.0-use.local
   resolution: "@ndla/tabs@workspace:packages/ndla-tabs"
   dependencies:
@@ -2918,7 +2918,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/tooltip@npm:^6.0.4, @ndla/tooltip@workspace:packages/tooltip":
+"@ndla/tooltip@npm:^6.0.5, @ndla/tooltip@workspace:packages/tooltip":
   version: 0.0.0-use.local
   resolution: "@ndla/tooltip@workspace:packages/tooltip"
   dependencies:
@@ -2981,26 +2981,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^50.1.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^50.1.1, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
-    "@ndla/accordion": "npm:^3.0.9"
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/accordion": "npm:^3.0.10"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/carousel": "npm:^4.0.16"
     "@ndla/core": "npm:^4.2.7"
-    "@ndla/dropdown-menu": "npm:^1.0.16"
-    "@ndla/forms": "npm:^5.2.1"
+    "@ndla/dropdown-menu": "npm:^1.0.17"
+    "@ndla/forms": "npm:^5.2.2"
     "@ndla/hooks": "npm:^2.1.2"
     "@ndla/icons": "npm:^4.2.2"
     "@ndla/licenses": "npm:^7.2.2"
-    "@ndla/modal": "npm:^5.0.13"
+    "@ndla/modal": "npm:^5.0.14"
     "@ndla/notion": "npm:^6.0.16"
-    "@ndla/safelink": "npm:^4.1.39"
+    "@ndla/safelink": "npm:^4.1.40"
     "@ndla/select": "npm:^3.2.2"
-    "@ndla/switch": "npm:^1.1.22"
-    "@ndla/tabs": "npm:^3.2.2"
-    "@ndla/tooltip": "npm:^6.0.4"
+    "@ndla/switch": "npm:^1.1.23"
+    "@ndla/tabs": "npm:^3.2.3"
+    "@ndla/tooltip": "npm:^6.0.5"
     "@ndla/types-backend": "npm:^0.2.21"
     "@ndla/types-embed": "npm:^4.0.7"
     "@ndla/typography": "npm:^0.4.0"
@@ -3043,12 +3043,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/video-search@workspace:packages/ndla-video-search"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/icons": "npm:^4.2.2"
     "@ndla/licenses": "npm:^7.2.2"
     "@ndla/notion": "npm:^6.0.16"
-    "@ndla/pager": "npm:^2.2.39"
-    "@ndla/tabs": "npm:^3.2.2"
+    "@ndla/pager": "npm:^2.2.40"
+    "@ndla/tabs": "npm:^3.2.3"
     prop-types: "npm:^15.8.1"
     react-bem-helper: "npm:^1.4.1"
   peerDependencies:
@@ -3062,7 +3062,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/zendesk@workspace:packages/ndla-zendesk"
   dependencies:
-    "@ndla/button": "npm:^12.0.14"
+    "@ndla/button": "npm:^12.0.15"
     "@ndla/core": "npm:^4.2.7"
   peerDependencies:
     "@emotion/react": ^11.10.4

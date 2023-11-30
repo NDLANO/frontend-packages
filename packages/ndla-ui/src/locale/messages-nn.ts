@@ -991,7 +991,7 @@ const messages = {
   loading: 'Laster',
   title: 'Tittel',
   save: 'Lagre',
-  photo: 'Foto',
+  photo: 'Bilete',
   email: 'E-post',
   image: {
     altText: 'Alt-tekst',

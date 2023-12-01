@@ -1217,6 +1217,14 @@ const messages = {
         post: 'sliejhtieh kommentaarem',
         topic: 'Håaleme',
       },
+      deleted: {
+        post: 'Dov lahtesem sliejhteme.',
+        topic: 'Håaleme lea destie vaalteme.',
+      },
+      updated: {
+        post: 'Daelie tjïelkestamme daam tjaalegem.',
+        topic: 'Håaleme lea orrestahteme.',
+      },
       topic: {
         responses: 'Vaestiedasse',
         topicContent: 'Tjaelieh dov håalemem daesnie',

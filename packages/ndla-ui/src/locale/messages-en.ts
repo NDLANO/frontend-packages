@@ -1214,6 +1214,14 @@ const messages = {
         post: 'Delete comment',
         topic: 'Delete topic',
       },
+      deleted: {
+        post: 'Your comment has been deleted.',
+        topic: 'Your topic has been deleted.',
+      },
+      updated: {
+        post: 'Your comment has been updated.',
+        topic: 'Your topic has been updated.',
+      },
       publish: 'Publish',
       topic: {
         responses: 'Responses',

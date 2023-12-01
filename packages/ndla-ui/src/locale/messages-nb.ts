@@ -1213,6 +1213,14 @@ const messages = {
         post: 'Slett kommentar',
         topic: 'Slett innlegg',
       },
+      deleted: {
+        post: 'Kommentaren din har blitt slettet.',
+        topic: 'Innlegget har blitt slettet.',
+      },
+      updated: {
+        post: 'Kommentaren har blitt oppdatert.',
+        topic: 'Innlegget har blitt oppdatert.',
+      },
       topic: {
         responses: 'Svar',
         topicContent: 'Skriv innlegget ditt her',

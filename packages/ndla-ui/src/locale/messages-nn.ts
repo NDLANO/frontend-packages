@@ -1217,6 +1217,14 @@ const messages = {
         responses: 'Svar',
         topicContent: 'Skriv innlegget ditt her',
       },
+      deleted: {
+        post: 'Kommentaren din har blitt slettet.',
+        topic: 'Innlegget har blitt slettet.',
+      },
+      updated: {
+        post: 'Kommentaren har blitt oppdatert.',
+        topic: 'Innlegget har blitt oppdatert.',
+      },
       posts: {
         notify: 'Få varsel om nye svar',
         showEditOptions: 'Vis redigeringsmoglegheiter',

@@ -1215,6 +1215,14 @@ const messages = {
         post: 'Sihko kommentára',
         topic: 'Sihko čállosa',
       },
+      deleted: {
+        post: 'Du kommeanta lea sihkojuvvon.',
+        topic: 'Sáhkavuorru lea sihkojuvvon.',
+      },
+      updated: {
+        post: 'Kommentára lea dál ođasmahttojuvvon.',
+        topic: 'Sáhkavuorru lea ođasmahttojuvvon.',
+      },
       topic: {
         responses: 'Vástidan',
         topicContent: 'Čále sáhkavuoru dása',

@@ -1218,8 +1218,8 @@ const messages = {
         topicContent: 'Skriv innlegget ditt her',
       },
       deleted: {
-        post: 'Kommentaren din har blitt slettet.',
-        topic: 'Innlegget har blitt slettet.',
+        post: 'Kommentaren din har blitt sletta.',
+        topic: 'Innlegget har blitt sletta.',
       },
       updated: {
         post: 'Kommentaren har blitt oppdatert.',

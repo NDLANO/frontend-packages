@@ -32,7 +32,7 @@ const GroupLabel = styled(Text)`
   font-weight: ${fonts.weight.semibold};
 `;
 
-const RadioButtonGroupLabel = styled(Text)`
+const RadioButtonGroupText = styled(Text)`
   color: ${colors.brand.primary};
   font-family: ${fonts.sans};
   &[data-disabled='true'] {
@@ -123,9 +123,9 @@ export const RadioGroupItem = ({ value, disabled, id, title, className }: ItemPr
       <StyledRadioGroupItem disabled={disabled} value={value} id={id}>
         <RadioButtonIndicator forceMount />
       </StyledRadioGroupItem>
-      <RadioButtonGroupLabel element="label" textStyle="content" margin="none" htmlFor={id} data-disabled={disabled}>
+      <RadioButtonGroupText textStyle="content" margin="none" htmlFor={id} data-disabled={disabled}>
         {title}
-      </RadioButtonGroupLabel>
+      </RadioButtonGroupText>
     </RadioButtonWrapper>
   );
 };

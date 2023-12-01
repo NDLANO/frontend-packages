@@ -22,7 +22,7 @@ export { FormPill, FormPills } from './FormPill';
 export { default as CheckboxItem } from './CheckboxItem';
 export { default as UploadDropZone } from './UploadDropZone';
 export { Label } from './Label';
-export { FormControl } from './FormControl';
+export { FormControl, useFormControl } from './FormControl';
 export { Input as InputV3, InputContainer, TextArea as TextAreaV3 } from './InputV3';
 export { FieldErrorMessage } from './FieldErrorMessage';
 export { FieldHelper } from './FieldHelper';

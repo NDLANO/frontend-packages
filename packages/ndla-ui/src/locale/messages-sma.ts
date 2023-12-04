@@ -9,11 +9,12 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes, wordClass } = constants;
+export const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  ...contributorTypes.nb,
   common: {
     subject: 'Fag',
     subject_plural: 'Fag',
@@ -87,12 +88,6 @@ const messages = {
     searchPage: `Ohtsh${titleTemplate}`,
     notFound: `Ij sæjroe gååvnesh${titleTemplate}`,
   },
-  newsLetter: {
-    heading: 'Saernieprievie',
-    description: 'Fulkh meatan. Åadtjoeh minngemes saerniem NDLA:ste.',
-    mainLinkName: 'Bïeljelh',
-    iconLinkName: 'Bïeljelh jis saernieprieviem sïjhth',
-  },
   askNDLA: 'Gihtjh NDLA:m',
   articlePage: {
     errorDescription: 'Gaatesjen, fiejlie sjïdti vierhtie-veedtjemisnie.',
@@ -132,25 +127,7 @@ const messages = {
     searchFieldPlaceholder: 'Ohtsh faage-teemam, laavenjassi jïh darjomesi jallh lïeremebaalkaj mietie',
     searchFieldPlaceholderShort: 'Ohtsh',
     label: {
-      content: 'Sisvege:',
-      contentTypes: 'Sisvegesåarhth:',
-      levels: 'Daltese:',
-      languageFilter: 'Gïele:',
       subjects: 'Faage:',
-      noFilter: 'Ih filterem veeljeme',
-      createdBy: 'Darjoje:',
-    },
-    showLabel: {
-      contentTypes: 'Jienebh sisvegesåarhth',
-      levels: 'Jienebh daltesh',
-      languageFilter: 'Jienebh gïelh',
-      subjects: 'Målsoeh faagem',
-    },
-    hideLabel: {
-      contentTypes: 'Vaenebh sisvegesåarhth',
-      levels: 'Vaenebh daltesh',
-      languageFilter: 'Vaenebh gïelh',
-      subjects: 'Vaenebh faagh',
     },
     searchField: {
       contentTypeResultShowMoreLabel: 'Gïehtjh jienebh illedahkh',
@@ -159,22 +136,11 @@ const messages = {
       searchResultHeading: 'Raeriestimmie:',
       contentTypeResultNoHit: 'Ij mejtegh gaavnh ...',
     },
-    searchResultMessages: {
-      searchStringLabel: 'Datne ohtsih:',
-      subHeading: '{{totalCount}} gaavnedimmieh NDLA:sne',
-    },
     searchResultListMessages: {
       subjectsLabel: 'Rïhpesth faagesne:',
       noResultHeading: 'Hmm, ij naan sisvege ...',
       noResultDescription:
         'Ibie maam daesnie utnieh. Jis sïjhth såemies sisvegem daan aamhtesasse evtiedidh maahtah “Gihtjh NDLA:m” nuhtjedh maam gaavnh vuelnie skjeermen garrahbealesne.',
-    },
-    searchPageMessages: {
-      filterHeading: 'Filtere',
-      resultHeading: '{{totalCount}} gaavnedimmieh NDLA:sne',
-      resultHeadingByAuthor: '{{totalCount}} artihkelh mejtie {{author}} tjaaleme',
-      narrowScreenFilterHeading: '{{totalCount}} gaavnedimmieh «{{query}}»',
-      dropdownBtnLabel: 'Flere innholdstyper',
     },
     searchFilterMessages: {
       backButton: 'Bååstede filteren gåajkoe',
@@ -222,39 +188,9 @@ const messages = {
     },
   },
   subjectPage: {
-    errorDescription: 'Gaatesjen, fiejlie sjïdti veedtjemisnie.',
     tabs: {
       topics: 'Aamhtesh',
     },
-    subjectShortcuts: {
-      heading: 'Mïnnh ryöktesth diekie',
-      showMore: 'Vuesehth jienebh',
-      showLess: 'Vuesehth vaenebh',
-    },
-    mostRead: {
-      heading: 'Jeenjemes åtnasovveme',
-    },
-    editorsChoices: {
-      heading: 'Ovmessie faageste',
-      unknown: 'Ovnohkens',
-    },
-    subjectArchive: {
-      heading: 'Sjyöhtehke',
-      archive: 'Våarhkoe',
-      close: 'Dahph',
-    },
-    subjectFilter: {
-      label: 'Filter',
-    },
-    newContent: {
-      heading: 'Maam lïereme?',
-    },
-    subjectIsBeta: {
-      iconLabel: 'barkosne',
-      dialogHeader: '{{title}} lea barkosne.',
-      dialogText: 'Maahtah vielie dan bïjre lohkedh',
-    },
-    archived: 'Faage nåhkeme jïh ij dam vielie orresth.',
   },
   subjectsPage: {
     filterSubjects: 'Filtrer fag',
@@ -277,47 +213,16 @@ const messages = {
     shows: 'Viser',
   },
   topicPage: {
-    articleErrorDescription: 'Gaatesjen, fiejlie sjïdti teemabuerkiestimmie-veedtjemisnie.',
     topic: 'TEEMA',
     topics: 'Emner',
     imageModal: 'Se bildet i full størrelse',
   },
   welcomePage: {
-    search: 'Ohtsh',
-    searchDisclaimer:
-      'Mijjieh ahkedh barkebe jïjtjemem bueriedidh! Jis dov lahtestimmieh ohtsemasse, aavone sjïdtebe jis dejtie bïejh sæjjan “gihtjh NDLA:m” vöölemes åelkiesroenesne.',
     resetSearch: 'Döömh ohtsemem',
-    closeSearch: 'Dahph ohtsemem',
     searchAllInfo: 'Vuartesjh gaajhkide mejtie ohtseme',
-    topicsConjunction: 'jïh',
-    highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonaale digitaale lïeremesijjie',
-      searchFieldPlaceholder: 'Man bïjre sïjhth lïeredh daan biejjien?',
-      messages: {
-        searchFieldTitle: 'Ohtsh',
-        menuButton: 'Innhold',
-      },
-      links: {
-        aboutNDLA: 'NDLA:n bïjre',
-        changeLanguage: 'Målsoeh gïelem',
-      },
     },
-    socialMedia: {
-      heading: 'Fulkh mijjem',
-      description: 'NDLA gellie Facebook- jïh X-kontoeh åtna. Gaavnh dam mij dutnjien sjeahta jïh fulkh mijjem!',
-      mainLink: {
-        name: 'Fulkh mijjem',
-      },
-    },
-    errorDescription: 'Gaatesjen, fiejlie sjïdti faage-veedtjemisnie.',
-    film: {
-      header: 'NDLA film',
-      text: 'NDLA film lea dïenesje laavenjostosne Norgesfilmine. Dïenesje baaja datnem gellie spïelefilmh, åenehks filmh, dokumentaarh jïh raajroeh vuejnedh. Maahtah aaj ööhpehtimmiefilmh jïh filmebietskieh vuejnedh. Buerie båeteme filmen veartenen sïjse!',
-      textShort: 'Buerie båeteme filmen veartenasse!',
-      linkLabel: 'Mïnnh NDLA filmese',
-    },
-    blog: 'Bloggeste',
   },
   toolboxPage: {
     introduction:
@@ -336,103 +241,38 @@ const messages = {
       toolboxStudents: 'Verktøykassa - for elever',
       toolboxTeachers: 'Verktøykassa - for lærere',
       film: 'NDLA film',
-      about: {
-        title: 'Om NDLA',
-        numbers: 'Tall og rapporter',
-        keyPersonnel: 'Nøkkelpersoner',
-        vacancies: 'Utlysninger',
-        vision: 'Visjon og verdier',
-        communityPurpose: 'Vårt samfunnsoppdrag',
-        history: 'NDLAs historie',
-        cooperation: 'Våre samarbeid',
-        faq: 'Ofte stilte spørsmål',
-        follow: 'Følg våre sosiale medier',
-        whoAreWe: 'Hvem er vi?',
-        whatWeDo: 'Hva gjør vi?',
-        careers: 'Jobb hos oss',
-        contactUs: 'Kontakt oss',
-        organizing: 'Organisering',
-        articlesOfAssociation: 'Vedtekter',
-      },
     },
     menu: {
       button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
-      close: 'Dahph',
-      goTo: 'Mïnnh',
       search: 'Ohtsh',
-      toFrontpage: 'Åvtesæjrose',
-      subjectOverview: 'Gaajhkh faagh',
       title: 'Innhold',
       modalLabel: 'Velg innhold',
-      subjectPage: 'Faagen åvtesæjroe',
-      backToSubjectFrontpage: 'Bååstede faagen åvtesæjrose',
-      openFilter: 'Filterh',
-      useFilter: 'Nuhtjh filterem',
-      closeFilter: 'Dahph filterh',
-      learningResourcesHeading: 'Lïeremevierhtieh',
-      back: 'Bååstede',
-      additionalFilterLabel: 'Lissievierhtieh',
-      contentTypeResultsShowMore: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Vuesehth jienebh faage-aamhtesh',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Vuesehth jienebh laavenjassh jïh darjomh',
-        [contentTypes.LEARNING_PATH]: 'Vuesehth jienebh lïeremebaalkah',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Vuesehth jienebh vuarjasjimmievierhtieh',
-        [contentTypes.SOURCE_MATERIAL]: 'Vuesehth jienebh gaaltijevierhtieh',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vuesehth jienebh byjngetje lïeremevierhtieh',
-        unGrouped: 'Vuesehth jienebh vierhtieh',
-      },
-      contentTypeResultsShowLess: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Vuesehth vaenebh faage-aamhtesh',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Vuesehth vaenebh laavenjassh jïh darjomh',
-        [contentTypes.LEARNING_PATH]: 'Vuesehth vaenebh lïeremebaalkah',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Vuesehth vaenebh vuarjasjimmievierhtieh',
-        [contentTypes.SOURCE_MATERIAL]: 'Vuesehth vaenebh gaaltijevierhtieh',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vuesehth vaenebh byjngetje lïeremevierhtieh',
-        unGrouped: 'Vuesehth vaenebh vierhtieh',
-      },
-      contentTypeResultsNoHit: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Ij naan faage-aamhtesh',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Ij naan laavenjassh',
-        [contentTypes.LEARNING_PATH]: 'Ij naan lïeremebaalkah',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Ij naan vuarjasjimmievierhtieh',
-        [contentTypes.SOURCE_MATERIAL]: 'Ij naan gaaltijevierhtieh',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Ij naan byjngetje lïeremevierhtieh',
-        unGrouped: 'Ij naan vierhtieh',
-      },
     },
   },
   logo: {
     altText: 'Nasjonaale digitaale lïeremesijjie',
   },
   resource: {
-    errorDescription: 'Gaatesjen, men fiejlie sjïdti teemavierhtie-veedtjemisnie.',
-    error: 'Gaatesjen, naakede sisvegistie ov-våajnoes.',
     noCoreResourcesAvailableUnspecific: 'Jarnge-aamhtesh eah leah jaksoes.',
     noCoreResourcesAvailable: 'Ij leah naan jarnge-aamhtesh daase {{name}}.',
     activateAdditionalResources: 'Lissie-aamhtesh',
     toggleFilterLabel: 'Tilleggsressurser',
     label: 'Læringsressurser',
-    allResources: 'Vierhtieh',
-    shortcutButtonText: 'Learoe-aamhtesh',
     tooltipCoreTopic: 'Jarnge-aamhtesh',
     tooltipAdditionalTopic: 'Lissie-aamhtesh',
     additionalTooltip: 'Lissie-aamhtesh',
-    shortcutsTooltip: 'Vuesehth {{count}} artihkelh daennie teemesne',
     dialogTooltip: 'Mij jarngeaamhtse jïh lissie-aamhtesh?',
     dialogHeading: 'Jarnge-aamhtesh jïh lissie-aamhtesh',
     dialogText1: 'Gosse jarnge-aamhtesem lïerh, datne maahtoem reeblh maam faagen learoesoejkesje buerkeste.',
     dialogText2:
       'Lissie-aamhtese lea faagesisvege maam maahtah lissine veeljedh jarnge-aamhtesasse. Maahtah veelebelaakan teemam goerehtidh jallh teemam jeatjahlaakan geatskanidh.',
-    showLess: 'Vuesehth vaenebe',
-    showMore: 'Vis mer',
     youAreHere: 'Datne daesnie',
     trait: {
       video: 'Videjove',
       h5p: 'Interaktijve',
     },
   },
-
   messageBoxInfo: {
     outdatedCoursePlan:
       'Dette faget følger en utgått læreplan. Gå til faget som er oppdatert etter gjeldende læreplan:',
@@ -512,9 +352,6 @@ const messages = {
     },
     licenseData: 'Inneholder data under',
     licenseFrom: 'tilgjengeliggjort på',
-  },
-  subject: {
-    associatedTopics: 'Teemah mah govlehtuvvieh',
   },
   subjectFrontPage: {
     buildsOn: 'Bigkie bæjjese',
@@ -702,8 +539,6 @@ const messages = {
       aboutNdla: 'About NDLA',
       blog: 'Faageblogge',
       tips: 'Tipsh learoehkidie',
-      fyr: 'FYR-prosjekte',
-      sharing: 'Juekemesijjie',
       vacancies: 'Gaavnoes barkoeh',
     },
   },
@@ -758,7 +593,6 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'NDLA:n åvtesæjroe',
-    youAreHere: 'Datne daesnie',
     breadcrumb: 'Goeremebaalka',
   },
   listview: {
@@ -826,9 +660,7 @@ const messages = {
     loadingMovies: 'Filmh veedtjeminie...',
     subjectsInMovies: 'Teemah filmesne',
     about: {
-      heading: 'NDLA filmen bïjre',
       more: 'Lohkh vielie NDLA filmen bïjre',
-      text: 'Ndla Film lea filmedïenesje nedtesne learoehkidie jïh lohkehtæjjide jåarhkeskuvlesne. Daesnie spïelefilmh, åenehks filmh, dokumentaarefilmh jïh TV-raajroh gaavnh.',
     },
     search: {
       placeholder: 'Ohtsh filmenommide',
@@ -867,36 +699,12 @@ const messages = {
       all: 'Gaajhkh filmh A-Å',
     },
     allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
-    moreAboutNdlaFilm: {
-      header: 'NDLA film',
-      firstParagraph:
-        'Filmh, filmedïenesjisnie, leah nöörjen jïh gaskenasjonaale filme-aerpeste veedtjeme, jïh learoesoejkesjidie ektiedamme jieniebinie faagine. NDLA:n redaksjovnh jïh Norgesfilm AS leah dejtie ektesne veeljeme.',
-      secondParagraph:
-        'Maahtah filmide vuejnedh jis dov gaskeviermie daatovrese, nedtepreejrese jallh smarttellefovnese. Mijjieh barkoem reaktajgujmie jïh maaksojne dorjeme. Datne ajve daarpesjh diedtedh play.',
-      thirdParagraph:
-        'Filmh copyrightmïerhkem utnieh. Maahtah dejtie spïeledh ndla.no:sne, men ih maehtieh dejtie veedtjedh jallh vuesiehtidh jeatjah bæjhkoehtimmine. Gaajhkh reakta-aajhterh maaksoem åadtjoeh spealadimmiej åvteste.',
-      secondHeading: 'Nuhtjh filmem ööhpehtimmesne',
-      fourthParagraph:
-        'Filme soptsesh soptseste mah mijjem baajnehtieh. Filmesne såemies dejstie bööremes våajnoes vierhkievierhtijste åtnasuvvieh mah gååvnesieh; svihtjije guvvieh jïh tjoeje. Hijven filme maahta ektietïjjem vuesiehtidh jïh visjovnh båetijen aejkien bïjre vedtedh jallh åvtetje aejkiem lahtestidh. Dan åvteste filme daamtaj maahta mijjese buerebe goerkesem vedtedh heannadimmijste, kultuvregaavnedimmijste jïh histovrijeste goh faageteekste.',
-      fifthParagraph:
-        'Gosse learohkh filmem vuartesjieh buerebelaakan lierieh filmegïelem lohkedh, guktie filme dovne faepelde jïh  aarvoem åtna. Bijjemes bielie learoesoejkesjistie tjïerteste, learohkh edtjieh tjeahpoem jïh kultuvrehammoeh åadtjodh mah skreejrieh, skraejriem vadta jïjtse sjugniedidh jïh etihkeles jïh estetihkeles daajem eevtjie.',
-      tipSectionPt1: 'Båetieh maaje tipsigujmie, gyhtjelassigujmie jallh filmevaajtelimmiejgujmie daesnie',
-      tipSectionPt2: 'Facebook-sæjroe',
-      ariaLabel: 'Vaaksjoeh NDLA-film Facebooksæjroem',
-      tipSectionPt3: 'mijjen',
-      ending: 'Mijjieh gaajhkh filme-iehtsijh hijven jïh lïerije dååjresem vaajtelibie!',
-    },
   },
   learningPath: {
     createLearningPathText: 'Darjoeh jïjtjedh, vaeltieh kopijem daestie jallh jienebh lïeremebaalkah vuejnedh?',
     createLearningPathButtonText: 'Mïnnh baalkide',
     lastUpdated: 'Minngemes orrestamme',
     youAreInALearningPath: 'Daelie datne lïeremebaalkesne',
-    readTime: '{{hours}} skuvletæjmoeh = {{minutes}} min',
-    readTimeHour: 'tæjmoe',
-    readTimeHour_plurals: 'tæjmoeh',
-    readTimeMinutesShort: 'min',
-    pageOf: 'av',
     lastStep: {
       heading: 'Minngemes sïlle lïeremebaalkesne',
       headingSmall: 'Datne daelie minngemes sïllesne lïeremebaalkesne  {{learningPathName}}',
@@ -914,22 +722,6 @@ const messages = {
     create: 'Darjoeh orre',
     isSelectedItem: 'Lissiehtamme',
     selected: '{{count}} valgte',
-  },
-  blogPosts: {
-    blog1: {
-      text: 'Forslag til årsplaner fra NDLA',
-      externalLink: 'https://blogg.ndla.no/2021/08/forslag-til-arsplaner-hos-ndla/',
-      linkText: 'Fagblogg',
-      license: 'CC-BY-SA-4.0',
-      licenseAuthor: 'Vibeke Klungland',
-    },
-    blog2: {
-      text: 'Huskeliste for kontaktlærere',
-      externalLink: 'https://blogg.ndla.no/2019/08/huskeliste-for-kontaktlaerere/',
-      linkText: 'Fagblogg',
-      license: 'CC-BY-SA-4.0',
-      licenseAuthor: 'Tom Knudsen',
-    },
   },
   editor: {
     versionHistory: {
@@ -954,26 +746,13 @@ const messages = {
       text: 'er utarbeidet av',
     },
   },
-  frontPageToolbox: {
-    heading: 'Dïrregeskaavtege',
-    text: 'Sïjhth væjkele sjïdtedh åehpiedehtedh, jallh sïjhth lïeredh væjsahkåbpoe lohkedh viehkine reaktoe studijeteknihkine? Raerieh daarpesjh guktie radtjoehkommes eksamenasse lohkh? NDLA:n dïrregeskaavtegisnie gellie tipsh jïh raerieh gaavnh!',
-    linkTextStudents: 'Vuartesjh gaajhkh tipsh learoehkidie daesnie',
-    linkTextTeachers: 'Vuartesjh gaajhkh tipsh lohkehtæjjide daesnie',
-    cursorText: 'Tipsh',
-  },
   frontpageMultidisciplinarySubject: {
     heading: 'Dåaresthfaageles teemah',
     text: 'Doh golme dåaresthfaageles teemah learoesoejkesjevierhkesne sjyöhtehke seabradahkehaestemh våaroeminie utnieh mah ïedtjem jïh barkoefaamoem krievieh aktegsalmetjijstie jïh ektievoeteste voenges seabradahkesne, nasjonaale jïh abpe veartenisnie.',
-    linkText: 'Vuartesjh “caser”  dåaresthfaageles teemine',
-    publicHealthTopic: 'Almetjehealsoe jïh jieledehaalveme',
-    democracyTopic: 'Demokratije jïh meatanårrojevoete',
-    sustainableTopic: 'Nænnoes evtiedimmie',
-    cursorText: 'Nyhet',
   },
   frontpageMenu: {
     program: 'Ööhpehtimmieprogramme',
     allsubjects: 'Alle fag',
-    cursorText: 'Se smakebiter fra fag under utvikling.',
   },
   navigation: {
     showLongerDescription: 'Vuesehth abpe teemabuerkiestimmiem',
@@ -985,10 +764,6 @@ const messages = {
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case sisnjelen',
-  },
-  multibutton: {
-    open: 'Åpne meny',
-    close: 'Lukk meny',
   },
   close: 'Dahph',
   loading: 'Laster',
@@ -1078,7 +853,6 @@ const messages = {
   fileTypesNotSupported: 'Filtypen(e) støttast ikkje: {{fileTypes}}',
   download: 'Veedtjh fijlem: ',
   expandButton: 'Vuesehth stoerre versjovnem',
-  ...contributorTypes.nb,
   filterButtons: {
     removeAllFilters: 'Skubph filterem',
   },
@@ -1120,11 +894,6 @@ const messages = {
     wrongUserInfoDisclaimer:
       'Dersom informasjonen er feil, må den oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: ',
     moderator: 'Moderatijve',
-  },
-  checkOutNewFeature: 'Gïehtjh orre funksjonaliteetem',
-  slateBlockMenu: {
-    open: 'Åpne meny',
-    close: 'Lukk meny',
   },
   factbox: {
     open: 'Åpne faktaboks',
@@ -1359,26 +1128,6 @@ const messages = {
       feide: 'Dette henter vi om deg gjennom Feide',
       feideWrongInfo:
         'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstotte',
-      storageInfo: {
-        title: 'Slik lagrar du favorittressursane dine frå NDLA',
-        text: 'Bruk hjarteknappen for å lagre ein ressurs. Du får då høve til å lagre ressursen i ei mappe.',
-      },
-      sharing: {
-        title: 'No kan lærarar dele mapper med andre',
-        text: 'Bruk deleknappen i mappa for få ei lenke du kan dele med andre.',
-      },
-      favoriteSubjects: {
-        title: 'Slik lagrar du favorittfaga dine frå NDLA',
-        text: 'Bruk hjarteknappen for å lagre eit fag. Du får då høve til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
-      },
-      folderInfo: {
-        title: 'Slik organiserer du favorittressursene dine i mapper',
-        text: 'Vel <strong>Mine mapper</strong> for å komme til mappeoversikta. Her kan du opprette nye mapper og undermapper. Du kan òg opprette ny mappe i vindauget som kjem opp når du hjartemerkar ein ressurs.',
-      },
-      tagInfo: {
-        title: 'Slik taggar du favorittressursane dine',
-        text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Mine emneknaggar</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
-      },
       recentArenaTopics: 'Nye innlegg i arenaen',
     },
     myProfile: {
@@ -1460,8 +1209,6 @@ const messages = {
   },
   siteNav: {
     search: 'Ohtsh',
-    contact: 'Kontakt',
-    help: 'Hjelp',
   },
   programmes: {
     header: 'Maam sïjhth daan biejjien lïeredh ?',

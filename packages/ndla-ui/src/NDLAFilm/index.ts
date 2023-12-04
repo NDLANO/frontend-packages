@@ -8,9 +8,8 @@
 
 import FilmSlideshow from './FilmSlideshow';
 import MovieGrid from './MovieGrid';
-import AboutNdlaFilm from './AboutNdlaFilm';
 import FilmMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';
 import AllMoviesAlphabetically from './AllMoviesAlphabetically';
 
-export { FilmSlideshow, MovieGrid, AboutNdlaFilm, FilmMovieSearch, FilmMovieList, AllMoviesAlphabetically };
+export { FilmSlideshow, MovieGrid, FilmMovieSearch, FilmMovieList, AllMoviesAlphabetically };

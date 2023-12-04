@@ -1134,6 +1134,7 @@ const messages = {
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
     settings: 'Innstillingar',
+    showEditOptions: 'Vis redigeringsmoglegheiter',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1227,7 +1228,6 @@ const messages = {
       },
       posts: {
         notify: 'Få varsel om nye svar',
-        showEditOptions: 'Vis redigeringsmoglegheiter',
         dropdownMenu: {
           report: 'Rapporter innlegg til moderator',
           edit: 'Rediger innlegg',

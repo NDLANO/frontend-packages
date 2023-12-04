@@ -1135,6 +1135,7 @@ const messages = {
     folders: '{{count}} Folder',
     folders_plural: '{{count}} Folders',
     settings: 'Settings',
+    showEditOptions: 'Show editing options',
     folder: {
       folder: 'Folder',
       delete: 'Delete folder',
@@ -1229,7 +1230,6 @@ const messages = {
       },
       posts: {
         notify: 'Get notified of new answers',
-        showEditOptions: 'Show editing options',
         dropdownMenu: {
           report: 'Report post to moderator',
           edit: 'Edit post',

@@ -1262,8 +1262,8 @@ const messages = {
       topicsBy: 'Innlegg av',
     },
     iconMenu: {
-      folders: 'Mapper',
-      tags: 'Knaggar',
+      folders: 'Mappar',
+      tags: 'Emneknaggar',
       subjects: 'Favorittfag',
       profile: 'Profil',
       more: 'Meir',

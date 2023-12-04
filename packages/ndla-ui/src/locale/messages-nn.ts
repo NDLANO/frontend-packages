@@ -1133,7 +1133,8 @@ const messages = {
     resources_plural: '{{count}} ressursar',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
-    settings: 'Instillinger',
+    settings: 'Innstillingar',
+    showEditOptions: 'Vis redigeringsmoglegheiter',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1197,17 +1198,17 @@ const messages = {
         topic: 'Nytt innlegg',
       },
       warning: {
-        post: 'Svaret ditt er synleg for alle lærerar som er logga på Min NDLA.',
-        topic: 'Innlegget ditt er synleg for alle lærerar som er logga på Min NDLA.',
+        post: 'Svaret ditt er synleg for alle lærerar og tilsette som er logga på Min NDLA.',
+        topic: 'Innlegget ditt er synleg for alle lærerar og tilsette som er logga på Min NDLA.',
       },
       removeText: {
         post: 'Slett kommentar',
         topic: 'Slett innlegg',
       },
       description: {
-        post: 'Vil du slette denne kommentaren? Det er ikkje mogeleg å angre dersom du sletter ein kommentar. ',
+        post: 'Vil du slette denne kommentaren? Det er ikkje mogleg å angre dersom du sletter ein kommentar.',
         topic:
-          'Vil du slette dette innlegget? Dersom innlegget har kommentarar vil alle kommentarane også bli sletta. Det er ikkje mogeleg å angre dersom du sletter eit innlegg.  ',
+          'Vil du slette dette innlegget? Dersom innlegget har kommentarar, vil alle kommentarane også bli sletta. Det er ikkje mogleg å angre dersom du sletter eit innlegg.',
       },
       deleteTitle: {
         post: 'Slett kommentar',
@@ -1227,7 +1228,6 @@ const messages = {
       },
       posts: {
         notify: 'Få varsel om nye svar',
-        showEditOptions: 'Vis redigeringsmoglegheiter',
         dropdownMenu: {
           report: 'Rapporter innlegg til moderator',
           edit: 'Rediger innlegg',
@@ -1244,7 +1244,7 @@ const messages = {
         disclaimer:
           'Takk for at du rapporterer innhald som ikkje er i tråd med retningslinjene våre. Kva er grunnen til at du rapporterer dette innhaldet?',
         success:
-          'Takk for at du rapporterer innhald som ikkje er i tråd med retningslinjene våre. Rapporten er send til moderatoren vår og vil bli gjennomgått så fort som mogleg. ',
+          'Takk for at du rapporterer innhald som ikkje er i tråd med retningslinjene våre. Rapporten er send til moderatoren vår og vil bli gjennomgått så snart som mogleg. ',
         maxLength: 'Maksimal lengd for tekstfeltet er nådd',
         error: 'Feltet er påkravd',
       },
@@ -1266,7 +1266,7 @@ const messages = {
       tags: 'Emneknaggar',
       subjects: 'Favorittfag',
       profile: 'Profil',
-      more: 'Meire',
+      more: 'Meir',
     },
     tagList: 'Emneknaggar',
     tags: '{{count}} emneknagg',

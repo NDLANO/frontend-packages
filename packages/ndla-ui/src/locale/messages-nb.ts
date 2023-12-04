@@ -1133,7 +1133,8 @@ const messages = {
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
-    settings: 'Instillinger',
+    settings: 'Innstillinger',
+    showEditOptions: 'Vis redigeringsmuligheter',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1197,17 +1198,17 @@ const messages = {
         topic: 'Nytt innlegg',
       },
       warning: {
-        post: 'Svaret ditt er synlig for alle lærere som er logget på Min NDLA.',
-        topic: 'Innlegget ditt er synlig for alle lærere som er logget på Min NDLA.',
+        post: 'Svaret ditt er synlig for alle lærere og ansatte som er logget på Min NDLA.',
+        topic: 'Innlegget ditt er synlig for alle lærere og ansatte som er logget på Min NDLA.',
       },
       removeText: {
         post: 'Slett kommentar',
         topic: 'Slett innlegg',
       },
       description: {
-        post: 'Vil du slette denne kommentaren? Det er ikke mulig å angre hvis du sletter en kommentar. ',
+        post: 'Vil du slette denne kommentaren? Det er ikke mulig å angre hvis du sletter en kommentar.',
         topic:
-          'Vil du slette dette innlegget? Dersom innlegget har kommentarer vil alle kommentarene også bli slettet. Det er ikke mulig å angre hvis du sletter et innlegg.  ',
+          'Vil du slette dette innlegget? Dersom innlegget har kommentarer, vil alle kommentarene også bli slettet. Det er ikke mulig å angre hvis du sletter et innlegg.',
       },
       deleteTitle: {
         post: 'Slett kommentar',
@@ -1227,7 +1228,6 @@ const messages = {
       },
       posts: {
         notify: 'Få varsel om nye svar',
-        showEditOptions: 'Vis redigeringsmuligheter',
         dropdownMenu: {
           report: 'Rapporter innlegg til moderator',
           edit: 'Rediger innlegg',
@@ -1244,7 +1244,7 @@ const messages = {
         disclaimer:
           'Takk for at du rapporterer innhold som ikke er i tråd med våre retningslinjer. Hva er grunnen til at du rapporterer dette innholdet?',
         success:
-          'Takk for at du rapporterer innhold som ikke er i tråd med våre retningslinjer. Rapporten er sendt til vår moderator og vil bli gjennomgått så fort som mulig.',
+          'Takk for at du rapporterer innhold som ikke er i tråd med våre retningslinjer. Rapporten er sendt til vår moderator og vil bli gjennomgått så snart som mulig.',
         maxLength: 'Maksimal lengde for tekstfeltet er nådd',
         error: 'Feltet er påkrevd',
       },

@@ -1138,6 +1138,7 @@ const messages = {
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
     settings: 'Instillinger',
+    showEditOptions: 'Vuesehth guktie edtja øørnedh',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1231,7 +1232,6 @@ const messages = {
       },
       posts: {
         notify: 'Bïeljelh mejtie orre vaestiedassh',
-        showEditOptions: 'Vuesehth guktie edtja øørnedh',
         dropdownMenu: {
           report: 'Reekth håalemem moderatovrese',
           edit: 'Jarkelimmie håalemistie',

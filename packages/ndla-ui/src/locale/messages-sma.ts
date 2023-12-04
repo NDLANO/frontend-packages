@@ -1394,6 +1394,8 @@ const messages = {
         'Daesnie jïjtje veeljh mejtie sïjhth dov nommem vuesiehtidh gosse maabpam juekedh . Daate veeljeme lea gaajhkine dov maabpojne, jïh maahta dam mænngan jarkelidh. Jis jeatjahdahtah , dov nomme sæjhta våajnoes årrodh gaajhkine dov joekedamme maabpojne.',
       editButtonText: 'Naemhtie profijleguvviem jarkelidh',
       namePreference: {
+        onNameShown: 'Dov nomme daelie gaajhkine juakeme maabpine vååjnoe',
+        onNameHidden: 'Dov nomme lea daelie strihkesovveme gaajhkijste mappijste mejtie juakeme',
         showName: 'Vuesehth mov nommem gosse maabpam juekieh',
         dontShowName: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
       },

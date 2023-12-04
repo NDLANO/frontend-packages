@@ -1392,6 +1392,8 @@ const messages = {
         'Her kan du selv velge om du vil vise navnet ditt når du deler en mappe. Valget gjelder for alle mappene dine og kan endres senere. Dersom du endrer vil navnet ditt vises på alle dine delte mapper.',
       editButtonText: 'Endre profilbilde',
       namePreference: {
+        onNameShown: 'Navnet ditt vises nå på alle dine delte mapper',
+        onNameHidden: 'Navnet ditt er nå fjernet fra alle dine delte mapper',
         showName: 'Vis navnet mitt når jeg deler en mappe',
         dontShowName: 'Ikke vis navnet mitt når jeg deler mappe',
       },

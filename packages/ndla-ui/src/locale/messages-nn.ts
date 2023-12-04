@@ -1263,7 +1263,7 @@ const messages = {
     },
     iconMenu: {
       folders: 'Mappar',
-      tags: 'Knaggar',
+      tags: 'Emneknaggar',
       subjects: 'Favorittfag',
       profile: 'Profil',
       more: 'Meire',

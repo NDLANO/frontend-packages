@@ -1136,6 +1136,7 @@ const messages = {
     folders: '{{count}} máhpat',
     folders_plural: '{{count}} máhpat',
     settings: 'Válljemat',
+    showEditOptions: 'Čájet doaimmahanmolssaeavttuid',
     folder: {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
@@ -1229,7 +1230,6 @@ const messages = {
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',
-        showEditOptions: 'Čájet doaimmahanmolssaeavttuid',
         dropdownMenu: {
           report: 'Raportere čállosa moderatorii',
           edit: 'Doaimmat čállosa',

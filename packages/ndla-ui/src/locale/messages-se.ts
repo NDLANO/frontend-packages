@@ -1390,6 +1390,8 @@ const messages = {
         'Dás válljet jos iežat namma čájehuvvo juohkkedettiin máhpa. Dát molssaeaktu guoská buot máhpaide ja sáhttá rievdaduvvot maŋŋil. Jos rievdadat dán, de čájehuvvo du namma buot juogaduvvon máhpain.',
       editButtonText: 'Rievdat profiilagova',
       namePreference: {
+        onNameShown: 'Du namma čájehuvvo dál buot juogaduvvon máhpain',
+        onNameHidden: 'Du namma lea dál sihkojuvvon buot juogaduvvon máhpain',
         showName: 'Čájet mu nama máhpa juohkkedettiin',
         dontShowName: 'Ale čájet mu nama máhpa juohkkedettiin',
       },

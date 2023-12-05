@@ -1188,6 +1188,8 @@ const messages = {
           unShare: 'Orrijh juekedh',
           shareLink: 'Lïenghkem kopijeradidh',
         },
+        previewInformation:
+          'Mappavuesiehtimmie. Ij mubpieh maehtieh dam vuejnedh jis datne ih mappem mïerhkesjh goh juakeme.',
       },
     },
     arena: {

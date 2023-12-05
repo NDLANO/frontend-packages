@@ -40,7 +40,12 @@ export default {
           },
         ],
         processors: [],
-        rightsholders: [],
+        rightsholders: [
+          {
+            type: 'rightsholder',
+            name: 'NTB',
+          },
+        ],
         processed: false,
       },
       tags: {

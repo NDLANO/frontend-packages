@@ -1263,7 +1263,7 @@ const messages = {
         markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
         commentedOn: 'vaestiedi gåessie dov saarnoeh',
         subscribe: 'Datne åadtjoeh daelie bïeljelimmiem orre vaestiedassi bïjre daan tjaalegasse',
-        unsubscribe: 'Datne tjeakoeslaakan bïeljelamme jis orre vaestiedassh daan bieljelæmman',
+        unsubscribe: 'Datne tjeakoeslaakan bïeljelamme jis orre vaestiedassh daan påastese',
       },
       topicsBy: 'Vuesiehtimmien gaavhtan',
     },

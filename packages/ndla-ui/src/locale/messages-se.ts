@@ -1534,6 +1534,7 @@ const messages = {
   about: {
     menuTitle: 'NDLA birra',
   },
+  login: 'Čálit sisa',
 };
 
 export default messages;

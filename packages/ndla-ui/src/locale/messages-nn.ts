@@ -1258,6 +1258,8 @@ const messages = {
         myNotification: 'Mine varsler',
         markAll: 'Merk alle som lest',
         commentedOn: 'svarte på ditt innlegg',
+        subscribe: 'Du får no varsling om nye svar på dette innlegget',
+        unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
       },
       topicsBy: 'Innlegg av',
     },

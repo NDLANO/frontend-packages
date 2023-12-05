@@ -1186,7 +1186,8 @@ const messages = {
           unShare: 'Stop sharing',
           shareLink: 'Copy link',
         },
-        previewInformation: 'Folder preview. It is not available to others unless you mark the folder as shared.',
+        previewInformation:
+          'Preview of shared folder. The folder is not available to others unless you update its status to shared.',
       },
     },
     arena: {

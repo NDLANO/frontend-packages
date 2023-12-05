@@ -1184,7 +1184,8 @@ const messages = {
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
-        previewInformation: 'Forhåndsvisning av mappe. Den er ikke tilgjenglig for andre før du setter mappa som delt.',
+        previewInformation:
+          'Forhåndsvisning av delt mappe. Mappen vil ikke bli tilgjenglig for andre før du setter den som delt.',
       },
     },
     arena: {

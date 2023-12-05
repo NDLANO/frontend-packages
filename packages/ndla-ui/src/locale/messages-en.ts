@@ -1536,6 +1536,7 @@ const messages = {
   about: {
     menuTitle: 'About NDLA',
   },
+  login: 'Log in',
 };
 
 export default messages;

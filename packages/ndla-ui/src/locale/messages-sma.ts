@@ -1262,6 +1262,8 @@ const messages = {
         myNotification: 'Mov tjoejemolseme',
         markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
         commentedOn: 'vaestiedi gåessie dov saarnoeh',
+        subscribe: 'Datne åadtjoeh daelie bïeljelimmiem orre vaestiedassi bïjre daan tjaalegasse',
+        unsubscribe: 'Datne tjeakoeslaakan bïeljelamme jis orre vaestiedassh daan bieljelæmman',
       },
       topicsBy: 'Vuesiehtimmien gaavhtan',
     },

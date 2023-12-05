@@ -1260,6 +1260,8 @@ const messages = {
         myNotification: 'Mu signállat',
         markAll: 'Merke visot lohkon',
         commentedOn: 'vástidedje du sáhkavuoru',
+        subscribe: 'Don oaččut dál dieđu ođđa vástádusaid dán čállosii',
+        unsubscribe: 'Don leat heaitán muittuheames ođđa vástádusaid dán čállosii',
       },
       topicsBy: 'Sáhkavuorru maid',
     },

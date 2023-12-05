@@ -1260,6 +1260,8 @@ const messages = {
         myNotification: 'My notifications',
         markAll: 'Mark all as read',
         commentedOn: 'commented on your post',
+        subscribe: 'You will now be notified of new replies to this topic',
+        unsubscribe: 'You have turned off notification of new replies to this topic',
       },
       topicsBy: 'Topics by',
     },

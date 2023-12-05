@@ -65,8 +65,8 @@ const FolderItems = ({
       level === 0 && type === 'picker'
         ? treestructureId(type, 'popup')
         : parentFolder
-        ? treestructureId(type, `subfolders-${parentFolder.id}`)
-        : undefined
+          ? treestructureId(type, `subfolders-${parentFolder.id}`)
+          : undefined
     }
     tabIndex={-1}
     aria-labelledby={level === 0 && type === 'picker' ? treestructureId(type, 'label') : undefined}

@@ -59,7 +59,7 @@ const StyledArticle = styled.article`
 
 export const FrontpageArticle = ({ article, id, isWide, licenseBox, lang }: Props) => {
   const { height = 0 } = useMastheadHeight();
-  const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` } as unknown as CSSProperties), [height]);
+  const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` }) as unknown as CSSProperties, [height]);
   const { title, introduction, content } = article;
 
   if (isWide) {

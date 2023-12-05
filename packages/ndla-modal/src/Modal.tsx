@@ -157,7 +157,7 @@ export const ModalContent = ({
   ...rest
 }: ModalContentProps) => {
   const styledVars = useMemo(
-    () => ({ '--duration': `${animationDuration}ms` } as unknown as CSSProperties),
+    () => ({ '--duration': `${animationDuration}ms` }) as unknown as CSSProperties,
     [animationDuration],
   );
   const { size, height, width }: Record<string, string> = useMemo(() => {

@@ -40,7 +40,9 @@ const NavButton = styled('button')<{
   border: none;
   box-shadow: none;
   border-radius: 100px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
   transform: translate(0px, 0px, 1);
   position: absolute;
   bottom: 0;

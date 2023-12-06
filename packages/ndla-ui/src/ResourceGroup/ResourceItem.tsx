@@ -75,7 +75,9 @@ const ListElement = styled.li`
   }
 
   * {
-    transition: height ease-out 0.2s, width ease-out 0.2s;
+    transition:
+      height ease-out 0.2s,
+      width ease-out 0.2s;
   }
   &[data-active='true'] {
     &:before {

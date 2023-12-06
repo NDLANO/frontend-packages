@@ -22,10 +22,9 @@ const StyledFieldHeaderWrapper = styled.div<StyledFieldHeaderWrapperProps>`
   padding-bottom: ${spacing.xsmall};
   margin-top: ${spacing.normal};
   margin-bottom: ${spacing.small};
-  ${(props) =>
-    css`
-      width: ${props.wrapperWidth}%;
-    `};
+  ${(props) => css`
+    width: ${props.wrapperWidth}%;
+  `};
   > div {
     display: flex;
     flex-grow: 1;

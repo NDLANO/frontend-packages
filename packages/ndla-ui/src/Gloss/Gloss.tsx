@@ -10,31 +10,22 @@ import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing, misc, fonts } from '@ndla/core';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
-import { Transcription } from '../model/Transcriptions';
+import { IGlossData, IGlossExample } from '@ndla/types-backend/concept-api';
+import { useMemo } from 'react';
 import SpeechControl from '../AudioPlayer/SpeechControl';
-
-interface Example {
-  example: string;
-  language: string;
-  transcriptions: Transcription;
-}
 
 export interface Props {
   title: {
     title: string;
     language: string;
   };
-  glossData?: {
-    gloss: string;
-    wordClass?: string;
-    originalLanguage: string;
-    transcriptions: Transcription;
-    examples?: Example[][];
-  };
+  glossData?: IGlossData;
   audio?: {
     title: string;
     src?: string;
   };
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 const Container = styled.div`
@@ -100,8 +91,33 @@ const TranslatedText = styled.span`
   }
 `;
 
-const Gloss = ({ title, glossData, audio }: Props) => {
+const getFilteredExamples = (
+  glossData: IGlossData | undefined,
+  exampleIds: string | undefined,
+  exampleLangs: string | undefined,
+): IGlossExample[][] => {
+  if (exampleIds !== undefined || exampleLangs !== undefined) {
+    const exampleIdsList = exampleIds?.toString()?.split(',') ?? [];
+    const exampleLangsList = exampleLangs?.split(',') ?? [];
+
+    const filteredExamples =
+      glossData?.examples?.map((examples, i) => {
+        if (exampleIdsList.includes(i.toString())) {
+          return examples.filter((e) => exampleLangsList.includes(e.language));
+        } else return [];
+      }) ?? [];
+    const examplesWithoutEmpty = filteredExamples.filter((el) => !!el.length);
+    return examplesWithoutEmpty;
+  } else return glossData?.examples ?? [];
+};
+
+const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => {
   const { t } = useTranslation();
+
+  const filteredExamples = useMemo(
+    () => getFilteredExamples(glossData, exampleIds, exampleLangs),
+    [exampleIds, exampleLangs, glossData],
+  );
 
   return (
     <>
@@ -138,12 +154,12 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             </Wrapper>
             <span lang={title.language}>{title.title}</span>
           </Container>
-          {glossData.examples && glossData.examples.length > 0 && (
+          {filteredExamples.length > 0 && (
             <AccordionRoot type="single" collapsible>
               <AccordionItem value="1">
                 <StyledAccordionHeader headingLevel="span">{t('gloss.examples')}</StyledAccordionHeader>
                 <StyledAccordionContent>
-                  {glossData.examples.map((example, index) => (
+                  {filteredExamples.map((example, index) => (
                     <div key={index}>
                       {example.map((translation, innerIndex) => (
                         <div key={`${index}_${innerIndex}`}>

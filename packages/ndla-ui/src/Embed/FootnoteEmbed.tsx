@@ -19,7 +19,9 @@ const FootnoteRef = styled.span`
   &:target {
     background-color: ${colors.brand.greyLighter};
     padding: ${spacing.xxsmall} ${spacing.xsmall};
-    box-shadow: ${spacing.xsmall} 0 0 ${colors.brand.greyLighter}, -${spacing.xsmall} 0 0 ${colors.brand.greyLighter};
+    box-shadow:
+      ${spacing.xsmall} 0 0 ${colors.brand.greyLighter},
+      -${spacing.xsmall} 0 0 ${colors.brand.greyLighter};
   }
   sup {
     a {

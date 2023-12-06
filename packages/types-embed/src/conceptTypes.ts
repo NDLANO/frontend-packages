@@ -26,6 +26,8 @@ export interface ConceptEmbedData {
   type: 'block' | 'inline' | 'notion';
   linkText: string;
   pageUrl?: string;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 export type ConceptVisualElement =

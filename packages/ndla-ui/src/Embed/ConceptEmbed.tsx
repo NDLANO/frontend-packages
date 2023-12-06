@@ -123,6 +123,8 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
         conceptType={concept.conceptType}
         glossData={concept.glossData}
         lang={lang}
+        exampleIds={embed.embedData.exampleIds}
+        exampleLangs={embed.embedData.exampleLangs}
       />
     );
   } else if (embed.embedData.type === 'inline') {
@@ -302,6 +304,8 @@ interface ConceptProps extends ConceptNotionData {
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
   conceptHeartButton?: ReactElement;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 export const BlockConcept = ({
@@ -317,6 +321,8 @@ export const BlockConcept = ({
   glossData,
   conceptType,
   lang,
+  exampleIds,
+  exampleLangs,
 }: ConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -418,6 +424,8 @@ export const BlockConcept = ({
                 ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
                 : undefined
             }
+            exampleIds={exampleIds}
+            exampleLangs={exampleLangs}
           />
         )}
         {copyright && conceptType === 'concept' && (

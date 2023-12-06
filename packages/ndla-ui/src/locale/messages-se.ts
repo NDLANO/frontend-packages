@@ -1187,7 +1187,7 @@ const messages = {
           shareLink: 'Máŋge liŋkka',
         },
         previewInformation:
-          'Juohkejuvvon máhpa ovdačájeheapmi Earáid geavaheaddjit eai sáhte geavahit máhpa earágo don ođasmahttát dan stáhtusa juohkehažžii.',
+          'Juohkejuvvon máhpa ovdačájeheapmi. Máhppa ii leat earáid olámuttos ovdal go ođasmahttá stáhtusa juohkehažžii.',
       },
     },
     arena: {

@@ -1187,7 +1187,7 @@ const messages = {
           shareLink: 'Copy link',
         },
         previewInformation:
-          'Preview of shared folder. The folder is not available to others unless you update its status to shared.',
+          'Preview of shared folder. The folder is not available to others until you update its status to shared.',
       },
     },
     arena: {

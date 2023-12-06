@@ -1189,7 +1189,7 @@ const messages = {
           shareLink: 'Lïenghkem kopijeradidh',
         },
         previewInformation:
-          'Åvtevuesiehtimmie juakeme maabpeste. Mappem eah jeatjah åadtjoeh jis ih dan staatuse bæjhkohth jis sïjhth dam juekedh.',
+          'Åvtevuesiehtimmie juakeme maabpeste. Jeatjah eah maahta maabpam nåhtadidh åvtelen datne statusen bïjre orresth.',
       },
     },
     arena: {

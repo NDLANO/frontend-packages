@@ -1259,7 +1259,7 @@ const messages = {
         markAll: 'Merk alle som lest',
         subscribe: 'Du får nå varsling om nye svar på dette innlegget',
         unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
-        commentedOn: 'tjeakoes laakan vaestiedamme {{title}} maam datne dåarjoehtidh',
+        commentedOn: 'svarte på innlegget {{title}} som du følger',
       },
       topicsBy: 'Innlegg av',
     },

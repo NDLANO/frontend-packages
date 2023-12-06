@@ -1186,6 +1186,8 @@ const messages = {
           unShare: 'Loahpat juogdeami',
           shareLink: 'Máŋge liŋkka',
         },
+        previewInformation:
+          'Juohkejuvvon máhpa ovdačájeheapmi. Máhppa ii leat earáid olámuttos ovdal go ođasmahttá stáhtusa juohkehažžii.',
       },
     },
     arena: {

@@ -1186,6 +1186,8 @@ const messages = {
           unShare: 'Stop sharing',
           shareLink: 'Copy link',
         },
+        previewInformation:
+          'Preview of shared folder. The folder is not available to others until you update its status to shared.',
       },
     },
     arena: {

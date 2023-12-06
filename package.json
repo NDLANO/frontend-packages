@@ -17,7 +17,7 @@
     "clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist ./packages/*/tsconfig.build.tsbuildinfo",
     "deploy-pr": "node ./packages/ndla-scripts/src/run-script.js vercel-github",
     "bootstrap": "yarn nx run-many --target build prepublish",
-    "bootstrap:ci": "yarn && yarn nx run-many --target build prepublish --skip-nx-cache",
+    "bootstrap:ci": "yarn nx run-many --target build prepublish --skip-nx-cache",
     "publish": "yarn clean && yarn bootstrap:ci && lerna publish",
     "watch:src": "node ./scripts/watch.js",
     "watch:tsc": "nx watch --all -- nx prepublish \\$NX_PROJECT_NAME",

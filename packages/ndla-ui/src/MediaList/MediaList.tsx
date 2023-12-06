@@ -104,7 +104,7 @@ interface MediaListCCLinkProps {
   url: string;
 }
 export const MediaListCCLink = ({ children, url }: MediaListCCLinkProps) => (
-  <a className="c-figure-license__link" target="_blank" rel="noopener noreferrer license" href={url}>
+  <a rel="noopener noreferrer license" href={url}>
     {children}
   </a>
 );

@@ -9,6 +9,7 @@
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
+import { Heading } from '@ndla/typography';
 import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
 import {
@@ -18,7 +19,7 @@ import {
   ResourceTitleLink,
   LoaderProps,
   ContentIconWrapper,
-  ResourceHeadingStyle,
+  resourceHeadingStyle,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
@@ -184,9 +185,9 @@ const BlockResource = ({
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
             <ResourceTitleLink data-link="" title={title} target={targetBlank ? '_blank' : undefined} to={link}>
-              <ResourceHeadingStyle element="h2" headingStyle="h4">
+              <Heading element="h2" headingStyle="h4" css={resourceHeadingStyle}>
                 {title}
-              </ResourceHeadingStyle>
+              </Heading>
             </ResourceTitleLink>
           </ResourceTypeAndTitleLoader>
           <ResourceTypeList resourceTypes={resourceTypes} />

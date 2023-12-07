@@ -14,7 +14,7 @@ import { IconButtonV2 } from '@ndla/button';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import { HashTag } from '@ndla/icons/common';
 import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown-menu';
-import { Heading } from '@ndla/typography';
+import { css } from '@emotion/react';
 import resourceTypeColor from '../utils/resourceTypeColor';
 import { resourceEmbedTypeMapping } from '../model/ContentType';
 
@@ -42,7 +42,7 @@ const StyledTrigger = styled(IconButtonV2)`
   margin: 0px ${spacing.xsmall};
 `;
 
-export const ResourceHeadingStyle = styled(Heading)`
+export const resourceHeadingStyle = css`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;

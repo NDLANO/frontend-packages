@@ -9,11 +9,12 @@
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
+import { Heading } from '@ndla/typography';
 import Image from '../Image';
 import {
   CompressedTagList,
   ResourceImageProps,
-  ResourceHeadingStyle,
+  resourceHeadingStyle,
   ResourceTitleLink as StyledLink,
   ResourceTypeList,
   LoaderProps,
@@ -239,9 +240,9 @@ const ListResource = ({
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink to={link} data-link="" target={targetBlank ? '_blank' : undefined}>
-            <ResourceHeadingStyle element="h2" headingStyle="h4" title={title}>
+            <Heading element="h2" headingStyle="h4" css={resourceHeadingStyle} title={title}>
               {title}
-            </ResourceHeadingStyle>
+            </Heading>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>

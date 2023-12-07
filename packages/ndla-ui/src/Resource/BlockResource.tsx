@@ -18,7 +18,7 @@ import {
   ResourceTitleLink,
   LoaderProps,
   ContentIconWrapper,
-  resourceHeadingStyle,
+  ResourceHeadingStyle,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
@@ -146,7 +146,6 @@ interface Props {
   resourceImage: ResourceImageProps;
   tags?: string[];
   description?: string;
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   menu?: ReactNode;
   isLoading?: boolean;
   targetBlank?: boolean;
@@ -163,7 +162,6 @@ const BlockResource = ({
   description,
   menu,
   isLoading,
-  headingLevel: Heading = 'h2',
   targetBlank,
   resourceTypes,
 }: Props) => {
@@ -186,7 +184,9 @@ const BlockResource = ({
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
             <ResourceTitleLink data-link="" title={title} target={targetBlank ? '_blank' : undefined} to={link}>
-              <Heading css={resourceHeadingStyle}>{title}</Heading>
+              <ResourceHeadingStyle element="h2" headingStyle="h4">
+                {title}
+              </ResourceHeadingStyle>
             </ResourceTitleLink>
           </ResourceTypeAndTitleLoader>
           <ResourceTypeList resourceTypes={resourceTypes} />

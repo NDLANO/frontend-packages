@@ -13,7 +13,7 @@ import Image from '../Image';
 import {
   CompressedTagList,
   ResourceImageProps,
-  resourceHeadingStyle,
+  ResourceHeadingStyle,
   ResourceTitleLink as StyledLink,
   ResourceTypeList,
   LoaderProps,
@@ -239,9 +239,9 @@ const ListResource = ({
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink to={link} data-link="" target={targetBlank ? '_blank' : undefined}>
-            <h1 css={resourceHeadingStyle} title={title}>
+            <ResourceHeadingStyle element="h2" headingStyle="h4" title={title}>
               {title}
-            </h1>
+            </ResourceHeadingStyle>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>

@@ -13,8 +13,8 @@ import { useTranslation } from 'react-i18next';
 import { IconButtonV2 } from '@ndla/button';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import { HashTag } from '@ndla/icons/common';
-import { css } from '@emotion/react';
 import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown-menu';
+import { Heading } from '@ndla/typography';
 import resourceTypeColor from '../utils/resourceTypeColor';
 import { resourceEmbedTypeMapping } from '../model/ContentType';
 
@@ -42,11 +42,10 @@ const StyledTrigger = styled(IconButtonV2)`
   margin: 0px ${spacing.xsmall};
 `;
 
-export const resourceHeadingStyle = css`
+export const ResourceHeadingStyle = styled(Heading)`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: ${fonts.weight.bold};
   // Unfortunate css needed for multi-line text overflow ellipsis.
   line-height: 1;
   display: -webkit-box;
@@ -54,7 +53,6 @@ export const resourceHeadingStyle = css`
   line-clamp: 1;
   -webkit-box-orient: vertical;
   grid-area: resourceTitle;
-  ${fonts.sizes('16px', '20px')};
 `;
 
 const StyledTagList = styled.ul`

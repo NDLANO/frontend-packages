@@ -27,9 +27,6 @@ export default {
     resourceTypes: {
       control: false,
     },
-    headingLevel: {
-      control: false,
-    },
     menu: {
       control: false,
     },

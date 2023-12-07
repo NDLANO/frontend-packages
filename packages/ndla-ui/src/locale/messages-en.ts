@@ -1139,7 +1139,9 @@ const messages = {
     folder: {
       folder: 'Folder',
       delete: 'Delete folder',
+      deleteShort: 'Delete',
       edit: 'Edit folder',
+      editShort: 'Edit',
       copy: 'Copy folder',
       open: 'Open folder',
       close: 'Close folder',
@@ -1181,7 +1183,9 @@ const messages = {
         },
         button: {
           share: 'Share folder',
+          shareShort: 'Share',
           preview: 'Preview folder',
+          previewShort: 'Preview',
           goTo: 'Go to shared folder',
           unShare: 'Stop sharing',
           shareLink: 'Copy link',
@@ -1287,6 +1291,7 @@ const messages = {
     myTags: 'My tags',
     mySubjects: 'My subjects',
     newFolder: 'New folder',
+    newFolderShort: 'New',
     newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
     favourites: 'Favourites',

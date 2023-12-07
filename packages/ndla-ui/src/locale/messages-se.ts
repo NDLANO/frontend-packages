@@ -1140,7 +1140,9 @@ const messages = {
     folder: {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
+      deleteShort: 'Sihko',
       edit: 'Rievdat máhpa',
+      editShort: 'Rievdat',
       copy: 'Máŋge máhpa',
       open: 'Raba máhpa',
       close: 'Gidde máhpa',
@@ -1181,7 +1183,9 @@ const messages = {
         },
         button: {
           share: 'Juoge máhpa',
-          preview: 'Čájet ovdagihtii juogaduvvon máhpa',
+          shareShort: 'Juoge',
+          preview: 'Ovdačájehanmáhppa',
+          previewShort: 'Ovdačájeheapmi',
           goTo: 'Mana juogaduvvon máhppii',
           unShare: 'Loahpat juogdeami',
           shareLink: 'Máŋge liŋkka',
@@ -1286,6 +1290,7 @@ const messages = {
     myTags: 'Mu fáddágilkorat',
     mySubjects: 'Mu fágat',
     newFolder: 'Ođđa máhppa',
+    newFolderShort: 'Ođđa',
     newFolderUnder: 'Ráhkat ođđa máhpa dán vuolde {{folderName}}',
     myAccount: 'Mu kontu',
     favourites: 'Oiddohat',

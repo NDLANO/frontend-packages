@@ -102,7 +102,11 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
                   <ContextListItem key={context.url}>
                     <SafeLink to={context.url}>{title}</SafeLink>
                     <Breadcrumb breadcrumb={context.breadcrumb}>
-                      {context.isAdditional ? <Additional style={iconStyle} /> : <Core style={iconStyle} />}
+                      {context.isAdditional ? (
+                        <Additional style={iconStyle} color={colors.brand.dark} />
+                      ) : (
+                        <Core style={iconStyle} color={colors.brand.primary} />
+                      )}
                     </Breadcrumb>
                   </ContextListItem>
                 ))}

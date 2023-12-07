@@ -155,17 +155,18 @@ const StyledButtonWrapper = styled.div`
   }
 `;
 
-const AdditionalIcon = styled(Additional)`
+const StyledAdditional = styled(Additional)`
+  color: ${colors.brand.dark};
   height: ${spacing.normal};
   width: ${spacing.normal};
   padding: 1px;
 `;
 
 const StyledContentWrapper = styled.div`
-  padding-top: ${spacing.normal};
+  background-color: ${colors.white};
   border-left: 6px solid ${colors.brand.light};
   color: ${colors.text.primary};
-  background-color: ${colors.white};
+  padding-top: ${spacing.normal};
 `;
 
 const StyledModalHeader = styled(ModalHeader)`
@@ -259,7 +260,7 @@ const Topic = ({
             </Heading>
             {isAdditionalTopic && (
               <>
-                <AdditionalIcon aria-hidden="true" />
+                <StyledAdditional aria-hidden="true" />
                 <span>{t('navigation.additionalTopic')}</span>
               </>
             )}

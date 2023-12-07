@@ -1156,7 +1156,7 @@ const messages = {
       onDragEndMissingOver: 'Mappen {{name}} ble sluppet',
       onDragCancel: 'Flytting avbrutt. Mappen {{name}} ble sluppet',
       dragHandle: 'Sorter mappen {{name}}',
-      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med',
+      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med.',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',

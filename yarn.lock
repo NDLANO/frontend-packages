@@ -2591,7 +2591,7 @@ __metadata:
     "@ndla/code": "npm:^5.0.19"
     "@ndla/types-backend": "npm:^0.2.21"
     "@ndla/types-embed": "npm:^4.0.8"
-    "@ndla/ui": "npm:^50.2.0"
+    "@ndla/ui": "npm:^50.2.1"
     html-react-parser: "npm:^4.2.2"
     lodash: "npm:^4.17.20"
   peerDependencies:
@@ -2767,7 +2767,7 @@ __metadata:
     "@ndla/modal": "npm:^5.0.15"
     "@ndla/notion": "npm:^6.0.16"
     "@ndla/tooltip": "npm:^6.0.5"
-    "@ndla/ui": "npm:^50.2.0"
+    "@ndla/ui": "npm:^50.2.1"
     "@ndla/util": "npm:^4.0.1"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2803,7 +2803,7 @@ __metadata:
     "@ndla/icons": "npm:^4.2.2"
     "@ndla/pager": "npm:^2.2.40"
     "@ndla/types-backend": "npm:^0.2.21"
-    "@ndla/ui": "npm:^50.2.0"
+    "@ndla/ui": "npm:^50.2.1"
     "@ndla/util": "npm:^4.0.1"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
@@ -2830,7 +2830,7 @@ __metadata:
   dependencies:
     "@ndla/core": "npm:^4.2.7"
     "@ndla/icons": "npm:^4.2.2"
-    "@ndla/ui": "npm:^50.2.0"
+    "@ndla/ui": "npm:^50.2.1"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -3022,7 +3022,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^50.2.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^50.2.1, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:

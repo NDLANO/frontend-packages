@@ -46,8 +46,8 @@ const AddFolderButton = ({
   const tooltip = loading
     ? t('loading')
     : canAddFolder
-    ? t('myNdla.newFolderUnder', { folderName: focusedFolder?.name })
-    : t('treeStructure.maxFoldersAlreadyAdded');
+      ? t('myNdla.newFolderUnder', { folderName: focusedFolder?.name })
+      : t('treeStructure.maxFoldersAlreadyAdded');
   return (
     <Tooltip tooltip={tooltip}>
       <StyledAddFolderButton

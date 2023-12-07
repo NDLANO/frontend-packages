@@ -163,7 +163,7 @@ const FolderItem = ({
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const selected = selectedFolder ? selectedFolder.id === id : false;
 
-  const levelVariable = useMemo(() => ({ '--level': level } as unknown as CSSProperties), [level]);
+  const levelVariable = useMemo(() => ({ '--level': level }) as unknown as CSSProperties, [level]);
 
   const focused = focusedFolder?.id === id;
 

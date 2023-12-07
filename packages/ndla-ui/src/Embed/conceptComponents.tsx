@@ -48,6 +48,8 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
   headerButtons?: ReactNode;
   heartButton?: HeartButtonType;
   conceptHeartButton?: ReactNode;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 const NotionDialogText = styled.div`
@@ -181,6 +183,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       glossData,
       headerButtons,
       lang,
+      exampleIds,
+      exampleLangs,
       ...rest
     },
     ref,
@@ -246,6 +250,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                   ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
                   : undefined
               }
+              exampleIds={exampleIds}
+              exampleLangs={exampleLangs}
             />
           )}
         </ContentPadding>

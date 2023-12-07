@@ -180,7 +180,7 @@ const ContactBlock = ({
               />
             </LinkWrapper>
             <span>
-              {`${t('photo')}: ${authors.reduce((acc, name) => (acc = `${acc} ${name?.name}`), '')} `}
+              {`${t('embed.type.image')}: ${authors.map((author) => `${author?.name}`).join(', ')} `}
               {!!license && <LicenseLink license={license} asLink={!!license.url.length} />}
             </span>
           </>

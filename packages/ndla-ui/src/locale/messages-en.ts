@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { subjectCategories, subjectTypes, wordClass, Transcriptions } = constants;
+export const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -907,7 +907,9 @@ const messages = {
     folder: {
       folder: 'Folder',
       delete: 'Delete folder',
+      deleteShort: 'Delete',
       edit: 'Edit folder',
+      editShort: 'Edit',
       copy: 'Copy folder',
       open: 'Open folder',
       close: 'Close folder',
@@ -949,11 +951,15 @@ const messages = {
         },
         button: {
           share: 'Share folder',
+          shareShort: 'Share',
           preview: 'Preview folder',
+          previewShort: 'Preview',
           goTo: 'Go to shared folder',
           unShare: 'Stop sharing',
           shareLink: 'Copy link',
         },
+        previewInformation:
+          'Preview of shared folder. The folder is not available to others until you update its status to shared.',
       },
     },
     arena: {
@@ -1027,7 +1033,9 @@ const messages = {
           'Welcome to NDLA Arena. Here you can discuss, share and cooperate with other teachers from all of Norway. You will find forums for the different subjects and themes.',
         myNotification: 'My notifications',
         markAll: 'Mark all as read',
-        commentedOn: 'commented on your post',
+        subscribe: 'You will now be notified of new replies to this topic',
+        unsubscribe: 'You have turned off notification of new replies to this topic',
+        commentedOn: 'commented on the post {{title}} which you follow',
       },
       topicsBy: 'Topics by',
     },
@@ -1051,6 +1059,7 @@ const messages = {
     myTags: 'My tags',
     mySubjects: 'My subjects',
     newFolder: 'New folder',
+    newFolderShort: 'New',
     newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
     favourites: 'Favourites',
@@ -1140,6 +1149,8 @@ const messages = {
         'Here you can choose whether you want to display your name when you share a folder. The selected option applies to all your folders and can be changed later. If you later change the option, your name will appear on all your shared folders.',
       editButtonText: 'Change profile picture',
       namePreference: {
+        onNameShown: 'Your name is now shown on all of your shared folders',
+        onNameHidden: 'Your name is now removed from all of your shared folders',
         showName: 'Show my name when I share a folder',
         dontShowName: 'Do not show my name when I share a folder',
       },
@@ -1278,6 +1289,7 @@ const messages = {
   about: {
     menuTitle: 'About NDLA',
   },
+  login: 'Log in',
 };
 
 export default messages;

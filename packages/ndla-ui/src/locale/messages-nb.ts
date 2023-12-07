@@ -907,7 +907,9 @@ const messages = {
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
+      deleteShort: 'Slett',
       edit: 'Rediger mappe',
+      editShort: 'Rediger',
       copy: 'Kopier mappe',
       open: 'Åpne mappe',
       close: 'Lukk mappe',
@@ -948,11 +950,15 @@ const messages = {
         },
         button: {
           share: 'Del mappe',
+          shareShort: 'Del',
           preview: 'Forhåndsvis mappe',
+          previewShort: 'Forhåndsvis',
           goTo: 'Gå til delt mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
         },
+        previewInformation:
+          'Forhåndsvisning av delt mappe. Mappa blir ikke tilgjengelig for andre før du setter den som delt.',
       },
     },
     arena: {
@@ -1026,13 +1032,15 @@ const messages = {
           'Velkommen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærere fra hele Norge. Du finner forum for ulike fag og tema.',
         myNotification: 'Mine varsler',
         markAll: 'Merk alle som lest',
-        commentedOn: 'svarte på ditt innlegg',
+        subscribe: 'Du får nå varsling om nye svar på dette innlegget',
+        unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
+        commentedOn: 'svarte på innlegget {{title}} som du følger',
       },
       topicsBy: 'Innlegg av',
     },
     iconMenu: {
       folders: 'Mapper',
-      tags: 'Knagger',
+      tags: 'Emneknagger',
       subjects: 'Favorittfag',
       profile: 'Profil',
       more: 'Mer',
@@ -1049,6 +1057,7 @@ const messages = {
     myTags: 'Mine emneknagger',
     mySubjects: 'Mine fag',
     newFolder: 'Ny mappe',
+    newFolderShort: 'Ny',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favoritter',
@@ -1141,6 +1150,8 @@ const messages = {
         'Her kan du selv velge om du vil vise navnet ditt når du deler en mappe. Valget gjelder for alle mappene dine og kan endres senere. Dersom du endrer vil navnet ditt vises på alle dine delte mapper.',
       editButtonText: 'Endre profilbilde',
       namePreference: {
+        onNameShown: 'Navnet ditt vises nå på alle dine delte mapper',
+        onNameHidden: 'Navnet ditt er nå fjernet fra alle dine delte mapper',
         showName: 'Vis navnet mitt når jeg deler en mappe',
         dontShowName: 'Ikke vis navnet mitt når jeg deler mappe',
       },
@@ -1279,6 +1290,7 @@ const messages = {
   about: {
     menuTitle: 'Om NDLA',
   },
+  login: 'Logg inn',
 };
 
 export default messages;

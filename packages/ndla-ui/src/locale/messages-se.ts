@@ -1267,7 +1267,7 @@ const messages = {
         markAll: 'Merke visot lohkon',
         subscribe: 'Don oaččut dál dieđu ođđa vástádusaid dán čállosii',
         unsubscribe: 'Don leat heaitán muittuheames ođđa vástádusaid dán čállosii',
-        commentedOn: 'vástidii sáhkavuoru {{title}} maid don čuovvut',
+        commentedOn: 'vástidii sáhkavuoru <i>{{title}}</i> maid don čuovvut',
       },
       topicsBy: 'Sáhkavuorru maid',
     },

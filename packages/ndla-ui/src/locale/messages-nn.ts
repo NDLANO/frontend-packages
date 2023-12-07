@@ -1265,7 +1265,7 @@ const messages = {
         markAll: 'Merk alle som lest',
         subscribe: 'Du får no varsling om nye svar på dette innlegget',
         unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
-        commentedOn: 'svarte på innlegget {{title}} som du følger',
+        commentedOn: 'svarte på innlegget <i>{{title}}</i> som du følger',
       },
       topicsBy: 'Innlegg av',
     },

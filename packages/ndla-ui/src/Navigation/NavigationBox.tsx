@@ -61,6 +61,14 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   margin-bottom: 0;
   break-inside: avoid;
+
+  &[data-direction='floating'] {
+    display: inline-block;
+    margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
+    ${mq.range({ until: breakpoints.mobileWide })} {
+      display: block;
+    }
+  }
 `;
 
 const StyledSpacingElement = styled.span`
@@ -166,7 +174,7 @@ type Props = {
   onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
-  listDirection?: 'horizontal';
+  listDirection?: 'horizontal' | 'floating';
   invertedStyle?: boolean;
   onToggleAdditionalResources?: (checked: boolean) => void;
 };
@@ -243,7 +251,7 @@ export const NavigationBox = ({
                 </StyledButtonContent>
               </ListElementType>
             </StyledListElementWrapper>
-            <StyledSpacingElement />
+            {listDirection !== 'floating' && <StyledSpacingElement />}
           </StyledListItem>
         ))}
       </StyledList>

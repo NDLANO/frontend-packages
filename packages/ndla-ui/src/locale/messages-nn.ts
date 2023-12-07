@@ -1138,7 +1138,9 @@ const messages = {
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
+      deleteShort: 'Slett',
       edit: 'Rediger mappe',
+      editShort: 'Rediger',
       copy: 'Kopier mappe',
       open: 'Åpne mappe',
       close: 'Lukk mappe',
@@ -1179,7 +1181,9 @@ const messages = {
         },
         button: {
           share: 'Del mappe',
+          shareShort: 'Del',
           preview: 'Førehandsvis mappe',
+          previewShort: 'Førehandsvis',
           goTo: 'Gå til delt mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
@@ -1284,6 +1288,7 @@ const messages = {
     myTags: 'Mine emneknaggar',
     mySubjects: 'Mine fag',
     newFolder: 'Ny mappe',
+    newFolderShort: 'Ny',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favorittar',

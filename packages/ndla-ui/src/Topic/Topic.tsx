@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
 import { Text, Heading } from '@ndla/typography';
 
-import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
+import { Additional, ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { ButtonV2 } from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
@@ -24,10 +24,6 @@ import { NavigationBox } from '../Navigation';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
 import { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
-
-type InvertItProps = {
-  invertedStyle?: boolean;
-};
 
 const Wrapper = styled.div`
   display: flex;
@@ -144,33 +140,28 @@ const HeadingWrapper = styled.hgroup`
   }
 `;
 
-const StyledButtonWrapper = styled.div<InvertItProps>`
+const StyledButtonWrapper = styled.div`
   margin-top: ${spacing.small};
   padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
   border-left: 6px solid ${colors.brand.light};
-  ${(props) =>
-    props.invertedStyle &&
-    css`
-      button {
+  $[data-inverted='true] {
+    button {
+      color: #fff;
+      &:hover,
+      &:focus {
         color: #fff;
-        &:hover,
-        &:focus {
-          color: #fff;
-        }
       }
-    `}
+    }
+  }
 `;
 
-const AdditionalIcon = styled.span`
+const AdditionalIcon = styled(Additional)`
+  height: ${spacing.normal};
+  width: ${spacing.normal};
   padding: 1px;
-  border: 1px solid currentColor;
-  border-radius: 100%;
-  font-size: 15px;
-  width: 25px;
-  text-align: center;
 `;
 
-const StyledContentWrapper = styled.div<InvertItProps>`
+const StyledContentWrapper = styled.div`
   padding-top: ${spacing.normal};
   border-left: 6px solid ${colors.brand.light};
   color: ${colors.text.primary};
@@ -268,7 +259,7 @@ const Topic = ({
             </Heading>
             {isAdditionalTopic && (
               <>
-                <AdditionalIcon aria-hidden="true">T</AdditionalIcon>
+                <AdditionalIcon aria-hidden="true" />
                 <span>{t('navigation.additionalTopic')}</span>
               </>
             )}
@@ -320,7 +311,7 @@ const Topic = ({
       {messageBox && <MessageBox>{messageBox}</MessageBox>}
       <div>
         {onToggleShowContent && (
-          <StyledButtonWrapper invertedStyle={invertedStyle}>
+          <StyledButtonWrapper data-inverted={invertedStyle}>
             <ButtonV2
               aria-expanded={!!showContent}
               aria-controls={contentId}
@@ -339,11 +330,7 @@ const Topic = ({
             </ButtonV2>
           </StyledButtonWrapper>
         )}
-        {showContent && (
-          <StyledContentWrapper id={contentId} invertedStyle={invertedStyle}>
-            {children}
-          </StyledContentWrapper>
-        )}
+        {showContent && <StyledContentWrapper id={contentId}>{children}</StyledContentWrapper>}
       </div>
       {subTopics && subTopics.length !== 0 && (
         <NavigationBox

@@ -69,7 +69,9 @@ const StyledPre = styled.pre`
   code {
     display: block;
     ${fonts.sizes('14px', '20px')};
-    font-family: Source Code Pro, Monaco;
+    font-family:
+      Source Code Pro,
+      Monaco;
     margin: 0;
     padding: 0;
     white-space: pre;

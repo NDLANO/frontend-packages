@@ -1136,6 +1136,7 @@ const messages = {
     folders: '{{count}} máhpat',
     folders_plural: '{{count}} máhpat',
     settings: 'Válljemat',
+    showEditOptions: 'Čájet doaimmahanmolssaeavttuid',
     folder: {
       folder: 'Máhppa',
       delete: 'Sihko máhpa',
@@ -1185,6 +1186,8 @@ const messages = {
           unShare: 'Loahpat juogdeami',
           shareLink: 'Máŋge liŋkka',
         },
+        previewInformation:
+          'Juohkejuvvon máhpa ovdačájeheapmi. Máhppa ii leat earáid olámuttos ovdal go ođasmahttá stáhtusa juohkehažžii.',
       },
     },
     arena: {
@@ -1229,7 +1232,6 @@ const messages = {
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',
-        showEditOptions: 'Čájet doaimmahanmolssaeavttuid',
         dropdownMenu: {
           report: 'Raportere čállosa moderatorii',
           edit: 'Doaimmat čállosa',
@@ -1259,16 +1261,18 @@ const messages = {
           'Bures boahtin NDLA Arenai. Dáppe sáhtát digaštallat, juogadit ja ovttasbargat eará oahpaheddjiiguin olles Norggas. Sierra fágaide ja fáttáide gávdnojit forumat.',
         myNotification: 'Mu signállat',
         markAll: 'Merke visot lohkon',
-        commentedOn: 'vástidedje du sáhkavuoru',
+        subscribe: 'Don oaččut dál dieđu ođđa vástádusaid dán čállosii',
+        unsubscribe: 'Don leat heaitán muittuheames ođđa vástádusaid dán čállosii',
+        commentedOn: 'vástidii sáhkavuoru {{title}} maid don čuovvut',
       },
       topicsBy: 'Sáhkavuorru maid',
     },
     iconMenu: {
-      folders: 'Mapper',
-      tags: 'Knagger',
-      subjects: 'Favorittfag',
+      folders: 'Máhpat',
+      tags: 'Fáddágihpirat',
+      subjects: 'Favorihttafága',
       profile: 'Profiila',
-      more: 'Mer',
+      more: 'Eanet',
     },
     tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',
@@ -1390,6 +1394,8 @@ const messages = {
         'Dás válljet jos iežat namma čájehuvvo juohkkedettiin máhpa. Dát molssaeaktu guoská buot máhpaide ja sáhttá rievdaduvvot maŋŋil. Jos rievdadat dán, de čájehuvvo du namma buot juogaduvvon máhpain.',
       editButtonText: 'Rievdat profiilagova',
       namePreference: {
+        onNameShown: 'Du namma čájehuvvo dál buot juogaduvvon máhpain',
+        onNameHidden: 'Du namma lea dál sihkojuvvon buot juogaduvvon máhpain',
         showName: 'Čájet mu nama máhpa juohkkedettiin',
         dontShowName: 'Ale čájet mu nama máhpa juohkkedettiin',
       },
@@ -1530,6 +1536,7 @@ const messages = {
   about: {
     menuTitle: 'NDLA birra',
   },
+  login: 'Čálit sisa',
 };
 
 export default messages;

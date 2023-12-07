@@ -132,7 +132,7 @@ const StyledContentIconWrapper = styled.span`
 
 export const ContentIconWrapper = ({ contentType, children, ...props }: ContentIconProps) => {
   const contentIconWrapperVars = useMemo(
-    () => ({ '--content-background-color': resourceTypeColor(contentType) } as unknown as CSSProperties),
+    () => ({ '--content-background-color': resourceTypeColor(contentType) }) as unknown as CSSProperties,
     [contentType],
   );
   return (

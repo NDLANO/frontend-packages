@@ -1138,6 +1138,7 @@ const messages = {
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
     settings: 'Instillinger',
+    showEditOptions: 'Vuesehth guktie edtja øørnedh',
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
@@ -1187,6 +1188,8 @@ const messages = {
           unShare: 'Orrijh juekedh',
           shareLink: 'Lïenghkem kopijeradidh',
         },
+        previewInformation:
+          'Åvtevuesiehtimmie juakeme maabpeste. Jeatjah eah maahta maabpam nåhtadidh åvtelen datne statusen bïjre orresth.',
       },
     },
     arena: {
@@ -1231,7 +1234,6 @@ const messages = {
       },
       posts: {
         notify: 'Bïeljelh mejtie orre vaestiedassh',
-        showEditOptions: 'Vuesehth guktie edtja øørnedh',
         dropdownMenu: {
           report: 'Reekth håalemem moderatovrese',
           edit: 'Jarkelimmie håalemistie',
@@ -1261,16 +1263,18 @@ const messages = {
           'Buerie båeteme NDLA Aernesne . Daesnie maahtah digkiedidh , juekedh jïh laavenjostedh jeatjah lohkehtæjjajgujmie abpe Nöörjeste . Datne gaavnh forume, ovmessie faagh jïh aamhtesh .',
         myNotification: 'Mov tjoejemolseme',
         markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
-        commentedOn: 'vaestiedi gåessie dov saarnoeh',
+        subscribe: 'Datne åadtjoeh daelie bïeljelimmiem orre vaestiedassi bïjre daan tjaalegasse',
+        unsubscribe: 'Datne tjeakoeslaakan bïeljelamme jis orre vaestiedassh daan påastese',
+        commentedOn: 'tjeakoes laakan vaestiedamme {{title}} maam datne dåarjoehtidh',
       },
       topicsBy: 'Vuesiehtimmien gaavhtan',
     },
     iconMenu: {
-      folders: 'Mapper',
-      tags: 'Knagger',
-      subjects: 'Favorittfag',
+      folders: 'Maabpah',
+      tags: 'Aamhtesegaevnieh',
+      subjects: 'Lïhkemes faage',
       profile: 'Profijle',
-      more: 'Mer',
+      more: 'Jienebh',
     },
     tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',
@@ -1394,6 +1398,8 @@ const messages = {
         'Daesnie jïjtje veeljh mejtie sïjhth dov nommem vuesiehtidh gosse maabpam juekedh . Daate veeljeme lea gaajhkine dov maabpojne, jïh maahta dam mænngan jarkelidh. Jis jeatjahdahtah , dov nomme sæjhta våajnoes årrodh gaajhkine dov joekedamme maabpojne.',
       editButtonText: 'Naemhtie profijleguvviem jarkelidh',
       namePreference: {
+        onNameShown: 'Dov nomme daelie gaajhkine juakeme maabpine vååjnoe',
+        onNameHidden: 'Dov nomme lea daelie strihkesovveme gaajhkijste mappijste mejtie juakeme',
         showName: 'Vuesehth mov nommem gosse maabpam juekieh',
         dontShowName: 'Aellieh mov nommem vuesehth gosse maabpam juekieh',
       },
@@ -1534,6 +1540,7 @@ const messages = {
   about: {
     menuTitle: 'Om NDLA',
   },
+  login: 'Tjaangh sïjse',
 };
 
 export default messages;

@@ -156,9 +156,7 @@ const ActiveFilters = ({
           </Tooltip>
         </StyledActiveFilterWrapper>
       )}
-      {customElements?.map((item, index) => (
-        <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>
-      ))}
+      {customElements?.map((item, index) => <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>)}
     </StyledActiveFilters>
   );
 };

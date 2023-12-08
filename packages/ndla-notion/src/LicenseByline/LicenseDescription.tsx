@@ -7,8 +7,8 @@
  */
 
 import { ReactNode } from 'react';
-import { colors, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';
 import StyledLicenseByline from './StyledLicenseByline';
 

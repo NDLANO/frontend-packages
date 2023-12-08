@@ -8,14 +8,14 @@
 
 import { KeyboardEvent, forwardRef } from 'react';
 import styled from '@emotion/styled';
-import { useForwardedRef } from '@ndla/util';
+import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
-import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
+import { useForwardedRef } from '@ndla/util';
+import { arrowNavigation } from './arrowNavigation';
 import { treestructureId } from './helperFunctions';
 import { TreeStructureType } from './types';
-import { arrowNavigation } from './arrowNavigation';
 import ContentLoader from '../ContentLoader';
 
 const StyledRow = styled.div`

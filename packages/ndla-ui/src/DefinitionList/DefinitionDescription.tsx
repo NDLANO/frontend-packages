@@ -6,9 +6,9 @@
  *
  */
 
+import { forwardRef, HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { fonts } from '@ndla/core';
-import { forwardRef, HTMLAttributes } from 'react';
 
 const StyledDD = styled.dd`
   font-weight: ${fonts.weight.normal};

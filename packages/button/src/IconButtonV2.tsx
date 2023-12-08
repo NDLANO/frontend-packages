@@ -7,8 +7,8 @@
  */
 
 import { ReactNode, forwardRef } from 'react';
-import { spacingUnit } from '@ndla/core';
 import { css } from '@emotion/react';
+import { spacingUnit } from '@ndla/core';
 import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
 
 export const svgSizes = {

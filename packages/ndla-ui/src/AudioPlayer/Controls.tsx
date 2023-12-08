@@ -7,15 +7,15 @@
  */
 
 import { useEffect, useRef, useState } from 'react';
-import styled from '@emotion/styled';
-import { Root as SliderRoot, Track, Range, SliderThumb } from '@radix-ui/react-slider';
-import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from '@radix-ui/react-popover';
-import { Play, Pause, VolumeUp } from '@ndla/icons/common';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { Back15, Forward15 } from '@ndla/icons/action';
+import styled from '@emotion/styled';
+import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from '@radix-ui/react-popover';
+import { Root as SliderRoot, Track, Range, SliderThumb } from '@radix-ui/react-slider';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown-menu';
+import { Back15, Forward15 } from '@ndla/icons/action';
+import { Play, Pause, VolumeUp } from '@ndla/icons/common';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};

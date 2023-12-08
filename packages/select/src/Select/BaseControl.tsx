@@ -6,11 +6,11 @@
  *
  */
 
+import { ControlProps } from 'react-select';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import { ControlProps } from 'react-select';
-import { Option } from './types';
 import { StyledDropdown } from './BaseDropdownIndicator';
+import { Option } from './types';
 
 const StyledBaseControl = styled.div`
   display: flex;

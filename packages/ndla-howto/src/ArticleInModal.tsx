@@ -7,11 +7,11 @@
  */
 
 import { ReactElement } from 'react';
-import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import { InformationOutline } from '@ndla/icons/common';
+import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 
-import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
 import { StoryType, stories } from './StaticInfoComponents';
+import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
 
 interface ModalContentProps {
   pageId: StoryType;

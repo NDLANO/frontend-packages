@@ -12,8 +12,8 @@
  */
 
 import { inspect } from 'util';
-import normalizeUrl from 'normalize-url';
 import spawn from 'cross-spawn-promise';
+import normalizeUrl from 'normalize-url';
 import urlRegex from 'url-regex-safe';
 
 if (!process.env.CI || !process.env.GITHUB_ACTIONS) {

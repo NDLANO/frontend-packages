@@ -7,8 +7,8 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import { Check } from '@ndla/icons/editor';
 import { Search } from '@ndla/icons/common';
+import { Check } from '@ndla/icons/editor';
 import { Input, InputContainer } from './InputV3';
 import { defaultParameters } from '../../../stories/defaults';
 

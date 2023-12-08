@@ -7,8 +7,8 @@
  */
 
 import styled from '@emotion/styled';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { ButtonV2 } from '@ndla/button';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';
 

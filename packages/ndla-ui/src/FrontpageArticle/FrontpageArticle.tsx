@@ -7,12 +7,12 @@
  */
 
 import { CSSProperties, ReactNode, useMemo } from 'react';
-import { spacing, spacingUnit } from '@ndla/core';
 import styled from '@emotion/styled';
+import { spacing, spacingUnit } from '@ndla/core';
 import { Heading, Text } from '@ndla/typography';
-import { Article } from '../types';
 import { ArticleByline } from '../Article';
 import { useMastheadHeight } from '../Masthead';
+import { Article } from '../types';
 
 interface Props {
   article: Omit<Article, 'footNotes'>;

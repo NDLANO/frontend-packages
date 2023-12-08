@@ -6,10 +6,10 @@
  *
  */
 
+import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from 'react';
 import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
-import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from 'react';
 
 interface BaseInputProps {
   iconRight?: ReactNode;

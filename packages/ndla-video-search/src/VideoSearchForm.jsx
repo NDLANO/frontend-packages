@@ -6,10 +6,10 @@
  *
  */
 
-import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ButtonV2 } from '@ndla/button';
+import { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
+import { ButtonV2 } from '@ndla/button';
 
 const classes = new BEMHelper({
   name: 'video-search',

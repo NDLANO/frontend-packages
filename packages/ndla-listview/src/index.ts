@@ -6,9 +6,9 @@
  *
  */
 
-import ListView from './ListView';
-import ListItem from './ListItem';
 import activeAlphabet from './activeAlphabet';
+import ListItem from './ListItem';
+import ListView from './ListView';
 
 export { ListItem, activeAlphabet };
 

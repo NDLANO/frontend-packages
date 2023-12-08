@@ -6,8 +6,8 @@
  *
  */
 
-import partition from 'lodash/partition';
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
+import partition from 'lodash/partition';
 import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem } from '@ndla/ui';
 import { PluginType } from './types';
 

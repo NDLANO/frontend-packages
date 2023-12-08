@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import SafeLink from '@ndla/safelink';
+import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
 
 interface Props {
   title: string;

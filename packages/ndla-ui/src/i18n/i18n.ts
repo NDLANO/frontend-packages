@@ -7,11 +7,11 @@
  */
 
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
 import messagesEN from '../locale/messages-en';
-import messagesNN from '../locale/messages-nn';
 import messagesNB from '../locale/messages-nb';
+import messagesNN from '../locale/messages-nn';
 import messagesSE from '../locale/messages-se';
 import messagesSMA from '../locale/messages-sma';
 

@@ -7,14 +7,14 @@
  */
 
 import { Fragment } from 'react';
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import Tabs from '@ndla/tabs';
-import SafeLink from '@ndla/safelink';
+import styled from '@emotion/styled';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
+import Tabs from '@ndla/tabs';
 import ContentLoader from '../ContentLoader';
-import { MessageBox } from '../Messages';
 import { ToggleItem } from '../Filter';
+import { MessageBox } from '../Messages';
 
 const StyledWrapper = styled.nav`
   margin: 32px 0 0;

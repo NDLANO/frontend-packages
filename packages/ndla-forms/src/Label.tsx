@@ -8,8 +8,8 @@
 
 import { ComponentPropsWithRef, forwardRef } from 'react';
 import { css } from '@emotion/react';
-import { Text, TextProps } from '@ndla/typography';
 import { utils } from '@ndla/core';
+import { Text, TextProps } from '@ndla/typography';
 import { useFormControlContext } from './FormControl';
 
 type Props = TextProps & {

@@ -7,8 +7,8 @@
  */
 
 import { css } from '@emotion/react';
-import fonts from './fonts';
 import colors from './colors';
+import fonts from './fonts';
 import spacing from './spacing';
 
 const smallHeading = css`

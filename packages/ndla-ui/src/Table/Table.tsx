@@ -6,11 +6,11 @@
  *
  */
 
+import throttle from 'lodash/throttle';
+import { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import throttle from 'lodash/throttle';
-import { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type ScrollPosition = 'start' | 'end' | 'center';
 

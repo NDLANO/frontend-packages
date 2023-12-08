@@ -7,12 +7,12 @@
  */
 
 import { FocusEvent, MouseEvent, RefObject } from 'react';
-import { useTranslation } from 'react-i18next';
 import BEMHelper from 'react-bem-helper';
+import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Search as SearchIcon } from '@ndla/icons/common';
 import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
+import { Search as SearchIcon } from '@ndla/icons/common';
 
 import ActiveFilters from './ActiveFilters';
 import LoadingWrapper from './LoadingWrapper';

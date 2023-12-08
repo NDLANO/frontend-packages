@@ -6,9 +6,9 @@
  *
  */
 
+import { ComponentProps, ElementType, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import { ComponentProps, ElementType, ReactNode } from 'react';
 import { HeadingLevel, MarginVariant } from './types';
 
 const style = css`

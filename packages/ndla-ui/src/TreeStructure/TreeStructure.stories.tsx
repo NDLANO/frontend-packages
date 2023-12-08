@@ -7,13 +7,13 @@
  */
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
+import { Meta, StoryFn } from '@storybook/react';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
 import { uuid } from '@ndla/util';
+import { flattenFolders } from './helperFunctions';
 import TreeStructure, { TreeStructureProps } from './TreeStructure';
 import { defaultParameters } from '../../../../stories/defaults';
-import { flattenFolders } from './helperFunctions';
 import { FolderInput } from '../MyNdla';
 
 const MY_FOLDERS_ID = 'folders';

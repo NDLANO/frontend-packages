@@ -6,8 +6,8 @@
  *
  */
 
-import { IFolder } from '@ndla/types-backend/learningpath-api';
 import { KeyboardEvent } from 'react';
+import { IFolder } from '@ndla/types-backend/learningpath-api';
 
 const navigateVertical = (
   visibleFolders: IFolder[],

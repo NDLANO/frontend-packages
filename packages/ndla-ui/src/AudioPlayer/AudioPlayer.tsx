@@ -7,11 +7,11 @@
  */
 
 import { ReactNode, useMemo, useState } from 'react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { ButtonV2 } from '@ndla/button';
-import { Cross as CrossIcon } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { Cross as CrossIcon } from '@ndla/icons/action';
 import SafeLink from '@ndla/safelink';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';

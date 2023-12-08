@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { ValueContainerProps } from 'react-select';
 import isArray from 'lodash/isArray';
 import { useTranslation } from 'react-i18next';
-import { Option } from './types';
+import { ValueContainerProps } from 'react-select';
+import styled from '@emotion/styled';
 import { TextEllipsis } from './BaseSingleValue';
+import { Option } from './types';
 
 const StyledValueContainer = styled.div`
   display: grid;

@@ -8,15 +8,14 @@
 
 import styled from '@emotion/styled';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { spacing } from '@ndla/core';
-import { Pencil } from '@ndla/icons/action';
-import { DeleteForever } from '@ndla/icons/editor';
-import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
 import { ButtonV2, IconButtonV2 } from '@ndla/button';
+import { spacing } from '@ndla/core';
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
+import { Pencil } from '@ndla/icons/action';
 import { HorizontalMenu } from '@ndla/icons/contentType';
-import { defaultParameters } from '../../../../../stories/defaults';
-
+import { DeleteForever } from '@ndla/icons/editor';
 import Folder from './Folder';
+import { defaultParameters } from '../../../../../stories/defaults';
 
 export default {
   title: 'My NDLA/Folder',

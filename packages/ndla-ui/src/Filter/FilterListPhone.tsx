@@ -6,11 +6,11 @@
  *
  */
 
+import debounce from 'lodash/debounce';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { ButtonV2 } from '@ndla/button';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
-import { ButtonV2 } from '@ndla/button';
-import debounce from 'lodash/debounce';
 import { classes } from './filterClasses';
 import ToggleItem from './ToggleItem';
 import ActiveFilters from '../Search/ActiveFilters';

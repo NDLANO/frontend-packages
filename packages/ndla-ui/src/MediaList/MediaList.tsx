@@ -7,6 +7,10 @@
  */
 
 import { ReactNode } from 'react';
+import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import { Launch } from '@ndla/icons/common';
 import {
   getLicenseByAbbreviation,
   getResourceTypeNamespace,
@@ -15,11 +19,7 @@ import {
 } from '@ndla/licenses';
 import type { MetaType } from '@ndla/licenses';
 import { LicenseDescription } from '@ndla/notion';
-import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
-import styled from '@emotion/styled';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { Launch } from '@ndla/icons/common';
 
 const oClasses = new BEMHelper({
   name: 'media',

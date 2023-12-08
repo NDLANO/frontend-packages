@@ -8,8 +8,8 @@
 
 import { forwardRef } from 'react';
 import styled from '@emotion/styled';
-import { Cross } from '@ndla/icons/action';
 import { spacing, mq, breakpoints, colors, misc, fonts } from '@ndla/core';
+import { Cross } from '@ndla/icons/action';
 
 const StyledActiveFilter = styled('button')`
   height: 38px;

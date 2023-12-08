@@ -6,10 +6,10 @@
  *
  */
 
-import { Cross } from '@ndla/icons/action';
 import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../stories/defaults';
+import { Cross } from '@ndla/icons/action';
 import IconButtonV2 from './IconButtonV2';
+import { defaultParameters } from '../../../stories/defaults';
 
 export default {
   title: 'Components/Buttons/IconButton',

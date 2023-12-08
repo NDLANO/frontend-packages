@@ -9,8 +9,8 @@
 import { ComponentType } from 'react';
 import AudioPlayerExamples from './components/AudioExample';
 import FactBoxExample from './components/FactBoxExample';
-import SolutionExample from './components/SolutionExample';
 import Markdown from './components/Markdown';
+import SolutionExample from './components/SolutionExample';
 
 export interface Story {
   title?: string;

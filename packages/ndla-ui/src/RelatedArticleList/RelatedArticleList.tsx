@@ -10,9 +10,9 @@ import { CSSProperties, Children, ComponentProps, ReactNode, useMemo, useState }
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Heading, HeadingLevel, Text } from '@ndla/typography';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { contentTypes } from '../model/ContentType';
 

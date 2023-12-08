@@ -7,14 +7,14 @@
  */
 
 import { ElementType, Fragment, ReactNode } from 'react';
-import { ChevronRight } from '@ndla/icons/common';
-import { uuid } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-import Tooltip from '@ndla/tooltip';
-import SafeLink from '@ndla/safelink';
-import { Spinner } from '@ndla/icons';
 import styled from '@emotion/styled';
 import { fonts, mq, spacing, breakpoints, colors, spacingUnit } from '@ndla/core';
+import { Spinner } from '@ndla/icons';
+import { ChevronRight } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
+import Tooltip from '@ndla/tooltip';
+import { uuid } from '@ndla/util';
 
 interface ItemType {
   id: string | number;

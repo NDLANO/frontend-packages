@@ -6,8 +6,8 @@
  *
  */
 
-import { Title, DialogTitleProps } from '@radix-ui/react-dialog';
 import { ElementType } from 'react';
+import { Title, DialogTitleProps } from '@radix-ui/react-dialog';
 
 interface Props {
   as?: ElementType;

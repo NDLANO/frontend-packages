@@ -6,8 +6,8 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { spacing, spacingUnit, colors, fonts, mq, breakpoints } from '@ndla/core';
 
 const gridPush = css`

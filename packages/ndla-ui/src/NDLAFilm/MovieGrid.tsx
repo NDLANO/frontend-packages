@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
 import { useTranslation } from 'react-i18next';

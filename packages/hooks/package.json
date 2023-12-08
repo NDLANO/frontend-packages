@@ -1,6 +1,6 @@
 {
   "name": "@ndla/hooks",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Collection of React hooks used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
     "react": ">= 16.8.0"
   },
   "dependencies": {
-    "@ndla/util": "^4.0.2"
+    "@ndla/util": "^4.0.3"
   },
   "publishConfig": {
     "access": "public"

@@ -12,8 +12,8 @@ import React, { ReactNode } from 'react';
 import { StaticRouter } from 'react-router-dom/server.js';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Safelink, { isOldNdlaLink } from '../SafeLink';
 import MissingRouterContext from '../MissingRouterContext';
+import Safelink, { isOldNdlaLink } from '../SafeLink';
 
 interface Props {
   children: ReactNode;

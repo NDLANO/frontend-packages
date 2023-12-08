@@ -6,10 +6,10 @@
  *
  */
 import { ButtonHTMLAttributes } from 'react';
-import styled from '@emotion/styled';
-import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
+import { Cross } from '@ndla/icons/action';
 
 const StyledButton = styled.button`
   background-color: transparent;

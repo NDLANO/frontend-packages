@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
 import { LearningPathRead } from '@ndla/icons/contentType';
+import SafeLink from '@ndla/safelink';
 import { StepProps } from './LearningPathMenu';
 import ContentTypeBadge from '../ContentTypeBadge';
 import constants from '../model';

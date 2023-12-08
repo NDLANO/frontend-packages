@@ -7,8 +7,8 @@
  */
 
 import { MultiValueProps } from 'react-select';
-import { buttonStyleV2 as buttonStyle } from '@ndla/button';
 import styled from '@emotion/styled';
+import { buttonStyleV2 as buttonStyle } from '@ndla/button';
 import { colors, spacing } from '@ndla/core';
 import { Cross } from '@ndla/icons/action';
 import { TagType } from './types';

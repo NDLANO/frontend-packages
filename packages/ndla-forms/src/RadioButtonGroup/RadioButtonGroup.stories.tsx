@@ -6,8 +6,8 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { css } from '@emotion/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { colors, misc, spacing, utils } from '@ndla/core';
 import RadioButtonGroup, { RadioButtonGroupRoot, RadioGroupItem } from './RadioButtonGroup';
 import { defaultParameters } from '../../../../stories/defaults';

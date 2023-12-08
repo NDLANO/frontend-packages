@@ -925,7 +925,7 @@ const messages = {
       onDragEndMissingOver: 'Mappen {{name}} ble sluppet',
       onDragCancel: 'Flytting avbrutt. Mappen {{name}} ble sluppet',
       dragHandle: 'Sorter mappen {{name}}',
-      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med',
+      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med.',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',
@@ -1034,7 +1034,7 @@ const messages = {
         markAll: 'Merk alle som lest',
         subscribe: 'Du får nå varsling om nye svar på dette innlegget',
         unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
-        commentedOn: 'svarte på innlegget {{title}} som du følger',
+        commentedOn: 'svarte på innlegget <i>{{title}}</i> som du følger',
       },
       topicsBy: 'Innlegg av',
     },

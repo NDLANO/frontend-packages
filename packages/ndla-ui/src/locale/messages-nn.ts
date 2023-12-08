@@ -925,7 +925,7 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sleppt',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sleppt',
       dragHandle: 'Sorter mappa {{name}}',
-      sharedWarning: 'Namn og beskriving blir synleg for alle du deler mappa med',
+      sharedWarning: 'Namn og beskriving blir synleg for alle du deler mappa med.',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',
@@ -1034,7 +1034,7 @@ const messages = {
         markAll: 'Merk alle som lest',
         subscribe: 'Du får no varsling om nye svar på dette innlegget',
         unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
-        commentedOn: 'svarte på innlegget {{title}} som du følger',
+        commentedOn: 'svarte på innlegget <i>{{title}}</i> som du følger',
       },
       topicsBy: 'Innlegg av',
     },

@@ -6,12 +6,12 @@
  *
  */
 
+import { forwardRef, HTMLAttributes, memo, ReactNode, useMemo } from 'react';
 import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
+import { Header, Trigger } from '@radix-ui/react-accordion';
 import { colors, fonts, spacing } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
-import { Header, Trigger } from '@radix-ui/react-accordion';
-import { forwardRef, HTMLAttributes, memo, ReactNode, useMemo } from 'react';
 
 const StyledHeader = styled(Header)`
   display: flex;

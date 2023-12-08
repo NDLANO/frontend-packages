@@ -7,8 +7,8 @@
  */
 
 import { ReactNode } from 'react';
-import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
+import { colors } from '@ndla/core';
 
 export interface ImageCrop {
   startX: number;

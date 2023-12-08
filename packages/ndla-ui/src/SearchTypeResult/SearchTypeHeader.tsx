@@ -7,13 +7,13 @@
  */
 
 import { MouseEvent, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
-import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentType } from './SearchTypeResult';
+import ContentTypeBadge from '../ContentTypeBadge';
 
 const Wrapper = styled.div`
   margin: ${spacing.small} 0;

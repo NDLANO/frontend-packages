@@ -10,18 +10,18 @@ import { ComponentProps, ReactElement, createElement, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { IconButtonV2 } from '@ndla/button';
-import { copyTextToClipboard } from '@ndla/util';
 import { spacing } from '@ndla/core';
-import { defaultParameters } from '../../../stories/defaults';
+import { copyTextToClipboard } from '@ndla/util';
 
-import * as licenseIcons from './licenses';
-import * as contentTypeIcons from './contentType';
-import * as commonIcons from './common';
-import * as editorIcons from './editor';
-import * as actionIcons from './action';
-import { Person } from './common';
 import Icon from '.';
+import * as actionIcons from './action';
 import { Copy } from './action';
+import * as commonIcons from './common';
+import { Person } from './common';
+import * as contentTypeIcons from './contentType';
+import * as editorIcons from './editor';
+import * as licenseIcons from './licenses';
+import { defaultParameters } from '../../../stories/defaults';
 
 interface IconItemProps {
   icon: (props: ComponentProps<typeof Icon>) => ReactElement<ComponentProps<typeof Icon>>;

@@ -929,7 +929,7 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sloppe',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sloppe',
       dragHandle: 'Sorter mappen {{name}}',
-      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med',
+      sharedWarning: 'Navn og beskrivelse blir synlig for alle du deler mappen med.',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',
@@ -1038,7 +1038,7 @@ const messages = {
         markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
         subscribe: 'Datne åadtjoeh daelie bïeljelimmiem orre vaestiedassi bïjre daan tjaalegasse',
         unsubscribe: 'Datne tjeakoeslaakan bïeljelamme jis orre vaestiedassh daan påastese',
-        commentedOn: 'tjeakoes laakan vaestiedamme {{title}} maam datne dåarjoehtidh',
+        commentedOn: 'tjeakoes laakan vaestiedamme <i>{{title}}</i> maam datne dåarjoehtidh',
       },
       topicsBy: 'Vuesiehtimmien gaavhtan',
     },

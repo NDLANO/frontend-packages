@@ -7,9 +7,9 @@
  */
 
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
 
 const StyledInfoHeader = styled.p`

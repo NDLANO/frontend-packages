@@ -16,10 +16,10 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { composeRefs } from '@ndla/util';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, misc, spacing } from '@ndla/core';
+import { composeRefs } from '@ndla/util';
 import { useFormControl } from './FormControl';
 
 interface InputContextType {}

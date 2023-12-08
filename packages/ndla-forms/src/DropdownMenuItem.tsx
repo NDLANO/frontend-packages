@@ -7,12 +7,12 @@
  */
 
 import { HTMLProps, ReactNode } from 'react';
-import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import { Check } from '@ndla/icons/editor';
 import { Information } from '@ndla/icons/common';
+import { Check } from '@ndla/icons/editor';
 import DropdownMenuImage from './DropdownMenuImage';
 
 const StyledDescription = styled.span`

@@ -6,23 +6,8 @@
  *
  */
 
-import { ImageEmbedData, ImageMetaData } from './imageTypes';
 import { AudioMetaData, AudioEmbedData, AudioMeta } from './audioTypes';
-import { IframeMetaData, IframeEmbedData, IframeData } from './iframeTypes';
-import {
-  H5pMetaData,
-  H5pEmbedData,
-  OembedProxyData,
-  H5pPreviewResponse,
-  H5pOembedData,
-  H5pLicenseInformation,
-  H5pInfo,
-  H5pData,
-} from './h5pTypes';
-import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
-import { CodeEmbedData, CodeMetaData } from './codeTypes';
-import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from './contentLinkTypes';
-import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from './footnoteTypes';
+import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
 import {
   BrightcoveData,
   BrightcoveEmbedData,
@@ -31,7 +16,8 @@ import {
   BrightcoveApiType,
   BrightcoveCopyright,
 } from './brightcoveTypes';
-import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from './relatedContentTypes';
+import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from './campaignBlockTypes';
+import { CodeEmbedData, CodeMetaData } from './codeTypes';
 import {
   ConceptListData,
   ConceptData,
@@ -42,12 +28,26 @@ import {
   ConceptVisualElement,
   ConceptVisualElementMeta,
 } from './conceptTypes';
-import { FileEmbedData, FileMetaData } from './fileTypes';
-import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
 import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
+import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from './contentLinkTypes';
+import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
+import { FileEmbedData, FileMetaData } from './fileTypes';
+import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from './footnoteTypes';
+import {
+  H5pMetaData,
+  H5pEmbedData,
+  OembedProxyData,
+  H5pPreviewResponse,
+  H5pOembedData,
+  H5pLicenseInformation,
+  H5pInfo,
+  H5pData,
+} from './h5pTypes';
+import { IframeMetaData, IframeEmbedData, IframeData } from './iframeTypes';
+import { ImageEmbedData, ImageMetaData } from './imageTypes';
 import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './keyFigureTypes';
-import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from './campaignBlockTypes';
 import { LinkBlockEmbedData, LinkBlockMetaData } from './linkBlockTypes';
+import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from './relatedContentTypes';
 
 export type EmbedData =
   | AudioEmbedData

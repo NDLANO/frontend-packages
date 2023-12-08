@@ -11,11 +11,11 @@ import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
 import { Modal, ModalContent, ModalTrigger } from './Modal';
 import ModalBody from './ModalBody';
+import ModalCloseButton from './ModalCloseButton';
 import ModalHeader from './ModalHeader';
 import ModalTitle from './ModalTitle';
-import ModalCloseButton from './ModalCloseButton';
-import { defaultParameters } from '../../../stories/defaults';
 import { ModalContentProps } from './types';
+import { defaultParameters } from '../../../stories/defaults';
 
 const meta: Meta<typeof ModalContent> = {
   title: 'Components/Modal',

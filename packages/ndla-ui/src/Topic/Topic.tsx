@@ -7,23 +7,23 @@
  */
 
 import { ReactNode, MouseEvent, useMemo } from 'react';
-import styled from '@emotion/styled';
-import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
-import { Text, Heading } from '@ndla/typography';
-
-import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
-import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
-import { ButtonV2 } from '@ndla/button';
-import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
-import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
+import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
+import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
+import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
+
+import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { EmbedMetaData } from '@ndla/types-embed';
+import { Text, Heading } from '@ndla/typography';
 import Loader from './Loader';
-import { ItemProps } from '../Navigation/NavigationBox';
-import { NavigationBox } from '../Navigation';
+import { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
-import { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
+import { NavigationBox } from '../Navigation';
+import { ItemProps } from '../Navigation/NavigationBox';
 
 type InvertItProps = {
   invertedStyle?: boolean;

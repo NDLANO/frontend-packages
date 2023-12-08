@@ -6,12 +6,12 @@
  *
  */
 import { FormEvent, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { Search as SearchIcon } from '@ndla/icons/common';
 import { spacing, colors } from '@ndla/core';
 import { Cross as CrossIcon } from '@ndla/icons/action';
+import { Search as SearchIcon } from '@ndla/icons/common';
 
-import { useTranslation } from 'react-i18next';
 import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
 
 type StyledProps = {

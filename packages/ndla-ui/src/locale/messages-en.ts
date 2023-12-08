@@ -1035,7 +1035,7 @@ const messages = {
         markAll: 'Mark all as read',
         subscribe: 'You will now be notified of new replies to this topic',
         unsubscribe: 'You have turned off notification of new replies to this topic',
-        commentedOn: 'commented on the post {{title}} which you follow',
+        commentedOn: 'commented on the post <i>{{title}}</i> which you follow',
       },
       topicsBy: 'Topics by',
     },

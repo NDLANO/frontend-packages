@@ -7,14 +7,14 @@
  */
 
 import { useCallback, useMemo } from 'react';
-import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints, colors } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import { Option, Select, SingleValue } from '@ndla/select';
+import { StyledHeadingH2 } from './filmStyles';
 import { MovieResourceType } from './types';
 import { OneColumn } from '..';
-import { StyledHeadingH2 } from './filmStyles';
 
 const FilmMovieSearchContainer = styled.div`
   margin: ${spacing.normal} 0 ${spacing.large};

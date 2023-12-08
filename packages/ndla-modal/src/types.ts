@@ -6,9 +6,9 @@
  *
  */
 
+import { ReactNode } from 'react';
 import { keyframes } from '@emotion/react';
 import { DialogContentProps } from '@radix-ui/react-dialog';
-import { ReactNode } from 'react';
 
 export type ModalSize = 'xsmall' | 'small' | 'normal' | 'large' | 'full';
 export type ModalSizeType = ModalSize | { width: ModalSize; height: ModalSize };

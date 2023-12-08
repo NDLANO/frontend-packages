@@ -10,8 +10,8 @@ import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
 import { Link } from '@ndla/icons/common';
+import Tooltip from '@ndla/tooltip';
 import { copyTextToClipboard } from '@ndla/util';
 
 const ContainerDiv = styled.div`

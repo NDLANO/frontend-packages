@@ -7,10 +7,10 @@
  *
  */
 
+import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, colors, spacing } from '@ndla/core';
 import { Launch } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
-import styled from '@emotion/styled';
 import Image from '../Image';
 
 const ResourceBoxContainer = styled.div`

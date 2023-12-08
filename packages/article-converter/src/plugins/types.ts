@@ -6,8 +6,8 @@
  *
  */
 
-import { HeartButtonType, RenderContext, CanonicalUrlFuncs } from '@ndla/ui';
 import { Element, HTMLReactParserOptions } from 'html-react-parser';
+import { HeartButtonType, RenderContext, CanonicalUrlFuncs } from '@ndla/ui';
 
 export interface DynamicComponents {
   heartButton?: HeartButtonType;

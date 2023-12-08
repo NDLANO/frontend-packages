@@ -7,9 +7,9 @@
  */
 
 import { validateTranslationFiles } from '@ndla/util';
+import messagesEN from '../messages-en';
 import messagesNB from '../messages-nb';
 import messagesNN from '../messages-nn';
-import messagesEN from '../messages-en';
 import messagesSE from '../messages-se';
 import messagesSMA from '../messages-sma';
 

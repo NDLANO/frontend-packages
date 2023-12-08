@@ -7,12 +7,12 @@
  */
 
 import { memo } from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import SearchItem, { SearchItemProps } from './SearchItem';
-import { ContentType } from './SearchTypeResult';
 import SearchItemList from './SearchItemList';
+import { ContentType } from './SearchTypeResult';
 
 const Wrapper = styled.div`
   width: 100%;

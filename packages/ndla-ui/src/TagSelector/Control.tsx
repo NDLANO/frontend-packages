@@ -6,9 +6,9 @@
  *
  */
 
+import { ControlProps } from 'react-select';
 import styled from '@emotion/styled';
 import { spacing, utils } from '@ndla/core';
-import { ControlProps } from 'react-select';
 import { TagType } from './types';
 
 const StyledTagSelectorControl = styled.div`

@@ -8,9 +8,9 @@
 
 import { Meta, StoryObj } from '@storybook/react';
 import { PersonOutlined } from '@ndla/icons/common';
-import { defaultParameters } from '../../../stories/defaults';
 import MissingRouterContext from './MissingRouterContext';
 import SafeLinkIconButton from './SafeLinkIconButton';
+import { defaultParameters } from '../../../stories/defaults';
 
 export default {
   title: 'Components/SafeLinkIconButton',

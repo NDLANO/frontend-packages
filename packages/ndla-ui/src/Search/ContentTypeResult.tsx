@@ -1,11 +1,17 @@
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { ReactElement, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
 import { Additional, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
-import { ReactElement, useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import ContentTypeBadge from '../ContentTypeBadge';
-import { ContentTypeResultType, Resource } from '../types';
 import {
   highlightStyle,
   noWidthhighlightStyle,
@@ -18,6 +24,8 @@ import {
   StyledWrapper,
 } from './ContentTypeResultStyles';
 import { isPathToHighlight } from './IsPathToHighlight';
+import ContentTypeBadge from '../ContentTypeBadge';
+import { ContentTypeResultType, Resource } from '../types';
 
 const renderAdditionalIcon = (label: string, isAdditional?: boolean): ReactElement | null => {
   if (isAdditional && label) {

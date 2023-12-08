@@ -7,8 +7,8 @@
  */
 
 import PropTypes from 'prop-types';
-import { ButtonV2 } from '@ndla/button';
 import BEMHelper from 'react-bem-helper';
+import { ButtonV2 } from '@ndla/button';
 import PreviewVideo from './PreviewVideo';
 import { YouTubeShape } from './shapes';
 import { setLocaleDate, setYouTubeDuration } from './videoHelpers';

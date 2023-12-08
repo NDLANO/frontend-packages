@@ -2591,7 +2591,7 @@ __metadata:
     "@ndla/code": "npm:^5.0.19"
     "@ndla/types-backend": "npm:^0.2.21"
     "@ndla/types-embed": "npm:^4.0.8"
-    "@ndla/ui": "npm:^50.2.0"
+    "@ndla/ui": "npm:^50.2.2"
     html-react-parser: "npm:^4.2.2"
     lodash: "npm:^4.17.20"
   peerDependencies:
@@ -2767,7 +2767,7 @@ __metadata:
     "@ndla/modal": "npm:^5.0.15"
     "@ndla/notion": "npm:^6.0.16"
     "@ndla/tooltip": "npm:^6.0.5"
-    "@ndla/ui": "npm:^50.2.0"
+    "@ndla/ui": "npm:^50.2.2"
     "@ndla/util": "npm:^4.0.1"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2803,7 +2803,7 @@ __metadata:
     "@ndla/icons": "npm:^4.2.2"
     "@ndla/pager": "npm:^2.2.40"
     "@ndla/types-backend": "npm:^0.2.21"
-    "@ndla/ui": "npm:^50.2.0"
+    "@ndla/ui": "npm:^50.2.2"
     "@ndla/util": "npm:^4.0.1"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
@@ -2830,7 +2830,7 @@ __metadata:
   dependencies:
     "@ndla/core": "npm:^4.2.7"
     "@ndla/icons": "npm:^4.2.2"
-    "@ndla/ui": "npm:^50.2.0"
+    "@ndla/ui": "npm:^50.2.2"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -3022,7 +3022,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^50.2.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^50.2.2, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
@@ -10500,6 +10500,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^6.7.4"
     "@typescript-eslint/parser": "npm:^6.7.4"
     confusing-browser-globals: "npm:^1.0.11"
+    eslint-plugin-header: "npm:^3.1.1"
     eslint-plugin-import: "npm:^2.28.1"
     eslint-plugin-jsx-a11y: "npm:^6.7.1"
     eslint-plugin-lodash: "npm:^7.4.0"
@@ -10531,6 +10532,15 @@ __metadata:
     eslint:
       optional: true
   checksum: c7a8d1a58d76ec8217a8fea49271ec8132d1b9390965a75f6a4ecbc9e5983d742195b46d2e4378231d2186801439fe1aa5700714b0bfd4eb17aac6e1b65309df
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-header@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "eslint-plugin-header@npm:3.1.1"
+  peerDependencies:
+    eslint: ">=7.7.0"
+  checksum: 2eb70acd8efe2b72a7bff3e3958a637871c6d0ed4166effea8b68e79b9ba291b6a33182e7f0e31ca7de717fc5b2cf2e42dcc0a07db1a37ae6941bbb6a8eda731
   languageName: node
   linkType: hard
 

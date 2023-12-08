@@ -1,5 +1,14 @@
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import BEMHelper from 'react-bem-helper';
 
+import { MenuBook } from '@ndla/icons/action';
 import {
   SubjectMaterial,
   TasksAndActivities,
@@ -11,7 +20,6 @@ import {
   MultidisciplinaryTopic,
 } from '@ndla/icons/contentType';
 
-import { MenuBook } from '@ndla/icons/action';
 import { Concept, ImageNormal, SquareAudio, SquareVideo } from '@ndla/icons/editor';
 
 import * as contentTypes from '../model/ContentType';

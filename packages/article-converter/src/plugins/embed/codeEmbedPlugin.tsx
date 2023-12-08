@@ -7,8 +7,8 @@
  */
 
 import { attributesToProps } from 'html-react-parser';
-import { CodeMetaData } from '@ndla/types-embed';
 import { CodeEmbed } from '@ndla/code';
+import { CodeMetaData } from '@ndla/types-embed';
 import { PluginType } from '../types';
 
 export const codeEmbedPlugin: PluginType = (element) => {

@@ -8,8 +8,8 @@
 
 import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
-import { defaultParameters } from '../../../../stories/defaults';
 import Tooltip from './Tooltip';
+import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Components/Tooltip',

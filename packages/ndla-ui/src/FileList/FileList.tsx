@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { colors, fonts, spacing } from '@ndla/core';
 
 interface Props {
   children: ReactNode;

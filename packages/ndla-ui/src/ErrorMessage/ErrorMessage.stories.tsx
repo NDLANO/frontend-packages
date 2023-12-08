@@ -8,9 +8,9 @@
 
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import ErrorMessage from './ErrorMessage';
-import { defaultParameters } from '../../../../stories/defaults';
 //@ts-ignore
 import Oops from '../../../../images/oops.gif';
+import { defaultParameters } from '../../../../stories/defaults';
 
 /**
  * Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått en feil i systemet, f.eks. ved 404- eller 503-feil.

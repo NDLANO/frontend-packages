@@ -7,8 +7,8 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../../stories/defaults';
 import KeyFigure from './KeyFigure';
+import { defaultParameters } from '../../../../stories/defaults';
 const args = {
   title: '500',
   subtitle: 'TVERRFAGLIGE RESSURSER',

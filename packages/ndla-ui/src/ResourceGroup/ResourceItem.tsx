@@ -8,14 +8,14 @@
 
 import { CSSProperties, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import SafeLink from '@ndla/safelink';
-import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
+import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { Resource } from '../types';
+import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
+import { Resource } from '../types';
 
 const listElementActiveColor = (contentType?: string) => {
   switch (contentType) {

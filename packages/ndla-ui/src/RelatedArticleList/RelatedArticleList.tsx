@@ -6,21 +6,15 @@
  *
  */
 
-import { Children, HTMLProps, ReactNode, useMemo, useState } from 'react';
-import BEMHelper from 'react-bem-helper';
+import { CSSProperties, Children, ComponentProps, ReactNode, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { HeadingLevel } from '@ndla/typography';
-import SectionHeading from '../SectionHeading';
+import { Heading, HeadingLevel, Text } from '@ndla/typography';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { contentTypes } from '../model/ContentType';
-
-const classes = new BEMHelper({
-  name: 'related-articles',
-  prefix: 'c-',
-});
 
 interface RelatedArticleProps {
   title: string;
@@ -31,6 +25,45 @@ interface RelatedArticleProps {
   type?: string;
 }
 
+const TitleWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+  align-items: flex-start;
+  div {
+    min-width: 34px;
+    min-height: 34px;
+    max-width: 34px;
+    max-height: 34px;
+  }
+`;
+
+const StyledRelatedArticle = styled.article`
+  border-left: 6px solid var(--border-color, ${colors.brand.greyLight});
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xsmall};
+  padding: 0px ${spacing.normal} 0px ${spacing.normal};
+`;
+
+const LinkInfo = styled(Text)`
+  font-weight: ${fonts.weight.bold};
+`;
+
+const LinkText = styled(Text)`
+  font-weight: ${fonts.weight.semibold};
+`;
+
+const colorMap = {
+  [contentTypes.SUBJECT_MATERIAL]: colors.subjectMaterial.light,
+  [contentTypes.TASKS_AND_ACTIVITIES]: colors.tasksAndActivities.background,
+  [contentTypes.ASSESSMENT_RESOURCES]: colors.assessmentResource.background,
+  [contentTypes.EXTERNAL_LEARNING_RESOURCES]: colors.externalLearningResource.background,
+  [contentTypes.SOURCE_MATERIAL]: colors.sourceMaterial.light,
+  [contentTypes.LEARNING_PATH]: colors.learningPath.background,
+  [contentTypes.SUBJECT]: colors.subject.light,
+};
+
 export const RelatedArticle = ({
   title,
   introduction,
@@ -40,33 +73,55 @@ export const RelatedArticle = ({
   type = contentTypes.SUBJECT_MATERIAL,
 }: RelatedArticleProps) => {
   return (
-    <article {...classes('item', type)}>
-      <h3 {...classes('title')}>
+    <StyledRelatedArticle style={{ '--border-color': colorMap[type] } as CSSProperties}>
+      <TitleWrapper>
         <ContentTypeBadge type={type} background size="small" />
-        <span {...classes('link-wrapper')}>
-          <SafeLink to={to} {...classes('link')} target={target} rel={linkInfo ? 'noopener noreferrer' : undefined}>
+        <LinkText element="span" textStyle="meta-text-medium" margin="none">
+          <SafeLink to={to} target={target} rel={linkInfo ? 'noopener noreferrer' : undefined}>
             {title}
           </SafeLink>
-        </span>
-      </h3>
-      <p {...classes('description')} dangerouslySetInnerHTML={{ __html: introduction }} />
-      {linkInfo && <p {...classes('link-info')}>{linkInfo}</p>}
-    </article>
+        </LinkText>
+      </TitleWrapper>
+      <Text textStyle="meta-text-small" margin="none" dangerouslySetInnerHTML={{ __html: introduction }} />
+      <LinkInfo textStyle="content" margin="none">
+        {linkInfo}
+      </LinkInfo>
+    </StyledRelatedArticle>
   );
 };
 
 const HeadingWrapper = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
+  align-self: flex-start;
 `;
 
-interface Props extends HTMLProps<HTMLElement> {
+const ArticlesWrapper = styled.div`
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: ${spacing.large};
+  ${mq.range({ until: breakpoints.tablet })} {
+    grid-template-columns: 1fr;
+  }
+`;
+
+interface Props extends ComponentProps<'section'> {
   children?: JSX.Element[];
   articleCount?: number;
   headingLevel?: HeadingLevel;
   headingButtons?: ReactNode;
 }
+
+const StyledSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${spacing.normal};
+`;
+
 export const RelatedArticleList = ({
   children = [],
   articleCount,
@@ -83,19 +138,19 @@ export const RelatedArticleList = ({
   );
 
   return (
-    <section {...classes('')} {...rest}>
+    <StyledSection {...rest}>
       <HeadingWrapper>
-        <SectionHeading headingLevel={headingLevel} className={classes('component-title').className}>
+        <Heading element={headingLevel} margin="none" headingStyle="list-title">
           {t('related.title')}
-        </SectionHeading>
+        </Heading>
         {headingButtons}
       </HeadingWrapper>
-      <div {...classes('articles')}>{childrenToShow}</div>
+      <ArticlesWrapper>{childrenToShow}</ArticlesWrapper>
       {childCount > 2 ? (
         <ButtonV2 onClick={() => setExpanded((p) => !p)} variant="outline">
           {t(`related.show${expanded ? 'Less' : 'More'}`)}
         </ButtonV2>
       ) : null}
-    </section>
+    </StyledSection>
   );
 };

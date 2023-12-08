@@ -6,8 +6,8 @@
  *
  */
 
-import { CopyParagraphButton } from '@ndla/ui';
 import { Element, domToReact } from 'html-react-parser';
+import { CopyParagraphButton } from '@ndla/ui';
 import { PluginType } from './types';
 export const copyParagraphPlugin: PluginType = (node, converterOpts, opts) => {
   const parent = node.parent as Element | undefined;

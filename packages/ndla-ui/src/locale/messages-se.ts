@@ -9,11 +9,12 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes, wordClass } = constants;
+export const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  ...contributorTypes.se,
   common: {
     subject: 'Fága',
     subject_plural: 'Fágat',
@@ -87,12 +88,6 @@ const messages = {
     searchPage: `Oza${titleTemplate}`,
     notFound: `Siidu ii gávdno${titleTemplate}`,
   },
-  newsLetter: {
-    heading: 'Ođasreive',
-    description: 'Ođasmahte dieđuid. Diŋgo maŋemus ođđasiid NDLA:s.',
-    mainLinkName: 'Dieđit iežat',
-    iconLinkName: 'Diŋgo alccet ođasreivve',
-  },
   askNDLA: 'Jeara NDLA:s',
   articlePage: {
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii resurssa viežžamis.',
@@ -132,25 +127,7 @@ const messages = {
     searchFieldPlaceholder: 'Oza fágaáššiin, bargobihtáin ja doaimmain dahje oahppanbálgáin',
     searchFieldPlaceholderShort: 'Oza',
     label: {
-      content: 'Sisdoallu:',
-      contentTypes: 'Sisdoallomállet:',
-      levels: 'Dássi:',
-      languageFilter: 'Giella:',
       subjects: 'Fága:',
-      noFilter: 'Filttar ii leat válljejuvvon',
-      createdBy: 'Ráhkaduvvon dán olbmos:',
-    },
-    showLabel: {
-      contentTypes: 'Eanet sisdoallomállet',
-      levels: 'Eanet dásit',
-      languageFilter: 'Eanet gielat',
-      subjects: 'Molsso fága',
-    },
-    hideLabel: {
-      contentTypes: 'Unnit sisdoallomállet',
-      levels: 'Unnit dásit',
-      languageFilter: 'Unnit gielat',
-      subjects: 'Unnit fágat',
     },
     searchField: {
       contentTypeResultShowMoreLabel: 'Geahča eanet bohtosiid',
@@ -159,22 +136,11 @@ const messages = {
       searchResultHeading: 'Evttohus:',
       contentTypeResultNoHit: 'Du ohcamii ii lean deaivva...',
     },
-    searchResultMessages: {
-      searchStringLabel: 'Don ohcet:',
-      subHeading: '{{totalCount}} Deaivamat NDLA:s',
-    },
     searchResultListMessages: {
       subjectsLabel: 'Raba fágas:',
       noResultHeading: 'Hmm, ii lean sisdoallu...',
       noResultDescription:
         'Dađi bahábut mis ii leat mihkkege fállat dás. Jus dáhtut evttohit sisdoalu dán fáttás, sáhtát geavahit "Jeara NDLA:s" maid gávnnat vulogeahčen olgeš beale šearpmas.',
-    },
-    searchPageMessages: {
-      filterHeading: 'Filttar',
-      resultHeading: '{{totalCount}} deaivamat NDLA:s',
-      resultHeadingByAuthor: '{{totalCount}} artihkkalat čállojuvvon dán olbmos {{author}}',
-      narrowScreenFilterHeading: '{{totalCount}} deaivamat «{{query}}»',
-      dropdownBtnLabel: 'Eanet sisdoallomállet',
     },
     searchFilterMessages: {
       backButton: 'Ruovttoluotta filtarii',
@@ -222,39 +188,9 @@ const messages = {
     },
   },
   subjectPage: {
-    errorDescription: 'Šállošat, boasttuvuohta čuožžilii fáttá viežžamis.',
     tabs: {
       topics: 'Fáttát',
     },
-    subjectShortcuts: {
-      heading: 'Mana njuolga deike',
-      showMore: 'Čájet eanet',
-      showLess: 'Čájet unnit',
-    },
-    mostRead: {
-      heading: 'Eanemus geavahuvvon',
-    },
-    editorsChoices: {
-      heading: 'Máŋggalágan bealit fágas',
-      unknown: 'Ii dovddus',
-    },
-    subjectArchive: {
-      heading: 'Áigeguovdil',
-      archive: 'Vuorká',
-      close: 'Govčča',
-    },
-    subjectFilter: {
-      label: 'Filttar',
-    },
-    newContent: {
-      heading: 'Leat go fuobmán?',
-    },
-    subjectIsBeta: {
-      iconLabel: 'barggus',
-      dialogHeader: '{{title}} lea barggu vuolde.',
-      dialogText: 'Sáhtát eanet lohkat maid dát mearkkaša dáppe',
-    },
-    archived: 'Dát leat heaittihuvvon fága mii ii ođasmahttojuvvo.',
   },
   subjectsPage: {
     filterSubjects: 'Filtarastte fágaid',
@@ -277,47 +213,16 @@ const messages = {
     shows: 'Čájeha',
   },
   topicPage: {
-    articleErrorDescription: 'Šállošat, boasttuvuohta čuožžilii fáddáčilgehusa viežžamis.',
     topic: 'Fáddá',
     topics: 'Fáttát',
     imageModal: 'Geahča gova olles sturrodagas',
   },
   welcomePage: {
-    search: 'Oza',
-    searchDisclaimer:
-      'Mii bargat dađistaga buoridemiiguin! Jus dus lea kommentára ohcamii, de livččii buorre jus bijat daid vulos olgeš bealde siiddus "Jeara NDLA:s"',
     resetSearch: 'Sihko ohcama',
-    closeSearch: 'Govčča ohcama',
     searchAllInfo: 'Geahča buot ohcama deaivamiid',
-    topicsConjunction: 'ja',
-    highlighted: 'Áigeguovdil',
     heading: {
       heading: 'Našunála digitála oahppanarena',
-      searchFieldPlaceholder: 'Man birra odne háliidat oahppat?',
-      messages: {
-        searchFieldTitle: 'Oza',
-        menuButton: 'Sisdoallu',
-      },
-      links: {
-        aboutNDLA: 'NDLA birra',
-        changeLanguage: 'Molsso giela',
-      },
     },
-    socialMedia: {
-      heading: 'Čuovo min',
-      description: 'NDLAs leat máŋga Facebook- ja X-konttu. Gávnna dan mii dutnje heive ja čuovo min!',
-      mainLink: {
-        name: 'Čuovo min',
-      },
-    },
-    errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
-    film: {
-      header: 'NDLA filbma',
-      text: 'NDLA filbma lea bálvalus mii ovttasbargá Norgesfilmmain. Dán fálaldagas beasat oaidnit ollu filmmaid, oanehisfilmmaid, dokumentáraid ja ráidduid. Sáhtát maid geahččat oahpahusfilmmaid ja filbmaoasážiid. Bures boahtin filmma máilbmái!',
-      textShort: 'Bures boahtin filmma máilbmái!',
-      linkLabel: 'Mana NDLA filbmii',
-    },
-    blog: 'Bloggas',
   },
   toolboxPage: {
     introduction:
@@ -337,103 +242,38 @@ const messages = {
       toolboxStudents: 'Reaidokássa - ohppiide',
       toolboxTeachers: 'Reaidokássa - oahpaheddjiide',
       film: 'NDLA Filbma',
-      about: {
-        title: 'NDLA birra',
-        numbers: 'Logut ja raporttat',
-        keyPersonnel: 'Čoavddaolbmot',
-        vacancies: 'Almmuhusat',
-        vision: 'Niehkodoaivva ja árvvut',
-        communityPurpose: 'Min servvodatdoaibma',
-        history: 'NDLA historjá',
-        cooperation: 'Min ovttasbarggu',
-        faq: 'Dávjá jerron jearaladagat',
-        follow: 'Čuovo min sosiála medijaid',
-        whoAreWe: 'Geat leat mii?',
-        whatWeDo: 'Maid mii bargat?',
-        careers: 'Barggut min fitnodagas',
-        contactUs: 'Váldde oktavuođa minguin',
-        organizing: 'Organiseren',
-        articlesOfAssociation: 'Njuolggadusat',
-      },
     },
     menu: {
       button: 'Fállu',
       goToMainMenu: 'Mana váldofállui',
-      close: 'Govčča',
-      goTo: 'Mana deike',
       search: 'Oza',
-      toFrontpage: 'Ovdasiidui',
-      subjectOverview: 'Buot fágat',
       title: 'Raba fálu',
       modalLabel: 'Vállje sisdoalu',
-      subjectPage: 'Ovdasiidu fágas',
-      backToSubjectFrontpage: 'Ruovttoluotta fága ovdasiidui',
-      openFilter: 'Filttar',
-      useFilter: 'Geavat filtara',
-      closeFilter: 'Govčča filtara',
-      learningResourcesHeading: 'Oahppanresurssat',
-      back: 'Ruovttoluotta',
-      additionalFilterLabel: 'Lassi resurssat',
-      contentTypeResultsShowMore: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Čájet eanet fágaávdnasiid',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Čájet eanet bargobihtáid ja doaimmaid',
-        [contentTypes.LEARNING_PATH]: 'Čájet eanet oahppanbálgáid',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Čájet eanet árvvoštallanresurssaid',
-        [contentTypes.SOURCE_MATERIAL]: 'Čájet eanet gáldomateriálaid',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Čájet eanet olgguldas oahppanresurssaid',
-        unGrouped: 'Čájet eanet resurssaid',
-      },
-      contentTypeResultsShowLess: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Čájet unnit fágaávdnasiid',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Čájet unnit bargobihtáid ja doaimmaid',
-        [contentTypes.LEARNING_PATH]: 'Čájet unnit oahppanbálgáid',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Čájet unnit árvvoštallanresurssaid',
-        [contentTypes.SOURCE_MATERIAL]: 'Čájet unnit gáldomateriálaid',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Čájet unnit olgguldas oahppanresurssaid',
-        unGrouped: 'Čájet unnit resurssaid',
-      },
-      contentTypeResultsNoHit: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Ii makkárge fágaávnnas',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Eai makkárge bargobihtát',
-        [contentTypes.LEARNING_PATH]: 'Eai makkárge oahppanbálgát',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Eai makkárge árvvoštallanresurssat',
-        [contentTypes.SOURCE_MATERIAL]: 'Eai makkárge gáldomateriálat',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Eai makkárge olgguldas oahppanresurssat',
-        unGrouped: 'Eai makkárge resurssat',
-      },
     },
   },
   logo: {
     altText: 'Našunála digitála oahppanarena',
   },
   resource: {
-    errorDescription: 'Šállošat, boasttuvuohta čuožžilii fáddáresurssaid viežžamis.',
-    error: 'Šállošat, muhto oassi sisdoalus ii sáhte čájehuvvot.',
     noCoreResourcesAvailableUnspecific: 'Ii leat makkárge guovddášávnnas olamuttus.',
     noCoreResourcesAvailable: 'Ii leat guovddášávnnas čuovvovačča ovddas {{name}}.',
     activateAdditionalResources: 'Lassiávnnas',
     toggleFilterLabel: 'Lassiresurssat',
     label: 'Oahppanresurssat',
-    allResources: 'Resurssat',
-    shortcutButtonText: 'Oahppoávnnas',
     tooltipCoreTopic: 'Guovddášávnnas',
     tooltipAdditionalTopic: 'Lassiávnnas',
     additionalTooltip: 'Lassiávnnas',
-    shortcutsTooltip: 'Čájet {{count}} artihkkaliid dán fáttás',
     dialogTooltip: 'Mii leat guovddášávnnas ja lassiávnnas?',
     dialogHeading: 'Guovddášávnnas ja lassiávnnas',
     dialogText1: 'Go oahpat guovddášávdnasiid, hágat go dan gelbbolašvuođa mii oahppoplánas vurdojuvvo.',
     dialogText2:
       'Lassiávnnas lea sisdoallu fágas maid sáhtát lassin válljet guovddášávdnasii. Lassiávdnasa bokte sáhtát čiekŋudit iežat muhtin fáddái dahje lahkonaddat fáddái eará vugiin.',
-    showLess: 'Čájet unnit',
-    showMore: 'Čájet eanet',
     youAreHere: 'Don leat dás',
     trait: {
       video: 'Video',
       h5p: 'Interaktiiva',
     },
   },
-
   messageBoxInfo: {
     outdatedCoursePlan:
       'Dát fága čuovvu oahppoplána mii ii gusto šat. Mana fágii mii lea ođasmahttojuvvon gustovaš oahppoplána vuođul:',
@@ -512,9 +352,6 @@ const messages = {
     },
     licenseData: 'Sisttisdoallá dáhta dán vuolde',
     licenseFrom: 'biddjon olahanmuddui',
-  },
-  subject: {
-    associatedTopics: 'Gullevaš fáttát',
   },
   subjectFrontPage: {
     buildsOn: 'Duddjo dása',
@@ -700,8 +537,6 @@ const messages = {
       aboutNdla: 'NDLA birra',
       blog: 'Fágablogga',
       tips: 'Cavgileapmi ohppiide',
-      fyr: 'FYR-prošeakta',
-      sharing: 'Juohkinarena',
       vacancies: 'Rabas virggit',
     },
   },
@@ -756,7 +591,6 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'NDLA ovdasiidu',
-    youAreHere: 'Dás leat don',
     breadcrumb: 'Láibemoallobálggis',
   },
   listview: {
@@ -824,9 +658,7 @@ const messages = {
     loadingMovies: 'Viežžá filmmaid...',
     subjectsInMovies: 'Fáttát filmmas',
     about: {
-      heading: 'NDLA filmma birra',
       more: 'Loga eanet NDLA filmma birra',
-      text: 'NDLA filbma lea neahttavuđot filbmabálvalus ohppiide ja oahpaheddjiide joatkkaskuvllas. Dáppe gávnnat guoimmuhanfilmmaid, oanehisfilmmaid, dokumentárafilmmaid ja TV-ráidduid.',
     },
     search: {
       placeholder: 'Oza filbmanama vuođul',
@@ -865,36 +697,12 @@ const messages = {
       all: 'Buot filmmat A-Å',
     },
     allMovieGroupTitleLabel: 'Filmmat mat álget {{letter}}',
-    moreAboutNdlaFilm: {
-      header: 'NDLA Filbma',
-      firstParagraph:
-        'Filmmat filbmabálvalusas leat vižžouvvon norgga ja riikkaidgaskasaš filbmaárbbis ja leat čadnon oahppoplánaide máŋgga fágas. Dat leat válljejuvvon NDLA doaimmahusgottiin ovttasráđiid Norgesfilm AS:ain.',
-      secondParagraph:
-        'Sáhtát geahččat filmma jus leat interneahtas dihtora, neahttafiellu dahje mátketelefovnna bokte. Mii leat čielggadan vuoigatvuođarivttiid ja mávssu. Buot maid dárbbahat dahkat lea deaddilit Play',
-      thirdParagraph:
-        'Filmmain lea copyright mearka. Daid sáhttá nuvtta geahččat ndla.no:s, muhto ii vižžojuvvot iige juogaduvvot viidásit eará publikašuvnnain. Buot vuoigatvuođalaččaide máksojuvvo geahččamiid vuođul.',
-      secondHeading: 'Geavat filmma oahpahusas',
-      fourthParagraph:
-        'Filbma muitala historjjáid vugiid mielde mat movttiidit ja čuhcet midjiide. Filmmain adnojit muhtin daid beaktileamos visuála váikkuhangaskaomiin mat gávdnojit; ealli govva ja jietna. Buorre filbma sáhttá čájehit beliid dálááiggis ja addit višuvnnaid boahtteáiggis dahje kommenteret vássánáiggi. Danne filbma dávjá sáhttá addit buoret ipmárdusa dáhpáhusain, kulturdeaivvademiin ja historjjás go fágateaksta.',
-      fifthParagraph:
-        'Go filmmaid gehččet šaddet oahppit čeahpibut dulkot filbmagiela, nu ahte filbma oažžu árvvu lassin guoimmuheapmái. Oahppoplána obbalaš oassi deattuha ahte oahppit galget deaividit dáidagiin ja kulturvugiiguin mat arvvosmahttá, movttiidahttá iežaset duodjenávcca, ja ovddida ehtalaš orienterennávcca ja estehtalaš áiccu.',
-      tipSectionPt1: 'Buvtte áinnas cavgilemiid, gažaldagaid dahje filbmasávaldagaid dás',
-      tipSectionPt2: 'Facebook-siidu',
-      ariaLabel: 'Fina NDLA-filmma Facebooksiiddus',
-      tipSectionPt3: 'min',
-      ending: 'Mii sávvat buot filmaberošteddjiide buori ja oahppavaš vásáhusa!',
-    },
   },
   learningPath: {
     createLearningPathText: 'Ráhkat iežat, máŋge dán dahje geahča eará oahppobálgáid?',
     createLearningPathButtonText: 'Mana bálgáide',
     lastUpdated: 'Maŋemus ođastuvvon',
     youAreInALearningPath: 'Don leat dál muhtin oahppobálgás',
-    readTime: '{{hours}} Skuvladiimmut = {{minutes}} minuhtat',
-    readTimeHour: 'diibmu',
-    readTimeHour_plurals: 'diimmut',
-    readTimeMinutesShort: 'min',
-    pageOf: 'jáddaduvvon',
     lastStep: {
       heading: 'Maŋemus ceahkki oahppobálgás',
       headingSmall: 'Don leat dál oahppobálgá maŋemus ceahkis {{learningPathName}}',
@@ -912,22 +720,6 @@ const messages = {
     create: 'Ráhkat ođđa',
     isSelectedItem: 'Lasihuvvon',
     selected: '{{count}} válljejuvvon',
-  },
-  blogPosts: {
-    blog1: {
-      text: 'Ođđa fága NDLAs',
-      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
-      linkText: 'Fágablogga',
-      license: 'CC-BY-SA-4.0',
-      licenseAuthor: 'Vibeke Klungland',
-    },
-    blog2: {
-      text: 'Aktivisere ohppiid digitála reaidduiguin',
-      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
-      linkText: 'Fágablogga',
-      license: 'CC-BY-SA-4.0',
-      licenseAuthor: 'Tom Knudsen',
-    },
   },
   editor: {
     versionHistory: {
@@ -952,26 +744,13 @@ const messages = {
       text: 'lea ráhkaduvvon',
     },
   },
-  frontPageToolbox: {
-    heading: 'Reaidokássa',
-    text: 'Háliidat go šaddat čeahppin ovdanbuktit, dahje háliidat go oahppat buoret vugiin rievttes lohkanteknihka bokte? Dárbbahat go ráđiid mo beaktilepmosit ráhkkanit eksámenii? NDLA reaidokássas gávnnat ollu buriid ráđiid ja rávvagiid!',
-    linkTextStudents: 'Gávnna ohppiide rávvagiid dáppe',
-    linkTextTeachers: 'Gávnna oahpaheddjiide rávvagiid dáppe',
-    cursorText: 'Rávvagat',
-  },
   frontpageMultidisciplinarySubject: {
     heading: 'Fágaidrasttideaddji fáttát',
     text: 'Oahppoplána golbma fágaidrasttideaddji fáttáin leat vuolggasadjin áigeguovdilis hástalusat servvodagas mat gáibidit beroštumi ja rahčamuša ovttaskas olbmuin ja searvevuođas lagasbirrasis, našunálalaččat ja máilmmeviidosaččat.',
-    linkText: 'Geahča keisaid fágaidrasttideaddji fáttáin.',
-    publicHealthTopic: 'Álbmotdearvvašvuohta ja eallimis birgen',
-    democracyTopic: 'Demokratiija ja mielboargárvuohta',
-    sustainableTopic: 'Guoddevaš ovdáneapmi',
-    cursorText: 'Ođas',
   },
   frontpageMenu: {
     program: 'Oahppoprográmma',
     allsubjects: 'Buot fágat',
-    cursorText: 'Muosit oasážiid fágain mat bohtet 2022 čavčča',
   },
   navigation: {
     showLongerDescription: 'Čájet olles fáddáčilgehusa',
@@ -983,10 +762,6 @@ const messages = {
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Keisa mii gullá',
-  },
-  multibutton: {
-    open: 'Raba fálu',
-    close: 'Govčča fálu',
   },
   close: 'Govčča',
   loading: 'Viežžá',
@@ -1076,7 +851,6 @@ const messages = {
   fileTypesNotSupported: 'Fiilašládja/Fiilašlájat eai dorjojuvvo: {{fileTypes}}',
   download: 'Viečča fiilla: ',
   expandButton: 'Čájet stuora veršuvnna',
-  ...contributorTypes.se,
   filterButtons: {
     removeAllFilters: 'Sihko filtara',
   },
@@ -1118,11 +892,6 @@ const messages = {
     wrongUserInfoDisclaimer:
       'Jus leat boasttudieđut, de ferte organisašuvdna/skuvlaeaiggát masá geavaheaddji gullá ođasmahttit dan. Visogova geavaheaddjidoarjaga ektui gávnnat dás: ',
     moderator: 'Muddenplána',
-  },
-  checkOutNewFeature: 'Iskka ođđa doaibmilvuođa',
-  slateBlockMenu: {
-    open: 'Raba fálu',
-    close: 'Govčča fálu',
   },
   factbox: {
     open: 'Raba fáktádoasa',
@@ -1267,7 +1036,7 @@ const messages = {
         markAll: 'Merke visot lohkon',
         subscribe: 'Don oaččut dál dieđu ođđa vástádusaid dán čállosii',
         unsubscribe: 'Don leat heaitán muittuheames ođđa vástádusaid dán čállosii',
-        commentedOn: 'vástidii sáhkavuoru {{title}} maid don čuovvut',
+        commentedOn: 'vástidii sáhkavuoru <i>{{title}}</i> maid don čuovvut',
       },
       topicsBy: 'Sáhkavuorru maid',
     },
@@ -1364,26 +1133,6 @@ const messages = {
       feide: 'Dát vižžojuvvo du birra Feide:s',
       feideWrongInfo:
         'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot organisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogova geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstotte',
-      storageInfo: {
-        title: 'Ná vurket iežat oiddotresurssaid NDLA:s',
-        text: 'Deaddil váibmoboalu vurken dihtii resurssa.',
-      },
-      favoriteSubjects: {
-        title: 'Ná vurket iežat oidojuvvon fága NDLA:s',
-        text: 'Vurke fáttá Vurke- boaluin. Dalle lea dus vejolašvuohta vurket iežat favorihttafágaid maŋŋelii. Daid gávnnat Mu NDLA-girjjis dahje buot fágaid siiddus.',
-      },
-      sharing: {
-        title: 'Dál oahpaheaddjit sáhttet juogadit máhpaid earáiguin',
-        text: 'Coahkkal "Juoge" máhpas vai oažžut liŋkka maid earáiguin sáhtát juogadit.',
-      },
-      folderInfo: {
-        title: 'Ná ordnet iežat oiddotresurssaid máhpaide',
-        text: 'Deaddil mu máhpaid gurut bealde fálus beassan dihtii máhpa visogovvii. Doppe sáhtát ráhkadit ođđa máhpaid ja vuollemáhpaid. Sáhtát maid ráhkadit ođđa máhpa gulahallanláses mii ihtá go deaddilat váimmu muhtin resurssas.',
-      },
-      tagInfo: {
-        title: 'Ná gilkorasttát iežat oiddotresurssaid',
-        text: 'Go vurket muhtin resurssa de lea vejolaš merket resurssa fáddágilkoriin. Fáddágilkor lea čoavddasátni man sáhtát geavahit gávdnan dihte ruovttoluotta resurssaide máhpaid rastá. Gávnnat buot fáddágilkoriid maid leat geavahan go válljet mu fáddágilkoriid gurut bealde fálus. Das oainnát maiddái maid resurssaid don leat merken juohke fáddágilkoriin.',
-      },
       recentArenaTopics: 'Ođđa mearkkašumit arenas',
     },
     myProfile: {
@@ -1467,8 +1216,6 @@ const messages = {
   },
   siteNav: {
     search: 'Oza',
-    contact: 'Váldde oktavuođa',
-    help: 'Veahket',
   },
   programmes: {
     header: 'Maid háliidat oahppat odne?',

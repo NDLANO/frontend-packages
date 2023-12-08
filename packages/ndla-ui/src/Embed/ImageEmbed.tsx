@@ -6,20 +6,20 @@
  *
  */
 
-import { ImageEmbedData, ImageMetaData } from '@ndla/types-embed';
-import { useTranslation } from 'react-i18next';
-import { MouseEventHandler, useMemo, useState } from 'react';
 import parse from 'html-react-parser';
-import { ExpandTwoArrows } from '@ndla/icons/action';
-import { COPYRIGHTED } from '@ndla/licenses';
-import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { utils } from '@ndla/core';
+import { MouseEventHandler, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { utils } from '@ndla/core';
+import { ExpandTwoArrows } from '@ndla/icons/action';
+import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
+import { COPYRIGHTED } from '@ndla/licenses';
+import { ImageEmbedData, ImageMetaData } from '@ndla/types-embed';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from './types';
 import { Figure, FigureType } from '../Figure';
 import Image, { ImageLink } from '../Image';
 import { EmbedByline } from '../LicenseByline';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from './types';
 
 interface Props {
   embed: ImageMetaData;

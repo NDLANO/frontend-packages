@@ -9,8 +9,8 @@
 import { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Heading, Text } from '@ndla/typography';
-import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
+import { ItemProps } from '../Navigation/NavigationBox';
 
 interface Props {
   id?: string;

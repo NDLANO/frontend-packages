@@ -6,13 +6,13 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { OembedMetaData } from '@ndla/types-embed';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { OembedMetaData } from '@ndla/types-embed';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 import { Figure } from '../Figure';
 import { ResourceBox } from '../ResourceBox';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 
 interface Props {
   embed: OembedMetaData;

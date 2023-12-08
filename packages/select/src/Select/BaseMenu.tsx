@@ -6,10 +6,10 @@
  *
  */
 
+import { MenuProps, components, GroupBase } from 'react-select';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import { MenuProps, components, GroupBase } from 'react-select';
 import { Option } from './types';
 
 const menuStyle = css`

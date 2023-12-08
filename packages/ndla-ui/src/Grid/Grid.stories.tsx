@@ -6,9 +6,9 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
 import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
+import { Meta, StoryFn } from '@storybook/react';
 import { colors } from '@ndla/core';
 import Grid from './Grid';
 import { defaultParameters } from '../../../../stories/defaults';

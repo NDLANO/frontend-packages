@@ -20,7 +20,7 @@ module.exports = {
   ],
   root: true,
   parser: '@babel/eslint-parser',
-  plugins: ['react', 'react-hooks', 'import', 'jsx-a11y', 'lodash'],
+  plugins: ['react', 'react-hooks', 'import', 'jsx-a11y', 'lodash', 'header'],
 
   env: {
     browser: true,
@@ -138,7 +138,26 @@ module.exports = {
     'import/no-duplicates': 'error',
     'import/no-anonymous-default-export': 'error',
     'import/no-webpack-loader-syntax': 'error',
-    'import/order': ['warn', { groups: [['builtin', 'external', 'internal']] }],
+    'import/order': [
+      'warn',
+      {
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        groups: ['builtin', 'external', 'internal'],
+        pathGroupsExcludedImportTypes: [],
+        pathGroups: [
+          { pattern: '@ndla/**', group: 'internal', position: 'before', patternOptions: { matchBase: true } },
+          {
+            pattern: '@*/**',
+            group: 'external',
+            position: 'after',
+            patternOptions: { matchBase: true },
+          },
+        ],
+      },
+    ],
     'import/no-cycle': ['warn', { maxDepth: Infinity }],
 
     'lodash/import-scope': [2, 'method'],
@@ -152,6 +171,23 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'react/display-name': 'off',
     'react/prop-types': 'off',
+
+    'header/header': [
+      2,
+      'block',
+      [
+        '*',
+        {
+          pattern: ' * Copyright \\(c\\) \\d{4}-present, NDLA.',
+          template: ` * Copyright (c) ${new Date().getFullYear()}-present, NDLA.`,
+        },
+        ' *',
+        ' * This source code is licensed under the GPLv3 license found in the',
+        ' * LICENSE file in the root directory of this source tree.',
+        ' *',
+        ' ',
+      ],
+    ],
   },
 
   overrides: [

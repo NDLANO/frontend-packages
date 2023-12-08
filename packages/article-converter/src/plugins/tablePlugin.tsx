@@ -6,8 +6,8 @@
  *
  */
 
-import { Table } from '@ndla/ui';
 import { attributesToProps, domToReact } from 'html-react-parser';
+import { Table } from '@ndla/ui';
 import { PluginType } from './types';
 export const tablePlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);

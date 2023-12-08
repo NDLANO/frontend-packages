@@ -7,8 +7,8 @@
  */
 
 import VideoSearch from './VideoSearch';
-import { defaultParameters } from '../../../stories/defaults';
 import { firstBrightcoveList, firstYouTubeList, secondBrightcoveList, secondYouTubeList } from '../../../dummydata';
+import { defaultParameters } from '../../../stories/defaults';
 
 const firstDummyData = {
   brightcove: firstBrightcoveList,

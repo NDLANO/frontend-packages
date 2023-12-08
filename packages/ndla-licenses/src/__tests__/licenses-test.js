@@ -8,9 +8,8 @@
 
 /* eslint-env jest */
 
-import { getLicenseByAbbreviation, isCreativeCommonsLicense } from '../licenses';
-
 import { BY, SA, NC, CC, COPYRIGHTED, NA } from '../licenseRights';
+import { getLicenseByAbbreviation, isCreativeCommonsLicense } from '../licenses';
 
 test('licenses/getLicenseByAbbreviation get license for CC-BY-SA-4.0 in english', () => {
   const license = getLicenseByAbbreviation('CC-BY-SA-4.0', 'en');

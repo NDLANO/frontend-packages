@@ -7,21 +7,21 @@
  */
 
 import { KeyboardEvent, useMemo, useState } from 'react';
-import CreatableSelect from 'react-select/creatable';
+import { useTranslation } from 'react-i18next';
 import { MultiValue, StylesConfig } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, utils } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
+import { createAriaMessages } from './ariaMessages';
+import Control from './Control';
+import DropdownIndicator from './DropdownIndicator';
+import Input from './Input';
+import Menu from './Menu';
+import MenuList from './MenuList';
+import Option from './Option';
+import SelectContainer from './SelectContainer';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
-import DropdownIndicator from './DropdownIndicator';
-import SelectContainer from './SelectContainer';
-import MenuList from './MenuList';
-import Control from './Control';
-import Option from './Option';
-import Menu from './Menu';
-import { createAriaMessages } from './ariaMessages';
-import Input from './Input';
 
 const styles: StylesConfig<TagType, true> = {
   menu: () => ({}),

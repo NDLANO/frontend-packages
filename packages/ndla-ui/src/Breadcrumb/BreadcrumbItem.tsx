@@ -7,11 +7,11 @@
  */
 
 import { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react';
-import { ChevronRight } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { mq, spacing, breakpoints } from '@ndla/core';
-import { css } from '@emotion/react';
+import { ChevronRight } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
 
 export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;

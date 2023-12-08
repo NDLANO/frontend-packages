@@ -7,11 +7,11 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
+import AccordionContent from './AccordionContent';
+import AccordionHeader from './AccordionHeader';
+import AccordionItem from './AccordionItem';
 import AccordionRoot from './AccordionRoot';
 import { defaultParameters } from '../../../stories/defaults';
-import AccordionItem from './AccordionItem';
-import AccordionHeader from './AccordionHeader';
-import AccordionContent from './AccordionContent';
 
 const meta: Meta<typeof AccordionRoot> = {
   title: 'Components/Accordion',

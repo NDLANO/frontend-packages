@@ -8,10 +8,10 @@
 
 import { Meta, StoryObj } from '@storybook/react';
 import { EmailOutline, Facebook, Instagram, LinkedIn, Share, Youtube } from '@ndla/icons/common';
-import Footer from './Footer';
-import { defaultParameters } from '../../../../stories/defaults';
-import { FooterText } from './FooterText';
 import { EditorName } from './EditorName';
+import Footer from './Footer';
+import { FooterText } from './FooterText';
+import { defaultParameters } from '../../../../stories/defaults';
 import { LanguageSelector } from '../LanguageSelector';
 
 const mockCommonLinks = [

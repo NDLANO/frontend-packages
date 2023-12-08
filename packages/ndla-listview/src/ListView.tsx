@@ -1,11 +1,19 @@
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import { ChangeEvent, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import BEMHelper from 'react-bem-helper';
-import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
-import { FilterListPhone } from '@ndla/ui';
-import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
+import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
+import { FilterListPhone } from '@ndla/ui';
 import ListItem from './ListItem';
 
 const ListViewWrapper = styled.div`

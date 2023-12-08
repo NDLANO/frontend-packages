@@ -152,14 +152,7 @@ export { default as ResourceGroup } from './ResourceGroup';
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
 
-export {
-  FilmSlideshow,
-  MovieGrid,
-  AboutNdlaFilm,
-  FilmMovieSearch,
-  FilmMovieList,
-  AllMoviesAlphabetically,
-} from './NDLAFilm';
+export { FilmSlideshow, MovieGrid, FilmMovieSearch, FilmMovieList, AllMoviesAlphabetically } from './NDLAFilm';
 
 export {
   MediaList,

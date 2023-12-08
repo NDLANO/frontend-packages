@@ -7,8 +7,8 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../stories/defaults';
 import Tabs from './Tabs';
+import { defaultParameters } from '../../../stories/defaults';
 
 export default {
   title: 'Components/Tabs',

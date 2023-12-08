@@ -6,16 +6,16 @@
  *
  */
 
-import { ReactNode, useCallback, useEffect, useState } from 'react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { AccordionRoot, AccordionHeader, AccordionContent, AccordionItem } from '@ndla/accordion';
 import { TFunction } from 'i18next';
-import { FootNote } from '../types';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { AccordionRoot, AccordionHeader, AccordionContent, AccordionItem } from '@ndla/accordion';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 import ArticleFootNotes from './ArticleFootNotes';
 import LicenseLink from '../LicenseByline/LicenseLink';
+import { FootNote } from '../types';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};

@@ -7,9 +7,9 @@
  */
 
 import { Meta, StoryObj } from '@storybook/react';
-import { defaultParameters } from '../../../../stories/defaults';
 import FramedContent from './FramedContent';
 import FigureImage from '../../../../stories/article/FigureImage';
+import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Components/FramedContent',

@@ -9,13 +9,13 @@
 import { useEffect, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
+import Drawer from './Drawer';
 import { Modal, ModalTrigger } from './Modal';
 import ModalBody from './ModalBody';
+import ModalCloseButton from './ModalCloseButton';
 import ModalHeader from './ModalHeader';
 import ModalTitle from './ModalTitle';
-import ModalCloseButton from './ModalCloseButton';
 import { defaultParameters } from '../../../stories/defaults';
-import Drawer from './Drawer';
 
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',

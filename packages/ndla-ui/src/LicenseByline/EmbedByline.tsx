@@ -8,17 +8,17 @@
 
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
+import { WarningOutline } from '@ndla/icons/common';
 import { getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
-import { ICopyright as ImageCopyright } from '@ndla/types-backend/image-api';
 import { ICopyright as AudioCopyright } from '@ndla/types-backend/audio-api';
 import { IDraftCopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
+import { ICopyright as ImageCopyright } from '@ndla/types-backend/image-api';
 import { BrightcoveCopyright } from '@ndla/types-embed';
-import { WarningOutline } from '@ndla/icons/common';
-import LicenseLink from './LicenseLink';
 import LicenseDescription from './LicenseDescription';
+import LicenseLink from './LicenseLink';
 
 interface BaseProps {
   topRounded?: boolean;

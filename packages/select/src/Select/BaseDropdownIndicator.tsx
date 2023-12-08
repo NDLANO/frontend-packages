@@ -6,9 +6,9 @@
  *
  */
 
+import { DropdownIndicatorProps } from 'react-select';
 import styled from '@emotion/styled';
 import { ChevronDown } from '@ndla/icons/common';
-import { DropdownIndicatorProps } from 'react-select';
 import { Option } from './types';
 
 export const StyledDropdown = styled.div`

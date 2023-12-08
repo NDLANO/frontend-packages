@@ -7,9 +7,9 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
+import LearningPathMenu from './LearningPathMenu';
 import { defaultParameters } from '../../../../stories/defaults';
 import { contentTypes } from '../model/ContentType';
-import LearningPathMenu from './LearningPathMenu';
 const args = {
   name: 'Læringssti',
   LearningPathId: 1,

@@ -8,10 +8,10 @@
 
 import { useMemo } from 'react';
 import styled from '@emotion/styled';
-import { uuid as uuidFunc } from '@ndla/util';
-import { Text } from '@ndla/typography';
-import { spacing, fonts, colors, misc } from '@ndla/core';
 import { Indicator, Item, RadioGroupItemProps, RadioGroupProps, Root } from '@radix-ui/react-radio-group';
+import { spacing, fonts, colors, misc } from '@ndla/core';
+import { Text } from '@ndla/typography';
+import { uuid as uuidFunc } from '@ndla/util';
 
 interface Props {
   selected?: string;

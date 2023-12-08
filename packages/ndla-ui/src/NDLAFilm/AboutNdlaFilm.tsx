@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
-import { colors, spacing, mq, breakpoints } from '@ndla/core';
 import { ButtonV2 as Button } from '@ndla/button';
+import { colors, spacing, mq, breakpoints } from '@ndla/core';
+import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 import VisualElement from './VisualElement';
 
 const StyledAside = styled.aside`

@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { useMemo } from 'react';
-import { colors, fonts, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { IconButtonV2 as IconButton } from '@ndla/button';
+import { colors, fonts, spacing } from '@ndla/core';
 import { alphabet } from './alphabet';
 
 const StyledUL = styled.ul`

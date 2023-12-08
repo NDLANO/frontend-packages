@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing } from '@ndla/core';
-import { Root, List, Trigger, Content } from '@radix-ui/react-tabs';
 import { HTMLAttributes, ReactNode } from 'react';
+import styled from '@emotion/styled';
+import { Root, List, Trigger, Content } from '@radix-ui/react-tabs';
+import { colors, fonts, misc, spacing } from '@ndla/core';
 
 interface TabType {
   title: string;

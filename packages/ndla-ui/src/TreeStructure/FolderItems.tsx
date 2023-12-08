@@ -11,8 +11,8 @@ import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
 import FolderItem from './FolderItem';
-import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from './types';
 import { treestructureId } from './helperFunctions';
+import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from './types';
 
 const StyledUL = styled.ul`
   ${animations.fadeInLeft(animations.durations.fast)};

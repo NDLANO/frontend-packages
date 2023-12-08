@@ -7,9 +7,9 @@
  */
 
 import { ReactNode, useRef } from 'react';
-import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
 import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
 
 interface Props {

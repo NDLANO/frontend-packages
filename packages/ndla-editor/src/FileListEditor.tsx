@@ -7,13 +7,13 @@
  */
 
 import { Component, MouseEvent as ReactMouseEvent, createRef, MutableRefObject } from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import Tooltip from '@ndla/tooltip';
-import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
-import { Pencil } from '@ndla/icons/action';
+import styled from '@emotion/styled';
 import { spacing, spacingUnit, fonts, colors, shadows, animations } from '@ndla/core';
 import { CheckboxItem } from '@ndla/forms';
+import { Pencil } from '@ndla/icons/action';
+import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
+import Tooltip from '@ndla/tooltip';
 import FileNameInput from './FileNameInput';
 
 const FILE_HEIGHT = 69;

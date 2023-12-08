@@ -1,7 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import Select from './Select';
 import { defaultParameters } from '../../../../stories/defaults';
 
-import Select from './Select';
 
 export default {
   title: 'Components/Select',

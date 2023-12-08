@@ -8,8 +8,8 @@
 
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { WarningOutline } from '@ndla/icons/common';
 import { colors, spacing } from '@ndla/core';
+import { WarningOutline } from '@ndla/icons/common';
 import { Figure, FigureType } from '../Figure';
 import { EmbedByline } from '../LicenseByline';
 import { EmbedBylineErrorProps } from '../LicenseByline/EmbedByline';

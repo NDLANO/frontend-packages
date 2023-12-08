@@ -6,9 +6,9 @@
  *
  */
 
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { mq, breakpoints, typography } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
 
 const StyledInfo = styled.div`
   ${typography.smallHeading}

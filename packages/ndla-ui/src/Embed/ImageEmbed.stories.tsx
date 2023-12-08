@@ -6,10 +6,10 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import { ImageEmbedData } from '@ndla/types-embed';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { ReactNode } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
+import { ImageEmbedData } from '@ndla/types-embed';
 import ImageEmbed from './ImageEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
 import StoryFavoriteButton from '../../../../stories/StoryFavoriteButton';

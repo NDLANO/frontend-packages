@@ -6,8 +6,8 @@
  *
  */
 
-import { Root, Thumb, SwitchProps } from '@radix-ui/react-switch';
 import styled from '@emotion/styled';
+import { Root, Thumb, SwitchProps } from '@radix-ui/react-switch';
 import { colors, fonts, spacing } from '@ndla/core';
 
 interface Props extends Omit<SwitchProps, 'asChild' | 'id' | 'onChange' | 'onCheckedChange'> {

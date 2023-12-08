@@ -7,11 +7,11 @@
  */
 
 import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
 import { ButtonV2 } from '@ndla/button';
+import { PanoramaPhotosphere } from '@ndla/icons/common';
 import { getLicenseByNBTitle } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { PanoramaPhotosphere } from '@ndla/icons/common';
-import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
 import { LicenseShape, BrightcoveShape } from './shapes';
 

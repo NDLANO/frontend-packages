@@ -6,10 +6,10 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryFn } from '@storybook/react';
 import LetterFilter from './LetterFilter';
+import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Components/LetterFilter',

@@ -6,14 +6,14 @@
  *
  */
 
-import { AudioMetaData, ImageMetaData } from '@ndla/types-embed';
 import { COPYRIGHTED } from '@ndla/licenses';
+import { AudioMetaData, ImageMetaData } from '@ndla/types-embed';
+import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { Author } from './ImageEmbed';
+import { HeartButtonType } from './types';
 import AudioPlayer from '../AudioPlayer';
 import { Figure } from '../Figure';
-import { Author } from './ImageEmbed';
 import { EmbedByline } from '../LicenseByline';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
 
 interface Props {
   embed: AudioMetaData;

@@ -6,12 +6,12 @@
  *
  */
 
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { useMemo } from 'react';
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { DropdownIndicatorProps, components } from 'react-select';
+import styled from '@emotion/styled';
 import { iconButtonStyle } from '@ndla/button';
+import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { TagType } from './types';
 
 const StyledIconWrapper = styled.span`

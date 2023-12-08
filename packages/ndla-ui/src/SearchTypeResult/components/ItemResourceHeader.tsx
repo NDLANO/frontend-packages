@@ -12,11 +12,11 @@ import styled from '@emotion/styled';
 
 import { fonts, spacing } from '@ndla/core';
 
-import { ContentType } from '../SearchTypeResult';
-import { SearchItemType } from '../SearchItem';
-
-import resourceTypeColor from '../../utils/resourceTypeColor';
 import ContentTypeBadge from '../../ContentTypeBadge';
+import resourceTypeColor from '../../utils/resourceTypeColor';
+import { SearchItemType } from '../SearchItem';
+import { ContentType } from '../SearchTypeResult';
+
 
 interface ItemTypeProps {
   contentType?: ContentType;

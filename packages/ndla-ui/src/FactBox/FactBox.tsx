@@ -8,11 +8,11 @@
 
 import { ComponentProps, ReactNode, forwardRef, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { IconButtonV2 } from '@ndla/button';
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { css } from '@emotion/react';
+import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 
 interface Props extends ComponentProps<'aside'> {
   children?: ReactNode;

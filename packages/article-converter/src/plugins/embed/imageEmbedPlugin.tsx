@@ -6,9 +6,9 @@
  *
  */
 
-import { ImageEmbed } from '@ndla/ui';
 import { attributesToProps, Element } from 'html-react-parser';
 import { ImageMetaData } from '@ndla/types-embed';
+import { ImageEmbed } from '@ndla/ui';
 import { PluginType } from '../types';
 
 export const imageEmbedPlugin: PluginType = (element, _, opts) => {

@@ -6,10 +6,10 @@
  *
  */
 
+import { OptionProps } from 'react-select';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Done } from '@ndla/icons/editor';
-import { OptionProps } from 'react-select';
 import { Option } from './types';
 
 const StyledCheck = styled(Done)`

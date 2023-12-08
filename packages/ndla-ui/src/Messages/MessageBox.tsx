@@ -6,12 +6,12 @@
  *
  */
 
+import { ReactNode } from 'react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { CloseButton } from '@ndla/button';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { Forward } from '@ndla/icons/common';
-import { CloseButton } from '@ndla/button';
-import { css } from '@emotion/react';
-import { ReactNode } from 'react';
 
 type MessageBoxType = 'ghost' | 'danger';
 

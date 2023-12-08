@@ -6,11 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { ReactNode } from 'react';
+import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import ContentTypeBadge from '../ContentTypeBadge';
-import Image from '../Image';
 import {
   CompressedTagList,
   ResourceImageProps,
@@ -21,6 +19,8 @@ import {
   resourceHeadingStyle,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
+import ContentTypeBadge from '../ContentTypeBadge';
+import Image from '../Image';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
 
 const BlockElementWrapper = styled.div`

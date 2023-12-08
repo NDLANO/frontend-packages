@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import { CloseButton } from '@ndla/button';
 import { ReactNode } from 'react';
+import styled from '@emotion/styled';
+import { CloseButton } from '@ndla/button';
+import { colors, spacing } from '@ndla/core';
 
 interface WrapperProps {
   small?: boolean;

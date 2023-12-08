@@ -5,14 +5,14 @@
  *
  */
 
-import { Carousel } from '@ndla/carousel';
 import styled from '@emotion/styled';
 import { IconButtonV2 } from '@ndla/button';
-import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
+import { Carousel } from '@ndla/carousel';
 import { breakpoints, mq, spacing } from '@ndla/core';
+import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 import FilmContentCard from './FilmContentCard';
-import { MovieResourceType, MovieType } from './types';
 import { StyledHeadingH2 } from './filmStyles';
+import { MovieResourceType, MovieType } from './types';
 
 interface Props {
   movies: MovieType[];

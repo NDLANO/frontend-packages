@@ -6,10 +6,10 @@
  *
  */
 
+import { HTMLAttributes, memo } from 'react';
 import styled from '@emotion/styled';
 import { Root } from '@radix-ui/react-accordion';
 import { spacing } from '@ndla/core';
-import { HTMLAttributes, memo } from 'react';
 
 interface SingleProps extends Omit<HTMLAttributes<HTMLDivElement>, 'dir'> {
   type: 'single';

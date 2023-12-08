@@ -10,8 +10,8 @@ import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 import { getLicenseRightByAbbreviation } from '@ndla/licenses';
 import LicenseIcon from './LicenseIcon';
-import StyledLicenseIconList from './StyledLicenseIconList';
 import LicensePopover from './LicensePopover';
+import StyledLicenseIconList from './StyledLicenseIconList';
 
 interface StyledListItemProps {
   horizontal?: boolean;

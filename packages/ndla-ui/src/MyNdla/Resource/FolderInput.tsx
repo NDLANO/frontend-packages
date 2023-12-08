@@ -6,16 +6,16 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { IconButtonV2 } from '@ndla/button';
-import { Cross } from '@ndla/icons/action';
 import { ComponentPropsWithRef, forwardRef, useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { IconButtonV2 } from '@ndla/button';
 import { colors, spacing } from '@ndla/core';
 import { InputContainer, FieldErrorMessage, InputV3, FieldHelper, FormControl, Label } from '@ndla/forms';
-import { Done } from '@ndla/icons/editor';
 import { Spinner } from '@ndla/icons';
+import { Cross } from '@ndla/icons/action';
+import { Done } from '@ndla/icons/editor';
 import { composeRefs } from '@ndla/util';
 
 interface Props {

@@ -6,10 +6,10 @@
  *
  */
 
+import ActiveFilters from './ActiveFilters';
 import SearchField from './SearchField';
 
 import { SearchResultList, SearchResultItem } from './SearchResult';
 
-import ActiveFilters from './ActiveFilters';
 
 export { SearchField, SearchResultItem, SearchResultList, ActiveFilters };

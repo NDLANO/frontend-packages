@@ -8,9 +8,9 @@
 
 import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../stories/defaults';
-import spacing from './spacing';
 import colors from './colors';
+import spacing from './spacing';
+import { defaultParameters } from '../../../stories/defaults';
 
 const Wrapper = styled.div`
   display: flex;

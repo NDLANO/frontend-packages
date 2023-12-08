@@ -6,8 +6,11 @@
  *
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
+import { FieldErrorMessage } from './FieldErrorMessage';
+import { FormControl } from './FormControl';
+import { Label } from './Label';
 import Select from './Select';
 import { defaultParameters } from '../../../stories/defaults';
 
@@ -58,5 +61,36 @@ export const Default: StoryFn<typeof Select> = ({ value: valueProp, ...args }) =
         </option>
       ))}
     </Select>
+  );
+};
+
+export const WithFormControl: StoryFn<typeof Select> = ({ value: valueProp, ...args }) => {
+  const [value, setValue] = useState<string | undefined>(valueProp as string | undefined);
+  const error = useMemo(() => {
+    if (!value?.length) {
+      return 'Du må velge en rolle';
+    }
+    return undefined;
+  }, [value]);
+
+  const id = useId();
+
+  useEffect(() => {
+    setValue(valueProp as string);
+  }, [valueProp]);
+
+  return (
+    <FormControl id={id} isRequired isInvalid={!!error}>
+      <Label>Rolle</Label>
+      <Select {...args} value={value} onChange={(e) => setValue(e.currentTarget.value)}>
+        <option value="">Tildel rolle</option>
+        {roleExamples.map((titleRole) => (
+          <option value={titleRole} key={titleRole}>
+            {titleRole}
+          </option>
+        ))}
+      </Select>
+      <FieldErrorMessage>{error}</FieldErrorMessage>
+    </FormControl>
   );
 };

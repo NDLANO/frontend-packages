@@ -33,7 +33,7 @@ export interface FormControlOptions {
   isRequired?: boolean;
 }
 
-export interface FormControlProviderType extends FormControlOptions {
+export interface FormControlProps extends FormControlOptions {
   id: string;
 }
 
@@ -44,7 +44,7 @@ const StyledFormControl = styled.div`
 
 type FormControlContextType = ReturnType<typeof useFormControlProvider>;
 
-const useFormControlProvider = ({ id: idProp, isRequired, isDisabled, isInvalid }: FormControlProviderType) => {
+const useFormControlProvider = ({ id: idProp, isRequired, isDisabled, isInvalid }: FormControlProps) => {
   const id = `field-${idProp}`;
   const labelId = `${id}-label`;
   const errorTextId = `${id}-error-message`;
@@ -126,7 +126,7 @@ export const FormControl = ({
   isInvalid,
   isRequired,
   ...rest
-}: HTMLAttributes<HTMLDivElement> & FormControlProviderType) => {
+}: HTMLAttributes<HTMLDivElement> & FormControlProps) => {
   const context = useFormControlProvider({ id, isDisabled, isInvalid, isRequired });
   return (
     <FormControlContext.Provider value={context}>

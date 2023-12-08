@@ -171,23 +171,6 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'react/display-name': 'off',
     'react/prop-types': 'off',
-
-    'header/header': [
-      2,
-      'block',
-      [
-        '*',
-        {
-          pattern: ' * Copyright \\(c\\) \\d{4}-present, NDLA.',
-          template: ` * Copyright (c) ${new Date().getFullYear()}-present, NDLA.`,
-        },
-        ' *',
-        ' * This source code is licensed under the GPLv3 license found in the',
-        ' * LICENSE file in the root directory of this source tree.',
-        ' *',
-        ' ',
-      ],
-    ],
   },
 
   overrides: [
@@ -237,6 +220,22 @@ module.exports = {
         '@typescript-eslint/no-useless-constructor': 'warn',
         '@typescript-eslint/consistent-type-assertions': 'warn',
         'prefer-rest-params': 'off',
+        'header/header': [
+          2,
+          'block',
+          [
+            '*',
+            {
+              pattern: ' * Copyright \\(c\\) \\d{4}-present, NDLA.',
+              template: ` * Copyright (c) ${new Date().getFullYear()}-present, NDLA.`,
+            },
+            ' *',
+            ' * This source code is licensed under the GPLv3 license found in the',
+            ' * LICENSE file in the root directory of this source tree.',
+            ' *',
+            ' ',
+          ],
+        ],
       },
     },
   ],

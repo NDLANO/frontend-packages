@@ -6,19 +6,19 @@
  *
  */
 
+import parse from 'html-react-parser';
 import sortBy from 'lodash/sortBy';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
 import { spacing } from '@ndla/core';
 import { COPYRIGHTED } from '@ndla/licenses';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import parse from 'html-react-parser';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
-import { useTranslation } from 'react-i18next';
-import { ButtonV2 } from '@ndla/button';
-import { Figure } from '../Figure';
-import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 import { HeartButtonType, RenderContext } from './types';
+import { Figure } from '../Figure';
+import { EmbedByline } from '../LicenseByline';
 
 interface Props {
   embed: BrightcoveMetaData;

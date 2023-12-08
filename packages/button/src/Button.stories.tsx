@@ -1,7 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { defaultParameters } from '../../../stories/defaults';
-
 import ButtonV2 from './ButtonV2';
+import { defaultParameters } from '../../../stories/defaults';
 
 export default {
   title: 'Components/Buttons/Button',

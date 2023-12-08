@@ -7,13 +7,13 @@
  */
 
 import { useState } from 'react';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
-import SafeLink from '@ndla/safelink';
+import { spacing } from '@ndla/core';
 import { BY, CC } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
+import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
 import CompetenceItem, { ListItemProp } from './CompetenceItem';
 

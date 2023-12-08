@@ -7,8 +7,8 @@
  */
 
 import styled from '@emotion/styled';
-import { User } from '@ndla/icons/common';
 import { spacing, fonts, colors } from '@ndla/core';
+import { User } from '@ndla/icons/common';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
 

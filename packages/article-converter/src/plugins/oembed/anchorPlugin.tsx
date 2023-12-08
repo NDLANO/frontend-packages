@@ -7,8 +7,8 @@
  */
 
 import { attributesToProps, domToReact } from 'html-react-parser';
-import { getPossiblyRelativeUrl } from '@ndla/ui';
 import SafeLink from '@ndla/safelink';
+import { getPossiblyRelativeUrl } from '@ndla/ui';
 import { PluginType } from '../types';
 
 export const anchorPlugin: PluginType = (node, options, { path }) => {

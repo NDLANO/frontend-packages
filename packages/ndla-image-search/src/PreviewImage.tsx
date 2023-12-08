@@ -9,12 +9,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ButtonV2 } from '@ndla/button';
-import { uuid } from '@ndla/util';
 import { CheckboxItem } from '@ndla/forms';
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
+import { uuid } from '@ndla/util';
 
-import { getSrcSets } from './util/imageUtil';
 import ImageMeta from './ImageMeta';
+import { getSrcSets } from './util/imageUtil';
 
 interface Props {
   image: IImageMetaInformationV3;

@@ -7,11 +7,11 @@
  */
 
 import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
+import { colors, spacing } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
-import { ButtonV2 } from '@ndla/button';
 import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-backend/audio-api';
-import { colors, spacing } from '@ndla/core';
 import AudioBar from './AudioBar';
 
 const StyledListItem = styled.div`

@@ -6,17 +6,17 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
 import { CSSProperties, HTMLAttributes, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IconButtonV2 } from '@ndla/button';
-import SafeLink, { SafeLinkButton } from '@ndla/safelink';
-import { HashTag } from '@ndla/icons/common';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { IconButtonV2 } from '@ndla/button';
+import { colors, fonts, spacing } from '@ndla/core';
 import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown-menu';
-import resourceTypeColor from '../utils/resourceTypeColor';
+import { HashTag } from '@ndla/icons/common';
+import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import { resourceEmbedTypeMapping } from '../model/ContentType';
+import resourceTypeColor from '../utils/resourceTypeColor';
 
 export interface ResourceImageProps {
   alt: string;

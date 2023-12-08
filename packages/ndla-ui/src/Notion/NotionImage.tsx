@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { animations, breakpoints, mq, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import Image from '../Image';
 import { Figure, FigureOpenDialogButton } from '../Figure';
+import Image from '../Image';
 
 const StyledImageWrapper = styled.div`
   overflow: hidden;

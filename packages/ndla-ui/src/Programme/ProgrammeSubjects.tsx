@@ -11,8 +11,8 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { SafeLinkButton } from '@ndla/safelink';
-import { NavigationBox } from '../Navigation';
 import { MessageBox } from '../Messages';
+import { NavigationBox } from '../Navigation';
 
 const GradesMenu = styled.ul`
   display: flex;

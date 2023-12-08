@@ -6,10 +6,10 @@
  *
  */
 
-import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
 import { IconButtonV2, ButtonV2 } from '@ndla/button';
-import { HorizontalMenu } from '@ndla/icons/contentType';
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
 import { Pencil } from '@ndla/icons/action';
+import { HorizontalMenu } from '@ndla/icons/contentType';
 import { DeleteForever } from '@ndla/icons/editor';
 
 export const resourceTypesArr = [

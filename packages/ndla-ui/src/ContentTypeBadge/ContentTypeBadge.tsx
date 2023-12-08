@@ -1,5 +1,6 @@
 import BEMHelper from 'react-bem-helper';
 
+import { MenuBook } from '@ndla/icons/action';
 import {
   SubjectMaterial,
   TasksAndActivities,
@@ -11,7 +12,6 @@ import {
   MultidisciplinaryTopic,
 } from '@ndla/icons/contentType';
 
-import { MenuBook } from '@ndla/icons/action';
 import { Concept, ImageNormal, SquareAudio, SquareVideo } from '@ndla/icons/editor';
 
 import * as contentTypes from '../model/ContentType';

@@ -5,10 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { colors, fonts, misc, spacing } from '@ndla/core';
-import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { themes } from './themes';
 import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonFontWeight } from './types';
 

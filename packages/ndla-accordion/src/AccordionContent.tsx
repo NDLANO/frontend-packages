@@ -6,11 +6,11 @@
  *
  */
 
+import { HTMLAttributes, ReactNode, memo } from 'react';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
 import { Content } from '@radix-ui/react-accordion';
-import { HTMLAttributes, ReactNode, memo } from 'react';
+import { spacing } from '@ndla/core';
 
 const slideDown = keyframes`
   from {

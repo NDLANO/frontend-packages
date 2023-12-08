@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
 import { Forward, Launch } from '@ndla/icons/common';
-import { useTranslation } from 'react-i18next';
+import SafeLink from '@ndla/safelink';
 
 const StyledLinksWrapper = styled.div`
   display: flex;

@@ -6,13 +6,13 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { MenuBook } from '@ndla/icons/action';
-import { colors, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core';
+import { MenuBook } from '@ndla/icons/action';
 import CompetenceGoalItem from './CompetenceGoalItem';
-import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
 import CoreElementItem from './CoreElementItem';
+import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
 
 const GroupedElementWrapper = styled.div`
   margin: ${spacing.normal} 0 ${spacing.large};

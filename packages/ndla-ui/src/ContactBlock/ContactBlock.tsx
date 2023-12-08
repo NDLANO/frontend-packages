@@ -6,19 +6,19 @@
  *
  */
 
+import concat from 'lodash/concat';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import concat from 'lodash/concat';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 import { BlobPointy, BlobRound } from '@ndla/icons/common';
 import { COPYRIGHTED, getLicenseByAbbreviation } from '@ndla/licenses';
+import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
+import { CanonicalUrlFuncs } from '../Embed';
 import { errorSvgSrc } from '../Embed/ImageEmbed';
 import Image, { ImageLink } from '../Image';
 import LicenseLink from '../LicenseByline/LicenseLink';
-import { CanonicalUrlFuncs } from '../Embed';
 
 const BLOB_WIDTH = 90;
 

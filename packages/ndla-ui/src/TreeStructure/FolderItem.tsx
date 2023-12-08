@@ -9,16 +9,16 @@
 import { CSSProperties, KeyboardEvent, useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { ButtonV2 as Button } from '@ndla/button';
+import { colors, spacing, animations, misc, fonts } from '@ndla/core';
 import { ArrowDropDownRounded } from '@ndla/icons/common';
 import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
 import { Done } from '@ndla/icons/editor';
-import { ButtonV2 as Button } from '@ndla/button';
-import { colors, spacing, animations, misc, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
-import { CommonFolderItemsProps } from './types';
 import { arrowNavigation } from './arrowNavigation';
 import { treestructureId } from './helperFunctions';
+import { CommonFolderItemsProps } from './types';
 
 const OpenButton = styled.span`
   display: flex;

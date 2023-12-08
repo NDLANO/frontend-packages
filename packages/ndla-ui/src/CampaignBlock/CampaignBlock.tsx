@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import SafeLink from '@ndla/safelink';
-import { Forward } from '@ndla/icons/common';
+import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
+import { Forward } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
 import { HeadingLevel } from '@ndla/typography';
 import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
 

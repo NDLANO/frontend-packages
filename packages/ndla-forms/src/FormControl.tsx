@@ -6,8 +6,6 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { composeRefs } from '@ndla/util';
 import {
   ComponentPropsWithRef,
   ElementType,
@@ -19,6 +17,8 @@ import {
   useContext,
   useState,
 } from 'react';
+import styled from '@emotion/styled';
+import { composeRefs } from '@ndla/util';
 
 type Merge<T, P> = P & Omit<T, keyof P>;
 

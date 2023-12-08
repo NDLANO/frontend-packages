@@ -6,15 +6,15 @@
  *
  */
 
-import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import Pager from '@ndla/pager';
+import { getLastPage } from './videoHelpers';
+import VideoLoadMoreButton from './VideoLoadMoreButton';
 import VideoSearchForm from './VideoSearchForm';
 import VideoSearchList from './VideoSearchList';
-import VideoLoadMoreButton from './VideoLoadMoreButton';
 import VideoTabs from './VideoTabs';
-import { getLastPage } from './videoHelpers';
 
 const classes = new BEMHelper({
   name: 'video-search',

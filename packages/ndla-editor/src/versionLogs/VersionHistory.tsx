@@ -7,9 +7,9 @@
  */
 
 import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing, colors, fonts } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
 const StyledWrapper = styled.div`
   padding: ${spacing.small} 0;
   width: 100%;

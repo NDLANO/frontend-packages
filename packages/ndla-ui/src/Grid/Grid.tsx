@@ -6,9 +6,9 @@
  *
  */
 
+import { HTMLAttributes, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
-import { HTMLAttributes, ReactNode } from 'react';
 
 export interface GridProps {
   columns: '2' | '4' | '2x2';

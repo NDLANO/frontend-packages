@@ -6,9 +6,9 @@
  *
  */
 
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { ReactNode } from 'react';
 
 interface Props {
   description: ReactNode;

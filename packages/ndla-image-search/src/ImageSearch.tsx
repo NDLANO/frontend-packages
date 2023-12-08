@@ -7,13 +7,13 @@
  */
 
 import { ChangeEvent, Component, ReactNode, KeyboardEvent } from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
-import Pager from '@ndla/pager';
-import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from '@ndla/types-backend/image-api';
 import { InputContainer, InputV3 } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
+import Pager from '@ndla/pager';
+import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from '@ndla/types-backend/image-api';
 import ImageSearchResult from './ImageSearchResult';
 
 const ImageSearchWrapper = styled.div`

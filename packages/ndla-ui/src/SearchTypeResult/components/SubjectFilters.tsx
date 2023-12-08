@@ -13,9 +13,9 @@ import { ButtonV2 } from '@ndla/button';
 import { Plus as PlusIcon } from '@ndla/icons/action';
 
 import { Modal, ModalTrigger } from '@ndla/modal';
-import PopupFilter, { PopupFilterProps } from '../PopupFilter';
-import ActiveFilters from '../ActiveFilters';
 import { FilterProps } from '../ActiveFilterContent';
+import ActiveFilters from '../ActiveFilters';
+import PopupFilter, { PopupFilterProps } from '../PopupFilter';
 
 const FilterButtonText = styled.span`
   display: inline-block;

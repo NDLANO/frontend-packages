@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { ReactNode } from 'react';
-import { FolderOutlined, FolderSharedOutlined } from '@ndla/icons/contentType';
-import { FileDocumentOutline, Share } from '@ndla/icons/common';
-import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
+import { FileDocumentOutline, Share } from '@ndla/icons/common';
+import { FolderOutlined, FolderSharedOutlined } from '@ndla/icons/contentType';
 import { ResourceTitleLink } from '../../Resource/resourceComponents';
 
 export type LayoutType = 'list' | 'listLarger' | 'block';

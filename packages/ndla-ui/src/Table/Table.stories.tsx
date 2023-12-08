@@ -7,8 +7,8 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../../stories/defaults';
 import Table from './Table';
+import { defaultParameters } from '../../../../stories/defaults';
 
 /**
  * Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles opp i flere tabeller.

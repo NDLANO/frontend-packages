@@ -7,12 +7,12 @@
  */
 
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors, spacing, animations, mq, breakpoints } from '@ndla/core';
 import { Back, Forward } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
-import { useTranslation } from 'react-i18next';
 
 const FOOTER_HEIGHT = '78px';
 const FOOTER_HEIGHT_MOBILE = spacing.large;

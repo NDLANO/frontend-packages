@@ -7,13 +7,13 @@
  */
 
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
 import { FooterHeaderIcon } from '@ndla/icons/common';
-import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';
+import { OneColumn } from '../Layout';
 import { Locale } from '../types';
 
 const StyledBackground = styled.div`

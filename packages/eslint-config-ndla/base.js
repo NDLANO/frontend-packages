@@ -138,7 +138,26 @@ module.exports = {
     'import/no-duplicates': 'error',
     'import/no-anonymous-default-export': 'error',
     'import/no-webpack-loader-syntax': 'error',
-    'import/order': ['warn', { groups: [['builtin', 'external', 'internal']] }],
+    'import/order': [
+      'warn',
+      {
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        groups: ['builtin', 'external', 'internal'],
+        pathGroupsExcludedImportTypes: [],
+        pathGroups: [
+          { pattern: '@ndla/**', group: 'internal', position: 'before', patternOptions: { matchBase: true } },
+          {
+            pattern: '@*/**',
+            group: 'external',
+            position: 'after',
+            patternOptions: { matchBase: true },
+          },
+        ],
+      },
+    ],
     'import/no-cycle': ['warn', { maxDepth: Infinity }],
 
     'lodash/import-scope': [2, 'method'],

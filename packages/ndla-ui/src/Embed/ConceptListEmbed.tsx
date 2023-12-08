@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 import { ConceptListMetaData } from '@ndla/types-embed';
-import { Figure } from '../Figure';
 import { BlockConcept } from './ConceptEmbed';
+import { Figure } from '../Figure';
 
 interface Props {
   embed: ConceptListMetaData;

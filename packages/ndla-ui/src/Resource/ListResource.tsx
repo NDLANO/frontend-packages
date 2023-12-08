@@ -6,10 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { ReactNode } from 'react';
+import styled from '@emotion/styled';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
-import Image from '../Image';
 import {
   CompressedTagList,
   ResourceImageProps,
@@ -21,6 +20,7 @@ import {
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
+import Image from '../Image';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
 
 const ListResourceWrapper = styled.div`

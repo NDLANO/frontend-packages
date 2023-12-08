@@ -8,12 +8,12 @@
 
 import { format } from 'date-fns';
 import { enGB, nb, nn } from 'date-fns/locale';
-import styled from '@emotion/styled';
-import SafeLink from '@ndla/safelink';
-import { Forward, CalendarEd } from '@ndla/icons/common';
-import { breakpoints, colors, spacing, mq } from '@ndla/core';
-import { LinkBlockEmbedData } from '@ndla/types-embed';
 import { useMemo } from 'react';
+import styled from '@emotion/styled';
+import { breakpoints, colors, spacing, mq } from '@ndla/core';
+import { Forward, CalendarEd } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
+import { LinkBlockEmbedData } from '@ndla/types-embed';
 import { Heading } from '@ndla/typography';
 import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
 

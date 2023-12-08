@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { Item } from '@radix-ui/react-accordion';
 import { HTMLAttributes, ReactNode, memo } from 'react';
+import styled from '@emotion/styled';
+import { Item } from '@radix-ui/react-accordion';
+import { colors } from '@ndla/core';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;

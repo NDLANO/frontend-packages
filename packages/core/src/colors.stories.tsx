@@ -9,8 +9,8 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
-import spacing from './spacing';
 import colors from './colors';
+import spacing from './spacing';
 import { defaultParameters } from '../../../stories/defaults';
 
 interface Props {

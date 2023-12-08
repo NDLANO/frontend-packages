@@ -10,11 +10,11 @@ import { memo, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { Spinner } from '@ndla/icons';
-import constants from '../model';
-import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
-import SearchItems from './SearchItems';
-import { SearchItemProps } from './SearchItem';
 import ResultNavigation, { PaginationType } from './ResultNavigation';
+import { SearchItemProps } from './SearchItem';
+import SearchItems from './SearchItems';
+import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
+import constants from '../model';
 
 const Wrapper = styled.section`
   display: flex;

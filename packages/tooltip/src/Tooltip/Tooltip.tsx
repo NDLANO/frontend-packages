@@ -8,8 +8,8 @@
 
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing } from '@ndla/core';
 import * as RadixTooltip from '@radix-ui/react-tooltip';
+import { colors, fonts, misc, spacing } from '@ndla/core';
 
 const StyledContent = styled(RadixTooltip.Content)`
   color: #fff;

@@ -8,10 +8,10 @@
 
 import { ReactChild, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 import { useSwipeable } from 'react-swipeable';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 
 interface Props {
   children: ReactChild[];

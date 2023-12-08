@@ -6,14 +6,14 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
-import { colors, spacing, misc, fonts } from '@ndla/core';
-import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
-import { IGlossData, IGlossExample } from '@ndla/types-backend/concept-api';
 import { useMemo } from 'react';
-import SpeechControl from '../AudioPlayer/SpeechControl';
+import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
+import { colors, spacing, misc, fonts } from '@ndla/core';
+import { IGlossData, IGlossExample } from '@ndla/types-backend/concept-api';
 import GlossExample from './GlossExample';
+import SpeechControl from '../AudioPlayer/SpeechControl';
 
 export interface Props {
   title: {

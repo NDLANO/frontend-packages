@@ -1,5 +1,5 @@
-import { spacing, spacingUnit, colors, fonts, misc } from '@ndla/core';
 import styled from '@emotion/styled';
+import { spacing, spacingUnit, colors, fonts, misc } from '@ndla/core';
 import { MovieResourceType } from './types';
 
 const StyledWrapperDiv = styled.div`

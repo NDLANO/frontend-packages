@@ -8,8 +8,8 @@
 
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { FootnoteMetaData } from '@ndla/types-embed';
 import { colors, spacing } from '@ndla/core';
+import { FootnoteMetaData } from '@ndla/types-embed';
 
 interface Props {
   embed: FootnoteMetaData;

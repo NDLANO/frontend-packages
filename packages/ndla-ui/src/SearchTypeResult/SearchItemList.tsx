@@ -6,17 +6,17 @@
  *
  */
 
+import parse from 'html-react-parser';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 
 import { animations, colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 
-import ContentTypeBadge from '../ContentTypeBadge';
 import ItemContexts from './components/ItemContexts';
 import { SearchItemType } from './SearchItem';
+import ContentTypeBadge from '../ContentTypeBadge';
 import constants from '../model';
 const { contentTypes } = constants;
 

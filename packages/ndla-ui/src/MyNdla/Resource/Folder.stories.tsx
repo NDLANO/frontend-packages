@@ -17,7 +17,6 @@ import { DeleteForever } from '@ndla/icons/editor';
 import Folder from './Folder';
 import { defaultParameters } from '../../../../../stories/defaults';
 
-
 export default {
   title: 'My NDLA/Folder',
   component: Folder,

@@ -17,7 +17,6 @@ import resourceTypeColor from '../../utils/resourceTypeColor';
 import { SearchItemType } from '../SearchItem';
 import { ContentType } from '../SearchTypeResult';
 
-
 interface ItemTypeProps {
   contentType?: ContentType;
 }

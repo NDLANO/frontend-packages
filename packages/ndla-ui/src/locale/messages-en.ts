@@ -9,11 +9,12 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes, wordClass } = constants;
+export const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  ...contributorTypes.en,
   common: {
     subject: 'Subject',
     subject_plural: 'Subjects',
@@ -87,12 +88,6 @@ const messages = {
     searchPage: `Search${titleTemplate}`,
     notFound: `Page not found${titleTemplate}`,
   },
-  newsLetter: {
-    heading: 'Newsletter',
-    description: 'Stay updated! Subscribe to the latest news from NDLA.',
-    mainLinkName: 'Sign up',
-    iconLinkName: 'Sign up for newsletters',
-  },
   askNDLA: 'Ask NDLA',
   articlePage: {
     errorDescription: 'Sorry, an error occurred while loading the resource.',
@@ -132,25 +127,7 @@ const messages = {
     searchFieldPlaceholder: 'Search for subjects, tasks and activities or learningpaths',
     searchFieldPlaceholderShort: 'Search',
     label: {
-      content: 'Content:',
-      contentTypes: 'Content types',
-      levels: 'Level',
-      languageFilter: 'Language',
       subjects: 'Subjects',
-      noFilter: 'No filter selected',
-      createdBy: 'Created by:',
-    },
-    showLabel: {
-      contentTypes: 'More content types',
-      levels: 'More levels',
-      languageFilter: 'More languages',
-      subjects: 'Change subject',
-    },
-    hideLabel: {
-      contentTypes: 'Hide content types',
-      levels: 'Hide levels',
-      languageFilter: 'Hide languages',
-      subjects: 'Hide subjects',
     },
     searchField: {
       contentTypeResultShowMoreLabel: 'Show more results',
@@ -159,22 +136,11 @@ const messages = {
       searchResultHeading: 'Proposals:',
       contentTypeResultNoHit: 'No results',
     },
-    searchResultMessages: {
-      searchStringLabel: 'You searched for:',
-      subHeading: '{{totalCount}} hits in NDLA',
-    },
     searchResultListMessages: {
       subjectsLabel: 'Open in subject:',
       noResultHeading: 'Hmm, no content ...',
       noResultDescription:
         'Unfortunately, we do not have anything to offer here. If you want to suggest any content for this site, you can use Ask NDLA, located at the bottom right of the screen.',
-    },
-    searchPageMessages: {
-      filterHeading: 'Filter',
-      resultHeading: '{{totalCount}} hits in NDLA',
-      resultHeadingByAuthor: '{{totalCount}} articles written by {{author}}',
-      narrowScreenFilterHeading: '{{totalCount}} hits on «{{query}}»',
-      dropdownBtnLabel: 'More content types',
     },
     searchFilterMessages: {
       backButton: 'Back to filter',
@@ -221,41 +187,10 @@ const messages = {
       ariaLabel: 'View more contexts',
     },
   },
-
   subjectPage: {
-    errorDescription: 'Sorry, an error occurred while loading the topics.',
     tabs: {
       topics: 'Topics',
     },
-    subjectShortcuts: {
-      heading: 'Go directly to',
-      showMore: 'Show more',
-      showLess: 'Show less',
-    },
-    mostRead: {
-      heading: 'Most used',
-    },
-    editorsChoices: {
-      heading: 'Editor choices from the subject',
-      unknown: 'Uknown',
-    },
-    subjectArchive: {
-      heading: 'Current',
-      archive: 'Archive',
-      close: 'Close',
-    },
-    subjectFilter: {
-      label: 'Filter',
-    },
-    newContent: {
-      heading: 'New content',
-    },
-    subjectIsBeta: {
-      iconLabel: 'in beta',
-      dialogHeader: '{{title}} is under construction',
-      dialogText: 'Read more at',
-    },
-    archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
     filterSubjects: 'Filter subjects',
@@ -278,47 +213,16 @@ const messages = {
     shows: 'Shows',
   },
   topicPage: {
-    articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
     topic: 'TOPIC',
     topics: 'Topics',
     imageModal: 'View full size image',
   },
   welcomePage: {
-    search: 'Search',
-    searchDisclaimer:
-      'We are constantly working to improve ourselves! If you have comments to the search, please use the «spør NDLA» function in the bottom right corner.',
     resetSearch: 'Empty search',
-    closeSearch: 'Close search',
     searchAllInfo: 'View all results',
-    topicsConjunction: 'and',
-    highlighted: 'Highlighted',
     heading: {
       heading: 'The Norwegian Digital Learning Arena',
-      searchFieldPlaceholder: 'Search for topics, learning materials, keywords ...',
-      messages: {
-        searchFieldTitle: 'Search',
-        menuButton: 'Content',
-      },
-      links: {
-        aboutNDLA: 'About NDLA',
-        changeLanguage: 'Change language',
-      },
     },
-    socialMedia: {
-      heading: 'Follow us',
-      description: 'NDLA has several Facebook- and X-accounts. Find the one that suits you, and follow us!',
-      mainLink: {
-        name: 'Follow us',
-      },
-    },
-    film: {
-      header: 'NDLA film',
-      text: 'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
-      textShort: 'Welcome to the world of cinema!',
-      linkLabel: 'Go to NDLA film',
-    },
-    blog: 'From our blog',
-    errorDescription: 'Sorry, an error occurred while loading the subjects.',
   },
   toolboxPage: {
     introduction:
@@ -337,103 +241,38 @@ const messages = {
       toolboxStudents: 'Toolbox - for students',
       toolboxTeachers: 'Toolbox - for teachers',
       film: 'NDLA film',
-      about: {
-        title: 'About NDLA',
-        numbers: 'Numbers and reports',
-        keyPersonnel: 'Key personnel',
-        vacancies: 'Vacancies',
-        vision: 'Vision and values',
-        communityPurpose: 'Our community mission',
-        history: 'NDLAs history',
-        cooperation: 'Our cooperations',
-        faq: 'Frequently asked questions',
-        follow: 'Follow us on social media',
-        whoAreWe: 'Who are we?',
-        whatWeDo: 'What do we do?',
-        careers: 'Come work with us',
-        contactUs: 'Contact us',
-        organizing: 'Organizing',
-        articlesOfAssociation: 'Article of associations',
-      },
     },
     menu: {
       button: 'Menu',
       goToMainMenu: 'Go to main menu',
-      close: 'Close',
-      goTo: 'Go to',
       search: 'Search',
-      toFrontpage: 'To frontpage',
-      subjectOverview: 'All subjects',
       modalLabel: 'Choose content',
-      backToSubjectFrontpage: 'Back to subject frontpage',
       title: 'Open menu',
-      subjectPage: 'Subject front page',
-      openFilter: 'Filter',
-      useFilter: 'Use filter',
-      closeFilter: 'Close filter',
-      learningResourcesHeading: 'Educational Resources',
-      back: 'Back',
-      additionalFilterLabel: 'Show addition resources',
-      contentTypeResultsShowMore: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Show more subjects',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Show more tasks and activities',
-        [contentTypes.LEARNING_PATH]: 'Show more learningpaths',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Show more assessment resources',
-        [contentTypes.SOURCE_MATERIAL]: 'Show more source materials',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Show more external learning resources',
-        unGrouped: 'Show more resources',
-      },
-      contentTypeResultsShowLess: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Show less subjects',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Show less tasks and activities',
-        [contentTypes.LEARNING_PATH]: 'Show less learningpaths',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Show less assessment resources',
-        [contentTypes.SOURCE_MATERIAL]: 'Show less source materials',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Show less external learning resources',
-        unGrouped: 'Show less resources',
-      },
-      contentTypeResultsNoHit: {
-        [contentTypes.SUBJECT_MATERIAL]: 'No subjects',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'No tasks and activities',
-        [contentTypes.LEARNING_PATH]: 'No learningpaths',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'No assessment resources',
-        [contentTypes.SOURCE_MATERIAL]: 'No source materials',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'No external learning resources',
-        unGrouped: 'No resources',
-      },
     },
   },
   logo: {
     altText: 'The Norwegian Digital Learning Arena',
   },
   resource: {
-    errorDescription: 'Sorry, an error occurred while loading the topic resources.',
-    error: 'Sorry, a part of the content could not be shown.',
     noCoreResourcesAvailableUnspecific: 'There is no core content available.',
     noCoreResourcesAvailable: 'There is no core content available for {{name}}.',
     activateAdditionalResources: 'Show additional content',
     toggleFilterLabel: 'Show additional content',
     label: 'Learning content',
-    allResources: 'Content',
-    shortcutButtonText: 'Learning material',
     tooltipCoreTopic: 'Core content is a subject that is on the curriculum',
     tooltipAdditionalTopic: 'Additional content is a subject that is not on the curriculum',
     additionalTooltip: 'Additional content is not on the curriculum',
-    shortcutsTooltip: 'Show {{count}} articles in this subject',
     dialogTooltip: 'What is core content and additional content?',
     dialogHeading: 'Core content and additional content',
     dialogText1: 'As you learn the core content, you acquire the skills described in the curriculum for the subject.',
     dialogText2:
       'Additional content is content in the subject that you can choose in addition to the core material. Through the additional subject, you can immerse yourself in a topic or approach yourself in a different way.',
-    showLess: 'Show less',
-    showMore: 'Show more',
     youAreHere: 'You are here',
     trait: {
       video: 'Video',
       h5p: 'Interactive',
     },
   },
-
   messageBoxInfo: {
     outdatedCoursePlan:
       'This course is not updated to the current curriculum. Follow this link to find the updated version of the course: ',
@@ -512,9 +351,6 @@ const messages = {
     },
     licenseData: 'Containing data under',
     licenseFrom: 'published at',
-  },
-  subject: {
-    associatedTopics: 'Associated topics',
   },
   subjectFrontPage: {
     buildsOn: 'Builds on',
@@ -699,8 +535,6 @@ const messages = {
       aboutNdla: 'About NDLA',
       blog: 'Blog',
       tips: 'Tips to students',
-      fyr: 'FYR project',
-      sharing: 'Sharing arena',
       vacancies: 'Vacancies',
     },
   },
@@ -755,7 +589,6 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'NDLA frontpage',
-    youAreHere: 'You are here',
     breadcrumb: 'Breadcrumb',
   },
   listview: {
@@ -823,9 +656,7 @@ const messages = {
     loadingMovies: 'Loading movies..',
     subjectsInMovies: 'Subjects in film',
     about: {
-      heading: 'About NDLA film',
       more: 'Read more about NDLA film',
-      text: 'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
     },
     search: {
       placeholder: 'Search on moviename',
@@ -864,36 +695,12 @@ const messages = {
       all: 'All movies A-Z',
     },
     allMovieGroupTitleLabel: 'Movies starting with {{letter}}',
-    moreAboutNdlaFilm: {
-      header: 'NDLA film',
-      firstParagraph:
-        "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS.",
-      secondParagraph:
-        'You can watch the films if you are connected to the Internet via your computer, tablet or smartphone. We have done the work with rights clearance and payment. All you have to do is press play.',
-      thirdParagraph:
-        'The films are copyrighted. They can be played freely on ndla.no, but not downloaded or distributed in other publications. All licensees are remunerated for the replays made.',
-      secondHeading: 'Use film in teaching',
-      fourthParagraph:
-        'A film tells stories in ways that engage and touch us. In film, some of the most effective visuals are used; moving images and sound. A good film can show sides of the present and give visions of the future or comment on the past. Therefore, films can often give us a better understanding of events, cultural meetings and history than a text.',
-      fifthParagraph:
-        'By watching films, the students are better equipped to read the film language, so that the film gets a value beyond the purely entertaining. The general part of the curriculum emphasizes that the students should meet art and cultural forms that stimulate, inspire their own creativity, and promote ethical orientation ability and aesthetic sense.',
-      tipSectionPt1: 'Please give tips, ask questions or wish for new movies at our',
-      tipSectionPt2: 'Facebook page.',
-      ariaLabel: 'Visit NDLA-films Facebook page',
-      tipSectionPt3: '',
-      ending: 'We wish all movie lovers a good and educational experience!',
-    },
   },
   learningPath: {
     createLearningPathText: 'Create your own, copy this or see more learningpaths?',
     createLearningPathButtonText: 'Go to learningpaths',
     lastUpdated: 'Last updated',
     youAreInALearningPath: 'You are now in a learningpath',
-    readTime: '{{hours}} schoolhours = {{minutes}} min',
-    pageOf: 'of',
-    readTimeHour: 'hour',
-    readTimeHour_plurals: 'hours',
-    readTimeMinutesShort: 'min',
     lastStep: {
       heading: 'Last step of this learningpath',
       headingSmall: 'You are now in the last step of the learningpath {{learningPathName}}',
@@ -911,22 +718,6 @@ const messages = {
     create: 'Create new',
     isSelectedItem: 'Added',
     selected: '{{count}} selected',
-  },
-  blogPosts: {
-    blog1: {
-      text: 'Forslag til årsplaner fra NDLA',
-      externalLink: 'https://blogg.ndla.no/2021/08/forslag-til-arsplaner-hos-ndla/',
-      linkText: 'Fagblogg',
-      license: 'CC-BY-SA-4.0',
-      licenseAuthor: 'Vibeke Klungland',
-    },
-    blog2: {
-      text: 'Huskeliste for kontaktlærere',
-      externalLink: 'https://blogg.ndla.no/2019/08/huskeliste-for-kontaktlaerere/',
-      linkText: 'Fagblogg',
-      license: 'CC-BY-SA-4.0',
-      licenseAuthor: 'Tom Knudsen',
-    },
   },
   editor: {
     versionHistory: {
@@ -951,26 +742,13 @@ const messages = {
       text: 'is created by',
     },
   },
-  frontPageToolbox: {
-    heading: 'Toolbox',
-    text: 'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
-    linkTextStudents: 'See all tips for students here',
-    linkTextTeachers: 'See all tips for teachers here',
-    cursorText: 'Tip',
-  },
   frontpageMultidisciplinarySubject: {
     heading: 'Interdisciplinary topics',
     text: 'The three interdisciplinary topics in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
-    linkText: 'See cases for multidisciplinary topics',
-    publicHealthTopic: 'Public health and life management',
-    democracyTopic: 'Democracy and citizenship',
-    sustainableTopic: 'Sustainable development',
-    cursorText: 'New',
   },
   frontpageMenu: {
     program: 'Education programme',
     allsubjects: 'All subjects',
-    cursorText: 'Have a look at some new learning resources from our new subjects!',
   },
   navigation: {
     showLongerDescription: 'Show topic description',
@@ -982,10 +760,6 @@ const messages = {
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case in',
-  },
-  multibutton: {
-    open: 'Open menu',
-    close: 'Close menu',
   },
   cancel: 'Cancel',
   close: 'Close',
@@ -1075,7 +849,6 @@ const messages = {
   fileTypesNotSupported: 'Filetype(s) not supported: {{fileTypes}}',
   download: 'Download file: ',
   expandButton: 'Show large version',
-  ...contributorTypes.en,
   filterButtons: {
     removeAllFilters: 'Remove filters',
   },
@@ -1117,11 +890,6 @@ const messages = {
     wrongUserInfoDisclaimer:
       'If any information is wrong, it must be updated by the host organization/school owner the user belongs to. An overview of available user support can be found here: ',
     moderator: 'Moderator',
-  },
-  checkOutNewFeature: 'New feature',
-  slateBlockMenu: {
-    open: 'Open menu',
-    close: 'Close menu',
   },
   factbox: {
     open: 'Open fact box',
@@ -1366,26 +1134,6 @@ const messages = {
         title: 'Recent posts in the arena',
         link: 'View all posts in the arena',
       },
-      storageInfo: {
-        title: 'How to save your favourite resources from NDLA',
-        text: 'Use the heart button to save a resource. You will then get an option to store the resource in a folder.',
-      },
-      sharing: {
-        title: 'Teachers can now share folders',
-        text: 'Use the share button to get a link you can share.',
-      },
-      favoriteSubjects: {
-        title: 'How to save your favorite subjects from NDLA',
-        text: 'Use the heart button to save a subject. You will then get the opportunity to save your favorite subjects for later. You can find them again at a later date in My NDLA or on the all subjects page.',
-      },
-      folderInfo: {
-        title: 'How to organise your favourite resources in folders',
-        text: 'Choose <strong>My folders</strong> to create new folders and subfolders. You can also create a new folder in the dialogue window that is activated when you mark the heart in a resource.',
-      },
-      tagInfo: {
-        title: 'How to tag your favourite resources',
-        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting <strong>My tags</strong> on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
-      },
       recentArenaTopics: 'New posts in the arena',
     },
     myProfile: {
@@ -1469,8 +1217,6 @@ const messages = {
   },
   siteNav: {
     search: 'Search',
-    contact: 'Contact',
-    help: 'Help',
   },
   programmes: {
     header: 'What do you want to learn today?',

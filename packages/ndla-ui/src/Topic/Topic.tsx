@@ -12,6 +12,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
+import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { Additional, ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { EmbedMetaData } from '@ndla/types-embed';

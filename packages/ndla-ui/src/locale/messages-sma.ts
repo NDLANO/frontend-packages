@@ -1002,6 +1002,7 @@ const messages = {
         topic: 'Håaleme lea orrestahteme.',
       },
       topic: {
+        isDeleted: 'Tjaalege lea sliejhteme jïh ij maehtieh dam vuesiehtidh.',
         responses: 'Vaestiedasse',
         topicContent: 'Tjaelieh dov håalemem daesnie',
       },

@@ -42,7 +42,6 @@ const Content = styled.div`
 `;
 
 const ContextList = styled.ul`
-  margin: 0;
   padding: 0;
   list-style: none;
 `;

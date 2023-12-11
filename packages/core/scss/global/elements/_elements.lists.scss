@@ -1,49 +1,96 @@
-ul,
-ol {
-  margin: $spacing--small 0;
-  padding: 0 1rem 0 2rem;
-  @include mq(desktop) {
-    padding: 0 1rem 0 0;
-  }
-
-  ul,
-  ol {
-    margin: $spacing--small 0;
-  }
-}
-
-ul {
-  li::marker {
-    color: $brand-color--secondary;
-  }
-}
-
-li {
-  line-height: 1.7rem;
-  margin-bottom: $spacing--small;
-  > p:only-child {
-    margin: 0;
-  }
-}
-li ul,
-li ol {
-  margin-top: $spacing--small;
-  margin-left: $spacing;
-}
-li ol {
-  margin-left: 58px;
-}
-ol {
-  counter-reset: item;
-  counter-reset: letter;
-}
-
-$diameter: 26px;
-
 blockquote > ol {
   position: relative;
   left: $spacing--large;
   @include mq($until: desktop) {
     left: -$spacing;
+  }
+}
+
+/** DEFAULT STYLING OL */
+ol {
+  counter-reset: level1;
+  margin: 0;
+  @include font-size(18px, 29px);
+
+  // Child ordered lists
+  li::marker {
+    content: none;
+  }
+
+  // List item
+  li {
+    padding-bottom: $spacing--small;
+    p {
+      padding-bottom: $spacing--nsmall;
+    }
+  }
+
+  > li {
+    min-height: $spacing;
+    counter-increment: level1;
+    &:before {
+      position: absolute;
+      transform: translateX(-100%);
+      content: counter(level1, decimal) '.';
+      padding-right: $spacing--nsmall;
+    }
+
+    > ol:not([data-type='letters']) {
+      counter-reset: level2;
+      > li {
+        padding-left: $spacing--nsmall;
+        counter-increment: level2;
+        &:before {
+          content: counter(level1, decimal) '.' counter(level2, decimal) '.';
+        }
+        > ol:not([data-type='letters']) {
+          counter-reset: level3;
+          > li {
+            padding-left: $spacing--medium;
+            counter-increment: level3;
+            &:before {
+              content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.';
+            }
+            > ol:not([data-type='letters']) {
+              counter-reset: level4;
+              > li {
+                padding-left: $spacing--large;
+                counter-increment: level4;
+                &:before {
+                  content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.'
+                    counter(level4, decimal) '.';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/** DEFAULT STYLING UL */
+ul {
+  margin: 0;
+  list-style-type: disc;
+
+  li::marker {
+    color: $brand-color--secondary;
+  }
+
+  > li > ul {
+    padding: 0;
+    padding-left: $spacing;
+    list-style-type: circle;
+
+    > li > ul {
+      list-style-type: square;
+    }
+  }
+
+  li {
+    margin: 0;
+    padding: $spacing--small;
+    padding-bottom: 0;
   }
 }

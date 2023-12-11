@@ -35,7 +35,6 @@ const StyledButtonElementWrapper = styled.div`
 
 const StyledList = styled.ul`
   list-style: none;
-  margin: 0;
   padding: 0;
   ${mq.range({ from: breakpoints.tablet })} {
     column-count: 2;
@@ -47,7 +46,7 @@ const StyledList = styled.ul`
   }
 `;
 const StyledListItem = styled.li`
-  margin-bottom: 0;
+  padding-bottom: 0;
   break-inside: avoid;
 `;
 

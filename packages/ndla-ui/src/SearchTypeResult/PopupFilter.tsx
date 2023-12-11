@@ -52,7 +52,7 @@ const StyledList = styled.ul`
   animation-duration: 500ms;
 `;
 const StyledListItem = styled.li`
-  margin-bottom: 0;
+  padding-bottom: 0;
   break-inside: avoid;
 `;
 

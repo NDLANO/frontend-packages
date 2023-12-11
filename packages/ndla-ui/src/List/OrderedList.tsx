@@ -34,13 +34,10 @@ const StyledOl = styled.ol`
     margin-left: 0;
   }
   // List item
-  li {
-    margin-top: ${spacing.nsmall};
-
-    p {
+  li p {
       margin-bottom: ${spacing.nsmall} !important;
     }
-  }
+  
   counter-reset: level1;
   ${generateListResets('level1')};
 

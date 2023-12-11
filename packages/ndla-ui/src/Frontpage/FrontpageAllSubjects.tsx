@@ -26,7 +26,7 @@ const StyledList = styled.ul`
   }
 `;
 const StyledListItem = styled.li`
-  margin-bottom: 0;
+  padding-bottom: 0;
   break-inside: avoid;
 `;
 

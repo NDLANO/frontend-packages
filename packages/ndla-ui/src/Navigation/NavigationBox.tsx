@@ -30,14 +30,13 @@ type listProps = {
 };
 const StyledList = styled.ul<listProps>`
   list-style: none;
-  margin: 0;
   padding: 0;
   ${(props) =>
     props.direction !== 'floating' &&
     css`
       ${mq.range({ from: breakpoints.tablet })} {
         column-count: 2;
-        column-gap: 20px;
+        grid-gap: ${spacing.snormal};
         ${props.direction === 'horizontal' &&
         css`
           display: grid;
@@ -46,7 +45,7 @@ const StyledList = styled.ul<listProps>`
       }
       ${mq.range({ from: breakpoints.tabletWide })} {
         column-count: 3;
-        column-gap: 20px;
+        grid-gap: ${spacing.snormal};
         ${props.direction === 'horizontal' &&
         css`
           grid-template-columns: repeat(3, 1fr);
@@ -63,7 +62,7 @@ type additionalResourceProps = {
 };
 
 const StyledListItem = styled.li<additionalResourceProps>`
-  margin-bottom: 0;
+  padding: 0;
   break-inside: avoid;
   ${(props) =>
     props.listDirection === 'floating' &&
@@ -96,15 +95,6 @@ const StyledListElementWrapper = styled.div<additionalResourceProps>`
         }
       }
     `}
-`;
-
-const StyledSpacingElement = styled.span`
-  display: block;
-  width: 100%;
-  height: 2px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    height: 20px;
-  }
 `;
 
 const StyledButtonContent = styled.span`
@@ -267,7 +257,6 @@ export const NavigationBox = ({
                 </StyledButtonContent>
               </ListElementType>
             </StyledListElementWrapper>
-            {listDirection !== 'floating' && <StyledSpacingElement />}
           </StyledListItem>
         ))}
       </StyledList>

@@ -41,7 +41,6 @@ const FileListHeading = styled.h3`
 `;
 
 const FilesList = styled.ul`
-  margin: 0;
   padding: 0;
 `;
 

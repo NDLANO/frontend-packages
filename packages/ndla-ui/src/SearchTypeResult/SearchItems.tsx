@@ -27,6 +27,7 @@ const Container = styled.ul<ContainerProps>`
   display: grid;
   align-items: flex-start;
   list-style: none;
+  padding: 0;
   row-gap: ${spacing.normal};
   grid-template-columns: repeat(1, 1fr);
 

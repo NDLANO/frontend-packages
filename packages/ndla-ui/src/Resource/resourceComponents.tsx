@@ -60,7 +60,6 @@ export const resourceHeadingStyle = css`
 const StyledTagList = styled.ul`
   list-style: none;
   display: flex;
-  margin: 0;
   margin-left: ${spacing.small};
   padding: 2px;
   gap: ${spacing.xsmall};
@@ -71,7 +70,7 @@ const StyledTagList = styled.ul`
 `;
 
 const StyledTagListElement = styled.li`
-  margin: 0;
+  padding: 0;
   ${fonts.sizes(14)};
 `;
 

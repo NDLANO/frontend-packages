@@ -20,10 +20,8 @@ const StyledList = styled.ul`
   gap: ${spacing.small};
   list-style: none;
   padding: 0px;
-  margin: 0px;
   li {
     padding: 0px;
-    margin: 0px;
   }
 `;
 

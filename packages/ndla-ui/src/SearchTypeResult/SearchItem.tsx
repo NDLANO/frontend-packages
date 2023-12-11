@@ -93,10 +93,6 @@ const ContentWrapper = styled.main`
   padding: ${spacing.small} ${spacing.normal};
 `;
 
-const ButtonContainer = styled.div`
-  z-index: 1;
-`;
-
 export interface SearchItemProps {
   id: string | number;
   title: string;

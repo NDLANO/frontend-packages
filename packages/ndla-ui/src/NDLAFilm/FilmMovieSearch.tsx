@@ -33,9 +33,11 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   list-style-type: none;
+  padding-bottom: ${spacing.nsmall};
   li {
     flex: 1;
     width: 100%;
+    padding-bottom:${spacing.xsmall};
     a {
       color: ${colors.white};
       &:hover,

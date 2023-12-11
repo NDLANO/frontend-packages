@@ -183,6 +183,7 @@ export const Article = ({
 
   const authors =
     copyright?.creators.length || copyright?.rightsholders.length ? copyright.creators : copyright?.processors;
+  const updatedLang = lang === 'nb' ? 'no' : lang;
 
   return (
     <div ref={wrapperRef}>
@@ -197,10 +198,10 @@ export const Article = ({
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals}>
             {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
-            <ArticleTitle id={id} icon={icon} label={messages.label} lang={lang}>
+            <ArticleTitle id={id} icon={icon} label={messages.label} lang={updatedLang}>
               {title}
             </ArticleTitle>
-            <ArticleIntroduction lang={lang}>{introduction}</ArticleIntroduction>
+            <ArticleIntroduction lang={updatedLang}>{introduction}</ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">

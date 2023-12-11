@@ -183,7 +183,7 @@ const BlockResource = ({
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
             <ResourceTitleLink data-link="" title={title} target={targetBlank ? '_blank' : undefined} to={link}>
-              <Text element="label" textStyle="label-small" css={resourceHeadingStyle}>
+              <Text element="span" textStyle="label-small" css={resourceHeadingStyle}>
                 {title}
               </Text>
             </ResourceTitleLink>

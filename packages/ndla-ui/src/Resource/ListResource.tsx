@@ -242,7 +242,7 @@ const ListResource = ({
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink to={link} data-link="" target={targetBlank ? '_blank' : undefined}>
-            <Text element="label" textStyle="label-small" css={resourceHeadingStyle} title={title}>
+            <Text element="span" textStyle="label-small" css={resourceHeadingStyle} title={title}>
               {title}
             </Text>
           </StyledLink>

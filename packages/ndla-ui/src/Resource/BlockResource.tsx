@@ -9,6 +9,7 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
+import { Text } from '@ndla/typography';
 import {
   CompressedTagList,
   ResourceImageProps,

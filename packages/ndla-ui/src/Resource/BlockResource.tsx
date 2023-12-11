@@ -8,8 +8,8 @@
 
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
-import { colors, fonts, spacing } from '@ndla/core';
-import { Heading } from '@ndla/typography';
+import { colors, spacing } from '@ndla/core';
+import { Text } from '@ndla/typography';
 import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
 import {
@@ -59,12 +59,10 @@ const BlockElementWrapper = styled.div`
   }
 `;
 
-const BlockDescription = styled.p`
+const BlockDescription = styled(Text)`
   display: -webkit-box;
   line-clamp: 2;
-  ${fonts.sizes(16)};
   height: 0em;
-  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: height 0.2s ease-out;
@@ -185,13 +183,15 @@ const BlockResource = ({
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
             <ResourceTitleLink data-link="" title={title} target={targetBlank ? '_blank' : undefined} to={link}>
-              <Heading element="h2" headingStyle="h4" css={resourceHeadingStyle}>
+              <Text element="label" textStyle="label-small" css={resourceHeadingStyle}>
                 {title}
-              </Heading>
+              </Text>
             </ResourceTitleLink>
           </ResourceTypeAndTitleLoader>
           <ResourceTypeList resourceTypes={resourceTypes} />
-          <BlockDescription data-description="">{description}</BlockDescription>
+          <BlockDescription element="p" textStyle="meta-text-small" margin="none" data-description="">
+            {description}
+          </BlockDescription>
         </ContentWrapper>
         <TagsAndActionMenu>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}

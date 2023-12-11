@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2016-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -7,6 +7,10 @@
  */
 
 import { ReactNode } from 'react';
+import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import { Launch } from '@ndla/icons/common';
 import {
   getLicenseByAbbreviation,
   getResourceTypeNamespace,
@@ -15,11 +19,7 @@ import {
 } from '@ndla/licenses';
 import type { MetaType } from '@ndla/licenses';
 import { LicenseDescription } from '@ndla/notion';
-import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
-import styled from '@emotion/styled';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { Launch } from '@ndla/icons/common';
 
 const oClasses = new BEMHelper({
   name: 'media',
@@ -104,7 +104,7 @@ interface MediaListCCLinkProps {
   url: string;
 }
 export const MediaListCCLink = ({ children, url }: MediaListCCLinkProps) => (
-  <a className="c-figure-license__link" target="_blank" rel="noopener noreferrer license" href={url}>
+  <a rel="noopener noreferrer license" href={url}>
     {children}
   </a>
 );

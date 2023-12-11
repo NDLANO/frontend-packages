@@ -8,14 +8,14 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
-import SearchFieldHeader from './SearchFieldHeader';
-import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
-import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
 import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
+import SearchFieldHeader from './SearchFieldHeader';
+import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
 import CoreElementItem from '../CompetenceGoalTab/CoreElementItem';
+import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};

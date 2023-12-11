@@ -7,11 +7,11 @@
  */
 
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing } from '@ndla/core';
-import { Arrow, Close, Content, Root, Trigger, Portal } from '@radix-ui/react-popover';
-import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { Arrow, Close, Content, Root, Trigger, Portal } from '@radix-ui/react-popover';
+import { colors, fonts, misc, spacing } from '@ndla/core';
+import { Cross } from '@ndla/icons/action';
 
 const StyledContent = styled(Content)`
   color: ${colors.white};

@@ -6,8 +6,8 @@
  *
  */
 
-import { DefinitionTerm } from '@ndla/ui';
 import { attributesToProps, domToReact } from 'html-react-parser';
+import { DefinitionTerm } from '@ndla/ui';
 import { PluginType } from './types';
 
 export const dtPlugin: PluginType = (node, converterOpts, opts) => {

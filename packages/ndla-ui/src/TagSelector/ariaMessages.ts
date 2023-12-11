@@ -6,6 +6,7 @@
  *
  */
 
+import { TFunction } from 'i18next';
 import {
   AriaGuidanceProps,
   AriaOnChangeProps,
@@ -14,7 +15,6 @@ import {
   GroupBase,
   OptionsOrGroups,
 } from 'react-select';
-import { TFunction } from 'i18next';
 import { TagType } from './types';
 
 export const createAriaMessages = (t: TFunction) => ({

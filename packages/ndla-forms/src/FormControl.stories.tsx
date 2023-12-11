@@ -10,12 +10,12 @@ import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Person } from '@ndla/icons/common';
 import { Text } from '@ndla/typography';
-import { Input, InputContainer, TextArea } from './InputV3';
-import { defaultParameters } from '../../../stories/defaults';
-import { FormControl } from './FormControl';
-import { Label } from './Label';
 import { FieldErrorMessage } from './FieldErrorMessage';
 import { FieldHelper } from './FieldHelper';
+import { FormControl } from './FormControl';
+import { Input, InputContainer, TextArea } from './InputV3';
+import { Label } from './Label';
+import { defaultParameters } from '../../../stories/defaults';
 
 export default {
   title: 'Forms/FormControl',

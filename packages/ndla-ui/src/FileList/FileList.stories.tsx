@@ -8,8 +8,8 @@
 
 import { Meta, StoryObj } from '@storybook/react';
 import File from './File';
-import { defaultParameters } from '../../../../stories/defaults';
 import FileList from './FileList';
+import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Components/FileList',

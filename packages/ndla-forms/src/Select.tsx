@@ -6,9 +6,10 @@
  *
  */
 
-import { HTMLProps, ReactNode } from 'react';
+import { ComponentPropsWithRef, forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, fonts, misc } from '@ndla/core';
+import { useFormControl } from './FormControl';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -53,14 +54,15 @@ const StyledSelect = styled.select`
   }
 `;
 
-interface Props extends Omit<HTMLProps<HTMLSelectElement>, 'as'> {
-  children?: ReactNode;
-}
+interface Props extends ComponentPropsWithRef<'select'> {}
 
-const Select = ({ children, ...rest }: Props) => (
-  <StyledWrapper>
-    <StyledSelect {...rest}>{children}</StyledSelect>
-  </StyledWrapper>
-);
+const Select = forwardRef<HTMLSelectElement, Props>((props, ref) => {
+  const field = useFormControl(props);
+  return (
+    <StyledWrapper>
+      <StyledSelect {...field} ref={ref} />
+    </StyledWrapper>
+  );
+});
 
 export default Select;

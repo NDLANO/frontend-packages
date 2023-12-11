@@ -6,26 +6,26 @@
  *
  */
 
-import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
 import parse from 'html-react-parser';
+import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { isMobile } from 'react-device-detect';
 import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
 import { IconButtonV2 } from '@ndla/button';
-import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { ConceptMetaData } from '@ndla/types-embed';
-import Tooltip from '@ndla/tooltip';
+import { Cross } from '@ndla/icons/action';
 import { COPYRIGHTED } from '@ndla/licenses';
-import { Notion as UINotion } from '../Notion';
-import { Figure } from '../Figure';
-import { NotionImage } from '../Notion/NotionImage';
+import Tooltip from '@ndla/tooltip';
+import { ConceptMetaData } from '@ndla/types-embed';
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from './conceptComponents';
-import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 import { HeartButtonType } from './types';
+import { Figure } from '../Figure';
 import { Gloss } from '../Gloss';
+import { EmbedByline } from '../LicenseByline';
+import { Notion as UINotion } from '../Notion';
+import { NotionImage } from '../Notion/NotionImage';
 
 interface PopoverPosition {
   top?: number;

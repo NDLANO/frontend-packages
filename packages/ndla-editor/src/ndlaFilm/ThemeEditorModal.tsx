@@ -7,13 +7,13 @@
  */
 
 import { FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { ModalBody, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
-import { spacing, spacingUnit } from '@ndla/core';
 import { ButtonV2 } from '@ndla/button';
+import { spacing, spacingUnit } from '@ndla/core';
 import { Input } from '@ndla/forms';
-import { useTranslation } from 'react-i18next';
+import { ModalBody, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
 
 const StyledInputWrapper = styled('div')`
   margin: ${spacing.normal} 0;

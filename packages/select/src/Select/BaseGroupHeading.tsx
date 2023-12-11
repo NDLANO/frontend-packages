@@ -6,9 +6,9 @@
  *
  */
 
+import { GroupHeadingProps } from 'react-select';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import { GroupHeadingProps } from 'react-select';
 import { Option } from './types';
 
 const StyledGroupHeader = styled.div`

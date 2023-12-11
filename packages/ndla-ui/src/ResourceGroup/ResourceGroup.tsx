@@ -7,8 +7,8 @@
  */
 
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 
 import { HeadingLevel } from '@ndla/typography';

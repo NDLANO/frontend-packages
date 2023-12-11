@@ -7,12 +7,12 @@
  */
 
 import { HTMLProps, MutableRefObject, useEffect, useRef } from 'react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { createUniversalPortal } from '@ndla/util';
 import { spacing, spacingUnit, fonts, colors } from '@ndla/core';
 import { Download, InformationOutline } from '@ndla/icons/common';
-import { css } from '@emotion/react';
 import Tooltip from '@ndla/tooltip';
+import { createUniversalPortal } from '@ndla/util';
 import { File, FileListMessages } from './FileListEditor';
 
 interface InputComponentProps extends Omit<HTMLProps<HTMLInputElement>, 'as'> {

@@ -16,8 +16,8 @@ import {
   useEffect,
   useCallback,
 } from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
 
 type Gap = 'none' | 'small' | 'normal';

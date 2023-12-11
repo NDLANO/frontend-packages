@@ -1,5 +1,13 @@
-import styled from '@emotion/styled';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors, spacing, spacingUnit, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
 
 export const highlightStyle = css`

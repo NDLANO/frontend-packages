@@ -6,8 +6,8 @@
  *
  */
 import { Fragment, ReactNode } from 'react';
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
 const ContentWrapper = styled.div`

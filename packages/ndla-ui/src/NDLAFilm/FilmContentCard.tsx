@@ -7,12 +7,12 @@
  */
 
 import { HTMLAttributes } from 'react';
+import styled from '@emotion/styled';
 import { spacing, colors, fonts, breakpoints, misc, mq } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import styled from '@emotion/styled';
-import { makeSrcQueryString } from '../Image';
 import FilmContentCardTags from './FilmContentCardTags';
 import { MovieResourceType, MovieType } from './types';
+import { makeSrcQueryString } from '../Image';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   movie: MovieType;

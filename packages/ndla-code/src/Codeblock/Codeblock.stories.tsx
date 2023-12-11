@@ -7,10 +7,10 @@
  */
 
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import DeleteForever from '@ndla/icons';
 import { IconButtonV2 } from '@ndla/button';
-import { defaultParameters } from '../../../../stories/defaults';
+import DeleteForever from '@ndla/icons';
 import Codeblock from './Codeblock';
+import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Components/Codeblock',

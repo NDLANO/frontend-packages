@@ -7,8 +7,8 @@
  */
 
 import { OptionProps } from 'react-select';
-import { buttonStyleV2 as buttonStyle } from '@ndla/button';
 import styled from '@emotion/styled';
+import { buttonStyleV2 as buttonStyle } from '@ndla/button';
 import { colors, fonts } from '@ndla/core';
 import { Done } from '@ndla/icons/editor';
 import { TagType } from './types';

@@ -6,16 +6,16 @@
  *
  */
 
+import uniq from 'lodash/uniq';
 import { useEffect, useState, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, utils } from '@ndla/core';
-import uniq from 'lodash/uniq';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
+import AddFolderButton from './AddFolderButton';
+import ComboboxButton from './ComboboxButton';
 import FolderItems from './FolderItems';
 import { flattenFolders, treestructureId } from './helperFunctions';
 import { CommonTreeStructureProps, NewFolderInputFunc } from './types';
-import ComboboxButton from './ComboboxButton';
-import AddFolderButton from './AddFolderButton';
 
 export const MAX_LEVEL_FOR_FOLDERS = 5;
 

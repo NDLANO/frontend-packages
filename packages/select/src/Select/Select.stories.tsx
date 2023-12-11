@@ -1,7 +1,14 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { defaultParameters } from '../../../../stories/defaults';
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import Select from './Select';
+import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'Components/Select',

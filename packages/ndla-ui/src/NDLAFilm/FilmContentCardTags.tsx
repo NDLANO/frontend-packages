@@ -1,5 +1,13 @@
-import { spacing, spacingUnit, colors, fonts, misc } from '@ndla/core';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import styled from '@emotion/styled';
+import { spacing, spacingUnit, colors, fonts, misc } from '@ndla/core';
 import { MovieResourceType } from './types';
 
 const StyledWrapperDiv = styled.div`

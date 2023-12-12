@@ -999,6 +999,7 @@ const messages = {
       },
       publish: 'Publish',
       topic: {
+        isDeleted: 'The topic has been deleted and can not be displayed.',
         responses: 'Responses',
         topicContent: 'Write your topic here',
       },

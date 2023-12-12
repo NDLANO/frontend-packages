@@ -998,6 +998,7 @@ const messages = {
         topic: 'Innlegget har blitt oppdatert.',
       },
       topic: {
+        isDeleted: 'Innlegget har blitt slettet og kan ikke vises.',
         responses: 'Svar',
         topicContent: 'Skriv innlegget ditt her',
       },

@@ -1000,6 +1000,7 @@ const messages = {
         topic: 'Sáhkavuorru lea ođasmahttojuvvon.',
       },
       topic: {
+        isDeleted: 'Čálus lea sihkojuvvon iige sáhte čájehuvvot.',
         responses: 'Vástidan',
         topicContent: 'Čále sáhkavuoru dása',
       },

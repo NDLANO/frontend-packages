@@ -46,7 +46,6 @@ export const resourceHeadingStyle = css`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: ${fonts.weight.bold};
   // Unfortunate css needed for multi-line text overflow ellipsis.
   line-height: 1;
   display: -webkit-box;
@@ -54,7 +53,6 @@ export const resourceHeadingStyle = css`
   line-clamp: 1;
   -webkit-box-orient: vertical;
   grid-area: resourceTitle;
-  ${fonts.sizes('16px', '20px')};
 `;
 
 const StyledTagList = styled.ul`

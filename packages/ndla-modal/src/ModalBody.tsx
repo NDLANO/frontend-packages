@@ -50,9 +50,6 @@ const bodyStyles = css`
       content: none;
     }
   }
-  .c-medialist {
-    padding-right: 0;
-  }
 `;
 
 interface Props {

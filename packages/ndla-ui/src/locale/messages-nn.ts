@@ -993,7 +993,7 @@ const messages = {
         isDeleted: 'Innlegget har vorte sletta og kan ikkje visast.',
         responses: 'Svar',
         topicContent: 'Skriv innlegget ditt her',
-        fetchMore: 'Hent flere innlegg',
+        fetchMore: 'Hent fleire innlegg',
       },
       deleted: {
         post: 'Kommentaren din har blitt sletta.',

@@ -993,6 +993,7 @@ const messages = {
         isDeleted: 'Innlegget har vorte sletta og kan ikkje visast.',
         responses: 'Svar',
         topicContent: 'Skriv innlegget ditt her',
+        fetchMore: 'Hent fleire innlegg',
       },
       deleted: {
         post: 'Kommentaren din har blitt sletta.',
@@ -1009,6 +1010,7 @@ const messages = {
           edit: 'Rediger innlegg',
           delete: 'Slett innlegget',
         },
+        fetchMore: 'Hent fleire svar',
       },
       flag: {
         title: 'Rapporter innlegg / kommentar',

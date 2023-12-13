@@ -1005,6 +1005,7 @@ const messages = {
         isDeleted: 'Tjaalege lea sliejhteme jïh ij maehtieh dam vuesiehtidh.',
         responses: 'Vaestiedasse',
         topicContent: 'Tjaelieh dov håalemem daesnie',
+        fetchMore: 'Veedtjh jienebh saadtegh',
       },
       posts: {
         notify: 'Bïeljelh mejtie orre vaestiedassh',
@@ -1013,6 +1014,7 @@ const messages = {
           edit: 'Jarkelimmie håalemistie',
           delete: 'Slett innlegget',
         },
+        fetchMore: 'Jienebh vaestiedassh veedtjedh',
       },
       flag: {
         title: 'Påastem reektehtidh / kommentaarem',

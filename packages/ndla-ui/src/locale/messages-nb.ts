@@ -1001,6 +1001,7 @@ const messages = {
         isDeleted: 'Innlegget har blitt slettet og kan ikke vises.',
         responses: 'Svar',
         topicContent: 'Skriv innlegget ditt her',
+        fetchMore: 'Hent flere innlegg',
       },
       posts: {
         notify: 'Få varsel om nye svar',
@@ -1009,6 +1010,7 @@ const messages = {
           edit: 'Rediger innlegg',
           delete: 'Slett innlegget',
         },
+        fetchMore: 'Hent flere svar',
       },
       flag: {
         title: 'Rapporter innlegg / kommentar',

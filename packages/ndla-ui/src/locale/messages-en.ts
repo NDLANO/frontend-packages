@@ -1002,6 +1002,7 @@ const messages = {
         isDeleted: 'The topic has been deleted and can not be displayed.',
         responses: 'Responses',
         topicContent: 'Write your topic here',
+        fetchMore: 'Fetch more topics',
       },
       posts: {
         notify: 'Get notified of new answers',
@@ -1010,6 +1011,7 @@ const messages = {
           edit: 'Edit post',
           delete: 'Delete post',
         },
+        fetchMore: 'Fetch more answers',
       },
       flag: {
         title: 'Report post / comment',

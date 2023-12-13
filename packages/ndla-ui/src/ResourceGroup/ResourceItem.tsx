@@ -158,7 +158,7 @@ const ResourceWrapper = styled.div`
   gap: ${spacing.xsmall};
   align-items: center;
   :hover {
-    .c-content-type-badge {
+    [data-badge] {
       width: 38px;
       height: 38px;
 
@@ -166,10 +166,10 @@ const ResourceWrapper = styled.div`
         width: 20px;
         height: 20px;
       }
-      &.c-content-type-badge--subject-material,
-      &.c-content-type-badge--learning-path,
-      &.c-content-type-badge--source-material,
-      &.c-content-type-badge--external-learning-resources {
+      [data-type='subject-material'],
+      [data-type='learning-path'],
+      [data-type='source-material'],
+      [data-type='external-learning-resources'] {
         svg {
           width: 26px;
           height: 26px;

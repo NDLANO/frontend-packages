@@ -27,7 +27,7 @@ const Label = styled.div`
   align-items: center;
   margin: ${spacing.small} 0;
 
-  .c-content-type-badge {
+  [data-badge] {
     width: 26px;
     height: 26px;
     margin-right: ${spacing.xsmall};

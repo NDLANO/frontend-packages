@@ -1003,6 +1003,7 @@ const messages = {
         isDeleted: 'Čálus lea sihkojuvvon iige sáhte čájehuvvot.',
         responses: 'Vástidan',
         topicContent: 'Čále sáhkavuoru dása',
+        fetchMore: 'Viečča eanet čállosiid',
       },
       posts: {
         notify: 'Oaččo dieđu ođđa vástádusaid birra',
@@ -1011,6 +1012,7 @@ const messages = {
           edit: 'Doaimmat čállosa',
           delete: 'Sihko čállosa',
         },
+        fetchMore: 'Viečča eanet vástádusaid',
       },
       flag: {
         title: 'Rapportere čállosa / kommentára',

@@ -8,7 +8,7 @@
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors, fonts, mq, spacing, spacingUnit, breakpoints } from '@ndla/core';
+import { colors, fonts, mq, spacing, breakpoints } from '@ndla/core';
 import OneColumn from '../Layout/OneColumn';
 
 type Types = 'mobile' | 'tablet' | 'desktop' | 'wide';
@@ -77,12 +77,12 @@ const StyledHeading = styled.h1`
   ${mq.range({ from: breakpoints.tablet })} {
     margin: 0;
     ${fonts.sizes('40px', '40px')};
-    padding: 0 0 0 ${spacingUnit * 3}px;
+    padding: 0 0 0 ${spacing.xxlarge};
   }
   ${mq.range({ from: breakpoints.desktop })} {
     margin: 0;
     ${fonts.sizes('52px', '52px')};
-    padding: 0 0 0 ${spacingUnit * 3}px;
+    padding: 0 0 0 ${spacing.xxlarge};
   }
 `;
 

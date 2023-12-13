@@ -61,8 +61,8 @@ const StyledFooterHeaderIcon = styled(FooterHeaderIcon)`
   width: ${spacing.large};
   height: ${spacing.large};
   ${mq.range({ from: breakpoints.tabletWide })} {
-    width: ${spacingUnit * 3}px;
-    height: ${spacingUnit * 3}px;
+    width: ${spacing.xxlarge};
+    height: ${spacing.xxlarge};
   }
 `;
 

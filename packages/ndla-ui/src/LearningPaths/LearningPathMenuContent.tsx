@@ -99,7 +99,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     width: 2px;
     background: ${colors.brand.greyLight};
     position: absolute;
-    transform: translate(29px, -${spacingUnit * 3}px);
+    transform: translate(29px, -${spacing.xxlarge});
   }
   ${(props) =>
     !props.afterCurrent &&
@@ -115,7 +115,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     &:after {
       width: 4px;
       background: ${colors.text.light};
-      transform: translate(28px, -${spacingUnit * 3}px);
+      transform: translate(28px, -${spacing.xxlarge});
     }
   `}
   ${(props) =>

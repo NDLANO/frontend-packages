@@ -8,7 +8,7 @@
 
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import FilmContentCard from './FilmContentCard';
 import { setAnimations, StyledHeadingH1 } from './filmStyles';
 import { MovieResourceType, MovieType } from './types';
@@ -27,8 +27,8 @@ const MovieListing = styled.div<MovieListingProps>`
   margin-left: ${spacing.normal};
   margin-right: ${spacing.normal};
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-left: ${spacingUnit * 3}px;
-    margin-right: ${spacingUnit * 3}px;
+    margin-left: ${spacing.xxlarge};
+    margin-right: ${spacing.xxlarge};
   }
   > div {
     opacity: 0;

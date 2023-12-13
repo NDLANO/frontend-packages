@@ -18,7 +18,7 @@ import {
 } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 
 type Gap = 'none' | 'small' | 'normal';
 
@@ -39,8 +39,8 @@ const StyledSlideContent = styled.div<SlideContentProps>`
   margin-left: ${spacing.normal};
   margin-right: ${spacing.normal};
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-left: ${spacingUnit * 3}px;
-    margin-right: ${spacingUnit * 3}px;
+    margin-left: ${spacing.xxlarge};
+    margin-right: ${spacing.xxlarge};
   }
   &[data-gap='small'] {
     gap: ${spacing.small};

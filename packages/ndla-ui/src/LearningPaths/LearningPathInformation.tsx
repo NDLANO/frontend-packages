@@ -22,7 +22,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
   ${mq.range({ from: breakpoints.desktop })} {
     margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
-    padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacingUnit * 4}px;
+    padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacing.xxlarge};
     ul {
       margin-left: ${spacing.normal};
     }

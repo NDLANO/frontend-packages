@@ -43,16 +43,16 @@ const StyledArticle = styled.article`
   }
 
   div[data-type='grid'] + div[data-type='grid'] {
-    margin-top: ${spacingUnit * 4}px;
+    margin-top: ${spacing.xxlarge};
   }
 
   &[data-wide='true'] {
     max-width: 1100px;
     h2[id] {
-      margin-top: ${spacingUnit * 4}px;
+      margin-top: ${spacing.xxlarge};
     }
     div[data-type='campaign-block'] {
-      margin: ${spacingUnit * 4}px 0px;
+      margin: ${spacing.xxlarge} 0px;
     }
   }
 `;

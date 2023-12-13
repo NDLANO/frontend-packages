@@ -44,8 +44,8 @@ const FormWarningText = styled.span<FormWarningTextProps>`
 
 const StyledLabel = styled.label`
   && {
-    width: ${spacingUnit * 4}px;
-    max-width: ${spacingUnit * 4}px;
+    width: ${spacing.xxlarge};
+    max-width: ${spacing.xxlarge};
     padding: 20px ${spacing.small} ${spacing.small} 0;
     text-transform: uppercase;
     font-weight: ${fonts.weight.semibold};

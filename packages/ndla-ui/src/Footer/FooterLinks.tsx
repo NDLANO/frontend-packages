@@ -22,7 +22,7 @@ const StyledLinksWrapper = styled.div`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     div:first-of-type {
-      margin-right: ${spacingUnit * 4}px;
+      margin-right: ${spacing.xxlarge};
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {

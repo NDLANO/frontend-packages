@@ -8,7 +8,7 @@
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { fonts, spacing, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
+import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 
 export const setAnimations = () => {
   const styles: any = {};
@@ -35,8 +35,8 @@ const headingStyle = css`
   margin-left: ${spacing.normal};
   margin-right: ${spacing.normal};
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-left: ${spacingUnit * 3}px;
-    margin-right: ${spacingUnit * 3}px;
+    margin-left: ${spacing.xlarge};
+    margin-right: ${spacing.xlarge};
   }
 `;
 

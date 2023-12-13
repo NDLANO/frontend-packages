@@ -47,7 +47,7 @@ type StyledAsideProps = {
 
 const StyledAside = styled.aside<StyledAsideProps>`
   display: none;
-  padding-left: ${spacingUnit * 2.25}px;
+  padding-left: ${spacing.xlarge};
   ${mq.range({ from: breakpoints.desktop })} {
     display: block;
   }

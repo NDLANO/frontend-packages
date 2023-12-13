@@ -1030,8 +1030,7 @@ const messages = {
         maxLength: 'Jeenjemes gåhkoe tjaalegegievleste båateme',
         error: 'Bielie daerpies',
       },
-      bottomText:
-        'Akte kategorije datne ohtsedh ? Datne maahtah orre kategoriji bïjre rohkelidh Nuhtjh "Gihtjh NDLA" jallh seedth e-påastem moderaator@ndla.no',
+      bottomText: 'Akte kategorije datne ohtsedh? Vedtieh mijjen moderatovrese bieljelimmiem moderatore@ndla.no',
       notification: {
         title: 'Bïeljelimmie',
         showAll: 'Gaajhkh bæjhkoehtimmieh vuartasjidh',

@@ -22,8 +22,8 @@ export const PushGrid = styled.div`
 `;
 
 export const Wrapper = styled.section`
-  margin: ${spacing.large} auto ${spacingUnit * 4}px;
-  max-width: calc(100vw - ${spacingUnit * 4}px);
+  margin: ${spacing.large} auto ${spacing.xxlarge};
+  max-width: calc(100vw - ${spacing.xxlarge});
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 800px;
   }

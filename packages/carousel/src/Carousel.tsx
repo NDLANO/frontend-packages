@@ -39,8 +39,8 @@ const StyledSlideContent = styled.div<SlideContentProps>`
   margin-left: ${spacing.normal};
   margin-right: ${spacing.normal};
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-left: ${spacing.xxlarge};
-    margin-right: ${spacing.xxlarge};
+    margin-left: ${spacing.xlarge};
+    margin-right: ${spacing.xlarge};
   }
   &[data-gap='small'] {
     gap: ${spacing.small};

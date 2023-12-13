@@ -23,7 +23,7 @@ const StyledInputWrapper = styled('div')`
 `;
 
 const LanguageIndicator = styled('div')`
-  width: ${spacingUnit * 4}px;
+  width: ${spacing.xxlarge};
   pointer-events: none;
 `;
 

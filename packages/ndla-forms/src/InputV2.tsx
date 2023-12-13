@@ -42,7 +42,7 @@ const ErrorText = styled('span', { shouldForwardProp: shouldForwardError })<Form
   font-family: ${fonts.sans};
   color: ${colors.support.red};
   ${fonts.sizes(14, 1.1)};
-  padding-left: ${(p) => p.withLabel && `${spacingUnit * 4}px`};
+  padding-left: ${(p) => p.withLabel && `${spacing.xxlarge}`};
 `;
 
 interface StyledLabelProps {
@@ -52,8 +52,8 @@ interface StyledLabelProps {
 const shouldForwardLabel = (p: string) => p !== 'labelHidden';
 
 const StyledLabel = styled('label', { shouldForwardProp: shouldForwardLabel })<StyledLabelProps>`
-  width: ${spacingUnit * 4}px;
-  max-width: ${spacingUnit * 4}px;
+  width: ${spacing.xxlarge};
+  max-width: ${spacing.xxlarge};
   padding: 20px ${spacing.small} ${spacing.small} 0;
   font-weight: ${fonts.weight.semibold};
   ${fonts.sizes(14, 1.1)};

@@ -13,7 +13,6 @@ export type SpacingNames =
   | 'xsmall'
   | 'small'
   | 'nsmall'
-  | 'snormal'
   | 'normal'
   | 'medium'
   | 'mediumlarge'
@@ -26,12 +25,11 @@ const spacing: Record<SpacingNames, string> = {
   xsmall: `${spacingUnit / 4}px`,
   small: `${spacingUnit / 2}px`,
   nsmall: `${spacingUnit / 1.5}px`,
-  snormal: `${spacingUnit / 1.2}px`,
   normal: `${spacingUnit}px`,
   medium: `${spacingUnit * 1.25}px`,
   mediumlarge: `${spacingUnit * 1.5}px`,
   large: `${spacingUnit * 2}px`,
-  xlarge: `${spacingUnit * 2.25}px`,
-  xxlarge: `${spacingUnit * 3}px`,
+  xlarge: `${spacingUnit * 3}px`,
+  xxlarge: `${spacingUnit * 4}px`,
 };
 export default spacing;

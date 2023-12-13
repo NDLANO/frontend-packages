@@ -38,7 +38,7 @@ const StyledLinkWrapper = styled.div`
 
 const OneColumnCss = css`
   background: #fff;
-  padding-top: ${spacing.xxlarge};
+  padding-top: ${spacing.xlarge};
   margin-top: -${spacing.normal};
 `;
 

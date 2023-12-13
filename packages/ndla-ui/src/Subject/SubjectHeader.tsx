@@ -77,12 +77,12 @@ const StyledHeading = styled.h1`
   ${mq.range({ from: breakpoints.tablet })} {
     margin: 0;
     ${fonts.sizes('40px', '40px')};
-    padding: 0 0 0 ${spacing.xxlarge};
+    padding: 0 0 0 ${spacing.xlarge};
   }
   ${mq.range({ from: breakpoints.desktop })} {
     margin: 0;
     ${fonts.sizes('52px', '52px')};
-    padding: 0 0 0 ${spacing.xxlarge};
+    padding: 0 0 0 ${spacing.xlarge};
   }
 `;
 

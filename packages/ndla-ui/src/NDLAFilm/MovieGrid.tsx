@@ -27,8 +27,8 @@ const MovieListing = styled.div<MovieListingProps>`
   margin-left: ${spacing.normal};
   margin-right: ${spacing.normal};
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-left: ${spacing.xxlarge};
-    margin-right: ${spacing.xxlarge};
+    margin-left: ${spacing.xlarge};
+    margin-right: ${spacing.xlarge};
   }
   > div {
     opacity: 0;

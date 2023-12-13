@@ -9,19 +9,11 @@
 import { ReactNode, useState } from 'react';
 import { css, Global } from '@emotion/react';
 import { ButtonV2, ButtonProps } from '@ndla/button';
-import { mq, breakpoints, spacing } from '@ndla/core';
+import { misc } from '@ndla/core';
 
 const styling = css`
-  border-radius: 2px;
+  border-radius: ${misc.borderRadius};
   background-color: white;
-  margin-top: ${spacing.normal};
-  ${mq.range({ from: breakpoints.desktop })} {
-    position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-    padding: 0.4rem 0.6rem;
-    margin: 0;
-  }
 `;
 
 interface Props extends ButtonProps {

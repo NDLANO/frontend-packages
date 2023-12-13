@@ -8,10 +8,13 @@
 
 import { domToReact, attributesToProps, Element } from 'html-react-parser';
 import partition from 'lodash/partition';
-import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem } from '@ndla/ui';
+import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem, FramedContent } from '@ndla/ui';
 import { PluginType } from './types';
 
 export const divPlugin: PluginType = (node, opts) => {
+  if (node.attribs['data-type'] === 'framed-content' || node.attribs.class === 'c-bodybox') {
+    return <FramedContent>{domToReact(node.children, opts)}</FramedContent>;
+  }
   if (node.attribs['data-type'] === 'related-content' && node.children.length) {
     const props = attributesToProps(node.attribs);
 

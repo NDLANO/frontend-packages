@@ -57,9 +57,12 @@ export const Default: StoryFn = () => (
     <SpacingBlock name="xsmall" />
     <SpacingBlock name="small" />
     <SpacingBlock name="nsmall" />
+    <SpacingBlock name="snormal" />
     <SpacingBlock name="normal" />
     <SpacingBlock name="medium" />
     <SpacingBlock name="mediumlarge" />
     <SpacingBlock name="large" />
+    <SpacingBlock name="xlarge" />
+    <SpacingBlock name="xxlarge" />
   </Wrapper>
 );

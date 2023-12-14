@@ -1015,6 +1015,7 @@ const messages = {
           delete: 'Slett innlegget',
         },
         fetchMore: 'Jienebh vaestiedassh veedtjedh',
+        deleted: 'Daate tjaalege lea tjaalegen tjïrrh sliejhteme.',
       },
       flag: {
         title: 'Påastem reektehtidh / kommentaarem',

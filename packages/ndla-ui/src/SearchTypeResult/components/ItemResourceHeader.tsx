@@ -34,7 +34,7 @@ const NoImageElement = styled.div<ItemTypeProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  .c-content-type-badge {
+  [data-badge] {
     width: 58px;
     height: 58px;
     opacity: 0.2;

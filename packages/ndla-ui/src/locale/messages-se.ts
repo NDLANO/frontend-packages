@@ -1028,7 +1028,7 @@ const messages = {
         maxLength: 'Teakstagieddeguhkkodat lea joavdan',
         error: 'Fealta gáibiduvvo',
       },
-      bottomText: 'Váillahat go ovtta lági? Atte min moderatora dieđu dása moderator@ndla.no.',
+      bottomText: 'Váillahat go ovtta lági? Atte min moderatora dieđu dása moderator@ndla.no',
       notification: {
         title: 'Muittuhusat',
         showAll: 'Čájet buot dieđuid',

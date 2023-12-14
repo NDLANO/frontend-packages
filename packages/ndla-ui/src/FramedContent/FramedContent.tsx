@@ -16,7 +16,7 @@ const StyledFramedContent = styled.div`
   padding: ${spacing.mediumlarge};
   margin: ${spacing.large} 0;
   border: 1px solid ${colors.brand.tertiary};
-  overflow: hiddeno;
+  overflow: hidden;
 
   .c-figure {
     width: 100% !important;

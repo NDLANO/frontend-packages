@@ -1026,8 +1026,7 @@ const messages = {
         maxLength: 'Maksimal lengde for tekstfeltet er nådd',
         error: 'Feltet er påkrevd',
       },
-      bottomText:
-        'Savner du en kategori? Du kan be om nye kategorier. Bruk “Spør NDLA” eller send en epost til moderator@ndla.no',
+      bottomText: 'Savner du en kategori? Gi vår moderator beskjed på moderator@ndla.no',
       notification: {
         title: 'Varslinger',
         showAll: 'Se alle varslinger',

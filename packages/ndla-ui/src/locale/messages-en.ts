@@ -1027,8 +1027,7 @@ const messages = {
         maxLength: 'The maximum length for the text field is reached',
         error: 'The field is required',
       },
-      bottomText:
-        'Are you missing a category? You can request new categories. Use "Ask NDLA" or send an email to moderator@ndla.no',
+      bottomText: 'Are you missing a category? Let our moderator know at moderator@ndla.no',
       notification: {
         title: 'Notifications',
         showAll: 'View all notifications',

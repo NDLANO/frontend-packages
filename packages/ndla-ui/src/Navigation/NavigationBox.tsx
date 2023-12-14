@@ -43,17 +43,13 @@ const StyledList = styled.ul`
     ${mq.range({ from: breakpoints.tablet })} {
       column-count: 2;
       column-gap: 20px;
-      &[data-direction='horizontal'] {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
     ${mq.range({ from: breakpoints.tabletWide })} {
       column-count: 3;
       column-gap: 20px;
-      &[data-direction='horizontal'] {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 `;
@@ -101,8 +97,8 @@ const StyledButtonContentText = styled.span`
 
 const StyledMarksWrapper = styled.span`
   position: absolute;
-  left: 4px;
-  top: 6px;
+  left: ${spacing.xxsmall};
+  top: ${spacing.xsmall};
   display: flex;
   align-items: center;
   & > * {

@@ -1011,6 +1011,7 @@ const messages = {
           delete: 'Slett innlegget',
         },
         fetchMore: 'Hent fleire svar',
+        deleted: 'Dette innlegget er sletta av forfatteren.',
       },
       flag: {
         title: 'Rapporter innlegg / kommentar',

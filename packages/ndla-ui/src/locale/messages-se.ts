@@ -1013,6 +1013,7 @@ const messages = {
           delete: 'Sihko čállosa',
         },
         fetchMore: 'Viečča eanet vástádusaid',
+        deleted: 'Čálli lea sihkon dán sáhkavuoru.',
       },
       flag: {
         title: 'Rapportere čállosa / kommentára',

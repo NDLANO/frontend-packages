@@ -1012,6 +1012,7 @@ const messages = {
           delete: 'Delete post',
         },
         fetchMore: 'Fetch more answers',
+        deleted: 'This post has been deleted by the author.',
       },
       flag: {
         title: 'Report post / comment',

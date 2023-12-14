@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
-import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
+import { animations, breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { Additional, ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
@@ -62,7 +62,7 @@ const TopicHeaderVisualElementWrapper = styled.div`
 `;
 
 const ShowVisualElementWrapper = styled.div`
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -78,7 +78,7 @@ const VisualElementButton = styled(ButtonV2)`
 `;
 
 const TopicHeaderImage = styled.img`
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   aspect-ratio: 1;
   width: 100%;
   height: 100%;
@@ -116,7 +116,7 @@ const TopicHeaderOverlay = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   transition: opacity ${animations.durations.fast};
   ${VisualElementButton}:hover & {
     opacity: 0.1;
@@ -142,13 +142,13 @@ const HeadingWrapper = styled.hgroup`
 const StyledButtonWrapper = styled.div`
   margin-top: ${spacing.small};
   padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
-  border-left: 6px solid ${colors.brand.light};
-  $[data-inverted='true] {
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
+  &[data-inverted='true'] {
     button {
-      color: #fff;
+      color: ${colors.white};
       &:hover,
       &:focus {
-        color: #fff;
+        color: ${colors.white};
       }
     }
   }
@@ -163,7 +163,7 @@ const StyledAdditional = styled(Additional)`
 
 const StyledContentWrapper = styled.div`
   background-color: ${colors.white};
-  border-left: 6px solid ${colors.brand.light};
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
   color: ${colors.text.primary};
   padding-top: ${spacing.normal};
 `;

@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 import { Additional, HumanMaleBoard } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
 import { Switch } from '@ndla/switch';
@@ -126,7 +126,7 @@ const StyledHumanBoardIconWrapper = styled.span`
 const StyledButtonContentSelected = styled.span`
   width: 10px;
   height: 10px;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   background: ${colors.white};
   flex-shrink: 0;
   margin-left: ${spacing.small};

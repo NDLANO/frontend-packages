@@ -41,7 +41,7 @@ const SearchButton = ({ url, isOembed, searchText }: SearchButtonProps) => {
   return (
     <GoalSearchWrapper>
       <SafeLinkButton variant="outline" to={url} target={isOembed ? '_blank' : '_self'}>
-        <StyledSearch size="large" />
+        <StyledSearch size="24" />
         <span>{searchText}</span>
       </SafeLinkButton>
     </GoalSearchWrapper>

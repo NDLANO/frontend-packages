@@ -965,7 +965,8 @@ const messages = {
       title: 'Arena',
       category: {
         title: 'Kategorier',
-        posts: 'Innlegg',
+        posts: 'innlegg',
+        posts_plural: 'innlegg',
       },
       publish: 'Publiser',
       new: {
@@ -999,11 +1000,13 @@ const messages = {
       },
       topic: {
         isDeleted: 'Innlegget har blitt slettet og kan ikke vises.',
-        responses: 'Svar',
+        responses: 'svar',
+        responses_plural: 'svar',
         topicContent: 'Skriv innlegget ditt her',
         fetchMore: 'Hent flere innlegg',
       },
       posts: {
+        title: 'Innlegg',
         notify: 'Få varsel om nye svar',
         dropdownMenu: {
           report: 'Rapporter innlegg til moderator',

@@ -967,7 +967,8 @@ const messages = {
       title: 'Arena',
       category: {
         title: 'Lágit',
-        posts: 'Sáhkavuorru',
+        posts: 'sáhkavuorru',
+        posts_plural: 'sáhkavuorru',
       },
       publish: 'Almmuheaddji',
       new: {
@@ -1001,11 +1002,13 @@ const messages = {
       },
       topic: {
         isDeleted: 'Čálus lea sihkojuvvon iige sáhte čájehuvvot.',
-        responses: 'Vástidan',
+        responses: 'vástidan',
+        responses_plural: 'vástidan',
         topicContent: 'Čále sáhkavuoru dása',
         fetchMore: 'Viečča eanet čállosiid',
       },
       posts: {
+        title: 'Sáhkavuorru',
         notify: 'Oaččo dieđu ođđa vástádusaid birra',
         dropdownMenu: {
           report: 'Raportere čállosa moderatorii',

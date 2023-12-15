@@ -6,6 +6,7 @@
  *
  */
 
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
 import { forwardRef, HTMLAttributes } from 'react';
@@ -21,62 +22,56 @@ export const generateListResets = (counterName: string) => {
   return styles;
 };
 
-const StyledOl = styled.ol`
-  margin-top: 0;
-  margin-left: ${spacing.normal};
-  ${fonts.sizes('18px', '29px')};
-  list-style-type: none;
-  padding-left: ${spacing.medium} !important;
+export const LetterCSS = css`
+  padding-left: ${spacing.medium};
+  > li {
+    counter-increment: level1;
+    padding: ${spacing.nsmall} 0 0 0;
 
-  // Child ordered lists
-  ol {
-    padding-left: ${spacing.medium};
-    margin-left: 0;
-  }
-  // List item
-  li p {
-      margin-bottom: ${spacing.nsmall} !important;
+    :before {
+      content: counter(level1, upper-alpha) '.';
+      padding-right: ${spacing.small};
     }
-  
-  counter-reset: level1;
-  ${generateListResets('level1')};
-
-  &[data-type='letters'] {
-    > li {
-      &:before {
-        content: counter(level1, upper-alpha) '.';
+    > ol[data-type='letters'] > li {
+      :before {
+        content: counter(level1, lower-alpha) '.';
       }
-
-      > ol[data-type='letters'] {
-        > li:before {
-          content: counter(level1, lower-alpha) '.';
+      > ol[data-type='letters'] > li {
+        padding-left: ${spacing.normal};
+        :before {
+          position: absolute;
+          content: counter(level1, lower-roman) '.';
+          transform: translateX(-100%);
         }
-        ol[data-type='letters'] {
-          > li:before {
+        > ol[data-type='letters'] > li {
+          padding-left: ${spacing.normal};
+          :before {
+            position: absolute;
             content: counter(level1, lower-roman) '.';
+            transform: translateX(-100%);
           }
         }
       }
     }
   }
+`;
 
+export const NumberCSS = css`
+  padding-left: ${spacing.nsmall};
   > li {
-    min-height: ${spacing.normal};
     counter-increment: level1;
-    &:before {
-      position: absolute;
-      transform: translateX(-100%);
+    padding-top: ${spacing.nsmall};
+    :before {
       content: counter(level1, decimal) '.';
       padding-right: ${spacing.nsmall};
     }
-
     > ol:not([data-type='letters']) {
       counter-reset: level2;
       ${generateListResets('level2')};
       > li {
         padding-left: ${spacing.nsmall};
         counter-increment: level2;
-        &:before {
+        :before {
           content: counter(level1, decimal) '.' counter(level2, decimal) '.';
         }
         > ol:not([data-type='letters']) {
@@ -85,7 +80,7 @@ const StyledOl = styled.ol`
           > li {
             padding-left: ${spacing.medium};
             counter-increment: level3;
-            &:before {
+            :before {
               content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.';
             }
             > ol:not([data-type='letters']) {
@@ -94,7 +89,7 @@ const StyledOl = styled.ol`
               > li {
                 padding-left: ${spacing.large};
                 counter-increment: level4;
-                &:before {
+                :before {
                   content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.'
                     counter(level4, decimal) '.';
                 }
@@ -104,6 +99,23 @@ const StyledOl = styled.ol`
         }
       }
     }
+  }
+`;
+
+const StyledOl = styled.ol`
+  ${fonts.sizes('18px', '29px')};
+  ${generateListResets('level1')};
+  list-style-type: none;
+  counter-reset: level1;
+
+  padding-bottom: ${spacing.nsmall};
+
+  &:not([data-type='letters']) {
+    ${NumberCSS}
+  }
+
+  &[data-type='letters'] {
+    ${LetterCSS}
   }
 `;
 

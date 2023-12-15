@@ -15,6 +15,8 @@ const StyledUl = styled.ul`
   margin-left: ${spacing.normal};
   ${fonts.sizes('18px', '29px')};
 
+  padding-bottom: ${spacing.small};
+
   ul {
     margin-left: 0;
   }

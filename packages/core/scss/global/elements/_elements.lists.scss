@@ -8,70 +8,25 @@ blockquote > ol {
 
 /** DEFAULT STYLING OL */
 ol {
-  counter-reset: level1;
   margin: 0;
+  padding: 0;
   @include font-size(18px, 29px);
 
-  // Child ordered lists
-  li::marker {
-    content: none;
+  ol {
+    padding: 0 0 0 $spacing--nsmall;
   }
-
   // List item
   li {
-    padding-bottom: $spacing--small;
-    p {
-      padding-bottom: $spacing--nsmall;
-    }
-  }
-
-  > li {
-    min-height: $spacing;
-    counter-increment: level1;
-    &:before {
-      position: absolute;
-      transform: translateX(-100%);
-      content: counter(level1, decimal) '.';
-      padding-right: $spacing--nsmall;
-    }
-
-    > ol:not([data-type='letters']) {
-      counter-reset: level2;
-      > li {
-        padding-left: $spacing--nsmall;
-        counter-increment: level2;
-        &:before {
-          content: counter(level1, decimal) '.' counter(level2, decimal) '.';
-        }
-        > ol:not([data-type='letters']) {
-          counter-reset: level3;
-          > li {
-            padding-left: $spacing--medium;
-            counter-increment: level3;
-            &:before {
-              content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.';
-            }
-            > ol:not([data-type='letters']) {
-              counter-reset: level4;
-              > li {
-                padding-left: $spacing--large;
-                counter-increment: level4;
-                &:before {
-                  content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.'
-                    counter(level4, decimal) '.';
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    margin: 0;
+    padding: $spacing--small 0 0 $spacing--small;
   }
 }
 
 /** DEFAULT STYLING UL */
 ul {
+  @include font-size(18px, 29px);
   margin: 0;
+  padding: 0;
   list-style-type: disc;
 
   li::marker {
@@ -79,7 +34,6 @@ ul {
   }
 
   > li > ul {
-    padding: 0;
     padding-left: $spacing;
     list-style-type: circle;
 
@@ -90,7 +44,6 @@ ul {
 
   li {
     margin: 0;
-    padding: $spacing--small;
-    padding-bottom: 0;
+    padding: $spacing--small 0 0 $spacing--small;
   }
 }

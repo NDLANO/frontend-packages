@@ -6,20 +6,15 @@
  *
  */
 
-import VideoSearch from './VideoSearch';
-import { firstBrightcoveList, firstYouTubeList, secondBrightcoveList, secondYouTubeList } from '../../../dummydata';
+import { StoryFn } from '@storybook/react';
+import { BrightcoveApiType } from '@ndla/types-embed';
+import { VideoSearch, VideoQueryType } from './VideoSearch';
+//@ts-ignore
+import { firstBrightcoveList, secondBrightcoveList } from '../../../dummydata';
 import { defaultParameters } from '../../../stories/defaults';
 
-const firstDummyData = {
-  brightcove: firstBrightcoveList,
-  youtube: firstYouTubeList,
-};
-
-const secondDummyData = {
-  brightcove: secondBrightcoveList,
-  youtube: secondYouTubeList,
-};
-
+const firstDummyData = firstBrightcoveList;
+const secondDummyData = secondBrightcoveList;
 /**
  * Searching for videos requires a token and an api url (for brightcove).
  * This example uses dummy data to simulate the search.
@@ -33,7 +28,6 @@ const meta = {
     ...defaultParameters,
   },
   args: {
-    enabledSources: ['Brightcove'],
     locale: 'nb',
     translations: {
       searchPlaceholder: 'Søk i videoer',
@@ -51,13 +45,13 @@ const meta = {
 
 export default meta;
 
-export const Default = ({ ...args }) => {
-  const fetchVideos = (query, type) =>
+export const Default: StoryFn<typeof VideoSearch> = ({ ...args }) => {
+  const fetchVideos = (query: VideoQueryType): Promise<BrightcoveApiType[]> =>
     new Promise((resolve) => {
-      if (query.offset > 0 || query.page > 1) {
-        return setTimeout(() => resolve(secondDummyData[type]), 1000);
+      if (query.offset > 0) {
+        return setTimeout(() => resolve(secondDummyData), 1000);
       }
-      return setTimeout(() => resolve(firstDummyData[type]), 1000);
+      return setTimeout(() => resolve(firstDummyData), 1000);
     });
 
   // eslint-disable-next-line no-console

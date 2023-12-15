@@ -40,16 +40,6 @@ export interface VideoQueryType {
   limit: number;
 }
 
-const InputWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  gap: ${spacing.small};
-  align-items: center;
-  button {
-    min-width: ${spacing.xxlarge};
-  }
-`;
-
 const VideoSearchWrapper = styled.div`
   display: flex;
   flex-direction: column;

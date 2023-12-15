@@ -966,7 +966,8 @@ const messages = {
       title: 'Arena',
       category: {
         title: 'Categories',
-        posts: 'Posts',
+        posts: 'post',
+        posts_plural: 'posts',
       },
       new: {
         post: 'Write a reply',
@@ -1000,11 +1001,13 @@ const messages = {
       publish: 'Publish',
       topic: {
         isDeleted: 'The topic has been deleted and can not be displayed.',
-        responses: 'Responses',
+        responses: 'response',
+        responses_plural: 'responses',
         topicContent: 'Write your topic here',
         fetchMore: 'Fetch more topics',
       },
       posts: {
+        title: 'Posts',
         notify: 'Get notified of new answers',
         dropdownMenu: {
           report: 'Report post to moderator',

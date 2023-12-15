@@ -969,7 +969,8 @@ const messages = {
       title: 'Sijjie',
       category: {
         title: 'Lïhtsh',
-        posts: 'Håaleme',
+        posts: 'håaleme',
+        posts_plural: 'håaleme',
       },
       publish: 'Bæjhkoehtidh',
       new: {
@@ -1003,11 +1004,13 @@ const messages = {
       },
       topic: {
         isDeleted: 'Tjaalege lea sliejhteme jïh ij maehtieh dam vuesiehtidh.',
-        responses: 'Vaestiedasse',
+        responses: 'vaestiedasse',
+        responses_plural: 'vaestiedasse',
         topicContent: 'Tjaelieh dov håalemem daesnie',
         fetchMore: 'Veedtjh jienebh saadtegh',
       },
       posts: {
+        title: 'Håaleme',
         notify: 'Bïeljelh mejtie orre vaestiedassh',
         dropdownMenu: {
           report: 'Reekth håalemem moderatovrese',

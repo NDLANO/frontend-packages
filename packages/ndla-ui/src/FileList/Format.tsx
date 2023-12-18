@@ -13,9 +13,13 @@ import SafeLink from '@ndla/safelink';
 import { Text } from '@ndla/typography';
 import { FileFormat } from './File';
 
-const LinkTextWrapper = styled.div`
-  & > span {
-    box-shadow: inset 0 -1px;
+const StyledText = styled(Text)`
+  box-shadow: inset 0 -1px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: none;
   }
 `;
 
@@ -25,18 +29,6 @@ const FileLink = styled(SafeLink)`
   color: ${colors.brand.primary};
   display: flex;
   align-items: center;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    ${LinkTextWrapper} {
-      box-shadow: none;
-    }
-  }
 `;
 
 const StyledDownload = styled(Download)`
@@ -71,11 +63,11 @@ const Format = ({ format, title, isPrimary, isDeadLink }: FormatProps) => {
   return (
     <FileLink key={format.url} to={format.url} target="_blank" aria-label={titleWithFormat}>
       <StyledDownload />
-      <LinkTextWrapper aria-label={format.tooltip}>
-        <Text element="span" textStyle="label-small" margin="none">
+      <div aria-label={format.tooltip}>
+        <StyledText element="span" textStyle="label-small" margin="none">
           {isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}
-        </Text>
-      </LinkTextWrapper>
+        </StyledText>
+      </div>
     </FileLink>
   );
 };

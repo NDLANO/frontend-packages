@@ -6,13 +6,17 @@
  *
  */
 
-import { TFunction } from 'i18next';
-import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import Format from './Format';
 
+interface Props {
+  title: string;
+  url: string;
+  fileExists: boolean;
+  fileType: string;
+}
 export interface FileType {
   title: string;
   formats: FileFormat[];
@@ -25,12 +29,10 @@ export interface FileFormat {
   tooltip: string;
 }
 
-const fileItemStyles = css`
+const StyledFileItem = styled.li`
   background: ${colors.brand.greyLighter};
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
   flex-wrap: wrap;
   margin-bottom: ${spacing.xsmall};
   padding: ${spacing.small};
@@ -39,41 +41,14 @@ const fileItemStyles = css`
   }
 `;
 
-const getFileTooltip = (url: string, t: TFunction) => `${t('download')} ${url.split('/').pop()}`;
-
-interface CommonProps {
-  title: string;
-  url: string;
-  fileExists: boolean;
-  fileType: string;
-  children?: ReactNode;
-}
-
-interface SlateFileProps extends CommonProps {
-  hiddenTitle?: boolean;
-}
-
-export const SlateFile = ({ title, url, fileExists, fileType, hiddenTitle, children }: SlateFileProps) => {
+const File = ({ title, url, fileExists, fileType }: Props) => {
   const { t } = useTranslation();
-  const tooltip = getFileTooltip(url, t);
+  const tooltip = `${t('download')} ${url.split('/').pop()}`;
 
   return (
-    <div css={fileItemStyles}>
-      {!hiddenTitle && <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />}
-      {children}
-    </div>
-  );
-};
-
-const File = ({ title, url, fileExists, fileType, children }: CommonProps) => {
-  const { t } = useTranslation();
-  const tooltip = getFileTooltip(url, t);
-
-  return (
-    <li css={fileItemStyles}>
+    <StyledFileItem>
       <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />
-      {children}
-    </li>
+    </StyledFileItem>
   );
 };
 

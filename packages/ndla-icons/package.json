@@ -22,7 +22,6 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "scss",
     "lib",
     "es",
     "editor",

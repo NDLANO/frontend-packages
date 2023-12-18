@@ -7,18 +7,53 @@
  */
 
 import { ReactNode, SVGAttributes, useMemo } from 'react';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 
 export interface Props extends SVGAttributes<SVGSVGElement> {
   title?: string;
   description?: string;
   children?: ReactNode;
-  size?: string;
+  size?: keyof typeof sizes;
   ariaHidden?: boolean;
 }
+
+const StyledIcon = styled.svg`
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: middle;
+  line-height: 1em;
+  flex-shrink: 0;
+`;
+
+const sizes = {
+  small: css`
+    width: ${spacing.small};
+    height: ${spacing.small};
+  `,
+  xsmall: css`
+    width: ${spacing.xsmall};
+    height: ${spacing.xsmall};
+  `,
+  nsmall: css`
+    width: ${spacing.nsmall};
+    height: ${spacing.nsmall};
+  `,
+  normal: css`
+    width: ${spacing.normal};
+    height: ${spacing.normal};
+  `,
+  large: css`
+    width: ${spacing.large};
+    height: ${spacing.large};
+  `,
+} as const;
+
 const IconBase = ({
   children,
   color,
-  size,
+  size = 'nsmall',
   style,
   role,
   title,
@@ -26,21 +61,17 @@ const IconBase = ({
   width,
   height,
   ariaHidden = true,
-  className,
   ...props
 }: Props) => {
-  const computedSize = useMemo(() => size || '1em', [size]);
-  const classes = useMemo(() => (className ? `c-icon ${className}` : 'c-icon'), [className]);
-  const styleObj = useMemo(() => ({ verticalAlign: 'middle', color, ...style }), [color, style]);
+  const styleObj = useMemo(() => ({ color, ...style }), [color, style]);
 
   return (
-    <svg
+    <StyledIcon
+      css={sizes[size]}
+      data-icon=""
       fill="currentColor"
       aria-hidden={ariaHidden}
       preserveAspectRatio="xMidYMid meet"
-      height={height || computedSize}
-      width={width || computedSize}
-      className={classes}
       role={role}
       {...props}
       style={styleObj}
@@ -48,7 +79,7 @@ const IconBase = ({
       {title && <title>{title}</title>}
       {description && <desc>{description}</desc>}
       {children}
-    </svg>
+    </StyledIcon>
   );
 };
 

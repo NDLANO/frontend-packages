@@ -163,7 +163,7 @@ const EmbedByline = ({
         {license ? <LicenseLink license={license} asLink={!!license.url.length} /> : null}
         <LicenseInformationWrapper>
           <span>
-            <b>{t(`embed.type.${type}`)}: </b>
+            <b>{`${t(`embed.type.${type}`)}${captionAuthors.length ? ':' : ''}`} </b>
             {captionAuthors.map((author) => author.name).join(', ')}
           </span>
         </LicenseInformationWrapper>

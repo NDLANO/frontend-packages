@@ -13,7 +13,7 @@ const Core = (props: Props) => (
   <Icon viewBox="0 0 23 23" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
     <g>
       <g fill="none" fillRule="evenodd">
-        <circle cx="11.5" cy="11.5" r="10.5" fill="#20588F" stroke="#20588F" fillRule="nonzero" />
+        <circle cx="11.5" cy="11.5" r="10.5" fill="currentColor" stroke="currentColor" fillRule="nonzero" />
         <path fill="#FFF" d="M10.8 8.2v2.6L13.6 8 15 9.4l-2.5 2.3 2.7 3.5-1.6 1.1-2.8-3.7v3.5H9V8.2z" />
       </g>
     </g>

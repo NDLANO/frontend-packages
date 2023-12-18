@@ -264,12 +264,12 @@ const ResourceItem = ({
           <>
             {additional && (
               <IconWrapper id={additionalId} aria-label={contentTypeDescription} title={contentTypeDescription}>
-                <Additional />
+                <Additional color={colors.brand.dark} />
               </IconWrapper>
             )}
             {!additional && (
               <IconWrapper id={coreId} aria-label={contentTypeDescription} title={contentTypeDescription}>
-                <Core />
+                <Core color={colors.brand.primary} />
               </IconWrapper>
             )}
           </>

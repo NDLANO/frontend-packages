@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" data-license="CC-BY 4.0" data-source="Keyteq" viewBox="0 0 23 23">
   <g fill="none" transform="translate(1.000000, 1.000000)">
-    <circle cx="10.5" cy="10.5" r="10.5" stroke="#184673"/>
-    <path fill="#184673" d="M9.3 8.9H7V7h6.9v1.9h-2.3v6.8H9.3z"/>
+    <circle cx="10.5" cy="10.5" r="10.5" stroke="currentColor" fill="none"/>
+    <path fill="currentColor" d="M9.3 8.9H7V7h6.9v1.9h-2.3v6.8H9.3z" />
   </g>
 </svg>

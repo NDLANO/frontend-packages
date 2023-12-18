@@ -47,6 +47,12 @@ const StyledListElement = styled.li`
 const StyledHeading = styled(Heading)`
   display: flex;
   gap: ${spacing.small};
+  align-items: center;
+  svg {
+    color: ${colors.brand.primary};
+    width: ${spacing.normal};
+    height: ${spacing.normal};
+  }
 `;
 
 const StyledImg = styled.img`

@@ -6,21 +6,19 @@
  *
  */
 
-import { ComponentProps, ElementType, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 
-interface Props extends ComponentProps<'li'> {
+interface Props {
   title: string;
   url: string;
   fileExists: boolean;
   fileType: string;
   hiddenTitle?: boolean;
-  element?: keyof HTMLElementTagNameMap;
   children?: ReactNode;
 }
 
@@ -61,7 +59,8 @@ const FileLink = styled(SafeLink)`
     }
   }
 `;
-const fileListStyle = css`
+
+const FileListItem = styled.li`
   ${fonts.sizes('18px', '26px')};
   font-weight: ${fonts.weight.semibold};
   min-height: 60px;
@@ -115,16 +114,15 @@ const Format = ({ format, title, isPrimary, isDeadLink }: FormatProps) => {
   );
 };
 
-const File = ({ title, url, fileExists, fileType, hiddenTitle, element, children }: Props) => {
+const File = ({ title, url, fileExists, fileType, hiddenTitle, children }: Props) => {
   const { t } = useTranslation();
   const tooltip = `${t('download')} ${url.split('/').pop()}`;
-  const Element = (element ?? 'li') as ElementType;
 
   return (
-    <Element css={fileListStyle}>
+    <FileListItem>
       {!hiddenTitle && <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />}
       {children}
-    </Element>
+    </FileListItem>
   );
 };
 

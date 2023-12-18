@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { ReactNode } from 'react';
-import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
-import Image from '../Image';
+import styled from '@emotion/styled';
+import { spacing, colors, breakpoints, mq } from '@ndla/core';
+import { Text } from '@ndla/typography';
 import {
   CompressedTagList,
   ResourceImageProps,
@@ -21,6 +21,7 @@ import {
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
+import Image from '../Image';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
 
 const ListResourceWrapper = styled.div`
@@ -81,17 +82,15 @@ const StyledImage = styled(Image)`
   aspect-ratio: 4/3;
 `;
 
-const StyledResourceDescription = styled.p`
+const StyledResourceDescription = styled(Text)`
   grid-area: description;
   line-clamp: 2;
-  line-height: 1em;
   height: 3.1em;
   margin: 0 ${spacing.small} ${spacing.small} 0;
   ${mq.range({ until: breakpoints.mobileWide })} {
     margin: 0 ${spacing.small};
   }
   overflow: hidden;
-  ${fonts.sizes(16)};
   text-overflow: ellipsis;
   // Unfortunate css needed for multi-line text overflow ellipsis.
   display: -webkit-box;
@@ -190,7 +189,11 @@ const Description = ({ description, loading }: ResourceDescriptionProps) => {
       </ContentLoader>
     );
   }
-  return <StyledResourceDescription>{description}</StyledResourceDescription>;
+  return (
+    <StyledResourceDescription element="p" textStyle="meta-text-small">
+      {description}
+    </StyledResourceDescription>
+  );
 };
 
 export interface ListResourceProps {
@@ -227,7 +230,7 @@ const ListResource = ({
 
   return (
     <ListResourceWrapper id={id}>
-      <ImageWrapper imageSize={imageType}>
+      <ImageWrapper imageSize={imageType} data-image-size={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}
           loading={isLoading}
@@ -239,9 +242,9 @@ const ListResource = ({
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink to={link} data-link="" target={targetBlank ? '_blank' : undefined}>
-            <h1 css={resourceHeadingStyle} title={title}>
+            <Text element="span" textStyle="label-small" css={resourceHeadingStyle} title={title}>
               {title}
-            </h1>
+            </Text>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>

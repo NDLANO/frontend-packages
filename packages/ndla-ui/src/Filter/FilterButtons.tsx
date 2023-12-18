@@ -6,14 +6,14 @@
  *
  */
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
 import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
 import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
-import ToggleItem from './ToggleItem';
 import FilterCarousel from './FilterCarousel';
+import ToggleItem from './ToggleItem';
 
 const StyledHeading = styled.h3`
   ${fonts.sizes('16px', '32px')};

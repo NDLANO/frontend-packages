@@ -7,19 +7,19 @@
  */
 
 import { forwardRef, ReactNode, RefAttributes } from 'react';
-import { ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { COPYRIGHTED } from '@ndla/licenses';
-import { Copyright } from '../types';
-import ImageEmbed from './ImageEmbed';
+import { ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
+import { ExternalEmbed, HeartButtonType, IframeEmbed } from '.';
 import BrightcoveEmbed from './BrightcoveEmbed';
 import H5pEmbed from './H5pEmbed';
-import { ExternalEmbed, HeartButtonType, IframeEmbed } from '.';
-import { EmbedByline } from '../LicenseByline';
+import ImageEmbed from './ImageEmbed';
 import { Gloss } from '../Gloss';
+import { EmbedByline } from '../LicenseByline';
+import { Copyright } from '../types';
 
 export type ConceptType = 'concept' | 'gloss';
 
@@ -48,6 +48,8 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
   headerButtons?: ReactNode;
   heartButton?: HeartButtonType;
   conceptHeartButton?: ReactNode;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 const NotionDialogText = styled.div`
@@ -180,6 +182,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       glossData,
       headerButtons,
       lang,
+      exampleIds,
+      exampleLangs,
       ...rest
     },
     ref,
@@ -245,6 +249,8 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                   ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
                   : undefined
               }
+              exampleIds={exampleIds}
+              exampleLangs={exampleLangs}
             />
           )}
         </ContentPadding>

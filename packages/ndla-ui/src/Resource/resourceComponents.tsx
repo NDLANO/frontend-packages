@@ -6,17 +6,17 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
 import { CSSProperties, HTMLAttributes, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IconButtonV2 } from '@ndla/button';
-import SafeLink, { SafeLinkButton } from '@ndla/safelink';
-import { HashTag } from '@ndla/icons/common';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { IconButtonV2 } from '@ndla/button';
+import { colors, fonts, spacing } from '@ndla/core';
 import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown-menu';
-import resourceTypeColor from '../utils/resourceTypeColor';
+import { HashTag } from '@ndla/icons/common';
+import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import { resourceEmbedTypeMapping } from '../model/ContentType';
+import resourceTypeColor from '../utils/resourceTypeColor';
 
 export interface ResourceImageProps {
   alt: string;
@@ -46,7 +46,6 @@ export const resourceHeadingStyle = css`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: ${fonts.weight.bold};
   // Unfortunate css needed for multi-line text overflow ellipsis.
   line-height: 1;
   display: -webkit-box;
@@ -54,7 +53,6 @@ export const resourceHeadingStyle = css`
   line-clamp: 1;
   -webkit-box-orient: vertical;
   grid-area: resourceTitle;
-  ${fonts.sizes('16px', '20px')};
 `;
 
 const StyledTagList = styled.ul`
@@ -133,7 +131,7 @@ const StyledContentIconWrapper = styled.span`
 
 export const ContentIconWrapper = ({ contentType, children, ...props }: ContentIconProps) => {
   const contentIconWrapperVars = useMemo(
-    () => ({ '--content-background-color': resourceTypeColor(contentType) } as unknown as CSSProperties),
+    () => ({ '--content-background-color': resourceTypeColor(contentType) }) as unknown as CSSProperties,
     [contentType],
   );
   return (

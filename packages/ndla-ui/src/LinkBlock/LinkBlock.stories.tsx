@@ -7,9 +7,9 @@
  */
 
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
+import { LinkBlockSection } from '.';
 import LinkBlock from './LinkBlock';
 import { defaultParameters } from '../../../../stories/defaults';
-import { LinkBlockSection } from '.';
 
 export default {
   title: 'Components/Link Block',

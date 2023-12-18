@@ -6,35 +6,27 @@
  *
  */
 
-import styled from '@emotion/styled';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { colors, spacing, misc, fonts } from '@ndla/core';
+import styled from '@emotion/styled';
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
-import { Transcription } from '../model/Transcriptions';
+import { colors, spacing, misc, fonts } from '@ndla/core';
+import { IGlossData, IGlossExample } from '@ndla/types-backend/concept-api';
+import GlossExample from './GlossExample';
 import SpeechControl from '../AudioPlayer/SpeechControl';
-
-interface Example {
-  example: string;
-  language: string;
-  transcriptions: Transcription;
-}
 
 export interface Props {
   title: {
     title: string;
     language: string;
   };
-  glossData?: {
-    gloss: string;
-    wordClass?: string;
-    originalLanguage: string;
-    transcriptions: Transcription;
-    examples?: Example[][];
-  };
+  glossData?: IGlossData;
   audio?: {
     title: string;
     src?: string;
   };
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 const Container = styled.div`
@@ -83,25 +75,33 @@ const StyledAccordionContent = styled(AccordionContent)`
   padding: 0;
 `;
 
-const TranslatedText = styled.span`
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid ${colors.brand.lighter};
-  padding: ${spacing.small} ${spacing.normal};
-  font-family: ${fonts.sans};
-  ${fonts.sizes('18px', '24px')};
-  &[data-first='true'] {
-    color: ${colors.brand.dark};
-    font-weight: ${fonts.weight.bold};
-    background-color: ${colors.background.lightBlue};
-  }
-  &[data-pinyin] {
-    font-style: italic;
-  }
-`;
+const getFilteredExamples = (
+  glossData: IGlossData | undefined,
+  exampleIds: string | undefined,
+  exampleLangs: string | undefined,
+): IGlossExample[][] => {
+  if (exampleIds !== undefined || exampleLangs !== undefined) {
+    const exampleIdsList = exampleIds?.toString()?.split(',') ?? [];
+    const exampleLangsList = exampleLangs?.split(',') ?? [];
 
-const Gloss = ({ title, glossData, audio }: Props) => {
+    const filteredExamples =
+      glossData?.examples?.map((examples, i) => {
+        if (exampleIdsList.includes(i.toString())) {
+          return examples.filter((e) => exampleLangsList.includes(e.language));
+        } else return [];
+      }) ?? [];
+    const examplesWithoutEmpty = filteredExamples.filter((el) => !!el.length);
+    return examplesWithoutEmpty;
+  } else return glossData?.examples ?? [];
+};
+
+const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => {
   const { t } = useTranslation();
+
+  const filteredExamples = useMemo(
+    () => getFilteredExamples(glossData, exampleIds, exampleLangs),
+    [exampleIds, exampleLangs, glossData],
+  );
 
   return (
     <>
@@ -138,36 +138,20 @@ const Gloss = ({ title, glossData, audio }: Props) => {
             </Wrapper>
             <span lang={title.language}>{title.title}</span>
           </Container>
-          {glossData.examples && glossData.examples.length > 0 && (
+          {filteredExamples.length > 0 && (
             <AccordionRoot type="single" collapsible>
               <AccordionItem value="1">
                 <StyledAccordionHeader headingLevel="span">{t('gloss.examples')}</StyledAccordionHeader>
                 <StyledAccordionContent>
-                  {glossData.examples.map((example, index) => (
-                    <div key={index}>
-                      {example.map((translation, innerIndex) => (
-                        <div key={`${index}_${innerIndex}`}>
-                          <TranslatedText data-first={innerIndex === 0} lang={translation.language}>
-                            {translation.example}
-                          </TranslatedText>
-                          {translation.transcriptions.pinyin && (
-                            <TranslatedText
-                              key={t('gloss.transcriptions.pinyin')}
-                              data-pinyin=""
-                              lang={glossData.originalLanguage}
-                            >
-                              {translation.transcriptions?.pinyin}
-                            </TranslatedText>
-                          )}
-                          {translation.transcriptions.traditional && (
-                            <TranslatedText
-                              key={t('gloss.transcriptions.traditional')}
-                              lang={glossData.originalLanguage}
-                            >
-                              {translation.transcriptions?.traditional}
-                            </TranslatedText>
-                          )}
-                        </div>
+                  {filteredExamples.map((examples, index) => (
+                    <div key={`gloss-example-${index}`}>
+                      {examples.map((example, innerIndex) => (
+                        <GlossExample
+                          key={`gloss-example-${index}-${innerIndex}`}
+                          example={example}
+                          originalLanguage={glossData.originalLanguage}
+                          index={innerIndex}
+                        />
                       ))}
                     </div>
                   ))}

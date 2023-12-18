@@ -7,8 +7,8 @@
  */
 
 import { useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
+import { Meta, StoryFn } from '@storybook/react';
 import TagSelector from './TagSelector';
 import { defaultParameters } from '../../../../stories/defaults';
 

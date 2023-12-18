@@ -7,13 +7,13 @@
  */
 
 import { ReactNode, Fragment } from 'react';
-import SafeLink from '@ndla/safelink';
-import { Additional, Core } from '@ndla/icons/common';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { ButtonV2 } from '@ndla/button';
-import { Modal, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { Additional, Core } from '@ndla/icons/common';
+import { Modal, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from '@ndla/modal';
+import SafeLink from '@ndla/safelink';
 
 const BreadcrumbPath = styled.div`
   color: ${colors.text.light};

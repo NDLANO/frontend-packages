@@ -1,11 +1,19 @@
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { ModalBody, ModalHeader, ModalCloseButton, Modal, ModalTitle, ModalTrigger, ModalContent } from '@ndla/modal';
-import Tooltip from '@ndla/tooltip';
-import { Switch } from '@ndla/switch';
 import { LearningPathQuiz } from '@ndla/icons/contentType';
+import { ModalBody, ModalHeader, ModalCloseButton, Modal, ModalTitle, ModalTrigger, ModalContent } from '@ndla/modal';
+import { Switch } from '@ndla/switch';
+import Tooltip from '@ndla/tooltip';
 
 interface HelpIconProps {
   invertedStyle: boolean;

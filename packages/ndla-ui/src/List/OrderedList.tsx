@@ -7,9 +7,9 @@
  */
 
 import { css } from '@emotion/react';
+import { forwardRef, HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
-import { forwardRef, HTMLAttributes } from 'react';
 
 export const generateListResets = (counterName: string) => {
   let styles = '';

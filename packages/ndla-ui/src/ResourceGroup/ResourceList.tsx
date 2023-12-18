@@ -7,11 +7,11 @@
  */
 
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { fonts } from '@ndla/core';
-import NoContentBox from '../NoContentBox';
 import ResourceItem from './ResourceItem';
+import NoContentBox from '../NoContentBox';
 import { Resource } from '../types';
 
 const StyledResourceList = styled.ul`

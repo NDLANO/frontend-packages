@@ -25,7 +25,10 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
-    padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacingUnit * 4}px;
+    padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacing.xxlarge};
+    ul {
+      margin-left: ${spacing.normal};
+    }
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     margin: 0;

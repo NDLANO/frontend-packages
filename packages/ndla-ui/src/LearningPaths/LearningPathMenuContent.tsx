@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
 import { LearningPathRead } from '@ndla/icons/contentType';
+import SafeLink from '@ndla/safelink';
 import { StepProps } from './LearningPathMenu';
 import ContentTypeBadge from '../ContentTypeBadge';
 import constants from '../model';
@@ -99,7 +99,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     width: 2px;
     background: ${colors.brand.greyLight};
     position: absolute;
-    transform: translate(29px, -${spacingUnit * 3}px);
+    transform: translate(29px, -${spacing.xlarge});
   }
   ${(props) =>
     !props.afterCurrent &&
@@ -115,7 +115,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     &:after {
       width: 4px;
       background: ${colors.text.light};
-      transform: translate(28px, -${spacingUnit * 3}px);
+      transform: translate(28px, -${spacing.xlarge});
     }
   `}
   ${(props) =>

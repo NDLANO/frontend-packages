@@ -6,9 +6,9 @@
  *
  */
 
+import { Children, HTMLAttributes, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { Children, HTMLAttributes, ReactNode } from 'react';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children: ReactNode;

@@ -1,9 +1,17 @@
-import { ReactElement } from 'react';
-import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
-import { InformationOutline } from '@ndla/icons/common';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
-import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
+import { ReactElement } from 'react';
+import { InformationOutline } from '@ndla/icons/common';
+import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
+
 import { StoryType, stories } from './StaticInfoComponents';
+import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
 
 interface ModalContentProps {
   pageId: StoryType;

@@ -6,10 +6,10 @@
  *
  */
 
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { fonts, spacing, colors } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
 
 const ResultNav = styled.div`
   font-size: 14px;

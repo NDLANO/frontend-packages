@@ -6,26 +6,26 @@
  *
  */
 
-import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
 import parse from 'html-react-parser';
+import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { isMobile } from 'react-device-detect';
 import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
 import { IconButtonV2 } from '@ndla/button';
-import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { ConceptMetaData } from '@ndla/types-embed';
-import Tooltip from '@ndla/tooltip';
+import { Cross } from '@ndla/icons/action';
 import { COPYRIGHTED } from '@ndla/licenses';
-import { Notion as UINotion } from '../Notion';
-import { Figure } from '../Figure';
-import { NotionImage } from '../Notion/NotionImage';
+import Tooltip from '@ndla/tooltip';
+import { ConceptMetaData } from '@ndla/types-embed';
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from './conceptComponents';
-import { EmbedByline } from '../LicenseByline';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 import { HeartButtonType } from './types';
+import { Figure } from '../Figure';
 import { Gloss } from '../Gloss';
+import { EmbedByline } from '../LicenseByline';
+import { Notion as UINotion } from '../Notion';
+import { NotionImage } from '../Notion/NotionImage';
 
 interface PopoverPosition {
   top?: number;
@@ -123,6 +123,8 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
         conceptType={concept.conceptType}
         glossData={concept.glossData}
         lang={lang}
+        exampleIds={embed.embedData.exampleIds}
+        exampleLangs={embed.embedData.exampleLangs}
       />
     );
   } else if (embed.embedData.type === 'inline') {
@@ -140,6 +142,8 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
         conceptType={concept.conceptType}
         glossData={concept.glossData}
         lang={lang}
+        exampleIds={embed.embedData.exampleIds}
+        exampleLangs={embed.embedData.exampleLangs}
       />
     );
   } else {
@@ -156,6 +160,8 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
         conceptType={concept.conceptType}
         glossData={concept.glossData}
         lang={lang}
+        exampleIds={embed.embedData.exampleIds}
+        exampleLangs={embed.embedData.exampleLangs}
       />
     );
   }
@@ -166,6 +172,8 @@ interface InlineConceptProps extends ConceptNotionData {
   heartButton?: HeartButtonType;
   headerButtons?: ReactNode;
   conceptHeartButton?: ReactNode;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 const BaselineIcon = styled.span`
@@ -239,6 +247,8 @@ export const InlineConcept = ({
   conceptType,
   headerButtons,
   lang,
+  exampleIds,
+  exampleLangs,
 }: InlineConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -290,6 +300,8 @@ export const InlineConcept = ({
               }
               conceptType={conceptType}
               glossData={glossData}
+              exampleIds={exampleIds}
+              exampleLangs={exampleLangs}
             />
           </Content>
         </PopoverWrapper>
@@ -302,6 +314,8 @@ interface ConceptProps extends ConceptNotionData {
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
   conceptHeartButton?: ReactElement;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 export const BlockConcept = ({
@@ -317,6 +331,8 @@ export const BlockConcept = ({
   glossData,
   conceptType,
   lang,
+  exampleIds,
+  exampleLangs,
 }: ConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -418,6 +434,8 @@ export const BlockConcept = ({
                 ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
                 : undefined
             }
+            exampleIds={exampleIds}
+            exampleLangs={exampleLangs}
           />
         )}
         {copyright && conceptType === 'concept' && (

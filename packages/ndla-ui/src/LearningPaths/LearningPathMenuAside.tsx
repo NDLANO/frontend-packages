@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
-import { useTranslation } from 'react-i18next';
-import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
 
 const infoTextCSS = css`
@@ -47,7 +47,7 @@ type StyledAsideProps = {
 
 const StyledAside = styled.aside<StyledAsideProps>`
   display: none;
-  padding-left: ${spacingUnit * 2.25}px;
+  padding-left: ${spacing.xlarge};
   ${mq.range({ from: breakpoints.desktop })} {
     display: block;
   }

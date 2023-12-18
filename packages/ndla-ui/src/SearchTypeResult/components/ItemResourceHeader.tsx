@@ -12,11 +12,10 @@ import styled from '@emotion/styled';
 
 import { fonts, spacing } from '@ndla/core';
 
-import { ContentType } from '../SearchTypeResult';
-import { SearchItemType } from '../SearchItem';
-
-import resourceTypeColor from '../../utils/resourceTypeColor';
 import ContentTypeBadge from '../../ContentTypeBadge';
+import resourceTypeColor from '../../utils/resourceTypeColor';
+import { SearchItemType } from '../SearchItem';
+import { ContentType } from '../SearchTypeResult';
 
 interface ItemTypeProps {
   contentType?: ContentType;
@@ -35,7 +34,7 @@ const NoImageElement = styled.div<ItemTypeProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  .c-content-type-badge {
+  [data-badge] {
     width: 58px;
     height: 58px;
     opacity: 0.2;

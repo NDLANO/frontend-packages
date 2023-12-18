@@ -9,11 +9,12 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories, subjectTypes, wordClass } = constants;
+export const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  ...contributorTypes.nn,
   common: {
     subject: 'Fag',
     subject_plural: 'Fag',
@@ -87,12 +88,6 @@ const messages = {
     searchPage: `Søk${titleTemplate}`,
     notFound: `Sida finst ikkje${titleTemplate}`,
   },
-  newsLetter: {
-    heading: 'Nyheitsbrev',
-    description: 'Hald deg oppdatert. Abonner på siste nytt frå NDLA.',
-    mainLinkName: 'Meld deg på',
-    iconLinkName: 'Meld deg på nyheitsbrev',
-  },
   askNDLA: 'Spør NDLA',
   articlePage: {
     errorDescription: 'Orsak, ein feil oppstod under lasting av ressursen.',
@@ -132,25 +127,7 @@ const messages = {
     searchFieldPlaceholder: 'Søk i fagstoff, oppgåver og aktivitetar eller læringsstiar',
     searchFieldPlaceholderShort: 'Søk',
     label: {
-      content: 'Innhald:',
-      contentTypes: 'Innhaldstypar:',
-      levels: 'Nivå:',
-      languageFilter: 'Språk:',
       subjects: 'Fag:',
-      noFilter: 'Ingen filter valde',
-      createdBy: 'Laga av:',
-    },
-    showLabel: {
-      contentTypes: 'Fleire innhaldstypar',
-      levels: 'Fleire nivå',
-      languageFilter: 'Fleire språk',
-      subjects: 'Byt fag',
-    },
-    hideLabel: {
-      contentTypes: 'Færre innhaldstypar',
-      levels: 'Færre nivå',
-      languageFilter: 'Færre språk',
-      subjects: 'Færre fag',
     },
     searchField: {
       contentTypeResultShowMoreLabel: 'Sjå fleire resultat',
@@ -159,22 +136,11 @@ const messages = {
       searchResultHeading: 'Forslag:',
       contentTypeResultNoHit: 'Ingen treff på søk ...',
     },
-    searchResultMessages: {
-      searchStringLabel: 'Du søkte på:',
-      subHeading: '{{totalCount}} treff i NDLA',
-    },
     searchResultListMessages: {
       subjectsLabel: 'Opne i fag:',
       noResultHeading: 'Hmm, ikkje noko innhald ...',
       noResultDescription:
         'Vi har dessverre ikkje noko å tilby her. Om du vil føreslå noko innhald til dette området, kan du bruke Spør NDLA som du finn nede til høgre på skjermen.',
-    },
-    searchPageMessages: {
-      filterHeading: 'Filter',
-      resultHeading: '{{totalCount}} treff i NDLA',
-      resultHeadingByAuthor: '{{totalCount}} artiklar skrive av {{author}}',
-      narrowScreenFilterHeading: '{{totalCount}} treff på «{{query}}»',
-      dropdownBtnLabel: 'Fleire innhaldstypar',
     },
     searchFilterMessages: {
       backButton: 'Tilbake til filter',
@@ -222,39 +188,9 @@ const messages = {
     },
   },
   subjectPage: {
-    errorDescription: 'Orsak, ein feil oppstod under lasting av emna.',
     tabs: {
       topics: 'Emne',
     },
-    subjectShortcuts: {
-      heading: 'Gå direkte til',
-      showMore: 'Vis fleire',
-      showLess: 'Vis færre',
-    },
-    mostRead: {
-      heading: 'Mest brukt',
-    },
-    editorsChoices: {
-      heading: 'Litt forskjellig frå faget',
-      unknown: 'Ukjend',
-    },
-    subjectArchive: {
-      heading: 'Aktuelt',
-      archive: 'Arkiv',
-      close: 'Lukk',
-    },
-    subjectFilter: {
-      label: 'Filter',
-    },
-    newContent: {
-      heading: 'Nytt innhald',
-    },
-    subjectIsBeta: {
-      iconLabel: 'i arbeid',
-      dialogHeader: '{{title}} er under arbeid.',
-      dialogText: 'Du kan lese meir om kva dette betyr på',
-    },
-    archived: 'Dette er eit utgått fag som ikkje blir halde ved like.',
   },
   subjectsPage: {
     filterSubjects: 'Filtrer fag',
@@ -277,47 +213,16 @@ const messages = {
     shows: 'Viser',
   },
   topicPage: {
-    articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emnebeskrivinga.',
     topic: 'EMNE',
     topics: 'Emne',
     imageModal: 'Sjå biletet i full storleik',
   },
   welcomePage: {
-    search: 'Søk',
-    searchDisclaimer:
-      'Vi jobbar stadig med å forbetre oss! Har du kommentarar til søket, blir vi glade om du legg dei inn i Spør NDLA nede i høgre hjørne.',
     resetSearch: 'Tøm søk',
-    closeSearch: 'Lukk søk',
     searchAllInfo: 'Sjå alle treff på søk',
-    topicsConjunction: 'og',
-    highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
-      searchFieldPlaceholder: 'Kva vil du lære om i dag?',
-      messages: {
-        searchFieldTitle: 'Søk',
-        menuButton: 'Innhald',
-      },
-      links: {
-        aboutNDLA: 'Om NDLA',
-        changeLanguage: 'Skift språk',
-      },
     },
-    socialMedia: {
-      heading: 'Følg oss',
-      description: 'NDLA har mange Facebook- og X-kontoar. Finn den som passar for deg, og følg oss',
-      mainLink: {
-        name: 'Følg oss',
-      },
-    },
-    errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
-    film: {
-      header: 'NDLA film',
-      text: 'NDLA film er ei teneste i samarbeid med Norgesfilm. Denne tenesta lar deg sjå ei rekkje spelefilmar, kortfilmar, dokumentarar og seriar. Du kan òg sjå undervisningsfilm og filmklipp. Velkomen inn i filmen si verd!',
-      textShort: 'Velkomen inn i filmen si verd!',
-      linkLabel: 'Gå til NDLA film',
-    },
-    blog: 'Frå bloggen',
   },
   toolboxPage: {
     introduction:
@@ -336,103 +241,38 @@ const messages = {
       toolboxStudents: 'Verktøykassa - for elevar',
       toolboxTeachers: 'Verktøykassa - for lærarar',
       film: 'NDLA film',
-      about: {
-        title: 'Om NDLA',
-        numbers: 'Tall og rapporter',
-        keyPersonnel: 'Nøkkelpersoner',
-        vacancies: 'Utlysninger',
-        vision: 'Visjon og verdier',
-        communityPurpose: 'Vårt samfunnsoppdrag',
-        history: 'NDLAs historie',
-        cooperation: 'Vår samarbeid',
-        faq: 'Ofte stilte spørsmål',
-        follow: 'Følg våre sosiale medier',
-        whoAreWe: 'Hvem er vi?',
-        whatWeDo: 'Hva gjør vi?',
-        careers: 'Jobb hos oss',
-        contactUs: 'Kontakt oss',
-        organizing: 'Organisering',
-        articlesOfAssociation: 'Vedtekter',
-      },
     },
     menu: {
       button: 'Meny',
       goToMainMenu: 'Gå til hovedmeny',
-      close: 'Lukk',
-      goTo: 'Gå til',
       search: 'Søk',
-      toFrontpage: 'Til framsida',
-      subjectOverview: 'Alle fag',
       title: 'Åpne meny',
       modalLabel: 'Vel innhald',
-      subjectPage: 'Fagframside',
-      backToSubjectFrontpage: 'Tilbake til fagframsida',
-      openFilter: 'Filter',
-      useFilter: 'Bruk filter',
-      closeFilter: 'Lukk filter',
-      learningResourcesHeading: 'Læringsressursar',
-      back: 'Tilbake',
-      additionalFilterLabel: 'Tilleggsressursar',
-      contentTypeResultsShowMore: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Vis meir fagstoff',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Vis fleire oppgåver og aktivitetar',
-        [contentTypes.LEARNING_PATH]: 'Vis fleire læringsstiar',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Vis fleire vurderingsressursar',
-        [contentTypes.SOURCE_MATERIAL]: 'Vis fleire kjeldemateriale',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vis fleire eksterne læringsressursar',
-        unGrouped: 'Vis fleire ressursar',
-      },
-      contentTypeResultsShowLess: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Vis færre oppgåver og aktivitetar',
-        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstiar',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressursar',
-        [contentTypes.SOURCE_MATERIAL]: 'Vis færre kjeldemateriale',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vis færre eksterne læringsressursar',
-        unGrouped: 'Vis færre ressursar',
-      },
-      contentTypeResultsNoHit: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Ikkje noko fagstoff',
-        [contentTypes.TASKS_AND_ACTIVITIES]: 'Ingen oppgåver',
-        [contentTypes.LEARNING_PATH]: 'Ingen læringsstiar',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressursar',
-        [contentTypes.SOURCE_MATERIAL]: 'Ingen kjeldemateriale',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Ingen eksterne læringsressursar',
-        unGrouped: 'Ingen ressursar',
-      },
     },
   },
   logo: {
     altText: 'Nasjonal digital læringsarena',
   },
   resource: {
-    errorDescription: 'Orsak, ein feil oppstod under lasting av emneressursar.',
-    error: 'Orsak, ein del av innhaldet kunne ikkje visast.',
     noCoreResourcesAvailableUnspecific: 'Det er ikkje noko kjernestoff tilgjengeleg.',
     noCoreResourcesAvailable: 'Det er ikkje noko kjernestoff tilgjengeleg for {{name}}.',
     activateAdditionalResources: 'Tilleggsressursar',
     toggleFilterLabel: 'Tilleggsressursar',
     label: 'Læringsressursar',
-    allResources: 'Ressursar',
-    shortcutButtonText: 'Lærestoff',
     tooltipCoreTopic: 'Kjernestoff',
     tooltipAdditionalTopic: 'Tilleggsstoff',
     additionalTooltip: 'Tilleggsstoff',
-    shortcutsTooltip: 'Vis {{count}} artiklar i dette emnet',
     dialogTooltip: 'Kva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
     dialogText1: 'Når du lærer deg kjernestoffet, får du den kompetansen som blir beskriven i læreplanen for faget.',
     dialogText2:
       'Tilleggsstoff er innhald du kan velje i tillegg til kjernestoffet. Gjennom dette kan du fordjupe deg i eit emne eller nærme deg emnet på ein annan måte.',
-    showLess: 'Vis mindre',
-    showMore: 'Vis meir',
     youAreHere: 'Du er her',
     trait: {
       video: 'Video',
       h5p: 'Interaktiv',
     },
   },
-
   messageBoxInfo: {
     outdatedCoursePlan:
       'Dette faget følgjer ein utgått læreplan. Gå til faget som er oppdatert etter gjeldande læreplan: ',
@@ -511,9 +351,6 @@ const messages = {
     },
     licenseData: 'Inneheld data under',
     licenseFrom: 'tilgjengeleggjort på',
-  },
-  subject: {
-    associatedTopics: 'Tilhøyrande emne',
   },
   subjectFrontPage: {
     buildsOn: 'Bygger på',
@@ -698,8 +535,6 @@ const messages = {
       aboutNdla: 'About NDLA',
       blog: 'Fagblogg',
       tips: 'Tips til elevar',
-      fyr: 'FYR-prosjektet',
-      sharing: 'Delingsarena',
       vacancies: 'Ledige stillingar',
     },
   },
@@ -754,7 +589,6 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'NDLA framside',
-    youAreHere: 'Du er her',
     breadcrumb: 'Brødsmulesti',
   },
   listview: {
@@ -822,9 +656,7 @@ const messages = {
     loadingMovies: 'Hentar filmar...',
     subjectsInMovies: 'Emne i film',
     about: {
-      heading: 'Om NDLA film',
       more: 'Les meir om NDLA film',
-      text: 'NDLA film er ei nettbasert filmteneste for elevar og lærarar i vidaregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
     },
     search: {
       placeholder: 'Søk på filmnamn',
@@ -863,36 +695,12 @@ const messages = {
       all: 'Alle filmar A-Å',
     },
     allMovieGroupTitleLabel: 'Filmar som startar på {{letter}}',
-    moreAboutNdlaFilm: {
-      header: 'NDLA film',
-      firstParagraph:
-        'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kopla mot læreplanar i fleire fag. Dei er valde av redaksjonane til NDLA i samarbeid med Norgesfilm AS.',
-      secondParagraph:
-        'Du kan sjå filmane om du er kopla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med klarering av rettar og betaling. Alt du treng å gjere, er å trykke play.',
-      thirdParagraph:
-        'Filmane er copyrightmerka. Dei kan fritt spele dei av på ndla.no, men ikkje laste dei ned eller distribuere dei vidare i andre publikasjonar. Alle rettshavarar blir honorerte for dei avspelingane som blir gjort.',
-      secondHeading: 'Bruk film i undervisninga',
-      fourthParagraph:
-        'Ein film fortel historier på måtar som engasjerer og rører oss. Film bruker nokre av dei mest effektive visuelle verkemidla som finst; levande bilete og lyd. Ein god film kan vise sider ved samtida og gi visjonar om framtida eller kommentere fortida. Difor kan film ofte gi oss betre forståing av hendingar, kulturmøte og historie enn ein fagtekst.',
-      fifthParagraph:
-        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underhaldningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremjar etisk orienteringsevne og estetisk sans.',
-      tipSectionPt1: 'Kom gjerne med tips, spørsmål eller filmønske på',
-      tipSectionPt2: 'Facebook-sida',
-      ariaLabel: 'Besøk Facebooksida til NDLA-film',
-      tipSectionPt3: 'vår',
-      ending: 'Vi ønskjer alle filmelskarar ei god og lærerik oppleving!',
-    },
   },
   learningPath: {
     createLearningPathText: 'Lag din eigen, kopier denne eller sjå fleire læringsstiar?',
     createLearningPathButtonText: 'Gå til stiar',
     lastUpdated: 'Sist oppdatert',
     youAreInALearningPath: 'Du er no inne i ein læringssti',
-    readTime: '{{hours}} Skuletimar = {{minutes}} min',
-    pageOf: 'av',
-    readTimeHour: 'time',
-    readTimeHour_plurals: 'timar',
-    readTimeMinutesShort: 'min',
     lastStep: {
       heading: 'Siste steg i læringsstien',
       headingSmall: 'Du er no på siste steget i læringsstien {{learningPathName}}',
@@ -910,22 +718,6 @@ const messages = {
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
     selected: '{{count}} valgte',
-  },
-  blogPosts: {
-    blog1: {
-      text: 'Forslag til årsplaner fra NDLA',
-      externalLink: 'https://blogg.ndla.no/2021/08/forslag-til-arsplaner-hos-ndla/',
-      linkText: 'Fagblogg',
-      license: 'CC-BY-SA-4.0',
-      licenseAuthor: 'Vibeke Klungland',
-    },
-    blog2: {
-      text: 'Huskeliste for kontaktlærere',
-      externalLink: 'https://blogg.ndla.no/2019/08/huskeliste-for-kontaktlaerere/',
-      linkText: 'Fagblogg',
-      license: 'CC-BY-SA-4.0',
-      licenseAuthor: 'Tom Knudsen',
-    },
   },
   editor: {
     versionHistory: {
@@ -950,26 +742,13 @@ const messages = {
       text: 'er utarbeida av',
     },
   },
-  frontPageToolbox: {
-    heading: 'Verktøykassa',
-    text: 'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartare ved hjelp av riktig studieteknikk? Treng du råd om korleis du les mest mogleg effektivt til eksamen? I verktøykassa til NDLA finn du mange gode tips og råd!',
-    linkTextStudents: 'Sjå alle tipsa for elever her',
-    linkTextTeachers: 'Sjå alle tipsa for lærarar her',
-    cursorText: 'Tips',
-  },
   frontpageMultidisciplinarySubject: {
     heading: 'Tverrfaglege tema',
     text: 'Dei tre tverrfaglege temaa i læreplanverket tek utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
-    linkText: 'Sjå caser for tverrfaglege tema',
-    publicHealthTopic: 'Folkehelse og livsmeistring',
-    democracyTopic: 'Demokrati og medborgarskap',
-    sustainableTopic: 'Bærekraftig utvikling',
-    cursorText: 'Nyheit',
   },
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
-    cursorText: 'Sjå smakebitar frå fag under utvikling.',
   },
   navigation: {
     showLongerDescription: 'Vis heile emnebeskrivinga',
@@ -981,10 +760,6 @@ const messages = {
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case innan',
-  },
-  multibutton: {
-    open: 'Åpne meny',
-    close: 'Lukk meny',
   },
   cancel: 'Avbryt',
   close: 'Lukk',
@@ -1074,7 +849,6 @@ const messages = {
   fileTypesNotSupported: 'Filtypen(e) støttast ikkje: {{fileTypes}}',
   download: 'Last ned fil: ',
   expandButton: 'Vis stor versjon',
-  ...contributorTypes.nn,
   filterButtons: {
     removeAllFilters: 'Fjern filter',
   },
@@ -1117,11 +891,6 @@ const messages = {
       'Dersom informasjonen er feil, må han oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversikt over brukarstøtte finst her: ',
     moderator: 'Moderator',
   },
-  checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
-  slateBlockMenu: {
-    open: 'Åpne meny',
-    close: 'Lukk meny',
-  },
   factbox: {
     open: 'Åpne faktaboks',
     close: 'Lukk faktaboks',
@@ -1138,7 +907,9 @@ const messages = {
     folder: {
       folder: 'Mappe',
       delete: 'Slett mappe',
+      deleteShort: 'Slett',
       edit: 'Rediger mappe',
+      editShort: 'Rediger',
       copy: 'Kopier mappe',
       open: 'Åpne mappe',
       close: 'Lukk mappe',
@@ -1154,7 +925,7 @@ const messages = {
       onDragEndMissingOver: 'Mappa blei sleppt',
       onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sleppt',
       dragHandle: 'Sorter mappa {{name}}',
-      sharedWarning: 'Namn og beskriving blir synleg for alle du deler mappa med',
+      sharedWarning: 'Namn og beskriving blir synleg for alle du deler mappa med.',
       sharing: {
         share: 'Del mappe',
         shared: 'Delt',
@@ -1179,7 +950,9 @@ const messages = {
         },
         button: {
           share: 'Del mappe',
+          shareShort: 'Del',
           preview: 'Førehandsvis mappe',
+          previewShort: 'Førehandsvis',
           goTo: 'Gå til delt mappe',
           unShare: 'Avslutt deling',
           shareLink: 'Kopier lenke',
@@ -1192,7 +965,8 @@ const messages = {
       title: 'Arena',
       category: {
         title: 'Kategoriar',
-        posts: 'Innlegg',
+        posts: 'innlegg',
+        posts_plural: 'innlegg',
       },
       publish: 'Publiser',
       new: {
@@ -1217,8 +991,11 @@ const messages = {
         topic: 'Slett innlegg',
       },
       topic: {
-        responses: 'Svar',
+        isDeleted: 'Innlegget har vorte sletta og kan ikkje visast.',
+        responses: 'svar',
+        responses_plural: 'svar',
         topicContent: 'Skriv innlegget ditt her',
+        fetchMore: 'Hent fleire innlegg',
       },
       deleted: {
         post: 'Kommentaren din har blitt sletta.',
@@ -1229,12 +1006,15 @@ const messages = {
         topic: 'Innlegget har blitt oppdatert.',
       },
       posts: {
+        title: 'Innlegg',
         notify: 'Få varsel om nye svar',
         dropdownMenu: {
           report: 'Rapporter innlegg til moderator',
           edit: 'Rediger innlegg',
           delete: 'Slett innlegget',
         },
+        fetchMore: 'Hent fleire svar',
+        deleted: 'Dette innlegget er sletta av forfatteren.',
       },
       flag: {
         title: 'Rapporter innlegg / kommentar',
@@ -1250,8 +1030,7 @@ const messages = {
         maxLength: 'Maksimal lengd for tekstfeltet er nådd',
         error: 'Feltet er påkravd',
       },
-      bottomText:
-        'Saknar du ein kategori? Du kan be om nye kategoriar. Bruk "Spør NDLA" eller send ein epost til moderator@ndla.no',
+      bottomText: 'Saknar du ein kategori? Gi moderatoren vår beskjed på moderator@ndla.no',
       notification: {
         title: 'Varslingar',
         showAll: 'Sjå alle varslingar',
@@ -1259,9 +1038,9 @@ const messages = {
           'Velkomen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærarar frå heile Noreg. Du finn forum for ulike fag og tema.',
         myNotification: 'Mine varsler',
         markAll: 'Merk alle som lest',
-        commentedOn: 'svarte på ditt innlegg',
         subscribe: 'Du får no varsling om nye svar på dette innlegget',
         unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
+        commentedOn: 'svarte på innlegget <i>{{title}}</i> som du følger',
       },
       topicsBy: 'Innlegg av',
     },
@@ -1284,6 +1063,7 @@ const messages = {
     myTags: 'Mine emneknaggar',
     mySubjects: 'Mine fag',
     newFolder: 'Ny mappe',
+    newFolderShort: 'Ny',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favorittar',
@@ -1358,30 +1138,10 @@ const messages = {
       feide: 'Dette hentar vi om deg gjennom Feide',
       feideWrongInfo:
         'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversyn over brukarstøtte finst her: feide.no/brukerstotte',
-      storageInfo: {
-        title: 'Slik lagrar du favorittressursane dine frå NDLA',
-        text: 'Bruk hjarteknappen for å lagre ein ressurs. Du får då høve til å lagre ressursen i ei mappe.',
-      },
-      sharing: {
-        title: 'No kan lærarar dele mapper med andre',
-        text: 'Bruk deleknappen i mappa for få ei lenke du kan dele med andre.',
-      },
-      favoriteSubjects: {
-        title: 'Slik lagrar du favorittfaga dine frå NDLA',
-        text: 'Bruk hjarteknappen for å lagre eit fag. Du får då høve til å lagre favorittfaga dine til seinare. Du kan finne dei igjen i Min NDLA eller på sida med alle fag.',
-      },
-      folderInfo: {
-        title: 'Slik organiserer du favorittressursene dine i mapper',
-        text: 'Vel <strong>Mine mapper</strong> for å komme til mappeoversikta. Her kan du opprette nye mapper og undermapper. Du kan òg opprette ny mappe i vindauget som kjem opp når du hjartemerkar ein ressurs.',
-      },
-      tagInfo: {
-        title: 'Slik taggar du favorittressursane dine',
-        text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Mine emneknaggar</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
-      },
       recentArenaTopics: 'Nye innlegg i arenaen',
     },
     myProfile: {
-      title: 'Min Profil',
+      title: 'Min profil',
       disclaimerTitle: {
         employee: 'Kvar blir namnet mitt brukt?',
         student: 'Kvar blir namnet mitt brukt?',
@@ -1464,8 +1224,6 @@ const messages = {
   },
   siteNav: {
     search: 'Søk',
-    contact: 'Kontakt',
-    help: 'Hjelp',
   },
   programmes: {
     header: 'Kva vil du lære om i dag?',

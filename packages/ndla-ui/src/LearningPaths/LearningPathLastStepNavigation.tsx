@@ -7,11 +7,11 @@
  */
 
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
-import { fonts, spacing, spacingUnit } from '@ndla/core';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { fonts, spacing } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import { OneColumn, LayoutItem } from '../index';
 
 const TextWrapper = styled.div`
@@ -38,7 +38,7 @@ const StyledLinkWrapper = styled.div`
 
 const OneColumnCss = css`
   background: #fff;
-  padding-top: ${spacingUnit * 3}px;
+  padding-top: ${spacing.xlarge};
   margin-top: -${spacing.normal};
 `;
 

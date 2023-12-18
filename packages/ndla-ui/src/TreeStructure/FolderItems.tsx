@@ -11,8 +11,8 @@ import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
 import { IFolder } from '@ndla/types-backend/learningpath-api';
 import FolderItem from './FolderItem';
-import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from './types';
 import { treestructureId } from './helperFunctions';
+import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from './types';
 
 const StyledUL = styled.ul`
   ${animations.fadeInLeft(animations.durations.fast)};
@@ -63,8 +63,8 @@ const FolderItems = ({
       level === 0 && type === 'picker'
         ? treestructureId(type, 'popup')
         : parentFolder
-        ? treestructureId(type, `subfolders-${parentFolder.id}`)
-        : undefined
+          ? treestructureId(type, `subfolders-${parentFolder.id}`)
+          : undefined
     }
     tabIndex={-1}
     aria-labelledby={level === 0 && type === 'picker' ? treestructureId(type, 'label') : undefined}

@@ -7,8 +7,8 @@
  */
 
 import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../stories/defaults';
 import Pager from './Pager';
+import { defaultParameters } from '../../../stories/defaults';
 
 export default {
   title: 'Components/Pager',

@@ -6,12 +6,12 @@
  *
  */
 
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
+import { animations, breakpoints, colors, mq } from '@ndla/core';
 import { Grid } from '@ndla/icons/common';
 import { ListCircle } from '@ndla/icons/editor';
-import { animations, breakpoints, colors, mq } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: inline-flex;

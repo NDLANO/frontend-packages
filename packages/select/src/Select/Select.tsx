@@ -8,17 +8,17 @@
 
 import { ReactNode, useMemo } from 'react';
 import ReactSelect, { PropsValue, createFilter, OptionsOrGroups, StylesConfig } from 'react-select';
+import BaseContainer from './BaseContainer';
 import BaseControl from './BaseControl';
-import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, Color, MultiValue, SingleValue, GroupBase } from './types';
+import BaseGroupHeading from './BaseGroupHeading';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
-import ValueContainer from './ValueContainer';
-import BaseSingleValue from './BaseSingleValue';
+import BaseOption from './BaseOption';
 import BasePlaceholder from './BasePlaceholder';
-import BaseContainer from './BaseContainer';
-import BaseGroupHeading from './BaseGroupHeading';
+import BaseSingleValue from './BaseSingleValue';
+import { Option, Color, MultiValue, SingleValue, GroupBase } from './types';
+import ValueContainer from './ValueContainer';
 
 interface Props<T extends boolean> {
   /** Options to populate the select menu. Grouped view if options are of type GroupBase. */

@@ -7,9 +7,9 @@
  */
 
 import { ReactNode } from 'react';
-import { colors, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core';
 
 interface Props {
   highlightCC?: boolean;

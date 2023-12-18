@@ -7,8 +7,8 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { IframeMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
+import { IframeMetaData } from '@ndla/types-embed';
 import { Figure } from '../Figure';
 import { ResourceBox } from '../ResourceBox';
 

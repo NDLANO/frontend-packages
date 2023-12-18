@@ -7,10 +7,10 @@
  */
 import { CSSProperties, ReactNode, Ref, forwardRef, useMemo } from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { Content, DialogProps, DialogTriggerProps, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
-import { ModalContentProps } from './types';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { modalAnimations, overlayAnimations, positionStyles, sizeStyles } from './modalStyles';
+import { ModalContentProps } from './types';
 
 const StyledOverlay = styled.div`
   position: fixed;
@@ -157,7 +157,7 @@ export const ModalContent = ({
   ...rest
 }: ModalContentProps) => {
   const styledVars = useMemo(
-    () => ({ '--duration': `${animationDuration}ms` } as unknown as CSSProperties),
+    () => ({ '--duration': `${animationDuration}ms` }) as unknown as CSSProperties,
     [animationDuration],
   );
   const { size, height, width }: Record<string, string> = useMemo(() => {

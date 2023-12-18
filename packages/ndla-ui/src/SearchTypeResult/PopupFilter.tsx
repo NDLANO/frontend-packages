@@ -7,11 +7,11 @@
  */
 
 import { useState } from 'react';
-import styled from '@emotion/styled';
-import { ModalCloseButton, ModalBody, ModalTitle, ModalContent } from '@ndla/modal';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import { ButtonV2 } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
+import { breakpoints, mq, spacing } from '@ndla/core';
+import { ModalCloseButton, ModalBody, ModalTitle, ModalContent } from '@ndla/modal';
 import { ToggleItem } from '../Filter';
 
 import FrontpageAllSubjects, { subjectsProps } from '../Frontpage/FrontpageAllSubjects';

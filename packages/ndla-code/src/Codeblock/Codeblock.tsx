@@ -7,13 +7,13 @@
  */
 
 import { useState, useEffect, ReactNode, useMemo } from 'react';
-import { colors, fonts, spacing } from '@ndla/core';
-import styled from '@emotion/styled';
-import { copyTextToClipboard } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
+import { colors, fonts, spacing } from '@ndla/core';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
+import { copyTextToClipboard } from '@ndla/util';
 import { ICodeLangugeOption, languageOptions } from '../languageOptions';
 
 const Wrapper = styled.div`
@@ -69,7 +69,9 @@ const StyledPre = styled.pre`
   code {
     display: block;
     ${fonts.sizes('14px', '20px')};
-    font-family: Source Code Pro, Monaco;
+    font-family:
+      Source Code Pro,
+      Monaco;
     margin: 0;
     padding: 0;
     white-space: pre;

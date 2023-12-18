@@ -6,11 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { ReactNode } from 'react';
-import { colors, fonts, spacing } from '@ndla/core';
-import ContentTypeBadge from '../ContentTypeBadge';
-import Image from '../Image';
+import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core';
+import { Text } from '@ndla/typography';
 import {
   CompressedTagList,
   ResourceImageProps,
@@ -21,6 +20,8 @@ import {
   resourceHeadingStyle,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
+import ContentTypeBadge from '../ContentTypeBadge';
+import Image from '../Image';
 import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
 
 const BlockElementWrapper = styled.div`
@@ -58,12 +59,10 @@ const BlockElementWrapper = styled.div`
   }
 `;
 
-const BlockDescription = styled.p`
+const BlockDescription = styled(Text)`
   display: -webkit-box;
   line-clamp: 2;
-  ${fonts.sizes(16)};
   height: 0em;
-  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: height 0.2s ease-out;
@@ -146,7 +145,6 @@ interface Props {
   resourceImage: ResourceImageProps;
   tags?: string[];
   description?: string;
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   menu?: ReactNode;
   isLoading?: boolean;
   targetBlank?: boolean;
@@ -163,7 +161,6 @@ const BlockResource = ({
   description,
   menu,
   isLoading,
-  headingLevel: Heading = 'h2',
   targetBlank,
   resourceTypes,
 }: Props) => {
@@ -186,11 +183,15 @@ const BlockResource = ({
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
             <ResourceTitleLink data-link="" title={title} target={targetBlank ? '_blank' : undefined} to={link}>
-              <Heading css={resourceHeadingStyle}>{title}</Heading>
+              <Text element="span" textStyle="label-small" css={resourceHeadingStyle}>
+                {title}
+              </Text>
             </ResourceTitleLink>
           </ResourceTypeAndTitleLoader>
           <ResourceTypeList resourceTypes={resourceTypes} />
-          <BlockDescription data-description="">{description}</BlockDescription>
+          <BlockDescription element="p" textStyle="meta-text-small" margin="none" data-description="">
+            {description}
+          </BlockDescription>
         </ContentWrapper>
         <TagsAndActionMenu>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}

@@ -1,9 +1,17 @@
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
 import { Forward, Launch } from '@ndla/icons/common';
-import { useTranslation } from 'react-i18next';
+import SafeLink from '@ndla/safelink';
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -14,7 +22,7 @@ const StyledLinksWrapper = styled.div`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     div:first-of-type {
-      margin-right: ${spacingUnit * 4}px;
+      margin-right: ${spacing.xxlarge};
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {

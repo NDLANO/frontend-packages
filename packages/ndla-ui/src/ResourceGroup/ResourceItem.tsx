@@ -8,14 +8,14 @@
 
 import { CSSProperties, ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import SafeLink from '@ndla/safelink';
-import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
+import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { Resource } from '../types';
+import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
+import { Resource } from '../types';
 
 const listElementActiveColor = (contentType?: string) => {
   switch (contentType) {
@@ -75,7 +75,9 @@ const ListElement = styled.li`
   }
 
   * {
-    transition: height ease-out 0.2s, width ease-out 0.2s;
+    transition:
+      height ease-out 0.2s,
+      width ease-out 0.2s;
   }
   &[data-active='true'] {
     &:before {
@@ -156,7 +158,7 @@ const ResourceWrapper = styled.div`
   gap: ${spacing.xsmall};
   align-items: center;
   :hover {
-    .c-content-type-badge {
+    [data-badge] {
       width: 38px;
       height: 38px;
 
@@ -164,10 +166,10 @@ const ResourceWrapper = styled.div`
         width: 20px;
         height: 20px;
       }
-      &.c-content-type-badge--subject-material,
-      &.c-content-type-badge--learning-path,
-      &.c-content-type-badge--source-material,
-      &.c-content-type-badge--external-learning-resources {
+      [data-type='subject-material'],
+      [data-type='learning-path'],
+      [data-type='source-material'],
+      [data-type='external-learning-resources'] {
         svg {
           width: 26px;
           height: 26px;

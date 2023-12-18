@@ -11,8 +11,8 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 
-import { SearchItemType } from '../SearchItem';
 import ContentTypeBadge from '../../ContentTypeBadge';
+import { SearchItemType } from '../SearchItem';
 import { ContentType } from '../SearchTypeResult';
 
 const Wrapper = styled.header`
@@ -27,7 +27,7 @@ const Label = styled.div`
   align-items: center;
   margin: ${spacing.small} 0;
 
-  .c-content-type-badge {
+  [data-badge] {
     width: 26px;
     height: 26px;
     margin-right: ${spacing.xsmall};

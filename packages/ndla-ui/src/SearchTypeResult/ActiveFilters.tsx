@@ -8,11 +8,11 @@
 
 import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import { ButtonV2 } from '@ndla/button';
 import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
 
 type StyledActiveFiltersProps = {
@@ -155,9 +155,7 @@ const ActiveFilters = ({
           </Tooltip>
         </StyledActiveFilterWrapper>
       )}
-      {customElements?.map((item, index) => (
-        <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>
-      ))}
+      {customElements?.map((item, index) => <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>)}
     </StyledActiveFilters>
   );
 };

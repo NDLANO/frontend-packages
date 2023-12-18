@@ -6,12 +6,12 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import styled from '@emotion/styled';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { spacing } from '@ndla/core';
-import { defaultParameters } from '../../../../stories/defaults';
 import BlockResource from './BlockResource';
 import { StoryResourceMenu, resourceTypesArr } from './storyComponents';
+import { defaultParameters } from '../../../../stories/defaults';
 
 export default {
   title: 'My NDLA/BlockResource',
@@ -25,9 +25,6 @@ export default {
       control: false,
     },
     resourceTypes: {
-      control: false,
-    },
-    headingLevel: {
       control: false,
     },
     menu: {

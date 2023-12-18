@@ -1,6 +1,6 @@
 {
   "name": "@ndla/video-search",
-  "version": "4.1.44",
+  "version": "4.1.47",
   "description": "A simple library for searching NDLA videos",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,12 +31,12 @@
     "prop-types": "^15.8.1"
   },
   "dependencies": {
-    "@ndla/button": "^12.0.15",
-    "@ndla/icons": "^4.2.2",
-    "@ndla/licenses": "^7.2.2",
-    "@ndla/notion": "^6.0.16",
-    "@ndla/pager": "^2.2.40",
-    "@ndla/tabs": "^3.2.3",
+    "@ndla/button": "^12.0.18",
+    "@ndla/icons": "^4.2.5",
+    "@ndla/licenses": "^7.2.4",
+    "@ndla/notion": "^6.0.19",
+    "@ndla/pager": "^2.2.43",
+    "@ndla/tabs": "^3.2.6",
     "react-bem-helper": "^1.4.1"
   },
   "publishConfig": {

@@ -6,25 +6,25 @@
  *
  */
 
-import { PluginType } from '../types';
 import { audioEmbedPlugin } from './audioEmbedPlugin';
+import { blogPostEmbedPlugin } from './blogPostEmbedPlugin';
+import { brightcoveEmbedPlugin } from './brightcoveEmbedPlugin';
+import { campaignBlockPlugin } from './campaignBlockPlugin';
+import { codeEmbedPlugin } from './codeEmbedPlugin';
+import { conceptEmbedPlugin } from './conceptEmbedPlugin';
+import { conceptListEmbedPlugin } from './conceptListEmbedPlugin';
+import { contactBlockEmbedPlugin } from './contactBlockEmbedPlugin';
+import { contentLinkEmbedPlugin } from './contentLinkEmbedPlugin';
 import { externalEmbedPlugin } from './externalEmbedPlugin';
+import { fileEmbedPlugin } from './fileEmbedPlugin';
+import { footnoteEmbedPlugin } from './footnoteEmbedPlugin';
 import { h5pEmbedPlugin } from './h5pEmbedPlugin';
 import { iframeEmbedPlugin } from './iframeEmbedPlugin';
 import { imageEmbedPlugin } from './imageEmbedPlugin';
-import { footnoteEmbedPlugin } from './footnoteEmbedPlugin';
-import { brightcoveEmbedPlugin } from './brightcoveEmbedPlugin';
-import { relatedContentEmbedPlugin } from './relatedContentEmbedPlugin';
-import { contentLinkEmbedPlugin } from './contentLinkEmbedPlugin';
-import { conceptEmbedPlugin } from './conceptEmbedPlugin';
-import { conceptListEmbedPlugin } from './conceptListEmbedPlugin';
-import { fileEmbedPlugin } from './fileEmbedPlugin';
-import { codeEmbedPlugin } from './codeEmbedPlugin';
-import { blogPostEmbedPlugin } from './blogPostEmbedPlugin';
 import { keyFigureEmbedPlugin } from './KeyFigureEmbedPlugin';
-import { contactBlockEmbedPlugin } from './contactBlockEmbedPlugin';
-import { campaignBlockPlugin } from './campaignBlockPlugin';
 import { linkBlockPlugin } from './linkBlockEmbedPlugin';
+import { relatedContentEmbedPlugin } from './relatedContentEmbedPlugin';
+import { PluginType } from '../types';
 
 export const embedPlugins: Record<string, PluginType> = {
   image: imageEmbedPlugin,

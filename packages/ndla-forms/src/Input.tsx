@@ -1,7 +1,15 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from 'react';
 import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
-import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from 'react';
 
 interface BaseInputProps {
   iconRight?: ReactNode;
@@ -36,8 +44,8 @@ const FormWarningText = styled.span<FormWarningTextProps>`
 
 const StyledLabel = styled.label`
   && {
-    width: ${spacingUnit * 4}px;
-    max-width: ${spacingUnit * 4}px;
+    width: ${spacing.xxlarge};
+    max-width: ${spacing.xxlarge};
     padding: 20px ${spacing.small} ${spacing.small} 0;
     text-transform: uppercase;
     font-weight: ${fonts.weight.semibold};

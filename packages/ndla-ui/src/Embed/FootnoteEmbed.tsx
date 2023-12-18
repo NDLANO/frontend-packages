@@ -6,12 +6,38 @@
  *
  */
 
-import { FootnoteMetaData } from '@ndla/types-embed';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core';
+import { FootnoteMetaData } from '@ndla/types-embed';
 
 interface Props {
   embed: FootnoteMetaData;
 }
+
+const FootnoteRef = styled.span`
+  &:target {
+    background-color: ${colors.brand.greyLighter};
+    padding: ${spacing.xxsmall} ${spacing.xsmall};
+    box-shadow:
+      ${spacing.xsmall} 0 0 ${colors.brand.greyLighter},
+      -${spacing.xsmall} 0 0 ${colors.brand.greyLighter};
+  }
+  sup {
+    a {
+      margin-left: -2px;
+      padding: ${spacing.small} ${spacing.xsmall};
+      box-shadow: none;
+      text-decoration: underline;
+    }
+    a:hover,
+    a:focus-within {
+      background-color: ${colors.brand.greyLighter};
+      text-decoration: underline;
+    }
+  }
+`;
+
 const FootnoteEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   if (embed.status === 'error') {
@@ -19,11 +45,11 @@ const FootnoteEmbed = ({ embed }: Props) => {
   }
 
   return (
-    <span id={`ref${embed.data.entryNum}`} className="c-footnotes__ref">
+    <FootnoteRef id={`ref${embed.data.entryNum}`}>
       <sup>
         <a href={`#note${embed.data.entryNum}`} target="_self">{`[${embed.data.entryNum}]`}</a>
       </sup>
-    </span>
+    </FootnoteRef>
   );
 };
 

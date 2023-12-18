@@ -7,13 +7,13 @@
  */
 
 import { ChangeEvent, createRef, useCallback, useState } from 'react';
-import Editor from 'react-simple-code-editor';
 import { useTranslation } from 'react-i18next';
-import { Code } from '@ndla/icons/editor';
-import { ButtonV2 } from '@ndla/button';
+import Editor from 'react-simple-code-editor';
 // @ts-ignore
 import styled from '@emotion/styled';
+import { ButtonV2 } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
+import { Code } from '@ndla/icons/editor';
 import { Wrapper, FlexContainer, FlexElement } from './style';
 import { languageOptions, ICodeLangugeOption } from '../languageOptions';
 

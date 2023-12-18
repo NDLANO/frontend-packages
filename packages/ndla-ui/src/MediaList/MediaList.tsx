@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2016-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -6,7 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
+import styled from '@emotion/styled';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { Launch } from '@ndla/icons/common';
 import {
   getLicenseByAbbreviation,
   getResourceTypeNamespace,
@@ -15,33 +18,40 @@ import {
 } from '@ndla/licenses';
 import type { MetaType } from '@ndla/licenses';
 import { LicenseDescription } from '@ndla/notion';
-import BEMHelper from 'react-bem-helper';
+import SafeLink from '@ndla/safelink';
+import { Heading, Text } from '@ndla/typography';
 import { uuid } from '@ndla/util';
-import styled from '@emotion/styled';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { Launch } from '@ndla/icons/common';
 
-const oClasses = new BEMHelper({
-  name: 'media',
-  prefix: 'o-',
-});
+const StyledMediaList = styled.ul`
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  margin: ${spacing.normal} 0;
+`;
 
-const cClasses = new BEMHelper({
-  name: 'medialist',
-  prefix: 'c-',
-});
+export const MediaList = ({ children, ...rest }: ComponentProps<'ul'>) => (
+  <StyledMediaList {...rest}>{children}</StyledMediaList>
+);
 
-interface MediaListProps {
-  children: ReactNode;
-}
+const StyledMediaListItem = styled.li`
+  margin-bottom: ${spacing.small};
+  padding: ${spacing.small} 0;
+  border-bottom: 1px solid ${colors.brand.tertiary};
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: flex;
+    flex-direction: row;
+  }
 
-export const MediaList = ({ children }: MediaListProps) => <ul {...cClasses()}>{children}</ul>;
+  &:last-of-type {
+    border-bottom: none;
+  }
+  img {
+    width: 100%;
+  }
+`;
 
-interface MediaListItemProps {
-  children: ReactNode;
-}
-export const MediaListItem = ({ children }: MediaListItemProps) => (
-  <li {...oClasses(undefined, undefined, cClasses('item').className)}>{children}</li>
+export const MediaListItem = ({ children, ...rest }: ComponentProps<'li'>) => (
+  <StyledMediaListItem {...rest}>{children}</StyledMediaListItem>
 );
 
 interface MediaListItemImageProps {
@@ -99,16 +109,6 @@ export const MediaListItemImage = ({ children, canOpen }: MediaListItemImageProp
   </ImageWrapper>
 );
 
-interface MediaListCCLinkProps {
-  children: ReactNode;
-  url: string;
-}
-export const MediaListCCLink = ({ children, url }: MediaListCCLinkProps) => (
-  <a className="c-figure-license__link" target="_blank" rel="noopener noreferrer license" href={url}>
-    {children}
-  </a>
-);
-
 interface MediaListItemBodyProps {
   children: ReactNode;
   license: string;
@@ -120,6 +120,25 @@ interface MediaListItemBodyProps {
   };
   title?: string;
 }
+
+const StyledMediaListItemBody = styled.div`
+  ${fonts.size.text.metaText.small};
+  ${mq.range({ from: breakpoints.tablet })} {
+    max-width: 70%;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    max-width: 75%;
+  }
+`;
+
+const BodyTitle = styled(Text)`
+  color: ${colors.brand.primary};
+  font-weight: ${fonts.weight.bold};
+  margin-bottom: ${spacing.xsmall};
+  + p {
+    margin-top: ${spacing.small};
+  }
+`;
 
 export const MediaListItemBody = ({
   children,
@@ -133,34 +152,44 @@ export const MediaListItemBody = ({
   const license = getLicenseByAbbreviation(licenseAbbreviation, locale);
   const containerProps = isCreativeCommonsLicense(license.rights)
     ? {
-        ...oClasses('body', undefined, cClasses('body').className),
         'xmlns:cc': 'https://creativecommons.org/ns#',
         'xmlns:dct': 'http://purl.org/dc/terms/',
         about: resourceUrl,
       }
-    : {
-        ...oClasses('body', undefined, cClasses('body').className),
-      };
+    : {};
 
   const metaResourceType = getResourceTypeNamespace(resourceType);
 
   return (
-    <div {...containerProps}>
+    <StyledMediaListItemBody {...containerProps}>
       {/* @ts-ignore */}
       {metaResourceType && <span rel="dct:type" href={metaResourceType} style={{ display: 'none' }} />}
-      {title ? <h3 className="c-medialist__title">{title} </h3> : null}
+      {title ? (
+        <BodyTitle element="h3" margin="none" textStyle="meta-text-medium">
+          {title}
+        </BodyTitle>
+      ) : null}
       <LicenseDescription locale={locale} messages={messages} licenseRights={license.rights} highlightCC />
-      <MediaListCCLink url={license.url}>{license.linkText}</MediaListCCLink>
+      <SafeLink rel="noopener noreferrer license" target="_blank" to={license.url}>
+        {license.linkText}
+      </SafeLink>
       {children}
-    </div>
+    </StyledMediaListItemBody>
   );
 };
 
-interface MediaListItemActionsProps {
-  children: ReactNode;
-}
-export const MediaListItemActions = ({ children }: MediaListItemActionsProps) => (
-  <div {...cClasses('actions')}>{children}</div>
+const StyledMediaListItemActions = styled.div`
+  margin: ${spacing.small} 0;
+  list-style: none;
+  width: 100%;
+  button,
+  a {
+    margin: 0 ${spacing.small} ${spacing.small} 0;
+  }
+`;
+
+export const MediaListItemActions = ({ children, ...rest }: ComponentProps<'div'>) => (
+  <StyledMediaListItemActions {...rest}>{children}</StyledMediaListItemActions>
 );
 
 const isLink = (text: string) => text.startsWith('http') || text.startsWith('https');
@@ -173,9 +202,9 @@ interface HandleLinkProps {
 export const HandleLink = ({ text, children }: HandleLinkProps) => {
   if (isLink(text)) {
     return (
-      <a href={text} target="_blank" rel="noopener noreferrer">
+      <SafeLink to={text} target="_blank" rel="noopener noreferrer">
         {children}
-      </a>
+      </SafeLink>
     );
   }
   return <span>{children}</span>;
@@ -221,18 +250,32 @@ function isAttributionItem(item: ItemType): item is ItemTypeWithDescription {
   return attributionTypes.some((type) => type === item.metaType);
 }
 
+const StyledMediaListItemMeta = styled.ul`
+  margin: ${spacing.small} 0;
+  list-style: none;
+  width: 100%;
+  button,
+  a {
+    margin: 0 ${spacing.small} ${spacing.small} 0;
+  }
+`;
+
+const StyledMediaListMetaItem = styled.li`
+  margin: 0;
+  padding: 0;
+`;
+
 export const MediaListItemMeta = ({ items = [] }: MediaListItemMetaProps) => {
   const attributionItems = items.filter(isAttributionItem);
   const attributionMeta = attributionItems.map((item) => `${item.label}: ${item.description}`).join(', ');
 
   return (
-    // eslint-disable-next-line react/no-unknown-property
-    <ul {...cClasses('actions')} property="cc:attributionName" content={attributionMeta}>
+    <StyledMediaListItemMeta property="cc:attributionName" content={attributionMeta}>
       {items.map((item) => (
-        <li key={uuid()} className="c-medialist__meta-item">
+        <StyledMediaListMetaItem key={uuid()}>
           <ItemText item={item} />
-        </li>
+        </StyledMediaListMetaItem>
       ))}
-    </ul>
+    </StyledMediaListItemMeta>
   );
 };

@@ -6,12 +6,12 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
+import { Meta, StoryFn } from '@storybook/react';
 import { IconButtonV2 } from '@ndla/button';
-import { Switch } from '@ndla/switch';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import { HeartOutline } from '@ndla/icons/action';
+import { Switch } from '@ndla/switch';
 import EmbedByline from './EmbedByline';
 import { defaultParameters } from '../../../../stories/defaults';
 

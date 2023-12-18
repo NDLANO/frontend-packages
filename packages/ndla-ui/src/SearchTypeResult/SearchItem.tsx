@@ -6,18 +6,18 @@
  *
  */
 
+import parse from 'html-react-parser';
 import { ReactNode, useRef } from 'react';
 import styled from '@emotion/styled';
-import parse from 'html-react-parser';
 
-import SafeLink from '@ndla/safelink';
 import { animations, colors, fonts, spacing } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 
+import ItemContexts, { ItemContextsType } from './components/ItemContexts';
+import ItemResourceHeader from './components/ItemResourceHeader';
+import ItemTopicHeader from './components/ItemTopicHeader';
 import { ContentType } from './SearchTypeResult';
 import constants from '../model';
-import ItemContexts, { ItemContextsType } from './components/ItemContexts';
-import ItemTopicHeader from './components/ItemTopicHeader';
-import ItemResourceHeader from './components/ItemResourceHeader';
 const { contentTypes } = constants;
 
 interface ItemTypeProps {

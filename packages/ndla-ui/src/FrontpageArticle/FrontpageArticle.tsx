@@ -7,12 +7,12 @@
  */
 
 import { CSSProperties, ReactNode, useMemo } from 'react';
-import { spacing, spacingUnit } from '@ndla/core';
 import styled from '@emotion/styled';
+import { spacing, spacingUnit } from '@ndla/core';
 import { Heading, Text } from '@ndla/typography';
-import { Article } from '../types';
 import { ArticleByline } from '../Article';
 import { useMastheadHeight } from '../Masthead';
+import { Article } from '../types';
 
 interface Props {
   article: Omit<Article, 'footNotes'>;
@@ -43,23 +43,23 @@ const StyledArticle = styled.article`
   }
 
   div[data-type='grid'] + div[data-type='grid'] {
-    margin-top: ${spacingUnit * 4}px;
+    margin-top: ${spacing.xxlarge};
   }
 
   &[data-wide='true'] {
     max-width: 1100px;
     h2[id] {
-      margin-top: ${spacingUnit * 4}px;
+      margin-top: ${spacing.xxlarge};
     }
     div[data-type='campaign-block'] {
-      margin: ${spacingUnit * 4}px 0px;
+      margin: ${spacing.xxlarge} 0px;
     }
   }
 `;
 
 export const FrontpageArticle = ({ article, id, isWide, licenseBox, lang }: Props) => {
   const { height = 0 } = useMastheadHeight();
-  const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` } as unknown as CSSProperties), [height]);
+  const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` }) as unknown as CSSProperties, [height]);
   const { title, introduction, content } = article;
 
   if (isWide) {

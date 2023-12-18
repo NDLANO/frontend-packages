@@ -7,12 +7,12 @@
  */
 
 import { ReactNode, useEffect, useState, useRef, ChangeEvent } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { Spinner } from '@ndla/icons';
-import { colors, spacing, fonts, misc, animations } from '@ndla/core';
-import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
 import { useTranslation } from 'react-i18next';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { colors, spacing, fonts, misc, animations } from '@ndla/core';
+import { Spinner } from '@ndla/icons';
+import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
 import { getIllegalFiles } from './filetypeHelper';
 
 const SpinnerWrapper = styled.div`
@@ -36,7 +36,9 @@ const ContentWrapper = styled.div`
     width: ${spacing.large};
     height: ${spacing.large};
     color: ${colors.brand.tertiary};
-    transition: transform 300ms cubic-bezier(0.2, 1.44, 0.53, 1), color 200ms ease;
+    transition:
+      transform 300ms cubic-bezier(0.2, 1.44, 0.53, 1),
+      color 200ms ease;
   }
 `;
 

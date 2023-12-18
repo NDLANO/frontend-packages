@@ -1,14 +1,22 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import { MouseEvent } from 'react';
+import { useTranslation } from 'react-i18next';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { SafeLinkButton } from '@ndla/safelink';
 import { ButtonV2 } from '@ndla/button';
 import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
-import { css } from '@emotion/react';
-import { Switch } from '@ndla/switch';
-import { uuid } from '@ndla/util';
-import { useTranslation } from 'react-i18next';
 import { HumanMaleBoard } from '@ndla/icons/common';
+import { SafeLinkButton } from '@ndla/safelink';
+import { Switch } from '@ndla/switch';
 import { Heading } from '@ndla/typography';
+import { uuid } from '@ndla/util';
 
 const StyledWrapper = styled.nav`
   margin: 20px 0 34px;

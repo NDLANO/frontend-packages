@@ -9,8 +9,8 @@
 import styled from '@emotion/styled';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import ListResource from './ListResource';
-import { defaultParameters } from '../../../../stories/defaults';
 import { StoryResourceMenu, resourceTypesArr } from './storyComponents';
+import { defaultParameters } from '../../../../stories/defaults';
 import { spacing } from '../../../core/src';
 
 export default {
@@ -25,9 +25,6 @@ export default {
       control: false,
     },
     resourceTypes: {
-      control: false,
-    },
-    headingLevel: {
       control: false,
     },
     menu: {

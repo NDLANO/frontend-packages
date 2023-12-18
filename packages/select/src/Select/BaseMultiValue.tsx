@@ -6,8 +6,8 @@
  *
  */
 import { MultiValueProps } from 'react-select';
-import { Option } from './types';
 import { TextEllipsis } from './BaseSingleValue';
+import { Option } from './types';
 
 const BaseMultiValue = <T extends boolean>({ children }: MultiValueProps<Option, T>) => {
   return <TextEllipsis>{children}</TextEllipsis>;

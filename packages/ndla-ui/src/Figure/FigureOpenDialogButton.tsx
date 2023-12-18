@@ -6,8 +6,8 @@
  *
  */
 
-import { Play } from '@ndla/icons/common';
 import { ExpandTwoArrows, CursorClick } from '@ndla/icons/action';
+import { Play } from '@ndla/icons/common';
 
 interface Props {
   type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | 'audio';

@@ -6,8 +6,8 @@
  *
  */
 
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { spacing, spacingUnit, colors } from '@ndla/core';
 
 export const FieldHeaderIconStyle = css`
@@ -38,5 +38,5 @@ export const StyledButtonWrapper = styled.div<StyledButtonWrapperProps>`
   > button {
     margin-right: ${spacing.small};
   }
-  padding-left: ${(props) => (props.paddingLeft ? `${spacingUnit * 4}px` : 0)};
+  padding-left: ${(props) => (props.paddingLeft ? `${spacing.xxlarge}` : 0)};
 `;

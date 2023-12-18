@@ -7,8 +7,8 @@
  */
 
 import { PlaceholderProps } from 'react-select';
-import { Option } from './types';
 import { TextEllipsis } from './BaseSingleValue';
+import { Option } from './types';
 
 const BasePlaceholder = <T extends boolean>({ children, innerProps }: PlaceholderProps<Option, T>) => (
   <TextEllipsis {...innerProps}>{children}</TextEllipsis>

@@ -8,10 +8,10 @@
 
 import { ReactChild, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 import { useSwipeable } from 'react-swipeable';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 
 interface Props {
   children: ReactChild[];
@@ -40,7 +40,9 @@ const NavButton = styled('button')<{
   border: none;
   box-shadow: none;
   border-radius: 100px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
   transform: translate(0px, 0px, 1);
   position: absolute;
   bottom: 0;

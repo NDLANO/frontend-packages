@@ -7,9 +7,9 @@
  */
 
 import { useTranslation } from 'react-i18next';
-import { CompetenceGoalsItemType } from '../types';
 import SearchButton from './SearchButton';
 import { GoalItem, GoalList, GoalText, GoalsHeading, ListItemContent } from './styles';
+import { CompetenceGoalsItemType } from '../types';
 
 const CompetenceGoalItem = ({ title, goals, isOembed }: CompetenceGoalsItemType) => {
   const { t } = useTranslation();

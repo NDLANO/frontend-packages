@@ -7,13 +7,13 @@
  */
 
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
 import { FooterHeaderIcon } from '@ndla/icons/common';
-import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';
+import { OneColumn } from '../Layout';
 import { Locale } from '../types';
 
 const StyledBackground = styled.div`
@@ -26,17 +26,15 @@ const StyledBackground = styled.div`
   background: linear-gradient(96deg, rgba(0, 117, 160, 1) 0%, rgba(32, 88, 143, 0) 100%);
 `;
 
-type StyledFooterProps = {
-  addMargin?: boolean;
-};
-
-const StyledDiv = styled.div<StyledFooterProps>`
+const StyledDiv = styled.div`
   color: #fff;
   position: relative;
   background: ${colors.brand.dark};
   overflow: hidden;
   z-index: 0;
-  ${(props) => props.addMargin && `margin-top: ${spacingUnit * 4}px;`}
+  &[data-margin='true'] {
+    margin-top: ${spacing.xxlarge};
+  }
 `;
 
 const StyledOneColumn = styled(OneColumn)`
@@ -61,8 +59,8 @@ const StyledFooterHeaderIcon = styled(FooterHeaderIcon)`
   width: ${spacing.large};
   height: ${spacing.large};
   ${mq.range({ from: breakpoints.tabletWide })} {
-    width: ${spacingUnit * 3}px;
-    height: ${spacingUnit * 3}px;
+    width: ${spacing.xlarge};
+    height: ${spacing.xlarge};
   }
 `;
 
@@ -163,7 +161,7 @@ const Footer = ({ children, commonLinks, links, languageSelector, auth, privacyL
   return (
     <>
       <footer>
-        <StyledDiv addMargin={!languageSelector}>
+        <StyledDiv data-margin={!languageSelector}>
           {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
           <StyledOneColumn cssModifier="large">{footerContent}</StyledOneColumn>
           <StyledBackground />

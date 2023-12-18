@@ -3085,17 +3085,18 @@ __metadata:
   resolution: "@ndla/video-search@workspace:packages/ndla-video-search"
   dependencies:
     "@ndla/button": "npm:^12.0.18"
+    "@ndla/core": "npm:^4.3.0"
+    "@ndla/forms": "npm:^5.2.8"
     "@ndla/icons": "npm:^4.2.5"
     "@ndla/licenses": "npm:^7.2.4"
     "@ndla/notion": "npm:^6.0.19"
-    "@ndla/pager": "npm:^2.2.43"
-    "@ndla/tabs": "npm:^3.2.6"
-    prop-types: "npm:^15.8.1"
-    react-bem-helper: "npm:^1.4.1"
+    "@ndla/types-embed": "npm:^4.0.10"
+    "@ndla/util": "npm:^4.0.3"
   peerDependencies:
     "@emotion/react": ^11.10.4
+    "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
-    react-bem-helper: ^1.4.1
+    react-dom: ">= 16.8.0"
   languageName: unknown
   linkType: soft
 
@@ -16699,7 +16700,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-bem-helper@npm:1.4.1, react-bem-helper@npm:^1.4.1":
+"react-bem-helper@npm:1.4.1":
   version: 1.4.1
   resolution: "react-bem-helper@npm:1.4.1"
   dependencies:

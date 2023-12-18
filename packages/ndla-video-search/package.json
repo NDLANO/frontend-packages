@@ -5,8 +5,11 @@
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "node ../../scripts/build.js package"
+    "build": "node ../../scripts/build.js package",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build:types"
   },
   "repository": {
     "type": "git",
@@ -18,26 +21,26 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "scss",
     "lib",
     "es"
   ],
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "react": ">= 16.8.0",
-    "react-bem-helper": "^1.4.1"
+    "react-dom": ">= 16.8.0"
   },
   "devDependencies": {
-    "prop-types": "^15.8.1"
+    "@ndla/types-embed": "^4.0.10"
   },
   "dependencies": {
     "@ndla/button": "^12.0.18",
+    "@ndla/core": "^4.3.0",
+    "@ndla/forms": "^5.2.8",
     "@ndla/icons": "^4.2.5",
     "@ndla/licenses": "^7.2.4",
     "@ndla/notion": "^6.0.19",
-    "@ndla/pager": "^2.2.43",
-    "@ndla/tabs": "^3.2.6",
-    "react-bem-helper": "^1.4.1"
+    "@ndla/util": "^4.0.3"
   },
   "publishConfig": {
     "access": "public"

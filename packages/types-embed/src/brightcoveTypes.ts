@@ -53,6 +53,9 @@ export interface BrightcoveApiType {
     poster?: {
       src?: string;
     };
+    thumbnail?: {
+      src?: string;
+    };
   };
   projection?: string;
   long_description?: string | null;

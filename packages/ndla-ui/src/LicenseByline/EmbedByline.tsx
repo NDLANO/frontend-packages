@@ -106,6 +106,7 @@ const mobileStyling = css`
 const RightsWrapper = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: ${spacing.nsmall};
 
   &[data-grid='true'] {

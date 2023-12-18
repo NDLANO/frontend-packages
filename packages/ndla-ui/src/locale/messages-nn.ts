@@ -1141,7 +1141,7 @@ const messages = {
       recentArenaTopics: 'Nye innlegg i arenaen',
     },
     myProfile: {
-      title: 'Min Profil',
+      title: 'Min profil',
       disclaimerTitle: {
         employee: 'Kvar blir namnet mitt brukt?',
         student: 'Kvar blir namnet mitt brukt?',

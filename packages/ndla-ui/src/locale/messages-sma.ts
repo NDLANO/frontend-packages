@@ -1146,7 +1146,7 @@ const messages = {
       recentArenaTopics: 'Nye innlegg i arenaen',
     },
     myProfile: {
-      title: 'Mov Profijle',
+      title: 'Mov profijle',
       disclaimerTitle: { employee: 'Gusnie mov nomme?', student: 'Gusnie mov nomme?' },
       disclaimerText: {
         employee:

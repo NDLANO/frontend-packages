@@ -1143,7 +1143,7 @@ const messages = {
       recentArenaTopics: 'New posts in the arena',
     },
     myProfile: {
-      title: 'My Profile',
+      title: 'My profile',
       disclaimerTitle: { employee: 'Where is my name used?', student: 'Where is my name used?' },
       disclaimerText: {
         employee:

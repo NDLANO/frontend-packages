@@ -53,7 +53,7 @@ const StyledImg = styled.img`
   width: 320px;
   height: 180px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: ${misc.borderRadius};
   flex-shrink: 0;
 `;
 

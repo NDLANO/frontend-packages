@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "50.5.3",
+  "version": "50.5.4",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@ndla/types-backend": "^0.2.21",
-    "@ndla/types-embed": "^4.0.10",
+    "@ndla/types-embed": "^4.0.11",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.5",
     "sass-loader": "^13.2.2",

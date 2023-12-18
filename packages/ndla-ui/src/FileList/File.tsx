@@ -6,21 +6,12 @@
  *
  */
 
+import { TFunction } from 'i18next';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { Download } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
-
-interface Props {
-  title: string;
-  url: string;
-  fileExists: boolean;
-  fileType: string;
-  hiddenTitle?: boolean;
-  children?: ReactNode;
-}
+import { css } from '@emotion/react';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import Format from './Format';
 
 export interface FileType {
   title: string;
@@ -34,36 +25,7 @@ export interface FileFormat {
   tooltip: string;
 }
 
-const LinkTextWrapper = styled.div`
-  & > span {
-    box-shadow: inset 0 -1px;
-  }
-`;
-const FileLink = styled(SafeLink)`
-  box-shadow: none;
-  position: relative;
-  color: ${colors.brand.primary};
-  margin-right: ${spacing.normal};
-  display: flex;
-  align-items: center;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    ${LinkTextWrapper} {
-      box-shadow: none;
-    }
-  }
-`;
-
-const FileListItem = styled.li`
-  ${fonts.sizes('18px', '26px')};
-  font-weight: ${fonts.weight.semibold};
-  min-height: 60px;
+const fileItemStyles = css`
   background: ${colors.brand.greyLighter};
   display: flex;
   align-items: center;
@@ -77,52 +39,41 @@ const FileListItem = styled.li`
   }
 `;
 
-const StyledDownload = styled(Download)`
-  margin-top: 3px;
-  flex-shrink: 0;
-  margin-right: ${spacing.small};
-  height: 18px;
-  width: 18px;
-`;
+const getFileTooltip = (url: string, t: TFunction) => `${t('download')} ${url.split('/').pop()}`;
 
-interface FormatProps {
-  format: FileFormat;
+interface CommonProps {
   title: string;
-  isPrimary: boolean;
-  isDeadLink: boolean;
+  url: string;
+  fileExists: boolean;
+  fileType: string;
+  children?: ReactNode;
 }
 
-const Format = ({ format, title, isPrimary, isDeadLink }: FormatProps) => {
-  const titleWithFormat = `${title} (${format.fileType.toUpperCase()})`;
+interface SlateFileProps extends CommonProps {
+  hiddenTitle?: boolean;
+}
 
-  if (isDeadLink) {
-    return (
-      <span key={format.url}>
-        <StyledDownload />
-        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-      </span>
-    );
-  }
+export const SlateFile = ({ title, url, fileExists, fileType, hiddenTitle, children }: SlateFileProps) => {
+  const { t } = useTranslation();
+  const tooltip = getFileTooltip(url, t);
 
   return (
-    <FileLink key={format.url} to={format.url} target="_blank" aria-label={titleWithFormat}>
-      <StyledDownload />
-      <LinkTextWrapper aria-label={format.tooltip}>
-        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-      </LinkTextWrapper>
-    </FileLink>
+    <div css={fileItemStyles}>
+      {!hiddenTitle && <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />}
+      {children}
+    </div>
   );
 };
 
-const File = ({ title, url, fileExists, fileType, hiddenTitle, children }: Props) => {
+const File = ({ title, url, fileExists, fileType, children }: CommonProps) => {
   const { t } = useTranslation();
-  const tooltip = `${t('download')} ${url.split('/').pop()}`;
+  const tooltip = getFileTooltip(url, t);
 
   return (
-    <FileListItem>
-      {!hiddenTitle && <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />}
+    <li css={fileItemStyles}>
+      <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />
       {children}
-    </FileListItem>
+    </li>
   );
 };
 

@@ -1129,7 +1129,7 @@ const messages = {
         term3: 'NDLA bisuha rievtti ođasmahttit dahje sihkkut boarásmuvvan resurssaid.',
       },
       recentFavourites: {
-        title: 'Easka lasihuvvon favorihtaide',
+        title: 'Easka lasihuvvon mu máhpaide',
         link: 'Čájet buot máhpaid',
       },
       recentArenaPosts: {

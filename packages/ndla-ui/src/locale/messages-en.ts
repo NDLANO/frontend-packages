@@ -1133,7 +1133,7 @@ const messages = {
       feideWrongInfo:
         'If the information is incorrect, it has to be updated by the host organizationg or the school that the account is associated with. An overview of user support can be found here: feide.no/brukerstotte',
       recentFavourites: {
-        title: 'Recently added to my favourites',
+        title: 'Recently added to my folders',
         link: 'View all of your folders',
       },
       recentArenaPosts: {

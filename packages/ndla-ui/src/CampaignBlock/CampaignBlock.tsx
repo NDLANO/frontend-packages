@@ -99,10 +99,12 @@ const CampaignBlock = ({
     <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
       {image && <StyledImg src={image.src} height={200} width={240} alt={image.alt} />}
       <TextWrapper>
-        <Heading css={headingStyle} lang={title.language}>
+        <Heading css={headingStyle} lang={title.language === 'nb' ? 'no' : title.language}>
           {title.title}
         </Heading>
-        <StyledDescription lang={description.language}>{description.text}</StyledDescription>
+        <StyledDescription lang={description.language === 'nb' ? 'no' : description.language}>
+          {description.text}
+        </StyledDescription>
         <StyledLink to={href}>
           {url.text}
           <Forward />

@@ -44,7 +44,7 @@ const StyledList = styled.ul<listProps>`
     css`
       ${mq.range({ from: breakpoints.tablet })} {
         column-count: 2;
-        grid-gap: ${spacing.snormal};
+        grid-gap: 20px;
         ${props.direction === 'horizontal' &&
         css`
           display: grid;
@@ -53,7 +53,7 @@ const StyledList = styled.ul<listProps>`
       }
       ${mq.range({ from: breakpoints.tabletWide })} {
         column-count: 3;
-        grid-gap: ${spacing.snormal};
+        grid-gap: 20px;
         ${props.direction === 'horizontal' &&
         css`
           grid-template-columns: repeat(3, 1fr);

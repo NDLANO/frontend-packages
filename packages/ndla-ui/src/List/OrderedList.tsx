@@ -26,29 +26,37 @@ export const LetterCSS = css`
   padding-left: ${spacing.medium};
   > li {
     counter-increment: level1;
-    padding: ${spacing.nsmall} 0 0 0;
 
     :before {
       content: counter(level1, upper-alpha) '.';
-      padding-right: ${spacing.small};
     }
-    > ol[data-type='letters'] > li {
-      :before {
-        content: counter(level1, lower-alpha) '.';
-      }
-      > ol[data-type='letters'] > li {
-        padding-left: ${spacing.normal};
+    > ol[data-type='letters'] {
+      > li {
         :before {
-          position: absolute;
-          content: counter(level1, lower-roman) '.';
-          transform: translateX(-100%);
+          content: counter(level1, lower-alpha) '.';
         }
-        > ol[data-type='letters'] > li {
-          padding-left: ${spacing.normal};
-          :before {
-            position: absolute;
-            content: counter(level1, lower-roman) '.';
-            transform: translateX(-100%);
+        > ol[data-type='letters'] {
+          padding-left: 0;
+          > li {
+            padding-left: ${spacing.normal};
+            :before {
+              left: ${spacing.small};
+              position: absolute;
+              content: counter(level1, lower-roman) '.';
+              transform: translateX(-100%);
+            }
+            > ol[data-type='letters'] {
+              padding-left: 0;
+              > li {
+                padding-left: ${spacing.normal};
+                :before {
+                  left: ${spacing.small};
+                  position: absolute;
+                  content: counter(level1, lower-roman) '.';
+                  transform: translateX(-100%);
+                }
+              }
+            }
           }
         }
       }
@@ -57,13 +65,11 @@ export const LetterCSS = css`
 `;
 
 export const NumberCSS = css`
-  padding-left: ${spacing.nsmall};
+  padding-left: ${spacing.normal};
   > li {
     counter-increment: level1;
-    padding-top: ${spacing.nsmall};
     :before {
       content: counter(level1, decimal) '.';
-      padding-right: ${spacing.nsmall};
     }
     > ol:not([data-type='letters']) {
       counter-reset: level2;
@@ -105,10 +111,25 @@ export const NumberCSS = css`
 const StyledOl = styled.ol`
   ${fonts.sizes('18px', '29px')};
   ${generateListResets('level1')};
+  padding: 0;
   list-style-type: none;
   counter-reset: level1;
 
-  padding-bottom: ${spacing.nsmall};
+  margin-left: ${spacing.normal};
+
+  > li {
+    margin-top: ${spacing.nsmall};
+    padding-top: 0;
+    position: relative;
+    ::before {
+      position: absolute;
+      left: -${spacing.normal};
+    }
+    > ol {
+      padding-bottom: 0;
+      margin-left: 0;
+    }
+  }
 
   &:not([data-type='letters']) {
     ${NumberCSS}

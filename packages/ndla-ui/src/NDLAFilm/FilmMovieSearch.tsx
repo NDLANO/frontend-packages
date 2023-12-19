@@ -37,7 +37,7 @@ const StyledUl = styled.ul`
   li {
     flex: 1;
     width: 100%;
-    padding-bottom:${spacing.xsmall};
+    padding-bottom: ${spacing.xsmall};
     a {
       color: ${colors.white};
       &:hover,

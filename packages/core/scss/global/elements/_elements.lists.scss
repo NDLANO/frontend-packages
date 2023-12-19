@@ -26,7 +26,6 @@ ol {
 ul {
   @include font-size(18px, 29px);
   margin: 0;
-  padding: 0;
   list-style-type: disc;
 
   li::marker {

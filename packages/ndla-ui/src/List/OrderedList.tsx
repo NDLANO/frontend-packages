@@ -6,8 +6,8 @@
  *
  */
 
-import { css } from '@emotion/react';
 import { forwardRef, HTMLAttributes } from 'react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
 

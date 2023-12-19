@@ -97,6 +97,7 @@ const StyledIntroHeader = styled.h1`
 const StyledRow = styled.div`
   display: flex;
   gap: ${spacing.small};
+  align-items: center;
 `;
 
 interface Props {

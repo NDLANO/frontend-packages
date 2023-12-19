@@ -145,7 +145,7 @@ const ListItem = ({ item, clickCallback, nextItem, previousItem, viewStyle, rend
   const renderNoImage = () => (
     <div className={'no-image-wrapper'} aria-hidden="true">
       <div className={'no-image'}>
-        <DocumentDetails className={`c-icon--large`} />
+        <DocumentDetails size="large" />
       </div>
     </div>
   );

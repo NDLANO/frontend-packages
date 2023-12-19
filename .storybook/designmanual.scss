@@ -1,8 +1,6 @@
 @import '~@ndla/core/scss/core';
-@import '~@ndla/icons/scss/icons'; // N.B. icons need to import before @ndla/ui main
 @import '~@ndla/ui/src/main';
 @import '~@ndla/core/scss/utilities';
-@import '~@ndla/video-search/scss/video-search';
 
 @import '@fontsource/source-sans-pro/index.css';
 @import '@fontsource/source-sans-pro/400-italic.css';

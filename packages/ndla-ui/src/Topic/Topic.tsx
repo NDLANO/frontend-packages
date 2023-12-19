@@ -11,10 +11,9 @@ import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
-import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
+import { animations, breakpoints, colors, misc, mq, spacing } from '@ndla/core';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
-import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
-
+import { Additional, ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
 import { EmbedMetaData } from '@ndla/types-embed';
 import { Text, Heading } from '@ndla/typography';
@@ -24,10 +23,6 @@ import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 import { MessageBox } from '../Messages';
 import { NavigationBox } from '../Navigation';
 import { ItemProps } from '../Navigation/NavigationBox';
-
-type InvertItProps = {
-  invertedStyle?: boolean;
-};
 
 const Wrapper = styled.div`
   display: flex;
@@ -67,7 +62,7 @@ const TopicHeaderVisualElementWrapper = styled.div`
 `;
 
 const ShowVisualElementWrapper = styled.div`
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -83,7 +78,7 @@ const VisualElementButton = styled(ButtonV2)`
 `;
 
 const TopicHeaderImage = styled.img`
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   aspect-ratio: 1;
   width: 100%;
   height: 100%;
@@ -121,7 +116,7 @@ const TopicHeaderOverlay = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   transition: opacity ${animations.durations.fast};
   ${VisualElementButton}:hover & {
     opacity: 0.1;
@@ -144,37 +139,33 @@ const HeadingWrapper = styled.hgroup`
   }
 `;
 
-const StyledButtonWrapper = styled.div<InvertItProps>`
+const StyledButtonWrapper = styled.div`
   margin-top: ${spacing.small};
   padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
-  border-left: 6px solid ${colors.brand.light};
-  ${(props) =>
-    props.invertedStyle &&
-    css`
-      button {
-        color: #fff;
-        &:hover,
-        &:focus {
-          color: #fff;
-        }
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
+  &[data-inverted='true'] {
+    button {
+      color: ${colors.white};
+      &:hover,
+      &:focus {
+        color: ${colors.white};
       }
-    `}
+    }
+  }
 `;
 
-const AdditionalIcon = styled.span`
+const StyledAdditional = styled(Additional)`
+  color: ${colors.brand.dark};
+  height: ${spacing.normal};
+  width: ${spacing.normal};
   padding: 1px;
-  border: 1px solid currentColor;
-  border-radius: 100%;
-  font-size: 15px;
-  width: 25px;
-  text-align: center;
 `;
 
-const StyledContentWrapper = styled.div<InvertItProps>`
-  padding-top: ${spacing.normal};
-  border-left: 6px solid ${colors.brand.light};
-  color: ${colors.text.primary};
+const StyledContentWrapper = styled.div`
   background-color: ${colors.white};
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
+  color: ${colors.text.primary};
+  padding-top: ${spacing.normal};
 `;
 
 const StyledModalHeader = styled(ModalHeader)`
@@ -268,7 +259,7 @@ const Topic = ({
             </Heading>
             {isAdditionalTopic && (
               <>
-                <AdditionalIcon aria-hidden="true">T</AdditionalIcon>
+                <StyledAdditional aria-hidden="true" />
                 <span>{t('navigation.additionalTopic')}</span>
               </>
             )}
@@ -320,7 +311,7 @@ const Topic = ({
       {messageBox && <MessageBox>{messageBox}</MessageBox>}
       <div>
         {onToggleShowContent && (
-          <StyledButtonWrapper invertedStyle={invertedStyle}>
+          <StyledButtonWrapper data-inverted={invertedStyle}>
             <ButtonV2
               aria-expanded={!!showContent}
               aria-controls={contentId}
@@ -339,11 +330,7 @@ const Topic = ({
             </ButtonV2>
           </StyledButtonWrapper>
         )}
-        {showContent && (
-          <StyledContentWrapper id={contentId} invertedStyle={invertedStyle}>
-            {children}
-          </StyledContentWrapper>
-        )}
+        {showContent && <StyledContentWrapper id={contentId}>{children}</StyledContentWrapper>}
       </div>
       {subTopics && subTopics.length !== 0 && (
         <NavigationBox

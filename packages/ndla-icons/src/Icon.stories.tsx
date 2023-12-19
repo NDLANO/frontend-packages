@@ -35,7 +35,7 @@ const IconItem = ({ icon, folder, name }: IconItemProps) => {
   return (
     <li>
       <div>
-        {createElement(icon, { className: 'c-icon--large' })}
+        {createElement(icon, { size: 'large' })}
         <strong>{name}</strong>
       </div>
       <div title={`Kilde: ${iconProps['data-source']}`}>

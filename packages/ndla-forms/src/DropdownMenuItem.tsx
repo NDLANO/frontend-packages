@@ -45,7 +45,7 @@ const StyledisSelected = styled.div`
   align-items: flex-start;
   justify-content: flex-end;
   padding-right: ${spacing.small};
-  .c-icon {
+  [data-icon] {
     color: ${colors.support.green};
     margin-left: ${spacing.xsmall};
   }
@@ -64,7 +64,7 @@ const StyledIsDisabled = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   padding-right: ${spacing.small};
-  .c-icon {
+  [data-icon] {
     width: 17px;
     height: 17px;
     min-width: 17px;

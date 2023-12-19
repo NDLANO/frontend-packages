@@ -1,6 +1,6 @@
 {
   "name": "@ndla/carousel",
-  "version": "4.0.19",
+  "version": "4.0.20",
   "description": "Carousel for NDLA",
   "license": "GPL-3.0",
   "sideEffects": false,
@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "@ndla/core": "^4.3.0",
-    "@ndla/icons": "^4.2.5"
+    "@ndla/icons": "^4.2.6"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

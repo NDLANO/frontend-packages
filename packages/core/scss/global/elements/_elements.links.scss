@@ -7,7 +7,7 @@ a:hover {
 }
 
 .o-text-link {
-  .c-icon {
+  [data-icon] {
     width: 18px;
     height: 18px;
     margin-right: $spacing--small;
@@ -19,7 +19,7 @@ a:hover {
     margin: $spacing 0;
     &--right {
       justify-content: flex-end;
-      .c-icon {
+      [data-icon] {
         margin-left: $spacing--small;
         margin-right: 0;
       }

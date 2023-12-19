@@ -7,6 +7,7 @@
  */
 
 import { ReactElement } from 'react';
+import { colors } from '@ndla/core';
 import { InformationOutline } from '@ndla/icons/common';
 import { ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
 
@@ -29,7 +30,7 @@ const Content = ({ pageId }: ModalContentProps) => {
     <Wrapper>
       <div>
         <InModalHeader>
-          <InformationOutline style={{ position: 'absolute' }} />
+          <InformationOutline size="large" color={colors.brand.primary} style={{ position: 'absolute' }} />
           <Heading id={headingId} inModal>
             {useStory.title}
           </Heading>

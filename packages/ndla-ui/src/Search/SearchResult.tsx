@@ -223,9 +223,9 @@ const StyledBreadcrumb = styled.div`
   ${mq.range({ from: breakpoints.desktop })} {
     ${fonts.sizes('16px', '24px')};
   }
-  .c-icon {
-    width: 12px;
-    height: 12px;
+  [data-icon] {
+    width: ${spacing.small};
+    height: ${spacing.small};
     margin: 0 ${spacingUnit / 3}px;
 
     ${mq.range({ from: breakpoints.desktop })} {

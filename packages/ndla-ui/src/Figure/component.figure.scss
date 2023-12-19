@@ -37,7 +37,10 @@
   margin: $spacing 0 $spacing;
   position: relative;
   width: 100%;
-  transition: transform 0.4s, width 0.4s, height 0.4s;
+  transition:
+    transform 0.4s,
+    width 0.4s,
+    height 0.4s;
 
   &--full-column {
     left: auto !important;
@@ -235,7 +238,7 @@
   &__link-wrapper {
     margin-top: $spacing--small;
 
-    .c-icon {
+    [data-icon] {
       margin-left: $spacing--small/2;
       width: 18px;
       height: 18px;

@@ -63,9 +63,6 @@ const SafeLinkCSS = css`
     padding: 0;
   }
   transition: background 200ms ease;
-  > .c-icon--medium {
-    transition: transform 200ms ease;
-  }
   div {
     display: flex;
     flex-direction: column;
@@ -86,16 +83,6 @@ const SafeLinkCSS = css`
     div {
       span:last-child {
         box-shadow: none;
-      }
-    }
-    ${mq.range({ from: breakpoints.tablet })} {
-      > .c-icon--medium {
-        transform: translateX(${spacing.xsmall});
-      }
-      &:first-of-type {
-        > .c-icon--medium {
-          transform: translateX(-${spacing.xsmall});
-        }
       }
     }
   }
@@ -123,11 +110,11 @@ export const LearningPathStickySibling = ({ title, toLearningPathUrl, pathId, st
       css={SafeLinkCSS}
       aria-label={arrow === 'left' ? t('learningPath.previousArrow') : t('learningPath.nextArrow')}
     >
-      {arrow === 'left' && <Back className="c-icon--medium" />}
+      {arrow === 'left' && <Back size="normal" />}
       <div>
         <StyledTitle>{title}</StyledTitle>
       </div>
-      {arrow === 'right' && <Forward className="c-icon--medium" />}
+      {arrow === 'right' && <Forward size="normal" />}
     </SafeLink>
   );
 };

@@ -10,5 +10,6 @@ import FileList from './FileList';
 
 export { default as File } from './File';
 export { default as PdfFile } from './PdfFile';
+export { default as Format } from './Format';
 
 export default FileList;

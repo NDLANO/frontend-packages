@@ -6,38 +6,30 @@
  *
  */
 
-import { ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-
-interface Props {
+import { Heading } from '@ndla/typography';
+interface Props extends ComponentProps<'section'> {
   children: ReactNode;
+  headingButtons?: ReactNode;
 }
 
 const FileListSection = styled.section`
   margin: ${spacing.large} 0;
-  padding: ${spacing.small} 0 ${spacing.normal} ${spacing.normal};
+  padding: 0 0 ${spacing.normal} ${spacing.normal};
   border-left: 2px solid ${colors.brand.greyLightest};
   font-family: ${fonts.sans};
-
-  .c-icon {
-    margin-top: 3px;
-    flex-shrink: 0;
-    margin-right: ${spacing.small};
-    height: 18px;
-    width: 18px;
-  }
 `;
 
-const FileListHeading = styled.h3`
-  ${fonts.sizes('16px', '18px')};
-  letter-spacing: 0.05em;
+const FileListHeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 0 ${spacing.xsmall} 0;
   padding-bottom: ${spacing.xsmall};
   border-bottom: 2px solid ${colors.brand.greyLight};
-  font-weight: ${fonts.weight.bold};
-  text-transform: uppercase;
 `;
 
 const FilesList = styled.ul`
@@ -45,11 +37,16 @@ const FilesList = styled.ul`
   padding: 0;
 `;
 
-const FileList = ({ children }: Props) => {
+const FileList = ({ children, headingButtons, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
-    <FileListSection>
-      <FileListHeading>{t('files')}</FileListHeading>
+    <FileListSection {...rest}>
+      <FileListHeaderWrapper>
+        <Heading element="h3" headingStyle="list-title" margin="none">
+          {t('files')}
+        </Heading>
+        <div>{headingButtons}</div>
+      </FileListHeaderWrapper>
       <FilesList>{children}</FilesList>
     </FileListSection>
   );

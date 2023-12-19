@@ -8,9 +8,8 @@
 
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { Download } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
+import Format from './Format';
 
 interface Props {
   title: string;
@@ -18,7 +17,6 @@ interface Props {
   fileExists: boolean;
   fileType: string;
 }
-
 export interface FileType {
   title: string;
   formats: FileFormat[];
@@ -31,36 +29,7 @@ export interface FileFormat {
   tooltip: string;
 }
 
-const LinkTextWrapper = styled.div`
-  & > span {
-    box-shadow: inset 0 -1px;
-  }
-`;
-const FileLink = styled(SafeLink)`
-  box-shadow: none;
-  position: relative;
-  color: ${colors.brand.primary};
-  margin-right: ${spacing.normal};
-  display: flex;
-  align-items: center;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    ${LinkTextWrapper} {
-      box-shadow: none;
-    }
-  }
-`;
-
-const FileListItem = styled.li`
-  ${fonts.sizes('18px', '26px')};
-  font-weight: ${fonts.weight.semibold};
-  min-height: 60px;
+const StyledFileItem = styled.li`
   background: ${colors.brand.greyLighter};
   display: flex;
   align-items: center;
@@ -72,43 +41,14 @@ const FileListItem = styled.li`
   }
 `;
 
-interface FormatProps {
-  format: FileFormat;
-  title: string;
-  isPrimary: boolean;
-  isDeadLink: boolean;
-}
-
-const Format = ({ format, title, isPrimary, isDeadLink }: FormatProps) => {
-  const titleWithFormat = `${title} (${format.fileType.toUpperCase()})`;
-
-  if (isDeadLink) {
-    return (
-      <span key={format.url}>
-        <Download />
-        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-      </span>
-    );
-  }
-
-  return (
-    <FileLink key={format.url} to={format.url} target="_blank" aria-label={titleWithFormat}>
-      <Download />
-      <LinkTextWrapper aria-label={format.tooltip}>
-        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-      </LinkTextWrapper>
-    </FileLink>
-  );
-};
-
 const File = ({ title, url, fileExists, fileType }: Props) => {
   const { t } = useTranslation();
   const tooltip = `${t('download')} ${url.split('/').pop()}`;
 
   return (
-    <FileListItem>
+    <StyledFileItem>
       <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />
-    </FileListItem>
+    </StyledFileItem>
   );
 };
 

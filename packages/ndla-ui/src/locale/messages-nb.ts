@@ -1040,7 +1040,7 @@ const messages = {
         markAll: 'Merk alle som lest',
         subscribe: 'Du får nå varsling om nye svar på dette innlegget',
         unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
-        commentedOn: 'svarte på innlegget <i>{{title}}</i> som du følger',
+        commentedOn: 'svarte på innlegget <i>{{title}}</i>',
       },
       topicsBy: 'Innlegg av',
     },

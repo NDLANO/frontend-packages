@@ -10,11 +10,11 @@ import Icon, { Props } from '../Icon';
 const LogIn = (props: Props) => (
   <Icon fill="none" data-license="CC-BY 4.0" data-source="Labs AS" viewBox="0 0 24 24" {...props}>
     <path
-      fill="#fff"
+      fill="currentColor"
       d="M19 3h-6a1 1 0 0 0-1 1c0 .5.4 1 1 1h6v14h-6a1 1 0 0 0-1 1c0 .6.4 1 1 1h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"
     />
     <path
-      fill="#fff"
+      fill="currentColor"
       d="M11 9.2V11H4a1 1 0 0 0-1 1c0 .6.5 1 1 1h7v1.8c0 .4.5.7.8.3l2.8-2.8c.2-.2.2-.5 0-.7l-2.8-2.8a.5.5 0 0 0-.8.4"
     />
   </Icon>

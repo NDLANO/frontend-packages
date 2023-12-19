@@ -23,9 +23,7 @@ const StyledPill = styled.div`
     transition: background 200ms ease;
     display: flex;
     flex-direction: row-reverse;
-    .c-icon {
-      width: 16.9px;
-      height: 16.9px;
+    [data-icon] {
       margin-left: ${spacing.xsmall};
     }
     span {
@@ -55,7 +53,7 @@ interface FormPillProps {
 export const FormPill = ({ label, id, onClick }: FormPillProps) => (
   <StyledPill>
     <button type="button">
-      <Cross onClick={() => onClick?.(id)} />
+      <Cross size="nsmall" onClick={() => onClick?.(id)} />
       <span>{label}</span>
     </button>
   </StyledPill>

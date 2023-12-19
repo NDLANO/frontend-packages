@@ -131,10 +131,6 @@ const ListViewWrapper = styled.div`
       cursor: pointer;
       color: ${colors.brand.primary};
     }
-    .c-icon {
-      width: 24px;
-      height: 24px;
-    }
   }
 `;
 
@@ -292,7 +288,7 @@ const ListView = ({
               className={`style-button ${viewStyle === 'list' && 'active'}`}
               onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}
             >
-              <ListIcon />
+              <ListIcon size="normal" />
             </button>
             <button
               type="button"

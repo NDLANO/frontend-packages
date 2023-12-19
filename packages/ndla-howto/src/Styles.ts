@@ -53,12 +53,7 @@ export const InModalHeader = styled.div`
     flex-grow: 1;
     color: ${colors.brand.primary};
   }
-  .c-icon {
-    width: ${spacing.large};
-    height: ${spacing.large};
-    color: ${colors.brand.primary};
-  }
-  > .c-icon {
+  > [data-icon] {
     display: none;
     ${mq.range({ from: breakpoints.tabletWide })} {
       display: flex;

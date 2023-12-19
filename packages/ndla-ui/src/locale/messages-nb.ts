@@ -1129,7 +1129,7 @@ const messages = {
       },
       recentFavourites: {
         title: 'Nylig lagt til i mine mapper',
-        link: 'Vuartesjh gaajhkide dov maabpide',
+        link: 'Se alle mappene dine',
       },
       recentArenaPosts: {
         title: 'Nye innlegg i arenaen',

@@ -87,7 +87,7 @@ const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3',
   const href = getPossiblyRelativeUrl(url, path);
   return (
     <Container data-size={size} to={href}>
-      <Heading className="blog-title" css={headingCss} lang={title.language}>
+      <Heading className="blog-title" css={headingCss} lang={title.language === 'nb' ? 'no' : title.language}>
         {title.title}
       </Heading>
       <StyledImg src={metaImage.url} alt={metaImage.alt} />

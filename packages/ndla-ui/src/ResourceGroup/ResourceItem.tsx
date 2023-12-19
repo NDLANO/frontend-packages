@@ -244,7 +244,7 @@ const ResourceItem = ({
         <InlineContainer>
           <ResourceLink
             to={path}
-            lang={language}
+            lang={language === 'nb' ? 'no' : language}
             aria-current={active ? 'page' : undefined}
             aria-describedby={describedBy}
           >

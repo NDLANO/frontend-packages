@@ -29,7 +29,7 @@ interface Props {
     language: string;
   };
   headingLevel?: HeadingLevel;
-  url: {
+  url?: {
     url: string;
     text: string;
   };
@@ -94,7 +94,6 @@ const CampaignBlock = ({
   path,
   className,
 }: Props) => {
-  const href = getPossiblyRelativeUrl(url.url, path);
   return (
     <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
       {image && <StyledImg src={image.src} height={200} width={240} alt={image.alt} />}
@@ -105,10 +104,12 @@ const CampaignBlock = ({
         <StyledDescription lang={description.language === 'nb' ? 'no' : description.language}>
           {description.text}
         </StyledDescription>
-        <StyledLink to={href}>
-          {url.text}
-          <Forward />
-        </StyledLink>
+        {url && (
+          <StyledLink to={getPossiblyRelativeUrl(url.url, path)}>
+            {url.text}
+            <Forward />
+          </StyledLink>
+        )}
       </TextWrapper>
     </Container>
   );

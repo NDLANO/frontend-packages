@@ -8,8 +8,10 @@
 
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { InformationOutline } from '@ndla/icons/common';
 import { IframeMetaData } from '@ndla/types-embed';
 import { Figure } from '../Figure';
+import { MessageBox } from '../Messages';
 import { ResourceBox } from '../ResourceBox';
 
 interface Props {
@@ -39,6 +41,12 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
     const image = { src: iframeImage?.image.imageUrl ?? '', alt: alt ?? '' };
     return (
       <Figure type="full">
+        {embed.embedData.disclaimer && (
+          <MessageBox type="info">
+            <InformationOutline />
+            {embed.embedData.disclaimer}
+          </MessageBox>
+        )}
         <ResourceBox
           image={image}
           title={embedData.title ?? ''}
@@ -66,6 +74,12 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
     //@ts-ignore
     // eslint-disable-next-line react/no-unknown-property
     <figure className={classes} resizeiframe={`${resize}`}>
+      {embed.embedData.disclaimer && (
+        <MessageBox type="info">
+          <InformationOutline />
+          {embed.embedData.disclaimer}
+        </MessageBox>
+      )}
       <iframe
         ref={iframeRef}
         title={urlOrTitle}

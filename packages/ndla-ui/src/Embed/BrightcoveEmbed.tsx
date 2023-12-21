@@ -13,12 +13,14 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ButtonV2 } from '@ndla/button';
 import { spacing } from '@ndla/core';
+import { InformationOutline } from '@ndla/icons/common';
 import { COPYRIGHTED } from '@ndla/licenses';
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 import { HeartButtonType, RenderContext } from './types';
 import { Figure } from '../Figure';
 import { EmbedByline } from '../LicenseByline';
+import { MessageBox } from '../Messages';
 
 interface Props {
   embed: BrightcoveMetaData;
@@ -106,6 +108,12 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderCon
 
   return (
     <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
+      {embed.embedData.disclaimer && (
+        <MessageBox type="info">
+          <InformationOutline />
+          {embed.embedData.disclaimer}
+        </MessageBox>
+      )}
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}

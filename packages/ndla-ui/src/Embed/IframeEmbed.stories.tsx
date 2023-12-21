@@ -53,6 +53,20 @@ export const Regular: StoryObj<typeof IframeEmbed> = {
   },
 };
 
+export const WithDisclaimer: StoryObj<typeof IframeEmbed> = {
+  args: {
+    embed: {
+      resource: 'iframe',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
+      },
+      data: {},
+    },
+  },
+};
+
 export const Failed: StoryObj<typeof IframeEmbed> = {
   args: {
     embed: {
@@ -132,6 +146,20 @@ export const OpensInNewWindow: StoryObj<typeof IframeEmbed> = {
       resource: 'iframe',
       status: 'success',
       embedData: opensInNewEmbedData,
+      data: opensInnewMetaData,
+    },
+  },
+};
+
+export const OpensInNewWindowDisclaimer: StoryObj<typeof IframeEmbed> = {
+  args: {
+    embed: {
+      resource: 'iframe',
+      status: 'success',
+      embedData: {
+        ...opensInNewEmbedData,
+        disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
+      },
       data: opensInnewMetaData,
     },
   },

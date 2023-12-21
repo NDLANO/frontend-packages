@@ -7,8 +7,10 @@
  */
 
 import styled from '@emotion/styled';
+import { InformationOutline } from '@ndla/icons/common';
 import { H5pMetaData } from '@ndla/types-embed';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import { MessageBox } from '../Messages';
 
 interface Props {
   embed: H5pMetaData;
@@ -29,11 +31,27 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
   if (embed.data.oembed) {
-    return <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
+    return (
+      <>
+        {embed.embedData.disclaimer && (
+          <MessageBox type="info">
+            <InformationOutline />
+            {embed.embedData.disclaimer}
+          </MessageBox>
+        )}
+        <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
+      </>
+    );
   }
 
   return (
     <StyledFigure className={classes}>
+      {embed.embedData.disclaimer && (
+        <MessageBox type="info">
+          <InformationOutline />
+          {embed.embedData.disclaimer}
+        </MessageBox>
+      )}
       <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
     </StyledFigure>
   );

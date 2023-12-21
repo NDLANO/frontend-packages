@@ -188,6 +188,21 @@ export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
   },
 };
 
+export const BrightcoveEmbedDisclaimer: StoryObj<typeof BrightcoveEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'brightcove',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
+      },
+      data: metaData,
+    },
+  },
+};
+
 export const VisuallyInterpreted: StoryObj<typeof BrightcoveEmbed> = {
   args: {
     heartButton: StoryFavoriteButton,

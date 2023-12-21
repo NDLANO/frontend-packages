@@ -17,6 +17,15 @@ const embedData: OembedEmbedData = {
   type: 'iframe',
 };
 
+const embedDataFullscreen: OembedEmbedData = {
+  resource: 'external',
+  url: 'https://embed.ted.com/talks/zahra_biabani_the_eco_creators_helping_the_climate_through_social_media',
+  type: 'fullscreen',
+  title: 'Zahra Biabani: The eco-creators helping the climate through social media',
+  caption: 'Ted talk',
+  imageid: '65086',
+};
+
 const metaData: OembedData = {
   oembed: {
     type: 'video',
@@ -72,12 +81,51 @@ export const Regular: StoryObj<typeof ExternalEmbed> = {
   },
 };
 
+export const WithDisclaimer: StoryObj<typeof ExternalEmbed> = {
+  args: {
+    embed: {
+      resource: 'external',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
+      },
+      data: metaData,
+    },
+  },
+};
+
 export const Failed: StoryObj<typeof ExternalEmbed> = {
   args: {
     embed: {
       resource: 'external',
       status: 'error',
       embedData: embedData,
+    },
+  },
+};
+
+export const Fullstreen: StoryObj<typeof ExternalEmbed> = {
+  args: {
+    embed: {
+      resource: 'external',
+      status: 'success',
+      embedData: embedDataFullscreen,
+      data: metaData,
+    },
+  },
+};
+
+export const FullstreenDisclaimer: StoryObj<typeof ExternalEmbed> = {
+  args: {
+    embed: {
+      resource: 'external',
+      status: 'success',
+      embedData: {
+        ...embedDataFullscreen,
+        disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
+      },
+      data: metaData,
     },
   },
 };

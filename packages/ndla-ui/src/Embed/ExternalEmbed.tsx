@@ -9,9 +9,11 @@
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { InformationOutline } from '@ndla/icons/common';
 import { OembedMetaData } from '@ndla/types-embed';
 import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
 import { Figure } from '../Figure';
+import { MessageBox } from '../Messages';
 import { ResourceBox } from '../ResourceBox';
 
 interface Props {
@@ -45,9 +47,16 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const { embedData, data } = embed;
 
   if (embedData.type === 'fullscreen') {
-    const image = { src: data.iframeImage?.image.imageUrl ?? '', alt: data.iframeImage?.alttext?.alttext ?? '' };
+    const iframeImage = embed.status === 'success' ? embed.data.iframeImage : undefined;
+    const image = { src: iframeImage?.image.imageUrl ?? '', alt: '' };
     return (
       <Figure type="full">
+        {embed.embedData.disclaimer && (
+          <MessageBox type="info">
+            <InformationOutline />
+            {embed.embedData.disclaimer}
+          </MessageBox>
+        )}
         <ResourceBox
           image={image}
           title={embedData.title ?? ''}
@@ -63,14 +72,22 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
   return (
-    <StyledFigure
-      ref={figRef}
-      className={classes}
-      //@ts-ignore
-      // eslint-disable-next-line react/no-unknown-property
-      resizeiframe="true"
-      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? '' }}
-    />
+    <>
+      {embed.embedData.disclaimer && (
+        <MessageBox type="info">
+          <InformationOutline />
+          {embed.embedData.disclaimer}
+        </MessageBox>
+      )}
+      <StyledFigure
+        ref={figRef}
+        className={classes}
+        //@ts-ignore
+        // eslint-disable-next-line react/no-unknown-property
+        resizeiframe="true"
+        dangerouslySetInnerHTML={{ __html: data.oembed.html ?? '' }}
+      />
+    </>
   );
 };
 

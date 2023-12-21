@@ -78,6 +78,20 @@ export const Regular: StoryObj<typeof H5pEmbed> = {
   },
 };
 
+export const WithDisclaimer: StoryObj<typeof H5pEmbed> = {
+  args: {
+    embed: {
+      resource: 'h5p',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
+      },
+      data: metaData,
+    },
+  },
+};
+
 export const Failed: StoryObj<typeof H5pEmbed> = {
   args: {
     embed: {

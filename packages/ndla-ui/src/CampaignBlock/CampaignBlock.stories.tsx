@@ -72,4 +72,3 @@ export const NoUrl: StoryObj<typeof CampaignBlock> = {
     imageSide: 'left',
   },
 };
-

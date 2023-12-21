@@ -19,6 +19,8 @@ export interface IframeEmbedData {
   caption?: string;
   alt?: string;
   imageid?: string;
+  disclaimer?: string;
+  disclaimerArticleId?: number;
 }
 
 export interface IframeData {

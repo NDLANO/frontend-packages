@@ -18,6 +18,8 @@ export interface OembedEmbedData {
   title?: string;
   height?: string;
   imageid?: string;
+  disclaimer?: string;
+  disclaimerArticleId?: number;
 }
 
 export interface OembedData {

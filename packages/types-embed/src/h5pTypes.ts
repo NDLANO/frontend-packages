@@ -15,6 +15,8 @@ export interface H5pEmbedData {
   title?: string;
   pageUrl?: string;
   alt?: string;
+  disclaimer?: string;
+  disclaimerArticleId?: number;
 }
 
 export interface H5pLicenseInformation {

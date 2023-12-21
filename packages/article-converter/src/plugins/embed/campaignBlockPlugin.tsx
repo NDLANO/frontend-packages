@@ -15,12 +15,13 @@ export const campaignBlockPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props['data-json']) as CampaignBlockMetaData;
   const embed = data.embedData;
+  const url = !!embed.url && !!embed.urlText ? { url: embed.url, text: embed.urlText } : undefined;
 
   return (
     <CampaignBlock
       title={{ title: embed.title, language: embed.titleLanguage }}
       description={{ text: embed.description, language: embed.descriptionLanguage }}
-      url={{ url: embed.url, text: embed.urlText }}
+      url={url}
       path={opts.path}
       imageSide={embed.imageSide}
       image={

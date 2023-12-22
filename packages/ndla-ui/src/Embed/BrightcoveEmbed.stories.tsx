@@ -200,8 +200,10 @@ export const BrightcoveEmbedDisclaimer: StoryObj<typeof BrightcoveEmbed> = {
       },
       data: {
         ...metaData,
-        disclaimerHref: 'https://ndla.no',
-        disclaimerLink: 'NDLA',
+        disclaimerLink: {
+          href: 'https://ndla.no',
+          text: 'NDLA',
+        },
       },
     },
   },

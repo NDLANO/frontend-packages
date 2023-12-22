@@ -183,3 +183,8 @@ export interface NRKEmbedData {
   nrkVideoId: string;
   url: string;
 }
+
+export interface DisclaimerLink {
+  text: string;
+  href: string;
+}

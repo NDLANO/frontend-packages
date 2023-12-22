@@ -49,7 +49,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const disclaimer = embedData.disclaimer ? (
     <MessageBox
       type="info"
-      links={data.disclaimerHref ? [{ href: data.disclaimerHref, text: data.disclaimerLink }] : []}
+      links={data.disclaimerLink ? [{ href: data.disclaimerLink.href, text: data.disclaimerLink.text }] : []}
     >
       <InformationOutline />
       {embedData.disclaimer}

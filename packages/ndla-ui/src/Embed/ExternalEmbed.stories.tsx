@@ -92,8 +92,10 @@ export const WithDisclaimer: StoryObj<typeof ExternalEmbed> = {
       },
       data: {
         ...metaData,
-        disclaimerHref: 'https://ndla.no',
-        disclaimerLink: 'NDLA',
+        disclaimerLink: {
+          href: 'https://ndla.no',
+          text: 'NDLA',
+        },
       },
     },
   },

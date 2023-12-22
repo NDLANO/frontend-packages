@@ -63,8 +63,10 @@ export const WithDisclaimer: StoryObj<typeof IframeEmbed> = {
         disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
       },
       data: {
-        disclaimerHref: 'https://ndla.no',
-        disclaimerLink: 'NDLA',
+        disclaimerLink: {
+          href: 'https://ndla.no',
+          text: 'NDLA',
+        },
       },
     },
   },

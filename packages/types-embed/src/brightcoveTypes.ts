@@ -6,7 +6,7 @@
  *
  */
 
-import { MetaData } from '.';
+import { DisclaimerLink, MetaData } from '.';
 
 export type BrightcoveEmbedData = {
   resource: 'brightcove';
@@ -72,8 +72,7 @@ export interface BrightcoveApiType {
 export interface BrightcoveData extends BrightcoveApiType {
   sources: BrightcoveVideoSource[];
   copyright?: BrightcoveCopyright;
-  disclaimerLink?: string;
-  disclaimerHref?: string;
+  disclaimerLink?: DisclaimerLink;
 }
 
 export type BrightcoveMetaData = MetaData<BrightcoveEmbedData, BrightcoveData>;

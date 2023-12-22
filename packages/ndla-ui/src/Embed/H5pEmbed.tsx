@@ -35,7 +35,7 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
   const disclaimer = embedData.disclaimer ? (
     <MessageBox
       type="info"
-      links={data.disclaimerHref ? [{ href: data.disclaimerHref, text: data.disclaimerLink }] : []}
+      links={data.disclaimerLink ? [{ href: data.disclaimerLink.href, text: data.disclaimerLink.text }] : []}
     >
       <InformationOutline />
       {embedData.disclaimer}
@@ -46,7 +46,7 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
     return (
       <>
         {disclaimer}
-        <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
+        <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />
       </>
     );
   }

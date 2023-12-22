@@ -67,6 +67,8 @@ export interface H5pData {
   h5pLicenseInformation?: H5pLicenseInformation;
   h5pUrl: string;
   oembed?: H5pOembedData;
+  disclaimerLink?: string;
+  disclaimerHref?: string;
 }
 
 export type H5pMetaData = MetaData<H5pEmbedData, H5pData>;

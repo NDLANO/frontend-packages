@@ -198,7 +198,11 @@ export const BrightcoveEmbedDisclaimer: StoryObj<typeof BrightcoveEmbed> = {
         ...embedData,
         disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
       },
-      data: metaData,
+      data: {
+        ...metaData,
+        disclaimerHref: 'https://ndla.no',
+        disclaimerLink: 'NDLA',
+      },
     },
   },
 };

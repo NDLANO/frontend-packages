@@ -25,6 +25,8 @@ export interface IframeEmbedData {
 
 export interface IframeData {
   iframeImage?: IImageMetaInformationV3;
+  disclaimerLink?: string;
+  disclaimerHref?: string;
 }
 
 export type IframeMetaData = MetaData<IframeEmbedData, IframeData>;

@@ -109,7 +109,10 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderCon
   return (
     <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
       {embed.embedData.disclaimer && (
-        <MessageBox type="info">
+        <MessageBox
+          type="info"
+          links={data.disclaimerHref ? [{ href: data.disclaimerHref, text: data.disclaimerLink }] : []}
+        >
           <InformationOutline />
           {embed.embedData.disclaimer}
         </MessageBox>

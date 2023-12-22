@@ -72,6 +72,8 @@ export interface BrightcoveApiType {
 export interface BrightcoveData extends BrightcoveApiType {
   sources: BrightcoveVideoSource[];
   copyright?: BrightcoveCopyright;
+  disclaimerLink?: string;
+  disclaimerHref?: string;
 }
 
 export type BrightcoveMetaData = MetaData<BrightcoveEmbedData, BrightcoveData>;

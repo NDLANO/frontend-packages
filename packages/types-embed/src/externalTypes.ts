@@ -25,6 +25,8 @@ export interface OembedEmbedData {
 export interface OembedData {
   oembed: OembedProxyResponse;
   iframeImage?: IImageMetaInformationV3;
+  disclaimerLink?: string;
+  disclaimerHref?: string;
 }
 
 export type OembedMetaData = MetaData<OembedEmbedData, OembedData>;

@@ -46,17 +46,22 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
 
   const { embedData, data } = embed;
 
+  const disclaimer = embedData.disclaimer ? (
+    <MessageBox
+      type="info"
+      links={data.disclaimerHref ? [{ href: data.disclaimerHref, text: data.disclaimerLink }] : []}
+    >
+      <InformationOutline />
+      {embedData.disclaimer}
+    </MessageBox>
+  ) : undefined;
+
   if (embedData.type === 'fullscreen') {
     const iframeImage = embed.status === 'success' ? embed.data.iframeImage : undefined;
     const image = { src: iframeImage?.image.imageUrl ?? '', alt: '' };
     return (
       <Figure type="full">
-        {embed.embedData.disclaimer && (
-          <MessageBox type="info">
-            <InformationOutline />
-            {embed.embedData.disclaimer}
-          </MessageBox>
-        )}
+        {disclaimer}
         <ResourceBox
           image={image}
           title={embedData.title ?? ''}
@@ -73,12 +78,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
 
   return (
     <>
-      {embed.embedData.disclaimer && (
-        <MessageBox type="info">
-          <InformationOutline />
-          {embed.embedData.disclaimer}
-        </MessageBox>
-      )}
+      {disclaimer}
       <StyledFigure
         ref={figRef}
         className={classes}

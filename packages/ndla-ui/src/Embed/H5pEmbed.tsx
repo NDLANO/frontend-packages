@@ -30,15 +30,22 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
   const fullColumnClass = isConcept ? 'c-figure--full-column' : '';
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
+  const { embedData, data } = embed;
+
+  const disclaimer = embedData.disclaimer ? (
+    <MessageBox
+      type="info"
+      links={data.disclaimerHref ? [{ href: data.disclaimerHref, text: data.disclaimerLink }] : []}
+    >
+      <InformationOutline />
+      {embedData.disclaimer}
+    </MessageBox>
+  ) : undefined;
+
   if (embed.data.oembed) {
     return (
       <>
-        {embed.embedData.disclaimer && (
-          <MessageBox type="info">
-            <InformationOutline />
-            {embed.embedData.disclaimer}
-          </MessageBox>
-        )}
+        {disclaimer}
         <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
       </>
     );
@@ -46,12 +53,7 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
 
   return (
     <StyledFigure className={classes}>
-      {embed.embedData.disclaimer && (
-        <MessageBox type="info">
-          <InformationOutline />
-          {embed.embedData.disclaimer}
-        </MessageBox>
-      )}
+      {disclaimer}
       <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
     </StyledFigure>
   );

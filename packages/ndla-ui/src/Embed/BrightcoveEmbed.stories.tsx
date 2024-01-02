@@ -152,7 +152,7 @@ const visuallyInterpretedEmbedMetaData: BrightcoveMetaData = {
 };
 
 const meta: Meta<typeof BrightcoveEmbed> = {
-  title: 'Components/Embeds/BrightcoveEmbed',
+  title: 'Embeds/BrightcoveEmbed',
   component: BrightcoveEmbed,
   tags: ['autodocs'],
   args: {

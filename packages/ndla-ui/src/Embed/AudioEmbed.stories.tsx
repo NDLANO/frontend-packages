@@ -179,7 +179,7 @@ const podcastSuccessData: AudioMeta = {
 };
 
 const meta: Meta<typeof AudioEmbed> = {
-  title: 'Components/Embeds/AudioEmbed',
+  title: 'Embeds/AudioEmbed',
   component: AudioEmbed,
   tags: ['autodocs'],
   decorators: [

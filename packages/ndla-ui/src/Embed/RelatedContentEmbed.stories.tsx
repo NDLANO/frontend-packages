@@ -352,7 +352,7 @@ const learningResourceMeta: RelatedContentMetaData = {
 };
 
 const meta: Meta<typeof RelatedContentEmbed> = {
-  title: 'Components/Embeds/RelatedContentEmbed',
+  title: 'Embeds/RelatedContentEmbed',
   component: RelatedContentEmbed,
   tags: ['autodocs'],
   decorators: [

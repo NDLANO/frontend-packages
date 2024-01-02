@@ -2,7 +2,7 @@ details {
   transition-duration: 150ms;
   transition-property: left, right, width;
   margin: $spacing--large 0;
-  width: 100%;
+  display: block;
   position: relative;
   left: 0;
   clear: left;

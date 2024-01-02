@@ -29,7 +29,7 @@ interface Props {
     language: string;
   };
   headingLevel?: HeadingLevel;
-  url?: {
+  url: {
     url?: string;
     text?: string;
   };
@@ -104,7 +104,7 @@ const CampaignBlock = ({
         <StyledDescription lang={description.language === 'nb' ? 'no' : description.language}>
           {description.text}
         </StyledDescription>
-        {url && url.url !== undefined && url.url.length > 0 && (
+        {url.url && (
           <StyledLink to={getPossiblyRelativeUrl(url.url, path)}>
             {url.text}
             <Forward />

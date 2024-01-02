@@ -6,28 +6,31 @@
  *
  */
 
-import { attributesToProps } from 'html-react-parser';
-import { CampaignBlockMetaData } from '@ndla/types-embed';
-import { CampaignBlock } from '@ndla/ui';
-import { PluginType } from '../types';
+import { attributesToProps } from "html-react-parser";
+import { CampaignBlockMetaData } from "@ndla/types-embed";
+import { CampaignBlock } from "@ndla/ui";
+import { PluginType } from "../types";
 
 export const campaignBlockPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as CampaignBlockMetaData;
+  const data = JSON.parse(props["data-json"]) as CampaignBlockMetaData;
   const embed = data.embedData;
 
   return (
     <CampaignBlock
       title={{ title: embed.title, language: embed.titleLanguage }}
-      description={{ text: embed.description, language: embed.descriptionLanguage }}
+      description={{
+        text: embed.description,
+        language: embed.descriptionLanguage,
+      }}
       url={{ url: embed.url, text: embed.urlText }}
       path={opts.path}
       imageSide={embed.imageSide}
       image={
-        data.status === 'success' && data.data.image
+        data.status === "success" && data.data.image
           ? {
               src: data.data.image.image.imageUrl,
-              alt: embed.alt === undefined ? '' : embed.alt,
+              alt: embed.alt === undefined ? "" : embed.alt,
             }
           : undefined
       }

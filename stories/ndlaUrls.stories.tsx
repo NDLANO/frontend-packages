@@ -6,18 +6,18 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { Logo, OneColumn, PageContainer } from '@ndla/ui';
-import SafeLink from '@ndla/safelink';
-import { StoryBody } from './wrappers';
+import { Meta, StoryFn } from "@storybook/react";
+import { Logo, OneColumn, PageContainer } from "@ndla/ui";
+import SafeLink from "@ndla/safelink";
+import { StoryBody } from "./wrappers";
 
 export default {
-  title: 'NDLA urls',
+  title: "NDLA urls",
 } as Meta;
 
 export const NDLAUrls: StoryFn = () => (
   <PageContainer>
-    <div style={{ marginTop: '30px' }}>
+    <div style={{ marginTop: "30px" }}>
       <OneColumn>
         <center>
           <Logo label="Nasjonal digital læringsarena" />
@@ -72,4 +72,4 @@ export const NDLAUrls: StoryFn = () => (
   </PageContainer>
 );
 
-NDLAUrls.storyName = 'NDLA urls';
+NDLAUrls.storyName = "NDLA urls";

@@ -6,9 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, colors, fonts, misc } from '@ndla/core';
-import { MovieResourceType } from './types';
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, colors, fonts, misc } from "@ndla/core";
+import { MovieResourceType } from "./types";
 
 const StyledWrapperDiv = styled.div`
   transition: opacity 200ms ease;
@@ -21,7 +21,7 @@ const StyledWrapperDiv = styled.div`
 `;
 
 const StyledMovieTags = styled.span`
-  ${fonts.sizes('14px', '16px')};
+  ${fonts.sizes("14px", "16px")};
   font-weight: ${fonts.weight.semibold};
   background: ${colors.brand.greyLight};
   padding: calc(${spacing.xsmall} / 2) ${spacing.xsmall};

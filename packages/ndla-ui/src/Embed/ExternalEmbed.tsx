@@ -6,13 +6,13 @@
  *
  */
 
-import { useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { OembedMetaData } from '@ndla/types-embed';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { Figure } from '../Figure';
-import { ResourceBox } from '../ResourceBox';
+import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { OembedMetaData } from "@ndla/types-embed";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { Figure } from "../Figure";
+import { ResourceBox } from "../ResourceBox";
 
 interface Props {
   embed: OembedMetaData;
@@ -34,32 +34,35 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
     if (iframe) {
       const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
       iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
-      iframe.width = '';
-      iframe.height = '';
+      iframe.width = "";
+      iframe.height = "";
     }
   }, []);
-  if (embed.status === 'error') {
+  if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="external" />;
   }
 
   const { embedData, data } = embed;
 
-  if (embedData.type === 'fullscreen') {
-    const image = { src: data.iframeImage?.image.imageUrl ?? '', alt: data.iframeImage?.alttext?.alttext ?? '' };
+  if (embedData.type === "fullscreen") {
+    const image = {
+      src: data.iframeImage?.image.imageUrl ?? "",
+      alt: data.iframeImage?.alttext?.alttext ?? "",
+    };
     return (
       <Figure type="full">
         <ResourceBox
           image={image}
-          title={embedData.title ?? ''}
+          title={embedData.title ?? ""}
           url={embedData.url}
-          caption={embedData.caption ?? ''}
-          buttonText={t('license.other.itemImage.ariaLabel')}
+          caption={embedData.caption ?? ""}
+          buttonText={t("license.other.itemImage.ariaLabel")}
         />
       </Figure>
     );
   }
 
-  const fullColumnClass = isConcept ? 'c-figure--full-column' : '';
+  const fullColumnClass = isConcept ? "c-figure--full-column" : "";
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
   return (
@@ -69,7 +72,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
       //@ts-ignore
       // eslint-disable-next-line react/no-unknown-property
       resizeiframe="true"
-      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? '' }}
+      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }}
     />
   );
 };

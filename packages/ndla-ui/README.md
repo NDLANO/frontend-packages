@@ -36,14 +36,14 @@ See: [package.json](package.json) for version requirements.
 
 ```scss
 /* Your project's main .scss import file */
-@import '~@ndla/ui/scss/main'; // with webpack and sass-loader
-@import '../path/to/node_modules/ndla-ui/scss/main'; // direct reference
+@import "~@ndla/ui/scss/main"; // with webpack and sass-loader
+@import "../path/to/node_modules/ndla-ui/scss/main"; // direct reference
 ```
 
 ### Component Usage
 
 ```jsx
-import { Breadcrumb, Hero, OneColumn, Article } from '@ndla/ui';
+import { Breadcrumb, Hero, OneColumn, Article } from "@ndla/ui";
 
 const MyPage = ({ topicPath, topic, article }) => {
   return (

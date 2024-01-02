@@ -6,6 +6,6 @@
  *
  */
 
-import ZendeskButton from './ZendeskButton';
+import ZendeskButton from "./ZendeskButton";
 
 export default ZendeskButton;

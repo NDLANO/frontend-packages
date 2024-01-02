@@ -6,8 +6,8 @@
  *
  */
 
-import Programme from './Programme';
-import ProgrammeSubjects from './ProgrammeSubjects';
+import Programme from "./Programme";
+import ProgrammeSubjects from "./ProgrammeSubjects";
 
 export { ProgrammeSubjects };
 export default Programme;

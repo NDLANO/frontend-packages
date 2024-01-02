@@ -6,5 +6,5 @@
  *
  */
 
-import FramedContent from './FramedContent';
+import FramedContent from "./FramedContent";
 export default FramedContent;

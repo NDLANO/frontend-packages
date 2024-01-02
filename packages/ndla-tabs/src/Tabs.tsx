@@ -6,10 +6,10 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { Root, List, Trigger, Content } from '@radix-ui/react-tabs';
-import { colors, fonts, misc, spacing } from '@ndla/core';
+import { HTMLAttributes, ReactNode } from "react";
+import styled from "@emotion/styled";
+import { Root, List, Trigger, Content } from "@radix-ui/react-tabs";
+import { colors, fonts, misc, spacing } from "@ndla/core";
 
 interface TabType {
   title: string;
@@ -18,9 +18,9 @@ interface TabType {
   content: ReactNode;
 }
 
-interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'dir'> {
+interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "dir"> {
   tabs: TabType[];
-  variant?: 'rounded' | 'underlined';
+  variant?: "rounded" | "underlined";
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;
@@ -37,16 +37,16 @@ const TabsRoot = styled(Root)`
     position: relative;
   }
 
-  &[data-variant='rounded'] {
+  &[data-variant="rounded"] {
     [data-tab-trigger] {
-      ${fonts.sizes('12px')};
+      ${fonts.sizes("12px")};
       padding: 0 ${spacing.normal};
       color: ${colors.brand.primary};
       font-weight: ${fonts.weight.semibold};
       background-color: ${colors.brand.light};
       z-index: 1;
       position: relative;
-      &[data-state='active'] {
+      &[data-state="active"] {
         cursor: default;
         background-color: ${colors.brand.lighter};
         border-bottom: none;
@@ -61,7 +61,7 @@ const TabsRoot = styled(Root)`
       &:last-of-type {
         border-top-right-radius: ${misc.borderRadius};
       }
-      &[data-state='inactive']:hover {
+      &[data-state="inactive"]:hover {
         color: ${colors.text.primary};
       }
       &[data-disabled] {
@@ -82,13 +82,13 @@ const TabsRoot = styled(Root)`
       box-shadow: 0 0 0 2px ${colors.brand.primary};
     }
   }
-  &[data-variant='underlined'] {
+  &[data-variant="underlined"] {
     [data-tab-list]:after {
       border-bottom: 1px solid ${colors.brand.tertiary};
       position: absolute;
       bottom: 1.5px;
       left: 0px;
-      content: '';
+      content: "";
       width: 100%;
       z-index: -1;
     }
@@ -102,7 +102,7 @@ const TabsRoot = styled(Root)`
       &:hover {
         color: ${colors.brand.primary};
       }
-      &[data-state='active'] {
+      &[data-state="active"] {
         cursor: default;
         color: ${colors.brand.primary};
         border-bottom-color: ${colors.brand.primary};
@@ -115,7 +115,7 @@ const TabsRoot = styled(Root)`
   }
 `;
 
-const Tabs = ({ tabs, variant = 'underlined', defaultValue: defaultValueProp, ...rest }: Props) => {
+const Tabs = ({ tabs, variant = "underlined", defaultValue: defaultValueProp, ...rest }: Props) => {
   const defaultValue =
     tabs.find((tab) => tab.id === defaultValueProp && !tab.disabled)?.id ?? tabs.find((t) => t.disabled !== true)?.id;
   return (

@@ -6,14 +6,16 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { Spinner } from '@ndla/icons';
-import { Search } from '@ndla/icons/common';
-import { Input, FormPill, InputProps } from '.';
+import styled from "@emotion/styled";
+import { Spinner } from "@ndla/icons";
+import { Search } from "@ndla/icons/common";
+import { Input, FormPill, InputProps } from ".";
 //@ts-ignore
-import { getFieldValue } from './dropdownHelper';
+import { getFieldValue } from "./dropdownHelper";
 
-type StringObject<T> = { [K in keyof T]: T[K] extends string ? K : never }[keyof T];
+type StringObject<T> = {
+  [K in keyof T]: T[K] extends string ? K : never;
+}[keyof T];
 interface Props<T extends object> extends InputProps {
   multiSelect?: boolean;
   removeItem: (id: string) => void;
@@ -45,7 +47,7 @@ const DropdownInput = <T extends object>({
       values.map((value) => (
         <FormPill
           //@ts-ignore
-          label={labelField ? value[labelField] : ''}
+          label={labelField ? value[labelField] : ""}
           key={getFieldValue(value, idField)}
           id={getFieldValue(value, idField)}
           onClick={removeItem}

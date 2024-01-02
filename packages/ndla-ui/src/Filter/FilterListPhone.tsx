@@ -6,14 +6,14 @@
  *
  */
 
-import debounce from 'lodash/debounce';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { ButtonV2 } from '@ndla/button';
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
-import { classes } from './filterClasses';
-import ToggleItem from './ToggleItem';
-import ActiveFilters from '../Search/ActiveFilters';
+import debounce from "lodash/debounce";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ButtonV2 } from "@ndla/button";
+import { ChevronDown, ChevronUp } from "@ndla/icons/common";
+import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from "@ndla/modal";
+import { classes } from "./filterClasses";
+import ToggleItem from "./ToggleItem";
+import ActiveFilters from "../Search/ActiveFilters";
 
 interface Option {
   title: string;
@@ -41,7 +41,7 @@ interface Props {
     openFilter: string;
     closeFilter: string;
   };
-  viewMode?: 'inlineDesktop' | 'allModal';
+  viewMode?: "inlineDesktop" | "allModal";
   isGroupedOptions?: boolean;
   showActiveFiltersOnSmallScreen?: boolean;
 }
@@ -54,7 +54,7 @@ const FilterListPhone = ({
   preid,
   label,
   labelNotVisible,
-  modifiers = '',
+  modifiers = "",
   onChange,
   options,
   values = [],
@@ -65,7 +65,7 @@ const FilterListPhone = ({
   collapseMobile = true,
   activeFiltersNarrow,
   messages,
-  viewMode = 'inlineDesktop',
+  viewMode = "inlineDesktop",
   isGroupedOptions,
   showActiveFiltersOnSmallScreen,
 }: Props) => {
@@ -76,11 +76,11 @@ const FilterListPhone = ({
   useEffect(() => {
     setScreenSize(true);
     const debounced = debounce(() => setScreenSize(false), 50);
-    window.addEventListener('resize', debounced);
+    window.addEventListener("resize", debounced);
 
     return () => {
       debounced.cancel();
-      window.removeEventListener('resize', debounced);
+      window.removeEventListener("resize", debounced);
     };
   }, []);
 
@@ -114,12 +114,12 @@ const FilterListPhone = ({
   const labelModifiers: string[] = [];
 
   if (labelNotVisible) {
-    labelModifiers.push('hidden');
+    labelModifiers.push("hidden");
   }
 
   const groupedOptions = is2DArray(options) ? options : [options];
 
-  if (isNarrowScreen || viewMode === 'allModal') {
+  if (isNarrowScreen || viewMode === "allModal") {
     let currentlyActiveFilters: Option[] = [];
     groupedOptions.forEach((options) => {
       const activeFilters = options.filter((option) => values.some((value) => value === option.value));
@@ -127,7 +127,7 @@ const FilterListPhone = ({
     });
 
     const wrapperClassName =
-      activeFiltersNarrow || viewMode === 'allModal' ? classes('narrow-active-filters').className : '';
+      activeFiltersNarrow || viewMode === "allModal" ? classes("narrow-active-filters").className : "";
     return (
       <div className={wrapperClassName}>
         {currentlyActiveFilters.length > 0 && (
@@ -144,15 +144,15 @@ const FilterListPhone = ({
         )}
         <Modal open={open} onOpenChange={setOpen}>
           <ModalTrigger>
-            <ButtonV2 variant="outline" {...classes('modal-button')}>
+            <ButtonV2 variant="outline" {...classes("modal-button")}>
               {messages.openFilter}
             </ButtonV2>
           </ModalTrigger>
           <ModalContent size="full">
             <ModalHeader>
-              <div {...classes('modal-header')}>
-                <div {...classes('modal-heading')}>
-                  {!isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}
+              <div {...classes("modal-header")}>
+                <div {...classes("modal-heading")}>
+                  {!isNarrowScreen && label && <h1 {...classes("label")}>{label}</h1>}
                   <ButtonV2 variant="outline" onClick={onClose}>
                     {messages.useFilter}
                   </ButtonV2>
@@ -161,14 +161,14 @@ const FilterListPhone = ({
               </div>
             </ModalHeader>
             <ModalBody modifier="no-side-padding-mobile">
-              {isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}
+              {isNarrowScreen && label && <h1 {...classes("label")}>{label}</h1>}
               {groupedOptions.map((options, index) => (
                 <ul
                   key={index}
-                  {...classes('item-wrapper', {
-                    'aligned-grouping': !!alignedGroup,
-                    'collapse-mobile': !!collapseMobile,
-                    'grouped-options': !!isGroupedOptions,
+                  {...classes("item-wrapper", {
+                    "aligned-grouping": !!alignedGroup,
+                    "collapse-mobile": !!collapseMobile,
+                    "grouped-options": !!isGroupedOptions,
                   })}
                 >
                   {options.map((option) => {
@@ -177,11 +177,11 @@ const FilterListPhone = ({
                     const checked = values.some((value) => value === option.value);
 
                     if (option.noResults) {
-                      itemModifiers.push('no-results');
+                      itemModifiers.push("no-results");
                     }
 
                     if (option.disabled) {
-                      itemModifiers.push('disabled');
+                      itemModifiers.push("disabled");
                     }
                     return (
                       <ToggleItem
@@ -199,7 +199,7 @@ const FilterListPhone = ({
                 </ul>
               ))}
 
-              <div {...classes('usefilter-wrapper')}>
+              <div {...classes("usefilter-wrapper")}>
                 <ButtonV2 variant="outline" onClick={onClose}>
                   {messages.useFilter}
                 </ButtonV2>
@@ -213,26 +213,26 @@ const FilterListPhone = ({
 
   return (
     <>
-      {isGroupedOptions && label && <h2 {...classes('label', labelModifiers)}>{label}</h2>}
+      {isGroupedOptions && label && <h2 {...classes("label", labelModifiers)}>{label}</h2>}
       {groupedOptions.map((options, index) => (
-        <section key={index} {...classes('list', modifiers)}>
-          {!isGroupedOptions && label && <h1 {...classes('label', labelModifiers)}>{label}</h1>}
-          <ul {...classes('item-wrapper')}>
+        <section key={index} {...classes("list", modifiers)}>
+          {!isGroupedOptions && label && <h1 {...classes("label", labelModifiers)}>{label}</h1>}
+          <ul {...classes("item-wrapper")}>
             {options.map((option, index) => {
               const itemModifiers = [];
 
               const checked = values.some((value) => value === option.value);
 
               if (!showAll && !checked && !!visibleCount && index + 1 > visibleCount) {
-                itemModifiers.push('hidden');
+                itemModifiers.push("hidden");
               }
 
               if (option.noResults) {
-                itemModifiers.push('no-results');
+                itemModifiers.push("no-results");
               }
 
               if (option.disabled) {
-                itemModifiers.push('disabled');
+                itemModifiers.push("disabled");
               }
 
               return (
@@ -252,7 +252,7 @@ const FilterListPhone = ({
           </ul>
           {!showAll && (
             <button
-              {...classes('expand')}
+              {...classes("expand")}
               type="button"
               onClick={() => {
                 setVisibleCount((prev) => (prev === defaultVisibleCount ? options.length : defaultVisibleCount));

@@ -6,21 +6,21 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import MissingRouterContext from './MissingRouterContext';
-import SafeLinkButton from './SafeLinkButton';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import MissingRouterContext from "./MissingRouterContext";
+import SafeLinkButton from "./SafeLinkButton";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Components/SafeLinkButton',
+  title: "Components/SafeLinkButton",
   component: SafeLinkButton,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   paramemeters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    to: '/',
+    to: "/",
     children: <span>Lenke</span>,
   },
   argTypes: {
@@ -35,7 +35,11 @@ export const Disabled: StoryObj<typeof SafeLinkButton> = {
 };
 
 export const ExternalLink: StoryObj<typeof SafeLinkButton> = {
-  args: { to: 'https://example.com', showNewWindowIcon: true, target: '_blank' },
+  args: {
+    to: "https://example.com",
+    showNewWindowIcon: true,
+    target: "_blank",
+  },
 };
 
 export const WithMissingRouterContext: StoryObj<typeof SafeLinkButton> = {
@@ -46,5 +50,5 @@ export const WithMissingRouterContext: StoryObj<typeof SafeLinkButton> = {
       </MissingRouterContext.Provider>
     ),
   ],
-  args: { to: 'https://example.com', target: '_blank' },
+  args: { to: "https://example.com", target: "_blank" },
 };

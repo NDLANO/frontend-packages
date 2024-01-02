@@ -6,8 +6,8 @@
  *
  */
 
-import { forwardRef } from 'react';
-import { DropdownMenuItem, DropdownMenuItemProps } from '@radix-ui/react-dropdown-menu';
+import { forwardRef } from "react";
+import { DropdownMenuItem, DropdownMenuItemProps } from "@radix-ui/react-dropdown-menu";
 
 interface Props extends DropdownMenuItemProps {}
 const DropdownItem = forwardRef<HTMLDivElement, Props>(({ children, ...rest }, ref) => {

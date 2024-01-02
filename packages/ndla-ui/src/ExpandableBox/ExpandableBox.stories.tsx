@@ -6,9 +6,9 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import { ExpandableBox, ExpandableBoxSummary } from './ExpandableBox';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
+import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * This is just a thin wrapper around the native HTML details element.
@@ -16,8 +16,8 @@ import { defaultParameters } from '../../../../stories/defaults';
  * The components will eventually add style and functionality to the native elements, as opposed to the components being styled by global css.
  */
 export default {
-  title: 'Components/ExpandableBox',
-  tags: ['autodocs'],
+  title: "Components/ExpandableBox",
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,

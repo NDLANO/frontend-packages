@@ -6,6 +6,6 @@
  *
  */
 
-import AudioPlayer from './AudioPlayer';
+import AudioPlayer from "./AudioPlayer";
 
 export default AudioPlayer;

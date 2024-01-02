@@ -6,16 +6,16 @@
  *
  */
 
-import spacing from './spacing';
+import spacing from "./spacing";
 
-const DURATION_DEFAULT = '400ms';
+const DURATION_DEFAULT = "400ms";
 
 const animations = {
   durations: {
-    superFast: '100ms',
-    fast: '200ms',
+    superFast: "100ms",
+    fast: "200ms",
     normal: DURATION_DEFAULT,
-    slow: '600ms',
+    slow: "600ms",
   },
   fadeInLeftFromZero: (duration?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
@@ -166,7 +166,7 @@ const animations = {
             opacity: 1;
           }
         }`,
-  toggledContentWithSwitchAnimation: (duration?: string, animationName = 'toggledContentWithSwitchAnimation') => `
+  toggledContentWithSwitchAnimation: (duration?: string, animationName = "toggledContentWithSwitchAnimation") => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: ${animationName};
       @keyframes ${animationName} {

@@ -6,14 +6,14 @@
  *
  */
 
-import LearningPathLastStepNavigation from './LearningPathLastStepNavigation';
-import LearningPathMenu from './LearningPathMenu';
-import LearningPathMobileHeader from './LearningPathMobileHeader';
-import LearningPathMobileStepInfo from './LearningPathMobileStepInfo';
+import LearningPathLastStepNavigation from "./LearningPathLastStepNavigation";
+import LearningPathMenu from "./LearningPathMenu";
+import LearningPathMobileHeader from "./LearningPathMobileHeader";
+import LearningPathMobileStepInfo from "./LearningPathMobileStepInfo";
 
-export { LearningPathWrapper } from './LearningPathWrapper';
-export { LearningPathContent } from './LearningPathContent';
+export { LearningPathWrapper } from "./LearningPathWrapper";
+export { LearningPathContent } from "./LearningPathContent";
 export { LearningPathMenu, LearningPathLastStepNavigation, LearningPathMobileStepInfo };
-export { LearningPathInformation } from './LearningPathInformation';
-export { LearningPathSticky, LearningPathStickySibling, LearningPathStickyPlaceholder } from './LearningPathSticky';
+export { LearningPathInformation } from "./LearningPathInformation";
+export { LearningPathSticky, LearningPathStickySibling, LearningPathStickyPlaceholder } from "./LearningPathSticky";
 export { LearningPathMobileHeader };

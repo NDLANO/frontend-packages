@@ -6,38 +6,38 @@
  *
  */
 
-import { css } from '@emotion/react';
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { colors, misc, spacing, utils } from '@ndla/core';
-import RadioButtonGroup, { RadioButtonGroupRoot, RadioGroupItem } from './RadioButtonGroup';
-import { defaultParameters } from '../../../../stories/defaults';
+import { css } from "@emotion/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { colors, misc, spacing, utils } from "@ndla/core";
+import RadioButtonGroup, { RadioButtonGroupRoot, RadioGroupItem } from "./RadioButtonGroup";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Forms/RadioButtonGroup',
+  title: "Forms/RadioButtonGroup",
   component: RadioButtonGroup,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
   args: {
     uniqeIds: true,
-    label: 'Velg fag',
+    label: "Velg fag",
     options: [
       {
-        title: 'T1',
-        value: 't1',
+        title: "T1",
+        value: "t1",
       },
       {
-        title: 'R1',
-        value: 'r1',
+        title: "R1",
+        value: "r1",
       },
       {
-        title: 'R2',
-        value: 'r2',
+        title: "R2",
+        value: "r2",
       },
       {
-        title: 'S1',
-        value: 's1',
+        title: "S1",
+        value: "s1",
         disabled: true,
       },
     ],
@@ -48,24 +48,24 @@ export const RadioButtonGroupStory: StoryFn<typeof RadioButtonGroup> = ({ ...arg
   return <RadioButtonGroup {...args} />;
 };
 
-RadioButtonGroupStory.storyName = 'RadioButtonGroup';
+RadioButtonGroupStory.storyName = "RadioButtonGroup";
 
 export const WithStandaloneComponents: StoryObj<typeof RadioButtonGroup> = {
   args: {
     onChange: () => {},
-    direction: 'vertical',
+    direction: "vertical",
     options: [
       {
-        title: 'Vis navnet mitt når jeg deler en mappe',
-        value: 'showName',
+        title: "Vis navnet mitt når jeg deler en mappe",
+        value: "showName",
       },
       {
-        title: 'Ikke vis navnet mitt når jeg deler en mappe',
-        value: 'dontShowName',
+        title: "Ikke vis navnet mitt når jeg deler en mappe",
+        value: "dontShowName",
       },
       {
-        title: 'Kanskje vis navnet mitt når jeg deler en mappe',
-        value: 'maybeShowName',
+        title: "Kanskje vis navnet mitt når jeg deler en mappe",
+        value: "maybeShowName",
       },
     ],
   },
@@ -97,7 +97,7 @@ export const WithStandaloneComponents: StoryObj<typeof RadioButtonGroup> = {
               border-color: ${colors.brand.light};
 
               &:focus-within,
-              &[data-state='checked'] {
+              &[data-state="checked"] {
                 outline: 0px;
                 border-color: ${colors.brand.primary};
                 border-radius: 0px;

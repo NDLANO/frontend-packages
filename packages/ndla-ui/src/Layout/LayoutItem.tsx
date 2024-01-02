@@ -6,7 +6,7 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from "react";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
@@ -15,17 +15,17 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 export const LayoutItem = ({ children, layout, ...rest }: Props) => {
   switch (layout) {
-    case 'extend': {
+    case "extend": {
       return (
         <section className="u-10/12@desktop u-push-1/12@desktop u-10/12@tablet u-push-1/12@tablet">{children}</section>
       );
     }
-    case 'center': {
+    case "center": {
       return (
         <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">{children}</section>
       );
     }
-    case 'full': {
+    case "full": {
       return <section className="u-1/1@desktop">{children}</section>;
     }
     default: {

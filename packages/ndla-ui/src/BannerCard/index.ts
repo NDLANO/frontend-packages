@@ -6,6 +6,6 @@
  *
  */
 
-import BannerCard from './BannerCard';
+import BannerCard from "./BannerCard";
 
 export { BannerCard };

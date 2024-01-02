@@ -6,11 +6,11 @@
  *
  */
 
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { MetaData } from '.';
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetaData } from ".";
 
 export type KeyFigureEmbedData = {
-  resource: 'key-figure';
+  resource: "key-figure";
   imageId: string;
   title: string;
   subtitle: string;

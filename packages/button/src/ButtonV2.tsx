@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { ButtonHTMLAttributes, forwardRef } from 'react';
-import { css, SerializedStyles } from '@emotion/react';
-import { colors, fonts, misc, spacing } from '@ndla/core';
-import { themes } from './themes';
-import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonFontWeight } from './types';
+import { ButtonHTMLAttributes, forwardRef } from "react";
+import { css, SerializedStyles } from "@emotion/react";
+import { colors, fonts, misc, spacing } from "@ndla/core";
+import { themes } from "./themes";
+import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonFontWeight } from "./types";
 
 export interface ButtonStyleProps {
   colorTheme?: ButtonColor;
@@ -32,40 +32,40 @@ const shapeStyles: Partial<Record<ButtonShape, SerializedStyles>> = {
 const sizeStyles: Record<ButtonSize, SerializedStyles> = {
   xsmall: css`
     padding: ${spacing.xxsmall} ${spacing.xsmall};
-    ${fonts.sizes('12px', '14px')};
+    ${fonts.sizes("12px", "14px")};
     min-height: 24px;
     border-width: 1px;
   `,
   small: css`
     padding: ${spacing.xxsmall} ${spacing.xsmall};
-    ${fonts.sizes('14px', '18px')};
+    ${fonts.sizes("14px", "18px")};
     min-height: 32px;
     border-width: 1px;
   `,
   normal: css`
     padding: ${spacing.xxsmall} ${spacing.small};
-    ${fonts.sizes('16px')};
+    ${fonts.sizes("16px")};
     min-height: 40px;
   `,
   medium: css`
     padding: ${spacing.xxsmall} ${spacing.nsmall};
-    ${fonts.sizes('16px', '18px')};
+    ${fonts.sizes("16px", "18px")};
     min-height: 48px;
   `,
   large: css`
     padding: ${spacing.xxsmall} ${spacing.normal};
-    ${fonts.sizes('18px', '20px')};
+    ${fonts.sizes("18px", "20px")};
     min-height: 52px;
   `,
 };
 
 export const buttonStyle = ({
-  size = 'normal',
-  colorTheme = 'primary',
-  shape = 'normal',
+  size = "normal",
+  colorTheme = "primary",
+  shape = "normal",
   inverted,
-  variant = 'solid',
-  fontWeight = 'semibold',
+  variant = "solid",
+  fontWeight = "semibold",
 }: ButtonStyleProps) => {
   const theme = themes[colorTheme];
   return css`
@@ -112,7 +112,7 @@ export const buttonStyle = ({
     ${shapeStyles[shape]}
   
   // Variants
-  ${variant === 'outline' &&
+  ${variant === "outline" &&
     css`
       color: ${theme.background};
       background: transparent;
@@ -129,7 +129,7 @@ export const buttonStyle = ({
         cursor: not-allowed;
       }
     `}
-  ${variant === 'ghost' &&
+  ${variant === "ghost" &&
     css`
       outline-width: 2px;
       color: ${theme.foreground === colors.white ? theme.background : theme.foreground};
@@ -149,7 +149,7 @@ export const buttonStyle = ({
         cursor: not-allowed;
       }
     `}
-  ${variant === 'link' &&
+  ${variant === "link" &&
     css`
       border-radius: 0;
       padding: 0;
@@ -172,7 +172,7 @@ export const buttonStyle = ({
         border: none;
       }
     `}
-    ${variant === 'stripped' &&
+    ${variant === "stripped" &&
     css`
       padding: 0;
       border-radius: 0;
@@ -201,11 +201,11 @@ export const buttonStyle = ({
     css`
       background: transparent;
       color: ${colors.white};
-      border-color: ${variant === 'outline' ? colors.white : 'transparent'};
+      border-color: ${variant === "outline" ? colors.white : "transparent"};
       :hover {
         color: ${theme.foreground};
         background: ${theme.background};
-        border-color: ${variant === 'outline' ? theme.background : 'transparent'};
+        border-color: ${variant === "outline" ? theme.background : "transparent"};
       }
     `}
   `;
@@ -226,12 +226,19 @@ export type ButtonProps = Props & ButtonHTMLAttributes<HTMLButtonElement>;
  * Knapp-komponent
  */
 const ButtonV2 = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ colorTheme = 'primary', size, variant, inverted, shape, fontWeight, children, type = 'button', ...rest }, ref) => {
+  ({ colorTheme = "primary", size, variant, inverted, shape, fontWeight, children, type = "button", ...rest }, ref) => {
     return (
       <button
         // eslint-disable-next-line react/button-has-type
         type={type}
-        css={buttonStyle({ colorTheme, size, variant, inverted, shape, fontWeight })}
+        css={buttonStyle({
+          colorTheme,
+          size,
+          variant,
+          inverted,
+          shape,
+          fontWeight,
+        })}
         {...rest}
         ref={ref}
       >

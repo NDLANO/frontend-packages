@@ -6,6 +6,6 @@
  *
  */
 
-import ResourceGroup from './ResourceGroup';
+import ResourceGroup from "./ResourceGroup";
 
 export default ResourceGroup;

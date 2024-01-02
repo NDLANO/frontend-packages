@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { FormEvent, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { spacing, colors } from '@ndla/core';
-import { Cross as CrossIcon } from '@ndla/icons/action';
-import { Search as SearchIcon } from '@ndla/icons/common';
+import { FormEvent, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { spacing, colors } from "@ndla/core";
+import { Cross as CrossIcon } from "@ndla/icons/action";
+import { Search as SearchIcon } from "@ndla/icons/common";
 
-import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
+import SubjectFilters, { SubjectFilterProps } from "./components/SubjectFilters";
 
 type StyledProps = {
   inputHasFocus?: boolean;
@@ -63,8 +63,8 @@ const SearchInput = styled.input`
 `;
 
 const iconStyle = {
-  width: '24px',
-  height: '24px',
+  width: "24px",
+  height: "24px",
 };
 
 type Props = {
@@ -98,9 +98,9 @@ const SearchFieldHeader = ({
         id="search"
         name="search"
         placeholder={
-          isNarrowScreen ? t('searchPage.searchFieldPlaceholderShort') : t('searchPage.searchFieldPlaceholder')
+          isNarrowScreen ? t("searchPage.searchFieldPlaceholderShort") : t("searchPage.searchFieldPlaceholder")
         }
-        aria-label={t('searchPage.searchFieldPlaceholder')}
+        aria-label={t("searchPage.searchFieldPlaceholder")}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setHasFocus(true)}
@@ -109,17 +109,17 @@ const SearchFieldHeader = ({
       {value && (
         <ClearButton
           type="button"
-          value={t('welcomePage.resetSearch')}
+          value={t("welcomePage.resetSearch")}
           onClick={() => {
-            onChange('');
+            onChange("");
             inputRef.current?.focus();
           }}
         >
-          <CrossIcon style={iconStyle} title={t('welcomePage.resetSearch')} />
+          <CrossIcon style={iconStyle} title={t("welcomePage.resetSearch")} />
         </ClearButton>
       )}
-      <SearchButton type="submit" value={t('searchPage.search')}>
-        <SearchIcon style={iconStyle} title={t('searchPage.search')} />
+      <SearchButton type="submit" value={t("searchPage.search")}>
+        <SearchIcon style={iconStyle} title={t("searchPage.search")} />
       </SearchButton>
     </StyledForm>
   );

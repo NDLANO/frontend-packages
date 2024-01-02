@@ -6,8 +6,8 @@
  *
  */
 
-import { getLicenseByAbbreviation } from '.';
-import { Contributor, CopyrightType } from './contributorTypes';
+import { getLicenseByAbbreviation } from ".";
+import { Contributor, CopyrightType } from "./contributorTypes";
 
 export const getLicenseCredits = (copyright?: {
   creators?: Contributor[];
@@ -25,7 +25,7 @@ type TranslationFunction = (id: string) => string;
 
 const _oldGetCreditCopyString = (roles: Contributor[], t: TranslationFunction) => {
   if (!roles?.length) {
-    return '';
+    return "";
   }
   return (
     roles
@@ -33,7 +33,7 @@ const _oldGetCreditCopyString = (roles: Contributor[], t: TranslationFunction) =
         const type = creator.type && t(`${creator.type.toLowerCase()}`);
         return `${type}: ${creator.name?.trim()}`;
       })
-      .join(', ') + '. '
+      .join(", ") + ". "
   );
 };
 
@@ -47,23 +47,23 @@ export const getCreditString = (
   t: TranslationFunction,
 ) => {
   const formatNames = (credits: string[], forcePunctuation?: boolean) => {
-    const formattedCredits = credits.join(', ');
+    const formattedCredits = credits.join(", ");
 
-    const prefix = config.byPrefix ? t('license.copyText.by') + ' ' : '';
-    const punctuation = forcePunctuation || config.withRole ? '.' : '';
-    return prefix + formattedCredits + punctuation + ' ';
+    const prefix = config.byPrefix ? t("license.copyText.by") + " " : "";
+    const punctuation = forcePunctuation || config.withRole ? "." : "";
+    return prefix + formattedCredits + punctuation + " ";
   };
   const getInitialsList = (roles: Contributor[]) => {
     const credits = roles.map((creator) => {
-      const [lastName, ...names] = creator.name.split(' ').reverse();
+      const [lastName, ...names] = creator.name.split(" ").reverse();
       const initials = names.length
-        ? ', ' +
+        ? ", " +
           [...names]
             .reverse()
-            .map((name) => name[0] + '.')
-            .join(' ')
-        : '.';
-      const role = config.withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
+            .map((name) => name[0] + ".")
+            .join(" ")
+        : ".";
+      const role = config.withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : "";
       return lastName + initials + role;
     });
     return credits;
@@ -71,14 +71,14 @@ export const getCreditString = (
 
   const getFullNamesList = (roles: Contributor[]) => {
     const credits = roles.map((creator) => {
-      const role = config.withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
+      const role = config.withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : "";
       return creator.name + role;
     });
     return credits;
   };
 
   if (!copyright) {
-    return '';
+    return "";
   }
   const { creators, rightsholders, processors } = copyright;
 
@@ -100,7 +100,7 @@ export const getCreditString = (
     return formatNames(credits);
   }
 
-  return '';
+  return "";
 };
 
 const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
@@ -113,22 +113,22 @@ const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
 const getSimpleDateString = () => {
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
-  const dd = String(today.getDate()).padStart(2, '0');
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, "0");
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
   const yyyy = today.getFullYear();
   return `${dd}.${mm}.${yyyy}`;
 };
 
 export const getDateString = (locale: string, date?: string) => {
   const formatDate = (dateObject: Date, locale: string) => {
-    if (locale === 'en') {
+    if (locale === "en") {
       const year = dateObject.getFullYear();
-      const month = dateObject.toLocaleDateString(locale, { month: 'long' });
+      const month = dateObject.toLocaleDateString(locale, { month: "long" });
       const day = dateObject.getDate();
       return `${year}, ${month} ${day}`;
     }
     const year = dateObject.getFullYear();
-    const month = dateObject.toLocaleDateString('no', { month: 'long' });
+    const month = dateObject.toLocaleDateString("no", { month: "long" });
     const day = dateObject.getDate();
     return `${year}, ${day}. ${month}`;
   };
@@ -146,10 +146,10 @@ export const getYearString = (date: string) => {
   if (date) {
     const dateObject = new Date(date);
     if (dateObject && !isNaN(dateObject.getTime())) {
-      return dateObject.getFullYear() + ', ';
+      return dateObject.getFullYear() + ", ";
     }
   }
-  return '';
+  return "";
 };
 
 export const getYearDurationString = (
@@ -158,10 +158,10 @@ export const getYearDurationString = (
   t: TranslationFunction,
 ) => {
   if (!start) {
-    return '';
+    return "";
   }
   if (!end) {
-    return `(${start}-${t('license.copyText.now')}). `;
+    return `(${start}-${t("license.copyText.now")}). `;
   }
   if (start === end) {
     return `(${start}). `;
@@ -170,17 +170,17 @@ export const getYearDurationString = (
 };
 
 export const getLicenseString = (license: string | undefined, locale: string) => {
-  if (license === 'PD' || license === 'N/A') {
-    return '';
+  if (license === "PD" || license === "N/A") {
+    return "";
   }
 
   const licenseAbbreviation = license && getLicenseByAbbreviation(license, locale).abbreviation;
 
-  if (licenseAbbreviation?.startsWith('CC ')) {
+  if (licenseAbbreviation?.startsWith("CC ")) {
     return `${licenseAbbreviation} 4.0`;
   }
 
-  return licenseAbbreviation ?? '';
+  return licenseAbbreviation ?? "";
 };
 
 export const figureApa7CopyString = (
@@ -194,13 +194,13 @@ export const figureApa7CopyString = (
   t: TranslationFunction,
   locale: string,
 ): string => {
-  const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
-  const yearString = date ? getYearString(date) : '';
+  const titleString = getValueOrFallback(title, t("license.copyText.noTitle")) + ", ";
+  const yearString = date ? getYearString(date) : "";
   const creators = getCreditString(copyright, { byPrefix: true, combineCreatorsAndRightsholders: true }, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}).`;
 
   const parsedLicense = getLicenseString(license, locale);
-  const licenseString = parsedLicense ? ` ${parsedLicense}.` : '';
+  const licenseString = parsedLicense ? ` ${parsedLicense}.` : "";
 
   // Ex: Tittel, 1914, av Nordmann, O. (https://ndla.no/urn:resource:123). CC BY-SA 4.0.
   return titleString + yearString + creators + url + licenseString;
@@ -217,12 +217,12 @@ export const webpageReferenceApa7CopyString = (
   t: TranslationFunction,
 ): string => {
   const creators = getCreditString(copyright, { combineCreatorsAndRightsholders: true }, t);
-  const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + '. ';
+  const titleString = getValueOrFallback(title, t("license.copyText.noTitle")) + ". ";
   const url = `${path ? ndlaFrontendDomain + path : src}`;
   const dateString = `(${getDateString(locale, lastUpdated)}). `;
 
   // Ex: Nordmann, O. (2020, 11. januar). Tittel. NDLA. https://ndla.no/urn:resource:123
-  return creators + dateString + titleString + 'NDLA. ' + url;
+  return creators + dateString + titleString + "NDLA. " + url;
 };
 
 export const podcastSeriesApa7CopyString = (
@@ -235,13 +235,13 @@ export const podcastSeriesApa7CopyString = (
   t: TranslationFunction,
 ) => {
   const creators = getCreditString(copyright, { withRole: true, combineCreatorsAndRightsholders: true }, t);
-  const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
+  const titleString = getValueOrFallback(title, t("license.copyText.noTitle")) + " ";
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}`;
   const yearString = getYearDurationString(startYear, endYear, t);
-  const metaString = `[Audio ${t('license.copyText.podcast')}]. `;
+  const metaString = `[Audio ${t("license.copyText.podcast")}]. `;
 
   // Ex: Nordmann, O. (Rolle). (2020, 11. januar). Tittel [Audio podkast]. https://ndla.no/podkast/1
-  return creators + yearString + titleString + metaString + 'NDLA. ' + url;
+  return creators + yearString + titleString + metaString + "NDLA. " + url;
 };
 
 export const podcastEpisodeApa7CopyString = (
@@ -255,13 +255,13 @@ export const podcastEpisodeApa7CopyString = (
   t: TranslationFunction,
 ) => {
   const creators = getCreditString(copyright, { withRole: true, combineCreatorsAndRightsholders: true }, t);
-  const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
+  const titleString = getValueOrFallback(title, t("license.copyText.noTitle")) + " ";
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}#episode-${episodeId}`;
   const dateString = `(${getDateString(locale, date)}). `;
-  const metaString = `[Audio ${t('license.copyText.podcast')} episode]. `;
+  const metaString = `[Audio ${t("license.copyText.podcast")} episode]. `;
 
   // Ex: Nordmann, O. (Rolle). (2020, 11. januar). Tittel [Audio podkast episode]. https://ndla.no/podkast/1#episode-14
-  return creators + dateString + titleString + metaString + 'NDLA. ' + url;
+  return creators + dateString + titleString + metaString + "NDLA. " + url;
 };
 
 export const getCopyString = (
@@ -282,8 +282,8 @@ export const getCopyString = (
   const creators = _oldGetCreditCopyString(credits.creators, t);
   const processors = _oldGetCreditCopyString(credits.processors, t);
   const rightsholders = _oldGetCreditCopyString(credits.rightsholders, t);
-  const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
-  const url = (path ? ndlaFrontendDomain + path : src) + ' ';
+  const titleString = getValueOrFallback(title, t("license.copyText.noTitle")) + " ";
+  const url = (path ? ndlaFrontendDomain + path : src) + " ";
   const date = getSimpleDateString();
 
   // Ex: Fotograf: Ola Nordmann. Tittel [Internett]. Opphaver: NTB. Hentet fra: www.ndla.no/urn:resource:123 Lest: 04.05.2021
@@ -291,11 +291,11 @@ export const getCopyString = (
     creators +
     processors +
     titleString +
-    t('license.copyText.internet') +
+    t("license.copyText.internet") +
     rightsholders +
-    t('license.copyText.downloadedFrom') +
+    t("license.copyText.downloadedFrom") +
     url +
-    t('license.copyText.readDate') +
+    t("license.copyText.readDate") +
     date
   );
 };

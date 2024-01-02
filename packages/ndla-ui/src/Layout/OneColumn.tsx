@@ -6,12 +6,12 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
+import { HTMLAttributes, ReactNode } from "react";
+import BEMHelper from "react-bem-helper";
 
 const classes = BEMHelper({
-  prefix: 'o-',
-  name: 'wrapper',
+  prefix: "o-",
+  name: "wrapper",
   outputIsString: true,
 });
 
@@ -32,19 +32,19 @@ export const OneColumn = ({ children, className, cssModifier, wide, noPadding, e
   }
 
   if (wide) {
-    modifiers.push('wide');
+    modifiers.push("wide");
   }
 
   if (noPadding) {
-    modifiers.push('no-padding');
+    modifiers.push("no-padding");
   }
 
   if (extraPadding) {
-    modifiers.push('extra-padding');
+    modifiers.push("extra-padding");
   }
 
   return (
-    <div className={`${classes('', modifiers)} ${className}`} {...rest}>
+    <div className={`${classes("", modifiers)} ${className}`} {...rest}>
       {children}
     </div>
   );

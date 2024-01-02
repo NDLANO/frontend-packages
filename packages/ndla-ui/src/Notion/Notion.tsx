@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { Fragment, ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { Fragment, ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, fonts, mq, spacing } from "@ndla/core";
 
 const ContentWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -29,13 +29,13 @@ const ContentWrapper = styled.div`
   }
 `;
 const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
-  width: ${(props) => (props.hasVisualElement ? '75%' : '100%')};
+  width: ${(props) => (props.hasVisualElement ? "75%" : "100%")};
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
   }
   font-family: ${fonts.sans};
-  ${fonts.sizes('18px', '28px')};
+  ${fonts.sizes("18px", "28px")};
   ${ContentWrapper} .c-figure.expanded + & {
     width: 100%;
   }
@@ -58,7 +58,7 @@ const ClearWrapper = styled.div`
 const LabelsContainer = styled.div`
   display: flex;
   align-items: center;
-  ${fonts.sizes('14px', '24px')};
+  ${fonts.sizes("14px", "24px")};
   font-family: ${fonts.sans};
   margin: ${spacing.small} 0;
 `;
@@ -87,10 +87,10 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
           {text}
           {!!labels.length && (
             <LabelsContainer>
-              {t('searchPage.resultType.notionLabels')}
+              {t("searchPage.resultType.notionLabels")}
               {labels.map((label, i) => (
                 <Fragment key={`notion-${id}-label-${i + 1}`}>
-                  {' '}
+                  {" "}
                   {label}
                   {i < labels?.length - 1 && <> &#8226;</>}
                 </Fragment>

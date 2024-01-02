@@ -6,6 +6,6 @@
  *
  */
 
-import SectionHeading from './SectionHeading';
+import SectionHeading from "./SectionHeading";
 
 export default SectionHeading;

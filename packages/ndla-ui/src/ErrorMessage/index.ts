@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from "./ErrorMessage";
 
-export { default as ErrorResourceAccessDenied } from './ErrorResourceAccessDenied';
+export { default as ErrorResourceAccessDenied } from "./ErrorResourceAccessDenied";
 
 export default ErrorMessage;

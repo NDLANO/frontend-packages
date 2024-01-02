@@ -6,7 +6,7 @@
  *
  */
 
-export { default as Figure } from './Figure';
-export { FigureOpenDialogButton } from './FigureOpenDialogButton';
+export { default as Figure } from "./Figure";
+export { FigureOpenDialogButton } from "./FigureOpenDialogButton";
 
-export type { FigureType } from './Figure';
+export type { FigureType } from "./Figure";

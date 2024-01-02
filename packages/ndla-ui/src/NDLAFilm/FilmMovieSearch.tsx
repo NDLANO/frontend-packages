@@ -6,15 +6,15 @@
  *
  */
 
-import { useCallback, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { spacing, mq, breakpoints, colors } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { Option, Select, SingleValue } from '@ndla/select';
-import { StyledHeadingH2 } from './filmStyles';
-import { MovieResourceType } from './types';
-import { OneColumn } from '..';
+import { useCallback, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { spacing, mq, breakpoints, colors } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import { Option, Select, SingleValue } from "@ndla/select";
+import { StyledHeadingH2 } from "./filmStyles";
+import { MovieResourceType } from "./types";
+import { OneColumn } from "..";
 
 const FilmMovieSearchContainer = styled.div`
   margin: ${spacing.normal} 0 ${spacing.large};
@@ -71,19 +71,25 @@ const FilmMovieSearch = ({
   const { t } = useTranslation();
   const selectedOption = useMemo(() => {
     if (resourceTypeSelected) {
-      return { value: resourceTypeSelected.id, label: resourceTypeSelected.name };
+      return {
+        value: resourceTypeSelected.id,
+        label: resourceTypeSelected.name,
+      };
     }
-    return { value: 'fromNdla', label: t('ndlaFilm.search.categoryFromNdla') };
+    return { value: "fromNdla", label: t("ndlaFilm.search.categoryFromNdla") };
   }, [resourceTypeSelected, t]);
 
   const options: Option[] = useMemo(() => {
-    const fromNdla = { value: 'fromNdla', label: t('ndlaFilm.search.categoryFromNdla') };
+    const fromNdla = {
+      value: "fromNdla",
+      label: t("ndlaFilm.search.categoryFromNdla"),
+    };
     return [fromNdla].concat(resourceTypes.map((rt) => ({ value: rt.id, label: rt.name })));
   }, [resourceTypes, t]);
 
   const onChange = useCallback(
     (value: SingleValue) => {
-      if (value?.value === 'fromNdla') {
+      if (value?.value === "fromNdla") {
         onChangeResourceType();
       } else {
         onChangeResourceType(value?.value);
@@ -97,7 +103,7 @@ const FilmMovieSearch = ({
       <OneColumn>
         <TopicNavigation>
           <StyledHeadingH2 id={skipToContentId} className="u-12/12 u-4/12@tablet">
-            {`${t('ndlaFilm.subjectsInMovies')}:`}
+            {`${t("ndlaFilm.subjectsInMovies")}:`}
           </StyledHeadingH2>
           <nav className="u-12/12 u-8/12@tablet" aria-labelledby={skipToContentId}>
             <StyledUl>
@@ -116,8 +122,8 @@ const FilmMovieSearch = ({
           value={selectedOption}
           onChange={onChange}
           colorTheme="white"
-          placeholder={t('ndlaFilm.search.chooseCategory')}
-          prefix={`${t('ndlaFilm.search.chooseCategory')} `}
+          placeholder={t("ndlaFilm.search.chooseCategory")}
+          prefix={`${t("ndlaFilm.search.chooseCategory")} `}
         />
       </OneColumn>
     </FilmMovieSearchContainer>

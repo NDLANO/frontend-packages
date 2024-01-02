@@ -6,24 +6,24 @@
  *
  */
 
-import { useCallback, useEffect, useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import UploadDropZone from './UploadDropZone';
-import { defaultParameters } from '../../../stories/defaults';
+import { useCallback, useEffect, useState } from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import UploadDropZone from "./UploadDropZone";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Components/UploadDropZone',
-  tags: ['autodocs'],
+  title: "Components/UploadDropZone",
+  tags: ["autodocs"],
   component: UploadDropZone,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    allowedFiles: ['application/pdf', 'image/gif', 'image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml', '.js'],
+    allowedFiles: ["application/pdf", "image/gif", "image/png", "image/jpeg", "image/jpg", "image/svg+xml", ".js"],
     multiple: true,
-    ariaLabel: 'Upload example',
-    children: 'Dra og slipp eller trykk for å laste opp fil(er)',
+    ariaLabel: "Upload example",
+    children: "Dra og slipp eller trykk for å laste opp fil(er)",
     loading: false,
   },
   argTypes: {

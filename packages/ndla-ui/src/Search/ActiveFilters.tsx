@@ -6,19 +6,19 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing, mq, breakpoints } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
-import ActiveFilterContent, { StyledActiveFilterTitle } from './ActiveFilterContent';
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing, mq, breakpoints } from "@ndla/core";
+import Tooltip from "@ndla/tooltip";
+import ActiveFilterContent, { StyledActiveFilterTitle } from "./ActiveFilterContent";
 
 interface StyledActiveFiltersProps {
   showOnSmallScreen?: boolean;
   filterLength?: number;
 }
 
-const StyledActiveFilters = styled('ul')<StyledActiveFiltersProps>`
+const StyledActiveFilters = styled("ul")<StyledActiveFiltersProps>`
   margin: 0;
   padding: 0;
   flex-direction: column;
@@ -67,7 +67,7 @@ const StyledActiveFilters = styled('ul')<StyledActiveFiltersProps>`
   }
 `;
 
-const StyledActiveFilterWrapper = styled('li')`
+const StyledActiveFilterWrapper = styled("li")`
   list-style: none;
   display: flex;
   margin-bottom: ${spacing.xsmall};
@@ -82,7 +82,7 @@ const StyledActiveFilterWrapper = styled('li')`
 `;
 
 const getFilterLength = (filters: Filter[]) =>
-  filters.filter((filter) => filter.filterName === 'filter_subjects' && filter.title).length;
+  filters.filter((filter) => filter.filterName === "filter_subjects" && filter.title).length;
 
 interface Filter {
   title: string;
@@ -108,13 +108,13 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }: Props) =>
         <StyledActiveFilterWrapper key={filterKey}>
           {filterLength > 1 ? (
             <Tooltip
-              tooltip={t('searchPage.searchFilterMessages.removeFilter', {
+              tooltip={t("searchPage.searchFilterMessages.removeFilter", {
                 filterName: filter.title,
               })}
             >
               <ActiveFilterContent
                 filter={filter}
-                ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {
+                ariaLabel={t("searchPage.searchFilterMessages.removeFilter", {
                   filterName: filter.title,
                 })}
                 onFilterRemove={onFilterRemove}
@@ -124,7 +124,7 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }: Props) =>
             <ActiveFilterContent
               filter={filter}
               onFilterRemove={onFilterRemove}
-              ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {
+              ariaLabel={t("searchPage.searchFilterMessages.removeFilter", {
                 filterName: filter.title,
               })}
             />

@@ -6,9 +6,9 @@
  *
  */
 
-import { HTMLAttributes } from 'react';
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
+import { HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 

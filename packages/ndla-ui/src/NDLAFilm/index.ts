@@ -6,10 +6,10 @@
  *
  */
 
-import AllMoviesAlphabetically from './AllMoviesAlphabetically';
-import FilmMovieList from './FilmMovieList';
-import FilmMovieSearch from './FilmMovieSearch';
-import FilmSlideshow from './FilmSlideshow';
-import MovieGrid from './MovieGrid';
+import AllMoviesAlphabetically from "./AllMoviesAlphabetically";
+import FilmMovieList from "./FilmMovieList";
+import FilmMovieSearch from "./FilmMovieSearch";
+import FilmSlideshow from "./FilmSlideshow";
+import MovieGrid from "./MovieGrid";
 
 export { FilmSlideshow, MovieGrid, FilmMovieSearch, FilmMovieList, AllMoviesAlphabetically };

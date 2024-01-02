@@ -6,13 +6,13 @@
  *
  */
 
-import { HTMLAttributes } from 'react';
-import styled from '@emotion/styled';
-import { spacing, colors, fonts, breakpoints, misc, mq } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import FilmContentCardTags from './FilmContentCardTags';
-import { MovieResourceType, MovieType } from './types';
-import { makeSrcQueryString } from '../Image';
+import { HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { spacing, colors, fonts, breakpoints, misc, mq } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import FilmContentCardTags from "./FilmContentCardTags";
+import { MovieResourceType, MovieType } from "./types";
+import { makeSrcQueryString } from "../Image";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   movie: MovieType;
@@ -20,7 +20,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
   hideTags?: boolean;
   className?: string;
   lazy?: boolean;
-  type?: 'slideshow' | 'list';
+  type?: "slideshow" | "list";
 }
 
 const FilmContentCard = ({
@@ -28,11 +28,11 @@ const FilmContentCard = ({
   resourceTypes,
   hideTags = false,
   className,
-  type = 'slideshow',
+  type = "slideshow",
   lazy,
   ...rest
 }: Props) => {
-  const backgroundImage = metaImage ? `${metaImage.url}?${makeSrcQueryString(600)}` : '';
+  const backgroundImage = metaImage ? `${metaImage.url}?${makeSrcQueryString(600)}` : "";
   const contentTypeId = `${type}-content-type-${id}`;
 
   return (
@@ -45,7 +45,7 @@ const FilmContentCard = ({
       {...rest}
     >
       <ImageWrapper>
-        <StyledImage src={backgroundImage} loading={lazy ? 'lazy' : 'eager'} alt="" />
+        <StyledImage src={backgroundImage} loading={lazy ? "lazy" : "eager"} alt="" />
         {movieResourceTypes && !hideTags && (
           <FilmContentCardTags
             id={contentTypeId}
@@ -60,14 +60,14 @@ const FilmContentCard = ({
 };
 
 const StyledMovieTitle = styled.span`
-  ${fonts.sizes('14px', '20px')};
+  ${fonts.sizes("14px", "20px")};
   font-weight: ${fonts.weight.semibold};
   color: #fff;
   @media (min-width: ${breakpoints.mobileWide}) {
-    ${fonts.sizes('16px', '22px')};
+    ${fonts.sizes("16px", "22px")};
   }
   @media (min-width: ${breakpoints.tablet}) {
-    ${fonts.sizes('18px', '24px')};
+    ${fonts.sizes("18px", "24px")};
   }
 `;
 
@@ -88,9 +88,11 @@ interface StyledSlideWrapperProps {
   columnWidth?: number;
 }
 
-const shouldForwardProp = (p: string) => p !== 'columnWidth';
+const shouldForwardProp = (p: string) => p !== "columnWidth";
 
-const StyledSafeLink = styled(SafeLink, { shouldForwardProp })<StyledSlideWrapperProps>`
+const StyledSafeLink = styled(SafeLink, {
+  shouldForwardProp,
+})<StyledSlideWrapperProps>`
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
@@ -110,7 +112,7 @@ const StyledSafeLink = styled(SafeLink, { shouldForwardProp })<StyledSlideWrappe
       opacity: 0.7;
     }
   }
-  &[data-type='slideshow'] {
+  &[data-type="slideshow"] {
     width: 30vw;
     ${mq.range({ until: breakpoints.tablet })} {
       width: 40vw;
@@ -119,7 +121,7 @@ const StyledSafeLink = styled(SafeLink, { shouldForwardProp })<StyledSlideWrappe
       width: 30vw;
     }
   }
-  &[data-type='list'] {
+  &[data-type="list"] {
     width: 40vw;
     ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
       width: 28vw;

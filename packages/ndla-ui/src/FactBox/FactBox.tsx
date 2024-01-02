@@ -6,15 +6,15 @@
  *
  */
 
-import { ComponentProps, ReactNode, forwardRef, useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { IconButtonV2 } from '@ndla/button';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
+import { ComponentProps, ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
+import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import { ChevronDown, ChevronUp } from "@ndla/icons/common";
 
-interface Props extends ComponentProps<'aside'> {
+interface Props extends ComponentProps<"aside"> {
   children?: ReactNode;
   defaultOpen?: boolean;
   open?: boolean;
@@ -63,7 +63,7 @@ const StyledDiv = styled.div`
   overflow: hidden;
 
   &:after {
-    content: '';
+    content: "";
     text-align: center;
     position: absolute;
     top: 0;
@@ -141,7 +141,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
     return (
       <StyledAside {...rest} css={[isOpen ? expandedStyle : undefined]} ref={ref}>
         <StyledDiv css={isOpen ? expandedContentStyle : undefined}>{children}</StyledDiv>
-        <StyledIconButton onClick={onClick} aria-label={t(`factbox.${isOpen ? 'close' : 'open'}`)}>
+        <StyledIconButton onClick={onClick} aria-label={t(`factbox.${isOpen ? "close" : "open"}`)}>
           {isOpen ? <ChevronUp /> : <ChevronDown />}
         </StyledIconButton>
       </StyledAside>

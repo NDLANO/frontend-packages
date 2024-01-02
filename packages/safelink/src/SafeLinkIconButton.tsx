@@ -6,9 +6,9 @@
  *
  */
 
-import { forwardRef, ReactNode } from 'react';
-import { ButtonStyleProps, iconButtonStyle } from '@ndla/button';
-import SafeLink, { SafeLinkProps } from './SafeLink';
+import { forwardRef, ReactNode } from "react";
+import { ButtonStyleProps, iconButtonStyle } from "@ndla/button";
+import SafeLink, { SafeLinkProps } from "./SafeLink";
 
 interface Props extends SafeLinkProps, ButtonStyleProps {
   children: ReactNode;

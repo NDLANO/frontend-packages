@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef, HTMLProps, ReactElement, ReactNode, useEffect } from 'react';
-import { SerializedStyles } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing, spacingUnit, utils } from '@ndla/core';
-import { useForwardedRef } from '@ndla/util';
+import { forwardRef, HTMLProps, ReactElement, ReactNode, useEffect } from "react";
+import { SerializedStyles } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, fonts, misc, spacing, spacingUnit, utils } from "@ndla/core";
+import { useForwardedRef } from "@ndla/util";
 
 interface BaseInputProps {
   before?: ReactNode;
@@ -34,9 +34,11 @@ interface FormWarningTextProps {
   withLabel?: boolean;
 }
 
-const shouldForwardError = (prop: string) => prop !== 'withLabel';
+const shouldForwardError = (prop: string) => prop !== "withLabel";
 
-const ErrorText = styled('span', { shouldForwardProp: shouldForwardError })<FormWarningTextProps>`
+const ErrorText = styled("span", {
+  shouldForwardProp: shouldForwardError,
+})<FormWarningTextProps>`
   margin-top: 2px;
   grid-column: 2;
   font-family: ${fonts.sans};
@@ -49,9 +51,11 @@ interface StyledLabelProps {
   labelHidden: boolean;
 }
 
-const shouldForwardLabel = (p: string) => p !== 'labelHidden';
+const shouldForwardLabel = (p: string) => p !== "labelHidden";
 
-const StyledLabel = styled('label', { shouldForwardProp: shouldForwardLabel })<StyledLabelProps>`
+const StyledLabel = styled("label", {
+  shouldForwardProp: shouldForwardLabel,
+})<StyledLabelProps>`
   width: ${spacing.xxlarge};
   max-width: ${spacing.xxlarge};
   padding: 20px ${spacing.small} ${spacing.small} 0;
@@ -151,8 +155,8 @@ const BaseInput = ({
 };
 
 export interface InputProps
-  extends Omit<BaseInputProps, 'children'>,
-    Omit<HTMLProps<HTMLInputElement>, 'label' | 'name'> {}
+  extends Omit<BaseInputProps, "children">,
+    Omit<HTMLProps<HTMLInputElement>, "label" | "name"> {}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
@@ -166,7 +170,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       labelHidden,
       name,
       className,
-      'aria-describedby': describedBy = '',
+      "aria-describedby": describedBy = "",
       ...rest
     }: InputProps,
     ref,
@@ -196,8 +200,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 export interface TextAreProps
-  extends Omit<BaseInputProps, 'children'>,
-    Omit<HTMLProps<HTMLTextAreaElement>, 'label' | 'name'> {}
+  extends Omit<BaseInputProps, "children">,
+    Omit<HTMLProps<HTMLTextAreaElement>, "label" | "name"> {}
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreProps>(
   ({ before, after, white, error, label, customCss, labelHidden, name, className, ...rest }, ref) => {
@@ -205,7 +209,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreProps>(
 
     useEffect(() => {
       if (forwardedRef.current) {
-        forwardedRef.current.style.height = '0px';
+        forwardedRef.current.style.height = "0px";
         forwardedRef.current.style.height = `${forwardedRef.current.scrollHeight}px`;
       }
     });

@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing, fonts, colors } from '@ndla/core';
-import { User } from '@ndla/icons/common';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { LicenseByline } from '@ndla/notion';
+import styled from "@emotion/styled";
+import { spacing, fonts, colors } from "@ndla/core";
+import { User } from "@ndla/icons/common";
+import { getLicenseByAbbreviation } from "@ndla/licenses";
+import { LicenseByline } from "@ndla/notion";
 
 const StyledLearningPathDetails = styled.div`
   ${fonts.sizes(14, 1.1)};
@@ -39,7 +39,7 @@ type Props = {
 };
 
 const LearningPathMenuAsideCopyright = ({ copyright }: Props) => {
-  const { rights } = getLicenseByAbbreviation(copyright.license.license || '', 'nb');
+  const { rights } = getLicenseByAbbreviation(copyright.license.license || "", "nb");
   return (
     <StyledLearningPathDetails>
       <UserLine>

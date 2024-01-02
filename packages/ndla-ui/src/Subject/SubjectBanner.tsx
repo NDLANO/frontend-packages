@@ -6,8 +6,8 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { breakpoints, mq } from '@ndla/core';
+import styled from "@emotion/styled";
+import { breakpoints, mq } from "@ndla/core";
 
 type BannerProps = {
   image: string;

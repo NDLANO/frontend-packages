@@ -6,12 +6,12 @@
  *
  */
 
-import { ComponentProps, useMemo } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { ComponentProps, useMemo } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
-interface Props extends ComponentProps<'aside'> {
+interface Props extends ComponentProps<"aside"> {
   narrowScreen?: boolean;
   wideScreen?: boolean;
   alwaysShow?: boolean;

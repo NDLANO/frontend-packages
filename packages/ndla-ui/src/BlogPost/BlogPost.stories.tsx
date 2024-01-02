@@ -6,26 +6,26 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import BlogPost, { Props } from './BlogPost';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryFn } from "@storybook/react";
+import BlogPost, { Props } from "./BlogPost";
+import { defaultParameters } from "../../../../stories/defaults";
 
 const args: Props = {
-  title: { title: 'Min bloggpost', language: 'nb-no' },
-  author: 'Ola Nordmann',
-  url: '#',
-  headingLevel: 'h3',
-  size: 'large',
+  title: { title: "Min bloggpost", language: "nb-no" },
+  author: "Ola Nordmann",
+  url: "#",
+  headingLevel: "h3",
+  size: "large",
   metaImage: {
-    alt: 'Yonghetempelet i Beijing. Foto.',
-    url: 'https://api.test.ndla.no/image-api/raw/id//62870',
+    alt: "Yonghetempelet i Beijing. Foto.",
+    url: "https://api.test.ndla.no/image-api/raw/id//62870",
   },
 };
 
 export default {
-  title: 'Components/Blog Post',
+  title: "Components/Blog Post",
   component: BlogPost,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
@@ -37,4 +37,4 @@ export const BlogPostStory: StoryFn<typeof BlogPost> = ({ ...args }) => {
 };
 
 BlogPostStory.args = args;
-BlogPostStory.storyName = 'BlogPost';
+BlogPostStory.storyName = "BlogPost";

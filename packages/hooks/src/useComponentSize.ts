@@ -6,9 +6,9 @@
  *
  */
 
-import { useCallback, useState } from 'react';
-import { resizeObserver } from '@ndla/util';
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+import { useCallback, useState } from "react";
+import { resizeObserver } from "@ndla/util";
+import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
 type NullableHtmlElement = HTMLElement | null | undefined;
 

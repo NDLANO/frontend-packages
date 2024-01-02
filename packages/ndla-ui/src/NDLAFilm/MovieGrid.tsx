@@ -6,12 +6,12 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import FilmContentCard from './FilmContentCard';
-import { setAnimations, StyledHeadingH1 } from './filmStyles';
-import { MovieResourceType, MovieType } from './types';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing } from "@ndla/core";
+import FilmContentCard from "./FilmContentCard";
+import { setAnimations, StyledHeadingH1 } from "./filmStyles";
+import { MovieResourceType, MovieType } from "./types";
 
 interface MovieListingProps {
   marginLeft?: number;
@@ -68,8 +68,8 @@ const MovieGrid = ({
         {resourceTypeName && resourceTypeName.name}
         <small>
           {fetchingMoviesByType
-            ? t('ndlaFilm.loadingMovies')
-            : `${moviesByType.length} ${t('ndlaFilm.movieMatchInCategory')}`}
+            ? t("ndlaFilm.loadingMovies")
+            : `${moviesByType.length} ${t("ndlaFilm.movieMatchInCategory")}`}
         </small>
       </StyledHeadingH1>
       <MovieListing>

@@ -6,9 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, spacing, spacingUnit, misc } from '@ndla/core';
-import { Cross } from '@ndla/icons/action';
+import styled from "@emotion/styled";
+import { colors, fonts, spacing, spacingUnit, misc } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 const StyledPill = styled.div`
   padding: ${spacingUnit / 8}px 0 ${spacingUnit / 8}px ${spacingUnit / 4}px;

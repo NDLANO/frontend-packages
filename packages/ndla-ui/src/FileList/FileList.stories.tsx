@@ -6,24 +6,24 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import File from './File';
-import FileList from './FileList';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import File from "./File";
+import FileList from "./FileList";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/FileList',
-  tags: ['autodocs'],
+  title: "Components/FileList",
+  tags: ["autodocs"],
   component: File,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    title: 'Min fil',
-    url: 'https://www.ndla.no',
+    title: "Min fil",
+    url: "https://www.ndla.no",
     fileExists: true,
-    fileType: 'pdf',
+    fileType: "pdf",
   },
   render: (args) => (
     <FileList>

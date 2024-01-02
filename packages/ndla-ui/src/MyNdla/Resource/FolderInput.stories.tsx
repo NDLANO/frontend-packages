@@ -6,13 +6,13 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import FolderInput from './FolderInput';
-import { defaultParameters } from '../../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import FolderInput from "./FolderInput";
+import { defaultParameters } from "../../../../../stories/defaults";
 
 export default {
-  title: 'My NDLA/FolderInput',
-  tags: ['autodocs'],
+  title: "My NDLA/FolderInput",
+  tags: ["autodocs"],
   component: FolderInput,
   parameters: {
     inlineStories: true,
@@ -21,8 +21,8 @@ export default {
   args: {
     labelHidden: false,
     loading: false,
-    label: 'Create new folder',
-    name: 'folder',
+    label: "Create new folder",
+    name: "folder",
   },
 } as Meta<typeof FolderInput>;
 

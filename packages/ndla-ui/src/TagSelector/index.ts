@@ -6,8 +6,8 @@
  *
  */
 
-import TagSelector from './TagSelector';
-import { TagType } from './types';
+import TagSelector from "./TagSelector";
+import { TagType } from "./types";
 
 export type { TagType };
 

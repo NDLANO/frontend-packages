@@ -6,29 +6,29 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import ProgrammeCard from './ProgrammeCard';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryFn } from "@storybook/react";
+import ProgrammeCard from "./ProgrammeCard";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/ProgrammeCard',
+  title: "Components/ProgrammeCard",
   component: ProgrammeCard,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
   args: {
-    id: 'test ID',
-    title: { title: 'Elektro og datateknologi', language: 'nb' },
+    id: "test ID",
+    title: { title: "Elektro og datateknologi", language: "nb" },
     desktopImage: {
-      src: 'https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993',
-      alt: '',
+      src: "https://api.test.ndla.no/image-api/raw/ajvkVKKR.svg?width=600&ts=1682591987993",
+      alt: "",
     },
     mobileImage: {
-      src: 'https://api.test.ndla.no/image-api/raw/YIAprLg9.svg?width=600&ts=1682592022017',
-      alt: '',
+      src: "https://api.test.ndla.no/image-api/raw/YIAprLg9.svg?width=600&ts=1682592022017",
+      alt: "",
     },
-    url: '#',
+    url: "#",
   },
 } as Meta<typeof ProgrammeCard>;
 
@@ -36,4 +36,4 @@ export const ProgrammeCardStory: StoryFn<typeof ProgrammeCard> = ({ ...args }) =
   return <ProgrammeCard {...args} />;
 };
 
-ProgrammeCardStory.storyName = 'ProgrammeCard';
+ProgrammeCardStory.storyName = "ProgrammeCard";

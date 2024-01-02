@@ -6,16 +6,16 @@
  *
  */
 
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from '@radix-ui/react-popover';
-import { Root as SliderRoot, Track, Range, SliderThumb } from '@radix-ui/react-slider';
-import { ButtonV2, IconButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from '@ndla/dropdown-menu';
-import { Back15, Forward15 } from '@ndla/icons/action';
-import { Play, Pause, VolumeUp } from '@ndla/icons/common';
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from "@radix-ui/react-popover";
+import { Root as SliderRoot, Track, Range, SliderThumb } from "@radix-ui/react-slider";
+import { ButtonV2, IconButtonV2 } from "@ndla/button";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from "@ndla/dropdown-menu";
+import { Back15, Forward15 } from "@ndla/icons/action";
+import { Play, Pause, VolumeUp } from "@ndla/icons/common";
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
@@ -31,8 +31,8 @@ const ControlsWrapper = styled.div`
     padding: ${spacing.small};
     grid-template-columns: 1fr repeat(5, auto) 1fr;
     grid-template-areas:
-      'track  track track     track track     track   track'
-      '.      speed backwards play  forwards  volume  .';
+      "track  track track     track track     track   track"
+      ".      speed backwards play  forwards  volume  .";
   }
 `;
 
@@ -90,7 +90,7 @@ const SpeedSelectedMark = styled.span`
 `;
 
 const Time = styled.div`
-  ${fonts.sizes('16px')};
+  ${fonts.sizes("16px")};
 `;
 
 const ProgressWrapper = styled.div`
@@ -240,13 +240,13 @@ const Controls = ({ src, title }: Props) => {
         setPlaying(false);
       };
 
-      audioElement.addEventListener('timeupdate', handleTimeUpdate);
-      audioElement.addEventListener('loadedmetadata', handleLoadedMetaData);
-      audioElement.addEventListener('ended', handleTimeEnded);
+      audioElement.addEventListener("timeupdate", handleTimeUpdate);
+      audioElement.addEventListener("loadedmetadata", handleLoadedMetaData);
+      audioElement.addEventListener("ended", handleTimeEnded);
       return () => {
-        audioElement.removeEventListener('timeupdate', handleTimeUpdate);
-        audioElement.removeEventListener('loadedmetadata', handleLoadedMetaData);
-        audioElement.removeEventListener('ended', handleTimeEnded);
+        audioElement.removeEventListener("timeupdate", handleTimeUpdate);
+        audioElement.removeEventListener("loadedmetadata", handleLoadedMetaData);
+        audioElement.removeEventListener("ended", handleTimeEnded);
       };
     }
   }, []);
@@ -288,7 +288,7 @@ const Controls = ({ src, title }: Props) => {
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <ControlsWrapper>
         <PlayButton
-          aria-label={t(playing ? t('audio.pause') : t('audio.play'))}
+          aria-label={t(playing ? t("audio.pause") : t("audio.play"))}
           colorTheme="lighter"
           size="normal"
           onClick={togglePlay}
@@ -298,8 +298,8 @@ const Controls = ({ src, title }: Props) => {
         <Back15SecButton
           variant="ghost"
           colorTheme="greyLighter"
-          title={t('audio.controls.rewind15sec')}
-          aria-label={t('audio.controls.rewind15sec')}
+          title={t("audio.controls.rewind15sec")}
+          aria-label={t("audio.controls.rewind15sec")}
           onClick={() => onSeekSeconds(-15)}
         >
           <Back15 />
@@ -311,8 +311,8 @@ const Controls = ({ src, title }: Props) => {
               variant="ghost"
               size="normal"
               colorTheme="greyLighter"
-              title={t('audio.controls.selectSpeed')}
-              aria-label={t('audio.controls.selectSpeed')}
+              title={t("audio.controls.selectSpeed")}
+              aria-label={t("audio.controls.selectSpeed")}
             >
               {speedValue}x
             </SpeedButton>
@@ -335,8 +335,8 @@ const Controls = ({ src, title }: Props) => {
         <Forward15SecButton
           colorTheme="greyLighter"
           variant="ghost"
-          title={t('audio.controls.forward15sec')}
-          aria-label={t('audio.controls.forward15sec')}
+          title={t("audio.controls.forward15sec")}
+          aria-label={t("audio.controls.forward15sec")}
           onClick={() => onSeekSeconds(15)}
         >
           <Forward15 />
@@ -359,7 +359,7 @@ const Controls = ({ src, title }: Props) => {
         </ProgressWrapper>
         <VolumeWrapper>
           <PopoverTrigger asChild>
-            <VolumeButton variant="ghost" colorTheme="greyLighter" aria-label={t('audio.controls.adjustVolume')}>
+            <VolumeButton variant="ghost" colorTheme="greyLighter" aria-label={t("audio.controls.adjustVolume")}>
               <VolumeUp />
             </VolumeButton>
           </PopoverTrigger>

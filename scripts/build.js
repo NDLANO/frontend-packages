@@ -6,33 +6,33 @@
  *
  */
 
-const chalk = require('chalk');
-const babel = require('@babel/core');
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
-const getPackages = require('./_getPackages');
-const babelOptions = require('../babel.config');
+const chalk = require("chalk");
+const babel = require("@babel/core");
+const fs = require("fs");
+const path = require("path");
+const glob = require("glob");
+const getPackages = require("./_getPackages");
+const babelOptions = require("../babel.config");
 
-const PACKAGES_DIR = path.resolve(__dirname, '..', './packages');
+const PACKAGES_DIR = path.resolve(__dirname, "..", "./packages");
 
 babelOptions.babelrc = false;
-const SRC_DIR = 'src';
-const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
-const IGNORE_PATTERN = '**/__tests__/**';
-const STORYBOOK_PATTERN = '**/*.stories.*';
-const OK = chalk.reset.inverse.bold.green(' DONE ');
+const SRC_DIR = "src";
+const JS_FILES_PATTERN = "**/*(*.js|*.jsx|*.ts|*.tsx)";
+const IGNORE_PATTERN = "**/__tests__/**";
+const STORYBOOK_PATTERN = "**/*.stories.*";
+const OK = chalk.reset.inverse.bold.green(" DONE ");
 
 const adjustToTerminalWidth = (str) => {
   const columns = process.stdout.columns || 80;
   // Account for ' DONE '
   const width = columns - 7;
-  const strs = str.match(new RegExp(`(.{1,${width}})`, 'g'));
+  const strs = str.match(new RegExp(`(.{1,${width}})`, "g"));
   let lastString = strs[strs.length - 1];
   if (lastString.length < width) {
-    lastString += Array(width - lastString.length).join(chalk.dim('.'));
+    lastString += Array(width - lastString.length).join(chalk.dim("."));
   }
-  return strs.slice(0, -1).concat(lastString).join('\n');
+  return strs.slice(0, -1).concat(lastString).join("\n");
 };
 
 function resolveDestPath(file, dest) {
@@ -42,19 +42,19 @@ function resolveDestPath(file, dest) {
   const relativeToSrcPath = path.relative(packageSrcPath, file);
   const destPath = path.resolve(packageBuildPath, relativeToSrcPath);
 
-  if (destPath.endsWith('.jsx')) {
+  if (destPath.endsWith(".jsx")) {
     // JSX file should be transformed to js files
     return destPath.substring(0, destPath.length - 1);
   }
 
-  if (destPath.endsWith('.tsx')) {
+  if (destPath.endsWith(".tsx")) {
     // TSX file should be transformed to js files
-    return destPath.substring(0, destPath.length - 3) + 'js';
+    return destPath.substring(0, destPath.length - 3) + "js";
   }
 
-  if (destPath.endsWith('.ts')) {
+  if (destPath.endsWith(".ts")) {
     // ts file should be transformed to js files
-    return destPath.substring(0, destPath.length - 2) + 'js';
+    return destPath.substring(0, destPath.length - 2) + "js";
   }
   return destPath;
 }
@@ -63,7 +63,7 @@ function removeBuildFile(file, dest) {
   const destPath = resolveDestPath(file, dest);
   fs.unlinkSync(destPath);
   process.stdout.write(
-    `${chalk.red('\u2022 ') + chalk.red('Deleted \u21D2  ') + path.relative(PACKAGES_DIR, destPath)}\n`,
+    `${chalk.red("\u2022 ") + chalk.red("Deleted \u21D2  ") + path.relative(PACKAGES_DIR, destPath)}\n`,
   );
 }
 
@@ -79,11 +79,11 @@ function buildFile(file, dest, { silent = false, override = {} } = {}) {
     fs.writeFileSync(destPath, transformed);
     if (!silent) {
       process.stdout.write(
-        `${path.relative(PACKAGES_DIR, file) + chalk.green(' \u21D2  ') + path.relative(PACKAGES_DIR, destPath)}\n`,
+        `${path.relative(PACKAGES_DIR, file) + chalk.green(" \u21D2  ") + path.relative(PACKAGES_DIR, destPath)}\n`,
       );
     }
   } catch (e) {
-    process.stdout.write(`${chalk.red('\u2022 ') + chalk.red(e)}\n`);
+    process.stdout.write(`${chalk.red("\u2022 ") + chalk.red(e)}\n`);
   }
 }
 
@@ -98,16 +98,16 @@ function buildNodePackage(p) {
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));
 
   files.forEach((file) => {
-    buildFile(file, 'es', { silent: true });
-    buildFile(file, 'lib', {
+    buildFile(file, "es", { silent: true });
+    buildFile(file, "lib", {
       silent: true,
       override: {
         presets: [
           [
-            '@babel/preset-env',
+            "@babel/preset-env",
             {
               targets: {
-                browsers: ['> 0.25%', 'not dead'],
+                browsers: ["> 0.25%", "not dead"],
               },
             },
           ],
@@ -121,16 +121,16 @@ function buildNodePackage(p) {
 
 function buildPackages() {
   const packages = getPackages();
-  process.stdout.write(chalk.inverse('Building packages \n'));
+  process.stdout.write(chalk.inverse("Building packages \n"));
   packages.forEach(buildNodePackage);
-  process.stdout.write('\n');
+  process.stdout.write("\n");
 }
 
-if (process.argv[2] === 'packages') {
+if (process.argv[2] === "packages") {
   buildPackages();
 }
 
-if (process.argv[2] === 'package') {
+if (process.argv[2] === "package") {
   buildNodePackage(process.cwd());
 }
 

@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode, SVGProps } from 'react';
-import { uuid } from '@ndla/util';
+import { ReactNode, SVGProps } from "react";
+import { uuid } from "@ndla/util";
 
-interface Props extends Omit<SVGProps<SVGSVGElement>, 'viewBox'> {
+interface Props extends Omit<SVGProps<SVGSVGElement>, "viewBox"> {
   children?: ReactNode;
   primaryColor?: string;
   secondaryColor?: string;
@@ -20,10 +20,10 @@ const ContentLoader = ({
   children,
   width = 400,
   height = 130,
-  preserveAspectRatio = 'xMidYMid meet',
-  className = '',
-  primaryColor = '#f0f0f0',
-  secondaryColor = '#e0e0e0',
+  preserveAspectRatio = "xMidYMid meet",
+  className = "",
+  primaryColor = "#f0f0f0",
+  secondaryColor = "#e0e0e0",
   speed = 2,
   viewBox: viewBoxProp,
   ...rest
@@ -39,8 +39,8 @@ const ContentLoader = ({
       preserveAspectRatio={preserveAspectRatio}
       className={className}
       {...rest}
-      height={typeof height === 'string' ? height : undefined}
-      width={typeof width === 'string' ? width : undefined}
+      height={typeof height === "string" ? height : undefined}
+      width={typeof width === "string" ? width : undefined}
     >
       <rect
         style={{ fill: `url(#${idGradient})` }}

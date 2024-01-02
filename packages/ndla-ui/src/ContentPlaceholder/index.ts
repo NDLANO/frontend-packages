@@ -6,6 +6,6 @@
  *
  */
 
-import ContentPlaceholder from './ContentPlaceholder';
+import ContentPlaceholder from "./ContentPlaceholder";
 
 export default ContentPlaceholder;

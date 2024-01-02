@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { Meta, StoryFn } from '@storybook/react';
-import colors from './colors';
-import spacing from './spacing';
-import { defaultParameters } from '../../../stories/defaults';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { Meta, StoryFn } from "@storybook/react";
+import colors from "./colors";
+import spacing from "./spacing";
+import { defaultParameters } from "../../../stories/defaults";
 
 interface Props {
   color: string;
@@ -47,7 +47,7 @@ const StyledColorBlock = styled.div`
 const ColorBlock = ({ color, name }: Props) => {
   return (
     <StyledColorBlock>
-      <div style={{ backgroundColor: color, height: '100px', width: '100px' }} />
+      <div style={{ backgroundColor: color, height: "100px", width: "100px" }} />
       <p>{name}</p>
       <p>{color}</p>
     </StyledColorBlock>
@@ -55,8 +55,8 @@ const ColorBlock = ({ color, name }: Props) => {
 };
 
 export default {
-  title: 'Base Styles/Colors',
-  tags: ['autodocs'],
+  title: "Base Styles/Colors",
+  tags: ["autodocs"],
   component: ColorBlocks,
   parameters: {
     inlineStories: true,
@@ -121,7 +121,14 @@ export const BackgroundColors: StoryFn = () => (
  * Fargene er lette og duse i uttrykket for å la selve innholdet få fokus og poppe. I tillegg skaper fargene tilhørighet og gjenkjennbarhet til innholdstypen.
  */
 export const ContentTypeColors: StoryFn = () => (
-  <div style={{ display: 'flex', gap: spacing.normal, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+  <div
+    style={{
+      display: "flex",
+      gap: spacing.normal,
+      alignItems: "flex-start",
+      flexWrap: "wrap",
+    }}
+  >
     <ColorBlocks title="Topics">
       <ColorBlock color={colors.subject.dark} name="Dark" />
       <ColorBlock color={colors.subject.light} name="Light" />

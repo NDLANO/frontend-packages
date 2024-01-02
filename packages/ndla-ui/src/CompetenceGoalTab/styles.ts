@@ -6,13 +6,13 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
 export const ListItemContent = styled.div`
   display: flex;
   justify-content: space-between;
-  ${fonts.sizes('22px', '32px')};
+  ${fonts.sizes("22px", "32px")};
   ${mq.range({ until: breakpoints.tabletWide })} {
     flex-direction: column;
   }

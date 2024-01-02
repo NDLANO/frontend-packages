@@ -6,16 +6,16 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import OrderedList from './OrderedList';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import OrderedList from "./OrderedList";
+import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet annerledes.
  */
 export default {
-  title: 'Base Styles/Ordered List',
-  tags: ['autodocs'],
+  title: "Base Styles/Ordered List",
+  tags: ["autodocs"],
   component: OrderedList,
   parameters: {
     inlineStories: true,
@@ -49,7 +49,7 @@ export const Default: StoryObj = {};
 
 export const Letters: StoryObj = {
   args: {
-    'data-type': 'letters',
+    "data-type": "letters",
   },
 };
 

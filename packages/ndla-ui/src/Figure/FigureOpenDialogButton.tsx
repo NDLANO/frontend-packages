@@ -6,11 +6,11 @@
  *
  */
 
-import { ExpandTwoArrows, CursorClick } from '@ndla/icons/action';
-import { Play } from '@ndla/icons/common';
+import { ExpandTwoArrows, CursorClick } from "@ndla/icons/action";
+import { Play } from "@ndla/icons/common";
 
 interface Props {
-  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | 'audio';
+  type?: "image" | "video" | "h5p" | "iframe" | "external" | "audio";
   messages: {
     zoomImageButtonLabel: string;
     zoomOutImageButtonLabel: string;
@@ -25,11 +25,11 @@ export const FigureOpenDialogButton = ({ messages, type }: Props) => {
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
       aria-label={messages.zoomImageButtonLabel}
     >
-      {type === 'image' && <ExpandTwoArrows className="contracted-icon" />}
-      {type === 'h5p' && <CursorClick style={{ width: '24px', height: '24px' }} />}
-      {type === 'iframe' && <CursorClick style={{ width: '24px', height: '24px' }} />}
-      {type === 'external' && <CursorClick style={{ width: '24px', height: '24px' }} />}
-      {type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
+      {type === "image" && <ExpandTwoArrows className="contracted-icon" />}
+      {type === "h5p" && <CursorClick style={{ width: "24px", height: "24px" }} />}
+      {type === "iframe" && <CursorClick style={{ width: "24px", height: "24px" }} />}
+      {type === "external" && <CursorClick style={{ width: "24px", height: "24px" }} />}
+      {type === "video" && <Play style={{ width: "24px", height: "24px" }} />}
     </div>
   );
 };

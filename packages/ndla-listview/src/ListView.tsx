@@ -6,15 +6,15 @@
  *
  */
 
-import { ChangeEvent, ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
-import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
-import { FilterListPhone } from '@ndla/ui';
-import ListItem from './ListItem';
+import { ChangeEvent, ReactNode } from "react";
+import BEMHelper from "react-bem-helper";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing, fonts, colors, misc, breakpoints, mq } from "@ndla/core";
+import { List as ListIcon, Grid as GridIcon } from "@ndla/icons/action";
+import { FilterListPhone } from "@ndla/ui";
+import ListItem from "./ListItem";
 
 const ListViewWrapper = styled.div`
   .sorting {
@@ -85,7 +85,7 @@ const ListViewWrapper = styled.div`
       color: ${colors.brand.primary};
       text-transform: uppercase;
       font-weight: ${fonts.weight.semibold};
-      ${fonts.sizes('18px', 1.3)};
+      ${fonts.sizes("18px", 1.3)};
       height: ${spacing.normal};
       width: ${spacing.normal};
       border-radius: 50%;
@@ -175,8 +175,8 @@ export interface ListItemType {
   tags?: string[];
 }
 
-const filterClasses = BEMHelper('c-filter');
-const searchFieldClasses = new BEMHelper('c-search-field');
+const filterClasses = BEMHelper("c-filter");
+const searchFieldClasses = new BEMHelper("c-search-field");
 
 interface Option {
   title: string;
@@ -191,7 +191,7 @@ interface Filter {
   onChange: (key: string, values: string[]) => void;
   filterValues?: string[];
   label?: string;
-  key: 'subject' | 'category' | 'default';
+  key: "subject" | "category" | "default";
   isGroupedOptions?: boolean;
 }
 
@@ -200,11 +200,11 @@ interface Props {
   filters?: Filter[];
   selectedLetterCallback?: (letter: string) => void;
   selectedLetter?: string;
-  viewStyle?: 'grid' | 'list';
+  viewStyle?: "grid" | "list";
   viewStyleToggleable?: boolean;
   disableSearch?: boolean;
   disableViewOption?: boolean;
-  onChangedViewStyle?: (e: { viewStyle: 'grid' | 'list' }) => void;
+  onChangedViewStyle?: (e: { viewStyle: "grid" | "list" }) => void;
   alphabet?: Record<string, boolean>;
   onChangedSearchValue?: (event: ChangeEvent<HTMLInputElement>) => void;
   searchValue?: string;
@@ -216,12 +216,12 @@ interface Props {
 
 const ListView = ({
   items,
-  selectedLetter = '',
+  selectedLetter = "",
   selectedLetterCallback,
   disableSearch,
   disableViewOption,
   onChangedViewStyle,
-  viewStyle = 'grid',
+  viewStyle = "grid",
   filters,
   searchValue,
   onChangedSearchValue,
@@ -240,7 +240,7 @@ const ListView = ({
   return (
     <ListViewWrapper>
       {filters && hasOption ? (
-        <div {...filterClasses('wrapper-multiple-filters')}>
+        <div {...filterClasses("wrapper-multiple-filters")}>
           {filters.map((filter) => (
             <FilterListPhone
               preid="list-view"
@@ -263,12 +263,12 @@ const ListView = ({
           ))}
         </div>
       ) : null}
-      <div className={'sorting'}>
+      <div className={"sorting"}>
         {!disableSearch && (
-          <div className={'sorting-wrapper'}>
-            <div className={'search'}>
+          <div className={"sorting-wrapper"}>
+            <div className={"search"}>
               <div {...searchFieldClasses()}>
-                <div {...searchFieldClasses('input-wrapper', 'with-icon', 'search-input-wrapper')}>
+                <div {...searchFieldClasses("input-wrapper", "with-icon", "search-input-wrapper")}>
                   <input
                     css={inputStyle}
                     type="search"
@@ -282,18 +282,18 @@ const ListView = ({
           </div>
         )}
         {!disableViewOption && (
-          <div className={'list-style'} aria-hidden="true">
+          <div className={"list-style"} aria-hidden="true">
             <button
               type="button"
-              className={`style-button ${viewStyle === 'list' && 'active'}`}
-              onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}
+              className={`style-button ${viewStyle === "list" && "active"}`}
+              onClick={() => onChangedViewStyle?.({ viewStyle: "list" })}
             >
               <ListIcon size="normal" />
             </button>
             <button
               type="button"
-              className={`style-button ${viewStyle === 'grid' && 'active'}`}
-              onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}
+              className={`style-button ${viewStyle === "grid" && "active"}`}
+              onClick={() => onChangedViewStyle?.({ viewStyle: "grid" })}
             >
               <GridIcon />
             </button>
@@ -301,19 +301,21 @@ const ListView = ({
         )}
 
         {selectedLetterCallback && alphabet ? (
-          <ul className={'alphabet'}>
+          <ul className={"alphabet"}>
             {Object.keys(alphabet).map((letter) => (
-              <li key={`letter-${letter}`} className={'letter'}>
+              <li key={`letter-${letter}`} className={"letter"}>
                 <button
                   type="button"
-                  className={`letter-button ${selectedLetter === letter && 'active'} ${
-                    !alphabet[letter] && 'disabled'
+                  className={`letter-button ${selectedLetter === letter && "active"} ${
+                    !alphabet[letter] && "disabled"
                   }`}
                   onClick={() =>
-                    selectedLetter === letter ? selectedLetterCallback('') : selectedLetterCallback(letter)
+                    selectedLetter === letter ? selectedLetterCallback("") : selectedLetterCallback(letter)
                   }
                   aria-pressed={selectedLetter === letter}
-                  aria-label={t('listview.filters.alphabet.letterFilter', { letter: letter })}
+                  aria-label={t("listview.filters.alphabet.letterFilter", {
+                    letter: letter,
+                  })}
                 >
                   {letter}
                 </button>
@@ -322,8 +324,8 @@ const ListView = ({
           </ul>
         ) : null}
       </div>
-      <CountWrapper>{t('listview.hits', { count: totalCount })}</CountWrapper>
-      <div className={'content-wrapper'}>
+      <CountWrapper>{t("listview.hits", { count: totalCount })}</CountWrapper>
+      <div className={"content-wrapper"}>
         <div className={`content ${viewStyle}`}>
           {items.map((item) => (
             <ListItem

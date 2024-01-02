@@ -6,10 +6,10 @@
  *
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const PACKAGES_DIR = path.resolve(__dirname, '..', './packages');
+const PACKAGES_DIR = path.resolve(__dirname, "..", "./packages");
 
 // Get absolute paths of all directories under packages/*
 function getPackages() {
@@ -19,7 +19,7 @@ function getPackages() {
     .filter((f) => fs.lstatSync(path.resolve(f)).isDirectory())
     .filter(
       (f) =>
-        f.indexOf('ndla-scripts') === -1 && f.indexOf('types-embed') === -1 && f.indexOf('eslint-config-ndla') === -1,
+        f.indexOf("ndla-scripts") === -1 && f.indexOf("types-embed") === -1 && f.indexOf("eslint-config-ndla") === -1,
     ); // skip private, config and script packages
 }
 

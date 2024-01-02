@@ -7,10 +7,10 @@
  */
 /* eslint-disable max-len */
 
-import { logoClasses } from './Logo';
+import { logoClasses } from "./Logo";
 
 const LogoText = (locale?: string) => {
-  if (locale === 'en') {
+  if (locale === "en") {
     return (
       <path
         transform="translate(0 133)"
@@ -30,9 +30,9 @@ interface Props {
   locale?: string;
 }
 
-export const SvgLogo = ({ name = true, color = '#000000', locale }: Props) => (
+export const SvgLogo = ({ name = true, color = "#000000", locale }: Props) => (
   <svg
-    {...logoClasses('graphic')}
+    {...logoClasses("graphic")}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 376 152"
     fill={color}

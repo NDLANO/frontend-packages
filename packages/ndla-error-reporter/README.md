@@ -52,7 +52,7 @@ Processes error and sends error info to Loggly with optional additional info.
 try {
   // some "dangerous" code
 } catch (e) {
-  errorReporter.captureError(e, { url: 'http://example.com' });
+  errorReporter.captureError(e, { url: "http://example.com" });
 }
 ```
 
@@ -68,7 +68,7 @@ try {
 Sends a text/message to Loggly with log level info
 
 ```js
-errorReporter.captureMessage('Testing');
+errorReporter.captureMessage("Testing");
 ```
 
 **Parameters:**

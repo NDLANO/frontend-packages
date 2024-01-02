@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { ButtonHTMLAttributes } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { Cross } from '@ndla/icons/action';
+import { ButtonHTMLAttributes } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 const StyledButton = styled.button`
   background-color: transparent;
@@ -27,7 +27,7 @@ const StyledCross = styled(Cross)`
 export const CloseButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { t } = useTranslation();
   return (
-    <StyledButton aria-label={t('close')} {...props}>
+    <StyledButton aria-label={t("close")} {...props}>
       <StyledCross />
     </StyledButton>
   );

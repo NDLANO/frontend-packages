@@ -6,9 +6,9 @@
  *
  */
 
-import BEMHelper from 'react-bem-helper';
+import BEMHelper from "react-bem-helper";
 
 export const classes = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
+  name: "filter",
+  prefix: "c-",
 });

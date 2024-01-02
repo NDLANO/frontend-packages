@@ -6,13 +6,13 @@
  *
  */
 
-import { attributesToProps, domToReact } from 'html-react-parser';
-import { PluginType } from './types';
+import { attributesToProps, domToReact } from "html-react-parser";
+import { PluginType } from "./types";
 export const spanPlugin: PluginType = (node, opts) => {
-  if (node.attribs['data-size'] === 'large') {
+  if (node.attribs["data-size"] === "large") {
     const props = attributesToProps(node.attribs);
     return (
-      <span {...props} data-size={undefined} className={`${node.attribs.class ?? ''} u-large-body-text`}>
+      <span {...props} data-size={undefined} className={`${node.attribs.class ?? ""} u-large-body-text`}>
         {domToReact(node.children, opts)}
       </span>
     );

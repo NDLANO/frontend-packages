@@ -6,21 +6,21 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import FieldHeader from './FieldHeader';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import FieldHeader from "./FieldHeader";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Forms/FieldHeader',
-  tags: ['autodocs'],
+  title: "Forms/FieldHeader",
+  tags: ["autodocs"],
   component: FieldHeader,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    title: 'This is a title',
-    subTitle: 'This is a subtitle',
+    title: "This is a title",
+    subTitle: "This is a subtitle",
     width: 1,
     children: <p>You can place anything here</p>,
   },
@@ -33,4 +33,4 @@ export default {
 } as Meta<typeof FieldHeader>;
 
 export const FieldHeaderStory: StoryObj<typeof FieldHeader> = {};
-FieldHeaderStory.storyName = 'FieldHeader';
+FieldHeaderStory.storyName = "FieldHeader";

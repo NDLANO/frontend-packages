@@ -20,8 +20,8 @@ $ yarn @ndla/hooks
 ### useComponentSize
 
 ```js
-import { useRef } from 'react';
-import useComponentSize from '@ndla/component-size';
+import { useRef } from "react";
+import useComponentSize from "@ndla/component-size";
 
 function MyComponent() {
   let ref = useRef(null);
@@ -31,7 +31,7 @@ function MyComponent() {
   let imgUrl = `https://via.placeholder.com/${width}x${height}`;
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: "100%", height: "100%" }}>
       <img ref={ref} src={imgUrl} />
     </div>
   );
@@ -41,7 +41,7 @@ function MyComponent() {
 ### useWindowSize
 
 ```js
-import useWindowSize from '@ndla/window-size';
+import useWindowSize from "@ndla/window-size";
 
 function MyComponent() {
   let windowSize = useWindowSize(100); // Optional throttle wait time (in ms)

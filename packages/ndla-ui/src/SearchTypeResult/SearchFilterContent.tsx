@@ -6,13 +6,13 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 
-import SearchViewType, { SearchViewTypeProps } from './SearchViewType';
-import { FilterButtons } from '../Filter';
-import { FilterButtonsProps } from '../Filter/FilterButtons';
+import SearchViewType, { SearchViewTypeProps } from "./SearchViewType";
+import { FilterButtons } from "../Filter";
+import { FilterButtonsProps } from "../Filter/FilterButtons";
 
 const Container = styled.div`
   display: flex;
@@ -29,9 +29,9 @@ const FilterButtonsWrapper = styled.div`
 `;
 
 type Props = {
-  items: FilterButtonsProps['items'];
-  onFilterToggle: FilterButtonsProps['onFilterToggle'];
-  onRemoveAllFilters: FilterButtonsProps['onRemoveAllFilters'];
+  items: FilterButtonsProps["items"];
+  onFilterToggle: FilterButtonsProps["onFilterToggle"];
+  onRemoveAllFilters: FilterButtonsProps["onRemoveAllFilters"];
 };
 const SearchFilterContent = ({
   viewType,
@@ -49,7 +49,7 @@ const SearchFilterContent = ({
           onFilterToggle={onFilterToggle}
           onRemoveAllFilters={onRemoveAllFilters}
           labels={{
-            openFilter: t('searchPage.searchFilterMessages.resourceTypeFilter.button'),
+            openFilter: t("searchPage.searchFilterMessages.resourceTypeFilter.button"),
           }}
         />
       </FilterButtonsWrapper>

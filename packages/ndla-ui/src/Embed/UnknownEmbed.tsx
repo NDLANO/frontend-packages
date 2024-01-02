@@ -6,10 +6,10 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { MetaData } from '@ndla/types-embed';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import { MetaData } from "@ndla/types-embed";
 
 interface Props {
   embed: MetaData<any, any>;
@@ -21,7 +21,7 @@ const StyledSpan = styled.span`
 
 const UnknownEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
-  return <StyledSpan>{t('embed.unsupported', { type: embed.resource })}</StyledSpan>;
+  return <StyledSpan>{t("embed.unsupported", { type: embed.resource })}</StyledSpan>;
 };
 
 export default UnknownEmbed;

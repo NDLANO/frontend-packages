@@ -6,10 +6,10 @@
  *
  */
 
-import { MetaData } from '.';
+import { MetaData } from ".";
 
 export interface FootnoteEmbedData {
-  resource: 'footnote';
+  resource: "footnote";
   title: string;
   type: string;
   year: string;

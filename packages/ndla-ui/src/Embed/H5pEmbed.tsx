@@ -6,9 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { H5pMetaData } from '@ndla/types-embed';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
+import styled from "@emotion/styled";
+import { H5pMetaData } from "@ndla/types-embed";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 
 interface Props {
   embed: H5pMetaData;
@@ -22,14 +22,14 @@ const StyledFigure = styled.figure`
 `;
 
 const H5pEmbed = ({ embed, isConcept }: Props) => {
-  if (embed.status === 'error') {
+  if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="h5p" />;
   }
-  const fullColumnClass = isConcept ? 'c-figure--full-column' : '';
+  const fullColumnClass = isConcept ? "c-figure--full-column" : "";
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
   if (embed.data.oembed) {
-    return <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />;
+    return <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }} />;
   }
 
   return (

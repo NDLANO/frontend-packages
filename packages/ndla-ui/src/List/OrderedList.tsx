@@ -6,12 +6,12 @@
  *
  */
 
-import { forwardRef, HTMLAttributes } from 'react';
-import styled from '@emotion/styled';
-import { fonts, spacing } from '@ndla/core';
+import { forwardRef, HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { fonts, spacing } from "@ndla/core";
 
 export const generateListResets = (counterName: string) => {
-  let styles = '';
+  let styles = "";
   for (let $i = 0; $i < 50; $i++) {
     styles += ` 
       &.ol-reset-${$i} { counter-reset: ${counterName} ${$i - 1}; }  
@@ -24,7 +24,7 @@ export const generateListResets = (counterName: string) => {
 const StyledOl = styled.ol`
   margin-top: 0;
   margin-left: ${spacing.normal};
-  ${fonts.sizes('18px', '29px')};
+  ${fonts.sizes("18px", "29px")};
   list-style-type: none;
   padding-left: ${spacing.medium} !important;
 
@@ -42,21 +42,21 @@ const StyledOl = styled.ol`
     }
   }
   counter-reset: level1;
-  ${generateListResets('level1')};
+  ${generateListResets("level1")};
 
-  &[data-type='letters'] {
+  &[data-type="letters"] {
     > li {
       &:before {
-        content: counter(level1, upper-alpha) '.';
+        content: counter(level1, upper-alpha) ".";
       }
 
-      > ol[data-type='letters'] {
+      > ol[data-type="letters"] {
         > li:before {
-          content: counter(level1, lower-alpha) '.';
+          content: counter(level1, lower-alpha) ".";
         }
-        ol[data-type='letters'] {
+        ol[data-type="letters"] {
           > li:before {
-            content: counter(level1, lower-roman) '.';
+            content: counter(level1, lower-roman) ".";
           }
         }
       }
@@ -69,37 +69,37 @@ const StyledOl = styled.ol`
     &:before {
       position: absolute;
       transform: translateX(-100%);
-      content: counter(level1, decimal) '.';
+      content: counter(level1, decimal) ".";
       padding-right: ${spacing.nsmall};
     }
 
-    > ol:not([data-type='letters']) {
+    > ol:not([data-type="letters"]) {
       counter-reset: level2;
-      ${generateListResets('level2')};
+      ${generateListResets("level2")};
       > li {
         padding-left: ${spacing.nsmall};
         counter-increment: level2;
         &:before {
-          content: counter(level1, decimal) '.' counter(level2, decimal) '.';
+          content: counter(level1, decimal) "." counter(level2, decimal) ".";
         }
-        > ol:not([data-type='letters']) {
+        > ol:not([data-type="letters"]) {
           counter-reset: level3;
-          ${generateListResets('level3')};
+          ${generateListResets("level3")};
           > li {
             padding-left: ${spacing.medium};
             counter-increment: level3;
             &:before {
-              content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.';
+              content: counter(level1, decimal) "." counter(level2, decimal) "." counter(level3, decimal) ".";
             }
-            > ol:not([data-type='letters']) {
+            > ol:not([data-type="letters"]) {
               counter-reset: level4;
-              ${generateListResets('level4')};
+              ${generateListResets("level4")};
               > li {
                 padding-left: ${spacing.large};
                 counter-increment: level4;
                 &:before {
-                  content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.'
-                    counter(level4, decimal) '.';
+                  content: counter(level1, decimal) "." counter(level2, decimal) "." counter(level3, decimal) "."
+                    counter(level4, decimal) ".";
                 }
               }
             }
@@ -111,7 +111,7 @@ const StyledOl = styled.ol`
 `;
 
 interface Props extends HTMLAttributes<HTMLOListElement> {
-  type?: 'letters';
+  type?: "letters";
   start?: number;
 }
 

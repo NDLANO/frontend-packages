@@ -6,4 +6,4 @@
  *
  */
 
-export { default as BlogPostV2 } from './BlogPost';
+export { default as BlogPostV2 } from "./BlogPost";

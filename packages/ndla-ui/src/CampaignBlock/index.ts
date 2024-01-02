@@ -6,4 +6,4 @@
  *
  */
 
-export { default as CampaignBlock } from './CampaignBlock';
+export { default as CampaignBlock } from "./CampaignBlock";

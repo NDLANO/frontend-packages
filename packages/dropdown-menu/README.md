@@ -19,7 +19,7 @@ Only DropdownContent is styled, and can be targeted as one usually does with emo
 ### Basic example
 
 ```js
-import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from "@ndla/dropdown-menu";
 
 return (
   <DropdownMenu>

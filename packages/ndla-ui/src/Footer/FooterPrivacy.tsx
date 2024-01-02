@@ -6,8 +6,8 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing, fonts, mq, breakpoints } from '@ndla/core';
+import styled from "@emotion/styled";
+import { spacing, fonts, mq, breakpoints } from "@ndla/core";
 
 type FooterPrivacyProps = {
   privacyLinks: {

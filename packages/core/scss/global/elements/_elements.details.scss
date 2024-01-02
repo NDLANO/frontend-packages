@@ -2,7 +2,8 @@ details {
   transition-duration: 150ms;
   transition-property: left, right, width;
   margin: $spacing--large 0;
-  display: block;
+  width: 100%;
+  box-sizing: border-box;
   position: relative;
   left: 0;
   clear: left;

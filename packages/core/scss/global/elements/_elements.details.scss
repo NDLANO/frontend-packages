@@ -3,6 +3,7 @@ details {
   transition-property: left, right, width;
   margin: $spacing--large 0;
   width: 100%;
+  box-sizing: border-box;
   position: relative;
   left: 0;
   clear: left;

@@ -95,6 +95,8 @@ export const buttonStyle = ({
     }
 
     &:focus-visible {
+      color: ${theme.hoverForeground};
+      background-color: ${theme.hoverBackground};
       border-color: ${colors.black};
     }
 

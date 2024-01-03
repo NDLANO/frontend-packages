@@ -88,16 +88,11 @@ export const buttonStyle = ({
     box-shadow: none;
     text-align: center;
 
-    &:hover {
-      color: ${theme.hoverForeground};
-      background-color: ${theme.hoverBackground};
-      border-color: ${theme.hoverBackground};
-    }
-
+    &:hover,
     &:focus-visible {
       color: ${theme.hoverForeground};
       background-color: ${theme.hoverBackground};
-      border-color: ${colors.black};
+      border-color: ${theme.hoverBackground};
     }
 
     &[disabled] {

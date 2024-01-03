@@ -1072,6 +1072,7 @@ const messages = {
     addToFavourites: 'Add to my favourites',
     alreadyFavourited: 'Already in my favourites',
     alreadyInFolder: 'Already in folder. You can still save new tags.',
+    addInSharedFolder: 'This folder is shared. Content you add will also be shared.',
     noFolderSelected: 'Select or create a new folder to save the resource.',
     examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     copyFolderDisclaimer:

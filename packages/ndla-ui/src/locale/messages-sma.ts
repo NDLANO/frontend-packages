@@ -1075,6 +1075,7 @@ const messages = {
     addToFavourites: 'Legg til i mine favoritter',
     alreadyFavourited: 'Allerede lagt til i mine favoritter',
     alreadyInFolder: 'Finnes allerede i mappen. Du kan fortsatt lagre nye emneknagger.',
+    addInSharedFolder: 'Daate maabpa juakasovveme. Sisvegem maam olkese lissiehtamme aaj sïjhtebe juekedh.',
     noFolderSelected: 'Velg eller opprett ny mappe for å lagre ressursen',
     examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     copyFolderDisclaimer:

@@ -1072,6 +1072,7 @@ const messages = {
     addToFavourites: "Bija mu oiddohiid searvái",
     alreadyFavourited: "Lea juo biddjon oiddohin",
     alreadyInFolder: "Gávdno juo máhpas. Sáhtát ain vurket ođđa fáddágilkoriid.",
+    addInSharedFolder: "Denne mappen er delt. Innhold du legger til vil også bli delt.",
     noFolderSelected: "Vállje dahje ráhkat ođđa máhpa vai seasttát resurssa",
     examLockInfo: "Mu NDLA sisdoalu redigeren ii leat doaimmas ohppiide eksámenáigodagas.",
     copyFolderDisclaimer: "Dát ráhkada máŋgosa máhpas. Váilevaš rievdadusat álgovuolggalaš máhpas eai ođastuvvo dáppe.",

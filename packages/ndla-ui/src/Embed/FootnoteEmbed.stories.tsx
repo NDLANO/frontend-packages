@@ -20,7 +20,7 @@ import { ArticleByline } from "../Article";
  * I referanselisten nederst lenkes hver referanse igjen til hvor de opptrer i teksten
  */
 export default {
-  title: "Components/FootnoteEmbed",
+  title: "Embeds/FootnoteEmbed",
   tags: ["autodocs"],
   component: FootnoteEmbed,
   parameters: {

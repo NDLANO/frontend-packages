@@ -221,7 +221,7 @@ const glossBlockData: ConceptData = {
 };
 
 const meta: Meta<typeof ConceptEmbed> = {
-  title: "Components/Embeds/ConceptEmbed",
+  title: "Embeds/ConceptEmbed",
   component: ConceptEmbed,
   tags: ["autodocs"],
   args: {

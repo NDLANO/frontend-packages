@@ -36,6 +36,7 @@ const inputCss = css`
 
   &:focus-within {
     border-width: 2px;
+    border-color: ${colors.brand.primary};
   }
 `;
 

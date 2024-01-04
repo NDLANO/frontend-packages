@@ -85,7 +85,7 @@ const metaData: IImageMetaInformationV3 = {
 
 /** Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og høyrestilt. Bilder kan være i størrelsene ekstra liten, liten, medium og stor (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes på klikk. */
 const meta: Meta<typeof ImageEmbed> = {
-  title: "Components/Embeds/ImageEmbed",
+  title: "Embeds/ImageEmbed",
   component: ImageEmbed,
   tags: ["autodocs"],
   args: {

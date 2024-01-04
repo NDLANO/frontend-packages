@@ -44,7 +44,7 @@ export const OneColumn = ({ children, className, cssModifier, wide, noPadding, e
   }
 
   return (
-    <div className={`${classes("", modifiers)} ${className}`} {...rest}>
+    <div className={`${classes("", modifiers, className)}`} {...rest}>
       {children}
     </div>
   );

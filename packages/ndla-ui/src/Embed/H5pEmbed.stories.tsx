@@ -46,7 +46,7 @@ const metaData: H5pData = {
 };
 
 const meta: Meta<typeof H5pEmbed> = {
-  title: "Components/Embeds/H5pEmbed",
+  title: "Embeds/H5pEmbed",
   component: H5pEmbed,
   tags: ["autodocs"],
   decorators: [

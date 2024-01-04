@@ -151,6 +151,29 @@ export const FullWidth: StoryObj<typeof ImageEmbed> = {
   ),
 };
 
+export const Cropped: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        lowerRightX: '50.0',
+        lowerRightY: '50.0',
+        upperLeftX: '0.5',
+        upperLeftY: '0',
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
 const TextWrapper = ({ children }: { children: ReactNode }) => (
   <>
     <p>

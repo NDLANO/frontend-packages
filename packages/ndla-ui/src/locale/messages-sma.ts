@@ -900,7 +900,9 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
+    mainMenu: 'Hovedmeny',
     myNDLA: 'Min NDLA',
+    myNDLAMenu: 'Min NDLA meny',
     support: 'Brukerstøtte',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressurser',
@@ -910,6 +912,7 @@ const messages = {
     showEditOptions: 'Vuesehth guktie edtja øørnedh',
     folder: {
       folder: 'Mappe',
+      navigation: 'Mappenavigasjon',
       delete: 'Maabpem sliejhtedh',
       deleteShort: 'Staeriedidh',
       edit: 'Maabpah staeriedidh',

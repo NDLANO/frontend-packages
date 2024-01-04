@@ -898,7 +898,9 @@ const messages = {
     close: 'Govčča fáktádoasa',
   },
   myNdla: {
+    mainMenu: 'Hovedmeny',
     myNDLA: 'Mu NDLA',
+    myNDLAMenu: 'Min NDLA meny',
     support: 'Geavaheaddjidoarjja',
     resources: '{{count}} resursa',
     resources_plural: '{{count}} resurssat',
@@ -908,6 +910,7 @@ const messages = {
     showEditOptions: 'Čájet doaimmahanmolssaeavttuid',
     folder: {
       folder: 'Máhppa',
+      navigation: 'Mappenavigasjon',
       delete: 'Sihko máhpa',
       deleteShort: 'Sihko',
       edit: 'Rievdat máhpa',

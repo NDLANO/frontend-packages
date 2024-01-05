@@ -27,14 +27,15 @@ interface InputContextType {}
 const InputContext = createContext<InputContextType | undefined>(undefined);
 
 const inputCss = css`
-  border: 1px solid ${colors.brand.greyLighter};
+  border: 1px solid ${colors.brand.grey};
   background: ${colors.brand.greyLightest};
-  transition-duration: border-color 100ms ease;
+  transition-duration: border-width 100ms ease;
   border-radius: ${misc.borderRadius};
   min-height: ${spacing.large};
   padding: 0px ${spacing.small};
 
   &:focus-within {
+    border-width: 2px;
     border-color: ${colors.brand.primary};
   }
 `;

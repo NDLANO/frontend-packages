@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryObj } from '@storybook/react';
-import { H5pEmbedData, H5pData, OembedEmbedData, OembedData } from '@ndla/types-embed';
+import { OembedEmbedData, OembedData } from '@ndla/types-embed';
 import ExternalEmbed from './ExternalEmbed';
 import { defaultParameters } from '../../../../stories/defaults';
 
@@ -40,7 +40,7 @@ const metaData: OembedData = {
 };
 
 const meta: Meta<typeof ExternalEmbed> = {
-  title: 'Components/Embeds/ExternalEmbed',
+  title: 'Embeds/ExternalEmbed',
   component: ExternalEmbed,
   tags: ['autodocs'],
   decorators: [

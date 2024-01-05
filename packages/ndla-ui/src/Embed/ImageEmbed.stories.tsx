@@ -85,7 +85,7 @@ const metaData: IImageMetaInformationV3 = {
 
 /** Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og høyrestilt. Bilder kan være i størrelsene ekstra liten, liten, medium og stor (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes på klikk. */
 const meta: Meta<typeof ImageEmbed> = {
-  title: 'Components/Embeds/ImageEmbed',
+  title: 'Embeds/ImageEmbed',
   component: ImageEmbed,
   tags: ['autodocs'],
   args: {
@@ -141,6 +141,29 @@ export const FullWidth: StoryObj<typeof ImageEmbed> = {
       resource: 'image',
       status: 'success',
       embedData: embedData,
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
+export const Cropped: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: 'image',
+      status: 'success',
+      embedData: {
+        ...embedData,
+        lowerRightX: '50.0',
+        lowerRightY: '50.0',
+        upperLeftX: '0.5',
+        upperLeftY: '0',
+      },
       data: metaData,
     },
   },

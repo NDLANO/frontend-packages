@@ -896,7 +896,9 @@ const messages = {
     close: 'Close fact box',
   },
   myNdla: {
+    mainMenu: 'Main menu',
     myNDLA: 'My NDLA',
+    myNDLAMenu: 'My NDLA menu',
     support: 'Support',
     resources: '{{count}} Resource',
     resources_plural: '{{count}} Resources',
@@ -906,6 +908,7 @@ const messages = {
     showEditOptions: 'Show editing options',
     folder: {
       folder: 'Folder',
+      navigation: 'Folder navigation',
       delete: 'Delete folder',
       deleteShort: 'Delete',
       edit: 'Edit folder',
@@ -1041,7 +1044,7 @@ const messages = {
         markAll: 'Mark all as read',
         subscribe: 'You will now be notified of new replies to this topic',
         unsubscribe: 'You have turned off notification of new replies to this topic',
-        commentedOn: 'commented on the post <i>{{title}}</i> which you follow',
+        commentedOn: 'commented on the post <i>{{title}}</i>',
       },
       topicsBy: 'Topics by',
     },
@@ -1072,6 +1075,7 @@ const messages = {
     addToFavourites: 'Add to my favourites',
     alreadyFavourited: 'Already in my favourites',
     alreadyInFolder: 'Already in folder. You can still save new tags.',
+    addInSharedFolder: 'This folder is shared. Content you add will also be shared.',
     noFolderSelected: 'Select or create a new folder to save the resource.',
     examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     copyFolderDisclaimer:
@@ -1133,7 +1137,7 @@ const messages = {
       feideWrongInfo:
         'If the information is incorrect, it has to be updated by the host organizationg or the school that the account is associated with. An overview of user support can be found here: feide.no/brukerstotte',
       recentFavourites: {
-        title: 'Recently added to my favourites',
+        title: 'Recently added to my folders',
         link: 'View all of your folders',
       },
       recentArenaPosts: {

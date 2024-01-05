@@ -900,7 +900,9 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
+    mainMenu: 'Hovedmeny',
     myNDLA: 'Min NDLA',
+    myNDLAMenu: 'Min NDLA meny',
     support: 'Brukerstøtte',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressurser',
@@ -910,6 +912,7 @@ const messages = {
     showEditOptions: 'Vuesehth guktie edtja øørnedh',
     folder: {
       folder: 'Mappe',
+      navigation: 'Mappenavigasjon',
       delete: 'Maabpem sliejhtedh',
       deleteShort: 'Staeriedidh',
       edit: 'Maabpah staeriedidh',
@@ -1044,7 +1047,7 @@ const messages = {
         markAll: 'Mïerhkesjh gaajhkesh dovnesh lohkeme',
         subscribe: 'Datne åadtjoeh daelie bïeljelimmiem orre vaestiedassi bïjre daan tjaalegasse',
         unsubscribe: 'Datne tjeakoeslaakan bïeljelamme jis orre vaestiedassh daan påastese',
-        commentedOn: 'tjeakoes laakan vaestiedamme <i>{{title}}</i> maam datne dåarjoehtidh',
+        commentedOn: 'tjeakoes laakan vaestiedamme <i>{{title}}</i>',
       },
       topicsBy: 'Vuesiehtimmien gaavhtan',
     },
@@ -1075,6 +1078,7 @@ const messages = {
     addToFavourites: 'Legg til i mine favoritter',
     alreadyFavourited: 'Allerede lagt til i mine favoritter',
     alreadyInFolder: 'Finnes allerede i mappen. Du kan fortsatt lagre nye emneknagger.',
+    addInSharedFolder: 'Denne mappen er delt. Innhold du legger til vil også bli delt.',
     noFolderSelected: 'Velg eller opprett ny mappe for å lagre ressursen',
     examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     copyFolderDisclaimer:
@@ -1133,8 +1137,8 @@ const messages = {
         term3: 'NDLA forbeholder seg retten til å oppdatere eller slette utdaterte ressurser.',
       },
       recentFavourites: {
-        title: 'Nylig lagt til i mine favoritter',
-        link: 'Se alle mappene dine',
+        title: 'Aadtjen mov maabpah lissiehtamme',
+        link: 'Vuartesjh gaajhkide dov maabpide',
       },
       recentArenaPosts: {
         title: 'Nye innlegg i arenaen',

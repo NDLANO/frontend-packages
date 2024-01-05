@@ -21,14 +21,6 @@ const FileListSection = styled.section`
   padding: 0 0 ${spacing.normal} ${spacing.normal};
   border-left: 2px solid ${colors.brand.greyLightest};
   font-family: ${fonts.sans};
-
-  [data-icon] {
-    margin-top: 3px;
-    flex-shrink: 0;
-    margin-right: ${spacing.small};
-    height: 18px;
-    width: 18px;
-  }
 `;
 
 const FileListHeaderWrapper = styled.div`

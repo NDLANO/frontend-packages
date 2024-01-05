@@ -898,7 +898,9 @@ const messages = {
     close: 'Govčča fáktádoasa',
   },
   myNdla: {
+    mainMenu: 'Hovedmeny',
     myNDLA: 'Mu NDLA',
+    myNDLAMenu: 'Min NDLA meny',
     support: 'Geavaheaddjidoarjja',
     resources: '{{count}} resursa',
     resources_plural: '{{count}} resurssat',
@@ -908,6 +910,7 @@ const messages = {
     showEditOptions: 'Čájet doaimmahanmolssaeavttuid',
     folder: {
       folder: 'Máhppa',
+      navigation: 'Mappenavigasjon',
       delete: 'Sihko máhpa',
       deleteShort: 'Sihko',
       edit: 'Rievdat máhpa',
@@ -1042,7 +1045,7 @@ const messages = {
         markAll: 'Merke visot lohkon',
         subscribe: 'Don oaččut dál dieđu ođđa vástádusaid dán čállosii',
         unsubscribe: 'Don leat heaitán muittuheames ođđa vástádusaid dán čállosii',
-        commentedOn: 'vástidii sáhkavuoru <i>{{title}}</i> maid don čuovvut',
+        commentedOn: 'vástidii sáhkavuoru <i>{{title}}</i>',
       },
       topicsBy: 'Sáhkavuorru maid',
     },
@@ -1072,6 +1075,7 @@ const messages = {
     addToFavourites: 'Bija mu oiddohiid searvái',
     alreadyFavourited: 'Lea juo biddjon oiddohin',
     alreadyInFolder: 'Gávdno juo máhpas. Sáhtát ain vurket ođđa fáddágilkoriid.',
+    addInSharedFolder: 'Denne mappen er delt. Innhold du legger til vil også bli delt.',
     noFolderSelected: 'Vállje dahje ráhkat ođđa máhpa vai seasttát resurssa',
     examLockInfo: 'Mu NDLA sisdoalu redigeren ii leat doaimmas ohppiide eksámenáigodagas.',
     copyFolderDisclaimer: 'Dát ráhkada máŋgosa máhpas. Váilevaš rievdadusat álgovuolggalaš máhpas eai ođastuvvo dáppe.',
@@ -1129,7 +1133,7 @@ const messages = {
         term3: 'NDLA bisuha rievtti ođasmahttit dahje sihkkut boarásmuvvan resurssaid.',
       },
       recentFavourites: {
-        title: 'Easka lasihuvvon favorihtaide',
+        title: 'Easka lasihuvvon mu máhpaide',
         link: 'Čájet buot máhpaid',
       },
       recentArenaPosts: {

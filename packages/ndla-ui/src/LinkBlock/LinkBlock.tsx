@@ -84,11 +84,10 @@ const LinkBlock = ({ title, language, date, url, path }: Props) => {
     const locale = language === 'nb' ? nb : language === 'nn' ? nn : enGB;
     return format(new Date(date), 'dd. LLLL yyyy', { locale });
   }, [date, language]);
-
   return (
     <StyledSafeLink to={href}>
       <InfoWrapper>
-        <Heading element="h3" margin="none" headingStyle="h3" lang={language}>
+        <Heading element="h3" margin="none" headingStyle="h3" lang={language === 'nb' ? 'no' : language}>
           {title}
         </Heading>
         {date && (

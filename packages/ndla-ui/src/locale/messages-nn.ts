@@ -896,7 +896,9 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
+    mainMenu: 'Hovedmeny',
     myNDLA: 'Min NDLA',
+    myNDLAMenu: 'Min NDLA meny',
     support: 'Brukarstøtte',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressursar',
@@ -906,6 +908,7 @@ const messages = {
     showEditOptions: 'Vis redigeringsmoglegheiter',
     folder: {
       folder: 'Mappe',
+      navigation: 'Mappenavigasjon',
       delete: 'Slett mappe',
       deleteShort: 'Slett',
       edit: 'Rediger mappe',
@@ -1040,7 +1043,7 @@ const messages = {
         markAll: 'Merk alle som lest',
         subscribe: 'Du får no varsling om nye svar på dette innlegget',
         unsubscribe: 'Du har skrudd av varsling om nye svar på dette innlegget',
-        commentedOn: 'svarte på innlegget <i>{{title}}</i> som du følger',
+        commentedOn: 'svarte på innlegget <i>{{title}}</i>',
       },
       topicsBy: 'Innlegg av',
     },
@@ -1070,6 +1073,7 @@ const messages = {
     addToFavourites: 'Legg til i mine favorittar',
     alreadyFavourited: 'Allereie lagt til i mine favorittar',
     alreadyInFolder: 'Finst allereie i mappa. Du kan fortsatt lagre nye emneknaggar.',
+    addInSharedFolder: 'Denne mappa er delt. Innhald du legg til vil også bli delt.',
     noFolderSelected: 'Velg eller opprett ny mappe for å lagre ressursen',
     examLockInfo: 'Redigering av innhald på Min NDLA er deaktivert for elevar i eksamensperioden.',
     copyFolderDisclaimer:
@@ -1128,7 +1132,7 @@ const messages = {
         term3: 'NDLA tek atterhald om retten til å oppdatere eller slette utdaterte ressursar.',
       },
       recentFavourites: {
-        title: 'Nyleg lagt til i mine favorittar',
+        title: 'Nyleg lagt til i mappene mine',
         link: 'Sjå alle mappene dine',
       },
       recentArenaPosts: {

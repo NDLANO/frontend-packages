@@ -22,6 +22,13 @@ const StyledText = styled(Text)`
     box-shadow: none;
   }
 `;
+const StyledDeadLinkWrapper = styled.span`
+  display: flex;
+  align-items: center;
+`;
+const StyledDeadLinkText = styled(Text)`
+  overflow-wrap: anywhere;
+`;
 
 const FileLink = styled(SafeLink)`
   box-shadow: none;
@@ -29,6 +36,7 @@ const FileLink = styled(SafeLink)`
   color: ${colors.brand.primary};
   display: flex;
   align-items: center;
+  overflow-wrap: anywhere;
 `;
 
 const StyledDownload = styled(Download)`
@@ -51,12 +59,12 @@ const Format = ({ format, title, isPrimary, isDeadLink }: FormatProps) => {
 
   if (isDeadLink) {
     return (
-      <span key={format.url}>
+      <StyledDeadLinkWrapper key={format.url}>
         <StyledDownload />
-        <Text element="span" textStyle="label-small" margin="none">
+        <StyledDeadLinkText element="span" textStyle="label-small" margin="none">
           {isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}
-        </Text>
-      </span>
+        </StyledDeadLinkText>
+      </StyledDeadLinkWrapper>
     );
   }
 

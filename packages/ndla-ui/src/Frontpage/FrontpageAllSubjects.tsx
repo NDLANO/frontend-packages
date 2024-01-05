@@ -26,15 +26,15 @@ const StyledList = styled.ul`
   padding: 0;
   ${mq.range({ from: breakpoints.tablet })} {
     column-count: 2;
-    column-gap: 20px;
+    gap: 20px;
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     column-count: 3;
-    column-gap: 20px;
+    gap: 20px;
   }
 `;
 const StyledListItem = styled.li`
-  padding-bottom: 0;
+  padding: 0;
   break-inside: avoid;
 `;
 

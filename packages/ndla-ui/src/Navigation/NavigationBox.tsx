@@ -41,20 +41,20 @@ const StyledList = styled.ul`
   &[data-direction='horizontal'] {
     ${mq.range({ from: breakpoints.tablet })} {
       column-count: 2;
-      column-gap: 20px;
+      gap: 20px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
     ${mq.range({ from: breakpoints.tabletWide })} {
       column-count: 3;
-      column-gap: 20px;
+      gap: 20px;
       grid-template-columns: repeat(3, 1fr);
     }
   }
 `;
 
 const StyledListItem = styled.li`
-  padding-bottom: 0;
+  padding: 0;
   break-inside: avoid;
 
   &[data-direction='floating'] {

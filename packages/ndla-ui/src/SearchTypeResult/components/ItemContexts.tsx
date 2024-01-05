@@ -62,8 +62,6 @@ export type ItemContextsType = {
   title: string;
 };
 
-const iconStyle = { width: '22px', height: '22px' };
-
 const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
   const { t } = useTranslation();
   const mainContext = contexts[0];
@@ -103,9 +101,19 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
                     <SafeLink to={context.url}>{title}</SafeLink>
                     <Breadcrumb breadcrumb={context.breadcrumb}>
                       {context.isAdditional ? (
-                        <Additional style={iconStyle} color={colors.brand.dark} />
+                        <Additional
+                          size="normal"
+                          color={colors.brand.dark}
+                          aria-hidden={false}
+                          title={t('resource.tooltipAdditionalTopic')}
+                        />
                       ) : (
-                        <Core style={iconStyle} color={colors.brand.primary} />
+                        <Core
+                          size="normal"
+                          color={colors.brand.primary}
+                          title={t('resource.tooltipCoreTopic')}
+                          aria-hidden={false}
+                        />
                       )}
                     </Breadcrumb>
                   </ContextListItem>

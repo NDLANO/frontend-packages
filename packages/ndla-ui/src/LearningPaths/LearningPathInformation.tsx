@@ -11,6 +11,7 @@ import { spacing, spacingUnit, breakpoints, mq, colors } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/notion';
 import { Heading } from '@ndla/typography';
+import LicenseLink from '../LicenseByline/LicenseLink';
 
 type StyledWrapperProps = {
   invertedStyle?: boolean;
@@ -65,7 +66,7 @@ interface Props {
 }
 
 export const LearningPathInformation = ({ description, title, license, invertedStyle, id }: Props) => {
-  const { rights } = getLicenseByAbbreviation(license?.license || '', 'nb');
+  const rights = getLicenseByAbbreviation(license?.license || '', 'nb');
   return (
     <section className="o-wrapper">
       <StyledWrapper invertedStyle={invertedStyle} className="c-article">
@@ -73,7 +74,7 @@ export const LearningPathInformation = ({ description, title, license, invertedS
           <StyledHeader element="h1" headingStyle="h1" tabIndex={-1} id={id}>
             {title}
           </StyledHeader>
-          <LicenseByline licenseRights={rights} color={colors.brand.tertiary} />
+          <LicenseLink license={rights} />
         </LicenseWrapper>
         {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
       </StyledWrapper>

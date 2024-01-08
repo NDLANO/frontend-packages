@@ -32,8 +32,7 @@ interface AutoCollapseProps {
 }
 
 const StyledListItem = styled.li<AutoCollapseProps>`
-  padding-bottom: 0;
-  padding-left: 0;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   :before {

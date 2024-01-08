@@ -37,6 +37,9 @@ const StyledHeading = styled(Heading)`
 const StyledList = styled.ul`
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xxsmall};
 
   &[data-direction='horizontal'] {
     ${mq.range({ from: breakpoints.tablet })} {

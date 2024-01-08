@@ -44,3 +44,26 @@ export const Default: StoryFn = () => (
     <li>Listepunkt 4</li>
   </UnOrderedList>
 );
+
+export const NoStyle: StoryFn = () => (
+  <ul>
+    <li>Listepunkt 1</li>
+    <li>Listepunkt 2</li>
+    <li>
+      Listepunkt 3
+      <ul>
+        <li>Listepunkt 1</li>
+        <li>Listepunkt 2</li>
+        <li>
+          Listepunkt 3
+          <ul>
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>Listepunkt 3</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Listepunkt 4</li>
+  </ul>
+);

@@ -17,8 +17,10 @@ import { NavigationBox } from '../Navigation';
 const GradesMenu = styled.ul`
   display: flex;
   gap: ${spacing.small};
+  padding-left: 0;
   li {
     list-style: none;
+    padding: 0;
   }
 `;
 

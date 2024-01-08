@@ -21,14 +21,12 @@ const StyledUL = styled.ul`
     animation: none;
   }
   list-style: none;
-  margin: 0;
   padding: 0;
 `;
 
 const StyledLI = styled.li`
   display: flex;
   flex-direction: column;
-  margin: 0;
   padding: 0;
   &[data-type='navigation'] {
     align-items: flex-start;

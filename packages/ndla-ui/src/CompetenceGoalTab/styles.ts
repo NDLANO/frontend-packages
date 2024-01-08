@@ -21,6 +21,7 @@ export const ListItemContent = styled.div`
 export const GoalItem = styled.li`
   margin: ${spacing.medium} 0;
   border-bottom: 1px solid ${colors.brand.neutral7};
+  padding: 0;
 `;
 
 export const GoalsHeading = styled.h3`

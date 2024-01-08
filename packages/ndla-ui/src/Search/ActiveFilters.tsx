@@ -73,10 +73,10 @@ const StyledActiveFilterWrapper = styled('li')`
   margin-bottom: ${spacing.xsmall};
 
   ${mq.range({ from: breakpoints.tabletWide })} {
-    margin: 0 ${spacing.small} 0 0;
+    padding: 0 ${spacing.small} 0 0;
 
     &:last-of-type {
-      margin-right: 0;
+      padding-right: 0;
     }
   }
 `;

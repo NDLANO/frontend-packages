@@ -49,7 +49,7 @@ export const Default: StoryObj = {};
 
 export const Letters: StoryObj = {
   args: {
-    'data-type': 'letters',
+    type: 'letters',
   },
 };
 
@@ -69,7 +69,7 @@ export const WithNumbersAndLetters: StoryFn = () => (
             <li>Listepunkt 2</li>
             <li>
               Listepunkt 3
-              <OrderedList data-type="letters">
+              <OrderedList>
                 <li>Listepunkt 1</li>
                 <li>Listepunkt 2</li>
                 <li>Listepunkt 3</li>
@@ -84,7 +84,7 @@ export const WithNumbersAndLetters: StoryFn = () => (
 );
 
 export const StartingAtFive: StoryFn = () => (
-  <OrderedList start={5} className="ol-reset-5">
+  <OrderedList start={5} data-type="letters" className="ol-reset-5">
     <li>Listepunkt 1</li>
     <li>Listepunkt 2</li>
     <li>
@@ -99,7 +99,7 @@ export const StartingAtFive: StoryFn = () => (
             <li>Listepunkt 2</li>
             <li>
               Listepunkt 3
-              <OrderedList className="ol-reset-5" data-type="letters" start={5}>
+              <OrderedList className="ol-reset-5" start={5}>
                 <li>Listepunkt 1</li>
                 <li>Listepunkt 2</li>
                 <li>Listepunkt 3</li>
@@ -111,4 +111,27 @@ export const StartingAtFive: StoryFn = () => (
     </li>
     <li>Listepunkt 4</li>
   </OrderedList>
+);
+
+export const NoStyle: StoryFn = () => (
+  <ol>
+    <li>Listepunkt 1</li>
+    <li>Listepunkt 2</li>
+    <li>
+      Listepunkt 3
+      <ol>
+        <li>Listepunkt 1</li>
+        <li>Listepunkt 2</li>
+        <li>
+          Listepunkt 3
+          <ol>
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>Listepunkt 3</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>Listepunkt 4</li>
+  </ol>
 );

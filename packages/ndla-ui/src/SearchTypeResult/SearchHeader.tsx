@@ -44,10 +44,9 @@ const GrepCodesWrapper = styled.div`
 
 const GrepCodesList = styled.ul`
   padding: 0;
-  margin: 0;
   li {
     border: 0;
-    margin: 0;
+    padding: 0;
   }
 `;
 

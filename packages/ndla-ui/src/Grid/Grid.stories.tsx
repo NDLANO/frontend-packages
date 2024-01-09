@@ -6,14 +6,14 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
-import { Meta, StoryFn } from '@storybook/react';
-import { colors } from '@ndla/core';
-import Grid from './Grid';
-import { defaultParameters } from '../../../../stories/defaults';
-import { BlogPostStory } from '../BlogPost/BlogPost.stories';
-import { KeyFigureStory } from '../KeyFigure/KeyFigure.stories';
+import styled from "@emotion/styled";
+import { DocsContainer, DocsContainerProps } from "@storybook/addon-docs";
+import { Meta, StoryFn } from "@storybook/react";
+import { colors } from "@ndla/core";
+import Grid from "./Grid";
+import { defaultParameters } from "../../../../stories/defaults";
+import { BlogPostStory } from "../BlogPost/BlogPost.stories";
+import { KeyFigureStory } from "../KeyFigure/KeyFigure.stories";
 
 const GridWrapper = styled.div`
   .docs-story {
@@ -28,25 +28,25 @@ const GridDocsContainer = ({ ...props }: DocsContainerProps) => (
 );
 
 export default {
-  title: 'Components/Grid',
+  title: "Components/Grid",
   component: Grid,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
-    layout: 'centered',
+    layout: "centered",
     docs: {
       container: GridDocsContainer,
     },
   },
   args: {
-    columns: '2',
-    border: 'none',
-    background: 'white',
+    columns: "2",
+    border: "none",
+    background: "white",
   },
 } as Meta<typeof Grid>;
 
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
-  const columns = args.columns === '2x2' ? 4 : parseInt(args.columns);
+  const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
   const items = new Array(columns).fill(
     <KeyFigureStory
       title={KeyFigureStory.args?.title!}
@@ -58,7 +58,7 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
 };
 
 export const GridBlogPostStory: StoryFn<typeof Grid> = ({ ...args }) => {
-  const columns = args.columns === '2x2' ? 4 : parseInt(args.columns);
+  const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
   const items = new Array(columns).fill(
     <BlogPostStory
       metaImage={BlogPostStory.args?.metaImage!}

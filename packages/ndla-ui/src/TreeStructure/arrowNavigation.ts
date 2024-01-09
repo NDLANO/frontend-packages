@@ -6,8 +6,8 @@
  *
  */
 
-import { KeyboardEvent } from 'react';
-import { IFolder } from '@ndla/types-backend/learningpath-api';
+import { KeyboardEvent } from "react";
+import { IFolder } from "@ndla/types-backend/learningpath-api";
 
 const navigateVertical = (
   visibleFolders: IFolder[],
@@ -22,7 +22,7 @@ const navigateVertical = (
   }
 };
 
-const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter'];
+const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter"];
 
 export const arrowNavigation = (
   e: KeyboardEvent<HTMLElement>,
@@ -40,13 +40,13 @@ export const arrowNavigation = (
   e.stopPropagation();
 
   switch (e.key) {
-    case 'ArrowUp':
+    case "ArrowUp":
       return navigateVertical(visibleFolders, id, setFocusedFolderId, -1);
-    case 'ArrowDown':
+    case "ArrowDown":
       return navigateVertical(visibleFolders, id, setFocusedFolderId, 1);
-    case 'ArrowLeft':
+    case "ArrowLeft":
       return onClose(id);
-    case 'ArrowRight':
+    case "ArrowRight":
       return onOpen(id);
     default:
       return;

@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
+import { ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
 
 interface Props {
   highlightCC?: boolean;
@@ -35,10 +35,10 @@ export const StyledList = styled.ul<Props>`
             }
           }
         `
-      : ''};
-  flex-direction: ${(p) => (p.horizontal ? 'row' : 'column')};
-  color: ${(p) => p.color || 'black'};
-  fill: ${(p) => p.color || 'black'};
+      : ""};
+  flex-direction: ${(p) => (p.horizontal ? "row" : "column")};
+  color: ${(p) => p.color || "black"};
+  fill: ${(p) => p.color || "black"};
   margin-right: ${(p) => (p.marginRight ? spacing.small : 0)};
 `;
 

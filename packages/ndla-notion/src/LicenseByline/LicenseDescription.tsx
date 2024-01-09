@@ -6,11 +6,11 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import LicenseIconDescriptionList from './LicenseIconDescriptionList';
-import StyledLicenseByline from './StyledLicenseByline';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
+import LicenseIconDescriptionList from "./LicenseIconDescriptionList";
+import StyledLicenseByline from "./StyledLicenseByline";
 
 const StyledModelpermission = styled.div`
   svg {

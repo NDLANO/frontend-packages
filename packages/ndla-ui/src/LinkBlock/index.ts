@@ -6,5 +6,5 @@
  *
  */
 
-export { default as LinkBlock } from './LinkBlock';
-export { default as LinkBlockSection } from './LinkBlockSection';
+export { default as LinkBlock } from "./LinkBlock";
+export { default as LinkBlockSection } from "./LinkBlockSection";

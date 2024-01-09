@@ -6,10 +6,10 @@
  *
  */
 
-import { MetaData } from '.';
+import { MetaData } from ".";
 
 export interface LinkBlockEmbedData {
-  resource: 'link-block';
+  resource: "link-block";
   title: string;
   language: string;
   date: string;

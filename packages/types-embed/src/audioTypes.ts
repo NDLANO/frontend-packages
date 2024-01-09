@@ -6,12 +6,12 @@
  *
  */
 
-import { IAudioMetaInformation } from '@ndla/types-backend/audio-api';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { MetaData } from '.';
+import { IAudioMetaInformation } from "@ndla/types-backend/audio-api";
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetaData } from ".";
 
 export type AudioEmbedData = {
-  resource: 'audio';
+  resource: "audio";
   resourceId: string;
   type: string;
   url: string;

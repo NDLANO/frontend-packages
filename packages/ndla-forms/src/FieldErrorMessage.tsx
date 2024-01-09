@@ -6,19 +6,19 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from 'react';
-import { css } from '@emotion/react';
-import { colors } from '@ndla/core';
-import { Text, TextProps } from '@ndla/typography';
-import { useFormControlContext } from './FormControl';
+import { ComponentPropsWithRef, forwardRef } from "react";
+import { css } from "@emotion/react";
+import { colors } from "@ndla/core";
+import { Text, TextProps } from "@ndla/typography";
+import { useFormControlContext } from "./FormControl";
 
 const errorStyling = css`
   color: ${colors.support.red};
   white-space: pre-line;
 `;
 
-export const FieldErrorMessage = forwardRef<HTMLSpanElement, TextProps & ComponentPropsWithRef<'div'>>(
-  ({ textStyle = 'meta-text-small', margin, ...props }, ref) => {
+export const FieldErrorMessage = forwardRef<HTMLSpanElement, TextProps & ComponentPropsWithRef<"div">>(
+  ({ textStyle = "meta-text-small", margin, ...props }, ref) => {
     const field = useFormControlContext();
     if (field && !field.isInvalid) return null;
     return (

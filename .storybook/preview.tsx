@@ -6,24 +6,24 @@
  *
  */
 
-import { i18nInstance } from '@ndla/ui';
-import { Preview } from '@storybook/react';
-import React from 'react';
-import { HelmetProvider } from 'react-helmet-async';
-import { I18nextProvider } from 'react-i18next';
-import { BrowserRouter } from 'react-router-dom';
-import { DocsPage, DocsContainer } from '@storybook/addon-docs';
-import './designmanual.scss';
+import { i18nInstance } from "@ndla/ui";
+import { Preview } from "@storybook/react";
+import React from "react";
+import { HelmetProvider } from "react-helmet-async";
+import { I18nextProvider } from "react-i18next";
+import { BrowserRouter } from "react-router-dom";
+import { DocsPage, DocsContainer } from "@storybook/addon-docs";
+import "./designmanual.scss";
 
-i18nInstance.language = 'nb';
-i18nInstance.options.lng = 'nb';
+i18nInstance.language = "nb";
+i18nInstance.options.lng = "nb";
 const preview: Preview = {
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     controls: { expanded: true },
-    viewMode: 'story',
+    viewMode: "story",
     previewTabs: {
-      'storybook/docs/panel': { hidden: true },
+      "storybook/docs/panel": { hidden: true },
     },
     docs: {
       container: DocsContainer,
@@ -31,8 +31,8 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        method: 'alphabetical',
-        order: ['Welcome', 'NDLA urls', 'Base styles', 'Components', 'Patterns', 'Other'],
+        method: "alphabetical",
+        order: ["Welcome", "NDLA urls", "Base styles", "Components", "Patterns", "Other"],
       },
     },
   },

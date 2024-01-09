@@ -6,12 +6,12 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
+import { HTMLAttributes, ReactNode } from "react";
+import BEMHelper from "react-bem-helper";
 
 const classes = new BEMHelper({
-  name: 'container',
-  prefix: 'o-',
+  name: "container",
+  prefix: "o-",
 });
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -30,7 +30,7 @@ export const PageContainer = ({
   learningPath = false,
   ...rest
 }: Props) => (
-  <div {...classes('', { background, backgroundWide, ndlaFilm, learningPath })} {...rest}>
+  <div {...classes("", { background, backgroundWide, ndlaFilm, learningPath })} {...rest}>
     {children}
   </div>
 );

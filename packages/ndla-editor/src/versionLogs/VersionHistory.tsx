@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { spacing, colors, fonts } from '@ndla/core';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { spacing, colors, fonts } from "@ndla/core";
 const StyledWrapper = styled.div`
   padding: ${spacing.small} 0;
   width: 100%;
@@ -64,10 +64,10 @@ const VersionHistory = ({ notes, children }: Props) => {
       <StyledTable>
         <thead>
           <tr>
-            <th>{t('editor.versionHistory.who')}</th>
-            <th>{t('editor.versionHistory.when')}</th>
-            <th>{t('editor.versionHistory.message')}</th>
-            {hasStatus && <th>{t('editor.versionHistory.status')}</th>}
+            <th>{t("editor.versionHistory.who")}</th>
+            <th>{t("editor.versionHistory.when")}</th>
+            <th>{t("editor.versionHistory.message")}</th>
+            {hasStatus && <th>{t("editor.versionHistory.status")}</th>}
           </tr>
         </thead>
         <tbody>

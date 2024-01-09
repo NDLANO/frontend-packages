@@ -6,21 +6,21 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { ButtonV2, IconButtonV2 } from '@ndla/button';
-import { spacing } from '@ndla/core';
-import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
-import { Pencil } from '@ndla/icons/action';
-import { HorizontalMenu } from '@ndla/icons/contentType';
-import { DeleteForever } from '@ndla/icons/editor';
-import Folder from './Folder';
-import { defaultParameters } from '../../../../../stories/defaults';
+import styled from "@emotion/styled";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { ButtonV2, IconButtonV2 } from "@ndla/button";
+import { spacing } from "@ndla/core";
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from "@ndla/dropdown-menu";
+import { Pencil } from "@ndla/icons/action";
+import { HorizontalMenu } from "@ndla/icons/contentType";
+import { DeleteForever } from "@ndla/icons/editor";
+import Folder from "./Folder";
+import { defaultParameters } from "../../../../../stories/defaults";
 
 export default {
-  title: 'My NDLA/Folder',
+  title: "My NDLA/Folder",
   component: Folder,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
@@ -30,13 +30,13 @@ export default {
     },
   },
   args: {
-    id: '3d88300c-1186-47f5-a99a-8ea93fa20981',
-    title: 'Dette er min tittel',
+    id: "3d88300c-1186-47f5-a99a-8ea93fa20981",
+    title: "Dette er min tittel",
     subFolders: 3,
     subResources: 3,
-    description: '',
-    link: '',
-    type: 'list',
+    description: "",
+    link: "",
+    type: "list",
     menu: (
       <DropdownMenu>
         <DropdownTrigger>

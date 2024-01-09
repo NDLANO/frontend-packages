@@ -16,9 +16,9 @@ import {
   useCallback,
   useContext,
   useState,
-} from 'react';
-import styled from '@emotion/styled';
-import { composeRefs } from '@ndla/util';
+} from "react";
+import styled from "@emotion/styled";
+import { composeRefs } from "@ndla/util";
 
 type Merge<T, P> = P & Omit<T, keyof P>;
 
@@ -72,8 +72,8 @@ const useFormControlProvider = ({ id: idProp, isRequired, isDisabled, isInvalid 
       return {
         ...props,
         ref: forwardedRef,
-        'data-disabled': isDisabled,
-        'data-invalid': isInvalid,
+        "data-disabled": isDisabled,
+        "data-invalid": isInvalid,
         id: props.id !== undefined ? props.id : labelId,
         htmlFor: props.htmlFor !== undefined ? props.htmlFor : id,
       };
@@ -90,7 +90,7 @@ const useFormControlProvider = ({ id: idProp, isRequired, isDisabled, isInvalid 
           if (!node) return;
           setHasErrorText(true);
         }),
-        'aria-live': 'polite',
+        "aria-live": "polite",
       };
     },
     [errorTextId],
@@ -127,7 +127,12 @@ export const FormControl = ({
   isRequired,
   ...rest
 }: HTMLAttributes<HTMLDivElement> & FormControlProps) => {
-  const context = useFormControlProvider({ id, isDisabled, isInvalid, isRequired });
+  const context = useFormControlProvider({
+    id,
+    isDisabled,
+    isInvalid,
+    isRequired,
+  });
   return (
     <FormControlContext.Provider value={context}>
       <StyledFormControl {...rest}>{children}</StyledFormControl>
@@ -145,7 +150,7 @@ export interface UseFormControlProps extends FormControlOptions {
   disabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
-  'aria-describedby'?: string;
+  "aria-describedby"?: string;
 }
 
 export const useFormControlProps = ({
@@ -158,7 +163,7 @@ export const useFormControlProps = ({
   ...rest
 }: UseFormControlProps) => {
   const field = useFormControlContext();
-  const labelIds = rest['aria-describedby'] ? [rest['aria-describedby']] : [];
+  const labelIds = rest["aria-describedby"] ? [rest["aria-describedby"]] : [];
   if (field?.hasErrorText && field?.isInvalid) {
     labelIds.push(field.errorTextId);
   }
@@ -168,7 +173,7 @@ export const useFormControlProps = ({
 
   return {
     ...rest,
-    'aria-describedby': labelIds.join(' ') || undefined,
+    "aria-describedby": labelIds.join(" ") || undefined,
     id: id ?? field?.id,
     isDisabled: disabled ?? field?.isDisabled,
     isRequired: required ?? field?.isRequired,
@@ -182,7 +187,7 @@ export const useFormControl = (props: UseFormControlProps) => {
     ...rest,
     disabled: isDisabled,
     required: isRequired,
-    'aria-invalid': isInvalid ? true : undefined,
-    'aria-required': isRequired ? true : undefined,
+    "aria-invalid": isInvalid ? true : undefined,
+    "aria-required": isRequired ? true : undefined,
   };
 };

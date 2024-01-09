@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-backend/audio-api';
-import AudioSearchResult from './AudioSearchResult';
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
+import AudioSearchResult from "./AudioSearchResult";
 
 const StyledResultSpinner = styled.div`
   border: 0.4em solid ${colors.brand.greyLight};

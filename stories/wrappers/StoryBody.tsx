@@ -6,8 +6,8 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { OneColumn, LayoutItem } from '@ndla/ui';
+import { ReactNode } from "react";
+import { OneColumn, LayoutItem } from "@ndla/ui";
 
 interface Props {
   children?: ReactNode;

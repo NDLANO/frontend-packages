@@ -6,12 +6,12 @@
  *
  */
 
-import { MutableRefObject, Ref } from 'react';
+import { MutableRefObject, Ref } from "react";
 
 type PossibleRef<T> = Ref<T> | undefined;
 
 const setRef = <T>(ref: PossibleRef<T>, value: T) => {
-  if (typeof ref === 'function') {
+  if (typeof ref === "function") {
     ref(value);
   } else if (ref !== null && ref !== undefined) {
     const mutableRef = ref as MutableRefObject<T>;

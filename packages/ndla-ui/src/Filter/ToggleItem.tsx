@@ -6,8 +6,8 @@
  *
  */
 
-import { ChangeEvent, ElementType } from 'react';
-import { classes } from './filterClasses';
+import { ChangeEvent, ElementType } from "react";
+import { classes } from "./filterClasses";
 
 interface Props {
   id: string;
@@ -27,16 +27,16 @@ const ToggleItem = ({
   checked = false,
   modifiers,
   label,
-  component: Component = 'li',
+  component: Component = "li",
   onChange,
   tabIndex,
   value,
   disabled,
   hits,
 }: Props) => (
-  <Component {...classes('item', modifiers)}>
+  <Component {...classes("item", modifiers)}>
     <input
-      {...classes('input')}
+      {...classes("input")}
       type="checkbox"
       id={id}
       value={value}
@@ -46,8 +46,8 @@ const ToggleItem = ({
       onChange={onChange}
     />
     <label htmlFor={id}>
-      <span {...classes('item-checkbox')} />
-      <span {...classes('text')}>
+      <span {...classes("item-checkbox")} />
+      <span {...classes("text")}>
         {label}
         {hits !== undefined && ` (${hits})`}
       </span>

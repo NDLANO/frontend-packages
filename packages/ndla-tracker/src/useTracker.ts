@@ -6,9 +6,9 @@
  *
  */
 
-import { useCallback, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { usePrevious } from '@ndla/util';
+import { useCallback, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { usePrevious } from "@ndla/util";
 
 interface TrackPageViewProps {
   title: string;
@@ -36,7 +36,11 @@ const useTracker = () => {
     ({ title, dimensions = {} }: TrackPageViewProps) => {
       if (!hasTracked) {
         setHasTracked(true);
-        window._mtm?.push({ page_title: title, event: 'Pageview', ...dimensions });
+        window._mtm?.push({
+          page_title: title,
+          event: "Pageview",
+          ...dimensions,
+        });
       }
     },
     [hasTracked],

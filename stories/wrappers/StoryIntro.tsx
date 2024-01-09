@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { OneColumn, LayoutItem } from '@ndla/ui';
-import { colors, spacing } from '@ndla/core';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { OneColumn, LayoutItem } from "@ndla/ui";
+import { colors, spacing } from "@ndla/core";
 
 const StoryIntroSection = styled.section`
   background: ${colors.brand.light};

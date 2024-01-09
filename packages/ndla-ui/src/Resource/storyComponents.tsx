@@ -6,19 +6,22 @@
  *
  */
 
-import { IconButtonV2, ButtonV2 } from '@ndla/button';
-import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
-import { Pencil } from '@ndla/icons/action';
-import { HorizontalMenu } from '@ndla/icons/contentType';
-import { DeleteForever } from '@ndla/icons/editor';
+import { IconButtonV2, ButtonV2 } from "@ndla/button";
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from "@ndla/dropdown-menu";
+import { Pencil } from "@ndla/icons/action";
+import { HorizontalMenu } from "@ndla/icons/contentType";
+import { DeleteForever } from "@ndla/icons/editor";
 
 export const resourceTypesArr = [
-  { id: 'urn:resourcetype:learningPath', name: 'Læringssti' },
-  { id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' },
-  { id: 'urn:resourcetype:tasksAndActivities', name: 'Oppgaver og aktiviteter' },
-  { id: 'urn:resourcetype:reviewResource', name: 'Vurderingsressurs' },
-  { id: 'urn:resourcetype:externalResource', name: 'Ekstern læringsressurs' },
-  { id: 'urn:resourcetype:SourceMaterial', name: 'Kildemateriale' },
+  { id: "urn:resourcetype:learningPath", name: "Læringssti" },
+  { id: "urn:resourcetype:subjectMaterial", name: "Fagstoff" },
+  {
+    id: "urn:resourcetype:tasksAndActivities",
+    name: "Oppgaver og aktiviteter",
+  },
+  { id: "urn:resourcetype:reviewResource", name: "Vurderingsressurs" },
+  { id: "urn:resourcetype:externalResource", name: "Ekstern læringsressurs" },
+  { id: "urn:resourcetype:SourceMaterial", name: "Kildemateriale" },
 ];
 
 export const StoryResourceMenu = () => (

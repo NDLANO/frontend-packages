@@ -6,6 +6,6 @@
  *
  */
 
-import NoContentBox from './NoContentBox';
+import NoContentBox from "./NoContentBox";
 
 export default NoContentBox;

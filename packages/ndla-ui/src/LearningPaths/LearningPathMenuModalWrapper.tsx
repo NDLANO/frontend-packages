@@ -6,14 +6,14 @@
  *
  */
 
-import { ReactNode, useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { spacing, mq, breakpoints, colors } from '@ndla/core';
-import { LearningPath } from '@ndla/icons/contentType';
-import { ModalHeader, ModalBody, ModalTrigger, ModalCloseButton, Modal, ModalContent } from '@ndla/modal';
+import { ReactNode, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing, mq, breakpoints, colors } from "@ndla/core";
+import { LearningPath } from "@ndla/icons/contentType";
+import { ModalHeader, ModalBody, ModalTrigger, ModalCloseButton, Modal, ModalContent } from "@ndla/modal";
 
 const buttonToggleCss = css`
   ${mq.range({ from: breakpoints.tablet })} {
@@ -53,7 +53,7 @@ const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
         <ModalTrigger>
           <ButtonV2 css={buttonToggleCss}>
             <LearningPath />
-            <span>{t('learningPath.openMenuTooltip')}</span>
+            <span>{t("learningPath.openMenuTooltip")}</span>
           </ButtonV2>
         </ModalTrigger>
         <StyledModalContent animationDuration={200} size="full">

@@ -6,6 +6,6 @@
  *
  */
 
-import CreatedBy from './CreatedBy';
+import CreatedBy from "./CreatedBy";
 
 export default CreatedBy;

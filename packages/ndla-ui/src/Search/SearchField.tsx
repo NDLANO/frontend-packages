@@ -6,18 +6,18 @@
  *
  */
 
-import { FocusEvent, MouseEvent, RefObject } from 'react';
-import BEMHelper from 'react-bem-helper';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
-import { Search as SearchIcon } from '@ndla/icons/common';
+import { FocusEvent, MouseEvent, RefObject } from "react";
+import BEMHelper from "react-bem-helper";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, mq, breakpoints, misc, fonts } from "@ndla/core";
+import { Search as SearchIcon } from "@ndla/icons/common";
 
-import ActiveFilters from './ActiveFilters';
-import LoadingWrapper from './LoadingWrapper';
+import ActiveFilters from "./ActiveFilters";
+import LoadingWrapper from "./LoadingWrapper";
 
-const classes = new BEMHelper('c-search-field');
+const classes = new BEMHelper("c-search-field");
 
 interface StyledInputProps {
   hasFilters?: boolean;
@@ -41,7 +41,7 @@ const StyledInput = styled.input<StyledInputProps>`
   ${mq.range({ from: breakpoints.tablet })} {
     height: 58px;
     line-height: 58px;
-    ${fonts.sizes('18px', '24px')};
+    ${fonts.sizes("18px", "24px")};
   }
 
   ${(p) =>
@@ -99,7 +99,7 @@ const SearchField = ({
     onFocus?.();
   };
   return (
-    <div {...classes('input-wrapper')}>
+    <div {...classes("input-wrapper")}>
       {loading && <LoadingWrapper value={value} />}
       <StyledInput
         hasFilters={!!filters?.length}
@@ -118,29 +118,29 @@ const SearchField = ({
         onClick={onClick}
       />
       {filters && filters.length > 0 && (
-        <div {...classes('filters')}>
+        <div {...classes("filters")}>
           <ActiveFilters filters={filters} onFilterRemove={handleOnFilterRemove} />
         </div>
       )}
-      {value !== '' && (
+      {value !== "" && (
         <button
-          {...classes('button', 'close')}
+          {...classes("button", "close")}
           type="button"
           onClick={() => {
-            onChange('');
+            onChange("");
             onFocus?.();
             inputRef?.current?.focus();
           }}
         >
-          {t('welcomePage.resetSearch')}
+          {t("welcomePage.resetSearch")}
         </button>
       )}
       <button
         tabIndex={-1}
-        {...classes('button', 'searchIcon')}
+        {...classes("button", "searchIcon")}
         type="submit"
         value="Search"
-        aria-label={t('siteNav.search')}
+        aria-label={t("siteNav.search")}
       >
         <SearchIcon />
       </button>

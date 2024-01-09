@@ -6,10 +6,10 @@
  *
  */
 
-import { HTMLProps, ReactNode } from 'react';
-import { css } from '@emotion/react';
-import { colors, spacing, fonts } from '@ndla/core';
-import { Cross } from '@ndla/icons/action';
+import { HTMLProps, ReactNode } from "react";
+import { css } from "@emotion/react";
+import { colors, spacing, fonts } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 const buttonCSS = css`
   border: 0;
@@ -43,11 +43,11 @@ const buttonCSS = css`
   }
 `;
 
-interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'type'> {
+interface Props extends Omit<HTMLProps<HTMLButtonElement>, "type"> {
   children?: ReactNode;
-  type?: 'submit' | 'reset' | 'button';
+  type?: "submit" | "reset" | "button";
 }
-const FieldRemoveButton = ({ children, type = 'button', ...rest }: Props) => (
+const FieldRemoveButton = ({ children, type = "button", ...rest }: Props) => (
   // eslint-disable-next-line react/button-has-type
   <button css={buttonCSS} type={type} {...rest}>
     <Cross size="normal" aria-hidden={true} />

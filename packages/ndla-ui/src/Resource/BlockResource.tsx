@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import { Text } from '@ndla/typography';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
+import { Text } from "@ndla/typography";
 import {
   CompressedTagList,
   ResourceImageProps,
@@ -18,11 +18,11 @@ import {
   LoaderProps,
   ContentIconWrapper,
   resourceHeadingStyle,
-} from './resourceComponents';
-import ContentLoader from '../ContentLoader';
-import ContentTypeBadge from '../ContentTypeBadge';
-import Image from '../Image';
-import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
+} from "./resourceComponents";
+import ContentLoader from "../ContentLoader";
+import ContentTypeBadge from "../ContentTypeBadge";
+import Image from "../Image";
+import { contentTypeMapping, resourceEmbedTypeMapping } from "../model/ContentType";
 
 const BlockElementWrapper = styled.div`
   display: flex;
@@ -108,12 +108,12 @@ interface BlockImageProps {
 const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
   if (loading) {
     return (
-      <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+      <ContentLoader height={"100%"} width={"100%"} viewBox={null} preserveAspectRatio="none">
         <rect x="0" y="0" rx="3" ry="3" width="100%" height="100%" />
       </ContentLoader>
     );
   }
-  if (image.src === '') {
+  if (image.src === "") {
     return (
       <ContentIconWrapper contentType={contentType}>
         <ContentTypeBadge type={contentType} size="large" />
@@ -127,7 +127,7 @@ const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
 const ResourceTypeAndTitleLoader = ({ children, loading }: LoaderProps) => {
   if (loading) {
     return (
-      <ContentLoader height={'18px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+      <ContentLoader height={"18px"} width={"100%"} viewBox={null} preserveAspectRatio="none">
         <rect x="0" y="0" rx="3" ry="3" width="20%" height="18px" />
         <rect x="25%" y="0" rx="3" ry="3" width="20%" height="18px" />
       </ContentLoader>
@@ -164,7 +164,7 @@ const BlockResource = ({
   targetBlank,
   resourceTypes,
 }: Props) => {
-  const firstResourceType = resourceTypes?.[0]?.id ?? '';
+  const firstResourceType = resourceTypes?.[0]?.id ?? "";
 
   return (
     <BlockElementWrapper id={id}>
@@ -175,14 +175,14 @@ const BlockResource = ({
           contentType={
             contentTypeMapping[firstResourceType] ??
             resourceEmbedTypeMapping[firstResourceType] ??
-            contentTypeMapping['default']
+            contentTypeMapping["default"]
           }
         />
       </ImageWrapper>
       <BlockInfoWrapper>
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
-            <ResourceTitleLink data-link="" title={title} target={targetBlank ? '_blank' : undefined} to={link}>
+            <ResourceTitleLink data-link="" title={title} target={targetBlank ? "_blank" : undefined} to={link}>
               <Text element="span" textStyle="label-small" css={resourceHeadingStyle}>
                 {title}
               </Text>

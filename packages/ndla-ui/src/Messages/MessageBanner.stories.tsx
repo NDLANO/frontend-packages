@@ -6,18 +6,18 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import { Meta, StoryFn } from '@storybook/react';
-import MessageBanner from './MessageBanner';
-import { defaultParameters } from '../../../../stories/defaults';
+import { useTranslation } from "react-i18next";
+import { Meta, StoryFn } from "@storybook/react";
+import MessageBanner from "./MessageBanner";
+import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.
  */
 export default {
-  title: 'Patterns/MessageBanner',
+  title: "Patterns/MessageBanner",
   component: MessageBanner,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
@@ -29,5 +29,5 @@ export default {
 
 export const Default: StoryFn<typeof MessageBanner> = ({ ...args }) => {
   const { t } = useTranslation();
-  return <MessageBanner {...args}>{t('messageBoxInfo.updateBrowser')}</MessageBanner>;
+  return <MessageBanner {...args}>{t("messageBoxInfo.updateBrowser")}</MessageBanner>;
 };

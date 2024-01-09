@@ -6,15 +6,15 @@
  *
  */
 
-import { memo, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { Spinner } from '@ndla/icons';
-import ResultNavigation, { PaginationType } from './ResultNavigation';
-import { SearchItemProps } from './SearchItem';
-import SearchItems from './SearchItems';
-import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
-import constants from '../model';
+import { memo, ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
+import { Spinner } from "@ndla/icons";
+import ResultNavigation, { PaginationType } from "./ResultNavigation";
+import { SearchItemProps } from "./SearchItem";
+import SearchItems from "./SearchItems";
+import SearchTypeHeader, { FilterOptionsType } from "./SearchTypeHeader";
+import constants from "../model";
 
 const Wrapper = styled.section`
   display: flex;
@@ -59,7 +59,7 @@ type Props = {
   type?: ContentType;
   loading?: boolean;
   children?: ReactNode;
-  viewType?: 'grid' | 'list';
+  viewType?: "grid" | "list";
 };
 
 const SearchTypeResult = ({

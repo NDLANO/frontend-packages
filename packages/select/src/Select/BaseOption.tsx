@@ -6,22 +6,22 @@
  *
  */
 
-import { OptionProps } from 'react-select';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { Done } from '@ndla/icons/editor';
-import { Option } from './types';
+import { OptionProps } from "react-select";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
+import { Done } from "@ndla/icons/editor";
+import { Option } from "./types";
 
 const StyledCheck = styled(Done)`
   visibility: hidden;
   flex-shrink: 0;
-  &[data-selected='true'] {
+  &[data-selected="true"] {
     visibility: visible;
   }
 `;
 
 const StyledBaseOption = styled.div`
-  ${fonts.sizes('18px', '24px')};
+  ${fonts.sizes("18px", "24px")};
   padding: ${spacing.small};
   display: flex;
   align-items: center;
@@ -31,21 +31,21 @@ const StyledBaseOption = styled.div`
   color: ${colors.brand.dark};
   background-color: ${colors.white};
   font-weight: ${fonts.weight.semibold};
-  &[data-focused='true'] {
+  &[data-focused="true"] {
     background-color: ${colors.brand.lighter};
   }
-  &[data-bold='true'] {
+  &[data-bold="true"] {
     font-weight: ${fonts.weight.bold};
   }
-  &[data-small='true'] {
+  &[data-small="true"] {
     font-weight: ${fonts.weight.normal};
-    ${fonts.sizes('16px', '16px')};
+    ${fonts.sizes("16px", "16px")};
     padding: ${spacing.xsmall};
-    &[data-bold='true'] {
+    &[data-bold="true"] {
       font-weight: ${fonts.weight.semibold};
     }
   }
-  &[data-disabled='true'] {
+  &[data-disabled="true"] {
     color: ${colors.brand.greyMedium};
   }
 `;

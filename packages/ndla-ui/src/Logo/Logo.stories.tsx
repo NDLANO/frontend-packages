@@ -6,9 +6,9 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import Logo from './Logo';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import Logo from "./Logo";
+import { defaultParameters } from "../../../../stories/defaults";
 
 /***
  * Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for kommunikasjon. Den skal inspirere målgruppen elever og lærere i videregående opplæring og gjøre dem nysgjerrige på NDLA.
@@ -18,17 +18,17 @@ import { defaultParameters } from '../../../../stories/defaults';
  * Logo uten undertekst kan kompletteres med en beskrivende tekst til høyre. Logoen kan benyttes i blått, eller i svart eller hvitt avhengig av bakgrunn. Den skal plasseres i det øverste eller nederste hjørnet av en ytterkant. Logoen skal ikke sentreres.
  */
 export default {
-  title: 'Components/Logo',
+  title: "Components/Logo",
   component: Logo,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    cssModifier: 'large',
+    cssModifier: "large",
     name: true,
-    label: 'Nasjonal digital læringsarena',
+    label: "Nasjonal digital læringsarena",
   },
 } as Meta<typeof Logo>;
 
@@ -38,13 +38,13 @@ export const WithoutUrl: StoryObj<typeof Logo> = {
 
 export const WithUrl: StoryObj<typeof Logo> = {
   args: {
-    to: '/',
+    to: "/",
   },
 };
 
 export const EnglishLogo: StoryObj<typeof Logo> = {
   args: {
-    locale: 'en',
-    label: 'Norwegian digital learning arena',
+    locale: "en",
+    label: "Norwegian digital learning arena",
   },
 };

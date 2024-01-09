@@ -6,9 +6,9 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { mq, breakpoints, colors, spacing, spacingUnit } from '@ndla/core';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { mq, breakpoints, colors, spacing, spacingUnit } from "@ndla/core";
 
 const StyledContent = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {

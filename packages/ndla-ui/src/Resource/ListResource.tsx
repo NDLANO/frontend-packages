@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { spacing, colors, breakpoints, mq } from '@ndla/core';
-import { Text } from '@ndla/typography';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing, colors, breakpoints, mq } from "@ndla/core";
+import { Text } from "@ndla/typography";
 import {
   CompressedTagList,
   ResourceImageProps,
@@ -18,11 +18,11 @@ import {
   ResourceTypeList,
   LoaderProps,
   ContentIconWrapper,
-} from './resourceComponents';
-import ContentLoader from '../ContentLoader';
-import ContentTypeBadge from '../ContentTypeBadge';
-import Image from '../Image';
-import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
+} from "./resourceComponents";
+import ContentLoader from "../ContentLoader";
+import ContentTypeBadge from "../ContentTypeBadge";
+import Image from "../Image";
+import { contentTypeMapping, resourceEmbedTypeMapping } from "../model/ContentType";
 
 const ListResourceWrapper = styled.div`
   flex: 1;
@@ -30,14 +30,14 @@ const ListResourceWrapper = styled.div`
   position: relative;
   grid-template-columns: auto minmax(50px, 1fr) auto;
   grid-template-areas:
-    'image  topicAndTitle   tags'
-    'image  description     description';
+    "image  topicAndTitle   tags"
+    "image  description     description";
   ${mq.range({ until: breakpoints.mobileWide })} {
     grid-template-columns: auto 1fr;
     grid-template-areas:
-      'image                topicAndTitle'
-      'description          description'
-      'tags                 tags';
+      "image                topicAndTitle"
+      "description          description"
+      "tags                 tags";
   }
 
   cursor: pointer;
@@ -55,7 +55,7 @@ const ListResourceWrapper = styled.div`
 `;
 
 interface StyledImageProps {
-  imageSize: 'normal' | 'compact';
+  imageSize: "normal" | "compact";
 }
 
 const ImageWrapper = styled.div<StyledImageProps>`
@@ -68,7 +68,7 @@ const ImageWrapper = styled.div<StyledImageProps>`
   align-items: center;
   justify-content: center;
   aspect-ratio: 4/3;
-  &[data-image-size='normal'] {
+  &[data-image-size="normal"] {
     width: 136px;
   }
   ${mq.range({ until: breakpoints.mobileWide })} {
@@ -129,14 +129,14 @@ const TopicAndTitleWrapper = styled.div`
 interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
   loading?: boolean;
-  type: 'normal' | 'compact';
+  type: "normal" | "compact";
   contentType: string;
   background?: boolean;
 }
 
 const ListResourceImage = ({ resourceImage, loading, type, contentType, background }: ListResourceImageProps) => {
   if (!loading) {
-    if (resourceImage.src === '') {
+    if (resourceImage.src === "") {
       return (
         <ContentIconWrapper contentType={contentType}>
           <ContentTypeBadge type={contentType} background={background} size="x-small" />
@@ -144,20 +144,20 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType, backgrou
       );
     } else {
       return (
-        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
+        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === "compact" ? 56 : 136} />
       );
     }
   }
 
   return (
-    <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+    <ContentLoader height={"100%"} width={"100%"} viewBox={null} preserveAspectRatio="none">
       <rect
         x="0"
         y="0"
         rx="3"
         ry="3"
-        width={type === 'compact' ? '56' : '136'}
-        height={type === 'compact' ? '40' : '96'}
+        width={type === "compact" ? "56" : "136"}
+        height={type === "compact" ? "40" : "96"}
       />
     </ContentLoader>
   );
@@ -166,10 +166,10 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType, backgrou
 const TypeAndTitleLoader = ({ loading, children }: LoaderProps) => {
   if (loading) {
     return (
-      <ContentLoader height={'40px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
-        <rect x="0" y="0" rx="3" ry="3" width={'100%'} height={'16'} />
-        <rect x="0" y="18" rx="3" ry="3" width={'70'} height={'16'} />
-        <rect x="80" y="18" rx="3" ry="3" width={'70'} height={'16'} />
+      <ContentLoader height={"40px"} width={"100%"} viewBox={null} preserveAspectRatio="none">
+        <rect x="0" y="0" rx="3" ry="3" width={"100%"} height={"16"} />
+        <rect x="0" y="18" rx="3" ry="3" width={"70"} height={"16"} />
+        <rect x="80" y="18" rx="3" ry="3" width={"70"} height={"16"} />
       </ContentLoader>
     );
   }
@@ -184,7 +184,7 @@ interface ResourceDescriptionProps {
 const Description = ({ description, loading }: ResourceDescriptionProps) => {
   if (loading) {
     return (
-      <ContentLoader height={'20px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+      <ContentLoader height={"20px"} width={"100%"} viewBox={null} preserveAspectRatio="none">
         <rect x="0" y="0" width="100%" height="20" />
       </ContentLoader>
     );
@@ -224,8 +224,8 @@ const ListResource = ({
   targetBlank,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
-  const imageType = showDescription ? 'normal' : 'compact';
-  const firstContentType = resourceTypes?.[0]?.id ?? '';
+  const imageType = showDescription ? "normal" : "compact";
+  const firstContentType = resourceTypes?.[0]?.id ?? "";
   const embedResourceType = resourceEmbedTypeMapping[firstContentType];
 
   return (
@@ -236,12 +236,12 @@ const ListResource = ({
           loading={isLoading}
           type={imageType}
           background={!!embedResourceType}
-          contentType={contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping['default']}
+          contentType={contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping["default"]}
         />
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} data-link="" target={targetBlank ? '_blank' : undefined}>
+          <StyledLink to={link} data-link="" target={targetBlank ? "_blank" : undefined}>
             <Text element="span" textStyle="label-small" css={resourceHeadingStyle} title={title}>
               {title}
             </Text>

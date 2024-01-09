@@ -6,9 +6,9 @@
  *
  */
 
-import Image from './Image';
-export { makeSrcQueryString } from './Image';
-export { ImageLink } from './ImageLink';
-export type { ImageCrop, ImageFocalPoint } from './Image';
+import Image from "./Image";
+export { makeSrcQueryString } from "./Image";
+export { ImageLink } from "./ImageLink";
+export type { ImageCrop, ImageFocalPoint } from "./Image";
 
 export default Image;

@@ -6,17 +6,17 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import ListResource from './ListResource';
-import { StoryResourceMenu, resourceTypesArr } from './storyComponents';
-import { defaultParameters } from '../../../../stories/defaults';
-import { spacing } from '../../../core/src';
+import styled from "@emotion/styled";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import ListResource from "./ListResource";
+import { StoryResourceMenu, resourceTypesArr } from "./storyComponents";
+import { defaultParameters } from "../../../../stories/defaults";
+import { spacing } from "../../../core/src";
 
 export default {
-  title: 'My NDLA/ListResource',
+  title: "My NDLA/ListResource",
   component: ListResource,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
@@ -32,15 +32,15 @@ export default {
     },
   },
   args: {
-    id: '1234',
-    link: '',
-    title: 'Tittel til ressurs',
+    id: "1234",
+    link: "",
+    title: "Tittel til ressurs",
     resourceImage: {
-      src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-      alt: '',
+      src: "https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg",
+      alt: "",
     },
-    resourceTypes: [{ id: 'urn:resourcetype:learningPath', name: 'Læringssti' }],
-    tags: ['tag', 'tag', 'tag', 'tag'],
+    resourceTypes: [{ id: "urn:resourcetype:learningPath", name: "Læringssti" }],
+    tags: ["tag", "tag", "tag", "tag"],
   },
 } as Meta<typeof ListResource>;
 
@@ -50,7 +50,7 @@ export const WithImage: StoryFn<typeof ListResource> = (args) => {
 
 export const WithoutImage: StoryObj<typeof ListResource> = {
   args: {
-    resourceImage: { src: '', alt: '' },
+    resourceImage: { src: "", alt: "" },
   },
 };
 
@@ -61,7 +61,7 @@ export const WithoutTags: StoryObj<typeof ListResource> = {
 export const WithOverflowingDescription: StoryObj<typeof ListResource> = {
   args: {
     description:
-      'Beskrivelser trenger ikke å være så veldig lange. Det er ganske vanskelig å få plass til en livshistorie. Det lærte jeg da jeg var en ung utvikler og utviklet denne komponenten. Jeg husker det nærmest som om det var i går, men det var det egentlig ikke. Det var i det gode år 2022',
+      "Beskrivelser trenger ikke å være så veldig lange. Det er ganske vanskelig å få plass til en livshistorie. Det lærte jeg da jeg var en ung utvikler og utviklet denne komponenten. Jeg husker det nærmest som om det var i går, men det var det egentlig ikke. Det var i det gode år 2022",
   },
 };
 
@@ -84,7 +84,7 @@ const Wrapper = styled.div`
 `;
 
 export const BlockView: StoryObj<typeof ListResource> = {
-  args: { resourceImage: { src: '', alt: '' } },
+  args: { resourceImage: { src: "", alt: "" } },
   render: ({ ...args }) => (
     <Wrapper>
       {resourceTypesArr.map((rt) => (

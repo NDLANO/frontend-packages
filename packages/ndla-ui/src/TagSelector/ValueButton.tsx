@@ -6,12 +6,12 @@
  *
  */
 
-import { MultiValueProps } from 'react-select';
-import styled from '@emotion/styled';
-import { buttonStyleV2 as buttonStyle } from '@ndla/button';
-import { colors, spacing } from '@ndla/core';
-import { Cross } from '@ndla/icons/action';
-import { TagType } from './types';
+import { MultiValueProps } from "react-select";
+import styled from "@emotion/styled";
+import { buttonStyleV2 as buttonStyle } from "@ndla/button";
+import { colors, spacing } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
+import { TagType } from "./types";
 
 interface StyledProps {
   selected: boolean;
@@ -32,7 +32,7 @@ const ValueButton = ({ innerProps, children, removeProps, isFocused }: MultiValu
     <StyledValueButton
       selected={isFocused}
       role="button"
-      css={buttonStyle({ colorTheme: 'lighter', shape: 'pill', size: 'small' })}
+      css={buttonStyle({ colorTheme: "lighter", shape: "pill", size: "small" })}
       {...innerProps}
       {...removeProps}
     >

@@ -6,19 +6,19 @@
  *
  */
 
-import Downshift from 'downshift';
-import { Component } from 'react';
-import styled from '@emotion/styled';
-import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from '@ndla/forms';
-import { Spinner } from '@ndla/icons';
-import { Search } from '@ndla/icons/common';
-import { SubjectMaterialBadge } from '@ndla/ui';
-import RadioButtonGroup from './RadioButtonGroup';
-import { mockTypeahead } from '../../../dummydata';
-import defaultParameters from '../../../stories/defaults';
+import Downshift from "downshift";
+import { Component } from "react";
+import styled from "@emotion/styled";
+import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from "@ndla/forms";
+import { Spinner } from "@ndla/icons";
+import { Search } from "@ndla/icons/common";
+import { SubjectMaterialBadge } from "@ndla/ui";
+import RadioButtonGroup from "./RadioButtonGroup";
+import { mockTypeahead } from "../../../dummydata";
+import defaultParameters from "../../../stories/defaults";
 
 const meta = {
-  title: 'Forms/DropdownMenu',
+  title: "Forms/DropdownMenu",
   component: DropdownMenu,
   parameters: {
     inlineStories: true,
@@ -26,7 +26,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: '100px' }}>
+      <div style={{ padding: "100px" }}>
         <Story />
       </div>
     ),
@@ -38,7 +38,7 @@ export default meta;
 
 export const Default = {};
 
-Default.storyName = 'DropdownMenu';
+Default.storyName = "DropdownMenu";
 
 const StyledSpinner = styled(Spinner)`
   margin: 0;
@@ -59,10 +59,10 @@ class MultiSelectDropdownExample extends Component {
     this.state = {
       addedData: [],
       data: [],
-      useLayout: '1',
-      useTags: '1',
-      keepOpen: '1',
-      showPagination: '1',
+      useLayout: "1",
+      useTags: "1",
+      keepOpen: "1",
+      showPagination: "1",
       isOpen: false,
     };
     this.onChange = this.onChange.bind(this);
@@ -91,8 +91,8 @@ class MultiSelectDropdownExample extends Component {
   onChange(selected) {
     this.setState((prevState) => ({
       addedData: [...prevState.addedData, selected],
-      value: '',
-      isOpen: this.state.keepOpen !== '1',
+      value: "",
+      isOpen: this.state.keepOpen !== "1",
     }));
   }
 
@@ -104,7 +104,7 @@ class MultiSelectDropdownExample extends Component {
     }
 
     if (type === Downshift.stateChangeTypes.keyDownEnter) {
-      this.setState({ value: '' });
+      this.setState({ value: "" });
     }
   }
 
@@ -120,24 +120,24 @@ class MultiSelectDropdownExample extends Component {
 
     const dataFormatted = data.map((item, idx) => ({
       title: item.title,
-      description: useLayout !== '4' && item.description,
-      disabledText: idx === 0 ? 'Finnes allerede' : undefined,
-      image: useLayout === '1' ? item.image : useLayout === '2' && <SubjectMaterialBadge background />,
+      description: useLayout !== "4" && item.description,
+      disabledText: idx === 0 ? "Finnes allerede" : undefined,
+      image: useLayout === "1" ? item.image : useLayout === "2" && <SubjectMaterialBadge background />,
       alt: item.alt,
     }));
 
     const inputProps = {
       value,
       onChange: this.onSearch,
-      placeholder: 'Type a name',
+      placeholder: "Type a name",
       onKeyDown: async (event) => {
-        if (event.key === 'ArrowDown') {
+        if (event.key === "ArrowDown") {
           await this.onSearch(event);
         }
       },
     };
 
-    const page = showPagination === '1' ? undefined : 1;
+    const page = showPagination === "1" ? undefined : 1;
 
     return (
       <>
@@ -146,10 +146,10 @@ class MultiSelectDropdownExample extends Component {
           selected={useLayout}
           uniqeIds
           options={[
-            { title: 'Med bilde', value: '1' },
-            { title: 'Med ikon', value: '2' },
-            { title: 'Kun tekst', value: '3' },
-            { title: 'Kun tittel', value: '4' },
+            { title: "Med bilde", value: "1" },
+            { title: "Med ikon", value: "2" },
+            { title: "Kun tekst", value: "3" },
+            { title: "Kun tittel", value: "4" },
           ]}
           onChange={(useLayout) => {
             this.setState({
@@ -162,8 +162,8 @@ class MultiSelectDropdownExample extends Component {
           selected={useTags}
           uniqeIds
           options={[
-            { title: 'Tags i input', value: '1' },
-            { title: 'Tags utenfor input', value: '2' },
+            { title: "Tags i input", value: "1" },
+            { title: "Tags utenfor input", value: "2" },
           ]}
           onChange={(useTags) => {
             this.setState({
@@ -176,8 +176,8 @@ class MultiSelectDropdownExample extends Component {
           selected={keepOpen}
           uniqeIds
           options={[
-            { title: 'Lukk når lagt til', value: '1' },
-            { title: 'Behold åpen etter valg', value: '2' },
+            { title: "Lukk når lagt til", value: "1" },
+            { title: "Behold åpen etter valg", value: "2" },
           ]}
           onChange={(keepOpen) => {
             this.setState({
@@ -190,8 +190,8 @@ class MultiSelectDropdownExample extends Component {
           selected={showPagination}
           uniqeIds
           options={[
-            { title: 'Uten', value: '1' },
-            { title: 'Med', value: '2' },
+            { title: "Uten", value: "1" },
+            { title: "Med", value: "2" },
           ]}
           onChange={(showPagination) => {
             this.setState({
@@ -199,7 +199,7 @@ class MultiSelectDropdownExample extends Component {
             });
           }}
         />
-        {useTags !== '1' && (
+        {useTags !== "1" && (
           <FormPills
             onClick={(id) => {
               this.setState((prevState) => ({
@@ -212,7 +212,7 @@ class MultiSelectDropdownExample extends Component {
         <FieldHeader title="Countries" subTitle="in Europe" />
         <Downshift
           onChange={this.onChange}
-          itemToString={(item) => item?.title || ''}
+          itemToString={(item) => item?.title || ""}
           onStateChange={this.handleStateChange}
           isOpen={isOpen}
         >
@@ -220,13 +220,13 @@ class MultiSelectDropdownExample extends Component {
             return (
               <div>
                 <DropdownInput
-                  multiSelect={useTags === '1'}
+                  multiSelect={useTags === "1"}
                   {...getInputProps(inputProps)}
                   data-testid="dropdown-input"
                   idField="title"
                   labelField="title"
                   iconRight={loading ? <StyledSpinner size="normal" /> : <Search />}
-                  values={useTags === '1' && addedData}
+                  values={useTags === "1" && addedData}
                   removeItem={this.removeItem}
                 />
                 <DropdownMenu

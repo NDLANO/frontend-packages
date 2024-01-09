@@ -6,6 +6,6 @@
  *
  */
 
-import LanguageSelector from './LanguageSelector';
+import LanguageSelector from "./LanguageSelector";
 
 export { LanguageSelector };

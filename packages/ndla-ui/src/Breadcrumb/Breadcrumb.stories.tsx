@@ -6,33 +6,33 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import Breadcrumb from './Breadcrumb';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import Breadcrumb from "./Breadcrumb";
+import { defaultParameters } from "../../../../stories/defaults";
 
 const items = [
   {
-    name: 'Fag',
-    to: '#1',
+    name: "Fag",
+    to: "#1",
   },
   {
-    name: 'Hovedemne tittel',
-    to: '#2',
+    name: "Hovedemne tittel",
+    to: "#2",
   },
   {
-    name: 'Underemne tittel',
-    to: '#3',
+    name: "Underemne tittel",
+    to: "#3",
   },
   {
-    name: 'Tittel på side/ressurs',
-    to: '#4',
+    name: "Tittel på side/ressurs",
+    to: "#4",
   },
 ];
 
 export default {
-  title: 'Components/Breadcrumb/Breadcrumb',
+  title: "Components/Breadcrumb/Breadcrumb",
   component: Breadcrumb,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
     items: items,
   },
@@ -59,7 +59,7 @@ export const AutoCollapse: StoryObj<typeof Breadcrumb> = {
 export const CustomSeparator: StoryObj<typeof Breadcrumb> = {
   args: {
     renderSeparator: (item, totalCount) => (
-      <div style={{ padding: '0px 12px' }}>
+      <div style={{ padding: "0px 12px" }}>
         {item.index}/{totalCount}
       </div>
     ),

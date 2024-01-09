@@ -6,24 +6,24 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { spacing } from '@ndla/core';
-import { ContentTypeBadge } from './ContentTypeBadge';
-import { defaultParameters } from '../../../../stories/defaults';
-import * as contentTypes from '../model/ContentType';
+import styled from "@emotion/styled";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { spacing } from "@ndla/core";
+import { ContentTypeBadge } from "./ContentTypeBadge";
+import { defaultParameters } from "../../../../stories/defaults";
+import * as contentTypes from "../model/ContentType";
 
 export default {
-  title: 'Components/ContentTypeBadge',
-  tags: ['autodocs'],
+  title: "Components/ContentTypeBadge",
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    size: 'small',
+    size: "small",
     border: true,
-    type: 'subject-material',
+    type: "subject-material",
     background: true,
     title: "I'm a badge",
   },

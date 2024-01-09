@@ -6,16 +6,16 @@
  *
  */
 
-import * as React from 'react';
-import styled from '@emotion/styled';
-import { colors, fonts } from '@ndla/core';
-import { HumanMaleBoard } from '@ndla/icons/common';
+import * as React from "react";
+import styled from "@emotion/styled";
+import { colors, fonts } from "@ndla/core";
+import { HumanMaleBoard } from "@ndla/icons/common";
 
 const StyledMessage = styled.span`
   position: absolute;
   top: -50px;
   color: ${colors.text.light};
-  ${fonts.sizes('14px', '18px')};
+  ${fonts.sizes("14px", "18px")};
   font-family: ${fonts.sans};
   display: flex;
   flex-direction: row;

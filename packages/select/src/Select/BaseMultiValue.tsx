@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { MultiValueProps } from 'react-select';
-import { TextEllipsis } from './BaseSingleValue';
-import { Option } from './types';
+import { MultiValueProps } from "react-select";
+import { TextEllipsis } from "./BaseSingleValue";
+import { Option } from "./types";
 
 const BaseMultiValue = <T extends boolean>({ children }: MultiValueProps<Option, T>) => {
   return <TextEllipsis>{children}</TextEllipsis>;

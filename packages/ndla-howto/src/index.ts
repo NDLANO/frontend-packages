@@ -6,6 +6,6 @@
  *
  */
 
-import ArticleInModal from './ArticleInModal';
+import ArticleInModal from "./ArticleInModal";
 
 export { ArticleInModal };

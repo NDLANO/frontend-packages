@@ -8,13 +8,13 @@
 
 /* eslint-env jest */
 
-import { isLetter } from '../isLetter';
+import { isLetter } from "../isLetter";
 
-test('Check is letter', () => {
-  expect(isLetter('A')).toBe(true);
-  expect(isLetter('1')).toBe(false);
-  expect(isLetter('æ')).toBe(true);
-  expect(isLetter('?')).toBe(false);
-  expect(isLetter('!')).toBe(false);
-  expect(isLetter(' ')).toBe(false);
+test("Check is letter", () => {
+  expect(isLetter("A")).toBe(true);
+  expect(isLetter("1")).toBe(false);
+  expect(isLetter("æ")).toBe(true);
+  expect(isLetter("?")).toBe(false);
+  expect(isLetter("!")).toBe(false);
+  expect(isLetter(" ")).toBe(false);
 });

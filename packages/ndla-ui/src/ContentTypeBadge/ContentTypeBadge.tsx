@@ -6,13 +6,13 @@
  *
  */
 
-import { CSSProperties, ComponentProps, useMemo } from 'react';
+import { CSSProperties, ComponentProps, useMemo } from "react";
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, mq } from '@ndla/core';
-import { MenuBook } from '@ndla/icons/action';
-import { Audio } from '@ndla/icons/common';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, mq } from "@ndla/core";
+import { MenuBook } from "@ndla/icons/action";
+import { Audio } from "@ndla/icons/common";
 import {
   SubjectMaterial,
   TasksAndActivities,
@@ -22,14 +22,14 @@ import {
   SharedResource,
   LearningPath,
   MultidisciplinaryTopic,
-} from '@ndla/icons/contentType';
+} from "@ndla/icons/contentType";
 
-import { Concept, Media, Video } from '@ndla/icons/editor';
+import { Concept, Media, Video } from "@ndla/icons/editor";
 
-import * as contentTypes from '../model/ContentType';
+import * as contentTypes from "../model/ContentType";
 
-interface Props extends ComponentProps<'div'> {
-  size?: 'xx-small' | 'x-small' | 'small' | 'large';
+interface Props extends ComponentProps<"div"> {
+  size?: "xx-small" | "x-small" | "small" | "large";
   type: string;
   title?: string;
   background?: boolean;
@@ -38,7 +38,7 @@ interface Props extends ComponentProps<'div'> {
 }
 
 const sizes = {
-  'xx-small': css`
+  "xx-small": css`
     width: 20px;
     height: 20px;
     border: 1px solid;
@@ -47,7 +47,7 @@ const sizes = {
       height: 10x;
     }
   `,
-  'x-small': css`
+  "x-small": css`
     width: 20px;
     height: 20px;
     border: 1px solid;
@@ -64,7 +64,7 @@ const sizes = {
       }
     }
   `,
-  small: '',
+  small: "",
   large: css`
     width: 50px;
     height: 50px;
@@ -137,7 +137,7 @@ const iconMap = {
   },
   [contentTypes.MULTIDISCIPLINARY_TOPIC]: {
     icon: MultidisciplinaryTopic,
-    backgroundColor: '#b9b37b',
+    backgroundColor: "#b9b37b",
   },
   [contentTypes.resourceEmbedTypeMapping.image]: {
     icon: Media,
@@ -165,14 +165,17 @@ export const ContentTypeBadge = ({
   type,
   background,
   title,
-  size = 'small',
+  size = "small",
   border = true,
   className,
   ...rest
 }: Props) => {
   const { Icon, style } = useMemo(() => {
     const fromMap = iconMap[type];
-    const style = { '--icon-color': fromMap.iconColor, '--background-color': fromMap.backgroundColor } as CSSProperties;
+    const style = {
+      "--icon-color": fromMap.iconColor,
+      "--background-color": fromMap.backgroundColor,
+    } as CSSProperties;
     return { Icon: fromMap.icon, style };
   }, [type]);
 
@@ -203,27 +206,27 @@ export const ContentTypeBadge = ({
   );
 };
 
-export const SubjectMaterialBadge = (props: Omit<Props, 'type'>) => (
+export const SubjectMaterialBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />
 );
-export const TasksAndActivitiesBadge = (props: Omit<Props, 'type'>) => (
+export const TasksAndActivitiesBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.TASKS_AND_ACTIVITIES} />
 );
-export const AssessmentResourcesBadge = (props: Omit<Props, 'type'>) => (
+export const AssessmentResourcesBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
 );
-export const SubjectBadge = (props: Omit<Props, 'type'>) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
-export const ExternalLearningResourcesBadge = (props: Omit<Props, 'type'>) => (
+export const SubjectBadge = (props: Omit<Props, "type">) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
+export const ExternalLearningResourcesBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.EXTERNAL_LEARNING_RESOURCES} />
 );
-export const SourceMaterialBadge = (props: Omit<Props, 'type'>) => (
+export const SourceMaterialBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
 );
 
-export const LearningPathBadge = (props: Omit<Props, 'type'>) => (
+export const LearningPathBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
 );
 
-export const MultidisciplinaryTopicBadge = (props: Omit<Props, 'type'>) => (
+export const MultidisciplinaryTopicBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.MULTIDISCIPLINARY_TOPIC} />
 );

@@ -8,17 +8,17 @@
 
 /* eslint-env jest */
 
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import Image, { makeSrcQueryString } from '../Image';
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import Image, { makeSrcQueryString } from "../Image";
 
-test('Image renderers correctly', () => {
+test("Image renderers correctly", () => {
   const { container } = render(<Image alt="example" src="https://example.com/image.png" />, { container: null });
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('Lazyloaded image renderers correctly', () => {
+test("Lazyloaded image renderers correctly", () => {
   const { container } = render(
     <Image lazyLoad lazyLoadSrc="https://example.com/blurry.png" alt="example" src="https://example.com/image.png" />,
   );
@@ -26,7 +26,7 @@ test('Lazyloaded image renderers correctly', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('Image with crop and focalpoint props renderers correctly', () => {
+test("Image with crop and focalpoint props renderers correctly", () => {
   const { container } = render(
     <Image
       crop={{
@@ -47,7 +47,7 @@ test('Image with crop and focalpoint props renderers correctly', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('makeSrcQueryString renders correctly', () => {
+test("makeSrcQueryString renders correctly", () => {
   const crop = {
     startX: 14.59,
     endX: 79.63,
@@ -58,8 +58,8 @@ test('makeSrcQueryString renders correctly', () => {
     x: 65.08,
     y: 45.28,
   };
-  expect(makeSrcQueryString(undefined, undefined, undefined)).toMatch('');
-  expect(makeSrcQueryString(1024, undefined, undefined)).toMatch('width=1024');
+  expect(makeSrcQueryString(undefined, undefined, undefined)).toMatch("");
+  expect(makeSrcQueryString(1024, undefined, undefined)).toMatch("width=1024");
   expect(makeSrcQueryString(undefined, crop, undefined)).toMatchSnapshot();
   expect(makeSrcQueryString(undefined, undefined, focalPoint)).toMatchSnapshot();
   expect(makeSrcQueryString(1024, crop, focalPoint)).toMatchSnapshot();

@@ -6,7 +6,7 @@
  *
  */
 
-import { DropdownMenuProps, Root } from '@radix-ui/react-dropdown-menu';
+import { DropdownMenuProps, Root } from "@radix-ui/react-dropdown-menu";
 
 interface Props extends DropdownMenuProps {}
 

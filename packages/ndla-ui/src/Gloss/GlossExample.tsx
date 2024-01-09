@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, spacing, fonts } from '@ndla/core';
-import { IGlossExample } from '@ndla/types-backend/concept-api';
-import { Text } from '@ndla/typography';
+import styled from "@emotion/styled";
+import { colors, spacing, fonts } from "@ndla/core";
+import { IGlossExample } from "@ndla/types-backend/concept-api";
+import { Text } from "@ndla/typography";
 
 export interface Props {
   example: IGlossExample;
@@ -19,7 +19,7 @@ export interface Props {
 }
 
 const StyledGlossExampleWrapper = styled.div`
-  &[data-is-standalone='true'] {
+  &[data-is-standalone="true"] {
     &:first-of-type {
       border-top: 1px solid ${colors.brand.lighter};
     }
@@ -31,12 +31,12 @@ const StyledGlossExample = styled.div`
   border: 1px solid ${colors.brand.lighter};
   border-top: none;
 
-  &[data-is-first='true'] {
+  &[data-is-first="true"] {
     background-color: ${colors.background.lightBlue};
   }
 `;
 const StyledText = styled(Text)`
-  &[data-is-first='true'] {
+  &[data-is-first="true"] {
     font-weight: ${fonts.weight.bold};
     color: ${colors.brand.dark};
   }

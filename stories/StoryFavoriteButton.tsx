@@ -6,11 +6,11 @@
  *
  */
 
-import { FavoriteButton } from '@ndla/button';
-import { EmbedMetaData } from '@ndla/types-embed';
+import { FavoriteButton } from "@ndla/button";
+import { EmbedMetaData } from "@ndla/types-embed";
 
 interface Props {
-  embed: Extract<EmbedMetaData, { status: 'success' }>;
+  embed: Extract<EmbedMetaData, { status: "success" }>;
 }
 
 const StoryFavoriteButton = ({ embed }: Props) => {

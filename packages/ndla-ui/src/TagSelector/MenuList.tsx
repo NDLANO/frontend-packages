@@ -6,10 +6,10 @@
  *
  */
 
-import { MenuListProps } from 'react-select';
-import styled from '@emotion/styled';
-import { utils } from '@ndla/core';
-import { TagType } from './types';
+import { MenuListProps } from "react-select";
+import styled from "@emotion/styled";
+import { utils } from "@ndla/core";
+import { TagType } from "./types";
 
 export const StyledMenuList = styled.div`
   overflow: auto;

@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode, useState } from 'react';
-import { css, Global } from '@emotion/react';
-import { ButtonV2, ButtonProps } from '@ndla/button';
-import { misc } from '@ndla/core';
+import { ReactNode, useState } from "react";
+import { css, Global } from "@emotion/react";
+import { ButtonV2, ButtonProps } from "@ndla/button";
+import { misc } from "@ndla/core";
 
 const styling = css`
   border-radius: ${misc.borderRadius};
@@ -34,23 +34,23 @@ const ZendeskButton = ({ children, locale, widgetKey, ...rest }: Props) => {
     if (window && !window.zE) {
       setLoading(true);
       // Asynchronously load zendesk scripts for better performance
-      const script = document.createElement('script');
-      script.id = 'ze-snippet';
-      script.type = 'text/javascript';
+      const script = document.createElement("script");
+      script.id = "ze-snippet";
+      script.type = "text/javascript";
       script.async = true;
       script.onload = function () {
         if (window.zE) {
-          window.zE('webWidget', 'setLocale', locale);
-          window.zE('webWidget:on', 'close', () => {
+          window.zE("webWidget", "setLocale", locale);
+          window.zE("webWidget:on", "close", () => {
             setLoading(false);
           });
-          window.zE('webWidget', 'open');
+          window.zE("webWidget", "open");
         }
       };
       script.src = `https://static.zdassets.com/ekr/snippet.js?key=${widgetKey}`;
       document.body.appendChild(script);
     } else if (window?.zE) {
-      window.zE('webWidget', 'open');
+      window.zE("webWidget", "open");
     }
   };
 

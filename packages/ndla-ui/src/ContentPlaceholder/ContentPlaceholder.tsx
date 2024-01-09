@@ -6,8 +6,8 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
 
 const Wrapper = styled.div`
   position: fixed;

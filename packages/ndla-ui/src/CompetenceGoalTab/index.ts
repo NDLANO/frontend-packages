@@ -6,5 +6,5 @@
  *
  */
 
-import CompetenceGoalTab from './CompetenceGoalTab';
+import CompetenceGoalTab from "./CompetenceGoalTab";
 export default CompetenceGoalTab;

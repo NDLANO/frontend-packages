@@ -6,15 +6,15 @@
  *
  */
 
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import { ModalCloseButton, ModalBody, ModalTitle, ModalContent } from '@ndla/modal';
-import { ToggleItem } from '../Filter';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { breakpoints, mq, spacing } from "@ndla/core";
+import { ModalCloseButton, ModalBody, ModalTitle, ModalContent } from "@ndla/modal";
+import { ToggleItem } from "../Filter";
 
-import FrontpageAllSubjects, { subjectsProps } from '../Frontpage/FrontpageAllSubjects';
+import FrontpageAllSubjects, { subjectsProps } from "../Frontpage/FrontpageAllSubjects";
 
 const ModalWrapper = styled.div`
   display: flex;
@@ -56,8 +56,8 @@ const StyledListItem = styled.li`
   break-inside: avoid;
 `;
 
-const MENU_PROGRAMMES = 'programmes';
-const MENU_ALL_SUBJECTS = 'allSubjects';
+const MENU_PROGRAMMES = "programmes";
+const MENU_ALL_SUBJECTS = "allSubjects";
 
 type ProgrammeOptionProps = {
   name: string;
@@ -66,7 +66,7 @@ type ProgrammeOptionProps = {
 
 export type PopupFilterProps = {
   programmes?: { options: ProgrammeOptionProps[] };
-  subjectCategories?: { categories: subjectsProps['categories'] };
+  subjectCategories?: { categories: subjectsProps["categories"] };
   subjectValues: string[];
   programmesValues: string[];
   onToggleSubject: (value: string) => void;
@@ -90,29 +90,29 @@ const PopupFilter = ({
         <ModalWrapper>
           <Content>
             <ModalHeaderWrapper>
-              <ModalTitle>{t('searchPage.searchFilterMessages.filterLabel')}</ModalTitle>
+              <ModalTitle>{t("searchPage.searchFilterMessages.filterLabel")}</ModalTitle>
               <ModalCloseButton />
             </ModalHeaderWrapper>
             {subjectCategories && programmes && (
               <MainFilterButtonWrapper>
                 <ButtonV2
                   onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                  colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : undefined}
+                  colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? "lighter" : undefined}
                   size="normal"
                   shape="pill"
                 >
-                  {t('frontpageMenu.allsubjects')}
+                  {t("frontpageMenu.allsubjects")}
                 </ButtonV2>
               </MainFilterButtonWrapper>
             )}
             {programmes && (
               <ButtonV2
                 onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : undefined}
+                colorTheme={selectedMenu !== MENU_PROGRAMMES ? "lighter" : undefined}
                 size="normal"
                 shape="pill"
               >
-                {t('frontpageMenu.program')}
+                {t("frontpageMenu.program")}
               </ButtonV2>
             )}
             {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (

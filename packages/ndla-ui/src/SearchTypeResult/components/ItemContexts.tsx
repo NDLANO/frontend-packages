@@ -6,18 +6,18 @@
  *
  */
 
-import { ReactNode, Fragment } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { Additional, Core } from '@ndla/icons/common';
-import { Modal, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from '@ndla/modal';
-import SafeLink from '@ndla/safelink';
+import { ReactNode, Fragment } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { Additional, Core } from "@ndla/icons/common";
+import { Modal, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from "@ndla/modal";
+import SafeLink from "@ndla/safelink";
 
 const BreadcrumbPath = styled.div`
   color: ${colors.text.light};
-  ${fonts.sizes('14px', '20px')};
+  ${fonts.sizes("14px", "20px")};
 
   svg {
     margin-left: ${spacing.small};
@@ -27,7 +27,7 @@ const BreadcrumbPath = styled.div`
 const ModalButton = styled(ButtonV2)`
   z-index: 1;
   position: relative;
-  ${fonts.sizes('14px', '20px')};
+  ${fonts.sizes("14px", "20px")};
   box-shadow: none;
   &:hover {
     box-shadow: inset 0 -1px;
@@ -47,7 +47,7 @@ const ContextList = styled.ul`
 `;
 const ContextListItem = styled.li`
   margin-bottom: ${spacing.normal};
-  ${fonts.sizes('16px', '28px')};
+  ${fonts.sizes("16px", "28px")};
 `;
 
 type context = {
@@ -83,14 +83,14 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
         <Modal>
           <ModalTrigger>
             <ModalButton variant="link">
-              {t('searchPage.contextModal.button', {
+              {t("searchPage.contextModal.button", {
                 count: contexts.length - 1,
               })}
             </ModalButton>
           </ModalTrigger>
           <ModalContent animation="subtle" animationDuration={50}>
             <ModalHeader>
-              <ModalTitle>{t('searchPage.contextModal.heading')}</ModalTitle>
+              <ModalTitle>{t("searchPage.contextModal.heading")}</ModalTitle>
               <ModalCloseButton />
             </ModalHeader>
             <Content>
@@ -104,13 +104,13 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
                           size="normal"
                           color={colors.brand.dark}
                           aria-hidden={false}
-                          title={t('resource.tooltipAdditionalTopic')}
+                          title={t("resource.tooltipAdditionalTopic")}
                         />
                       ) : (
                         <Core
                           size="normal"
                           color={colors.brand.primary}
-                          title={t('resource.tooltipCoreTopic')}
+                          title={t("resource.tooltipCoreTopic")}
                           aria-hidden={false}
                         />
                       )}

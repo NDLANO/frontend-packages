@@ -6,17 +6,17 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { ButtonV2 } from '@ndla/button';
-import ArticleInModal from './ArticleInModal';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryFn } from "@storybook/react";
+import { ButtonV2 } from "@ndla/button";
+import ArticleInModal from "./ArticleInModal";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Production system/How To',
-  tags: ['autodocs'],
+  title: "Production system/How To",
+  tags: ["autodocs"],
   component: ArticleInModal,
   args: {
-    pageId: 'Paragraph',
+    pageId: "Paragraph",
   },
   parameters: {
     inlineStories: true,

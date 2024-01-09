@@ -8,53 +8,53 @@
 
 /* eslint-env jest */
 
-import { isPathToHighlight } from '../IsPathToHighlight';
+import { isPathToHighlight } from "../IsPathToHighlight";
 
-test('Test that determining whether to highlight path works with locale and not', () => {
+test("Test that determining whether to highlight path works with locale and not", () => {
   const tests = [
     {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      path: "/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
+      href: "/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
       expected: true,
     },
     {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/nn/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      path: "/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
+      href: "/nn/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
       expected: true,
     },
     {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/nb/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      path: "/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
+      href: "/nb/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
       expected: true,
     },
     {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/kultspråk/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      path: "/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
+      href: "/kultspråk/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
       expected: true,
     },
     {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/nb/subject:123/topic:1:123/topic:2:5343',
+      path: "/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
+      href: "/nb/subject:123/topic:1:123/topic:2:5343",
       expected: false,
     },
     {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/nb/subject:123/topic:1:123',
+      path: "/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
+      href: "/nb/subject:123/topic:1:123",
       expected: false,
     },
     {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/nb/subject:123',
+      path: "/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231",
+      href: "/nb/subject:123",
       expected: false,
     },
     {
-      path: '/subject:123/topic:1:123/topic:2:5343',
-      href: '/nb/subject:123/topic:1:123',
+      path: "/subject:123/topic:1:123/topic:2:5343",
+      href: "/nb/subject:123/topic:1:123",
       expected: false,
     },
     {
-      path: '/subject:123/topic:1:123/topic:2:5343',
-      href: '/nb/subject:123',
+      path: "/subject:123/topic:1:123/topic:2:5343",
+      href: "/nb/subject:123",
       expected: false,
     },
   ];

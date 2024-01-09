@@ -6,10 +6,10 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import SearchButton from './SearchButton';
-import { GoalItem, GoalList, GoalText, GoalsHeading, ListItemContent } from './styles';
-import { CoreElementsItemType } from '../types';
+import { useTranslation } from "react-i18next";
+import SearchButton from "./SearchButton";
+import { GoalItem, GoalList, GoalText, GoalsHeading, ListItemContent } from "./styles";
+import { CoreElementsItemType } from "../types";
 
 const CoreElementItem = ({ title, text, url, id, isOembed }: CoreElementsItemType) => {
   const { t } = useTranslation();
@@ -24,7 +24,9 @@ const CoreElementItem = ({ title, text, url, id, isOembed }: CoreElementsItemTyp
               <SearchButton
                 url={url}
                 isOembed={isOembed}
-                searchText={t('competenceGoals.coreResourceSearchText', { code: id })}
+                searchText={t("competenceGoals.coreResourceSearchText", {
+                  code: id,
+                })}
               />
             )}
           </ListItemContent>

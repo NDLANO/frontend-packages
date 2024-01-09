@@ -6,9 +6,9 @@
  *
  */
 
-import { forwardRef, ReactNode } from 'react';
-import { buttonStyleV2, ButtonStyleProps } from '@ndla/button';
-import SafeLink, { SafeLinkProps } from './SafeLink';
+import { forwardRef, ReactNode } from "react";
+import { buttonStyleV2, ButtonStyleProps } from "@ndla/button";
+import SafeLink, { SafeLinkProps } from "./SafeLink";
 
 interface Props extends SafeLinkProps, ButtonStyleProps {
   children: ReactNode;
@@ -21,7 +21,14 @@ const SafeLinkButton = forwardRef<HTMLAnchorElement, Props>(
     <SafeLink
       to={to}
       ref={ref}
-      css={buttonStyleV2({ colorTheme, size, variant, inverted, shape, fontWeight })}
+      css={buttonStyleV2({
+        colorTheme,
+        size,
+        variant,
+        inverted,
+        shape,
+        fontWeight,
+      })}
       {...rest}
     >
       {children}

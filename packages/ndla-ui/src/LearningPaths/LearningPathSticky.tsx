@@ -6,15 +6,15 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, spacing, animations, mq, breakpoints } from '@ndla/core';
-import { Back, Forward } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, animations, mq, breakpoints } from "@ndla/core";
+import { Back, Forward } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
 
-const FOOTER_HEIGHT = '78px';
+const FOOTER_HEIGHT = "78px";
 const FOOTER_HEIGHT_MOBILE = spacing.large;
 const SAFELINK_SIZE_MOBILE = spacing.large;
 
@@ -97,7 +97,7 @@ const StyledTitle = styled.span`
 type PropsSiblings = {
   title: string;
   toLearningPathUrl(pathId: number, stepId: number): string;
-  arrow?: 'left' | 'right';
+  arrow?: "left" | "right";
   pathId: number;
   stepId: number;
 };
@@ -108,13 +108,13 @@ export const LearningPathStickySibling = ({ title, toLearningPathUrl, pathId, st
     <SafeLink
       to={toLearningPathUrl(pathId, stepId)}
       css={SafeLinkCSS}
-      aria-label={arrow === 'left' ? t('learningPath.previousArrow') : t('learningPath.nextArrow')}
+      aria-label={arrow === "left" ? t("learningPath.previousArrow") : t("learningPath.nextArrow")}
     >
-      {arrow === 'left' && <Back size="normal" />}
+      {arrow === "left" && <Back size="normal" />}
       <div>
         <StyledTitle>{title}</StyledTitle>
       </div>
-      {arrow === 'right' && <Forward size="normal" />}
+      {arrow === "right" && <Forward size="normal" />}
     </SafeLink>
   );
 };

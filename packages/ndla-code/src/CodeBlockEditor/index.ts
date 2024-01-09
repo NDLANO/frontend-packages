@@ -6,6 +6,6 @@
  *
  */
 
-import CodeBlockEditor from './CodeBlockEditor';
+import CodeBlockEditor from "./CodeBlockEditor";
 
 export { CodeBlockEditor };

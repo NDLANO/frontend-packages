@@ -6,34 +6,34 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import { colors } from '@ndla/core';
-import HomeBreadcrumb from './HomeBreadcrumb';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import { colors } from "@ndla/core";
+import HomeBreadcrumb from "./HomeBreadcrumb";
+import { defaultParameters } from "../../../../stories/defaults";
 
 const items = [
   {
-    name: 'Fag',
-    to: '#1',
+    name: "Fag",
+    to: "#1",
   },
   {
-    name: 'Hovedemne tittel',
-    to: '#2',
+    name: "Hovedemne tittel",
+    to: "#2",
   },
   {
-    name: 'Underemne tittel',
-    to: '#3',
+    name: "Underemne tittel",
+    to: "#3",
   },
   {
-    name: 'Tittel på side/ressurs',
-    to: '#4',
+    name: "Tittel på side/ressurs",
+    to: "#4",
   },
 ];
 
 export default {
-  title: 'Components/Breadcrumb/HomeBreadcrumb',
+  title: "Components/Breadcrumb/HomeBreadcrumb",
   component: HomeBreadcrumb,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,

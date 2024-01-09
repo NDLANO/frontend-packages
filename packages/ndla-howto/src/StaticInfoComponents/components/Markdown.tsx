@@ -6,13 +6,13 @@
  *
  */
 
-import { Table } from '@ndla/ui';
+import { Table } from "@ndla/ui";
 
 const markdownSyntax = [
-  { md: '**Bold**', html: <b>Bold</b> },
-  { md: '*Italics*', html: <i>Italics</i> },
+  { md: "**Bold**", html: <b>Bold</b> },
+  { md: "*Italics*", html: <i>Italics</i> },
   {
-    md: 'super^script^',
+    md: "super^script^",
     html: (
       <span>
         super<sup>script</sup>
@@ -20,7 +20,7 @@ const markdownSyntax = [
     ),
   },
   {
-    md: 'sub~script~',
+    md: "sub~script~",
     html: (
       <span>
         sub<sub>script</sub>

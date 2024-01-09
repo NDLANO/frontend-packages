@@ -6,21 +6,21 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
 
-import ContentTypeBadge from '../../ContentTypeBadge';
-import { SearchItemType } from '../SearchItem';
-import { ContentType } from '../SearchTypeResult';
+import ContentTypeBadge from "../../ContentTypeBadge";
+import { SearchItemType } from "../SearchItem";
+import { ContentType } from "../SearchTypeResult";
 
 const Wrapper = styled.header`
   padding: ${spacing.small} ${spacing.normal} 0;
 `;
 
 const Label = styled.div`
-  ${fonts.sizes('12px', '16px')};
+  ${fonts.sizes("12px", "16px")};
   font-weight: ${fonts.weight.semibold};
   height: 26px;
   display: flex;
@@ -59,7 +59,7 @@ const TopicHeaderImage = styled.img`
 
 interface Props {
   children: ReactNode;
-  image?: SearchItemType['item']['img'] | null;
+  image?: SearchItemType["item"]["img"] | null;
   type?: ContentType;
 }
 

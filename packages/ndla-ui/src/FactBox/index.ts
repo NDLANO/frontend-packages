@@ -6,6 +6,6 @@
  *
  */
 
-import FactBox from './FactBox';
+import FactBox from "./FactBox";
 
 export default FactBox;

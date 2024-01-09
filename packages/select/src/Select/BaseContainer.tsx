@@ -6,9 +6,9 @@
  *
  */
 
-import { ContainerProps, GroupBase } from 'react-select';
-import styled from '@emotion/styled';
-import { Option } from './types';
+import { ContainerProps, GroupBase } from "react-select";
+import styled from "@emotion/styled";
+import { Option } from "./types";
 
 export const StyledContainer = styled.div`
   max-width: 100%;

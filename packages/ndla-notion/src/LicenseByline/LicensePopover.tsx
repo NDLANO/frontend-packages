@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { Arrow, Close, Content, Root, Trigger, Portal } from '@radix-ui/react-popover';
-import { colors, fonts, misc, spacing } from '@ndla/core';
-import { Cross } from '@ndla/icons/action';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { Arrow, Close, Content, Root, Trigger, Portal } from "@radix-ui/react-popover";
+import { colors, fonts, misc, spacing } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 const StyledContent = styled(Content)`
   color: ${colors.white};
@@ -21,7 +21,7 @@ const StyledContent = styled(Content)`
   border-radius: ${misc.borderRadius};
   padding: ${spacing.xsmall} ${spacing.small};
   font-family: ${fonts.sans};
-  ${fonts.sizes('16px', '18px')};
+  ${fonts.sizes("16px", "18px")};
   line-height: 1.2;
   font-weight: ${fonts.weight.normal};
   text-align: center;
@@ -57,9 +57,9 @@ const LicensePopover = ({ children, popover, className }: Props) => {
         {children}
       </Trigger>
       <Portal>
-        <StyledContent arrowPadding={6} className={className} side={'bottom'} align={'center'} sideOffset={5}>
+        <StyledContent arrowPadding={6} className={className} side={"bottom"} align={"center"} sideOffset={5}>
           {popover}
-          <StyledClose aria-label={t('close')}>
+          <StyledClose aria-label={t("close")}>
             <Cross />
           </StyledClose>
           <StyledArrow />

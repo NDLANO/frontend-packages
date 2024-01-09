@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactElement, useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ButtonV2 } from '@ndla/button';
-import { Additional, ChevronDown, ChevronUp } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
-import Tooltip from '@ndla/tooltip';
+import { ReactElement, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ButtonV2 } from "@ndla/button";
+import { Additional, ChevronDown, ChevronUp } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
+import Tooltip from "@ndla/tooltip";
 import {
   highlightStyle,
   noWidthhighlightStyle,
@@ -22,10 +22,10 @@ import {
   StyledNoHit,
   StyledTag,
   StyledWrapper,
-} from './ContentTypeResultStyles';
-import { isPathToHighlight } from './IsPathToHighlight';
-import ContentTypeBadge from '../ContentTypeBadge';
-import { ContentTypeResultType, Resource } from '../types';
+} from "./ContentTypeResultStyles";
+import { isPathToHighlight } from "./IsPathToHighlight";
+import ContentTypeBadge from "../ContentTypeBadge";
+import { ContentTypeResultType, Resource } from "../types";
 
 const renderAdditionalIcon = (label: string, isAdditional?: boolean): ReactElement | null => {
   if (isAdditional && label) {
@@ -93,8 +93,8 @@ const ContentTypeResult = ({
   useEffect(() => {
     if (showAll && showAllRef.current) {
       showAllRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
+        behavior: "smooth",
+        block: "nearest",
       });
     }
   }, [showAll]);
@@ -132,8 +132,8 @@ const ContentTypeResult = ({
             const anchor =
               keyboardPathNavigation instanceof HTMLElement &&
               keyboardPathNavigation &&
-              keyboardPathNavigation.querySelector('a');
-            const anchorHref = anchor && anchor.getAttribute('href');
+              keyboardPathNavigation.querySelector("a");
+            const anchorHref = anchor && anchor.getAttribute("href");
             const shouldHighlight = isPathToHighlight(path, anchorHref);
 
             return (
@@ -149,10 +149,10 @@ const ContentTypeResult = ({
                   }}
                 >
                   {unGrouped && !ignoreContentTypeBadge && (
-                    <ContentTypeBadge type={resource.contentType ?? ''} size="x-small" background border />
+                    <ContentTypeBadge type={resource.contentType ?? ""} size="x-small" background border />
                   )}
                   {linkContent}
-                  {renderAdditionalIcon(t('resource.additionalTooltip'), additional)}
+                  {renderAdditionalIcon(t("resource.additionalTooltip"), additional)}
                 </SafeLink>
               </StyledListItem>
             );

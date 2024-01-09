@@ -6,13 +6,13 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { fonts } from '@ndla/core';
-import ResourceItem from './ResourceItem';
-import NoContentBox from '../NoContentBox';
-import { Resource } from '../types';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { fonts } from "@ndla/core";
+import ResourceItem from "./ResourceItem";
+import NoContentBox from "../NoContentBox";
+import { Resource } from "../types";
 
 const StyledResourceList = styled.ul`
   list-style: none;
@@ -55,7 +55,7 @@ const ResourceList = ({
             heartButton={heartButton}
             {...resource}
             contentTypeDescription={
-              resource.additional ? t('resource.tooltipAdditionalTopic') : t('resource.tooltipCoreTopic')
+              resource.additional ? t("resource.tooltipAdditionalTopic") : t("resource.tooltipCoreTopic")
             }
           />
         ))}
@@ -63,13 +63,13 @@ const ResourceList = ({
           <li>
             <NoContentBox
               onClick={onClick}
-              buttonText={t('resource.toggleFilterLabel')}
+              buttonText={t("resource.toggleFilterLabel")}
               text={
                 title
-                  ? t('resource.noCoreResourcesAvailable', {
+                  ? t("resource.noCoreResourcesAvailable", {
                       name: title.toLowerCase(),
                     })
-                  : t('resource.noCoreResourcesAvailableUnspecific')
+                  : t("resource.noCoreResourcesAvailableUnspecific")
               }
             />
           </li>

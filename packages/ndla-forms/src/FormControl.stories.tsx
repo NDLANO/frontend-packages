@@ -6,27 +6,27 @@
  *
  */
 
-import { useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { Person } from '@ndla/icons/common';
-import { Text } from '@ndla/typography';
-import { FieldErrorMessage } from './FieldErrorMessage';
-import { FieldHelper } from './FieldHelper';
-import { FormControl } from './FormControl';
-import { Input, InputContainer, TextArea } from './InputV3';
-import { Label } from './Label';
-import { defaultParameters } from '../../../stories/defaults';
+import { useState } from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import { Person } from "@ndla/icons/common";
+import { Text } from "@ndla/typography";
+import { FieldErrorMessage } from "./FieldErrorMessage";
+import { FieldHelper } from "./FieldHelper";
+import { FormControl } from "./FormControl";
+import { Input, InputContainer, TextArea } from "./InputV3";
+import { Label } from "./Label";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Forms/FormControl',
-  tags: ['autodocs'],
+  title: "Forms/FormControl",
+  tags: ["autodocs"],
   component: FormControl,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    id: 'name',
+    id: "name",
   },
   argTypes: {
     isInvalid: { control: false },
@@ -34,7 +34,7 @@ export default {
 } as Meta<typeof FormControl>;
 
 export const Default: StoryFn<typeof FormControl> = ({ ...args }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const isInvalid = value.length === 0;
   return (
     <FormControl {...args} isInvalid={isInvalid}>
@@ -70,7 +70,7 @@ export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
 };
 
 export const FormHelperWhenNoError: StoryFn<typeof FormControl> = ({ ...args }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const isInvalid = value.length === 0;
 
   return (
@@ -102,13 +102,13 @@ export const FormHelperWhenNoError: StoryFn<typeof FormControl> = ({ ...args }) 
  * FormControl. Det krever dog at en har tunga rett i munnen og vet hva en gjør.
  */
 export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const isInvalid = value.length === 0;
-  const baseLabels = ['name-info'];
-  const labels = isInvalid ? baseLabels.concat('name-error') : baseLabels.concat('name-helper');
+  const baseLabels = ["name-info"];
+  const labels = isInvalid ? baseLabels.concat("name-error") : baseLabels.concat("name-helper");
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <Text textStyle="content" id="name-info" margin="none">
         We need to know your name!
       </Text>
@@ -120,7 +120,7 @@ export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
           name="name"
           value={value}
           onChange={(e) => setValue(e.currentTarget.value)}
-          aria-describedby={labels.join(' ')}
+          aria-describedby={labels.join(" ")}
           aria-required={true}
           aria-invalid={isInvalid}
         />
@@ -135,7 +135,7 @@ export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
 };
 
 export const TextAreaFormControl: StoryFn<typeof FormControl> = ({ ...args }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const isInvalid = value.length === 0;
 
   return (

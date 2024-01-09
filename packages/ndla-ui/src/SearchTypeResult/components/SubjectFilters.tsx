@@ -6,16 +6,16 @@
  *
  */
 
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { Plus as PlusIcon } from '@ndla/icons/action';
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { Plus as PlusIcon } from "@ndla/icons/action";
 
-import { Modal, ModalTrigger } from '@ndla/modal';
-import { FilterProps } from '../ActiveFilterContent';
-import ActiveFilters from '../ActiveFilters';
-import PopupFilter, { PopupFilterProps } from '../PopupFilter';
+import { Modal, ModalTrigger } from "@ndla/modal";
+import { FilterProps } from "../ActiveFilterContent";
+import ActiveFilters from "../ActiveFilters";
+import PopupFilter, { PopupFilterProps } from "../PopupFilter";
 
 const FilterButtonText = styled.span`
   display: inline-block;
@@ -23,12 +23,12 @@ const FilterButtonText = styled.span`
   margin-right: 10px;
 `;
 
-type ProgrammeProps = PopupFilterProps['programmes'] & {
+type ProgrammeProps = PopupFilterProps["programmes"] & {
   values: string[];
   onProgrammeValuesChange: (values: string[]) => void;
 };
 
-type SubjectCategoriesProps = PopupFilterProps['subjectCategories'] & {
+type SubjectCategoriesProps = PopupFilterProps["subjectCategories"] & {
   values: string[];
   onSubjectValuesChange: (values: string[]) => void;
 };
@@ -105,7 +105,7 @@ const SubjectFilters = ({ filters, activeFilters, isNarrowScreen }: SubjectFilte
   const OpenModalButton = () => (
     <ModalTrigger>
       <ButtonV2 type="button" size="normal" colorTheme="greyLighter" shape="pill">
-        <FilterButtonText>{t('searchPage.searchFilterMessages.noValuesButtonText')}</FilterButtonText>
+        <FilterButtonText>{t("searchPage.searchFilterMessages.noValuesButtonText")}</FilterButtonText>
         <PlusIcon />
       </ButtonV2>
     </ModalTrigger>

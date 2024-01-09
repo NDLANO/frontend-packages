@@ -6,8 +6,8 @@
  *
  */
 
-import { CodeMetaData } from '@ndla/types-embed';
-import { Codeblock } from './Codeblock';
+import { CodeMetaData } from "@ndla/types-embed";
+import { Codeblock } from "./Codeblock";
 
 interface Props {
   embed: CodeMetaData;
@@ -17,8 +17,8 @@ const CodeEmbed = ({ embed }: Props) => {
     <figure className="c-figure">
       <Codeblock
         title={embed.embedData.title}
-        code={embed.status === 'success' ? embed.data.decodedContent : ''}
-        highlightedCode={embed.status === 'success' ? embed.data.highlightedCode : ''}
+        code={embed.status === "success" ? embed.data.decodedContent : ""}
+        highlightedCode={embed.status === "success" ? embed.data.highlightedCode : ""}
         format={embed.embedData.codeFormat}
         showCopy
       />

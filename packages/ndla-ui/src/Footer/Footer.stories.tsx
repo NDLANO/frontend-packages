@@ -6,73 +6,79 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import { EmailOutline, Facebook, Instagram, LinkedIn, Share, Youtube } from '@ndla/icons/common';
-import { EditorName } from './EditorName';
-import Footer from './Footer';
-import { FooterText } from './FooterText';
-import { defaultParameters } from '../../../../stories/defaults';
-import { LanguageSelector } from '../LanguageSelector';
+import { Meta, StoryObj } from "@storybook/react";
+import { EmailOutline, Facebook, Instagram, LinkedIn, Share, Youtube } from "@ndla/icons/common";
+import { EditorName } from "./EditorName";
+import Footer from "./Footer";
+import { FooterText } from "./FooterText";
+import { defaultParameters } from "../../../../stories/defaults";
+import { LanguageSelector } from "../LanguageSelector";
 
 const mockCommonLinks = [
   {
-    to: 'https://ndla.no/about/om-ndla',
-    text: 'Om NDLA',
+    to: "https://ndla.no/about/om-ndla",
+    text: "Om NDLA",
     external: false,
   },
   {
-    to: 'https://ndla.no/about/about-ndla',
-    text: 'About NDLA',
+    to: "https://ndla.no/about/about-ndla",
+    text: "About NDLA",
     external: false,
   },
   {
-    to: 'https://blogg.ndla.no/',
-    text: 'NDLA fagblogg',
+    to: "https://blogg.ndla.no/",
+    text: "NDLA fagblogg",
     external: true,
   },
 ];
 
 const mockFooterLinks = [
   {
-    to: 'https://www.facebook.com/ndla.no',
-    text: 'NDLA på Facebook',
+    to: "https://www.facebook.com/ndla.no",
+    text: "NDLA på Facebook",
     icon: <Facebook />,
   },
   {
-    to: 'https://instagram.com/ndla_no/',
-    text: 'NDLA på Instagram',
+    to: "https://instagram.com/ndla_no/",
+    text: "NDLA på Instagram",
     icon: <Instagram />,
   },
   {
-    to: 'https://www.linkedin.com/company/ndla/',
-    text: 'NDLA på LinkedIn',
+    to: "https://www.linkedin.com/company/ndla/",
+    text: "NDLA på LinkedIn",
     icon: <LinkedIn />,
   },
   {
-    to: 'https://www.youtube.com/channel/UCBlt6T8B0mmvDh3k5q7EhsA',
-    text: 'NDLA på YouTube',
+    to: "https://www.youtube.com/channel/UCBlt6T8B0mmvDh3k5q7EhsA",
+    text: "NDLA på YouTube",
     icon: <Youtube />,
   },
   {
-    to: 'https://ndla.us6.list-manage.com/subscribe?u=99d41bbb28de0128915adebed&id=9a1d3ad1ea',
-    text: 'Meld deg på vårt nyhetsbrev',
+    to: "https://ndla.us6.list-manage.com/subscribe?u=99d41bbb28de0128915adebed&id=9a1d3ad1ea",
+    text: "Meld deg på vårt nyhetsbrev",
     icon: <EmailOutline />,
   },
   {
-    to: '#',
-    text: 'Del denne siden',
+    to: "#",
+    text: "Del denne siden",
     icon: <Share />,
   },
 ];
 
 const privacyLinks = [
-  { label: 'Personvernerklæring', url: 'https://ndla.no/article/personvernerklaering' },
-  { label: 'Erklæring om informasjonskapsler', url: 'https://ndla.no/article/erklaering-for-informasjonskapsler' },
+  {
+    label: "Personvernerklæring",
+    url: "https://ndla.no/article/personvernerklaering",
+  },
+  {
+    label: "Erklæring om informasjonskapsler",
+    url: "https://ndla.no/article/erklaering-for-informasjonskapsler",
+  },
 ];
 
 export default {
-  title: 'Components/Footer',
-  tags: ['autodocs'],
+  title: "Components/Footer",
+  tags: ["autodocs"],
   component: Footer,
   parameters: {
     inlineStories: true,
@@ -122,7 +128,7 @@ export const WithLanguageSelector: StoryObj<typeof Footer> = {
     commonLinks: mockCommonLinks,
     links: mockFooterLinks,
     // eslint-disable-next-line no-console
-    languageSelector: <LanguageSelector inverted locales={['nn', 'nb']} onSelect={console.log} />,
+    languageSelector: <LanguageSelector inverted locales={["nn", "nb"]} onSelect={console.log} />,
   },
 };
 
@@ -132,7 +138,7 @@ export const WithAuthBlock: StoryObj<typeof Footer> = {
     commonLinks: mockCommonLinks,
     links: mockFooterLinks,
     // eslint-disable-next-line no-console
-    languageSelector: <LanguageSelector inverted locales={['nn', 'nb']} onSelect={console.log} />,
+    languageSelector: <LanguageSelector inverted locales={["nn", "nb"]} onSelect={console.log} />,
     auth: <div>Auth info can be placed down here</div>,
   },
 };

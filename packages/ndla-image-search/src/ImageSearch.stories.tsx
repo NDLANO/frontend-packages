@@ -6,23 +6,23 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { IImageMetaInformationV3, ISearchResultV3 } from '@ndla/types-backend/image-api';
-import ImageSearch from './ImageSearch';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryFn } from "@storybook/react";
+import { IImageMetaInformationV3, ISearchResultV3 } from "@ndla/types-backend/image-api";
+import ImageSearch from "./ImageSearch";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Production system/ImageSearch',
-  tags: ['autodocs'],
+  title: "Production system/ImageSearch",
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    searchPlaceholder: 'Søk i bilder',
-    searchButtonTitle: 'Søk',
-    useImageTitle: 'Bruk bildet',
-    locale: 'nb',
+    searchPlaceholder: "Søk i bilder",
+    searchButtonTitle: "Søk",
+    useImageTitle: "Bruk bildet",
+    locale: "nb",
     noResults: <div>Søket gav ingen treff</div>,
   },
 } as Meta<typeof ImageSearch>;
@@ -32,7 +32,7 @@ export const Default: StoryFn<typeof ImageSearch> = ({ ...args }) => {
     const queryString = query ? `query=${query}&page=${page}&page-size=15` : `page=${page}&page-size=15`;
     return new Promise((resolve, reject) => {
       fetch(`https://api.test.ndla.no/image-api/v3/images/?${queryString}`, {
-        method: 'GET',
+        method: "GET",
       }).then((res) => {
         if (res.ok) {
           return resolve(res.json());
@@ -45,7 +45,7 @@ export const Default: StoryFn<typeof ImageSearch> = ({ ...args }) => {
   const fetchImage = (id: string | number): Promise<IImageMetaInformationV3> =>
     new Promise((resolve, reject) => {
       fetch(`https://api.test.ndla.no/image-api/v3/images/${id}`, {
-        method: 'GET',
+        method: "GET",
       }).then((res) => {
         if (res.ok) {
           return resolve(res.json());

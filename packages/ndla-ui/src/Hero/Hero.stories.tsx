@@ -6,25 +6,25 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { Meta, StoryFn } from '@storybook/react';
-import { Hero } from './Hero';
-import { defaultParameters } from '../../../../stories/defaults';
+import styled from "@emotion/styled";
+import { Meta, StoryFn } from "@storybook/react";
+import { Hero } from "./Hero";
+import { defaultParameters } from "../../../../stories/defaults";
 
 const StyledDiv = styled.div`
   width: 1000px;
 `;
 
 export default {
-  title: 'Components/Hero',
+  title: "Components/Hero",
   component: Hero,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
-    layout: 'centered',
+    layout: "centered",
   },
   args: {
-    contentType: 'assessment-resources',
+    contentType: "assessment-resources",
   },
 } as Meta<typeof Hero>;
 
@@ -34,4 +34,4 @@ export const HeroStory: StoryFn<typeof Hero> = ({ ...args }) => (
   </Hero>
 );
 
-HeroStory.storyName = 'Hero';
+HeroStory.storyName = "Hero";

@@ -6,20 +6,20 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import { Spinner } from '.';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import { Spinner } from ".";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Components/Spinner',
-  tags: ['autodocs'],
+  title: "Components/Spinner",
+  tags: ["autodocs"],
   component: Spinner,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    size: 'large',
+    size: "large",
   },
 } as Meta<typeof Spinner>;
 

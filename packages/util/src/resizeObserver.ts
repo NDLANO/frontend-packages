@@ -14,12 +14,12 @@ interface IEDocument extends Document {
 // Only added  firefox support and types
 function fallbackResizeObserver(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
   const CSS =
-    'position:absolute;left:0;top:-100%;width:100%;height:100%;margin:1px 0 0;border:none;opacity:0;pointer-events:none;';
-  const frame = document.createElement('iframe');
+    "position:absolute;left:0;top:-100%;width:100%;height:100%;margin:1px 0 0;border:none;opacity:0;pointer-events:none;";
+  const frame = document.createElement("iframe");
   const documentMode = (document as IEDocument).documentMode || 12;
-  const supportsPE = documentMode < 11 ? false : 'pointerEvents' in frame.style;
+  const supportsPE = documentMode < 11 ? false : "pointerEvents" in frame.style;
 
-  frame.style.cssText = supportsPE ? CSS : CSS + 'visibility:hidden;';
+  frame.style.cssText = supportsPE ? CSS : CSS + "visibility:hidden;";
   element.appendChild(frame);
   if (frame.contentWindow) {
     frame.contentWindow.onresize = () => {
@@ -52,7 +52,7 @@ function resizeObserverWrapper(element: HTMLElement, handler: (el: HTMLElement) 
  */
 export function resizeObserver(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
   // @ts-ignore ResizeObserver
-  if (typeof ResizeObserver === 'function') {
+  if (typeof ResizeObserver === "function") {
     return resizeObserverWrapper(element, handler);
   }
 

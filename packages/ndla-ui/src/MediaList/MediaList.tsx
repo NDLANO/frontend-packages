@@ -6,21 +6,21 @@
  *
  */
 
-import { ComponentProps, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { Launch } from '@ndla/icons/common';
+import { ComponentProps, ReactNode } from "react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { Launch } from "@ndla/icons/common";
 import {
   getLicenseByAbbreviation,
   getResourceTypeNamespace,
   isCreativeCommonsLicense,
   metaTypes,
-} from '@ndla/licenses';
-import type { MetaType } from '@ndla/licenses';
-import { LicenseDescription } from '@ndla/notion';
-import SafeLink from '@ndla/safelink';
-import { Heading, Text } from '@ndla/typography';
-import { uuid } from '@ndla/util';
+} from "@ndla/licenses";
+import type { MetaType } from "@ndla/licenses";
+import { LicenseDescription } from "@ndla/notion";
+import SafeLink from "@ndla/safelink";
+import { Heading, Text } from "@ndla/typography";
+import { uuid } from "@ndla/util";
 
 const StyledMediaList = styled.ul`
   padding-left: 0;
@@ -29,7 +29,7 @@ const StyledMediaList = styled.ul`
   margin: ${spacing.normal} 0;
 `;
 
-export const MediaList = ({ children, ...rest }: ComponentProps<'ul'>) => (
+export const MediaList = ({ children, ...rest }: ComponentProps<"ul">) => (
   <StyledMediaList {...rest}>{children}</StyledMediaList>
 );
 
@@ -50,7 +50,7 @@ const StyledMediaListItem = styled.li`
   }
 `;
 
-export const MediaListItem = ({ children, ...rest }: ComponentProps<'li'>) => (
+export const MediaListItem = ({ children, ...rest }: ComponentProps<"li">) => (
   <StyledMediaListItem {...rest}>{children}</StyledMediaListItem>
 );
 
@@ -114,7 +114,7 @@ interface MediaListItemBodyProps {
   license: string;
   locale: string;
   resourceUrl?: string;
-  resourceType?: 'video' | 'image' | 'audio' | 'text' | 'h5p' | 'podcast';
+  resourceType?: "video" | "image" | "audio" | "text" | "h5p" | "podcast";
   messages?: {
     modelPremission?: string;
   };
@@ -146,24 +146,27 @@ export const MediaListItemBody = ({
   messages,
   title,
   locale,
-  resourceUrl = '', // defaults to current page
+  resourceUrl = "", // defaults to current page
   resourceType,
 }: MediaListItemBodyProps) => {
   const license = getLicenseByAbbreviation(licenseAbbreviation, locale);
   const containerProps = isCreativeCommonsLicense(license.rights)
     ? {
-        'xmlns:cc': 'https://creativecommons.org/ns#',
-        'xmlns:dct': 'http://purl.org/dc/terms/',
+        "xmlns:cc": "https://creativecommons.org/ns#",
+        "xmlns:dct": "http://purl.org/dc/terms/",
         about: resourceUrl,
       }
     : {};
 
   const metaResourceType = getResourceTypeNamespace(resourceType);
+  const hidden = {
+    display: "none",
+  };
 
   return (
     <StyledMediaListItemBody {...containerProps}>
       {/* @ts-ignore */}
-      {metaResourceType && <span rel="dct:type" href={metaResourceType} style={{ display: 'none' }} />}
+      {metaResourceType && <span rel="dct:type" href={metaResourceType} style={hidden} />}
       {title ? (
         <BodyTitle element="h3" margin="none" textStyle="meta-text-medium">
           {title}
@@ -188,11 +191,11 @@ const StyledMediaListItemActions = styled.div`
   }
 `;
 
-export const MediaListItemActions = ({ children, ...rest }: ComponentProps<'div'>) => (
+export const MediaListItemActions = ({ children, ...rest }: ComponentProps<"div">) => (
   <StyledMediaListItemActions {...rest}>{children}</StyledMediaListItemActions>
 );
 
-const isLink = (text: string) => text.startsWith('http') || text.startsWith('https');
+const isLink = (text: string) => text.startsWith("http") || text.startsWith("https");
 
 interface HandleLinkProps {
   text: string;
@@ -217,12 +220,12 @@ export type ItemType = ItemTypeWithDescription | DescriptionLessItemType;
 interface ItemTypeWithDescription {
   label: string;
   description: string;
-  metaType: Omit<MetaType, 'otherWithoutDescription'>;
+  metaType: Omit<MetaType, "otherWithoutDescription">;
 }
 
 interface DescriptionLessItemType {
   label: string;
-  metaType: 'otherWithoutDescription';
+  metaType: "otherWithoutDescription";
 }
 
 function isOtherWithoutDescription(item: ItemType): item is DescriptionLessItemType {
@@ -267,7 +270,7 @@ const StyledMediaListMetaItem = styled.li`
 
 export const MediaListItemMeta = ({ items = [] }: MediaListItemMetaProps) => {
   const attributionItems = items.filter(isAttributionItem);
-  const attributionMeta = attributionItems.map((item) => `${item.label}: ${item.description}`).join(', ');
+  const attributionMeta = attributionItems.map((item) => `${item.label}: ${item.description}`).join(", ");
 
   return (
     <StyledMediaListItemMeta property="cc:attributionName" content={attributionMeta}>

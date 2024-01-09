@@ -6,23 +6,23 @@
  *
  */
 
-import { useEffect, useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import Switch from './Switch';
-import { defaultParameters } from '../../../stories/defaults';
+import { useEffect, useState } from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import Switch from "./Switch";
+import { defaultParameters } from "../../../stories/defaults";
 
 const meta: Meta<typeof Switch> = {
-  title: 'Components/Switch',
+  title: "Components/Switch",
   component: Switch,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
     checked: false,
-    label: 'Switch me!',
+    label: "Switch me!",
     onChange: () => {},
     disabled: false,
     defaultChecked: false,
-    className: '',
-    thumbCharacter: 'G',
+    className: "",
+    thumbCharacter: "G",
   },
   parameters: {
     ...defaultParameters,
@@ -38,4 +38,4 @@ export const SwitchStory: StoryFn<typeof Switch> = ({ ...args }) => {
   return <Switch {...args} checked={checked} onChange={(c) => setChecked(c)} />;
 };
 
-SwitchStory.storyName = 'Switch';
+SwitchStory.storyName = "Switch";

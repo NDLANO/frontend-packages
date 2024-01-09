@@ -6,9 +6,9 @@
  *
  */
 
-import ActiveFilters from './ActiveFilters';
-import SearchField from './SearchField';
+import ActiveFilters from "./ActiveFilters";
+import SearchField from "./SearchField";
 
-import { SearchResultList, SearchResultItem } from './SearchResult';
+import { SearchResultList, SearchResultItem } from "./SearchResult";
 
 export { SearchField, SearchResultItem, SearchResultList, ActiveFilters };

@@ -7,5 +7,5 @@
  */
 
 export function isFunction(object: any) {
-  return object && {}.toString.call(object) === '[object Function]';
+  return object && {}.toString.call(object) === "[object Function]";
 }

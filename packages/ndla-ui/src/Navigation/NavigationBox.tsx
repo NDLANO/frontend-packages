@@ -36,26 +36,28 @@ const StyledHeading = styled(Heading)`
 
 const StyledList = styled.ul`
   list-style: none;
-  margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xxsmall};
 
   &[data-direction="horizontal"] {
     ${mq.range({ from: breakpoints.tablet })} {
       column-count: 2;
-      column-gap: 20px;
+      gap: 20px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
     ${mq.range({ from: breakpoints.tabletWide })} {
       column-count: 3;
-      column-gap: 20px;
+      gap: 20px;
       grid-template-columns: repeat(3, 1fr);
     }
   }
 `;
 
 const StyledListItem = styled.li`
-  margin-bottom: 0;
+  padding: 0;
   break-inside: avoid;
 
   &[data-direction="floating"] {
@@ -64,15 +66,6 @@ const StyledListItem = styled.li`
     ${mq.range({ until: breakpoints.mobileWide })} {
       display: block;
     }
-  }
-`;
-
-const StyledSpacingElement = styled.span`
-  display: block;
-  width: 100%;
-  height: 2px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    height: 20px;
   }
 `;
 
@@ -247,7 +240,6 @@ export const NavigationBox = ({
                 </StyledButtonContent>
               </ListElementType>
             </StyledListElementWrapper>
-            {listDirection !== "floating" && <StyledSpacingElement />}
           </StyledListItem>
         ))}
       </StyledList>

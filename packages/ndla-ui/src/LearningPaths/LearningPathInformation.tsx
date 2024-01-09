@@ -20,6 +20,9 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   background: transparent;
   max-width: 720px;
   margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
+  ul {
+    padding-left: ${spacing.normal};
+  }
   ${mq.range({ from: breakpoints.desktop })} {
     margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
     padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacing.xxlarge};
@@ -30,9 +33,6 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     margin: 0;
     padding: ${spacing.small} ${spacing.normal};
-    ul {
-      padding: 0 ${spacingUnit * 0.75}px;
-    }
   }
   ${mq.range({ from: breakpoints.tablet })} {
     ${(props) =>
@@ -45,8 +45,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
 
 const LicenseWrapper = styled.div`
   ul {
-    margin-left: 0;
-    margin-bottom: ${spacing.small};
+    padding-left: 0;
   }
 `;
 

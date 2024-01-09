@@ -11,14 +11,12 @@ import styled from "@emotion/styled";
 import { colors, fonts, spacing } from "@ndla/core";
 
 const StyledUl = styled.ul`
-  padding-left: ${spacing.nsmall} !important;
-  margin-left: ${spacing.normal} !important;
-  margin-top: 0;
+  padding-left: ${spacing.nsmall};
+  margin-left: ${spacing.normal};
   ${fonts.sizes("18px", "29px")};
 
   ul {
-    padding-left: ${spacing.nsmall};
-    margin-left: 0 !important;
+    margin-left: 0;
   }
 
   > li {
@@ -28,11 +26,9 @@ const StyledUl = styled.ul`
   }
   // List item
   li {
+    padding-top: 0;
     padding-left: ${spacing.nsmall};
     margin-top: ${spacing.nsmall};
-    p {
-      margin-bottom: ${spacing.nsmall} !important;
-    }
   }
 `;
 

@@ -188,7 +188,7 @@ export const TableStyling = css`
   }
 
   ul {
-    margin: 0 0 0 ${spacing.nsmall};
+    padding: 0 0 0 ${spacing.nsmall};
   }
 
   .c-figure {

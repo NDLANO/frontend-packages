@@ -83,7 +83,7 @@ const getSizes = (size?: string, align?: string) => {
 export const getFocalPoint = (data: ImageEmbedData) => {
   const focalX = parseFloat(data.focalX ?? "");
   const focalY = parseFloat(data.focalY ?? "");
-  if (!!focalX && !!focalY) {
+  if (!isNaN(focalX) && !isNaN(focalY)) {
     return { x: focalX, y: focalY };
   }
   return undefined;
@@ -94,7 +94,7 @@ export const getCrop = (data: ImageEmbedData) => {
   const lowerRightY = parseFloat(data.lowerRightY ?? "");
   const upperLeftX = parseFloat(data.upperLeftX ?? "");
   const upperLeftY = parseFloat(data.upperLeftY ?? "");
-  if (!!lowerRightX && !!lowerRightY && !!upperLeftX && !!upperLeftY) {
+  if (!isNaN(lowerRightX) && !isNaN(lowerRightY) && !isNaN(upperLeftX) && !isNaN(upperLeftY)) {
     return {
       startX: lowerRightX,
       startY: lowerRightY,

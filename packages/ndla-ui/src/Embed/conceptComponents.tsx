@@ -160,7 +160,6 @@ const StyledList = styled.ul`
   align-items: center;
   list-style: none;
   > li {
-    margin: 0;
     font-family: ${fonts.sans};
     font-weight: ${fonts.weight.semibold};
     border-radius: ${misc.borderRadius};

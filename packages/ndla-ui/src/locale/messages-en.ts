@@ -896,7 +896,9 @@ const messages = {
     close: "Close fact box",
   },
   myNdla: {
+    mainMenu: "Main menu",
     myNDLA: "My NDLA",
+    myNDLAMenu: "My NDLA menu",
     support: "Support",
     resources: "{{count}} Resource",
     resources_plural: "{{count}} Resources",
@@ -906,6 +908,7 @@ const messages = {
     showEditOptions: "Show editing options",
     folder: {
       folder: "Folder",
+      navigation: "Folder navigation",
       delete: "Delete folder",
       deleteShort: "Delete",
       edit: "Edit folder",

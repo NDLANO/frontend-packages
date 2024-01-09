@@ -42,7 +42,6 @@ const Content = styled.div`
 `;
 
 const ContextList = styled.ul`
-  margin: 0;
   padding: 0;
   list-style: none;
 `;
@@ -61,8 +60,6 @@ export type ItemContextsType = {
   id: string | number;
   title: string;
 };
-
-const iconStyle = { width: "22px", height: "22px" };
 
 const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
   const { t } = useTranslation();
@@ -103,9 +100,19 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
                     <SafeLink to={context.url}>{title}</SafeLink>
                     <Breadcrumb breadcrumb={context.breadcrumb}>
                       {context.isAdditional ? (
-                        <Additional style={iconStyle} color={colors.brand.dark} />
+                        <Additional
+                          size="normal"
+                          color={colors.brand.dark}
+                          aria-hidden={false}
+                          title={t("resource.tooltipAdditionalTopic")}
+                        />
                       ) : (
-                        <Core style={iconStyle} color={colors.brand.primary} />
+                        <Core
+                          size="normal"
+                          color={colors.brand.primary}
+                          title={t("resource.tooltipCoreTopic")}
+                          aria-hidden={false}
+                        />
                       )}
                     </Breadcrumb>
                   </ContextListItem>

@@ -137,7 +137,7 @@ const StyledSubjects = styled.div`
   }
 
   li {
-    margin: 0;
+    padding: 0;
     position: relative;
     line-height: 1rem;
 
@@ -332,10 +332,9 @@ const EmptyResultList = styled.article`
 
 const ResultList = styled.ul`
   list-style: none;
-  margin: 0;
   padding: 0;
   ${mq.range({ from: breakpoints.desktop })} {
-    margin: ${spacing.medium} 0 0 0;
+    padding: ${spacing.medium} 0 0 0;
   }
 `;
 

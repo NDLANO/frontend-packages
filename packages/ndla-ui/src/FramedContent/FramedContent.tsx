@@ -6,11 +6,9 @@
  *
  */
 
-import { HTMLAttributes } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing } from "@ndla/core";
-
-interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 const StyledFramedContent = styled.div`
   padding: ${spacing.mediumlarge};
@@ -45,8 +43,10 @@ const StyledFramedContent = styled.div`
   }
 `;
 
-const FramedContent = ({ children, ...rest }: Props) => {
-  return <StyledFramedContent {...rest}>{children}</StyledFramedContent>;
-};
+const FramedContent = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(({ children, ...rest }, ref) => (
+  <StyledFramedContent {...rest} ref={ref}>
+    {children}
+  </StyledFramedContent>
+));
 
 export default FramedContent;

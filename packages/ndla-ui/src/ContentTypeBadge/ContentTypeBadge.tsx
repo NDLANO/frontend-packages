@@ -12,6 +12,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, mq } from "@ndla/core";
 import { MenuBook } from "@ndla/icons/action";
+import { Audio } from "@ndla/icons/common";
 import {
   SubjectMaterial,
   TasksAndActivities,
@@ -23,7 +24,7 @@ import {
   MultidisciplinaryTopic,
 } from "@ndla/icons/contentType";
 
-import { Concept, ImageNormal, SquareAudio, SquareVideo } from "@ndla/icons/editor";
+import { Concept, Media, Video } from "@ndla/icons/editor";
 
 import * as contentTypes from "../model/ContentType";
 
@@ -139,17 +140,17 @@ const iconMap = {
     backgroundColor: "#b9b37b",
   },
   [contentTypes.resourceEmbedTypeMapping.image]: {
-    icon: ImageNormal,
+    icon: Media,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.audio]: {
-    icon: SquareAudio,
+    icon: Audio,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.video]: {
-    icon: SquareVideo,
+    icon: Video,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },

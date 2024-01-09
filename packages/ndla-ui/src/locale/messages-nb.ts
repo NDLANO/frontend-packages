@@ -896,7 +896,9 @@ const messages = {
     close: "Lukk faktaboks",
   },
   myNdla: {
+    mainMenu: "Hovedmeny",
     myNDLA: "Min NDLA",
+    myNDLAMenu: "Min NDLA meny",
     support: "Brukerstøtte",
     resources: "{{count}} ressurs",
     resources_plural: "{{count}} ressurser",
@@ -906,6 +908,7 @@ const messages = {
     showEditOptions: "Vis redigeringsmuligheter",
     folder: {
       folder: "Mappe",
+      navigation: "Mappenavigasjon",
       delete: "Slett mappe",
       deleteShort: "Slett",
       edit: "Rediger mappe",

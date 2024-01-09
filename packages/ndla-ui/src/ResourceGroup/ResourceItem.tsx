@@ -198,10 +198,6 @@ interface Props {
 const IconWrapper = styled.div`
   display: flex;
   flex-grow: 1;
-  svg {
-    width: 26px;
-    height: 26px;
-  }
 `;
 
 const ResourceItem = ({
@@ -266,12 +262,12 @@ const ResourceItem = ({
           <>
             {additional && (
               <IconWrapper id={additionalId} aria-label={contentTypeDescription} title={contentTypeDescription}>
-                <Additional color={colors.brand.dark} />
+                <Additional color={colors.brand.dark} size="normal" />
               </IconWrapper>
             )}
             {!additional && (
               <IconWrapper id={coreId} aria-label={contentTypeDescription} title={contentTypeDescription}>
-                <Core color={colors.brand.primary} />
+                <Core color={colors.brand.primary} size="normal" />
               </IconWrapper>
             )}
           </>

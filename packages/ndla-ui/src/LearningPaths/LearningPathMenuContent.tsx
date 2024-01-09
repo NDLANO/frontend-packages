@@ -27,7 +27,7 @@ type StyledMenuItemProps = {
 };
 
 const StyledMenuItem = styled.li<StyledMenuItemProps>`
-  margin: 0;
+  padding: 0;
   a {
     box-shadow: none;
     display: inline-flex;
@@ -153,7 +153,6 @@ type StyledNavigationProps = {
 const StyledNavigation = styled.nav<StyledNavigationProps>`
   > ul {
     list-style: none;
-    margin: 0;
     padding: 0;
   }
   margin-bottom: ${spacing.medium};

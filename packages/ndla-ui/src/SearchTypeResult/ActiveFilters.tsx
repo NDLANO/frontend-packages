@@ -21,7 +21,6 @@ type StyledActiveFiltersProps = {
 };
 
 const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
-  margin: 0;
   padding: 0;
   display: none;
   ${(props: StyledActiveFiltersProps) =>
@@ -84,10 +83,10 @@ const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
 const StyledActiveFilterWrapper = styled.li`
   list-style: none;
   display: flex;
-  margin: 0;
-  margin-right: ${spacing.xsmall};
+  padding: 0;
+  padding-right: ${spacing.xsmall};
   ${mq.range({ until: breakpoints.desktop })} {
-    margin-bottom: ${spacing.xsmall};
+    padding-bottom: ${spacing.xsmall};
   }
 `;
 

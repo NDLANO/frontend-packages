@@ -125,7 +125,6 @@ const StyledSnackList = styled.ul`
   display: flex;
   flex-direction: column;
   pointer-events: none;
-  margin: 0 auto;
   padding: 0;
   bottom: env(safe-area-inset-bottom, 40px);
   right: env(safe-area-inset-right, 0px);

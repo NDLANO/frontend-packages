@@ -20,7 +20,6 @@ interface StyledListItemProps {
 export const StyledListItem = styled.li<StyledListItemProps>`
   display: flex;
   padding-bottom: ${(props) => (props.horizontal ? `0` : `5px`)};
-  margin-bottom: 0;
   margin-right: 0.2em;
   line-height: 1.3rem;
   color: ${colors.brand.primary};

@@ -9,11 +9,7 @@
 import Icon, { Props } from "../Icon";
 const Subject = (props: Props) => (
   <Icon data-license="Apache License 2.0" data-source="Material Design" viewBox="0 0 24 24" {...props}>
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M18.3 19.4V3.7H5.8v15.7l6.2-2.7zM17.7 2c.7 0 1.2.2 1.6.7.5.4.7 1 .7 1.5V22l-8-3.3L4 22V4.2c0-.6.2-1 .7-1.5A2 2 0 0 1 6.3 2z"
-    />
+    <path d="M5 21V5c0-.55.2-1.02.59-1.41C5.98 3.19 6.45 3 7 3h10c.55 0 1.02.2 1.41.59.4.39.59.86.59 1.41v16l-7-3zm2-3.05 5-2.15 5 2.15V5H7z" />
   </Icon>
 );
 export default Subject;

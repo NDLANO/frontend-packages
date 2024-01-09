@@ -16,8 +16,8 @@ export interface CampaignBlockEmbedData {
   description: string;
   descriptionLanguage: string;
   headingLevel: "h1" | "h2" | "h3" | "h4" | "h5";
-  url: string;
-  urlText: string;
+  url?: string;
+  urlText?: string;
   imageId?: string;
   imageSide?: "left" | "right";
   alt?: string;

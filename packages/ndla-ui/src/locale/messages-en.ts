@@ -972,6 +972,24 @@ const messages = {
         posts: 'post',
         posts_plural: 'posts',
       },
+      cancel: {
+        title: {
+          topic: 'Discard new post',
+          post: 'Discard new answer',
+        },
+        content: {
+          topic: 'Do you want to discard this post? The post will be deleted and you cannot find it again later.',
+          post: 'Do you want to discard this answer? The answer will be deleted and you cannot find it again later.',
+        },
+        cancel: {
+          topic: 'Discard post',
+          post: 'Discard answer',
+        },
+        continue: {
+          topic: 'Continue writing post',
+          post: 'Continue writing answer',
+        },
+      },
       new: {
         post: 'Write a reply',
         topic: 'New topic',

@@ -974,6 +974,24 @@ const messages = {
         posts_plural: 'sáhkavuorru',
       },
       publish: 'Almmuheaddji',
+      cancel: {
+        title: {
+          topic: 'Bálkes ođđa reivve',
+          post: 'Bálkes ođđa vástádusa',
+        },
+        content: {
+          topic: 'Hilggo dán sáhkavuoru? Čála sihkkojuvvo ja it gávnna dan šat maŋŋá.',
+          post: 'Hilggo dán vástádusa? Vástádus sihkkojuvvo, ja don it sáhte dan gávdnat šat maŋŋeleappos.',
+        },
+        cancel: {
+          topic: 'Bálkes čállosa ovdalgihtii',
+          post: 'Bálkes vástádusa ovdalgihtii',
+        },
+        continue: {
+          topic: 'Joatkke čállimis',
+          post: 'Joatkke čállimis vástádusa',
+        },
+      },
       new: {
         post: 'Čále vástádusa',
         topic: 'Ođđa reivvet',

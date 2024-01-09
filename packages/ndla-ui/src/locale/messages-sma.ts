@@ -976,6 +976,25 @@ const messages = {
         posts_plural: 'håaleme',
       },
       publish: 'Bæjhkoehtidh',
+      cancel: {
+        title: {
+          topic: 'Båetieh orre tjaalegem',
+          post: 'Bååstede orre vaestiedassem',
+        },
+        content: {
+          topic:
+            'Sïjhth dam håalemem sliejhtedh ? Tjaalege sæjhta destie vaaltasovvedh jïh datne ih maehtieh dam ikth vielie gaavnedh mænngan.',
+          post: 'Sïjhth dam vaestiedassem bååstede giesedh ? Vaestiedasse sæjhta destie vaaltasovvedh , jïh dan mænngan ih maehtieh dam gaavnedh .',
+        },
+        cancel: {
+          topic: 'Båetieh håalemistie',
+          post: 'Bååstede vaestiedassese',
+        },
+        continue: {
+          topic: 'Jåarhkh tjaeledh',
+          post: 'Jåarhkh vaastoem tjaeledh',
+        },
+      },
       new: {
         post: 'Tjaelieh vaastoem',
         topic: 'Orre lahtese',

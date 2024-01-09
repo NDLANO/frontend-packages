@@ -972,6 +972,24 @@ const messages = {
         posts_plural: 'innlegg',
       },
       publish: 'Publiser',
+      cancel: {
+        title: {
+          topic: 'Forkast nytt innlegg',
+          post: 'Forkast nytt svar',
+        },
+        content: {
+          topic: 'Vil du forkaste dette innlegget? Innlegget vil bli slettet og du kan ikke finne det igjen senere.',
+          post: 'Vil du forkaste dette svaret? Svaret vil bli slettet og du kan ikke finne det igjen senere.',
+        },
+        cancel: {
+          topic: 'Forkast innlegget',
+          post: 'Forkast svaret',
+        },
+        continue: {
+          topic: 'Fortsett å skrive innlegg',
+          post: 'Fortsett å skrive svaret',
+        },
+      },
       new: {
         post: 'Skriv et svar',
         topic: 'Nytt innlegg',

@@ -139,7 +139,7 @@
 }
 
 .c-article__title--icon {
-  padding-left: 70px;
+  padding-left: 80px;
 
   @include mq(desktop) {
     padding-left: 0;
@@ -154,7 +154,7 @@
     }
 
     @include mq(desktop) {
-      left: -70px;
+      left: -80px;
       top: $spacing--small / 2;
     }
   }

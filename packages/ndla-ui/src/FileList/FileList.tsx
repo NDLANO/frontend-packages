@@ -33,7 +33,6 @@ const FileListHeaderWrapper = styled.div`
 `;
 
 const FilesList = styled.ul`
-  margin: 0;
   padding: 0;
 `;
 

@@ -896,7 +896,9 @@ const messages = {
     close: 'Close fact box',
   },
   myNdla: {
+    mainMenu: 'Main menu',
     myNDLA: 'My NDLA',
+    myNDLAMenu: 'My NDLA menu',
     support: 'Support',
     resources: '{{count}} Resource',
     resources_plural: '{{count}} Resources',
@@ -906,6 +908,7 @@ const messages = {
     showEditOptions: 'Show editing options',
     folder: {
       folder: 'Folder',
+      navigation: 'Folder navigation',
       delete: 'Delete folder',
       deleteShort: 'Delete',
       edit: 'Edit folder',
@@ -1072,6 +1075,7 @@ const messages = {
     addToFavourites: 'Add to my favourites',
     alreadyFavourited: 'Already in my favourites',
     alreadyInFolder: 'Already in folder. You can still save new tags.',
+    addInSharedFolder: 'This folder is shared. Content you add will also be shared.',
     noFolderSelected: 'Select or create a new folder to save the resource.',
     examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     copyFolderDisclaimer:

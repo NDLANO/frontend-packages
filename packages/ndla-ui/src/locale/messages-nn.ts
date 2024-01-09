@@ -896,7 +896,9 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
+    mainMenu: 'Hovedmeny',
     myNDLA: 'Min NDLA',
+    myNDLAMenu: 'Min NDLA meny',
     support: 'Brukarstøtte',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressursar',
@@ -906,6 +908,7 @@ const messages = {
     showEditOptions: 'Vis redigeringsmoglegheiter',
     folder: {
       folder: 'Mappe',
+      navigation: 'Mappenavigasjon',
       delete: 'Slett mappe',
       deleteShort: 'Slett',
       edit: 'Rediger mappe',
@@ -1070,6 +1073,7 @@ const messages = {
     addToFavourites: 'Legg til i mine favorittar',
     alreadyFavourited: 'Allereie lagt til i mine favorittar',
     alreadyInFolder: 'Finst allereie i mappa. Du kan fortsatt lagre nye emneknaggar.',
+    addInSharedFolder: 'Denne mappa er delt. Innhald du legg til vil også bli delt.',
     noFolderSelected: 'Velg eller opprett ny mappe for å lagre ressursen',
     examLockInfo: 'Redigering av innhald på Min NDLA er deaktivert for elevar i eksamensperioden.',
     copyFolderDisclaimer:

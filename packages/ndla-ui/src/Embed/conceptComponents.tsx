@@ -65,8 +65,11 @@ const NotionDialogContent = styled.div`
   flex-direction: column;
 `;
 
-const ContentPadding = styled.div`
+const ContentSpacing = styled.div`
   padding: ${spacing.normal};
+  &[data-is-concept='false'] {
+    margin-bottom: ${spacing.normal};
+  }
 `;
 
 const notionContentCss = css`
@@ -115,13 +118,16 @@ const NotionHeader = styled.div`
     ${fonts.sizes('22px', 1.2)};
   }
   small {
-    &[data-show-separator='true'] {
+    &[data-is-concept='true'] {
       border-left: 1px solid ${colors.brand.greyLight};
       padding-left: ${spacing.small};
       margin-left: ${spacing.xsmall};
     }
     ${fonts.sizes('20px', 1.2)};
     font-weight: ${fonts.weight.normal};
+  }
+  &[data-is-concept='false'] {
+    margin-bottom: ${spacing.large};
   }
 `;
 
@@ -154,7 +160,6 @@ const StyledList = styled.ul`
   align-items: center;
   list-style: none;
   > li {
-    margin: 0;
     font-family: ${fonts.sans};
     font-weight: ${fonts.weight.semibold};
     border-radius: ${misc.borderRadius};
@@ -193,11 +198,11 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
     const isConcept = conceptType === 'concept';
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
-        <ContentPadding>
-          <NotionHeader data-show-separator={isConcept}>
+        <ContentSpacing data-is-concept={isConcept}>
+          <NotionHeader data-is-concept={isConcept}>
             <h1>
               {isConcept && title.title}
-              {<small data-show-separator={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
+              {<small data-is-concept={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
             <ButtonWrapper>
               {headerButtons}
@@ -254,7 +259,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
               exampleLangs={exampleLangs}
             />
           )}
-        </ContentPadding>
+        </ContentSpacing>
         {copyright && (
           <EmbedByline copyright={copyright} type={conceptType as ConceptType}>
             {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}

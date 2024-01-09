@@ -95,7 +95,6 @@ export const StyledListItem = styled.li<StyledListItemProps>`
 export const StyledList = styled.ul<inMenuProps>`
   list-style: none;
   padding: 0;
-  margin: 0;
   ${(props) => {
     if (props.animateList && props.animateList > 0) {
       return animations.toggledContentWithSwitchAnimation(

@@ -11,7 +11,6 @@
 
 export { ExpandableBox, ExpandableBoxSummary } from './ExpandableBox';
 export { default as FramedContent } from './FramedContent';
-export { default as SectionHeading } from './SectionHeading';
 export {
   ConceptNotionV2,
   ImageEmbed,

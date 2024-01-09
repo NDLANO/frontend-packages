@@ -23,6 +23,7 @@ addons.setConfig({
       'my-ndla',
       'production-system',
       'forms',
+      'embeds',
     ],
   },
 });

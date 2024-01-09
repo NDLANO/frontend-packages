@@ -22,7 +22,6 @@ interface Props {
 export const StyledList = styled.ul<Props>`
   list-style: none;
   padding: 0;
-  margin: 0;
   display: flex;
   ${(p) =>
     p.highlightCC

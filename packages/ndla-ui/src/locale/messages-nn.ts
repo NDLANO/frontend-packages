@@ -976,18 +976,22 @@ const messages = {
         title: {
           topic: 'Forkast nytt innlegg',
           post: 'Forkast nytt svar',
+          edit: 'Avbryt redigering',
         },
         content: {
           topic: 'Vil du forkasta dette innlegget? Innlegget vil bli sletta og du kan ikkje finna det igjen seinare.',
           post: 'Vil du forkasta dette svaret? Svaret vil bli sletta og du kan ikkje finna det igjen seinare.',
+          edit: 'Vil du avslutta redigeringa? Eventuelle ikkje lagra endringar vil gå tapt.',
         },
         cancel: {
           topic: 'Forkast innlegget',
           post: 'Forkast svaret',
+          edit: 'Avbryt redigeringen',
         },
         continue: {
           topic: 'Hald fram med å skriva innlegget',
           post: 'Hald fram med å skriva svaret',
+          edit: 'Hald fram med å redigere',
         },
       },
       new: {

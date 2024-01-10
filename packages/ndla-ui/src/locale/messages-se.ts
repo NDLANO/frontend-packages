@@ -978,18 +978,22 @@ const messages = {
         title: {
           topic: 'Bálkes ođđa reivve',
           post: 'Bálkes ođđa vástádusa',
+          edit: 'Gaskkalduhte doaimmaheami',
         },
         content: {
           topic: 'Hilggo dán sáhkavuoru? Čála sihkkojuvvo ja it gávnna dan šat maŋŋá.',
           post: 'Hilggo dán vástádusa? Vástádus sihkkojuvvo, ja don it sáhte dan gávdnat šat maŋŋeleappos.',
+          edit: 'Hálidatgo heaittihit doaimmaheami? Rievdadusat mat eai leat vurkejuvvon mannet duššái.',
         },
         cancel: {
           topic: 'Bálkes čállosa ovdalgihtii',
           post: 'Bálkes vástádusa ovdalgihtii',
+          edit: 'Gaskkalduhte doaimmaheami',
         },
         continue: {
           topic: 'Joatkke čállimis',
           post: 'Joatkke čállimis vástádusa',
+          edit: 'Joatkke doaimmaheames',
         },
       },
       new: {

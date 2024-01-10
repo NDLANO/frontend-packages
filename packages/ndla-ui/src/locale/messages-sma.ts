@@ -980,19 +980,23 @@ const messages = {
         title: {
           topic: 'Båetieh orre tjaalegem',
           post: 'Bååstede orre vaestiedassem',
+          edit: 'Aborten edtja tjyölkehtidh',
         },
         content: {
           topic:
-            'Sïjhth dam håalemem sliejhtedh ? Tjaalege sæjhta destie vaaltasovvedh jïh datne ih maehtieh dam ikth vielie gaavnedh mænngan.',
-          post: 'Sïjhth dam vaestiedassem bååstede giesedh ? Vaestiedasse sæjhta destie vaaltasovvedh , jïh dan mænngan ih maehtieh dam gaavnedh .',
+            'Sïjhth dam håalemem sliejhtedh? Tjaalege sæjhta destie vaaltasovvedh jïh datne ih maehtieh dam ikth vielie gaavnedh mænngan.',
+          post: 'Sïjhth dam vaestiedassem bååstede giesedh? Vaestiedasse sæjhta destie vaaltasovvedh , jïh dan mænngan ih maehtieh dam gaavnedh.',
+          edit: 'Sïjhth dåeriedimmiem orrijidh? Jeatjah jarkelimmieh mah eah leah vaaltasovveme sïjhtieh gååvnesidh.',
         },
         cancel: {
           topic: 'Båetieh håalemistie',
           post: 'Bååstede vaestiedassese',
+          edit: 'Aborten edtja tjyölkehtidh',
         },
         continue: {
           topic: 'Jåarhkh tjaeledh',
           post: 'Jåarhkh vaastoem tjaeledh',
+          edit: 'Jåarhkh staeriedidh',
         },
       },
       new: {

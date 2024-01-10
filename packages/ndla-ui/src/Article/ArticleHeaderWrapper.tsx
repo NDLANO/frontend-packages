@@ -34,7 +34,7 @@ const ArticleHeaderWrapper = ({ children, competenceGoals }: Props) => {
   return (
     <div {...classes("header")}>
       {children}
-      {competenceGoals}
+      <div {...classes("competence")}>{competenceGoals}</div>
     </div>
   );
 };

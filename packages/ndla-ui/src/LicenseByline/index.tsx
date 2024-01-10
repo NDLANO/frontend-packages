@@ -6,4 +6,4 @@
  *
  */
 
-export { default as EmbedByline } from './EmbedByline';
+export { default as EmbedByline } from "./EmbedByline";

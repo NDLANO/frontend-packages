@@ -6,14 +6,14 @@
  *
  */
 
-import { Element, domToReact } from 'html-react-parser';
-import { CopyParagraphButton } from '@ndla/ui';
-import { PluginType } from './types';
+import { Element, domToReact } from "html-react-parser";
+import { CopyParagraphButton } from "@ndla/ui";
+import { PluginType } from "./types";
 export const copyParagraphPlugin: PluginType = (node, converterOpts, opts) => {
   const parent = node.parent as Element | undefined;
-  if (parent?.name === 'section' || (parent?.name === 'div' && Object.keys(parent.attribs ?? {}).length === 0)) {
+  if (parent?.name === "section" || (parent?.name === "div" && Object.keys(parent.attribs ?? {}).length === 0)) {
     return (
-      <CopyParagraphButton copyText={node.attribs['data-text']} lang={opts.articleLanguage}>
+      <CopyParagraphButton copyText={node.attribs["data-text"]} lang={opts.articleLanguage}>
         {domToReact(node.children, converterOpts)}
       </CopyParagraphButton>
     );

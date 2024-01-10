@@ -6,12 +6,12 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../defaults';
-import { StoryBody, StoryIntro } from '../wrappers';
+import { Meta, StoryFn } from "@storybook/react";
+import { defaultParameters } from "../defaults";
+import { StoryBody, StoryIntro } from "../wrappers";
 
 const meta: Meta = {
-  title: 'Base styles/Quotations',
+  title: "Base styles/Quotations",
   parameters: defaultParameters,
 };
 

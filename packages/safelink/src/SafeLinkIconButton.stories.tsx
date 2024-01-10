@@ -6,22 +6,22 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import { PersonOutlined } from '@ndla/icons/common';
-import MissingRouterContext from './MissingRouterContext';
-import SafeLinkIconButton from './SafeLinkIconButton';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import { PersonOutlined } from "@ndla/icons/common";
+import MissingRouterContext from "./MissingRouterContext";
+import SafeLinkIconButton from "./SafeLinkIconButton";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Components/SafeLinkIconButton',
+  title: "Components/SafeLinkIconButton",
   component: SafeLinkIconButton,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   paramemeters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    to: '/',
+    to: "/",
     children: <PersonOutlined />,
   },
   argTypes: {
@@ -36,7 +36,12 @@ export const Disabled: StoryObj<typeof SafeLinkIconButton> = {
 };
 
 export const ExternalLink: StoryObj<typeof SafeLinkIconButton> = {
-  args: { to: 'https://example.com', showNewWindowIcon: true, children: null, target: '_blank' },
+  args: {
+    to: "https://example.com",
+    showNewWindowIcon: true,
+    children: null,
+    target: "_blank",
+  },
 };
 
 export const WithMissingRouterContext: StoryObj<typeof SafeLinkIconButton> = {
@@ -47,5 +52,5 @@ export const WithMissingRouterContext: StoryObj<typeof SafeLinkIconButton> = {
       </MissingRouterContext.Provider>
     ),
   ],
-  args: { to: 'https://example.com', target: '_blank' },
+  args: { to: "https://example.com", target: "_blank" },
 };

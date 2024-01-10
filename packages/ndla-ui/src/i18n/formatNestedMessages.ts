@@ -17,7 +17,7 @@ interface FormattedMessages {
 export const formatNestedMessages = (
   phrases: Phrases,
   formattedMessages: FormattedMessages = {},
-  prefix: string = '',
+  prefix: string = "",
 ) => {
   const messages = formattedMessages;
 
@@ -26,7 +26,7 @@ export const formatNestedMessages = (
     const value = phrases[key];
     if ({}.hasOwnProperty.call(phrases, key)) {
       const keyWithPrefix = prefix ? `${prefix}.${key}` : key;
-      if (typeof value === 'object') {
+      if (typeof value === "object") {
         formatNestedMessages(value, formattedMessages, keyWithPrefix);
       } else {
         messages[keyWithPrefix] = value;

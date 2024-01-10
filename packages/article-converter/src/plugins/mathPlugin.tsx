@@ -6,10 +6,10 @@
  *
  */
 
-import { attributesToProps } from 'html-react-parser';
-import { PluginType } from './types';
+import { attributesToProps } from "html-react-parser";
+import { PluginType } from "./types";
 export const mathPlugin: PluginType = (node) => {
-  const { 'data-math': mathContent, ...props } = attributesToProps(node.attribs);
+  const { "data-math": mathContent, ...props } = attributesToProps(node.attribs);
   // @ts-ignore
   return <math {...props} dangerouslySetInnerHTML={{ __html: mathContent }} />;
 };

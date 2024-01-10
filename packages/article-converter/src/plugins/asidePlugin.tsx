@@ -6,13 +6,13 @@
  *
  */
 
-import { domToReact } from 'html-react-parser';
-import { Aside, FactBox } from '@ndla/ui';
-import { PluginType } from './types';
+import { domToReact } from "html-react-parser";
+import { Aside, FactBox } from "@ndla/ui";
+import { PluginType } from "./types";
 export const asidePlugin: PluginType = (node, opts) => {
-  if (node.attribs['data-type'] === 'factAside') {
+  if (node.attribs["data-type"] === "factAside") {
     return <FactBox>{domToReact(node.children, opts)}</FactBox>;
-  } else if (node.attribs['data-type'] === 'rightAside') {
+  } else if (node.attribs["data-type"] === "rightAside") {
     return (
       <Aside wideScreen alwaysShow>
         {domToReact(node.children, opts)}

@@ -6,11 +6,11 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { animations, breakpoints, mq, spacing } from '@ndla/core';
-import { Figure, FigureOpenDialogButton } from '../Figure';
-import Image from '../Image';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { animations, breakpoints, mq, spacing } from "@ndla/core";
+import { Figure, FigureOpenDialogButton } from "../Figure";
+import Image from "../Image";
 
 const StyledImageWrapper = styled.div`
   overflow: hidden;
@@ -38,7 +38,7 @@ const StyledImage = styled(Image)`
 `;
 
 interface Props {
-  type: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | 'audio' | undefined;
+  type: "image" | "video" | "h5p" | "iframe" | "external" | "audio" | undefined;
   id: string;
   src: string;
   alt: string;
@@ -49,7 +49,7 @@ export const NotionImage = ({ id, src, alt, type }: Props) => {
   const imageFigureId = `image-figure-${id}`;
 
   return (
-    <Figure resizeIframe id={imageFigureId} type={'full-column'}>
+    <Figure resizeIframe id={imageFigureId} type={"full-column"}>
       <StyledImageWrapper>
         <StyledImage
           alt={alt}
@@ -58,8 +58,8 @@ export const NotionImage = ({ id, src, alt, type }: Props) => {
             <FigureOpenDialogButton
               type={type}
               messages={{
-                zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
-                zoomOutImageButtonLabel: t('license.image.itemImage.zoomOutImageButtonLabel'),
+                zoomImageButtonLabel: t("license.images.itemImage.zoomImageButtonLabel"),
+                zoomOutImageButtonLabel: t("license.image.itemImage.zoomOutImageButtonLabel"),
               }}
             />
           }

@@ -7,13 +7,13 @@
  */
 /* eslint-disable max-len */
 
-import BEMHelper from 'react-bem-helper';
-import SafeLink from '@ndla/safelink';
-import SvgLogo from './SvgLogo';
+import BEMHelper from "react-bem-helper";
+import SafeLink from "@ndla/safelink";
+import SvgLogo from "./SvgLogo";
 
 export const logoClasses = new BEMHelper({
-  name: 'logo',
-  prefix: 'c-',
+  name: "logo",
+  prefix: "c-",
 });
 
 interface Props {
@@ -48,7 +48,7 @@ export const Logo = ({ name = true, to, cssModifier, color, large = false, local
       <SvgLogo name={name} color={color} locale={locale} />
     </>
   );
-  return <div {...logoClasses('', modifiers)}>{logo}</div>;
+  return <div {...logoClasses("", modifiers)}>{logo}</div>;
 };
 
 export default Logo;

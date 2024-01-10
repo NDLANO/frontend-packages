@@ -6,14 +6,14 @@
  *
  */
 
-import { ReactNode, useEffect, useState, useRef, ChangeEvent } from 'react';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, spacing, fonts, misc, animations } from '@ndla/core';
-import { Spinner } from '@ndla/icons';
-import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
-import { getIllegalFiles } from './filetypeHelper';
+import { ReactNode, useEffect, useState, useRef, ChangeEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, fonts, misc, animations } from "@ndla/core";
+import { Spinner } from "@ndla/icons";
+import { CloudUploadOutline, AlertCircle } from "@ndla/icons/editor";
+import { getIllegalFiles } from "./filetypeHelper";
 
 const SpinnerWrapper = styled.div`
   margin: -${spacing.small} 0;
@@ -54,7 +54,7 @@ const DropZone = styled.div<{ draggedOver?: boolean }>`
   border-radius: ${spacing.xsmall};
 
   input {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     background: ${colors.support.red};
@@ -67,7 +67,7 @@ const DropZone = styled.div<{ draggedOver?: boolean }>`
   }
 
   &:before {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     background: ${colors.brand.tertiary};
@@ -76,7 +76,7 @@ const DropZone = styled.div<{ draggedOver?: boolean }>`
     left: ${spacing.small};
     bottom: ${spacing.small};
     border-radius: ${misc.borderRadius};
-    opacity: ${(props) => (props.draggedOver ? '0.32' : '0.16')};
+    opacity: ${(props) => (props.draggedOver ? "0.32" : "0.16")};
     transition: opacity 200ms ease;
   }
 `;
@@ -185,8 +185,8 @@ const UploadDropZone = ({
       const illegalFiles = getIllegalFiles(files, allowedFiles);
 
       if (illegalFiles.length > 0) {
-        const illegalFileTypes = files.map((file) => file.type.substr(file.type.indexOf('/') + 1)).toString();
-        setError(errorMessage || t('fileTypesNotSupported', { fileTypes: illegalFileTypes }));
+        const illegalFileTypes = files.map((file) => file.type.substr(file.type.indexOf("/") + 1)).toString();
+        setError(errorMessage || t("fileTypesNotSupported", { fileTypes: illegalFileTypes }));
         if (errorTimer) {
           clearTimeout(errorTimer);
         }
@@ -202,7 +202,7 @@ const UploadDropZone = ({
     }
 
     setDraggedInside(false);
-    e.target.value = '';
+    e.target.value = "";
   };
 
   const onDragEnter = () => {

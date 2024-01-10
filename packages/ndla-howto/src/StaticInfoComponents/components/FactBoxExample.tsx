@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { BY, NC, ND } from '@ndla/licenses';
-import { LicenseByline } from '@ndla/notion';
-import { FactBox } from '@ndla/ui';
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
+import { BY, NC, ND } from "@ndla/licenses";
+import { LicenseByline } from "@ndla/notion";
+import { FactBox } from "@ndla/ui";
 
 const SourceList = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const SourceList = styled.div`
   margin-top: ${spacing.small};
   color: ${colors.brand.grey};
   align-items: center;
-  ${fonts.sizes('15px')};
+  ${fonts.sizes("15px")};
   span {
     margin-right: ${spacing.small};
   }

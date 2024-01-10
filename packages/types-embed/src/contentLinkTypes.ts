@@ -6,10 +6,10 @@
  *
  */
 
-import { MetaData } from '.';
+import { MetaData } from ".";
 
 export interface ContentLinkEmbedData {
-  resource: 'content-link';
+  resource: "content-link";
   contentId: string;
   linkText?: string;
   openIn?: string;

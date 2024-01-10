@@ -6,19 +6,19 @@
  *
  */
 
-import { ReactNode, useMemo } from 'react';
-import ReactSelect, { PropsValue, createFilter, OptionsOrGroups, StylesConfig } from 'react-select';
-import BaseContainer from './BaseContainer';
-import BaseControl from './BaseControl';
-import BaseDropdownIndicator from './BaseDropdownIndicator';
-import BaseGroupHeading from './BaseGroupHeading';
-import BaseMenu from './BaseMenu';
-import BaseMultiValue from './BaseMultiValue';
-import BaseOption from './BaseOption';
-import BasePlaceholder from './BasePlaceholder';
-import BaseSingleValue from './BaseSingleValue';
-import { Option, Color, MultiValue, SingleValue, GroupBase } from './types';
-import ValueContainer from './ValueContainer';
+import { ReactNode, useMemo } from "react";
+import ReactSelect, { PropsValue, createFilter, OptionsOrGroups, StylesConfig } from "react-select";
+import BaseContainer from "./BaseContainer";
+import BaseControl from "./BaseControl";
+import BaseDropdownIndicator from "./BaseDropdownIndicator";
+import BaseGroupHeading from "./BaseGroupHeading";
+import BaseMenu from "./BaseMenu";
+import BaseMultiValue from "./BaseMultiValue";
+import BaseOption from "./BaseOption";
+import BasePlaceholder from "./BasePlaceholder";
+import BaseSingleValue from "./BaseSingleValue";
+import { Option, Color, MultiValue, SingleValue, GroupBase } from "./types";
+import ValueContainer from "./ValueContainer";
 
 interface Props<T extends boolean> {
   /** Options to populate the select menu. Grouped view if options are of type GroupBase. */
@@ -27,7 +27,7 @@ interface Props<T extends boolean> {
   onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
   value?: PropsValue<Option>;
   placeholder?: string;
-  menuPlacement?: 'bottom' | 'top' | 'auto';
+  menuPlacement?: "bottom" | "top" | "auto";
   isMulti?: T;
   hideArrow?: boolean;
   isLoading?: boolean;
@@ -43,7 +43,7 @@ interface Props<T extends boolean> {
   isClearable?: boolean;
   closeMenuOnSelect?: boolean;
   /** Indicate if search hits should be matched from start of word or at any position. Only has effect when isSearchable is true. */
-  matchFrom?: 'any' | 'start';
+  matchFrom?: "any" | "start";
   required?: boolean;
   isDisabled?: boolean;
   id?: string;
@@ -55,15 +55,15 @@ const Select = <T extends boolean>({
   options,
   hideArrow,
   label,
-  menuPlacement = 'bottom',
-  colorTheme = 'blue',
+  menuPlacement = "bottom",
+  colorTheme = "blue",
   isSearchable = false,
-  matchFrom = 'start',
+  matchFrom = "start",
   inModal,
   isMulti,
   ...rest
 }: Props<T>) => {
-  const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document.body : null), []);
+  const portalTarget = useMemo(() => (typeof document !== "undefined" ? document.body : null), []);
 
   const components = useMemo(
     () => ({
@@ -84,7 +84,7 @@ const Select = <T extends boolean>({
 
   const styles: StylesConfig<Option, T> = useMemo(() => ({ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }), []);
   const filterOption = useMemo(
-    () => (matchFrom === 'start' ? createFilter({ matchFrom: 'start' }) : undefined),
+    () => (matchFrom === "start" ? createFilter({ matchFrom: "start" }) : undefined),
     [matchFrom],
   );
 

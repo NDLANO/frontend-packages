@@ -6,7 +6,7 @@
  *
  */
 
-import ContentLoader from '../ContentLoader';
+import ContentLoader from "../ContentLoader";
 
 const Loader = () => (
   <ContentLoader width={800} height={880}>

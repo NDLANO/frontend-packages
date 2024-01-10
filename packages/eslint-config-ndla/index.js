@@ -7,5 +7,5 @@
  */
 
 module.exports = {
-  extends: ['./base'].map(require.resolve),
+  extends: ["./base"].map(require.resolve),
 };

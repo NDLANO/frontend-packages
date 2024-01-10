@@ -6,7 +6,7 @@
  *
  */
 
-import { ButtonV2 } from '@ndla/button';
+import { ButtonV2 } from "@ndla/button";
 
 interface Props {
   onClick?: () => void;

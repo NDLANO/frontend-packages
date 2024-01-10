@@ -6,20 +6,20 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
 
-import { HeadingLevel } from '@ndla/typography';
-import ResourceList, { ResourceListProps } from './ResourceList';
+import { HeadingLevel } from "@ndla/typography";
+import ResourceList, { ResourceListProps } from "./ResourceList";
 
 const Wrapper = styled.section`
   margin-bottom: ${spacing.large};
 `;
 
 const headingStyle = css`
-  ${fonts.sizes('16px', '18px')};
+  ${fonts.sizes("16px", "18px")};
   font-weight: ${fonts.weight.bold};
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -44,7 +44,7 @@ const ResourceGroup = ({
   toggleAdditionalResources,
   contentType,
   invertedStyle: invertedStyleProp,
-  headingLevel: Heading = 'h1',
+  headingLevel: Heading = "h1",
   heartButton,
 }: Props & ResourceListProps) => (
   <Wrapper>

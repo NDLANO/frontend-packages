@@ -6,13 +6,13 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import ContentLoader from '.';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import ContentLoader from ".";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/ContentLoader',
-  tags: ['autodocs'],
+  title: "Components/ContentLoader",
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,

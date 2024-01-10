@@ -6,16 +6,16 @@
  *
  */
 
-import { HTMLProps, MutableRefObject, useEffect, useRef } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, fonts, colors } from '@ndla/core';
-import { Download, InformationOutline } from '@ndla/icons/common';
-import Tooltip from '@ndla/tooltip';
-import { createUniversalPortal } from '@ndla/util';
-import { File, FileListMessages } from './FileListEditor';
+import { HTMLProps, MutableRefObject, useEffect, useRef } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, fonts, colors } from "@ndla/core";
+import { Download, InformationOutline } from "@ndla/icons/common";
+import Tooltip from "@ndla/tooltip";
+import { createUniversalPortal } from "@ndla/util";
+import { File, FileListMessages } from "./FileListEditor";
 
-interface InputComponentProps extends Omit<HTMLProps<HTMLInputElement>, 'as'> {
+interface InputComponentProps extends Omit<HTMLProps<HTMLInputElement>, "as"> {
   forwardedRef: MutableRefObject<HTMLUListElement | null>;
   usePortal?: boolean;
   childIndex: number;
@@ -41,7 +41,7 @@ const InputComponent = ({ usePortal, forwardedRef, childIndex, ...rest }: InputC
   if (!usePortal) {
     return <StyledInput ref={inputRef} {...rest} />;
   }
-  return createUniversalPortal(<StyledInput ref={inputRef} {...rest} />, 'body');
+  return createUniversalPortal(<StyledInput ref={inputRef} {...rest} />, "body");
 };
 
 const getButtonComponent = (file: File, isMissing: boolean, messages: FileListMessages) => {
@@ -54,7 +54,7 @@ const getButtonComponent = (file: File, isMissing: boolean, messages: FileListMe
             color: red;
           `}
         >
-          {file.title === '' ? messages.missingTitle : file.title}
+          {file.title === "" ? messages.missingTitle : file.title}
           {` `}
           <span>
             ({file.type}) {<InformationOutline aria-hidden="true" />}
@@ -71,7 +71,7 @@ const getButtonComponent = (file: File, isMissing: boolean, messages: FileListMe
       >
         <Tooltip tooltip={`${file.title} (${file.type.toUpperCase()})`}>
           <LinkButton type="button" onClick={() => window.open(file.url)}>
-            {file.title === '' ? messages.missingTitle : file.title}
+            {file.title === "" ? messages.missingTitle : file.title}
             {` `}
             <span>({file.type})</span>
           </LinkButton>

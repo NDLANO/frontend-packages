@@ -6,10 +6,10 @@
  *
  */
 
-import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from 'react';
-import { SerializedStyles } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
+import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from "react";
+import { SerializedStyles } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, fonts, misc, spacing, spacingUnit } from "@ndla/core";
 
 interface BaseInputProps {
   iconRight?: ReactNode;
@@ -124,7 +124,7 @@ const BaseInput = ({ iconRight, iconLeft, tags, white, warningText, label, child
   );
 };
 
-export interface InputProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLInputElement> {}
+export interface InputProps extends Omit<BaseInputProps, "children">, HTMLProps<HTMLInputElement> {}
 
 export const Input = ({
   iconRight,
@@ -134,7 +134,7 @@ export const Input = ({
   warningText,
   label,
   customCss,
-  value = '',
+  value = "",
   autoSelect,
   ...rest
 }: InputProps) => {
@@ -160,7 +160,7 @@ export const Input = ({
   );
 };
 
-export interface TextAreaProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLTextAreaElement> {}
+export interface TextAreaProps extends Omit<BaseInputProps, "children">, HTMLProps<HTMLTextAreaElement> {}
 
 export const TextArea = ({
   iconRight,
@@ -170,7 +170,7 @@ export const TextArea = ({
   warningText,
   label,
   customCss,
-  value = '',
+  value = "",
   onChange,
   ...rest
 }: TextAreaProps) => {
@@ -182,7 +182,7 @@ export const TextArea = ({
 
   const fixHeight = () => {
     if (inputRef.current) {
-      inputRef.current.style.height = '0px';
+      inputRef.current.style.height = "0px";
       inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
     }
   };

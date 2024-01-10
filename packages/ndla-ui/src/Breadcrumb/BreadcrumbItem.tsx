@@ -6,12 +6,12 @@
  *
  */
 
-import { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { mq, spacing, breakpoints } from '@ndla/core';
-import { ChevronRight } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
+import { useRef, useImperativeHandle, ReactNode, forwardRef } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { mq, spacing, breakpoints } from "@ndla/core";
+import { ChevronRight } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
 
 export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;
@@ -32,8 +32,7 @@ interface AutoCollapseProps {
 }
 
 const StyledListItem = styled.li<AutoCollapseProps>`
-  margin-bottom: 0;
-  margin-left: 0;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   :before {
@@ -92,7 +91,7 @@ const BreadcrumbItem = forwardRef<any, Props>(
     const { to, name, index } = item;
     const isLast = index === totalCount - 1;
     return (
-      <StyledListItem ref={liRef} autoCollapse={autoCollapse} aria-current={isLast ? 'page' : undefined}>
+      <StyledListItem ref={liRef} autoCollapse={autoCollapse} aria-current={isLast ? "page" : undefined}>
         <CollapseContainer autoCollapse={autoCollapse}>
           {renderItem ? (
             renderItem(item, totalCount)

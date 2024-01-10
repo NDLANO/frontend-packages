@@ -6,12 +6,12 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
-import { SafeLinkButton } from '@ndla/safelink';
-import { ArticleByline } from '../Article';
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from "@ndla/core";
+import { SafeLinkButton } from "@ndla/safelink";
+import { ArticleByline } from "../Article";
 
 const infoTextCSS = css`
   ${fonts.sizes(18, 1.3)};
@@ -83,7 +83,7 @@ const LearningPathMenuAside = ({ lastUpdated, learningPathURL, copyright, isOpen
         published={lastUpdated}
         learningPath
       />
-      <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
+      <p css={infoTextCSS}>{t("learningPath.createLearningPathText")}</p>
       <SafeLinkButton
         to={learningPathURL}
         target="_blank"
@@ -91,7 +91,7 @@ const LearningPathMenuAside = ({ lastUpdated, learningPathURL, copyright, isOpen
         variant="outline"
         inverted={invertedStyle}
       >
-        {t('learningPath.createLearningPathButtonText')}
+        {t("learningPath.createLearningPathButtonText")}
       </SafeLinkButton>
     </StyledAside>
   );

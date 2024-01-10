@@ -6,12 +6,12 @@
  *
  */
 
-import { StoryFn } from '@storybook/react';
-import { BrightcoveApiType } from '@ndla/types-embed';
-import { VideoSearch, VideoQueryType } from './VideoSearch';
+import { StoryFn } from "@storybook/react";
+import { BrightcoveApiType } from "@ndla/types-embed";
+import { VideoSearch, VideoQueryType } from "./VideoSearch";
 //@ts-ignore
-import { firstBrightcoveList, secondBrightcoveList } from '../../../dummydata';
-import { defaultParameters } from '../../../stories/defaults';
+import { firstBrightcoveList, secondBrightcoveList } from "../../../dummydata";
+import { defaultParameters } from "../../../stories/defaults";
 
 const firstDummyData = firstBrightcoveList;
 const secondDummyData = secondBrightcoveList;
@@ -20,26 +20,26 @@ const secondDummyData = secondBrightcoveList;
  * This example uses dummy data to simulate the search.
  */
 const meta = {
-  title: 'Production system/VideoSearch',
-  tags: ['autodocs'],
+  title: "Production system/VideoSearch",
+  tags: ["autodocs"],
   component: VideoSearch,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    locale: 'nb',
+    locale: "nb",
     translations: {
-      searchPlaceholder: 'Søk i videoer',
-      searchButtonTitle: 'Søk',
-      loadMoreVideos: 'Last flere videor',
-      noResults: 'Ingen videor funnet.',
-      addVideo: 'Bruk video',
-      previewVideo: 'Forhåndsvis',
-      publishedDate: 'Publisert dato',
-      duration: 'Varighet',
-      interactioncount: 'Visninger',
-      is360Video: 'VR-video',
+      searchPlaceholder: "Søk i videoer",
+      searchButtonTitle: "Søk",
+      loadMoreVideos: "Last flere videor",
+      noResults: "Ingen videor funnet.",
+      addVideo: "Bruk video",
+      previewVideo: "Forhåndsvis",
+      publishedDate: "Publisert dato",
+      duration: "Varighet",
+      interactioncount: "Visninger",
+      is360Video: "VR-video",
     },
   },
 };

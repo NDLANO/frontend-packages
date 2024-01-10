@@ -6,11 +6,11 @@
  *
  */
 
-import { useCallback, useMemo, createContext, ReactNode, useState, useContext, useEffect } from 'react';
-import { keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import DefaultSnack from './DefaultSnackbar';
+import { useCallback, useMemo, createContext, ReactNode, useState, useContext, useEffect } from "react";
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
+import DefaultSnack from "./DefaultSnackbar";
 
 export interface Snack {
   content?: ReactNode;
@@ -33,7 +33,7 @@ const SnackbarContext = createContext<SnackContext | undefined>(undefined);
 export const useSnack = () => {
   const context = useContext(SnackbarContext);
   if (!context) {
-    throw new Error('useSnack can only be used within a SnackbarProvider!');
+    throw new Error("useSnack can only be used within a SnackbarProvider!");
   }
 
   return context;
@@ -82,13 +82,13 @@ interface BaseSnackContainerProps {
 }
 
 const snackbarInAnimation = keyframes({
-  '0%': { transform: `translateY(${spacing.medium})`, opacity: 0 },
-  '100%': { opacity: 1 },
+  "0%": { transform: `translateY(${spacing.medium})`, opacity: 0 },
+  "100%": { opacity: 1 },
 });
 
 const snackbarOutAnimation = keyframes({
-  '0%': { opacity: 1 },
-  '100%': { transform: `translateY(${spacing.medium})`, opacity: 0 },
+  "0%": { opacity: 1 },
+  "100%": { transform: `translateY(${spacing.medium})`, opacity: 0 },
 });
 
 const BaseSnackContainer = styled.li<BaseSnackContainerProps>`
@@ -125,7 +125,6 @@ const StyledSnackList = styled.ul`
   display: flex;
   flex-direction: column;
   pointer-events: none;
-  margin: 0 auto;
   padding: 0;
   bottom: env(safe-area-inset-bottom, 40px);
   right: env(safe-area-inset-right, 0px);

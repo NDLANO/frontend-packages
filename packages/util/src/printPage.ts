@@ -19,7 +19,7 @@ function setPrint(this: any) {
 }
 
 export function printPage(url: string) {
-  const iframe = document.createElement('iframe');
+  const iframe = document.createElement("iframe");
   iframe.onload = setPrint;
   iframe.src = url;
   document.body.appendChild(iframe);

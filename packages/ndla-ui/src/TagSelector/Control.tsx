@@ -6,10 +6,10 @@
  *
  */
 
-import { ControlProps } from 'react-select';
-import styled from '@emotion/styled';
-import { spacing, utils } from '@ndla/core';
-import { TagType } from './types';
+import { ControlProps } from "react-select";
+import styled from "@emotion/styled";
+import { spacing, utils } from "@ndla/core";
+import { TagType } from "./types";
 
 const StyledTagSelectorControl = styled.div`
   display: flex;

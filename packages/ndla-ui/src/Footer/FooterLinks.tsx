@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
-import { Forward, Launch } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from "@ndla/core";
+import { Forward, Launch } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -97,7 +97,7 @@ const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
     <>
       <StyledLinksWrapper>
         <div>
-          <StyledHeaderLinks id="otherLinks">{t('footer.linksHeader')}</StyledHeaderLinks>
+          <StyledHeaderLinks id="otherLinks">{t("footer.linksHeader")}</StyledHeaderLinks>
           <StyledNav aria-labelledby="otherLinks">
             {commonLinks?.map((link) => (
               <div key={link.to}>
@@ -105,7 +105,7 @@ const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
                   key={link.text}
                   aria-label={link.text}
                   to={link.to}
-                  target={link.external ? '_blank' : ''}
+                  target={link.external ? "_blank" : ""}
                   rel="noopener noreferrer"
                 >
                   {link.text}
@@ -115,7 +115,7 @@ const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
             ))}
           </StyledNav>
         </div>
-        <StyledNav aria-label={t('footer.socialMedia')}>
+        <StyledNav aria-label={t("footer.socialMedia")}>
           {links?.map((link) => (
             <StyledSocialMediaLinkWrapper key={link.to}>
               <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>

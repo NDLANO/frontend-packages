@@ -6,11 +6,11 @@
  *
  */
 
-import { HTMLProps, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { HTMLProps, ReactNode } from "react";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
 
-interface Props extends Omit<HTMLProps<HTMLDivElement>, 'as'> {
+interface Props extends Omit<HTMLProps<HTMLDivElement>, "as"> {
   children?: ReactNode;
 }
 
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     margin: 0;
     flex-grow: 1;
     font-weight: ${fonts.weight.bold};
-    ${fonts.sizes('22px', 1.2)};
+    ${fonts.sizes("22px", 1.2)};
     color: ${colors.text.primary};
   }
 `;

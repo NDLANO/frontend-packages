@@ -6,6 +6,6 @@
  *
  */
 
-import TreeStructure from './TreeStructure';
-export type { TreeStructureProps } from './TreeStructure';
+import TreeStructure from "./TreeStructure";
+export type { TreeStructureProps } from "./TreeStructure";
 export { TreeStructure };

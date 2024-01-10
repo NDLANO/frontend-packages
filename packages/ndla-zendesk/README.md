@@ -13,7 +13,7 @@ $ yarn @ndla/zendesk
 ### Simple example with required props
 
 ```js
-import Zendesk from '@ndla/zendesk';
+import Zendesk from "@ndla/zendesk";
 
 <Footer>
   <ZendeskButton locale="nb" widgetKey="a393e616-39d91">

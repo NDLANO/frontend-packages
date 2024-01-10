@@ -6,5 +6,5 @@
  *
  */
 
-export type { Option, SingleValue, MultiValue } from './Select';
-export { default as Select } from './Select';
+export type { Option, SingleValue, MultiValue } from "./Select";
+export { default as Select } from "./Select";

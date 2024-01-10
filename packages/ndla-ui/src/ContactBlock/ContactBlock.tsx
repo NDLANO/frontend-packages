@@ -6,19 +6,19 @@
  *
  */
 
-import concat from 'lodash/concat';
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
-import { BlobPointy, BlobRound } from '@ndla/icons/common';
-import { COPYRIGHTED, getLicenseByAbbreviation } from '@ndla/licenses';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { CanonicalUrlFuncs } from '../Embed';
-import { errorSvgSrc } from '../Embed/ImageEmbed';
-import Image, { ImageLink } from '../Image';
-import LicenseLink from '../LicenseByline/LicenseLink';
+import concat from "lodash/concat";
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing, fonts, colors, mq, breakpoints, misc } from "@ndla/core";
+import { BlobPointy, BlobRound } from "@ndla/icons/common";
+import { COPYRIGHTED, getLicenseByAbbreviation } from "@ndla/licenses";
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { CanonicalUrlFuncs } from "../Embed";
+import { errorSvgSrc } from "../Embed/ImageEmbed";
+import Image, { ImageLink } from "../Image";
+import LicenseLink from "../LicenseByline/LicenseLink";
 
 const BLOB_WIDTH = 90;
 
@@ -26,14 +26,14 @@ interface Props {
   image?: IImageMetaInformationV3;
   jobTitle: string;
   description: string;
-  blobColor?: 'pink' | 'green';
-  blob?: 'pointy' | 'round';
+  blobColor?: "pink" | "green";
+  blob?: "pointy" | "round";
   imageWidth?: number;
   name: string;
   email: string;
   embedAlt?: string;
   lang?: string;
-  imageCanonicalUrl?: CanonicalUrlFuncs['image'];
+  imageCanonicalUrl?: CanonicalUrlFuncs["image"];
 }
 const BlockWrapper = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ const BlockWrapper = styled.div`
 `;
 
 const StyledHeader = styled.div`
-  ${fonts.sizes('22px', '30px')};
+  ${fonts.sizes("22px", "30px")};
   font-weight: ${fonts.weight.bold};
   margin: 0 0 ${spacing.xsmall} 0;
   padding-top: ${spacing.medium};
@@ -64,7 +64,7 @@ const StyledHeader = styled.div`
 
 const StyledText = styled.div`
   display: flex;
-  ${fonts.sizes('16px', '26px')};
+  ${fonts.sizes("16px", "26px")};
   overflow-wrap: anywhere;
   color: ${colors.text.light};
   gap: ${spacing.xxsmall};
@@ -109,7 +109,7 @@ const ImageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.xsmall};
-  ${fonts.sizes('16px', '26px')};
+  ${fonts.sizes("16px", "26px")};
   padding: ${spacing.medium} ${spacing.medium} 0 0;
   ${mq.range({ from: breakpoints.tablet })} {
     padding-right: 0;
@@ -152,14 +152,14 @@ const ContactBlock = ({
   name,
   email,
   embedAlt,
-  blobColor = 'green',
-  blob = 'pointy',
+  blobColor = "green",
+  blob = "pointy",
   imageCanonicalUrl,
   lang,
 }: Props) => {
   const { t, i18n } = useTranslation();
-  const isGreenBlob = blobColor === 'green';
-  const Blob = blob === 'pointy' ? BlobPointy : BlobRound;
+  const isGreenBlob = blobColor === "green";
+  const Blob = blob === "pointy" ? BlobPointy : BlobRound;
   const authors = concat(image?.copyright.processors, image?.copyright.creators, image?.copyright.rightsholders);
   const license = image?.copyright
     ? getLicenseByAbbreviation(image.copyright.license.license, i18n.language)
@@ -180,12 +180,12 @@ const ContactBlock = ({
               />
             </LinkWrapper>
             <span>
-              {`${t('embed.type.image')}: ${authors.map((author) => `${author?.name}`).join(', ')} `}
+              {`${t("embed.type.image")}: ${authors.map((author) => `${author?.name}`).join(", ")} `}
               {!!license && <LicenseLink license={license} asLink={!!license.url.length} />}
             </span>
           </>
         ) : (
-          <img alt={t('image.error.url')} src={errorSvgSrc} />
+          <img alt={t("image.error.url")} src={errorSvgSrc} />
         )}
       </ImageWrapper>
       <ContentWrapper>
@@ -194,7 +194,7 @@ const ContactBlock = ({
             <StyledHeader lang={lang}>{name}</StyledHeader>
             <StyledText lang={lang}>{jobTitle}</StyledText>
             <StyledText>
-              <Email>{`${t('email')}:`}</Email>
+              <Email>{`${t("email")}:`}</Email>
               <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
             </StyledText>
           </InfoWrapper>

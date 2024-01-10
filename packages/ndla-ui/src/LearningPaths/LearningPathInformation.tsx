@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, breakpoints, mq, colors } from '@ndla/core';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { LicenseByline } from '@ndla/notion';
-import { Heading } from '@ndla/typography';
-import LicenseLink from '../LicenseByline/LicenseLink';
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, breakpoints, mq, colors } from "@ndla/core";
+import { getLicenseByAbbreviation } from "@ndla/licenses";
+import { LicenseByline } from "@ndla/notion";
+import { Heading } from "@ndla/typography";
+import LicenseLink from "../LicenseByline/LicenseLink";
 
 type StyledWrapperProps = {
   invertedStyle?: boolean;
@@ -21,6 +21,9 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   background: transparent;
   max-width: 720px;
   margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
+  ul {
+    padding-left: ${spacing.normal};
+  }
   ${mq.range({ from: breakpoints.desktop })} {
     margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
     padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacing.xxlarge};
@@ -31,9 +34,6 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     margin: 0;
     padding: ${spacing.small} ${spacing.normal};
-    ul {
-      padding: 0 ${spacingUnit * 0.75}px;
-    }
   }
   ${mq.range({ from: breakpoints.tablet })} {
     ${(props) =>
@@ -46,8 +46,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
 
 const LicenseWrapper = styled.div`
   ul {
-    margin-left: 0;
-    margin-bottom: ${spacing.small};
+    padding-left: 0;
   }
 `;
 
@@ -66,7 +65,7 @@ interface Props {
 }
 
 export const LearningPathInformation = ({ description, title, license, invertedStyle, id }: Props) => {
-  const rights = getLicenseByAbbreviation(license?.license || '', 'nb');
+  const rights = getLicenseByAbbreviation(license?.license || "", "nb");
   return (
     <section className="o-wrapper">
       <StyledWrapper invertedStyle={invertedStyle} className="c-article">

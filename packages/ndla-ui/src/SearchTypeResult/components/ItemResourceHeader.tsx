@@ -6,16 +6,16 @@
  *
  */
 
-import { Fragment } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
+import { Fragment } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
 
-import { fonts, spacing } from '@ndla/core';
+import { fonts, spacing } from "@ndla/core";
 
-import ContentTypeBadge from '../../ContentTypeBadge';
-import resourceTypeColor from '../../utils/resourceTypeColor';
-import { SearchItemType } from '../SearchItem';
-import { ContentType } from '../SearchTypeResult';
+import ContentTypeBadge from "../../ContentTypeBadge";
+import resourceTypeColor from "../../utils/resourceTypeColor";
+import { SearchItemType } from "../SearchItem";
+import { ContentType } from "../SearchTypeResult";
 
 interface ItemTypeProps {
   contentType?: ContentType;
@@ -53,7 +53,7 @@ const ContentTypeWrapper = styled.div<ItemTypeProps>`
   display: flex;
   align-items: center;
   padding: 0 ${spacing.normal};
-  ${fonts.sizes('12px', '16px')};
+  ${fonts.sizes("12px", "16px")};
   font-weight: ${fonts.weight.semibold};
 `;
 
@@ -64,7 +64,7 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
   margin-left: ${spacing.small};
   justify-content: center;
   ::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 23px;
     width: 78px;
@@ -93,8 +93,8 @@ const Wrapper = styled.header`
 `;
 
 interface Props {
-  labels: SearchItemType['item']['labels'];
-  img?: SearchItemType['item']['img'] | null;
+  labels: SearchItemType["item"]["labels"];
+  img?: SearchItemType["item"]["img"] | null;
   type?: ContentType;
 }
 
@@ -118,7 +118,7 @@ const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
           <>
             {labels.map((label) => (
               <Fragment key={label}>
-                {' '}
+                {" "}
                 <>&#8226;</> {label}
               </Fragment>
             ))}

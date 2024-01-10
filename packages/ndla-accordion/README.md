@@ -13,7 +13,7 @@ $ yarn ndla-accordion
 ### Simple example where panel is open on render
 
 ```js
-import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
+import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from "@ndla/accordion";
 
 return (
   <AccordionRoot defaultValue="1" type="single" collapsible={true}>

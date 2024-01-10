@@ -37,7 +37,7 @@ ReactDOM.render(
 Tracking can be used in two different ways. Either with a default React component called `HelmetWithTracker`:
 
 ```javascript
-import { HelmetWithTracker } from '@ndla/tracker';
+import { HelmetWithTracker } from "@ndla/tracker";
 
 const SomeTrackableComponent = ({ title }) => {
   return (
@@ -54,7 +54,7 @@ export default SomeTrackableComponent;
 or you can customize when the tracking should be done and add dimensions:
 
 ```javascript
-import { useTracker } from '@ndla/tracker';
+import { useTracker } from "@ndla/tracker";
 const TestComponent = () => {
   const { trackPageView } = useTracker();
 
@@ -62,7 +62,7 @@ const TestComponent = () => {
     if (!article || !condB) return;
     // We recommend creating a custom function for converting to matomo dimensions
     const dims = getAllDimensions({ article });
-    trackPageView({ dimensions: dims, title: 'Test title' });
+    trackPageView({ dimensions: dims, title: "Test title" });
   }, [condA, condB]);
 
   return <div>Test</div>;

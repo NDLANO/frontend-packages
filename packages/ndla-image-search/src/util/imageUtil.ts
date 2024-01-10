@@ -19,7 +19,7 @@ export const getSrcSets = (imageUrl: string) =>
     `${imageUrl}?width=640 640w`,
     `${imageUrl}?width=480 480w`,
     `${imageUrl}?width=320 320w`,
-  ].join(', ');
+  ].join(", ");
 
 export const getPreviewSrcSets = (imageUrl: string) =>
-  [`${imageUrl}?width=480 3x`, `${imageUrl}?width=320 2x`, `${imageUrl}?width=160 1x`].join(', ');
+  [`${imageUrl}?width=480 3x`, `${imageUrl}?width=320 2x`, `${imageUrl}?width=160 1x`].join(", ");

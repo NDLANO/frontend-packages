@@ -6,10 +6,10 @@
  *
  */
 
-import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from 'react';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { QueryObject } from './AudioSearch';
+import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { QueryObject } from "./AudioSearch";
 
 const AudioSearchFormWrapper = styled.div`
   width: 100%;
@@ -58,7 +58,7 @@ const AudioSearchForm = ({ queryObject: query, translations, searching, onSearch
   const [queryObject, setQueryObject] = useState(query);
 
   const onKeyPress = (evt: KeyboardEvent<HTMLInputElement>) => {
-    if (evt.key === 'Enter') {
+    if (evt.key === "Enter") {
       handleSubmit(evt);
     }
   };

@@ -6,14 +6,14 @@
  *
  */
 
-import { ElementType } from 'react';
-import { Title, DialogTitleProps } from '@radix-ui/react-dialog';
+import { ElementType } from "react";
+import { Title, DialogTitleProps } from "@radix-ui/react-dialog";
 
 interface Props {
   as?: ElementType;
 }
 
-const ModalTitle = ({ as: Element = 'h1', ...rest }: DialogTitleProps & Props) => {
+const ModalTitle = ({ as: Element = "h1", ...rest }: DialogTitleProps & Props) => {
   return (
     <Title asChild>
       <Element {...rest} />

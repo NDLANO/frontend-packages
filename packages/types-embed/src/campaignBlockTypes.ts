@@ -6,20 +6,20 @@
  *
  */
 
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { MetaData } from '.';
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetaData } from ".";
 
 export interface CampaignBlockEmbedData {
-  resource: 'campaign-block';
+  resource: "campaign-block";
   title: string;
   titleLanguage: string;
   description: string;
   descriptionLanguage: string;
-  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+  headingLevel: "h1" | "h2" | "h3" | "h4" | "h5";
   url?: string;
   urlText?: string;
   imageId?: string;
-  imageSide?: 'left' | 'right';
+  imageSide?: "left" | "right";
   alt?: string;
 }
 

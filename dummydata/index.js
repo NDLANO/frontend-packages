@@ -1,4 +1,4 @@
-import { topicList, topicListFilm } from './mockTopics';
+import { topicList, topicListFilm } from "./mockTopics";
 import {
   learningPathResources,
   articleResources,
@@ -6,12 +6,12 @@ import {
   assessmentResources,
   sourceMaterialResources,
   externalLearningResources,
-} from './mockResources';
-import { subjectList, subjectConcepts } from './mockSubjects';
-import { firstBrightcoveList, secondBrightcoveList, brightCoveMockVideo } from './mockBrightcove';
-import { firstYouTubeList, secondYouTubeList, youTubeMockVideo } from './mockYouTube';
+} from "./mockResources";
+import { subjectList, subjectConcepts } from "./mockSubjects";
+import { firstBrightcoveList, secondBrightcoveList, brightCoveMockVideo } from "./mockBrightcove";
+import { firstYouTubeList, secondYouTubeList, youTubeMockVideo } from "./mockYouTube";
 
-import { contentTypeResults } from './mockSearch';
+import { contentTypeResults } from "./mockSearch";
 
 import {
   mockAllMovies,
@@ -20,10 +20,10 @@ import {
   movieThemes,
   mockMovieTopics,
   mockMovieResourceTypes,
-} from './mockFilm';
+} from "./mockFilm";
 
-import { mockTypeahead } from './mockTypeahead';
-import { ResourceData } from './mockResourceData';
+import { mockTypeahead } from "./mockTypeahead";
+import { ResourceData } from "./mockResourceData";
 
 export {
   topicList,

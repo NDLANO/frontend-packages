@@ -6,6 +6,6 @@
  *
  */
 
-import LicenseByline from './LicenseByline';
-import LicenseDescription from './LicenseDescription';
+import LicenseByline from "./LicenseByline";
+import LicenseDescription from "./LicenseDescription";
 export { LicenseByline, LicenseDescription };

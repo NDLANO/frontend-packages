@@ -6,8 +6,8 @@
  *
  */
 
-import { AudioMetaData, AudioEmbedData, AudioMeta } from './audioTypes';
-import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from './blogPostTypes';
+import { AudioMetaData, AudioEmbedData, AudioMeta } from "./audioTypes";
+import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from "./blogPostTypes";
 import {
   BrightcoveData,
   BrightcoveEmbedData,
@@ -15,9 +15,9 @@ import {
   BrightcoveVideoSource,
   BrightcoveApiType,
   BrightcoveCopyright,
-} from './brightcoveTypes';
-import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from './campaignBlockTypes';
-import { CodeEmbedData, CodeMetaData } from './codeTypes';
+} from "./brightcoveTypes";
+import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from "./campaignBlockTypes";
+import { CodeEmbedData, CodeMetaData } from "./codeTypes";
 import {
   ConceptListData,
   ConceptData,
@@ -27,12 +27,12 @@ import {
   ConceptMetaData,
   ConceptVisualElement,
   ConceptVisualElementMeta,
-} from './conceptTypes';
-import { ContactBlockEmbedData, ContactBlockMetaData } from './contactBlockTypes';
-import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from './contentLinkTypes';
-import { OembedEmbedData, OembedMetaData, OembedData } from './externalTypes';
-import { FileEmbedData, FileMetaData } from './fileTypes';
-import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from './footnoteTypes';
+} from "./conceptTypes";
+import { ContactBlockEmbedData, ContactBlockMetaData } from "./contactBlockTypes";
+import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from "./contentLinkTypes";
+import { OembedEmbedData, OembedMetaData, OembedData } from "./externalTypes";
+import { FileEmbedData, FileMetaData } from "./fileTypes";
+import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from "./footnoteTypes";
 import {
   H5pMetaData,
   H5pEmbedData,
@@ -42,12 +42,12 @@ import {
   H5pLicenseInformation,
   H5pInfo,
   H5pData,
-} from './h5pTypes';
-import { IframeMetaData, IframeEmbedData, IframeData } from './iframeTypes';
-import { ImageEmbedData, ImageMetaData } from './imageTypes';
-import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './keyFigureTypes';
-import { LinkBlockEmbedData, LinkBlockMetaData } from './linkBlockTypes';
-import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from './relatedContentTypes';
+} from "./h5pTypes";
+import { IframeMetaData, IframeEmbedData, IframeData } from "./iframeTypes";
+import { ImageEmbedData, ImageMetaData } from "./imageTypes";
+import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from "./keyFigureTypes";
+import { LinkBlockEmbedData, LinkBlockMetaData } from "./linkBlockTypes";
+import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from "./relatedContentTypes";
 
 export type EmbedData =
   | AudioEmbedData
@@ -145,17 +145,17 @@ export type { CampaignBlockMeta };
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 
 interface MetaDataFailure<T extends EmbedData> {
-  resource: T['resource'];
+  resource: T["resource"];
   embedData: T;
-  status: 'error';
+  status: "error";
   message?: string;
 }
 
 interface MetaDataSuccess<T extends EmbedData, Data> {
-  resource: T['resource'];
+  resource: T["resource"];
   embedData: T;
   data: Data;
-  status: 'success';
+  status: "success";
 }
 
 export type MetaData<Embed extends EmbedData, Data> = MetaDataFailure<Embed> | MetaDataSuccess<Embed, Data>;
@@ -179,7 +179,7 @@ export interface OembedProxyResponse {
 }
 
 export interface NRKEmbedData {
-  resource: 'nrk';
+  resource: "nrk";
   nrkVideoId: string;
   url: string;
 }

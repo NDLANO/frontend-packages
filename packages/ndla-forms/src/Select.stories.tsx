@@ -6,34 +6,34 @@
  *
  */
 
-import { useEffect, useId, useMemo, useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { FieldErrorMessage } from './FieldErrorMessage';
-import { FormControl } from './FormControl';
-import { Label } from './Label';
-import Select from './Select';
-import { defaultParameters } from '../../../stories/defaults';
+import { useEffect, useId, useMemo, useState } from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import { FieldErrorMessage } from "./FieldErrorMessage";
+import { FormControl } from "./FormControl";
+import { Label } from "./Label";
+import Select from "./Select";
+import { defaultParameters } from "../../../stories/defaults";
 
 const roleExamples = [
-  'Opphaver',
-  'Fotograf',
-  'Kunstner',
-  'Forfatter',
-  'Manusforfatter',
-  'Innleser',
-  'Oversetter',
-  'Regissør',
-  'Illustratør',
-  'Medforfatter',
-  'Komponist',
+  "Opphaver",
+  "Fotograf",
+  "Kunstner",
+  "Forfatter",
+  "Manusforfatter",
+  "Innleser",
+  "Oversetter",
+  "Regissør",
+  "Illustratør",
+  "Medforfatter",
+  "Komponist",
 ];
 
 export default {
-  title: 'Forms/Native Select',
-  tags: ['autodocs'],
+  title: "Forms/Native Select",
+  tags: ["autodocs"],
   component: Select,
   args: {
-    value: 'Fotograf',
+    value: "Fotograf",
   },
   argTypes: {
     onChange: { control: false },
@@ -68,7 +68,7 @@ export const WithFormControl: StoryFn<typeof Select> = ({ value: valueProp, ...a
   const [value, setValue] = useState<string | undefined>(valueProp as string | undefined);
   const error = useMemo(() => {
     if (!value?.length) {
-      return 'Du må velge en rolle';
+      return "Du må velge en rolle";
     }
     return undefined;
   }, [value]);

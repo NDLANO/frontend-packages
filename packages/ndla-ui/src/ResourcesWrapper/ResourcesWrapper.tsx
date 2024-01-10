@@ -6,9 +6,9 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { HTMLAttributes, ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   header?: ReactNode;

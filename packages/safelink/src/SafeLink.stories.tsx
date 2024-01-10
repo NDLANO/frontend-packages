@@ -6,10 +6,10 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import MissingRouterContext from './MissingRouterContext';
-import SafeLink from './SafeLink';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import MissingRouterContext from "./MissingRouterContext";
+import SafeLink from "./SafeLink";
+import { defaultParameters } from "../../../stories/defaults";
 
 /**
  * Lenker på [ndla.no](https://ndla.no) bruker den vanlige konvensjonen med underlinje. Lenker skal i hovedsak åpne seg i samme vindu (det vil si at vi bruker `target="_self"` eller ingen target-attributt). Unntaket er hvis lenken inngår i et skjema eller læringssammenhengen gjør det unødvendig at brukerne beholder vinduet eller fanen de står i. Når lenker går til et annet nettsted (eksterne lenker) skal disse alltids åpnes i ny fane.
@@ -19,15 +19,15 @@ import { defaultParameters } from '../../../stories/defaults';
  * Interne lenker styres av html-innstilling i nettleser (samme vindu eller ny fane) avhengig av koden som ligger der, brukerens/browserens preferanser skal styre.
  */
 export default {
-  title: 'Components/SafeLink',
+  title: "Components/SafeLink",
   component: SafeLink,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   paramemeters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    to: '/',
+    to: "/",
     children: <span>Lenke</span>,
   },
   argTypes: {
@@ -42,7 +42,11 @@ export const Disabled: StoryObj<typeof SafeLink> = {
 };
 
 export const ExternalLink: StoryObj<typeof SafeLink> = {
-  args: { to: 'https://example.com', showNewWindowIcon: true, target: '_blank' },
+  args: {
+    to: "https://example.com",
+    showNewWindowIcon: true,
+    target: "_blank",
+  },
 };
 
 export const WithMissingRouterContext: StoryObj<typeof SafeLink> = {
@@ -53,5 +57,5 @@ export const WithMissingRouterContext: StoryObj<typeof SafeLink> = {
       </MissingRouterContext.Provider>
     ),
   ],
-  args: { to: 'https://example.com', target: '_blank' },
+  args: { to: "https://example.com", target: "_blank" },
 };

@@ -6,9 +6,9 @@
  *
  */
 
-import { attributesToProps, domToReact } from 'html-react-parser';
-import { DefinitionDescription } from '@ndla/ui';
-import { PluginType } from './types';
+import { attributesToProps, domToReact } from "html-react-parser";
+import { DefinitionDescription } from "@ndla/ui";
+import { PluginType } from "./types";
 
 export const ddPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);

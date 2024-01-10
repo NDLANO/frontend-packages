@@ -6,9 +6,9 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { spacing, misc } from '@ndla/core';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing, misc } from "@ndla/core";
 
 const StyledImage = styled.img`
   border-radius: ${misc.borderRadius};
@@ -34,7 +34,7 @@ const DropdownMenuImage = ({ image, alt }: Props) => {
   }
   return (
     <StyledImageContainer>
-      {typeof image === 'string' ? <StyledImage src={image} alt={alt} /> : image}
+      {typeof image === "string" ? <StyledImage src={image} alt={alt} /> : image}
     </StyledImageContainer>
   );
 };

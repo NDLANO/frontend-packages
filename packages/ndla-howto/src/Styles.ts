@@ -6,9 +6,9 @@
  *
  */
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, colors, fonts, mq, breakpoints } from '@ndla/core';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, colors, fonts, mq, breakpoints } from "@ndla/core";
 
 const gridPush = css`
   ${mq.range({ from: breakpoints.tabletWide })} {
@@ -34,13 +34,13 @@ interface HeadingProps {
 }
 
 export const Heading = styled.div<HeadingProps>`
-  margin: 0 0 ${(props) => (!props.inModal ? spacing.medium : '0 0')};
+  margin: 0 0 ${(props) => (!props.inModal ? spacing.medium : "0 0")};
   ${fonts.sizes(38, 1.4)};
   font-weight: ${fonts.weight.semibold};
   color: ${colors.text.primary};
   ${(props) => !props.inModal && gridPush};
   ${mq.range({ from: breakpoints.tabletWide })} {
-    padding-left: ${(props) => props.inModal && '8.33%'};
+    padding-left: ${(props) => props.inModal && "8.33%"};
   }
 `;
 
@@ -78,7 +78,7 @@ export const ImageWrapper = styled.div`
   img {
     max-width: 50%;
     height: auto;
-    &[src$='.gif'] {
+    &[src$=".gif"] {
       max-width: 100%;
     }
   }

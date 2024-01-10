@@ -6,13 +6,13 @@
  *
  */
 
-import { ReactNode, useEffect } from 'react';
-import BEMHelper from 'react-bem-helper';
-import { isMobile } from 'react-device-detect';
+import { ReactNode, useEffect } from "react";
+import BEMHelper from "react-bem-helper";
+import { isMobile } from "react-device-detect";
 
 const classes = new BEMHelper({
-  name: 'article',
-  prefix: 'c-',
+  name: "article",
+  prefix: "c-",
 });
 
 type Props = {
@@ -23,7 +23,7 @@ type Props = {
 const ArticleHeaderWrapper = ({ children, competenceGoals }: Props) => {
   useEffect(() => {
     if (isMobile) {
-      const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll('.c-article__header');
+      const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll(".c-article__header");
       if (heroContentList.length === 1) {
         heroContentList[0].scrollIntoView(true);
         window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
@@ -32,7 +32,7 @@ const ArticleHeaderWrapper = ({ children, competenceGoals }: Props) => {
   }, []);
 
   return (
-    <div {...classes('header')}>
+    <div {...classes("header")}>
       {children}
       {competenceGoals}
     </div>

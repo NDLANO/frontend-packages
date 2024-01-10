@@ -13,5 +13,5 @@ $ yarn ndla-carousel
 ### Example.
 
 ```js
-import Carousel from '@ndla/carousel';
+import Carousel from "@ndla/carousel";
 ```

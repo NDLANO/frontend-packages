@@ -6,4 +6,4 @@
  *
  */
 
-export { default as KeyFigure } from './KeyFigure';
+export { default as KeyFigure } from "./KeyFigure";

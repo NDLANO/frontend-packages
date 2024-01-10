@@ -6,26 +6,26 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { IAudioMetaInformation, IAudioSummarySearchResult } from '@ndla/types-backend/audio-api';
-import AudioSearch, { QueryObject } from './AudioSearch';
+import { Meta, StoryFn } from "@storybook/react";
+import { IAudioMetaInformation, IAudioSummarySearchResult } from "@ndla/types-backend/audio-api";
+import AudioSearch, { QueryObject } from "./AudioSearch";
 
 export default {
-  title: 'Production system/AudioSearch',
-  tags: ['autodocs'],
+  title: "Production system/AudioSearch",
+  tags: ["autodocs"],
   component: AudioSearch,
   args: {
     queryObject: {
-      query: '',
+      query: "",
       page: 1,
       pageSize: 16,
-      locale: 'nb',
+      locale: "nb",
     },
     translations: {
-      searchPlaceholder: 'Søk i lydfiler',
-      searchButtonTitle: 'Søk',
-      useAudio: 'Velg lyd',
-      noResults: 'Ingen resultater funnet',
+      searchPlaceholder: "Søk i lydfiler",
+      searchButtonTitle: "Søk",
+      useAudio: "Velg lyd",
+      noResults: "Ingen resultater funnet",
     },
   },
 } as Meta<typeof AudioSearch>;
@@ -33,10 +33,10 @@ export default {
 export const Default: StoryFn<typeof AudioSearch> = ({ ...args }) => {
   const fetchAudios = (queryObject: QueryObject): Promise<IAudioSummarySearchResult> => {
     const { query, page, pageSize, locale } = queryObject;
-    const queryString = `${query ? `query=${query}&` : ''}page=${page}&page-size=${pageSize}&language=${locale}`;
+    const queryString = `${query ? `query=${query}&` : ""}page=${page}&page-size=${pageSize}&language=${locale}`;
     return new Promise((resolve, reject) => {
       fetch(`https://api.test.ndla.no/audio-api/v1/audio/?${queryString}`, {
-        method: 'GET',
+        method: "GET",
       }).then((res) => {
         if (res.ok) return resolve(res.json());
         return res.json().then((json) => reject(json));
@@ -47,7 +47,7 @@ export const Default: StoryFn<typeof AudioSearch> = ({ ...args }) => {
   const fetchAudio = (id: number): Promise<IAudioMetaInformation> =>
     new Promise((resolve, reject) => {
       fetch(`https://api.test.ndla.no/audio-api/v1/audio/${id}`, {
-        method: 'GET',
+        method: "GET",
       }).then((res) => {
         if (res.ok) return resolve(res.json());
         return res.json().then((json) => reject(json));

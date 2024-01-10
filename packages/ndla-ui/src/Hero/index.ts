@@ -15,7 +15,7 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
-} from './Hero';
-export { HeroContent } from './HeroContent';
+} from "./Hero";
+export { HeroContent } from "./HeroContent";
 
-export type { HeroContentType } from './Hero';
+export type { HeroContentType } from "./Hero";

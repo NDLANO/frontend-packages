@@ -6,13 +6,13 @@
  *
  */
 
-import { memo } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import SearchItem, { SearchItemProps } from './SearchItem';
-import SearchItemList from './SearchItemList';
-import { ContentType } from './SearchTypeResult';
+import { memo } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing } from "@ndla/core";
+import SearchItem, { SearchItemProps } from "./SearchItem";
+import SearchItemList from "./SearchItemList";
+import { ContentType } from "./SearchTypeResult";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -20,18 +20,19 @@ const Wrapper = styled.div`
 `;
 
 interface ContainerProps {
-  viewType: Props['viewType'];
+  viewType: Props["viewType"];
 }
 
 const Container = styled.ul<ContainerProps>`
   display: grid;
   align-items: flex-start;
   list-style: none;
+  padding: 0;
   row-gap: ${spacing.normal};
   grid-template-columns: repeat(1, 1fr);
 
   ${(props) =>
-    props.viewType === 'grid' &&
+    props.viewType === "grid" &&
     css`
       ${mq.range({ from: breakpoints.tablet })} {
         column-gap: ${spacing.normal};
@@ -47,16 +48,16 @@ const Container = styled.ul<ContainerProps>`
 interface Props {
   items: SearchItemProps[];
   type?: ContentType;
-  viewType?: 'grid' | 'list';
+  viewType?: "grid" | "list";
 }
 
-const SearchItems = ({ items, type, viewType = 'grid' }: Props) => {
+const SearchItems = ({ items, type, viewType = "grid" }: Props) => {
   return (
     <Wrapper>
       <Container aria-labelledby={`searchitem-header-${type}`} viewType={viewType}>
         {items.map((item) => {
           const contentType = type || item.type;
-          const Component = viewType === 'list' ? SearchItemList : SearchItem;
+          const Component = viewType === "list" ? SearchItemList : SearchItem;
           return (
             <li key={`${item.id}`}>
               <Component item={item} type={contentType} />

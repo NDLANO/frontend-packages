@@ -12,6 +12,6 @@ export {
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,
-} from './MediaList';
+} from "./MediaList";
 
-export type { ItemType } from './MediaList';
+export type { ItemType } from "./MediaList";

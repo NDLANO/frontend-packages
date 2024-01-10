@@ -6,9 +6,9 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
 
 interface Props {
   skipToMainContentId: string;
@@ -46,7 +46,7 @@ const SkipToMainContent = ({ skipToMainContentId }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledSkipToMainContent tabIndex={0} href={`#${skipToMainContentId}`}>
-      {t('masthead.skipToContent')}
+      {t("masthead.skipToContent")}
     </StyledSkipToMainContent>
   );
 };

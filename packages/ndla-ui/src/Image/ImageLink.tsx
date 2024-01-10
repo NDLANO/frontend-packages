@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { ImageCrop, ImageFocalPoint } from '.';
-import { makeSrcQueryString } from './Image';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { ImageCrop, ImageFocalPoint } from ".";
+import { makeSrcQueryString } from "./Image";
 
 const StyledLink = styled.a`
   box-shadow: inset 0 0;

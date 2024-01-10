@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { getLicenseRightByAbbreviation } from '@ndla/licenses';
-import LicenseIcon from './LicenseIcon';
-import LicensePopover from './LicensePopover';
-import StyledLicenseIconList from './StyledLicenseIconList';
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import { getLicenseRightByAbbreviation } from "@ndla/licenses";
+import LicenseIcon from "./LicenseIcon";
+import LicensePopover from "./LicensePopover";
+import StyledLicenseIconList from "./StyledLicenseIconList";
 
 interface StyledListItemProps {
   horizontal?: boolean;
@@ -20,7 +20,6 @@ interface StyledListItemProps {
 export const StyledListItem = styled.li<StyledListItemProps>`
   display: flex;
   padding-bottom: ${(props) => (props.horizontal ? `0` : `5px`)};
-  margin-bottom: 0;
   margin-right: 0.2em;
   line-height: 1.3rem;
   color: ${colors.brand.primary};

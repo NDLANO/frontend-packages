@@ -6,15 +6,15 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import FramedContent from './FramedContent';
-import FigureImage from '../../../../stories/article/FigureImage';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import FramedContent from "./FramedContent";
+import FigureImage from "../../../../stories/article/FigureImage";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/FramedContent',
+  title: "Components/FramedContent",
   component: FramedContent,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
@@ -29,7 +29,7 @@ export const WithFloating: StoryObj<typeof FramedContent> = {
     children: (
       <>
         <p>En boks med flytelementer</p>
-        <FigureImage embedData={{ alt: '', align: 'right' }} />
+        <FigureImage embedData={{ alt: "", align: "right" }} />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
           du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.

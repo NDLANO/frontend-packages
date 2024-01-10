@@ -6,33 +6,33 @@
  *
  */
 
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: 'production',
+  mode: "production",
   entry: {
-    all: path.resolve(__dirname, './src/all.scss'),
+    all: path.resolve(__dirname, "./src/all.scss"),
   },
-  target: 'web',
+  target: "web",
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name]-aout.js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name]-aout.js",
   },
 
   module: {
     rules: [
       {
         test: /.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: "[name].css",
     }),
   ],
   performance: {

@@ -6,22 +6,22 @@
  *
  */
 
-import { KeyboardEvent, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { MultiValue, StylesConfig } from 'react-select';
-import CreatableSelect from 'react-select/creatable';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing, utils } from '@ndla/core';
-import { createAriaMessages } from './ariaMessages';
-import Control from './Control';
-import DropdownIndicator from './DropdownIndicator';
-import Input from './Input';
-import Menu from './Menu';
-import MenuList from './MenuList';
-import Option from './Option';
-import SelectContainer from './SelectContainer';
-import { TagType } from './types';
-import ValueButton from './ValueButton';
+import { KeyboardEvent, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { MultiValue, StylesConfig } from "react-select";
+import CreatableSelect from "react-select/creatable";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing, utils } from "@ndla/core";
+import { createAriaMessages } from "./ariaMessages";
+import Control from "./Control";
+import DropdownIndicator from "./DropdownIndicator";
+import Input from "./Input";
+import Menu from "./Menu";
+import MenuList from "./MenuList";
+import Option from "./Option";
+import SelectContainer from "./SelectContainer";
+import { TagType } from "./types";
+import ValueButton from "./ValueButton";
 
 const styles: StylesConfig<TagType, true> = {
   menu: () => ({}),
@@ -34,11 +34,11 @@ const styles: StylesConfig<TagType, true> = {
   }),
   valueContainer: (provided) => ({ ...provided, padding: 0 }),
   indicatorSeparator: () => ({
-    display: 'none',
+    display: "none",
   }),
   indicatorsContainer: (provided) => ({
     ...provided,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
   }),
 };
 
@@ -78,17 +78,17 @@ const TagSelector = ({
   labelHidden,
 }: Props) => {
   const { t } = useTranslation();
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const tags = useMemo(() => _tags.map((tag) => ({ value: tag, label: tag })), [_tags]);
   const selected = useMemo(() => _selected.map((tag) => ({ value: tag, label: tag })), [_selected]);
 
   const handleSpaceClick = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === ' ') {
+    if (e.key === " ") {
       e.preventDefault();
-      if (!_selected.find((tag) => tag === input) && input !== '') {
+      if (!_selected.find((tag) => tag === input) && input !== "") {
         onChange(_selected.concat(input));
       }
-      setInput('');
+      setInput("");
     }
   };
 
@@ -96,7 +96,7 @@ const TagSelector = ({
     onChange(tags.map((tag) => tag.value));
   };
 
-  const createLabel = (tag: string) => t('tagSelector.createLabel', { tag });
+  const createLabel = (tag: string) => t("tagSelector.createLabel", { tag });
 
   return (
     <StyledTagSelector className={className}>
@@ -107,7 +107,7 @@ const TagSelector = ({
       )}
       <CreatableSelect
         id="tagselector-creatable"
-        aria-labelledby={label ? 'tagselector-label' : undefined}
+        aria-labelledby={label ? "tagselector-label" : undefined}
         ariaLiveMessages={createAriaMessages(t)}
         components={{
           DropdownIndicator,
@@ -123,14 +123,14 @@ const TagSelector = ({
         inputValue={input}
         isClearable={false}
         isMulti
-        noOptionsMessage={() => t('tagSelector.noOptions')}
+        noOptionsMessage={() => t("tagSelector.noOptions")}
         onChange={handleChange}
         onCreateOption={onCreateTag}
         onInputChange={setInput}
         onKeyDown={handleSpaceClick}
         options={tags}
-        placeholder={t('tagSelector.placeholder')}
-        screenReaderStatus={({ count }) => t('tagSelector.aria.screenReaderStatus', { count })}
+        placeholder={t("tagSelector.placeholder")}
+        screenReaderStatus={({ count }) => t("tagSelector.aria.screenReaderStatus", { count })}
         styles={styles}
         tabSelectsValue={false}
         value={selected}

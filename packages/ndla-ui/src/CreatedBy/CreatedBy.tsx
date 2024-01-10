@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import Logo from '../Logo';
+import styled from "@emotion/styled";
+import { colors, fonts } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import Logo from "../Logo";
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const Text = styled.div`
   color: ${colors.text.light};
   margin-right: 38px;
   font-family: ${fonts.sans};
-  ${fonts.sizes('20px', '20px')};
+  ${fonts.sizes("20px", "20px")};
 `;
 
 const StyledSafeLink = styled(SafeLink)`
@@ -39,7 +39,7 @@ type Props = {
   target?: string;
 };
 
-const CreatedBy = ({ name, description, url, target = '_blank' }: Props) => (
+const CreatedBy = ({ name, description, url, target = "_blank" }: Props) => (
   <Container>
     <Wrapper>
       <Text>

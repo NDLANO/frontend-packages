@@ -6,11 +6,11 @@
  *
  */
 
-import { ElementType, ForwardedRef, ReactNode } from 'react';
-import { css, SerializedStyles } from '@emotion/react';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import { PolymorphicProps, polymorphicForwardRef } from '@ndla/util';
-import { MarginVariant } from './types';
+import { ElementType, ForwardedRef, ReactNode } from "react";
+import { css, SerializedStyles } from "@emotion/react";
+import { breakpoints, fonts, mq, spacing } from "@ndla/core";
+import { PolymorphicProps, polymorphicForwardRef } from "@ndla/util";
+import { MarginVariant } from "./types";
 
 const baseStyle = css`
   font-family: ${fonts.sans};
@@ -21,7 +21,7 @@ export const elementStyle: { [key in TextVariant]: SerializedStyles } = {
   ingress: css`
     ${fonts.size.text.ingress};
     ${mq.range({ from: breakpoints.tablet })} {
-      ${fonts.sizes('24px', '35px')};
+      ${fonts.sizes("24px", "35px")};
     }
   `,
   button: css`
@@ -32,32 +32,32 @@ export const elementStyle: { [key in TextVariant]: SerializedStyles } = {
     font-family: ${fonts.serif};
     ${fonts.size.text.content};
   `,
-  'content-alt': css`
+  "content-alt": css`
     ${fonts.size.text.content};
   `,
-  'meta-text-xxsmall': css`
+  "meta-text-xxsmall": css`
     font-weight: ${fonts.weight.semibold};
     ${fonts.size.text.metaText.xxsmall};
   `,
-  'meta-text-xsmall': css`
+  "meta-text-xsmall": css`
     font-weight: ${fonts.weight.semibold};
     ${fonts.size.text.metaText.xsmall};
   `,
-  'meta-text-small': css`
+  "meta-text-small": css`
     ${fonts.size.text.metaText.small};
   `,
-  'meta-text-medium': css`
+  "meta-text-medium": css`
     ${fonts.size.text.metaText.medium};
   `,
-  'meta-text-large': css`
+  "meta-text-large": css`
     font-weight: ${fonts.weight.bold};
     ${fonts.size.text.metaText.large};
   `,
-  'label-large': css`
+  "label-large": css`
     font-weight: ${fonts.weight.semibold};
     ${fonts.size.text.label.large};
   `,
-  'label-small': css`
+  "label-small": css`
     font-weight: ${fonts.weight.semibold};
     ${fonts.size.text.label.small};
   `,
@@ -85,17 +85,17 @@ export const elementMarginStyle: { [key in MarginVariant]: SerializedStyles } = 
 };
 
 export type TextVariant =
-  | 'ingress'
-  | 'button'
-  | 'content'
-  | 'content-alt'
-  | 'meta-text-xxsmall'
-  | 'meta-text-xsmall'
-  | 'meta-text-small'
-  | 'meta-text-medium'
-  | 'meta-text-large'
-  | 'label-large'
-  | 'label-small';
+  | "ingress"
+  | "button"
+  | "content"
+  | "content-alt"
+  | "meta-text-xxsmall"
+  | "meta-text-xsmall"
+  | "meta-text-small"
+  | "meta-text-medium"
+  | "meta-text-large"
+  | "label-large"
+  | "label-small";
 
 export interface TextProps {
   textStyle?: TextVariant;
@@ -106,8 +106,8 @@ export interface TextProps {
 /**
  * Text-komponent som definerer styling for alle tekst-elementer (ingress, brødtekst, metatekst, knappetekst) som brukes i ed, ndla-frontend, listing.
  */
-const Text = <T extends ElementType = 'p'>(props: PolymorphicProps<T> & TextProps, ref: ForwardedRef<any>) => {
-  const { element: Element = 'p', textStyle = 'content', margin = 'normal', ...rest } = props;
+const Text = <T extends ElementType = "p">(props: PolymorphicProps<T> & TextProps, ref: ForwardedRef<any>) => {
+  const { element: Element = "p", textStyle = "content", margin = "normal", ...rest } = props;
   return <Element css={[baseStyle, elementStyle[textStyle], elementMarginStyle[margin]]} {...rest} ref={ref} />;
 };
 

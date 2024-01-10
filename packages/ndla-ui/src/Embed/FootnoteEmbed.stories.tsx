@@ -6,11 +6,11 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { FootnoteData, FootnoteEmbedData } from '@ndla/types-embed';
-import FootnoteEmbed from './FootnoteEmbed';
-import { defaultParameters } from '../../../../stories/defaults';
-import { ArticleByline } from '../Article';
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { FootnoteData, FootnoteEmbedData } from "@ndla/types-embed";
+import FootnoteEmbed from "./FootnoteEmbed";
+import { defaultParameters } from "../../../../stories/defaults";
+import { ArticleByline } from "../Article";
 
 /**
  * Kildehenvisninger benytter [APA-stilen](https://sokogskriv.no/kildebruk-og-referanser/referansestiler/apa-6th/) for utlistning nederst på siden.
@@ -20,8 +20,8 @@ import { ArticleByline } from '../Article';
  * I referanselisten nederst lenkes hver referanse igjen til hvor de opptrer i teksten
  */
 export default {
-  title: 'Embeds/FootnoteEmbed',
-  tags: ['autodocs'],
+  title: "Embeds/FootnoteEmbed",
+  tags: ["autodocs"],
   component: FootnoteEmbed,
   parameters: {
     inlineStories: true,
@@ -29,21 +29,21 @@ export default {
   },
   args: {
     embed: {
-      resource: 'footnote',
-      status: 'success',
+      resource: "footnote",
+      status: "success",
       embedData: {
-        resource: 'footnote',
-        title: 'Hanseatene kommer tilbake.',
-        type: '',
-        year: '2013',
-        edition: '',
-        publisher: 'Aftenposten',
-        authors: 'Eva Røyrane',
+        resource: "footnote",
+        title: "Hanseatene kommer tilbake.",
+        type: "",
+        year: "2013",
+        edition: "",
+        publisher: "Aftenposten",
+        authors: "Eva Røyrane",
       },
       data: {
         entryNum: 1,
-        authors: ['Eva Røyrane'],
-        year: '2013',
+        authors: ["Eva Røyrane"],
+        year: "2013",
       },
     },
   },
@@ -67,7 +67,7 @@ export const WithFootnoteBox: StoryFn<typeof FootnoteEmbed> = ({ ...args }) => (
     </p>
     <ArticleByline
       footnotes={
-        args.embed.status === 'success'
+        args.embed.status === "success"
           ? [
               {
                 ...args.embed.embedData,
@@ -83,19 +83,19 @@ export const WithFootnoteBox: StoryFn<typeof FootnoteEmbed> = ({ ...args }) => (
 );
 
 const otherFootnoteEmbedData: FootnoteEmbedData = {
-  title: 'Ingen tok Ketil Bjørnstad på alvor',
-  authors: 'Sturle Scholz Nærø',
-  publisher: 'Aftenposten',
-  year: '2013',
-  edition: '',
-  resource: 'footnote',
-  type: '',
+  title: "Ingen tok Ketil Bjørnstad på alvor",
+  authors: "Sturle Scholz Nærø",
+  publisher: "Aftenposten",
+  year: "2013",
+  edition: "",
+  resource: "footnote",
+  type: "",
 };
 
 const otherFootnoteMeta: FootnoteData = {
   entryNum: 2,
-  authors: ['Sturle Scholz Nærø'],
-  year: '2013',
+  authors: ["Sturle Scholz Nærø"],
+  year: "2013",
 };
 
 export const WithSeveralFootnotes: StoryFn<typeof FootnoteEmbed> = ({ ...args }) => (
@@ -107,12 +107,17 @@ export const WithSeveralFootnotes: StoryFn<typeof FootnoteEmbed> = ({ ...args })
     <p>
       Her kan det ligge en til
       <FootnoteEmbed
-        embed={{ resource: 'footnote', status: 'success', data: otherFootnoteMeta, embedData: otherFootnoteEmbedData }}
+        embed={{
+          resource: "footnote",
+          status: "success",
+          data: otherFootnoteMeta,
+          embedData: otherFootnoteEmbedData,
+        }}
       />
     </p>
     <ArticleByline
       footnotes={
-        args.embed.status === 'success'
+        args.embed.status === "success"
           ? [
               {
                 ...args.embed.embedData,

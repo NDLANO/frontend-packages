@@ -6,10 +6,10 @@
  *
  */
 
-import { forwardRef } from 'react';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing, utils } from '@ndla/core';
-import { uuid } from '@ndla/util';
+import { forwardRef } from "react";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing, utils } from "@ndla/core";
+import { uuid } from "@ndla/util";
 
 const CheckboxInput = styled.input`
   position: absolute;
@@ -52,7 +52,7 @@ const CheckboxLabel = styled.label<CheckboxLabelProps>`
     margin-right: ${spacing.medium};
   }
   > span:first-of-type {
-    content: '';
+    content: "";
     display: inline-block;
     position: relative;
     width: 20px;
@@ -60,12 +60,12 @@ const CheckboxLabel = styled.label<CheckboxLabelProps>`
     padding: 0;
     background: #fff;
     border: 2px solid ${colors.brand.tertiary};
-    margin: 2px ${(props) => (props.hasLabel ? spacing.small : '3px')} 2px 3px;
+    margin: 2px ${(props) => (props.hasLabel ? spacing.small : "3px")} 2px 3px;
     border-radius: 2px;
     flex-shrink: 0;
 
     &:before {
-      content: '';
+      content: "";
       width: 0px;
       height: 2px;
       border-radius: 2px;
@@ -79,7 +79,7 @@ const CheckboxLabel = styled.label<CheckboxLabelProps>`
     }
 
     &:after {
-      content: '';
+      content: "";
       width: 0;
       height: 2px;
       border-radius: 2px;
@@ -118,7 +118,7 @@ interface Props {
 }
 
 const CheckboxItem = forwardRef<HTMLInputElement, Props>(
-  ({ label = '', checked, value, id, onChange, disabled }, ref) => {
+  ({ label = "", checked, value, id, onChange, disabled }, ref) => {
     const uniqueID = uuid();
     return (
       <>
@@ -133,7 +133,7 @@ const CheckboxItem = forwardRef<HTMLInputElement, Props>(
           name={id?.toString()}
           onChange={() => onChange?.(id)}
         />
-        <CheckboxLabel htmlFor={uniqueID} hasLabel={label !== ''}>
+        <CheckboxLabel htmlFor={uniqueID} hasLabel={label !== ""}>
           <span />
           <span>{label}</span>
         </CheckboxLabel>

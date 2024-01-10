@@ -6,15 +6,15 @@
  *
  */
 
-import { Component, MouseEvent as ReactMouseEvent, createRef, MutableRefObject } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, fonts, colors, shadows, animations } from '@ndla/core';
-import { CheckboxItem } from '@ndla/forms';
-import { Pencil } from '@ndla/icons/action';
-import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
-import Tooltip from '@ndla/tooltip';
-import FileNameInput from './FileNameInput';
+import { Component, MouseEvent as ReactMouseEvent, createRef, MutableRefObject } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, fonts, colors, shadows, animations } from "@ndla/core";
+import { CheckboxItem } from "@ndla/forms";
+import { Pencil } from "@ndla/icons/action";
+import { DragHorizontal, DeleteForever } from "@ndla/icons/editor";
+import Tooltip from "@ndla/tooltip";
+import FileNameInput from "./FileNameInput";
 
 const FILE_HEIGHT = 69;
 const FILE_MARGIN = 4;
@@ -66,7 +66,7 @@ interface ListWrapperProps {
 
 const ListWrapper = styled.ul<ListWrapperProps>`
   overflow: visible;
-  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${FILE_HEIGHT + spacingUnit * 0.75}px` : '0')};
+  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${FILE_HEIGHT + spacingUnit * 0.75}px` : "0")};
   padding: 0;
   position: relative;
   list-style: none;
@@ -89,7 +89,7 @@ const ButtonIcons = styled.button<ButtonIconsProps>`
   padding: 0;
   border-radius: 100%;
   transition: background 200ms ease;
-  cursor: ${(props) => (props.draggable ? 'grabbing' : 'auto')};
+  cursor: ${(props) => (props.draggable ? "grabbing" : "auto")};
 
   &:hover,
   &:focus {
@@ -214,9 +214,9 @@ class FileListEditor extends Component<Props, State> {
     this.DraggingFile = childNodes?.[dragIndex];
     if (this.DraggingFile) {
       this.DraggingFile.style.width = `${this.DraggingFile.getBoundingClientRect().width}px`;
-      this.DraggingFile.style.position = 'absolute';
-      this.DraggingFile.style.top = '0';
-      this.DraggingFile.style.zIndex = '9999';
+      this.DraggingFile.style.position = "absolute";
+      this.DraggingFile.style.top = "0";
+      this.DraggingFile.style.zIndex = "9999";
       this.DraggingFile.style.boxShadow = shadows.levitate1;
       this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
     }
@@ -228,21 +228,21 @@ class FileListEditor extends Component<Props, State> {
       () => {
         // Add transitions
         childNodes?.forEach((node) => {
-          node.style.transition = 'transform 100ms ease';
+          node.style.transition = "transform 100ms ease";
         });
         if (this.DraggingFile) {
-          this.DraggingFile.style.transition = 'box-shadow 100ms ease';
+          this.DraggingFile.style.transition = "box-shadow 100ms ease";
         }
       },
     );
 
-    window.addEventListener('mousemove', this.onDragging);
-    window.addEventListener('mouseup', this.onDragEnd);
+    window.addEventListener("mousemove", this.onDragging);
+    window.addEventListener("mouseup", this.onDragEnd);
   }
 
   onDragEnd() {
-    window.removeEventListener('mousemove', this.onDragging);
-    window.removeEventListener('mouseup', this.onDragEnd);
+    window.removeEventListener("mousemove", this.onDragging);
+    window.removeEventListener("mouseup", this.onDragEnd);
     const childNodes = this.filesWrapperRef.current?.childNodes as NodeListOf<HTMLLIElement> | undefined;
 
     if (this.state.draggingIndex !== -1) {
@@ -254,14 +254,14 @@ class FileListEditor extends Component<Props, State> {
     });
 
     childNodes?.forEach((node) => {
-      node.style.transition = 'none';
-      node.style.transform = 'none';
+      node.style.transition = "none";
+      node.style.transform = "none";
     });
     if (this.DraggingFile) {
-      this.DraggingFile.style.width = 'auto';
-      this.DraggingFile.style.position = 'static';
-      this.DraggingFile.style.zIndex = '0';
-      this.DraggingFile.style.boxShadow = 'none';
+      this.DraggingFile.style.width = "auto";
+      this.DraggingFile.style.position = "static";
+      this.DraggingFile.style.zIndex = "0";
+      this.DraggingFile.style.boxShadow = "none";
     }
   }
 
@@ -300,7 +300,7 @@ class FileListEditor extends Component<Props, State> {
       <ListWrapper
         ref={this.filesWrapperRef}
         draggingIndex={draggingIndex}
-        aria-dropeffect={draggingIndex > -1 ? 'move' : undefined}
+        aria-dropeffect={draggingIndex > -1 ? "move" : undefined}
       >
         {files.map((file, index) => {
           const isMissing = !!(missingFilePaths || []).find((mp) => mp === file.path);
@@ -310,7 +310,7 @@ class FileListEditor extends Component<Props, State> {
               css={[
                 fileCss,
                 deleteIndex === index && fadeOutAnimation,
-                editFileIndex !== index && file.title === '' && fileErrorCss,
+                editFileIndex !== index && file.title === "" && fileErrorCss,
               ]}
               onAnimationEnd={deleteIndex === index ? this.executeDeleteFile : undefined}
               aria-grabbed={draggingIndex === index}
@@ -330,20 +330,20 @@ class FileListEditor extends Component<Props, State> {
                   onEditFileName(index, e.currentTarget.value);
                 }}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
+                  if (e.key === "Enter") {
                     e.currentTarget.blur();
                   }
                 }}
                 onBlur={this.exitEditFileName}
               />
-              {showRenderInlineCheckbox && file.type === 'pdf' && (
+              {showRenderInlineCheckbox && file.type === "pdf" && (
                 <Tooltip css={checkboxStyle} tooltip={messages.checkboxTooltip}>
                   <CheckboxItem
                     label={messages.checkboxLabel}
-                    checked={file.display === 'block'}
+                    checked={file.display === "block"}
                     value=""
                     id={index}
-                    onChange={(i) => typeof i === 'number' && onToggleRenderInline(i)}
+                    onChange={(i) => typeof i === "number" && onToggleRenderInline(i)}
                   />
                 </Tooltip>
               )}

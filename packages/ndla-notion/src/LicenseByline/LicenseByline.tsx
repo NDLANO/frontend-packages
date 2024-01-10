@@ -6,9 +6,9 @@
  *
  */
 
-import { ReactNode } from 'react';
-import LicenseIconList from './LicenseIconList';
-import StyledLicenseByline from './StyledLicenseByline';
+import { ReactNode } from "react";
+import LicenseIconList from "./LicenseIconList";
+import StyledLicenseByline from "./StyledLicenseByline";
 
 interface Props {
   children?: ReactNode;

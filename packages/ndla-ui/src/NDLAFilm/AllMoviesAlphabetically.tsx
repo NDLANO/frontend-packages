@@ -6,15 +6,15 @@
  *
  */
 
-import groupBy from 'lodash/groupBy';
-import sortBy from 'lodash/sortBy';
-import { RefObject, useMemo, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { breakpoints, mq, spacing, spacingUnit, colors } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { MovieType } from './types';
-import { makeSrcQueryString } from '../Image';
+import groupBy from "lodash/groupBy";
+import sortBy from "lodash/sortBy";
+import { RefObject, useMemo, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing, spacingUnit, colors } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import { MovieType } from "./types";
+import { makeSrcQueryString } from "../Image";
 
 const IMAGE_WIDTH = 143;
 
@@ -24,7 +24,7 @@ const Letter = styled.h2`
     text-indent: ${spacingUnit * 0.75}px;
   }
   &:after {
-    content: '';
+    content: "";
     display: block;
     height: 1px;
     background: ${colors.brand.greyDark};
@@ -110,9 +110,12 @@ const groupMovies = (movies: MovieType[]) => {
   const grouped = groupBy(sortedMovies, (movie) => {
     const firstChar = movie.title[0]?.toUpperCase();
     const isLetter = firstChar?.match(/[A-Z\WÆØÅ]+/);
-    return isLetter ? firstChar : '#';
+    return isLetter ? firstChar : "#";
   });
-  return Object.entries(grouped).map(([letter, movies]) => ({ letter, movies }));
+  return Object.entries(grouped).map(([letter, movies]) => ({
+    letter,
+    movies,
+  }));
 };
 
 const AllMoviesAlphabetically = ({ movies }: Props) => {
@@ -125,7 +128,7 @@ const AllMoviesAlphabetically = ({ movies }: Props) => {
     <StyledWrapper ref={wrapperRef}>
       {groupedMovies.map(({ letter, movies }) => (
         <MovieGroup key={letter}>
-          <Letter aria-label={t('filmfrontpage.allMovieGroupTitleLabel', { letter })}>{letter}</Letter>
+          <Letter aria-label={t("filmfrontpage.allMovieGroupTitleLabel", { letter })}>{letter}</Letter>
           {movies.map((movie) => (
             <MovieItem key={movie.id}>
               <StyledSafeLink to={movie.path}>

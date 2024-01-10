@@ -21,11 +21,11 @@ Uses [Emotion](https://emotion.sh/). [See](https://emotion.sh/docs/ssr) for ssr.
 ### Basic example
 
 ```js
-<Pager page={2} lastPage={4} query={{ term: 'Medier' }} pathname="#" />
+<Pager page={2} lastPage={4} query={{ term: "Medier" }} pathname="#" />
 ```
 
 ### Example with custom component
 
 ```js
-<Pager page={1} lastPage={3} query={{ term: 'Medier' }} pageItemComponentClass="button" pathname="#" />
+<Pager page={1} lastPage={3} query={{ term: "Medier" }} pageItemComponentClass="button" pathname="#" />
 ```

@@ -6,15 +6,15 @@
  *
  */
 
-import { ReactNode, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { Cross as CrossIcon } from '@ndla/icons/action';
-import SafeLink from '@ndla/safelink';
-import Controls from './Controls';
-import SpeechControl from './SpeechControl';
+import { ReactNode, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { Cross as CrossIcon } from "@ndla/icons/action";
+import SafeLink from "@ndla/safelink";
+import Controls from "./Controls";
+import SpeechControl from "./SpeechControl";
 
 const InfoWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
@@ -56,7 +56,7 @@ const ImageWrapper = styled.div`
 const TextWrapper = styled.div`
   padding: ${spacing.small};
   width: 100%;
-  &[data-has-image='true'] {
+  &[data-has-image="true"] {
     ${mq.range({ from: breakpoints.tablet })} {
       padding: ${spacing.small} ${spacing.normal};
     }
@@ -74,27 +74,27 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  ${fonts.sizes('22px', '30px')};
+  ${fonts.sizes("22px", "30px")};
   margin: 0px;
-  &[data-has-desc='true'] {
+  &[data-has-desc="true"] {
     margin: 0 0 ${spacing.small};
   }
 `;
 
 const Subtitle = styled.h3`
-  ${fonts.sizes('18px', '28px')};
+  ${fonts.sizes("18px", "28px")};
   margin: 0;
   font-weight: ${fonts.weight.semibold};
 `;
 
 const StyledDescription = styled.div`
-  ${fonts.sizes('16px', '30px')};
+  ${fonts.sizes("16px", "30px")};
   font-family: ${fonts.sans};
   margin: 0;
 `;
 
 const LinkToTextVersionWrapper = styled.div`
-  &[data-margin='true'] {
+  &[data-margin="true"] {
     margin-top: ${spacing.small};
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -105,7 +105,7 @@ const LinkToTextVersionWrapper = styled.div`
 const TextVersionWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
   border-top: 0;
-  ${fonts.sizes('16px', '30px')};
+  ${fonts.sizes("16px", "30px")};
   font-family: ${fonts.sans};
   &.audio-player-text-version-hidden {
     display: none;
@@ -135,7 +135,7 @@ const LinkButton = styled(ButtonV2)`
   padding-left: 0;
   padding-right: 4px;
   min-height: ${spacing.medium};
-  ${fonts.sizes('16px', '25px')};
+  ${fonts.sizes("16px", "25px")};
   flex: 0 0 auto;
   &:hover,
   &:focus {
@@ -198,7 +198,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   const TextVersionComponent = ({ margin }: TextVersionComponentProps) => (
     <LinkToTextVersionWrapper data-margin={margin}>
       <ButtonV2 size="normal" shape="pill" onClick={toggleTextVersion} data-audio-text-button-id={staticRenderId}>
-        {t('audio.textVersion.heading')}
+        {t("audio.textVersion.heading")}
       </ButtonV2>
     </LinkToTextVersionWrapper>
   );
@@ -229,7 +229,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
                 ? description
                 : `${truncatedDescription}...`}
               <ButtonV2 variant="link" onClick={() => setShowFullDescription((p) => !p)}>
-                {t(`audio.${showFullDescription ? 'readLessDescriptionLabel' : 'readMoreDescriptionLabel'}`)}
+                {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
               </ButtonV2>
             </StyledDescription>
           )}
@@ -242,15 +242,15 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
       {textVersion && (showTextVersion || staticRenderId) && (
         <TextVersionWrapper id={staticRenderId} hidden={!!staticRenderId}>
           <TextVersionHeadingWrapper>
-            <TextVersionHeading>{t('audio.textVersion.heading')}</TextVersionHeading>
+            <TextVersionHeading>{t("audio.textVersion.heading")}</TextVersionHeading>
             <LinkButton
               variant="link"
               size="normal"
               onClick={toggleTextVersion}
               data-audio-text-button-id={staticRenderId}
             >
-              <CrossIcon style={{ width: '20px', height: '20px' }} />
-              <CloseText>{t('audio.textVersion.close')}</CloseText>
+              <CrossIcon style={{ width: "20px", height: "20px" }} />
+              <CloseText>{t("audio.textVersion.close")}</CloseText>
             </LinkButton>
           </TextVersionHeadingWrapper>
           <TextVersionText>{textVersion}</TextVersionText>

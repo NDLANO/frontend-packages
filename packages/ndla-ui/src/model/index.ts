@@ -6,10 +6,10 @@
  *
  */
 
-import { contentTypes, contentTypeMapping, resourceEmbedTypeMapping } from './ContentType';
-import * as subjectCategories from './SubjectCategories';
-import * as subjectTypes from './SubjectTypes';
-import * as wordClass from './WordClass';
+import { contentTypes, contentTypeMapping, resourceEmbedTypeMapping } from "./ContentType";
+import * as subjectCategories from "./SubjectCategories";
+import * as subjectTypes from "./SubjectTypes";
+import * as wordClass from "./WordClass";
 
 const model = {
   contentTypes,

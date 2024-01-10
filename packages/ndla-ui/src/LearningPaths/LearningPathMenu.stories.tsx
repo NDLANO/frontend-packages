@@ -6,55 +6,55 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import LearningPathMenu from './LearningPathMenu';
-import { defaultParameters } from '../../../../stories/defaults';
-import { contentTypes } from '../model/ContentType';
+import { Meta, StoryFn } from "@storybook/react";
+import LearningPathMenu from "./LearningPathMenu";
+import { defaultParameters } from "../../../../stories/defaults";
+import { contentTypes } from "../model/ContentType";
 const args = {
-  name: 'Læringssti',
+  name: "Læringssti",
   LearningPathId: 1,
-  lastUpdated: '2023-06-01',
+  lastUpdated: "2023-06-01",
   copyright: {
     contributors: [
       {
-        type: 'originator',
-        name: 'NDLA',
+        type: "originator",
+        name: "NDLA",
       },
     ],
     license: {
-      license: 'CC-BY-SA-4.0',
+      license: "CC-BY-SA-4.0",
     },
   },
-  learningPathUrl: 'https://stier.ndla.no',
+  learningPathUrl: "https://stier.ndla.no",
   currentIndex: 1,
   cookies: {},
   learningsteps: [
     {
       id: 1,
-      title: 'Introduksjon',
+      title: "Introduksjon",
       type: contentTypes.LEARNING_PATH,
     },
     {
       id: 2,
-      title: 'Steg 1',
+      title: "Steg 1",
       type: contentTypes.SUBJECT_MATERIAL,
     },
     {
       id: 3,
-      title: 'Steg 2',
+      title: "Steg 2",
       type: contentTypes.TASKS_AND_ACTIVITIES,
     },
   ],
-  toLearningPathUrl: (pathId: number, stepId: number) => '',
+  toLearningPathUrl: (pathId: number, stepId: number) => "",
 };
 
 export default {
-  title: 'Patterns/Learning path menu',
+  title: "Patterns/Learning path menu",
   component: LearningPathMenu,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
-    layout: 'centered',
+    layout: "centered",
   },
   args: args,
 } as Meta<typeof LearningPathMenu>;
@@ -64,4 +64,4 @@ export const LearningPathMenuStory: StoryFn<typeof LearningPathMenu> = ({ ...arg
 };
 
 LearningPathMenuStory.args = args;
-LearningPathMenuStory.storyName = 'Learning path menu';
+LearningPathMenuStory.storyName = "Learning path menu";

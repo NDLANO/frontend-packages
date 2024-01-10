@@ -6,13 +6,13 @@
  *
  */
 
-import { useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 as Button } from '@ndla/button';
-import { Plus } from '@ndla/icons/action';
-import Tooltip from '@ndla/tooltip';
-import { IFolder } from '@ndla/types-backend/learningpath-api';
+import { useRef } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 as Button } from "@ndla/button";
+import { Plus } from "@ndla/icons/action";
+import Tooltip from "@ndla/tooltip";
+import { IFolder } from "@ndla/types-backend/learningpath-api";
 
 interface AddFolderButtonProps {
   canAddFolder: boolean;
@@ -44,10 +44,10 @@ const AddFolderButton = ({
   const { t } = useTranslation();
   const ref = useRef<HTMLButtonElement>(null);
   const tooltip = loading
-    ? t('loading')
+    ? t("loading")
     : canAddFolder
-      ? t('myNdla.newFolderUnder', { folderName: focusedFolder?.name })
-      : t('treeStructure.maxFoldersAlreadyAdded');
+      ? t("myNdla.newFolderUnder", { folderName: focusedFolder?.name })
+      : t("treeStructure.maxFoldersAlreadyAdded");
   return (
     <Tooltip tooltip={tooltip}>
       <StyledAddFolderButton
@@ -72,7 +72,7 @@ const AddFolderButton = ({
           setShowTree(true);
         }}
       >
-        <StyledPlus /> {t('myNdla.newFolder')}
+        <StyledPlus /> {t("myNdla.newFolder")}
       </StyledAddFolderButton>
     </Tooltip>
   );

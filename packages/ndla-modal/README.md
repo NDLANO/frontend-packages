@@ -13,7 +13,7 @@ $ yarn ndla-modal
 ### Modal with logic for scroll lock and focus-trap.
 
 ```js
-import Modal from '@ndla/modal';
+import Modal from "@ndla/modal";
 
 <Modal />;
 ```

@@ -10,7 +10,7 @@ type OptionsProps = {
   separator?: string;
   conjunction?: string;
 };
-const joinArrayWithConjunction = (list: string[], { separator = ', ', conjunction = 'og' }: OptionsProps) => {
+const joinArrayWithConjunction = (list: string[], { separator = ", ", conjunction = "og" }: OptionsProps) => {
   if (list.length === 1) {
     return list[0];
   }

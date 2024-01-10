@@ -6,7 +6,7 @@
  *
  */
 
-import { RelatedArticle, RelatedArticleList } from './RelatedArticleList';
+import { RelatedArticle, RelatedArticleList } from "./RelatedArticleList";
 
 export { RelatedArticle };
 

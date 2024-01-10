@@ -6,4 +6,4 @@
  *
  */
 
-export { ExpandableBox, ExpandableBoxSummary } from './ExpandableBox';
+export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";

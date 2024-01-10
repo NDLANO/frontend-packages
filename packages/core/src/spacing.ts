@@ -9,16 +9,16 @@
 export const spacingUnit = 24;
 
 export type SpacingNames =
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'nsmall'
-  | 'normal'
-  | 'medium'
-  | 'mediumlarge'
-  | 'large'
-  | 'xlarge'
-  | 'xxlarge';
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "nsmall"
+  | "normal"
+  | "medium"
+  | "mediumlarge"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
 
 const spacing: Record<SpacingNames, string> = {
   xxsmall: `${spacingUnit / 6}px`,

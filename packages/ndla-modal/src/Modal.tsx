@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { CSSProperties, ReactNode, Ref, forwardRef, useMemo } from 'react';
-import styled from '@emotion/styled';
-import { Content, DialogProps, DialogTriggerProps, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { modalAnimations, overlayAnimations, positionStyles, sizeStyles } from './modalStyles';
-import { ModalContentProps } from './types';
+import { CSSProperties, ReactNode, Ref, forwardRef, useMemo } from "react";
+import styled from "@emotion/styled";
+import { Content, DialogProps, DialogTriggerProps, Overlay, Portal, Root, Trigger } from "@radix-ui/react-dialog";
+import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import { modalAnimations, overlayAnimations, positionStyles, sizeStyles } from "./modalStyles";
+import { ModalContentProps } from "./types";
 
 const StyledOverlay = styled.div`
   position: fixed;
@@ -20,10 +20,10 @@ const StyledOverlay = styled.div`
   ${overlayAnimations};
   animation-duration: var(--duration);
   animation-timing-function: ease-in-out;
-  &[data-state='open'] {
+  &[data-state="open"] {
     animation-name: overlayFadeIn;
   }
-  &[data-state='closed'] {
+  &[data-state="closed"] {
     animation-name: overlayFadeOut;
   }
 `;
@@ -40,7 +40,7 @@ const DialogContent = styled(Content)`
   overflow-y: auto;
   background-color: ${colors.white};
   ${mq.range({ from: breakpoints.tablet })} {
-    &[data-margin='small'] {
+    &[data-margin="small"] {
       --margin: ${spacing.normal};
     }
   }
@@ -54,65 +54,65 @@ const DialogContent = styled(Content)`
 
   ${positionStyles};
   ${sizeStyles};
-  &[data-expands='true'] {
+  &[data-expands="true"] {
     width: min-content;
     height: min-content;
     max-width: 100%;
     max-height: 100%;
   }
-  &[data-animation-name='fade'] {
-    &[data-state='open'] {
+  &[data-animation-name="fade"] {
+    &[data-state="open"] {
       animation-name: modalFadeIn;
     }
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       animation-name: modalFadeOut;
     }
   }
-  &[data-animation-name='zoom'] {
-    &[data-state='open'] {
+  &[data-animation-name="zoom"] {
+    &[data-state="open"] {
       animation-name: modalZoomIn;
     }
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       animation-name: modalZoomOut;
     }
   }
-  &[data-animation-name='subtle'] {
-    &[data-state='open'] {
+  &[data-animation-name="subtle"] {
+    &[data-state="open"] {
       animation-name: modalSubtleIn;
     }
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       animation-name: modalSubtleOut;
     }
   }
-  &[data-animation-name='slideIn'][data-position='top'] {
-    &[data-state='open'] {
+  &[data-animation-name="slideIn"][data-position="top"] {
+    &[data-state="open"] {
       animation-name: modalSlideTopIn;
     }
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       animation-name: modalSlideTopOut;
     }
   }
-  &[data-animation-name='slideIn'][data-position='right'] {
-    &[data-state='open'] {
+  &[data-animation-name="slideIn"][data-position="right"] {
+    &[data-state="open"] {
       animation-name: modalSlideRightIn;
     }
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       animation-name: modalSlideRightOut;
     }
   }
-  &[data-animation-name='slideIn'][data-position='bottom'] {
-    &[data-state='open'] {
+  &[data-animation-name="slideIn"][data-position="bottom"] {
+    &[data-state="open"] {
       animation-name: modalSlideBottomIn;
     }
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       animation-name: modalSlideBottomOut;
     }
   }
-  &[data-animation-name='slideIn'][data-position='left'] {
-    &[data-state='open'] {
+  &[data-animation-name="slideIn"][data-position="left"] {
+    &[data-state="open"] {
       animation-name: modalSlideLeftIn;
     }
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       animation-name: modalSlideLeftOut;
     }
   }
@@ -147,21 +147,21 @@ export const ModalTrigger = forwardRef(({ children, ...rest }: ModalTriggerProps
 
 export const ModalContent = ({
   children,
-  modalMargin = 'small',
-  position = 'center',
-  size: sizeProp = 'normal',
+  modalMargin = "small",
+  position = "center",
+  size: sizeProp = "normal",
   animationDuration = 400,
-  animation = 'zoom',
+  animation = "zoom",
   expands,
   forceOverlay,
   ...rest
 }: ModalContentProps) => {
   const styledVars = useMemo(
-    () => ({ '--duration': `${animationDuration}ms` }) as unknown as CSSProperties,
+    () => ({ "--duration": `${animationDuration}ms` }) as unknown as CSSProperties,
     [animationDuration],
   );
   const { size, height, width }: Record<string, string> = useMemo(() => {
-    return typeof sizeProp === 'string' ? { size: sizeProp } : sizeProp;
+    return typeof sizeProp === "string" ? { size: sizeProp } : sizeProp;
   }, [sizeProp]);
 
   return (

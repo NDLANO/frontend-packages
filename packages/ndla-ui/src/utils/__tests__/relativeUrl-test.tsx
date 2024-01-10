@@ -69,4 +69,10 @@ describe("getPossibleRelativeUrl", () => {
 
     expect(getPossiblyRelativeUrl(url, pathname)).toEqual("/");
   });
+  it("handles mailto from markdown", () => {
+    const url = "mailto:test@ndla.no";
+    const pathname = "https://ndla.no/about/hvem-er-vi";
+
+    expect(getPossiblyRelativeUrl(url, pathname)).toEqual("mailto:test@ndla.no");
+  });
 });

@@ -7,16 +7,13 @@ details {
   position: relative;
   left: 0;
   clear: left;
+  border: 1px solid $brand-grey--light;
 
-  &:not(.c-details--solution-box) {
-    border: 1px solid $brand-grey--light;
+  &[open] {
+    padding: $spacing;
 
-    &[open] {
-      padding: $spacing;
-
-      summary {
-        padding: 0 0 $spacing 0;
-      }
+    summary {
+      padding: 0 0 $spacing 0;
     }
   }
 
@@ -27,13 +24,6 @@ details {
 
   > *:last-child {
     margin-bottom: 0;
-  }
-
-  &.c-details--solution-box {
-    summary {
-      background: $brand-color--lightest;
-      font-family: $font;
-    }
   }
 
   table {
@@ -68,35 +58,3 @@ summary {
   padding: $spacing;
 }
 
-details[open].c-details--solution-box {
-  summary {
-    padding: $spacing;
-  }
-
-  .c-details__content {
-    padding: $spacing--small;
-    background-color: $table-bg;
-  }
-
-  .c-table__wrapper {
-    margin: 0;
-  }
-}
-
-details .c-figure {
-  width: 100% !important;
-  padding-left: 0;
-  padding-right: 0;
-  left: 0 !important;
-}
-
-details.c-details--exploded {
-  @include mq(desktop) {
-    .c-details__content {
-      opacity: 0;
-      animation: fadeIn 150ms;
-      animation-delay: 150ms;
-      animation-fill-mode: forwards;
-    }
-  }
-}

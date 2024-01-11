@@ -60,7 +60,7 @@
   }
 
   &:after {
-    content: '';
+    content: "";
     display: table;
     clear: both;
   }
@@ -108,6 +108,10 @@
   @include mq(desktop) {
     margin-bottom: $spacing--large;
   }
+}
+
+.c-article__competence {
+  margin-top: $spacing;
 }
 
 .c-article__title {

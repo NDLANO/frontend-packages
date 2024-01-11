@@ -15,15 +15,12 @@ import MissingRouterContext from "./MissingRouterContext";
 const oldNdlaRegex = /(.*)\/?node\/(\d+).*/;
 
 const isExternalLink = (to?: LinkProps["to"]) =>
-  typeof to === "string" && (to.startsWith("https://") || to.startsWith("http://"));
+  typeof to === "string" && (to.startsWith("https://") || to.startsWith("http://") || to.startsWith("mailto:"));
 
 export const isOldNdlaLink = (to?: LinkProps["to"]) => typeof to === "string" && to.match(oldNdlaRegex) !== null;
 
 const LaunchIcon = styled(Launch)`
   margin-left: 6px;
-  height: auto;
-  width: auto;
-  margin-top: 1px;
   vertical-align: text-top;
 `;
 
@@ -55,7 +52,7 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
           {...rest}
         >
           {children}
-          {showNewWindowIcon && <LaunchIcon />}
+          {showNewWindowIcon && <LaunchIcon size="normal" />}
         </a>
       );
     }

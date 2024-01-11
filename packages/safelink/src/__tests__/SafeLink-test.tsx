@@ -57,6 +57,15 @@ test("SafeLink renderers normal link correctly when router context is not presen
   expect(container).toMatchSnapshot();
 });
 
+test("SafeLink renderers normal mailto-link correctly", async () => {
+  const { container, findByRole } = render(<Safelink to="mailto:test@ndla.no">test@ndla.no</Safelink>, {
+    wrapper,
+  });
+  const link = await findByRole("link");
+  expect(link).toHaveAttribute("href", "mailto:test@ndla.no");
+  expect(container).toMatchSnapshot();
+});
+
 test("isOldNdlaLink checks", () => {
   expect(isOldNdlaLink("/nb/node/12")).toBe(true);
   expect(isOldNdlaLink("/nn/node/12?fag=12")).toBe(true);

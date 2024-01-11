@@ -40,3 +40,13 @@ exports[`SafeLink renderers normal link correctly when router context is not pre
   </a>
 </div>
 `;
+
+exports[`SafeLink renderers normal mailto-link correctly 1`] = `
+<div>
+  <a
+    href="mailto:test@ndla.no"
+  >
+    test@ndla.no
+  </a>
+</div>
+`;

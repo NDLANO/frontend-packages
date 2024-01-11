@@ -16,6 +16,8 @@ const REPLACE_WWW = /^www\./;
 
 export const getPossiblyRelativeUrl = (url: string, path?: string) => {
   if (!path) return url;
+  // If url is a mailto link, return url as is.
+  if (url.startsWith("mailto:")) return url;
   // If not on NDLA, or if url is not a NDLA url, return url as is
   if (!NDLA_URL.test(url) || !NDLA_URL.test(path)) return url;
   //Remove environment info

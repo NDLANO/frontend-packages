@@ -15,6 +15,7 @@ export interface ImageCrop {
   startY: number;
   endX: number;
   endY: number;
+  cropUnit?: string;
 }
 
 export interface ImageFocalPoint {
@@ -26,8 +27,9 @@ export const makeSrcQueryString = (width: number | undefined, crop?: ImageCrop, 
   const widthParams = width && `width=${width}`;
   const cropParams =
     crop && `cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`;
+  const cropUnit = crop && crop.cropUnit && `cropUnit=${crop.cropUnit}`;
   const focalPointParams = focalPoint && `focalX=${focalPoint.x}&focalY=${focalPoint.y}`;
-  const params = [widthParams, cropParams, focalPointParams].filter((p) => p).join("&");
+  const params = [widthParams, cropParams, cropUnit, focalPointParams].filter((p) => p).join("&");
 
   return params;
 };

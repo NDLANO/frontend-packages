@@ -23,6 +23,7 @@ export interface ImageEmbedData {
   lowerRightX?: string;
   upperLeftY?: string;
   upperLeftX?: string;
+  cropUnit?: string;
   metaData?: any;
   pageUrl?: string;
   border?: string;

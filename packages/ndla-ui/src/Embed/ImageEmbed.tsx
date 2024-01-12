@@ -94,12 +94,14 @@ export const getCrop = (data: ImageEmbedData) => {
   const lowerRightY = parseFloat(data.lowerRightY ?? "");
   const upperLeftX = parseFloat(data.upperLeftX ?? "");
   const upperLeftY = parseFloat(data.upperLeftY ?? "");
+  const cropUnit = data.cropUnit;
   if (!isNaN(lowerRightX) && !isNaN(lowerRightY) && !isNaN(upperLeftX) && !isNaN(upperLeftY)) {
     return {
       startX: lowerRightX,
       startY: lowerRightY,
       endX: upperLeftX,
       endY: upperLeftY,
+      cropUnit: cropUnit,
     };
   }
   return undefined;
@@ -206,6 +208,7 @@ interface ImageWrapperProps {
     startY: number;
     endX: number;
     endY: number;
+    cropUnit?: string;
   };
   size?: string;
 }

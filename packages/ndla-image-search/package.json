@@ -1,6 +1,6 @@
 {
   "name": "@ndla/image-search",
-  "version": "6.0.153",
+  "version": "6.0.154",
   "description": "A simple library for searching images from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "@ndla/forms": "^5.2.16",
     "@ndla/icons": "^5.0.5",
     "@ndla/pager": "^2.2.51",
-    "@ndla/ui": "^50.8.2",
+    "@ndla/ui": "^50.8.3",
     "@ndla/util": "^4.0.4",
     "pretty-bytes": "^5.6.0"
   },

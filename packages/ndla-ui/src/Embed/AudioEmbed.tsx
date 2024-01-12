@@ -74,7 +74,7 @@ const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
       />
       <EmbedByline
         error={false}
-        type={embedData.type === "standard" ? "audio" : "podcast"}
+        type={data.audioType === "standard" ? "audio" : "podcast"}
         topRounded={false}
         bottomRounded={!data.imageMeta}
         copyright={embed.data.copyright}

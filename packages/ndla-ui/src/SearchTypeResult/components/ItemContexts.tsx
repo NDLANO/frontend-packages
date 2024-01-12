@@ -107,7 +107,12 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
                           ariaHidden={false}
                         />
                       ) : (
-                        <Core size="normal" color={colors.brand.primary} aria-label={t("resource.tooltipCoreTopic")} ariaHidden={false}/>
+                        <Core
+                          size="normal"
+                          color={colors.brand.primary}
+                          aria-label={t("resource.tooltipCoreTopic")}
+                          ariaHidden={false}
+                        />
                       )}
                     </Breadcrumb>
                   </ContextListItem>

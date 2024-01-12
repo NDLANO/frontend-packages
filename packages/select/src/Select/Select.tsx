@@ -6,19 +6,19 @@
  *
  */
 
-import { useMemo } from 'react';
-import ReactSelect, { createFilter, StylesConfig, Props } from 'react-select';
-import BaseContainer from './BaseContainer';
-import BaseControl from './BaseControl';
-import BaseDropdownIndicator from './BaseDropdownIndicator';
-import BaseGroupHeading from './BaseGroupHeading';
-import BaseMenu from './BaseMenu';
-import BaseMultiValue from './BaseMultiValue';
-import BaseOption from './BaseOption';
-import BasePlaceholder from './BasePlaceholder';
-import BaseSingleValue from './BaseSingleValue';
-import { Option, Color, MultiValue, SingleValue, GroupBase } from './types';
-import ValueContainer from './ValueContainer';
+import { useMemo } from "react";
+import ReactSelect, { createFilter, StylesConfig, Props } from "react-select";
+import BaseContainer from "./BaseContainer";
+import BaseControl from "./BaseControl";
+import BaseDropdownIndicator from "./BaseDropdownIndicator";
+import BaseGroupHeading from "./BaseGroupHeading";
+import BaseMenu from "./BaseMenu";
+import BaseMultiValue from "./BaseMultiValue";
+import BaseOption from "./BaseOption";
+import BasePlaceholder from "./BasePlaceholder";
+import BaseSingleValue from "./BaseSingleValue";
+import { Option, Color, GroupBase } from "./types";
+import ValueContainer from "./ValueContainer";
 
 interface SelectProps<T extends boolean> extends Props<Option, T, GroupBase<Option>> {
   isMulti?: T;
@@ -31,22 +31,22 @@ interface SelectProps<T extends boolean> extends Props<Option, T, GroupBase<Opti
   outline?: boolean;
   colorTheme?: Color;
   /** Indicate if search hits should be matched from start of word or at any position. Only has effect when isSearchable is true. */
-  matchFrom?: 'any' | 'start';
+  matchFrom?: "any" | "start";
   inModal?: boolean;
 }
 
 const Select = <T extends boolean>({
   options,
   hideArrow,
-  menuPlacement = 'bottom',
-  colorTheme = 'blue',
+  menuPlacement = "bottom",
+  colorTheme = "blue",
   isSearchable = false,
-  matchFrom = 'start',
+  matchFrom = "start",
   inModal,
   isMulti,
   ...rest
 }: SelectProps<T>) => {
-  const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document.body : null), []);
+  const portalTarget = useMemo(() => (typeof document !== "undefined" ? document.body : null), []);
 
   const components = useMemo(
     () => ({
@@ -67,7 +67,7 @@ const Select = <T extends boolean>({
 
   const styles: StylesConfig<Option, T> = useMemo(() => ({ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }), []);
   const filterOption = useMemo(
-    () => (matchFrom === 'start' ? createFilter({ matchFrom: 'start' }) : undefined),
+    () => (matchFrom === "start" ? createFilter({ matchFrom: "start" }) : undefined),
     [matchFrom],
   );
 

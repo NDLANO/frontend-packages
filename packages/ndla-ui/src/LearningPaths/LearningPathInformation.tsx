@@ -65,7 +65,7 @@ interface Props {
 }
 
 export const LearningPathInformation = ({ description, title, license, invertedStyle, id }: Props) => {
-  const rights = getLicenseByAbbreviation(license?.license || "", "nb");
+  const fullLicense = getLicenseByAbbreviation(license?.license || "", "nb");
   return (
     <section className="o-wrapper">
       <StyledWrapper invertedStyle={invertedStyle} className="c-article">
@@ -73,7 +73,7 @@ export const LearningPathInformation = ({ description, title, license, invertedS
           <StyledHeader element="h1" headingStyle="h1" tabIndex={-1} id={id}>
             {title}
           </StyledHeader>
-          <LicenseLink license={rights} />
+          <LicenseLink license={fullLicense} />
         </LicenseWrapper>
         {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
       </StyledWrapper>

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/article-converter",
-  "version": "6.0.45",
+  "version": "6.0.46",
   "description": "Transforms NDLA articles into extended html versions",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@ndla/code": "^5.0.31",
-    "@ndla/ui": "^50.8.3",
+    "@ndla/ui": "^50.9.0",
     "html-react-parser": "^4.2.2",
     "lodash": "^4.17.20"
   },

@@ -986,7 +986,7 @@ const messages = {
         cancel: {
           topic: "Forkast innlegget",
           post: "Forkast svaret",
-          edit: "Avbryt redigeringen",
+          edit: "Avbryt redigeringa",
         },
         continue: {
           topic: "Hald fram med å skriva innlegget",

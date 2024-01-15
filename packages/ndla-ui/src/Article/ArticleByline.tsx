@@ -37,6 +37,11 @@ const TextWrapper = styled.div`
     flex-direction: column-reverse;
     gap: ${spacing.xsmall};
   }
+  &[data-learningPath="true"] {
+    flex-direction: column;
+    flex-direction: column-reverse;
+    gap: ${spacing.xsmall};
+  }
 `;
 
 const PrimaryContributorsWrapper = styled.span`
@@ -63,6 +68,7 @@ type Props = {
   footnotes?: FootNote[];
   accordionHeaderVariant?: AccordionHeaderVariants;
   displayByline?: boolean;
+  bylineType?: "article" | "learningPath";
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -124,6 +130,7 @@ const ArticleByline = ({
   locale,
   accordionHeaderVariant = "blue",
   displayByline = true,
+  bylineType = "article",
 }: Props) => {
   const { t } = useTranslation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
@@ -153,7 +160,7 @@ const ArticleByline = ({
   return (
     <Wrapper>
       {displayByline && (
-        <TextWrapper>
+        <TextWrapper data-learningPath={bylineType === "learningPath"}>
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (
@@ -168,7 +175,7 @@ const ArticleByline = ({
             )}
           </LicenseWrapper>
           <div>
-            {t("article.lastUpdated")} {published}
+            {t(`${bylineType}.lastUpdated`)} {published}
           </div>
         </TextWrapper>
       )}

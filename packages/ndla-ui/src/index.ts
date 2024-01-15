@@ -29,6 +29,8 @@ export {
   BlockConcept,
 } from "./Embed";
 
+export { LicenseLink } from "./LicenseByline";
+
 export {
   ArticleByline,
   ArticleFootNotes,

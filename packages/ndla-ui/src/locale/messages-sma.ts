@@ -975,28 +975,27 @@ const messages = {
         posts: "innlegg",
         posts_plural: "innlegg",
       },
-      publish: "Bæjhkoehtidh",
+      publish: "Publiser",
       cancel: {
         title: {
-          topic: "Båetieh orre tjaalegem",
-          post: "Bååstede orre vaestiedassem",
-          edit: "Aborten edtja tjyölkehtidh",
+          topic: "Forkast nytt innlegg",
+          post: "Forkast nytt svar",
+          edit: "Avbryt redigering",
         },
         content: {
-          topic:
-            "Sïjhth dam håalemem sliejhtedh? Tjaalege sæjhta destie vaaltasovvedh jïh datne ih maehtieh dam ikth vielie gaavnedh mænngan.",
-          post: "Sïjhth dam vaestiedassem bååstede giesedh? Vaestiedasse sæjhta destie vaaltasovvedh , jïh dan mænngan ih maehtieh dam gaavnedh.",
-          edit: "Sïjhth dåeriedimmiem orrijidh? Jeatjah jarkelimmieh mah eah leah vaaltasovveme sïjhtieh gååvnesidh.",
+          topic: "Vil du forkaste dette innlegget? Innlegget vil bli slettet og du kan ikke finne det igjen senere.",
+          post: "Vil du forkaste dette svaret? Svaret vil bli slettet og du kan ikke finne det igjen senere.",
+          edit: "Vil du avslutte redigeringen? Eventuelle ikke lagrede endringer vil gå tapt.",
         },
         cancel: {
-          topic: "Båetieh håalemistie",
-          post: "Bååstede vaestiedassese",
-          edit: "Aborten edtja tjyölkehtidh",
+          topic: "Forkast innlegget",
+          post: "Forkast svaret",
+          edit: "Avbryt redigeringen",
         },
         continue: {
-          topic: "Jåarhkh tjaeledh",
-          post: "Jåarhkh vaastoem tjaeledh",
-          edit: "Jåarhkh staeriedidh",
+          topic: "Fortsett å skrive innlegg",
+          post: "Fortsett å skrive svaret",
+          edit: "Fortsett å redigere",
         },
       },
       new: {

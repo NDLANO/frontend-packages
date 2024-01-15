@@ -989,8 +989,8 @@ const messages = {
           edit: "Avbryt redigeringa",
         },
         continue: {
-          topic: "Hald fram med å skriva innlegget",
-          post: "Hald fram med å skriva svaret",
+          topic: "Hald fram med å skrive innlegget",
+          post: "Hald fram med å skrive svaret",
           edit: "Hald fram med å redigere",
         },
       },

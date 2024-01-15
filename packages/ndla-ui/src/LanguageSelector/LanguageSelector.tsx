@@ -6,12 +6,12 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { colors, fonts, spacing } from '@ndla/core';
-import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
-import { ChevronDown } from '@ndla/icons/common';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { colors, fonts, spacing } from "@ndla/core";
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from "@ndla/dropdown-menu";
+import { ChevronDown } from "@ndla/icons/common";
 
 interface Props<T extends string> {
   locales: T[];
@@ -57,7 +57,7 @@ const ActiveIndicator = styled.div`
 `;
 
 const Text = styled.span`
-  ${fonts.sizes('20px', '24px')};
+  ${fonts.sizes("20px", "24px")};
   font-weight: ${fonts.weight.semibold};
 `;
 
@@ -70,7 +70,7 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted, trigg
           variant="outline"
           shape="pill"
           inverted={inverted}
-          aria-label={t('footer.selectLanguage')}
+          aria-label={t("footer.selectLanguage")}
           id={triggerId}
         >
           {t(`languages.prefixChangeLanguage`)} <ChevronDown />

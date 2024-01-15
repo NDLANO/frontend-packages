@@ -6,11 +6,11 @@
  *
  */
 
-import { KeyboardEvent } from 'react';
-import styled from '@emotion/styled';
-import { spacing, fonts, colors, misc, mq, breakpoints } from '@ndla/core';
-import { DocumentDetails } from '@ndla/icons/common';
-import { Category, ListItemType } from './ListView';
+import { KeyboardEvent } from "react";
+import styled from "@emotion/styled";
+import { spacing, fonts, colors, misc, mq, breakpoints } from "@ndla/core";
+import { DocumentDetails } from "@ndla/icons/common";
+import { Category, ListItemType } from "./ListView";
 
 const ListItemWrapper = styled.div`
   padding: ${spacing.small};
@@ -62,17 +62,17 @@ const ListItemWrapper = styled.div`
     text-transform: capitalize;
     font-weight: 600;
     line-height: 0.5rem;
-    ${fonts.sizes('12px', 1.7)};
+    ${fonts.sizes("12px", 1.7)};
   }
   .item-name {
     display: inline-block;
-    ${fonts.sizes('18px', 1.3)};
+    ${fonts.sizes("18px", 1.3)};
     color: ${colors.brand.primary};
     font-weight: ${fonts.weight.bold};
     margin: 0 0 ${spacing.xsmall} 0;
   }
   .item-description {
-    ${fonts.sizes('14px', 1.3)};
+    ${fonts.sizes("14px", 1.3)};
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -93,7 +93,7 @@ const ListItemWrapper = styled.div`
     }
 
     .item-description {
-      ${fonts.sizes('16px', 1.3)};
+      ${fonts.sizes("16px", 1.3)};
       max-width: 500px;
     }
 
@@ -123,28 +123,28 @@ interface Props {
   clickCallback?: Function;
   nextItem?: {};
   previousItem?: {};
-  viewStyle: 'grid' | 'list';
+  viewStyle: "grid" | "list";
   renderMarkdown: Function;
 }
 const ListItem = ({ item, clickCallback, nextItem, previousItem, viewStyle, renderMarkdown }: Props) => {
   const handleClick = () => clickCallback?.(item);
 
   const handleKeyUp = (evt: KeyboardEvent<HTMLDivElement>) => {
-    if (evt.key === 'Enter') {
+    if (evt.key === "Enter") {
       clickCallback?.(item);
     }
   };
 
   const renderItem = () => (
     <>
-      <h3 className={'item-name'}>{item.name}</h3>
-      <div className={'item-description'}>{renderMarkdown(item.description)}</div>
+      <h3 className={"item-name"}>{item.name}</h3>
+      <div className={"item-description"}>{renderMarkdown(item.description)}</div>
     </>
   );
 
   const renderNoImage = () => (
-    <div className={'no-image-wrapper'} aria-hidden="true">
-      <div className={'no-image'}>
+    <div className={"no-image-wrapper"} aria-hidden="true">
+      <div className={"no-image"}>
         <DocumentDetails size="large" />
       </div>
     </div>
@@ -152,17 +152,17 @@ const ListItem = ({ item, clickCallback, nextItem, previousItem, viewStyle, rend
 
   const renderCategory = (category: Category | Category[]) => {
     const values = !Array.isArray(category) ? [category] : category;
-    return <span className={'item-category'}>{values[0].title}</span>;
+    return <span className={"item-category"}>{values[0].title}</span>;
   };
 
   const { category } = item;
   return (
     <ListItemWrapper onClick={handleClick} onKeyUp={handleKeyUp} role="button" className={viewStyle} tabIndex={0}>
-      <div className={'item-image'}>
+      <div className={"item-image"}>
         {item.image ? <img src={item.image} alt={item.description} /> : renderNoImage()}
         {category && renderCategory(category)}
       </div>
-      {viewStyle === 'grid' ? renderItem() : <div>{renderItem()}</div>}
+      {viewStyle === "grid" ? renderItem() : <div>{renderItem()}</div>}
     </ListItemWrapper>
   );
 };

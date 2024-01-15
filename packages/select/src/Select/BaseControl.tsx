@@ -6,11 +6,11 @@
  *
  */
 
-import { ControlProps } from 'react-select';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { StyledDropdown } from './BaseDropdownIndicator';
-import { Option } from './types';
+import { ControlProps } from "react-select";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
+import { StyledDropdown } from "./BaseDropdownIndicator";
+import { Option } from "./types";
 
 const StyledBaseControl = styled.div`
   display: flex;
@@ -28,47 +28,47 @@ const StyledBaseControl = styled.div`
   border-style: solid;
   border-color: ${colors.brand.light};
   background: ${colors.white};
-  ${fonts.sizes('18px', '24px')};
+  ${fonts.sizes("18px", "24px")};
 
   &:focus-within {
     outline: 2px solid ${colors.brand.dark};
   }
 
-  &[data-bold='true'] {
+  &[data-bold="true"] {
     font-weight: ${fonts.weight.bold};
   }
 
-  &[data-required='true'][data-has-value='false'] {
+  &[data-required="true"][data-has-value="false"] {
     outline: 2px solid ${colors.support.redLight};
   }
 
-  &[data-small='true'] {
+  &[data-small="true"] {
     border-radius: 4px;
     padding: ${spacing.xxsmall} ${spacing.xsmall};
     min-height: unset;
-    ${fonts.sizes('16px', '18px')};
+    ${fonts.sizes("16px", "18px")};
     font-weight: ${fonts.weight.normal};
-    &[data-bold='true'] {
+    &[data-bold="true"] {
       font-weight: ${fonts.weight.semibold};
     }
   }
 
-  &[data-color-theme='blue'] {
+  &[data-color-theme="blue"] {
     border-color: ${colors.brand.dark};
     background: ${colors.brand.lighter};
   }
 
-  &[data-outline='true'] {
+  &[data-outline="true"] {
     border-width: 1px;
   }
 
-  &[data-disabled='true'] {
+  &[data-disabled="true"] {
     cursor: auto;
     color: ${colors.brand.greyLight};
     background: ${colors.brand.greyMedium};
   }
 
-  &[data-menu-open='true'] {
+  &[data-menu-open="true"] {
     & ${StyledDropdown} svg {
       transform: rotate(180deg);
     }

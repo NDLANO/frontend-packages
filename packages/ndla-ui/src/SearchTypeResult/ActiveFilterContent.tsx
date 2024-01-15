@@ -6,12 +6,12 @@
  *
  */
 
-import { forwardRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { spacing, fonts } from '@ndla/core';
-import { Cross } from '@ndla/icons/action';
+import { forwardRef } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing, fonts } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 export const StyledActiveFilterTitle = styled.span`
   white-space: nowrap;
@@ -39,7 +39,7 @@ const ActiveFilterContent = forwardRef<HTMLButtonElement, Props>(({ filter, onFi
   const { t } = useTranslation();
   return (
     <StyledButton
-      aria-label={t('searchPage.searchFilterMessages.removeFilter', {
+      aria-label={t("searchPage.searchFilterMessages.removeFilter", {
         filterName: filter.title,
       })}
       ref={ref}

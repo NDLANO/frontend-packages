@@ -6,22 +6,22 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from 'react';
-import { css } from '@emotion/react';
-import { utils } from '@ndla/core';
-import { Text, TextProps } from '@ndla/typography';
-import { useFormControlContext } from './FormControl';
+import { ComponentPropsWithRef, forwardRef } from "react";
+import { css } from "@emotion/react";
+import { utils } from "@ndla/core";
+import { Text, TextProps } from "@ndla/typography";
+import { useFormControlContext } from "./FormControl";
 
 type Props = TextProps & {
   visuallyHidden?: boolean;
-} & ComponentPropsWithRef<'label'>;
+} & ComponentPropsWithRef<"label">;
 
 const visuallyHiddenStyle = css`
   ${utils.visuallyHidden};
 `;
 
 export const Label = forwardRef<HTMLLabelElement, Props>(
-  ({ textStyle = 'label-large', visuallyHidden, margin = 'small', ...rest }, ref) => {
+  ({ textStyle = "label-large", visuallyHidden, margin = "small", ...rest }, ref) => {
     const control = useFormControlContext();
     const fieldProps = control?.getLabelProps(rest, ref) ?? { ref, ...rest };
 

@@ -6,12 +6,12 @@
  *
  */
 
-import { ArgTypes, Meta, StoryFn, StoryObj } from '@storybook/react';
-import Text, { TextVariant, elementMarginStyle, elementStyle } from './Text';
-import { MarginVariant } from './types';
-import { defaultParameters } from '../../../stories/defaults';
+import { ArgTypes, Meta, StoryFn, StoryObj } from "@storybook/react";
+import Text, { TextVariant, elementMarginStyle, elementStyle } from "./Text";
+import { MarginVariant } from "./types";
+import { defaultParameters } from "../../../stories/defaults";
 
-const exampleText = 'Nasjonal digital læringsarena';
+const exampleText = "Nasjonal digital læringsarena";
 
 /**
  * NDLA bruker fontene [ Source Serif Pro ](https://fonts.google.com/specimen/Source+Serif+Pro), [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro) og [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
@@ -19,39 +19,39 @@ const exampleText = 'Nasjonal digital læringsarena';
  * Tilbakefallsfonter er Helvetica og Arial
  */
 export default {
-  title: 'Base styles/Typography/Text',
+  title: "Base styles/Typography/Text",
   component: Text,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    element: 'p',
-    textStyle: 'ingress',
+    element: "p",
+    textStyle: "ingress",
     children: exampleText,
-    margin: 'normal',
+    margin: "normal",
   },
   argTypes: {
     margin: {
       control: {
-        type: 'radio',
+        type: "radio",
       },
-      description: 'Available margin styles',
+      description: "Available margin styles",
       options: Object.keys(elementMarginStyle) as MarginVariant[],
     },
     textStyle: {
-      type: 'select',
-      description: 'Available text styles',
+      type: "select",
+      description: "Available text styles",
       options: Object.keys(elementStyle) as TextVariant[],
     },
     children: {
-      description: 'What to render within the text',
-      type: 'string',
+      description: "What to render within the text",
+      type: "string",
     },
     element: {
-      type: 'text',
-      description: 'Any ElementType',
+      type: "text",
+      description: "Any ElementType",
     },
   } as ArgTypes<typeof Text>,
 } as Meta<typeof Text>;
@@ -61,68 +61,68 @@ export const Ingress: StoryFn<typeof Text> = (args) => {
 };
 
 export const Button: StoryObj<typeof Text> = {
-  args: { textStyle: 'button', children: exampleText },
+  args: { textStyle: "button", children: exampleText },
 };
 
 export const Content: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'content',
+    textStyle: "content",
     children: exampleText,
   },
 };
 
 export const ContentAlt: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'content-alt',
+    textStyle: "content-alt",
     children: exampleText,
   },
 };
 
 export const MetaTextLarge: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'meta-text-large',
+    textStyle: "meta-text-large",
     children: exampleText,
   },
 };
 
 export const MetaTextMedium: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'meta-text-medium',
+    textStyle: "meta-text-medium",
     children: exampleText,
   },
 };
 
 export const MetaTextSmall: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'meta-text-small',
+    textStyle: "meta-text-small",
     children: exampleText,
   },
 };
 
 export const MetaTextXSmall: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'meta-text-xsmall',
+    textStyle: "meta-text-xsmall",
     children: exampleText,
   },
 };
 
 export const MetaTextXXSmall: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'meta-text-xxsmall',
+    textStyle: "meta-text-xxsmall",
     children: exampleText,
   },
 };
 
 export const LabelSmall: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'label-small',
+    textStyle: "label-small",
     children: exampleText,
   },
 };
 
 export const LabelLarge: StoryObj<typeof Text> = {
   args: {
-    textStyle: 'label-large',
+    textStyle: "label-large",
     children: exampleText,
   },
 };
@@ -137,7 +137,7 @@ export const Polymorphic: StoryFn<typeof Text> = () => (
  * Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten skal være lesbar. Tekststil blir automatisk endret når en setter kinesisk som språk på en Text-komponent.
  */
 export const Chinese: StoryObj<typeof Text> = {
-  args: { lang: 'zh-Hans', children: '人人生而自由,在尊严和权利上一律平等。' },
+  args: { lang: "zh-Hans", children: "人人生而自由,在尊严和权利上一律平等。" },
   render: (args) => (
     <>
       <Text {...args} />

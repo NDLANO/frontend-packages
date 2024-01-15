@@ -6,17 +6,17 @@
  *
  */
 
-import { ModalContent } from './Modal';
-import { ModalSizeType, DrawerPosition, ModalSize, ModalContentProps } from './types';
+import { ModalContent } from "./Modal";
+import { ModalSizeType, DrawerPosition, ModalSize, ModalContentProps } from "./types";
 
-interface Props extends Omit<ModalContentProps, 'size' | 'position' | 'animation'> {
+interface Props extends Omit<ModalContentProps, "size" | "position" | "animation"> {
   size?: ModalSize;
   position?: DrawerPosition;
 }
 
-const Drawer = ({ size = 'normal', position = 'left', ...rest }: Props) => {
+const Drawer = ({ size = "normal", position = "left", ...rest }: Props) => {
   const modalSize: ModalSizeType =
-    position === 'bottom' || position === 'top' ? { width: 'full', height: size } : { height: 'full', width: size };
+    position === "bottom" || position === "top" ? { width: "full", height: size } : { height: "full", width: size };
   return <ModalContent animation="slideIn" position={position} size={modalSize} modalMargin="none" {...rest} />;
 };
 

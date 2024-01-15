@@ -6,12 +6,12 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from 'react';
-import { Text, TextProps } from '@ndla/typography';
-import { useFormControlContext } from './FormControl';
+import { ComponentPropsWithRef, forwardRef } from "react";
+import { Text, TextProps } from "@ndla/typography";
+import { useFormControlContext } from "./FormControl";
 
-export const FieldHelper = forwardRef<HTMLDivElement, TextProps & ComponentPropsWithRef<'div'>>(
-  ({ textStyle = 'meta-text-small', margin, ...props }, ref) => {
+export const FieldHelper = forwardRef<HTMLDivElement, TextProps & ComponentPropsWithRef<"div">>(
+  ({ textStyle = "meta-text-small", margin, ...props }, ref) => {
     const field = useFormControlContext();
     return (
       <Text

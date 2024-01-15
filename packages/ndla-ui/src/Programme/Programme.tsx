@@ -6,13 +6,13 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import { Heading } from '@ndla/typography';
-import ProgrammeSubjects, { GradesProps } from './ProgrammeSubjects';
-import LayoutItem, { OneColumn } from '../Layout';
-import MessageBox from '../Messages/MessageBox';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing } from "@ndla/core";
+import { Heading } from "@ndla/typography";
+import ProgrammeSubjects, { GradesProps } from "./ProgrammeSubjects";
+import LayoutItem, { OneColumn } from "../Layout";
+import MessageBox from "../Messages/MessageBox";
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;

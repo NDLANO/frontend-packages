@@ -6,24 +6,24 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import CreatedBy from './CreatedBy';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import CreatedBy from "./CreatedBy";
+import { defaultParameters } from "../../../../stories/defaults";
 
 /***
  * LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i bunnen. "NDLA" og logoen lenker til ndla.no. "Artikkel" kan være en lenke til artikkelen på ndla.no om den fins. Begge lenker åpner som standard i ny fane men det kan overstyres med target-parameter.
  */
 export default {
-  title: 'Components/CreatedBy',
+  title: "Components/CreatedBy",
   component: CreatedBy,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    name: 'Artikkelen',
-    description: 'er utarbeidet av',
+    name: "Artikkelen",
+    description: "er utarbeidet av",
   },
 } as Meta<typeof CreatedBy>;
 
@@ -33,6 +33,6 @@ export const WithoutLink: StoryObj<typeof CreatedBy> = {
 
 export const WithLink: StoryObj<typeof CreatedBy> = {
   args: {
-    url: 'https://ndla.no/subject:26/topic:1:191103/topic:1:4352/resource:1:2052',
+    url: "https://ndla.no/subject:26/topic:1:191103/topic:1:4352/resource:1:2052",
   },
 };

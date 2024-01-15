@@ -6,8 +6,8 @@
  *
  */
 
-import { colors } from '@ndla/core';
-import { ButtonColor, ButtonTheme } from './types';
+import { colors } from "@ndla/core";
+import { ButtonColor, ButtonTheme } from "./types";
 
 export const themes: Record<ButtonColor, ButtonTheme> = {
   primary: {

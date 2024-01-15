@@ -15,7 +15,7 @@ npm install @ndla/image-search
 ### Get image with the image selector
 
 ```js
-import ImageSearch from '@ndla/image-search';
+import ImageSearch from "@ndla/image-search";
 
 const imageSelector = (image) => {
   // handle image

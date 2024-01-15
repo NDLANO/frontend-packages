@@ -6,14 +6,14 @@
  *
  */
 
-import { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { spacing, mq, breakpoints } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
-import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
+import { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing, mq, breakpoints } from "@ndla/core";
+import Tooltip from "@ndla/tooltip";
+import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from "./ActiveFilterContent";
 
 type StyledActiveFiltersProps = {
   showOnSmallScreen?: boolean;
@@ -119,7 +119,7 @@ const ActiveFilters = ({
       <StyledActiveFilterWrapper key={filterKey}>
         {filterLength > 1 ? (
           <Tooltip
-            tooltip={t('searchPage.searchFilterMessages.removeFilter', {
+            tooltip={t("searchPage.searchFilterMessages.removeFilter", {
               filterName: filter.title,
             })}
           >
@@ -137,9 +137,9 @@ const ActiveFilters = ({
       {filterItems}
       {filterLength > showFilterCount && (
         <StyledActiveFilterWrapper>
-          <Tooltip tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
+          <Tooltip tooltip={t("searchPage.searchFilterMessages.noValuesButtonText")}>
             <ButtonV2
-              aria-label={t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+              aria-label={t("searchPage.searchFilterMessages.additionalSubjectFilters", {
                 count: filterLength - showFilterCount + 1,
               })}
               size="normal"
@@ -147,7 +147,7 @@ const ActiveFilters = ({
               onClick={onClickShowHiddenSubjects}
             >
               <StyledActiveFilterTitle>
-                {t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+                {t("searchPage.searchFilterMessages.additionalSubjectFilters", {
                   count: filterLength - showFilterCount + 1,
                 })}
               </StyledActiveFilterTitle>

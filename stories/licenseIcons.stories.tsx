@@ -6,19 +6,19 @@
  *
  */
 
-import { useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { LicenseDescription } from '@ndla/notion';
-import { licenseRights } from '@ndla/licenses';
-import { RadioButtonGroup } from '@ndla/forms';
-import { defaultParameters } from './defaults';
+import { useState } from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import { LicenseDescription } from "@ndla/notion";
+import { licenseRights } from "@ndla/licenses";
+import { RadioButtonGroup } from "@ndla/forms";
+import { defaultParameters } from "./defaults";
 
 /**
  * Liste over lisenser som brukes på NDLA.
  */
 export default {
-  title: 'Licenses/License icons',
-  tags: ['autodocs'],
+  title: "Licenses/License icons",
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
@@ -26,13 +26,13 @@ export default {
 } as Meta;
 
 const languageOptions = [
-  { title: 'Norsk bokmål', value: 'nb' },
-  { title: 'Nynorsk', value: 'nn' },
-  { title: 'English', value: 'en' },
+  { title: "Norsk bokmål", value: "nb" },
+  { title: "Nynorsk", value: "nn" },
+  { title: "English", value: "en" },
 ];
 
 export const Default: StoryFn = () => {
-  const [locale, setLocale] = useState('nb');
+  const [locale, setLocale] = useState("nb");
 
   return (
     <div>

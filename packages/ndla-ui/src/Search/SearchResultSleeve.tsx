@@ -6,18 +6,18 @@
  *
  */
 
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { ChevronDown, ChevronUp, Esc, KeyboardReturn, Search as SearchIcon, Wrench } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
-import ContentTypeResult from './ContentTypeResult';
-import { highlightStyle } from './ContentTypeResultStyles';
-import { ContentTypeResultType, Resource } from '../types';
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { ChevronDown, ChevronUp, Esc, KeyboardReturn, Search as SearchIcon, Wrench } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
+import ContentTypeResult from "./ContentTypeResult";
+import { highlightStyle } from "./ContentTypeResultStyles";
+import { ContentTypeResultType, Resource } from "../types";
 
-const GO_TO_SEARCHPAGE = 'GO_TO_SEARCHPAGE';
-const GO_TO_SUGGESTION = 'GO_TO_SUGGESTION';
+const GO_TO_SEARCHPAGE = "GO_TO_SEARCHPAGE";
+const GO_TO_SUGGESTION = "GO_TO_SUGGESTION";
 
 const StyledNoHits = styled.div`
   ${fonts.sizes(16, 1.1)};
@@ -25,7 +25,7 @@ const StyledNoHits = styled.div`
 `;
 
 const StyledAside = styled.aside`
-  ${fonts.sizes('16px', '22px')};
+  ${fonts.sizes("16px", "22px")};
   display: flex;
   align-items: flex-start;
   margin: 0;
@@ -87,7 +87,7 @@ type WrapperProps = {
 const StyledSearchResultsWrapper = styled.section<WrapperProps>`
   background: #fff;
   width: 100%;
-  position: ${(props) => (props.frontpage ? 'absolute' : 'static')};
+  position: ${(props) => (props.frontpage ? "absolute" : "static")};
   left: 0;
   right: 0;
   top: 62px;
@@ -181,7 +181,7 @@ const findPathForKeyboardNavigation = (
   current: HTMLElement | string | null,
   direction: 1 | -1 | null,
 ): HTMLElement | string | null => {
-  const selectables = contentRef ? Array.from(contentRef.querySelectorAll('li')) : [];
+  const selectables = contentRef ? Array.from(contentRef.querySelectorAll("li")) : [];
   const resultsContainingPaths: Array<string | HTMLElement> = (
     [GO_TO_SEARCHPAGE, GO_TO_SUGGESTION] as Array<HTMLElement | string>
   ).concat(...selectables);
@@ -234,48 +234,48 @@ const SearchResultSleeve = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
   const searchSuggestionRef = useRef<HTMLDivElement>(null);
-  const [keyboardPathNavigation, setKeyNavigation] = useState<HTMLElement | string | null>('');
+  const [keyboardPathNavigation, setKeyNavigation] = useState<HTMLElement | string | null>("");
 
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
-      if (e.code === 'ArrowDown') {
+      if (e.code === "ArrowDown") {
         e.stopPropagation();
         e.preventDefault();
 
         setKeyNavigation((prevKeyPath) => {
           return findPathForKeyboardNavigation(contentRef.current, prevKeyPath, 1);
         });
-      } else if (e.code === 'ArrowUp') {
+      } else if (e.code === "ArrowUp") {
         e.stopPropagation();
         e.preventDefault();
 
         setKeyNavigation((prevKeyPath) => {
           return findPathForKeyboardNavigation(contentRef.current, prevKeyPath, -1);
         });
-      } else if (e.code === 'Enter') {
+      } else if (e.code === "Enter") {
         if (keyboardPathNavigation === GO_TO_SUGGESTION) {
-          searchSuggestionRef?.current?.closest('a')?.click();
+          searchSuggestionRef?.current?.closest("a")?.click();
         } else if (keyboardPathNavigation instanceof HTMLElement) {
           e.stopPropagation();
           e.preventDefault();
           const toClick =
             keyboardPathNavigation &&
             keyboardPathNavigation.querySelector &&
-            (keyboardPathNavigation.querySelector('a') || keyboardPathNavigation.querySelector('button'));
+            (keyboardPathNavigation.querySelector("a") || keyboardPathNavigation.querySelector("button"));
 
           toClick && toClick.click();
         }
-      } else if (e.code === 'Tab') {
-        setKeyNavigation('');
+      } else if (e.code === "Tab") {
+        setKeyNavigation("");
       }
     };
 
-    window.addEventListener('keydown', onKeyDownEvent);
+    window.addEventListener("keydown", onKeyDownEvent);
     setKeyNavigation((prevKeyNav) => {
       return findPathForKeyboardNavigation(contentRef.current, prevKeyNav, null);
     });
     return () => {
-      window.removeEventListener('keydown', onKeyDownEvent);
+      window.removeEventListener("keydown", onKeyDownEvent);
     };
   }, [result, contentRef, searchAllRef, keyboardPathNavigation]);
 
@@ -287,8 +287,8 @@ const SearchResultSleeve = ({
 
     if (highlightedElement) {
       highlightedElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
+        behavior: "smooth",
+        block: "nearest",
       });
     }
   }, [keyboardPathNavigation]);
@@ -311,7 +311,7 @@ const SearchResultSleeve = ({
             >
               <SearchIcon size="normal" />
               <strong ref={searchAllRef}>{searchString}</strong>
-              <small>{t('welcomePage.searchAllInfo')}</small>
+              <small>{t("welcomePage.searchAllInfo")}</small>
             </StyledSearchLink>
             {suggestion && suggestionUrl && (
               <StyledSearchLink
@@ -320,7 +320,7 @@ const SearchResultSleeve = ({
                 tabIndex={-1}
               >
                 <SearchIcon size="normal" />
-                <small>{t('searchPage.resultType.searchPhraseSuggestion')}</small>
+                <small>{t("searchPage.resultType.searchPhraseSuggestion")}</small>
                 <strong ref={searchSuggestionRef}>{suggestion}</strong>
               </StyledSearchLink>
             )}
@@ -336,14 +336,14 @@ const SearchResultSleeve = ({
               keyboardPathNavigation={keyboardPathNavigation}
               showAdditionalResources
               messages={{
-                allResultLabel: t('searchPage.searchField.contentTypeResultShowMoreLabel'),
-                showLessResultLabel: t('searchPage.searchField.contentTypeResultShowLessLabel'),
-                noHit: t('searchPage.searchField.contentTypeResultNoHit'),
+                allResultLabel: t("searchPage.searchField.contentTypeResultShowMoreLabel"),
+                showLessResultLabel: t("searchPage.searchField.contentTypeResultShowLessLabel"),
+                noHit: t("searchPage.searchField.contentTypeResultNoHit"),
               }}
             />
           ))}
           {result.length === 0 && !loading && (
-            <StyledNoHits>{t('searchPage.searchField.contentTypeResultNoHit')}</StyledNoHits>
+            <StyledNoHits>{t("searchPage.searchField.contentTypeResultNoHit")}</StyledNoHits>
           )}
         </div>
       </StyledScrollableContent>

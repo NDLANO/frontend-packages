@@ -5,17 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { FormEvent, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { FormEvent, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { breakpoints, fonts, mq, spacing } from "@ndla/core";
 
-import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
-import SearchFieldHeader from './SearchFieldHeader';
-import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
-import CoreElementItem from '../CompetenceGoalTab/CoreElementItem';
-import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
+import SubjectFilters, { SubjectFilterProps } from "./components/SubjectFilters";
+import SearchFieldHeader from "./SearchFieldHeader";
+import CompetenceGoalItem from "../CompetenceGoalTab/CompetenceGoalItem";
+import CoreElementItem from "../CompetenceGoalTab/CoreElementItem";
+import { CompetenceGoalsItemType, CoreElementsItemType } from "../types";
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -56,7 +56,7 @@ const PhraseText = styled.div`
 const PhraseSuggestionText = styled.div``;
 
 const GrepCodesLabel = styled.div`
-  ${fonts.sizes('16px', '32px')};
+  ${fonts.sizes("16px", "32px")};
   text-transform: uppercase;
 `;
 
@@ -65,8 +65,8 @@ type Props = {
   searchPhraseSuggestion?: string;
   searchPhraseSuggestionOnClick?: () => void;
   searchValue?: string;
-  filters: SubjectFilterProps['filters'];
-  activeFilters?: SubjectFilterProps['activeFilters'];
+  filters: SubjectFilterProps["filters"];
+  activeFilters?: SubjectFilterProps["activeFilters"];
   competenceGoals?: CompetenceGoalsItemType[];
   coreElements?: CoreElementsItemType[];
   onSearchValueChange: (value: string) => void;
@@ -97,22 +97,22 @@ const SearchHeader = ({
     const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
       setIsNarrowScreen(e.matches);
     };
-    isNarrowScreenMatch.addEventListener('change', handleChange);
+    isNarrowScreenMatch.addEventListener("change", handleChange);
     handleChange(isNarrowScreenMatch);
     return () => {
-      isNarrowScreenMatch.removeEventListener('change', handleChange);
+      isNarrowScreenMatch.removeEventListener("change", handleChange);
     };
   }, []);
 
   const phraseText = noResults ? (
-    t('searchPage.noHitsShort', { query: searchPhrase })
+    t("searchPage.noHitsShort", { query: searchPhrase })
   ) : (
     <>
-      {t('searchPage.resultType.showingSearchPhrase')} <b>&ldquo;{searchPhrase}&rdquo;</b>
+      {t("searchPage.resultType.showingSearchPhrase")} <b>&ldquo;{searchPhrase}&rdquo;</b>
     </>
   );
   const removeFilterSuggestion =
-    noResults && activeFilters?.filters.length ? t('searchPage.removeFilterSuggestion') : undefined;
+    noResults && activeFilters?.filters.length ? t("searchPage.removeFilterSuggestion") : undefined;
   return (
     <Wrapper>
       <SearchInputWrapper>
@@ -133,11 +133,11 @@ const SearchHeader = ({
               <PhraseText>{removeFilterSuggestion}</PhraseText>
             </>
           )}
-          {loading && <div aria-label={t('loading')} />}
+          {loading && <div aria-label={t("loading")} />}
         </div>
         {searchPhraseSuggestion && (
           <PhraseSuggestionText>
-            {t('searchPage.resultType.searchPhraseSuggestion')}{' '}
+            {t("searchPage.resultType.searchPhraseSuggestion")}{" "}
             <ButtonV2 variant="link" onClick={searchPhraseSuggestionOnClick}>
               [{searchPhraseSuggestion}]
             </ButtonV2>
@@ -147,7 +147,7 @@ const SearchHeader = ({
           <GrepCodesWrapper>
             {competenceGoals?.length && (
               <>
-                <GrepCodesLabel>{t('competenceGoals.competenceGoalItem.title')}</GrepCodesLabel>
+                <GrepCodesLabel>{t("competenceGoals.competenceGoalItem.title")}</GrepCodesLabel>
                 <GrepCodesList>
                   {competenceGoals.map((e) => (
                     <CompetenceGoalItem key={e.id} id={e.id} title={e.title} goals={e.goals} />
@@ -160,7 +160,7 @@ const SearchHeader = ({
         {!!coreElements?.length && (
           <GrepCodesWrapper>
             <>
-              <GrepCodesLabel>{t('competenceGoals.competenceTabCorelabel')}</GrepCodesLabel>
+              <GrepCodesLabel>{t("competenceGoals.competenceTabCorelabel")}</GrepCodesLabel>
               <GrepCodesList>
                 {coreElements.map((e) => (
                   <CoreElementItem key={e.id} id={e.id} title={e.title} text={e.text} url={e.url} />

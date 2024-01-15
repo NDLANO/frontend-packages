@@ -6,27 +6,27 @@
  *
  */
 
-import { useEffect, useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { spacing } from '@ndla/core';
-import { LayoutItem, OneColumn, PageContainer, SubjectHeader } from '@ndla/ui';
-import { FormControl, InputV3, Label } from '@ndla/forms';
-import { CopyButton } from '@ndla/button';
-import { Copy } from '@ndla/icons/action';
-import { defaultParameters } from '../defaults';
-import { StoryIntro } from '../wrappers';
+import { useEffect, useState } from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import { spacing } from "@ndla/core";
+import { LayoutItem, OneColumn, PageContainer, SubjectHeader } from "@ndla/ui";
+import { FormControl, InputV3, Label } from "@ndla/forms";
+import { CopyButton } from "@ndla/button";
+import { Copy } from "@ndla/icons/action";
+import { defaultParameters } from "../defaults";
+import { StoryIntro } from "../wrappers";
 //@ts-ignore
-import allBanners from '../../images/banners';
+import allBanners from "../../images/banners";
 
 const meta: Meta = {
-  title: 'Base styles/Banners',
+  title: "Base styles/Banners",
   parameters: defaultParameters,
 };
 
-const addLeadingSlash = (str: string) => (str.startsWith('/') ? str : `/${str}`);
+const addLeadingSlash = (str: string) => (str.startsWith("/") ? str : `/${str}`);
 
 const BannerList = () => {
-  const [bannerSearch, setBannerSearch] = useState('');
+  const [bannerSearch, setBannerSearch] = useState("");
 
   const [banners, setBanners] = useState(allBanners);
 
@@ -62,9 +62,9 @@ const BannerList = () => {
             images={[
               {
                 url: banner.desktop,
-                types: ['desktop', 'tablet', 'wide'],
+                types: ["desktop", "tablet", "wide"],
               },
-              { url: banner.mobile, types: ['mobile'] },
+              { url: banner.mobile, types: ["mobile"] },
             ]}
           />
           <div style={{ margin: spacing.small }}>

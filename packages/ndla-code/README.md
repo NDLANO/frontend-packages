@@ -13,7 +13,7 @@ $ yarn add ndla-code
 codeblock:
 
 ```js
-import { Codeblock } from '@ndla/code';
+import { Codeblock } from "@ndla/code";
 
 <Codeblock code={code} format={format} title={title} />;
 ```

@@ -6,24 +6,21 @@
  *
  */
 
-import { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useContext } from 'react';
-import { Link, LinkProps } from 'react-router-dom';
-import styled from '@emotion/styled';
-import { Launch } from '@ndla/icons/common';
-import MissingRouterContext from './MissingRouterContext';
+import { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useContext } from "react";
+import { Link, LinkProps } from "react-router-dom";
+import styled from "@emotion/styled";
+import { Launch } from "@ndla/icons/common";
+import MissingRouterContext from "./MissingRouterContext";
 
 const oldNdlaRegex = /(.*)\/?node\/(\d+).*/;
 
-const isExternalLink = (to?: LinkProps['to']) =>
-  typeof to === 'string' && (to.startsWith('https://') || to.startsWith('http://'));
+const isExternalLink = (to?: LinkProps["to"]) =>
+  typeof to === "string" && (to.startsWith("https://") || to.startsWith("http://") || to.startsWith("mailto:"));
 
-export const isOldNdlaLink = (to?: LinkProps['to']) => typeof to === 'string' && to.match(oldNdlaRegex) !== null;
+export const isOldNdlaLink = (to?: LinkProps["to"]) => typeof to === "string" && to.match(oldNdlaRegex) !== null;
 
 const LaunchIcon = styled(Launch)`
   margin-left: 6px;
-  height: auto;
-  width: auto;
-  margin-top: 1px;
   vertical-align: text-top;
 `;
 
@@ -44,25 +41,25 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
     const isMissingRouterContext = useContext(MissingRouterContext);
 
     if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to) || asAnchor || disabled) {
-      const href = typeof to === 'string' ? to : '#';
+      const href = typeof to === "string" ? to : "#";
       return (
         <a
           href={disabled ? undefined : href}
-          role={disabled ? 'link' : undefined}
+          role={disabled ? "link" : undefined}
           aria-disabled={disabled}
           ref={ref}
           tabIndex={tabIndex}
           {...rest}
         >
           {children}
-          {showNewWindowIcon && <LaunchIcon />}
+          {showNewWindowIcon && <LaunchIcon size="normal" />}
         </a>
       );
     }
 
     return (
       // RR6 link immediately fails if to is somehow undefined, so we provide an empty fallback to recover.
-      <Link ref={ref} tabIndex={tabIndex ?? 0} to={to ?? ''} replace={replace} {...rest}>
+      <Link ref={ref} tabIndex={tabIndex ?? 0} to={to ?? ""} replace={replace} {...rest}>
         {children}
         {showNewWindowIcon && <LaunchIcon />}
       </Link>

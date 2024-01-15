@@ -6,16 +6,16 @@
  *
  */
 
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { spacing } from '@ndla/core';
-import { BY, CC } from '@ndla/licenses';
-import { LicenseByline } from '@ndla/notion';
-import SafeLink from '@ndla/safelink';
-import Tooltip from '@ndla/tooltip';
-import CompetenceItem, { ListItemProp } from './CompetenceItem';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing } from "@ndla/core";
+import { BY, CC } from "@ndla/licenses";
+import { LicenseByline } from "@ndla/notion";
+import SafeLink from "@ndla/safelink";
+import Tooltip from "@ndla/tooltip";
+import CompetenceItem, { ListItemProp } from "./CompetenceItem";
 
 type CompetenceProps = {
   list: ListItemProp[];
@@ -47,16 +47,16 @@ const CompetenceGoalTab = ({ list, isOembed }: CompetenceProps) => {
             return (
               <Tooltip
                 tooltip={
-                  type === 'coreElement'
-                    ? t('competenceGoals.competenceTabCoreTooltip')
-                    : t('competenceGoals.showCompetenceGoals')
+                  type === "coreElement"
+                    ? t("competenceGoals.competenceTabCoreTooltip")
+                    : t("competenceGoals.showCompetenceGoals")
                 }
                 key={`tabitem-${id}`}
               >
                 <ButtonV2
                   shape="pill"
                   aria-current={id === currentTabItem.id}
-                  colorTheme={id !== currentTabItem.id ? 'lighter' : undefined}
+                  colorTheme={id !== currentTabItem.id ? "lighter" : undefined}
                   onClick={() => setCurrentTab(list[index])}
                 >
                   {tabTitle}
@@ -70,11 +70,11 @@ const CompetenceGoalTab = ({ list, isOembed }: CompetenceProps) => {
       <LicenseByline licenseRights={[CC, BY]}>
         <LicenseIconsTextWrapper>UDIR</LicenseIconsTextWrapper>
       </LicenseByline>
-      {`${t('competenceGoals.licenseData')} `}
+      {`${t("competenceGoals.licenseData")} `}
       <SafeLink to="https://data.norge.no/nlod/no" target="_blank">
         NLOD
       </SafeLink>
-      {`, ${t('competenceGoals.licenseFrom')} `}
+      {`, ${t("competenceGoals.licenseFrom")} `}
       <SafeLink to="https://data.udir.no/" target="_blank">
         data.udir.no
       </SafeLink>

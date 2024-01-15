@@ -6,23 +6,23 @@
  *
  */
 
-import { TFunction } from 'i18next';
-import { ReactNode, useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { AccordionRoot, AccordionHeader, AccordionContent, AccordionItem } from '@ndla/accordion';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
-import ArticleFootNotes from './ArticleFootNotes';
-import LicenseLink from '../LicenseByline/LicenseLink';
-import { FootNote } from '../types';
+import { TFunction } from "i18next";
+import { ReactNode, useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { AccordionRoot, AccordionHeader, AccordionContent, AccordionItem } from "@ndla/accordion";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { getLicenseByAbbreviation } from "@ndla/licenses";
+import ArticleFootNotes from "./ArticleFootNotes";
+import LicenseLink from "../LicenseByline/LicenseLink";
+import { FootNote } from "../types";
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
   padding-top: ${spacing.normal};
   padding-bottom: ${spacing.xsmall};
   border-top: 1px solid ${colors.brand.greyLight};
-  ${fonts.sizes('16px', '24px')};
+  ${fonts.sizes("16px", "24px")};
   font-family: ${fonts.sans};
   color: ${colors.brand.greyDark};
 `;
@@ -33,6 +33,11 @@ const TextWrapper = styled.div`
   width: 100%;
   padding-bottom: ${spacing.mediumlarge};
   ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-direction: column;
+    flex-direction: column-reverse;
+    gap: ${spacing.xsmall};
+  }
+  &[data-learningPath="true"] {
     flex-direction: column;
     flex-direction: column-reverse;
     gap: ${spacing.xsmall};
@@ -51,7 +56,7 @@ type SupplierProps = {
   name: string;
 };
 
-type AccordionHeaderVariants = 'white' | 'blue';
+type AccordionHeaderVariants = "white" | "blue";
 
 type Props = {
   authors?: AuthorProps[];
@@ -63,27 +68,31 @@ type Props = {
   footnotes?: FootNote[];
   accordionHeaderVariant?: AccordionHeaderVariants;
   displayByline?: boolean;
+  bylineType?: "article" | "learningPath";
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
   const contributorsArray = contributors.map((contributor, index) => {
     if (index < 1) return contributor.name;
-    const sep = index === contributors.length - 1 ? ` ${t('article.conjunction')} ` : ', ';
+    const sep = index === contributors.length - 1 ? ` ${t("article.conjunction")} ` : ", ";
     return `${sep}${contributor.name}`;
   });
-  return contributorsArray.join('');
+  return contributorsArray.join("");
 };
 
 const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
   if (suppliers.length === 0) {
-    return '';
+    return "";
   }
   return suppliers.length > 1
-    ? t('article.multipleSuppliersLabel', {
+    ? t("article.multipleSuppliersLabel", {
         names: renderContributors(suppliers, t),
         interpolation: { escapeValue: false },
       })
-    : t('article.supplierLabel', { name: renderContributors(suppliers, t), interpolation: { escapeValue: false } });
+    : t("article.supplierLabel", {
+        name: renderContributors(suppliers, t),
+        interpolation: { escapeValue: false },
+      });
 };
 
 const LicenseWrapper = styled.div`
@@ -94,22 +103,22 @@ const LicenseWrapper = styled.div`
 
 const StyledAccordionHeader = styled(AccordionHeader)`
   background-color: ${colors.brand.lightest};
-  font-size: ${fonts.sizes('16px', '29px')};
+  font-size: ${fonts.sizes("16px", "29px")};
   font-weight: ${fonts.weight.semibold};
 
-  &[data-background-color='white'][data-state='closed'] {
+  &[data-background-color="white"][data-state="closed"] {
     background-color: ${colors.background.default};
   }
 `;
 
 const StyledAccordionContent = styled(AccordionContent)`
-  &[data-background-color='white'] {
+  &[data-background-color="white"] {
     background-color: ${colors.background.default};
   }
 `;
 
 const refRegexp = /note\d/;
-const footnotesAccordionId = 'footnotes';
+const footnotesAccordionId = "footnotes";
 
 const ArticleByline = ({
   authors = [],
@@ -119,15 +128,16 @@ const ArticleByline = ({
   licenseBox,
   published,
   locale,
-  accordionHeaderVariant = 'blue',
+  accordionHeaderVariant = "blue",
   displayByline = true,
+  bylineType = "article",
 }: Props) => {
   const { t } = useTranslation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
 
   const onHashChange = useCallback(
     (e: HashChangeEvent) => {
-      const hash = e.newURL.split('#')[1];
+      const hash = e.newURL.split("#")[1];
       if (hash.match(refRegexp) && !openAccordions.includes(footnotesAccordionId)) {
         setOpenAccordions([...openAccordions, footnotesAccordionId]);
         const el = document.getElementById(`#${hash}`);
@@ -139,8 +149,8 @@ const ArticleByline = ({
   );
 
   useEffect(() => {
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
   }, [onHashChange]);
 
   const license = licenseString && getLicenseByAbbreviation(licenseString, locale);
@@ -150,13 +160,13 @@ const ArticleByline = ({
   return (
     <Wrapper>
       {displayByline && (
-        <TextWrapper>
+        <TextWrapper data-learningPath={bylineType === "learningPath"}>
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (
               <PrimaryContributorsWrapper>
                 {authors.length > 0 &&
-                  `${t('article.authorsLabel', {
+                  `${t("article.authorsLabel", {
                     names: renderContributors(authors, t),
                     interpolation: { escapeValue: false },
                   })}. `}
@@ -165,7 +175,7 @@ const ArticleByline = ({
             )}
           </LicenseWrapper>
           <div>
-            {t('article.lastUpdated')} {published}
+            {t(`${bylineType}.lastUpdated`)} {published}
           </div>
         </TextWrapper>
       )}
@@ -173,7 +183,7 @@ const ArticleByline = ({
         {licenseBox && (
           <AccordionItem value="rulesForUse">
             <StyledAccordionHeader headingLevel="h2" data-background-color={accordionHeaderVariant}>
-              {t('article.useContent')}
+              {t("article.useContent")}
             </StyledAccordionHeader>
             <StyledAccordionContent data-background-color={accordionHeaderVariant}>{licenseBox}</StyledAccordionContent>
           </AccordionItem>
@@ -181,7 +191,7 @@ const ArticleByline = ({
 
         {!!footnotes?.length && (
           <AccordionItem value={footnotesAccordionId}>
-            <StyledAccordionHeader headingLevel="h2">{t('article.footnotes')}</StyledAccordionHeader>
+            <StyledAccordionHeader headingLevel="h2">{t("article.footnotes")}</StyledAccordionHeader>
             <StyledAccordionContent forceMount data-background-color={accordionHeaderVariant}>
               <ArticleFootNotes footNotes={footnotes} />
             </StyledAccordionContent>

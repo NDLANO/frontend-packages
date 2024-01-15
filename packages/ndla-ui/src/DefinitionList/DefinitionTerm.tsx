@@ -6,13 +6,13 @@
  *
  */
 
-import { forwardRef, HTMLAttributes } from 'react';
-import styled from '@emotion/styled';
-import { fonts } from '@ndla/core';
+import { forwardRef, HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { fonts } from "@ndla/core";
 
 const StyledDT = styled.dt`
   font-weight: ${fonts.weight.bold};
-  ${fonts.sizes('18px', '29px')};
+  ${fonts.sizes("18px", "29px")};
 `;
 
 const DefinitionTerm = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(({ children, ...rest }, ref) => {

@@ -6,14 +6,14 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { CloseButton } from '@ndla/button';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { Forward } from '@ndla/icons/common';
+import { ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { CloseButton } from "@ndla/button";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { Forward } from "@ndla/icons/common";
 
-type MessageBoxType = 'ghost' | 'danger';
+type MessageBoxType = "ghost" | "danger";
 
 interface LinkProps {
   href?: string;
@@ -36,15 +36,15 @@ const MessageBoxWrapper = styled.div`
   background: ${colors.support.yellowLight};
   color: ${colors.brand.greyDark};
 
-  ${fonts.sizes('18px')};
+  ${fonts.sizes("18px")};
   ${mq.range({ until: breakpoints.tabletWide })} {
-    ${fonts.sizes('16px')};
+    ${fonts.sizes("16px")};
   }
-  &[data-type='ghost'] {
+  &[data-type="ghost"] {
     background: transparent;
     color: ${colors.brand.greyDark};
   }
-  &[data-type='danger'] {
+  &[data-type="danger"] {
     background: ${colors.support.redLightest};
     color: ${colors.text.primary};
   }

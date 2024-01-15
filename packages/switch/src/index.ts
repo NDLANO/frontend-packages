@@ -6,6 +6,6 @@
  *
  */
 
-import Switch from './Switch';
+import Switch from "./Switch";
 
 export { Switch };

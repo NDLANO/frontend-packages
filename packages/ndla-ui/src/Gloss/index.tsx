@@ -6,5 +6,5 @@
  *
  */
 
-export { default as Gloss } from './Gloss';
-export { default as GlossExample } from './GlossExample';
+export { default as Gloss } from "./Gloss";
+export { default as GlossExample } from "./GlossExample";

@@ -6,6 +6,6 @@
  *
  */
 
-export type Breakpoint = 'mobile' | 'mobileWide' | 'tablet' | 'tabletWide' | 'desktop' | 'wide' | 'ultraWide';
+export type Breakpoint = "mobile" | "mobileWide" | "tablet" | "tabletWide" | "desktop" | "wide" | "ultraWide";
 
 export type Breakpoints = { [key in Breakpoint]: string };

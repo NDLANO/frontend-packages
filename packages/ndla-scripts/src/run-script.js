@@ -6,9 +6,9 @@
  *
  */
 
-import { join, dirname } from 'path';
-import spawn from 'cross-spawn';
-import glob from 'glob';
+import { join, dirname } from "path";
+import spawn from "cross-spawn";
+import glob from "glob";
 
 const { sync } = glob;
 const __dirname = dirname(new URL(import.meta.url).pathname);
@@ -24,24 +24,24 @@ function attemptResolve(...resolveArgs) {
 }
 
 function handleSignal(result) {
-  if (result.signal === 'SIGKILL' || result.signal === 'SIGTERM') {
+  if (result.signal === "SIGKILL" || result.signal === "SIGTERM") {
     console.log(`The script "${script}" failed because the process exited too early with signal ${result.signal}.`);
   }
   process.exit(1);
 }
 
 function spawnScript() {
-  const relativeScriptPath = join(__dirname, './scripts', script);
+  const relativeScriptPath = join(__dirname, "./scripts", script);
   const scriptPath = attemptResolve(relativeScriptPath);
 
   if (!scriptPath) {
     throw new Error(`Unknown script "${script}".`);
   }
 
-  const properFilePath = scriptPath.replace(/^file:\/\//, '').concat('.js');
+  const properFilePath = scriptPath.replace(/^file:\/\//, "").concat(".js");
 
   const result = spawn.sync(executor, [properFilePath, ...args], {
-    stdio: 'inherit',
+    stdio: "inherit",
   });
 
   if (result.signal) {
@@ -54,12 +54,12 @@ function spawnScript() {
 if (script) {
   spawnScript();
 } else {
-  const scriptsPath = join(__dirname, 'scripts/');
-  const scriptsAvailable = sync(join(__dirname, 'scripts', '*'));
+  const scriptsPath = join(__dirname, "scripts/");
+  const scriptsAvailable = sync(join(__dirname, "scripts", "*"));
   const scriptsAvailableMessage = scriptsAvailable
-    .map((s) => s.replace(scriptsPath, '').replace(/\.js$/, ''))
+    .map((s) => s.replace(scriptsPath, "").replace(/\.js$/, ""))
     .filter(Boolean)
-    .join('\n  ')
+    .join("\n  ")
     .trim();
   const fullMessage = `
 Usage: ${ignoredBin} [script] [--flags]

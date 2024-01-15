@@ -6,8 +6,8 @@
  *
  */
 
-import styled from '@emotion/styled';
-import Image from '../Image';
+import styled from "@emotion/styled";
+import Image from "../Image";
 
 const StylediFrame = styled.iframe`
   height: 100%;
@@ -26,9 +26,9 @@ interface Props {
 }
 const VisualElement = ({ visualElement }: Props) => {
   const { type, url, alt } = visualElement;
-  if (type === 'image') {
-    return <Image src={url} alt={alt ?? ''} />;
-  } else if (type === 'brightcove') {
+  if (type === "image") {
+    return <Image src={url} alt={alt ?? ""} />;
+  } else if (type === "brightcove") {
     return <StylediFrame allowFullScreen={true} src={url} />;
   } else {
     return null;

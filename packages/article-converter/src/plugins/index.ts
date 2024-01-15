@@ -6,22 +6,22 @@
  *
  */
 
-import { anchorPlugin } from './anchorPlugin';
-import { asidePlugin } from './asidePlugin';
-import { copyParagraphPlugin } from './copyParagraphPlugin';
-import { ddPlugin } from './ddPlugin';
-import { divPlugin } from './divPlugin';
-import { dtPlugin } from './dtPlugin';
-import { h3Plugin } from './h3Plugin';
-import { mathPlugin } from './mathPlugin';
-import { navPlugin } from './navPlugin';
-import { anchorPlugin as oembedAnchorPlugin } from './oembed/anchorPlugin';
-import { olPlugin } from './olPlugin';
-import { paragraphPlugin } from './paragraphPlugin';
-import { spanPlugin } from './spanPlugin';
-import { tablePlugin } from './tablePlugin';
-import { PluginType } from './types';
-import { ulPlugin } from './ulPlugin';
+import { anchorPlugin } from "./anchorPlugin";
+import { asidePlugin } from "./asidePlugin";
+import { copyParagraphPlugin } from "./copyParagraphPlugin";
+import { ddPlugin } from "./ddPlugin";
+import { divPlugin } from "./divPlugin";
+import { dtPlugin } from "./dtPlugin";
+import { h3Plugin } from "./h3Plugin";
+import { mathPlugin } from "./mathPlugin";
+import { navPlugin } from "./navPlugin";
+import { anchorPlugin as oembedAnchorPlugin } from "./oembed/anchorPlugin";
+import { olPlugin } from "./olPlugin";
+import { paragraphPlugin } from "./paragraphPlugin";
+import { spanPlugin } from "./spanPlugin";
+import { tablePlugin } from "./tablePlugin";
+import { PluginType } from "./types";
+import { ulPlugin } from "./ulPlugin";
 
 export const basePlugins: Record<string, PluginType> = {
   h2: copyParagraphPlugin,

@@ -6,15 +6,15 @@
  *
  */
 
-import { Meta, StoryObj, StoryFn } from '@storybook/react';
-import { LinkBlockSection } from '.';
-import LinkBlock from './LinkBlock';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj, StoryFn } from "@storybook/react";
+import { LinkBlockSection } from ".";
+import LinkBlock from "./LinkBlock";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/Link Block',
+  title: "Components/Link Block",
   component: LinkBlock,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
@@ -22,10 +22,10 @@ export default {
 } as Meta<typeof LinkBlock>;
 
 const args = {
-  title: 'Redaksjonell medarbeider i faget spansk 2',
-  language: 'nb',
-  date: '05. mars 2023',
-  url: '',
+  title: "Redaksjonell medarbeider i faget spansk 2",
+  language: "nb",
+  date: "05. mars 2023",
+  url: "",
 };
 
 export const AnnouncementExample: StoryObj<typeof LinkBlock> = { args };

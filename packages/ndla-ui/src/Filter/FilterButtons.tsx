@@ -5,18 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
-import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from '@ndla/modal';
-import FilterCarousel from './FilterCarousel';
-import ToggleItem from './ToggleItem';
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { Cross as CrossIcon, Plus as PlusIcon } from "@ndla/icons/action";
+import { ModalHeader, ModalBody, ModalCloseButton, Modal, ModalTrigger, ModalContent } from "@ndla/modal";
+import FilterCarousel from "./FilterCarousel";
+import ToggleItem from "./ToggleItem";
 
 const StyledHeading = styled.h3`
-  ${fonts.sizes('16px', '32px')};
+  ${fonts.sizes("16px", "32px")};
   margin: 0 0 ${spacing.small};
   color: ${colors.text.light};
   font-weight: ${fonts.weight.semibold};
@@ -64,7 +64,7 @@ const StyledRemoveWrapper = styled.div`
 `;
 
 const ButtonRemoveText = styled.span`
-  ${fonts.sizes('16px', '32px')};
+  ${fonts.sizes("16px", "32px")};
   font-weight: ${fonts.weight.semibold};
 `;
 
@@ -88,14 +88,14 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
 
   useEffect(() => {
-    const isNarrowScreenMatch = window.matchMedia('(max-width: 767px)');
+    const isNarrowScreenMatch = window.matchMedia("(max-width: 767px)");
     const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
       setIsNarrowScreen(e.matches);
     };
-    isNarrowScreenMatch.addEventListener('change', handleChange);
+    isNarrowScreenMatch.addEventListener("change", handleChange);
     handleChange(isNarrowScreenMatch);
     return () => {
-      isNarrowScreenMatch.removeEventListener('change', handleChange);
+      isNarrowScreenMatch.removeEventListener("change", handleChange);
     };
   }, []);
 
@@ -125,7 +125,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
               </ButtonV2>
             </StyledButtonElementWrapper>
           ))}
-          <Modal aria-label={t('searchPage.searchFilterMessages.resourceTypeFilter.button')}>
+          <Modal aria-label={t("searchPage.searchFilterMessages.resourceTypeFilter.button")}>
             <StyledButtonElementWrapper>
               <ModalTrigger>
                 <ButtonV2 colorTheme="light" size="normal" shape="pill">
@@ -169,7 +169,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
               <StyledButtonElementWrapper key={item.value}>
                 <ButtonV2
                   size="normal"
-                  colorTheme={!item.selected ? 'greyLighter' : undefined}
+                  colorTheme={!item.selected ? "greyLighter" : undefined}
                   shape="pill"
                   onClick={() => onFilterToggle(item.value)}
                 >

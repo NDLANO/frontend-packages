@@ -13,12 +13,12 @@ const getScrollbarWidth = () => {
     return scrollbarWidth;
   }
 
-  const scrollDiv = document.createElement('div');
-  scrollDiv.style.width = '100px';
-  scrollDiv.style.height = '100px';
-  scrollDiv.style.overflow = 'scroll';
-  scrollDiv.style.position = 'absolute';
-  scrollDiv.style.top = '-9999px';
+  const scrollDiv = document.createElement("div");
+  scrollDiv.style.width = "100px";
+  scrollDiv.style.height = "100px";
+  scrollDiv.style.overflow = "scroll";
+  scrollDiv.style.position = "absolute";
+  scrollDiv.style.top = "-9999px";
 
   document.body.appendChild(scrollDiv);
   scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
@@ -30,7 +30,7 @@ const getScrollbarWidth = () => {
 const scrollTargets: string[] = [];
 
 const noScroll = (enable: boolean, uuid: string): void => {
-  const bodyElement = document.querySelector('html > body') as HTMLElement;
+  const bodyElement = document.querySelector("html > body") as HTMLElement;
   if (bodyElement === null) {
     return;
   }
@@ -38,7 +38,7 @@ const noScroll = (enable: boolean, uuid: string): void => {
     if (!scrollTargets.includes(uuid)) {
       scrollTargets.push(uuid);
       const scrollWidth = getScrollbarWidth();
-      bodyElement.style.overflow = 'hidden';
+      bodyElement.style.overflow = "hidden";
       bodyElement.style.marginRight = `${scrollWidth}px`;
     }
   } else {
@@ -46,8 +46,8 @@ const noScroll = (enable: boolean, uuid: string): void => {
       scrollTargets.splice(scrollTargets.indexOf(uuid), 1);
     }
     if (scrollTargets.length === 0) {
-      bodyElement.style.marginRight = '0';
-      bodyElement.style.overflow = 'visible';
+      bodyElement.style.marginRight = "0";
+      bodyElement.style.overflow = "visible";
     }
   }
 };

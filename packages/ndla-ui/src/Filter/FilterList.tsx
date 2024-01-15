@@ -6,11 +6,11 @@
  *
  */
 
-import { ReactNode, useState } from 'react';
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
+import { ReactNode, useState } from "react";
+import { ChevronDown, ChevronUp } from "@ndla/icons/common";
 
-import { classes } from './filterClasses';
-import ToggleItem from './ToggleItem';
+import { classes } from "./filterClasses";
+import ToggleItem from "./ToggleItem";
 
 interface Props {
   children?: ReactNode;
@@ -36,9 +36,9 @@ interface Props {
 }
 
 const FilterList = ({
-  modifiers = '',
-  preid = '',
-  label = 'FILTER:',
+  modifiers = "",
+  preid = "",
+  label = "FILTER:",
   labelNotVisible,
   options,
   values = [],
@@ -56,19 +56,19 @@ const FilterList = ({
   const labelModifiers = [];
 
   if (labelNotVisible) {
-    labelModifiers.push('hidden');
+    labelModifiers.push("hidden");
   }
 
   return (
-    <section {...classes('list', modifiers)}>
-      {label && <h1 {...classes('label', labelModifiers)}>{label}</h1>}
+    <section {...classes("list", modifiers)}>
+      {label && <h1 {...classes("label", labelModifiers)}>{label}</h1>}
       {noFilterSelectedLabel && options.length === 0 && (
-        <span {...classes('no-filter-selected')}>{noFilterSelectedLabel}</span>
+        <span {...classes("no-filter-selected")}>{noFilterSelectedLabel}</span>
       )}
       <ul
-        {...classes('item-wrapper', {
-          'aligned-grouping': !!alignedGroup,
-          'collapse-mobile': !!collapseMobile,
+        {...classes("item-wrapper", {
+          "aligned-grouping": !!alignedGroup,
+          "collapse-mobile": !!collapseMobile,
         })}
       >
         {options.map((option, index) => {
@@ -77,13 +77,13 @@ const FilterList = ({
           const checked = values.some((value) => value === option.value);
 
           if (!showAll && !checked && index + 1 > (visibleCount ?? 0)) {
-            itemModifiers.push('hidden');
+            itemModifiers.push("hidden");
           }
 
           const disabled = option.noResults || option.hits === 0;
 
           if (disabled) {
-            itemModifiers.push('no-results');
+            itemModifiers.push("no-results");
           }
 
           return (
@@ -113,7 +113,7 @@ const FilterList = ({
       </ul>
       {!showAll && (
         <button
-          {...classes('expand')}
+          {...classes("expand")}
           type="button"
           onClick={() => {
             setVisibleCount((prev) => (prev === defaultVisibleCount ? options.length : defaultVisibleCount));

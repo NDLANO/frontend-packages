@@ -6,13 +6,13 @@
  *
  */
 
-import { attributesToProps } from 'html-react-parser';
-import { FootnoteMetaData } from '@ndla/types-embed';
-import { FootnoteEmbed } from '@ndla/ui';
-import { PluginType } from '../types';
+import { attributesToProps } from "html-react-parser";
+import { FootnoteMetaData } from "@ndla/types-embed";
+import { FootnoteEmbed } from "@ndla/ui";
+import { PluginType } from "../types";
 
 export const footnoteEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as FootnoteMetaData;
+  const data = JSON.parse(props["data-json"]) as FootnoteMetaData;
   return <FootnoteEmbed embed={data} />;
 };

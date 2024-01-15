@@ -6,15 +6,15 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { Search } from '@ndla/icons/common';
-import { Check } from '@ndla/icons/editor';
-import { Input, InputContainer } from './InputV3';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryFn } from "@storybook/react";
+import { Search } from "@ndla/icons/common";
+import { Check } from "@ndla/icons/editor";
+import { Input, InputContainer } from "./InputV3";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Forms/Input',
-  tags: ['autodocs'],
+  title: "Forms/Input",
+  tags: ["autodocs"],
   component: Input,
   parameters: {
     inlineStories: true,

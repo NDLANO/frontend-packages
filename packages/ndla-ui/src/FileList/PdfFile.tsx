@@ -6,7 +6,7 @@
  *
  */
 
-import { Figure } from '../Figure';
+import { Figure } from "../Figure";
 
 interface Props {
   title: string;

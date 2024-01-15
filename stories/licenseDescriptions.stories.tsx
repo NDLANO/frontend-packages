@@ -6,19 +6,19 @@
  *
  */
 
-import { useState } from 'react';
-import { ALL_ABBREVIATIONS, getLicenseByAbbreviation } from '@ndla/licenses';
-import { Table } from '@ndla/ui';
-import { RadioButtonGroup } from '@ndla/forms';
-import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from './defaults';
+import { useState } from "react";
+import { ALL_ABBREVIATIONS, getLicenseByAbbreviation } from "@ndla/licenses";
+import { Table } from "@ndla/ui";
+import { RadioButtonGroup } from "@ndla/forms";
+import { Meta, StoryFn } from "@storybook/react";
+import { defaultParameters } from "./defaults";
 
 /**
  * Liste over lisenser som brukes på NDLA.
  */
 export default {
-  title: 'Licenses/License descriptions',
-  tags: ['autodocs'],
+  title: "Licenses/License descriptions",
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
@@ -26,13 +26,13 @@ export default {
 } as Meta;
 
 const languageOptions = [
-  { title: 'Norsk bokmål', value: 'nb' },
-  { title: 'Nynorsk', value: 'nn' },
-  { title: 'English', value: 'en' },
+  { title: "Norsk bokmål", value: "nb" },
+  { title: "Nynorsk", value: "nn" },
+  { title: "English", value: "en" },
 ];
 
 export const Default: StoryFn = () => {
-  const [locale, setLocale] = useState('nb');
+  const [locale, setLocale] = useState("nb");
   return (
     <div>
       <RadioButtonGroup options={languageOptions} onChange={setLocale} label="Description language" />
@@ -47,7 +47,7 @@ export const Default: StoryFn = () => {
                 <th>Verdi</th>
               </tr>
             </thead>
-            <tbody style={{ width: '100%' }}>
+            <tbody style={{ width: "100%" }}>
               <tr>
                 <td>Kode</td>
                 <td>{abb.toUpperCase()}</td>

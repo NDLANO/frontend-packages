@@ -6,7 +6,7 @@
  *
  */
 
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 const StyledLicenseByline = styled.div`
   display: flex;

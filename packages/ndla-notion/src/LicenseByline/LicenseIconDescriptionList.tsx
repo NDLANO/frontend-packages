@@ -6,13 +6,13 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { getLicenseRightByAbbreviation } from '@ndla/licenses';
-import LicenseIcon from './LicenseIcon';
-import { StyledLicenseIcon, StyledListItem } from './LicenseIconList';
-import LicensePopover from './LicensePopover';
-import StyledLicenseIconList from './StyledLicenseIconList';
+import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
+import { getLicenseRightByAbbreviation } from "@ndla/licenses";
+import LicenseIcon from "./LicenseIcon";
+import { StyledLicenseIcon, StyledListItem } from "./LicenseIconList";
+import LicensePopover from "./LicensePopover";
+import StyledLicenseIconList from "./StyledLicenseIconList";
 
 const StyledLicenseLabel = styled.div`
   margin-left: ${spacing.small};

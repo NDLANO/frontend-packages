@@ -6,10 +6,10 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import { FootnoteMetaData } from '@ndla/types-embed';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
+import { FootnoteMetaData } from "@ndla/types-embed";
 
 interface Props {
   embed: FootnoteMetaData;
@@ -40,8 +40,8 @@ const FootnoteRef = styled.span`
 
 const FootnoteEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
-  if (embed.status === 'error') {
-    return <div>{t('error')}</div>;
+  if (embed.status === "error") {
+    return <div>{t("error")}</div>;
   }
 
   return (

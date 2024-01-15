@@ -6,13 +6,13 @@
  *
  */
 
-import prettyBytes from 'pretty-bytes';
-import styled from '@emotion/styled';
-import { fonts } from '@ndla/core';
-import { IImageDimensions } from '@ndla/types-backend/image-api';
+import prettyBytes from "pretty-bytes";
+import styled from "@emotion/styled";
+import { fonts } from "@ndla/core";
+import { IImageDimensions } from "@ndla/types-backend/image-api";
 
 const StyledDiv = styled.div`
-  ${fonts.sizes('16px', 1.3)}
+  ${fonts.sizes("16px", 1.3)}
 `;
 
 const StyledSpan = styled.span`
@@ -26,7 +26,7 @@ interface Props {
 }
 
 const ImageMeta = ({ contentType, fileSize, imageDimensions }: Props) => {
-  const dimensions = imageDimensions ? ` - ${imageDimensions.width}x${imageDimensions.height} px` : '';
+  const dimensions = imageDimensions ? ` - ${imageDimensions.width}x${imageDimensions.height} px` : "";
   return (
     <StyledDiv>
       <StyledSpan>{`${contentType} - ${prettyBytes(fileSize)}${dimensions}`}</StyledSpan>

@@ -6,6 +6,6 @@
  *
  */
 
-import ToolboxInfo from './ToolboxInfo';
+import ToolboxInfo from "./ToolboxInfo";
 
 export { ToolboxInfo };

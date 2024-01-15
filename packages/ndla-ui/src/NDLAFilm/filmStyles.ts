@@ -6,22 +6,22 @@
  *
  */
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { fonts, spacing, colors, mq, breakpoints } from "@ndla/core";
 
 export const setAnimations = () => {
   const styles: any = {};
   for (let i = 1; i < 20; i++) {
     styles[`> div:nth-child(${i + 1})`] = {
-      'animation-delay': `${i * 50}ms`,
+      "animation-delay": `${i * 50}ms`,
     };
   }
   return styles;
 };
 
 const headingStyle = css`
-  ${fonts.sizes('22px', '26px')};
+  ${fonts.sizes("22px", "26px")};
   font-weight: ${fonts.weight.semibold};
   text-transform: uppercase;
   letter-spacing: 0.05em;

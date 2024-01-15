@@ -7,24 +7,24 @@
  */
 
 /* eslint-env jest */
-import { formatNestedMessages } from '../formatNestedMessages';
+import { formatNestedMessages } from "../formatNestedMessages";
 
-test('i18n formatNestedMessages()', () => {
+test("i18n formatNestedMessages()", () => {
   const messages = formatNestedMessages({
-    helloworld: 'Hello world',
+    helloworld: "Hello world",
     test: {
-      Me: 'Test Me',
+      Me: "Test Me",
     },
     welcome: {
       to: {
         my: {
-          unittest: 'Welcome to my unittest',
+          unittest: "Welcome to my unittest",
         },
       },
     },
   });
 
-  expect(messages.helloworld).toBe('Hello world');
-  expect(messages['test.Me']).toBe('Test Me');
-  expect(messages['welcome.to.my.unittest']).toBe('Welcome to my unittest');
+  expect(messages.helloworld).toBe("Hello world");
+  expect(messages["test.Me"]).toBe("Test Me");
+  expect(messages["welcome.to.my.unittest"]).toBe("Welcome to my unittest");
 });

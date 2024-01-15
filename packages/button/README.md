@@ -17,7 +17,7 @@ npm install @ndla/button --save
 ### Basic example
 
 ```js
-import Button from '@ndla/button';
+import Button from "@ndla/button";
 
-<Button onClick={() => alert('Hello world')}>Click me! </Button>;
+<Button onClick={() => alert("Hello world")}>Click me! </Button>;
 ```

@@ -6,22 +6,22 @@
  *
  */
 
-export { default as uuid } from './uuid';
-export { default as getComponentName } from './getComponentName';
-export { copyTextToClipboard } from './copyTextToClipboard';
-export { default as noScroll } from './noScroll';
-export { default as getCurrentBreakpoint, breakpoints } from './getCurrentBreakpoint';
-export { createUniversalPortal } from './createUniversalPortal';
-export { isFunction } from './isFunction';
-export { resizeObserver } from './resizeObserver';
-export { setCookie, getCookie, deleteCookie, isValidCookie } from './cookieHandler';
-export { printPage } from './printPage';
-export { default as joinArrayWithConjunction } from './joinArrayWithConjunction';
-export { validateTranslationFiles } from './translationValidation';
-export { default as useForwardedRef } from './useForwardedRef';
-export { default as NoSSR } from './nossr/NoSSR';
-export { default as withNoSSR } from './nossr/withNoSSR';
-export { default as usePrevious } from './usePrevious';
-export { composeRefs } from './composeRefs';
-export { polymorphicForwardRef } from './polymorphicForwardRef';
-export type { PolymorphicProps } from './polymorphicForwardRef';
+export { default as uuid } from "./uuid";
+export { default as getComponentName } from "./getComponentName";
+export { copyTextToClipboard } from "./copyTextToClipboard";
+export { default as noScroll } from "./noScroll";
+export { default as getCurrentBreakpoint, breakpoints } from "./getCurrentBreakpoint";
+export { createUniversalPortal } from "./createUniversalPortal";
+export { isFunction } from "./isFunction";
+export { resizeObserver } from "./resizeObserver";
+export { setCookie, getCookie, deleteCookie, isValidCookie } from "./cookieHandler";
+export { printPage } from "./printPage";
+export { default as joinArrayWithConjunction } from "./joinArrayWithConjunction";
+export { validateTranslationFiles } from "./translationValidation";
+export { default as useForwardedRef } from "./useForwardedRef";
+export { default as NoSSR } from "./nossr/NoSSR";
+export { default as withNoSSR } from "./nossr/withNoSSR";
+export { default as usePrevious } from "./usePrevious";
+export { composeRefs } from "./composeRefs";
+export { polymorphicForwardRef } from "./polymorphicForwardRef";
+export type { PolymorphicProps } from "./polymorphicForwardRef";

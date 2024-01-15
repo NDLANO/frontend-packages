@@ -36,7 +36,7 @@ export interface RightType {
   en: RightLocaleInfo;
 }
 
-const locales = ['nb', 'nn', 'en'] as const;
+const locales = ["nb", "nn", "en"] as const;
 export type Locale = (typeof locales)[number];
 
 export function isLocale(l: string): l is Locale {

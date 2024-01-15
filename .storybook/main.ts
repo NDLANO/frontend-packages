@@ -6,44 +6,44 @@
  *
  */
 
-import { StorybookConfig } from '@storybook/react-webpack5';
+import { StorybookConfig } from "@storybook/react-webpack5";
 
 const config: StorybookConfig = {
-  stories: ['../packages/**/*.stories.@(tsx|mdx|jsx)', '../stories/**/*.stories.@(tsx|mdx)'],
-  staticDirs: ['static'],
+  stories: ["../packages/**/*.stories.@(tsx|mdx|jsx)", "../stories/**/*.stories.@(tsx|mdx)"],
+  staticDirs: ["static"],
   addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-links',
-    '@storybook/addon-actions',
-    '@storybook/addon-viewport',
+    "@storybook/addon-a11y",
+    "@storybook/addon-links",
+    "@storybook/addon-actions",
+    "@storybook/addon-viewport",
     {
-      name: '@storybook/addon-styling',
+      name: "@storybook/addon-styling",
       options: {
         sass: {
-          implementation: require('sass'),
+          implementation: require("sass"),
         },
       },
     },
-    '@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-backgrounds',
-    '@storybook/addon-toolbars',
-    '@storybook/addon-measure',
-    '@storybook/addon-outline',
+    "@storybook/addon-docs",
+    "@storybook/addon-controls",
+    "@storybook/addon-backgrounds",
+    "@storybook/addon-toolbars",
+    "@storybook/addon-measure",
+    "@storybook/addon-outline",
   ],
   framework: {
-    name: '@storybook/react-webpack5',
+    name: "@storybook/react-webpack5",
     options: {},
   },
   babel: async (options) => {
     return {
       ...options,
       presets: [
-        ['@babel/preset-env', { modules: false }],
-        '@babel/preset-typescript',
-        ['@babel/preset-react', { runtime: 'automatic', importSource: '@emotion/react' }],
+        ["@babel/preset-env", { modules: false }],
+        "@babel/preset-typescript",
+        ["@babel/preset-react", { runtime: "automatic", importSource: "@emotion/react" }],
       ],
-      plugins: [['@emotion', { autoLabel: 'always' }]],
+      plugins: [["@emotion", { autoLabel: "always" }]],
     };
   },
   /* For at "Show code" skal legge seg bakerst slik at elementer som drop-down ikke blir skjult bak den */
@@ -55,7 +55,7 @@ const config: StorybookConfig = {
   </style>
   ${head}`,
   docs: {
-    autodocs: 'tag',
+    autodocs: "tag",
   },
 };
 

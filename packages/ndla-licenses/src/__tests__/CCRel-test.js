@@ -8,14 +8,14 @@
 
 /* eslint-env jest */
 
-import { resourceTypes, getResourceTypeNamespace } from '../CCRel';
+import { resourceTypes, getResourceTypeNamespace } from "../CCRel";
 
-test('microData/getResourceTypeNamespace when type video should return video namespace', () => {
+test("microData/getResourceTypeNamespace when type video should return video namespace", () => {
   const namespace = getResourceTypeNamespace(resourceTypes.video);
-  expect(namespace).toBe('http://purl.org/dc/dcmitype/MovingImage');
+  expect(namespace).toBe("http://purl.org/dc/dcmitype/MovingImage");
 });
 
-test('microData/getResourceTypeNamespace when unknown type should return null', () => {
-  const namespace = getResourceTypeNamespace('UNKNOWN');
+test("microData/getResourceTypeNamespace when unknown type should return null", () => {
+  const namespace = getResourceTypeNamespace("UNKNOWN");
   expect(namespace).toBe(null);
 });

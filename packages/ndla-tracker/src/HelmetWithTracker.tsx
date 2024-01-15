@@ -6,11 +6,11 @@
  *
  */
 
-import { ReactNode, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import warning from 'tiny-warning';
-import { usePrevious } from '@ndla/util';
-import useTracker from './useTracker';
+import { ReactNode, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import warning from "tiny-warning";
+import { usePrevious } from "@ndla/util";
+import useTracker from "./useTracker";
 
 interface Props {
   title: string;
@@ -31,7 +31,7 @@ const HelmetWithTracker = ({ title, children }: Props) => {
     if (hasTracked && title !== previousTitle) {
       warning(
         true,
-        'N.B! Title changes are not supported because of page view tracking. \n\n Please use trackPageView provided by useTracker for more lowlevel control over when to track a page view.',
+        "N.B! Title changes are not supported because of page view tracking. \n\n Please use trackPageView provided by useTracker for more lowlevel control over when to track a page view.",
       );
     } else {
       trackPageView({ title });

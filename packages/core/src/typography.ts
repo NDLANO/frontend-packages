@@ -6,10 +6,10 @@
  *
  */
 
-import { css } from '@emotion/react';
-import colors from './colors';
-import fonts from './fonts';
-import spacing from './spacing';
+import { css } from "@emotion/react";
+import colors from "./colors";
+import fonts from "./fonts";
+import spacing from "./spacing";
 
 const smallHeading = css`
   ${fonts.sizes(14, 1.1)};
@@ -19,7 +19,7 @@ const smallHeading = css`
 `;
 
 const smallerHeadingUppercase = css`
-  ${fonts.sizes('18px', '26px')};
+  ${fonts.sizes("18px", "26px")};
   font-weight: ${fonts.weight.normal};
   color: ${colors.text.light};
   text-transform: uppercase;

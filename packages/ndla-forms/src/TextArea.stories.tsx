@@ -6,12 +6,12 @@
  *
  */
 
-import { useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { Search } from '@ndla/icons/common';
-import { Check } from '@ndla/icons/editor';
-import { InputContainer, TextArea } from './InputV3';
-import { defaultParameters } from '../../../stories/defaults';
+import { useState } from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import { Search } from "@ndla/icons/common";
+import { Check } from "@ndla/icons/editor";
+import { InputContainer, TextArea } from "./InputV3";
+import { defaultParameters } from "../../../stories/defaults";
 
 /**
  * A textbox that automatically resizes itself based on its content.
@@ -19,8 +19,8 @@ import { defaultParameters } from '../../../stories/defaults';
  * as the component overrides any height set on the component itself.
  */
 export default {
-  title: 'Forms/TextArea',
-  tags: ['autodocs'],
+  title: "Forms/TextArea",
+  tags: ["autodocs"],
   component: TextArea,
   parameters: {
     inlineStories: true,

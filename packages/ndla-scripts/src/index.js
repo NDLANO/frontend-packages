@@ -7,4 +7,4 @@
  *
  */
 
-import('./run-script.js');
+import("./run-script.js");

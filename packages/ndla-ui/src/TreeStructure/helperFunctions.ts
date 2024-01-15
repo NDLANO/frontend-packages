@@ -6,8 +6,8 @@
  *
  */
 
-import { IFolder } from '@ndla/types-backend/learningpath-api';
-import { TreeStructureType } from './types';
+import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { TreeStructureType } from "./types";
 
 export const flattenFolders = (folders: IFolder[], openFolders?: string[]): IFolder[] => {
   return folders.reduce((acc, { subfolders, id, ...rest }) => {

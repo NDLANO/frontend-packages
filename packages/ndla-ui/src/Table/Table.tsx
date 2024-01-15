@@ -6,13 +6,13 @@
  *
  */
 
-import throttle from 'lodash/throttle';
-import { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import throttle from "lodash/throttle";
+import { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
-type ScrollPosition = 'start' | 'end' | 'center';
+type ScrollPosition = "start" | "end" | "center";
 
 const MARGIN = 5;
 
@@ -33,7 +33,7 @@ const ScrollBorder = styled.div`
   background: ${colors.background.dark};
   display: none;
 
-  &[data-block='true'] {
+  &[data-block="true"] {
     display: block;
   }
 `;
@@ -76,7 +76,7 @@ export const TableStyling = css`
   // scrolling shadows on left/right
   &:after,
   &:before {
-    content: '';
+    content: "";
     display: table;
     clear: both;
   }
@@ -85,7 +85,7 @@ export const TableStyling = css`
     background-color: transparent;
     font-weight: ${fonts.weight.bold};
     font-family: ${fonts.sans};
-    ${fonts.sizes('16px', '20px')}
+    ${fonts.sizes("16px", "20px")}
     text-align: left;
     text-transform: uppercase;
     margin-bottom: ${spacing.small};
@@ -102,9 +102,9 @@ export const TableStyling = css`
     font-family: ${fonts.sans};
     vertical-align: text-top;
 
-    ${fonts.sizes('16px', '22px')};
+    ${fonts.sizes("16px", "22px")};
     ${mq.range({ from: breakpoints.tablet })} {
-      ${fonts.sizes('16px', '30px')};
+      ${fonts.sizes("16px", "30px")};
     }
   }
 
@@ -118,9 +118,9 @@ export const TableStyling = css`
     border: 1px solid ${colors.brand.lighter};
     text-transform: none;
 
-    ${fonts.sizes('14px', '18px')};
+    ${fonts.sizes("14px", "18px")};
     ${mq.range({ from: breakpoints.tablet })} {
-      ${fonts.sizes('15px', '26px')};
+      ${fonts.sizes("15px", "26px")};
     }
 
     font-weight: ${fonts.weight.semibold};
@@ -137,18 +137,18 @@ export const TableStyling = css`
     border: 1px solid ${colors.brand.lighter};
     vertical-align: top;
 
-    ${fonts.sizes('14px', '22px')};
+    ${fonts.sizes("14px", "22px")};
     ${mq.range({ from: breakpoints.tablet })} {
-      ${fonts.sizes('15px', '30px')};
+      ${fonts.sizes("15px", "30px")};
     }
 
     ol,
     ul {
       li,
       li p {
-        ${fonts.sizes('14px', '22px')};
+        ${fonts.sizes("14px", "22px")};
         ${mq.range({ from: breakpoints.tablet })} {
-          ${fonts.sizes('15px', '30px')};
+          ${fonts.sizes("15px", "30px")};
         }
         margin: ${spacing.xsmall} 0 !important;
       }
@@ -226,11 +226,11 @@ const Table = ({ children, id, ...rest }: Props) => {
     const isEnd = offsetWidth + scrollLeft >= scrollWidth - MARGIN;
 
     if (isStart) {
-      setScrollPosition('start');
+      setScrollPosition("start");
     } else if (isEnd) {
-      setScrollPosition('end');
+      setScrollPosition("end");
     } else {
-      setScrollPosition('center');
+      setScrollPosition("center");
     }
   }, []);
 
@@ -255,11 +255,11 @@ const Table = ({ children, id, ...rest }: Props) => {
   return (
     <TableWrapper>
       <OverflowWrapper>
-        <LeftScrollBorder data-block={scrollPosition === 'end' || scrollPosition === 'center'} />
+        <LeftScrollBorder data-block={scrollPosition === "end" || scrollPosition === "center"} />
         <table ref={tableRef} id={id} onScroll={onScroll} css={TableStyling} {...rest}>
           {children}
         </table>
-        <RightScrollBorder data-block={scrollPosition === 'start' || scrollPosition === 'center'} />
+        <RightScrollBorder data-block={scrollPosition === "start" || scrollPosition === "center"} />
       </OverflowWrapper>
     </TableWrapper>
   );

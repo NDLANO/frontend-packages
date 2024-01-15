@@ -6,15 +6,15 @@
  *
  */
 
-import { CSSProperties, Children, ComponentProps, ReactNode, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { Heading, HeadingLevel, Text } from '@ndla/typography';
-import ContentTypeBadge from '../ContentTypeBadge';
-import { contentTypes } from '../model/ContentType';
+import { CSSProperties, Children, ComponentProps, ReactNode, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import { Heading, HeadingLevel, Text } from "@ndla/typography";
+import ContentTypeBadge from "../ContentTypeBadge";
+import { contentTypes } from "../model/ContentType";
 
 interface RelatedArticleProps {
   title: string;
@@ -68,16 +68,16 @@ export const RelatedArticle = ({
   title,
   introduction,
   to,
-  linkInfo = '',
-  target = '',
+  linkInfo = "",
+  target = "",
   type = contentTypes.SUBJECT_MATERIAL,
 }: RelatedArticleProps) => {
   return (
-    <StyledRelatedArticle style={{ '--border-color': colorMap[type] } as CSSProperties}>
+    <StyledRelatedArticle style={{ "--border-color": colorMap[type] } as CSSProperties}>
       <TitleWrapper>
         <ContentTypeBadge type={type} background size="small" />
         <LinkText element="span" textStyle="meta-text-medium" margin="none">
-          <SafeLink to={to} target={target} rel={linkInfo ? 'noopener noreferrer' : undefined}>
+          <SafeLink to={to} target={target} rel={linkInfo ? "noopener noreferrer" : undefined}>
             {title}
           </SafeLink>
         </LinkText>
@@ -108,7 +108,7 @@ const ArticlesWrapper = styled.div`
   }
 `;
 
-interface Props extends ComponentProps<'section'> {
+interface Props extends ComponentProps<"section"> {
   children?: JSX.Element[];
   articleCount?: number;
   headingLevel?: HeadingLevel;
@@ -125,7 +125,7 @@ const StyledSection = styled.section`
 export const RelatedArticleList = ({
   children = [],
   articleCount,
-  headingLevel = 'h3',
+  headingLevel = "h3",
   headingButtons,
   ...rest
 }: Props) => {
@@ -141,14 +141,14 @@ export const RelatedArticleList = ({
     <StyledSection {...rest}>
       <HeadingWrapper>
         <Heading element={headingLevel} margin="none" headingStyle="list-title">
-          {t('related.title')}
+          {t("related.title")}
         </Heading>
         {headingButtons}
       </HeadingWrapper>
       <ArticlesWrapper>{childrenToShow}</ArticlesWrapper>
       {childCount > 2 ? (
         <ButtonV2 onClick={() => setExpanded((p) => !p)} variant="outline">
-          {t(`related.show${expanded ? 'Less' : 'More'}`)}
+          {t(`related.show${expanded ? "Less" : "More"}`)}
         </ButtonV2>
       ) : null}
     </StyledSection>

@@ -13,7 +13,7 @@ $ yarn add ndla-forms
 ### Different Form elements and form wrappers for NDLA
 
 ```js
-import { FromInput } from '@ndla/forms';
+import { FromInput } from "@ndla/forms";
 
 <FromInput onChange={() => {}} autoExpand />;
 ```

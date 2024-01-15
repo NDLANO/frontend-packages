@@ -6,13 +6,13 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import { MenuBook } from '@ndla/icons/action';
-import CompetenceGoalItem from './CompetenceGoalItem';
-import CoreElementItem from './CoreElementItem';
-import { CompetenceGoalsItemType, CoreElementsItemType } from '../types';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
+import { MenuBook } from "@ndla/icons/action";
+import CompetenceGoalItem from "./CompetenceGoalItem";
+import CoreElementItem from "./CoreElementItem";
+import { CompetenceGoalsItemType, CoreElementsItemType } from "../types";
 
 const GroupedElementWrapper = styled.div`
   margin: ${spacing.normal} 0 ${spacing.large};
@@ -40,7 +40,7 @@ const GoalList = styled.ul`
   list-style-type: none;
 `;
 
-export type CompetenceTypeProps = 'competenceGoals' | 'coreElement';
+export type CompetenceTypeProps = "competenceGoals" | "coreElement";
 export type CompetenceGoals = {
   title: string;
   elements: CompetenceGoalsItemType[];
@@ -66,7 +66,7 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
   const { type, groupedCompetenceGoals, groupedCoreElementItems } = item;
 
   switch (type) {
-    case 'competenceGoals':
+    case "competenceGoals":
       return (
         <>
           {groupedCompetenceGoals?.map((group) => (
@@ -77,7 +77,7 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
                     <MenuBook />
                     {group.title}
                   </GroupedGoalsTitle>
-                  <GoalsInfo>{t('competenceGoals.competenceGoalTitle')}</GoalsInfo>
+                  <GoalsInfo>{t("competenceGoals.competenceGoalTitle")}</GoalsInfo>
                 </hgroup>
               </GroupedGoalsTitleWrapper>
               {group.elements.length > 0 && (
@@ -97,7 +97,7 @@ const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
           ))}
         </>
       );
-    case 'coreElement':
+    case "coreElement":
       return (
         <>
           {groupedCoreElementItems?.map((group) => (

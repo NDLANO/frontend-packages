@@ -6,12 +6,12 @@
  *
  */
 
-import { ComponentProps, ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { Heading } from '@ndla/typography';
-interface Props extends ComponentProps<'section'> {
+import { ComponentProps, ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
+import { Heading } from "@ndla/typography";
+interface Props extends ComponentProps<"section"> {
   children: ReactNode;
   headingButtons?: ReactNode;
 }
@@ -42,7 +42,7 @@ const FileList = ({ children, headingButtons, ...rest }: Props) => {
     <FileListSection {...rest}>
       <FileListHeaderWrapper>
         <Heading element="h3" headingStyle="list-title" margin="none">
-          {t('files')}
+          {t("files")}
         </Heading>
         <div>{headingButtons}</div>
       </FileListHeaderWrapper>

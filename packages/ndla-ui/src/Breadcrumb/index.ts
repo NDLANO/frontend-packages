@@ -6,12 +6,12 @@
  *
  */
 
-import Breadcrumb from './Breadcrumb';
+import Breadcrumb from "./Breadcrumb";
 
-export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './BreadcrumbItem';
+export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./BreadcrumbItem";
 
-export { default as HeaderBreadcrumb } from './HeaderBreadcrumb';
+export { default as HeaderBreadcrumb } from "./HeaderBreadcrumb";
 
-export { default as HomeBreadcrumb } from './HomeBreadcrumb';
+export { default as HomeBreadcrumb } from "./HomeBreadcrumb";
 
 export default Breadcrumb;

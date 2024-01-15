@@ -6,13 +6,13 @@
  *
  */
 
-import { attributesToProps } from 'html-react-parser';
-import { AudioMetaData } from '@ndla/types-embed';
-import { AudioEmbed } from '@ndla/ui';
-import { PluginType } from '../types';
+import { attributesToProps } from "html-react-parser";
+import { AudioMetaData } from "@ndla/types-embed";
+import { AudioEmbed } from "@ndla/ui";
+import { PluginType } from "../types";
 
 export const audioEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as AudioMetaData;
+  const data = JSON.parse(props["data-json"]) as AudioMetaData;
   return <AudioEmbed embed={data} heartButton={opts.components?.heartButton} lang={opts.articleLanguage} />;
 };

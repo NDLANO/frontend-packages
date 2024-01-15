@@ -6,5 +6,5 @@
  *
  */
 
-export { default as Grid, GridParallaxItem } from './Grid';
-export type { GridProps as GridType } from './Grid';
+export { default as Grid, GridParallaxItem } from "./Grid";
+export type { GridProps as GridType } from "./Grid";

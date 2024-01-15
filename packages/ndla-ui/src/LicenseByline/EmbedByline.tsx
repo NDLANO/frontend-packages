@@ -6,19 +6,19 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { WarningOutline } from '@ndla/icons/common';
-import { getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
-import { ICopyright as AudioCopyright } from '@ndla/types-backend/audio-api';
-import { IDraftCopyright as ConceptCopyright } from '@ndla/types-backend/concept-api';
-import { ICopyright as ImageCopyright } from '@ndla/types-backend/image-api';
-import { BrightcoveCopyright } from '@ndla/types-embed';
-import LicenseDescription from './LicenseDescription';
-import LicenseLink from './LicenseLink';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { WarningOutline } from "@ndla/icons/common";
+import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
+import { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
+import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
+import { ICopyright as ImageCopyright } from "@ndla/types-backend/image-api";
+import { BrightcoveCopyright } from "@ndla/types-embed";
+import LicenseDescription from "./LicenseDescription";
+import LicenseLink from "./LicenseLink";
 
 interface BaseProps {
   topRounded?: boolean;
@@ -32,32 +32,32 @@ interface BaseProps {
 }
 
 export interface EmbedBylineErrorProps extends BaseProps {
-  type: EmbedBylineTypeProps['type'] | 'h5p' | 'external';
+  type: EmbedBylineTypeProps["type"] | "h5p" | "external";
   error: true;
 }
 
 interface ImageProps extends BaseProps {
-  type: 'image';
+  type: "image";
   copyright: ImageCopyright | undefined;
 }
 
 interface BrightcoveProps extends BaseProps {
-  type: 'video';
+  type: "video";
   copyright: BrightcoveCopyright | undefined;
 }
 
 interface AudioProps extends BaseProps {
-  type: 'audio';
+  type: "audio";
   copyright: AudioCopyright | undefined;
 }
 
 interface PodcastProps extends BaseProps {
-  type: 'podcast';
+  type: "podcast";
   copyright: AudioCopyright | undefined;
 }
 
 interface ConceptProps extends BaseProps {
-  type: 'concept' | 'gloss';
+  type: "concept" | "gloss";
   copyright: ConceptCopyright | undefined;
 }
 
@@ -72,27 +72,27 @@ const BylineWrapper = styled.div`
   flex-direction: column;
   gap: ${spacing.small};
   font-family: ${fonts.sans};
-  ${fonts.sizes('18px', '24px')};
+  ${fonts.sizes("18px", "24px")};
   background-color: ${colors.brand.lightest};
   padding: ${spacing.nsmall} ${spacing.normal};
   border: 1px solid ${colors.brand.light};
   border-top: none;
 
-  &[data-top-rounded='true'] {
+  &[data-top-rounded="true"] {
     border-top-right-radius: ${misc.borderRadius};
     border-top-left-radius: ${misc.borderRadius};
   }
 
-  &[data-bottom-rounded='true'] {
+  &[data-bottom-rounded="true"] {
     border-bottom-right-radius: ${misc.borderRadius};
     border-bottom-left-radius: ${misc.borderRadius};
   }
 
-  &[data-error='true'] {
+  &[data-error="true"] {
     border: none;
     background-color: ${colors.support.redLightest};
   }
-  &[data-first='true'] {
+  &[data-first="true"] {
     border-top: 1px solid ${colors.brand.light};
   }
 `;
@@ -109,7 +109,7 @@ const RightsWrapper = styled.div`
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
 
-  &[data-grid='true'] {
+  &[data-grid="true"] {
     ${mobileStyling}
   }
 
@@ -142,17 +142,17 @@ const EmbedByline = ({
   const { t, i18n } = useTranslation();
 
   if (props.error) {
-    const typeString = type === 'h5p' ? 'H5P' : t(`embed.type.${type}`).toLowerCase();
+    const typeString = type === "h5p" ? "H5P" : t(`embed.type.${type}`).toLowerCase();
     return (
       <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-error={true}>
-        <LicenseDescription description={t('embed.embedError', { type: typeString })} icon={<WarningOutline />} />
+        <LicenseDescription description={t("embed.embedError", { type: typeString })} icon={<WarningOutline />} />
       </BylineWrapper>
     );
   }
 
   const { copyright } = props;
 
-  const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? '', i18n.language) : undefined;
+  const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? "", i18n.language) : undefined;
   const authors = getLicenseCredits(copyright);
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
@@ -164,8 +164,8 @@ const EmbedByline = ({
         {license ? <LicenseLink license={license} asLink={!!license.url.length} /> : null}
         <LicenseInformationWrapper>
           <span>
-            <b>{`${t(`embed.type.${type}`)}${captionAuthors.length ? ':' : ''}`} </b>
-            {captionAuthors.map((author) => author.name).join(', ')}
+            <b>{`${t(`embed.type.${type}`)}${captionAuthors.length ? ":" : ""}`} </b>
+            {captionAuthors.map((author) => author.name).join(", ")}
           </span>
         </LicenseInformationWrapper>
         {children}

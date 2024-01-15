@@ -6,18 +6,18 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { Meta, StoryFn } from '@storybook/react';
-import { ButtonV2, IconButtonV2 } from '@ndla/button';
-import { HorizontalMenu } from '@ndla/icons/contentType';
-import { DeleteForever, Folder } from '@ndla/icons/editor';
-import { DropdownMenu, DropdownTrigger, DropdownItem, DropdownContent } from '.';
-import { defaultParameters } from '../../../stories/defaults';
+import styled from "@emotion/styled";
+import { Meta, StoryFn } from "@storybook/react";
+import { ButtonV2, IconButtonV2 } from "@ndla/button";
+import { HorizontalMenu } from "@ndla/icons/contentType";
+import { DeleteForever, Folder } from "@ndla/icons/editor";
+import { DropdownMenu, DropdownTrigger, DropdownItem, DropdownContent } from ".";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Components/DropdownMenu',
+  title: "Components/DropdownMenu",
   component: DropdownContent,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
@@ -56,4 +56,4 @@ export const DropdownStory: StoryFn<typeof DropdownMenu> = (args) => {
   );
 };
 
-DropdownStory.storyName = 'Dropdown';
+DropdownStory.storyName = "Dropdown";

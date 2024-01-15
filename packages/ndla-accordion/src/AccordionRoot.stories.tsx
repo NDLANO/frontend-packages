@@ -6,32 +6,32 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import AccordionContent from './AccordionContent';
-import AccordionHeader from './AccordionHeader';
-import AccordionItem from './AccordionItem';
-import AccordionRoot from './AccordionRoot';
-import { defaultParameters } from '../../../stories/defaults';
+import { Meta, StoryFn } from "@storybook/react";
+import AccordionContent from "./AccordionContent";
+import AccordionHeader from "./AccordionHeader";
+import AccordionItem from "./AccordionItem";
+import AccordionRoot from "./AccordionRoot";
+import { defaultParameters } from "../../../stories/defaults";
 
 const meta: Meta<typeof AccordionRoot> = {
-  title: 'Components/Accordion',
+  title: "Components/Accordion",
   component: AccordionRoot,
   parameters: defaultParameters,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
-    type: 'single',
+    type: "single",
     collapsible: true,
   },
   argTypes: {
     value: {
-      description: 'For controlled state.',
+      description: "For controlled state.",
       control: false,
     },
     defaultValue: {
       control: false,
     },
     onValueChange: {
-      description: 'For controlled state',
+      description: "For controlled state",
     },
   },
 };
@@ -40,7 +40,7 @@ export default meta;
 
 export const Accordion: StoryFn<typeof AccordionRoot> = (args) => (
   <AccordionRoot {...args}>
-    <AccordionItem value={'1'}>
+    <AccordionItem value={"1"}>
       <AccordionHeader>Tittel</AccordionHeader>
       <AccordionContent>
         <div>
@@ -49,7 +49,7 @@ export const Accordion: StoryFn<typeof AccordionRoot> = (args) => (
         <div>En kort paragraf</div>
       </AccordionContent>
     </AccordionItem>
-    <AccordionItem value={'2'}>
+    <AccordionItem value={"2"}>
       <AccordionHeader>Tittel</AccordionHeader>
       <AccordionContent>
         <div>

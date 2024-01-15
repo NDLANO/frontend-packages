@@ -17,7 +17,7 @@ npm install @ndla/safelink --save
 ### Basic example
 
 ```js
-import Safelink from '@ndla/safelink';
+import Safelink from "@ndla/safelink";
 
 <Safelink to="/internal-url">Click me!</Safelink>;
 ```

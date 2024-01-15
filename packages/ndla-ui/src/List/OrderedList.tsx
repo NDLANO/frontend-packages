@@ -6,13 +6,13 @@
  *
  */
 
-import { forwardRef, HTMLAttributes } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { fonts, spacing } from '@ndla/core';
+import { forwardRef, HTMLAttributes } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { fonts, spacing } from "@ndla/core";
 
 export const generateListResets = (counterName: string) => {
-  let styles = '';
+  let styles = "";
   for (let $i = 0; $i < 50; $i++) {
     styles += ` 
       &.ol-reset-${$i} { counter-reset: ${counterName} ${$i - 1}; }  
@@ -28,31 +28,31 @@ export const LetterCSS = css`
     counter-increment: level1;
 
     :before {
-      content: counter(level1, upper-alpha) '.';
+      content: counter(level1, upper-alpha) ".";
     }
-    > ol[data-type='letters'] {
+    > ol[data-type="letters"] {
       > li {
         :before {
-          content: counter(level1, lower-alpha) '.';
+          content: counter(level1, lower-alpha) ".";
         }
-        > ol[data-type='letters'] {
+        > ol[data-type="letters"] {
           padding-left: 0;
           > li {
             padding-left: ${spacing.normal};
             :before {
               left: ${spacing.small};
               position: absolute;
-              content: counter(level1, lower-roman) '.';
+              content: counter(level1, lower-roman) ".";
               transform: translateX(-100%);
             }
-            > ol[data-type='letters'] {
+            > ol[data-type="letters"] {
               padding-left: 0;
               > li {
                 padding-left: ${spacing.normal};
                 :before {
                   left: ${spacing.small};
                   position: absolute;
-                  content: counter(level1, lower-roman) '.';
+                  content: counter(level1, lower-roman) ".";
                   transform: translateX(-100%);
                 }
               }
@@ -69,35 +69,35 @@ export const NumberCSS = css`
   > li {
     counter-increment: level1;
     :before {
-      content: counter(level1, decimal) '.';
+      content: counter(level1, decimal) ".";
     }
-    > ol:not([data-type='letters']) {
+    > ol:not([data-type="letters"]) {
       counter-reset: level2;
-      ${generateListResets('level2')};
+      ${generateListResets("level2")};
       > li {
         padding-left: ${spacing.nsmall};
         counter-increment: level2;
         :before {
-          content: counter(level1, decimal) '.' counter(level2, decimal) '.';
+          content: counter(level1, decimal) "." counter(level2, decimal) ".";
         }
-        > ol:not([data-type='letters']) {
+        > ol:not([data-type="letters"]) {
           counter-reset: level3;
-          ${generateListResets('level3')};
+          ${generateListResets("level3")};
           > li {
             padding-left: ${spacing.medium};
             counter-increment: level3;
             :before {
-              content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.';
+              content: counter(level1, decimal) "." counter(level2, decimal) "." counter(level3, decimal) ".";
             }
-            > ol:not([data-type='letters']) {
+            > ol:not([data-type="letters"]) {
               counter-reset: level4;
-              ${generateListResets('level4')};
+              ${generateListResets("level4")};
               > li {
                 padding-left: ${spacing.large};
                 counter-increment: level4;
                 :before {
-                  content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.'
-                    counter(level4, decimal) '.';
+                  content: counter(level1, decimal) "." counter(level2, decimal) "." counter(level3, decimal) "."
+                    counter(level4, decimal) ".";
                 }
               }
             }
@@ -109,8 +109,8 @@ export const NumberCSS = css`
 `;
 
 const StyledOl = styled.ol`
-  ${fonts.sizes('18px', '29px')};
-  ${generateListResets('level1')};
+  ${fonts.sizes("18px", "29px")};
+  ${generateListResets("level1")};
   padding: 0;
   list-style-type: none;
   counter-reset: level1;
@@ -131,17 +131,17 @@ const StyledOl = styled.ol`
     }
   }
 
-  &:not([data-type='letters']) {
+  &:not([data-type="letters"]) {
     ${NumberCSS}
   }
 
-  &[data-type='letters'] {
+  &[data-type="letters"] {
     ${LetterCSS}
   }
 `;
 
 interface Props extends HTMLAttributes<HTMLOListElement> {
-  type?: 'letters';
+  type?: "letters";
   start?: number;
 }
 

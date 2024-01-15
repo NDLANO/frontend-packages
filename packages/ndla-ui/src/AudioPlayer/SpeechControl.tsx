@@ -6,11 +6,11 @@
  *
  */
 
-import { useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import { IconButtonV2 } from '@ndla/button';
-import { VolumeUp } from '@ndla/icons/common';
-import Tooltip from '@ndla/tooltip';
+import { useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { IconButtonV2 } from "@ndla/button";
+import { VolumeUp } from "@ndla/icons/common";
+import Tooltip from "@ndla/tooltip";
 
 type Props = {
   src: string;
@@ -35,8 +35,8 @@ const SpeechControl = ({ src, title }: Props) => {
     <div>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
-      <Tooltip tooltip={t('audio.play')}>
-        <IconButtonV2 type="button" onClick={togglePlay} aria-label={t('audio.play')} variant="ghost">
+      <Tooltip tooltip={t("audio.play")}>
+        <IconButtonV2 type="button" onClick={togglePlay} aria-label={t("audio.play")} variant="ghost">
           <VolumeUp />
         </IconButtonV2>
       </Tooltip>

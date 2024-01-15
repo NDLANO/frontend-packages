@@ -6,13 +6,13 @@
  *
  */
 
-import { HTMLAttributes, memo } from 'react';
-import styled from '@emotion/styled';
-import { Root } from '@radix-ui/react-accordion';
-import { spacing } from '@ndla/core';
+import { HTMLAttributes, memo } from "react";
+import styled from "@emotion/styled";
+import { Root } from "@radix-ui/react-accordion";
+import { spacing } from "@ndla/core";
 
-interface SingleProps extends Omit<HTMLAttributes<HTMLDivElement>, 'dir'> {
-  type: 'single';
+interface SingleProps extends Omit<HTMLAttributes<HTMLDivElement>, "dir"> {
+  type: "single";
   collapsible?: boolean;
   value?: string;
   defaultValue?: string;
@@ -20,8 +20,8 @@ interface SingleProps extends Omit<HTMLAttributes<HTMLDivElement>, 'dir'> {
   disabled?: boolean;
 }
 
-interface MultipleProps extends Omit<HTMLAttributes<HTMLDivElement>, 'dir'> {
-  type: 'multiple';
+interface MultipleProps extends Omit<HTMLAttributes<HTMLDivElement>, "dir"> {
+  type: "multiple";
   value?: string[];
   defaultValue?: string[];
   onValueChange?: (value: string[]) => void;

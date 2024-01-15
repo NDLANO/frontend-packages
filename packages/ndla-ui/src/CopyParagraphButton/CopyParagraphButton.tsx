@@ -6,13 +6,13 @@
  *
  */
 
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { Link } from '@ndla/icons/common';
-import Tooltip from '@ndla/tooltip';
-import { copyTextToClipboard } from '@ndla/util';
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import { Link } from "@ndla/icons/common";
+import Tooltip from "@ndla/tooltip";
+import { copyTextToClipboard } from "@ndla/util";
 
 const ContainerDiv = styled.div`
   position: relative;
@@ -49,7 +49,7 @@ interface Props {
 const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
   const [hasCopied, setHasCopied] = useState(false);
   const { t } = useTranslation();
-  const sanitizedTitle = useMemo(() => encodeURIComponent(copyText.replace(/ /g, '-')), [copyText]);
+  const sanitizedTitle = useMemo(() => encodeURIComponent(copyText.replace(/ /g, "-")), [copyText]);
 
   useEffect(() => {
     if (hasCopied) {
@@ -61,13 +61,13 @@ const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
     setHasCopied(true);
     const { location } = window;
     const newHash = `#${sanitizedTitle}`;
-    const port = location.port ? `:${location.port}` : '';
+    const port = location.port ? `:${location.port}` : "";
     const urlToCopy = `${location.protocol}//${location.hostname}${port}${location.pathname}${location.search}${newHash}`;
 
     copyTextToClipboard(urlToCopy);
   }, [sanitizedTitle]);
 
-  const tooltip = hasCopied ? t('article.copyPageLinkCopied') : t('article.copyHeaderLink');
+  const tooltip = hasCopied ? t("article.copyPageLinkCopied") : t("article.copyHeaderLink");
   return (
     <ContainerDiv>
       <Tooltip tooltip={tooltip}>

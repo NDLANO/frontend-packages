@@ -6,24 +6,24 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import { FavoriteButton } from '@ndla/button';
-import ResourceItem from './ResourceItem';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import { FavoriteButton } from "@ndla/button";
+import ResourceItem from "./ResourceItem";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/ResourceItem',
-  tags: ['autodocs'],
+  title: "Components/ResourceItem",
+  tags: ["autodocs"],
   component: ResourceItem,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    id: 'urn:resource:a7a49c0a-32ea-4343-8b11-bd6d65c24f87',
-    name: 'Refleksjonsoppgave om ideer og idéutvikling',
-    path: '',
-    contentType: 'subject-material',
+    id: "urn:resource:a7a49c0a-32ea-4343-8b11-bd6d65c24f87",
+    name: "Refleksjonsoppgave om ideer og idéutvikling",
+    path: "",
+    contentType: "subject-material",
     additional: false,
     heartButton: () => <FavoriteButton />,
     access: undefined,
@@ -34,8 +34,8 @@ export const Default: StoryObj<typeof ResourceItem> = {};
 
 export const WithCoreOrAdditionalIndicator: StoryObj<typeof ResourceItem> = {
   args: {
-    contentTypeName: 'Fagstoff',
-    contentTypeDescription: 'Kjernestoff',
+    contentTypeName: "Fagstoff",
+    contentTypeDescription: "Kjernestoff",
     showAdditionalResources: true,
   },
 };
@@ -43,22 +43,22 @@ export const WithCoreOrAdditionalIndicator: StoryObj<typeof ResourceItem> = {
 export const WithCoreOrAdditionalIndicatorAdditional: StoryObj<typeof ResourceItem> = {
   args: {
     additional: true,
-    contentTypeName: 'Fagstoff',
-    contentTypeDescription: 'Tilleggsstoff',
+    contentTypeName: "Fagstoff",
+    contentTypeDescription: "Tilleggsstoff",
     showAdditionalResources: true,
   },
 };
 
 export const RelevanceIndicatorWithoutLabel: StoryObj<typeof ResourceItem> = {
   args: {
-    contentTypeDescription: 'Kjernestoff',
+    contentTypeDescription: "Kjernestoff",
     showAdditionalResources: true,
   },
 };
 
 export const OnlyAvailableForTeachers: StoryObj<typeof ResourceItem> = {
   args: {
-    access: 'teacher',
+    access: "teacher",
   },
 };
 
@@ -68,36 +68,36 @@ export const CurrentPage: StoryObj<typeof ResourceItem> = {
 
 export const SubjectMaterial: StoryObj<typeof ResourceItem> = {
   args: {
-    contentType: 'subject-material',
+    contentType: "subject-material",
   },
 };
 
 export const TasksAndActivities: StoryObj<typeof ResourceItem> = {
   args: {
-    contentType: 'tasks-and-activities',
+    contentType: "tasks-and-activities",
   },
 };
 
 export const AssessmentResource: StoryObj<typeof ResourceItem> = {
   args: {
-    contentType: 'assessment-resources',
+    contentType: "assessment-resources",
   },
 };
 
 export const ExternalLearningResource: StoryObj<typeof ResourceItem> = {
   args: {
-    contentType: 'external-learning-resources',
+    contentType: "external-learning-resources",
   },
 };
 
 export const SourceMaterial: StoryObj<typeof ResourceItem> = {
   args: {
-    contentType: 'source-material',
+    contentType: "source-material",
   },
 };
 
 export const LearningPath: StoryObj<typeof ResourceItem> = {
   args: {
-    contentType: 'learning-path',
+    contentType: "learning-path",
   },
 };

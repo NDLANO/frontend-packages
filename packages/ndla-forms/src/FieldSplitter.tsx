@@ -6,9 +6,9 @@
  *
  */
 
-import { Children, cloneElement, ReactElement } from 'react';
-import { css } from '@emotion/react';
-import { spacing } from '@ndla/core';
+import { Children, cloneElement, ReactElement } from "react";
+import { css } from "@emotion/react";
+import { spacing } from "@ndla/core";
 
 const FieldSplitterCSS = css`
   display: flex;

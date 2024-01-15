@@ -6,108 +6,108 @@
  *
  */
 
-import { getIllegalFiles, illegalEndings, illegalFormats } from '../filetypeHelper';
+import { getIllegalFiles, illegalEndings, illegalFormats } from "../filetypeHelper";
 
-const allowedFiles = ['.pdf', 'application/pdf', 'image/*'];
+const allowedFiles = [".pdf", "application/pdf", "image/*"];
 
 // Check file types
-test('File with known type is allowed', () => {
+test("File with known type is allowed", () => {
   const files = [
     {
-      type: 'application/pdf',
-      name: 'file.pdf',
+      type: "application/pdf",
+      name: "file.pdf",
     },
   ];
   expect(illegalFormats(files, allowedFiles)).toStrictEqual([]);
 });
 
-test('File with unknown type is denied', () => {
+test("File with unknown type is denied", () => {
   const files = [
     {
-      type: 'application/woot',
-      name: 'file.whatever',
+      type: "application/woot",
+      name: "file.whatever",
     },
   ];
   expect(illegalFormats(files, allowedFiles)).toStrictEqual(files);
 });
 
-test('File without type is denied', () => {
+test("File without type is denied", () => {
   const files = [
     {
-      type: '',
-      name: 'file.pdf',
+      type: "",
+      name: "file.pdf",
     },
   ];
   expect(illegalFormats(files, allowedFiles)).toStrictEqual(files);
 });
 
 // Check file endings
-test('File with known ending is allowed', () => {
+test("File with known ending is allowed", () => {
   const files = [
     {
-      type: 'application/pdf',
-      name: 'file.pdf',
+      type: "application/pdf",
+      name: "file.pdf",
     },
   ];
   expect(illegalEndings(files, allowedFiles)).toStrictEqual([]);
 });
 
-test('File with unknown ending is denied', () => {
+test("File with unknown ending is denied", () => {
   const files = [
     {
-      type: 'application/pdf',
-      name: 'file.whatever',
+      type: "application/pdf",
+      name: "file.whatever",
     },
   ];
   expect(illegalEndings(files, allowedFiles)).toStrictEqual(files);
 });
 
 // Check types and endings combined
-test('File with allowed type and allowed ending is allowed in catch-all function', () => {
+test("File with allowed type and allowed ending is allowed in catch-all function", () => {
   const files = [
     {
-      type: 'application/pdf',
-      name: 'file.pdf',
+      type: "application/pdf",
+      name: "file.pdf",
     },
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });
 
-test('File with empty type but allowed ending is allowed in catch-all function', () => {
+test("File with empty type but allowed ending is allowed in catch-all function", () => {
   const files = [
     {
-      type: '',
-      name: 'file.pdf',
+      type: "",
+      name: "file.pdf",
     },
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });
 
-test('File with unknown type but allowed ending is allowed in catch-all function', () => {
+test("File with unknown type but allowed ending is allowed in catch-all function", () => {
   const files = [
     {
-      type: 'application/woot',
-      name: 'file.pdf',
+      type: "application/woot",
+      name: "file.pdf",
     },
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });
 
-test('File with empty type and disallowed ending is denied in catch-all function', () => {
+test("File with empty type and disallowed ending is denied in catch-all function", () => {
   const files = [
     {
-      type: '',
-      name: 'file.whatever',
+      type: "",
+      name: "file.whatever",
     },
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual(files);
 });
 
-test('Image file with image type and unknown ending is allowed in catch-all function', () => {
+test("Image file with image type and unknown ending is allowed in catch-all function", () => {
   const files = [
     {
-      type: 'image/png',
-      name: 'file.whatever',
+      type: "image/png",
+      name: "file.whatever",
     },
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);

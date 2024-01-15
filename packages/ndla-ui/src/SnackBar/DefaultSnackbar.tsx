@@ -6,12 +6,12 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { IconButtonV2 } from '@ndla/button';
-import { breakpoints, colors, fonts, misc, mq, shadows, spacing } from '@ndla/core';
-import { Cross } from '@ndla/icons/action';
-import { Snack, useSnack } from './SnackbarProvider';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
+import { breakpoints, colors, fonts, misc, mq, shadows, spacing } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
+import { Snack, useSnack } from "./SnackbarProvider";
 
 const DefaultSnackContainer = styled.div`
   display: flex;
@@ -49,7 +49,7 @@ const DefaultSnack = (snack: Snack) => {
             variant="outline"
             colorTheme="greyLighter"
             onClick={() => closeSnack(snack)}
-            aria-label={t('snackbar.close')}
+            aria-label={t("snackbar.close")}
           >
             <Cross />
           </IconButtonV2>

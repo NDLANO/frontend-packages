@@ -6,14 +6,14 @@
  *
  */
 
-import { attributesToProps } from 'html-react-parser';
-import { LinkBlockMetaData } from '@ndla/types-embed';
-import { LinkBlock } from '@ndla/ui';
-import { PluginType } from '../types';
+import { attributesToProps } from "html-react-parser";
+import { LinkBlockMetaData } from "@ndla/types-embed";
+import { LinkBlock } from "@ndla/ui";
+import { PluginType } from "../types";
 
 export const linkBlockPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as LinkBlockMetaData;
+  const data = JSON.parse(props["data-json"]) as LinkBlockMetaData;
 
   return <LinkBlock {...data.embedData} path={opts.path} />;
 };

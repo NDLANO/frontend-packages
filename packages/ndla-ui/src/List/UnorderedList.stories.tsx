@@ -6,12 +6,12 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import UnOrderedList from './UnOrderedList';
+import { Meta, StoryFn } from "@storybook/react";
+import UnOrderedList from "./UnOrderedList";
 
 export default {
-  title: 'Base styles/UnorderedList',
-  tags: ['autodocs'],
+  title: "Base styles/UnorderedList",
+  tags: ["autodocs"],
   component: UnOrderedList,
 } as Meta<typeof UnOrderedList>;
 

@@ -6,14 +6,14 @@
  *
  */
 
-import { forwardRef, HTMLAttributes } from 'react';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { forwardRef, HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
 
 const StyledUl = styled.ul`
   padding-left: ${spacing.nsmall};
   margin-left: ${spacing.normal};
-  ${fonts.sizes('18px', '29px')};
+  ${fonts.sizes("18px", "29px")};
 
   ul {
     margin-left: 0;

@@ -979,9 +979,9 @@ const messages = {
           edit: "Avbryt redigering",
         },
         content: {
-          topic: "Vil du forkasta dette innlegget? Innlegget vil bli sletta og du kan ikkje finna det igjen seinare.",
-          post: "Vil du forkasta dette svaret? Svaret vil bli sletta og du kan ikkje finna det igjen seinare.",
-          edit: "Vil du avslutta redigeringa? Eventuelle ikkje lagra endringar vil gå tapt.",
+          topic: "Vil du forkaste dette innlegget? Innlegget vil bli sletta og du kan ikkje finne det igjen seinare.",
+          post: "Vil du forkaste dette svaret? Svaret vil bli sletta og du kan ikkje finne det igjen seinare.",
+          edit: "Vil du avslutte redigeringa? Eventuelle ikkje lagra endringar vil gå tapt.",
         },
         cancel: {
           topic: "Forkast innlegget",

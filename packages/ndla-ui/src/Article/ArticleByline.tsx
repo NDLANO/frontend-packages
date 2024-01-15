@@ -68,7 +68,7 @@ type Props = {
   footnotes?: FootNote[];
   accordionHeaderVariant?: AccordionHeaderVariants;
   displayByline?: boolean;
-  learningPath?: boolean;
+  bylineType?: "article" | "learningPath";
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -130,7 +130,7 @@ const ArticleByline = ({
   locale,
   accordionHeaderVariant = "blue",
   displayByline = true,
-  learningPath,
+  bylineType = "article",
 }: Props) => {
   const { t } = useTranslation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
@@ -160,7 +160,7 @@ const ArticleByline = ({
   return (
     <Wrapper>
       {displayByline && (
-        <TextWrapper data-learningPath={learningPath}>
+        <TextWrapper data-learningPath={bylineType === "learningPath"}>
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (
@@ -175,7 +175,7 @@ const ArticleByline = ({
             )}
           </LicenseWrapper>
           <div>
-            {learningPath ? t("learningPath.lastUpdated") : t("article.lastUpdated")} {published}
+            {t(`${bylineType}.lastUpdated`)} {published}
           </div>
         </TextWrapper>
       )}

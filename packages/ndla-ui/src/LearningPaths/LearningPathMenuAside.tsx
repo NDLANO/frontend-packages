@@ -81,7 +81,7 @@ const LearningPathMenuAside = ({ lastUpdated, learningPathURL, copyright, isOpen
         authors={copyright.contributors}
         license={copyright.license.license}
         published={lastUpdated}
-        learningPath
+        bylineType="learningPath"
       />
       <p css={infoTextCSS}>{t("learningPath.createLearningPathText")}</p>
       <SafeLinkButton

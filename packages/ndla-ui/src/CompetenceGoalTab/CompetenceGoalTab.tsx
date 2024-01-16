@@ -11,11 +11,11 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { spacing } from "@ndla/core";
-import { BY, CC } from "@ndla/licenses";
-import { LicenseByline } from "@ndla/notion";
+import { BY, getLicenseByAbbreviation } from "@ndla/licenses";
 import SafeLink from "@ndla/safelink";
 import Tooltip from "@ndla/tooltip";
 import CompetenceItem, { ListItemProp } from "./CompetenceItem";
+import { LicenseLink } from "../LicenseByline";
 
 type CompetenceProps = {
   list: ListItemProp[];
@@ -36,7 +36,7 @@ const LicenseIconsTextWrapper = styled.span`
 
 const CompetenceGoalTab = ({ list, isOembed }: CompetenceProps) => {
   const [currentTabItem, setCurrentTab] = useState(list[0]);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -67,9 +67,10 @@ const CompetenceGoalTab = ({ list, isOembed }: CompetenceProps) => {
         </ButtonWrapper>
       )}
       <CompetenceItem item={currentTabItem} isOembed={isOembed} />
-      <LicenseByline licenseRights={[CC, BY]}>
+      <ButtonWrapper>
+        <LicenseLink license={getLicenseByAbbreviation(BY, i18n.language)} />
         <LicenseIconsTextWrapper>UDIR</LicenseIconsTextWrapper>
-      </LicenseByline>
+      </ButtonWrapper>
       {`${t("competenceGoals.licenseData")} `}
       <SafeLink to="https://data.norge.no/nlod/no" target="_blank">
         NLOD

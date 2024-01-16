@@ -9,7 +9,6 @@
 import styled from "@emotion/styled";
 import { spacing, spacingUnit, breakpoints, mq, colors } from "@ndla/core";
 import { getLicenseByAbbreviation } from "@ndla/licenses";
-import { LicenseByline } from "@ndla/notion";
 import { Heading } from "@ndla/typography";
 import LicenseLink from "../LicenseByline/LicenseLink";
 

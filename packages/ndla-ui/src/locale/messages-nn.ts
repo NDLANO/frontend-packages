@@ -1074,7 +1074,7 @@ const messages = {
         administrate: "Administrer",
         users: {
           title: "Brukarar",
-          description: "Liste over alle brukarar av arena. Trykk på brukarar for å moderera dei.",
+          description: "Liste over alle brukarar av arena. Trykk på brukarar for å moderere dei.",
           shortDescription: "Liste over alle brukarar av arena.",
           userId: "Brukar ID",
           username: "Brukarnamn",

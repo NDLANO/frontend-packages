@@ -1073,7 +1073,7 @@ const messages = {
         description: "Verktøy for å moderere og administrere arenaen.",
         administrate: "Administrer",
         users: {
-          title: "Brukere",
+          title: "Brukarar",
           description: "Liste over alle brukarar av arena. Trykk på brukarar for å moderera dei.",
           shortDescription: "Liste over alle brukarar av arena.",
           userId: "Brukar ID",

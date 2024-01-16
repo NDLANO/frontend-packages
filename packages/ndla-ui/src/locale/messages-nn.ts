@@ -972,6 +972,28 @@ const messages = {
         posts_plural: "innlegg",
       },
       publish: "Publiser",
+      cancel: {
+        title: {
+          topic: "Forkast nytt innlegg",
+          post: "Forkast nytt svar",
+          edit: "Avbryt redigering",
+        },
+        content: {
+          topic: "Vil du forkaste dette innlegget? Innlegget vil bli sletta og du kan ikkje finne det igjen seinare.",
+          post: "Vil du forkaste dette svaret? Svaret vil bli sletta og du kan ikkje finne det igjen seinare.",
+          edit: "Vil du avslutte redigeringa? Eventuelle ikkje lagra endringar vil gå tapt.",
+        },
+        cancel: {
+          topic: "Forkast innlegget",
+          post: "Forkast svaret",
+          edit: "Avbryt redigeringa",
+        },
+        continue: {
+          topic: "Hald fram med å skrive innlegget",
+          post: "Hald fram med å skrive svaret",
+          edit: "Hald fram med å redigere",
+        },
+      },
       new: {
         post: "Skriv eit svar",
         topic: "Nytt innlegg",

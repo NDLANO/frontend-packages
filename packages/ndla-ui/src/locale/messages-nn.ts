@@ -1070,7 +1070,7 @@ const messages = {
       topicsBy: "Innlegg av",
       admin: {
         title: "Arena administrator",
-        description: "Verktøy for å moderera og administrera arenaen.",
+        description: "Verktøy for å moderere og administrere arenaen.",
         administrate: "Administrer",
         users: {
           title: "Brukere",

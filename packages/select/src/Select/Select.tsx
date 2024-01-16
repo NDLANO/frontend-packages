@@ -6,8 +6,8 @@
  *
  */
 
-import { ReactNode, useMemo } from "react";
-import ReactSelect, { PropsValue, createFilter, OptionsOrGroups, StylesConfig } from "react-select";
+import { useMemo } from "react";
+import ReactSelect, { createFilter, StylesConfig, Props } from "react-select";
 import BaseContainer from "./BaseContainer";
 import BaseControl from "./BaseControl";
 import BaseDropdownIndicator from "./BaseDropdownIndicator";
@@ -17,20 +17,12 @@ import BaseMultiValue from "./BaseMultiValue";
 import BaseOption from "./BaseOption";
 import BasePlaceholder from "./BasePlaceholder";
 import BaseSingleValue from "./BaseSingleValue";
-import { Option, Color, MultiValue, SingleValue, GroupBase } from "./types";
+import { Option, Color, GroupBase } from "./types";
 import ValueContainer from "./ValueContainer";
 
-interface Props<T extends boolean> {
-  /** Options to populate the select menu. Grouped view if options are of type GroupBase. */
-  options: OptionsOrGroups<Option, GroupBase<Option>>;
-  label?: string;
-  onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
-  value?: PropsValue<Option>;
-  placeholder?: string;
-  menuPlacement?: "bottom" | "top" | "auto";
+interface SelectProps<T extends boolean> extends Props<Option, T, GroupBase<Option>> {
   isMulti?: T;
   hideArrow?: boolean;
-  isLoading?: boolean;
   small?: boolean;
   bold?: boolean;
   /** Only has effect when isMulti is false. */
@@ -38,23 +30,14 @@ interface Props<T extends boolean> {
   postfix?: string;
   outline?: boolean;
   colorTheme?: Color;
-  isSearchable?: boolean;
-  noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
-  isClearable?: boolean;
-  closeMenuOnSelect?: boolean;
   /** Indicate if search hits should be matched from start of word or at any position. Only has effect when isSearchable is true. */
   matchFrom?: "any" | "start";
-  required?: boolean;
-  isDisabled?: boolean;
-  id?: string;
-  defaultValue?: PropsValue<Option>;
   inModal?: boolean;
 }
 
 const Select = <T extends boolean>({
   options,
   hideArrow,
-  label,
   menuPlacement = "bottom",
   colorTheme = "blue",
   isSearchable = false,
@@ -62,7 +45,7 @@ const Select = <T extends boolean>({
   inModal,
   isMulti,
   ...rest
-}: Props<T>) => {
+}: SelectProps<T>) => {
   const portalTarget = useMemo(() => (typeof document !== "undefined" ? document.body : null), []);
 
   const components = useMemo(
@@ -94,7 +77,6 @@ const Select = <T extends boolean>({
       isMulti={isMulti}
       options={options}
       colorTheme={colorTheme}
-      aria-label={label}
       isSearchable={isSearchable}
       menuPlacement={menuPlacement}
       hideSelectedOptions={false}

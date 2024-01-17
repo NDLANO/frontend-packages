@@ -6,8 +6,13 @@
  *
  */
 
-export type StackOrderNames = {
-  [key: string]: number;
+type StackOrderNames = {
+  bottom: number;
+  lower: number;
+  lowerMiddle: number;
+  upperMiddle: number;
+  upper: number;
+  top: number;
 };
 
 const stackOrder: StackOrderNames = {

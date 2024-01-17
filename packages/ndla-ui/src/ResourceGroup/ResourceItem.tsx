@@ -99,6 +99,9 @@ const ListElement = styled.li`
 `;
 
 const ResourceLink = styled(SafeLink)`
+  display: flex;
+  align-items: center;
+  width: 100%;
   font-weight: ${fonts.weight.semibold};
   box-shadow: none;
   text-decoration: underline;
@@ -113,6 +116,26 @@ const ResourceLink = styled(SafeLink)`
   }
   &:hover {
     text-decoration: none;
+    [data-badge-wrapper] {
+      [data-badge] {
+        width: 38px;
+        height: 38px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+        [data-type="subject-material"],
+        [data-type="learning-path"],
+        [data-type="source-material"],
+        [data-type="external-learning-resources"] {
+          svg {
+            width: 26px;
+            height: 26px;
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -149,34 +172,11 @@ const ContentTypeName = styled.span`
   text-align: right;
 `;
 
-const InlineContainer = styled.div`
-  display: inline;
-`;
-
 const ResourceWrapper = styled.div`
   display: flex;
   gap: ${spacing.xsmall};
   align-items: center;
-  :hover {
-    [data-badge] {
-      width: 38px;
-      height: 38px;
-
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-      [data-type="subject-material"],
-      [data-type="learning-path"],
-      [data-type="source-material"],
-      [data-type="external-learning-resources"] {
-        svg {
-          width: 26px;
-          height: 26px;
-        }
-      }
-    }
-  }
+  width: 100%;
 `;
 
 const CurrentSmall = styled.small`
@@ -236,20 +236,18 @@ const ResourceItem = ({
       style={listElementVars}
     >
       <ResourceWrapper>
-        <ContentBadgeWrapper>
-          <ContentTypeBadge type={contentType ?? ""} background border={false} />
-        </ContentBadgeWrapper>
-        <InlineContainer>
-          <ResourceLink
-            to={path}
-            lang={language === "nb" ? "no" : language}
-            aria-current={active ? "page" : undefined}
-            aria-describedby={describedBy}
-          >
-            {name}
-          </ResourceLink>
-          {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
-        </InlineContainer>
+        <ResourceLink
+          to={path}
+          lang={language === "nb" ? "no" : language}
+          aria-current={active ? "page" : undefined}
+          aria-describedby={describedBy}
+        >
+          <ContentBadgeWrapper data-badge-wrapper>
+            <ContentTypeBadge type={contentType ?? ""} background border={false} />
+          </ContentBadgeWrapper>
+          {name}
+        </ResourceLink>
+        {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
       </ResourceWrapper>
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}

@@ -9,7 +9,7 @@
 import { HTMLAttributes, ReactNode } from "react";
 import styled from "@emotion/styled";
 import { Root, List, Trigger, Content } from "@radix-ui/react-tabs";
-import { colors, fonts, misc, spacing } from "@ndla/core";
+import { colors, fonts, misc, spacing, stackOrder } from "@ndla/core";
 
 interface TabType {
   title: string;
@@ -90,7 +90,7 @@ const TabsRoot = styled(Root)`
       left: 0px;
       content: "";
       width: 100%;
-      z-index: -1;
+      z-index: ${stackOrder.hide};
     }
 
     [data-tab-trigger] {

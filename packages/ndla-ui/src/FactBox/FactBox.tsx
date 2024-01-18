@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { IconButtonV2 } from "@ndla/button";
-import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { ChevronDown, ChevronUp } from "@ndla/icons/common";
 
 interface Props extends ComponentProps<"aside"> {
@@ -117,7 +117,7 @@ const expandedContentStyle = css`
   max-height: 500vh;
   &:after {
     opacity: 0;
-    z-index: -1;
+    z-index: ${stackOrder.hide};
   }
 `;
 

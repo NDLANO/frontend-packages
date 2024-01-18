@@ -7,21 +7,31 @@
  */
 
 type StackOrderNames = {
-  bottom: number;
-  lower: number;
-  lowerMiddle: number;
-  upperMiddle: number;
-  upper: number;
-  top: number;
+  hide: number;
+  base: number;
+  offsetSingle: number;
+  offsetDouble: number;
+  dropdown: number;
+  banner: number;
+  modal: number;
+  drawer: number;
+  popover: number;
+  toast: number;
+  tooltip: number;
 };
 
 const stackOrder: StackOrderNames = {
-  bottom: 0,
-  lower: 10,
-  lowerMiddle: 20,
-  upperMiddle: 30,
-  upper: 40,
-  top: 50,
+  hide: -1,
+  base: 0,
+  offsetSingle: 1,
+  offsetDouble: 2,
+  dropdown: 100,
+  banner: 200,
+  drawer: 300,
+  modal: 400,
+  popover: 500,
+  toast: 600,
+  tooltip: 700,
 };
 
 export default stackOrder;

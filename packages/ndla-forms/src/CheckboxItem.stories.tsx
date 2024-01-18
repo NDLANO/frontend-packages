@@ -8,7 +8,7 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import { spacing } from "@ndla/core";
-import { Label } from ".";
+import { FormControl, Label } from ".";
 import { CheckboxItem } from "./CheckboxItem";
 import { defaultParameters } from "../../../stories/defaults";
 
@@ -36,5 +36,18 @@ export const WithLabelAndForm: StoryFn<any> = () => (
     <Label margin="none" htmlFor="test" textStyle="label-small">
       Check it
     </Label>
+  </form>
+);
+
+export const InFormControl: StoryFn<any> = () => (
+  <form>
+    <FormControl id="test">
+      <div style={{ display: "flex", gap: spacing.small, alignItems: "center" }}>
+        <CheckboxItem />
+        <Label margin="none" textStyle="label-small">
+          Check it
+        </Label>
+      </div>
+    </FormControl>
   </form>
 );

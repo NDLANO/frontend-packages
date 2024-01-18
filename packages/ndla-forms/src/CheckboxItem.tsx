@@ -10,6 +10,7 @@ import { forwardRef } from "react";
 import styled from "@emotion/styled";
 import { CheckboxProps, Root } from "@radix-ui/react-checkbox";
 import { colors } from "@ndla/core";
+import { useFormControl } from "./FormControl";
 
 export const StyledCheckboxRoot = styled(Root)`
   all: unset;
@@ -72,8 +73,11 @@ export const StyledCheckboxRoot = styled(Root)`
   }
 `;
 
-export const CheckboxItem = forwardRef<HTMLButtonElement, CheckboxProps>(({ ...rest }, ref) => (
-  <StyledCheckboxRoot {...rest} ref={ref}>
-    <span />
-  </StyledCheckboxRoot>
-));
+export const CheckboxItem = forwardRef<HTMLButtonElement, CheckboxProps>(({ ...rest }, ref) => {
+  const field = useFormControl(rest);
+  return (
+    <StyledCheckboxRoot {...field} ref={ref}>
+      <span />
+    </StyledCheckboxRoot>
+  );
+});

@@ -118,8 +118,8 @@ const ResourceLink = styled(SafeLink)`
     text-decoration: none;
     [data-badge-wrapper] {
       [data-badge] {
-        width: 38px;
-        height: 38px;
+        width: ${spacing.mediumlarge};
+        height: ${spacing.mediumlarge};
 
         svg {
           width: 20px;
@@ -130,8 +130,8 @@ const ResourceLink = styled(SafeLink)`
         [data-type="source-material"],
         [data-type="external-learning-resources"] {
           svg {
-            width: 26px;
-            height: 26px;
+            width: ${spacing.medium};
+            height: ${spacing.medium};
           }
         }
       }

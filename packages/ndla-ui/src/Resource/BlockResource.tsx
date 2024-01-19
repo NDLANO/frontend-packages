@@ -8,7 +8,7 @@
 
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
-import { colors, spacing } from "@ndla/core";
+import { colors, spacing, stackOrder } from "@ndla/core";
 import { Text } from "@ndla/typography";
 import {
   CompressedTagList,
@@ -72,7 +72,7 @@ const TagsAndActionMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
 `;
 
 const BlockInfoWrapper = styled.div`

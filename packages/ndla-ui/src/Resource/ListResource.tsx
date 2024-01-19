@@ -8,7 +8,7 @@
 
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
-import { spacing, colors, breakpoints, mq } from "@ndla/core";
+import { spacing, colors, breakpoints, mq, stackOrder } from "@ndla/core";
 import { Text } from "@ndla/typography";
 import {
   CompressedTagList,
@@ -101,7 +101,7 @@ const StyledResourceDescription = styled(Text)`
 
 const TagsandActionMenu = styled.div`
   grid-area: tags;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   box-sizing: content-box;
   display: grid;
   grid-template-columns: 1fr auto auto;

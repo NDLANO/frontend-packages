@@ -10,7 +10,7 @@ import parse from "html-react-parser";
 import { ReactNode, useRef } from "react";
 import styled from "@emotion/styled";
 
-import { animations, colors, fonts, spacing } from "@ndla/core";
+import { animations, colors, fonts, spacing, stackOrder } from "@ndla/core";
 import SafeLink from "@ndla/safelink";
 
 import ItemContexts, { ItemContextsType } from "./components/ItemContexts";
@@ -44,7 +44,7 @@ const Container = styled.article`
 `;
 
 const ButtonWrapper = styled.div`
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   display: flex;
   flex-direction: column;
 `;
@@ -69,7 +69,7 @@ const StyledLink = styled(SafeLink)`
   :after {
     content: "";
     position: absolute;
-    z-index: 1;
+    z-index: ${stackOrder.offsetSingle};
     top: 0;
     right: 0;
     bottom: 0;

@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { fonts, spacing, colors, mq, breakpoints } from "@ndla/core";
+import { fonts, spacing, colors, mq, breakpoints, stackOrder } from "@ndla/core";
 import { FileDocumentOutline, Share } from "@ndla/icons/common";
 import { FolderOutlined, FolderSharedOutlined } from "@ndla/icons/contentType";
 import { ResourceTitleLink } from "../../Resource/resourceComponents";
@@ -91,7 +91,7 @@ const FolderTitle = styled.h2`
 
 const MenuWrapper = styled.div`
   display: flex;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

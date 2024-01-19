@@ -7,7 +7,7 @@
  */
 
 import styled from "@emotion/styled";
-import { spacing, spacingUnit, colors, fonts, misc } from "@ndla/core";
+import { spacing, spacingUnit, colors, fonts, misc, stackOrder } from "@ndla/core";
 import { MovieResourceType } from "./types";
 
 const StyledWrapperDiv = styled.div`
@@ -17,7 +17,7 @@ const StyledWrapperDiv = styled.div`
   position: absolute;
   bottom: 0px;
   left: 0px;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
 `;
 
 const StyledMovieTags = styled.span`

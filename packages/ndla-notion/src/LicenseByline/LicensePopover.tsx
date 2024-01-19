@@ -10,12 +10,12 @@ import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { Arrow, Close, Content, Root, Trigger, Portal } from "@radix-ui/react-popover";
-import { colors, fonts, misc, spacing } from "@ndla/core";
+import { colors, fonts, misc, spacing, stackOrder } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
 
 const StyledContent = styled(Content)`
   color: ${colors.white};
-  z-index: 99999;
+  z-index: ${stackOrder.popover};
   border: 0;
   background: ${colors.brand.greyDark};
   border-radius: ${misc.borderRadius};

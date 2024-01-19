@@ -9,11 +9,11 @@
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
-import { colors, fonts, misc, spacing } from "@ndla/core";
+import { colors, fonts, misc, spacing, stackOrder } from "@ndla/core";
 
 const StyledContent = styled(RadixTooltip.Content)`
   color: #fff;
-  z-index: 99999;
+  z-index: ${stackOrder.tooltip};
   border: 0;
   background: ${colors.text.primary};
   border-radius: ${misc.borderRadius};

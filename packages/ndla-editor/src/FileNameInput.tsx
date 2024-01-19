@@ -9,7 +9,7 @@
 import { HTMLProps, MutableRefObject, useEffect, useRef } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { spacing, spacingUnit, fonts, colors } from "@ndla/core";
+import { spacing, spacingUnit, fonts, colors, stackOrder } from "@ndla/core";
 import { Download, InformationOutline } from "@ndla/icons/common";
 import Tooltip from "@ndla/tooltip";
 import { createUniversalPortal } from "@ndla/util";
@@ -113,7 +113,7 @@ const FileNameInput = ({ editMode, useRef, file, isMissing, messages, ...rest }:
 const StyledInput = styled.input`
   height: ${spacing.medium};
   position: absolute;
-  z-index: 9999;
+  z-index: ${stackOrder.modal};
   ${fonts.sizes(18, 1.1)};
   font-weight: ${fonts.weight.normal};
   font-family: ${fonts.sans};

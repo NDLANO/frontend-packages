@@ -18,7 +18,7 @@ import {
 } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { breakpoints, mq, spacing } from "@ndla/core";
+import { breakpoints, mq, spacing, stackOrder } from "@ndla/core";
 
 type Gap = "none" | "small" | "normal";
 
@@ -58,7 +58,7 @@ export const ButtonWrapper = styled.div`
   position: absolute;
   top: 30%;
   transform: translateY(-20%);
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
 `;
 
 const CarouselWrapper = styled.div`

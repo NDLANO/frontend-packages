@@ -9,9 +9,7 @@
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-
-import { fonts, spacing } from "@ndla/core";
-
+import { fonts, spacing, stackOrder } from "@ndla/core";
 import ContentTypeBadge from "../../ContentTypeBadge";
 import resourceTypeColor from "../../utils/resourceTypeColor";
 import { SearchItemType } from "../SearchItem";
@@ -38,7 +36,7 @@ const NoImageElement = styled.div<ItemTypeProps>`
     width: 58px;
     height: 58px;
     opacity: 0.2;
-    z-index: 3;
+    z-index: ${stackOrder.offsetDouble};
     svg {
       width: 58px;
       height: 58px;
@@ -75,7 +73,7 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
 `;
 
 const StyledContentTypeBadge = styled(ContentTypeBadge)`
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   margin-top: ${spacing.xxsmall};
 
   svg {

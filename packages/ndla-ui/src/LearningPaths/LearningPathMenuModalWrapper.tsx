@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
-import { spacing, mq, breakpoints, colors } from "@ndla/core";
+import { spacing, mq, breakpoints, colors, stackOrder } from "@ndla/core";
 import { LearningPath } from "@ndla/icons/contentType";
 import { ModalHeader, ModalBody, ModalTrigger, ModalCloseButton, Modal, ModalContent } from "@ndla/modal";
 
@@ -21,7 +21,7 @@ const buttonToggleCss = css`
   }
   margin-right: auto;
   margin-left: ${spacing.normal};
-  z-index: 100;
+  z-index: ${stackOrder.popover};
   svg {
     width: 20px;
     height: 20px;

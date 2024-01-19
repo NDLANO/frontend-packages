@@ -98,7 +98,7 @@ const notionContentCss = css`
 
   ${mq.range({ until: breakpoints.tablet })} {
     padding: ${spacing.small};
-    z-index: 100;
+    z-index: ${stackOrder.popover};
     height: 100%;
     width: 100%;
     overflow: auto;

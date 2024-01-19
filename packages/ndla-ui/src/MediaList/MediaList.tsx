@@ -8,7 +8,7 @@
 
 import { ComponentProps, ReactNode } from "react";
 import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, fonts, mq, spacing, stackOrder } from "@ndla/core";
 import { Launch } from "@ndla/icons/common";
 import {
   getLicenseByAbbreviation,
@@ -19,7 +19,7 @@ import {
 import type { MetaType } from "@ndla/licenses";
 import { LicenseDescription } from "@ndla/notion";
 import SafeLink from "@ndla/safelink";
-import { Heading, Text } from "@ndla/typography";
+import { Text } from "@ndla/typography";
 import { uuid } from "@ndla/util";
 
 const StyledMediaList = styled.ul`
@@ -90,7 +90,7 @@ const OpenIndicator = styled.div`
   background-color: ${colors.brand.primary};
   border-radius: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   svg {
     color: ${colors.white};
     width: ${spacing.normal};

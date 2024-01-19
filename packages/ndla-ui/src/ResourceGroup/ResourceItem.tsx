@@ -100,12 +100,14 @@ const ListElement = styled.li`
 
 const ResourceLink = styled(SafeLink)`
   display: flex;
-  align-items: center;
   width: 100%;
+  align-items: center;
   font-weight: ${fonts.weight.semibold};
   box-shadow: none;
-  text-decoration: underline;
-  text-underline-offset: 5px;
+  &[data-active="false"] {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
   color: ${colors.brand.dark};
   ${fonts.sizes("16px", "26px")};
   ${mq.range({ from: breakpoints.tablet })} {
@@ -116,7 +118,7 @@ const ResourceLink = styled(SafeLink)`
   }
   &:hover {
     text-decoration: none;
-    [data-badge-wrapper] {
+    [data-badge-wrapper="true"] {
       [data-badge] {
         width: ${spacing.mediumlarge};
         height: ${spacing.mediumlarge};
@@ -137,6 +139,11 @@ const ResourceLink = styled(SafeLink)`
       }
     }
   }
+`;
+
+const InlineContainer = styled.div`
+  display: inline;
+  width: 100%;
 `;
 
 const ContentBadgeWrapper = styled.div`
@@ -172,15 +179,11 @@ const ContentTypeName = styled.span`
   text-align: right;
 `;
 
-const ResourceWrapper = styled.div`
-  display: flex;
-  gap: ${spacing.xsmall};
-  align-items: center;
-  width: 100%;
-`;
-
 const CurrentSmall = styled.small`
   margin-left: ${spacing.xsmall};
+  text-decoration: none;
+  color: ${colors.text.primary};
+  font-weight: ${fonts.weight.normal};
 `;
 
 interface Props {
@@ -235,20 +238,22 @@ const ResourceItem = ({
       data-additional={additional}
       style={listElementVars}
     >
-      <ResourceWrapper>
-        <ResourceLink
-          to={path}
-          lang={language === "nb" ? "no" : language}
-          aria-current={active ? "page" : undefined}
-          aria-describedby={describedBy}
-        >
-          <ContentBadgeWrapper data-badge-wrapper>
-            <ContentTypeBadge type={contentType ?? ""} background border={false} />
-          </ContentBadgeWrapper>
+      <ResourceLink
+        to={path}
+        lang={language === "nb" ? "no" : language}
+        aria-current={active ? "page" : undefined}
+        aria-describedby={describedBy}
+        disabled={active}
+        data-active={active}
+      >
+        <ContentBadgeWrapper data-badge-wrapper={!active}>
+          <ContentTypeBadge type={contentType ?? ""} background border={false} />
+        </ContentBadgeWrapper>
+        <InlineContainer>
           {name}
-        </ResourceLink>
-        {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
-      </ResourceWrapper>
+          {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
+        </InlineContainer>
+      </ResourceLink>
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === "teacher" && (

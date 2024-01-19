@@ -11,6 +11,7 @@ type StackOrderNames = {
   base: number;
   offsetSingle: number;
   offsetDouble: number;
+  trigger: number;
   dropdown: number;
   banner: number;
   modal: number;
@@ -25,6 +26,7 @@ const stackOrder: StackOrderNames = {
   base: 0,
   offsetSingle: 1,
   offsetDouble: 2,
+  trigger: 10,
   dropdown: 100,
   banner: 200,
   drawer: 300,

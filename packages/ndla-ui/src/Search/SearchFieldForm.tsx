@@ -9,7 +9,7 @@
 import { FormEvent, ReactNode } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { spacing, mq, breakpoints } from "@ndla/core";
+import { breakpoints, mq, spacing, stackOrder } from "@ndla/core";
 
 interface Props {
   children: ReactNode;
@@ -31,7 +31,7 @@ const hasFocusStyles = css`
   display: flex;
   align-self: flex-start;
   align-items: center;
-  z-index: 9001;
+  z-index: ${stackOrder.modal};
   ${mq.range({ until: breakpoints.tablet })} {
     position: fixed;
     display: block;
@@ -39,7 +39,7 @@ const hasFocusStyles = css`
     left: 0;
     right: 0;
     padding: ${spacing.small};
-    z-index: 9001;
+    z-index: ${stackOrder.modal};
     .c-search-field__search-result {
       width: 100vw;
     }

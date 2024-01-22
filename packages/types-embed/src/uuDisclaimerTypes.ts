@@ -15,7 +15,7 @@ export interface UuDisclaimerEmbedData {
 }
 
 export interface UuDisclaimerData {
-  disclaimerLink: DisclaimerLink;
+  disclaimerLink?: DisclaimerLink;
 }
 
 export type UuDisclaimerMetaData = MetaData<UuDisclaimerEmbedData, UuDisclaimerData>;

@@ -29,7 +29,7 @@ const ContentLinkEmbed = ({ embed, isOembed }: Props) => {
 
   if (embedData.openIn === "new-context" || isOembed) {
     return (
-      <a href={embed.data.path} target="_blank" rel="noopener noreferrer">
+      <a href={data.path} target="_blank" rel="noopener noreferrer">
         {embedData.linkText}
       </a>
     );

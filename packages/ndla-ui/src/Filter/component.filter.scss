@@ -43,7 +43,7 @@
       &:not(:last-child) {
         margin-bottom: $spacing--small;
         @include mq(tabletWide) {
-          margin-bottom: $spacing--small / 2;
+          margin-bottom: calc($spacing--small / 2);
         }
       }
       &:not(:first-child) {
@@ -131,7 +131,7 @@
       @include mq($until: mobileWide) {
         width: 100% !important;
         margin: $spacing 0 0 0 !important;
-        padding: $spacing--small / 2 20px;
+        padding: calc($spacing--small / 2) 20px;
         background: $brand-grey--lighter;
         flex-direction: row;
         .c-filter__item label {
@@ -329,7 +329,7 @@
       }
       @include mq($until: mobileWide) {
         width: 100%;
-        padding: $spacing--small / 2 0;
+        padding: calc($spacing--small / 2) 0;
         justify-content: space-between;
         min-height: 52px;
         align-items: center;
@@ -430,7 +430,7 @@
     }
     @include mq($until: mobileWide) {
       margin-top: 0;
-      padding: $spacing--small / 2 $spacing;
+      padding: calc($spacing--small / 2) $spacing;
       width: 100%;
       justify-content: space-between;
       min-height: 52px;
@@ -483,7 +483,7 @@
       padding-bottom: 0;
       flex-direction: row;
       button {
-        margin-right: $spacing--small / 2;
+        margin-right: calc($spacing--small / 2);
         width: auto;
       }
     }

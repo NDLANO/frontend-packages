@@ -5,7 +5,7 @@ article aside,
   display: inline-block;
   margin: $spacing 0 $spacing 0;
   opacity: 0.9;
-  border-radius-top: $inuit-global-radius;
+  border-radius: $inuit-global-radius;
   @include max-width();
 
   img {
@@ -13,7 +13,7 @@ article aside,
   }
 
   > div {
-    padding: $spacing / 2;
+    padding: calc($spacing / 2);
     overflow: hidden;
     max-height: 150px;
     transition: max-height 0.4s cubic-bezier(1, 1.05, 0, 1);

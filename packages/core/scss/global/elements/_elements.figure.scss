@@ -4,6 +4,6 @@ figure {
 figcaption {
   background: $brand-grey--lightest;
   font-size: 80%;
-  padding: $spacing / 2 $spacing;
+  padding: calc($spacing / 2) $spacing;
   color: $brand-grey-dark;
 }

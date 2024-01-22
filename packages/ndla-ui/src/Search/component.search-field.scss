@@ -51,7 +51,7 @@
     align-items: center;
 
     @include mq($from: mobileWide, $until: desktop) {
-      padding-right: $spacing--small / 2;
+      padding-right: calc($spacing--small / 2);
     }
 
     @include mq(tablet) {

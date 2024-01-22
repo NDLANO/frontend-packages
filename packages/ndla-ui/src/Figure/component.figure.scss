@@ -239,7 +239,7 @@
     margin-top: $spacing--small;
 
     [data-icon] {
-      margin-left: $spacing--small/2;
+      margin-left: calc($spacing--small / 2);
       width: 18px;
       height: 18px;
     }
@@ -267,7 +267,7 @@
   }
 
   &__link-description {
-    margin-top: $spacing--small/2 !important;
+    margin-top: calc($spacing--small / 2) !important;
     margin-bottom: 0;
     @include font-size(14px, 25px);
   }

@@ -6,6 +6,6 @@
  *
  */
 
-export type { Snack, SnackContext } from './SnackbarProvider';
-export { SnackbarProvider, useSnack, BaseSnack } from './SnackbarProvider';
-export { default as DefaultSnackbar } from './DefaultSnackbar';
+export type { Snack, SnackContext } from "./SnackbarProvider";
+export { SnackbarProvider, useSnack, BaseSnack } from "./SnackbarProvider";
+export { default as DefaultSnackbar } from "./DefaultSnackbar";

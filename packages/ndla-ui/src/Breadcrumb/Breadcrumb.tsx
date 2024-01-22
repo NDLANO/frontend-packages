@@ -6,11 +6,11 @@
  *
  */
 
-import { ReactNode, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
-import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
+import { ReactNode, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { useComponentSize, useIsomorphicLayoutEffect } from "@ndla/hooks";
+import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from "./BreadcrumbItem";
 
 interface Props {
   items: SimpleBreadcrumbItem[];
@@ -56,7 +56,7 @@ const Breadcrumb = ({
 
     // Clear max width on all items
     items.forEach((el) => {
-      el.setMaxWidth('none');
+      el.setMaxWidth("none");
     });
 
     // Set maxWidth on breadcrumb text items iteratively until
@@ -64,13 +64,13 @@ const Breadcrumb = ({
     // if the height of the list is less then 70.
     items.forEach((el) => {
       if (olRef.current.offsetHeight > 60) {
-        el.setMaxWidth('40px');
+        el.setMaxWidth("40px");
       }
     });
   }, [size, items]);
 
   return (
-    <BreadcrumbNav ref={containerRef} aria-label={t('breadcrumb.breadcrumb')}>
+    <BreadcrumbNav ref={containerRef} aria-label={t("breadcrumb.breadcrumb")}>
       <StyledList ref={olRef}>
         {items.map((item, index) => (
           <BreadcrumbItem
@@ -84,14 +84,14 @@ const Breadcrumb = ({
                 (!collapseLast && index === items.length - 1)
               ) {
                 if (element) {
-                  element.setMaxWidth('none');
+                  element.setMaxWidth("none");
                 }
                 breadcrumbItemRefs.delete(item.to);
               } else {
                 breadcrumbItemRefs.set(item.to, element);
               }
             }}
-            key={typeof item.to === 'string' ? item.to : item.to.pathname}
+            key={typeof item.to === "string" ? item.to : item.to.pathname}
             totalCount={items.length}
             item={{ ...item, index }}
           />

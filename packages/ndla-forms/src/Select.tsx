@@ -6,10 +6,10 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from 'react';
-import styled from '@emotion/styled';
-import { colors, spacing, fonts, misc } from '@ndla/core';
-import { useFormControl } from './FormControl';
+import { ComponentPropsWithRef, forwardRef } from "react";
+import styled from "@emotion/styled";
+import { colors, spacing, fonts, misc } from "@ndla/core";
+import { useFormControl } from "./FormControl";
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -18,7 +18,7 @@ const StyledWrapper = styled.div`
 
   &:after {
     position: absolute;
-    content: '';
+    content: "";
     top: 17px;
     right: 15px;
     border-bottom: 2px solid ${colors.brand.dark};
@@ -54,7 +54,7 @@ const StyledSelect = styled.select`
   }
 `;
 
-interface Props extends ComponentPropsWithRef<'select'> {}
+interface Props extends ComponentPropsWithRef<"select"> {}
 
 const Select = forwardRef<HTMLSelectElement, Props>((props, ref) => {
   const field = useFormControl(props);

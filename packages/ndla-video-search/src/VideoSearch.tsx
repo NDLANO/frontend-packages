@@ -6,15 +6,15 @@
  *
  */
 
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { colors, misc, spacing } from '@ndla/core';
-import { FormControl, InputV3, Label } from '@ndla/forms';
-import { Spinner } from '@ndla/icons';
-import { BrightcoveApiType } from '@ndla/types-embed';
-import { usePrevious } from '@ndla/util';
-import { VideoResultList } from './VideoResultList';
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { colors, misc, spacing } from "@ndla/core";
+import { FormControl, InputV3, Label } from "@ndla/forms";
+import { Spinner } from "@ndla/icons";
+import { BrightcoveApiType } from "@ndla/types-embed";
+import { usePrevious } from "@ndla/util";
+import { VideoResultList } from "./VideoResultList";
 
 export type Translations = {
   searchPlaceholder: string;
@@ -65,7 +65,7 @@ const StyledFormControl = styled(FormControl)`
 `;
 
 export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations, locale }: Props) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [offset, setOffset] = useState(0);
   const [videos, setVideos] = useState<BrightcoveApiType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,7 +76,11 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
       setIsLoading(true);
       try {
         const isAppending = query === previousQuery;
-        const results = await searchVideos({ query, offset: offset, limit: 10 });
+        const results = await searchVideos({
+          query,
+          offset: offset,
+          limit: 10,
+        });
         setVideos((prev) => (isAppending ? prev.concat(results) : results));
       } catch (e) {
         onError(e);
@@ -87,7 +91,7 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
   );
 
   useEffect(() => {
-    fetchVideos('', 0);
+    fetchVideos("", 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

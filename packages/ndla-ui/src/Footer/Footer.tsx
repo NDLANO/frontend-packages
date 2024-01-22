@@ -6,15 +6,15 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
-import { FooterHeaderIcon } from '@ndla/icons/common';
-import FooterLinks from './FooterLinks';
-import FooterPrivacy from './FooterPrivacy';
-import { OneColumn } from '../Layout';
-import { Locale } from '../types';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from "@ndla/core";
+import { FooterHeaderIcon } from "@ndla/icons/common";
+import FooterLinks from "./FooterLinks";
+import FooterPrivacy from "./FooterPrivacy";
+import { OneColumn } from "../Layout";
+import { Locale } from "../types";
 
 const StyledBackground = styled.div`
   display: block;
@@ -32,7 +32,7 @@ const StyledDiv = styled.div`
   background: ${colors.brand.dark};
   overflow: hidden;
   z-index: 0;
-  &[data-margin='true'] {
+  &[data-margin="true"] {
     margin-top: ${spacing.xxlarge};
   }
 `;
@@ -147,7 +147,7 @@ const Footer = ({ children, commonLinks, links, languageSelector, auth, privacyL
             <StyledFooterHeaderIcon />
           </div>
           <div>
-            <StyledHeader>{t('footer.vision')}</StyledHeader>
+            <StyledHeader>{t("footer.vision")}</StyledHeader>
             <FooterLinks commonLinks={commonLinks} links={links} />
           </div>
         </StyledColumns>

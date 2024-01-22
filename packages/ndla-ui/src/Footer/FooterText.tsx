@@ -6,9 +6,9 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { spacing, fonts, mq, breakpoints } from '@ndla/core';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing, fonts, mq, breakpoints } from "@ndla/core";
 
 const StyledFooterText = styled.p`
   display: flex;

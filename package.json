@@ -28,7 +28,8 @@
     "prebuild-storybook": "yarn bootstrap:ci",
     "build-storybook": "cross-env NODE_ENV=production storybook build",
     "serve-storybook": "cross-env NODE_ENV=production serve -l 5000 ./storybook-static",
-    "check-translations": "cross-env BABEL_ENV=test NODE_ENV=unittest jest 'packages/ndla-ui/src/locale/__tests__/'"
+    "check-translations": "cross-env BABEL_ENV=test NODE_ENV=unittest jest 'packages/ndla-ui/src/locale/__tests__/'",
+    "generate:icons": "node ./scripts/createTsIconComponents.mjs"
   },
   "repository": {
     "type": "git",

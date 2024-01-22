@@ -6,15 +6,15 @@
  *
  */
 
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { MetaData } from '.';
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetaData } from ".";
 
 export type BlogPostEmbedData = {
-  resource: 'blog-post';
+  resource: "blog-post";
   imageId: string;
   language: string;
   title: string;
-  size?: 'normal' | 'large';
+  size?: "normal" | "large";
   author?: string;
   url: string;
   alt?: string;

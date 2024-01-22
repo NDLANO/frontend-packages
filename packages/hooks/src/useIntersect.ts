@@ -6,9 +6,9 @@
  *
  */
 
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useRef, useState, useCallback, useEffect } from "react";
 
-const DEFAULT_ROOT_MARGIN = '0px';
+const DEFAULT_ROOT_MARGIN = "0px";
 const DEFAULT_THRESHOLD = [0];
 
 export type IntersectionObserverHookRefCallback = (node: Element | null) => void;

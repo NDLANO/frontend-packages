@@ -6,24 +6,24 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import { IframeData, IframeEmbedData } from '@ndla/types-embed';
-import IframeEmbed from './IframeEmbed';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import { IframeData, IframeEmbedData } from "@ndla/types-embed";
+import IframeEmbed from "./IframeEmbed";
+import { defaultParameters } from "../../../../stories/defaults";
 
 const embedData: IframeEmbedData = {
-  width: '708px',
-  title: 'Tittel på iframen!',
-  height: '278px',
-  type: 'iframe',
-  resource: 'iframe',
-  url: 'https://embed.kahoot.it/2a51c481-d362-475b-862b-e4b47b96b3c9',
+  width: "708px",
+  title: "Tittel på iframen!",
+  height: "278px",
+  type: "iframe",
+  resource: "iframe",
+  url: "https://embed.kahoot.it/2a51c481-d362-475b-862b-e4b47b96b3c9",
 };
 
 const meta: Meta<typeof IframeEmbed> = {
-  title: 'Components/Embeds/IframeEmbed',
+  title: "Embeds/IframeEmbed",
   component: IframeEmbed,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div className="o-wrapper">
@@ -45,29 +45,10 @@ export default meta;
 export const Regular: StoryObj<typeof IframeEmbed> = {
   args: {
     embed: {
-      resource: 'iframe',
-      status: 'success',
+      resource: "iframe",
+      status: "success",
       embedData: embedData,
       data: {},
-    },
-  },
-};
-
-export const WithDisclaimer: StoryObj<typeof IframeEmbed> = {
-  args: {
-    embed: {
-      resource: 'iframe',
-      status: 'success',
-      embedData: {
-        ...embedData,
-        disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
-      },
-      data: {
-        disclaimerLink: {
-          href: 'https://ndla.no',
-          text: 'NDLA',
-        },
-      },
     },
   },
 };
@@ -75,72 +56,72 @@ export const WithDisclaimer: StoryObj<typeof IframeEmbed> = {
 export const Failed: StoryObj<typeof IframeEmbed> = {
   args: {
     embed: {
-      resource: 'iframe',
-      status: 'error',
+      resource: "iframe",
+      status: "error",
       embedData: embedData,
     },
   },
 };
 
 const opensInNewEmbedData: IframeEmbedData = {
-  title: 'Kahoot!',
-  caption: 'Sjekk ut denne!',
-  imageid: '65086',
-  type: 'fullscreen',
-  resource: 'iframe',
-  url: 'https://embed.kahoot.it/2a51c481-d362-475b-862b-e4b47b96b3c9',
+  title: "Kahoot!",
+  caption: "Sjekk ut denne!",
+  imageid: "65086",
+  type: "fullscreen",
+  resource: "iframe",
+  url: "https://embed.kahoot.it/2a51c481-d362-475b-862b-e4b47b96b3c9",
 };
 
 const opensInnewMetaData: IframeData = {
   iframeImage: {
-    id: '65086',
-    metaUrl: 'https://api.test.ndla.no/image-api/v3/images/65086',
+    id: "65086",
+    metaUrl: "https://api.test.ndla.no/image-api/v3/images/65086",
     title: {
-      title: '\nSamtale ',
-      language: 'nb',
+      title: "\nSamtale ",
+      language: "nb",
     },
     alttext: {
-      alttext: ' To ungdommer sitter og snakker. Foto. ',
-      language: 'nb',
+      alttext: " To ungdommer sitter og snakker. Foto. ",
+      language: "nb",
     },
     copyright: {
       license: {
-        license: 'COPYRIGHTED',
-        description: 'Copyrighted',
+        license: "COPYRIGHTED",
+        description: "Copyrighted",
       },
-      origin: '',
+      origin: "",
       creators: [],
       processors: [],
       rightsholders: [
         {
-          type: 'rightsholder',
-          name: 'Folkehelseprosjektet Helsefremmende miljø på sosial medier, Bergen kommune 2019-2022',
+          type: "rightsholder",
+          name: "Folkehelseprosjektet Helsefremmende miljø på sosial medier, Bergen kommune 2019-2022",
         },
       ],
       processed: false,
     },
     tags: {
-      tags: ['samtale', 'Dialog', 'gutter'],
-      language: 'nb',
+      tags: ["samtale", "Dialog", "gutter"],
+      language: "nb",
     },
     caption: {
       caption: 'Dette bildet skal bare brukes i casen "Livet på sosiale medier". ',
-      language: 'nb',
+      language: "nb",
     },
-    supportedLanguages: ['nb'],
-    created: '2022-12-02T14:24:19Z',
-    createdBy: 'oltQx44eGQp0DwkiR1NRo5qE',
-    modelRelease: 'yes',
+    supportedLanguages: ["nb"],
+    created: "2022-12-02T14:24:19Z",
+    createdBy: "oltQx44eGQp0DwkiR1NRo5qE",
+    modelRelease: "yes",
     image: {
-      fileName: 'IgOjO6og.jpg',
+      fileName: "IgOjO6og.jpg",
       size: 176667,
-      contentType: 'image/jpeg',
-      imageUrl: 'https://api.test.ndla.no/image-api/raw/IgOjO6og.jpg',
+      contentType: "image/jpeg",
+      imageUrl: "https://api.test.ndla.no/image-api/raw/IgOjO6og.jpg",
       dimensions: {
         width: 1920,
         height: 804,
       },
-      language: 'nb',
+      language: "nb",
     },
   },
 };
@@ -148,23 +129,9 @@ const opensInnewMetaData: IframeData = {
 export const OpensInNewWindow: StoryObj<typeof IframeEmbed> = {
   args: {
     embed: {
-      resource: 'iframe',
-      status: 'success',
+      resource: "iframe",
+      status: "success",
       embedData: opensInNewEmbedData,
-      data: opensInnewMetaData,
-    },
-  },
-};
-
-export const OpensInNewWindowDisclaimer: StoryObj<typeof IframeEmbed> = {
-  args: {
-    embed: {
-      resource: 'iframe',
-      status: 'success',
-      embedData: {
-        ...opensInNewEmbedData,
-        disclaimer: 'Dette innholdet er ikke tilgjengelig med tastaturnavigasjon.',
-      },
       data: opensInnewMetaData,
     },
   },
@@ -173,8 +140,8 @@ export const OpensInNewWindowDisclaimer: StoryObj<typeof IframeEmbed> = {
 export const NoDimensions: StoryObj<typeof IframeEmbed> = {
   args: {
     embed: {
-      resource: 'iframe',
-      status: 'success',
+      resource: "iframe",
+      status: "success",
       embedData: {
         ...embedData,
         width: undefined,
@@ -188,8 +155,8 @@ export const NoDimensions: StoryObj<typeof IframeEmbed> = {
 export const OpensInNewWindowFailed: StoryObj<typeof IframeEmbed> = {
   args: {
     embed: {
-      resource: 'iframe',
-      status: 'error',
+      resource: "iframe",
+      status: "error",
       embedData: opensInNewEmbedData,
     },
   },

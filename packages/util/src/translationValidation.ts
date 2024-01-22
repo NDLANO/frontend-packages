@@ -6,11 +6,11 @@
  *
  */
 
-const getAllKeys = (o: object, prev: string = ''): string[] => {
+const getAllKeys = (o: object, prev: string = ""): string[] => {
   const keys: string[] = [];
   Object.entries(o).forEach(([key, value]: [string, unknown]) => {
-    const path = prev + (prev ? '.' : '') + key;
-    if (typeof value === 'object' && value !== null) {
+    const path = prev + (prev ? "." : "") + key;
+    if (typeof value === "object" && value !== null) {
       const nested = getAllKeys(value, path);
       keys.push(...nested);
     } else {
@@ -52,10 +52,10 @@ const getMissingLanguages = (languages: { languageName: string; translationObjec
 
 export const validateTranslationFiles = (
   languages: { languageName: string; translationObject: object }[],
-  logging: 'disabled' | 'only-on-error' | 'always',
+  logging: "disabled" | "only-on-error" | "always",
 ): boolean => {
   const langs = getMissingLanguages(languages);
   const anyError = langs.some((l) => l.missingKeys.length > 0);
-  if ((logging === 'only-on-error' && anyError) || logging === 'always') logTable(langs);
+  if ((logging === "only-on-error" && anyError) || logging === "always") logTable(langs);
   return anyError;
 };

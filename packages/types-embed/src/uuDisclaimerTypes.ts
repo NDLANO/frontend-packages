@@ -6,10 +6,10 @@
  *
  */
 
-import { DisclaimerLink, MetaData } from '.';
+import { DisclaimerLink, MetaData } from ".";
 
 export interface UuDisclaimerEmbedData {
-  resource: 'uu-disclaimer';
+  resource: "uu-disclaimer";
   disclaimer: string;
   articleId?: number;
 }

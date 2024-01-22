@@ -6,14 +6,14 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import CampaignBlock from './CampaignBlock';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import CampaignBlock from "./CampaignBlock";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/Campaign Block',
+  title: "Components/Campaign Block",
   component: CampaignBlock,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
@@ -22,53 +22,53 @@ export default {
 
 export const ImageLeft: StoryObj<typeof CampaignBlock> = {
   args: {
-    title: { title: 'NDLA film', language: 'nb-no' },
+    title: { title: "NDLA film", language: "nb-no" },
     description: {
-      text: 'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
-      language: 'nb-no',
+      text: "NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!",
+      language: "nb-no",
     },
-    headingLevel: 'h2',
+    headingLevel: "h2",
     url: {
-      url: '#',
-      text: 'Gå til NDLA film',
+      url: "#",
+      text: "Gå til NDLA film",
     },
     image: {
-      alt: '',
-      src: 'https://api.test.ndla.no/image-api/raw/n2UYRxEG.png',
+      alt: "",
+      src: "https://api.test.ndla.no/image-api/raw/n2UYRxEG.png",
     },
   },
 };
 
 export const ImageRight: StoryObj<typeof CampaignBlock> = {
   args: {
-    title: { title: 'FN-dagen 24. oktober!', language: 'nb-no' },
+    title: { title: "FN-dagen 24. oktober!", language: "nb-no" },
     description: {
-      text: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation  quis nostrud exercitation ',
-      language: 'nb-no',
+      text: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation  quis nostrud exercitation ",
+      language: "nb-no",
     },
     url: {
-      url: '#',
-      text: 'Les mer om FN-dagen',
+      url: "#",
+      text: "Les mer om FN-dagen",
     },
     image: {
-      alt: 'FN-symbol',
-      src: 'https://api.test.ndla.no/image-api/raw/LkmDGtip.png',
+      alt: "FN-symbol",
+      src: "https://api.test.ndla.no/image-api/raw/LkmDGtip.png",
     },
-    imageSide: 'right',
+    imageSide: "right",
   },
 };
 
 export const NoUrl: StoryObj<typeof CampaignBlock> = {
   args: {
-    title: { title: 'No url!!!', language: 'nb-no' },
+    title: { title: "No url!!!", language: "nb-no" },
     description: {
-      text: 'Look ma, no url!',
-      language: 'nb-no',
+      text: "Look ma, no url!",
+      language: "nb-no",
     },
     image: {
-      alt: 'Tømmer',
-      src: 'https://api.test.ndla.no/image-api/raw/stokkmarknes_004_d013e.jpg',
+      alt: "Tømmer",
+      src: "https://api.test.ndla.no/image-api/raw/stokkmarknes_004_d013e.jpg",
     },
-    imageSide: 'left',
+    imageSide: "left",
   },
 };

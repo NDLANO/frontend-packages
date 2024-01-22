@@ -6,9 +6,9 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, breakpoints, mq } from '@ndla/core';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, breakpoints, mq } from "@ndla/core";
 
 const StyledWrapper = styled.section`
   max-width: ${1402 + spacingUnit}px;
@@ -19,7 +19,7 @@ const StyledWrapper = styled.section`
     padding-left: 0;
   }
 
-  &[data-inverted='true'] {
+  &[data-inverted="true"] {
     ${mq.range({ until: breakpoints.tablet })} {
       background: #fff;
     }

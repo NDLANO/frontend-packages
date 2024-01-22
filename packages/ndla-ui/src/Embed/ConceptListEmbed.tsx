@@ -6,12 +6,12 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { ConceptListMetaData } from '@ndla/types-embed';
-import { BlockConcept } from './ConceptEmbed';
-import { Figure } from '../Figure';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import { ConceptListMetaData } from "@ndla/types-embed";
+import { BlockConcept } from "./ConceptEmbed";
+import { Figure } from "../Figure";
 
 interface Props {
   embed: ConceptListMetaData;
@@ -33,8 +33,8 @@ const StyledSpan = styled.span`
 
 const ConceptListEmbed = ({ embed, lang }: Props) => {
   const { t } = useTranslation();
-  if (embed.status === 'error') {
-    return <StyledSpan>{t('embed.conceptListError')}</StyledSpan>;
+  if (embed.status === "error") {
+    return <StyledSpan>{t("embed.conceptListError")}</StyledSpan>;
   }
   const { embedData, data } = embed;
   return (

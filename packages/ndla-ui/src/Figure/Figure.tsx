@@ -8,21 +8,21 @@
 
 // N.B These components is used to render static markup serverside
 
-import { ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
-import { isFunction as isFunctionHelper } from '@ndla/util';
+import { ReactNode } from "react";
+import BEMHelper from "react-bem-helper";
+import { isFunction as isFunctionHelper } from "@ndla/util";
 const classes = new BEMHelper({
-  name: 'figure',
-  prefix: 'c-',
+  name: "figure",
+  prefix: "c-",
 });
 
-const Figure = ({ children, type = 'full', resizeIframe, className, ...rest }: Props) => {
-  const typeClass = type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
-  const right = ['small-right', 'xsmall-right'].includes(type);
+const Figure = ({ children, type = "full", resizeIframe, className, ...rest }: Props) => {
+  const typeClass = type === "full-column" ? "c-figure--full-column" : `u-float-${type}`;
+  const right = ["small-right", "xsmall-right"].includes(type);
   return (
     <figure
       data-sizetype={type}
-      {...classes('', { resize: !!resizeIframe, right }, `${typeClass} ${className ?? ''}`)}
+      {...classes("", { resize: !!resizeIframe, right }, `${typeClass} ${className ?? ""}`)}
       {...rest}
     >
       {isFunction(children) ? children({ typeClass }) : children}
@@ -35,14 +35,14 @@ const isFunction = (children: Function | ReactNode): children is Function => {
 };
 
 export type FigureType =
-  | 'full'
-  | 'full-column'
-  | 'left'
-  | 'small-left'
-  | 'right'
-  | 'small-right'
-  | 'xsmall-right'
-  | 'xsmall-left';
+  | "full"
+  | "full-column"
+  | "left"
+  | "small-left"
+  | "right"
+  | "small-right"
+  | "xsmall-right"
+  | "xsmall-left";
 
 interface Props {
   id?: string;

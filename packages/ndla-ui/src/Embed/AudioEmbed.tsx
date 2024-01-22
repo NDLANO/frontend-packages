@@ -6,14 +6,14 @@
  *
  */
 
-import { COPYRIGHTED } from '@ndla/licenses';
-import { AudioMetaData, ImageMetaData } from '@ndla/types-embed';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { Author } from './ImageEmbed';
-import { HeartButtonType } from './types';
-import AudioPlayer from '../AudioPlayer';
-import { Figure } from '../Figure';
-import { EmbedByline } from '../LicenseByline';
+import { COPYRIGHTED } from "@ndla/licenses";
+import { AudioMetaData, ImageMetaData } from "@ndla/types-embed";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { Author } from "./ImageEmbed";
+import { HeartButtonType } from "./types";
+import AudioPlayer from "../AudioPlayer";
+import { Figure } from "../Figure";
+import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: AudioMetaData;
@@ -28,27 +28,27 @@ export const getFirstNonEmptyLicenseCredits = (authors: {
 }) => Object.values(authors).find((i) => i.length > 0) ?? [];
 
 const imageMetaToMockEmbed = (
-  imageMeta: Extract<AudioMetaData, { status: 'success' }>,
-): Extract<ImageMetaData, { status: 'success' }> => ({
-  resource: 'image',
-  status: 'success',
+  imageMeta: Extract<AudioMetaData, { status: "success" }>,
+): Extract<ImageMetaData, { status: "success" }> => ({
+  resource: "image",
+  status: "success",
   // We check that this exists where the function is used.
   data: imageMeta.data.imageMeta!,
   embedData: {
-    resource: 'image',
-    resourceId: imageMeta.data.imageMeta?.id?.toString() || '',
-    alt: imageMeta.data.imageMeta?.alttext.alttext ?? '',
+    resource: "image",
+    resourceId: imageMeta.data.imageMeta?.id?.toString() || "",
+    alt: imageMeta.data.imageMeta?.alttext.alttext ?? "",
   },
 });
 
 const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
-  if (embed.status === 'error') {
-    return <EmbedErrorPlaceholder type={embed.embedData.type === 'standard' ? 'audio' : 'podcast'} />;
+  if (embed.status === "error") {
+    return <EmbedErrorPlaceholder type={embed.embedData.type === "standard" ? "audio" : "podcast"} />;
   }
 
   const { data, embedData } = embed;
 
-  if (embedData.type === 'minimal') {
+  if (embedData.type === "minimal") {
     return <AudioPlayer speech src={data.audioFile.url} title={data.title.title} />;
   }
 
@@ -61,7 +61,7 @@ const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
   return (
     <Figure type="full" lang={lang}>
       <AudioPlayer
-        description={data.podcastMeta?.introduction ?? ''}
+        description={data.podcastMeta?.introduction ?? ""}
         img={img}
         src={data.audioFile.url}
         textVersion={
@@ -74,7 +74,7 @@ const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
       />
       <EmbedByline
         error={false}
-        type={embedData.type === 'standard' ? 'audio' : 'podcast'}
+        type={data.audioType === "standard" ? "audio" : "podcast"}
         topRounded={false}
         bottomRounded={!data.imageMeta}
         copyright={embed.data.copyright}

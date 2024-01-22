@@ -6,22 +6,28 @@
  *
  */
 
-import { LayoutItem, Logo, PageContainer } from '@ndla/ui';
-import { Meta, StoryFn } from '@storybook/react';
+import { LayoutItem, Logo, PageContainer } from "@ndla/ui";
+import { Meta, StoryFn } from "@storybook/react";
 
 export default {
-  title: 'Welcome',
+  title: "Welcome",
 } as Meta;
 
 export const Welcome: StoryFn = () => (
   <PageContainer>
     <LayoutItem layout="center">
       <article className="c-article c-article--clean">
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Logo label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
         </div>
-        <h2 style={{ marginTop: '26px' }}>Hva designmanualen er, og hva den ikke er</h2>
+        <h2 style={{ marginTop: "26px" }}>Hva designmanualen er, og hva den ikke er</h2>
         <p>
           Designmanualen inneholder retningslinjer for formatering, visuelt uttrykk, interaksjon og innholdselementer.
         </p>
@@ -31,7 +37,7 @@ export const Welcome: StoryFn = () => (
           videre med reell funksjonalitet, kan de tas inn i designmanualen og erstatte de gamle elementene.
         </p>
         <p>
-          Den er ikke en brukermanual for innholdsproduksjon. Råd og retningslinjer for produksjon av innhold ligger i{' '}
+          Den er ikke en brukermanual for innholdsproduksjon. Råd og retningslinjer for produksjon av innhold ligger i{" "}
           <a href="https://kvalitet.ndla.no" target="_blank" rel="noopener noreferrer">
             kvalitet i NDLA.
           </a>
@@ -39,8 +45,8 @@ export const Welcome: StoryFn = () => (
         <h2>Hvordan bruke designmanualen?</h2>
         <p>
           Designmanual er for produksjon av teknisk innhold. Den består av hovedsakelig to deler: et CSS-bibliotek som
-          styler de mest brukte HTML-elementene, og et komponent-bibliotek for{' '}
-          <a href="https://facebook.github.io/react/">React</a>. Den er også publisert på{' '}
+          styler de mest brukte HTML-elementene, og et komponent-bibliotek for{" "}
+          <a href="https://facebook.github.io/react/">React</a>. Den er også publisert på{" "}
           <a href="https://www.npmjs.com/package/@ndla/ui">npm</a>.
         </p>
         <h3>Hente inn prosjekt direkte via npm</h3>

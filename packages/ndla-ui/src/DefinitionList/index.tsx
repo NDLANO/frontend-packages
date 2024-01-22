@@ -6,5 +6,5 @@
  *
  */
 
-export { default as DefinitionDescription } from './DefinitionDescription';
-export { default as DefinitionTerm } from './DefinitionTerm';
+export { default as DefinitionDescription } from "./DefinitionDescription";
+export { default as DefinitionTerm } from "./DefinitionTerm";

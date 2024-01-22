@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { colors, spacing, breakpoints } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { colors, spacing, breakpoints } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
 
 const StyledErrorMessage = styled.article`
   text-align: center;
@@ -22,14 +22,14 @@ const StyledErrorMessage = styled.article`
   }
 `;
 
-const IllustrationWrapper = styled('div')`
+const IllustrationWrapper = styled("div")`
   margin-bottom: ${spacing.normal};
   @media (min-width: ${breakpoints.tablet}) {
     margin-top: ${spacing.large};
   }
 `;
 
-const Description = styled('p')`
+const Description = styled("p")`
   margin-bottom: ${spacing.normal};
   @media (min-width: ${breakpoints.tablet}) {
     margin-bottom: ${spacing.large};

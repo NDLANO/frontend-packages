@@ -6,11 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { InformationOutline } from '@ndla/icons/common';
-import { H5pMetaData } from '@ndla/types-embed';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { MessageBox } from '../Messages';
+import styled from "@emotion/styled";
+import { H5pMetaData } from "@ndla/types-embed";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 
 interface Props {
   embed: H5pMetaData;
@@ -24,36 +22,18 @@ const StyledFigure = styled.figure`
 `;
 
 const H5pEmbed = ({ embed, isConcept }: Props) => {
-  if (embed.status === 'error') {
+  if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="h5p" />;
   }
-  const fullColumnClass = isConcept ? 'c-figure--full-column' : '';
+  const fullColumnClass = isConcept ? "c-figure--full-column" : "";
   const classes = `c-figure ${fullColumnClass} c-figure--resize`;
 
-  const { embedData, data } = embed;
-
-  const disclaimer = embedData.disclaimer ? (
-    <MessageBox
-      type="info"
-      links={data.disclaimerLink ? [{ href: data.disclaimerLink.href, text: data.disclaimerLink.text }] : []}
-    >
-      <InformationOutline />
-      {embedData.disclaimer}
-    </MessageBox>
-  ) : undefined;
-
   if (embed.data.oembed) {
-    return (
-      <>
-        {disclaimer}
-        <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? '' }} />
-      </>
-    );
+    return <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }} />;
   }
 
   return (
     <StyledFigure className={classes}>
-      {disclaimer}
       <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
     </StyledFigure>
   );

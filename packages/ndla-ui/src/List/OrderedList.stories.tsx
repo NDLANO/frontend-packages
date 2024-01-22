@@ -6,16 +6,16 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import OrderedList from './OrderedList';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import OrderedList from "./OrderedList";
+import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet annerledes.
  */
 export default {
-  title: 'Base Styles/Ordered List',
-  tags: ['autodocs'],
+  title: "Base Styles/Ordered List",
+  tags: ["autodocs"],
   component: OrderedList,
   parameters: {
     inlineStories: true,
@@ -49,7 +49,7 @@ export const Default: StoryObj = {};
 
 export const Letters: StoryObj = {
   args: {
-    'data-type': 'letters',
+    type: "letters",
   },
 };
 
@@ -69,7 +69,7 @@ export const WithNumbersAndLetters: StoryFn = () => (
             <li>Listepunkt 2</li>
             <li>
               Listepunkt 3
-              <OrderedList data-type="letters">
+              <OrderedList>
                 <li>Listepunkt 1</li>
                 <li>Listepunkt 2</li>
                 <li>Listepunkt 3</li>
@@ -84,7 +84,7 @@ export const WithNumbersAndLetters: StoryFn = () => (
 );
 
 export const StartingAtFive: StoryFn = () => (
-  <OrderedList start={5} className="ol-reset-5">
+  <OrderedList start={5} data-type="letters" className="ol-reset-5">
     <li>Listepunkt 1</li>
     <li>Listepunkt 2</li>
     <li>
@@ -99,7 +99,7 @@ export const StartingAtFive: StoryFn = () => (
             <li>Listepunkt 2</li>
             <li>
               Listepunkt 3
-              <OrderedList className="ol-reset-5" data-type="letters" start={5}>
+              <OrderedList className="ol-reset-5" start={5}>
                 <li>Listepunkt 1</li>
                 <li>Listepunkt 2</li>
                 <li>Listepunkt 3</li>
@@ -111,4 +111,27 @@ export const StartingAtFive: StoryFn = () => (
     </li>
     <li>Listepunkt 4</li>
   </OrderedList>
+);
+
+export const NoStyle: StoryFn = () => (
+  <ol>
+    <li>Listepunkt 1</li>
+    <li>Listepunkt 2</li>
+    <li>
+      Listepunkt 3
+      <ol>
+        <li>Listepunkt 1</li>
+        <li>Listepunkt 2</li>
+        <li>
+          Listepunkt 3
+          <ol>
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>Listepunkt 3</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>Listepunkt 4</li>
+  </ol>
 );

@@ -6,10 +6,10 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import Format from './Format';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import Format from "./Format";
 
 interface Props {
   title: string;
@@ -43,7 +43,7 @@ const StyledFileItem = styled.li`
 
 const File = ({ title, url, fileExists, fileType }: Props) => {
   const { t } = useTranslation();
-  const tooltip = `${t('download')} ${url.split('/').pop()}`;
+  const tooltip = `${t("download")} ${url.split("/").pop()}`;
 
   return (
     <StyledFileItem>

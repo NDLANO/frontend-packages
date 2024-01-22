@@ -6,21 +6,21 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import Image from './Image';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import Image from "./Image";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/Image',
-  tags: ['autodocs'],
+  title: "Components/Image",
+  tags: ["autodocs"],
   component: Image,
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    alt: 'Mann med maske',
-    src: 'https://api.test.ndla.no/image-api/raw/id/604',
+    alt: "Mann med maske",
+    src: "https://api.test.ndla.no/image-api/raw/id/604",
   },
 } as Meta<typeof Image>;
 
@@ -43,14 +43,14 @@ export const FocalPoint: StoryObj<typeof Image> = {
       x: 65.08,
       y: 45.28,
     },
-    sizes: '(min-width: 320px) 320px',
+    sizes: "(min-width: 320px) 320px",
   },
 };
 
 export const LazyLoad: StoryObj<typeof Image> = {
   args: {
-    alt: 'Lyspære',
-    src: 'https://api.staging.ndla.no/image-api/raw/Ide.jpg',
+    alt: "Lyspære",
+    src: "https://api.staging.ndla.no/image-api/raw/Ide.jpg",
     lazyLoad: true,
     lazyLoadSrc: `data:image/svg+xml;utf8,
     <svg xmlns="http://www.w3.org/2000/svg" height="400" width="100%">

@@ -6,10 +6,10 @@
  *
  */
 
-import { DisclaimerLink, MetaData } from '.';
+import { MetaData } from ".";
 
 export type BrightcoveEmbedData = {
-  resource: 'brightcove';
+  resource: "brightcove";
   videoid: string;
   caption: string;
   url?: string;

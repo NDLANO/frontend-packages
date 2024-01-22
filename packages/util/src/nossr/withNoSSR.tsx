@@ -6,8 +6,8 @@
  *
  */
 
-import { ReactNode, ComponentType } from 'react';
-import NoSSR from './NoSSR';
+import { ReactNode, ComponentType } from "react";
+import NoSSR from "./NoSSR";
 
 /** Basic HoC to wrap your component in `NoSSR`, see `NoSSR.tsx` */
 function withNoSSR<TProps extends object>(

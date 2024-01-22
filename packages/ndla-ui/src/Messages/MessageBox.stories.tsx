@@ -6,16 +6,16 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import { Meta, StoryFn } from '@storybook/react';
-import { Alarm, HumanMaleBoard, InformationOutline, WarningOutline } from '@ndla/icons/common';
-import MessageBox from './MessageBox';
-import { defaultParameters } from '../../../../stories/defaults';
+import { useTranslation } from "react-i18next";
+import { Meta, StoryFn } from "@storybook/react";
+import { Alarm, HumanMaleBoard, InformationOutline, WarningOutline } from "@ndla/icons/common";
+import MessageBox from "./MessageBox";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Patterns/MessageBox',
+  title: "Patterns/MessageBox",
   component: MessageBox,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
@@ -30,7 +30,7 @@ export const Default: StoryFn<typeof MessageBox> = ({ ...args }) => {
   return (
     <MessageBox {...args}>
       <InformationOutline />
-      {t('messageBoxInfo.noContent')}
+      {t("messageBoxInfo.noContent")}
     </MessageBox>
   );
 };
@@ -40,7 +40,7 @@ export const WithoutCloseButton: StoryFn<typeof MessageBox> = () => {
   return (
     <MessageBox>
       <InformationOutline />
-      {t('messageBoxInfo.subjectOutdated')}
+      {t("messageBoxInfo.subjectOutdated")}
     </MessageBox>
   );
 };
@@ -50,13 +50,13 @@ export const WithLinks: StoryFn<typeof MessageBox> = () => {
   return (
     <MessageBox
       links={[
-        { text: 'link 1', href: '#' },
-        { text: 'link 2', href: '#' },
-        { text: 'link 3', href: '#' },
+        { text: "link 1", href: "#" },
+        { text: "link 2", href: "#" },
+        { text: "link 3", href: "#" },
       ]}
     >
       <InformationOutline />
-      {t('messageBoxInfo.newVersion')}
+      {t("messageBoxInfo.newVersion")}
     </MessageBox>
   );
 };
@@ -66,7 +66,7 @@ export const Ghost: StoryFn<typeof MessageBox> = () => {
   return (
     <MessageBox type="ghost">
       <HumanMaleBoard />
-      {t('messageBoxInfo.feide')}
+      {t("messageBoxInfo.feide")}
     </MessageBox>
   );
 };
@@ -76,7 +76,7 @@ export const Danger: StoryFn<typeof MessageBox> = () => {
   return (
     <MessageBox type="danger">
       <WarningOutline />
-      {t('messageBoxInfo.feide')}
+      {t("messageBoxInfo.feide")}
     </MessageBox>
   );
 };
@@ -86,12 +86,12 @@ export const WithCustomIcon: StoryFn<typeof MessageBox> = () => {
   return (
     <MessageBox type="danger">
       <Alarm />
-      {t('messageBoxInfo.feide')}
+      {t("messageBoxInfo.feide")}
     </MessageBox>
   );
 };
 
 export const WithoutIcon: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
-  return <MessageBox type="danger">{t('messageBoxInfo.feide')}</MessageBox>;
+  return <MessageBox type="danger">{t("messageBoxInfo.feide")}</MessageBox>;
 };

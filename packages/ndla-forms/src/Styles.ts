@@ -6,9 +6,9 @@
  *
  */
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, colors } from '@ndla/core';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, colors } from "@ndla/core";
 
 export const FieldHeaderIconStyle = css`
   color: ${colors.brand.tertiary};

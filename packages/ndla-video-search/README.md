@@ -19,8 +19,8 @@ npm install @ndla/video-search
 To use the `VideoSearch` component, you will need to provide translations and a function for searching for videos.
 
 ```tsx
-import VideoSearch, { VideoQueryType } from '@ndla/video-search';
-import { BrightcoveApiType } from '@ndla/types-embed';
+import VideoSearch, { VideoQueryType } from "@ndla/video-search";
+import { BrightcoveApiType } from "@ndla/types-embed";
 
 const onVideoSelect = (image: BrightcoveApiType) => {
   // handle video
@@ -31,16 +31,16 @@ const searchVideos = (query: VideoQueryType) => {
 };
 
 const translations = {
-  searchPlaceholder: 'Search videos',
-  searchButtonTitle: 'Search',
-  loadMoreVideos: 'Load more videos',
-  noResults: 'Noe videos found',
-  addVideo: 'Use video',
-  previewVideo: 'Preview',
-  publishedDate: 'Published date',
-  duration: 'Duration',
-  interactioncount: 'Views',
-  is360Video: '360 video',
+  searchPlaceholder: "Search videos",
+  searchButtonTitle: "Search",
+  loadMoreVideos: "Load more videos",
+  noResults: "Noe videos found",
+  addVideo: "Use video",
+  previewVideo: "Preview",
+  publishedDate: "Published date",
+  duration: "Duration",
+  interactioncount: "Views",
+  is360Video: "360 video",
 };
 
 <VideoSearch onVideoSelect={onVideoSelect} searchVideos={searchVideos} translations={translations} locale="nb" />;

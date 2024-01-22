@@ -6,9 +6,9 @@
  *
  */
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, spacing, spacingUnit, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, spacingUnit, fonts, misc, animations, mq, breakpoints } from "@ndla/core";
 
 export const highlightStyle = css`
   background: ${colors.brand.light};
@@ -95,12 +95,11 @@ export const StyledListItem = styled.li<StyledListItemProps>`
 export const StyledList = styled.ul<inMenuProps>`
   list-style: none;
   padding: 0;
-  margin: 0;
   ${(props) => {
     if (props.animateList && props.animateList > 0) {
       return animations.toggledContentWithSwitchAnimation(
         animations.durations.normal,
-        `contentTypeResultAnimation${props.animateList % 2 ? '1' : '2'}`,
+        `contentTypeResultAnimation${props.animateList % 2 ? "1" : "2"}`,
       );
     }
   }}
@@ -160,7 +159,7 @@ export const StyledTag = styled.span`
   background: ${colors.brand.greyLightest};
   border-radius: ${misc.borderRadius};
   color: ${colors.text.primary};
-  ${fonts.sizes('12px', '20px')};
+  ${fonts.sizes("12px", "20px")};
   font-weight: ${fonts.weight.semibold};
   margin: 0 0 0 ${spacing.small};
   height: ${spacing.normal};

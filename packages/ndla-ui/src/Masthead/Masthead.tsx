@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import SkipToMainContent from './SkipToMainContent';
-import { MessageBanner } from '../Messages';
+import { ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import SkipToMainContent from "./SkipToMainContent";
+import { MessageBanner } from "../Messages";
 
 const MastheadContent = styled.div`
   justify-content: center;

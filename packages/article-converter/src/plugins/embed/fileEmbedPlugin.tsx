@@ -6,23 +6,23 @@
  *
  */
 
-import { attributesToProps } from 'html-react-parser';
-import { FileMetaData } from '@ndla/types-embed';
-import { PdfFile, File } from '@ndla/ui';
-import { PluginType } from '../types';
+import { attributesToProps } from "html-react-parser";
+import { FileMetaData } from "@ndla/types-embed";
+import { PdfFile, File } from "@ndla/ui";
+import { PluginType } from "../types";
 
 export const fileEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as FileMetaData;
+  const data = JSON.parse(props["data-json"]) as FileMetaData;
   const { type, title, url, display } = data.embedData;
-  if (type === 'pdf' && display === 'block') {
+  if (type === "pdf" && display === "block") {
     return <PdfFile title={title} url={url} />;
   } else {
     return (
       <File
         url={url}
         title={title}
-        fileExists={data.status === 'success' ? !!data.data.exists : false}
+        fileExists={data.status === "success" ? !!data.data.exists : false}
         fileType={type}
       />
     );

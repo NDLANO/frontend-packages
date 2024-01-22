@@ -6,14 +6,12 @@
  *
  */
 
-import { useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import { InformationOutline } from '@ndla/icons/common';
-import { IframeMetaData } from '@ndla/types-embed';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { Figure } from '../Figure';
-import { MessageBox } from '../Messages';
-import { ResourceBox } from '../ResourceBox';
+import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { IframeMetaData } from "@ndla/types-embed";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { Figure } from "../Figure";
+import { ResourceBox } from "../ResourceBox";
 
 interface Props {
   embed: IframeMetaData;
@@ -29,61 +27,50 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
     if (iframe) {
       const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
       iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
-      iframe.width = '';
-      iframe.height = '';
+      iframe.width = "";
+      iframe.height = "";
     }
   }, []);
-  if (embed.status === 'error') {
+
+  if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="external" />;
   }
 
   const { embedData, data } = embed;
 
-  const disclaimer = embedData.disclaimer ? (
-    <MessageBox
-      type="info"
-      links={data.disclaimerLink ? [{ href: data.disclaimerLink?.href, text: data.disclaimerLink?.text }] : []}
-    >
-      <InformationOutline />
-      {embedData.disclaimer}
-    </MessageBox>
-  ) : undefined;
-
-  if (embedData.type === 'fullscreen') {
-    const iframeImage = embed.status === 'success' ? embed.data.iframeImage : undefined;
+  if (embedData.type === "fullscreen") {
+    const iframeImage = embed.status === "success" ? data.iframeImage : undefined;
     const alt = embedData.alt !== undefined ? embedData.alt : iframeImage?.alttext.alttext;
-    const image = { src: iframeImage?.image.imageUrl ?? '', alt: alt ?? '' };
+    const image = { src: iframeImage?.image.imageUrl ?? "", alt: alt ?? "" };
     return (
       <Figure type="full">
-        {disclaimer}
         <ResourceBox
           image={image}
-          title={embedData.title ?? ''}
+          title={embedData.title ?? ""}
           url={embedData.url}
-          caption={embedData.caption ?? ''}
-          buttonText={t('license.other.itemImage.ariaLabel')}
+          caption={embedData.caption ?? ""}
+          buttonText={t("license.other.itemImage.ariaLabel")}
         />
       </Figure>
     );
   }
 
-  const resize = !embedData.url.includes('trinket.io');
+  const resize = !embedData.url.includes("trinket.io");
 
-  const fullColumnClass = isConcept ? 'c-figure--full-column' : '';
-  const resizeClass = resize ? 'c-figure--resize' : '';
+  const fullColumnClass = isConcept ? "c-figure--full-column" : "";
+  const resizeClass = resize ? "c-figure--resize" : "";
   const classes = `c-figure ${fullColumnClass} ${resizeClass}`;
 
   const { width, height, title, url } = embedData;
 
-  const strippedWidth = typeof width === 'number' ? width : width?.replace(/\s*px/, '');
-  const strippedHeight = typeof height === 'number' ? height : height?.replace(/\s*px/, '');
+  const strippedWidth = typeof width === "number" ? width : width?.replace(/\s*px/, "");
+  const strippedHeight = typeof height === "number" ? height : height?.replace(/\s*px/, "");
   const urlOrTitle = title || url;
 
   return (
     //@ts-ignore
     // eslint-disable-next-line react/no-unknown-property
     <figure className={classes} resizeiframe={`${resize}`}>
-      {disclaimer}
       <iframe
         ref={iframeRef}
         title={urlOrTitle}

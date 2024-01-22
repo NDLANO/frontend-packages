@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing, mq, breakpoints } from '@ndla/core';
-import { Search } from '@ndla/icons/common';
-import { SafeLinkButton } from '@ndla/safelink';
+import styled from "@emotion/styled";
+import { spacing, mq, breakpoints } from "@ndla/core";
+import { Search } from "@ndla/icons/common";
+import { SafeLinkButton } from "@ndla/safelink";
 
 const StyledSearch = styled(Search)`
   height: ${spacing.normal};
@@ -40,7 +40,7 @@ interface SearchButtonProps {
 const SearchButton = ({ url, isOembed, searchText }: SearchButtonProps) => {
   return (
     <GoalSearchWrapper>
-      <SafeLinkButton variant="outline" to={url} target={isOembed ? '_blank' : '_self'}>
+      <SafeLinkButton variant="outline" to={url} target={isOembed ? "_blank" : "_self"}>
         <StyledSearch size="normal" />
         <span>{searchText}</span>
       </SafeLinkButton>

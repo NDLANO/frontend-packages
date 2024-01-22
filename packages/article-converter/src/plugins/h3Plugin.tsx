@@ -6,8 +6,8 @@
  *
  */
 
-import { attributesToProps, domToReact } from 'html-react-parser';
-import { PluginType } from './types';
+import { attributesToProps, domToReact } from "html-react-parser";
+import { PluginType } from "./types";
 export const h3Plugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
   return (

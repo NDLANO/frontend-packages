@@ -6,14 +6,14 @@
  *
  */
 
-import { attributesToProps, domToReact } from 'html-react-parser';
-import { UnOrderedList } from '@ndla/ui';
-import { PluginType } from './types';
+import { attributesToProps, domToReact } from "html-react-parser";
+import { UnOrderedList } from "@ndla/ui";
+import { PluginType } from "./types";
 export const ulPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
-  const classes = [node.attribs.class ?? '', node.attribs['data-type'] === 'two-column' ? 'o-list--two-columns' : '']
+  const classes = [node.attribs.class ?? "", node.attribs["data-type"] === "two-column" ? "o-list--two-columns" : ""]
     .filter((c) => !!c)
-    .join(' ');
+    .join(" ");
   return (
     <UnOrderedList {...props} className={classes} lang={opts.articleLanguage}>
       {domToReact(node.children, converterOpts)}

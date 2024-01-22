@@ -6,7 +6,7 @@
  *
  */
 
-import ErrorReporter from './ErrorReporter';
+import ErrorReporter from "./ErrorReporter";
 
 export { ErrorReporter };
 

@@ -6,13 +6,13 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { HeadingLevel } from '@ndla/typography';
-import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import { HeadingLevel } from "@ndla/typography";
+import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 export interface Props {
   title: {
@@ -22,7 +22,7 @@ export interface Props {
   author?: string;
   url: string;
   headingLevel?: HeadingLevel;
-  size?: 'normal' | 'large';
+  size?: "normal" | "large";
   metaImage: {
     url: string;
     alt: string;
@@ -43,7 +43,7 @@ const Container = styled(SafeLink)`
   height: 100%;
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 350px;
-    &[data-size='large'] {
+    &[data-size="large"] {
       max-width: 532px;
     }
   }
@@ -60,7 +60,7 @@ const headingCss = css`
   width: fit-content;
   margin: 0;
   font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes('26px', '36px')};
+  ${fonts.sizes("26px", "36px")};
 `;
 
 const AuthorContainer = styled.div`
@@ -82,16 +82,16 @@ const StyledImg = styled.img`
   border: 0;
 `;
 
-const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = 'h3', size = 'normal', path }: Props) => {
+const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = "h3", size = "normal", path }: Props) => {
   const { t } = useTranslation();
   const href = getPossiblyRelativeUrl(url, path);
   return (
     <Container data-size={size} to={href}>
-      <Heading className="blog-title" css={headingCss} lang={title.language === 'nb' ? 'no' : title.language}>
+      <Heading className="blog-title" css={headingCss} lang={title.language === "nb" ? "no" : title.language}>
         {title.title}
       </Heading>
       <StyledImg src={metaImage.url} alt={metaImage.alt} />
-      {!!author && <AuthorContainer aria-label={t('article.writtenBy', { authors: author })}>{author}</AuthorContainer>}
+      {!!author && <AuthorContainer aria-label={t("article.writtenBy", { authors: author })}>{author}</AuthorContainer>}
     </Container>
   );
 };

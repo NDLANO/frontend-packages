@@ -6,6 +6,6 @@
  *
  */
 
-import NavigationBox from './NavigationBox';
+import NavigationBox from "./NavigationBox";
 
 export { NavigationBox };

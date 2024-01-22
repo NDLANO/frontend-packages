@@ -6,12 +6,12 @@
  *
  */
 
-import { useMemo } from 'react';
-import styled from '@emotion/styled';
-import { Indicator, Item, RadioGroupItemProps, RadioGroupProps, Root } from '@radix-ui/react-radio-group';
-import { spacing, fonts, colors, misc } from '@ndla/core';
-import { Text } from '@ndla/typography';
-import { uuid as uuidFunc } from '@ndla/util';
+import { useMemo } from "react";
+import styled from "@emotion/styled";
+import { Indicator, Item, RadioGroupItemProps, RadioGroupProps, Root } from "@radix-ui/react-radio-group";
+import { spacing, fonts, colors, misc } from "@ndla/core";
+import { Text } from "@ndla/typography";
+import { uuid as uuidFunc } from "@ndla/util";
 
 interface Props {
   selected?: string;
@@ -21,7 +21,7 @@ interface Props {
     value: string;
     disabled?: boolean;
   }[];
-  direction?: 'horizontal' | 'vertical';
+  direction?: "horizontal" | "vertical";
   label?: string;
   uniqeIds?: boolean;
   onChange: (value: string) => void;
@@ -35,7 +35,7 @@ const GroupLabel = styled(Text)`
 const RadioButtonGroupLabel = styled(Text)`
   color: ${colors.brand.primary};
   font-family: ${fonts.sans};
-  &[data-disabled='true'] {
+  &[data-disabled="true"] {
     color: ${colors.brand.light};
   }
 `;
@@ -60,7 +60,7 @@ export const StyledRadioGroupItem = styled(Item)`
   width: ${spacing.nsmall};
   height: ${spacing.nsmall};
   border-radius: 100%;
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     box-shadow: 0 0 0 2px ${colors.brand.primary};
   }
 `;
@@ -73,7 +73,7 @@ const RadioButtonIndicator = styled(Indicator)`
   height: 100%;
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     width: 0px;
     height: 0px;
@@ -83,7 +83,7 @@ const RadioButtonIndicator = styled(Indicator)`
   }
   &:hover,
   &:focus-visible,
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     &::after {
       width: ${spacing.small};
       height: ${spacing.small};
@@ -96,7 +96,7 @@ const RadioButtonIndicator = styled(Indicator)`
     }
   }
 
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     &::after {
       background-color: ${colors.brand.primary};
     }
@@ -109,7 +109,7 @@ export const StyledRadioButtonGroupRoot = styled(Root)`
   display: flex;
   font-family: ${fonts.sans};
   align-items: center;
-  &[data-direction='vertical'] {
+  &[data-direction="vertical"] {
     flex-direction: column;
     align-items: unset;
   }
@@ -131,7 +131,7 @@ export const RadioGroupItem = ({ value, disabled, id, title, className }: ItemPr
 };
 
 interface RootProps extends RadioGroupProps {
-  direction?: 'horizontal' | 'vertical';
+  direction?: "horizontal" | "vertical";
 }
 
 export const RadioButtonGroupRoot = ({ children, direction, ...rest }: RootProps) => {
@@ -148,7 +148,7 @@ const RadioButtonGroup = ({
   label,
   uniqeIds,
   onChange,
-  direction = 'horizontal',
+  direction = "horizontal",
   className,
 }: Props) => {
   const uuid = useMemo(() => (uniqeIds ? uuidFunc() : undefined), [uniqeIds]);

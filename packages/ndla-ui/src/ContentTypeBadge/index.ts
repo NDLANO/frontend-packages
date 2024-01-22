@@ -6,7 +6,7 @@
  *
  */
 
-import { ContentTypeBadge } from './ContentTypeBadge';
+import { ContentTypeBadge } from "./ContentTypeBadge";
 
 export {
   SubjectMaterialBadge,
@@ -16,6 +16,6 @@ export {
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
   LearningPathBadge,
-} from './ContentTypeBadge';
+} from "./ContentTypeBadge";
 
 export default ContentTypeBadge;

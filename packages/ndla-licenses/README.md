@@ -17,20 +17,20 @@ npm install @ndla/licenses
 ### Get license by abbreviation
 
 ```js
-import getLicenseByAbbreviation from '@ndla/licenses';
+import getLicenseByAbbreviation from "@ndla/licenses";
 
-const license = getLicenseByAbbreviation('CC-BY-NC-4.0', 'en');
+const license = getLicenseByAbbreviation("CC-BY-NC-4.0", "en");
 
 console.log(license);
 //> { short: 'Free use', title: 'Attribution-NonCommercial', description: 'This license...', rights: ['by', 'sa'] }
 
 // defaults to Norsk Bokmål (nb)
-const license = getLicenseByAbbreviation('CC-BY-NC-4.0', 'unknown-locale');
+const license = getLicenseByAbbreviation("CC-BY-NC-4.0", "unknown-locale");
 console.log(license);
 //> { short: 'Fri bruk', title: 'Navngivelse-IkkeKommersiell', description: 'Denne lisensen...', rights: ['by', 'sa'] }
 
 // returns abbreviation if license is unknown
-const license = getLicenseByAbbreviation('unknown-license', 'en');
+const license = getLicenseByAbbreviation("unknown-license", "en");
 console.log(license);
 //> { short: 'unknown-license', title: 'unknown-license', description: 'unknown-license', rights: [] }
 ```
@@ -38,20 +38,20 @@ console.log(license);
 ### Get license right info by abbreviation/constant
 
 ```js
-import { getLicenseRightByAbbreviation, BY, CC } from '@ndla/licenses';
+import { getLicenseRightByAbbreviation, BY, CC } from "@ndla/licenses";
 
-const licenseRight = getLicenseRightByAbbreviation(BY, 'en');
+const licenseRight = getLicenseRightByAbbreviation(BY, "en");
 
 console.log(licenseRight);
 //> { short: 'cc', title: 'Copyright', userFriendlyTitle: 'Copyright', description: 'Only the creator can derive...' }
 
 // defaults to Norsk Bokmål (nb)
-const licenseRight = getLicenseRightByAbbreviation(CC, 'unknown-locale');
+const licenseRight = getLicenseRightByAbbreviation(CC, "unknown-locale");
 console.log(licenseRight);
 //> { short: 'cc', title: 'Copyright', userFriendlyTitle: 'Opphavsrett', description: 'Bare opphavspersonen kan bearbeide...' }
 
 // returns abbreviation if licenseRight is unknown
-const licenseRight = getLicenseRightByAbbreviation('unknown-lr', 'en');
+const licenseRight = getLicenseRightByAbbreviation("unknown-lr", "en");
 console.log(licenseRight);
 //> { short: 'unknown-lr', title: 'unknown-lr', userFriendlyTitle: 'unknown-lr', description: 'unknown-lr'}
 ```
@@ -59,8 +59,8 @@ console.log(licenseRight);
 ### License right constants
 
 ```js
-import { BY, SA } from '@ndla/licenses';
-import Icon from './Icons';
+import { BY, SA } from "@ndla/licenses";
+import Icon from "./Icons";
 
 const LicenseIcon = ({ licenseRight }) => {
   switch (licenseRight) {

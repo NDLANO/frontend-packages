@@ -6,8 +6,8 @@
  *
  */
 
-import { ReactNode, forwardRef } from 'react';
-import { DropdownMenuTriggerProps, Trigger } from '@radix-ui/react-dropdown-menu';
+import { ReactNode, forwardRef } from "react";
+import { DropdownMenuTriggerProps, Trigger } from "@radix-ui/react-dropdown-menu";
 
 interface Props extends DropdownMenuTriggerProps {
   children: ReactNode;

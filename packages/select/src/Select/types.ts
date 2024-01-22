@@ -14,7 +14,7 @@ export type Option = {
   label: string;
 };
 
-export type Color = 'blue' | 'white';
+export type Color = "blue" | "white";
 
 export interface GroupBase<Option> {
   readonly options: readonly Option[];

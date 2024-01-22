@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { Meta, StoryObj } from '@storybook/react';
-import { spacing } from '@ndla/core';
-import { Heading, Text } from '@ndla/typography';
-import FactBox from './FactBox';
-import { defaultParameters } from '../../../../stories/defaults';
+import styled from "@emotion/styled";
+import { Meta, StoryObj } from "@storybook/react";
+import { spacing } from "@ndla/core";
+import { Heading, Text } from "@ndla/typography";
+import FactBox from "./FactBox";
+import { defaultParameters } from "../../../../stories/defaults";
 
 const Wrapper = styled.div`
   padding: ${spacing.normal};
@@ -21,9 +21,9 @@ const Wrapper = styled.div`
  *For alt nytt innhold på ndla.no skal ikke flytende høyrespalte benyttes. I stedet benytter vi faktabokser innenfor innholdsspalten.
  */
 export default {
-  title: 'Components/FactBox',
+  title: "Components/FactBox",
   component: FactBox,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   paramemeters: {
     inlineStories: true,
     ...defaultParameters,

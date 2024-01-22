@@ -6,11 +6,11 @@
  *
  */
 
-import { ICopyright, IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { MetaData } from '.';
+import { ICopyright, IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetaData } from ".";
 
 export interface ImageEmbedData {
-  resource: 'image';
+  resource: "image";
   resourceId: string;
   size?: string;
   align?: string;

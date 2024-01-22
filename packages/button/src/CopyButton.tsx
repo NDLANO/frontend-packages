@@ -6,8 +6,8 @@
  *
  */
 
-import { ReactNode, MouseEvent, useState, useEffect, forwardRef } from 'react';
-import ButtonV2, { ButtonProps } from './ButtonV2';
+import { ReactNode, MouseEvent, useState, useEffect, forwardRef } from "react";
+import ButtonV2, { ButtonProps } from "./ButtonV2";
 
 interface Props extends ButtonProps {
   children: ReactNode;

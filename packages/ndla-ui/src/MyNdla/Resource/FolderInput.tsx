@@ -6,17 +6,17 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef, useEffect, useRef } from 'react';
-import { isMobile } from 'react-device-detect';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { IconButtonV2 } from '@ndla/button';
-import { colors, spacing } from '@ndla/core';
-import { InputContainer, FieldErrorMessage, InputV3, FieldHelper, FormControl, Label } from '@ndla/forms';
-import { Spinner } from '@ndla/icons';
-import { Cross } from '@ndla/icons/action';
-import { Done } from '@ndla/icons/editor';
-import { composeRefs } from '@ndla/util';
+import { ComponentPropsWithRef, forwardRef, useEffect, useRef } from "react";
+import { isMobile } from "react-device-detect";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
+import { colors, spacing } from "@ndla/core";
+import { InputContainer, FieldErrorMessage, InputV3, FieldHelper, FormControl, Label } from "@ndla/forms";
+import { Spinner } from "@ndla/icons";
+import { Cross } from "@ndla/icons/action";
+import { Done } from "@ndla/icons/editor";
+import { composeRefs } from "@ndla/util";
 
 interface Props {
   loading?: boolean;
@@ -58,7 +58,7 @@ const StyledInputContainer = styled(InputContainer)<StyledInputProps>`
     border-color: ${colors.brand.light};
   }
 
-  &[data-error='true'] {
+  &[data-error="true"] {
     background-image: ${borderStyle(true)};
   }
   input {
@@ -81,14 +81,14 @@ const Row = styled.div`
   padding-right: ${spacing.xsmall};
 `;
 
-const FolderInput = forwardRef<HTMLInputElement, Props & ComponentPropsWithRef<'input'>>(
+const FolderInput = forwardRef<HTMLInputElement, Props & ComponentPropsWithRef<"input">>(
   ({ loading, label, error, onClose, onSave, ...rest }, ref) => {
     const { t } = useTranslation();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
       if (isMobile) {
-        inputRef.current?.scrollIntoView({ behavior: 'smooth' });
+        inputRef.current?.scrollIntoView({ behavior: "smooth" });
       }
     }, []);
 
@@ -102,24 +102,24 @@ const FolderInput = forwardRef<HTMLInputElement, Props & ComponentPropsWithRef<'
               <>
                 {!error && (
                   <IconButtonV2
-                    variant={'ghost'}
+                    variant={"ghost"}
                     colorTheme="light"
                     tabIndex={0}
-                    aria-label={t('save')}
-                    title={t('save')}
+                    aria-label={t("save")}
+                    title={t("save")}
                     size="small"
                     onClick={onSave}
                   >
                     <Done />
                   </IconButtonV2>
                 )}
-                <IconButtonV2 aria-label={t('close')} title={t('close')} size="small" variant="ghost" onClick={onClose}>
+                <IconButtonV2 aria-label={t("close")} title={t("close")} size="small" variant="ghost" onClick={onClose}>
                   <Cross />
                 </IconButtonV2>
               </>
             ) : (
               <FieldHelper>
-                <StyledSpinner size="normal" aria-label={t('loading')} />
+                <StyledSpinner size="normal" aria-label={t("loading")} />
               </FieldHelper>
             )}
           </Row>

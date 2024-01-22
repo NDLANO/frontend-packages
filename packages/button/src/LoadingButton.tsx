@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { Spinner } from '@ndla/icons';
-import Button, { ButtonProps } from './ButtonV2';
+import { forwardRef } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { Spinner } from "@ndla/icons";
+import Button, { ButtonProps } from "./ButtonV2";
 
 interface Props extends ButtonProps {
   loading?: boolean;
@@ -25,7 +25,7 @@ const LoadingButton = forwardRef<HTMLButtonElement, Props>(({ loading, children,
 
   return (
     <Button disabled={loading} aria-live="assertive" {...rest} ref={ref}>
-      {loading && <StyledSpinner size="normal" aria-label={t('loading')} />}
+      {loading && <StyledSpinner size="normal" aria-label={t("loading")} />}
       {children}
     </Button>
   );

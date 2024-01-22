@@ -6,13 +6,13 @@
  *
  */
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, spacing, mq, misc } from '@ndla/core';
-import { Forward } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
-import { HeadingLevel } from '@ndla/typography';
-import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, spacing, mq, misc } from "@ndla/core";
+import { Forward } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
+import { HeadingLevel } from "@ndla/typography";
+import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 interface Image {
   src: string;
@@ -29,12 +29,12 @@ interface Props {
     language: string;
   };
   headingLevel?: HeadingLevel;
-  url?: {
-    url: string;
-    text: string;
+  url: {
+    url?: string;
+    text?: string;
   };
   image?: Image;
-  imageSide?: 'left' | 'right';
+  imageSide?: "left" | "right";
   className?: string;
   path?: string;
 }
@@ -47,13 +47,13 @@ const Container = styled.div`
   border-radius: ${misc.borderRadius};
   padding: ${spacing.normal};
   background-color: ${colors.white};
-  &[data-image-side='right'] {
+  &[data-image-side="right"] {
     flex-direction: column-reverse;
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 1100px;
     flex-direction: row;
-    &[data-image-side='right'] {
+    &[data-image-side="right"] {
       flex-direction: row-reverse;
     }
   }
@@ -87,9 +87,9 @@ const TextWrapper = styled.div`
 const CampaignBlock = ({
   title,
   image,
-  imageSide = 'left',
+  imageSide = "left",
   description,
-  headingLevel: Heading = 'h2',
+  headingLevel: Heading = "h2",
   url,
   path,
   className,
@@ -98,13 +98,13 @@ const CampaignBlock = ({
     <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
       {image && <StyledImg src={image.src} height={200} width={240} alt={image.alt} />}
       <TextWrapper>
-        <Heading css={headingStyle} lang={title.language === 'nb' ? 'no' : title.language}>
+        <Heading css={headingStyle} lang={title.language === "nb" ? "no" : title.language}>
           {title.title}
         </Heading>
-        <StyledDescription lang={description.language === 'nb' ? 'no' : description.language}>
+        <StyledDescription lang={description.language === "nb" ? "no" : description.language}>
           {description.text}
         </StyledDescription>
-        {url && (
+        {url.url && (
           <StyledLink to={getPossiblyRelativeUrl(url.url, path)}>
             {url.text}
             <Forward />

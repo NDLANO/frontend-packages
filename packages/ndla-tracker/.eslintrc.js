@@ -11,6 +11,6 @@ module.exports = {
     node: true,
   },
   rules: {
-    'no-restricted-globals': 0,
+    "no-restricted-globals": 0,
   },
 };

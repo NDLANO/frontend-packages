@@ -6,25 +6,25 @@
  *
  */
 
-import { forwardRef, ReactNode, RefAttributes } from 'react';
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { COPYRIGHTED } from '@ndla/licenses';
-import { ConceptData, ConceptVisualElementMeta } from '@ndla/types-embed';
-import { ExternalEmbed, HeartButtonType, IframeEmbed } from '.';
-import BrightcoveEmbed from './BrightcoveEmbed';
-import H5pEmbed from './H5pEmbed';
-import ImageEmbed from './ImageEmbed';
-import { Gloss } from '../Gloss';
-import { EmbedByline } from '../LicenseByline';
-import { Copyright } from '../types';
+import { forwardRef, ReactNode, RefAttributes } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { COPYRIGHTED } from "@ndla/licenses";
+import { ConceptData, ConceptVisualElementMeta } from "@ndla/types-embed";
+import { ExternalEmbed, HeartButtonType, IframeEmbed } from ".";
+import BrightcoveEmbed from "./BrightcoveEmbed";
+import H5pEmbed from "./H5pEmbed";
+import ImageEmbed from "./ImageEmbed";
+import { Gloss } from "../Gloss";
+import { EmbedByline } from "../LicenseByline";
+import { Copyright } from "../types";
 
-export type ConceptType = 'concept' | 'gloss';
+export type ConceptType = "concept" | "gloss";
 
 export interface ConceptNotionData {
-  title: ConceptData['concept']['title'];
+  title: ConceptData["concept"]["title"];
   content?: ReactNode;
   metaImage?: {
     url?: string;
@@ -33,8 +33,8 @@ export interface ConceptNotionData {
   copyright?: Copyright;
   source?: string;
   visualElement?: ConceptVisualElementMeta;
-  conceptType: ConceptData['concept']['conceptType'];
-  glossData?: ConceptData['concept']['glossData'];
+  conceptType: ConceptData["concept"]["conceptType"];
+  glossData?: ConceptData["concept"]["glossData"];
   lang?: string;
 }
 
@@ -54,7 +54,7 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
 
 const NotionDialogText = styled.div`
   font-weight: ${fonts.weight.normal};
-  ${fonts.sizes('18px', 1.3)};
+  ${fonts.sizes("18px", 1.3)};
   color: ${colors.text.primary};
   font-family: ${fonts.sans};
 `;
@@ -65,8 +65,11 @@ const NotionDialogContent = styled.div`
   flex-direction: column;
 `;
 
-const ContentPadding = styled.div`
+const ContentSpacing = styled.div`
   padding: ${spacing.normal};
+  &[data-is-concept="false"] {
+    margin-bottom: ${spacing.normal};
+  }
 `;
 
 const notionContentCss = css`
@@ -112,16 +115,19 @@ const NotionHeader = styled.div`
     flex-grow: 1;
     margin: 0;
     font-weight: ${fonts.weight.bold};
-    ${fonts.sizes('22px', 1.2)};
+    ${fonts.sizes("22px", 1.2)};
   }
   small {
-    &[data-show-separator='true'] {
+    &[data-is-concept="true"] {
       border-left: 1px solid ${colors.brand.greyLight};
       padding-left: ${spacing.small};
       margin-left: ${spacing.xsmall};
     }
-    ${fonts.sizes('20px', 1.2)};
+    ${fonts.sizes("20px", 1.2)};
     font-weight: ${fonts.weight.normal};
+  }
+  &[data-is-concept="false"] {
+    margin-bottom: ${spacing.large};
   }
 `;
 
@@ -154,12 +160,11 @@ const StyledList = styled.ul`
   align-items: center;
   list-style: none;
   > li {
-    margin: 0;
     font-family: ${fonts.sans};
     font-weight: ${fonts.weight.semibold};
     border-radius: ${misc.borderRadius};
     background-color: ${colors.brand.greyLightest};
-    ${fonts.sizes('12px', 1.2)};
+    ${fonts.sizes("12px", 1.2)};
     padding: ${spacing.xxsmall};
   }
 `;
@@ -190,14 +195,14 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
     ref,
   ) => {
     const { t } = useTranslation();
-    const isConcept = conceptType === 'concept';
+    const isConcept = conceptType === "concept";
     return (
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
-        <ContentPadding>
-          <NotionHeader data-show-separator={isConcept}>
+        <ContentSpacing data-is-concept={isConcept}>
+          <NotionHeader data-is-concept={isConcept}>
             <h1>
               {isConcept && title.title}
-              {<small data-show-separator={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
+              {<small data-is-concept={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
             </h1>
             <ButtonWrapper>
               {headerButtons}
@@ -207,22 +212,22 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
           {isConcept ? (
             <>
               <StyledNotionDialogContent>
-                {visualElement?.resource === 'image' ? (
+                {visualElement?.resource === "image" ? (
                   <ImageEmbed embed={visualElement} heartButton={heartButton} lang={lang} />
-                ) : visualElement?.resource === 'brightcove' ? (
+                ) : visualElement?.resource === "brightcove" ? (
                   <BrightcoveEmbed embed={visualElement} heartButton={heartButton} />
-                ) : visualElement?.resource === 'h5p' ? (
+                ) : visualElement?.resource === "h5p" ? (
                   <H5pEmbed embed={visualElement} />
-                ) : visualElement?.resource === 'iframe' ? (
+                ) : visualElement?.resource === "iframe" ? (
                   <IframeEmbed embed={visualElement} />
-                ) : visualElement?.resource === 'external' ? (
+                ) : visualElement?.resource === "external" ? (
                   <ExternalEmbed embed={visualElement} />
                 ) : null}
                 {content && <NotionDialogText lang={lang}>{content}</NotionDialogText>}
               </StyledNotionDialogContent>
               {tags && (
                 <ListWrapper>
-                  {`${t('notions.tags')}:`}
+                  {`${t("notions.tags")}:`}
                   <StyledList>
                     {tags.map((tag, index) => (
                       <li key={index}>{tag}</li>
@@ -232,7 +237,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
               )}
               {subjects && (
                 <ListWrapper>
-                  {`${t('notions.usedIn')}:`}
+                  {`${t("notions.usedIn")}:`}
                   <StyledList>
                     {subjects.map((subject, index) => (
                       <li key={index}>{subject}</li>
@@ -246,15 +251,18 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
               title={title}
               glossData={glossData!}
               audio={
-                visualElement?.status === 'success' && visualElement.resource === 'audio'
-                  ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
+                visualElement?.status === "success" && visualElement.resource === "audio"
+                  ? {
+                      src: visualElement.data.audioFile.url,
+                      title: visualElement.data.title.title,
+                    }
                   : undefined
               }
               exampleIds={exampleIds}
               exampleLangs={exampleLangs}
             />
           )}
-        </ContentPadding>
+        </ContentSpacing>
         {copyright && (
           <EmbedByline copyright={copyright} type={conceptType as ConceptType}>
             {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}

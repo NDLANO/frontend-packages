@@ -6,16 +6,16 @@
  *
  */
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils } from '@ndla/core';
-import { LearningPathRead } from '@ndla/icons/contentType';
-import SafeLink from '@ndla/safelink';
-import { StepProps } from './LearningPathMenu';
-import ContentTypeBadge from '../ContentTypeBadge';
-import constants from '../model';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils } from "@ndla/core";
+import { LearningPathRead } from "@ndla/icons/contentType";
+import SafeLink from "@ndla/safelink";
+import { StepProps } from "./LearningPathMenu";
+import ContentTypeBadge from "../ContentTypeBadge";
+import constants from "../model";
 
-const SIDE_NAV_WIDTH = '372px';
+const SIDE_NAV_WIDTH = "372px";
 
 type StyledMenuItemProps = {
   current?: boolean;
@@ -27,7 +27,7 @@ type StyledMenuItemProps = {
 };
 
 const StyledMenuItem = styled.li<StyledMenuItemProps>`
-  margin: 0;
+  padding: 0;
   a {
     box-shadow: none;
     display: inline-flex;
@@ -39,7 +39,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       ${fonts.sizes(14, 1.2)};
       color: ${colors.brand.primary};
       ${mq.range({ from: breakpoints.tablet })} {
-        color: ${({ invertedStyle }) => (invertedStyle ? '#fff' : colors.brand.primary)};
+        color: ${({ invertedStyle }) => (invertedStyle ? "#fff" : colors.brand.primary)};
         font-weight: ${fonts.weight.semibold};
       }
     }
@@ -93,7 +93,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       background: #fff;
   `}
   &:after {
-    content: '';
+    content: "";
     display: block;
     height: ${spacing.large};
     width: 2px;
@@ -153,7 +153,6 @@ type StyledNavigationProps = {
 const StyledNavigation = styled.nav<StyledNavigationProps>`
   > ul {
     list-style: none;
-    margin: 0;
     padding: 0;
   }
   margin-bottom: ${spacing.medium};

@@ -6,22 +6,22 @@
  *
  */
 
-import { ComponentProps, ReactElement, createElement, useMemo } from 'react';
-import styled from '@emotion/styled';
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { IconButtonV2 } from '@ndla/button';
-import { spacing } from '@ndla/core';
-import { copyTextToClipboard } from '@ndla/util';
+import { ComponentProps, ReactElement, createElement, useMemo } from "react";
+import styled from "@emotion/styled";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { IconButtonV2 } from "@ndla/button";
+import { spacing } from "@ndla/core";
+import { copyTextToClipboard } from "@ndla/util";
 
-import Icon from '.';
-import * as actionIcons from './action';
-import { Copy } from './action';
-import * as commonIcons from './common';
-import { Person } from './common';
-import * as contentTypeIcons from './contentType';
-import * as editorIcons from './editor';
-import * as licenseIcons from './licenses';
-import { defaultParameters } from '../../../stories/defaults';
+import Icon from ".";
+import * as actionIcons from "./action";
+import { Copy } from "./action";
+import * as commonIcons from "./common";
+import { Person } from "./common";
+import * as contentTypeIcons from "./contentType";
+import * as editorIcons from "./editor";
+import * as licenseIcons from "./licenses";
+import { defaultParameters } from "../../../stories/defaults";
 
 interface IconItemProps {
   icon: (props: ComponentProps<typeof Icon>) => ReactElement<ComponentProps<typeof Icon>>;
@@ -35,11 +35,11 @@ const IconItem = ({ icon, folder, name }: IconItemProps) => {
   return (
     <li>
       <div>
-        {createElement(icon, { size: 'large' })}
+        {createElement(icon, { size: "large" })}
         <strong>{name}</strong>
       </div>
-      <div title={`Kilde: ${iconProps['data-source']}`}>
-        {iconProps['data-license']}
+      <div title={`Kilde: ${iconProps["data-source"]}`}>
+        {iconProps["data-license"]}
         <IconButtonV2
           variant="ghost"
           onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)}
@@ -93,9 +93,9 @@ const IconList = ({ icons, folder }: Props) => (
  * Systemikonene er hentet fra Google sitt Material Design som er open source og tilgjengelig med Apache License Version 2.0. Hvis det er behov for flere eller nye systemikoner skal disse hentes her: https://material.io/icons/ og hvis det ikke finnes et passende ikon i denne pakken kan man lage nye ikoner ved å bruke disse retningslinjene: https://material.io/guidelines/. Ikoner kan i nød også hentes fra: https://materialdesignicons.com, som også er Apache License Version 2.0.
  **/
 export default {
-  title: 'Components/Icons',
+  title: "Components/Icons",
   component: Person,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
@@ -106,7 +106,7 @@ export const IconStory: StoryFn<typeof Person> = (args) => {
   return <Person {...args} />;
 };
 
-IconStory.storyName = 'Icon';
+IconStory.storyName = "Icon";
 
 export const CommonIcons: StoryObj<typeof Icon> = {
   render: () => <IconList icons={commonIcons} folder="common" />,

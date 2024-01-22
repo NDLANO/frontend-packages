@@ -6,11 +6,11 @@
  *
  */
 
-import { Component, createRef, MouseEvent as ReactMouseEvent, MutableRefObject } from 'react';
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, shadows } from '@ndla/core';
+import { Component, createRef, MouseEvent as ReactMouseEvent, MutableRefObject } from "react";
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, shadows } from "@ndla/core";
 
-import MovieListItem from './MovieListItem';
+import MovieListItem from "./MovieListItem";
 
 const MOVIE_HEIGHT = 69;
 
@@ -23,7 +23,7 @@ interface ListWrapperProps {
 }
 const ListWrapper = styled.ul<ListWrapperProps>`
   overflow: visible;
-  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacingUnit * 0.75}px` : '0')};
+  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacingUnit * 0.75}px` : "0")};
   padding: 0;
   position: relative;
   list-style: none;
@@ -113,9 +113,9 @@ class MovieList extends Component<Props, State> {
     this.DraggingFile = childNodes?.[dragIndex];
     if (this.DraggingFile) {
       this.DraggingFile.style.width = `${this.DraggingFile.getBoundingClientRect().width}px`;
-      this.DraggingFile.style.position = 'absolute';
-      this.DraggingFile.style.top = '0';
-      this.DraggingFile.style.zIndex = '9999';
+      this.DraggingFile.style.position = "absolute";
+      this.DraggingFile.style.top = "0";
+      this.DraggingFile.style.zIndex = "9999";
       this.DraggingFile.style.boxShadow = shadows.levitate1;
       this.DraggingFile.style.transform = `translateY(${this.mouseMovement + MOVIE_HEIGHT}px)`;
     }
@@ -127,21 +127,21 @@ class MovieList extends Component<Props, State> {
       () => {
         // Add transitions
         childNodes?.forEach((node) => {
-          node.style.transition = 'transform 100ms ease';
+          node.style.transition = "transform 100ms ease";
         });
         if (this.DraggingFile) {
-          this.DraggingFile.style.transition = 'box-shadow 100ms ease';
+          this.DraggingFile.style.transition = "box-shadow 100ms ease";
         }
       },
     );
 
-    window.addEventListener('mousemove', this.onDragging);
-    window.addEventListener('mouseup', this.onDragEnd);
+    window.addEventListener("mousemove", this.onDragging);
+    window.addEventListener("mouseup", this.onDragEnd);
   }
 
   onDragEnd() {
-    window.removeEventListener('mousemove', this.onDragging);
-    window.removeEventListener('mouseup', this.onDragEnd);
+    window.removeEventListener("mousemove", this.onDragging);
+    window.removeEventListener("mouseup", this.onDragEnd);
     const { movies = [], id } = this.props;
     // Rearrange movies
     const toIndex = this.state.draggingIndex;
@@ -156,15 +156,15 @@ class MovieList extends Component<Props, State> {
     });
 
     childNodes?.forEach((node) => {
-      node.style.transition = 'none';
-      node.style.transform = 'none';
+      node.style.transition = "none";
+      node.style.transform = "none";
     });
 
     if (this.DraggingFile) {
-      this.DraggingFile.style.width = 'auto';
-      this.DraggingFile.style.position = 'static';
-      this.DraggingFile.style.zIndex = '0';
-      this.DraggingFile.style.boxShadow = 'none';
+      this.DraggingFile.style.width = "auto";
+      this.DraggingFile.style.position = "static";
+      this.DraggingFile.style.zIndex = "0";
+      this.DraggingFile.style.boxShadow = "none";
     }
   }
 

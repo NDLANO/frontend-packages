@@ -6,8 +6,8 @@
  *
  */
 
-import ResourcesWrapper from './ResourcesWrapper';
+import ResourcesWrapper from "./ResourcesWrapper";
 
-export { default as ResourcesTopicTitle } from './ResourcesTopicTitle';
+export { default as ResourcesTopicTitle } from "./ResourcesTopicTitle";
 
 export default ResourcesWrapper;

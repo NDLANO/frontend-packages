@@ -6,6 +6,6 @@
  *
  */
 
-import ResourceBox from './ResourceBox';
+import ResourceBox from "./ResourceBox";
 
 export { ResourceBox };

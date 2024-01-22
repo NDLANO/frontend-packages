@@ -6,16 +6,16 @@
  *
  */
 
-import { useState } from 'react';
-import styled from '@emotion/styled';
-import { ButtonV2, CloseButton } from '@ndla/button';
-import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
-import { PanoramaPhotosphere } from '@ndla/icons/common';
-import { getLicenseByNBTitle } from '@ndla/licenses';
-import { LicenseByline } from '@ndla/notion';
-import { BrightcoveApiType } from '@ndla/types-embed';
-import { Heading } from '@ndla/typography';
-import { Translations } from './VideoSearch';
+import { useState } from "react";
+import styled from "@emotion/styled";
+import { ButtonV2, CloseButton } from "@ndla/button";
+import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
+import { PanoramaPhotosphere } from "@ndla/icons/common";
+import { getLicenseByNBTitle } from "@ndla/licenses";
+import { LicenseByline } from "@ndla/notion";
+import { BrightcoveApiType } from "@ndla/types-embed";
+import { Heading } from "@ndla/typography";
+import { Translations } from "./VideoSearch";
 
 interface Props {
   videos: BrightcoveApiType[];
@@ -118,15 +118,15 @@ interface VideoListItemProps {
 export const VideoListItem = ({ video, onSelectVideo, translations, locale }: VideoListItemProps) => {
   const [isPreviewing, setIsPreviewing] = useState(false);
   const license =
-    video.custom_fields && video.custom_fields.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : '';
+    video.custom_fields && video.custom_fields.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : "";
   return (
     <StyledListElement>
       <ItemWrapper>
-        <StyledImg src={video.images?.thumbnail?.src ?? ''} alt="" />
+        <StyledImg src={video.images?.thumbnail?.src ?? ""} alt="" />
         <ContentWrapper>
           <StyledHeading element="h3" margin="none" headingStyle="h3">
             {video.name}
-            {video.projection === 'equirectangular' && (
+            {video.projection === "equirectangular" && (
               <PanoramaPhotosphere
                 aria-hidden={false}
                 aria-label={translations.is360Video}
@@ -134,8 +134,8 @@ export const VideoListItem = ({ video, onSelectVideo, translations, locale }: Vi
               />
             )}
           </StyledHeading>
-          {video.custom_fields?.licenseinfo ?? ''}
-          {typeof license === 'string' ? license : <LicenseByline licenseRights={license.rights} locale={locale} />}
+          {video.custom_fields?.licenseinfo ?? ""}
+          {typeof license === "string" ? license : <LicenseByline licenseRights={license.rights} locale={locale} />}
           <ButtonWrapper>
             <ButtonV2 variant="outline" onClick={() => setIsPreviewing((p) => !p)}>
               {translations.previewVideo}

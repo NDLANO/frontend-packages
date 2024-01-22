@@ -6,14 +6,14 @@
  *
  */
 
-import { MouseEvent, memo } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import { Cross } from '@ndla/icons/action';
-import { ContentType } from './SearchTypeResult';
-import ContentTypeBadge from '../ContentTypeBadge';
+import { MouseEvent, memo } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { breakpoints, fonts, mq, spacing } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
+import { ContentType } from "./SearchTypeResult";
+import ContentTypeBadge from "../ContentTypeBadge";
 
 const Wrapper = styled.div`
   margin: ${spacing.small} 0;
@@ -45,11 +45,11 @@ const BadgeWrapper = styled.span`
 const SubjectName = styled.div`
   display: flex;
   gap: ${spacing.small};
-  ${fonts.sizes('18px', '24px')};
+  ${fonts.sizes("18px", "24px")};
   margin: 2px 0;
   h2 {
     margin: 0;
-    ${fonts.sizes('18px', '24px')};
+    ${fonts.sizes("18px", "24px")};
     margin-right: 4px;
   }
 `;
@@ -115,7 +115,7 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
                 aria-current={option.active}
                 size="xsmall"
                 shape="pill"
-                colorTheme={!option.active ? 'greyLighter' : undefined}
+                colorTheme={!option.active ? "greyLighter" : undefined}
                 onClick={(e: MouseEvent<HTMLButtonElement>) => {
                   if (e.currentTarget && option.active) {
                     e.currentTarget.blur();

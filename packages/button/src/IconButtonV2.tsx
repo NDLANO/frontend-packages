@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode, forwardRef } from 'react';
-import { css } from '@emotion/react';
-import { spacingUnit } from '@ndla/core';
-import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
+import { ReactNode, forwardRef } from "react";
+import { css } from "@emotion/react";
+import { spacingUnit } from "@ndla/core";
+import { ButtonProps, buttonStyle, ButtonStyleProps } from "./ButtonV2";
 
 export const svgSizes = {
   xsmall: spacingUnit * 0.75,
@@ -19,7 +19,7 @@ export const svgSizes = {
   large: spacingUnit * 2.5,
 };
 
-export const iconButtonStyle = ({ size = 'small', colorTheme = 'primary', ...props }: ButtonStyleProps) => css`
+export const iconButtonStyle = ({ size = "small", colorTheme = "primary", ...props }: ButtonStyleProps) => css`
   ${buttonStyle({ size, colorTheme, ...props })}
 
   border-radius: 100%;
@@ -34,19 +34,24 @@ export const iconButtonStyle = ({ size = 'small', colorTheme = 'primary', ...pro
   }
 `;
 
-export interface IconButtonProps extends Omit<ButtonProps, 'shape'> {
-  ['aria-label']: string;
+export interface IconButtonProps extends Omit<ButtonProps, "shape"> {
+  ["aria-label"]: string;
   /** Usually an icon from `'@ndla/icons'` */
   children?: ReactNode;
 }
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
-    { type = 'button', size = 'small', colorTheme = 'primary', variant, fontWeight, inverted, children, ...rest },
+    { type = "button", size = "small", colorTheme = "primary", variant, fontWeight, inverted, children, ...rest },
     ref,
   ) => (
-    // eslint-disable-next-line react/button-has-type
-    <button type={type} ref={ref} css={iconButtonStyle({ size, variant, fontWeight, inverted, colorTheme })} {...rest}>
+    <button
+      // eslint-disable-next-line react/button-has-type
+      type={type}
+      ref={ref}
+      css={iconButtonStyle({ size, variant, fontWeight, inverted, colorTheme })}
+      {...rest}
+    >
       {children}
     </button>
   ),

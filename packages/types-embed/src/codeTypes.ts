@@ -6,10 +6,10 @@
  *
  */
 
-import { MetaData } from '.';
+import { MetaData } from ".";
 
 export interface CodeEmbedData {
-  resource: 'code-block';
+  resource: "code-block";
   codeFormat: string;
   codeContent: string;
   title?: string;

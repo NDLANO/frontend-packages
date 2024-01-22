@@ -6,14 +6,14 @@
  *
  */
 
-import SearchFieldHeader from './SearchFieldHeader';
-import SearchFilterContent from './SearchFilterContent';
-import SearchHeader from './SearchHeader';
-import SearchNotionsResult from './SearchNotionsResult';
-import SearchSubjectResult from './SearchSubjectResult';
-import SearchTypeResult from './SearchTypeResult';
+import SearchFieldHeader from "./SearchFieldHeader";
+import SearchFilterContent from "./SearchFilterContent";
+import SearchHeader from "./SearchHeader";
+import SearchNotionsResult from "./SearchNotionsResult";
+import SearchSubjectResult from "./SearchSubjectResult";
+import SearchTypeResult from "./SearchTypeResult";
 
-export type { ContentType } from './SearchTypeResult';
+export type { ContentType } from "./SearchTypeResult";
 
 export {
   SearchTypeResult,

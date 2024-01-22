@@ -15,34 +15,58 @@
 /* Float article objects */
 .u-float-left {
   @include float(13, 20, 'left', 10);
+  @include mq(tablet) {
+    margin: $spacing--xsmall 0 $spacing;
+  }
+  @include mq(desktop) {
+    margin: $spacing--xsmall 0 $spacing;
+  }
 }
 .u-float-right {
   @include float(13, 20, 'right', 10);
+  @include mq(tablet) {
+    margin: $spacing--xsmall 0 $spacing;
+  }
+  @include mq(desktop) {
+    margin: $spacing--xsmall 0 $spacing;
+  }
 }
 .u-float-small-left {
   @include float(2, 4, 'left');
+  @include mq(tablet) {
+    margin: $spacing--xsmall 0 $spacing;
+  }
+  @include mq(desktop) {
+    margin: $spacing--xsmall 0 $spacing;
+  }
 }
 .u-float-small-right {
   @include float(2, 4, 'right');
+  @include mq(tablet) {
+    margin: $spacing--xsmall 0 $spacing;
+  }
+  @include mq(desktop) {
+    margin: $spacing--xsmall 0 $spacing;
+  }
 }
 .u-float-xsmall-left {
   @include float(2, 4, 'left');
   @include mq(tablet) {
     @include float(1, 4, 'left');
-    margin: $spacing--small $spacing $spacing--medium 0;
+    margin: $spacing--xsmall 0 $spacing--medium;
   }
   @include mq(desktop) {
-    margin: $spacing--small $spacing $spacing--medium 0;
+    margin: $spacing--xsmall 0 $spacing--medium;
   }
 }
 .u-float-xsmall-right {
   @include float(2, 4, 'right');
   @include mq(tablet) {
     @include float(1, 4, 'right');
-    margin: $spacing--small 0 $spacing--medium $spacing;
+    margin: $spacing--xsmall 0 $spacing $spacing--xsmall;
   }
   @include mq(desktop) {
-    margin: $spacing--small 0 $spacing--medium $spacing;
+    margin: $spacing--xsmall 0 $spacing $spacing--xsmall;
   }
 }
 

@@ -6,11 +6,11 @@
  *
  */
 
-import { MenuProps, components, GroupBase } from 'react-select';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { Option } from './types';
+import { MenuProps, components, GroupBase } from "react-select";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import { Option } from "./types";
 
 const menuStyle = css`
   && {
@@ -26,7 +26,7 @@ const StyledBaseMenu = styled.div`
   border: 1px solid ${colors.brand.light};
   border-radius: 8px;
   margin: 4px 0;
-  &[data-small='true'] {
+  &[data-small="true"] {
     border-radius: 4px;
   }
 `;

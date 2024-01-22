@@ -6,9 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, animations } from '@ndla/core';
-import { Spinner } from '@ndla/icons';
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, animations } from "@ndla/core";
+import { Spinner } from "@ndla/icons";
 
 const StyledWrapper = styled.div`
   position: absolute;
@@ -23,7 +23,7 @@ const StyledWrapper = styled.div`
     opacity: 0;
   }
   > div {
-    ${animations.fadeIn('1000ms')};
+    ${animations.fadeIn("1000ms")};
     transform: translateX(${spacingUnit * 1.5}px) translateY(-${spacing.xsmall});
   }
 `;

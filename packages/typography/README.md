@@ -17,7 +17,7 @@ npm i --save @ndla/typography
 ### Heading
 
 ```js
-import { Heading } from '@ndla/typography';
+import { Heading } from "@ndla/typography";
 
 <Heading headingStyle="h1" element="h1" margin="normal">
   {title}
@@ -29,7 +29,7 @@ Can be controlles using `headingStyle`, `element`, `serif`, `margin` props. The 
 ### Text
 
 ```js
-import { Text } from '@ndla/typography';
+import { Text } from "@ndla/typography";
 
 <Text textStyle="ingress" element="span" margin="normal" />;
 ```

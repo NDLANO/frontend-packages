@@ -6,16 +6,16 @@
  *
  */
 
-import { format } from 'date-fns';
-import { enGB, nb, nn } from 'date-fns/locale';
-import { useMemo } from 'react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, spacing, mq } from '@ndla/core';
-import { Forward, CalendarEd } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
-import { LinkBlockEmbedData } from '@ndla/types-embed';
-import { Heading } from '@ndla/typography';
-import { getPossiblyRelativeUrl } from '../utils/relativeUrl';
+import { format } from "date-fns";
+import { enGB, nb, nn } from "date-fns/locale";
+import { useMemo } from "react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, spacing, mq } from "@ndla/core";
+import { Forward, CalendarEd } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
+import { LinkBlockEmbedData } from "@ndla/types-embed";
+import { Heading } from "@ndla/typography";
+import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 const StyledForward = styled(Forward)`
   margin: 0 ${spacing.nsmall};
@@ -73,7 +73,7 @@ const StyledCalenderEd = styled(CalendarEd)`
   color: ${colors.icon.iconBlue};
 `;
 
-interface Props extends Omit<LinkBlockEmbedData, 'resource'> {
+interface Props extends Omit<LinkBlockEmbedData, "resource"> {
   path?: string;
 }
 
@@ -81,13 +81,13 @@ const LinkBlock = ({ title, language, date, url, path }: Props) => {
   const href = getPossiblyRelativeUrl(url, path);
   const formattedDate = useMemo(() => {
     if (!date) return null;
-    const locale = language === 'nb' ? nb : language === 'nn' ? nn : enGB;
-    return format(new Date(date), 'dd. LLLL yyyy', { locale });
+    const locale = language === "nb" ? nb : language === "nn" ? nn : enGB;
+    return format(new Date(date), "dd. LLLL yyyy", { locale });
   }, [date, language]);
   return (
     <StyledSafeLink to={href}>
       <InfoWrapper>
-        <Heading element="h3" margin="none" headingStyle="h3" lang={language === 'nb' ? 'no' : language}>
+        <Heading element="h3" margin="none" headingStyle="h3" lang={language === "nb" ? "no" : language}>
           {title}
         </Heading>
         {date && (

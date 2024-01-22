@@ -9,7 +9,7 @@ exports[`Image renderers correctly 1`] = `
   width: 100%;
 }
 
-.emotion-0[data-svg='true'] {
+.emotion-0[data-svg="true"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20,7 +20,7 @@ exports[`Image renderers correctly 1`] = `
   justify-content: center;
 }
 
-.emotion-0[data-border='true'] {
+.emotion-0[data-border="true"] {
   border: 1px solid #a5bcd3;
   border-bottom: 0;
   border-radius: 4px;
@@ -28,7 +28,7 @@ exports[`Image renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
-.emotion-1[data-border='true'] {
+.emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -61,7 +61,7 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   width: 100%;
 }
 
-.emotion-0[data-svg='true'] {
+.emotion-0[data-svg="true"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -72,7 +72,7 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   justify-content: center;
 }
 
-.emotion-0[data-border='true'] {
+.emotion-0[data-border="true"] {
   border: 1px solid #a5bcd3;
   border-bottom: 0;
   border-radius: 4px;
@@ -80,7 +80,7 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
-.emotion-1[data-border='true'] {
+.emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -113,7 +113,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
   width: 100%;
 }
 
-.emotion-0[data-svg='true'] {
+.emotion-0[data-svg="true"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -124,7 +124,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
   justify-content: center;
 }
 
-.emotion-0[data-border='true'] {
+.emotion-0[data-border="true"] {
   border: 1px solid #a5bcd3;
   border-bottom: 0;
   border-radius: 4px;
@@ -132,7 +132,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
-.emotion-1[data-border='true'] {
+.emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;

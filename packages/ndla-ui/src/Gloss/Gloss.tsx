@@ -6,14 +6,14 @@
  *
  */
 
-import { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from '@ndla/accordion';
-import { colors, spacing, misc, fonts } from '@ndla/core';
-import { IGlossData, IGlossExample } from '@ndla/types-backend/concept-api';
-import GlossExample from './GlossExample';
-import SpeechControl from '../AudioPlayer/SpeechControl';
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from "@ndla/accordion";
+import { colors, spacing, misc, fonts } from "@ndla/core";
+import { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
+import GlossExample from "./GlossExample";
+import SpeechControl from "../AudioPlayer/SpeechControl";
 
 export interface Props {
   title: {
@@ -53,7 +53,7 @@ const GlossContainer = styled.div`
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
   span {
-    ${fonts.sizes('16px', '24px')};
+    ${fonts.sizes("16px", "24px")};
   }
   span[data-pinyin] {
     font-style: italic;
@@ -66,7 +66,7 @@ const GlossSpan = styled.span`
 
 const StyledAccordionHeader = styled(AccordionHeader)`
   font-family: ${fonts.sans};
-  ${fonts.sizes('16px', '24px')};
+  ${fonts.sizes("16px", "24px")};
   font-weight: ${fonts.weight.semibold};
   background-color: ${colors.background.lightBlue};
 `;
@@ -81,8 +81,8 @@ const getFilteredExamples = (
   exampleLangs: string | undefined,
 ): IGlossExample[][] => {
   if (exampleIds !== undefined || exampleLangs !== undefined) {
-    const exampleIdsList = exampleIds?.toString()?.split(',') ?? [];
-    const exampleLangsList = exampleLangs?.split(',') ?? [];
+    const exampleIdsList = exampleIds?.toString()?.split(",") ?? [];
+    const exampleLangsList = exampleLangs?.split(",") ?? [];
 
     const filteredExamples =
       glossData?.examples?.map((examples, i) => {
@@ -113,8 +113,8 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                 <GlossSpan lang={glossData.originalLanguage}>{glossData.gloss}</GlossSpan>
                 {glossData.transcriptions.traditional && (
                   <span
-                    key={t('gloss.transcriptions.traditional')}
-                    aria-label={t('gloss.transcriptions.traditional')}
+                    key={t("gloss.transcriptions.traditional")}
+                    aria-label={t("gloss.transcriptions.traditional")}
                     lang={glossData.originalLanguage}
                   >
                     {glossData.transcriptions.traditional}
@@ -123,15 +123,15 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                 {glossData.transcriptions.pinyin && (
                   <span
                     data-pinyin=""
-                    key={t('gloss.transcriptions.pinyin')}
-                    aria-label={t('gloss.transcriptions.pinyin')}
+                    key={t("gloss.transcriptions.pinyin")}
+                    aria-label={t("gloss.transcriptions.pinyin")}
                     lang={glossData.originalLanguage}
                   >
                     {glossData.transcriptions.pinyin}
                   </span>
                 )}
                 {glossData.wordClass && (
-                  <span aria-label={t('gloss.wordClass')}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
+                  <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
                 )}
               </GlossContainer>
               {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
@@ -141,7 +141,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
           {filteredExamples.length > 0 && (
             <AccordionRoot type="single" collapsible>
               <AccordionItem value="1">
-                <StyledAccordionHeader headingLevel="span">{t('gloss.examples')}</StyledAccordionHeader>
+                <StyledAccordionHeader headingLevel="span">{t("gloss.examples")}</StyledAccordionHeader>
                 <StyledAccordionContent>
                   {filteredExamples.map((examples, index) => (
                     <div key={`gloss-example-${index}`}>

@@ -6,15 +6,15 @@
  *
  */
 
-import { ElementType, Fragment, ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { fonts, mq, spacing, breakpoints, colors, spacingUnit } from '@ndla/core';
-import { Spinner } from '@ndla/icons';
-import { ChevronRight } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
-import Tooltip from '@ndla/tooltip';
-import { uuid } from '@ndla/util';
+import { ElementType, Fragment, ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { fonts, mq, spacing, breakpoints, colors, spacingUnit } from "@ndla/core";
+import { Spinner } from "@ndla/icons";
+import { ChevronRight } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
+import Tooltip from "@ndla/tooltip";
+import { uuid } from "@ndla/util";
 
 interface ItemType {
   id: string | number;
@@ -69,7 +69,7 @@ const PillsWrapper = styled.div`
   margin-right: ${spacing.small};
   padding: 0 ${spacingUnit / 3}px;
   border-radius: 50%;
-  ${fonts.sizes('12px', '20px')};
+  ${fonts.sizes("12px", "20px")};
   font-weight: ${fonts.weight.semibold};
 `;
 
@@ -96,15 +96,15 @@ const StyledIngress = styled.p`
   margin: 0 0 ${spacing.normal} 0;
   width: 100%;
   flex-grow: 1;
-  ${fonts.sizes('14px', '22px')};
+  ${fonts.sizes("14px", "22px")};
 
   ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('16px', '24px')};
+    ${fonts.sizes("16px", "24px")};
     max-width: 550px;
   }
 
   ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('18px', '26px')};
+    ${fonts.sizes("18px", "26px")};
     max-width: 600px;
   }
 `;
@@ -114,17 +114,17 @@ const StyledSubjects = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: ${spacing.normal};
-  ${fonts.sizes('14px', '16px')};
+  ${fonts.sizes("14px", "16px")};
 
   ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('16px', '18px')};
+    ${fonts.sizes("16px", "18px")};
   }
 
   & > span {
     text-transform: uppercase;
     color: ${colors.text.light};
     padding-right: ${spacing.small};
-    ${fonts.sizes('14px', '16px')};
+    ${fonts.sizes("14px", "16px")};
   }
 
   ul {
@@ -137,7 +137,7 @@ const StyledSubjects = styled.div`
   }
 
   li {
-    margin: 0;
+    padding: 0;
     position: relative;
     line-height: 1rem;
 
@@ -150,7 +150,7 @@ const StyledSubjects = styled.div`
     }
 
     &::after {
-      content: '';
+      content: "";
       width: 1px;
       height: 15px;
       background: ${colors.brand.greyLight};
@@ -194,10 +194,10 @@ const StyledSearchResultItem = styled.li`
 
   h1 {
     font-weight: 600;
-    ${fonts.sizes('16px', '20px')};
+    ${fonts.sizes("16px", "20px")};
 
     ${mq.range({ from: breakpoints.desktop })} {
-      ${fonts.sizes('22px', '28px')};
+      ${fonts.sizes("22px", "28px")};
     }
 
     a {
@@ -219,9 +219,9 @@ const StyledBreadcrumb = styled.div`
   flex-wrap: wrap;
   color: ${colors.text.light};
   margin-bottom: ${spacing.normal};
-  ${fonts.sizes('14px', '18px')};
+  ${fonts.sizes("14px", "18px")};
   ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('16px', '24px')};
+    ${fonts.sizes("16px", "24px")};
   }
   [data-icon] {
     width: ${spacing.small};
@@ -241,7 +241,7 @@ export const SearchResultItem = ({
   children,
 }: SearchResultItemProps) => {
   const itemBreadcrumb = (breadcrumbs: string[] = [], itemBreadcrumb?: boolean) => {
-    const Breadcrumb: ElementType = itemBreadcrumb ? StyledBreadcrumb : 'div';
+    const Breadcrumb: ElementType = itemBreadcrumb ? StyledBreadcrumb : "div";
     if (breadcrumbs.length > 0) {
       return (
         <Breadcrumb>
@@ -266,10 +266,10 @@ export const SearchResultItem = ({
       <article>
         <StyledHeader>
           <h1>
-            {item.url && typeof item.url !== 'string' ? (
+            {item.url && typeof item.url !== "string" ? (
               <a {...item.url}>{item.title}</a>
             ) : (
-              <SafeLink to={item.url ?? ''}>{item.title}</SafeLink>
+              <SafeLink to={item.url ?? ""}>{item.title}</SafeLink>
             )}
           </h1>
           <ContentTypeWrapper>{item.contentTypeIcon}</ContentTypeWrapper>
@@ -290,10 +290,10 @@ export const SearchResultItem = ({
               {item.subjects.map((subject) => (
                 <li key={uuid()}>
                   <Tooltip tooltip={itemBreadcrumb(subject.breadcrumb)}>
-                    {subject.url && typeof subject.url !== 'string' ? (
+                    {subject.url && typeof subject.url !== "string" ? (
                       <a {...subject.url}>{subject.title}</a>
                     ) : (
-                      <SafeLink to={subject.url ?? ''}>{subject.title}</SafeLink>
+                      <SafeLink to={subject.url ?? ""}>{subject.title}</SafeLink>
                     )}
                   </Tooltip>
                 </li>
@@ -314,28 +314,27 @@ interface SearchResultListProps {
 const EmptyResultList = styled.article`
   margin-top: ${spacing.large};
   h1 {
-    ${fonts.sizes('22px', '32px')};
+    ${fonts.sizes("22px", "32px")};
     font-weight: ${fonts.weight.bold};
     margin: 0 0 ${spacing.small};
   }
 
   p {
-    ${fonts.sizes('16px', '22px')};
+    ${fonts.sizes("16px", "22px")};
     margin: 0;
     font-family: ${fonts.serif};
 
     ${mq.range({ from: breakpoints.desktop })} {
-      ${fonts.sizes('18px', '32px')};
+      ${fonts.sizes("18px", "32px")};
     }
   }
 `;
 
 const ResultList = styled.ul`
   list-style: none;
-  margin: 0;
   padding: 0;
   ${mq.range({ from: breakpoints.desktop })} {
-    margin: ${spacing.medium} 0 0 0;
+    padding: ${spacing.medium} 0 0 0;
   }
 `;
 
@@ -349,17 +348,17 @@ export const SearchResultList = ({ results, loading }: SearchResultListProps) =>
   }
   return results.length === 0 ? (
     <EmptyResultList>
-      <h1>{t('searchPage.searchResultListMessages.noResultHeading')}</h1>
-      <p>{t('searchPage.searchResultListMessages.noResultDescription')}</p>
+      <h1>{t("searchPage.searchResultListMessages.noResultHeading")}</h1>
+      <p>{t("searchPage.searchResultListMessages.noResultDescription")}</p>
     </EmptyResultList>
   ) : (
     <ResultList>
       {results.map((item) => (
         <SearchResultItem
-          key={`search_result_item_${typeof item.url === 'object' ? item.url.href : item.url}`}
+          key={`search_result_item_${typeof item.url === "object" ? item.url.href : item.url}`}
           item={item}
-          additionalContentTooltip={t('resource.tooltipAdditionalTopic')}
-          subjectsLabel={t('searchPage.searchResultListMessages.subjectsLabel')}
+          additionalContentTooltip={t("resource.tooltipAdditionalTopic")}
+          subjectsLabel={t("searchPage.searchResultListMessages.subjectsLabel")}
         >
           {item.children}
         </SearchResultItem>

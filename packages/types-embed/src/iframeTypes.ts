@@ -7,7 +7,7 @@
  */
 
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { DisclaimerLink, MetaData } from '.';
+import { MetaData } from '.';
 
 export interface IframeEmbedData {
   resource: 'iframe';
@@ -19,13 +19,10 @@ export interface IframeEmbedData {
   caption?: string;
   alt?: string;
   imageid?: string;
-  disclaimer?: string;
-  disclaimerArticleId?: number;
 }
 
 export interface IframeData {
   iframeImage?: IImageMetaInformationV3;
-  disclaimerLink?: DisclaimerLink;
 }
 
 export type IframeMetaData = MetaData<IframeEmbedData, IframeData>;

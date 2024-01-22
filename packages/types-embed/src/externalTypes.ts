@@ -7,7 +7,7 @@
  */
 
 import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { DisclaimerLink, MetaData, OembedProxyResponse } from '.';
+import { MetaData, OembedProxyResponse } from '.';
 
 export interface OembedEmbedData {
   resource: 'external';
@@ -18,14 +18,11 @@ export interface OembedEmbedData {
   title?: string;
   height?: string;
   imageid?: string;
-  disclaimer?: string;
-  disclaimerArticleId?: number;
 }
 
 export interface OembedData {
   oembed: OembedProxyResponse;
   iframeImage?: IImageMetaInformationV3;
-  disclaimerLink?: DisclaimerLink;
 }
 
 export type OembedMetaData = MetaData<OembedEmbedData, OembedData>;

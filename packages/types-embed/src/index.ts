@@ -48,6 +48,7 @@ import { ImageEmbedData, ImageMetaData } from './imageTypes';
 import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from './keyFigureTypes';
 import { LinkBlockEmbedData, LinkBlockMetaData } from './linkBlockTypes';
 import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from './relatedContentTypes';
+import { UuDisclaimerData, UuDisclaimerEmbedData, UuDisclaimerMetaData } from './uuDisclaimerTypes';
 
 export type EmbedData =
   | AudioEmbedData
@@ -68,7 +69,8 @@ export type EmbedData =
   | KeyFigureEmbedData
   | ContactBlockEmbedData
   | CampaignBlockEmbedData
-  | LinkBlockEmbedData;
+  | LinkBlockEmbedData
+  | UuDisclaimerEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -88,7 +90,8 @@ export type EmbedMetaData =
   | KeyFigureMetaData
   | ContactBlockMetaData
   | CampaignBlockMetaData
-  | LinkBlockMetaData;
+  | LinkBlockMetaData
+  | UuDisclaimerMetaData;
 
 export type {
   ConceptMetaData,
@@ -108,6 +111,7 @@ export type {
   ContactBlockMetaData,
   CampaignBlockMetaData,
   LinkBlockMetaData,
+  UuDisclaimerMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -127,6 +131,7 @@ export type {
   ContactBlockEmbedData,
   CampaignBlockEmbedData,
   LinkBlockEmbedData,
+  UuDisclaimerEmbedData,
 };
 
 export type { BlogPostMeta };
@@ -141,8 +146,8 @@ export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualE
 export type { AudioMeta };
 export type { H5pData };
 export type { CampaignBlockMeta };
-
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
+export type { UuDisclaimerData };
 
 interface MetaDataFailure<T extends EmbedData> {
   resource: T['resource'];

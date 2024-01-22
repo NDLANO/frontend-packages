@@ -6,7 +6,7 @@
  *
  */
 
-import { DisclaimerLink, MetaData, OembedProxyResponse } from '.';
+import { MetaData, OembedProxyResponse } from '.';
 
 export interface H5pEmbedData {
   resource: 'h5p';
@@ -15,8 +15,6 @@ export interface H5pEmbedData {
   title?: string;
   pageUrl?: string;
   alt?: string;
-  disclaimer?: string;
-  disclaimerArticleId?: number;
 }
 
 export interface H5pLicenseInformation {
@@ -67,7 +65,6 @@ export interface H5pData {
   h5pLicenseInformation?: H5pLicenseInformation;
   h5pUrl: string;
   oembed?: H5pOembedData;
-  disclaimerLink?: DisclaimerLink;
 }
 
 export type H5pMetaData = MetaData<H5pEmbedData, H5pData>;

@@ -19,8 +19,6 @@ export type BrightcoveEmbedData = {
   metaData?: any;
   alt?: string;
   pageUrl?: string;
-  disclaimer?: string;
-  disclaimerArticleId?: number;
 };
 
 interface Author {
@@ -72,7 +70,6 @@ export interface BrightcoveApiType {
 export interface BrightcoveData extends BrightcoveApiType {
   sources: BrightcoveVideoSource[];
   copyright?: BrightcoveCopyright;
-  disclaimerLink?: DisclaimerLink;
 }
 
 export type BrightcoveMetaData = MetaData<BrightcoveEmbedData, BrightcoveData>;

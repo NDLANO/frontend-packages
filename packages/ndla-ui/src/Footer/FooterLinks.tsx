@@ -86,7 +86,7 @@ const StyledSocialMediaLinkWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledHeaderLinks = styled(Text)`
+const StyledTextLinks = styled(Text)`
   ${fonts.sizes(16, 1.5)};
   font-weight: ${fonts.weight.semibold};
 `;
@@ -97,9 +97,9 @@ const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
     <>
       <StyledLinksWrapper>
         <div>
-          <StyledHeaderLinks id="otherLinks" element="span" textStyle="content-alt">
+          <StyledTextLinks id="otherLinks" element="span" textStyle="content-alt">
             {t("footer.linksHeader")}
-          </StyledHeaderLinks>
+          </StyledTextLinks>
           <StyledNav aria-labelledby="otherLinks">
             {commonLinks?.map((link) => (
               <div key={link.to}>

@@ -43,7 +43,7 @@ const StyledOneColumn = styled(OneColumn)`
   position: relative;
 `;
 
-const StyledHeader = styled(Text)`
+const StyledText = styled(Text)`
   ${fonts.sizes(20, 1.5)};
   margin: 0;
   font-weight: ${fonts.weight.semibold};
@@ -148,9 +148,9 @@ const Footer = ({ children, commonLinks, links, languageSelector, auth, privacyL
             <StyledFooterHeaderIcon />
           </div>
           <div>
-            <StyledHeader element="div" textStyle="content-alt" margin="none">
+            <StyledText element="div" textStyle="content-alt" margin="none">
               {t("footer.vision")}
-            </StyledHeader>
+            </StyledText>
             <FooterLinks commonLinks={commonLinks} links={links} />
           </div>
         </StyledColumns>

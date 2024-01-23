@@ -35,7 +35,7 @@ interface StyledMastheadProps {
 }
 
 const StyledMasthead = styled.div<StyledMastheadProps>`
-  z-index: ${stackOrder.drawer};
+  z-index: ${stackOrder.banner};
   position: relative;
   background: white;
   border-bottom: 1px solid ${colors.brand.greyLighter};

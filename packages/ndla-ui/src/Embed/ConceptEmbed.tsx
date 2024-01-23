@@ -198,7 +198,7 @@ const NotionButton = styled.button`
   &:focus,
   &:hover,
   &:active,
-  &[data-active="true"] {
+  &[data-open="true"] {
     color: ${colors.notion.dark};
     background-color: ${colors.notion.light};
     [data-baseline-icon] {
@@ -265,7 +265,7 @@ export const InlineConcept = ({
         <StyledAnchorSpan />
       </StyledAnchor>
       <Trigger asChild>
-        <NotionButton data-active={modalPos !== -9999}>
+        <NotionButton data-open={modalPos !== -9999}>
           {linkText}
           {<BaselineIcon data-baseline-icon />}
         </NotionButton>

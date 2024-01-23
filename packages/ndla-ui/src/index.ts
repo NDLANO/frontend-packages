@@ -27,7 +27,7 @@ export {
   UnknownEmbed,
   InlineConcept,
   BlockConcept,
-  UuDisclaimerEmbed
+  UuDisclaimerEmbed,
 } from "./Embed";
 
 export { LicenseLink } from "./LicenseByline";

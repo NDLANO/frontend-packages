@@ -113,7 +113,7 @@ export const WithH5p: StoryObj<typeof UuDisclaimerEmbed> = {
           },
           data: {
             h5pUrl:
-            "https://h5p-test.ndla.no/resource/c56368d0-0432-4ec3-97bd-f4ba4badf55e?locale=nb-no&cssUrl=https://test.ndla.no/static/h5p-custom-css.css",
+              "https://h5p-test.ndla.no/resource/c56368d0-0432-4ec3-97bd-f4ba4badf55e?locale=nb-no&cssUrl=https://test.ndla.no/static/h5p-custom-css.css",
             oembed: {
               type: "proxy",
               version: "1.0",
@@ -121,7 +121,7 @@ export const WithH5p: StoryObj<typeof UuDisclaimerEmbed> = {
               width: 600,
               height: 300,
               html: '<div><iframe width="600" height="300" allowfullscreen="allowfullscreen" src="https://h5p-test.ndla.no/resource/c56368d0-0432-4ec3-97bd-f4ba4badf55e?locale=nb-no&amp;cssUrl=https%3A%2F%2Ftest.ndla.no%2Fstatic%2Fh5p-custom-css.css" title="Sorter avfall"></iframe><script src="https://ca.h5p.ndla.no/h5p-php-library/js/h5p-resizer.js"></script></div>',
-            },          
+            },
           },
         }}
       />

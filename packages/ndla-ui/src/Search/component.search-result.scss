@@ -91,7 +91,7 @@
     margin: 0;
     font-weight: 600;
     @include font-size(14px, 32px);
-    margin-bottom: calc($spacing--small / 2);
+    margin-bottom: $spacing--xsmall;
 
     @include mq(desktop) {
       @include font-size(18px, 32px);
@@ -265,7 +265,7 @@
       margin: 0 calc($spacing--small / 3);
 
       @include mq(desktop) {
-        margin: 0 calc($spacing--small / 2);
+        margin: 0 $spacing--xsmall;
       }
     }
   }
@@ -301,8 +301,8 @@
       position: relative;
       line-height: 1rem;
 
-      padding: 0 calc($spacing--small / 2) 0 0;
-      margin-right: calc($spacing--small / 2);
+      padding: 0 $spacing--xsmall 0 0;
+      margin-right: $spacing--xsmall;
 
       @include mq(desktop) {
         padding: 0 $spacing--small 0 0;

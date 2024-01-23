@@ -46,7 +46,7 @@ a:not([class]) {
 }
 hr {
   border: none;
-  margin: calc($spacing * 2) 0;
+  margin: $spacing--large 0;
   position: relative;
   text-align: center;
   font-size: calc(calc($inuit-global-font-size / 5px) * 1em); /* [1] */

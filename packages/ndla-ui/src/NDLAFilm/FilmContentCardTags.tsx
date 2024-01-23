@@ -24,7 +24,7 @@ const StyledMovieTags = styled.span`
   ${fonts.sizes("14px", "16px")};
   font-weight: ${fonts.weight.semibold};
   background: ${colors.brand.greyLight};
-  padding: calc(${spacing.xsmall} / 2) ${spacing.xsmall};
+  padding: ${spacing.xxsmall} ${spacing.xsmall};
   border-radius: ${misc.borderRadius};
   color: ${colors.text.primary};
   margin-right: ${spacingUnit / 4}px;

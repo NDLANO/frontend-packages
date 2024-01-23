@@ -22,7 +22,7 @@
 
 .o-list__item--colors {
   list-style: none;
-  margin: 0 calc($spacing--small / 2) calc($spacing--small / 2) 0;
+  margin: 0 $spacing--xsmall $spacing--xsmall 0;
   width: 180px;
   min-height: 140px;
 }

@@ -64,7 +64,7 @@ h3,
 h4,
 h5 {
   margin-top: $spacing--medium;
-  margin-bottom: calc($spacing--small / 2);
+  margin-bottom: $spacing--xsmall;
 }
 
 h2 + h2 {

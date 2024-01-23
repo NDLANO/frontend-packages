@@ -23,7 +23,7 @@ const ListViewWrapper = styled.div`
     justify-content: space-between;
     .sorting-wrapper {
       display: flex;
-      margin-right: calc(${spacing.large} * 2);
+      margin-right: ${spacing.xxlarge};
       &:not(:last-child) {
         margin-right: ${spacing.medium};
       }

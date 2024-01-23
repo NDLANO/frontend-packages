@@ -154,12 +154,12 @@
     left: 0;
 
     @include mq(tablet) {
-      top: calc($spacing--small / 2);
+      top: $spacing--xsmall;
     }
 
     @include mq(desktop) {
       left: -80px;
-      top: calc($spacing--small / 2);
+      top: $spacing--xsmall;
     }
   }
 }

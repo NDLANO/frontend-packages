@@ -196,28 +196,13 @@ const NotionButton = styled.button`
   color: ${colors.notion.dark};
   cursor: pointer;
   &:focus,
-  &:hover {
-    background-color: ${colors.notion.dark};
-    color: ${colors.white};
-    outline: none;
-    [data-baseline-icon] {
-      border-color: transparent;
-    }
-  }
-
-  &:active {
+  &:hover,
+  &:active,
+  &[data-active="true"] {
     color: ${colors.notion.dark};
     background-color: ${colors.notion.light};
     [data-baseline-icon] {
       border-color: currentColor;
-    }
-  }
-  &[data-active="true"] {
-    background-color: ${colors.notion.dark};
-    color: ${colors.white};
-    outline: none;
-    [data-baseline-icon] {
-      border-color: transparent;
     }
   }
 `;

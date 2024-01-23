@@ -42,7 +42,7 @@ const StyledOneColumn = styled(OneColumn)`
   position: relative;
 `;
 
-const StyledHeader = styled.h2`
+const StyledHeader = styled.div`
   ${fonts.sizes(20, 1.5)};
   margin: 0;
   font-weight: ${fonts.weight.semibold};

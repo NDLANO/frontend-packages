@@ -85,7 +85,7 @@ const StyledSocialMediaLinkWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledHeaderLinks = styled.h3`
+const StyledHeaderLinks = styled.div`
   ${fonts.sizes(16, 1.5)};
   font-weight: ${fonts.weight.semibold};
   margin: ${spacing.xsmall} 0;

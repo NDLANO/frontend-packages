@@ -1,6 +1,6 @@
 {
   "name": "@ndla/notion",
-  "version": "6.0.28",
+  "version": "6.0.29",
   "description": "Notions and dictionary-notions for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,8 +25,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^4.3.6",
-    "@ndla/icons": "^5.0.7",
+    "@ndla/core": "^4.3.7",
+    "@ndla/icons": "^5.0.8",
     "@ndla/licenses": "^7.2.5",
     "@radix-ui/react-popover": "^1.0.7"
   },

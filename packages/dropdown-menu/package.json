@@ -1,6 +1,6 @@
 {
   "name": "@ndla/dropdown-menu",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "Dropdown menu component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,7 +26,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^4.3.6",
+    "@ndla/core": "^4.3.7",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2"
   },

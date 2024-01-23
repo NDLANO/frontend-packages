@@ -1083,7 +1083,7 @@ const messages = {
             newCategory: "Ny kategori",
             editCategory: "Rediger kategori",
             title: "Tittel",
-            description: "Skildring",
+            description: "Beskriving",
             visible: "Synlighet",
             deleteText: "Slett kategori",
             modalTitle: "Slett kategori",

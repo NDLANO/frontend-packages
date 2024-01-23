@@ -8,10 +8,10 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import { UuDisclaimerEmbedData } from "@ndla/types-embed";
-import UuDisclaimerEmbed from "./UudisclaimerEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
-import IframeEmbed from "./IframeEmbed";
 import H5pEmbed from "./H5pEmbed";
+import IframeEmbed from "./IframeEmbed";
+import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
+import { defaultParameters } from "../../../../stories/defaults";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",

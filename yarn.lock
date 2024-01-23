@@ -2591,7 +2591,7 @@ __metadata:
     "@ndla/code": "npm:^5.0.33"
     "@ndla/types-backend": "npm:^0.2.21"
     "@ndla/types-embed": "npm:^4.0.13"
-    "@ndla/ui": "npm:^50.9.3"
+    "@ndla/ui": "npm:^50.9.4"
     html-react-parser: "npm:^4.2.2"
     lodash: "npm:^4.17.20"
   peerDependencies:
@@ -2701,7 +2701,7 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.28"
     "@ndla/core": "npm:^4.3.6"
-    "@ndla/forms": "npm:^5.2.18"
+    "@ndla/forms": "npm:^5.2.19"
     "@ndla/icons": "npm:^5.0.7"
     "@ndla/modal": "npm:^5.0.27"
     "@ndla/tooltip": "npm:^6.0.14"
@@ -2724,7 +2724,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/forms@npm:^5.2.18, @ndla/forms@workspace:packages/ndla-forms":
+"@ndla/forms@npm:^5.2.19, @ndla/forms@workspace:packages/ndla-forms":
   version: 0.0.0-use.local
   resolution: "@ndla/forms@workspace:packages/ndla-forms"
   dependencies:
@@ -2767,7 +2767,7 @@ __metadata:
     "@ndla/modal": "npm:^5.0.27"
     "@ndla/notion": "npm:^6.0.28"
     "@ndla/tooltip": "npm:^6.0.14"
-    "@ndla/ui": "npm:^50.9.3"
+    "@ndla/ui": "npm:^50.9.4"
     "@ndla/util": "npm:^4.0.4"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2799,11 +2799,11 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.28"
     "@ndla/core": "npm:^4.3.6"
-    "@ndla/forms": "npm:^5.2.18"
+    "@ndla/forms": "npm:^5.2.19"
     "@ndla/icons": "npm:^5.0.7"
     "@ndla/pager": "npm:^2.2.53"
     "@ndla/types-backend": "npm:^0.2.21"
-    "@ndla/ui": "npm:^50.9.3"
+    "@ndla/ui": "npm:^50.9.4"
     "@ndla/util": "npm:^4.0.4"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
@@ -2830,7 +2830,7 @@ __metadata:
   dependencies:
     "@ndla/core": "npm:^4.3.6"
     "@ndla/icons": "npm:^5.0.7"
-    "@ndla/ui": "npm:^50.9.3"
+    "@ndla/ui": "npm:^50.9.4"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -3022,7 +3022,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^50.9.3, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^50.9.4, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
@@ -3031,7 +3031,7 @@ __metadata:
     "@ndla/carousel": "npm:^4.0.28"
     "@ndla/core": "npm:^4.3.6"
     "@ndla/dropdown-menu": "npm:^1.0.26"
-    "@ndla/forms": "npm:^5.2.18"
+    "@ndla/forms": "npm:^5.2.19"
     "@ndla/hooks": "npm:^2.1.5"
     "@ndla/icons": "npm:^5.0.7"
     "@ndla/licenses": "npm:^7.2.5"
@@ -3086,7 +3086,7 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.28"
     "@ndla/core": "npm:^4.3.6"
-    "@ndla/forms": "npm:^5.2.18"
+    "@ndla/forms": "npm:^5.2.19"
     "@ndla/icons": "npm:^5.0.7"
     "@ndla/licenses": "npm:^7.2.5"
     "@ndla/notion": "npm:^6.0.28"

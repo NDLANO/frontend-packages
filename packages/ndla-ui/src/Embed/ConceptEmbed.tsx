@@ -200,7 +200,7 @@ const NotionButton = styled.button`
     background-color: ${colors.notion.dark};
     color: ${colors.white};
     outline: none;
-    ${BaselineIcon} {
+    [data-baseline-icon] {
       border-color: transparent;
     }
   }
@@ -208,7 +208,7 @@ const NotionButton = styled.button`
   &:active {
     color: ${colors.notion.dark};
     background-color: ${colors.notion.light};
-    ${BaselineIcon} {
+    [data-baseline-icon] {
       border-color: currentColor;
     }
   }
@@ -216,7 +216,7 @@ const NotionButton = styled.button`
     background-color: ${colors.notion.dark};
     color: ${colors.white};
     outline: none;
-    ${BaselineIcon} {
+    [data-baseline-icon] {
       border-color: transparent;
     }
   }
@@ -282,7 +282,7 @@ export const InlineConcept = ({
       <Trigger asChild>
         <NotionButton data-active={modalPos !== -9999}>
           {linkText}
-          {<BaselineIcon />}
+          {<BaselineIcon data-baseline-icon />}
         </NotionButton>
       </Trigger>
       <Portal container={(anchorRef.current?.closest(".c-article") as HTMLElement | null) || undefined}>

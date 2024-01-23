@@ -50,6 +50,7 @@ const DialogContent = styled(Content)`
   padding-right: env(safe-area-inset-right);
   ${modalAnimations};
   animation-duration: var(--duration);
+  animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 
   ${positionStyles};

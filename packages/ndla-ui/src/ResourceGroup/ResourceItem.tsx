@@ -99,10 +99,15 @@ const ListElement = styled.li`
 `;
 
 const ResourceLink = styled(SafeLink)`
+  display: flex;
+  width: 100%;
+  align-items: center;
   font-weight: ${fonts.weight.semibold};
   box-shadow: none;
-  text-decoration: underline;
-  text-underline-offset: 5px;
+  &[data-active="false"] {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
   color: ${colors.brand.dark};
   ${fonts.sizes("16px", "26px")};
   ${mq.range({ from: breakpoints.tablet })} {
@@ -113,7 +118,32 @@ const ResourceLink = styled(SafeLink)`
   }
   &:hover {
     text-decoration: none;
+    [data-badge-wrapper="true"] {
+      [data-badge] {
+        width: ${spacing.mediumlarge};
+        height: ${spacing.mediumlarge};
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+        [data-type="subject-material"],
+        [data-type="learning-path"],
+        [data-type="source-material"],
+        [data-type="external-learning-resources"] {
+          svg {
+            width: ${spacing.medium};
+            height: ${spacing.medium};
+          }
+        }
+      }
+    }
   }
+`;
+
+const InlineContainer = styled.div`
+  display: inline;
+  width: 100%;
 `;
 
 const ContentBadgeWrapper = styled.div`
@@ -149,38 +179,11 @@ const ContentTypeName = styled.span`
   text-align: right;
 `;
 
-const InlineContainer = styled.div`
-  display: inline;
-`;
-
-const ResourceWrapper = styled.div`
-  display: flex;
-  gap: ${spacing.xsmall};
-  align-items: center;
-  :hover {
-    [data-badge] {
-      width: 38px;
-      height: 38px;
-
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-      [data-type="subject-material"],
-      [data-type="learning-path"],
-      [data-type="source-material"],
-      [data-type="external-learning-resources"] {
-        svg {
-          width: 26px;
-          height: 26px;
-        }
-      }
-    }
-  }
-`;
-
 const CurrentSmall = styled.small`
   margin-left: ${spacing.xsmall};
+  text-decoration: none;
+  color: ${colors.text.primary};
+  font-weight: ${fonts.weight.normal};
 `;
 
 interface Props {
@@ -235,22 +238,22 @@ const ResourceItem = ({
       data-additional={additional}
       style={listElementVars}
     >
-      <ResourceWrapper>
-        <ContentBadgeWrapper>
+      <ResourceLink
+        to={path}
+        lang={language === "nb" ? "no" : language}
+        aria-current={active ? "page" : undefined}
+        aria-describedby={describedBy}
+        disabled={active}
+        data-active={active}
+      >
+        <ContentBadgeWrapper data-badge-wrapper={!active}>
           <ContentTypeBadge type={contentType ?? ""} background border={false} />
         </ContentBadgeWrapper>
         <InlineContainer>
-          <ResourceLink
-            to={path}
-            lang={language === "nb" ? "no" : language}
-            aria-current={active ? "page" : undefined}
-            aria-describedby={describedBy}
-          >
-            {name}
-          </ResourceLink>
+          {name}
           {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
         </InlineContainer>
-      </ResourceWrapper>
+      </ResourceLink>
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === "teacher" && (

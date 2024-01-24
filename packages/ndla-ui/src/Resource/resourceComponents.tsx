@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { IconButtonV2 } from "@ndla/button";
-import { colors, fonts, spacing } from "@ndla/core";
+import { colors, fonts, spacing, stackOrder } from "@ndla/core";
 import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from "@ndla/dropdown-menu";
 import { HashTag } from "@ndla/icons/common";
 import SafeLink, { SafeLinkButton } from "@ndla/safelink";
@@ -30,7 +30,7 @@ export const ResourceTitleLink = styled(SafeLink)`
   :after {
     content: "";
     position: absolute;
-    z-index: 1;
+    z-index: ${stackOrder.offsetSingle};
     top: 0;
     right: 0;
     bottom: 0;

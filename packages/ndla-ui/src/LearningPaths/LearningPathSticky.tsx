@@ -10,7 +10,7 @@ import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, spacing, animations, mq, breakpoints } from "@ndla/core";
+import { animations, breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { Back, Forward } from "@ndla/icons/common";
 import SafeLink from "@ndla/safelink";
 
@@ -27,7 +27,7 @@ const StyledFooter = styled.nav`
     height: calc(${FOOTER_HEIGHT_MOBILE} + var(--safe-area-inset-bottom));
     min-height: var(-webkit-fill-available);
     position: fixed;
-    z-index: 2;
+    z-index: ${stackOrder.offsetDouble};
     bottom: 0;
     left: 0;
     right: 0;

@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from "@ndla/core";
+import { colors, spacing, fonts, mq, breakpoints, spacingUnit, stackOrder } from "@ndla/core";
 import { FooterHeaderIcon } from "@ndla/icons/common";
 import { Text } from "@ndla/typography";
 import FooterLinks from "./FooterLinks";
@@ -32,14 +32,14 @@ const StyledDiv = styled.div`
   position: relative;
   background: ${colors.brand.dark};
   overflow: hidden;
-  z-index: 0;
+  z-index: ${stackOrder.base};
   &[data-margin="true"] {
     margin-top: ${spacing.xxlarge};
   }
 `;
 
 const StyledOneColumn = styled(OneColumn)`
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   position: relative;
 `;
 
@@ -102,7 +102,7 @@ const StyledHr = styled.hr`
 
 const StyledLanguageWrapper = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   margin-top: ${spacing.normal};
   display: flex;
   align-items: center;

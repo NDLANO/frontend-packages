@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { Root, Trigger, Content, Anchor, Close, Portal } from "@radix-ui/react-popover";
 import { IconButtonV2 } from "@ndla/button";
-import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
 import { COPYRIGHTED } from "@ndla/licenses";
 import Tooltip from "@ndla/tooltip";
@@ -49,7 +49,7 @@ const PopoverWrapper = styled.div<PopoverPosition>`
       top: 0 !important;
       left: 0 !important;
       width: 100vw;
-      z-index: 100 !important;
+      z-index: ${stackOrder.popover} !important;
       height: 100vh;
       min-width: 100vw !important;
     }

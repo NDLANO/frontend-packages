@@ -8,7 +8,7 @@
 import { CSSProperties, ReactNode, Ref, forwardRef, useMemo } from "react";
 import styled from "@emotion/styled";
 import { Content, DialogProps, DialogTriggerProps, Overlay, Portal, Root, Trigger } from "@radix-ui/react-dialog";
-import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { modalAnimations, overlayAnimations, positionStyles, sizeStyles } from "./modalStyles";
 import { ModalContentProps } from "./types";
 
@@ -16,7 +16,7 @@ const StyledOverlay = styled.div`
   position: fixed;
   inset: 0;
   background: rgba(1, 1, 1, 0.3);
-  z-index: 100;
+  z-index: ${stackOrder.modal - stackOrder.offsetSingle};
   ${overlayAnimations};
   animation-duration: var(--duration);
   animation-timing-function: ease-in-out;
@@ -33,7 +33,7 @@ const DialogContent = styled(Content)`
   position: fixed;
   inset: 0;
   margin: auto;
-  z-index: 100;
+  z-index: ${stackOrder.modal};
   height: min-content;
   max-height: 85%;
   max-width: 95%;
@@ -50,6 +50,7 @@ const DialogContent = styled(Content)`
   padding-right: env(safe-area-inset-right);
   ${modalAnimations};
   animation-duration: var(--duration);
+  animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 
   ${positionStyles};
@@ -126,7 +127,7 @@ const StyledDialog = styled(Root)`
   position: fixed;
   inset: 0;
   width: 100vw;
-  z-index: 100;
+  z-index: ${stackOrder.modal};
 `;
 
 export const Modal = ({ children, ...rest }: DialogProps) => {

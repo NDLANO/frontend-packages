@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { mq, breakpoints, fonts, colors } from "@ndla/core";
+import { breakpoints, colors, fonts, mq, stackOrder } from "@ndla/core";
 import { Explanation, NotionFlip } from "@ndla/icons/common";
 import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle, ModalTrigger, ModalContent } from "@ndla/modal";
 
@@ -37,7 +37,7 @@ const NotionsTrigger = styled.div`
     top: 12rem;
     right: 18px;
     background-color: transparent;
-    z-index: 10;
+    z-index: ${stackOrder.trigger};
   }
 
   svg {

@@ -61,6 +61,7 @@ const GridContainer = styled.div`
 
   &[data-border="lightBlue"] {
     border: 1px solid ${colors.brand.lighter};
+    padding: ${spacing.normal};
   }
   &[data-background="white"] {
     background-color: ${colors.white};
@@ -68,6 +69,7 @@ const GridContainer = styled.div`
 
   p {
     word-break: break-word;
+    margin-top: 0px;
   }
 `;
 

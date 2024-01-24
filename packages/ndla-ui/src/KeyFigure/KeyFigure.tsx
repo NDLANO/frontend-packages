@@ -17,7 +17,7 @@ const ContentWrapper = styled.div`
   padding: ${spacing.small};
   align-items: center;
   ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.medium} ${spacing.large};
+    padding: ${spacing.xsmall} ${spacing.nsmall};
   }
 `;
 

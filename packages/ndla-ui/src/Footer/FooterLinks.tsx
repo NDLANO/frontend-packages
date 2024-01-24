@@ -9,9 +9,10 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from "@ndla/core";
+import { spacing, fonts, colors, mq, breakpoints } from "@ndla/core";
 import { Forward, Launch } from "@ndla/icons/common";
 import SafeLink from "@ndla/safelink";
+import { Text } from "@ndla/typography";
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -85,10 +86,9 @@ const StyledSocialMediaLinkWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledHeaderLinks = styled.h3`
+const StyledTextLinks = styled(Text)`
   ${fonts.sizes(16, 1.5)};
   font-weight: ${fonts.weight.semibold};
-  margin: ${spacing.xsmall} 0;
 `;
 
 const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
@@ -97,7 +97,9 @@ const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
     <>
       <StyledLinksWrapper>
         <div>
-          <StyledHeaderLinks id="otherLinks">{t("footer.linksHeader")}</StyledHeaderLinks>
+          <StyledTextLinks id="otherLinks" element="span" textStyle="content-alt">
+            {t("footer.linksHeader")}
+          </StyledTextLinks>
           <StyledNav aria-labelledby="otherLinks">
             {commonLinks?.map((link) => (
               <div key={link.to}>

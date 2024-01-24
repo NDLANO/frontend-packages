@@ -196,19 +196,12 @@ const NotionButton = styled.button`
   color: ${colors.notion.dark};
   cursor: pointer;
   &:focus,
-  &:hover {
-    background-color: ${colors.notion.dark};
-    color: ${colors.white};
-    outline: none;
-    ${BaselineIcon} {
-      border-color: transparent;
-    }
-  }
-
-  &:active {
+  &:hover,
+  &:active,
+  &[data-open="true"] {
     color: ${colors.notion.dark};
     background-color: ${colors.notion.light};
-    ${BaselineIcon} {
+    [data-baseline-icon] {
       border-color: currentColor;
     }
   }
@@ -231,7 +224,7 @@ const getModalPosition = (anchor: HTMLElement) => {
   const article = anchor.closest(".c-article");
   const articlePos = article?.getBoundingClientRect();
   const anchorPos = anchor.getBoundingClientRect();
-  return anchorPos.top - (articlePos?.top || -window.scrollY);
+  return anchorPos.top - (articlePos?.top || -window.scrollY) + 30; // add 30 so that position is under the word
 };
 
 export const InlineConcept = ({
@@ -272,9 +265,9 @@ export const InlineConcept = ({
         <StyledAnchorSpan />
       </StyledAnchor>
       <Trigger asChild>
-        <NotionButton>
+        <NotionButton data-open={modalPos !== -9999}>
           {linkText}
-          {<BaselineIcon />}
+          {<BaselineIcon data-baseline-icon />}
         </NotionButton>
       </Trigger>
       <Portal container={(anchorRef.current?.closest(".c-article") as HTMLElement | null) || undefined}>

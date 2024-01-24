@@ -1072,6 +1072,25 @@ const messages = {
         title: "Arena administrator",
         description: "Verktøy for å moderere og administrere arenaen.",
         administrate: "Administrer",
+        category: {
+          deleteSnack: "Kategorien har blitt slettet.",
+          notVisible: "Kategorien er ikke synlig",
+          edit: "Rediger kategori",
+          startEditing: "Rediger kategorier",
+          stopEditing: "Avslutt redigering",
+          form: {
+            formTitle: "Kategori",
+            newCategory: "Ny kategori",
+            editCategory: "Rediger kategori",
+            title: "Tittel",
+            description: "Beskrivelse",
+            visible: "Synlighet",
+            deleteText: "Slett kategori",
+            modalTitle: "Slett kategori",
+            modalDescription:
+              "Er du sikker på at du vil slette kategorien, med alt innhold? Dette er irreversibelt og kan ikke angres.",
+          },
+        },
         users: {
           title: "Brukere",
           description: "Liste over alle brukere av arena. Trykk på brukere for å moderere de.",
@@ -1260,6 +1279,15 @@ const messages = {
       onDragEndMissingOver: "Ressursen {{name}} ble sluppet",
       onDragCancel: "Flytting avbrutt. Ressursen {{name}} ble sluppet",
       dragHandle: "Sorter ressursen {{name}}",
+    },
+    category: {
+      onDragStart: "Plukket opp kategorien {{name}}. Kategorien er på posisjon {{index}} av {{length}}",
+      onDragOver: "Kategorien {{name}} ble flyttet til posisjon {{index}} av {{length}}",
+      onDragOverMissingOver: "Kategorien {{name}} er ikke lenger over et slippbart område",
+      onDragEnd: "Kategorien {{name}} ble sluppet på posisjon {{index}} av {{length}}",
+      onDragEndMissingOver: "Kategorien {{name}} ble sluppet",
+      onDragCancel: "Flytting avbrutt. Kategorien {{name}} ble sluppet",
+      dragHandle: "Sorter kategorien {{name}}",
     },
     favoriteSubjects: {
       title: "Mine favorittfag",

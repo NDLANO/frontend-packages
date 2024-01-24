@@ -15,39 +15,19 @@
 /* Float article objects */
 .u-float-left {
   @include float(13, 20, 'left', 10);
-  @include mq(tablet) {
-    margin: $spacing--xsmall 0 $spacing;
-  }
-  @include mq(desktop) {
-    margin: $spacing--xsmall 0 $spacing;
-  }
+  margin-top: $spacing--xsmall;
 }
 .u-float-right {
   @include float(13, 20, 'right', 10);
-  @include mq(tablet) {
-    margin: $spacing--xsmall 0 $spacing;
-  }
-  @include mq(desktop) {
-    margin: $spacing--xsmall 0 $spacing;
-  }
+  margin-top: $spacing--xsmall;
 }
 .u-float-small-left {
   @include float(2, 4, 'left');
-  @include mq(tablet) {
-    margin: $spacing--xsmall 0 $spacing;
-  }
-  @include mq(desktop) {
-    margin: $spacing--xsmall 0 $spacing;
-  }
+  margin-top: $spacing--xsmall;
 }
 .u-float-small-right {
   @include float(2, 4, 'right');
-  @include mq(tablet) {
-    margin: $spacing--xsmall 0 $spacing;
-  }
-  @include mq(desktop) {
-    margin: $spacing--xsmall 0 $spacing;
-  }
+  margin-top: $spacing--xsmall;
 }
 .u-float-xsmall-left {
   @include float(2, 4, 'left');
@@ -69,6 +49,16 @@
     margin: $spacing--xsmall 0 $spacing $spacing--xsmall;
   }
 }
+.u-float-full {
+  margin-top: $spacing--xsmall;
+}
+.u-float-full.c-figure--right {
+  margin-left: $spacing;
+}
+.u-float-full.c-figure--left {
+  margin-right: $spacing;
+}
+
 
 /* MISC */
 .u-hidden {

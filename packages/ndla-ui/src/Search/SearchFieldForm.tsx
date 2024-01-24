@@ -22,12 +22,6 @@ type StyledProps = {
 };
 
 const hasFocusStyles = css`
-  .c-search-field__search-result {
-    left: 0px;
-    @supports (-webkit-overflow-scrolling: touch) {
-      padding-bottom: 300px;
-    }
-  }
   display: flex;
   align-self: flex-start;
   align-items: center;
@@ -40,9 +34,6 @@ const hasFocusStyles = css`
     right: 0;
     padding: ${spacing.small};
     z-index: ${stackOrder.modal};
-    .c-search-field__search-result {
-      width: 100vw;
-    }
   }
 `;
 

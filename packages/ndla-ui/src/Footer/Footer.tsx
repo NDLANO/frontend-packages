@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, spacing, fonts, mq, breakpoints, spacingUnit, stackOrder } from "@ndla/core";
 import { FooterHeaderIcon } from "@ndla/icons/common";
+import { Text } from "@ndla/typography";
 import FooterLinks from "./FooterLinks";
 import FooterPrivacy from "./FooterPrivacy";
 import { OneColumn } from "../Layout";
@@ -42,7 +43,7 @@ const StyledOneColumn = styled(OneColumn)`
   position: relative;
 `;
 
-const StyledHeader = styled.h2`
+const StyledText = styled(Text)`
   ${fonts.sizes(20, 1.5)};
   margin: 0;
   font-weight: ${fonts.weight.semibold};
@@ -147,7 +148,9 @@ const Footer = ({ children, commonLinks, links, languageSelector, auth, privacyL
             <StyledFooterHeaderIcon />
           </div>
           <div>
-            <StyledHeader>{t("footer.vision")}</StyledHeader>
+            <StyledText element="div" textStyle="content-alt" margin="none">
+              {t("footer.vision")}
+            </StyledText>
             <FooterLinks commonLinks={commonLinks} links={links} />
           </div>
         </StyledColumns>

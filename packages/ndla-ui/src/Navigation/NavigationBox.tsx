@@ -37,11 +37,11 @@ const StyledHeading = styled(Heading)`
 const StyledList = styled.ul`
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-direction: column;
   gap: ${spacing.xxsmall};
 
   &[data-direction="horizontal"] {
+    display: flex;
+    flex-direction: column;
     ${mq.range({ from: breakpoints.tablet })} {
       column-count: 2;
       gap: 20px;

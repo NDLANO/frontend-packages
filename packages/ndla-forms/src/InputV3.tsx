@@ -102,10 +102,13 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, r
   useEffect(() => {
     window.addEventListener("input", resize);
     window.addEventListener("resize", resize);
+    const textareaRef = localRef.current;
+    if (textareaRef) textareaRef.addEventListener("click", resize);
     resize();
     return () => {
       window.removeEventListener("input", resize);
       window.removeEventListener("resize", resize);
+      if (textareaRef) textareaRef.removeEventListener("click", resize);
     };
   }, [resize]);
 

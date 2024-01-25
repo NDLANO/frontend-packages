@@ -1106,6 +1106,7 @@ const messages = {
           isAdmin: "Administrator",
           selectAdministrator: 'Gjør "{{user}}" til administrator.',
           enableArena: 'Gi "{{user}}" tilgang til arena.',
+          noUsers: "Ingen brukere funnet.",
         },
         flags: {
           title: "Flagg",
@@ -1122,6 +1123,8 @@ const messages = {
           numFlags: "Antall flagg",
           latestFlag: "Siste flagging",
           noflags: "Ingen flaggede poster funnet",
+          solvedFor: "Løst for",
+          goToTopic: "Gå til tråd",
           status: {
             title: "Status",
             resolved: "Løst",

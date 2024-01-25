@@ -1103,6 +1103,7 @@ const messages = {
           isAdmin: "Administrator",
           selectAdministrator: "Make {{user}} a administrator.",
           enableArena: "Give {{user}} access to the arena.",
+          noUsers: "No users found.",
         },
         flags: {
           title: "Flag",
@@ -1119,6 +1120,8 @@ const messages = {
           numFlags: "Number of flags",
           latestFlag: "Last flag",
           noflags: "No flagged posts found",
+          solvedFor: "Solved",
+          goToTopic: "Go to topic",
           status: {
             title: "Status",
             resolved: "Resolved",

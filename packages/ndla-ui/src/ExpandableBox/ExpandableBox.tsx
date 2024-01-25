@@ -7,6 +7,9 @@
  */
 
 import { HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { fonts } from "@ndla/core";
+import { Heading } from "@ndla/typography";
 
 interface Props extends HTMLAttributes<HTMLDetailsElement> {}
 
@@ -16,6 +19,17 @@ export const ExpandableBox = ({ children, ...rest }: Props) => {
 
 interface SummaryProps extends HTMLAttributes<HTMLElement> {}
 
+const StyledHeading = styled(Heading)`
+  font-weight: ${fonts.weight.normal};
+  text-transform: none !important;
+`;
+
 export const ExpandableBoxSummary = ({ children, ...rest }: SummaryProps) => {
-  return <summary {...rest}>{children}</summary>;
+  return (
+    <summary {...rest}>
+      <StyledHeading element="h3" headingStyle="list-title" margin="none">
+        {children}
+      </StyledHeading>
+    </summary>
+  );
 };

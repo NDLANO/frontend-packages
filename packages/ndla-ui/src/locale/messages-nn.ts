@@ -1103,6 +1103,7 @@ const messages = {
           selectAdministrator: 'Gjør "{{user}}" til administrator.',
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukarar funne.",
+          search: "Søk etter brukarar",
         },
         flags: {
           title: "Flagg",

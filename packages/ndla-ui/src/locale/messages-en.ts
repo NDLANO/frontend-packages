@@ -1104,6 +1104,7 @@ const messages = {
           selectAdministrator: "Make {{user}} a administrator.",
           enableArena: "Give {{user}} access to the arena.",
           noUsers: "No users found.",
+          search: "Search for users",
         },
         flags: {
           title: "Flag",

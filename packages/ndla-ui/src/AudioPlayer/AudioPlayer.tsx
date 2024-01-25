@@ -13,6 +13,7 @@ import { ButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 import { Cross as CrossIcon } from "@ndla/icons/action";
 import SafeLink from "@ndla/safelink";
+import { Heading, Text } from "@ndla/typography";
 import Controls from "./Controls";
 import SpeechControl from "./SpeechControl";
 
@@ -73,24 +74,10 @@ const TitleWrapper = styled.div`
   }
 `;
 
-const Title = styled.h2`
-  ${fonts.sizes("22px", "30px")};
-  margin: 0px;
+const Title = styled(Heading)`
   &[data-has-desc="true"] {
-    margin: 0 0 ${spacing.small};
+    margin: ${spacing.xsmall} 0 ${spacing.small};
   }
-`;
-
-const Subtitle = styled.h3`
-  ${fonts.sizes("18px", "28px")};
-  margin: 0;
-  font-weight: ${fonts.weight.semibold};
-`;
-
-const StyledDescription = styled.div`
-  ${fonts.sizes("16px", "30px")};
-  font-family: ${fonts.sans};
-  margin: 0;
 `;
 
 const LinkToTextVersionWrapper = styled.div`
@@ -125,7 +112,7 @@ const TextVersionHeadingWrapper = styled.div`
   align-items: flex-start;
 `;
 
-const TextVersionHeading = styled.h2`
+const TextVersionHeading = styled(Heading)`
   font-weight: ${fonts.weight.semibold};
   margin: ${spacing.small} 0 ${spacing.normal};
 `;
@@ -135,7 +122,6 @@ const LinkButton = styled(ButtonV2)`
   padding-left: 0;
   padding-right: 4px;
   min-height: ${spacing.medium};
-  ${fonts.sizes("16px", "25px")};
   flex: 0 0 auto;
   &:hover,
   &:focus {
@@ -214,24 +200,22 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
         <TextWrapper data-has-image={!!img}>
           <TitleWrapper>
             <div>
-              {subtitle && (
-                <Subtitle>
-                  {subtitle.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle.title}
-                </Subtitle>
-              )}
-              <Title data-has-desc={!!description}>{title}</Title>
+              {subtitle && subtitle.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
+              <Title element="h3" headingStyle="h4" margin="none" data-has-desc={!!description}>
+                {title}
+              </Title>
             </div>
             {textVersion && !img && <TextVersionComponent />}
           </TitleWrapper>
           {description && (
-            <StyledDescription>
+            <Text element="p" textStyle="meta-text-small" margin="none">
               {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
                 ? description
                 : `${truncatedDescription}...`}
               <ButtonV2 variant="link" onClick={() => setShowFullDescription((p) => !p)}>
                 {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
               </ButtonV2>
-            </StyledDescription>
+            </Text>
           )}
           {textVersion && img && <TextVersionComponent margin />}
         </TextWrapper>
@@ -242,7 +226,9 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
       {textVersion && (showTextVersion || staticRenderId) && (
         <TextVersionWrapper id={staticRenderId} hidden={!!staticRenderId}>
           <TextVersionHeadingWrapper>
-            <TextVersionHeading>{t("audio.textVersion.heading")}</TextVersionHeading>
+            <TextVersionHeading element="h3" headingStyle="h2" margin="small">
+              {t("audio.textVersion.heading")}
+            </TextVersionHeading>
             <LinkButton
               variant="link"
               size="normal"

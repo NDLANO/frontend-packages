@@ -24,6 +24,7 @@ const GridContainer = styled.div`
   border-radius: ${misc.borderRadius};
   grid-template-columns: 1fr;
   grid-gap: ${spacing.normal};
+  padding: ${spacing.normal};
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     &[data-columns="2x2"],
@@ -61,7 +62,6 @@ const GridContainer = styled.div`
 
   &[data-border="lightBlue"] {
     border: 1px solid ${colors.brand.lighter};
-    padding: ${spacing.normal};
   }
   &[data-background="white"] {
     background-color: ${colors.white};

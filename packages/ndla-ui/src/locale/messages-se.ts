@@ -1105,6 +1105,7 @@ const messages = {
           selectAdministrator: 'Gjør "{{user}}" til administrator.',
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukere funnet.",
+          search: "Søk etter brukere",
         },
         flags: {
           title: "Flagg",

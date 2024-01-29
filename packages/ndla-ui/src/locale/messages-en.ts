@@ -890,6 +890,7 @@ const messages = {
     wrongUserInfoDisclaimer:
       "If any information is wrong, it must be updated by the host organization/school owner the user belongs to. An overview of available user support can be found here: ",
     moderator: "Moderator",
+    deletedUser: "Deleted user",
   },
   factbox: {
     open: "Open fact box",

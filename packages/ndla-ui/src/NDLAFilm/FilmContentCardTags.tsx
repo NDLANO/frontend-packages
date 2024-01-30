@@ -7,7 +7,7 @@
  */
 
 import styled from "@emotion/styled";
-import { spacing, spacingUnit, colors, fonts, misc } from "@ndla/core";
+import { spacing, spacingUnit, colors, fonts, misc, stackOrder } from "@ndla/core";
 import { MovieResourceType } from "./types";
 
 const StyledWrapperDiv = styled.div`
@@ -17,14 +17,14 @@ const StyledWrapperDiv = styled.div`
   position: absolute;
   bottom: 0px;
   left: 0px;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
 `;
 
 const StyledMovieTags = styled.span`
   ${fonts.sizes("14px", "16px")};
   font-weight: ${fonts.weight.semibold};
   background: ${colors.brand.greyLight};
-  padding: calc(${spacing.xsmall} / 2) ${spacing.xsmall};
+  padding: ${spacing.xxsmall} ${spacing.xsmall};
   border-radius: ${misc.borderRadius};
   color: ${colors.text.primary};
   margin-right: ${spacingUnit / 4}px;

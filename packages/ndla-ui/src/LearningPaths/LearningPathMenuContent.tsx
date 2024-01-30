@@ -8,7 +8,7 @@
 
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils } from "@ndla/core";
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils, stackOrder } from "@ndla/core";
 import { LearningPathRead } from "@ndla/icons/contentType";
 import SafeLink from "@ndla/safelink";
 import { StepProps } from "./LearningPathMenu";
@@ -136,7 +136,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
 
 const StyledContentType = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   margin-right: ${spacingUnit * 0.75}px;
   max-height: 35px;
 `;
@@ -175,7 +175,7 @@ const StyledNavigation = styled.nav<StyledNavigationProps>`
           a:hover,
           a:focus {
             position: relative;
-            z-index: 1;
+            z-index: ${stackOrder.offsetSingle};
             width: ${SIDE_NAV_WIDTH};
             background: ${colors.brand.greyLighter};
             span {

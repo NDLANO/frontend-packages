@@ -8,7 +8,7 @@
 
 import { css } from "@emotion/react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { colors, misc, spacing, utils } from "@ndla/core";
+import { colors, misc, spacing, utils, stackOrder } from "@ndla/core";
 import RadioButtonGroup, { RadioButtonGroupRoot, RadioGroupItem } from "./RadioButtonGroup";
 import { defaultParameters } from "../../../../stories/defaults";
 
@@ -101,7 +101,7 @@ export const WithStandaloneComponents: StoryObj<typeof RadioButtonGroup> = {
                 outline: 0px;
                 border-color: ${colors.brand.primary};
                 border-radius: 0px;
-                z-index: 1;
+                z-index: ${stackOrder.offsetSingle};
               }
               &:first-of-type {
                 border-top-left-radius: ${misc.borderRadius};

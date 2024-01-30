@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { Root, Trigger, Content, Anchor, Close, Portal } from "@radix-ui/react-popover";
 import { IconButtonV2 } from "@ndla/button";
-import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
 import { COPYRIGHTED } from "@ndla/licenses";
 import Tooltip from "@ndla/tooltip";
@@ -49,7 +49,7 @@ const PopoverWrapper = styled.div<PopoverPosition>`
       top: 0 !important;
       left: 0 !important;
       width: 100vw;
-      z-index: 100 !important;
+      z-index: ${stackOrder.popover} !important;
       height: 100vh;
       min-width: 100vw !important;
     }
@@ -196,19 +196,12 @@ const NotionButton = styled.button`
   color: ${colors.notion.dark};
   cursor: pointer;
   &:focus,
-  &:hover {
-    background-color: ${colors.notion.dark};
-    color: ${colors.white};
-    outline: none;
-    ${BaselineIcon} {
-      border-color: transparent;
-    }
-  }
-
-  &:active {
+  &:hover,
+  &:active,
+  &[data-open="true"] {
     color: ${colors.notion.dark};
     background-color: ${colors.notion.light};
-    ${BaselineIcon} {
+    [data-baseline-icon] {
       border-color: currentColor;
     }
   }
@@ -231,7 +224,7 @@ const getModalPosition = (anchor: HTMLElement) => {
   const article = anchor.closest(".c-article");
   const articlePos = article?.getBoundingClientRect();
   const anchorPos = anchor.getBoundingClientRect();
-  return anchorPos.top - (articlePos?.top || -window.scrollY);
+  return anchorPos.top - (articlePos?.top || -window.scrollY) + 30; // add 30 so that position is under the word
 };
 
 export const InlineConcept = ({
@@ -272,9 +265,9 @@ export const InlineConcept = ({
         <StyledAnchorSpan />
       </StyledAnchor>
       <Trigger asChild>
-        <NotionButton>
+        <NotionButton data-open={modalPos !== -9999}>
           {linkText}
-          {<BaselineIcon />}
+          {<BaselineIcon data-baseline-icon />}
         </NotionButton>
       </Trigger>
       <Portal container={(anchorRef.current?.closest(".c-article") as HTMLElement | null) || undefined}>

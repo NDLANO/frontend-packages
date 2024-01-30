@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useSwipeable } from "react-swipeable";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { stackOrder } from "@ndla/core";
 import { ChevronLeft, ChevronRight } from "@ndla/icons/common";
 
 interface Props {
@@ -47,7 +48,7 @@ const NavButton = styled("button")<{
   position: absolute;
   bottom: 0;
   top: 4px;
-  z-index: 3;
+  z-index: ${stackOrder.trigger};
   left: 3px;
 
   svg {

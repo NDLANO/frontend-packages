@@ -23,7 +23,7 @@ const ListViewWrapper = styled.div`
     justify-content: space-between;
     .sorting-wrapper {
       display: flex;
-      margin-right: calc(${spacing.large} * 2);
+      margin-right: ${spacing.xxlarge};
       &:not(:last-child) {
         margin-right: ${spacing.medium};
       }
@@ -158,6 +158,26 @@ const CountWrapper = styled.h2`
   font-size: 20px;
 `;
 
+const StyledSearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const InputWrapper = styled.div`
+  width: 100%;
+  padding: 0 ${spacing.large} 0 ${spacing.normal};
+  display: flex;
+  align-items: center;
+  flex-flow: row-reverse;
+  ${mq.range({ from: breakpoints.tablet })} {
+    position: relative;
+    padding: 0;
+  }
+`;
+
 export interface Category {
   title?: string;
   value?: string;
@@ -176,7 +196,6 @@ export interface ListItemType {
 }
 
 const filterClasses = BEMHelper("c-filter");
-const searchFieldClasses = new BEMHelper("c-search-field");
 
 interface Option {
   title: string;
@@ -267,8 +286,8 @@ const ListView = ({
         {!disableSearch && (
           <div className={"sorting-wrapper"}>
             <div className={"search"}>
-              <div {...searchFieldClasses()}>
-                <div {...searchFieldClasses("input-wrapper", "with-icon", "search-input-wrapper")}>
+              <StyledSearchWrapper>
+                <InputWrapper className="search-input-wrapper">
                   <input
                     css={inputStyle}
                     type="search"
@@ -276,8 +295,8 @@ const ListView = ({
                     value={searchValue}
                     onChange={onChangedSearchValue}
                   />
-                </div>
-              </div>
+                </InputWrapper>
+              </StyledSearchWrapper>
             </div>
           </div>
         )}

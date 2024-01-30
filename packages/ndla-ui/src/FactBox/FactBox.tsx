@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { IconButtonV2 } from "@ndla/button";
-import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { ChevronDown, ChevronUp } from "@ndla/icons/common";
 
 interface Props extends ComponentProps<"aside"> {
@@ -26,7 +26,7 @@ const StyledAside = styled.aside`
   flex-direction: column;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   margin: ${spacing.large} 0 calc(${spacing.large} - ${spacing.nsmall}) 0;
   overflow: hidden;
   padding-bottom: ${spacing.nsmall};
@@ -75,7 +75,7 @@ const StyledDiv = styled.div`
     /* The 00 after our color is to set its opacity to 0 */
     background: linear-gradient(${colors.brand.light}00, ${colors.white});
     opacity: 1;
-    z-index: 0;
+    z-index: ${stackOrder.base};
   }
 
   @media print {
@@ -102,7 +102,7 @@ const StyledDiv = styled.div`
 
 const StyledIconButton = styled(IconButtonV2)`
   margin-top: -20px;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
 
   @media print {
     display: none;
@@ -117,7 +117,7 @@ const expandedContentStyle = css`
   max-height: 500vh;
   &:after {
     opacity: 0;
-    z-index: -1;
+    z-index: ${stackOrder.hide};
   }
 `;
 

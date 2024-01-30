@@ -10,7 +10,7 @@ import { ReactNode, Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
-import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, fonts, mq, spacing, stackOrder } from "@ndla/core";
 import { Additional, Core } from "@ndla/icons/common";
 import { Modal, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from "@ndla/modal";
 import SafeLink from "@ndla/safelink";
@@ -25,7 +25,7 @@ const BreadcrumbPath = styled.div`
 `;
 
 const ModalButton = styled(ButtonV2)`
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   position: relative;
   ${fonts.sizes("14px", "20px")};
   box-shadow: none;

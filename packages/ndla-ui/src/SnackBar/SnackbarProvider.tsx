@@ -9,7 +9,7 @@
 import { useCallback, useMemo, createContext, ReactNode, useState, useContext, useEffect } from "react";
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { spacing } from "@ndla/core";
+import { spacing, stackOrder } from "@ndla/core";
 import DefaultSnack from "./DefaultSnackbar";
 
 export interface Snack {
@@ -121,7 +121,7 @@ interface SnackbarContainerProps {
 
 const StyledSnackList = styled.ul`
   position: fixed;
-  z-index: 99999;
+  z-index: ${stackOrder.toast};
   display: flex;
   flex-direction: column;
   pointer-events: none;

@@ -7,11 +7,11 @@
  */
 
 import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { colors, stackOrder } from "@ndla/core";
 
 const Wrapper = styled.div`
   position: fixed;
-  z-index: 98;
+  z-index: ${stackOrder.dropdown - stackOrder.offsetSingle};
   top: 0;
   left: 0;
   right: 0;

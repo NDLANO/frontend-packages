@@ -1073,6 +1073,25 @@ const messages = {
         title: "Arena administrator",
         description: "Tools to moderate and administer the arena.",
         administrate: "Administrate",
+        category: {
+          deleteSnack: "The category has been deleted.",
+          notVisible: "The category is not visible",
+          edit: "Edit category",
+          startEditing: "Edit categories",
+          stopEditing: "Stop editing",
+          form: {
+            formTitle: "Category",
+            newCategory: "New category",
+            editCategory: "Edit category",
+            title: "Title",
+            description: "Description",
+            visible: "Visibility",
+            deleteText: "Delete category",
+            modalTitle: "Delete category",
+            modalDescription:
+              "Are you sure you would like to delete the category, including all content? This is irreversible and cannot be undone.",
+          },
+        },
         users: {
           title: "Users",
           description: "List of all users of the arena. Select a user to moderate them.",
@@ -1084,6 +1103,8 @@ const messages = {
           isAdmin: "Administrator",
           selectAdministrator: "Make {{user}} a administrator.",
           enableArena: "Give {{user}} access to the arena.",
+          noUsers: "No users found.",
+          search: "Search for users",
         },
         flags: {
           title: "Flag",
@@ -1100,6 +1121,8 @@ const messages = {
           numFlags: "Number of flags",
           latestFlag: "Last flag",
           noflags: "No flagged posts found",
+          solvedFor: "Solved",
+          goToTopic: "Go to topic",
           status: {
             title: "Status",
             resolved: "Resolved",
@@ -1262,6 +1285,15 @@ const messages = {
       onDragEndMissingOver: "The resource {{name}} was dropped",
       onDragCancel: "Dragging was cancelled. The resource {{name}} was dropped",
       dragHandle: "Drag the resource {{name}}",
+    },
+    category: {
+      onDragStart: "Picked up the category {{name}}. The category is in position {{index}} of {{length}}",
+      onDragOver: "The category {{name}} was moved into position {{index}} of {{length}}",
+      onDragOverMissingOver: "The category {{name}} is no longer over a droppable area",
+      onDragEnd: "The category {{name}} was dropped at position {{index}} og {{length}}",
+      onDragEndMissingOver: "The category {{name}} was dropped",
+      onDragCancel: "Dragging was cancelled. The category {{name}} was dropped",
+      dragHandle: "Drag the category {{name}}",
     },
     favoriteSubjects: {
       title: "My favorite subjects",

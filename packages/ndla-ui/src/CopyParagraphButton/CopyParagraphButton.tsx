@@ -9,7 +9,7 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { colors, stackOrder } from "@ndla/core";
 import { Link } from "@ndla/icons/common";
 import Tooltip from "@ndla/tooltip";
 import { copyTextToClipboard } from "@ndla/util";
@@ -23,7 +23,7 @@ const IconButton = styled.button`
   top: 0.1em;
   background: none;
   border: 0;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   transition: 0.2s;
   opacity: 0;
   color: ${colors.brand.grey};

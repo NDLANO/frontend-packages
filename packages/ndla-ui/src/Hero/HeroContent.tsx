@@ -7,14 +7,14 @@
  */
 
 import styled from "@emotion/styled";
-import { spacing, mq, breakpoints } from "@ndla/core";
+import { breakpoints, mq, spacing, stackOrder } from "@ndla/core";
 
 export const HeroContent = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   padding: ${spacing.small} 0 ${spacing.small};
-  z-index: 9;
+  z-index: ${stackOrder.trigger};
 
   ${mq.range({ from: breakpoints.tablet })} {
     min-height: 90px;

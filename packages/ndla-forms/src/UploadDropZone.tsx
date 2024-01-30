@@ -10,7 +10,7 @@ import { ReactNode, useEffect, useState, useRef, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, spacing, fonts, misc, animations } from "@ndla/core";
+import { colors, spacing, fonts, misc, animations, stackOrder } from "@ndla/core";
 import { Spinner } from "@ndla/icons";
 import { CloudUploadOutline, AlertCircle } from "@ndla/icons/editor";
 import { getIllegalFiles } from "./filetypeHelper";
@@ -26,7 +26,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   ${fonts.sizes(16, 1.3)};
   font-family: ${fonts.sans};
   font-weight: ${fonts.weight.normal};

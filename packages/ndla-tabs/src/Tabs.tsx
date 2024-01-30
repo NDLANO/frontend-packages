@@ -9,7 +9,7 @@
 import { HTMLAttributes, ReactNode } from "react";
 import styled from "@emotion/styled";
 import { Root, List, Trigger, Content } from "@radix-ui/react-tabs";
-import { colors, fonts, misc, spacing } from "@ndla/core";
+import { colors, fonts, misc, spacing, stackOrder } from "@ndla/core";
 
 interface TabType {
   title: string;
@@ -44,13 +44,13 @@ const TabsRoot = styled(Root)`
       color: ${colors.brand.primary};
       font-weight: ${fonts.weight.semibold};
       background-color: ${colors.brand.light};
-      z-index: 1;
+      z-index: ${stackOrder.base};
       position: relative;
       &[data-state="active"] {
         cursor: default;
         background-color: ${colors.brand.lighter};
         border-bottom: none;
-        z-index: 2;
+        z-index: ${stackOrder.offsetSingle};
       }
       &:not(:last-of-type) {
         border-right: 1px solid ${colors.brand.tertiary};
@@ -78,7 +78,7 @@ const TabsRoot = styled(Root)`
     }
     [data-tab-panel]:focus-visible,
     [data-tab-trigger]:focus-visible {
-      z-index: 3;
+      z-index: ${stackOrder.offsetDouble};
       box-shadow: 0 0 0 2px ${colors.brand.primary};
     }
   }
@@ -90,7 +90,7 @@ const TabsRoot = styled(Root)`
       left: 0px;
       content: "";
       width: 100%;
-      z-index: -1;
+      z-index: ${stackOrder.hide};
     }
 
     [data-tab-trigger] {

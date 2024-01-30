@@ -1072,6 +1072,25 @@ const messages = {
         title: "Arena administrator",
         description: "Verktøy for å moderere og administrere arenaen.",
         administrate: "Administrer",
+        category: {
+          deleteSnack: "Kategorien har vorte sletta.",
+          notVisible: "Kategorien er ikkje synleg",
+          edit: "Rediger kategori",
+          startEditing: "Rediger kategoriar",
+          stopEditing: "Avslutt redigering",
+          form: {
+            formTitle: "Kategori",
+            newCategory: "Ny kategori",
+            editCategory: "Rediger kategori",
+            title: "Tittel",
+            description: "Beskriving",
+            visible: "Synlighet",
+            deleteText: "Slett kategori",
+            modalTitle: "Slett kategori",
+            modalDescription:
+              "Er du sikker på at du vil sletta kategorien, med alt innhald? Dette er irreversibelt og kan ikkje angrast.",
+          },
+        },
         users: {
           title: "Brukarar",
           description: "Liste over alle brukarar av arena. Trykk på brukarar for å moderere dei.",
@@ -1083,6 +1102,8 @@ const messages = {
           isAdmin: "Administrator",
           selectAdministrator: 'Gjør "{{user}}" til administrator.',
           enableArena: 'Gi "{{user}}" tilgang til arena.',
+          noUsers: "Ingen brukarar funne.",
+          search: "Søk etter brukarar",
         },
         flags: {
           title: "Flagg",
@@ -1099,6 +1120,8 @@ const messages = {
           numFlags: "Antal flagg",
           latestFlag: "Siste flagging",
           noflags: "Ingen flagga postar funne",
+          solvedFor: "Løyst for",
+          goToTopic: "Gå til tråd",
           status: {
             title: "Status",
             resolved: "Løyst",
@@ -1260,6 +1283,15 @@ const messages = {
       onDragEndMissingOver: "Ressursen blei sleppt",
       onDragCancel: "Flytting avbrutt. Ressursen {{name}} blei sleppt",
       dragHandle: "Sorter ressursen {{name}}",
+    },
+    category: {
+      onDragStart: "Plukka opp kategorien {{name}}. Kategorien er på posisjon {{index}} av {{length}}",
+      onDragOver: "Kategorien {{name}} vart flytta til posisjon {{index}} av {{length}}",
+      onDragOverMissingOver: "Kategorien {{name}} er ikkje lenger over eit slippbart område",
+      onDragEnd: "Kategorien {{name}} vart sleppt på posisjon {{index}} av {{length}}",
+      onDragEndMissingOver: "Kategorien {{name}} vart sleppt",
+      onDragCancel: "Flytting avbrote. Kategorien {{name}} vart sleppt",
+      dragHandle: "Sorter kategorien {{name}}",
     },
     favoriteSubjects: {
       title: "Mine favorittfag",

@@ -10,7 +10,7 @@ import { forwardRef, ReactNode, RefAttributes } from "react";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, fonts, misc, mq, spacing, stackOrder } from "@ndla/core";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ConceptData, ConceptVisualElementMeta } from "@ndla/types-embed";
 import { ExternalEmbed, HeartButtonType, IframeEmbed } from ".";
@@ -87,7 +87,7 @@ const notionContentCss = css`
   animation-name: animateIn;
   animation-duration: 300ms;
   background-color: white;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   ${mq.range({ from: breakpoints.tablet })} {
     width: 500px;
@@ -98,7 +98,7 @@ const notionContentCss = css`
 
   ${mq.range({ until: breakpoints.tablet })} {
     padding: ${spacing.small};
-    z-index: 100;
+    z-index: ${stackOrder.popover};
     height: 100%;
     width: 100%;
     overflow: auto;

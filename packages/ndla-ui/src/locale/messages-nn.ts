@@ -890,6 +890,7 @@ const messages = {
     wrongUserInfoDisclaimer:
       "Dersom informasjonen er feil, må han oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversikt over brukarstøtte finst her: ",
     moderator: "Moderator",
+    deletedUser: "Sletta brukar",
   },
   factbox: {
     open: "Åpne faktaboks",

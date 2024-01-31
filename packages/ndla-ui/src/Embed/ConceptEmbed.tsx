@@ -37,6 +37,7 @@ const PopoverWrapper = styled.div<PopoverPosition>`
     left: 50% !important;
     transform: translateX(-50%) !important;
     top: ${({ top }) => top}px !important;
+    z-index: ${stackOrder.popover} !important;
   }
 
   ${mq.range({ until: breakpoints.tablet })} {

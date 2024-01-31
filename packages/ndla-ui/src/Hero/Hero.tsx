@@ -87,7 +87,7 @@ const StyledDiv = styled.div`
       + div article.c-article {
         background: ${colors.white};
         margin: 0 -${spacing.normal};
-        padding: ${spacing.large} ${spacing.normal} ${spacing.normal} 0;
+        padding: ${spacing.large} ${spacing.normal} ${spacing.normal} ${spacing.normal};
       }
     }
   }

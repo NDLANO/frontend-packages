@@ -12,17 +12,17 @@ env:
   GH_PR_SHA: ${{ github.event.pull_request.head.sha }}
 jobs:
   unit_tests:
-    name: 'Unit tests'
+    name: "Unit tests"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '20.9.0'
-      - name: 'Enable yarn v4'
+          node-version: "20.9.0"
+      - name: "Enable yarn v4"
         run: |
           corepack enable
-          yarn set version berry
+          yarn set version 4.1.0
       - uses: actions/cache@v3
         with:
           path: |
@@ -31,18 +31,18 @@ jobs:
             .yarn/cache
             ~/.npm
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Install'
+      - name: "Install"
         run: yarn install --immutable
-      - name: 'Bootstrap'
+      - name: "Bootstrap"
         run: yarn bootstrap:ci
-      - name: 'Check-all'
+      - name: "Check-all"
         run: yarn check-all
-      - name: 'Build storybook'
+      - name: "Build storybook"
         run: yarn build-storybook
-      - name: 'Deploy vercel build'
+      - name: "Deploy vercel build"
         run: yarn deploy-pr
         continue-on-error: true
-      - name: 'Deploy designmanual'
+      - name: "Deploy designmanual"
         if: github.ref == 'refs/heads/master'
         run: yarn deploy
         continue-on-error: true

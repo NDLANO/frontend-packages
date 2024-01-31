@@ -31,7 +31,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   const { t } = useTranslation();
 
   if (embed.status === "error") {
-    return undefined;
+    return null;
   }
 
   const { embedData, data } = embed;
@@ -43,9 +43,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
         {data.disclaimerLink.text}
       </SafeLink>
     </>
-  ) : (
-    ""
-  );
+  ) : null;
 
   return (
     <>

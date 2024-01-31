@@ -48,7 +48,7 @@ import { ImageEmbedData, ImageMetaData } from "./imageTypes";
 import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from "./keyFigureTypes";
 import { LinkBlockEmbedData, LinkBlockMetaData } from "./linkBlockTypes";
 import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from "./relatedContentTypes";
-import { UuDisclaimerData, UuDisclaimerEmbedData, UuDisclaimerMetaData } from "./uuDisclaimerTypes";
+import { DisclaimerLink, UuDisclaimerData, UuDisclaimerEmbedData, UuDisclaimerMetaData } from "./uuDisclaimerTypes";
 
 export type EmbedData =
   | AudioEmbedData
@@ -147,7 +147,7 @@ export type { AudioMeta };
 export type { H5pData };
 export type { CampaignBlockMeta };
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
-export type { UuDisclaimerData };
+export type { UuDisclaimerData, DisclaimerLink };
 
 interface MetaDataFailure<T extends EmbedData> {
   resource: T["resource"];
@@ -187,9 +187,4 @@ export interface NRKEmbedData {
   resource: "nrk";
   nrkVideoId: string;
   url: string;
-}
-
-export interface DisclaimerLink {
-  text: string;
-  href: string;
 }

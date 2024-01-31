@@ -6,7 +6,12 @@
  *
  */
 
-import { DisclaimerLink, MetaData } from ".";
+import { MetaData } from ".";
+
+export interface DisclaimerLink {
+  text: string;
+  href: string;
+}
 
 export interface UuDisclaimerEmbedData {
   resource: "uu-disclaimer";

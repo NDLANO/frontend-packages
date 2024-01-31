@@ -91,7 +91,7 @@ export const Failed: StoryObj<typeof ExternalEmbed> = {
   },
 };
 
-const opensInnewMetaData: OembedData = {
+const opensInNewMetaData: OembedData = {
   oembed: {
     type: "video",
     version: "1.0",
@@ -164,13 +164,13 @@ const opensInnewMetaData: OembedData = {
   },
 };
 
-export const Fullstreen: StoryObj<typeof ExternalEmbed> = {
+export const Fullscreen: StoryObj<typeof ExternalEmbed> = {
   args: {
     embed: {
       resource: "external",
       status: "success",
       embedData: embedDataFullscreen,
-      data: opensInnewMetaData,
+      data: opensInNewMetaData,
     },
   },
 };

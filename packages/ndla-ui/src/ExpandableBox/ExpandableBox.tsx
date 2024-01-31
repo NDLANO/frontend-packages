@@ -7,6 +7,8 @@
  */
 
 import { HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { fonts } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLDetailsElement> {}
 
@@ -16,6 +18,14 @@ export const ExpandableBox = ({ children, ...rest }: Props) => {
 
 interface SummaryProps extends HTMLAttributes<HTMLElement> {}
 
+const StyledSummary = styled.summary`
+  & > * {
+    display: inline;
+    ${fonts.sizes("18px", "21px")};
+    font-weight: 500; //have to set value like this or it gets overwritten
+  }
+`;
+
 export const ExpandableBoxSummary = ({ children, ...rest }: SummaryProps) => {
-  return <summary {...rest}>{children}</summary>;
+  return <StyledSummary {...rest}>{children}</StyledSummary>;
 };

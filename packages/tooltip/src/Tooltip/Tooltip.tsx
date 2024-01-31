@@ -31,11 +31,12 @@ interface Props {
   children?: ReactNode;
   tooltip: ReactNode;
   className?: string;
+  delayDuration?: number;
 }
 
-const Tooltip = ({ children, tooltip, className }: Props) => {
+const Tooltip = ({ children, tooltip, className, delayDuration = 700 }: Props) => {
   return (
-    <RadixTooltip.Provider>
+    <RadixTooltip.Provider delayDuration={delayDuration}>
       <RadixTooltip.Root>
         <RadixTooltip.Trigger data-trigger asChild>
           {children}

@@ -57,3 +57,18 @@ export const ImageRight: StoryObj<typeof CampaignBlock> = {
     imageSide: "right",
   },
 };
+
+export const NoUrl: StoryObj<typeof CampaignBlock> = {
+  args: {
+    title: { title: "No url!!!", language: "nb-no" },
+    description: {
+      text: "Look ma, no url!",
+      language: "nb-no",
+    },
+    image: {
+      alt: "Tømmer",
+      src: "https://api.test.ndla.no/image-api/raw/stokkmarknes_004_d013e.jpg",
+    },
+    imageSide: "left",
+  },
+};

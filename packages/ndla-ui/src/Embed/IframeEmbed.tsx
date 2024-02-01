@@ -9,6 +9,7 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { IframeMetaData } from "@ndla/types-embed";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { Figure } from "../Figure";
 import { ResourceBox } from "../ResourceBox";
 
@@ -21,8 +22,6 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const { embedData } = embed;
-
   useEffect(() => {
     const iframe = iframeRef.current;
     if (iframe) {
@@ -33,8 +32,14 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
     }
   }, []);
 
+  if (embed.status === "error") {
+    return <EmbedErrorPlaceholder type="external" />;
+  }
+
+  const { embedData, data } = embed;
+
   if (embedData.type === "fullscreen") {
-    const iframeImage = embed.status === "success" ? embed.data.iframeImage : undefined;
+    const iframeImage = embed.status === "success" ? data.iframeImage : undefined;
     const alt = embedData.alt !== undefined ? embedData.alt : iframeImage?.alttext.alttext;
     const image = { src: iframeImage?.image.imageUrl ?? "", alt: alt ?? "" };
     return (

@@ -22,6 +22,7 @@ import { ImageEmbedData, ImageMetaData } from "./imageTypes";
 
 export interface ConceptEmbedData {
   resource: "concept";
+  conceptType: "concept" | "gloss";
   contentId: string;
   type: "block" | "inline" | "notion";
   linkText: string;

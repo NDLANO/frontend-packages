@@ -17,6 +17,7 @@ const blockEmbedData: ConceptEmbedData = {
   resource: "concept",
   type: "block",
   linkText: "",
+  conceptType: "concept",
 };
 
 const glossBlockEmbedData: ConceptEmbedData = {
@@ -24,6 +25,7 @@ const glossBlockEmbedData: ConceptEmbedData = {
   resource: "concept",
   type: "block",
   linkText: "",
+  conceptType: "gloss",
 };
 
 const inlineEmbedData: ConceptEmbedData = {
@@ -31,6 +33,7 @@ const inlineEmbedData: ConceptEmbedData = {
   linkText: "forklaring",
   resource: "concept",
   type: "inline",
+  conceptType: "concept",
 };
 
 const glossInlineEmbedData: ConceptEmbedData = {
@@ -38,6 +41,7 @@ const glossInlineEmbedData: ConceptEmbedData = {
   linkText: "glose",
   resource: "concept",
   type: "inline",
+  conceptType: "gloss",
 };
 
 const conceptMetaData: ConceptData["concept"] = {

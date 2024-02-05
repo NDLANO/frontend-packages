@@ -9,7 +9,7 @@
 import { ChangeEvent, ElementType } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { breakpoints, colors, fonts, misc, mq, spacing, stackOrder } from "@ndla/core";
 
 interface Props {
   id: string;
@@ -25,13 +25,13 @@ interface Props {
 
 const StyledText = styled.span`
   flex-grow: 1;
-  z-index: 2;
+  z-index: ${stackOrder.offsetDouble};
 `;
 
 const StyledInput = styled.input`
   position: absolute;
   opacity: 0;
-  z-index: 5;
+  z-index: ${stackOrder.trigger};
   cursor: pointer;
 
   &:checked {

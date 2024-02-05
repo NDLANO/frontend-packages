@@ -34,6 +34,11 @@ const StyledArticle = styled.article`
   div[data-type="campaign-block"] {
     margin: ${spacing.large} 0px;
   }
+
+  div[data-type="campaign-block"] + div[data-type="campaign-block"] {
+    margin: ${spacing.large} 0px;
+  }
+
   div[data-type="grid"] {
     h2,
     h3,

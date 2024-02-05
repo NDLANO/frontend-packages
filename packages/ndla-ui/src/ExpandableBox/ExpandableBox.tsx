@@ -21,8 +21,8 @@ interface SummaryProps extends HTMLAttributes<HTMLElement> {}
 const StyledSummary = styled.summary`
   & > * {
     display: inline;
-    ${fonts.size.text.metaText.medium};
-    font-weight: 500; //have to set value like this or it gets overwritten
+    font-size: ${fonts.size.text.metaText.medium};
+    font-weight: ${fonts.weight.normal};
   }
 `;
 

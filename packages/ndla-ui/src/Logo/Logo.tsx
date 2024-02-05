@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-/* eslint-disable max-len */
 
 import { useMemo } from "react";
 import { SerializedStyles, css } from "@emotion/react";

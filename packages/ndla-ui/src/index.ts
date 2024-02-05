@@ -80,7 +80,7 @@ export {
   HeroContent,
 } from "./Hero";
 
-export { FilterListPhone, FilterButtons, ToggleItem } from "./Filter";
+export { FilterButtons, ToggleItem } from "./Filter";
 
 export { Footer, EditorName, FooterText } from "./Footer";
 

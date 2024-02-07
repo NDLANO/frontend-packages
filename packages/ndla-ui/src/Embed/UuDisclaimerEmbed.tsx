@@ -36,7 +36,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
 
   const { embedData, data } = embed;
 
-  const disclaimerLink = data.disclaimerLink ? (
+  const disclaimerLink = data?.disclaimerLink ? (
     <>
       {` ${t("uuDisclaimer.alternative")} `}
       <SafeLink to={data.disclaimerLink.href} target="_blank" rel="noopener noreferrer">

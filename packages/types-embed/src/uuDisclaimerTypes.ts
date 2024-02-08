@@ -16,7 +16,7 @@ export interface DisclaimerLink {
 export interface UuDisclaimerEmbedData {
   resource: "uu-disclaimer";
   disclaimer: string;
-  articleId?: number;
+  articleId?: string;
 }
 
 export interface UuDisclaimerData {

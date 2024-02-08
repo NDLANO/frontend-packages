@@ -1061,7 +1061,7 @@ const messages = {
         title: "Varslingar",
         showAll: "Sjå alle varslingar",
         description:
-          "Velkomen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærarar frå heile Noreg. Du finn forum for ulike fag og tema.",
+          "Velkommen inn i arenaen for lærarar i vidaregåande opplæring! Dette er <em>din</em> arena: ein fagleg møtestad for diskusjon, inspirasjon, deling og utviklande samarbeid.",
         myNotification: "Mine varsler",
         markAll: "Merk alle som lest",
         subscribe: "Du får no varsling om nye svar på dette innlegget",

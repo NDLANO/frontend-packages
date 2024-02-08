@@ -1062,7 +1062,7 @@ const messages = {
         title: "Notifications",
         showAll: "View all notifications",
         description:
-          "Welcome to NDLA Arena. Here you can discuss, share and cooperate with other teachers from all of Norway. You will find forums for the different subjects and themes.",
+          "Welcome to the arena for teachers in upper secondary education. This is <em>your</em> arena: a professional meeting place for discussion, inspiration, sharing, development, and collaboration.",
         myNotification: "My notifications",
         markAll: "Mark all as read",
         subscribe: "You will now be notified of new replies to this topic",

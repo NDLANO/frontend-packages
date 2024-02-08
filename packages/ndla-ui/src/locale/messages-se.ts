@@ -1063,7 +1063,7 @@ const messages = {
         title: "Varslinger",
         showAll: "Se alle varslinger",
         description:
-          "Velkommen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærere fra hele Norge. Du finner forum for ulike fag og tema.",
+          "Velkommen inn i arenaen for lærere i videregående opplæring! Dette er <em>din</em> arena: et faglig møtested for diskusjon, inspirasjon, deling og utviklende samarbeid.",
         myNotification: "Mine varsler",
         markAll: "Merk alle som lest",
         subscribe: "Du får nå varsling om nye svar på dette innlegget",

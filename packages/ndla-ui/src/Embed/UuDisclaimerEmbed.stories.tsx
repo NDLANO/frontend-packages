@@ -16,7 +16,7 @@ import { defaultParameters } from "../../../../stories/defaults";
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
   disclaimer: "Dette inholdet er ikke tastaturvennlig.",
-  articleId: 123,
+  articleId: "123",
 };
 
 const meta: Meta<typeof UuDisclaimerEmbed> = {

@@ -25,6 +25,10 @@ const StyledMessageBox = styled(MessageBox)`
 
 const Disclaimer = styled.div`
   display: flow;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 `;
 
 const UuDisclaimerEmbed = ({ embed, children }: Props) => {

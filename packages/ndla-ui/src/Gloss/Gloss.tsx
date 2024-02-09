@@ -9,8 +9,10 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from "@ndla/accordion";
-import { colors, spacing, misc, fonts } from "@ndla/core";
+import { Trigger } from "@radix-ui/react-accordion";
+import { AccordionRoot, AccordionItem, AccordionContent } from "@ndla/accordion";
+import { colors, spacing, misc, fonts, spacingUnit } from "@ndla/core";
+import { ChevronDown } from "@ndla/icons/common";
 import { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
 import GlossExample from "./GlossExample";
 import SpeechControl from "../AudioPlayer/SpeechControl";
@@ -34,17 +36,17 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${colors.background.lightBlue};
-  padding: ${spacing.nsmall} ${spacing.normal};
-  border: 1px solid ${colors.brand.lighter};
+  border: 1px solid ${colors.brand.tertiary};
   border-radius: ${misc.borderRadius};
   margin-bottom: ${spacing.xsmall};
-  gap: ${spacing.nsmall};
+  gap: ${spacing.xsmall};
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: ${spacing.nsmall} ${spacing.normal} 0 ${spacing.normal};
 `;
 
 const GlossContainer = styled.div`
@@ -53,7 +55,7 @@ const GlossContainer = styled.div`
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
   span {
-    ${fonts.sizes("16px", "24px")};
+    ${fonts.size.text.metaText.small};
   }
   span[data-pinyin] {
     font-style: italic;
@@ -64,15 +66,47 @@ const GlossSpan = styled.span`
   font-weight: ${fonts.weight.bold};
 `;
 
-const StyledAccordionHeader = styled(AccordionHeader)`
-  font-family: ${fonts.sans};
-  ${fonts.sizes("16px", "24px")};
-  font-weight: ${fonts.weight.semibold};
+const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 ${spacing.normal} ${spacing.nsmall} ${spacing.normal};
   background-color: ${colors.background.lightBlue};
+  border-radius: ${misc.borderRadius};
 `;
 
 const StyledAccordionContent = styled(AccordionContent)`
   padding: 0;
+`;
+
+const StyledTrigger = styled(Trigger)`
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: ${spacing.xsmall};
+  border-radius: ${misc.borderRadiusLarge};
+  color: ${colors.brand.primary};
+  &:hover,
+  &:focus-visible {
+    color: ${colors.white};
+    background-color: ${colors.brand.primary};
+  }
+  &[data-state="open"] {
+    background-color: ${colors.brand.lighter};
+    &:hover,
+    &:focus-visible {
+      background-color: ${colors.brand.primary};
+    }
+  }
+`;
+
+const StyledChevron = styled(ChevronDown)`
+  transition: all 200ms ease-in-out;
+  [data-styled-trigger][data-state="open"] > & {
+    transform: rotate(180deg);
+  }
+  min-width: ${spacingUnit}px;
+  min-height: ${spacingUnit}px;
 `;
 
 const getFilteredExamples = (
@@ -136,29 +170,33 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
               </GlossContainer>
               {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
             </Wrapper>
-            <span lang={title.language}>{title.title}</span>
+            {filteredExamples.length > 0 && (
+              <AccordionRoot type="single" collapsible>
+                <AccordionItem value="1" gloss>
+                  <StyledWrapper>
+                    <span lang={title.language}>{title.title}</span>
+                    <StyledTrigger data-styled-trigger>
+                      <StyledChevron />
+                    </StyledTrigger>
+                  </StyledWrapper>
+                  <StyledAccordionContent>
+                    {filteredExamples.map((examples, index) => (
+                      <div key={`gloss-example-${index}`}>
+                        {examples.map((example, innerIndex) => (
+                          <GlossExample
+                            key={`gloss-example-${index}-${innerIndex}`}
+                            example={example}
+                            originalLanguage={glossData.originalLanguage}
+                            index={innerIndex}
+                          />
+                        ))}
+                      </div>
+                    ))}
+                  </StyledAccordionContent>
+                </AccordionItem>
+              </AccordionRoot>
+            )}
           </Container>
-          {filteredExamples.length > 0 && (
-            <AccordionRoot type="single" collapsible>
-              <AccordionItem value="1">
-                <StyledAccordionHeader headingLevel="span">{t("gloss.examples")}</StyledAccordionHeader>
-                <StyledAccordionContent>
-                  {filteredExamples.map((examples, index) => (
-                    <div key={`gloss-example-${index}`}>
-                      {examples.map((example, innerIndex) => (
-                        <GlossExample
-                          key={`gloss-example-${index}-${innerIndex}`}
-                          example={example}
-                          originalLanguage={glossData.originalLanguage}
-                          index={innerIndex}
-                        />
-                      ))}
-                    </div>
-                  ))}
-                </StyledAccordionContent>
-              </AccordionItem>
-            </AccordionRoot>
-          )}
         </>
       )}
     </>

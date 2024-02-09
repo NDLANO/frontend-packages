@@ -10,7 +10,7 @@ import { forwardRef, HTMLAttributes, memo, ReactNode, useMemo } from "react";
 import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Header, Trigger } from "@radix-ui/react-accordion";
-import { colors, fonts, spacing } from "@ndla/core";
+import { colors, fonts, spacing, spacingUnit } from "@ndla/core";
 import { ChevronDown } from "@ndla/icons/common";
 
 const StyledHeader = styled(Header)`
@@ -51,8 +51,8 @@ const StyledChevron = styled(ChevronDown)`
   ${StyledTrigger}[data-state='open'] > & {
     transform: rotate(180deg);
   }
-  width: 24px;
-  height: 24px;
+  width: ${spacingUnit}px;
+  height: ${spacingUnit}px;
 `;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {

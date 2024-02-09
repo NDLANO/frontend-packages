@@ -19,26 +19,32 @@ export interface Props {
 }
 
 const StyledGlossExampleWrapper = styled.div`
-  &[data-is-standalone="true"] {
-    &:first-of-type {
-      border-top: 1px solid ${colors.brand.lighter};
-    }
+  &:first-child {
+    border-top: 1px solid ${colors.brand.tertiary};
   }
+  &:last-child {
+    border-radius: 4px;
+  }
+  background-color: ${colors.background.default};
 `;
-const StyledGlossExample = styled.div`
-  padding: ${spacing.small} 0;
-  padding-left: ${spacing.normal};
-  border: 1px solid ${colors.brand.lighter};
-  border-top: none;
 
+const StyledGlossExample = styled.div`
+  padding: ${spacing.small} ${spacing.normal};
+  border-bottom: 1px solid ${colors.brand.lighter};
+  background-color: ${colors.background.default};
+  &:last-child {
+    border-radius: 4px;
+  }
   &[data-is-first="true"] {
     background-color: ${colors.background.lightBlue};
+    border-radius: 0px;
   }
 `;
+
 const StyledText = styled(Text)`
   &[data-is-first="true"] {
     font-weight: ${fonts.weight.bold};
-    color: ${colors.brand.dark};
+    color: ${colors.text.primary};
   }
   &[data-pinyin] {
     font-style: italic;
@@ -53,16 +59,15 @@ const GlossExample = ({ example, originalLanguage, index, isStandalone = false }
           {example.example}
         </StyledText>
       </StyledGlossExample>
-
       {example.transcriptions.pinyin && (
-        <StyledGlossExample lang={originalLanguage}>
-          <StyledText data-pinyin="" textStyle="meta-text-medium" margin="none">
+        <StyledGlossExample data-is-first={index === 0} lang={originalLanguage}>
+          <StyledText data-pinyin textStyle="meta-text-medium" margin="none">
             {example.transcriptions?.pinyin}
           </StyledText>
         </StyledGlossExample>
       )}
       {example.transcriptions.traditional && (
-        <StyledGlossExample lang={originalLanguage}>
+        <StyledGlossExample data-is-first={index === 0} lang={originalLanguage}>
           <StyledText textStyle="meta-text-medium" margin="none">
             {example.transcriptions?.traditional}
           </StyledText>

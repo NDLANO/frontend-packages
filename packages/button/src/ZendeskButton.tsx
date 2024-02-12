@@ -8,8 +8,8 @@
 
 import { ReactNode, useState } from "react";
 import { css, Global } from "@emotion/react";
-import { ButtonV2, ButtonProps } from "@ndla/button";
 import { misc } from "@ndla/core";
+import ButtonV2, { ButtonProps } from "./ButtonV2";
 
 const styling = css`
   border-radius: ${misc.borderRadius};
@@ -78,5 +78,4 @@ const ZendeskButton = ({ children, locale, widgetKey, ...rest }: Props) => {
     </>
   );
 };
-
 export default ZendeskButton;

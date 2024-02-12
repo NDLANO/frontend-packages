@@ -14,3 +14,4 @@ export { default as CloseButton } from "./CloseButton";
 export { default as IconButtonV2, iconButtonStyle } from "./IconButtonV2";
 export { default as LoadingButton } from "./LoadingButton";
 export { default as FavoriteButton } from "./FavoriteButton";
+export { default as ZendeskButton } from "./ZendeskButton";

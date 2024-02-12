@@ -170,7 +170,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
               </GlossContainer>
               {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
             </Wrapper>
-            {filteredExamples.length > 0 && (
+            {filteredExamples.length > 0 ? (
               <AccordionRoot type="single" collapsible>
                 <AccordionItem value="1" gloss>
                   <StyledWrapper>
@@ -188,6 +188,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                             example={example}
                             originalLanguage={glossData.originalLanguage}
                             index={innerIndex}
+                            lastExampleIndex={examples.length - 1}
                           />
                         ))}
                       </div>
@@ -195,6 +196,10 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                   </StyledAccordionContent>
                 </AccordionItem>
               </AccordionRoot>
+            ) : (
+              <StyledWrapper>
+                <span lang={title.language}>{title.title}</span>
+              </StyledWrapper>
             )}
           </Container>
         </>

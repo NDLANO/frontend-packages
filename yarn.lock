@@ -3080,18 +3080,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/zendesk@workspace:packages/ndla-zendesk":
-  version: 0.0.0-use.local
-  resolution: "@ndla/zendesk@workspace:packages/ndla-zendesk"
-  dependencies:
-    "@ndla/button": "npm:^12.0.32"
-    "@ndla/core": "npm:^4.4.0"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    react: ">= 16.8.0"
-  languageName: unknown
-  linkType: soft
-
 "@nicolo-ribaudo/chokidar-2@npm:2.1.8-no-fsevents.3":
   version: 2.1.8-no-fsevents.3
   resolution: "@nicolo-ribaudo/chokidar-2@npm:2.1.8-no-fsevents.3"

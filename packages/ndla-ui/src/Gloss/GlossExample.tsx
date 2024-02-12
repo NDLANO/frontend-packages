@@ -7,7 +7,7 @@
  */
 
 import styled from "@emotion/styled";
-import { colors, spacing, fonts } from "@ndla/core";
+import { colors, spacing, fonts, misc } from "@ndla/core";
 import { IGlossExample } from "@ndla/types-backend/concept-api";
 import { Text } from "@ndla/typography";
 
@@ -23,7 +23,7 @@ const StyledGlossExampleWrapper = styled.div`
     border-top: 1px solid ${colors.brand.tertiary};
   }
   &:last-child {
-    border-radius: 4px;
+    border-radius: ${misc.borderRadius};
   }
   background-color: ${colors.background.default};
 `;
@@ -33,7 +33,7 @@ const StyledGlossExample = styled.div`
   border-bottom: 1px solid ${colors.brand.lighter};
   background-color: ${colors.background.default};
   &:last-child {
-    border-radius: 4px;
+    border-radius: ${misc.borderRadius};
   }
   &[data-is-first="true"] {
     background-color: ${colors.background.lightBlue};

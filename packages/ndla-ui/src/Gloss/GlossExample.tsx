@@ -15,30 +15,35 @@ export interface Props {
   example: IGlossExample;
   originalLanguage: string | undefined;
   index: number;
-  isStandalone?: boolean;
 }
 
 const StyledGlossExampleWrapper = styled.div`
-  &:first-child {
+  &:first-of-type {
     border-top: 1px solid ${colors.brand.tertiary};
   }
-  &:last-child {
+  &:last-of-type {
     border-radius: ${misc.borderRadius};
   }
   background-color: ${colors.background.default};
+  /* &[data-is-standalone="true"] {
+    border-bottom: none;
+  } */
 `;
 
 const StyledGlossExample = styled.div`
   padding: ${spacing.small} ${spacing.normal};
   border-bottom: 1px solid ${colors.brand.lighter};
   background-color: ${colors.background.default};
-  &:last-child {
-    border-radius: ${misc.borderRadius};
+  /* border-radius: ${misc.borderRadius};*/
+  &:last-of-type {
   }
   &[data-is-first="true"] {
     background-color: ${colors.background.lightBlue};
     border-radius: 0px;
   }
+  /* &[data-is-traditional="true"] {
+    border-bottom: none;
+  } */
 `;
 
 const StyledText = styled(Text)`
@@ -51,9 +56,9 @@ const StyledText = styled(Text)`
   }
 `;
 
-const GlossExample = ({ example, originalLanguage, index, isStandalone = false }: Props) => {
+const GlossExample = ({ example, originalLanguage, index }: Props) => {
   return (
-    <StyledGlossExampleWrapper data-is-standalone={isStandalone}>
+    <StyledGlossExampleWrapper>
       <StyledGlossExample data-is-first={index === 0} lang={example.language}>
         <StyledText data-is-first={index === 0} textStyle="meta-text-medium" margin="none">
           {example.example}

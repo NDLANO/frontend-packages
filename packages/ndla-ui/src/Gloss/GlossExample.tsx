@@ -60,14 +60,14 @@ const GlossExample = ({ example, originalLanguage, index, isStandalone = false }
         </StyledText>
       </StyledGlossExample>
       {example.transcriptions.pinyin && (
-        <StyledGlossExample data-is-first={index === 0} lang={originalLanguage}>
+        <StyledGlossExample lang={originalLanguage}>
           <StyledText data-pinyin textStyle="meta-text-medium" margin="none">
             {example.transcriptions?.pinyin}
           </StyledText>
         </StyledGlossExample>
       )}
       {example.transcriptions.traditional && (
-        <StyledGlossExample data-is-first={index === 0} lang={originalLanguage}>
+        <StyledGlossExample lang={originalLanguage}>
           <StyledText textStyle="meta-text-medium" margin="none">
             {example.transcriptions?.traditional}
           </StyledText>

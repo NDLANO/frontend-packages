@@ -105,8 +105,8 @@ const StyledChevron = styled(ChevronDown)`
   [data-styled-trigger][data-state="open"] > & {
     transform: rotate(180deg);
   }
-  min-width: ${spacingUnit}px;
-  min-height: ${spacingUnit}px;
+  min-width: ${spacing.normal};
+  min-height: ${spacing.normal};
 `;
 
 const getFilteredExamples = (

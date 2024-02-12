@@ -13,7 +13,7 @@ import { colors, misc } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
-  /* Unique id for state handling */
+  /** Unique id for state handling */
   value: string;
   children: ReactNode;
   gloss?: boolean;

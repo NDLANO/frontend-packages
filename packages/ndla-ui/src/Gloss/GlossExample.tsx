@@ -20,7 +20,7 @@ export interface Props {
 
 const StyledGlossExampleWrapper = styled.div`
   &:first-of-type {
-    border-top: 1px solid ${colors.brand.tertiary};
+    border-top: 1px solid ${colors.brand.primary};
   }
   &:last-of-type {
     border-radius: ${misc.borderRadius};

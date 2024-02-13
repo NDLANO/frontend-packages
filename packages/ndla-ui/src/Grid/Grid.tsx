@@ -25,6 +25,7 @@ const GridContainer = styled.div`
   grid-template-columns: 1fr;
   grid-gap: ${spacing.normal};
   padding: ${spacing.normal};
+  margin-bottom: ${spacing.normal};
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     &[data-columns="2x2"],

@@ -176,12 +176,12 @@ const ImageEmbed = ({
           }
           lang={lang}
         />
+        {parsedDescription}
       </ImageWrapper>
       {isBylineHidden || (isSmall(embedData.size) && !imageSizes) ? null : (
         <EmbedByline
           type="image"
           copyright={data.copyright}
-          description={parsedDescription}
           bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ""}
           inGrid={inGrid}

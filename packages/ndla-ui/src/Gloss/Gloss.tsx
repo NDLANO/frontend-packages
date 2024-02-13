@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { Trigger } from "@radix-ui/react-accordion";
 import { AccordionRoot, AccordionItem, AccordionContent } from "@ndla/accordion";
-import { colors, spacing, misc, fonts, spacingUnit } from "@ndla/core";
+import { colors, spacing, misc, fonts } from "@ndla/core";
 import { ChevronDown } from "@ndla/icons/common";
 import { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
 import GlossExample from "./GlossExample";
@@ -31,15 +31,9 @@ export interface Props {
   exampleLangs?: string;
 }
 
-const Container = styled.div`
-  font-family: ${fonts.sans};
-  display: flex;
-  flex-direction: column;
+const StyledAccordionItem = styled(AccordionItem)`
   background-color: ${colors.background.lightBlue};
   border: 1px solid ${colors.brand.tertiary};
-  border-radius: ${misc.borderRadius};
-  margin-bottom: ${spacing.xsmall};
-  gap: ${spacing.xsmall};
 `;
 
 const Wrapper = styled.div`
@@ -140,8 +134,8 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
   return (
     <>
       {glossData && (
-        <>
-          <Container>
+        <AccordionRoot type="single" collapsible>
+          <StyledAccordionItem value="1">
             <Wrapper>
               <GlossContainer>
                 <GlossSpan lang={glossData.originalLanguage}>{glossData.gloss}</GlossSpan>
@@ -171,38 +165,36 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
               {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
             </Wrapper>
             {filteredExamples.length > 0 ? (
-              <AccordionRoot type="single" collapsible>
-                <AccordionItem value="1" gloss>
-                  <StyledWrapper>
-                    <span lang={title.language}>{title.title}</span>
-                    <StyledTrigger data-styled-trigger>
-                      <StyledChevron />
-                    </StyledTrigger>
-                  </StyledWrapper>
-                  <StyledAccordionContent>
-                    {filteredExamples.map((examples, index) => (
-                      <div key={`gloss-example-${index}`}>
-                        {examples.map((example, innerIndex) => (
-                          <GlossExample
-                            key={`gloss-example-${index}-${innerIndex}`}
-                            example={example}
-                            originalLanguage={glossData.originalLanguage}
-                            index={innerIndex}
-                            lastExampleIndex={examples.length - 1}
-                          />
-                        ))}
-                      </div>
-                    ))}
-                  </StyledAccordionContent>
-                </AccordionItem>
-              </AccordionRoot>
+              <>
+                <StyledWrapper>
+                  <span lang={title.language}>{title.title}</span>
+                  <StyledTrigger data-styled-trigger>
+                    <StyledChevron />
+                  </StyledTrigger>
+                </StyledWrapper>
+                <StyledAccordionContent>
+                  {filteredExamples.map((examples, index) => (
+                    <div key={`gloss-example-${index}`}>
+                      {examples.map((example, innerIndex) => (
+                        <GlossExample
+                          key={`gloss-example-${index}-${innerIndex}`}
+                          example={example}
+                          originalLanguage={glossData.originalLanguage}
+                          index={innerIndex}
+                          lastExampleIndex={examples.length - 1}
+                        />
+                      ))}
+                    </div>
+                  ))}
+                </StyledAccordionContent>
+              </>
             ) : (
               <StyledWrapper>
                 <span lang={title.language}>{title.title}</span>
               </StyledWrapper>
             )}
-          </Container>
-        </>
+          </StyledAccordionItem>
+        </AccordionRoot>
       )}
     </>
   );

@@ -16,27 +16,18 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   /** Unique id for state handling */
   value: string;
   children: ReactNode;
-  gloss?: boolean;
 }
 
 const StyledItem = styled(Item)`
   border: 1px solid ${colors.brand.light};
   border-radius: ${misc.borderRadius};
-  &[data-gloss="true"] {
-    border: none;
-    border-radius: 0px;
-  }
   &[data-state="open"] {
     border-color: ${colors.brand.primary};
   }
 `;
 
-const AccordionItem = ({ children, gloss, ...rest }: Props) => {
-  return (
-    <StyledItem data-gloss={gloss} {...rest}>
-      {children}
-    </StyledItem>
-  );
+const AccordionItem = ({ children, ...rest }: Props) => {
+  return <StyledItem {...rest}>{children}</StyledItem>;
 };
 
 export default memo(AccordionItem);

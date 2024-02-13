@@ -73,6 +73,7 @@ export const StyledCheckboxRoot = styled(Root)`
   }
   &:focus-within {
     outline: 2px solid ${colors.brand.dark};
+    outline-offset: 1px;
   }
 `;
 

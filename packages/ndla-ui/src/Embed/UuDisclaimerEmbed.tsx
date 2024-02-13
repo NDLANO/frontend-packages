@@ -9,6 +9,7 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 import { InformationOutline } from "@ndla/icons/common";
 import SafeLink from "@ndla/safelink";
 import { UuDisclaimerMetaData } from "@ndla/types-embed";
@@ -21,6 +22,7 @@ interface Props {
 const StyledMessageBox = styled(MessageBox)`
   display: flex;
   flex-align: center;
+  margin-bottom: ${spacing.xsmall};
 `;
 
 const Disclaimer = styled.div`
@@ -50,7 +52,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   ) : null;
 
   return (
-    <>
+    <section>
       <StyledMessageBox type="info">
         <InformationOutline />
         <Disclaimer>
@@ -59,7 +61,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
         </Disclaimer>
       </StyledMessageBox>
       {children}
-    </>
+    </section>
   );
 };
 

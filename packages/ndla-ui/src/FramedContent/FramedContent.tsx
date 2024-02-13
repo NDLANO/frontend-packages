@@ -12,7 +12,6 @@ import { colors, spacing } from "@ndla/core";
 
 const StyledFramedContent = styled.div`
   padding: ${spacing.mediumlarge};
-  margin: ${spacing.large} 0;
   border: 1px solid ${colors.brand.tertiary};
   overflow: hidden;
 

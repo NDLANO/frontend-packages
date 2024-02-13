@@ -12,6 +12,7 @@ import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
 import { defaultParameters } from "../../../../stories/defaults";
+import FramedContent from "../FramedContent";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
@@ -145,6 +146,22 @@ export const WithHtml: StoryObj<typeof UuDisclaimerEmbed> = {
           <p>innhold</p>
         </details>
       </>
+    ),
+  },
+};
+
+export const WithFramedContent: StoryObj<typeof UuDisclaimerEmbed> = {
+  args: {
+    embed: {
+      resource: "uu-disclaimer",
+      status: "success",
+      embedData: embedData,
+      data: {},
+    },
+    children: (
+      <FramedContent>
+        <p>Dette er tekst i ramme</p>
+      </FramedContent>
     ),
   },
 };

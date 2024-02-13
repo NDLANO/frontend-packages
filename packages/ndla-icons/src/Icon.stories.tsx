@@ -64,7 +64,7 @@ const StyledList = styled.ul`
   li {
     list-style: none;
     background-color: #eff0f2;
-    width: 210px;
+    width: 275px;
     padding: ${spacing.small};
     margin: ${spacing.small};
     word-break: break-all;

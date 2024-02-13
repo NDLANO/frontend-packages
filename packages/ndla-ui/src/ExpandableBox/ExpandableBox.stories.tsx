@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
 import { defaultParameters } from "../../../../stories/defaults";
 
@@ -32,3 +32,12 @@ export default {
 } as Meta<typeof ExpandableBox>;
 
 export const Default: StoryObj<typeof ExpandableBox> = {};
+
+export const WithHeader: StoryFn<typeof ExpandableBox> = ({ ...args }) => (
+  <ExpandableBox {...args}>
+    <ExpandableBoxSummary>
+      <h2>Open me as header text</h2>
+    </ExpandableBoxSummary>
+    Everything here is only visible when the box is open
+  </ExpandableBox>
+);

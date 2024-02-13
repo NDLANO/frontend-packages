@@ -7,6 +7,8 @@
  */
 
 import { HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { fonts } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLDetailsElement> {}
 
@@ -16,6 +18,14 @@ export const ExpandableBox = ({ children, ...rest }: Props) => {
 
 interface SummaryProps extends HTMLAttributes<HTMLElement> {}
 
+const StyledSummary = styled.summary`
+  & > * {
+    display: inline;
+    font-size: ${fonts.size.text.metaText.medium};
+    font-weight: ${fonts.weight.normal};
+  }
+`;
+
 export const ExpandableBoxSummary = ({ children, ...rest }: SummaryProps) => {
-  return <summary {...rest}>{children}</summary>;
+  return <StyledSummary {...rest}>{children}</StyledSummary>;
 };

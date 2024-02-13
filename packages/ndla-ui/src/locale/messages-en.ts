@@ -890,6 +890,7 @@ const messages = {
     wrongUserInfoDisclaimer:
       "If any information is wrong, it must be updated by the host organization/school owner the user belongs to. An overview of available user support can be found here: ",
     moderator: "Moderator",
+    deletedUser: "Deleted user",
   },
   factbox: {
     open: "Open fact box",
@@ -1061,7 +1062,7 @@ const messages = {
         title: "Notifications",
         showAll: "View all notifications",
         description:
-          "Welcome to NDLA Arena. Here you can discuss, share and cooperate with other teachers from all of Norway. You will find forums for the different subjects and themes.",
+          "Welcome to the arena for teachers in upper secondary education. This is <em>your</em> arena: a professional meeting place for discussion, inspiration, sharing, development, and collaboration.",
         myNotification: "My notifications",
         markAll: "Mark all as read",
         subscribe: "You will now be notified of new replies to this topic",
@@ -1104,6 +1105,7 @@ const messages = {
           selectAdministrator: "Make {{user}} a administrator.",
           enableArena: "Give {{user}} access to the arena.",
           noUsers: "No users found.",
+          search: "Search for users",
         },
         flags: {
           title: "Flag",
@@ -1352,6 +1354,9 @@ const messages = {
       traditional: "Traditional spelling",
       pinyin: "Pinyin",
     },
+  },
+  uuDisclaimer: {
+    alternative: "You can find alternative content in the article",
   },
   wordClass: {
     [wordClass.wordClass.adjective]: "Adjective",

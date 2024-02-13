@@ -13,7 +13,7 @@ import { CloseButton } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 import { Forward } from "@ndla/icons/common";
 
-type MessageBoxType = "ghost" | "danger";
+type MessageBoxType = "ghost" | "danger" | "info";
 
 interface LinkProps {
   href?: string;

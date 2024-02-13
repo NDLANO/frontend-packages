@@ -24,6 +24,7 @@ import { imageEmbedPlugin } from "./imageEmbedPlugin";
 import { keyFigureEmbedPlugin } from "./KeyFigureEmbedPlugin";
 import { linkBlockPlugin } from "./linkBlockEmbedPlugin";
 import { relatedContentEmbedPlugin } from "./relatedContentEmbedPlugin";
+import { uuDisclaimerEmbedPlugin } from "./uuDisclaimerEmbedPlugin";
 import { PluginType } from "../types";
 
 export const embedPlugins: Record<string, PluginType> = {
@@ -45,4 +46,5 @@ export const embedPlugins: Record<string, PluginType> = {
   "contact-block": contactBlockEmbedPlugin,
   "campaign-block": campaignBlockPlugin,
   "link-block": linkBlockPlugin,
+  "uu-disclaimer": uuDisclaimerEmbedPlugin,
 };

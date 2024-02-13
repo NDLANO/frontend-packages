@@ -125,7 +125,7 @@ const StyledSection = styled.section`
 export const RelatedArticleList = ({
   children = [],
   articleCount,
-  headingLevel = "h3",
+  headingLevel = "h2",
   headingButtons,
   ...rest
 }: Props) => {

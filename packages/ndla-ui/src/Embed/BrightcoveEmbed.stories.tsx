@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData, EmbedMetaData } from "@ndla/types-embed";
+import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from "@ndla/types-embed";
 import BrightcoveEmbed from "./BrightcoveEmbed";
 import { defaultParameters } from "../../../../stories/defaults";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";

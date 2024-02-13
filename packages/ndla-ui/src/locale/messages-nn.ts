@@ -890,6 +890,7 @@ const messages = {
     wrongUserInfoDisclaimer:
       "Dersom informasjonen er feil, må han oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversikt over brukarstøtte finst her: ",
     moderator: "Moderator",
+    deletedUser: "Sletta brukar",
   },
   factbox: {
     open: "Åpne faktaboks",
@@ -1060,7 +1061,7 @@ const messages = {
         title: "Varslingar",
         showAll: "Sjå alle varslingar",
         description:
-          "Velkomen til NDLA Arena. Her kan du diskutere, dele og samarbeide med andre lærarar frå heile Noreg. Du finn forum for ulike fag og tema.",
+          "Velkommen inn i arenaen for lærarar i vidaregåande opplæring! Dette er <em>din</em> arena: ein fagleg møtestad for diskusjon, inspirasjon, deling og utviklande samarbeid.",
         myNotification: "Mine varsler",
         markAll: "Merk alle som lest",
         subscribe: "Du får no varsling om nye svar på dette innlegget",
@@ -1103,6 +1104,7 @@ const messages = {
           selectAdministrator: 'Gjør "{{user}}" til administrator.',
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukarar funne.",
+          search: "Søk etter brukarar",
         },
         flags: {
           title: "Flagg",
@@ -1350,6 +1352,9 @@ const messages = {
       traditional: "Tradisjonell skrivemåte",
       pinyin: "Pinyin",
     },
+  },
+  uuDisclaimer: {
+    alternative: "Du kan finne alternativt innhald i artikkelen",
   },
   wordClass: {
     [wordClass.wordClass.adjective]: "Adjektiv",

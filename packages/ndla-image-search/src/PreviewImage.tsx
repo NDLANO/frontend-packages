@@ -8,8 +8,10 @@
 
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
-import { CheckboxItem } from "@ndla/forms";
+import { spacing } from "@ndla/core";
+import { CheckboxItem, Label } from "@ndla/forms";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { uuid } from "@ndla/util";
 
@@ -23,6 +25,13 @@ interface Props {
   showCheckbox: boolean;
   checkboxLabel?: string;
 }
+
+const CheckboxWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+  align-items: center;
+`;
+
 const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, checkboxLabel }: Props) => {
   const { t } = useTranslation();
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
@@ -78,13 +87,16 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
           {useImageTitle}
         </ButtonV2>
         {showCheckbox && (
-          <div>
+          <CheckboxWrapper>
             <CheckboxItem
-              label={checkboxLabel}
+              id="saveAsMeta"
               checked={saveAsMetaImage}
-              onChange={() => setSaveAsMetaImage((prev) => !prev)}
+              onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}
             />
-          </div>
+            <Label htmlFor="saveAsMeta" textStyle="label-small" margin="none">
+              {checkboxLabel}
+            </Label>
+          </CheckboxWrapper>
         )}
       </div>
       <div className="clear" />

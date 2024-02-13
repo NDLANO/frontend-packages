@@ -19,7 +19,7 @@ export { default as FieldRemoveButton } from "./FieldRemoveButton";
 export { default as Select } from "./Select";
 export { StyledButtonWrapper, FieldHeaderIconStyle } from "./Styles";
 export { FormPill, FormPills } from "./FormPill";
-export { default as CheckboxItem } from "./CheckboxItem";
+export { CheckboxItem } from "./CheckboxItem";
 export { default as UploadDropZone } from "./UploadDropZone";
 export { Label } from "./Label";
 export { FormControl, useFormControl } from "./FormControl";

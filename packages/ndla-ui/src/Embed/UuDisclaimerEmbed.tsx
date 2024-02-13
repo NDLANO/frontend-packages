@@ -55,7 +55,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   ) : null;
 
   return (
-    <section>
+    <div role="region">
       <MessageBoxWrapper>
         <StyledMessageBox type="info">
           <InformationOutline />
@@ -66,7 +66,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
         </StyledMessageBox>
       </MessageBoxWrapper>
       {children}
-    </section>
+    </div>
   );
 };
 

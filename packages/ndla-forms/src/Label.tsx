@@ -8,7 +8,8 @@
 
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { css } from "@emotion/react";
-import { utils } from "@ndla/core";
+import styled from "@emotion/styled";
+import { utils, colors } from "@ndla/core";
 import { Text, TextProps } from "@ndla/typography";
 import { useFormControlContext } from "./FormControl";
 
@@ -20,13 +21,19 @@ const visuallyHiddenStyle = css`
   ${utils.visuallyHidden};
 `;
 
+const StyledLabel = styled(Text)`
+  &[data-disabled="true"] {
+    color: ${colors.brand.greyMedium};
+  }
+`;
+
 export const Label = forwardRef<HTMLLabelElement, Props>(
   ({ textStyle = "label-large", visuallyHidden, margin = "small", ...rest }, ref) => {
     const control = useFormControlContext();
     const fieldProps = control?.getLabelProps(rest, ref) ?? { ref, ...rest };
 
     return (
-      <Text
+      <StyledLabel
         element="label"
         css={visuallyHidden ? visuallyHiddenStyle : undefined}
         {...rest}

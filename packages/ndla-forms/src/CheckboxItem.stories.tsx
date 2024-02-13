@@ -51,3 +51,16 @@ export const InFormControl: StoryFn<any> = () => (
     </FormControl>
   </form>
 );
+
+export const Disabled: StoryFn<any> = () => (
+  <form>
+    <FormControl id="test" isDisabled>
+      <div style={{ display: "flex", gap: spacing.small, alignItems: "center" }}>
+        <CheckboxItem />
+        <Label margin="none" textStyle="label-small">
+          Check it
+        </Label>
+      </div>
+    </FormControl>
+  </form>
+);

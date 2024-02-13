@@ -71,6 +71,9 @@ export const StyledCheckboxRoot = styled(Root)`
       background: ${colors.white};
     }
   }
+  &:focus-within {
+    outline: 2px solid ${colors.brand.dark};
+  }
 `;
 
 export const CheckboxItem = forwardRef<HTMLButtonElement, CheckboxProps>(({ ...rest }, ref) => {

@@ -19,10 +19,13 @@ interface Props {
   children?: ReactNode;
 }
 
+const MessageBoxWrapper = styled.div`
+  margin-bottom: ${spacing.xsmall};
+`;
+
 const StyledMessageBox = styled(MessageBox)`
   display: flex;
   flex-align: center;
-  margin-bottom: ${spacing.xsmall};
 `;
 
 const Disclaimer = styled.div`
@@ -53,13 +56,15 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
 
   return (
     <section>
-      <StyledMessageBox type="info">
-        <InformationOutline />
-        <Disclaimer>
-          {embedData.disclaimer}
-          {disclaimerLink}
-        </Disclaimer>
-      </StyledMessageBox>
+      <MessageBoxWrapper>
+        <StyledMessageBox type="info">
+          <InformationOutline />
+          <Disclaimer>
+            {embedData.disclaimer}
+            {disclaimerLink}
+          </Disclaimer>
+        </StyledMessageBox>
+      </MessageBoxWrapper>
       {children}
     </section>
   );

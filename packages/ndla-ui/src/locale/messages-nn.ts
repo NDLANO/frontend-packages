@@ -1022,6 +1022,11 @@ const messages = {
         responses_plural: "svar",
         topicContent: "Skriv innlegget ditt her",
         fetchMore: "Hent fleire innlegg",
+        locked: "Lås innlegg",
+        unlock: "Lås opp innlegg",
+        lockDescription:
+          "Vil du låse dette innlegget? Dette vil gjera at innlegget ikkje kan få fleire kommentarar, og vil visast som låst.",
+        unlockDescription: "Vil du låse opp dette innlegget? Dette vil gjera at innlegget kan få fleire kommentarar.",
       },
       deleted: {
         post: "Kommentaren din har blitt sletta.",

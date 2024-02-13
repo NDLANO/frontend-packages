@@ -1031,6 +1031,10 @@ const messages = {
         responses_plural: "responses",
         topicContent: "Write your topic here",
         fetchMore: "Fetch more topics",
+        locked: "Lock topic",
+        unlock: "Unlock topic",
+        lockDescription: "Do you want do lock this topic? This will prevent this topic from getting more posts.",
+        unlockDescription: "Do you want do unlock this topic? This will prevent this topic from getting more posts.",
       },
       posts: {
         title: "Posts",

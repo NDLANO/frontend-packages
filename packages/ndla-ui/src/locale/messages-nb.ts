@@ -1030,6 +1030,11 @@ const messages = {
         responses_plural: "svar",
         topicContent: "Skriv innlegget ditt her",
         fetchMore: "Hent flere innlegg",
+        locked: "Lås innlegg",
+        unlock: "Lås opp innlegg",
+        lockDescription:
+          "Vil du låse dette innlegget? Dette vil gjøre at innlegget ikke kan få flere kommentarer, og vil vises som låst.",
+        unlockDescription: "Vil du låse opp dette innlegget? Dette vil gjøre at innlegget kan få flere kommentarer.",
       },
       posts: {
         title: "Innlegg",

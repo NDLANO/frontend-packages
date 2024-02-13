@@ -1025,8 +1025,8 @@ const messages = {
         locked: "Lås innlegg",
         unlock: "Lås opp innlegg",
         lockDescription:
-          "Vil du låsa dette innlegget? Dette vil gjera at innlegget ikkje kan få fleire kommentarar, og vil visast som låst.",
-        unlockDescription: "Vil du låsa opp dette innlegget? Dette vil gjera at innlegget kan få fleire kommentarar.",
+          "Vil du låse dette innlegget? Dette vil gjera at innlegget ikkje kan få fleire kommentarar, og vil visast som låst.",
+        unlockDescription: "Vil du låse opp dette innlegget? Dette vil gjera at innlegget kan få fleire kommentarar.",
       },
       deleted: {
         post: "Kommentaren din har blitt sletta.",

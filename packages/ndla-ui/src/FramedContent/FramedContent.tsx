@@ -13,6 +13,7 @@ import { colors, spacing } from "@ndla/core";
 const StyledFramedContent = styled.div`
   padding: ${spacing.mediumlarge};
   border: 1px solid ${colors.brand.tertiary};
+  margin-bottom: ${spacing.large};
   overflow: hidden;
 
   .c-figure {

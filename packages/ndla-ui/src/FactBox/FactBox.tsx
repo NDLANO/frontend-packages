@@ -27,7 +27,7 @@ const StyledAside = styled.aside`
   align-items: center;
   position: relative;
   z-index: ${stackOrder.offsetSingle};
-  margin: ${spacing.large} 0 calc(${spacing.large} - ${spacing.nsmall}) 0;
+  margin-bottom: ${spacing.large};
   overflow: hidden;
   padding-bottom: ${spacing.nsmall};
 

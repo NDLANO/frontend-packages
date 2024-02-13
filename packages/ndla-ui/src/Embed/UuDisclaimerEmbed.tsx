@@ -21,6 +21,7 @@ interface Props {
 
 const MessageBoxWrapper = styled.div`
   margin-bottom: ${spacing.xsmall};
+  margin-top: ${spacing.normal};
 `;
 
 const StyledMessageBox = styled(MessageBox)`

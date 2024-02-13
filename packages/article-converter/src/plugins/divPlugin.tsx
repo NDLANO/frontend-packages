@@ -19,7 +19,7 @@ export const divPlugin: PluginType = (node, opts) => {
     const props = attributesToProps(node.attribs);
 
     return (
-      <RelatedArticleList {...props} headingLevel="h3">
+      <RelatedArticleList {...props}>
         {/* @ts-ignore */}
         {domToReact(node.children, opts)}
       </RelatedArticleList>

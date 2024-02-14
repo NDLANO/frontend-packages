@@ -33,14 +33,6 @@ const StyledFramedContent = styled.div`
       margin-left: 0;
     }
   }
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 `;
 
 const FramedContent = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(({ children, ...rest }, ref) => (

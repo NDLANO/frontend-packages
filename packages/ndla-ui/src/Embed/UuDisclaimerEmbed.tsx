@@ -57,7 +57,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   ) : null;
 
   return (
-    <DisclaimerWrapper>
+    <DisclaimerWrapper role="region">
       <StyledMessageBox type="info">
         <InformationOutline />
         <Disclaimer>

@@ -174,6 +174,26 @@ export const Cropped: StoryObj<typeof ImageEmbed> = {
   ),
 };
 
+export const HiddenByline: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: "image",
+      status: "success",
+      embedData: {
+        ...embedData,
+        size: "full--hide-byline",
+      },
+      data: metaData,
+    },
+  },
+  render: (args) => (
+    <TextWrapper>
+      <ImageEmbed {...args} />
+    </TextWrapper>
+  ),
+};
+
 const TextWrapper = ({ children }: { children: ReactNode }) => (
   <>
     <p>

@@ -27,14 +27,8 @@ interface Props {
   onChange: (value: string) => void;
 }
 
-const GroupLabel = styled(Text)`
-  font-family: ${fonts.sans};
-  font-weight: ${fonts.weight.semibold};
-`;
-
 const RadioButtonGroupLabel = styled(Text)`
   color: ${colors.brand.primary};
-  font-family: ${fonts.sans};
   &[data-disabled="true"] {
     color: ${colors.brand.light};
   }
@@ -105,7 +99,7 @@ const RadioButtonIndicator = styled(Indicator)`
 
 export const StyledRadioButtonGroupRoot = styled(Root)`
   padding: ${spacing.small} 0;
-  gap: ${spacing.small};
+  gap: ${spacing.xsmall};
   display: flex;
   font-family: ${fonts.sans};
   align-items: center;
@@ -123,7 +117,13 @@ export const RadioGroupItem = ({ value, disabled, id, title, className }: ItemPr
       <StyledRadioGroupItem disabled={disabled} value={value} id={id}>
         <RadioButtonIndicator forceMount />
       </StyledRadioGroupItem>
-      <RadioButtonGroupLabel element="label" textStyle="content" margin="none" htmlFor={id} data-disabled={disabled}>
+      <RadioButtonGroupLabel
+        element="label"
+        textStyle="label-small"
+        margin="none"
+        htmlFor={id}
+        data-disabled={disabled}
+      >
         {title}
       </RadioButtonGroupLabel>
     </RadioButtonWrapper>
@@ -162,9 +162,9 @@ const RadioButtonGroup = ({
       onValueChange={onChange}
     >
       {label && (
-        <GroupLabel element="span" textStyle="content">
+        <Text element="span" textStyle="label-small">
           {label}
-        </GroupLabel>
+        </Text>
       )}
       {options.map((option) => {
         const id = uuid ? `${uuid}_${option.value}` : option.value;

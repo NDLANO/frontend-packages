@@ -249,9 +249,9 @@ const ResourceItem = ({
         <ContentBadgeWrapper data-badge-wrapper={!active}>
           <ContentTypeBadge type={contentType ?? ""} background border={false} />
         </ContentBadgeWrapper>
-        <InlineContainer>
-          {name}
-          {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
+        <InlineContainer aria-label={`${name}${active ? `. ${t("resource.youAreHere")}` : ""}`}>
+          <span aria-hidden>{name} </span>
+          {active ? <CurrentSmall aria-hidden>{t("resource.youAreHere")}</CurrentSmall> : undefined}
         </InlineContainer>
       </ResourceLink>
       <TypeWrapper>

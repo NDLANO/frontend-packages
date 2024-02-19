@@ -72,10 +72,9 @@ const RadioButtonIndicator = styled(Indicator)`
 
 export const RadioButtonItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>(({ ...rest }, ref) => {
   const field = useFormControl(rest);
-  const { value } = rest;
 
   return (
-    <StyledRadioGroupItem {...field} value={value} ref={ref}>
+    <StyledRadioGroupItem {...field} ref={ref}>
       <RadioButtonIndicator forceMount />
     </StyledRadioGroupItem>
   );

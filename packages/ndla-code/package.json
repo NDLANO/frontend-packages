@@ -1,6 +1,6 @@
 {
   "name": "@ndla/code",
-  "version": "5.0.43",
+  "version": "5.0.44",
   "description": "Code components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -42,7 +42,7 @@
     "react-i18next": "^13.3.0"
   },
   "devDependencies": {
-    "@ndla/types-embed": "^4.0.18"
+    "@ndla/types-embed": "^4.0.19"
   },
   "publishConfig": {
     "access": "public"

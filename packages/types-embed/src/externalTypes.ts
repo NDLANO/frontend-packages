@@ -18,6 +18,7 @@ export interface OembedEmbedData {
   title?: string;
   height?: string;
   imageid?: string;
+  alt?: string;
 }
 
 export interface OembedData {

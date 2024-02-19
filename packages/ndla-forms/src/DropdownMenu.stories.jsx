@@ -9,11 +9,20 @@
 import Downshift from "downshift";
 import { Component } from "react";
 import styled from "@emotion/styled";
-import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from "@ndla/forms";
+import { spacing } from "@ndla/core";
+import {
+  DropdownMenu,
+  DropdownInput,
+  FieldHeader,
+  FormPills,
+  Label,
+  RadioButtonItem,
+  RadioButtonGroup,
+} from "@ndla/forms";
 import { Spinner } from "@ndla/icons";
 import { Search } from "@ndla/icons/common";
+import { Text } from "@ndla/typography";
 import { SubjectMaterialBadge } from "@ndla/ui";
-import RadioButtonGroup from "./RadioButtonGroup";
 import { mockTypeahead } from "../../../dummydata";
 import defaultParameters from "../../../stories/defaults";
 
@@ -53,6 +62,17 @@ const fetchData = (lowerCaseValue) => {
   });
 };
 
+const StyledFieldset = styled.fieldset`
+  border: none;
+  padding: 0;
+  display: flex;
+  gap: ${spacing.medium};
+  margin-bottom: ${spacing.medium};
+`;
+
+const StyledText = styled(Text)`
+  float: left;
+`;
 class MultiSelectDropdownExample extends Component {
   constructor(props) {
     super(props);
@@ -141,64 +161,100 @@ class MultiSelectDropdownExample extends Component {
 
     return (
       <>
-        <RadioButtonGroup
-          label="Design:"
-          selected={useLayout}
-          uniqeIds
-          options={[
-            { title: "Med bilde", value: "1" },
-            { title: "Med ikon", value: "2" },
-            { title: "Kun tekst", value: "3" },
-            { title: "Kun tittel", value: "4" },
-          ]}
-          onChange={(useLayout) => {
-            this.setState({
-              useLayout,
-            });
-          }}
-        />
-        <RadioButtonGroup
-          label="Tags plassering:"
-          selected={useTags}
-          uniqeIds
-          options={[
-            { title: "Tags i input", value: "1" },
-            { title: "Tags utenfor input", value: "2" },
-          ]}
-          onChange={(useTags) => {
-            this.setState({
-              useTags,
-            });
-          }}
-        />
-        <RadioButtonGroup
-          label="Oppførsel:"
-          selected={keepOpen}
-          uniqeIds
-          options={[
-            { title: "Lukk når lagt til", value: "1" },
-            { title: "Behold åpen etter valg", value: "2" },
-          ]}
-          onChange={(keepOpen) => {
-            this.setState({
-              keepOpen,
-            });
-          }}
-        />
-        <RadioButtonGroup
-          label="Paginering:"
-          selected={showPagination}
-          uniqeIds
-          options={[
-            { title: "Uten", value: "1" },
-            { title: "Med", value: "2" },
-          ]}
-          onChange={(showPagination) => {
-            this.setState({
-              showPagination,
-            });
-          }}
-        />
+        <StyledFieldset>
+          <StyledText margin="none" textStyle="label-small" element="legend">
+            Design:
+          </StyledText>
+          <RadioButtonGroup
+            style={{ display: "flex", gap: spacing.small }}
+            orientation="horizontal"
+            value={useLayout}
+            onValueChange={(useLayout) => this.setState({ useLayout })}
+          >
+            {[
+              { title: "Med bilde", value: "1" },
+              { title: "Med ikon", value: "2" },
+              { title: "Kun tekst", value: "3" },
+              { title: "Kun tittel", value: "4" },
+            ].map((option) => (
+              <div style={{ display: "flex", alignItems: "center", gap: spacing.xsmall }} key={option.value}>
+                <RadioButtonItem value={option.value} />
+                <Label margin="none" textStyle="label-small">
+                  {option.title}
+                </Label>
+              </div>
+            ))}
+          </RadioButtonGroup>
+        </StyledFieldset>
+        <StyledFieldset>
+          <StyledText margin="none" textStyle="label-small" element="legend">
+            Tags plassering:
+          </StyledText>
+          <RadioButtonGroup
+            style={{ display: "flex", gap: spacing.small }}
+            orientation="horizontal"
+            value={useTags}
+            onValueChange={(useTags) => this.setState({ useTags })}
+          >
+            {[
+              { title: "Tags i input", value: "1" },
+              { title: "Tags utenfor input", value: "2" },
+            ].map((option) => (
+              <div style={{ display: "flex", alignItems: "center", gap: spacing.xsmall }} key={option.value}>
+                <RadioButtonItem value={option.value} />
+                <Label margin="none" textStyle="label-small">
+                  {option.title}
+                </Label>
+              </div>
+            ))}
+          </RadioButtonGroup>
+        </StyledFieldset>
+        <StyledFieldset>
+          <StyledText margin="none" textStyle="label-small" element="legend">
+            Oppførsel:
+          </StyledText>
+          <RadioButtonGroup
+            style={{ display: "flex", gap: spacing.small }}
+            orientation="horizontal"
+            value={keepOpen}
+            onValueChange={(keepOpen) => this.setState({ keepOpen })}
+          >
+            {[
+              { title: "Lukk når lagt til", value: "1" },
+              { title: "Behold åpen etter valg", value: "2" },
+            ].map((option) => (
+              <div style={{ display: "flex", alignItems: "center", gap: spacing.xsmall }} key={option.value}>
+                <RadioButtonItem value={option.value} />
+                <Label margin="none" textStyle="label-small">
+                  {option.title}
+                </Label>
+              </div>
+            ))}
+          </RadioButtonGroup>
+        </StyledFieldset>
+        <StyledFieldset>
+          <StyledText margin="none" textStyle="label-small" element="legend">
+            Paginering:
+          </StyledText>
+          <RadioButtonGroup
+            style={{ display: "flex", gap: spacing.small }}
+            orientation="horizontal"
+            value={showPagination}
+            onValueChange={(showPagination) => this.setState({ showPagination })}
+          >
+            {[
+              { title: "Uten", value: "1" },
+              { title: "Med", value: "2" },
+            ].map((option) => (
+              <div style={{ display: "flex", alignItems: "center", gap: spacing.xsmall }} key={option.value}>
+                <RadioButtonItem value={option.value} />
+                <Label margin="none" textStyle="label-small">
+                  {option.title}
+                </Label>
+              </div>
+            ))}
+          </RadioButtonGroup>
+        </StyledFieldset>
         {useTags !== "1" && (
           <FormPills
             onClick={(id) => {

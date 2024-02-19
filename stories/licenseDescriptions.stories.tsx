@@ -11,6 +11,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import { spacing } from "@ndla/core";
 import { Label, RadioButtonGroup, RadioButtonItem } from "@ndla/forms";
 import { ALL_ABBREVIATIONS, getLicenseByAbbreviation } from "@ndla/licenses";
+import { Text } from "@ndla/typography";
 import { Table } from "@ndla/ui";
 import { defaultParameters } from "./defaults";
 
@@ -36,10 +37,10 @@ export const Default: StoryFn = () => {
   const [locale, setLocale] = useState("nb");
   return (
     <div>
-      <div style={{ display: "flex", gap: spacing.medium, marginBottom: spacing.medium }}>
-        <Label margin="none" textStyle="label-small">
+      <fieldset style={{ border: 0, padding: 0, display: "flex", gap: spacing.medium, marginBottom: spacing.medium }}>
+        <Text margin="none" textStyle="label-small" element="legend">
           Description language
-        </Label>
+        </Text>
         <RadioButtonGroup
           style={{ display: "flex", gap: spacing.small }}
           orientation="horizontal"
@@ -55,7 +56,7 @@ export const Default: StoryFn = () => {
             </div>
           ))}
         </RadioButtonGroup>
-      </div>
+      </fieldset>
       {ALL_ABBREVIATIONS.map((abb) => {
         const license = getLicenseByAbbreviation(abb, locale);
         return (

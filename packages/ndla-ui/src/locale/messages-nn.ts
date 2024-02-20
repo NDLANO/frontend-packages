@@ -1111,7 +1111,7 @@ const messages = {
           noUsers: "Ingen brukarar funne.",
           search: "Søk etter brukarar",
           becameAdmin: "Brukar '{{user}}' har fått administrator tilgong",
-          becameNormalUser: "Brukar '{{user}}' er ikkje lenger administrator",
+          becameNormalUser: "Brukar '{{user}}' har ikkje lenger administrator tilgong",
         },
         flags: {
           title: "Flagg",

@@ -1111,7 +1111,7 @@ const messages = {
           noUsers: "No users found.",
           search: "Search for users",
           becameAdmin: "User '{{user}}' was elevated to administrator",
-          becameNormalUser: "User '{{user}}' is no longer administrator",
+          becameNormalUser: "User '{{user}}' no longer has administrator access",
         },
         flags: {
           title: "Flag",

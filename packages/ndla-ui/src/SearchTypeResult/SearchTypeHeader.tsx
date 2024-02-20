@@ -99,7 +99,7 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
               <ContentTypeBadge type={type} title={t(`contentTypes.${type}`)} background border={false} size="large" />
             </BadgeWrapper>
           )}
-          <SubjectName>
+          <SubjectName role="status">
             <h2 id={`searchitem-header-${type}`}>
               {type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}
             </h2>

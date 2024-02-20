@@ -51,8 +51,8 @@ const StyledChevron = styled(ChevronDown)`
   ${StyledTrigger}[data-state='open'] > & {
     transform: rotate(180deg);
   }
-  width: 24px;
-  height: 24px;
+  width: ${spacing.normal};
+  height: ${spacing.normal};
 `;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {

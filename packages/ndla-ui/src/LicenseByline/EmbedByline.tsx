@@ -27,6 +27,7 @@ interface BaseProps {
   children?: ReactNode;
   visibleAlt?: string;
   error?: true | false;
+  hideOnLargeScreens?: boolean;
   first?: boolean;
   inGrid?: boolean;
 }
@@ -95,6 +96,11 @@ const BylineWrapper = styled.div`
   &[data-first="true"] {
     border-top: 1px solid ${colors.brand.light};
   }
+  &[data-hide-on-large-screens="true"] {
+    ${mq.range({ from: breakpoints.tablet })} {
+      display: none;
+    }
+  }
 `;
 
 const mobileStyling = css`
@@ -135,6 +141,7 @@ const EmbedByline = ({
   description,
   children,
   visibleAlt,
+  hideOnLargeScreens,
   first = true,
   inGrid = false,
   ...props
@@ -157,7 +164,12 @@ const EmbedByline = ({
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
   return (
-    <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-first={first}>
+    <BylineWrapper
+      data-top-rounded={topRounded}
+      data-hide-on-large-screens={hideOnLargeScreens}
+      data-bottom-rounded={bottomRounded}
+      data-first={first}
+    >
       {description && <LicenseDescription description={description} />}
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
       <RightsWrapper data-grid={inGrid}>

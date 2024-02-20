@@ -96,14 +96,26 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
         <TypeWrapper>
           {type && (
             <BadgeWrapper>
-              <ContentTypeBadge type={type} title={t(`contentTypes.${type}`)} background border={false} size="large" />
+              <ContentTypeBadge
+                aria-hidden
+                type={type}
+                title={t(`contentTypes.${type}`)}
+                background
+                border={false}
+                size="large"
+              />
             </BadgeWrapper>
           )}
           <SubjectName>
-            <h2 id={`searchitem-header-${type}`}>
+            <h2
+              id={`searchitem-header-${type}`}
+              aria-label={`${type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)} ${
+                totalCount ? t(`searchPage.resultType.hits`, { count: totalCount }) : null
+              }`}
+            >
               {type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}
             </h2>
-            {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
+            {totalCount && <Count aria-hidden>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
           </SubjectName>
         </TypeWrapper>
       </HeaderWrapper>

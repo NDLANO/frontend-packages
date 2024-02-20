@@ -1110,7 +1110,7 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukere funnet.",
           search: "Søk etter brukere",
-          becameAdmin: "Bruker '{{user}}' har blitt administrator",
+          becameAdmin: "Bruker '{{user}}' har fått administrator tilgang",
           becameNormalUser: "Bruker '{{user}}' er ikke lenger administrator",
         },
         flags: {

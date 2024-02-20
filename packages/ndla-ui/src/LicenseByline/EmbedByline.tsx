@@ -96,7 +96,7 @@ const BylineWrapper = styled.div`
   &[data-first="true"] {
     border-top: 1px solid ${colors.brand.light};
   }
-  &[data-hide-on-large-screen="true"] {
+  &[data-hide-on-large-screens="true"] {
     ${mq.range({ from: breakpoints.tablet })} {
       display: none;
     }

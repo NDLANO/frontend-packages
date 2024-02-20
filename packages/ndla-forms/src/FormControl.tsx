@@ -161,7 +161,7 @@ export const useFormControlProps = <T extends UseFormControlProps>({
   isInvalid,
   isRequired,
   ...rest
-}: UseFormControlProps & T) => {
+}: T) => {
   const field = useFormControlContext();
   const labelIds = rest["aria-describedby"] ? [rest["aria-describedby"]] : [];
   if (field?.hasErrorText && field?.isInvalid) {
@@ -189,5 +189,5 @@ export const useFormControl = <T extends UseFormControlProps>(props: T) => {
     required: isRequired,
     "aria-invalid": isInvalid ? true : undefined,
     "aria-required": isRequired ? true : undefined,
-  } as T;
+  };
 };

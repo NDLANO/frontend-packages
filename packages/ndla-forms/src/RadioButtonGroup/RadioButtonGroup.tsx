@@ -11,9 +11,9 @@ import { RadioGroupProps, Root } from "@radix-ui/react-radio-group";
 import { useFormControl } from "../FormControl";
 
 export const RadioButtonGroup = forwardRef<HTMLDivElement, RadioGroupProps>(({ children, ...rest }, ref) => {
-  const field = useFormControl(rest);
+  const props = useFormControl(rest);
   return (
-    <Root {...field} ref={ref}>
+    <Root {...props} ref={ref}>
       {children}
     </Root>
   );

@@ -2567,7 +2567,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/accordion@npm:^3.0.29, @ndla/accordion@workspace:packages/ndla-accordion":
+"@ndla/accordion@npm:^3.0.30, @ndla/accordion@workspace:packages/ndla-accordion":
   version: 0.0.0-use.local
   resolution: "@ndla/accordion@workspace:packages/ndla-accordion"
   dependencies:
@@ -2591,7 +2591,7 @@ __metadata:
     "@ndla/code": "npm:^5.0.44"
     "@ndla/types-backend": "npm:^0.2.21"
     "@ndla/types-embed": "npm:^4.0.19"
-    "@ndla/ui": "npm:^50.9.18"
+    "@ndla/ui": "npm:^50.9.19"
     html-react-parser: "npm:^4.2.2"
     lodash: "npm:^4.17.20"
   peerDependencies:
@@ -2768,7 +2768,7 @@ __metadata:
     "@ndla/modal": "npm:^5.0.31"
     "@ndla/notion": "npm:^6.0.32"
     "@ndla/tooltip": "npm:^6.0.18"
-    "@ndla/ui": "npm:^50.9.18"
+    "@ndla/ui": "npm:^50.9.19"
     "@ndla/util": "npm:^4.0.4"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2804,7 +2804,7 @@ __metadata:
     "@ndla/icons": "npm:^5.0.11"
     "@ndla/pager": "npm:^2.2.59"
     "@ndla/types-backend": "npm:^0.2.21"
-    "@ndla/ui": "npm:^50.9.18"
+    "@ndla/ui": "npm:^50.9.19"
     "@ndla/util": "npm:^4.0.4"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
@@ -3003,11 +3003,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^50.9.18, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^50.9.19, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
-    "@ndla/accordion": "npm:^3.0.29"
+    "@ndla/accordion": "npm:^3.0.30"
     "@ndla/button": "npm:^12.0.34"
     "@ndla/carousel": "npm:^4.0.32"
     "@ndla/core": "npm:^4.4.1"

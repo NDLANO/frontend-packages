@@ -1,6 +1,6 @@
 {
   "name": "@ndla/accordion",
-  "version": "3.0.29",
+  "version": "3.0.30",
   "description": "A simple accordion from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

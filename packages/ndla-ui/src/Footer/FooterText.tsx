@@ -13,22 +13,18 @@ import { spacing, fonts, mq, breakpoints } from "@ndla/core";
 const StyledFooterText = styled.p`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: end;
+  gap: ${spacing.xsmall};
   > span {
-    padding: ${spacing.xsmall} 0;
+    padding: ${spacing.xsmall} 0 0;
     text-align: center;
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
-    ${fonts.sizes(16, 1.5)};
+    ${fonts.size.text.content};
     > span {
       padding: 0;
     }
-  }
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    ${fonts.sizes(14, 1.3)};
-    > span {
-      padding-bottom: ${spacing.xsmall};
-    }
+    align-items: start;
   }
 `;
 

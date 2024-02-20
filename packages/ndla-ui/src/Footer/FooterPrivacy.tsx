@@ -6,8 +6,10 @@
  *
  */
 
+import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { spacing, fonts, mq, breakpoints } from "@ndla/core";
+import { spacing, fonts, colors } from "@ndla/core";
+import { Heading } from "@ndla/typography";
 
 type FooterPrivacyProps = {
   privacyLinks: {
@@ -16,8 +18,28 @@ type FooterPrivacyProps = {
   }[];
 };
 
+const StyledFooterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding-top: ${spacing.normal};
+`;
+
+const LinkWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xsmall};
+  ${fonts.size.text.content};
+  padding-top: ${spacing.small};
+`;
+
+const StyledHeading = styled(Heading)`
+  margin-bottom: ${spacing.xsmall};
+`;
+
 const StyledPrivacyLink = styled.a`
-  color: #fff;
+  color: ${colors.white};
   box-shadow: none;
   text-decoration: underline;
   &:hover,
@@ -26,44 +48,21 @@ const StyledPrivacyLink = styled.a`
   }
 `;
 
-const StyledLinkSpacer = styled.span`
-  margin: 0 ${spacing.small};
-  ${mq.range({ until: breakpoints.tablet })} {
-    display: none;
-  }
-`;
-
-const StyledFooterText = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  ${fonts.sizes(16, 1.5)};
-  ${mq.range({ until: breakpoints.tablet })} {
-    flex-direction: column;
-    gap: ${spacing.small};
-  }
-  margin-bottom: ${spacing.large};
-`;
-
-const TextWrapper = styled.div`
-  ${mq.range({ from: breakpoints.tablet })} {
-    display: flex;
-    justify-content: center;
-    align-self: flex-start;
-    text-align: center;
-  }
-`;
-
 const FooterPrivacy = ({ privacyLinks }: FooterPrivacyProps) => {
+  const { t } = useTranslation();
   return (
-    <StyledFooterText>
-      {privacyLinks.map((link, index) => (
-        <TextWrapper key={link.label}>
-          {index > 0 && <StyledLinkSpacer aria-hidden>|</StyledLinkSpacer>}
-          <StyledPrivacyLink href={link.url}>{link.label}</StyledPrivacyLink>
-        </TextWrapper>
-      ))}
-    </StyledFooterText>
+    <StyledFooterWrapper>
+      <StyledHeading element="span" headingStyle="list-title" margin="none">
+        {t("footer.aboutWebsite")}
+      </StyledHeading>
+      <LinkWrapper>
+        {privacyLinks.map((link) => (
+          <div key={link.label}>
+            <StyledPrivacyLink href={link.url}>{link.label}</StyledPrivacyLink>
+          </div>
+        ))}
+      </LinkWrapper>
+    </StyledFooterWrapper>
   );
 };
 

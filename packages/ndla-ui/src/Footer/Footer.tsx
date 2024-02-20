@@ -9,105 +9,11 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { colors, spacing, fonts, mq, breakpoints, spacingUnit, stackOrder } from "@ndla/core";
-import { FooterHeaderIcon } from "@ndla/icons/common";
-import { Text } from "@ndla/typography";
+import { colors, spacing, stackOrder } from "@ndla/core";
+import { Heading } from "@ndla/typography";
 import FooterLinks from "./FooterLinks";
-import FooterPrivacy from "./FooterPrivacy";
 import { OneColumn } from "../Layout";
 import { Locale } from "../types";
-
-const StyledBackground = styled.div`
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(96deg, rgba(0, 117, 160, 1) 0%, rgba(32, 88, 143, 0) 100%);
-`;
-
-const StyledDiv = styled.div`
-  color: #fff;
-  position: relative;
-  background: ${colors.brand.dark};
-  overflow: hidden;
-  z-index: ${stackOrder.base};
-  &[data-margin="true"] {
-    margin-top: ${spacing.xxlarge};
-  }
-`;
-
-const StyledOneColumn = styled(OneColumn)`
-  z-index: ${stackOrder.offsetSingle};
-  position: relative;
-`;
-
-const StyledText = styled(Text)`
-  ${fonts.sizes(20, 1.5)};
-  margin: 0;
-  font-weight: ${fonts.weight.semibold};
-  text-align: center;
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    ${fonts.sizes(24, 1.5)};
-    margin: ${spacing.normal} ${spacing.normal} ${spacing.large} 0;
-    text-align: left;
-  }
-`;
-
-const StyledFooterHeaderIcon = styled(FooterHeaderIcon)`
-  color: #fff;
-  width: ${spacing.large};
-  height: ${spacing.large};
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    width: ${spacing.xlarge};
-    height: ${spacing.xlarge};
-  }
-`;
-
-const StyledColumns = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: ${spacing.large} ${spacing.large} 0 0;
-  > div:first-of-type {
-    padding: ${spacing.normal};
-  }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    flex-direction: row;
-    align-items: flex-start;
-    > div:first-of-type {
-      padding: ${spacing.normal} ${spacingUnit * 1.75}px ${spacing.normal} ${spacing.large};
-    }
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    padding: ${spacing.large} 0;
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    padding: ${spacing.normal} ${spacing.normal} ${spacing.small};
-  }
-`;
-
-const StyledHr = styled.hr`
-  height: 1px;
-  margin: ${spacing.normal};
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    margin: ${spacing.large};
-  }
-  background: rgba(255, 255, 255, 0.1);
-  &:before {
-    content: none;
-  }
-`;
-
-const StyledLanguageWrapper = styled.div`
-  position: relative;
-  z-index: ${stackOrder.offsetSingle};
-  margin-top: ${spacing.normal};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 type Props = {
   children: ReactNode;
@@ -126,35 +32,59 @@ type Props = {
     url: string;
     label: string;
   }[];
-  languageSelector?: ReactNode;
   auth?: ReactNode;
 };
 
-const Footer = ({ children, commonLinks, links, languageSelector, auth, privacyLinks }: Props) => {
+const StyledColumns = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${spacing.normal};
+`;
+
+const StyledHeading = styled(Heading)`
+  text-align: center;
+`;
+
+const StyledDiv = styled.div`
+  color: ${colors.white};
+  position: relative;
+  background: ${colors.brand.dark};
+  overflow: hidden;
+  z-index: ${stackOrder.base};
+`;
+
+const StyledOneColumn = styled(OneColumn)`
+  z-index: ${stackOrder.offsetSingle};
+  position: relative;
+  padding: ${spacing.large} ${spacing.large} ${spacing.xlarge};
+  max-width: 1196px;
+`;
+
+const StyledBackground = styled.div`
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: ${colors.brand.dark};
+`;
+
+const Footer = ({ children, commonLinks, links, auth, privacyLinks }: Props) => {
   const { t } = useTranslation();
 
-  const mainContent = (
-    <>
-      {children}
-      {privacyLinks && <FooterPrivacy privacyLinks={privacyLinks} />}
-    </>
-  );
+  const mainContent = <>{children}</>;
 
   const footerContent =
     links || commonLinks ? (
       <>
         <StyledColumns>
-          <div>
-            <StyledFooterHeaderIcon />
-          </div>
-          <div>
-            <StyledText element="div" textStyle="content-alt" margin="none">
-              {t("footer.vision")}
-            </StyledText>
-            <FooterLinks commonLinks={commonLinks} links={links} />
-          </div>
+          <StyledHeading element="h2" headingStyle="h2" margin="none">
+            {t("footer.vision")}
+          </StyledHeading>
+          <FooterLinks commonLinks={commonLinks} links={links} privacyLinks={privacyLinks} />
         </StyledColumns>
-        <StyledHr />
         {mainContent}
       </>
     ) : (
@@ -164,9 +94,8 @@ const Footer = ({ children, commonLinks, links, languageSelector, auth, privacyL
   return (
     <>
       <footer>
-        <StyledDiv data-margin={!languageSelector}>
-          {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
-          <StyledOneColumn cssModifier="large">{footerContent}</StyledOneColumn>
+        <StyledDiv>
+          <StyledOneColumn>{footerContent}</StyledOneColumn>
           <StyledBackground />
         </StyledDiv>
         {auth}

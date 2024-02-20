@@ -12,7 +12,6 @@ import { EditorName } from "./EditorName";
 import Footer from "./Footer";
 import { FooterText } from "./FooterText";
 import { defaultParameters } from "../../../../stories/defaults";
-import { LanguageSelector } from "../LanguageSelector";
 
 const mockCommonLinks = [
   {
@@ -122,23 +121,10 @@ export const WithoutContent: StoryObj<typeof Footer> = {
   },
 };
 
-export const WithLanguageSelector: StoryObj<typeof Footer> = {
-  args: {
-    privacyLinks: privacyLinks,
-    commonLinks: mockCommonLinks,
-    links: mockFooterLinks,
-    // eslint-disable-next-line no-console
-    languageSelector: <LanguageSelector inverted locales={["nn", "nb"]} onSelect={console.log} />,
-  },
-};
-
 export const WithAuthBlock: StoryObj<typeof Footer> = {
   args: {
     privacyLinks: privacyLinks,
     commonLinks: mockCommonLinks,
-    links: mockFooterLinks,
-    // eslint-disable-next-line no-console
-    languageSelector: <LanguageSelector inverted locales={["nn", "nb"]} onSelect={console.log} />,
     auth: <div>Auth info can be placed down here</div>,
   },
 };

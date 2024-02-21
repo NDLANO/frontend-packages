@@ -10,6 +10,7 @@ import { forwardRef } from "react";
 import styled from "@emotion/styled";
 import { RadioGroupItemProps, Item, Indicator } from "@radix-ui/react-radio-group";
 import { spacing, colors } from "@ndla/core";
+import { useFormControl } from "../FormControl";
 
 export const StyledRadioGroupItem = styled(Item)`
   all: unset;
@@ -70,8 +71,9 @@ const RadioButtonIndicator = styled(Indicator)`
 `;
 
 export const RadioButtonItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>(({ ...rest }, ref) => {
+  const props = useFormControl(rest);
   return (
-    <StyledRadioGroupItem {...rest} ref={ref}>
+    <StyledRadioGroupItem {...props} ref={ref}>
       <RadioButtonIndicator forceMount />
     </StyledRadioGroupItem>
   );

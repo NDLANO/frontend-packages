@@ -27,4 +27,4 @@ export type { FormControlProps } from "./FormControl";
 export { Input as InputV3, InputContainer, TextArea as TextAreaV3 } from "./InputV3";
 export { FieldErrorMessage } from "./FieldErrorMessage";
 export { FieldHelper } from "./FieldHelper";
-export { default as RadioButtonGroup } from "./RadioButtonGroup";
+export { RadioButtonGroup, RadioButtonItem } from "./RadioButtonGroup";

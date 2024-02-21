@@ -6,6 +6,5 @@
  *
  */
 
-import RadioButtonGroup from "./RadioButtonGroup";
-
-export default RadioButtonGroup;
+export { RadioButtonGroup } from "./RadioButtonGroup";
+export { RadioButtonItem } from "./RadioButtonItem";

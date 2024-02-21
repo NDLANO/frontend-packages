@@ -153,7 +153,7 @@ export interface UseFormControlProps extends FormControlOptions {
   "aria-describedby"?: string;
 }
 
-export const useFormControlProps = ({
+export const useFormControlProps = <T extends UseFormControlProps>({
   id,
   disabled,
   required,
@@ -161,7 +161,7 @@ export const useFormControlProps = ({
   isInvalid,
   isRequired,
   ...rest
-}: UseFormControlProps) => {
+}: T) => {
   const field = useFormControlContext();
   const labelIds = rest["aria-describedby"] ? [rest["aria-describedby"]] : [];
   if (field?.hasErrorText && field?.isInvalid) {
@@ -181,7 +181,7 @@ export const useFormControlProps = ({
   };
 };
 
-export const useFormControl = (props: UseFormControlProps) => {
+export const useFormControl = <T extends UseFormControlProps>(props: T) => {
   const { isDisabled, isInvalid, isRequired, ...rest } = useFormControlProps(props);
   return {
     ...rest,

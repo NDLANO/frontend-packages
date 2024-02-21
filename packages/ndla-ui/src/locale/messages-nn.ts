@@ -1350,6 +1350,7 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glose",
+      copyright: "Tekst",
     },
   },
   gloss: {

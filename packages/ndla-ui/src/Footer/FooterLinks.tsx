@@ -49,6 +49,10 @@ const LinkColumnWrapper = styled.div`
   padding-top: ${spacing.normal};
 `;
 
+const LastLinkColumnWrapper = styled.div`
+  padding-top: ${spacing.normal};
+`;
+
 const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
@@ -119,7 +123,7 @@ const FooterLinks = ({ links, commonLinks, privacyLinks }: FooterLinksProps) => 
             ))}
           </StyledNav>
         </LinkColumnWrapper>
-        <LinkColumnWrapper>
+        <LastLinkColumnWrapper>
           <Heading element="span" headingStyle="list-title">
             {t("footer.aboutWebsite")}
           </Heading>
@@ -131,7 +135,7 @@ const FooterLinks = ({ links, commonLinks, privacyLinks }: FooterLinksProps) => 
                 </div>
               ))}
           </StyledNav>
-        </LinkColumnWrapper>
+        </LastLinkColumnWrapper>
       </FooterLinkContainer>
     </>
   );

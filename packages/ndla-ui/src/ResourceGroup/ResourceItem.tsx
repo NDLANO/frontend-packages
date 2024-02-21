@@ -37,10 +37,6 @@ const listElementActiveColor = (contentType?: string) => {
   return "none";
 };
 
-const YouAreHereContainer = styled.div`
-  display: inline-block;
-`;
-
 const fadeInAdditionalsKeyframe = keyframes`
   0% {
     opacity: 0;

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "50.9.20",
+  "version": "50.9.21",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -36,7 +36,7 @@
     "@ndla/carousel": "^4.0.32",
     "@ndla/core": "^4.4.1",
     "@ndla/dropdown-menu": "^1.0.29",
-    "@ndla/forms": "^7.0.0",
+    "@ndla/forms": "^7.0.1",
     "@ndla/hooks": "^2.1.5",
     "@ndla/icons": "^5.0.11",
     "@ndla/licenses": "^7.2.5",

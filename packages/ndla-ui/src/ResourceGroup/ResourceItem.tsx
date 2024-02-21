@@ -37,6 +37,10 @@ const listElementActiveColor = (contentType?: string) => {
   return "none";
 };
 
+const YouAreHereContainer = styled.div`
+  display: inline-block;
+`;
+
 const fadeInAdditionalsKeyframe = keyframes`
   0% {
     opacity: 0;
@@ -143,7 +147,6 @@ const ResourceLink = styled(SafeLink)`
 
 const InlineContainer = styled.div`
   display: inline;
-  width: 100%;
 `;
 
 const ContentBadgeWrapper = styled.div`
@@ -249,10 +252,8 @@ const ResourceItem = ({
         <ContentBadgeWrapper data-badge-wrapper={!active}>
           <ContentTypeBadge type={contentType ?? ""} background border={false} />
         </ContentBadgeWrapper>
-        <InlineContainer aria-label={`${name}${active ? `. ${t("resource.youAreHere")}` : ""}`}>
-          <span aria-hidden>{name} </span>
-          {active ? <CurrentSmall aria-hidden>{t("resource.youAreHere")}</CurrentSmall> : undefined}
-        </InlineContainer>
+        <InlineContainer>{name}</InlineContainer>
+        {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
       </ResourceLink>
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}

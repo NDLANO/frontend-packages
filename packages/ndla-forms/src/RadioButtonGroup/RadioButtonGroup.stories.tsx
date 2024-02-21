@@ -34,7 +34,7 @@ export default {
 
 export const Default: StoryFn<typeof RadioButtonGroup> = ({ ...args }) => (
   <RadioButtonGroup>
-    <RadioButtonItem value="radio1" id="r1" />
+    <RadioButtonItem value="radio1" id="r0" />
   </RadioButtonGroup>
 );
 
@@ -61,14 +61,14 @@ export const Horizontal: StoryFn<typeof RadioButtonGroup> = () => (
   <form>
     <RadioButtonGroup orientation="horizontal" defaultValue="radio1" style={{ display: "flex", gap: spacing.small }}>
       <div css={radioButtonWrapperStyles}>
-        <RadioButtonItem value="radio1" id="r1" />
-        <Label margin="none" textStyle="label-small" htmlFor="r1">
+        <RadioButtonItem value="radio1" id="r3" />
+        <Label margin="none" textStyle="label-small" htmlFor="r3">
           Radio 1
         </Label>
       </div>
       <div css={radioButtonWrapperStyles}>
-        <RadioButtonItem value="radio2" id="r2" />
-        <Label margin="none" textStyle="label-small" htmlFor="r2">
+        <RadioButtonItem value="radio2" id="r4" />
+        <Label margin="none" textStyle="label-small" htmlFor="r4">
           Radio 2
         </Label>
       </div>
@@ -79,13 +79,13 @@ export const Horizontal: StoryFn<typeof RadioButtonGroup> = () => (
 export const InFormControlWithDisabled: StoryFn<any> = () => (
   <form>
     <RadioButtonGroup defaultValue="radio1">
-      <FormControl id="r1" css={radioButtonWrapperStyles}>
+      <FormControl id="r5" css={radioButtonWrapperStyles}>
         <RadioButtonItem value="radio1" />
         <Label margin="none" textStyle="label-small">
           Radio 1
         </Label>
       </FormControl>
-      <FormControl id="r2" css={radioButtonWrapperStyles} isDisabled>
+      <FormControl id="r6" css={radioButtonWrapperStyles} isDisabled>
         <RadioButtonItem value="radio2" />
         <Label margin="none" textStyle="label-small">
           Radio 2

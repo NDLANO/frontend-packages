@@ -80,7 +80,7 @@ const Footer = ({ children, commonLinks, links, auth, privacyLinks }: Props) => 
     links || commonLinks ? (
       <>
         <StyledColumns>
-          <StyledHeading element="h2" headingStyle="h2" margin="none">
+          <StyledHeading element="span" headingStyle="h2" margin="none">
             {t("footer.vision")}
           </StyledHeading>
           <FooterLinks commonLinks={commonLinks} links={links} privacyLinks={privacyLinks} />

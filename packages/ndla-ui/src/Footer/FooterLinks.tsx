@@ -13,7 +13,6 @@ import { spacing, fonts, colors, mq, breakpoints } from "@ndla/core";
 import { Launch } from "@ndla/icons/common";
 import SafeLink from "@ndla/safelink";
 import { Heading } from "@ndla/typography";
-import FooterPrivacy from "./FooterPrivacy";
 
 type FooterLinksProps = {
   commonLinks?: {
@@ -45,7 +44,7 @@ const FooterLinkContainer = styled.div`
   width: 100%;
 `;
 
-const LinkWrapper = styled.div`
+const LinkColumnWrapper = styled.div`
   padding-right: ${spacing.large};
   padding-top: ${spacing.normal};
 `;
@@ -62,27 +61,17 @@ const StyledSafeLink = styled(SafeLink)`
   color: ${colors.white};
   ${fonts.size.text.content};
   svg {
-    transform: translateY(-2px);
     margin-left: ${spacing.xsmall};
   }
 `;
 
 const StyledSocialMediaIcon = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-right: ${spacing.small};
   svg {
     width: 20px;
     height: 20px;
     color: ${colors.white};
   }
-`;
-
-const StyledSocialMediaLinkWrapper = styled.div`
-  display: flex;
-  justify-content: left;
-  align-items: center;
 `;
 
 const StyledLaunch = styled(Launch)`
@@ -94,24 +83,26 @@ const FooterLinks = ({ links, commonLinks, privacyLinks }: FooterLinksProps) => 
   return (
     <>
       <FooterLinkContainer>
-        <LinkWrapper>
-          <Heading id="otherLinks" element="span" headingStyle="list-title">
+        <LinkColumnWrapper>
+          <Heading element="span" headingStyle="list-title">
             {t("footer.followUs")}
           </Heading>
           <StyledNav aria-label={t("footer.socialMedia")}>
             {links?.map((link) => (
-              <StyledSocialMediaLinkWrapper key={link.to}>
+              <div key={link.to}>
                 <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
-                <StyledSafeLink to={link.to}>{link.text}</StyledSafeLink>
-              </StyledSocialMediaLinkWrapper>
+                <StyledSafeLink key={link.to} to={link.to}>
+                  {link.text}
+                </StyledSafeLink>
+              </div>
             ))}
           </StyledNav>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Heading id="otherLinks" element="span" headingStyle="list-title">
+        </LinkColumnWrapper>
+        <LinkColumnWrapper>
+          <Heading element="span" headingStyle="list-title">
             {t("footer.linksHeader")}
           </Heading>
-          <StyledNav aria-labelledby="otherLinks">
+          <StyledNav aria-label={t("footer.linksHeader")}>
             {commonLinks?.map((link) => (
               <div key={link.to}>
                 <StyledSafeLink
@@ -127,8 +118,20 @@ const FooterLinks = ({ links, commonLinks, privacyLinks }: FooterLinksProps) => 
               </div>
             ))}
           </StyledNav>
-        </LinkWrapper>
-        {privacyLinks && <FooterPrivacy privacyLinks={privacyLinks} />}
+        </LinkColumnWrapper>
+        <LinkColumnWrapper>
+          <Heading element="span" headingStyle="list-title">
+            {t("footer.aboutWebsite")}
+          </Heading>
+          <StyledNav aria-label={t("footer.aboutWebsite")}>
+            {privacyLinks &&
+              privacyLinks.map((link) => (
+                <div key={link.label}>
+                  <StyledSafeLink to={link.url}>{link.label}</StyledSafeLink>
+                </div>
+              ))}
+          </StyledNav>
+        </LinkColumnWrapper>
       </FooterLinkContainer>
     </>
   );

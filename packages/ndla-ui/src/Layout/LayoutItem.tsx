@@ -6,36 +6,28 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes, ReactNode, useMemo } from "react";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
-  layout?: string;
+  layout?: "extend" | "center";
 }
 
 export const LayoutItem = ({ children, layout, ...rest }: Props) => {
-  switch (layout) {
-    case "extend": {
-      return (
-        <section className="u-10/12@desktop u-push-1/12@desktop u-10/12@tablet u-push-1/12@tablet">{children}</section>
-      );
+  const className = useMemo(() => {
+    if (layout === "extend") {
+      return "u-10/12@desktop u-push-1/12@desktop u-10/12@tablet u-push-1/12@tablet";
+    } else if (layout === "center") {
+      return "u-7/10@desktop u-push-3/20@desktop u-10/12@tablet u-push-1/12@tablet";
     }
-    case "center": {
-      return (
-        <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">{children}</section>
-      );
-    }
-    case "full": {
-      return <section className="u-1/1@desktop">{children}</section>;
-    }
-    default: {
-      return (
-        <section className="o-layout__item" {...rest}>
-          {children}
-        </section>
-      );
-    }
-  }
+    return undefined;
+  }, [layout]);
+
+  return (
+    <section className={className} {...rest}>
+      {children}
+    </section>
+  );
 };
 
 export default LayoutItem;

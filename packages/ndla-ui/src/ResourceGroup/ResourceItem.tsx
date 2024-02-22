@@ -183,6 +183,7 @@ const CurrentSmall = styled.small`
   text-decoration: none;
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
+  white-space: nowrap;
 `;
 
 interface Props {

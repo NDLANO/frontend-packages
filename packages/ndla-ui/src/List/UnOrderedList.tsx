@@ -16,7 +16,7 @@ const StyledUl = styled.ul`
   ${fonts.size.text.content};
 
   ul {
-    margin-left: 0;
+    margin: 0;
   }
 
   > li {

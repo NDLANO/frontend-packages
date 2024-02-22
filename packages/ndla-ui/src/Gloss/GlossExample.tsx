@@ -20,15 +20,19 @@ export interface Props {
 }
 
 const StyledGlossExampleWrapper = styled.div`
-  &:first-of-type {
+  &:first-of-type&:not([data-is-standalone="true"]) {
     border-top: 1px solid ${colors.brand.primary};
+  }
+  &:first-of-type {
+    border-top: 1px solid ${colors.brand.lighter};
   }
   &:last-of-type {
     border-radius: ${misc.borderRadius};
   }
   background-color: ${colors.background.default};
   &[data-is-standalone="true"] {
-    border: 1px solid ${colors.brand.lighter};
+    border-right: 1px solid ${colors.brand.lighter};
+    border-left: 1px solid ${colors.brand.lighter};
   }
   &[data-is-last="true"] {
     border-bottom: none;
@@ -45,7 +49,8 @@ const StyledGlossExample = styled.div`
       border-top-right-radius: ${misc.borderRadius};
     }
     &[data-is-last="true"] {
-      border-bottom: none;
+      border-bottom: 1px solid ${colors.brand.lighter};
+      border-radius: 0px;
     }
   }
   &[data-is-first="true"] {

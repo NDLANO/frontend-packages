@@ -112,7 +112,6 @@ const GlossExampleText = {
   language: "zh",
   transcriptions: {
     pinyin: "wo jiao ma hong",
-    traditional: "(馬紅)",
   },
 };
 

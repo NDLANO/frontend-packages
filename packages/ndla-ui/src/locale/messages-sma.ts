@@ -471,6 +471,7 @@ const messages = {
       description: "Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie",
       rules: "Njoelkedassh guktie diejvesem nåhtadidh:",
       title: "Tihtele",
+      showOrHideExamples: "Vuesiehtimmieh vuesiehtidh jallh vöörhkedh",
       embedlink: {
         heading: "Naemhtie gïelem jeatjah sisvegisnie vuesehte",
         description: "Daate lïenghke vuesehte tjoejh konteksten namhtah (meny jïh nueliekapihtele)",

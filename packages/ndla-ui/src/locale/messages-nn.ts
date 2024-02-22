@@ -474,6 +474,7 @@ const messages = {
       description: "Husk at innebygd innhald i ei glose kan ha ein anna lisens enn sjølve gloseteksten",
       rules: "Regler for bruk av glose:",
       title: "Tittel",
+      showOrHideExamples: "Vis eller skjul eksemplar",
     },
     files: {
       heading: "Slik gjenbruker du filer",

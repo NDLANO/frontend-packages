@@ -453,6 +453,7 @@ const messages = {
       description: "Remember that built-in content might have a different license than the gloss text",
       rules: "Rules for use of gloss:",
       title: "Title",
+      showOrHideExamples: "Show or hide examples",
       embedlink: {
         heading: "How to show the gloss in other content",
         description: "This url shows the gloss without menu and footer",

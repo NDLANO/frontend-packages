@@ -470,6 +470,7 @@ const messages = {
         "Muitte ahte sisdoalus mii lea vuojuhuvvon ovtta gihppagii sáhttá leat eará liseansa go dušše jietnadat.",
       rules: "Glossa geavaheami njuolggadusat:",
       title: "Namahus",
+      showOrHideExamples: "Čájet dahje čiega ovdamearkkaid",
       embedlink: {
         heading: "Čájet jietnadaga eará sisdoaluin",
         description: "Dát liŋka čájeha teavstta konteavstta haga (fállu ja juolgeteaksta)",

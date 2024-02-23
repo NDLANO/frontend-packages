@@ -468,6 +468,7 @@ const messages = {
       description: "Husk at innebygd innhold i en glose kan ha en annen lisens enn selve gloseteksten",
       rules: "Regler for bruk av glose:",
       title: "Tittel",
+      showOrHideExamples: "Vis eller skjul eksempler",
       embedlink: {
         heading: "Slik viser du glosen i annet innhold",
         description: "Denne lenken viser glosen uten kontekst (meny og bunntekst)",

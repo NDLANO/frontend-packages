@@ -151,7 +151,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                 )}
                 {glossData.transcriptions.pinyin && (
                   <span
-                    data-pinyin
+                    data-pinyin=""
                     key={t("gloss.transcriptions.pinyin")}
                     aria-label={t("gloss.transcriptions.pinyin")}
                     lang={glossData.originalLanguage}

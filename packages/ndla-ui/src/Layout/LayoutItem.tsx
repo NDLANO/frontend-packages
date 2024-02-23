@@ -18,7 +18,7 @@ export const LayoutItem = ({ children, layout, ...rest }: Props) => {
     if (layout === "extend") {
       return "u-10/12@desktop u-push-1/12@desktop u-10/12@tablet u-push-1/12@tablet";
     } else if (layout === "center") {
-      return "u-7/10@desktop u-push-3/20@desktop u-10/12@tablet u-push-1/12@tablet";
+      return "u-10/12 u-push-1/12";
     }
     return undefined;
   }, [layout]);

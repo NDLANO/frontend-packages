@@ -1354,6 +1354,7 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glosa",
+      copyright: "Tekst",
     },
   },
   gloss: {

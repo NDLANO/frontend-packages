@@ -30,6 +30,7 @@ import {
 } from "./conceptTypes";
 import { ContactBlockEmbedData, ContactBlockMetaData } from "./contactBlockTypes";
 import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from "./contentLinkTypes";
+import { CopyrightEmbedData, CopyrightMetaData } from "./copyrightTypes";
 import { OembedEmbedData, OembedMetaData, OembedData } from "./externalTypes";
 import { FileEmbedData, FileMetaData } from "./fileTypes";
 import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from "./footnoteTypes";
@@ -70,7 +71,8 @@ export type EmbedData =
   | ContactBlockEmbedData
   | CampaignBlockEmbedData
   | LinkBlockEmbedData
-  | UuDisclaimerEmbedData;
+  | UuDisclaimerEmbedData
+  | CopyrightEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -91,7 +93,8 @@ export type EmbedMetaData =
   | ContactBlockMetaData
   | CampaignBlockMetaData
   | LinkBlockMetaData
-  | UuDisclaimerMetaData;
+  | UuDisclaimerMetaData
+  | CopyrightMetaData;
 
 export type {
   ConceptMetaData,
@@ -112,6 +115,7 @@ export type {
   CampaignBlockMetaData,
   LinkBlockMetaData,
   UuDisclaimerMetaData,
+  CopyrightMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -132,6 +136,7 @@ export type {
   CampaignBlockEmbedData,
   LinkBlockEmbedData,
   UuDisclaimerEmbedData,
+  CopyrightEmbedData,
 };
 
 export type { BlogPostMeta };

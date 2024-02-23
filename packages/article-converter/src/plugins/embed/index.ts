@@ -15,6 +15,7 @@ import { conceptEmbedPlugin } from "./conceptEmbedPlugin";
 import { conceptListEmbedPlugin } from "./conceptListEmbedPlugin";
 import { contactBlockEmbedPlugin } from "./contactBlockEmbedPlugin";
 import { contentLinkEmbedPlugin } from "./contentLinkEmbedPlugin";
+import { copyrightEmbedPlugin } from "./copyrightEmbedPlugin";
 import { externalEmbedPlugin } from "./externalEmbedPlugin";
 import { fileEmbedPlugin } from "./fileEmbedPlugin";
 import { footnoteEmbedPlugin } from "./footnoteEmbedPlugin";
@@ -47,4 +48,5 @@ export const embedPlugins: Record<string, PluginType> = {
   "campaign-block": campaignBlockPlugin,
   "link-block": linkBlockPlugin,
   "uu-disclaimer": uuDisclaimerEmbedPlugin,
+  copyright: copyrightEmbedPlugin,
 };

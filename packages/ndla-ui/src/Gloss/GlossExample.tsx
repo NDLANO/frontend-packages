@@ -15,51 +15,42 @@ export interface Props {
   example: IGlossExample;
   originalLanguage: string | undefined;
   index: number;
-  lastExampleIndex: number;
   isStandalone?: boolean;
 }
 
 const StyledGlossExampleWrapper = styled.div`
+  &[data-is-standalone="true"] {
+    &:first-of-type {
+      border-top: 1px solid ${colors.brand.lighter};
+    }
+  }
+
   &:first-of-type&:not([data-is-standalone="true"]) {
     border-top: 1px solid ${colors.brand.primary};
   }
-  &:first-of-type {
-    border-top: 1px solid ${colors.brand.lighter};
-  }
-  &:last-of-type {
-    border-radius: ${misc.borderRadius};
-  }
-  background-color: ${colors.background.default};
-  &[data-is-standalone="true"] {
-    border-right: 1px solid ${colors.brand.lighter};
-    border-left: 1px solid ${colors.brand.lighter};
-  }
-  &[data-is-last="true"] {
-    border-bottom: none;
+
+  &[data-is-standalone="false"] {
+    &:not(:last-child) {
+      div {
+        border-bottom: 1px solid ${colors.brand.lighter};
+        border-radius: 0;
+      }
+    }
   }
 `;
 
 const StyledGlossExample = styled.div`
   padding: ${spacing.small} ${spacing.normal};
-  border-bottom: 1px solid ${colors.brand.lighter};
   background-color: ${colors.background.default};
-  &[data-is-standalone="true"] {
-    &[data-is-first="true"] {
-      border-top-left-radius: ${misc.borderRadius};
-      border-top-right-radius: ${misc.borderRadius};
-    }
-    &[data-is-last="true"] {
-      border-bottom: 1px solid ${colors.brand.lighter};
-      border-radius: 0px;
-    }
-  }
+  border: 1px solid ${colors.brand.lighter};
+  border-top: none;
+
   &[data-is-first="true"] {
     background-color: ${colors.background.lightBlue};
-    border-radius: 0px;
   }
-  &[data-is-last="true"] {
+  &[data-is-standalone="false"] {
+    border: none;
     border-radius: ${misc.borderRadius};
-    border-bottom: none;
   }
 `;
 
@@ -73,15 +64,10 @@ const StyledText = styled(Text)`
   }
 `;
 
-const GlossExample = ({ example, originalLanguage, index, lastExampleIndex, isStandalone }: Props) => {
+const GlossExample = ({ example, originalLanguage, index, isStandalone = false }: Props) => {
   return (
     <StyledGlossExampleWrapper data-is-standalone={isStandalone}>
-      <StyledGlossExample
-        data-is-first={index === 0}
-        data-is-last={index === lastExampleIndex}
-        lang={example.language}
-        data-is-standalone={isStandalone}
-      >
+      <StyledGlossExample data-is-first={index === 0} lang={example.language} data-is-standalone={isStandalone}>
         <StyledText data-is-first={index === 0} textStyle="meta-text-medium" margin="none">
           {example.example}
         </StyledText>

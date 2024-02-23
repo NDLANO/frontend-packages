@@ -182,7 +182,6 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                           example={example}
                           originalLanguage={glossData.originalLanguage}
                           index={innerIndex}
-                          lastExampleIndex={examples.length - 1}
                         />
                       ))}
                     </div>

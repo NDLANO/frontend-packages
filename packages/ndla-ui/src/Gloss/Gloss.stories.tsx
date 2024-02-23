@@ -116,5 +116,5 @@ const GlossExampleText = {
 };
 
 export const GlossExampleStory: StoryFn<typeof Gloss> = () => {
-  return <GlossExample originalLanguage="zh" index={0} lastExampleIndex={1} example={GlossExampleText} isStandalone />;
+  return <GlossExample originalLanguage="zh" index={0} example={GlossExampleText} isStandalone />;
 };

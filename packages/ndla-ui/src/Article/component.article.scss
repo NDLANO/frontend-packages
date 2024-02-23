@@ -145,20 +145,11 @@
 .c-article__title--icon {
   padding-left: 80px;
 
-  @include mq(desktop) {
-    padding-left: 0;
-  }
-
   [data-badge] {
     position: absolute;
     left: 0;
 
     @include mq(tablet) {
-      top: $spacing--xsmall;
-    }
-
-    @include mq(desktop) {
-      left: -80px;
       top: $spacing--xsmall;
     }
   }

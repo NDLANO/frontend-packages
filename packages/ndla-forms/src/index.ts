@@ -21,7 +21,7 @@ export { StyledButtonWrapper, FieldHeaderIconStyle } from "./Styles";
 export { FormPill, FormPills } from "./FormPill";
 export { CheckboxItem } from "./CheckboxItem";
 export { default as UploadDropZone } from "./UploadDropZone";
-export { Label } from "./Label";
+export { Label, Legend, Fieldset } from "./Label";
 export { FormControl, useFormControl } from "./FormControl";
 export type { FormControlProps } from "./FormControl";
 export { Input as InputV3, InputContainer, TextArea as TextAreaV3 } from "./InputV3";

@@ -182,9 +182,7 @@ const ImageEmbed = ({
           }
           lang={lang}
         />
-        <CaptionWrapper>
-          {parsedDescription}
-        </CaptionWrapper>
+        <CaptionWrapper>{parsedDescription}</CaptionWrapper>
       </ImageWrapper>
       {isBylineHidden ? null : (
         <EmbedByline

@@ -453,6 +453,7 @@ const messages = {
       description: "Remember that built-in content might have a different license than the gloss text",
       rules: "Rules for use of gloss:",
       title: "Title",
+      showOrHideExamples: "Show or hide examples",
       embedlink: {
         heading: "How to show the gloss in other content",
         description: "This url shows the gloss without menu and footer",
@@ -1031,6 +1032,10 @@ const messages = {
         responses_plural: "responses",
         topicContent: "Write your topic here",
         fetchMore: "Fetch more topics",
+        locked: "Lock topic",
+        unlock: "Unlock topic",
+        lockDescription: "Do you want do lock this topic? This will prevent this topic from getting more posts.",
+        unlockDescription: "Do you want do unlock this topic? This will prevent this topic from getting more posts.",
       },
       posts: {
         title: "Posts",
@@ -1106,6 +1111,8 @@ const messages = {
           enableArena: "Give {{user}} access to the arena.",
           noUsers: "No users found.",
           search: "Search for users",
+          becameAdmin: "User '{{user}}' was elevated to administrator",
+          becameNormalUser: "User '{{user}}' no longer has administrator access",
         },
         flags: {
           title: "Flag",
@@ -1345,6 +1352,7 @@ const messages = {
       h5p: "H5P",
       external: "External resource",
       gloss: "Gloss",
+      copyright: "Text",
     },
   },
   gloss: {

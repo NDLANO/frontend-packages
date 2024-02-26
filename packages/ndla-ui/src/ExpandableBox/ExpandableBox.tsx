@@ -18,14 +18,6 @@ export const ExpandableBox = ({ children, ...rest }: Props) => {
 
 interface SummaryProps extends HTMLAttributes<HTMLElement> {}
 
-const StyledSummary = styled.summary`
-  & > * {
-    display: inline;
-    font-size: ${fonts.size.text.metaText.medium};
-    font-weight: ${fonts.weight.normal};
-  }
-`;
-
 export const ExpandableBoxSummary = ({ children, ...rest }: SummaryProps) => {
-  return <StyledSummary {...rest}>{children}</StyledSummary>;
+  return <summary {...rest}>{children}</summary>;
 };

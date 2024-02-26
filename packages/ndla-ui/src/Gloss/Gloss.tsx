@@ -9,8 +9,10 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { AccordionRoot, AccordionItem, AccordionHeader, AccordionContent } from "@ndla/accordion";
+import { Trigger } from "@radix-ui/react-accordion";
+import { AccordionRoot, AccordionItem, AccordionContent } from "@ndla/accordion";
 import { colors, spacing, misc, fonts } from "@ndla/core";
+import { ChevronDown } from "@ndla/icons/common";
 import { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
 import GlossExample from "./GlossExample";
 import SpeechControl from "../AudioPlayer/SpeechControl";
@@ -29,22 +31,20 @@ export interface Props {
   exampleLangs?: string;
 }
 
-const Container = styled.div`
-  font-family: ${fonts.sans};
-  display: flex;
-  flex-direction: column;
+const StyledAccordionItem = styled(AccordionItem)`
   background-color: ${colors.background.lightBlue};
-  padding: ${spacing.nsmall} ${spacing.normal};
-  border: 1px solid ${colors.brand.lighter};
-  border-radius: ${misc.borderRadius};
-  margin-bottom: ${spacing.xsmall};
-  gap: ${spacing.nsmall};
+  border: 1px solid ${colors.brand.tertiary};
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: ${spacing.nsmall} ${spacing.normal} 0 ${spacing.normal};
+  span {
+    ${fonts.size.text.content}
+    font-family: ${fonts.sans};
+  }
 `;
 
 const GlossContainer = styled.div`
@@ -52,9 +52,6 @@ const GlossContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
-  span {
-    ${fonts.sizes("16px", "24px")};
-  }
   span[data-pinyin] {
     font-style: italic;
   }
@@ -64,15 +61,47 @@ const GlossSpan = styled.span`
   font-weight: ${fonts.weight.bold};
 `;
 
-const StyledAccordionHeader = styled(AccordionHeader)`
-  font-family: ${fonts.sans};
-  ${fonts.sizes("16px", "24px")};
-  font-weight: ${fonts.weight.semibold};
+const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 ${spacing.normal} ${spacing.nsmall} ${spacing.normal};
   background-color: ${colors.background.lightBlue};
+  border-radius: ${misc.borderRadius};
 `;
 
 const StyledAccordionContent = styled(AccordionContent)`
   padding: 0;
+`;
+
+const StyledTrigger = styled(Trigger)`
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: ${spacing.xsmall};
+  border-radius: ${misc.borderRadiusLarge};
+  color: ${colors.brand.primary};
+  &:hover,
+  &:focus-visible {
+    color: ${colors.white};
+    background-color: ${colors.brand.primary};
+  }
+  &[data-state="open"] {
+    background-color: ${colors.brand.lighter};
+    &:hover,
+    &:focus-visible {
+      background-color: ${colors.brand.primary};
+    }
+  }
+`;
+
+const StyledChevron = styled(ChevronDown)`
+  transition: all 200ms ease-in-out;
+  [data-styled-trigger][data-state="open"] > & {
+    transform: rotate(180deg);
+  }
+  min-width: ${spacing.normal};
+  min-height: ${spacing.normal};
 `;
 
 const getFilteredExamples = (
@@ -106,8 +135,8 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
   return (
     <>
       {glossData && (
-        <>
-          <Container>
+        <AccordionRoot type="single" collapsible>
+          <StyledAccordionItem value="1">
             <Wrapper>
               <GlossContainer>
                 <GlossSpan lang={glossData.originalLanguage}>{glossData.gloss}</GlossSpan>
@@ -136,12 +165,14 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
               </GlossContainer>
               {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
             </Wrapper>
-            <span lang={title.language}>{title.title}</span>
-          </Container>
-          {filteredExamples.length > 0 && (
-            <AccordionRoot type="single" collapsible>
-              <AccordionItem value="1">
-                <StyledAccordionHeader headingLevel="span">{t("gloss.examples")}</StyledAccordionHeader>
+            {filteredExamples.length > 0 ? (
+              <>
+                <StyledWrapper>
+                  <span lang={title.language}>{title.title}</span>
+                  <StyledTrigger data-styled-trigger aria-label={t("gloss.examples")}>
+                    <StyledChevron />
+                  </StyledTrigger>
+                </StyledWrapper>
                 <StyledAccordionContent>
                   {filteredExamples.map((examples, index) => (
                     <div key={`gloss-example-${index}`}>
@@ -156,10 +187,14 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                     </div>
                   ))}
                 </StyledAccordionContent>
-              </AccordionItem>
-            </AccordionRoot>
-          )}
-        </>
+              </>
+            ) : (
+              <StyledWrapper>
+                <span lang={title.language}>{title.title}</span>
+              </StyledWrapper>
+            )}
+          </StyledAccordionItem>
+        </AccordionRoot>
       )}
     </>
   );

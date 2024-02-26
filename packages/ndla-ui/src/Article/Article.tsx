@@ -10,7 +10,7 @@ import { ReactNode, useEffect, useRef, useState, forwardRef } from "react";
 import BEMHelper from "react-bem-helper";
 import styled from "@emotion/styled";
 
-import { spacing, spacingUnit, mq, breakpoints } from "@ndla/core";
+import { spacing, mq, breakpoints } from "@ndla/core";
 import { useIntersectionObserver } from "@ndla/hooks";
 import { Heading, Text } from "@ndla/typography";
 import { resizeObserver } from "@ndla/util";
@@ -99,12 +99,6 @@ const ArticleFavoritesButtonWrapper = styled.div`
   transform: translate(${spacing.xsmall}, -${spacing.normal});
   ${mq.range({ from: breakpoints.tablet })} {
     transform: translate(${spacing.normal}, -${spacing.medium});
-  }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    transform: translate(${spacing.large}, -${spacing.medium});
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    transform: translate(${spacingUnit * 5.5}px, -${spacing.medium});
   }
 `;
 

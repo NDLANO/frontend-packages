@@ -56,5 +56,10 @@ summary {
   color: $brand-color;
   cursor: pointer;
   padding: $spacing;
-}
 
+  & > * {
+    display: inline;
+    font-weight: $font-weight-normal;
+    @include font-size(18px, 24px);
+  }
+}

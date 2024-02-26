@@ -72,8 +72,8 @@ const useFormControlProvider = ({ id: idProp, isRequired, isDisabled, isInvalid 
       return {
         ...props,
         ref: forwardedRef,
-        "data-disabled": isDisabled,
-        "data-invalid": isInvalid,
+        "data-disabled": props?.["data-disabled"] ? props["data-disabled"] : isDisabled,
+        "data-invalid": props?.["data-invalid"] ? props["data-invalid"] : isInvalid,
         id: props.id !== undefined ? props.id : labelId,
         htmlFor: props.htmlFor !== undefined ? props.htmlFor : id,
       };

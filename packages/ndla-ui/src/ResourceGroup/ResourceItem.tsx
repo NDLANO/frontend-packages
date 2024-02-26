@@ -141,8 +141,12 @@ const ResourceLink = styled(SafeLink)`
   }
 `;
 
-const InlineContainer = styled.div`
-  display: inline;
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${mq.range({ from: breakpoints.tablet })} {
+    flex-direction: row;
+  }
 `;
 
 const ContentBadgeWrapper = styled.div`
@@ -179,11 +183,13 @@ const ContentTypeName = styled.span`
 `;
 
 const CurrentSmall = styled.small`
-  margin-left: ${spacing.xsmall};
   text-decoration: none;
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
   white-space: nowrap;
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-left: ${spacing.xsmall};
+  }
 `;
 
 interface Props {
@@ -249,8 +255,10 @@ const ResourceItem = ({
         <ContentBadgeWrapper data-badge-wrapper={!active}>
           <ContentTypeBadge type={contentType ?? ""} background border={false} />
         </ContentBadgeWrapper>
-        <InlineContainer>{name}</InlineContainer>
-        {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
+        <TitleContainer>
+          <div>{name}</div>
+          {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
+        </TitleContainer>
       </ResourceLink>
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}

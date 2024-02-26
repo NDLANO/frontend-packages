@@ -12,11 +12,11 @@ import { colors, fonts, spacing } from "@ndla/core";
 
 const StyledUl = styled.ul`
   padding-left: ${spacing.nsmall};
-  margin-left: ${spacing.normal};
-  ${fonts.sizes("18px", "29px")};
+  margin: ${spacing.normal} 0 ${spacing.normal} ${spacing.normal};
+  ${fonts.size.text.content};
 
   ul {
-    margin-left: 0;
+    margin: 0;
   }
 
   > li {

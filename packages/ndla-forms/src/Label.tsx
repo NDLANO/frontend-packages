@@ -22,6 +22,7 @@ const visuallyHiddenStyle = css`
 `;
 
 const StyledLabel = styled(Text)`
+  display: inline-block;
   &[data-disabled="true"] {
     color: ${colors.brand.greyMedium};
   }

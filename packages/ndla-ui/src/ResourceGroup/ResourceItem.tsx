@@ -142,9 +142,11 @@ const ResourceLink = styled(SafeLink)`
 `;
 
 const TitleContainer = styled.div`
+  align-items: normal;
   display: flex;
   flex-direction: column;
   ${mq.range({ from: breakpoints.tablet })} {
+    align-items: center;
     flex-direction: row;
   }
 `;

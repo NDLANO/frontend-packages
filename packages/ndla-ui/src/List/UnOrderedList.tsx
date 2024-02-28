@@ -6,19 +6,17 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from "react";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
 
 const StyledUl = styled.ul`
-  padding-left: ${spacing.nsmall} !important;
-  margin-left: ${spacing.normal} !important;
-  margin-top: 0;
-  ${fonts.sizes('18px', '29px')};
+  padding-left: ${spacing.nsmall};
+  margin: ${spacing.normal} 0 ${spacing.normal} ${spacing.normal};
+  ${fonts.size.text.content};
 
   ul {
-    padding-left: ${spacing.nsmall};
-    margin-left: 0 !important;
+    margin: 0;
   }
 
   > li {
@@ -28,11 +26,9 @@ const StyledUl = styled.ul`
   }
   // List item
   li {
+    padding-top: 0;
     padding-left: ${spacing.nsmall};
     margin-top: ${spacing.nsmall};
-    p {
-      margin-bottom: ${spacing.nsmall} !important;
-    }
   }
 `;
 

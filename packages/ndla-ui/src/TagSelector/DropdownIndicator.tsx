@@ -6,13 +6,13 @@
  *
  */
 
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { useMemo } from 'react';
-import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
-import { DropdownIndicatorProps, components } from 'react-select';
-import { iconButtonStyle } from '@ndla/button';
-import { TagType } from './types';
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { DropdownIndicatorProps, components } from "react-select";
+import styled from "@emotion/styled";
+import { iconButtonStyle } from "@ndla/button";
+import { ChevronDown, ChevronUp } from "@ndla/icons/common";
+import { TagType } from "./types";
 
 const StyledIconWrapper = styled.span`
   svg {
@@ -27,7 +27,13 @@ const DropdownIndicator = ({ selectProps, children, ...props }: DropdownIndicato
   const Icon = menuIsOpen ? ChevronUp : ChevronDown;
 
   const css = useMemo(
-    () => iconButtonStyle({ colorTheme: 'greyLighter', variant: 'ghost', shape: 'pill', size: 'small' }),
+    () =>
+      iconButtonStyle({
+        colorTheme: "greyLighter",
+        variant: "ghost",
+        shape: "pill",
+        size: "small",
+      }),
     [],
   );
 
@@ -36,7 +42,7 @@ const DropdownIndicator = ({ selectProps, children, ...props }: DropdownIndicato
       css={css}
       {...props}
       selectProps={selectProps}
-      aria-label={menuIsOpen ? t('tagSelector.hideTags') : t('tagSelector.showTags')}
+      aria-label={menuIsOpen ? t("tagSelector.hideTags") : t("tagSelector.showTags")}
     >
       <StyledIconWrapper aria-hidden>
         <Icon />

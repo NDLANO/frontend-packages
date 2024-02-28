@@ -6,58 +6,59 @@
  *
  */
 
-import { Meta, StoryObj, StoryFn } from '@storybook/react';
-import Gloss from './Gloss';
-import { defaultParameters } from '../../../../stories/defaults';
-import { wordClass } from '../model/WordClass';
+import { Meta, StoryObj, StoryFn } from "@storybook/react";
+import Gloss from "./Gloss";
+import GlossExample from "./GlossExample";
+import { defaultParameters } from "../../../../stories/defaults";
+import { wordClass } from "../model/WordClass";
 
 const meta: Meta<typeof Gloss> = {
-  title: 'Components/Gloss',
+  title: "Components/Gloss",
   component: Gloss,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
   args: {
     title: {
-      title: 'Å angripe',
-      language: 'nb',
+      title: "Å angripe",
+      language: "nb",
     },
     glossData: {
-      gloss: 'angreifen',
+      gloss: "angreifen",
       wordClass: wordClass.verb,
-      originalLanguage: 'de',
+      originalLanguage: "de",
       transcriptions: {},
       examples: [
         [
           {
-            example: 'Hitler greift die Sowjetunion an',
-            language: 'de',
+            example: "Hitler greift die Sowjetunion an",
+            language: "de",
             transcriptions: {},
           },
           {
-            example: 'Hitler angriper Sovjetunionen',
-            language: 'nb',
+            example: "Hitler angriper Sovjetunionen",
+            language: "nb",
             transcriptions: {},
           },
         ],
         [
           {
-            example: 'Ich greife an',
-            language: 'de',
+            example: "Ich greife an",
+            language: "de",
             transcriptions: {},
           },
           {
-            example: 'Jeg griper an',
-            language: 'nb',
+            example: "Jeg griper an",
+            language: "nb",
             transcriptions: {},
           },
         ],
       ],
     },
     audio: {
-      title: '',
-      src: '',
+      title: "",
+      src: "",
     },
   },
 };
@@ -71,37 +72,49 @@ export const GlossStory: StoryFn<typeof Gloss> = ({ ...args }) => {
 export const GlossChineseStory: StoryObj<typeof Gloss> = {
   args: {
     title: {
-      title: 'Ma Hong',
-      language: 'nb',
+      title: "Ma Hong",
+      language: "nb",
     },
     glossData: {
-      gloss: '马红',
+      gloss: "马红",
       wordClass: wordClass.properNoun,
-      originalLanguage: 'zh',
+      originalLanguage: "zh",
       transcriptions: {
-        traditional: '(馬紅)',
-        pinyin: 'Mǎ Hóng',
+        traditional: "(馬紅)",
+        pinyin: "Mǎ Hóng",
       },
       examples: [
         [
           {
-            example: '我叫马红',
-            language: 'zh',
+            example: "我叫马红",
+            language: "zh",
             transcriptions: {
-              pinyin: 'wo jiao ma hong',
+              pinyin: "wo jiao ma hong",
             },
           },
           {
-            example: 'Jeg heter ma hong',
-            language: 'nb',
+            example: "Jeg heter ma hong",
+            language: "nb",
             transcriptions: {},
           },
         ],
       ],
     },
     audio: {
-      title: 'Spill av lyd',
-      src: 'https://api.staging.ndla.no/audio/files/shu3jia4.mp3',
+      title: "Spill av lyd",
+      src: "https://api.staging.ndla.no/audio/files/shu3jia4.mp3",
     },
   },
+};
+
+const GlossExampleText = {
+  example: "我叫马红",
+  language: "zh",
+  transcriptions: {
+    pinyin: "wo jiao ma hong",
+  },
+};
+
+export const GlossExampleStory: StoryFn<typeof Gloss> = () => {
+  return <GlossExample originalLanguage="zh" index={0} example={GlossExampleText} isStandalone />;
 };

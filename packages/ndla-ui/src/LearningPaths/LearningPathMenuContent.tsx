@@ -6,16 +6,16 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { LearningPathRead } from '@ndla/icons/contentType';
-import { StepProps } from './LearningPathMenu';
-import ContentTypeBadge from '../ContentTypeBadge';
-import constants from '../model';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils, stackOrder } from "@ndla/core";
+import { LearningPathRead } from "@ndla/icons/contentType";
+import SafeLink from "@ndla/safelink";
+import { StepProps } from "./LearningPathMenu";
+import ContentTypeBadge from "../ContentTypeBadge";
+import constants from "../model";
 
-const SIDE_NAV_WIDTH = '372px';
+const SIDE_NAV_WIDTH = "372px";
 
 type StyledMenuItemProps = {
   current?: boolean;
@@ -27,7 +27,7 @@ type StyledMenuItemProps = {
 };
 
 const StyledMenuItem = styled.li<StyledMenuItemProps>`
-  margin: 0;
+  padding: 0;
   a {
     box-shadow: none;
     display: inline-flex;
@@ -39,7 +39,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       ${fonts.sizes(14, 1.2)};
       color: ${colors.brand.primary};
       ${mq.range({ from: breakpoints.tablet })} {
-        color: ${({ invertedStyle }) => (invertedStyle ? '#fff' : colors.brand.primary)};
+        color: ${({ invertedStyle }) => (invertedStyle ? "#fff" : colors.brand.primary)};
         font-weight: ${fonts.weight.semibold};
       }
     }
@@ -93,13 +93,13 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       background: #fff;
   `}
   &:after {
-    content: '';
+    content: "";
     display: block;
     height: ${spacing.large};
     width: 2px;
     background: ${colors.brand.greyLight};
     position: absolute;
-    transform: translate(29px, -${spacingUnit * 3}px);
+    transform: translate(29px, -${spacing.xlarge});
   }
   ${(props) =>
     !props.afterCurrent &&
@@ -115,7 +115,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     &:after {
       width: 4px;
       background: ${colors.text.light};
-      transform: translate(28px, -${spacingUnit * 3}px);
+      transform: translate(28px, -${spacing.xlarge});
     }
   `}
   ${(props) =>
@@ -136,7 +136,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
 
 const StyledContentType = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   margin-right: ${spacingUnit * 0.75}px;
   max-height: 35px;
 `;
@@ -153,7 +153,6 @@ type StyledNavigationProps = {
 const StyledNavigation = styled.nav<StyledNavigationProps>`
   > ul {
     list-style: none;
-    margin: 0;
     padding: 0;
   }
   margin-bottom: ${spacing.medium};
@@ -176,7 +175,7 @@ const StyledNavigation = styled.nav<StyledNavigationProps>`
           a:hover,
           a:focus {
             position: relative;
-            z-index: 1;
+            z-index: ${stackOrder.offsetSingle};
             width: ${SIDE_NAV_WIDTH};
             background: ${colors.brand.greyLighter};
             span {

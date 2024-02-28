@@ -8,8 +8,8 @@
 
 /* eslint-env jest */
 
-import { uuid } from '../index';
+import { uuid } from "../index";
 
-test('@ndla/util/uuid sanity test', () => {
+test("@ndla/util/uuid sanity test", () => {
   expect(uuid()).not.toEqual(uuid());
 });

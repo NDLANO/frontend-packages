@@ -6,25 +6,25 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../stories/defaults';
-import Tabs from './Tabs';
+import { Meta, StoryFn } from "@storybook/react";
+import Tabs from "./Tabs";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Components/Tabs',
+  title: "Components/Tabs",
   component: Tabs,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
   args: {
-    'aria-label': 'Oversikt over farge og figur',
-    variant: 'underlined',
-    defaultValue: 'colors',
+    "aria-label": "Oversikt over farge og figur",
+    variant: "underlined",
+    defaultValue: "colors",
     tabs: [
       {
-        title: 'Farge',
-        id: 'colors',
+        title: "Farge",
+        id: "colors",
         content: (
           <>
             <h2 style={{ margin: 0 }}>Oversikt over farger</h2>
@@ -33,8 +33,8 @@ export default {
         ),
       },
       {
-        title: 'Figur',
-        id: 'shapes',
+        title: "Figur",
+        id: "shapes",
         content: (
           <>
             <h2 style={{ margin: 0 }}>Oversikt over figurer</h2>
@@ -43,9 +43,20 @@ export default {
         ),
       },
       {
-        title: 'Hemmelig',
+        title: "Hemmelig",
         disabled: true,
-        id: 'secret',
+        id: "secret",
+        content: (
+          <>
+            <h2 style={{ margin: 0 }}>Ikke hemmelig</h2>
+            <p>Egentlig ikke så spennende.</p>
+          </>
+        ),
+      },
+      {
+        title: "Hemmelig 2",
+        disabled: false,
+        id: "secret2",
         content: (
           <>
             <h2 style={{ margin: 0 }}>Ikke hemmelig</h2>
@@ -61,4 +72,4 @@ export const TabsStory: StoryFn<typeof Tabs> = ({ ...args }) => {
   return <Tabs {...args}></Tabs>;
 };
 
-TabsStory.storyName = 'Tabs';
+TabsStory.storyName = "Tabs";

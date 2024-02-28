@@ -6,9 +6,9 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { css } from '@emotion/react';
-import { spacing, breakpoints, mq, colors } from '@ndla/core';
+import { ReactNode } from "react";
+import { css } from "@emotion/react";
+import { spacing, breakpoints, mq, colors } from "@ndla/core";
 
 const bodyStyles = css`
   &.slide-in-left {
@@ -49,9 +49,6 @@ const bodyStyles = css`
     &:before {
       content: none;
     }
-  }
-  .c-medialist {
-    padding-right: 0;
   }
 `;
 

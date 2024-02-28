@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import { CloseButton } from '@ndla/button';
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { CloseButton } from "@ndla/button";
+import { colors, spacing } from "@ndla/core";
 
 interface WrapperProps {
   small?: boolean;
@@ -17,7 +17,7 @@ interface WrapperProps {
 
 const MessageBannerWrapper = styled.div<WrapperProps>`
   display: grid;
-  grid-template-areas: '. content closebutton';
+  grid-template-areas: ". content closebutton";
   grid-template-columns: minmax(30px, 1fr) minmax(0, auto) minmax(30px, 1fr);
   padding: ${({ small }) => (small ? spacing.xxsmall : spacing.small)};
   background: ${colors.support.yellowLight};

@@ -6,27 +6,30 @@
  *
  */
 
-import { ImageEmbedData, ImageMetaData } from '@ndla/types-embed';
-import { useTranslation } from 'react-i18next';
-import { MouseEventHandler, useMemo, useState } from 'react';
-import parse from 'html-react-parser';
-import { ExpandTwoArrows } from '@ndla/icons/action';
-import { COPYRIGHTED } from '@ndla/licenses';
-import { ArrowCollapse, ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { utils } from '@ndla/core';
-import styled from '@emotion/styled';
-import { Figure, FigureType } from '../Figure';
-import Image, { ImageLink } from '../Image';
-import { EmbedByline } from '../LicenseByline';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
+import parse from "html-react-parser";
+import { MouseEventHandler, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { utils } from "@ndla/core";
+import { ExpandTwoArrows } from "@ndla/icons/action";
+import { ArrowCollapse, ChevronDown, ChevronUp } from "@ndla/icons/common";
+import { COPYRIGHTED } from "@ndla/licenses";
+import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from "./types";
+import { Figure, FigureType } from "../Figure";
+import Image, { ImageLink } from "../Image";
+import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
   path?: string;
   heartButton?: HeartButtonType;
+  canonicalUrl?: CanonicalUrlFuncs["image"];
   inGrid?: boolean;
+  lang?: string;
+  renderContext?: RenderContext;
 }
 
 export interface Author {
@@ -47,9 +50,9 @@ export const getLicenseCredits = (copyright?: {
 };
 
 export const errorSvgSrc = `data:image/svg+xml;charset=UTF-8,%3Csvg fill='%238A8888' height='400' viewBox='0 0 24 12' width='100%25' xmlns='http://www.w3.org/2000/svg' style='background-color: %23EFF0F2'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath transform='scale(0.3) translate(28, 8.5)' d='M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z'/%3E%3C/svg%3E`;
-const isSmall = (size?: string): size is 'xsmall' | 'small' => size === 'xsmall' || size === 'small';
+const isSmall = (size?: string): size is "xsmall" | "small" => size === "xsmall" || size === "small";
 
-const isAlign = (align?: string): align is 'left' | 'right' => align === 'left' || align === 'right';
+const isAlign = (align?: string): align is "left" | "right" => align === "left" || align === "right";
 
 const getFigureType = (size?: string, align?: string): FigureType => {
   if (size && isSmall(size) && align && isAlign(align)) {
@@ -61,37 +64,37 @@ const getFigureType = (size?: string, align?: string): FigureType => {
   if (align && isAlign(align)) {
     return align;
   }
-  return 'full';
+  return "full";
 };
 
 const getSizes = (size?: string, align?: string) => {
-  if (align && size === 'full') {
-    return '(min-width: 1024px) 512px, (min-width: 768px) 350px, 100vw';
+  if (align && size === "full") {
+    return "(min-width: 1024px) 512px, (min-width: 768px) 350px, 100vw";
   }
-  if (align && size === 'small') {
-    return '(min-width: 1024px) 350px, (min-width: 768px) 180px, 100vw';
+  if (align && size === "small") {
+    return "(min-width: 1024px) 350px, (min-width: 768px) 180px, 100vw";
   }
-  if (align && size === 'xsmall') {
-    return '(min-width: 1024px) 180px, (min-width: 768px) 180px, 100vw';
+  if (align && size === "xsmall") {
+    return "(min-width: 1024px) 180px, (min-width: 768px) 180px, 100vw";
   }
-  return '(min-width: 1024px) 1024px, 100vw';
+  return "(min-width: 1024px) 1024px, 100vw";
 };
 
 export const getFocalPoint = (data: ImageEmbedData) => {
-  const focalX = parseFloat(data.focalX ?? '');
-  const focalY = parseFloat(data.focalY ?? '');
-  if (!!focalX && !!focalY) {
+  const focalX = parseFloat(data.focalX ?? "");
+  const focalY = parseFloat(data.focalY ?? "");
+  if (!isNaN(focalX) && !isNaN(focalY)) {
     return { x: focalX, y: focalY };
   }
   return undefined;
 };
 
 export const getCrop = (data: ImageEmbedData) => {
-  const lowerRightX = parseFloat(data.lowerRightX ?? '');
-  const lowerRightY = parseFloat(data.lowerRightY ?? '');
-  const upperLeftX = parseFloat(data.upperLeftX ?? '');
-  const upperLeftY = parseFloat(data.upperLeftY ?? '');
-  if (!!lowerRightX && !!lowerRightY && !!upperLeftX && !!upperLeftY) {
+  const lowerRightX = parseFloat(data.lowerRightX ?? "");
+  const lowerRightY = parseFloat(data.lowerRightY ?? "");
+  const upperLeftX = parseFloat(data.upperLeftX ?? "");
+  const upperLeftY = parseFloat(data.upperLeftY ?? "");
+  if (!isNaN(lowerRightX) && !isNaN(lowerRightY) && !isNaN(upperLeftX) && !isNaN(upperLeftY)) {
     return {
       startX: lowerRightX,
       startY: lowerRightY,
@@ -102,29 +105,38 @@ export const getCrop = (data: ImageEmbedData) => {
   return undefined;
 };
 
-const expandedSizes = '(min-width: 1024px) 1024px, 100vw';
+const expandedSizes = "(min-width: 1024px) 1024px, 100vw";
 
-const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path }: Props) => {
+const ImageEmbed = ({
+  embed,
+  previewAlt,
+  heartButton: HeartButton,
+  inGrid,
+  path,
+  lang,
+  canonicalUrl,
+  renderContext = "article",
+}: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
 
   const parsedDescription = useMemo(() => {
-    if (embed.embedData.caption) {
-      return parse(embed.embedData.caption);
-    } else if (embed.status === 'success' && embed.data.caption.caption) {
+    if (embed.embedData.caption || renderContext === "article") {
+      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
+    } else if (embed.status === "success" && embed.data.caption.caption) {
       return parse(embed.data.caption.caption);
     }
-  }, [embed]);
+  }, [embed, renderContext]);
 
-  if (embed.status === 'error') {
+  if (embed.status === "error") {
     const { align, size } = embed.embedData;
     const figureType = getFigureType(size, align);
-    return <EmbedErrorPlaceholder type={'image'} figureType={figureType} />;
+    return <EmbedErrorPlaceholder type={"image"} figureType={figureType} />;
   }
 
   const { data, embedData } = embed;
 
-  const altText = embedData.alt || '';
+  const altText = embedData.alt || "";
 
   const figureType = getFigureType(embedData.size, embedData.align);
   const sizes = getSizes(embedData.size, embedData.align);
@@ -137,10 +149,10 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path 
   return (
     <Figure
       type={imageSizes ? undefined : figureType}
-      className={imageSizes ? `c-figure--${embedData.align} expanded` : ''}
+      className={imageSizes ? `c-figure--${embedData.align} expanded` : ""}
     >
       <ImageWrapper
-        src={!isCopyrighted ? embedData.pageUrl || data.image.imageUrl : undefined}
+        src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}
         size={embedData.size}
         pagePath={path}
@@ -162,15 +174,17 @@ const ImageEmbed = ({ embed, previewAlt, heartButton: HeartButton, inGrid, path 
               onHideByline={() => setIsBylineHidden((p) => !p)}
             />
           }
+          lang={lang}
         />
       </ImageWrapper>
-      {isBylineHidden || (isSmall(embedData.size) && !imageSizes) ? null : (
+      {isBylineHidden ? null : (
         <EmbedByline
           type="image"
           copyright={data.copyright}
+          hideOnLargeScreens={isSmall(embedData.size) && !imageSizes}
           description={parsedDescription}
           bottomRounded
-          visibleAlt={previewAlt ? embed.embedData.alt : ''}
+          visibleAlt={previewAlt ? embed.embedData.alt : ""}
           inGrid={inGrid}
         >
           {HeartButton && !isCopyrighted && <HeartButton embed={embed} />}
@@ -197,7 +211,7 @@ interface ImageWrapperProps {
   size?: string;
 }
 const hideByline = (size?: string): boolean => {
-  return !!size && size.endsWith('-hide-byline');
+  return !!size && size.endsWith("-hide-byline");
 };
 
 const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps) => {
@@ -209,7 +223,7 @@ const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps
   return (
     <ImageLink src={src} crop={crop}>
       {children}
-      <HiddenSpan>{t('license.images.itemImage.ariaLabel')}</HiddenSpan>
+      <HiddenSpan>{t("license.images.itemImage.ariaLabel")}</HiddenSpan>
     </ImageLink>
   );
 };
@@ -229,7 +243,7 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
       <button
         type="button"
         className="c-figure__fullscreen-btn"
-        aria-label={t(`license.images.itemImage.zoom${expanded ? 'Out' : ''}ImageButtonLabel`)}
+        aria-label={t(`license.images.itemImage.zoom${expanded ? "Out" : ""}ImageButtonLabel`)}
         onClick={onExpand}
       >
         {expanded ? <ArrowCollapse /> : <ExpandTwoArrows />}
@@ -240,7 +254,7 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
       <button
         type="button"
         className="c-figure__show-byline-btn"
-        aria-label={t(`license.images.itemImage.${bylineHidden ? 'expandByline' : 'minimizeByline'}`)}
+        aria-label={t(`license.images.itemImage.${bylineHidden ? "expandByline" : "minimizeByline"}`)}
         onClick={onHideByline}
       >
         {bylineHidden ? <ChevronDown /> : <ChevronUp />}

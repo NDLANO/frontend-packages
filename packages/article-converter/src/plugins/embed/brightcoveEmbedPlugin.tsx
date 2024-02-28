@@ -6,13 +6,13 @@
  *
  */
 
-import { attributesToProps } from 'html-react-parser';
-import { BrightcoveMetaData } from '@ndla/types-embed';
-import { BrightcoveEmbed } from '@ndla/ui';
-import { PluginType } from '../types';
+import { attributesToProps } from "html-react-parser";
+import { BrightcoveMetaData } from "@ndla/types-embed";
+import { BrightcoveEmbed } from "@ndla/ui";
+import { PluginType } from "../types";
 
 export const brightcoveEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as BrightcoveMetaData;
-  return <BrightcoveEmbed embed={data} heartButton={opts.components?.heartButton} />;
+  const data = JSON.parse(props["data-json"]) as BrightcoveMetaData;
+  return <BrightcoveEmbed embed={data} heartButton={opts.components?.heartButton} renderContext={opts.renderContext} />;
 };

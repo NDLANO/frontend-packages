@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import SafeLink from '@ndla/safelink';
-import { colors, fonts } from '@ndla/core';
-import { LicenseType } from './EmbedByline';
+import styled from "@emotion/styled";
+import { colors, fonts } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import { LicenseType } from "./EmbedByline";
 
 interface Props {
   license: LicenseType;
@@ -33,7 +33,7 @@ const StyledSpan = styled.span`
 `;
 
 const LicenseLink = ({ license, asLink = true }: Props) => {
-  if (license.abbreviation === 'unknown') {
+  if (license.abbreviation === "unknown") {
     return null;
   }
   if (asLink) {

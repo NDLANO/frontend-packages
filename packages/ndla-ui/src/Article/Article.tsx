@@ -6,25 +6,25 @@
  *
  */
 
-import { ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
-import BEMHelper from 'react-bem-helper';
-import styled from '@emotion/styled';
+import { ReactNode, useEffect, useRef, useState, forwardRef } from "react";
+import BEMHelper from "react-bem-helper";
+import styled from "@emotion/styled";
 
-import { useIntersectionObserver } from '@ndla/hooks';
-import { resizeObserver } from '@ndla/util';
-import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
-import { Heading, Text } from '@ndla/typography';
-import { Article as ArticleType } from '../types';
-import ArticleByline from './ArticleByline';
-import LayoutItem from '../Layout';
-import ArticleHeaderWrapper from './ArticleHeaderWrapper';
-import ArticleNotions from './ArticleNotions';
-import ArticleAccessMessage from './ArticleAccessMessage';
-import MessageBox from '../Messages/MessageBox';
+import { spacing, mq, breakpoints } from "@ndla/core";
+import { useIntersectionObserver } from "@ndla/hooks";
+import { Heading, Text } from "@ndla/typography";
+import { resizeObserver } from "@ndla/util";
+import ArticleAccessMessage from "./ArticleAccessMessage";
+import ArticleByline from "./ArticleByline";
+import ArticleHeaderWrapper from "./ArticleHeaderWrapper";
+import ArticleNotions from "./ArticleNotions";
+import LayoutItem from "../Layout";
+import MessageBox from "../Messages/MessageBox";
+import { Article as ArticleType } from "../types";
 
 const classes = new BEMHelper({
-  name: 'article',
-  prefix: 'c-',
+  name: "article",
+  prefix: "c-",
 });
 
 type ArticleWrapperProps = {
@@ -49,7 +49,7 @@ type ArticleTitleProps = {
 export const ArticleTitle = ({ children, icon, label, id, lang }: ArticleTitleProps) => {
   const modifiers = [];
   if (icon) {
-    modifiers.push('icon');
+    modifiers.push("icon");
   }
 
   let labelView = null;
@@ -59,7 +59,7 @@ export const ArticleTitle = ({ children, icon, label, id, lang }: ArticleTitlePr
   }
 
   return (
-    <div {...classes('title', modifiers)}>
+    <div {...classes("title", modifiers)}>
       {icon}
       {labelView}
       <Heading element="h1" headingStyle="h1-resource" id={id} tabIndex={-1} lang={lang}>
@@ -100,12 +100,6 @@ const ArticleFavoritesButtonWrapper = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     transform: translate(${spacing.normal}, -${spacing.medium});
   }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    transform: translate(${spacing.large}, -${spacing.medium});
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    transform: translate(${spacingUnit * 5.5}px, -${spacing.medium});
-  }
 `;
 
 type Props = {
@@ -130,7 +124,7 @@ const getArticleContent = (content: any, contentTransformed?: boolean) => {
     return content;
   }
   switch (typeof content) {
-    case 'function':
+    case "function":
       return content();
     default:
       return content;
@@ -156,7 +150,7 @@ export const Article = ({
   const articleRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const { entry } = useIntersectionObserver({
-    rootMargin: '400px',
+    rootMargin: "400px",
     target: articleRef.current,
     threshold: 0.1,
   });
@@ -216,7 +210,7 @@ export const Article = ({
             authors={authors}
             suppliers={copyright?.rightsholders}
             published={published}
-            license={copyright?.license?.license ?? ''}
+            license={copyright?.license?.license ?? ""}
             licenseBox={licenseBox}
           />
         </LayoutItem>

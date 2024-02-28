@@ -1,4 +1,12 @@
-import { ContentTypeBadge } from './ContentTypeBadge';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { ContentTypeBadge } from "./ContentTypeBadge";
 
 export {
   SubjectMaterialBadge,
@@ -8,6 +16,6 @@ export {
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
   LearningPathBadge,
-} from './ContentTypeBadge';
+} from "./ContentTypeBadge";
 
 export default ContentTypeBadge;

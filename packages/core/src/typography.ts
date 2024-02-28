@@ -1,7 +1,15 @@
-import { css } from '@emotion/react';
-import fonts from './fonts';
-import colors from './colors';
-import spacing from './spacing';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { css } from "@emotion/react";
+import colors from "./colors";
+import fonts from "./fonts";
+import spacing from "./spacing";
 
 const smallHeading = css`
   ${fonts.sizes(14, 1.1)};
@@ -11,7 +19,7 @@ const smallHeading = css`
 `;
 
 const smallerHeadingUppercase = css`
-  ${fonts.sizes('18px', '26px')};
+  ${fonts.sizes("18px", "26px")};
   font-weight: ${fonts.weight.normal};
   color: ${colors.text.light};
   text-transform: uppercase;

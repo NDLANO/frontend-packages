@@ -6,23 +6,23 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import DeleteForever from '@ndla/icons';
-import { IconButtonV2 } from '@ndla/button';
-import { defaultParameters } from '../../../../stories/defaults';
-import Codeblock from './Codeblock';
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { IconButtonV2 } from "@ndla/button";
+import DeleteForever from "@ndla/icons";
+import Codeblock from "./Codeblock";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/Codeblock',
+  title: "Components/Codeblock",
   component: Codeblock,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     inlineStories: true,
     ...defaultParameters,
   },
   args: {
-    title: 'Codeblock',
-    format: 'html',
+    title: "Codeblock",
+    format: "html",
     highlightedCode: `<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Lorem ipsum<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
@@ -64,7 +64,7 @@ export default {
     actionButton: {
       table: {
         type: {
-          detail: 'Takes any ReactNode, but as the name implies: use a button component, preferably an icon-button',
+          detail: "Takes any ReactNode, but as the name implies: use a button component, preferably an icon-button",
         },
       },
       control: {
@@ -90,7 +90,7 @@ export const CSS: StoryObj<typeof Codeblock> = {
   margin: 10px;
   background: #ccc;
 }`,
-    format: 'css',
+    format: "css",
   },
 };
 
@@ -102,7 +102,7 @@ export const JS: StoryObj<typeof Codeblock> = {
     code: `const arr = ["This", "Little", "Piggy"];
 const first = arr.shift();
 console.log(first);`,
-    format: 'js',
+    format: "js",
   },
 };
 
@@ -110,6 +110,6 @@ export const Text: StoryObj<typeof Codeblock> = {
   args: {
     highlightedCode: `Pure text without highlighting and no title`,
     code: `Pure text without highlighting and no title`,
-    format: 'text',
+    format: "text",
   },
 };

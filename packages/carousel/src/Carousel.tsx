@@ -15,12 +15,12 @@ import {
   useState,
   useEffect,
   useCallback,
-} from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
+} from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing, stackOrder } from "@ndla/core";
 
-type Gap = 'none' | 'small' | 'normal';
+type Gap = "none" | "small" | "normal";
 
 interface Props {
   items: ReactElement[];
@@ -30,7 +30,7 @@ interface Props {
 }
 
 interface SlideContentProps {
-  'data-gap': 'none' | 'small' | 'normal';
+  "data-gap": "none" | "small" | "normal";
 }
 
 const StyledSlideContent = styled.div<SlideContentProps>`
@@ -39,13 +39,13 @@ const StyledSlideContent = styled.div<SlideContentProps>`
   margin-left: ${spacing.normal};
   margin-right: ${spacing.normal};
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-left: ${spacingUnit * 3}px;
-    margin-right: ${spacingUnit * 3}px;
+    margin-left: ${spacing.xlarge};
+    margin-right: ${spacing.xlarge};
   }
-  &[data-gap='small'] {
+  &[data-gap="small"] {
     gap: ${spacing.small};
   }
-  &[data-gap='normal'] {
+  &[data-gap="normal"] {
     gap: ${spacing.small};
     ${mq.range({ from: breakpoints.desktop })} {
       gap: ${spacing.normal};
@@ -58,7 +58,7 @@ export const ButtonWrapper = styled.div`
   position: absolute;
   top: 30%;
   transform: translateY(-20%);
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
 `;
 
 const CarouselWrapper = styled.div`
@@ -86,7 +86,7 @@ const SliderWrapper = styled.div`
   }
 `;
 
-export const Carousel = ({ items = [], leftButton, rightButton, gap = 'normal' }: Props) => {
+export const Carousel = ({ items = [], leftButton, rightButton, gap = "normal" }: Props) => {
   const slideshowRef = useRef<HTMLDivElement>(null);
   const slideContainer = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
@@ -107,16 +107,19 @@ export const Carousel = ({ items = [], leftButton, rightButton, gap = 'normal' }
   }, []);
 
   useEffect(() => {
-    window.addEventListener('resize', onResize);
+    window.addEventListener("resize", onResize);
     onResize();
-    return () => window.removeEventListener('resize', onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, [onResize]);
 
-  const slidePage = (direction: 'left' | 'right') => {
+  const slidePage = (direction: "left" | "right") => {
     const firstChild = slideshowRef.current?.firstChild as HTMLElement;
     if (!firstChild) return;
     const amount = firstChild.clientWidth * 3;
-    slideContainer.current?.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
+    slideContainer.current?.scrollBy({
+      left: direction === "right" ? amount : -amount,
+      behavior: "smooth",
+    });
   };
 
   const onMouseDown = (e: ReactMouseEvent<HTMLDivElement>) => {
@@ -129,43 +132,43 @@ export const Carousel = ({ items = [], leftButton, rightButton, gap = 'normal' }
     const sliderContent = slideshowRef.current;
 
     if (slider) {
-      slider.style.cursor = 'grabbing';
+      slider.style.cursor = "grabbing";
     }
-    document.body.style.cursor = 'grabbing';
+    document.body.style.cursor = "grabbing";
 
     const mouseMoveHandler = (e: MouseEvent) => {
       const dx = e.clientX - pos.x;
 
       if (sliderContent && !sliderContent?.style.pointerEvents) {
-        sliderContent.style.pointerEvents = 'none';
+        sliderContent.style.pointerEvents = "none";
       }
       if (slider) {
-        slider.style.userSelect = 'none';
+        slider.style.userSelect = "none";
         slider.scrollLeft = pos.left - dx;
       }
     };
 
     const mouseUpHandler = () => {
-      document.removeEventListener('mousemove', mouseMoveHandler);
-      document.removeEventListener('mouseup', mouseUpHandler);
+      document.removeEventListener("mousemove", mouseMoveHandler);
+      document.removeEventListener("mouseup", mouseUpHandler);
 
-      sliderContent?.style.removeProperty('pointer-events');
-      slider?.style.removeProperty('user-select');
-      document.body.style.removeProperty('cursor');
+      sliderContent?.style.removeProperty("pointer-events");
+      slider?.style.removeProperty("user-select");
+      document.body.style.removeProperty("cursor");
 
       if (slider) {
-        slider.style.cursor = 'grab';
+        slider.style.cursor = "grab";
       }
     };
 
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler, { once: true });
+    document.addEventListener("mousemove", mouseMoveHandler);
+    document.addEventListener("mouseup", mouseUpHandler, { once: true });
   };
 
   return (
     <CarouselWrapper>
-      <InteractButton position="left" button={leftButton} onClick={() => slidePage('left')} hidden={!showLeft} />
-      <InteractButton position="right" button={rightButton} onClick={() => slidePage('right')} hidden={!showRight} />
+      <InteractButton position="left" button={leftButton} onClick={() => slidePage("left")} hidden={!showLeft} />
+      <InteractButton position="right" button={rightButton} onClick={() => slidePage("right")} hidden={!showRight} />
       <SliderWrapper ref={slideContainer} tabIndex={-1} onScroll={onScroll} onMouseDown={onMouseDown}>
         <StyledSlideContent ref={slideshowRef} data-gap={gap}>
           {items.map((item) => item)}
@@ -176,7 +179,7 @@ export const Carousel = ({ items = [], leftButton, rightButton, gap = 'normal' }
 };
 
 interface InteractButtonProps {
-  position: 'left' | 'right';
+  position: "left" | "right";
   onClick: () => void;
   hidden?: boolean;
   button?: ReactElement;
@@ -196,7 +199,7 @@ const InteractButton = ({ position, onClick, button, hidden }: InteractButtonPro
   if (!button || hidden) {
     return null;
   }
-  const style = position === 'left' ? leftStyle : rightStyle;
+  const style = position === "left" ? leftStyle : rightStyle;
 
-  return <ButtonWrapper css={style}>{cloneElement(button, { onClick, 'tab-index': '0' })}</ButtonWrapper>;
+  return <ButtonWrapper css={style}>{cloneElement(button, { onClick, "tab-index": "0" })}</ButtonWrapper>;
 };

@@ -6,15 +6,15 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { colors, spacing, animations, mq, breakpoints } from '@ndla/core';
-import { Back, Forward } from '@ndla/icons/common';
-import SafeLink from '@ndla/safelink';
-import { useTranslation } from 'react-i18next';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { animations, breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
+import { Back, Forward } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
 
-const FOOTER_HEIGHT = '78px';
+const FOOTER_HEIGHT = "78px";
 const FOOTER_HEIGHT_MOBILE = spacing.large;
 const SAFELINK_SIZE_MOBILE = spacing.large;
 
@@ -27,7 +27,7 @@ const StyledFooter = styled.nav`
     height: calc(${FOOTER_HEIGHT_MOBILE} + var(--safe-area-inset-bottom));
     min-height: var(-webkit-fill-available);
     position: fixed;
-    z-index: 2;
+    z-index: ${stackOrder.offsetDouble};
     bottom: 0;
     left: 0;
     right: 0;
@@ -63,9 +63,6 @@ const SafeLinkCSS = css`
     padding: 0;
   }
   transition: background 200ms ease;
-  > .c-icon--medium {
-    transition: transform 200ms ease;
-  }
   div {
     display: flex;
     flex-direction: column;
@@ -88,16 +85,6 @@ const SafeLinkCSS = css`
         box-shadow: none;
       }
     }
-    ${mq.range({ from: breakpoints.tablet })} {
-      > .c-icon--medium {
-        transform: translateX(${spacing.xsmall});
-      }
-      &:first-of-type {
-        > .c-icon--medium {
-          transform: translateX(-${spacing.xsmall});
-        }
-      }
-    }
   }
 `;
 
@@ -110,7 +97,7 @@ const StyledTitle = styled.span`
 type PropsSiblings = {
   title: string;
   toLearningPathUrl(pathId: number, stepId: number): string;
-  arrow?: 'left' | 'right';
+  arrow?: "left" | "right";
   pathId: number;
   stepId: number;
 };
@@ -121,13 +108,13 @@ export const LearningPathStickySibling = ({ title, toLearningPathUrl, pathId, st
     <SafeLink
       to={toLearningPathUrl(pathId, stepId)}
       css={SafeLinkCSS}
-      aria-label={arrow === 'left' ? t('learningPath.previousArrow') : t('learningPath.nextArrow')}
+      aria-label={arrow === "left" ? t("learningPath.previousArrow") : t("learningPath.nextArrow")}
     >
-      {arrow === 'left' && <Back className="c-icon--medium" />}
+      {arrow === "left" && <Back size="normal" />}
       <div>
         <StyledTitle>{title}</StyledTitle>
       </div>
-      {arrow === 'right' && <Forward className="c-icon--medium" />}
+      {arrow === "right" && <Forward size="normal" />}
     </SafeLink>
   );
 };

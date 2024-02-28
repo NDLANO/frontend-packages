@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { Grid } from '@ndla/icons/common';
-import { ListCircle } from '@ndla/icons/editor';
-import { animations, breakpoints, colors, mq } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { animations, breakpoints, colors, mq } from "@ndla/core";
+import { Grid } from "@ndla/icons/common";
+import { ListCircle } from "@ndla/icons/editor";
 
 const Wrapper = styled.div`
   display: inline-flex;
@@ -66,12 +66,12 @@ const ButtonContent = styled.span<ButtonContentProps>`
 `;
 
 export type SearchViewTypeProps = {
-  viewType: 'grid' | 'list';
-  onChangeViewType: (viewType: SearchViewTypeProps['viewType']) => void;
+  viewType: "grid" | "list";
+  onChangeViewType: (viewType: SearchViewTypeProps["viewType"]) => void;
 };
 const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => {
   const { t } = useTranslation();
-  const onClickHandler = (viewTypeClicked: SearchViewTypeProps['viewType']) => {
+  const onClickHandler = (viewTypeClicked: SearchViewTypeProps["viewType"]) => {
     if (viewTypeClicked !== viewType) {
       onChangeViewType(viewTypeClicked);
     }
@@ -84,10 +84,10 @@ const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => 
           colorTheme="greyLighter"
           type="button"
           size="normal"
-          title={t('searchPage.resultType.gridView')}
-          onClick={() => onClickHandler('grid')}
+          title={t("searchPage.resultType.gridView")}
+          onClick={() => onClickHandler("grid")}
         >
-          <ButtonContent selected={viewType === 'grid'}>
+          <ButtonContent selected={viewType === "grid"}>
             <Grid aria-hidden title="" />
           </ButtonContent>
         </ButtonElement>
@@ -96,10 +96,10 @@ const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => 
         <ButtonElement
           variant="stripped"
           size="normal"
-          title={t('searchPage.resultType.listView')}
-          onClick={() => onClickHandler('list')}
+          title={t("searchPage.resultType.listView")}
+          onClick={() => onClickHandler("list")}
         >
-          <ButtonContent selected={viewType === 'list'}>
+          <ButtonContent selected={viewType === "list"}>
             <ListCircle aria-hidden title="" />
           </ButtonContent>
         </ButtonElement>

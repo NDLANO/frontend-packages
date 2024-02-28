@@ -6,12 +6,12 @@
  *
  */
 
-import { SerializedStyles } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { ChevronDown } from '@ndla/icons/common';
-import { Header, Trigger } from '@radix-ui/react-accordion';
-import { forwardRef, HTMLAttributes, memo, ReactNode, useMemo } from 'react';
+import { forwardRef, HTMLAttributes, memo, ReactNode, useMemo } from "react";
+import { SerializedStyles } from "@emotion/react";
+import styled from "@emotion/styled";
+import { Header, Trigger } from "@radix-ui/react-accordion";
+import { colors, fonts, spacing } from "@ndla/core";
+import { ChevronDown } from "@ndla/icons/common";
 
 const StyledHeader = styled(Header)`
   display: flex;
@@ -31,7 +31,7 @@ const StyledTrigger = styled(Trigger)`
   color: ${colors.brand.primary};
   font-weight: ${fonts.weight.semibold};
   transition: all 200ms ease-in-out;
-  &[data-state='open'] {
+  &[data-state="open"] {
     background-color: ${colors.brand.lighter};
     border-bottom: 1px solid ${colors.brand.primary};
   }
@@ -51,18 +51,18 @@ const StyledChevron = styled(ChevronDown)`
   ${StyledTrigger}[data-state='open'] > & {
     transform: rotate(180deg);
   }
-  width: 24px;
-  height: 24px;
+  width: ${spacing.normal};
+  height: ${spacing.normal};
 `;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   indicator?: ReactNode;
   headerCSS?: SerializedStyles;
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  headingLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
 }
 
 const AccordionHeader = forwardRef<HTMLButtonElement, Props>(
-  ({ indicator, headingLevel: Heading = 'h3', headerCSS, children, ...rest }, ref) => {
+  ({ indicator, headingLevel: Heading = "h3", headerCSS, children, ...rest }, ref) => {
     const indicatorElement = useMemo(() => indicator ?? <StyledChevron />, [indicator]);
     return (
       <StyledHeader css={headerCSS} asChild>

@@ -1,9 +1,17 @@
-import styled from '@emotion/styled';
-import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import FilmContentCard from './FilmContentCard';
-import { MovieResourceType, MovieType } from './types';
-import { setAnimations, StyledHeadingH1 } from './filmStyles';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing } from "@ndla/core";
+import FilmContentCard from "./FilmContentCard";
+import { setAnimations, StyledHeadingH1 } from "./filmStyles";
+import { MovieResourceType, MovieType } from "./types";
 
 interface MovieListingProps {
   marginLeft?: number;
@@ -19,8 +27,8 @@ const MovieListing = styled.div<MovieListingProps>`
   margin-left: ${spacing.normal};
   margin-right: ${spacing.normal};
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-left: ${spacingUnit * 3}px;
-    margin-right: ${spacingUnit * 3}px;
+    margin-left: ${spacing.xlarge};
+    margin-right: ${spacing.xlarge};
   }
   > div {
     opacity: 0;
@@ -60,8 +68,8 @@ const MovieGrid = ({
         {resourceTypeName && resourceTypeName.name}
         <small>
           {fetchingMoviesByType
-            ? t('ndlaFilm.loadingMovies')
-            : `${moviesByType.length} ${t('ndlaFilm.movieMatchInCategory')}`}
+            ? t("ndlaFilm.loadingMovies")
+            : `${moviesByType.length} ${t("ndlaFilm.movieMatchInCategory")}`}
         </small>
       </StyledHeadingH1>
       <MovieListing>

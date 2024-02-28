@@ -6,9 +6,9 @@
  *
  */
 
-import { Meta, StoryObj } from '@storybook/react';
-import AudioPlayer from './AudioPlayer';
-import { defaultParameters } from '../../../../stories/defaults';
+import { Meta, StoryObj } from "@storybook/react";
+import AudioPlayer from "./AudioPlayer";
+import { defaultParameters } from "../../../../stories/defaults";
 const TextVersion = (
   <>
     <p>
@@ -23,22 +23,22 @@ const TextVersion = (
       And this was confirmed in an interview that the founder, Elizabeth Holmes, had said in the Wall Street Journal.
       "The reality within our health-care system today is that when someone you care about gets really sick, by the time
       you find out it's [most often] too late to do anything about it, It's heartbreaking." This was a moon shot that I
-      really wanted to be a part of and I really wanted to help build.{' '}
+      really wanted to be a part of and I really wanted to help build.{" "}
     </p>
   </>
 );
 
 const description =
-  'Se gjerne nærmere på hvordan andre kjente fortellere griper saken an. Siri Knudsen i NRK P3 lot seg for eksempel inspirere av Asbjørnsen og Moe da hun jobbet med sin radiodokumentar om artisten Truls Heggero. Se gjerne nærmere på hvordan andre kjente fortellere griper saken an. Siri Knudsen i NRK P3 lot seg for eksempel inspirere av Asbjørnsen og Moe da hun jobbet med sin radiodokumentar om artisten Truls Heggero.';
+  "Se gjerne nærmere på hvordan andre kjente fortellere griper saken an. Siri Knudsen i NRK P3 lot seg for eksempel inspirere av Asbjørnsen og Moe da hun jobbet med sin radiodokumentar om artisten Truls Heggero. Se gjerne nærmere på hvordan andre kjente fortellere griper saken an. Siri Knudsen i NRK P3 lot seg for eksempel inspirere av Asbjørnsen og Moe da hun jobbet med sin radiodokumentar om artisten Truls Heggero.";
 
 /**
  * Although the AudioPlayer is most commonly used as an embed, it can also be used as a standalone component.
  * To see it used as an embed, check out the AudioEmbed component
  */
 const meta: Meta<typeof AudioPlayer> = {
-  title: 'Components/AudioPlayer',
+  title: "Components/AudioPlayer",
   component: AudioPlayer,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: defaultParameters,
 };
 
@@ -46,18 +46,18 @@ export default meta;
 
 export const AudioPlayerStory: StoryObj<typeof AudioPlayer> = {
   args: {
-    src: 'https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3',
-    title: 'Den gode lydhistoria',
+    src: "https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3",
+    title: "Den gode lydhistoria",
     textVersion: TextVersion,
   },
 };
 
-AudioPlayerStory.storyName = 'AudioPlayer';
+AudioPlayerStory.storyName = "AudioPlayer";
 
 export const SimpleVariant: StoryObj<typeof AudioPlayer> = {
   args: {
-    src: 'https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3',
-    title: 'Den gode lydhistoria',
+    src: "https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3",
+    title: "Den gode lydhistoria",
     textVersion: TextVersion,
     speech: true,
   },
@@ -65,24 +65,24 @@ export const SimpleVariant: StoryObj<typeof AudioPlayer> = {
 
 export const PodcastWithoutImage: StoryObj<typeof AudioPlayer> = {
   args: {
-    src: 'https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3',
-    title: 'Den gode lydhistoria',
+    src: "https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3",
+    title: "Den gode lydhistoria",
     textVersion: TextVersion,
-    subtitle: { title: 'Serienavn', url: '#' },
+    subtitle: { title: "Serienavn", url: "#" },
     description,
   },
 };
 
 export const PodcastWithImage: StoryObj<typeof AudioPlayer> = {
   args: {
-    src: 'https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3',
-    title: 'Den gode lydhistoria',
+    src: "https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3",
+    title: "Den gode lydhistoria",
     textVersion: TextVersion,
-    subtitle: { title: 'Serienavn', url: '#' },
+    subtitle: { title: "Serienavn", url: "#" },
     description,
     img: {
-      url: 'https://api.ndla.no/image-api/raw/BagNsXHq.jpg?height=400',
-      alt: 'Mann blir målt og observert. Omgitt av ulike diagrammer. Illustrasjon.',
+      url: "https://api.ndla.no/image-api/raw/BagNsXHq.jpg?height=400",
+      alt: "Mann blir målt og observert. Omgitt av ulike diagrammer. Illustrasjon.",
     },
   },
 };

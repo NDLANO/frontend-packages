@@ -6,28 +6,23 @@
  *
  */
 
-import { ReactNode, MouseEvent, useMemo } from 'react';
-import styled from '@emotion/styled';
-import { animations, breakpoints, colors, mq, spacing } from '@ndla/core';
-import { Text, Heading } from '@ndla/typography';
-
-import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
-import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from '@ndla/modal';
-import { ButtonV2 } from '@ndla/button';
-import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
-import { css } from '@emotion/react';
-import { useTranslation } from 'react-i18next';
-import { EmbedMetaData } from '@ndla/types-embed';
-import Loader from './Loader';
-import { ItemProps } from '../Navigation/NavigationBox';
-import { NavigationBox } from '../Navigation';
-import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
-import { MessageBox } from '../Messages';
-import { getCrop, getFocalPoint } from '../Embed/ImageEmbed';
-
-type InvertItProps = {
-  invertedStyle?: boolean;
-};
+import { ReactNode, MouseEvent, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { animations, breakpoints, colors, misc, mq, spacing } from "@ndla/core";
+import { CursorClick, ExpandTwoArrows } from "@ndla/icons/action";
+import { Additional, ChevronDown, ChevronUp, PlayCircleFilled } from "@ndla/icons/common";
+import { ModalCloseButton, ModalContent, Modal, ModalHeader, ModalTrigger } from "@ndla/modal";
+import { EmbedMetaData } from "@ndla/types-embed";
+import { Text, Heading } from "@ndla/typography";
+import Loader from "./Loader";
+import { getCrop, getFocalPoint } from "../Embed/ImageEmbed";
+import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from "../Image";
+import { MessageBox } from "../Messages";
+import { NavigationBox } from "../Navigation";
+import { ItemProps } from "../Navigation/NavigationBox";
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,7 +38,7 @@ const frameStyle = css`
   ${mq.range({ from: breakpoints.desktop })} {
     padding: 40px 80px;
   }
-  ${mq.range({ from: '1180px' })} {
+  ${mq.range({ from: "1180px" })} {
     padding: 60px 160px;
   }
 `;
@@ -67,7 +62,7 @@ const TopicHeaderVisualElementWrapper = styled.div`
 `;
 
 const ShowVisualElementWrapper = styled.div`
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -83,7 +78,7 @@ const VisualElementButton = styled(ButtonV2)`
 `;
 
 const TopicHeaderImage = styled.img`
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   aspect-ratio: 1;
   width: 100%;
   height: 100%;
@@ -121,7 +116,7 @@ const TopicHeaderOverlay = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   transition: opacity ${animations.durations.fast};
   ${VisualElementButton}:hover & {
     opacity: 0.1;
@@ -144,37 +139,33 @@ const HeadingWrapper = styled.hgroup`
   }
 `;
 
-const StyledButtonWrapper = styled.div<InvertItProps>`
+const StyledButtonWrapper = styled.div`
   margin-top: ${spacing.small};
   padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
-  border-left: 6px solid ${colors.brand.light};
-  ${(props) =>
-    props.invertedStyle &&
-    css`
-      button {
-        color: #fff;
-        &:hover,
-        &:focus {
-          color: #fff;
-        }
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
+  &[data-inverted="true"] {
+    button {
+      color: ${colors.white};
+      &:hover,
+      &:focus {
+        color: ${colors.white};
       }
-    `}
+    }
+  }
 `;
 
-const AdditionalIcon = styled.span`
+const StyledAdditional = styled(Additional)`
+  color: ${colors.brand.dark};
+  height: ${spacing.normal};
+  width: ${spacing.normal};
   padding: 1px;
-  border: 1px solid currentColor;
-  border-radius: 100%;
-  font-size: 15px;
-  width: 25px;
-  text-align: center;
 `;
 
-const StyledContentWrapper = styled.div<InvertItProps>`
-  padding-top: ${spacing.normal};
-  border-left: 6px solid ${colors.brand.light};
-  color: ${colors.text.primary};
+const StyledContentWrapper = styled.div`
   background-color: ${colors.white};
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
+  color: ${colors.text.primary};
+  padding-top: ${spacing.normal};
 `;
 
 const StyledModalHeader = styled(ModalHeader)`
@@ -234,16 +225,16 @@ const Topic = ({
   const contentId = `expanded-description-${id}`;
 
   const VisualElementIcon = useMemo(() => {
-    if (!visualElementEmbedMeta || visualElementEmbedMeta.status === 'error') return null;
-    else if (visualElementEmbedMeta.resource === 'brightcove') {
+    if (!visualElementEmbedMeta || visualElementEmbedMeta.status === "error") return null;
+    else if (visualElementEmbedMeta.resource === "brightcove") {
       return PlayCircleFilled;
-    } else if (visualElementEmbedMeta.resource === 'image') {
+    } else if (visualElementEmbedMeta.resource === "image") {
       return ExpandTwoArrows;
     } else return CursorClick;
   }, [visualElementEmbedMeta]);
 
   const metaImage: MetaImageType | undefined = useMemo(() => {
-    if (visualElementEmbedMeta?.resource === 'image' && visualElementEmbedMeta.status === 'success') {
+    if (visualElementEmbedMeta?.resource === "image" && visualElementEmbedMeta.status === "success") {
       return {
         url: visualElementEmbedMeta.data.image?.imageUrl,
         alt: visualElementEmbedMeta.data.alttext?.alttext,
@@ -268,8 +259,8 @@ const Topic = ({
             </Heading>
             {isAdditionalTopic && (
               <>
-                <AdditionalIcon aria-hidden="true">T</AdditionalIcon>
-                <span>{t('navigation.additionalTopic')}</span>
+                <StyledAdditional aria-hidden="true" />
+                <span>{t("navigation.additionalTopic")}</span>
               </>
             )}
           </HeadingWrapper>
@@ -279,12 +270,12 @@ const Topic = ({
         </div>
         {metaImage && (
           <TopicHeaderVisualElementWrapper>
-            {visualElementEmbedMeta?.status === 'success' ? (
+            {visualElementEmbedMeta?.status === "success" ? (
               <Modal>
                 <ModalTrigger>
                   <VisualElementButton
                     variant="stripped"
-                    title={visualElementEmbedMeta.resource === 'image' ? t('image.largeSize') : t('visualElement.show')}
+                    title={visualElementEmbedMeta.resource === "image" ? t("image.largeSize") : t("visualElement.show")}
                   >
                     <ShowVisualElementWrapper>
                       <TopicHeaderImage
@@ -297,7 +288,7 @@ const Topic = ({
                   </VisualElementButton>
                 </ModalTrigger>
                 <ModalContent
-                  aria-label={t('topicPage.imageModal')}
+                  aria-label={t("topicPage.imageModal")}
                   animation="subtle"
                   animationDuration={50}
                   size="large"
@@ -320,7 +311,7 @@ const Topic = ({
       {messageBox && <MessageBox>{messageBox}</MessageBox>}
       <div>
         {onToggleShowContent && (
-          <StyledButtonWrapper invertedStyle={invertedStyle}>
+          <StyledButtonWrapper data-inverted={invertedStyle}>
             <ButtonV2
               aria-expanded={!!showContent}
               aria-controls={contentId}
@@ -329,26 +320,22 @@ const Topic = ({
             >
               {showContent ? (
                 <>
-                  {t('navigation.showShorterDescription')} <ChevronUp />
+                  {t("navigation.showShorterDescription")} <ChevronUp />
                 </>
               ) : (
                 <>
-                  {t('navigation.showLongerDescription')} <ChevronDown />
+                  {t("navigation.showLongerDescription")} <ChevronDown />
                 </>
               )}
             </ButtonV2>
           </StyledButtonWrapper>
         )}
-        {showContent && (
-          <StyledContentWrapper id={contentId} invertedStyle={invertedStyle}>
-            {children}
-          </StyledContentWrapper>
-        )}
+        {showContent && <StyledContentWrapper id={contentId}>{children}</StyledContentWrapper>}
       </div>
       {subTopics && subTopics.length !== 0 && (
         <NavigationBox
           colorMode="light"
-          heading={t('navigation.topics')}
+          heading={t("navigation.topics")}
           items={subTopics}
           onClick={onSubTopicSelected}
           invertedStyle={invertedStyle}

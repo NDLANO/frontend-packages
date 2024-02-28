@@ -6,7 +6,7 @@
  *
  */
 
-import { ListResourceProps } from './ListResource';
+import { ListResourceProps } from "./ListResource";
 export type { ListResourceProps };
-export { default as ListResource } from './ListResource';
-export { default as BlockResource } from './BlockResource';
+export { default as ListResource } from "./ListResource";
+export { default as BlockResource } from "./BlockResource";

@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { fonts, mq, breakpoints, spacing, colors } from '@ndla/core';
-import { IconButtonV2 } from '@ndla/button';
-import { Cross } from '@ndla/icons/action';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
+import { fonts, mq, breakpoints, spacing, colors } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ const HeadingWrapper = styled.div`
 `;
 const Heading = styled.h2`
   margin: 0;
-  ${fonts.sizes('20px', '45px')};
+  ${fonts.sizes("20px", "45px")};
   text-transform: uppercase;
 `;
 

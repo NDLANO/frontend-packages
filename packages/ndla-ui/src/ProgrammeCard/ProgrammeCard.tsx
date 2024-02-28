@@ -6,9 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import SafeLink from '@ndla/safelink';
-import { spacing, colors, misc, breakpoints, mq, fonts } from '@ndla/core';
+import styled from "@emotion/styled";
+import { spacing, colors, misc, breakpoints, mq, fonts } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
 
 interface Image {
   src: string;
@@ -58,10 +58,10 @@ const StyledTitle = styled.span`
 
   font-weight: ${fonts.weight.semibold};
   color: ${colors.text.primary};
-  ${fonts.sizes('16px', '24px')};
+  ${fonts.sizes("16px", "24px")};
 
   ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('16px', '18px')};
+    ${fonts.sizes("16px", "18px")};
   }
 `;
 

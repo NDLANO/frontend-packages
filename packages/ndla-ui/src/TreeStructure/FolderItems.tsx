@@ -6,13 +6,13 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { animations } from '@ndla/core';
-import { IFolder } from '@ndla/types-backend/learningpath-api';
-import FolderItem from './FolderItem';
-import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from './types';
-import { treestructureId } from './helperFunctions';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { animations } from "@ndla/core";
+import { IFolder } from "@ndla/types-backend/learningpath-api";
+import FolderItem from "./FolderItem";
+import { treestructureId } from "./helperFunctions";
+import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from "./types";
 
 const StyledUL = styled.ul`
   ${animations.fadeInLeft(animations.durations.fast)};
@@ -21,16 +21,14 @@ const StyledUL = styled.ul`
     animation: none;
   }
   list-style: none;
-  margin: 0;
   padding: 0;
 `;
 
 const StyledLI = styled.li`
   display: flex;
   flex-direction: column;
-  margin: 0;
   padding: 0;
-  &[data-type='navigation'] {
+  &[data-type="navigation"] {
     align-items: flex-start;
   }
 `;
@@ -62,15 +60,15 @@ const FolderItems = ({
 }: FolderItemsProps) => (
   <StyledUL
     id={
-      level === 0 && type === 'picker'
-        ? treestructureId(type, 'popup')
+      level === 0 && type === "picker"
+        ? treestructureId(type, "popup")
         : parentFolder
-        ? treestructureId(type, `subfolders-${parentFolder.id}`)
-        : undefined
+          ? treestructureId(type, `subfolders-${parentFolder.id}`)
+          : undefined
     }
     tabIndex={-1}
-    aria-labelledby={level === 0 && type === 'picker' ? treestructureId(type, 'label') : undefined}
-    role={level === 0 ? 'tree' : 'group'}
+    aria-labelledby={level === 0 && type === "picker" ? treestructureId(type, "label") : undefined}
+    role={level === 0 ? "tree" : "group"}
   >
     {children}
     {folders.map((folder, index) => {
@@ -104,7 +102,13 @@ const FolderItems = ({
               {...rest}
             >
               {newFolderParentId === id && (
-                <li role="none">{newFolderInput?.({ parentId: id, onClose: onCancelNewFolder, onCreate })}</li>
+                <li role="none">
+                  {newFolderInput?.({
+                    parentId: id,
+                    onClose: onCancelNewFolder,
+                    onCreate,
+                  })}
+                </li>
               )}
             </FolderItems>
           )}

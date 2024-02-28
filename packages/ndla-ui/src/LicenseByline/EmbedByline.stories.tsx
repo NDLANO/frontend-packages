@@ -6,14 +6,14 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import { IconButtonV2 } from '@ndla/button';
-import { Switch } from '@ndla/switch';
-import { HeartOutline } from '@ndla/icons/action';
-import EmbedByline from './EmbedByline';
-import { defaultParameters } from '../../../../stories/defaults';
+import styled from "@emotion/styled";
+import { Meta, StoryFn } from "@storybook/react";
+import { IconButtonV2 } from "@ndla/button";
+import { breakpoints, mq, spacing } from "@ndla/core";
+import { HeartOutline } from "@ndla/icons/action";
+import { Switch } from "@ndla/switch";
+import EmbedByline from "./EmbedByline";
+import { defaultParameters } from "../../../../stories/defaults";
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -27,17 +27,17 @@ const ButtonWrapper = styled.div`
 `;
 
 export default {
-  title: 'Components/EmbedByline',
+  title: "Components/EmbedByline",
   component: EmbedByline,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
   args: {
     topRounded: true,
     bottomRounded: true,
-    visibleAlt: 'Synlig alt-tekst kan legges her, eller fjernes helt',
-    type: 'image',
+    visibleAlt: "Synlig alt-tekst kan legges her, eller fjernes helt",
+    type: "image",
     children: (
       <ButtonWrapper>
         <Switch checked={false} label="Bytt til synstolket video" onChange={() => {}} id="switch" />
@@ -47,20 +47,20 @@ export default {
       </ButtonWrapper>
     ),
     description:
-      'Bildetekst som kan være ganske lang. Denne roboten er laget av DALLE2, en helt vaskeekte AI. Hvis denne teksten blir veldig lang kommer den på flere linjer.',
+      "Bildetekst som kan være ganske lang. Denne roboten er laget av DALLE2, en helt vaskeekte AI. Hvis denne teksten blir veldig lang kommer den på flere linjer.",
     copyright: {
       license: {
-        license: 'CC-BY-SA-4.0',
-        description: 'Creative Commons Attribution-ShareAlike 4.0 International',
-        url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+        license: "CC-BY-SA-4.0",
+        description: "Creative Commons Attribution-ShareAlike 4.0 International",
+        url: "https://creativecommons.org/licenses/by-sa/4.0/",
       },
-      origin: 'http://floradania.dk/forside/',
+      origin: "http://floradania.dk/forside/",
       creators: [],
       processors: [],
       rightsholders: [
         {
-          type: 'Supplier',
-          name: 'Floradania',
+          type: "Supplier",
+          name: "Floradania",
         },
       ],
     },
@@ -79,4 +79,4 @@ export const EmbedBylineStory: StoryFn<typeof EmbedByline> = (args) => {
   return <EmbedByline {...rest}>{children}</EmbedByline>;
 };
 
-EmbedBylineStory.storyName = 'EmbedByline';
+EmbedBylineStory.storyName = "EmbedByline";

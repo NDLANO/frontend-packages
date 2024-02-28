@@ -1,5 +1,18 @@
-import BEMHelper from 'react-bem-helper';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
+import { CSSProperties, ComponentProps, useMemo } from "react";
+
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, mq } from "@ndla/core";
+import { MenuBook } from "@ndla/icons/action";
+import { Audio } from "@ndla/icons/common";
 import {
   SubjectMaterial,
   TasksAndActivities,
@@ -9,20 +22,14 @@ import {
   SharedResource,
   LearningPath,
   MultidisciplinaryTopic,
-} from '@ndla/icons/contentType';
+} from "@ndla/icons/contentType";
 
-import { MenuBook } from '@ndla/icons/action';
-import { Concept, ImageNormal, SquareAudio, SquareVideo } from '@ndla/icons/editor';
+import { Concept, Media, Video } from "@ndla/icons/editor";
 
-import * as contentTypes from '../model/ContentType';
+import * as contentTypes from "../model/ContentType";
 
-const classes = new BEMHelper({
-  name: 'content-type-badge',
-  prefix: 'c-',
-});
-
-interface Props {
-  size?: 'xx-small' | 'x-small' | 'small' | 'large';
+interface Props extends ComponentProps<"div"> {
+  size?: "xx-small" | "x-small" | "small" | "large";
   type: string;
   title?: string;
   background?: boolean;
@@ -30,93 +37,196 @@ interface Props {
   className?: string;
 }
 
-export const ContentTypeBadge = ({ type, background, title, size = 'small', border = true, className }: Props) => {
-  const modifiers = [type, size];
+const sizes = {
+  "xx-small": css`
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    svg {
+      width: 10px;
+      height: 10x;
+    }
+  `,
+  "x-small": css`
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    ${mq.range({ from: breakpoints.tablet })} {
+      height: 26px;
+      width: 26px;
+    }
+    svg {
+      width: 10px;
+      height: 10x;
+      ${mq.range({ from: breakpoints.tablet })} {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  `,
+  small: "",
+  large: css`
+    width: 50px;
+    height: 50px;
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  `,
+} as const;
 
-  let embedResource = false;
+const BaseContentTypeBadge = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 34px;
+  height: 34px;
+  color: var(--icon-color);
+`;
 
-  let icon = null;
-  switch (type) {
-    case contentTypes.SUBJECT_MATERIAL:
-      icon = <SubjectMaterial title={title} />;
-      break;
-    case contentTypes.TASKS_AND_ACTIVITIES:
-      icon = <TasksAndActivities title={title} />;
-      break;
-    case contentTypes.ASSESSMENT_RESOURCES:
-      icon = <AssessmentResource title={title} />;
-      break;
-    case contentTypes.SUBJECT:
-      icon = <MenuBook title={title} />;
-      break;
-    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      icon = <ExternalLearningResource title={title} />;
-      break;
-    case contentTypes.SOURCE_MATERIAL:
-      icon = <SharedResource title={title} />;
-      break;
-    case contentTypes.LEARNING_PATH:
-      icon = <LearningPath title={title} />;
-      break;
-    case contentTypes.TOPIC:
-      icon = <Subject title={title} />;
-      break;
-    case contentTypes.MULTIDISCIPLINARY_TOPIC:
-      icon = <MultidisciplinaryTopic />;
-      break;
-    case contentTypes.resourceEmbedTypeMapping.image:
-      icon = <ImageNormal />;
-      embedResource = true;
-      break;
-    case contentTypes.resourceEmbedTypeMapping.audio:
-      icon = <SquareAudio />;
-      embedResource = true;
-      break;
-    case contentTypes.resourceEmbedTypeMapping.video:
-      icon = <SquareVideo />;
-      embedResource = true;
-      break;
-    case contentTypes.resourceEmbedTypeMapping.concept:
-      icon = <Concept />;
-      embedResource = true;
-      break;
-    default:
-      break;
-  }
+const borderStyle = css`
+  border: 2px solid;
+  border-color: var(--icon-color);
+`;
 
-  if (embedResource) {
-    modifiers.push('embed-resource');
-  }
-  if (background) {
-    modifiers.push('background');
-  }
-  if (border) {
-    modifiers.push('border');
-  }
-  return <div {...classes('', modifiers, className)}>{icon}</div>;
+const backgroundStyle = css`
+  background-color: var(--background-color);
+`;
+
+const iconMap = {
+  [contentTypes.SUBJECT_MATERIAL]: {
+    icon: SubjectMaterial,
+    iconColor: colors.subjectMaterial.dark,
+    backgroundColor: colors.subjectMaterial.light,
+  },
+  [contentTypes.TASKS_AND_ACTIVITIES]: {
+    icon: TasksAndActivities,
+    iconColor: colors.tasksAndActivities.dark,
+    backgroundColor: colors.tasksAndActivities.light,
+  },
+  [contentTypes.ASSESSMENT_RESOURCES]: {
+    icon: AssessmentResource,
+    iconColor: colors.assessmentResource.dark,
+    backgroundColor: colors.assessmentResource.light,
+  },
+  [contentTypes.SUBJECT]: {
+    icon: MenuBook,
+    iconColor: colors.subject.dark,
+    backgroundColor: colors.subject.light,
+  },
+  [contentTypes.EXTERNAL_LEARNING_RESOURCES]: {
+    icon: ExternalLearningResource,
+    iconColor: colors.externalLearningResource.dark,
+    backgroundColor: colors.externalLearningResource.light,
+  },
+  [contentTypes.SOURCE_MATERIAL]: {
+    icon: SharedResource,
+    iconColor: colors.sourceMaterial.dark,
+    backgroundColor: colors.sourceMaterial.light,
+  },
+  [contentTypes.LEARNING_PATH]: {
+    icon: LearningPath,
+    iconColor: colors.learningPath.dark,
+    backgroundColor: colors.learningPath.light,
+  },
+  [contentTypes.TOPIC]: {
+    icon: Subject,
+    iconColor: colors.subject.dark,
+    backgroundColor: colors.subject.light,
+  },
+  [contentTypes.MULTIDISCIPLINARY_TOPIC]: {
+    icon: MultidisciplinaryTopic,
+    backgroundColor: "#b9b37b",
+  },
+  [contentTypes.resourceEmbedTypeMapping.image]: {
+    icon: Media,
+    iconColor: colors.brand.grey,
+    backgroundColor: colors.brand.greyLight,
+  },
+  [contentTypes.resourceEmbedTypeMapping.audio]: {
+    icon: Audio,
+    iconColor: colors.brand.grey,
+    backgroundColor: colors.brand.greyLight,
+  },
+  [contentTypes.resourceEmbedTypeMapping.video]: {
+    icon: Video,
+    iconColor: colors.brand.grey,
+    backgroundColor: colors.brand.greyLight,
+  },
+  [contentTypes.resourceEmbedTypeMapping.concept]: {
+    icon: Concept,
+    iconColor: colors.brand.grey,
+    backgroundColor: colors.brand.greyLight,
+  },
+} as const;
+
+export const ContentTypeBadge = ({
+  type,
+  background,
+  title,
+  size = "small",
+  border = true,
+  className,
+  ...rest
+}: Props) => {
+  const { Icon, style } = useMemo(() => {
+    const fromMap = iconMap[type];
+    const style = {
+      "--icon-color": fromMap.iconColor,
+      "--background-color": fromMap.backgroundColor,
+    } as CSSProperties;
+    return { Icon: fromMap.icon, style };
+  }, [type]);
+
+  const cssStyles = useMemo(() => {
+    const styles = [sizes[size]];
+    if (background) {
+      styles.push(backgroundStyle);
+    }
+    if (border) {
+      styles.push(borderStyle);
+    }
+    return styles;
+  }, [background, border, size]);
+
+  return (
+    <BaseContentTypeBadge
+      css={cssStyles}
+      title={title}
+      style={style}
+      aria-label={title}
+      className={className}
+      data-badge=""
+      data-type={type}
+      {...rest}
+    >
+      <Icon />
+    </BaseContentTypeBadge>
+  );
 };
 
-export const SubjectMaterialBadge = (props: Omit<Props, 'type'>) => (
+export const SubjectMaterialBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />
 );
-export const TasksAndActivitiesBadge = (props: Omit<Props, 'type'>) => (
+export const TasksAndActivitiesBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.TASKS_AND_ACTIVITIES} />
 );
-export const AssessmentResourcesBadge = (props: Omit<Props, 'type'>) => (
+export const AssessmentResourcesBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
 );
-export const SubjectBadge = (props: Omit<Props, 'type'>) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
-export const ExternalLearningResourcesBadge = (props: Omit<Props, 'type'>) => (
+export const SubjectBadge = (props: Omit<Props, "type">) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
+export const ExternalLearningResourcesBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.EXTERNAL_LEARNING_RESOURCES} />
 );
-export const SourceMaterialBadge = (props: Omit<Props, 'type'>) => (
+export const SourceMaterialBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
 );
 
-export const LearningPathBadge = (props: Omit<Props, 'type'>) => (
+export const LearningPathBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
 );
 
-export const MultidisciplinaryTopicBadge = (props: Omit<Props, 'type'>) => (
+export const MultidisciplinaryTopicBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.MULTIDISCIPLINARY_TOPIC} />
 );

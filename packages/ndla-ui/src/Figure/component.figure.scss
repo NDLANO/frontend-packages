@@ -37,7 +37,10 @@
   margin: $spacing 0 $spacing;
   position: relative;
   width: 100%;
-  transition: transform 0.4s, width 0.4s, height 0.4s;
+  transition:
+    transform 0.4s,
+    width 0.4s,
+    height 0.4s;
 
   &--full-column {
     left: auto !important;
@@ -87,35 +90,8 @@
   }
 }
 
-.c-figure__licensetag {
-  display: none;
-}
 .c-figure__byline {
   text-align: left;
-
-  .c-figure__toggleAlternativeVideo {
-    margin-left: 10px;
-    span.hidden {
-      display: none;
-    }
-  }
-}
-
-.c-figure__byline-author-buttons {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: $primary-color;
-}
-.c-figure__byline-author-buttons--no-siblings {
-  //styling for button in licensewrapper when there are no other elements in it. Places the button to the right
-  justify-content: flex-end;
-}
-.c-figure__byline-authors {
-  @include font-size(14px, 20px);
-  margin-right: $spacing--small;
-  font-family: $font;
 }
 
 .c-figure__info {
@@ -232,40 +208,11 @@
 }
 
 .c-figure {
-  &__link-wrapper {
-    margin-top: $spacing--small;
-
-    .c-icon {
-      margin-left: $spacing--small/2;
-      width: 18px;
-      height: 18px;
-    }
-  }
-
   &__link {
     color: $brand-color;
     box-shadow: none;
     display: flex;
     align-items: center;
-    @include font-size(14px, 25px);
-
-    &:hover,
-    &:active,
-    &:focus {
-      .c-figure__link-text {
-        box-shadow: $link--hover;
-      }
-    }
-  }
-
-  &__link-text {
-    box-shadow: $link;
-    display: block;
-  }
-
-  &__link-description {
-    margin-top: $spacing--small/2 !important;
-    margin-bottom: 0;
     @include font-size(14px, 25px);
   }
 }

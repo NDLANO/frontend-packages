@@ -6,16 +6,16 @@
  *
  */
 
-import { ChangeEvent, createRef, useCallback, useState } from 'react';
-import Editor from 'react-simple-code-editor';
-import { useTranslation } from 'react-i18next';
-import { Code } from '@ndla/icons/editor';
-import { ButtonV2 } from '@ndla/button';
+import { ChangeEvent, createRef, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
+import Editor from "react-simple-code-editor";
 // @ts-ignore
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { Wrapper, FlexContainer, FlexElement } from './style';
-import { languageOptions, ICodeLangugeOption } from '../languageOptions';
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { colors, fonts, spacing } from "@ndla/core";
+import { Code } from "@ndla/icons/editor";
+import { Wrapper, FlexContainer, FlexElement } from "./style";
+import { languageOptions, ICodeLangugeOption } from "../languageOptions";
 
 type Props = {
   onSave: Function;
@@ -40,7 +40,7 @@ const StyledInput = styled.input`
 const StyledSelect = styled.select`
   appearance: none;
   background: ${colors.white};
-  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20fill%3D%22%23555555%22%20%0A%09%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%22-261%20145.2%2024%2024%22%20style%3D%22enable-background%3Anew%20-261%20145.2%2024%2024%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20d%3D%22M-245.3%2C156.1l-3.6-6.5l-3.7%2C6.5%20M-252.7%2C159l3.7%2C6.5l3.6-6.5%22%2F%3E%0A%3C%2Fsvg%3E');
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20fill%3D%22%23555555%22%20%0A%09%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%22-261%20145.2%2024%2024%22%20style%3D%22enable-background%3Anew%20-261%20145.2%2024%2024%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20d%3D%22M-245.3%2C156.1l-3.6-6.5l-3.7%2C6.5%20M-252.7%2C159l3.7%2C6.5l3.6-6.5%22%2F%3E%0A%3C%2Fsvg%3E");
   background-repeat: no-repeat;
   background-position: 100%;
   border: 1px solid ${colors.brand.greyDark};
@@ -60,7 +60,7 @@ const CodeBlockEditor = ({ onSave, onAbort, highlight, content = null }: Props) 
   const { t } = useTranslation();
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState<CodeContentState>({
-    code: content ? content.code : '',
+    code: content ? content.code : "",
     title: content ? content.title : defaultLang.title,
     format: content ? content.format : defaultLang.format,
   });
@@ -68,9 +68,9 @@ const CodeBlockEditor = ({ onSave, onAbort, highlight, content = null }: Props) 
   const highlightWithLineNumbers = useCallback(
     (input: string, language: string) =>
       highlight(input, language)
-        .split('\n')
+        .split("\n")
         .map((line: string, i: number) => `<span class='editorLineNumber'>${i + 1}</span>${line}`)
-        .join('\n'),
+        .join("\n"),
     [highlight],
   );
 
@@ -103,19 +103,19 @@ const CodeBlockEditor = ({ onSave, onAbort, highlight, content = null }: Props) 
     <Wrapper>
       <FlexContainer>
         <FlexElement>
-          {t('codeEditor.title')}
+          {t("codeEditor.title")}
           <br />
           <b>
             <Code aria-hidden="true" />
-            &nbsp;{t('codeEditor.subtitle')}
+            &nbsp;{t("codeEditor.subtitle")}
           </b>
         </FlexElement>
         <FlexElement>
-          <span className="label">{t('codeEditor.titleLabel')}</span>
+          <span className="label">{t("codeEditor.titleLabel")}</span>
           <StyledInput ref={titleRef} type="text" defaultValue={codeContent.title} />
         </FlexElement>
         <FlexElement>
-          <span className="label">{t('codeEditor.languageSelect')}</span>
+          <span className="label">{t("codeEditor.languageSelect")}</span>
           <StyledSelect onChange={handleChangeLanguage} value={codeContent.format}>
             {languageOptions.map((item: ICodeLangugeOption) => (
               <option key={`${item.title}`} value={item.format}>
@@ -126,18 +126,18 @@ const CodeBlockEditor = ({ onSave, onAbort, highlight, content = null }: Props) 
         </FlexElement>
         <FlexElement
           css={{
-            display: 'flex',
+            display: "flex",
             gap: spacing.xxsmall,
-            'align-items': 'flex-end',
-            'justify-content': 'flex-end',
-            'margin-bottom': '1px',
+            "align-items": "flex-end",
+            "justify-content": "flex-end",
+            "margin-bottom": "1px",
           }}
         >
           <ButtonV2 onClick={save}>
-            <span>{t('codeEditor.save')}</span>
+            <span>{t("codeEditor.save")}</span>
           </ButtonV2>
           <ButtonV2 variant="outline" onClick={abort}>
-            <span>{t('codeEditor.abort')}</span>
+            <span>{t("codeEditor.abort")}</span>
           </ButtonV2>
         </FlexElement>
       </FlexContainer>

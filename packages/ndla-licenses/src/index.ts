@@ -11,14 +11,26 @@ export {
   contributorGroups,
   mkContributorString,
   getGroupedContributorDescriptionList,
-} from './contributorTypes';
+} from "./contributorTypes";
 
-export { resourceTypes, getResourceTypeNamespace, metaTypes } from './CCRel';
-export type { MetaType } from './CCRel';
+export { resourceTypes, getResourceTypeNamespace, metaTypes } from "./CCRel";
+export type { MetaType } from "./CCRel";
 
-export { BY, SA, NA, NC, ND, PD, CC0, CC, COPYRIGHTED, getLicenseRightByAbbreviation } from './licenseRights';
+export {
+  BY,
+  SA,
+  NA,
+  NC,
+  ND,
+  PD,
+  CC0,
+  CC,
+  COPYRIGHTED,
+  licenseRights,
+  getLicenseRightByAbbreviation,
+} from "./licenseRights";
 
-export { getLicenseByAbbreviation, getLicenseByNBTitle, isCreativeCommonsLicense } from './licenses';
+export { getLicenseByAbbreviation, getLicenseByNBTitle, isCreativeCommonsLicense, ALL_ABBREVIATIONS } from "./licenses";
 
 export {
   getCopyString,
@@ -27,4 +39,4 @@ export {
   podcastSeriesApa7CopyString,
   podcastEpisodeApa7CopyString,
   webpageReferenceApa7CopyString,
-} from './getCopyString';
+} from "./getCopyString";

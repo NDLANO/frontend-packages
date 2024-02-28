@@ -1,7 +1,15 @@
-import { FormEvent, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { spacing, mq, breakpoints } from '@ndla/core';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { FormEvent, ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing, stackOrder } from "@ndla/core";
 
 interface Props {
   children: ReactNode;
@@ -14,16 +22,10 @@ type StyledProps = {
 };
 
 const hasFocusStyles = css`
-  .c-search-field__search-result {
-    left: 0px;
-    @supports (-webkit-overflow-scrolling: touch) {
-      padding-bottom: 300px;
-    }
-  }
   display: flex;
   align-self: flex-start;
   align-items: center;
-  z-index: 9001;
+  z-index: ${stackOrder.modal};
   ${mq.range({ until: breakpoints.tablet })} {
     position: fixed;
     display: block;
@@ -31,10 +33,7 @@ const hasFocusStyles = css`
     left: 0;
     right: 0;
     padding: ${spacing.small};
-    z-index: 9001;
-    .c-search-field__search-result {
-      width: 100vw;
-    }
+    z-index: ${stackOrder.modal};
   }
 `;
 

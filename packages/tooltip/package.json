@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tooltip",
-  "version": "5.0.1",
+  "version": "6.0.19",
   "description": "Tooltip component from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,16 +26,14 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^4.2.0",
-    "@ndla/icons": "^4.0.10",
-    "@radix-ui/react-popover": "^1.0.7",
-    "@radix-ui/react-tooltip": "^1.0.7",
-    "html-react-parser": "^4.2.2"
+    "@ndla/core": "^4.4.2",
+    "@radix-ui/react-tooltip": "^1.0.7"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
     "react-i18next": "^13.3.0"
   },
   "publishConfig": {

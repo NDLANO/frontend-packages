@@ -6,10 +6,14 @@
  *
  */
 
-import { Table } from '@ndla/ui';
-import { attributesToProps, domToReact } from 'html-react-parser';
-import { PluginType } from './types';
-export const tablePlugin: PluginType = (node, opts) => {
+import { attributesToProps, domToReact } from "html-react-parser";
+import { Table } from "@ndla/ui";
+import { PluginType } from "./types";
+export const tablePlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
-  return <Table {...props}>{domToReact(node.children, opts)}</Table>;
+  return (
+    <Table {...props} lang={opts.articleLanguage}>
+      {domToReact(node.children, converterOpts)}
+    </Table>
+  );
 };

@@ -6,7 +6,7 @@
  *
  */
 
-import { IConcept, IConceptSummary } from '@ndla/types-backend/concept-api';
+import { IConcept, IConceptSummary } from "@ndla/types-backend/concept-api";
 import {
   AudioEmbedData,
   AudioMetaData,
@@ -15,17 +15,19 @@ import {
   IframeEmbedData,
   IframeMetaData,
   MetaData,
-} from '.';
-import { OembedEmbedData, OembedMetaData } from './externalTypes';
-import { H5pEmbedData, H5pMetaData } from './h5pTypes';
-import { ImageEmbedData, ImageMetaData } from './imageTypes';
+} from ".";
+import { OembedEmbedData, OembedMetaData } from "./externalTypes";
+import { H5pEmbedData, H5pMetaData } from "./h5pTypes";
+import { ImageEmbedData, ImageMetaData } from "./imageTypes";
 
 export interface ConceptEmbedData {
-  resource: 'concept';
+  resource: "concept";
   contentId: string;
-  type: 'block' | 'inline' | 'notion';
+  type: "block" | "inline" | "notion";
   linkText: string;
   pageUrl?: string;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 export type ConceptVisualElement =
@@ -51,7 +53,7 @@ export interface ConceptData {
 export type ConceptMetaData = MetaData<ConceptEmbedData, ConceptData>;
 
 export type ConceptListEmbedData = {
-  resource: 'concept-list';
+  resource: "concept-list";
   tag: string;
   title: string;
   subjectId: string;

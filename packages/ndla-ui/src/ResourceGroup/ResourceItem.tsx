@@ -6,16 +6,16 @@
  *
  */
 
-import { CSSProperties, ReactNode, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
-import SafeLink from '@ndla/safelink';
-import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
-import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { Resource } from '../types';
-import ContentTypeBadge from '../ContentTypeBadge';
-import * as contentTypes from '../model/ContentType';
+import { CSSProperties, ReactNode, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { Additional, Core, HumanMaleBoard } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
+import ContentTypeBadge from "../ContentTypeBadge";
+import * as contentTypes from "../model/ContentType";
+import { Resource } from "../types";
 
 const listElementActiveColor = (contentType?: string) => {
   switch (contentType) {
@@ -34,7 +34,7 @@ const listElementActiveColor = (contentType?: string) => {
     default:
       break;
   }
-  return 'none';
+  return "none";
 };
 
 const fadeInAdditionalsKeyframe = keyframes`
@@ -67,7 +67,7 @@ const ListElement = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: ${spacing.small};
-  &[data-additional='true'] {
+  &[data-additional="true"] {
     border-style: dashed;
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
@@ -75,12 +75,14 @@ const ListElement = styled.li`
   }
 
   * {
-    transition: height ease-out 0.2s, width ease-out 0.2s;
+    transition:
+      height ease-out 0.2s,
+      width ease-out 0.2s;
   }
-  &[data-active='true'] {
+  &[data-active="true"] {
     &:before {
       ${mq.range({ from: breakpoints.tablet })} {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         width: ${spacing.small};
@@ -97,21 +99,51 @@ const ListElement = styled.li`
 `;
 
 const ResourceLink = styled(SafeLink)`
+  display: flex;
+  width: 100%;
+  align-items: center;
   font-weight: ${fonts.weight.semibold};
   box-shadow: none;
-  text-decoration: underline;
-  text-underline-offset: 5px;
+  &[data-active="false"] {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
   color: ${colors.brand.dark};
-  ${fonts.sizes('16px', '26px')};
+  ${fonts.sizes("16px", "26px")};
   ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('18px', '26px')};
+    ${fonts.sizes("18px", "26px")};
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('20px', '26px')};
+    ${fonts.sizes("20px", "26px")};
   }
   &:hover {
     text-decoration: none;
+    [data-badge-wrapper="true"] {
+      [data-badge] {
+        width: ${spacing.mediumlarge};
+        height: ${spacing.mediumlarge};
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+        [data-type="subject-material"],
+        [data-type="learning-path"],
+        [data-type="source-material"],
+        [data-type="external-learning-resources"] {
+          svg {
+            width: ${spacing.medium};
+            height: ${spacing.medium};
+          }
+        }
+      }
+    }
   }
+`;
+
+const InlineContainer = styled.div`
+  display: inline;
+  width: 100%;
 `;
 
 const ContentBadgeWrapper = styled.div`
@@ -141,44 +173,17 @@ const TypeWrapper = styled.div`
 
 const ContentTypeName = styled.span`
   font-family: ${fonts.sans};
-  ${fonts.sizes('14px', '18px')};
+  ${fonts.sizes("14px", "18px")};
   font-weight: ${fonts.weight.semibold};
   color: ${colors.text.light};
   text-align: right;
 `;
 
-const InlineContainer = styled.div`
-  display: inline;
-`;
-
-const ResourceWrapper = styled.div`
-  display: flex;
-  gap: ${spacing.xsmall};
-  align-items: center;
-  :hover {
-    .c-content-type-badge {
-      width: 38px;
-      height: 38px;
-
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-      &.c-content-type-badge--subject-material,
-      &.c-content-type-badge--learning-path,
-      &.c-content-type-badge--source-material,
-      &.c-content-type-badge--external-learning-resources {
-        svg {
-          width: 26px;
-          height: 26px;
-        }
-      }
-    }
-  }
-`;
-
 const CurrentSmall = styled.small`
   margin-left: ${spacing.xsmall};
+  text-decoration: none;
+  color: ${colors.text.primary};
+  font-weight: ${fonts.weight.normal};
 `;
 
 interface Props {
@@ -188,17 +193,14 @@ interface Props {
   contentTypeDescription?: string;
   extraBottomMargin?: boolean;
   showAdditionalResources?: boolean;
-  access?: 'teacher';
+  language?: string;
+  access?: "teacher";
   heartButton?: (path: string) => ReactNode;
 }
 
 const IconWrapper = styled.div`
   display: flex;
   flex-grow: 1;
-  svg {
-    width: 26px;
-    height: 26px;
-  }
 `;
 
 const ResourceItem = ({
@@ -212,6 +214,7 @@ const ResourceItem = ({
   additional,
   showAdditionalResources,
   access,
+  language,
   heartButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
@@ -222,32 +225,39 @@ const ResourceItem = ({
   const hidden = additional ? !showAdditionalResources : false;
   const listElementVars = useMemo(() => {
     if (!contentType) return {};
-    return { '--contentTypeBg': listElementActiveColor(contentType) } as unknown as CSSProperties;
+    return {
+      "--contentTypeBg": listElementActiveColor(contentType),
+    } as unknown as CSSProperties;
   }, [contentType]);
 
   return (
     <ListElement
-      aria-current={active ? 'page' : undefined}
+      aria-current={active ? "page" : undefined}
       hidden={hidden && !active}
       data-active={active}
       data-additional={additional}
       style={listElementVars}
     >
-      <ResourceWrapper>
-        <ContentBadgeWrapper>
-          <ContentTypeBadge type={contentType ?? ''} background border={false} />
+      <ResourceLink
+        to={path}
+        lang={language === "nb" ? "no" : language}
+        aria-current={active ? "page" : undefined}
+        aria-describedby={describedBy}
+        disabled={active}
+        data-active={active}
+      >
+        <ContentBadgeWrapper data-badge-wrapper={!active}>
+          <ContentTypeBadge type={contentType ?? ""} background border={false} />
         </ContentBadgeWrapper>
         <InlineContainer>
-          <ResourceLink to={path} aria-current={active ? 'page' : undefined} aria-describedby={describedBy}>
-            {name}
-          </ResourceLink>
-          {active ? <CurrentSmall>{t('resource.youAreHere')}</CurrentSmall> : undefined}
+          {name}
+          {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
         </InlineContainer>
-      </ResourceWrapper>
+      </ResourceLink>
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
-        {access && access === 'teacher' && (
-          <IconWrapper aria-label={t('article.access.onlyTeacher')} title={t('article.access.onlyTeacher')}>
+        {access && access === "teacher" && (
+          <IconWrapper aria-label={t("article.access.onlyTeacher")} title={t("article.access.onlyTeacher")}>
             <HumanMaleBoard id={accessId} />
           </IconWrapper>
         )}
@@ -255,12 +265,12 @@ const ResourceItem = ({
           <>
             {additional && (
               <IconWrapper id={additionalId} aria-label={contentTypeDescription} title={contentTypeDescription}>
-                <Additional />
+                <Additional color={colors.brand.dark} size="normal" />
               </IconWrapper>
             )}
             {!additional && (
               <IconWrapper id={coreId} aria-label={contentTypeDescription} title={contentTypeDescription}>
-                <Core />
+                <Core color={colors.brand.primary} size="normal" />
               </IconWrapper>
             )}
           </>

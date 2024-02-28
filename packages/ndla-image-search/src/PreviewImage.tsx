@@ -6,15 +6,17 @@
  *
  */
 
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ButtonV2 } from '@ndla/button';
-import { uuid } from '@ndla/util';
-import { CheckboxItem } from '@ndla/forms';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing } from "@ndla/core";
+import { CheckboxItem, Label } from "@ndla/forms";
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { uuid } from "@ndla/util";
 
-import { getSrcSets } from './util/imageUtil';
-import ImageMeta from './ImageMeta';
+import ImageMeta from "./ImageMeta";
+import { getSrcSets } from "./util/imageUtil";
 
 interface Props {
   image: IImageMetaInformationV3;
@@ -23,14 +25,21 @@ interface Props {
   showCheckbox: boolean;
   checkboxLabel?: string;
 }
+
+const CheckboxWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+  align-items: center;
+`;
+
 const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, checkboxLabel }: Props) => {
   const { t } = useTranslation();
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
   const tags = image.tags.tags ?? [];
-  const title = image.title.title ?? '';
-  const altText = image.alttext.alttext ?? '';
-  const caption = image.caption.caption ?? '';
+  const title = image.title.title ?? "";
+  const altText = image.alttext.alttext ?? "";
+  const caption = image.caption.caption ?? "";
   return (
     <div className="image-preview">
       <div className="image">
@@ -47,21 +56,21 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
         <h2 className="title">{title}</h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
           <div className="copyright-author">
-            <span className="text">{image.copyright.creators.map((creator) => creator.name).join(', ')}</span>
+            <span className="text">{image.copyright.creators.map((creator) => creator.name).join(", ")}</span>
           </div>
         ) : null}
         <div className="info">
           <span className="text">{image.copyright.license.description}</span>
         </div>
         <div className="info">
-          <span className="text">{`${t('image.caption')}: ${caption}`}</span>
+          <span className="text">{`${t("image.caption")}: ${caption}`}</span>
         </div>
         <div className="info">
-          <span className="text">{`${t('image.altText')}: ${altText}`}</span>
+          <span className="text">{`${t("image.altText")}: ${altText}`}</span>
         </div>
         <div className="info">
-          <span className="text">{`${t('image.modelReleased.label')}: ${t(
-            'image.modelReleased.' + image.modelRelease,
+          <span className="text">{`${t("image.modelReleased.label")}: ${t(
+            "image.modelReleased." + image.modelRelease,
           )}`}</span>
         </div>
         <ImageMeta
@@ -78,13 +87,16 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
           {useImageTitle}
         </ButtonV2>
         {showCheckbox && (
-          <div>
+          <CheckboxWrapper>
             <CheckboxItem
-              label={checkboxLabel}
+              id="saveAsMeta"
               checked={saveAsMetaImage}
-              onChange={() => setSaveAsMetaImage((prev) => !prev)}
+              onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}
             />
-          </div>
+            <Label htmlFor="saveAsMeta" textStyle="label-small" margin="none">
+              {checkboxLabel}
+            </Label>
+          </CheckboxWrapper>
         )}
       </div>
       <div className="clear" />

@@ -1,16 +1,23 @@
 #!/usr/bin/env node
+/**
+ * Copyright (c) 2021-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
 /**
  * Forked/Inspired by: https://github.com/kentcdodds/glamorous-website/blob/master/other/now-travis
  */
 
-const { Octokit } = require('octokit');
-const spawn = require('cross-spawn-promise');
-const normalizeUrl = require('normalize-url');
-const urlRegex = require('url-regex-safe');
+import { inspect } from "util";
+import spawn from "cross-spawn-promise";
+import normalizeUrl from "normalize-url";
+import urlRegex from "url-regex-safe";
 
 if (!process.env.CI || !process.env.GITHUB_ACTIONS) {
-  throw new Error('Could not detect Github Actions CI environment');
+  throw new Error("Could not detect Github Actions CI environment");
 }
 
 const {
@@ -23,33 +30,32 @@ const {
   GITHUB_RUN_ID,
   GITHUB_SERVER_URL,
   GITHUB_SHA,
+  VERCEL_TOKEN: vercelToken,
+  GH_TOKEN: githubToken,
 } = process.env;
-const { VERCEL_TOKEN: vercelToken, GH_TOKEN: githubToken } = process.env;
-const octokit = new Octokit({ auth: githubToken });
 const providedArgs = process.argv.slice(2);
 
 function isFork() {
   if (!GH_PR_REPO) {
     return false;
   }
-  const [prOwner] = GH_PR_REPO.split('/');
-  const [owner] = GITHUB_REPOSITORY.split('/');
+  const [prOwner] = GH_PR_REPO.split("/");
+  const [owner] = GITHUB_REPOSITORY.split("/");
 
   return owner !== prOwner;
 }
 
 function getUrl(content) {
-  const urls = content.match(urlRegex({ re2: false, strict: true })) || [];
+  const urls = content.match(urlRegex()) || [];
 
-  return urls.map((url) => normalizeUrl(url.trim().replace(/\.+$/, '')))[0];
+  return urls.map((url) => normalizeUrl(url.trim().replace(/\.+$/, "")))[0];
 }
 
 function logError(message) {
   return function logIfError(error) {
     if (error) {
-      const util = require('util');
-      console.log(util.inspect(message, false, null, true));
-      console.log(util.inspect(error, false, null, true));
+      console.log(inspect(message, false, null, true));
+      console.log(inspect(error, false, null, true));
       // console.log(message, error);
     }
   };
@@ -57,13 +63,13 @@ function logError(message) {
 
 function safeify(s, safed = []) {
   if (safed.indexOf(s) !== -1) {
-    return 'CIRCULAR';
+    return "CIRCULAR";
   }
   safed.push(s);
-  if (typeof s === 'string') {
-    return s.split(vercelToken).join('VERCEL_TOKEN').split(githubToken).join('GITHUB_TOKEN');
+  if (typeof s === "string") {
+    return s.split(vercelToken).join("VERCEL_TOKEN").split(githubToken).join("GITHUB_TOKEN");
   }
-  if (typeof s === 'object' && s !== null) {
+  if (typeof s === "object" && s !== null) {
     return Object.keys(s).reduce((acc, k) => {
       acc[k] = safeify(s, safed);
       return acc;
@@ -83,32 +89,32 @@ function safeError(...args) {
 }
 
 async function updateStatus(sha, options) {
-  const { description, target_url: url } = options;
-  const [owner, repo] = GITHUB_REPOSITORY.split('/');
-  console.log(`${description}: ${url}`);
-  await octokit.rest.repos
-    .createCommitStatus({
-      sha,
-      owner,
-      repo,
-      target_url: url,
-      description,
-      state: options.state,
-    })
-    .catch(logError('setting complete status'));
+  const { description, target_url, state } = options;
+  const [owner, repo] = GITHUB_REPOSITORY.split("/");
+  console.log(`${description}: ${target_url}`);
+
+  await fetch(`https://api.github.com/repos/${owner}/${repo}/statuses/${sha}`, {
+    method: "POST",
+    body: JSON.stringify({ state, target_url, description }),
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${githubToken}`,
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  }).catch(logError("setting complete status"));
 }
 
 function onError(sha, err) {
   safeError(err);
   updateStatus(sha, {
-    state: 'error',
+    state: "error",
     description: `▲ Vercel deployment failed. See github-actions logs for details.`,
   });
 }
 
 function getAliasUrl() {
-  const repoName = GITHUB_REPOSITORY.split('/')[1];
-  if (GH_PR_NUMBER === '') {
+  const repoName = GITHUB_REPOSITORY.split("/")[1];
+  if (GH_PR_NUMBER === "") {
     return `${repoName}-master.ndla.sh`;
   }
   return `${repoName}-pr-${GH_PR_NUMBER}.ndla.sh`;
@@ -116,10 +122,10 @@ function getAliasUrl() {
 
 async function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
-  const cliArgs = ['alias', deployUrl, newUrl, '--token', vercelToken];
-  safeLog('spawning shell with command:', `vercel ${cliArgs.join(' ')}`);
+  const cliArgs = ["alias", deployUrl, newUrl, "--token", vercelToken];
+  safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    await spawn('vercel', cliArgs);
+    await spawn("vercel", cliArgs);
   } catch (error) {
     onError(sha, error);
     throw error;
@@ -128,10 +134,10 @@ async function spawnAlias(sha, deployUrl) {
 }
 
 async function spawnDeploy(sha) {
-  const cliArgs = ['--token', vercelToken, '--no-clipboard', '--regions', 'bru1', '--confirm', ...providedArgs];
-  safeLog('spawning shell with command:', `vercel ${cliArgs.join(' ')}`);
+  const cliArgs = ["--token", vercelToken, "--no-clipboard", "--regions", "bru1", "--confirm", ...providedArgs];
+  safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    const result = await spawn('vercel', cliArgs);
+    const result = await spawn("vercel", cliArgs);
     return result.toString();
   } catch (error) {
     onError(sha, error);
@@ -146,17 +152,17 @@ async function deploy(sha) {
   }
 
   if (!githubToken) {
-    throw new Error('Missing required environment variable GH_TOKEN');
+    throw new Error("Missing required environment variable GH_TOKEN");
   }
 
   if (!vercelToken) {
-    throw new Error('Missing required environment variable VERCEL_TOKEN');
+    throw new Error("Missing required environment variable VERCEL_TOKEN");
   }
   let targetUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
 
   updateStatus(sha, {
     target_url: targetUrl,
-    state: 'pending',
+    state: "pending",
     description: `▲ Vercel deployment starting`,
   });
 
@@ -169,7 +175,7 @@ async function deploy(sha) {
 
   updateStatus(sha, {
     target_url: `${targetUrl}`,
-    state: 'pending',
+    state: "pending",
     description: `▲ Aliasing vercel deployment...`,
   });
 
@@ -179,20 +185,20 @@ async function deploy(sha) {
 
   updateStatus(sha, {
     target_url: targetUrl,
-    state: 'success',
+    state: "success",
     description: `▲ Vercel deployment complete`,
   });
 
-  console.log('🏁 All done!');
+  console.log("🏁 All done!");
 }
 
 switch (GITHUB_EVENT_NAME) {
-  case 'pull_request': {
+  case "pull_request": {
     deploy(GH_PR_SHA);
     break;
   }
-  case 'push': {
-    if (GITHUB_REF === 'refs/heads/master') {
+  case "push": {
+    if (GITHUB_REF === "refs/heads/master") {
       deploy(GITHUB_SHA);
     } else {
       console.log(`Skip deploy of commits not updating a PR`);

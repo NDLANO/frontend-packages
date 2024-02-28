@@ -6,8 +6,8 @@
  *
  */
 
-import { HeartButtonType } from '@ndla/ui';
-import { Element, HTMLReactParserOptions } from 'html-react-parser';
+import { Element, HTMLReactParserOptions } from "html-react-parser";
+import { HeartButtonType, RenderContext, CanonicalUrlFuncs } from "@ndla/ui";
 
 export interface DynamicComponents {
   heartButton?: HeartButtonType;
@@ -21,6 +21,8 @@ export interface TransformOptions {
   frontendDomain?: string;
   components?: DynamicComponents;
   articleLanguage?: string;
+  canonicalUrls?: CanonicalUrlFuncs;
+  renderContext?: RenderContext;
 }
 
 export type PluginType = (

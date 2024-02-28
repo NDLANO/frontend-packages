@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { colors, spacing, fonts, typography } from '@ndla/core';
+import { ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, fonts, typography } from "@ndla/core";
 
 interface StyledFieldHeaderWrapperProps {
   wrapperWidth: number;
@@ -22,10 +22,9 @@ const StyledFieldHeaderWrapper = styled.div<StyledFieldHeaderWrapperProps>`
   padding-bottom: ${spacing.xsmall};
   margin-top: ${spacing.normal};
   margin-bottom: ${spacing.small};
-  ${(props) =>
-    css`
-      width: ${props.wrapperWidth}%;
-    `};
+  ${(props) => css`
+    width: ${props.wrapperWidth}%;
+  `};
   > div {
     display: flex;
     flex-grow: 1;

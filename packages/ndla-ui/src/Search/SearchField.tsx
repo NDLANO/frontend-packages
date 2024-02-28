@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2016-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -6,30 +6,78 @@
  *
  */
 
-import { FocusEvent, MouseEvent, RefObject } from 'react';
-import { useTranslation } from 'react-i18next';
-import BEMHelper from 'react-bem-helper';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { Search as SearchIcon } from '@ndla/icons/common';
-import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
+import { FocusEvent, MouseEvent, RefObject } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ButtonV2, IconButtonV2 } from "@ndla/button";
+import { colors, spacing, mq, breakpoints, misc, fonts } from "@ndla/core";
+import { Search as SearchIcon } from "@ndla/icons/common";
 
-import ActiveFilters from './ActiveFilters';
-import LoadingWrapper from './LoadingWrapper';
-
-const classes = new BEMHelper('c-search-field');
+import ActiveFilters from "./ActiveFilters";
+import LoadingWrapper from "./LoadingWrapper";
 
 interface StyledInputProps {
-  frontPageSearch?: boolean;
   hasFilters?: boolean;
 }
+
+const SearchButton = styled(IconButtonV2)`
+  position: absolute;
+  padding: ${spacing.small};
+  ${mq.range({ from: breakpoints.tablet })} {
+    top: 5px;
+    right: 10px;
+  }
+`;
+
+const CloseButton = styled(ButtonV2)`
+  position: absolute;
+  padding: ${spacing.small};
+  right: ${spacing.large};
+  color: ${colors.text.light};
+  text-transform: uppercase;
+  ${fonts.sizes("14px", "16px")};
+`;
+
+const InputWrapper = styled.div`
+  width: 100%;
+  padding: 0 ${spacing.large} 0 ${spacing.normal};
+  display: flex;
+  align-items: center;
+  flex-flow: row-reverse;
+  ${mq.range({ from: breakpoints.tablet })} {
+    position: relative;
+    padding: 0;
+  }
+`;
+
+const FiltersWrapper = styled.div`
+  display: flex;
+  height: ${spacing.large};
+  background: ${colors.white};
+  border-top-left-radius: ${misc.borderRadius};
+  border-bottom-left-radius: ${misc.borderRadius};
+  border: 1px solid ${colors.brand.greyLight};
+  padding-left: ${spacing.small};
+  padding-right: 0;
+  border-right: 0;
+  flex-shrink: 0;
+  align-items: center;
+  ${mq.range({ from: breakpoints.mobileWide, until: breakpoints.desktop })} {
+    padding-right: ${spacing.xsmall};
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 58px;
+    padding-right: ${spacing.small};
+  }
+`;
 
 const StyledInput = styled.input<StyledInputProps>`
   width: 100%;
   height: 48px;
   line-height: 28px;
   border: 1px solid ${colors.brand.greyLight};
-  border-radius: ${(p) => (p.frontPageSearch ? '100px' : misc.borderRadius)};
+  border-radius: ${misc.borderRadius};
   padding-right: ${spacing.large};
   padding-left: ${spacing.normal};
   flex-grow: 1;
@@ -42,7 +90,7 @@ const StyledInput = styled.input<StyledInputProps>`
   ${mq.range({ from: breakpoints.tablet })} {
     height: 58px;
     line-height: 58px;
-    ${fonts.sizes('18px', '24px')};
+    ${fonts.sizes("18px", "24px")};
   }
 
   ${(p) =>
@@ -79,7 +127,6 @@ interface Props {
   onClick?: (event: MouseEvent<HTMLInputElement>) => void;
   loading?: boolean;
   inputRef?: RefObject<HTMLInputElement>;
-  frontPageSearch?: boolean;
 }
 
 const SearchField = ({
@@ -93,7 +140,6 @@ const SearchField = ({
   loading,
   onFilterRemove,
   inputRef,
-  frontPageSearch = false,
 }: Props) => {
   const { t } = useTranslation();
   const handleOnFilterRemove = (value: string, filterName?: string) => {
@@ -102,10 +148,9 @@ const SearchField = ({
     onFocus?.();
   };
   return (
-    <div {...classes('input-wrapper')}>
+    <InputWrapper>
       {loading && <LoadingWrapper value={value} />}
       <StyledInput
-        frontPageSearch={frontPageSearch}
         hasFilters={!!filters?.length}
         ref={inputRef}
         type="search"
@@ -122,33 +167,32 @@ const SearchField = ({
         onClick={onClick}
       />
       {filters && filters.length > 0 && (
-        <div {...classes('filters')}>
+        <FiltersWrapper>
           <ActiveFilters filters={filters} onFilterRemove={handleOnFilterRemove} />
-        </div>
+        </FiltersWrapper>
       )}
-      {value !== '' && (
-        <button
-          {...classes('button', 'close')}
-          type="button"
+      {value !== "" && (
+        <CloseButton
+          variant="stripped"
           onClick={() => {
-            onChange('');
+            onChange("");
             onFocus?.();
             inputRef?.current?.focus();
           }}
         >
-          {t('welcomePage.resetSearch')}
-        </button>
+          {t("welcomePage.resetSearch")}
+        </CloseButton>
       )}
-      <button
-        tabIndex={-1}
-        {...classes('button', 'searchIcon')}
+      <SearchButton
+        variant="stripped"
         type="submit"
         value="Search"
-        aria-label={t('siteNav.search')}
+        aria-label={t("siteNav.search")}
+        title={t("siteNav.search")}
       >
         <SearchIcon />
-      </button>
-    </div>
+      </SearchButton>
+    </InputWrapper>
   );
 };
 

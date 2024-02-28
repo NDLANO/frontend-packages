@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { ButtonV2 } from '@ndla/button';
-import { fonts, spacing, colors } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { fonts, spacing, colors } from "@ndla/core";
 
 const ResultNav = styled.div`
   font-size: 14px;
@@ -29,7 +29,7 @@ const ResultNav = styled.div`
 `;
 
 const NavInfo = styled.div`
-  ${fonts.sizes('16px', '24px')};
+  ${fonts.sizes("16px", "24px")};
   font-weight: 400;
   margin-bottom: ${spacing.small};
 `;
@@ -62,7 +62,7 @@ interface Props extends PaginationType {
   type?: string;
 }
 
-const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '', type }: Props) => {
+const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = "", type }: Props) => {
   const { t } = useTranslation();
   const isMore = toCount < totalCount;
   const progress = Math.ceil((toCount / totalCount) * 100);
@@ -71,7 +71,7 @@ const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '', t
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -79,23 +79,23 @@ const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '', t
     <ResultNav>
       <NavInfo>
         {isMore
-          ? t('searchPage.resultType.showing', {
+          ? t("searchPage.resultType.showing", {
               count: toCount,
               totalCount,
               contentType,
             })
-          : t('searchPage.resultType.showingAll')}
+          : t("searchPage.resultType.showingAll")}
       </NavInfo>
       <ProgressBar>
         <Progress width={progress} />
       </ProgressBar>
       {isMore ? (
         <ButtonV2 className="nav" variant="outline" onClick={onShowMore} aria-describedby={`searchitem-header-${type}`}>
-          {t('searchPage.resultType.showMore')}
+          {t("searchPage.resultType.showMore")}
         </ButtonV2>
       ) : (
         <ButtonV2 className="nav" variant="outline" onClick={onToTopHandler}>
-          {t('searchPage.resultType.toTopOfPage')}
+          {t("searchPage.resultType.toTopOfPage")}
         </ButtonV2>
       )}
     </ResultNav>

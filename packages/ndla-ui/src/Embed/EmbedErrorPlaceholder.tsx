@@ -6,16 +6,16 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { WarningOutline } from '@ndla/icons/common';
-import { colors, spacing } from '@ndla/core';
-import { Figure, FigureType } from '../Figure';
-import { EmbedByline } from '../LicenseByline';
-import { EmbedBylineErrorProps } from '../LicenseByline/EmbedByline';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
+import { WarningOutline } from "@ndla/icons/common";
+import { Figure, FigureType } from "../Figure";
+import { EmbedByline } from "../LicenseByline";
+import { EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
 
 interface Props {
-  type: EmbedBylineErrorProps['type'];
+  type: EmbedBylineErrorProps["type"];
   figureType?: FigureType;
   children?: ReactNode;
 }
@@ -32,7 +32,7 @@ const ErrorPlaceholder = styled.div`
     height: 90%;
     width: 90%;
   }
-  &[data-embed-type='audio'] {
+  &[data-embed-type="audio"] {
     height: 150px;
   }
 `;

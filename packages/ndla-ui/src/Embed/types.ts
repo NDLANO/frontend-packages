@@ -6,7 +6,20 @@
  *
  */
 
-import { ElementType } from 'react';
-import { EmbedMetaData } from '@ndla/types-embed';
+import { ElementType } from "react";
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { EmbedMetaData } from "@ndla/types-embed";
 
-export type HeartButtonType = ElementType<{ embed: Extract<EmbedMetaData, { status: 'success' }> }>;
+export type HeartButtonType = ElementType<{
+  embed: Extract<EmbedMetaData, { status: "success" }>;
+}>;
+
+export type EmbedParameter<T extends EmbedMetaData["resource"]> = Partial<
+  Extract<EmbedMetaData, { status: "success"; resource: T }>
+>;
+
+export type CanonicalUrlFuncs = {
+  image?: (image: IImageMetaInformationV3) => string;
+};
+
+export type RenderContext = "article" | "embed";

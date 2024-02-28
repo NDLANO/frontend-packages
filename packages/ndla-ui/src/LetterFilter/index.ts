@@ -6,6 +6,6 @@
  *
  */
 
-import LetterFilter from './LetterFilter';
+import LetterFilter from "./LetterFilter";
 
 export default LetterFilter;

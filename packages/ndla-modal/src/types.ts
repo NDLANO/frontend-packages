@@ -6,16 +6,16 @@
  *
  */
 
-import { keyframes } from '@emotion/react';
-import { DialogContentProps } from '@radix-ui/react-dialog';
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
+import { keyframes } from "@emotion/react";
+import { DialogContentProps } from "@radix-ui/react-dialog";
 
-export type ModalSize = 'xsmall' | 'small' | 'normal' | 'large' | 'full';
+export type ModalSize = "xsmall" | "small" | "normal" | "large" | "full";
 export type ModalSizeType = ModalSize | { width: ModalSize; height: ModalSize };
-export type ModalPosition = 'top' | 'center' | 'bottom' | 'left' | 'right';
-export type ModalMargin = 'none' | 'small';
+export type ModalPosition = "top" | "center" | "bottom" | "left" | "right";
+export type ModalMargin = "none" | "small";
 
-export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
+export type DrawerPosition = "top" | "bottom" | "left" | "right";
 
 export interface ModalContentProps extends DialogContentProps {
   animation?: ModalAnimation;
@@ -40,7 +40,7 @@ export interface Animation {
 
 export interface DirectionalAnimation extends Partial<Record<ModalPosition, Animation>> {
   default: Animation;
-  type: 'directional';
+  type: "directional";
 }
 
-export type ModalAnimation = 'fade' | 'zoom' | 'subtle' | 'slideIn';
+export type ModalAnimation = "fade" | "zoom" | "subtle" | "slideIn";

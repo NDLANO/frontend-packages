@@ -6,12 +6,13 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { fonts, spacing } from '@ndla/core';
-import { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { fonts, spacing } from "@ndla/core";
 
 export const generateListResets = (counterName: string) => {
-  let styles = '';
+  let styles = "";
   for (let $i = 0; $i < 50; $i++) {
     styles += ` 
       &.ol-reset-${$i} { counter-reset: ${counterName} ${$i - 1}; }  
@@ -21,85 +22,38 @@ export const generateListResets = (counterName: string) => {
   return styles;
 };
 
-const StyledOl = styled.ol`
-  margin-top: 0;
-  margin-left: ${spacing.normal};
-  ${fonts.sizes('18px', '29px')};
-  list-style-type: none;
-  padding-left: ${spacing.medium} !important;
-
-  // Child ordered lists
-  ol {
-    padding-left: ${spacing.medium};
-    margin-left: 0;
-  }
-  // List item
-  li {
-    margin-top: ${spacing.nsmall};
-
-    p {
-      margin-bottom: ${spacing.nsmall} !important;
-    }
-  }
-  counter-reset: level1;
-  ${generateListResets('level1')};
-
-  &[data-type='letters'] {
-    > li {
-      &:before {
-        content: counter(level1, upper-alpha) '.';
-      }
-
-      > ol[data-type='letters'] {
-        > li:before {
-          content: counter(level1, lower-alpha) '.';
-        }
-        ol[data-type='letters'] {
-          > li:before {
-            content: counter(level1, lower-roman) '.';
-          }
-        }
-      }
-    }
-  }
-
+export const LetterCSS = css`
+  padding-left: ${spacing.medium};
   > li {
-    min-height: ${spacing.normal};
     counter-increment: level1;
-    &:before {
-      position: absolute;
-      transform: translateX(-100%);
-      content: counter(level1, decimal) '.';
-      padding-right: ${spacing.nsmall};
-    }
 
-    > ol:not([data-type='letters']) {
-      counter-reset: level2;
-      ${generateListResets('level2')};
+    :before {
+      content: counter(level1, upper-alpha) ".";
+    }
+    > ol[data-type="letters"] {
       > li {
-        padding-left: ${spacing.nsmall};
-        counter-increment: level2;
-        &:before {
-          content: counter(level1, decimal) '.' counter(level2, decimal) '.';
+        :before {
+          content: counter(level1, lower-alpha) ".";
         }
-        > ol:not([data-type='letters']) {
-          counter-reset: level3;
-          ${generateListResets('level3')};
+        > ol[data-type="letters"] {
+          padding-left: 0;
           > li {
-            padding-left: ${spacing.medium};
-            counter-increment: level3;
-            &:before {
-              content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.';
+            padding-left: ${spacing.normal};
+            :before {
+              left: ${spacing.small};
+              position: absolute;
+              content: counter(level1, lower-roman) ".";
+              transform: translateX(-100%);
             }
-            > ol:not([data-type='letters']) {
-              counter-reset: level4;
-              ${generateListResets('level4')};
+            > ol[data-type="letters"] {
+              padding-left: 0;
               > li {
-                padding-left: ${spacing.large};
-                counter-increment: level4;
-                &:before {
-                  content: counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.'
-                    counter(level4, decimal) '.';
+                padding-left: ${spacing.normal};
+                :before {
+                  left: ${spacing.small};
+                  position: absolute;
+                  content: counter(level1, lower-roman) ".";
+                  transform: translateX(-100%);
                 }
               }
             }
@@ -110,8 +64,84 @@ const StyledOl = styled.ol`
   }
 `;
 
+export const NumberCSS = css`
+  padding-left: ${spacing.normal};
+  > li {
+    counter-increment: level1;
+    :before {
+      content: counter(level1, decimal) ".";
+    }
+    > ol:not([data-type="letters"]) {
+      counter-reset: level2;
+      ${generateListResets("level2")};
+      > li {
+        padding-left: ${spacing.nsmall};
+        counter-increment: level2;
+        :before {
+          content: counter(level1, decimal) "." counter(level2, decimal) ".";
+        }
+        > ol:not([data-type="letters"]) {
+          counter-reset: level3;
+          ${generateListResets("level3")};
+          > li {
+            padding-left: ${spacing.medium};
+            counter-increment: level3;
+            :before {
+              content: counter(level1, decimal) "." counter(level2, decimal) "." counter(level3, decimal) ".";
+            }
+            > ol:not([data-type="letters"]) {
+              counter-reset: level4;
+              ${generateListResets("level4")};
+              > li {
+                padding-left: ${spacing.large};
+                counter-increment: level4;
+                :before {
+                  content: counter(level1, decimal) "." counter(level2, decimal) "." counter(level3, decimal) "."
+                    counter(level4, decimal) ".";
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const StyledOl = styled.ol`
+  ${fonts.sizes("18px", "29px")};
+  ${generateListResets("level1")};
+  padding: 0;
+  list-style-type: none;
+  counter-reset: level1;
+
+  margin-left: ${spacing.normal};
+
+  > li {
+    margin-top: ${spacing.nsmall};
+    padding-top: 0;
+    position: relative;
+    ::before {
+      position: absolute;
+      left: -${spacing.normal};
+    }
+    > ol {
+      padding-bottom: 0;
+      margin-left: 0;
+    }
+  }
+
+  &:not([data-type="letters"]) {
+    ${NumberCSS}
+  }
+
+  &[data-type="letters"] {
+    ${LetterCSS}
+  }
+`;
+
 interface Props extends HTMLAttributes<HTMLOListElement> {
-  type?: 'letters';
+  type?: "letters";
   start?: number;
 }
 

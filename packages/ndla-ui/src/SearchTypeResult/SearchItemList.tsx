@@ -6,18 +6,18 @@
  *
  */
 
-import { Fragment } from 'react';
-import { useTranslation } from 'react-i18next';
-import parse from 'html-react-parser';
-import styled from '@emotion/styled';
+import parse from "html-react-parser";
+import { Fragment } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
 
-import { animations, colors, fonts, spacing } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
+import { animations, colors, fonts, spacing } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
 
-import ContentTypeBadge from '../ContentTypeBadge';
-import ItemContexts from './components/ItemContexts';
-import { SearchItemType } from './SearchItem';
-import constants from '../model';
+import ItemContexts from "./components/ItemContexts";
+import { SearchItemType } from "./SearchItem";
+import ContentTypeBadge from "../ContentTypeBadge";
+import constants from "../model";
 const { contentTypes } = constants;
 
 const Container = styled.div`
@@ -59,7 +59,7 @@ const TextWrapper = styled.div`
 const ContentTypeWrapper = styled.div`
   display: flex;
   align-items: center;
-  ${fonts.sizes('12px', '16px')};
+  ${fonts.sizes("12px", "16px")};
   font-weight: ${fonts.weight.semibold};
 `;
 const ContentTypeIconWrapper = styled.div`
@@ -71,7 +71,7 @@ const ItemTitleWrapper = styled.div`
 `;
 
 const ItemTitle = styled.h3`
-  ${fonts.sizes('24px', '28px')};
+  ${fonts.sizes("24px", "28px")};
   color: ${colors.brand.primary};
   font-weight: ${fonts.weight.semibold};
   overflow-wrap: anywhere;
@@ -84,7 +84,7 @@ const ItemTitle = styled.h3`
 `;
 
 const ItemText = styled.div`
-  ${fonts.sizes('16px', '24px')};
+  ${fonts.sizes("16px", "24px")};
   flex: 1 auto;
 `;
 
@@ -132,7 +132,7 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
                 <>
                   {labels.map((label) => (
                     <Fragment key={label}>
-                      {' '}
+                      {" "}
                       <>&#8226;</> {label}
                     </Fragment>
                   ))}

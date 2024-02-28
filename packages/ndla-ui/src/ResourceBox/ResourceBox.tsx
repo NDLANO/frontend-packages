@@ -1,5 +1,4 @@
 /**
- *
  * Copyright (c) 2022-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -7,11 +6,11 @@
  *
  */
 
-import { breakpoints, fonts, mq, colors, spacing } from '@ndla/core';
-import { Launch } from '@ndla/icons/common';
-import { SafeLinkButton } from '@ndla/safelink';
-import styled from '@emotion/styled';
-import Image from '../Image';
+import styled from "@emotion/styled";
+import { breakpoints, fonts, mq, colors, spacing } from "@ndla/core";
+import { Launch } from "@ndla/icons/common";
+import { SafeLinkButton } from "@ndla/safelink";
+import Image from "../Image";
 
 const ResourceBoxContainer = styled.div`
   display: flex;

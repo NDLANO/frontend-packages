@@ -6,17 +6,17 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { CSSProperties, HTMLAttributes, ReactNode, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { IconButtonV2 } from '@ndla/button';
-import SafeLink, { SafeLinkButton } from '@ndla/safelink';
-import { HashTag } from '@ndla/icons/common';
-import { css } from '@emotion/react';
-import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from '@ndla/dropdown-menu';
-import resourceTypeColor from '../utils/resourceTypeColor';
-import { resourceEmbedTypeMapping } from '../model/ContentType';
+import { CSSProperties, HTMLAttributes, ReactNode, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
+import { colors, fonts, spacing, stackOrder } from "@ndla/core";
+import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from "@ndla/dropdown-menu";
+import { HashTag } from "@ndla/icons/common";
+import SafeLink, { SafeLinkButton } from "@ndla/safelink";
+import { resourceEmbedTypeMapping } from "../model/ContentType";
+import resourceTypeColor from "../utils/resourceTypeColor";
 
 export interface ResourceImageProps {
   alt: string;
@@ -28,9 +28,9 @@ export const ResourceTitleLink = styled(SafeLink)`
   color: ${colors.brand.primary};
   flex: 1;
   :after {
-    content: '';
+    content: "";
     position: absolute;
-    z-index: 1;
+    z-index: ${stackOrder.offsetSingle};
     top: 0;
     right: 0;
     bottom: 0;
@@ -46,7 +46,6 @@ export const resourceHeadingStyle = css`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: ${fonts.weight.bold};
   // Unfortunate css needed for multi-line text overflow ellipsis.
   line-height: 1;
   display: -webkit-box;
@@ -54,13 +53,11 @@ export const resourceHeadingStyle = css`
   line-clamp: 1;
   -webkit-box-orient: vertical;
   grid-area: resourceTitle;
-  ${fonts.sizes('16px', '20px')};
 `;
 
 const StyledTagList = styled.ul`
   list-style: none;
   display: flex;
-  margin: 0;
   margin-left: ${spacing.small};
   padding: 2px;
   gap: ${spacing.xsmall};
@@ -71,7 +68,7 @@ const StyledTagList = styled.ul`
 `;
 
 const StyledTagListElement = styled.li`
-  margin: 0;
+  padding: 0;
   ${fonts.sizes(14)};
 `;
 
@@ -115,7 +112,7 @@ const StyledResourceListElement = styled.li`
 const TagCounterWrapper = styled.span`
   display: flex;
   font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes('14px', '14px')};
+  ${fonts.sizes("14px", "14px")};
 `;
 
 interface ContentIconProps extends HTMLAttributes<HTMLSpanElement> {
@@ -134,7 +131,10 @@ const StyledContentIconWrapper = styled.span`
 
 export const ContentIconWrapper = ({ contentType, children, ...props }: ContentIconProps) => {
   const contentIconWrapperVars = useMemo(
-    () => ({ '--content-background-color': resourceTypeColor(contentType) } as unknown as CSSProperties),
+    () =>
+      ({
+        "--content-background-color": resourceTypeColor(contentType),
+      }) as unknown as CSSProperties,
     [contentType],
   );
   return (
@@ -158,10 +158,10 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
   const { t } = useTranslation();
   if (!tags) return null;
   return (
-    <StyledTagList aria-label={t('myNdla.tagList')}>
+    <StyledTagList aria-label={t("myNdla.tagList")}>
       {tags.map((tag, i) => (
         <StyledTagListElement key={`tag-${i}`}>
-          <StyledSafeLink to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`}>
+          <StyledSafeLink to={`${tagLinkPrefix ? tagLinkPrefix : ""}/${encodeURIComponent(tag)}`}>
             <HashTag />
             {tag}
           </StyledSafeLink>
@@ -191,7 +191,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
               size="xsmall"
               variant="ghost"
               colorTheme="light"
-              aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
+              aria-label={t("myNdla.moreTags", { count: remainingTags.length })}
             >
               {<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
             </StyledTrigger>
@@ -200,7 +200,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
             {remainingTags.map((tag, i) => (
               <DropdownItem key={`tag-${i}`}>
                 <SafeLinkButton
-                  to={`${tagLinkPrefix ?? ''}/${encodeURIComponent(tag)}`}
+                  to={`${tagLinkPrefix ?? ""}/${encodeURIComponent(tag)}`}
                   variant="ghost"
                   colorTheme="light"
                 >
@@ -224,7 +224,7 @@ export const ResourceTypeList = ({ resourceTypes }: ResourceTypeListProps) => {
   const { t } = useTranslation();
   if (!resourceTypes) return null;
   return (
-    <StyledResourceTypeList aria-label={t('navigation.topics')}>
+    <StyledResourceTypeList aria-label={t("navigation.topics")}>
       {resourceTypes.map((resource, i) => (
         <StyledResourceListElement key={resource.id}>
           {resourceEmbedTypeMapping[resource.id]

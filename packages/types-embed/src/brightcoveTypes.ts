@@ -6,10 +6,10 @@
  *
  */
 
-import { MetaData } from '.';
+import { MetaData } from ".";
 
 export type BrightcoveEmbedData = {
-  resource: 'brightcove';
+  resource: "brightcove";
   videoid: string;
   caption: string;
   url?: string;
@@ -51,6 +51,9 @@ export interface BrightcoveApiType {
   published_at?: string | null;
   images?: {
     poster?: {
+      src?: string;
+    };
+    thumbnail?: {
       src?: string;
     };
   };

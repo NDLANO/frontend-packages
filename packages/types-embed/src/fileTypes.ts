@@ -6,12 +6,12 @@
  *
  */
 
-import { MetaData } from '.';
+import { MetaData } from ".";
 
 export interface FileEmbedData {
-  resource: 'file';
+  resource: "file";
   path: string;
-  display?: 'block' | 'inline';
+  display?: "block" | "inline";
   title: string;
   type: string;
   url: string;

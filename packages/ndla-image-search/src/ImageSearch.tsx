@@ -6,15 +6,15 @@
  *
  */
 
-import { ChangeEvent, Component, ReactNode, KeyboardEvent } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
-import Pager from '@ndla/pager';
-import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from '@ndla/types-backend/image-api';
-import { Input } from '@ndla/forms';
-import { Search as SearchIcon } from '@ndla/icons/common';
-import ImageSearchResult from './ImageSearchResult';
+import { ChangeEvent, Component, ReactNode, KeyboardEvent } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { fonts, colors, spacing, mq, breakpoints } from "@ndla/core";
+import { InputContainer, InputV3 } from "@ndla/forms";
+import { Search as SearchIcon } from "@ndla/icons/common";
+import Pager from "@ndla/pager";
+import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
+import ImageSearchResult from "./ImageSearchResult";
 
 const ImageSearchWrapper = styled.div`
   .text {
@@ -59,7 +59,7 @@ const ImageSearchWrapper = styled.div`
 
     .list-item-title {
       margin: ${spacing.xsmall} 0;
-      ${fonts.sizes('14px', 1.2)};
+      ${fonts.sizes("14px", 1.2)};
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -91,7 +91,7 @@ const ImageSearchWrapper = styled.div`
     top: 190px;
     left: 50%;
     border: solid transparent;
-    content: ' ';
+    content: " ";
     height: 0;
     width: 0;
     position: absolute;
@@ -138,7 +138,7 @@ const ImageSearchWrapper = styled.div`
     }
 
     .info {
-      ${fonts.sizes('16px', 1.3)}
+      ${fonts.sizes("16px", 1.3)}
     }
 
     .image img {
@@ -184,7 +184,7 @@ const ImageSearchWrapper = styled.div`
       margin-right: ${spacing.xsmall};
       margin-bottom: ${spacing.xsmall};
       display: inline-block;
-      ${fonts.sizes('16px', 1.3)}
+      ${fonts.sizes("16px", 1.3)}
     }
 
     .tags > .tag_item:hover {
@@ -374,31 +374,31 @@ class ImageSearch extends Component<Props, State> {
 
     return (
       <ImageSearchWrapper>
-        <Input
-          placeholder={searchPlaceholder}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus
-          iconRight={
-            <button
-              css={searchIconCss}
-              aria-label={searchButtonTitle}
-              type="button"
-              onClick={() => {
+        <InputContainer>
+          <InputV3
+            placeholder={searchPlaceholder}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+            value={queryString}
+            onChange={(evt: ChangeEvent<HTMLInputElement>) => this.setState({ queryString: evt.target.value })}
+            onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {
+              if (evt.key === "Enter") {
+                evt.preventDefault();
                 this.searchImages({ query: queryString, page: 1 });
-              }}
-            >
-              <SearchIcon />
-            </button>
-          }
-          value={queryString}
-          onChange={(evt: ChangeEvent<HTMLInputElement>) => this.setState({ queryString: evt.target.value })}
-          onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {
-            if (evt.key === 'Enter') {
-              evt.preventDefault();
+              }
+            }}
+          />
+          <button
+            css={searchIconCss}
+            aria-label={searchButtonTitle}
+            type="button"
+            onClick={() => {
               this.searchImages({ query: queryString, page: 1 });
-            }
-          }}
-        />
+            }}
+          >
+            <SearchIcon />
+          </button>
+        </InputContainer>
         {noResultsFound && this.props.noResults}
         <div className="list">
           {images.map((image) => (

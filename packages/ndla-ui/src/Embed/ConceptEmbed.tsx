@@ -6,26 +6,26 @@
  *
  */
 
-import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
-import parse from 'html-react-parser';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { isMobile } from 'react-device-detect';
-import { Root, Trigger, Content, Anchor, Close, Portal } from '@radix-ui/react-popover';
-import { IconButtonV2 } from '@ndla/button';
-import { Cross } from '@ndla/icons/action';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { ConceptMetaData } from '@ndla/types-embed';
-import Tooltip from '@ndla/tooltip';
-import { COPYRIGHTED } from '@ndla/licenses';
-import { Notion as UINotion } from '../Notion';
-import { Figure } from '../Figure';
-import { NotionImage } from '../Notion/NotionImage';
-import { ConceptNotionV2, ConceptNotionData, ConceptType } from './conceptComponents';
-import { EmbedByline } from '../LicenseByline';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
-import { Gloss } from '../Gloss';
+import parse from "html-react-parser";
+import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { Root, Trigger, Content, Anchor, Close, Portal } from "@radix-ui/react-popover";
+import { IconButtonV2 } from "@ndla/button";
+import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
+import { COPYRIGHTED } from "@ndla/licenses";
+import Tooltip from "@ndla/tooltip";
+import { ConceptMetaData } from "@ndla/types-embed";
+import { ConceptNotionV2, ConceptNotionData, ConceptType } from "./conceptComponents";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { HeartButtonType } from "./types";
+import { Figure } from "../Figure";
+import { Gloss } from "../Gloss";
+import { EmbedByline } from "../LicenseByline";
+import { Notion as UINotion } from "../Notion";
+import { NotionImage } from "../Notion/NotionImage";
 
 interface PopoverPosition {
   top?: number;
@@ -37,6 +37,7 @@ const PopoverWrapper = styled.div<PopoverPosition>`
     left: 50% !important;
     transform: translateX(-50%) !important;
     top: ${({ top }) => top}px !important;
+    z-index: ${stackOrder.popover} !important;
   }
 
   ${mq.range({ until: breakpoints.tablet })} {
@@ -49,7 +50,7 @@ const PopoverWrapper = styled.div<PopoverPosition>`
       top: 0 !important;
       left: 0 !important;
       width: 100vw;
-      z-index: 100 !important;
+      z-index: ${stackOrder.popover} !important;
       height: 100vh;
       min-width: 100vw !important;
     }
@@ -71,6 +72,7 @@ interface Props {
   embed: ConceptMetaData;
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
+  lang?: string;
 }
 
 const StyledButton = styled.button`
@@ -92,14 +94,14 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang }: Props) => {
   const parsedContent = useMemo(() => {
-    if (embed.status === 'error' || !embed.data.concept.content) return undefined;
+    if (embed.status === "error" || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.content);
   }, [embed]);
-  if (embed.status === 'error' && embed.embedData.type === 'inline') {
+  if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;
-  } else if (embed.status === 'error') {
+  } else if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="concept" />;
   }
 
@@ -107,7 +109,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
     data: { concept, visualElement },
   } = embed;
 
-  if (embed.embedData.type === 'block') {
+  if (embed.embedData.type === "block") {
     return (
       <BlockConcept
         fullWidth={fullWidth}
@@ -121,9 +123,12 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
         glossData={concept.glossData}
+        lang={lang}
+        exampleIds={embed.embedData.exampleIds}
+        exampleLangs={embed.embedData.exampleLangs}
       />
     );
-  } else if (embed.embedData.type === 'inline') {
+  } else if (embed.embedData.type === "inline") {
     return (
       <InlineConcept
         title={concept.title}
@@ -137,6 +142,9 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
         glossData={concept.glossData}
+        lang={lang}
+        exampleIds={embed.embedData.exampleIds}
+        exampleLangs={embed.embedData.exampleLangs}
       />
     );
   } else {
@@ -152,6 +160,9 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton }: Pro
         conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
         glossData={concept.glossData}
+        lang={lang}
+        exampleIds={embed.embedData.exampleIds}
+        exampleLangs={embed.embedData.exampleLangs}
       />
     );
   }
@@ -162,6 +173,8 @@ interface InlineConceptProps extends ConceptNotionData {
   heartButton?: HeartButtonType;
   headerButtons?: ReactNode;
   conceptHeartButton?: ReactNode;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 const BaselineIcon = styled.span`
@@ -184,19 +197,12 @@ const NotionButton = styled.button`
   color: ${colors.notion.dark};
   cursor: pointer;
   &:focus,
-  &:hover {
-    background-color: ${colors.notion.dark};
-    color: ${colors.white};
-    outline: none;
-    ${BaselineIcon} {
-      border-color: transparent;
-    }
-  }
-
-  &:active {
+  &:hover,
+  &:active,
+  &[data-open="true"] {
     color: ${colors.notion.dark};
     background-color: ${colors.notion.light};
-    ${BaselineIcon} {
+    [data-baseline-icon] {
       border-color: currentColor;
     }
   }
@@ -216,10 +222,10 @@ const StyledAnchorSpan = styled.span`
 `;
 
 const getModalPosition = (anchor: HTMLElement) => {
-  const article = anchor.closest('.c-article');
+  const article = anchor.closest(".c-article");
   const articlePos = article?.getBoundingClientRect();
   const anchorPos = anchor.getBoundingClientRect();
-  return anchorPos.top - (articlePos?.top || -window.scrollY);
+  return anchorPos.top - (articlePos?.top || -window.scrollY) + 30; // add 30 so that position is under the word
 };
 
 export const InlineConcept = ({
@@ -234,6 +240,9 @@ export const InlineConcept = ({
   glossData,
   conceptType,
   headerButtons,
+  lang,
+  exampleIds,
+  exampleLangs,
 }: InlineConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -257,12 +266,12 @@ export const InlineConcept = ({
         <StyledAnchorSpan />
       </StyledAnchor>
       <Trigger asChild>
-        <NotionButton>
+        <NotionButton data-open={modalPos !== -9999}>
           {linkText}
-          {<BaselineIcon />}
+          {<BaselineIcon data-baseline-icon />}
         </NotionButton>
       </Trigger>
-      <Portal container={(anchorRef.current?.closest('.c-article') as HTMLElement | null) || undefined}>
+      <Portal container={(anchorRef.current?.closest(".c-article") as HTMLElement | null) || undefined}>
         <PopoverWrapper top={modalPos}>
           <Content avoidCollisions={false} side="bottom" asChild>
             <ConceptNotionV2
@@ -275,15 +284,18 @@ export const InlineConcept = ({
               heartButton={heartButton}
               headerButtons={headerButtons}
               conceptHeartButton={conceptHeartButton}
+              lang={lang}
               closeButton={
                 <Close asChild>
-                  <IconButtonV2 aria-label={t('close')} variant="ghost">
+                  <IconButtonV2 aria-label={t("close")} variant="ghost">
                     <Cross />
                   </IconButtonV2>
                 </Close>
               }
               conceptType={conceptType}
               glossData={glossData}
+              exampleIds={exampleIds}
+              exampleLangs={exampleLangs}
             />
           </Content>
         </PopoverWrapper>
@@ -296,6 +308,8 @@ interface ConceptProps extends ConceptNotionData {
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
   conceptHeartButton?: ReactElement;
+  exampleIds?: string;
+  exampleLangs?: string;
 }
 
 export const BlockConcept = ({
@@ -310,13 +324,16 @@ export const BlockConcept = ({
   conceptHeartButton,
   glossData,
   conceptType,
+  lang,
+  exampleIds,
+  exampleLangs,
 }: ConceptProps) => {
   const { t } = useTranslation();
   const anchorRef = useRef<HTMLDivElement>(null);
   const [modalPos, setModalPos] = useState(-9999);
 
   const visualElementType =
-    visualElement?.embedData.resource === 'brightcove' ? 'video' : visualElement?.embedData.resource;
+    visualElement?.embedData.resource === "brightcove" ? "video" : visualElement?.embedData.resource;
 
   const onOpenChange = useCallback((open: boolean) => {
     if (open) {
@@ -333,32 +350,38 @@ export const BlockConcept = ({
   return (
     <Root modal={isMobile} onOpenChange={onOpenChange}>
       <StyledAnchor ref={anchorRef} />
-      <Figure resizeIframe type={fullWidth ? 'full' : 'full-column'}>
-        {conceptType === 'concept' ? (
+      <Figure resizeIframe type={fullWidth ? "full" : "full-column"}>
+        {conceptType === "concept" ? (
           <UINotion
             id=""
             title={title.title}
             text={content}
+            lang={lang}
             visualElement={
-              visualElement?.status === 'success' && (
+              visualElement?.status === "success" && (
                 <>
                   <ImageWrapper>
                     <Tooltip tooltip={t(`searchPage.resultType.${conceptType}`)}>
                       <Trigger asChild>
-                        <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })}>
-                          {visualElement.resource === 'image' ? (
+                        <StyledButton
+                          type="button"
+                          aria-label={t("concept.showDescription", {
+                            title: title,
+                          })}
+                        >
+                          {visualElement.resource === "image" ? (
                             <NotionImage
                               type={visualElementType}
-                              id={''}
+                              id={""}
                               src={visualElement.data.image.imageUrl}
                               alt={visualElement.data.alttext.alttext}
                             />
                           ) : metaImage ? (
                             <NotionImage
                               type={visualElementType}
-                              id={''}
-                              src={metaImage?.url ?? ''}
-                              alt={metaImage?.alt ?? ''}
+                              id={""}
+                              src={metaImage?.url ?? ""}
+                              alt={metaImage?.alt ?? ""}
                             />
                           ) : undefined}
                         </StyledButton>
@@ -367,8 +390,8 @@ export const BlockConcept = ({
                   </ImageWrapper>
                   <Portal
                     container={
-                      typeof document !== 'undefined'
-                        ? (document.querySelector('.c-article') as HTMLElement | null) || undefined
+                      typeof document !== "undefined"
+                        ? (document.querySelector(".c-article") as HTMLElement | null) || undefined
                         : undefined
                     }
                   >
@@ -383,9 +406,10 @@ export const BlockConcept = ({
                           heartButton={heartButton}
                           conceptHeartButton={conceptHeartButton}
                           inPopover
+                          lang={lang}
                           closeButton={
                             <Close asChild>
-                              <IconButtonV2 aria-label={t('close')} variant="ghost">
+                              <IconButtonV2 aria-label={t("close")} variant="ghost">
                                 <Cross />
                               </IconButtonV2>
                             </Close>
@@ -405,13 +429,18 @@ export const BlockConcept = ({
             glossData={glossData}
             title={title}
             audio={
-              visualElement?.status === 'success' && visualElement.resource === 'audio'
-                ? { src: visualElement.data.audioFile.url, title: visualElement.data.title.title }
+              visualElement?.status === "success" && visualElement.resource === "audio"
+                ? {
+                    src: visualElement.data.audioFile.url,
+                    title: visualElement.data.title.title,
+                  }
                 : undefined
             }
+            exampleIds={exampleIds}
+            exampleLangs={exampleLangs}
           />
         )}
-        {copyright && conceptType === 'concept' && (
+        {copyright && conceptType === "concept" && (
           <EmbedByline copyright={copyright} bottomRounded topRounded type={conceptType as ConceptType}>
             {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
           </EmbedByline>

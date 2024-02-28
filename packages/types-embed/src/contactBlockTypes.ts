@@ -6,17 +6,18 @@
  *
  */
 
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { MetaData } from '.';
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetaData } from ".";
 export interface ContactBlockEmbedData {
-  resource: 'contact-block';
+  resource: "contact-block";
   jobTitle: string;
   name: string;
   email: string;
   imageId: string;
   description: string;
-  blobColor?: 'pink' | 'green';
-  blob?: 'pointy' | 'round';
+  alt?: string;
+  blobColor?: "pink" | "green";
+  blob?: "pointy" | "round";
 }
 export interface ContactBlockData {
   image: IImageMetaInformationV3;

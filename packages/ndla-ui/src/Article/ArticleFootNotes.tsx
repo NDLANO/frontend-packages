@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import { FootNote as FootNoteType } from '../types';
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
+import { FootNote as FootNoteType } from "../types";
 
-const citeDetailString = (description: string | undefined) => (description ? `${description}. ` : '');
+const citeDetailString = (description: string | undefined) => (description ? `${description}. ` : "");
 
 type FootNoteProps = {
   footNote: FootNoteType;
@@ -36,13 +36,13 @@ const FootNote = ({ footNote }: FootNoteProps) => (
       <a href={`#ref${footNote.ref}`} target="_self">
         {footNote.ref}
       </a>
-      {`«${footNote.title}». ${footNote.authors.join(' ')}. ${citeDetailString(footNote.edition)}${citeDetailString(
+      {`«${footNote.title}». ${footNote.authors.join(" ")}. ${citeDetailString(footNote.edition)}${citeDetailString(
         footNote.publisher,
       )}${footNote.year}. `}
       {footNote.url ? (
         <a href={footNote.url}>
           {footNote.url}
-          {'.'}
+          {"."}
         </a>
       ) : null}
     </Cite>

@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
-import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle, ModalTrigger, ModalContent } from '@ndla/modal';
-import { mq, breakpoints, fonts, colors } from '@ndla/core';
-import { Explanation, NotionFlip } from '@ndla/icons/common';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, stackOrder } from "@ndla/core";
+import { Explanation, NotionFlip } from "@ndla/icons/common";
+import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle, ModalTrigger, ModalContent } from "@ndla/modal";
 
 const ArticleNotionsContainer = styled.div`
   margin-bottom: 26px;
@@ -37,7 +37,7 @@ const NotionsTrigger = styled.div`
     top: 12rem;
     right: 18px;
     background-color: transparent;
-    z-index: 10;
+    z-index: ${stackOrder.trigger};
   }
 
   svg {
@@ -64,7 +64,7 @@ const NotionsTrigger = styled.div`
   }
 
   span {
-    ${fonts.sizes('16px', '39px')};
+    ${fonts.sizes("16px", "39px")};
     display: block;
     font-family: ${fonts.sans};
     font-weight: ${fonts.weight.semibold};
@@ -115,17 +115,17 @@ export const ArticleNotions = ({ buttonOffsetRight, children }: ArticleNotionsPr
     <ArticleNotionsContainer>
       <Modal>
         <ModalTrigger>
-          <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')} style={{ left: leftOffset }}>
+          <NotionsTrigger role="button" aria-label={t("article.notionsPrompt")} style={{ left: leftOffset }}>
             <NotionFlip />
             <Explanation />
-            <span>{t('article.notionsPrompt')}</span>
+            <span>{t("article.notionsPrompt")}</span>
           </NotionsTrigger>
         </ModalTrigger>
         <ModalContent size="large">
           <StyledModalHeader>
             <ModalHeadingContainer>
               <Explanation />
-              <ModalTitle>{t('article.notionsPrompt')}</ModalTitle>
+              <ModalTitle>{t("article.notionsPrompt")}</ModalTitle>
             </ModalHeadingContainer>
             <ModalCloseButton />
           </StyledModalHeader>

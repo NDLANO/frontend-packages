@@ -6,14 +6,15 @@
  *
  */
 
-import { MetaData, OembedProxyResponse } from '.';
+import { MetaData, OembedProxyResponse } from ".";
 
 export interface H5pEmbedData {
-  resource: 'h5p';
+  resource: "h5p";
   path: string;
   url: string;
   title?: string;
   pageUrl?: string;
+  alt?: string;
 }
 
 export interface H5pLicenseInformation {
@@ -50,11 +51,11 @@ export interface H5pLibraryInfo {
 }
 
 export interface OembedProxyData extends OembedProxyResponse {
-  type: 'proxy';
+  type: "proxy";
 }
 
 export interface H5pPreviewResponse {
-  type: 'preview';
+  type: "preview";
   html?: string;
 }
 

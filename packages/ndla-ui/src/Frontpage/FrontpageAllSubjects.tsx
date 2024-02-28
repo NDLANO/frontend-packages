@@ -1,12 +1,20 @@
-import { Fragment } from 'react';
-import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
-import Tabs from '@ndla/tabs';
-import SafeLink from '@ndla/safelink';
-import { colors, fonts, mq, breakpoints } from '@ndla/core';
-import ContentLoader from '../ContentLoader';
-import { MessageBox } from '../Messages';
-import { ToggleItem } from '../Filter';
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { Fragment } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, fonts, mq, breakpoints } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import Tabs from "@ndla/tabs";
+import ContentLoader from "../ContentLoader";
+import { ToggleItem } from "../Filter";
+import { MessageBox } from "../Messages";
 
 const StyledWrapper = styled.nav`
   margin: 32px 0 0;
@@ -18,15 +26,15 @@ const StyledList = styled.ul`
   padding: 0;
   ${mq.range({ from: breakpoints.tablet })} {
     column-count: 2;
-    column-gap: 20px;
+    gap: 20px;
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     column-count: 3;
-    column-gap: 20px;
+    gap: 20px;
   }
 `;
 const StyledListItem = styled.li`
-  margin-bottom: 0;
+  padding: 0;
   break-inside: avoid;
 `;
 
@@ -36,7 +44,7 @@ const StyledLetterItem = styled.span<{ subjectViewType?: string }>`
   font-weight: ${fonts.weight.bold};
   color: ${colors.brand.primary};
   margin-bottom: 8px;
-  ${(props) => props.subjectViewType === 'checkbox' && `margin-left:37px;`}
+  ${(props) => props.subjectViewType === "checkbox" && `margin-left:37px;`}
 `;
 
 const StyledSpacingElement = styled.span`
@@ -68,7 +76,7 @@ type categoryProps = {
 
 export type subjectsProps = {
   categories: categoryProps[];
-  subjectViewType?: 'link' | 'checkbox';
+  subjectViewType?: "link" | "checkbox";
   onToggleSubject?: (id: string) => void;
   onNavigate?: () => void;
   selectedSubjects?: string[];
@@ -79,10 +87,10 @@ type letterCategories = {
   items: subjectProps[];
 };
 
-const sortAlphabetically = (subjects: subjectProps[], locale: string = 'nb') => {
+const sortAlphabetically = (subjects: subjectProps[], locale: string = "nb") => {
   const subjectsSorted = subjects.sort((a, b) => a.name.localeCompare(b.name, locale));
   const subjectsLetterCategories: letterCategories[] = [];
-  let previousLetter = '';
+  let previousLetter = "";
   let letterItems: subjectProps[] = [];
   subjectsSorted.forEach((subject: subjectProps) => {
     const currentLetter = subject.name.substr(0, 1);
@@ -110,9 +118,9 @@ const sortAlphabetically = (subjects: subjectProps[], locale: string = 'nb') => 
 const renderList = (
   subjects: subjectProps[],
   onNavigate?: () => void,
-  onToggleSubject?: subjectsProps['onToggleSubject'],
-  subjectViewType?: subjectsProps['subjectViewType'],
-  selectedSubjects: subjectsProps['selectedSubjects'] = [],
+  onToggleSubject?: subjectsProps["onToggleSubject"],
+  subjectViewType?: subjectsProps["subjectViewType"],
+  selectedSubjects: subjectsProps["selectedSubjects"] = [],
 ) => (
   <StyledList>
     {sortAlphabetically(subjects).map((letter: any) => {
@@ -122,7 +130,7 @@ const renderList = (
             <Fragment key={subject.name}>
               <StyledListItem>
                 {index === 0 && <StyledLetterItem subjectViewType={subjectViewType}>{letter.letter}</StyledLetterItem>}
-                {subjectViewType === 'checkbox' && subject.id ? (
+                {subjectViewType === "checkbox" && subject.id ? (
                   <ToggleItem
                     id={subject.id}
                     value={subject.id}
@@ -143,7 +151,7 @@ const renderList = (
                           onNavigate();
                         }
                       }}
-                      to={subject.path || ''}
+                      to={subject.path || ""}
                     >
                       {subject.name}
                     </SafeLink>
@@ -208,8 +216,8 @@ const FrontpageAllSubjects = ({
   });
 
   data.push({
-    title: t('frontpageMenu.allsubjects'),
-    id: 'allsubjects',
+    title: t("frontpageMenu.allsubjects"),
+    id: "allsubjects",
     content: renderList(allSubjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
   });
 

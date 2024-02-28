@@ -6,15 +6,15 @@
  *
  */
 
-import { useState, useEffect, ReactNode, useMemo } from 'react';
-import { colors, fonts, spacing } from '@ndla/core';
-import styled from '@emotion/styled';
-import { copyTextToClipboard } from '@ndla/util';
-import { useTranslation } from 'react-i18next';
-import { ButtonV2 } from '@ndla/button';
-import { Copy } from '@ndla/icons/action';
-import { Done } from '@ndla/icons/editor';
-import { ICodeLangugeOption, languageOptions } from '../languageOptions';
+import { useState, useEffect, ReactNode, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { colors, fonts, spacing } from "@ndla/core";
+import { Copy } from "@ndla/icons/action";
+import { Done } from "@ndla/icons/editor";
+import { copyTextToClipboard } from "@ndla/util";
+import { ICodeLangugeOption, languageOptions } from "../languageOptions";
 
 const Wrapper = styled.div`
   margin: 15px 0;
@@ -68,8 +68,10 @@ const StyledPre = styled.pre`
   }
   code {
     display: block;
-    ${fonts.sizes('14px', '20px')};
-    font-family: Source Code Pro, Monaco;
+    ${fonts.sizes("14px", "20px")};
+    font-family:
+      Source Code Pro,
+      Monaco;
     margin: 0;
     padding: 0;
     white-space: pre;
@@ -176,13 +178,13 @@ export const Codeblock = ({ actionButton, code, highlightedCode, format, showCop
 
   const codeWithLineNumbers = useMemo(() => {
     return highlightedCode
-      .split('\n')
+      .split("\n")
       .map((line, i, arr) => {
-        return `<span><span class="linenumber" ${i === 0 ? 'data-first=""' : ''} ${
-          i === arr.length - 1 ? 'data-last=""' : ''
+        return `<span><span class="linenumber" ${i === 0 ? 'data-first=""' : ""} ${
+          i === arr.length - 1 ? 'data-last=""' : ""
         }>${i + 1}</span>${line}</span>`;
       })
-      .join('\n');
+      .join("\n");
   }, [highlightedCode]);
 
   useEffect(() => {
@@ -206,17 +208,17 @@ export const Codeblock = ({ actionButton, code, highlightedCode, format, showCop
       </StyledPre>
       {showCopy && (
         <ButtonV2
-          title={t('codeBlock.copyButton')}
+          title={t("codeBlock.copyButton")}
           disabled={isCopied}
-          data-copied-title={t('codeBlock.copiedCode')}
+          data-copied-title={t("codeBlock.copiedCode")}
           data-copy-string={code}
           onClick={() => {
             copyTextToClipboard(code);
             setIsCopied(true);
           }}
         >
-          {isCopied ? <Done aria-hidden="true" /> : <Copy aria-hidden="true" />}{' '}
-          {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
+          {isCopied ? <Done aria-hidden="true" /> : <Copy aria-hidden="true" />}{" "}
+          {isCopied ? t("codeBlock.copiedCode") : t("codeBlock.copyCode")}
         </ButtonV2>
       )}
     </Wrapper>

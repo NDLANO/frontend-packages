@@ -1,6 +1,14 @@
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, stackOrder } from "@ndla/core";
 
 interface Props {
   skipToMainContentId: string;
@@ -25,7 +33,7 @@ const StyledSkipToMainContent = styled.a`
   border: 4px solid ${colors.brand.tertiary};
   text-align: center;
   font-size: 1.2em;
-  z-index: 9999;
+  z-index: ${stackOrder.popover};
   animation-name: fadeIn;
   animation-duration: 0.3s;
   transform: translateY(-150%);
@@ -38,7 +46,7 @@ const SkipToMainContent = ({ skipToMainContentId }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledSkipToMainContent tabIndex={0} href={`#${skipToMainContentId}`}>
-      {t('masthead.skipToContent')}
+      {t("masthead.skipToContent")}
     </StyledSkipToMainContent>
   );
 };

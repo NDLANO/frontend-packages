@@ -14,56 +14,34 @@ npm install @ndla/video-search
 
 ## Example usage
 
-### Styling
-
-```scss
-/* Your project's main .scss import file */
-@import '~@ndla/video-search/scss/video-search'; // with webpack and sass-loader
-@import '../path/to/node_modules/ndla-video-search/scss/video-search'; // direct reference
-```
-
 ### Get video with the video selector
 
-To use the `VideoSearch` component, some functions for handling search and fetching video is needed. In addition, some translations is needed.
+To use the `VideoSearch` component, you will need to provide translations and a function for searching for videos.
 
-```js
-import VideoSearch from '@ndla/video-search';
+```tsx
+import VideoSearch, { VideoQueryType } from "@ndla/video-search";
+import { BrightcoveApiType } from "@ndla/types-embed";
 
-const videoSelector = (image) => {
+const onVideoSelect = (image: BrightcoveApiType) => {
   // handle video
 };
 
-const searchVideos = (query, type) => {
+const searchVideos = (query: VideoQueryType) => {
   //return a promise
 };
 
 const translations = {
-  searchPlaceholder: 'Search videos',
-  searchButtonTitle: 'Search',
-  loadMoreVideos: 'Load more videos',
-  noResults: 'Noe videos found',
-  addVideo: 'Use video',
-  previewVideo: 'Preview',
-  publishedDate: 'Published date',
-  duration: 'Duration',
-  interactioncount: 'Views',
+  searchPlaceholder: "Search videos",
+  searchButtonTitle: "Search",
+  loadMoreVideos: "Load more videos",
+  noResults: "Noe videos found",
+  addVideo: "Use video",
+  previewVideo: "Preview",
+  publishedDate: "Published date",
+  duration: "Duration",
+  interactioncount: "Views",
+  is360Video: "360 video",
 };
 
-<VideoSearch
-  onVideoSelect={videoSelector}
-  searchVideos={searchVideos}
-  translations={translations}
-  locale="nb"
-  enabledSources={['Brightcove', 'YouTube']}
-/>;
+<VideoSearch onVideoSelect={onVideoSelect} searchVideos={searchVideos} translations={translations} locale="nb" />;
 ```
-
-## PropTypes
-
-| Props          |  Type  | Required | Description |
-| -------------- | :----: | :------: | :---------- |
-| onVideoSelect  |  func  |    \*    |             |
-| searchVideos   |  func  |    \*    |             |
-| translations   | object |    \*    |             |
-| locale         | string |    \*    |             |
-| enabledSources | array  |          |             |

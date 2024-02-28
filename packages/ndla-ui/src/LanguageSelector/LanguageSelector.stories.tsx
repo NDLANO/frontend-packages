@@ -6,20 +6,20 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { LanguageSelector } from '@ndla/ui';
-import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
-import { defaultParameters } from '../../../../stories/defaults';
+import styled from "@emotion/styled";
+import { Meta, StoryFn } from "@storybook/react";
+import { colors, spacing } from "@ndla/core";
+import { LanguageSelector } from "@ndla/ui";
+import { defaultParameters } from "../../../../stories/defaults";
 export default {
-  title: 'Components/LanguageSelector',
-  tags: ['autodocs'],
+  title: "Components/LanguageSelector",
+  tags: ["autodocs"],
   component: LanguageSelector,
   parameters: {
     ...defaultParameters,
   },
   args: {
-    locales: ['en', 'nb', 'nn'],
+    locales: ["en", "nb", "nn"],
     inverted: false,
     // eslint-disable-next-line no-console
     onSelect: (locale) => console.log(`selected ${locale}`),
@@ -30,9 +30,9 @@ interface ButtonWrapperProps {
   inverted?: boolean;
 }
 
-const shouldForwardProp = (p: string) => p !== 'inverted';
+const shouldForwardProp = (p: string) => p !== "inverted";
 
-const ButtonWrapper = styled('div', { shouldForwardProp })<ButtonWrapperProps>`
+const ButtonWrapper = styled("div", { shouldForwardProp })<ButtonWrapperProps>`
   background-color: ${(p) => p.inverted && colors.brand.primary};
   padding: ${spacing.normal};
 `;
@@ -45,4 +45,4 @@ export const LanguageSelectorStory: StoryFn<typeof LanguageSelector> = (args) =>
   );
 };
 
-LanguageSelectorStory.storyName = 'LanguageSelector';
+LanguageSelectorStory.storyName = "LanguageSelector";

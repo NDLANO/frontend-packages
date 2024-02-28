@@ -6,26 +6,24 @@
  *
  */
 
-import { useEffect, useState, MouseEvent } from 'react';
-
-import styled from '@emotion/styled';
-import { Link } from '@ndla/icons/common';
-import { useTranslation } from 'react-i18next';
-import Tooltip from '@ndla/tooltip';
-import { copyTextToClipboard } from '@ndla/util';
-import { colors } from '@ndla/core';
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, stackOrder } from "@ndla/core";
+import { Link } from "@ndla/icons/common";
+import Tooltip from "@ndla/tooltip";
+import { copyTextToClipboard } from "@ndla/util";
 
 const ContainerDiv = styled.div`
   position: relative;
 `;
-
 const IconButton = styled.button`
   position: absolute;
   left: -3em;
   top: 0.1em;
   background: none;
   border: 0;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   transition: 0.2s;
   opacity: 0;
   color: ${colors.brand.grey};
@@ -43,63 +41,43 @@ const IconButton = styled.button`
 `;
 
 interface Props {
-  title?: string | null;
-  content?: string | null;
-  hydrate?: boolean;
+  // What to render within the h2
+  children: ReactNode;
+  copyText: string;
+  lang?: string;
 }
-
-interface CopyButtonProps {
-  title: string;
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-  tooltip: string;
-  content?: string | null;
-}
-
-const CopyButton = ({ onClick, title, tooltip, content }: CopyButtonProps) => {
-  return (
-    <div>
-      <Tooltip tooltip={tooltip}>
-        <IconButton onClick={onClick} data-title={title} aria-label={`${tooltip}: ${content}`}>
-          <Link title={''} />
-        </IconButton>
-      </Tooltip>
-      <h2 id={title} tabIndex={-1} dangerouslySetInnerHTML={{ __html: content || '' }} />
-    </div>
-  );
-};
-
-const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
-  const { t } = useTranslation();
+const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
   const [hasCopied, setHasCopied] = useState(false);
+  const { t } = useTranslation();
+  const sanitizedTitle = useMemo(() => encodeURIComponent(copyText.replace(/ /g, "-")), [copyText]);
+
   useEffect(() => {
     if (hasCopied) {
       setTimeout(() => setHasCopied(false), 3000);
     }
   }, [hasCopied]);
 
-  if (!title) return null;
-
-  const onCopyClick = (event: MouseEvent<HTMLButtonElement>): void => {
+  const onCopyClick = useCallback(() => {
     setHasCopied(true);
-    const copyId = event.currentTarget.getAttribute('data-title');
     const { location } = window;
-    const newHash = `#${copyId}`;
-    const port = location.port ? `:${location.port}` : '';
+    const newHash = `#${sanitizedTitle}`;
+    const port = location.port ? `:${location.port}` : "";
     const urlToCopy = `${location.protocol}//${location.hostname}${port}${location.pathname}${location.search}${newHash}`;
 
     copyTextToClipboard(urlToCopy);
-  };
+  }, [sanitizedTitle]);
 
-  const sanitizedTitle = encodeURIComponent(title.replace(/ /g, '-'));
-  const tooltip = hasCopied ? t('article.copyPageLinkCopied') : t('article.copyHeaderLink');
-
-  if (hydrate) {
-    return <CopyButton onClick={onCopyClick} title={sanitizedTitle} tooltip={tooltip} content={content} />;
-  }
-
+  const tooltip = hasCopied ? t("article.copyPageLinkCopied") : t("article.copyHeaderLink");
   return (
-    <ContainerDiv data-header-copy-container data-title={title}>
-      <CopyButton onClick={onCopyClick} title={sanitizedTitle} tooltip={tooltip} content={content} />
+    <ContainerDiv>
+      <Tooltip tooltip={tooltip}>
+        <IconButton onClick={onCopyClick} aria-label={`${tooltip}: ${copyText}`}>
+          <Link />
+        </IconButton>
+      </Tooltip>
+      <h2 id={sanitizedTitle} tabIndex={-1} lang={lang}>
+        {children}
+      </h2>
     </ContainerDiv>
   );
 };

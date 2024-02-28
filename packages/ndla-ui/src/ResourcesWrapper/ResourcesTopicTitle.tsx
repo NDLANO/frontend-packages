@@ -1,11 +1,19 @@
-import { useTranslation } from 'react-i18next';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { ModalBody, ModalHeader, ModalCloseButton, Modal, ModalTitle, ModalTrigger, ModalContent } from '@ndla/modal';
-import Tooltip from '@ndla/tooltip';
-import { Switch } from '@ndla/switch';
-import { LearningPathQuiz } from '@ndla/icons/contentType';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { LearningPathQuiz } from "@ndla/icons/contentType";
+import { ModalBody, ModalHeader, ModalCloseButton, Modal, ModalTitle, ModalTrigger, ModalContent } from "@ndla/modal";
+import { Switch } from "@ndla/switch";
+import Tooltip from "@ndla/tooltip";
 
 interface HelpIconProps {
   invertedStyle: boolean;
@@ -78,14 +86,14 @@ const TooltipButton = styled.button`
 
 const StyledTopicTitleParagraph = styled.p`
   font-family: ${fonts.sans};
-  ${fonts.sizes('18px', '24px')};
+  ${fonts.sizes("18px", "24px")};
   font-weight: ${fonts.weight.bold};
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0 ${spacing.xsmall} 0 0;
   ${mq.range({ from: breakpoints.tablet })} {
     margin-right: ${spacing.small};
-    ${fonts.sizes('20px', '26px')};
+    ${fonts.sizes("20px", "26px")};
   }
 `;
 
@@ -124,9 +132,9 @@ const invertedTopicTitleWrapperStyle = css`
 const TopicTitle = styled.h1`
   font-weight: ${fonts.weight.normal};
   margin: 0;
-  ${fonts.sizes('18px', '24px')};
+  ${fonts.sizes("18px", "24px")};
   ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('20px', '26px')};
+    ${fonts.sizes("20px", "26px")};
   }
 `;
 
@@ -186,9 +194,9 @@ const ResourcesTopicTitle = ({
           />
           <Modal>
             <TooltipWrapper>
-              <Tooltip tooltip={t('resource.dialogTooltip')}>
+              <Tooltip tooltip={t("resource.dialogTooltip")}>
                 <ModalTrigger>
-                  <TooltipButton aria-label={t('resource.dialogTooltip')}>
+                  <TooltipButton aria-label={t("resource.dialogTooltip")}>
                     <HelpIcon invertedStyle={invertedStyle} />
                   </TooltipButton>
                 </ModalTrigger>
@@ -196,13 +204,13 @@ const ResourcesTopicTitle = ({
             </TooltipWrapper>
             <ModalContent>
               <ModalHeader>
-                <ModalTitle>{t('resource.dialogHeading')}</ModalTitle>
+                <ModalTitle>{t("resource.dialogHeading")}</ModalTitle>
                 <ModalCloseButton />
               </ModalHeader>
               <ModalBody>
                 <hr />
-                <p>{t('resource.dialogText1')}</p>
-                <p>{t('resource.dialogText2')}</p>
+                <p>{t("resource.dialogText1")}</p>
+                <p>{t("resource.dialogText2")}</p>
               </ModalBody>
             </ModalContent>
           </Modal>

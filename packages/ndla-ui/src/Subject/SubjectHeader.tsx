@@ -1,9 +1,17 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { colors, fonts, mq, spacing, spacingUnit, breakpoints } from '@ndla/core';
-import OneColumn from '../Layout/OneColumn';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
-type Types = 'mobile' | 'tablet' | 'desktop' | 'wide';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, fonts, mq, spacing, breakpoints } from "@ndla/core";
+import OneColumn from "../Layout/OneColumn";
+
+type Types = "mobile" | "tablet" | "desktop" | "wide";
 
 interface Props {
   images: {
@@ -59,7 +67,7 @@ const StyledBackground = styled.div<StyledBackgroundProps>`
 `;
 
 const StyledHeading = styled.h1`
-  ${fonts.sizes('24px', '28px')};
+  ${fonts.sizes("24px", "28px")};
   color: ${colors.white};
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   margin: ${spacing.medium} 0 ${spacing.normal} 0;
@@ -68,13 +76,13 @@ const StyledHeading = styled.h1`
 
   ${mq.range({ from: breakpoints.tablet })} {
     margin: 0;
-    ${fonts.sizes('40px', '40px')};
-    padding: 0 0 0 ${spacingUnit * 3}px;
+    ${fonts.sizes("40px", "40px")};
+    padding: 0 0 0 ${spacing.xlarge};
   }
   ${mq.range({ from: breakpoints.desktop })} {
     margin: 0;
-    ${fonts.sizes('52px', '52px')};
-    padding: 0 0 0 ${spacingUnit * 3}px;
+    ${fonts.sizes("52px", "52px")};
+    padding: 0 0 0 ${spacing.xlarge};
   }
 `;
 

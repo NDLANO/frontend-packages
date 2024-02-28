@@ -6,20 +6,20 @@
  *
  */
 
-import { ReactNode, useState } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { useTranslation } from 'react-i18next';
-import Tooltip from '@ndla/tooltip';
-import { useWindowSize } from '@ndla/hooks';
-import { colors, spacing, misc, mq, breakpoints } from '@ndla/core';
-import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
-import LearningPathMenuModalWrapper from './LearningPathMenuModalWrapper';
-import LearningPathMenuAside from './LearningPathMenuAside';
-import LearningPathMenuIntro from './LearningPathMenuIntro';
-import LearningPathMenuContent from './LearningPathMenuContent';
+import { ReactNode, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, misc, mq, breakpoints } from "@ndla/core";
+import { useWindowSize } from "@ndla/hooks";
+import { ArrowExpandRight, ArrowExpandLeft } from "@ndla/icons/action";
+import Tooltip from "@ndla/tooltip";
+import LearningPathMenuAside from "./LearningPathMenuAside";
+import LearningPathMenuContent from "./LearningPathMenuContent";
+import LearningPathMenuIntro from "./LearningPathMenuIntro";
+import LearningPathMenuModalWrapper from "./LearningPathMenuModalWrapper";
 
-const SIDE_NAV_WIDTH = '372px';
+const SIDE_NAV_WIDTH = "372px";
 
 type StyledMenuProps = {
   isOpen?: boolean;
@@ -126,7 +126,7 @@ const LearningPathMenu = ({
                 padding-left: ${spacing.small};
               `}
             >
-              <Tooltip tooltip={t('learningPath.openMenuTooltip')}>
+              <Tooltip tooltip={t("learningPath.openMenuTooltip")}>
                 <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
                   {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
                 </StyledToggleMenubutton>

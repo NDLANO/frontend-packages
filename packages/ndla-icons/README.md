@@ -15,8 +15,8 @@ npm install @ndla/icons --save
 ## Usage
 
 ```js
-import { Audio } from '@ndla/icons/common';
-import { Camera } from '@ndla/icons/editor';
+import { Audio } from "@ndla/icons/common";
+import { Camera } from "@ndla/icons/editor";
 
 const IconList = () => (
   <ul>
@@ -33,7 +33,7 @@ const IconList = () => (
 or
 
 ```js
-import { Audio } from '@ndla/icons/lib/common/Audio';
+import { Audio } from "@ndla/icons/lib/common/Audio";
 
 <Audio />;
 ```

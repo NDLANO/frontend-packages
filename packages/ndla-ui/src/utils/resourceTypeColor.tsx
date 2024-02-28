@@ -6,9 +6,9 @@
  *
  */
 
-import { colors } from '@ndla/core';
-import constants from '../model';
-import { resourceEmbedTypeMapping } from '../model/ContentType';
+import { colors } from "@ndla/core";
+import constants from "../model";
+import { resourceEmbedTypeMapping } from "../model/ContentType";
 const { contentTypes } = constants;
 
 export const resourceTypeColor = (type: string) => {
@@ -37,7 +37,7 @@ export const resourceTypeColor = (type: string) => {
     case resourceEmbedTypeMapping.audio:
       return colors.brand.greyLight;
     default:
-      return '';
+      return "";
   }
 };
 

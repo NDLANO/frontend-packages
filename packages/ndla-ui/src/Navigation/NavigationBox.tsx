@@ -1,18 +1,27 @@
-import { MouseEvent } from 'react';
-import styled from '@emotion/styled';
-import { SafeLinkButton } from '@ndla/safelink';
-import { ButtonV2 } from '@ndla/button';
-import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
-import { css } from '@emotion/react';
-import { Switch } from '@ndla/switch';
-import { uuid } from '@ndla/util';
-import { useTranslation } from 'react-i18next';
-import { HumanMaleBoard } from '@ndla/icons/common';
-import { Heading } from '@ndla/typography';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
+import { Additional, HumanMaleBoard } from "@ndla/icons/common";
+import { SafeLinkButton } from "@ndla/safelink";
+import { Switch } from "@ndla/switch";
+import { Heading } from "@ndla/typography";
+import { uuid } from "@ndla/util";
 
 const StyledWrapper = styled.nav`
-  margin: 20px 0 34px;
+  margin: ${spacing.normal} 0 ${spacing.mediumlarge};
 `;
+
 const StyledHeadingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -20,90 +29,43 @@ const StyledHeadingWrapper = styled.div`
 `;
 
 const StyledHeading = styled(Heading)`
-  &[data-inverted='true'] {
+  &[data-inverted="true"] {
     color: ${colors.white};
   }
 `;
 
-type listProps = {
-  direction?: 'horizontal' | 'vertical' | 'floating';
-};
-const StyledList = styled.ul<listProps>`
+const StyledList = styled.ul`
   list-style: none;
-  margin: 0;
   padding: 0;
-  ${(props) =>
-    props.direction !== 'floating' &&
-    css`
-      ${mq.range({ from: breakpoints.tablet })} {
-        column-count: 2;
-        column-gap: 20px;
-        ${props.direction === 'horizontal' &&
-        css`
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-        `}
-      }
-      ${mq.range({ from: breakpoints.tabletWide })} {
-        column-count: 3;
-        column-gap: 20px;
-        ${props.direction === 'horizontal' &&
-        css`
-          grid-template-columns: repeat(3, 1fr);
-        `}
-      }
-    `};
-`;
-type additionalResourceProps = {
-  isAdditionalResource?: boolean;
-  isRestrictedResource?: boolean;
-  lighter?: boolean;
-  selected?: boolean;
-  listDirection?: listProps['direction'];
-};
+  gap: ${spacing.xxsmall};
 
-const StyledListItem = styled.li<additionalResourceProps>`
-  margin-bottom: 0;
+  &[data-direction="horizontal"] {
+    display: flex;
+    flex-direction: column;
+    ${mq.range({ from: breakpoints.tablet })} {
+      column-count: 2;
+      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      column-count: 3;
+      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+`;
+
+const StyledListItem = styled.li`
+  padding: 0;
   break-inside: avoid;
-  ${(props) =>
-    props.listDirection === 'floating' &&
-    css`
-      display: inline-block;
-      margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
-      ${mq.range({ until: breakpoints.mobileWide })} {
-        display: block;
-      }
-    `}
-`;
 
-const StyledListElementWrapper = styled.div<additionalResourceProps>`
-  position: relative;
-  ${(props) =>
-    props.isAdditionalResource &&
-    css`
-      & > * {
-        border: 1px dashed ${props.lighter && !props.selected ? `${colors.brand.tertiary}` : `${colors.brand.dark}`};
-        background-clip: padding-box;
-        :hover,
-        :focus {
-          border: 1px dashed ${colors.brand.dark};
-          background-clip: padding-box;
-          color: ${colors.white};
-          ${StyledAdditionalResourceMark} {
-            color: ${colors.white};
-            border-color: ${colors.white};
-          }
-        }
-      }
-    `}
-`;
-
-const StyledSpacingElement = styled.span`
-  display: block;
-  width: 100%;
-  height: 2px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    height: 20px;
+  &[data-direction="floating"] {
+    display: inline-block;
+    margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
+    ${mq.range({ until: breakpoints.mobileWide })} {
+      display: block;
+    }
   }
 `;
 
@@ -114,21 +76,22 @@ const StyledButtonContent = styled.span`
   align-items: center;
 `;
 
-const StyledButtonContentText = styled.span<additionalResourceProps>`
-  ${(props) => {
-    if (props.isAdditionalResource && props.isRestrictedResource) {
-      return `padding-left: ${spacing.medium};`;
-    }
-    if (props.isAdditionalResource || props.isRestrictedResource) {
-      return `padding-left: ${spacing.small};`;
-    }
-  }}
+const StyledButtonContentText = styled.span`
+  &[data-additional="true"][data-restricted="true"] {
+    padding-left: ${spacing.medium};
+  }
+  &[data-additional="true"] {
+    padding-left: ${spacing.small};
+  }
+  &[data-restricted="true"] {
+    padding-left: ${spacing.small};
+  }
 `;
 
 const StyledMarksWrapper = styled.span`
   position: absolute;
-  left: 7px;
-  top: 6px;
+  left: ${spacing.xxsmall};
+  top: ${spacing.xsmall};
   display: flex;
   align-items: center;
   & > * {
@@ -138,30 +101,43 @@ const StyledMarksWrapper = styled.span`
     margin-left: 0;
   }
 `;
-const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
-  color: ${(props) => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
-  text-align: center;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid ${(props) => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
-  border-radius: 100px;
-  transition: ${misc.transition.default};
+
+const StyledAdditional = styled(Additional)`
+  fill: ${colors.white};
+  width: ${spacing.nsmall};
+  height: ${spacing.nsmall};
 `;
 
 const StyledHumanBoardIconWrapper = styled.span`
   display: flex;
 `;
+
 const StyledButtonContentSelected = styled.span`
   width: 10px;
   height: 10px;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   background: ${colors.white};
   flex-shrink: 0;
   margin-left: ${spacing.small};
+`;
+
+const StyledListElementWrapper = styled.div`
+  position: relative;
+  &[data-additional="true"] {
+    & > * {
+      border: 1px dashed ${colors.brand.dark};
+      background-clip: padding-box;
+      :hover,
+      :focus {
+        border: 1px dashed ${colors.brand.dark};
+        background-clip: padding-box;
+        color: ${colors.white};
+      }
+      &[data-color-mode="light"][data-selected="false"] {
+        border: 1px dashed ${colors.brand.tertiary};
+      }
+    }
+  }
 `;
 
 const listElementStyle = css`
@@ -178,28 +154,29 @@ export type ItemProps = {
   isAdditionalResource?: boolean;
   isRestrictedResource?: boolean;
 };
+
 type Props = {
   heading?: string;
-  colorMode?: 'primary' | 'darker' | 'light' | 'greyLightest' | 'greyLighter';
+  colorMode?: "primary" | "darker" | "light" | "greyLightest" | "greyLighter";
   isButtonElements?: boolean;
   items?: ItemProps[];
   onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
-  listDirection?: listProps['direction'];
+  listDirection?: "horizontal" | "floating";
   invertedStyle?: boolean;
   onToggleAdditionalResources?: (checked: boolean) => void;
 };
 
 export const NavigationBox = ({
   heading,
-  colorMode = 'primary',
+  colorMode = "primary",
   items,
   isButtonElements,
   onClick,
   hasAdditionalResources,
   showAdditionalResources = false,
-  listDirection = 'horizontal',
+  listDirection = "horizontal",
   invertedStyle,
   onToggleAdditionalResources = () => {},
 }: Props) => {
@@ -217,23 +194,23 @@ export const NavigationBox = ({
           <Switch
             id={uuid()}
             checked={showAdditionalResources}
-            label={t('navigation.additionalTopics')}
+            label={t("navigation.additionalTopics")}
             onChange={onToggleAdditionalResources}
-            css={invertedStyle ? { color: '#fff' } : {}}
+            css={invertedStyle ? { color: "#fff" } : {}}
           />
         )}
       </StyledHeadingWrapper>
-      <StyledList data-testid="nav-box-list" direction={listDirection}>
+      <StyledList data-testid="nav-box-list" data-direction={listDirection}>
         {items?.map((item: ItemProps) => (
-          <StyledListItem key={item.label} listDirection={listDirection} data-testid="nav-box-item">
+          <StyledListItem key={item.label} data-direction={listDirection} data-testid="nav-box-item">
             <StyledListElementWrapper
-              isAdditionalResource={item.isAdditionalResource}
-              lighter={colorMode === 'light'}
-              selected={item.selected}
+              data-additional={item.isAdditionalResource}
+              data-color-mode={colorMode}
+              data-selected={item.selected}
             >
               <ListElementType
-                to={item.url ?? ''}
-                colorTheme={item.selected ? 'darker' : colorMode}
+                to={item.url ?? ""}
+                colorTheme={item.selected ? "darker" : colorMode}
                 size="medium"
                 shape="sharp"
                 css={listElementStyle}
@@ -245,15 +222,13 @@ export const NavigationBox = ({
               >
                 <StyledButtonContent>
                   <StyledButtonContentText
-                    isAdditionalResource={item.isAdditionalResource}
-                    isRestrictedResource={item.isRestrictedResource}
-                    lighter={colorMode === 'light'}
+                    data-additional={item.isAdditionalResource}
+                    data-restricted={item.isRestrictedResource}
+                    data-color-mode={colorMode}
                   >
                     <StyledMarksWrapper>
                       {item.isAdditionalResource && (
-                        <StyledAdditionalResourceMark lighter={colorMode === 'light'} selected={item.selected}>
-                          T
-                        </StyledAdditionalResourceMark>
+                        <StyledAdditional aria-label={t("resource.additionalTooltip")} ariaHidden={false} />
                       )}
                       {item.isRestrictedResource && (
                         <StyledHumanBoardIconWrapper>
@@ -267,7 +242,6 @@ export const NavigationBox = ({
                 </StyledButtonContent>
               </ListElementType>
             </StyledListElementWrapper>
-            {listDirection !== 'floating' && <StyledSpacingElement />}
           </StyledListItem>
         ))}
       </StyledList>

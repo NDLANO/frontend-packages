@@ -6,9 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { mq, breakpoints, typography } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { mq, breakpoints, typography } from "@ndla/core";
 
 const StyledInfo = styled.div`
   ${typography.smallHeading}
@@ -27,7 +27,7 @@ const LearningPathMobileStepInfo = ({ total, current }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledInfo>
-      {t('learningPath.mobileStepInfo', {
+      {t("learningPath.mobileStepInfo", {
         totalPages: total,
         currentPage: current,
       })}

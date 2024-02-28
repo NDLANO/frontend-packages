@@ -1,17 +1,26 @@
-import { Meta, StoryFn } from '@storybook/react';
-import { Pencil } from '@ndla/icons/action';
-import { DeleteForever } from '@ndla/icons/editor';
-import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
-import { ButtonV2, IconButtonV2 } from '@ndla/button';
-import { HorizontalMenu } from '@ndla/icons/contentType';
-import { defaultParameters } from '../../../../../stories/defaults';
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
-import Folder from './Folder';
+import styled from "@emotion/styled";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { ButtonV2, IconButtonV2 } from "@ndla/button";
+import { spacing } from "@ndla/core";
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from "@ndla/dropdown-menu";
+import { Pencil } from "@ndla/icons/action";
+import { HorizontalMenu } from "@ndla/icons/contentType";
+import { DeleteForever } from "@ndla/icons/editor";
+import Folder from "./Folder";
+import { defaultParameters } from "../../../../../stories/defaults";
 
 export default {
-  title: 'Components/Folder',
+  title: "My NDLA/Folder",
   component: Folder,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
@@ -21,13 +30,13 @@ export default {
     },
   },
   args: {
-    id: '3d88300c-1186-47f5-a99a-8ea93fa20981',
-    title: 'Dette er min tittel',
+    id: "3d88300c-1186-47f5-a99a-8ea93fa20981",
+    title: "Dette er min tittel",
     subFolders: 3,
     subResources: 3,
-    description: '',
-    link: '',
-    type: 'list',
+    description: "",
+    link: "",
+    type: "list",
     menu: (
       <DropdownMenu>
         <DropdownTrigger>
@@ -55,6 +64,23 @@ export default {
   },
 } as Meta<typeof Folder>;
 
-export const FolderStory: StoryFn<typeof Folder> = (args) => {
-  return <Folder {...args} />;
+export const FolderStory: StoryObj<typeof Folder> = {};
+
+export const WithoutMenu: StoryObj<typeof Folder> = {
+  args: { menu: undefined },
+};
+
+const BlockWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+`;
+
+export const BlockFolder: StoryFn<typeof Folder> = (args) => {
+  return (
+    <BlockWrapper>
+      <Folder {...args} type="block" />
+      <Folder {...args} type="block" />
+      <Folder {...args} type="block" />
+    </BlockWrapper>
+  );
 };

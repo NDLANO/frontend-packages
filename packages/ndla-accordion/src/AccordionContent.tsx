@@ -6,11 +6,11 @@
  *
  */
 
-import { keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { Content } from '@radix-ui/react-accordion';
-import { HTMLAttributes, ReactNode, memo } from 'react';
+import { HTMLAttributes, ReactNode, memo } from "react";
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
+import { Content } from "@radix-ui/react-accordion";
+import { spacing } from "@ndla/core";
 
 const slideDown = keyframes`
   from {
@@ -32,14 +32,14 @@ const slideUp = keyframes`
 const AnimationWrapper = styled(Content)`
   overflow: hidden;
 
-  &[data-state='open'] {
+  &[data-state="open"] {
     animation: ${slideDown} 300ms ease-out;
   }
-  &[data-state='closed'] {
+  &[data-state="closed"] {
     animation: ${slideUp} 300ms ease-out;
   }
 
-  &[data-disable-animate='true'] {
+  &[data-disable-animate="true"] {
     animation: none;
   }
 `;

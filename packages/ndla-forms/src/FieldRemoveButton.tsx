@@ -6,10 +6,10 @@
  *
  */
 
-import { HTMLProps, ReactNode } from 'react';
-import { css } from '@emotion/react';
-import { Cross } from '@ndla/icons/action';
-import { colors, spacing, fonts } from '@ndla/core';
+import { HTMLProps, ReactNode } from "react";
+import { css } from "@emotion/react";
+import { colors, spacing, fonts } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 const buttonCSS = css`
   border: 0;
@@ -28,7 +28,7 @@ const buttonCSS = css`
     ${fonts.sizes(16, 1.1)};
     padding-bottom: 2px;
   }
-  .c-icon {
+  [data-icon] {
     fill: ${colors.text.light};
     margin-right: ${spacing.small};
   }
@@ -37,20 +37,20 @@ const buttonCSS = css`
     span {
       box-shadow: none;
     }
-    .c-icon {
+    [data-icon] {
       fill: ${colors.text.primary};
     }
   }
 `;
 
-interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'type'> {
+interface Props extends Omit<HTMLProps<HTMLButtonElement>, "type"> {
   children?: ReactNode;
-  type?: 'submit' | 'reset' | 'button';
+  type?: "submit" | "reset" | "button";
 }
-const FieldRemoveButton = ({ children, type = 'button', ...rest }: Props) => (
+const FieldRemoveButton = ({ children, type = "button", ...rest }: Props) => (
   // eslint-disable-next-line react/button-has-type
   <button css={buttonCSS} type={type} {...rest}>
-    <Cross className="c-icon--medium" aria-hidden={true} />
+    <Cross size="normal" aria-hidden={true} />
     <span>{children}</span>
   </button>
 );

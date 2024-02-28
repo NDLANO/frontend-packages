@@ -6,13 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { Time } from '@ndla/icons/common';
-import { SafeLinkButton } from '@ndla/safelink';
-import { useTranslation } from 'react-i18next';
-import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
-import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from "@ndla/core";
+import { SafeLinkButton } from "@ndla/safelink";
+import { ArticleByline } from "../Article";
 
 const infoTextCSS = css`
   ${fonts.sizes(18, 1.3)};
@@ -23,23 +22,6 @@ const infoTextCSS = css`
   padding: ${spacing.normal} 0 0;
 `;
 
-const learningPathDetailsCSS = css`
-  ${fonts.sizes(14, 1.1)};
-  font-weight: ${fonts.weight.normal};
-  margin: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-items: flex-start;
-  margin-bottom: ${spacing.xsmall};
-  p {
-    margin: 0;
-    padding-left: ${spacing.xsmall};
-  }
-  span {
-    display: block;
-  }
-`;
-
 type StyledAsideProps = {
   isOpen: boolean;
   invertedStyle?: boolean;
@@ -47,7 +29,7 @@ type StyledAsideProps = {
 
 const StyledAside = styled.aside<StyledAsideProps>`
   display: none;
-  padding-left: ${spacingUnit * 2.25}px;
+  padding-left: ${spacing.xlarge};
   ${mq.range({ from: breakpoints.desktop })} {
     display: block;
   }
@@ -95,14 +77,13 @@ const LearningPathMenuAside = ({ lastUpdated, learningPathURL, copyright, isOpen
   const { t } = useTranslation();
   return (
     <StyledAside isOpen={isOpen} invertedStyle={invertedStyle}>
-      <div css={learningPathDetailsCSS}>
-        <Time />
-        <p>
-          {t('learningPath.lastUpdated')}: {lastUpdated}
-        </p>
-      </div>
-      {copyright.contributors && <LearningPathMenuAsideCopyright copyright={copyright} />}
-      <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
+      <ArticleByline
+        authors={copyright.contributors}
+        license={copyright.license.license}
+        published={lastUpdated}
+        bylineType="learningPath"
+      />
+      <p css={infoTextCSS}>{t("learningPath.createLearningPathText")}</p>
       <SafeLinkButton
         to={learningPathURL}
         target="_blank"
@@ -110,7 +91,7 @@ const LearningPathMenuAside = ({ lastUpdated, learningPathURL, copyright, isOpen
         variant="outline"
         inverted={invertedStyle}
       >
-        {t('learningPath.createLearningPathButtonText')}
+        {t("learningPath.createLearningPathButtonText")}
       </SafeLinkButton>
     </StyledAside>
   );

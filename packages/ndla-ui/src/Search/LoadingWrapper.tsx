@@ -1,6 +1,14 @@
-import styled from '@emotion/styled';
-import { spacing, spacingUnit, animations } from '@ndla/core';
-import { Spinner } from '@ndla/icons';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import styled from "@emotion/styled";
+import { spacing, spacingUnit, animations } from "@ndla/core";
+import { Spinner } from "@ndla/icons";
 
 const StyledWrapper = styled.div`
   position: absolute;
@@ -15,7 +23,7 @@ const StyledWrapper = styled.div`
     opacity: 0;
   }
   > div {
-    ${animations.fadeIn('1000ms')};
+    ${animations.fadeIn("1000ms")};
     transform: translateX(${spacingUnit * 1.5}px) translateY(-${spacing.xsmall});
   }
 `;

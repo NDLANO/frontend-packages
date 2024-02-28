@@ -6,10 +6,10 @@
  *
  */
 
-import { RelatedContentMetaData } from '@ndla/types-embed';
-import { useTranslation } from 'react-i18next';
-import { contentTypeMapping } from '../model/ContentType';
-import { RelatedArticleV2 } from '../RelatedArticleList/RelatedArticleV2';
+import { useTranslation } from "react-i18next";
+import { RelatedContentMetaData } from "@ndla/types-embed";
+import { contentTypeMapping } from "../model/ContentType";
+import { RelatedArticle } from "../RelatedArticleList/RelatedArticleList";
 
 interface Props {
   embed: RelatedContentMetaData;
@@ -20,7 +20,7 @@ interface Props {
 
 const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: Props) => {
   const { t } = useTranslation();
-  if (embed.status === 'error') {
+  if (embed.status === "error") {
     return <></>;
   }
 
@@ -30,27 +30,27 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
     const typeId = data.resource?.resourceTypes.find((rt) => contentTypeMapping[rt.id])?.id;
     const type = typeId ? contentTypeMapping[typeId] : undefined;
     const path =
-      data.resource?.paths.find((p) => p.split('/')[1] === subject?.replace('urn:', '')) ??
+      data.resource?.paths.find((p) => p.split("/")[1] === subject?.replace("urn:", "")) ??
       data.resource?.path ??
       `/article/${embedData.articleId}`;
     return (
-      <RelatedArticleV2
-        title={data.article.title?.title ?? ''}
-        introduction={data.article.metaDescription?.metaDescription ?? ''}
-        target={isOembed ? '_blank' : undefined}
-        to={`${ndlaFrontendDomain ?? ''}${path ?? ''}`}
+      <RelatedArticle
+        title={data.article.title?.title ?? ""}
+        introduction={data.article.metaDescription?.metaDescription ?? ""}
+        target={isOembed ? "_blank" : undefined}
+        to={`${ndlaFrontendDomain ?? ""}${path ?? ""}`}
         type={type}
       />
     );
-  } else if (typeof embedData.url === 'string') {
+  } else if (typeof embedData.url === "string") {
     return (
-      <RelatedArticleV2
-        title={embedData.title ?? ''}
+      <RelatedArticle
+        title={embedData.title ?? ""}
         introduction=""
         to={embedData.url}
         target="_blank"
-        type={'external-learning-resources'}
-        linkInfo={`${t('related.linkInfo')} ${
+        type={"external-learning-resources"}
+        linkInfo={`${t("related.linkInfo")} ${
           // Get domain name only from url
           embedData.url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n]+)/im)?.[1] || embedData.url
         }`}

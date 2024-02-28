@@ -6,15 +6,16 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { ConceptListMetaData } from '@ndla/types-embed';
-import { Figure } from '../Figure';
-import { BlockConcept } from './ConceptEmbed';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import { ConceptListMetaData } from "@ndla/types-embed";
+import { BlockConcept } from "./ConceptEmbed";
+import { Figure } from "../Figure";
 
 interface Props {
   embed: ConceptListMetaData;
+  lang?: string;
 }
 
 const ConceptList = styled.div`
@@ -30,18 +31,18 @@ const StyledSpan = styled.span`
   color: ${colors.support.red};
 `;
 
-const ConceptListEmbed = ({ embed }: Props) => {
+const ConceptListEmbed = ({ embed, lang }: Props) => {
   const { t } = useTranslation();
-  if (embed.status === 'error') {
-    return <StyledSpan>{t('embed.conceptListError')}</StyledSpan>;
+  if (embed.status === "error") {
+    return <StyledSpan>{t("embed.conceptListError")}</StyledSpan>;
   }
   const { embedData, data } = embed;
   return (
     <div>
       <Figure type="full" resizeIframe>
-        {embedData.title && <h2>{embedData.title}</h2>}
+        {embedData.title && <h2 lang={lang}>{embedData.title}</h2>}
         <ConceptList>
-          <ul>
+          <ul lang={lang}>
             {data.concepts.map(({ concept, visualElement }) => (
               <li key={concept.id}>
                 <BlockConcept

@@ -6,18 +6,18 @@
  *
  */
 
-import { ReactNode, useRef } from 'react';
-import styled from '@emotion/styled';
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
+import { ReactNode, useRef } from "react";
+import styled from "@emotion/styled";
 
-import SafeLink from '@ndla/safelink';
-import { animations, colors, fonts, spacing } from '@ndla/core';
+import { animations, colors, fonts, spacing, stackOrder } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
 
-import { ContentType } from './SearchTypeResult';
-import constants from '../model';
-import ItemContexts, { ItemContextsType } from './components/ItemContexts';
-import ItemTopicHeader from './components/ItemTopicHeader';
-import ItemResourceHeader from './components/ItemResourceHeader';
+import ItemContexts, { ItemContextsType } from "./components/ItemContexts";
+import ItemResourceHeader from "./components/ItemResourceHeader";
+import ItemTopicHeader from "./components/ItemTopicHeader";
+import { ContentType } from "./SearchTypeResult";
+import constants from "../model";
 const { contentTypes } = constants;
 
 interface ItemTypeProps {
@@ -44,14 +44,14 @@ const Container = styled.article`
 `;
 
 const ButtonWrapper = styled.div`
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   display: flex;
   flex-direction: column;
 `;
 
 const ItemTitle = styled.h3<ItemTypeProps>`
   display: inline;
-  ${fonts.sizes('24px', '28px')};
+  ${fonts.sizes("24px", "28px")};
   color: ${colors.brand.primary};
   margin-bottom: ${(props) => props.isTopic && spacing.small};
   font-weight: ${fonts.weight.semibold};
@@ -67,9 +67,9 @@ const StyledLink = styled(SafeLink)`
   color: ${colors.brand.primary};
 
   :after {
-    content: '';
+    content: "";
     position: absolute;
-    z-index: 1;
+    z-index: ${stackOrder.offsetSingle};
     top: 0;
     right: 0;
     bottom: 0;
@@ -78,11 +78,11 @@ const StyledLink = styled(SafeLink)`
 `;
 
 const ItemText = styled.div<ItemTypeProps>`
-  ${fonts.sizes('16px', '24px')};
+  ${fonts.sizes("16px", "24px")};
   ${(props) =>
     props.isTopic &&
     `
-    ${fonts.sizes('18px', '28px')};
+    ${fonts.sizes("18px", "28px")};
     `};
 `;
 
@@ -93,16 +93,12 @@ const ContentWrapper = styled.main`
   padding: ${spacing.small} ${spacing.normal};
 `;
 
-const ButtonContainer = styled.div`
-  z-index: 1;
-`;
-
 export interface SearchItemProps {
   id: string | number;
   title: string;
   url: string;
   ingress: string;
-  contexts?: ItemContextsType['contexts'];
+  contexts?: ItemContextsType["contexts"];
   img?: { url: string; alt: string };
   labels?: string[];
   type?: ContentType;

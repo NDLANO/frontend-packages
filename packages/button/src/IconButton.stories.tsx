@@ -6,24 +6,24 @@
  *
  */
 
-import { Cross } from '@ndla/icons/action';
-import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../stories/defaults';
-import IconButtonV2 from './IconButtonV2';
+import { Meta, StoryFn } from "@storybook/react";
+import { Cross } from "@ndla/icons/action";
+import IconButtonV2 from "./IconButtonV2";
+import { defaultParameters } from "../../../stories/defaults";
 
 export default {
-  title: 'Components/Buttons/IconButton',
+  title: "Components/Buttons/IconButton",
   component: IconButtonV2,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
   args: {
-    colorTheme: 'primary',
+    colorTheme: "primary",
     children: <Cross />,
-    size: 'small',
-    variant: 'solid',
-    fontWeight: 'normal',
+    size: "small",
+    variant: "solid",
+    fontWeight: "normal",
   },
   argTypes: {
     children: {
@@ -38,4 +38,4 @@ export const IconButtonStory: StoryFn<typeof IconButtonV2> = (args) => {
   return <IconButtonV2 {...args} />;
 };
 
-IconButtonStory.storyName = 'IconButton';
+IconButtonStory.storyName = "IconButton";

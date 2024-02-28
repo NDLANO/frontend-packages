@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { ButtonV2 } from '@ndla/button';
-import PreviewImage from './PreviewImage';
-import { getPreviewSrcSets } from './util/imageUtil';
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import PreviewImage from "./PreviewImage";
+import { getPreviewSrcSets } from "./util/imageUtil";
 
 const StyledButton = styled(ButtonV2)`
   display: flex;
@@ -37,7 +37,7 @@ export default function ImageSearchResult({
   showCheckbox,
   checkboxLabel,
 }: Props) {
-  const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
+  const active = selectedImage && selectedImage.id === image.id ? "active" : "";
 
   return (
     <div key={image.id} className={`list-item ${active}`}>
@@ -62,7 +62,7 @@ export default function ImageSearchResult({
           aria-hidden={true}
         />
       ) : (
-        ''
+        ""
       )}
     </div>
   );

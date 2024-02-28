@@ -6,9 +6,7 @@
  *
  */
 
-import CopyParagraphButton from './CopyParagraphButton';
-import CopyParagraphButtonV2 from './CopyParagraphButtonV2';
-import initCopyParagraphButtons from './initCopyParagraphButtons';
+import CopyParagraphButton from "./CopyParagraphButton";
 
-export { CopyParagraphButton, initCopyParagraphButtons, CopyParagraphButtonV2 };
+export { CopyParagraphButton };
 export default CopyParagraphButton;

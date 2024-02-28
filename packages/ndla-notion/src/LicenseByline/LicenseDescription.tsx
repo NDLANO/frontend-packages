@@ -1,16 +1,16 @@
-/*
+/**
  * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
- * FRI OG BEGRENSET
+ *
  */
 
-import { ReactNode } from 'react';
-import { colors, spacing } from '@ndla/core';
-import styled from '@emotion/styled';
-import LicenseIconDescriptionList from './LicenseIconDescriptionList';
-import StyledLicenseByline from './StyledLicenseByline';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
+import LicenseIconDescriptionList from "./LicenseIconDescriptionList";
+import StyledLicenseByline from "./StyledLicenseByline";
 
 const StyledModelpermission = styled.div`
   svg {

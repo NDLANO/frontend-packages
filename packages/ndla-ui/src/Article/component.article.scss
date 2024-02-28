@@ -60,7 +60,7 @@
   }
 
   &:after {
-    content: '';
+    content: "";
     display: table;
     clear: both;
   }
@@ -110,6 +110,10 @@
   }
 }
 
+.c-article__competence {
+  margin-top: $spacing;
+}
+
 .c-article__title {
   position: relative;
 
@@ -139,23 +143,14 @@
 }
 
 .c-article__title--icon {
-  padding-left: 70px;
+  padding-left: 80px;
 
-  @include mq(desktop) {
-    padding-left: 0;
-  }
-
-  .c-content-type-badge {
+  [data-badge] {
     position: absolute;
     left: 0;
 
     @include mq(tablet) {
-      top: $spacing--small / 2;
-    }
-
-    @include mq(desktop) {
-      left: -70px;
-      top: $spacing--small / 2;
+      top: $spacing--xsmall;
     }
   }
 }

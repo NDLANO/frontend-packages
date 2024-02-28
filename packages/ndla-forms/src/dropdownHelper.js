@@ -2,7 +2,8 @@
  * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
- * LICENSE file in the root directory of this source tree. *
+ * LICENSE file in the root directory of this source tree.
+ *
  */
 
 export const checkIfItemIsSelected = (item, selectedItem, selectedItems, multiSelect, idField) => {
@@ -17,7 +18,7 @@ export const checkIfItemIsSelected = (item, selectedItem, selectedItems, multiSe
     if (multiSelect) {
       return selectedItems.includes(item);
     }
-    if (typeof selectedItem === 'string') {
+    if (typeof selectedItem === "string") {
       return selectedItem === item;
     }
   }
@@ -28,5 +29,5 @@ export const getFieldValue = (value, field = undefined) => {
   if (!field) {
     return value;
   }
-  return value && value[field] ? value[field] : '';
+  return value && value[field] ? value[field] : "";
 };

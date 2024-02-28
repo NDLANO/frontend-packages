@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { ReactNode } from 'react';
-import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
-import Image from '../Image';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing, colors, breakpoints, mq, stackOrder } from "@ndla/core";
+import { Text } from "@ndla/typography";
 import {
   CompressedTagList,
   ResourceImageProps,
@@ -18,10 +18,11 @@ import {
   ResourceTypeList,
   LoaderProps,
   ContentIconWrapper,
-} from './resourceComponents';
-import ContentLoader from '../ContentLoader';
-import ContentTypeBadge from '../ContentTypeBadge';
-import { contentTypeMapping, resourceEmbedTypeMapping } from '../model/ContentType';
+} from "./resourceComponents";
+import ContentLoader from "../ContentLoader";
+import ContentTypeBadge from "../ContentTypeBadge";
+import Image from "../Image";
+import { contentTypeMapping, resourceEmbedTypeMapping } from "../model/ContentType";
 
 const ListResourceWrapper = styled.div`
   flex: 1;
@@ -29,14 +30,14 @@ const ListResourceWrapper = styled.div`
   position: relative;
   grid-template-columns: auto minmax(50px, 1fr) auto;
   grid-template-areas:
-    'image  topicAndTitle   tags'
-    'image  description     description';
+    "image  topicAndTitle   tags"
+    "image  description     description";
   ${mq.range({ until: breakpoints.mobileWide })} {
     grid-template-columns: auto 1fr;
     grid-template-areas:
-      'image                topicAndTitle'
-      'description          description'
-      'tags                 tags';
+      "image                topicAndTitle"
+      "description          description"
+      "tags                 tags";
   }
 
   cursor: pointer;
@@ -54,7 +55,7 @@ const ListResourceWrapper = styled.div`
 `;
 
 interface StyledImageProps {
-  imageSize: 'normal' | 'compact';
+  imageSize: "normal" | "compact";
 }
 
 const ImageWrapper = styled.div<StyledImageProps>`
@@ -67,7 +68,7 @@ const ImageWrapper = styled.div<StyledImageProps>`
   align-items: center;
   justify-content: center;
   aspect-ratio: 4/3;
-  &[data-image-size='normal'] {
+  &[data-image-size="normal"] {
     width: 136px;
   }
   ${mq.range({ until: breakpoints.mobileWide })} {
@@ -81,17 +82,15 @@ const StyledImage = styled(Image)`
   aspect-ratio: 4/3;
 `;
 
-const StyledResourceDescription = styled.p`
+const StyledResourceDescription = styled(Text)`
   grid-area: description;
   line-clamp: 2;
-  line-height: 1em;
   height: 3.1em;
   margin: 0 ${spacing.small} ${spacing.small} 0;
   ${mq.range({ until: breakpoints.mobileWide })} {
     margin: 0 ${spacing.small};
   }
   overflow: hidden;
-  ${fonts.sizes(16)};
   text-overflow: ellipsis;
   // Unfortunate css needed for multi-line text overflow ellipsis.
   display: -webkit-box;
@@ -102,7 +101,7 @@ const StyledResourceDescription = styled.p`
 
 const TagsandActionMenu = styled.div`
   grid-area: tags;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   box-sizing: content-box;
   display: grid;
   grid-template-columns: 1fr auto auto;
@@ -130,14 +129,14 @@ const TopicAndTitleWrapper = styled.div`
 interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
   loading?: boolean;
-  type: 'normal' | 'compact';
+  type: "normal" | "compact";
   contentType: string;
   background?: boolean;
 }
 
 const ListResourceImage = ({ resourceImage, loading, type, contentType, background }: ListResourceImageProps) => {
   if (!loading) {
-    if (resourceImage.src === '') {
+    if (resourceImage.src === "") {
       return (
         <ContentIconWrapper contentType={contentType}>
           <ContentTypeBadge type={contentType} background={background} size="x-small" />
@@ -145,20 +144,20 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType, backgrou
       );
     } else {
       return (
-        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
+        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === "compact" ? 56 : 136} />
       );
     }
   }
 
   return (
-    <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+    <ContentLoader height={"100%"} width={"100%"} viewBox={null} preserveAspectRatio="none">
       <rect
         x="0"
         y="0"
         rx="3"
         ry="3"
-        width={type === 'compact' ? '56' : '136'}
-        height={type === 'compact' ? '40' : '96'}
+        width={type === "compact" ? "56" : "136"}
+        height={type === "compact" ? "40" : "96"}
       />
     </ContentLoader>
   );
@@ -167,10 +166,10 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType, backgrou
 const TypeAndTitleLoader = ({ loading, children }: LoaderProps) => {
   if (loading) {
     return (
-      <ContentLoader height={'40px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
-        <rect x="0" y="0" rx="3" ry="3" width={'100%'} height={'16'} />
-        <rect x="0" y="18" rx="3" ry="3" width={'70'} height={'16'} />
-        <rect x="80" y="18" rx="3" ry="3" width={'70'} height={'16'} />
+      <ContentLoader height={"40px"} width={"100%"} viewBox={null} preserveAspectRatio="none">
+        <rect x="0" y="0" rx="3" ry="3" width={"100%"} height={"16"} />
+        <rect x="0" y="18" rx="3" ry="3" width={"70"} height={"16"} />
+        <rect x="80" y="18" rx="3" ry="3" width={"70"} height={"16"} />
       </ContentLoader>
     );
   }
@@ -185,12 +184,16 @@ interface ResourceDescriptionProps {
 const Description = ({ description, loading }: ResourceDescriptionProps) => {
   if (loading) {
     return (
-      <ContentLoader height={'20px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+      <ContentLoader height={"20px"} width={"100%"} viewBox={null} preserveAspectRatio="none">
         <rect x="0" y="0" width="100%" height="20" />
       </ContentLoader>
     );
   }
-  return <StyledResourceDescription>{description}</StyledResourceDescription>;
+  return (
+    <StyledResourceDescription element="p" textStyle="meta-text-small">
+      {description}
+    </StyledResourceDescription>
+  );
 };
 
 export interface ListResourceProps {
@@ -221,27 +224,27 @@ const ListResource = ({
   targetBlank,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
-  const imageType = showDescription ? 'normal' : 'compact';
-  const firstContentType = resourceTypes?.[0]?.id ?? '';
+  const imageType = showDescription ? "normal" : "compact";
+  const firstContentType = resourceTypes?.[0]?.id ?? "";
   const embedResourceType = resourceEmbedTypeMapping[firstContentType];
 
   return (
     <ListResourceWrapper id={id}>
-      <ImageWrapper imageSize={imageType}>
+      <ImageWrapper imageSize={imageType} data-image-size={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}
           loading={isLoading}
           type={imageType}
           background={!!embedResourceType}
-          contentType={contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping['default']}
+          contentType={contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping["default"]}
         />
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} data-link="" target={targetBlank ? '_blank' : undefined}>
-            <h1 css={resourceHeadingStyle} title={title}>
+          <StyledLink to={link} data-link="" target={targetBlank ? "_blank" : undefined}>
+            <Text element="span" textStyle="label-small" css={resourceHeadingStyle} title={title}>
               {title}
-            </h1>
+            </Text>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>

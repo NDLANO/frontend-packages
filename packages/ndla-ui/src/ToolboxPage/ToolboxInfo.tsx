@@ -6,11 +6,11 @@
  *
  */
 
-import { MouseEvent } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Heading, Text } from '@ndla/typography';
-import { ItemProps } from '../Navigation/NavigationBox';
-import { NavigationBox } from '../Navigation';
+import { MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { Heading, Text } from "@ndla/typography";
+import { NavigationBox } from "../Navigation";
+import { ItemProps } from "../Navigation/NavigationBox";
 
 interface Props {
   id?: string;
@@ -31,7 +31,7 @@ const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, id }: Props) 
       <NavigationBox
         items={topics}
         listDirection="floating"
-        heading={t('topicPage.topics')}
+        heading={t("topicPage.topics")}
         colorMode="greyLighter"
         onClick={onSelectTopic}
       />

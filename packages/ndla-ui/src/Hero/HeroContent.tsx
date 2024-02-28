@@ -6,21 +6,21 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing, mq, breakpoints } from '@ndla/core';
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing, stackOrder } from "@ndla/core";
 
 export const HeroContent = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   padding: ${spacing.small} 0 ${spacing.small};
-  z-index: 9;
+  z-index: ${stackOrder.trigger};
 
   ${mq.range({ from: breakpoints.tablet })} {
     min-height: 90px;
     padding-bottom: ${spacing.xxsmall};
 
-    &[data-image='true'] {
+    &[data-image="true"] {
       min-height: 190px;
       @media (min-height: 720px) {
         min-height: 240px;
@@ -31,7 +31,7 @@ export const HeroContent = styled.div`
     }
   }
 
-  &[data-film='true'] {
+  &[data-film="true"] {
     .c-breadcrumb__item,
     .c-breadcrumb__item--home:after,
     a,

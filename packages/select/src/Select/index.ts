@@ -6,8 +6,8 @@
  *
  */
 
-import Select from './Select';
-import { Option, SingleValue, MultiValue, GroupBase } from './types';
+import Select from "./Select";
+import { Option, SingleValue, MultiValue, GroupBase } from "./types";
 
 export type { Option, SingleValue, MultiValue, GroupBase };
 

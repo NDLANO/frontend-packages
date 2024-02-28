@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, misc } from '@ndla/core';
-import { ContainerProps } from 'react-select';
-import { TagType } from './types';
+import { ContainerProps } from "react-select";
+import styled from "@emotion/styled";
+import { colors, fonts, misc } from "@ndla/core";
+import { TagType } from "./types";
 
 const StyledContainer = styled.div`
   display: grid;

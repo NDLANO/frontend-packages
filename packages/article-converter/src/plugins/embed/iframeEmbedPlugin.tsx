@@ -6,13 +6,13 @@
  *
  */
 
-import { attributesToProps } from 'html-react-parser';
-import { IframeMetaData } from '@ndla/types-embed';
-import { IframeEmbed } from '@ndla/ui';
-import { PluginType } from '../types';
+import { attributesToProps } from "html-react-parser";
+import { IframeMetaData } from "@ndla/types-embed";
+import { IframeEmbed } from "@ndla/ui";
+import { PluginType } from "../types";
 
 export const iframeEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as IframeMetaData;
+  const data = JSON.parse(props["data-json"]) as IframeMetaData;
   return <IframeEmbed embed={data} />;
 };

@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { Item } from '@radix-ui/react-accordion';
-import { HTMLAttributes, ReactNode, memo } from 'react';
+import { HTMLAttributes, ReactNode, memo } from "react";
+import styled from "@emotion/styled";
+import { Item } from "@radix-ui/react-accordion";
+import { colors, misc } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
@@ -20,8 +20,8 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 const StyledItem = styled(Item)`
   border: 1px solid ${colors.brand.light};
-  border-radius: 2px;
-  &[data-state='open'] {
+  border-radius: ${misc.borderRadius};
+  &[data-state="open"] {
     border-color: ${colors.brand.primary};
   }
 `;

@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 const baseFontSizeUnit = 18;
 const baseLineHeightUnit = 24;
 
@@ -10,7 +18,7 @@ function sizes(fontSize: string | number, lineHeight?: string | number) {
   const _lineHeight = lineHeight ?? Math.ceil(fontSizeUnit / baseLineHeightUnit) * (baseLineHeightUnit / fontSizeUnit);
 
   const fontSizeStyling = `font-size: ${fontSize};font-size: ${fontSizeRem}rem;`;
-  const chineseStyling = `&[lang='zh'], &[lang='zh-Hans'], &[lang='zh-Hant'] {font-size: calc(${fontSize} * 1.11); font-size: calc(${fontSizeRem}rem * 1.11)}`;
+  const chineseStyling = `&:where([lang='zh'], &[lang='zh-Hans'], &[lang='zh-Hant']):not([data-pinyin]) {font-size: calc(${fontSize} * 1.11); font-size: calc(${fontSizeRem}rem * 1.11)}`;
   return `${fontSizeStyling} line-height: ${_lineHeight}; ${chineseStyling}`;
 }
 
@@ -26,11 +34,20 @@ const fonts = {
   sizes,
   size: {
     text: {
-      ingress: sizes('20px', '31px'),
-      button: sizes('16px', '24px'),
-      content: sizes('18px', '29px'),
-      metaTextSmall: sizes('16px', '24px'),
-      metaTextLarge: sizes('18px', '24px'),
+      ingress: sizes("20px", "31px"),
+      button: sizes("16px", "24px"),
+      content: sizes("18px", "29px"),
+      metaText: {
+        xxsmall: sizes("10px", "12px"),
+        xsmall: sizes("12px", "20px"),
+        small: sizes("16px", "24px"),
+        medium: sizes("18px", "24px"),
+        large: sizes("22px", "30px"),
+      },
+      label: {
+        large: sizes("24px", "36px"),
+        small: sizes("18px", "32px"),
+      },
     },
   },
 };

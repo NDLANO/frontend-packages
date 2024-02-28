@@ -6,11 +6,9 @@
  *
  */
 
-import SearchField from './SearchField';
+import ActiveFilters from "./ActiveFilters";
+import SearchField from "./SearchField";
 
-import { SearchResultList, SearchResultItem } from './SearchResult';
-
-import ActiveFilters from './ActiveFilters';
-export { default as ToggleSearchButton } from './ToggleSearchButton';
+import { SearchResultList, SearchResultItem } from "./SearchResult";
 
 export { SearchField, SearchResultItem, SearchResultList, ActiveFilters };

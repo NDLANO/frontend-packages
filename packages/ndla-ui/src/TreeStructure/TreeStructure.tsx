@@ -6,16 +6,16 @@
  *
  */
 
-import { useEffect, useState, useMemo, useRef } from 'react';
-import styled from '@emotion/styled';
-import { colors, fonts, misc, utils } from '@ndla/core';
-import uniq from 'lodash/uniq';
-import { IFolder } from '@ndla/types-backend/learningpath-api';
-import FolderItems from './FolderItems';
-import { flattenFolders, treestructureId } from './helperFunctions';
-import { CommonTreeStructureProps, NewFolderInputFunc } from './types';
-import ComboboxButton from './ComboboxButton';
-import AddFolderButton from './AddFolderButton';
+import uniq from "lodash/uniq";
+import { useEffect, useState, useMemo, useRef } from "react";
+import styled from "@emotion/styled";
+import { colors, fonts, misc, utils } from "@ndla/core";
+import { IFolder } from "@ndla/types-backend/learningpath-api";
+import AddFolderButton from "./AddFolderButton";
+import ComboboxButton from "./ComboboxButton";
+import FolderItems from "./FolderItems";
+import { flattenFolders, treestructureId } from "./helperFunctions";
+import { CommonTreeStructureProps, NewFolderInputFunc } from "./types";
 
 export const MAX_LEVEL_FOR_FOLDERS = 5;
 
@@ -39,7 +39,7 @@ const TreeStructureWrapper = styled.div`
   display: flex;
   flex-direction: column;
   transition: ${misc.transition.default};
-  &[data-type='picker'] {
+  &[data-type="picker"] {
     overflow: hidden;
     border: 1px solid ${colors.brand.neutral7};
     border-radius: ${misc.borderRadius};
@@ -51,7 +51,7 @@ const TreeStructureWrapper = styled.div`
 `;
 
 const ScrollableDiv = styled.div`
-  &[data-type='picker'] {
+  &[data-type="picker"] {
     overflow: auto;
     overflow: overlay;
     ${utils.scrollbar}
@@ -89,7 +89,7 @@ const TreeStructure = ({
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [focusedFolder, _setFocusedFolder] = useState<IFolder | undefined>();
   const [selectedFolder, _setSelectedFolder] = useState<IFolder | undefined>();
-  const [showTree, setShowTree] = useState(type === 'navigation');
+  const [showTree, setShowTree] = useState(type === "navigation");
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
 
@@ -109,7 +109,7 @@ const TreeStructure = ({
       const selected = flattenFolders(folders).find((folder) => folder.id === defaultSelectedFolderId);
       if (selected) {
         _setSelectedFolder(selected);
-        if (type === 'picker') {
+        if (type === "picker") {
           _setFocusedFolder(selected);
         }
       }
@@ -172,14 +172,14 @@ const TreeStructure = ({
   return (
     <StyledTreeStructure
       onBlur={(e) => {
-        if (type === 'picker' && !e.currentTarget.contains(e.relatedTarget)) {
+        if (type === "picker" && !e.currentTarget.contains(e.relatedTarget)) {
           onToggleTree(false);
         }
       }}
     >
       <Row>
-        {label && <StyledLabel id={treestructureId(type, 'label')}>{label}</StyledLabel>}
-        {type === 'picker' && (
+        {label && <StyledLabel id={treestructureId(type, "label")}>{label}</StyledLabel>}
+        {type === "picker" && (
           <AddFolderButton
             loading={loading}
             canAddFolder={!!canAddFolder}
@@ -190,7 +190,7 @@ const TreeStructure = ({
         )}
       </Row>
       <TreeStructureWrapper aria-label={label} data-type={type}>
-        {type === 'picker' && (
+        {type === "picker" && (
           <ComboboxButton
             ref={ref}
             showTree={showTree}

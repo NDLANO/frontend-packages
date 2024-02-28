@@ -6,27 +6,9 @@
  *
  */
 
-import { Accordion, AccordionWrapper } from './Accordion';
-import AccordionItem from './AccordionItem';
-import AccordionHeader from './AccordionHeader';
-import AccordionContent from './AccordionContent';
-import AccordionRoot from './AccordionRoot';
-import Accordions from './Accordions';
-import AccordionSection from './AccordionSection';
-import { AccordionBar } from './AccordionBar';
-import { AccordionPanel, StyledAccordionsPanelItemsWrapper, StyledAccordionsPanelIconButton } from './AccordionPanel';
+import AccordionContent from "./AccordionContent";
+import AccordionHeader from "./AccordionHeader";
+import AccordionItem from "./AccordionItem";
+import AccordionRoot from "./AccordionRoot";
 
-export {
-  Accordion as default,
-  AccordionItem,
-  AccordionHeader,
-  AccordionContent,
-  AccordionRoot,
-  Accordions,
-  AccordionWrapper,
-  AccordionBar,
-  AccordionSection,
-  AccordionPanel,
-  StyledAccordionsPanelItemsWrapper,
-  StyledAccordionsPanelIconButton,
-};
+export { AccordionItem, AccordionHeader, AccordionContent, AccordionRoot };

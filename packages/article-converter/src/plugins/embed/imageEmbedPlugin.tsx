@@ -6,15 +6,15 @@
  *
  */
 
-import { ImageEmbed } from '@ndla/ui';
-import { attributesToProps, Element } from 'html-react-parser';
-import { ImageMetaData } from '@ndla/types-embed';
-import { PluginType } from '../types';
+import { attributesToProps, Element } from "html-react-parser";
+import { ImageMetaData } from "@ndla/types-embed";
+import { ImageEmbed } from "@ndla/ui";
+import { PluginType } from "../types";
 
 export const imageEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props['data-json']) as ImageMetaData;
-  const inGrid = (element.parentNode?.parentNode as Element)?.attribs?.['data-type'] === 'grid';
+  const data = JSON.parse(props["data-json"]) as ImageMetaData;
+  const inGrid = (element.parentNode?.parentNode as Element)?.attribs?.["data-type"] === "grid";
 
   return (
     <ImageEmbed
@@ -23,6 +23,9 @@ export const imageEmbedPlugin: PluginType = (element, _, opts) => {
       path={opts.path}
       previewAlt={opts.previewAlt}
       heartButton={opts.components?.heartButton}
+      canonicalUrl={opts.canonicalUrls?.image}
+      lang={opts.articleLanguage}
+      renderContext={opts.renderContext}
     />
   );
 };

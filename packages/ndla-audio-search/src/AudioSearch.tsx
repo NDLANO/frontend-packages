@@ -6,13 +6,13 @@
  *
  */
 
-import { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from '@ndla/types-backend/audio-api';
-import Pager from '@ndla/pager';
-import AudioSearchForm from './AudioSearchForm';
-import AudioSearchList from './AudioSearchList';
+import { useEffect, useState } from "react";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import Pager from "@ndla/pager";
+import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from "@ndla/types-backend/audio-api";
+import AudioSearchForm from "./AudioSearchForm";
+import AudioSearchList from "./AudioSearchList";
 
 const AudioSearchWrapper = styled.div`
   padding: 1rem;
@@ -66,7 +66,7 @@ const AudioSearch = ({
           page: queryObject.page,
           pageSize: result.pageSize,
           locale: queryObject.locale,
-          audioType: queryObject.audioType || 'standard',
+          audioType: queryObject.audioType || "standard",
         });
         setAudios(result.results);
         setLastPage(Math.ceil(result.totalCount / result.pageSize));
@@ -89,7 +89,7 @@ const AudioSearch = ({
       page: 1,
       pageSize: queryObject.pageSize,
       locale: queryObject.locale,
-      audioType: queryObject.audioType || 'standard',
+      audioType: queryObject.audioType || "standard",
     });
   };
 

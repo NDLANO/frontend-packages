@@ -6,14 +6,14 @@
  *
  */
 
-import { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { spacing, mq, breakpoints } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
-import { ButtonV2 } from '@ndla/button';
-import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
+import { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing, mq, breakpoints } from "@ndla/core";
+import Tooltip from "@ndla/tooltip";
+import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from "./ActiveFilterContent";
 
 type StyledActiveFiltersProps = {
   showOnSmallScreen?: boolean;
@@ -21,7 +21,6 @@ type StyledActiveFiltersProps = {
 };
 
 const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
-  margin: 0;
   padding: 0;
   display: none;
   ${(props: StyledActiveFiltersProps) =>
@@ -84,10 +83,10 @@ const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
 const StyledActiveFilterWrapper = styled.li`
   list-style: none;
   display: flex;
-  margin: 0;
-  margin-right: ${spacing.xsmall};
+  padding: 0;
+  padding-right: ${spacing.xsmall};
   ${mq.range({ until: breakpoints.desktop })} {
-    margin-bottom: ${spacing.xsmall};
+    padding-bottom: ${spacing.xsmall};
   }
 `;
 
@@ -120,7 +119,7 @@ const ActiveFilters = ({
       <StyledActiveFilterWrapper key={filterKey}>
         {filterLength > 1 ? (
           <Tooltip
-            tooltip={t('searchPage.searchFilterMessages.removeFilter', {
+            tooltip={t("searchPage.searchFilterMessages.removeFilter", {
               filterName: filter.title,
             })}
           >
@@ -138,9 +137,9 @@ const ActiveFilters = ({
       {filterItems}
       {filterLength > showFilterCount && (
         <StyledActiveFilterWrapper>
-          <Tooltip tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
+          <Tooltip tooltip={t("searchPage.searchFilterMessages.noValuesButtonText")}>
             <ButtonV2
-              aria-label={t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+              aria-label={t("searchPage.searchFilterMessages.additionalSubjectFilters", {
                 count: filterLength - showFilterCount + 1,
               })}
               size="normal"
@@ -148,7 +147,7 @@ const ActiveFilters = ({
               onClick={onClickShowHiddenSubjects}
             >
               <StyledActiveFilterTitle>
-                {t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+                {t("searchPage.searchFilterMessages.additionalSubjectFilters", {
                   count: filterLength - showFilterCount + 1,
                 })}
               </StyledActiveFilterTitle>
@@ -156,9 +155,7 @@ const ActiveFilters = ({
           </Tooltip>
         </StyledActiveFilterWrapper>
       )}
-      {customElements?.map((item, index) => (
-        <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>
-      ))}
+      {customElements?.map((item, index) => <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>)}
     </StyledActiveFilters>
   );
 };

@@ -6,17 +6,18 @@
  *
  */
 
-import { IImageMetaInformationV3 } from '@ndla/types-backend/image-api';
-import { MetaData } from '.';
+import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetaData } from ".";
 
 export interface IframeEmbedData {
-  resource: 'iframe';
+  resource: "iframe";
   type: string;
   url: string;
   width?: string;
   height?: string;
   title?: string;
   caption?: string;
+  alt?: string;
   imageid?: string;
 }
 

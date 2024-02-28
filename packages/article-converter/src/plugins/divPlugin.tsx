@@ -6,49 +6,52 @@
  *
  */
 
-import partition from 'lodash/partition';
-import { domToReact, attributesToProps, Element } from 'html-react-parser';
-import { FileListV2, RelatedArticleListV2, Grid, GridType, GridParallaxItem } from '@ndla/ui';
-import { PluginType } from './types';
+import { domToReact, attributesToProps, Element } from "html-react-parser";
+import partition from "lodash/partition";
+import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem, FramedContent } from "@ndla/ui";
+import { PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts) => {
-  if (node.attribs['data-type'] === 'related-content' && node.children.length) {
+  if (node.attribs["data-type"] === "framed-content" || node.attribs.class === "c-bodybox") {
+    return <FramedContent>{domToReact(node.children, opts)}</FramedContent>;
+  }
+  if (node.attribs["data-type"] === "related-content" && node.children.length) {
     const props = attributesToProps(node.attribs);
 
     return (
-      <RelatedArticleListV2 {...props} headingLevel="h3">
+      <RelatedArticleList {...props}>
         {/* @ts-ignore */}
         {domToReact(node.children, opts)}
-      </RelatedArticleListV2>
+      </RelatedArticleList>
     );
-  } else if (node.attribs['data-type'] === 'file' && node.childNodes.length) {
+  } else if (node.attribs["data-type"] === "file" && node.childNodes.length) {
     const elements = node.childNodes.filter(
-      (c): c is Element => c.type === 'tag' && c.name === 'ndlaembed' && c.attribs['data-resource'] === 'file',
+      (c): c is Element => c.type === "tag" && c.name === "ndlaembed" && c.attribs["data-resource"] === "file",
     );
     const [pdfs, files] = partition(
       elements,
-      (el) => el.attribs['data-type'] === 'pdf' && el.attribs['data-display'] === 'block',
+      (el) => el.attribs["data-type"] === "pdf" && el.attribs["data-display"] === "block",
     );
 
     return (
       <>
-        {files.length ? <FileListV2>{domToReact(files, opts)}</FileListV2> : undefined}
+        {files.length ? <FileList>{domToReact(files, opts)}</FileList> : undefined}
         {domToReact(pdfs, opts)}
       </>
     );
-  } else if (node.attribs['data-type'] === 'grid' && node.children.length > 0) {
+  } else if (node.attribs["data-type"] === "grid" && node.children.length > 0) {
     const props = attributesToProps(node.attribs);
-    const columns = props['data-columns'] as GridType['columns'];
-    const border = props['data-border'] as GridType['border'];
-    const background = props['data-background'] as GridType['background'];
-    const frontpage = !!props['data-size'] as GridType['size'];
+    const columns = props["data-columns"] as GridType["columns"];
+    const border = props["data-border"] as GridType["border"];
+    const background = props["data-background"] as GridType["background"];
+    const frontpage = !!props["data-size"] as GridType["size"];
     return (
       <Grid isFrontpage={frontpage} border={border} columns={columns} background={background} {...props}>
         {/* @ts-ignore */}
         {domToReact(node.children, opts)}
       </Grid>
     );
-  } else if (node.attribs['data-parallax-cell'] === 'true' && node.children.length) {
+  } else if (node.attribs["data-parallax-cell"] === "true" && node.children.length) {
     return <GridParallaxItem>{domToReact(node.children, opts)}</GridParallaxItem>;
   }
   return null;

@@ -6,11 +6,11 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, spacing, fonts, misc } from '@ndla/core';
+import styled from "@emotion/styled";
+import { colors, spacing, fonts, misc } from "@ndla/core";
 
 type StyledTagProps = {
-  color: 'yellow' | 'green' | 'red';
+  color: "yellow" | "green" | "red";
 };
 
 const StyledTag = styled.span<StyledTagProps>`

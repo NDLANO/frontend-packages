@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2023-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -6,4 +6,4 @@
  *
  */
 
-export { default as KeyFigure } from './KeyFigure';
+export { default as KeyFigure } from "./KeyFigure";

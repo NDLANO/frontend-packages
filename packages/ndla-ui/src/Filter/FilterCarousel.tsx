@@ -6,12 +6,13 @@
  *
  */
 
-import { ReactChild, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
-import { useSwipeable } from 'react-swipeable';
+import { ReactChild, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSwipeable } from "react-swipeable";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { stackOrder } from "@ndla/core";
+import { ChevronLeft, ChevronRight } from "@ndla/icons/common";
 
 interface Props {
   children: ReactChild[];
@@ -30,7 +31,7 @@ const Inner = styled.div`
   padding: 8px 0;
 `;
 
-const NavButton = styled('button')<{
+const NavButton = styled("button")<{
   alignRight?: boolean;
 }>`
   box-sizing: border-box;
@@ -40,12 +41,14 @@ const NavButton = styled('button')<{
   border: none;
   box-shadow: none;
   border-radius: 100px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
   transform: translate(0px, 0px, 1);
   position: absolute;
   bottom: 0;
   top: 4px;
-  z-index: 3;
+  z-index: ${stackOrder.trigger};
   left: 3px;
 
   svg {
@@ -103,8 +106,8 @@ const FilterCarousel = ({ children }: Props) => {
       setTranslateX(0);
       showButtons();
     };
-    window.addEventListener('resize', resetTranslateX);
-    return () => window.removeEventListener('resize', resetTranslateX);
+    window.addEventListener("resize", resetTranslateX);
+    return () => window.removeEventListener("resize", resetTranslateX);
   }, []);
 
   const updateIndex = (direction: string) => {
@@ -113,7 +116,7 @@ const FilterCarousel = ({ children }: Props) => {
     if (carousel && inner) {
       const carouselWidth = carousel.offsetWidth;
       const innerWidth = inner.scrollWidth;
-      if (direction === 'NEXT') {
+      if (direction === "NEXT") {
         // If we cannot move more than one carouselWidth then just adjust to show all of the concealed items
         if (carouselWidth + translateX + carouselWidth > innerWidth) {
           const newOffset = innerWidth - carouselWidth;
@@ -139,8 +142,8 @@ const FilterCarousel = ({ children }: Props) => {
   };
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => updateIndex('NEXT'),
-    onSwipedRight: () => updateIndex('PREV'),
+    onSwipedLeft: () => updateIndex("NEXT"),
+    onSwipedRight: () => updateIndex("PREV"),
     preventScrollOnSwipe: false,
     trackMouse: true,
   });
@@ -153,13 +156,13 @@ const FilterCarousel = ({ children }: Props) => {
         </Inner>
       </Carousel>
       {!hideNext && (
-        <NavButton title={t('carousel.forward')} onClick={() => updateIndex('NEXT')} alignRight>
-          <ChevronRight style={{ width: '18px', height: '18px' }} aria-hidden title="" />
+        <NavButton title={t("carousel.forward")} onClick={() => updateIndex("NEXT")} alignRight>
+          <ChevronRight style={{ width: "18px", height: "18px" }} aria-hidden title="" />
         </NavButton>
       )}
       {translateX >= 1 && (
-        <NavButton title={t('carousel.back')} onClick={() => updateIndex('PREV')}>
-          <ChevronLeft style={{ width: '18px', height: '18px' }} aria-hidden title="" />
+        <NavButton title={t("carousel.back")} onClick={() => updateIndex("PREV")}>
+          <ChevronLeft style={{ width: "18px", height: "18px" }} aria-hidden title="" />
         </NavButton>
       )}
     </div>

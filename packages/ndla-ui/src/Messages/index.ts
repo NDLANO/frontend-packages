@@ -6,8 +6,7 @@
  *
  */
 
-import MessageBoxTag from './MessageBoxTag';
-import MessageBox from './MessageBox';
-import MessageBanner from './MessageBanner';
+import MessageBanner from "./MessageBanner";
+import MessageBox from "./MessageBox";
 
-export { MessageBox, MessageBoxTag, MessageBanner };
+export { MessageBox, MessageBanner };

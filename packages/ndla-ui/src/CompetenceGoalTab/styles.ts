@@ -6,13 +6,13 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
 export const ListItemContent = styled.div`
   display: flex;
   justify-content: space-between;
-  ${fonts.sizes('22px', '32px')};
+  ${fonts.sizes("22px", "32px")};
   ${mq.range({ until: breakpoints.tabletWide })} {
     flex-direction: column;
   }
@@ -21,6 +21,7 @@ export const ListItemContent = styled.div`
 export const GoalItem = styled.li`
   margin: ${spacing.medium} 0;
   border-bottom: 1px solid ${colors.brand.neutral7};
+  padding: 0;
 `;
 
 export const GoalsHeading = styled.h3`

@@ -6,15 +6,16 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
-import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
-import { FooterHeaderIcon } from '@ndla/icons/common';
-import { OneColumn } from '../Layout';
-import FooterLinks from './FooterLinks';
-import FooterPrivacy from './FooterPrivacy';
-import { Locale } from '../types';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, spacing, fonts, mq, breakpoints, spacingUnit, stackOrder } from "@ndla/core";
+import { FooterHeaderIcon } from "@ndla/icons/common";
+import { Text } from "@ndla/typography";
+import FooterLinks from "./FooterLinks";
+import FooterPrivacy from "./FooterPrivacy";
+import { OneColumn } from "../Layout";
+import { Locale } from "../types";
 
 const StyledBackground = styled.div`
   display: block;
@@ -26,25 +27,23 @@ const StyledBackground = styled.div`
   background: linear-gradient(96deg, rgba(0, 117, 160, 1) 0%, rgba(32, 88, 143, 0) 100%);
 `;
 
-type StyledFooterProps = {
-  addMargin?: boolean;
-};
-
-const StyledDiv = styled.div<StyledFooterProps>`
+const StyledDiv = styled.div`
   color: #fff;
   position: relative;
   background: ${colors.brand.dark};
   overflow: hidden;
-  z-index: 0;
-  ${(props) => props.addMargin && `margin-top: ${spacingUnit * 4}px;`}
+  z-index: ${stackOrder.base};
+  &[data-margin="true"] {
+    margin-top: ${spacing.xxlarge};
+  }
 `;
 
 const StyledOneColumn = styled(OneColumn)`
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   position: relative;
 `;
 
-const StyledHeader = styled.h2`
+const StyledText = styled(Text)`
   ${fonts.sizes(20, 1.5)};
   margin: 0;
   font-weight: ${fonts.weight.semibold};
@@ -61,8 +60,8 @@ const StyledFooterHeaderIcon = styled(FooterHeaderIcon)`
   width: ${spacing.large};
   height: ${spacing.large};
   ${mq.range({ from: breakpoints.tabletWide })} {
-    width: ${spacingUnit * 3}px;
-    height: ${spacingUnit * 3}px;
+    width: ${spacing.xlarge};
+    height: ${spacing.xlarge};
   }
 `;
 
@@ -103,7 +102,7 @@ const StyledHr = styled.hr`
 
 const StyledLanguageWrapper = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   margin-top: ${spacing.normal};
   display: flex;
   align-items: center;
@@ -113,15 +112,16 @@ const StyledLanguageWrapper = styled.div`
 type Props = {
   children: ReactNode;
   lang: Locale;
-  links?: [
-    {
-      to: string;
-      text: string;
-      icon: ReactNode;
-      facebook: string;
-      twitter: string;
-    },
-  ];
+  commonLinks?: {
+    to: string;
+    text: string;
+    external: boolean;
+  }[];
+  links?: {
+    to: string;
+    text: string;
+    icon: ReactNode;
+  }[];
   privacyLinks?: {
     url: string;
     label: string;
@@ -130,7 +130,7 @@ type Props = {
   auth?: ReactNode;
 };
 
-const Footer = ({ children, links, languageSelector, auth, privacyLinks }: Props) => {
+const Footer = ({ children, commonLinks, links, languageSelector, auth, privacyLinks }: Props) => {
   const { t } = useTranslation();
 
   const mainContent = (
@@ -140,28 +140,31 @@ const Footer = ({ children, links, languageSelector, auth, privacyLinks }: Props
     </>
   );
 
-  const footerContent = links ? (
-    <>
-      <StyledColumns>
-        <div>
-          <StyledFooterHeaderIcon />
-        </div>
-        <div>
-          <StyledHeader>{t('footer.vision')}</StyledHeader>
-          <FooterLinks links={links} />
-        </div>
-      </StyledColumns>
-      <StyledHr />
-      {mainContent}
-    </>
-  ) : (
-    mainContent
-  );
+  const footerContent =
+    links || commonLinks ? (
+      <>
+        <StyledColumns>
+          <div>
+            <StyledFooterHeaderIcon />
+          </div>
+          <div>
+            <StyledText element="div" textStyle="content-alt" margin="none">
+              {t("footer.vision")}
+            </StyledText>
+            <FooterLinks commonLinks={commonLinks} links={links} />
+          </div>
+        </StyledColumns>
+        <StyledHr />
+        {mainContent}
+      </>
+    ) : (
+      mainContent
+    );
 
   return (
     <>
       <footer>
-        <StyledDiv addMargin={!languageSelector}>
+        <StyledDiv data-margin={!languageSelector}>
           {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
           <StyledOneColumn cssModifier="large">{footerContent}</StyledOneColumn>
           <StyledBackground />

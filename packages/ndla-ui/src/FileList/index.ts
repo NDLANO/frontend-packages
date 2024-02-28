@@ -1,8 +1,15 @@
-import FileList from './FileList';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
-export { default as File } from './File';
-export { default as FileListV2 } from './FileListV2';
-export { default as PdfFile } from './PdfFile';
-export { default as FileV2 } from './FileV2';
+import FileList from "./FileList";
+
+export { default as File } from "./File";
+export { default as PdfFile } from "./PdfFile";
+export { default as Format } from "./Format";
 
 export default FileList;

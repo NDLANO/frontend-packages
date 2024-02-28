@@ -1,8 +1,16 @@
-import { FactBox } from '@ndla/ui';
-import { BY, NC, ND } from '@ndla/licenses';
-import { LicenseByline } from '@ndla/notion';
-import { colors, fonts, spacing } from '@ndla/core';
-import styled from '@emotion/styled';
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
+import { BY, NC, ND } from "@ndla/licenses";
+import { LicenseByline } from "@ndla/notion";
+import { FactBox } from "@ndla/ui";
 
 const SourceList = styled.div`
   display: flex;
@@ -11,7 +19,7 @@ const SourceList = styled.div`
   margin-top: ${spacing.small};
   color: ${colors.brand.grey};
   align-items: center;
-  ${fonts.sizes('15px')};
+  ${fonts.sizes("15px")};
   span {
     margin-right: ${spacing.small};
   }

@@ -1,11 +1,15 @@
 $spacing: $inuit-global-spacing-unit;
-$spacing--small: $inuit-global-spacing-unit/2;
-$spacing--medium: $inuit-global-spacing-unit * 1.25;
-$spacing--large: $inuit-global-spacing-unit * 2;
+$spacing--xsmall: calc($inuit-global-spacing-unit / 4);
+$spacing--small: calc($inuit-global-spacing-unit / 2);
+$spacing--nsmall: calc($inuit-global-spacing-unit / 1.5);
+$spacing--medium: calc($inuit-global-spacing-unit * 1.25);
+$spacing--large: calc($inuit-global-spacing-unit * 2);
 
 :root {
   --spacing: #{$spacing};
+  --spacing--xsmall: #{$spacing--xsmall};
   --spacing--small: #{$spacing--small};
+  --spacing--nsmall: #{$spacing--nsmall};
   --spacing--medium: #{$spacing--medium};
   --spacing--large: #{$spacing--large};
 }

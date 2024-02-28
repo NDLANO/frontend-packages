@@ -5,16 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-/* eslint-disable max-len */
 
-import BEMHelper from 'react-bem-helper';
-import SafeLink from '@ndla/safelink';
-import SvgLogo from './SvgLogo';
-
-export const logoClasses = new BEMHelper({
-  name: 'logo',
-  prefix: 'c-',
-});
+import { useMemo } from "react";
+import { SerializedStyles, css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import SvgLogo from "./SvgLogo";
 
 interface Props {
   to?:
@@ -32,23 +29,46 @@ interface Props {
   color?: string;
 }
 
-export const Logo = ({ name = true, to, cssModifier, color, large = false, locale, label }: Props) => {
-  const modifiers: Record<string, boolean> = { large };
-
-  if (cssModifier) {
-    modifiers[cssModifier] = true;
+const StyledLogoWrapper = styled.div`
+  a {
+    box-shadow: none;
   }
+  width: 120px;
+  margin: 0;
+  position: relative;
+`;
+
+const modifierStyles: Record<string, SerializedStyles> = {
+  large: css`
+    width: 287px;
+  `,
+  white: css`
+    svg {
+      fill: ${colors.white};
+    }
+  `,
+};
+
+export const Logo = ({ name = true, to, cssModifier, color, large = false, locale, label }: Props) => {
+  const modifiers = useMemo(() => {
+    const mods = [];
+    if (large) {
+      mods.push(modifierStyles.large);
+    }
+    if (cssModifier && modifierStyles[cssModifier]) {
+      mods.push(modifierStyles[cssModifier]);
+    }
+    return mods;
+  }, [large, cssModifier]);
 
   const logo = to ? (
     <SafeLink to={to} aria-label={label} title={label}>
       <SvgLogo name={name} color={color} locale={locale} />
     </SafeLink>
   ) : (
-    <>
-      <SvgLogo name={name} color={color} locale={locale} />
-    </>
+    <SvgLogo name={name} color={color} locale={locale} />
   );
-  return <div {...logoClasses('', modifiers)}>{logo}</div>;
+  return <StyledLogoWrapper css={modifiers}>{logo}</StyledLogoWrapper>;
 };
 
 export default Logo;

@@ -6,9 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { Children, HTMLAttributes, ReactNode } from 'react';
+import { Children, HTMLAttributes, ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
@@ -20,10 +20,8 @@ const StyledList = styled.ul`
   gap: ${spacing.small};
   list-style: none;
   padding: 0px;
-  margin: 0px;
   li {
     padding: 0px;
-    margin: 0px;
   }
 `;
 

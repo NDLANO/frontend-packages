@@ -6,19 +6,19 @@
  *
  */
 
-import { CSSProperties, KeyboardEvent, useEffect, useMemo, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { ArrowDropDownRounded } from '@ndla/icons/common';
-import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
-import { Done } from '@ndla/icons/editor';
-import { ButtonV2 as Button } from '@ndla/button';
-import { colors, spacing, animations, misc, fonts } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { IFolder } from '@ndla/types-backend/learningpath-api';
-import { CommonFolderItemsProps } from './types';
-import { arrowNavigation } from './arrowNavigation';
-import { treestructureId } from './helperFunctions';
+import { CSSProperties, KeyboardEvent, useEffect, useMemo, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 as Button } from "@ndla/button";
+import { colors, spacing, animations, misc, fonts } from "@ndla/core";
+import { ArrowDropDownRounded } from "@ndla/icons/common";
+import { FolderOutlined, FolderShared } from "@ndla/icons/contentType";
+import { Done } from "@ndla/icons/editor";
+import SafeLink from "@ndla/safelink";
+import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { arrowNavigation } from "./arrowNavigation";
+import { treestructureId } from "./helperFunctions";
+import { CommonFolderItemsProps } from "./types";
 
 const OpenButton = styled.span`
   display: flex;
@@ -36,12 +36,12 @@ const OpenButton = styled.span`
     height: 24px;
     transform: rotate(-90deg);
   }
-  &[data-open='true'] {
+  &[data-open="true"] {
     svg {
       transform: rotate(0deg);
     }
   }
-  &[data-hide-arrow='true'] {
+  &[data-hide-arrow="true"] {
     visibility: hidden;
   }
 `;
@@ -83,22 +83,22 @@ const FolderName = styled(Button)`
     color: ${colors.text.primary};
   }
 
-  &[data-focused='true'] {
+  &[data-focused="true"] {
     background: ${colors.brand.lightest};
   }
 
-  &[data-selected='true'] {
+  &[data-selected="true"] {
     background: ${colors.brand.lighter};
     &:hover {
       background: ${colors.brand.light};
     }
   }
 
-  &[data-creating='true'][data-focused='true'] {
+  &[data-creating="true"][data-focused="true"] {
     color: ${colors.brand.primary};
   }
 
-  &[data-creating='true'] {
+  &[data-creating="true"] {
     background: none;
   }
 `;
@@ -119,10 +119,10 @@ const FolderNameLink = styled(SafeLink)`
   border: none;
   box-shadow: none;
   color: ${colors.text.primary};
-  font-size: ${fonts.sizes('16px')};
+  font-size: ${fonts.sizes("16px")};
   transition: ${animations.durations.superFast};
   word-break: break-word;
-  &[data-selected='true'] {
+  &[data-selected="true"] {
     color: ${colors.brand.primary};
     font-weight: ${fonts.weight.semibold};
   }
@@ -163,7 +163,7 @@ const FolderItem = ({
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const selected = selectedFolder ? selectedFolder.id === id : false;
 
-  const levelVariable = useMemo(() => ({ '--level': level } as unknown as CSSProperties), [level]);
+  const levelVariable = useMemo(() => ({ "--level": level }) as unknown as CSSProperties, [level]);
 
   const focused = focusedFolder?.id === id;
 
@@ -172,7 +172,7 @@ const FolderItem = ({
       setSelectedFolder(folder);
     }
     setFocusedFolder(folder);
-    if (type === 'picker') {
+    if (type === "picker") {
       if (selected) {
         closeTree();
       }
@@ -181,13 +181,13 @@ const FolderItem = ({
 
   useEffect(() => {
     if (focusedFolder?.id === id && !isCreatingFolder) {
-      if (type === 'navigation') {
+      if (type === "navigation") {
         ref.current?.focus();
       }
-      if (type === 'picker') {
+      if (type === "picker") {
         ref.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
+          behavior: "smooth",
+          block: "start",
         });
       }
     }
@@ -202,27 +202,27 @@ const FolderItem = ({
   const isMaxDepth = level > maxLevel;
   const hideArrow = isMaxDepth || emptyFolder;
 
-  const FolderIcon = folder.status === 'shared' ? FolderShared : FolderOutlined;
+  const FolderIcon = folder.status === "shared" ? FolderShared : FolderOutlined;
 
   const tabable = selected || focused || (!focusedFolder && !folder.parentId && index === 0);
 
-  return type === 'navigation' ? (
+  return type === "navigation" ? (
     <FolderNameLink
       role="treeitem"
       aria-owns={folder.subfolders.length ? treestructureId(type, `subfolders-${folder.id}`) : undefined}
       aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
-      aria-current={selected ? 'page' : undefined}
+      aria-current={selected ? "page" : undefined}
       aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
       ref={ref}
       style={levelVariable}
       onKeyDown={(e: KeyboardEvent<HTMLElement>) => {
-        if (e.key === 'Enter') {
+        if (e.key === "Enter") {
           setSelectedFolder(folder);
           return;
         }
         arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
       }}
-      to={loading ? '' : linkPath}
+      to={loading ? "" : linkPath}
       tabIndex={tabable ? 0 : -1}
       data-selected={selected}
       onFocus={() => setFocusedFolder(folder)}
@@ -257,7 +257,7 @@ const FolderItem = ({
       aria-selected={selected}
       data-focused={focusedFolder?.id === folder.id}
       aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
-      aria-label={`${name}${folder.status === 'shared' ? `, ${t('myNdla.folder.sharing.shared')}` : ''}`}
+      aria-label={`${name}${folder.status === "shared" ? `, ${t("myNdla.folder.sharing.shared")}` : ""}`}
       variant="ghost"
       shape="sharp"
       fontWeight="normal"
@@ -295,9 +295,9 @@ const FolderItem = ({
       <StyledName>{name}</StyledName>
       {containsResource && (
         <StyledDone
-          aria-label={t('myNdla.alreadyInFolder')}
+          aria-label={t("myNdla.alreadyInFolder")}
           id={`alreadyAdded-${folder.id}`}
-          title={t('myNdla.alreadyInFolder')}
+          title={t("myNdla.alreadyInFolder")}
         />
       )}
     </FolderName>

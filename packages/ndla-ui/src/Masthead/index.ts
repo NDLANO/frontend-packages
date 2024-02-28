@@ -6,10 +6,10 @@
  *
  */
 
-import Masthead from './Masthead';
+import Masthead from "./Masthead";
 
-import { getMastheadHeight, useMastheadHeight } from './utils';
-import { default as SkipToMainContent } from './SkipToMainContent';
+import { default as SkipToMainContent } from "./SkipToMainContent";
+import { getMastheadHeight, useMastheadHeight } from "./utils";
 
 export { getMastheadHeight, useMastheadHeight, SkipToMainContent };
 

@@ -1,9 +1,18 @@
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { Forward, Launch } from '@ndla/icons/common';
-import { useTranslation } from 'react-i18next';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { spacing, fonts, colors, mq, breakpoints } from "@ndla/core";
+import { Forward, Launch } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
+import { Text } from "@ndla/typography";
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -14,7 +23,7 @@ const StyledLinksWrapper = styled.div`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     div:first-of-type {
-      margin-right: ${spacingUnit * 4}px;
+      margin-right: ${spacing.xxlarge};
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -26,27 +35,17 @@ const StyledLinksWrapper = styled.div`
 `;
 
 type FooterLinksProps = {
-  links: [
-    {
-      to: string;
-      text: string;
-      icon: ReactNode;
-      facebook: string;
-      twitter: string;
-    },
-  ];
+  commonLinks?: {
+    to: string;
+    text: string;
+    external: boolean;
+  }[];
+  links?: {
+    to: string;
+    text: string;
+    icon: ReactNode;
+  }[];
 };
-
-const commonLinks = [
-  { key: 'omNdla', url: 'https://om.ndla.no' },
-  {
-    key: 'aboutNdla',
-    url: 'https://om.ndla.no/about-ndla',
-  },
-  { key: 'blog', url: 'https://blogg.ndla.no' },
-  { key: 'tips', url: 'https://blogg.ndla.no/elever' },
-  { key: 'vacancies', url: 'https://om.ndla.no/jobb-for-ndla/' },
-];
 
 const StyledNav = styled.nav`
   display: flex;
@@ -87,39 +86,39 @@ const StyledSocialMediaLinkWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledHeaderLinks = styled.h3`
+const StyledTextLinks = styled(Text)`
   ${fonts.sizes(16, 1.5)};
   font-weight: ${fonts.weight.semibold};
-  margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks = ({ links }: FooterLinksProps) => {
+const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
   const { t } = useTranslation();
   return (
     <>
       <StyledLinksWrapper>
         <div>
-          <StyledHeaderLinks id="otherLinks">
-            {t('footer.linksHeader')} <Launch />
-          </StyledHeaderLinks>
+          <StyledTextLinks id="otherLinks" element="span" textStyle="content-alt">
+            {t("footer.linksHeader")}
+          </StyledTextLinks>
           <StyledNav aria-labelledby="otherLinks">
-            {commonLinks.map((link) => (
-              <div key={link.url}>
+            {commonLinks?.map((link) => (
+              <div key={link.to}>
                 <StyledSafeLink
-                  key={t(`footer.ndlaLinks.${link.key}`)}
-                  aria-label={t(`footer.ndlaLinks.${link.key}`)}
-                  to={link.url}
-                  target="_blank"
+                  key={link.text}
+                  aria-label={link.text}
+                  to={link.to}
+                  target={link.external ? "_blank" : ""}
                   rel="noopener noreferrer"
                 >
-                  {t(`footer.ndlaLinks.${link.key}`)}
+                  {link.text}
+                  {link.external && <Launch />}
                 </StyledSafeLink>
               </div>
             ))}
           </StyledNav>
         </div>
-        <StyledNav aria-label={t('footer.socialMedia')}>
-          {links.map((link) => (
+        <StyledNav aria-label={t("footer.socialMedia")}>
+          {links?.map((link) => (
             <StyledSocialMediaLinkWrapper key={link.to}>
               <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
               <StyledSafeLink to={link.to}>

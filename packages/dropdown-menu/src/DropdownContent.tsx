@@ -6,13 +6,13 @@
  *
  */
 
-import { useMemo } from 'react';
-import styled from '@emotion/styled';
-import { Arrow, Content, DropdownMenuContentProps, Portal } from '@radix-ui/react-dropdown-menu';
-import { Slot } from '@radix-ui/react-slot';
-import { animations, colors, misc, shadows } from '@ndla/core';
+import { useMemo } from "react";
+import styled from "@emotion/styled";
+import { Arrow, Content, DropdownMenuContentProps, Portal } from "@radix-ui/react-dropdown-menu";
+import { Slot } from "@radix-ui/react-slot";
+import { animations, colors, misc, shadows, stackOrder } from "@ndla/core";
 
-interface Props extends Omit<DropdownMenuContentProps, 'asChild'> {
+interface Props extends Omit<DropdownMenuContentProps, "asChild"> {
   portal?: boolean;
   showArrow?: boolean;
 }
@@ -26,7 +26,7 @@ const StyledContent = styled(Content)`
   border-radius: ${misc.borderRadius};
   box-shadow: ${shadows.levitate1};
   overflow: hidden;
-  z-index: 100;
+  z-index: ${stackOrder.dropdown};
   @media (prefers-reduced-motion: no-preference) {
     ${animations.fadeIn(animations.durations.fast)}
   }
@@ -36,7 +36,7 @@ const StyledArrow = styled(Arrow)`
   fill: white;
 `;
 
-const DropdownContent = ({ portal = true, showArrow, side = 'top', children, ...rest }: Props) => {
+const DropdownContent = ({ portal = true, showArrow, side = "top", children, ...rest }: Props) => {
   const MaybePortal = useMemo(() => (portal ? Portal : Slot), [portal]);
   return (
     <MaybePortal>

@@ -6,24 +6,25 @@
  *
  */
 
-import sortBy from 'lodash/sortBy';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { COPYRIGHTED } from '@ndla/licenses';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import parse from 'html-react-parser';
-import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from '@ndla/types-embed';
-import { useTranslation } from 'react-i18next';
-import { ButtonV2 } from '@ndla/button';
-import { Figure } from '../Figure';
-import { EmbedByline } from '../LicenseByline';
-import EmbedErrorPlaceholder from './EmbedErrorPlaceholder';
-import { HeartButtonType } from './types';
+import parse from "html-react-parser";
+import sortBy from "lodash/sortBy";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing } from "@ndla/core";
+import { COPYRIGHTED } from "@ndla/licenses";
+import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "@ndla/types-embed";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { HeartButtonType, RenderContext } from "./types";
+import { Figure } from "../Figure";
+import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: BrightcoveMetaData;
   isConcept?: boolean;
   heartButton?: HeartButtonType;
+  renderContext?: RenderContext;
 }
 
 const LinkedVideoButton = styled(ButtonV2)`
@@ -34,9 +35,9 @@ const BrightcoveIframe = styled.iframe`
   height: auto;
 `;
 
-export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = '') => {
-  const strippedWidth = typeof width === 'number' ? width : width.replace(/\s*px/, '');
-  const strippedHeight = typeof height === 'number' ? height : height.replace(/\s*px/, '');
+export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = "") => {
+  const strippedWidth = typeof width === "number" ? width : width.replace(/\s*px/, "");
+  const strippedHeight = typeof height === "number" ? height : height.replace(/\s*px/, "");
   const urlOrTitle = title || url;
   return `<iframe title="${urlOrTitle}" aria-label="${urlOrTitle}" src="${url}" width="${strippedWidth}" height="${strippedHeight}" allowfullscreen scrolling="no" frameborder="0" loading="lazy"></iframe>`;
 };
@@ -44,7 +45,7 @@ export const makeIframeString = (url: string, width: string | number, height: st
 export const isNumeric = (value: any) => !Number.isNaN(value - parseFloat(value));
 
 const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSource[]) => {
-  const { account, videoid, player = 'default' } = data;
+  const { account, videoid, player = "default" } = data;
 
   const source = sortBy(
     sources.filter((s) => s.width && s.height),
@@ -53,34 +54,34 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
 
   return {
     src: `https://players.brightcove.net/${account}/${player}_default/index.html?videoId=${videoid}`,
-    height: source?.height ?? '480',
-    width: source?.width ?? '640',
+    height: source?.height ?? "480",
+    width: source?.width ?? "640",
   };
 };
-const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) => {
+const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderContext = "article" }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { embedData } = embed;
-  const fallbackTitle = `${t('embed.type.video')}: ${embedData.videoid}`;
+  const fallbackTitle = `${t("embed.type.video")}: ${embedData.videoid}`;
   const parsedDescription = useMemo(() => {
-    if (embed.embedData.caption) {
-      return parse(embed.embedData.caption);
-    } else if (embed.status === 'success' && embed.data.description) {
+    if (embed.embedData.caption || renderContext === "article") {
+      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
+    } else if (embed.status === "success" && embed.data.description) {
       return parse(embed.data.description);
     }
-  }, [embed]);
+  }, [embed, renderContext]);
 
   useEffect(() => {
     const iframe = iframeRef.current;
     if (iframe) {
       const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
       iframe.style.aspectRatio = `${width}/${height}`;
-      iframe.width = '';
-      iframe.height = '';
+      iframe.width = "";
+      iframe.height = "";
     }
   }, []);
-  if (embed.status === 'error') {
+  if (embed.status === "error") {
     return (
       <EmbedErrorPlaceholder type="video">
         <BrightcoveIframe
@@ -104,7 +105,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
     : undefined;
 
   return (
-    <Figure type={isConcept ? 'full-column' : 'full'} resizeIframe>
+    <Figure type={isConcept ? "full-column" : "full"} resizeIframe>
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}
@@ -124,7 +125,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton }: Props) 
             size="small"
             onClick={() => setShowOriginalVideo((p) => !p)}
           >
-            {t(`figure.button.${!showOriginalVideo ? 'original' : 'alternative'}`)}
+            {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}
           </LinkedVideoButton>
         )}
         {HeartButton && data.copyright?.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}

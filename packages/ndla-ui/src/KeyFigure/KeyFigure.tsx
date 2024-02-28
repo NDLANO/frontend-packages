@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2023-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -6,8 +6,8 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const ContentWrapper = styled.div`
   padding: ${spacing.small};
   align-items: center;
   ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.medium} ${spacing.large};
+    padding: ${spacing.xsmall} ${spacing.nsmall};
   }
 `;
 
@@ -31,18 +31,18 @@ const TitleWrapper = styled.div`
   font-family: ${fonts.sans};
   font-weight: ${fonts.weight.bold};
   overflow-wrap: break-word;
-  ${fonts.sizes('38px', '48px')};
+  ${fonts.sizes("38px", "48px")};
   text-align: center;
 
   ${mq.range({ until: breakpoints.tabletWide })} {
-    ${fonts.sizes('30px', '36px')};
+    ${fonts.sizes("30px", "36px")};
   }
 `;
 
 const SubTitleWrapper = styled.div`
-  overflow-wrap: 'break-word';
+  overflow-wrap: "break-word";
   text-align: center;
-  ${fonts.sizes('18px', '29px')};
+  ${fonts.sizes("18px", "29px")};
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
   font-family: ${fonts.sans};
@@ -59,14 +59,15 @@ interface Props {
   };
   title: string;
   subtitle: string;
+  lang?: string;
 }
 
-const KeyFigure = ({ image, title, subtitle }: Props) => {
+const KeyFigure = ({ image, title, subtitle, lang }: Props) => {
   return (
     <ContentWrapper>
       <StyledImage src={image?.src} width={150} height={150} alt={image?.alt} />
-      <TitleWrapper>{title}</TitleWrapper>
-      <SubTitleWrapper>{subtitle}</SubTitleWrapper>
+      <TitleWrapper lang={lang}>{title}</TitleWrapper>
+      <SubTitleWrapper lang={lang}>{subtitle}</SubTitleWrapper>
     </ContentWrapper>
   );
 };

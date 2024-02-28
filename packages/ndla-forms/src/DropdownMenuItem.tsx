@@ -6,14 +6,14 @@
  *
  */
 
-import { HTMLProps, ReactNode } from 'react';
-import { css } from '@emotion/react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { Check } from '@ndla/icons/editor';
-import { Information } from '@ndla/icons/common';
-import DropdownMenuImage from './DropdownMenuImage';
+import { HTMLProps, ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
+import { Information } from "@ndla/icons/common";
+import { Check } from "@ndla/icons/editor";
+import DropdownMenuImage from "./DropdownMenuImage";
 
 const StyledDescription = styled.span`
   ${fonts.sizes(14, 1.1)};
@@ -45,7 +45,7 @@ const StyledisSelected = styled.div`
   align-items: flex-start;
   justify-content: flex-end;
   padding-right: ${spacing.small};
-  .c-icon {
+  [data-icon] {
     color: ${colors.support.green};
     margin-left: ${spacing.xsmall};
   }
@@ -64,7 +64,7 @@ const StyledIsDisabled = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   padding-right: ${spacing.small};
-  .c-icon {
+  [data-icon] {
     width: 17px;
     height: 17px;
     min-width: 17px;
@@ -131,7 +131,7 @@ const InfoPart = ({ isSelected, disabledText }: InfoPartProps) => {
   if (isSelected) {
     return (
       <StyledisSelected>
-        {t('dropdown.isSelectedItem')}
+        {t("dropdown.isSelectedItem")}
         <Check aria-hidden={true} />
       </StyledisSelected>
     );
@@ -167,7 +167,7 @@ function DropdownMenuItem({ disableSelected, item, isSelected, highlighted, ...r
     <StyledItemButton
       key={item.id}
       //@ts-ignore Emotion uses string instead of union for type prop
-      type={'button'}
+      type={"button"}
       isSelected={isSelected}
       disabled={!!item.disabledText || (disableSelected && isSelected)}
       highlighted={highlighted}

@@ -6,30 +6,33 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { ReactNode } from 'react';
-import { FolderOutlined, FolderShared } from '@ndla/icons/contentType';
-import { FileDocumentOutline, Share } from '@ndla/icons/common';
-import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import { ResourceTitleLink } from '../../Resource/resourceComponents';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { fonts, spacing, colors, mq, breakpoints, stackOrder } from "@ndla/core";
+import { FileDocumentOutline, Share } from "@ndla/icons/common";
+import { FolderOutlined, FolderSharedOutlined } from "@ndla/icons/contentType";
+import { ResourceTitleLink } from "../../Resource/resourceComponents";
 
-export type LayoutType = 'list' | 'listLarger' | 'block';
+export type LayoutType = "list" | "listLarger" | "block";
 
 const FolderWrapper = styled.div`
   display: flex;
   position: relative;
   align-items: center;
   justify-content: space-between;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
 
   ${mq.range({ until: breakpoints.mobileWide })} {
-    &:not([data-type='list']) {
+    &:not([data-type="list"]) {
       flex-direction: column;
       align-items: unset;
     }
   }
 
-  &[data-type='block'] {
+  &[data-type="block"] {
     flex-direction: column;
     align-items: unset;
   }
@@ -56,7 +59,7 @@ const TitleWrapper = styled.div`
   align-items: center;
   gap: ${spacing.xsmall};
   justify-content: space-between;
-  &[data-type='block'] {
+  &[data-type="block"] {
     margin-bottom: 0;
   }
 `;
@@ -72,7 +75,7 @@ const IconWrapper = styled.div`
 `;
 
 const FolderTitle = styled.h2`
-  ${fonts.sizes('16px', '20px')};
+  ${fonts.sizes("16px", "20px")};
   font-weight: ${fonts.weight.semibold};
   margin: 0px !important;
   flex: 1;
@@ -87,9 +90,8 @@ const FolderTitle = styled.h2`
 `;
 
 const MenuWrapper = styled.div`
-  overflow: hidden;
   display: flex;
-  z-index: 1;
+  z-index: ${stackOrder.offsetSingle};
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -102,6 +104,12 @@ const CountContainer = styled.div`
   min-height: 44px;
   gap: ${spacing.small};
   margin: 0 ${spacing.small} 0 ${spacing.nsmall};
+
+  ${mq.range({ until: breakpoints.tablet })} {
+    &[data-type="list"] {
+      display: none;
+    }
+  }
 `;
 
 const IconTextWrapper = styled.div`
@@ -115,21 +123,16 @@ const IconTextWrapper = styled.div`
     height: 13px;
   }
   ${fonts.sizes(16)};
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    &[data-type='list'] {
-      display: none;
-    }
-  }
 `;
 
 interface IconCountProps {
-  type: 'resource' | 'folder';
+  type: "resource" | "folder";
   count?: number;
   layoutType: LayoutType;
 }
 
 const Count = ({ type, count, layoutType }: IconCountProps) => {
-  const Icon = type === 'resource' ? FileDocumentOutline : FolderOutlined;
+  const Icon = type === "resource" ? FileDocumentOutline : FolderOutlined;
   const { t } = useTranslation();
   if (!count) return null;
 
@@ -153,15 +156,15 @@ interface Props {
   isShared?: boolean;
 }
 
-const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu, isShared }: Props) => {
+const Folder = ({ id, link, title, subFolders, subResources, type = "list", menu, isShared }: Props) => {
   const { t } = useTranslation();
-  const Icon = isShared ? FolderShared : FolderOutlined;
+  const Icon = isShared ? FolderSharedOutlined : FolderOutlined;
 
   return (
     <FolderWrapper data-type={type} id={id}>
       <TitleWrapper data-type={type}>
         <IconWrapper
-          aria-label={`${isShared ? `${t('myNdla.folder.sharing.shared')} ` : ''}${t('myNdla.folder.folder')}`}
+          aria-label={`${isShared ? `${t("myNdla.folder.sharing.shared")} ` : ""}${t("myNdla.folder.folder")}`}
         >
           <Icon />
         </IconWrapper>
@@ -172,16 +175,16 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
         </ResourceTitleLink>
       </TitleWrapper>
       <MenuWrapper>
-        <CountContainer>
+        <CountContainer data-type={type}>
           {isShared && (
             // Information regarding the shared status of a folder is read previously, ignore this
-            <IconTextWrapper data-type={type} aria-hidden>
+            <IconTextWrapper aria-hidden>
               <Share />
-              <span>{t('myNdla.folder.sharing.shared')}</span>
+              <span>{t("myNdla.folder.sharing.shared")}</span>
             </IconTextWrapper>
           )}
-          <Count layoutType={type} type={'folder'} count={subFolders} />
-          <Count layoutType={type} type={'resource'} count={subResources} />
+          <Count layoutType={type} type={"folder"} count={subFolders} />
+          <Count layoutType={type} type={"resource"} count={subResources} />
         </CountContainer>
         {menu}
       </MenuWrapper>

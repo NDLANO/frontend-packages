@@ -6,17 +6,18 @@
  *
  */
 
-import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from '@ndla/dropdown-menu';
-import { ButtonV2 } from '@ndla/button';
-import { useTranslation } from 'react-i18next';
-import { ChevronDown } from '@ndla/icons/common';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { colors, fonts, spacing } from "@ndla/core";
+import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from "@ndla/dropdown-menu";
+import { ChevronDown } from "@ndla/icons/common";
 
 interface Props<T extends string> {
   locales: T[];
   onSelect: (locale: T) => void;
   inverted?: boolean;
+  triggerId?: string;
 }
 
 const StyledDropdownContent = styled(DropdownContent)`
@@ -56,16 +57,22 @@ const ActiveIndicator = styled.div`
 `;
 
 const Text = styled.span`
-  ${fonts.sizes('20px', '24px')};
+  ${fonts.sizes("20px", "24px")};
   font-weight: ${fonts.weight.semibold};
 `;
 
-const LanguageSelector = <T extends string>({ locales, onSelect, inverted }: Props<T>) => {
+const LanguageSelector = <T extends string>({ locales, onSelect, inverted, triggerId }: Props<T>) => {
   const { t, i18n } = useTranslation();
   return (
     <DropdownMenu>
       <DropdownTrigger>
-        <ButtonV2 variant="outline" shape="pill" inverted={inverted} aria-label={t('footer.selectLanguage')}>
+        <ButtonV2
+          variant="outline"
+          shape="pill"
+          inverted={inverted}
+          aria-label={t("footer.selectLanguage")}
+          id={triggerId}
+        >
           {t(`languages.prefixChangeLanguage`)} <ChevronDown />
         </ButtonV2>
       </DropdownTrigger>

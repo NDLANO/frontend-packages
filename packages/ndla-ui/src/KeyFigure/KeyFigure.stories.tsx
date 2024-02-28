@@ -6,25 +6,25 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { defaultParameters } from '../../../../stories/defaults';
-import KeyFigure from './KeyFigure';
+import { Meta, StoryFn } from "@storybook/react";
+import KeyFigure from "./KeyFigure";
+import { defaultParameters } from "../../../../stories/defaults";
 const args = {
-  title: '500',
-  subtitle: 'TVERRFAGLIGE RESSURSER',
+  title: "500",
+  subtitle: "TVERRFAGLIGE RESSURSER",
   image: {
-    alt: 'Nøkkeltall tverrfaglig',
-    src: 'https://api.test.ndla.no/image-api/raw/wMowCjRg.svg',
+    alt: "Nøkkeltall tverrfaglig",
+    src: "https://api.test.ndla.no/image-api/raw/wMowCjRg.svg",
   },
 };
 
 export default {
-  title: 'Components/Key figures',
+  title: "Components/Key figures",
   component: KeyFigure,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
-    layout: 'centered',
+    layout: "centered",
   },
   args: args,
 } as Meta<typeof KeyFigure>;
@@ -34,4 +34,4 @@ export const KeyFigureStory: StoryFn<typeof KeyFigure> = ({ ...args }) => {
 };
 
 KeyFigureStory.args = args;
-KeyFigureStory.storyName = 'Key figures';
+KeyFigureStory.storyName = "Key figures";

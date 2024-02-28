@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import { LearningPathBadge } from '../ContentTypeBadge';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { colors, fonts, spacing } from "@ndla/core";
+import { LearningPathBadge } from "../ContentTypeBadge";
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ const LearningPathMobileHeader = () => {
   return (
     <StyledWrapper>
       <LearningPathBadge size="xx-small" background />
-      <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>
+      <StyledMiniHeader>{t("learningPath.youAreInALearningPath")}</StyledMiniHeader>
     </StyledWrapper>
   );
 };

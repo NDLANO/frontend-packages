@@ -1,34 +1,47 @@
-const path = require('path');
-const spawn = require('cross-spawn');
-const glob = require('glob');
+/**
+ * Copyright (c) 2017-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { join, dirname } from "path";
+import spawn from "cross-spawn";
+import glob from "glob";
+
+const { sync } = glob;
+const __dirname = dirname(new URL(import.meta.url).pathname);
 
 const [executor, ignoredBin, script, ...args] = process.argv;
 
 function attemptResolve(...resolveArgs) {
   try {
-    return require.resolve(...resolveArgs);
+    return import.meta.resolve(...resolveArgs);
   } catch (error) {
     return null;
   }
 }
 
 function handleSignal(result) {
-  if (result.signal === 'SIGKILL' || result.signal === 'SIGTERM') {
+  if (result.signal === "SIGKILL" || result.signal === "SIGTERM") {
     console.log(`The script "${script}" failed because the process exited too early with signal ${result.signal}.`);
   }
   process.exit(1);
 }
 
 function spawnScript() {
-  const relativeScriptPath = path.join(__dirname, './scripts', script);
+  const relativeScriptPath = join(__dirname, "./scripts", script);
   const scriptPath = attemptResolve(relativeScriptPath);
 
   if (!scriptPath) {
     throw new Error(`Unknown script "${script}".`);
   }
 
-  const result = spawn.sync(executor, [scriptPath, ...args], {
-    stdio: 'inherit',
+  const properFilePath = scriptPath.replace(/^file:\/\//, "").concat(".js");
+
+  const result = spawn.sync(executor, [properFilePath, ...args], {
+    stdio: "inherit",
   });
 
   if (result.signal) {
@@ -41,12 +54,12 @@ function spawnScript() {
 if (script) {
   spawnScript();
 } else {
-  const scriptsPath = path.join(__dirname, 'scripts/');
-  const scriptsAvailable = glob.sync(path.join(__dirname, 'scripts', '*'));
+  const scriptsPath = join(__dirname, "scripts/");
+  const scriptsAvailable = sync(join(__dirname, "scripts", "*"));
   const scriptsAvailableMessage = scriptsAvailable
-    .map((s) => s.replace(scriptsPath, '').replace(/\.js$/, ''))
+    .map((s) => s.replace(scriptsPath, "").replace(/\.js$/, ""))
     .filter(Boolean)
-    .join('\n  ')
+    .join("\n  ")
     .trim();
   const fullMessage = `
 Usage: ${ignoredBin} [script] [--flags]

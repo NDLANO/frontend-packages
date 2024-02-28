@@ -6,32 +6,32 @@
  *
  */
 
-import { ElementType, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { colors } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { stepNumbers } from './pagerHelpers';
+import { ElementType, ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors } from "@ndla/core";
+import SafeLink from "@ndla/safelink";
+import { stepNumbers } from "./pagerHelpers";
 
 const createQueryString = (obj: Query) =>
   Object.entries(obj)
-    .filter(([_, value]) => value !== undefined && value !== '')
+    .filter(([_, value]) => value !== undefined && value !== "")
     .map(([key, value]) => `${key}=${value}`)
-    .join('&');
+    .join("&");
 
-type ColorTheme = 'primary' | 'lighter';
+type ColorTheme = "primary" | "lighter";
 
 const pageItemActiveStyle = css`
   border-top: 3px solid ${colors.brand.primary};
-  background-color: 'rgba(222,235,246,0.5)';
+  background-color: "rgba(222,235,246,0.5)";
 `;
 
 const pageItemStyle = (small: boolean = false, color: ColorTheme) => css`
   display: inline;
   background: transparent;
   border: 0;
-  border-top: 3px solid ${color === 'primary' ? colors.background.dark : colors.white};
-  padding: ${small ? '0.2em 0.6em' : '1em 1.45em'};
+  border-top: 3px solid ${color === "primary" ? colors.background.dark : colors.white};
+  padding: ${small ? "0.2em 0.6em" : "1em 1.45em"};
   margin: 1em 0.3em 0;
   text-decoration: none;
   box-shadow: none;
@@ -113,13 +113,20 @@ const Pager = <T extends Query>({
   onClick = (_) => {},
   pageItemComponentClass = SafeLink,
   query,
-  pathname = '',
+  pathname = "",
   small = false,
-  colorTheme = 'primary',
+  colorTheme = "primary",
 }: Props<T>) => {
   const steps = stepNumbers(page, lastPage);
 
-  const rest = { onClick, pageItemComponentClass, query, pathname, small, colorTheme };
+  const rest = {
+    onClick,
+    pageItemComponentClass,
+    query,
+    pathname,
+    small,
+    colorTheme,
+  };
   const PageItems = steps.map((n) => {
     if (n === page) {
       return (
@@ -138,13 +145,13 @@ const Pager = <T extends Query>({
   const prevPageItem =
     steps[0] < page ? (
       <PageItem page={page - 1} {...rest}>
-        {'<'}
+        {"<"}
       </PageItem>
     ) : null;
   const nextPageItem =
     page < lastPage ? (
       <PageItem page={page + 1} {...rest}>
-        {'>'}
+        {">"}
       </PageItem>
     ) : null;
 

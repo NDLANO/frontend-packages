@@ -6,23 +6,23 @@
  *
  */
 
-import { KeyboardEvent, forwardRef } from 'react';
-import styled from '@emotion/styled';
-import { useForwardedRef } from '@ndla/util';
-import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { ChevronUp, ChevronDown } from '@ndla/icons/common';
-import { IFolder } from '@ndla/types-backend/learningpath-api';
-import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
-import { treestructureId } from './helperFunctions';
-import { TreeStructureType } from './types';
-import { arrowNavigation } from './arrowNavigation';
-import ContentLoader from '../ContentLoader';
+import { KeyboardEvent, forwardRef } from "react";
+import styled from "@emotion/styled";
+import { ButtonV2 as Button, IconButtonV2 as IconButton } from "@ndla/button";
+import { breakpoints, colors, mq, spacing } from "@ndla/core";
+import { ChevronUp, ChevronDown } from "@ndla/icons/common";
+import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { useForwardedRef } from "@ndla/util";
+import { arrowNavigation } from "./arrowNavigation";
+import { treestructureId } from "./helperFunctions";
+import { TreeStructureType } from "./types";
+import ContentLoader from "../ContentLoader";
 
 const StyledRow = styled.div`
   display: flex;
   padding: ${spacing.xxsmall};
   align-items: center;
-  &[data-open='true'] {
+  &[data-open="true"] {
     border-bottom: 1px solid ${colors.brand.tertiary};
   }
 `;
@@ -85,19 +85,19 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
     const innerRef = useForwardedRef(ref);
 
     const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-      if (e.key === 'Enter') {
+      if (e.key === "Enter") {
         onToggleTree(!showTree);
         if (showTree && focusedFolder) {
           setSelectedFolder(focusedFolder);
         }
         return;
       }
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onToggleTree(false);
         e.preventDefault();
         return;
       }
-      if (['ArrowUp', 'ArrowDown'].includes(e.key) && !showTree) {
+      if (["ArrowUp", "ArrowDown"].includes(e.key) && !showTree) {
         onToggleTree(true);
         return;
       }
@@ -127,12 +127,12 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           <StyledSelectedFolder
             ref={innerRef}
             tabIndex={0}
-            id={treestructureId(type, 'combobox')}
+            id={treestructureId(type, "combobox")}
             role="combobox"
-            aria-controls={treestructureId(type, 'popup')}
+            aria-controls={treestructureId(type, "popup")}
             aria-haspopup="tree"
             aria-expanded={showTree}
-            aria-labelledby={label ? treestructureId(type, 'label') : undefined}
+            aria-labelledby={label ? treestructureId(type, "label") : undefined}
             aria-activedescendant={focusedFolder ? treestructureId(type, focusedFolder.id) : undefined}
             aria-describedby={ariaDescribedby}
             variant="ghost"

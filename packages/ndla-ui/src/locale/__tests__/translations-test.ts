@@ -6,38 +6,38 @@
  *
  */
 
-import { validateTranslationFiles } from '@ndla/util';
-import messagesNB from '../messages-nb';
-import messagesNN from '../messages-nn';
-import messagesEN from '../messages-en';
-import messagesSE from '../messages-se';
-import messagesSMA from '../messages-sma';
+import { validateTranslationFiles } from "@ndla/util";
+import messagesEN from "../messages-en";
+import messagesNB from "../messages-nb";
+import messagesNN from "../messages-nn";
+import messagesSE from "../messages-se";
+import messagesSMA from "../messages-sma";
 
-test('That all translations has all language keys', () => {
+test("That all translations has all language keys", () => {
   const anyMissing = validateTranslationFiles(
     [
       {
-        languageName: 'Norsk bokmål',
+        languageName: "Norsk bokmål",
         translationObject: messagesNB,
       },
       {
-        languageName: 'Norsk nynorsk',
+        languageName: "Norsk nynorsk",
         translationObject: messagesNN,
       },
       {
-        languageName: 'English',
+        languageName: "English",
         translationObject: messagesEN,
       },
       {
-        languageName: 'Nordsamisk',
+        languageName: "Nordsamisk",
         translationObject: messagesSE,
       },
       {
-        languageName: 'Sørsamisk',
+        languageName: "Sørsamisk",
         translationObject: messagesSMA,
       },
     ],
-    'only-on-error',
+    "only-on-error",
   );
 
   expect(anyMissing).toBe(false);

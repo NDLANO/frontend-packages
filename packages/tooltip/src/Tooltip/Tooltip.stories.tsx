@@ -6,28 +6,21 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { ButtonV2 } from '@ndla/button';
-import { defaultParameters } from '../../../../stories/defaults';
-import Tooltip from './Tooltip';
+import { Meta, StoryFn } from "@storybook/react";
+import { ButtonV2 } from "@ndla/button";
+import Tooltip from "./Tooltip";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/Tooltip',
+  title: "Components/Tooltip",
   component: Tooltip,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
   args: {
-    children: 'Button',
-    tooltip: 'Tooltip',
-  },
-  argTypes: {
-    hydrateHTML: {
-      control: {
-        type: null,
-      },
-    },
+    children: "Button",
+    tooltip: "Tooltip",
   },
 } as Meta<typeof Tooltip>;
 
@@ -39,4 +32,4 @@ export const TooltipStory: StoryFn<typeof Tooltip> = ({ children, ...args }) => 
   );
 };
 
-TooltipStory.storyName = 'Tooltip';
+TooltipStory.storyName = "Tooltip";

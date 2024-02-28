@@ -6,11 +6,11 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { useTranslation } from 'react-i18next';
-import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from "@ndla/core";
 
 const StyledInfoHeader = styled.p`
   ${typography.smallHeading}
@@ -36,7 +36,7 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
   }
   border-left: ${BORDER_WIDTH}px solid ${colors.text.light};
   &:before {
-    content: '';
+    content: "";
     display: block;
     background: ${colors.text.light};
     border-radius: 100%;
@@ -97,6 +97,7 @@ const StyledIntroHeader = styled.h1`
 const StyledRow = styled.div`
   display: flex;
   gap: ${spacing.small};
+  align-items: center;
 `;
 
 interface Props {
@@ -113,7 +114,7 @@ const LearningPathMenuIntro = ({ isOpen, name, invertedStyle, heartButton }: Pro
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
         <StyledRow>
-          <StyledInfoHeader>{t('learningPath.youAreInALearningPath')}</StyledInfoHeader>
+          <StyledInfoHeader>{t("learningPath.youAreInALearningPath")}</StyledInfoHeader>
           {heartButton}
         </StyledRow>
         <StyledIntroHeader>{name}</StyledIntroHeader>

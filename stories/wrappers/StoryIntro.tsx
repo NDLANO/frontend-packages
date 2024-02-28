@@ -6,14 +6,25 @@
  *
  */
 
-import { ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
-import { OneColumn, LayoutItem } from '@ndla/ui';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { OneColumn, LayoutItem } from "@ndla/ui";
+import { colors, spacing } from "@ndla/core";
 
-const classes = new BEMHelper({
-  name: 'story-intro',
-  prefix: 'c-',
-});
+const StoryIntroSection = styled.section`
+  background: ${colors.brand.light};
+  padding: ${spacing.small};
+  margin-bottom: ${spacing.normal};
+  a:not([class]) {
+    color: ${colors.brand.primary};
+    a:not([class]) {
+      color: ${colors.white};
+      box-shadow: inset 0 -1px 0 rgba(${colors.white}, 0.6);
+      transition: box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+  }
+`;
 
 interface Props {
   title?: string;
@@ -21,14 +32,14 @@ interface Props {
 }
 
 const StoryIntro = ({ title, children }: Props) => (
-  <section {...classes()}>
+  <StoryIntroSection>
     <OneColumn>
       <LayoutItem layout="center">
         <h1 className="u-heading">{title}</h1>
         {children}
       </LayoutItem>
     </OneColumn>
-  </section>
+  </StoryIntroSection>
 );
 
 export default StoryIntro;

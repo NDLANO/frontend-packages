@@ -1,6 +1,6 @@
 {
   "name": "@ndla/howto",
-  "version": "4.1.0",
+  "version": "4.1.81",
   "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,20 +25,25 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^12.0.1",
-    "@ndla/core": "^4.2.0",
-    "@ndla/icons": "^4.0.10",
-    "@ndla/licenses": "^7.1.4",
-    "@ndla/modal": "^5.0.1",
-    "@ndla/notion": "^6.0.2",
-    "@ndla/tooltip": "^5.0.1",
-    "@ndla/ui": "^47.1.0",
-    "@ndla/util": "^4.0.0"
+    "@ndla/button": "^12.0.35",
+    "@ndla/core": "^4.4.2",
+    "@ndla/icons": "^5.0.12",
+    "@ndla/licenses": "^7.2.5",
+    "@ndla/modal": "^5.0.32",
+    "@ndla/notion": "^6.0.33",
+    "@ndla/tooltip": "^6.0.19",
+    "@ndla/ui": "^50.10.1",
+    "@ndla/util": "^4.0.4"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "react": ">= 16.8.0"
+    "i18next": ">= 23.0.0",
+    "lodash": ">= 4",
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-i18next": ">= 13.0.0",
+    "react-router-dom": ">= 6.0.0"
   },
   "publishConfig": {
     "access": "public"

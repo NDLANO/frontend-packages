@@ -6,11 +6,11 @@
  *
  */
 
-import { Root, Thumb, SwitchProps } from '@radix-ui/react-switch';
-import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import styled from "@emotion/styled";
+import { Root, Thumb, SwitchProps } from "@radix-ui/react-switch";
+import { colors, fonts, spacing } from "@ndla/core";
 
-interface Props extends Omit<SwitchProps, 'asChild' | 'id' | 'onChange' | 'onCheckedChange'> {
+interface Props extends Omit<SwitchProps, "asChild" | "id" | "onChange" | "onCheckedChange"> {
   checked: boolean;
   onChange: (checked: boolean) => void;
   label: string;
@@ -38,7 +38,7 @@ const StyledThumb = styled(Thumb)`
   transform: translateX(2px);
   will-change: transform;
 
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     transform: translateX(22px);
   }
 `;
@@ -49,19 +49,19 @@ const StyledRoot = styled(Root)`
   border-radius: 9999px;
   position: relative;
 
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     background-color: ${colors.brand.primary};
   }
-  &[data-state='unchecked'] {
+  &[data-state="unchecked"] {
     background-color: ${colors.text.light};
   }
   &:hover,
   &:focus,
   &:focus-within {
-    &[data-state='checked'] {
+    &[data-state="checked"] {
       background-color: ${colors.brand.dark};
     }
-    &[data-state='unchecked'] {
+    &[data-state="unchecked"] {
       background-color: ${colors.brand.greyDark};
     }
   }
@@ -71,7 +71,7 @@ const StyledThumbChar = styled.div`
   text-align: center;
   color: ${colors.black};
   font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes('14px', '16px')};
+  ${fonts.sizes("14px", "16px")};
   user-select: none;
 `;
 

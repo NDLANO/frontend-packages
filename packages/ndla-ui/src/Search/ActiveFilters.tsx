@@ -1,16 +1,24 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { spacing, mq, breakpoints } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
-import { useTranslation } from 'react-i18next';
-import ActiveFilterContent, { StyledActiveFilterTitle } from './ActiveFilterContent';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { spacing, mq, breakpoints } from "@ndla/core";
+import Tooltip from "@ndla/tooltip";
+import ActiveFilterContent, { StyledActiveFilterTitle } from "./ActiveFilterContent";
 
 interface StyledActiveFiltersProps {
   showOnSmallScreen?: boolean;
   filterLength?: number;
 }
 
-const StyledActiveFilters = styled('ul')<StyledActiveFiltersProps>`
+const StyledActiveFilters = styled("ul")<StyledActiveFiltersProps>`
   margin: 0;
   padding: 0;
   flex-direction: column;
@@ -59,22 +67,22 @@ const StyledActiveFilters = styled('ul')<StyledActiveFiltersProps>`
   }
 `;
 
-const StyledActiveFilterWrapper = styled('li')`
+const StyledActiveFilterWrapper = styled("li")`
   list-style: none;
   display: flex;
   margin-bottom: ${spacing.xsmall};
 
   ${mq.range({ from: breakpoints.tabletWide })} {
-    margin: 0 ${spacing.small} 0 0;
+    padding: 0 ${spacing.small} 0 0;
 
     &:last-of-type {
-      margin-right: 0;
+      padding-right: 0;
     }
   }
 `;
 
 const getFilterLength = (filters: Filter[]) =>
-  filters.filter((filter) => filter.filterName === 'filter_subjects' && filter.title).length;
+  filters.filter((filter) => filter.filterName === "filter_subjects" && filter.title).length;
 
 interface Filter {
   title: string;
@@ -100,13 +108,13 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }: Props) =>
         <StyledActiveFilterWrapper key={filterKey}>
           {filterLength > 1 ? (
             <Tooltip
-              tooltip={t('searchPage.searchFilterMessages.removeFilter', {
+              tooltip={t("searchPage.searchFilterMessages.removeFilter", {
                 filterName: filter.title,
               })}
             >
               <ActiveFilterContent
                 filter={filter}
-                ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {
+                ariaLabel={t("searchPage.searchFilterMessages.removeFilter", {
                   filterName: filter.title,
                 })}
                 onFilterRemove={onFilterRemove}
@@ -116,7 +124,7 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }: Props) =>
             <ActiveFilterContent
               filter={filter}
               onFilterRemove={onFilterRemove}
-              ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {
+              ariaLabel={t("searchPage.searchFilterMessages.removeFilter", {
                 filterName: filter.title,
               })}
             />

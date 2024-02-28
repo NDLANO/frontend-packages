@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { ValueContainerProps } from 'react-select';
-import isArray from 'lodash/isArray';
-import { useTranslation } from 'react-i18next';
-import { Option } from './types';
-import { TextEllipsis } from './BaseSingleValue';
+import isArray from "lodash/isArray";
+import { useTranslation } from "react-i18next";
+import { ValueContainerProps } from "react-select";
+import styled from "@emotion/styled";
+import { TextEllipsis } from "./BaseSingleValue";
+import { Option } from "./types";
 
 const StyledValueContainer = styled.div`
   display: grid;
@@ -36,7 +36,7 @@ const ValueContainer = <T extends boolean>({
         <StyledValueContainer>
           {!isTyping && (
             <TextEllipsis>
-              {t('dropdown.selected', { count: values.length })} <span>{postfix}</span>
+              {t("dropdown.selected", { count: values.length })} <span>{postfix}</span>
             </TextEllipsis>
           )}
           {input}

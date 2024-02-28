@@ -1,5 +1,13 @@
-import styled from '@emotion/styled';
-import { breakpoints, mq } from '@ndla/core';
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import styled from "@emotion/styled";
+import { breakpoints, mq } from "@ndla/core";
 
 type BannerProps = {
   image: string;

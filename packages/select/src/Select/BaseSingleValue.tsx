@@ -6,10 +6,10 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { fonts } from '@ndla/core';
-import { GroupBase, SingleValueProps } from 'react-select';
-import { Option } from './types';
+import { GroupBase, SingleValueProps } from "react-select";
+import styled from "@emotion/styled";
+import { fonts } from "@ndla/core";
+import { Option } from "./types";
 
 export const TextEllipsis = styled.span`
   overflow: hidden;
@@ -20,7 +20,7 @@ export const TextEllipsis = styled.span`
 
 const StyledPostfix = styled.span`
   font-weight: ${fonts.weight.semibold};
-  &[data-small='false'][data-bold='true'] {
+  &[data-small="false"][data-bold="true"] {
     font-weight: ${fonts.weight.bold};
   }
 `;

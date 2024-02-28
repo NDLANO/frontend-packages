@@ -1,12 +1,12 @@
-import { addons } from '@storybook/addons';
-import { create } from '@storybook/theming/create';
+import { addons } from "@storybook/addons";
+import { create } from "@storybook/theming/create";
 
 const theme = create({
-  base: 'light',
-  brandTitle: 'NDLA Designmanual',
-  brandUrl: 'https://designmanual.ndla.sh',
-  brandImage: '/ndla-logo.svg',
-  colorSecondary: '#20588f',
+  base: "light",
+  brandTitle: "NDLA Designmanual",
+  brandUrl: "https://designmanual.ndla.sh",
+  brandImage: "/ndla-logo.svg",
+  colorSecondary: "#20588f",
 });
 
 addons.setConfig({
@@ -14,6 +14,16 @@ addons.setConfig({
   showPanel: false,
   sidebar: {
     showRoots: true,
-    collapsedRoots: ['base-styles', 'components', 'patterns', 'other'],
+    collapsedRoots: [
+      "base-styles",
+      "components",
+      "patterns",
+      "other",
+      "licenses",
+      "my-ndla",
+      "production-system",
+      "forms",
+      "embeds",
+    ],
   },
 });

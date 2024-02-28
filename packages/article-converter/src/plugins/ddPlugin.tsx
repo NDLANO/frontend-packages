@@ -6,12 +6,16 @@
  *
  */
 
-import { DefinitionDescription } from '@ndla/ui';
-import { attributesToProps, domToReact } from 'html-react-parser';
-import { PluginType } from './types';
+import { attributesToProps, domToReact } from "html-react-parser";
+import { DefinitionDescription } from "@ndla/ui";
+import { PluginType } from "./types";
 
-export const ddPlugin: PluginType = (node, opts) => {
+export const ddPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
 
-  return <DefinitionDescription {...props}>{domToReact(node.children, opts)}</DefinitionDescription>;
+  return (
+    <DefinitionDescription {...props} lang={opts.articleLanguage}>
+      {domToReact(node.children, converterOpts)}
+    </DefinitionDescription>
+  );
 };

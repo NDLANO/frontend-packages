@@ -6,20 +6,20 @@
  *
  */
 
-import TraceKit from 'raven-js/vendor/TraceKit/tracekit';
-import { uuid } from '@ndla/util';
+import TraceKit from "raven-js/vendor/TraceKit/tracekit";
+import { uuid } from "@ndla/util";
 
-import send from './logglyApi';
+import send from "./logglyApi";
 
 // Taken from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 function escapeRegExp(string) {
-  return string.replace(/([.*+?^${}()|[\]\\])/g, '\\$1');
+  return string.replace(/([.*+?^${}()|[\]\\])/g, "\\$1");
 }
 
 function hasMatch(str, patterns) {
   // can be strings or ReqExp
   const validPatterns = patterns.map((pattern) => {
-    if (Object.prototype.toString.call(pattern) === '[object String]') {
+    if (Object.prototype.toString.call(pattern) === "[object String]") {
       return new RegExp(escapeRegExp(pattern));
     }
     return pattern;
@@ -35,7 +35,7 @@ const ErrorReporter = (function Singleton() {
 
   const sessionId = uuid();
 
-  function sendToLoggly(data, config) {
+  async function sendToLoggly(data, config) {
     // Don't send to loggly if api key is undefined or no remaining messages
     if (!config.logglyApiKey || messagesRemaining < 1) {
       return;
@@ -50,10 +50,10 @@ const ErrorReporter = (function Singleton() {
       appName: `${config.environment}/${config.componentName}`,
     };
 
-    send(config.logglyApiKey, extendedData);
+    return send(config.logglyApiKey, extendedData);
   }
 
-  function getLogData(stackInfo, level = 'error', store, additionalInfo = {}) {
+  function getLogData(stackInfo, level = "error", store, additionalInfo = {}) {
     const state = store ? store.getState() : undefined;
     return {
       level,
@@ -64,7 +64,7 @@ const ErrorReporter = (function Singleton() {
     };
   }
 
-  function processStackInfo(stackInfo, level, config, additionalInfo) {
+  async function processStackInfo(stackInfo, level, config, additionalInfo) {
     // "Script error." is hard coded into browsers for errors that it can't read.
     // this is the result of a script being pulled in from an external domain and CORS.
     const globalIgnoreErrors = [
@@ -80,7 +80,7 @@ const ErrorReporter = (function Singleton() {
 
     // Don't send multiple copies of the same error. This fixes a problem when a client goes into an infinite loop
     const firstFrame = stackInfo.stack && stackInfo.stack[0] ? stackInfo.stack[0] : {};
-    const deduplicate = [stackInfo.name, stackInfo.message, firstFrame.url, firstFrame.line, firstFrame.func].join('|');
+    const deduplicate = [stackInfo.name, stackInfo.message, firstFrame.url, firstFrame.line, firstFrame.func].join("|");
 
     if (deduplicate === previousNotification) {
       return;
@@ -95,29 +95,29 @@ const ErrorReporter = (function Singleton() {
     // Remember last
     previousNotification = deduplicate;
     const data = getLogData(stackInfo, level, config.store, additionalInfo);
-    sendToLoggly(data, config);
+    return sendToLoggly(data, config);
   }
 
   function init(config) {
     // Suscribes to window.onerror
-    TraceKit.report.subscribe((stackInfo) => {
-      processStackInfo(stackInfo, 'error', config);
+    TraceKit.report.subscribe(async (stackInfo) => {
+      await processStackInfo(stackInfo, "error", config);
     });
 
     return {
       refresh() {
         messagesRemaining = 10;
       },
-      captureMessage(msg) {
-        sendToLoggly({ text: msg, level: 'info' }, config);
+      async captureMessage(msg) {
+        return sendToLoggly({ text: msg, level: "info" }, config);
       },
-      captureError(error, additionalInfo) {
+      async captureError(error, additionalInfo) {
         const stackInfo = TraceKit.computeStackTrace(error);
-        processStackInfo(stackInfo, 'error', config, additionalInfo);
+        return processStackInfo(stackInfo, "error", config, additionalInfo);
       },
-      captureWarning(error, additionalInfo) {
-        const stackInfo = TraceKit.computeStackTrace(error);
-        processStackInfo(stackInfo, 'warning', config, additionalInfo);
+      async captureWarning(error, additionalInfo) {
+        const stackInfo = await TraceKit.computeStackTrace(error);
+        return processStackInfo(stackInfo, "warning", config, additionalInfo);
       },
     };
   }

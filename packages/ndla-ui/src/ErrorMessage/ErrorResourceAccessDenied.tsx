@@ -6,13 +6,13 @@
  *
  */
 
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { HumanMaleBoard, LogIn } from '@ndla/icons/common';
-import { ButtonV2 } from '@ndla/button';
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing } from "@ndla/core";
+import { HumanMaleBoard, LogIn } from "@ndla/icons/common";
 
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from "./ErrorMessage";
 
 const StyledLogInIconWrapper = styled.span`
   margin-left: ${spacing.xsmall};
@@ -26,16 +26,16 @@ const ErrorResourceAccessDenied = ({ onAuthenticateClick }: Props) => {
   return (
     <ErrorMessage
       messages={{
-        title: t('user.resource.accessDenied'),
-        back: t('errorMessage.back'),
-        goToFrontPage: t('errorMessage.goToFrontPage'),
+        title: t("user.resource.accessDenied"),
+        back: t("errorMessage.back"),
+        goToFrontPage: t("errorMessage.goToFrontPage"),
       }}
-      illustrationElement={<HumanMaleBoard className="c-icon--large" />}
+      illustrationElement={<HumanMaleBoard size="large" />}
       customElement={
         <ButtonV2 size="medium" onClick={onAuthenticateClick}>
-          {t('user.buttonLogIn')}
+          {t("user.buttonLogIn")}
           <StyledLogInIconWrapper aria-hidden>
-            <LogIn className="c-icon--medium" />
+            <LogIn size="normal" />
           </StyledLogInIconWrapper>
         </ButtonV2>
       }

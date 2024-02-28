@@ -6,12 +6,12 @@
  *
  */
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { ReactNode } from 'react';
-import { MessageBanner } from '../Messages';
-import SkipToMainContent from './SkipToMainContent';
+import { ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, fonts, mq, spacing, stackOrder } from "@ndla/core";
+import SkipToMainContent from "./SkipToMainContent";
+import { MessageBanner } from "../Messages";
 
 const MastheadContent = styled.div`
   justify-content: center;
@@ -35,7 +35,7 @@ interface StyledMastheadProps {
 }
 
 const StyledMasthead = styled.div<StyledMastheadProps>`
-  z-index: 99;
+  z-index: ${stackOrder.banner};
   position: relative;
   background: white;
   border-bottom: 1px solid ${colors.brand.greyLighter};

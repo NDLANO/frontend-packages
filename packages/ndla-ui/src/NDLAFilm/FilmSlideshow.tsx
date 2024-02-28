@@ -6,16 +6,16 @@
  *
  */
 
-import { useCallback, useState } from 'react';
-import styled from '@emotion/styled';
-import { Carousel } from '@ndla/carousel';
-import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-import { IconButtonV2 } from '@ndla/button';
-import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
-import FilmContentCard from './FilmContentCard';
-import { MovieType } from './types';
-import Image from '../Image';
+import { useCallback, useState } from "react";
+import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
+import { Carousel } from "@ndla/carousel";
+import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
+import { ChevronLeft, ChevronRight } from "@ndla/icons/common";
+import SafeLink from "@ndla/safelink";
+import FilmContentCard from "./FilmContentCard";
+import { MovieType } from "./types";
+import Image from "../Image";
 
 interface Props {
   slideshow: MovieType[];
@@ -87,11 +87,13 @@ const SlideshowButton = styled(IconButtonV2)`
   margin-top: ${spacing.normal};
 `;
 
-const shouldForwardProp = (p: string) => p !== 'current';
+const shouldForwardProp = (p: string) => p !== "current";
 
-const StyledFilmContentCard = styled(FilmContentCard, { shouldForwardProp })<StyledFilmContentCardProps>`
+const StyledFilmContentCard = styled(FilmContentCard, {
+  shouldForwardProp,
+})<StyledFilmContentCardProps>`
   margin-bottom: 2%;
-  transform: ${(p) => (p.current ? 'translateY(0%)' : 'translateY(10%)')};
+  transform: ${(p) => (p.current ? "translateY(0%)" : "translateY(10%)")};
   transition: all 200ms;
 `;
 
@@ -102,7 +104,7 @@ const FilmSlideshow = ({ slideshow }: Props) => {
     <section>
       <StyledSafeLink to={currentSlide.path} tabIndex={-1} aria-hidden>
         <StyledImg
-          src={currentSlide.metaImage?.url ?? ''}
+          src={currentSlide.metaImage?.url ?? ""}
           sizes="(min-width: 1140px) 1140px, (min-width: 720px) 100vw, 100vw"
           alt=""
         />
@@ -164,7 +166,7 @@ const FilmCard = ({ setCurrentSlide, movie, current }: FilmCardProps) => {
       }}
       onFocus={() => setCurrentSlide(movie)}
       current={current}
-      aria-describedby={'currentMovieDescription'}
+      aria-describedby={"currentMovieDescription"}
       key={movie.id}
       movie={movie}
       resourceTypes={[]}

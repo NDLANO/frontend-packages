@@ -6,11 +6,10 @@
  *
  */
 
-import VersionHistory from './versionLogs/VersionHistory';
-import VersionLogTag from './versionLogs/VersionLogTag';
-import FileListEditor from './FileListEditor';
-import MovieList from './ndlaFilm/MovieList';
-import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
+import MovieList from "./ndlaFilm/MovieList";
+import NdlaFilmThemeEditorModal from "./ndlaFilm/ThemeEditorModal";
+import VersionHistory from "./versionLogs/VersionHistory";
+import VersionLogTag from "./versionLogs/VersionLogTag";
 
-export { MovieList, NdlaFilmThemeEditorModal, FileListEditor };
+export { MovieList, NdlaFilmThemeEditorModal };
 export { VersionHistory, VersionLogTag };

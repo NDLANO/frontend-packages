@@ -6,24 +6,24 @@
  *
  */
 
-import { FormEvent } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { ModalBody, ModalCloseButton, ModalHeader, ModalTitle } from '@ndla/modal';
-import { spacing, spacingUnit } from '@ndla/core';
-import { ButtonV2 } from '@ndla/button';
-import { Input } from '@ndla/forms';
-import { useTranslation } from 'react-i18next';
+import { FormEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ButtonV2 } from "@ndla/button";
+import { spacing, spacingUnit } from "@ndla/core";
+import { Input } from "@ndla/forms";
+import { ModalBody, ModalCloseButton, ModalHeader, ModalTitle } from "@ndla/modal";
 
-const StyledInputWrapper = styled('div')`
+const StyledInputWrapper = styled("div")`
   margin: ${spacing.normal} 0;
   > div:not(:last-child) {
     margin-bottom: ${spacing.xsmall};
   }
 `;
 
-const LanguageIndicator = styled('div')`
-  width: ${spacingUnit * 4}px;
+const LanguageIndicator = styled("div")`
+  width: ${spacing.xxlarge};
   pointer-events: none;
 `;
 
@@ -51,40 +51,40 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
         <StyledInputWrapper>
           <div>
             <Input
-              iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.nb')}:</LanguageIndicator>}
-              warningText={theme.warnings.nb ? 'Mangler navn' : undefined}
+              iconLeft={<LanguageIndicator style={{ padding: "13px" }}>{t("languages.nb")}:</LanguageIndicator>}
+              warningText={theme.warnings.nb ? "Mangler navn" : undefined}
               type="text"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
-              placeholder={t('ndlaFilm.editor.groupNamePlaceholder', {
-                lang: t('languages.nb'),
+              placeholder={t("ndlaFilm.editor.groupNamePlaceholder", {
+                lang: t("languages.nb"),
               })}
               value={theme.name.nb}
-              onChange={(e: FormEvent<HTMLInputElement>) => onEditName({ value: e.currentTarget.value, lang: 'nb' })}
+              onChange={(e: FormEvent<HTMLInputElement>) => onEditName({ value: e.currentTarget.value, lang: "nb" })}
             />
           </div>
           <div>
             <Input
-              iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.nn')}:</LanguageIndicator>}
-              warningText={theme.warnings.nn ? 'Mangler navn' : undefined}
+              iconLeft={<LanguageIndicator style={{ padding: "13px" }}>{t("languages.nn")}:</LanguageIndicator>}
+              warningText={theme.warnings.nn ? "Mangler navn" : undefined}
               type="text"
-              placeholder={t('ndlaFilm.editor.groupNamePlaceholder', {
-                lang: t('languages.nn'),
+              placeholder={t("ndlaFilm.editor.groupNamePlaceholder", {
+                lang: t("languages.nn"),
               })}
               value={theme.name.nn}
-              onChange={(e: FormEvent<HTMLInputElement>) => onEditName({ value: e.currentTarget.value, lang: 'nn' })}
+              onChange={(e: FormEvent<HTMLInputElement>) => onEditName({ value: e.currentTarget.value, lang: "nn" })}
             />
           </div>
           <div>
             <Input
-              iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.en')}:</LanguageIndicator>}
-              warningText={theme.warnings.en ? 'Mangler navn' : undefined}
+              iconLeft={<LanguageIndicator style={{ padding: "13px" }}>{t("languages.en")}:</LanguageIndicator>}
+              warningText={theme.warnings.en ? "Mangler navn" : undefined}
               type="text"
-              placeholder={t('ndlaFilm.editor.groupNamePlaceholder', {
-                lang: t('languages.en'),
+              placeholder={t("ndlaFilm.editor.groupNamePlaceholder", {
+                lang: t("languages.en"),
               })}
               value={theme.name.en}
-              onChange={(e: FormEvent<HTMLInputElement>) => onEditName({ value: e.currentTarget.value, lang: 'en' })}
+              onChange={(e: FormEvent<HTMLInputElement>) => onEditName({ value: e.currentTarget.value, lang: "en" })}
             />
           </div>
         </StyledInputWrapper>

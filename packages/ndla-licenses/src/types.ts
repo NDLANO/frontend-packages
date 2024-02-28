@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2021-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 export interface LicenseLocaleType {
   short: string;
   title: string;
@@ -28,7 +36,7 @@ export interface RightType {
   en: RightLocaleInfo;
 }
 
-const locales = ['nb', 'nn', 'en'] as const;
+const locales = ["nb", "nn", "en"] as const;
 export type Locale = (typeof locales)[number];
 
 export function isLocale(l: string): l is Locale {

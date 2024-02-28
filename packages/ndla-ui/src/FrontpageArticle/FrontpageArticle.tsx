@@ -6,23 +6,24 @@
  *
  */
 
-import { CSSProperties, ReactNode, useMemo } from 'react';
-import { spacing, spacingUnit } from '@ndla/core';
-import styled from '@emotion/styled';
-import { Heading, Text } from '@ndla/typography';
-import { Article } from '../types';
-import { ArticleByline } from '../Article';
-import { useMastheadHeight } from '../Masthead';
+import { CSSProperties, ReactNode, useMemo } from "react";
+import styled from "@emotion/styled";
+import { spacing, spacingUnit } from "@ndla/core";
+import { Heading, Text } from "@ndla/typography";
+import { ArticleByline } from "../Article";
+import { useMastheadHeight } from "../Masthead";
+import { Article } from "../types";
 
 interface Props {
-  article: Omit<Article, 'footNotes'>;
+  article: Omit<Article, "footNotes">;
   id: string;
   isWide?: boolean;
   licenseBox?: ReactNode;
+  lang?: string;
 }
 
-export const FRONTPAGE_ARTICLE_MAX_WIDTH = '773px';
-export const WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH = '1100px';
+export const FRONTPAGE_ARTICLE_MAX_WIDTH = "773px";
+export const WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH = "1100px";
 
 const StyledArticle = styled.article`
   width: 100%;
@@ -30,10 +31,10 @@ const StyledArticle = styled.article`
   h2[id] {
     margin-top: ${spacing.large};
   }
-  div[data-type='campaign-block'] {
+  div[data-type="campaign-block"] {
     margin: ${spacing.large} 0px;
   }
-  div[data-type='grid'] {
+  div[data-type="grid"] {
     h2,
     h3,
     h4 {
@@ -41,24 +42,24 @@ const StyledArticle = styled.article`
     }
   }
 
-  div[data-type='grid'] + div[data-type='grid'] {
-    margin-top: ${spacingUnit * 4}px;
+  div[data-type="grid"] + div[data-type="grid"] {
+    margin-top: ${spacing.xxlarge};
   }
 
-  &[data-wide='true'] {
+  &[data-wide="true"] {
     max-width: 1100px;
     h2[id] {
-      margin-top: ${spacingUnit * 4}px;
+      margin-top: ${spacing.xxlarge};
     }
-    div[data-type='campaign-block'] {
-      margin: ${spacingUnit * 4}px 0px;
+    div[data-type="campaign-block"] {
+      margin: ${spacing.xxlarge} 0px;
     }
   }
 `;
 
-export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => {
+export const FrontpageArticle = ({ article, id, isWide, licenseBox, lang }: Props) => {
   const { height = 0 } = useMastheadHeight();
-  const cssVars = useMemo(() => ({ '--masthead-height': `${height}px` } as unknown as CSSProperties), [height]);
+  const cssVars = useMemo(() => ({ "--masthead-height": `${height}px` }) as unknown as CSSProperties, [height]);
   const { title, introduction, content } = article;
 
   if (isWide) {
@@ -71,14 +72,14 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox }: Props) => 
 
   return (
     <StyledArticle style={cssVars}>
-      <Heading id={id} headingStyle="h1-resource" element="h1" margin="normal" tabIndex={-1}>
+      <Heading id={id} headingStyle="h1-resource" element="h1" margin="normal" tabIndex={-1} lang={lang}>
         {title}
       </Heading>
-      <Text textStyle="ingress" element="div">
+      <Text textStyle="ingress" element="div" lang={lang}>
         {introduction}
       </Text>
       {content}
-      <ArticleByline accordionHeaderVariant={'white'} licenseBox={licenseBox} displayByline={false} />
+      <ArticleByline accordionHeaderVariant={"white"} licenseBox={licenseBox} displayByline={false} />
     </StyledArticle>
   );
 };

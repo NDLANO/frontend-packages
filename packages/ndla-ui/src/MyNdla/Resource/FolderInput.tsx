@@ -6,22 +6,24 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { IconButtonV2 } from '@ndla/button';
-import { Cross } from '@ndla/icons/action';
-import { ComponentProps, forwardRef, useEffect } from 'react';
-import { isMobile } from 'react-device-detect';
-import { useTranslation } from 'react-i18next';
-import { colors, spacing } from '@ndla/core';
-import { InputV2 } from '@ndla/forms';
-import { Done } from '@ndla/icons/editor';
-import { Spinner } from '@ndla/icons';
-import { useForwardedRef } from '@ndla/util';
+import { ComponentPropsWithRef, forwardRef, useEffect, useRef } from "react";
+import { isMobile } from "react-device-detect";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
+import { colors, spacing } from "@ndla/core";
+import { InputContainer, FieldErrorMessage, InputV3, FieldHelper, FormControl, Label } from "@ndla/forms";
+import { Spinner } from "@ndla/icons";
+import { Cross } from "@ndla/icons/action";
+import { Done } from "@ndla/icons/editor";
+import { composeRefs } from "@ndla/util";
 
-interface Props extends ComponentProps<typeof InputV2> {
+interface Props {
   loading?: boolean;
   onClose?: () => void;
   onSave: () => void;
+  error?: string;
+  label: string;
 }
 
 const StyledSpinner = styled(Spinner)`
@@ -38,14 +40,29 @@ interface StyledInputProps {
   error?: string;
 }
 
-const StyledInput = styled(InputV2)<StyledInputProps>`
-  background-color: white;
-  background-image: ${({ error }) => borderStyle(!!error)};
-  border: none;
-  border-radius: 0;
+const StyledInputContainer = styled(InputContainer)<StyledInputProps>`
+  display: flex;
   flex-wrap: nowrap;
+  background-image: ${borderStyle()};
+  border: none;
+
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
+  border-right: ${spacing.xsmall} solid ${colors.brand.light};
+  border-radius: 0px;
+
+  /* Not good practice, but necessary to give error message same padding as caused by border. */
+  & + [data-error-message] {
+    padding: 0 ${spacing.xsmall};
+  }
+  &:focus-within {
+    border-color: ${colors.brand.light};
+  }
+
+  &[data-error="true"] {
+    background-image: ${borderStyle(true)};
+  }
   input {
-    line-height: 1.75em;
+    line-height: 1.75rem;
     color: ${colors.brand.primary};
     caret-color: ${colors.brand.tertiary};
     ::selection {
@@ -64,55 +81,53 @@ const Row = styled.div`
   padding-right: ${spacing.xsmall};
 `;
 
-const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClose, onSave, ...rest }, ref) => {
-  const { t } = useTranslation();
-  const inputRef = useForwardedRef(ref);
+const FolderInput = forwardRef<HTMLInputElement, Props & ComponentPropsWithRef<"input">>(
+  ({ loading, label, error, onClose, onSave, ...rest }, ref) => {
+    const { t } = useTranslation();
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    if (isMobile) {
-      inputRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <StyledInput
-      autoComplete="off"
-      white
-      error={error}
-      aria-disabled={loading ? true : undefined}
-      aria-describedby={'folder-input-spinner'}
-      ref={ref}
-      after={
-        <Row>
-          {!loading && (
-            <>
-              {!error && (
-                <IconButtonV2
-                  variant={'ghost'}
-                  colorTheme="light"
-                  tabIndex={0}
-                  aria-label={t('save')}
-                  title={t('save')}
-                  size="small"
-                  onClick={onSave}
-                >
-                  <Done />
-                </IconButtonV2>
-              )}
-              <IconButtonV2 aria-label={t('close')} title={t('close')} size="small" variant="ghost" onClick={onClose}>
-                <Cross />
-              </IconButtonV2>
-            </>
-          )}
-          <div aria-live="assertive">
-            {loading && <StyledSpinner size="normal" id="folder-spinner" aria-label={t('loading')} />}
-          </div>
-        </Row>
+    useEffect(() => {
+      if (isMobile) {
+        inputRef.current?.scrollIntoView({ behavior: "smooth" });
       }
-      {...rest}
-    />
-  );
-});
+    }, []);
+
+    return (
+      <FormControl id="folder-name" isRequired isInvalid={!!error}>
+        <Label visuallyHidden>{label}</Label>
+        <StyledInputContainer data-error={!!error}>
+          <InputV3 autoComplete="off" disabled={loading} ref={composeRefs(ref, inputRef)} {...rest} />
+          <Row>
+            {!loading ? (
+              <>
+                {!error && (
+                  <IconButtonV2
+                    variant={"ghost"}
+                    colorTheme="light"
+                    tabIndex={0}
+                    aria-label={t("save")}
+                    title={t("save")}
+                    size="small"
+                    onClick={onSave}
+                  >
+                    <Done />
+                  </IconButtonV2>
+                )}
+                <IconButtonV2 aria-label={t("close")} title={t("close")} size="small" variant="ghost" onClick={onClose}>
+                  <Cross />
+                </IconButtonV2>
+              </>
+            ) : (
+              <FieldHelper>
+                <StyledSpinner size="normal" aria-label={t("loading")} />
+              </FieldHelper>
+            )}
+          </Row>
+        </StyledInputContainer>
+        <FieldErrorMessage data-error-message="">{error}</FieldErrorMessage>
+      </FormControl>
+    );
+  },
+);
 
 export default FolderInput;

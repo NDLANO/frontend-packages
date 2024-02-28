@@ -6,6 +6,6 @@
  *
  */
 
-import Codeblock from './Codeblock';
+import Codeblock from "./Codeblock";
 
 export { Codeblock };

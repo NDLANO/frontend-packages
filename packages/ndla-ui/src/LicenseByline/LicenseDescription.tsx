@@ -6,9 +6,9 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 
 interface Props {
   description: ReactNode;
@@ -34,7 +34,7 @@ const LicenseDescription = ({ description, icon }: Props) => {
   return (
     <StyledFigCaption>
       {icon}
-      {description}
+      <span>{description}</span>
     </StyledFigCaption>
   );
 };

@@ -6,9 +6,9 @@
  *
  */
 
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
-const locales = ['nb', 'nn', 'en', 'se', 'sma'] as const;
+const locales = ["nb", "nn", "en", "se", "sma"] as const;
 export type Locale = (typeof locales)[number];
 
 export type Link = {
@@ -67,7 +67,7 @@ export interface FootNote {
 }
 
 export interface Article {
-  title: string;
+  title: ReactNode;
   introduction: ReactNode;
   content: ReactNode;
   footNotes: Array<FootNote>;
@@ -127,6 +127,6 @@ export interface CoreElementsItemType extends GrepCode {
 }
 
 export type NotionMedia = {
-  type: 'video' | 'other';
+  type: "video" | "other";
   element: ReactNode;
 };

@@ -6,13 +6,13 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
 
-import { useTranslation } from 'react-i18next';
-import { Cross } from '@ndla/icons/action';
-import { colors } from '@ndla/core';
-import { Close } from '@radix-ui/react-dialog';
+import { Close } from "@radix-ui/react-dialog";
+import { colors } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 interface Props {
   children?: ReactNode;
@@ -40,7 +40,7 @@ const ModalClose = ({ children, title }: Props) => {
   if (children) return <Close asChild>{children}</Close>;
   return (
     <Close asChild>
-      <StyledButton data-testid="close-modal-button" aria-label={title ?? t('close')}>
+      <StyledButton data-testid="close-modal-button" aria-label={title ?? t("close")}>
         <StyledCross />
       </StyledButton>
     </Close>

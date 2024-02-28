@@ -1,15 +1,10 @@
-export { default as SubjectHeader } from './SubjectHeader';
-export { default as SubjectNewContent } from './SubjectNewContent';
-export { default as SubjectBanner } from './SubjectBanner';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
-export {
-  SubjectContent,
-  SubjectTopics,
-  SubjectSidebarWrapper,
-  SubjectFlexWrapper,
-  SubjectSectionTitle,
-  SubjectChildContent,
-  SubjectSecondaryContent,
-} from './Subject';
-
-export { SubjectSocialContent, SubjectSocialSection } from './SubjectSocial';
+export { default as SubjectHeader } from "./SubjectHeader";
+export { default as SubjectBanner } from "./SubjectBanner";

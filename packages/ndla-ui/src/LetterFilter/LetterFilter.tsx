@@ -6,12 +6,12 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { useMemo } from 'react';
-import { colors, fonts, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import { IconButtonV2 as IconButton } from '@ndla/button';
-import { alphabet } from './alphabet';
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { IconButtonV2 as IconButton } from "@ndla/button";
+import { colors, fonts, spacing } from "@ndla/core";
+import { alphabet } from "./alphabet";
 
 const StyledUL = styled.ul`
   list-style: none;
@@ -58,9 +58,11 @@ const LetterFilter = ({ value, onChange, enabledLetters }: Props) => {
           <li key={letter}>
             <StyledButton
               onClick={() => (selected ? onChange(undefined) : onChange(letter))}
-              aria-label={t('listview.filters.alphabet.letterFilter', { letter })}
-              variant={!selected ? 'ghost' : undefined}
-              colorTheme={!selected ? 'lighter' : 'primary'}
+              aria-label={t("listview.filters.alphabet.letterFilter", {
+                letter,
+              })}
+              variant={!selected ? "ghost" : undefined}
+              colorTheme={!selected ? "lighter" : "primary"}
               disabled={disabled}
               size="xsmall"
             >

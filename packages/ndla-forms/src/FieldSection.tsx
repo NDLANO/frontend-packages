@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { colors, spacing } from '@ndla/core';
+import { ReactNode } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, spacing } from "@ndla/core";
 
 const Wrapper = styled.div`
   margin-bottom: ${spacing.small};

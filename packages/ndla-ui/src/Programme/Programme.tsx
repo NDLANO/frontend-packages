@@ -1,10 +1,18 @@
-import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import { Heading } from '@ndla/typography';
-import LayoutItem, { OneColumn } from '../Layout';
-import ProgrammeSubjects, { GradesProps } from './ProgrammeSubjects';
-import MessageBox from '../Messages/MessageBox';
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing } from "@ndla/core";
+import { Heading } from "@ndla/typography";
+import ProgrammeSubjects, { GradesProps } from "./ProgrammeSubjects";
+import LayoutItem, { OneColumn } from "../Layout";
+import MessageBox from "../Messages/MessageBox";
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;

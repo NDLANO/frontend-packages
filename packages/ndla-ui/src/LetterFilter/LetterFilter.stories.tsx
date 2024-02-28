@@ -6,20 +6,20 @@
  *
  */
 
-import { Meta, StoryFn } from '@storybook/react';
-import { useArgs } from '@storybook/client-api';
-import { defaultParameters } from '../../../../stories/defaults';
-import LetterFilter from './LetterFilter';
+import { useArgs } from "@storybook/client-api";
+import { Meta, StoryFn } from "@storybook/react";
+import LetterFilter from "./LetterFilter";
+import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
-  title: 'Components/LetterFilter',
+  title: "Components/LetterFilter",
   component: LetterFilter,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     ...defaultParameters,
   },
   args: {
-    enabledLetters: ['a', 'c'],
+    enabledLetters: ["a", "c"],
     onChange: (value?: string) => {},
   },
 } as Meta<typeof LetterFilter>;
@@ -30,4 +30,4 @@ export const LetterFilterStory: StoryFn<typeof LetterFilter> = (args) => {
   return <LetterFilter {...args} onChange={(val) => updateArgs({ value: val })} />;
 };
 
-LetterFilterStory.storyName = 'LetterFilter';
+LetterFilterStory.storyName = "LetterFilter";

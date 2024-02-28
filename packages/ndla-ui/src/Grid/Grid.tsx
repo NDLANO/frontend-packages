@@ -6,14 +6,14 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { breakpoints, colors, misc, mq, spacing } from '@ndla/core';
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from "react";
+import styled from "@emotion/styled";
+import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
 
 export interface GridProps {
-  columns: '2' | '4' | '2x2';
-  border?: 'none' | 'lightBlue';
-  background?: 'transparent' | 'white';
+  columns: "2" | "4" | "2x2";
+  border?: "none" | "lightBlue";
+  background?: "transparent" | "white";
   size?: boolean;
   children?: ReactNode[];
 }
@@ -24,11 +24,13 @@ const GridContainer = styled.div`
   border-radius: ${misc.borderRadius};
   grid-template-columns: 1fr;
   grid-gap: ${spacing.normal};
+  padding: ${spacing.normal};
+  margin-bottom: ${spacing.normal};
 
   ${mq.range({ until: breakpoints.tabletWide })} {
-    &[data-columns='2x2'],
-    &[data-columns='3'],
-    &[data-columns='4'] {
+    &[data-columns="2x2"],
+    &[data-columns="3"],
+    &[data-columns="4"] {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
@@ -46,33 +48,34 @@ const GridContainer = styled.div`
   ${mq.range({ from: breakpoints.tabletWide })} {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    &[data-columns='3'] {
+    &[data-columns="3"] {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    &[data-columns='4'] {
+    &[data-columns="4"] {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 
-  &[data-frontpage='true'] {
+  &[data-frontpage="true"] {
     grid-gap: ${spacing.large};
   }
 
-  &[data-border='lightBlue'] {
+  &[data-border="lightBlue"] {
     border: 1px solid ${colors.brand.lighter};
   }
-  &[data-background='white'] {
+  &[data-background="white"] {
     background-color: ${colors.white};
   }
 
   p {
     word-break: break-word;
+    margin-top: 0px;
   }
 `;
 
 const Grid = ({ columns, border, children, background, size, ...rest }: GridProps) => {
-  const amountOfColumns = children?.length === 3 ? '3' : columns;
+  const amountOfColumns = children?.length === 3 ? "3" : columns;
 
   return (
     <GridContainer

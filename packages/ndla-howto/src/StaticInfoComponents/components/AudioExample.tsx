@@ -1,46 +1,57 @@
-import { Component } from 'react';
-import { AudioEmbed, AudioPlayer } from '@ndla/ui';
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { Component } from "react";
+import { AudioEmbed, AudioPlayer } from "@ndla/ui";
 
 const embedData = {
-  resource: 'audio' as const,
-  resourceId: '3000',
-  type: 'standard',
-  url: 'https://api.test.ndla.no/audio-api/v1/audio/3000',
+  resource: "audio" as const,
+  resourceId: "3000",
+  type: "standard",
+  url: "https://api.test.ndla.no/audio-api/v1/audio/3000",
 };
 
 const successData = {
   id: 3000,
   revision: 1,
-  title: { title: "\nAin't I a Woman? by Sojourner Truth ", language: 'nb' },
+  title: { title: "\nAin't I a Woman? by Sojourner Truth ", language: "nb" },
   audioFile: {
-    url: 'https://api.test.ndla.no/audio/files/ZZ1gkRc7.mp3',
-    mimeType: 'audio/mpeg',
+    url: "https://api.test.ndla.no/audio/files/ZZ1gkRc7.mp3",
+    mimeType: "audio/mpeg",
     fileSize: 3025206,
-    language: 'nb',
+    language: "nb",
   },
   copyright: {
     license: {
-      license: 'CC-BY-SA-4.0',
-      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
-      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      license: "CC-BY-SA-4.0",
+      description: "Creative Commons Attribution-ShareAlike 4.0 International",
+      url: "https://creativecommons.org/licenses/by-sa/4.0/",
     },
-    origin: '',
-    creators: [{ type: 'originator', name: 'Radio Metro AS' }],
+    origin: "",
+    creators: [{ type: "originator", name: "Radio Metro AS" }],
     processors: [],
     rightsholders: [],
     processed: false,
   },
-  tags: { tags: ["Ain't I a Woman?", 'Sojourner Truth', 'speech', 'abolitionist'], language: 'nb' },
-  supportedLanguages: ['nb'],
-  audioType: 'standard',
-  manuscript: { manuscript: '', language: 'nb' },
-  created: '2022-02-28T17:09:28Z',
-  updated: '2022-02-28T17:09:28Z',
+  tags: {
+    tags: ["Ain't I a Woman?", "Sojourner Truth", "speech", "abolitionist"],
+    language: "nb",
+  },
+  supportedLanguages: ["nb"],
+  audioType: "standard",
+  manuscript: { manuscript: "", language: "nb" },
+  created: "2022-02-28T17:09:28Z",
+  updated: "2022-02-28T17:09:28Z",
 };
 
 const audioEmbedMetaData = {
-  resource: 'audio' as const,
-  status: 'success' as const,
+  resource: "audio" as const,
+  status: "success" as const,
   embedData: embedData,
   data: successData,
 } as const;

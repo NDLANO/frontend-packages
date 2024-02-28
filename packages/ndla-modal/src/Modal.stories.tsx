@@ -6,33 +6,35 @@
  *
  */
 
-import { useEffect, useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { ButtonV2 } from '@ndla/button';
-import { Modal, ModalContent, ModalTrigger } from './Modal';
-import ModalBody from './ModalBody';
-import ModalHeader from './ModalHeader';
-import ModalTitle from './ModalTitle';
-import ModalCloseButton from './ModalCloseButton';
-import { defaultParameters } from '../../../stories/defaults';
-import { ModalContentProps } from './types';
+import { useEffect, useState } from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import { ButtonV2 } from "@ndla/button";
+import { Modal, ModalContent, ModalTrigger } from "./Modal";
+import ModalBody from "./ModalBody";
+import ModalCloseButton from "./ModalCloseButton";
+import ModalHeader from "./ModalHeader";
+import ModalTitle from "./ModalTitle";
+import { ModalContentProps } from "./types";
+import { defaultParameters } from "../../../stories/defaults";
 
 const meta: Meta<typeof ModalContent> = {
-  title: 'Components/Modal',
-  tags: ['autodocs'],
+  title: "Components/Modal",
+  tags: ["autodocs"],
   component: ModalContent,
   parameters: {
     ...defaultParameters,
     docs: {
-      controls: { include: ['animation', 'animationDuration', 'size', 'position', 'modalMargin', 'expands'] },
+      controls: {
+        include: ["animation", "animationDuration", "size", "position", "modalMargin", "expands"],
+      },
     },
   },
   args: {
     animationDuration: 300,
-    animation: 'zoom',
-    size: 'normal',
-    position: 'center',
-    modalMargin: 'none',
+    animation: "zoom",
+    size: "normal",
+    position: "center",
+    modalMargin: "none",
     expands: false,
   },
 };
@@ -56,7 +58,7 @@ export const Story: StoryFn<ModalContentProps> = (args) => {
   );
 };
 
-Story.storyName = 'Modal';
+Story.storyName = "Modal";
 
 export const Controlled: StoryFn<ModalContentProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -107,7 +109,7 @@ export const CustomHeightAndWidth: StoryFn<ModalContentProps> = () => {
       <ModalTrigger>
         <ButtonV2>Åpne</ButtonV2>
       </ModalTrigger>
-      <ModalContent size={{ width: 'large', height: 'xsmall' }}>
+      <ModalContent size={{ width: "large", height: "xsmall" }}>
         <ModalHeader>
           <ModalTitle>Opened</ModalTitle>
           <ModalCloseButton />

@@ -1,7 +1,15 @@
-import { SerializedStyles } from '@emotion/react';
-import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
-import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from 'react';
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from "react";
+import { SerializedStyles } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, fonts, misc, spacing, spacingUnit } from "@ndla/core";
 
 interface BaseInputProps {
   iconRight?: ReactNode;
@@ -36,8 +44,8 @@ const FormWarningText = styled.span<FormWarningTextProps>`
 
 const StyledLabel = styled.label`
   && {
-    width: ${spacingUnit * 4}px;
-    max-width: ${spacingUnit * 4}px;
+    width: ${spacing.xxlarge};
+    max-width: ${spacing.xxlarge};
     padding: 20px ${spacing.small} ${spacing.small} 0;
     text-transform: uppercase;
     font-weight: ${fonts.weight.semibold};
@@ -93,7 +101,7 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
     resize: none;
   }
 
-  .c-icon {
+  [data-icon] {
     width: 24px;
     height: 24px;
   }
@@ -116,7 +124,7 @@ const BaseInput = ({ iconRight, iconLeft, tags, white, warningText, label, child
   );
 };
 
-export interface InputProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLInputElement> {}
+export interface InputProps extends Omit<BaseInputProps, "children">, HTMLProps<HTMLInputElement> {}
 
 export const Input = ({
   iconRight,
@@ -126,7 +134,7 @@ export const Input = ({
   warningText,
   label,
   customCss,
-  value = '',
+  value = "",
   autoSelect,
   ...rest
 }: InputProps) => {
@@ -152,7 +160,7 @@ export const Input = ({
   );
 };
 
-export interface TextAreaProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLTextAreaElement> {}
+export interface TextAreaProps extends Omit<BaseInputProps, "children">, HTMLProps<HTMLTextAreaElement> {}
 
 export const TextArea = ({
   iconRight,
@@ -162,7 +170,7 @@ export const TextArea = ({
   warningText,
   label,
   customCss,
-  value = '',
+  value = "",
   onChange,
   ...rest
 }: TextAreaProps) => {
@@ -174,7 +182,7 @@ export const TextArea = ({
 
   const fixHeight = () => {
     if (inputRef.current) {
-      inputRef.current.style.height = '0px';
+      inputRef.current.style.height = "0px";
       inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
     }
   };

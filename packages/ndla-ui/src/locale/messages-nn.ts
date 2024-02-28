@@ -474,6 +474,7 @@ const messages = {
       description: "Husk at innebygd innhald i ei glose kan ha ein anna lisens enn sjølve gloseteksten",
       rules: "Regler for bruk av glose:",
       title: "Tittel",
+      showOrHideExamples: "Vis eller skjul eksempler",
     },
     files: {
       heading: "Slik gjenbruker du filer",
@@ -1112,6 +1113,8 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukarar funne.",
           search: "Søk etter brukarar",
+          becameAdmin: "Brukar '{{user}}' har fått administrator tilgong",
+          becameNormalUser: "Brukar '{{user}}' har ikkje lenger administrator tilgong",
         },
         flags: {
           title: "Flagg",
@@ -1350,6 +1353,7 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glose",
+      copyright: "Tekst",
     },
   },
   gloss: {

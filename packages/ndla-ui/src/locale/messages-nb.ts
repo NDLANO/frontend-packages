@@ -468,6 +468,7 @@ const messages = {
       description: "Husk at innebygd innhold i en glose kan ha en annen lisens enn selve gloseteksten",
       rules: "Regler for bruk av glose:",
       title: "Tittel",
+      showOrHideExamples: "Vis eller skjul eksempler",
       embedlink: {
         heading: "Slik viser du glosen i annet innhold",
         description: "Denne lenken viser glosen uten kontekst (meny og bunntekst)",
@@ -1112,6 +1113,8 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukere funnet.",
           search: "Søk etter brukere",
+          becameAdmin: "Bruker '{{user}}' har fått administrator tilgang",
+          becameNormalUser: "Bruker '{{user}}' har ikke lenger administrator tilgang",
         },
         flags: {
           title: "Flagg",
@@ -1350,6 +1353,7 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glose",
+      copyright: "Tekst",
     },
   },
   gloss: {

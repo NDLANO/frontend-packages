@@ -470,6 +470,7 @@ const messages = {
         "Muitte ahte sisdoalus mii lea vuojuhuvvon ovtta gihppagii sáhttá leat eará liseansa go dušše jietnadat.",
       rules: "Glossa geavaheami njuolggadusat:",
       title: "Namahus",
+      showOrHideExamples: "Čájet dahje čiega ovdamearkkaid",
       embedlink: {
         heading: "Čájet jietnadaga eará sisdoaluin",
         description: "Dát liŋka čájeha teavstta konteavstta haga (fállu ja juolgeteaksta)",
@@ -1114,6 +1115,8 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukere funnet.",
           search: "Søk etter brukere",
+          becameAdmin: "Bruker '{{user}}' har fått administrator tilgang",
+          becameNormalUser: "Bruker '{{user}}' har ikke lenger administrator tilgang",
         },
         flags: {
           title: "Flagg",
@@ -1352,6 +1355,7 @@ const messages = {
       h5p: "H5P",
       external: "Olgguldas resursa",
       gloss: "Glose",
+      copyright: "Tekst",
     },
   },
   gloss: {

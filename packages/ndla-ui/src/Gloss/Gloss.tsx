@@ -41,6 +41,10 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: ${spacing.nsmall} ${spacing.normal} 0 ${spacing.normal};
+  span {
+    ${fonts.size.text.content}
+    font-family: ${fonts.sans};
+  }
 `;
 
 const GlossContainer = styled.div`
@@ -48,9 +52,6 @@ const GlossContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
-  span {
-    ${fonts.size.text.metaText.small};
-  }
   span[data-pinyin] {
     font-style: italic;
   }
@@ -168,7 +169,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
               <>
                 <StyledWrapper>
                   <span lang={title.language}>{title.title}</span>
-                  <StyledTrigger data-styled-trigger>
+                  <StyledTrigger data-styled-trigger aria-label={t("gloss.examples")}>
                     <StyledChevron />
                   </StyledTrigger>
                 </StyledWrapper>
@@ -181,7 +182,6 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                           example={example}
                           originalLanguage={glossData.originalLanguage}
                           index={innerIndex}
-                          lastExampleIndex={examples.length - 1}
                         />
                       ))}
                     </div>

@@ -6,11 +6,24 @@
  *
  */
 
+import { useState } from "react";
 import { css } from "@emotion/react";
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { colors, misc, spacing, utils, stackOrder } from "@ndla/core";
-import RadioButtonGroup, { RadioButtonGroupRoot, RadioGroupItem } from "./RadioButtonGroup";
+import { Meta, StoryFn } from "@storybook/react";
+import { spacing, colors } from "@ndla/core";
+import { RadioButtonGroup } from "./RadioButtonGroup";
+import { RadioButtonItem } from "./RadioButtonItem";
+import { FieldErrorMessage } from "..";
 import { defaultParameters } from "../../../../stories/defaults";
+import { FormControl } from "../FormControl";
+import { Fieldset, Label, Legend } from "../Label";
+
+const radioButtonWrapperStyles = css`
+  display: flex;
+  align-items: center;
+  gap: ${spacing.small};
+  flex-direction: row;
+  color: ${colors.brand.primary};
+`;
 
 export default {
   title: "Forms/RadioButtonGroup",
@@ -19,108 +32,166 @@ export default {
   parameters: {
     ...defaultParameters,
   },
-  args: {
-    uniqeIds: true,
-    label: "Velg fag",
-    options: [
-      {
-        title: "T1",
-        value: "t1",
-      },
-      {
-        title: "R1",
-        value: "r1",
-      },
-      {
-        title: "R2",
-        value: "r2",
-      },
-      {
-        title: "S1",
-        value: "s1",
-        disabled: true,
-      },
-    ],
-  },
 } as Meta<typeof RadioButtonGroup>;
 
-export const RadioButtonGroupStory: StoryFn<typeof RadioButtonGroup> = ({ ...args }) => {
-  return <RadioButtonGroup {...args} />;
-};
+export const Default: StoryFn<typeof RadioButtonGroup> = ({ ...args }) => (
+  <RadioButtonGroup>
+    <RadioButtonItem value="radio1" id="r0" />
+  </RadioButtonGroup>
+);
 
-RadioButtonGroupStory.storyName = "RadioButtonGroup";
+export const WithLabelAndForm: StoryFn<typeof RadioButtonGroup> = () => (
+  <form>
+    <RadioButtonGroup defaultValue="radio1" asChild>
+      <Fieldset>
+        <Legend margin="none" textStyle="label-small">
+          Choose an option
+        </Legend>
+        <div css={radioButtonWrapperStyles}>
+          <RadioButtonItem value="radio1" id="r1" />
+          <Label margin="none" textStyle="label-small" htmlFor="r1">
+            Radio 1
+          </Label>
+        </div>
+        <div css={radioButtonWrapperStyles}>
+          <RadioButtonItem value="radio2" id="r2" />
+          <Label margin="none" textStyle="label-small" htmlFor="r2">
+            Radio 2
+          </Label>
+        </div>
+      </Fieldset>
+    </RadioButtonGroup>
+  </form>
+);
 
-export const WithStandaloneComponents: StoryObj<typeof RadioButtonGroup> = {
-  args: {
-    onChange: () => {},
-    direction: "vertical",
-    options: [
-      {
-        title: "Vis navnet mitt når jeg deler en mappe",
-        value: "showName",
-      },
-      {
-        title: "Ikke vis navnet mitt når jeg deler en mappe",
-        value: "dontShowName",
-      },
-      {
-        title: "Kanskje vis navnet mitt når jeg deler en mappe",
-        value: "maybeShowName",
-      },
-    ],
-  },
-  render: ({ options, ...args }) => {
-    return (
-      <RadioButtonGroupRoot
-        value={args.selected}
-        direction={args.direction}
-        defaultValue={args.selected ?? options[0].value}
-        onValueChange={args.onChange}
-        css={css`
-          gap: 0px;
-        `}
-        aria-labelledby="desc"
-      >
-        <span id="desc" css={css(utils.visuallyHidden)}>
-          {args.label}
-        </span>
-        {options.map((option) => (
-          <RadioGroupItem
-            key={option.value}
-            id={option.value}
-            css={css`
-              box-sizing: content-box;
-              border-radius: ${misc.borderRadius};
-              border: 1px solid ${colors.brand.greyLight};
-              border-radius: 0px;
-              padding: ${spacing.small};
-              border-color: ${colors.brand.light};
+export const Horizontal: StoryFn<typeof RadioButtonGroup> = () => (
+  <form>
+    <RadioButtonGroup
+      orientation="horizontal"
+      defaultValue="radio1"
+      style={{ display: "flex", gap: spacing.small }}
+      asChild
+    >
+      <Fieldset>
+        <Legend margin="none" textStyle="label-small">
+          Choose an option
+        </Legend>
+        <div css={radioButtonWrapperStyles}>
+          <RadioButtonItem value="radio1" id="r3" />
+          <Label margin="none" textStyle="label-small" htmlFor="r3">
+            Radio 1
+          </Label>
+        </div>
+        <div css={radioButtonWrapperStyles}>
+          <RadioButtonItem value="radio2" id="r4" />
+          <Label margin="none" textStyle="label-small" htmlFor="r4">
+            Radio 2
+          </Label>
+        </div>
+      </Fieldset>
+    </RadioButtonGroup>
+  </form>
+);
 
-              &:focus-within,
-              &[data-state="checked"] {
-                outline: 0px;
-                border-color: ${colors.brand.primary};
-                border-radius: 0px;
-                z-index: ${stackOrder.offsetSingle};
-              }
-              &:first-of-type {
-                border-top-left-radius: ${misc.borderRadius};
-                border-top-right-radius: ${misc.borderRadius};
-              }
-              &:not(:first-of-type) {
-                margin-top: -1px;
-              }
-              &:last-of-type {
-                border-bottom-left-radius: ${misc.borderRadius};
-                border-bottom-right-radius: ${misc.borderRadius};
-              }
-            `}
-            value={option.value}
-            title={option.title}
-            disabled={option.disabled}
-          />
-        ))}
-      </RadioButtonGroupRoot>
-    );
-  },
+export const InFormControlWithDisabled: StoryFn<any> = () => (
+  <form>
+    <FormControl id={"radio-with-form-control"}>
+      <RadioButtonGroup defaultValue="radio1" asChild>
+        <Fieldset>
+          <Legend margin="none" textStyle="label-small">
+            Choose an option
+          </Legend>
+          <div css={radioButtonWrapperStyles}>
+            <RadioButtonItem id="radio1" value="radio1" />
+            <Label margin="none" htmlFor="radio1" textStyle="label-small">
+              Radio 1
+            </Label>
+          </div>
+          <div css={radioButtonWrapperStyles}>
+            <RadioButtonItem id="radio2" value="radio2" />
+            <Label margin="none" htmlFor="radio2" textStyle="label-small">
+              Radio 2
+            </Label>
+          </div>
+          <div css={radioButtonWrapperStyles}>
+            <RadioButtonItem id="radio3" value="radio3" disabled />
+            <Label margin="none" htmlFor="radio3" data-disabled="true" textStyle="label-small">
+              Radio 3
+            </Label>
+          </div>
+        </Fieldset>
+      </RadioButtonGroup>
+    </FormControl>
+  </form>
+);
+
+export const InFormControlWithAllDisabled: StoryFn<any> = () => (
+  <form>
+    <FormControl id={"radio-with-form-control"} isDisabled>
+      <RadioButtonGroup defaultValue="radio4" asChild>
+        <Fieldset>
+          <Legend margin="none" textStyle="label-small">
+            Choose an option
+          </Legend>
+          <div css={radioButtonWrapperStyles}>
+            <RadioButtonItem id="radio4" value="radio1" />
+            <Label margin="none" htmlFor="radio4" textStyle="label-small">
+              Radio 4
+            </Label>
+          </div>
+          <div css={radioButtonWrapperStyles}>
+            <RadioButtonItem id="radio5" value="radio5" />
+            <Label margin="none" htmlFor="radio2" textStyle="label-small">
+              Radio 5
+            </Label>
+          </div>
+          <div css={radioButtonWrapperStyles}>
+            <RadioButtonItem id="radio6" value="radio6" />
+            <Label margin="none" htmlFor="radio6" data-disabled="true" textStyle="label-small">
+              Radio 6
+            </Label>
+          </div>
+        </Fieldset>
+      </RadioButtonGroup>
+    </FormControl>
+  </form>
+);
+
+export const InFormControlWithErrorMessageAndHelper: StoryFn<any> = () => {
+  const [value, setValue] = useState("parrot");
+
+  const error = value === "parrot" ? "This is an error. You probably clicked the wrong thing." : undefined;
+
+  return (
+    <form>
+      <FormControl id={"radio-with-form-control"} isInvalid={!!error} isRequired>
+        <RadioButtonGroup value={value} onValueChange={setValue} asChild>
+          <Fieldset>
+            <Legend margin="none" textStyle="label-small">
+              Choose your favourite pet
+            </Legend>
+            <div css={radioButtonWrapperStyles}>
+              <RadioButtonItem id="dog" value="dog" />
+              <Label margin="none" htmlFor="dog" textStyle="label-small">
+                Dog
+              </Label>
+            </div>
+            <div css={radioButtonWrapperStyles}>
+              <RadioButtonItem id="cat" value="cat" />
+              <Label margin="none" htmlFor="cat" textStyle="label-small">
+                Cat
+              </Label>
+            </div>
+            <div css={radioButtonWrapperStyles}>
+              <RadioButtonItem id="parrot" value="parrot" />
+              <Label margin="none" htmlFor="parrot" textStyle="label-small">
+                Parrot
+              </Label>
+            </div>
+            <FieldErrorMessage>{error}</FieldErrorMessage>
+          </Fieldset>
+        </RadioButtonGroup>
+      </FormControl>
+    </form>
+  );
 };

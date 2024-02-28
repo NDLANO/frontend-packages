@@ -8,9 +8,11 @@
 
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { LicenseDescription } from "@ndla/notion";
+import { spacing } from "@ndla/core";
+import { Label, RadioButtonGroup, RadioButtonItem } from "@ndla/forms";
 import { licenseRights } from "@ndla/licenses";
-import { RadioButtonGroup } from "@ndla/forms";
+import { LicenseDescription } from "@ndla/notion";
+import { Text } from "@ndla/typography";
 import { defaultParameters } from "./defaults";
 
 /**
@@ -36,7 +38,26 @@ export const Default: StoryFn = () => {
 
   return (
     <div>
-      <RadioButtonGroup options={languageOptions} onChange={setLocale} label="Description language" />
+      <fieldset style={{ border: 0, padding: 0, display: "flex", gap: spacing.medium, marginBottom: spacing.medium }}>
+        <Text margin="none" textStyle="label-small" element="legend">
+          Description language
+        </Text>
+        <RadioButtonGroup
+          style={{ display: "flex", gap: spacing.small }}
+          orientation="horizontal"
+          value={locale}
+          onValueChange={setLocale}
+        >
+          {languageOptions.map((option) => (
+            <div style={{ display: "flex", alignItems: "center", gap: spacing.xsmall }} key={option.value}>
+              <RadioButtonItem value={option.value} id={option.value} />
+              <Label margin="none" textStyle="label-small" htmlFor={option.value}>
+                {option.title}
+              </Label>
+            </div>
+          ))}
+        </RadioButtonGroup>
+      </fieldset>
       {licenseRights.map((abb) => {
         return (
           <div key={abb}>

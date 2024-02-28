@@ -15,30 +15,42 @@ export interface Props {
   example: IGlossExample;
   originalLanguage: string | undefined;
   index: number;
-  lastExampleIndex: number;
+  isStandalone?: boolean;
 }
 
 const StyledGlossExampleWrapper = styled.div`
-  &:first-of-type {
+  &[data-is-standalone="true"] {
+    &:first-of-type {
+      border-top: 1px solid ${colors.brand.lighter};
+    }
+  }
+
+  &:first-of-type&:not([data-is-standalone="true"]) {
     border-top: 1px solid ${colors.brand.primary};
   }
-  &:last-of-type {
-    border-radius: ${misc.borderRadius};
+
+  &[data-is-standalone="false"] {
+    &:not(:last-child) {
+      div {
+        border-bottom: 1px solid ${colors.brand.lighter};
+        border-radius: 0;
+      }
+    }
   }
-  background-color: ${colors.background.default};
 `;
 
 const StyledGlossExample = styled.div`
   padding: ${spacing.small} ${spacing.normal};
-  border-bottom: 1px solid ${colors.brand.lighter};
   background-color: ${colors.background.default};
+  border: 1px solid ${colors.brand.lighter};
+  border-top: none;
+
   &[data-is-first="true"] {
     background-color: ${colors.background.lightBlue};
-    border-radius: 0px;
   }
-  &[data-is-last="true"] {
+  &[data-is-standalone="false"] {
+    border: none;
     border-radius: ${misc.borderRadius};
-    border-bottom: none;
   }
 `;
 
@@ -52,23 +64,27 @@ const StyledText = styled(Text)`
   }
 `;
 
-const GlossExample = ({ example, originalLanguage, index, lastExampleIndex }: Props) => {
+const GlossExample = ({ example, originalLanguage, index, isStandalone = false }: Props) => {
   return (
-    <StyledGlossExampleWrapper>
-      <StyledGlossExample data-is-first={index === 0} data-is-last={index === lastExampleIndex} lang={example.language}>
+    <StyledGlossExampleWrapper data-is-standalone={isStandalone}>
+      <StyledGlossExample data-is-first={index === 0} lang={example.language} data-is-standalone={isStandalone}>
         <StyledText data-is-first={index === 0} textStyle="meta-text-medium" margin="none">
           {example.example}
         </StyledText>
       </StyledGlossExample>
       {example.transcriptions.pinyin && (
-        <StyledGlossExample lang={originalLanguage}>
+        <StyledGlossExample
+          lang={originalLanguage}
+          data-is-standalone={isStandalone}
+          data-is-last={example.transcriptions.traditional?.length === 0}
+        >
           <StyledText data-pinyin textStyle="meta-text-medium" margin="none">
             {example.transcriptions?.pinyin}
           </StyledText>
         </StyledGlossExample>
       )}
       {example.transcriptions.traditional && (
-        <StyledGlossExample lang={originalLanguage}>
+        <StyledGlossExample lang={originalLanguage} data-is-standalone={isStandalone} data-is-last>
           <StyledText textStyle="meta-text-medium" margin="none">
             {example.transcriptions?.traditional}
           </StyledText>

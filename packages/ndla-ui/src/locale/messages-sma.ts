@@ -471,6 +471,7 @@ const messages = {
       description: "Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie",
       rules: "Njoelkedassh guktie diejvesem nåhtadidh:",
       title: "Tihtele",
+      showOrHideExamples: "Vuesiehtimmieh vuesiehtidh jallh vöörhkedh",
       embedlink: {
         heading: "Naemhtie gïelem jeatjah sisvegisnie vuesehte",
         description: "Daate lïenghke vuesehte tjoejh konteksten namhtah (meny jïh nueliekapihtele)",
@@ -1116,6 +1117,8 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukere funnet.",
           search: "Søk etter brukere",
+          becameAdmin: "Bruker '{{user}}' har fått administrator tilgang",
+          becameNormalUser: "Bruker '{{user}}' har ikke lenger administrator tilgang",
         },
         flags: {
           title: "Flagg",
@@ -1354,6 +1357,7 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glosa",
+      copyright: "Tekst",
     },
   },
   gloss: {

@@ -41,7 +41,7 @@ const BannerList = () => {
   return (
     <PageContainer>
       <OneColumn>
-        <LayoutItem layout="full">
+        <LayoutItem>
           <article className="c-article c-article--clean">
             <FormControl id="search">
               <Label visuallyHidden>Søk etter bannere</Label>

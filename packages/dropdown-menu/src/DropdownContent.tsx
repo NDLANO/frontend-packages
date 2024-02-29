@@ -26,7 +26,7 @@ const StyledContent = styled(Content)`
   border-radius: ${misc.borderRadius};
   box-shadow: ${shadows.levitate1};
   overflow: hidden;
-  z-index: ${stackOrder.dropdown};
+  z-index: 500; //testing
   @media (prefers-reduced-motion: no-preference) {
     ${animations.fadeIn(animations.durations.fast)}
   }

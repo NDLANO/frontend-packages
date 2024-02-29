@@ -27,7 +27,7 @@ const CopyrightEmbed = ({ embed, children }: Props) => {
   return (
     <figure>
       {children}
-      <StyledFigCaption>
+      <StyledFigCaption contentEditable={false}>
         <EmbedByline type="copyright" copyright={embed.embedData.copyright} bottomRounded />
       </StyledFigCaption>
     </figure>

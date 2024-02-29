@@ -38,7 +38,7 @@ export interface ConceptNotionData {
   lang?: string;
 }
 
-interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotionData {
+interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, Omit<ConceptNotionData, "metaImage"> {
   className?: string;
   closeButton?: ReactNode;
   previewAlt?: boolean;

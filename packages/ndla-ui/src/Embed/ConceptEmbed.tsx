@@ -152,7 +152,6 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
       <ConceptNotionV2
         title={concept.title}
         content={parsedContent}
-        metaImage={concept.metaImage}
         copyright={concept.copyright}
         source={concept.source}
         visualElement={visualElement}

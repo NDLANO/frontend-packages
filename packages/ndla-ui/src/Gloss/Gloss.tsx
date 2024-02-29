@@ -33,7 +33,12 @@ export interface Props {
 
 const StyledAccordionItem = styled(AccordionItem)`
   background-color: ${colors.background.lightBlue};
-  border: 1px solid ${colors.brand.tertiary};
+  border: 1px solid ${colors.brand.light};
+  border-radius: ${misc.borderRadius};
+  span {
+    ${fonts.size.text.content}
+    font-family: ${fonts.sans};
+  }
 `;
 
 const Wrapper = styled.div`
@@ -41,10 +46,6 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: ${spacing.nsmall} ${spacing.normal} 0 ${spacing.normal};
-  span {
-    ${fonts.size.text.content}
-    font-family: ${fonts.sans};
-  }
 `;
 
 const GlossContainer = styled.div`

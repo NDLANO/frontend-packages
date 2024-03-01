@@ -100,6 +100,29 @@ const ListElement = styled.li`
   &[hidden] {
     display: none;
   }
+  &:hover {
+    text-decoration: none;
+    [data-badge-wrapper="true"] {
+      [data-badge] {
+        width: ${spacing.mediumlarge};
+        height: ${spacing.mediumlarge};
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+        [data-type="subject-material"],
+        [data-type="learning-path"],
+        [data-type="source-material"],
+        [data-type="external-learning-resources"] {
+          svg {
+            width: ${spacing.medium};
+            height: ${spacing.medium};
+          }
+        }
+      }
+    }
+  }
   ${mq.range({ from: breakpoints.desktop })} {
     grid-template-areas: "badge resourceLink resourceType typeWrapper";
     grid-row-gap: 0;
@@ -125,29 +148,6 @@ const ResourceLink = styled(SafeLink)`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     ${fonts.sizes("20px", "26px")};
-  }
-  &:hover {
-    text-decoration: none;
-    [data-badge-wrapper="true"] {
-      [data-badge] {
-        width: ${spacing.mediumlarge};
-        height: ${spacing.mediumlarge};
-
-        svg {
-          width: 20px;
-          height: 20px;
-        }
-        [data-type="subject-material"],
-        [data-type="learning-path"],
-        [data-type="source-material"],
-        [data-type="external-learning-resources"] {
-          svg {
-            width: ${spacing.medium};
-            height: ${spacing.medium};
-          }
-        }
-      }
-    }
   }
 `;
 

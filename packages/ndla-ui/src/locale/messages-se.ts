@@ -1359,6 +1359,7 @@ const messages = {
   gloss: {
     examples: "Ovdamearkkat",
     wordClass: "Sátneluohkká",
+    play: "Čuojat glose",
     transcriptions: {
       traditional: "Árbevirolaš čállinvuohki",
       pinyin: "Pinyin",

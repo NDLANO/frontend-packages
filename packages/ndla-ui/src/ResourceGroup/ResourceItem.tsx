@@ -63,9 +63,13 @@ const ListElement = styled.li`
   border-radius: ${misc.borderRadius};
   background: ${colors.white};
   margin-bottom: ${spacing.xsmall};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-areas:
+    "badge resourceType typeWrapper"
+    "badge resourceLink typeWrapper";
+  grid-row-gap: ${spacing.xsmall};
+  grid-template-columns: auto 1fr auto;
+
   padding: ${spacing.small};
   &[data-additional="true"] {
     border-style: dashed;
@@ -96,9 +100,15 @@ const ListElement = styled.li`
   &[hidden] {
     display: none;
   }
+  ${mq.range({ from: breakpoints.tablet })} {
+    grid-template-areas: "badge resourceLink resourceType typeWrapper";
+    grid-row-gap: 0;
+    align-items: center;
+  }
 `;
 
 const ResourceLink = styled(SafeLink)`
+  grid-area: resourceLink;
   display: flex;
   width: 100%;
   align-items: center;
@@ -152,6 +162,7 @@ const TitleContainer = styled.div`
 `;
 
 const ContentBadgeWrapper = styled.div`
+  grid-area: badge;
   display: flex;
   flex: 0 0 auto;
   text-align: center;
@@ -164,6 +175,7 @@ const ContentBadgeWrapper = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     padding-right: ${spacing.small};
     padding-left: ${spacing.xsmall};
+    align-items: center;
   }
   ${mq.range({ from: breakpoints.desktop })} {
     padding-right: ${spacing.nsmall};
@@ -171,17 +183,26 @@ const ContentBadgeWrapper = styled.div`
 `;
 
 const TypeWrapper = styled.div`
+  grid-area: typeWrapper;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: ${spacing.xsmall};
+  ${mq.range({ from: breakpoints.tablet })} {
+    align-items: center;
+  }
 `;
 
 const ContentTypeName = styled.span`
+  grid-area: resourceType;
   font-family: ${fonts.sans};
   ${fonts.sizes("14px", "18px")};
   font-weight: ${fonts.weight.semibold};
   color: ${colors.text.light};
-  text-align: right;
+  text-align: left;
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding-left: 0;
+    text-align: right;
+  }
 `;
 
 const CurrentSmall = styled.small`
@@ -246,6 +267,9 @@ const ResourceItem = ({
       data-additional={additional}
       style={listElementVars}
     >
+      <ContentBadgeWrapper data-badge-wrapper={!active}>
+        <ContentTypeBadge type={contentType ?? ""} background border={false} />
+      </ContentBadgeWrapper>
       <ResourceLink
         to={path}
         lang={language === "nb" ? "no" : language}
@@ -254,16 +278,13 @@ const ResourceItem = ({
         disabled={active}
         data-active={active}
       >
-        <ContentBadgeWrapper data-badge-wrapper={!active}>
-          <ContentTypeBadge type={contentType ?? ""} background border={false} />
-        </ContentBadgeWrapper>
         <TitleContainer>
           <div>{name}</div>
           {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
         </TitleContainer>
       </ResourceLink>
+      {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
       <TypeWrapper>
-        {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === "teacher" && (
           <IconWrapper aria-label={t("article.access.onlyTeacher")} title={t("article.access.onlyTeacher")}>
             <HumanMaleBoard id={accessId} />

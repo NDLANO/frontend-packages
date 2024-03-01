@@ -1062,7 +1062,8 @@ const messages = {
         maxLength: "Maksimal lengd for tekstfeltet er nådd",
         error: "Feltet er påkravd",
       },
-      bottomText: "Saknar du ein kategori? Gi moderatoren vår beskjed på moderator@ndla.no",
+      bottomText: "Saknar du ein kategori? Gi moderatoren vår beskjed på ",
+      moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Varslingar",
         showAll: "Sjå alle varslingar",

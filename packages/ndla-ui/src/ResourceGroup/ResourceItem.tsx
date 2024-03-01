@@ -100,7 +100,7 @@ const ListElement = styled.li`
   &[hidden] {
     display: none;
   }
-  ${mq.range({ from: breakpoints.tablet })} {
+  ${mq.range({ from: breakpoints.desktop })} {
     grid-template-areas: "badge resourceLink resourceType typeWrapper";
     grid-row-gap: 0;
     align-items: center;
@@ -155,7 +155,7 @@ const TitleContainer = styled.div`
   align-items: normal;
   display: flex;
   flex-direction: column;
-  ${mq.range({ from: breakpoints.tablet })} {
+  ${mq.range({ from: breakpoints.desktop })} {
     align-items: center;
     flex-direction: row;
   }
@@ -175,9 +175,9 @@ const ContentBadgeWrapper = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     padding-right: ${spacing.small};
     padding-left: ${spacing.xsmall};
-    align-items: center;
   }
   ${mq.range({ from: breakpoints.desktop })} {
+    align-items: center;
     padding-right: ${spacing.nsmall};
   }
 `;
@@ -187,7 +187,7 @@ const TypeWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   gap: ${spacing.xsmall};
-  ${mq.range({ from: breakpoints.tablet })} {
+  ${mq.range({ from: breakpoints.desktop })} {
     align-items: center;
   }
 `;
@@ -199,7 +199,7 @@ const ContentTypeName = styled.span`
   font-weight: ${fonts.weight.semibold};
   color: ${colors.text.light};
   text-align: left;
-  ${mq.range({ from: breakpoints.tablet })} {
+  ${mq.range({ from: breakpoints.desktop })} {
     padding-left: 0;
     text-align: right;
   }
@@ -210,8 +210,8 @@ const CurrentSmall = styled.small`
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
   white-space: nowrap;
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin-left: ${spacing.xsmall};
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding: 0 ${spacing.xsmall};
   }
 `;
 

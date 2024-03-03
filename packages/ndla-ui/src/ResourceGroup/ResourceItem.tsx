@@ -64,6 +64,7 @@ const ListElement = styled.li`
   background: ${colors.white};
   margin-bottom: ${spacing.xsmall};
   display: grid;
+  align-items: center;
   grid-template-areas:
     "badge resourceType typeWrapper"
     "badge resourceLink typeWrapper";

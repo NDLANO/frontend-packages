@@ -12,7 +12,6 @@ import { EditorName } from "./EditorName";
 import Footer from "./Footer";
 import { FooterText } from "./FooterText";
 import { defaultParameters } from "../../../../stories/defaults";
-import { LanguageSelector } from "../LanguageSelector";
 
 const mockCommonLinks = [
   {
@@ -74,6 +73,10 @@ const privacyLinks = [
     label: "Erklæring om informasjonskapsler",
     url: "https://ndla.no/article/erklaering-for-informasjonskapsler",
   },
+  {
+    label: "Tilgjengelighetserklæring",
+    url: "https://uustatus.no/nn/erklaringer/publisert/8cefdf3d-3272-402a-907b-689ddfc9bba7",
+  },
 ];
 
 export default {
@@ -122,23 +125,11 @@ export const WithoutContent: StoryObj<typeof Footer> = {
   },
 };
 
-export const WithLanguageSelector: StoryObj<typeof Footer> = {
-  args: {
-    privacyLinks: privacyLinks,
-    commonLinks: mockCommonLinks,
-    links: mockFooterLinks,
-    // eslint-disable-next-line no-console
-    languageSelector: <LanguageSelector inverted locales={["nn", "nb"]} onSelect={console.log} />,
-  },
-};
-
 export const WithAuthBlock: StoryObj<typeof Footer> = {
   args: {
     privacyLinks: privacyLinks,
     commonLinks: mockCommonLinks,
     links: mockFooterLinks,
-    // eslint-disable-next-line no-console
-    languageSelector: <LanguageSelector inverted locales={["nn", "nb"]} onSelect={console.log} />,
     auth: <div>Auth info can be placed down here</div>,
   },
 };

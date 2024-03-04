@@ -73,6 +73,10 @@ const privacyLinks = [
     label: "Erklæring om informasjonskapsler",
     url: "https://ndla.no/article/erklaering-for-informasjonskapsler",
   },
+  {
+    label: "Tilgjengelighetserklæring",
+    url: "https://uustatus.no/nn/erklaringer/publisert/8cefdf3d-3272-402a-907b-689ddfc9bba7",
+  },
 ];
 
 export default {
@@ -125,6 +129,7 @@ export const WithAuthBlock: StoryObj<typeof Footer> = {
   args: {
     privacyLinks: privacyLinks,
     commonLinks: mockCommonLinks,
+    links: mockFooterLinks,
     auth: <div>Auth info can be placed down here</div>,
   },
 };

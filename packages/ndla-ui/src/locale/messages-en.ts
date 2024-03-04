@@ -1361,6 +1361,7 @@ const messages = {
   gloss: {
     examples: "Examples",
     wordClass: "Word class",
+    play: "Play gloss",
     transcriptions: {
       traditional: "Traditional spelling",
       pinyin: "Pinyin",

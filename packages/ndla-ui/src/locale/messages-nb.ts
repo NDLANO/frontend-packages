@@ -1360,6 +1360,7 @@ const messages = {
   gloss: {
     examples: "Eksempler",
     wordClass: "Ordklasse",
+    play: "Spill av glose",
     transcriptions: {
       traditional: "Tradisjonell skrivemåte",
       pinyin: "Pinyin",

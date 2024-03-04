@@ -70,6 +70,7 @@ const ListElement = styled.li`
     "badge resourceLink typeWrapper";
   grid-row-gap: ${spacing.xsmall};
   grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
 
   padding: ${spacing.small};
   &[data-additional="true"] {
@@ -102,7 +103,6 @@ const ListElement = styled.li`
     display: none;
   }
   &:hover {
-    text-decoration: none;
     [data-badge-wrapper="true"] {
       [data-badge] {
         width: ${spacing.mediumlarge};
@@ -123,6 +123,11 @@ const ListElement = styled.li`
         }
       }
     }
+  }
+  &:not([data-content-type]) {
+    grid-template-areas: "badge resourceLink typeWrapper";
+    grid-row-gap: 0;
+    align-items: center;
   }
   ${mq.range({ from: breakpoints.desktop })} {
     grid-template-areas: "badge resourceLink resourceType typeWrapper";
@@ -149,6 +154,9 @@ const ResourceLink = styled(SafeLink)`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     ${fonts.sizes("20px", "26px")};
+  }
+  &:hover {
+    text-decoration: none;
   }
 `;
 
@@ -186,7 +194,7 @@ const ContentBadgeWrapper = styled.div`
 const TypeWrapper = styled.div`
   grid-area: typeWrapper;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: ${spacing.xsmall};
   ${mq.range({ from: breakpoints.desktop })} {
     align-items: center;
@@ -203,6 +211,7 @@ const ContentTypeName = styled.span`
   ${mq.range({ from: breakpoints.desktop })} {
     padding-left: 0;
     text-align: right;
+    margin: 0 ${spacing.xsmall};
   }
 `;
 
@@ -266,6 +275,7 @@ const ResourceItem = ({
       hidden={hidden && !active}
       data-active={active}
       data-additional={additional}
+      data-content-type={contentTypeName}
       style={listElementVars}
     >
       <ContentBadgeWrapper data-badge-wrapper={!active}>

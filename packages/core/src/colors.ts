@@ -77,9 +77,9 @@ const colors = {
     additional: "rgba(220,229,224,0.4)",
   },
 
-  notion: {
-    light: "#DEF1ED",
-    dark: "#3E5860",
+  concept: {
+    light: "#def1ed",
+    dark: "#3e5860",
   },
 
   tasksAndActivities: {

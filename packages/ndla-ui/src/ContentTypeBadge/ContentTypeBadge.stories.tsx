@@ -68,7 +68,7 @@ export const AllBadges: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
     <ContentTypeBadge {...args} type={contentTypes.TASKS_AND_ACTIVITIES} />
     <ContentTypeBadge {...args} type={contentTypes.ASSESSMENT_RESOURCES} />
     <ContentTypeBadge {...args} type={contentTypes.SUBJECT} />
-    <ContentTypeBadge {...args} type={contentTypes.EXTERNAL_LEARNING_RESOURCES} />
+    <ContentTypeBadge {...args} type={contentTypes.CONCEPT} />
     <ContentTypeBadge {...args} type={contentTypes.SOURCE_MATERIAL} />
     <ContentTypeBadge {...args} type={contentTypes.LEARNING_PATH} />
     <ContentTypeBadge {...args} type={contentTypes.TOPIC} />
@@ -76,6 +76,5 @@ export const AllBadges: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.image} />
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.audio} />
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.video} />
-    <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.concept} />
   </BadgesWrapper>
 );

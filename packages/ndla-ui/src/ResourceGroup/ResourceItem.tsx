@@ -25,8 +25,8 @@ const listElementActiveColor = (contentType?: string) => {
       return colors.tasksAndActivities.dark;
     case contentTypes.ASSESSMENT_RESOURCES:
       return colors.assessmentResource.dark;
-    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      return colors.externalLearningResource.dark;
+    case contentTypes.CONCEPT:
+      return colors.concept.dark;
     case contentTypes.SOURCE_MATERIAL:
       return colors.sourceMaterial.dark;
     case contentTypes.LEARNING_PATH:

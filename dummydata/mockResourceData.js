@@ -30,20 +30,6 @@ export const ResourceData = [
     contentType: constants.contentTypes.ASSESSMENT_RESOURCES,
   },
   {
-    id: "94c16735-7485-4f95-9591-f61df6291d87",
-    title: "My Resource",
-    link: "",
-    topics: ["Oppgave", "Norsk", "Muntlig"],
-    tags: ["tag", "tag", "tag"],
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
-    resourceImage: {
-      src: "",
-      alt: "",
-    },
-    contentType: constants.contentTypes.EXTERNAL_LEARNING_RESOURCES,
-  },
-  {
     id: "ee3b8780-3056-4696-a33e-6c4609530a40",
     title: "My Resource",
     link: "",

@@ -74,10 +74,10 @@ export {
   TasksAndActivitiesHero,
   AssessmentResourcesHero,
   SubjectHero,
-  ExternalLearningResourcesHero,
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
+  ConceptHero,
   HeroContent,
 } from "./Hero";
 
@@ -175,8 +175,8 @@ export {
   AssessmentResourcesBadge,
   LearningPathBadge,
   SubjectBadge,
-  ExternalLearningResourcesBadge,
   SourceMaterialBadge,
+  ConceptBadge,
 } from "./ContentTypeBadge";
 
 export { SubjectHeader, SubjectBanner } from "./Subject";

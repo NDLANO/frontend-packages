@@ -11,10 +11,10 @@ export {
   TasksAndActivitiesHero,
   AssessmentResourcesHero,
   SubjectHero,
-  ExternalLearningResourcesHero,
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
+  ConceptHero,
 } from "./Hero";
 export { HeroContent } from "./HeroContent";
 

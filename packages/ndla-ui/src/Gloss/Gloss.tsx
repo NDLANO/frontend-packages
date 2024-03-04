@@ -164,7 +164,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                   <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
                 )}
               </GlossContainer>
-              {audio?.src && <SpeechControl src={audio.src} title={audio.title} text="gloss.play"></SpeechControl>}
+              {audio?.src && <SpeechControl src={audio.src} title={audio.title} label="gloss.play"></SpeechControl>}
             </Wrapper>
             {filteredExamples.length > 0 ? (
               <>

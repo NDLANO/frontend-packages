@@ -15,10 +15,10 @@ import Tooltip from "@ndla/tooltip";
 type Props = {
   src: string;
   title: string;
-  text?: string;
+  label?: string;
 };
 
-const SpeechControl = ({ src, title, text = "audio.play" }: Props) => {
+const SpeechControl = ({ src, title, label = "audio.play" }: Props) => {
   const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -36,8 +36,8 @@ const SpeechControl = ({ src, title, text = "audio.play" }: Props) => {
     <div>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
-      <Tooltip tooltip={t(text)}>
-        <IconButtonV2 type="button" onClick={togglePlay} aria-label={t(text)} variant="ghost">
+      <Tooltip tooltip={t(label)}>
+        <IconButtonV2 type="button" onClick={togglePlay} aria-label={t(label)} variant="ghost">
           <VolumeUp />
         </IconButtonV2>
       </Tooltip>

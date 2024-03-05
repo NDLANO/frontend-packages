@@ -1207,12 +1207,14 @@ const messages = {
       confirmDeleteAccountButton: "Delete account",
       myPage: "My page",
       logout: "Log out of My NDLA",
+      loginIngress:
+        "This page allows you to organize your articles in <b>your own</b> way! Use the heart button to highlight your favorite subjects or resources, and share them with students and colleagues across the country.",
       loginText:
-        "In order to use the My NDLA service you have to be a student or work at a school in a county that partakes in the NDLA collaboration. We ask you not to write offensive or personally sensitive information in text fields. Read our ",
-      loginTextLink: "privacy policy here",
+        "In order to use the My NDLA service you have to be a student or work at a school in a county that partakes in the NDLA collaboration.",
+      loginTextLink: "Read our privacy policy here",
       loginTerms: "Log in with Feide to receive access. By logging on your accept your terms of service",
       loginResourcePitch: "Do you want to favorite this resource?",
-      loginWelcome: "Welcome to My NDLA! This page allows you to organize your articles in your own way!",
+      loginWelcome: "Welcome to My NDLA!",
       deleteAccount: "Delete My NDLA",
       welcome:
         "Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags",

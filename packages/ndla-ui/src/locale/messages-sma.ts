@@ -1211,12 +1211,14 @@ const messages = {
       myPage: "Min side",
       deleteAccount: "Slett Min NDLA",
       logout: "Logg ut av Min NDLA",
+      loginIngress:
+        "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjerteknappen til å markere dine favorittfag eller ressurser, og finne dem enkelt igjen.",
       loginText:
-        "For å kunne bruke tjenesten Min NDLA må du være elev eller jobbe på en skole i et fylke som er med i NDLA-samarbeidet. Vi ber om at du ikke skriver noe støtende, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ",
-      loginTextLink: "personvernerklæring her",
+        "For å kunne bruke tjenesten Min NDLA må du være elev eller jobbe på en skole i et fylke som er med i NDLA-samarbeidet.",
+      loginTextLink: "Les vår personvernerklæring her",
       loginTerms: "Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre vilkår for bruk",
       loginResourcePitch: "Ønsker du å favorittmerke denne ressursen?",
-      loginWelcome: "Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!",
+      loginWelcome: "Velkommen til Min NDLA!",
       welcome:
         "Velkommen til Min NDLA! Nå kan du lagre favorittressursene dine fra NDLA og organisere dem i mapper og med emneknagger.",
       read: { read: "Les", our: " vår." },

@@ -44,38 +44,36 @@ const ResourceList = ({
     resources.filter((res) => !res.additional).length === 0;
 
   return (
-    <div>
-      <StyledResourceList>
-        {resources.map(({ id, ...resource }) => (
-          <ResourceItem
-            id={id}
-            key={id}
-            contentType={contentType}
-            showAdditionalResources={showAdditionalResources}
-            heartButton={heartButton}
-            {...resource}
-            contentTypeDescription={
-              resource.additional ? t("resource.tooltipAdditionalTopic") : t("resource.tooltipCoreTopic")
+    <StyledResourceList>
+      {resources.map(({ id, ...resource }) => (
+        <ResourceItem
+          id={id}
+          key={id}
+          contentType={contentType}
+          showAdditionalResources={showAdditionalResources}
+          heartButton={heartButton}
+          {...resource}
+          contentTypeDescription={
+            resource.additional ? t("resource.tooltipAdditionalTopic") : t("resource.tooltipCoreTopic")
+          }
+        />
+      ))}
+      {renderAdditionalResourceTrigger && (
+        <li>
+          <NoContentBox
+            onClick={onClick}
+            buttonText={t("resource.toggleFilterLabel")}
+            text={
+              title
+                ? t("resource.noCoreResourcesAvailable", {
+                    name: title.toLowerCase(),
+                  })
+                : t("resource.noCoreResourcesAvailableUnspecific")
             }
           />
-        ))}
-        {renderAdditionalResourceTrigger && (
-          <li>
-            <NoContentBox
-              onClick={onClick}
-              buttonText={t("resource.toggleFilterLabel")}
-              text={
-                title
-                  ? t("resource.noCoreResourcesAvailable", {
-                      name: title.toLowerCase(),
-                    })
-                  : t("resource.noCoreResourcesAvailableUnspecific")
-              }
-            />
-          </li>
-        )}
-      </StyledResourceList>
-    </div>
+        </li>
+      )}
+    </StyledResourceList>
   );
 };
 

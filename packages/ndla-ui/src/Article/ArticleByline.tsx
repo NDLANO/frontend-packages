@@ -37,7 +37,7 @@ const TextWrapper = styled.div`
     flex-direction: column-reverse;
     gap: ${spacing.xsmall};
   }
-  &[data-learningPath="true"] {
+  &[data-learning-path="true"] {
     flex-direction: column;
     flex-direction: column-reverse;
     gap: ${spacing.xsmall};
@@ -160,7 +160,7 @@ const ArticleByline = ({
   return (
     <Wrapper>
       {displayByline && (
-        <TextWrapper data-learningPath={bylineType === "learningPath"}>
+        <TextWrapper data-learning-path={bylineType === "learningPath"}>
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (

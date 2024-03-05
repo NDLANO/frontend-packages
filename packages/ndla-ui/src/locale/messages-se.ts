@@ -470,6 +470,7 @@ const messages = {
         "Muitte ahte sisdoalus mii lea vuojuhuvvon ovtta gihppagii sáhttá leat eará liseansa go dušše jietnadat.",
       rules: "Glossa geavaheami njuolggadusat:",
       title: "Namahus",
+      showOrHideExamples: "Čájet dahje čiega ovdamearkkaid",
       embedlink: {
         heading: "Čájet jietnadaga eará sisdoaluin",
         description: "Dát liŋka čájeha teavstta konteavstta haga (fállu ja juolgeteaksta)",
@@ -511,12 +512,14 @@ const messages = {
     socialMedia: "Sosiála mediat",
     selectLanguage: "Vállje giela (language): ",
     vision: "Ovttas hábmet boahtteáiggi oahppama",
-    linksHeader: "Eará NDLA neahttabáikkit",
+    linksHeader: "Oktavuohta",
     info: "Neahttabáiki lea ráhkaduvvon NDLA bokte rabas gáldokodain.",
     editorInChief: "Vásttolaš doaimmaheaddji:",
     availabilityLink: "Beasatlašvuođajulggaštus",
     privacyLink: "Persovdnasuodjalusjulggaštus ja diehtočoahkku (gáhkožat)",
     cookiesLink: "Julggaštus diehtočoahku ektui (gáhkožat)",
+    aboutWebsite: "Neahttabáikki birra",
+    followUs: "Čuovo min",
     socialMediaLinks: {
       facebook: "NDLA Facebookas",
       facebookAria: "Fina NDLA siiddus Facebookas",
@@ -1063,7 +1066,8 @@ const messages = {
         maxLength: "Maksimal lengde for tekstfeltet er nådd",
         error: "Feltet er påkrevd",
       },
-      bottomText: "Savner du en kategori? Gi vår moderator beskjed på moderator@ndla.no",
+      bottomText: "Savner du en kategori? Gi vår moderator beskjed på ",
+      moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Varslinger",
         showAll: "Se alle varslinger",
@@ -1112,6 +1116,8 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukere funnet.",
           search: "Søk etter brukere",
+          becameAdmin: "Bruker '{{user}}' har fått administrator tilgang",
+          becameNormalUser: "Bruker '{{user}}' har ikke lenger administrator tilgang",
         },
         flags: {
           title: "Flagg",
@@ -1350,11 +1356,13 @@ const messages = {
       h5p: "H5P",
       external: "Olgguldas resursa",
       gloss: "Glose",
+      copyright: "Tekst",
     },
   },
   gloss: {
     examples: "Ovdamearkkat",
     wordClass: "Sátneluohkká",
+    play: "Čuojat glose",
     transcriptions: {
       traditional: "Árbevirolaš čállinvuohki",
       pinyin: "Pinyin",

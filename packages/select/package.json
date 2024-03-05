@@ -1,6 +1,6 @@
 {
   "name": "@ndla/select",
-  "version": "3.3.6",
+  "version": "3.3.8",
   "description": "Select component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,8 +26,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^4.4.1",
-    "@ndla/icons": "^5.0.11",
+    "@ndla/core": "^4.4.2",
+    "@ndla/icons": "^5.1.0",
     "react-select": "^5.8.0"
   },
   "peerDependencies": {

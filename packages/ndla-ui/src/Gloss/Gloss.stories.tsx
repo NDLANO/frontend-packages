@@ -8,6 +8,7 @@
 
 import { Meta, StoryObj, StoryFn } from "@storybook/react";
 import Gloss from "./Gloss";
+import GlossExample from "./GlossExample";
 import { defaultParameters } from "../../../../stories/defaults";
 import { wordClass } from "../model/WordClass";
 
@@ -104,4 +105,16 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
       src: "https://api.staging.ndla.no/audio/files/shu3jia4.mp3",
     },
   },
+};
+
+const GlossExampleText = {
+  example: "我叫马红",
+  language: "zh",
+  transcriptions: {
+    pinyin: "wo jiao ma hong",
+  },
+};
+
+export const GlossExampleStory: StoryFn<typeof Gloss> = () => {
+  return <GlossExample originalLanguage="zh" index={0} example={GlossExampleText} isStandalone />;
 };

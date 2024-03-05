@@ -471,6 +471,7 @@ const messages = {
       description: "Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie",
       rules: "Njoelkedassh guktie diejvesem nåhtadidh:",
       title: "Tihtele",
+      showOrHideExamples: "Vuesiehtimmieh vuesiehtidh jallh vöörhkedh",
       embedlink: {
         heading: "Naemhtie gïelem jeatjah sisvegisnie vuesehte",
         description: "Daate lïenghke vuesehte tjoejh konteksten namhtah (meny jïh nueliekapihtele)",
@@ -513,12 +514,14 @@ const messages = {
     socialMedia: "Sosiale medier",
     selectLanguage: "Veeljh gïelem  (language): ",
     vision: "Ektesne båetijen aejkien lïerehtimmiem sjugniedibie",
-    linksHeader: "Jeatjah NDLA-nedtesijjieh",
-    info: "NDLA nedtesijjiem ræhpas gaaltijekodine dorjeme.",
+    linksHeader: "Govlehtallh",
+    info: "Webbesijjiem dorjeme goh gaahpoeh gaaltijenimmie.",
     editorInChief: "Redaktööre mij dïedtem åtna:",
     availabilityLink: "Tilgjengelighetserklæring",
     privacyLink: "Personvernerklæring og cookies",
     cookiesLink: "Erklæring om informasjonskapslar",
+    aboutWebsite: "Webbesijjien bïjre",
+    followUs: "Mijjem dåeriedidh",
     socialMediaLinks: {
       facebook: "NDLA Facebook:sne",
       facebookAria: "Vaaksjoeh NDLA:m Facebookesne",
@@ -1065,7 +1068,8 @@ const messages = {
         maxLength: "Maksimal lengde for tekstfeltet er nådd",
         error: "Feltet er påkrevd",
       },
-      bottomText: "Savner du en kategori? Gi vår moderator beskjed på moderator@ndla.no",
+      bottomText: "Savner du en kategori? Gi vår moderator beskjed på ",
+      moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Varslinger",
         showAll: "Se alle varslinger",
@@ -1114,6 +1118,8 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukere funnet.",
           search: "Søk etter brukere",
+          becameAdmin: "Bruker '{{user}}' har fått administrator tilgang",
+          becameNormalUser: "Bruker '{{user}}' har ikke lenger administrator tilgang",
         },
         flags: {
           title: "Flagg",
@@ -1352,11 +1358,13 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glosa",
+      copyright: "Tekst",
     },
   },
   gloss: {
     examples: "Eksempler",
     wordClass: "Ordklasse",
+    play: "Spill av glose",
     transcriptions: {
       traditional: "Tradisjonell skrivemåte",
       pinyin: "Pinyin",

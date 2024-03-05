@@ -453,6 +453,7 @@ const messages = {
       description: "Remember that built-in content might have a different license than the gloss text",
       rules: "Rules for use of gloss:",
       title: "Title",
+      showOrHideExamples: "Show or hide examples",
       embedlink: {
         heading: "How to show the gloss in other content",
         description: "This url shows the gloss without menu and footer",
@@ -508,13 +509,15 @@ const messages = {
     aboutNDLA: "About NDLA",
     socialMedia: "Social media",
     selectLanguage: "Choose language (språk): ",
-    info: "This webapplication is developed by NDLA as Open Source code.",
+    info: "This webapplication is developed as Open Source code.",
     editorInChief: "Editor in chief:",
-    linksHeader: "Other NDLA sites",
+    linksHeader: "Contact",
     availabilityLink: "Availability statement",
     privacyLink: "Privacy statement",
     cookiesLink: "Statement about cookies",
+    aboutWebsite: "About",
     vision: "We create the learning of the future together",
+    followUs: "Follow us",
     socialMediaLinks: {
       facebook: "NDLA on Facebook",
       facebookAria: "Visit NDLA on Facebook",
@@ -1061,7 +1064,8 @@ const messages = {
         maxLength: "The maximum length for the text field is reached",
         error: "The field is required",
       },
-      bottomText: "Are you missing a category? Let our moderator know at moderator@ndla.no",
+      bottomText: "Are you missing a category? Let our moderator know at ",
+      moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Notifications",
         showAll: "View all notifications",
@@ -1110,6 +1114,8 @@ const messages = {
           enableArena: "Give {{user}} access to the arena.",
           noUsers: "No users found.",
           search: "Search for users",
+          becameAdmin: "User '{{user}}' was elevated to administrator",
+          becameNormalUser: "User '{{user}}' no longer has administrator access",
         },
         flags: {
           title: "Flag",
@@ -1349,11 +1355,13 @@ const messages = {
       h5p: "H5P",
       external: "External resource",
       gloss: "Gloss",
+      copyright: "Text",
     },
   },
   gloss: {
     examples: "Examples",
     wordClass: "Word class",
+    play: "Play gloss",
     transcriptions: {
       traditional: "Traditional spelling",
       pinyin: "Pinyin",

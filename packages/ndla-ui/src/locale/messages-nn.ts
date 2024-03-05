@@ -474,6 +474,7 @@ const messages = {
       description: "Husk at innebygd innhald i ei glose kan ha ein anna lisens enn sjølve gloseteksten",
       rules: "Regler for bruk av glose:",
       title: "Tittel",
+      showOrHideExamples: "Vis eller skjul eksempler",
     },
     files: {
       heading: "Slik gjenbruker du filer",
@@ -509,12 +510,14 @@ const messages = {
     socialMedia: "Sosiale media",
     selectLanguage: "Vel språk (language): ",
     vision: "Saman skapar vi framtidas læring",
-    linksHeader: "Andre NDLA-nettstader",
-    info: "Nettstaden er utarbeida av NDLA med open kjeldekode.",
+    linksHeader: "Kontakt",
+    info: "Nettstaden er utarbeida som åpen kjeldekode.",
     editorInChief: "Ansvarleg redaktør:",
     availabilityLink: "Tilgjengelegheitserklæring",
     privacyLink: "Personvernerklæring",
     cookiesLink: "Erklæring for informasjonskapslar",
+    aboutWebsite: "Om nettstaden",
+    followUs: "Følg oss",
     socialMediaLinks: {
       facebook: "NDLA på Facebook",
       facebookAria: "Besøk NDLA på Facebook",
@@ -1061,7 +1064,8 @@ const messages = {
         maxLength: "Maksimal lengd for tekstfeltet er nådd",
         error: "Feltet er påkravd",
       },
-      bottomText: "Saknar du ein kategori? Gi moderatoren vår beskjed på moderator@ndla.no",
+      bottomText: "Saknar du ein kategori? Gi moderatoren vår beskjed på ",
+      moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Varslingar",
         showAll: "Sjå alle varslingar",
@@ -1110,6 +1114,8 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukarar funne.",
           search: "Søk etter brukarar",
+          becameAdmin: "Brukar '{{user}}' har fått administrator tilgong",
+          becameNormalUser: "Brukar '{{user}}' har ikkje lenger administrator tilgong",
         },
         flags: {
           title: "Flagg",
@@ -1348,11 +1354,13 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glose",
+      copyright: "Tekst",
     },
   },
   gloss: {
     examples: "Eksempler",
     wordClass: "Ordklasse",
+    play: "Spill av glose",
     transcriptions: {
       traditional: "Tradisjonell skrivemåte",
       pinyin: "Pinyin",

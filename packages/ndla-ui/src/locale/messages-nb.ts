@@ -468,6 +468,7 @@ const messages = {
       description: "Husk at innebygd innhold i en glose kan ha en annen lisens enn selve gloseteksten",
       rules: "Regler for bruk av glose:",
       title: "Tittel",
+      showOrHideExamples: "Vis eller skjul eksempler",
       embedlink: {
         heading: "Slik viser du glosen i annet innhold",
         description: "Denne lenken viser glosen uten kontekst (meny og bunntekst)",
@@ -509,12 +510,14 @@ const messages = {
     socialMedia: "Sosiale medier",
     selectLanguage: "Velg språk (language): ",
     vision: "Sammen skaper vi framtidas læring",
-    linksHeader: "Andre NDLA-nettsteder",
-    info: "Nettstedet er utarbeidet av NDLA med åpen kildekode.",
+    linksHeader: "Kontakt",
+    info: "Nettstedet er utarbeidet som åpen kildekode.",
     editorInChief: "Ansvarlig redaktør:",
     availabilityLink: "Tilgjengelighetserklæring",
     privacyLink: "Personvernerklæring",
     cookiesLink: "Erklæring for informasjonskapsler",
+    aboutWebsite: "Om nettstedet",
+    followUs: "Følg oss",
     socialMediaLinks: {
       facebook: "NDLA på Facebook",
       facebookAria: "Besøk NDLA på Facebook",
@@ -1061,7 +1064,8 @@ const messages = {
         maxLength: "Maksimal lengde for tekstfeltet er nådd",
         error: "Feltet er påkrevd",
       },
-      bottomText: "Savner du en kategori? Gi vår moderator beskjed på moderator@ndla.no",
+      bottomText: "Savner du en kategori? Gi vår moderator beskjed på ",
+      moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Varslinger",
         showAll: "Se alle varslinger",
@@ -1110,6 +1114,8 @@ const messages = {
           enableArena: 'Gi "{{user}}" tilgang til arena.',
           noUsers: "Ingen brukere funnet.",
           search: "Søk etter brukere",
+          becameAdmin: "Bruker '{{user}}' har fått administrator tilgang",
+          becameNormalUser: "Bruker '{{user}}' har ikke lenger administrator tilgang",
         },
         flags: {
           title: "Flagg",
@@ -1348,11 +1354,13 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glose",
+      copyright: "Tekst",
     },
   },
   gloss: {
     examples: "Eksempler",
     wordClass: "Ordklasse",
+    play: "Spill av glose",
     transcriptions: {
       traditional: "Tradisjonell skrivemåte",
       pinyin: "Pinyin",

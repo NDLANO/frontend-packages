@@ -13,6 +13,7 @@ import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
+import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
 import { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import { ICopyright as ImageCopyright } from "@ndla/types-backend/image-api";
@@ -27,6 +28,7 @@ interface BaseProps {
   children?: ReactNode;
   visibleAlt?: string;
   error?: true | false;
+  hideOnLargeScreens?: boolean;
   first?: boolean;
   inGrid?: boolean;
 }
@@ -61,7 +63,18 @@ interface ConceptProps extends BaseProps {
   copyright: ConceptCopyright | undefined;
 }
 
-export type EmbedBylineTypeProps = ImageProps | BrightcoveProps | AudioProps | PodcastProps | ConceptProps;
+interface CopyrightProps extends BaseProps {
+  type: "copyright";
+  copyright: ArticleCopyright | undefined;
+}
+
+export type EmbedBylineTypeProps =
+  | ImageProps
+  | BrightcoveProps
+  | AudioProps
+  | PodcastProps
+  | ConceptProps
+  | CopyrightProps;
 
 type Props = EmbedBylineTypeProps | EmbedBylineErrorProps;
 
@@ -94,6 +107,11 @@ const BylineWrapper = styled.div`
   }
   &[data-first="true"] {
     border-top: 1px solid ${colors.brand.light};
+  }
+  &[data-hide-on-large-screens="true"] {
+    ${mq.range({ from: breakpoints.tablet })} {
+      display: none;
+    }
   }
 `;
 
@@ -135,6 +153,7 @@ const EmbedByline = ({
   description,
   children,
   visibleAlt,
+  hideOnLargeScreens,
   first = true,
   inGrid = false,
   ...props
@@ -157,7 +176,12 @@ const EmbedByline = ({
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
   return (
-    <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-first={first}>
+    <BylineWrapper
+      data-top-rounded={topRounded}
+      data-hide-on-large-screens={hideOnLargeScreens}
+      data-bottom-rounded={bottomRounded}
+      data-first={first}
+    >
       {description && <LicenseDescription description={description} />}
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
       <RightsWrapper data-grid={inGrid}>

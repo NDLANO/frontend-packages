@@ -10,29 +10,9 @@ import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { spacing, fonts, colors, mq, breakpoints } from "@ndla/core";
-import { Forward, Launch } from "@ndla/icons/common";
+import { Launch } from "@ndla/icons/common";
 import SafeLink from "@ndla/safelink";
-import { Text } from "@ndla/typography";
-
-const StyledLinksWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: ${spacing.normal};
-  div:first-of-type {
-    margin-right: ${spacing.large};
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    div:first-of-type {
-      margin-right: ${spacing.xxlarge};
-    }
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    flex-direction: column;
-    > div {
-      margin-top: ${spacing.large};
-    }
-  }
-`;
+import { Heading } from "@ndla/typography";
 
 type FooterLinksProps = {
   commonLinks?: {
@@ -45,62 +25,88 @@ type FooterLinksProps = {
     text: string;
     icon: ReactNode;
   }[];
+  privacyLinks?: {
+    url: string;
+    label: string;
+  }[];
 };
+
+const FooterLinkContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+  }
+  width: 100%;
+`;
+
+const LinkColumnWrapper = styled.div`
+  padding-right: ${spacing.large};
+  padding-top: ${spacing.normal};
+`;
+
+const LastLinkColumnWrapper = styled.div`
+  padding-top: ${spacing.normal};
+`;
 
 const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
-  color: #fff;
-  div {
-    margin: ${spacing.xsmall} 0;
-  }
+  color: ${colors.white};
+  gap: ${spacing.xsmall};
+  padding-top: ${spacing.small};
 `;
 
 const StyledSafeLink = styled(SafeLink)`
-  color: #fff;
-  ${fonts.sizes(16, 1.5)};
+  color: ${colors.white};
+  ${fonts.size.text.content};
   svg {
-    transform: translateY(-2px);
     margin-left: ${spacing.xsmall};
   }
 `;
 
 const StyledSocialMediaIcon = styled.span`
-  background: ${colors.white};
-  color: ${colors.brand.primary};
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${spacing.large};
-  height: ${spacing.large};
   margin-right: ${spacing.small};
   svg {
     width: 20px;
     height: 20px;
+    color: ${colors.white};
   }
 `;
 
-const StyledSocialMediaLinkWrapper = styled.div`
-  display: flex;
-  align-items: center;
+const StyledLaunch = styled(Launch)`
+  margin-left: ${spacing.xsmall};
 `;
 
-const StyledTextLinks = styled(Text)`
-  ${fonts.sizes(16, 1.5)};
-  font-weight: ${fonts.weight.semibold};
-`;
-
-const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
+const FooterLinks = ({ links, commonLinks, privacyLinks }: FooterLinksProps) => {
   const { t } = useTranslation();
   return (
     <>
-      <StyledLinksWrapper>
-        <div>
-          <StyledTextLinks id="otherLinks" element="span" textStyle="content-alt">
+      <FooterLinkContainer>
+        <LinkColumnWrapper>
+          <Heading element="span" headingStyle="list-title">
+            {t("footer.followUs")}
+          </Heading>
+          <StyledNav aria-label={t("footer.socialMedia")}>
+            {links?.map((link) => (
+              <div key={link.to}>
+                <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
+                <StyledSafeLink key={link.to} to={link.to}>
+                  {link.text}
+                </StyledSafeLink>
+              </div>
+            ))}
+          </StyledNav>
+        </LinkColumnWrapper>
+        <LinkColumnWrapper>
+          <Heading element="span" headingStyle="list-title">
             {t("footer.linksHeader")}
-          </StyledTextLinks>
-          <StyledNav aria-labelledby="otherLinks">
+          </Heading>
+          <StyledNav aria-label={t("footer.linksHeader")}>
             {commonLinks?.map((link) => (
               <div key={link.to}>
                 <StyledSafeLink
@@ -111,24 +117,26 @@ const FooterLinks = ({ links, commonLinks }: FooterLinksProps) => {
                   rel="noopener noreferrer"
                 >
                   {link.text}
-                  {link.external && <Launch />}
                 </StyledSafeLink>
+                {link.external && <StyledLaunch />}
               </div>
             ))}
           </StyledNav>
-        </div>
-        <StyledNav aria-label={t("footer.socialMedia")}>
-          {links?.map((link) => (
-            <StyledSocialMediaLinkWrapper key={link.to}>
-              <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
-              <StyledSafeLink to={link.to}>
-                {link.text}
-                <Forward />
-              </StyledSafeLink>
-            </StyledSocialMediaLinkWrapper>
-          ))}
-        </StyledNav>
-      </StyledLinksWrapper>
+        </LinkColumnWrapper>
+        <LastLinkColumnWrapper>
+          <Heading element="span" headingStyle="list-title">
+            {t("footer.aboutWebsite")}
+          </Heading>
+          <StyledNav aria-label={t("footer.aboutWebsite")}>
+            {privacyLinks &&
+              privacyLinks.map((link) => (
+                <div key={link.label}>
+                  <StyledSafeLink to={link.url}>{link.label}</StyledSafeLink>
+                </div>
+              ))}
+          </StyledNav>
+        </LastLinkColumnWrapper>
+      </FooterLinkContainer>
     </>
   );
 };

@@ -63,9 +63,15 @@ const ListElement = styled.li`
   border-radius: ${misc.borderRadius};
   background: ${colors.white};
   margin-bottom: ${spacing.xsmall};
-  display: flex;
-  justify-content: space-between;
+  display: grid;
   align-items: center;
+  grid-template-areas:
+    "badge resourceType typeWrapper"
+    "badge resourceLink typeWrapper";
+  grid-row-gap: ${spacing.xsmall};
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+
   padding: ${spacing.small};
   &[data-additional="true"] {
     border-style: dashed;
@@ -96,9 +102,28 @@ const ListElement = styled.li`
   &[hidden] {
     display: none;
   }
+  [data-badge-wrapper="true"] {
+    &:has(+ a:hover) {
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  &:not([data-content-type]) {
+    grid-template-areas: "badge resourceLink typeWrapper";
+    grid-row-gap: 0;
+    align-items: center;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    grid-template-areas: "badge resourceLink resourceType typeWrapper";
+    grid-row-gap: 0;
+    align-items: center;
+  }
 `;
 
 const ResourceLink = styled(SafeLink)`
+  grid-area: resourceLink;
   display: flex;
   width: 100%;
   align-items: center;
@@ -118,35 +143,21 @@ const ResourceLink = styled(SafeLink)`
   }
   &:hover {
     text-decoration: none;
-    [data-badge-wrapper="true"] {
-      [data-badge] {
-        width: ${spacing.mediumlarge};
-        height: ${spacing.mediumlarge};
-
-        svg {
-          width: 20px;
-          height: 20px;
-        }
-        [data-type="subject-material"],
-        [data-type="learning-path"],
-        [data-type="source-material"],
-        [data-type="external-learning-resources"] {
-          svg {
-            width: ${spacing.medium};
-            height: ${spacing.medium};
-          }
-        }
-      }
-    }
   }
 `;
 
-const InlineContainer = styled.div`
-  display: inline;
-  width: 100%;
+const TitleContainer = styled.div`
+  align-items: normal;
+  display: flex;
+  flex-direction: column;
+  ${mq.range({ from: breakpoints.desktop })} {
+    align-items: center;
+    flex-direction: row;
+  }
 `;
 
 const ContentBadgeWrapper = styled.div`
+  grid-area: badge;
   display: flex;
   flex: 0 0 auto;
   text-align: center;
@@ -161,29 +172,43 @@ const ContentBadgeWrapper = styled.div`
     padding-left: ${spacing.xsmall};
   }
   ${mq.range({ from: breakpoints.desktop })} {
+    align-items: center;
     padding-right: ${spacing.nsmall};
   }
 `;
 
 const TypeWrapper = styled.div`
+  grid-area: typeWrapper;
   display: flex;
   align-items: center;
   gap: ${spacing.xsmall};
+  ${mq.range({ from: breakpoints.desktop })} {
+    align-items: center;
+  }
 `;
 
 const ContentTypeName = styled.span`
+  grid-area: resourceType;
   font-family: ${fonts.sans};
   ${fonts.sizes("14px", "18px")};
   font-weight: ${fonts.weight.semibold};
   color: ${colors.text.light};
-  text-align: right;
+  text-align: left;
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding-left: 0;
+    text-align: right;
+    margin: 0 ${spacing.xsmall};
+  }
 `;
 
 const CurrentSmall = styled.small`
-  margin-left: ${spacing.xsmall};
   text-decoration: none;
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.normal};
+  white-space: nowrap;
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding: 0 ${spacing.xsmall};
+  }
 `;
 
 interface Props {
@@ -236,8 +261,12 @@ const ResourceItem = ({
       hidden={hidden && !active}
       data-active={active}
       data-additional={additional}
+      data-content-type={contentTypeName}
       style={listElementVars}
     >
+      <ContentBadgeWrapper data-badge-wrapper={!active}>
+        <ContentTypeBadge type={contentType ?? ""} background border={false} />
+      </ContentBadgeWrapper>
       <ResourceLink
         to={path}
         lang={language === "nb" ? "no" : language}
@@ -246,16 +275,13 @@ const ResourceItem = ({
         disabled={active}
         data-active={active}
       >
-        <ContentBadgeWrapper data-badge-wrapper={!active}>
-          <ContentTypeBadge type={contentType ?? ""} background border={false} />
-        </ContentBadgeWrapper>
-        <InlineContainer>
-          {name}
+        <TitleContainer>
+          <div>{name}</div>
           {active ? <CurrentSmall>{t("resource.youAreHere")}</CurrentSmall> : undefined}
-        </InlineContainer>
+        </TitleContainer>
       </ResourceLink>
+      {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
       <TypeWrapper>
-        {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === "teacher" && (
           <IconWrapper aria-label={t("article.access.onlyTeacher")} title={t("article.access.onlyTeacher")}>
             <HumanMaleBoard id={accessId} />

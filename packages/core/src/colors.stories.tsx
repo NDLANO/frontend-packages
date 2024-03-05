@@ -157,8 +157,9 @@ export const ContentTypeColors: StoryFn = () => (
       <ColorBlock color={colors.learningPath.light} name="Light" />
     </ColorBlocks>
     <ColorBlocks title="Concept">
-      <ColorBlock color={colors.concept.dark} name="Dark" />
       <ColorBlock color={colors.concept.light} name="Light" />
+      <ColorBlock color={colors.concept.dark} name="Dark" />
+      <ColorBlock color={colors.concept.text} name="Text" />
     </ColorBlocks>
     <ColorBlocks
       title="Additional material"

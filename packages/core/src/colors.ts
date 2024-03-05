@@ -79,7 +79,8 @@ const colors = {
 
   concept: {
     light: "#def1ed",
-    dark: "#3e5860",
+    dark: "#638b98",
+    text: "#3e5860",
   },
 
   tasksAndActivities: {

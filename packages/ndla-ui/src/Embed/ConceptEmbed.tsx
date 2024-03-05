@@ -193,13 +193,13 @@ const NotionButton = styled.button`
   position: relative;
   text-align: left;
   display: inline;
-  color: ${colors.concept.dark};
+  color: ${colors.concept.text};
   cursor: pointer;
   &:focus,
   &:hover,
   &:active,
   &[data-open="true"] {
-    color: ${colors.concept.dark};
+    color: ${colors.concept.text};
     background-color: ${colors.concept.light};
     [data-baseline-icon] {
       border-color: currentColor;

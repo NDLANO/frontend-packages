@@ -135,7 +135,7 @@ const iconMap = {
   },
   [contentTypes.CONCEPT]: {
     icon: Concept,
-    iconColor: colors.concept.dark,
+    iconColor: colors.concept.text,
     backgroundColor: colors.concept.light,
   },
   [contentTypes.resourceEmbedTypeMapping.image]: {

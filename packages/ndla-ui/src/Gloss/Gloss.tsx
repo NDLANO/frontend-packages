@@ -29,6 +29,7 @@ export interface Props {
   };
   exampleIds?: string;
   exampleLangs?: string;
+  lang?: string;
 }
 
 const StyledAccordionItem = styled(AccordionItem)`
@@ -109,6 +110,7 @@ const getFilteredExamples = (
   glossData: IGlossData | undefined,
   exampleIds: string | undefined,
   exampleLangs: string | undefined,
+  lang: string | undefined,
 ): IGlossExample[][] => {
   if (exampleIds !== undefined || exampleLangs !== undefined) {
     const exampleIdsList = exampleIds?.toString()?.split(",") ?? [];
@@ -117,7 +119,11 @@ const getFilteredExamples = (
     const filteredExamples =
       glossData?.examples?.map((examples, i) => {
         if (exampleIdsList.includes(i.toString())) {
-          return examples.filter((e) => exampleLangsList.includes(e.language));
+          return examples.filter((example) => {
+            if (lang === "no") return example.language !== "nn" && exampleLangsList.includes(example.language);
+            if (lang === "nn") return example.language !== "nb" && exampleLangsList.includes(example.language);
+            return exampleLangsList.includes(example.language);
+          });
         } else return [];
       }) ?? [];
     const examplesWithoutEmpty = filteredExamples.filter((el) => !!el.length);
@@ -125,12 +131,12 @@ const getFilteredExamples = (
   } else return glossData?.examples ?? [];
 };
 
-const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => {
+const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, lang }: Props) => {
   const { t } = useTranslation();
 
   const filteredExamples = useMemo(
-    () => getFilteredExamples(glossData, exampleIds, exampleLangs),
-    [exampleIds, exampleLangs, glossData],
+    () => getFilteredExamples(glossData, exampleIds, exampleLangs, lang),
+    [exampleIds, exampleLangs, glossData, lang],
   );
 
   return (

@@ -260,6 +260,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
               }
               exampleIds={exampleIds}
               exampleLangs={exampleLangs}
+              lang={lang}
             />
           )}
         </ContentSpacing>

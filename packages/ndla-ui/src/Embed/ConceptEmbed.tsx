@@ -437,6 +437,7 @@ export const BlockConcept = ({
             }
             exampleIds={exampleIds}
             exampleLangs={exampleLangs}
+            lang={lang}
           />
         )}
         {copyright && conceptType === "concept" && (

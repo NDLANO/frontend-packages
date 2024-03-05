@@ -15,6 +15,7 @@ export const LEARNING_PATH = "learning-path";
 export const TOPIC = "topic";
 export const MULTIDISCIPLINARY_TOPIC = "multidisciplinary-topic";
 export const CONCEPT = "concept";
+export const EXTERNAL = "external";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,
@@ -26,6 +27,7 @@ export const contentTypes = {
   TOPIC,
   MULTIDISCIPLINARY_TOPIC,
   CONCEPT,
+  EXTERNAL,
 };
 
 export const RESOURCE_TYPE_LEARNING_PATH = "urn:resourcetype:learningPath";
@@ -45,6 +47,7 @@ export const ListOfContentTypes = [
   "TOPIC",
   "MULTIDISIPLINARY_TOPIC",
   "CONCEPT",
+  "EXTERNAL",
 ];
 
 export const contentTypeMapping: Record<string, string> = {

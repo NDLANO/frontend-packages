@@ -550,7 +550,6 @@ const messages = {
     "learning-path": "Oahppanbálggis",
     "subject-material": "Fágaávdnasat",
     "tasks-and-activities": "Bihtát ja doaimmat",
-    "external-learning-resources": "Olgguldas oahppanresursa",
     "source-material": "Gáldomateriála",
     "assessment-resources": "Árvoštallanresursa",
     topic: "Fáddá",

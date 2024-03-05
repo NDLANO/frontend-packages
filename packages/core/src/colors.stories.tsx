@@ -161,6 +161,10 @@ export const ContentTypeColors: StoryFn = () => (
       <ColorBlock color={colors.concept.dark} name="Dark" />
       <ColorBlock color={colors.concept.text} name="Text" />
     </ColorBlocks>
+    <ColorBlocks title="External">
+      <ColorBlock color={colors.external.light} name="Light" />
+      <ColorBlock color={colors.external.dark} name="Dark" />
+    </ColorBlocks>
     <ColorBlocks
       title="Additional material"
       description="Additional material uses a subject material color, but with 40% opacity"

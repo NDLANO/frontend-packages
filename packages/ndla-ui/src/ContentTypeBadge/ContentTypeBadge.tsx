@@ -14,13 +14,14 @@ import { breakpoints, colors, mq } from "@ndla/core";
 import { MenuBook } from "@ndla/icons/action";
 import { Audio } from "@ndla/icons/common";
 import {
-  SubjectMaterial,
-  TasksAndActivities,
   AssessmentResource,
-  Subject,
-  SharedResource,
+  ExternalLearningResource,
   LearningPath,
   MultidisciplinaryTopic,
+  SharedResource,
+  Subject,
+  SubjectMaterial,
+  TasksAndActivities,
 } from "@ndla/icons/contentType";
 
 import { Concept, Media, Video } from "@ndla/icons/editor";
@@ -137,6 +138,11 @@ const iconMap = {
     icon: Concept,
     iconColor: colors.concept.text,
     backgroundColor: colors.concept.light,
+  },
+  [contentTypes.EXTERNAL]: {
+    icon: ExternalLearningResource,
+    iconColor: colors.external.dark,
+    backgroundColor: colors.external.light,
   },
   [contentTypes.resourceEmbedTypeMapping.image]: {
     icon: Media,

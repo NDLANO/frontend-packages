@@ -1211,6 +1211,9 @@ const messages = {
       loginResourcePitch: "Do you want to favorite this resource?",
       loginWelcome: "Welcome to My NDLA! This page allows you to organize your articles in your own way!",
       deleteAccount: "Delete My NDLA",
+      loginPitch:
+        "Welcome to My NDLA! Here you can save your favourite resources from NDLA, organize them and share them with others. Log in with your Feide account to get started.",
+      loginPitchButton: "Log in to My NDLA",
       welcome:
         "Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags",
       read: { read: "Read our", our: "." },

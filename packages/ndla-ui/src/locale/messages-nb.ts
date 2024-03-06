@@ -1229,6 +1229,13 @@ const messages = {
       recentFavourites: {
         title: "Nylig lagt til i mine mapper",
         link: "Se alle mappene dine",
+        search: "Søk etter ressurser",
+        unauthorized: "Oops. Her var det tomt! Favoriser noen ressurser for å vise dem her.",
+      },
+      favouriteSubjects: {
+        noFavorites:
+          "Ingen favorittfag? Bruk hjerteknappen for å legge til favorittfag, så finner du dem enkelt igjen!",
+        search: "Se alle fag",
       },
       recentArenaPosts: {
         title: "Nye innlegg i arenaen",

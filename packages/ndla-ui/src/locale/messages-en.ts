@@ -1233,6 +1233,13 @@ const messages = {
       recentFavourites: {
         title: "Recently added to my folders",
         link: "View all of your folders",
+        search: "Search for resources",
+        unauthorized: "Nothing here? Add a heart to some resources to show them here.",
+      },
+      favouriteSubjects: {
+        noFavorites:
+          "No favourite subjects? Use the heart button to add your favourite subjects, and you can easily find them again!",
+        search: "See all subjects",
       },
       recentArenaPosts: {
         title: "Recent posts in the arena",

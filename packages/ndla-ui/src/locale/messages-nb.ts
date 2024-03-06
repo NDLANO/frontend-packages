@@ -548,7 +548,6 @@ const messages = {
     "learning-path": "Læringssti",
     "subject-material": "Fagstoff",
     "tasks-and-activities": "Oppgaver og aktiviteter",
-    "external-learning-resources": "Ekstern læringsressurs",
     "source-material": "Kildemateriale",
     "assessment-resources": "Vurderingsressurs",
     topic: "Emne",

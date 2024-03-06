@@ -84,9 +84,9 @@ export const AssessmentResource: StoryObj<typeof ResourceItem> = {
   },
 };
 
-export const ExternalLearningResource: StoryObj<typeof ResourceItem> = {
+export const Concept: StoryObj<typeof ResourceItem> = {
   args: {
-    contentType: "external-learning-resources",
+    contentType: "concept",
   },
 };
 

@@ -49,7 +49,7 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
         introduction=""
         to={embedData.url}
         target="_blank"
-        type={"external-learning-resources"}
+        type={"external"}
         linkInfo={`${t("related.linkInfo")} ${
           // Get domain name only from url
           embedData.url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n]+)/im)?.[1] || embedData.url

@@ -552,7 +552,6 @@ const messages = {
     "learning-path": "Lïeremebaalka",
     "subject-material": "Faage-aamhtese",
     "tasks-and-activities": "Laavenjassh jïh darjomh",
-    "external-learning-resources": "Byjngetje lïeremevierhtie",
     "source-material": "Gaaltijevierhtieh",
     "assessment-resources": "Vuarjasjimmievierhtie",
     topic: "Teema",

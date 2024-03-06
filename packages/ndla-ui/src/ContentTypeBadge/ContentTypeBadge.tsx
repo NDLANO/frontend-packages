@@ -14,14 +14,14 @@ import { breakpoints, colors, mq } from "@ndla/core";
 import { MenuBook } from "@ndla/icons/action";
 import { Audio } from "@ndla/icons/common";
 import {
-  SubjectMaterial,
-  TasksAndActivities,
   AssessmentResource,
-  Subject,
   ExternalLearningResource,
-  SharedResource,
   LearningPath,
   MultidisciplinaryTopic,
+  SharedResource,
+  Subject,
+  SubjectMaterial,
+  TasksAndActivities,
 } from "@ndla/icons/contentType";
 
 import { Concept, Media, Video } from "@ndla/icons/editor";
@@ -115,11 +115,6 @@ const iconMap = {
     iconColor: colors.subject.dark,
     backgroundColor: colors.subject.light,
   },
-  [contentTypes.EXTERNAL_LEARNING_RESOURCES]: {
-    icon: ExternalLearningResource,
-    iconColor: colors.externalLearningResource.dark,
-    backgroundColor: colors.externalLearningResource.light,
-  },
   [contentTypes.SOURCE_MATERIAL]: {
     icon: SharedResource,
     iconColor: colors.sourceMaterial.dark,
@@ -139,6 +134,16 @@ const iconMap = {
     icon: MultidisciplinaryTopic,
     backgroundColor: "#b9b37b",
   },
+  [contentTypes.CONCEPT]: {
+    icon: Concept,
+    iconColor: colors.concept.text,
+    backgroundColor: colors.concept.light,
+  },
+  [contentTypes.EXTERNAL]: {
+    icon: ExternalLearningResource,
+    iconColor: colors.external.dark,
+    backgroundColor: colors.external.light,
+  },
   [contentTypes.resourceEmbedTypeMapping.image]: {
     icon: Media,
     iconColor: colors.brand.grey,
@@ -151,11 +156,6 @@ const iconMap = {
   },
   [contentTypes.resourceEmbedTypeMapping.video]: {
     icon: Video,
-    iconColor: colors.brand.grey,
-    backgroundColor: colors.brand.greyLight,
-  },
-  [contentTypes.resourceEmbedTypeMapping.concept]: {
-    icon: Concept,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
@@ -216,17 +216,13 @@ export const AssessmentResourcesBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
 );
 export const SubjectBadge = (props: Omit<Props, "type">) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
-export const ExternalLearningResourcesBadge = (props: Omit<Props, "type">) => (
-  <ContentTypeBadge {...props} type={contentTypes.EXTERNAL_LEARNING_RESOURCES} />
-);
 export const SourceMaterialBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
 );
-
 export const LearningPathBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
 );
-
 export const MultidisciplinaryTopicBadge = (props: Omit<Props, "type">) => (
   <ContentTypeBadge {...props} type={contentTypes.MULTIDISCIPLINARY_TOPIC} />
 );
+export const ConceptBadge = (props: Omit<Props, "type">) => <ContentTypeBadge {...props} type={contentTypes.CONCEPT} />;

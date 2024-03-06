@@ -58,7 +58,7 @@ const colorMap = {
   [contentTypes.SUBJECT_MATERIAL]: colors.subjectMaterial.light,
   [contentTypes.TASKS_AND_ACTIVITIES]: colors.tasksAndActivities.background,
   [contentTypes.ASSESSMENT_RESOURCES]: colors.assessmentResource.background,
-  [contentTypes.EXTERNAL_LEARNING_RESOURCES]: colors.externalLearningResource.background,
+  [contentTypes.CONCEPT]: colors.concept.light,
   [contentTypes.SOURCE_MATERIAL]: colors.sourceMaterial.light,
   [contentTypes.LEARNING_PATH]: colors.learningPath.background,
   [contentTypes.SUBJECT]: colors.subject.light,

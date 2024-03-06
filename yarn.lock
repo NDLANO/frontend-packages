@@ -2617,7 +2617,6 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     react: ">= 16.8.0"
-    react-bem-helper: ^1.4.1
   languageName: unknown
   linkType: soft
 

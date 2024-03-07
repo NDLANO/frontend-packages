@@ -24,6 +24,7 @@ const filmResourceMeta: RelatedContentMetaData = {
       id: 27911,
       revision: 40,
       title: {
+        htmlTitle: "Dokumentaren «Influenser»",
         title: "Dokumentaren «Influenser»",
         language: "nb",
       },
@@ -78,6 +79,8 @@ const filmResourceMeta: RelatedContentMetaData = {
         language: "nb",
       },
       introduction: {
+        htmlIntroduction:
+          "I dokumentaren «Influenser» undersøker NRK-programleder Vilde Bratland Erikstad hvordan influenserbransjen jobber for å påvirke deg. ",
         introduction:
           "I dokumentaren «Influenser» undersøker NRK-programleder Vilde Bratland Erikstad hvordan influenserbransjen jobber for å påvirke deg. ",
         language: "nb",
@@ -101,7 +104,9 @@ const filmResourceMeta: RelatedContentMetaData = {
     },
     resource: {
       id: "urn:resource:e21cb6a7-0072-4066-894b-d5f6bb4f7ead",
+      baseName: "Dokumentaren «Influenser»",
       name: "Dokumentaren «Influenser»",
+      language: "nb",
       contentUri: "urn:article:27911",
       path: "/subject:187c1484-84a5-474d-bf63-0c7915809a7d/topic:d792acc0-d332-48cf-9116-0db520e34f19/topic:3510fff0-fe20-4742-8e25-09262df2ac45/resource:e21cb6a7-0072-4066-894b-d5f6bb4f7ead",
       paths: [
@@ -207,6 +212,7 @@ const learningResourceMeta: RelatedContentMetaData = {
       id: 22972,
       revision: 16,
       title: {
+        htmlTitle: "Teknikker for idéutvikling",
         title: "Teknikker for idéutvikling",
         language: "nb",
       },
@@ -243,6 +249,7 @@ const learningResourceMeta: RelatedContentMetaData = {
         language: "nb",
       },
       introduction: {
+        htmlIntroduction: "Idéutvikling handler om å skape ideer, utvikle dem og løse problemer.",
         introduction: "Idéutvikling handler om å skape ideer, utvikle dem og løse problemer.",
         language: "nb",
       },
@@ -265,6 +272,8 @@ const learningResourceMeta: RelatedContentMetaData = {
     },
     resource: {
       id: "urn:resource:5d81f622-1fc5-49c8-943d-690e23450e09",
+      baseName: "Teknikker for idéutvikling",
+      language: "nb",
       name: "Teknikker for idéutvikling",
       contentUri: "urn:article:22972",
       path: "/subject:1:54b1727c-2d91-4512-901c-8434e13339b4/topic:1:126f94e7-7b54-44b2-be7d-3edc1ca3d21e/resource:5d81f622-1fc5-49c8-943d-690e23450e09",

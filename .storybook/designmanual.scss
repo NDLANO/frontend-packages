@@ -20,38 +20,3 @@ h3 > a {
   text-decoration: none;
   box-shadow: none;
 }
-
-.c-componentinfo {
-  &__aslist {
-    display: flex;
-    > * {
-      margin-right: $spacing--large;
-    }
-  }
-  code {
-    margin: 0;
-    padding: 0;
-    @include font-size(16px, 20px);
-  }
-  table td.required {
-    color: red;
-  }
-  &__status-label {
-    font-family: $font;
-    padding: $spacing;
-    &--alert {
-      background: $red;
-      color: #fff;
-    }
-    &--warn {
-      background: $tasks-and-activities-light;
-    }
-    &--safe {
-      background: $external-learning-resource-light;
-    }
-  }
-  &__warning-cell {
-    background: $red;
-    color: #fff;
-  }
-}

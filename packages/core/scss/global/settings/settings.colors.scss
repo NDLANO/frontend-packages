@@ -44,14 +44,6 @@ $subject-material-light: #dde9d0;
 $subject-material-dark: #5c6a4f;
 $subject-material-additional: rgba($subject-material-light, 0.4);
 
-$external-learning-resource-background: #d0e8de;
-$external-learning-resource-light: #e6f3ed;
-$external-learning-resource-dark: #4f7d76;
-$external-learning-resource-additional: rgba(
-  $external-learning-resource-background,
-  0.4
-);
-
 $tasks-and-activities-background: #f8e0c4;
 $tasks-and-activities-light: #fbeddc;
 $tasks-and-activities-dark: #c77632;
@@ -76,8 +68,12 @@ $subjecttype-background: $brand-color--dark;
 $subjecttype-light: #fff;
 $subjecttype-dark: $brand-color--dark;
 
-$notion-dark: #3E5860;
-$notion-light: #DEF1ED;
+$concept-light: #def1ed;
+$concept-dark: #638b98;
+$concept-text: #3e5860;
+
+$external-light: #e6f3ed;
+$external-dark: #4f7d76;
 
 /**
  * Supplementary colors,

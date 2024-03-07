@@ -548,7 +548,6 @@ const messages = {
     "learning-path": "Learning path",
     "subject-material": "Subject material",
     "tasks-and-activities": "Task and activities",
-    "external-learning-resources": "External learning resources",
     "source-material": "Source material",
     "assessment-resources": "Assessment resource",
     topic: "Topic",
@@ -1216,6 +1215,9 @@ const messages = {
       loginResourcePitch: "Do you want to favorite this resource?",
       loginWelcome: "Welcome to My NDLA!",
       deleteAccount: "Delete My NDLA",
+      loginPitch:
+        "Welcome to My NDLA! Here you can save your favourite resources from NDLA, organize them and share them with others. Log in with your Feide account to get started.",
+      loginPitchButton: "Log in to My NDLA",
       welcome:
         "Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags",
       read: { read: "Read our", our: "." },
@@ -1235,6 +1237,13 @@ const messages = {
       recentFavourites: {
         title: "Recently added to my folders",
         link: "View all of your folders",
+        search: "Search for resources",
+        unauthorized: "Nothing here? Add a heart to some resources to show them here.",
+      },
+      favouriteSubjects: {
+        noFavorites:
+          "No favourite subjects? Use the heart button to add your favourite subjects, and you can easily find them again!",
+        search: "See all subjects",
       },
       recentArenaPosts: {
         title: "Recent posts in the arena",

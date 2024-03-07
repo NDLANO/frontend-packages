@@ -14,7 +14,7 @@ import { colors, fonts, spacing } from "@ndla/core";
 import { HeadingLevel } from "@ndla/typography";
 import ResourceList, { ResourceListProps } from "./ResourceList";
 
-const Wrapper = styled.section`
+const Wrapper = styled.nav`
   margin-bottom: ${spacing.large};
 `;
 
@@ -47,7 +47,7 @@ const ResourceGroup = ({
   headingLevel: Heading = "h1",
   heartButton,
 }: Props & ResourceListProps) => (
-  <Wrapper>
+  <Wrapper aria-label={title}>
     {title && <Heading css={[headingStyle, invertedStyleProp ? invertedStyle : undefined]}>{title}</Heading>}
     {resources.length > 0 ? (
       <ResourceList

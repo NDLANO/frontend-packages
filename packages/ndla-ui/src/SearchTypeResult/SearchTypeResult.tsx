@@ -44,7 +44,7 @@ export type ContentType =
   | typeof constants.contentTypes.SUBJECT_MATERIAL
   | typeof constants.contentTypes.TASKS_AND_ACTIVITIES
   | typeof constants.contentTypes.ASSESSMENT_RESOURCES
-  | typeof constants.contentTypes.EXTERNAL_LEARNING_RESOURCES
+  | typeof constants.contentTypes.CONCEPT
   | typeof constants.contentTypes.SOURCE_MATERIAL
   | typeof constants.contentTypes.LEARNING_PATH
   | typeof constants.contentTypes.TOPIC

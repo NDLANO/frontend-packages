@@ -13,9 +13,9 @@ export {
   TasksAndActivitiesBadge,
   AssessmentResourcesBadge,
   SubjectBadge,
-  ExternalLearningResourcesBadge,
   SourceMaterialBadge,
   LearningPathBadge,
+  ConceptBadge,
 } from "./ContentTypeBadge";
 
 export default ContentTypeBadge;

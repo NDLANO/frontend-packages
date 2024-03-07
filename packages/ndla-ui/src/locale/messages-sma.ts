@@ -552,7 +552,6 @@ const messages = {
     "learning-path": "Lïeremebaalka",
     "subject-material": "Faage-aamhtese",
     "tasks-and-activities": "Laavenjassh jïh darjomh",
-    "external-learning-resources": "Byjngetje lïeremevierhtie",
     "source-material": "Gaaltijevierhtieh",
     "assessment-resources": "Vuarjasjimmievierhtie",
     topic: "Teema",
@@ -1210,6 +1209,9 @@ const messages = {
       confirmDeleteAccountButton: "Slett konto",
       myPage: "Min side",
       deleteAccount: "Slett Min NDLA",
+      loginPitch:
+        "Velkommen til Min NDLA! Her kan du lagre favorittressursene dine fra NDLA, organisere dem og dele dem med andre. Logg inn med din Feide-konto for å komme i gang.",
+      loginPitchButton: "Logg inn i Min NDLA",
       logout: "Logg ut av Min NDLA",
       loginIngress:
         "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjerteknappen til å markere dine favorittfag eller ressurser, og finne dem enkelt igjen.",
@@ -1235,6 +1237,13 @@ const messages = {
       recentFavourites: {
         title: "Nylig lagt til i mine mapper",
         link: "Se alle mappene dine",
+        search: "Søk etter ressurser",
+        unauthorized: "Oops. Her var det tomt! Hjertemerk noen ressurser for å vise dem her.",
+      },
+      favouriteSubjects: {
+        noFavorites:
+          "Ingen favorittfag? Bruk hjerteknappen for å legge til favorittfag, så finner du dem enkelt igjen!",
+        search: "Se alle fag",
       },
       recentArenaPosts: {
         title: "Nye innlegg i arenaen",

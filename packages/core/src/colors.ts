@@ -64,22 +64,10 @@ const colors = {
     additional: "rgba(221,233,208,0.4)",
   },
 
-  externalLearningResource: {
-    background: "#d0e8de",
-    light: "#e6f3ed",
-    dark: "#4f7d76",
-    additional: "rgba(208,232,222,0.4)",
-  },
-
   sourceMaterial: {
     light: "#dce5e0",
     dark: "#636e68",
     additional: "rgba(220,229,224,0.4)",
-  },
-
-  notion: {
-    light: "#DEF1ED",
-    dark: "#3E5860",
   },
 
   tasksAndActivities: {
@@ -101,6 +89,17 @@ const colors = {
     light: "#e8e3e3",
     dark: "#797979",
     backgroundAdditional: "rgba(232,227,227,0.4)",
+  },
+
+  concept: {
+    light: "#def1ed",
+    dark: "#638b98",
+    text: "#3e5860",
+  },
+
+  external: {
+    light: "#e6f3ed",
+    dark: "#4f7d76",
   },
 
   /**

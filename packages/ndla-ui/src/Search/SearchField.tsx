@@ -8,7 +8,6 @@
 
 import { FocusEvent, MouseEvent, RefObject } from "react";
 import { useTranslation } from "react-i18next";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ButtonV2, IconButtonV2 } from "@ndla/button";
 import { colors, spacing, mq, breakpoints, misc, fonts } from "@ndla/core";
@@ -16,10 +15,6 @@ import { Search as SearchIcon } from "@ndla/icons/common";
 
 import ActiveFilters from "./ActiveFilters";
 import LoadingWrapper from "./LoadingWrapper";
-
-interface StyledInputProps {
-  hasFilters?: boolean;
-}
 
 const SearchButton = styled(IconButtonV2)`
   position: absolute;
@@ -45,6 +40,14 @@ const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-flow: row-reverse;
+  border: 1px solid ${colors.brand.greyLight};
+  border-radius: ${misc.borderRadius};
+
+  &:active,
+  &:hover {
+    border: 1px solid ${colors.brand.primary};
+  }
+
   ${mq.range({ from: breakpoints.tablet })} {
     position: relative;
     padding: 0;
@@ -55,9 +58,6 @@ const FiltersWrapper = styled.div`
   display: flex;
   height: ${spacing.large};
   background: ${colors.white};
-  border-top-left-radius: ${misc.borderRadius};
-  border-bottom-left-radius: ${misc.borderRadius};
-  border: 1px solid ${colors.brand.greyLight};
   padding-left: ${spacing.small};
   padding-right: 0;
   border-right: 0;
@@ -72,48 +72,24 @@ const FiltersWrapper = styled.div`
   }
 `;
 
-const StyledInput = styled.input<StyledInputProps>`
+const StyledInput = styled.input`
   width: 100%;
-  height: 48px;
+  height: ${spacing.large};
   line-height: 28px;
-  border: 1px solid ${colors.brand.greyLight};
-  border-radius: ${misc.borderRadius};
+  margin: 2px;
+  border: 0px;
+  &[data-has-filters="true"] {
+    border-left: 0px;
+  }
   padding-right: ${spacing.large};
-  padding-left: ${spacing.normal};
+  padding-left: ${spacing.small};
   flex-grow: 1;
   outline: 0;
-  &:focus,
-  &:hover {
-    border-color: ${colors.brand.primary};
-  }
-
   ${mq.range({ from: breakpoints.tablet })} {
     height: 58px;
     line-height: 58px;
     ${fonts.sizes("18px", "24px")};
   }
-
-  ${(p) =>
-    p.hasFilters &&
-    css`
-      ${mq.range({ from: breakpoints.desktop })} {
-        padding-left: ${spacing.normal};
-      }
-      padding-left: 0;
-      border-left: 0;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-
-      &:focus {
-        border: 1px solid ${colors.brand.primary};
-        border-left: 0;
-
-        & + .c-search-field__filters {
-          border: 1px solid ${colors.brand.primary};
-          border-right: 0;
-        }
-      }
-    `};
 `;
 
 interface Props {
@@ -151,7 +127,7 @@ const SearchField = ({
     <InputWrapper>
       {loading && <LoadingWrapper value={value} />}
       <StyledInput
-        hasFilters={!!filters?.length}
+        data-has-filters={!!filters?.length}
         ref={inputRef}
         type="search"
         aria-autocomplete="list"

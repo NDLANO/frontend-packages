@@ -70,7 +70,6 @@ const StyledActiveFilters = styled("ul")<StyledActiveFiltersProps>`
 const StyledActiveFilterWrapper = styled("li")`
   list-style: none;
   display: flex;
-  margin-bottom: ${spacing.xsmall};
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     padding: 0 ${spacing.small} 0 0;

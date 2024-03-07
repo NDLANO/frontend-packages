@@ -23,8 +23,8 @@
     "es"
   ],
   "devDependencies": {
-    "@ndla/types-backend": "^0.2.21",
-    "@ndla/types-taxonomy": "1.0.17"
+    "@ndla/types-backend": "^0.2.64",
+    "@ndla/types-taxonomy": "^1.0.22"
   },
   "publishConfig": {
     "access": "public"

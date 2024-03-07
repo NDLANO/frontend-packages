@@ -97,7 +97,7 @@ const StyledButton = styled.button`
 export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
-    return parse(embed.data.concept.content.content);
+    return parse(embed.data.concept.content.htmlContent);
   }, [embed]);
   if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;

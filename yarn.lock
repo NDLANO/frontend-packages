@@ -2589,7 +2589,7 @@ __metadata:
   resolution: "@ndla/article-converter@workspace:packages/article-converter"
   dependencies:
     "@ndla/code": "npm:^5.0.48"
-    "@ndla/types-backend": "npm:^0.2.21"
+    "@ndla/types-backend": "npm:^0.2.64"
     "@ndla/types-embed": "npm:^4.1.0"
     "@ndla/ui": "npm:^50.11.3"
     html-react-parser: "npm:^5.1.8"
@@ -2613,7 +2613,7 @@ __metadata:
     "@ndla/licenses": "npm:^7.2.5"
     "@ndla/notion": "npm:^6.0.36"
     "@ndla/pager": "npm:^3.0.0"
-    "@ndla/types-backend": "npm:^0.2.21"
+    "@ndla/types-backend": "npm:^0.2.64"
   peerDependencies:
     "@emotion/react": ^11.10.4
     react: ">= 16.8.0"
@@ -2802,7 +2802,7 @@ __metadata:
     "@ndla/forms": "npm:^7.0.7"
     "@ndla/icons": "npm:^6.0.0"
     "@ndla/pager": "npm:^3.0.0"
-    "@ndla/types-backend": "npm:^0.2.21"
+    "@ndla/types-backend": "npm:^0.2.64"
     "@ndla/ui": "npm:^50.11.3"
     "@ndla/util": "npm:^4.0.4"
     pretty-bytes: "npm:^5.6.0"
@@ -2967,10 +2967,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/types-backend@npm:0.2.21, @ndla/types-backend@npm:^0.2.21":
-  version: 0.2.21
-  resolution: "@ndla/types-backend@npm:0.2.21"
-  checksum: 10c0/ad1fc5fa992faed290fc4db6502c42113fbe8ef1c6ef238072438505025349669c78d06a53a62782f6080a9b0d0ed6a7210fd333b2dc88066fc1392c98153f09
+"@ndla/types-backend@npm:^0.2.64":
+  version: 0.2.64
+  resolution: "@ndla/types-backend@npm:0.2.64"
+  checksum: 10c0/ded24207ededf5829aae0de20b81b5e9cb21d4d8d5808aa82e0e82b157cf4c6c9ba39ef874385e6cb7a27919915af8b89f8763a43c54490f7c21e5f67c231709
   languageName: node
   linkType: hard
 
@@ -2978,15 +2978,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/types-embed@workspace:packages/types-embed"
   dependencies:
-    "@ndla/types-backend": "npm:^0.2.21"
-    "@ndla/types-taxonomy": "npm:1.0.17"
+    "@ndla/types-backend": "npm:^0.2.64"
+    "@ndla/types-taxonomy": "npm:^1.0.22"
   languageName: unknown
   linkType: soft
 
-"@ndla/types-taxonomy@npm:1.0.17":
-  version: 1.0.17
-  resolution: "@ndla/types-taxonomy@npm:1.0.17"
-  checksum: 10c0/34fc23410d395c32aba5ed8d4837a7c99bf4333d46f2a627f5a97f373485977e173e5a9d8a9197bee4641cbddf21f4abd100b8aa97442c9ad8a5cd05075ae3af
+"@ndla/types-taxonomy@npm:^1.0.22":
+  version: 1.0.22
+  resolution: "@ndla/types-taxonomy@npm:1.0.22"
+  checksum: 10c0/13d3b71a3d9633e5f3e39f968079d56a7462a9a3ab09d294442e33e07b4d0e5d4b6f85dab9d2379fbba9a0706a38ed548518e1e5c93b4cf64d946ef8129a975e
   languageName: node
   linkType: hard
 
@@ -3022,7 +3022,7 @@ __metadata:
     "@ndla/switch": "npm:^1.1.37"
     "@ndla/tabs": "npm:^4.0.0"
     "@ndla/tooltip": "npm:^7.0.0"
-    "@ndla/types-backend": "npm:^0.2.21"
+    "@ndla/types-backend": "npm:^0.2.64"
     "@ndla/types-embed": "npm:^4.1.0"
     "@ndla/typography": "npm:^0.4.14"
     "@ndla/util": "npm:^4.0.4"
@@ -11474,7 +11474,7 @@ __metadata:
     "@fontsource/source-code-pro": "npm:^4.5.9"
     "@fontsource/source-sans-pro": "npm:^4.5.9"
     "@fontsource/source-serif-pro": "npm:^4.5.7"
-    "@ndla/types-backend": "npm:0.2.21"
+    "@ndla/types-backend": "npm:^0.2.64"
     "@storybook/addon-a11y": "npm:^7.6.1"
     "@storybook/addon-docs": "npm:^7.6.1"
     "@storybook/addon-essentials": "npm:^7.6.1"

@@ -18,7 +18,7 @@ import {
 } from "@ndla/licenses";
 import type { MetaType } from "@ndla/licenses";
 import { LicenseDescription } from "@ndla/notion";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { Text } from "@ndla/typography";
 import { uuid } from "@ndla/util";
 

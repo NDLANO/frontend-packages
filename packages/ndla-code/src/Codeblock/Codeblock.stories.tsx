@@ -8,7 +8,7 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { IconButtonV2 } from "@ndla/button";
-import DeleteForever from "@ndla/icons";
+import { DeleteForever } from "@ndla/icons/editor";
 import Codeblock from "./Codeblock";
 import { defaultParameters } from "../../../../stories/defaults";
 

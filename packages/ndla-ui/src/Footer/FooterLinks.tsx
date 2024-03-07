@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { spacing, fonts, colors, mq, breakpoints } from "@ndla/core";
 import { Launch } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { Heading } from "@ndla/typography";
 
 type FooterLinksProps = {

@@ -12,7 +12,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { animations, breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { Back, Forward } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 
 const FOOTER_HEIGHT = "78px";
 const FOOTER_HEIGHT_MOBILE = spacing.large;

@@ -19,7 +19,7 @@ A polyfill for [fetch](https://developer.mozilla.org/en/docs/Web/API/Fetch_API) 
 ## Usage
 
 ```js
-import ErrorReporter from '@ndla/error-reporter');
+import { ErrorReporter } from '@ndla/error-reporter');
 
 const reduxStore = configureStore();
 
@@ -37,9 +37,9 @@ ReactDOM.render(
 
 ```js
 // After initial instantiation
-import ErrorReporter from '@ndla/error-reporter');
+import { ErrorReporter } from "@ndla/error-reporter";
 
-ErrorReporter.getInstance().captureMessage('Testing');
+ErrorReporter.getInstance().captureMessage("Testing");
 ```
 
 ## API(functions)

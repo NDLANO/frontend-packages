@@ -12,7 +12,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { spacing, mq, breakpoints } from "@ndla/core";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from "./ActiveFilterContent";
 
 type StyledActiveFiltersProps = {

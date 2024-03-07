@@ -13,7 +13,7 @@ yarn add @ndla/tooltip
 ### Tooltip wrapper for any element
 
 ```js
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 
 <Tooltip tooltip="Tooltip text">{children}</Tooltip>;
 ```

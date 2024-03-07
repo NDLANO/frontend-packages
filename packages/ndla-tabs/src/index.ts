@@ -6,5 +6,4 @@
  *
  */
 
-import Tabs from "./Tabs";
-export default Tabs;
+export { default as Tabs } from "./Tabs";

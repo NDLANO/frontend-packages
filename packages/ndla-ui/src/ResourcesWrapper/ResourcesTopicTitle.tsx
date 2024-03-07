@@ -13,7 +13,7 @@ import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 import { LearningPathQuiz } from "@ndla/icons/contentType";
 import { ModalBody, ModalHeader, ModalCloseButton, Modal, ModalTitle, ModalTrigger, ModalContent } from "@ndla/modal";
 import { Switch } from "@ndla/switch";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 
 interface HelpIconProps {
   invertedStyle: boolean;

@@ -6,6 +6,4 @@
  *
  */
 
-import Pager from "./Pager";
-
-export default Pager;
+export { default as Pager } from "./Pager";

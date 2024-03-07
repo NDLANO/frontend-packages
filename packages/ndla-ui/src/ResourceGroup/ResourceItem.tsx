@@ -12,7 +12,7 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
 import { Additional, Core, HumanMaleBoard } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import ContentTypeBadge from "../ContentTypeBadge";
 import * as contentTypes from "../model/ContentType";
 import { Resource } from "../types";

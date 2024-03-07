@@ -16,7 +16,7 @@ import { IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
 import { COPYRIGHTED } from "@ndla/licenses";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 import { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from "./conceptComponents";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";

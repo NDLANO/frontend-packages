@@ -11,7 +11,7 @@ import { ReactNode, useRef } from "react";
 import styled from "@emotion/styled";
 
 import { animations, colors, fonts, spacing, stackOrder } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 
 import ItemContexts, { ItemContextsType } from "./components/ItemContexts";
 import ItemResourceHeader from "./components/ItemResourceHeader";

@@ -10,8 +10,8 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonV2 } from "@ndla/button";
 import { Additional, ChevronDown, ChevronUp } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
-import Tooltip from "@ndla/tooltip";
+import { SafeLink } from "@ndla/safelink";
+import { Tooltip } from "@ndla/tooltip";
 import {
   highlightStyle,
   noWidthhighlightStyle,

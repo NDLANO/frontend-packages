@@ -6,8 +6,5 @@
  *
  */
 
-import Icon from "./Icon";
-
 export { default as Spinner } from "./Spinner";
-
-export default Icon;
+export { default as Icon } from "./Icon";

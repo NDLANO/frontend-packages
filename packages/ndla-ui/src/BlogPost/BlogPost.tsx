@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { HeadingLevel } from "@ndla/typography";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 

@@ -12,7 +12,7 @@ import { RefObject, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { breakpoints, mq, spacing, spacingUnit, colors } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { MovieType } from "./types";
 import { makeSrcQueryString } from "../Image";
 

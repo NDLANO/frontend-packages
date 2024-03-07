@@ -11,7 +11,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { mq, spacing, breakpoints } from "@ndla/core";
 import { ChevronRight } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 
 export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;

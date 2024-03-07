@@ -10,7 +10,7 @@
 
 import "isomorphic-fetch";
 import nock from "nock";
-import ErrorReporter from "../index";
+import { ErrorReporter } from "../index";
 
 const state = {
   data: "test state",

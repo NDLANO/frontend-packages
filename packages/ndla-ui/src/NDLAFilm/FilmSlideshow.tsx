@@ -12,7 +12,7 @@ import { IconButtonV2 } from "@ndla/button";
 import { Carousel } from "@ndla/carousel";
 import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
 import { ChevronLeft, ChevronRight } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import FilmContentCard from "./FilmContentCard";
 import { MovieType } from "./types";
 import Image from "../Image";

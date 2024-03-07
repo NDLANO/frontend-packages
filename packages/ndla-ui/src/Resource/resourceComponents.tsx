@@ -14,7 +14,7 @@ import { IconButtonV2 } from "@ndla/button";
 import { colors, fonts, spacing, stackOrder } from "@ndla/core";
 import { DropdownMenu, DropdownContent, DropdownTrigger, DropdownItem } from "@ndla/dropdown-menu";
 import { HashTag } from "@ndla/icons/common";
-import SafeLink, { SafeLinkButton } from "@ndla/safelink";
+import { SafeLink, SafeLinkButton } from "@ndla/safelink";
 import { resourceEmbedTypeMapping } from "../model/ContentType";
 import resourceTypeColor from "../utils/resourceTypeColor";
 

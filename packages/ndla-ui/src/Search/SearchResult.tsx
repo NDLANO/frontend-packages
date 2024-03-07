@@ -12,8 +12,8 @@ import styled from "@emotion/styled";
 import { fonts, mq, spacing, breakpoints, colors, spacingUnit } from "@ndla/core";
 import { Spinner } from "@ndla/icons";
 import { ChevronRight } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
-import Tooltip from "@ndla/tooltip";
+import { SafeLink } from "@ndla/safelink";
+import { Tooltip } from "@ndla/tooltip";
 import { uuid } from "@ndla/util";
 
 interface ItemType {

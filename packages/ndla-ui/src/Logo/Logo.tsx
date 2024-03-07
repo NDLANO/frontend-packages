@@ -10,7 +10,7 @@ import { useMemo } from "react";
 import { SerializedStyles, css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import SvgLogo from "./SvgLogo";
 
 interface Props {

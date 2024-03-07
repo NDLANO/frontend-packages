@@ -10,7 +10,7 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { IconButtonV2 } from "@ndla/button";
 import { VolumeUp } from "@ndla/icons/common";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 
 type Props = {
   src: string;

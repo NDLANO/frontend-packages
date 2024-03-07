@@ -9,7 +9,7 @@
 import { HTMLAttributes } from "react";
 import styled from "@emotion/styled";
 import { spacing, colors, fonts, breakpoints, misc, mq } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import FilmContentCardTags from "./FilmContentCardTags";
 import { MovieResourceType, MovieType } from "./types";
 import { makeSrcQueryString } from "../Image";

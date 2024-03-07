@@ -13,7 +13,7 @@ import styled from "@emotion/styled";
 import { colors, spacing, misc, mq, breakpoints } from "@ndla/core";
 import { useWindowSize } from "@ndla/hooks";
 import { ArrowExpandRight, ArrowExpandLeft } from "@ndla/icons/action";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 import LearningPathMenuAside from "./LearningPathMenuAside";
 import LearningPathMenuContent from "./LearningPathMenuContent";
 import LearningPathMenuIntro from "./LearningPathMenuIntro";

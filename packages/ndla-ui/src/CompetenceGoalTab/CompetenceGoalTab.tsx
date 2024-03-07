@@ -13,8 +13,8 @@ import { ButtonV2 } from "@ndla/button";
 import { spacing } from "@ndla/core";
 import { BY, CC } from "@ndla/licenses";
 import { LicenseByline } from "@ndla/notion";
-import SafeLink from "@ndla/safelink";
-import Tooltip from "@ndla/tooltip";
+import { SafeLink } from "@ndla/safelink";
+import { Tooltip } from "@ndla/tooltip";
 import CompetenceItem, { ListItemProp } from "./CompetenceItem";
 
 type CompetenceProps = {

@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 
 import { animations, colors, fonts, spacing } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 
 import ItemContexts from "./components/ItemContexts";
 import { SearchItemType } from "./SearchItem";

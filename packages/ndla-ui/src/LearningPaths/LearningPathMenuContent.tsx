@@ -10,7 +10,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations, utils, stackOrder } from "@ndla/core";
 import { LearningPathRead } from "@ndla/icons/contentType";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { StepProps } from "./LearningPathMenu";
 import ContentTypeBadge from "../ContentTypeBadge";
 import constants from "../model";

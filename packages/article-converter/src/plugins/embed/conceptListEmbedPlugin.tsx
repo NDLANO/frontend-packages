@@ -13,6 +13,6 @@ import { PluginType } from "../types";
 
 export const conceptListEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as ConceptListMetaData;
+  const data = JSON.parse(props["data-json"] as string) as ConceptListMetaData;
   return <ConceptListEmbed embed={data} lang={opts.articleLanguage} />;
 };

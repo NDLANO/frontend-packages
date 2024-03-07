@@ -13,7 +13,7 @@ import { PluginType } from "../types";
 
 export const campaignBlockPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as CampaignBlockMetaData;
+  const data = JSON.parse(props["data-json"] as string) as CampaignBlockMetaData;
   const embed = data.embedData;
 
   return (

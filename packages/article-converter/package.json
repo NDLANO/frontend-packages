@@ -33,7 +33,7 @@
   "dependencies": {
     "@ndla/code": "^5.0.48",
     "@ndla/ui": "^50.11.3",
-    "html-react-parser": "^4.2.2",
+    "html-react-parser": "^5.1.8",
     "lodash": "^4.17.20"
   },
   "peerDependencies": {

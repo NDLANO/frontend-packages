@@ -6,7 +6,7 @@
  *
  */
 
-import { attributesToProps, domToReact } from "html-react-parser";
+import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { PluginType } from "./types";
 export const paragraphPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
@@ -14,13 +14,13 @@ export const paragraphPlugin: PluginType = (node, converterOpts, opts) => {
     const classes = [node.attribs.class ?? "", "u-text-center"].filter((c) => !!c).join(" ");
     return (
       <p {...props} lang={opts.articleLanguage} data-align={undefined} className={classes}>
-        {domToReact(node.children, converterOpts)}
+        {domToReact(node.children as DOMNode[], converterOpts)}
       </p>
     );
   }
   return (
     <p {...props} lang={opts.articleLanguage}>
-      {domToReact(node.children, converterOpts)}
+      {domToReact(node.children as DOMNode[], converterOpts)}
     </p>
   );
 };

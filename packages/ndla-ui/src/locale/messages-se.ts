@@ -1232,7 +1232,7 @@ const messages = {
         title: "Nylig lagt til i mine mapper",
         link: "Se alle mappene dine",
         search: "Søk etter ressurser",
-        unauthorized: "Oops. Her var det tomt! Favoriser noen ressurser for å vise dem her.",
+        unauthorized: "Oops. Her var det tomt! Hjertemerk noen ressurser for å vise dem her.",
       },
       favouriteSubjects: {
         noFavorites:

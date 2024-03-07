@@ -13,7 +13,7 @@ import { PluginType } from "../types";
 
 export const keyFigureEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as KeyFigureMetaData;
+  const data = JSON.parse(props["data-json"] as string) as KeyFigureMetaData;
   const { title, subtitle, alt } = data.embedData;
   return (
     <KeyFigure

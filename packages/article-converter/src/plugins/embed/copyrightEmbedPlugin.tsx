@@ -6,13 +6,13 @@
  *
  */
 
-import { attributesToProps, domToReact } from "html-react-parser";
+import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { CopyrightMetaData } from "@ndla/types-embed";
 import { CopyrightEmbed } from "@ndla/ui";
 import { PluginType } from "../types";
 
 export const copyrightEmbedPlugin: PluginType = (element, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as CopyrightMetaData;
-  return <CopyrightEmbed embed={data}>{domToReact(element.children, opts)}</CopyrightEmbed>;
+  const data = JSON.parse(props["data-json"] as string) as CopyrightMetaData;
+  return <CopyrightEmbed embed={data}>{domToReact(element.children as DOMNode[], opts)}</CopyrightEmbed>;
 };

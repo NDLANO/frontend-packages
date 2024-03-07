@@ -13,7 +13,7 @@ import { PluginType } from "../types";
 
 export const contactBlockEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const embedData = JSON.parse(props["data-json"]) as ContactBlockMetaData;
+  const embedData = JSON.parse(props["data-json"] as string) as ContactBlockMetaData;
   const { name, email, description, blob, blobColor, jobTitle, alt } = embedData.embedData;
   return (
     <ContactBlock

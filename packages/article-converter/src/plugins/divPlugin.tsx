@@ -6,14 +6,14 @@
  *
  */
 
-import { domToReact, attributesToProps, Element } from "html-react-parser";
+import { domToReact, attributesToProps, Element, DOMNode } from "html-react-parser";
 import partition from "lodash/partition";
 import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem, FramedContent } from "@ndla/ui";
 import { PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts) => {
   if (node.attribs["data-type"] === "framed-content" || node.attribs.class === "c-bodybox") {
-    return <FramedContent>{domToReact(node.children, opts)}</FramedContent>;
+    return <FramedContent>{domToReact(node.children as DOMNode[], opts)}</FramedContent>;
   }
   if (node.attribs["data-type"] === "related-content" && node.children.length) {
     const props = attributesToProps(node.attribs);
@@ -52,7 +52,7 @@ export const divPlugin: PluginType = (node, opts) => {
       </Grid>
     );
   } else if (node.attribs["data-parallax-cell"] === "true" && node.children.length) {
-    return <GridParallaxItem>{domToReact(node.children, opts)}</GridParallaxItem>;
+    return <GridParallaxItem>{domToReact(node.children as DOMNode[], opts)}</GridParallaxItem>;
   }
   return null;
 };

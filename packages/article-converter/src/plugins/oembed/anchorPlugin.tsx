@@ -6,17 +6,17 @@
  *
  */
 
-import { attributesToProps, domToReact } from "html-react-parser";
+import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { SafeLink } from "@ndla/safelink";
 import { getPossiblyRelativeUrl } from "@ndla/ui";
 import { PluginType } from "../types";
 
 export const anchorPlugin: PluginType = (node, options, { path }) => {
   const props = attributesToProps(node.attribs);
-  const href = getPossiblyRelativeUrl(props.href, path);
+  const href = getPossiblyRelativeUrl(props.href as string, path);
   return (
     <SafeLink {...props} target="_blank" to={href} rel="noreferrer">
-      {domToReact(node.children, options)}
+      {domToReact(node.children as DOMNode[], options)}
     </SafeLink>
   );
 };

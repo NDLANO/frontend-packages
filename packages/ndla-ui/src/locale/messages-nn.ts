@@ -1208,7 +1208,7 @@ const messages = {
       deleteAccount: "Slett Min NDLA",
       logout: "Logg ut av Min NDLA",
       loginIngress:
-        "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjerteknappen til å markere dine favorittfag eller ressurser, og del enkelt med elever og  medarbeidarar i heile landet.",
+        "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjarteknappen for å markere favorittfaga eller favorittressursane dine og enkelt finne de igjen.",
       loginText:
         "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet.",
       loginTextLink: "Les vår personvernerklæring her",

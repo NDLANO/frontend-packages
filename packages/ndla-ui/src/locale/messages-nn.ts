@@ -1209,12 +1209,14 @@ const messages = {
         "Velkommen til Min NDLA! Her kan du lagre favorittressursane dine frå NDLA, organisere dei og dele dei med andre. Logg inn med din Feide-konto for å komme i gang.",
       loginPitchButton: "Logg inn i Min NDLA",
       logout: "Logg ut av Min NDLA",
+      loginIngress:
+        "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjarteknappen for å markere favorittfaga eller favorittressursane dine og enkelt finne de igjen.",
       loginText:
-        "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet. Vi ber om at du ikkje skriv noko støtande, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ",
-      loginTextLink: "personvernerklæring her",
+        "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet.",
+      loginTextLink: "Les vår personvernerklæring her",
       loginTerms: "Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk",
       loginResourcePitch: "Ønsker du å favorittmerke denne resursen?",
-      loginWelcome: "Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!",
+      loginWelcome: "Velkommen til Min NDLA!",
       welcome:
         "Velkommen til Min NDLA! No kan du lagre favorittressursane dine frå NDLA og organisere dei i mapper og med emneknaggar.",
       read: { read: "Les", our: " vår." },

@@ -1232,7 +1232,7 @@ const messages = {
         title: "Nyleg lagt til i mappene mine",
         link: "Sjå alle mappene dine",
         search: "Søk etter ressursar",
-        unauthorized: "Oops. Her var det tomt! Hjartemerk nokre ressurar for å sjå dei her.",
+        unauthorized: "Oops. Her var det tomt! Hjartemerk nokre ressursar for å sjå dei her.",
       },
       favouriteSubjects: {
         noFavorites: "Ingen favorittfag? Bruk hjarteknappen for å legge til favorittfag, så finn du dei enkelt att!",

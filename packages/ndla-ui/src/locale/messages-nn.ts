@@ -1205,6 +1205,9 @@ const messages = {
       confirmDeleteAccountButton: "Slett konto",
       myPage: "Mi side",
       deleteAccount: "Slett Min NDLA",
+      loginPitch:
+        "Velkommen til Min NDLA! Her kan du lagre favorittressursane dine frå NDLA, organisere dei og dele dei med andre. Logg inn med din Feide-konto for å komme i gang.",
+      loginPitchButton: "Logg inn i Min NDLA",
       logout: "Logg ut av Min NDLA",
       loginText:
         "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet. Vi ber om at du ikkje skriv noko støtande, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ",
@@ -1228,6 +1231,12 @@ const messages = {
       recentFavourites: {
         title: "Nyleg lagt til i mappene mine",
         link: "Sjå alle mappene dine",
+        search: "Søk etter ressursar",
+        unauthorized: "Oops. Her var det tomt! Hjartemerk nokre ressurar for å sjå dei her.",
+      },
+      favouriteSubjects: {
+        noFavorites: "Ingen favorittfag? Bruk hjarteknappen for å legge til favorittfag, så finn du dei enkelt att!",
+        search: "Sjå alle fag",
       },
       recentArenaPosts: {
         title: "Nye innlegg i arenaen",

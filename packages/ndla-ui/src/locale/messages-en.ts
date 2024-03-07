@@ -1207,12 +1207,15 @@ const messages = {
       myPage: "My page",
       logout: "Log out of My NDLA",
       loginText:
-        "In order to use the My NDLA service you have to be a student or work at a school in a county that partakes in the NDLA collaboration. We ask you not to write offensive or personally sensitive information in text fields. Read our ",
+        "Welcome to My NDLA! Unlock the full potential of NDLA by saving, organizing, and sharing resources effortlessly. Get started by logging in with your Feide account.",
       loginTextLink: "privacy policy here",
       loginTerms: "Log in with Feide to receive access. By logging on your accept your terms of service",
       loginResourcePitch: "Do you want to favorite this resource?",
       loginWelcome: "Welcome to My NDLA! This page allows you to organize your articles in your own way!",
       deleteAccount: "Delete My NDLA",
+      loginPitch:
+        "Welcome to My NDLA! Here you can save your favourite resources from NDLA, organize them and share them with others. Log in with your Feide account to get started.",
+      loginPitchButton: "Log in to My NDLA",
       welcome:
         "Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags",
       read: { read: "Read our", our: "." },
@@ -1232,6 +1235,13 @@ const messages = {
       recentFavourites: {
         title: "Recently added to my folders",
         link: "View all of your folders",
+        search: "Search for resources",
+        unauthorized: "Nothing here? Add a heart to some resources to show them here.",
+      },
+      favouriteSubjects: {
+        noFavorites:
+          "No favourite subjects? Use the heart button to add your favourite subjects, and you can easily find them again!",
+        search: "See all subjects",
       },
       recentArenaPosts: {
         title: "Recent posts in the arena",

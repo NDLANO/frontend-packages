@@ -10,6 +10,7 @@ import parse from "html-react-parser";
 import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Root, Trigger, Content, Anchor, Close, Portal } from "@radix-ui/react-popover";
 import { IconButtonV2 } from "@ndla/button";
@@ -176,12 +177,7 @@ interface InlineConceptProps extends ConceptNotionData {
   exampleLangs?: string;
 }
 
-const BaselineIcon = styled.span`
-  display: block;
-  border-bottom: 5px double currentColor;
-`;
-
-const NotionButton = styled.button`
+const NotionButton = styled.span`
   background: none;
   border: none;
   font-family: inherit;
@@ -192,7 +188,6 @@ const NotionButton = styled.button`
   text-decoration: none;
   position: relative;
   text-align: left;
-  display: inline;
   color: ${colors.concept.text};
   cursor: pointer;
   &:focus,
@@ -201,10 +196,9 @@ const NotionButton = styled.button`
   &[data-open="true"] {
     color: ${colors.concept.text};
     background-color: ${colors.concept.light};
-    [data-baseline-icon] {
-      border-color: currentColor;
-    }
   }
+  display: inline;
+  border-bottom: 5px double currentColor;
 `;
 
 const StyledAnchor = styled(Anchor)`
@@ -262,12 +256,11 @@ export const InlineConcept = ({
   return (
     <Root modal={isMobile} onOpenChange={onOpenChange}>
       <StyledAnchor ref={anchorRef} asChild>
-        <StyledAnchorSpan />
+        <StyledAnchorSpan contentEditable={false} />
       </StyledAnchor>
-      <Trigger asChild>
-        <NotionButton data-open={modalPos !== -9999}>
+      <Trigger asChild type={undefined}>
+        <NotionButton role={"button"} data-open={modalPos !== -9999} tabIndex={0}>
           {linkText}
-          {<BaselineIcon data-baseline-icon />}
         </NotionButton>
       </Trigger>
       <Portal container={(anchorRef.current?.closest(".c-article") as HTMLElement | null) || undefined}>

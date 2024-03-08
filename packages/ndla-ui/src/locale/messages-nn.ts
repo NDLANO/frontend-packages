@@ -771,6 +771,7 @@ const messages = {
   save: "Lagre",
   photo: "Bilete",
   email: "E-post",
+  finished: "Ferdig",
   image: {
     altText: "Alt-tekst",
     caption: "Bilettekst",
@@ -941,19 +942,14 @@ const messages = {
         link: "Lenka er kopiert",
         copyLink: "Kopier lenke til mappa",
         header: {
-          private: "Vil du dele denne mappa?",
           shared: "Denne mappa er delt",
-          unShare: "Vil du avslutte deling av denne mappa?",
         },
         description: {
           copy: "Trykk på lenke for å kopiere",
           private:
             "Når du deler ei mappe, lagar du ei lenke som er open for alle som har lenka. Du kan endre innhaldet eller avslutte delinga når du ønsker det.",
-          private2: "Når du deler ei mappe deler du alt innhaldet i mappa, inkludert undermapper og ressursar",
           shared:
             "No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.",
-          unShare:
-            "Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.",
         },
         button: {
           share: "Del mappe",

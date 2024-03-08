@@ -773,6 +773,7 @@ const messages = {
   save: "Vurke",
   photo: "Govva",
   email: "E-boasta",
+  finished: "Ferdig",
   image: {
     altText: "Molssaevttolaš teaksta",
     caption: "Govvateaksta",
@@ -943,19 +944,14 @@ const messages = {
         copyLink: "Kopier lenke til mappa",
         link: "Lenken er kopiert",
         header: {
-          private: "Vil du dele denne mappa?",
-          shared: "Denne mappa er delt.",
-          unShare: "Vil du avslutte deling av denne mappa?",
+          shared: "Denne mappa er delt",
         },
         description: {
           copy: "Trykk på lenke for å kopiere",
           private:
             "Når du deler ei mappe, lager du ei lenke som er åpen for alle som har lenka. Du kan endre innholdet eller avslutte delinga når du ønsker det. ",
-          private2: "Når du deler en mappe deler du alt innholdet i mappen, inkludert undermapper og ressurser",
           shared:
             "Nå kan du dele denne lenka med elever eller andre lærere. Hvis du gjør endringer i mappa, blir de synlige for alle du har delt lenka med.",
-          unShare:
-            "Når du avslutter deling, slutter lenka til den delte mappa og eventuelle undermapper å virke. Hvis du har delt lenka med noen, kan de ikke lenger se innholdet i mappa. Dette gjelder også lenker til eventuelle undermapper.",
         },
         button: {
           share: "Del mappe",

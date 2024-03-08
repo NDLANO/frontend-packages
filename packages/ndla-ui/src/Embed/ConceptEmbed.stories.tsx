@@ -46,7 +46,9 @@ const conceptMetaData: ConceptData["concept"] = {
   title: { title: "skin – formasjonsskade", language: "nb" },
   content: {
     content:
-      " <p>Ordet «skin» er engelsk og brukes om formasjonsskade som oppstår i boreprosessen i området som grenser inn til brønnen. Skaden er størst i området nærmest hullet, men den kan bre seg utover et stykke fra brønnen. Skin forteller om bergartens permeabilitet i reservoarsonen.</p> <p>Hullveggen skades både av borekronen, små partikler og væsken som brukes i brønnen.</p> <p>Skaden i bergarten gir dårligere forhold for oljen som skal strømme til brønnen. Gangene i bergarten plugges, og det oppstår et trykkfall som reduserer produksjonstrykket i brønnen.</p> <p>Det er viktig å redusere omfanget av skaden ved å velge væsker som passer godt til bergartsegenskapene, og å bore med en borekrone som skader minst mulig.</p> <p>Skader som er dannet av borevæske, kan repareres ved å syrebehandle hullets overflate.</p>",
+      "<p>Ordet «skin» er engelsk og brukes om formasjonsskade som oppstår i boreprosessen i området som grenser inn til brønnen. Skaden er størst i området nærmest hullet, men den kan bre seg utover et stykke fra brønnen. Skin forteller om bergartens permeabilitet i reservoarsonen.</p> <p>Hullveggen skades både av borekronen, små partikler og væsken som brukes i brønnen.</p> <p>Skaden i bergarten gir dårligere forhold for oljen som skal strømme til brønnen. Gangene i bergarten plugges, og det oppstår et trykkfall som reduserer produksjonstrykket i brønnen.</p> <p>Det er viktig å redusere omfanget av skaden ved å velge væsker som passer godt til bergartsegenskapene, og å bore med en borekrone som skader minst mulig.</p> <p>Skader som er dannet av borevæske, kan repareres ved å syrebehandle hullets overflate.</p>",
+    htmlContent:
+      "<p>Ordet «skin» er engelsk og brukes om formasjonsskade som oppstår i boreprosessen i området som grenser inn til brønnen. Skaden er størst i området nærmest hullet, men den kan bre seg utover et stykke fra brønnen. Skin forteller om bergartens permeabilitet i reservoarsonen.</p> <p>Hullveggen skades både av borekronen, små partikler og væsken som brukes i brønnen.</p> <p>Skaden i bergarten gir dårligere forhold for oljen som skal strømme til brønnen. Gangene i bergarten plugges, og det oppstår et trykkfall som reduserer produksjonstrykket i brønnen.</p> <p>Det er viktig å redusere omfanget av skaden ved å velge væsker som passer godt til bergartsegenskapene, og å bore med en borekrone som skader minst mulig.</p> <p>Skader som er dannet av borevæske, kan repareres ved å syrebehandle hullets overflate.</p>",
     language: "nb",
   },
   copyright: {
@@ -94,6 +96,7 @@ const glossMetaData: ConceptData["concept"] = {
   },
   content: {
     content: "Hei",
+    htmlContent: "Hei",
     language: "nb",
   },
   copyright: {

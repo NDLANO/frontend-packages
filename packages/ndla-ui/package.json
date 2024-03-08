@@ -70,7 +70,7 @@
     "react-router-dom": "> 6.0.0"
   },
   "devDependencies": {
-    "@ndla/types-backend": "^0.2.21",
+    "@ndla/types-backend": "^0.2.64",
     "@ndla/types-embed": "^4.1.0",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.5",

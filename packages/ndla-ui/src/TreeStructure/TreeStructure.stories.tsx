@@ -30,7 +30,7 @@ const Container = styled.div`
 const targetResource: TreeStructureProps["targetResource"] = {
   id: "test-resource",
   resourceId: "123",
-  resourceType: "type",
+  resourceType: "concept",
   tags: [],
   path: "",
   created: "",

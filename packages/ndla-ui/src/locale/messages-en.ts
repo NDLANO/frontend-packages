@@ -770,6 +770,7 @@ const messages = {
   save: "Save",
   photo: "Photo",
   email: "Email",
+  finished: "Finished",
   image: {
     altText: "Alt-text",
     caption: "Caption",
@@ -940,20 +941,14 @@ const messages = {
         copyLink: "Copy link to folder",
         link: "Link is copied",
         header: {
-          private: "Do you want to share this folder?",
           shared: "This folder is shared",
-          unShare: "Do you want to stop sharing this folder?",
         },
         description: {
           copy: "Press the link to copy",
           private:
             "When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.",
-          private2:
-            "When you share a folder you share all content within the folder, including subfolders and resources",
           shared:
             "Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.",
-          unShare:
-            "When you stop sharing, the link to the shared folder and potential subfolders is no longer active. If you have shared the link with someone, they can no longer see the content in the folder. This also applies to potential subfolders.",
         },
         button: {
           share: "Share folder",

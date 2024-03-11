@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, fonts, spacing, shadows, misc, animations, stackOrder } from "@ndla/core";
-import Pager from "@ndla/pager";
+import { Pager } from "@ndla/pager";
 import { getFieldValue, checkIfItemIsSelected } from "./dropdownHelper";
 import DropdownMenuItem from "./DropdownMenuItem";
 

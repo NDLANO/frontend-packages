@@ -9,5 +9,3 @@
 import ErrorReporter from "./ErrorReporter";
 
 export { ErrorReporter };
-
-export default ErrorReporter;

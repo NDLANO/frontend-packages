@@ -6,7 +6,7 @@
  *
  */
 
-import { attributesToProps, domToReact } from "html-react-parser";
+import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { UnOrderedList } from "@ndla/ui";
 import { PluginType } from "./types";
 export const ulPlugin: PluginType = (node, converterOpts, opts) => {
@@ -16,7 +16,7 @@ export const ulPlugin: PluginType = (node, converterOpts, opts) => {
     .join(" ");
   return (
     <UnOrderedList {...props} className={classes} lang={opts.articleLanguage}>
-      {domToReact(node.children, converterOpts)}
+      {domToReact(node.children as DOMNode[], converterOpts)}
     </UnOrderedList>
   );
 };

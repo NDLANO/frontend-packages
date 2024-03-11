@@ -13,7 +13,7 @@ import { ButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing, stackOrder } from "@ndla/core";
 import { Additional, Core } from "@ndla/icons/common";
 import { Modal, ModalCloseButton, ModalContent, ModalHeader, ModalTitle, ModalTrigger } from "@ndla/modal";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 
 const BreadcrumbPath = styled.div`
   color: ${colors.text.light};

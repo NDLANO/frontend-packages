@@ -13,6 +13,6 @@ import { PluginType } from "../types";
 
 export const contentLinkEmbedPlugin: PluginType = (element, _, { isOembed }) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as ContentLinkMetaData;
+  const data = JSON.parse(props["data-json"] as string) as ContentLinkMetaData;
   return <ContentLinkEmbed embed={data} isOembed={isOembed} />;
 };

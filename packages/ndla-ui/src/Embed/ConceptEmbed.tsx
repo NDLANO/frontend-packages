@@ -10,13 +10,14 @@ import parse from "html-react-parser";
 import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Root, Trigger, Content, Anchor, Close, Portal } from "@radix-ui/react-popover";
 import { IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
 import { COPYRIGHTED } from "@ndla/licenses";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 import { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from "./conceptComponents";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
@@ -97,7 +98,7 @@ const StyledButton = styled.button`
 export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
-    return parse(embed.data.concept.content.content);
+    return parse(embed.data.concept.content.htmlContent);
   }, [embed]);
   if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;
@@ -176,12 +177,7 @@ interface InlineConceptProps extends ConceptNotionData {
   exampleLangs?: string;
 }
 
-const BaselineIcon = styled.span`
-  display: block;
-  border-bottom: 5px double currentColor;
-`;
-
-const NotionButton = styled.button`
+const NotionButton = styled.span`
   background: none;
   border: none;
   font-family: inherit;
@@ -192,19 +188,17 @@ const NotionButton = styled.button`
   text-decoration: none;
   position: relative;
   text-align: left;
-  display: inline;
-  color: ${colors.notion.dark};
+  color: ${colors.concept.text};
   cursor: pointer;
   &:focus,
   &:hover,
   &:active,
   &[data-open="true"] {
-    color: ${colors.notion.dark};
-    background-color: ${colors.notion.light};
-    [data-baseline-icon] {
-      border-color: currentColor;
-    }
+    color: ${colors.concept.text};
+    background-color: ${colors.concept.light};
   }
+  display: inline;
+  border-bottom: 5px double currentColor;
 `;
 
 const StyledAnchor = styled(Anchor)`
@@ -262,12 +256,11 @@ export const InlineConcept = ({
   return (
     <Root modal={isMobile} onOpenChange={onOpenChange}>
       <StyledAnchor ref={anchorRef} asChild>
-        <StyledAnchorSpan />
+        <StyledAnchorSpan contentEditable={false} />
       </StyledAnchor>
-      <Trigger asChild>
-        <NotionButton data-open={modalPos !== -9999}>
+      <Trigger asChild type={undefined}>
+        <NotionButton role={"button"} data-open={modalPos !== -9999} tabIndex={0}>
           {linkText}
-          {<BaselineIcon data-baseline-icon />}
         </NotionButton>
       </Trigger>
       <Portal container={(anchorRef.current?.closest(".c-article") as HTMLElement | null) || undefined}>

@@ -13,7 +13,7 @@ import { IconButtonV2 } from "@ndla/button";
 import { spacing } from "@ndla/core";
 import { copyTextToClipboard } from "@ndla/util";
 
-import Icon from ".";
+import { Icon } from ".";
 import * as actionIcons from "./action";
 import { Copy } from "./action";
 import * as commonIcons from "./common";

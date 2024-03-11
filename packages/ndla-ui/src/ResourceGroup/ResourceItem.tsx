@@ -12,7 +12,7 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
 import { Additional, Core, HumanMaleBoard } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import ContentTypeBadge from "../ContentTypeBadge";
 import * as contentTypes from "../model/ContentType";
 import { Resource } from "../types";
@@ -25,8 +25,8 @@ const listElementActiveColor = (contentType?: string) => {
       return colors.tasksAndActivities.dark;
     case contentTypes.ASSESSMENT_RESOURCES:
       return colors.assessmentResource.dark;
-    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      return colors.externalLearningResource.dark;
+    case contentTypes.CONCEPT:
+      return colors.concept.text;
     case contentTypes.SOURCE_MATERIAL:
       return colors.sourceMaterial.dark;
     case contentTypes.LEARNING_PATH:

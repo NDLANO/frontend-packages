@@ -13,6 +13,6 @@ import { PluginType } from "../types";
 
 export const iframeEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as IframeMetaData;
+  const data = JSON.parse(props["data-json"] as string) as IframeMetaData;
   return <IframeEmbed embed={data} />;
 };

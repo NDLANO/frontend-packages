@@ -14,7 +14,7 @@ import { colors, spacing, animations, misc, fonts } from "@ndla/core";
 import { ArrowDropDownRounded } from "@ndla/icons/common";
 import { FolderOutlined, FolderShared } from "@ndla/icons/contentType";
 import { Done } from "@ndla/icons/editor";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { IFolder } from "@ndla/types-backend/learningpath-api";
 import { arrowNavigation } from "./arrowNavigation";
 import { treestructureId } from "./helperFunctions";

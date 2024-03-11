@@ -10,7 +10,7 @@ import { ElementType, ReactNode } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { stepNumbers } from "./pagerHelpers";
 
 const createQueryString = (obj: Query) =>

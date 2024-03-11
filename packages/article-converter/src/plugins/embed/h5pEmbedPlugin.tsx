@@ -13,6 +13,6 @@ import { PluginType } from "../types";
 
 export const h5pEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as H5pMetaData;
+  const data = JSON.parse(props["data-json"] as string) as H5pMetaData;
   return <H5pEmbed embed={data} />;
 };

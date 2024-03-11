@@ -74,10 +74,10 @@ export {
   TasksAndActivitiesHero,
   AssessmentResourcesHero,
   SubjectHero,
-  ExternalLearningResourcesHero,
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
+  ConceptHero,
   HeroContent,
 } from "./Hero";
 
@@ -175,8 +175,8 @@ export {
   AssessmentResourcesBadge,
   LearningPathBadge,
   SubjectBadge,
-  ExternalLearningResourcesBadge,
   SourceMaterialBadge,
+  ConceptBadge,
 } from "./ContentTypeBadge";
 
 export { SubjectHeader, SubjectBanner } from "./Subject";
@@ -223,3 +223,5 @@ export type { ProgrammeV2 } from "./ProgrammeCard";
 export { Gloss, GlossExample } from "./Gloss";
 
 export { LinkBlock, LinkBlockSection } from "./LinkBlock";
+
+export type { Article as ArticleType } from "./types";

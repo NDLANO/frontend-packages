@@ -6,7 +6,7 @@
  *
  */
 
-import { attributesToProps, domToReact } from "html-react-parser";
+import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { OrderedList } from "@ndla/ui";
 import { PluginType } from "./types";
 export const olPlugin: PluginType = (node, converterOpts, opts) => {
@@ -18,7 +18,7 @@ export const olPlugin: PluginType = (node, converterOpts, opts) => {
 
   return (
     <OrderedList {...props} className={classes.length ? classes : undefined} lang={opts.articleLanguage}>
-      {domToReact(node.children, converterOpts)}
+      {domToReact(node.children as DOMNode[], converterOpts)}
     </OrderedList>
   );
 };

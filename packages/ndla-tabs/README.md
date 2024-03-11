@@ -17,7 +17,7 @@ npm install @ndla/tabs --save
 ### Basic example
 
 ```js
-import Tabs from "@ndla/tabs";
+import { Tabs } from "@ndla/tabs";
 import BananaComponent from "banana";
 import PickleComponent from "picke";
 

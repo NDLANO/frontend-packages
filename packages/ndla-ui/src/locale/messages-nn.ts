@@ -548,7 +548,6 @@ const messages = {
     "learning-path": "Læringssti",
     "subject-material": "Fagstoff",
     "tasks-and-activities": "Oppgåver og aktivitetar",
-    "external-learning-resources": "Ekstern læringsressurs",
     "source-material": "Kjeldemateriale",
     "assessment-resources": "Vurderingsressurs",
     topic: "Emne",
@@ -1195,20 +1194,25 @@ const messages = {
       willOpenInNewTab: "Opnast i ny fane.",
     },
     myPage: {
-      noRecents: "Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:",
+      noRecents: "Du har ikkje lagt til nokon ressursar enno. Slik kjem du i gang:",
       imageAlt:
         "Halvnært bilete av jente som held eit nettbrett i hendene. Oppå nettbrettet ligg det ei samling fargeprøver i ulike former og fargar. Grafikk.",
       confirmDeleteAccount: "Er du sikker på at du vil slette kontoen?",
       confirmDeleteAccountButton: "Slett konto",
       myPage: "Mi side",
       deleteAccount: "Slett Min NDLA",
+      loginPitch:
+        "Velkommen til Min NDLA! Her kan du lagre favorittressursane dine frå NDLA, organisere dei og dele dei med andre. Logg inn med din Feide-konto for å komme i gang.",
+      loginPitchButton: "Logg inn i Min NDLA",
       logout: "Logg ut av Min NDLA",
+      loginIngress:
+        "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjarteknappen for å markere favorittfaga eller favorittressursane dine og enkelt finne de igjen.",
       loginText:
-        "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet. Vi ber om at du ikkje skriv noko støtande, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ",
-      loginTextLink: "personvernerklæring her",
+        "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet.",
+      loginTextLink: "Les vår personvernerklæring her",
       loginTerms: "Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk",
       loginResourcePitch: "Ønsker du å favorittmerke denne resursen?",
-      loginWelcome: "Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!",
+      loginWelcome: "Velkommen til Min NDLA!",
       welcome:
         "Velkommen til Min NDLA! No kan du lagre favorittressursane dine frå NDLA og organisere dei i mapper og med emneknaggar.",
       read: { read: "Les", our: " vår." },
@@ -1225,6 +1229,12 @@ const messages = {
       recentFavourites: {
         title: "Nyleg lagt til i mappene mine",
         link: "Sjå alle mappene dine",
+        search: "Søk etter ressursar",
+        unauthorized: "Oops. Her var det tomt! Hjartemerk nokre ressursar for å sjå dei her.",
+      },
+      favouriteSubjects: {
+        noFavorites: "Ingen favorittfag? Bruk hjarteknappen for å legge til favorittfag, så finn du dei enkelt att!",
+        search: "Sjå alle fag",
       },
       recentArenaPosts: {
         title: "Nye innlegg i arenaen",

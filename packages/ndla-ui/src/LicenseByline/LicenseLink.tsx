@@ -8,7 +8,7 @@
 
 import styled from "@emotion/styled";
 import { colors, fonts } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { LicenseType } from "./EmbedByline";
 
 interface Props {

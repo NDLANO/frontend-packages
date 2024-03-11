@@ -12,7 +12,7 @@ import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 import { Cross as CrossIcon } from "@ndla/icons/action";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { Heading, Text } from "@ndla/typography";
 import Controls from "./Controls";
 import SpeechControl from "./SpeechControl";

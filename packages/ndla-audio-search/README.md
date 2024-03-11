@@ -21,7 +21,7 @@ npm install @ndla/audio-search
 To use the `AudioSearch` component, some functions for handling search and fetching audios are needed. In addition, some translations are needed.
 
 ```js
-import AudioSearch from '@ndla/audio-search';
+import { AudioSearch } from '@ndla/audio-search';
 
 const searchAudios = queryObject => {
   // Return new Promise of audio objects

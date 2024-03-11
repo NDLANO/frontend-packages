@@ -11,7 +11,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { spacing, spacingUnit, colors, fonts, animations } from "@ndla/core";
 import { DragHorizontal, DeleteForever } from "@ndla/icons/editor";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 import { Movie, MovieListMessages } from "./MovieList";
 
 const MOVIE_HEIGHT = 69;

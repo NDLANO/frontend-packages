@@ -13,6 +13,6 @@ import { PluginType } from "../types";
 
 export const footnoteEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as FootnoteMetaData;
+  const data = JSON.parse(props["data-json"] as string) as FootnoteMetaData;
   return <FootnoteEmbed embed={data} />;
 };

@@ -187,8 +187,6 @@ const NotionButton = styled.button`
   font-family: inherit;
   font-style: inherit;
   line-height: 1em;
-  padding: 0 0 4px 0;
-  margin-bottom: -4px;
   text-decoration: none;
   position: relative;
   text-align: left;

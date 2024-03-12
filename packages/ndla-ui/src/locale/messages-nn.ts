@@ -283,7 +283,7 @@ const messages = {
     resources: "Dette er ikkje eit komplett læremiddel, men ei ressurssamling som vi håper kan vere nyttig for deg.",
     subjectOutdated: "Dette faget følgjer ein utgått læreplan.",
     subjectFuture: "Dette faget følgjer ein kommande læreplan.",
-    subjectBeta: "Dette faget er i betaversjon. Vi fyller på med ressurser fortløpande.",
+    subjectBeta: "Dette faget er i betaversjon. Vi fyller på med ressursar fortløpande.",
     newVersion:
       "Denne læringsressursen er ikkje oppdatert etter gjeldande læreplan. Du finn ein oppdatert versjon her: ",
     frontPageBeta:

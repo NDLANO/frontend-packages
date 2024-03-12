@@ -7,7 +7,7 @@
  */
 
 import Downshift from "downshift";
-import { Component } from "react";
+import React, { Component } from "react";
 import styled from "@emotion/styled";
 import { spacing } from "@ndla/core";
 import {
@@ -24,7 +24,7 @@ import { Search } from "@ndla/icons/common";
 import { Text } from "@ndla/typography";
 import { SubjectMaterialBadge } from "@ndla/ui";
 import { mockTypeahead } from "../../../dummydata";
-import defaultParameters from "../../../stories/defaults";
+import { defaultParameters } from "../../../stories/defaults";
 
 const meta = {
   title: "Forms/DropdownMenu",
@@ -40,12 +40,11 @@ const meta = {
       </div>
     ),
   ],
-  render: () => <MultiSelectDropdownExample />,
 };
 
 export default meta;
 
-export const Default = {};
+export const Default = ({ ...args }) => <MultiSelectDropdownExample {...args} />;
 
 Default.storyName = "DropdownMenu";
 

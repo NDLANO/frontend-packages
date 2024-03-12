@@ -9,7 +9,7 @@
 import { contributorTypes } from "@ndla/licenses";
 import constants from "../model";
 
-export const { subjectCategories, subjectTypes, wordClass } = constants;
+const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = " - NDLA";
 

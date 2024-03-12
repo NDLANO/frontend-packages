@@ -6,7 +6,7 @@
  *
  */
 
-import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/preview-api";
 import { Meta, StoryFn } from "@storybook/react";
 import LetterFilter from "./LetterFilter";
 import { defaultParameters } from "../../../../stories/defaults";

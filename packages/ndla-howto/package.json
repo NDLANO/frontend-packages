@@ -3,9 +3,10 @@
   "version": "4.1.89",
   "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "type": "module",
+  "types": "src/index.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "sideEffects": false,
   "scripts": {
     "build": "node ../../scripts/build.js package",
@@ -46,7 +47,11 @@
     "react-router-dom": ">= 6.0.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "type": "commonjs",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "types": "lib/index.d.ts"
   },
   "gitHead": "ebeb8a1d86cba369e1156719ebaecb58a6e2cdfc"
 }

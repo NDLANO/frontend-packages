@@ -3,9 +3,16 @@
   "version": "4.0.4",
   "description": "Collection of util functions used by NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "types": "src/index.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    }
+  },
   "sideEffects": false,
   "scripts": {
     "build": "node ../../scripts/build.js package",
@@ -22,6 +29,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
+    "src",
     "lib",
     "es",
     "types"
@@ -30,6 +38,10 @@
     "react": ">= 16.8.0"
   },
   "publishConfig": {
-    "access": "public"
+    "type": "commonjs",
+    "access": "public",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "types": "lib/index.d.ts"
   }
 }

@@ -3,9 +3,10 @@
   "version": "3.0.0",
   "description": "Pager component for NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "type": "module",
+  "types": "src/index.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "sideEffects": false,
   "scripts": {
     "build": "node ../../scripts/build.js package",
@@ -35,7 +36,11 @@
     "react": ">= 16.8.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "type": "module",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "types": "lib/index.d.ts"
   },
   "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
 }

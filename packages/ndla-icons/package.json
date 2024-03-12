@@ -3,10 +3,11 @@
   "version": "6.0.0",
   "description": "A package containing icons used in NDLA frontends",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "type": "module",
+  "types": "src/index.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "sideEffects": false,
-  "types": "lib/index.d.ts",
   "scripts": {
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
@@ -39,7 +40,11 @@
     "react": ">= 16.8.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "type": "commonjs",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "types": "lib/index.d.ts"
   },
   "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
 }

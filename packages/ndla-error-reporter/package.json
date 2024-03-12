@@ -3,8 +3,9 @@
   "version": "2.0.0",
   "description": "Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly.",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-error-reporter/"
@@ -29,6 +30,9 @@
     "raven-js": "^3.22.3"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "type": "commonjs",
+    "main": "lib/index.js",
+    "module": "es/index.js"
   }
 }

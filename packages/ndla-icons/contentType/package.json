@@ -1,9 +1,13 @@
-
 {
   "name": "@ndla/icons/contentType",
   "private": true,
-  "main": "../lib/contentType/index.js",
-  "module": "../es/contentType/index.js",
-  "jsnext:main": "../es/contentType/index.js"
+  "main": "../src/contentType/index.ts",
+  "module": "../src/contentType/index.ts",
+  "types": "../src/contentType/index.ts",
+  "publishConfig": {
+    "main": "../lib/contentType/index.js",
+    "module": "../es/contentType/index.js",
+    "types": "../lib/contentType/index.d.ts"
+  }
 }
-    
+

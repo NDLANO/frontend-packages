@@ -3,9 +3,10 @@
   "version": "3.3.10",
   "description": "Select component library for NDLA.",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "type": "module",
   "sideEffects": false,
   "scripts": {
     "build": "node ../../scripts/build.js package",
@@ -37,7 +38,11 @@
     "react-i18next": "^13.3.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "type": "commonjs",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "types": "lib/index.d.ts"
   },
   "gitHead": "f767a48efedffff1904be8bfb39097d6bc6eba6f"
 }

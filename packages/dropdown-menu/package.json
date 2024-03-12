@@ -3,9 +3,10 @@
   "version": "1.0.31",
   "description": "Dropdown menu component for NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "type": "module",
+  "types": "src/index.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "scripts": {
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
@@ -36,6 +37,10 @@
     "react-dom": ">= 16.8.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "type": "commonjs",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "types": "lib/index.d.ts"
   }
 }

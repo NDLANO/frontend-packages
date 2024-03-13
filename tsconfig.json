@@ -18,6 +18,8 @@
     "moduleResolution": "node",
     "incremental": true,
     "noLib": false,
+    // TODO: Remove this once @storybook/theming fixes their type issues
+    "skipLibCheck": true,
     "noEmit": true,
     "sourceMap": true,
     "lib": ["es2019", "esnext.asynciterable", "dom"],

@@ -27,6 +27,9 @@ export const ResourceTitleLink = styled(SafeLink)`
   box-shadow: none;
   color: ${colors.brand.primary};
   flex: 1;
+  &[data-warning="true"] {
+    color: ${colors.support.red};
+  }
   :after {
     content: "";
     position: absolute;

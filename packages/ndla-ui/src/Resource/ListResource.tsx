@@ -201,6 +201,7 @@ export interface ListResourceProps {
   link: string;
   tagLinkPrefix?: string;
   title: string;
+  titleWarning?: boolean;
   resourceImage: ResourceImageProps;
   resourceTypes: { id: string; name: string }[];
   tags?: string[];
@@ -215,6 +216,7 @@ const ListResource = ({
   link,
   tagLinkPrefix,
   title,
+  titleWarning,
   tags,
   resourceImage,
   resourceTypes,
@@ -241,7 +243,7 @@ const ListResource = ({
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} data-link="" target={targetBlank ? "_blank" : undefined}>
+          <StyledLink to={link} data-warning={titleWarning} data-link="" target={targetBlank ? "_blank" : undefined}>
             <Text element="span" textStyle="label-small" css={resourceHeadingStyle} title={title}>
               {title}
             </Text>

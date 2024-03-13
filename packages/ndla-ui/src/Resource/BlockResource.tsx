@@ -142,6 +142,7 @@ interface Props {
   link: string;
   tagLinkPrefix?: string;
   title: string;
+  titleWarning?: boolean;
   resourceImage: ResourceImageProps;
   tags?: string[];
   description?: string;
@@ -156,6 +157,7 @@ const BlockResource = ({
   link,
   tagLinkPrefix,
   title,
+  titleWarning,
   tags,
   resourceImage,
   description,
@@ -182,7 +184,13 @@ const BlockResource = ({
       <BlockInfoWrapper>
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
-            <ResourceTitleLink data-link="" title={title} target={targetBlank ? "_blank" : undefined} to={link}>
+            <ResourceTitleLink
+              data-warning={titleWarning}
+              data-link=""
+              title={title}
+              target={targetBlank ? "_blank" : undefined}
+              to={link}
+            >
               <Text element="span" textStyle="label-small" css={resourceHeadingStyle}>
                 {title}
               </Text>

@@ -142,7 +142,6 @@ interface Props {
   link: string;
   tagLinkPrefix?: string;
   title: string;
-  titleWarning?: boolean;
   resourceImage: ResourceImageProps;
   tags?: string[];
   description?: string;
@@ -150,6 +149,7 @@ interface Props {
   isLoading?: boolean;
   targetBlank?: boolean;
   resourceTypes?: { id: string; name: string }[];
+  isAvailable?: boolean;
 }
 
 const BlockResource = ({
@@ -157,7 +157,6 @@ const BlockResource = ({
   link,
   tagLinkPrefix,
   title,
-  titleWarning,
   tags,
   resourceImage,
   description,
@@ -165,6 +164,7 @@ const BlockResource = ({
   isLoading,
   targetBlank,
   resourceTypes,
+  isAvailable = true,
 }: Props) => {
   const firstResourceType = resourceTypes?.[0]?.id ?? "";
 
@@ -185,7 +185,7 @@ const BlockResource = ({
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
             <ResourceTitleLink
-              data-warning={titleWarning}
+              data-resource-available={isAvailable}
               data-link=""
               title={title}
               target={targetBlank ? "_blank" : undefined}

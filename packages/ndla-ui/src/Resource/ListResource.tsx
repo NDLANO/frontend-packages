@@ -201,7 +201,6 @@ export interface ListResourceProps {
   link: string;
   tagLinkPrefix?: string;
   title: string;
-  titleWarning?: boolean;
   resourceImage: ResourceImageProps;
   resourceTypes: { id: string; name: string }[];
   tags?: string[];
@@ -209,6 +208,7 @@ export interface ListResourceProps {
   menu?: ReactNode;
   isLoading?: boolean;
   targetBlank?: boolean;
+  isAvailable?: boolean;
 }
 
 const ListResource = ({
@@ -216,7 +216,6 @@ const ListResource = ({
   link,
   tagLinkPrefix,
   title,
-  titleWarning,
   tags,
   resourceImage,
   resourceTypes,
@@ -224,6 +223,7 @@ const ListResource = ({
   menu,
   isLoading = false,
   targetBlank,
+  isAvailable = true,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? "normal" : "compact";
@@ -243,7 +243,12 @@ const ListResource = ({
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} data-warning={titleWarning} data-link="" target={targetBlank ? "_blank" : undefined}>
+          <StyledLink
+            to={link}
+            data-resource-available={isAvailable}
+            data-link=""
+            target={targetBlank ? "_blank" : undefined}
+          >
             <Text element="span" textStyle="label-small" css={resourceHeadingStyle} title={title}>
               {title}
             </Text>

@@ -30,8 +30,8 @@ const stackOrder: StackOrderNames = {
   banner: 100,
   drawer: 200,
   dropdown: 300,
-  modal: 400,
-  popover: 500,
+  popover: 400,
+  modal: 500,
   toast: 600,
   tooltip: 700,
 };

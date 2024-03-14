@@ -71,6 +71,15 @@ export const WithMenu: StoryObj<typeof ListResource> = {
   },
 };
 
+export const WithUnavailableResource: StoryObj<typeof ListResource> = {
+  args: {
+    title: "Ressurs ikke tilgjengelig",
+    isAvailable: false,
+    resourceTypes: [],
+    resourceImage: { src: "", alt: "" },
+  },
+};
+
 export const Loading: StoryObj<typeof ListResource> = {
   args: {
     isLoading: true,

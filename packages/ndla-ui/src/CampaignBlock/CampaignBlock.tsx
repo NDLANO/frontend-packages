@@ -6,6 +6,7 @@
  *
  */
 
+import parse from "html-react-parser";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, spacing, mq, misc } from "@ndla/core";
@@ -20,14 +21,8 @@ interface Image {
 }
 
 interface Props {
-  title: {
-    title: string;
-    language: string;
-  };
-  description: {
-    text: string;
-    language: string;
-  };
+  title: string;
+  description: string;
   headingLevel?: HeadingLevel;
   url: {
     url?: string;
@@ -98,15 +93,11 @@ const CampaignBlock = ({
     <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
       {image && <StyledImg src={image.src} height={200} width={240} alt={image.alt} />}
       <TextWrapper>
-        <Heading css={headingStyle} lang={title.language === "nb" ? "no" : title.language}>
-          {title.title}
-        </Heading>
-        <StyledDescription lang={description.language === "nb" ? "no" : description.language}>
-          {description.text}
-        </StyledDescription>
-        {url.url && (
+        <Heading css={headingStyle}>{parse(title)}</Heading>
+        <StyledDescription>{parse(description)}</StyledDescription>
+        {!!url?.url && (
           <StyledLink to={getPossiblyRelativeUrl(url.url, path)}>
-            {url.text}
+            {parse(url.text ?? "")}
             <Forward />
           </StyledLink>
         )}

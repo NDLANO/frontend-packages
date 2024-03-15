@@ -35,7 +35,7 @@ interface Props extends ComponentProps<"div"> {
   background?: boolean;
   border?: boolean;
   className?: string;
-  isAvailable: boolean;
+  isAvailable?: boolean;
 }
 
 const sizes = {
@@ -169,7 +169,7 @@ export const ContentTypeBadge = ({
   size = "small",
   border = true,
   className,
-  isAvailable,
+  isAvailable = true,
   ...rest
 }: Props) => {
   const { Icon, style } = useMemo(() => {

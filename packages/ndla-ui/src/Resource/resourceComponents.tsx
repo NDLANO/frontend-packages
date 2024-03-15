@@ -122,6 +122,7 @@ const TagCounterWrapper = styled.span`
 interface ContentIconProps extends HTMLAttributes<HTMLSpanElement> {
   contentType: string;
   children?: ReactNode;
+  isAvailable: boolean;
 }
 
 const StyledContentIconWrapper = styled.span`
@@ -133,13 +134,13 @@ const StyledContentIconWrapper = styled.span`
   background-color: var(--content-background-color);
 `;
 
-export const ContentIconWrapper = ({ contentType, children, ...props }: ContentIconProps) => {
+export const ContentIconWrapper = ({ contentType, children, isAvailable, ...props }: ContentIconProps) => {
   const contentIconWrapperVars = useMemo(
     () =>
       ({
-        "--content-background-color": resourceTypeColor(contentType),
+        "--content-background-color": isAvailable ? resourceTypeColor(contentType) : colors.brand.greyLight,
       }) as unknown as CSSProperties,
-    [contentType],
+    [contentType, isAvailable],
   );
   return (
     <StyledContentIconWrapper {...props} style={contentIconWrapperVars}>

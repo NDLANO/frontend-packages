@@ -101,11 +101,12 @@ const ImageWrapper = styled.div`
 
 interface BlockImageProps {
   image: ResourceImageProps;
+  isAvailable: boolean;
   loading?: boolean;
   contentType: string;
 }
 
-const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
+const BlockImage = ({ image, isAvailable, loading, contentType }: BlockImageProps) => {
   if (loading) {
     return (
       <ContentLoader height={"100%"} width={"100%"} viewBox={null} preserveAspectRatio="none">
@@ -115,8 +116,8 @@ const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
   }
   if (image.src === "") {
     return (
-      <ContentIconWrapper contentType={contentType}>
-        <ContentTypeBadge type={contentType} size="large" />
+      <ContentIconWrapper contentType={contentType} isAvailable={isAvailable}>
+        <ContentTypeBadge type={contentType} size="large" isAvailable={isAvailable} />
       </ContentIconWrapper>
     );
   } else {
@@ -172,6 +173,7 @@ const BlockResource = ({
     <BlockElementWrapper id={id}>
       <ImageWrapper>
         <BlockImage
+          isAvailable={isAvailable}
           image={resourceImage}
           loading={isLoading}
           contentType={

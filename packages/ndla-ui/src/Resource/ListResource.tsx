@@ -128,18 +128,26 @@ const TopicAndTitleWrapper = styled.div`
 
 interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
+  isAvailable: boolean;
   loading?: boolean;
   type: "normal" | "compact";
   contentType: string;
   background?: boolean;
 }
 
-const ListResourceImage = ({ resourceImage, loading, type, contentType, background }: ListResourceImageProps) => {
+const ListResourceImage = ({
+  resourceImage,
+  isAvailable,
+  loading,
+  type,
+  contentType,
+  background,
+}: ListResourceImageProps) => {
   if (!loading) {
     if (resourceImage.src === "") {
       return (
-        <ContentIconWrapper contentType={contentType}>
-          <ContentTypeBadge type={contentType} background={background} size="x-small" />
+        <ContentIconWrapper contentType={contentType} isAvailable={isAvailable}>
+          <ContentTypeBadge type={contentType} background={background} size="x-small" isAvailable={isAvailable} />
         </ContentIconWrapper>
       );
     } else {
@@ -235,6 +243,7 @@ const ListResource = ({
       <ImageWrapper imageSize={imageType} data-image-size={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}
+          isAvailable={isAvailable}
           loading={isLoading}
           type={imageType}
           background={!!embedResourceType}

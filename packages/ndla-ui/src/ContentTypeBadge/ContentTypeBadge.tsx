@@ -11,7 +11,7 @@ import { CSSProperties, ComponentProps, useMemo } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, mq } from "@ndla/core";
-import { MenuBook } from "@ndla/icons/action";
+import { Minus, MenuBook } from "@ndla/icons/action";
 import { Audio } from "@ndla/icons/common";
 import {
   AssessmentResource,
@@ -35,6 +35,7 @@ interface Props extends ComponentProps<"div"> {
   background?: boolean;
   border?: boolean;
   className?: string;
+  isAvailable: boolean;
 }
 
 const sizes = {
@@ -168,16 +169,19 @@ export const ContentTypeBadge = ({
   size = "small",
   border = true,
   className,
+  isAvailable,
   ...rest
 }: Props) => {
   const { Icon, style } = useMemo(() => {
     const fromMap = iconMap[type];
-    const style = {
-      "--icon-color": fromMap.iconColor,
-      "--background-color": fromMap.backgroundColor,
-    } as CSSProperties;
-    return { Icon: fromMap.icon, style };
-  }, [type]);
+    const style = isAvailable
+      ? {
+          "--icon-color": fromMap.iconColor,
+          "--background-color": fromMap.backgroundColor,
+        }
+      : { "--icon-color": colors.brand.grey, "--background-color": colors.brand.greyLight };
+    return { Icon: isAvailable ? fromMap.icon : Minus, style: style as CSSProperties };
+  }, [isAvailable, type]);
 
   const cssStyles = useMemo(() => {
     const styles = [sizes[size]];

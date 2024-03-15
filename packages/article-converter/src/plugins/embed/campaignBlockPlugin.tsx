@@ -18,11 +18,8 @@ export const campaignBlockPlugin: PluginType = (element, _, opts) => {
 
   return (
     <CampaignBlock
-      title={{ title: embed.title, language: embed.titleLanguage }}
-      description={{
-        text: embed.description,
-        language: embed.descriptionLanguage,
-      }}
+      title={embed.title}
+      description={embed.description}
       url={{ url: embed.url, text: embed.urlText }}
       path={opts.path}
       imageSide={embed.imageSide}

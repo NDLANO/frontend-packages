@@ -22,11 +22,9 @@ export default {
 
 export const ImageLeft: StoryObj<typeof CampaignBlock> = {
   args: {
-    title: { title: "NDLA film", language: "nb-no" },
-    description: {
-      text: "NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!",
-      language: "nb-no",
-    },
+    title: "NDLA film",
+    description:
+      "NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!",
     headingLevel: "h2",
     url: {
       url: "#",
@@ -41,11 +39,9 @@ export const ImageLeft: StoryObj<typeof CampaignBlock> = {
 
 export const ImageRight: StoryObj<typeof CampaignBlock> = {
   args: {
-    title: { title: "FN-dagen 24. oktober!", language: "nb-no" },
-    description: {
-      text: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation  quis nostrud exercitation ",
-      language: "nb-no",
-    },
+    title: "FN-dagen 24. oktober!",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation  quis nostrud exercitation ",
     url: {
       url: "#",
       text: "Les mer om FN-dagen",
@@ -60,15 +56,28 @@ export const ImageRight: StoryObj<typeof CampaignBlock> = {
 
 export const NoUrl: StoryObj<typeof CampaignBlock> = {
   args: {
-    title: { title: "No url!!!", language: "nb-no" },
-    description: {
-      text: "Look ma, no url!",
-      language: "nb-no",
-    },
+    title: "No url!!!",
+    description: "Look ma, no url!",
     image: {
       alt: "Tømmer",
       src: "https://api.test.ndla.no/image-api/raw/stokkmarknes_004_d013e.jpg",
     },
     imageSide: "left",
+  },
+};
+
+export const HTML: StoryObj<typeof CampaignBlock> = {
+  args: {
+    title: "Something <em>bold</em>",
+    description: "Can go a <i>long</i> way",
+    image: {
+      alt: "Tømmer",
+      src: "https://api.test.ndla.no/image-api/raw/stokkmarknes_004_d013e.jpg",
+    },
+    imageSide: "left",
+    url: {
+      url: "#",
+      text: `Read more in <span lang="nn">Nynorsk</span>`,
+    },
   },
 };

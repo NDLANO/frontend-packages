@@ -114,8 +114,7 @@ const StyledOl = styled.ol`
   padding: 0;
   list-style-type: none;
   counter-reset: level1;
-
-  margin-left: ${spacing.normal};
+  margin: ${spacing.normal} 0 ${spacing.normal} ${spacing.normal};
 
   > li {
     margin-top: ${spacing.nsmall};

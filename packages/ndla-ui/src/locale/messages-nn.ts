@@ -1206,7 +1206,7 @@ const messages = {
       loginPitchButton: "Logg inn i Min NDLA",
       logout: "Logg ut av Min NDLA",
       loginIngress:
-        "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjarteknappen for å markere favorittfaga eller favorittressursane dine og enkelt finne de igjen.",
+        "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjarteknappen for å markere favorittfaga eller favorittressursane dine og enkelt finne dei igjen.",
       loginText:
         "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet.",
       loginTextLink: "Les vår personvernerklæring her",

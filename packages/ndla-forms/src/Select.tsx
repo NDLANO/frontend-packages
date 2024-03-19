@@ -48,8 +48,10 @@ const StyledSelect = styled.select`
   overflow: hidden;
   text-overflow: ellipsis;
   padding-right: 40px;
+  outline: 1px solid ${colors.brand.lighter};
 
   &:focus-within {
+    outline-offset: -1px;
     outline: 2px solid ${colors.brand.dark};
   }
 `;

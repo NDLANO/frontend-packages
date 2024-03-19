@@ -27,16 +27,16 @@ interface InputContextType {}
 const InputContext = createContext<InputContextType | undefined>(undefined);
 
 const inputCss = css`
-  border: 1px solid ${colors.brand.grey};
+  outline: 1px solid ${colors.brand.grey};
   background: ${colors.brand.greyLightest};
-  transition-duration: border-width 100ms ease;
   border-radius: ${misc.borderRadius};
   min-height: ${spacing.large};
   padding: 0px ${spacing.small};
 
   &:focus-within {
-    border-width: 2px;
-    border-color: ${colors.brand.primary};
+    outline-width: 2px;
+    outline-offset: -1px;
+    outline-color: ${colors.brand.primary};
   }
 `;
 
@@ -63,6 +63,7 @@ export const InputContainer = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivE
 const baseInputCss = css`
   width: 100%;
   color: ${colors.text.primary};
+  outline: none;
   background: none;
   border: 0;
   &:disabled {
@@ -70,7 +71,6 @@ const baseInputCss = css`
   }
   &:focus {
     appearance: none;
-    outline: none;
   }
 `;
 

@@ -20,7 +20,7 @@ import { Tooltip } from "@ndla/tooltip";
 import { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from "./conceptComponents";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { HeartButtonType } from "./types";
+import { HeartButtonType, RenderContext } from "./types";
 import { Figure } from "../Figure";
 import { Gloss } from "../Gloss";
 import { EmbedByline } from "../LicenseByline";
@@ -73,7 +73,7 @@ interface Props {
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
   lang?: string;
-  renderContext?: "article" | "embed";
+  renderContext?: RenderContext;
 }
 
 const StyledButton = styled.button`

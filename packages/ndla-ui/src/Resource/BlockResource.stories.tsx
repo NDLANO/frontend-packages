@@ -73,7 +73,6 @@ export const WithMenu: StoryObj<typeof BlockResource> = {
 export const WithUnavailableResource: StoryObj<typeof BlockResource> = {
   args: {
     title: "Ressurs ikke tilgjengelig",
-    isAvailable: false,
     resourceTypes: [],
     resourceImage: { src: "", alt: "" },
   },

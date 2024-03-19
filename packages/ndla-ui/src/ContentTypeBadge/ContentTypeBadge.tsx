@@ -35,7 +35,6 @@ interface Props extends ComponentProps<"div"> {
   background?: boolean;
   border?: boolean;
   className?: string;
-  isAvailable?: boolean;
 }
 
 const sizes = {
@@ -160,6 +159,11 @@ const iconMap = {
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
+  [contentTypes.MISSING]: {
+    icon: Minus,
+    iconColor: colors.brand.grey,
+    backgroundColor: colors.brand.greyLight,
+  },
 } as const;
 
 export const ContentTypeBadge = ({
@@ -169,19 +173,16 @@ export const ContentTypeBadge = ({
   size = "small",
   border = true,
   className,
-  isAvailable = true,
   ...rest
 }: Props) => {
   const { Icon, style } = useMemo(() => {
     const fromMap = iconMap[type];
-    const style = isAvailable
-      ? {
-          "--icon-color": fromMap.iconColor,
-          "--background-color": fromMap.backgroundColor,
-        }
-      : { "--icon-color": colors.brand.grey, "--background-color": colors.brand.greyLight };
-    return { Icon: isAvailable ? fromMap.icon : Minus, style: style as CSSProperties };
-  }, [isAvailable, type]);
+    const style = {
+      "--icon-color": fromMap.iconColor,
+      "--background-color": fromMap.backgroundColor,
+    } as CSSProperties;
+    return { Icon: fromMap.icon, style };
+  }, [type]);
 
   const cssStyles = useMemo(() => {
     const styles = [sizes[size]];

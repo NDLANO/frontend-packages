@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import styled from "@emotion/styled";
 import { spacing, colors, breakpoints, mq, stackOrder } from "@ndla/core";
 import { Text } from "@ndla/typography";
@@ -22,7 +22,7 @@ import {
 import ContentLoader from "../ContentLoader";
 import ContentTypeBadge from "../ContentTypeBadge";
 import Image from "../Image";
-import { contentTypeMapping, resourceEmbedTypeMapping } from "../model/ContentType";
+import { contentTypeMapping, MISSING, resourceEmbedTypeMapping } from "../model/ContentType";
 
 const ListResourceWrapper = styled.div`
   flex: 1;
@@ -128,26 +128,18 @@ const TopicAndTitleWrapper = styled.div`
 
 interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
-  isAvailable: boolean;
   loading?: boolean;
   type: "normal" | "compact";
   contentType: string;
   background?: boolean;
 }
 
-const ListResourceImage = ({
-  resourceImage,
-  isAvailable,
-  loading,
-  type,
-  contentType,
-  background,
-}: ListResourceImageProps) => {
+const ListResourceImage = ({ resourceImage, loading, type, contentType, background }: ListResourceImageProps) => {
   if (!loading) {
     if (resourceImage.src === "") {
       return (
-        <ContentIconWrapper contentType={contentType} isAvailable={isAvailable}>
-          <ContentTypeBadge type={contentType} background={background} size="x-small" isAvailable={isAvailable} />
+        <ContentIconWrapper contentType={contentType}>
+          <ContentTypeBadge type={contentType} background={background} size="x-small" />
         </ContentIconWrapper>
       );
     } else {
@@ -216,7 +208,6 @@ export interface ListResourceProps {
   menu?: ReactNode;
   isLoading?: boolean;
   targetBlank?: boolean;
-  isAvailable?: boolean;
 }
 
 const ListResource = ({
@@ -231,32 +222,38 @@ const ListResource = ({
   menu,
   isLoading = false,
   targetBlank,
-  isAvailable = true,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? "normal" : "compact";
   const firstContentType = resourceTypes?.[0]?.id ?? "";
   const embedResourceType = resourceEmbedTypeMapping[firstContentType];
 
+  const contentType = useMemo(() => {
+    if (!firstContentType) {
+      return MISSING;
+    } else {
+      return contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping["default"];
+    }
+  }, [embedResourceType, firstContentType]);
+
   return (
     <ListResourceWrapper id={id}>
       <ImageWrapper imageSize={imageType} data-image-size={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}
-          isAvailable={isAvailable}
           loading={isLoading}
           type={imageType}
           background={!!embedResourceType}
-          contentType={contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping["default"]}
+          contentType={contentType}
         />
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink
             to={link}
-            data-resource-available={isAvailable}
             data-link=""
             target={targetBlank ? "_blank" : undefined}
+            data-resource-available={contentType !== MISSING}
           >
             <Text element="span" textStyle="label-small" css={resourceHeadingStyle} title={title}>
               {title}

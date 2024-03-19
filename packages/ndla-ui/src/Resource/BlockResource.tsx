@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing, stackOrder } from "@ndla/core";
 import { Text } from "@ndla/typography";
@@ -22,7 +22,7 @@ import {
 import ContentLoader from "../ContentLoader";
 import ContentTypeBadge from "../ContentTypeBadge";
 import Image from "../Image";
-import { contentTypeMapping, resourceEmbedTypeMapping } from "../model/ContentType";
+import { contentTypeMapping, MISSING, resourceEmbedTypeMapping } from "../model/ContentType";
 
 const BlockElementWrapper = styled.div`
   display: flex;
@@ -101,12 +101,11 @@ const ImageWrapper = styled.div`
 
 interface BlockImageProps {
   image: ResourceImageProps;
-  isAvailable: boolean;
   loading?: boolean;
   contentType: string;
 }
 
-const BlockImage = ({ image, isAvailable, loading, contentType }: BlockImageProps) => {
+const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
   if (loading) {
     return (
       <ContentLoader height={"100%"} width={"100%"} viewBox={null} preserveAspectRatio="none">
@@ -116,8 +115,8 @@ const BlockImage = ({ image, isAvailable, loading, contentType }: BlockImageProp
   }
   if (image.src === "") {
     return (
-      <ContentIconWrapper contentType={contentType} isAvailable={isAvailable}>
-        <ContentTypeBadge type={contentType} size="large" isAvailable={isAvailable} />
+      <ContentIconWrapper contentType={contentType}>
+        <ContentTypeBadge type={contentType} size="large" />
       </ContentIconWrapper>
     );
   } else {
@@ -150,7 +149,6 @@ interface Props {
   isLoading?: boolean;
   targetBlank?: boolean;
   resourceTypes?: { id: string; name: string }[];
-  isAvailable?: boolean;
 }
 
 const BlockResource = ({
@@ -165,33 +163,35 @@ const BlockResource = ({
   isLoading,
   targetBlank,
   resourceTypes,
-  isAvailable = true,
 }: Props) => {
   const firstResourceType = resourceTypes?.[0]?.id ?? "";
+
+  const contentType = useMemo(() => {
+    if (!firstResourceType) {
+      return MISSING;
+    } else {
+      return (
+        contentTypeMapping[firstResourceType] ??
+        resourceEmbedTypeMapping[firstResourceType] ??
+        contentTypeMapping["default"]
+      );
+    }
+  }, [firstResourceType]);
 
   return (
     <BlockElementWrapper id={id}>
       <ImageWrapper>
-        <BlockImage
-          isAvailable={isAvailable}
-          image={resourceImage}
-          loading={isLoading}
-          contentType={
-            contentTypeMapping[firstResourceType] ??
-            resourceEmbedTypeMapping[firstResourceType] ??
-            contentTypeMapping["default"]
-          }
-        />
+        <BlockImage image={resourceImage} loading={isLoading} contentType={contentType} />
       </ImageWrapper>
       <BlockInfoWrapper>
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
             <ResourceTitleLink
-              data-resource-available={isAvailable}
               data-link=""
               title={title}
               target={targetBlank ? "_blank" : undefined}
               to={link}
+              data-resource-available={contentType !== MISSING}
             >
               <Text element="span" textStyle="label-small" css={resourceHeadingStyle}>
                 {title}

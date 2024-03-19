@@ -23,7 +23,6 @@ export interface TransformOptions {
   articleLanguage?: string;
   canonicalUrls?: CanonicalUrlFuncs;
   renderContext?: RenderContext;
-  showTitle?: boolean;
 }
 
 export type PluginType = (

@@ -20,7 +20,7 @@ export const conceptEmbedPlugin: PluginType = (element, _, opts) => {
       fullWidth
       heartButton={opts.components?.heartButton}
       lang={opts.articleLanguage}
-      showTitle={opts.showTitle}
+      renderContext={opts.renderContext}
     />
   );
 };

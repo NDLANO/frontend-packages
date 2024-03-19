@@ -10,7 +10,6 @@ import parse from "html-react-parser";
 import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Root, Trigger, Content, Anchor, Close, Portal } from "@radix-ui/react-popover";
 import { IconButtonV2 } from "@ndla/button";
@@ -74,7 +73,7 @@ interface Props {
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
   lang?: string;
-  showTitle?: boolean;
+  renderContext?: "article" | "embed";
 }
 
 const StyledButton = styled.button`
@@ -96,7 +95,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang, showTitle = true }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang, renderContext }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.htmlContent);
@@ -164,7 +163,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang,
         lang={lang}
         exampleIds={embed.embedData.exampleIds}
         exampleLangs={embed.embedData.exampleLangs}
-        showTitle={showTitle}
+        showTitle={renderContext !== "embed"}
       />
     );
   }

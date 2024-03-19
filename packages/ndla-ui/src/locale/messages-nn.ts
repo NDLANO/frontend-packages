@@ -1316,7 +1316,7 @@ const messages = {
       subjects: "{{count}} fag",
       subjects_0: "{{count}} fag",
       subjects_plural: "{{count}} fag",
-      noFavorites: "Du har ingen favorittfag!",
+      noFavorites: "Hjartemerk fag, så dukkar dei opp her.",
       goToAllSubjects: "Gå til alle fag",
     },
     tools: "Verktøy",

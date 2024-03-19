@@ -11,7 +11,6 @@ import { MetaData } from ".";
 export interface LinkBlockEmbedData {
   resource: "link-block";
   title: string;
-  language: string;
   date: string;
   url: string;
 }

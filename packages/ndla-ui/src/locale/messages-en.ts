@@ -1317,7 +1317,7 @@ const messages = {
       subjects: "{{count}} subject",
       subjects_0: "{{count}} subjects",
       subjects_plural: "{{count}} subjects",
-      noFavorites: "You do not have any favorite subjects!",
+      noFavorites: "Add a heart to subjects, and they will show up here.",
       goToAllSubjects: "Go to all subjects",
     },
     tools: "Tools",

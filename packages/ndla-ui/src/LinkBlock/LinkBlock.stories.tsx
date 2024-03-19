@@ -22,8 +22,8 @@ export default {
 } as Meta<typeof LinkBlock>;
 
 const args = {
-  title: "Redaksjonell medarbeider i faget spansk 2",
-  language: "nb",
+  title: "Redaksjonell <em>medarbeider</em> i faget spansk 2",
+  articleLanguage: "nb",
   date: "05. mars 2023",
   url: "",
 };

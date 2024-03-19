@@ -8,6 +8,7 @@
 
 import { format } from "date-fns";
 import { enGB, nb, nn } from "date-fns/locale";
+import parse from "html-react-parser";
 import { useMemo } from "react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, spacing, mq } from "@ndla/core";
@@ -75,20 +76,21 @@ const StyledCalenderEd = styled(CalendarEd)`
 
 interface Props extends Omit<LinkBlockEmbedData, "resource"> {
   path?: string;
+  articleLanguage?: string;
 }
 
-const LinkBlock = ({ title, language, date, url, path }: Props) => {
+const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
   const href = getPossiblyRelativeUrl(url, path);
   const formattedDate = useMemo(() => {
     if (!date) return null;
-    const locale = language === "nb" ? nb : language === "nn" ? nn : enGB;
+    const locale = articleLanguage === "nb" ? nb : articleLanguage === "nn" ? nn : enGB;
     return format(new Date(date), "dd. LLLL yyyy", { locale });
-  }, [date, language]);
+  }, [date, articleLanguage]);
   return (
     <StyledSafeLink to={href}>
       <InfoWrapper>
-        <Heading element="h3" margin="none" headingStyle="h3" lang={language === "nb" ? "no" : language}>
-          {title}
+        <Heading element="h3" margin="none" headingStyle="h3">
+          {parse(title)}
         </Heading>
         {date && (
           <StyledDateContainer>

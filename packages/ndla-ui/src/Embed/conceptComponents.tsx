@@ -50,6 +50,7 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, Omit<Concept
   conceptHeartButton?: ReactNode;
   exampleIds?: string;
   exampleLangs?: string;
+  showTitle?: boolean;
 }
 
 const NotionDialogText = styled.div`
@@ -190,6 +191,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       lang,
       exampleIds,
       exampleLangs,
+      showTitle = true,
       ...rest
     },
     ref,
@@ -200,10 +202,12 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <ContentSpacing data-is-concept={isConcept}>
           <NotionHeader data-is-concept={isConcept}>
-            <h1>
-              {isConcept && title.title}
-              {<small data-is-concept={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
-            </h1>
+            {showTitle && (
+              <h1>
+                {isConcept && title.title}
+                {<small data-is-concept={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
+              </h1>
+            )}
             <ButtonWrapper>
               {headerButtons}
               {closeButton}

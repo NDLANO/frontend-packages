@@ -74,6 +74,7 @@ interface Props {
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
   lang?: string;
+  showTitle?: boolean;
 }
 
 const StyledButton = styled.button`
@@ -95,7 +96,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang, showTitle = true }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.htmlContent);
@@ -163,6 +164,7 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
         lang={lang}
         exampleIds={embed.embedData.exampleIds}
         exampleLangs={embed.embedData.exampleLangs}
+        showTitle={showTitle}
       />
     );
   }

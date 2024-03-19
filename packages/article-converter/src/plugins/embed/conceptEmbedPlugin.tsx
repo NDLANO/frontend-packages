@@ -14,5 +14,13 @@ import { PluginType } from "../types";
 export const conceptEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props["data-json"] as string) as ConceptMetaData;
-  return <ConceptEmbed embed={data} fullWidth heartButton={opts.components?.heartButton} lang={opts.articleLanguage} />;
+  return (
+    <ConceptEmbed
+      embed={data}
+      fullWidth
+      heartButton={opts.components?.heartButton}
+      lang={opts.articleLanguage}
+      showTitle={opts.showTitle}
+    />
+  );
 };

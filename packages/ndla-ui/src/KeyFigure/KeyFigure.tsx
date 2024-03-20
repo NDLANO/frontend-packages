@@ -60,15 +60,14 @@ interface Props {
   };
   title: string;
   subtitle: string;
-  lang?: string;
 }
 
-const KeyFigure = ({ image, title, subtitle, lang }: Props) => {
+const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper>
       <StyledImage src={image?.src} width={150} height={150} alt={image?.alt} />
-      <TitleWrapper lang={lang}>{parse(title)}</TitleWrapper>
-      <SubTitleWrapper lang={lang}>{parse(subtitle)}</SubTitleWrapper>
+      <TitleWrapper>{parse(title)}</TitleWrapper>
+      <SubTitleWrapper>{parse(subtitle)}</SubTitleWrapper>
     </ContentWrapper>
   );
 };

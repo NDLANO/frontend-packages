@@ -6,6 +6,7 @@
  *
  */
 
+import parse from "html-react-parser";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
@@ -15,10 +16,7 @@ import { HeadingLevel } from "@ndla/typography";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 export interface Props {
-  title: {
-    title: string;
-    language: string;
-  };
+  title: string;
   author?: string;
   url: string;
   headingLevel?: HeadingLevel;
@@ -87,8 +85,8 @@ const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = "h3",
   const href = getPossiblyRelativeUrl(url, path);
   return (
     <Container data-size={size} to={href}>
-      <Heading className="blog-title" css={headingCss} lang={title.language === "nb" ? "no" : title.language}>
-        {title.title}
+      <Heading className="blog-title" css={headingCss}>
+        {parse(title)}
       </Heading>
       <StyledImg src={metaImage.url} alt={metaImage.alt} />
       {!!author && <AuthorContainer aria-label={t("article.writtenBy", { authors: author })}>{author}</AuthorContainer>}

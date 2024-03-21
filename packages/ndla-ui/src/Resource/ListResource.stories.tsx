@@ -71,6 +71,16 @@ export const WithMenu: StoryObj<typeof ListResource> = {
   },
 };
 
+export const Folder: StoryObj<typeof ListResource> = {
+  args: {
+    resourceTypes: [{ id: "folder", name: "folder" }],
+    resourceImage: {
+      src: "",
+      alt: "",
+    },
+  },
+};
+
 export const Loading: StoryObj<typeof ListResource> = {
   args: {
     isLoading: true,

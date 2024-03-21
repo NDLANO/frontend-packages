@@ -2764,10 +2764,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/article-converter@workspace:packages/article-converter"
   dependencies:
-    "@ndla/code": "npm:^5.0.51"
+    "@ndla/code": "npm:^5.0.52"
     "@ndla/types-backend": "npm:^0.2.64"
-    "@ndla/types-embed": "npm:^4.1.2"
-    "@ndla/ui": "npm:^50.13.0"
+    "@ndla/types-embed": "npm:^4.1.3"
+    "@ndla/ui": "npm:^50.13.1"
     html-react-parser: "npm:^5.1.8"
     lodash: "npm:^4.17.20"
   peerDependencies:
@@ -2826,14 +2826,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/code@npm:^5.0.51, @ndla/code@workspace:packages/ndla-code":
+"@ndla/code@npm:^5.0.52, @ndla/code@workspace:packages/ndla-code":
   version: 0.0.0-use.local
   resolution: "@ndla/code@workspace:packages/ndla-code"
   dependencies:
     "@ndla/button": "npm:^12.0.40"
     "@ndla/core": "npm:^4.5.2"
     "@ndla/icons": "npm:^6.0.2"
-    "@ndla/types-embed": "npm:^4.1.2"
+    "@ndla/types-embed": "npm:^4.1.3"
     "@ndla/util": "npm:^4.0.4"
     react-simple-code-editor: "npm:^0.13.0"
   peerDependencies:
@@ -2876,7 +2876,7 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.40"
     "@ndla/core": "npm:^4.5.2"
-    "@ndla/forms": "npm:^7.0.9"
+    "@ndla/forms": "npm:^7.0.10"
     "@ndla/icons": "npm:^6.0.2"
     "@ndla/modal": "npm:^5.0.37"
     "@ndla/tooltip": "npm:^7.0.2"
@@ -2899,7 +2899,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/forms@npm:^7.0.9, @ndla/forms@workspace:packages/ndla-forms":
+"@ndla/forms@npm:^7.0.10, @ndla/forms@workspace:packages/ndla-forms":
   version: 0.0.0-use.local
   resolution: "@ndla/forms@workspace:packages/ndla-forms"
   dependencies:
@@ -2943,7 +2943,7 @@ __metadata:
     "@ndla/modal": "npm:^5.0.37"
     "@ndla/notion": "npm:^6.0.38"
     "@ndla/tooltip": "npm:^7.0.2"
-    "@ndla/ui": "npm:^50.13.0"
+    "@ndla/ui": "npm:^50.13.1"
     "@ndla/util": "npm:^4.0.4"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2975,11 +2975,11 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.40"
     "@ndla/core": "npm:^4.5.2"
-    "@ndla/forms": "npm:^7.0.9"
+    "@ndla/forms": "npm:^7.0.10"
     "@ndla/icons": "npm:^6.0.2"
     "@ndla/pager": "npm:^3.0.2"
     "@ndla/types-backend": "npm:^0.2.64"
-    "@ndla/ui": "npm:^50.13.0"
+    "@ndla/ui": "npm:^50.13.1"
     "@ndla/util": "npm:^4.0.4"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
@@ -3150,7 +3150,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/types-embed@npm:^4.1.2, @ndla/types-embed@workspace:packages/types-embed":
+"@ndla/types-embed@npm:^4.1.3, @ndla/types-embed@workspace:packages/types-embed":
   version: 0.0.0-use.local
   resolution: "@ndla/types-embed@workspace:packages/types-embed"
   dependencies:
@@ -3178,7 +3178,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^50.13.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^50.13.1, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
@@ -3187,7 +3187,7 @@ __metadata:
     "@ndla/carousel": "npm:^4.0.38"
     "@ndla/core": "npm:^4.5.2"
     "@ndla/dropdown-menu": "npm:^1.0.33"
-    "@ndla/forms": "npm:^7.0.9"
+    "@ndla/forms": "npm:^7.0.10"
     "@ndla/hooks": "npm:^2.1.5"
     "@ndla/icons": "npm:^6.0.2"
     "@ndla/licenses": "npm:^7.2.5"
@@ -3199,7 +3199,7 @@ __metadata:
     "@ndla/tabs": "npm:^4.0.2"
     "@ndla/tooltip": "npm:^7.0.2"
     "@ndla/types-backend": "npm:^0.2.64"
-    "@ndla/types-embed": "npm:^4.1.2"
+    "@ndla/types-embed": "npm:^4.1.3"
     "@ndla/typography": "npm:^0.4.16"
     "@ndla/util": "npm:^4.0.4"
     "@radix-ui/react-popover": "npm:^1.0.7"
@@ -3242,11 +3242,11 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.40"
     "@ndla/core": "npm:^4.5.2"
-    "@ndla/forms": "npm:^7.0.9"
+    "@ndla/forms": "npm:^7.0.10"
     "@ndla/icons": "npm:^6.0.2"
     "@ndla/licenses": "npm:^7.2.5"
     "@ndla/notion": "npm:^6.0.38"
-    "@ndla/types-embed": "npm:^4.1.2"
+    "@ndla/types-embed": "npm:^4.1.3"
     "@ndla/util": "npm:^4.0.4"
   peerDependencies:
     "@emotion/react": ^11.10.4

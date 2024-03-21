@@ -20,7 +20,7 @@ export interface RelatedContentEmbedData {
 
 export interface RelatedContentData {
   article: IArticleV2 | IArticle;
-  resource: Node;
+  resource?: Node;
 }
 
 export type RelatedContentMetaData = MetaData<RelatedContentEmbedData, RelatedContentData | undefined>;

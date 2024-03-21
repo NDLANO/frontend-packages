@@ -1362,6 +1362,7 @@ const messages = {
       external: "External resource",
       gloss: "Gloss",
       copyright: "Text",
+      folder: "Folder",
     },
   },
   gloss: {

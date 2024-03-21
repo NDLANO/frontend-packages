@@ -17,6 +17,7 @@ export const MULTIDISCIPLINARY_TOPIC = "multidisciplinary-topic";
 export const CONCEPT = "concept";
 export const EXTERNAL = "external";
 export const MISSING = "missing";
+export const FOLDER = "folder";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,
@@ -30,6 +31,7 @@ export const contentTypes = {
   CONCEPT,
   EXTERNAL,
   MISSING,
+  FOLDER,
 };
 
 export const RESOURCE_TYPE_LEARNING_PATH = "urn:resourcetype:learningPath";
@@ -51,6 +53,7 @@ export const ListOfContentTypes = [
   "CONCEPT",
   "EXTERNAL",
   "MISSING",
+  "FOLDER",
 ];
 
 export const contentTypeMapping: Record<string, string> = {
@@ -68,4 +71,5 @@ export const resourceEmbedTypeMapping: Record<string, string> = {
   video: "video",
   concept: "concept",
   audio: "audio",
+  folder: "folder",
 };

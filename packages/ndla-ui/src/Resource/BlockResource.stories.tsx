@@ -70,16 +70,6 @@ export const WithMenu: StoryObj<typeof BlockResource> = {
   },
 };
 
-export const Folder: StoryObj<typeof BlockResource> = {
-  args: {
-    resourceTypes: [{ id: "folder", name: "folder" }],
-    resourceImage: {
-      src: "",
-      alt: "",
-    },
-  },
-};
-
 export const Loading: StoryObj<typeof BlockResource> = {
   args: {
     isLoading: true,

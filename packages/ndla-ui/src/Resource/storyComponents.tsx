@@ -22,6 +22,10 @@ export const resourceTypesArr = [
   { id: "urn:resourcetype:reviewResource", name: "Vurderingsressurs" },
   { id: "urn:resourcetype:externalResource", name: "Ekstern læringsressurs" },
   { id: "urn:resourcetype:SourceMaterial", name: "Kildemateriale" },
+  { id: "concept", name: "concept" },
+  { id: "image", name: "image" },
+  { id: "video", name: "video" },
+  { id: "audio", name: "audio" },
   { id: "folder", name: "folder" },
 ];
 

@@ -10,12 +10,12 @@ import Icon, { Props } from "../Icon";
 const Comment = (props: Props) => (
   <Icon data-license="Apache License 2.0" data-source="Knowit" viewBox="0 0 20 20" {...props}>
     <path
-      fill="#444"
+      fill="currentColor"
       d="M6.4 10.9a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8m3.6 0A.9.9 0 1 0 10 9a.9.9 0 0 0 0 1.8Zm3.6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8"
     />
     <path
       fill="none"
-      stroke="#444"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}

@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing, stackOrder } from "@ndla/core";
 import { Text } from "@ndla/typography";
@@ -22,7 +22,7 @@ import {
 import ContentLoader from "../ContentLoader";
 import ContentTypeBadge from "../ContentTypeBadge";
 import Image from "../Image";
-import { contentTypeMapping, resourceEmbedTypeMapping } from "../model/ContentType";
+import { contentTypeMapping, MISSING, resourceEmbedTypeMapping } from "../model/ContentType";
 
 const BlockElementWrapper = styled.div`
   display: flex;
@@ -166,23 +166,33 @@ const BlockResource = ({
 }: Props) => {
   const firstResourceType = resourceTypes?.[0]?.id ?? "";
 
+  const contentType = useMemo(() => {
+    if (!firstResourceType) {
+      return MISSING;
+    } else {
+      return (
+        contentTypeMapping[firstResourceType] ??
+        resourceEmbedTypeMapping[firstResourceType] ??
+        contentTypeMapping["default"]
+      );
+    }
+  }, [firstResourceType]);
+
   return (
     <BlockElementWrapper id={id}>
       <ImageWrapper>
-        <BlockImage
-          image={resourceImage}
-          loading={isLoading}
-          contentType={
-            contentTypeMapping[firstResourceType] ??
-            resourceEmbedTypeMapping[firstResourceType] ??
-            contentTypeMapping["default"]
-          }
-        />
+        <BlockImage image={resourceImage} loading={isLoading} contentType={contentType} />
       </ImageWrapper>
       <BlockInfoWrapper>
         <ContentWrapper>
           <ResourceTypeAndTitleLoader loading={isLoading}>
-            <ResourceTitleLink data-link="" title={title} target={targetBlank ? "_blank" : undefined} to={link}>
+            <ResourceTitleLink
+              data-link=""
+              title={title}
+              target={targetBlank ? "_blank" : undefined}
+              to={link}
+              data-resource-available={contentType !== MISSING}
+            >
               <Text element="span" textStyle="label-small" css={resourceHeadingStyle}>
                 {title}
               </Text>

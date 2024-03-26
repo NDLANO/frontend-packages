@@ -36,6 +36,8 @@ export const resourceTypeColor = (type: string) => {
     case resourceEmbedTypeMapping.concept:
     case resourceEmbedTypeMapping.audio:
       return colors.brand.greyLight;
+    case contentTypes.MISSING:
+      return colors.brand.greyLight;
     default:
       return "";
   }

@@ -60,7 +60,8 @@ export type StoryType =
   | "status"
   | "ContactBlock"
   | "Grid"
-  | "KeyFigure";
+  | "KeyFigure"
+  | "Comment";
 
 export const stories: Record<StoryType, Story> = {
   Paragraph: {
@@ -312,6 +313,17 @@ export const stories: Record<StoryType, Story> = {
       {
         type: "text",
         content: "Søk opp og legg til forklaring som blokkvisning i artikkel.",
+      },
+    ],
+  },
+  Comment: {
+    title: "Kommentar",
+    lead: "Legg til kommentar.",
+    body: [
+      {
+        type: "text",
+        content:
+          "Legg til en kommentar i artikkel. Kommentaren vil ikke være synlig i publisert versjon av artikkelen.",
       },
     ],
   },

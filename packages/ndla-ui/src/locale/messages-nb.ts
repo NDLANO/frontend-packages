@@ -1184,6 +1184,8 @@ const messages = {
       firstShared: "Mappa ble delt første gang {{date}}",
       learningpathUnsupported:
         "Læringsstier og tverrfaglige caser kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.",
+      folderUnsupported:
+        "Andre mapper kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.",
       drawerButton: "Vis mapper og ressurser",
       drawerTitle: "Mapper og ressurser",
       description: {
@@ -1362,6 +1364,7 @@ const messages = {
       external: "Ekstern ressurs",
       gloss: "Glose",
       copyright: "Tekst",
+      folder: "Mappe",
     },
   },
   gloss: {

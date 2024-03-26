@@ -22,6 +22,7 @@ import {
   Subject,
   SubjectMaterial,
   TasksAndActivities,
+  FolderOutlined,
 } from "@ndla/icons/contentType";
 
 import { Concept, Media, Video } from "@ndla/icons/editor";
@@ -158,6 +159,11 @@ const iconMap = {
     icon: Video,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
+  },
+  [contentTypes.FOLDER]: {
+    icon: FolderOutlined,
+    iconColor: colors.brand.primary,
+    backgroundColor: colors.white,
   },
 } as const;
 

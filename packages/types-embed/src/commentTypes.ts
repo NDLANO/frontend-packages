@@ -11,7 +11,6 @@ export interface CommentEmbedData {
   resource: "comment";
   text: string;
   type: "block" | "inline";
-  isStandalone: string;
 }
 
 export type CommentMetaData = MetaData<CommentEmbedData, undefined>;

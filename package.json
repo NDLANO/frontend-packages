@@ -15,7 +15,7 @@
     "test": "cross-env BABEL_ENV=test NODE_ENV=unittest jest",
     "check-all": "yarn type-check && yarn format-check && yarn lint-es && yarn test",
     "deploy": "vercel --token $VERCEL_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.no && vercel --token $VERCEL_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
-    "clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist ./packages/*/tsconfig.build.tsbuildinfo",
+    "clean": "rm -rf ./packages/*/es ./packages/*/lib",
     "deploy-pr": "node ./packages/ndla-scripts/src/run-script.js vercel-github",
     "bootstrap": "yarn nx run-many --target build prepublish",
     "bootstrap:ci": "yarn nx run-many --target build prepublish --skip-nx-cache",
@@ -23,8 +23,7 @@
     "watch:src": "node ./scripts/watch.js",
     "watch:tsc": "nx watch --all -- nx prepublish \\$NX_PROJECT_NAME",
     "watch": "concurrently 'yarn watch:src' 'yarn watch:tsc'",
-    "start": "yarn build && concurrently -k -p \"[{name}]\" -n \"Babel,Storybook,Typescript\" -c \"yellow.bold,magenta.bold,blue.bold\" \"yarn watch\" \"yarn start-storybook\" \"yarn type-check-watch\"",
-    "start-storybook": "storybook dev -p 6006 --no-open",
+    "start": "storybook dev -p 6006 --no-open",
     "prebuild-storybook": "yarn bootstrap:ci",
     "build-storybook": "cross-env NODE_ENV=production storybook build",
     "serve-storybook": "cross-env NODE_ENV=production serve -l 5000 ./storybook-static",
@@ -118,6 +117,7 @@
     "ts-jest": "^29.1.1",
     "typescript": "^5.4.2",
     "vite": "^5.1.6",
+    "vite-tsconfig-paths": "^4.3.2",
     "webpack": "^5.79.0"
   },
   "packageManager": "yarn@4.1.0"

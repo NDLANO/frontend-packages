@@ -2,9 +2,15 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "isolatedModules": false,
     "declaration": true,
     "emitDeclarationOnly": true
   },
-  "exclude": ["./packages/*/lib", "**/*-test.*", "./**/*.stories.tsx"]
+  "exclude": [
+    "./packages/*/lib",
+    "**/*-test.*",
+    "./**/*.stories.tsx",
+    "./**/*.stories.jsx",
+    "./dummydata/**/*",
+    ".storybook/**/*"
+  ]
 }

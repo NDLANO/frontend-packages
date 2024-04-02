@@ -5,7 +5,7 @@
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "Types": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "build": "node ../../scripts/build.js package",

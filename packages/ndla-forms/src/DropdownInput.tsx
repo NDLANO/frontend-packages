@@ -48,7 +48,9 @@ const DropdownInput = <T extends object>({
         <FormPill
           //@ts-ignore
           label={labelField ? value[labelField] : ""}
+          //@ts-ignore
           key={getFieldValue(value, idField)}
+          //@ts-ignore
           id={getFieldValue(value, idField)}
           onClick={removeItem}
         />

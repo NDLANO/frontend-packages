@@ -1182,10 +1182,11 @@ const messages = {
       shared: "This folder contains learning resources and tasks from NDLA, gathered by {{sharedBy}}.",
       aTeacher: "a teacher",
       firstShared: "The folder was shared for the first time {{date}}",
+      resourceUnsupported:
+        "Learning paths, multidisciplinary cases and other folders cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.",
+      resourceUnsupportedTitle: "Resource can not be shown",
       learningpathUnsupported:
         "Learning paths and multidisciplinary cases cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.",
-      folderUnsupported:
-        "Other folders cannot be shown directly in a shared folder. You can open it in a new tab by clicking the link in the navigation menu to the left.",
       drawerButton: "Show folders and resources",
       drawerTitle: "Folders and resources",
       description: {

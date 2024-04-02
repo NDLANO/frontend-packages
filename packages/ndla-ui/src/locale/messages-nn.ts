@@ -1184,10 +1184,11 @@ const messages = {
       firstShared: "Mappa vart delt første gong {{date}}",
       drawerButton: "Vis mapper og ressursar",
       drawerTitle: "Mapper og ressursar",
+      resourceUnsupported:
+        "Læringsstiar, tverrfaglege caser og andre mapper kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.",
+      resourceUnsupportedTitle: "Ressursen kan ikkje visast",
       learningpathUnsupported:
         "Læringsstiar og tverrfaglege caser kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.",
-      folderUnsupported:
-        "Andre mappar kan ikkje visast direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, blir stien opna i ei ny fane.",
       description: {
         all: "I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.\n\nDu kan bla i artiklane ved å bruke menyen.",
         info1:

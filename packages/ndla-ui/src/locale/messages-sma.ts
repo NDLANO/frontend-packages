@@ -1186,10 +1186,11 @@ const messages = {
       shared: "Denne mappa inneholder fagstoff og oppgaver fra NDLA, samlet av {{sharedBy}}.",
       aTeacher: "en lærer",
       firstShared: "Mappa ble delt første gang {{date}}",
+      resourceUnsupported:
+        "Læringsstier, tverrfaglige caser og andre mapper kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.",
+      resourceUnsupportedTitle: "Ressursen kan ikke vises",
       learningpathUnsupported:
         "Læringsstier og tverrfaglige caser kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.",
-      folderUnsupported:
-        "Andre mapper kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.",
       drawerButton: "Vis mapper og ressurser",
       drawerTitle: "Mapper og ressurser",
       description: {

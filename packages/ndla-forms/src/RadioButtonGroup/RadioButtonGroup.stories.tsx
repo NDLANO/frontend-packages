@@ -13,7 +13,6 @@ import { spacing, colors } from "@ndla/core";
 import { RadioButtonGroup } from "./RadioButtonGroup";
 import { RadioButtonItem } from "./RadioButtonItem";
 import { FieldErrorMessage } from "..";
-import { defaultParameters } from "../../../../stories/defaults";
 import { FormControl } from "../FormControl";
 import { Fieldset, Label, Legend } from "../Label";
 
@@ -29,9 +28,6 @@ export default {
   title: "Forms/RadioButtonGroup",
   component: RadioButtonGroup,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
 } as Meta<typeof RadioButtonGroup>;
 
 export const Default: StoryFn<typeof RadioButtonGroup> = ({ ...args }) => (

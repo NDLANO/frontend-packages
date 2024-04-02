@@ -10,7 +10,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { ButtonV2 } from "@ndla/button";
 import { PersonOutlined } from "@ndla/icons/common";
 import { Snack, SnackbarProvider, useSnack } from ".";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const SnackComponent = ({ ...args }: Snack) => {
   const { addSnack } = useSnack();
@@ -30,7 +29,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     content: <span>This is a snack</span>,

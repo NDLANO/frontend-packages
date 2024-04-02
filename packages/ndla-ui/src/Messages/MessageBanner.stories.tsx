@@ -9,7 +9,6 @@
 import { useTranslation } from "react-i18next";
 import { Meta, StoryFn } from "@storybook/react";
 import MessageBanner from "./MessageBanner";
-import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.
@@ -20,7 +19,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     showCloseButton: true,

@@ -9,7 +9,6 @@
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { FootnoteData, FootnoteEmbedData } from "@ndla/types-embed";
 import FootnoteEmbed from "./FootnoteEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import { ArticleByline } from "../Article";
 
 /**
@@ -25,7 +24,6 @@ export default {
   component: FootnoteEmbed,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     embed: {

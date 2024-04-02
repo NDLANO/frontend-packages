@@ -13,14 +13,12 @@ import { LayoutItem, OneColumn, PageContainer, SubjectHeader } from "@ndla/ui";
 import { FormControl, InputV3, Label } from "@ndla/forms";
 import { CopyButton } from "@ndla/button";
 import { Copy } from "@ndla/icons/action";
-import { defaultParameters } from "../defaults";
 import { StoryIntro } from "../wrappers";
 //@ts-ignore
 import allBanners from "../../images/banners";
 
 const meta: Meta = {
   title: "Base styles/Banners",
-  parameters: defaultParameters,
 };
 
 const addLeadingSlash = (str: string) => (str.startsWith("/") ? str : `/${str}`);

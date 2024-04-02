@@ -11,7 +11,6 @@ import { Meta, StoryFn } from "@storybook/react";
 import { Search } from "@ndla/icons/common";
 import { Check } from "@ndla/icons/editor";
 import { InputContainer, TextArea } from "./InputV3";
-import { defaultParameters } from "../../../stories/defaults";
 
 /**
  * A textbox that automatically resizes itself based on its content.
@@ -24,7 +23,6 @@ export default {
   component: TextArea,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta<typeof TextArea>;
 

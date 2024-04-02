@@ -13,7 +13,6 @@ import { IFolder } from "@ndla/types-backend/learningpath-api";
 import { uuid } from "@ndla/util";
 import { flattenFolders } from "./helperFunctions";
 import TreeStructure, { TreeStructureProps } from "./TreeStructure";
-import { defaultParameters } from "../../../../stories/defaults";
 import { FolderInput } from "../MyNdla";
 
 const MY_FOLDERS_ID = "folders";
@@ -124,7 +123,6 @@ export default {
   component: TreeStructure,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     defaultOpenFolders: [MY_FOLDERS_ID],

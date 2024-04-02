@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import ContactBlock from "./ContactBlock";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/Contact block",
@@ -79,9 +78,6 @@ export default {
     email: "sigurd@ndla.no",
     blobColor: "green",
     blob: "pointy",
-  },
-  parameters: {
-    ...defaultParameters,
   },
 } as Meta<typeof ContactBlock>;
 

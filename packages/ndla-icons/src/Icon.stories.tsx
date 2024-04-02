@@ -21,7 +21,6 @@ import { Person } from "./common";
 import * as contentTypeIcons from "./contentType";
 import * as editorIcons from "./editor";
 import * as licenseIcons from "./licenses";
-import { defaultParameters } from "../../../stories/defaults";
 
 interface IconItemProps {
   icon: (props: ComponentProps<typeof Icon>) => ReactElement<ComponentProps<typeof Icon>>;
@@ -98,7 +97,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta<typeof Person>;
 

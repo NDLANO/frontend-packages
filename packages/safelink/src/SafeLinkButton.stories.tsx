@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import MissingRouterContext from "./MissingRouterContext";
 import SafeLinkButton from "./SafeLinkButton";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Components/SafeLinkButton",
@@ -17,7 +16,6 @@ export default {
   tags: ["autodocs"],
   paramemeters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     to: "/",

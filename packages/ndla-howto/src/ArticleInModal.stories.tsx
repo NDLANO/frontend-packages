@@ -9,7 +9,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { ButtonV2 } from "@ndla/button";
 import ArticleInModal from "./ArticleInModal";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Production system/How To",
@@ -20,7 +19,6 @@ export default {
   },
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta<typeof ArticleInModal>;
 

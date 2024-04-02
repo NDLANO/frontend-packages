@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { AudioEmbedData, AudioMeta } from "@ndla/types-embed";
 import AudioEmbed from "./AudioEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 
 const embedData: AudioEmbedData = {
@@ -198,7 +197,6 @@ const meta: Meta<typeof AudioEmbed> = {
       </div>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

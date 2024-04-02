@@ -10,7 +10,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { CopyrightMetaData } from "@ndla/types-embed";
 import FramedContent from "./FramedContent";
 import FigureImage from "../../../../stories/article/FigureImage";
-import { defaultParameters } from "../../../../stories/defaults";
 import { CopyrightEmbed } from "../Embed";
 
 export default {
@@ -19,7 +18,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     children: <p>Content!</p>,

@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import LearningPathMenu from "./LearningPathMenu";
-import { defaultParameters } from "../../../../stories/defaults";
 import { contentTypes } from "../model/ContentType";
 const args = {
   name: "Læringssti",
@@ -53,7 +52,6 @@ export default {
   component: LearningPathMenu,
   tags: ["autodocs"],
   parameters: {
-    ...defaultParameters,
     layout: "centered",
   },
   args: args,

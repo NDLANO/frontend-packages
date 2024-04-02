@@ -8,15 +8,11 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import CampaignBlock from "./CampaignBlock";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/Campaign Block",
   component: CampaignBlock,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {},
 } as Meta<typeof CampaignBlock>;
 

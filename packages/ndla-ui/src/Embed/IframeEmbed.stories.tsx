@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { IframeData, IframeEmbedData } from "@ndla/types-embed";
 import IframeEmbed from "./IframeEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const embedData: IframeEmbedData = {
   width: "708px",
@@ -37,7 +36,6 @@ const meta: Meta<typeof IframeEmbed> = {
       </div>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import FolderInput from "./FolderInput";
-import { defaultParameters } from "../../../../../stories/defaults";
 
 export default {
   title: "My NDLA/FolderInput",
@@ -16,7 +15,6 @@ export default {
   component: FolderInput,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     labelHidden: false,

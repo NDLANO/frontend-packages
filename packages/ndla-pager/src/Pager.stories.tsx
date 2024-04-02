@@ -8,15 +8,11 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import Pager from "./Pager";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Components/Pager",
   component: Pager,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {
     page: 1,
     lastPage: 2,

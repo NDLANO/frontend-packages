@@ -13,7 +13,6 @@ import { Label, RadioButtonGroup, RadioButtonItem } from "@ndla/forms";
 import { ALL_ABBREVIATIONS, getLicenseByAbbreviation } from "@ndla/licenses";
 import { Text } from "@ndla/typography";
 import { Table } from "@ndla/ui";
-import { defaultParameters } from "./defaults";
 
 /**
  * Liste over lisenser som brukes på NDLA.
@@ -23,7 +22,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta;
 

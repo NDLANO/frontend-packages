@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import Table from "./Table";
-import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles opp i flere tabeller.
@@ -35,7 +34,6 @@ const meta: Meta = {
     ),
   ],
   title: "Base styles/Tables",
-  parameters: defaultParameters,
 };
 
 export default meta;

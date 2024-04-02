@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import CreatedBy from "./CreatedBy";
-import { defaultParameters } from "../../../../stories/defaults";
 
 /***
  * LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i bunnen. "NDLA" og logoen lenker til ndla.no. "Artikkel" kan være en lenke til artikkelen på ndla.no om den fins. Begge lenker åpner som standard i ny fane men det kan overstyres med target-parameter.
@@ -19,7 +18,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     name: "Artikkelen",

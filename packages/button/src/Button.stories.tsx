@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import ButtonV2 from "./ButtonV2";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Components/Buttons/Button",
@@ -16,7 +15,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     colorTheme: "primary",

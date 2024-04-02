@@ -15,14 +15,12 @@ import ModalCloseButton from "./ModalCloseButton";
 import ModalHeader from "./ModalHeader";
 import ModalTitle from "./ModalTitle";
 import { ModalContentProps } from "./types";
-import { defaultParameters } from "../../../stories/defaults";
 
 const meta: Meta<typeof ModalContent> = {
   title: "Components/Modal",
   tags: ["autodocs"],
   component: ModalContent,
   parameters: {
-    ...defaultParameters,
     docs: {
       controls: {
         include: ["animation", "animationDuration", "size", "position", "modalMargin", "expands"],

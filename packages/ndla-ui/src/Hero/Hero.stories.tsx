@@ -9,7 +9,6 @@
 import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
 import { Hero } from "./Hero";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const StyledDiv = styled.div`
   width: 1000px;
@@ -20,7 +19,6 @@ export default {
   component: Hero,
   tags: ["autodocs"],
   parameters: {
-    ...defaultParameters,
     layout: "centered",
   },
   args: {

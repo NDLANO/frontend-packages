@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import { Spinner } from ".";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Components/Spinner",
@@ -16,7 +15,6 @@ export default {
   component: Spinner,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     size: "large",

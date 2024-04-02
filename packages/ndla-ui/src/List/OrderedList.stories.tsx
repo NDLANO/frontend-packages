@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import OrderedList from "./OrderedList";
-import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet annerledes.
@@ -19,7 +18,6 @@ export default {
   component: OrderedList,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   render: ({ ...args }) => (
     <OrderedList {...args}>

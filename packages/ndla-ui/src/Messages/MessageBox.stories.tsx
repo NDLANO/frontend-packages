@@ -10,7 +10,6 @@ import { useTranslation } from "react-i18next";
 import { Meta, StoryFn } from "@storybook/react";
 import { Alarm, HumanMaleBoard, InformationOutline, WarningOutline } from "@ndla/icons/common";
 import MessageBox from "./MessageBox";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Patterns/MessageBox",
@@ -18,7 +17,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     showCloseButton: true,

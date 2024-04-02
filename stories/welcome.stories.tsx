@@ -6,11 +6,14 @@
  *
  */
 
-import { LayoutItem, Logo, PageContainer } from "@ndla/ui";
 import { Meta, StoryFn } from "@storybook/react";
+import { LayoutItem, Logo, PageContainer } from "@ndla/ui";
 
 export default {
   title: "Welcome",
+  parameters: {
+    layout: "fullscreen",
+  },
 } as Meta;
 
 export const Welcome: StoryFn = () => (

@@ -11,7 +11,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 
 const embedData: ImageEmbedData = {
@@ -104,7 +103,6 @@ const meta: Meta<typeof ImageEmbed> = {
       </div>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

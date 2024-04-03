@@ -10,7 +10,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { PersonOutlined } from "@ndla/icons/common";
 import MissingRouterContext from "./MissingRouterContext";
 import SafeLinkIconButton from "./SafeLinkIconButton";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Components/SafeLinkIconButton",
@@ -18,7 +17,6 @@ export default {
   tags: ["autodocs"],
   paramemeters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     to: "/",

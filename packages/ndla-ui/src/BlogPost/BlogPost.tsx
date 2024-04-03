@@ -29,6 +29,7 @@ export interface Props {
 }
 
 const Container = styled(SafeLink)`
+  margin: 0 0 ${spacing.normal} 0;
   display: flex;
   flex-direction: column;
   color: ${colors.text.primary};

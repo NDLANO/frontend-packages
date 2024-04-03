@@ -9,7 +9,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import UploadDropZone from "./UploadDropZone";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Components/UploadDropZone",
@@ -17,7 +16,6 @@ export default {
   component: UploadDropZone,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     allowedFiles: ["application/pdf", "image/gif", "image/png", "image/jpeg", "image/jpg", "image/svg+xml", ".js"],

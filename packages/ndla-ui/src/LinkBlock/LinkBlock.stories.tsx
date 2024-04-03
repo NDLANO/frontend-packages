@@ -9,15 +9,11 @@
 import { Meta, StoryObj, StoryFn } from "@storybook/react";
 import { LinkBlockSection } from ".";
 import LinkBlock from "./LinkBlock";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/Link Block",
   component: LinkBlock,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {},
 } as Meta<typeof LinkBlock>;
 

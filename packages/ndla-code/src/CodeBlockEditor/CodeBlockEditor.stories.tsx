@@ -36,7 +36,6 @@ import "prismjs/components/prism-vhdl";
 import "prismjs/components/prism-bash";
 import { Meta, StoryObj } from "@storybook/react";
 import CodeBlockEditor from "./CodeBlockEditor";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const highlightCode = (code: string, language: string) => {
   const highlighted = highlight(code, languages[language], language);
@@ -49,7 +48,6 @@ export default {
   component: CodeBlockEditor,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     content: {

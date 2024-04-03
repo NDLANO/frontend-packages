@@ -5,18 +5,10 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
-    // isolatedModules and declaration are not allowed together at
-    // the moment, We set isolatedModules to true here to prevent
-    // accidental export of types. We disable it when we build the
-    // type declarations (see: build.tsconfig.json).
-    //
-    // We may change this approach if: https://github.com/Microsoft/TypeScript/issues/29490
-    // is resolved.
     "isolatedModules": true,
-    // "declaration": true,
     "strict": true,
+    "allowJs": true,
     "moduleResolution": "node",
-    "incremental": true,
     "noLib": false,
     // TODO: Remove this once @storybook/theming fixes their type issues
     "skipLibCheck": true,
@@ -25,9 +17,40 @@
     "lib": ["es2019", "esnext.asynciterable", "dom"],
     "types": ["@emotion/react", "@emotion/styled", "jest", "node"],
     "paths": {
-      "@ndla/*": ["./packages/*/src"],
+      "@ndla/article-converter": ["./packages/article-converter/src"],
+      "@ndla/button": ["./packages/button/src"],
+      "@ndla/carousel": ["./packages/carousel/src"],
+      "@ndla/core": ["./packages/core/src"],
+      "@ndla/dropdown-menu": ["./packages/dropdown-menu/src"],
+      "@ndla/hooks": ["./packages/hooks/src"],
+      "@ndla/accordion": ["./packages/ndla-accordion/src"],
+      "@ndla/audio-search": ["./packages/ndla-audio-search/src"],
+      "@ndla/code": ["./packages/ndla-code/src"],
+      "@ndla/editor": ["./packages/ndla-editor/src"],
+      "@ndla/error-reporter": ["./packages/ndla-error-reporter/src"],
+      "@ndla/forms": ["./packages/ndla-forms/src"],
+      "@ndla/howto": ["./packages/ndla-howto/src"],
+      "@ndla/icons": ["./packages/ndla-icons/src"],
+      "@ndla/icons/*": ["./packages/ndla-icons/src/*"],
+      "@ndla/image-search": ["./packages/ndla-image-search/src"],
+      "@ndla/licenses": ["./packages/ndla-licenses/src"],
+      "@ndla/modal": ["./packages/ndla-modal/src"],
+      "@ndla/notion": ["./packages/ndla-notion/src"],
+      "@ndla/pager": ["./packages/ndla-pager/src"],
+      "@ndla/tabs": ["./packages/ndla-tabs/src"],
+      "@ndla/tracker": ["./packages/ndla-tracker/src"],
+      "@ndla/ui": ["./packages/ndla-ui/src"],
+      "@ndla/video-search": ["./packages/ndla-video-search/src"],
+      "@ndla/safelink": ["./packages/safelink/src"],
+      "@ndla/select": ["./packages/select/src"],
+      "@ndla/switch": ["./packages/switch/src"],
+      "@ndla/tooltip": ["./packages/tooltip/src"],
+      "@ndla/types-embed": ["./packages/types-embed/src"],
+      "@ndla/typography": ["./packages/typography/src"],
+      "@ndla/util": ["./packages/util/src"],
       "*": ["node_modules"]
     }
   },
+  "include": ["./packages/**/*", "./stories/**/*", "./dummydata/**/*", ".storybook/**/*"],
   "exclude": ["./packages/*/lib", "**/*-test.*"]
 }

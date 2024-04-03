@@ -14,6 +14,9 @@ export default {
   title: "Production system/AudioSearch",
   tags: ["autodocs"],
   component: AudioSearch,
+  parameters: {
+    layout: "fullscreen",
+  },
   args: {
     queryObject: {
       query: "",

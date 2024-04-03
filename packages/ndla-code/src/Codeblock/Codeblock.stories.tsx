@@ -10,7 +10,6 @@ import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { IconButtonV2 } from "@ndla/button";
 import { DeleteForever } from "@ndla/icons/editor";
 import Codeblock from "./Codeblock";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/Codeblock",
@@ -18,7 +17,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     title: "Codeblock",

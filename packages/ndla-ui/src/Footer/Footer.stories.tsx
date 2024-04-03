@@ -11,7 +11,6 @@ import { EmailOutline, Facebook, Instagram, LinkedIn, Share, Youtube } from "@nd
 import { EditorName } from "./EditorName";
 import Footer from "./Footer";
 import { FooterText } from "./FooterText";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const mockCommonLinks = [
   {
@@ -85,7 +84,6 @@ export default {
   component: Footer,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 
   args: {

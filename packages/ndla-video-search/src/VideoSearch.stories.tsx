@@ -11,10 +11,9 @@ import { BrightcoveApiType } from "@ndla/types-embed";
 import { VideoSearch, VideoQueryType } from "./VideoSearch";
 //@ts-ignore
 import { firstBrightcoveList, secondBrightcoveList } from "../../../dummydata";
-import { defaultParameters } from "../../../stories/defaults";
 
-const firstDummyData = firstBrightcoveList;
-const secondDummyData = secondBrightcoveList;
+const firstDummyData = firstBrightcoveList as unknown as BrightcoveApiType[];
+const secondDummyData = secondBrightcoveList as unknown as BrightcoveApiType[];
 /**
  * Searching for videos requires a token and an api url (for brightcove).
  * This example uses dummy data to simulate the search.
@@ -25,7 +24,6 @@ const meta = {
   component: VideoSearch,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     locale: "nb",

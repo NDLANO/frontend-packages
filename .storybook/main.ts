@@ -32,8 +32,10 @@ const config: StorybookConfig = {
     // TODO: Update this when Storybook no longer uses these as CJS.
     const { mergeConfig } = await import("vite");
     const react = await import("@vitejs/plugin-react");
+    const tsconfigPaths = await import("vite-tsconfig-paths");
     return mergeConfig(config, {
       plugins: [
+        tsconfigPaths.default({ root: "../" }),
         react.default({
           jsxImportSource: "@emotion/react",
           babel: {

@@ -15,14 +15,12 @@ import ModalBody from "./ModalBody";
 import ModalCloseButton from "./ModalCloseButton";
 import ModalHeader from "./ModalHeader";
 import ModalTitle from "./ModalTitle";
-import { defaultParameters } from "../../../stories/defaults";
 
 const meta: Meta<typeof Drawer> = {
   title: "Components/Drawer",
   tags: ["autodocs"],
   component: Drawer,
   parameters: {
-    ...defaultParameters,
     docs: {
       controls: {
         include: ["animation", "animationDuration", "size", "position", "modalMargin", "expands"],

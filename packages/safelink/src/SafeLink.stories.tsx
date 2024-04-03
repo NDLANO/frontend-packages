@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import MissingRouterContext from "./MissingRouterContext";
 import SafeLink from "./SafeLink";
-import { defaultParameters } from "../../../stories/defaults";
 
 /**
  * Lenker på [ndla.no](https://ndla.no) bruker den vanlige konvensjonen med underlinje. Lenker skal i hovedsak åpne seg i samme vindu (det vil si at vi bruker `target="_self"` eller ingen target-attributt). Unntaket er hvis lenken inngår i et skjema eller læringssammenhengen gjør det unødvendig at brukerne beholder vinduet eller fanen de står i. Når lenker går til et annet nettsted (eksterne lenker) skal disse alltids åpnes i ny fane.
@@ -24,7 +23,6 @@ export default {
   tags: ["autodocs"],
   paramemeters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     to: "/",

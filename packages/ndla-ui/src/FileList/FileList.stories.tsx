@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import File from "./File";
 import FileList from "./FileList";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/FileList",
@@ -17,7 +16,6 @@ export default {
   component: File,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     title: "Min fil",

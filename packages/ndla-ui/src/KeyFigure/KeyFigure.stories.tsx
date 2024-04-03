@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import KeyFigure from "./KeyFigure";
-import { defaultParameters } from "../../../../stories/defaults";
 const args = {
   title: "<i>500</i>",
   subtitle: `<span lang="nn">TVERRFAGLEGE</span> RESSURSER`,
@@ -23,7 +22,6 @@ export default {
   component: KeyFigure,
   tags: ["autodocs"],
   parameters: {
-    ...defaultParameters,
     layout: "centered",
   },
   args: args,

@@ -15,7 +15,6 @@ import { FieldHelper } from "./FieldHelper";
 import { FormControl } from "./FormControl";
 import { Input, InputContainer, TextArea } from "./InputV3";
 import { Label } from "./Label";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Forms/FormControl",
@@ -23,7 +22,6 @@ export default {
   component: FormControl,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     id: "name",

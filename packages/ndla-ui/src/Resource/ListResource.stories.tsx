@@ -10,16 +10,12 @@ import styled from "@emotion/styled";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import ListResource from "./ListResource";
 import { StoryResourceMenu, resourceTypesArr } from "./storyComponents";
-import { defaultParameters } from "../../../../stories/defaults";
 import { spacing } from "../../../core/src";
 
 export default {
   title: "My NDLA/ListResource",
   component: ListResource,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   argTypes: {
     resourceImage: {
       control: false,

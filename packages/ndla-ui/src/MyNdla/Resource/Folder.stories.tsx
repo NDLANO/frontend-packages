@@ -15,15 +15,11 @@ import { Pencil } from "@ndla/icons/action";
 import { HorizontalMenu } from "@ndla/icons/contentType";
 import { DeleteForever } from "@ndla/icons/editor";
 import Folder from "./Folder";
-import { defaultParameters } from "../../../../../stories/defaults";
 
 export default {
   title: "My NDLA/Folder",
   component: Folder,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   argTypes: {
     menu: {
       control: false,

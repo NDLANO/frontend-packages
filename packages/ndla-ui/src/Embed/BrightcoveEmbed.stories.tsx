@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from "@ndla/types-embed";
 import BrightcoveEmbed from "./BrightcoveEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 
 const embedData: BrightcoveEmbedData = {
@@ -171,7 +170,6 @@ const meta: Meta<typeof BrightcoveEmbed> = {
       </div>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

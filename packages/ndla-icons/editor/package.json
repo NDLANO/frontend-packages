@@ -1,9 +1,13 @@
-
 {
   "name": "@ndla/icons/editor",
   "private": true,
-  "main": "../lib/editor/index.js",
-  "module": "../es/editor/index.js",
-  "jsnext:main": "../es/editor/index.js"
+  "main": "../src/editor/index.ts",
+  "module": "../src/editor/index.ts",
+  "types": "../src/editor/index.ts",
+  "publishConfig": {
+    "main": "../lib/editor/index.js",
+    "module": "../es/editor/index.js",
+    "types": "../lib/editor/index.d.ts"
+  }
 }
-    
+

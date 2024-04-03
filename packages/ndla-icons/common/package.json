@@ -1,9 +1,13 @@
-
 {
   "name": "@ndla/icons/common",
   "private": true,
-  "main": "../lib/common/index.js",
-  "module": "../es/common/index.js",
-  "jsnext:main": "../es/common/index.js"
+  "main": "../src/common/index.ts",
+  "module": "../src/common/index.ts",
+  "types": "../src/common/index.ts",
+  "publishConfig": {
+    "main": "../lib/common/index.js",
+    "module": "../es/common/index.js",
+    "types": "../lib/common/index.d.ts"
+  }
 }
-    
+

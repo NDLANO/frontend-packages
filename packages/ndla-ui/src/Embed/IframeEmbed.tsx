@@ -55,11 +55,8 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
     );
   }
 
-  const resize = !embedData.url.includes("trinket.io");
-
   const fullColumnClass = isConcept ? "c-figure--full-column" : "";
-  const resizeClass = resize ? "c-figure--resize" : "";
-  const classes = `c-figure ${fullColumnClass} ${resizeClass}`;
+  const classes = `c-figure ${fullColumnClass}`;
 
   const { width, height, title, url } = embedData;
 
@@ -68,9 +65,7 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
   const urlOrTitle = title || url;
 
   return (
-    //@ts-ignore
-    // eslint-disable-next-line react/no-unknown-property
-    <figure className={classes} resizeiframe={`${resize}`}>
+    <figure className={classes}>
       <iframe
         ref={iframeRef}
         title={urlOrTitle}

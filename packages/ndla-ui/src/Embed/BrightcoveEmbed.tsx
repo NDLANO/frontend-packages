@@ -101,7 +101,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderCon
     : undefined;
 
   return (
-    <Figure type={isConcept ? "full-column" : "full"} resizeIframe>
+    <Figure type={isConcept ? "full-column" : "full"}>
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}

@@ -63,18 +63,9 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   }
 
   const fullColumnClass = isConcept ? "c-figure--full-column" : "";
-  const classes = `c-figure ${fullColumnClass} c-figure--resize`;
+  const classes = `c-figure ${fullColumnClass}`;
 
-  return (
-    <StyledFigure
-      ref={figRef}
-      className={classes}
-      //@ts-ignore
-      // eslint-disable-next-line react/no-unknown-property
-      resizeiframe="true"
-      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }}
-    />
-  );
+  return <StyledFigure ref={figRef} className={classes} dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }} />;
 };
 
 export default ExternalEmbed;

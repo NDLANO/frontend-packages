@@ -341,7 +341,7 @@ export const BlockConcept = ({
   return (
     <Root modal={isMobile} onOpenChange={onOpenChange}>
       <StyledAnchor ref={anchorRef} />
-      <Figure resizeIframe type={fullWidth ? "full" : "full-column"}>
+      <Figure type={fullWidth ? "full" : "full-column"}>
         {conceptType === "concept" ? (
           <UINotion
             id=""

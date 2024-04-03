@@ -49,7 +49,7 @@ export const NotionImage = ({ id, src, alt, type }: Props) => {
   const imageFigureId = `image-figure-${id}`;
 
   return (
-    <Figure resizeIframe id={imageFigureId} type={"full-column"}>
+    <Figure id={imageFigureId} type={"full-column"}>
       <StyledImageWrapper>
         <StyledImage
           alt={alt}

@@ -16,15 +16,11 @@ const classes = new BEMHelper({
   prefix: "c-",
 });
 
-const Figure = ({ children, type = "full", resizeIframe, className, ...rest }: Props) => {
+const Figure = ({ children, type = "full", className, ...rest }: Props) => {
   const typeClass = type === "full-column" ? "c-figure--full-column" : `u-float-${type}`;
   const right = ["small-right", "xsmall-right"].includes(type);
   return (
-    <figure
-      data-sizetype={type}
-      {...classes("", { resize: !!resizeIframe, right }, `${typeClass} ${className ?? ""}`)}
-      {...rest}
-    >
+    <figure data-sizetype={type} {...classes("", { right }, `${typeClass} ${className ?? ""}`)} {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
@@ -48,7 +44,6 @@ interface Props {
   id?: string;
   children: ReactNode | ((params: { typeClass: string }) => ReactNode);
   type?: FigureType;
-  resizeIframe?: boolean;
   noFigcaption?: boolean;
   className?: string;
   lang?: string;

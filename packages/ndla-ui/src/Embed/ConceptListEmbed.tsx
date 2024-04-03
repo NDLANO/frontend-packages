@@ -39,7 +39,7 @@ const ConceptListEmbed = ({ embed, lang }: Props) => {
   const { embedData, data } = embed;
   return (
     <div>
-      <Figure type="full" resizeIframe>
+      <Figure type="full">
         {embedData.title && <h2 lang={lang}>{embedData.title}</h2>}
         <ConceptList>
           <ul lang={lang}>

@@ -26,7 +26,7 @@ const H5pEmbed = ({ embed, isConcept }: Props) => {
     return <EmbedErrorPlaceholder type="h5p" />;
   }
   const fullColumnClass = isConcept ? "c-figure--full-column" : "";
-  const classes = `c-figure ${fullColumnClass} c-figure--resize`;
+  const classes = `c-figure ${fullColumnClass}`;
 
   if (embed.data.oembed) {
     return <figure className={classes} dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }} />;

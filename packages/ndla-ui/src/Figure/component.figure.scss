@@ -57,56 +57,6 @@
   &--right {
     float: right;
   }
-  &.expanded {
-    .c-figure__caption--hidden-caption {
-      display: block;
-      opacity: 0;
-      animation-delay: 50ms;
-      animation-name: fadeIn;
-      animation-duration: 0.2s;
-      animation-fill-mode: forwards;
-    }
-  }
-}
-
-.brightcove-video {
-  .hidden {
-    display: none;
-  }
-}
-
-/* 2. */
-.c-figure__caption {
-  background-color: $white;
-  padding: $spacing--small 0;
-  display: block;
-  border-bottom: 1px solid $brand-grey--light;
-}
-
-.c-figure__caption--hidden-caption {
-  display: none;
-  @include mq($until: tablet) {
-    display: block;
-  }
-}
-
-.c-figure__byline {
-  text-align: left;
-}
-
-.c-figure__info {
-  max-width: 650px;
-  margin-bottom: $spacing--small;
-  font-family: $font;
-  color: $primary-color;
-  @include font-size(16px, 24px);
-  @include mq($from: tablet) {
-    flex: 2;
-    margin-bottom: $spacing--small;
-  }
-  p {
-    margin: 0;
-  }
 }
 
 .c-figure__fullscreen-btn {
@@ -127,15 +77,6 @@
 
   .expanded-icon {
     display: none;
-  }
-
-  &--expanded {
-    .contracted-icon {
-      display: none;
-    }
-    .expanded-icon {
-      display: flex;
-    }
   }
 
   svg {
@@ -170,26 +111,6 @@
   background: rgba($white, 0.2);
   border: 0;
 
-  .expanded-icon {
-    display: none;
-  }
-
-  &--expanded {
-    .contracted-icon {
-      display: none;
-    }
-    .expanded-icon {
-      display: flex;
-      right: 0;
-    }
-
-    ~ .c-figure__caption--hidden-caption {
-      max-height: 100vh;
-      padding-top: $spacing--small;
-      padding-bottom: $spacing--small;
-    }
-  }
-
   svg {
     transition: transform 0.4s ease-out;
     width: 26px;
@@ -204,15 +125,5 @@
     svg {
       transform: scale(1.2);
     }
-  }
-}
-
-.c-figure {
-  &__link {
-    color: $brand-color;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    @include font-size(14px, 25px);
   }
 }

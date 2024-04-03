@@ -25,7 +25,7 @@ export const FigureOpenDialogButton = ({ messages, type }: Props) => {
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
       aria-label={messages.zoomImageButtonLabel}
     >
-      {type === "image" && <ExpandTwoArrows className="contracted-icon" />}
+      {type === "image" && <ExpandTwoArrows />}
       {type === "h5p" && <CursorClick style={{ width: "24px", height: "24px" }} />}
       {type === "iframe" && <CursorClick style={{ width: "24px", height: "24px" }} />}
       {type === "external" && <CursorClick style={{ width: "24px", height: "24px" }} />}

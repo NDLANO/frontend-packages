@@ -84,8 +84,8 @@ function safeLog(...args) {
 }
 
 function safeError(...args) {
-  const safeArgs = args.map((s) => safeify(s));
-  console.error(...safeArgs);
+  //const safeArgs = args.map((s) => safeify(s));
+  console.error(...args);
 }
 
 async function updateStatus(sha, options) {

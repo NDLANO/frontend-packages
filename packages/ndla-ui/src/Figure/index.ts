@@ -7,6 +7,6 @@
  */
 
 export { default as Figure } from "./Figure";
-export { FigureOpenDialogButton } from "./FigureOpenDialogButton";
+export { figureActionIndicatorStyle } from "./figureActionIndicatorStyle";
 
 export type { FigureType } from "./Figure";

@@ -14,7 +14,7 @@
     "type-check-watch": "yarn type-check --watch --preserveWatchOutput",
     "test": "cross-env BABEL_ENV=test NODE_ENV=unittest jest",
     "check-all": "yarn type-check && yarn format-check && yarn lint-es && yarn test",
-    "deploy": "vercel --token $VERCEL_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.no && vercel --token $VERCEL_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
+    "deploy": "vercel --token $VERCEL_TOKEN alias set frontend-packages-master.ndla.sh designmanual.ndla.no && vercel --token $VERCEL_TOKEN alias set frontend-packages-master.ndla.sh designmanual.ndla.sh",
     "clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist ./packages/*/tsconfig.build.tsbuildinfo",
     "deploy-pr": "node ./packages/ndla-scripts/src/run-script.js vercel-github",
     "bootstrap": "yarn nx run-many --target build prepublish",

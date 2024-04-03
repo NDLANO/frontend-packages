@@ -122,7 +122,7 @@ function getAliasUrl() {
 
 async function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
-  const cliArgs = ["alias", deployUrl, newUrl, "--token", vercelToken];
+  const cliArgs = ["--token", vercelToken, "alias", "set", deployUrl, newUrl];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
     await spawn("vercel", cliArgs);

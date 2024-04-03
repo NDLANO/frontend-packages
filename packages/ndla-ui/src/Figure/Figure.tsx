@@ -41,7 +41,7 @@ export type FigureType =
   | "xsmall-left";
 
 interface Props extends Omit<ComponentPropsWithRef<"figure">, "children" | "type"> {
-  children: ReactNode | ((params: { typeClass: string }) => ReactNode);
+  children?: ReactNode | ((params: { typeClass: string }) => ReactNode);
   type?: FigureType;
   noFigcaption?: boolean;
 }

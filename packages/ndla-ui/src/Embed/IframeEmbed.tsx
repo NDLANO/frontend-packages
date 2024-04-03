@@ -55,9 +55,6 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
     );
   }
 
-  const fullColumnClass = isConcept ? "c-figure--full-column" : "";
-  const classes = `c-figure ${fullColumnClass}`;
-
   const { width, height, title, url } = embedData;
 
   const strippedWidth = typeof width === "number" ? width : width?.replace(/\s*px/, "");
@@ -65,7 +62,7 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
   const urlOrTitle = title || url;
 
   return (
-    <figure className={classes}>
+    <Figure type={isConcept ? "full-column" : undefined}>
       <iframe
         ref={iframeRef}
         title={urlOrTitle}
@@ -79,7 +76,7 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
         frameBorder="0"
         loading="lazy"
       />
-    </figure>
+    </Figure>
   );
 };
 

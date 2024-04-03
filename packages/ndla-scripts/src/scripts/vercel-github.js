@@ -130,7 +130,7 @@ async function spawnAlias(sha, deployUrl) {
     onError(sha, error);
     throw error;
   }
-  return `https://${newUrl}`;
+  return `https://${newUrl}.vercel.app`;
 }
 
 async function spawnDeploy(sha) {

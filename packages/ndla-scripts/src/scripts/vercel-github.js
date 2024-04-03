@@ -115,9 +115,9 @@ function onError(sha, err) {
 function getAliasUrl() {
   const repoName = GITHUB_REPOSITORY.split("/")[1];
   if (GH_PR_NUMBER === "") {
-    return `${repoName}-master.ndla.sh`;
+    return `${repoName}-master`;
   }
-  return `${repoName}-pr-${GH_PR_NUMBER}.ndla.sh`;
+  return `${repoName}-pr-${GH_PR_NUMBER}`;
 }
 
 async function spawnAlias(sha, deployUrl) {

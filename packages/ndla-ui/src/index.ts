@@ -129,7 +129,6 @@ export {
   SearchTypeResult,
   SearchHeader,
   SearchFieldHeader,
-  SearchNotionsResult,
   SearchSubjectResult,
   SearchFilterContent,
 } from "./SearchTypeResult";

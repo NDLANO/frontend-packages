@@ -115,14 +115,14 @@ function onError(sha, err) {
 function getAliasUrl() {
   const repoName = GITHUB_REPOSITORY.split("/")[1];
   if (GH_PR_NUMBER === "") {
-    return `${repoName}-master.ndla.sh`;
+    return `${repoName}-master`;
   }
-  return `${repoName}-pr-${GH_PR_NUMBER}.ndla.sh`;
+  return `${repoName}-pr-${GH_PR_NUMBER}`;
 }
 
 async function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
-  const cliArgs = ["alias", deployUrl, newUrl, "--token", vercelToken];
+  const cliArgs = ["--token", vercelToken, "alias", "set", deployUrl, newUrl];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
     await spawn("vercel", cliArgs);
@@ -130,7 +130,7 @@ async function spawnAlias(sha, deployUrl) {
     onError(sha, error);
     throw error;
   }
-  return `https://${newUrl}`;
+  return `https://${newUrl}.vercel.app`;
 }
 
 async function spawnDeploy(sha) {

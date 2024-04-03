@@ -25,9 +25,9 @@
   "dependencies": {
     "cross-spawn": "^7.0.3",
     "cross-spawn-promise": "^0.10.2",
-    "normalize-url": "^8.0.0",
+    "normalize-url": "^8.0.1",
     "url-regex-safe": "^4.0.0",
-    "vercel": "^32.2.5"
+    "vercel": "^33.6.2"
   },
   "publishConfig": {
     "access": "public"

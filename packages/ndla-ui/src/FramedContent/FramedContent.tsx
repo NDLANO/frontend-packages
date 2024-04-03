@@ -15,24 +15,6 @@ const StyledFramedContent = styled.div`
   margin: ${spacing.large} 0;
   border: 1px solid ${colors.brand.tertiary};
   overflow: hidden;
-
-  .c-figure {
-    width: 100% !important;
-    left: auto !important;
-    padding: 0;
-
-    &.u-float-right,
-    &.u-float-small-right {
-      width: 50% !important;
-      margin-right: 0;
-    }
-
-    &.u-float-left,
-    &.u-float-small-left {
-      width: 50% !important;
-      margin-left: 0;
-    }
-  }
 `;
 
 const FramedContent = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(({ children, ...rest }, ref) => (

@@ -190,13 +190,6 @@ export const TableStyling = css`
   ul {
     padding: 0 0 0 ${spacing.nsmall};
   }
-
-  .c-figure {
-    margin: 0;
-    padding: 0;
-    width: 100% !important;
-    left: 0 !important;
-  }
 `;
 
 const TableWrapper = styled.div`

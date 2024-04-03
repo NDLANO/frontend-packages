@@ -15,17 +15,8 @@ const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column-reverse;
   }
-  .c-figure {
+  figure {
     margin: 0;
-    &.expanded {
-      width: 100% !important;
-      padding: 0;
-      margin-bottom: ${spacing.normal};
-    }
-    ${mq.range({ until: breakpoints.tabletWide })} {
-      width: 100% !important;
-      padding: 0;
-    }
   }
 `;
 const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
@@ -36,9 +27,6 @@ const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   }
   font-family: ${fonts.sans};
   ${fonts.sizes("18px", "28px")};
-  ${ContentWrapper} .c-figure.expanded + & {
-    width: 100%;
-  }
   ${mq.range({ from: breakpoints.desktop })} {
     ul,
     ol {

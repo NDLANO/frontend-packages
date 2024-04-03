@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { OembedEmbedData, OembedData } from "@ndla/types-embed";
 import ExternalEmbed from "./ExternalEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const embedData: OembedEmbedData = {
   resource: "external",
@@ -65,7 +64,6 @@ const meta: Meta<typeof ExternalEmbed> = {
       </div>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

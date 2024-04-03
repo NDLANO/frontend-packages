@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import Heading from "./Heading";
-import { defaultParameters } from "../../../stories/defaults";
 
 const exampleText = "Nasjonal digital læringsarena";
 
@@ -23,7 +22,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     element: "h1",

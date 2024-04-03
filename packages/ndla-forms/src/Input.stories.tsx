@@ -10,7 +10,6 @@ import { Meta, StoryFn } from "@storybook/react";
 import { Search } from "@ndla/icons/common";
 import { Check } from "@ndla/icons/editor";
 import { Input, InputContainer } from "./InputV3";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Forms/Input",
@@ -18,7 +17,6 @@ export default {
   component: Input,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta<typeof Input>;
 

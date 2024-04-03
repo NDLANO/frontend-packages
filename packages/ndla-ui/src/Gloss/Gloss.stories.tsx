@@ -9,16 +9,12 @@
 import { Meta, StoryObj, StoryFn } from "@storybook/react";
 import Gloss from "./Gloss";
 import GlossExample from "./GlossExample";
-import { defaultParameters } from "../../../../stories/defaults";
 import { wordClass } from "../model/WordClass";
 
 const meta: Meta<typeof Gloss> = {
   title: "Components/Gloss",
   component: Gloss,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {
     title: {
       title: "Å angripe",

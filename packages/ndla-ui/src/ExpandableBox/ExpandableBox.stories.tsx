@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
-import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * This is just a thin wrapper around the native HTML details element.
@@ -20,7 +19,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   component: ExpandableBox,
   render: (args) => (

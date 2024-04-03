@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import Image from "./Image";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/Image",
@@ -16,7 +15,6 @@ export default {
   component: Image,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     alt: "Mann med maske",

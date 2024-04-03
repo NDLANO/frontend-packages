@@ -11,7 +11,6 @@ import { UuDisclaimerEmbedData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import FactBox from "../FactBox";
 import FramedContent from "../FramedContent";
 
@@ -38,7 +37,6 @@ const meta: Meta<typeof UuDisclaimerEmbed> = {
       </div>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
 import ConceptEmbed from "./ConceptEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 
 const blockEmbedData: ConceptEmbedData = {
@@ -243,7 +242,6 @@ const meta: Meta<typeof ConceptEmbed> = {
       </div>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { RelatedContentMetaData } from "@ndla/types-embed";
 import RelatedContentEmbed from "./RelatedContentEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import RelatedArticleList from "../RelatedArticleList";
 
 const filmResourceMeta: RelatedContentMetaData = {
@@ -377,7 +376,6 @@ const meta: Meta<typeof RelatedContentEmbed> = {
       </div>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

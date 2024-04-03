@@ -10,14 +10,10 @@ import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
 import { colors, spacing } from "@ndla/core";
 import { LanguageSelector } from "@ndla/ui";
-import { defaultParameters } from "../../../../stories/defaults";
 export default {
   title: "Components/LanguageSelector",
   tags: ["autodocs"],
   component: LanguageSelector,
-  parameters: {
-    ...defaultParameters,
-  },
   args: {
     locales: ["en", "nb", "nn"],
     inverted: false,

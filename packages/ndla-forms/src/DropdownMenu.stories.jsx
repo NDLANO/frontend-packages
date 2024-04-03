@@ -24,14 +24,12 @@ import { Search } from "@ndla/icons/common";
 import { Text } from "@ndla/typography";
 import { SubjectMaterialBadge } from "@ndla/ui";
 import { mockTypeahead } from "../../../dummydata";
-import { defaultParameters } from "../../../stories/defaults";
 
 const meta = {
   title: "Forms/DropdownMenu",
   component: DropdownMenu,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   decorators: [
     (Story) => (

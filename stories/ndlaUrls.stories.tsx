@@ -13,6 +13,9 @@ import { StoryBody } from "./wrappers";
 
 export default {
   title: "NDLA urls",
+  parameters: {
+    layout: "fullscreen",
+  },
 } as Meta;
 
 export const NDLAUrls: StoryFn = () => (

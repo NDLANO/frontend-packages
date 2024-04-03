@@ -11,15 +11,11 @@ import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { spacing } from "@ndla/core";
 import BlockResource from "./BlockResource";
 import { StoryResourceMenu, resourceTypesArr } from "./storyComponents";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "My NDLA/BlockResource",
   component: BlockResource,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   argTypes: {
     resourceImage: {
       control: false,

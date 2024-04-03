@@ -13,7 +13,6 @@ import { breakpoints, mq, spacing } from "@ndla/core";
 import { HeartOutline } from "@ndla/icons/action";
 import { Switch } from "@ndla/switch";
 import EmbedByline from "./EmbedByline";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -30,9 +29,6 @@ export default {
   title: "Components/EmbedByline",
   component: EmbedByline,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {
     topRounded: true,
     bottomRounded: true,

@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { colors } from "@ndla/core";
 import HomeBreadcrumb from "./HomeBreadcrumb";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const items = [
   {
@@ -36,7 +35,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     items: items,

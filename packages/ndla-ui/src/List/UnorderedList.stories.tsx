@@ -12,6 +12,9 @@ import UnOrderedList from "./UnOrderedList";
 export default {
   title: "Base styles/UnorderedList",
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
   component: UnOrderedList,
 } as Meta<typeof UnOrderedList>;
 

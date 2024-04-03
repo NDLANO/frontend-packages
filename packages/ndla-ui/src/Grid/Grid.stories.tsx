@@ -11,7 +11,6 @@ import { DocsContainer, DocsContainerProps } from "@storybook/addon-docs";
 import { Meta, StoryFn } from "@storybook/react";
 import { colors } from "@ndla/core";
 import Grid from "./Grid";
-import { defaultParameters } from "../../../../stories/defaults";
 import { BlogPostStory } from "../BlogPost/BlogPost.stories";
 import { KeyFigureStory } from "../KeyFigure/KeyFigure.stories";
 
@@ -32,7 +31,6 @@ export default {
   component: Grid,
   tags: ["autodocs"],
   parameters: {
-    ...defaultParameters,
     layout: "centered",
     docs: {
       container: GridDocsContainer,

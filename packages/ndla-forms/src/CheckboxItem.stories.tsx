@@ -10,7 +10,6 @@ import { Meta, StoryFn } from "@storybook/react";
 import { spacing } from "@ndla/core";
 import { FormControl, Label } from ".";
 import { CheckboxItem } from "./CheckboxItem";
-import { defaultParameters } from "../../../stories/defaults";
 
 /**
  * A styled reexport of the CheckboxRoot from radix-ui.
@@ -21,7 +20,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     disabled: false,

@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import AudioPlayer from "./AudioPlayer";
-import { defaultParameters } from "../../../../stories/defaults";
 const TextVersion = (
   <>
     <p>
@@ -39,7 +38,6 @@ const meta: Meta<typeof AudioPlayer> = {
   title: "Components/AudioPlayer",
   component: AudioPlayer,
   tags: ["autodocs"],
-  parameters: defaultParameters,
 };
 
 export default meta;

@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { FavoriteButton } from "@ndla/button";
 import ResourceItem from "./ResourceItem";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/ResourceItem",
@@ -17,7 +16,6 @@ export default {
   component: ResourceItem,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     id: "urn:resource:a7a49c0a-32ea-4343-8b11-bd6d65c24f87",

@@ -9,14 +9,12 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { IImageMetaInformationV3, ISearchResultV3 } from "@ndla/types-backend/image-api";
 import ImageSearch from "./ImageSearch";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Production system/ImageSearch",
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     searchPlaceholder: "Søk i bilder",

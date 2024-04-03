@@ -10,7 +10,6 @@ import styled from "@emotion/styled";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { spacing } from "@ndla/core";
 import { ContentTypeBadge } from "./ContentTypeBadge";
-import { defaultParameters } from "../../../../stories/defaults";
 import * as contentTypes from "../model/ContentType";
 
 export default {
@@ -18,7 +17,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     size: "small",

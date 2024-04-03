@@ -9,7 +9,6 @@
 import { useEffect, useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import Switch from "./Switch";
-import { defaultParameters } from "../../../stories/defaults";
 
 const meta: Meta<typeof Switch> = {
   title: "Components/Switch",
@@ -23,9 +22,6 @@ const meta: Meta<typeof Switch> = {
     defaultChecked: false,
     className: "",
     thumbCharacter: "G",
-  },
-  parameters: {
-    ...defaultParameters,
   },
 };
 

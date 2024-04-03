@@ -9,7 +9,6 @@
 import { ArgTypes, Meta, StoryFn, StoryObj } from "@storybook/react";
 import Text, { TextVariant, elementMarginStyle, elementStyle } from "./Text";
 import { MarginVariant } from "./types";
-import { defaultParameters } from "../../../stories/defaults";
 
 const exampleText = "Nasjonal digital læringsarena";
 
@@ -24,7 +23,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     element: "p",

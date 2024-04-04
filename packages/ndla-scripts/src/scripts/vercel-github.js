@@ -125,7 +125,7 @@ async function spawnAlias(sha, deployUrl) {
   const cliArgs = ["--token", vercelToken, "alias", "set", deployUrl, newUrl];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    await spawn("vercel", cliArgs);
+    await spawn("vercel", cliArgs, { encoding: "utf8" });
   } catch (error) {
     onError(sha, error);
     throw error;
@@ -137,7 +137,7 @@ async function spawnDeploy(sha) {
   const cliArgs = ["--token", vercelToken, "--regions", "dub1", "--yes", ...providedArgs];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    const result = await spawn("vercel", cliArgs);
+    const result = await spawn("vercel", cliArgs, { encoding: "utf8" });
     return result.toString();
   } catch (error) {
     onError(sha, error);

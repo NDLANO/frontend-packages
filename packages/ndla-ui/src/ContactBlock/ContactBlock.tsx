@@ -120,6 +120,10 @@ const blobStyling = css`
   width: 165px;
   height: 180px;
   transform: translate(10%, 0);
+  color: ${colors.support.redLight};
+  &[data-green="true"] {
+    color: ${colors.support.greenLight};
+  }
 `;
 const Email = styled.div`
   white-space: nowrap;
@@ -199,7 +203,7 @@ const ContactBlock = ({
             </StyledText>
           </InfoWrapper>
           <BlobWrapper>
-            <Blob css={blobStyling} color={isGreenBlob ? colors.support.greenLight : colors.support.redLight} />
+            <Blob css={blobStyling} data-green={isGreenBlob} />
           </BlobWrapper>
         </TextWrapper>
         <SummaryBlock>{description}</SummaryBlock>

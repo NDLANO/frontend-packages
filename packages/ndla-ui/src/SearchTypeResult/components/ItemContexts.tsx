@@ -50,6 +50,14 @@ const ContextListItem = styled.li`
   ${fonts.sizes("16px", "28px")};
 `;
 
+const StyledAdditional = styled(Additional)`
+  color: ${colors.brand.dark};
+`;
+
+const StyledCore = styled(Core)`
+  color: ${colors.brand.primary};
+`;
+
 type context = {
   breadcrumb: string[];
   url: string;
@@ -100,19 +108,13 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
                     <SafeLink to={context.url}>{title}</SafeLink>
                     <Breadcrumb breadcrumb={context.breadcrumb}>
                       {context.isAdditional ? (
-                        <Additional
+                        <StyledAdditional
                           size="normal"
-                          color={colors.brand.dark}
                           aria-label={t("resource.tooltipAdditionalTopic")}
-                          ariaHidden={false}
+                          aria-hidden={false}
                         />
                       ) : (
-                        <Core
-                          size="normal"
-                          color={colors.brand.primary}
-                          aria-label={t("resource.tooltipCoreTopic")}
-                          ariaHidden={false}
-                        />
+                        <StyledCore size="normal" aria-label={t("resource.tooltipCoreTopic")} aria-hidden={false} />
                       )}
                     </Breadcrumb>
                   </ContextListItem>

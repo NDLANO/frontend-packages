@@ -228,7 +228,7 @@ export const NavigationBox = ({
                   >
                     <StyledMarksWrapper>
                       {item.isAdditionalResource && (
-                        <StyledAdditional aria-label={t("resource.additionalTooltip")} ariaHidden={false} />
+                        <StyledAdditional aria-label={t("resource.additionalTooltip")} aria-hidden={false} />
                       )}
                       {item.isRestrictedResource && (
                         <StyledHumanBoardIconWrapper>

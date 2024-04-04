@@ -30,7 +30,7 @@ const Content = ({ pageId }: ModalContentProps) => {
     <Wrapper>
       <div>
         <InModalHeader>
-          <InformationOutline size="large" color={colors.brand.primary} style={{ position: "absolute" }} />
+          <InformationOutline size="large" style={{ position: "absolute", color: colors.brand.primary }} />
           <Heading id={headingId} inModal>
             {useStory.title}
           </Heading>

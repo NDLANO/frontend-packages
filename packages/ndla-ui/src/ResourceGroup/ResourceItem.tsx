@@ -211,6 +211,14 @@ const CurrentSmall = styled.small`
   }
 `;
 
+const StyledAdditional = styled(Additional)`
+  color: ${colors.brand.dark};
+`;
+
+const StyledCore = styled(Core)`
+  color: ${colors.brand.primary};
+`;
+
 interface Props {
   id: string;
   showContentTypeDescription?: boolean;
@@ -291,12 +299,12 @@ const ResourceItem = ({
           <>
             {additional && (
               <IconWrapper id={additionalId} aria-label={contentTypeDescription} title={contentTypeDescription}>
-                <Additional color={colors.brand.dark} size="normal" />
+                <StyledAdditional size="normal" />
               </IconWrapper>
             )}
             {!additional && (
               <IconWrapper id={coreId} aria-label={contentTypeDescription} title={contentTypeDescription}>
-                <Core color={colors.brand.primary} size="normal" />
+                <StyledCore size="normal" />
               </IconWrapper>
             )}
           </>

@@ -8,6 +8,7 @@
 import { FormEvent, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
 import { spacing, colors } from "@ndla/core";
 import { Cross as CrossIcon } from "@ndla/icons/action";
 import { Search as SearchIcon } from "@ndla/icons/common";
@@ -38,7 +39,7 @@ const StyledForm = styled.form<StyledProps>`
   }
 `;
 
-const SearchButton = styled.button`
+const SearchButton = styled(IconButtonV2)`
   width: 40px;
   height: 40px;
   border: 0;
@@ -46,7 +47,7 @@ const SearchButton = styled.button`
   color: ${colors.brand.primary};
   cursor: pointer;
 `;
-const ClearButton = styled.button`
+const ClearButton = styled(IconButtonV2)`
   width: 40px;
   height: 40px;
   border: 0;
@@ -108,7 +109,7 @@ const SearchFieldHeader = ({
       />
       {value && (
         <ClearButton
-          type="button"
+          aria-label={t("welcomePage.resetSearch")}
           value={t("welcomePage.resetSearch")}
           onClick={() => {
             onChange("");
@@ -118,7 +119,7 @@ const SearchFieldHeader = ({
           <CrossIcon style={iconStyle} title={t("welcomePage.resetSearch")} />
         </ClearButton>
       )}
-      <SearchButton type="submit" value={t("searchPage.search")}>
+      <SearchButton aria-label={t("searchPage.search")} type="submit" value={t("searchPage.search")}>
         <SearchIcon style={iconStyle} title={t("searchPage.search")} />
       </SearchButton>
     </StyledForm>

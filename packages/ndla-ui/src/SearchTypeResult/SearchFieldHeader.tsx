@@ -110,7 +110,6 @@ const SearchFieldHeader = ({
       {value && (
         <ClearButton
           aria-label={t("welcomePage.resetSearch")}
-          type="button"
           value={t("welcomePage.resetSearch")}
           onClick={() => {
             onChange("");

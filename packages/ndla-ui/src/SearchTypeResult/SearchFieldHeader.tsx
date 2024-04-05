@@ -8,6 +8,7 @@
 import { FormEvent, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
+import { IconButtonV2 } from "@ndla/button";
 import { spacing, colors } from "@ndla/core";
 import { Cross as CrossIcon } from "@ndla/icons/action";
 import { Search as SearchIcon } from "@ndla/icons/common";
@@ -38,7 +39,7 @@ const StyledForm = styled.form<StyledProps>`
   }
 `;
 
-const SearchButton = styled.button`
+const SearchButton = styled(IconButtonV2)`
   width: 40px;
   height: 40px;
   border: 0;
@@ -46,7 +47,7 @@ const SearchButton = styled.button`
   color: ${colors.brand.primary};
   cursor: pointer;
 `;
-const ClearButton = styled.button`
+const ClearButton = styled(IconButtonV2)`
   width: 40px;
   height: 40px;
   border: 0;

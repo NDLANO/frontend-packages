@@ -108,6 +108,7 @@ const SearchFieldHeader = ({
       />
       {value && (
         <ClearButton
+          aria-label={t("welcomePage.resetSearch")}
           type="button"
           value={t("welcomePage.resetSearch")}
           onClick={() => {
@@ -118,7 +119,7 @@ const SearchFieldHeader = ({
           <CrossIcon style={iconStyle} title={t("welcomePage.resetSearch")} />
         </ClearButton>
       )}
-      <SearchButton type="submit" value={t("searchPage.search")}>
+      <SearchButton aria-label={t("searchPage.search")} type="submit" value={t("searchPage.search")}>
         <SearchIcon style={iconStyle} title={t("searchPage.search")} />
       </SearchButton>
     </StyledForm>

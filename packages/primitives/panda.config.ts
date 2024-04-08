@@ -27,10 +27,10 @@ export default defineConfig({
     extend: {},
   },
 
+  // TODO: This might produce large css files regardless of whether the consumer uses panda or not.
+  // Research later
   staticCss: {
-    recipes: {
-      button: ["*"],
-    },
+    recipes: "*",
   },
 
   // The output directory for your css system

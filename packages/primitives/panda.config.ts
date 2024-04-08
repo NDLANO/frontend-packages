@@ -7,7 +7,7 @@
  */
 
 import { defineConfig } from "@pandacss/dev";
-import { preset } from "./preset";
+import { preset } from "./src/preset";
 
 export default defineConfig({
   presets: ["@pandacss/dev/presets", preset],

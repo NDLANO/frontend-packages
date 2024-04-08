@@ -14,6 +14,7 @@ import colors from "./colors";
 import { conditions } from "./conditions";
 import radii from "./radii";
 import { button } from "./recipes/button.recipe";
+import { icon } from "./recipes/icon.recipe";
 import { iconButton } from "./recipes/iconButton.recipe";
 import { semanticTokens } from "./semanticTokens";
 import spacing from "./spacing";
@@ -42,6 +43,7 @@ export const preset = definePreset({
     recipes: {
       button: button,
       iconButton: iconButton,
+      icon: icon,
     },
   },
 });

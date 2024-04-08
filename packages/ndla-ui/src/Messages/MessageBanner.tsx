@@ -7,9 +7,11 @@
  */
 
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { CloseButton } from "@ndla/button";
+import { IconButtonV2 } from "@ndla/button";
 import { colors, spacing } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 
 interface WrapperProps {
   small?: boolean;
@@ -34,7 +36,7 @@ const TextWrapper = styled.div`
   }
 `;
 
-const StyledClosebutton = styled(CloseButton)`
+const StyledClosebutton = styled(IconButtonV2)`
   grid-area: closebutton;
   padding: 0;
   justify-self: flex-end;
@@ -49,10 +51,15 @@ interface Props {
 }
 
 const MessageBanner = ({ children, onClose, showCloseButton, small }: Props) => {
+  const { t } = useTranslation();
   return (
     <MessageBannerWrapper small={small}>
       <TextWrapper>{children}</TextWrapper>
-      {showCloseButton && <StyledClosebutton onClick={onClose} />}
+      {showCloseButton && (
+        <StyledClosebutton onClick={onClose} variant="ghost" aria-label={t("close")} title={t("close")}>
+          <Cross />
+        </StyledClosebutton>
+      )}
     </MessageBannerWrapper>
   );
 };

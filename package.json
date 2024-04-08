@@ -3,6 +3,7 @@
   "name": "frontend-packages",
   "description": "NDLA Frontend Packages",
   "scripts": {
+    "prepare": "yarn workspace @ndla/primitives run prepare",
     "build": "nx run-many --target=build",
     "build:types": "nx run-many --target=prepublish",
     "lint": "yarn format-check && yarn lint-es",
@@ -18,7 +19,7 @@
     "clean": "rm -rf ./packages/*/es ./packages/*/lib",
     "deploy-pr": "node ./packages/ndla-scripts/src/run-script.js vercel-github",
     "bootstrap": "yarn nx run-many --target build prepublish",
-    "bootstrap:ci": "yarn nx run-many --target build prepublish --skip-nx-cache",
+    "bootstrap:ci": "yarn prepare && yarn nx run-many --target build prepublish --skip-nx-cache",
     "publish": "yarn clean && yarn bootstrap:ci && lerna publish",
     "watch:src": "node ./scripts/watch.js",
     "watch:tsc": "nx watch --all -- nx prepublish \\$NX_PROJECT_NAME",

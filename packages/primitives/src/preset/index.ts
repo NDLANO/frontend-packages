@@ -7,7 +7,7 @@
  */
 
 import { definePreset } from "@pandacss/dev";
-import { animations, durations, easings } from "./animations";
+import { animations, durations, easings, keyframes } from "./animations";
 import boxShadows from "./boxShadows";
 import { breakpoints } from "./breakpoints";
 import colors from "./colors";
@@ -16,6 +16,7 @@ import radii from "./radii";
 import { button } from "./recipes/button.recipe";
 import { icon } from "./recipes/icon.recipe";
 import { iconButton } from "./recipes/iconButton.recipe";
+import { spinner } from "./recipes/spinner.recipe";
 import { semanticTokens } from "./semanticTokens";
 import spacing from "./spacing";
 import { fontWeights, textStyles, fonts, fontSizes, lineHeights } from "./typography";
@@ -25,6 +26,7 @@ export const preset = definePreset({
   theme: {
     breakpoints: breakpoints,
     textStyles: textStyles,
+    keyframes: keyframes,
     tokens: {
       colors: colors,
       easings: easings,
@@ -44,6 +46,7 @@ export const preset = definePreset({
       button: button,
       iconButton: iconButton,
       icon: icon,
+      spinner,
     },
   },
 });

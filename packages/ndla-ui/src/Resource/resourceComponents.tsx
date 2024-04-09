@@ -27,6 +27,10 @@ export const ResourceTitleLink = styled(SafeLink)`
   box-shadow: none;
   color: ${colors.brand.primary};
   flex: 1;
+  &[data-resource-available="false"] {
+    color: ${colors.brand.grey};
+    font-style: italic;
+  }
   :after {
     content: "";
     position: absolute;

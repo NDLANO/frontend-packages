@@ -11,7 +11,7 @@ import { CSSProperties, ComponentProps, useMemo } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, mq } from "@ndla/core";
-import { MenuBook } from "@ndla/icons/action";
+import { Minus, MenuBook } from "@ndla/icons/action";
 import { Audio } from "@ndla/icons/common";
 import {
   AssessmentResource,
@@ -156,6 +156,11 @@ const iconMap = {
   },
   [contentTypes.resourceEmbedTypeMapping.video]: {
     icon: Video,
+    iconColor: colors.brand.grey,
+    backgroundColor: colors.brand.greyLight,
+  },
+  [contentTypes.MISSING]: {
+    icon: Minus,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },

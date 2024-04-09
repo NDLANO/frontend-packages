@@ -18,6 +18,7 @@ import {
 } from "./brightcoveTypes";
 import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from "./campaignBlockTypes";
 import { CodeEmbedData, CodeMetaData } from "./codeTypes";
+import { CommentEmbedData, CommentMetaData } from "./commentTypes";
 import {
   ConceptListData,
   ConceptData,
@@ -72,7 +73,8 @@ export type EmbedData =
   | CampaignBlockEmbedData
   | LinkBlockEmbedData
   | UuDisclaimerEmbedData
-  | CopyrightEmbedData;
+  | CopyrightEmbedData
+  | CommentEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -94,7 +96,8 @@ export type EmbedMetaData =
   | CampaignBlockMetaData
   | LinkBlockMetaData
   | UuDisclaimerMetaData
-  | CopyrightMetaData;
+  | CopyrightMetaData
+  | CommentMetaData;
 
 export type {
   ConceptMetaData,
@@ -116,6 +119,7 @@ export type {
   LinkBlockMetaData,
   UuDisclaimerMetaData,
   CopyrightMetaData,
+  CommentMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -137,6 +141,7 @@ export type {
   LinkBlockEmbedData,
   UuDisclaimerEmbedData,
   CopyrightEmbedData,
+  CommentEmbedData,
 };
 
 export type { BlogPostMeta };

@@ -160,7 +160,7 @@ const ImageEmbed = ({
   return (
     <StyledFigure
       type={imageSizes ? undefined : figureType}
-      className={imageSizes ? `c-figure--${embedData.align} expanded` : ""}
+      className={imageSizes ? `c-figure--${embedData.align}` : ""}
     >
       <ImageWrapper
         src={!isCopyrighted ? canonicalUrl?.(data) : undefined}

@@ -6,15 +6,16 @@
  *
  */
 
+import { Codeblock } from "@ndla/code";
 import { CodeMetaData } from "@ndla/types-embed";
-import { Codeblock } from "./Codeblock";
+import { Figure } from "../Figure";
 
 interface Props {
   embed: CodeMetaData;
 }
 const CodeEmbed = ({ embed }: Props) => {
   return (
-    <figure className="c-figure">
+    <Figure>
       <Codeblock
         title={embed.embedData.title}
         code={embed.status === "success" ? embed.data.decodedContent : ""}
@@ -22,7 +23,7 @@ const CodeEmbed = ({ embed }: Props) => {
         format={embed.embedData.codeFormat}
         showCopy
       />
-    </figure>
+    </Figure>
   );
 };
 

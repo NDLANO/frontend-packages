@@ -2994,6 +2994,7 @@ __metadata:
     "@ndla/accordion": "npm:^3.0.40"
     "@ndla/button": "npm:^12.0.43"
     "@ndla/carousel": "npm:^4.0.41"
+    "@ndla/code": "npm:^5.0.55"
     "@ndla/core": "npm:^4.5.3"
     "@ndla/dropdown-menu": "npm:^1.0.34"
     "@ndla/forms": "npm:^7.1.0"

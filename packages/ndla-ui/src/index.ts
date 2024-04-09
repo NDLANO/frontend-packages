@@ -29,6 +29,7 @@ export {
   BlockConcept,
   UuDisclaimerEmbed,
   CopyrightEmbed,
+  CodeEmbed,
 } from "./Embed";
 
 export { LicenseLink } from "./LicenseByline";

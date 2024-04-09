@@ -158,10 +158,7 @@ const ImageEmbed = ({
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
   return (
-    <StyledFigure
-      type={imageSizes ? undefined : figureType}
-      className={imageSizes ? `c-figure--${embedData.align}` : ""}
-    >
+    <StyledFigure type={imageSizes ? undefined : figureType}>
       <ImageWrapper
         src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}

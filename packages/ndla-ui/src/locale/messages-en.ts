@@ -969,6 +969,7 @@ const messages = {
         title: "Categories",
         posts: "post",
         posts_plural: "posts",
+        subcategory: "Subcategories",
       },
       cancel: {
         title: {
@@ -1093,6 +1094,8 @@ const messages = {
             modalTitle: "Delete category",
             modalDescription:
               "Are you sure you would like to delete the category, including all content? This is irreversible and cannot be undone.",
+            parentCategoryId: "Parent category",
+            noParentCategory: "No parent category",
           },
         },
         users: {

@@ -969,6 +969,7 @@ const messages = {
         title: "Kategoriar",
         posts: "innlegg",
         posts_plural: "innlegg",
+        subcategory: "Tema",
       },
       publish: "Publiser",
       cancel: {
@@ -1094,6 +1095,8 @@ const messages = {
             modalTitle: "Slett kategori",
             modalDescription:
               "Er du sikker på at du vil sletta kategorien, med alt innhald? Dette er irreversibelt og kan ikkje angrast.",
+            parentCategoryId: "Foreldrekategori",
+            noParentCategory: "Ingen foreldrekategori",
           },
         },
         users: {

@@ -969,6 +969,7 @@ const messages = {
         title: "Kategoriar",
         posts: "innlegg",
         posts_plural: "innlegg",
+        subcategory: "Tema",
       },
       publish: "Publiser",
       cancel: {

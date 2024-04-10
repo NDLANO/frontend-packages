@@ -969,6 +969,7 @@ const messages = {
         title: "Categories",
         posts: "post",
         posts_plural: "posts",
+        subcategory: "Subcategories",
       },
       cancel: {
         title: {

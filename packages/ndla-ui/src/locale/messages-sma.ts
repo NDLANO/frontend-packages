@@ -1240,6 +1240,7 @@ const messages = {
         noFavorites:
           "Ingen favorittfag? Bruk hjerteknappen for å legge til favorittfag, så finner du dem enkelt igjen!",
         search: "Se alle fag",
+        viewAll: "Se alle favorittfag",
       },
       recentArenaPosts: {
         title: "Nye innlegg i arenaen",

@@ -1239,6 +1239,7 @@ const messages = {
         noFavorites:
           "No favourite subjects? Use the heart button to add your favourite subjects, and you can easily find them again!",
         search: "See all subjects",
+        viewAll: "See all favourite subjects",
       },
       recentArenaPosts: {
         title: "Recent posts in the arena",

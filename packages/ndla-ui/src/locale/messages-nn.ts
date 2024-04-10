@@ -1235,6 +1235,7 @@ const messages = {
       favouriteSubjects: {
         noFavorites: "Ingen favorittfag? Bruk hjarteknappen for å legge til favorittfag, så finn du dei enkelt att!",
         search: "Sjå alle fag",
+        viewAll: "Sjå alle favorittfag",
       },
       recentArenaPosts: {
         title: "Nye innlegg i arenaen",

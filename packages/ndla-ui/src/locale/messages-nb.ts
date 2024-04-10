@@ -1095,6 +1095,8 @@ const messages = {
             modalTitle: "Slett kategori",
             modalDescription:
               "Er du sikker på at du vil slette kategorien, med alt innhold? Dette er irreversibelt og kan ikke angres.",
+            parentCategoryId: "Foreldrekategori",
+            noParentCategory: "Ingen foreldrekategori",
           },
         },
         users: {

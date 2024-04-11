@@ -67,6 +67,21 @@ export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
   );
 };
 
+export const WithoutWrapper: StoryFn<typeof FormControl> = ({ ...args }) => {
+  const [value, setValue] = useState("");
+  const isInvalid = value.length === 0;
+  return (
+    <FormControl {...args} isInvalid={isInvalid}>
+      <Text textStyle="content" id="name-info" margin="none">
+        We need to know your name!
+      </Text>
+      <Label>Name</Label>
+      <FieldErrorMessage>This field is required</FieldErrorMessage>
+      <Input name="name" aria-describedby="name-info" value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+    </FormControl>
+  );
+};
+
 export const FormHelperWhenNoError: StoryFn<typeof FormControl> = ({ ...args }) => {
   const [value, setValue] = useState("");
   const isInvalid = value.length === 0;
@@ -119,6 +134,7 @@ export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
           value={value}
           onChange={(e) => setValue(e.currentTarget.value)}
           aria-describedby={labels.join(" ")}
+          required={true}
           aria-required={true}
           aria-invalid={isInvalid}
         />

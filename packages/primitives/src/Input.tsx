@@ -32,6 +32,12 @@ const inputCss = css.raw({
   minHeight: "large",
   paddingY: "0",
   paddingX: "small",
+  _ariaInvalid: {
+    outlineColor: "support.red",
+    _focusWithin: {
+      outlineColor: "support.red",
+    },
+  },
   _focusWithin: {
     outlineWidth: "2px",
     outlineOffset: "-1px",

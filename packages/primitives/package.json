@@ -23,7 +23,11 @@
     "ndla"
   ],
   "author": "ndla@knowit.no",
-  "files": [],
+  "files": [
+    "dist",
+    "es",
+    "lib"
+  ],
   "dependencies": {
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^4.0.4",

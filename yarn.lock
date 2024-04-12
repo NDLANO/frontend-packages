@@ -3005,6 +3005,7 @@ __metadata:
   resolution: "@ndla/icons@workspace:packages/ndla-icons"
   dependencies:
     "@ndla/core": "npm:^4.5.3"
+    "@ndla/primitives": "workspace:^"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -3088,7 +3089,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/primitives@workspace:packages/primitives":
+"@ndla/primitives@workspace:^, @ndla/primitives@workspace:packages/primitives":
   version: 0.0.0-use.local
   resolution: "@ndla/primitives@workspace:packages/primitives"
   dependencies:
@@ -16750,7 +16751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.35, postcss@npm:^8.4.19, postcss@npm:^8.4.22, postcss@npm:^8.4.35":
+"postcss@npm:8.4.35":
   version: 8.4.35
   resolution: "postcss@npm:8.4.35"
   dependencies:
@@ -16771,7 +16772,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.33":
+"postcss@npm:^8.4.19, postcss@npm:^8.4.22, postcss@npm:^8.4.33, postcss@npm:^8.4.35":
   version: 8.4.38
   resolution: "postcss@npm:8.4.38"
   dependencies:

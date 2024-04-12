@@ -7,10 +7,9 @@
  */
 
 import { ComponentProps, ReactElement, createElement, useMemo } from "react";
-import styled from "@emotion/styled";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { IconButtonV2 } from "@ndla/button";
-import { spacing } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 import { copyTextToClipboard } from "@ndla/util";
 
 import { Icon } from ".";
@@ -57,26 +56,28 @@ interface Props {
   folder: string;
 }
 
-const StyledList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  li {
-    list-style: none;
-    background-color: #eff0f2;
-    width: 275px;
-    padding: ${spacing.small};
-    margin: ${spacing.small};
-    word-break: break-all;
-    display: flex;
-    flex-direction: column;
-    gap: ${spacing.small};
-    > div {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-`;
+const StyledList = styled("ul", {
+  base: {
+    display: "flex",
+    flexWrap: "wrap",
+    "& li": {
+      listStyle: "none",
+      backgroundColor: "brand.greyLighter",
+      width: "275px",
+      padding: "small",
+      margin: "small",
+      wordBreak: "break-all",
+      display: "flex",
+      flexDirection: "column",
+      gap: "small",
+      "& > div": {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      },
+    },
+  },
+});
 
 const IconList = ({ icons, folder }: Props) => (
   <StyledList>

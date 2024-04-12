@@ -57,6 +57,7 @@
     "@fontsource/source-sans-pro": "^4.5.9",
     "@fontsource/source-serif-pro": "^4.5.7",
     "@ndla/types-backend": "^0.2.64",
+    "@pandacss/dev": "^0.37.2",
     "@storybook/addon-a11y": "^8.0.0",
     "@storybook/addon-docs": "^8.0.0",
     "@storybook/addon-essentials": "^8.0.0",

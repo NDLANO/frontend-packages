@@ -11,7 +11,7 @@
     "prepare": "panda codegen",
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "concurrently 'yarn build:types' 'panda cssgen  --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
+    "prepublish": "concurrently 'yarn build:types' 'mkdir -p dist' 'panda cssgen  --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
   },
   "repository": {
     "type": "git",

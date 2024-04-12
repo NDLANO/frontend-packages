@@ -7,13 +7,53 @@
  */
 
 import { ComponentPropsWithRef } from "react";
-import { cx } from "@ndla/styled-system/css";
-import { IconVariantProps, icon } from "@ndla/styled-system/recipes";
+import { type RecipeVariantProps, cva, cx } from "@ndla/styled-system/css";
 
-export interface IconProps extends IconVariantProps, ComponentPropsWithRef<"svg"> {
+export const iconRecipe = cva({
+  base: {
+    display: "inline-block",
+    fill: "currentcolor",
+    verticalAlign: "middle",
+    lineHeight: "1em",
+    flexShrink: "0",
+  },
+  defaultVariants: {
+    size: "nsmall",
+  },
+  variants: {
+    size: {
+      xsmall: {
+        width: "xsmall",
+        height: "xsmall",
+      },
+      small: {
+        width: "small",
+        height: "small",
+      },
+      nsmall: {
+        width: "nsmall",
+        height: "nsmall",
+      },
+      normal: {
+        width: "normal",
+        height: "normal",
+      },
+      large: {
+        width: "large",
+        height: "large",
+      },
+    },
+  },
+});
+
+export type IconVariantProps = RecipeVariantProps<typeof iconRecipe>;
+
+interface BaseIconProps extends ComponentPropsWithRef<"svg"> {
   title?: string;
   description?: string;
 }
+
+export type IconProps = BaseIconProps & IconVariantProps;
 
 export const Icon = ({
   children,
@@ -33,7 +73,7 @@ export const Icon = ({
       aria-hidden={ariaHidden}
       preserveAspectRatio="xMidYMid meet"
       {...props}
-      className={cx(icon({ size }), className)}
+      className={cx(iconRecipe({ size }), className)}
     >
       {title && <title>{title}</title>}
       {description && <desc>{description}</desc>}

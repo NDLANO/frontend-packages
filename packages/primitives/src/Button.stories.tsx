@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Button, button } from "./Button";
+import { Button } from "./Button";
 
 export default {
   title: "Primitives/Buttons/Button",
@@ -15,28 +15,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-  },
-  argTypes: {
-    size: {
-      control: { type: "radio" },
-      options: button.variantMap.size,
-    },
-    variant: {
-      control: { type: "radio" },
-      options: button.variantMap.variant,
-    },
-    shape: {
-      control: { type: "radio" },
-      options: button.variantMap.shape,
-    },
-    colorTheme: {
-      control: { type: "radio" },
-      options: button.variantMap.colorTheme,
-    },
-    modifier: {
-      control: { type: "radio" },
-      options: [...button.variantMap.modifier, "none"],
-    },
   },
   args: {
     colorTheme: "primary",

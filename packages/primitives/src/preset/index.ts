@@ -13,10 +13,6 @@ import { breakpoints } from "./breakpoints";
 import colors from "./colors";
 import { conditions } from "./conditions";
 import radii from "./radii";
-import { button } from "./recipes/button.recipe";
-import { icon } from "./recipes/icon.recipe";
-import { iconButton } from "./recipes/iconButton.recipe";
-import { spinner } from "./recipes/spinner.recipe";
 import { semanticTokens } from "./semanticTokens";
 import spacing from "./spacing";
 import { fontWeights, textStyles, fonts, fontSizes, lineHeights } from "./typography";
@@ -42,11 +38,5 @@ export const preset = definePreset({
       shadows: boxShadows,
     },
     semanticTokens: semanticTokens,
-    recipes: {
-      button: button,
-      iconButton: iconButton,
-      icon: icon,
-      spinner,
-    },
   },
 });

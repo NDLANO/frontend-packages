@@ -7,21 +7,82 @@
  */
 
 import { ComponentPropsWithRef, forwardRef } from "react";
-import { cx } from "@ndla/styled-system/css";
-import { iconButton, IconButtonVariantProps } from "@ndla/styled-system/recipes";
+import { RecipeVariantProps, css, cva, cx } from "@ndla/styled-system/css";
+import { ButtonVariantProps, buttonRecipe } from "./Button";
 
-export interface IconButtonProps extends Omit<IconButtonVariantProps, "shape">, ComponentPropsWithRef<"button"> {
+export const iconButtonRecipe = cva({
+  base: {
+    borderRadius: "full",
+    lineHeight: "1",
+    borderColor: "transparent",
+    minHeight: "unset",
+    "& svg": {
+      margin: "0",
+    },
+  },
+  defaultVariants: {
+    size: "small",
+  },
+  variants: {
+    size: {
+      xsmall: {
+        padding: "xsmall",
+        "& svg": {
+          width: "nsmall",
+          height: "nsmall",
+        },
+      },
+      small: {
+        padding: "xsmall",
+        "& svg": {
+          width: "normal",
+          height: "normal",
+        },
+      },
+      normal: {
+        padding: "small",
+        "& svg": {
+          width: "medium",
+          height: "medium",
+        },
+      },
+      medium: {
+        padding: "small",
+        "& svg": {
+          width: "large",
+          height: "large",
+        },
+      },
+      large: {
+        padding: "small",
+        "& svg": {
+          width: "xlarge",
+          height: "xlarge",
+        },
+      },
+    },
+  },
+});
+
+interface _IconButtonProps extends ComponentPropsWithRef<"button"> {
   ["aria-label"]: string;
 }
 
+export type IconButtonVariantProps = ButtonVariantProps & RecipeVariantProps<typeof iconButtonRecipe>;
+
+export type IconButtonProps = _IconButtonProps & IconButtonVariantProps;
+
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ type = "button", size, className, variant, colorTheme, modifier, ...props }, ref) => (
+  ({ type = "button", shape = "full", size, className, variant, colorTheme, inverted, ...props }, ref) => (
     <button
       // eslint-disable-next-line react/button-has-type
       type={type}
       ref={ref}
       {...props}
-      className={cx(iconButton({ size, variant, colorTheme, modifier, shape: "full" }), className)}
+      className={cx(
+        css(buttonRecipe.raw({ size, variant, colorTheme, inverted, shape }), iconButtonRecipe.raw({ size })),
+        className,
+      )}
     />
   ),
 );

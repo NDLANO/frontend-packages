@@ -76,7 +76,8 @@ const baseInputCss = css.raw({
 });
 
 const baseTextAreaCss = css.raw({
-  padding: "small",
+  paddingX: "small",
+  paddingY: "small",
   resize: "none",
   overflowY: "hidden",
 });

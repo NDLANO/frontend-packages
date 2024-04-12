@@ -12,15 +12,14 @@ import { preset } from "./src/preset";
 export default defineConfig({
   presets: ["@pandacss/dev/presets", preset],
   // Whether to use css reset
-  preflight: true,
+  preflight: false,
+  jsxStyleProps: "minimal",
 
   // The extension for the emitted JavaScript files
   outExtension: "mjs",
   // Where to look for your css declarations
   include: ["./src/**/*.{js,jsx,ts,tsx}"],
-
-  // Files to exclude
-  exclude: [],
+  exclude: ["./src/**/*.stories.{js,jsx,ts,tsx}"],
 
   // Useful for theme customization
   theme: {
@@ -35,15 +34,18 @@ export default defineConfig({
 
   // The output directory for your css system
   outdir: "../styled-system",
-  importMap: {
-    css: "@ndla/styled-system/css",
-    recipes: "@ndla/styled-system/recipes",
-    patterns: "@ndla/styled-system/patterns",
-    jsx: "@ndla/styled-system/jsx",
-  },
+  importMap: "@ndla/styled-system",
   // The JSX framework to use
   jsxFramework: "react",
 
   // The CSS Syntax to use to use
   syntax: "object-literal",
+  // TODO: This is a temporary workaround caused by panda using css layers. A consequence of this is that our global css always "wins". It can be removed once we no longer rely on `ndla/core`.
+  hooks: {
+    "cssgen:done": ({ artifact, content }) => {
+      if (artifact === "styles.css") {
+        return content.replace("@layer utilities", "body");
+      }
+    },
+  },
 });

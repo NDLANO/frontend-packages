@@ -15,7 +15,8 @@ import MissingRouterContext from "./MissingRouterContext";
 const oldNdlaRegex = /(.*)\/?node\/(\d+).*/;
 
 const isExternalLink = (to?: LinkProps["to"]) =>
-  typeof to === "string" && (to.startsWith("https://") || to.startsWith("http://") || to.startsWith("mailto:"));
+  typeof to === "string" &&
+  (to.startsWith("https://") || to.startsWith("http://") || to.startsWith("mailto:") || to.endsWith(".xml"));
 
 export const isOldNdlaLink = (to?: LinkProps["to"]) => typeof to === "string" && to.match(oldNdlaRegex) !== null;
 

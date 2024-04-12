@@ -96,7 +96,8 @@ export const buttonRecipe = cva({
       solid: {},
       link: {
         borderRadius: "0",
-        padding: "0",
+        paddingX: "0",
+        paddingY: "0",
         fontSize: "inherit",
         lineHeight: "inherit",
         color: "brand.primary",
@@ -114,7 +115,8 @@ export const buttonRecipe = cva({
         },
       },
       stripped: {
-        padding: "0",
+        paddingX: "0",
+        paddingY: "0",
         borderRadius: "0",
         color: "inherit",
         fontSize: "inherit",

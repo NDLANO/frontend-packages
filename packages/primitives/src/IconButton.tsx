@@ -17,7 +17,8 @@ export const iconButtonRecipe = cva({
     borderColor: "transparent",
     minHeight: "unset",
     "& svg": {
-      margin: "0",
+      marginX: "0",
+      marginY: "0",
     },
   },
   defaultVariants: {
@@ -26,35 +27,40 @@ export const iconButtonRecipe = cva({
   variants: {
     size: {
       xsmall: {
-        padding: "xsmall",
+        paddingX: "xsmall",
+        paddingY: "xsmall",
         "& svg": {
           width: "nsmall",
           height: "nsmall",
         },
       },
       small: {
-        padding: "xsmall",
+        paddingX: "xsmall",
+        paddingY: "xsmall",
         "& svg": {
           width: "normal",
           height: "normal",
         },
       },
       normal: {
-        padding: "small",
+        paddingX: "small",
+        paddingY: "small",
         "& svg": {
           width: "medium",
           height: "medium",
         },
       },
       medium: {
-        padding: "small",
+        paddingX: "small",
+        paddingY: "small",
         "& svg": {
           width: "large",
           height: "large",
         },
       },
       large: {
-        padding: "small",
+        paddingX: "small",
+        paddingY: "small",
         "& svg": {
           width: "xlarge",
           height: "xlarge",

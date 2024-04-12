@@ -33,6 +33,14 @@ const inputCss = css`
   min-height: ${spacing.large};
   padding: 0px ${spacing.small};
 
+  &:has(input[aria-invalid="true"], textarea[aria-invalid="true"]),
+  &[aria-invalid="true"] {
+    outline-color: ${colors.support.red};
+    &:focus-within {
+      outline-color: ${colors.support.red};
+    }
+  }
+
   &:focus-within {
     outline-width: 2px;
     outline-offset: -1px;

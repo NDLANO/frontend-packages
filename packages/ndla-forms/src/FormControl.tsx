@@ -18,6 +18,7 @@ import {
   useState,
 } from "react";
 import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 import { composeRefs } from "@ndla/util";
 
 type Merge<T, P> = P & Omit<T, keyof P>;
@@ -40,6 +41,7 @@ export interface FormControlProps extends FormControlOptions {
 const StyledFormControl = styled.div`
   display: flex;
   flex-direction: column;
+  gap: ${spacing.xsmall};
 `;
 
 type FormControlContextType = ReturnType<typeof useFormControlProvider>;

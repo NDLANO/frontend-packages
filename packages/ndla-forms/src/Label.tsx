@@ -29,7 +29,7 @@ const StyledLabel = styled(Text)`
 `;
 
 export const Label = forwardRef<HTMLLabelElement, Props>(
-  ({ textStyle = "label-large", visuallyHidden, margin = "small", ...rest }, ref) => {
+  ({ textStyle = "label-large", visuallyHidden, margin = "none", ...rest }, ref) => {
     const control = useFormControlContext();
     const fieldProps = control?.getLabelProps(rest, ref) ?? { ref, ...rest };
 

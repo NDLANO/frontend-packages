@@ -11,7 +11,7 @@ import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { IconButtonV2 } from "@ndla/button";
-import { colors, spacing } from "@ndla/core";
+import { spacing } from "@ndla/core";
 import { InputContainer, FieldErrorMessage, InputV3, FieldHelper, FormControl, Label } from "@ndla/forms";
 import { Spinner } from "@ndla/icons";
 import { Cross } from "@ndla/icons/action";
@@ -28,50 +28,6 @@ interface Props {
 
 const StyledSpinner = styled(Spinner)`
   margin: ${spacing.small};
-`;
-
-// Source: https://kovart.github.io/dashed-border-generator/
-const borderStyle = (error?: boolean) =>
-  `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
-    error ? colors.support.red : colors.brand.tertiary,
-  )}' stroke-width='2' stroke-dasharray='8%2c8' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`;
-
-interface StyledInputProps {
-  error?: string;
-}
-
-const StyledInputContainer = styled(InputContainer)<StyledInputProps>`
-  display: flex;
-  flex-wrap: nowrap;
-  background-image: ${borderStyle()};
-  border: none;
-
-  border-left: ${spacing.xsmall} solid ${colors.brand.light};
-  border-right: ${spacing.xsmall} solid ${colors.brand.light};
-  border-radius: 0px;
-
-  /* Not good practice, but necessary to give error message same padding as caused by border. */
-  & + [data-error-message] {
-    padding: 0 ${spacing.xsmall};
-  }
-  &:focus-within {
-    border-color: ${colors.brand.light};
-  }
-
-  &[data-error="true"] {
-    background-image: ${borderStyle(true)};
-  }
-  input {
-    line-height: 1.75rem;
-    color: ${colors.brand.primary};
-    caret-color: ${colors.brand.tertiary};
-    ::selection {
-      background: ${colors.brand.lighter};
-    }
-    ::placeholder {
-      color: ${colors.brand.tertiary};
-    }
-  }
 `;
 
 const Row = styled.div`
@@ -95,7 +51,8 @@ const FolderInput = forwardRef<HTMLInputElement, Props & ComponentPropsWithRef<"
     return (
       <FormControl id="folder-name" isRequired isInvalid={!!error}>
         <Label visuallyHidden>{label}</Label>
-        <StyledInputContainer data-error={!!error}>
+        <FieldErrorMessage>{error}</FieldErrorMessage>
+        <InputContainer>
           <InputV3 autoComplete="off" disabled={loading} ref={composeRefs(ref, inputRef)} {...rest} />
           <Row>
             {!loading ? (
@@ -123,8 +80,7 @@ const FolderInput = forwardRef<HTMLInputElement, Props & ComponentPropsWithRef<"
               </FieldHelper>
             )}
           </Row>
-        </StyledInputContainer>
-        <FieldErrorMessage data-error-message="">{error}</FieldErrorMessage>
+        </InputContainer>
       </FormControl>
     );
   },

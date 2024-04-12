@@ -2758,7 +2758,7 @@ __metadata:
     "@ndla/code": "npm:^5.0.55"
     "@ndla/types-backend": "npm:^0.2.64"
     "@ndla/types-embed": "npm:^4.1.4"
-    "@ndla/ui": "npm:^50.14.2"
+    "@ndla/ui": "npm:^50.14.3"
     html-react-parser: "npm:^5.1.8"
     lodash: "npm:^4.17.20"
   peerDependencies:
@@ -2779,7 +2779,7 @@ __metadata:
     "@ndla/button": "npm:^12.0.43"
     "@ndla/licenses": "npm:^7.2.5"
     "@ndla/notion": "npm:^6.0.41"
-    "@ndla/pager": "npm:^3.0.5"
+    "@ndla/pager": "npm:^3.0.6"
     "@ndla/types-backend": "npm:^0.2.64"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2867,7 +2867,7 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.43"
     "@ndla/core": "npm:^4.5.3"
-    "@ndla/forms": "npm:^7.0.13"
+    "@ndla/forms": "npm:^7.1.0"
     "@ndla/icons": "npm:^6.1.1"
     "@ndla/modal": "npm:^5.0.40"
     "@ndla/tooltip": "npm:^7.0.3"
@@ -2890,13 +2890,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/forms@npm:^7.0.13, @ndla/forms@workspace:packages/ndla-forms":
+"@ndla/forms@npm:^7.1.0, @ndla/forms@workspace:packages/ndla-forms":
   version: 0.0.0-use.local
   resolution: "@ndla/forms@workspace:packages/ndla-forms"
   dependencies:
     "@ndla/core": "npm:^4.5.3"
     "@ndla/icons": "npm:^6.1.1"
-    "@ndla/pager": "npm:^3.0.5"
+    "@ndla/pager": "npm:^3.0.6"
     "@ndla/typography": "npm:^0.4.17"
     "@ndla/util": "npm:^4.0.4"
     "@radix-ui/react-checkbox": "npm:^1.0.4"
@@ -2934,7 +2934,7 @@ __metadata:
     "@ndla/modal": "npm:^5.0.40"
     "@ndla/notion": "npm:^6.0.41"
     "@ndla/tooltip": "npm:^7.0.3"
-    "@ndla/ui": "npm:^50.14.2"
+    "@ndla/ui": "npm:^50.14.3"
     "@ndla/util": "npm:^4.0.4"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2966,11 +2966,11 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.43"
     "@ndla/core": "npm:^4.5.3"
-    "@ndla/forms": "npm:^7.0.13"
+    "@ndla/forms": "npm:^7.1.0"
     "@ndla/icons": "npm:^6.1.1"
-    "@ndla/pager": "npm:^3.0.5"
+    "@ndla/pager": "npm:^3.0.6"
     "@ndla/types-backend": "npm:^0.2.64"
-    "@ndla/ui": "npm:^50.14.2"
+    "@ndla/ui": "npm:^50.14.3"
     "@ndla/util": "npm:^4.0.4"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
@@ -3023,12 +3023,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/pager@npm:^3.0.5, @ndla/pager@workspace:packages/ndla-pager":
+"@ndla/pager@npm:^3.0.6, @ndla/pager@workspace:packages/ndla-pager":
   version: 0.0.0-use.local
   resolution: "@ndla/pager@workspace:packages/ndla-pager"
   dependencies:
     "@ndla/core": "npm:^4.5.3"
-    "@ndla/safelink": "npm:^5.0.5"
+    "@ndla/safelink": "npm:^5.1.0"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -3036,7 +3036,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^5.0.5, @ndla/safelink@workspace:packages/safelink":
+"@ndla/safelink@npm:^5.1.0, @ndla/safelink@workspace:packages/safelink":
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:
@@ -3169,7 +3169,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^50.14.2, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^50.14.3, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
@@ -3178,13 +3178,13 @@ __metadata:
     "@ndla/carousel": "npm:^4.0.41"
     "@ndla/core": "npm:^4.5.3"
     "@ndla/dropdown-menu": "npm:^1.0.34"
-    "@ndla/forms": "npm:^7.0.13"
+    "@ndla/forms": "npm:^7.1.0"
     "@ndla/hooks": "npm:^2.1.5"
     "@ndla/icons": "npm:^6.1.1"
     "@ndla/licenses": "npm:^7.2.5"
     "@ndla/modal": "npm:^5.0.40"
     "@ndla/notion": "npm:^6.0.41"
-    "@ndla/safelink": "npm:^5.0.5"
+    "@ndla/safelink": "npm:^5.1.0"
     "@ndla/select": "npm:^3.3.15"
     "@ndla/switch": "npm:^1.1.40"
     "@ndla/tabs": "npm:^4.0.3"
@@ -3233,7 +3233,7 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^12.0.43"
     "@ndla/core": "npm:^4.5.3"
-    "@ndla/forms": "npm:^7.0.13"
+    "@ndla/forms": "npm:^7.1.0"
     "@ndla/icons": "npm:^6.1.1"
     "@ndla/licenses": "npm:^7.2.5"
     "@ndla/notion": "npm:^6.0.41"

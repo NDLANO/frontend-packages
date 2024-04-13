@@ -14,6 +14,7 @@ export default defineConfig({
   // Whether to use css reset
   preflight: false,
   jsxStyleProps: "minimal",
+  strictPropertyValues: true,
 
   // The extension for the emitted JavaScript files
   outExtension: "mjs",

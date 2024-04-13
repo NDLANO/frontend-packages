@@ -15,6 +15,7 @@ export default defineConfig({
   importMap: "@ndla/styled-system",
   // Whether to use css reset
   preflight: true,
+  strictPropertyValues: true,
   // Where to look for your css declarations
   include: ["./packages/*/src/**/*.{js,jsx,ts,tsx}", "./stories/**/*.{js,jsx,ts,tsx}"],
   // Files to exclude

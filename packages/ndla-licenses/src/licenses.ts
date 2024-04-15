@@ -413,7 +413,7 @@ export const ALL_ABBREVIATIONS = [
   "N/A",
 ] as const;
 
-export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | string | undefined) {
+export function getLicenseByAbbreviation(abbreviation: string, locale?: Locale | string | undefined) {
   switch (abbreviation) {
     case "CC-BY-NC-ND-4.0":
       return licenseByLocale(byncnd, locale);

@@ -13,7 +13,7 @@ import "@testing-library/jest-dom";
 import Image, { makeSrcQueryString } from "../Image";
 
 test("Image renderers correctly", () => {
-  const { container } = render(<Image alt="example" src="https://example.com/image.png" />, { container: null });
+  const { container } = render(<Image alt="example" src="https://example.com/image.png" />, { container: undefined });
 
   expect(container.firstChild).toMatchSnapshot();
 });

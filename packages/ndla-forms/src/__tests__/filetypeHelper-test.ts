@@ -16,7 +16,7 @@ test("File with known type is allowed", () => {
     {
       type: "application/pdf",
       name: "file.pdf",
-    },
+    } as File,
   ];
   expect(illegalFormats(files, allowedFiles)).toStrictEqual([]);
 });
@@ -26,7 +26,7 @@ test("File with unknown type is denied", () => {
     {
       type: "application/woot",
       name: "file.whatever",
-    },
+    } as File,
   ];
   expect(illegalFormats(files, allowedFiles)).toStrictEqual(files);
 });
@@ -36,7 +36,7 @@ test("File without type is denied", () => {
     {
       type: "",
       name: "file.pdf",
-    },
+    } as File,
   ];
   expect(illegalFormats(files, allowedFiles)).toStrictEqual(files);
 });
@@ -47,7 +47,7 @@ test("File with known ending is allowed", () => {
     {
       type: "application/pdf",
       name: "file.pdf",
-    },
+    } as File,
   ];
   expect(illegalEndings(files, allowedFiles)).toStrictEqual([]);
 });
@@ -57,7 +57,7 @@ test("File with unknown ending is denied", () => {
     {
       type: "application/pdf",
       name: "file.whatever",
-    },
+    } as File,
   ];
   expect(illegalEndings(files, allowedFiles)).toStrictEqual(files);
 });
@@ -68,7 +68,7 @@ test("File with allowed type and allowed ending is allowed in catch-all function
     {
       type: "application/pdf",
       name: "file.pdf",
-    },
+    } as File,
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });
@@ -78,7 +78,7 @@ test("File with empty type but allowed ending is allowed in catch-all function",
     {
       type: "",
       name: "file.pdf",
-    },
+    } as File,
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });
@@ -88,7 +88,7 @@ test("File with unknown type but allowed ending is allowed in catch-all function
     {
       type: "application/woot",
       name: "file.pdf",
-    },
+    } as File,
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });
@@ -98,7 +98,7 @@ test("File with empty type and disallowed ending is denied in catch-all function
     {
       type: "",
       name: "file.whatever",
-    },
+    } as File,
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual(files);
 });
@@ -108,7 +108,7 @@ test("Image file with image type and unknown ending is allowed in catch-all func
     {
       type: "image/png",
       name: "file.whatever",
-    },
+    } as File,
   ];
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });

@@ -10,23 +10,6 @@ $transition: all 0.2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
 $transition--long: all 0.5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
 $masthead-height: 84px;
 
-@mixin max-width() {
-  max-width: 100%;
-  @include mq(desktop) {
-    max-width: 60%;
-  }
-}
-@mixin aside-max-width() {
-  max-width: 100%;
-  @include mq(tablet) {
-    max-width: 30%;
-  }
-}
-@mixin full-width() {
-  margin: 0 calc(-50vw / 2) $spacing;
-  padding: $spacing calc(50vw / 2);
-}
-
 /**
  * Expose sass variables as css variables
  */

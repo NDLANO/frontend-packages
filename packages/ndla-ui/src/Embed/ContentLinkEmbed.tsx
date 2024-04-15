@@ -6,6 +6,7 @@
  *
  */
 
+import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors } from "@ndla/core";
@@ -13,16 +14,22 @@ import { ContentLinkMetaData } from "@ndla/types-embed";
 interface Props {
   embed: ContentLinkMetaData;
   isOembed?: boolean;
+  children?: ReactNode;
 }
 
 const StyledSpan = styled.span`
   color: ${colors.support.red};
 `;
 
-const ContentLinkEmbed = ({ embed, isOembed }: Props) => {
+const ContentLinkEmbed = ({ embed, isOembed, children }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
-    return <StyledSpan>{`${t("embed.linkError")}: ${embed.embedData.linkText}`}</StyledSpan>;
+    return (
+      <StyledSpan>
+        <span>{`${t("embed.linkError")}: `}</span>
+        {children}
+      </StyledSpan>
+    );
   }
 
   const { embedData, data } = embed;
@@ -30,12 +37,12 @@ const ContentLinkEmbed = ({ embed, isOembed }: Props) => {
   if (embedData.openIn === "new-context" || isOembed) {
     return (
       <a href={data.path} target="_blank" rel="noopener noreferrer">
-        {embedData.linkText}
+        {children}
       </a>
     );
   }
 
-  return <a href={data.path}>{embedData.linkText}</a>;
+  return <a href={data.path}>{children}</a>;
 };
 
 export default ContentLinkEmbed;

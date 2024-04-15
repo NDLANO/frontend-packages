@@ -30,6 +30,7 @@ export default defineTokens.spacing({
   20: { value: "40px" },
   22: { value: "44px" },
   24: { value: "48px" },
+  26: { value: "52px" },
   28: { value: "56px" },
   32: { value: "64px" },
   36: { value: "72px" },

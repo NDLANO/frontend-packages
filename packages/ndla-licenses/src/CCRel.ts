@@ -8,7 +8,7 @@
 
 export type ResourceTypes = "video" | "image" | "audio" | "text" | "h5p" | "podcast";
 
-export const resourceTypes = {
+export const resourceTypes: Record<ResourceTypes, ResourceTypes> = {
   video: "video",
   image: "image",
   audio: "audio",

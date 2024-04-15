@@ -16,6 +16,7 @@ test("microData/getResourceTypeNamespace when type video should return video nam
 });
 
 test("microData/getResourceTypeNamespace when unknown type should return null", () => {
+  //@ts-expect-error
   const namespace = getResourceTypeNamespace("UNKNOWN");
   expect(namespace).toBe(null);
 });

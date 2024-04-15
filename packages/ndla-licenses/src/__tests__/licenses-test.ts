@@ -26,7 +26,7 @@ test("licenses/getLicenseByAbbreviation get license for N/A in norwegian", () =>
 });
 
 test("licenses/getLicenseByAbbreviation get license without locale defaults to nb", () => {
-  const license = getLicenseByAbbreviation("CC-BY-NC-SA-4.0");
+  const license = getLicenseByAbbreviation("CC-BY-NC-SA-4.0", undefined);
 
   expect(license.title).toBe("CC BY-NC-SA 4.0: Navngivelse-Ikkekommersiell-Del på samme vilkår");
   expect(license.rights).toEqual([CC, BY, NC, SA]);

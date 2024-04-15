@@ -121,9 +121,10 @@ test("ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
 
   // simmulate on error call
   try {
+    //@ts-expect-error
     someUndefinedFunction(); // eslint-disable-line no-undef
-  } catch (e) {
-    await window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+  } catch (e: any) {
+    await window.onerror?.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
 });
 
@@ -140,11 +141,12 @@ test("ndla-error-reporter/ErrorReporter should not send duplicate errors ", asyn
   // simmulate several duplicate on error calls
   try {
     const someVal = null;
+    //@ts-expect-error
     someVal.foo = 1;
-  } catch (e) {
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+  } catch (e: any) {
+    window.onerror?.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror?.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror?.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
 
   expect(apiMock.pendingMocks()).toHaveLength(1);
@@ -176,7 +178,7 @@ test("ndla-error-reporter/ErrorReporter should ignore script errors", async () =
     .post("/inputs/1223/", () => true)
     .reply(200);
 
-  await window.onerror.call(window, "Script error.", document.location.toString(), 0, 0);
+  await window.onerror?.call(window, "Script error.", document.location.toString(), 0, 0);
 
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);
@@ -188,7 +190,7 @@ test("ndla-error-reporter/ErrorReporter should ignore resizeobserver errors", as
     .post("/inputs/1223/", () => true)
     .reply(200);
 
-  await window.onerror.call(window, "ResizeObserver loop limit exceeded", document.location.toString(), 0, 0);
+  await window.onerror?.call(window, "ResizeObserver loop limit exceeded", document.location.toString(), 0, 0);
 
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);
@@ -200,7 +202,7 @@ test("ndla-error-reporter/ErrorReporter should ignore provided urls", async () =
     .post("/inputs/1223/", () => true)
     .reply(200);
 
-  await window.onerror.call(window, "Some error", "https://example.com/script.js", 0, 0);
+  await window.onerror?.call(window, "Some error", "https://example.com/script.js", 0, 0);
 
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);

@@ -12,15 +12,11 @@ import SafeLink, { SafeLinkProps } from "./SafeLink";
 
 interface Props extends SafeLinkProps, ButtonStyleProps {
   children: ReactNode;
-  to: string;
-  className?: string;
 }
 
 const SafeLinkIconButton = forwardRef<HTMLAnchorElement, Props>(
-  ({ children, inverted, to, size, colorTheme, variant, fontWeight, ...rest }, ref) => (
-    <SafeLink to={to} ref={ref} css={iconButtonStyle({ colorTheme, size, variant, inverted, fontWeight })} {...rest}>
-      {children}
-    </SafeLink>
+  ({ inverted, size, colorTheme, variant, fontWeight, ...rest }, ref) => (
+    <SafeLink css={iconButtonStyle({ colorTheme, size, variant, inverted, fontWeight })} {...rest} ref={ref} />
   ),
 );
 

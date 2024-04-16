@@ -11,7 +11,6 @@
 // TOOLS
 @import "inuitcss/tools/tools.font-size";
 @import "inuitcss/tools/tools.clearfix";
-@import "global/utilities/mixin_icons";
 
 @import "global/settings/settings.breakpoints";
 
@@ -52,4 +51,3 @@ $inuit-wrapper-width: 1024px;
 @import "global/objects/objects.lists";
 @import "global/objects/objects.wrapper";
 @import "global/objects/objects.content";
-@import "global/objects/objects.backdrop";

@@ -5,7 +5,10 @@ article aside,
   display: inline-block;
   margin: $spacing 0 $spacing 0;
   opacity: 0.9;
-  @include max-width();
+  max-width: 100%;
+  @include mq(desktop) {
+    max-width: 60%;
+  }
 
   img {
     box-shadow: 0px 0px 9px -3px $brand-grey;
@@ -18,7 +21,7 @@ article aside,
     transition: max-height 0.4s cubic-bezier(1, 1.05, 0, 1);
     position: relative;
     &:after {
-      content: '';
+      content: "";
       text-align: center;
       position: absolute;
       top: 0;

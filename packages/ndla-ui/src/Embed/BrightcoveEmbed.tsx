@@ -7,7 +7,6 @@
  */
 
 import parse from "html-react-parser";
-import sortBy from "lodash/sortBy";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
@@ -47,10 +46,7 @@ export const isNumeric = (value: any) => !Number.isNaN(value - parseFloat(value)
 const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSource[]) => {
   const { account, videoid, player = "default" } = data;
 
-  const source = sortBy(
-    sources.filter((s) => s.width && s.height),
-    (s) => s.height,
-  )[0];
+  const source = sources.filter((s) => s.width && s.height).toSorted((a, b) => a!.height! - b.height!)[0];
 
   return {
     src: `https://players.brightcove.net/${account}/${player}_default/index.html?videoId=${videoid}`,

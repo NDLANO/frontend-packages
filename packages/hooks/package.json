@@ -28,11 +28,11 @@
   ],
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
-    "lodash": "^4.17.20",
     "react": ">= 16.8.0"
   },
   "dependencies": {
-    "@ndla/util": "^4.0.4"
+    "@ndla/util": "^4.0.4",
+    "lodash.throttle": "^4.1.1"
   },
   "publishConfig": {
     "access": "public"

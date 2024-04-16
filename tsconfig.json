@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "sourceMap": true,
-    "lib": ["es2019", "esnext.asynciterable", "dom"],
+    "lib": ["ES2023", "esnext.asynciterable", "dom"],
     "types": ["@emotion/react", "@emotion/styled", "jest", "node"],
     "paths": {
       "@ndla/article-converter": ["./packages/article-converter/src"],

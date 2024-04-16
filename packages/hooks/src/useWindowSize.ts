@@ -6,7 +6,7 @@
  *
  */
 
-import throttle from "lodash/throttle";
+import throttle from "lodash.throttle";
 import { useState, useEffect } from "react";
 
 function getSize() {

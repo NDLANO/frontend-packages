@@ -6,7 +6,6 @@
  *
  */
 
-import uniq from "lodash/uniq";
 import { useEffect, useState, useMemo, useRef } from "react";
 import styled from "@emotion/styled";
 import { colors, fonts, misc, utils } from "@ndla/core";
@@ -18,6 +17,8 @@ import { flattenFolders, treestructureId } from "./helperFunctions";
 import { CommonTreeStructureProps, NewFolderInputFunc } from "./types";
 
 export const MAX_LEVEL_FOR_FOLDERS = 5;
+
+const uniq = <T,>(array: T[]): T[] => Array.from(new Set(array));
 
 const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};

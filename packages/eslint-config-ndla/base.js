@@ -20,7 +20,7 @@ module.exports = {
   ],
   root: true,
   parser: "@babel/eslint-parser",
-  plugins: ["react", "react-hooks", "import", "jsx-a11y", "lodash", "header"],
+  plugins: ["react", "react-hooks", "import", "jsx-a11y", "header"],
 
   env: {
     browser: true,
@@ -45,6 +45,12 @@ module.exports = {
     "no-restricted-imports": [
       "error",
       {
+        paths: [
+          {
+            name: "lodash",
+            message: "Do not import lodash directly, use subpath imports instead.",
+          },
+        ],
         patterns: [
           "@ndla/*/lib/**",
           "@ndla/*/lib",
@@ -164,8 +170,6 @@ module.exports = {
       },
     ],
     "import/no-cycle": ["warn", { maxDepth: Infinity }],
-
-    "lodash/import-scope": [2, "method"],
 
     "react/no-unused-state": "warn",
     "react/button-has-type": "error",

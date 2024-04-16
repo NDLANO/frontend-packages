@@ -7,7 +7,6 @@
  */
 
 import { domToReact, attributesToProps, Element, DOMNode } from "html-react-parser";
-import partition from "lodash/partition";
 import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem, FramedContent } from "@ndla/ui";
 import { PluginType } from "./types";
 
@@ -28,9 +27,13 @@ export const divPlugin: PluginType = (node, opts) => {
     const elements = node.childNodes.filter(
       (c): c is Element => c.type === "tag" && c.name === "ndlaembed" && c.attribs["data-resource"] === "file",
     );
-    const [pdfs, files] = partition(
-      elements,
-      (el) => el.attribs["data-type"] === "pdf" && el.attribs["data-display"] === "block",
+    const [pdfs, files] = elements.reduce<[Element[], Element[]]>(
+      (acc, el) => {
+        const arr = el.attribs["data-type"] === "pdf" && el.attribs["data-display"] === "block" ? acc[0] : acc[1];
+        arr.push(el);
+        return acc;
+      },
+      [[], []],
     );
 
     return (

@@ -7,7 +7,6 @@
  */
 
 import groupBy from "lodash/groupBy";
-import sortBy from "lodash/sortBy";
 import { RefObject, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
@@ -106,7 +105,7 @@ const MovieGroup = styled.section`
 `;
 
 const groupMovies = (movies: MovieType[]) => {
-  const sortedMovies = sortBy(movies, (m) => m.title);
+  const sortedMovies = movies.toSorted((a, b) => a.title.localeCompare(b.title));
   const grouped = groupBy(sortedMovies, (movie) => {
     const firstChar = movie.title[0]?.toUpperCase();
     const isLetter = firstChar?.match(/[A-Z\WÆØÅ]+/);

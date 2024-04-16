@@ -6,7 +6,6 @@
  *
  */
 
-import uniq from "lodash/uniq";
 import { useEffect, useState, useMemo, useRef } from "react";
 import styled from "@emotion/styled";
 import { colors, fonts, misc, utils } from "@ndla/core";
@@ -97,7 +96,7 @@ const TreeStructure = ({
     if (defaultOpenFolders) {
       if (!defaultOpenFolders.every((element) => openFolders.includes(element))) {
         setOpenFolders((prev) => {
-          return uniq(defaultOpenFolders.concat(prev));
+          return Array.from(new Set(defaultOpenFolders.concat(prev)));
         });
       }
     }
@@ -137,7 +136,7 @@ const TreeStructure = ({
   };
 
   const onOpenFolder = (id: string) => {
-    setOpenFolders(uniq(openFolders.concat(id)));
+    setOpenFolders(Array.from(new Set(openFolders.concat(id))));
   };
 
   const onCloseFolder = (id: string) => {
@@ -156,7 +155,7 @@ const TreeStructure = ({
     if (newFolder) {
       setSelectedFolder(newFolder);
       setFocusedFolder(newFolder);
-      setOpenFolders(uniq(openFolders.concat(parentId)));
+      setOpenFolders(Array.from(new Set(openFolders.concat(parentId))));
       setNewFolderParentId?.(undefined);
       ref.current?.focus({ preventScroll: true });
     }

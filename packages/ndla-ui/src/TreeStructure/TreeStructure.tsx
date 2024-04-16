@@ -18,6 +18,8 @@ import { CommonTreeStructureProps, NewFolderInputFunc } from "./types";
 
 export const MAX_LEVEL_FOR_FOLDERS = 5;
 
+const uniq = <T,>(array: T[]): T[] => Array.from(new Set(array));
+
 const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
 `;
@@ -96,7 +98,7 @@ const TreeStructure = ({
     if (defaultOpenFolders) {
       if (!defaultOpenFolders.every((element) => openFolders.includes(element))) {
         setOpenFolders((prev) => {
-          return Array.from(new Set(defaultOpenFolders.concat(prev)));
+          return uniq(defaultOpenFolders.concat(prev));
         });
       }
     }
@@ -136,7 +138,7 @@ const TreeStructure = ({
   };
 
   const onOpenFolder = (id: string) => {
-    setOpenFolders(Array.from(new Set(openFolders.concat(id))));
+    setOpenFolders(uniq(openFolders.concat(id)));
   };
 
   const onCloseFolder = (id: string) => {
@@ -155,7 +157,7 @@ const TreeStructure = ({
     if (newFolder) {
       setSelectedFolder(newFolder);
       setFocusedFolder(newFolder);
-      setOpenFolders(Array.from(new Set(openFolders.concat(parentId))));
+      setOpenFolders(uniq(openFolders.concat(parentId)));
       setNewFolderParentId?.(undefined);
       ref.current?.focus({ preventScroll: true });
     }

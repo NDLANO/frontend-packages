@@ -37,6 +37,7 @@ const StyledMediaListItem = styled.li`
   margin-bottom: ${spacing.small};
   padding: ${spacing.small} 0;
   border-bottom: 1px solid ${colors.brand.tertiary};
+  list-style: none;
   ${mq.range({ from: breakpoints.tablet })} {
     display: flex;
     flex-direction: row;

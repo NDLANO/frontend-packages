@@ -116,6 +116,12 @@ const StyledFigure = styled(Figure)`
       }
     }
   }
+  &[data-float="right"] {
+    float: right;
+  }
+  &[data-float="left"] {
+    float: left;
+  }
 `;
 
 const ImageEmbed = ({
@@ -158,7 +164,7 @@ const ImageEmbed = ({
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
   return (
-    <StyledFigure type={imageSizes ? undefined : figureType}>
+    <StyledFigure type={imageSizes ? undefined : figureType} data-float={embedData.align}>
       <ImageWrapper
         src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}

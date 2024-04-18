@@ -319,13 +319,8 @@ const Controls = ({ src, title }: Props) => {
           </DropdownTrigger>
           <SpeedList side="top">
             {speedValues.map((speed) => (
-              <DropdownItem key={speed}>
-                <SpeedValueButton
-                  variant="ghost"
-                  colorTheme="greyLighter"
-                  size="small"
-                  onSelect={() => setSpeedValue(speed)}
-                >
+              <DropdownItem key={speed} onSelect={() => setSpeedValue(speed)}>
+                <SpeedValueButton variant="ghost" colorTheme="greyLighter" size="small">
                   {speed}x{speed === speedValue && <SpeedSelectedMark />}
                 </SpeedValueButton>
               </DropdownItem>

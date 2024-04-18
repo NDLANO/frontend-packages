@@ -152,10 +152,7 @@ const ListWrapper = styled.div`
 
 const StyledNotionDialogContent = styled(NotionDialogContent)`
   padding-top: ${spacing.small};
-  .c-figure {
-    left: unset !important;
-    width: 100% !important;
-    padding: 0;
+  figure {
     margin: 0;
     padding-bottom: ${spacing.normal};
   }

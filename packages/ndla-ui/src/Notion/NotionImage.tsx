@@ -8,8 +8,10 @@
 
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { animations, breakpoints, mq, spacing } from "@ndla/core";
-import { Figure, FigureOpenDialogButton } from "../Figure";
+import { animations, breakpoints, colors, mq, spacing } from "@ndla/core";
+import { ExpandTwoArrows, CursorClick } from "@ndla/icons/action";
+import { Play } from "@ndla/icons/common";
+import { Figure, figureActionIndicatorStyle } from "../Figure";
 import Image from "../Image";
 
 const StyledImageWrapper = styled.div`
@@ -39,32 +41,48 @@ const StyledImage = styled(Image)`
 
 interface Props {
   type: "image" | "video" | "h5p" | "iframe" | "external" | "audio" | undefined;
-  id: string;
   src: string;
   alt: string;
 }
-export const NotionImage = ({ id, src, alt, type }: Props) => {
-  const { t } = useTranslation();
 
-  const imageFigureId = `image-figure-${id}`;
+const StyledFigure = styled(Figure)`
+  &:hover {
+    [data-open-button] {
+      background: ${colors.white};
+      svg {
+        transform: scale(1.2);
+      }
+    }
+  }
+`;
 
+export const NotionImage = ({ src, alt, type }: Props) => {
   return (
-    <Figure resizeIframe id={imageFigureId} type={"full-column"}>
+    <StyledFigure type={"full-column"}>
       <StyledImageWrapper>
-        <StyledImage
-          alt={alt}
-          src={src}
-          expandButton={
-            <FigureOpenDialogButton
-              type={type}
-              messages={{
-                zoomImageButtonLabel: t("license.images.itemImage.zoomImageButtonLabel"),
-                zoomOutImageButtonLabel: t("license.image.itemImage.zoomOutImageButtonLabel"),
-              }}
-            />
-          }
-        />
+        <StyledImage alt={alt} src={src} expandButton={<OpenButton type={type} />} />
       </StyledImageWrapper>
-    </Figure>
+    </StyledFigure>
+  );
+};
+
+interface OpenButtonProps {
+  type?: "image" | "video" | "h5p" | "iframe" | "external" | "audio";
+}
+
+export const OpenButton = ({ type }: OpenButtonProps) => {
+  const { t } = useTranslation();
+  return (
+    <div
+      css={figureActionIndicatorStyle}
+      data-open-button=""
+      aria-label={t("license.images.itemImage.zoomImageButtonLabel")}
+    >
+      {type === "image" && <ExpandTwoArrows />}
+      {type === "h5p" && <CursorClick style={{ width: "24px", height: "24px" }} />}
+      {type === "iframe" && <CursorClick style={{ width: "24px", height: "24px" }} />}
+      {type === "external" && <CursorClick style={{ width: "24px", height: "24px" }} />}
+      {type === "video" && <Play style={{ width: "24px", height: "24px" }} />}
+    </div>
   );
 };

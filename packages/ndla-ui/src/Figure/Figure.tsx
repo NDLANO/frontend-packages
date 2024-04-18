@@ -8,7 +8,7 @@
 
 // N.B These components is used to render static markup serverside
 
-import { ReactNode } from "react";
+import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import BEMHelper from "react-bem-helper";
 import { isFunction as isFunctionHelper } from "@ndla/util";
 const classes = new BEMHelper({
@@ -16,19 +16,15 @@ const classes = new BEMHelper({
   prefix: "c-",
 });
 
-const Figure = ({ children, type = "full", resizeIframe, className, ...rest }: Props) => {
+const Figure = forwardRef<HTMLElement, Props>(({ children, type = "full", className, ...rest }, ref) => {
   const typeClass = type === "full-column" ? "c-figure--full-column" : `u-float-${type}`;
   const right = ["small-right", "xsmall-right"].includes(type);
   return (
-    <figure
-      data-sizetype={type}
-      {...classes("", { resize: !!resizeIframe, right }, `${typeClass} ${className ?? ""}`)}
-      {...rest}
-    >
+    <figure data-sizetype={type} {...classes("", { right }, `${typeClass} ${className ?? ""}`)} {...rest} ref={ref}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
-};
+});
 
 const isFunction = (children: Function | ReactNode): children is Function => {
   return isFunctionHelper(children);
@@ -44,14 +40,10 @@ export type FigureType =
   | "xsmall-right"
   | "xsmall-left";
 
-interface Props {
-  id?: string;
-  children: ReactNode | ((params: { typeClass: string }) => ReactNode);
+interface Props extends Omit<ComponentPropsWithRef<"figure">, "children" | "type"> {
+  children?: ReactNode | ((params: { typeClass: string }) => ReactNode);
   type?: FigureType;
-  resizeIframe?: boolean;
   noFigcaption?: boolean;
-  className?: string;
-  lang?: string;
 }
 
 export default Figure;

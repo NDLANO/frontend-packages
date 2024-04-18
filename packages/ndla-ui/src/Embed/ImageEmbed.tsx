@@ -10,14 +10,14 @@ import parse from "html-react-parser";
 import { MouseEventHandler, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { utils } from "@ndla/core";
+import { colors, spacing, utils } from "@ndla/core";
 import { ExpandTwoArrows } from "@ndla/icons/action";
 import { ArrowCollapse, ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from "./types";
-import { Figure, FigureType } from "../Figure";
+import { Figure, FigureType, figureActionIndicatorStyle } from "../Figure";
 import Image, { ImageLink } from "../Image";
 import { EmbedByline } from "../LicenseByline";
 
@@ -107,6 +107,23 @@ export const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = "(min-width: 1024px) 1024px, 100vw";
 
+const StyledFigure = styled(Figure)`
+  &:hover {
+    [data-byline-button] {
+      background: ${colors.white};
+      svg {
+        transform: scale(1.2);
+      }
+    }
+  }
+  &[data-float="right"] {
+    float: right;
+  }
+  &[data-float="left"] {
+    float: left;
+  }
+`;
+
 const ImageEmbed = ({
   embed,
   previewAlt,
@@ -147,10 +164,7 @@ const ImageEmbed = ({
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
   return (
-    <Figure
-      type={imageSizes ? undefined : figureType}
-      className={imageSizes ? `c-figure--${embedData.align} expanded` : ""}
-    >
+    <StyledFigure type={imageSizes ? undefined : figureType} data-float={embedData.align}>
       <ImageWrapper
         src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}
@@ -190,7 +204,7 @@ const ImageEmbed = ({
           {HeartButton && !isCopyrighted && <HeartButton embed={embed} />}
         </EmbedByline>
       )}
-    </Figure>
+    </StyledFigure>
   );
 };
 
@@ -236,13 +250,32 @@ interface ExpandButtonProps {
   onHideByline: MouseEventHandler<HTMLButtonElement>;
 }
 
+const BylineButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  padding: ${spacing.small};
+  transition: all 0.3s ease-out;
+  background: ${colors.background.default}20;
+  border: 0;
+
+  svg {
+    transition: transform 0.4s ease-out;
+    width: ${spacing.normal};
+    height: ${spacing.normal};
+    fill: ${colors.brand.primary};
+  }
+`;
+
 const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
   const { t } = useTranslation();
   if (isSmall(size)) {
     return (
       <button
         type="button"
-        className="c-figure__fullscreen-btn"
+        css={figureActionIndicatorStyle}
         aria-label={t(`license.images.itemImage.zoom${expanded ? "Out" : ""}ImageButtonLabel`)}
         onClick={onExpand}
       >
@@ -251,14 +284,14 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
     );
   } else if (hideByline(size)) {
     return (
-      <button
+      <BylineButton
         type="button"
-        className="c-figure__show-byline-btn"
+        data-byline-button=""
         aria-label={t(`license.images.itemImage.${bylineHidden ? "expandByline" : "minimizeByline"}`)}
         onClick={onHideByline}
       >
         {bylineHidden ? <ChevronDown /> : <ChevronUp />}
-      </button>
+      </BylineButton>
     );
   } else return null;
 };

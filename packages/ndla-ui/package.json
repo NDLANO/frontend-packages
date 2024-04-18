@@ -34,6 +34,7 @@
     "@ndla/accordion": "^3.0.40",
     "@ndla/button": "^12.0.43",
     "@ndla/carousel": "^4.0.41",
+    "@ndla/code": "^5.0.55",
     "@ndla/core": "^4.5.3",
     "@ndla/dropdown-menu": "^1.0.34",
     "@ndla/forms": "^7.1.0",

@@ -8,6 +8,5 @@
 
 import { Codeblock } from "./Codeblock";
 import { CodeBlockEditor } from "./CodeBlockEditor";
-import { default as CodeEmbed } from "./CodeEmbed";
 
-export { Codeblock, CodeBlockEditor, CodeEmbed };
+export { Codeblock, CodeBlockEditor };

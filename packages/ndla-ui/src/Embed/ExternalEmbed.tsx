@@ -19,7 +19,7 @@ interface Props {
   isConcept?: boolean;
 }
 
-const StyledFigure = styled.figure`
+const StyledFigure = styled(Figure)`
   iframe {
     height: auto;
   }
@@ -62,16 +62,10 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
     );
   }
 
-  const fullColumnClass = isConcept ? "c-figure--full-column" : "";
-  const classes = `c-figure ${fullColumnClass} c-figure--resize`;
-
   return (
     <StyledFigure
       ref={figRef}
-      className={classes}
-      //@ts-ignore
-      // eslint-disable-next-line react/no-unknown-property
-      resizeiframe="true"
+      type={isConcept ? "full-column" : undefined}
       dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }}
     />
   );

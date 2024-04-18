@@ -341,7 +341,7 @@ export const BlockConcept = ({
   return (
     <Root modal={isMobile} onOpenChange={onOpenChange}>
       <StyledAnchor ref={anchorRef} />
-      <Figure resizeIframe type={fullWidth ? "full" : "full-column"}>
+      <Figure type={fullWidth ? "full" : "full-column"}>
         {conceptType === "concept" ? (
           <UINotion
             id=""
@@ -363,14 +363,12 @@ export const BlockConcept = ({
                           {visualElement.resource === "image" ? (
                             <NotionImage
                               type={visualElementType}
-                              id={""}
                               src={visualElement.data.image.imageUrl}
                               alt={visualElement.data.alttext.alttext}
                             />
                           ) : metaImage ? (
                             <NotionImage
                               type={visualElementType}
-                              id={""}
                               src={metaImage?.url ?? ""}
                               alt={metaImage?.alt ?? ""}
                             />

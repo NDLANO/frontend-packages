@@ -29,6 +29,7 @@ export {
   BlockConcept,
   UuDisclaimerEmbed,
   CopyrightEmbed,
+  CodeEmbed,
 } from "./Embed";
 
 export { LicenseLink } from "./LicenseByline";
@@ -85,7 +86,7 @@ export { FilterButtons, ToggleItem } from "./Filter";
 
 export { Footer, EditorName, FooterText } from "./Footer";
 
-export { Figure, FigureOpenDialogButton } from "./Figure";
+export { Figure } from "./Figure";
 export type { FigureType } from "./Figure";
 
 export { LanguageSelector } from "./LanguageSelector";
@@ -129,7 +130,6 @@ export {
   SearchTypeResult,
   SearchHeader,
   SearchFieldHeader,
-  SearchNotionsResult,
   SearchSubjectResult,
   SearchFilterContent,
 } from "./SearchTypeResult";

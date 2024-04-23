@@ -41,7 +41,7 @@
     "i18next": ">= 23.0.0",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",
-    "react-i18next": ">= 13.0.0",
+    "react-i18next": ">= 14.0.0",
     "react-router-dom": ">= 6.0.0"
   },
   "publishConfig": {

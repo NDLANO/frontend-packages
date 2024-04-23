@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { MouseEventHandler, useMemo, useState } from "react";
+import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, spacing, utils } from "@ndla/core";
@@ -30,6 +30,7 @@ interface Props {
   inGrid?: boolean;
   lang?: string;
   renderContext?: RenderContext;
+  children?: ReactNode;
 }
 
 export interface Author {
@@ -133,6 +134,7 @@ const ImageEmbed = ({
   lang,
   canonicalUrl,
   renderContext = "article",
+  children,
 }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
@@ -165,6 +167,7 @@ const ImageEmbed = ({
 
   return (
     <StyledFigure type={imageSizes ? undefined : figureType} data-float={embedData.align}>
+      {children}
       <ImageWrapper
         src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}

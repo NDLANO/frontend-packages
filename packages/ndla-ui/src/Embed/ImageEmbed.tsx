@@ -279,6 +279,7 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
       <button
         type="button"
         css={figureActionIndicatorStyle}
+        data-byline-button=""
         aria-label={t(`license.images.itemImage.zoom${expanded ? "Out" : ""}ImageButtonLabel`)}
         onClick={onExpand}
       >

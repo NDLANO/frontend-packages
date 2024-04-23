@@ -1158,6 +1158,7 @@ const messages = {
       "Er du sikker på at du vil slette mappen? Dersom mappen har undermapper vil disse også slettes. Handlingen kan ikke endres.",
     confirmDeleteTag: "Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.",
     myFolders: "Mine mapper",
+    sharedByOthersFolders: "Mapper andre har delt",
     myTags: "Mine emneknagger",
     mySubjects: "Mine fag",
     newFolder: "Ny mappe",

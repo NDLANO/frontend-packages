@@ -179,7 +179,7 @@ export {
   ConceptBadge,
 } from "./ContentTypeBadge";
 
-export { SubjectHeader, SubjectBanner } from "./Subject";
+export { SubjectBanner } from "./Subject";
 
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 

@@ -540,6 +540,7 @@ const messages = {
       tips: "Tips til elever",
       vacancies: "Ledige stillinger",
     },
+    otherLanguages: "Andre språk",
   },
   contentTypes: {
     all: "Alle",

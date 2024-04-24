@@ -540,6 +540,7 @@ const messages = {
       tips: "Tips to students",
       vacancies: "Vacancies",
     },
+    otherLanguages: "Other languages",
   },
   contentTypes: {
     all: "All",

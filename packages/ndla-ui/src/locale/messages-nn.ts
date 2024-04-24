@@ -950,6 +950,12 @@ const messages = {
           shared:
             "No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.",
         },
+        warning: {
+          loggedIn:
+            "Denne mappen er delt av {{ name }}, og  inneholder fagstoff, oppgaver og lenker til tekster fra både NDLA og andre nettsteder.",
+          loggedOut:
+            "Denne mappen er delt av {{ name }}, og  inneholder fagstoff, oppgaver og lenker til tekster fra både NDLA og andre nettsteder. Logg inn på Min NDLA for å kopiere mappen eller lagre lenken.",
+        },
         button: {
           share: "Del mappe",
           shareShort: "Del",
@@ -958,6 +964,13 @@ const messages = {
           goTo: "Gå til delt mappe",
           unShare: "Avslutt deling",
           shareLink: "Kopier lenke",
+          saveLink: "Lagre lenka",
+        },
+        save: {
+          warning:
+            "Dette lagar ein lenke til mappa i Mine mapper. Du kan enkelt finne ho att ved å gå til Mine mapper i menyen i Min NDLA.",
+          header: "Lagre lenke til denne mappa",
+          save: "Lagre lenke til delt mappe",
         },
         previewInformation:
           "Førehandsvising av delt mappe. Mappa blir ikkje tilgjengeleg for andre før du set ho som delt.",

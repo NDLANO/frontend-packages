@@ -950,6 +950,12 @@ const messages = {
           shared:
             "Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.",
         },
+        warning: {
+          loggedIn:
+            "This folder is shared by {{ name }}, and contains course material, assignments and links to texts from both NDLA and other websites.",
+          loggedOut:
+            "This folder is shared by {{ name }}, and contains course material, assignments and links to texts from both NDLA and other websites. Log onto My NDLA to copy the folder or save the link.",
+        },
         button: {
           share: "Share folder",
           shareShort: "Share",
@@ -958,6 +964,13 @@ const messages = {
           goTo: "Go to shared folder",
           unShare: "Stop sharing",
           shareLink: "Copy link",
+          saveLink: "Save the link",
+        },
+        save: {
+          warning:
+            "This creates a link to the folder in My folders. You can easily find the link by navigating to My Folders through the menu in My NDLA.",
+          header: "Save the link to this folder",
+          save: "Save the link to the shared folder",
         },
         previewInformation:
           "Preview of shared folder. The folder is not available to others until you update its status to shared.",

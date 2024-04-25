@@ -14,6 +14,8 @@ export { default as FramedContent } from "./FramedContent";
 export {
   ConceptNotionV2,
   ImageEmbed,
+  getCrop,
+  getFocalPoint,
   AudioEmbed,
   H5pEmbed,
   ExternalEmbed,

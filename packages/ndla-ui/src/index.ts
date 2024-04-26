@@ -84,7 +84,7 @@ export {
 
 export { FilterButtons, ToggleItem } from "./Filter";
 
-export { Footer, EditorName, FooterText } from "./Footer";
+export { FooterBlock } from "./Footer";
 
 export { Figure } from "./Figure";
 export type { FigureType } from "./Figure";

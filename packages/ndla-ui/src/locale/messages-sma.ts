@@ -544,6 +544,7 @@ const messages = {
       tips: "Tipsh learoehkidie",
       vacancies: "Gaavnoes barkoeh",
     },
+    otherLanguages: "Andre språk",
   },
   contentTypes: {
     all: "Alle",

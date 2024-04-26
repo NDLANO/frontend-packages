@@ -542,6 +542,7 @@ const messages = {
       tips: "Cavgileapmi ohppiide",
       vacancies: "Rabas virggit",
     },
+    otherLanguages: "Andre språk",
   },
   contentTypes: {
     all: "Buot",

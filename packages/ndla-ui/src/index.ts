@@ -122,12 +122,6 @@ export { ResourceBox } from "./ResourceBox";
 
 export { default as AudioPlayer } from "./AudioPlayer";
 
-export { NavigationBox } from "./Navigation";
-
-export { default as Programme } from "./Programme";
-
-export { default as CompetenceGoalTab } from "./CompetenceGoalTab";
-
 export {
   SearchTypeResult,
   SearchHeader,
@@ -144,9 +138,6 @@ export { default as messagesEN } from "./locale/messages-en";
 export { default as messagesSE } from "./locale/messages-se";
 export { default as messagesSMA } from "./locale/messages-sma";
 
-export { ToolboxInfo } from "./ToolboxPage";
-export { default as Topic } from "./Topic";
-export type { TopicProps } from "./Topic";
 export { default as Aside } from "./Aside";
 
 export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from "./Breadcrumb";
@@ -180,8 +171,6 @@ export {
   SourceMaterialBadge,
   ConceptBadge,
 } from "./ContentTypeBadge";
-
-export { SubjectBanner } from "./Subject";
 
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 

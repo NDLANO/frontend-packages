@@ -189,7 +189,6 @@ export { default as ContentPlaceholder } from "./ContentPlaceholder";
 
 export { Notion } from "./Notion";
 
-export { BannerCard } from "./BannerCard";
 export { Folder, FolderInput } from "./MyNdla";
 export { ListResource, BlockResource } from "./Resource";
 export type { ListResourceProps } from "./Resource";

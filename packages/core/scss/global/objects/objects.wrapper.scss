@@ -8,16 +8,6 @@
     padding-right: $spacing;
   }
 
-  &--no-padding {
-    padding-left: 0;
-    padding-right: 0;
-
-    @include mq(tablet) {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-
   &--inner {
     max-width: 585px;
     padding-left: $spacing;

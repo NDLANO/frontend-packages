@@ -6,33 +6,29 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from "react";
-import BEMHelper from "react-bem-helper";
+import { ComponentPropsWithoutRef } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { colors, mq, breakpoints } from "@ndla/core";
 
-const classes = new BEMHelper({
-  name: "container",
-  prefix: "o-",
-});
-
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
-  background?: boolean;
+interface Props extends ComponentPropsWithoutRef<"div"> {
   backgroundWide?: boolean;
-  ndlaFilm?: boolean;
-  learningPath?: boolean;
 }
 
-export const PageContainer = ({
-  children,
-  background = false,
-  backgroundWide = false,
-  ndlaFilm = false,
-  learningPath = false,
-  ...rest
-}: Props) => (
-  <div {...classes("", { background, backgroundWide, ndlaFilm, learningPath })} {...rest}>
-    {children}
-  </div>
+const StyledPageContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const backgroundWideStyle = css`
+  ${mq.range({ from: breakpoints.tablet })} {
+    background-color: ${colors.brand.greyLightest};
+  }
+`;
+
+export const PageContainer = ({ backgroundWide = false, ...rest }: Props) => (
+  <StyledPageContainer css={backgroundWide ? backgroundWideStyle : undefined} {...rest} />
 );
 
 export default PageContainer;

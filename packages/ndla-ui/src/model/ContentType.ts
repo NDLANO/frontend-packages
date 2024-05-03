@@ -17,6 +17,7 @@ export const MULTIDISCIPLINARY_TOPIC = "multidisciplinary-topic";
 export const CONCEPT = "concept";
 export const EXTERNAL = "external";
 export const MISSING = "missing";
+export const CONCEPT_ARTICLE = "conceptArticle";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,
@@ -30,6 +31,7 @@ export const contentTypes = {
   CONCEPT,
   EXTERNAL,
   MISSING,
+  CONCEPT_ARTICLE,
 };
 
 export const RESOURCE_TYPE_LEARNING_PATH = "urn:resourcetype:learningPath";
@@ -38,6 +40,7 @@ export const RESOURCE_TYPE_TASKS_AND_ACTIVITIES = "urn:resourcetype:tasksAndActi
 export const RESOURCE_TYPE_ASSESSMENT_RESOURCES = "urn:resourcetype:reviewResource";
 export const RESOURCE_TYPE_SOURCE_MATERIAL = "urn:resourcetype:SourceMaterial";
 export const RESOURCE_TYPE_CONCEPT = "urn:resourcetype:concept";
+export const RESOURCE_TYPE_CONCEPT_ARTICLE = "urn:resourcetype:conceptArticle";
 
 export const ListOfContentTypes = [
   "SUBJECT_MATERIAL",
@@ -51,6 +54,7 @@ export const ListOfContentTypes = [
   "CONCEPT",
   "EXTERNAL",
   "MISSING",
+  "CONCEPT_ARTICLE",
 ];
 
 export const contentTypeMapping: Record<string, string> = {
@@ -60,6 +64,7 @@ export const contentTypeMapping: Record<string, string> = {
   [RESOURCE_TYPE_ASSESSMENT_RESOURCES]: ASSESSMENT_RESOURCES,
   [RESOURCE_TYPE_SOURCE_MATERIAL]: SOURCE_MATERIAL,
   [RESOURCE_TYPE_CONCEPT]: CONCEPT,
+  [RESOURCE_TYPE_CONCEPT_ARTICLE]: CONCEPT_ARTICLE,
   default: SUBJECT_MATERIAL,
 };
 

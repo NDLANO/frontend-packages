@@ -10,6 +10,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from "@ndla/types-embed";
 import BrightcoveEmbed from "./BrightcoveEmbed";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
+import { OneColumn } from "../Layout";
 
 const embedData: BrightcoveEmbedData = {
   resource: "brightcove",
@@ -159,7 +160,7 @@ const meta: Meta<typeof BrightcoveEmbed> = {
   },
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
+      <OneColumn>
         <article className="c-article c-article--clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
@@ -167,7 +168,7 @@ const meta: Meta<typeof BrightcoveEmbed> = {
             </section>
           </section>
         </article>
-      </div>
+      </OneColumn>
     ),
   ],
 };

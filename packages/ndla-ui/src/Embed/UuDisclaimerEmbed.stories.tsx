@@ -13,6 +13,7 @@ import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
 import FactBox from "../FactBox";
 import FramedContent from "../FramedContent";
+import { OneColumn } from "../Layout";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
@@ -26,7 +27,7 @@ const meta: Meta<typeof UuDisclaimerEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
+      <OneColumn>
         <article className="c-article c-article--clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
@@ -34,7 +35,7 @@ const meta: Meta<typeof UuDisclaimerEmbed> = {
             </section>
           </section>
         </article>
-      </div>
+      </OneColumn>
     ),
   ],
 };

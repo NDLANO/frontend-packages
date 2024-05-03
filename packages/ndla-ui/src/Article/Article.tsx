@@ -14,7 +14,6 @@ import { spacing, mq, breakpoints } from "@ndla/core";
 import { useIntersectionObserver } from "@ndla/hooks";
 import { Heading, Text } from "@ndla/typography";
 import { resizeObserver } from "@ndla/util";
-import ArticleAccessMessage from "./ArticleAccessMessage";
 import ArticleByline from "./ArticleByline";
 import ArticleHeaderWrapper from "./ArticleHeaderWrapper";
 import ArticleNotions from "./ArticleNotions";
@@ -115,7 +114,6 @@ type Props = {
   competenceGoals?: ReactNode;
   id: string;
   notions?: ReactNode;
-  accessMessage?: string;
   lang?: string;
 };
 
@@ -142,7 +140,6 @@ export const Article = ({
   competenceGoals,
   id,
   notions,
-  accessMessage,
   heartButton,
   contentTransformed,
   lang,
@@ -182,8 +179,6 @@ export const Article = ({
     <div ref={wrapperRef}>
       <ArticleWrapper modifier={modifier} ref={articleRef}>
         <LayoutItem layout="center">
-          {accessMessage && <ArticleAccessMessage message={accessMessage} />}
-
           {messages.messageBox && (
             <MSGboxWrapper>
               <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>

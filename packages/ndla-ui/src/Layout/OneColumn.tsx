@@ -16,6 +16,9 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
 }
 
 const StyledOneColumn = styled.div`
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   padding-left: ${spacing.nsmall};
   padding-right: ${spacing.nsmall};
@@ -23,6 +26,11 @@ const StyledOneColumn = styled.div`
   ${mq.range({ from: breakpoints.mobileWide })} {
     padding-left: ${spacing.normal};
     padding-right: ${spacing.normal};
+  }
+  &::after {
+    content: "" !important;
+    display: block !important;
+    clear: both !important;
   }
 `;
 

@@ -14,10 +14,6 @@ const StyledWrapper = styled.section`
   max-width: ${1402 + spacingUnit}px;
   padding: 0 ${spacing.normal};
   margin: 0 auto;
-  .o-wrapper {
-    padding-right: 0;
-    padding-left: 0;
-  }
 
   &[data-inverted="true"] {
     ${mq.range({ until: breakpoints.tablet })} {

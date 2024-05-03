@@ -10,6 +10,7 @@ import styled from "@emotion/styled";
 import { spacing, spacingUnit, breakpoints, mq } from "@ndla/core";
 import { getLicenseByAbbreviation } from "@ndla/licenses";
 import { Heading } from "@ndla/typography";
+import { OneColumn } from "../Layout";
 import LicenseLink from "../LicenseByline/LicenseLink";
 
 type StyledWrapperProps = {
@@ -63,19 +64,26 @@ interface Props {
   };
 }
 
+const StyledOneColumn = styled(OneColumn)`
+  padding-left: 0px;
+  padding-right: 0px;
+`;
+
 export const LearningPathInformation = ({ description, title, license, invertedStyle, id }: Props) => {
   const fullLicense = getLicenseByAbbreviation(license?.license || "", "nb");
   return (
-    <section className="o-wrapper">
-      <StyledWrapper invertedStyle={invertedStyle} className="c-article">
-        <LicenseWrapper>
-          <StyledHeader element="h1" headingStyle="h1" tabIndex={-1} id={id}>
-            {title}
-          </StyledHeader>
-          <LicenseLink license={fullLicense} />
-        </LicenseWrapper>
-        {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
-      </StyledWrapper>
-    </section>
+    <StyledOneColumn>
+      <section>
+        <StyledWrapper invertedStyle={invertedStyle} className="c-article">
+          <LicenseWrapper>
+            <StyledHeader element="h1" headingStyle="h1" tabIndex={-1} id={id}>
+              {title}
+            </StyledHeader>
+            <LicenseLink license={fullLicense} />
+          </LicenseWrapper>
+          {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
+        </StyledWrapper>
+      </section>
+    </StyledOneColumn>
   );
 };

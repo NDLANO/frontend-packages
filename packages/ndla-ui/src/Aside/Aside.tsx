@@ -6,19 +6,13 @@
  *
  */
 
-import { ComponentProps, useMemo } from "react";
-import { css } from "@emotion/react";
+import { ComponentPropsWithoutRef } from "react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
-interface Props extends ComponentProps<"aside"> {
-  narrowScreen?: boolean;
-  wideScreen?: boolean;
-  alwaysShow?: boolean;
-}
-
 const StyledAside = styled.aside`
   position: relative;
+  display: block;
   margin: ${spacing.large} 0px;
   ${mq.range({ from: breakpoints.tablet })} {
     max-width: 350px;
@@ -34,23 +28,6 @@ const StyledAside = styled.aside`
   }
 
   border-left: 4px solid ${colors.background.dark};
-`;
-
-const wideScreenStyle = css`
-  display: none;
-  ${mq.range({ from: breakpoints.tablet })} {
-    display: block;
-  }
-`;
-
-const narrowScreenStyle = css`
-  ${mq.range({ from: breakpoints.tablet })} {
-    display: none;
-  }
-`;
-
-const alwaysShowStyle = css`
-  display: block !important;
 `;
 
 const StyledAsideContent = styled.div`
@@ -88,23 +65,9 @@ const StyledAsideContent = styled.div`
   }
 `;
 
-const Aside = ({ children, narrowScreen = false, wideScreen = false, alwaysShow = false, ...rest }: Props) => {
-  const styling = useMemo(() => {
-    const styles = [];
-    if (narrowScreen) {
-      styles.push(narrowScreenStyle);
-    }
-    if (wideScreen) {
-      styles.push(wideScreenStyle);
-    }
-    if (alwaysShow) {
-      styles.push(alwaysShowStyle);
-    }
-    return styles;
-  }, [alwaysShow, narrowScreen, wideScreen]);
-
+const Aside = ({ children, ...rest }: ComponentPropsWithoutRef<"aside">) => {
   return (
-    <StyledAside css={styling} {...rest}>
+    <StyledAside {...rest}>
       <StyledAsideContent>{children}</StyledAsideContent>
     </StyledAside>
   );

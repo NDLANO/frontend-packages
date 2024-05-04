@@ -13,11 +13,7 @@ export const asidePlugin: PluginType = (node, opts) => {
   if (node.attribs["data-type"] === "factAside") {
     return <FactBox>{domToReact(node.children as DOMNode[], opts)}</FactBox>;
   } else if (node.attribs["data-type"] === "rightAside") {
-    return (
-      <Aside wideScreen alwaysShow>
-        {domToReact(node.children as DOMNode[], opts)}
-      </Aside>
-    );
+    return <Aside>{domToReact(node.children as DOMNode[], opts)}</Aside>;
   }
 
   return null;

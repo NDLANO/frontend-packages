@@ -594,7 +594,7 @@ export const WithScrollbar: StoryFn = () => (
         <td>Hearson</td>
         <td>rhearson0@nifty.com</td>
 
-        <td className="u-no-wrap">34704 Duke Circle</td>
+        <td style={{ whiteSpace: "nowrap" }}>34704 Duke Circle</td>
         <td>Brazil</td>
         <td>Fijian</td>
         <td>rhearson0</td>
@@ -604,8 +604,8 @@ export const WithScrollbar: StoryFn = () => (
         <td>Lucie</td>
         <td>Jikylls</td>
         <td>ljikylls1@csmonitor.com</td>
-        <td className="u-no-wrap">9824 Swallow Place</td>
-        <td className="u-no-wrap">Sweden/Denmark/Norway</td>
+        <td style={{ whiteSpace: "nowrap" }}>9824 Swallow Place</td>
+        <td style={{ whiteSpace: "nowrap" }}>Sweden/Denmark/Norway</td>
         <td>Italian</td>
         <td>ljikylls1</td>
       </tr>
@@ -614,7 +614,7 @@ export const WithScrollbar: StoryFn = () => (
         <td>Kippie</td>
         <td>Reeveley</td>
         <td>kreeveley2@ebay.com</td>
-        <td className="u-no-wrap">1 Stephen Court</td>
+        <td style={{ whiteSpace: "nowrap" }}>1 Stephen Court</td>
         <td>Namibia</td>
         <td>West Frisian</td>
         <td>kreeveley2</td>
@@ -624,7 +624,7 @@ export const WithScrollbar: StoryFn = () => (
         <td>Klarrisa</td>
         <td>Minghetti</td>
         <td>kminghetti3@163.com</td>
-        <td className="u-no-wrap">7 Truax Point</td>
+        <td style={{ whiteSpace: "nowrap" }}>7 Truax Point</td>
         <td>Greece</td>
         <td>Luxembourgish</td>
         <td>kminghetti3</td>
@@ -634,7 +634,7 @@ export const WithScrollbar: StoryFn = () => (
         <td>Trefor</td>
         <td>Lambregts</td>
         <td>tlambregts4@youtu.be</td>
-        <td className="u-no-wrap">61 Monica Center</td>
+        <td style={{ whiteSpace: "nowrap" }}>61 Monica Center</td>
         <td>Sweden</td>
         <td>Northern Sotho</td>
         <td>tlambregts4</td>
@@ -644,7 +644,7 @@ export const WithScrollbar: StoryFn = () => (
         <td>Aridatha</td>
         <td>Kuhnt</td>
         <td>akuhnt5@sitemeter.com</td>
-        <td className="u-no-wrap">2898 Wayridge Terrace</td>
+        <td style={{ whiteSpace: "nowrap" }}>2898 Wayridge Terrace</td>
         <td>China</td>
         <td>Latvian</td>
         <td>akuhnt5</td>
@@ -654,7 +654,7 @@ export const WithScrollbar: StoryFn = () => (
         <td>Kalie</td>
         <td>Olander</td>
         <td>kolander6@loc.gov</td>
-        <td className="u-no-wrap">554 Maywood Parkway</td>
+        <td style={{ whiteSpace: "nowrap" }}>554 Maywood Parkway</td>
         <td>China</td>
         <td>Czech</td>
         <td>kolander6</td>

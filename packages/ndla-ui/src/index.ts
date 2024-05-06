@@ -50,8 +50,6 @@ export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
 export { default as Table, TableStyling } from "./Table";
 
-export { default as ResourcesWrapper, ResourcesTopicTitle } from "./ResourcesWrapper";
-
 export { default as NoContentBox } from "./NoContentBox";
 
 export { default as Masthead, getMastheadHeight, useMastheadHeight, SkipToMainContent } from "./Masthead";

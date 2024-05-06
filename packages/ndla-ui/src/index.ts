@@ -138,8 +138,6 @@ export { default as messagesEN } from "./locale/messages-en";
 export { default as messagesSE } from "./locale/messages-se";
 export { default as messagesSMA } from "./locale/messages-sma";
 
-export { default as Aside } from "./Aside";
-
 export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from "./Breadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";
 

@@ -12,4 +12,6 @@ import ArticleFootNotes from "./ArticleFootNotes";
 import ArticleHeaderWrapper from "./ArticleHeaderWrapper";
 
 export { ArticleByline, ArticleFootNotes, ArticleHeaderWrapper, ArticleTitle, ArticleIntroduction, ArticleWrapper };
+export { ArticleParagraph } from "./ArticleParagraph";
+
 export default Article;

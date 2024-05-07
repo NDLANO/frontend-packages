@@ -969,7 +969,7 @@ const messages = {
         },
         save: {
           warning:
-            "Dette lagar ein lenke til mappa i Mine mapper. Du kan enkelt finne ho att ved å gå til Mine mapper i menyen i Min NDLA.",
+            "Dette lagar ei lenke til mappa i Mine mapper. Du kan enkelt finne ho att ved å gå til Mine mapper i menyen i Min NDLA.",
           header: "Lagre lenke til denne mappa",
           save: "Lagre lenke til delt mappe",
         },

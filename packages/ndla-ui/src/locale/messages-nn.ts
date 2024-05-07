@@ -953,9 +953,9 @@ const messages = {
         },
         warning: {
           authenticated:
-            "Denne mappa er delt av {{ name }}, og inneheld fagstoff, oppgåver og lenkjer til tekstar frå både NDLA og andre nettstader.",
+            "Denne mappa er delt av {{ name }}, og inneheld fagstoff, oppgåver og lenker til tekster frå både NDLA og andre nettstader.",
           unauthenticated:
-            "Denne mappa er delt av {{ name }}, og inneheld fagstoff, oppgåver og lenkjer til tekstar frå både NDLA og andre nettstader. Logg inn på Min NDLA for å kopiera mappa eller lager lenkja.",
+            "Denne mappa er delt av {{ name }}, og inneheld fagstoff, oppgåver og lenker til tekster frå både NDLA og andre nettstader. Logg inn på Min NDLA for å kopiere mappa eller lagre lenka.",
         },
         button: {
           share: "Del mappe",

@@ -544,6 +544,7 @@ const messages = {
       tips: "Tipsh learoehkidie",
       vacancies: "Gaavnoes barkoeh",
     },
+    otherLanguages: "Andre språk",
   },
   contentTypes: {
     all: "Alle",
@@ -955,9 +956,9 @@ const messages = {
             "Nå kan du dele denne lenka med elever eller andre lærere. Hvis du gjør endringer i mappa, blir de synlige for alle du har delt lenka med.",
         },
         warning: {
-          loggedIn:
+          authenticated:
             "Denne mappen er delt av {{ name }}, og  inneholder fagstoff, oppgaver og lenker til tekster fra både NDLA og andre nettsteder.",
-          loggedOut:
+          unauthenticated:
             "Denne mappen er delt av {{ name }}, og  inneholder fagstoff, oppgaver og lenker til tekster fra både NDLA og andre nettsteder. Logg inn på Min NDLA for å kopiere mappen eller lagre lenken.",
         },
         button: {
@@ -1173,6 +1174,7 @@ const messages = {
       "Er du sikker på at du vil slette mappen? Dersom mappen har undermapper vil disse også slettes. Handlingen kan ikke endres.",
     confirmDeleteTag: "Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.",
     myFolders: "Mine mapper",
+    sharedByOthersFolders: "Mapper andre har delt",
     myTags: "Mine emneknagger",
     mySubjects: "Mine fag",
     newFolder: "Ny mappe",

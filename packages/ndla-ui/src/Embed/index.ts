@@ -6,7 +6,7 @@
  *
  */
 
-export { default as ImageEmbed } from "./ImageEmbed";
+export { default as ImageEmbed, getCrop, getFocalPoint } from "./ImageEmbed";
 export { default as AudioEmbed } from "./AudioEmbed";
 export { default as H5pEmbed } from "./H5pEmbed";
 export { default as ExternalEmbed } from "./ExternalEmbed";

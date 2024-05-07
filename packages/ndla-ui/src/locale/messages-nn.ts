@@ -540,6 +540,7 @@ const messages = {
       tips: "Tips til elevar",
       vacancies: "Ledige stillingar",
     },
+    otherLanguages: "Andre språk",
   },
   contentTypes: {
     all: "Alle",
@@ -951,10 +952,10 @@ const messages = {
             "No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.",
         },
         warning: {
-          loggedIn:
-            "Denne mappen er delt av {{ name }}, og  inneholder fagstoff, oppgaver og lenker til tekster fra både NDLA og andre nettsteder.",
-          loggedOut:
-            "Denne mappen er delt av {{ name }}, og  inneholder fagstoff, oppgaver og lenker til tekster fra både NDLA og andre nettsteder. Logg inn på Min NDLA for å kopiere mappen eller lagre lenken.",
+          authenticated:
+            "Denne mappa er delt av {{ name }}, og inneheld fagstoff, oppgåver og lenkjer til tekstar frå både NDLA og andre nettstader.",
+          unauthenticated:
+            "Denne mappa er delt av {{ name }}, og inneheld fagstoff, oppgåver og lenkjer til tekstar frå både NDLA og andre nettstader. Logg inn på Min NDLA for å kopiera mappa eller lager lenkja.",
         },
         button: {
           share: "Del mappe",
@@ -1169,6 +1170,7 @@ const messages = {
       "Er du sikker på at du vil slette mappa? Dersom mappa har undermapper vil desse også slettast. Denne handlinga kan ikkje endrast.",
     confirmDeleteTag: "Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.",
     myFolders: "Mine mapper",
+    sharedByOthersFolders: "Mapper andre har delt",
     myTags: "Mine emneknaggar",
     mySubjects: "Mine fag",
     newFolder: "Ny mappe",

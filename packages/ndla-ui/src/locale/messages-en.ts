@@ -540,6 +540,7 @@ const messages = {
       tips: "Tips to students",
       vacancies: "Vacancies",
     },
+    otherLanguages: "Other languages",
   },
   contentTypes: {
     all: "All",
@@ -951,9 +952,9 @@ const messages = {
             "Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.",
         },
         warning: {
-          loggedIn:
+          authenticated:
             "This folder is shared by {{ name }}, and contains course material, assignments and links to texts from both NDLA and other websites.",
-          loggedOut:
+          unauthenticated:
             "This folder is shared by {{ name }}, and contains course material, assignments and links to texts from both NDLA and other websites. Log onto My NDLA to copy the folder or save the link.",
         },
         button: {
@@ -1169,6 +1170,7 @@ const messages = {
 
     confirmDeleteTag: "Are you sure you want to delete this tag? This process cannot be undone.",
     myFolders: "My folders",
+    sharedByOthersFolders: "Folders shared by others",
     myTags: "My tags",
     mySubjects: "My subjects",
     newFolder: "New folder",

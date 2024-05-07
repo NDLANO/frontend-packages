@@ -14,6 +14,8 @@ export { default as FramedContent } from "./FramedContent";
 export {
   ConceptNotionV2,
   ImageEmbed,
+  getCrop,
+  getFocalPoint,
   AudioEmbed,
   H5pEmbed,
   ExternalEmbed,
@@ -47,8 +49,6 @@ export {
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
 export { default as Table, TableStyling } from "./Table";
-
-export { default as ResourcesWrapper, ResourcesTopicTitle } from "./ResourcesWrapper";
 
 export { default as NoContentBox } from "./NoContentBox";
 
@@ -84,7 +84,7 @@ export {
 
 export { FilterButtons, ToggleItem } from "./Filter";
 
-export { Footer, EditorName, FooterText } from "./Footer";
+export { FooterBlock } from "./Footer";
 
 export { Figure } from "./Figure";
 export type { FigureType } from "./Figure";
@@ -120,12 +120,6 @@ export { ResourceBox } from "./ResourceBox";
 
 export { default as AudioPlayer } from "./AudioPlayer";
 
-export { NavigationBox } from "./Navigation";
-
-export { default as Programme } from "./Programme";
-
-export { default as CompetenceGoalTab } from "./CompetenceGoalTab";
-
 export {
   SearchTypeResult,
   SearchHeader,
@@ -142,11 +136,6 @@ export { default as messagesEN } from "./locale/messages-en";
 export { default as messagesSE } from "./locale/messages-se";
 export { default as messagesSMA } from "./locale/messages-sma";
 
-export { ToolboxInfo } from "./ToolboxPage";
-export { default as Topic } from "./Topic";
-export type { TopicProps } from "./Topic";
-export { default as Aside } from "./Aside";
-
 export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from "./Breadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";
 
@@ -155,7 +144,7 @@ export { default as ResourceGroup } from "./ResourceGroup";
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from "./Layout";
 
-export { FilmSlideshow, MovieGrid, FilmMovieSearch, FilmMovieList, AllMoviesAlphabetically } from "./NDLAFilm";
+export { FilmSlideshow, MovieGrid, FilmMovieList, AllMoviesAlphabetically } from "./NDLAFilm";
 
 export {
   MediaList,
@@ -179,15 +168,12 @@ export {
   ConceptBadge,
 } from "./ContentTypeBadge";
 
-export { SubjectHeader, SubjectBanner } from "./Subject";
-
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 
 export { default as ContentPlaceholder } from "./ContentPlaceholder";
 
 export { Notion } from "./Notion";
 
-export { BannerCard } from "./BannerCard";
 export { Folder, FolderInput } from "./MyNdla";
 export { ListResource, BlockResource } from "./Resource";
 export type { ListResourceProps } from "./Resource";

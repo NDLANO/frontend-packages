@@ -573,6 +573,7 @@ const messages = {
     sma: "Southern Sami",
     es: "Spanish",
     zh: "Chinese",
+    ukr: "Ukrainian",
     unknown: "Unknown",
     prefixChangeLanguage: "Choose language",
   },

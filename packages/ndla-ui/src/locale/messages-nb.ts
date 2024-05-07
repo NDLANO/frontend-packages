@@ -573,6 +573,7 @@ const messages = {
     sma: "Sørsamisk",
     es: "Spansk",
     zh: "Kinesisk",
+    ukr: "Ukrainsk",
     unknown: "Ukjent",
     prefixChangeLanguage: "Velg språk",
   },

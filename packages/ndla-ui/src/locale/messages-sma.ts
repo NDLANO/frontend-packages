@@ -577,6 +577,7 @@ const messages = {
     sma: "Åarjelsaemien",
     es: "Spanskegïele",
     zh: "Kinangïele",
+    ukr: "Ukrainsk",
     unknown: "Ammes",
     prefixChangeLanguage: "Veeljh gïelem",
   },

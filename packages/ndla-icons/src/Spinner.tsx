@@ -8,7 +8,7 @@
 
 import { HTMLAttributes } from "react";
 import styled from "@emotion/styled";
-import { colors, spacing, SpacingNames } from "@ndla/core";
+import { colors, misc, spacing, SpacingNames } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   size?: SpacingNames;
@@ -16,7 +16,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 const SpinnerDiv = styled.div`
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   animation: spinnerAnimation 0.7s linear infinite;
   display: block;
   border-style: solid;

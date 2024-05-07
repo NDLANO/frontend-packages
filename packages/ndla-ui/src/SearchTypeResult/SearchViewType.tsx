@@ -9,7 +9,7 @@
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
-import { animations, breakpoints, colors, mq } from "@ndla/core";
+import { animations, breakpoints, colors, misc, mq } from "@ndla/core";
 import { Grid } from "@ndla/icons/common";
 import { ListCircle } from "@ndla/icons/editor";
 
@@ -32,7 +32,7 @@ const ButtonContainer = styled.div`
   height: 44px;
 `;
 const ButtonElement = styled(ButtonV2)`
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   padding: 2px;
   width: 100%;
   height: 100%;
@@ -54,7 +54,7 @@ const ButtonContent = styled.span<ButtonContentProps>`
   align-items: center;
   color: ${colors.brand.primary};
   ${(props) => props.selected && `background: ${colors.brand.greyLighter};`}
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   transition: all ${animations.durations.fast} ease-in-out;
   ${ButtonElement}:hover & {
     background: ${colors.brand.greyLighter};

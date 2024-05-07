@@ -65,7 +65,7 @@ const StyledItemCheckbox = styled.span`
   ${mq.range({ from: breakpoints.tablet })} {
     width: 20px;
     height: 20px;
-    margin: 4px ${spacing.small} 4px 3px;
+    margin: ${spacing.xxsmall} ${spacing.small} ${spacing.xxsmall} 3px;
   }
   &::before {
     content: "";

@@ -120,7 +120,7 @@ const TextVersionHeading = styled(Heading)`
 const LinkButton = styled(ButtonV2)`
   box-shadow: none;
   padding-left: 0;
-  padding-right: 4px;
+  padding-right: ${spacing.xxsmall};
   min-height: ${spacing.medium};
   flex: 0 0 auto;
   &:hover,

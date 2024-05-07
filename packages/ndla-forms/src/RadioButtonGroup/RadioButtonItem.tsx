@@ -9,7 +9,7 @@
 import { forwardRef } from "react";
 import styled from "@emotion/styled";
 import { RadioGroupItemProps, Item, Indicator } from "@radix-ui/react-radio-group";
-import { spacing, colors } from "@ndla/core";
+import { spacing, colors, misc } from "@ndla/core";
 
 export const StyledRadioGroupItem = styled(Item)`
   all: unset;
@@ -43,7 +43,7 @@ const RadioButtonIndicator = styled(Indicator)`
     display: block;
     width: 0px;
     height: 0px;
-    border-radius: 50%;
+    border-radius: ${misc.borderRadiusLarge};
     background-color: ${colors.brand.light};
     transition: 200ms all ease;
   }

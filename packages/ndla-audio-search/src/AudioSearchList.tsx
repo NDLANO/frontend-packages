@@ -7,14 +7,14 @@
  */
 
 import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { colors, misc } from "@ndla/core";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioSearchResult from "./AudioSearchResult";
 
 const StyledResultSpinner = styled.div`
   border: 0.4em solid ${colors.brand.greyLight};
   border-bottom-color: ${colors.brand.primary};
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   margin: 0 auto;
   animation: loadVideoSpinner 0.7s linear infinite;
   height: 3em;

@@ -9,6 +9,7 @@
 import { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useContext } from "react";
 import { Link, LinkProps } from "react-router-dom";
 import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 import { Launch } from "@ndla/icons/common";
 import MissingRouterContext from "./MissingRouterContext";
 
@@ -21,7 +22,7 @@ const isExternalLink = (to?: LinkProps["to"]) =>
 export const isOldNdlaLink = (to?: LinkProps["to"]) => typeof to === "string" && to.match(oldNdlaRegex) !== null;
 
 const LaunchIcon = styled(Launch)`
-  margin-left: 6px;
+  margin-left: ${spacing.xsmall};
   vertical-align: text-top;
 `;
 

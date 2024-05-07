@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, mq, stackOrder } from "@ndla/core";
+import { breakpoints, colors, fonts, misc, mq, spacing, stackOrder } from "@ndla/core";
 import { Explanation, NotionFlip } from "@ndla/icons/common";
 import { ModalHeader, ModalCloseButton, ModalBody, Modal, ModalTitle, ModalTrigger, ModalContent } from "@ndla/modal";
 
@@ -22,11 +22,11 @@ const ArticleNotionsContainer = styled.div`
 `;
 
 const NotionsTrigger = styled.div`
-  padding: 0 16px;
+  padding: 0 ${spacing.nsmall};
   display: inline-flex;
   align-items: center;
   background-color: ${colors.brand.greyLighter};
-  border-radius: 4px;
+  border-radius: ${misc.borderRadius};
   cursor: pointer;
 
   ${mq.range({ from: breakpoints.tablet })} {

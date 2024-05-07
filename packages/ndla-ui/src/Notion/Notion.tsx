@@ -30,11 +30,11 @@ const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   ${mq.range({ from: breakpoints.desktop })} {
     ul,
     ol {
-      margin: 12px 0;
+      margin: ${spacing.small} 0;
       padding: 0 1rem 0 2rem;
     }
     ol > li {
-      margin-left: 24px;
+      margin-left: ${spacing.normal};
     }
   }
 `;

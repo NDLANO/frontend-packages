@@ -40,6 +40,12 @@ const PopoverWrapper = styled.div<PopoverPosition>`
     z-index: ${stackOrder.popover} !important;
   }
 
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
+    div[data-radix-popper-content-wrapper] {
+      left: 20% !important;
+    }
+  }
+
   ${mq.range({ until: breakpoints.tablet })} {
     div[data-radix-popper-content-wrapper] {
       // Fix for popover positioning on mobile.

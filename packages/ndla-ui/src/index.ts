@@ -44,6 +44,7 @@ export {
   ArticleWrapper,
   ArticleHeaderWrapper,
   default as Article,
+  ArticleParagraph,
 } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";

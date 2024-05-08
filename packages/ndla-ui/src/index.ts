@@ -145,8 +145,6 @@ export { default as ResourceGroup } from "./ResourceGroup";
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from "./Layout";
 
-export { FilmSlideshow, MovieGrid, FilmMovieList, AllMoviesAlphabetically } from "./NDLAFilm";
-
 export {
   MediaList,
   MediaListItem,

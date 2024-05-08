@@ -36,11 +36,11 @@ const PopoverWrapper = styled.div<PopoverPosition>`
     position: absolute !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    top: ${({ top }) => top}px !important;
+    top: ${({ top }) => (top || 0) + 210}px !important;
     z-index: ${stackOrder.popover} !important;
   }
 
-  ${mq.range({ until: breakpoints.desktop })} {
+  ${mq.range({ until: breakpoints.tablet })} {
     div[data-radix-popper-content-wrapper] {
       // Fix for popover positioning on mobile.
       // If we modify all popovers we break license icons.

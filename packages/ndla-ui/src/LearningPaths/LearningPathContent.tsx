@@ -19,6 +19,7 @@ const StyledContent = styled.div`
   }
   .c-article {
     margin-top: 0;
+    position: static;
   }
 
   > div:last-child {

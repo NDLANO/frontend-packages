@@ -217,7 +217,7 @@ const getModalPosition = (anchor: HTMLElement) => {
   const article = anchor.closest(".c-article");
   const articlePos = article?.getBoundingClientRect();
   const anchorPos = anchor.getBoundingClientRect();
-  return anchorPos.top - (articlePos?.top || -window.scrollY) + 30; // add 30 so that position is under the word
+  return anchorPos.top - (articlePos?.top || -window.scrollY) + 240; // add 240 so that position is under the word
 };
 
 export const InlineConcept = ({

@@ -51,8 +51,6 @@ export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
 export { default as Table, TableStyling } from "./Table";
 
-export { default as NoContentBox } from "./NoContentBox";
-
 export { default as Masthead, getMastheadHeight, useMastheadHeight, SkipToMainContent } from "./Masthead";
 
 export { default as ContentLoader } from "./ContentLoader";
@@ -141,7 +139,6 @@ export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from "./Bread
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";
 
 export { i18nInstance, formatNestedMessages } from "./i18n";
-export { default as ResourceGroup } from "./ResourceGroup";
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from "./Layout";
 

@@ -9,6 +9,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { IframeData, IframeEmbedData } from "@ndla/types-embed";
 import IframeEmbed from "./IframeEmbed";
+import { OneColumn } from "../Layout";
 
 const embedData: IframeEmbedData = {
   width: "708px",
@@ -25,7 +26,7 @@ const meta: Meta<typeof IframeEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
+      <OneColumn>
         <article className="c-article c-article--clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
@@ -33,7 +34,7 @@ const meta: Meta<typeof IframeEmbed> = {
             </section>
           </section>
         </article>
-      </div>
+      </OneColumn>
     ),
   ],
 };

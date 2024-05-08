@@ -9,6 +9,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { RelatedContentMetaData } from "@ndla/types-embed";
 import RelatedContentEmbed from "./RelatedContentEmbed";
+import { OneColumn } from "../Layout";
 import RelatedArticleList from "../RelatedArticleList";
 
 const filmResourceMeta: RelatedContentMetaData = {
@@ -365,7 +366,7 @@ const meta: Meta<typeof RelatedContentEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
+      <OneColumn>
         <article className="c-article c-article--clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
@@ -373,7 +374,7 @@ const meta: Meta<typeof RelatedContentEmbed> = {
             </section>
           </section>
         </article>
-      </div>
+      </OneColumn>
     ),
   ],
 };

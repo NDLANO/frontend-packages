@@ -12,6 +12,7 @@ import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
+import { OneColumn } from "../Layout";
 
 const embedData: ImageEmbedData = {
   resource: "image",
@@ -92,7 +93,7 @@ const meta: Meta<typeof ImageEmbed> = {
   },
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
+      <OneColumn>
         <article className="c-article c-article--clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
@@ -100,7 +101,7 @@ const meta: Meta<typeof ImageEmbed> = {
             </section>
           </section>
         </article>
-      </div>
+      </OneColumn>
     ),
   ],
 };

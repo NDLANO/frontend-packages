@@ -10,6 +10,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { AudioEmbedData, AudioMeta } from "@ndla/types-embed";
 import AudioEmbed from "./AudioEmbed";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
+import { OneColumn } from "../Layout";
 
 const embedData: AudioEmbedData = {
   resource: "audio",
@@ -186,7 +187,7 @@ const meta: Meta<typeof AudioEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
+      <OneColumn>
         <article className="c-article c-article--clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
@@ -194,7 +195,7 @@ const meta: Meta<typeof AudioEmbed> = {
             </section>
           </section>
         </article>
-      </div>
+      </OneColumn>
     ),
   ],
 };

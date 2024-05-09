@@ -207,3 +207,5 @@ export { Gloss, GlossExample } from "./Gloss";
 export { LinkBlock, LinkBlockSection } from "./LinkBlock";
 
 export type { Article as ArticleType } from "./types";
+
+export { CodeBlock, codeLanguageOptions } from "./CodeBlock";

@@ -29,7 +29,7 @@ export default {
     languageSelector: { control: false },
     auth: { control: false },
   },
-  render: (args) => <FooterBlock {...args}></FooterBlock>,
+  render: (args) => <FooterBlock {...args} />,
 } as Meta<typeof FooterBlock>;
 
 export const Default: StoryObj<typeof FooterBlock> = {};

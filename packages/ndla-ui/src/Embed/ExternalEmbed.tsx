@@ -30,9 +30,9 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const figRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const iframe = figRef.current?.querySelector(`iframe`);
+    const iframe = figRef.current?.querySelector("iframe");
     if (iframe) {
-      const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
+      const [width, height] = [Number.parseInt(iframe.width), Number.parseInt(iframe.height)];
       iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
       iframe.width = "";
       iframe.height = "";

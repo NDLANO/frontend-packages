@@ -102,7 +102,8 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang,
   }, [embed]);
   if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;
-  } else if (embed.status === "error") {
+  }
+  if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="concept" />;
   }
 
@@ -129,7 +130,8 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang,
         exampleLangs={embed.embedData.exampleLangs}
       />
     );
-  } else if (embed.embedData.type === "inline") {
+  }
+  if (embed.embedData.type === "inline") {
     return (
       <InlineConcept
         title={concept.title}
@@ -148,25 +150,24 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang,
         exampleLangs={embed.embedData.exampleLangs}
       />
     );
-  } else {
-    return (
-      <ConceptNotionV2
-        title={concept.title}
-        content={parsedContent}
-        copyright={concept.copyright}
-        source={concept.source}
-        visualElement={visualElement}
-        heartButton={HeartButton}
-        conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
-        conceptType={concept.conceptType}
-        glossData={concept.glossData}
-        lang={lang}
-        exampleIds={embed.embedData.exampleIds}
-        exampleLangs={embed.embedData.exampleLangs}
-        showTitle={renderContext !== "embed"}
-      />
-    );
   }
+  return (
+    <ConceptNotionV2
+      title={concept.title}
+      content={parsedContent}
+      copyright={concept.copyright}
+      source={concept.source}
+      visualElement={visualElement}
+      heartButton={HeartButton}
+      conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
+      conceptType={concept.conceptType}
+      glossData={concept.glossData}
+      lang={lang}
+      exampleIds={embed.embedData.exampleIds}
+      exampleLangs={embed.embedData.exampleLangs}
+      showTitle={renderContext !== "embed"}
+    />
+  );
 };
 
 interface InlineConceptProps extends ConceptNotionData {

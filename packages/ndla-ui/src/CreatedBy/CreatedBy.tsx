@@ -51,11 +51,11 @@ const CreatedBy = ({ name, description, url, target = "_blank" }: Props) => (
           name
         )}
         &nbsp;{description}&nbsp;
-        <StyledSafeLink to={`https://ndla.no`} target={target}>
+        <StyledSafeLink to={"https://ndla.no"} target={target}>
           NDLA
         </StyledSafeLink>
       </Text>
-      <Logo label={`NDLA`} to={`https://ndla.no`} />
+      <Logo label={"NDLA"} to={"https://ndla.no"} />
     </Wrapper>
   </Container>
 );

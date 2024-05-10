@@ -43,9 +43,7 @@ const LicenseDescription = ({ children, licenseRights, messages, locale, highlig
         color={color}
         highlightCC={highlightCC}
       />
-      {messages && messages.modelPremission && (
-        <StyledModelpermission>{messages.modelPremission}</StyledModelpermission>
-      )}
+      {!!messages?.modelPremission && <StyledModelpermission>{messages.modelPremission}</StyledModelpermission>}
     </div>
     {children}
   </StyledLicenseByline>

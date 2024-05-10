@@ -26,10 +26,9 @@ const transform = (content: string, opts: TransformOptions) => {
       if (node.name === "ndlaembed") {
         if (embedPlugins[node.attribs["data-resource"]]) {
           return embedPlugins[node.attribs["data-resource"]](node, options, opts);
-        } else {
-          const embed = JSON.parse(node.attribs["data-json"]) as MetaData<any, any>;
-          return <UnknownEmbed embed={embed} />;
         }
+        const embed = JSON.parse(node.attribs["data-json"]) as MetaData<any, any>;
+        return <UnknownEmbed embed={embed} />;
       }
     },
   };

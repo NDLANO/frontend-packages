@@ -323,7 +323,7 @@ class ImageSearch extends Component<Props, State> {
     const { onError, fetchImage } = this.props;
     const { selectedImage } = this.state;
     if (!selectedImage || image.id !== selectedImage.id) {
-      fetchImage(parseInt(image.id))
+      fetchImage(Number.parseInt(image.id))
         .then((result) => {
           this.setState({ selectedImage: result });
         })
@@ -338,7 +338,7 @@ class ImageSearch extends Component<Props, State> {
     this.setState({ selectedImage: undefined });
     onImageSelect(image);
     if (saveAsMetaImage) {
-      checkboxAction && checkboxAction(image);
+      checkboxAction?.(image);
     }
   }
 

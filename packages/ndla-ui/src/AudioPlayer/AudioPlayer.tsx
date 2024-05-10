@@ -200,7 +200,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
         <TextWrapper data-has-image={!!img}>
           <TitleWrapper>
             <div>
-              {subtitle && subtitle.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
+              {subtitle?.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
               <Title element="h3" headingStyle="h4" margin="none" data-has-desc={!!description}>
                 {title}
               </Title>

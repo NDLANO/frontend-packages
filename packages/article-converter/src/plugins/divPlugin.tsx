@@ -23,7 +23,8 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(node.children, opts)}
       </RelatedArticleList>
     );
-  } else if (node.attribs["data-type"] === "file" && node.childNodes.length) {
+  }
+  if (node.attribs["data-type"] === "file" && node.childNodes.length) {
     const elements = node.childNodes.filter(
       (c): c is Element => c.type === "tag" && c.name === "ndlaembed" && c.attribs["data-resource"] === "file",
     );
@@ -42,7 +43,8 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(pdfs, opts)}
       </>
     );
-  } else if (node.attribs["data-type"] === "grid" && node.children.length > 0) {
+  }
+  if (node.attribs["data-type"] === "grid" && node.children.length > 0) {
     const props = attributesToProps(node.attribs);
     const columns = props["data-columns"] as GridType["columns"];
     const border = props["data-border"] as GridType["border"];
@@ -54,7 +56,8 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(node.children, opts)}
       </Grid>
     );
-  } else if (node.attribs["data-parallax-cell"] === "true" && node.children.length) {
+  }
+  if (node.attribs["data-parallax-cell"] === "true" && node.children.length) {
     return <GridParallaxItem>{domToReact(node.children as DOMNode[], opts)}</GridParallaxItem>;
   }
   return null;

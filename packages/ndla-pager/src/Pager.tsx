@@ -26,7 +26,7 @@ const pageItemActiveStyle = css`
   background-color: "rgba(222,235,246,0.5)";
 `;
 
-const pageItemStyle = (small: boolean = false, color: ColorTheme) => css`
+const pageItemStyle = (small = false, color: ColorTheme) => css`
   display: inline;
   background: transparent;
   border: 0;

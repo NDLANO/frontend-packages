@@ -42,9 +42,8 @@ const LicenseLink = ({ license, asLink = true }: Props) => {
         {license.abbreviation}
       </StyledSafeLink>
     );
-  } else {
-    return <StyledSpan>{license.abbreviation}</StyledSpan>;
   }
+  return <StyledSpan>{license.abbreviation}</StyledSpan>;
 };
 
 export default LicenseLink;

@@ -54,7 +54,6 @@
     "@radix-ui/react-slider": "^1.1.2",
     "date-fns": "^2.30.0",
     "html-react-parser": "^5.1.8",
-    "i18next-browser-languagedetector": "^7.1.0",
     "lodash.throttle": "^4.1.1",
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^2.2.3",
@@ -67,7 +66,7 @@
     "i18next": "^23.5.1",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",
-    "react-i18next": "^13.3.0",
+    "react-i18next": "^14.0.0",
     "react-router-dom": "> 6.0.0"
   },
   "devDependencies": {

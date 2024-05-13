@@ -214,7 +214,7 @@ const StyledAnchorSpan = styled.span`
 `;
 
 const getModalPosition = (anchor: HTMLElement) => {
-  const article = anchor.closest(".c-article");
+  const article = anchor.closest("[data-ndla-article]");
   const articlePos = article?.getBoundingClientRect();
   const anchorPos = anchor.getBoundingClientRect();
   return anchorPos.top - (articlePos?.top || -window.scrollY) + 240; // add 240 so that position is under the word
@@ -267,7 +267,7 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
             {linkText}
           </NotionButton>
         </Trigger>
-        <Portal container={(anchorRef.current?.closest(".c-article") as HTMLElement | null) || undefined}>
+        <Portal container={(anchorRef.current?.closest("[data-ndla-article]") as HTMLElement | null) || undefined}>
           <PopoverWrapper top={modalPos}>
             <Content avoidCollisions={false} side="bottom" asChild>
               <ConceptNotionV2
@@ -386,7 +386,7 @@ export const BlockConcept = ({
                   <Portal
                     container={
                       typeof document !== "undefined"
-                        ? (document.querySelector(".c-article") as HTMLElement | null) || undefined
+                        ? (document.querySelector("[data-ndla-article]") as HTMLElement | null) || undefined
                         : undefined
                     }
                   >

@@ -84,7 +84,7 @@ const StyledDiv = styled.div`
     }
 
     ${mq.range({ until: breakpoints.tablet })} {
-      + div article.c-article {
+      + div article[data-ndla-article] {
         background: ${colors.white};
         margin: 0 -${spacing.normal};
         padding: ${spacing.large} ${spacing.normal} ${spacing.normal} ${spacing.normal};

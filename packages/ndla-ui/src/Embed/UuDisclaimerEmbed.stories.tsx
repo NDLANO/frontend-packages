@@ -11,6 +11,7 @@ import { UuDisclaimerEmbedData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
+import { ArticleWrapper } from "../Article";
 import FactBox from "../FactBox";
 import FramedContent from "../FramedContent";
 import { OneColumn } from "../Layout";
@@ -28,13 +29,13 @@ const meta: Meta<typeof UuDisclaimerEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <article className="c-article c-article--clean">
+        <ArticleWrapper modifier="clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
               <Story />
             </section>
           </section>
-        </article>
+        </ArticleWrapper>
       </OneColumn>
     ),
   ],

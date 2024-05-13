@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useEffect, useRef, useState, forwardRef } from "react";
+import { ReactNode, useEffect, useRef, useState, forwardRef, ComponentPropsWithRef } from "react";
 import BEMHelper from "react-bem-helper";
 import styled from "@emotion/styled";
 
@@ -26,16 +26,17 @@ const classes = new BEMHelper({
   prefix: "c-",
 });
 
-type ArticleWrapperProps = {
+interface ArticleWrapperProps extends ComponentPropsWithRef<"article"> {
   modifier?: string;
-  children: ReactNode;
-};
+}
 
-export const ArticleWrapper = forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier }, ref) => (
-  <article {...classes(undefined, modifier)} ref={ref}>
-    {children}
-  </article>
-));
+export const ArticleWrapper = forwardRef<HTMLElement, ArticleWrapperProps>(
+  ({ children, modifier, className, ...rest }, ref) => (
+    <article {...rest} {...classes(undefined, modifier, className)} ref={ref}>
+      {children}
+    </article>
+  ),
+);
 
 type ArticleTitleProps = {
   icon?: ReactNode;
@@ -177,7 +178,7 @@ export const Article = ({
 
   return (
     <div ref={wrapperRef}>
-      <ArticleWrapper modifier={modifier} ref={articleRef}>
+      <ArticleWrapper modifier={modifier} ref={articleRef} data-article="">
         <LayoutItem layout="center">
           {messages.messageBox && (
             <MSGboxWrapper>

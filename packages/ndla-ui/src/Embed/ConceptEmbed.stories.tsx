@@ -10,6 +10,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
 import ConceptEmbed from "./ConceptEmbed";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
+import { ArticleWrapper } from "../Article";
 import { OneColumn } from "../Layout";
 
 const blockEmbedData: ConceptEmbedData = {
@@ -233,13 +234,13 @@ const meta: Meta<typeof ConceptEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <article className="c-article c-article--clean">
+        <ArticleWrapper modifier="clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
               <Story />
             </section>
           </section>
-        </article>
+        </ArticleWrapper>
       </OneColumn>
     ),
   ],

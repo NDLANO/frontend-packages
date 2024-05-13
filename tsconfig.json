@@ -28,7 +28,6 @@
       "@ndla/code": ["./packages/ndla-code/src"],
       "@ndla/error-reporter": ["./packages/ndla-error-reporter/src"],
       "@ndla/forms": ["./packages/ndla-forms/src"],
-      "@ndla/howto": ["./packages/ndla-howto/src"],
       "@ndla/icons": ["./packages/ndla-icons/src"],
       "@ndla/icons/*": ["./packages/ndla-icons/src/*"],
       "@ndla/image-search": ["./packages/ndla-image-search/src"],

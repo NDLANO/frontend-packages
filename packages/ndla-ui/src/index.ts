@@ -81,8 +81,6 @@ export {
   HeroContent,
 } from "./Hero";
 
-export { FilterButtons, ToggleItem } from "./Filter";
-
 export { FooterBlock } from "./Footer";
 
 export { Figure } from "./Figure";
@@ -119,13 +117,7 @@ export { ResourceBox } from "./ResourceBox";
 
 export { default as AudioPlayer } from "./AudioPlayer";
 
-export {
-  SearchTypeResult,
-  SearchHeader,
-  SearchFieldHeader,
-  SearchSubjectResult,
-  SearchFilterContent,
-} from "./SearchTypeResult";
+export { SearchTypeResult } from "./SearchTypeResult";
 
 export { default as constants } from "./model";
 

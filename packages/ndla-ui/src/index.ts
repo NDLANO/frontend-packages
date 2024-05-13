@@ -91,16 +91,10 @@ export type { FigureType } from "./Figure";
 export { LanguageSelector } from "./LanguageSelector";
 
 export {
-  LearningPathWrapper,
-  LearningPathContent,
   LearningPathMenu,
   LearningPathSticky,
-  LearningPathInformation,
   LearningPathStickySibling,
   LearningPathStickyPlaceholder,
-  LearningPathLastStepNavigation,
-  LearningPathMobileStepInfo,
-  LearningPathMobileHeader,
 } from "./LearningPaths";
 
 export { default as SearchResultSleeve } from "./Search/SearchResultSleeve";

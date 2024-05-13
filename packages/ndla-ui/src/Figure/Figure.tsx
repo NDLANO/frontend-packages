@@ -27,8 +27,11 @@ const StyledFigure = styled.figure`
     display: block;
     border: 0;
   }
-  &[data-sizetype="full"] {
+  &[data-sizetype="full"][data-float=""] {
     margin: ${spacing.normal} 0 ${spacing.normal};
+  }
+  &[data-sizetype="full"] {
+    margin-bottom: ${spacing.normal};
   }
 `;
 

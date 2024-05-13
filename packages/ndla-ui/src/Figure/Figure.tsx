@@ -14,8 +14,6 @@ import styled from "@emotion/styled";
 import { spacing } from "@ndla/core";
 
 const StyledFigure = styled.figure`
-  // display: flex; // TODO: Makes h5p-iframes appear small and not fullsize
-  margin: ${spacing.normal} 0 ${spacing.normal};
   position: relative;
   width: 100%;
   transition:
@@ -29,10 +27,8 @@ const StyledFigure = styled.figure`
     display: block;
     border: 0;
   }
-
-  > * {
-    max-width: 100%;
-    border: 0;
+  &[data-sizetype="full"] {
+    margin: ${spacing.normal} 0 ${spacing.normal};
   }
 `;
 

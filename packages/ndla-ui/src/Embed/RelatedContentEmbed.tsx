@@ -42,7 +42,8 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
         type={type}
       />
     );
-  } else if (typeof embedData.url === "string") {
+  }
+  if (typeof embedData.url === "string") {
     return (
       <RelatedArticle
         title={embedData.title ?? ""}
@@ -56,9 +57,8 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
         }`}
       />
     );
-  } else {
-    return <></>;
   }
+  return <></>;
 };
 
 export default RelatedContentEmbed;

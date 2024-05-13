@@ -130,10 +130,10 @@ const ContentTypeResult = ({
 
             // Figure out highlighting by comparing path of link with keyboard navigated anchor
             const anchor =
-              keyboardPathNavigation instanceof HTMLElement &&
-              keyboardPathNavigation &&
-              keyboardPathNavigation.querySelector("a");
-            const anchorHref = anchor && anchor.getAttribute("href");
+              keyboardPathNavigation instanceof HTMLElement && keyboardPathNavigation
+                ? keyboardPathNavigation.querySelector("a")
+                : undefined;
+            const anchorHref = anchor?.getAttribute("href") ?? null;
             const shouldHighlight = isPathToHighlight(path, anchorHref);
 
             return (

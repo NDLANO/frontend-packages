@@ -70,7 +70,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
         </div>
         <div className="info">
           <span className="text">{`${t("image.modelReleased.label")}: ${t(
-            "image.modelReleased." + image.modelRelease,
+            `image.modelReleased.${image.modelRelease}`,
           )}`}</span>
         </div>
         <ImageMeta

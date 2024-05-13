@@ -34,14 +34,14 @@ const BrightcoveIframe = styled.iframe`
   height: auto;
 `;
 
-export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = "") => {
+export const makeIframeString = (url: string, width: string | number, height: string | number, title = "") => {
   const strippedWidth = typeof width === "number" ? width : width.replace(/\s*px/, "");
   const strippedHeight = typeof height === "number" ? height : height.replace(/\s*px/, "");
   const urlOrTitle = title || url;
   return `<iframe title="${urlOrTitle}" aria-label="${urlOrTitle}" src="${url}" width="${strippedWidth}" height="${strippedHeight}" allowfullscreen scrolling="no" frameborder="0" loading="lazy"></iframe>`;
 };
 
-export const isNumeric = (value: any) => !Number.isNaN(value - parseFloat(value));
+export const isNumeric = (value: any) => !Number.isNaN(value - Number.parseFloat(value));
 
 const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSource[]) => {
   const { account, videoid, player = "default" } = data;

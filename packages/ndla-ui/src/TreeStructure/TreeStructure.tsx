@@ -83,7 +83,7 @@ const TreeStructure = ({
 }: TreeStructureProps) => {
   const ref = useRef<HTMLButtonElement>(null);
 
-  const defaultSelectedFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
+  const defaultSelectedFolderId = defaultOpenFolders?.[defaultOpenFolders.length - 1];
 
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
 

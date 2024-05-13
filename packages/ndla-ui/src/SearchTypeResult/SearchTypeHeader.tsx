@@ -108,9 +108,9 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
           )}
           <SubjectName>
             <h2 id={`searchitem-header-${type}`}>
-              {type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}
+              {type ? t(`contentTypes.${type}`) : t("searchPage.resultType.allContentTypes")}
             </h2>
-            {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
+            {totalCount && <Count>{t("searchPage.resultType.hits", { count: totalCount })}</Count>}
           </SubjectName>
         </TypeWrapper>
       </HeaderWrapper>

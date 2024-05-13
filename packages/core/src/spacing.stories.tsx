@@ -36,7 +36,7 @@ const Block = styled.div`
 const SpacingBlock = ({ name }: { name: keyof typeof spacing }) => (
   <div>
     <p>{name}</p>
-    <Block style={{ padding: spacing[name] }}></Block>
+    <Block style={{ padding: spacing[name] }} />
     <p>{spacing[name]}</p>
   </div>
 );

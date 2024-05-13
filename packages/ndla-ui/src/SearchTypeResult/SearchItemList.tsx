@@ -91,14 +91,14 @@ const ItemText = styled.div`
 const ImageWrapper = styled.div<{ isTopic: boolean }>`
   float: right;
   position: relative;
-  width: ${(props) => (props.isTopic ? `164px` : `224px`)};
+  width: ${(props) => (props.isTopic ? "164px" : "224px")};
   height: 164px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: ${spacing.small};
   overflow: hidden;
-  ${(props) => props.isTopic && `border-radius: 50%;`};
+  ${(props) => props.isTopic && "border-radius: 50%;"};
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 `;
 

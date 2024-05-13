@@ -153,12 +153,12 @@ export const Article = ({
   });
   const [articlePositionRight, setArticlePositionRight] = useState(0);
 
-  const showExplainNotions = entry && entry.isIntersecting;
+  const showExplainNotions = !!entry?.isIntersecting;
 
   useEffect(() => {
-    if (wrapperRef && wrapperRef.current) {
+    if (wrapperRef?.current) {
       const handler = () => {
-        if (wrapperRef && wrapperRef.current) {
+        if (wrapperRef?.current) {
           const offset =
             wrapperRef.current.getBoundingClientRect().left + wrapperRef.current.getBoundingClientRect().width;
           setArticlePositionRight(offset);

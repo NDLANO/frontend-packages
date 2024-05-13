@@ -119,9 +119,8 @@ const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
         <ContentTypeBadge type={contentType} size="large" />
       </ContentIconWrapper>
     );
-  } else {
-    return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
   }
+  return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
 };
 
 const ResourceTypeAndTitleLoader = ({ children, loading }: LoaderProps) => {
@@ -169,13 +168,10 @@ const BlockResource = ({
   const contentType = useMemo(() => {
     if (!firstResourceType) {
       return MISSING;
-    } else {
-      return (
-        contentTypeMapping[firstResourceType] ??
-        resourceEmbedTypeMapping[firstResourceType] ??
-        contentTypeMapping["default"]
-      );
     }
+    return (
+      contentTypeMapping[firstResourceType] ?? resourceEmbedTypeMapping[firstResourceType] ?? contentTypeMapping.default
+    );
   }, [firstResourceType]);
 
   return (

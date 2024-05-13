@@ -65,7 +65,7 @@ export default {
 } as Meta<typeof Tabs>;
 
 export const TabsStory: StoryFn<typeof Tabs> = ({ ...args }) => {
-  return <Tabs {...args}></Tabs>;
+  return <Tabs {...args} />;
 };
 
 TabsStory.storyName = "Tabs";

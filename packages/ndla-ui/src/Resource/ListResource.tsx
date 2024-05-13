@@ -142,11 +142,10 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType, backgrou
           <ContentTypeBadge type={contentType} background={background} size="x-small" />
         </ContentIconWrapper>
       );
-    } else {
-      return (
-        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === "compact" ? 56 : 136} />
-      );
     }
+    return (
+      <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === "compact" ? 56 : 136} />
+    );
   }
 
   return (
@@ -231,9 +230,8 @@ const ListResource = ({
   const contentType = useMemo(() => {
     if (!firstContentType) {
       return MISSING;
-    } else {
-      return contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping["default"];
     }
+    return contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping.default;
   }, [embedResourceType, firstContentType]);
 
   return (

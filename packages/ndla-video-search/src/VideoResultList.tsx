@@ -120,8 +120,7 @@ interface VideoListItemProps {
 export const VideoListItem = ({ video, onSelectVideo, translations, locale }: VideoListItemProps) => {
   const { t } = useTranslation();
   const [isPreviewing, setIsPreviewing] = useState(false);
-  const license =
-    video.custom_fields && video.custom_fields.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : "";
+  const license = video.custom_fields?.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : "";
   return (
     <StyledListElement>
       <ItemWrapper>

@@ -35,7 +35,7 @@ export const iconButtonStyle = ({ size = "small", colorTheme = "primary", ...pro
 `;
 
 export interface IconButtonProps extends Omit<ButtonProps, "shape"> {
-  ["aria-label"]: string;
+  "aria-label": string;
   /** Usually an icon from `'@ndla/icons'` */
   children?: ReactNode;
 }

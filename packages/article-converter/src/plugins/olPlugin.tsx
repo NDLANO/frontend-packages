@@ -12,7 +12,7 @@ import { PluginType } from "./types";
 export const olPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
   const letterClass = node.attribs["data-type"] === "letters" ? "ol-list--roman" : false;
-  const num = node.attribs["start"];
+  const num = node.attribs.start;
   const numClass = num ? `ol-reset-${num}` : false;
   const classes = [node.attribs.class ?? false, letterClass, numClass].filter((c): c is string => !!c).join(" ");
 

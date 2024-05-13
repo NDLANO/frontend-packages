@@ -6,7 +6,7 @@
  *
  */
 
-export const languageOptions: Array<ICodeLangugeOption> = [
+export const codeLanguageOptions: Array<ICodeLangugeOption> = [
   {
     title: "Bash",
     format: "bash",

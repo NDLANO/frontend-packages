@@ -14,7 +14,7 @@ import { colors, fonts, spacing } from "@ndla/core";
 import { Copy } from "@ndla/icons/action";
 import { Done } from "@ndla/icons/editor";
 import { copyTextToClipboard } from "@ndla/util";
-import { ICodeLangugeOption, languageOptions } from "../languageOptions";
+import { ICodeLangugeOption, codeLanguageOptions } from "./codeLanguageOptions";
 
 const Wrapper = styled.div`
   margin: 15px 0;
@@ -165,7 +165,7 @@ const StyledPre = styled.pre`
 `;
 
 const getTitleFromFormat = (format: string) => {
-  const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === format);
+  const selectedLanguage = codeLanguageOptions.find((item: ICodeLangugeOption) => item.format === format);
   if (selectedLanguage) {
     return selectedLanguage.title;
   }

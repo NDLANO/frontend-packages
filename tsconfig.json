@@ -25,7 +25,6 @@
       "@ndla/hooks": ["./packages/hooks/src"],
       "@ndla/accordion": ["./packages/ndla-accordion/src"],
       "@ndla/audio-search": ["./packages/ndla-audio-search/src"],
-      "@ndla/code": ["./packages/ndla-code/src"],
       "@ndla/error-reporter": ["./packages/ndla-error-reporter/src"],
       "@ndla/forms": ["./packages/ndla-forms/src"],
       "@ndla/icons": ["./packages/ndla-icons/src"],

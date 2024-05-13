@@ -9,17 +9,17 @@
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { IconButtonV2 } from "@ndla/button";
 import { DeleteForever } from "@ndla/icons/editor";
-import Codeblock from "./Codeblock";
+import CodeBlock from "./CodeBlock";
 
 export default {
-  title: "Components/Codeblock",
-  component: Codeblock,
+  title: "Components/CodeBlock",
+  component: CodeBlock,
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
   },
   args: {
-    title: "Codeblock",
+    title: "CodeBlock",
     format: "html",
     highlightedCode: `<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Lorem ipsum<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
@@ -70,13 +70,13 @@ export default {
       },
     },
   },
-} as Meta<typeof Codeblock>;
+} as Meta<typeof CodeBlock>;
 
-export const HTML: StoryFn<typeof Codeblock> = (args) => {
-  return <Codeblock {...args} />;
+export const HTML: StoryFn<typeof CodeBlock> = (args) => {
+  return <CodeBlock {...args} />;
 };
 
-export const CSS: StoryObj<typeof Codeblock> = {
+export const CSS: StoryObj<typeof CodeBlock> = {
   args: {
     highlightedCode: `<span class="token selector">body</span> <span class="token punctuation">{</span>
   <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token unit">px</span><span class="token punctuation">;</span>
@@ -92,7 +92,7 @@ export const CSS: StoryObj<typeof Codeblock> = {
   },
 };
 
-export const JS: StoryObj<typeof Codeblock> = {
+export const JS: StoryObj<typeof CodeBlock> = {
   args: {
     highlightedCode: `<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"This"</span><span class="token punctuation">,</span> <span class="token string">"Little"</span><span class="token punctuation">,</span> <span class="token string">"Piggy"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> first <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token method function property-access">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -104,7 +104,7 @@ console.log(first);`,
   },
 };
 
-export const Text: StoryObj<typeof Codeblock> = {
+export const Text: StoryObj<typeof CodeBlock> = {
   args: {
     highlightedCode: `Pure text without highlighting and no title`,
     code: `Pure text without highlighting and no title`,

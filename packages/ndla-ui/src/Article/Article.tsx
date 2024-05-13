@@ -178,7 +178,7 @@ export const Article = ({
 
   return (
     <div ref={wrapperRef}>
-      <ArticleWrapper modifier={modifier} ref={articleRef} data-article="">
+      <ArticleWrapper modifier={modifier} ref={articleRef} data-ndla-article="">
         <LayoutItem layout="center">
           {messages.messageBox && (
             <MSGboxWrapper>

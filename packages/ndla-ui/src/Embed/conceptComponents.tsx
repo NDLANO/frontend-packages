@@ -95,6 +95,7 @@ const notionContentCss = css`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     width: 720px;
+    max-width: 60vw;
   }
 
   ${mq.range({ until: breakpoints.tablet })} {

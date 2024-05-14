@@ -44,13 +44,12 @@ export {
   ArticleWrapper,
   ArticleHeaderWrapper,
   default as Article,
+  ArticleParagraph,
 } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
 export { default as Table, TableStyling } from "./Table";
-
-export { default as NoContentBox } from "./NoContentBox";
 
 export { default as Masthead, getMastheadHeight, useMastheadHeight, SkipToMainContent } from "./Masthead";
 
@@ -82,8 +81,6 @@ export {
   HeroContent,
 } from "./Hero";
 
-export { FilterButtons, ToggleItem } from "./Filter";
-
 export { FooterBlock } from "./Footer";
 
 export { Figure } from "./Figure";
@@ -92,16 +89,10 @@ export type { FigureType } from "./Figure";
 export { LanguageSelector } from "./LanguageSelector";
 
 export {
-  LearningPathWrapper,
-  LearningPathContent,
   LearningPathMenu,
   LearningPathSticky,
-  LearningPathInformation,
   LearningPathStickySibling,
   LearningPathStickyPlaceholder,
-  LearningPathLastStepNavigation,
-  LearningPathMobileStepInfo,
-  LearningPathMobileHeader,
 } from "./LearningPaths";
 
 export { default as SearchResultSleeve } from "./Search/SearchResultSleeve";
@@ -120,13 +111,7 @@ export { ResourceBox } from "./ResourceBox";
 
 export { default as AudioPlayer } from "./AudioPlayer";
 
-export {
-  SearchTypeResult,
-  SearchHeader,
-  SearchFieldHeader,
-  SearchSubjectResult,
-  SearchFilterContent,
-} from "./SearchTypeResult";
+export { SearchTypeResult } from "./SearchTypeResult";
 
 export { default as constants } from "./model";
 
@@ -136,17 +121,12 @@ export { default as messagesEN } from "./locale/messages-en";
 export { default as messagesSE } from "./locale/messages-se";
 export { default as messagesSMA } from "./locale/messages-sma";
 
-export { default as Aside } from "./Aside";
-
 export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from "./Breadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";
 
 export { i18nInstance, formatNestedMessages } from "./i18n";
-export { default as ResourceGroup } from "./ResourceGroup";
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from "./Layout";
-
-export { FilmSlideshow, MovieGrid, FilmMovieSearch, FilmMovieList, AllMoviesAlphabetically } from "./NDLAFilm";
 
 export {
   MediaList,
@@ -213,3 +193,5 @@ export { Gloss, GlossExample } from "./Gloss";
 export { LinkBlock, LinkBlockSection } from "./LinkBlock";
 
 export type { Article as ArticleType } from "./types";
+
+export { CodeBlock, codeLanguageOptions } from "./CodeBlock";

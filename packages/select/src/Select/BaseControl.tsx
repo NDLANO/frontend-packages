@@ -8,7 +8,7 @@
 
 import { ControlProps } from "react-select";
 import styled from "@emotion/styled";
-import { colors, fonts, spacing } from "@ndla/core";
+import { colors, fonts, misc, spacing } from "@ndla/core";
 import { StyledDropdown } from "./BaseDropdownIndicator";
 import { Option } from "./types";
 
@@ -43,7 +43,7 @@ const StyledBaseControl = styled.div`
   }
 
   &[data-small="true"] {
-    border-radius: 4px;
+    border-radius: ${misc.borderRadius};
     padding: ${spacing.xxsmall} ${spacing.xsmall};
     min-height: unset;
     ${fonts.sizes("16px", "18px")};

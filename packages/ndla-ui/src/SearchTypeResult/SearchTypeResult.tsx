@@ -8,7 +8,7 @@
 
 import { memo, ReactNode } from "react";
 import styled from "@emotion/styled";
-import { spacing, stackOrder } from "@ndla/core";
+import { misc, spacing, stackOrder } from "@ndla/core";
 import { Spinner } from "@ndla/icons";
 import ResultNavigation, { PaginationType } from "./ResultNavigation";
 import { SearchItemProps } from "./SearchItem";
@@ -36,7 +36,7 @@ const Overlay = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: ${misc.borderRadius};
   padding: ${spacing.small};
 `;
 

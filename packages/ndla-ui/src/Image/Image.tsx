@@ -8,7 +8,7 @@
 
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { colors, misc } from "@ndla/core";
 
 export interface ImageCrop {
   startX: number;
@@ -51,7 +51,7 @@ const StyledImageWrapper = styled.div`
   &[data-border="true"] {
     border: 1px solid ${colors.brand.tertiary};
     border-bottom: 0;
-    border-radius: 4px;
+    border-radius: ${misc.borderRadius};
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }

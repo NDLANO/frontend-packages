@@ -31,7 +31,6 @@
     "@ndla/types-embed": "^4.1.6"
   },
   "dependencies": {
-    "@ndla/code": "^5.0.57",
     "@ndla/ui": "^51.0.0",
     "html-react-parser": "^5.1.8"
   },

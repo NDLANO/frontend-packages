@@ -17,14 +17,8 @@ export const fileEmbedPlugin: PluginType = (element) => {
   const { type, title, url, display } = data.embedData;
   if (type === "pdf" && display === "block") {
     return <PdfFile title={title} url={url} />;
-  } else {
-    return (
-      <File
-        url={url}
-        title={title}
-        fileExists={data.status === "success" ? !!data.data.exists : false}
-        fileType={type}
-      />
-    );
   }
+  return (
+    <File url={url} title={title} fileExists={data.status === "success" ? !!data.data.exists : false} fileType={type} />
+  );
 };

@@ -21,7 +21,7 @@ export default {
 } as Meta<typeof Pager>;
 
 export const PagerStory: StoryFn<typeof Pager> = ({ ...args }) => {
-  return <Pager {...args}></Pager>;
+  return <Pager {...args} />;
 };
 
 PagerStory.storyName = "Pager";

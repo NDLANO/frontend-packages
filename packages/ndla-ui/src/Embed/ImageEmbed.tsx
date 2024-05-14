@@ -82,20 +82,25 @@ const getSizes = (size?: string, align?: string) => {
 };
 
 export const getFocalPoint = (data: ImageEmbedData) => {
-  const focalX = parseFloat(data.focalX ?? "");
-  const focalY = parseFloat(data.focalY ?? "");
-  if (!isNaN(focalX) && !isNaN(focalY)) {
+  const focalX = Number.parseFloat(data.focalX ?? "");
+  const focalY = Number.parseFloat(data.focalY ?? "");
+  if (!Number.isNaN(focalX) && !Number.isNaN(focalY)) {
     return { x: focalX, y: focalY };
   }
   return undefined;
 };
 
 export const getCrop = (data: ImageEmbedData) => {
-  const lowerRightX = parseFloat(data.lowerRightX ?? "");
-  const lowerRightY = parseFloat(data.lowerRightY ?? "");
-  const upperLeftX = parseFloat(data.upperLeftX ?? "");
-  const upperLeftY = parseFloat(data.upperLeftY ?? "");
-  if (!isNaN(lowerRightX) && !isNaN(lowerRightY) && !isNaN(upperLeftX) && !isNaN(upperLeftY)) {
+  const lowerRightX = Number.parseFloat(data.lowerRightX ?? "");
+  const lowerRightY = Number.parseFloat(data.lowerRightY ?? "");
+  const upperLeftX = Number.parseFloat(data.upperLeftX ?? "");
+  const upperLeftY = Number.parseFloat(data.upperLeftY ?? "");
+  if (
+    !Number.isNaN(lowerRightX) &&
+    !Number.isNaN(lowerRightY) &&
+    !Number.isNaN(upperLeftX) &&
+    !Number.isNaN(upperLeftY)
+  ) {
     return {
       startX: lowerRightX,
       startY: lowerRightY,
@@ -142,7 +147,8 @@ const ImageEmbed = ({
   const parsedDescription = useMemo(() => {
     if (embed.embedData.caption || renderContext === "article") {
       return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
-    } else if (embed.status === "success" && embed.data.caption.caption) {
+    }
+    if (embed.status === "success" && embed.data.caption.caption) {
       return parse(embed.data.caption.caption);
     }
   }, [embed, renderContext]);
@@ -286,7 +292,8 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
         {expanded ? <ArrowCollapse /> : <ExpandTwoArrows />}
       </button>
     );
-  } else if (hideByline(size)) {
+  }
+  if (hideByline(size)) {
     return (
       <BylineButton
         type="button"
@@ -297,7 +304,8 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
         {bylineHidden ? <ChevronDown /> : <ChevronUp />}
       </BylineButton>
     );
-  } else return null;
+  }
+  return null;
 };
 
 export default ImageEmbed;

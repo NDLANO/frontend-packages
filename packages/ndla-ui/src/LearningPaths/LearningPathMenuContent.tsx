@@ -63,7 +63,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       `
       a span {
         ${animations.fadeInLeftFromZero()}
-        animation-delay: ${parseInt(animations.durations.superFast) * 1.5 + 20 * props.indexNumber}ms;
+        animation-delay: ${Number.parseInt(animations.durations.superFast) * 1.5 + 20 * props.indexNumber}ms;
       }
     `}
     &:first-of-type, &:last-of-type {

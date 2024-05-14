@@ -6,9 +6,8 @@
  *
  */
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import BEMHelper from "react-bem-helper";
-import { isMobile } from "react-device-detect";
 
 const classes = new BEMHelper({
   name: "article",
@@ -21,16 +20,6 @@ type Props = {
 };
 
 const ArticleHeaderWrapper = ({ children, competenceGoals }: Props) => {
-  useEffect(() => {
-    if (isMobile) {
-      const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll(".c-article__header");
-      if (heroContentList.length === 1) {
-        heroContentList[0].scrollIntoView(true);
-        window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
-      }
-    }
-  }, []);
-
   return (
     <div {...classes("header")}>
       {children}

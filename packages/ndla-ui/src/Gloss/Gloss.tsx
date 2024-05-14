@@ -118,11 +118,13 @@ const getFilteredExamples = (
       glossData?.examples?.map((examples, i) => {
         if (exampleIdsList.includes(i.toString())) {
           return examples.filter((e) => exampleLangsList.includes(e.language));
-        } else return [];
+        }
+        return [];
       }) ?? [];
     const examplesWithoutEmpty = filteredExamples.filter((el) => !!el.length);
     return examplesWithoutEmpty;
-  } else return glossData?.examples ?? [];
+  }
+  return glossData?.examples ?? [];
 };
 
 const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => {

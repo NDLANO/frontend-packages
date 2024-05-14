@@ -7,20 +7,14 @@
  */
 
 import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
+import { ArticleParagraph } from "@ndla/ui";
 import { PluginType } from "./types";
+
 export const paragraphPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
-  if (node.attribs["data-align"] === "center") {
-    const classes = [node.attribs.class ?? "", "u-text-center"].filter((c) => !!c).join(" ");
-    return (
-      <p {...props} lang={opts.articleLanguage} data-align={undefined} className={classes}>
-        {domToReact(node.children as DOMNode[], converterOpts)}
-      </p>
-    );
-  }
   return (
-    <p {...props} lang={opts.articleLanguage}>
+    <ArticleParagraph {...props} lang={opts.articleLanguage}>
       {domToReact(node.children as DOMNode[], converterOpts)}
-    </p>
+    </ArticleParagraph>
   );
 };

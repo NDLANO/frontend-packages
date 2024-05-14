@@ -50,7 +50,7 @@ const SubjectName = styled.div`
   h2 {
     margin: 0;
     ${fonts.sizes("18px", "24px")};
-    margin-right: 4px;
+    margin-right: ${spacing.xxsmall};
   }
 `;
 
@@ -69,7 +69,7 @@ const CategoryItems = styled.div`
 `;
 
 const CategoryTypeButtonWrapper = styled.div`
-  margin: 4px;
+  margin: ${spacing.xxsmall};
 `;
 
 const CategoryTypeCrossWrapper = styled.span`
@@ -108,9 +108,9 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Pro
           )}
           <SubjectName>
             <h2 id={`searchitem-header-${type}`}>
-              {type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}
+              {type ? t(`contentTypes.${type}`) : t("searchPage.resultType.allContentTypes")}
             </h2>
-            {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
+            {totalCount && <Count>{t("searchPage.resultType.hits", { count: totalCount })}</Count>}
           </SubjectName>
         </TypeWrapper>
       </HeaderWrapper>

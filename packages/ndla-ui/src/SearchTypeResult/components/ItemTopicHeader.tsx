@@ -9,8 +9,7 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { colors, fonts, spacing } from "@ndla/core";
-
+import { colors, fonts, misc, spacing } from "@ndla/core";
 import ContentTypeBadge from "../../ContentTypeBadge";
 import { SearchItemType } from "../SearchItem";
 import { ContentType } from "../SearchTypeResult";
@@ -47,7 +46,7 @@ const TopicHeaderVisualElementWrapper = styled.div`
   height: 110px;
   display: flex;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
 `;
 
 const TopicHeaderImage = styled.img`

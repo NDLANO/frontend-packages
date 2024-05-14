@@ -17,7 +17,8 @@ export const LayoutItem = ({ children, layout, ...rest }: Props) => {
   const className = useMemo(() => {
     if (layout === "extend") {
       return "u-10/12@desktop u-push-1/12@desktop u-10/12@tablet u-push-1/12@tablet";
-    } else if (layout === "center") {
+    }
+    if (layout === "center") {
       return "u-10/12 u-push-1/12";
     }
     return undefined;

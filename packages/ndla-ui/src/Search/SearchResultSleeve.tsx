@@ -164,12 +164,12 @@ const getNextElementInDirection = (
   if (direction === 1) {
     const idx = currentIdx + 1 > arr.length - 1 ? 0 : currentIdx + 1;
     return arr[idx];
-  } else if (direction === -1) {
+  }
+  if (direction === -1) {
     const idx = currentIdx - 1 < 0 ? arr.length - 1 : currentIdx - 1;
     return arr[idx];
-  } else {
-    return arr[currentIdx];
   }
+  return arr[currentIdx];
 };
 
 const getDefaultCount = () => {
@@ -196,9 +196,8 @@ const findPathForKeyboardNavigation = (
       default:
         return current;
     }
-  } else {
-    return getNextElementInDirection(current, resultsContainingPaths, direction);
   }
+  return getNextElementInDirection(current, resultsContainingPaths, direction);
 };
 
 type Props = {
@@ -259,11 +258,10 @@ const SearchResultSleeve = ({
           e.stopPropagation();
           e.preventDefault();
           const toClick =
-            keyboardPathNavigation &&
-            keyboardPathNavigation.querySelector &&
+            keyboardPathNavigation?.querySelector &&
             (keyboardPathNavigation.querySelector("a") || keyboardPathNavigation.querySelector("button"));
 
-          toClick && toClick.click();
+          toClick?.click();
         }
       } else if (e.code === "Tab") {
         setKeyNavigation("");
@@ -283,7 +281,7 @@ const SearchResultSleeve = ({
     const highlightedElement =
       keyboardPathNavigation === GO_TO_SEARCHPAGE
         ? searchAllRef.current
-        : contentRef.current && contentRef.current.querySelector('[data-highlighted="true"]');
+        : contentRef.current?.querySelector('[data-highlighted="true"]');
 
     if (highlightedElement) {
       highlightedElement.scrollIntoView({

@@ -9,6 +9,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { OembedEmbedData, OembedData } from "@ndla/types-embed";
 import ExternalEmbed from "./ExternalEmbed";
+import { ArticleWrapper } from "../Article";
+import { OneColumn } from "../Layout";
 
 const embedData: OembedEmbedData = {
   resource: "external",
@@ -53,15 +55,15 @@ const meta: Meta<typeof ExternalEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
-        <article className="c-article c-article--clean">
+      <OneColumn>
+        <ArticleWrapper modifier="clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
               <Story />
             </section>
           </section>
-        </article>
-      </div>
+        </ArticleWrapper>
+      </OneColumn>
     ),
   ],
 };

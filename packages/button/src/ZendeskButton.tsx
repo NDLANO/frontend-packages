@@ -38,7 +38,7 @@ const ZendeskButton = ({ children, locale, widgetKey, ...rest }: Props) => {
       script.id = "ze-snippet";
       script.type = "text/javascript";
       script.async = true;
-      script.onload = function () {
+      script.onload = () => {
         if (window.zE) {
           window.zE("webWidget", "setLocale", locale);
           window.zE("webWidget:on", "close", () => {

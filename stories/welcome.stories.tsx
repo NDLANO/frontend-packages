@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { LayoutItem, Logo, PageContainer } from "@ndla/ui";
+import { ArticleWrapper, LayoutItem, Logo, PageContainer } from "@ndla/ui";
 
 export default {
   title: "Welcome",
@@ -19,7 +19,7 @@ export default {
 export const Welcome: StoryFn = () => (
   <PageContainer>
     <LayoutItem layout="center">
-      <article className="c-article c-article--clean">
+      <ArticleWrapper modifier="clean">
         <div
           style={{
             display: "flex",
@@ -95,7 +95,7 @@ export const Welcome: StoryFn = () => (
         <code>@import '~@ndla/ui/src/main';</code>
         <br />
         Osv.
-      </article>
+      </ArticleWrapper>
     </LayoutItem>
   </PageContainer>
 );

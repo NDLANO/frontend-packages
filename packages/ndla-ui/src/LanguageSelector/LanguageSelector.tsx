@@ -74,7 +74,7 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted, trigg
           aria-label={t("footer.selectLanguage")}
           id={triggerId}
         >
-          {t(`languages.prefixChangeLanguage`)} <ChevronDown />
+          {t("languages.prefixChangeLanguage")} <ChevronDown />
         </ButtonV2>
       </DropdownTrigger>
       <StyledDropdownContent sideOffset={4} showArrow>

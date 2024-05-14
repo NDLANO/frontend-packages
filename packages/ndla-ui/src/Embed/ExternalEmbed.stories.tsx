@@ -9,6 +9,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { OembedEmbedData, OembedData } from "@ndla/types-embed";
 import ExternalEmbed from "./ExternalEmbed";
+import { ArticleWrapper } from "../Article";
 import { OneColumn } from "../Layout";
 
 const embedData: OembedEmbedData = {
@@ -55,13 +56,13 @@ const meta: Meta<typeof ExternalEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <article className="c-article c-article--clean">
+        <ArticleWrapper modifier="clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
               <Story />
             </section>
           </section>
-        </article>
+        </ArticleWrapper>
       </OneColumn>
     ),
   ],

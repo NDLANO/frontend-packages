@@ -1,6 +1,6 @@
 aside,
 article aside,
-.c-article aside {
+[data-ndla-article] aside {
   width: 100%;
   display: inline-block;
   margin: $spacing 0 $spacing 0;

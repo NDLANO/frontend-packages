@@ -9,6 +9,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { H5pEmbedData, H5pData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
+import { ArticleWrapper } from "../Article";
 import { OneColumn } from "../Layout";
 
 const embedData: H5pEmbedData = {
@@ -52,13 +53,13 @@ const meta: Meta<typeof H5pEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <article className="c-article c-article--clean">
+        <ArticleWrapper modifier="clean">
           <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
             <section>
               <Story />
             </section>
           </section>
-        </article>
+        </ArticleWrapper>
       </OneColumn>
     ),
   ],

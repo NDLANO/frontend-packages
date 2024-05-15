@@ -111,8 +111,6 @@ export { ResourceBox } from "./ResourceBox";
 
 export { default as AudioPlayer } from "./AudioPlayer";
 
-export { SearchTypeResult } from "./SearchTypeResult";
-
 export { default as constants } from "./model";
 
 export { default as messagesNB } from "./locale/messages-nb";

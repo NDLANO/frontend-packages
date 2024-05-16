@@ -11,7 +11,11 @@ import { CopyParagraphButton } from "@ndla/ui";
 import { PluginType } from "./types";
 export const copyParagraphPlugin: PluginType = (node, converterOpts, opts) => {
   const parent = node.parent as Element | undefined;
-  if (parent?.name === "section" || (parent?.name === "div" && Object.keys(parent.attribs ?? {}).length === 0)) {
+  if (
+    parent?.name === "section" ||
+    (parent?.name === "div" && Object.keys(parent.attribs ?? {}).length === 0) ||
+    (parent?.name === "ndlaembed" && parent.attribs["data-resource"] === "uu-disclaimer")
+  ) {
     return (
       <CopyParagraphButton copyText={node.attribs["data-text"]} lang={opts.articleLanguage}>
         {domToReact(node.children as DOMNode[], converterOpts)}

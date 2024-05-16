@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, mq, spacing, stackOrder } from "@ndla/core";
+import { breakpoints, colors, fonts, misc, mq, spacing, stackOrder } from "@ndla/core";
 import SkipToMainContent from "./SkipToMainContent";
 import { MessageBanner } from "../Messages";
 
@@ -20,7 +20,7 @@ const MastheadContent = styled.div`
   padding: ${spacing.small} ${spacing.normal};
   font-weight: ${fonts.weight.normal};
   display: flex;
-  height: 84px;
+  height: ${misc.mastheadHeight};
   justify-content: space-between;
   gap: ${spacing.xsmall};
   ${mq.range({ until: breakpoints.tablet })} {
@@ -29,41 +29,34 @@ const MastheadContent = styled.div`
   }
 `;
 
-interface StyledMastheadProps {
-  fixed: boolean;
-  ndlaFilm: boolean;
-}
-
-const StyledMasthead = styled.div<StyledMastheadProps>`
+const StyledMasthead = styled.div`
   z-index: ${stackOrder.banner};
   position: relative;
-  background: white;
+  background: ${colors.white};
   border-bottom: 1px solid ${colors.brand.greyLighter};
-  min-height: 84px;
+  min-height: ${misc.mastheadHeight};
   display: flex;
   flex-flow: column;
   justify-content: flex-end;
-  ${(p) =>
-    p.fixed &&
-    css`
-      top: 0;
-      position: sticky;
-      @media print {
-        position: relative;
-      }
-    `};
-  ${(p) =>
-    p.ndlaFilm &&
-    css`
-      background: ${colors.ndlaFilm.filmColorLight};
-      background-image: linear-gradient(0deg, ${colors.ndlaFilm.filmColorLight}, ${colors.ndlaFilm.filmColor});
-      border: 0;
-      border-bottom: 1px solid #18334c;
-    `};
+
+  &[data-fixed="true"] {
+    top: 0;
+    position: sticky;
+    @media print {
+      position: relative;
+    }
+  }
+
+  &[data-ndla-film="true"] {
+    background: ${colors.ndlaFilm.filmColorLight};
+    background-image: linear-gradient(0deg, ${colors.ndlaFilm.filmColorLight}, ${colors.ndlaFilm.filmColor});
+    border: 0;
+    border-bottom: 1px solid #18334c;
+  }
 `;
 
 interface Alert {
-  content: string;
+  content: ReactNode;
   closable?: boolean;
   number: number;
 }
@@ -81,7 +74,7 @@ export const Masthead = ({ children, fixed, ndlaFilm, skipToMainContentId, messa
   return (
     <>
       {skipToMainContentId && <SkipToMainContent skipToMainContentId={skipToMainContentId} />}
-      <StyledMasthead fixed={!!fixed} ndlaFilm={!!ndlaFilm} id="masthead">
+      <StyledMasthead data-fixed={!!fixed} data-ndla-film={!!ndlaFilm} id="masthead">
         {messages?.map((message) => (
           <MessageBanner
             key={message.number}

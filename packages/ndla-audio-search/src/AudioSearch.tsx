@@ -40,6 +40,7 @@ export interface QueryObject {
   page: number;
   pageSize: number;
   locale: string;
+  fallback?: boolean;
 }
 
 const AudioSearch = ({
@@ -66,6 +67,7 @@ const AudioSearch = ({
           page: queryObject.page,
           pageSize: result.pageSize,
           locale: queryObject.locale,
+          fallback: queryObject.fallback || false,
           audioType: queryObject.audioType || "standard",
         });
         setAudios(result.results);
@@ -89,6 +91,7 @@ const AudioSearch = ({
       page: 1,
       pageSize: queryObject.pageSize,
       locale: queryObject.locale,
+      fallback: queryObject.fallback,
       audioType: queryObject.audioType || "standard",
     });
   };

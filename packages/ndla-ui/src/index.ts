@@ -88,13 +88,6 @@ export type { FigureType } from "./Figure";
 
 export { LanguageSelector } from "./LanguageSelector";
 
-export {
-  LearningPathMenu,
-  LearningPathSticky,
-  LearningPathStickySibling,
-  LearningPathStickyPlaceholder,
-} from "./LearningPaths";
-
 export { default as SearchResultSleeve } from "./Search/SearchResultSleeve";
 
 export { default as ContentTypeResult } from "./Search/ContentTypeResult";

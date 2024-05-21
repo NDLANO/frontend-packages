@@ -33,7 +33,6 @@
   "dependencies": {
     "@ndla/accordion": "^3.0.42",
     "@ndla/button": "^12.0.45",
-    "@ndla/carousel": "^4.0.43",
     "@ndla/core": "^4.5.5",
     "@ndla/dropdown-menu": "^1.0.36",
     "@ndla/forms": "^7.1.2",
@@ -43,9 +42,6 @@
     "@ndla/modal": "^5.0.42",
     "@ndla/notion": "^6.0.43",
     "@ndla/safelink": "^5.1.2",
-    "@ndla/select": "^3.3.17",
-    "@ndla/switch": "^1.1.42",
-    "@ndla/tabs": "^4.0.5",
     "@ndla/tooltip": "^7.0.5",
     "@ndla/typography": "^0.4.19",
     "@ndla/util": "^4.0.4",

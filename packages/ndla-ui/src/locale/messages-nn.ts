@@ -1155,7 +1155,7 @@ const messages = {
       },
     },
     iconMenu: {
-      folders: "Mappar",
+      folders: "Mapper",
       tags: "Emneknaggar",
       subjects: "Favorittfag",
       profile: "Profil",

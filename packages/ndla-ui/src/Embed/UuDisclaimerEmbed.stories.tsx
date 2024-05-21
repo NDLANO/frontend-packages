@@ -12,6 +12,7 @@ import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
 import { ArticleWrapper } from "../Article";
+import CopyParagraphButton from "../CopyParagraphButton";
 import FactBox from "../FactBox";
 import FramedContent from "../FramedContent";
 import { OneColumn } from "../Layout";
@@ -179,6 +180,22 @@ export const WithFactBox: StoryObj<typeof UuDisclaimerEmbed> = {
       <FactBox>
         <p>Dette er faktaboks</p>
       </FactBox>
+    ),
+  },
+};
+
+export const WithCopyParagraphLink: StoryObj<typeof UuDisclaimerEmbed> = {
+  args: {
+    embed: {
+      resource: "uu-disclaimer",
+      status: "success",
+      embedData: embedData,
+      data: {},
+    },
+    children: (
+      <CopyParagraphButton copyText="Dette er en overskrift" lang="no">
+        <h2>Dette er en overskrift</h2>
+      </CopyParagraphButton>
     ),
   },
 };

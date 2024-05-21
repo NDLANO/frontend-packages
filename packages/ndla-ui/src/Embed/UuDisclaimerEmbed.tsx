@@ -58,7 +58,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
 
   return (
     <DisclaimerWrapper role="region">
-      <StyledMessageBox type="info">
+      <StyledMessageBox type="info" contentEditable={false}>
         <InformationOutline />
         <Disclaimer>
           {embedData.disclaimer}

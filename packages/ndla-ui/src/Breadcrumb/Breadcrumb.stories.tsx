@@ -50,10 +50,6 @@ export const CollapseLast: StoryObj<typeof Breadcrumb> = {
   args: { collapseLast: true },
 };
 
-export const AutoCollapse: StoryObj<typeof Breadcrumb> = {
-  args: { autoCollapse: true },
-};
-
 export const CustomSeparator: StoryObj<typeof Breadcrumb> = {
   args: {
     renderSeparator: (item, totalCount) => (

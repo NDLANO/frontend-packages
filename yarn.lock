@@ -2640,7 +2640,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/carousel@npm:^4.0.43, @ndla/carousel@workspace:packages/carousel":
+"@ndla/carousel@workspace:packages/carousel":
   version: 0.0.0-use.local
   resolution: "@ndla/carousel@workspace:packages/carousel"
   dependencies:
@@ -2837,7 +2837,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/select@npm:^3.3.17, @ndla/select@workspace:packages/select":
+"@ndla/select@workspace:packages/select":
   version: 0.0.0-use.local
   resolution: "@ndla/select@workspace:packages/select"
   dependencies:
@@ -2852,7 +2852,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/switch@npm:^1.1.42, @ndla/switch@workspace:packages/switch":
+"@ndla/switch@workspace:packages/switch":
   version: 0.0.0-use.local
   resolution: "@ndla/switch@workspace:packages/switch"
   dependencies:
@@ -2866,7 +2866,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/tabs@npm:^4.0.5, @ndla/tabs@workspace:packages/ndla-tabs":
+"@ndla/tabs@workspace:packages/ndla-tabs":
   version: 0.0.0-use.local
   resolution: "@ndla/tabs@workspace:packages/ndla-tabs"
   dependencies:
@@ -2948,7 +2948,6 @@ __metadata:
   dependencies:
     "@ndla/accordion": "npm:^3.0.42"
     "@ndla/button": "npm:^12.0.45"
-    "@ndla/carousel": "npm:^4.0.43"
     "@ndla/core": "npm:^4.5.5"
     "@ndla/dropdown-menu": "npm:^1.0.36"
     "@ndla/forms": "npm:^7.1.2"
@@ -2958,9 +2957,6 @@ __metadata:
     "@ndla/modal": "npm:^5.0.42"
     "@ndla/notion": "npm:^6.0.43"
     "@ndla/safelink": "npm:^5.1.2"
-    "@ndla/select": "npm:^3.3.17"
-    "@ndla/switch": "npm:^1.1.42"
-    "@ndla/tabs": "npm:^4.0.5"
     "@ndla/tooltip": "npm:^7.0.5"
     "@ndla/types-backend": "npm:^0.2.64"
     "@ndla/types-embed": "npm:^4.1.6"

@@ -6,13 +6,10 @@
  *
  */
 
-import { useCallback, useState } from "react";
-import { resizeObserver } from "@ndla/util";
+import { RefObject, useCallback, useMemo, useState } from "react";
 import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
-type NullableHtmlElement = HTMLElement | null | undefined;
-
-function getSize(el: NullableHtmlElement) {
+function getSize(el: HTMLElement | null) {
   if (!el) {
     return {
       width: 0,
@@ -26,26 +23,39 @@ function getSize(el: NullableHtmlElement) {
   };
 }
 
-interface Ref {
-  current: NullableHtmlElement;
-}
+export const useComponentSize = (element: RefObject<HTMLElement> | HTMLElement | null | string) => {
+  const [componentSize, setComponentSize] = useState({ width: 0, height: 0 });
 
-export function useComponentSize(ref: Ref = { current: undefined }) {
-  const [componentSize, setComponentSize] = useState(getSize(ref.current));
-  const handleResize = useCallback(
-    function handleResize() {
-      if (ref.current) {
-        setComponentSize(getSize(ref.current));
+  const htmlElement = useMemo(() => {
+    if (!element) {
+      return null;
+    }
+    if (typeof element === "string") {
+      if (typeof window !== "undefined") {
+        return document.getElementById(element);
       }
-    },
-    [ref],
-  );
+      return null;
+    }
+    if ("current" in element) {
+      return element.current;
+    }
+    return element;
+  }, [element]);
+
+  const handleResize = useCallback((element: HTMLElement) => {
+    setComponentSize(getSize(element));
+  }, []);
+
   useIsomorphicLayoutEffect(() => {
-    if (!ref.current) {
+    if (!htmlElement) {
       return;
     }
-    handleResize();
-    return resizeObserver(ref.current, handleResize);
-  }, [ref.current]);
+    handleResize(htmlElement);
+    const observer = new ResizeObserver(() => handleResize(htmlElement));
+    observer.observe(htmlElement);
+
+    return () => observer.disconnect();
+  }, [htmlElement]);
+
   return componentSize;
-}
+};

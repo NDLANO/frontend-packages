@@ -8,10 +8,10 @@
 
 import { CSSProperties, ReactNode, useMemo } from "react";
 import styled from "@emotion/styled";
-import { spacing, spacingUnit } from "@ndla/core";
+import { spacing } from "@ndla/core";
+import { useComponentSize } from "@ndla/hooks";
 import { Heading, Text } from "@ndla/typography";
 import { ArticleByline } from "../Article";
-import { useMastheadHeight } from "../Masthead";
 import { Article } from "../types";
 
 interface Props {
@@ -58,7 +58,7 @@ const StyledArticle = styled.article`
 `;
 
 export const FrontpageArticle = ({ article, id, isWide, licenseBox, lang }: Props) => {
-  const { height = 0 } = useMastheadHeight();
+  const { height = 0 } = useComponentSize("masthead");
   const cssVars = useMemo(() => ({ "--masthead-height": `${height}px` }) as unknown as CSSProperties, [height]);
   const { title, introduction, content } = article;
 

@@ -27,6 +27,7 @@ interface MessageBoxProps {
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
+  contentEditable?: boolean;
 }
 
 const MessageBoxWrapper = styled.div`
@@ -93,10 +94,10 @@ const StyledCloseButton = styled(IconButtonV2)`
   right: ${spacing.xsmall};
 `;
 
-export const MessageBox = ({ type, children, links, showCloseButton, onClose }: MessageBoxProps) => {
+export const MessageBox = ({ type, children, links, showCloseButton, onClose, contentEditable }: MessageBoxProps) => {
   const { t } = useTranslation();
   return (
-    <MessageBoxWrapper data-type={type}>
+    <MessageBoxWrapper data-type={type} contentEditable={contentEditable ?? undefined}>
       <InfoWrapper>
         <div>
           <ChildrenWrapper>{children}</ChildrenWrapper>

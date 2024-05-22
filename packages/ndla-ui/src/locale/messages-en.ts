@@ -283,7 +283,7 @@ const messages = {
     resources: "This is not a complete course, but a collection of resources we hope you will find useful.",
     subjectOutdated: "This course is not updated to the current curriculum.",
     subjectFuture: "This course is for a future curriculum.",
-    subjectBeta: "This course is in beta. New resources are being added continously.",
+    subjectBeta: "This course is under development. New resources are being added continously.",
     newVersion:
       "This learning resource is not updated to the current curriculum. You can find an updated version here: ",
     frontPageBeta:

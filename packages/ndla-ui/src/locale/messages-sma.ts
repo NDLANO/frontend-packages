@@ -284,7 +284,7 @@ const messages = {
       "Dette er ikke et komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan være nyttig for deg.",
     subjectOutdated: "Dette faget følger en utgått læreplan.",
     subjectFuture: "Dette faget følger en kommende læreplan.",
-    subjectBeta: "Dette faget er i betaversjon. Vi fyller på med ressurser fortløpende.",
+    subjectBeta: "Dette faget er under utvikling. Vi fyller på med ressurser fortløpende.",
     newVersion:
       "Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ",
     frontPageBeta:

@@ -177,6 +177,7 @@ interface InlineConceptProps extends ConceptNotionData {
   conceptHeartButton?: ReactNode;
   exampleIds?: string;
   exampleLangs?: string;
+  setSelection?: (e: MouseEvent) => void;
 }
 
 const NotionButton = styled.span`
@@ -238,6 +239,7 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
       lang,
       exampleIds,
       exampleLangs,
+      setSelection,
       ...rest
     },
     ref,
@@ -258,13 +260,29 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
       }
     }, []);
 
+    const preventAutoFocusInEditor = useCallback(
+      (e: MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setSelection?.(e);
+      },
+      [setSelection],
+    );
+
     return (
       <Root modal={isMobile} onOpenChange={onOpenChange}>
         <StyledAnchor ref={anchorRef} asChild>
           <StyledAnchorSpan contentEditable={false} />
         </StyledAnchor>
-        <Trigger asChild type={undefined}>
-          <NotionButton role="button" data-open={modalPos !== -9999} tabIndex={0} ref={ref} {...rest}>
+        <Trigger asChild>
+          <NotionButton
+            onMouseDown={(e) => (setSelection ? preventAutoFocusInEditor(e.nativeEvent) : undefined)}
+            data-open={modalPos !== -9999}
+            role="button"
+            tabIndex={0}
+            ref={ref}
+            {...rest}
+          >
             {linkText}
           </NotionButton>
         </Trigger>

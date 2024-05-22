@@ -1549,12 +1549,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.22.5, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.4.5, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
-  version: 7.23.5
-  resolution: "@babel/runtime@npm:7.23.5"
+"@babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.9, @babel/runtime@npm:^7.4.5, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+  version: 7.24.5
+  resolution: "@babel/runtime@npm:7.24.5"
   dependencies:
     regenerator-runtime: "npm:^0.14.0"
-  checksum: 10c0/ca679cc91bb7e424bc2db87bb58cc3b06ade916b9adb21fbbdc43e54cdaacb3eea201ceba2a0464b11d2eb65b9fe6a6ffcf4d7521fa52994f19be96f1af14788
+  checksum: 10c0/05730e43e8ba6550eae9fd4fb5e7d9d3cb91140379425abcb2a1ff9cebad518a280d82c4c4b0f57ada26a863106ac54a748d90c775790c0e2cd0ddd85ccdf346
   languageName: node
   linkType: hard
 
@@ -2585,7 +2585,7 @@ __metadata:
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 
@@ -2600,10 +2600,10 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
-    i18next: ">= 23.0.0"
+    i18next: ">= 23.11.5"
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
     react-router-dom: ">= 6.0.0"
   languageName: unknown
   linkType: soft
@@ -2636,7 +2636,7 @@ __metadata:
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 
@@ -2706,7 +2706,7 @@ __metadata:
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 
@@ -2750,10 +2750,10 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
-    i18next: ">= 23.0.0"
+    i18next: ">= 23.11.5"
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ">= 13.0.0"
+    react-i18next: ">= 14.1.1"
     react-router-dom: ">= 6.0.0"
   languageName: unknown
   linkType: soft
@@ -2776,7 +2776,7 @@ __metadata:
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 
@@ -2792,7 +2792,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 
@@ -2848,7 +2848,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 
@@ -2890,7 +2890,7 @@ __metadata:
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 
@@ -2984,10 +2984,10 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
-    i18next: ^23.5.1
+    i18next: ^23.11.5
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ^13.3.0
+    react-i18next: ^14.1.1
     react-router-dom: "> 6.0.0"
   languageName: unknown
   linkType: soft
@@ -10726,7 +10726,7 @@ __metadata:
     date-fns: "npm:^2.30.0"
     downshift: "npm:^3.2.2"
     eslint: "npm:^8.57.0"
-    i18next: "npm:^23.5.1"
+    i18next: "npm:^23.11.5"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     lerna: "npm:^7.1.4"
@@ -10740,7 +10740,7 @@ __metadata:
     react-device-detect: "npm:^2.2.3"
     react-dom: "npm:^18.3.0"
     react-helmet-async: "npm:^1.3.0"
-    react-i18next: "npm:^13.3.0"
+    react-i18next: "npm:^14.1.1"
     react-router-dom: "npm:^6.3.0"
     sass: "npm:^1.62.0"
     sass-loader: "npm:^13.2.2"
@@ -11679,12 +11679,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^23.5.1":
-  version: 23.5.1
-  resolution: "i18next@npm:23.5.1"
+"i18next@npm:^23.11.5":
+  version: 23.11.5
+  resolution: "i18next@npm:23.11.5"
   dependencies:
-    "@babel/runtime": "npm:^7.22.5"
-  checksum: 10c0/af49c399a90505ae26c1a022d06c4a11c4adcde6524b31c315dcaa43443c85892adef6de934b2af737abbdd2ffa66449d2854f135af8691223a8bb4ffaf6e1af
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10c0/b0bec64250a3e529d4c51e2fc511406a85c5dde3d005d3aabe919551ca31dfc0a8f5490bf6e44649822e895a1fa91a58092d112367669cd11b2eb89e6ba90d1a
   languageName: node
   linkType: hard
 
@@ -15976,11 +15976,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^13.3.0":
-  version: 13.3.0
-  resolution: "react-i18next@npm:13.3.0"
+"react-i18next@npm:^14.1.1":
+  version: 14.1.1
+  resolution: "react-i18next@npm:14.1.1"
   dependencies:
-    "@babel/runtime": "npm:^7.22.5"
+    "@babel/runtime": "npm:^7.23.9"
     html-parse-stringify: "npm:^3.0.1"
   peerDependencies:
     i18next: ">= 23.2.3"
@@ -15990,7 +15990,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 10c0/8c03ea4432fabb1cb3dc53fa7d04f8197600ada98a2c111ac8adf31baf3d0c23a0c1ee944d65c7c5b45deeabe52f625aed72d1bf2e60571ef6f22fd8e0391c81
+  checksum: 10c0/d6da148d5dd1635f57d7a85bdd5c6e1f1404982112358a5efa9f6f47d505a00e4650237d5fc94b4381dcb336c134d500268a7157e06e2b2f0293a2bcd7ec2812
   languageName: node
   linkType: hard
 

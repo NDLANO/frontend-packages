@@ -154,7 +154,7 @@ export { default as ContentPlaceholder } from "./ContentPlaceholder";
 
 export { Notion } from "./Notion";
 
-export { Folder, FolderInput } from "./MyNdla";
+export { Folder } from "./MyNdla";
 export { ListResource, BlockResource } from "./Resource";
 export type { ListResourceProps } from "./Resource";
 export type { TagType } from "./TagSelector";

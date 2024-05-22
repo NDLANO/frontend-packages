@@ -6,14 +6,21 @@
  *
  */
 
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
+import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
+import { IconButtonV2 } from "@ndla/button";
+import { spacing } from "@ndla/core";
+import { FieldErrorMessage, FieldHelper, FormControl, InputContainer, InputV3, Label } from "@ndla/forms";
+import { Spinner } from "@ndla/icons";
+import { Cross } from "@ndla/icons/action";
+import { Done } from "@ndla/icons/editor";
 import { IFolder } from "@ndla/types-backend/learningpath-api";
 import { uuid } from "@ndla/util";
 import { flattenFolders } from "./helperFunctions";
 import TreeStructure, { TreeStructureProps } from "./TreeStructure";
-import { FolderInput } from "../MyNdla";
 
 const MY_FOLDERS_ID = "folders";
 
@@ -24,6 +31,17 @@ const Container = styled.div`
   &[data-type="picker"] {
     height: 250px;
   }
+`;
+
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing.xxsmall};
+  padding-right: ${spacing.xsmall};
+`;
+
+const StyledSpinner = styled(Spinner)`
+  margin: ${spacing.small};
 `;
 
 const targetResource: TreeStructureProps["targetResource"] = {
@@ -190,6 +208,16 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const { t } = useTranslation();
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (isMobile) {
+      inputRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
   const onSave = async () => {
     if (error) {
       return;
@@ -225,31 +253,60 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
   }, [name]);
 
   return (
-    <FolderInput
-      // eslint-disable-next-line jsx-a11y/no-autofocus
-      autoFocus
-      name="name"
-      label={"Mine mapper"}
-      placeholder={"Skriv inn mappenavn"}
-      loading={loading}
-      onClose={onClose}
-      onSave={onSave}
-      error={error}
-      value={name}
-      onChange={(e) => {
-        if (!loading) {
-          setName(e.currentTarget.value);
-        }
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Escape") {
-          e.preventDefault();
-          onClose?.();
-        } else if (e.key === "Enter") {
-          e.preventDefault();
-          onSave();
-        }
-      }}
-    />
+    <FormControl id="folder-name" isRequired isInvalid={!!error}>
+      <Label visuallyHidden>Mine mapper</Label>
+      <FieldErrorMessage>{error}</FieldErrorMessage>
+      <InputContainer>
+        <InputV3
+          autoComplete="off"
+          disabled={loading}
+          ref={inputRef}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus
+          name="name"
+          placeholder="Skriv inn mappenavn"
+          onChange={(e) => {
+            if (!loading) {
+              setName(e.currentTarget.value);
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              e.preventDefault();
+              onClose?.();
+            } else if (e.key === "Enter") {
+              e.preventDefault();
+              onSave();
+            }
+          }}
+        />
+        <Row>
+          {!loading ? (
+            <>
+              {!error && (
+                <IconButtonV2
+                  variant={"ghost"}
+                  colorTheme="light"
+                  tabIndex={0}
+                  aria-label={t("save")}
+                  title={t("save")}
+                  size="small"
+                  onClick={onSave}
+                >
+                  <Done />
+                </IconButtonV2>
+              )}
+              <IconButtonV2 aria-label={t("close")} title={t("close")} size="small" variant="ghost" onClick={onClose}>
+                <Cross />
+              </IconButtonV2>
+            </>
+          ) : (
+            <FieldHelper>
+              <StyledSpinner size="normal" aria-label={t("loading")} />
+            </FieldHelper>
+          )}
+        </Row>
+      </InputContainer>
+    </FormControl>
   );
 };

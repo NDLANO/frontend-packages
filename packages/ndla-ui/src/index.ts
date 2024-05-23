@@ -47,6 +47,8 @@ export {
   ArticleParagraph,
 } from "./Article";
 
+export type { ArticleModifier } from "./Article";
+
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
 export { default as Table, TableStyling } from "./Table";

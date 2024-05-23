@@ -7,24 +7,31 @@
  */
 
 import { ReactNode } from "react";
-import BEMHelper from "react-bem-helper";
-
-const classes = new BEMHelper({
-  name: "article",
-  prefix: "c-",
-});
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing } from "@ndla/core";
 
 type Props = {
   competenceGoals?: ReactNode;
   children: ReactNode;
 };
 
+const StyledHeaderWrapper = styled.div`
+  margin-bottom: ${spacing.normal};
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: ${spacing.large};
+  }
+`;
+
+const CompetenceWrapper = styled.div`
+  margin-top: ${spacing.normal};
+`;
+
 const ArticleHeaderWrapper = ({ children, competenceGoals }: Props) => {
   return (
-    <div {...classes("header")}>
+    <StyledHeaderWrapper>
       {children}
-      <div {...classes("competence")}>{competenceGoals}</div>
-    </div>
+      <CompetenceWrapper>{competenceGoals}</CompetenceWrapper>
+    </StyledHeaderWrapper>
   );
 };
 

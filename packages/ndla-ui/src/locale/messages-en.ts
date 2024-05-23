@@ -933,6 +933,7 @@ const messages = {
       onDragEndMissingOver: "The folder {{name}} was dropped",
       onDragCancel: "Dragging was cancelled. The folder {{name}} was dropped",
       dragHandle: "Drag the folder {{name}}",
+      professional: "a professional",
       sharedWarning: "Name and description will be visible for everyone you share the folder with",
       sharing: {
         share: "Share folder",

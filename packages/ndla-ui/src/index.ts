@@ -51,8 +51,6 @@ export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
 export { default as Table, TableStyling } from "./Table";
 
-export { default as Masthead, getMastheadHeight, useMastheadHeight, SkipToMainContent } from "./Masthead";
-
 export { default as ContentLoader } from "./ContentLoader";
 
 export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleList";

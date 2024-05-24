@@ -14,4 +14,6 @@ import ArticleHeaderWrapper from "./ArticleHeaderWrapper";
 export { ArticleByline, ArticleFootNotes, ArticleHeaderWrapper, ArticleTitle, ArticleIntroduction, ArticleWrapper };
 export { ArticleParagraph } from "./ArticleParagraph";
 
+export type { ArticleModifier } from "./Article";
+
 export default Article;

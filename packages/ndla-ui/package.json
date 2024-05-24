@@ -51,7 +51,6 @@
     "html-react-parser": "^5.1.8",
     "i18next-browser-languagedetector": "^7.1.0",
     "lodash.throttle": "^4.1.1",
-    "react-bem-helper": "1.4.1",
     "react-device-detect": "^2.2.3",
     "react-select": "^5.8.0",
     "react-swipeable": "^7.0.0"

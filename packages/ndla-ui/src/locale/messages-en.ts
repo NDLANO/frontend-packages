@@ -544,8 +544,10 @@ const messages = {
   },
   contentTypes: {
     all: "All",
+    article: "Article",
     subject: "Subject",
     "topic-article": "Topic article",
+    learningpath: "Learning path",
     "learning-path": "Learning path",
     "subject-material": "Subject material",
     "tasks-and-activities": "Task and activities",

@@ -546,8 +546,10 @@ const messages = {
   },
   contentTypes: {
     all: "Buot",
+    article: "Artikkel",
     subject: "Fága",
     "topic-article": "Fáddá",
+    learningpath: "Oahppanbálggis",
     "learning-path": "Oahppanbálggis",
     "subject-material": "Fágaávdnasat",
     "tasks-and-activities": "Bihtát ja doaimmat",

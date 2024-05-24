@@ -547,6 +547,7 @@ const messages = {
     article: "Artikkel",
     subject: "Fag",
     "topic-article": "Emne",
+    learningpath: "Læringssti",
     "learning-path": "Læringssti",
     "subject-material": "Fagstoff",
     "tasks-and-activities": "Oppgåver og aktivitetar",

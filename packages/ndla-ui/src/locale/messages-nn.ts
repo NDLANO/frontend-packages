@@ -544,6 +544,7 @@ const messages = {
   },
   contentTypes: {
     all: "Alle",
+    article: "Artikkel",
     subject: "Fag",
     "topic-article": "Emne",
     "learning-path": "Læringssti",

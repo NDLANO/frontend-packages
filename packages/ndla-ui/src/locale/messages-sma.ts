@@ -548,6 +548,7 @@ const messages = {
   },
   contentTypes: {
     all: "Alle",
+    article: "Artikkel",
     subject: "Faagem",
     "topic-article": "Teema",
     "learning-path": "Lïeremebaalka",

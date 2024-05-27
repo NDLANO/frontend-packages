@@ -61,12 +61,10 @@ export default {
   argTypes: {
     actionButton: {
       table: {
+        disable: true,
         type: {
           detail: "Takes any ReactNode, but as the name implies: use a button component, preferably an icon-button",
         },
-      },
-      control: {
-        type: null,
       },
     },
   },

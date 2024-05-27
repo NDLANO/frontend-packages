@@ -161,6 +161,10 @@ const ImageEmbed = ({
 
   const { data, embedData } = embed;
 
+  // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
+  // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
+  const floatAttr = inGrid && !embedData.align ? {} : { "data-float": embedData.align };
+
   const altText = embedData.alt || "";
 
   const figureType = getFigureType(embedData.size, embedData.align);
@@ -172,7 +176,7 @@ const ImageEmbed = ({
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
   return (
-    <StyledFigure type={imageSizes ? undefined : figureType} data-float={embedData.align}>
+    <StyledFigure type={imageSizes ? undefined : figureType} {...floatAttr}>
       {children}
       <ImageWrapper
         src={!isCopyrighted ? canonicalUrl?.(data) : undefined}

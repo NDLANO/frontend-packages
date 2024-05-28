@@ -57,6 +57,7 @@ export default {
       </DropdownMenu>
     ),
     isShared: true,
+    sharedByOthers: false,
   },
 } as Meta<typeof Folder>;
 

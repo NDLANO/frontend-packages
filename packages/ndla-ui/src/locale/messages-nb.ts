@@ -940,6 +940,7 @@ const messages = {
       sharing: {
         share: "Del mappe",
         shared: "Delt",
+        sharedBy: "Delt av",
         sharedFolder: "Delt mappe",
         unShare: "Delingen er avsluttet. Mappen er ikke lenger delt.",
         copyLink: "Kopier lenke til mappa",

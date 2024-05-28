@@ -10,7 +10,7 @@ import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { fonts, spacing, colors, mq, breakpoints, stackOrder } from "@ndla/core";
-import { FileDocumentOutline, Share } from "@ndla/icons/common";
+import { FileDocumentOutline, Share, Link } from "@ndla/icons/common";
 import { FolderOutlined, FolderSharedOutlined } from "@ndla/icons/contentType";
 import { ResourceTitleLink } from "../../Resource/resourceComponents";
 
@@ -154,11 +154,22 @@ interface Props {
   type?: LayoutType;
   menu?: ReactNode;
   isShared?: boolean;
+  sharedByOthers?: boolean;
 }
 
-const Folder = ({ id, link, title, subFolders, subResources, type = "list", menu, isShared }: Props) => {
+const Folder = ({
+  id,
+  link,
+  title,
+  subFolders,
+  subResources,
+  type = "list",
+  menu,
+  isShared,
+  sharedByOthers,
+}: Props) => {
   const { t } = useTranslation();
-  const Icon = isShared ? FolderSharedOutlined : FolderOutlined;
+  const Icon = sharedByOthers ? Link : isShared ? FolderSharedOutlined : FolderOutlined;
 
   return (
     <FolderWrapper data-type={type} id={id}>

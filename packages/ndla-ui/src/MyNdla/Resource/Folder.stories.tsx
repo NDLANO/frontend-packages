@@ -67,6 +67,10 @@ export const WithoutMenu: StoryObj<typeof Folder> = {
   args: { menu: undefined },
 };
 
+export const SharedByOthers: StoryObj<typeof Folder> = {
+  args: { author: "Lise Lærer", sharedByOthers: true },
+};
+
 const BlockWrapper = styled.div`
   display: flex;
   gap: ${spacing.small};

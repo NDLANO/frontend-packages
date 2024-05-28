@@ -940,7 +940,8 @@ const messages = {
       sharing: {
         share: "Share folder",
         shared: "Shared",
-        sharedBy: "Shared by",
+        sharedBy: "Shared by ",
+        sharedByAnonymous: "anonymous teacher",
         sharedFolder: "Shared folder",
         unShare: "Sharing stopped. The folder is no longer shared",
         copyLink: "Copy link to folder",

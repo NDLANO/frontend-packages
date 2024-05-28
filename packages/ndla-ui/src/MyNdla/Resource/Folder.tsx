@@ -147,6 +147,7 @@ const Count = ({ type, count, layoutType }: IconCountProps) => {
 interface Props {
   id: string;
   title: string;
+  author?: string;
   subFolders?: number;
   subResources?: number;
   description?: string;
@@ -161,6 +162,7 @@ const Folder = ({
   id,
   link,
   title,
+  author,
   subFolders,
   subResources,
   type = "list",
@@ -191,11 +193,24 @@ const Folder = ({
             // Information regarding the shared status of a folder is read previously, ignore this
             <IconTextWrapper aria-hidden>
               <Share />
-              <span>{t("myNdla.folder.sharing.shared")}</span>
+              {sharedByOthers ? (
+                <span>
+                  {t("myNdla.folder.sharing.sharedBy")}
+                  {author ? `${author}` : t("myNdla.folder.sharing.sharedByAnonymous")}
+                </span>
+              ) : (
+                <span>{t("myNdla.folder.sharing.shared")}</span>
+              )}
             </IconTextWrapper>
           )}
-          <Count layoutType={type} type={"folder"} count={subFolders} />
-          <Count layoutType={type} type={"resource"} count={subResources} />
+          {!sharedByOthers ? (
+            <>
+              <Count layoutType={type} type={"folder"} count={subFolders} />
+              <Count layoutType={type} type={"resource"} count={subResources} />
+            </>
+          ) : (
+            ""
+          )}
         </CountContainer>
         {menu}
       </MenuWrapper>

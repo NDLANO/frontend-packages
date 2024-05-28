@@ -946,6 +946,7 @@ const messages = {
         unShare: "Delingen er avsluttet. Mappen er ikke lenger delt.",
         copyLink: "Kopier lenke til mappa",
         link: "Lenken er kopiert",
+        savedLink: "Lenke til  {{ name }} er lagt til i Mine mapper.",
         header: {
           shared: "Denne mappa er delt",
         },
@@ -1192,6 +1193,7 @@ const messages = {
     copyFolderDisclaimer:
       "Dette lager en kopi av mappen. Eventuelle endringer i originalmappen vil ikke bli oppdatert her.",
     loginCopyFolderPitch: "Ønsker du å kopiere denne mappen?",
+    loginSaveFolderLinkPitch: "Ønsker du å lagre lenken til denne delte mappen?",
     help: "Hjelp",
     more: "Flere valg",
     selectView: "Velg visning",

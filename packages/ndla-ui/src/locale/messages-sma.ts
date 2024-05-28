@@ -1192,6 +1192,7 @@ const messages = {
     copyFolderDisclaimer:
       "Dette lager en kopi av mappen. Eventuelle endringer i originalmappen vil ikke bli oppdatert her.",
     loginCopyFolderPitch: "Ønsker du å kopiere denne mappen?",
+    loginSaveFolderLinkPitch: "Ønsker du å lagre lenken til denne delte mappen?",
     help: "Hjelp",
     more: "Flere valg",
     selectView: "Velg visning",

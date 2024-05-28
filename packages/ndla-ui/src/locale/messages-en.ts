@@ -1188,6 +1188,7 @@ const messages = {
     copyFolderDisclaimer:
       "This creates a copy of the folder. Any changes made to the original folder will not be updated here.",
     loginCopyFolderPitch: "Do you wish to copy this folder?",
+    loginSaveFolderLinkPitch: "Do you wish to save the link to this shared folder?",
     help: "Help",
     more: "More options",
     selectView: "Select view",

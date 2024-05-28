@@ -942,6 +942,7 @@ const messages = {
         unShare: "Sharing stopped. The folder is no longer shared",
         copyLink: "Copy link to folder",
         link: "Link is copied",
+        savedLink: "Link to {{ name }} has been added to My folders.",
         header: {
           shared: "This folder is shared",
         },

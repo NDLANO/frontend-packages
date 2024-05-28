@@ -941,6 +941,7 @@ const messages = {
         sharedFolder: "Delt mappe",
         unShare: "Delinga er avslutta. Mappa er ikkje lenger delt",
         link: "Lenka er kopiert",
+        savedLink: "Lenka til  {{ name }} er lagt til i Mine mapper.",
         copyLink: "Kopier lenke til mappa",
         header: {
           shared: "Denne mappa er delt",

@@ -15,7 +15,7 @@ import { ArticleWrapper } from "../Article";
 import CopyParagraphButton from "../CopyParagraphButton";
 import FactBox from "../FactBox";
 import FramedContent from "../FramedContent";
-import { OneColumn } from "../Layout";
+import LayoutItem, { OneColumn } from "../Layout";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
@@ -31,11 +31,11 @@ const meta: Meta<typeof UuDisclaimerEmbed> = {
     (Story) => (
       <OneColumn>
         <ArticleWrapper modifier="clean">
-          <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+          <LayoutItem layout="center">
             <section>
               <Story />
             </section>
-          </section>
+          </LayoutItem>
         </ArticleWrapper>
       </OneColumn>
     ),

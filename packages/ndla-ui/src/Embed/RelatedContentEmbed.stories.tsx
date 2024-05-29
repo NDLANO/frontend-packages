@@ -404,6 +404,17 @@ const linkEmbed2: RelatedContentMetaData = {
   status: "success",
 };
 
+const linkEmbed3: RelatedContentMetaData = {
+  resource: "related-content",
+  embedData: {
+    resource: "related-content",
+    title: "Valg av tillitselev fra klassen",
+    url: "https://xn--elevrd-mua.no",
+  },
+  data: undefined,
+  status: "success",
+};
+
 export const RelatedContentStory: StoryObj<typeof RelatedContentEmbed> = {
   render: () => (
     <RelatedArticleList>
@@ -429,6 +440,7 @@ export const WithLinks: StoryObj<typeof RelatedContentEmbed> = {
     <RelatedArticleList>
       <RelatedContentEmbed embed={linkEmbed1} />
       <RelatedContentEmbed embed={linkEmbed2} />
+      <RelatedContentEmbed embed={linkEmbed3} />
     </RelatedArticleList>
   ),
 };

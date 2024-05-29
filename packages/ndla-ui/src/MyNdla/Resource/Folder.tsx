@@ -155,7 +155,7 @@ interface Props {
   type?: LayoutType;
   menu?: ReactNode;
   isShared?: boolean;
-  sharedByOthers?: boolean;
+  isOwner?: boolean;
 }
 
 const Folder = ({
@@ -168,10 +168,10 @@ const Folder = ({
   type = "list",
   menu,
   isShared,
-  sharedByOthers,
+  isOwner = true,
 }: Props) => {
   const { t } = useTranslation();
-  const Icon = sharedByOthers ? Link : isShared ? FolderSharedOutlined : FolderOutlined;
+  const Icon = !isOwner ? Link : isShared ? FolderSharedOutlined : FolderOutlined;
 
   return (
     <FolderWrapper data-type={type} id={id}>
@@ -193,7 +193,7 @@ const Folder = ({
             // Information regarding the shared status of a folder is read previously, ignore this
             <IconTextWrapper aria-hidden>
               <Share />
-              {sharedByOthers ? (
+              {!isOwner ? (
                 <span>
                   {t("myNdla.folder.sharing.sharedBy")}
                   {author ? `${author}` : t("myNdla.folder.sharing.sharedByAnonymous")}
@@ -203,7 +203,7 @@ const Folder = ({
               )}
             </IconTextWrapper>
           )}
-          {!sharedByOthers ? (
+          {isOwner ? (
             <>
               <Count layoutType={type} type={"folder"} count={subFolders} />
               <Count layoutType={type} type={"resource"} count={subResources} />

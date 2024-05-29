@@ -57,7 +57,7 @@ export default {
       </DropdownMenu>
     ),
     isShared: true,
-    sharedByOthers: false,
+    isOwner: true,
   },
 } as Meta<typeof Folder>;
 
@@ -68,7 +68,7 @@ export const WithoutMenu: StoryObj<typeof Folder> = {
 };
 
 export const SharedByOthers: StoryObj<typeof Folder> = {
-  args: { author: "Lise Lærer", sharedByOthers: true },
+  args: { author: "Lise Lærer", isOwner: false },
 };
 
 const BlockWrapper = styled.div`

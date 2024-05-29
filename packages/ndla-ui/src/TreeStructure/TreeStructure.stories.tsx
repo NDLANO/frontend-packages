@@ -17,7 +17,7 @@ import { FieldErrorMessage, FieldHelper, FormControl, InputContainer, InputV3, L
 import { Spinner } from "@ndla/icons";
 import { Cross } from "@ndla/icons/action";
 import { Done } from "@ndla/icons/editor";
-import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { IFolder } from "@ndla/types-backend/myndla-api";
 import { uuid } from "@ndla/util";
 import { flattenFolders } from "./helperFunctions";
 import TreeStructure, { TreeStructureProps } from "./TreeStructure";

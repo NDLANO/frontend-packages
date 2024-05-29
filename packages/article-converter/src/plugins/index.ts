@@ -18,7 +18,6 @@ import { navPlugin } from "./navPlugin";
 import { anchorPlugin as oembedAnchorPlugin } from "./oembed/anchorPlugin";
 import { olPlugin } from "./olPlugin";
 import { paragraphPlugin } from "./paragraphPlugin";
-import { spanPlugin } from "./spanPlugin";
 import { tablePlugin } from "./tablePlugin";
 import { PluginType } from "./types";
 import { ulPlugin } from "./ulPlugin";
@@ -28,7 +27,6 @@ export const basePlugins: Record<string, PluginType> = {
   h3: h3Plugin,
   ol: olPlugin,
   p: paragraphPlugin,
-  span: spanPlugin,
   math: mathPlugin,
   div: divPlugin,
   table: tablePlugin,

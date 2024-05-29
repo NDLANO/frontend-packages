@@ -7,7 +7,6 @@
  */
 
 import { ChangeEvent, Component, ReactNode, KeyboardEvent } from "react";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { fonts, colors, spacing, mq, breakpoints } from "@ndla/core";
 import { InputContainer, InputV3 } from "@ndla/forms";
@@ -265,7 +264,7 @@ const ImageSearchWrapper = styled.div`
   }
 `;
 
-const searchIconCss = css`
+const SearchIconButton = styled.button`
   border: 0;
   background: transparent;
   margin: 0;
@@ -388,8 +387,7 @@ class ImageSearch extends Component<Props, State> {
               }
             }}
           />
-          <button
-            css={searchIconCss}
+          <SearchIconButton
             aria-label={searchButtonTitle}
             type="button"
             onClick={() => {
@@ -397,7 +395,7 @@ class ImageSearch extends Component<Props, State> {
             }}
           >
             <SearchIcon />
-          </button>
+          </SearchIconButton>
         </InputContainer>
         {noResultsFound && this.props.noResults}
         <div className="list">

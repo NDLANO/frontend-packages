@@ -171,7 +171,18 @@ const Folder = ({
   isOwner = true,
 }: Props) => {
   const { t } = useTranslation();
-  const Icon = !isOwner ? Link : isShared ? FolderSharedOutlined : FolderOutlined;
+
+  function getIcon(isOwner: boolean, isShared: boolean | undefined) {
+    if (!isOwner) {
+      return Link;
+    } else if (isShared) {
+      return FolderSharedOutlined;
+    } else {
+      return FolderOutlined;
+    }
+  }
+
+  const Icon = getIcon(isOwner, isShared);
 
   return (
     <FolderWrapper data-type={type} id={id}>

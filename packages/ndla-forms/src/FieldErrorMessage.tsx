@@ -7,12 +7,12 @@
  */
 
 import { ComponentPropsWithRef, forwardRef } from "react";
-import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import { colors } from "@ndla/core";
 import { Text, TextProps } from "@ndla/typography";
 import { useFormControlContext } from "./FormControl";
 
-const errorStyling = css`
+const StyledText = styled(Text)`
   color: ${colors.support.red};
   white-space: pre-line;
 `;
@@ -22,11 +22,10 @@ export const FieldErrorMessage = forwardRef<HTMLSpanElement, TextProps & Compone
     const field = useFormControlContext();
     if (field && !field.isInvalid) return null;
     return (
-      <Text
+      <StyledText
         textStyle={textStyle}
         margin={margin}
         element="div"
-        css={errorStyling}
         {...(field?.getErrorMessageProps(props, ref) ?? { ref, ...props })}
       />
     );

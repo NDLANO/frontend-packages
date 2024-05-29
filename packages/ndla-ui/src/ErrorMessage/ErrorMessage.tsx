@@ -40,6 +40,10 @@ const CustomElementWrapper = styled.div`
   margin: ${spacing.large} 0;
 `;
 
+const MessageWrapper = styled.div`
+  margin-top: ${spacing.xsmall};
+`;
+
 interface Props {
   messages: {
     title: string;
@@ -75,14 +79,14 @@ export const ErrorMessage = ({ children, messages, illustration, illustrationEle
       </SafeLink>
     )}
     {messages.goToFrontPage && (
-      <div css={{ marginTop: spacing.xsmall }}>
+      <MessageWrapper>
         <SafeLink to="/">{messages.goToFrontPage}</SafeLink>
-      </div>
+      </MessageWrapper>
     )}
     {messages.logInFailed && (
-      <div css={{ marginTop: spacing.xsmall }}>
+      <MessageWrapper>
         <SafeLink to="/minndla">{messages.logInFailed}</SafeLink>
-      </div>
+      </MessageWrapper>
     )}
     {children}
   </StyledErrorMessage>

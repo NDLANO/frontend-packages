@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from "react";
-import { IFolder, IResource } from "@ndla/types-backend/learningpath-api";
+import { IFolder, IResource } from "@ndla/types-backend/myndla-api";
 
 export type TreeStructureType = "navigation" | "picker";
 

@@ -158,6 +158,16 @@ interface Props {
   isOwner?: boolean;
 }
 
+const getIcon = (isOwner: boolean, isShared?: boolean) => {
+  if (!isOwner) {
+    return Link;
+  } else if (isShared) {
+    return FolderSharedOutlined;
+  } else {
+    return FolderOutlined;
+  }
+};
+
 const Folder = ({
   id,
   link,
@@ -171,17 +181,6 @@ const Folder = ({
   isOwner = true,
 }: Props) => {
   const { t } = useTranslation();
-
-  function getIcon(isOwner: boolean, isShared: boolean | undefined) {
-    if (!isOwner) {
-      return Link;
-    } else if (isShared) {
-      return FolderSharedOutlined;
-    } else {
-      return FolderOutlined;
-    }
-  }
-
   const Icon = getIcon(isOwner, isShared);
 
   return (

@@ -203,13 +203,11 @@ const Folder = ({
               )}
             </IconTextWrapper>
           )}
-          {isOwner ? (
+          {isOwner && (
             <>
               <Count layoutType={type} type={"folder"} count={subFolders} />
               <Count layoutType={type} type={"resource"} count={subResources} />
             </>
-          ) : (
-            ""
           )}
         </CountContainer>
         {menu}

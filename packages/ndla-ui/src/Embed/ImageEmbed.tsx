@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
+import { MouseEventHandler, ReactNode, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, spacing, utils } from "@ndla/core";
@@ -143,6 +143,7 @@ const ImageEmbed = ({
 }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
+  const [floatAttr, setFloatAttr] = useState<any>({});
 
   const parsedDescription = useMemo(() => {
     if (embed.embedData.caption || renderContext === "article") {
@@ -163,7 +164,10 @@ const ImageEmbed = ({
 
   // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
   // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
-  const floatAttr = inGrid && !embedData.align ? {} : { "data-float": embedData.align };
+
+  inGrid && !embedData.align && setFloatAttr({ "data-float": embedData.align });
+
+  // const floatAttr = inGrid && !embedData.align && !!imageSizes ? {} : { "data-float": embedData.align };
 
   const altText = embedData.alt || "";
 
@@ -197,7 +201,28 @@ const ImageEmbed = ({
               size={embedData.size}
               expanded={!!imageSizes}
               bylineHidden={isBylineHidden}
-              onExpand={() => setImageSizes((p) => (p ? undefined : expandedSizes))}
+              onExpand={
+                () => {
+                  if (!imageSizes) {
+                    setImageSizes(expandedSizes);
+                    setTimeout(() => {
+                      setFloatAttr({});
+                    }, 1000);
+                  } else {
+                    setImageSizes(undefined);
+                    setFloatAttr({ "data-float": embedData.align });
+                  }
+                }
+                // setImageSizes((p) => {
+                //   if (p) {
+                //     setFloatAttr({ "data-float": embedData.align });
+                //     return undefined;
+                //   } else {
+                //     setFloatAttr({});
+                //     return expandedSizes;
+                //   }
+                // })
+              }
               onHideByline={() => setIsBylineHidden((p) => !p)}
             />
           }

@@ -65,7 +65,12 @@ const StyledDescription = styled.p`
 
 const StyledImg = styled.img`
   align-self: center;
-  object-fit: contain;
+  object-fit: cover;
+  max-width: 200px;
+  /*   This is unset globally on images */
+  max-height: 200px !important;
+  min-width: 200px;
+  min-height: 200px;
 `;
 
 const StyledLink = styled(SafeLink)`
@@ -91,7 +96,7 @@ const CampaignBlock = ({
 }: Props) => {
   return (
     <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
-      {image && <StyledImg src={image.src} height={200} width={240} alt={image.alt} />}
+      {image && <StyledImg src={image.src} height={200} width={200} alt={image.alt} />}
       <TextWrapper>
         <Heading css={headingStyle}>{parse(title)}</Heading>
         <StyledDescription>{parse(description)}</StyledDescription>

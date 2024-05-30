@@ -6,6 +6,9 @@
  *
  */
 
+export type { BlockQuoteVariantProps, BlockQuoteProps } from "./BlockQuote";
+export { BlockQuote } from "./BlockQuote";
+
 export { Button, IconButton } from "./Button";
 export type { ButtonProps, IconButtonProps } from "./Button";
 export { Input, InputContainer, TextArea } from "./Input";

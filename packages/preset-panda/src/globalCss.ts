@@ -34,4 +34,11 @@ export const globalCss = defineGlobalStyles({
   p: {
     textStyle: "body.medium",
   },
+  a: {
+    color: "text.link",
+    textDecoration: "underline",
+    _hover: {
+      textDecoration: "none",
+    },
+  },
 });

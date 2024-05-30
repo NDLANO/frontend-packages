@@ -9,8 +9,15 @@
 import { defineGlobalStyles } from "@pandacss/dev";
 
 export const globalCss = defineGlobalStyles({
-  html: {
-    fontFamily: "sans",
+  ":root": {
+    // Applied to html in preflight (css reset)
+    "--global-font-body": "fonts.sans",
+    // Code, kbd, pre, samp
+    "--global-font-mono": "fonts.code",
+  },
+  code: {
+    background: "background.subtle",
+    whiteSpace: "pre-wrap",
   },
   h1: {
     textStyle: "heading.medium",

@@ -10,7 +10,7 @@ import { defineGlobalStyles } from "@pandacss/dev";
 
 export const globalCss = defineGlobalStyles({
   html: {
-    textStyle: "body.medium",
+    fontFamily: "sans",
   },
   h1: {
     textStyle: "heading.medium",

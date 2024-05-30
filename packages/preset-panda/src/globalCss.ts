@@ -15,6 +15,12 @@ export const globalCss = defineGlobalStyles({
     // Code, kbd, pre, samp
     "--global-font-mono": "fonts.code",
   },
+  html: {
+    minHeight: "100%",
+  },
+  body: {
+    background: "background.default",
+  },
   code: {
     background: "background.subtle",
     whiteSpace: "pre-wrap",

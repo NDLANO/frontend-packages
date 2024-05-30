@@ -21,3 +21,6 @@ packages/*/.vscode
 .vscode
 .yarn/*
 .vercel
+styled-system/*
+packages/styled-system/**/*
+!packages/styled-system/package.json

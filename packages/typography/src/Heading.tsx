@@ -17,6 +17,10 @@ const style = css`
   ${fonts.sizes("22px", "30px")};
   margin: ${spacing.normal} 0 ${spacing.normal} 0;
 
+  &[data-serif="true"] {
+    font-family: ${fonts.serif};
+  }
+
   &[data-margin="none"] {
     margin: 0px;
   }

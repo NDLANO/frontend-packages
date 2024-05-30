@@ -8,6 +8,8 @@
 
 export { Button, IconButton } from "./Button";
 export type { ButtonProps, IconButtonProps } from "./Button";
+export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
+export type { ExpandableBoxProps, ExpandableBoxSummaryProps } from "./ExpandableBox";
 export { Input, InputContainer, TextArea } from "./Input";
 export { Icon } from "./Icon";
 export type { IconProps } from "./Icon";

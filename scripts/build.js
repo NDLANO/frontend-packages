@@ -87,6 +87,25 @@ function buildFile(file, dest, { silent = false, override = {} } = {}) {
   }
 }
 
+const esPresetEnv = [
+  "@babel/preset-env",
+  {
+    modules: false,
+    targets: {
+      browsers: ["> 0.25%", "not dead"],
+    },
+  },
+];
+
+const libPresetEnv = [
+  "@babel/preset-env",
+  {
+    targets: {
+      browsers: ["> 0.25%", "not dead"],
+    },
+  },
+];
+
 function buildNodePackage(p) {
   const srcDir = path.resolve(p, SRC_DIR);
   const pattern = path.resolve(srcDir, JS_FILES_PATTERN);
@@ -97,22 +116,21 @@ function buildNodePackage(p) {
 
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));
 
+  const skipEmotion = p.endsWith("primitives") || p.endsWith("preset-panda");
+
+  const presets = skipEmotion
+    ? ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]]
+    : ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic", importSource: "@emotion/react" }]];
+
+  const plugins = p.endsWith("primitives") || p.endsWith("preset-panda") ? [] : [...babelOptions.plugins];
+
   files.forEach((file) => {
-    buildFile(file, "es", { silent: true });
+    buildFile(file, "es", { silent: true, override: { presets: [esPresetEnv].concat(presets), plugins } });
     buildFile(file, "lib", {
       silent: true,
       override: {
-        presets: [
-          [
-            "@babel/preset-env",
-            {
-              targets: {
-                browsers: ["> 0.25%", "not dead"],
-              },
-            },
-          ],
-          ...babelOptions.presets.slice(1),
-        ],
+        presets: [libPresetEnv].concat(presets),
+        plugins,
       },
     });
   });

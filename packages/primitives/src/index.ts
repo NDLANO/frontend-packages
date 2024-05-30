@@ -15,3 +15,5 @@ export { Spinner } from "./Spinner";
 export type { SpinnerProps } from "./Spinner";
 export { Text, Heading } from "./Text";
 export type { TextProps } from "./Text";
+export type { MessageBoxVariantProps, MessageBoxProps } from "./MessageBox";
+export { MessageBox } from "./MessageBox";

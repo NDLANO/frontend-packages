@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -29,7 +29,7 @@ const meta: Meta = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div style={{ padding: "24px" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Story />
       </div>
     ),

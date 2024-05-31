@@ -14,16 +14,13 @@ const StyledTable = styled("table", {
     display: "block",
     overflowX: "auto",
     maxWidth: "100%",
-    // whiteSpace: "nowrap",
-    verticalAlign: "top",
+    padding: "4xsmall",
     tableLayout: "fixed",
     "& > caption": {
       fontWeight: "bold",
       textAlign: "left",
       textTransform: "uppercase",
       marginBlockEnd: "xsmall",
-      // margin
-      // maybe font style
     },
     "& thead": {
       overflow: "hidden",
@@ -31,22 +28,21 @@ const StyledTable = styled("table", {
     "& thead tr th": {
       fontWeight: "bold",
       borderBottom: "3px solid",
-      borderColor: "stroke.default",
+      borderColor: "surface.brand.1.strong",
       verticalAlign: "text-top",
-      // Some font bs
     },
     "& tbody th": {
       borderRight: "3px solid",
-      borderColor: "stroke.default",
+      borderColor: "surface.brand.1.strong",
       padding: "3xsmall",
     },
     "& thead tr:nth-child(2) th": {
       border: "1px solid",
-      borderColor: "stroke.subtle",
+      borderColor: "surface.brand.1.subtle",
       textTransform: "none",
       fontWeight: "semibold",
       height: "large",
-      backgroundColor: "stroke.subtle",
+      backgroundColor: "surface.brand.1.subtle",
       paddingBlock: "4xsmall",
       paddingInlineEnd: "medium",
       paddingInlineStart: "3xsmall",
@@ -54,10 +50,9 @@ const StyledTable = styled("table", {
         backgroundColor: "transparent",
       },
     },
-    // skipping nth child thing
     "& td": {
       border: "1px solid",
-      borderColor: "stroke.subtle",
+      borderColor: "surface.brand.1.subtle",
       verticalAlign: "top",
     },
     "& td, & th": {

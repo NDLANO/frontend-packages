@@ -9,6 +9,8 @@
 export { Button, IconButton } from "./Button";
 export type { ButtonProps, IconButtonProps } from "./Button";
 export { Input, InputContainer, TextArea } from "./Input";
+export { OrderedList, UnOrderedList } from "./ArticleLists";
+export type { OrderedListProps, OrderedListVariantProps, UnOrderedListProps } from "./ArticleLists";
 export { Icon } from "./Icon";
 export type { IconProps } from "./Icon";
 export { Spinner } from "./Spinner";

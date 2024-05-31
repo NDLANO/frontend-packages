@@ -154,6 +154,14 @@ const ImageEmbed = ({
     }
   }, [embed, renderContext]);
 
+  // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
+  // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
+  useEffect(() => {
+    if (!inGrid && embed.embedData.align) {
+      setFloatAttr({ "data-float": embed.embedData.align });
+    }
+  }, [inGrid, embed.embedData.align]);
+
   if (embed.status === "error") {
     const { align, size } = embed.embedData;
     const figureType = getFigureType(size, align);
@@ -161,13 +169,6 @@ const ImageEmbed = ({
   }
 
   const { data, embedData } = embed;
-
-  // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
-  // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
-
-  inGrid && !embedData.align && setFloatAttr({ "data-float": embedData.align });
-
-  // const floatAttr = inGrid && !embedData.align && !!imageSizes ? {} : { "data-float": embedData.align };
 
   const altText = embedData.alt || "";
 
@@ -201,28 +202,17 @@ const ImageEmbed = ({
               size={embedData.size}
               expanded={!!imageSizes}
               bylineHidden={isBylineHidden}
-              onExpand={
-                () => {
-                  if (!imageSizes) {
-                    setImageSizes(expandedSizes);
-                    setTimeout(() => {
-                      setFloatAttr({});
-                    }, 1000);
-                  } else {
-                    setImageSizes(undefined);
-                    setFloatAttr({ "data-float": embedData.align });
-                  }
+              onExpand={() => {
+                if (!imageSizes) {
+                  setImageSizes(expandedSizes);
+                  setTimeout(() => {
+                    setFloatAttr({});
+                  }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
+                } else {
+                  setImageSizes(undefined);
+                  setFloatAttr({ "data-float": embedData.align });
                 }
-                // setImageSizes((p) => {
-                //   if (p) {
-                //     setFloatAttr({ "data-float": embedData.align });
-                //     return undefined;
-                //   } else {
-                //     setFloatAttr({});
-                //     return expandedSizes;
-                //   }
-                // })
-              }
+              }}
               onHideByline={() => setIsBylineHidden((p) => !p)}
             />
           }

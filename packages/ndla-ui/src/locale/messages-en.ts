@@ -389,7 +389,7 @@ const messages = {
     images: {
       heading: "How to reuse images",
       description: "Remember to copy the text to be attached to the image where you use it.",
-      rules: "Rules for use of image:",
+      rules: "Rules for use of image",
       itemImage: {
         ariaLabel: "Open image in new window",
         zoomImageButtonLabel: "Expand image",
@@ -403,23 +403,23 @@ const messages = {
     text: {
       heading: "How to reuse the text",
       description: "Remember to refer to the source when reusing text.",
-      rules: "Rules for use of text:",
+      rules: "Rules for use of text",
       published: "Published",
     },
     audio: {
       heading: "How to reuse audio files",
       description: "Remember to copy the text to be attached to the audio where you use it.",
-      rules: "Rules for use of audio file:",
+      rules: "Rules for use of audio file",
     },
     podcast: {
       heading: "How to reuse podcasts",
       description: "Remember to copy the text to be attached to the podcast where you use it.",
-      rules: "Rules for use of podcast:",
+      rules: "Rules for use of podcast",
     },
     video: {
       heading: "How to reuse videos",
       description: "Remember to copy the text to be attached to the video where you use it.",
-      rules: "Rules for use of video files:",
+      rules: "Rules for use of video files",
       itemImage: {
         ariaLabel: "Open video in new window",
       },
@@ -434,12 +434,12 @@ const messages = {
     h5p: {
       heading: "How to reuse H5P content",
       description: "You will find guidelines for use of H5P content in the asset",
-      rules: "Rules for use of H5P:",
+      rules: "Rules for use of H5P",
     },
     concept: {
       heading: "How to reuse concept content",
       description: "Remember that built-in content might have a different license than the explanation text",
-      rules: "Rules for use of concept:",
+      rules: "Rules for use of concept",
       title: "Title",
       embedlink: {
         heading: "How to show the concept in other content",
@@ -451,7 +451,7 @@ const messages = {
     gloss: {
       heading: "How to reuse gloss content",
       description: "Remember that built-in content might have a different license than the gloss text",
-      rules: "Rules for use of gloss:",
+      rules: "Rules for use of gloss",
       title: "Title",
       showOrHideExamples: "Show or hide examples",
       embedlink: {
@@ -464,7 +464,7 @@ const messages = {
     files: {
       heading: "How to reuse files",
       description: "Remember to copy the text to be attached to the file where you use it.",
-      rules: "Rules for use of file:",
+      rules: "Rules for use of file",
       itemImage: {
         ariaLabel: "Open video in new window",
       },

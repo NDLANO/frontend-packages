@@ -404,7 +404,7 @@ const messages = {
     images: {
       heading: "Slik gjenbruker du bilder",
       description: "Husk å kopiere teksten som skal legges ved bildet der du bruker det.",
-      rules: "Regler for bruk av bildet:",
+      rules: "Regler for bruk av bildet",
       itemImage: {
         ariaLabel: "Åpne bilde i et nytt vindu",
         zoomImageButtonLabel: "Forstørr bilde",
@@ -418,23 +418,23 @@ const messages = {
     text: {
       heading: "Slik gjenbruker du teksten",
       description: "Husk å henvise til kilden når du gjenbruker tekst.",
-      rules: "Regler for bruk av teksten:",
+      rules: "Regler for bruk av teksten",
       published: "Publiseringsdato",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description: "Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.",
-      rules: "Regler for bruk av lydfilen:",
+      rules: "Regler for bruk av lydfilen",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Husk å kopiere teksten som skal legges ved podkasten der du bruker den.",
-      rules: "Regler for bruk av podkasten:",
+      rules: "Regler for bruk av podkasten",
     },
     video: {
       heading: "Slik gjenbruker du videoer",
       description: "Husk å kopiere teksten som skal legges ved videoen der du bruker den.",
-      rules: "Regler for bruk av videoen:",
+      rules: "Regler for bruk av videoen",
       itemImage: {
         ariaLabel: "Åpne video i et nytt vindu",
       },
@@ -449,12 +449,12 @@ const messages = {
     h5p: {
       heading: "Slik gjenbruker du H5P-innhold",
       description: "Du finner retningslinjene for bruk av innholdet i H5P-elementet",
-      rules: "Regler for bruk av H5P:",
+      rules: "Regler for bruk av H5P",
     },
     concept: {
       heading: "Slik gjenbruker du forklaringer",
       description: "Husk at innebygd innhold i en forklaring kan ha en annen lisens enn selve forklaringsteksten",
-      rules: "Regler for bruk av forklaring:",
+      rules: "Regler for bruk av forklaring",
       title: "Tittel",
       embedlink: {
         heading: "Slik viser du forklaringen i annet innhold",
@@ -466,7 +466,7 @@ const messages = {
     gloss: {
       heading: "Slik gjenbruker du gloser",
       description: "Husk at innebygd innhold i en glose kan ha en annen lisens enn selve gloseteksten",
-      rules: "Regler for bruk av glose:",
+      rules: "Regler for bruk av glose",
       title: "Tittel",
       showOrHideExamples: "Vis eller skjul eksempler",
       embedlink: {
@@ -479,7 +479,7 @@ const messages = {
     files: {
       heading: "Slik gjenbruker du filer",
       description: "Husk å kopier teksten som skal legges ved filen der du bruker den.",
-      rules: "Regler for bruk av filen:",
+      rules: "Regler for bruk av filen",
       itemImage: {
         ariaLabel: "Åpne i nytt vindu",
       },

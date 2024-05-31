@@ -405,7 +405,7 @@ const messages = {
     images: {
       heading: "Slik gjenbruker du bilder",
       description: "Mujhtieh kopijem vaeltedh teeksteste maam edtjh guvvien baalte bïejedh desnie gusnie dam nuhtjh.",
-      rules: "Njoelkedassh guvvie-åtnoen bïjre:",
+      rules: "Njoelkedassh guvvie-åtnoen bïjre",
       itemImage: {
         ariaLabel: "Rïhpesth guvviem orre klaasesne",
         zoomImageButtonLabel: "Stueredh guvviem",
@@ -419,25 +419,25 @@ const messages = {
     text: {
       heading: "Slik gjenbruker du teksten",
       description: "Mujhtieh gaaltijasse vuesiehtidh gosse teekstem orresistie nuhtjh.",
-      rules: "Njoelkedassh teekste-åtnoen bïjre:",
+      rules: "Njoelkedassh teekste-åtnoen bïjre",
       published: "Bæjkoehtimmiedaatoe",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description:
         "Mujhtieh kopijem vaeltedh teeksteste mij edtja tjoejen baalte bïejesovvedh desnie gusnie tjoejem nuhtjh.",
-      rules: "Njoelkedassh tjoejefijlen åtnoen bïjre:",
+      rules: "Njoelkedassh tjoejefijlen åtnoen bïjre",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Husk å kopiere teksten som skal legges ved podkasten der du bruker den.",
-      rules: "Regler for bruk av podkasten:",
+      rules: "Regler for bruk av podkasten",
     },
     video: {
       heading: "Slik gjenbruker du videoer",
       description:
         "Mujhtieh kopijem vaeltedh teeksteste mij edtja videjoven baalte bïejesovvedh desnie gusnie videjovem nuhtjh.",
-      rules: "Njoelkedassh videjove-åtnoen bïjre:",
+      rules: "Njoelkedassh videjove-åtnoen bïjre",
       itemImage: {
         ariaLabel: "Rïhpesth videjovem orre klaassese",
       },
@@ -452,12 +452,12 @@ const messages = {
     h5p: {
       heading: "Slik gjenbruker du H5P-innhold",
       description: "Datne njoelkedasside sisvegeåtnoen bïjre gaavnh H5P-biehkesne",
-      rules: "Njoelkedassh H5P-åtnoen bïjre:",
+      rules: "Njoelkedassh H5P-åtnoen bïjre",
     },
     concept: {
       heading: "Slik gjenbruker du forklaringer",
       description: "Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten",
-      rules: "Njoelkedassh guktie buerkiestimmiem nuhtjh:",
+      rules: "Njoelkedassh guktie buerkiestimmiem nuhtjh",
       title: "Tihtele",
       embedlink: {
         heading: "Slik viser du forklaringen i annet innhold",
@@ -469,7 +469,7 @@ const messages = {
     gloss: {
       heading: "Naemhtie gïelem ikth vielie nåhtadidh",
       description: "Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie",
-      rules: "Njoelkedassh guktie diejvesem nåhtadidh:",
+      rules: "Njoelkedassh guktie diejvesem nåhtadidh",
       title: "Tihtele",
       showOrHideExamples: "Vuesiehtimmieh vuesiehtidh jallh vöörhkedh",
       embedlink: {
@@ -483,7 +483,7 @@ const messages = {
       heading: "Slik gjenbruker du filer",
       description:
         "Mujhtieh kopijem vaeltedh teeksteste  mij edtja fijlen baalte bïejesovvedh desnie gusnie dam nuhtjh.",
-      rules: "Njoelkedassh fijle-åtnoen bïjre:",
+      rules: "Njoelkedassh fijle-åtnoen bïjre",
       itemImage: {
         ariaLabel: "Åpne i nytt vindu",
       },

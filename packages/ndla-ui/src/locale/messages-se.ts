@@ -400,12 +400,12 @@ const messages = {
       hasCopiedTitle: "Liŋka máŋgejuvvon",
     },
     image: {
-      rules: "Njuolggadusat gova geavaheapmái :",
+      rules: "Njuolggadusat gova geavaheapmái:",
     },
     images: {
       heading: "Ná geavahat govaid ođđasit",
       description: "Muitte máŋget teavstta mii galgá mielddusin govvii go geavahat dan.",
-      rules: "Njuolggadusat gova geavaheapmái:",
+      rules: "Njuolggadusat gova geavaheapmái",
       itemImage: {
         ariaLabel: "Raba gova ođđa siiddus",
         zoomImageButtonLabel: "Stuorit gova",
@@ -419,23 +419,23 @@ const messages = {
     text: {
       heading: "Ná geavahat teavstta ođđasit",
       description: "Muitte čujuhit gáldui go nuppi teavstta anát.",
-      rules: "Njuolggadusat teavstta geavaheapmái:",
+      rules: "Njuolggadusat teavstta geavaheapmái",
       published: "Almmuhanbeaivi",
     },
     audio: {
       heading: "Ná geavahat jietnafiilla ođđasit",
       description: "Muitte máŋget teavstta mii galgá čuovvut jietnafiilla doppe gos geavahuvvo.",
-      rules: "Njuolggadusat jietnafiilla geavaheapmái:",
+      rules: "Njuolggadusat jietnafiilla geavaheapmái",
     },
     podcast: {
       heading: "Ná geavahat podkásta ođđasit",
       description: "Muitte máŋget teavstta mii galgá čuovvut podkásta doppe gos geavahuvvo.",
-      rules: "Njuolggadusat podkásta geavaheapmái:",
+      rules: "Njuolggadusat podkásta geavaheapmái",
     },
     video: {
       heading: "Ná geavahat video ođđasit",
       description: "Muitte máŋget teavstta mii galgá čuovvut video doppe gos dat geavahuvvo.",
-      rules: "Njuolggadusat video geavaheapmái:",
+      rules: "Njuolggadusat video geavaheapmái",
       itemImage: {
         ariaLabel: "Raba video ođđa siiddus",
       },
@@ -450,12 +450,12 @@ const messages = {
     h5p: {
       heading: "Ná geavahat H5P-sisdoalu ođđasit",
       description: "Njuolggadusaid sisdoalu geavaheapmái gávnnat H5P-elemeanttas",
-      rules: "Njuolggadusat H5P geavaheapmái:",
+      rules: "Njuolggadusat H5P geavaheapmái",
     },
     concept: {
       heading: "Ná geavahat čilgehusaid ođđasit",
       description: "Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten",
-      rules: "Njuolggadusat čilgehusa geavaheapmái:",
+      rules: "Njuolggadusat čilgehusa geavaheapmái",
       title: "Tihttel",
       embedlink: {
         heading: "Ná čájehat čilgehusa eará sisdoalus",
@@ -468,7 +468,7 @@ const messages = {
       heading: "Movt geavahit ođđasit dajaldagaid",
       description:
         "Muitte ahte sisdoalus mii lea vuojuhuvvon ovtta gihppagii sáhttá leat eará liseansa go dušše jietnadat.",
-      rules: "Glossa geavaheami njuolggadusat:",
+      rules: "Glossa geavaheami njuolggadusat",
       title: "Namahus",
       showOrHideExamples: "Čájet dahje čiega ovdamearkkaid",
       embedlink: {
@@ -481,7 +481,7 @@ const messages = {
     files: {
       heading: "Ná geavahat fiillaid ođđasit",
       description: "Muitte máŋget teavsttaid mat galget čuovvut fiillaid doppe gos dat geavahuvvet.",
-      rules: "Njuolggadusat fiilla geavaheapmái:",
+      rules: "Njuolggadusat fiilla geavaheapmái",
       itemImage: {
         ariaLabel: "Raba ođđa siiddus",
       },

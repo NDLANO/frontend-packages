@@ -84,13 +84,13 @@ const TabsRoot = styled(Root)`
   }
   &[data-variant="underlined"] {
     [data-tab-list]:after {
-      border-bottom: 1px solid ${colors.brand.tertiary};
+      border-bottom: 1px solid ${colors.brand.primary};
       position: absolute;
-      bottom: 1.5px;
+      bottom: 0px;
       left: 0px;
       content: "";
       width: 100%;
-      z-index: ${stackOrder.hide};
+      z-index: ${stackOrder.base};
     }
 
     [data-tab-trigger] {
@@ -115,18 +115,22 @@ const TabsRoot = styled(Root)`
   }
 `;
 
+const Styledlist = styled(List)`
+  width: fit-content;
+`;
+
 const Tabs = ({ tabs, variant = "underlined", defaultValue: defaultValueProp, ...rest }: Props) => {
   const defaultValue =
     tabs.find((tab) => tab.id === defaultValueProp && !tab.disabled)?.id ?? tabs.find((t) => t.disabled !== true)?.id;
   return (
     <TabsRoot defaultValue={defaultValue} data-variant={variant} {...rest}>
-      <List data-tab-list="">
+      <Styledlist data-tab-list="">
         {tabs.map((tab) => (
           <Trigger key={tab.id} value={tab.id} data-tab-trigger="" disabled={tab.disabled}>
             {tab.title}
           </Trigger>
         ))}
-      </List>
+      </Styledlist>
       {tabs.map((tab) => (
         <Content key={tab.id} value={tab.id} data-tab-panel="">
           {tab.content}

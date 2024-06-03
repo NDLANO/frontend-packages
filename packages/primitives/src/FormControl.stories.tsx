@@ -16,6 +16,9 @@ import { Input, InputContainer, TextArea } from "./Input";
 import { Label } from "./Label";
 import { Text } from "./Text";
 
+/**
+ * Form control komponent inspirert av chakra-ui. Gjør det enklere å sette opp form fields.
+ */
 export default {
   title: "Primitives/FormControl",
   tags: ["autodocs"],
@@ -37,9 +40,9 @@ export const Default: StoryFn<typeof FormControl> = ({ ...args }) => {
   return (
     <FormControl {...args} isInvalid={isInvalid}>
       <Text textStyle="label.small" id="name-info">
-        We need to know your name!
+        Vi har behov for å vite navnet ditt!
       </Text>
-      <Label>Name</Label>
+      <Label>Navn</Label>
       <InputContainer>
         <Person />
         <Input
@@ -49,7 +52,7 @@ export const Default: StoryFn<typeof FormControl> = ({ ...args }) => {
           onChange={(e) => setValue(e.currentTarget.value)}
         />
       </InputContainer>
-      <FieldErrorMessage>This field is required</FieldErrorMessage>
+      <FieldErrorMessage>Dette feltet er obligatorisk</FieldErrorMessage>
     </FormControl>
   );
 };
@@ -57,12 +60,12 @@ export const Default: StoryFn<typeof FormControl> = ({ ...args }) => {
 export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
   return (
     <FormControl {...args}>
-      <Label>Name</Label>
+      <Label>Navn</Label>
       <InputContainer>
         <Person />
         <Input name="name" />
       </InputContainer>
-      <FieldHelper>Make sure to use proper punctuation</FieldHelper>
+      <FieldHelper>Husk å bruke korrekt tegnsetting!</FieldHelper>
     </FormControl>
   );
 };
@@ -70,12 +73,12 @@ export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
 export const Disabled: StoryFn<typeof FormControl> = ({ ...args }) => {
   return (
     <FormControl {...args} isDisabled>
-      <Label>Name</Label>
+      <Label>Navn</Label>
       <InputContainer>
         <Person />
         <Input name="name" />
       </InputContainer>
-      <FieldHelper>Make sure to use proper punctuation</FieldHelper>
+      <FieldHelper>Husk å bruke korrekt tegnsetting!</FieldHelper>
     </FormControl>
   );
 };
@@ -83,9 +86,9 @@ export const Disabled: StoryFn<typeof FormControl> = ({ ...args }) => {
 export const DisabledWithoutWrapper: StoryFn<typeof FormControl> = ({ ...args }) => {
   return (
     <FormControl {...args} isDisabled>
-      <Label>Name</Label>
+      <Label>Navn</Label>
       <Input name="name" />
-      <FieldHelper>Make sure to use proper punctuation</FieldHelper>
+      <FieldHelper>Husk å bruke korrekt tegnsetting!</FieldHelper>
     </FormControl>
   );
 };
@@ -96,10 +99,10 @@ export const WithoutWrapper: StoryFn<typeof FormControl> = ({ ...args }) => {
   return (
     <FormControl {...args} isInvalid={isInvalid}>
       <Text textStyle="label.small" id="name-info">
-        We need to know your name!
+        Vi har behov for å vite navnet ditt!
       </Text>
-      <Label>Name</Label>
-      <FieldErrorMessage>This field is required</FieldErrorMessage>
+      <Label>Navn</Label>
+      <FieldErrorMessage>Dette feltet er obligatorisk</FieldErrorMessage>
       <Input name="name" aria-describedby="name-info" value={value} onChange={(e) => setValue(e.currentTarget.value)} />
     </FormControl>
   );
@@ -112,9 +115,9 @@ export const FormHelperWhenNoError: StoryFn<typeof FormControl> = ({ ...args }) 
   return (
     <FormControl {...args} isInvalid={isInvalid}>
       <Text textStyle="label.small" id="name-info">
-        We need to know your name!
+        Vi har behov for å vite navnet ditt!
       </Text>
-      <Label>Name</Label>
+      <Label>Navn</Label>
       <InputContainer>
         <Person />
         <Input
@@ -125,9 +128,9 @@ export const FormHelperWhenNoError: StoryFn<typeof FormControl> = ({ ...args }) 
         />
       </InputContainer>
       {!isInvalid ? (
-        <FieldHelper>Make sure to use proper punctuation</FieldHelper>
+        <FieldHelper>Husk å bruke korrekt tegnsetting!</FieldHelper>
       ) : (
-        <FieldErrorMessage>This field is required</FieldErrorMessage>
+        <FieldErrorMessage>Dette feltet er obligatorisk</FieldErrorMessage>
       )}
     </FormControl>
   );
@@ -146,9 +149,9 @@ export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Text textStyle="label.small" id="name-info">
-        We need to know your name!
+        Vi har behov for å vite navnet ditt!
       </Text>
-      <Label htmlFor="name">Name</Label>
+      <Label htmlFor="name">Navn</Label>
       <InputContainer>
         <Person />
         <Input
@@ -163,9 +166,9 @@ export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
         />
       </InputContainer>
       {!isInvalid ? (
-        <FieldHelper id="name-helper">Make sure to use proper punctuation!</FieldHelper>
+        <FieldHelper id="name-helper">Husk å bruke korrekt tegnsetting!</FieldHelper>
       ) : (
-        <FieldErrorMessage id="name-error">This field is required</FieldErrorMessage>
+        <FieldErrorMessage id="name-error">Dette feltet er obligatorisk</FieldErrorMessage>
       )}
     </div>
   );
@@ -178,9 +181,9 @@ export const TextAreaFormControl: StoryFn<typeof FormControl> = ({ ...args }) =>
   return (
     <FormControl {...args} isInvalid={isInvalid}>
       <Text textStyle="label.small" id="name-info">
-        We need to know your name!
+        Vi har behov for å vite navnet ditt!
       </Text>
-      <Label>Name</Label>
+      <Label>Navn</Label>
       <InputContainer>
         <Person />
         <TextArea
@@ -191,9 +194,9 @@ export const TextAreaFormControl: StoryFn<typeof FormControl> = ({ ...args }) =>
         />
       </InputContainer>
       {!isInvalid ? (
-        <FieldHelper>Make sure to use proper punctuation</FieldHelper>
+        <FieldHelper>Husk å bruke korrekt tegnsetting!</FieldHelper>
       ) : (
-        <FieldErrorMessage>This field is required</FieldErrorMessage>
+        <FieldErrorMessage>Dette feltet er obligatorisk</FieldErrorMessage>
       )}
     </FormControl>
   );

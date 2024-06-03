@@ -55,6 +55,14 @@ const ColorBlock = ({ backgroundColor }: Props) => (
   </StyledColorBlock>
 );
 
+/**
+ * Primærfargen kalles kunnskap, og er den som har størst fokus. Den er også logofargen til profilen.
+ *
+ * Sammen med denne skal brukes fargene motivasjon og nyskapende (grønn og lilla) som førstevalg.
+ * Sekundært brukes fargene kvalitet, inspirerende og leken (blå, rød og gul) som alternative farger, etter hva som gjengir tematikken på best mulig måte.
+ *
+ * Hvit og svart benyttes i all hovedsak på tekst og luft.
+ */
 export default {
   title: "Preset/Colors",
   tags: ["autodocs"],

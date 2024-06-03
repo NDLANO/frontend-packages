@@ -941,7 +941,7 @@ const messages = {
         share: "Del mappe",
         shared: "Delt",
         sharedBy: "Delt av ",
-        sharedByAnonymous: "anonym lærer",
+        sharedByAnonymous: "anonym lærar",
         sharedFolder: "Delt mappe",
         unShare: "Delinga er avslutta. Mappa er ikkje lenger delt",
         link: "Lenka er kopiert",

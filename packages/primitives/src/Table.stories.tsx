@@ -48,7 +48,7 @@ export const Tables: StoryFn = () => (
         </th>
         <th>Prefiks</th>
         <th>Symbol</th>
-        <th>Namn</th>
+        <th>Navn</th>
         <th>Eksempel</th>
       </tr>
     </thead>
@@ -150,9 +150,7 @@ export const Tables: StoryFn = () => (
         <td>nano</td>
         <td>n</td>
         <td>milliarddel</td>
-        <td>
-          <p>0,000000001</p>
-        </td>
+        <td>0,000000001</td>
       </tr>
     </tbody>
   </Table>
@@ -167,7 +165,7 @@ export const WithFormatting: StoryFn = () => (
         </th>
         <th>Prefiks</th>
         <th>Symbol</th>
-        <th>Namn</th>
+        <th>Navn</th>
         <th style={{ textAlign: "right" }}>Eksempel</th>
       </tr>
     </thead>
@@ -288,9 +286,7 @@ export const WithFormatting: StoryFn = () => (
         <td>nano</td>
         <td>n</td>
         <td>milliarddel</td>
-        <td style={{ textAlign: "right" }}>
-          <p>0,000000001</p>
-        </td>
+        <td style={{ textAlign: "right" }}>0,000000001</td>
       </tr>
     </tbody>
   </Table>
@@ -345,7 +341,7 @@ export const WithTitleOnFirstColumnAndTopRow: StoryFn = () => (
         <th />
         <th scope="col">Prefiks</th>
         <th scope="col">Symbol</th>
-        <th scope="col">Namn</th>
+        <th scope="col">Navn</th>
         <th scope="col">Eksempel</th>
       </tr>
     </thead>

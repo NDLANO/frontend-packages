@@ -200,11 +200,13 @@ const Folder = ({
       <MenuWrapper>
         <CountContainer data-type={type}>
           {isShared && (
-            // Information regarding the shared status of a folder is read previously, ignore this
-            <IconTextWrapper aria-hidden>
+            <IconTextWrapper>
               <Share />
               {!isOwner ? (
-                <span>
+                <span
+                  aria-hidden={isOwner}
+                  aria-label={`${t("myNdla.folder.sharing.sharedBy")} ${author ? `${author}` : t("myNdla.folder.sharing.sharedByAnonymous")}`}
+                >
                   {t("myNdla.folder.sharing.sharedBy")}
                   {author ? `${author}` : t("myNdla.folder.sharing.sharedByAnonymous")}
                 </span>

@@ -203,9 +203,7 @@ const Folder = ({
             <IconTextWrapper>
               <Share />
               {!isOwner ? (
-                <span
-                  aria-label={`${t("myNdla.folder.sharing.sharedBy")} ${author ? `${author}` : t("myNdla.folder.sharing.sharedByAnonymous")}`}
-                >
+                <span>
                   {t("myNdla.folder.sharing.sharedBy")}
                   {author ? `${author}` : t("myNdla.folder.sharing.sharedByAnonymous")}
                 </span>

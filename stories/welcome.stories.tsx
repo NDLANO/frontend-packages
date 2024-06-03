@@ -74,11 +74,7 @@ export const Welcome: StoryFn = () => (
         <br />
         <code>import '@fontsource/source-sans-pro/700.css';</code>
         <br />
-        <code>import '@fontsource/source-code-pro/index.css';</code>
-        <br />
-        <code>import '@fontsource/source-code-pro/400-italic.css';</code>
-        <br />
-        <code>import '@fontsource/source-code-pro/700.css';</code>
+        <code>import '@fontsource/source-code-pro/variable.css';</code>
         <br />
         <code>import '@fontsource/source-serif-pro/index.css';</code>
         <br />

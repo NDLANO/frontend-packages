@@ -59,6 +59,15 @@ const StyledTable = styled("table", {
       display: "table-cell",
       paddingInline: "xsmall",
       paddingBlock: "3xsmall",
+      "& [data-align='center']": {
+        textAlign: "center",
+      },
+      "& [data-align='left']": {
+        textAlign: "left",
+      },
+      "& [data-align='right']": {
+        textAlign: "right",
+      },
     },
   },
 });

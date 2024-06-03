@@ -18,6 +18,8 @@ export { OrderedList, UnOrderedList } from "./ArticleLists";
 export type { OrderedListProps, OrderedListVariantProps, UnOrderedListProps } from "./ArticleLists";
 export { Icon } from "./Icon";
 export type { IconProps } from "./Icon";
+export { NdlaLogoEn, NdlaLogoNb, NdlaLogoText } from "./NdlaLogo";
+export type { LogoProps } from "./NdlaLogo";
 export { Spinner } from "./Spinner";
 export type { SpinnerProps } from "./Spinner";
 export { Table } from "./Table";

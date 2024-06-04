@@ -22,6 +22,4 @@ export default defineConfig({
   importMap: "@ndla/styled-system",
   jsxFramework: "react",
   syntax: "object-literal",
-  // TODO: Check to see if we need to enable this
-  // polyfill: true,
 });

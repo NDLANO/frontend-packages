@@ -18,6 +18,4 @@ export default defineConfig({
   exclude: [],
   jsxFramework: "react",
   outdir: "styled-system",
-  // TODO: We polyfill for now to not have our styles overriden by core .scss
-  polyfill: true,
 });

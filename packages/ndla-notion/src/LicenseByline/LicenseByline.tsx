@@ -14,22 +14,12 @@ interface Props {
   children?: ReactNode;
   licenseRights: string[];
   locale?: string;
-  color?: string;
-  marginRight?: boolean;
-  light?: boolean;
 }
 
-const LicenseByline = ({ children, licenseRights, locale, color, marginRight, light = false }: Props) => {
+const LicenseByline = ({ children, licenseRights, locale }: Props) => {
   return (
     <StyledLicenseByline>
-      <LicenseIconList
-        licenseRights={licenseRights}
-        locale={locale}
-        color={color}
-        marginRight={marginRight}
-        light={light}
-        horizontal
-      />
+      <LicenseIconList licenseRights={licenseRights} locale={locale} horizontal />
       {children}
     </StyledLicenseByline>
   );

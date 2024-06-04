@@ -12,7 +12,7 @@ import { colors, spacing } from "@ndla/core";
 import LicenseIconDescriptionList from "./LicenseIconDescriptionList";
 import StyledLicenseByline from "./StyledLicenseByline";
 
-const StyledModelpermission = styled.div`
+const StyledModelPermission = styled.div`
   svg {
     width: 24px;
     height: 24px;
@@ -27,23 +27,16 @@ interface Props {
   children?: ReactNode;
   licenseRights: string[];
   messages?: {
-    modelPremission?: string;
+    modelPermission?: string;
   };
   locale?: string;
-  highlightCC?: boolean;
-  color?: string;
 }
 
-const LicenseDescription = ({ children, licenseRights, messages, locale, highlightCC, color }: Props) => (
+const LicenseDescription = ({ children, licenseRights, messages, locale }: Props) => (
   <StyledLicenseByline>
     <div>
-      <LicenseIconDescriptionList
-        licenseRights={licenseRights}
-        locale={locale}
-        color={color}
-        highlightCC={highlightCC}
-      />
-      {!!messages?.modelPremission && <StyledModelpermission>{messages.modelPremission}</StyledModelpermission>}
+      <LicenseIconDescriptionList licenseRights={licenseRights} locale={locale} />
+      {!!messages?.modelPermission && <StyledModelPermission>{messages.modelPermission}</StyledModelPermission>}
     </div>
     {children}
   </StyledLicenseByline>

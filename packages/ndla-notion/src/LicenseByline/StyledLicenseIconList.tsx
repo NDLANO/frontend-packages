@@ -7,47 +7,23 @@
  */
 
 import { ReactNode } from "react";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, spacing } from "@ndla/core";
 
 interface Props {
-  highlightCC?: boolean;
-  horizontal?: boolean;
-  color?: string;
-  marginRight?: boolean;
   children: ReactNode;
+  horizontal?: boolean;
 }
 
 export const StyledList = styled.ul<Props>`
-  list-style: none;
   padding: 0;
   display: flex;
-  ${(p) =>
-    p.highlightCC
-      ? css`
-          & li:first-of-type {
-            margin-bottom: ${spacing.small};
-            border-bottom: 1px solid ${colors.brand.tertiary};
-            padding-bottom: ${spacing.small};
-            svg {
-              fill: ${colors.brand.primary};
-            }
-          }
-        `
-      : ""};
-  flex-direction: ${(p) => (p.horizontal ? "row" : "column")};
-  color: ${(p) => p.color || "black"};
-  fill: ${(p) => p.color || "black"};
-  margin-right: ${(p) => (p.marginRight ? spacing.small : 0)};
+  &[data-horizontal="false"] {
+    flex-direction: column;
+  }
 `;
 
-const StyledLicenseIconList = ({ highlightCC, horizontal = false, color, marginRight, children }: Props) => {
-  return (
-    <StyledList marginRight={marginRight} color={color} horizontal={horizontal} highlightCC={highlightCC}>
-      {children}
-    </StyledList>
-  );
+const StyledLicenseIconList = ({ horizontal = false, children }: Props) => {
+  return <StyledList data-horizontal={horizontal}>{children}</StyledList>;
 };
 
 export default StyledLicenseIconList;

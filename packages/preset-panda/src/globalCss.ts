@@ -35,6 +35,27 @@ export const globalCss = defineGlobalStyles({
     background: "background.subtle",
     whiteSpace: "pre-wrap",
   },
+  //TODO: Remove these again once they're no longer needed
+  "h1:not('class')": {
+    fontWeight: "bold",
+    margin: "24px 0 12px 0",
+  },
+  "h2:not('class')": {
+    fontWeight: "bold",
+    margin: "48px 0 12px 0",
+  },
+  "h3:not('class')": {
+    fontWeight: "bold",
+    margin: "36px 0 6px 0",
+  },
+  "h4:not('class')": {
+    fontWeight: "bold",
+    margin: "36px 0 6px 0",
+  },
+  "h5:not('class')": {
+    fontWeight: "bold",
+    margin: "36px 0 6px 0",
+  },
   h1: {
     textStyle: "heading.medium",
   },

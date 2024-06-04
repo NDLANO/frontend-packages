@@ -229,7 +229,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
             <>
               <StyledNotionDialogContent>
                 {visualElement?.resource === "image" ? (
-                  <ImageEmbed embed={visualElement} heartButton={heartButton} lang={lang} />
+                  <ImageEmbed embed={visualElement} lang={lang} />
                 ) : visualElement?.resource === "brightcove" ? (
                   <BrightcoveEmbed embed={visualElement} heartButton={heartButton} />
                 ) : visualElement?.resource === "h5p" ? (

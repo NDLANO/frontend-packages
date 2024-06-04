@@ -13,9 +13,10 @@ import { spacing } from "@ndla/core";
 interface Props {
   description: ReactNode;
   icon?: ReactNode;
+  children?: ReactNode;
 }
 
-const StyledFigCaption = styled.figcaption`
+const StyledFigContainer = styled.figcaption`
   display: flex;
   gap: ${spacing.small};
   align-items: center;
@@ -23,19 +24,25 @@ const StyledFigCaption = styled.figcaption`
   padding: unset;
   font-size: unset;
   color: unset;
-  padding-bottom: ${spacing.xsmall};
-  border-bottom: inherit;
   p {
     margin: 0;
   }
 `;
 
-const LicenseDescription = ({ description, icon }: Props) => {
+const StyledDescription = styled.span`
+  display: inline;
+  white-space: pre-wrap;
+`;
+
+const LicenseDescription = ({ description, icon, children }: Props) => {
   return (
-    <StyledFigCaption>
+    <StyledFigContainer>
       {icon}
-      <span>{description}</span>
-    </StyledFigCaption>
+      <StyledDescription>
+        {description}
+        {children}
+      </StyledDescription>
+    </StyledFigContainer>
   );
 };
 

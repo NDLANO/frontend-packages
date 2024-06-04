@@ -25,7 +25,6 @@ interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
   path?: string;
-  heartButton?: HeartButtonType;
   canonicalUrl?: CanonicalUrlFuncs["image"];
   inGrid?: boolean;
   lang?: string;
@@ -130,17 +129,7 @@ const StyledFigure = styled(Figure)`
   }
 `;
 
-const ImageEmbed = ({
-  embed,
-  previewAlt,
-  heartButton: HeartButton,
-  inGrid,
-  path,
-  lang,
-  canonicalUrl,
-  renderContext = "article",
-  children,
-}: Props) => {
+const ImageEmbed = ({ embed, inGrid, path, lang, canonicalUrl, renderContext = "article", children }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
 
@@ -204,19 +193,7 @@ const ImageEmbed = ({
           lang={lang}
         />
       </ImageWrapper>
-      {isBylineHidden ? null : (
-        <EmbedByline
-          type="image"
-          copyright={data.copyright}
-          hideOnLargeScreens={isSmall(embedData.size) && !imageSizes}
-          description={parsedDescription}
-          bottomRounded
-          visibleAlt={previewAlt ? embed.embedData.alt : ""}
-          inGrid={inGrid}
-        >
-          {HeartButton && !isCopyrighted && <HeartButton embed={embed} />}
-        </EmbedByline>
-      )}
+      {isBylineHidden ? null : <EmbedByline type="image" copyright={data.copyright} description={parsedDescription} />}
     </StyledFigure>
   );
 };
@@ -227,7 +204,7 @@ const HiddenSpan = styled.span`
 
 interface ImageWrapperProps {
   src?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   pagePath?: string;
   crop?: {
     startX: number;

@@ -7,7 +7,7 @@
  */
 
 import styled from "@emotion/styled";
-import { colors, fonts } from "@ndla/core";
+import { colors } from "@ndla/core";
 import { SafeLink } from "@ndla/safelink";
 import { LicenseType } from "./EmbedByline";
 
@@ -18,7 +18,6 @@ interface Props {
 
 const StyledSafeLink = styled(SafeLink)`
   color: ${colors.brand.primary};
-  font-weight: ${fonts.weight.bold};
   text-decoration: underline;
   white-space: nowrap;
   box-shadow: none;
@@ -26,10 +25,6 @@ const StyledSafeLink = styled(SafeLink)`
   &:focus-within {
     text-decoration: none;
   }
-`;
-
-const StyledSpan = styled.span`
-  font-weight: ${fonts.weight.bold};
 `;
 
 const LicenseLink = ({ license, asLink = true }: Props) => {
@@ -43,7 +38,7 @@ const LicenseLink = ({ license, asLink = true }: Props) => {
       </StyledSafeLink>
     );
   }
-  return <StyledSpan>{license.abbreviation}</StyledSpan>;
+  return <span>{license.abbreviation}</span>;
 };
 
 export default LicenseLink;

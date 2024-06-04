@@ -75,28 +75,9 @@ const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
       <EmbedByline
         error={false}
         type={data.audioType === "standard" ? "audio" : "podcast"}
-        topRounded={false}
-        bottomRounded={!data.imageMeta}
         copyright={embed.data.copyright}
-      >
-        {HeartButton && embed.data.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
-          <HeartButton embed={embed} />
-        )}
-      </EmbedByline>
-      {data.imageMeta && (
-        <EmbedByline
-          error={false}
-          first={false}
-          type="image"
-          topRounded={false}
-          bottomRounded
-          copyright={data.imageMeta.copyright}
-        >
-          {HeartButton && data.imageMeta.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
-            <HeartButton embed={imageMetaToMockEmbed(embed)} />
-          )}
-        </EmbedByline>
-      )}
+      />
+      {data.imageMeta && <EmbedByline error={false} type="image" copyright={data.imageMeta.copyright} />}
     </Figure>
   );
 };

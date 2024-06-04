@@ -8,9 +8,8 @@
 
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { colors, fonts, misc, mq, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
 import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
@@ -26,11 +25,7 @@ interface BaseProps {
   bottomRounded?: boolean;
   description?: ReactNode;
   children?: ReactNode;
-  visibleAlt?: string;
   error?: true | false;
-  hideOnLargeScreens?: boolean;
-  first?: boolean;
-  inGrid?: boolean;
 }
 
 export interface EmbedBylineErrorProps extends BaseProps {
@@ -83,13 +78,8 @@ export type LicenseType = ReturnType<typeof getLicenseByAbbreviation>;
 const BylineWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.small};
   font-family: ${fonts.sans};
-  ${fonts.sizes("18px", "24px")};
-  background-color: ${colors.brand.lightest};
-  padding: ${spacing.nsmall} ${spacing.normal};
-  border: 1px solid ${colors.brand.light};
-  border-top: none;
+  ${fonts.sizes("16px", "26px")};
 
   &[data-top-rounded="true"] {
     border-top-right-radius: ${misc.borderRadius};
@@ -104,60 +94,15 @@ const BylineWrapper = styled.div`
   &[data-error="true"] {
     border: none;
     background-color: ${colors.support.redLightest};
-  }
-  &[data-first="true"] {
-    border-top: 1px solid ${colors.brand.light};
-  }
-  &[data-hide-on-large-screens="true"] {
-    ${mq.range({ from: breakpoints.tablet })} {
-      display: none;
-    }
+    padding: ${spacing.nsmall} ${spacing.normal};
   }
 `;
 
-const mobileStyling = css`
-  align-items: flex-start;
-  gap: ${spacing.xsmall};
-  flex-direction: column;
+const LicenseContainer = styled.div`
+  padding: ${spacing.small} 0;
 `;
 
-const RightsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: ${spacing.nsmall};
-
-  &[data-grid="true"] {
-    ${mobileStyling}
-  }
-
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    ${mobileStyling}
-  }
-`;
-
-const StyledSpan = styled.span`
-  font-style: italic;
-  color: grey;
-`;
-
-const LicenseInformationWrapper = styled.div`
-  flex: 1;
-  padding-right: ${spacing.xsmall};
-`;
-
-const EmbedByline = ({
-  type,
-  topRounded,
-  bottomRounded,
-  description,
-  children,
-  visibleAlt,
-  hideOnLargeScreens,
-  first = true,
-  inGrid = false,
-  ...props
-}: Props) => {
+const EmbedByline = ({ type, topRounded, bottomRounded, description, children, ...props }: Props) => {
   const { t, i18n } = useTranslation();
 
   if (props.error) {
@@ -176,24 +121,34 @@ const EmbedByline = ({
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
   return (
-    <BylineWrapper
-      data-top-rounded={topRounded}
-      data-hide-on-large-screens={hideOnLargeScreens}
-      data-bottom-rounded={bottomRounded}
-      data-first={first}
-    >
-      {description && <LicenseDescription description={description} />}
-      {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
-      <RightsWrapper data-grid={inGrid}>
-        {license ? <LicenseLink license={license} asLink={!!license.url.length} /> : null}
-        <LicenseInformationWrapper>
-          <span>
-            <b>{`${t(`embed.type.${type}`)}${captionAuthors.length ? ":" : ""}`} </b>
+    <BylineWrapper>
+      <LicenseContainer>
+        {description ? (
+          <LicenseDescription description={description}>
+            {" "}
+            {`${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
             {captionAuthors.map((author) => author.name).join(", ")}
+            {license ? (
+              <>
+                {" / "}
+                <LicenseLink license={license} asLink={!!license.url.length} />
+              </>
+            ) : null}
+          </LicenseDescription>
+        ) : (
+          <span>
+            {`${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
+            {captionAuthors.map((author) => author.name).join(", ")}
+            {license ? (
+              <>
+                {" / "}
+                <LicenseLink license={license} asLink={!!license.url.length} />
+              </>
+            ) : null}
           </span>
-        </LicenseInformationWrapper>
+        )}
         {children}
-      </RightsWrapper>
+      </LicenseContainer>
     </BylineWrapper>
   );
 };

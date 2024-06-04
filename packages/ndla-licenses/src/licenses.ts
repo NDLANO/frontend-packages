@@ -19,9 +19,9 @@ const restrictedReuseNB = "Begrenset gjenbruk";
 const restrictedReuseNN = "Begrensa gjenbruk";
 const restrictedReuseEN = "Restricted reuse";
 
-const openLicenseLinkTextNB = "Lær mer om åpne lisenser";
-const openLicenseLinkTextNN = "Lær meir om opne lisensar";
-const openLicenseLinkTextEN = "Learn more about open licenses";
+const openLicenseLinkTextNB = "Les mer om opphavsrett";
+const openLicenseLinkTextNN = "Les meir om opphavsrett";
+const openLicenseLinkTextEN = "Read more about copyright";
 
 const naNB = "N/A - ikke relevant";
 const naNN = "N/A - ikkje relevant";

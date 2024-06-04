@@ -697,3 +697,42 @@ export const WithColumnWidth: StoryFn = () => (
     </tbody>
   </Table>
 );
+
+export const WithCellAlignment: StoryFn = () => (
+  <Table>
+    <thead>
+      <tr>
+        <th style={{ width: "33.333%" }}>Fremragende</th>
+        <th style={{ width: "33.333%" }}>Kompetent</th>
+        <th style={{ width: "33.333%" }}>På vei</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-align="left">mestrer ulike formater for nettreklame</td>
+        <td data-align="center">mestrer ett format godt, og er på god vei til å mestre flere</td>
+        <td data-align="right">mestrer ett reklameformat</td>
+      </tr>
+      <tr>
+        <td data-align="left">bruker de samme prinsippene for layout og komposisjon i begge annonsene</td>
+        <td data-align="center">bruker layout og komposisjon i annonsene</td>
+        <td data-align="right">
+          bruker til dels prinsipper for layout og komposisjon, men hvilke og hvor de er brukt, kan være uklart
+        </td>
+      </tr>
+      <tr>
+        <td data-align="left">har reflekterte argumenter for hvorfor farger og fonter er valgt og prioritert</td>
+        <td data-align="center">bruker farger og fonter som virkemidler i annonsene</td>
+        <td data-align="right">Noen designvalg er gode, andre er mindre gjennomført.</td>
+      </tr>
+      <tr>
+        <td data-align="left">Godt teknisk håndverk kjennetegner annonsene.</td>
+        <td data-align="center">Dette er bra, men noen elementer og piksler er upresist plassert eller på avveier.</td>
+        <td data-align="right">
+          Noen elementer er godt bearbeidet, men det gjenstår litt før annonsen er ferdig designet.
+        </td>
+      </tr>
+      <tr />
+    </tbody>
+  </Table>
+);

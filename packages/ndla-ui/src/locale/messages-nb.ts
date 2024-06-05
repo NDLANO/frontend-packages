@@ -1363,6 +1363,9 @@ const messages = {
   },
   siteNav: {
     search: "Søk",
+    navigate: "Naviger med piltastene",
+    select: "Velg",
+    close: "Lukk søk",
   },
   programmes: {
     header: "Hva vil du lære om i dag?",

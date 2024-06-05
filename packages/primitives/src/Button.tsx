@@ -20,7 +20,7 @@ export const buttonBaseRecipe = cva({
     textDecoration: "none",
     textStyle: "label.medium",
     fontWeight: "bold",
-    borderWidth: "2px",
+    borderWidth: "1px",
     borderColor: "transparent",
     transitionProperty: "all",
     transitionDuration: "fast",

@@ -1363,6 +1363,9 @@ const messages = {
   },
   siteNav: {
     search: "Search",
+    navigate: "Navigate using the arrow keys",
+    select: "Select",
+    close: "Close search",
   },
   programmes: {
     header: "What do you want to learn today?",

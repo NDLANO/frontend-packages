@@ -1365,6 +1365,9 @@ const messages = {
   },
   siteNav: {
     search: "Oza",
+    navigate: "Naviger med piltastene",
+    select: "Velg",
+    close: "Lukk søk",
   },
   programmes: {
     header: "Maid háliidat oahppat odne?",

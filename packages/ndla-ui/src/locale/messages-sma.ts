@@ -1367,6 +1367,9 @@ const messages = {
   },
   siteNav: {
     search: "Ohtsh",
+    navigate: "Naviger med piltastene",
+    select: "Velg",
+    close: "Lukk søk",
   },
   programmes: {
     header: "Maam sïjhth daan biejjien lïeredh ?",

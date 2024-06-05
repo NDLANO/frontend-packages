@@ -46,6 +46,9 @@ export const globalCss = defineGlobalStyles({
   "h3:not([class]), h4:not([class]), h5:not([class])": {
     margin: "36px 0 6px 0",
   },
+  "p:not([class])": {
+    marginBottom: "24px",
+  },
   h1: {
     textStyle: "heading.medium",
   },

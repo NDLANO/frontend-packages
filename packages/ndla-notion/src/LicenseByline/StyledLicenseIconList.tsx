@@ -15,11 +15,11 @@ interface Props {
 }
 
 export const StyledList = styled.ul<Props>`
-  padding: 0;
   display: flex;
   &[data-horizontal="false"] {
     flex-direction: column;
   }
+  list-style-type: disc;
 `;
 
 const StyledLicenseIconList = ({ horizontal = false, children }: Props) => {

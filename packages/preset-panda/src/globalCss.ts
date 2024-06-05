@@ -35,25 +35,15 @@ export const globalCss = defineGlobalStyles({
     background: "background.subtle",
     whiteSpace: "pre-wrap",
   },
-  //TODO: Remove these again once they're no longer needed
-  "h1:not('class')": {
-    fontWeight: "bold",
+  // TODO: Remove these again once they're no longer needed.
+  // Some headers don't have a styling class, and therefor no margin. Handled with generic fallbacks in old global css, and now temporarily handled by these selectors.
+  "h1:not([class])": {
     margin: "24px 0 12px 0",
   },
-  "h2:not('class')": {
-    fontWeight: "bold",
+  "h2:not([class])": {
     margin: "48px 0 12px 0",
   },
-  "h3:not('class')": {
-    fontWeight: "bold",
-    margin: "36px 0 6px 0",
-  },
-  "h4:not('class')": {
-    fontWeight: "bold",
-    margin: "36px 0 6px 0",
-  },
-  "h5:not('class')": {
-    fontWeight: "bold",
+  "h3:not([class]), h4:not([class]), h5:not([class])": {
     margin: "36px 0 6px 0",
   },
   h1: {

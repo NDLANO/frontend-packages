@@ -12,7 +12,7 @@ import { Person } from "@ndla/icons/common";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { FieldHelper } from "./FieldHelper";
 import { FormControl } from "./FormControl";
-import { Input, InputContainer, TextArea } from "./Input";
+import { FormInput, FormTextArea, Input, InputContainer } from "./Input";
 import { FormLabel, Label } from "./Label";
 import { Text } from "./Text";
 
@@ -42,7 +42,7 @@ export const Default: StoryFn<typeof FormControl> = ({ ...args }) => {
       <FormLabel>Name</FormLabel>
       <InputContainer>
         <Person />
-        <Input
+        <FormInput
           name="name"
           aria-describedby="name-info"
           value={value}
@@ -60,7 +60,7 @@ export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
       <FormLabel>Name</FormLabel>
       <InputContainer>
         <Person />
-        <Input name="name" />
+        <FormInput name="name" />
       </InputContainer>
       <FieldHelper>Make sure to use proper punctuation</FieldHelper>
     </FormControl>
@@ -73,7 +73,7 @@ export const Disabled: StoryFn<typeof FormControl> = ({ ...args }) => {
       <FormLabel>Name</FormLabel>
       <InputContainer>
         <Person />
-        <Input name="name" />
+        <FormInput name="name" />
       </InputContainer>
       <FieldHelper>Make sure to use proper punctuation</FieldHelper>
     </FormControl>
@@ -84,7 +84,7 @@ export const DisabledWithoutWrapper: StoryFn<typeof FormControl> = ({ ...args })
   return (
     <FormControl {...args} isDisabled>
       <FormLabel>Name</FormLabel>
-      <Input name="name" />
+      <FormInput name="name" />
       <FieldHelper>Make sure to use proper punctuation</FieldHelper>
     </FormControl>
   );
@@ -100,7 +100,12 @@ export const WithoutWrapper: StoryFn<typeof FormControl> = ({ ...args }) => {
       </Text>
       <FormLabel>Name</FormLabel>
       <FieldErrorMessage>This field is required</FieldErrorMessage>
-      <Input name="name" aria-describedby="name-info" value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+      <FormInput
+        name="name"
+        aria-describedby="name-info"
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+      />
     </FormControl>
   );
 };
@@ -117,7 +122,7 @@ export const FormHelperWhenNoError: StoryFn<typeof FormControl> = ({ ...args }) 
       <FormLabel>Name</FormLabel>
       <InputContainer>
         <Person />
-        <Input
+        <FormInput
           name="name"
           aria-describedby="name-info"
           value={value}
@@ -183,7 +188,7 @@ export const TextAreaFormControl: StoryFn<typeof FormControl> = ({ ...args }) =>
       <FormLabel>Name</FormLabel>
       <InputContainer>
         <Person />
-        <TextArea
+        <FormTextArea
           name="name"
           aria-describedby="name-info"
           value={value}

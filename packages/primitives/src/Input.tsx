@@ -112,20 +112,23 @@ const baseTextAreaCss = css.raw({
   overflowY: "hidden",
 });
 
-export const Input = forwardRef<HTMLInputElement, ComponentPropsWithRef<"input">>((props, ref) => {
+export const Input = forwardRef<HTMLInputElement, ComponentPropsWithRef<"input">>(({ className, ...props }, ref) => {
   const context = useContext(InputContext);
-  const { className, ...field } = useFormControl(props);
   return (
-    <styled.input className={cx(css(baseInputCss, context ? undefined : inputCss), className)} ref={ref} {...field} />
+    <styled.input className={cx(css(baseInputCss, context ? undefined : inputCss), className)} ref={ref} {...props} />
   );
+});
+
+export const FormInput = forwardRef<HTMLInputElement, ComponentPropsWithRef<"input">>((props, ref) => {
+  const field = useFormControl(props);
+  return <Input {...field} ref={ref} />;
 });
 
 interface TextAreaProps extends ComponentPropsWithRef<"textarea"> {}
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ className, ...props }, ref) => {
   const context = useContext(InputContext);
   const localRef = useRef<HTMLTextAreaElement>(null);
-  const { className, ...field } = useFormControl(props);
 
   // Automatically resize a textarea based on its content
   const resize = useCallback(() => {
@@ -148,7 +151,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, r
     <styled.textarea
       className={cx(css(baseInputCss, context ? undefined : inputCss, baseTextAreaCss), className)}
       ref={composeRefs(ref, localRef)}
-      {...field}
+      {...props}
     />
   );
+});
+
+export const FormTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
+  const field = useFormControl(props);
+  return <TextArea {...field} ref={ref} />;
 });

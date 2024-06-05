@@ -30,7 +30,7 @@
     "lib"
   ],
   "devDependencies": {
-    "@pandacss/dev": "^0.40.0"
+    "@pandacss/dev": "^0.40.1"
   },
   "publishConfig": {
     "access": "public"

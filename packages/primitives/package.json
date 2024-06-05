@@ -28,12 +28,13 @@
     "lib"
   ],
   "dependencies": {
+    "@ark-ui/react": "^3.0.2",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^4.0.4"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^0.40.0"
+    "@pandacss/dev": "^0.40.1"
   },
   "peerDependencies": {
     "react": ">= 18",

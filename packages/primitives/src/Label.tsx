@@ -22,20 +22,20 @@ const StyledLegend = styled("legend", {
   },
 });
 
-export const Legend = forwardRef<HTMLLegendElement, TextProps & ComponentPropsWithRef<"legend">>(
-  ({ textStyle = "label.medium", fontWeight = "bold", className, srOnly, ...rest }, ref) => {
-    const control = useFormControlContext();
-    const { id: _, htmlFor: __, ...fieldProps } = control?.getLabelProps(rest, ref) ?? { ref, ...rest };
-    return (
-      <StyledLegend
-        className={cx(css({ textStyle, fontWeight, srOnly }), className)}
-        {...rest}
-        {...fieldProps}
-        ref={ref}
-      />
-    );
-  },
+export type LegendProps = ComponentPropsWithRef<"legend"> & TextProps;
+
+export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
+  ({ textStyle = "label.medium", fontWeight = "bold", className, srOnly, ...rest }, ref) => (
+    <StyledLegend className={cx(css({ textStyle, fontWeight, srOnly }), className)} {...rest} ref={ref} />
+  ),
 );
+
+export const FormLegend = forwardRef<HTMLLegendElement, LegendProps>((props, ref) => {
+  const control = useFormControlContext();
+  // Legend does not use htmlFor (for), so we remove it.
+  const { id: _, htmlFor: __, ...fieldProps } = control?.getLabelProps(props, ref) ?? { ref, ...props };
+  return <Legend {...props} {...fieldProps} ref={ref} />;
+});
 
 const StyledLabel = styled("label", {
   base: {
@@ -46,20 +46,19 @@ const StyledLabel = styled("label", {
   },
 });
 
-export const Label = forwardRef<HTMLLabelElement, TextProps & ComponentPropsWithRef<"label">>(
-  ({ textStyle = "label.medium", fontWeight = "bold", className, srOnly, ...rest }, ref) => {
-    const control = useFormControlContext();
-    const fieldProps = control?.getLabelProps(rest, ref) ?? { ref, ...rest };
-    return (
-      <StyledLabel
-        className={cx(css({ textStyle, fontWeight, srOnly }), className)}
-        {...rest}
-        {...fieldProps}
-        ref={ref}
-      />
-    );
-  },
+export type LabelProps = ComponentPropsWithRef<"label"> & TextProps;
+
+export const Label = forwardRef<HTMLLabelElement, LabelProps>(
+  ({ textStyle = "label.medium", fontWeight = "bold", className, srOnly, ...rest }, ref) => (
+    <StyledLabel className={cx(css({ textStyle, fontWeight, srOnly }), className)} {...rest} ref={ref} />
+  ),
 );
+
+export const FormLabel = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => {
+  const control = useFormControlContext();
+  const fieldProps = control?.getLabelProps(props, ref) ?? { ref, ...props };
+  return <Label {...props} {...fieldProps} ref={ref} />;
+});
 
 export const Fieldset = styled("fieldset", {
   base: {

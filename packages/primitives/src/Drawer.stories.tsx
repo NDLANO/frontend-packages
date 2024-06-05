@@ -1,34 +1,28 @@
 /**
- * Copyright (c) 2023-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import { useEffect, useState } from "react";
 import { Portal } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Cross } from "@ndla/icons/action";
 import { styled } from "@ndla/styled-system/jsx";
 import { Button, IconButton } from "./Button";
 import {
-  DialogBackdrop,
   DialogBody,
   DialogCloseTrigger,
-  DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogPositioner,
   DialogRoot,
   DialogRootProps,
-  DialogStandaloneContent,
   DialogTitle,
   DialogTrigger,
   DrawerContent,
   DrawerContentVariantProps,
 } from "./Dialog";
-import { Text } from "./Text";
 
 type StoryProps = DialogRootProps & DrawerContentVariantProps;
 

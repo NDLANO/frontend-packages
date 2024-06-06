@@ -100,6 +100,10 @@ const messages = {
   movedResourcePage: {
     title: "Sæjroe ij leah daesnie, men maahtah dam daesnie gaavnedh:",
   },
+  unpublishedResourcePage: {
+    title: "Ressursen er avpublisert",
+    errorDescription: "Beklager, ressursen du prøvde komme til er avpublisert.",
+  },
   lti: {
     embed: "Lissehth",
     notSupported:

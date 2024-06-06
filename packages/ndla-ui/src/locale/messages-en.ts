@@ -100,6 +100,10 @@ const messages = {
   movedResourcePage: {
     title: "The page has been moved, but you can find it here:",
   },
+  unpublishedResourcePage: {
+    title: "Resource is unpublished",
+    errorDescription: "The resource you are looking for has been unpublished.",
+  },
   lti: {
     embed: "Embed",
     notSupported:

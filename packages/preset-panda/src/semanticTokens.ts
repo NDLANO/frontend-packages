@@ -106,9 +106,9 @@ export const semanticTokens = defineSemanticTokens({
         disabled: { value: "{colors.grey.50}" },
       },
       success: {
-        DEFAULT: { value: "{colors.green.500}" },
-        hover: { value: "{colors.green.700}" },
-        active: { value: "{colors.green.900}" },
+        DEFAULT: { value: "{colors.green.800}" },
+        hover: { value: "{colors.green.900}" },
+        active: { value: "{colors.green.950}" },
       },
       successSubtle: {
         DEFAULT: { value: "{colors.green.100}" },
@@ -126,9 +126,9 @@ export const semanticTokens = defineSemanticTokens({
         active: { value: "{colors.yellow.400}" },
       },
       error: {
-        DEFAULT: { value: "{colors.pink.700}" },
-        hover: { value: "{colors.pink.800}" },
-        active: { value: "{colors.pink.900}" },
+        DEFAULT: { value: "{colors.pink.800}" },
+        hover: { value: "{colors.pink.900}" },
+        active: { value: "{colors.pink.950}" },
       },
       errorSubtle: {
         DEFAULT: { value: "{colors.pink.100}" },

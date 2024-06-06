@@ -41,11 +41,11 @@ const accordionRecipe = sva({
       },
       _disabled: {
         cursor: "not-allowed",
-        background: "surface.actionSubtle.disabled",
+        background: "surface..disabled.subtle",
         boxShadowColor: "stroke.disabled",
         color: "text.disabled",
         _hover: {
-          background: "surface.actionSubtle.disabled",
+          background: "surface.disabled.subtle",
           boxShadowColor: "stroke.disabled",
           color: "text.disabled",
         },

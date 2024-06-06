@@ -88,6 +88,11 @@ export const semanticTokens = defineSemanticTokens({
       hover: { value: "{colors.grey.100}" },
       active: { value: "{colors.grey.200}" },
       selected: { value: "{colors.purple.200}" },
+      disabled: {
+        DEFAULT: { value: "{colors.grey.200}" },
+        subtle: { value: "{colors.grey.50}" },
+        strong: { value: "{colors.grey.700}" },
+      },
       infoSubtle: {
         DEFAULT: { value: "{colors.grey.100}" },
         hover: { value: "{colors.grey.200}" },
@@ -97,13 +102,11 @@ export const semanticTokens = defineSemanticTokens({
         DEFAULT: { value: "{colors.primary}" },
         hover: { value: "{colors.purple.900}" },
         active: { value: "{colors.purple.800}" },
-        disabled: { value: "{colors.grey.200}" },
       },
       actionSubtle: {
         DEFAULT: { value: "{colors.purple.50}" },
         hover: { value: "{colors.purple.100}" },
         active: { value: "{colors.purple.300}" },
-        disabled: { value: "{colors.grey.50}" },
       },
       success: {
         DEFAULT: { value: "{colors.green.800}" },

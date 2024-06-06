@@ -200,11 +200,15 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"surface.brand.5"} />
       <ColorBlock backgroundColor={"surface.brand.5.strong"} />
     </ColorBlocks>
+    <ColorBlocks title="Surface disabled">
+      <ColorBlock backgroundColor={"surface.disabled"} />
+      <ColorBlock backgroundColor={"surface.disabled.subtle"} />
+      <ColorBlock backgroundColor={"surface.disabled.strong"} />
+    </ColorBlocks>
     <ColorBlocks title="Surface action">
       <ColorBlock backgroundColor={"surface.action"} />
       <ColorBlock backgroundColor={"surface.action.hover"} />
       <ColorBlock backgroundColor={"surface.action.active"} />
-      <ColorBlock backgroundColor={"surface.action.disabled"} />
       <ColorBlock backgroundColor={"surface.actionSubtle"} />
       <ColorBlock backgroundColor={"surface.actionSubtle.hover"} />
       <ColorBlock backgroundColor={"surface.actionSubtle.active"} />

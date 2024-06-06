@@ -104,13 +104,13 @@ export const buttonBaseRecipe = cva({
         },
       },
       success: {
-        background: "surface.successSubtle",
-        color: "text.default",
+        background: "surface.success",
+        color: "text.onAction",
         _hover: {
-          background: "surface.successSubtle.hover",
+          background: "surface.success.hover",
         },
         _active: {
-          background: "surface.successSubtle.active",
+          background: "surface.success.active",
         },
       },
       link: {

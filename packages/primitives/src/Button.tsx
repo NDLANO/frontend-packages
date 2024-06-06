@@ -26,6 +26,7 @@ export const buttonBaseRecipe = cva({
     textAlign: "center",
     borderRadius: "xsmall",
     outline: "none",
+    boxShadowColor: "stroke.default",
     _disabled: {
       cursor: "not-allowed",
       color: "text.onAction",
@@ -35,9 +36,8 @@ export const buttonBaseRecipe = cva({
         background: "surface.action.disabled",
       },
     },
-    "--borderColor": "colors.stroke.default",
     _focusVisible: {
-      boxShadow: "inset 0 0 0 3px var(--borderColor)",
+      boxShadow: "inset 0 0 0 3px var(--shadow-color)",
     },
   },
   defaultVariants: {
@@ -57,14 +57,13 @@ export const buttonBaseRecipe = cva({
           background: "surface.action.active",
         },
         _focusVisible: {
-          "--innerBorderColor": "colors.surface.default",
-          boxShadow: "inset 0 0 0 3px var(--borderColor), inset 0px 0px 0px 6px var(--innerBorderColor)",
+          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
         },
       },
       secondary: {
         color: "text.strong",
         background: "transparent",
-        boxShadow: "inset 0 0 0 1px var(--borderColor)",
+        boxShadow: "inset 0 0 0 1px var(--shadow-color)",
         _hover: {
           background: "surface.actionSubtle.hover",
         },
@@ -76,7 +75,7 @@ export const buttonBaseRecipe = cva({
         color: "text.strong",
         background: "transparent",
         _hover: {
-          boxShadow: "inset 0 0 0 1px var(--borderColor)",
+          boxShadow: "inset 0 0 0 1px var(--shadow-color)",
           background: "surface.actionSubtle.hover",
         },
         _active: {

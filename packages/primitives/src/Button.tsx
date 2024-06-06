@@ -102,6 +102,10 @@ export const buttonBaseRecipe = cva({
         _active: {
           background: "surface.error.active",
         },
+        _focusVisible: {
+          boxShadowColor: "surface.error",
+          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+        },
       },
       success: {
         background: "surface.success",
@@ -111,6 +115,10 @@ export const buttonBaseRecipe = cva({
         },
         _active: {
           background: "surface.success.active",
+        },
+        _focusVisible: {
+          boxShadowColor: "surface.success",
+          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
         },
       },
       link: {

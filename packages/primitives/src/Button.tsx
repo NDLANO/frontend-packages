@@ -77,6 +77,9 @@ export const buttonBaseRecipe = cva({
         _hover: {
           boxShadow: "inset 0 0 0 1px var(--shadow-color)",
           background: "surface.actionSubtle.hover",
+          _focusVisible: {
+            boxShadow: "inset 0 0 0 3px var(--shadow-color)",
+          },
         },
         _active: {
           borderColor: "stroke.default",

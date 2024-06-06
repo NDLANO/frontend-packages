@@ -20,14 +20,13 @@ export const buttonBaseRecipe = cva({
     textDecoration: "none",
     textStyle: "label.medium",
     fontWeight: "bold",
-    borderWidth: "1px",
-    borderColor: "transparent",
     transitionProperty: "all",
     transitionDuration: "fast",
     transitionTimingFunction: "default",
-    boxShadow: "none",
     textAlign: "center",
     borderRadius: "xsmall",
+    outline: "none",
+    boxShadowColor: "stroke.default",
     _disabled: {
       cursor: "not-allowed",
       color: "text.onAction",
@@ -36,6 +35,9 @@ export const buttonBaseRecipe = cva({
         color: "text.onAction",
         background: "surface.action.disabled",
       },
+    },
+    _focusVisible: {
+      boxShadow: "inset 0 0 0 3px var(--shadow-color)",
     },
   },
   defaultVariants: {
@@ -54,12 +56,14 @@ export const buttonBaseRecipe = cva({
           color: "text.onAction",
           background: "surface.action.active",
         },
+        _focusVisible: {
+          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+        },
       },
       secondary: {
-        borderStyle: "solid",
-        borderColor: "stroke.default",
         color: "text.strong",
         background: "transparent",
+        boxShadow: "inset 0 0 0 1px var(--shadow-color)",
         _hover: {
           background: "surface.actionSubtle.hover",
         },
@@ -68,13 +72,14 @@ export const buttonBaseRecipe = cva({
         },
       },
       tertiary: {
-        borderStyle: "solid",
         color: "text.strong",
-        borderColor: "transparent",
         background: "transparent",
         _hover: {
-          borderColor: "stroke.default",
+          boxShadow: "inset 0 0 0 1px var(--shadow-color)",
           background: "surface.actionSubtle.hover",
+          _focusVisible: {
+            boxShadow: "inset 0 0 0 3px var(--shadow-color)",
+          },
         },
         _active: {
           borderColor: "stroke.default",
@@ -97,15 +102,23 @@ export const buttonBaseRecipe = cva({
         _active: {
           background: "surface.error.active",
         },
+        _focusVisible: {
+          boxShadowColor: "surface.error",
+          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+        },
       },
       success: {
-        background: "surface.successSubtle",
-        color: "text.default",
+        background: "surface.success",
+        color: "text.onAction",
         _hover: {
-          background: "surface.successSubtle.hover",
+          background: "surface.success.hover",
         },
         _active: {
-          background: "surface.successSubtle.active",
+          background: "surface.success.active",
+        },
+        _focusVisible: {
+          boxShadowColor: "surface.success",
+          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
         },
       },
       link: {

@@ -21,7 +21,7 @@ export const globalCss = defineGlobalStyles({
   body: {
     background: "background.default",
   },
-  "a, summary, button, [tabindex]:not([tabindex='-1'])": {
+  "a, summary,[tabindex]:not([tabindex='-1'])": {
     outline: "none",
     _focusVisible: {
       outline: "3px",

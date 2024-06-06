@@ -49,6 +49,7 @@ export const semanticTokens = defineSemanticTokens({
       onAction: { value: "{colors.white}" },
       link: { value: "{colors.purple.900}" },
       error: { value: "{colors.pink.800}" },
+      disabled: { value: "{colors.grey.400}" },
     },
     icon: {
       default: { value: "{colors.grey.950}" },
@@ -102,6 +103,7 @@ export const semanticTokens = defineSemanticTokens({
         DEFAULT: { value: "{colors.purple.50}" },
         hover: { value: "{colors.purple.100}" },
         active: { value: "{colors.purple.300}" },
+        disabled: { value: "{colors.grey.50}" },
       },
       success: {
         DEFAULT: { value: "{colors.green.500}" },
@@ -142,6 +144,7 @@ export const semanticTokens = defineSemanticTokens({
       info: { value: "{colors.grey.500}" },
       warning: { value: "{colors.yellow.1200}" },
       error: { value: "{colors.pink.800}" },
+      disabled: { value: "{colors.grey.300}" },
     },
   },
 });

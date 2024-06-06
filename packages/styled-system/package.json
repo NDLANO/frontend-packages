@@ -2,7 +2,7 @@
   "name": "@ndla/styled-system",
   "version": "0.0.1",
   "devDependencies": {
-    "@pandacss/dev": "^0.40.0"
+    "@pandacss/dev": "^0.40.1"
   },
   "exports": {
     "./css": {

@@ -18,6 +18,12 @@ export const animations = defineTokens.animations({
   "collapse-out": {
     value: "collapse-out 200ms {easings.emphasized-out}",
   },
+  "fade-shift-in": {
+    value: "fade-shift-in 200ms {easings.emphasized-in}",
+  },
+  "fade-shift-out": {
+    value: "fade-shift-in 200ms {easings.emphasized-in}",
+  },
 });
 
 export const easings = defineTokens.easings({
@@ -38,6 +44,14 @@ export const keyframes = {
   spin: {
     from: { transform: "rotate(0deg)" },
     to: { transform: "rotate(360deg)" },
+  },
+  "fade-shift-in": {
+    "0%": { opacity: "0", transform: "translateY(-4px)" },
+    "100%": { opacity: "1", transform: "translateY(0)" },
+  },
+  "fade-shift-out": {
+    "0%": { opacity: "1", transform: "translateY(0)" },
+    "100%": { opacity: "0", transform: "translateY(-4px)" },
   },
   "collapse-in": {
     "0%": { height: "0" },

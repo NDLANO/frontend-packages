@@ -28,7 +28,7 @@
     "lib"
   ],
   "dependencies": {
-    "@ark-ui/react": "^3.0.2",
+    "@ark-ui/react": "^3.2.1",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^4.0.4"
   },

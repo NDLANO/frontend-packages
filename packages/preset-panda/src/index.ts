@@ -17,6 +17,7 @@ import { radii } from "./radii";
 import { semanticTokens } from "./semanticTokens";
 import { spacing } from "./spacing";
 import { fontWeights, textStyles, fonts, fontSizes, lineHeights } from "./typography";
+import { zIndex } from "./zIndex";
 
 const preset = definePreset({
   globalCss: globalCss,
@@ -38,6 +39,7 @@ const preset = definePreset({
       fonts: fonts,
       animations: animations,
       shadows: boxShadows,
+      zIndex: zIndex,
     },
     semanticTokens: semanticTokens,
   },

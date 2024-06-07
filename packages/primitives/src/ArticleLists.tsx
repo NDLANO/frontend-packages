@@ -83,3 +83,18 @@ const StyledUnOrderedList = styled("ul", {
 export type UnOrderedListProps = ComponentPropsWithoutRef<"ul">;
 
 export const UnOrderedList = ({ ...props }: UnOrderedListProps) => <StyledUnOrderedList {...props} />;
+
+const StyledDefinitionList = styled("dl", {
+  base: {
+    "& dt": {
+      fontWeight: "bold",
+    },
+    "& dd": {
+      marginInlineStart: "medium",
+    },
+  },
+});
+
+export type DefinitionListProps = ComponentPropsWithoutRef<"dl">;
+
+export const DefinitionList = ({ ...props }: DefinitionListProps) => <StyledDefinitionList {...props} />;

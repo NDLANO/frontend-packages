@@ -93,6 +93,13 @@ export const buttonBaseRecipe = cva({
           color: "stroke.hover",
         },
       },
+      clearSubtle: {
+        background: "transparent",
+        color: "text.onAction",
+        _hover: {
+          color: "surface.actionSubtle.hover.strong",
+        },
+      },
       danger: {
         background: "surface.error",
         color: "text.onAction",
@@ -158,7 +165,7 @@ export const buttonRecipe = cva({
 export type ButtonVariantProps = RecipeVariantProps<typeof buttonBaseRecipe> & RecipeVariantProps<typeof buttonRecipe>;
 
 export type ButtonProps = ComponentPropsWithRef<"button"> &
-  ButtonVariantProps & { variant?: Exclude<NonNullable<ButtonVariantProps>["variant"], "clear"> };
+  ButtonVariantProps & { variant?: Exclude<NonNullable<ButtonVariantProps>["variant"], "clear" | "clearSubtle"> };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ type, size, className, variant, ...rest }, ref) => (
   <styled.button

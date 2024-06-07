@@ -8,6 +8,7 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Cross } from "@ndla/icons/action";
+import { css } from "@ndla/styled-system/css";
 import { IconButton } from "./Button";
 
 export default {
@@ -58,6 +59,19 @@ export const Clear: StoryObj<typeof IconButton> = {
   args: {
     variant: "clear",
   },
+};
+
+export const ClearSubtle: StoryObj<typeof IconButton> = {
+  args: {
+    variant: "clearSubtle",
+  },
+  decorators: [
+    (Story) => (
+      <div className={css({ background: "surface.action" })}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const Disabled: StoryObj<typeof IconButton> = {

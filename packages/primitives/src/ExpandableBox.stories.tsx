@@ -11,8 +11,8 @@ import { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
 import { Heading } from "./Text";
 
 /**
- * This is just a thin wrapper around the native HTML details element.
- * `ExpandableBoxSummary` is a thin wrapper around the native HTML summary element.
+ * Dette er kun en wrapper rundt HTML details elementet.
+ * `ExpandableBoxSummary` er en wrapper rundt HTML summary elementet.
  */
 export default {
   title: "Primitives/ExpandableBox",

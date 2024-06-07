@@ -13,9 +13,9 @@ import { Check } from "@ndla/icons/editor";
 import { InputContainer, TextArea } from "./Input";
 
 /**
- * A textbox that automatically resizes itself based on its content.
- * If you want to set a different height than the default, it should be done using the `min-height` css property,
- * as the component overrides any height set on the component itself.
+ * Textbox med automatisk størrelse basert på innhold.
+ * Hvis det er behov for annen høyde enn default, bør det gjøres ved hjelp av css property `min-height`,
+ * da komponenten overstyrer all annen height som er satt på selve komponenten.
  */
 export default {
   title: "Primitives/TextArea",

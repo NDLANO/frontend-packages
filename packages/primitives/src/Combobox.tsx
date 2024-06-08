@@ -11,6 +11,7 @@ import { Assign, Combobox } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
+import { useFormControl } from "./FormControl";
 import { Label } from "./Label";
 import { Text, TextProps } from "./Text";
 
@@ -145,10 +146,18 @@ type ComboboxVariantProps = RecipeVariantProps<typeof comboboxRecipe>;
 
 export type ComboboxRootProps<T extends Combobox.CollectionItem> = Combobox.RootProps<T> & ComboboxVariantProps;
 
-export const ComboboxRoot = withProvider<HTMLDivElement, ComboboxRootProps<Combobox.CollectionItem>>(
+const InternalComboboxRoot = withProvider<HTMLDivElement, ComboboxRootProps<Combobox.CollectionItem>>(
   Combobox.Root,
   "root",
 );
+
+export const ComboboxRoot = <T extends Combobox.CollectionItem>({ ...props }: ComboboxRootProps<T>) => {
+  const { items, ...field } = useFormControl(props);
+  return (
+    //@ts-expect-error - withProvider swallows the generic that Combobox.Root expects.
+    <InternalComboboxRoot items={items} invalid={!!field["aria-invalid"]} {...field} />
+  );
+};
 
 export const ComboboxClearTrigger = withContext<HTMLButtonElement, Assign<JsxStyleProps, Combobox.ClearTriggerProps>>(
   Combobox.ClearTrigger,

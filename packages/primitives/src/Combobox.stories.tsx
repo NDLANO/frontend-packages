@@ -6,7 +6,7 @@
  *
  */
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Portal, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Cross } from "@ndla/icons/action";
@@ -30,8 +30,11 @@ import {
   ComboboxRoot,
   ComboboxTrigger,
 } from "./Combobox";
+import { FieldErrorMessage } from "./FieldErrorMessage";
+import { FormControl } from "./FormControl";
 import { Input, InputContainer } from "./Input";
 import { Text } from "./Text";
+import { FieldHelper } from "./FieldHelper";
 
 const meta: Meta<typeof ComboboxRoot> = {
   title: "Primitives/Combobox",
@@ -43,6 +46,8 @@ const meta: Meta<typeof ComboboxRoot> = {
 };
 
 export default meta;
+
+type SimpleItem = { value: string; label: string };
 
 const data = [
   { value: "apple", label: "Apple" },
@@ -267,7 +272,7 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
       variant="bordered"
       items={items}
       onInputValueChange={handleChange}
-      itemToString={(item) => (item as Item).label}
+      itemToString={(item) => item.label}
     >
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
@@ -309,5 +314,65 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
         </ComboboxPositioner>
       </Portal>
     </ComboboxRoot>
+  );
+};
+
+export const WithFormControl: StoryFn<typeof ComboboxRoot> = (args) => {
+  const [items, setItems] = useState(data);
+  const [selectedItem, setSelectedItem] = useState<SimpleItem | undefined>(undefined);
+  const id = useId();
+  const isInvalid = selectedItem?.value.includes("a");
+
+  const handleChange = (e: ComboboxInputValueChangeDetails) => {
+    const filtered = data.filter((item) => item.label.toLowerCase().includes(e.inputValue.toLowerCase()));
+    setItems(filtered.length > 0 ? filtered : data);
+  };
+
+  return (
+    <FormControl id={id} isInvalid={isInvalid}>
+      <ComboboxRoot
+        {...args}
+        items={data}
+        value={selectedItem ? [selectedItem.value] : undefined}
+        multiple={false}
+        onValueChange={(val) => setSelectedItem(val.items[0])}
+        onInputValueChange={handleChange}
+      >
+        <ComboboxLabel>Framework</ComboboxLabel>
+        <FieldHelper>A er en vanskelig bokstav å ta hensyn til.</FieldHelper>
+        <FieldErrorMessage>Valget ditt kan ikke inneholde bokstaven a...</FieldErrorMessage>
+        <ComboboxControl>
+          <InputContainer>
+            <ComboboxInput asChild>
+              <Input placeholder="Velg et rammeverk" />
+            </ComboboxInput>
+            <ComboboxClearTrigger asChild>
+              <IconButton variant="clear">
+                <Cross />
+              </IconButton>
+            </ComboboxClearTrigger>
+          </InputContainer>
+          <ComboboxTrigger asChild>
+            <IconButton variant="secondary">
+              <ChevronDown />
+            </IconButton>
+          </ComboboxTrigger>
+        </ComboboxControl>
+        <Portal>
+          <ComboboxPositioner>
+            <ComboboxContent>
+              {items.map((item) => (
+                <ComboboxItem key={item.value} item={item}>
+                  <ComboboxItemText>{item.label}</ComboboxItemText>
+                  <ComboboxItemIndicator>
+                    <Done />
+                  </ComboboxItemIndicator>
+                </ComboboxItem>
+              ))}
+            </ComboboxContent>
+          </ComboboxPositioner>
+        </Portal>
+      </ComboboxRoot>
+    </FormControl>
   );
 };

@@ -166,9 +166,12 @@ export const useFormControlProps = <T extends UseFormControlProps>({
   ...rest
 }: T) => {
   const field = useFormControlContext();
-  const labelIds = rest["aria-describedby"] ? [rest["aria-describedby"]] : [];
+  const labelIds: string[] = [];
   if (field?.hasErrorText && field?.isInvalid) {
     labelIds.push(field.errorTextId);
+  }
+  if (rest["aria-describedby"]) {
+    labelIds.push(rest["aria-describedby"]);
   }
   if (field?.hasHelpText) {
     labelIds.push(field.helpTextId);

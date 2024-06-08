@@ -31,10 +31,10 @@ import {
   ComboboxTrigger,
 } from "./Combobox";
 import { FieldErrorMessage } from "./FieldErrorMessage";
+import { FieldHelper } from "./FieldHelper";
 import { FormControl } from "./FormControl";
 import { Input, InputContainer } from "./Input";
 import { Text } from "./Text";
-import { FieldHelper } from "./FieldHelper";
 
 const meta: Meta<typeof ComboboxRoot> = {
   title: "Primitives/Combobox",

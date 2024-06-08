@@ -6,7 +6,7 @@
  *
  */
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Person } from "@ndla/icons/common";
 import { FieldErrorMessage } from "./FieldErrorMessage";
@@ -23,19 +23,17 @@ export default {
   parameters: {
     inlineStories: true,
   },
-  args: {
-    id: "name",
-  },
   argTypes: {
     isInvalid: { control: false },
   },
 } as Meta<typeof FormControl>;
 
 export const Default: StoryFn<typeof FormControl> = ({ ...args }) => {
+  const id = useId();
   const [value, setValue] = useState("");
   const isInvalid = value.length === 0;
   return (
-    <FormControl {...args} isInvalid={isInvalid}>
+    <FormControl {...args} id={id} isInvalid={isInvalid}>
       <Text textStyle="label.small" id="name-info">
         We need to know your name!
       </Text>
@@ -55,8 +53,9 @@ export const Default: StoryFn<typeof FormControl> = ({ ...args }) => {
 };
 
 export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
+  const id = useId();
   return (
-    <FormControl {...args}>
+    <FormControl {...args} id={id}>
       <FormLabel>Name</FormLabel>
       <InputContainer>
         <Person />
@@ -68,8 +67,9 @@ export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
 };
 
 export const Disabled: StoryFn<typeof FormControl> = ({ ...args }) => {
+  const id = useId();
   return (
-    <FormControl {...args} isDisabled>
+    <FormControl {...args} id={id} isDisabled>
       <FormLabel>Name</FormLabel>
       <InputContainer>
         <Person />
@@ -81,8 +81,9 @@ export const Disabled: StoryFn<typeof FormControl> = ({ ...args }) => {
 };
 
 export const DisabledWithoutWrapper: StoryFn<typeof FormControl> = ({ ...args }) => {
+  const id = useId();
   return (
-    <FormControl {...args} isDisabled>
+    <FormControl {...args} id={id} isDisabled>
       <FormLabel>Name</FormLabel>
       <FormInput name="name" />
       <FieldHelper>Make sure to use proper punctuation</FieldHelper>
@@ -92,9 +93,10 @@ export const DisabledWithoutWrapper: StoryFn<typeof FormControl> = ({ ...args })
 
 export const WithoutWrapper: StoryFn<typeof FormControl> = ({ ...args }) => {
   const [value, setValue] = useState("");
+  const id = useId();
   const isInvalid = value.length === 0;
   return (
-    <FormControl {...args} isInvalid={isInvalid}>
+    <FormControl {...args} id={id} isInvalid={isInvalid}>
       <Text textStyle="label.small" id="name-info">
         We need to know your name!
       </Text>
@@ -112,10 +114,11 @@ export const WithoutWrapper: StoryFn<typeof FormControl> = ({ ...args }) => {
 
 export const FormHelperWhenNoError: StoryFn<typeof FormControl> = ({ ...args }) => {
   const [value, setValue] = useState("");
+  const id = useId();
   const isInvalid = value.length === 0;
 
   return (
-    <FormControl {...args} isInvalid={isInvalid}>
+    <FormControl {...args} id={id} isInvalid={isInvalid}>
       <Text textStyle="label.small" id="name-info">
         We need to know your name!
       </Text>
@@ -178,10 +181,11 @@ export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
 
 export const TextAreaFormControl: StoryFn<typeof FormControl> = ({ ...args }) => {
   const [value, setValue] = useState("");
+  const id = useId();
   const isInvalid = value.length === 0;
 
   return (
-    <FormControl {...args} isInvalid={isInvalid}>
+    <FormControl {...args} id={id} isInvalid={isInvalid}>
       <Text textStyle="label.small" id="name-info">
         We need to know your name!
       </Text>

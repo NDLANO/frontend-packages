@@ -77,6 +77,9 @@ const comboboxRecipe = sva({
         _highlighted: {
           background: "surface.hover",
         },
+        "& [data-part='item-text']": {
+          textDecorationColor: "inherit",
+        },
       },
     },
     itemText: {
@@ -88,9 +91,6 @@ const comboboxRecipe = sva({
         textDecorationColor: "inherit",
       },
       _highlighted: {
-        textDecorationColor: "inherit",
-      },
-      _checked: {
         textDecorationColor: "inherit",
       },
       _disabled: {

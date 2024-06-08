@@ -107,7 +107,7 @@ export const InternalSwitchRoot = withProvider<HTMLLabelElement, SwitchRootProps
 
 export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, ref) => {
   const field = useFormControl(props);
-  return <InternalSwitchRoot {...field} ref={ref} />;
+  return <InternalSwitchRoot invalid={field.invalid ?? !!field["aria-invalid"]} {...field} ref={ref} />;
 });
 
 export const SwitchControl = withContext<HTMLSpanElement, Switch.ControlProps>(Switch.Control, "control");

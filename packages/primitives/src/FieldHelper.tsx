@@ -7,12 +7,19 @@
  */
 
 import { ComponentPropsWithRef, forwardRef } from "react";
+import { css, cx } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
 import { useFormControlContext } from "./FormControl";
-import { Text, TextProps } from "./Text";
+import { TextProps } from "./Text";
 
 export const FieldHelper = forwardRef<HTMLDivElement, TextProps & ComponentPropsWithRef<"div">>(
-  ({ textStyle = "label.small", ...props }, ref) => {
+  ({ textStyle = "label.small", fontWeight, color, srOnly, className, ...props }, ref) => {
     const field = useFormControlContext();
-    return <Text textStyle={textStyle} as="div" {...(field?.getHelpTextProps(props, ref) ?? { ref, ...props })} />;
+    return (
+      <styled.div
+        {...(field?.getHelpTextProps(props, ref) ?? { ref, ...props })}
+        className={cx(css({ textStyle, fontWeight, color, srOnly }), className)}
+      />
+    );
   },
 );

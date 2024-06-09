@@ -1,6 +1,6 @@
 {
   "name": "@ndla/types-embed",
-  "version": "4.1.6",
+  "version": "4.1.7",
   "description": "Types used for NDLA embeds",
   "license": "GPL-3.0",
   "types": "lib/index.d.ts",
@@ -23,8 +23,8 @@
     "es"
   ],
   "devDependencies": {
-    "@ndla/types-backend": "^0.2.64",
-    "@ndla/types-taxonomy": "^1.0.22"
+    "@ndla/types-backend": "^0.2.82",
+    "@ndla/types-taxonomy": "^1.0.24"
   },
   "publishConfig": {
     "access": "public"

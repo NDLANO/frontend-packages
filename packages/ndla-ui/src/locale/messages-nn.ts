@@ -945,6 +945,7 @@ const messages = {
         sharedFolder: "Delt mappe",
         unShare: "Delinga er avslutta. Mappa er ikkje lenger delt",
         link: "Lenka er kopiert",
+        savedLink: "Lenka til  {{ name }} er lagt til i Mine mapper.",
         copyLink: "Kopier lenke til mappa",
         header: {
           shared: "Denne mappa er delt",
@@ -1192,6 +1193,7 @@ const messages = {
     copyFolderDisclaimer:
       "Dette lagar ein kopi av mappa. Eventuelle endringar i originalmappa vil ikkje bli oppdatert her.",
     loginCopyFolderPitch: "Ønsker du å kopiere denne mappa?",
+    loginSaveFolderLinkPitch: "Ønsker du å lagra lenka til denne delte mappa?",
     help: "Hjelp",
     more: "Fleire val",
     selectView: "Velg visning",
@@ -1362,6 +1364,9 @@ const messages = {
   },
   siteNav: {
     search: "Søk",
+    navigate: "Naviger med piltastane",
+    select: "Velg",
+    close: "Lukk søk",
   },
   programmes: {
     header: "Kva vil du lære om i dag?",

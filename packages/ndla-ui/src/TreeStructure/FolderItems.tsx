@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { animations } from "@ndla/core";
-import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { IFolder } from "@ndla/types-backend/myndla-api";
 import FolderItem from "./FolderItem";
 import { treestructureId } from "./helperFunctions";
 import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from "./types";

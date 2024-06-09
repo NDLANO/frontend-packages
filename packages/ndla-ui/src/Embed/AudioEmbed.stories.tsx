@@ -11,7 +11,7 @@ import { AudioEmbedData, AudioMeta } from "@ndla/types-embed";
 import AudioEmbed from "./AudioEmbed";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 import { ArticleWrapper } from "../Article";
-import { OneColumn } from "../Layout";
+import LayoutItem, { OneColumn } from "../Layout";
 
 const embedData: AudioEmbedData = {
   resource: "audio",
@@ -190,11 +190,11 @@ const meta: Meta<typeof AudioEmbed> = {
     (Story) => (
       <OneColumn>
         <ArticleWrapper modifier="clean">
-          <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+          <LayoutItem layout="center">
             <section>
               <Story />
             </section>
-          </section>
+          </LayoutItem>
         </ArticleWrapper>
       </OneColumn>
     ),

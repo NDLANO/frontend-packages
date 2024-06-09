@@ -8,12 +8,11 @@
 
 import { i18nInstance } from "@ndla/ui";
 import { Preview } from "@storybook/react";
-import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs";
-import "./designmanual.scss";
+import "./styles.css";
 
 const viewports = {
   small: {

@@ -30,6 +30,12 @@ export const Welcome: StoryFn = () => (
           <Logo label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
         </div>
+        <p>
+          <i>
+            NB: Grunnet overgang til ny profil er komponenter i ferd med å bli byttet ut med nyere versjoner, og vil
+            derfor ikke se helt korrekte ut her.
+          </i>
+        </p>
         <h2 style={{ marginTop: "26px" }}>Hva designmanualen er, og hva den ikke er</h2>
         <p>
           Designmanualen inneholder retningslinjer for formatering, visuelt uttrykk, interaksjon og innholdselementer.

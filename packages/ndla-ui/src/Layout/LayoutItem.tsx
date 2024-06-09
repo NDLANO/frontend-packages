@@ -7,25 +7,42 @@
  */
 
 import { HTMLAttributes, ReactNode, useMemo } from "react";
+import { css } from "@emotion/react";
+import { mq, breakpoints } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
   layout?: "extend" | "center";
 }
 
+const centerCss = css`
+  position: relative !important;
+  width: 83.333%;
+  right: auto !important;
+  left: 8.333%;
+`;
+
+const extendCss = css`
+  ${mq.range({ from: breakpoints.tablet })} {
+    position: relative !important;
+    width: 83.333%;
+    right: auto !important;
+    left: 8.333%;
+  }
+`;
+
 export const LayoutItem = ({ children, layout, ...rest }: Props) => {
-  const className = useMemo(() => {
+  const style = useMemo(() => {
     if (layout === "extend") {
-      return "u-10/12@desktop u-push-1/12@desktop u-10/12@tablet u-push-1/12@tablet";
-    }
-    if (layout === "center") {
-      return "u-10/12 u-push-1/12";
+      return extendCss;
+    } else if (layout === "center") {
+      return centerCss;
     }
     return undefined;
   }, [layout]);
 
   return (
-    <section className={className} {...rest}>
+    <section css={style} {...rest}>
       {children}
     </section>
   );

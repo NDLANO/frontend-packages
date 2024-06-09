@@ -10,7 +10,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { RelatedContentMetaData } from "@ndla/types-embed";
 import RelatedContentEmbed from "./RelatedContentEmbed";
 import { ArticleWrapper } from "../Article";
-import { OneColumn } from "../Layout";
+import LayoutItem, { OneColumn } from "../Layout";
 import RelatedArticleList from "../RelatedArticleList";
 
 const filmResourceMeta: RelatedContentMetaData = {
@@ -369,11 +369,11 @@ const meta: Meta<typeof RelatedContentEmbed> = {
     (Story) => (
       <OneColumn>
         <ArticleWrapper modifier="clean">
-          <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+          <LayoutItem layout="center">
             <section>
               <Story />
             </section>
-          </section>
+          </LayoutItem>
         </ArticleWrapper>
       </OneColumn>
     ),
@@ -404,6 +404,17 @@ const linkEmbed2: RelatedContentMetaData = {
   status: "success",
 };
 
+const linkEmbed3: RelatedContentMetaData = {
+  resource: "related-content",
+  embedData: {
+    resource: "related-content",
+    title: "Valg av tillitselev fra klassen",
+    url: "https://xn--elevrd-mua.no",
+  },
+  data: undefined,
+  status: "success",
+};
+
 export const RelatedContentStory: StoryObj<typeof RelatedContentEmbed> = {
   render: () => (
     <RelatedArticleList>
@@ -429,6 +440,7 @@ export const WithLinks: StoryObj<typeof RelatedContentEmbed> = {
     <RelatedArticleList>
       <RelatedContentEmbed embed={linkEmbed1} />
       <RelatedContentEmbed embed={linkEmbed2} />
+      <RelatedContentEmbed embed={linkEmbed3} />
     </RelatedArticleList>
   ),
 };

@@ -50,7 +50,11 @@ const popoverRecipe = sva({
 const { withRootProvider, withContext } = createStyleContext(popoverRecipe);
 
 export type PopoverRootProps = Popover.RootProps;
-export const PopoverRoot = withRootProvider<PopoverRootProps>(Popover.Root);
+const InternalPopoverRoot = withRootProvider<PopoverRootProps>(Popover.Root);
+
+export const PopoverRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: PopoverRootProps) => (
+  <InternalPopoverRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
+);
 
 export const PopoverAnchor = withContext<HTMLDivElement, Popover.AnchorProps>(Popover.Anchor, "anchor");
 

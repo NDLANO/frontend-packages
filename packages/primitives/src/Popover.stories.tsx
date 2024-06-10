@@ -11,9 +11,6 @@ import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { css } from "@ndla/styled-system/css";
 import { Button } from "./Button";
 import {
-  PopoverArrow,
-  PopoverArrowStandalone,
-  PopoverArrowTip,
   PopoverContent,
   PopoverContentStandalone,
   PopoverDescription,
@@ -41,7 +38,6 @@ export default {
       </PopoverTrigger>
       <Portal>
         <PopoverContent>
-          <PopoverArrow />
           <PopoverTitle>Welcome!</PopoverTitle>
           <PopoverDescription>{children}</PopoverDescription>
         </PopoverContent>
@@ -69,7 +65,6 @@ export const LeftAligned: StoryObj<typeof PopoverRoot> = {
       </PopoverTrigger>
       <Portal>
         <PopoverContent>
-          <PopoverArrow />
           <PopoverTitle>Welcome!</PopoverTitle>
           <PopoverDescription>{children}</PopoverDescription>
         </PopoverContent>
@@ -86,9 +81,6 @@ export const WithStandaloneComponents: StoryFn = (args) => (
     <Portal>
       <PopoverPositioner>
         <PopoverContentStandalone>
-          <PopoverArrowStandalone>
-            <PopoverArrowTip />
-          </PopoverArrowStandalone>
           <PopoverTitle>Welcome!</PopoverTitle>
           <PopoverDescription>
             Lorem ipsum dolor sit lorem a amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore

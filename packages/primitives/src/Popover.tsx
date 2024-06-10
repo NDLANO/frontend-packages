@@ -21,8 +21,6 @@ const popoverRecipe = sva({
       display: "flex",
       flexDirection: "column",
       padding: "medium",
-      border: "1px solid",
-      borderColor: "stroke.subtle",
       background: "surface.default",
       borderRadius: "xsmall",
       boxShadow: "xlarge",
@@ -38,11 +36,6 @@ const popoverRecipe = sva({
     arrow: {
       "--arrow-size": "sizes.xxsmall",
       "--arrow-background": "colors.surface.default",
-    },
-    arrowTip: {
-      borderTopWidth: "1px",
-      borderLeftWidth: "1px",
-      borderColor: "stroke.subtle",
     },
   },
 });

@@ -7,7 +7,8 @@
  */
 
 import { Portal } from "@ark-ui/react";
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { css } from "@ndla/styled-system/css";
 import { Button } from "./Button";
 import {
   PopoverArrow,
@@ -29,25 +30,53 @@ export default {
   parameters: {
     inlineStories: true,
   },
+  args: {
+    children:
+      "Lorem ipsum dolor sit lorem a amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.",
+  },
+  render: ({ children, ...args }) => (
+    <PopoverRoot {...args}>
+      <PopoverTrigger asChild>
+        <Button>Open me!</Button>
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent>
+          <PopoverArrow />
+          <PopoverTitle>Welcome!</PopoverTitle>
+          <PopoverDescription>{children}</PopoverDescription>
+        </PopoverContent>
+      </Portal>
+    </PopoverRoot>
+  ),
 } as Meta<typeof PopoverRoot>;
 
-export const Default: StoryFn = (args) => (
-  <PopoverRoot {...args}>
-    <PopoverTrigger asChild>
-      <Button>Open me!</Button>
-    </PopoverTrigger>
-    <Portal>
-      <PopoverContent>
-        <PopoverArrow />
-        <PopoverTitle>Welcome!</PopoverTitle>
-        <PopoverDescription>
-          Lorem ipsum dolor sit lorem a amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Ut enim ad.
-        </PopoverDescription>
-      </PopoverContent>
-    </Portal>
-  </PopoverRoot>
-);
+export const Default: StoryObj<typeof PopoverRoot> = {};
+
+export const RightAligned: StoryObj<typeof PopoverRoot> = {
+  args: {
+    positioning: { placement: "right" },
+  },
+};
+
+export const LeftAligned: StoryObj<typeof PopoverRoot> = {
+  args: {
+    positioning: { placement: "left" },
+  },
+  render: ({ children, ...args }) => (
+    <PopoverRoot {...args}>
+      <PopoverTrigger asChild>
+        <Button className={css({ marginInlineStart: "50%" })}>Open me!</Button>
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent>
+          <PopoverArrow />
+          <PopoverTitle>Welcome!</PopoverTitle>
+          <PopoverDescription>{children}</PopoverDescription>
+        </PopoverContent>
+      </Portal>
+    </PopoverRoot>
+  ),
+};
 
 export const WithStandaloneComponents: StoryFn = (args) => (
   <PopoverRoot {...args}>

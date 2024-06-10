@@ -79,8 +79,18 @@ export const Widths: StoryFn = () => (
     <SizeItem width="40" />
     <SizeItem width="44" />
     <SizeItem width="48" />
+    <SizeItem width="50" />
     <SizeItem width="60" />
     <SizeItem width="72" />
+    <SizeItem width="75" />
+    <SizeItem width="100" />
+    <SizeItem width="150" />
+    <SizeItem width="200" />
+    <SizeItem width="300" />
+    <SizeItem width="350" />
+    <SizeItem width="400" />
+    <SizeItem width="500" />
+    <SizeItem width="550" />
   </SizesContainer>
 );
 
@@ -97,5 +107,21 @@ export const SemanticWidth: StoryFn = () => (
     <SizeItem width="xxlarge" />
     <SizeItem width="3xlarge" />
     <SizeItem width="4xlarge" />
+  </SizesContainer>
+);
+
+export const SurfaceWidths: StoryFn = () => (
+  <SizesContainer>
+    <SizeItem width="surface.4xsmall" />
+    <SizeItem width="surface.3xsmall" />
+    <SizeItem width="surface.xxsmall" />
+    <SizeItem width="surface.xsmall" />
+    <SizeItem width="surface.small" />
+    <SizeItem width="surface.medium" />
+    <SizeItem width="surface.large" />
+    <SizeItem width="surface.xlarge" />
+    <SizeItem width="surface.xxlarge" />
+    <SizeItem width="surface.3xlarge" />
+    <SizeItem width="surface.4xlarge" />
   </SizesContainer>
 );

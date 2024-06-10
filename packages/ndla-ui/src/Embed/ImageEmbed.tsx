@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { MouseEventHandler, ReactNode, useEffect, useMemo, useState } from "react";
+import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, spacing, utils } from "@ndla/core";
@@ -143,7 +143,11 @@ const ImageEmbed = ({
 }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
-  const [floatAttr, setFloatAttr] = useState<any>({});
+  // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
+  // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
+  const [floatAttr, setFloatAttr] = useState<{ "data-float"?: string }>(() =>
+    inGrid && !embed.embedData.align ? {} : { "data-float": embed.embedData.align },
+  );
 
   const parsedDescription = useMemo(() => {
     if (embed.embedData.caption || renderContext === "article") {
@@ -153,14 +157,6 @@ const ImageEmbed = ({
       return parse(embed.data.caption.caption);
     }
   }, [embed, renderContext]);
-
-  // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
-  // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
-  useEffect(() => {
-    if (!inGrid && embed.embedData.align) {
-      setFloatAttr({ "data-float": embed.embedData.align });
-    }
-  }, [inGrid, embed.embedData.align]);
 
   if (embed.status === "error") {
     const { align, size } = embed.embedData;

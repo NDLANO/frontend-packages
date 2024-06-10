@@ -24,6 +24,42 @@ export const animations = defineTokens.animations({
   "fade-shift-out": {
     value: "fade-shift-in 200ms {easings.emphasized-in}",
   },
+  "backdrop-in": {
+    value: "fade-in 250ms {easings.emphasized-in}",
+  },
+  "backdrop-out": {
+    value: "fade-out 200ms {easings.emphasized-out}",
+  },
+  "dialog-in": {
+    value: "fade-in 400ms {easings.emphasized-in}",
+  },
+  "dialog-out": {
+    value: "fade-out 200ms {easings.emphasized-out}",
+  },
+  "drawer-in-left": {
+    value: "slide-in-left 400ms {easings.emphasized-in}",
+  },
+  "drawer-out-left": {
+    value: "slide-out-left 200ms {easings.emphasized-out}",
+  },
+  "drawer-in-right": {
+    value: "slide-in-right 400ms {easings.emphasized-in}",
+  },
+  "drawer-out-right": {
+    value: "slide-out-right 200ms {easings.emphasized-out}",
+  },
+  "drawer-in-bottom": {
+    value: "slide-in-bottom 400ms {easings.emphasized-in}",
+  },
+  "drawer-out-bottom": {
+    value: "slide-out-bottom 200ms {easings.emphasized-out}",
+  },
+  "drawer-in-top": {
+    value: "slide-in-top 400ms {easings.emphasized-in}",
+  },
+  "drawer-out-top": {
+    value: "slide-out-top 200ms {easings.emphasized-out}",
+  },
 });
 
 export const easings = defineTokens.easings({
@@ -60,5 +96,45 @@ export const keyframes = {
   "collapse-out": {
     "0%": { height: "var(--height)" },
     "100%": { height: "0" },
+  },
+  "fade-in": {
+    from: { opacity: "0" },
+    to: { opacity: "1" },
+  },
+  "fade-out": {
+    from: { opacity: "1" },
+    to: { opacity: "0" },
+  },
+  "slide-in-left": {
+    "0%": { transform: "translateX(-100%)" },
+    "100%": { transform: "translateX(0%)" },
+  },
+  "slide-out-left": {
+    "0%": { transform: "translateX(0%)" },
+    "100%": { transform: "translateX(-100%)" },
+  },
+  "slide-in-right": {
+    "0%": { transform: "translateX(100%)" },
+    "100%": { transform: "translateX(0%)" },
+  },
+  "slide-out-right": {
+    "0%": { transform: "translateX(0%)" },
+    "100%": { transform: "translateX(100%)" },
+  },
+  "slide-in-top": {
+    "0%": { transform: "translateY(-100%)" },
+    "100%": { transform: "translateY(0%)" },
+  },
+  "slide-out-top": {
+    "0%": { transform: "translateY(0%)" },
+    "100%": { transform: "translateY(-100%)" },
+  },
+  "slide-in-bottom": {
+    "0%": { transform: "translateY(100%)" },
+    "100%": { transform: "translateY(0%)" },
+  },
+  "slide-out-bottom": {
+    "0%": { transform: "translateY(0%)" },
+    "100%": { transform: "translateY(100%)" },
   },
 };

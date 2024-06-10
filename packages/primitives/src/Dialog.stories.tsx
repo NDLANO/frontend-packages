@@ -38,6 +38,8 @@ const meta: Meta<typeof DialogRoot> = {
   component: DialogRoot,
   args: {
     size: "medium",
+    variant: "dialog",
+    position: "center",
   },
 };
 

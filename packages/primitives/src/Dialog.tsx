@@ -11,7 +11,7 @@ import type { Assign } from "@ark-ui/react";
 import { Dialog } from "@ark-ui/react";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { StyledVariantProps, SystemProperties } from "@ndla/styled-system/types";
+import { SystemProperties } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Heading, Text, TextProps } from "./Text";
 
@@ -48,14 +48,14 @@ const dialogRecipe = sva({
       height: "100dvh",
       zIndex: "modal",
     },
-    // TODO: Let's try to fix the overflow border radius thingy in lipsum example.
     content: {
+      "--margin": "token(sizes.medium)",
       position: "relative",
       background: "surface.default",
       boxShadow: "xlarge",
       height: "min-content",
       maxWidth: "95%",
-      maxHeight: "85%",
+      maxHeight: "95%",
       margin: "auto",
       overflowY: "auto",
       borderRadius: { base: "sharp", tablet: "small" },
@@ -63,13 +63,8 @@ const dialogRecipe = sva({
       paddingBlockEnd: "env(safe-area-inset-bottom)",
       paddingInlineStart: "env(safe-area-inset-left)",
       paddingInlineEnd: "env(safe-area-inset-right)",
-      _open: {
-        animation: "dialog-in",
-      },
-      _closed: {
-        animation: "dialog-out",
-      },
       tabletDown: {
+        "--margin": "0px",
         minWidth: "100%",
         minHeight: "100%",
       },
@@ -77,11 +72,161 @@ const dialogRecipe = sva({
   },
   defaultVariants: {
     size: "medium",
+    position: "center",
   },
+  compoundVariants: [
+    {
+      variant: "drawer",
+      position: "left",
+      css: {
+        content: {
+          minHeight: "100%",
+          maxHeight: "100%",
+          width: "var(--size)",
+          _open: {
+            animation: "drawer-in-left",
+          },
+          _closed: {
+            animation: "drawer-out-left",
+          },
+        },
+      },
+    },
+    {
+      variant: "drawer",
+      position: "right",
+      css: {
+        content: {
+          minHeight: "100%",
+          maxHeight: "100%",
+          width: "var(--size)",
+          _open: {
+            animation: "drawer-in-right",
+          },
+          _closed: {
+            animation: "drawer-out-right",
+          },
+        },
+      },
+    },
+    {
+      variant: "drawer",
+      position: "top",
+      css: {
+        content: {
+          minWidth: "100%",
+          maxWidth: "100%",
+          height: "var(--size)",
+          _open: {
+            animation: "drawer-in-top",
+          },
+          _closed: {
+            animation: "drawer-out-top",
+          },
+        },
+      },
+    },
+    {
+      variant: "drawer",
+      position: "bottom",
+      css: {
+        content: {
+          minWidth: "100%",
+          maxWidth: "100%",
+          height: "var(--size)",
+          _open: {
+            animation: "drawer-in-bottom",
+          },
+          _closed: {
+            animation: "drawer-out-bottom",
+          },
+        },
+      },
+    },
+    {
+      variant: "drawer",
+      size: "xsmall",
+      css: {
+        content: {
+          "--size": "sizes.surface.3xsmall",
+        },
+      },
+    },
+    {
+      variant: "drawer",
+      size: "small",
+      css: {
+        content: {
+          "--size": "sizes.surface.xsmall",
+        },
+      },
+    },
+    {
+      variant: "drawer",
+      size: "medium",
+      css: {
+        content: {
+          "--size": "sizes.surface.medium",
+        },
+      },
+    },
+    {
+      variant: "drawer",
+      size: "large",
+      css: {
+        content: {
+          "--size": "sizes.surface.xlarge",
+        },
+      },
+    },
+  ],
   variants: {
+    variant: {
+      drawer: {
+        content: {
+          "--margin": "0px",
+          borderRadius: { base: "sharp", tablet: "sharp" },
+        },
+      },
+      dialog: {
+        content: {
+          width: "var(--size)",
+          _open: {
+            animation: "dialog-in",
+          },
+          _closed: {
+            animation: "dialog-out",
+          },
+        },
+      },
+    },
+    position: {
+      left: {
+        content: {
+          marginInlineStart: "min(var(--margin), 5%)",
+        },
+      },
+      center: {},
+      right: {
+        content: {
+          marginInlineEnd: "var(--margin)",
+        },
+      },
+      bottom: {
+        content: {
+          marginBlockEnd: "var(--margin)",
+        },
+      },
+      top: {
+        content: {
+          marginBlockStart: "var(--margin)",
+        },
+      },
+    },
     size: {
       full: {
         content: {
+          "--margin": "0px",
           minHeight: "100%",
           minWidth: "100%",
           borderRadius: "sharp",
@@ -89,22 +234,22 @@ const dialogRecipe = sva({
       },
       xsmall: {
         content: {
-          width: "300px",
+          "--size": "sizes.surface.xsmall",
         },
       },
       small: {
         content: {
-          width: "500px",
+          "--size": "sizes.surface.medium",
         },
       },
       medium: {
         content: {
-          width: "700px",
+          "--size": "sizes.surface.xlarge",
         },
       },
       large: {
         content: {
-          width: "1100px",
+          "--size": "sizes.surface.4xlarge",
         },
       },
     },
@@ -148,76 +293,6 @@ export const DialogContent = forwardRef<HTMLDivElement, ComponentProps<typeof Di
     </>
   ),
 );
-
-export const DrawerStandaloneContent = styled(DialogStandaloneContent, {
-  base: {
-    margin: "0",
-    borderRadius: { base: "sharp", tablet: "sharp" },
-  },
-  variants: {
-    position: {
-      left: {
-        marginInlineEnd: "auto",
-        minHeight: "100%",
-        maxHeight: "100%",
-        _open: {
-          animation: "drawer-in-left",
-        },
-        _closed: {
-          animation: "drawer-out-left",
-        },
-      },
-      right: {
-        marginInlineStart: "auto",
-        minHeight: "100%",
-        maxHeight: "100%",
-        _open: {
-          animation: "drawer-in-right",
-        },
-        _closed: {
-          animation: "drawer-out-right",
-        },
-      },
-      top: {
-        marginBlockEnd: "auto",
-        width: "100%",
-        maxWidth: "100%",
-        minWidth: "100%",
-        _open: {
-          animation: "drawer-in-top",
-        },
-        _closed: {
-          animation: "drawer-out-top",
-        },
-      },
-      bottom: {
-        marginBlockStart: "auto",
-        maxWidth: "100%",
-        minWidth: "100%",
-        _open: {
-          animation: "drawer-in-bottom",
-        },
-        _closed: {
-          animation: "drawer-out-bottom",
-        },
-      },
-    },
-  },
-});
-
-export const DrawerContent = forwardRef<HTMLDivElement, ComponentProps<typeof DrawerStandaloneContent>>(
-  (props, ref) => (
-    <>
-      <DialogBackdrop />
-      <DialogPositioner>
-        {/* @ts-expect-error  panda expects one type of css prop, whereas emotion expects another. */}
-        <DrawerStandaloneContent ref={ref} {...props} />
-      </DialogPositioner>
-    </>
-  ),
-);
-
-export type DrawerContentVariantProps = StyledVariantProps<typeof DrawerStandaloneContent>;
 
 export const DialogDescription = ({ textStyle = "body.large", ...rest }: Dialog.DescriptionProps & TextProps) => {
   return (

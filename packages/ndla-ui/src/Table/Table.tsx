@@ -173,6 +173,17 @@ export const TableStyling = css`
     display: table-cell;
     padding: ${spacing.xsmall} ${spacing.small};
 
+    &[data-align="center"] {
+      text-align: center;
+    }
+
+    &[data-align="right"] {
+      text-align: right;
+    }
+
+    &[data-align="left"] {
+      text-align: left;
+    }
     p {
       margin: 0;
     }

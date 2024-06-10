@@ -11,11 +11,11 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/lib/*.js", "{projectRoot}/es/*.js", "{projectRoot}/dist/*.css"]
+      "outputs": ["{projectRoot}/lib/*.js", "{projectRoot}/es/*.js"]
     },
     "prepublish": {
       "dependsOn": ["^prepublish"],
-      "outputs": ["{projectRoot}/lib/*.d.ts"]
+      "outputs": ["{projectRoot}/lib/*.d.ts", "{projectRoot}/dist/*.css"]
     }
   },
   "defaultBase": "master",

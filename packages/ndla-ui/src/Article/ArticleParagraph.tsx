@@ -17,6 +17,9 @@ const StyledParagraph = styled.p`
   &[data-align="center"] {
     text-align: center;
   }
+  &:has(span[dir="rtl"]) {
+    direction: rtl;
+  }
 `;
 
 export const ArticleParagraph = (props: Props) => <StyledParagraph {...props} />;

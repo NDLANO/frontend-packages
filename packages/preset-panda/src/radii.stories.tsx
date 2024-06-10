@@ -1,0 +1,49 @@
+/**
+ * Copyright (c) 2024-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { Meta, StoryFn } from "@storybook/react";
+import { css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
+import { RadiusToken } from "@ndla/styled-system/tokens";
+
+const RadiiContainer = styled("div", {
+  base: {
+    display: "flex",
+    gap: "small",
+  },
+});
+
+interface Props {
+  borderRadius: RadiusToken;
+}
+
+const RadiiItem = ({ borderRadius }: Props) => (
+  <div className={css({ borderRadius, backgroundColor: "surface.action", color: "text.onAction", padding: "medium" })}>
+    {borderRadius}
+  </div>
+);
+
+export default {
+  title: "Preset/Radii",
+  tags: ["autodocs"],
+  component: RadiiItem,
+  parameters: {
+    inlineStories: true,
+  },
+} as Meta<typeof RadiiItem>;
+
+export const Radiis: StoryFn = () => (
+  <RadiiContainer>
+    <RadiiItem borderRadius="sharp" />
+    <RadiiItem borderRadius="xsmall" />
+    <RadiiItem borderRadius="small" />
+    <RadiiItem borderRadius="medium" />
+    <RadiiItem borderRadius="large" />
+    <RadiiItem borderRadius="full" />
+  </RadiiContainer>
+);

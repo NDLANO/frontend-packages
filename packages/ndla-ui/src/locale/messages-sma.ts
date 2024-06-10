@@ -944,6 +944,8 @@ const messages = {
       sharing: {
         share: "Del mappe",
         shared: "Delt",
+        sharedBy: "Delt av ",
+        sharedByAnonymous: "anonym lærer",
         sharedFolder: "Delt mappe",
         unShare: "Delingen er avsluttet. Mappen er ikke lenger delt.",
         copyLink: "Kopier lenke til mappa",
@@ -1367,6 +1369,9 @@ const messages = {
   },
   siteNav: {
     search: "Ohtsh",
+    navigate: "Naviger med piltastene",
+    select: "Velg",
+    close: "Lukk søk",
   },
   programmes: {
     header: "Maam sïjhth daan biejjien lïeredh ?",

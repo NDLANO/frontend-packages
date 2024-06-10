@@ -940,6 +940,8 @@ const messages = {
       sharing: {
         share: "Del mappe",
         shared: "Delt",
+        sharedBy: "Delt av ",
+        sharedByAnonymous: "anonym lærar",
         sharedFolder: "Delt mappe",
         unShare: "Delinga er avslutta. Mappa er ikkje lenger delt",
         link: "Lenka er kopiert",
@@ -1362,6 +1364,9 @@ const messages = {
   },
   siteNav: {
     search: "Søk",
+    navigate: "Naviger med piltastane",
+    select: "Velg",
+    close: "Lukk søk",
   },
   programmes: {
     header: "Kva vil du lære om i dag?",

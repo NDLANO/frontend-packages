@@ -6,21 +6,10 @@
  *
  */
 
-import { forwardRef, HTMLAttributes } from "react";
+import { CSSProperties, forwardRef, HTMLAttributes, useMemo } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { fonts, spacing } from "@ndla/core";
-
-export const generateListResets = (counterName: string) => {
-  let styles = "";
-  for (let $i = 0; $i < 50; $i++) {
-    styles += ` 
-      &.ol-reset-${$i} { counter-reset: ${counterName} ${$i - 1}; }  
-    `;
-  }
-
-  return styles;
-};
 
 export const LetterCSS = css`
   padding-left: ${spacing.medium};
@@ -73,7 +62,9 @@ export const NumberCSS = css`
     }
     > ol:not([data-type="letters"]) {
       counter-reset: level2;
-      ${generateListResets("level2")};
+      &[data-count="true"] {
+        counter-reset: level2 var(--start, 0);
+      }
       > li {
         padding-left: ${spacing.nsmall};
         counter-increment: level2;
@@ -82,7 +73,9 @@ export const NumberCSS = css`
         }
         > ol:not([data-type="letters"]) {
           counter-reset: level3;
-          ${generateListResets("level3")};
+          &[data-count="true"] {
+            counter-reset: level3 var(--start, 0);
+          }
           > li {
             padding-left: ${spacing.medium};
             counter-increment: level3;
@@ -91,7 +84,10 @@ export const NumberCSS = css`
             }
             > ol:not([data-type="letters"]) {
               counter-reset: level4;
-              ${generateListResets("level4")};
+              &[data-count="true"] {
+                counter-reset: level4 var(--start, 0);
+              }
+
               > li {
                 padding-left: ${spacing.large};
                 counter-increment: level4;
@@ -110,11 +106,14 @@ export const NumberCSS = css`
 
 const StyledOl = styled.ol`
   ${fonts.sizes("18px", "29px")};
-  ${generateListResets("level1")};
   padding: 0;
   list-style-type: none;
   counter-reset: level1;
   margin: ${spacing.normal} 0 ${spacing.normal} ${spacing.normal};
+
+  &[data-count="true"] {
+    counter-reset: level1 var(--start, 0);
+  }
 
   > li {
     margin-top: ${spacing.nsmall};
@@ -144,9 +143,13 @@ interface Props extends HTMLAttributes<HTMLOListElement> {
   start?: number;
 }
 
-const OrderedList = forwardRef<HTMLOListElement, Props>(({ type, children, ...rest }, ref) => {
+const OrderedList = forwardRef<HTMLOListElement, Props>(({ type, children, start, ...rest }, ref) => {
+  const style = useMemo(() => {
+    return { "--start": start ? start - 1 : undefined } as CSSProperties;
+  }, [start]);
+
   return (
-    <StyledOl data-type={type} ref={ref} {...rest}>
+    <StyledOl data-type={type} data-count={start != null} style={style} ref={ref} {...rest}>
       {children}
     </StyledOl>
   );

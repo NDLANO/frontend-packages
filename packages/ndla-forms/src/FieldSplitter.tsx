@@ -7,10 +7,10 @@
  */
 
 import { Children, cloneElement, ReactElement } from "react";
-import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import { spacing } from "@ndla/core";
 
-const FieldSplitterCSS = css`
+const StyledFieldSplitter = styled.div`
   display: flex;
   &:only-child {
     > * {
@@ -23,7 +23,7 @@ interface Props {
   children: ReactElement | ReactElement[];
 }
 const FieldSplitter = ({ children }: Props) => (
-  <div css={FieldSplitterCSS}>
+  <StyledFieldSplitter>
     {Children.map(children, (child, i) =>
       cloneElement(child, {
         css: {
@@ -33,7 +33,7 @@ const FieldSplitter = ({ children }: Props) => (
         },
       }),
     )}
-  </div>
+  </StyledFieldSplitter>
 );
 
 export default FieldSplitter;

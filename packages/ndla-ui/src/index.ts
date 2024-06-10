@@ -117,7 +117,7 @@ export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";
 
 export { i18nInstance, formatNestedMessages } from "./i18n";
 
-export { default as LayoutItem, OneColumn, PageContainer, Content } from "./Layout";
+export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";
 
 export {
   default as ContentTypeBadge,

@@ -7,10 +7,10 @@
  */
 
 import { ReactNode } from "react";
-import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import { spacing, breakpoints, mq, colors } from "@ndla/core";
 
-const bodyStyles = css`
+const StyledModalBody = styled.div`
   &.slide-in-left {
     animation-name: fadeInLeft;
     animation-duration: 500ms;
@@ -59,9 +59,9 @@ interface Props {
 }
 
 const ModalBody = ({ children, modifier, className }: Props) => (
-  <div data-testid="modal-body" css={bodyStyles} className={`modal-body ${modifier} ${className}`}>
+  <StyledModalBody data-testid="modal-body" className={`modal-body ${modifier} ${className}`}>
     {children}
-  </div>
+  </StyledModalBody>
 );
 
 export default ModalBody;

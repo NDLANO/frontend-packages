@@ -8,10 +8,11 @@
 
 import { ReactNode, useState } from "react";
 import { css, Global } from "@emotion/react";
+import styled from "@emotion/styled";
 import { misc } from "@ndla/core";
 import ButtonV2, { ButtonProps } from "./ButtonV2";
 
-const styling = css`
+const StyledButton = styled(ButtonV2)`
   border-radius: ${misc.borderRadius};
   background-color: white;
 `;
@@ -64,9 +65,8 @@ const ZendeskButton = ({ children, locale, widgetKey, ...rest }: Props) => {
           }
         `}
       />
-      <ButtonV2
+      <StyledButton
         type="button"
-        css={styling}
         onClick={handleClick}
         variant="outline"
         id="zendeskButton"
@@ -74,7 +74,7 @@ const ZendeskButton = ({ children, locale, widgetKey, ...rest }: Props) => {
         {...rest}
       >
         {children}
-      </ButtonV2>
+      </StyledButton>
     </>
   );
 };

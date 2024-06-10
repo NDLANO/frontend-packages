@@ -84,12 +84,13 @@ const StyledImg = styled.img`
 const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = "h3", size = "normal", path }: Props) => {
   const { t } = useTranslation();
   const href = getPossiblyRelativeUrl(url, path);
+  const imageWidth = size === "large" ? 532 : 350;
   return (
     <Container data-size={size} to={href}>
       <Heading className="blog-title" css={headingCss}>
         {parse(title)}
       </Heading>
-      <StyledImg src={metaImage.url} alt={metaImage.alt} />
+      <StyledImg src={`${metaImage.url}?width=${imageWidth}`} alt={metaImage.alt} />
       {!!author && <AuthorContainer aria-label={t("article.writtenBy", { authors: author })}>{author}</AuthorContainer>}
     </Container>
   );

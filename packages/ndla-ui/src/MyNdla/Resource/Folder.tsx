@@ -10,7 +10,7 @@ import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { fonts, spacing, colors, mq, breakpoints, stackOrder } from "@ndla/core";
-import { FileDocumentOutline, Share } from "@ndla/icons/common";
+import { FileDocumentOutline, Share, Link } from "@ndla/icons/common";
 import { FolderOutlined, FolderSharedOutlined } from "@ndla/icons/contentType";
 import { ResourceTitleLink } from "../../Resource/resourceComponents";
 
@@ -147,6 +147,7 @@ const Count = ({ type, count, layoutType }: IconCountProps) => {
 interface Props {
   id: string;
   title: string;
+  author?: string;
   subFolders?: number;
   subResources?: number;
   description?: string;
@@ -154,11 +155,33 @@ interface Props {
   type?: LayoutType;
   menu?: ReactNode;
   isShared?: boolean;
+  isOwner?: boolean;
 }
 
-const Folder = ({ id, link, title, subFolders, subResources, type = "list", menu, isShared }: Props) => {
+const getIcon = (isOwner: boolean, isShared?: boolean) => {
+  if (!isOwner) {
+    return Link;
+  } else if (isShared) {
+    return FolderSharedOutlined;
+  } else {
+    return FolderOutlined;
+  }
+};
+
+const Folder = ({
+  id,
+  link,
+  title,
+  author,
+  subFolders,
+  subResources,
+  type = "list",
+  menu,
+  isShared,
+  isOwner = true,
+}: Props) => {
   const { t } = useTranslation();
-  const Icon = isShared ? FolderSharedOutlined : FolderOutlined;
+  const Icon = getIcon(isOwner, isShared);
 
   return (
     <FolderWrapper data-type={type} id={id}>
@@ -177,14 +200,24 @@ const Folder = ({ id, link, title, subFolders, subResources, type = "list", menu
       <MenuWrapper>
         <CountContainer data-type={type}>
           {isShared && (
-            // Information regarding the shared status of a folder is read previously, ignore this
-            <IconTextWrapper aria-hidden>
+            <IconTextWrapper>
               <Share />
-              <span>{t("myNdla.folder.sharing.shared")}</span>
+              {!isOwner ? (
+                <span>
+                  {t("myNdla.folder.sharing.sharedBy")}
+                  {author ? `${author}` : t("myNdla.folder.sharing.sharedByAnonymous")}
+                </span>
+              ) : (
+                <span aria-hidden>{t("myNdla.folder.sharing.shared")}</span>
+              )}
             </IconTextWrapper>
           )}
-          <Count layoutType={type} type={"folder"} count={subFolders} />
-          <Count layoutType={type} type={"resource"} count={subResources} />
+          {isOwner && (
+            <>
+              <Count layoutType={type} type={"folder"} count={subFolders} />
+              <Count layoutType={type} type={"resource"} count={subResources} />
+            </>
+          )}
         </CountContainer>
         {menu}
       </MenuWrapper>

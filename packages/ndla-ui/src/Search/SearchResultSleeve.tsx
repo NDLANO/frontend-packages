@@ -349,11 +349,11 @@ const SearchResultSleeve = ({
         <StyledInstructions>
           <ChevronUp />
           <ChevronDown />
-          <span>Naviger med piltastene</span>
+          <span>{t("siteNav.navigate")}</span>
           <KeyboardReturn />
-          <span>Velg</span>
+          <span>{t("siteNav.select")}</span>
           <Esc />
-          <span>Lukk søk</span>
+          <span>{t("siteNav.close")}</span>
         </StyledInstructions>
       </StyledFooter>
     </StyledSearchResultsWrapper>

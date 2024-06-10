@@ -940,6 +940,8 @@ const messages = {
       sharing: {
         share: "Share folder",
         shared: "Shared",
+        sharedBy: "Shared by ",
+        sharedByAnonymous: "anonymous teacher",
         sharedFolder: "Shared folder",
         unShare: "Sharing stopped. The folder is no longer shared",
         copyLink: "Copy link to folder",
@@ -1363,6 +1365,9 @@ const messages = {
   },
   siteNav: {
     search: "Search",
+    navigate: "Navigate using the arrow keys",
+    select: "Select",
+    close: "Close search",
   },
   programmes: {
     header: "What do you want to learn today?",

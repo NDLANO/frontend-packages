@@ -70,7 +70,7 @@ const StyledPre = styled.pre`
     display: block;
     ${fonts.sizes("14px", "20px")};
     font-family:
-      Source Code Pro,
+      Source Code ProVariable,
       Monaco;
     margin: 0;
     padding: 0;

@@ -1,0 +1,47 @@
+/**
+ * Copyright (c) 2024-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { Meta, StoryFn } from "@storybook/react";
+import { css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
+import { ShadowToken } from "@ndla/styled-system/tokens";
+
+const ShadowsContainer = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "large",
+  },
+});
+
+interface Props {
+  boxShadow: ShadowToken;
+}
+
+const ShadowBlock = ({ boxShadow }: Props) => (
+  <div className={css({ boxShadow, backgroundColor: "surface.default", padding: "medium" })}>{boxShadow}</div>
+);
+
+export default {
+  title: "Preset/Box Shadows",
+  tags: ["autodocs"],
+  component: ShadowBlock,
+  parameters: {
+    inlineStories: true,
+  },
+} as Meta<typeof ShadowBlock>;
+
+export const Shadows: StoryFn = () => (
+  <ShadowsContainer>
+    <ShadowBlock boxShadow="xxsmall" />
+    <ShadowBlock boxShadow="xsmall" />
+    <ShadowBlock boxShadow="medium" />
+    <ShadowBlock boxShadow="large" />
+    <ShadowBlock boxShadow="xlarge" />
+  </ShadowsContainer>
+);

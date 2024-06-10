@@ -367,7 +367,7 @@ const messages = {
     learnMore: "Lïerh vielie ræhpas lisensi bïjre",
     copyTitle: "Gaaltije",
     copy: "Kopier",
-    hasCopiedTitle: "Kopije vaaltasovveme!",
+    hasCopiedTitle: "Maahta gaaltijevuesiehtimmiem",
     embed: "Bïejh sïjse",
     embedCopied: "Kopijem sïjsebïejemekodeste vaalteme!",
     copyText: {
@@ -380,6 +380,7 @@ const messages = {
       readDate: "Lohkeme: ",
     },
     download: "Veedtjh",
+    openLink: "Rïhpesth aktene orre kaarhtesne",
     tabs: {
       text: "Teekste",
       images: "Guvvieh",

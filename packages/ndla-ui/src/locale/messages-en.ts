@@ -470,7 +470,7 @@ const messages = {
       },
     },
     learnMore: "Learn more about open licenses",
-    copyTitle: "Source reference",
+    copyTitle: "Copy source reference",
     embed: "Embed",
     embedCopied: "Copied embed code!",
     copyText: {
@@ -484,6 +484,7 @@ const messages = {
     },
     hasCopiedTitle: "Copied!",
     download: "Download",
+    openLink: "Open in new tab",
     title: "Title",
     originator: "Originator",
     rightsholder: "Rightsholder",

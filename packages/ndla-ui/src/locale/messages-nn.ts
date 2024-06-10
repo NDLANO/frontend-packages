@@ -364,7 +364,7 @@ const messages = {
   license: {
     heading: "Slik gjenbruker du innhald",
     learnMore: "Lær meir om opne lisensar",
-    copyTitle: "Kjeldetilvising",
+    copyTitle: "Kopier kjeldetilvising",
     copy: "Kopier",
     hasCopiedTitle: "Kopiert!",
     embed: "Bygg inn",
@@ -379,6 +379,7 @@ const messages = {
       readDate: "Lese: ",
     },
     download: "Last ned",
+    openLink: "Åpne i ny fane",
     tabs: {
       text: "Tekst",
       images: "Bilete",

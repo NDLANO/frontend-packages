@@ -366,7 +366,7 @@ const messages = {
     copy: "Maŋge",
     heading: "Ná geavahat sisdoalu ođđasit",
     learnMore: "Oahpa eanet rabas liseanssaid birra",
-    copyTitle: "Gáldočujuhus",
+    copyTitle: "Máŋge gáldooainnu",
     hasCopiedTitle: "Máŋgejuvvon!",
     embed: "Hukse sisa",
     embedCopied: "Máŋgejuvvon sisahuksenkoda!",
@@ -380,6 +380,7 @@ const messages = {
       readDate: "Lohkan: ",
     },
     download: "Viečča",
+    openLink: "Raba ođđa gilkoris",
     tabs: {
       text: "Teaksta",
       images: "Govat",

@@ -314,7 +314,7 @@ const messages = {
     cite: "Geavat sisdoalu",
     notionsPrompt: "Máhtát go doahpagiid?",
     citeNotion: "Geavat čilgehusa",
-    printPage: "Čálit",
+    printPage: "Čálit teavstta",
     access: {
       onlyTeacher: "Dát resursa lea dušše olamuttus oahpaheddjiide geat leat Feide bokte sisaloggejuvvon.",
     },

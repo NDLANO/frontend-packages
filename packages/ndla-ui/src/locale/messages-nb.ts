@@ -313,7 +313,7 @@ const messages = {
     cite: "Bruk innhold",
     notionsPrompt: "Kan du begrepene?",
     citeNotion: "Bruk forklaringen",
-    printPage: "Skriv ut",
+    printPage: "Skriv ut teksten",
     access: {
       onlyTeacher: "Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.",
     },

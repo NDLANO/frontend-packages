@@ -313,7 +313,7 @@ const messages = {
     cite: "Cite content",
     notionsPrompt: "Do you know the notions?",
     citeNotion: "Cite this explanation",
-    printPage: "Print",
+    printPage: "Print text",
     access: {
       onlyTeacher: "This resource is accessible only to teachers who are logged in with Feide.",
     },

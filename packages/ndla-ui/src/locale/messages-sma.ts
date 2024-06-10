@@ -314,7 +314,7 @@ const messages = {
     cite: "Nuhtjh sisvegem",
     notionsPrompt: "Datne baakoetjïertide maahtah?",
     citeNotion: "Nuhtjh buerkiestimmiem",
-    printPage: "Tjaelieh",
+    printPage: "Tjaelieh teekstem",
     access: {
       onlyTeacher: "Daate vierhtie ajve dïllesisnie lohkehtæjjide mah tjaangeme Feidine.",
     },

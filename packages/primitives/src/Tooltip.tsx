@@ -24,10 +24,10 @@ const tooltipRecipe = sva({
       "--arrow-size": "spacing.xxsmall",
       "--arrow-background": "colors.surface.action",
       _open: {
-        animation: "fade-shift-in",
+        animation: "fade-shift-in 0.2s ease-out",
       },
       _closed: {
-        animation: "fade-shift-out",
+        animation: "fade-shift-out 0.2s ease-out",
       },
     },
   },

@@ -948,6 +948,7 @@ const messages = {
         removeLink: "Remove link to folder",
         link: "Link is copied",
         savedLink: "Link to {{ name }} has been added to My folders.",
+        unSavedLink: "Link to {{ name }} has been removed from My folders.",
         header: {
           shared: "This folder is shared",
         },

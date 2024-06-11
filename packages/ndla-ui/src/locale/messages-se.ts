@@ -950,6 +950,7 @@ const messages = {
         removeLink: "Fjern lenke til mappe",
         link: "Lenken er kopiert",
         savedLink: "Lenke til  {{ name }} er lagt til i Mine mapper.",
+        unSavedLink: "Lenke til  {{ name }} er fjernet fra Mine mapper.",
         header: {
           shared: "Denne mappa er delt",
         },

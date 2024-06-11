@@ -974,6 +974,7 @@ const messages = {
           unShare: "Avslutt deling",
           shareLink: "Kopier lenke",
           saveLink: "Lagre lenken",
+          unSaveLink: "Fjern lenken",
         },
         save: {
           warning:

@@ -972,6 +972,7 @@ const messages = {
           unShare: "Stop sharing",
           shareLink: "Copy link",
           saveLink: "Save the link",
+          unSaveLink: "Remove the link",
         },
         save: {
           warning:

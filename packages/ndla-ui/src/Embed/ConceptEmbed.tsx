@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { ReactElement, ReactNode, forwardRef, useCallback, useMemo, useRef, useState } from "react";
+import { ReactNode, forwardRef, useCallback, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
@@ -15,7 +15,6 @@ import { Root, Trigger, Content, Anchor, Close, Portal } from "@radix-ui/react-p
 import { IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
-import { COPYRIGHTED } from "@ndla/licenses";
 import { Tooltip } from "@ndla/tooltip";
 import { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from "./conceptComponents";
@@ -71,7 +70,6 @@ const ImageWrapper = styled.div`
 interface Props {
   embed: ConceptMetaData;
   fullWidth?: boolean;
-  heartButton?: HeartButtonType;
   lang?: string;
   renderContext?: RenderContext;
 }
@@ -95,7 +93,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang, renderContext }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth, lang, renderContext }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.htmlContent);
@@ -121,8 +119,6 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang,
         copyright={concept.copyright}
         source={concept.source}
         visualElement={visualElement}
-        heartButton={HeartButton}
-        conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
         glossData={concept.glossData}
         lang={lang}
@@ -141,8 +137,6 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang,
         source={concept.source}
         visualElement={visualElement}
         linkText={embed.embedData.linkText}
-        heartButton={HeartButton}
-        conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
         conceptType={concept.conceptType}
         glossData={concept.glossData}
         lang={lang}
@@ -158,8 +152,6 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang,
       copyright={concept.copyright}
       source={concept.source}
       visualElement={visualElement}
-      heartButton={HeartButton}
-      conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
       conceptType={concept.conceptType}
       glossData={concept.glossData}
       lang={lang}
@@ -231,8 +223,6 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
       source,
       visualElement,
       linkText,
-      heartButton,
-      conceptHeartButton,
       glossData,
       conceptType,
       headerButtons,
@@ -296,9 +286,7 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
                 source={source}
                 visualElement={visualElement}
                 inPopover
-                heartButton={heartButton}
                 headerButtons={headerButtons}
-                conceptHeartButton={conceptHeartButton}
                 lang={lang}
                 closeButton={
                   <Close asChild>
@@ -322,8 +310,6 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
 
 interface ConceptProps extends ConceptNotionData {
   fullWidth?: boolean;
-  heartButton?: HeartButtonType;
-  conceptHeartButton?: ReactElement;
   exampleIds?: string;
   exampleLangs?: string;
 }
@@ -336,8 +322,6 @@ export const BlockConcept = ({
   source,
   visualElement,
   fullWidth,
-  heartButton,
-  conceptHeartButton,
   glossData,
   conceptType,
   lang,
@@ -417,8 +401,6 @@ export const BlockConcept = ({
                           copyright={copyright}
                           source={source}
                           visualElement={visualElement}
-                          heartButton={heartButton}
-                          conceptHeartButton={conceptHeartButton}
                           inPopover
                           lang={lang}
                           closeButton={
@@ -455,9 +437,7 @@ export const BlockConcept = ({
           />
         )}
         {copyright && conceptType === "concept" && (
-          <EmbedByline copyright={copyright} bottomRounded topRounded type={conceptType as ConceptType}>
-            {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
-          </EmbedByline>
+          <EmbedByline copyright={copyright} bottomRounded topRounded type={conceptType as ConceptType} />
         )}
       </Figure>
     </Root>

@@ -22,7 +22,6 @@ import { EmbedByline } from "../LicenseByline";
 interface Props {
   embed: BrightcoveMetaData;
   isConcept?: boolean;
-  heartButton?: HeartButtonType;
   renderContext?: RenderContext;
 }
 
@@ -54,7 +53,7 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? "640",
   };
 };
-const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderContext = "article" }: Props) => {
+const BrightcoveEmbed = ({ embed, isConcept, renderContext = "article" }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -124,7 +123,6 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderCon
             {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}
           </LinkedVideoButton>
         )}
-        {HeartButton && data.copyright?.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
       </EmbedByline>
     </Figure>
   );

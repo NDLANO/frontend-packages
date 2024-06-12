@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { AudioEmbedData, AudioMeta } from "@ndla/types-embed";
 import AudioEmbed from "./AudioEmbed";
-import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 import { ArticleWrapper } from "../Article";
 import LayoutItem, { OneColumn } from "../Layout";
 
@@ -205,7 +204,6 @@ export default meta;
 
 export const AudioEmbedStory: StoryObj<typeof AudioEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "audio",
       status: "success",
@@ -217,7 +215,6 @@ export const AudioEmbedStory: StoryObj<typeof AudioEmbed> = {
 
 export const AudioEmbedFailed: StoryObj<typeof AudioEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "audio",
       status: "error",
@@ -228,7 +225,6 @@ export const AudioEmbedFailed: StoryObj<typeof AudioEmbed> = {
 
 export const Podcast: StoryObj<typeof AudioEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "audio",
       status: "success",
@@ -240,7 +236,6 @@ export const Podcast: StoryObj<typeof AudioEmbed> = {
 
 export const PodcastFailed: StoryObj<typeof AudioEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "audio",
       status: "error",

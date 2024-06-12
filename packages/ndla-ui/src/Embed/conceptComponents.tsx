@@ -11,9 +11,8 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, misc, mq, spacing, stackOrder } from "@ndla/core";
-import { COPYRIGHTED } from "@ndla/licenses";
 import { ConceptData, ConceptVisualElementMeta } from "@ndla/types-embed";
-import { ExternalEmbed, HeartButtonType, IframeEmbed } from ".";
+import { ExternalEmbed, IframeEmbed } from ".";
 import BrightcoveEmbed from "./BrightcoveEmbed";
 import H5pEmbed from "./H5pEmbed";
 import ImageEmbed from "./ImageEmbed";
@@ -46,8 +45,6 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, Omit<Concept
   tags?: string[];
   subjects?: string[];
   headerButtons?: ReactNode;
-  heartButton?: HeartButtonType;
-  conceptHeartButton?: ReactNode;
   exampleIds?: string;
   exampleLangs?: string;
   showTitle?: boolean;
@@ -181,6 +178,9 @@ const StyledList = styled.ul`
     padding: ${spacing.xxsmall};
   }
 `;
+const BylineWrapper = styled.div`
+  padding-inline: ${spacing.normal};
+`;
 
 export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
   (
@@ -195,8 +195,6 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       previewAlt,
       tags,
       subjects,
-      heartButton,
-      conceptHeartButton,
       conceptType,
       glossData,
       headerButtons,
@@ -231,7 +229,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
                 {visualElement?.resource === "image" ? (
                   <ImageEmbed embed={visualElement} lang={lang} />
                 ) : visualElement?.resource === "brightcove" ? (
-                  <BrightcoveEmbed embed={visualElement} heartButton={heartButton} />
+                  <BrightcoveEmbed embed={visualElement} />
                 ) : visualElement?.resource === "h5p" ? (
                   <H5pEmbed embed={visualElement} />
                 ) : visualElement?.resource === "iframe" ? (
@@ -280,9 +278,9 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
           )}
         </ContentSpacing>
         {copyright && (
-          <EmbedByline copyright={copyright} type={conceptType as ConceptType}>
-            {copyright.license?.license.toLowerCase() !== COPYRIGHTED && conceptHeartButton}
-          </EmbedByline>
+          <BylineWrapper>
+            <EmbedByline copyright={copyright} type={conceptType as ConceptType} />
+          </BylineWrapper>
         )}
       </div>
     );

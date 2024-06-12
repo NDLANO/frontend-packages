@@ -16,7 +16,7 @@ import { ArrowCollapse, ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from "./types";
+import { CanonicalUrlFuncs, RenderContext } from "./types";
 import { Figure, FigureType, figureActionIndicatorStyle } from "../Figure";
 import Image, { ImageLink } from "../Image";
 import { EmbedByline } from "../LicenseByline";

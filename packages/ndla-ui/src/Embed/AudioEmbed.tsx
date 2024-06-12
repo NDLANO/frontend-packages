@@ -17,7 +17,6 @@ import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: AudioMetaData;
-  heartButton?: HeartButtonType;
   lang?: string;
 }
 
@@ -41,7 +40,7 @@ const imageMetaToMockEmbed = (
   },
 });
 
-const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
+const AudioEmbed = ({ embed, lang }: Props) => {
   if (embed.status === "error") {
     return <EmbedErrorPlaceholder type={embed.embedData.type === "standard" ? "audio" : "podcast"} />;
   }

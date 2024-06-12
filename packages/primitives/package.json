@@ -28,6 +28,7 @@
     "lib"
   ],
   "dependencies": {
+    "@ark-ui/anatomy": "^3.3.0",
     "@ark-ui/react": "^3.2.1",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^4.0.4"

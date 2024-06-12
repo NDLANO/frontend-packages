@@ -949,8 +949,10 @@ const messages = {
         sharedFolder: "Delt mappe",
         unShare: "Delingen er avsluttet. Mappen er ikke lenger delt.",
         copyLink: "Kopier lenke til mappa",
+        removeLink: "Fjern lenke til mappe",
         link: "Lenken er kopiert",
         savedLink: "Lenke til  {{ name }} er lagt til i Mine mapper.",
+        unSavedLink: "Lenke til  {{ name }} er fjernet fra Mine mapper.",
         header: {
           shared: "Denne mappa er delt",
         },
@@ -976,6 +978,7 @@ const messages = {
           unShare: "Avslutt deling",
           shareLink: "Kopier lenke",
           saveLink: "Lagre lenken",
+          unSaveLink: "Fjern lenken",
         },
         save: {
           warning:

@@ -945,8 +945,10 @@ const messages = {
         sharedFolder: "Shared folder",
         unShare: "Sharing stopped. The folder is no longer shared",
         copyLink: "Copy link to folder",
+        removeLink: "Remove link to folder",
         link: "Link is copied",
         savedLink: "Link to {{ name }} has been added to My folders.",
+        unSavedLink: "Link to {{ name }} has been removed from My folders.",
         header: {
           shared: "This folder is shared",
         },
@@ -972,6 +974,7 @@ const messages = {
           unShare: "Stop sharing",
           shareLink: "Copy link",
           saveLink: "Save the link",
+          unSaveLink: "Remove the link",
         },
         save: {
           warning:

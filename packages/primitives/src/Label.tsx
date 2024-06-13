@@ -6,13 +6,15 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from "react";
+import { forwardRef } from "react";
+import { HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps, WithCss } from "@ndla/styled-system/types";
 import { useFormControlContext } from "./FormControl";
 import { TextProps } from "./Text";
 
-const StyledLegend = styled("legend", {
+const StyledLegend = styled(ark.legend, {
   base: {
     float: "none",
     width: "inherit",
@@ -22,11 +24,11 @@ const StyledLegend = styled("legend", {
   },
 });
 
-export type LegendProps = ComponentPropsWithRef<"legend"> & TextProps;
+export type LegendProps = HTMLArkProps<"legend"> & WithCss & TextProps;
 
 export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
-  ({ textStyle = "label.medium", fontWeight = "bold", className, srOnly, ...rest }, ref) => (
-    <StyledLegend className={cx(css({ textStyle, fontWeight, srOnly }), className)} {...rest} ref={ref} />
+  ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, className, srOnly, ...rest }, ref) => (
+    <StyledLegend className={cx(css({ textStyle, fontWeight, srOnly }, cssProp), className)} {...rest} ref={ref} />
   ),
 );
 
@@ -37,7 +39,7 @@ export const FormLegend = forwardRef<HTMLLegendElement, LegendProps>((props, ref
   return <Legend {...props} {...fieldProps} ref={ref} />;
 });
 
-const StyledLabel = styled("label", {
+const StyledLabel = styled(ark.label, {
   base: {
     display: "inline-block",
     _disabled: {
@@ -46,11 +48,11 @@ const StyledLabel = styled("label", {
   },
 });
 
-export type LabelProps = ComponentPropsWithRef<"label"> & TextProps;
+export type LabelProps = HTMLArkProps<"label"> & TextProps & JsxStyleProps;
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
-  ({ textStyle = "label.medium", fontWeight = "bold", className, srOnly, ...rest }, ref) => (
-    <StyledLabel className={cx(css({ textStyle, fontWeight, srOnly }), className)} {...rest} ref={ref} />
+  ({ textStyle = "label.medium", fontWeight = "bold", className, css: cssProp, srOnly, ...rest }, ref) => (
+    <StyledLabel className={cx(css({ textStyle, fontWeight, srOnly }, cssProp), className)} {...rest} ref={ref} />
   ),
 );
 

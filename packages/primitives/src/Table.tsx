@@ -6,10 +6,13 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
+import { HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
-const StyledTable = styled("table", {
+export type TableProps = HTMLArkProps<"table"> & JsxStyleProps;
+
+export const Table = styled(ark.table, {
   base: {
     display: "block",
     overflowX: "auto",
@@ -71,7 +74,3 @@ const StyledTable = styled("table", {
     },
   },
 });
-
-export type TableProps = ComponentPropsWithoutRef<"table">;
-
-export const Table = (props: TableProps) => <StyledTable {...props} />;

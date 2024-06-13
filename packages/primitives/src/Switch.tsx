@@ -10,6 +10,7 @@ import { forwardRef } from "react";
 import { switchAnatomy } from "@ark-ui/anatomy";
 import { Switch } from "@ark-ui/react";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { useFormControl } from "./FormControl";
 import { Text, TextProps } from "./Text";
@@ -101,22 +102,28 @@ const { withProvider, withContext } = createStyleContext(switchRecipe);
 
 export type SwitchVariantProps = RecipeVariantProps<typeof switchRecipe>;
 
-export type SwitchRootProps = Switch.RootProps & SwitchVariantProps;
+export type SwitchRootProps = Switch.RootProps & JsxStyleProps & SwitchVariantProps;
 
-export const InternalSwitchRoot = withProvider<HTMLLabelElement, SwitchRootProps>(Switch.Root, "root");
+const InternalSwitchRoot = withProvider<HTMLLabelElement, SwitchRootProps>(Switch.Root, "root");
 
 export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, ref) => {
   const field = useFormControl(props);
   return <InternalSwitchRoot invalid={field.invalid ?? !!field["aria-invalid"]} {...field} ref={ref} />;
 });
 
-export const SwitchControl = withContext<HTMLSpanElement, Switch.ControlProps>(Switch.Control, "control");
+export const SwitchControl = withContext<HTMLSpanElement, JsxStyleProps & Switch.ControlProps>(
+  Switch.Control,
+  "control",
+);
 
-export const SwitchThumb = withContext<HTMLSpanElement, Switch.ThumbProps>(Switch.Thumb, "thumb");
+export const SwitchThumb = withContext<HTMLSpanElement, JsxStyleProps & Switch.ThumbProps>(Switch.Thumb, "thumb");
 
-export const InternalSwitchLabel = withContext<HTMLSpanElement, Switch.LabelProps>(Switch.Label, "label");
+const InternalSwitchLabel = withContext<HTMLSpanElement, JsxStyleProps & Switch.LabelProps>(Switch.Label, "label");
 
-export const SwitchLabel = ({ textStyle = "label.medium", ...props }: Switch.LabelProps & TextProps) => (
+export const SwitchLabel = ({
+  textStyle = "label.medium",
+  ...props
+}: Switch.LabelProps & TextProps & JsxStyleProps) => (
   <InternalSwitchLabel asChild>
     <Text as="span" textStyle={textStyle} {...props} />
   </InternalSwitchLabel>

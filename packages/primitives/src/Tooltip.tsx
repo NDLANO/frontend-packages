@@ -10,6 +10,7 @@ import { forwardRef } from "react";
 import { tooltipAnatomy } from "@ark-ui/anatomy";
 import { Tooltip } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const tooltipRecipe = sva({
@@ -38,23 +39,37 @@ const { withRootProvider, withContext } = createStyleContext(tooltipRecipe);
 export type TooltipRootProps = Tooltip.RootProps;
 export const TooltipRoot = withRootProvider<TooltipRootProps>(Tooltip.Root);
 
-export const TooltipArrow = withContext<HTMLDivElement, Tooltip.ArrowProps>(Tooltip.Arrow, "arrow");
+export const TooltipArrow = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ArrowProps>(Tooltip.Arrow, "arrow");
 
-export const TooltipArrowTip = withContext<HTMLDivElement, Tooltip.ArrowTipProps>(Tooltip.ArrowTip, "arrowTip");
+export const TooltipArrowTip = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ArrowTipProps>(
+  Tooltip.ArrowTip,
+  "arrowTip",
+);
 
-export const TooltipContentStandalone = withContext<HTMLDivElement, Tooltip.ContentProps>(Tooltip.Content, "content");
+export const TooltipContentStandalone = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ContentProps>(
+  Tooltip.Content,
+  "content",
+);
 
-export const TooltipContent = forwardRef<HTMLDivElement, Tooltip.ContentProps>(({ children, ...props }, ref) => (
-  <TooltipPositioner>
-    <TooltipContentStandalone {...props} ref={ref}>
-      <TooltipArrow>
-        <TooltipArrowTip />
-      </TooltipArrow>
-      {children}
-    </TooltipContentStandalone>
-  </TooltipPositioner>
-));
+export const TooltipContent = forwardRef<HTMLDivElement, JsxStyleProps & Tooltip.ContentProps>(
+  ({ children, ...props }, ref) => (
+    <TooltipPositioner>
+      <TooltipContentStandalone {...props} ref={ref}>
+        <TooltipArrow>
+          <TooltipArrowTip />
+        </TooltipArrow>
+        {children}
+      </TooltipContentStandalone>
+    </TooltipPositioner>
+  ),
+);
 
-export const TooltipPositioner = withContext<HTMLDivElement, Tooltip.PositionerProps>(Tooltip.Positioner, "positioner");
+export const TooltipPositioner = withContext<HTMLDivElement, JsxStyleProps & Tooltip.PositionerProps>(
+  Tooltip.Positioner,
+  "positioner",
+);
 
-export const TooltipTrigger = withContext<HTMLButtonElement, Tooltip.TriggerProps>(Tooltip.Trigger, "trigger");
+export const TooltipTrigger = withContext<HTMLButtonElement, JsxStyleProps & Tooltip.TriggerProps>(
+  Tooltip.Trigger,
+  "trigger",
+);

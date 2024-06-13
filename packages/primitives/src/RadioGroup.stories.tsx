@@ -8,7 +8,6 @@
 
 import { useId, useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { css } from "@ndla/styled-system/css";
 import { Button } from "./Button";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { FieldHelper } from "./FieldHelper";
@@ -55,7 +54,7 @@ export const WithFormControl: StoryFn<typeof RadioGroupRoot> = ({ ...args }) => 
   const [value, setValue] = useState<string | null>(null);
   const isInvalid = !value;
   return (
-    <FormControl id={id} isInvalid={isInvalid} className={css({ alignItems: "flex-start" })}>
+    <FormControl id={id} isInvalid={isInvalid} css={{ alignItems: "flex-start" }}>
       <RadioGroupRoot {...args} value={value} onValueChange={(e) => setValue(e.value)}>
         <RadioGroupLabel>Ditt favorittfag</RadioGroupLabel>
         <FieldHelper>Husk at du må velge riktig fag!</FieldHelper>

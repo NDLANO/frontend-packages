@@ -60,12 +60,16 @@ export const animations = defineTokens.animations({
   "drawer-out-top": {
     value: "slide-out-top 200ms {easings.emphasized-out}",
   },
+  "skeleton-pulse": {
+    value: "skeleton-pulse 2s {easings.pulse} infinite",
+  },
 });
 
 export const easings = defineTokens.easings({
   default: { value: "cubic-bezier(0.17, 0.04, 0.03, 0.94)" },
   "emphasized-in": { value: "cubic-bezier(0.05, 0.7, 0.1, 1.0)" },
   "emphasized-out": { value: "cubic-bezier(0.3, 0.0, 0.8, 0.15)" },
+  pulse: { value: "cubic-bezier(0.4, 0.0, 0.6, 1.0)" },
 });
 
 export const durations = defineTokens.durations({
@@ -136,5 +140,8 @@ export const keyframes = {
   "slide-out-bottom": {
     "0%": { transform: "translateY(0%)" },
     "100%": { transform: "translateY(100%)" },
+  },
+  "skeleton-pulse": {
+    "50%": { opacity: "0.5" },
   },
 };

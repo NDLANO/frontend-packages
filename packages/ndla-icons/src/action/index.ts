@@ -33,6 +33,7 @@ export { default as Pencil } from "./Pencil";
 export { default as Plus } from "./Plus";
 export { default as Print } from "./Print";
 export { default as RemoveCircle } from "./RemoveCircle";
+export { default as Reply } from "./Reply";
 export { default as RightArrow } from "./RightArrow";
 export { default as School } from "./School";
 export { default as Thumb } from "./Thumb";

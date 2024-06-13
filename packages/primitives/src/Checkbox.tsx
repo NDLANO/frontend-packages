@@ -7,7 +7,6 @@
  */
 
 import { forwardRef } from "react";
-import { checkboxAnatomy } from "@ark-ui/anatomy";
 import { Checkbox } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "./createStyleContext";
@@ -15,8 +14,14 @@ import { useFormControl } from "./FormControl";
 import { Text, TextProps } from "./Text";
 
 const checkboxRecipe = sva({
-  slots: checkboxAnatomy.keys(),
+  // TODO: Something is wrong with @ark-ui/anatomy here. Group is not styled if using tabsAnatomy.keys(),
+  slots: ["root", "control", "indicator", "label", "group"],
   base: {
+    group: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "xxsmall",
+    },
     root: {
       userSelect: "none",
       display: "flex",
@@ -114,3 +119,5 @@ export const CheckboxLabel = ({ textStyle = "label.medium", children, ...props }
 export const CheckboxControl = withContext<HTMLDivElement, Checkbox.ControlProps>(Checkbox.Control, "control");
 
 export const CheckboxHiddenInput = Checkbox.HiddenInput;
+
+export const CheckboxGroup = withProvider<HTMLDivElement, Checkbox.GroupProps>(Checkbox.Group, "group");

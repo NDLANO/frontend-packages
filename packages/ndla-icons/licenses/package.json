@@ -1,9 +1,0 @@
-
-{
-  "name": "@ndla/icons/licenses",
-  "private": true,
-  "main": "../lib/licenses/index.js",
-  "module": "../es/licenses/index.js",
-  "jsnext:main": "../es/licenses/index.js"
-}
-    

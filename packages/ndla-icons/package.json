@@ -27,7 +27,6 @@
     "editor",
     "common",
     "contentType",
-    "licenses",
     "action"
   ],
   "dependencies": {

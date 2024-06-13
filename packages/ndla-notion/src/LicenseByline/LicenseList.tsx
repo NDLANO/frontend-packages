@@ -9,12 +9,12 @@
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
 
-interface Props {
+interface LicenseListProps {
   children: ReactNode;
   horizontal?: boolean;
 }
 
-export const StyledList = styled.ul<Props>`
+export const StyledList = styled.ul<LicenseListProps>`
   display: flex;
   &[data-horizontal="false"] {
     flex-direction: column;
@@ -22,8 +22,8 @@ export const StyledList = styled.ul<Props>`
   list-style-type: disc;
 `;
 
-const StyledLicenseIconList = ({ horizontal = false, children }: Props) => {
-  return <StyledList data-horizontal={horizontal}>{children}</StyledList>;
-};
+const LicenseList = ({ children, horizontal = false }: LicenseListProps) => (
+  <StyledList data-horizontal={horizontal}>{children}</StyledList>
+);
 
-export default StyledLicenseIconList;
+export default LicenseList;

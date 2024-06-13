@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from "react";
-import LicenseIconList from "./LicenseIconList";
+import LicenseListItem from "./LicenseListItem";
 import StyledLicenseByline from "./StyledLicenseByline";
 
 interface Props {
@@ -16,10 +16,10 @@ interface Props {
   locale?: string;
 }
 
-const LicenseByline = ({ children, licenseRights, locale }: Props) => {
+const LicenseByline = ({ children, licenseRights }: Props) => {
   return (
     <StyledLicenseByline>
-      <LicenseIconList licenseRights={licenseRights} locale={locale} horizontal />
+      <LicenseListItem licenseRights={licenseRights} />
       {children}
     </StyledLicenseByline>
   );

@@ -413,6 +413,7 @@ const messages = {
         expandByline: "Vis byline",
         minimizeByline: "Skjul byline",
       },
+      licenseText: "Dette biletet har lisensen",
       source: "Kjelde",
       title: "Tittel",
     },
@@ -421,16 +422,19 @@ const messages = {
       description: "Hugs å vise til kjelda når du gjenbruker tekst.",
       rules: "Reglar for bruk av teksten",
       published: "Publiseringsdato",
+      licenseText: "Denne teksten har lisensen",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description: "Hugs å kopiera teksten som skal leggjast ved lydfila der du bruker ho.",
       rules: "Reglar for bruk av lydfila",
+      licenseText: "Denne lydfila har lisensen",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Hugs å kopiera teksten som skal leggjast ved podkasten der du bruker ho.",
       rules: "Reglar for bruk av podkasten",
+      licenseText: "Denne podkasten har lisensen",
     },
     video: {
       heading: "Slik gjenbruker du videoar",
@@ -439,6 +443,7 @@ const messages = {
       itemImage: {
         ariaLabel: "Opne video i eit nytt vindauge",
       },
+      licenseText: "Denne videoen har lisensen",
     },
     other: {
       heading: "Slik gjenbruker du anna innhald",
@@ -451,6 +456,7 @@ const messages = {
       heading: "Slik gjenbruker du H5P-innhald",
       description: "Du finn retningslinjene for bruk av innhaldet i H5P-elementet.",
       rules: "Reglar for bruk av H5P",
+      licenseText: "Denne interaktive oppgåva (H5p) har lisensen",
     },
     concept: {
       embedlink: {
@@ -463,6 +469,7 @@ const messages = {
       description: "Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten",
       rules: "Reglar for bruk av forklaring",
       title: "Tittel",
+      licenseText: "Denne forklaringa har lisensen",
     },
     gloss: {
       embedlink: {
@@ -476,6 +483,7 @@ const messages = {
       rules: "Regler for bruk av glose",
       title: "Tittel",
       showOrHideExamples: "Vis eller skjul eksempler",
+      licenseText: "Denne glosa har lisensen",
     },
     files: {
       heading: "Slik gjenbruker du filer",

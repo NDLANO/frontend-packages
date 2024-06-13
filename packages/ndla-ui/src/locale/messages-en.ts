@@ -399,22 +399,26 @@ const messages = {
       },
       source: "Source",
       title: "Title",
+      licenseText: "This image has the license",
     },
     text: {
       heading: "How to reuse the text",
       description: "Remember to refer to the source when reusing text.",
       rules: "Rules for use of text",
       published: "Published",
+      licenseText: "This text has the license",
     },
     audio: {
       heading: "How to reuse audio files",
       description: "Remember to copy the text to be attached to the audio where you use it.",
       rules: "Rules for use of audio file",
+      licenseText: "This audio file has the license",
     },
     podcast: {
       heading: "How to reuse podcasts",
       description: "Remember to copy the text to be attached to the podcast where you use it.",
       rules: "Rules for use of podcast",
+      licenseText: "This podcast has the license",
     },
     video: {
       heading: "How to reuse videos",
@@ -423,6 +427,7 @@ const messages = {
       itemImage: {
         ariaLabel: "Open video in new window",
       },
+      licenseText: "This video has the license",
     },
     other: {
       heading: "How to reuse other content",
@@ -435,6 +440,7 @@ const messages = {
       heading: "How to reuse H5P content",
       description: "You will find guidelines for use of H5P content in the asset",
       rules: "Rules for use of H5P",
+      licenseText: "This interactive task (H5P) is licensed",
     },
     concept: {
       heading: "How to reuse concept content",
@@ -447,6 +453,7 @@ const messages = {
         copyTitle: "Copy embed link",
         hasCopiedTitle: "Embed link copied",
       },
+      licenseText: "This concept has the license",
     },
     gloss: {
       heading: "How to reuse gloss content",
@@ -460,6 +467,7 @@ const messages = {
         copyTitle: "Copy embed link",
         hasCopiedTitle: "Embed link copied",
       },
+      licenseText: "This gloss has the license",
     },
     files: {
       heading: "How to reuse files",

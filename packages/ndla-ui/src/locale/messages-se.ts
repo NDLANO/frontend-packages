@@ -416,22 +416,26 @@ const messages = {
       },
       source: "Gáldu",
       title: "Tihttel",
+      licenseText: "Dán govas lea liseansa",
     },
     text: {
       heading: "Ná geavahat teavstta ođđasit",
       description: "Muitte čujuhit gáldui go nuppi teavstta anát.",
       rules: "Njuolggadusat teavstta geavaheapmái",
       published: "Almmuhanbeaivi",
+      licenseText: "Dán teavsttas lea liseansa",
     },
     audio: {
       heading: "Ná geavahat jietnafiilla ođđasit",
       description: "Muitte máŋget teavstta mii galgá čuovvut jietnafiilla doppe gos geavahuvvo.",
       rules: "Njuolggadusat jietnafiilla geavaheapmái",
+      licenseText: "Dán jietnafiillas lea liseansa",
     },
     podcast: {
       heading: "Ná geavahat podkásta ođđasit",
       description: "Muitte máŋget teavstta mii galgá čuovvut podkásta doppe gos geavahuvvo.",
       rules: "Njuolggadusat podkásta geavaheapmái",
+      licenseText: "Dán podkasttas lea liseansa",
     },
     video: {
       heading: "Ná geavahat video ođđasit",
@@ -440,6 +444,7 @@ const messages = {
       itemImage: {
         ariaLabel: "Raba video ođđa siiddus",
       },
+      licenseText: "Dán videoi lea liseansa",
     },
     other: {
       heading: "Ná geavahat eará sisdoalu ođđasit",
@@ -452,6 +457,7 @@ const messages = {
       heading: "Ná geavahat H5P-sisdoalu ođđasit",
       description: "Njuolggadusaid sisdoalu geavaheapmái gávnnat H5P-elemeanttas",
       rules: "Njuolggadusat H5P geavaheapmái",
+      licenseText: "Dát interaktiiva bargu (H5P) lea ožžon liseanssa",
     },
     concept: {
       heading: "Ná geavahat čilgehusaid ođđasit",
@@ -464,6 +470,7 @@ const messages = {
         copyTitle: "Máŋge sisahuksenliŋkka",
         hasCopiedTitle: "Sisahuksenliŋka máŋgejuvvon",
       },
+      licenseText: "Dán čilgehusas lea",
     },
     gloss: {
       heading: "Movt geavahit ođđasit dajaldagaid",
@@ -478,6 +485,7 @@ const messages = {
         copyTitle: "Máŋge sisačálihanliŋkka",
         hasCopiedTitle: "Sajáiduhttinliŋka mángejuvvon",
       },
+      licenseText: "Dán jietnadagas lea liseansa",
     },
     files: {
       heading: "Ná geavahat fiillaid ođđasit",

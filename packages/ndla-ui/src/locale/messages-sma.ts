@@ -416,23 +416,27 @@ const messages = {
       },
       source: "Gaaltije",
       title: "Tihtele",
+      licenseText: "Daate guvvie lisensem åtna",
     },
     text: {
       heading: "Slik gjenbruker du teksten",
       description: "Mujhtieh gaaltijasse vuesiehtidh gosse teekstem orresistie nuhtjh.",
       rules: "Njoelkedassh teekste-åtnoen bïjre",
       published: "Bæjkoehtimmiedaatoe",
+      licenseText: "Daate teekste lisensem åtna",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description:
         "Mujhtieh kopijem vaeltedh teeksteste mij edtja tjoejen baalte bïejesovvedh desnie gusnie tjoejem nuhtjh.",
       rules: "Njoelkedassh tjoejefijlen åtnoen bïjre",
+      licenseText: "Daate tjoejefijle lisensem åtna",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Husk å kopiere teksten som skal legges ved podkasten der du bruker den.",
       rules: "Regler for bruk av podkasten",
+      licenseText: "Daate podkastem lisensine åtna",
     },
     video: {
       heading: "Slik gjenbruker du videoer",
@@ -442,6 +446,7 @@ const messages = {
       itemImage: {
         ariaLabel: "Rïhpesth videjovem orre klaassese",
       },
+      licenseText: "Daate videoe lisensem åtna",
     },
     other: {
       heading: "Slik gjenbruker du annet innhold",
@@ -454,6 +459,7 @@ const messages = {
       heading: "Slik gjenbruker du H5P-innhold",
       description: "Datne njoelkedasside sisvegeåtnoen bïjre gaavnh H5P-biehkesne",
       rules: "Njoelkedassh H5P-åtnoen bïjre",
+      licenseText: "Daate interaktijve laavenjasse (H5P) lisensem åtna",
     },
     concept: {
       heading: "Slik gjenbruker du forklaringer",
@@ -466,6 +472,7 @@ const messages = {
         copyTitle: "Kopier innbyggingslenke",
         hasCopiedTitle: "Innbyggingslenke kopiert",
       },
+      licenseText: "Daate buerkiestimmie lissietjaalegem",
     },
     gloss: {
       heading: "Naemhtie gïelem ikth vielie nåhtadidh",
@@ -479,6 +486,7 @@ const messages = {
         copyTitle: "Kopijerh svaalhtesem sïjse loggedh",
         hasCopiedTitle: "Bigkeme svaalhtese kopijeradamme",
       },
+      licenseText: "Daate gïele lisensem åtna",
     },
     files: {
       heading: "Slik gjenbruker du filer",

@@ -413,6 +413,7 @@ const messages = {
         expandByline: "Vis byline",
         minimizeByline: "Skjul byline",
       },
+      licenseText: "Dette bildet har lisensen",
       source: "Kilde",
       title: "Tittel",
     },
@@ -421,16 +422,19 @@ const messages = {
       description: "Husk å henvise til kilden når du gjenbruker tekst.",
       rules: "Regler for bruk av teksten",
       published: "Publiseringsdato",
+      licenseText: "Denne teksten har lisensen",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description: "Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.",
       rules: "Regler for bruk av lydfilen",
+      licenseText: "Denne lydfilen har lisensen",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Husk å kopiere teksten som skal legges ved podkasten der du bruker den.",
       rules: "Regler for bruk av podkasten",
+      licenseText: "Denne podkasten har lisensen",
     },
     video: {
       heading: "Slik gjenbruker du videoer",
@@ -439,6 +443,7 @@ const messages = {
       itemImage: {
         ariaLabel: "Åpne video i et nytt vindu",
       },
+      licenseText: "Denne videoen har lisensen",
     },
     other: {
       heading: "Slik gjenbruker du annet innhold",
@@ -451,6 +456,7 @@ const messages = {
       heading: "Slik gjenbruker du H5P-innhold",
       description: "Du finner retningslinjene for bruk av innholdet i H5P-elementet",
       rules: "Regler for bruk av H5P",
+      licenseText: "Denne interaktive oppgaven (H5P) har lisensen",
     },
     concept: {
       heading: "Slik gjenbruker du forklaringer",
@@ -463,6 +469,7 @@ const messages = {
         copyTitle: "Kopier innbyggingslenke",
         hasCopiedTitle: "Innbyggingslenke kopiert",
       },
+      licenseText: "Denne forklaringen har lisensen",
     },
     gloss: {
       heading: "Slik gjenbruker du gloser",
@@ -476,6 +483,7 @@ const messages = {
         copyTitle: "Kopier innbyggingslenke",
         hasCopiedTitle: "Innbyggingslenke kopiert",
       },
+      licenseText: "Denne glosen har lisensen",
     },
     files: {
       heading: "Slik gjenbruker du filer",

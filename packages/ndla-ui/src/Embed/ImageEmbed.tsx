@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import parse from "html-react-parser";
 import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";

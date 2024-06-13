@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import throttle from "lodash.throttle";
 import { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { css } from "@emotion/react";

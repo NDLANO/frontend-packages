@@ -8,6 +8,7 @@
 
 // N.B These components is used to render static markup serverside
 
+/** @jsxImportSource @emotion/react */
 import { ComponentPropsWithRef, forwardRef, useMemo } from "react";
 import { SerializedStyles, css } from "@emotion/react";
 import styled from "@emotion/styled";

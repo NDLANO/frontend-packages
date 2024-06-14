@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing } from "@ndla/core";
-import LicenseIconDescriptionList from "./LicenseIconDescriptionList";
+import LicenseIconDescriptionList from "./LicenseDescriptionList";
 import StyledLicenseByline from "./StyledLicenseByline";
 
 const StyledModelPermission = styled.div`

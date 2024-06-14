@@ -10,35 +10,32 @@ import styled from "@emotion/styled";
 import { getLicenseRightByAbbreviation } from "@ndla/licenses";
 import StyledList from "./LicenseList";
 
-interface LicenseIconItemProps {
+interface LicenseItemProps {
   licenseRight: string;
   locale?: string;
 }
 
 const StyledListItem = styled.li`
   padding-bottom: 5px;
-  &[data-horizontal="true"] {
-    padding-bottom: 0px;
-  }
 `;
 
-const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
+const LicenseItem = ({ licenseRight, locale }: LicenseItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return <StyledListItem>{description}</StyledListItem>;
 };
 
-interface LicenseIconDescriptionListProps {
+interface LicenseDescriptionListProps {
   licenseRights: string[];
   locale?: string;
 }
 
-const LicenseIconDescriptionList = ({ licenseRights, locale }: LicenseIconDescriptionListProps) => (
+const LicenseDescriptionList = ({ licenseRights, locale }: LicenseDescriptionListProps) => (
   <StyledList>
     {licenseRights.slice(1).map((licenseRight) => (
-      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
+      <LicenseItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
     ))}
   </StyledList>
 );
 
-export default LicenseIconDescriptionList;
+export default LicenseDescriptionList;

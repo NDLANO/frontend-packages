@@ -8,5 +8,5 @@
 
 import LicenseByline from "./LicenseByline";
 import LicenseDescription from "./LicenseDescription";
-import LicenseIconDescriptionList from "./LicenseIconDescriptionList";
-export { LicenseByline, LicenseDescription, LicenseIconDescriptionList };
+import LicenseDescriptionList from "./LicenseDescriptionList";
+export { LicenseByline, LicenseDescription, LicenseDescriptionList };

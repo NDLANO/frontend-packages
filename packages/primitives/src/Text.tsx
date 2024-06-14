@@ -9,6 +9,7 @@
 import { ComponentPropsWithoutRef, ElementType } from "react";
 import { css, cx } from "@ndla/styled-system/css";
 import { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { UtilityValues } from "@ndla/styled-system/types/prop-type";
 
 export interface TextProps {
@@ -18,11 +19,21 @@ export interface TextProps {
   srOnly?: boolean;
 }
 
-type Props<T extends ElementType> = TextProps & { as?: T } & ComponentPropsWithoutRef<T>;
+type Props<T extends ElementType> = TextProps & { as?: T } & ComponentPropsWithoutRef<T> & JsxStyleProps;
 
 const BaseText = <T extends ElementType = "p">(props: Props<T>) => {
-  const { as: As = "p", className, fontWeight, color, textStyle = "body.medium", srOnly, ...rest } = props;
-  return <As className={cx(css({ textStyle, fontWeight, color, srOnly: srOnly }), className)} {...rest} />;
+  const {
+    as: As = "p",
+    className,
+    fontWeight,
+    color,
+    textStyle = "body.medium",
+    srOnly,
+    css: cssProp,
+    ...rest
+  } = props;
+  const base = css(css.raw({ textStyle, fontWeight, color, srOnly }), cssProp);
+  return <As className={cx(base, className)} {...rest} />;
 };
 
 export type HeadingType = Extract<ElementType, "h1" | "h2" | "h3" | "h4" | "h5" | "h6">;

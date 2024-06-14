@@ -9,7 +9,6 @@
 import {
   ComponentPropsWithRef,
   ElementType,
-  HTMLAttributes,
   Ref,
   RefObject,
   createContext,
@@ -17,7 +16,9 @@ import {
   useContext,
   useState,
 } from "react";
+import { HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { composeRefs } from "@ndla/util";
 
 type Merge<T, P> = P & Omit<T, keyof P>;
@@ -37,7 +38,7 @@ export interface FormControlProps extends FormControlOptions {
   id: string;
 }
 
-const StyledFormControl = styled("div", {
+const StyledFormControl = styled(ark.div, {
   base: {
     display: "flex",
     flexDirection: "column",
@@ -129,7 +130,7 @@ export const FormControl = ({
   isInvalid,
   isRequired,
   ...rest
-}: HTMLAttributes<HTMLDivElement> & FormControlProps) => {
+}: HTMLArkProps<"div"> & JsxStyleProps & FormControlProps) => {
   const context = useFormControlProvider({
     id,
     isDisabled,

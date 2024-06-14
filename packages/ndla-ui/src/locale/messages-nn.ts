@@ -1068,6 +1068,8 @@ const messages = {
         },
         fetchMore: "Hent fleire svar",
         deleted: "Dette innlegget er sletta av forfatteren.",
+        upvote: "Stem opp",
+        removeUpvote: "Fjern stemme",
       },
       flag: {
         title: "Rapporter innlegg / kommentar",

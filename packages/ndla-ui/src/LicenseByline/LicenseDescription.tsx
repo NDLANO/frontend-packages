@@ -16,7 +16,7 @@ interface Props {
   children?: ReactNode;
 }
 
-const StyledFigContainer = styled.figcaption`
+const StyledFigCaption = styled.figcaption`
   display: flex;
   gap: ${spacing.small};
   align-items: center;
@@ -36,13 +36,13 @@ const StyledDescription = styled.span`
 
 const LicenseDescription = ({ description, icon, children }: Props) => {
   return (
-    <StyledFigContainer>
+    <StyledFigCaption>
       {icon}
       <StyledDescription>
         {description}
         {children}
       </StyledDescription>
-    </StyledFigContainer>
+    </StyledFigCaption>
   );
 };
 

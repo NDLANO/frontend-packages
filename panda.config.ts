@@ -14,8 +14,12 @@ export default defineConfig({
   importMap: "@ndla/styled-system",
   preflight: true,
   strictPropertyValues: true,
-  include: ["./packages/*/src/**/*.{js,jsx,ts,tsx}", "./stories/**/*.{js,jsx,ts,tsx}"],
+  include: [
+    "./packages/primitives/**/*.{js,jsx,ts,tsx}",
+    "./packages/preset-panda/**/*.{js,jsx,ts,tsx}",
+    "./stories/**/*.{js,jsx,ts,tsx}",
+  ],
   exclude: [],
   jsxFramework: "react",
-  outdir: "styled-system",
+  outdir: "./packages/styled-system",
 });

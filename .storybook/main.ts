@@ -43,9 +43,13 @@ const config: StorybookConfig = {
       plugins: [
         tsconfigPaths.default({ root: "../" }),
         react.default({
-          jsxImportSource: "@emotion/react",
           babel: {
-            plugins: [["@emotion", { autoLabel: "always" }]],
+            overrides: [
+              {
+                exclude: /primitives|preset-panda|styled-system/,
+                plugins: [["@emotion", { autoLabel: "always" }]],
+              },
+            ],
           },
         }),
       ],

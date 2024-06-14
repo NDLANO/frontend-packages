@@ -95,6 +95,7 @@ const BylineWrapper = styled.div`
     border: none;
     background-color: ${colors.support.redLightest};
     padding: ${spacing.nsmall} ${spacing.normal};
+    ${fonts.sizes("18px", "24px")};
   }
 `;
 

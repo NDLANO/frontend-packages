@@ -72,6 +72,7 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
         height={strippedHeight}
         // eslint-disable-next-line react/no-unknown-property
         allowFullScreen
+        allow="encrypted-media"
         scrolling="no"
         frameBorder="0"
         loading="lazy"

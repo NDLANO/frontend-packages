@@ -100,6 +100,10 @@ const messages = {
   movedResourcePage: {
     title: "Siidu lea sirdojuvvon, muhto gávnnat dan dás:",
   },
+  unpublishedResourcePage: {
+    title: "Ressursen er avpublisert",
+    errorDescription: "Beklager, ressursen du prøvde komme til er avpublisert.",
+  },
   lti: {
     embed: "Deavdde",
     notSupported:

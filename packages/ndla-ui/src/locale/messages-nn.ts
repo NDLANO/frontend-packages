@@ -100,6 +100,10 @@ const messages = {
   movedResourcePage: {
     title: "Sida har flytta, men du kan finne den her:",
   },
+  unpublishedResourcePage: {
+    title: "Ressursen er avpublisert",
+    errorDescription: "Orsak, ressursen du prøvde komme til er avpublisert.",
+  },
   lti: {
     embed: "Sett inn",
     notSupported:

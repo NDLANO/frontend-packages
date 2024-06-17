@@ -1067,6 +1067,8 @@ const messages = {
         },
         fetchMore: "Fetch more answers",
         deleted: "This post has been deleted by the author.",
+        upvote: "Upvote",
+        removeUpvote: "Remove upvote",
       },
       flag: {
         title: "Report post / comment",

@@ -129,7 +129,16 @@ const StyledFigure = styled(Figure)`
   }
 `;
 
-const ImageEmbed = ({ embed, inGrid, path, lang, canonicalUrl, renderContext = "article", children }: Props) => {
+const ImageEmbed = ({
+  embed,
+  previewAlt,
+  inGrid,
+  path,
+  lang,
+  canonicalUrl,
+  renderContext = "article",
+  children,
+}: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
 
@@ -193,7 +202,14 @@ const ImageEmbed = ({ embed, inGrid, path, lang, canonicalUrl, renderContext = "
           lang={lang}
         />
       </ImageWrapper>
-      {isBylineHidden ? null : <EmbedByline type="image" copyright={data.copyright} description={parsedDescription} />}
+      {isBylineHidden ? null : (
+        <EmbedByline
+          type="image"
+          copyright={data.copyright}
+          description={parsedDescription}
+          visibleAlt={previewAlt ? embed.embedData.alt : ""}
+        />
+      )}
     </StyledFigure>
   );
 };

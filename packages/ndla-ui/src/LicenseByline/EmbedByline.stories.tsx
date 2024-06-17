@@ -16,6 +16,7 @@ export default {
   args: {
     topRounded: true,
     bottomRounded: true,
+    visibleAlt: "Synlig alt-tekst kan legges her, eller fjernes helt",
     type: "image",
     description:
       "Bildetekst som kan være ganske lang. Denne roboten er laget av DALLE2, en helt vaskeekte AI. Hvis denne teksten blir veldig lang kommer den på flere linjer.",

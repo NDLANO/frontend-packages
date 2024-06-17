@@ -25,6 +25,7 @@ interface BaseProps {
   bottomRounded?: boolean;
   description?: ReactNode;
   children?: ReactNode;
+  visibleAlt?: string;
   error?: true | false;
 }
 
@@ -99,11 +100,16 @@ const BylineWrapper = styled.div`
   }
 `;
 
+const StyledSpan = styled.span`
+  font-style: italic;
+  color: grey;
+`;
+
 const LicenseContainer = styled.div`
   padding: ${spacing.small} 0;
 `;
 
-const EmbedByline = ({ type, topRounded, bottomRounded, description, children, ...props }: Props) => {
+const EmbedByline = ({ type, topRounded, bottomRounded, description, children, visibleAlt, ...props }: Props) => {
   const { t, i18n } = useTranslation();
 
   if (props.error) {
@@ -150,6 +156,7 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, .
         )}
         {children}
       </LicenseContainer>
+      {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
     </BylineWrapper>
   );
 };

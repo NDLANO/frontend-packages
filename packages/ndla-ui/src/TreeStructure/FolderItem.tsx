@@ -119,7 +119,7 @@ const FolderNameLink = styled(SafeLink)`
   border: none;
   box-shadow: none;
   color: ${colors.text.primary};
-  font-size: ${fonts.sizes("16px")};
+  ${fonts.sizes("16px")};
   transition: ${animations.durations.superFast};
   word-break: break-word;
   &[data-selected="true"] {

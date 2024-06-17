@@ -1,6 +1,6 @@
 {
   "name": "@ndla/typography",
-  "version": "0.4.21",
+  "version": "0.4.22",
   "description": "Typography components library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",

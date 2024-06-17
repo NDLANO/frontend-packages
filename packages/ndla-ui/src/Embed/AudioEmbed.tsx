@@ -76,7 +76,6 @@ const AudioEmbed = ({ embed, lang }: Props) => {
         type={data.audioType === "standard" ? "audio" : "podcast"}
         copyright={embed.data.copyright}
       />
-      {data.imageMeta && <EmbedByline error={false} type="image" copyright={data.imageMeta.copyright} />}
     </Figure>
   );
 };

@@ -12,10 +12,9 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { spacing } from "@ndla/core";
-import { COPYRIGHTED } from "@ndla/licenses";
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { HeartButtonType, RenderContext } from "./types";
+import { RenderContext } from "./types";
 import { Figure } from "../Figure";
 import { EmbedByline } from "../LicenseByline";
 

@@ -6,11 +6,9 @@
  *
  */
 
-import { COPYRIGHTED } from "@ndla/licenses";
-import { AudioMetaData, ImageMetaData } from "@ndla/types-embed";
+import { AudioMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { Author } from "./ImageEmbed";
-import { HeartButtonType } from "./types";
 import AudioPlayer from "../AudioPlayer";
 import { Figure } from "../Figure";
 import { EmbedByline } from "../LicenseByline";
@@ -25,20 +23,6 @@ export const getFirstNonEmptyLicenseCredits = (authors: {
   rightsholders: Author[];
   processors: Author[];
 }) => Object.values(authors).find((i) => i.length > 0) ?? [];
-
-const imageMetaToMockEmbed = (
-  imageMeta: Extract<AudioMetaData, { status: "success" }>,
-): Extract<ImageMetaData, { status: "success" }> => ({
-  resource: "image",
-  status: "success",
-  // We check that this exists where the function is used.
-  data: imageMeta.data.imageMeta!,
-  embedData: {
-    resource: "image",
-    resourceId: imageMeta.data.imageMeta?.id?.toString() || "",
-    alt: imageMeta.data.imageMeta?.alttext.alttext ?? "",
-  },
-});
 
 const AudioEmbed = ({ embed, lang }: Props) => {
   if (embed.status === "error") {

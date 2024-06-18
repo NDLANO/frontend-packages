@@ -9,7 +9,7 @@
 import styled from "@emotion/styled";
 import { spacing } from "@ndla/core";
 import { getLicenseRightByAbbreviation } from "@ndla/licenses";
-import StyledList from "./LicenseList";
+import LicenseList from "./LicenseList";
 
 interface LicenseItemProps {
   licenseRight: string;
@@ -32,11 +32,11 @@ interface LicenseDescriptionListProps {
 }
 
 const LicenseDescriptionList = ({ licenseRights, locale }: LicenseDescriptionListProps) => (
-  <StyledList>
+  <LicenseList>
     {licenseRights.slice(1).map((licenseRight) => (
       <LicenseItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
     ))}
-  </StyledList>
+  </LicenseList>
 );
 
 export default LicenseDescriptionList;

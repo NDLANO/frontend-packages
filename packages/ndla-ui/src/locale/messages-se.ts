@@ -296,7 +296,7 @@ const messages = {
     lastUpdated: "Maŋemusat ođastuvvon",
     edition: "Almmuhus",
     publisher: "Almmuheaddji",
-    useContent: "Geavaheapmái njuolggadusat",
+    useContent: "Čujuhit vai ođđasit atnit?",
     closeLabel: "Govčča",
     additionalLabel: "Lassiávnnas",
     urlContributionsLabel: "Geahča maid {{name}} lea bargan",

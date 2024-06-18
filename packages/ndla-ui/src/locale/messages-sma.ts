@@ -296,7 +296,7 @@ const messages = {
     lastUpdated: "Minngemes orrestamme",
     edition: "Låhkoe",
     publisher: "Bæjhkoehtæjja",
-    useContent: "Åtnoenjoelkedassh",
+    useContent: "Sijhtidh jallh mubpesth nåhtadidh?",
     closeLabel: "Dahph",
     additionalLabel: "Lissie-aamhtesh",
     urlContributionsLabel: "Vuartesjh maam {{name}} dorjeme",

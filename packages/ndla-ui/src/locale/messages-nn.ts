@@ -296,7 +296,7 @@ const messages = {
     edition: "Utgåve",
     publisher: "Utgjevar",
     closeLabel: "Lukk",
-    useContent: "Reglar for bruk",
+    useContent: "Sitere eller gjenbruke?",
     additionalLabel: "Tilleggsstoff",
     urlContributionsLabel: "Sjå kva {{name}} har bidratt med",
     urlAuthorLabel: "Les meir om {{name}}",

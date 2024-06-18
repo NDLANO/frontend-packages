@@ -295,7 +295,7 @@ const messages = {
     lastUpdated: "Sist faglig oppdatert",
     edition: "Utgave",
     publisher: "Utgiver",
-    useContent: "Regler for bruk",
+    useContent: "Sitere eller gjenbruke?",
     closeLabel: "Lukk",
     additionalLabel: "Tilleggsstoff",
     urlContributionsLabel: "Se hva {{name}} har bidratt med",

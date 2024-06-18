@@ -296,7 +296,7 @@ const messages = {
     publisher: "Publisher",
     lastUpdated: "Last revised date",
     closeLabel: "Close",
-    useContent: "Cite or use",
+    useContent: "Cite or reuse?",
     additionalLabel: "Additional content",
     urlContributionsLabel: "See {{name}}`s contributions",
     urlAuthorLabel: "Read more about {{name}}",

@@ -127,32 +127,28 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
   const authors = getLicenseCredits(copyright);
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
+  const authorAndLicenseLink = () => {
+    return (
+      <>
+        {` ${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
+        {captionAuthors.map((author) => author.name).join(", ")}
+        {license ? (
+          <>
+            {" / "}
+            <LicenseLink license={license} asLink={!!license.url.length} />
+          </>
+        ) : null}
+      </>
+    );
+  };
+
   return (
     <BylineWrapper>
       <LicenseContainer>
         {description ? (
-          <LicenseDescription description={description}>
-            {" "}
-            {`${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
-            {captionAuthors.map((author) => author.name).join(", ")}
-            {license ? (
-              <>
-                {" / "}
-                <LicenseLink license={license} asLink={!!license.url.length} />
-              </>
-            ) : null}
-          </LicenseDescription>
+          <LicenseDescription description={description}>{authorAndLicenseLink()}</LicenseDescription>
         ) : (
-          <span>
-            {`${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
-            {captionAuthors.map((author) => author.name).join(", ")}
-            {license ? (
-              <>
-                {" / "}
-                <LicenseLink license={license} asLink={!!license.url.length} />
-              </>
-            ) : null}
-          </span>
+          <span>{authorAndLicenseLink()}</span>
         )}
         {children}
       </LicenseContainer>

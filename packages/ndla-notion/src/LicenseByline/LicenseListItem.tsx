@@ -7,10 +7,11 @@
  */
 
 import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 import LicenseList from "./LicenseList";
 
 export const StyledListItem = styled.li`
-  padding-bottom: 5px;
+  padding-bottom: ${spacing.xsmall};
   &[data-horizontal="true"] {
     padding-bottom: 0px;
   }

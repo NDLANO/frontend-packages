@@ -7,6 +7,7 @@
  */
 
 import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 import { getLicenseRightByAbbreviation } from "@ndla/licenses";
 import StyledList from "./LicenseList";
 
@@ -16,7 +17,7 @@ interface LicenseItemProps {
 }
 
 const StyledListItem = styled.li`
-  padding-bottom: 5px;
+  padding-bottom: ${spacing.xsmall};
 `;
 
 const LicenseItem = ({ licenseRight, locale }: LicenseItemProps) => {

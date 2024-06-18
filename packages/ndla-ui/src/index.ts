@@ -120,6 +120,17 @@ export { i18nInstance, formatNestedMessages } from "./i18n";
 export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";
 
 export {
+  MediaList,
+  MediaListItem,
+  MediaListItemBody,
+  MediaListItemActions,
+  MediaListItemImage,
+  MediaListItemMeta,
+} from "./MediaList";
+
+export type { ItemType } from "./MediaList";
+
+export {
   default as ContentTypeBadge,
   SubjectMaterialBadge,
   TasksAndActivitiesBadge,

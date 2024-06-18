@@ -14,7 +14,7 @@ interface LicenseListProps {
   horizontal?: boolean;
 }
 
-export const StyledList = styled.ul<LicenseListProps>`
+export const StyledList = styled.ul`
   display: flex;
   &[data-horizontal="false"] {
     flex-direction: column;

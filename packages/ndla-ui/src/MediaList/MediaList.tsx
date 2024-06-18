@@ -117,7 +117,7 @@ interface MediaListItemBodyProps {
   resourceUrl?: string;
   resourceType?: "video" | "image" | "audio" | "text" | "h5p" | "podcast";
   messages?: {
-    modelPremission?: string;
+    modelPermission?: string;
   };
   title?: string;
 }
@@ -173,7 +173,7 @@ export const MediaListItemBody = ({
           {title}
         </BodyTitle>
       ) : null}
-      <LicenseDescription locale={locale} messages={messages} licenseRights={license.rights} highlightCC />
+      <LicenseDescription locale={locale} messages={messages} licenseRights={license.rights} />
       <SafeLink rel="noopener noreferrer license" target="_blank" to={license.url}>
         {license.linkText}
       </SafeLink>

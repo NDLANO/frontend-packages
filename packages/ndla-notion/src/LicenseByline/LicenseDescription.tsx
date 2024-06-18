@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing } from "@ndla/core";
-import LicenseIconDescriptionList from "./LicenseDescriptionList";
+import LicenseDescriptionList from "./LicenseDescriptionList";
 import StyledLicenseByline from "./StyledLicenseByline";
 
 const StyledModelPermission = styled.div`
@@ -35,7 +35,7 @@ interface Props {
 const LicenseDescription = ({ children, licenseRights, messages, locale }: Props) => (
   <StyledLicenseByline>
     <div>
-      <LicenseIconDescriptionList licenseRights={licenseRights} locale={locale} />
+      <LicenseDescriptionList licenseRights={licenseRights} locale={locale} />
       {!!messages?.modelPermission && <StyledModelPermission>{messages.modelPermission}</StyledModelPermission>}
     </div>
     {children}

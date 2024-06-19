@@ -34,7 +34,13 @@ export {
   CodeEmbed,
 } from "./Embed";
 
-export { LicenseLink } from "./LicenseByline";
+export {
+  LicenseLink,
+  EmbedByline,
+  LicenseByline,
+  LicenseBylineDescription,
+  LicenseBylineDescriptionList,
+} from "./LicenseByline";
 
 export {
   ArticleByline,

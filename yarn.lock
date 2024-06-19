@@ -2793,23 +2793,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/button@npm:^13.0.4, @ndla/button@workspace:packages/button":
-  version: 0.0.0-use.local
-  resolution: "@ndla/button@workspace:packages/button"
-  dependencies:
-    "@ndla/core": "npm:^5.0.1"
-    "@ndla/dropdown-menu": "npm:^1.0.38"
-    "@ndla/icons": "npm:^6.1.7"
-    "@ndla/tooltip": "npm:^8.0.1"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
-    react-dom: ">= 16.8.0"
-    react-i18next: ^14.1.1
-  languageName: unknown
-  linkType: soft
-
 "@ndla/button@npm:^13.0.4":
   version: 13.0.4
   resolution: "@ndla/button@npm:13.0.4"
@@ -2827,6 +2810,23 @@ __metadata:
   checksum: 10c0/dbc3b8ff96ce911009f0f2959561aff82e2fe4c51fa7cab2406747f6c80e92ee5dd75ff5903df4daf107e7cdd5876bd28512928a839e712baa46057ab852709e
   languageName: node
   linkType: hard
+
+"@ndla/button@workspace:packages/button":
+  version: 0.0.0-use.local
+  resolution: "@ndla/button@workspace:packages/button"
+  dependencies:
+    "@ndla/core": "npm:^5.0.1"
+    "@ndla/dropdown-menu": "npm:^1.0.38"
+    "@ndla/icons": "npm:^6.1.7"
+    "@ndla/tooltip": "npm:^8.0.1"
+  peerDependencies:
+    "@emotion/react": ^11.10.4
+    "@emotion/styled": ^11.10.4
+    react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
+    react-i18next: ^14.1.1
+  languageName: unknown
+  linkType: soft
 
 "@ndla/carousel@workspace:packages/carousel":
   version: 0.0.0-use.local
@@ -2910,18 +2910,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/icons@npm:^6.1.7, @ndla/icons@workspace:packages/ndla-icons":
-  version: 0.0.0-use.local
-  resolution: "@ndla/icons@workspace:packages/ndla-icons"
-  dependencies:
-    "@ndla/core": "npm:^5.0.1"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
-  languageName: unknown
-  linkType: soft
-
 "@ndla/icons@npm:^6.1.7":
   version: 6.1.7
   resolution: "@ndla/icons@npm:6.1.7"
@@ -2934,6 +2922,18 @@ __metadata:
   checksum: 10c0/20ece7dae6238b469ca3a4adf39e732e912b81f526a4f8ca89bb86a398517aa85601992fe897624be569dbdd85ac29cdd17eecd83c733da2b7cbfb6027d25ca5
   languageName: node
   linkType: hard
+
+"@ndla/icons@workspace:packages/ndla-icons":
+  version: 0.0.0-use.local
+  resolution: "@ndla/icons@workspace:packages/ndla-icons"
+  dependencies:
+    "@ndla/core": "npm:^5.0.1"
+  peerDependencies:
+    "@emotion/react": ^11.10.4
+    "@emotion/styled": ^11.10.4
+    react: ">= 16.8.0"
+  languageName: unknown
+  linkType: soft
 
 "@ndla/image-search@workspace:packages/ndla-image-search":
   version: 0.0.0-use.local
@@ -2981,22 +2981,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/notion@npm:^7.0.3, @ndla/notion@workspace:packages/ndla-notion":
-  version: 0.0.0-use.local
-  resolution: "@ndla/notion@workspace:packages/ndla-notion"
-  dependencies:
-    "@ndla/core": "npm:^5.0.1"
-    "@ndla/icons": "npm:^6.1.7"
-    "@ndla/licenses": "npm:^7.2.6"
-    "@radix-ui/react-popover": "npm:^1.0.7"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
-    react-i18next: ^14.1.1
-  languageName: unknown
-  linkType: soft
-
 "@ndla/notion@npm:^7.0.3":
   version: 7.0.3
   resolution: "@ndla/notion@npm:7.0.3"
@@ -3014,16 +2998,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/pager@npm:^3.0.12, @ndla/pager@workspace:packages/ndla-pager":
+"@ndla/notion@workspace:packages/ndla-notion":
   version: 0.0.0-use.local
-  resolution: "@ndla/pager@workspace:packages/ndla-pager"
+  resolution: "@ndla/notion@workspace:packages/ndla-notion"
   dependencies:
     "@ndla/core": "npm:^5.0.1"
-    "@ndla/safelink": "npm:^5.1.7"
+    "@ndla/icons": "npm:^6.1.7"
+    "@ndla/licenses": "npm:^7.2.6"
+    "@radix-ui/react-popover": "npm:^1.0.7"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
+    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 
@@ -3040,6 +3027,19 @@ __metadata:
   checksum: 10c0/c06ea761e0779b48aecb9314329996b4c78ac6bc4657596341b0173a9f305a7cb673b2f27751864bdf6188e8c91c7418b629c2238230aac97af60b41ba1d3e21
   languageName: node
   linkType: hard
+
+"@ndla/pager@workspace:packages/ndla-pager":
+  version: 0.0.0-use.local
+  resolution: "@ndla/pager@workspace:packages/ndla-pager"
+  dependencies:
+    "@ndla/core": "npm:^5.0.1"
+    "@ndla/safelink": "npm:^5.1.7"
+  peerDependencies:
+    "@emotion/react": ^11.10.4
+    "@emotion/styled": ^11.10.4
+    react: ">= 16.8.0"
+  languageName: unknown
+  linkType: soft
 
 "@ndla/preset-panda@workspace:^, @ndla/preset-panda@workspace:packages/preset-panda":
   version: 0.0.0-use.local
@@ -3065,20 +3065,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^5.1.7, @ndla/safelink@workspace:packages/safelink":
-  version: 0.0.0-use.local
-  resolution: "@ndla/safelink@workspace:packages/safelink"
-  dependencies:
-    "@ndla/button": "npm:^13.0.4"
-    "@ndla/icons": "npm:^6.1.7"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
-    react-router-dom: ^6.3.0
-  languageName: unknown
-  linkType: soft
-
 "@ndla/safelink@npm:^5.1.7":
   version: 5.1.7
   resolution: "@ndla/safelink@npm:5.1.7"
@@ -3093,6 +3079,20 @@ __metadata:
   checksum: 10c0/673b7e254a96589000a4f4a5955bdf27d34fb3f222ade8b2dbce0d035709fed1e943049e14e1d2a5cfca29758b13dea7ef6d9af78c80d8a98afa5fb8d65e420b
   languageName: node
   linkType: hard
+
+"@ndla/safelink@workspace:packages/safelink":
+  version: 0.0.0-use.local
+  resolution: "@ndla/safelink@workspace:packages/safelink"
+  dependencies:
+    "@ndla/button": "npm:^13.0.4"
+    "@ndla/icons": "npm:^6.1.7"
+  peerDependencies:
+    "@emotion/react": ^11.10.4
+    "@emotion/styled": ^11.10.4
+    react: ">= 16.8.0"
+    react-router-dom: ^6.3.0
+  languageName: unknown
+  linkType: soft
 
 "@ndla/scripts@workspace:packages/ndla-scripts":
   version: 0.0.0-use.local
@@ -3221,7 +3221,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^54.0.3, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^54.0.2, @ndla/ui@npm:^54.0.3, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:

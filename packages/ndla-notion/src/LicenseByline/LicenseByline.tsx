@@ -6,16 +6,49 @@
  *
  */
 
-import { getLicenseByAbbreviation } from "@ndla/licenses";
-import { LicenseLink } from "@ndla/ui";
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 
 interface Props {
-  license: LicenseType;
+  children?: ReactNode;
+  licenseRights: string[];
+  locale?: string;
+  horizontal?: boolean;
 }
-export type LicenseType = ReturnType<typeof getLicenseByAbbreviation>;
 
-const LicenseByline = ({ license }: Props) => {
-  return <LicenseLink license={license} asLink={!!license.url.length} />;
+const LicenseBylineWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const StyledListItem = styled.li`
+  padding-bottom: ${spacing.xsmall};
+  &[data-horizontal="true"] {
+    padding-bottom: 0px;
+  }
+`;
+
+const StyledList = styled.ul`
+  display: flex;
+  &[data-horizontal="false"] {
+    flex-direction: column;
+  }
+  list-style-type: disc;
+`;
+
+const LicenseByline = ({ children, licenseRights, horizontal = false }: Props) => {
+  return (
+    <LicenseBylineWrapper>
+      <StyledList data-horizontal={horizontal}>
+        {licenseRights.map((licenseRight) => (
+          <StyledListItem key={licenseRight}>{licenseRight}</StyledListItem>
+        ))}
+      </StyledList>
+      {children}
+    </LicenseBylineWrapper>
+  );
 };
 
 export default LicenseByline;

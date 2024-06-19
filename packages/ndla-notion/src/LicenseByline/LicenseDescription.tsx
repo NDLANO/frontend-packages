@@ -10,7 +10,12 @@ import { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing } from "@ndla/core";
 import LicenseDescriptionList from "./LicenseDescriptionList";
-import StyledLicenseByline from "./StyledLicenseByline";
+
+const LicenseDescriptionWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
 
 const StyledModelPermission = styled.div`
   svg {
@@ -33,13 +38,13 @@ interface Props {
 }
 
 const LicenseDescription = ({ children, licenseRights, messages, locale }: Props) => (
-  <StyledLicenseByline>
+  <LicenseDescriptionWrapper>
     <div>
       <LicenseDescriptionList licenseRights={licenseRights} locale={locale} />
       {!!messages?.modelPermission && <StyledModelPermission>{messages.modelPermission}</StyledModelPermission>}
     </div>
     {children}
-  </StyledLicenseByline>
+  </LicenseDescriptionWrapper>
 );
 
 export default LicenseDescription;

@@ -14,9 +14,9 @@ import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
 import { PanoramaPhotosphere } from "@ndla/icons/common";
 import { getLicenseByNBTitle } from "@ndla/licenses";
-import { LicenseByline } from "@ndla/notion";
 import { BrightcoveApiType } from "@ndla/types-embed";
 import { Heading } from "@ndla/typography";
+import { LicenseByline } from "@ndla/ui";
 import { Translations } from "./VideoSearch";
 
 interface Props {

@@ -143,6 +143,11 @@ const ImageEmbed = ({
 }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
+  // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
+  // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
+  const [floatAttr, setFloatAttr] = useState<{ "data-float"?: string }>(() =>
+    inGrid && !embed.embedData.align ? {} : { "data-float": embed.embedData.align },
+  );
 
   const parsedDescription = useMemo(() => {
     if (embed.embedData.caption || renderContext === "article") {
@@ -160,10 +165,6 @@ const ImageEmbed = ({
   }
 
   const { data, embedData } = embed;
-
-  // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
-  // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
-  const floatAttr = inGrid && !embedData.align ? {} : { "data-float": embedData.align };
 
   const altText = embedData.alt || "";
 
@@ -197,7 +198,17 @@ const ImageEmbed = ({
               size={embedData.size}
               expanded={!!imageSizes}
               bylineHidden={isBylineHidden}
-              onExpand={() => setImageSizes((p) => (p ? undefined : expandedSizes))}
+              onExpand={() => {
+                if (!imageSizes) {
+                  setImageSizes(expandedSizes);
+                  setTimeout(() => {
+                    setFloatAttr({});
+                  }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
+                } else {
+                  setImageSizes(undefined);
+                  setFloatAttr({ "data-float": embedData.align });
+                }
+              }}
               onHideByline={() => setIsBylineHidden((p) => !p)}
             />
           }

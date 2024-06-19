@@ -31,7 +31,7 @@ interface LicenseDescriptionListProps {
   locale?: string;
 }
 
-const LicenseDescriptionList = ({ licenseRights, locale }: LicenseDescriptionListProps) => (
+const LicenseBylineDescriptionList = ({ licenseRights, locale }: LicenseDescriptionListProps) => (
   <LicenseList>
     {/* Filter away the CC-rights description since it isn't showed in the list anymore */}
     {licenseRights
@@ -42,4 +42,4 @@ const LicenseDescriptionList = ({ licenseRights, locale }: LicenseDescriptionLis
   </LicenseList>
 );
 
-export default LicenseDescriptionList;
+export default LicenseBylineDescriptionList;

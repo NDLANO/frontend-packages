@@ -33,9 +33,12 @@ interface LicenseDescriptionListProps {
 
 const LicenseDescriptionList = ({ licenseRights, locale }: LicenseDescriptionListProps) => (
   <LicenseList>
-    {licenseRights.slice(1).map((licenseRight) => (
-      <LicenseItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
-    ))}
+    {/* Filter away the CC-rights description since it isn't showed in the list anymore */}
+    {licenseRights
+      .filter((right) => right === "cc")
+      .map((licenseRight) => (
+        <LicenseItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
+      ))}
   </LicenseList>
 );
 

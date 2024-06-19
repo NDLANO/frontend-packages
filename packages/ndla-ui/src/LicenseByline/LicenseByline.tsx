@@ -7,7 +7,7 @@
  */
 
 import { getLicenseByAbbreviation } from "@ndla/licenses";
-import { LicenseLink } from "@ndla/ui";
+import LicenseLink from "./LicenseLink";
 
 interface Props {
   license: LicenseType;

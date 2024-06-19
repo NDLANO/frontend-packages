@@ -196,6 +196,7 @@ export const iconButtonRecipe = cva({
   base: {
     lineHeight: "1",
     minHeight: "unset",
+    height: "fit-content",
     "& svg": {
       marginInline: "0",
       marginBlock: "0",

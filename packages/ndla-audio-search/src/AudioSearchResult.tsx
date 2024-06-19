@@ -9,9 +9,9 @@
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { colors, spacing } from "@ndla/core";
-import { getLicenseByAbbreviation } from "@ndla/licenses";
+import { getLicenseByAbbreviation, LicenseLocaleType } from "@ndla/licenses";
+import { SafeLink } from "@ndla/safelink";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
-import { LicenseByline } from "@ndla/ui";
 import AudioBar from "./AudioBar";
 
 const StyledListItem = styled.div`
@@ -33,6 +33,28 @@ const StyledContainer = styled.div`
   margin-bottom: ${spacing.small};
 `;
 
+const StyledSafeLink = styled(SafeLink)`
+  color: ${colors.brand.primary};
+  text-decoration: underline;
+  &:hover,
+  &:focus-within {
+    text-decoration: none;
+  }
+`;
+interface LicenseLinkProps {
+  license: LicenseLocaleType;
+};
+const LicenseLink = ({license}: LicenseLinkProps) => {
+  if (license.url?.length) {
+    return (
+      <StyledSafeLink to={license.url} rel="license">
+        {license.abbreviation}
+      </StyledSafeLink>
+    );
+  }
+  return <span>{license.abbreviation}</span>;
+};
+
 interface Props {
   audio: IAudioSummary;
   translations: { useAudio: string };
@@ -48,7 +70,7 @@ export default function AudioSearchResult({ audio, fetchAudio, onError, locale, 
     <StyledListItem key={audio.id}>
       <StyledContainer>
         <StyledHeading>{audio.title?.title}</StyledHeading>
-        <LicenseWrapper>{license.rights ? <LicenseByline license={license} /> : license.title}</LicenseWrapper>
+        <LicenseWrapper>{license.rights ? <LicenseLink license={license} /> : license.title}</LicenseWrapper>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
       </StyledContainer>
       <ButtonV2 variant="outline" onClick={() => onAudioSelect(audio)}>

@@ -74,8 +74,6 @@ export type EmbedBylineTypeProps =
 
 type Props = EmbedBylineTypeProps | EmbedBylineErrorProps;
 
-export type LicenseType = ReturnType<typeof getLicenseByAbbreviation>;
-
 const BylineWrapper = styled.div`
   display: flex;
   flex-direction: column;

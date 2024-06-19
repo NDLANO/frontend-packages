@@ -8,11 +8,11 @@
 
 import styled from "@emotion/styled";
 import { colors } from "@ndla/core";
+import { LicenseLocaleType } from "@ndla/licenses";
 import { SafeLink } from "@ndla/safelink";
-import { LicenseType } from "./EmbedByline";
 
 interface Props {
-  license: LicenseType;
+  license: LicenseLocaleType;
   asLink?: boolean;
 }
 
@@ -27,11 +27,11 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const LicenseLink = ({ license, asLink = true }: Props) => {
+const LicenseLink = ({ license }: Props) => {
   if (license.abbreviation === "unknown") {
     return null;
   }
-  if (asLink) {
+  if (license.url?.length) {
     return (
       <StyledSafeLink to={license.url} rel="license">
         {license.abbreviation}

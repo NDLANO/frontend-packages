@@ -31,6 +31,7 @@ export {
 } from "./licenseRights";
 
 export { getLicenseByAbbreviation, getLicenseByNBTitle, isCreativeCommonsLicense, ALL_ABBREVIATIONS } from "./licenses";
+export type { LicenseLocaleType } from "./types";
 
 export {
   getCopyString,

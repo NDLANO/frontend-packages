@@ -13,10 +13,10 @@ import { ButtonV2, IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
 import { PanoramaPhotosphere } from "@ndla/icons/common";
-import { getLicenseByNBTitle } from "@ndla/licenses";
+import { getLicenseByNBTitle, LicenseLocaleType } from "@ndla/licenses";
+import { SafeLink } from "@ndla/safelink";
 import { BrightcoveApiType } from "@ndla/types-embed";
 import { Heading } from "@ndla/typography";
-import { LicenseByline } from "@ndla/ui";
 import { Translations } from "./VideoSearch";
 
 interface Props {
@@ -110,6 +110,28 @@ const PreviewWrapper = styled.div`
   background: ${colors.brand.light};
 `;
 
+const StyledSafeLink = styled(SafeLink)`
+  color: ${colors.brand.primary};
+  text-decoration: underline;
+  &:hover,
+  &:focus-within {
+    text-decoration: none;
+  }
+`;
+interface LicenseLinkProps {
+  license: LicenseLocaleType;
+};
+const LicenseLink = ({license}: LicenseLinkProps) => {
+  if (license.url?.length) {
+    return (
+      <StyledSafeLink to={license.url} rel="license">
+        {license.abbreviation}
+      </StyledSafeLink>
+    );
+  }
+  return <span>{license.abbreviation}</span>;
+};
+
 interface VideoListItemProps {
   video: BrightcoveApiType;
   translations: Translations;
@@ -137,7 +159,7 @@ export const VideoListItem = ({ video, onSelectVideo, translations, locale }: Vi
             )}
           </StyledHeading>
           {video.custom_fields?.licenseinfo ?? ""}
-          {typeof license === "string" ? license : <LicenseByline license={license} />}
+          {typeof license === "string" ? license : <LicenseLink license={license} />}
           <ButtonWrapper>
             <ButtonV2 variant="outline" onClick={() => setIsPreviewing((p) => !p)}>
               {translations.previewVideo}

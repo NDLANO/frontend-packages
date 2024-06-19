@@ -37,7 +37,6 @@ export {
 export {
   LicenseLink,
   EmbedByline,
-  LicenseByline,
   LicenseBylineDescription,
   LicenseBylineDescriptionList,
 } from "./LicenseByline";

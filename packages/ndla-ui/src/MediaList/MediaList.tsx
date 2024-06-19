@@ -17,10 +17,10 @@ import {
   metaTypes,
 } from "@ndla/licenses";
 import type { MetaType } from "@ndla/licenses";
-import { LicenseDescription } from "@ndla/notion";
 import { SafeLink } from "@ndla/safelink";
 import { Text } from "@ndla/typography";
 import { uuid } from "@ndla/util";
+import { LicenseBylineDescription } from "../LicenseByline";
 
 const StyledMediaList = styled.ul`
   padding-left: 0;
@@ -173,7 +173,7 @@ export const MediaListItemBody = ({
           {title}
         </BodyTitle>
       ) : null}
-      <LicenseDescription locale={locale} messages={messages} licenseRights={license.rights} />
+      <LicenseBylineDescription locale={locale} messages={messages} licenseRights={license.rights} />
       <SafeLink rel="noopener noreferrer license" target="_blank" to={license.url}>
         {license.linkText}
       </SafeLink>

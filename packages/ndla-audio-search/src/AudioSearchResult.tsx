@@ -43,8 +43,8 @@ const StyledSafeLink = styled(SafeLink)`
 `;
 interface LicenseLinkProps {
   license: LicenseLocaleType;
-};
-const LicenseLink = ({license}: LicenseLinkProps) => {
+}
+const LicenseLink = ({ license }: LicenseLinkProps) => {
   if (license.url?.length) {
     return (
       <StyledSafeLink to={license.url} rel="license">

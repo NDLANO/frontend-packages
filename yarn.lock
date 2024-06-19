@@ -2786,7 +2786,7 @@ __metadata:
     "@ndla/notion": "npm:^7.0.2"
     "@ndla/pager": "npm:^3.0.12"
     "@ndla/types-backend": "npm:^0.2.82"
-    "@ndla/ui": "npm:^54.0.0"
+    "@ndla/ui": "npm:^54.0.2"
   peerDependencies:
     "@emotion/react": ^11.10.4
     react: ">= 16.8.0"
@@ -3209,7 +3209,7 @@ __metadata:
     "@ndla/licenses": "npm:^7.2.6"
     "@ndla/notion": "npm:^7.0.2"
     "@ndla/types-embed": "npm:^4.1.7"
-    "@ndla/ui": "npm:^54.0.0"
+    "@ndla/ui": "npm:^54.0.2"
     "@ndla/util": "npm:^4.0.4"
   peerDependencies:
     "@emotion/react": ^11.10.4

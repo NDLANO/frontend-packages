@@ -40,7 +40,7 @@
     "@ndla/icons": "^6.1.6",
     "@ndla/licenses": "^7.2.6",
     "@ndla/notion": "^7.0.2",
-    "@ndla/ui": "^54.0.0",
+    "@ndla/ui": "^54.0.2",
     "@ndla/util": "^4.0.4"
   },
   "publishConfig": {

@@ -100,6 +100,10 @@ const messages = {
   movedResourcePage: {
     title: "The page has been moved, but you can find it here:",
   },
+  unpublishedResourcePage: {
+    title: "Resource is unpublished",
+    errorDescription: "The resource you are looking for has been unpublished.",
+  },
   lti: {
     embed: "Embed",
     notSupported:
@@ -954,8 +958,10 @@ const messages = {
         sharedFolder: "Shared folder",
         unShare: "Sharing stopped. The folder is no longer shared",
         copyLink: "Copy link to folder",
+        removeLink: "Remove link to folder",
         link: "Link is copied",
         savedLink: "Link to {{ name }} has been added to My folders.",
+        unSavedLink: "Link to {{ name }} has been removed from My folders.",
         header: {
           shared: "This folder is shared",
         },
@@ -981,6 +987,7 @@ const messages = {
           unShare: "Stop sharing",
           shareLink: "Copy link",
           saveLink: "Save the link",
+          unSaveLink: "Remove the link",
         },
         save: {
           warning:
@@ -1073,6 +1080,8 @@ const messages = {
         },
         fetchMore: "Fetch more answers",
         deleted: "This post has been deleted by the author.",
+        upvote: "Upvote",
+        removeUpvote: "Remove upvote",
       },
       flag: {
         title: "Report post / comment",

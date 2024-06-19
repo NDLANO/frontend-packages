@@ -79,15 +79,15 @@ export const fontSizes = defineTokens.fontSizes({
 });
 
 export const lineHeights = defineTokens.lineHeights({
-  xxsmall: { value: "12px" },
-  xsmall: { value: "22px" },
-  small: { value: "24px" },
-  medium: { value: "28px" },
-  large: { value: "30px" },
-  xlarge: { value: "36px" },
-  xxlarge: { value: "38px" },
-  "3xlarge": { value: "48px" },
-  "4xlarge": { value: "60px" },
+  xxsmall: { value: "0.75rem" },
+  xsmall: { value: "1.375rem" },
+  small: { value: "1.5rem" },
+  medium: { value: "1.75rem" },
+  large: { value: "1.875rem" },
+  xlarge: { value: "2.25rem" },
+  xxlarge: { value: "2.375rem" },
+  "3xlarge": { value: "3rem" },
+  "4xlarge": { value: "3.75rem" },
 });
 
 const sizes = (size: FontSizeToken, lineHeight: LineHeightToken) => {

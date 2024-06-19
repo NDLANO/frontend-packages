@@ -1,0 +1,52 @@
+/**
+ * Copyright (c) 2024-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { Meta, StoryObj } from "@storybook/react";
+import { Badge } from "./Badge";
+import { Text } from "./Text";
+
+export default {
+  title: "Primitives/Badge",
+  component: Badge,
+  tags: ["autodocs"],
+  parameters: {
+    inlineStories: true,
+  },
+  args: {
+    colorTheme: "neutral",
+    children: "Kjernestoff",
+  },
+  render: ({ children, ...args }) => (
+    <Badge {...args}>
+      <Text textStyle="label.medium">{children}</Text>
+    </Badge>
+  ),
+} as Meta<typeof Badge>;
+
+export const Neutral: StoryObj<typeof Badge> = {};
+
+export const Brand1: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "brand1",
+    children: "Fagstoff",
+  },
+};
+
+export const Brand2: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "brand2",
+    children: "Oppgaver og aktiviteter",
+  },
+};
+
+export const Brand3: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "brand3",
+    children: "Læringssti",
+  },
+};

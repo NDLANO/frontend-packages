@@ -53,6 +53,8 @@ const config: StorybookConfig = {
   },
   typescript: {
     reactDocgen: "react-docgen-typescript",
+    // uncomment this for quicker HMR during dev.
+    // reactDocgen: "react-docgen",
   },
   framework: "@storybook/react-vite",
   /* For at "Show code" skal legge seg bakerst slik at elementer som drop-down ikke blir skjult bak den */

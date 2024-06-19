@@ -137,7 +137,7 @@ export const VideoListItem = ({ video, onSelectVideo, translations, locale }: Vi
             )}
           </StyledHeading>
           {video.custom_fields?.licenseinfo ?? ""}
-          {typeof license === "string" ? license : <LicenseByline licenseRights={license.rights} locale={locale} />}
+          {typeof license === "string" ? license : <LicenseByline license={license} />}
           <ButtonWrapper>
             <ButtonV2 variant="outline" onClick={() => setIsPreviewing((p) => !p)}>
               {translations.previewVideo}

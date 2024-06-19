@@ -29,6 +29,10 @@ const LicenseWrapper = styled.div`
   margin-bottom: ${spacing.small};
 `;
 
+const StyledContainer = styled.div`
+  margin-bottom: ${spacing.small};
+`;
+
 interface Props {
   audio: IAudioSummary;
   translations: { useAudio: string };
@@ -42,13 +46,11 @@ export default function AudioSearchResult({ audio, fetchAudio, onError, locale, 
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
     <StyledListItem key={audio.id}>
-      <div>
+      <StyledContainer>
         <StyledHeading>{audio.title?.title}</StyledHeading>
-        <LicenseWrapper>
-          {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license.title}
-        </LicenseWrapper>
+        <LicenseWrapper>{license.rights ? <LicenseByline license={license} /> : license.title}</LicenseWrapper>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
-      </div>
+      </StyledContainer>
       <ButtonV2 variant="outline" onClick={() => onAudioSelect(audio)}>
         {translations.useAudio}
       </ButtonV2>

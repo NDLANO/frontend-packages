@@ -6,23 +6,16 @@
  *
  */
 
-import { ReactNode } from "react";
-import LicenseListItem from "./LicenseListItem";
-import StyledLicenseByline from "./StyledLicenseByline";
+import { getLicenseByAbbreviation } from "@ndla/licenses";
+import { LicenseLink } from "@ndla/ui";
 
 interface Props {
-  children?: ReactNode;
-  licenseRights: string[];
-  locale?: string;
+  license: LicenseType;
 }
+export type LicenseType = ReturnType<typeof getLicenseByAbbreviation>;
 
-const LicenseByline = ({ children, licenseRights }: Props) => {
-  return (
-    <StyledLicenseByline>
-      <LicenseListItem licenseRights={licenseRights} />
-      {children}
-    </StyledLicenseByline>
-  );
+const LicenseByline = ({ license }: Props) => {
+  return <LicenseLink license={license} asLink={!!license.url.length} />;
 };
 
 export default LicenseByline;

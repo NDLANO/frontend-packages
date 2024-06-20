@@ -10,21 +10,6 @@ import styled from "@emotion/styled";
 import { spacing } from "@ndla/core";
 import { getLicenseRightByAbbreviation } from "@ndla/licenses";
 
-interface LicenseItemProps {
-  licenseRight: string;
-  locale?: string;
-}
-
-const StyledListItem = styled.li`
-  padding-bottom: ${spacing.xsmall};
-`;
-
-const LicenseItem = ({ licenseRight, locale }: LicenseItemProps) => {
-  const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
-
-  return <StyledListItem>{description}</StyledListItem>;
-};
-
 interface LicenseDescriptionListProps {
   licenseRights: string[];
   locale?: string;
@@ -36,14 +21,19 @@ const StyledList = styled.ul`
   list-style-type: disc;
 `;
 
+const StyledListItem = styled.li`
+  padding-bottom: ${spacing.xsmall};
+`;
+
 const LicenseBylineDescriptionList = ({ licenseRights, locale }: LicenseDescriptionListProps) => (
   <StyledList>
     {/* Filter away the CC-rights description since it isn't showed in the list anymore */}
     {licenseRights
       .filter((right) => right !== "cc")
-      .map((licenseRight) => (
-        <LicenseItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
-      ))}
+      .map((licenseRight) => {
+        const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
+        return <StyledListItem key={licenseRight}>{description}</StyledListItem>;
+      })}
   </StyledList>
 );
 

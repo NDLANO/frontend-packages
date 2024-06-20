@@ -114,7 +114,11 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
     const typeString = type === "h5p" ? "H5P" : t(`embed.type.${type}`).toLowerCase();
     return (
       <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-error={true}>
-        <LicenseDescription description={t("embed.embedError", { type: typeString })} icon={<WarningOutline />} />
+        <LicenseDescription
+          warningByline={props.error}
+          description={t("embed.embedError", { type: typeString })}
+          icon={<WarningOutline />}
+        />
       </BylineWrapper>
     );
   }

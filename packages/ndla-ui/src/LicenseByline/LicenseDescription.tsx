@@ -16,6 +16,7 @@ interface Props {
   description: ReactNode;
   icon?: ReactNode;
   children?: ReactNode;
+  warningByline?: boolean;
 }
 
 const StyledFigCaption = styled.figcaption`
@@ -34,28 +35,32 @@ const StyledFigCaption = styled.figcaption`
 const StyledDescription = styled.div`
   display: inline-flex;
   white-space: pre-wrap;
-  @media (max-width: ${breakpoints.mobileWide}) {
-    &[data-open="true"] {
-      display: inline;
+  &[data-warning="false"] {
+    @media (max-width: ${breakpoints.mobileWide}) {
+      &[data-open="true"] {
+        display: inline;
+      }
+      width: calc(100%);
     }
-    width: calc(100%);
   }
 `;
 
 const TextContent = styled.span`
-  @media (max-width: ${breakpoints.mobileWide}) {
-    white-space: nowrap;
-    /* maxHeight is set to 40 pixels to hide the rest of the text */
-    max-height: 40px;
-    &[data-open="true"] {
-      white-space: pre-wrap;
-      max-height: none;
-    }
+  &[data-warning="false"] {
+    @media (max-width: ${breakpoints.mobileWide}) {
+      white-space: nowrap;
+      /* maxHeight is set to 40 pixels to hide the rest of the text */
+      max-height: 40px;
+      &[data-open="true"] {
+        white-space: pre-wrap;
+        max-height: none;
+      }
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: max-height 0.7s ease-in;
-    margin: auto 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: max-height 0.7s ease-in;
+      margin: auto 0;
+    }
   }
 `;
 
@@ -69,7 +74,7 @@ const Button = styled(ButtonV2)`
   }
 `;
 
-const LicenseDescription = ({ description, icon, children }: Props) => {
+const LicenseDescription = ({ description, icon, children, warningByline = false }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -79,14 +84,16 @@ const LicenseDescription = ({ description, icon, children }: Props) => {
   return (
     <StyledFigCaption>
       {icon}
-      <StyledDescription data-open={isOpen}>
-        <TextContent data-open={isOpen}>
+      <StyledDescription data-open={isOpen} data-warning={warningByline}>
+        <TextContent data-open={isOpen} data-warning={warningByline}>
           {description}
           {children}
         </TextContent>
-        <Button variant="link" onClick={handleToggle}>
-          {isOpen ? `${t("audio.readLessDescriptionLabel")}` : `${t("audio.readMoreDescriptionLabel")}`}
-        </Button>
+        {!warningByline && (
+          <Button variant="link" onClick={handleToggle}>
+            {isOpen ? `${t("audio.readLessDescriptionLabel")}` : `${t("audio.readMoreDescriptionLabel")}`}
+          </Button>
+        )}
       </StyledDescription>
     </StyledFigCaption>
   );

@@ -13,7 +13,6 @@ import { SafeLink } from "@ndla/safelink";
 
 interface Props {
   license: LicenseLocaleType;
-  asLink?: boolean;
 }
 
 const StyledSafeLink = styled(SafeLink)`

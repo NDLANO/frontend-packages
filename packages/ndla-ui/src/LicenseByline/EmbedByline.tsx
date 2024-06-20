@@ -133,7 +133,7 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
         {license ? (
           <>
             {" / "}
-            <LicenseLink license={license} asLink={!!license.url.length} />
+            <LicenseLink license={license} />
           </>
         ) : null}
       </>

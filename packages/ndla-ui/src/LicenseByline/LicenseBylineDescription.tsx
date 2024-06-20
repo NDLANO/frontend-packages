@@ -12,11 +12,6 @@ import { colors, spacing } from "@ndla/core";
 import LicenseBylineDescriptionList from "./LicenseBylineDescriptionList";
 
 const StyledModelPermission = styled.div`
-  svg {
-    width: 24px;
-    height: 24px;
-    margin-right: ${spacing.small};
-  }
   margin-top: ${spacing.xsmall};
   padding-top: ${spacing.nsmall};
   border-top: 2px solid ${colors.brand.light};

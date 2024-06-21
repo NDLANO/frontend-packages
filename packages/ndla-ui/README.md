@@ -49,7 +49,7 @@ const MyPage = ({ topicPath, topic, article }) => {
   return (
     <div>
       <Hero>
-        <OneColumn cssModifier="narrow">
+        <OneColumn>
           <div className="c-hero__content">
             <section>
               <Breadcrumb topicPath={topicPath} />
@@ -59,7 +59,7 @@ const MyPage = ({ topicPath, topic, article }) => {
         </OneColumn>
       </Hero>
       <div className="u-bg-lightblue">
-        <OneColumn cssModifier="narrow">
+        <OneColumn>
           <Article article={article} />
         </OneColumn>
       </div>

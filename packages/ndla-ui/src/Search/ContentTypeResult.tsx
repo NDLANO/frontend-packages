@@ -10,8 +10,8 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonV2 } from "@ndla/button";
 import { Additional, ChevronDown, ChevronUp } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
-import Tooltip from "@ndla/tooltip";
+import { SafeLink } from "@ndla/safelink";
+import { Tooltip } from "@ndla/tooltip";
 import {
   highlightStyle,
   noWidthhighlightStyle,
@@ -130,10 +130,10 @@ const ContentTypeResult = ({
 
             // Figure out highlighting by comparing path of link with keyboard navigated anchor
             const anchor =
-              keyboardPathNavigation instanceof HTMLElement &&
-              keyboardPathNavigation &&
-              keyboardPathNavigation.querySelector("a");
-            const anchorHref = anchor && anchor.getAttribute("href");
+              keyboardPathNavigation instanceof HTMLElement && keyboardPathNavigation
+                ? keyboardPathNavigation.querySelector("a")
+                : undefined;
+            const anchorHref = anchor?.getAttribute("href") ?? null;
             const shouldHighlight = isPathToHighlight(path, anchorHref);
 
             return (

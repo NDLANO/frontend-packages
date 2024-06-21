@@ -6,11 +6,10 @@
  *
  */
 
-import uniq from "lodash/uniq";
 import { useEffect, useState, useMemo, useRef } from "react";
 import styled from "@emotion/styled";
 import { colors, fonts, misc, utils } from "@ndla/core";
-import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { IFolder } from "@ndla/types-backend/myndla-api";
 import AddFolderButton from "./AddFolderButton";
 import ComboboxButton from "./ComboboxButton";
 import FolderItems from "./FolderItems";
@@ -18,6 +17,8 @@ import { flattenFolders, treestructureId } from "./helperFunctions";
 import { CommonTreeStructureProps, NewFolderInputFunc } from "./types";
 
 export const MAX_LEVEL_FOR_FOLDERS = 5;
+
+const uniq = <T,>(array: T[]): T[] => Array.from(new Set(array));
 
 const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
@@ -82,7 +83,7 @@ const TreeStructure = ({
 }: TreeStructureProps) => {
   const ref = useRef<HTMLButtonElement>(null);
 
-  const defaultSelectedFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
+  const defaultSelectedFolderId = defaultOpenFolders?.[defaultOpenFolders.length - 1];
 
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
 

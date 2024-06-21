@@ -7,17 +7,17 @@
  */
 
 import parse from "html-react-parser";
-import { MouseEventHandler, useMemo, useState } from "react";
+import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { utils } from "@ndla/core";
+import { colors, spacing, utils } from "@ndla/core";
 import { ExpandTwoArrows } from "@ndla/icons/action";
 import { ArrowCollapse, ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from "./types";
-import { Figure, FigureType } from "../Figure";
+import { Figure, FigureType, figureActionIndicatorStyle } from "../Figure";
 import Image, { ImageLink } from "../Image";
 import { EmbedByline } from "../LicenseByline";
 
@@ -30,6 +30,7 @@ interface Props {
   inGrid?: boolean;
   lang?: string;
   renderContext?: RenderContext;
+  children?: ReactNode;
 }
 
 export interface Author {
@@ -81,20 +82,25 @@ const getSizes = (size?: string, align?: string) => {
 };
 
 export const getFocalPoint = (data: ImageEmbedData) => {
-  const focalX = parseFloat(data.focalX ?? "");
-  const focalY = parseFloat(data.focalY ?? "");
-  if (!isNaN(focalX) && !isNaN(focalY)) {
+  const focalX = Number.parseFloat(data.focalX ?? "");
+  const focalY = Number.parseFloat(data.focalY ?? "");
+  if (!Number.isNaN(focalX) && !Number.isNaN(focalY)) {
     return { x: focalX, y: focalY };
   }
   return undefined;
 };
 
 export const getCrop = (data: ImageEmbedData) => {
-  const lowerRightX = parseFloat(data.lowerRightX ?? "");
-  const lowerRightY = parseFloat(data.lowerRightY ?? "");
-  const upperLeftX = parseFloat(data.upperLeftX ?? "");
-  const upperLeftY = parseFloat(data.upperLeftY ?? "");
-  if (!isNaN(lowerRightX) && !isNaN(lowerRightY) && !isNaN(upperLeftX) && !isNaN(upperLeftY)) {
+  const lowerRightX = Number.parseFloat(data.lowerRightX ?? "");
+  const lowerRightY = Number.parseFloat(data.lowerRightY ?? "");
+  const upperLeftX = Number.parseFloat(data.upperLeftX ?? "");
+  const upperLeftY = Number.parseFloat(data.upperLeftY ?? "");
+  if (
+    !Number.isNaN(lowerRightX) &&
+    !Number.isNaN(lowerRightY) &&
+    !Number.isNaN(upperLeftX) &&
+    !Number.isNaN(upperLeftY)
+  ) {
     return {
       startX: lowerRightX,
       startY: lowerRightY,
@@ -107,6 +113,23 @@ export const getCrop = (data: ImageEmbedData) => {
 
 const expandedSizes = "(min-width: 1024px) 1024px, 100vw";
 
+const StyledFigure = styled(Figure)`
+  &:hover {
+    [data-byline-button] {
+      background: ${colors.white};
+      svg {
+        transform: scale(1.2);
+      }
+    }
+  }
+  &[data-float="right"] {
+    float: right;
+  }
+  &[data-float="left"] {
+    float: left;
+  }
+`;
+
 const ImageEmbed = ({
   embed,
   previewAlt,
@@ -116,14 +139,21 @@ const ImageEmbed = ({
   lang,
   canonicalUrl,
   renderContext = "article",
+  children,
 }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
+  // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
+  // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
+  const [floatAttr, setFloatAttr] = useState<{ "data-float"?: string }>(() =>
+    inGrid && !embed.embedData.align ? {} : { "data-float": embed.embedData.align },
+  );
 
   const parsedDescription = useMemo(() => {
     if (embed.embedData.caption || renderContext === "article") {
       return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
-    } else if (embed.status === "success" && embed.data.caption.caption) {
+    }
+    if (embed.status === "success" && embed.data.caption.caption) {
       return parse(embed.data.caption.caption);
     }
   }, [embed, renderContext]);
@@ -147,10 +177,8 @@ const ImageEmbed = ({
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
   return (
-    <Figure
-      type={imageSizes ? undefined : figureType}
-      className={imageSizes ? `c-figure--${embedData.align} expanded` : ""}
-    >
+    <StyledFigure type={imageSizes ? undefined : figureType} {...floatAttr}>
+      {children}
       <ImageWrapper
         src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}
@@ -170,7 +198,17 @@ const ImageEmbed = ({
               size={embedData.size}
               expanded={!!imageSizes}
               bylineHidden={isBylineHidden}
-              onExpand={() => setImageSizes((p) => (p ? undefined : expandedSizes))}
+              onExpand={() => {
+                if (!imageSizes) {
+                  setImageSizes(expandedSizes);
+                  setTimeout(() => {
+                    setFloatAttr({});
+                  }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
+                } else {
+                  setImageSizes(undefined);
+                  setFloatAttr({ "data-float": embedData.align });
+                }
+              }}
               onHideByline={() => setIsBylineHidden((p) => !p)}
             />
           }
@@ -190,7 +228,7 @@ const ImageEmbed = ({
           {HeartButton && !isCopyrighted && <HeartButton embed={embed} />}
         </EmbedByline>
       )}
-    </Figure>
+    </StyledFigure>
   );
 };
 
@@ -236,31 +274,53 @@ interface ExpandButtonProps {
   onHideByline: MouseEventHandler<HTMLButtonElement>;
 }
 
+const BylineButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  padding: ${spacing.small};
+  transition: all 0.3s ease-out;
+  background: ${colors.background.default}20;
+  border: 0;
+
+  svg {
+    transition: transform 0.4s ease-out;
+    width: ${spacing.normal};
+    height: ${spacing.normal};
+    fill: ${colors.brand.primary};
+  }
+`;
+
 const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
   const { t } = useTranslation();
   if (isSmall(size)) {
     return (
       <button
         type="button"
-        className="c-figure__fullscreen-btn"
+        css={figureActionIndicatorStyle}
+        data-byline-button=""
         aria-label={t(`license.images.itemImage.zoom${expanded ? "Out" : ""}ImageButtonLabel`)}
         onClick={onExpand}
       >
         {expanded ? <ArrowCollapse /> : <ExpandTwoArrows />}
       </button>
     );
-  } else if (hideByline(size)) {
+  }
+  if (hideByline(size)) {
     return (
-      <button
+      <BylineButton
         type="button"
-        className="c-figure__show-byline-btn"
+        data-byline-button=""
         aria-label={t(`license.images.itemImage.${bylineHidden ? "expandByline" : "minimizeByline"}`)}
         onClick={onHideByline}
       >
         {bylineHidden ? <ChevronDown /> : <ChevronUp />}
-      </button>
+      </BylineButton>
     );
-  } else return null;
+  }
+  return null;
 };
 
 export default ImageEmbed;

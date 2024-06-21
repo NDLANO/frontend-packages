@@ -9,11 +9,11 @@
 import { ElementType, Fragment, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { fonts, mq, spacing, breakpoints, colors, spacingUnit } from "@ndla/core";
+import { fonts, mq, spacing, breakpoints, colors, spacingUnit, misc } from "@ndla/core";
 import { Spinner } from "@ndla/icons";
 import { ChevronRight } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
-import Tooltip from "@ndla/tooltip";
+import { SafeLink } from "@ndla/safelink";
+import { Tooltip } from "@ndla/tooltip";
 import { uuid } from "@ndla/util";
 
 interface ItemType {
@@ -68,7 +68,7 @@ const PillsWrapper = styled.div`
   background: ${colors.brand.greyLightest};
   margin-right: ${spacing.small};
   padding: 0 ${spacingUnit / 3}px;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   ${fonts.sizes("12px", "20px")};
   font-weight: ${fonts.weight.semibold};
 `;

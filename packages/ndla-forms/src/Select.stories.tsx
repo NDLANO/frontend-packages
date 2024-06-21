@@ -12,7 +12,6 @@ import { FieldErrorMessage } from "./FieldErrorMessage";
 import { FormControl } from "./FormControl";
 import { Label } from "./Label";
 import Select from "./Select";
-import { defaultParameters } from "../../../stories/defaults";
 
 const roleExamples = [
   "Opphaver",
@@ -41,7 +40,6 @@ export default {
   },
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta<typeof Select>;
 

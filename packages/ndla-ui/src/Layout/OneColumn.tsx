@@ -6,48 +6,38 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from "react";
-import BEMHelper from "react-bem-helper";
+import { ComponentPropsWithoutRef } from "react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { mq, spacing, breakpoints } from "@ndla/core";
 
-const classes = BEMHelper({
-  prefix: "o-",
-  name: "wrapper",
-  outputIsString: true,
-});
-
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
-  className?: string;
-  cssModifier?: string;
+interface Props extends ComponentPropsWithoutRef<"div"> {
   wide?: boolean;
-  noPadding?: boolean;
-  extraPadding?: boolean;
 }
 
-export const OneColumn = ({ children, className, cssModifier, wide, noPadding, extraPadding, ...rest }: Props) => {
-  const modifiers = [];
+const StyledOneColumn = styled.div`
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: ${spacing.nsmall};
+  padding-right: ${spacing.nsmall};
 
-  if (cssModifier) {
-    modifiers.push(cssModifier);
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    padding-left: ${spacing.normal};
+    padding-right: ${spacing.normal};
   }
-
-  if (wide) {
-    modifiers.push("wide");
+  &::after {
+    content: "" !important;
+    display: block !important;
+    clear: both !important;
   }
+`;
 
-  if (noPadding) {
-    modifiers.push("no-padding");
-  }
+const wideStyle = css`
+  max-width: 1150px;
+`;
 
-  if (extraPadding) {
-    modifiers.push("extra-padding");
-  }
-
-  return (
-    <div className={`${classes("", modifiers, className)}`} {...rest}>
-      {children}
-    </div>
-  );
-};
+export const OneColumn = ({ wide, ...rest }: Props) => <StyledOneColumn css={wide ? wideStyle : undefined} {...rest} />;
 
 export default OneColumn;

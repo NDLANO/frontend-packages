@@ -33,7 +33,12 @@ export interface Props {
 
 const StyledAccordionItem = styled(AccordionItem)`
   background-color: ${colors.background.lightBlue};
-  border: 1px solid ${colors.brand.tertiary};
+  border: 1px solid ${colors.brand.light};
+  border-radius: ${misc.borderRadius};
+  span {
+    ${fonts.size.text.content}
+    font-family: ${fonts.sans};
+  }
 `;
 
 const Wrapper = styled.div`
@@ -48,9 +53,6 @@ const GlossContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: ${spacing.nsmall};
-  span {
-    ${fonts.size.text.metaText.small};
-  }
   span[data-pinyin] {
     font-style: italic;
   }
@@ -116,11 +118,13 @@ const getFilteredExamples = (
       glossData?.examples?.map((examples, i) => {
         if (exampleIdsList.includes(i.toString())) {
           return examples.filter((e) => exampleLangsList.includes(e.language));
-        } else return [];
+        }
+        return [];
       }) ?? [];
     const examplesWithoutEmpty = filteredExamples.filter((el) => !!el.length);
     return examplesWithoutEmpty;
-  } else return glossData?.examples ?? [];
+  }
+  return glossData?.examples ?? [];
 };
 
 const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => {
@@ -162,13 +166,13 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                   <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
                 )}
               </GlossContainer>
-              {audio?.src && <SpeechControl src={audio.src} title={audio.title}></SpeechControl>}
+              {audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
             </Wrapper>
             {filteredExamples.length > 0 ? (
               <>
                 <StyledWrapper>
                   <span lang={title.language}>{title.title}</span>
-                  <StyledTrigger data-styled-trigger>
+                  <StyledTrigger data-styled-trigger aria-label={t("gloss.examples")}>
                     <StyledChevron />
                   </StyledTrigger>
                 </StyledWrapper>
@@ -181,7 +185,6 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
                           example={example}
                           originalLanguage={glossData.originalLanguage}
                           index={innerIndex}
-                          lastExampleIndex={examples.length - 1}
                         />
                       ))}
                     </div>

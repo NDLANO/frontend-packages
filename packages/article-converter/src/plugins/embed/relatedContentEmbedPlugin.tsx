@@ -13,6 +13,6 @@ import { PluginType } from "../types";
 
 export const relatedContentEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as RelatedContentMetaData;
+  const data = JSON.parse(props["data-json"] as string) as RelatedContentMetaData;
   return <RelatedContentEmbed embed={data} subject={opts.subject} ndlaFrontendDomain={opts.frontendDomain} />;
 };

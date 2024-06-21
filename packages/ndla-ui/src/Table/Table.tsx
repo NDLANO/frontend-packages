@@ -6,7 +6,7 @@
  *
  */
 
-import throttle from "lodash/throttle";
+import throttle from "lodash.throttle";
 import { ReactNode, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
@@ -173,6 +173,17 @@ export const TableStyling = css`
     display: table-cell;
     padding: ${spacing.xsmall} ${spacing.small};
 
+    &[data-align="center"] {
+      text-align: center;
+    }
+
+    &[data-align="right"] {
+      text-align: right;
+    }
+
+    &[data-align="left"] {
+      text-align: left;
+    }
     p {
       margin: 0;
     }
@@ -191,7 +202,7 @@ export const TableStyling = css`
     padding: 0 0 0 ${spacing.nsmall};
   }
 
-  .c-figure {
+  figure {
     margin: 0;
     padding: 0;
     width: 100% !important;

@@ -8,15 +8,11 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import ProgrammeCard from "./ProgrammeCard";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/ProgrammeCard",
   component: ProgrammeCard,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {
     id: "test ID",
     title: { title: "Elektro og datateknologi", language: "nb" },

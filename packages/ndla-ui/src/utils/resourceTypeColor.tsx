@@ -23,8 +23,8 @@ export const resourceTypeColor = (type: string) => {
       return colors.tasksAndActivities.light;
     case contentTypes.ASSESSMENT_RESOURCES:
       return colors.assessmentResource.light;
-    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      return colors.externalLearningResource.light;
+    case contentTypes.CONCEPT:
+      return colors.concept.light;
     case contentTypes.SOURCE_MATERIAL:
       return colors.sourceMaterial.light;
     case contentTypes.LEARNING_PATH:
@@ -35,6 +35,8 @@ export const resourceTypeColor = (type: string) => {
     case resourceEmbedTypeMapping.video:
     case resourceEmbedTypeMapping.concept:
     case resourceEmbedTypeMapping.audio:
+      return colors.brand.greyLight;
+    case contentTypes.MISSING:
       return colors.brand.greyLight;
     default:
       return "";

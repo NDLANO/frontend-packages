@@ -18,6 +18,7 @@ import {
 } from "./brightcoveTypes";
 import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from "./campaignBlockTypes";
 import { CodeEmbedData, CodeMetaData } from "./codeTypes";
+import { CommentEmbedData, CommentMetaData } from "./commentTypes";
 import {
   ConceptListData,
   ConceptData,
@@ -30,6 +31,7 @@ import {
 } from "./conceptTypes";
 import { ContactBlockEmbedData, ContactBlockMetaData } from "./contactBlockTypes";
 import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from "./contentLinkTypes";
+import { CopyrightEmbedData, CopyrightMetaData } from "./copyrightTypes";
 import { OembedEmbedData, OembedMetaData, OembedData } from "./externalTypes";
 import { FileEmbedData, FileMetaData } from "./fileTypes";
 import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from "./footnoteTypes";
@@ -70,7 +72,9 @@ export type EmbedData =
   | ContactBlockEmbedData
   | CampaignBlockEmbedData
   | LinkBlockEmbedData
-  | UuDisclaimerEmbedData;
+  | UuDisclaimerEmbedData
+  | CopyrightEmbedData
+  | CommentEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -91,7 +95,9 @@ export type EmbedMetaData =
   | ContactBlockMetaData
   | CampaignBlockMetaData
   | LinkBlockMetaData
-  | UuDisclaimerMetaData;
+  | UuDisclaimerMetaData
+  | CopyrightMetaData
+  | CommentMetaData;
 
 export type {
   ConceptMetaData,
@@ -112,6 +118,8 @@ export type {
   CampaignBlockMetaData,
   LinkBlockMetaData,
   UuDisclaimerMetaData,
+  CopyrightMetaData,
+  CommentMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -132,6 +140,8 @@ export type {
   CampaignBlockEmbedData,
   LinkBlockEmbedData,
   UuDisclaimerEmbedData,
+  CopyrightEmbedData,
+  CommentEmbedData,
 };
 
 export type { BlogPostMeta };

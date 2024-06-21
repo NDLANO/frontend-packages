@@ -6,7 +6,7 @@
  *
  */
 
-export { default as ImageEmbed } from "./ImageEmbed";
+export { default as ImageEmbed, getCrop, getFocalPoint } from "./ImageEmbed";
 export { default as AudioEmbed } from "./AudioEmbed";
 export { default as H5pEmbed } from "./H5pEmbed";
 export { default as ExternalEmbed } from "./ExternalEmbed";
@@ -21,4 +21,6 @@ export { default as ConceptListEmbed } from "./ConceptListEmbed";
 export { default as UnknownEmbed } from "./UnknownEmbed";
 export { InlineConcept, BlockConcept } from "./ConceptEmbed";
 export { default as UuDisclaimerEmbed } from "./UuDisclaimerEmbed";
+export { default as CopyrightEmbed } from "./CopyrightEmbed";
+export { default as CodeEmbed } from "./CodeEmbed";
 export type { HeartButtonType, CanonicalUrlFuncs, RenderContext } from "./types";

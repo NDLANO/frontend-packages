@@ -9,15 +9,11 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { ButtonV2 } from "@ndla/button";
 import Tooltip from "./Tooltip";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {
     children: "Button",
     tooltip: "Tooltip",

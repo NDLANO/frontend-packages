@@ -13,6 +13,6 @@ import { PluginType } from "../types";
 
 export const audioEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as AudioMetaData;
+  const data = JSON.parse(props["data-json"] as string) as AudioMetaData;
   return <AudioEmbed embed={data} heartButton={opts.components?.heartButton} lang={opts.articleLanguage} />;
 };

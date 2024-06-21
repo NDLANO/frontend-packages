@@ -7,12 +7,10 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { defaultParameters } from "../defaults";
 import { StoryBody, StoryIntro } from "../wrappers";
 
 const meta: Meta = {
   title: "Base styles/Quotations",
-  parameters: defaultParameters,
 };
 
 export default meta;
@@ -26,7 +24,7 @@ export const Quotations: StoryFn = () => (
       </p>
     </StoryIntro>
     <StoryBody>
-      <h2 className="u-heading">Eksempel på blokksitat</h2>
+      <h2>Eksempel på blokksitat</h2>
       <blockquote>
         Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne, og hun viser oss at det å tre ut av den
         typiske sildestimen alle absolutt skal følge, er kult. <br />

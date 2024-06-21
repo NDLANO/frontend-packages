@@ -13,7 +13,7 @@ import { PluginType } from "../types";
 
 export const imageEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as ImageMetaData;
+  const data = JSON.parse(props["data-json"] as string) as ImageMetaData;
   const inGrid = (element.parentNode?.parentNode as Element)?.attribs?.["data-type"] === "grid";
 
   return (

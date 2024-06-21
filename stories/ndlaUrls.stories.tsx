@@ -7,12 +7,15 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
+import { SafeLink } from "@ndla/safelink";
 import { Logo, OneColumn, PageContainer } from "@ndla/ui";
-import SafeLink from "@ndla/safelink";
 import { StoryBody } from "./wrappers";
 
 export default {
   title: "NDLA urls",
+  parameters: {
+    layout: "fullscreen",
+  },
 } as Meta;
 
 export const NDLAUrls: StoryFn = () => (

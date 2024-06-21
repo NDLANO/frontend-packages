@@ -9,7 +9,7 @@
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 import { ChevronRight, Home } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import Breadcrumb from "./Breadcrumb";
 import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from "./BreadcrumbItem";
 

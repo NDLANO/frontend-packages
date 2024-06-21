@@ -7,10 +7,11 @@
  */
 
 import { ReactNode } from "react";
-import { css } from "@emotion/react";
+import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { CloseButton } from "@ndla/button";
+import { IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 import { Forward } from "@ndla/icons/common";
 
 type MessageBoxType = "ghost" | "danger" | "info";
@@ -26,9 +27,11 @@ interface MessageBoxProps {
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
+  contentEditable?: boolean;
 }
 
 const MessageBoxWrapper = styled.div`
+  position: relative;
   display: flex;
   padding: ${spacing.small};
   font-family: ${fonts.sans};
@@ -85,13 +88,16 @@ const Link = styled.a`
   font-weight: ${fonts.weight.semibold};
 `;
 
-const StyledClosebutton = styled(CloseButton)`
-  padding: 0;
+const StyledCloseButton = styled(IconButtonV2)`
+  position: absolute;
+  top: ${spacing.xsmall};
+  right: ${spacing.xsmall};
 `;
 
-export const MessageBox = ({ type, children, links, showCloseButton, onClose }: MessageBoxProps) => {
+export const MessageBox = ({ type, children, links, showCloseButton, onClose, contentEditable }: MessageBoxProps) => {
+  const { t } = useTranslation();
   return (
-    <MessageBoxWrapper data-type={type}>
+    <MessageBoxWrapper data-type={type} contentEditable={contentEditable ?? undefined}>
       <InfoWrapper>
         <div>
           <ChildrenWrapper>{children}</ChildrenWrapper>
@@ -107,7 +113,11 @@ export const MessageBox = ({ type, children, links, showCloseButton, onClose }: 
           )}
         </div>
       </InfoWrapper>
-      {showCloseButton && <StyledClosebutton onClick={onClose} />}
+      {showCloseButton && (
+        <StyledCloseButton variant="ghost" aria-label={t("close")} title={t("close")} onClick={onClose}>
+          <Cross />
+        </StyledCloseButton>
+      )}
     </MessageBoxWrapper>
   );
 };

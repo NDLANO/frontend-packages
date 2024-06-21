@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, SVGAttributes, useMemo } from "react";
+import { ReactNode, SVGAttributes } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { spacing } from "@ndla/core";
@@ -16,7 +16,6 @@ export interface Props extends SVGAttributes<SVGSVGElement> {
   description?: string;
   children?: ReactNode;
   size?: keyof typeof sizes;
-  ariaHidden?: boolean;
 }
 
 const StyledIcon = styled.svg`
@@ -52,19 +51,15 @@ const sizes = {
 
 const IconBase = ({
   children,
-  color,
   size = "nsmall",
-  style,
   role,
   title,
   description,
   width,
   height,
-  ariaHidden = true,
+  "aria-hidden": ariaHidden = true,
   ...props
 }: Props) => {
-  const styleObj = useMemo(() => ({ color, ...style }), [color, style]);
-
   return (
     <StyledIcon
       css={sizes[size]}
@@ -74,7 +69,6 @@ const IconBase = ({
       preserveAspectRatio="xMidYMid meet"
       role={role}
       {...props}
-      style={styleObj}
     >
       {title && <title>{title}</title>}
       {description && <desc>{description}</desc>}

@@ -6,19 +6,17 @@
  *
  */
 
+import parse from "html-react-parser";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { HeadingLevel } from "@ndla/typography";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 export interface Props {
-  title: {
-    title: string;
-    language: string;
-  };
+  title: string;
   author?: string;
   url: string;
   headingLevel?: HeadingLevel;
@@ -31,6 +29,7 @@ export interface Props {
 }
 
 const Container = styled(SafeLink)`
+  margin: 0 0 ${spacing.normal} 0;
   display: flex;
   flex-direction: column;
   color: ${colors.text.primary};
@@ -85,12 +84,13 @@ const StyledImg = styled.img`
 const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = "h3", size = "normal", path }: Props) => {
   const { t } = useTranslation();
   const href = getPossiblyRelativeUrl(url, path);
+  const imageWidth = size === "large" ? 532 : 350;
   return (
     <Container data-size={size} to={href}>
-      <Heading className="blog-title" css={headingCss} lang={title.language === "nb" ? "no" : title.language}>
-        {title.title}
+      <Heading className="blog-title" css={headingCss}>
+        {parse(title)}
       </Heading>
-      <StyledImg src={metaImage.url} alt={metaImage.alt} />
+      <StyledImg src={`${metaImage.url}?width=${imageWidth}`} alt={metaImage.alt} />
       {!!author && <AuthorContainer aria-label={t("article.writtenBy", { authors: author })}>{author}</AuthorContainer>}
     </Container>
   );

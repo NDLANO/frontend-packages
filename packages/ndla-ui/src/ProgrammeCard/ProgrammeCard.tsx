@@ -8,7 +8,7 @@
 
 import styled from "@emotion/styled";
 import { spacing, colors, misc, breakpoints, mq, fonts } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 
 interface Image {
   src: string;

@@ -12,7 +12,6 @@ import { MetaData } from ".";
 export type BlogPostEmbedData = {
   resource: "blog-post";
   imageId: string;
-  language: string;
   title: string;
   size?: "normal" | "large";
   author?: string;

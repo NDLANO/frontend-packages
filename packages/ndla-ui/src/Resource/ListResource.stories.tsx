@@ -10,16 +10,12 @@ import styled from "@emotion/styled";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import ListResource from "./ListResource";
 import { StoryResourceMenu, resourceTypesArr } from "./storyComponents";
-import { defaultParameters } from "../../../../stories/defaults";
 import { spacing } from "../../../core/src";
 
 export default {
   title: "My NDLA/ListResource",
   component: ListResource,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   argTypes: {
     resourceImage: {
       control: false,
@@ -68,6 +64,14 @@ export const WithOverflowingDescription: StoryObj<typeof ListResource> = {
 export const WithMenu: StoryObj<typeof ListResource> = {
   args: {
     menu: <StoryResourceMenu />,
+  },
+};
+
+export const WithUnavailableResource: StoryObj<typeof ListResource> = {
+  args: {
+    title: "Ressurs ikke tilgjengelig",
+    resourceTypes: [],
+    resourceImage: { src: "", alt: "" },
   },
 };
 

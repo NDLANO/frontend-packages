@@ -12,7 +12,7 @@ import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 import { Cross as CrossIcon } from "@ndla/icons/action";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { Heading, Text } from "@ndla/typography";
 import Controls from "./Controls";
 import SpeechControl from "./SpeechControl";
@@ -120,7 +120,7 @@ const TextVersionHeading = styled(Heading)`
 const LinkButton = styled(ButtonV2)`
   box-shadow: none;
   padding-left: 0;
-  padding-right: 4px;
+  padding-right: ${spacing.xxsmall};
   min-height: ${spacing.medium};
   flex: 0 0 auto;
   &:hover,
@@ -200,7 +200,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
         <TextWrapper data-has-image={!!img}>
           <TitleWrapper>
             <div>
-              {subtitle && subtitle.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
+              {subtitle?.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
               <Title element="h3" headingStyle="h4" margin="none" data-has-desc={!!description}>
                 {title}
               </Title>

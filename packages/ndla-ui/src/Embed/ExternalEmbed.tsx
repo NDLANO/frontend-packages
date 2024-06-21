@@ -19,7 +19,7 @@ interface Props {
   isConcept?: boolean;
 }
 
-const StyledFigure = styled.figure`
+const StyledFigure = styled(Figure)`
   iframe {
     height: auto;
   }
@@ -30,9 +30,9 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
   const figRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const iframe = figRef.current?.querySelector(`iframe`);
+    const iframe = figRef.current?.querySelector("iframe");
     if (iframe) {
-      const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
+      const [width, height] = [Number.parseInt(iframe.width), Number.parseInt(iframe.height)];
       iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
       iframe.width = "";
       iframe.height = "";
@@ -62,16 +62,10 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
     );
   }
 
-  const fullColumnClass = isConcept ? "c-figure--full-column" : "";
-  const classes = `c-figure ${fullColumnClass} c-figure--resize`;
-
   return (
     <StyledFigure
       ref={figRef}
-      className={classes}
-      //@ts-ignore
-      // eslint-disable-next-line react/no-unknown-property
-      resizeiframe="true"
+      type={isConcept ? "full-column" : undefined}
       dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }}
     />
   );

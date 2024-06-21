@@ -7,7 +7,6 @@
  */
 
 import parse from "html-react-parser";
-import sortBy from "lodash/sortBy";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
@@ -35,22 +34,19 @@ const BrightcoveIframe = styled.iframe`
   height: auto;
 `;
 
-export const makeIframeString = (url: string, width: string | number, height: string | number, title: string = "") => {
+export const makeIframeString = (url: string, width: string | number, height: string | number, title = "") => {
   const strippedWidth = typeof width === "number" ? width : width.replace(/\s*px/, "");
   const strippedHeight = typeof height === "number" ? height : height.replace(/\s*px/, "");
   const urlOrTitle = title || url;
   return `<iframe title="${urlOrTitle}" aria-label="${urlOrTitle}" src="${url}" width="${strippedWidth}" height="${strippedHeight}" allowfullscreen scrolling="no" frameborder="0" loading="lazy"></iframe>`;
 };
 
-export const isNumeric = (value: any) => !Number.isNaN(value - parseFloat(value));
+export const isNumeric = (value: any) => !Number.isNaN(value - Number.parseFloat(value));
 
 const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSource[]) => {
   const { account, videoid, player = "default" } = data;
 
-  const source = sortBy(
-    sources.filter((s) => s.width && s.height),
-    (s) => s.height,
-  )[0];
+  const source = sources.filter((s) => s.width && s.height).toSorted((a, b) => a!.height! - b.height!)[0];
 
   return {
     src: `https://players.brightcove.net/${account}/${player}_default/index.html?videoId=${videoid}`,
@@ -105,7 +101,7 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderCon
     : undefined;
 
   return (
-    <Figure type={isConcept ? "full-column" : "full"} resizeIframe>
+    <Figure type={isConcept ? "full-column" : "full"}>
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}

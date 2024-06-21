@@ -5,10 +5,10 @@ $mq-breakpoints: (
   tabletWide: 768px,
   desktop: 981px,
   wide: 1301px,
-  ultraWide: 1601px
+  ultraWide: 1601px,
 );
 
-@import '~sass-mq/mq';
+@import "sass-mq/mq";
 
 // expose breakpoints to js
 
@@ -16,18 +16,18 @@ body:before {
   display: none;
 
   @include mq(mobile) {
-    content: 'mobile';
+    content: "mobile";
   }
 
   @include mq(tablet) {
-    content: 'tablet';
+    content: "tablet";
   }
 
   @include mq(desktop) {
-    content: 'desktop';
+    content: "desktop";
   }
 
   @include mq(wide) {
-    content: 'wide';
+    content: "wide";
   }
 }

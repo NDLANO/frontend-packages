@@ -6,7 +6,6 @@
  *
  */
 
-import concat from "lodash/concat";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
@@ -14,7 +13,7 @@ import styled from "@emotion/styled";
 import { spacing, fonts, colors, mq, breakpoints, misc } from "@ndla/core";
 import { BlobPointy, BlobRound } from "@ndla/icons/common";
 import { COPYRIGHTED, getLicenseByAbbreviation } from "@ndla/licenses";
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { IAuthor, IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { CanonicalUrlFuncs } from "../Embed";
 import { errorSvgSrc } from "../Embed/ImageEmbed";
 import Image, { ImageLink } from "../Image";
@@ -120,6 +119,10 @@ const blobStyling = css`
   width: 165px;
   height: 180px;
   transform: translate(10%, 0);
+  color: ${colors.support.redLight};
+  &[data-green="true"] {
+    color: ${colors.support.greenLight};
+  }
 `;
 const Email = styled.div`
   white-space: nowrap;
@@ -160,7 +163,9 @@ const ContactBlock = ({
   const { t, i18n } = useTranslation();
   const isGreenBlob = blobColor === "green";
   const Blob = blob === "pointy" ? BlobPointy : BlobRound;
-  const authors = concat(image?.copyright.processors, image?.copyright.creators, image?.copyright.rightsholders);
+  const authors = [image?.copyright.processors, image?.copyright.creators, image?.copyright.rightsholders]
+    .filter((authors) => !!authors?.length)
+    .reduce<IAuthor[]>((acc, val) => acc.concat(val!), []);
   const license = image?.copyright
     ? getLicenseByAbbreviation(image.copyright.license.license, i18n.language)
     : undefined;
@@ -199,7 +204,7 @@ const ContactBlock = ({
             </StyledText>
           </InfoWrapper>
           <BlobWrapper>
-            <Blob css={blobStyling} color={isGreenBlob ? colors.support.greenLight : colors.support.redLight} />
+            <Blob css={blobStyling} data-green={isGreenBlob} />
           </BlobWrapper>
         </TextWrapper>
         <SummaryBlock>{description}</SummaryBlock>

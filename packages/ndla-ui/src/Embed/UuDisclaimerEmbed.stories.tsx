@@ -11,9 +11,11 @@ import { UuDisclaimerEmbedData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
+import { ArticleWrapper } from "../Article";
+import CopyParagraphButton from "../CopyParagraphButton";
 import FactBox from "../FactBox";
 import FramedContent from "../FramedContent";
+import LayoutItem, { OneColumn } from "../Layout";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
@@ -27,18 +29,17 @@ const meta: Meta<typeof UuDisclaimerEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
-        <article className="c-article c-article--clean">
-          <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+      <OneColumn>
+        <ArticleWrapper modifier="clean">
+          <LayoutItem layout="center">
             <section>
               <Story />
             </section>
-          </section>
-        </article>
-      </div>
+          </LayoutItem>
+        </ArticleWrapper>
+      </OneColumn>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;
@@ -179,6 +180,22 @@ export const WithFactBox: StoryObj<typeof UuDisclaimerEmbed> = {
       <FactBox>
         <p>Dette er faktaboks</p>
       </FactBox>
+    ),
+  },
+};
+
+export const WithCopyParagraphLink: StoryObj<typeof UuDisclaimerEmbed> = {
+  args: {
+    embed: {
+      resource: "uu-disclaimer",
+      status: "success",
+      embedData: embedData,
+      data: {},
+    },
+    children: (
+      <CopyParagraphButton copyText="Dette er en overskrift" lang="no">
+        <h2>Dette er en overskrift</h2>
+      </CopyParagraphButton>
     ),
   },
 };

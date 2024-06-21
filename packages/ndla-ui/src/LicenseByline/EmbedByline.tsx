@@ -13,6 +13,7 @@ import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
+import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
 import { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import { ICopyright as ImageCopyright } from "@ndla/types-backend/image-api";
@@ -62,7 +63,18 @@ interface ConceptProps extends BaseProps {
   copyright: ConceptCopyright | undefined;
 }
 
-export type EmbedBylineTypeProps = ImageProps | BrightcoveProps | AudioProps | PodcastProps | ConceptProps;
+interface CopyrightProps extends BaseProps {
+  type: "copyright";
+  copyright: ArticleCopyright | undefined;
+}
+
+export type EmbedBylineTypeProps =
+  | ImageProps
+  | BrightcoveProps
+  | AudioProps
+  | PodcastProps
+  | ConceptProps
+  | CopyrightProps;
 
 type Props = EmbedBylineTypeProps | EmbedBylineErrorProps;
 

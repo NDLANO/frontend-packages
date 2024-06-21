@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { Heading, HeadingLevel, Text } from "@ndla/typography";
 import ContentTypeBadge from "../ContentTypeBadge";
 import { contentTypes } from "../model/ContentType";
@@ -58,7 +58,7 @@ const colorMap = {
   [contentTypes.SUBJECT_MATERIAL]: colors.subjectMaterial.light,
   [contentTypes.TASKS_AND_ACTIVITIES]: colors.tasksAndActivities.background,
   [contentTypes.ASSESSMENT_RESOURCES]: colors.assessmentResource.background,
-  [contentTypes.EXTERNAL_LEARNING_RESOURCES]: colors.externalLearningResource.background,
+  [contentTypes.CONCEPT]: colors.concept.light,
   [contentTypes.SOURCE_MATERIAL]: colors.sourceMaterial.light,
   [contentTypes.LEARNING_PATH]: colors.learningPath.background,
   [contentTypes.SUBJECT]: colors.subject.light,

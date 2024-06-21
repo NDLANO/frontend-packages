@@ -10,7 +10,7 @@ import { ElementType, ReactNode } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors } from "@ndla/core";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { stepNumbers } from "./pagerHelpers";
 
 const createQueryString = (obj: Query) =>
@@ -26,7 +26,7 @@ const pageItemActiveStyle = css`
   background-color: "rgba(222,235,246,0.5)";
 `;
 
-const pageItemStyle = (small: boolean = false, color: ColorTheme) => css`
+const pageItemStyle = (small = false, color: ColorTheme) => css`
   display: inline;
   background: transparent;
   border: 0;

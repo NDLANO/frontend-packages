@@ -6,7 +6,5 @@
  *
  */
 
-import { VideoSearch } from "./VideoSearch";
 export type { VideoQueryType } from "./VideoSearch";
-
-export default VideoSearch;
+export { VideoSearch } from "./VideoSearch";

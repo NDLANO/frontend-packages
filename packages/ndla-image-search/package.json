@@ -1,6 +1,6 @@
 {
   "name": "@ndla/image-search",
-  "version": "6.0.174",
+  "version": "9.0.5",
   "description": "A simple library for searching images from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,26 +26,25 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^12.0.34",
-    "@ndla/core": "^4.4.1",
-    "@ndla/forms": "^6.0.1",
-    "@ndla/icons": "^5.0.11",
-    "@ndla/pager": "^2.2.59",
-    "@ndla/ui": "^50.9.19",
+    "@ndla/button": "^13.0.4",
+    "@ndla/core": "^5.0.1",
+    "@ndla/forms": "^8.0.4",
+    "@ndla/icons": "^6.1.7",
+    "@ndla/pager": "^3.0.13",
+    "@ndla/ui": "^54.0.3",
     "@ndla/util": "^4.0.4",
     "pretty-bytes": "^5.6.0"
   },
   "devDependencies": {
-    "@ndla/types-backend": "^0.2.21"
+    "@ndla/types-backend": "^0.2.82"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "i18next": ">= 23.0.0",
-    "lodash": ">= 4.0.0",
+    "i18next": ">= 23.11.5",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",
-    "react-i18next": ">= 13.0.0",
+    "react-i18next": ">= 14.1.1",
     "react-router-dom": ">= 6.0.0"
   },
   "publishConfig": {

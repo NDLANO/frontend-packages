@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { spacing } from "@ndla/core";
 import { InformationOutline } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { UuDisclaimerMetaData } from "@ndla/types-embed";
 import { MessageBox } from "../Messages";
 interface Props {
@@ -58,7 +58,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
 
   return (
     <DisclaimerWrapper role="region">
-      <StyledMessageBox type="info">
+      <StyledMessageBox type="info" contentEditable={false}>
         <InformationOutline />
         <Disclaimer>
           {embedData.disclaimer}

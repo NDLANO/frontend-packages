@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import styled from "@emotion/styled";
 import { spacing, colors, breakpoints, mq, stackOrder } from "@ndla/core";
 import { Text } from "@ndla/typography";
@@ -22,7 +22,7 @@ import {
 import ContentLoader from "../ContentLoader";
 import ContentTypeBadge from "../ContentTypeBadge";
 import Image from "../Image";
-import { contentTypeMapping, resourceEmbedTypeMapping } from "../model/ContentType";
+import { contentTypeMapping, MISSING, resourceEmbedTypeMapping } from "../model/ContentType";
 
 const ListResourceWrapper = styled.div`
   flex: 1;
@@ -142,11 +142,10 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType, backgrou
           <ContentTypeBadge type={contentType} background={background} size="x-small" />
         </ContentIconWrapper>
       );
-    } else {
-      return (
-        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === "compact" ? 56 : 136} />
-      );
     }
+    return (
+      <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === "compact" ? 56 : 136} />
+    );
   }
 
   return (
@@ -228,6 +227,13 @@ const ListResource = ({
   const firstContentType = resourceTypes?.[0]?.id ?? "";
   const embedResourceType = resourceEmbedTypeMapping[firstContentType];
 
+  const contentType = useMemo(() => {
+    if (!firstContentType) {
+      return MISSING;
+    }
+    return contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping.default;
+  }, [embedResourceType, firstContentType]);
+
   return (
     <ListResourceWrapper id={id}>
       <ImageWrapper imageSize={imageType} data-image-size={imageType}>
@@ -236,12 +242,17 @@ const ListResource = ({
           loading={isLoading}
           type={imageType}
           background={!!embedResourceType}
-          contentType={contentTypeMapping[firstContentType] ?? embedResourceType ?? contentTypeMapping["default"]}
+          contentType={contentType}
         />
       </ImageWrapper>
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
-          <StyledLink to={link} data-link="" target={targetBlank ? "_blank" : undefined}>
+          <StyledLink
+            to={link}
+            data-link=""
+            target={targetBlank ? "_blank" : undefined}
+            data-resource-available={contentType !== MISSING}
+          >
             <Text element="span" textStyle="label-small" css={resourceHeadingStyle} title={title}>
               {title}
             </Text>

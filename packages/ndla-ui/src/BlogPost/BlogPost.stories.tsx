@@ -8,10 +8,9 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import BlogPost, { Props } from "./BlogPost";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const args: Props = {
-  title: { title: "Min bloggpost", language: "nb-no" },
+  title: "Min bloggpost",
   author: "Ola Nordmann",
   url: "#",
   headingLevel: "h3",
@@ -26,9 +25,6 @@ export default {
   title: "Components/Blog Post",
   component: BlogPost,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: args,
 } as Meta<typeof BlogPost>;
 

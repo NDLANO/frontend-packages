@@ -11,9 +11,9 @@ import { KeyFigureMetaData } from "@ndla/types-embed";
 import { KeyFigure } from "@ndla/ui";
 import { PluginType } from "../types";
 
-export const keyFigureEmbedPlugin: PluginType = (element, _, opts) => {
+export const keyFigureEmbedPlugin: PluginType = (element, _) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as KeyFigureMetaData;
+  const data = JSON.parse(props["data-json"] as string) as KeyFigureMetaData;
   const { title, subtitle, alt } = data.embedData;
   return (
     <KeyFigure
@@ -27,7 +27,6 @@ export const keyFigureEmbedPlugin: PluginType = (element, _, opts) => {
             }
           : undefined
       }
-      lang={opts.articleLanguage}
     />
   );
 };

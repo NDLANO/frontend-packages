@@ -11,11 +11,11 @@ import styled from "@emotion/styled";
 import { breakpoints, colors, mq, spacing, spacingUnit } from "@ndla/core";
 import {
   ASSESSMENT_RESOURCES,
-  EXTERNAL_LEARNING_RESOURCES,
   SOURCE_MATERIAL,
   SUBJECT,
   SUBJECT_MATERIAL,
   TASKS_AND_ACTIVITIES,
+  CONCEPT,
 } from "../model/ContentType";
 
 const StyledDiv = styled.div`
@@ -44,10 +44,6 @@ const StyledDiv = styled.div`
     background-color: ${colors.subject.light};
   }
 
-  &[data-contenttype="external-learning-resources"] {
-    background-color: ${colors.externalLearningResource.background};
-  }
-
   &[data-contenttype="source-material"] {
     background-color: ${colors.sourceMaterial.light};
   }
@@ -60,6 +56,10 @@ const StyledDiv = styled.div`
     min-height: unset;
     padding-bottom: unset;
     background-color: ${colors.background.lightBlue};
+  }
+
+  &[data-contenttype="concept"] {
+    background-color: ${colors.concept.light};
   }
 
   &[data-contenttype="ndla-film has-image"],
@@ -84,7 +84,7 @@ const StyledDiv = styled.div`
     }
 
     ${mq.range({ until: breakpoints.tablet })} {
-      + div article.c-article {
+      + div article[data-ndla-article] {
         background: ${colors.white};
         margin: 0 -${spacing.normal};
         padding: ${spacing.large} ${spacing.normal} ${spacing.normal} ${spacing.normal};
@@ -98,14 +98,14 @@ export type HeroContentType =
   | "tasks-and-activities"
   | "assessment-resources"
   | "subject"
-  | "external-learning-resources"
   | "source-material"
   | "learning-path"
   | "topic"
   | "beta"
   | "ndla-film"
   | "ndla-film has-image"
-  | "frontpage-article";
+  | "frontpage-article"
+  | "concept";
 
 interface HeroProps extends HTMLAttributes<HTMLDivElement> {
   contentType?: HeroContentType;
@@ -122,10 +122,8 @@ export const SubjectMaterialHero = (props: Props) => <Hero contentType={SUBJECT_
 export const TasksAndActivitiesHero = (props: Props) => <Hero contentType={TASKS_AND_ACTIVITIES} {...props} />;
 export const AssessmentResourcesHero = (props: Props) => <Hero contentType={ASSESSMENT_RESOURCES} {...props} />;
 export const SubjectHero = (props: Props) => <Hero contentType={SUBJECT} {...props} />;
-export const ExternalLearningResourcesHero = (props: Props) => (
-  <Hero contentType={EXTERNAL_LEARNING_RESOURCES} {...props} />
-);
 export const SourceMaterialHero = (props: Props) => <Hero contentType={SOURCE_MATERIAL} {...props} />;
+export const ConceptHero = (props: Props) => <Hero contentType={CONCEPT} {...props} />;
 export const NdlaFilmHero = ({ hasImage, ...rest }: Props) => (
   <Hero {...rest} contentType={hasImage ? "ndla-film has-image" : "ndla-film"} />
 );

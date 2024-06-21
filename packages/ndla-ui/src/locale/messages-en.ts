@@ -9,7 +9,7 @@
 import { contributorTypes } from "@ndla/licenses";
 import constants from "../model";
 
-export const { subjectCategories, subjectTypes, wordClass } = constants;
+const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = " - NDLA";
 
@@ -99,6 +99,10 @@ const messages = {
   },
   movedResourcePage: {
     title: "The page has been moved, but you can find it here:",
+  },
+  unpublishedResourcePage: {
+    title: "Resource is unpublished",
+    errorDescription: "The resource you are looking for has been unpublished.",
   },
   lti: {
     embed: "Embed",
@@ -283,7 +287,7 @@ const messages = {
     resources: "This is not a complete course, but a collection of resources we hope you will find useful.",
     subjectOutdated: "This course is not updated to the current curriculum.",
     subjectFuture: "This course is for a future curriculum.",
-    subjectBeta: "This course is in beta. New resources are being added continously.",
+    subjectBeta: "This course is under development. New resources are being added continously.",
     newVersion:
       "This learning resource is not updated to the current curriculum. You can find an updated version here: ",
     frontPageBeta:
@@ -453,6 +457,7 @@ const messages = {
       description: "Remember that built-in content might have a different license than the gloss text",
       rules: "Rules for use of gloss:",
       title: "Title",
+      showOrHideExamples: "Show or hide examples",
       embedlink: {
         heading: "How to show the gloss in other content",
         description: "This url shows the gloss without menu and footer",
@@ -508,13 +513,15 @@ const messages = {
     aboutNDLA: "About NDLA",
     socialMedia: "Social media",
     selectLanguage: "Choose language (språk): ",
-    info: "This webapplication is developed by NDLA as Open Source code.",
+    info: "This webapplication is developed as Open Source code.",
     editorInChief: "Editor in chief:",
-    linksHeader: "Other NDLA sites",
+    linksHeader: "Contact",
     availabilityLink: "Availability statement",
     privacyLink: "Privacy statement",
     cookiesLink: "Statement about cookies",
+    aboutWebsite: "About",
     vision: "We create the learning of the future together",
+    followUs: "Follow us",
     socialMediaLinks: {
       facebook: "NDLA on Facebook",
       facebookAria: "Visit NDLA on Facebook",
@@ -537,15 +544,17 @@ const messages = {
       tips: "Tips to students",
       vacancies: "Vacancies",
     },
+    otherLanguages: "Other languages",
   },
   contentTypes: {
     all: "All",
+    article: "Article",
     subject: "Subject",
     "topic-article": "Topic article",
+    learningpath: "Learning path",
     "learning-path": "Learning path",
     "subject-material": "Subject material",
     "tasks-and-activities": "Task and activities",
-    "external-learning-resources": "External learning resources",
     "source-material": "Source material",
     "assessment-resources": "Assessment resource",
     topic: "Topic",
@@ -768,6 +777,7 @@ const messages = {
   save: "Save",
   photo: "Photo",
   email: "Email",
+  finished: "Finished",
   image: {
     altText: "Alt-text",
     caption: "Caption",
@@ -929,29 +939,35 @@ const messages = {
       onDragEndMissingOver: "The folder {{name}} was dropped",
       onDragCancel: "Dragging was cancelled. The folder {{name}} was dropped",
       dragHandle: "Drag the folder {{name}}",
+      professional: "a professional",
       sharedWarning: "Name and description will be visible for everyone you share the folder with",
       sharing: {
         share: "Share folder",
         shared: "Shared",
+        sharedBy: "Shared by ",
+        sharedByAnonymous: "anonymous teacher",
         sharedFolder: "Shared folder",
         unShare: "Sharing stopped. The folder is no longer shared",
         copyLink: "Copy link to folder",
+        removeLink: "Remove link to folder",
         link: "Link is copied",
+        savedLink: "Link to {{ name }} has been added to My folders.",
+        unSavedLink: "Link to {{ name }} has been removed from My folders.",
         header: {
-          private: "Do you want to share this folder?",
           shared: "This folder is shared",
-          unShare: "Do you want to stop sharing this folder?",
         },
         description: {
           copy: "Press the link to copy",
           private:
             "When you share a folder, you create a link which is open to anyone who has the link. You can change the content or stop sharing whenever you want.",
-          private2:
-            "When you share a folder you share all content within the folder, including subfolders and resources",
           shared:
             "Now you can share this link to students or other teachers. If you make changes in the folder, they become visible to everybody you have shared the link with.",
-          unShare:
-            "When you stop sharing, the link to the shared folder and potential subfolders is no longer active. If you have shared the link with someone, they can no longer see the content in the folder. This also applies to potential subfolders.",
+        },
+        warning: {
+          authenticated:
+            "This folder is shared by {{ name }}, and contains course material, assignments and links to texts from both NDLA and other websites.",
+          unauthenticated:
+            "This folder is shared by {{ name }}, and contains course material, assignments and links to texts from both NDLA and other websites. Log onto My NDLA to copy the folder or save the link.",
         },
         button: {
           share: "Share folder",
@@ -961,6 +977,14 @@ const messages = {
           goTo: "Go to shared folder",
           unShare: "Stop sharing",
           shareLink: "Copy link",
+          saveLink: "Save the link",
+          unSaveLink: "Remove the link",
+        },
+        save: {
+          warning:
+            "This creates a link to the folder in My folders. You can easily find the link by navigating to My Folders through the menu in My NDLA.",
+          header: "Save the link to this folder",
+          save: "Save the link to the shared folder",
         },
         previewInformation:
           "Preview of shared folder. The folder is not available to others until you update its status to shared.",
@@ -972,6 +996,7 @@ const messages = {
         title: "Categories",
         posts: "post",
         posts_plural: "posts",
+        subcategory: "Subcategories",
       },
       cancel: {
         title: {
@@ -1046,6 +1071,8 @@ const messages = {
         },
         fetchMore: "Fetch more answers",
         deleted: "This post has been deleted by the author.",
+        upvote: "Upvote",
+        removeUpvote: "Remove upvote",
       },
       flag: {
         title: "Report post / comment",
@@ -1061,7 +1088,8 @@ const messages = {
         maxLength: "The maximum length for the text field is reached",
         error: "The field is required",
       },
-      bottomText: "Are you missing a category? Let our moderator know at moderator@ndla.no",
+      bottomText: "Are you missing a category? Let our moderator know at ",
+      moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Notifications",
         showAll: "View all notifications",
@@ -1095,6 +1123,8 @@ const messages = {
             modalTitle: "Delete category",
             modalDescription:
               "Are you sure you would like to delete the category, including all content? This is irreversible and cannot be undone.",
+            parentCategoryId: "Parent category",
+            noParentCategory: "No parent category",
           },
         },
         users: {
@@ -1155,6 +1185,7 @@ const messages = {
 
     confirmDeleteTag: "Are you sure you want to delete this tag? This process cannot be undone.",
     myFolders: "My folders",
+    sharedByOthersFolders: "Folders shared by others",
     myTags: "My tags",
     mySubjects: "My subjects",
     newFolder: "New folder",
@@ -1171,6 +1202,7 @@ const messages = {
     copyFolderDisclaimer:
       "This creates a copy of the folder. Any changes made to the original folder will not be updated here.",
     loginCopyFolderPitch: "Do you wish to copy this folder?",
+    loginSaveFolderLinkPitch: "Do you wish to save the link to this shared folder?",
     help: "Help",
     more: "More options",
     selectView: "Select view",
@@ -1203,13 +1235,18 @@ const messages = {
       confirmDeleteAccountButton: "Delete account",
       myPage: "My page",
       logout: "Log out of My NDLA",
+      loginIngress:
+        "This page allows you to organize your articles in <b>your own</b> way! Use the heart button to highlight your favorite subjects or resources, and share them with students and colleagues across the country.",
       loginText:
-        "In order to use the My NDLA service you have to be a student or work at a school in a county that partakes in the NDLA collaboration. We ask you not to write offensive or personally sensitive information in text fields. Read our ",
-      loginTextLink: "privacy policy here",
+        "In order to use the My NDLA service you have to be a student or work at a school in a county that partakes in the NDLA collaboration.",
+      loginTextLink: "Read our privacy policy here",
       loginTerms: "Log in with Feide to receive access. By logging on your accept your terms of service",
       loginResourcePitch: "Do you want to favorite this resource?",
-      loginWelcome: "Welcome to My NDLA! This page allows you to organize your articles in your own way!",
+      loginWelcome: "Welcome to My NDLA!",
       deleteAccount: "Delete My NDLA",
+      loginPitch:
+        "Welcome to My NDLA! Here you can save your favourite resources from NDLA, organize them and share them with others. Log in with your Feide account to get started.",
+      loginPitchButton: "Log in to My NDLA",
       welcome:
         "Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags",
       read: { read: "Read our", our: "." },
@@ -1229,6 +1266,14 @@ const messages = {
       recentFavourites: {
         title: "Recently added to my folders",
         link: "View all of your folders",
+        search: "Search for resources",
+        unauthorized: "Nothing here? Add a heart to some resources to show them here.",
+      },
+      favouriteSubjects: {
+        noFavorites:
+          "No favourite subjects? Use the heart button to add your favourite subjects, and you can easily find them again!",
+        search: "See all subjects",
+        viewAll: "See all favourite subjects",
       },
       recentArenaPosts: {
         title: "Recent posts in the arena",
@@ -1307,7 +1352,7 @@ const messages = {
       subjects: "{{count}} subject",
       subjects_0: "{{count}} subjects",
       subjects_plural: "{{count}} subjects",
-      noFavorites: "You do not have any favorite subjects!",
+      noFavorites: "Add a heart to subjects, and they will show up here.",
       goToAllSubjects: "Go to all subjects",
     },
     tools: "Tools",
@@ -1329,6 +1374,9 @@ const messages = {
   },
   siteNav: {
     search: "Search",
+    navigate: "Navigate using the arrow keys",
+    select: "Select",
+    close: "Close search",
   },
   programmes: {
     header: "What do you want to learn today?",
@@ -1351,11 +1399,13 @@ const messages = {
       h5p: "H5P",
       external: "External resource",
       gloss: "Gloss",
+      copyright: "Text",
     },
   },
   gloss: {
     examples: "Examples",
     wordClass: "Word class",
+    play: "Play gloss",
     transcriptions: {
       traditional: "Traditional spelling",
       pinyin: "Pinyin",

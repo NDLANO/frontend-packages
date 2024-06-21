@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { spacing, mq, breakpoints } from "@ndla/core";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 import ActiveFilterContent, { StyledActiveFilterTitle } from "./ActiveFilterContent";
 
 interface StyledActiveFiltersProps {
@@ -70,7 +70,6 @@ const StyledActiveFilters = styled("ul")<StyledActiveFiltersProps>`
 const StyledActiveFilterWrapper = styled("li")`
   list-style: none;
   display: flex;
-  margin-bottom: ${spacing.xsmall};
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     padding: 0 ${spacing.small} 0 0;

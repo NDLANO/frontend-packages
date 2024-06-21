@@ -14,8 +14,8 @@ import { colors, spacing, animations, misc, fonts } from "@ndla/core";
 import { ArrowDropDownRounded } from "@ndla/icons/common";
 import { FolderOutlined, FolderShared } from "@ndla/icons/contentType";
 import { Done } from "@ndla/icons/editor";
-import SafeLink from "@ndla/safelink";
-import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { SafeLink } from "@ndla/safelink";
+import { IFolder } from "@ndla/types-backend/myndla-api";
 import { arrowNavigation } from "./arrowNavigation";
 import { treestructureId } from "./helperFunctions";
 import { CommonFolderItemsProps } from "./types";
@@ -119,7 +119,7 @@ const FolderNameLink = styled(SafeLink)`
   border: none;
   box-shadow: none;
   color: ${colors.text.primary};
-  font-size: ${fonts.sizes("16px")};
+  ${fonts.sizes("16px")};
   transition: ${animations.durations.superFast};
   word-break: break-word;
   &[data-selected="true"] {

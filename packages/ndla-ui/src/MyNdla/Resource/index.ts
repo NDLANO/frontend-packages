@@ -7,5 +7,4 @@
  */
 
 import Folder from "./Folder";
-import FolderInput from "./FolderInput";
-export { Folder, FolderInput };
+export { Folder };

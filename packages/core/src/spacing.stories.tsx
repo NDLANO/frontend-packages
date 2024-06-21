@@ -10,7 +10,6 @@ import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
 import colors from "./colors";
 import spacing from "./spacing";
-import { defaultParameters } from "../../../stories/defaults";
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,7 +36,7 @@ const Block = styled.div`
 const SpacingBlock = ({ name }: { name: keyof typeof spacing }) => (
   <div>
     <p>{name}</p>
-    <Block style={{ padding: spacing[name] }}></Block>
+    <Block style={{ padding: spacing[name] }} />
     <p>{spacing[name]}</p>
   </div>
 );
@@ -47,7 +46,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta;
 

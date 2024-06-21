@@ -6,36 +6,32 @@
  *
  */
 
-import { ReactNode, useEffect } from "react";
-import BEMHelper from "react-bem-helper";
-import { isMobile } from "react-device-detect";
-
-const classes = new BEMHelper({
-  name: "article",
-  prefix: "c-",
-});
+import { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { breakpoints, mq, spacing } from "@ndla/core";
 
 type Props = {
   competenceGoals?: ReactNode;
   children: ReactNode;
 };
 
-const ArticleHeaderWrapper = ({ children, competenceGoals }: Props) => {
-  useEffect(() => {
-    if (isMobile) {
-      const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll(".c-article__header");
-      if (heroContentList.length === 1) {
-        heroContentList[0].scrollIntoView(true);
-        window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
-      }
-    }
-  }, []);
+const StyledHeaderWrapper = styled.div`
+  margin-bottom: ${spacing.normal};
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: ${spacing.large};
+  }
+`;
 
+const CompetenceWrapper = styled.div`
+  margin-top: ${spacing.normal};
+`;
+
+const ArticleHeaderWrapper = ({ children, competenceGoals }: Props) => {
   return (
-    <div {...classes("header")}>
+    <StyledHeaderWrapper>
       {children}
-      <div {...classes("competence")}>{competenceGoals}</div>
-    </div>
+      <CompetenceWrapper>{competenceGoals}</CompetenceWrapper>
+    </StyledHeaderWrapper>
   );
 };
 

@@ -12,9 +12,7 @@ import { MetaData } from ".";
 export interface CampaignBlockEmbedData {
   resource: "campaign-block";
   title: string;
-  titleLanguage: string;
   description: string;
-  descriptionLanguage: string;
   headingLevel: "h1" | "h2" | "h3" | "h4" | "h5";
   url?: string;
   urlText?: string;

@@ -22,13 +22,14 @@ const visuallyHiddenStyle = css`
 `;
 
 const StyledLabel = styled(Text)`
+  display: inline-block;
   &[data-disabled="true"] {
     color: ${colors.brand.greyMedium};
   }
 `;
 
 export const Label = forwardRef<HTMLLabelElement, Props>(
-  ({ textStyle = "label-large", visuallyHidden, margin = "small", ...rest }, ref) => {
+  ({ textStyle = "label-large", visuallyHidden, margin = "none", ...rest }, ref) => {
     const control = useFormControlContext();
     const fieldProps = control?.getLabelProps(rest, ref) ?? { ref, ...rest };
 
@@ -44,3 +45,36 @@ export const Label = forwardRef<HTMLLabelElement, Props>(
     );
   },
 );
+
+const StyledLegend = styled(Text)`
+  float: none;
+  width: inherit;
+  &[data-disabled="true"] {
+    color: ${colors.brand.greyMedium};
+  }
+`;
+
+export const Legend = forwardRef<HTMLLabelElement, Props>(
+  ({ textStyle = "label-large", visuallyHidden, margin = "small", ...rest }, ref) => {
+    const control = useFormControlContext();
+    // Legend does not use htmlFor (for), so we remove it.
+    const { id: _, htmlFor: __, ...fieldProps } = control?.getLabelProps(rest, ref) ?? { ref, ...rest };
+
+    return (
+      <StyledLegend
+        element="legend"
+        css={visuallyHidden ? visuallyHiddenStyle : undefined}
+        {...rest}
+        {...fieldProps}
+        textStyle={textStyle}
+        margin={margin}
+      />
+    );
+  },
+);
+
+export const Fieldset = styled.fieldset`
+  border: none;
+  padding: 0;
+  margin: 0;
+`;

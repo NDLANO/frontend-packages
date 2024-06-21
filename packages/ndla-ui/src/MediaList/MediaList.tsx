@@ -18,7 +18,7 @@ import {
 } from "@ndla/licenses";
 import type { MetaType } from "@ndla/licenses";
 import { LicenseDescription } from "@ndla/notion";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { Text } from "@ndla/typography";
 import { uuid } from "@ndla/util";
 
@@ -37,6 +37,7 @@ const StyledMediaListItem = styled.li`
   margin-bottom: ${spacing.small};
   padding: ${spacing.small} 0;
   border-bottom: 1px solid ${colors.brand.tertiary};
+  list-style: none;
   ${mq.range({ from: breakpoints.tablet })} {
     display: flex;
     flex-direction: row;

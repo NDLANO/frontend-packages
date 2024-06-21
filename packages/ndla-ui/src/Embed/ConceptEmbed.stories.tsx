@@ -9,8 +9,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
 import ConceptEmbed from "./ConceptEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
+import { ArticleWrapper } from "../Article";
+import LayoutItem, { OneColumn } from "../Layout";
 
 const blockEmbedData: ConceptEmbedData = {
   contentId: "35",
@@ -46,7 +47,9 @@ const conceptMetaData: ConceptData["concept"] = {
   title: { title: "skin – formasjonsskade", language: "nb" },
   content: {
     content:
-      " <p>Ordet «skin» er engelsk og brukes om formasjonsskade som oppstår i boreprosessen i området som grenser inn til brønnen. Skaden er størst i området nærmest hullet, men den kan bre seg utover et stykke fra brønnen. Skin forteller om bergartens permeabilitet i reservoarsonen.</p> <p>Hullveggen skades både av borekronen, små partikler og væsken som brukes i brønnen.</p> <p>Skaden i bergarten gir dårligere forhold for oljen som skal strømme til brønnen. Gangene i bergarten plugges, og det oppstår et trykkfall som reduserer produksjonstrykket i brønnen.</p> <p>Det er viktig å redusere omfanget av skaden ved å velge væsker som passer godt til bergartsegenskapene, og å bore med en borekrone som skader minst mulig.</p> <p>Skader som er dannet av borevæske, kan repareres ved å syrebehandle hullets overflate.</p>",
+      "<p>Ordet «skin» er engelsk og brukes om formasjonsskade som oppstår i boreprosessen i området som grenser inn til brønnen. Skaden er størst i området nærmest hullet, men den kan bre seg utover et stykke fra brønnen. Skin forteller om bergartens permeabilitet i reservoarsonen.</p> <p>Hullveggen skades både av borekronen, små partikler og væsken som brukes i brønnen.</p> <p>Skaden i bergarten gir dårligere forhold for oljen som skal strømme til brønnen. Gangene i bergarten plugges, og det oppstår et trykkfall som reduserer produksjonstrykket i brønnen.</p> <p>Det er viktig å redusere omfanget av skaden ved å velge væsker som passer godt til bergartsegenskapene, og å bore med en borekrone som skader minst mulig.</p> <p>Skader som er dannet av borevæske, kan repareres ved å syrebehandle hullets overflate.</p>",
+    htmlContent:
+      "<p>Ordet «skin» er engelsk og brukes om formasjonsskade som oppstår i boreprosessen i området som grenser inn til brønnen. Skaden er størst i området nærmest hullet, men den kan bre seg utover et stykke fra brønnen. Skin forteller om bergartens permeabilitet i reservoarsonen.</p> <p>Hullveggen skades både av borekronen, små partikler og væsken som brukes i brønnen.</p> <p>Skaden i bergarten gir dårligere forhold for oljen som skal strømme til brønnen. Gangene i bergarten plugges, og det oppstår et trykkfall som reduserer produksjonstrykket i brønnen.</p> <p>Det er viktig å redusere omfanget av skaden ved å velge væsker som passer godt til bergartsegenskapene, og å bore med en borekrone som skader minst mulig.</p> <p>Skader som er dannet av borevæske, kan repareres ved å syrebehandle hullets overflate.</p>",
     language: "nb",
   },
   copyright: {
@@ -94,6 +97,7 @@ const glossMetaData: ConceptData["concept"] = {
   },
   content: {
     content: "Hei",
+    htmlContent: "Hei",
     language: "nb",
   },
   copyright: {
@@ -229,18 +233,17 @@ const meta: Meta<typeof ConceptEmbed> = {
   },
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
-        <article className="c-article c-article--clean">
-          <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+      <OneColumn>
+        <ArticleWrapper modifier="clean">
+          <LayoutItem layout="center">
             <section>
               <Story />
             </section>
-          </section>
-        </article>
-      </div>
+          </LayoutItem>
+        </ArticleWrapper>
+      </OneColumn>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

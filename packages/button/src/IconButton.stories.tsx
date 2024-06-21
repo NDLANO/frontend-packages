@@ -9,15 +9,11 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { Cross } from "@ndla/icons/action";
 import IconButtonV2 from "./IconButtonV2";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Components/Buttons/IconButton",
   component: IconButtonV2,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {
     colorTheme: "primary",
     children: <Cross />,
@@ -28,7 +24,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: null,
+        disable: true,
       },
     },
   },

@@ -7,12 +7,12 @@
  */
 
 import { attributesToProps } from "html-react-parser";
-import { CodeEmbed } from "@ndla/code";
 import { CodeMetaData } from "@ndla/types-embed";
+import { CodeEmbed } from "@ndla/ui";
 import { PluginType } from "../types";
 
 export const codeEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
-  const data = JSON.parse(props["data-json"]) as CodeMetaData;
+  const data = JSON.parse(props["data-json"] as string) as CodeMetaData;
   return <CodeEmbed embed={data} />;
 };

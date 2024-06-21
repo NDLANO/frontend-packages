@@ -10,7 +10,6 @@ import styled from "@emotion/styled";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { spacing } from "@ndla/core";
 import { ContentTypeBadge } from "./ContentTypeBadge";
-import { defaultParameters } from "../../../../stories/defaults";
 import * as contentTypes from "../model/ContentType";
 
 export default {
@@ -18,7 +17,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     size: "small",
@@ -68,14 +66,14 @@ export const AllBadges: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
     <ContentTypeBadge {...args} type={contentTypes.TASKS_AND_ACTIVITIES} />
     <ContentTypeBadge {...args} type={contentTypes.ASSESSMENT_RESOURCES} />
     <ContentTypeBadge {...args} type={contentTypes.SUBJECT} />
-    <ContentTypeBadge {...args} type={contentTypes.EXTERNAL_LEARNING_RESOURCES} />
     <ContentTypeBadge {...args} type={contentTypes.SOURCE_MATERIAL} />
     <ContentTypeBadge {...args} type={contentTypes.LEARNING_PATH} />
     <ContentTypeBadge {...args} type={contentTypes.TOPIC} />
     <ContentTypeBadge {...args} type={contentTypes.MULTIDISCIPLINARY_TOPIC} />
+    <ContentTypeBadge {...args} type={contentTypes.CONCEPT} />
+    <ContentTypeBadge {...args} type={contentTypes.EXTERNAL} />
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.image} />
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.audio} />
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.video} />
-    <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.concept} />
   </BadgesWrapper>
 );

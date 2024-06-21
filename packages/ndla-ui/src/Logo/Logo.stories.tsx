@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import Logo from "./Logo";
-import { defaultParameters } from "../../../../stories/defaults";
 
 /***
  * Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for kommunikasjon. Den skal inspirere målgruppen elever og lærere i videregående opplæring og gjøre dem nysgjerrige på NDLA.
@@ -23,7 +22,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     cssModifier: "large",

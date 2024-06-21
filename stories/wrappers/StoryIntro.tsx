@@ -8,8 +8,8 @@
 
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
-import { OneColumn, LayoutItem } from "@ndla/ui";
 import { colors, spacing } from "@ndla/core";
+import { OneColumn, LayoutItem } from "@ndla/ui";
 
 const StoryIntroSection = styled.section`
   background: ${colors.brand.light};
@@ -35,7 +35,7 @@ const StoryIntro = ({ title, children }: Props) => (
   <StoryIntroSection>
     <OneColumn>
       <LayoutItem layout="center">
-        <h1 className="u-heading">{title}</h1>
+        <h1>{title}</h1>
         {children}
       </LayoutItem>
     </OneColumn>

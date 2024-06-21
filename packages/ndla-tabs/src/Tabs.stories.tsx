@@ -8,15 +8,11 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import Tabs from "./Tabs";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Components/Tabs",
   component: Tabs,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {
     "aria-label": "Oversikt over farge og figur",
     variant: "underlined",
@@ -69,7 +65,7 @@ export default {
 } as Meta<typeof Tabs>;
 
 export const TabsStory: StoryFn<typeof Tabs> = ({ ...args }) => {
-  return <Tabs {...args}></Tabs>;
+  return <Tabs {...args} />;
 };
 
 TabsStory.storyName = "Tabs";

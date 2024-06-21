@@ -26,6 +26,7 @@ export interface ImageEmbedData {
   metaData?: any;
   pageUrl?: string;
   border?: string;
+  isDecorative?: string;
 }
 
 export interface ImageData {

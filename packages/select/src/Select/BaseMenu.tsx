@@ -9,7 +9,7 @@
 import { MenuProps, components, GroupBase } from "react-select";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { colors, misc, spacing } from "@ndla/core";
 import { Option } from "./types";
 
 const menuStyle = css`
@@ -25,9 +25,9 @@ const StyledBaseMenu = styled.div`
   pointer-events: auto;
   border: 1px solid ${colors.brand.light};
   border-radius: 8px;
-  margin: 4px 0;
+  margin: ${spacing.xxsmall} 0;
   &[data-small="true"] {
-    border-radius: 4px;
+    border-radius: ${misc.borderRadius};
   }
 `;
 

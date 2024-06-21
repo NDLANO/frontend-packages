@@ -7,11 +7,10 @@
  */
 
 import { useRef, useImperativeHandle, ReactNode, forwardRef } from "react";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { mq, spacing, breakpoints } from "@ndla/core";
 import { ChevronRight } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 
 export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;
@@ -38,27 +37,14 @@ const StyledListItem = styled.li<AutoCollapseProps>`
   :before {
     display: none;
   }
-
-  ${({ autoCollapse }) =>
-    !autoCollapse &&
-    css`
-      ${mq.range({ until: breakpoints.tablet })} {
-        display: block;
-      }
-    `}
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: block;
+  }
 `;
 
-const CollapseContainer = styled.div<AutoCollapseProps>`
+const CollapseContainer = styled.div`
   display: inline-block;
   color: inherit;
-  ${({ autoCollapse }) =>
-    autoCollapse &&
-    css`
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      display: inline-block;
-    `}
 `;
 
 const StyledChevron = styled(ChevronRight)`
@@ -92,7 +78,7 @@ const BreadcrumbItem = forwardRef<any, Props>(
     const isLast = index === totalCount - 1;
     return (
       <StyledListItem ref={liRef} autoCollapse={autoCollapse} aria-current={isLast ? "page" : undefined}>
-        <CollapseContainer autoCollapse={autoCollapse}>
+        <CollapseContainer>
           {renderItem ? (
             renderItem(item, totalCount)
           ) : isLast ? (

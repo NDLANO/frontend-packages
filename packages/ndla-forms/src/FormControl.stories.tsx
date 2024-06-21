@@ -15,7 +15,6 @@ import { FieldHelper } from "./FieldHelper";
 import { FormControl } from "./FormControl";
 import { Input, InputContainer, TextArea } from "./InputV3";
 import { Label } from "./Label";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Forms/FormControl",
@@ -23,7 +22,6 @@ export default {
   component: FormControl,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     id: "name",
@@ -65,6 +63,21 @@ export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
         <Input name="name" />
       </InputContainer>
       <FieldHelper>Make sure to use proper punctuation</FieldHelper>
+    </FormControl>
+  );
+};
+
+export const WithoutWrapper: StoryFn<typeof FormControl> = ({ ...args }) => {
+  const [value, setValue] = useState("");
+  const isInvalid = value.length === 0;
+  return (
+    <FormControl {...args} isInvalid={isInvalid}>
+      <Text textStyle="content" id="name-info" margin="none">
+        We need to know your name!
+      </Text>
+      <Label>Name</Label>
+      <FieldErrorMessage>This field is required</FieldErrorMessage>
+      <Input name="name" aria-describedby="name-info" value={value} onChange={(e) => setValue(e.currentTarget.value)} />
     </FormControl>
   );
 };
@@ -121,6 +134,7 @@ export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
           value={value}
           onChange={(e) => setValue(e.currentTarget.value)}
           aria-describedby={labels.join(" ")}
+          required={true}
           aria-required={true}
           aria-invalid={isInvalid}
         />

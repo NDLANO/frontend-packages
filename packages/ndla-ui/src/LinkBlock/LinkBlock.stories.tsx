@@ -9,21 +9,17 @@
 import { Meta, StoryObj, StoryFn } from "@storybook/react";
 import { LinkBlockSection } from ".";
 import LinkBlock from "./LinkBlock";
-import { defaultParameters } from "../../../../stories/defaults";
 
 export default {
   title: "Components/Link Block",
   component: LinkBlock,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   args: {},
 } as Meta<typeof LinkBlock>;
 
 const args = {
-  title: "Redaksjonell medarbeider i faget spansk 2",
-  language: "nb",
+  title: "Redaksjonell <em>medarbeider</em> i faget spansk 2",
+  articleLanguage: "nb",
   date: "05. mars 2023",
   url: "",
 };

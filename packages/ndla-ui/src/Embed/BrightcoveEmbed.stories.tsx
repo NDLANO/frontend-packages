@@ -9,8 +9,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from "@ndla/types-embed";
 import BrightcoveEmbed from "./BrightcoveEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
+import { ArticleWrapper } from "../Article";
+import LayoutItem, { OneColumn } from "../Layout";
 
 const embedData: BrightcoveEmbedData = {
   resource: "brightcove",
@@ -160,18 +161,17 @@ const meta: Meta<typeof BrightcoveEmbed> = {
   },
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
-        <article className="c-article c-article--clean">
-          <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+      <OneColumn>
+        <ArticleWrapper modifier="clean">
+          <LayoutItem layout="center">
             <section>
               <Story />
             </section>
-          </section>
-        </article>
-      </div>
+          </LayoutItem>
+        </ArticleWrapper>
+      </OneColumn>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

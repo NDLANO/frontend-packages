@@ -32,12 +32,12 @@ const ResourceBoxContainer = styled.div`
 
 const Title = styled.h3`
   font-weight: ${fonts.weight.bold};
-  font-size: ${fonts.sizes(18)};
+  ${fonts.sizes(18)};
   margin-top: 0;
 `;
 
 const Caption = styled.p`
-  font-size: ${fonts.sizes(14)};
+  ${fonts.sizes(14)};
 `;
 
 const ContentWrapper = styled.div`

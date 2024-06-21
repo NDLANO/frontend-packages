@@ -9,7 +9,7 @@
 import { contributorTypes } from "@ndla/licenses";
 import constants from "../model";
 
-export const { subjectCategories, subjectTypes, wordClass } = constants;
+const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const titleTemplate = " - NDLA";
 
@@ -99,6 +99,10 @@ const messages = {
   },
   movedResourcePage: {
     title: "Sida har flytta, men du kan finne den her:",
+  },
+  unpublishedResourcePage: {
+    title: "Ressursen er avpublisert",
+    errorDescription: "Orsak, ressursen du prøvde komme til er avpublisert.",
   },
   lti: {
     embed: "Sett inn",
@@ -283,7 +287,7 @@ const messages = {
     resources: "Dette er ikkje eit komplett læremiddel, men ei ressurssamling som vi håper kan vere nyttig for deg.",
     subjectOutdated: "Dette faget følgjer ein utgått læreplan.",
     subjectFuture: "Dette faget følgjer ein kommande læreplan.",
-    subjectBeta: "Dette faget er i betaversjon. Vi fyller på med ressurser fortløpande.",
+    subjectBeta: "Dette faget er under utvikling. Vi fyller på med ressursar fortløpande.",
     newVersion:
       "Denne læringsressursen er ikkje oppdatert etter gjeldande læreplan. Du finn ein oppdatert versjon her: ",
     frontPageBeta:
@@ -474,6 +478,7 @@ const messages = {
       description: "Husk at innebygd innhald i ei glose kan ha ein anna lisens enn sjølve gloseteksten",
       rules: "Regler for bruk av glose:",
       title: "Tittel",
+      showOrHideExamples: "Vis eller skjul eksempler",
     },
     files: {
       heading: "Slik gjenbruker du filer",
@@ -509,12 +514,14 @@ const messages = {
     socialMedia: "Sosiale media",
     selectLanguage: "Vel språk (language): ",
     vision: "Saman skapar vi framtidas læring",
-    linksHeader: "Andre NDLA-nettstader",
-    info: "Nettstaden er utarbeida av NDLA med open kjeldekode.",
+    linksHeader: "Kontakt",
+    info: "Nettstaden er utarbeida som åpen kjeldekode.",
     editorInChief: "Ansvarleg redaktør:",
     availabilityLink: "Tilgjengelegheitserklæring",
     privacyLink: "Personvernerklæring",
     cookiesLink: "Erklæring for informasjonskapslar",
+    aboutWebsite: "Om nettstaden",
+    followUs: "Følg oss",
     socialMediaLinks: {
       facebook: "NDLA på Facebook",
       facebookAria: "Besøk NDLA på Facebook",
@@ -537,15 +544,17 @@ const messages = {
       tips: "Tips til elevar",
       vacancies: "Ledige stillingar",
     },
+    otherLanguages: "Andre språk",
   },
   contentTypes: {
     all: "Alle",
+    article: "Artikkel",
     subject: "Fag",
     "topic-article": "Emne",
+    learningpath: "Læringssti",
     "learning-path": "Læringssti",
     "subject-material": "Fagstoff",
     "tasks-and-activities": "Oppgåver og aktivitetar",
-    "external-learning-resources": "Ekstern læringsressurs",
     "source-material": "Kjeldemateriale",
     "assessment-resources": "Vurderingsressurs",
     topic: "Emne",
@@ -768,6 +777,7 @@ const messages = {
   save: "Lagre",
   photo: "Bilete",
   email: "E-post",
+  finished: "Ferdig",
   image: {
     altText: "Alt-tekst",
     caption: "Bilettekst",
@@ -929,28 +939,35 @@ const messages = {
       onDragEndMissingOver: "Mappa blei sleppt",
       onDragCancel: "Flytting avbrutt. Mappa {{name}} blei sleppt",
       dragHandle: "Sorter mappa {{name}}",
+      professional: "ein fagperson",
       sharedWarning: "Namn og beskriving blir synleg for alle du deler mappa med.",
       sharing: {
         share: "Del mappe",
         shared: "Delt",
+        sharedBy: "Delt av ",
+        sharedByAnonymous: "anonym lærar",
         sharedFolder: "Delt mappe",
         unShare: "Delinga er avslutta. Mappa er ikkje lenger delt",
         link: "Lenka er kopiert",
         copyLink: "Kopier lenke til mappa",
+        removeLink: "Fjern lenke til mappe",
+        savedLink: "Lenka til  {{ name }} er lagt til i Mine mapper.",
+        unSavedLink: "Lenka til  {{ name }} er fjernet fra Mine mapper.",
         header: {
-          private: "Vil du dele denne mappa?",
           shared: "Denne mappa er delt",
-          unShare: "Vil du avslutte deling av denne mappa?",
         },
         description: {
           copy: "Trykk på lenke for å kopiere",
           private:
             "Når du deler ei mappe, lagar du ei lenke som er open for alle som har lenka. Du kan endre innhaldet eller avslutte delinga når du ønsker det.",
-          private2: "Når du deler ei mappe deler du alt innhaldet i mappa, inkludert undermapper og ressursar",
           shared:
             "No kan du dele denne lenka med elevar eller andre lærarar. Dersom du gjer endringar i mappa, blir dei synlege for alle du har delt lenka med.",
-          unShare:
-            "Når du avsluttar deling, sluttar lenka til den delte mappa og eventuelle undermapper å verke. Dersom du har delt lenka med nokon, kan dei ikkje lenger sjå innhaldet i mappa. Dette gjelder òg lenker til eventuelle undermapper.",
+        },
+        warning: {
+          authenticated:
+            "Denne mappa er delt av {{ name }}, og inneheld fagstoff, oppgåver og lenker til tekster frå både NDLA og andre nettstader.",
+          unauthenticated:
+            "Denne mappa er delt av {{ name }}, og inneheld fagstoff, oppgåver og lenker til tekster frå både NDLA og andre nettstader. Logg inn på Min NDLA for å kopiere mappa eller lagre lenka.",
         },
         button: {
           share: "Del mappe",
@@ -960,6 +977,14 @@ const messages = {
           goTo: "Gå til delt mappe",
           unShare: "Avslutt deling",
           shareLink: "Kopier lenke",
+          saveLink: "Lagre lenka",
+          unSaveLink: "Fjern lenken",
+        },
+        save: {
+          warning:
+            "Dette lagar ei lenke til mappa i Mine mapper. Du kan enkelt finne ho att ved å gå til Mine mapper i menyen i Min NDLA.",
+          header: "Lagre lenke til denne mappa",
+          save: "Lagre lenke til delt mappe",
         },
         previewInformation:
           "Førehandsvising av delt mappe. Mappa blir ikkje tilgjengeleg for andre før du set ho som delt.",
@@ -971,6 +996,7 @@ const messages = {
         title: "Kategoriar",
         posts: "innlegg",
         posts_plural: "innlegg",
+        subcategory: "Tema",
       },
       publish: "Publiser",
       cancel: {
@@ -1046,6 +1072,8 @@ const messages = {
         },
         fetchMore: "Hent fleire svar",
         deleted: "Dette innlegget er sletta av forfatteren.",
+        upvote: "Stem opp",
+        removeUpvote: "Fjern stemme",
       },
       flag: {
         title: "Rapporter innlegg / kommentar",
@@ -1061,7 +1089,8 @@ const messages = {
         maxLength: "Maksimal lengd for tekstfeltet er nådd",
         error: "Feltet er påkravd",
       },
-      bottomText: "Saknar du ein kategori? Gi moderatoren vår beskjed på moderator@ndla.no",
+      bottomText: "Saknar du ein kategori? Gi moderatoren vår beskjed på ",
+      moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Varslingar",
         showAll: "Sjå alle varslingar",
@@ -1095,6 +1124,8 @@ const messages = {
             modalTitle: "Slett kategori",
             modalDescription:
               "Er du sikker på at du vil sletta kategorien, med alt innhald? Dette er irreversibelt og kan ikkje angrast.",
+            parentCategoryId: "Foreldrekategori",
+            noParentCategory: "Ingen foreldrekategori",
           },
         },
         users: {
@@ -1139,7 +1170,7 @@ const messages = {
       },
     },
     iconMenu: {
-      folders: "Mappar",
+      folders: "Mapper",
       tags: "Emneknaggar",
       subjects: "Favorittfag",
       profile: "Profil",
@@ -1154,6 +1185,7 @@ const messages = {
       "Er du sikker på at du vil slette mappa? Dersom mappa har undermapper vil desse også slettast. Denne handlinga kan ikkje endrast.",
     confirmDeleteTag: "Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.",
     myFolders: "Mine mapper",
+    sharedByOthersFolders: "Mapper andre har delt",
     myTags: "Mine emneknaggar",
     mySubjects: "Mine fag",
     newFolder: "Ny mappe",
@@ -1170,6 +1202,7 @@ const messages = {
     copyFolderDisclaimer:
       "Dette lagar ein kopi av mappa. Eventuelle endringar i originalmappa vil ikkje bli oppdatert her.",
     loginCopyFolderPitch: "Ønsker du å kopiere denne mappa?",
+    loginSaveFolderLinkPitch: "Ønsker du å lagra lenka til denne delte mappa?",
     help: "Hjelp",
     more: "Fleire val",
     selectView: "Velg visning",
@@ -1195,20 +1228,25 @@ const messages = {
       willOpenInNewTab: "Opnast i ny fane.",
     },
     myPage: {
-      noRecents: "Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:",
+      noRecents: "Du har ikkje lagt til nokon ressursar enno. Slik kjem du i gang:",
       imageAlt:
         "Halvnært bilete av jente som held eit nettbrett i hendene. Oppå nettbrettet ligg det ei samling fargeprøver i ulike former og fargar. Grafikk.",
       confirmDeleteAccount: "Er du sikker på at du vil slette kontoen?",
       confirmDeleteAccountButton: "Slett konto",
       myPage: "Mi side",
       deleteAccount: "Slett Min NDLA",
+      loginPitch:
+        "Velkommen til Min NDLA! Her kan du lagre favorittressursane dine frå NDLA, organisere dei og dele dei med andre. Logg inn med din Feide-konto for å komme i gang.",
+      loginPitchButton: "Logg inn i Min NDLA",
       logout: "Logg ut av Min NDLA",
+      loginIngress:
+        "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjarteknappen for å markere favorittfaga eller favorittressursane dine og enkelt finne dei igjen.",
       loginText:
-        "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet. Vi ber om at du ikkje skriv noko støtande, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ",
-      loginTextLink: "personvernerklæring her",
+        "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet.",
+      loginTextLink: "Les vår personvernerklæring her",
       loginTerms: "Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk",
       loginResourcePitch: "Ønsker du å favorittmerke denne resursen?",
-      loginWelcome: "Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!",
+      loginWelcome: "Velkommen til Min NDLA!",
       welcome:
         "Velkommen til Min NDLA! No kan du lagre favorittressursane dine frå NDLA og organisere dei i mapper og med emneknaggar.",
       read: { read: "Les", our: " vår." },
@@ -1225,6 +1263,13 @@ const messages = {
       recentFavourites: {
         title: "Nyleg lagt til i mappene mine",
         link: "Sjå alle mappene dine",
+        search: "Søk etter ressursar",
+        unauthorized: "Oops. Her var det tomt! Hjartemerk nokre ressursar for å sjå dei her.",
+      },
+      favouriteSubjects: {
+        noFavorites: "Ingen favorittfag? Bruk hjarteknappen for å legge til favorittfag, så finn du dei enkelt att!",
+        search: "Sjå alle fag",
+        viewAll: "Sjå alle favorittfag",
       },
       recentArenaPosts: {
         title: "Nye innlegg i arenaen",
@@ -1306,7 +1351,7 @@ const messages = {
       subjects: "{{count}} fag",
       subjects_0: "{{count}} fag",
       subjects_plural: "{{count}} fag",
-      noFavorites: "Du har ingen favorittfag!",
+      noFavorites: "Hjartemerk fag, så dukkar dei opp her.",
       goToAllSubjects: "Gå til alle fag",
     },
     tools: "Verktøy",
@@ -1328,6 +1373,9 @@ const messages = {
   },
   siteNav: {
     search: "Søk",
+    navigate: "Naviger med piltastane",
+    select: "Velg",
+    close: "Lukk søk",
   },
   programmes: {
     header: "Kva vil du lære om i dag?",
@@ -1350,11 +1398,13 @@ const messages = {
       h5p: "H5P",
       external: "Ekstern ressurs",
       gloss: "Glose",
+      copyright: "Tekst",
     },
   },
   gloss: {
     examples: "Eksempler",
     wordClass: "Ordklasse",
+    play: "Spill av glose",
     transcriptions: {
       traditional: "Tradisjonell skrivemåte",
       pinyin: "Pinyin",

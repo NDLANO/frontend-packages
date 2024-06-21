@@ -6,6 +6,7 @@
  *
  */
 
+import parse from "html-react-parser";
 import styled from "@emotion/styled";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
@@ -59,15 +60,14 @@ interface Props {
   };
   title: string;
   subtitle: string;
-  lang?: string;
 }
 
-const KeyFigure = ({ image, title, subtitle, lang }: Props) => {
+const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper>
-      <StyledImage src={image?.src} width={150} height={150} alt={image?.alt} />
-      <TitleWrapper lang={lang}>{title}</TitleWrapper>
-      <SubTitleWrapper lang={lang}>{subtitle}</SubTitleWrapper>
+      <StyledImage src={`${image?.src}?width=150`} width={150} height={150} alt={image?.alt} />
+      <TitleWrapper>{parse(title)}</TitleWrapper>
+      <SubTitleWrapper>{parse(subtitle)}</SubTitleWrapper>
     </ContentWrapper>
   );
 };

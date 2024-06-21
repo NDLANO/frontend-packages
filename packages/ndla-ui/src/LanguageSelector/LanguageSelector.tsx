@@ -9,7 +9,7 @@
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
-import { colors, fonts, spacing } from "@ndla/core";
+import { colors, fonts, spacing, stackOrder } from "@ndla/core";
 import { DropdownMenu, DropdownTrigger, DropdownContent, DropdownItem } from "@ndla/dropdown-menu";
 import { ChevronDown } from "@ndla/icons/common";
 
@@ -26,6 +26,7 @@ const StyledDropdownContent = styled(DropdownContent)`
   [data-arrow] {
     fill: ${colors.brand.tertiary};
   }
+  z-index: ${stackOrder.modal};
 `;
 
 const LanguageChoice = styled(ButtonV2)`
@@ -73,7 +74,7 @@ const LanguageSelector = <T extends string>({ locales, onSelect, inverted, trigg
           aria-label={t("footer.selectLanguage")}
           id={triggerId}
         >
-          {t(`languages.prefixChangeLanguage`)} <ChevronDown />
+          {t("languages.prefixChangeLanguage")} <ChevronDown />
         </ButtonV2>
       </DropdownTrigger>
       <StyledDropdownContent sideOffset={4} showArrow>

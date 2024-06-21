@@ -11,7 +11,6 @@ import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
 import colors from "./colors";
 import spacing from "./spacing";
-import { defaultParameters } from "../../../stories/defaults";
 
 interface Props {
   color: string;
@@ -60,7 +59,6 @@ export default {
   component: ColorBlocks,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta<typeof ColorBlocks>;
 
@@ -156,12 +154,20 @@ export const ContentTypeColors: StoryFn = () => (
       <ColorBlock color={colors.learningPath.background} name="Background" />
       <ColorBlock color={colors.learningPath.light} name="Light" />
     </ColorBlocks>
+    <ColorBlocks title="Concept">
+      <ColorBlock color={colors.concept.light} name="Light" />
+      <ColorBlock color={colors.concept.dark} name="Dark" />
+      <ColorBlock color={colors.concept.text} name="Text" />
+    </ColorBlocks>
+    <ColorBlocks title="External">
+      <ColorBlock color={colors.external.light} name="Light" />
+      <ColorBlock color={colors.external.dark} name="Dark" />
+    </ColorBlocks>
     <ColorBlocks
       title="Additional material"
       description="Additional material uses a subject material color, but with 40% opacity"
     >
       <ColorBlock color={colors.subjectMaterial.additional} name="Subject material" />
-      <ColorBlock color={colors.externalLearningResource.additional} name="External learning resource" />
       <ColorBlock color={colors.sourceMaterial.additional} name="Source material" />
       <ColorBlock color={colors.tasksAndActivities.additional} name="Source material" />
       <ColorBlock color={colors.assessmentResource.additional} name="Assessment resource" />

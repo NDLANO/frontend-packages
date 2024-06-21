@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from "react";
+import { ReactElement, ReactNode, forwardRef, useCallback, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
@@ -16,11 +16,11 @@ import { IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
 import { Cross } from "@ndla/icons/action";
 import { COPYRIGHTED } from "@ndla/licenses";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 import { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from "./conceptComponents";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { HeartButtonType } from "./types";
+import { HeartButtonType, RenderContext } from "./types";
 import { Figure } from "../Figure";
 import { Gloss } from "../Gloss";
 import { EmbedByline } from "../LicenseByline";
@@ -73,6 +73,7 @@ interface Props {
   fullWidth?: boolean;
   heartButton?: HeartButtonType;
   lang?: string;
+  renderContext?: RenderContext;
 }
 
 const StyledButton = styled.button`
@@ -81,8 +82,8 @@ const StyledButton = styled.button`
   font-family: inherit;
   font-style: inherit;
   line-height: 1em;
-  padding: 0 0 4px 0;
-  margin-bottom: -4px;
+  padding: 0 0 ${spacing.xxsmall} 0;
+  margin-bottom: -${spacing.xxsmall};
   text-decoration: none;
   color: #000;
   position: relative;
@@ -94,14 +95,15 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang }: Props) => {
+export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang, renderContext }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
-    return parse(embed.data.concept.content.content);
+    return parse(embed.data.concept.content.htmlContent);
   }, [embed]);
   if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;
-  } else if (embed.status === "error") {
+  }
+  if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="concept" />;
   }
 
@@ -128,7 +130,8 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
         exampleLangs={embed.embedData.exampleLangs}
       />
     );
-  } else if (embed.embedData.type === "inline") {
+  }
+  if (embed.embedData.type === "inline") {
     return (
       <InlineConcept
         title={concept.title}
@@ -147,25 +150,24 @@ export const ConceptEmbed = ({ embed, fullWidth, heartButton: HeartButton, lang 
         exampleLangs={embed.embedData.exampleLangs}
       />
     );
-  } else {
-    return (
-      <ConceptNotionV2
-        title={concept.title}
-        content={parsedContent}
-        metaImage={concept.metaImage}
-        copyright={concept.copyright}
-        source={concept.source}
-        visualElement={visualElement}
-        heartButton={HeartButton}
-        conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
-        conceptType={concept.conceptType}
-        glossData={concept.glossData}
-        lang={lang}
-        exampleIds={embed.embedData.exampleIds}
-        exampleLangs={embed.embedData.exampleLangs}
-      />
-    );
   }
+  return (
+    <ConceptNotionV2
+      title={concept.title}
+      content={parsedContent}
+      copyright={concept.copyright}
+      source={concept.source}
+      visualElement={visualElement}
+      heartButton={HeartButton}
+      conceptHeartButton={HeartButton && <HeartButton embed={embed} />}
+      conceptType={concept.conceptType}
+      glossData={concept.glossData}
+      lang={lang}
+      exampleIds={embed.embedData.exampleIds}
+      exampleLangs={embed.embedData.exampleLangs}
+      showTitle={renderContext !== "embed"}
+    />
+  );
 };
 
 interface InlineConceptProps extends ConceptNotionData {
@@ -175,37 +177,29 @@ interface InlineConceptProps extends ConceptNotionData {
   conceptHeartButton?: ReactNode;
   exampleIds?: string;
   exampleLangs?: string;
+  setSelection?: (e: MouseEvent) => void;
 }
 
-const BaselineIcon = styled.span`
-  display: block;
-  border-bottom: 5px double currentColor;
-`;
-
-const NotionButton = styled.button`
+const NotionButton = styled.span`
   background: none;
   border: none;
   font-family: inherit;
   font-style: inherit;
   line-height: 1em;
-  padding: 0 0 4px 0;
-  margin-bottom: -4px;
   text-decoration: none;
   position: relative;
   text-align: left;
-  display: inline;
-  color: ${colors.notion.dark};
+  color: ${colors.concept.text};
   cursor: pointer;
   &:focus,
   &:hover,
   &:active,
   &[data-open="true"] {
-    color: ${colors.notion.dark};
-    background-color: ${colors.notion.light};
-    [data-baseline-icon] {
-      border-color: currentColor;
-    }
+    color: ${colors.concept.text};
+    background-color: ${colors.concept.light};
   }
+  display: inline;
+  border-bottom: 5px double currentColor;
 `;
 
 const StyledAnchor = styled(Anchor)`
@@ -222,87 +216,109 @@ const StyledAnchorSpan = styled.span`
 `;
 
 const getModalPosition = (anchor: HTMLElement) => {
-  const article = anchor.closest(".c-article");
+  const article = anchor.closest("[data-ndla-article]");
   const articlePos = article?.getBoundingClientRect();
   const anchorPos = anchor.getBoundingClientRect();
   return anchorPos.top - (articlePos?.top || -window.scrollY) + 30; // add 30 so that position is under the word
 };
 
-export const InlineConcept = ({
-  title,
-  content,
-  copyright,
-  source,
-  visualElement,
-  linkText,
-  heartButton,
-  conceptHeartButton,
-  glossData,
-  conceptType,
-  headerButtons,
-  lang,
-  exampleIds,
-  exampleLangs,
-}: InlineConceptProps) => {
-  const { t } = useTranslation();
-  const anchorRef = useRef<HTMLDivElement>(null);
-  const [modalPos, setModalPos] = useState(-9999);
+export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
+  (
+    {
+      title,
+      content,
+      copyright,
+      source,
+      visualElement,
+      linkText,
+      heartButton,
+      conceptHeartButton,
+      glossData,
+      conceptType,
+      headerButtons,
+      lang,
+      exampleIds,
+      exampleLangs,
+      setSelection,
+      ...rest
+    },
+    ref,
+  ) => {
+    const { t } = useTranslation();
+    const anchorRef = useRef<HTMLDivElement>(null);
+    const [modalPos, setModalPos] = useState(-9999);
 
-  const onOpenChange = useCallback((open: boolean) => {
-    if (open) {
-      const anchor = anchorRef.current;
-      if (anchor) {
-        const top = getModalPosition(anchor);
-        setModalPos(top);
+    const onOpenChange = useCallback((open: boolean) => {
+      if (open) {
+        const anchor = anchorRef.current;
+        if (anchor) {
+          const top = getModalPosition(anchor);
+          setModalPos(top);
+        }
+      } else {
+        setModalPos(-9999);
       }
-    } else {
-      setModalPos(-9999);
-    }
-  }, []);
+    }, []);
 
-  return (
-    <Root modal={isMobile} onOpenChange={onOpenChange}>
-      <StyledAnchor ref={anchorRef} asChild>
-        <StyledAnchorSpan />
-      </StyledAnchor>
-      <Trigger asChild>
-        <NotionButton data-open={modalPos !== -9999}>
-          {linkText}
-          {<BaselineIcon data-baseline-icon />}
-        </NotionButton>
-      </Trigger>
-      <Portal container={(anchorRef.current?.closest(".c-article") as HTMLElement | null) || undefined}>
-        <PopoverWrapper top={modalPos}>
-          <Content avoidCollisions={false} side="bottom" asChild>
-            <ConceptNotionV2
-              title={title}
-              content={content}
-              copyright={copyright}
-              source={source}
-              visualElement={visualElement}
-              inPopover
-              heartButton={heartButton}
-              headerButtons={headerButtons}
-              conceptHeartButton={conceptHeartButton}
-              lang={lang}
-              closeButton={
-                <Close asChild>
-                  <IconButtonV2 aria-label={t("close")} variant="ghost">
-                    <Cross />
-                  </IconButtonV2>
-                </Close>
-              }
-              conceptType={conceptType}
-              glossData={glossData}
-              exampleIds={exampleIds}
-              exampleLangs={exampleLangs}
-            />
-          </Content>
-        </PopoverWrapper>
-      </Portal>
-    </Root>
-  );
-};
+    const preventAutoFocusInEditor = useCallback(
+      (e: MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setSelection?.(e);
+      },
+      [setSelection],
+    );
+
+    return (
+      <Root modal={isMobile} onOpenChange={onOpenChange}>
+        <StyledAnchor ref={anchorRef} asChild>
+          <StyledAnchorSpan contentEditable={false} />
+        </StyledAnchor>
+        <Trigger asChild>
+          <NotionButton
+            onMouseDown={(e) => (setSelection ? preventAutoFocusInEditor(e.nativeEvent) : undefined)}
+            data-open={modalPos !== -9999}
+            role="button"
+            tabIndex={0}
+            ref={ref}
+            {...rest}
+          >
+            {linkText}
+          </NotionButton>
+        </Trigger>
+        <Portal container={(anchorRef.current?.closest("[data-ndla-article]") as HTMLElement | null) || undefined}>
+          <PopoverWrapper top={modalPos}>
+            <Content avoidCollisions={false} side="bottom" asChild>
+              <ConceptNotionV2
+                title={title}
+                content={content}
+                copyright={copyright}
+                source={source}
+                visualElement={visualElement}
+                inPopover
+                heartButton={heartButton}
+                headerButtons={headerButtons}
+                conceptHeartButton={conceptHeartButton}
+                lang={lang}
+                closeButton={
+                  <Close asChild>
+                    <IconButtonV2 aria-label={t("close")} variant="ghost">
+                      <Cross />
+                    </IconButtonV2>
+                  </Close>
+                }
+                conceptType={conceptType}
+                glossData={glossData}
+                exampleIds={exampleIds}
+                exampleLangs={exampleLangs}
+              />
+            </Content>
+          </PopoverWrapper>
+        </Portal>
+      </Root>
+    );
+  },
+);
 
 interface ConceptProps extends ConceptNotionData {
   fullWidth?: boolean;
@@ -350,7 +366,7 @@ export const BlockConcept = ({
   return (
     <Root modal={isMobile} onOpenChange={onOpenChange}>
       <StyledAnchor ref={anchorRef} />
-      <Figure resizeIframe type={fullWidth ? "full" : "full-column"}>
+      <Figure type={fullWidth ? "full" : "full-column"}>
         {conceptType === "concept" ? (
           <UINotion
             id=""
@@ -372,14 +388,12 @@ export const BlockConcept = ({
                           {visualElement.resource === "image" ? (
                             <NotionImage
                               type={visualElementType}
-                              id={""}
                               src={visualElement.data.image.imageUrl}
                               alt={visualElement.data.alttext.alttext}
                             />
                           ) : metaImage ? (
                             <NotionImage
                               type={visualElementType}
-                              id={""}
                               src={metaImage?.url ?? ""}
                               alt={metaImage?.alt ?? ""}
                             />
@@ -391,7 +405,7 @@ export const BlockConcept = ({
                   <Portal
                     container={
                       typeof document !== "undefined"
-                        ? (document.querySelector(".c-article") as HTMLElement | null) || undefined
+                        ? (document.querySelector("[data-ndla-article]") as HTMLElement | null) || undefined
                         : undefined
                     }
                   >

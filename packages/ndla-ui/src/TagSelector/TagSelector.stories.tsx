@@ -10,7 +10,6 @@ import { useState } from "react";
 import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
 import TagSelector from "./TagSelector";
-import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * Komponent for å tagge noe, primært tiltenkt Min NDLA
@@ -21,7 +20,6 @@ export default {
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   argTypes: {
     onChange: { control: false },

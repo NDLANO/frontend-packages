@@ -135,7 +135,8 @@ const InfoPart = ({ isSelected, disabledText }: InfoPartProps) => {
         <Check aria-hidden={true} />
       </StyledisSelected>
     );
-  } else if (disabledText) {
+  }
+  if (disabledText) {
     return (
       <StyledIsDisabled>
         {disabledText}

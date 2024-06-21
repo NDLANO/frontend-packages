@@ -15,15 +15,11 @@ import { Pencil } from "@ndla/icons/action";
 import { HorizontalMenu } from "@ndla/icons/contentType";
 import { DeleteForever } from "@ndla/icons/editor";
 import Folder from "./Folder";
-import { defaultParameters } from "../../../../../stories/defaults";
 
 export default {
   title: "My NDLA/Folder",
   component: Folder,
   tags: ["autodocs"],
-  parameters: {
-    ...defaultParameters,
-  },
   argTypes: {
     menu: {
       control: false,
@@ -61,6 +57,7 @@ export default {
       </DropdownMenu>
     ),
     isShared: true,
+    isOwner: true,
   },
 } as Meta<typeof Folder>;
 
@@ -68,6 +65,10 @@ export const FolderStory: StoryObj<typeof Folder> = {};
 
 export const WithoutMenu: StoryObj<typeof Folder> = {
   args: { menu: undefined },
+};
+
+export const SharedByOthers: StoryObj<typeof Folder> = {
+  args: { author: "Lise Lærer", isOwner: false },
 };
 
 const BlockWrapper = styled.div`

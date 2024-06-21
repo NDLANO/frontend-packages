@@ -38,7 +38,7 @@ export interface ConceptNotionData {
   lang?: string;
 }
 
-interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotionData {
+interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, Omit<ConceptNotionData, "metaImage"> {
   className?: string;
   closeButton?: ReactNode;
   previewAlt?: boolean;
@@ -50,6 +50,7 @@ interface ConceptNotionProps extends RefAttributes<HTMLDivElement>, ConceptNotio
   conceptHeartButton?: ReactNode;
   exampleIds?: string;
   exampleLangs?: string;
+  showTitle?: boolean;
 }
 
 const NotionDialogText = styled.div`
@@ -94,6 +95,7 @@ const notionContentCss = css`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     width: 720px;
+    max-width: 60vw;
   }
 
   ${mq.range({ until: breakpoints.tablet })} {
@@ -112,19 +114,31 @@ const NotionHeader = styled.div`
   border-bottom: 2px solid ${colors.brand.tertiary};
   padding-bottom: ${spacing.small};
   h1 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     flex-grow: 1;
     margin: 0;
     font-weight: ${fonts.weight.bold};
     ${fonts.sizes("22px", 1.2)};
   }
   small {
-    &[data-is-concept="true"] {
-      border-left: 1px solid ${colors.brand.greyLight};
-      padding-left: ${spacing.small};
-      margin-left: ${spacing.xsmall};
-    }
+    display: flex;
     ${fonts.sizes("20px", 1.2)};
     font-weight: ${fonts.weight.normal};
+  }
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    &[data-is-concept="true"] {
+      small:before {
+        display: inline-flex;
+        align-self: center;
+        margin: 0 ${spacing.xsmall};
+        content: "";
+        height: ${spacing.normal};
+        width: 1px;
+        background-color: ${colors.brand.greyLight};
+      }
+    }
   }
   &[data-is-concept="false"] {
     margin-bottom: ${spacing.large};
@@ -139,8 +153,7 @@ const ListWrapper = styled.div`
 
 const StyledNotionDialogContent = styled(NotionDialogContent)`
   padding-top: ${spacing.small};
-  .c-figure {
-    left: unset !important;
+  figure {
     width: 100% !important;
     padding: 0;
     margin: 0;
@@ -190,6 +203,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       lang,
       exampleIds,
       exampleLangs,
+      showTitle = true,
       ...rest
     },
     ref,
@@ -200,10 +214,12 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
       <div css={inPopover ? notionContentCss : undefined} {...rest} ref={ref}>
         <ContentSpacing data-is-concept={isConcept}>
           <NotionHeader data-is-concept={isConcept}>
-            <h1>
-              {isConcept && title.title}
-              {<small data-is-concept={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
-            </h1>
+            {showTitle && (
+              <h1>
+                {isConcept && title.title}
+                {<small data-is-concept={isConcept}>{t(`searchPage.resultType.${conceptType}`)}</small>}
+              </h1>
+            )}
             <ButtonWrapper>
               {headerButtons}
               {closeButton}

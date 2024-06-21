@@ -11,8 +11,8 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 as Button } from "@ndla/button";
 import { Plus } from "@ndla/icons/action";
-import Tooltip from "@ndla/tooltip";
-import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { Tooltip } from "@ndla/tooltip";
+import { IFolder } from "@ndla/types-backend/myndla-api";
 
 interface AddFolderButtonProps {
   canAddFolder: boolean;

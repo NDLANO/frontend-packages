@@ -11,8 +11,9 @@ import { Meta, StoryObj } from "@storybook/react";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
 import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
+import { ArticleWrapper } from "../Article";
+import LayoutItem, { OneColumn } from "../Layout";
 
 const embedData: ImageEmbedData = {
   resource: "image",
@@ -93,18 +94,17 @@ const meta: Meta<typeof ImageEmbed> = {
   },
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
-        <article className="c-article c-article--clean">
-          <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+      <OneColumn>
+        <ArticleWrapper modifier="clean">
+          <LayoutItem layout="center">
             <section>
               <Story />
             </section>
-          </section>
-        </article>
-      </div>
+          </LayoutItem>
+        </ArticleWrapper>
+      </OneColumn>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;
@@ -130,6 +130,21 @@ export const Failed: StoryObj<typeof ImageEmbed> = {
       resource: "image",
       status: "error",
       embedData: embedData,
+    },
+  },
+};
+
+export const HiddenByline: StoryObj<typeof ImageEmbed> = {
+  args: {
+    heartButton: StoryFavoriteButton,
+    embed: {
+      resource: "image",
+      status: "success",
+      embedData: {
+        ...embedData,
+        size: "full-hide-byline",
+      },
+      data: metaData,
     },
   },
 };

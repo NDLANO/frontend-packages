@@ -11,12 +11,10 @@ import AccordionContent from "./AccordionContent";
 import AccordionHeader from "./AccordionHeader";
 import AccordionItem from "./AccordionItem";
 import AccordionRoot from "./AccordionRoot";
-import { defaultParameters } from "../../../stories/defaults";
 
 const meta: Meta<typeof AccordionRoot> = {
   title: "Components/Accordion",
   component: AccordionRoot,
-  parameters: defaultParameters,
   tags: ["autodocs"],
   args: {
     type: "single",

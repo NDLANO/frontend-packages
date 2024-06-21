@@ -19,8 +19,7 @@ const StyledContent = styled(RadixTooltip.Content)`
   border-radius: ${misc.borderRadius};
   padding: ${spacing.xsmall} ${spacing.small};
   font-family: ${fonts.sans};
-  ${fonts.sizes("16px", "18px")};
-  line-height: 1.2;
+  ${fonts.size.text.metaText.small};
   font-weight: ${fonts.weight.normal};
   text-align: center;
   white-space: normal;

@@ -8,7 +8,6 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import OrderedList from "./OrderedList";
-import { defaultParameters } from "../../../../stories/defaults";
 
 /**
  * Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet annerledes.
@@ -19,7 +18,6 @@ export default {
   component: OrderedList,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   render: ({ ...args }) => (
     <OrderedList {...args}>
@@ -84,7 +82,7 @@ export const WithNumbersAndLetters: StoryFn = () => (
 );
 
 export const StartingAtFive: StoryFn = () => (
-  <OrderedList start={5} data-type="letters" className="ol-reset-5">
+  <OrderedList start={5} data-type="letters">
     <li>Listepunkt 1</li>
     <li>Listepunkt 2</li>
     <li>
@@ -99,7 +97,7 @@ export const StartingAtFive: StoryFn = () => (
             <li>Listepunkt 2</li>
             <li>
               Listepunkt 3
-              <OrderedList className="ol-reset-5" start={5}>
+              <OrderedList start={5}>
                 <li>Listepunkt 1</li>
                 <li>Listepunkt 2</li>
                 <li>Listepunkt 3</li>

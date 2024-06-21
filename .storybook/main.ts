@@ -6,24 +6,16 @@
  *
  */
 
-import { StorybookConfig } from "@storybook/react-webpack5";
+import { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-  stories: ["../packages/**/*.stories.@(tsx|mdx|jsx)", "../stories/**/*.stories.@(tsx|mdx)"],
+  stories: ["../packages/**/*.stories.@(tsx|jsx)", "../stories/**/*.stories.@(tsx|jsx)"],
   staticDirs: ["static"],
   addons: [
     "@storybook/addon-a11y",
     "@storybook/addon-links",
     "@storybook/addon-actions",
     "@storybook/addon-viewport",
-    {
-      name: "@storybook/addon-styling",
-      options: {
-        sass: {
-          implementation: require("sass"),
-        },
-      },
-    },
     "@storybook/addon-docs",
     "@storybook/addon-controls",
     "@storybook/addon-backgrounds",
@@ -31,21 +23,40 @@ const config: StorybookConfig = {
     "@storybook/addon-measure",
     "@storybook/addon-outline",
   ],
-  framework: {
-    name: "@storybook/react-webpack5",
-    options: {},
+  core: {
+    builder: "@storybook/builder-vite",
   },
-  babel: async (options) => {
-    return {
-      ...options,
-      presets: [
-        ["@babel/preset-env", { modules: false }],
-        "@babel/preset-typescript",
-        ["@babel/preset-react", { runtime: "automatic", importSource: "@emotion/react" }],
+  viteFinal: async (config) => {
+    // Storybook imports these as CJS modules by default, but Vite wants them to be ESM.
+    // By importing them dynamically we can ensure they are ESM.
+    // TODO: Update this when Storybook no longer uses these as CJS.
+    const { mergeConfig } = await import("vite");
+    const react = await import("@vitejs/plugin-react");
+    const tsconfigPaths = await import("vite-tsconfig-paths");
+    const pandaPostCss = await import("@pandacss/dev/postcss");
+    return mergeConfig(config, {
+      css: {
+        postcss: {
+          plugins: [pandaPostCss.default()],
+        },
+      },
+      plugins: [
+        tsconfigPaths.default({ root: "../" }),
+        react.default({
+          jsxImportSource: "@emotion/react",
+          babel: {
+            plugins: [["@emotion", { autoLabel: "always" }]],
+          },
+        }),
       ],
-      plugins: [["@emotion", { autoLabel: "always" }]],
-    };
+    });
   },
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+    // uncomment this for quicker HMR during dev.
+    // reactDocgen: "react-docgen",
+  },
+  framework: "@storybook/react-vite",
   /* For at "Show code" skal legge seg bakerst slik at elementer som drop-down ikke blir skjult bak den */
   previewHead: (head) => `
   <style>

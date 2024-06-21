@@ -18,6 +18,7 @@ import {
   useState,
 } from "react";
 import styled from "@emotion/styled";
+import { spacing } from "@ndla/core";
 import { composeRefs } from "@ndla/util";
 
 type Merge<T, P> = P & Omit<T, keyof P>;
@@ -40,6 +41,7 @@ export interface FormControlProps extends FormControlOptions {
 const StyledFormControl = styled.div`
   display: flex;
   flex-direction: column;
+  gap: ${spacing.xsmall};
 `;
 
 type FormControlContextType = ReturnType<typeof useFormControlProvider>;
@@ -72,8 +74,8 @@ const useFormControlProvider = ({ id: idProp, isRequired, isDisabled, isInvalid 
       return {
         ...props,
         ref: forwardedRef,
-        "data-disabled": isDisabled,
-        "data-invalid": isInvalid,
+        "data-disabled": props?.["data-disabled"] ? props["data-disabled"] : isDisabled,
+        "data-invalid": props?.["data-invalid"] ? props["data-invalid"] : isInvalid,
         id: props.id !== undefined ? props.id : labelId,
         htmlFor: props.htmlFor !== undefined ? props.htmlFor : id,
       };
@@ -153,7 +155,7 @@ export interface UseFormControlProps extends FormControlOptions {
   "aria-describedby"?: string;
 }
 
-export const useFormControlProps = ({
+export const useFormControlProps = <T extends UseFormControlProps>({
   id,
   disabled,
   required,
@@ -161,7 +163,7 @@ export const useFormControlProps = ({
   isInvalid,
   isRequired,
   ...rest
-}: UseFormControlProps) => {
+}: T) => {
   const field = useFormControlContext();
   const labelIds = rest["aria-describedby"] ? [rest["aria-describedby"]] : [];
   if (field?.hasErrorText && field?.isInvalid) {
@@ -181,7 +183,7 @@ export const useFormControlProps = ({
   };
 };
 
-export const useFormControl = (props: UseFormControlProps) => {
+export const useFormControl = <T extends UseFormControlProps>(props: T) => {
   const { isDisabled, isInvalid, isRequired, ...rest } = useFormControlProps(props);
   return {
     ...rest,

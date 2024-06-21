@@ -9,7 +9,7 @@
 import styled from "@emotion/styled";
 import { colors, spacing } from "@ndla/core";
 import { Download } from "@ndla/icons/common";
-import SafeLink from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { Text } from "@ndla/typography";
 import { FileFormat } from "./File";
 

@@ -12,7 +12,7 @@ import styled from "@emotion/styled";
 import { Root as PopoverRoot, PopoverContent, PopoverTrigger, PopoverPortal } from "@radix-ui/react-popover";
 import { Root as SliderRoot, Track, Range, SliderThumb } from "@radix-ui/react-slider";
 import { ButtonV2, IconButtonV2 } from "@ndla/button";
-import { breakpoints, colors, fonts, mq, spacing, stackOrder } from "@ndla/core";
+import { breakpoints, colors, fonts, misc, mq, spacing, stackOrder } from "@ndla/core";
 import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from "@ndla/dropdown-menu";
 import { Back15, Forward15 } from "@ndla/icons/action";
 import { Play, Pause, VolumeUp } from "@ndla/icons/common";
@@ -82,11 +82,11 @@ const SpeedValueButton = styled(ButtonV2)`
 
 const SpeedSelectedMark = styled.span`
   align-self: flex-start;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   background: #d1372e;
   width: 6px;
   height: 6px;
-  margin: 6px 0 0 2px;
+  margin: ${spacing.xsmall} 0 0 2px;
 `;
 
 const Time = styled.div`
@@ -132,7 +132,7 @@ const StyledThumb = styled(SliderThumb)`
   width: 20px;
   height: 20px;
   background: #5cbc80;
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
   outline: none;
 `;
 
@@ -188,7 +188,7 @@ const VolumeSliderHandle = styled(SliderThumb)`
   width: 20px;
   height: 20px;
   background: ${colors.brand.primary};
-  border-radius: 50%;
+  border-radius: ${misc.borderRadiusLarge};
 `;
 
 const formatTime = (seconds: number) => {
@@ -319,13 +319,8 @@ const Controls = ({ src, title }: Props) => {
           </DropdownTrigger>
           <SpeedList side="top">
             {speedValues.map((speed) => (
-              <DropdownItem key={speed}>
-                <SpeedValueButton
-                  variant="ghost"
-                  colorTheme="greyLighter"
-                  size="small"
-                  onSelect={() => setSpeedValue(speed)}
-                >
+              <DropdownItem key={speed} onSelect={() => setSpeedValue(speed)}>
+                <SpeedValueButton variant="ghost" colorTheme="greyLighter" size="small">
                   {speed}x{speed === speedValue && <SpeedSelectedMark />}
                 </SpeedValueButton>
               </DropdownItem>

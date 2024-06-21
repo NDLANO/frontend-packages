@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import Breadcrumb from "./Breadcrumb";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const items = [
   {
@@ -38,7 +37,6 @@ export default {
   },
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
 } as Meta<typeof Breadcrumb>;
 
@@ -50,10 +48,6 @@ export const CollapseFirst: StoryObj<typeof Breadcrumb> = {
 
 export const CollapseLast: StoryObj<typeof Breadcrumb> = {
   args: { collapseLast: true },
-};
-
-export const AutoCollapse: StoryObj<typeof Breadcrumb> = {
-  args: { autoCollapse: true },
 };
 
 export const CustomSeparator: StoryObj<typeof Breadcrumb> = {

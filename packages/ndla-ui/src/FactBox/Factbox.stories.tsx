@@ -11,7 +11,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { spacing } from "@ndla/core";
 import { Heading, Text } from "@ndla/typography";
 import FactBox from "./FactBox";
-import { defaultParameters } from "../../../../stories/defaults";
 
 const Wrapper = styled.div`
   padding: ${spacing.normal};
@@ -26,7 +25,6 @@ export default {
   tags: ["autodocs"],
   paramemeters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   decorators: [
     (Story) => (

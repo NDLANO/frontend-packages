@@ -6,5 +6,4 @@
  *
  */
 
-import Tooltip from "./Tooltip/Tooltip";
-export default Tooltip;
+export { default as Tooltip } from "./Tooltip/Tooltip";

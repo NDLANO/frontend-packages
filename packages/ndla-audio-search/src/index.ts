@@ -6,6 +6,4 @@
  *
  */
 
-import AudioSearch from "./AudioSearch";
-
-export default AudioSearch;
+export { default as AudioSearch } from "./AudioSearch";

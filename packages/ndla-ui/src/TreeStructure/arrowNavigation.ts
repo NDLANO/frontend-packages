@@ -7,7 +7,7 @@
  */
 
 import { KeyboardEvent } from "react";
-import { IFolder } from "@ndla/types-backend/learningpath-api";
+import { IFolder } from "@ndla/types-backend/myndla-api";
 
 const navigateVertical = (
   visibleFolders: IFolder[],

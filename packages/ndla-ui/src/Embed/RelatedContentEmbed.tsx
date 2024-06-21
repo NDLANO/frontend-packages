@@ -6,6 +6,7 @@
  *
  */
 
+import punycode from "punycode/";
 import { useTranslation } from "react-i18next";
 import { RelatedContentMetaData } from "@ndla/types-embed";
 import { contentTypeMapping } from "../model/ContentType";
@@ -42,23 +43,25 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
         type={type}
       />
     );
-  } else if (typeof embedData.url === "string") {
+  }
+  if (typeof embedData.url === "string") {
     return (
       <RelatedArticle
         title={embedData.title ?? ""}
         introduction=""
         to={embedData.url}
         target="_blank"
-        type={"external-learning-resources"}
+        type={"external"}
         linkInfo={`${t("related.linkInfo")} ${
           // Get domain name only from url
-          embedData.url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n]+)/im)?.[1] || embedData.url
+          punycode.toUnicode(
+            embedData.url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n]+)/im)?.[1] || embedData.url,
+          )
         }`}
       />
     );
-  } else {
-    return <></>;
   }
+  return <></>;
 };
 
 export default RelatedContentEmbed;

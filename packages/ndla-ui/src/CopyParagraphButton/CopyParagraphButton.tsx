@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, stackOrder } from "@ndla/core";
 import { Link } from "@ndla/icons/common";
-import Tooltip from "@ndla/tooltip";
+import { Tooltip } from "@ndla/tooltip";
 import { copyTextToClipboard } from "@ndla/util";
 
 const ContainerDiv = styled.div`

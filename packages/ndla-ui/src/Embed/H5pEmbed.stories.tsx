@@ -9,7 +9,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { H5pEmbedData, H5pData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
-import { defaultParameters } from "../../../../stories/defaults";
+import { ArticleWrapper } from "../Article";
+import LayoutItem, { OneColumn } from "../Layout";
 
 const embedData: H5pEmbedData = {
   resource: "h5p",
@@ -51,18 +52,17 @@ const meta: Meta<typeof H5pEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="o-wrapper">
-        <article className="c-article c-article--clean">
-          <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+      <OneColumn>
+        <ArticleWrapper modifier="clean">
+          <LayoutItem layout="center">
             <section>
               <Story />
             </section>
-          </section>
-        </article>
-      </div>
+          </LayoutItem>
+        </ArticleWrapper>
+      </OneColumn>
     ),
   ],
-  parameters: defaultParameters,
 };
 
 export default meta;

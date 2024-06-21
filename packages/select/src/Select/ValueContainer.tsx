@@ -6,7 +6,6 @@
  *
  */
 
-import isArray from "lodash/isArray";
 import { useTranslation } from "react-i18next";
 import { ValueContainerProps } from "react-select";
 import styled from "@emotion/styled";
@@ -27,7 +26,7 @@ const ValueContainer = <T extends boolean>({
 }: ValueContainerProps<Option, T>) => {
   const { t } = useTranslation();
 
-  if (isArray(children)) {
+  if (Array.isArray(children)) {
     const [values, input] = children;
     const isTyping = input?.props.value;
 

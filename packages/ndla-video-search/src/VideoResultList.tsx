@@ -7,9 +7,11 @@
  */
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { ButtonV2, CloseButton } from "@ndla/button";
+import { ButtonV2, IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
+import { Cross } from "@ndla/icons/action";
 import { PanoramaPhotosphere } from "@ndla/icons/common";
 import { getLicenseByNBTitle } from "@ndla/licenses";
 import { LicenseByline } from "@ndla/notion";
@@ -116,9 +118,9 @@ interface VideoListItemProps {
 }
 
 export const VideoListItem = ({ video, onSelectVideo, translations, locale }: VideoListItemProps) => {
+  const { t } = useTranslation();
   const [isPreviewing, setIsPreviewing] = useState(false);
-  const license =
-    video.custom_fields && video.custom_fields.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : "";
+  const license = video.custom_fields?.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : "";
   return (
     <StyledListElement>
       <ItemWrapper>
@@ -146,7 +148,14 @@ export const VideoListItem = ({ video, onSelectVideo, translations, locale }: Vi
       </ItemWrapper>
       {isPreviewing && (
         <PreviewWrapper>
-          <CloseButton onClick={() => setIsPreviewing(false)} />
+          <IconButtonV2
+            variant="ghost"
+            aria-label={t("close")}
+            title={t("close")}
+            onClick={() => setIsPreviewing(false)}
+          >
+            <Cross />
+          </IconButtonV2>
           <PreviewIframe
             title={video.name}
             src={`//players.brightcove.net/${video.account_id}/BkLm8fT_default/index.html?videoId=${video.id}`}

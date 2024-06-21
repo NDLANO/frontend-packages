@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import FieldHeader from "./FieldHeader";
-import { defaultParameters } from "../../../stories/defaults";
 
 export default {
   title: "Forms/FieldHeader",
@@ -16,7 +15,6 @@ export default {
   component: FieldHeader,
   parameters: {
     inlineStories: true,
-    ...defaultParameters,
   },
   args: {
     title: "This is a title",

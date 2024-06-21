@@ -25,7 +25,7 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
   useEffect(() => {
     const iframe = iframeRef.current;
     if (iframe) {
-      const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
+      const [width, height] = [Number.parseInt(iframe.width), Number.parseInt(iframe.height)];
       iframe.style.aspectRatio = `${width ? width : 16}/${height ? height : 9}`;
       iframe.width = "";
       iframe.height = "";
@@ -55,12 +55,6 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
     );
   }
 
-  const resize = !embedData.url.includes("trinket.io");
-
-  const fullColumnClass = isConcept ? "c-figure--full-column" : "";
-  const resizeClass = resize ? "c-figure--resize" : "";
-  const classes = `c-figure ${fullColumnClass} ${resizeClass}`;
-
   const { width, height, title, url } = embedData;
 
   const strippedWidth = typeof width === "number" ? width : width?.replace(/\s*px/, "");
@@ -68,9 +62,7 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
   const urlOrTitle = title || url;
 
   return (
-    //@ts-ignore
-    // eslint-disable-next-line react/no-unknown-property
-    <figure className={classes} resizeiframe={`${resize}`}>
+    <Figure type={isConcept ? "full-column" : undefined}>
       <iframe
         ref={iframeRef}
         title={urlOrTitle}
@@ -80,11 +72,12 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
         height={strippedHeight}
         // eslint-disable-next-line react/no-unknown-property
         allowFullScreen
+        allow="encrypted-media"
         scrolling="no"
         frameBorder="0"
         loading="lazy"
       />
-    </figure>
+    </Figure>
   );
 };
 

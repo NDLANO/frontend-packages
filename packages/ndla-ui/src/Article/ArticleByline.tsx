@@ -9,6 +9,7 @@
 import { TFunction } from "i18next";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import { AccordionRoot, AccordionHeader, AccordionContent, AccordionItem } from "@ndla/accordion";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
@@ -37,7 +38,7 @@ const TextWrapper = styled.div`
     flex-direction: column-reverse;
     gap: ${spacing.xsmall};
   }
-  &[data-learningPath="true"] {
+  &[data-learning-path="true"] {
     flex-direction: column;
     flex-direction: column-reverse;
     gap: ${spacing.xsmall};
@@ -103,7 +104,7 @@ const LicenseWrapper = styled.div`
 
 const StyledAccordionHeader = styled(AccordionHeader)`
   background-color: ${colors.brand.lightest};
-  font-size: ${fonts.sizes("16px", "29px")};
+  ${fonts.sizes("16px", "29px")};
   font-weight: ${fonts.weight.semibold};
 
   &[data-background-color="white"][data-state="closed"] {
@@ -133,7 +134,9 @@ const ArticleByline = ({
   bylineType = "article",
 }: Props) => {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
+  const accordionItemValue = "rulesForUse";
 
   const onHashChange = useCallback(
     (e: HashChangeEvent) => {
@@ -149,6 +152,10 @@ const ArticleByline = ({
   );
 
   useEffect(() => {
+    setOpenAccordions((prev) => prev.filter((state) => state !== accordionItemValue));
+  }, [pathname]);
+
+  useEffect(() => {
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, [onHashChange]);
@@ -160,7 +167,7 @@ const ArticleByline = ({
   return (
     <Wrapper>
       {displayByline && (
-        <TextWrapper data-learningPath={bylineType === "learningPath"}>
+        <TextWrapper data-learning-path={bylineType === "learningPath"}>
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (
@@ -181,7 +188,7 @@ const ArticleByline = ({
       )}
       <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
         {licenseBox && (
-          <AccordionItem value="rulesForUse">
+          <AccordionItem value={accordionItemValue}>
             <StyledAccordionHeader headingLevel="h2" data-background-color={accordionHeaderVariant}>
               {t("article.useContent")}
             </StyledAccordionHeader>

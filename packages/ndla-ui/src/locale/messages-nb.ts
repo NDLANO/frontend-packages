@@ -418,6 +418,7 @@ const messages = {
         minimizeByline: "Skjul byline",
       },
       licenseText: "Dette bildet har lisensen",
+      restrictedUseText: "Dette bildet har",
       source: "Kilde",
       title: "Tittel",
     },
@@ -427,18 +428,21 @@ const messages = {
       rules: "Regler for bruk av teksten",
       published: "Publiseringsdato",
       licenseText: "Denne teksten har lisensen",
+      restrictedUseText: "Denne teksten har",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description: "Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.",
       rules: "Regler for bruk av lydfilen",
       licenseText: "Denne lydfilen har lisensen",
+      restrictedUseText: "Denne lydfilen har",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Husk å kopiere teksten som skal legges ved podkasten der du bruker den.",
       rules: "Regler for bruk av podkasten",
       licenseText: "Denne podkasten har lisensen",
+      restrictedUseText: "Denne podkasten har",
     },
     video: {
       heading: "Slik gjenbruker du videoer",
@@ -448,6 +452,7 @@ const messages = {
         ariaLabel: "Åpne video i et nytt vindu",
       },
       licenseText: "Denne videoen har lisensen",
+      restrictedUseText: "Denne videoen har",
     },
     other: {
       heading: "Slik gjenbruker du annet innhold",
@@ -461,6 +466,7 @@ const messages = {
       description: "Du finner retningslinjene for bruk av innholdet i H5P-elementet",
       rules: "Regler for bruk av H5P",
       licenseText: "Denne interaktive oppgaven (H5P) har lisensen",
+      restrictedUseText: "Denne interaktive oppgaven (H5P) har",
     },
     concept: {
       heading: "Slik gjenbruker du forklaringer",
@@ -474,6 +480,7 @@ const messages = {
         hasCopiedTitle: "Innbyggingslenke kopiert",
       },
       licenseText: "Denne forklaringen har lisensen",
+      restrictedUseText: "Denne forklaringen har",
     },
     gloss: {
       heading: "Slik gjenbruker du gloser",
@@ -488,6 +495,7 @@ const messages = {
         hasCopiedTitle: "Innbyggingslenke kopiert",
       },
       licenseText: "Denne glosen har lisensen",
+      restrictedUseText: "Denne glosen har",
     },
     files: {
       heading: "Slik gjenbruker du filer",

@@ -12,9 +12,9 @@ import { getLocaleOrDefault, LicenseType, LicenseLocaleType, Locale } from "./ty
 const freeUseNB = "Offentlig eie";
 const freeUseNN = "Offentleg eige";
 const freeUseEN = "Public domain";
-const restrictedUseNB = "Begrenset bruk";
-const restrictedUseNN = "Begrensa bruk";
-const restrictedUseEN = "Restricted use";
+const restrictedUseNB = "Begrenset bruksrett";
+const restrictedUseNN = "Begrensa bruksrett";
+const restrictedUseEN = "Restricted right of use";
 const restrictedReuseNB = "Begrenset gjenbruk";
 const restrictedReuseNN = "Begrensa gjenbruk";
 const restrictedReuseEN = "Restricted reuse";

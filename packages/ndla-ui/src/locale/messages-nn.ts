@@ -418,6 +418,7 @@ const messages = {
         minimizeByline: "Skjul byline",
       },
       licenseText: "Dette biletet har lisensen",
+      restrictedUseText: "Dette biletet har",
       source: "Kjelde",
       title: "Tittel",
     },
@@ -427,18 +428,21 @@ const messages = {
       rules: "Reglar for bruk av teksten",
       published: "Publiseringsdato",
       licenseText: "Denne teksten har lisensen",
+      restrictedUseText: "Denne teksten har",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description: "Hugs å kopiera teksten som skal leggjast ved lydfila der du bruker ho.",
       rules: "Reglar for bruk av lydfila",
       licenseText: "Denne lydfila har lisensen",
+      restrictedUseText: "Denne lydfila har",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Hugs å kopiera teksten som skal leggjast ved podkasten der du bruker ho.",
       rules: "Reglar for bruk av podkasten",
       licenseText: "Denne podkasten har lisensen",
+      restrictedUseText: "Denne podkasten har",
     },
     video: {
       heading: "Slik gjenbruker du videoar",
@@ -448,6 +452,7 @@ const messages = {
         ariaLabel: "Opne video i eit nytt vindauge",
       },
       licenseText: "Denne videoen har lisensen",
+      restrictedUseText: "Denne videoen har",
     },
     other: {
       heading: "Slik gjenbruker du anna innhald",
@@ -461,6 +466,7 @@ const messages = {
       description: "Du finn retningslinjene for bruk av innhaldet i H5P-elementet.",
       rules: "Reglar for bruk av H5P",
       licenseText: "Denne interaktive oppgåva (H5p) har lisensen",
+      restrictedUseText: "Denne interaktive oppgåva (H5p) har",
     },
     concept: {
       embedlink: {
@@ -474,6 +480,7 @@ const messages = {
       rules: "Reglar for bruk av forklaring",
       title: "Tittel",
       licenseText: "Denne forklaringa har lisensen",
+      restrictedUseText: "Denne forklaringa har",
     },
     gloss: {
       embedlink: {
@@ -488,6 +495,7 @@ const messages = {
       title: "Tittel",
       showOrHideExamples: "Vis eller skjul eksempler",
       licenseText: "Denne glosa har lisensen",
+      restrictedUseText: "Denne glosa har",
     },
     files: {
       heading: "Slik gjenbruker du filer",

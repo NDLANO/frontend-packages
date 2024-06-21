@@ -421,6 +421,7 @@ const messages = {
       source: "Gaaltije",
       title: "Tihtele",
       licenseText: "Daate guvvie lisensem åtna",
+      restrictedUseText: "Daate guvvie",
     },
     text: {
       heading: "Slik gjenbruker du teksten",
@@ -428,6 +429,7 @@ const messages = {
       rules: "Njoelkedassh teekste-åtnoen bïjre",
       published: "Bæjkoehtimmiedaatoe",
       licenseText: "Daate teekste lisensem åtna",
+      restrictedUseText: "Daate teekste",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
@@ -435,12 +437,14 @@ const messages = {
         "Mujhtieh kopijem vaeltedh teeksteste mij edtja tjoejen baalte bïejesovvedh desnie gusnie tjoejem nuhtjh.",
       rules: "Njoelkedassh tjoejefijlen åtnoen bïjre",
       licenseText: "Daate tjoejefijle lisensem åtna",
+      restrictedUseText: "Daate tjoejefijle",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Husk å kopiere teksten som skal legges ved podkasten der du bruker den.",
       rules: "Regler for bruk av podkasten",
       licenseText: "Daate podkastem lisensine åtna",
+      restrictedUseText: "Daate podkastem",
     },
     video: {
       heading: "Slik gjenbruker du videoer",
@@ -451,6 +455,7 @@ const messages = {
         ariaLabel: "Rïhpesth videjovem orre klaassese",
       },
       licenseText: "Daate videoe lisensem åtna",
+      restrictedUseText: "Daate videoe",
     },
     other: {
       heading: "Slik gjenbruker du annet innhold",
@@ -464,6 +469,7 @@ const messages = {
       description: "Datne njoelkedasside sisvegeåtnoen bïjre gaavnh H5P-biehkesne",
       rules: "Njoelkedassh H5P-åtnoen bïjre",
       licenseText: "Daate interaktijve laavenjasse (H5P) lisensem åtna",
+      restrictedUseText: "Daate interaktijve laavenjasse (H5P)",
     },
     concept: {
       heading: "Slik gjenbruker du forklaringer",
@@ -477,6 +483,7 @@ const messages = {
         hasCopiedTitle: "Innbyggingslenke kopiert",
       },
       licenseText: "Daate buerkiestimmie lissietjaalegem",
+      restrictedUseText: "Daate buerkiestimmie",
     },
     gloss: {
       heading: "Naemhtie gïelem ikth vielie nåhtadidh",
@@ -491,6 +498,7 @@ const messages = {
         hasCopiedTitle: "Bigkeme svaalhtese kopijeradamme",
       },
       licenseText: "Daate gïele lisensem åtna",
+      restrictedUseText: "Daate gïele nænnoes",
     },
     files: {
       heading: "Slik gjenbruker du filer",

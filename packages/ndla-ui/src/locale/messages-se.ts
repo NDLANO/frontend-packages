@@ -421,6 +421,7 @@ const messages = {
       source: "Gáldu",
       title: "Tihttel",
       licenseText: "Dán govas lea liseansa",
+      restrictedUseText: "Dán govas lea",
     },
     text: {
       heading: "Ná geavahat teavstta ođđasit",
@@ -428,18 +429,21 @@ const messages = {
       rules: "Njuolggadusat teavstta geavaheapmái",
       published: "Almmuhanbeaivi",
       licenseText: "Dán teavsttas lea liseansa",
+      restrictedUseText: "Dán teavsttas lea",
     },
     audio: {
       heading: "Ná geavahat jietnafiilla ođđasit",
       description: "Muitte máŋget teavstta mii galgá čuovvut jietnafiilla doppe gos geavahuvvo.",
       rules: "Njuolggadusat jietnafiilla geavaheapmái",
       licenseText: "Dán jietnafiillas lea liseansa",
+      restrictedUseText: "Dán jietnafiillas lea",
     },
     podcast: {
       heading: "Ná geavahat podkásta ođđasit",
       description: "Muitte máŋget teavstta mii galgá čuovvut podkásta doppe gos geavahuvvo.",
       rules: "Njuolggadusat podkásta geavaheapmái",
       licenseText: "Dán podkasttas lea liseansa",
+      restrictedUseText: "Dán podkasttas lea",
     },
     video: {
       heading: "Ná geavahat video ođđasit",
@@ -449,6 +453,7 @@ const messages = {
         ariaLabel: "Raba video ođđa siiddus",
       },
       licenseText: "Dán videoi lea liseansa",
+      restrictedUseText: "Dán videoi lea",
     },
     other: {
       heading: "Ná geavahat eará sisdoalu ođđasit",
@@ -462,6 +467,7 @@ const messages = {
       description: "Njuolggadusaid sisdoalu geavaheapmái gávnnat H5P-elemeanttas",
       rules: "Njuolggadusat H5P geavaheapmái",
       licenseText: "Dát interaktiiva bargu (H5P) lea ožžon liseanssa",
+      restrictedUseText: "Dát interaktiiva bargu (H5P) lea ožžon",
     },
     concept: {
       heading: "Ná geavahat čilgehusaid ođđasit",
@@ -474,7 +480,8 @@ const messages = {
         copyTitle: "Máŋge sisahuksenliŋkka",
         hasCopiedTitle: "Sisahuksenliŋka máŋgejuvvon",
       },
-      licenseText: "Dán čilgehusas lea",
+      licenseText: "Dán čilgehusas lea liseansa",
+      restrictedUseText: "Dán čilgehusas lea",
     },
     gloss: {
       heading: "Movt geavahit ođđasit dajaldagaid",
@@ -490,6 +497,7 @@ const messages = {
         hasCopiedTitle: "Sajáiduhttinliŋka mángejuvvon",
       },
       licenseText: "Dán jietnadagas lea liseansa",
+      restrictedUseText: "Dán jietnadagas lea",
     },
     files: {
       heading: "Ná geavahat fiillaid ođđasit",

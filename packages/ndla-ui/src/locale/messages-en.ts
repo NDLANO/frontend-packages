@@ -404,6 +404,7 @@ const messages = {
       source: "Source",
       title: "Title",
       licenseText: "This image has the license",
+      restrictedUseText: "This image has",
     },
     text: {
       heading: "How to reuse the text",
@@ -411,18 +412,21 @@ const messages = {
       rules: "Rules for use of text",
       published: "Published",
       licenseText: "This text has the license",
+      restrictedUseText: "This text has",
     },
     audio: {
       heading: "How to reuse audio files",
       description: "Remember to copy the text to be attached to the audio where you use it.",
       rules: "Rules for use of audio file",
       licenseText: "This audio file has the license",
+      restrictedUseText: "This audio file has",
     },
     podcast: {
       heading: "How to reuse podcasts",
       description: "Remember to copy the text to be attached to the podcast where you use it.",
       rules: "Rules for use of podcast",
       licenseText: "This podcast has the license",
+      restrictedUseText: "This podcast has",
     },
     video: {
       heading: "How to reuse videos",
@@ -432,6 +436,7 @@ const messages = {
         ariaLabel: "Open video in new window",
       },
       licenseText: "This video has the license",
+      restrictedUseText: "This video has",
     },
     other: {
       heading: "How to reuse other content",
@@ -445,6 +450,7 @@ const messages = {
       description: "You will find guidelines for use of H5P content in the asset",
       rules: "Rules for use of H5P",
       licenseText: "This interactive task (H5P) is licensed",
+      restrictedUseText: "This interactive task (H5P) has",
     },
     concept: {
       heading: "How to reuse concept content",
@@ -458,6 +464,7 @@ const messages = {
         hasCopiedTitle: "Embed link copied",
       },
       licenseText: "This concept has the license",
+      restrictedUseText: "This concept has",
     },
     gloss: {
       heading: "How to reuse gloss content",
@@ -472,6 +479,7 @@ const messages = {
         hasCopiedTitle: "Embed link copied",
       },
       licenseText: "This gloss has the license",
+      restrictedUseText: "This gloss has",
     },
     files: {
       heading: "How to reuse files",

@@ -33,13 +33,7 @@ const config: StorybookConfig = {
     const { mergeConfig } = await import("vite");
     const react = await import("@vitejs/plugin-react");
     const tsconfigPaths = await import("vite-tsconfig-paths");
-    const pandaPostCss = await import("@pandacss/dev/postcss");
     return mergeConfig(config, {
-      css: {
-        postcss: {
-          plugins: [pandaPostCss.default()],
-        },
-      },
       plugins: [
         tsconfigPaths.default({ root: "../" }),
         react.default({

@@ -4,7 +4,6 @@
     "target": "es5",
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    // "jsxImportSource": "@emotion/react",
     "isolatedModules": true,
     "strict": true,
     "allowJs": true,

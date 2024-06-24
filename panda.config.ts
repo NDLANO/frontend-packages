@@ -11,15 +11,12 @@ import preset from "./packages/preset-panda/src/";
 
 export default defineConfig({
   presets: [preset],
-  importMap: "@ndla/styled-system",
   preflight: true,
+  importMap: "@ndla/styled-system",
   strictPropertyValues: true,
-  include: [
-    "./packages/primitives/**/*.{js,jsx,ts,tsx}",
-    "./packages/preset-panda/**/*.{js,jsx,ts,tsx}",
-    "./stories/**/*.{js,jsx,ts,tsx}",
-  ],
-  exclude: [],
+  shorthands: false,
+  outExtension: "mjs",
+  include: ["./packages/**/*.{js,jsx,ts,tsx}", "./stories/**/*.{js,jsx,ts,tsx}"],
+  syntax: "object-literal",
   jsxFramework: "react",
-  outdir: "./packages/styled-system",
 });

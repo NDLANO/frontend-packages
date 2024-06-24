@@ -122,8 +122,6 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
     );
   }
 
-  // const { copyright } = props;
-
   return (
     <BylineWrapper>
       <LicenseContainer>

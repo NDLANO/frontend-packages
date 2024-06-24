@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
 import ConceptEmbed from "./ConceptEmbed";
-import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 import { ArticleWrapper } from "../Article";
 import LayoutItem, { OneColumn } from "../Layout";
 

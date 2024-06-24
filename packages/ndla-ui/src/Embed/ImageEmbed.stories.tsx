@@ -11,7 +11,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
-import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 import { ArticleWrapper } from "../Article";
 import LayoutItem, { OneColumn } from "../Layout";
 

@@ -19,7 +19,7 @@ import { Tooltip } from "@ndla/tooltip";
 import { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptNotionV2, ConceptNotionData, ConceptType } from "./conceptComponents";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { HeartButtonType, RenderContext } from "./types";
+import { RenderContext } from "./types";
 import { Figure } from "../Figure";
 import { Gloss } from "../Gloss";
 import { EmbedByline } from "../LicenseByline";

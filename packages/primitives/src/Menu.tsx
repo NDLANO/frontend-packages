@@ -6,15 +6,15 @@
  *
  */
 
+import { forwardRef } from "react";
 import { menuAnatomy } from "@ark-ui/anatomy";
 import { Menu } from "@ark-ui/react";
-import { cva, sva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, StyledVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
+import { css, cva, sva } from "@ndla/styled-system/css";
+import { JsxStyleProps, RecipeVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Text, TextProps } from "./Text";
 
-const itemStyle: SystemStyleObject = {
+const itemStyle: SystemStyleObject = css.raw({
   display: "flex",
   alignItems: "center",
   borderRadius: "xsmall",
@@ -48,7 +48,7 @@ const itemStyle: SystemStyleObject = {
       },
     },
   },
-};
+});
 
 const itemCva = cva({
   defaultVariants: {
@@ -166,9 +166,17 @@ export const MenuItemGroup = withContext<HTMLDivElement, JsxStyleProps & Menu.It
 
 const InternalMenuItem = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemProps>(Menu.Item, "item");
 
-export type MenuItemVariantProps = StyledVariantProps<typeof MenuItem>;
+export type MenuItemVariantProps = RecipeVariantProps<typeof itemCva>;
 
-export const MenuItem = styled(InternalMenuItem, itemCva);
+export const MenuItem = forwardRef<HTMLDivElement, Menu.ItemProps & JsxStyleProps & MenuItemVariantProps>(
+  ({ css: cssProp = {}, variant, ...props }, ref) => (
+    <InternalMenuItem
+      css={[itemCva.raw({ variant }), ...(Array.isArray(cssProp) ? cssProp : [cssProp])]}
+      {...props}
+      ref={ref}
+    />
+  ),
+);
 
 export const MenuPositioner = withContext<HTMLDivElement, JsxStyleProps & Menu.PositionerProps>(
   Menu.Positioner,
@@ -180,7 +188,15 @@ const InternalMenuTriggerItem = withContext<HTMLDivElement, JsxStyleProps & Menu
   "triggerItem",
 );
 
-export const MenuTriggerItem = styled(InternalMenuTriggerItem, itemCva);
+export const MenuTriggerItem = forwardRef<HTMLDivElement, Menu.TriggerItemProps & JsxStyleProps & MenuItemVariantProps>(
+  ({ css: cssProp = {}, variant, ...props }, ref) => (
+    <InternalMenuTriggerItem
+      css={[itemCva.raw({ variant }), ...(Array.isArray(cssProp) ? cssProp : [cssProp])]}
+      {...props}
+      ref={ref}
+    />
+  ),
+);
 
 export const MenuTrigger = withContext<HTMLDivElement, JsxStyleProps & Menu.TriggerProps>(Menu.Trigger, "trigger");
 

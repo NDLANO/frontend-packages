@@ -47,8 +47,7 @@ export default {
 } as Meta<typeof EmbedByline>;
 
 export const EmbedBylineStory: StoryFn<typeof EmbedByline> = (args) => {
-  const { ...rest } = args;
-  return <EmbedByline {...rest} />;
+  return <EmbedByline {...args} />;
 };
 
 EmbedBylineStory.storyName = "EmbedByline";

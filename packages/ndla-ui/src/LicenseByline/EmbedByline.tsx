@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { colors, fonts, misc, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
 import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";

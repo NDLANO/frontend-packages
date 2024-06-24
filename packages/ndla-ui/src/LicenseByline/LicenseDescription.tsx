@@ -10,7 +10,7 @@ import { t } from "i18next";
 import { ReactNode, useState } from "react";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
-import { breakpoints, colors, fonts, spacing } from "@ndla/core";
+import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
 interface Props {
   description: ReactNode;
@@ -36,7 +36,7 @@ const StyledDescription = styled.div`
   display: inline-flex;
   white-space: pre-wrap;
   &[data-warning="false"] {
-    @media (max-width: ${breakpoints.mobileWide}) {
+    ${mq.range({ until: breakpoints.mobileWide })} {
       &[data-open="true"] {
         display: inline;
       }
@@ -47,10 +47,10 @@ const StyledDescription = styled.div`
 
 const TextContent = styled.span`
   &[data-warning="false"] {
-    @media (max-width: ${breakpoints.mobileWide}) {
+    ${mq.range({ until: breakpoints.mobileWide })} {
       white-space: nowrap;
       /* maxHeight is set to 40 pixels to hide the rest of the text */
-      max-height: 40px;
+      max-height: ${spacing.mediumlarge};
       &[data-open="true"] {
         white-space: pre-wrap;
         max-height: none;
@@ -69,7 +69,7 @@ const Button = styled(ButtonV2)`
   font-weight: ${fonts.weight.semibold};
   min-width: fit-content;
   margin-left: ${spacing.small};
-  @media (min-width: ${breakpoints.mobileWide}) {
+  ${mq.range({ from: breakpoints.mobileWide })} {
     display: none;
   }
 `;

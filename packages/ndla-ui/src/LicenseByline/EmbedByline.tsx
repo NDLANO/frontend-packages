@@ -11,14 +11,13 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, fonts, misc, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
-import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
 import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
 import { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import { ICopyright as ImageCopyright } from "@ndla/types-backend/image-api";
 import { BrightcoveCopyright } from "@ndla/types-embed";
+import LicenseAuthors from "./LicenseAuthors";
 import LicenseDescription from "./LicenseDescription";
-import LicenseLink from "./LicenseLink";
 
 interface BaseProps {
   topRounded?: boolean;
@@ -108,7 +107,7 @@ const LicenseContainer = styled.div`
 `;
 
 const EmbedByline = ({ type, topRounded, bottomRounded, description, children, visibleAlt, ...props }: Props) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   if (props.error) {
     const typeString = type === "h5p" ? "H5P" : t(`embed.type.${type}`).toLowerCase();
@@ -123,34 +122,20 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
     );
   }
 
-  const { copyright } = props;
-
-  const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? "", i18n.language) : undefined;
-  const authors = getLicenseCredits(copyright);
-  const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
-
-  const authorAndLicenseLink = () => {
-    return (
-      <>
-        {` ${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
-        {captionAuthors.map((author) => author.name).join(", ")}
-        {license ? (
-          <>
-            {" / "}
-            <LicenseLink license={license} />
-          </>
-        ) : null}
-      </>
-    );
-  };
+  // const { copyright } = props;
 
   return (
     <BylineWrapper>
       <LicenseContainer>
         {description ? (
-          <LicenseDescription description={description}>{authorAndLicenseLink()}</LicenseDescription>
+          <LicenseDescription description={description}>
+            <LicenseAuthors type={type} copyright={props.copyright} />
+          </LicenseDescription>
         ) : (
-          <span>{authorAndLicenseLink()}</span>
+          <span>
+            {" "}
+            <LicenseAuthors type={type} copyright={props.copyright} />
+          </span>
         )}
         {children}
       </LicenseContainer>

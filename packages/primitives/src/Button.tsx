@@ -6,10 +6,10 @@
  *
  */
 
+import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { RecipeVariantProps, cva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, RecipeVariant, StyledComponent } from "@ndla/styled-system/types";
+import { RecipeVariantProps, css, cva, cx } from "@ndla/styled-system/css";
+import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
 
 export const buttonBaseRecipe = cva({
   base: {
@@ -187,9 +187,15 @@ export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProp
 
 export type ButtonProps = HTMLArkProps<"button"> & JsxStyleProps & ButtonVariantProps;
 
-const BaseButton = styled(ark.button, buttonBaseRecipe, { defaultProps: { type: "button" } });
-
-export const Button: StyledComponent<"button", NonNullable<ButtonVariantProps>> = styled(BaseButton, buttonRecipe);
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, css: cssProp, ...props }, ref) => (
+    <ark.button
+      {...props}
+      className={cx(css(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp), className)}
+      ref={ref}
+    />
+  ),
+);
 
 type IconButtonVariant = Exclude<Variant, "link">;
 
@@ -197,7 +203,12 @@ export type IconButtonVariantProps = { variant?: IconButtonVariant };
 
 export type IconButtonProps = HTMLArkProps<"button"> & IconButtonVariantProps & JsxStyleProps;
 
-export const IconButton: StyledComponent<"button", NonNullable<IconButtonVariantProps>> = styled(
-  BaseButton,
-  iconButtonRecipe,
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
+  ({ className, variant, css: cssProp, ...props }, ref) => (
+    <ark.button
+      {...props}
+      className={cx(css(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp), className)}
+      ref={ref}
+    />
+  ),
 );

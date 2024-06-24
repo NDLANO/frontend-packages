@@ -7,7 +7,9 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Text } from "./Text";
+import { css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
+import { Heading, Text } from "./Text";
 
 const exampleText = "Nasjonal digital læringsarena";
 
@@ -175,10 +177,58 @@ export const LabelXsmall: StoryObj<typeof Text> = {
 };
 
 export const Polymorphic: StoryFn<typeof Text> = () => (
-  <Text as="div">
-    The underlying HTML tag can be changed through the use of the <code>as</code> prop! To keep TypeScript happy, we
-    only allow for a subset of HTML tags.
+  <Text asChild>
+    <div>
+      The underlying HTML tag can be changed through the use of the <code>asChild</code> prop!
+    </div>
   </Text>
+);
+
+const StyledText = styled(
+  Text,
+  {
+    base: {
+      textStyle: "heading.large",
+    },
+  },
+  { forwardCssProp: true },
+);
+
+const StyledHeading = styled(
+  Heading,
+  {
+    base: {
+      textStyle: "heading.small",
+    },
+  },
+  { forwardCssProp: true },
+);
+
+export const Styled = () => (
+  <div className={css({ display: "flex", flexDirection: "column", gap: "xsmall" })}>
+    <StyledHeading>Styling pre-styled components</StyledHeading>
+    <StyledText>
+      You can restyle components by using the <code>styled</code> function. This will override existing styles.
+    </StyledText>
+    <StyledText asChild>
+      <span>
+        This pattern also works flawlessly with the <code>asChild</code> prop.
+      </span>
+    </StyledText>
+    <Text css={css.raw({ textStyle: "label.small" })}>
+      You can do the same by using the <code>css</code> prop, as long as the underlying component supports it. This is
+      what the <code>styled</code> function does under the hood.
+    </Text>
+    <Text>
+      Finally, you can style components by using the <code>className</code> prop. This is not as powerful as the two
+      prior options, as it doesn't necessarily override existing styles. The <code>styled</code> function will
+      automatically fall back to using className if the component does not support the <code>css</code> prop.
+    </Text>
+    <StyledText css={{ textStyle: "body.link" }}>
+      As a general rule of thumb, <code>css</code> usage wins over using the <code>styled</code> function. Furthermore,
+      the <code>styled</code> function wins over any allowed style props (like <code>textStyle</code>).
+    </StyledText>
+  </div>
 );
 
 /**

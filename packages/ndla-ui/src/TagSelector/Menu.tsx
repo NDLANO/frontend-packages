@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { MenuProps, components } from "react-select";
 import { css } from "@emotion/react";
 import { colors } from "@ndla/core";

@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { CSSProperties, ComponentProps, useMemo } from "react";
 
 import { css } from "@emotion/react";

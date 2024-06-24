@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { HTMLProps, ReactElement, useEffect, useRef, ReactNode } from "react";
 import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";

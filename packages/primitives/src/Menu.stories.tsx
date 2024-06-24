@@ -11,7 +11,6 @@ import { Meta, StoryFn } from "@storybook/react";
 import { Copy, Cross, Pencil, TrashCanOutline } from "@ndla/icons/action";
 import { ChevronRight, Share, ShareArrow } from "@ndla/icons/common";
 import { Settings } from "@ndla/icons/editor";
-import { css } from "@ndla/styled-system/css";
 import { HStack } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 import {
@@ -141,7 +140,7 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
             </MenuItem>
           </MenuItemGroup>
           <MenuRoot>
-            <MenuTriggerItem className={css({ justifyContent: "space-between" })}>
+            <MenuTriggerItem css={{ justifyContent: "space-between" }}>
               <HStack gap="3xsmall">
                 <Settings />
                 Mappehandlinger

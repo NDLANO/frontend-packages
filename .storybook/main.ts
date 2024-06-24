@@ -33,19 +33,17 @@ const config: StorybookConfig = {
     const { mergeConfig } = await import("vite");
     const react = await import("@vitejs/plugin-react");
     const tsconfigPaths = await import("vite-tsconfig-paths");
-    const pandaPostCss = await import("@pandacss/dev/postcss");
     return mergeConfig(config, {
-      css: {
-        postcss: {
-          plugins: [pandaPostCss.default()],
-        },
-      },
       plugins: [
         tsconfigPaths.default({ root: "../" }),
         react.default({
-          jsxImportSource: "@emotion/react",
           babel: {
-            plugins: [["@emotion", { autoLabel: "always" }]],
+            overrides: [
+              {
+                exclude: /primitives|preset-panda|styled-system/,
+                plugins: [["@emotion", { autoLabel: "always" }]],
+              },
+            ],
           },
         }),
       ],

@@ -6,10 +6,13 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
+import { HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
-const StyledExpandableBox = styled("details", {
+export type ExpandableBoxProps = HTMLArkProps<"details"> & JsxStyleProps;
+
+export const ExpandableBox = styled("details", {
   base: {
     transitionDuration: "fast",
     width: "100%",
@@ -27,11 +30,9 @@ const StyledExpandableBox = styled("details", {
   },
 });
 
-export type ExpandableBoxProps = ComponentPropsWithoutRef<"details">;
+export type ExpandableBoxSummaryProps = HTMLArkProps<"summary"> & JsxStyleProps;
 
-export const ExpandableBox = (props: ExpandableBoxProps) => <StyledExpandableBox {...props} />;
-
-const StyledExpandableBoxSummary = styled("summary", {
+export const ExpandableBoxSummary = styled(ark.summary, {
   base: {
     cursor: "pointer",
     margin: "-medium",
@@ -46,9 +47,3 @@ const StyledExpandableBoxSummary = styled("summary", {
     },
   },
 });
-
-export type ExpandableBoxSummaryProps = ComponentPropsWithoutRef<"summary">;
-
-export const ExpandableBoxSummary = ({ children, ...rest }: ExpandableBoxSummaryProps) => {
-  return <StyledExpandableBoxSummary {...rest}>{children}</StyledExpandableBoxSummary>;
-};

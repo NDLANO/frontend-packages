@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import parse from "html-react-parser";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";

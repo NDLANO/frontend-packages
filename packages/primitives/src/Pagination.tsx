@@ -9,6 +9,7 @@
 import { paginationAnatomy } from "@ark-ui/anatomy";
 import { Pagination } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const paginationRecipe = sva({
@@ -30,23 +31,26 @@ const paginationRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(paginationRecipe);
 
-export type PaginationRootProps = Pagination.RootProps;
+export type PaginationRootProps = JsxStyleProps & Pagination.RootProps;
 
 export const PaginationRoot = withProvider<HTMLElement, Pagination.RootProps>(Pagination.Root, "root");
 
-export const PaginationItem = withContext<HTMLButtonElement, Pagination.ItemProps>(Pagination.Item, "item");
+export const PaginationItem = withContext<HTMLButtonElement, JsxStyleProps & Pagination.ItemProps>(
+  Pagination.Item,
+  "item",
+);
 
-export const PaginationEllipsis = withContext<HTMLDivElement, Pagination.EllipsisProps>(
+export const PaginationEllipsis = withContext<HTMLDivElement, JsxStyleProps & Pagination.EllipsisProps>(
   Pagination.Ellipsis,
   "ellipsis",
 );
 
-export const PaginationPrevTrigger = withContext<HTMLButtonElement, Pagination.PrevTriggerProps>(
+export const PaginationPrevTrigger = withContext<HTMLButtonElement, JsxStyleProps & Pagination.PrevTriggerProps>(
   Pagination.PrevTrigger,
   "prevTrigger",
 );
 
-export const PaginationNextTrigger = withContext<HTMLButtonElement, Pagination.NextTriggerProps>(
+export const PaginationNextTrigger = withContext<HTMLButtonElement, JsxStyleProps & Pagination.NextTriggerProps>(
   Pagination.NextTrigger,
   "nextTrigger",
 );

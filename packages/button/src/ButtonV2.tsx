@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
+/** @jsxImportSource @emotion/react */
 import { ButtonHTMLAttributes, forwardRef } from "react";
 import { css, SerializedStyles } from "@emotion/react";
 import { colors, fonts, misc, spacing } from "@ndla/core";

@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { ReactNode, useMemo } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing, stackOrder } from "@ndla/core";

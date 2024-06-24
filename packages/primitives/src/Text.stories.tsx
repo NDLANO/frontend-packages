@@ -225,7 +225,8 @@ export const Styled = () => (
       automatically fall back to using className if the component does not support the <code>css</code> prop.
     </Text>
     <StyledText css={{ textStyle: "body.link" }}>
-      As a general rule of thumb, <code>css</code> usage wins over using the <code>styled</code> function
+      As a general rule of thumb, <code>css</code> usage wins over using the <code>styled</code> function. Furthermore,
+      the <code>styled</code> function wins over any allowed style props (like <code>textStyle</code>).
     </StyledText>
   </div>
 );

@@ -122,10 +122,13 @@ const InternalSwitchLabel = withContext<HTMLSpanElement, JsxStyleProps & Switch.
 
 export const SwitchLabel = ({
   textStyle = "label.medium",
+  children,
   ...props
 }: Switch.LabelProps & TextProps & JsxStyleProps) => (
   <InternalSwitchLabel asChild>
-    <Text as="span" textStyle={textStyle} {...props} />
+    <Text asChild textStyle={textStyle} {...props}>
+      <span>{children}</span>
+    </Text>
   </InternalSwitchLabel>
 );
 

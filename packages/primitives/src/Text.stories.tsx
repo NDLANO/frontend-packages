@@ -177,29 +177,43 @@ export const LabelXsmall: StoryObj<typeof Text> = {
 };
 
 export const Polymorphic: StoryFn<typeof Text> = () => (
-  <Text as="div">
-    The underlying HTML tag can be changed through the use of the <code>as</code> prop! To keep TypeScript happy, we
-    only allow for a subset of HTML tags.
+  <Text asChild>
+    <div>
+      The underlying HTML tag can be changed through the use of the <code>asChild</code> prop!
+    </div>
   </Text>
 );
 
-const StyledText = styled(Text, {
-  base: {
-    textStyle: "heading.large",
+const StyledText = styled(
+  Text,
+  {
+    base: {
+      textStyle: "heading.large",
+    },
   },
-});
+  { forwardCssProp: true },
+);
 
-const StyledHeading = styled(Heading, {
-  base: {
-    textStyle: "heading.small",
+const StyledHeading = styled(
+  Heading,
+  {
+    base: {
+      textStyle: "heading.small",
+    },
   },
-});
+  { forwardCssProp: true },
+);
 
 export const Styled = () => (
   <div className={css({ display: "flex", flexDirection: "column", gap: "xsmall" })}>
-    <StyledHeading as="h2">Styling pre-styled components</StyledHeading>
+    <StyledHeading>Styling pre-styled components</StyledHeading>
     <StyledText>
       You can restyle components by using the <code>styled</code> function. This will override existing styles.
+    </StyledText>
+    <StyledText asChild>
+      <span>
+        This pattern also works flawlessly with the <code>asChild</code> prop.
+      </span>
     </StyledText>
     <Text css={css.raw({ textStyle: "label.small" })}>
       You can do the same by using the <code>css</code> prop, as long as the underlying component supports it. This is

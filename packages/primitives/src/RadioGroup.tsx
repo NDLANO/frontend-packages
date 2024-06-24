@@ -117,9 +117,15 @@ const InternalRadioGroupItemText = withContext<HTMLSpanElement, RadioGroup.ItemT
   "itemText",
 );
 
-export const RadioGroupItemText = ({ textStyle = "label.medium", ...props }: RadioGroup.ItemTextProps & TextProps) => (
+export const RadioGroupItemText = ({
+  textStyle = "label.medium",
+  children,
+  ...props
+}: RadioGroup.ItemTextProps & TextProps) => (
   <InternalRadioGroupItemText asChild>
-    <Text as="span" textStyle={textStyle} {...props} />
+    <Text asChild textStyle={textStyle} {...props}>
+      <span>{children}</span>
+    </Text>
   </InternalRadioGroupItemText>
 );
 

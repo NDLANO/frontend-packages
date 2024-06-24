@@ -17,7 +17,6 @@ import { Heading, Text, TextProps } from "./Text";
 
 const dialogRecipe = sva({
   slots: dialogAnatomy.keys(),
-  className: "dialog",
   base: {
     backdrop: {
       position: "fixed",
@@ -302,7 +301,7 @@ export const DialogDescription = ({
 }: Dialog.DescriptionProps & TextProps & JsxStyleProps) => {
   return (
     <InternalDialogDescription asChild>
-      <Text as="p" textStyle={textStyle} {...rest}></Text>
+      <Text textStyle={textStyle} {...rest}></Text>
     </InternalDialogDescription>
   );
 };
@@ -311,7 +310,7 @@ const InternalDialogTitle = withContext<HTMLHeadingElement, JsxStyleProps & Dial
 
 export const DialogTitle = ({ textStyle = "title.medium", ...rest }: Dialog.TitleProps & TextProps & JsxStyleProps) => (
   <InternalDialogTitle asChild>
-    <Heading as="h1" textStyle={textStyle} {...rest}></Heading>
+    <Heading textStyle={textStyle} {...rest}></Heading>
   </InternalDialogTitle>
 );
 

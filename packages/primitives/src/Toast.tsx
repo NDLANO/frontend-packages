@@ -65,10 +65,13 @@ const InternalToastDescription = withContext<HTMLDivElement, JsxStyleProps & Toa
 
 export const ToastDescription = ({
   textStyle = "label.medium",
+  children,
   ...props
 }: Toast.DescriptionProps & TextProps & JsxStyleProps) => (
   <InternalToastDescription asChild>
-    <Text as="div" textStyle={textStyle} {...props} />
+    <Text asChild textStyle={textStyle} {...props}>
+      <div>{children}</div>
+    </Text>
   </InternalToastDescription>
 );
 
@@ -77,9 +80,12 @@ const InternalToastTitle = withContext<HTMLDivElement, JsxStyleProps & Toast.Tit
 export const ToastTitle = ({
   textStyle = "label.medium",
   fontWeight = "semibold",
+  children,
   ...props
 }: JsxStyleProps & Toast.TitleProps & TextProps) => (
   <InternalToastTitle asChild>
-    <Text as="div" fontWeight={fontWeight} textStyle={textStyle} {...props} />
+    <Text asChild fontWeight={fontWeight} textStyle={textStyle} {...props}>
+      <div>{children}</div>
+    </Text>
   </InternalToastTitle>
 );

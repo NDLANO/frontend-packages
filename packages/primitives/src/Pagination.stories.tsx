@@ -45,7 +45,9 @@ export default {
               </PaginationItem>
             ) : (
               <PaginationEllipsis key={index} index={index} asChild>
-                <Text as="div">&#8230;</Text>
+                <Text asChild>
+                  <div>&#8230;</div>
+                </Text>
               </PaginationEllipsis>
             ),
           )

@@ -436,7 +436,7 @@ export const BlockConcept = ({
           />
         )}
         {copyright && conceptType === "concept" && (
-          <EmbedByline copyright={copyright} bottomRounded topRounded type={conceptType as ConceptType} />
+          <EmbedByline copyright={copyright} type={conceptType as ConceptType} />
         )}
       </Figure>
     </Root>

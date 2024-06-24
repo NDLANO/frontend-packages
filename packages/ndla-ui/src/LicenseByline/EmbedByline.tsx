@@ -131,7 +131,6 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
           </LicenseDescription>
         ) : (
           <span>
-            {" "}
             <LicenseAuthors type={type} copyright={props.copyright} />
           </span>
         )}

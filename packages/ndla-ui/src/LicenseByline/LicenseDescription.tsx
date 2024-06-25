@@ -49,7 +49,6 @@ const TextContent = styled.span`
   &[data-warning="false"] {
     ${mq.range({ until: breakpoints.mobileWide })} {
       white-space: nowrap;
-      /* maxHeight is set to 40 pixels to hide the rest of the text */
       max-height: ${spacing.mediumlarge};
       &[data-open="true"] {
         white-space: pre-wrap;

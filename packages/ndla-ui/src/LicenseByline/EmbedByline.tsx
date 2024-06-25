@@ -11,13 +11,14 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, fonts, misc, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
+import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
 import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
 import { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import { ICopyright as ImageCopyright } from "@ndla/types-backend/image-api";
 import { BrightcoveCopyright } from "@ndla/types-embed";
-import LicenseAuthors from "./LicenseAuthors";
 import LicenseDescription from "./LicenseDescription";
+import LicenseLink from "./LicenseLink";
 
 interface BaseProps {
   topRounded?: boolean;
@@ -113,31 +114,54 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
     const typeString = type === "h5p" ? "H5P" : t(`embed.type.${type}`).toLowerCase();
     return (
       <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-error={true}>
-        <LicenseDescription
-          warningByline={props.error}
-          description={t("embed.embedError", { type: typeString })}
-          icon={<WarningOutline />}
-        />
+        <LicenseDescription warningByline={props.error} icon={<WarningOutline />}>
+          {t("embed.embedError", { type: typeString })}
+        </LicenseDescription>
       </BylineWrapper>
     );
   }
 
+  const { copyright } = props;
+
   return (
     <BylineWrapper>
       <LicenseContainer>
-        {description ? (
-          <LicenseDescription description={description}>
-            <LicenseAuthors type={type} copyright={props.copyright} />
-          </LicenseDescription>
-        ) : (
-          <span>
-            <LicenseAuthors type={type} copyright={props.copyright} />
-          </span>
-        )}
+        <LicenseContainerContent type={type} copyright={copyright}>
+          {description}
+        </LicenseContainerContent>
         {children}
       </LicenseContainer>
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
     </BylineWrapper>
+  );
+};
+
+interface LicenseContainerProps {
+  children?: ReactNode;
+  copyright: EmbedBylineTypeProps["copyright"];
+  type: Props["type"];
+}
+
+const LicenseContainerContent = ({ children, copyright, type }: LicenseContainerProps) => {
+  const { t, i18n } = useTranslation();
+  const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? "", i18n.language) : undefined;
+  const authors = getLicenseCredits(copyright);
+  const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
+
+  const Component = children ? LicenseDescription : "span";
+
+  return (
+    <Component>
+      {children}
+      {` ${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
+      {captionAuthors.map((author) => author.name).join(", ")}
+      {license ? (
+        <>
+          {" / "}
+          <LicenseLink license={license} />
+        </>
+      ) : null}
+    </Component>
   );
 };
 

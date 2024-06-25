@@ -13,7 +13,6 @@ import { ButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 
 interface Props {
-  description: ReactNode;
   icon?: ReactNode;
   children?: ReactNode;
   warningByline?: boolean;
@@ -74,7 +73,7 @@ const Button = styled(ButtonV2)`
   }
 `;
 
-const LicenseDescription = ({ description, icon, children, warningByline = false }: Props) => {
+const LicenseDescription = ({ icon, children, warningByline = false }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -86,7 +85,6 @@ const LicenseDescription = ({ description, icon, children, warningByline = false
       {icon}
       <StyledDescription data-open={isOpen} data-warning={warningByline}>
         <TextContent data-open={isOpen} data-warning={warningByline}>
-          {description}
           {children}
         </TextContent>
         {!warningByline && (

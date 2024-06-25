@@ -40,7 +40,7 @@ const StyledDescription = styled.div`
       &[data-open="true"] {
         display: inline;
       }
-      width: calc(100%);
+      width: 100%;
     }
   }
 `;

@@ -35,9 +35,45 @@ export default meta;
 
 export const Default: StoryObj<typeof CheckboxRoot> = {};
 
+export const Chip: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+  },
+};
+
 export const Disabled: StoryObj<typeof CheckboxRoot> = {
   args: {
     disabled: true,
+  },
+};
+
+export const ChipDisabled: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+    disabled: true,
+  },
+};
+
+export const ChipDisabledChecked: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+    disabled: true,
+    defaultChecked: true,
+  },
+};
+
+export const ChipInvalid: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+    invalid: true,
+  },
+};
+
+export const ChipInvalidChecked: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+    invalid: true,
+    defaultChecked: true,
   },
 };
 

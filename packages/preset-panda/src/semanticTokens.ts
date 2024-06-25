@@ -141,6 +141,7 @@ export const semanticTokens = defineSemanticTokens({
           strong: { value: "{colors.purple.400}" },
         },
         active: { value: "{colors.purple.300}" },
+        selected: { value: "{colors.purple.900}" },
       },
       success: {
         DEFAULT: { value: "{colors.green.800}" },

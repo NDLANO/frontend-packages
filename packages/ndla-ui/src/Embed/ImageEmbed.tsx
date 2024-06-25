@@ -142,7 +142,7 @@ const ImageEmbed = ({
   renderContext = "article",
   children,
 }: Props) => {
-  const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
+  const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
   // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
@@ -183,7 +183,7 @@ const ImageEmbed = ({
       <ImageWrapper
         src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
         crop={crop}
-        size={embedData.size}
+        embedData={embedData}
         pagePath={path}
       >
         <Image
@@ -196,7 +196,7 @@ const ImageEmbed = ({
           border={embedData.border}
           expandButton={
             <ExpandButton
-              size={embedData.size}
+              embedData={embedData}
               expanded={!!imageSizes}
               bylineHidden={isBylineHidden}
               onExpand={() => {
@@ -247,15 +247,16 @@ interface ImageWrapperProps {
     endX: number;
     endY: number;
   };
-  size?: string;
+  embedData: ImageEmbedData;
 }
-const hideByline = (size?: string): boolean => {
-  return !!size && size.endsWith("-hide-byline");
+
+const hideByline = (embed: ImageEmbedData): boolean => {
+  return (!!embed.size && embed.size.endsWith("-hide-byline")) || embed.hideByline === "true";
 };
 
-const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps) => {
+const ImageWrapper = ({ src, crop, children, pagePath, embedData }: ImageWrapperProps) => {
   const { t } = useTranslation();
-  if (isSmall(size) || hideByline(size) || !src || (pagePath && src.endsWith(pagePath))) {
+  if (isSmall(embedData.size) || hideByline(embedData) || !src || (pagePath && src.endsWith(pagePath))) {
     return <>{children}</>;
   }
 
@@ -268,7 +269,7 @@ const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps
 };
 
 interface ExpandButtonProps {
-  size?: string;
+  embedData: ImageEmbedData;
   expanded: boolean;
   bylineHidden: boolean;
   onExpand: MouseEventHandler<HTMLButtonElement>;
@@ -294,9 +295,9 @@ const BylineButton = styled.button`
   }
 `;
 
-const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
+const ExpandButton = ({ embedData, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
   const { t } = useTranslation();
-  if (isSmall(size)) {
+  if (isSmall(embedData.size)) {
     return (
       <button
         type="button"
@@ -309,7 +310,7 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
       </button>
     );
   }
-  if (hideByline(size)) {
+  if (hideByline(embedData)) {
     return (
       <BylineButton
         type="button"

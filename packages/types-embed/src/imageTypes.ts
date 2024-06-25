@@ -27,6 +27,8 @@ export interface ImageEmbedData {
   pageUrl?: string;
   border?: string;
   isDecorative?: string;
+  hideByline?: string;
+  hideCaption?: string;
 }
 
 export interface ImageData {

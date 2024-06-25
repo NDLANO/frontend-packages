@@ -38,19 +38,26 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
     return args.artifacts;
   }
 
+  const propsCode = "const { as: Element = __base__, children, ...restProps } = props";
+
+  factoryJs.code = factoryJs.code.replace(
+    propsCode,
+    "const { as: Element = __base__, forwardCssProp, children, ...restProps } = props",
+  );
+
   const cvaCode = "const cvaStyles = __cvaFn__.raw(variantProps)";
 
   factoryJs.code = factoryJs.code.replace(
     cvaCode,
     `${cvaCode}
-      if(options.forwardCssProp) {
+      if(options.forwardCssProp || forwardCssProp) {
         return css.raw(cvaStyles, propStyles, cssStyles)
       }`,
   );
 
   factoryJs.code = factoryJs.code.replace(
     "className: classes()",
-    `...(options.forwardCssProp ? { css: classes() } : { className: classes() })`,
+    `...(options.forwardCssProp || forwardCssProp ? { css: classes() } : { className: classes() })`,
   );
 
   const shouldForwardPropCode = "shouldForwardProp?(prop: string, variantKeys: string[]): boolean";
@@ -59,6 +66,11 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
     shouldForwardPropCode,
     `${shouldForwardPropCode}
   forwardCssProp?: boolean`,
+  );
+
+  jsxTypes.code = jsxTypes.code.replace(
+    "(props: JsxHTMLProps<ComponentProps<T>, Assign<JsxStyleProps, P>>): JSX.Element",
+    "(props: JsxHTMLProps<ComponentProps<T>, Assign<JsxStyleProps, P>> & {forwardCssProp?: boolean}): JSX.Element",
   );
 
   return args.artifacts;

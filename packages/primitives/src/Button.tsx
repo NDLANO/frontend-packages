@@ -8,7 +8,8 @@
 
 import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { RecipeVariantProps, css, cva, cx } from "@ndla/styled-system/css";
+import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
 
 export const buttonBaseRecipe = cva({
@@ -187,15 +188,15 @@ export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProp
 
 export type ButtonProps = HTMLArkProps<"button"> & JsxStyleProps & ButtonVariantProps;
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, css: cssProp, ...props }, ref) => (
-    <ark.button
-      {...props}
-      className={cx(css(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp), className)}
-      ref={ref}
-    />
-  ),
-);
+const StyledButton = styled(ark.button, {}, { defaultProps: { type: "button" } });
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ variant, size, css: cssProp, ...props }, ref) => (
+  <StyledButton
+    {...props}
+    css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
+    ref={ref}
+  />
+));
 
 type IconButtonVariant = Exclude<Variant, "link">;
 
@@ -203,12 +204,12 @@ export type IconButtonVariantProps = { variant?: IconButtonVariant };
 
 export type IconButtonProps = HTMLArkProps<"button"> & IconButtonVariantProps & JsxStyleProps;
 
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ className, variant, css: cssProp, ...props }, ref) => (
-    <ark.button
-      {...props}
-      className={cx(css(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp), className)}
-      ref={ref}
-    />
-  ),
-);
+const StyledIconButton = styled(ark.button, {}, { defaultProps: { type: "button" } });
+
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({ variant, css: cssProp, ...props }, ref) => (
+  <StyledIconButton
+    {...props}
+    css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp)}
+    ref={ref}
+  />
+));

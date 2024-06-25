@@ -11,7 +11,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import { Copy, Cross, Pencil, TrashCanOutline } from "@ndla/icons/action";
 import { ChevronRight, Share, ShareArrow } from "@ndla/icons/common";
 import { Settings } from "@ndla/icons/editor";
-import { HStack } from "@ndla/styled-system/jsx";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 import {
   MenuContent,
@@ -53,10 +53,10 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
             Del
           </MenuItem>
           <MenuItem value="goToShared" asChild>
-            <a href="https://ndla.no">
+            <styled.a href="https://ndla.no">
               <ShareArrow />
               Gå til delt mappe
-            </a>
+            </styled.a>
           </MenuItem>
           <MenuItem value="copyLink" disabled>
             <Copy />

@@ -15,7 +15,7 @@ import {
   forwardRef,
   useContext,
 } from "react";
-import { css, cx } from "@ndla/styled-system/css";
+import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { SystemStyleObject, WithCss } from "@ndla/styled-system/types";
 
@@ -52,14 +52,14 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
     slot: Slot<R>,
   ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
     const StyledComponent = styled(Component);
-    return forwardRef<T, P>(({ className, css: cssProp, ...props }, ref) => {
+    return forwardRef<T, P>(({ css: cssProp, ...props }, ref) => {
       const [variantProps, otherProps] = recipe.splitVariantProps(props);
 
       const slotStyles = recipe.raw(variantProps) as Record<Slot<R>, SystemStyleObject>;
 
       return (
         <StyleContext.Provider value={slotStyles}>
-          <StyledComponent {...otherProps} ref={ref} className={cx(css(slotStyles?.[slot], cssProp), className)} />
+          <StyledComponent {...otherProps} ref={ref} css={css.raw(slotStyles?.[slot], cssProp)} />
         </StyleContext.Provider>
       );
     });
@@ -68,11 +68,11 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
   const withContext = <T, P extends { className?: string } & WithCss>(
     Component: ElementType,
     slot: Slot<R>,
-  ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
+  ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T> & { forwardCssProp?: boolean }> => {
     const StyledComponent = styled(Component);
-    return forwardRef<T, P>(({ className, css: cssProp, ...props }, ref) => {
+    return forwardRef<T, P>(({ css: cssProp, ...props }, ref) => {
       const slotStyles = useContext(StyleContext);
-      return <StyledComponent {...props} ref={ref} className={cx(css(slotStyles?.[slot], cssProp), className)} />;
+      return <StyledComponent {...props} ref={ref} css={css.raw(slotStyles?.[slot], cssProp)} />;
     });
   };
 

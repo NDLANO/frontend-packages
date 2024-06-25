@@ -8,7 +8,7 @@
 
 import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { css, cx } from "@ndla/styled-system/css";
+import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, WithCss } from "@ndla/styled-system/types";
 import { useFormControlContext } from "./FormControl";
@@ -27,8 +27,8 @@ const StyledLegend = styled(ark.legend, {
 export type LegendProps = HTMLArkProps<"legend"> & WithCss & TextProps;
 
 export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
-  ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, className, srOnly, ...rest }, ref) => (
-    <StyledLegend className={cx(css({ textStyle, fontWeight, srOnly }, cssProp), className)} {...rest} ref={ref} />
+  ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, ...rest }, ref) => (
+    <StyledLegend css={css.raw({ textStyle, fontWeight, srOnly }, cssProp)} {...rest} ref={ref} />
   ),
 );
 
@@ -51,8 +51,8 @@ const StyledLabel = styled(ark.label, {
 export type LabelProps = HTMLArkProps<"label"> & TextProps & JsxStyleProps;
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
-  ({ textStyle = "label.medium", fontWeight = "bold", className, css: cssProp, srOnly, ...rest }, ref) => (
-    <StyledLabel className={cx(css({ textStyle, fontWeight, srOnly }, cssProp), className)} {...rest} ref={ref} />
+  ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, ...rest }, ref) => (
+    <StyledLabel css={css.raw({ textStyle, fontWeight, srOnly }, cssProp)} {...rest} ref={ref} />
   ),
 );
 

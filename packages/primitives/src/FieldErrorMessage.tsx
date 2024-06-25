@@ -8,7 +8,7 @@
 
 import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { css, cx } from "@ndla/styled-system/css";
+import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { WithCss } from "@ndla/styled-system/types";
 import { useFormControlContext } from "./FormControl";
@@ -23,14 +23,14 @@ const StyledErrorMessage = styled(ark.div, {
 });
 
 export const FieldErrorMessage = forwardRef<HTMLSpanElement, TextProps & HTMLArkProps<"div"> & WithCss>(
-  ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, className, ...props }, ref) => {
+  ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => {
     const field = useFormControlContext();
     if (field && !field.isInvalid) return null;
 
     return (
       <StyledErrorMessage
         {...(field?.getErrorMessageProps(props, ref) ?? { ref, ...props })}
-        className={cx(css({ textStyle, fontWeight, color, srOnly }, cssProp), className)}
+        css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)}
       />
     );
   },

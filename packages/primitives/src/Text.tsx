@@ -8,7 +8,8 @@
 
 import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { css, cx } from "@ndla/styled-system/css";
+import { css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
 import { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { UtilityValues } from "@ndla/styled-system/types/prop-type";
@@ -20,14 +21,18 @@ export interface TextProps {
   srOnly?: boolean;
 }
 
+const StyledP = styled(ark.p);
+
 export const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & JsxStyleProps & TextProps>(
-  ({ textStyle = "body.medium", fontWeight, color, srOnly, className, css: cssProp, ...rest }, ref) => (
-    <ark.p className={cx(css({ textStyle, fontWeight, color, srOnly }, cssProp), className)} ref={ref} {...rest} />
+  ({ textStyle = "body.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
+    <StyledP css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} ref={ref} {...rest} />
   ),
 );
 
+const StyledH1 = styled(ark.h1);
+
 export const Heading = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & JsxStyleProps & TextProps>(
-  ({ textStyle = "heading.medium", fontWeight, color, srOnly, className, css: cssProp, ...rest }, ref) => (
-    <ark.h1 className={cx(css({ textStyle, fontWeight, color, srOnly }, cssProp), className)} ref={ref} {...rest} />
+  ({ textStyle = "heading.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
+    <StyledH1 css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} ref={ref} {...rest} />
   ),
 );

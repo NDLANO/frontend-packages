@@ -8,6 +8,7 @@
 
 import { Tabs } from "@ark-ui/react";
 import { RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const tabsRecipe = sva({
@@ -204,7 +205,7 @@ const { withProvider, withContext } = createStyleContext(tabsRecipe);
 
 export type TabsVariantProps = RecipeVariantProps<typeof tabsRecipe>;
 
-export type TabsRootProps = Tabs.RootProps & TabsVariantProps;
+export type TabsRootProps = Tabs.RootProps & TabsVariantProps & JsxStyleProps;
 
 const InternalTabsRoot = withProvider<HTMLDivElement, TabsRootProps>(Tabs.Root, "root");
 
@@ -212,14 +213,17 @@ export const TabsRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: T
   <InternalTabsRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const TabsContent = withContext<HTMLDivElement, Tabs.ContentProps>(Tabs.Content, "content");
+export const TabsContent = withContext<HTMLDivElement, Tabs.ContentProps & JsxStyleProps>(Tabs.Content, "content");
 
-export const TabsIndicator = withContext<HTMLDivElement, Tabs.IndicatorProps>(Tabs.Indicator, "indicator");
+export const TabsIndicator = withContext<HTMLDivElement, Tabs.IndicatorProps & JsxStyleProps>(
+  Tabs.Indicator,
+  "indicator",
+);
 
-export const TabsList = withContext<HTMLDivElement, Tabs.ListProps>(Tabs.List, "list");
+export const TabsList = withContext<HTMLDivElement, Tabs.ListProps & JsxStyleProps>(Tabs.List, "list");
 
-const InternalTabsTrigger = withContext<HTMLButtonElement, Tabs.TriggerProps>(Tabs.Trigger, "trigger");
+const InternalTabsTrigger = withContext<HTMLButtonElement, Tabs.TriggerProps & JsxStyleProps>(Tabs.Trigger, "trigger");
 
-export const TabsTrigger = ({ className, ...props }: Tabs.TriggerProps) => (
+export const TabsTrigger = ({ className, ...props }: Tabs.TriggerProps & JsxStyleProps) => (
   <InternalTabsTrigger className={cx("peer", className)} {...props} />
 );

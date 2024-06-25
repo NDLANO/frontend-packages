@@ -33,7 +33,7 @@ const { withProvider, withContext } = createStyleContext(paginationRecipe);
 
 export type PaginationRootProps = JsxStyleProps & Pagination.RootProps;
 
-export const PaginationRoot = withProvider<HTMLElement, Pagination.RootProps>(Pagination.Root, "root");
+export const PaginationRoot = withProvider<HTMLElement, PaginationRootProps>(Pagination.Root, "root");
 
 export const PaginationItem = withContext<HTMLButtonElement, JsxStyleProps & Pagination.ItemProps>(
   Pagination.Item,

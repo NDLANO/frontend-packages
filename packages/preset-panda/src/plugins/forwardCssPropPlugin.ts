@@ -33,8 +33,11 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   const factoryArtifact = args.artifacts.find((art) => art.id === "jsx-factory");
   const factoryJs = factoryArtifact?.files.find((f) => f.file.includes(".mjs") || f.file.includes(".js"));
   const jsxTypes = args.artifacts.find((art) => art.id === "types-jsx")?.files.find((f) => f.file.includes("jsx"));
+  const systemTypes = args.artifacts
+    .find((art) => art.id === "types-gen-system")
+    ?.files.find((f) => f.file.includes("system-types"));
 
-  if (!factoryJs?.code || !jsxTypes?.code) {
+  if (!factoryJs?.code || !jsxTypes?.code || !systemTypes?.code) {
     return args.artifacts;
   }
 
@@ -68,9 +71,11 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   forwardCssProp?: boolean`,
   );
 
-  jsxTypes.code = jsxTypes.code.replace(
-    "(props: JsxHTMLProps<ComponentProps<T>, Assign<JsxStyleProps, P>>): JSX.Element",
-    "(props: JsxHTMLProps<ComponentProps<T>, Assign<JsxStyleProps, P>> & {forwardCssProp?: boolean}): JSX.Element",
+  const jsxStylePropsCode = "export type JsxStyleProps =";
+
+  systemTypes.code = systemTypes.code.replace(
+    jsxStylePropsCode,
+    `${jsxStylePropsCode} { forwardCssProp?: boolean } & `,
   );
 
   return args.artifacts;

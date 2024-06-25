@@ -9,6 +9,7 @@
 import { HTMLArkProps, ark } from "@ark-ui/react";
 import { RecipeVariantProps, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
 export const spinnerRecipe = cva({
   base: {
@@ -43,6 +44,6 @@ export const spinnerRecipe = cva({
 
 export type SpinnerVariantProps = RecipeVariantProps<typeof spinnerRecipe>;
 
-export type SpinnerProps = HTMLArkProps<"div"> & SpinnerVariantProps;
+export type SpinnerProps = HTMLArkProps<"div"> & SpinnerVariantProps & JsxStyleProps;
 
 export const Spinner = styled(ark.div, spinnerRecipe);

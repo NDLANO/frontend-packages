@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, WithCss } from "@ndla/styled-system/types";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { useFormControlContext } from "./FormControl";
 import { TextProps } from "./Text";
 
@@ -24,7 +24,7 @@ const StyledLegend = styled(ark.legend, {
   },
 });
 
-export type LegendProps = HTMLArkProps<"legend"> & WithCss & TextProps;
+export type LegendProps = HTMLArkProps<"legend"> & JsxStyleProps & TextProps;
 
 export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, ...rest }, ref) => (

@@ -8,5 +8,3 @@
 
 export { default as EmbedByline } from "./EmbedByline";
 export { default as LicenseLink } from "./LicenseLink";
-export { default as LicenseBylineDescription } from "./LicenseBylineDescription";
-export { default as LicenseBylineDescriptionList } from "./LicenseBylineDescriptionList";

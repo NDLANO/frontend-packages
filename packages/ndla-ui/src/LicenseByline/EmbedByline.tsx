@@ -74,12 +74,13 @@ export type EmbedBylineTypeProps =
 
 type Props = EmbedBylineTypeProps | EmbedBylineErrorProps;
 
-const BylineWrapper = styled.div`
+const BylineWrapper = styled.figcaption`
   display: flex;
   flex-direction: column;
   font-family: ${fonts.sans};
   ${fonts.sizes("16px", "26px")};
-
+  padding: ${spacing.small} 0;
+  background-color: ${colors.white};
   &[data-top-rounded="true"] {
     border-top-right-radius: ${misc.borderRadius};
     border-top-left-radius: ${misc.borderRadius};
@@ -101,10 +102,8 @@ const BylineWrapper = styled.div`
 const StyledSpan = styled.span`
   font-style: italic;
   color: grey;
-`;
-
-const LicenseContainer = styled.div`
-  padding: ${spacing.small} 0;
+  font-family: ${fonts.sans};
+  ${fonts.sizes("16px", "26px")};
 `;
 
 const EmbedByline = ({ type, topRounded, bottomRounded, description, children, visibleAlt, ...props }: Props) => {
@@ -124,15 +123,17 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
   const { copyright } = props;
 
   return (
-    <BylineWrapper>
-      <LicenseContainer>
-        <LicenseContainerContent type={type} copyright={copyright}>
-          {description}
-        </LicenseContainerContent>
-        {children}
-      </LicenseContainer>
+    <>
+      <BylineWrapper>
+        <div>
+          <LicenseContainerContent type={type} copyright={copyright}>
+            {description}
+          </LicenseContainerContent>
+          {children}
+        </div>
+      </BylineWrapper>
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
-    </BylineWrapper>
+    </>
   );
 };
 
@@ -142,7 +143,7 @@ interface LicenseContainerProps {
   type: Props["type"];
 }
 
-const LicenseContainerContent = ({ children, copyright, type }: LicenseContainerProps) => {
+export const LicenseContainerContent = ({ children, copyright, type }: LicenseContainerProps) => {
   const { t, i18n } = useTranslation();
   const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? "", i18n.language) : undefined;
   const authors = getLicenseCredits(copyright);

@@ -17,7 +17,7 @@ import BrightcoveEmbed from "./BrightcoveEmbed";
 import H5pEmbed from "./H5pEmbed";
 import ImageEmbed from "./ImageEmbed";
 import { Gloss } from "../Gloss";
-import { EmbedByline } from "../LicenseByline";
+import { LicenseContainerContent } from "../LicenseByline/EmbedByline";
 import { Copyright } from "../types";
 
 export type ConceptType = "concept" | "gloss";
@@ -179,7 +179,11 @@ const StyledList = styled.ul`
   }
 `;
 const BylineWrapper = styled.div`
-  padding-inline: ${spacing.normal};
+  padding: 0 ${spacing.normal} ${spacing.small} ${spacing.normal};
+  span {
+    font-family: ${fonts.sans};
+    ${fonts.sizes("16px", "26px")};
+  }
 `;
 
 export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
@@ -279,7 +283,7 @@ export const ConceptNotionV2 = forwardRef<HTMLDivElement, ConceptNotionProps>(
         </ContentSpacing>
         {copyright && (
           <BylineWrapper>
-            <EmbedByline copyright={copyright} type={conceptType as ConceptType} />
+            <LicenseContainerContent copyright={copyright} type={conceptType as ConceptType} />
           </BylineWrapper>
         )}
       </div>

@@ -18,7 +18,7 @@ interface Props {
   warningByline?: boolean;
 }
 
-const StyledFigCaption = styled.figcaption`
+const StyledFigCaption = styled.div`
   display: flex;
   gap: ${spacing.small};
   align-items: center;

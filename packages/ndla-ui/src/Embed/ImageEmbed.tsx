@@ -18,7 +18,7 @@ import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from "./types";
 import { Figure, FigureType, figureActionIndicatorStyle } from "../Figure";
-import Image, { ImageLink } from "../Image";
+import Image from "../Image";
 import { EmbedByline } from "../LicenseByline";
 
 interface Props {
@@ -259,10 +259,10 @@ const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps
   }
 
   return (
-    <ImageLink src={src} crop={crop}>
+    <>
       {children}
       <HiddenSpan>{t("license.images.itemImage.ariaLabel")}</HiddenSpan>
-    </ImageLink>
+    </>
   );
 };
 

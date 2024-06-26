@@ -2949,7 +2949,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/pager@npm:^3.0.13, @ndla/pager@workspace:packages/ndla-pager":
+"@ndla/pager@npm:^3.0.14, @ndla/pager@workspace:packages/ndla-pager":
   version: 0.0.0-use.local
   resolution: "@ndla/pager@workspace:packages/ndla-pager"
   dependencies:

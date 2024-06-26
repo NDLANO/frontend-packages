@@ -9,7 +9,7 @@
 import { forwardRef } from "react";
 import { selectAnatomy } from "@ark-ui/anatomy";
 import { Select } from "@ark-ui/react";
-import { sva } from "@ndla/styled-system/css";
+import { cx, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
@@ -64,7 +64,6 @@ const selectRecipe = sva({
         background: "surface.hover",
       },
       _selected: {
-        textDecoration: "underline",
         background: "surface.selected",
         _hover: {
           background: "surface.hover",
@@ -74,7 +73,6 @@ const selectRecipe = sva({
         },
       },
       _highlighted: {
-        textDecoration: "underline",
         background: "surface.hover",
         _hover: {
           background: "surface.hover",
@@ -110,6 +108,14 @@ const selectRecipe = sva({
     },
     itemIndicator: {
       color: "stroke.default",
+    },
+    itemText: {
+      _groupSelected: {
+        textDecoration: "underline",
+      },
+      _highlighted: {
+        textDecoration: "underline",
+      },
     },
     trigger: {
       justifyContent: "space-between",
@@ -185,7 +191,11 @@ export const SelectItemIndicator = withContext<HTMLDivElement, Select.ItemIndica
   "itemIndicator",
 );
 
-export const SelectItem = withContext<HTMLDivElement, Select.ItemProps & JsxStyleProps>(Select.Item, "item");
+const InternalSelectItem = withContext<HTMLDivElement, Select.ItemProps & JsxStyleProps>(Select.Item, "item");
+
+export const SelectItem = forwardRef<HTMLDivElement, Select.ItemProps & JsxStyleProps>(
+  ({ className, ...props }, ref) => <InternalSelectItem className={cx("group", className)} {...props} ref={ref} />,
+);
 
 export const SelectItemText = withContext<HTMLDivElement, Select.ItemTextProps & JsxStyleProps>(
   Select.ItemText,

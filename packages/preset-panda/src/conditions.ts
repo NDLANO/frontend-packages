@@ -9,4 +9,5 @@
 export const conditions = {
   chinese: "&:where([lang='zh'], &[lang='zh-Hans'], &[lang='zh-Hant']):not([data-pinyin])",
   ariaInvalid: "&:has([aria-invalid='true']), &[aria-invalid='true']",
+  groupSelected: ".group:is([aria-selected=true], [data-selected]) &",
 };

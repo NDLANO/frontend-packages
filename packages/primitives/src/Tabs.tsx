@@ -6,15 +6,14 @@
  *
  */
 
+import { tabsAnatomy } from "@ark-ui/anatomy";
 import { Tabs } from "@ark-ui/react";
 import { RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const tabsRecipe = sva({
-  // TODO: Defining the slots manually fixes an issue with variants not generating properly.
-  // Come back to this once ark releases a new version.
-  slots: ["root", "list", "trigger", "content", "indicator"],
+  slots: tabsAnatomy.keys(),
   base: {
     root: {
       position: "relative",

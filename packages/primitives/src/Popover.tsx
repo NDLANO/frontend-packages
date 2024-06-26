@@ -9,8 +9,8 @@
 import { popoverAnatomy } from "@ark-ui/anatomy";
 import { Popover } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "./createStyleContext";
 import { JsxStyleProps } from "@ndla/styled-system/types";
+import { createStyleContext } from "./createStyleContext";
 
 const popoverRecipe = sva({
   slots: popoverAnatomy.keys(),

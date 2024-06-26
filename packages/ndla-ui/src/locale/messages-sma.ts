@@ -418,8 +418,6 @@ const messages = {
         expandByline: "Vuesehth bylinem",
         minimizeByline: "Tjïekh bylinen",
       },
-      source: "Gaaltije",
-      title: "Tihtele",
       licenseText: "Daate guvvie lisensem åtna",
       restrictedUseText: "Daate guvvie",
     },
@@ -475,7 +473,6 @@ const messages = {
       heading: "Slik gjenbruker du forklaringer",
       description: "Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten",
       rules: "Njoelkedassh guktie buerkiestimmiem nuhtjh",
-      title: "Tihtele",
       embedlink: {
         heading: "Slik viser du forklaringen i annet innhold",
         description: "Denne lenken viser forklaringen uten kontekst (meny og bunntekst)",
@@ -489,7 +486,6 @@ const messages = {
       heading: "Naemhtie gïelem ikth vielie nåhtadidh",
       description: "Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie",
       rules: "Njoelkedassh guktie diejvesem nåhtadidh",
-      title: "Tihtele",
       showOrHideExamples: "Vuesiehtimmieh vuesiehtidh jallh vöörhkedh",
       embedlink: {
         heading: "Naemhtie gïelem jeatjah sisvegisnie vuesehte",
@@ -514,7 +510,6 @@ const messages = {
     published: "Publiseringsdato",
     processed: "Innhaldet har vorte omarbeidd",
     rightsholder: "Rettighetshaver",
-    source: "Gaaltije",
     info: "Lisensinformasjon",
   },
   errorMessage: {

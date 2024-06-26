@@ -418,8 +418,6 @@ const messages = {
         expandByline: "Čájet byline",
         minimizeByline: "Čiega byline",
       },
-      source: "Gáldu",
-      title: "Tihttel",
       licenseText: "Dán govas lea liseansa",
       restrictedUseText: "Dán govas lea",
     },
@@ -473,7 +471,6 @@ const messages = {
       heading: "Ná geavahat čilgehusaid ođđasit",
       description: "Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten",
       rules: "Njuolggadusat čilgehusa geavaheapmái",
-      title: "Tihttel",
       embedlink: {
         heading: "Ná čájehat čilgehusa eará sisdoalus",
         description: "Dát liŋka čájeha čilgehusa konteavstta haga (fállu ja vuolleteaksta)",
@@ -488,7 +485,6 @@ const messages = {
       description:
         "Muitte ahte sisdoalus mii lea vuojuhuvvon ovtta gihppagii sáhttá leat eará liseansa go dušše jietnadat.",
       rules: "Glossa geavaheami njuolggadusat",
-      title: "Namahus",
       showOrHideExamples: "Čájet dahje čiega ovdamearkkaid",
       embedlink: {
         heading: "Čájet jietnadaga eará sisdoaluin",
@@ -512,7 +508,6 @@ const messages = {
     published: "Almmuhanbeaivi",
     processed: "Sisdoallu lea rievdaduvvon.",
     rightsholder: "Vuoigatvuođaguoddi",
-    source: "Gáldu",
     info: "Lisensinformasjon",
   },
   errorMessage: {

@@ -419,8 +419,6 @@ const messages = {
       },
       licenseText: "Dette bildet har lisensen",
       restrictedUseText: "Dette bildet har",
-      source: "Kilde",
-      title: "Tittel",
     },
     text: {
       heading: "Slik gjenbruker du teksten",
@@ -472,7 +470,6 @@ const messages = {
       heading: "Slik gjenbruker du forklaringer",
       description: "Husk at innebygd innhold i en forklaring kan ha en annen lisens enn selve forklaringsteksten",
       rules: "Regler for bruk av forklaring",
-      title: "Tittel",
       embedlink: {
         heading: "Slik viser du forklaringen i annet innhold",
         description: "Denne lenken viser forklaringen uten kontekst (meny og bunntekst)",
@@ -486,7 +483,6 @@ const messages = {
       heading: "Slik gjenbruker du gloser",
       description: "Husk at innebygd innhold i en glose kan ha en annen lisens enn selve gloseteksten",
       rules: "Regler for bruk av glose",
-      title: "Tittel",
       showOrHideExamples: "Vis eller skjul eksempler",
       embedlink: {
         heading: "Slik viser du glosen i annet innhold",
@@ -510,7 +506,6 @@ const messages = {
     published: "Publiseringsdato",
     processed: "Innholdet har blitt bearbeidet",
     rightsholder: "Rettighetshaver",
-    source: "Kilde",
     info: "Lisensinformasjon",
   },
   errorMessage: {

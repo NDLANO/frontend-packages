@@ -401,8 +401,6 @@ const messages = {
         expandByline: "Show byline",
         minimizeByline: "Hide byline",
       },
-      source: "Source",
-      title: "Title",
       licenseText: "This image has the license",
       restrictedUseText: "This image has",
     },
@@ -456,7 +454,6 @@ const messages = {
       heading: "How to reuse concept content",
       description: "Remember that built-in content might have a different license than the explanation text",
       rules: "Rules for use of concept",
-      title: "Title",
       embedlink: {
         heading: "How to show the concept in other content",
         description: "This url shows the concept without menu and footer",
@@ -470,7 +467,6 @@ const messages = {
       heading: "How to reuse gloss content",
       description: "Remember that built-in content might have a different license than the gloss text",
       rules: "Rules for use of gloss",
-      title: "Title",
       showOrHideExamples: "Show or hide examples",
       embedlink: {
         heading: "How to show the gloss in other content",
@@ -509,7 +505,6 @@ const messages = {
     originator: "Originator",
     rightsholder: "Rightsholder",
     processed: "The content has been processed",
-    source: "Source",
     published: "Published",
     info: "License information",
   },

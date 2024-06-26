@@ -29,6 +29,11 @@ const checkboxRecipe = sva({
         },
       },
     },
+    group: {
+      display: "flex",
+      gap: "xxsmall",
+      flexDirection: "column",
+    },
     control: {
       display: "flex",
       alignItems: "center",
@@ -235,5 +240,7 @@ export const CheckboxControl = withContext<HTMLDivElement, JsxStyleProps & Check
   Checkbox.Control,
   "control",
 );
+
+export const CheckboxGroup = withProvider<HTMLDivElement, JsxStyleProps & Checkbox.GroupProps>(Checkbox.Group, "group");
 
 export const CheckboxHiddenInput = Checkbox.HiddenInput;

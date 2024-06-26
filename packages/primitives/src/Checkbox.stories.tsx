@@ -9,7 +9,14 @@
 import { useState } from "react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Done } from "@ndla/icons/editor";
-import { CheckboxControl, CheckboxHiddenInput, CheckboxIndicator, CheckboxLabel, CheckboxRoot } from "./Checkbox";
+import {
+  CheckboxControl,
+  CheckboxGroup,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+  CheckboxLabel,
+  CheckboxRoot,
+} from "./Checkbox";
 import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { FieldHelper } from "./FieldHelper";
@@ -132,5 +139,29 @@ export const WithRequiredField: StoryFn<typeof CheckboxRoot> = (args) => {
         <CheckboxHiddenInput />
       </CheckboxRoot>
     </FieldRoot>
+  );
+};
+
+export const Group: StoryFn<typeof CheckboxRoot> = () => {
+  const items = [
+    { value: "1", label: "Verdi 1" },
+    { value: "2", label: "Verdi 2" },
+    { value: "3", label: "Verdi 3" },
+    { value: "4", label: "Verdi 4" },
+  ];
+  return (
+    <CheckboxGroup defaultValue={["1", "3"]}>
+      {items.map((item) => (
+        <CheckboxRoot key={item.value} value={item.value}>
+          <CheckboxControl>
+            <CheckboxIndicator asChild>
+              <Done />
+            </CheckboxIndicator>
+          </CheckboxControl>
+          <CheckboxLabel>{item.label}</CheckboxLabel>
+          <CheckboxHiddenInput />
+        </CheckboxRoot>
+      ))}
+    </CheckboxGroup>
   );
 };

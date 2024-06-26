@@ -6,11 +6,15 @@
  *
  */
 
+import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Search } from "@ndla/icons/common";
 import { Check } from "@ndla/icons/editor";
-import { Input, InputContainer } from "./Input";
-import { Label } from "./Label";
+import { FieldRoot } from "./Field";
+import { FieldErrorMessage } from "./FieldErrorMessage";
+import { FieldHelper } from "./FieldHelper";
+import { FieldInput, Input, InputContainer } from "./Input";
+import { FieldLabel, Label } from "./Label";
 
 export default {
   title: "Primitives/Input",
@@ -60,3 +64,20 @@ export const Disabled: StoryFn<typeof Input> = () => (
     <Input id="disabledInput" disabled />
   </div>
 );
+
+export const WithField: StoryFn<typeof Input> = () => {
+  const [value, setValue] = useState<string>("");
+  const invalid = !value.length;
+  return (
+    <FieldRoot required invalid={invalid}>
+      <FieldLabel>Label</FieldLabel>
+      <FieldHelper>Husk å skrive inn hele setningen!</FieldHelper>
+      <FieldErrorMessage>Setningen kan ikke være tom!</FieldErrorMessage>
+      <InputContainer>
+        <Search />
+        <FieldInput value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+        <Check />
+      </InputContainer>
+    </FieldRoot>
+  );
+};

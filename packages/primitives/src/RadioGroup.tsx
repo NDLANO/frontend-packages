@@ -12,7 +12,6 @@ import { RadioGroup } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { useFormControl } from "./FormControl";
 import { Label } from "./Label";
 import { Text, TextProps } from "./Text";
 
@@ -94,12 +93,7 @@ const { withProvider, withContext } = createStyleContext(radioGroupRecipe);
 
 export interface RadioGroupRootProps extends RadioGroup.RootProps, JsxStyleProps {}
 
-const InternalRadioGroupRoot = withProvider<HTMLDivElement, RadioGroupRootProps>(RadioGroup.Root, "root");
-
-export const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>((props, ref) => {
-  const field = useFormControl(props);
-  return <InternalRadioGroupRoot {...field} ref={ref} />;
-});
+export const RadioGroupRoot = withProvider<HTMLDivElement, RadioGroupRootProps>(RadioGroup.Root, "root");
 
 export const RadioGroupIndicator = withContext<HTMLDivElement, RadioGroup.IndicatorProps & JsxStyleProps>(
   RadioGroup.Indicator,

@@ -6,11 +6,11 @@
  *
  */
 
-import { useId, useState } from "react";
+import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
+import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { FieldHelper } from "./FieldHelper";
-import { FormControl } from "./FormControl";
 import { SwitchControl, SwitchHiddenInput, SwitchLabel, SwitchRoot, SwitchThumb } from "./Switch";
 
 const meta: Meta<typeof SwitchRoot> = {
@@ -57,12 +57,11 @@ export const Disabled: StoryFn<typeof SwitchRoot> = ({ ...args }) => {
   );
 };
 
-export const InForm: StoryFn<typeof SwitchRoot> = ({ ...args }) => {
+export const WithField: StoryFn<typeof SwitchRoot> = ({ ...args }) => {
   const [checked, setChecked] = useState(false);
-  const id = useId();
 
   return (
-    <FormControl id={id} isRequired isInvalid={!checked}>
+    <FieldRoot required invalid={!checked}>
       <FieldHelper>Husk at denne switchen må være på!</FieldHelper>
       <FieldErrorMessage>Jeg sa at denne switchen må være på!</FieldErrorMessage>
       <SwitchRoot {...args}>
@@ -72,6 +71,6 @@ export const InForm: StoryFn<typeof SwitchRoot> = ({ ...args }) => {
         </SwitchControl>
         <SwitchHiddenInput checked={checked} onChange={(e) => setChecked(e.currentTarget.checked)} />
       </SwitchRoot>
-    </FormControl>
+    </FieldRoot>
   );
 };

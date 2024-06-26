@@ -6,13 +6,11 @@
  *
  */
 
-import { forwardRef } from "react";
 import { switchAnatomy } from "@ark-ui/anatomy";
 import { Switch } from "@ark-ui/react";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { useFormControl } from "./FormControl";
 import { Text, TextProps } from "./Text";
 
 const switchRecipe = sva({
@@ -104,12 +102,7 @@ export type SwitchVariantProps = RecipeVariantProps<typeof switchRecipe>;
 
 export type SwitchRootProps = Switch.RootProps & JsxStyleProps & SwitchVariantProps;
 
-const InternalSwitchRoot = withProvider<HTMLLabelElement, SwitchRootProps>(Switch.Root, "root");
-
-export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, ref) => {
-  const field = useFormControl(props);
-  return <InternalSwitchRoot invalid={field.invalid ?? !!field["aria-invalid"]} {...field} ref={ref} />;
-});
+export const SwitchRoot = withProvider<HTMLLabelElement, SwitchRootProps>(Switch.Root, "root");
 
 export const SwitchControl = withContext<HTMLSpanElement, JsxStyleProps & Switch.ControlProps>(
   Switch.Control,

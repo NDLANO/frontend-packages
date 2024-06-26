@@ -7,11 +7,10 @@
  */
 
 import { forwardRef } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
+import { Field, HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
-import { useFormControlContext } from "./FormControl";
 import { TextProps } from "./Text";
 
 const StyledLegend = styled(ark.legend, {
@@ -32,13 +31,6 @@ export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
   ),
 );
 
-export const FormLegend = forwardRef<HTMLLegendElement, LegendProps>((props, ref) => {
-  const control = useFormControlContext();
-  // Legend does not use htmlFor (for), so we remove it.
-  const { id: _, htmlFor: __, ...fieldProps } = control?.getLabelProps(props, ref) ?? { ref, ...props };
-  return <Legend {...props} {...fieldProps} ref={ref} />;
-});
-
 const StyledLabel = styled(ark.label, {
   base: {
     display: "inline-block",
@@ -56,11 +48,11 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
   ),
 );
 
-export const FormLabel = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => {
-  const control = useFormControlContext();
-  const fieldProps = control?.getLabelProps(props, ref) ?? { ref, ...props };
-  return <Label {...props} {...fieldProps} ref={ref} />;
-});
+export const FieldLabel = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => (
+  <Field.Label asChild>
+    <Label {...props} ref={ref} />
+  </Field.Label>
+));
 
 export const Fieldset = styled("fieldset", {
   base: {

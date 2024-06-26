@@ -7,12 +7,11 @@
  */
 
 import { createContext, forwardRef, useCallback, useContext, useEffect, useRef } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
+import { Field, HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { composeRefs } from "@ndla/util";
-import { useFormControl } from "./FormControl";
 
 interface InputContextType {}
 
@@ -114,10 +113,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({ css: cssProp, .
   return <StyledInput css={css.raw(baseInputCss, context ? undefined : inputCss, cssProp)} ref={ref} {...props} />;
 });
 
-export const FormInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const field = useFormControl(props);
-  return <Input {...field} ref={ref} />;
-});
+export const FieldInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
+  <Field.Input asChild>
+    <Input {...props} ref={ref} />
+  </Field.Input>
+));
 
 interface TextAreaProps extends HTMLArkProps<"textarea">, JsxStyleProps {}
 
@@ -153,7 +153,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ css: c
   );
 });
 
-export const FormTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
-  const field = useFormControl(props);
-  return <TextArea {...field} ref={ref} />;
-});
+export const FieldTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => (
+  <Field.Textarea asChild>
+    <TextArea {...props} ref={ref} />
+  </Field.Textarea>
+));

@@ -6,13 +6,11 @@
  *
  */
 
-import { forwardRef } from "react";
 import { checkboxAnatomy } from "@ark-ui/anatomy";
 import { Checkbox } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { useFormControl } from "./FormControl";
 import { Text, TextProps } from "./Text";
 
 const checkboxRecipe = sva({
@@ -211,19 +209,7 @@ export type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
 
 export type CheckboxRootProps = Checkbox.RootProps & CheckboxVariantProps & JsxStyleProps;
 
-const InternalCheckboxRoot = withProvider<HTMLLabelElement, CheckboxRootProps>(Checkbox.Root, "root");
-
-export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((props, ref) => {
-  const field = useFormControl(props);
-  return (
-    <InternalCheckboxRoot
-      {...field}
-      invalid={field.invalid ?? !!field["aria-invalid"]}
-      ref={ref}
-      aria-invalid={undefined}
-    />
-  );
-});
+export const CheckboxRoot = withProvider<HTMLLabelElement, CheckboxRootProps>(Checkbox.Root, "root");
 
 export const CheckboxIndicator = withContext<HTMLDivElement, Checkbox.IndicatorProps & JsxStyleProps>(
   Checkbox.Indicator,

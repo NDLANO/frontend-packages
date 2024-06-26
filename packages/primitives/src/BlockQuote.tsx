@@ -20,7 +20,7 @@ const blockQuoteRecipe = cva({
     variant: {
       neutral: {
         borderColor: "stroke.subtle",
-        // TODO: Figure out if this should have a background color.
+        background: "surface.default",
       },
       brand1: {
         background: "surface.brand.1.subtle",

@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { components, InputProps } from "react-select";
 import { css } from "@emotion/react";
 import { colors, spacing } from "@ndla/core";

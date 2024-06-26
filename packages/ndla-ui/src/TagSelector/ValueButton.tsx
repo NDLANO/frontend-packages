@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { MultiValueProps } from "react-select";
 import styled from "@emotion/styled";
 import { buttonStyleV2 as buttonStyle } from "@ndla/button";

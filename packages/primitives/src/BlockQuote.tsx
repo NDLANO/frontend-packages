@@ -6,9 +6,10 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
-import { RecipeVariantProps, cva, cx } from "@ndla/styled-system/css";
+import { HTMLArkProps, ark } from "@ark-ui/react";
+import { RecipeVariantProps, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
 const blockQuoteRecipe = cva({
   base: {
@@ -19,7 +20,7 @@ const blockQuoteRecipe = cva({
     variant: {
       neutral: {
         borderColor: "stroke.subtle",
-        // TODO: Figure out if this should have a background color.
+        background: "surface.default",
       },
       brand1: {
         background: "surface.brand.1.subtle",
@@ -38,8 +39,6 @@ const blockQuoteRecipe = cva({
 
 export type BlockQuoteVariantProps = RecipeVariantProps<typeof blockQuoteRecipe>;
 
-export type BlockQuoteProps = ComponentPropsWithoutRef<"blockquote"> & BlockQuoteVariantProps;
+export type BlockQuoteProps = HTMLArkProps<"blockquote"> & JsxStyleProps & BlockQuoteVariantProps;
 
-export const BlockQuote = ({ className, variant, ...rest }: BlockQuoteProps) => (
-  <styled.blockquote className={cx(blockQuoteRecipe({ variant }), className)} {...rest} />
-);
+export const BlockQuote = styled(ark.blockquote, blockQuoteRecipe);

@@ -6,9 +6,12 @@
  *
  */
 
-import { ComponentPropsWithoutRef, ElementType } from "react";
-import { css, cx } from "@ndla/styled-system/css";
+import { forwardRef } from "react";
+import { HTMLArkProps, ark } from "@ark-ui/react";
+import { css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
 import { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { UtilityValues } from "@ndla/styled-system/types/prop-type";
 
 export interface TextProps {
@@ -18,23 +21,18 @@ export interface TextProps {
   srOnly?: boolean;
 }
 
-type Props<T extends ElementType> = TextProps & { as?: T } & ComponentPropsWithoutRef<T>;
+const StyledP = styled(ark.p);
 
-const BaseText = <T extends ElementType = "p">(props: Props<T>) => {
-  const { as: As = "p", className, fontWeight, color, textStyle = "body.medium", srOnly, ...rest } = props;
-  return <As className={cx(css({ textStyle, fontWeight, color, srOnly: srOnly }), className)} {...rest} />;
-};
+export const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & JsxStyleProps & TextProps>(
+  ({ textStyle = "body.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
+    <StyledP css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} ref={ref} {...rest} />
+  ),
+);
 
-export type HeadingType = Extract<ElementType, "h1" | "h2" | "h3" | "h4" | "h5" | "h6">;
+const StyledH1 = styled(ark.h1);
 
-export const Heading = <T extends HeadingType = "h1">(props: Props<T>) => {
-  const { as = "h1", textStyle = "heading.medium", ...rest } = props;
-  return <BaseText as={as} textStyle={textStyle} {...rest} />;
-};
-
-type TextType = Extract<ElementType, "p" | "span" | "div">;
-
-export const Text = <T extends TextType = "p">(props: Props<T>) => {
-  const { as = "p", textStyle = "body.medium", ...rest } = props;
-  return <BaseText as={as} textStyle={textStyle} {...rest} />;
-};
+export const Heading = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & JsxStyleProps & TextProps>(
+  ({ textStyle = "heading.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
+    <StyledH1 css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} ref={ref} {...rest} />
+  ),
+);

@@ -6,28 +6,23 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from "react";
-import { css, cx } from "@ndla/styled-system/css";
+import { forwardRef } from "react";
+import { Field, HTMLArkProps } from "@ark-ui/react";
+import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { useFormControlContext } from "./FormControl";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { TextProps } from "./Text";
 
-const StyledErrorMessage = styled("div", {
+const StyledErrorText = styled(Field.ErrorText, {
   base: {
     color: "text.error",
     whiteSpace: "pre-line",
+    justifyContent: "center",
   },
 });
 
-export const FieldErrorMessage = forwardRef<HTMLSpanElement, TextProps & ComponentPropsWithRef<"div">>(
-  ({ textStyle = "label.small", fontWeight, color, srOnly, className, ...props }, ref) => {
-    const field = useFormControlContext();
-    if (field && !field.isInvalid) return null;
-    return (
-      <StyledErrorMessage
-        {...(field?.getErrorMessageProps(props, ref) ?? { ref, ...props })}
-        className={cx(css({ textStyle, fontWeight, color, srOnly: srOnly }), className)}
-      />
-    );
+export const FieldErrorMessage = forwardRef<HTMLSpanElement, TextProps & HTMLArkProps<"div"> & JsxStyleProps>(
+  ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => {
+    return <StyledErrorText css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />;
   },
 );

@@ -6,13 +6,13 @@
  *
  */
 
-import { useId, useState } from "react";
+import { useState } from "react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Done } from "@ndla/icons/editor";
 import { CheckboxControl, CheckboxHiddenInput, CheckboxIndicator, CheckboxLabel, CheckboxRoot } from "./Checkbox";
+import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { FieldHelper } from "./FieldHelper";
-import { FormControl } from "./FormControl";
 
 const meta: Meta<typeof CheckboxRoot> = {
   title: "Primitives/Checkbox",
@@ -35,9 +35,45 @@ export default meta;
 
 export const Default: StoryObj<typeof CheckboxRoot> = {};
 
+export const Chip: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+  },
+};
+
 export const Disabled: StoryObj<typeof CheckboxRoot> = {
   args: {
     disabled: true,
+  },
+};
+
+export const ChipDisabled: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+    disabled: true,
+  },
+};
+
+export const ChipDisabledChecked: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+    disabled: true,
+    defaultChecked: true,
+  },
+};
+
+export const ChipInvalid: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+    invalid: true,
+  },
+};
+
+export const ChipInvalidChecked: StoryObj<typeof CheckboxRoot> = {
+  args: {
+    variant: "chip",
+    invalid: true,
+    defaultChecked: true,
   },
 };
 
@@ -60,12 +96,11 @@ export const Invalid: StoryObj<typeof CheckboxRoot> = {
   },
 };
 
-export const WithFormControl: StoryFn<typeof CheckboxRoot> = (args) => {
-  const id = useId();
+export const WithField: StoryFn<typeof CheckboxRoot> = (args) => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <FormControl id={id} isInvalid={checked}>
+    <FieldRoot invalid={checked}>
       <FieldHelper>Ikke kryss av denne!</FieldHelper>
       <FieldErrorMessage>Denne skal ikke være avkrysset!</FieldErrorMessage>
       <CheckboxRoot {...args} checked={checked} onCheckedChange={(e) => setChecked(e.checked === true)}>
@@ -77,16 +112,15 @@ export const WithFormControl: StoryFn<typeof CheckboxRoot> = (args) => {
         <CheckboxLabel>Jeg godtar dette</CheckboxLabel>
         <CheckboxHiddenInput />
       </CheckboxRoot>
-    </FormControl>
+    </FieldRoot>
   );
 };
 
-export const FormControlRequired: StoryFn<typeof CheckboxRoot> = (args) => {
-  const id = useId();
+export const WithRequiredField: StoryFn<typeof CheckboxRoot> = (args) => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <FormControl id={id} isInvalid={!checked} isRequired>
+    <FieldRoot invalid={!checked} required>
       <FieldErrorMessage>Du må godta dette!</FieldErrorMessage>
       <CheckboxRoot {...args} checked={checked} onCheckedChange={(e) => setChecked(e.checked === true)}>
         <CheckboxControl>
@@ -97,6 +131,6 @@ export const FormControlRequired: StoryFn<typeof CheckboxRoot> = (args) => {
         <CheckboxLabel>Jeg godtar dette</CheckboxLabel>
         <CheckboxHiddenInput />
       </CheckboxRoot>
-    </FormControl>
+    </FieldRoot>
   );
 };

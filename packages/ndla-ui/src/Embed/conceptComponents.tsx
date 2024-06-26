@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { forwardRef, ReactNode, RefAttributes } from "react";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";

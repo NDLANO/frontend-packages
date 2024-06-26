@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import parse from "html-react-parser";
 import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -128,7 +129,7 @@ const StyledFigure = styled(Figure)`
 `;
 
 const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article", children }: Props) => {
-  const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
+  const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
   // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
@@ -176,7 +177,7 @@ const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article"
         border={embedData.border}
         expandButton={
           <ExpandButton
-            size={embedData.size}
+            embedData={embedData}
             expanded={!!imageSizes}
             bylineHidden={isBylineHidden}
             onExpand={() => {
@@ -207,12 +208,12 @@ const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article"
   );
 };
 
-const hideByline = (size?: string): boolean => {
-  return !!size && size.endsWith("-hide-byline");
+const hideByline = (embed: ImageEmbedData): boolean => {
+  return (!!embed.size && embed.size.endsWith("-hide-byline")) || embed.hideByline === "true";
 };
 
 interface ExpandButtonProps {
-  size?: string;
+  embedData: ImageEmbedData;
   expanded: boolean;
   bylineHidden: boolean;
   onExpand: MouseEventHandler<HTMLButtonElement>;
@@ -238,9 +239,9 @@ const BylineButton = styled.button`
   }
 `;
 
-const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
+const ExpandButton = ({ embedData, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
   const { t } = useTranslation();
-  if (isSmall(size)) {
+  if (isSmall(embedData.size)) {
     return (
       <button
         type="button"
@@ -253,7 +254,7 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
       </button>
     );
   }
-  if (hideByline(size)) {
+  if (hideByline(embedData)) {
     return (
       <BylineButton
         type="button"

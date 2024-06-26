@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { MenuProps, components, GroupBase } from "react-select";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";

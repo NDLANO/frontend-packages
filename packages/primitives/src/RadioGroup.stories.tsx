@@ -6,13 +6,7 @@
  *
  */
 
-import { useId, useState } from "react";
-import { Meta, StoryFn } from "@storybook/react";
-import { css } from "@ndla/styled-system/css";
-import { Button } from "./Button";
-import { FieldErrorMessage } from "./FieldErrorMessage";
-import { FieldHelper } from "./FieldHelper";
-import { FormControl } from "./FormControl";
+import { Meta, StoryObj } from "@storybook/react";
 import {
   RadioGroupItem,
   RadioGroupItemControl,
@@ -29,14 +23,7 @@ const meta: Meta<typeof RadioGroupRoot> = {
   args: {
     orientation: "vertical",
   },
-};
-
-export default meta;
-
-const subjects = ["Norsk", "Engelsk", "Matte", "Naturfag"];
-
-export const Default: StoryFn<typeof RadioGroupRoot> = ({ ...args }) => {
-  return (
+  render: (args) => (
     <RadioGroupRoot {...args}>
       <RadioGroupLabel>Ditt favorittfag</RadioGroupLabel>
       {subjects.map((subject, index) => (
@@ -47,28 +34,23 @@ export const Default: StoryFn<typeof RadioGroupRoot> = ({ ...args }) => {
         </RadioGroupItem>
       ))}
     </RadioGroupRoot>
-  );
+  ),
 };
 
-export const WithFormControl: StoryFn<typeof RadioGroupRoot> = ({ ...args }) => {
-  const id = useId();
-  const [value, setValue] = useState<string | null>(null);
-  const isInvalid = !value;
-  return (
-    <FormControl id={id} isInvalid={isInvalid} className={css({ alignItems: "flex-start" })}>
-      <RadioGroupRoot {...args} value={value} onValueChange={(e) => setValue(e.value)}>
-        <RadioGroupLabel>Ditt favorittfag</RadioGroupLabel>
-        <FieldHelper>Husk at du må velge riktig fag!</FieldHelper>
-        <FieldErrorMessage>Du må velge noe!</FieldErrorMessage>
-        {subjects.map((subject, index) => (
-          <RadioGroupItem key={subject} value={subject} disabled={index === 2}>
-            <RadioGroupItemControl />
-            <RadioGroupItemText>{subject}</RadioGroupItemText>
-            <RadioGroupItemHiddenInput />
-          </RadioGroupItem>
-        ))}
-      </RadioGroupRoot>
-      <Button onClick={() => setValue(null)}>Reset</Button>
-    </FormControl>
-  );
+export default meta;
+
+const subjects = ["Norsk", "Engelsk", "Matte", "Naturfag"];
+
+export const Default: StoryObj<typeof RadioGroupRoot> = {};
+
+export const Vertical: StoryObj<typeof RadioGroupRoot> = {
+  args: {
+    orientation: "vertical",
+  },
+};
+
+export const Horizontal: StoryObj<typeof RadioGroupRoot> = {
+  args: {
+    orientation: "horizontal",
+  },
 };

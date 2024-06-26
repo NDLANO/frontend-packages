@@ -45,4 +45,6 @@ const preset = definePreset({
   },
 });
 
+export { forwardCssPropPlugin } from "./plugins/forwardCssPropPlugin";
+
 export default preset;

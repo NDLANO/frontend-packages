@@ -95,13 +95,17 @@ export const WithIcon: StoryObj<typeof Button> = {
   },
 };
 
-const UglyButton = styled(Button, {
-  base: {
-    background: "yellow.1000",
-    color: "text.onAction",
-    paddingBlock: "large",
-    paddingInline: "large",
+const UglyButton = styled(
+  Button,
+  {
+    base: {
+      background: "yellow.1000",
+      color: "text.onAction",
+      paddingBlock: "large",
+      paddingInline: "large",
+    },
   },
-});
+  { forwardCssProp: true },
+);
 
 export const StyledButtonExample = () => <UglyButton>Styled!</UglyButton>;

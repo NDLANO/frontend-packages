@@ -10,7 +10,11 @@ import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Search } from "@ndla/icons/common";
 import { Check } from "@ndla/icons/editor";
-import { InputContainer, TextArea } from "./Input";
+import { FieldRoot } from "./Field";
+import { FieldErrorMessage } from "./FieldErrorMessage";
+import { FieldHelper } from "./FieldHelper";
+import { FieldTextArea, InputContainer, TextArea } from "./Input";
+import { FieldLabel } from "./Label";
 
 /**
  * A textbox that automatically resizes itself based on its content.
@@ -42,7 +46,7 @@ export const WithRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   </InputContainer>
 );
 
-export const WithExistingText: StoryFn<typeof TextArea> = ({ ...args }) => {
+export const WithExistingText: StoryFn<typeof TextArea> = () => {
   const [value, setValue] = useState(
     `I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer. 
 
@@ -63,3 +67,20 @@ export const WithLeftAndRightDecorative: StoryFn<typeof TextArea> = ({ ...args }
     <Check />
   </InputContainer>
 );
+
+export const WithField: StoryFn<typeof TextArea> = () => {
+  const [value, setValue] = useState<string>("");
+  const invalid = !value.length;
+  return (
+    <FieldRoot required invalid={invalid}>
+      <FieldLabel>Tell your story</FieldLabel>
+      <FieldHelper>Remember to include every detail!</FieldHelper>
+      <FieldErrorMessage>This cannot be empty!</FieldErrorMessage>
+      <InputContainer>
+        <Search />
+        <FieldTextArea value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+        <Check />
+      </InputContainer>
+    </FieldRoot>
+  );
+};

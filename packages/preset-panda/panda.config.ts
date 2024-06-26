@@ -8,9 +8,10 @@
 
 import { defineConfig } from "@pandacss/dev";
 import preset from "./src";
+import { forwardCssPropPlugin } from "./src/plugins/forwardCssPropPlugin";
 
 export default defineConfig({
-  presets: ["@pandacss/dev/presets", preset],
+  presets: [preset],
   preflight: false,
   jsxStyleProps: "minimal",
   strictPropertyValues: true,
@@ -18,8 +19,9 @@ export default defineConfig({
   outExtension: "mjs",
   include: ["./src/**/*.{js,jsx,ts,tsx}"],
   exclude: ["./src/**/*.stories.{js,jsx,ts,tsx}"],
-  outdir: "../styled-system",
   importMap: "@ndla/styled-system",
+  outdir: "../styled-system",
   jsxFramework: "react",
   syntax: "object-literal",
+  plugins: [forwardCssPropPlugin()],
 });

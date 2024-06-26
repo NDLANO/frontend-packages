@@ -4,7 +4,6 @@
     "target": "es5",
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "isolatedModules": true,
     "strict": true,
     "allowJs": true,
@@ -15,7 +14,7 @@
     "noEmit": true,
     "sourceMap": true,
     "lib": ["ES2023", "esnext.asynciterable", "dom"],
-    "types": ["@emotion/react", "@emotion/styled", "jest", "node"],
+    "types": ["jest", "node"],
     "paths": {
       "@ndla/article-converter": ["./packages/article-converter/src"],
       "@ndla/button": ["./packages/button/src"],

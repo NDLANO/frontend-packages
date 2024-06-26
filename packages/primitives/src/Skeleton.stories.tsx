@@ -8,7 +8,6 @@
 
 import { useEffect, useState } from "react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { css } from "@ndla/styled-system/css";
 import { Circle, Stack } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 import { Skeleton } from "./Skeleton";
@@ -35,7 +34,7 @@ export const Composite: StoryFn = () => (
     <Skeleton asChild>
       <Circle size="3xlarge" />
     </Skeleton>
-    <Stack gap="small" className={css({ width: "100%" })}>
+    <Stack gap="small" css={{ width: "100%" }}>
       <Skeleton>
         <Text textStyle="heading.large">Hello</Text>
       </Skeleton>
@@ -71,7 +70,7 @@ export const AfterLoaded: StoryFn = () => {
         <Skeleton asChild>
           <Circle size="3xlarge" />
         </Skeleton>
-        <Stack gap="small" className={css({ width: "100%" })}>
+        <Stack gap="small" css={{ width: "100%" }}>
           <Skeleton>
             <Text textStyle="heading.large">Hello</Text>
           </Skeleton>
@@ -87,10 +86,10 @@ export const AfterLoaded: StoryFn = () => {
   }
 
   return (
-    <Stack gap="medium" className={css({ animation: "fade-shift-in 0.25s ease-out" })}>
+    <Stack gap="medium" css={{ animation: "fade-shift-in 0.25s ease-out" }}>
       <Stack direction="row" gap="medium">
-        <Circle size="3xlarge" className={css({ background: "surface.action" })} />
-        <Stack gap="xsmall" className={css({ width: "100%" })}>
+        <Circle size="3xlarge" css={{ background: "surface.action" }} />
+        <Stack gap="xsmall" css={{ width: "100%" }}>
           <Text textStyle="heading.large">Hello</Text>
           <Text textStyle="body.large">Hello</Text>
           <Text>Hello</Text>

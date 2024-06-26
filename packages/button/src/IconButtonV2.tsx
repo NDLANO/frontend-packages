@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { ReactNode, forwardRef } from "react";
 import { css } from "@emotion/react";
 import { spacingUnit } from "@ndla/core";

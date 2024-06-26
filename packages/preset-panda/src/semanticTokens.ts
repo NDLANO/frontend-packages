@@ -87,26 +87,31 @@ export const semanticTokens = defineSemanticTokens({
         1: {
           DEFAULT: { value: "{colors.purple.500}" },
           subtle: { value: "{colors.purple.100}" },
+          moderate: { value: "{colors.purple.300}" },
           strong: { value: "{colors.purple.950}" },
         },
         2: {
           DEFAULT: { value: "{colors.blue.500}" },
-          subtle: { value: "{colors.blue.100}" },
+          subtle: { value: "{colors.blue.50}" },
+          moderate: { value: "{colors.blue.100}" },
           strong: { value: "{colors.blue.900}" },
         },
         3: {
           DEFAULT: { value: "{colors.green.500}" },
           subtle: { value: "{colors.green.100}" },
+          moderate: { value: "{colors.green.300}" },
           strong: { value: "{colors.green.900}" },
         },
         4: {
           DEFAULT: { value: "{colors.yellow.500}" },
           subtle: { value: "{colors.yellow.100}" },
+          moderate: { value: "{colors.yellow.300}" },
           strong: { value: "{colors.yellow.1100}" },
         },
         5: {
           DEFAULT: { value: "{colors.pink.500}" },
           subtle: { value: "{colors.pink.100}" },
+          moderate: { value: "{colors.pink.300}" },
           strong: { value: "{colors.pink.900}" },
         },
       },
@@ -156,6 +161,16 @@ export const semanticTokens = defineSemanticTokens({
         DEFAULT: { value: "{colors.yellow.100}" },
         hover: { value: "{colors.yellow.300}" },
         active: { value: "{colors.yellow.400}" },
+      },
+      danger: {
+        DEFAULT: { value: "{colors.pink.800}" },
+        hover: { value: "{colors.pink.900}" },
+        active: { value: "{colors.pink.950}" },
+      },
+      dangerSubtle: {
+        DEFAULT: { value: "{colors.pink.100}" },
+        hover: { value: "{colors.pink.300}" },
+        active: { value: "{colors.pink.500}" },
       },
       error: {
         DEFAULT: { value: "{colors.pink.800}" },

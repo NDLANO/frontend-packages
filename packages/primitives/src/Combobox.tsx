@@ -56,6 +56,7 @@ const comboboxRecipe = sva({
       transitionTimingFunction: "default",
       background: "surface.default",
       _disabled: {
+        cursor: "not-allowed",
         background: "surface.disabled",
         color: "text.disabled",
         _hover: {

@@ -359,6 +359,11 @@ export const WithField: StoryFn<typeof SelectRoot> = ({ ...args }) => {
               </SelectIndicator>
             </Button>
           </SelectTrigger>
+          <SelectClearTrigger asChild forwardCssProp>
+            <IconButton variant="secondary">
+              <Cross />
+            </IconButton>
+          </SelectClearTrigger>
         </SelectControl>
         <Portal>
           <SelectPositioner>

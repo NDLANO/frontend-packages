@@ -165,7 +165,6 @@ export const ConceptEmbed = ({ embed, fullWidth, lang, renderContext }: Props) =
 interface InlineConceptProps extends ConceptNotionData {
   linkText: ReactNode;
   headerButtons?: ReactNode;
-  conceptHeartButton?: ReactNode;
   exampleIds?: string;
   exampleLangs?: string;
   setSelection?: (e: MouseEvent) => void;

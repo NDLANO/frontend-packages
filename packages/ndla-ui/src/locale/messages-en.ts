@@ -1073,6 +1073,7 @@ const messages = {
         deleted: "This post has been deleted by the author.",
         upvote: "Upvote",
         removeUpvote: "Remove upvote",
+        reply: "Write a reply to {{ name }}",
       },
       flag: {
         title: "Report post / comment",

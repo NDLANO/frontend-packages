@@ -102,7 +102,7 @@ const messages = {
   },
   unpublishedResourcePage: {
     title: "Ressursen er avpublisert",
-    errorDescription: "Orsak, ressursen du prøvde komme til er avpublisert.",
+    errorDescription: "Orsak, ressursen du prøvde å komme til er avpublisert.",
   },
   lti: {
     embed: "Sett inn",

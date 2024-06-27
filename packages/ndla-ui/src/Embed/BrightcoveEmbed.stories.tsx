@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from "@ndla/types-embed";
 import BrightcoveEmbed from "./BrightcoveEmbed";
-import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 import { ArticleWrapper } from "../Article";
 import LayoutItem, { OneColumn } from "../Layout";
 
@@ -178,7 +177,6 @@ export default meta;
 
 export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "brightcove",
       status: "success",
@@ -190,14 +188,12 @@ export const BrightcoveEmbedStory: StoryObj<typeof BrightcoveEmbed> = {
 
 export const VisuallyInterpreted: StoryObj<typeof BrightcoveEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: visuallyInterpretedEmbedMetaData,
   },
 };
 
 export const BrightcoveFailed: StoryObj<typeof BrightcoveEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "brightcove",
       status: "error",

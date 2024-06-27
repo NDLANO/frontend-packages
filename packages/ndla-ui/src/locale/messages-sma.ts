@@ -300,7 +300,7 @@ const messages = {
     lastUpdated: "Minngemes orrestamme",
     edition: "Låhkoe",
     publisher: "Bæjhkoehtæjja",
-    useContent: "Åtnoenjoelkedassh",
+    useContent: "Sijhtidh jallh mubpesth nåhtadidh?",
     closeLabel: "Dahph",
     additionalLabel: "Lissie-aamhtesh",
     urlContributionsLabel: "Vuartesjh maam {{name}} dorjeme",
@@ -318,7 +318,7 @@ const messages = {
     cite: "Nuhtjh sisvegem",
     notionsPrompt: "Datne baakoetjïertide maahtah?",
     citeNotion: "Nuhtjh buerkiestimmiem",
-    printPage: "Tjaelieh",
+    printPage: "Tjaelieh teekstem",
     access: {
       onlyTeacher: "Daate vierhtie ajve dïllesisnie lohkehtæjjide mah tjaangeme Feidine.",
     },
@@ -371,7 +371,7 @@ const messages = {
     learnMore: "Lïerh vielie ræhpas lisensi bïjre",
     copyTitle: "Gaaltije",
     copy: "Kopier",
-    hasCopiedTitle: "Kopije vaaltasovveme!",
+    hasCopiedTitle: "Maahta gaaltijevuesiehtimmiem",
     embed: "Bïejh sïjse",
     embedCopied: "Kopijem sïjsebïejemekodeste vaalteme!",
     copyText: {
@@ -384,6 +384,7 @@ const messages = {
       readDate: "Lohkeme: ",
     },
     download: "Veedtjh",
+    openLink: "Rïhpesth aktene orre kaarhtesne",
     tabs: {
       text: "Teekste",
       images: "Guvvieh",
@@ -409,7 +410,7 @@ const messages = {
     images: {
       heading: "Slik gjenbruker du bilder",
       description: "Mujhtieh kopijem vaeltedh teeksteste maam edtjh guvvien baalte bïejedh desnie gusnie dam nuhtjh.",
-      rules: "Njoelkedassh guvvie-åtnoen bïjre:",
+      rules: "Njoelkedassh guvvie-åtnoen bïjre",
       itemImage: {
         ariaLabel: "Rïhpesth guvviem orre klaasesne",
         zoomImageButtonLabel: "Stueredh guvviem",
@@ -417,34 +418,42 @@ const messages = {
         expandByline: "Vuesehth bylinem",
         minimizeByline: "Tjïekh bylinen",
       },
-      source: "Gaaltije",
-      title: "Tihtele",
+      licenseText: "Daate guvvie lisensem åtna",
+      restrictedUseText: "Daate guvvie",
     },
     text: {
       heading: "Slik gjenbruker du teksten",
       description: "Mujhtieh gaaltijasse vuesiehtidh gosse teekstem orresistie nuhtjh.",
-      rules: "Njoelkedassh teekste-åtnoen bïjre:",
+      rules: "Njoelkedassh teekste-åtnoen bïjre",
       published: "Bæjkoehtimmiedaatoe",
+      licenseText: "Daate teekste lisensem åtna",
+      restrictedUseText: "Daate teekste",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description:
         "Mujhtieh kopijem vaeltedh teeksteste mij edtja tjoejen baalte bïejesovvedh desnie gusnie tjoejem nuhtjh.",
-      rules: "Njoelkedassh tjoejefijlen åtnoen bïjre:",
+      rules: "Njoelkedassh tjoejefijlen åtnoen bïjre",
+      licenseText: "Daate tjoejefijle lisensem åtna",
+      restrictedUseText: "Daate tjoejefijle",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Husk å kopiere teksten som skal legges ved podkasten der du bruker den.",
-      rules: "Regler for bruk av podkasten:",
+      rules: "Regler for bruk av podkasten",
+      licenseText: "Daate podkastem lisensine åtna",
+      restrictedUseText: "Daate podkastem",
     },
     video: {
       heading: "Slik gjenbruker du videoer",
       description:
         "Mujhtieh kopijem vaeltedh teeksteste mij edtja videjoven baalte bïejesovvedh desnie gusnie videjovem nuhtjh.",
-      rules: "Njoelkedassh videjove-åtnoen bïjre:",
+      rules: "Njoelkedassh videjove-åtnoen bïjre",
       itemImage: {
         ariaLabel: "Rïhpesth videjovem orre klaassese",
       },
+      licenseText: "Daate videoe lisensem åtna",
+      restrictedUseText: "Daate videoe",
     },
     other: {
       heading: "Slik gjenbruker du annet innhold",
@@ -456,25 +465,27 @@ const messages = {
     h5p: {
       heading: "Slik gjenbruker du H5P-innhold",
       description: "Datne njoelkedasside sisvegeåtnoen bïjre gaavnh H5P-biehkesne",
-      rules: "Njoelkedassh H5P-åtnoen bïjre:",
+      rules: "Njoelkedassh H5P-åtnoen bïjre",
+      licenseText: "Daate interaktijve laavenjasse (H5P) lisensem åtna",
+      restrictedUseText: "Daate interaktijve laavenjasse (H5P)",
     },
     concept: {
       heading: "Slik gjenbruker du forklaringer",
       description: "Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten",
-      rules: "Njoelkedassh guktie buerkiestimmiem nuhtjh:",
-      title: "Tihtele",
+      rules: "Njoelkedassh guktie buerkiestimmiem nuhtjh",
       embedlink: {
         heading: "Slik viser du forklaringen i annet innhold",
         description: "Denne lenken viser forklaringen uten kontekst (meny og bunntekst)",
         copyTitle: "Kopier innbyggingslenke",
         hasCopiedTitle: "Innbyggingslenke kopiert",
       },
+      licenseText: "Daate buerkiestimmie lissietjaalegem",
+      restrictedUseText: "Daate buerkiestimmie",
     },
     gloss: {
       heading: "Naemhtie gïelem ikth vielie nåhtadidh",
       description: "Mujhtieh sisvege aktene raajesisnie maahta jeatjah lisensem utnedh enn jïjtjehke raajesisnie",
-      rules: "Njoelkedassh guktie diejvesem nåhtadidh:",
-      title: "Tihtele",
+      rules: "Njoelkedassh guktie diejvesem nåhtadidh",
       showOrHideExamples: "Vuesiehtimmieh vuesiehtidh jallh vöörhkedh",
       embedlink: {
         heading: "Naemhtie gïelem jeatjah sisvegisnie vuesehte",
@@ -482,12 +493,14 @@ const messages = {
         copyTitle: "Kopijerh svaalhtesem sïjse loggedh",
         hasCopiedTitle: "Bigkeme svaalhtese kopijeradamme",
       },
+      licenseText: "Daate gïele lisensem åtna",
+      restrictedUseText: "Daate gïele nænnoes",
     },
     files: {
       heading: "Slik gjenbruker du filer",
       description:
         "Mujhtieh kopijem vaeltedh teeksteste  mij edtja fijlen baalte bïejesovvedh desnie gusnie dam nuhtjh.",
-      rules: "Njoelkedassh fijle-åtnoen bïjre:",
+      rules: "Njoelkedassh fijle-åtnoen bïjre",
       itemImage: {
         ariaLabel: "Åpne i nytt vindu",
       },
@@ -497,7 +510,6 @@ const messages = {
     published: "Publiseringsdato",
     processed: "Innhaldet har vorte omarbeidd",
     rightsholder: "Rettighetshaver",
-    source: "Gaaltije",
     info: "Lisensinformasjon",
   },
   errorMessage: {

@@ -6,18 +6,15 @@
  *
  */
 
-import { COPYRIGHTED } from "@ndla/licenses";
-import { AudioMetaData, ImageMetaData } from "@ndla/types-embed";
+import { AudioMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { Author } from "./ImageEmbed";
-import { HeartButtonType } from "./types";
 import AudioPlayer from "../AudioPlayer";
 import { Figure } from "../Figure";
 import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: AudioMetaData;
-  heartButton?: HeartButtonType;
   lang?: string;
 }
 
@@ -27,21 +24,7 @@ export const getFirstNonEmptyLicenseCredits = (authors: {
   processors: Author[];
 }) => Object.values(authors).find((i) => i.length > 0) ?? [];
 
-const imageMetaToMockEmbed = (
-  imageMeta: Extract<AudioMetaData, { status: "success" }>,
-): Extract<ImageMetaData, { status: "success" }> => ({
-  resource: "image",
-  status: "success",
-  // We check that this exists where the function is used.
-  data: imageMeta.data.imageMeta!,
-  embedData: {
-    resource: "image",
-    resourceId: imageMeta.data.imageMeta?.id?.toString() || "",
-    alt: imageMeta.data.imageMeta?.alttext.alttext ?? "",
-  },
-});
-
-const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
+const AudioEmbed = ({ embed, lang }: Props) => {
   if (embed.status === "error") {
     return <EmbedErrorPlaceholder type={embed.embedData.type === "standard" ? "audio" : "podcast"} />;
   }
@@ -75,28 +58,8 @@ const AudioEmbed = ({ embed, heartButton: HeartButton, lang }: Props) => {
       <EmbedByline
         error={false}
         type={data.audioType === "standard" ? "audio" : "podcast"}
-        topRounded={false}
-        bottomRounded={!data.imageMeta}
         copyright={embed.data.copyright}
-      >
-        {HeartButton && embed.data.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
-          <HeartButton embed={embed} />
-        )}
-      </EmbedByline>
-      {data.imageMeta && (
-        <EmbedByline
-          error={false}
-          first={false}
-          type="image"
-          topRounded={false}
-          bottomRounded
-          copyright={data.imageMeta.copyright}
-        >
-          {HeartButton && data.imageMeta.copyright.license.license.toLowerCase() !== COPYRIGHTED && (
-            <HeartButton embed={imageMetaToMockEmbed(embed)} />
-          )}
-        </EmbedByline>
-      )}
+      />
     </Figure>
   );
 };

@@ -14,12 +14,15 @@ export interface LicenseLocaleType {
   linkText: string;
   description: string;
   abbreviation: string;
+  rights: string[];
 }
 
+type LocalLicenseLocaleInfo = Omit<LicenseLocaleType, "rights">;
+
 export interface LicenseType {
-  nn: LicenseLocaleType;
-  nb: LicenseLocaleType;
-  en: LicenseLocaleType;
+  nn: LocalLicenseLocaleInfo;
+  nb: LocalLicenseLocaleInfo;
+  en: LocalLicenseLocaleInfo;
   rights: string[];
 }
 

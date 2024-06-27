@@ -7,18 +7,16 @@
  */
 
 import styled from "@emotion/styled";
-import { colors, fonts } from "@ndla/core";
+import { colors } from "@ndla/core";
+import { LicenseLocaleType } from "@ndla/licenses";
 import { SafeLink } from "@ndla/safelink";
-import { LicenseType } from "./EmbedByline";
 
 interface Props {
-  license: LicenseType;
-  asLink?: boolean;
+  license: LicenseLocaleType;
 }
 
 const StyledSafeLink = styled(SafeLink)`
   color: ${colors.brand.primary};
-  font-weight: ${fonts.weight.bold};
   text-decoration: underline;
   white-space: nowrap;
   box-shadow: none;
@@ -28,22 +26,18 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const StyledSpan = styled.span`
-  font-weight: ${fonts.weight.bold};
-`;
-
-const LicenseLink = ({ license, asLink = true }: Props) => {
+const LicenseLink = ({ license }: Props) => {
   if (license.abbreviation === "unknown") {
     return null;
   }
-  if (asLink) {
+  if (license.url?.length) {
     return (
       <StyledSafeLink to={license.url} rel="license">
         {license.abbreviation}
       </StyledSafeLink>
     );
   }
-  return <StyledSpan>{license.abbreviation}</StyledSpan>;
+  return <span>{license.abbreviation}</span>;
 };
 
 export default LicenseLink;

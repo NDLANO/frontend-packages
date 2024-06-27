@@ -159,17 +159,17 @@ const cc: RightType = {
   nn: {
     title: "Creative Commons",
     userFriendlyTitle: "Opphavsrett",
-    description: "Denne lisensen gjev deg rett til å dela og bruke dette innhaldet på visse vilkår.",
+    description: "Denne lisensen gjev deg rett til å dela og bruke dette innhaldet på visse vilkår:",
   },
   nb: {
     title: "Creative Commons",
     userFriendlyTitle: "Opphavsrett",
-    description: "Denne lisensen gir deg rett til å dele og bruke dette innholdet på visse vilkår.",
+    description: "Denne lisensen gir deg rett til å dele og bruke dette innholdet på visse vilkår:",
   },
   en: {
     title: "Creative Commons",
     userFriendlyTitle: "Copyright",
-    description: "Rights for reuse and sharing of content.",
+    description: "Rights for reuse and sharing of content:",
   },
 };
 

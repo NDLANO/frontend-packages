@@ -2783,8 +2783,8 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^13.0.5"
     "@ndla/licenses": "npm:^7.2.6"
-    "@ndla/notion": "npm:^7.0.4"
     "@ndla/pager": "npm:^3.0.14"
+    "@ndla/safelink": "npm:^5.1.8"
     "@ndla/types-backend": "npm:^0.2.86"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2945,22 +2945,6 @@ __metadata:
     "@emotion/styled": ^11.10.4
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-    react-i18next: ^14.1.1
-  languageName: unknown
-  linkType: soft
-
-"@ndla/notion@npm:^7.0.4, @ndla/notion@workspace:packages/ndla-notion":
-  version: 0.0.0-use.local
-  resolution: "@ndla/notion@workspace:packages/ndla-notion"
-  dependencies:
-    "@ndla/core": "npm:^5.0.1"
-    "@ndla/icons": "npm:^6.1.8"
-    "@ndla/licenses": "npm:^7.2.6"
-    "@radix-ui/react-popover": "npm:^1.0.7"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
     react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
@@ -3156,7 +3140,6 @@ __metadata:
     "@ndla/icons": "npm:^6.1.8"
     "@ndla/licenses": "npm:^7.2.6"
     "@ndla/modal": "npm:^6.0.4"
-    "@ndla/notion": "npm:^7.0.4"
     "@ndla/safelink": "npm:^5.1.8"
     "@ndla/tooltip": "npm:^8.0.1"
     "@ndla/types-backend": "npm:^0.2.86"
@@ -3206,7 +3189,7 @@ __metadata:
     "@ndla/forms": "npm:^8.0.5"
     "@ndla/icons": "npm:^6.1.8"
     "@ndla/licenses": "npm:^7.2.6"
-    "@ndla/notion": "npm:^7.0.4"
+    "@ndla/safelink": "npm:^5.1.8"
     "@ndla/types-embed": "npm:^4.1.8"
     "@ndla/util": "npm:^4.0.4"
   peerDependencies:

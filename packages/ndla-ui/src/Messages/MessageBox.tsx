@@ -63,6 +63,7 @@ const InfoWrapper = styled.div`
 const ChildrenWrapper = styled.div`
   display: flex;
   gap: ${spacing.small};
+  ${fonts.sizes("18px", "24px")};
   svg {
     min-width: 24px;
     min-height: 24px;

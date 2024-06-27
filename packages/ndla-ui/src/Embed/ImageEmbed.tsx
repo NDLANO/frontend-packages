@@ -11,23 +11,20 @@ import parse from "html-react-parser";
 import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { colors, spacing, utils } from "@ndla/core";
+import { colors, spacing } from "@ndla/core";
 import { ExpandTwoArrows } from "@ndla/icons/action";
 import { ArrowCollapse, ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from "./types";
+import { RenderContext } from "./types";
 import { Figure, FigureType, figureActionIndicatorStyle } from "../Figure";
-import Image, { ImageLink } from "../Image";
+import Image from "../Image";
 import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
-  path?: string;
-  heartButton?: HeartButtonType;
-  canonicalUrl?: CanonicalUrlFuncs["image"];
   inGrid?: boolean;
   lang?: string;
   renderContext?: RenderContext;
@@ -131,17 +128,7 @@ const StyledFigure = styled(Figure)`
   }
 `;
 
-const ImageEmbed = ({
-  embed,
-  previewAlt,
-  heartButton: HeartButton,
-  inGrid,
-  path,
-  lang,
-  canonicalUrl,
-  renderContext = "article",
-  children,
-}: Props) => {
+const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article", children }: Props) => {
   const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
@@ -180,92 +167,49 @@ const ImageEmbed = ({
   return (
     <StyledFigure type={imageSizes ? undefined : figureType} {...floatAttr}>
       {children}
-      <ImageWrapper
-        src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
+      <Image
+        focalPoint={focalPoint}
+        contentType={data.image.contentType}
         crop={crop}
-        embedData={embedData}
-        pagePath={path}
-      >
-        <Image
-          focalPoint={focalPoint}
-          contentType={data.image.contentType}
-          crop={crop}
-          sizes={imageSizes ?? sizes}
-          alt={altText}
-          src={data.image.imageUrl}
-          border={embedData.border}
-          expandButton={
-            <ExpandButton
-              embedData={embedData}
-              expanded={!!imageSizes}
-              bylineHidden={isBylineHidden}
-              onExpand={() => {
-                if (!imageSizes) {
-                  setImageSizes(expandedSizes);
-                  setTimeout(() => {
-                    setFloatAttr({});
-                  }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
-                } else {
-                  setImageSizes(undefined);
-                  setFloatAttr({ "data-float": embedData.align });
-                }
-              }}
-              onHideByline={() => setIsBylineHidden((p) => !p)}
-            />
-          }
-          lang={lang}
-        />
-      </ImageWrapper>
+        sizes={imageSizes ?? sizes}
+        alt={altText}
+        src={data.image.imageUrl}
+        border={embedData.border}
+        expandButton={
+          <ExpandButton
+            embedData={embedData}
+            expanded={!!imageSizes}
+            bylineHidden={isBylineHidden}
+            onExpand={() => {
+              if (!imageSizes) {
+                setImageSizes(expandedSizes);
+                setTimeout(() => {
+                  setFloatAttr({});
+                }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
+              } else {
+                setImageSizes(undefined);
+                setFloatAttr({ "data-float": embedData.align });
+              }
+            }}
+            onHideByline={() => setIsBylineHidden((p) => !p)}
+          />
+        }
+        lang={lang}
+      />
       {isBylineHidden ? null : (
         <EmbedByline
           type="image"
           copyright={data.copyright}
-          hideOnLargeScreens={isSmall(embedData.size) && !imageSizes}
           description={parsedDescription}
-          bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ""}
-          inGrid={inGrid}
-        >
-          {HeartButton && !isCopyrighted && <HeartButton embed={embed} />}
-        </EmbedByline>
+        />
       )}
     </StyledFigure>
   );
 };
 
-const HiddenSpan = styled.span`
-  ${utils.visuallyHidden};
-`;
-
-interface ImageWrapperProps {
-  src?: string;
-  children: React.ReactNode;
-  pagePath?: string;
-  crop?: {
-    startX: number;
-    startY: number;
-    endX: number;
-    endY: number;
-  };
-  embedData: ImageEmbedData;
-}
-
 const hideByline = (embed: ImageEmbedData): boolean => {
   return (!!embed.size && embed.size.endsWith("-hide-byline")) || embed.hideByline === "true";
-};
-
-const ImageWrapper = ({ src, crop, children, pagePath, embedData }: ImageWrapperProps) => {
-  const { t } = useTranslation();
-  if (isSmall(embedData.size) || hideByline(embedData) || !src || (pagePath && src.endsWith(pagePath))) {
-    return <>{children}</>;
-  }
-
-  return (
-    <ImageLink src={src} crop={crop}>
-      {children}
-      <HiddenSpan>{t("license.images.itemImage.ariaLabel")}</HiddenSpan>
-    </ImageLink>
-  );
 };
 
 interface ExpandButtonProps {

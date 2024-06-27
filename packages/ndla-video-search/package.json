@@ -39,7 +39,7 @@
     "@ndla/forms": "^8.0.5",
     "@ndla/icons": "^6.1.8",
     "@ndla/licenses": "^7.2.6",
-    "@ndla/notion": "^7.0.4",
+    "@ndla/safelink": "^5.1.8",
     "@ndla/util": "^4.0.4"
   },
   "publishConfig": {

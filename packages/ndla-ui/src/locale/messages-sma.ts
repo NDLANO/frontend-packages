@@ -1078,6 +1078,7 @@ const messages = {
         deleted: "Dette innlegget er slettet av forfatteren.",
         upvote: "Stem opp",
         removeUpvote: "Fjern stemme",
+        reply: "Skriv et svar til {{ name }}",
       },
       flag: {
         title: "Rapporter innlegg / kommentar",

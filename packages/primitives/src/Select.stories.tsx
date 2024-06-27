@@ -235,6 +235,57 @@ export const Multiple: StoryFn<typeof SelectRoot> = ({ ...args }) => {
   );
 };
 
+export const MultipleTruncated: StoryFn<typeof SelectRoot> = ({ ...args }) => {
+  const [value, setValue] = useState<{ label: string; value: string }[]>([]);
+  return (
+    <SelectRoot
+      {...args}
+      value={value.map((val) => val.value)}
+      onValueChange={(vals) => setValue(vals.items)}
+      items={europeanCountries}
+      multiple
+    >
+      <SelectLabel>Countries you've been to</SelectLabel>
+      <SelectControl>
+        <SelectTrigger asChild forwardCssProp>
+          <Button variant="secondary">
+            <SelectValueText placeholder="Choose country">
+              {value.length > 3
+                ? `${value
+                    .slice(0, 3)
+                    .map((val) => val.label)
+                    .join(", ")}, ${value.length - 3} more`
+                : value.map((val) => val.label).join(", ")}
+            </SelectValueText>
+            <SelectIndicator asChild>
+              <ChevronUp />
+            </SelectIndicator>
+          </Button>
+        </SelectTrigger>
+      </SelectControl>
+      <Portal>
+        <SelectPositioner>
+          <SelectContent className={css({ maxHeight: "surface.small" })}>
+            {Object.entries(groupedCountries).map(([letter, countries]) => (
+              <SelectItemGroup key={letter}>
+                <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
+                {countries.map((country) => (
+                  <SelectItem key={country.value} item={country}>
+                    <SelectItemText>{country.label}</SelectItemText>
+                    <SelectItemIndicator>
+                      <Done />
+                    </SelectItemIndicator>
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
+            ))}
+          </SelectContent>
+        </SelectPositioner>
+      </Portal>
+    </SelectRoot>
+  );
+};
+
 export const WithClearButton: StoryFn<typeof SelectRoot> = ({ ...args }) => {
   return (
     <SelectRoot {...args} items={europeanCountries} multiple>

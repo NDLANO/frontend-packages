@@ -175,6 +175,7 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"text.onAction"} />
       <ColorBlock backgroundColor={"text.link"} />
       <ColorBlock backgroundColor={"text.error"} />
+      <ColorBlock backgroundColor={"text.disabled"} />
     </ColorBlocks>
     <ColorBlocks title="Icon">
       <ColorBlock backgroundColor={"icon.default"} />
@@ -189,18 +190,23 @@ export const SemanticColors: StoryFn = () => (
     </ColorBlocks>
     <ColorBlocks title="Surface Brand">
       <ColorBlock backgroundColor={"surface.brand.1.subtle"} />
+      <ColorBlock backgroundColor={"surface.brand.1.moderate"} />
       <ColorBlock backgroundColor={"surface.brand.1"} />
       <ColorBlock backgroundColor={"surface.brand.1.strong"} />
       <ColorBlock backgroundColor={"surface.brand.2.subtle"} />
+      <ColorBlock backgroundColor={"surface.brand.2.moderate"} />
       <ColorBlock backgroundColor={"surface.brand.2"} />
       <ColorBlock backgroundColor={"surface.brand.2.strong"} />
       <ColorBlock backgroundColor={"surface.brand.3.subtle"} />
+      <ColorBlock backgroundColor={"surface.brand.3.moderate"} />
       <ColorBlock backgroundColor={"surface.brand.3"} />
       <ColorBlock backgroundColor={"surface.brand.3.strong"} />
       <ColorBlock backgroundColor={"surface.brand.4.subtle"} />
+      <ColorBlock backgroundColor={"surface.brand.4.moderate"} />
       <ColorBlock backgroundColor={"surface.brand.4"} />
       <ColorBlock backgroundColor={"surface.brand.4.strong"} />
       <ColorBlock backgroundColor={"surface.brand.5.subtle"} />
+      <ColorBlock backgroundColor={"surface.brand.5.moderate"} />
       <ColorBlock backgroundColor={"surface.brand.5"} />
       <ColorBlock backgroundColor={"surface.brand.5.strong"} />
     </ColorBlocks>
@@ -209,21 +215,20 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"surface.disabled.subtle"} />
       <ColorBlock backgroundColor={"surface.disabled.strong"} />
     </ColorBlocks>
+    <ColorBlocks title="Surface info">
+      <ColorBlock backgroundColor={"surface.infoSubtle"} />
+      <ColorBlock backgroundColor={"surface.infoSubtle.hover"} />
+      <ColorBlock backgroundColor={"surface.infoSubtle.active"} />
+    </ColorBlocks>
     <ColorBlocks title="Surface action">
       <ColorBlock backgroundColor={"surface.action"} />
       <ColorBlock backgroundColor={"surface.action.hover"} />
       <ColorBlock backgroundColor={"surface.action.active"} />
       <ColorBlock backgroundColor={"surface.actionSubtle"} />
       <ColorBlock backgroundColor={"surface.actionSubtle.hover"} />
+      <ColorBlock backgroundColor={"surface.actionSubtle.hover.strong"} />
       <ColorBlock backgroundColor={"surface.actionSubtle.active"} />
-    </ColorBlocks>
-    <ColorBlocks title="Surface success">
-      <ColorBlock backgroundColor={"surface.success"} />
-      <ColorBlock backgroundColor={"surface.success.hover"} />
-      <ColorBlock backgroundColor={"surface.success.active"} />
-      <ColorBlock backgroundColor={"surface.successSubtle"} />
-      <ColorBlock backgroundColor={"surface.successSubtle.hover"} />
-      <ColorBlock backgroundColor={"surface.successSubtle.active"} />
+      <ColorBlock backgroundColor={"surface.actionSubtle.selected"} />
     </ColorBlocks>
     <ColorBlocks title="Surface success">
       <ColorBlock backgroundColor={"surface.success"} />
@@ -257,6 +262,7 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"stroke.info"} />
       <ColorBlock backgroundColor={"stroke.warning"} />
       <ColorBlock backgroundColor={"stroke.error"} />
+      <ColorBlock backgroundColor={"stroke.disabled"} />
     </ColorBlocks>
   </div>
 );

@@ -8,11 +8,16 @@
 
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { spacing } from "@ndla/core";
-import { Label, RadioButtonGroup, RadioButtonItem } from "@ndla/forms";
 import { ALL_ABBREVIATIONS, getLicenseByAbbreviation } from "@ndla/licenses";
-import { Text } from "@ndla/typography";
-import { Table } from "@ndla/ui";
+import {
+  Table,
+  RadioGroupRoot,
+  RadioGroupLabel,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemText,
+  RadioGroupItemHiddenInput,
+} from "@ndla/primitives";
 
 /**
  * Liste over lisenser som brukes på NDLA.
@@ -35,26 +40,16 @@ export const Default: StoryFn = () => {
   const [locale, setLocale] = useState("nb");
   return (
     <div>
-      <fieldset style={{ border: 0, padding: 0, display: "flex", gap: spacing.medium, marginBottom: spacing.medium }}>
-        <Text margin="none" textStyle="label-small" element="legend">
-          Description language
-        </Text>
-        <RadioButtonGroup
-          style={{ display: "flex", gap: spacing.small }}
-          orientation="horizontal"
-          value={locale}
-          onValueChange={setLocale}
-        >
-          {languageOptions.map((option) => (
-            <div style={{ display: "flex", alignItems: "center", gap: spacing.xsmall }} key={option.value}>
-              <RadioButtonItem value={option.value} id={option.value} />
-              <Label margin="none" textStyle="label-small" htmlFor={option.value}>
-                {option.title}
-              </Label>
-            </div>
-          ))}
-        </RadioButtonGroup>
-      </fieldset>
+      <RadioGroupRoot orientation="horizontal" value={locale} onValueChange={(details) => setLocale(details.value)}>
+        <RadioGroupLabel>Description language</RadioGroupLabel>
+        {languageOptions.map((option) => (
+          <RadioGroupItem key={option.value} value={option.value}>
+            <RadioGroupItemControl />
+            <RadioGroupItemText>{option.title}</RadioGroupItemText>
+            <RadioGroupItemHiddenInput />
+          </RadioGroupItem>
+        ))}
+      </RadioGroupRoot>
       {ALL_ABBREVIATIONS.map((abb) => {
         const license = getLicenseByAbbreviation(abb, locale);
         return (

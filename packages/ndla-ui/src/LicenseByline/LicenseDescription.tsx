@@ -39,7 +39,9 @@ const StyledDescription = styled.div`
       &[data-open="true"] {
         display: inline;
       }
-      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      overflow: hidden;
     }
   }
 `;
@@ -48,12 +50,11 @@ const TextContent = styled.span`
   &[data-warning="false"] {
     ${mq.range({ until: breakpoints.mobileWide })} {
       white-space: nowrap;
-      max-height: ${spacing.mediumlarge};
+      max-height: ${spacing.medium};
       &[data-open="true"] {
         white-space: pre-wrap;
         max-height: none;
       }
-
       overflow: hidden;
       text-overflow: ellipsis;
       transition: max-height 0.7s ease-in;

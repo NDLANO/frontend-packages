@@ -239,7 +239,7 @@ const InternalComboboxLabel = withContext<HTMLLabelElement, Assign<JsxStyleProps
 );
 
 export const ComboboxLabel = ({
-  textStyle = "label.large",
+  textStyle = "label.medium",
   fontWeight = "bold",
   ...props
 }: Combobox.LabelProps & TextProps) => (

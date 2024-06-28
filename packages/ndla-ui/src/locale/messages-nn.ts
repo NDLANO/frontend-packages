@@ -1085,6 +1085,7 @@ const messages = {
         fetchMore: "Hent fleire svar",
         deleted: "Dette innlegget er sletta av forfatteren.",
         upvote: "Stem opp",
+        numberOfUpvotes: "{{ count }} personar har stemt opp denne.",
         removeUpvote: "Fjern stemme",
         reply: "Skriv eit svar til {{ name }}",
       },

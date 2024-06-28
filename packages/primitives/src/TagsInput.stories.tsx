@@ -54,7 +54,7 @@ export default meta;
 
 export const Default: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
   return (
-    <TagsInputRoot {...args} editable>
+    <TagsInputRoot {...args} editable={false}>
       <TagsInputLabel>Favorittfag</TagsInputLabel>
       <HStack gap="4xsmall">
         <TagsInputContext>

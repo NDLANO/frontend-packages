@@ -35,8 +35,6 @@ const tagsInputRecipe = sva({
     },
     itemPreview: {
       display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
       gap: "1",
       paddingBlock: "4xsmall",
       paddingInlineEnd: "3xsmall",
@@ -75,13 +73,8 @@ const tagsInputRecipe = sva({
     },
     // TODO: This needs to be looked at. It doesn't behave properly.
     itemDeleteTrigger: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      paddingBottom: "1",
       cursor: "pointer",
-      height: "medium",
-      width: "medium",
-      lineHeight: "inherit",
       "& span": {
         display: "inline-block",
       },
@@ -91,6 +84,9 @@ const tagsInputRecipe = sva({
         width: "medium",
         height: "medium",
       },
+    },
+    itemText: {
+      paddingBottom: "1",
     },
   },
 });

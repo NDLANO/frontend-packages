@@ -1,81 +1,78 @@
 /**
- * Copyright (c) 2019-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { ReactNode, SVGAttributes } from "react";
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { spacing } from "@ndla/core";
+import { ComponentPropsWithRef } from "react";
+import { type RecipeVariantProps, cva, css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
-export interface Props extends SVGAttributes<SVGSVGElement> {
+export const iconRecipe = cva({
+  base: {
+    display: "inline-block",
+    fill: "currentcolor",
+    verticalAlign: "middle",
+    lineHeight: "1em",
+    flexShrink: "0",
+  },
+  defaultVariants: {
+    size: "medium",
+  },
+  variants: {
+    size: {
+      small: {
+        width: "small",
+        height: "small",
+      },
+      medium: {
+        width: "medium",
+        height: "medium",
+      },
+    },
+  },
+});
+
+export type IconVariantProps = RecipeVariantProps<typeof iconRecipe>;
+
+interface BaseIconProps extends ComponentPropsWithRef<"svg"> {
   title?: string;
   description?: string;
-  children?: ReactNode;
-  size?: keyof typeof sizes;
 }
 
-const StyledIcon = styled.svg`
-  display: inline-block;
-  fill: currentColor;
-  vertical-align: middle;
-  line-height: 1em;
-  flex-shrink: 0;
-`;
+export type Props = BaseIconProps & IconVariantProps & JsxStyleProps;
 
-const sizes = {
-  small: css`
-    width: ${spacing.small};
-    height: ${spacing.small};
-  `,
-  xsmall: css`
-    width: ${spacing.xsmall};
-    height: ${spacing.xsmall};
-  `,
-  nsmall: css`
-    width: ${spacing.nsmall};
-    height: ${spacing.nsmall};
-  `,
-  normal: css`
-    width: ${spacing.normal};
-    height: ${spacing.normal};
-  `,
-  large: css`
-    width: ${spacing.large};
-    height: ${spacing.large};
-  `,
-} as const;
+const StyledSvg = styled("svg");
 
-const IconBase = ({
+// TODO: Move this component over to ndla/icons
+const Icon = ({
   children,
-  size = "nsmall",
+  size,
   role,
   title,
   description,
   width,
   height,
+  css: cssProp,
   "aria-hidden": ariaHidden = true,
   ...props
 }: Props) => {
   return (
-    <StyledIcon
-      css={sizes[size]}
+    <StyledSvg
       data-icon=""
-      fill="currentColor"
       aria-hidden={ariaHidden}
       preserveAspectRatio="xMidYMid meet"
-      role={role}
+      css={css.raw(iconRecipe.raw({ size }), cssProp)}
       {...props}
     >
       {title && <title>{title}</title>}
       {description && <desc>{description}</desc>}
       {children}
-    </StyledIcon>
+    </StyledSvg>
   );
 };
 
-export default IconBase;
+export default Icon;

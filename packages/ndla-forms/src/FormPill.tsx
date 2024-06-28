@@ -53,7 +53,7 @@ interface FormPillProps {
 export const FormPill = ({ label, id, onClick }: FormPillProps) => (
   <StyledPill>
     <button type="button">
-      <Cross size="small" onClick={() => onClick?.(id)} />
+      <Cross size="nsmall" onClick={() => onClick?.(id)} />
       <span>{label}</span>
     </button>
   </StyledPill>

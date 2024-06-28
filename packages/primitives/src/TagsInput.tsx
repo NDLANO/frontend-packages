@@ -71,7 +71,6 @@ const tagsInputRecipe = sva({
     input: {
       flex: "1",
     },
-    // TODO: This needs to be looked at. It doesn't behave properly.
     itemDeleteTrigger: {
       paddingBottom: "1",
       cursor: "pointer",
@@ -87,6 +86,10 @@ const tagsInputRecipe = sva({
     },
     itemText: {
       paddingBottom: "1",
+    },
+    itemInput: {
+      outline: "none",
+      background: "transparent",
     },
   },
 });

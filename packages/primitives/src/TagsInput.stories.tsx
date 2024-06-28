@@ -36,6 +36,7 @@ import {
   TagsInputInput,
   TagsInputItem,
   TagsInputItemDeleteTrigger,
+  TagsInputItemInput,
   TagsInputItemPreview,
   TagsInputItemText,
   TagsInputLabel,
@@ -69,6 +70,43 @@ export const Default: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
                         <Cross />
                       </TagsInputItemDeleteTrigger>
                     </TagsInputItemPreview>
+                  </TagsInputItem>
+                ))}
+                <TagsInputInput placeholder="Legg til fag" asChild>
+                  <Input />
+                </TagsInputInput>
+              </InputContainer>
+            </TagsInputControl>
+          )}
+        </TagsInputContext>
+        <TagsInputClearTrigger asChild>
+          <IconButton variant="secondary">
+            <Cross />
+          </IconButton>
+        </TagsInputClearTrigger>
+      </HStack>
+    </TagsInputRoot>
+  );
+};
+
+export const Editable: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
+  return (
+    <TagsInputRoot {...args} editable>
+      <TagsInputLabel>Favorittfag</TagsInputLabel>
+      <HStack gap="4xsmall">
+        <TagsInputContext>
+          {(api) => (
+            <TagsInputControl forwardCssProp asChild>
+              <InputContainer>
+                {api.value.map((value, index) => (
+                  <TagsInputItem key={index} index={index} value={value}>
+                    <TagsInputItemPreview>
+                      <TagsInputItemText>{value}</TagsInputItemText>
+                      <TagsInputItemDeleteTrigger>
+                        <Cross />
+                      </TagsInputItemDeleteTrigger>
+                    </TagsInputItemPreview>
+                    <TagsInputItemInput />
                   </TagsInputItem>
                 ))}
                 <TagsInputInput placeholder="Legg til fag" asChild>

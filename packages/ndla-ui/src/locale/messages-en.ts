@@ -1084,6 +1084,7 @@ const messages = {
         fetchMore: "Fetch more answers",
         deleted: "This post has been deleted by the author.",
         upvote: "Upvote",
+        numberOfUpvotes: "{{ count }} people have upvoted this.",
         removeUpvote: "Remove upvote",
         reply: "Write a reply to {{ name }}",
       },

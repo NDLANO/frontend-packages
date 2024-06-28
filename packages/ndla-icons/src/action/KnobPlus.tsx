@@ -9,8 +9,8 @@
 import Icon, { Props } from "../Icon";
 const KnobPlus = (props: Props) => (
   <Icon fill="none" viewBox="0 0 25 25" {...props}>
-    <circle cx={12} cy={12} r={11.5} fill="#20588F" stroke="#fff" opacity={0.7} />
-    <path fill="#fff" d="M11.18 13.01h-6v-2h6v-6h2v6h6v2h-6v6h-2z" />
+    <circle cx={12.5} cy={12.5} r={11.5} fill="#20588F" stroke="#fff" opacity={0.7} />
+    <path fill="#fff" d="M12 13.5H5.18v-2.49h6v-6h2v6h6v2h-6v6h-2v-6Z" />
   </Icon>
 );
 export default KnobPlus;

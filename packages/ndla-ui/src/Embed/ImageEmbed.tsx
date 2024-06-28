@@ -11,8 +11,8 @@ import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, spacing, utils } from "@ndla/core";
-import { ExpandTwoArrows } from "@ndla/icons/action";
-import { ArrowCollapse, ChevronDown, ChevronUp } from "@ndla/icons/common";
+import { KnobCross, KnobPlus } from "@ndla/icons/action";
+import { ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
@@ -304,7 +304,7 @@ const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: 
         aria-label={t(`license.images.itemImage.zoom${expanded ? "Out" : ""}ImageButtonLabel`)}
         onClick={onExpand}
       >
-        {expanded ? <ArrowCollapse /> : <ExpandTwoArrows />}
+        {expanded ? <KnobCross /> : <KnobPlus />}
       </button>
     );
   }

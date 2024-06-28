@@ -14,7 +14,7 @@ export const figureActionIndicatorStyle = css`
   cursor: pointer;
   position: absolute;
   padding: 0;
-  bottom: 8px;
+  top: 8px;
   right: 8px;
   width: 40px;
   height: 40px;
@@ -28,8 +28,8 @@ export const figureActionIndicatorStyle = css`
   border: 0;
   svg {
     transition: transform 0.4s ease-out;
-    width: 18px;
-    height: 18px;
+    width: 40px;
+    height: 40px;
     fill: ${colors.brand.primary};
     color: ${colors.brand.primary};
   }

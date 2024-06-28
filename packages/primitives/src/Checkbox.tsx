@@ -231,7 +231,7 @@ export const CheckboxLabel = ({
   children,
   ...props
 }: Checkbox.LabelProps & TextProps & JsxStyleProps) => (
-  <InternalCheckboxLabel {...props} asChild>
+  <InternalCheckboxLabel {...props} asChild forwardCssProp>
     <Text textStyle={textStyle}>{children}</Text>
   </InternalCheckboxLabel>
 );

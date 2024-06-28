@@ -45,8 +45,8 @@ const toastRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(toastRecipe);
 
-export interface RootProps extends Toast.RootProps, JsxStyleProps {}
-export const ToastRoot = withProvider<HTMLDivElement, RootProps>(Toast.Root, "root");
+export interface ToastRootProps extends Toast.RootProps, JsxStyleProps {}
+export const ToastRoot = withProvider<HTMLDivElement, ToastRootProps>(Toast.Root, "root");
 
 export const ToastActionTrigger = withContext<HTMLButtonElement, JsxStyleProps & Toast.ActionTriggerProps>(
   Toast.ActionTrigger,
@@ -68,7 +68,7 @@ export const ToastDescription = ({
   children,
   ...props
 }: Toast.DescriptionProps & TextProps & JsxStyleProps) => (
-  <InternalToastDescription asChild>
+  <InternalToastDescription asChild forwardCssProp>
     <Text asChild textStyle={textStyle} {...props}>
       <div>{children}</div>
     </Text>
@@ -83,7 +83,7 @@ export const ToastTitle = ({
   children,
   ...props
 }: JsxStyleProps & Toast.TitleProps & TextProps) => (
-  <InternalToastTitle asChild>
+  <InternalToastTitle asChild forwardCssProp>
     <Text asChild fontWeight={fontWeight} textStyle={textStyle} {...props}>
       <div>{children}</div>
     </Text>

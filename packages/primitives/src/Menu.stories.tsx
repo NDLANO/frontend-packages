@@ -38,7 +38,7 @@ export default {
 
 export const Default: StoryFn<typeof MenuRoot> = (args) => (
   <MenuRoot {...args}>
-    <MenuTrigger asChild>
+    <MenuTrigger asChild forwardCssProp>
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>
@@ -52,7 +52,7 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
             <Share />
             Del
           </MenuItem>
-          <MenuItem value="goToShared" asChild>
+          <MenuItem value="goToShared" asChild forwardCssProp>
             <styled.a href="https://ndla.no">
               <ShareArrow />
               Gå til delt mappe
@@ -78,7 +78,7 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
 
 export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
   <MenuRoot {...args}>
-    <MenuTrigger asChild>
+    <MenuTrigger asChild forwardCssProp>
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>
@@ -122,7 +122,7 @@ export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
 
 export const Nested: StoryFn<typeof MenuRoot> = (args) => (
   <MenuRoot {...args}>
-    <MenuTrigger asChild>
+    <MenuTrigger asChild forwardCssProp>
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>

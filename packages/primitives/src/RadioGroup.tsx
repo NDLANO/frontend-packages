@@ -120,7 +120,7 @@ export const RadioGroupItemText = ({
   children,
   ...props
 }: RadioGroup.ItemTextProps & TextProps & JsxStyleProps) => (
-  <InternalRadioGroupItemText asChild>
+  <InternalRadioGroupItemText asChild forwardCssProp>
     <Text asChild textStyle={textStyle} {...props}>
       <span>{children}</span>
     </Text>
@@ -134,7 +134,7 @@ export const InternalRadioGroupLabel = withContext<HTMLLabelElement, RadioGroup.
 
 export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroup.LabelProps & TextProps & JsxStyleProps>(
   ({ textStyle = "label.large", ...props }, ref) => (
-    <InternalRadioGroupLabel ref={ref} asChild>
+    <InternalRadioGroupLabel ref={ref} asChild forwardCssProp>
       <Label textStyle={textStyle} {...props} />
     </InternalRadioGroupLabel>
   ),

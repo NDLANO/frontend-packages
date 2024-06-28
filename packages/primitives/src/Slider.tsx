@@ -102,7 +102,7 @@ export const SliderLabel = ({
   textStyle = "label.medium",
   ...props
 }: Slider.LabelProps & TextProps & JsxStyleProps) => (
-  <InternalSliderLabel asChild>
+  <InternalSliderLabel asChild forwardCssProp>
     <Label textStyle={textStyle} {...props} />
   </InternalSliderLabel>
 );

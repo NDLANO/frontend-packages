@@ -25,6 +25,7 @@ const StyledLegend = styled(ark.legend, {
 
 export type LegendProps = HTMLArkProps<"legend"> & JsxStyleProps & TextProps;
 
+// TODO: This is not exported for now. Let's wait and see when ark decides to release their legend and fieldset.
 export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, ...rest }, ref) => (
     <StyledLegend css={css.raw({ textStyle, fontWeight, srOnly }, cssProp)} {...rest} ref={ref} />

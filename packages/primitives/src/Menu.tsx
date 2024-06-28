@@ -152,7 +152,7 @@ export const MenuItemGroupLabel = ({
   children,
   ...props
 }: Menu.ItemGroupLabelProps & JsxStyleProps & TextProps) => (
-  <InternalMenuItemGroupLabel {...props} asChild>
+  <InternalMenuItemGroupLabel {...props} asChild forwardCssProp>
     <Text textStyle={textStyle} fontWeight={fontWeight}>
       {children}
     </Text>
@@ -167,16 +167,15 @@ export const MenuItemGroup = withContext<HTMLDivElement, JsxStyleProps & Menu.It
 const InternalMenuItem = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemProps>(Menu.Item, "item");
 
 export type MenuItemVariantProps = RecipeVariantProps<typeof itemCva>;
+export type MenuItemProps = Menu.ItemProps & JsxStyleProps & MenuItemVariantProps;
 
-export const MenuItem = forwardRef<HTMLDivElement, Menu.ItemProps & JsxStyleProps & MenuItemVariantProps>(
-  ({ css: cssProp = {}, variant, ...props }, ref) => (
-    <InternalMenuItem
-      css={[itemCva.raw({ variant }), ...(Array.isArray(cssProp) ? cssProp : [cssProp])]}
-      {...props}
-      ref={ref}
-    />
-  ),
-);
+export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(({ css: cssProp = {}, variant, ...props }, ref) => (
+  <InternalMenuItem
+    css={[itemCva.raw({ variant }), ...(Array.isArray(cssProp) ? cssProp : [cssProp])]}
+    {...props}
+    ref={ref}
+  />
+));
 
 export const MenuPositioner = withContext<HTMLDivElement, JsxStyleProps & Menu.PositionerProps>(
   Menu.Positioner,

@@ -57,7 +57,6 @@ const TextContent = styled.span`
       }
       overflow: hidden;
       text-overflow: ellipsis;
-      display: inline-block;
       transition: max-height 0.7s ease-in;
       margin: auto 0;
     }

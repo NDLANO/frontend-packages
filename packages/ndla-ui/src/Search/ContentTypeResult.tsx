@@ -33,13 +33,13 @@ const renderAdditionalIcon = (label: string, isAdditional?: boolean): ReactEleme
     return (
       <Tooltip tooltip={label}>
         <div>
-          <Additional size="normal" aria-hidden={false} />
+          <Additional size="medium" aria-hidden={false} />
         </div>
       </Tooltip>
     );
   }
   if (isAdditional) {
-    return <Additional size="normal" />;
+    return <Additional size="medium" />;
   }
   return null;
 };

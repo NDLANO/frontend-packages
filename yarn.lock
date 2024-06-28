@@ -2896,6 +2896,9 @@ __metadata:
   resolution: "@ndla/icons@workspace:packages/ndla-icons"
   dependencies:
     "@ndla/core": "npm:^5.0.1"
+    "@ndla/preset-panda": "workspace:^"
+    "@ndla/styled-system": "workspace:^"
+    "@pandacss/dev": "npm:^0.40.1"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4

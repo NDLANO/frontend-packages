@@ -196,6 +196,7 @@ const ImageEmbed = ({
           expandButton={
             <ExpandButton
               size={embedData.size}
+              align={embedData.align}
               expanded={!!imageSizes}
               bylineHidden={isBylineHidden}
               onExpand={() => {
@@ -268,6 +269,7 @@ const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps
 
 interface ExpandButtonProps {
   size?: string;
+  align?: string;
   expanded: boolean;
   bylineHidden: boolean;
   onExpand: MouseEventHandler<HTMLButtonElement>;
@@ -293,9 +295,9 @@ const BylineButton = styled.button`
   }
 `;
 
-const ExpandButton = ({ size, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
+const ExpandButton = ({ align, size, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
   const { t } = useTranslation();
-  if (isSmall(size)) {
+  if (isAlign(align)) {
     return (
       <button
         type="button"

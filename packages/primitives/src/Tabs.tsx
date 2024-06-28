@@ -6,14 +6,14 @@
  *
  */
 
-import { tabsAnatomy } from "@ark-ui/anatomy";
 import { Tabs } from "@ark-ui/react";
 import { RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const tabsRecipe = sva({
-  slots: tabsAnatomy.keys(),
+  // TODO: anatomy keys do not work here.
+  slots: ["content", "list", "root", "indicator", "trigger"],
   base: {
     root: {
       position: "relative",

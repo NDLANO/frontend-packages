@@ -33,7 +33,7 @@ const meta: Meta<typeof AccordionRoot> = {
             <AccordionItemTrigger>
               Tittel
               <AccordionItemIndicator asChild>
-                <ChevronDown size="normal" />
+                <ChevronDown size="medium" />
               </AccordionItemIndicator>
             </AccordionItemTrigger>
           </h2>
@@ -51,7 +51,7 @@ const meta: Meta<typeof AccordionRoot> = {
             <AccordionItemTrigger>
               Tittel
               <AccordionItemIndicator asChild>
-                <ChevronDown size="normal" />
+                <ChevronDown size="medium" />
               </AccordionItemIndicator>
             </AccordionItemTrigger>
           </h2>

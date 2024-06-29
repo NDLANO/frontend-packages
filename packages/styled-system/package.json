@@ -17,6 +17,9 @@
   "devDependencies": {
     "@pandacss/dev": "^0.40.1"
   },
+  "files": [
+    "*"
+  ],
   "exports": {
     "./css": {
       "types": "./css/index.d.ts",

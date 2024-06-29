@@ -1,6 +1,19 @@
 {
   "name": "@ndla/styled-system",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/styled-system"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">= 18",
+    "react-dom": ">= 18"
+  },
   "devDependencies": {
     "@pandacss/dev": "^0.40.1"
   },

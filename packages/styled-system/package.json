@@ -7,33 +7,33 @@
   "exports": {
     "./css": {
       "types": "./css/index.d.ts",
-      "require": "./css/index.mjs",
-      "import": "./css/index.mjs"
+      "require": "./css/index.js",
+      "import": "./css/index.js"
     },
     "./tokens": {
       "types": "./tokens/index.d.ts",
-      "require": "./tokens/index.mjs",
-      "import": "./tokens/index.mjs"
+      "require": "./tokens/index.js",
+      "import": "./tokens/index.js"
     },
     "./types": {
       "types": "./types/index.d.ts",
-      "require": "./types/index.mjs",
-      "import": "./types/index.mjs"
+      "require": "./types/index.js",
+      "import": "./types/index.js"
     },
     "./patterns": {
       "types": "./patterns/index.d.ts",
-      "require": "./patterns/index.mjs",
-      "import": "./patterns/index.mjs"
+      "require": "./patterns/index.js",
+      "import": "./patterns/index.js"
     },
     "./recipes": {
       "types": "./recipes/index.d.ts",
-      "require": "./recipes/index.mjs",
-      "import": "./recipes/index.mjs"
+      "require": "./recipes/index.js",
+      "import": "./recipes/index.js"
     },
     "./jsx": {
       "types": "./jsx/index.d.ts",
-      "require": "./jsx/index.mjs",
-      "import": "./jsx/index.mjs"
+      "require": "./jsx/index.js",
+      "import": "./jsx/index.js"
     },
     "./styles.css": "./styles.css"
   }

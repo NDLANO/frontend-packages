@@ -16,7 +16,7 @@ export default defineConfig({
   jsxStyleProps: "minimal",
   strictPropertyValues: true,
   shorthands: false,
-  outExtension: "mjs",
+  outExtension: "js",
   include: ["./src/**/*.{js,jsx,ts,tsx}"],
   exclude: ["./src/**/*.stories.{js,jsx,ts,tsx}"],
   importMap: "@ndla/styled-system",

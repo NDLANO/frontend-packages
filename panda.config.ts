@@ -15,7 +15,7 @@ export default defineConfig({
   importMap: "@ndla/styled-system",
   strictPropertyValues: true,
   shorthands: false,
-  outExtension: "mjs",
+  outExtension: "js",
   include: ["./packages/**/*.{js,jsx,ts,tsx}", "./stories/**/*.{js,jsx,ts,tsx}"],
   syntax: "object-literal",
   jsxFramework: "react",

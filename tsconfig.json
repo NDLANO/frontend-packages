@@ -45,7 +45,7 @@
       "@ndla/util": ["./packages/util/src"],
       "@ndla/preset-panda": ["./packages/preset-panda/src"],
       "@ndla/primitives": ["./packages/primitives/src"],
-      "@ndla/styled-system": ["./packages/styled-system/src"],
+      "@ndla/styled-system": ["./packages/styled-system"],
       "*": ["node_modules"]
     }
   },

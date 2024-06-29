@@ -3034,6 +3034,9 @@ __metadata:
   resolution: "@ndla/styled-system@workspace:packages/styled-system"
   dependencies:
     "@pandacss/dev": "npm:^0.40.1"
+  peerDependencies:
+    react: ">= 18"
+    react-dom: ">= 18"
   languageName: unknown
   linkType: soft
 

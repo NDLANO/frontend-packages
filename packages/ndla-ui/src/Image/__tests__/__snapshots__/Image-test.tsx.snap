@@ -28,6 +28,10 @@ exports[`Image renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
+.emotion-0[data-expandable="true"] {
+  cursor: pointer;
+}
+
 .emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
@@ -36,6 +40,7 @@ exports[`Image renderers correctly 1`] = `
 
 <div
   class="emotion-0"
+  data-expandable="false"
   data-svg="false"
 >
   <picture>
@@ -80,6 +85,10 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
+.emotion-0[data-expandable="true"] {
+  cursor: pointer;
+}
+
 .emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
@@ -88,6 +97,7 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 
 <div
   class="emotion-0"
+  data-expandable="false"
   data-svg="false"
 >
   <picture>
@@ -132,6 +142,10 @@ exports[`Lazyloaded image renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
+.emotion-0[data-expandable="true"] {
+  cursor: pointer;
+}
+
 .emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
@@ -140,6 +154,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
 
 <div
   class="emotion-0"
+  data-expandable="false"
   data-svg="false"
 >
   <picture>

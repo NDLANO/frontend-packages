@@ -33,6 +33,10 @@ export const buttonBaseRecipe = cva({
       cursor: "not-allowed",
       color: "text.onAction",
       background: "surface.disabled",
+      boxShadowColor: "surface.disabled",
+      "& svg": {
+        color: "text.onAction",
+      },
       _hover: {
         color: "text.onAction",
         background: "surface.disabled",

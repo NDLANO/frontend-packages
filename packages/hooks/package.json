@@ -1,6 +1,6 @@
 {
   "name": "@ndla/hooks",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "Collection of React hooks used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "react": ">= 16.8.0"
   },
   "dependencies": {
-    "@ndla/util": "^4.0.4",
+    "@ndla/util": "^4.1.0",
     "lodash.throttle": "^4.1.1"
   },
   "publishConfig": {

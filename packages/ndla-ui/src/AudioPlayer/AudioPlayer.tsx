@@ -33,6 +33,7 @@ const ImageWrapper = styled.div`
 
   width: 200px;
   height: 200px;
+  overflow: hidden;
 
   img {
     width: 100%;

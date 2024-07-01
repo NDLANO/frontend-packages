@@ -164,6 +164,18 @@ const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article"
 
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
+  const toggleImageSize = () => {
+    if (!imageSizes) {
+      setImageSizes(expandedSizes);
+      setTimeout(() => {
+        setFloatAttr({});
+      }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
+    } else {
+      setImageSizes(undefined);
+      setFloatAttr({ "data-float": embedData.align });
+    }
+  };
+
   return (
     <StyledFigure type={imageSizes ? undefined : figureType} {...floatAttr}>
       {children}
@@ -175,23 +187,14 @@ const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article"
         alt={altText}
         src={data.image.imageUrl}
         border={embedData.border}
+        onExpand={isAlign(embedData.align) ? toggleImageSize : undefined}
         expandButton={
           <ExpandButton
             embedData={embedData}
             expanded={!!imageSizes}
             align={embedData.align}
             bylineHidden={isBylineHidden}
-            onExpand={() => {
-              if (!imageSizes) {
-                setImageSizes(expandedSizes);
-                setTimeout(() => {
-                  setFloatAttr({});
-                }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
-              } else {
-                setImageSizes(undefined);
-                setFloatAttr({ "data-float": embedData.align });
-              }
-            }}
+            onExpand={toggleImageSize}
             onHideByline={() => setIsBylineHidden((p) => !p)}
           />
         }

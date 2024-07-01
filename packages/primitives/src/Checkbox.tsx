@@ -6,8 +6,7 @@
  *
  */
 
-import { checkboxAnatomy } from "@ark-ui/anatomy";
-import { Checkbox } from "@ark-ui/react";
+import { Checkbox, checkboxAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

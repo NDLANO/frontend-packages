@@ -6,8 +6,7 @@
  *
  */
 
-import { popoverAnatomy } from "@ark-ui/anatomy";
-import { Popover } from "@ark-ui/react";
+import { Popover, popoverAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

@@ -33,6 +33,9 @@ export const figureActionIndicatorStyle = css`
     fill: ${colors.brand.primary};
     color: ${colors.brand.primary};
   }
+  svg[data-expanded="true"] {
+    transform: rotate(-45deg);
+  }
   ${mq.range({ until: breakpoints.tablet })} {
     display: none;
   }

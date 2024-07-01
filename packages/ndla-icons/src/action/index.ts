@@ -26,7 +26,6 @@ export { default as Grid } from "./Grid";
 export { default as GridListView } from "./GridListView";
 export { default as Heart } from "./Heart";
 export { default as HeartOutline } from "./HeartOutline";
-export { default as KnobCross } from "./KnobCross";
 export { default as KnobPlus } from "./KnobPlus";
 export { default as List } from "./List";
 export { default as MenuBook } from "./MenuBook";

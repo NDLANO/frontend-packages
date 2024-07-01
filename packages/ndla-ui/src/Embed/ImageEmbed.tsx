@@ -12,7 +12,7 @@ import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, spacing } from "@ndla/core";
-import { KnobCross, KnobPlus } from "@ndla/icons/action";
+import { KnobPlus } from "@ndla/icons/action";
 import { ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
@@ -117,6 +117,9 @@ const StyledFigure = styled(Figure)`
       background: ${colors.white};
       svg {
         transform: scale(1.2);
+      }
+      svg[data-expanded="true"] {
+        transform: scale(1.2) rotate(-45deg);
       }
     }
   }
@@ -256,7 +259,7 @@ const ExpandButton = ({ align, embedData, expanded, bylineHidden, onExpand, onHi
         aria-label={t(`license.images.itemImage.zoom${expanded ? "Out" : ""}ImageButtonLabel`)}
         onClick={onExpand}
       >
-        {expanded ? <KnobCross /> : <KnobPlus />}
+        {<KnobPlus data-expanded={expanded} />}
       </button>
     );
   }

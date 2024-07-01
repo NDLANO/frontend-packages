@@ -15,7 +15,6 @@
     "react-dom": ">= 18"
   },
   "devDependencies": {
-    "@ndla/preset-panda": "workspace:^",
     "@pandacss/dev": "^0.41.0"
   },
   "files": [

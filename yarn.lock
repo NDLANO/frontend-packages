@@ -2987,6 +2987,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/styled-system@workspace:packages/styled-system"
   dependencies:
+    "@ndla/preset-panda": "workspace:^"
     "@pandacss/dev": "npm:^0.41.0"
   peerDependencies:
     react: ">= 18"

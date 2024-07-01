@@ -7,10 +7,9 @@
  */
 
 import { accordionAnatomy } from "@ark-ui/anatomy";
-import type { Assign } from "@ark-ui/react";
 import { Accordion } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { SystemProperties } from "@ndla/styled-system/types";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const accordionRecipe = sva({
@@ -98,25 +97,23 @@ const accordionRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(accordionRecipe);
 
-export interface AccordionRootProps extends Assign<SystemProperties, Accordion.RootProps> {}
+export interface AccordionRootProps extends JsxStyleProps, Accordion.RootProps {}
+
 export const AccordionRoot = withProvider<HTMLDivElement, AccordionRootProps>(Accordion.Root, "root");
 
-export const AccordionItemContent = withContext<HTMLDivElement, Assign<SystemProperties, Accordion.ItemContentProps>>(
+export const AccordionItemContent = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemContentProps>(
   Accordion.ItemContent,
   "itemContent",
 );
 
-export const AccordionItemIndicator = withContext<
-  HTMLDivElement,
-  Assign<SystemProperties, Accordion.ItemIndicatorProps>
->(Accordion.ItemIndicator, "itemIndicator");
-
-export const AccordionItem = withContext<HTMLDivElement, Assign<SystemProperties, Accordion.ItemProps>>(
-  Accordion.Item,
-  "item",
+export const AccordionItemIndicator = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemIndicatorProps>(
+  Accordion.ItemIndicator,
+  "itemIndicator",
 );
 
-export const AccordionItemTrigger = withContext<
-  HTMLButtonElement,
-  Assign<SystemProperties, Accordion.ItemTriggerProps>
->(Accordion.ItemTrigger, "itemTrigger");
+export const AccordionItem = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemProps>(Accordion.Item, "item");
+
+export const AccordionItemTrigger = withContext<HTMLButtonElement, JsxStyleProps & Accordion.ItemTriggerProps>(
+  Accordion.ItemTrigger,
+  "itemTrigger",
+);

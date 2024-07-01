@@ -11,7 +11,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
-import StoryFavoriteButton from "../../../../stories/StoryFavoriteButton";
 import { ArticleWrapper } from "../Article";
 import LayoutItem, { OneColumn } from "../Layout";
 
@@ -111,7 +110,6 @@ export default meta;
 
 export const ImageEmbedStory: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -125,7 +123,6 @@ ImageEmbedStory.storyName = "ImageEmbed";
 
 export const Failed: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "error",
@@ -136,7 +133,6 @@ export const Failed: StoryObj<typeof ImageEmbed> = {
 
 export const HiddenByline: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -151,7 +147,6 @@ export const HiddenByline: StoryObj<typeof ImageEmbed> = {
 
 export const FullWidth: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -168,7 +163,6 @@ export const FullWidth: StoryObj<typeof ImageEmbed> = {
 
 export const Cropped: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -214,7 +208,6 @@ const TextWrapper = ({ children }: { children: ReactNode }) => (
 
 export const FloatLeft: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -234,7 +227,6 @@ export const FloatLeft: StoryObj<typeof ImageEmbed> = {
 
 export const FloatRight: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -255,7 +247,6 @@ export const FloatRight: StoryObj<typeof ImageEmbed> = {
 
 export const FloatRightSmall: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -276,7 +267,6 @@ export const FloatRightSmall: StoryObj<typeof ImageEmbed> = {
 
 export const FloatLeftSmall: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -297,7 +287,6 @@ export const FloatLeftSmall: StoryObj<typeof ImageEmbed> = {
 
 export const FloatRightExtraSmall: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",
@@ -318,7 +307,6 @@ export const FloatRightExtraSmall: StoryObj<typeof ImageEmbed> = {
 
 export const FloatLeftExtraSmall: StoryObj<typeof ImageEmbed> = {
   args: {
-    heartButton: StoryFavoriteButton,
     embed: {
       resource: "image",
       status: "success",

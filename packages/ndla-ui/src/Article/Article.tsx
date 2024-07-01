@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { ReactNode, forwardRef, ComponentPropsWithRef, useMemo, CSSProperties } from "react";
 import { SerializedStyles, css } from "@emotion/react";
 import styled from "@emotion/styled";

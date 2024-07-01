@@ -6,10 +6,10 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
-import { cva, cx } from "@ndla/styled-system/css";
+import { HTMLArkProps, ark } from "@ark-ui/react";
+import { cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { RecipeVariantProps } from "@ndla/styled-system/types";
+import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const framedContentRecipe = cva({
   base: {
@@ -44,8 +44,6 @@ const framedContentRecipe = cva({
 
 export type FramedContentVariantProps = RecipeVariantProps<typeof framedContentRecipe>;
 
-export type FramedContentProps = ComponentPropsWithoutRef<"div"> & FramedContentVariantProps;
+export type FramedContentProps = HTMLArkProps<"div"> & JsxStyleProps & FramedContentVariantProps;
 
-export const FramedContent = ({ className, colorTheme, ...rest }: FramedContentProps) => (
-  <styled.div className={cx(framedContentRecipe({ colorTheme }), className)} {...rest} />
-);
+export const FramedContent = styled(ark.div, framedContentRecipe);

@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { HTMLAttributes, ReactNode, useMemo } from "react";
 import { css } from "@emotion/react";
 import { mq, breakpoints } from "@ndla/core";

@@ -6,9 +6,11 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from "react";
-import { RecipeVariantProps, css, cva, cx } from "@ndla/styled-system/css";
+import { forwardRef } from "react";
+import { HTMLArkProps, ark } from "@ark-ui/react";
+import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
 
 export const buttonBaseRecipe = cva({
   base: {
@@ -162,41 +164,12 @@ export const buttonRecipe = cva({
   },
 });
 
-export type ButtonVariantProps = RecipeVariantProps<typeof buttonBaseRecipe> & RecipeVariantProps<typeof buttonRecipe>;
-
-export type ButtonProps = ComponentPropsWithRef<"button"> &
-  ButtonVariantProps & { variant?: Exclude<NonNullable<ButtonVariantProps>["variant"], "clear" | "clearSubtle"> };
-
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ type, size, className, variant, ...rest }, ref) => (
-  <styled.button
-    type={type ?? "button"}
-    className={cx(css(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size })), className)}
-    {...rest}
-    ref={ref}
-  />
-));
-
-export type IconButtonVariantProps = RecipeVariantProps<typeof buttonBaseRecipe>;
-
-export type IconButtonProps = ComponentPropsWithRef<"button"> &
-  IconButtonVariantProps & { variant?: Exclude<NonNullable<IconButtonVariantProps>["variant"], "link"> };
-
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ type, className, variant, ...rest }, ref) => (
-    <styled.button
-      type={type ?? "button"}
-      className={cx(css(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw()), className)}
-      {...rest}
-      ref={ref}
-    />
-  ),
-);
-
 export const iconButtonRecipe = cva({
   base: {
     lineHeight: "1",
     minHeight: "unset",
-    height: "fit-content",
+    height: "xxlarge",
+    width: "xxlarge",
     "& svg": {
       marginInline: "0",
       marginBlock: "0",
@@ -207,3 +180,37 @@ export const iconButtonRecipe = cva({
     paddingBlock: "xsmall",
   },
 });
+
+type Variant = RecipeVariant<typeof buttonBaseRecipe>["variant"];
+
+type ButtonVariant = Exclude<Variant, "clear" | "clearSubtle">;
+
+export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProps<typeof buttonRecipe>;
+
+export type ButtonProps = HTMLArkProps<"button"> & JsxStyleProps & ButtonVariantProps;
+
+const StyledButton = styled(ark.button, {}, { defaultProps: { type: "button" } });
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ variant, size, css: cssProp, ...props }, ref) => (
+  <StyledButton
+    {...props}
+    css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
+    ref={ref}
+  />
+));
+
+type IconButtonVariant = Exclude<Variant, "link">;
+
+export type IconButtonVariantProps = { variant?: IconButtonVariant };
+
+export type IconButtonProps = HTMLArkProps<"button"> & IconButtonVariantProps & JsxStyleProps;
+
+const StyledIconButton = styled(ark.button, {}, { defaultProps: { type: "button" } });
+
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({ variant, css: cssProp, ...props }, ref) => (
+  <StyledIconButton
+    {...props}
+    css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp)}
+    ref={ref}
+  />
+));

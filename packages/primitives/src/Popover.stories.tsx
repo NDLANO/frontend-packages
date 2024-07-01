@@ -8,7 +8,6 @@
 
 import { Portal } from "@ark-ui/react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { css } from "@ndla/styled-system/css";
 import { Button } from "./Button";
 import {
   PopoverContent,
@@ -33,7 +32,7 @@ export default {
   },
   render: ({ children, ...args }) => (
     <PopoverRoot {...args}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild forwardCssProp>
         <Button>Open me!</Button>
       </PopoverTrigger>
       <Portal>
@@ -60,8 +59,8 @@ export const LeftAligned: StoryObj<typeof PopoverRoot> = {
   },
   render: ({ children, ...args }) => (
     <PopoverRoot {...args}>
-      <PopoverTrigger asChild>
-        <Button className={css({ marginInlineStart: "50%" })}>Open me!</Button>
+      <PopoverTrigger asChild forwardCssProp>
+        <Button css={{ marginInlineStart: "50%" }}>Open me!</Button>
       </PopoverTrigger>
       <Portal>
         <PopoverContent>
@@ -75,7 +74,7 @@ export const LeftAligned: StoryObj<typeof PopoverRoot> = {
 
 export const WithStandaloneComponents: StoryFn = (args) => (
   <PopoverRoot {...args}>
-    <PopoverTrigger asChild>
+    <PopoverTrigger asChild forwardCssProp>
       <Button>Open me!</Button>
     </PopoverTrigger>
     <Portal>

@@ -28,13 +28,15 @@ const meta: Meta<typeof AccordionRoot> = {
   render: (args) => (
     <AccordionRoot {...args}>
       <AccordionItem value={"1"}>
-        <Heading as="h2" textStyle="label.medium" fontWeight="bold">
-          <AccordionItemTrigger>
-            Tittel
-            <AccordionItemIndicator asChild>
-              <ChevronDown size="normal" />
-            </AccordionItemIndicator>
-          </AccordionItemTrigger>
+        <Heading asChild textStyle="label.medium" fontWeight="bold">
+          <h2>
+            <AccordionItemTrigger>
+              Tittel
+              <AccordionItemIndicator asChild>
+                <ChevronDown size="normal" />
+              </AccordionItemIndicator>
+            </AccordionItemTrigger>
+          </h2>
         </Heading>
         <AccordionItemContent>
           <div>
@@ -44,13 +46,15 @@ const meta: Meta<typeof AccordionRoot> = {
         </AccordionItemContent>
       </AccordionItem>
       <AccordionItem value={"2"}>
-        <Heading as="h2" textStyle="label.medium" fontWeight="bold">
-          <AccordionItemTrigger>
-            Tittel
-            <AccordionItemIndicator asChild>
-              <ChevronDown size="normal" />
-            </AccordionItemIndicator>
-          </AccordionItemTrigger>
+        <Heading asChild textStyle="label.medium" fontWeight="bold">
+          <h2>
+            <AccordionItemTrigger>
+              Tittel
+              <AccordionItemIndicator asChild>
+                <ChevronDown size="normal" />
+              </AccordionItemIndicator>
+            </AccordionItemTrigger>
+          </h2>
         </Heading>
         <AccordionItemContent>
           <div>

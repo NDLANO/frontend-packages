@@ -102,7 +102,7 @@ const messages = {
   },
   unpublishedResourcePage: {
     title: "Ressursen er avpublisert",
-    errorDescription: "Orsak, ressursen du prøvde komme til er avpublisert.",
+    errorDescription: "Orsak, ressursen du prøvde å komme til er avpublisert.",
   },
   lti: {
     embed: "Sett inn",
@@ -300,7 +300,7 @@ const messages = {
     edition: "Utgåve",
     publisher: "Utgjevar",
     closeLabel: "Lukk",
-    useContent: "Reglar for bruk",
+    useContent: "Sitere eller gjenbruke?",
     additionalLabel: "Tilleggsstoff",
     urlContributionsLabel: "Sjå kva {{name}} har bidratt med",
     urlAuthorLabel: "Les meir om {{name}}",
@@ -317,7 +317,7 @@ const messages = {
     cite: "Bruk innhald",
     notionsPrompt: "Kan du begrepa?",
     citeNotion: "Bruk forklaringa",
-    printPage: "Skriv ut",
+    printPage: "Skriv ut teksten",
     access: {
       onlyTeacher: "Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.",
     },
@@ -368,7 +368,7 @@ const messages = {
   license: {
     heading: "Slik gjenbruker du innhald",
     learnMore: "Lær meir om opne lisensar",
-    copyTitle: "Kjeldetilvising",
+    copyTitle: "Kopier kjeldetilvising",
     copy: "Kopier",
     hasCopiedTitle: "Kopiert!",
     embed: "Bygg inn",
@@ -383,6 +383,7 @@ const messages = {
       readDate: "Lese: ",
     },
     download: "Last ned",
+    openLink: "Åpne i ny fane",
     tabs: {
       text: "Tekst",
       images: "Bilete",
@@ -408,7 +409,7 @@ const messages = {
     images: {
       heading: "Slik gjenbruker du bileta",
       description: "Hugs å kopiere teksten som skal leggjast ved biletet der du bruker det.",
-      rules: "Reglar for bruk av biletet:",
+      rules: "Reglar for bruk av biletet",
       itemImage: {
         ariaLabel: "Opne bilete i eit nytt vindauge",
         zoomImageButtonLabel: "Forstørr bilete",
@@ -416,32 +417,40 @@ const messages = {
         expandByline: "Vis byline",
         minimizeByline: "Skjul byline",
       },
-      source: "Kjelde",
-      title: "Tittel",
+      licenseText: "Dette biletet har lisensen",
+      restrictedUseText: "Dette biletet har",
     },
     text: {
       heading: "Slik gjenbruker du teksten",
       description: "Hugs å vise til kjelda når du gjenbruker tekst.",
-      rules: "Reglar for bruk av teksten:",
+      rules: "Reglar for bruk av teksten",
       published: "Publiseringsdato",
+      licenseText: "Denne teksten har lisensen",
+      restrictedUseText: "Denne teksten har",
     },
     audio: {
       heading: "Slik gjenbruker du lydfiler",
       description: "Hugs å kopiera teksten som skal leggjast ved lydfila der du bruker ho.",
-      rules: "Reglar for bruk av lydfila:",
+      rules: "Reglar for bruk av lydfila",
+      licenseText: "Denne lydfila har lisensen",
+      restrictedUseText: "Denne lydfila har",
     },
     podcast: {
       heading: "Slik gjenbruker du podkaster",
       description: "Hugs å kopiera teksten som skal leggjast ved podkasten der du bruker ho.",
-      rules: "Reglar for bruk av podkasten:",
+      rules: "Reglar for bruk av podkasten",
+      licenseText: "Denne podkasten har lisensen",
+      restrictedUseText: "Denne podkasten har",
     },
     video: {
       heading: "Slik gjenbruker du videoar",
       description: "Hugs å kopiera teksten som skal leggjast ved videoen der du bruker han.",
-      rules: "Reglar for bruk av videoen:",
+      rules: "Reglar for bruk av videoen",
       itemImage: {
         ariaLabel: "Opne video i eit nytt vindauge",
       },
+      licenseText: "Denne videoen har lisensen",
+      restrictedUseText: "Denne videoen har",
     },
     other: {
       heading: "Slik gjenbruker du anna innhald",
@@ -453,7 +462,9 @@ const messages = {
     h5p: {
       heading: "Slik gjenbruker du H5P-innhald",
       description: "Du finn retningslinjene for bruk av innhaldet i H5P-elementet.",
-      rules: "Reglar for bruk av H5P:",
+      rules: "Reglar for bruk av H5P",
+      licenseText: "Denne interaktive oppgåva (H5p) har lisensen",
+      restrictedUseText: "Denne interaktive oppgåva (H5p) har",
     },
     concept: {
       embedlink: {
@@ -464,8 +475,9 @@ const messages = {
       },
       heading: "Slik gjenbruker du forklaringar",
       description: "Husk at innebygd innhald i ei forklaring kan ha ein anna lisens enn sjølve forklaringsteksten",
-      rules: "Reglar for bruk av forklaring:",
-      title: "Tittel",
+      rules: "Reglar for bruk av forklaring",
+      licenseText: "Denne forklaringa har lisensen",
+      restrictedUseText: "Denne forklaringa har",
     },
     gloss: {
       embedlink: {
@@ -476,14 +488,15 @@ const messages = {
       },
       heading: "Slik gjenbruker du gloser",
       description: "Husk at innebygd innhald i ei glose kan ha ein anna lisens enn sjølve gloseteksten",
-      rules: "Regler for bruk av glose:",
-      title: "Tittel",
+      rules: "Regler for bruk av glose",
       showOrHideExamples: "Vis eller skjul eksempler",
+      licenseText: "Denne glosa har lisensen",
+      restrictedUseText: "Denne glosa har",
     },
     files: {
       heading: "Slik gjenbruker du filer",
       description: "Hugs å kopiere teksten som skal leggjast ved fila der du bruker ho.",
-      rules: "Regler for bruk av fila:",
+      rules: "Regler for bruk av fila",
       itemImage: {
         ariaLabel: "Opne i nytt vindauge",
       },
@@ -492,7 +505,6 @@ const messages = {
     originator: "Opphavar",
     processed: "Innhaldet har vorte omarbeidd",
     rightsholder: "Rettshavar",
-    source: "Kjelde",
     published: "Publiseringsdato",
     info: "Lisensinformasjon",
   },
@@ -1073,7 +1085,9 @@ const messages = {
         fetchMore: "Hent fleire svar",
         deleted: "Dette innlegget er sletta av forfatteren.",
         upvote: "Stem opp",
+        numberOfUpvotes: "{{ count }} personar har stemt opp denne.",
         removeUpvote: "Fjern stemme",
+        reply: "Skriv eit svar til {{ name }}",
       },
       flag: {
         title: "Rapporter innlegg / kommentar",

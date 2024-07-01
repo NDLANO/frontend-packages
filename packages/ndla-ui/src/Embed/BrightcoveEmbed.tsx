@@ -12,17 +12,15 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { spacing } from "@ndla/core";
-import { COPYRIGHTED } from "@ndla/licenses";
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { HeartButtonType, RenderContext } from "./types";
+import { RenderContext } from "./types";
 import { Figure } from "../Figure";
 import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: BrightcoveMetaData;
   isConcept?: boolean;
-  heartButton?: HeartButtonType;
   renderContext?: RenderContext;
 }
 
@@ -54,7 +52,7 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? "640",
   };
 };
-const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderContext = "article" }: Props) => {
+const BrightcoveEmbed = ({ embed, isConcept, renderContext = "article" }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -124,7 +122,6 @@ const BrightcoveEmbed = ({ embed, isConcept, heartButton: HeartButton, renderCon
             {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}
           </LinkedVideoButton>
         )}
-        {HeartButton && data.copyright?.license.license.toLowerCase() !== COPYRIGHTED && <HeartButton embed={embed} />}
       </EmbedByline>
     </Figure>
   );

@@ -34,7 +34,9 @@ export const Default: StoryObj<typeof ExpandableBox> = {};
 export const WithHeader: StoryFn<typeof ExpandableBox> = ({ ...args }) => (
   <ExpandableBox {...args}>
     <ExpandableBoxSummary>
-      <Heading as="h2">Open me as header text</Heading>
+      <Heading asChild>
+        <h2>Open me as header text</h2>
+      </Heading>
     </ExpandableBoxSummary>
     Everything here is only visible when the box is open
   </ExpandableBox>

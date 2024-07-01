@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { forwardRef, ReactNode } from "react";
 import { buttonStyleV2, ButtonStyleProps } from "@ndla/button";
 import SafeLink, { SafeLinkProps } from "./SafeLink";

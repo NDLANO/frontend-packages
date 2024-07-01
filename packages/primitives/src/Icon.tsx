@@ -7,7 +7,9 @@
  */
 
 import { ComponentPropsWithRef } from "react";
-import { type RecipeVariantProps, cva, cx } from "@ndla/styled-system/css";
+import { type RecipeVariantProps, cva, css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
 export const iconRecipe = cva({
   base: {
@@ -49,7 +51,9 @@ interface BaseIconProps extends ComponentPropsWithRef<"svg"> {
   description?: string;
 }
 
-export type IconProps = BaseIconProps & IconVariantProps;
+export type IconProps = BaseIconProps & IconVariantProps & JsxStyleProps;
+
+const StyledSvg = styled("svg");
 
 // TODO: Move this component over to ndla/icons
 export const Icon = ({
@@ -60,21 +64,21 @@ export const Icon = ({
   description,
   width,
   height,
-  className,
+  css: cssProp,
   "aria-hidden": ariaHidden = true,
   ...props
 }: IconProps) => {
   return (
-    <svg
+    <StyledSvg
       data-icon=""
       aria-hidden={ariaHidden}
       preserveAspectRatio="xMidYMid meet"
+      css={css.raw(iconRecipe.raw({ size }), cssProp)}
       {...props}
-      className={cx(iconRecipe({ size }), className)}
     >
       {title && <title>{title}</title>}
       {description && <desc>{description}</desc>}
       {children}
-    </svg>
+    </StyledSvg>
   );
 };

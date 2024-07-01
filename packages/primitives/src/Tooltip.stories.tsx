@@ -27,7 +27,7 @@ export default {
 
 export const Default: StoryFn<typeof TooltipRoot> = ({ ...args }) => (
   <TooltipRoot {...args}>
-    <TooltipTrigger asChild>
+    <TooltipTrigger asChild forwardCssProp>
       <Button>Hover me!</Button>
     </TooltipTrigger>
     <Portal>

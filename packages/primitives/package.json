@@ -1,6 +1,6 @@
 {
   "name": "@ndla/primitives",
-  "version": "0.0.2",
+  "version": "0.0.8",
   "description": "Primitive components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,14 +28,14 @@
     "lib"
   ],
   "dependencies": {
-    "@ark-ui/anatomy": "^3.3.1",
-    "@ark-ui/react": "^3.3.0",
+    "@ark-ui/anatomy": "^3.4.0",
+    "@ark-ui/react": "^3.4.0",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^4.0.4"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^0.40.1"
+    "@pandacss/dev": "^0.41.0"
   },
   "peerDependencies": {
     "react": ">= 18",

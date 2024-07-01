@@ -6,11 +6,15 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
+import { HTMLArkProps } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
-import { StyledVariantProps } from "@ndla/styled-system/types";
+import { JsxStyleProps, StyledVariantProps } from "@ndla/styled-system/types";
 
-const StyledOrderedList = styled("ol", {
+export type OrderedListVariantProps = StyledVariantProps<typeof OrderedList>;
+
+export type OrderedListProps = HTMLArkProps<"ol"> & JsxStyleProps & OrderedListVariantProps;
+
+export const OrderedList = styled("ol", {
   base: {
     listStyle: "revert",
     listStylePosition: "inside",
@@ -58,15 +62,9 @@ const StyledOrderedList = styled("ol", {
   },
 });
 
-export type OrderedListVariantProps = StyledVariantProps<typeof StyledOrderedList>;
+export type UnOrderedListProps = HTMLArkProps<"ul"> & JsxStyleProps;
 
-export type OrderedListProps = ComponentPropsWithoutRef<"ol"> & OrderedListVariantProps;
-
-export const OrderedList = ({ variant = "numbers", ...props }: OrderedListProps) => (
-  <StyledOrderedList variant={variant} data-variant={variant} {...props} />
-);
-
-const StyledUnOrderedList = styled("ul", {
+export const UnOrderedList = styled("ul", {
   base: {
     listStyle: "revert",
     listStylePosition: "inside",
@@ -80,11 +78,7 @@ const StyledUnOrderedList = styled("ul", {
   },
 });
 
-export type UnOrderedListProps = ComponentPropsWithoutRef<"ul">;
-
-export const UnOrderedList = ({ ...props }: UnOrderedListProps) => <StyledUnOrderedList {...props} />;
-
-const StyledDefinitionList = styled("dl", {
+export const DefinitionList = styled("dl", {
   base: {
     "& dt": {
       fontWeight: "bold",
@@ -95,6 +89,4 @@ const StyledDefinitionList = styled("dl", {
   },
 });
 
-export type DefinitionListProps = ComponentPropsWithoutRef<"dl">;
-
-export const DefinitionList = ({ ...props }: DefinitionListProps) => <StyledDefinitionList {...props} />;
+export type DefinitionListProps = HTMLArkProps<"dl"> & JsxStyleProps;

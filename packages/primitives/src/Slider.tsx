@@ -9,6 +9,7 @@
 import { sliderAnatomy } from "@ark-ui/anatomy";
 import { Slider } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
 import { TextProps } from "./Text";
@@ -80,22 +81,28 @@ const sliderRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(sliderRecipe);
 
-export type SliderRootProps = Slider.RootProps;
+export type SliderRootProps = Slider.RootProps & JsxStyleProps;
 
 export const SliderRoot = withProvider<HTMLDivElement, SliderRootProps>(Slider.Root, "root");
 
-export const SliderControl = withContext<HTMLDivElement, Slider.ControlProps>(Slider.Control, "control");
+export const SliderControl = withContext<HTMLDivElement, JsxStyleProps & Slider.ControlProps>(
+  Slider.Control,
+  "control",
+);
 
-export const SliderTrack = withContext<HTMLDivElement, Slider.TrackProps>(Slider.Track, "track");
+export const SliderTrack = withContext<HTMLDivElement, JsxStyleProps & Slider.TrackProps>(Slider.Track, "track");
 
-export const SliderRange = withContext<HTMLDivElement, Slider.RangeProps>(Slider.Range, "range");
+export const SliderRange = withContext<HTMLDivElement, JsxStyleProps & Slider.RangeProps>(Slider.Range, "range");
 
-export const SliderThumb = withContext<HTMLDivElement, Slider.ThumbProps>(Slider.Thumb, "thumb");
+export const SliderThumb = withContext<HTMLDivElement, JsxStyleProps & Slider.ThumbProps>(Slider.Thumb, "thumb");
 
-const InternalSliderLabel = withContext<HTMLDivElement, Slider.LabelProps>(Slider.Label, "label");
+const InternalSliderLabel = withContext<HTMLDivElement, JsxStyleProps & Slider.LabelProps>(Slider.Label, "label");
 
-export const SliderLabel = ({ textStyle = "label.medium", ...props }: Slider.LabelProps & TextProps) => (
-  <InternalSliderLabel asChild>
+export const SliderLabel = ({
+  textStyle = "label.medium",
+  ...props
+}: Slider.LabelProps & TextProps & JsxStyleProps) => (
+  <InternalSliderLabel asChild forwardCssProp>
     <Label textStyle={textStyle} {...props} />
   </InternalSliderLabel>
 );

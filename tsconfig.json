@@ -4,7 +4,6 @@
     "target": "es5",
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "isolatedModules": true,
     "strict": true,
     "allowJs": true,
@@ -15,7 +14,7 @@
     "noEmit": true,
     "sourceMap": true,
     "lib": ["ES2023", "esnext.asynciterable", "dom"],
-    "types": ["@emotion/react", "@emotion/styled", "jest", "node"],
+    "types": ["jest", "node"],
     "paths": {
       "@ndla/article-converter": ["./packages/article-converter/src"],
       "@ndla/button": ["./packages/button/src"],
@@ -32,7 +31,6 @@
       "@ndla/image-search": ["./packages/ndla-image-search/src"],
       "@ndla/licenses": ["./packages/ndla-licenses/src"],
       "@ndla/modal": ["./packages/ndla-modal/src"],
-      "@ndla/notion": ["./packages/ndla-notion/src"],
       "@ndla/pager": ["./packages/ndla-pager/src"],
       "@ndla/tabs": ["./packages/ndla-tabs/src"],
       "@ndla/tracker": ["./packages/ndla-tracker/src"],
@@ -47,7 +45,7 @@
       "@ndla/util": ["./packages/util/src"],
       "@ndla/preset-panda": ["./packages/preset-panda/src"],
       "@ndla/primitives": ["./packages/primitives/src"],
-      "@ndla/styled-system": ["./packages/styled-system/src"],
+      "@ndla/styled-system": ["./packages/styled-system"],
       "*": ["node_modules"]
     }
   },

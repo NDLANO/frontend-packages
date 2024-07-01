@@ -6,17 +6,18 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import parse from "html-react-parser";
 import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { colors, spacing, utils } from "@ndla/core";
+import { colors, spacing } from "@ndla/core";
 import { KnobCross, KnobPlus } from "@ndla/icons/action";
 import { ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { CanonicalUrlFuncs, HeartButtonType, RenderContext } from "./types";
+import { RenderContext } from "./types";
 import { Figure, FigureType, figureActionIndicatorStyle } from "../Figure";
 import Image from "../Image";
 import { EmbedByline } from "../LicenseByline";
@@ -24,9 +25,6 @@ import { EmbedByline } from "../LicenseByline";
 interface Props {
   embed: ImageMetaData;
   previewAlt?: boolean;
-  path?: string;
-  heartButton?: HeartButtonType;
-  canonicalUrl?: CanonicalUrlFuncs["image"];
   inGrid?: boolean;
   lang?: string;
   renderContext?: RenderContext;
@@ -130,18 +128,8 @@ const StyledFigure = styled(Figure)`
   }
 `;
 
-const ImageEmbed = ({
-  embed,
-  previewAlt,
-  heartButton: HeartButton,
-  inGrid,
-  path,
-  lang,
-  canonicalUrl,
-  renderContext = "article",
-  children,
-}: Props) => {
-  const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData.size));
+const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article", children }: Props) => {
+  const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   // Full-size figures automatically get a margin of {spacing.normal} on its y-axis if a float is not set (or if float is an empty string).
   // This adds some margin to normal figures within an article, but should not happen for figures in a grid.
@@ -179,96 +167,54 @@ const ImageEmbed = ({
   return (
     <StyledFigure type={imageSizes ? undefined : figureType} {...floatAttr}>
       {children}
-      <ImageWrapper
-        src={!isCopyrighted ? canonicalUrl?.(data) : undefined}
+      <Image
+        focalPoint={focalPoint}
+        contentType={data.image.contentType}
         crop={crop}
-        size={embedData.size}
-        pagePath={path}
-      >
-        <Image
-          focalPoint={focalPoint}
-          contentType={data.image.contentType}
-          crop={crop}
-          sizes={imageSizes ?? sizes}
-          alt={altText}
-          src={data.image.imageUrl}
-          border={embedData.border}
-          expandButton={
-            <ExpandButton
-              size={embedData.size}
-              align={embedData.align}
-              expanded={!!imageSizes}
-              bylineHidden={isBylineHidden}
-              onExpand={() => {
-                if (!imageSizes) {
-                  setImageSizes(expandedSizes);
-                  setTimeout(() => {
-                    setFloatAttr({});
-                  }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
-                } else {
-                  setImageSizes(undefined);
-                  setFloatAttr({ "data-float": embedData.align });
-                }
-              }}
-              onHideByline={() => setIsBylineHidden((p) => !p)}
-            />
-          }
-          lang={lang}
-        />
-      </ImageWrapper>
+        sizes={imageSizes ?? sizes}
+        alt={altText}
+        src={data.image.imageUrl}
+        border={embedData.border}
+        expandButton={
+          <ExpandButton
+            embedData={embedData}
+            expanded={!!imageSizes}
+            align={embedData.align}
+            bylineHidden={isBylineHidden}
+            onExpand={() => {
+              if (!imageSizes) {
+                setImageSizes(expandedSizes);
+                setTimeout(() => {
+                  setFloatAttr({});
+                }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
+              } else {
+                setImageSizes(undefined);
+                setFloatAttr({ "data-float": embedData.align });
+              }
+            }}
+            onHideByline={() => setIsBylineHidden((p) => !p)}
+          />
+        }
+        lang={lang}
+      />
       {isBylineHidden ? null : (
         <EmbedByline
           type="image"
           copyright={data.copyright}
-          hideOnLargeScreens={isSmall(embedData.size) && !imageSizes}
           description={parsedDescription}
-          bottomRounded
           visibleAlt={previewAlt ? embed.embedData.alt : ""}
-          inGrid={inGrid}
-        >
-          {HeartButton && !isCopyrighted && <HeartButton embed={embed} />}
-        </EmbedByline>
+        />
       )}
     </StyledFigure>
   );
 };
 
-const HiddenSpan = styled.span`
-  ${utils.visuallyHidden};
-`;
-
-interface ImageWrapperProps {
-  src?: string;
-  children: React.ReactNode;
-  pagePath?: string;
-  crop?: {
-    startX: number;
-    startY: number;
-    endX: number;
-    endY: number;
-  };
-  size?: string;
-}
-const hideByline = (size?: string): boolean => {
-  return !!size && size.endsWith("-hide-byline");
-};
-
-const ImageWrapper = ({ src, crop, size, children, pagePath }: ImageWrapperProps) => {
-  const { t } = useTranslation();
-  if (isSmall(size) || hideByline(size) || !src || (pagePath && src.endsWith(pagePath))) {
-    return <>{children}</>;
-  }
-
-  return (
-    <>
-      {children}
-      <HiddenSpan>{t("license.images.itemImage.ariaLabel")}</HiddenSpan>
-    </>
-  );
+const hideByline = (embed: ImageEmbedData): boolean => {
+  return (!!embed.size && embed.size.endsWith("-hide-byline")) || embed.hideByline === "true";
 };
 
 interface ExpandButtonProps {
-  size?: string;
+  embedData: ImageEmbedData;
   align?: string;
   expanded: boolean;
   bylineHidden: boolean;
@@ -295,7 +241,7 @@ const BylineButton = styled.button`
   }
 `;
 
-const ExpandButton = ({ align, size, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
+const ExpandButton = ({ align, embedData, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
   const { t } = useTranslation();
   if (isAlign(align)) {
     return (
@@ -310,7 +256,7 @@ const ExpandButton = ({ align, size, expanded, bylineHidden, onExpand, onHideByl
       </button>
     );
   }
-  if (hideByline(size)) {
+  if (hideByline(embedData)) {
     return (
       <BylineButton
         type="button"

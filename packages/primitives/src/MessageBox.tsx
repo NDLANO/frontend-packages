@@ -6,10 +6,10 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
-import { cva, cx } from "@ndla/styled-system/css";
+import { HTMLArkProps, ark } from "@ark-ui/react";
+import { cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { RecipeVariantProps } from "@ndla/styled-system/types";
+import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const messageBoxRecipe = cva({
   base: {
@@ -47,8 +47,6 @@ const messageBoxRecipe = cva({
 
 export type MessageBoxVariantProps = RecipeVariantProps<typeof messageBoxRecipe>;
 
-export type MessageBoxProps = ComponentPropsWithoutRef<"div"> & MessageBoxVariantProps;
+export type MessageBoxProps = HTMLArkProps<"div"> & JsxStyleProps & MessageBoxVariantProps;
 
-export const MessageBox = ({ className, variant, ...rest }: MessageBoxProps) => (
-  <styled.div className={cx(messageBoxRecipe({ variant }), className)} {...rest} />
-);
+export const MessageBox = styled(ark.div, messageBoxRecipe);

@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { DropdownIndicatorProps, components } from "react-select";

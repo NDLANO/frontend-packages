@@ -6,9 +6,10 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
-import { RecipeVariantProps, cva, cx } from "@ndla/styled-system/css";
+import { HTMLArkProps, ark } from "@ark-ui/react";
+import { RecipeVariantProps, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
 const badgeRecipe = cva({
   base: {
@@ -27,7 +28,7 @@ const badgeRecipe = cva({
         borderColor: "surface.brand.1.strong",
       },
       brand2: {
-        backgroundColor: "surface.brand.2.subtle",
+        backgroundColor: "surface.brand.2.moderate",
         borderColor: "surface.brand.2.strong",
       },
       brand3: {
@@ -44,8 +45,6 @@ const badgeRecipe = cva({
 
 export type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipe>;
 
-export type BadgeProps = BadgeVariantProps & ComponentPropsWithoutRef<"div">;
+export type BadgeProps = HTMLArkProps<"div"> & JsxStyleProps & BadgeVariantProps;
 
-export const Badge = ({ colorTheme, className, ...rest }: BadgeProps) => (
-  <styled.div className={cx(badgeRecipe({ colorTheme }), className)} {...rest} />
-);
+export const Badge = styled(ark.div, badgeRecipe);

@@ -6,20 +6,17 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from "react";
-import { css, cx } from "@ndla/styled-system/css";
+import { forwardRef } from "react";
+import { Field, HTMLArkProps } from "@ark-ui/react";
+import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { useFormControlContext } from "./FormControl";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { TextProps } from "./Text";
 
-export const FieldHelper = forwardRef<HTMLDivElement, TextProps & ComponentPropsWithRef<"div">>(
-  ({ textStyle = "label.small", fontWeight, color, srOnly, className, ...props }, ref) => {
-    const field = useFormControlContext();
-    return (
-      <styled.div
-        {...(field?.getHelpTextProps(props, ref) ?? { ref, ...props })}
-        className={cx(css({ textStyle, fontWeight, color, srOnly }), className)}
-      />
-    );
+const StyledFieldHelper = styled(Field.HelperText);
+
+export const FieldHelper = forwardRef<HTMLDivElement, TextProps & HTMLArkProps<"div"> & JsxStyleProps>(
+  ({ textStyle = "label.small", fontWeight, color, srOnly, css: cssProp, ...props }, ref) => {
+    return <StyledFieldHelper css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />;
   },
 );

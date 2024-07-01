@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { animations, breakpoints, colors, mq, spacing } from "@ndla/core";

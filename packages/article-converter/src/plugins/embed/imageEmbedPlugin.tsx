@@ -20,10 +20,7 @@ export const imageEmbedPlugin: PluginType = (element, _, opts) => {
     <ImageEmbed
       inGrid={inGrid}
       embed={data}
-      path={opts.path}
       previewAlt={opts.previewAlt}
-      heartButton={opts.components?.heartButton}
-      canonicalUrl={opts.canonicalUrls?.image}
       lang={opts.articleLanguage}
       renderContext={opts.renderContext}
     />

@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import {
   ComponentProps,
   HTMLAttributes,

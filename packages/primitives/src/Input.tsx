@@ -6,20 +6,12 @@
  *
  */
 
-import {
-  ComponentPropsWithRef,
-  HTMLAttributes,
-  createContext,
-  forwardRef,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-} from "react";
-import { css, cx } from "@ndla/styled-system/css";
+import { createContext, forwardRef, useCallback, useContext, useEffect, useRef } from "react";
+import { Field, HTMLArkProps, ark } from "@ark-ui/react";
+import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { composeRefs } from "@ndla/util";
-import { useFormControl } from "./FormControl";
 
 interface InputContextType {}
 
@@ -64,7 +56,7 @@ const inputCss = css.raw({
   },
 });
 
-const StyledInputContainer = styled("div", {
+const StyledInputContainer = styled(ark.div, {
   base: {
     width: "100%",
     display: "flex",
@@ -76,10 +68,10 @@ const StyledInputContainer = styled("div", {
   },
 });
 
-export const InputContainer = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ children, className, ...rest }, ref) => (
+export const InputContainer = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(
+  ({ children, css: cssProp, ...rest }, ref) => (
     <InputContext.Provider value={{}}>
-      <StyledInputContainer className={cx(css(inputCss), className)} {...rest} ref={ref}>
+      <StyledInputContainer css={css.raw(inputCss, cssProp)} {...rest} ref={ref}>
         {children}
       </StyledInputContainer>
     </InputContext.Provider>
@@ -112,21 +104,26 @@ const baseTextAreaCss = css.raw({
   overflowY: "hidden",
 });
 
-export const Input = forwardRef<HTMLInputElement, ComponentPropsWithRef<"input">>(({ className, ...props }, ref) => {
+export interface InputProps extends HTMLArkProps<"input">, JsxStyleProps {}
+
+const StyledInput = styled(ark.input);
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ css: cssProp, ...props }, ref) => {
   const context = useContext(InputContext);
-  return (
-    <styled.input className={cx(css(baseInputCss, context ? undefined : inputCss), className)} ref={ref} {...props} />
-  );
+  return <StyledInput css={css.raw(baseInputCss, context ? undefined : inputCss, cssProp)} ref={ref} {...props} />;
 });
 
-export const FormInput = forwardRef<HTMLInputElement, ComponentPropsWithRef<"input">>((props, ref) => {
-  const field = useFormControl(props);
-  return <Input {...field} ref={ref} />;
-});
+export const FieldInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
+  <Field.Input asChild>
+    <Input {...props} ref={ref} />
+  </Field.Input>
+));
 
-interface TextAreaProps extends ComponentPropsWithRef<"textarea"> {}
+interface TextAreaProps extends HTMLArkProps<"textarea">, JsxStyleProps {}
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ className, ...props }, ref) => {
+const StyledTextArea = styled(ark.textarea);
+
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ css: cssProp, ...props }, ref) => {
   const context = useContext(InputContext);
   const localRef = useRef<HTMLTextAreaElement>(null);
 
@@ -148,15 +145,16 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ classN
   }, [resize]);
 
   return (
-    <styled.textarea
-      className={cx(css(baseInputCss, context ? undefined : inputCss, baseTextAreaCss), className)}
+    <StyledTextArea
+      css={css.raw(baseInputCss, context ? undefined : inputCss, baseTextAreaCss, cssProp)}
       ref={composeRefs(ref, localRef)}
       {...props}
     />
   );
 });
 
-export const FormTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
-  const field = useFormControl(props);
-  return <TextArea {...field} ref={ref} />;
-});
+export const FieldTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => (
+  <Field.Textarea asChild>
+    <TextArea {...props} ref={ref} />
+  </Field.Textarea>
+));

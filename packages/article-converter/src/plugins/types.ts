@@ -7,11 +7,7 @@
  */
 
 import { Element, HTMLReactParserOptions } from "html-react-parser";
-import { HeartButtonType, RenderContext, CanonicalUrlFuncs } from "@ndla/ui";
-
-export interface DynamicComponents {
-  heartButton?: HeartButtonType;
-}
+import { RenderContext, CanonicalUrlFuncs } from "@ndla/ui";
 
 export interface TransformOptions {
   isOembed?: boolean;
@@ -19,7 +15,6 @@ export interface TransformOptions {
   path?: string;
   previewAlt?: boolean;
   frontendDomain?: string;
-  components?: DynamicComponents;
   articleLanguage?: string;
   canonicalUrls?: CanonicalUrlFuncs;
   renderContext?: RenderContext;

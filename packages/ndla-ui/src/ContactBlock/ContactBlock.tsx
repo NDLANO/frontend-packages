@@ -6,6 +6,7 @@
  *
  */
 
+/** @jsxImportSource @emotion/react */
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
@@ -186,7 +187,7 @@ const ContactBlock = ({
             </LinkWrapper>
             <span>
               {`${t("embed.type.image")}: ${authors.map((author) => `${author?.name}`).join(", ")} `}
-              {!!license && <LicenseLink license={license} asLink={!!license.url.length} />}
+              {!!license && <LicenseLink license={license} />}
             </span>
           </>
         ) : (

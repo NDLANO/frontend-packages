@@ -35,7 +35,7 @@ export const Default: StoryFn<typeof ToastRoot> = ({ ...args }) => (
           <ToastRoot {...args}>
             <ToastTitle>{toast.title}</ToastTitle>
             <ToastDescription>{toast.description}</ToastDescription>
-            <ToastCloseTrigger asChild>
+            <ToastCloseTrigger asChild forwardCssProp>
               <IconButton variant="clearSubtle">
                 <Cross />
               </IconButton>

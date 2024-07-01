@@ -7,13 +7,15 @@
  */
 
 import { ComponentPropsWithoutRef } from "react";
-import { css, cx } from "@ndla/styled-system/css";
+import { css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
 import { ColorToken } from "@ndla/styled-system/tokens";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
-export type LogoProps = ComponentPropsWithoutRef<"svg"> & { color?: ColorToken };
+export type LogoProps = ComponentPropsWithoutRef<"svg"> & { color?: ColorToken } & JsxStyleProps;
 
-const BaseSvg = ({ color = "primary", className, ...props }: LogoProps) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className={cx(css({ color }), className)} {...props} />
+const BaseSvg = ({ color = "primary", css: cssProp, ...props }: LogoProps) => (
+  <styled.svg xmlns="http://www.w3.org/2000/svg" css={css.raw({ color }, cssProp)} {...props} />
 );
 
 export const NdlaLogoEn = (props: LogoProps) => (

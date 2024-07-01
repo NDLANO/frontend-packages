@@ -20,7 +20,6 @@ import * as commonIcons from "./common";
 import { Person } from "./common";
 import * as contentTypeIcons from "./contentType";
 import * as editorIcons from "./editor";
-import * as licenseIcons from "./licenses";
 
 interface IconItemProps {
   icon: (props: ComponentProps<typeof Icon>) => ReactElement<ComponentProps<typeof Icon>>;
@@ -116,10 +115,6 @@ export const CommonIcons: StoryObj<typeof Icon> = {
  **/
 export const ContentTypes: StoryObj<typeof Icon> = {
   render: () => <IconList icons={contentTypeIcons} folder="contentType" />,
-};
-
-export const Licenses: StoryObj<typeof Icon> = {
-  render: () => <IconList icons={licenseIcons} folder="license" />,
 };
 
 export const Action: StoryObj<typeof Icon> = {

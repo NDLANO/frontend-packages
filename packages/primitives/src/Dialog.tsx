@@ -6,19 +6,17 @@
  *
  */
 
-import { ComponentProps, forwardRef } from "react";
-import type { Assign } from "@ark-ui/react";
+import { forwardRef } from "react";
+import { dialogAnatomy } from "@ark-ui/anatomy";
 import { Dialog } from "@ark-ui/react";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { SystemProperties } from "@ndla/styled-system/types";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Heading, Text, TextProps } from "./Text";
 
 const dialogRecipe = sva({
-  // We only use a subset of the dialog components, so we roll our own slots instead of relying on @ark/anatomy.
-  slots: ["positioner", "backdrop", "content"],
-  className: "dialog",
+  slots: dialogAnatomy.keys(),
   base: {
     backdrop: {
       position: "fixed",
@@ -268,44 +266,52 @@ export const DialogRoot = ({ lazyMount = true, unmountOnExit = true, ...props }:
   <InternalDialogRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const DialogBackdrop = withContext<HTMLDivElement, Assign<SystemProperties, Dialog.BackdropProps>>(
+export const DialogBackdrop = withContext<HTMLDivElement, JsxStyleProps & Dialog.BackdropProps>(
   Dialog.Backdrop,
   "backdrop",
 );
 
-export const DialogStandaloneContent = withContext<HTMLDivElement, Assign<SystemProperties, Dialog.ContentProps>>(
+export const DialogStandaloneContent = withContext<HTMLDivElement, JsxStyleProps & Dialog.ContentProps>(
   Dialog.Content,
   "content",
 );
 
-export const DialogPositioner = withContext<HTMLDivElement, Assign<SystemProperties, Dialog.PositionerProps>>(
+export const DialogPositioner = withContext<HTMLDivElement, JsxStyleProps & Dialog.PositionerProps>(
   Dialog.Positioner,
   "positioner",
 );
 
-export const DialogContent = forwardRef<HTMLDivElement, ComponentProps<typeof DialogStandaloneContent>>(
-  (props, ref) => (
-    <>
-      <DialogBackdrop />
-      <DialogPositioner>
-        <DialogStandaloneContent ref={ref} {...props} />
-      </DialogPositioner>
-    </>
-  ),
+export const DialogContent = forwardRef<HTMLDivElement, Dialog.ContentProps & JsxStyleProps>((props, ref) => (
+  <>
+    <DialogBackdrop />
+    <DialogPositioner>
+      <DialogStandaloneContent ref={ref} {...props} />
+    </DialogPositioner>
+  </>
+));
+
+const InternalDialogDescription = withContext<HTMLParagraphElement, JsxStyleProps & Dialog.DescriptionProps>(
+  Dialog.Description,
+  "description",
 );
 
-export const DialogDescription = ({ textStyle = "body.large", ...rest }: Dialog.DescriptionProps & TextProps) => {
+export const DialogDescription = ({
+  textStyle = "body.large",
+  ...rest
+}: Dialog.DescriptionProps & TextProps & JsxStyleProps) => {
   return (
-    <Dialog.Description asChild>
-      <Text as="p" textStyle={textStyle} {...rest}></Text>
-    </Dialog.Description>
+    <InternalDialogDescription asChild forwardCssProp>
+      <Text textStyle={textStyle} {...rest}></Text>
+    </InternalDialogDescription>
   );
 };
 
-export const DialogTitle = ({ textStyle = "title.medium", ...rest }: Dialog.TitleProps & TextProps) => (
-  <Dialog.Title asChild>
-    <Heading as="h1" textStyle={textStyle} {...rest}></Heading>
-  </Dialog.Title>
+const InternalDialogTitle = withContext<HTMLHeadingElement, JsxStyleProps & Dialog.TitleProps>(Dialog.Title, "title");
+
+export const DialogTitle = ({ textStyle = "title.medium", ...rest }: Dialog.TitleProps & TextProps & JsxStyleProps) => (
+  <InternalDialogTitle asChild forwardCssProp>
+    <Heading textStyle={textStyle} {...rest}></Heading>
+  </InternalDialogTitle>
 );
 
 export const DialogTrigger = Dialog.Trigger;

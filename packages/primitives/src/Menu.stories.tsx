@@ -11,8 +11,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import { Copy, Cross, Pencil, TrashCanOutline } from "@ndla/icons/action";
 import { ChevronRight, Share, ShareArrow } from "@ndla/icons/common";
 import { Settings } from "@ndla/icons/editor";
-import { css } from "@ndla/styled-system/css";
-import { HStack } from "@ndla/styled-system/jsx";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 import {
   MenuContent,
@@ -39,7 +38,7 @@ export default {
 
 export const Default: StoryFn<typeof MenuRoot> = (args) => (
   <MenuRoot {...args}>
-    <MenuTrigger asChild>
+    <MenuTrigger asChild forwardCssProp>
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>
@@ -53,11 +52,11 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
             <Share />
             Del
           </MenuItem>
-          <MenuItem value="goToShared" asChild>
-            <a href="https://ndla.no">
+          <MenuItem value="goToShared" asChild forwardCssProp>
+            <styled.a href="https://ndla.no">
               <ShareArrow />
               Gå til delt mappe
-            </a>
+            </styled.a>
           </MenuItem>
           <MenuItem value="copyLink" disabled>
             <Copy />
@@ -79,7 +78,7 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
 
 export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
   <MenuRoot {...args}>
-    <MenuTrigger asChild>
+    <MenuTrigger asChild forwardCssProp>
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>
@@ -123,7 +122,7 @@ export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
 
 export const Nested: StoryFn<typeof MenuRoot> = (args) => (
   <MenuRoot {...args}>
-    <MenuTrigger asChild>
+    <MenuTrigger asChild forwardCssProp>
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>
@@ -141,7 +140,7 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
             </MenuItem>
           </MenuItemGroup>
           <MenuRoot>
-            <MenuTriggerItem className={css({ justifyContent: "space-between" })}>
+            <MenuTriggerItem css={{ justifyContent: "space-between" }}>
               <HStack gap="3xsmall">
                 <Settings />
                 Mappehandlinger

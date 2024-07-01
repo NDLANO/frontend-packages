@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { spacing } from "@ndla/core";
+import { fonts, spacing } from "@ndla/core";
 import { InformationOutline } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
 import { UuDisclaimerMetaData } from "@ndla/types-embed";
@@ -26,6 +26,7 @@ const StyledMessageBox = styled(MessageBox)`
 
 const Disclaimer = styled.div`
   display: flow;
+  ${fonts.sizes("18px", "24px")};
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;

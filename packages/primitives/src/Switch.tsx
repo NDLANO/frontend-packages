@@ -6,8 +6,7 @@
  *
  */
 
-import { switchAnatomy } from "@ark-ui/anatomy";
-import { Switch } from "@ark-ui/react";
+import { Switch, switchAnatomy } from "@ark-ui/react";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

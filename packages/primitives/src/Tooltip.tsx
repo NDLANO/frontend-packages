@@ -7,8 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { tooltipAnatomy } from "@ark-ui/anatomy";
-import { Tooltip } from "@ark-ui/react";
+import { Tooltip, tooltipAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

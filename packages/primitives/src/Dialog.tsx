@@ -7,8 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { dialogAnatomy } from "@ark-ui/anatomy";
-import { Dialog } from "@ark-ui/react";
+import { Dialog, dialogAnatomy } from "@ark-ui/react";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";

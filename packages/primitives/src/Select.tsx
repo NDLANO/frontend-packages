@@ -7,8 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { selectAnatomy } from "@ark-ui/anatomy";
-import { Select } from "@ark-ui/react";
+import { Select, selectAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

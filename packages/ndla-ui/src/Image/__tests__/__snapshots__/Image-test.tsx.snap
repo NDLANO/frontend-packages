@@ -6,7 +6,7 @@ exports[`Image renderers correctly 1`] = `
   position: relative;
 }
 
-.emotion-0[data-expanded] {
+.emotion-0[data-expanded="true"] {
   width: 100%;
 }
 
@@ -68,7 +68,7 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   position: relative;
 }
 
-.emotion-0[data-expanded] {
+.emotion-0[data-expanded="true"] {
   width: 100%;
 }
 
@@ -130,7 +130,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
   position: relative;
 }
 
-.emotion-0[data-expanded] {
+.emotion-0[data-expanded="true"] {
   width: 100%;
 }
 

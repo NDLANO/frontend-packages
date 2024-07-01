@@ -41,7 +41,7 @@ const StyledImageWrapper = styled.div`
   overflow: hidden;
   position: relative;
 
-  &[data-expanded] {
+  &[data-expanded="true"] {
     width: 100%;
   }
 

@@ -36,12 +36,13 @@
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^0.40.1"
+    "@pandacss/dev": "^0.41.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "react": ">= 16.8.0"
+    "react": ">= 18",
+    "react-dom": ">= 18"
   },
   "publishConfig": {
     "access": "public"

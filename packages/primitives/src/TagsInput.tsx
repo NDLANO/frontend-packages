@@ -134,16 +134,6 @@ export const TagsInputItemText = withContext<HTMLSpanElement, TagsInput.ItemText
   "itemText",
 );
 
-// export const TagsInputItemText = forwardRef<HTMLSpanElement, TagsInput.ItemTextProps & JsxStyleProps & TextProps>(
-//   ({ children, textStyle = "label.medium", ...props }, ref) => (
-//     <InternalTagsInputItemText asChild forwardCssProp ref={ref} {...props}>
-//       <Text textStyle={textStyle} asChild>
-//         <div>{children}</div>
-//       </Text>
-//     </InternalTagsInputItemText>
-//   ),
-// );
-
 const InternalTagsInputLabel = withContext<HTMLLabelElement, TagsInput.LabelProps & JsxStyleProps>(
   TagsInput.Label,
   "label",

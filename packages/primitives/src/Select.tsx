@@ -70,10 +70,6 @@ const selectRecipe = sva({
         _highlighted: {
           background: "surface.hover",
         },
-        // TODO: Remove this once itemText is aware of checked state
-        "& [data-part='item-text']": {
-          textDecoration: "underline",
-        },
       },
       _highlighted: {
         background: "surface.hover",
@@ -113,6 +109,9 @@ const selectRecipe = sva({
       color: "stroke.default",
     },
     itemText: {
+      _checked: {
+        textDecoration: "underline",
+      },
       _highlighted: {
         textDecoration: "underline",
       },

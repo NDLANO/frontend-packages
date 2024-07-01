@@ -74,10 +74,6 @@ const comboboxRecipe = sva({
         _highlighted: {
           background: "surface.hover",
         },
-        // TODO: Remove this once itemText is aware of checked state
-        "& [data-part='item-text']": {
-          textDecoration: "underline",
-        },
       },
     },
     trigger: {
@@ -98,6 +94,9 @@ const comboboxRecipe = sva({
       color: "stroke.default",
     },
     itemText: {
+      _checked: {
+        textDecoration: "underline",
+      },
       _highlighted: {
         textDecoration: "underline",
       },

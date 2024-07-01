@@ -195,7 +195,7 @@ export const ComboboxItemGroupLabel = ({
   ...props
 }: Combobox.ItemGroupLabelProps & TextProps) => (
   <InternalComboboxItemGroupLabel forwardCssProp asChild>
-    <Text asChild forwardCssProp textStyle={textStyle} fontWeight={fontWeight} {...props}>
+    <Text asChild textStyle={textStyle} fontWeight={fontWeight} {...props}>
       <div>{children}</div>
     </Text>
   </InternalComboboxItemGroupLabel>

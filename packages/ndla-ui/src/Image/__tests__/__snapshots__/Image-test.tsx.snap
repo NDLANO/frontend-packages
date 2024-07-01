@@ -2,7 +2,12 @@
 
 exports[`Image renderers correctly 1`] = `
 .emotion-0 {
+  overflow: hidden;
   position: relative;
+}
+
+.emotion-0[data-expanded] {
+  width: 100%;
 }
 
 .emotion-0 picture {
@@ -59,7 +64,12 @@ exports[`Image renderers correctly 1`] = `
 
 exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 .emotion-0 {
+  overflow: hidden;
   position: relative;
+}
+
+.emotion-0[data-expanded] {
+  width: 100%;
 }
 
 .emotion-0 picture {
@@ -116,7 +126,12 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 
 exports[`Lazyloaded image renderers correctly 1`] = `
 .emotion-0 {
+  overflow: hidden;
   position: relative;
+}
+
+.emotion-0[data-expanded] {
+  width: 100%;
 }
 
 .emotion-0 picture {

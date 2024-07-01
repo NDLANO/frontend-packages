@@ -38,7 +38,12 @@ const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFo
 };
 
 const StyledImageWrapper = styled.div`
+  overflow: hidden;
   position: relative;
+
+  &[data-expanded] {
+    width: 100%;
+  }
 
   picture {
     width: 100%;
@@ -83,6 +88,7 @@ interface Props {
   border?: string;
   lang?: string;
   onExpand?: () => void;
+  expanded?: boolean;
 }
 
 const Image = ({
@@ -99,6 +105,7 @@ const Image = ({
   border,
   lang,
   onExpand,
+  expanded,
   ...rest
 }: Props) => {
   const srcSet = rest.srcSet ?? getSrcSet(src, crop, focalPoint);
@@ -107,7 +114,7 @@ const Image = ({
 
   if (contentType && contentType === "image/gif") {
     return (
-      <StyledImageWrapper data-border={border} data-expandable={!!onExpand} onClick={onExpand}>
+      <StyledImageWrapper data-border={border} data-expanded={expanded} data-expandable={!!onExpand} onClick={onExpand}>
         <StyledImage alt={alt} loading={loading} src={`${src}`} {...rest} data-border={border} lang={lang} />
       </StyledImageWrapper>
     );
@@ -118,6 +125,7 @@ const Image = ({
       data-svg={contentType === "image/svg+xml"}
       data-border={border}
       data-expandable={!!onExpand}
+      data-expanded={expanded}
       onClick={onExpand}
     >
       <picture>

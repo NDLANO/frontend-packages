@@ -188,6 +188,7 @@ const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article"
         src={data.image.imageUrl}
         border={embedData.border}
         onExpand={isAlign(embedData.align) ? toggleImageSize : undefined}
+        expanded={!!imageSizes}
         expandButton={
           <ExpandButton
             embedData={embedData}

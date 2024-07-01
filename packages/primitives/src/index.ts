@@ -44,6 +44,23 @@ export {
   CheckboxHiddenInput,
 } from "./Checkbox";
 
+export type { ComboboxVariantProps, ComboboxRootProps } from "./Combobox";
+export {
+  ComboboxRoot,
+  ComboboxClearTrigger,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxInput,
+  ComboboxItemGroupLabel,
+  ComboboxItemGroup,
+  ComboboxItemIndicator,
+  ComboboxItem,
+  ComboboxItemText,
+  ComboboxLabel,
+  ComboboxPositioner,
+  ComboboxTrigger,
+} from "./Combobox";
+
 export type { DialogVariantProps, DialogRootProps } from "./Dialog";
 export {
   DialogRoot,
@@ -67,6 +84,8 @@ export { FieldRoot } from "./Field";
 export { FieldErrorMessage } from "./FieldErrorMessage";
 
 export { FieldHelper } from "./FieldHelper";
+
+export { Figure } from "./Figure";
 
 export type { FramedContentVariantProps, FramedContentProps } from "./FramedContent";
 export { FramedContent } from "./FramedContent";
@@ -132,6 +151,24 @@ export {
   RadioGroupItemHiddenInput,
 } from "./RadioGroup";
 
+export type { SelectRootProps } from "./Select";
+export {
+  SelectRoot,
+  SelectClearTrigger,
+  SelectContent,
+  SelectControl,
+  SelectIndicator,
+  SelectItemGroupLabel,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItem,
+  SelectItemText,
+  SelectLabel,
+  SelectPositioner,
+  SelectTrigger,
+  SelectValueText,
+} from "./Select";
+
 export type { SkeletonProps } from "./Skeleton";
 export { Skeleton } from "./Skeleton";
 
@@ -154,6 +191,20 @@ export { SwitchRoot, SwitchControl, SwitchThumb, SwitchLabel, SwitchHiddenInput 
 
 export type { TableProps } from "./Table";
 export { Table } from "./Table";
+
+export type { TagsInputRootProps } from "./TagsInput";
+export {
+  TagsInputRoot,
+  TagsInputClearTrigger,
+  TagsInputControl,
+  TagsInputInput,
+  TagsInputItemDeleteTrigger,
+  TagsInputItemInput,
+  TagsInputItemPreview,
+  TagsInputItem,
+  TagsInputItemText,
+  TagsInputLabel,
+} from "./TagsInput";
 
 export type { TabsVariantProps, TabsRootProps } from "./Tabs";
 export { TabsRoot, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "./Tabs";

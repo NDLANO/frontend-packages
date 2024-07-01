@@ -147,7 +147,7 @@ const comboboxRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(comboboxRecipe);
 
-type ComboboxVariantProps = RecipeVariantProps<typeof comboboxRecipe>;
+export type ComboboxVariantProps = RecipeVariantProps<typeof comboboxRecipe>;
 
 export type ComboboxRootProps<T extends Combobox.CollectionItem> = Combobox.RootProps<T> & ComboboxVariantProps;
 

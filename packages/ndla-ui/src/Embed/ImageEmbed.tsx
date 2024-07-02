@@ -251,6 +251,9 @@ const BylineButton = styled.button`
 `;
 
 const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   position: absolute;
   padding: 0;
@@ -263,7 +266,6 @@ const StyledButton = styled.button`
   color: ${colors.white};
   background-color: ${colors.brand.primary};
   border-radius: ${misc.borderRadiusLarge};
-  line-height: 1;
   svg {
     transition: transform 0.4s ease-out;
     height: ${spacing.medium};

@@ -2,7 +2,12 @@
 
 exports[`Image renderers correctly 1`] = `
 .emotion-0 {
+  overflow: hidden;
   position: relative;
+}
+
+.emotion-0[data-expanded="true"] {
+  width: 100%;
 }
 
 .emotion-0 picture {
@@ -28,6 +33,10 @@ exports[`Image renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
+.emotion-0[data-expandable="true"] {
+  cursor: pointer;
+}
+
 .emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
@@ -36,6 +45,7 @@ exports[`Image renderers correctly 1`] = `
 
 <div
   class="emotion-0"
+  data-expandable="false"
   data-svg="false"
 >
   <picture>
@@ -54,7 +64,12 @@ exports[`Image renderers correctly 1`] = `
 
 exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 .emotion-0 {
+  overflow: hidden;
   position: relative;
+}
+
+.emotion-0[data-expanded="true"] {
+  width: 100%;
 }
 
 .emotion-0 picture {
@@ -80,6 +95,10 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
+.emotion-0[data-expandable="true"] {
+  cursor: pointer;
+}
+
 .emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
@@ -88,6 +107,7 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 
 <div
   class="emotion-0"
+  data-expandable="false"
   data-svg="false"
 >
   <picture>
@@ -106,7 +126,12 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 
 exports[`Lazyloaded image renderers correctly 1`] = `
 .emotion-0 {
+  overflow: hidden;
   position: relative;
+}
+
+.emotion-0[data-expanded="true"] {
+  width: 100%;
 }
 
 .emotion-0 picture {
@@ -132,6 +157,10 @@ exports[`Lazyloaded image renderers correctly 1`] = `
   border-bottom-right-radius: 0;
 }
 
+.emotion-0[data-expandable="true"] {
+  cursor: pointer;
+}
+
 .emotion-1[data-border="true"] {
   border-radius: 3px;
   border-bottom-left-radius: 0;
@@ -140,6 +169,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
 
 <div
   class="emotion-0"
+  data-expandable="false"
   data-svg="false"
 >
   <picture>

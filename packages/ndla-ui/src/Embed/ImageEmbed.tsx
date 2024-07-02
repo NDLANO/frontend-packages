@@ -11,14 +11,14 @@ import parse from "html-react-parser";
 import { MouseEventHandler, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { colors, spacing } from "@ndla/core";
-import { ExpandTwoArrows } from "@ndla/icons/action";
-import { ArrowCollapse, ChevronDown, ChevronUp } from "@ndla/icons/common";
+import { colors, misc, spacing } from "@ndla/core";
+import { Plus } from "@ndla/icons/action";
+import { ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { COPYRIGHTED } from "@ndla/licenses";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { RenderContext } from "./types";
-import { Figure, FigureType, figureActionIndicatorStyle } from "../Figure";
+import { Figure, FigureType } from "../Figure";
 import Image from "../Image";
 import { EmbedByline } from "../LicenseByline";
 
@@ -115,9 +115,14 @@ const StyledFigure = styled(Figure)`
   &:hover {
     [data-byline-button] {
       background: ${colors.white};
-      svg {
-        transform: scale(1.2);
-      }
+    }
+    button[data-expanded] {
+      transform: scale(1.2);
+    }
+  }
+  button[data-expanded="true"] {
+    svg {
+      transform: rotate(-45deg);
     }
   }
   &[data-float="right"] {
@@ -164,6 +169,18 @@ const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article"
 
   const isCopyrighted = data.copyright.license.license.toLowerCase() === COPYRIGHTED;
 
+  const toggleImageSize = () => {
+    if (!imageSizes) {
+      setImageSizes(expandedSizes);
+      setTimeout(() => {
+        setFloatAttr({});
+      }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
+    } else {
+      setImageSizes(undefined);
+      setFloatAttr({ "data-float": embedData.align });
+    }
+  };
+
   return (
     <StyledFigure type={imageSizes ? undefined : figureType} {...floatAttr}>
       {children}
@@ -175,22 +192,15 @@ const ImageEmbed = ({ embed, previewAlt, inGrid, lang, renderContext = "article"
         alt={altText}
         src={data.image.imageUrl}
         border={embedData.border}
+        onExpand={isAlign(embedData.align) ? toggleImageSize : undefined}
+        expanded={!!imageSizes}
         expandButton={
           <ExpandButton
             embedData={embedData}
             expanded={!!imageSizes}
+            align={embedData.align}
             bylineHidden={isBylineHidden}
-            onExpand={() => {
-              if (!imageSizes) {
-                setImageSizes(expandedSizes);
-                setTimeout(() => {
-                  setFloatAttr({});
-                }, 400); //Removing the float parameter too quickly causes the image to be resized from left regardless
-              } else {
-                setImageSizes(undefined);
-                setFloatAttr({ "data-float": embedData.align });
-              }
-            }}
+            onExpand={toggleImageSize}
             onHideByline={() => setIsBylineHidden((p) => !p)}
           />
         }
@@ -214,6 +224,7 @@ const hideByline = (embed: ImageEmbedData): boolean => {
 
 interface ExpandButtonProps {
   embedData: ImageEmbedData;
+  align?: string;
   expanded: boolean;
   bylineHidden: boolean;
   onExpand: MouseEventHandler<HTMLButtonElement>;
@@ -239,19 +250,38 @@ const BylineButton = styled.button`
   }
 `;
 
-const ExpandButton = ({ embedData, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
+const StyledButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  padding: 0;
+  top: ${spacing.small};
+  right: ${spacing.small};
+  width: ${spacing.mediumlarge};
+  height: ${spacing.mediumlarge};
+  border: 2px solid ${colors.white};
+  transition: all 0.3s ease-out;
+  color: ${colors.white};
+  background-color: ${colors.brand.primary};
+  border-radius: ${misc.borderRadiusLarge};
+  svg {
+    transition: transform 0.4s ease-out;
+    height: ${spacing.medium};
+    width: ${spacing.medium};
+  }
+`;
+
+const ExpandButton = ({ align, embedData, expanded, bylineHidden, onExpand, onHideByline }: ExpandButtonProps) => {
   const { t } = useTranslation();
-  if (isSmall(embedData.size)) {
+  if (isAlign(align)) {
     return (
-      <button
+      <StyledButton
         type="button"
-        css={figureActionIndicatorStyle}
-        data-byline-button=""
         aria-label={t(`license.images.itemImage.zoom${expanded ? "Out" : ""}ImageButtonLabel`)}
         onClick={onExpand}
+        data-expanded={expanded}
       >
-        {expanded ? <ArrowCollapse /> : <ExpandTwoArrows />}
-      </button>
+        <Plus />
+      </StyledButton>
     );
   }
   if (hideByline(embedData)) {

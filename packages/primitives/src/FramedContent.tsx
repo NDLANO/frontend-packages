@@ -16,24 +16,20 @@ const framedContentRecipe = cva({
     padding: "medium",
     border: "1px solid",
     borderRadius: "small",
-    boxShadow: "4px 4px 0px 0px var(--shadow-color)",
   },
   variants: {
     colorTheme: {
       neutral: {
         backgroundColor: "surface.default",
         borderColor: "stroke.subtle",
-        boxShadowColor: "stroke.subtle",
       },
       brand1: {
         backgroundColor: "surface.brand.1.subtle",
         borderColor: "surface.brand.1.strong",
-        boxShadowColor: "surface.brand.1.strong",
       },
       brand2: {
         backgroundColor: "surface.brand.2.subtle",
         borderColor: "surface.brand.2.strong",
-        boxShadowColor: "surface.brand.2.strong",
       },
     },
   },

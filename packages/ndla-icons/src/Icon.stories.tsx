@@ -7,10 +7,9 @@
  */
 
 import { ComponentProps, ReactElement, createElement, useMemo } from "react";
-import styled from "@emotion/styled";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { IconButtonV2 } from "@ndla/button";
-import { spacing } from "@ndla/core";
+import { IconButton } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { copyTextToClipboard } from "@ndla/util";
 
 import { Icon } from ".";
@@ -33,19 +32,19 @@ const IconItem = ({ icon, folder, name }: IconItemProps) => {
   return (
     <li>
       <div>
-        {createElement(icon, { size: "large" })}
+        {createElement(icon, { size: "medium" })}
         <strong>{name}</strong>
       </div>
       <div title={`Kilde: ${iconProps["data-source"]}`}>
         {iconProps["data-license"]}
-        <IconButtonV2
-          variant="ghost"
+        <IconButton
+          variant="tertiary"
           onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)}
           title="Kopier import-kode"
           aria-label="Kopier import-kode"
         >
           <Copy />
-        </IconButtonV2>
+        </IconButton>
       </div>
     </li>
   );
@@ -56,26 +55,28 @@ interface Props {
   folder: string;
 }
 
-const StyledList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  li {
-    list-style: none;
-    background-color: #eff0f2;
-    width: 275px;
-    padding: ${spacing.small};
-    margin: ${spacing.small};
-    word-break: break-all;
-    display: flex;
-    flex-direction: column;
-    gap: ${spacing.small};
-    > div {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-`;
+const StyledList = styled("ul", {
+  base: {
+    display: "flex",
+    flexWrap: "wrap",
+    "& li": {
+      listStyle: "none",
+      backgroundColor: "#eff0f2",
+      width: "275px",
+      padding: "xsmall",
+      margin: "xsmall",
+      wordBreak: "break-all",
+      display: "flex",
+      flexDirection: "column",
+      gap: "xsmall",
+      "& > div": {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      },
+    },
+  },
+});
 
 const IconList = ({ icons, folder }: Props) => (
   <StyledList>
@@ -94,6 +95,9 @@ export default {
   title: "Components/Icons",
   component: Person,
   tags: ["autodocs"],
+  args: {
+    size: "medium",
+  },
   parameters: {
     inlineStories: true,
   },

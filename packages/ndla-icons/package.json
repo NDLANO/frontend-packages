@@ -10,7 +10,7 @@
   "scripts": {
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build:types"
+    "prepublish": "concurrently 'yarn build:types' 'mkdir -p dist' 'panda cssgen --minimal  --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
+    "dist",
     "lib",
     "es",
     "editor",
@@ -30,12 +31,18 @@
     "action"
   ],
   "dependencies": {
-    "@ndla/core": "^5.0.1"
+    "@ndla/core": "^5.0.1",
+    "@ndla/styled-system": "workspace:^"
+  },
+  "devDependencies": {
+    "@ndla/preset-panda": "workspace:^",
+    "@pandacss/dev": "^0.41.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "react": ">= 16.8.0"
+    "react": ">= 18",
+    "react-dom": ">= 18"
   },
   "publishConfig": {
     "access": "public"

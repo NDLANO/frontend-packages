@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { spacing, fonts, colors, mq, breakpoints, misc } from "@ndla/core";
-import { BlobPointy, BlobRound } from "@ndla/icons/common";
+import { BlobPointy as UnstyledBlobPointy, BlobRound as UnstyledBlobRound } from "@ndla/icons/common";
 import { COPYRIGHTED, getLicenseByAbbreviation } from "@ndla/licenses";
 import { IAuthor, IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { CanonicalUrlFuncs } from "../Embed";
@@ -125,6 +125,14 @@ const blobStyling = css`
     color: ${colors.support.greenLight};
   }
 `;
+
+const BlobPointy = styled(UnstyledBlobPointy)`
+  ${blobStyling}
+`;
+
+const BlobRound = styled(UnstyledBlobRound)`
+  ${blobStyling}
+`;
 const Email = styled.div`
   white-space: nowrap;
 `;
@@ -205,7 +213,7 @@ const ContactBlock = ({
             </StyledText>
           </InfoWrapper>
           <BlobWrapper>
-            <Blob css={blobStyling} data-green={isGreenBlob} />
+            <Blob data-green={isGreenBlob} />
           </BlobWrapper>
         </TextWrapper>
         <SummaryBlock>{description}</SummaryBlock>

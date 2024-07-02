@@ -23,7 +23,7 @@ export default {
     variant: "info",
     children: (
       <>
-        <InformationOutline size="normal" className={css({ marginBlockStart: "4xsmall" })} />
+        <InformationOutline size="medium" className={css({ marginBlockStart: "4xsmall" })} />
         <Text>
           Dette er en melding. Fermentum lobortis tincidunt lectus aliquet. Tincidunt mi proin lectus at duis turpis
           nullam nisl.

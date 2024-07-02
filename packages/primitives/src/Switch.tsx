@@ -53,7 +53,7 @@ const switchRecipe = sva({
       justifyContent: "center",
       background: "icon.onAction",
       borderRadius: "full",
-      boxShadow: "xsmall",
+      boxShadow: "small",
       transitionDuration: "fast",
       transitionProperty: "transform",
       transitionTimingFunction: "default",

@@ -106,7 +106,7 @@ const menuRecipe = sva({
       padding: "3xsmall",
       gap: "3xsmall",
       background: "surface.default",
-      boxShadow: "xsmall",
+      boxShadow: "small",
       borderRadius: "xsmall",
       outline: "none",
       zIndex: "dropdown",

@@ -38,10 +38,13 @@ export default {
 
 export const Shadows: StoryFn = () => (
   <ShadowsContainer>
-    <ShadowBlock boxShadow="xxsmall" />
     <ShadowBlock boxShadow="xsmall" />
+    <ShadowBlock boxShadow="small" />
     <ShadowBlock boxShadow="medium" />
     <ShadowBlock boxShadow="large" />
     <ShadowBlock boxShadow="xlarge" />
+    <ShadowBlock boxShadow="full" />
+    <ShadowBlock boxShadow="inner" />
+    <ShadowBlock boxShadow="innerTop" />
   </ShadowsContainer>
 );

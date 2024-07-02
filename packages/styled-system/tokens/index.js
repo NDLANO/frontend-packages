@@ -887,25 +887,37 @@ const tokens = {
     "value": "skeleton-pulse 2s var(--easings-pulse) infinite",
     "variable": "var(--animations-skeleton-pulse)"
   },
-  "shadows.xxsmall": {
-    "value": "0px 1px 3px 0px rgba(0, 0, 0, 0.15), 0px 0px 0.5px 0px rgba(0, 0, 0, 0.18)",
-    "variable": "var(--shadows-xxsmall)"
-  },
   "shadows.xsmall": {
-    "value": "0px 3px 8px 0px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 0px 0.5px 0px rgba(0, 0, 0, 0.18)",
+    "value": "0px 1px 4px 0px rgba(0, 0, 0, 0.15), 0px 0px 1px 0px rgba(0, 0, 0, 0.18)",
     "variable": "var(--shadows-xsmall)"
   },
+  "shadows.small": {
+    "value": "0px 3px 8px 0px rgba(0, 0, 0, 0.1), 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px 0px rgba(0, 0, 0, 0.18)",
+    "variable": "var(--shadows-small)"
+  },
   "shadows.medium": {
-    "value": "0px 5px 12px 0px rgba(0, 0, 0, 0.13), 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 0px 0.5px 0px rgba(0, 0, 0, 0.15)",
+    "value": "0px 5px 12px 0px rgba(0, 0, 0, 0.13), 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px 0px rgba(0, 0, 0, 0.15)",
     "variable": "var(--shadows-medium)"
   },
   "shadows.large": {
-    "value": "0px 10px 16px 0px rgba(0, 0, 0, 0.12), 0px 2px 5px 0px rgba(0, 0, 0, 0.15), 0px 0px 0.5px 0px rgba(0, 0, 0, 0.12)",
+    "value": "0px 10px 16px 0px rgba(0, 0, 0, 0.12), 0px 2px 5px 0px rgba(0, 0, 0, 0.15), 0px 0px 1px 0px rgba(0, 0, 0, 0.12)",
     "variable": "var(--shadows-large)"
   },
   "shadows.xlarge": {
-    "value": "0px 10px 24px 0px rgba(0, 0, 0, 0.18), 0px 2px 5px 0px rgba(0, 0, 0, 0.15), 0px 0px 0.5px 0px rgba(0, 0, 0, 0.08)",
+    "value": "0px 10px 24px 0px rgba(0, 0, 0, 0.18), 0px 2px 5px 0px rgba(0, 0, 0, 0.15), 0px 0px 1px 0px rgba(0, 0, 0, 0.08)",
     "variable": "var(--shadows-xlarge)"
+  },
+  "shadows.full": {
+    "value": "4px 4px 0px 0px var(--shadow-color)",
+    "variable": "var(--shadows-full)"
+  },
+  "shadows.inner": {
+    "value": "0px -1px 0px 0px var(--shadow-color) inset",
+    "variable": "var(--shadows-inner)"
+  },
+  "shadows.innerTop": {
+    "value": "0px 1px 0px 0px var(--shadow-color) inset",
+    "variable": "var(--shadows-inner-top)"
   },
   "zIndex.hide": {
     "value": -1,

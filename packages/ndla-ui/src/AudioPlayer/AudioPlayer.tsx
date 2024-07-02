@@ -8,11 +8,10 @@
 
 import { ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Cross } from "@ndla/icons/action";
 import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { css } from "@ndla/styled-system/css";
-import { HStack, styled } from "@ndla/styled-system/jsx";
+import { styled } from "@ndla/styled-system/jsx";
 import Controls from "./Controls";
 import SpeechControl from "./SpeechControl";
 
@@ -143,13 +142,13 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   }
 
   const toggleTextVersion = () => {
-    setShowTextVersion(!showTextVersion);
+    setShowTextVersion((curr) => !curr);
   };
 
   // TODO: Replace css.raw with regular css
   const textVersionButton = (
-    <Button variant="secondary" onClick={toggleTextVersion} css={css.raw({ alignSelf: "flex-start" })}>
-      {t("audio.textVersion.heading")}
+    <Button variant="secondary" size="small" onClick={toggleTextVersion} css={css.raw({ alignSelf: "flex-start" })}>
+      {t(showTextVersion ? "audio.textVersion.close" : "audio.textVersion.heading")}
     </Button>
   );
 
@@ -189,15 +188,9 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
       <Controls src={src} title={title} />
       {textVersion && showTextVersion && (
         <TextVersionWrapper>
-          <HStack justify="space-between">
-            <Heading asChild textStyle="title.medium">
-              <h3>{t("audio.textVersion.heading")}</h3>
-            </Heading>
-            <Button variant="secondary" onClick={toggleTextVersion}>
-              {t("audio.textVersion.close")}
-              <Cross style={{ width: "20px", height: "20px" }} />
-            </Button>
-          </HStack>
+          <Heading asChild textStyle="title.medium">
+            <h3>{t("audio.textVersion.heading")}</h3>
+          </Heading>
           <TextVersionText>{textVersion}</TextVersionText>
         </TextVersionWrapper>
       )}

@@ -122,7 +122,8 @@ function buildNodePackage(p) {
     ? ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]]
     : ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic", importSource: "@emotion/react" }]];
 
-  const plugins = p.endsWith("primitives") || p.endsWith("preset-panda") ? [] : [...babelOptions.plugins];
+  const plugins =
+    p.endsWith("primitives") || p.endsWith("preset-panda") || p.endsWith("ndla-icons") ? [] : [...babelOptions.plugins];
 
   files.forEach((file) => {
     buildFile(file, "es", { silent: true, override: { presets: [esPresetEnv].concat(presets), plugins } });

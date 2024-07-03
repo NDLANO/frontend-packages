@@ -297,7 +297,7 @@ const SearchResultSleeve = ({
       <StyledScrollableContent extendHeight={frontpage ? 0 : 52}>
         {infoText && (
           <StyledAside>
-            <Wrench size="normal" />
+            <Wrench size="medium" />
             <span>{infoText}</span>
           </StyledAside>
         )}
@@ -308,7 +308,7 @@ const SearchResultSleeve = ({
               to={allResultUrl}
               tabIndex={-1}
             >
-              <SearchIcon size="normal" />
+              <SearchIcon size="medium" />
               <strong ref={searchAllRef}>{searchString}</strong>
               <small>{t("welcomePage.searchAllInfo")}</small>
             </StyledSearchLink>
@@ -318,7 +318,7 @@ const SearchResultSleeve = ({
                 to={suggestionUrl}
                 tabIndex={-1}
               >
-                <SearchIcon size="normal" />
+                <SearchIcon size="medium" />
                 <small>{t("searchPage.resultType.searchPhraseSuggestion")}</small>
                 <strong ref={searchSuggestionRef}>{suggestion}</strong>
               </StyledSearchLink>

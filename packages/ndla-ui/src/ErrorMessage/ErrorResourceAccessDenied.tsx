@@ -30,12 +30,12 @@ const ErrorResourceAccessDenied = ({ onAuthenticateClick }: Props) => {
         back: t("errorMessage.back"),
         goToFrontPage: t("errorMessage.goToFrontPage"),
       }}
-      illustrationElement={<HumanMaleBoard size="large" />}
+      illustrationElement={<HumanMaleBoard size="medium" />}
       customElement={
         <ButtonV2 size="medium" onClick={onAuthenticateClick}>
           {t("user.buttonLogIn")}
           <StyledLogInIconWrapper aria-hidden>
-            <LogIn size="normal" />
+            <LogIn size="medium" />
           </StyledLogInIconWrapper>
         </ButtonV2>
       }

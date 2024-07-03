@@ -54,7 +54,7 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
           {...rest}
         >
           {children}
-          {showNewWindowIcon && <LaunchIcon size="normal" />}
+          {showNewWindowIcon && <LaunchIcon size="medium" />}
         </a>
       );
     }

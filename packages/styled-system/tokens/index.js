@@ -908,15 +908,15 @@ const tokens = {
     "variable": "var(--shadows-xlarge)"
   },
   "shadows.full": {
-    "value": "4px 4px 0px 0px var(--shadow-color)",
+    "value": "4px 4px 0px 0px var(--colors-primary)",
     "variable": "var(--shadows-full)"
   },
   "shadows.inner": {
-    "value": "0px -1px 0px 0px var(--shadow-color) inset",
+    "value": "0px -1px 0px 0px var(--colors-primary) inset",
     "variable": "var(--shadows-inner)"
   },
   "shadows.innerTop": {
-    "value": "0px 1px 0px 0px var(--shadow-color) inset",
+    "value": "0px 1px 0px 0px var(--colors-primary) inset",
     "variable": "var(--shadows-inner-top)"
   },
   "zIndex.hide": {

@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
@@ -81,9 +81,12 @@ const TextWrapper = styled("div", {
 
 const TitleWrapper = styled("div", {
   base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
     tabletWide: {
       width: "100%",
-      display: "flex",
+      flexDirection: "row",
       justifyContent: "space-between",
     },
   },
@@ -136,6 +139,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   const [showTextVersion, setShowTextVersion] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const truncatedDescription = useMemo(() => description?.slice(0, DESCRIPTION_MAX_LENGTH), [description]);
+  const textDescriptionId = useId();
 
   if (speech) {
     return <SpeechControl src={src} title={title} />;
@@ -147,7 +151,14 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
 
   // TODO: Replace css.raw with regular css
   const textVersionButton = (
-    <Button variant="secondary" size="small" onClick={toggleTextVersion} css={css.raw({ alignSelf: "flex-start" })}>
+    <Button
+      variant="secondary"
+      aria-expanded={showTextVersion}
+      aria-controls={textDescriptionId}
+      size="small"
+      onClick={toggleTextVersion}
+      css={css.raw({ alignSelf: "flex-start" })}
+    >
       {t(showTextVersion ? "audio.textVersion.close" : "audio.textVersion.heading")}
     </Button>
   );
@@ -186,8 +197,8 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
         </TextWrapper>
       </InfoWrapper>
       <Controls src={src} title={title} />
-      {textVersion && showTextVersion && (
-        <TextVersionWrapper>
+      {!!textVersion && (
+        <TextVersionWrapper id={textDescriptionId} hidden={!showTextVersion}>
           <Heading asChild textStyle="title.medium">
             <h3>{t("audio.textVersion.heading")}</h3>
           </Heading>

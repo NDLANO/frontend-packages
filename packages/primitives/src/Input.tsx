@@ -56,17 +56,21 @@ const inputCss = css.raw({
   },
 });
 
-const StyledInputContainer = styled(ark.div, {
-  base: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    "& svg": {
-      width: "medium",
-      height: "medium",
+const StyledInputContainer = styled(
+  ark.div,
+  {
+    base: {
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      "& svg": {
+        width: "medium",
+        height: "medium",
+      },
     },
   },
-});
+  { baseComponent: true },
+);
 
 export const InputContainer = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(
   ({ children, css: cssProp, ...rest }, ref) => (
@@ -106,7 +110,7 @@ const baseTextAreaCss = css.raw({
 
 export interface InputProps extends HTMLArkProps<"input">, JsxStyleProps {}
 
-const StyledInput = styled(ark.input);
+const StyledInput = styled(ark.input, {}, { baseComponent: true });
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(({ css: cssProp, ...props }, ref) => {
   const context = useContext(InputContext);
@@ -121,7 +125,7 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>((props, ref) 
 
 interface TextAreaProps extends HTMLArkProps<"textarea">, JsxStyleProps {}
 
-const StyledTextArea = styled(ark.textarea);
+const StyledTextArea = styled(ark.textarea, {}, { baseComponent: true });
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ css: cssProp, ...props }, ref) => {
   const context = useContext(InputContext);

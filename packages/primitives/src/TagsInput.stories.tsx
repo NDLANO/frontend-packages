@@ -60,7 +60,7 @@ export const Default: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
       <HStack gap="4xsmall">
         <TagsInputContext>
           {(api) => (
-            <TagsInputControl forwardCssProp asChild>
+            <TagsInputControl asChild>
               <InputContainer>
                 {api.value.map((value, index) => (
                   <TagsInputItem key={index} index={index} value={value}>
@@ -96,7 +96,7 @@ export const Editable: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
       <HStack gap="4xsmall">
         <TagsInputContext>
           {(api) => (
-            <TagsInputControl forwardCssProp asChild>
+            <TagsInputControl asChild>
               <InputContainer>
                 {api.value.map((value, index) => (
                   <TagsInputItem key={index} index={index} value={value}>
@@ -133,7 +133,7 @@ export const Disabled: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
       <HStack gap="4xsmall">
         <TagsInputContext>
           {(api) => (
-            <TagsInputControl forwardCssProp asChild>
+            <TagsInputControl asChild>
               <InputContainer>
                 {api.value.map((value, index) => (
                   <TagsInputItem key={index} index={index} value={value}>
@@ -175,7 +175,7 @@ export const WithField: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
         <HStack gap="4xsmall">
           <TagsInputContext>
             {(api) => (
-              <TagsInputControl forwardCssProp asChild>
+              <TagsInputControl asChild>
                 <InputContainer>
                   {api.value.map((value, index) => (
                     <TagsInputItem key={index} index={index} value={value}>
@@ -279,8 +279,8 @@ export const ComboboxTags: StoryFn<typeof ComboboxRoot> = () => {
             <TagsInputContext>
               {(tagsInputApi) => (
                 <HStack gap="4xsmall">
-                  <ComboboxControl asChild forwardCssProp>
-                    <TagsInputControl asChild forwardCssProp>
+                  <ComboboxControl asChild>
+                    <TagsInputControl asChild>
                       <InputContainer>
                         {tagsInputApi.value.map((value, index) => (
                           <TagsInputItem index={index} value={value} key={index}>
@@ -292,8 +292,8 @@ export const ComboboxTags: StoryFn<typeof ComboboxRoot> = () => {
                             </TagsInputItemPreview>
                           </TagsInputItem>
                         ))}
-                        <ComboboxInput asChild forwardCssProp>
-                          <TagsInputInput asChild forwardCssProp>
+                        <ComboboxInput asChild>
+                          <TagsInputInput asChild>
                             <Input
                               placeholder="Skriv inn en emneknagg"
                               onKeyDown={(event) => {
@@ -304,7 +304,7 @@ export const ComboboxTags: StoryFn<typeof ComboboxRoot> = () => {
                             />
                           </TagsInputInput>
                         </ComboboxInput>
-                        <ComboboxClearTrigger asChild forwardCssProp>
+                        <ComboboxClearTrigger asChild>
                           <IconButton variant="clear">
                             <Cross />
                           </IconButton>

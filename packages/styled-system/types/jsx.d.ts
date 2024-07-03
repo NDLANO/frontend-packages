@@ -24,7 +24,14 @@ interface JsxFactoryOptions<TProps extends Dict> {
   dataAttr?: boolean
   defaultProps?: TProps
   shouldForwardProp?(prop: string, variantKeys: string[]): boolean
-  forwardCssProp?: boolean
+  /**
+  * Used when creating styled components from React components that do not support the css prop. If true, the css prop will be consumed and converted to `className` 
+  * @example
+  * import { ark } from "@ark-ui/react"
+  * import { styled } from "@ndla/styled-system/jsx"
+  * const Button = styled(ark.button, { baseComponent: true })
+  */
+  baseComponent?: boolean
 }
 
 export type JsxRecipeProps<T extends ElementType, P extends Dict> = JsxHTMLProps<ComponentProps<T>, P>;

@@ -13,13 +13,17 @@ import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { TextProps } from "./Text";
 
-const StyledErrorText = styled(Field.ErrorText, {
-  base: {
-    color: "text.error",
-    whiteSpace: "pre-line",
-    justifyContent: "center",
+const StyledErrorText = styled(
+  Field.ErrorText,
+  {
+    base: {
+      color: "text.error",
+      whiteSpace: "pre-line",
+      justifyContent: "center",
+    },
   },
-});
+  { baseComponent: true },
+);
 
 export const FieldErrorMessage = forwardRef<HTMLSpanElement, TextProps & HTMLArkProps<"div"> & JsxStyleProps>(
   ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => {

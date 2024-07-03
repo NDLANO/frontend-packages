@@ -167,8 +167,8 @@ export const SelectIndicator = withContext<HTMLDivElement, Select.IndicatorProps
 
 export const SelectItemGroupLabel = forwardRef<HTMLDivElement, Select.ItemGroupLabelProps & JsxStyleProps & TextProps>(
   ({ children, ...props }, ref) => (
-    <InternalSelectItemGroupLabel asChild forwardCssProp ref={ref} {...props}>
-      <Label asChild>
+    <InternalSelectItemGroupLabel asChild ref={ref} {...props}>
+      <Label asChild consumeCss>
         <div>{children}</div>
       </Label>
     </InternalSelectItemGroupLabel>
@@ -201,7 +201,7 @@ const InternalSelectLabel = withContext<HTMLLabelElement, Select.LabelProps & Js
 
 export const SelectLabel = forwardRef<HTMLLabelElement, Select.LabelProps & JsxStyleProps & TextProps>(
   ({ children, ...props }, ref) => (
-    <InternalSelectLabel asChild forwardCssProp ref={ref} {...props}>
+    <InternalSelectLabel asChild ref={ref} {...props}>
       <Label>{children}</Label>
     </InternalSelectLabel>
   ),

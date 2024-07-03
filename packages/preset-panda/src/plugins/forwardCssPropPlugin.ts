@@ -41,11 +41,23 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
     return args.artifacts;
   }
 
+  const baseCode = "const __base__ = Dynamic.__base__ || Dynamic";
+
+  factoryJs.code = factoryJs.code.replace(
+    baseCode,
+    `${baseCode}
+  const contextConsume = options.baseComponent ?? Dynamic.__base__ ?? typeof Dynamic === "string"`,
+  );
+
   const propsCode = "const { as: Element = __base__, children, ...restProps } = props";
 
   factoryJs.code = factoryJs.code.replace(
     propsCode,
-    "const { as: Element = __base__, forwardCssProp, children, ...restProps } = props",
+    `const { as: Element = __base__, consumeCss, children, ...restProps } = props
+
+    const consume = props.asChild
+      ? consumeCss && options.baseComponent
+      : consumeCss ?? contextConsume`,
   );
 
   const cvaCode = "const cvaStyles = __cvaFn__.raw(variantProps)";
@@ -53,14 +65,14 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   factoryJs.code = factoryJs.code.replace(
     cvaCode,
     `${cvaCode}
-      if(options.forwardCssProp || forwardCssProp) {
+      if(!consume) {
         return css.raw(cvaStyles, propStyles, cssStyles)
       }`,
   );
 
   factoryJs.code = factoryJs.code.replace(
     "className: classes()",
-    `...(options.forwardCssProp || forwardCssProp ? { css: classes() } : { className: classes() })`,
+    `...(consume ? { className: classes() } : { css: classes(), consumeCss } )`,
   );
 
   const shouldForwardPropCode = "shouldForwardProp?(prop: string, variantKeys: string[]): boolean";
@@ -68,14 +80,36 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   jsxTypes.code = jsxTypes.code.replace(
     shouldForwardPropCode,
     `${shouldForwardPropCode}
-  forwardCssProp?: boolean`,
+  /**
+  * Used when creating styled components from React components that do not support the css prop. If true, the css prop will be consumed and converted to \`className\` 
+  * @example
+  * import { ark } from "@ark-ui/react"
+  * import { styled } from "@ndla/styled-system/jsx"
+  * const Button = styled(ark.button, { baseComponent: true })
+  */
+  baseComponent?: boolean`,
   );
 
   const jsxStylePropsCode = "export type JsxStyleProps =";
 
   systemTypes.code = systemTypes.code.replace(
     jsxStylePropsCode,
-    `${jsxStylePropsCode} { forwardCssProp?: boolean } & `,
+    `${jsxStylePropsCode} { 
+  /**
+  * Tells a component to consume the \`css\` prop and turn it into a \`className\` prop. This is only used in conjunction with the \`baseComponent\` prop in the \`styled\` function to ensure that components that are \`asChild\`-ed onto non-panda components can consume their css before being merged with their child.
+  * @example
+  * import { ark } from "@ark-ui/react"
+  * import { styled } from "@ndla/styled-system/jsx"
+  * const Button = styled('button', { baseComponent: true })
+  *
+  * return (
+  *   <Button asChild consumeCss>
+  *     <div>Click me</div>
+  *   </Button>
+  * )
+  */
+  consumeCss?: boolean 
+  } & `,
   );
 
   return args.artifacts;

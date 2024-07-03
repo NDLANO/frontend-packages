@@ -17,7 +17,7 @@ import {
 } from "react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { SystemStyleObject, WithCss } from "@ndla/styled-system/types";
+import { StyledComponent, SystemStyleObject, WithCss } from "@ndla/styled-system/types";
 
 type Props = Record<string, unknown>;
 type Recipe = {
@@ -30,6 +30,12 @@ type Slot<R extends Recipe> = keyof ReturnType<R>;
 /**
  * A utility for creating a style context for a recipe, allowing one to change the styles of all parts of a component from the root component. Credit: https://github.com/cschroeter/park-ui/blob/main/website/src/lib/create-style-context.tsx.
  */
+
+interface BaseStyleContextProps {
+  asChild?: boolean;
+  consumeCss?: boolean;
+}
+
 export const createStyleContext = <R extends Recipe>(recipe: R) => {
   const StyleContext = createContext<Record<Slot<R>, SystemStyleObject> | null>(null);
 
@@ -47,11 +53,12 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
     return StyledComponent;
   };
 
-  const withProvider = <T, P extends { className?: string } & WithCss>(
+  const withProvider = <T, P extends BaseStyleContextProps & WithCss>(
     Component: ElementType,
     slot: Slot<R>,
   ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
-    const StyledComponent = styled(Component);
+    const opts = typeof Component === "string" ? undefined : { baseComponent: true };
+    const StyledComponent = styled(Component, {}, opts) as StyledComponent<ElementType, {}>;
     return forwardRef<T, P>(({ css: cssProp, ...props }, ref) => {
       const [variantProps, otherProps] = recipe.splitVariantProps(props);
 
@@ -65,11 +72,12 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
     });
   };
 
-  const withContext = <T, P extends { className?: string } & WithCss>(
+  const withContext = <T, P extends BaseStyleContextProps & WithCss>(
     Component: ElementType,
     slot: Slot<R>,
   ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
-    const StyledComponent = styled(Component);
+    const opts = typeof Component === "string" ? undefined : { baseComponent: true };
+    const StyledComponent = styled(Component, {}, opts) as StyledComponent<ElementType, {}>;
     return forwardRef<T, P>(({ css: cssProp, ...props }, ref) => {
       const slotStyles = useContext(StyleContext);
       return <StyledComponent {...props} ref={ref} css={css.raw(slotStyles?.[slot], cssProp)} />;

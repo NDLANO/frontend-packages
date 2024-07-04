@@ -259,8 +259,8 @@ const StyledButton = styled.button`
   padding: 0;
   top: ${spacing.small};
   right: ${spacing.small};
-  width: ${spacing.mediumlarge};
-  height: ${spacing.mediumlarge};
+  width: ${spacing.normal};
+  height: ${spacing.normal};
   border: 2px solid ${colors.white};
   transition: all 0.3s ease-out;
   color: ${colors.white};
@@ -268,8 +268,8 @@ const StyledButton = styled.button`
   border-radius: ${misc.borderRadiusLarge};
   svg {
     transition: transform 0.4s ease-out;
-    height: ${spacing.medium};
-    width: ${spacing.medium};
+    height: ${spacing.nsmall};
+    width: ${spacing.nsmall};
   }
 `;
 

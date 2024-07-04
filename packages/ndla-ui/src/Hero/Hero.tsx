@@ -61,36 +61,6 @@ const StyledDiv = styled.div`
   &[data-contenttype="concept"] {
     background-color: ${colors.concept.light};
   }
-
-  &[data-contenttype="ndla-film has-image"],
-  &[data-contenttype="ndla-film"] {
-    background: ${colors.ndlaFilm.filmColor};
-
-    ${mq.range({ from: breakpoints.tablet })} {
-      height: 2000px;
-      margin-bottom: -1910px;
-    }
-
-    &[data-contenttype="ndla-film has-image"] {
-      ${mq.range({ from: breakpoints.tablet })} {
-        margin-bottom: -1800px;
-        @media (min-height: 720px) {
-          margin-bottom: -1750px;
-        }
-        @media (min-height: 1020px) {
-          margin-bottom: -1700px;
-        }
-      }
-    }
-
-    ${mq.range({ until: breakpoints.tablet })} {
-      + div article[data-ndla-article] {
-        background: ${colors.white};
-        margin: 0 -${spacing.normal};
-        padding: ${spacing.large} ${spacing.normal} ${spacing.normal} ${spacing.normal};
-      }
-    }
-  }
 `;
 
 export type HeroContentType =

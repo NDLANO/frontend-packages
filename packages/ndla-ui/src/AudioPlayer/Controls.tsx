@@ -14,7 +14,7 @@ import { Root as SliderRoot, Track, Range, SliderThumb } from "@radix-ui/react-s
 import { ButtonV2, IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, misc, mq, spacing, stackOrder } from "@ndla/core";
 import { DropdownMenu, DropdownContent, DropdownItem, DropdownTrigger } from "@ndla/dropdown-menu";
-import { Back15, Forward15 } from "@ndla/icons/action";
+import { Forward15, Replay15Line } from "@ndla/icons/action";
 import { Play, Pause, VolumeUp } from "@ndla/icons/common";
 
 const ControlsWrapper = styled.div`
@@ -47,7 +47,7 @@ const Forward15SecButton = styled(IconButtonV2)`
     grid-area: forwards;
   }
 `;
-const Back15SecButton = styled(IconButtonV2)`
+const Replay15SecButton = styled(IconButtonV2)`
   ${mq.range({ until: breakpoints.tabletWide })} {
     grid-area: backwards;
   }
@@ -295,15 +295,15 @@ const Controls = ({ src, title }: Props) => {
         >
           {playing ? <Pause /> : <Play />}
         </PlayButton>
-        <Back15SecButton
+        <Replay15SecButton
           variant="ghost"
           colorTheme="greyLighter"
           title={t("audio.controls.rewind15sec")}
           aria-label={t("audio.controls.rewind15sec")}
           onClick={() => onSeekSeconds(-15)}
         >
-          <Back15 />
-        </Back15SecButton>
+          <Replay15Line />
+        </Replay15SecButton>
         <DropdownMenu>
           <DropdownTrigger>
             <SpeedButton

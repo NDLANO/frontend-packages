@@ -12,6 +12,8 @@ export { default as ExternalLearningResource } from "./ExternalLearningResource"
 export { default as FolderOutlined } from "./FolderOutlined";
 export { default as FolderShared } from "./FolderShared";
 export { default as FolderSharedOutlined } from "./FolderSharedOutlined";
+export { default as FolderUserFill } from "./FolderUserFill";
+export { default as FolderUserLine } from "./FolderUserLine";
 export { default as HorizontalMenu } from "./HorizontalMenu";
 export { default as LearningPath } from "./LearningPath";
 export { default as LearningPathArticle } from "./LearningPathArticle";

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" data-license="Apache License 2.0" data-source="Keyteq" viewBox="0 0 24 24">
-  <g fill="none" fill-rule="evenodd">
-    <path d="M0 0h24v24H0z"/>
-    <path fill="currentColor" d="M0 10V8h11v2H0ZM24 0v2H0V0h24Zm0 4v2H0V4h24Zm-5.9 14a4.1 4.1 0 0 1-2-7.7 4 4 0 0 1 2-.5 4.1 4.1 0 0 1 4.1 4.1 4 4 0 0 1-.5 2.1c-.4.6-1 1.1-1.5 1.5a4 4 0 0 1-2.1.6Zm-5.6 0h.8l.2-.2c-.4-.5-.8-1-1-1.8A6.1 6.1 0 0 1 15 8.8c1-.5 2-.8 3-.8a5.9 5.9 0 0 1 6 6 5.8 5.8 0 0 1-3 5c-.9.6-1.9.9-3 .9a6 6 0 0 1-3.8-1.4l-.3.2v.7L9.4 24 8 22.6l4.5-4.5Z"/>
-  </g>
-</svg>
-

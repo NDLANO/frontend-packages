@@ -8,7 +8,7 @@
 
 import { useTranslation } from "react-i18next";
 import { Meta, StoryFn } from "@storybook/react";
-import { NotificationLine, HumanMaleBoard, InformationOutline, WarningOutline } from "@ndla/icons/common";
+import { Alarm, HumanMaleBoard, InformationOutline, WarningOutline } from "@ndla/icons/common";
 import MessageBox from "./MessageBox";
 
 export default {
@@ -83,7 +83,7 @@ export const WithCustomIcon: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox type="danger">
-      <NotificationLine />
+      <Alarm />
       {t("messageBoxInfo.feide")}
     </MessageBox>
   );

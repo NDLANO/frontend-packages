@@ -13,12 +13,12 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { breakpoints, colors, mq } from "@ndla/core";
 import { Minus, MenuBook } from "@ndla/icons/action";
-import { VoicePrintLine } from "@ndla/icons/common";
+import { Audio } from "@ndla/icons/common";
 import {
+  AssessmentResource,
   ExternalLearningResource,
   LearningPath,
   MultidisciplinaryTopic,
-  MenuSearchLine,
   SharedResource,
   Subject,
   SubjectMaterial,
@@ -107,7 +107,7 @@ const iconMap = {
     backgroundColor: colors.tasksAndActivities.light,
   },
   [contentTypes.ASSESSMENT_RESOURCES]: {
-    icon: MenuSearchLine,
+    icon: AssessmentResource,
     iconColor: colors.assessmentResource.dark,
     backgroundColor: colors.assessmentResource.light,
   },
@@ -151,7 +151,7 @@ const iconMap = {
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.audio]: {
-    icon: VoicePrintLine,
+    icon: Audio,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },

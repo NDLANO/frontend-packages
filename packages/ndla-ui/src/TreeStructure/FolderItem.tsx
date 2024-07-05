@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 as Button } from "@ndla/button";
 import { colors, spacing, animations, misc, fonts } from "@ndla/core";
-import { ArrowDownLine } from "@ndla/icons/common";
+import { ArrowDropDownRounded } from "@ndla/icons/common";
 import { FolderOutlined, FolderShared } from "@ndla/icons/contentType";
 import { Done } from "@ndla/icons/editor";
 import { SafeLink } from "@ndla/safelink";
@@ -244,7 +244,7 @@ const FolderItem = ({
           }
         }}
       >
-        <ArrowDownLine />
+        <ArrowDropDownRounded />
       </OpenButton>
       <StyledName>{name}</StyledName>
     </FolderNameLink>
@@ -286,7 +286,7 @@ const FolderItem = ({
             }
           }}
         >
-          <ArrowDownLine />
+          <ArrowDropDownRounded />
         </OpenButton>
         <FolderIconWrapper>
           <FolderIcon />

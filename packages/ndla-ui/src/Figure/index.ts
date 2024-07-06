@@ -7,6 +7,5 @@
  */
 
 export { default as Figure } from "./Figure";
-export { figureActionIndicatorStyle } from "./figureActionIndicatorStyle";
 
 export type { FigureType } from "./Figure";

@@ -25,6 +25,7 @@ export { default as LearningPathSummary } from "./LearningPathSummary";
 export { default as LearningPathTask } from "./LearningPathTask";
 export { default as MenuSearchFill } from "./MenuSearchFill";
 export { default as MenuSearchLine } from "./MenuSearchLine";
+export { default as MoreLine } from "./MoreLine";
 export { default as MultidisciplinaryTopic } from "./MultidisciplinaryTopic";
 export { default as NewFolder } from "./NewFolder";
 export { default as SharedResource } from "./SharedResource";

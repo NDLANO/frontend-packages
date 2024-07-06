@@ -56,6 +56,7 @@ export { default as FolderFill } from "./FolderFill";
 export { default as FolderLine } from "./FolderLine";
 export { default as FormatList } from "./FormatList";
 export { default as Framed } from "./Framed";
+export { default as GlobalLine } from "./GlobalLine";
 export { default as Globe } from "./Globe";
 export { default as Grid } from "./Grid";
 export { default as H5P } from "./H5P";

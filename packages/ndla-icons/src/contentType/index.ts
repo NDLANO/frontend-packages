@@ -28,6 +28,7 @@ export { default as MenuSearchLine } from "./MenuSearchLine";
 export { default as MoreLine } from "./MoreLine";
 export { default as MultidisciplinaryTopic } from "./MultidisciplinaryTopic";
 export { default as NewFolder } from "./NewFolder";
+export { default as QuestionMark } from "./QuestionMark";
 export { default as SharedResource } from "./SharedResource";
 export { default as Subject } from "./Subject";
 export { default as SubjectMaterial } from "./SubjectMaterial";

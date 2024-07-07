@@ -76,6 +76,7 @@ export { default as InProgress } from "./InProgress";
 export { default as Italic } from "./Italic";
 export { default as Keyhole } from "./Keyhole";
 export { default as LastUsed } from "./LastUsed";
+export { default as LayoutColumnLine } from "./LayoutColumnLine";
 export { default as LearningResource } from "./LearningResource";
 export { default as Learningpath } from "./Learningpath";
 export { default as Link } from "./Link";

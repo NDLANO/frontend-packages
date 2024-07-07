@@ -97,7 +97,6 @@ export { default as InstagramLine } from "./InstagramLine";
 export { default as KeyboardReturn } from "./KeyboardReturn";
 export { default as Language } from "./Language";
 export { default as Launch } from "./Launch";
-export { default as LayoutGridFill } from "./LayoutGridFill";
 export { default as LineChartLine } from "./LineChartLine";
 export { default as Link } from "./Link";
 export { default as LinkedIn } from "./LinkedIn";

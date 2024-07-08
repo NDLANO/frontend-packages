@@ -66,7 +66,7 @@ export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
-              <FileUploadItemDeleteTrigger asChild forwardCssProp>
+              <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
                   <DeleteForever />
                 </IconButton>
@@ -123,7 +123,7 @@ export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
-              <FileUploadItemDeleteTrigger asChild forwardCssProp>
+              <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
                   <DeleteForever />
                 </IconButton>
@@ -163,7 +163,7 @@ export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
-              <FileUploadItemDeleteTrigger asChild forwardCssProp>
+              <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
                   <DeleteForever />
                 </IconButton>
@@ -203,7 +203,7 @@ export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) 
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
-              <FileUploadItemDeleteTrigger asChild forwardCssProp>
+              <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
                   <DeleteForever />
                 </IconButton>
@@ -243,7 +243,7 @@ export const Disabled: StoryFn<typeof FileUploadRoot> = (args) => (
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
-              <FileUploadItemDeleteTrigger asChild forwardCssProp>
+              <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
                   <DeleteForever />
                 </IconButton>
@@ -261,7 +261,11 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
 
   return (
     <FieldRoot invalid={invalid}>
-      <FileUploadRoot {...args} onFileReject={() => setInvalid(true)} accept="image/*">
+      <FileUploadRoot
+        {...args}
+        onFileReject={(details) => details.files.length > 1 && setInvalid(true)}
+        accept="image/*"
+      >
         <FileUploadLabel>Fileupload</FileUploadLabel>
         <FileUploadDropzone>
           <FileUploadLabel textStyle="label.medium" fontWeight="light">
@@ -279,15 +283,9 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
             {({ acceptedFiles }) =>
               acceptedFiles.map((file) => (
                 <FileUploadItem key={file.name} file={file}>
-                  <FileUploadItemPreview type="image/*">
-                    <FileUploadItemPreviewImage />
-                  </FileUploadItemPreview>
-                  <FileUploadItemPreview type="^(?!image\/.*).*">
-                    <FileDocumentOutline />
-                  </FileUploadItemPreview>
                   <FileUploadItemName />
                   <FileUploadItemSizeText />
-                  <FileUploadItemDeleteTrigger asChild forwardCssProp>
+                  <FileUploadItemDeleteTrigger asChild>
                     <IconButton variant="secondary">
                       <DeleteForever />
                     </IconButton>

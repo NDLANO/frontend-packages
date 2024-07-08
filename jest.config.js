@@ -7,9 +7,8 @@ module.exports = {
   },
   moduleNameMapper: {
     // @ndla/styled-system has a different structure from our other packages
-    "@ndla/styled-system/(.+)$": "<rootDir>packages/styled-system/$1",
+    "@ndla/styled-system/(.+)$": "<rootDir>packages/styled-system/src/$1",
     // Fix for ndla-icons. Should be changed '<rootDir>packages/$1/src/$2' when ndla-icons folder is renamed to icons
-    "@ndla/styled-system/(.+)$": "<rootDir>packages/styled-system/$1",
     "@ndla/(.+)/(.+)$": "<rootDir>packages/ndla-$1/src/$2",
     "@ndla/(.+)$": ["<rootDir>packages/$1/src", "<rootDir>packages/ndla-$1/src"],
   },

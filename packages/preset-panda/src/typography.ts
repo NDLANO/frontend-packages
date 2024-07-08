@@ -7,7 +7,7 @@
  */
 
 import { defineTextStyles, defineTokens } from "@pandacss/dev";
-import { FontSizeToken, LineHeightToken } from "@ndla/styled-system/tokens";
+import type { FontSizeToken, LineHeightToken } from "@ndla/styled-system/tokens";
 
 export const fontWeights = defineTokens.fontWeights({
   light: { value: 300 },

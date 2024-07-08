@@ -7,7 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { TagsInput, tagsInputAnatomy } from "@ark-ui/react";
+import { TagsInput, tagsInputAnatomy } from "@ark-ui/react/tags-input";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

@@ -6,7 +6,7 @@
  *
  */
 
-import { Field } from "@ark-ui/react";
+import { Field } from "@ark-ui/react/field";
 import { styled } from "@ndla/styled-system/jsx";
 
 export const FieldRoot = styled(

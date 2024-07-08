@@ -7,7 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { Menu, menuAnatomy } from "@ark-ui/react";
+import { Menu, menuAnatomy } from "@ark-ui/react/menu";
 import { css, cva, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps, RecipeVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

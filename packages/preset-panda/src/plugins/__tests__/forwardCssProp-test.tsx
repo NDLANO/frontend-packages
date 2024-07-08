@@ -7,7 +7,7 @@
  */
 
 import React, { forwardRef } from "react";
-import { ark, HTMLArkProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react/factory";
 import { render } from "@testing-library/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";

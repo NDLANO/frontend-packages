@@ -7,7 +7,8 @@
  */
 
 import { useState } from "react";
-import { Portal, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
+import { type ComboboxInputValueChangeDetails } from "@ark-ui/react/combobox";
+import { Portal } from "@ark-ui/react/portal";
 import { Meta, StoryFn } from "@storybook/react";
 import { Cross } from "@ndla/icons/action";
 import { ChevronDown } from "@ndla/icons/common";

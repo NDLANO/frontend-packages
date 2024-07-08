@@ -6,7 +6,7 @@
  *
  */
 
-import { Toast, toastAnatomy } from "@ark-ui/react";
+import { Toast, toastAnatomy } from "@ark-ui/react/toast";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

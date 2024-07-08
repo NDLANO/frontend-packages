@@ -6,9 +6,9 @@
  *
  */
 
-import { Accordion, accordionAnatomy } from "@ark-ui/react";
+import { Accordion, accordionAnatomy } from "@ark-ui/react/accordion";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { Assign, JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const accordionRecipe = sva({
@@ -96,23 +96,26 @@ const accordionRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(accordionRecipe);
 
-export interface AccordionRootProps extends JsxStyleProps, Accordion.RootProps {}
+export type AccordionRootProps = Assign<JsxStyleProps, Accordion.RootProps>;
 
 export const AccordionRoot = withProvider<HTMLDivElement, AccordionRootProps>(Accordion.Root, "root");
 
-export const AccordionItemContent = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemContentProps>(
+export const AccordionItemContent = withContext<HTMLDivElement, Assign<Accordion.ItemContentProps, JsxStyleProps>>(
   Accordion.ItemContent,
   "itemContent",
 );
 
-export const AccordionItemIndicator = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemIndicatorProps>(
+export const AccordionItemIndicator = withContext<HTMLDivElement, Assign<Accordion.ItemIndicatorProps, JsxStyleProps>>(
   Accordion.ItemIndicator,
   "itemIndicator",
 );
 
-export const AccordionItem = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemProps>(Accordion.Item, "item");
+export const AccordionItem = withContext<HTMLDivElement, Assign<Accordion.ItemProps, JsxStyleProps>>(
+  Accordion.Item,
+  "item",
+);
 
-export const AccordionItemTrigger = withContext<HTMLButtonElement, JsxStyleProps & Accordion.ItemTriggerProps>(
+export const AccordionItemTrigger = withContext<HTMLButtonElement, Assign<Accordion.ItemTriggerProps, JsxStyleProps>>(
   Accordion.ItemTrigger,
   "itemTrigger",
 );

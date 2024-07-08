@@ -7,7 +7,8 @@
  */
 
 import { forwardRef } from "react";
-import { Field, HTMLArkProps } from "@ark-ui/react";
+import type { HTMLArkProps } from "@ark-ui/react/factory";
+import { Field } from "@ark-ui/react/field";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";

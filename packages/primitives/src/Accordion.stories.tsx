@@ -6,7 +6,6 @@
  *
  */
 
-import { Accordion } from "@ark-ui/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { ChevronDown } from "@ndla/icons/common";
 import {
@@ -20,7 +19,7 @@ import { Heading } from "./Text";
 
 const meta: Meta<typeof AccordionRoot> = {
   title: "Primitives/Accordion",
-  component: Accordion.Root,
+  component: AccordionRoot,
   tags: ["autodocs"],
   args: {
     multiple: true,

@@ -7,7 +7,7 @@
  */
 
 import React, { ComponentPropsWithRef, ReactNode } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
+import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
 import { render } from "@testing-library/react";
 import { sva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";

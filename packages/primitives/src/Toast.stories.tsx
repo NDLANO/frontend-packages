@@ -6,7 +6,8 @@
  *
  */
 
-import { Portal, Toaster, createToaster } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react/portal";
+import { Toaster, createToaster } from "@ark-ui/react/toast";
 import { Meta, StoryFn } from "@storybook/react";
 import { Cross } from "@ndla/icons/action";
 import { Button, IconButton } from "./Button";

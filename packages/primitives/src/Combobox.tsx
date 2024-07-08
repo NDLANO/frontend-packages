@@ -6,9 +6,9 @@
  *
  */
 
-import { Assign, Combobox, comboboxAnatomy } from "@ark-ui/react";
+import { Combobox, comboboxAnatomy } from "@ark-ui/react/combobox";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { Assign, JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
 import { Text, TextProps } from "./Text";
@@ -157,10 +157,7 @@ const InternalComboboxRoot = withProvider<HTMLDivElement, ComboboxRootProps<Comb
 );
 
 export const ComboboxRoot = <T extends Combobox.CollectionItem>({ ...props }: ComboboxRootProps<T>) => {
-  return (
-    //@ts-expect-error - withProvider swallows the generic that Combobox.Root expects.
-    <InternalComboboxRoot {...props} />
-  );
+  return <InternalComboboxRoot {...props} />;
 };
 
 export const ComboboxClearTrigger = withContext<HTMLButtonElement, Assign<JsxStyleProps, Combobox.ClearTriggerProps>>(

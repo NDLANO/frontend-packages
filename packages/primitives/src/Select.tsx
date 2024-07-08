@@ -7,7 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { Select, selectAnatomy } from "@ark-ui/react";
+import { Select, selectAnatomy } from "@ark-ui/react/select";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
@@ -140,10 +140,7 @@ export const SelectRoot = <T extends Select.CollectionItem>({
   lazyMount = true,
   unmountOnExit = true,
   ...props
-}: SelectRootProps<T>) => (
-  //@ts-expect-error -- T does not necessarily match Select.CollectionItem. However, we prefer to use T over Select.CollectionItem to get the correct type during use.
-  <InternalSelectRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
-);
+}: SelectRootProps<T>) => <InternalSelectRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />;
 
 export const SelectClearTrigger = withContext<HTMLButtonElement, Select.ClearTriggerProps & JsxStyleProps>(
   Select.ClearTrigger,

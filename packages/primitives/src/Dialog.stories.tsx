@@ -7,7 +7,7 @@
  */
 
 import { useEffect, useState } from "react";
-import { Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react/portal";
 import { Meta, StoryFn } from "@storybook/react";
 import { Cross } from "@ndla/icons/action";
 import { styled } from "@ndla/styled-system/jsx";

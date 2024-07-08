@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
+    "target": "esnext",
     "esModuleInterop": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
+    "jsxImportSource": "react",
     "isolatedModules": true,
     "strict": true,
     "allowJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "noLib": false,
     // TODO: Remove this once @storybook/theming fixes their type issues
+    "moduleDetection": "legacy",
     "skipLibCheck": true,
     "noEmit": true,
     "sourceMap": true,
@@ -45,13 +48,7 @@
       "@ndla/util": ["./packages/util/src"],
       "@ndla/preset-panda": ["./packages/preset-panda/src"],
       "@ndla/primitives": ["./packages/primitives/src"],
-      "@ndla/styled-system": ["./packages/styled-system/src"],
-      "@ndla/styled-system/css": ["./packages/styled-system/src/css"],
-      "@ndla/styled-system/tokens": ["./packages/styled-system/src/tokens"],
-      "@ndla/styled-system/types": ["./packages/styled-system/src/types"],
-      "@ndla/styled-system/patterns": ["./packages/styled-system/src/patterns"],
-      "@ndla/styled-system/recipes": ["./packages/styled-system/src/recipes"],
-      "@ndla/styled-system/jsx": ["./packages/styled-system/src/jsx"],
+      "@ndla/styled-system/*": ["./packages/styled-system/src"],
       "*": ["node_modules"]
     }
   },

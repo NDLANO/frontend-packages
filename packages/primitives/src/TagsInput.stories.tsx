@@ -7,7 +7,9 @@
  */
 
 import { useId, useRef, useState } from "react";
-import { ComboboxContext, ComboboxInputValueChangeDetails, Portal, TagsInputContext } from "@ark-ui/react";
+import { ComboboxContext, ComboboxInputValueChangeDetails } from "@ark-ui/react/combobox";
+import { Portal } from "@ark-ui/react/portal";
+import { TagsInputContext } from "@ark-ui/react/tags-input";
 import { Meta, StoryFn } from "@storybook/react";
 import { Cross } from "@ndla/icons/action";
 import { HStack } from "@ndla/styled-system/jsx";

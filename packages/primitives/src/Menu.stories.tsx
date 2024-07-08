@@ -6,7 +6,7 @@
  *
  */
 
-import { Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react/portal";
 import { Meta, StoryFn } from "@storybook/react";
 import { Copy, Cross, Pencil, TrashCanOutline } from "@ndla/icons/action";
 import { ChevronRight, Share, ShareArrow } from "@ndla/icons/common";

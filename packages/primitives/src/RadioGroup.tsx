@@ -7,7 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
+import { RadioGroup, radioGroupAnatomy } from "@ark-ui/react/radio-group";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";

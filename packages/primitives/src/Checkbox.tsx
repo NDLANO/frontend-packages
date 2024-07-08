@@ -6,9 +6,9 @@
  *
  */
 
-import { Checkbox, checkboxAnatomy } from "@ark-ui/react";
+import { Checkbox, type CheckboxRootProps as RootProps, checkboxAnatomy } from "@ark-ui/react/checkbox";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { Assign, JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Text, TextProps } from "./Text";
 
@@ -211,16 +211,16 @@ const { withProvider, withContext } = createStyleContext(checkboxRecipe);
 
 export type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
 
-export type CheckboxRootProps = Checkbox.RootProps & CheckboxVariantProps & JsxStyleProps;
+export type CheckboxRootProps = Assign<RootProps, CheckboxVariantProps & JsxStyleProps>;
 
 export const CheckboxRoot = withProvider<HTMLLabelElement, CheckboxRootProps>(Checkbox.Root, "root");
 
-export const CheckboxIndicator = withContext<HTMLDivElement, Checkbox.IndicatorProps & JsxStyleProps>(
+export const CheckboxIndicator = withContext<HTMLDivElement, Assign<Checkbox.IndicatorProps, JsxStyleProps>>(
   Checkbox.Indicator,
   "indicator",
 );
 
-const InternalCheckboxLabel = withContext<HTMLSpanElement, JsxStyleProps & Checkbox.LabelProps>(
+const InternalCheckboxLabel = withContext<HTMLSpanElement, Assign<Checkbox.LabelProps, JsxStyleProps>>(
   Checkbox.Label,
   "label",
 );
@@ -229,17 +229,20 @@ export const CheckboxLabel = ({
   textStyle = "label.medium",
   children,
   ...props
-}: Checkbox.LabelProps & TextProps & JsxStyleProps) => (
+}: Assign<Checkbox.LabelProps, TextProps & JsxStyleProps>) => (
   <InternalCheckboxLabel {...props} asChild>
     <Text textStyle={textStyle}>{children}</Text>
   </InternalCheckboxLabel>
 );
 
-export const CheckboxControl = withContext<HTMLDivElement, JsxStyleProps & Checkbox.ControlProps>(
+export const CheckboxControl = withContext<HTMLDivElement, Assign<Checkbox.ControlProps, JsxStyleProps>>(
   Checkbox.Control,
   "control",
 );
 
-export const CheckboxGroup = withProvider<HTMLDivElement, JsxStyleProps & Checkbox.GroupProps>(Checkbox.Group, "group");
+export const CheckboxGroup = withProvider<HTMLDivElement, Assign<Checkbox.GroupProps, JsxStyleProps>>(
+  Checkbox.Group,
+  "group",
+);
 
 export const CheckboxHiddenInput = Checkbox.HiddenInput;

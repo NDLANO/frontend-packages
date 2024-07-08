@@ -6,7 +6,7 @@
  *
  */
 
-import { ControlProps } from "react-select";
+import type { ControlProps } from "react-select";
 import styled from "@emotion/styled";
 import { colors, fonts, misc, spacing } from "@ndla/core";
 import { StyledDropdown } from "./BaseDropdownIndicator";

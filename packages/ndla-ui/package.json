@@ -43,6 +43,7 @@
     "@ndla/modal": "^7.0.5-alpha.0",
     "@ndla/primitives": "workspace:^",
     "@ndla/safelink": "^5.1.15",
+    "@ndla/styled-system": "workspace:^",
     "@ndla/tooltip": "^8.0.1",
     "@ndla/typography": "^0.4.23",
     "@ndla/util": "^4.1.0",
@@ -66,6 +67,7 @@
     "react-router-dom": "> 6.0.0"
   },
   "devDependencies": {
+    "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^0.2.86",
     "@ndla/types-embed": "^4.1.8",
     "@pandacss/dev": "^0.41.0",

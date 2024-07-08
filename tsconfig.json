@@ -45,7 +45,13 @@
       "@ndla/util": ["./packages/util/src"],
       "@ndla/preset-panda": ["./packages/preset-panda/src"],
       "@ndla/primitives": ["./packages/primitives/src"],
-      "@ndla/styled-system": ["./packages/styled-system"],
+      "@ndla/styled-system": ["./packages/styled-system/src"],
+      "@ndla/styled-system/css": ["./packages/styled-system/src/css"],
+      "@ndla/styled-system/tokens": ["./packages/styled-system/src/tokens"],
+      "@ndla/styled-system/types": ["./packages/styled-system/src/types"],
+      "@ndla/styled-system/patterns": ["./packages/styled-system/src/patterns"],
+      "@ndla/styled-system/recipes": ["./packages/styled-system/src/recipes"],
+      "@ndla/styled-system/jsx": ["./packages/styled-system/src/jsx"],
       "*": ["node_modules"]
     }
   },

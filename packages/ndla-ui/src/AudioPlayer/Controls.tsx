@@ -13,6 +13,7 @@ import { Back15, Forward15 } from "@ndla/icons/action";
 import { Play, Pause, VolumeUp } from "@ndla/icons/common";
 import { Done } from "@ndla/icons/editor";
 import {
+  Button,
   IconButton,
   PopoverContent,
   PopoverRoot,
@@ -35,7 +36,6 @@ import {
   SliderTrack,
   Text,
 } from "@ndla/primitives";
-import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { visuallyHidden } from "@ndla/styled-system/patterns";
 
@@ -99,6 +99,20 @@ const ProgressWrapper = styled("div", {
 const VolumeButton = styled(IconButton, {
   base: {
     gridArea: "volume",
+  },
+});
+
+const SpeedButton = styled(Button, {
+  base: {
+    paddingBlock: "auto",
+    paddingInline: "auto",
+    maxWidth: "xxlarge",
+    maxHeight: "xxlarge",
+    minWidth: "xxlarge",
+    minHeight: "xxlarge",
+    "& span": {
+      flex: "1",
+    },
   },
 });
 
@@ -259,14 +273,13 @@ const Controls = ({ src, title }: Props) => {
           <SelectLabel css={visuallyHidden.raw()}>{t("audio.controls.selectSpeed")}</SelectLabel>
           <SelectControl>
             <SelectTrigger asChild>
-              <IconButton
+              <SpeedButton
                 variant="tertiary"
                 title={t("audio.controls.selectSpeed")}
                 aria-label={t("audio.controls.selectSpeed")}
-                css={{ width: "fit-content" }}
               >
                 <span>{`${speedValue}x`}</span>
-              </IconButton>
+              </SpeedButton>
             </SelectTrigger>
           </SelectControl>
           <SelectPositioner>

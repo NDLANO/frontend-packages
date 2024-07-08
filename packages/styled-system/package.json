@@ -1,12 +1,14 @@
 {
   "name": "@ndla/styled-system",
   "description": "Styled System for NDLA",
-  "type": "module",
   "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/styled-system"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build.js package"
   },
   "sideEffects": false,
   "publishConfig": {
@@ -24,35 +26,34 @@
   ],
   "exports": {
     "./css": {
-      "types": "./css/index.d.ts",
-      "require": "./css/index.js",
-      "import": "./css/index.js"
+      "types": "./lib/css/index.d.ts",
+      "require": "./lib/css/index.js",
+      "import": "./es/css/index.js"
     },
     "./tokens": {
-      "types": "./tokens/index.d.ts",
-      "require": "./tokens/index.js",
-      "import": "./tokens/index.js"
+      "types": "./lib/tokens/index.d.ts",
+      "require": "./lib/tokens/index.js",
+      "import": "./es/tokens/index.js"
     },
     "./types": {
-      "types": "./types/index.d.ts",
-      "require": "./types/index.js",
-      "import": "./types/index.js"
+      "types": "./lib/types/index.d.ts",
+      "require": "./lib/types/index.js",
+      "import": "./es/types/index.js"
     },
     "./patterns": {
-      "types": "./patterns/index.d.ts",
-      "require": "./patterns/index.js",
-      "import": "./patterns/index.js"
+      "types": "./lib/patterns/index.d.ts",
+      "require": "./lib/patterns/index.js",
+      "import": "./es/patterns/index.js"
     },
     "./recipes": {
-      "types": "./recipes/index.d.ts",
-      "require": "./recipes/index.js",
-      "import": "./recipes/index.js"
+      "types": "./lib/recipes/index.d.ts",
+      "require": "./lib/recipes/index.js",
+      "import": "./es/recipes/index.js"
     },
     "./jsx": {
-      "types": "./jsx/index.d.ts",
-      "require": "./jsx/index.js",
-      "import": "./jsx/index.js"
-    },
-    "./styles.css": "./styles.css"
+      "types": "./lib/jsx/index.d.ts",
+      "require": "./lib/jsx/index.js",
+      "import": "./es/jsx/index.js"
+    }
   }
 }

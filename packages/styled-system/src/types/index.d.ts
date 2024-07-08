@@ -6,3 +6,4 @@ export * from './recipe';
 export * from './system-types';
 export * from './jsx';
 export * from './style-props';
+export * from './prop-type';

@@ -175,22 +175,20 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
           <TitleWrapper>
             <div>
               {subtitle?.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
-              <Heading asChild textStyle="title.large">
+              <Heading asChild consumeCss textStyle="title.large">
                 <h3>{title}</h3>
               </Heading>
             </div>
             {!!textVersion && !img && textVersionButton}
           </TitleWrapper>
           {description && (
-            <Text asChild textStyle="body.medium">
-              <p>
-                {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
-                  ? description
-                  : `${truncatedDescription}...`}
-                <Button variant="link" onClick={() => setShowFullDescription((p) => !p)}>
-                  {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
-                </Button>
-              </p>
+            <Text textStyle="body.medium">
+              {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
+                ? description
+                : `${truncatedDescription}...`}
+              <Button variant="link" onClick={() => setShowFullDescription((p) => !p)}>
+                {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
+              </Button>
             </Text>
           )}
           {!!textVersion && !!img && textVersionButton}
@@ -199,7 +197,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
       <Controls src={src} title={title} />
       {!!textVersion && (
         <TextVersionWrapper id={textDescriptionId} hidden={!showTextVersion}>
-          <Heading asChild textStyle="title.medium">
+          <Heading asChild textStyle="title.medium" consumeCss>
             <h3>{t("audio.textVersion.heading")}</h3>
           </Heading>
           <TextVersionText>{textVersion}</TextVersionText>

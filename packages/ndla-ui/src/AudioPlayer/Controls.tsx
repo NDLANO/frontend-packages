@@ -225,7 +225,7 @@ const Controls = ({ src, title }: Props) => {
           <Forward15 />
         </Forward15SecButton>
         <ProgressWrapper>
-          <Text textStyle="label.medium" asChild>
+          <Text textStyle="label.medium" asChild consumeCss>
             <div>{formatTime(currentTime)}</div>
           </Text>
           <SliderRoot
@@ -246,7 +246,7 @@ const Controls = ({ src, title }: Props) => {
               </SliderThumb>
             </SliderControl>
           </SliderRoot>
-          <Text textStyle="label.medium" asChild>
+          <Text textStyle="label.medium" asChild consumeCss>
             <div>-{formatTime(remainingTime)}</div>
           </Text>
         </ProgressWrapper>

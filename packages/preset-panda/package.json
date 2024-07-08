@@ -1,6 +1,6 @@
 {
   "name": "@ndla/preset-panda",
-  "version": "0.0.6",
+  "version": "0.0.7-alpha.0",
   "description": "Panda preset for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

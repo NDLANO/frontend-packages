@@ -35,6 +35,7 @@ import {
   SliderTrack,
   Text,
 } from "@ndla/primitives";
+import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { visuallyHidden } from "@ndla/styled-system/patterns";
 
@@ -66,35 +67,23 @@ const ControlsWrapper = styled("div", {
   },
 });
 
-const PlayButton = styled(
-  IconButton,
-  {
-    base: {
-      gridArea: "play",
-    },
+const PlayButton = styled(IconButton, {
+  base: {
+    gridArea: "play",
   },
-  { forwardCssProp: true },
-);
+});
 
-const Forward15SecButton = styled(
-  IconButton,
-  {
-    base: {
-      gridArea: "forwards",
-    },
+const Forward15SecButton = styled(IconButton, {
+  base: {
+    gridArea: "forwards",
   },
-  { forwardCssProp: true },
-);
+});
 
-const Back15SecButton = styled(
-  IconButton,
-  {
-    base: {
-      gridArea: "backwards",
-    },
+const Back15SecButton = styled(IconButton, {
+  base: {
+    gridArea: "backwards",
   },
-  { forwardCssProp: true },
-);
+});
 
 const ProgressWrapper = styled("div", {
   base: {
@@ -107,25 +96,17 @@ const ProgressWrapper = styled("div", {
   },
 });
 
-const VolumeButton = styled(
-  IconButton,
-  {
-    base: {
-      gridArea: "volume",
-    },
+const VolumeButton = styled(IconButton, {
+  base: {
+    gridArea: "volume",
   },
-  { forwardCssProp: true },
-);
+});
 
-const StyledSelectRoot = styled(
-  SelectRoot,
-  {
-    base: {
-      gridArea: "speed",
-    },
+const StyledSelectRoot = styled(SelectRoot, {
+  base: {
+    gridArea: "speed",
   },
-  { forwardCssProp: true },
-);
+});
 
 const formatTime = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
@@ -277,14 +258,14 @@ const Controls = ({ src, title }: Props) => {
         >
           <SelectLabel css={visuallyHidden.raw()}>{t("audio.controls.selectSpeed")}</SelectLabel>
           <SelectControl>
-            <SelectTrigger asChild forwardCssProp>
+            <SelectTrigger asChild>
               <IconButton
                 variant="tertiary"
                 title={t("audio.controls.selectSpeed")}
                 aria-label={t("audio.controls.selectSpeed")}
                 css={{ width: "fit-content" }}
               >
-                {speedValue}x
+                <span>{`${speedValue}x`}</span>
               </IconButton>
             </SelectTrigger>
           </SelectControl>
@@ -302,7 +283,7 @@ const Controls = ({ src, title }: Props) => {
           </SelectPositioner>
         </StyledSelectRoot>
         <PopoverRoot positioning={{ placement: "top" }}>
-          <PopoverTrigger asChild forwardCssProp>
+          <PopoverTrigger asChild>
             <VolumeButton variant="tertiary" aria-label={t("audio.controls.adjustVolume")}>
               <VolumeUp />
             </VolumeButton>

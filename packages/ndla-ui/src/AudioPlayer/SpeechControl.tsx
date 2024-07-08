@@ -36,7 +36,7 @@ const SpeechControl = ({ src, title, type = "audio" }: Props) => {
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <TooltipRoot>
-        <TooltipTrigger asChild forwardCssProp>
+        <TooltipTrigger asChild>
           <IconButton variant="tertiary" aria-label={t(`${type}.play`)} onClick={togglePlay}>
             <VolumeUp />
           </IconButton>

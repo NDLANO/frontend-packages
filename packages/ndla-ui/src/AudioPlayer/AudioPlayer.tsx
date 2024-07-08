@@ -149,7 +149,6 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
     setShowTextVersion((curr) => !curr);
   };
 
-  // TODO: Replace css.raw with regular css
   const textVersionButton = (
     <Button
       variant="secondary"
@@ -157,6 +156,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
       aria-controls={textDescriptionId}
       size="small"
       onClick={toggleTextVersion}
+      // TODO: Replace css.raw with regular css
       css={css.raw({ alignSelf: "flex-start" })}
     >
       {t(showTextVersion ? "audio.textVersion.close" : "audio.textVersion.heading")}

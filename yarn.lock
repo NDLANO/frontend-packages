@@ -2929,7 +2929,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/primitives@workspace:packages/primitives":
+"@ndla/primitives@workspace:^, @ndla/primitives@workspace:packages/primitives":
   version: 0.0.0-use.local
   resolution: "@ndla/primitives@workspace:packages/primitives"
   dependencies:
@@ -3101,14 +3101,15 @@ __metadata:
     "@ndla/icons": "npm:^7.0.6-alpha.0"
     "@ndla/licenses": "npm:^8.0.0-alpha.0"
     "@ndla/modal": "npm:^7.0.5-alpha.0"
+    "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "npm:^5.1.15"
     "@ndla/tooltip": "npm:^8.0.1"
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^4.1.8"
     "@ndla/typography": "npm:^0.4.23"
     "@ndla/util": "npm:^4.1.0"
+    "@pandacss/dev": "npm:^0.41.0"
     "@radix-ui/react-popover": "npm:^1.0.7"
-    "@radix-ui/react-slider": "npm:^1.1.2"
     css-loader: "npm:^6.7.3"
     date-fns: "npm:^2.30.0"
     html-react-parser: "npm:^5.1.8"
@@ -3820,15 +3821,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/number@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@radix-ui/number@npm:1.0.1"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-  checksum: 10c0/42e4870cd14459da6da03e43c7507dc4c807ed787a87bda52912a0d1d6d5013326b697c18c9625fc6a2cf0af2b45d9c86747985b45358fd92ab646b983978e3c
-  languageName: node
-  linkType: hard
-
 "@radix-ui/primitive@npm:1.0.1":
   version: 1.0.1
   resolution: "@radix-ui/primitive@npm:1.0.1"
@@ -4359,36 +4351,6 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: 10c0/61e3ddfd1647e64fba855434ff41e8e7ba707244fe8841f78c450fbdce525383b64259279475615d030dbf1625cbffd8eeebee72d91bf6978794f5dbcf887fc0
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-slider@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "@radix-ui/react-slider@npm:1.1.2"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/number": "npm:1.0.1"
-    "@radix-ui/primitive": "npm:1.0.1"
-    "@radix-ui/react-collection": "npm:1.0.3"
-    "@radix-ui/react-compose-refs": "npm:1.0.1"
-    "@radix-ui/react-context": "npm:1.0.1"
-    "@radix-ui/react-direction": "npm:1.0.1"
-    "@radix-ui/react-primitive": "npm:1.0.3"
-    "@radix-ui/react-use-controllable-state": "npm:1.0.1"
-    "@radix-ui/react-use-layout-effect": "npm:1.0.1"
-    "@radix-ui/react-use-previous": "npm:1.0.1"
-    "@radix-ui/react-use-size": "npm:1.0.1"
-  peerDependencies:
-    "@types/react": "*"
-    "@types/react-dom": "*"
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-    "@types/react-dom":
-      optional: true
-  checksum: 10c0/88d816887a1345c3ec5401734663196c46e80d49979b484531ad57182408505853f6b554d9b55d8fed318495d38bc51a1d1d7cc9147a35eac403272ad97acb19
   languageName: node
   linkType: hard
 

@@ -8,139 +8,111 @@
 
 import { ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { ButtonV2 } from "@ndla/button";
-import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
-import { Cross as CrossIcon } from "@ndla/icons/action";
+import { Cross } from "@ndla/icons/action";
+import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
-import { Heading, Text } from "@ndla/typography";
+import { css } from "@ndla/styled-system/css";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 import Controls from "./Controls";
 import SpeechControl from "./SpeechControl";
 
-const InfoWrapper = styled.div`
-  border: 1px solid ${colors.brand.lighter};
-  border-bottom: 0;
-  display: flex;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    display: block;
-  }
-`;
+// TODO: Could the audio metadata be more tightly coupled to the audio player?
 
-const ImageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 1 0 auto;
+const AudioPlayerWrapper = styled("div", {
+  base: {
+    border: "1px solid",
+    borderColor: "stroke.default",
+    borderRadius: "xsmall",
+    boxShadow: "full",
+    overflow: "hidden",
+  },
+});
 
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
+const InfoWrapper = styled("div", {
+  base: {
+    display: "flex",
+    tabletWideDown: {
+      display: "block",
+    },
+  },
+});
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    width: 260px;
-    height: 260px;
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    max-height: 400px;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    img {
-      object-fit: scale-down;
-    }
-  }
-`;
+const ImageWrapper = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    flex: "1 0 auto",
+    width: "100",
+    height: "100",
+    overflow: "hidden",
+    "& img": {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+    },
+    desktop: {
+      width: "260px",
+      height: "260px",
+    },
+    tabletWideDown: {
+      maxHeight: "400px",
+      maxWidth: "100%",
+      width: "100%",
+      height: "auto",
+    },
+  },
+});
 
-const TextWrapper = styled.div`
-  padding: ${spacing.small};
-  width: 100%;
-  &[data-has-image="true"] {
-    ${mq.range({ from: breakpoints.tablet })} {
-      padding: ${spacing.small} ${spacing.normal};
-    }
-    ${mq.range({ from: breakpoints.tabletWide })} {
-      padding: ${spacing.small} ${spacing.medium};
-    }
-  }
-`;
+const TextWrapper = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    gap: "xsmall",
+    padding: "xsmall",
+    width: "100%",
+    "&[data-has-image='true']": {
+      tablet: {
+        paddingBlock: "xsmall",
+        paddingInline: "medium",
+      },
+    },
+  },
+});
 
-const TitleWrapper = styled.div`
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    display: flex;
-    justify-content: space-between;
-  }
-`;
+const TitleWrapper = styled("div", {
+  base: {
+    tabletWide: {
+      width: "100%",
+      display: "flex",
+      justifyContent: "space-between",
+    },
+  },
+});
 
-const Title = styled(Heading)`
-  &[data-has-desc="true"] {
-    margin: ${spacing.xsmall} 0 ${spacing.small};
-  }
-`;
+const TextVersionWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
+    borderBlockStart: "1px solid",
+    borderColor: "stroke.default",
+    paddingBlock: "medium",
+    paddingInline: "xsmall",
+    tablet: {
+      paddingInline: "medium",
+    },
+  },
+});
 
-const LinkToTextVersionWrapper = styled.div`
-  &[data-margin="true"] {
-    margin-top: ${spacing.small};
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    margin: ${spacing.small} 0;
-  }
-`;
-
-const TextVersionWrapper = styled.div`
-  border: 1px solid ${colors.brand.lighter};
-  border-top: 0;
-  ${fonts.sizes("16px", "30px")};
-  font-family: ${fonts.sans};
-  &.audio-player-text-version-hidden {
-    display: none;
-  }
-  padding: ${spacing.normal} ${spacing.small} ${spacing.small};
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.normal};
-  }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.normal} ${spacing.medium};
-  }
-`;
-
-const TextVersionHeadingWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-`;
-
-const TextVersionHeading = styled(Heading)`
-  font-weight: ${fonts.weight.semibold};
-  margin: ${spacing.small} 0 ${spacing.normal};
-`;
-
-const LinkButton = styled(ButtonV2)`
-  box-shadow: none;
-  padding-left: 0;
-  padding-right: ${spacing.xxsmall};
-  min-height: ${spacing.medium};
-  flex: 0 0 auto;
-  &:hover,
-  &:focus {
-    box-shadow: ${colors.link};
-  }
-`;
-
-const CloseText = styled.span`
-  display: inline-block;
-  margin-left: ${spacing.xsmall};
-`;
-
-const TextVersionText = styled.div`
-  max-width: 670px;
-  & span > * {
-    white-space: pre-wrap;
-  }
-`;
+const TextVersionText = styled("div", {
+  base: {
+    maxWidth: "surface.xlarge",
+    "& span > *": {
+      whiteSpace: "pre-wrap",
+    },
+  },
+});
 
 const DESCRIPTION_MAX_LENGTH = 200;
 
@@ -158,40 +130,31 @@ type Props = {
     url: string;
     alt: string;
   };
-  staticRenderId?: string;
 };
 
-const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersion, staticRenderId }: Props) => {
+const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersion }: Props) => {
   const { t } = useTranslation();
   const [showTextVersion, setShowTextVersion] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const truncatedDescription = useMemo(() => description?.slice(0, DESCRIPTION_MAX_LENGTH), [description]);
 
   if (speech) {
-    return (
-      <div data-audio-player={1} data-speech={1} data-src={src} data-title={title}>
-        <SpeechControl src={src} title={title} />
-      </div>
-    );
+    return <SpeechControl src={src} title={title} />;
   }
 
   const toggleTextVersion = () => {
     setShowTextVersion(!showTextVersion);
   };
 
-  type TextVersionComponentProps = {
-    margin?: boolean;
-  };
-  const TextVersionComponent = ({ margin }: TextVersionComponentProps) => (
-    <LinkToTextVersionWrapper data-margin={margin}>
-      <ButtonV2 size="normal" shape="pill" onClick={toggleTextVersion} data-audio-text-button-id={staticRenderId}>
-        {t("audio.textVersion.heading")}
-      </ButtonV2>
-    </LinkToTextVersionWrapper>
+  // TODO: Replace css.raw with regular css
+  const textVersionButton = (
+    <Button variant="secondary" onClick={toggleTextVersion} css={css.raw({ alignSelf: "flex-start" })}>
+      {t("audio.textVersion.heading")}
+    </Button>
   );
 
   return (
-    <>
+    <AudioPlayerWrapper>
       <InfoWrapper>
         {img && (
           <ImageWrapper>
@@ -202,48 +165,43 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
           <TitleWrapper>
             <div>
               {subtitle?.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
-              <Title element="h3" headingStyle="h4" margin="none" data-has-desc={!!description}>
-                {title}
-              </Title>
+              <Heading asChild textStyle="title.large">
+                <h3>{title}</h3>
+              </Heading>
             </div>
-            {textVersion && !img && <TextVersionComponent />}
+            {!!textVersion && !img && textVersionButton}
           </TitleWrapper>
           {description && (
-            <Text element="p" textStyle="meta-text-small" margin="none">
-              {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
-                ? description
-                : `${truncatedDescription}...`}
-              <ButtonV2 variant="link" onClick={() => setShowFullDescription((p) => !p)}>
-                {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
-              </ButtonV2>
+            <Text asChild textStyle="body.medium">
+              <p>
+                {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
+                  ? description
+                  : `${truncatedDescription}...`}
+                <Button variant="link" onClick={() => setShowFullDescription((p) => !p)}>
+                  {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
+                </Button>
+              </p>
             </Text>
           )}
-          {textVersion && img && <TextVersionComponent margin />}
+          {!!textVersion && !!img && textVersionButton}
         </TextWrapper>
       </InfoWrapper>
-      <div data-audio-player={1} data-src={src} data-title={title}>
-        <Controls src={src} title={title} />
-      </div>
-      {textVersion && (showTextVersion || staticRenderId) && (
-        <TextVersionWrapper id={staticRenderId} hidden={!!staticRenderId}>
-          <TextVersionHeadingWrapper>
-            <TextVersionHeading element="h3" headingStyle="h2" margin="small">
-              {t("audio.textVersion.heading")}
-            </TextVersionHeading>
-            <LinkButton
-              variant="link"
-              size="normal"
-              onClick={toggleTextVersion}
-              data-audio-text-button-id={staticRenderId}
-            >
-              <CrossIcon style={{ width: "20px", height: "20px" }} />
-              <CloseText>{t("audio.textVersion.close")}</CloseText>
-            </LinkButton>
-          </TextVersionHeadingWrapper>
+      <Controls src={src} title={title} />
+      {textVersion && showTextVersion && (
+        <TextVersionWrapper>
+          <HStack justify="space-between">
+            <Heading asChild textStyle="title.medium">
+              <h3>{t("audio.textVersion.heading")}</h3>
+            </Heading>
+            <Button variant="secondary" onClick={toggleTextVersion}>
+              {t("audio.textVersion.close")}
+              <Cross style={{ width: "20px", height: "20px" }} />
+            </Button>
+          </HStack>
           <TextVersionText>{textVersion}</TextVersionText>
         </TextVersionWrapper>
       )}
-    </>
+    </AudioPlayerWrapper>
   );
 };
 

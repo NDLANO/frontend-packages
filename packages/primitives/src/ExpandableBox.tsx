@@ -32,18 +32,22 @@ export const ExpandableBox = styled("details", {
 
 export type ExpandableBoxSummaryProps = HTMLArkProps<"summary"> & JsxStyleProps;
 
-export const ExpandableBoxSummary = styled(ark.summary, {
-  base: {
-    cursor: "pointer",
-    margin: "-medium",
-    padding: "medium",
-    textStyle: "label.large!",
-    _hover: {
-      color: "text.action",
-    },
-    "& > *": {
-      display: "inline!",
+export const ExpandableBoxSummary = styled(
+  ark.summary,
+  {
+    base: {
+      cursor: "pointer",
+      margin: "-medium",
+      padding: "medium",
       textStyle: "label.large!",
+      _hover: {
+        color: "text.action",
+      },
+      "& > *": {
+        display: "inline!",
+        textStyle: "label.large!",
+      },
     },
   },
-});
+  { baseComponent: true },
+);

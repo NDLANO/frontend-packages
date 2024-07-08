@@ -30,7 +30,7 @@ export default {
   },
   render: (args) => (
     <PaginationRoot {...args}>
-      <PaginationPrevTrigger asChild forwardCssProp>
+      <PaginationPrevTrigger asChild>
         <Button variant="tertiary">
           <ChevronLeft />
           Forrige
@@ -40,12 +40,12 @@ export default {
         {(pagination) =>
           pagination.pages.map((page, index) =>
             page.type === "page" ? (
-              <PaginationItem key={index} {...page} asChild forwardCssProp>
+              <PaginationItem key={index} {...page} asChild>
                 <Button variant={page.value === pagination.page ? "primary" : "tertiary"}>{page.value}</Button>
               </PaginationItem>
             ) : (
-              <PaginationEllipsis key={index} index={index} asChild forwardCssProp>
-                <Text asChild>
+              <PaginationEllipsis key={index} index={index} asChild>
+                <Text asChild consumeCss>
                   <div>&#8230;</div>
                 </Text>
               </PaginationEllipsis>
@@ -53,7 +53,7 @@ export default {
           )
         }
       </PaginationContext>
-      <PaginationNextTrigger asChild forwardCssProp>
+      <PaginationNextTrigger asChild>
         <Button variant="tertiary">
           Neste
           <ChevronRight />

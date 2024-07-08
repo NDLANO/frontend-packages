@@ -21,7 +21,7 @@ export interface TextProps {
   srOnly?: boolean;
 }
 
-const StyledP = styled(ark.p);
+const StyledP = styled(ark.p, {}, { baseComponent: true });
 
 export const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & JsxStyleProps & TextProps>(
   ({ textStyle = "body.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
@@ -29,7 +29,7 @@ export const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & JsxStyl
   ),
 );
 
-const StyledH1 = styled(ark.h1);
+const StyledH1 = styled(ark.h1, {}, { baseComponent: true });
 
 export const Heading = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & JsxStyleProps & TextProps>(
   ({ textStyle = "heading.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (

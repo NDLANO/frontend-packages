@@ -12,65 +12,69 @@ import { JsxStyleProps } from "@ndla/styled-system/types";
 
 export type TableProps = HTMLArkProps<"table"> & JsxStyleProps;
 
-export const Table = styled(ark.table, {
-  base: {
-    display: "block",
-    overflowX: "auto",
-    maxWidth: "100%",
-    padding: "4xsmall",
-    tableLayout: "fixed",
-    "& > caption": {
-      fontWeight: "bold",
-      textAlign: "left",
-      textTransform: "uppercase",
-      marginBlockEnd: "xsmall",
-    },
-    "& thead": {
-      overflow: "hidden",
-    },
-    "& thead tr th": {
-      fontWeight: "bold",
-      borderBottom: "3px solid",
-      borderColor: "surface.brand.1.strong",
-      verticalAlign: "text-top",
-    },
-    "& tbody th": {
-      borderRight: "3px solid",
-      borderColor: "surface.brand.1.strong",
-      padding: "3xsmall",
-    },
-    "& thead tr:nth-child(2) th": {
-      border: "1px solid",
-      borderColor: "surface.brand.1.subtle",
-      textTransform: "none",
-      fontWeight: "semibold",
-      height: "large",
-      backgroundColor: "surface.brand.1.subtle",
-      paddingBlock: "4xsmall",
-      paddingInlineEnd: "medium",
-      paddingInlineStart: "3xsmall",
-      _empty: {
-        backgroundColor: "transparent",
-      },
-    },
-    "& td": {
-      border: "1px solid",
-      borderColor: "surface.brand.1.subtle",
-      verticalAlign: "top",
-    },
-    "& td, & th": {
-      display: "table-cell",
-      paddingInline: "xsmall",
-      paddingBlock: "3xsmall",
-      "&[data-align='center']": {
-        textAlign: "center",
-      },
-      "&[data-align='left']": {
+export const Table = styled(
+  ark.table,
+  {
+    base: {
+      display: "block",
+      overflowX: "auto",
+      maxWidth: "100%",
+      padding: "4xsmall",
+      tableLayout: "fixed",
+      "& > caption": {
+        fontWeight: "bold",
         textAlign: "left",
+        textTransform: "uppercase",
+        marginBlockEnd: "xsmall",
       },
-      "&[data-align='right']": {
-        textAlign: "right",
+      "& thead": {
+        overflow: "hidden",
+      },
+      "& thead tr th": {
+        fontWeight: "bold",
+        borderBottom: "3px solid",
+        borderColor: "surface.brand.1.strong",
+        verticalAlign: "text-top",
+      },
+      "& tbody th": {
+        borderRight: "3px solid",
+        borderColor: "surface.brand.1.strong",
+        padding: "3xsmall",
+      },
+      "& thead tr:nth-child(2) th": {
+        border: "1px solid",
+        borderColor: "surface.brand.1.subtle",
+        textTransform: "none",
+        fontWeight: "semibold",
+        height: "large",
+        backgroundColor: "surface.brand.1.subtle",
+        paddingBlock: "4xsmall",
+        paddingInlineEnd: "medium",
+        paddingInlineStart: "3xsmall",
+        _empty: {
+          backgroundColor: "transparent",
+        },
+      },
+      "& td": {
+        border: "1px solid",
+        borderColor: "surface.brand.1.subtle",
+        verticalAlign: "top",
+      },
+      "& td, & th": {
+        display: "table-cell",
+        paddingInline: "xsmall",
+        paddingBlock: "3xsmall",
+        "&[data-align='center']": {
+          textAlign: "center",
+        },
+        "&[data-align='left']": {
+          textAlign: "left",
+        },
+        "&[data-align='right']": {
+          textAlign: "right",
+        },
       },
     },
   },
-});
+  { baseComponent: true },
+);

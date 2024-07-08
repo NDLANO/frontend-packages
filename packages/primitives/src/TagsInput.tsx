@@ -141,7 +141,7 @@ const InternalTagsInputLabel = withContext<HTMLLabelElement, TagsInput.LabelProp
 
 export const TagsInputLabel = forwardRef<HTMLLabelElement, TagsInput.LabelProps & JsxStyleProps & TextProps>(
   ({ children, ...props }, ref) => (
-    <InternalTagsInputLabel asChild forwardCssProp ref={ref} {...props}>
+    <InternalTagsInputLabel asChild ref={ref} {...props}>
       <Label>{children}</Label>
     </InternalTagsInputLabel>
   ),

@@ -151,7 +151,7 @@ export const MenuItemGroupLabel = ({
   children,
   ...props
 }: Menu.ItemGroupLabelProps & JsxStyleProps & TextProps) => (
-  <InternalMenuItemGroupLabel {...props} asChild forwardCssProp>
+  <InternalMenuItemGroupLabel {...props} asChild>
     <Text textStyle={textStyle} fontWeight={fontWeight}>
       {children}
     </Text>

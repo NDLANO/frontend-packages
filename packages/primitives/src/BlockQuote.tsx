@@ -6,8 +6,9 @@
  *
  */
 
+import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { RecipeVariantProps, cva } from "@ndla/styled-system/css";
+import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 
@@ -41,4 +42,8 @@ export type BlockQuoteVariantProps = RecipeVariantProps<typeof blockQuoteRecipe>
 
 export type BlockQuoteProps = HTMLArkProps<"blockquote"> & JsxStyleProps & BlockQuoteVariantProps;
 
-export const BlockQuote = styled(ark.blockquote, blockQuoteRecipe);
+const StyledBlockQuote = styled(ark.blockquote, {}, { baseComponent: true });
+
+export const BlockQuote = forwardRef<HTMLQuoteElement, BlockQuoteProps>(({ variant, css: cssProp, ...props }, ref) => (
+  <StyledBlockQuote css={css.raw(blockQuoteRecipe.raw({ variant }), cssProp)} {...props} ref={ref} />
+));

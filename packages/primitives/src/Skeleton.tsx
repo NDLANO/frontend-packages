@@ -10,20 +10,24 @@ import { HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 
-export const Skeleton = styled(ark.div, {
-  base: {
-    animation: "skeleton-pulse",
-    backgroundColor: "surface.disabled",
-    backgroundClip: "padding-box",
-    borderRadius: "xsmall",
-    color: "transparent",
-    cursor: "default",
-    pointerEvents: "none",
-    userSelect: "none",
-    "&::before, &::after, *": {
-      visibility: "hidden",
+export const Skeleton = styled(
+  ark.div,
+  {
+    base: {
+      animation: "skeleton-pulse",
+      backgroundColor: "surface.disabled",
+      backgroundClip: "padding-box",
+      borderRadius: "xsmall",
+      color: "transparent",
+      cursor: "default",
+      pointerEvents: "none",
+      userSelect: "none",
+      "&::before, &::after, *": {
+        visibility: "hidden",
+      },
     },
   },
-});
+  { baseComponent: true },
+);
 
 export interface SkeletonProps extends HTMLArkProps<"div">, JsxStyleProps {}

@@ -221,6 +221,10 @@ const OverflowWrapper = styled.div`
   overflow-x: auto;
 `;
 
+const StyledTable = styled.table`
+  ${TableStyling};
+`;
+
 const Table = ({ children, id, ...rest }: Props) => {
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition | undefined>(undefined);
   const tableRef = useRef<HTMLTableElement>(null);
@@ -268,9 +272,9 @@ const Table = ({ children, id, ...rest }: Props) => {
     <TableWrapper>
       <OverflowWrapper>
         <LeftScrollBorder data-block={scrollPosition === "end" || scrollPosition === "center"} />
-        <table ref={tableRef} id={id} onScroll={onScroll} css={TableStyling} {...rest}>
+        <StyledTable ref={tableRef} id={id} onScroll={onScroll} {...rest}>
           {children}
-        </table>
+        </StyledTable>
         <RightScrollBorder data-block={scrollPosition === "start" || scrollPosition === "center"} />
       </OverflowWrapper>
     </TableWrapper>

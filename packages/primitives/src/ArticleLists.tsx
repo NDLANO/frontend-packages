@@ -6,15 +6,13 @@
  *
  */
 
-import { HTMLArkProps } from "@ark-ui/react";
+import { forwardRef } from "react";
+import { HTMLArkProps, ark } from "@ark-ui/react";
+import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, StyledVariantProps } from "@ndla/styled-system/types";
+import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
-export type OrderedListVariantProps = StyledVariantProps<typeof OrderedList>;
-
-export type OrderedListProps = HTMLArkProps<"ol"> & JsxStyleProps & OrderedListVariantProps;
-
-export const OrderedList = styled("ol", {
+const orderedListRecipe = cva({
   base: {
     listStyle: "revert",
     listStylePosition: "inside",
@@ -61,6 +59,18 @@ export const OrderedList = styled("ol", {
     },
   },
 });
+
+export type OrderedListVariantProps = RecipeVariantProps<typeof orderedListRecipe>;
+
+export type OrderedListProps = HTMLArkProps<"ol"> & JsxStyleProps & OrderedListVariantProps;
+
+const StyledOrderedList = styled(ark.ol, {}, { baseComponent: true });
+
+export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
+  ({ variant, css: cssProp, ...props }, ref) => (
+    <StyledOrderedList css={css.raw(orderedListRecipe.raw({ variant }), cssProp)} {...props} ref={ref} />
+  ),
+);
 
 export type UnOrderedListProps = HTMLArkProps<"ul"> & JsxStyleProps;
 

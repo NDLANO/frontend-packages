@@ -194,8 +194,8 @@ export const ComboboxItemGroupLabel = ({
   fontWeight = "bold",
   ...props
 }: Combobox.ItemGroupLabelProps & TextProps) => (
-  <InternalComboboxItemGroupLabel forwardCssProp asChild>
-    <Text asChild textStyle={textStyle} fontWeight={fontWeight} {...props}>
+  <InternalComboboxItemGroupLabel asChild>
+    <Text asChild consumeCss textStyle={textStyle} fontWeight={fontWeight} {...props}>
       <div>{children}</div>
     </Text>
   </InternalComboboxItemGroupLabel>
@@ -224,10 +224,13 @@ const InternalComboboxItemText = withContext<HTMLDivElement, Assign<JsxStyleProp
 export const ComboboxItemText = ({
   textStyle = "label.medium",
   fontWeight = "bold",
+  children,
   ...props
 }: Combobox.ItemTextProps & TextProps) => (
-  <InternalComboboxItemText forwardCssProp asChild>
-    <Text {...props} />
+  <InternalComboboxItemText asChild>
+    <Text {...props} asChild consumeCss>
+      <div>{children}</div>
+    </Text>
   </InternalComboboxItemText>
 );
 
@@ -241,7 +244,7 @@ export const ComboboxLabel = ({
   fontWeight = "bold",
   ...props
 }: Combobox.LabelProps & TextProps) => (
-  <InternalComboboxLabel forwardCssProp asChild>
+  <InternalComboboxLabel asChild>
     <Label textStyle={textStyle} fontWeight={fontWeight} {...props} />
   </InternalComboboxLabel>
 );

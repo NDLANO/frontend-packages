@@ -9,10 +9,14 @@
 import { Field } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
 
-export const FieldRoot = styled(Field.Root, {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "3xsmall",
+export const FieldRoot = styled(
+  Field.Root,
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "3xsmall",
+    },
   },
-});
+  { baseComponent: true },
+);

@@ -9,10 +9,10 @@
 /** @jsxImportSource @emotion/react */
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { animations, breakpoints, colors, mq, spacing } from "@ndla/core";
+import { animations, breakpoints, colors, misc, mq, spacing } from "@ndla/core";
 import { ExpandTwoArrows, CursorClick } from "@ndla/icons/action";
 import { Play } from "@ndla/icons/common";
-import { Figure, figureActionIndicatorStyle } from "../Figure";
+import { Figure } from "../Figure";
 import Image from "../Image";
 
 const StyledImageWrapper = styled.div`
@@ -71,19 +71,44 @@ interface OpenButtonProps {
   type?: "image" | "video" | "h5p" | "iframe" | "external" | "audio";
 }
 
+export const FigureActionIndicator = styled.div`
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  padding: 0;
+  bottom: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-out;
+  // The 65 is added to alter the opacity.
+  background-color: ${colors.background.default}65;
+  border-radius: ${misc.borderRadiusLarge};
+  border: 0;
+  svg {
+    transition: transform 0.4s ease-out;
+    width: 18px;
+    height: 18px;
+    fill: ${colors.brand.primary};
+    color: ${colors.brand.primary};
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
+  }
+`;
+
 export const OpenButton = ({ type }: OpenButtonProps) => {
   const { t } = useTranslation();
   return (
-    <div
-      css={figureActionIndicatorStyle}
-      data-open-button=""
-      aria-label={t("license.images.itemImage.zoomImageButtonLabel")}
-    >
+    <FigureActionIndicator data-open-button="" aria-label={t("license.images.itemImage.zoomImageButtonLabel")}>
       {type === "image" && <ExpandTwoArrows />}
       {type === "h5p" && <CursorClick style={{ width: "24px", height: "24px" }} />}
       {type === "iframe" && <CursorClick style={{ width: "24px", height: "24px" }} />}
       {type === "external" && <CursorClick style={{ width: "24px", height: "24px" }} />}
       {type === "video" && <Play style={{ width: "24px", height: "24px" }} />}
-    </div>
+    </FigureActionIndicator>
   );
 };

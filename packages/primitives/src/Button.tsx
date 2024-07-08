@@ -193,7 +193,7 @@ export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProp
 
 export type ButtonProps = HTMLArkProps<"button"> & JsxStyleProps & ButtonVariantProps;
 
-const StyledButton = styled(ark.button, {}, { defaultProps: { type: "button" } });
+const StyledButton = styled(ark.button, {}, { baseComponent: true, defaultProps: { type: "button" } });
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ variant, size, css: cssProp, ...props }, ref) => (
   <StyledButton
@@ -209,7 +209,7 @@ export type IconButtonVariantProps = { variant?: IconButtonVariant };
 
 export type IconButtonProps = HTMLArkProps<"button"> & IconButtonVariantProps & JsxStyleProps;
 
-const StyledIconButton = styled(ark.button, {}, { defaultProps: { type: "button" } });
+const StyledIconButton = styled(ark.button, {}, { baseComponent: true, defaultProps: { type: "button" } });
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({ variant, css: cssProp, ...props }, ref) => (
   <StyledIconButton

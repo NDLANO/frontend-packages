@@ -35,26 +35,26 @@ export default {
         <TabsIndicator />
       </TabsList>
       <TabsContent value="color">
-        <Heading asChild textStyle="heading.medium">
+        <Heading asChild consumeCss textStyle="heading.medium">
           <h2>Oversikt over farger</h2>
         </Heading>
         <Text>Grønn, blå og rød.</Text>
         <Button>Hallo</Button>
       </TabsContent>
       <TabsContent value="shapes">
-        <Heading asChild textStyle="heading.medium">
+        <Heading asChild consumeCss textStyle="heading.medium">
           <h2>Oversikt over figurer</h2>
         </Heading>
         <Text>Sirkel, trekant og firkant.</Text>
       </TabsContent>
       <TabsContent value="secret">
-        <Heading asChild textStyle="heading.medium">
+        <Heading asChild consumeCss textStyle="heading.medium">
           <h2>Ikke hemmelig</h2>
         </Heading>
         <Text>Egentlig ikke så spennende</Text>
       </TabsContent>
       <TabsContent value="secret2">
-        <Heading asChild textStyle="heading.medium">
+        <Heading asChild consumeCss textStyle="heading.medium">
           <h2>Ikke hemmelig</h2>
         </Heading>
         <Text>Egentlig ikke så spennende</Text>

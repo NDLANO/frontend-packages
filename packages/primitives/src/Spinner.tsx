@@ -6,8 +6,9 @@
  *
  */
 
+import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { RecipeVariantProps, cva } from "@ndla/styled-system/css";
+import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 
@@ -44,6 +45,10 @@ export const spinnerRecipe = cva({
 
 export type SpinnerVariantProps = RecipeVariantProps<typeof spinnerRecipe>;
 
-export type SpinnerProps = HTMLArkProps<"div"> & SpinnerVariantProps & JsxStyleProps;
+export type SpinnerProps = HTMLArkProps<"div"> & JsxStyleProps & SpinnerVariantProps;
 
-export const Spinner = styled(ark.div, spinnerRecipe);
+const StyledSpinner = styled(ark.div, {}, { baseComponent: true });
+
+export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(({ size, css: cssProp, ...props }, ref) => (
+  <StyledSpinner css={css.raw(spinnerRecipe.raw({ size }), cssProp)} {...props} ref={ref} />
+));

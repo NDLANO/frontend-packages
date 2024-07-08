@@ -13,7 +13,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { TextProps } from "./Text";
 
-const StyledFieldHelper = styled(Field.HelperText);
+const StyledFieldHelper = styled(Field.HelperText, {}, { baseComponent: true });
 
 export const FieldHelper = forwardRef<HTMLDivElement, TextProps & HTMLArkProps<"div"> & JsxStyleProps>(
   ({ textStyle = "label.small", fontWeight, color, srOnly, css: cssProp, ...props }, ref) => {

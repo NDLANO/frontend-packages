@@ -6,9 +6,13 @@
  *
  */
 
+import { forwardRef } from "react";
+import { HTMLArkProps, ark } from "@ark-ui/react";
+import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
-export const Figure = styled("figure", {
+const figureRecipe = cva({
   base: {
     position: "relative",
     transitionDuration: "normal",
@@ -76,3 +80,13 @@ export const Figure = styled("figure", {
     },
   ],
 });
+
+export type FigureVariantProps = RecipeVariantProps<typeof figureRecipe>;
+
+export type FigureProps = HTMLArkProps<"figure"> & JsxStyleProps & FigureVariantProps;
+
+const StyledFigure = styled(ark.figure, {}, { baseComponent: true });
+
+export const Figure = forwardRef<HTMLElement, FigureProps>(({ size, float, css: cssProp, ...props }, ref) => (
+  <StyledFigure css={css.raw(figureRecipe.raw({ size, float }), cssProp)} {...props} ref={ref} />
+));

@@ -69,7 +69,22 @@ interface WithCss {
   css?: SystemStyleObject | SystemStyleObject[]
 }
 
-export type JsxStyleProps = { forwardCssProp?: boolean } &  WithCss
+export type JsxStyleProps = { 
+  /**
+  * Tells a component to consume the `css` prop and turn it into a `className` prop. This is only used in conjunction with the `baseComponent` prop in the `styled` function to ensure that components that are `asChild`-ed onto non-panda components can consume their css before being merged with their child.
+  * @example
+  * import { ark } from "@ark-ui/react"
+  * import { styled } from "@ndla/styled-system/jsx"
+  * const Button = styled('button', { baseComponent: true })
+  *
+  * return (
+  *   <Button asChild consumeCss>
+  *     <div>Click me</div>
+  *   </Button>
+  * )
+  */
+  consumeCss?: boolean 
+  } &  WithCss
 
 export interface PatchedHTMLProps {
   htmlWidth?: string | number

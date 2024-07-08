@@ -67,8 +67,8 @@ export const ToastDescription = ({
   children,
   ...props
 }: Toast.DescriptionProps & TextProps & JsxStyleProps) => (
-  <InternalToastDescription asChild forwardCssProp>
-    <Text asChild textStyle={textStyle} {...props}>
+  <InternalToastDescription asChild>
+    <Text asChild consumeCss textStyle={textStyle} {...props}>
       <div>{children}</div>
     </Text>
   </InternalToastDescription>
@@ -82,8 +82,8 @@ export const ToastTitle = ({
   children,
   ...props
 }: JsxStyleProps & Toast.TitleProps & TextProps) => (
-  <InternalToastTitle asChild forwardCssProp>
-    <Text asChild fontWeight={fontWeight} textStyle={textStyle} {...props}>
+  <InternalToastTitle asChild>
+    <Text asChild consumeCss fontWeight={fontWeight} textStyle={textStyle} {...props}>
       <div>{children}</div>
     </Text>
   </InternalToastTitle>

@@ -32,7 +32,7 @@ export default {
   },
   render: ({ children, ...args }) => (
     <PopoverRoot {...args}>
-      <PopoverTrigger asChild forwardCssProp>
+      <PopoverTrigger asChild>
         <Button>Open me!</Button>
       </PopoverTrigger>
       <Portal>
@@ -59,7 +59,7 @@ export const LeftAligned: StoryObj<typeof PopoverRoot> = {
   },
   render: ({ children, ...args }) => (
     <PopoverRoot {...args}>
-      <PopoverTrigger asChild forwardCssProp>
+      <PopoverTrigger asChild>
         <Button css={{ marginInlineStart: "50%" }}>Open me!</Button>
       </PopoverTrigger>
       <Portal>
@@ -74,7 +74,7 @@ export const LeftAligned: StoryObj<typeof PopoverRoot> = {
 
 export const WithStandaloneComponents: StoryFn = (args) => (
   <PopoverRoot {...args}>
-    <PopoverTrigger asChild forwardCssProp>
+    <PopoverTrigger asChild>
       <Button>Open me!</Button>
     </PopoverTrigger>
     <Portal>

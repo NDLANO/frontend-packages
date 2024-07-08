@@ -18,9 +18,14 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
   const __cvaFn__ = composeCvaFn(Dynamic.__cva__, cvaFn)
   const __shouldForwardProps__ = composeShouldForwardProps(Dynamic, shouldForwardProp)
   const __base__ = Dynamic.__base__ || Dynamic
+  const contextConsume = options.baseComponent ?? Dynamic.__base__ ?? typeof Dynamic === "string"
 
   const StyledComponent = /* @__PURE__ */ forwardRef(function StyledComponent(props, ref) {
-    const { as: Element = __base__, forwardCssProp, children, ...restProps } = props
+    const { as: Element = __base__, consumeCss, children, ...restProps } = props
+
+    const consume = props.asChild
+      ? consumeCss && options.baseComponent
+      : consumeCss ?? contextConsume
 
     const combinedProps = useMemo(() => Object.assign({}, defaultProps, restProps), [restProps])
 
@@ -37,7 +42,7 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
     function cvaClass() {
       const { css: cssStyles, ...propStyles } = styleProps
       const cvaStyles = __cvaFn__.raw(variantProps)
-      if(options.forwardCssProp || forwardCssProp) {
+      if(!consume) {
         return css.raw(cvaStyles, propStyles, cssStyles)
       }
       return cx(css(cvaStyles, propStyles, cssStyles), combinedProps.className)
@@ -50,7 +55,7 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
       ...forwardedProps,
       ...elementProps,
       ...normalizeHTMLProps(htmlProps),
-      ...(options.forwardCssProp || forwardCssProp ? { css: classes() } : { className: classes() }),
+      ...(consume ? { className: classes() } : { css: classes(), consumeCss } ),
     }, combinedProps.children ?? children)
   })
 

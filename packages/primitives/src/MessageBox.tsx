@@ -6,8 +6,9 @@
  *
  */
 
+import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { cva } from "@ndla/styled-system/css";
+import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
@@ -49,4 +50,8 @@ export type MessageBoxVariantProps = RecipeVariantProps<typeof messageBoxRecipe>
 
 export type MessageBoxProps = HTMLArkProps<"div"> & JsxStyleProps & MessageBoxVariantProps;
 
-export const MessageBox = styled(ark.div, messageBoxRecipe);
+const StyledMessageBox = styled(ark.div, {}, { baseComponent: true });
+
+export const MessageBox = forwardRef<HTMLDivElement, MessageBoxProps>(({ variant, css: cssProp, ...props }, ref) => (
+  <StyledMessageBox css={css.raw(messageBoxRecipe.raw({ variant }), cssProp)} {...props} ref={ref} />
+));

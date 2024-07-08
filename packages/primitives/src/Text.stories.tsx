@@ -177,32 +177,24 @@ export const LabelXsmall: StoryObj<typeof Text> = {
 };
 
 export const Polymorphic: StoryFn<typeof Text> = () => (
-  <Text asChild>
+  <Text asChild consumeCss>
     <div>
       The underlying HTML tag can be changed through the use of the <code>asChild</code> prop!
     </div>
   </Text>
 );
 
-const StyledText = styled(
-  Text,
-  {
-    base: {
-      textStyle: "heading.large",
-    },
+const StyledText = styled(Text, {
+  base: {
+    textStyle: "heading.large",
   },
-  { forwardCssProp: true },
-);
+});
 
-const StyledHeading = styled(
-  Heading,
-  {
-    base: {
-      textStyle: "heading.small",
-    },
+const StyledHeading = styled(Heading, {
+  base: {
+    textStyle: "heading.small",
   },
-  { forwardCssProp: true },
-);
+});
 
 export const Styled = () => (
   <div className={css({ display: "flex", flexDirection: "column", gap: "xsmall" })}>
@@ -210,7 +202,7 @@ export const Styled = () => (
     <StyledText>
       You can restyle components by using the <code>styled</code> function. This will override existing styles.
     </StyledText>
-    <StyledText asChild>
+    <StyledText asChild consumeCss>
       <span>
         This pattern also works flawlessly with the <code>asChild</code> prop.
       </span>

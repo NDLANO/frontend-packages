@@ -13,39 +13,47 @@ import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { TextProps } from "./Text";
 
-const StyledLegend = styled(ark.legend, {
-  base: {
-    float: "none",
-    width: "inherit",
-    _disabled: {
-      color: "text.subtle",
+const StyledLegend = styled(
+  ark.legend,
+  {
+    base: {
+      float: "none",
+      width: "inherit",
+      _disabled: {
+        color: "text.subtle",
+      },
     },
   },
-});
+  { baseComponent: true },
+);
 
 export type LegendProps = HTMLArkProps<"legend"> & JsxStyleProps & TextProps;
 
 // TODO: This is not exported for now. Let's wait and see when ark decides to release their legend and fieldset.
 export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
-  ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, ...rest }, ref) => (
-    <StyledLegend css={css.raw({ textStyle, fontWeight, srOnly }, cssProp)} {...rest} ref={ref} />
+  ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, color, ...rest }, ref) => (
+    <StyledLegend css={css.raw({ textStyle, fontWeight, srOnly, color }, cssProp)} {...rest} ref={ref} />
   ),
 );
 
-const StyledLabel = styled(ark.label, {
-  base: {
-    display: "inline-block",
-    _disabled: {
-      color: "text.subtle",
+const StyledLabel = styled(
+  ark.label,
+  {
+    base: {
+      display: "inline-block",
+      _disabled: {
+        color: "text.subtle",
+      },
     },
   },
-});
+  { baseComponent: true },
+);
 
 export type LabelProps = HTMLArkProps<"label"> & TextProps & JsxStyleProps;
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
-  ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, ...rest }, ref) => (
-    <StyledLabel css={css.raw({ textStyle, fontWeight, srOnly }, cssProp)} {...rest} ref={ref} />
+  ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, color, ...rest }, ref) => (
+    <StyledLabel css={css.raw({ textStyle, fontWeight, srOnly, color }, cssProp)} {...rest} ref={ref} />
   ),
 );
 

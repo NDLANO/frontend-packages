@@ -296,20 +296,29 @@ const InternalDialogDescription = withContext<HTMLParagraphElement, JsxStyleProp
 
 export const DialogDescription = ({
   textStyle = "body.large",
+  children,
   ...rest
 }: Dialog.DescriptionProps & TextProps & JsxStyleProps) => {
   return (
-    <InternalDialogDescription asChild forwardCssProp>
-      <Text textStyle={textStyle} {...rest}></Text>
+    <InternalDialogDescription asChild>
+      <Text textStyle={textStyle} {...rest}>
+        {children}
+      </Text>
     </InternalDialogDescription>
   );
 };
 
 const InternalDialogTitle = withContext<HTMLHeadingElement, JsxStyleProps & Dialog.TitleProps>(Dialog.Title, "title");
 
-export const DialogTitle = ({ textStyle = "title.medium", ...rest }: Dialog.TitleProps & TextProps & JsxStyleProps) => (
-  <InternalDialogTitle asChild forwardCssProp>
-    <Heading textStyle={textStyle} {...rest}></Heading>
+export const DialogTitle = ({
+  textStyle = "title.medium",
+  children,
+  ...rest
+}: Dialog.TitleProps & TextProps & JsxStyleProps) => (
+  <InternalDialogTitle asChild>
+    <Heading textStyle={textStyle} {...rest}>
+      {children}
+    </Heading>
   </InternalDialogTitle>
 );
 

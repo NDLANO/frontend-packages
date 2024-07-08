@@ -28,7 +28,7 @@ const meta: Meta<typeof AccordionRoot> = {
   render: (args) => (
     <AccordionRoot {...args}>
       <AccordionItem value={"1"}>
-        <Heading asChild textStyle="label.medium" fontWeight="bold">
+        <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
           <h2>
             <AccordionItemTrigger>
               Tittel
@@ -46,7 +46,7 @@ const meta: Meta<typeof AccordionRoot> = {
         </AccordionItemContent>
       </AccordionItem>
       <AccordionItem value={"2"}>
-        <Heading asChild textStyle="label.medium" fontWeight="bold">
+        <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
           <h2>
             <AccordionItemTrigger>
               Tittel

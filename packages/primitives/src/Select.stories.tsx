@@ -60,7 +60,7 @@ export const Default: StoryFn<typeof SelectRoot> = ({ ...args }) => {
     <SelectRoot {...args} items={measurements}>
       <SelectLabel>Measurement</SelectLabel>
       <SelectControl>
-        <SelectTrigger asChild forwardCssProp>
+        <SelectTrigger asChild>
           <Button variant="secondary">
             <SelectValueText placeholder="Select measurement" />
             <SelectIndicator asChild>
@@ -92,7 +92,7 @@ export const Disabled: StoryFn<typeof SelectRoot> = ({ ...args }) => {
     <SelectRoot {...args} disabled items={measurements}>
       <SelectLabel>Measurement</SelectLabel>
       <SelectControl>
-        <SelectTrigger asChild forwardCssProp>
+        <SelectTrigger asChild>
           <Button variant="secondary">
             <SelectValueText placeholder="Select measurement" />
             <SelectIndicator asChild>
@@ -125,7 +125,7 @@ export const DisabledItems: StoryFn<typeof SelectRoot> = ({ ...args }) => {
     <SelectRoot {...args} items={withDisabled}>
       <SelectLabel>Measurement</SelectLabel>
       <SelectControl>
-        <SelectTrigger asChild forwardCssProp>
+        <SelectTrigger asChild>
           <Button variant="secondary">
             <SelectValueText placeholder="Select measurement" />
             <SelectIndicator asChild>
@@ -166,7 +166,7 @@ export const Grouped: StoryFn<typeof SelectRoot> = ({ ...args }) => {
     <SelectRoot {...args} items={europeanCountries}>
       <SelectLabel>Country</SelectLabel>
       <SelectControl>
-        <SelectTrigger asChild forwardCssProp>
+        <SelectTrigger asChild>
           <Button variant="secondary">
             <SelectValueText placeholder="Choose country" />
             <SelectIndicator asChild>
@@ -203,7 +203,7 @@ export const Multiple: StoryFn<typeof SelectRoot> = ({ ...args }) => {
     <SelectRoot {...args} items={europeanCountries} multiple>
       <SelectLabel>Countries you've been to</SelectLabel>
       <SelectControl>
-        <SelectTrigger asChild forwardCssProp>
+        <SelectTrigger asChild>
           <Button variant="secondary">
             <SelectValueText placeholder="Choose country" />
             <SelectIndicator asChild>
@@ -247,7 +247,7 @@ export const MultipleTruncated: StoryFn<typeof SelectRoot> = ({ ...args }) => {
     >
       <SelectLabel>Countries you've been to</SelectLabel>
       <SelectControl>
-        <SelectTrigger asChild forwardCssProp>
+        <SelectTrigger asChild>
           <Button variant="secondary">
             <SelectValueText placeholder="Choose country">
               {value.length > 3
@@ -291,7 +291,7 @@ export const WithClearButton: StoryFn<typeof SelectRoot> = ({ ...args }) => {
     <SelectRoot {...args} items={europeanCountries} multiple>
       <SelectLabel>Countries you've been to</SelectLabel>
       <SelectControl>
-        <SelectTrigger asChild forwardCssProp>
+        <SelectTrigger asChild>
           <Button variant="secondary">
             <SelectValueText placeholder="Choose country" />
             <SelectIndicator asChild>
@@ -299,7 +299,7 @@ export const WithClearButton: StoryFn<typeof SelectRoot> = ({ ...args }) => {
             </SelectIndicator>
           </Button>
         </SelectTrigger>
-        <SelectClearTrigger asChild forwardCssProp>
+        <SelectClearTrigger asChild>
           <IconButton variant="secondary">
             <Cross />
           </IconButton>
@@ -357,7 +357,7 @@ export const InDialog: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           >
             <SelectLabel>Measurement</SelectLabel>
             <SelectControl>
-              <SelectTrigger asChild forwardCssProp>
+              <SelectTrigger asChild>
                 <Button variant="secondary">
                   <SelectValueText placeholder="Select measurement" />
                   <SelectIndicator asChild>
@@ -402,7 +402,7 @@ export const WithField: StoryFn<typeof SelectRoot> = ({ ...args }) => {
         <FieldHelper>You cannot choose centimeter.</FieldHelper>
         <FieldErrorMessage>I told you to choose anything but centimeter...</FieldErrorMessage>
         <SelectControl>
-          <SelectTrigger asChild forwardCssProp>
+          <SelectTrigger asChild>
             <Button variant="secondary">
               <SelectValueText placeholder="Select measurement" />
               <SelectIndicator asChild>
@@ -410,7 +410,7 @@ export const WithField: StoryFn<typeof SelectRoot> = ({ ...args }) => {
               </SelectIndicator>
             </Button>
           </SelectTrigger>
-          <SelectClearTrigger asChild forwardCssProp>
+          <SelectClearTrigger asChild>
             <IconButton variant="secondary">
               <Cross />
             </IconButton>

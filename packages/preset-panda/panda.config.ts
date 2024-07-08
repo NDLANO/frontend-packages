@@ -18,7 +18,7 @@ export default defineConfig({
   shorthands: false,
   outExtension: "js",
   include: ["./src/**/*.{js,jsx,ts,tsx}"],
-  exclude: ["./src/**/*.stories.{js,jsx,ts,tsx}"],
+  exclude: ["./src/**/*.stories.{js,jsx,ts,tsx}", "./src/**/*-test.{js,jsx,ts,tsx}"],
   importMap: "@ndla/styled-system",
   outdir: "../styled-system",
   jsxFramework: "react",

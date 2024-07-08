@@ -6,8 +6,9 @@
  *
  */
 
+import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
-import { cva } from "@ndla/styled-system/css";
+import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
@@ -42,4 +43,10 @@ export type FramedContentVariantProps = RecipeVariantProps<typeof framedContentR
 
 export type FramedContentProps = HTMLArkProps<"div"> & JsxStyleProps & FramedContentVariantProps;
 
-export const FramedContent = styled(ark.div, framedContentRecipe);
+const StyledFramedContent = styled(ark.div, {}, { baseComponent: true });
+
+export const FramedContent = forwardRef<HTMLDivElement, FramedContentProps>(
+  ({ colorTheme, css: cssProp, ...props }, ref) => (
+    <StyledFramedContent css={css.raw(framedContentRecipe.raw({ colorTheme }), cssProp)} {...props} ref={ref} />
+  ),
+);

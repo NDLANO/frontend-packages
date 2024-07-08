@@ -60,16 +60,16 @@ export const Default: StoryFn<typeof ComboboxRoot> = (args) => {
       <ComboboxLabel>Choose your place of residence</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
-          <ComboboxInput asChild forwardCssProp>
+          <ComboboxInput asChild>
             <Input placeholder="Where do you live?" />
           </ComboboxInput>
-          <ComboboxClearTrigger asChild forwardCssProp>
+          <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
               <Cross />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
-        <ComboboxTrigger asChild forwardCssProp>
+        <ComboboxTrigger asChild>
           <IconButton variant="secondary">
             <ChevronDown />
           </IconButton>
@@ -106,16 +106,16 @@ export const Disabled: StoryFn<typeof ComboboxRoot> = (args) => {
       <ComboboxLabel>Choose your place of residence</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
-          <ComboboxInput asChild forwardCssProp>
+          <ComboboxInput asChild>
             <Input placeholder="Where do you live?" />
           </ComboboxInput>
-          <ComboboxClearTrigger asChild forwardCssProp>
+          <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
               <Cross />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
-        <ComboboxTrigger asChild forwardCssProp>
+        <ComboboxTrigger asChild>
           <IconButton variant="secondary">
             <ChevronDown />
           </IconButton>
@@ -156,16 +156,16 @@ export const DisabledItems: StoryFn<typeof ComboboxRoot> = (args) => {
       <ComboboxLabel>Choose your place of residence</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
-          <ComboboxInput asChild forwardCssProp>
+          <ComboboxInput asChild>
             <Input placeholder="Where do you live?" />
           </ComboboxInput>
-          <ComboboxClearTrigger asChild forwardCssProp>
+          <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
               <Cross />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
-        <ComboboxTrigger asChild forwardCssProp>
+        <ComboboxTrigger asChild>
           <IconButton variant="secondary">
             <ChevronDown />
           </IconButton>
@@ -202,16 +202,16 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
-          <ComboboxInput asChild forwardCssProp>
+          <ComboboxInput asChild>
             <Input placeholder="Velg et rammeverk" />
           </ComboboxInput>
-          <ComboboxClearTrigger asChild forwardCssProp>
+          <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
               <Cross />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
-        <ComboboxTrigger asChild forwardCssProp>
+        <ComboboxTrigger asChild>
           <IconButton variant="secondary">
             <ChevronDown />
           </IconButton>
@@ -272,16 +272,16 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
       <ComboboxLabel>Countries you've visited</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
-          <ComboboxInput asChild forwardCssProp>
+          <ComboboxInput asChild>
             <Input placeholder="Har du vært i Spania?" />
           </ComboboxInput>
-          <ComboboxClearTrigger asChild forwardCssProp>
+          <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
               <Cross />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
-        <ComboboxTrigger asChild forwardCssProp>
+        <ComboboxTrigger asChild>
           <IconButton variant="secondary">
             <ChevronDown />
           </IconButton>
@@ -336,16 +336,16 @@ export const WithField: StoryFn<typeof ComboboxRoot> = (args) => {
         <FieldErrorMessage>You have to live somewhere</FieldErrorMessage>
         <ComboboxControl>
           <InputContainer>
-            <ComboboxInput asChild forwardCssProp>
+            <ComboboxInput asChild>
               <Input placeholder="Where do you live?" />
             </ComboboxInput>
-            <ComboboxClearTrigger asChild forwardCssProp>
+            <ComboboxClearTrigger asChild>
               <IconButton variant="clear">
                 <Cross />
               </IconButton>
             </ComboboxClearTrigger>
           </InputContainer>
-          <ComboboxTrigger asChild forwardCssProp>
+          <ComboboxTrigger asChild>
             <IconButton variant="secondary">
               <ChevronDown />
             </IconButton>

@@ -9,7 +9,6 @@
 import { Assign, FileUpload, FileUploadHiddenInput, fileUploadAnatomy } from "@ark-ui/react";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
-import { IconButton } from "./Button";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
 import { TextProps, Text } from "./Text";
@@ -106,7 +105,7 @@ export const FileUploadLabel = ({
   ...props
 }: FileUpload.LabelProps & TextProps) => {
   return (
-    <InternalFileUploadLabel asChild forwardCssProp>
+    <InternalFileUploadLabel asChild>
       <Label textStyle={textStyle} fontWeight={fontWeight} {...props} />
     </InternalFileUploadLabel>
   );
@@ -130,6 +129,7 @@ export const FileUploadItemPreview = withContext<HTMLDivElement, Assign<JsxStyle
   "itemPreview",
 );
 export const FileUploadItemPreviewImage = FileUpload.ItemPreviewImage;
+
 const InternalFileUploadItemName = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemNameProps>>(
   FileUpload.ItemName,
   "itemName",
@@ -139,11 +139,9 @@ export const FileUploadItemName = ({
   fontWeight = "bold",
   ...props
 }: FileUpload.ItemNameProps & TextProps & JsxStyleProps) => (
-  <InternalFileUploadItemName asChild>
-    <Text textStyle={textStyle} fontWeight={fontWeight} asChild forwardCssProp>
-      <div {...props} />
-    </Text>
-  </InternalFileUploadItemName>
+  <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss {...props}>
+    <InternalFileUploadItemName />
+  </Text>
 );
 
 export const FileUploadItem = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemProps>>(
@@ -151,21 +149,19 @@ export const FileUploadItem = withContext<HTMLDivElement, Assign<JsxStyleProps, 
   "item",
 );
 
-export const InternalFileUploadItemSizeText = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, FileUpload.ItemSizeTextProps>
->(FileUpload.ItemSizeText, "itemSizeText");
+const InternalFileUploadItemSizeText = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemSizeTextProps>>(
+  FileUpload.ItemSizeText,
+  "itemSizeText",
+);
 
 export const FileUploadItemSizeText = ({
   textStyle = "label.small",
   fontWeight = "light",
   ...props
 }: FileUpload.ItemSizeTextProps & TextProps & JsxStyleProps) => (
-  <InternalFileUploadItemSizeText asChild forwardCssProp>
-    <Text textStyle={textStyle} fontWeight={fontWeight} asChild forwardCssProp>
-      <div {...props} />
-    </Text>
-  </InternalFileUploadItemSizeText>
+  <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss {...props}>
+    <InternalFileUploadItemSizeText />
+  </Text>
 );
 
 const InternalFileUploadItemDeleteTrigger = withContext<

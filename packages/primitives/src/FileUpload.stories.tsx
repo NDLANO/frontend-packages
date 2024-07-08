@@ -6,8 +6,13 @@
  *
  */
 
+import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
+import { FileDocumentOutline } from "@ndla/icons/common";
+import { DeleteForever } from "@ndla/icons/editor";
 import { Button, IconButton } from "./Button";
+import { FieldRoot } from "./Field";
+import { FieldErrorMessage } from "./FieldErrorMessage";
 import {
   FileUploadContext,
   FileUploadDropzone,
@@ -22,15 +27,14 @@ import {
   FileUploadRoot,
   FileUploadTrigger,
 } from "./FileUpload";
-import { DeleteForever } from "@ndla/icons/editor";
-import { FileDocumentOutline } from "@ndla/icons/common";
-import { useState } from "react";
 
 const meta: Meta<typeof FileUploadRoot> = {
   title: "Primitives/FileUpload",
   tags: ["autodocs"],
   component: FileUploadRoot,
-  args: {},
+  args: {
+    maxFiles: Infinity,
+  },
 };
 
 export default meta;
@@ -172,8 +176,8 @@ export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
   </FileUploadRoot>
 );
 
-export const OnlyFilesBetweenSizes: StoryFn<typeof FileUploadRoot> = (args) => (
-  <FileUploadRoot {...args} minFileSize={1000000} maxFileSize={4000000} maxFiles={3}>
+export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) => (
+  <FileUploadRoot {...args} minFileSize={1000000} maxFileSize={4000000}>
     <FileUploadLabel>Fileupload</FileUploadLabel>
     <FileUploadDropzone>
       <FileUploadLabel textStyle="label.medium" fontWeight="light">
@@ -253,45 +257,48 @@ export const Disabled: StoryFn<typeof FileUploadRoot> = (args) => (
 );
 
 export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
-  const [files, setFiles] = useState<File[]>([]);
+  const [invalid, setInvalid] = useState(false);
 
   return (
-    <FileUploadRoot {...args} disabled={true}>
-      <FileUploadLabel>Fileupload</FileUploadLabel>
-      <FileUploadDropzone>
-        <FileUploadLabel textStyle="label.medium" fontWeight="light">
-          Drop your files here or click to upload
-        </FileUploadLabel>
-        <FileUploadTrigger asChild>
-          <Button>
-            <DeleteForever />
-            Open Dialog
-          </Button>
-        </FileUploadTrigger>
-      </FileUploadDropzone>
-      <FileUploadItemGroup>
-        <FileUploadContext>
-          {({ acceptedFiles }) =>
-            acceptedFiles.map((file) => (
-              <FileUploadItem key={file.name} file={file}>
-                <FileUploadItemPreview type="image/*">
-                  <FileUploadItemPreviewImage />
-                </FileUploadItemPreview>
-                <FileUploadItemPreview type="^(?!image\/.*).*">
-                  <FileDocumentOutline />
-                </FileUploadItemPreview>
-                <FileUploadItemName />
-                <FileUploadItemSizeText />
-                <FileUploadItemDeleteTrigger asChild forwardCssProp>
-                  <IconButton variant="secondary">
-                    <DeleteForever />
-                  </IconButton>
-                </FileUploadItemDeleteTrigger>
-              </FileUploadItem>
-            ))
-          }
-        </FileUploadContext>
-      </FileUploadItemGroup>
-    </FileUploadRoot>
+    <FieldRoot invalid={invalid}>
+      <FileUploadRoot {...args} onFileReject={() => setInvalid(true)} accept="image/*">
+        <FileUploadLabel>Fileupload</FileUploadLabel>
+        <FileUploadDropzone>
+          <FileUploadLabel textStyle="label.medium" fontWeight="light">
+            Drop your files here or click to upload
+          </FileUploadLabel>
+          <FileUploadTrigger asChild>
+            <Button>
+              <DeleteForever />
+              Open Dialog
+            </Button>
+          </FileUploadTrigger>
+        </FileUploadDropzone>
+        <FileUploadItemGroup>
+          <FileUploadContext>
+            {({ acceptedFiles }) =>
+              acceptedFiles.map((file) => (
+                <FileUploadItem key={file.name} file={file}>
+                  <FileUploadItemPreview type="image/*">
+                    <FileUploadItemPreviewImage />
+                  </FileUploadItemPreview>
+                  <FileUploadItemPreview type="^(?!image\/.*).*">
+                    <FileDocumentOutline />
+                  </FileUploadItemPreview>
+                  <FileUploadItemName />
+                  <FileUploadItemSizeText />
+                  <FileUploadItemDeleteTrigger asChild forwardCssProp>
+                    <IconButton variant="secondary">
+                      <DeleteForever />
+                    </IconButton>
+                  </FileUploadItemDeleteTrigger>
+                </FileUploadItem>
+              ))
+            }
+          </FileUploadContext>
+        </FileUploadItemGroup>
+      </FileUploadRoot>
+      <FieldErrorMessage>That file can't be uploaded</FieldErrorMessage>
+    </FieldRoot>
   );
 };

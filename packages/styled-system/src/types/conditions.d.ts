@@ -2,7 +2,7 @@
 import type { AnySelector, Selectors } from './selectors';
 
 export interface Conditions {
-	/** `&:where([lang='zh'], &[lang='zh-Hans'], &[lang='zh-Hant']):not([data-pinyin])` */
+	/** `&:where([lang='zh'], [lang='zh-Hans'], [lang='zh-Hant']):not([data-pinyin])` */
 	"_chinese": string
 	/** `&:has([aria-invalid='true']), &[aria-invalid='true']` */
 	"_ariaInvalid": string

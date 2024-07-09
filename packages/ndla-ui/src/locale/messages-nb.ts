@@ -822,6 +822,7 @@ const messages = {
       url: "Feil ved lasting av lydfil.",
       caption: "Beklager, en feil oppstod ved lasting av lydfil.",
     },
+    valueText: "{{start}} av {{end}}",
     controls: {
       forward15sec: "Spol 15 sekunder fram",
       rewind15sec: "Spol 15 sekunder tilbake",

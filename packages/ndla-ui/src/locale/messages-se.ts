@@ -824,6 +824,7 @@ const messages = {
       url: "Boasttuvuohta jietnafiilla viežžamis.",
       caption: "Šállošat, boasttuvuohta čuožžilii jietnafiilla viežžamis.",
     },
+    valueText: "{{start}} av {{end}}",
     controls: {
       forward15sec: "Sirdde 15 sekundda ovddas",
       rewind15sec: "Sirdde 15 sekundda maŋos",

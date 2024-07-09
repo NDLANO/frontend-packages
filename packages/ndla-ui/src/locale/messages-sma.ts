@@ -826,6 +826,7 @@ const messages = {
       url: "Fiejlie tjoeje-veedtjemisnie.",
       caption: "Gaatesjen, fiejlie sjïdti tjoeje-veedtjemisnie.",
     },
+    valueText: "{{start}} av {{end}}",
     controls: {
       forward15sec: "Juhtieh 15 sekundh åvtese",
       rewind15sec: "Juhtieh 15 sekundh bååstede",

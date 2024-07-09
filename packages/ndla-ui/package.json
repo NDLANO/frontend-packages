@@ -10,7 +10,8 @@
   "scripts": {
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "concurrently 'yarn build:types' 'yarn build:css'",
+    "prepublish": "concurrently 'yarn build:types' 'yarn build:css' 'yarn build:panda'",
+    "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'",
     "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib"
   },
   "repository": {

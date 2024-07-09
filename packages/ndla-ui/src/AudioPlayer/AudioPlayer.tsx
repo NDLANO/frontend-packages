@@ -40,8 +40,8 @@ const ImageWrapper = styled("div", {
     display: "flex",
     alignItems: "center",
     flex: "1 0 auto",
-    width: "100",
-    height: "100",
+    width: "surface.4xsmall",
+    height: "surface.4xsmall",
     overflow: "hidden",
     "& img": {
       width: "100%",
@@ -53,7 +53,7 @@ const ImageWrapper = styled("div", {
       height: "260px",
     },
     tabletWideDown: {
-      maxHeight: "400px",
+      maxHeight: "surface.small",
       maxWidth: "100%",
       width: "100%",
       height: "auto",

@@ -93,6 +93,9 @@ const ProgressWrapper = styled("div", {
     gap: "xsmall",
     gridArea: "track",
     paddingBlock: "xsmall",
+    mobileDown: {
+      paddingInline: "xsmall",
+    },
   },
 });
 

@@ -67,7 +67,7 @@ export const globalCss = defineGlobalStyles({
   p: {
     textStyle: "body.medium",
   },
-  a: {
+  "a:not([class])": {
     color: "text.link",
     textDecoration: "underline",
     _hover: {

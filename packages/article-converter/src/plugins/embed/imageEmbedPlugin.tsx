@@ -6,7 +6,7 @@
  *
  */
 
-import { attributesToProps, Element } from "html-react-parser";
+import { attributesToProps } from "html-react-parser";
 import { ImageMetaData } from "@ndla/types-embed";
 import { ImageEmbed } from "@ndla/ui";
 import { PluginType } from "../types";
@@ -14,11 +14,9 @@ import { PluginType } from "../types";
 export const imageEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props["data-json"] as string) as ImageMetaData;
-  const inGrid = (element.parentNode?.parentNode as Element)?.attribs?.["data-type"] === "grid";
 
   return (
     <ImageEmbed
-      inGrid={inGrid}
       embed={data}
       previewAlt={opts.previewAlt}
       lang={opts.articleLanguage}

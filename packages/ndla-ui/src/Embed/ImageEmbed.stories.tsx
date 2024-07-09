@@ -8,6 +8,9 @@
 
 import { ReactNode } from "react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { Text } from "@ndla/primitives";
+import { css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
@@ -185,26 +188,27 @@ export const Cropped: StoryObj<typeof ImageEmbed> = {
 };
 
 const TextWrapper = ({ children }: { children: ReactNode }) => (
-  <>
-    <p>
+  // TODO: Replace this with regular css once we drop emotion
+  <styled.div css={css.raw({ "& > p": { marginBlock: "medium", width: "100%" } })}>
+    <Text>
       Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig av
       at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-    </p>
+    </Text>
     {children}
 
-    <p>
+    <Text>
       Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
       planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-    </p>
-    <p>
+    </Text>
+    <Text>
       Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
       planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-    </p>
-    <p>
+    </Text>
+    <Text>
       Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
       planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-    </p>
-  </>
+    </Text>
+  </styled.div>
 );
 
 export const FloatLeft: StoryObj<typeof ImageEmbed> = {

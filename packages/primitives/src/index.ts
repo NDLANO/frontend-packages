@@ -85,11 +85,15 @@ export { FieldErrorMessage } from "./FieldErrorMessage";
 
 export { FieldHelper } from "./FieldHelper";
 
-export type { FigureSize } from "./Figure";
+export type { FigureSize, FigureVariantProps, FigureProps, FigureFloat } from "./Figure";
 export { Figure } from "./Figure";
 
 export type { FramedContentVariantProps, FramedContentProps } from "./FramedContent";
 export { FramedContent } from "./FramedContent";
+
+export type { ImageCrop, ImageFocalPoint, PictureProps, ImgProps, ImageProps } from "./Image";
+
+export { Picture, Img, Image } from "./Image";
 
 export { Input, FieldInput, InputContainer, TextArea, FieldTextArea } from "./Input";
 

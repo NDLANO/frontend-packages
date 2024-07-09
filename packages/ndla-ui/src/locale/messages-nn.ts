@@ -822,6 +822,7 @@ const messages = {
       url: "Feil ved lasting av lydfil.",
       caption: "Orsak, ein feil oppstod ved lasting av lydfil.",
     },
+    valueText: "{{start}} av {{end}}",
     controls: {
       forward15sec: "Spol 15 sekund fram",
       rewind15sec: "Spol 15 sekund tilbake",
@@ -1468,6 +1469,7 @@ const messages = {
     menuTitle: "Om NDLA",
   },
   login: "Logg inn",
+  progress: "Progress",
 };
 
 export default messages;

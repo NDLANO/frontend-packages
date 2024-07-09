@@ -125,6 +125,12 @@ const StyledSelectRoot = styled(SelectRoot, {
   },
 });
 
+const StyledSliderControl = styled(SliderControl, {
+  base: {
+    height: "surface.3xsmall",
+  },
+});
+
 const formatTime = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
   const currentSeconds = seconds % 60;
@@ -249,11 +255,15 @@ const Controls = ({ src, title }: Props) => {
             value={[audioRef.current?.currentTime ?? 0]}
             defaultValue={[0]}
             step={1}
-            max={audioRef.current?.duration ?? 0}
+            max={Math.round(audioRef.current?.duration ?? 0)}
             onValueChange={handleSliderChange}
+            getAriaValueText={(value) =>
+              t("audio.valueText", {
+                start: formatTime(Math.round(value.value)),
+                end: formatTime(Math.round(audioRef.current?.duration ?? 0)),
+              })
+            }
           >
-            {/* TODO: i18n */}
-            <SliderLabel css={visuallyHidden.raw()}>Progress</SliderLabel>
             <SliderControl>
               <SliderTrack>
                 <SliderRange />
@@ -315,15 +325,14 @@ const Controls = ({ src, title }: Props) => {
               onValueChange={handleVolumeSliderChange}
             >
               <SliderLabel css={visuallyHidden.raw()}>{t("audio.controls.adjustVolume")}</SliderLabel>
-              {/* TODO: Switch over to styled or css when emotion is gone  */}
-              <SliderControl style={{ height: "200px" }}>
+              <StyledSliderControl>
                 <SliderTrack>
                   <SliderRange />
                 </SliderTrack>
                 <SliderThumb index={0}>
                   <SliderHiddenInput />
                 </SliderThumb>
-              </SliderControl>
+              </StyledSliderControl>
             </SliderRoot>
           </PopoverContent>
         </PopoverRoot>

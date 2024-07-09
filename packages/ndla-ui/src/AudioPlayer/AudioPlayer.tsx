@@ -10,7 +10,6 @@ import { ReactNode, useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
-import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import Controls from "./Controls";
 import SpeechControl from "./SpeechControl";
@@ -116,6 +115,12 @@ const TextVersionText = styled("div", {
   },
 });
 
+const TextVersionButton = styled(Button, {
+  base: {
+    alignSelf: "flex-start",
+  },
+});
+
 const DESCRIPTION_MAX_LENGTH = 200;
 
 type Props = {
@@ -150,17 +155,15 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   };
 
   const textVersionButton = (
-    <Button
+    <TextVersionButton
       variant="secondary"
       aria-expanded={showTextVersion}
       aria-controls={textDescriptionId}
       size="small"
       onClick={toggleTextVersion}
-      // TODO: Replace css.raw with regular css
-      css={css.raw({ alignSelf: "flex-start" })}
     >
       {t(showTextVersion ? "audio.textVersion.close" : "audio.textVersion.heading")}
-    </Button>
+    </TextVersionButton>
   );
 
   return (

@@ -822,6 +822,7 @@ const messages = {
       url: "Error loading the audio.",
       caption: "Sorry, an error occurred while loading the audio.",
     },
+    valueText: "{{start}} of {{end}}",
     controls: {
       forward15sec: "Forward 15 seconds",
       rewind15sec: "Rewind 15 seconds",

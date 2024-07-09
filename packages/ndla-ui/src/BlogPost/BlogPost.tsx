@@ -6,14 +6,12 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
 import parse from "html-react-parser";
 import { useTranslation } from "react-i18next";
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, misc, mq, spacing } from "@ndla/core";
+import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
-import { HeadingLevel } from "@ndla/typography";
+import { styled } from "@ndla/styled-system/jsx";
+import { HeadingLevel } from "../types";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 export interface Props {
@@ -29,68 +27,94 @@ export interface Props {
   path?: string;
 }
 
-const Container = styled(SafeLink)`
-  margin: 0 0 ${spacing.normal} 0;
-  display: flex;
-  flex-direction: column;
-  color: ${colors.text.primary};
-  background-color: ${colors.white};
-  gap: ${spacing.nsmall};
-  box-shadow: none;
-  border: 1px solid ${colors.brand.lighter};
-  border-radius: ${misc.borderRadius};
-  padding: ${spacing.normal} ${spacing.medium};
-  height: 100%;
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    max-width: 350px;
-    &[data-size="large"] {
-      max-width: 532px;
-    }
-  }
-  &:hover,
-  &:focus-within {
-    .blog-title {
-      text-decoration: underline;
-    }
-  }
-`;
+const Container = styled(
+  SafeLink,
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      color: "text.default",
+      backgroundColor: "background.default",
+      gap: "medium",
+      border: "1px solid",
+      borderColor: "stroke.subtle",
+      borderRadius: "xsmall",
+      transitionDuration: "fast",
+      transitionProperty: "background-color, border-color, max-width",
+      transitionTimingFunction: "default",
+      height: "100%",
+      "&:hover, &:focus-visible": {
+        borderColor: "stroke.hover",
+        backgroundColor: "surface.actionSubtle.hover",
+        "& h1, h2, h3, h4, h5, h6": {
+          textDecoration: "underline",
+        },
+      },
+    },
+    defaultVariants: {
+      size: "normal",
+    },
+    variants: {
+      // TODO: Reconsider these sizes. Maybe they should match up with surface?
+      size: {
+        normal: {
+          paddingBlock: "medium",
+          paddingInline: "medium",
+          tabletWide: {
+            maxWidth: "350px",
+          },
+        },
+        large: {
+          paddingBlock: "xlarge",
+          paddingInline: "xxlarge",
+          tabletWide: {
+            maxWidth: "532px",
+          },
+        },
+      },
+    },
+  },
+  // TODO: Reconsider this once we handle SafeLink
+  { baseComponent: true },
+);
 
-const headingCss = css`
-  display: inline-block;
-  width: fit-content;
-  margin: 0;
-  font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes("26px", "36px")};
-`;
+const AuthorContainer = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    gap: "xsmall",
+    textTransform: "uppercase",
+    textStyle: "body.large",
+  },
+});
 
-const AuthorContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing.xsmall};
-  svg {
-    color: rgba(78, 81, 242, 1);
-  }
-  text-transform: uppercase;
-`;
+const StyledImg = styled("img", {
+  base: {
+    borderRadius: "xsmall",
+    flex: "1",
+    objectFit: "cover",
+    width: "100%",
+    height: "100%",
+    border: "0",
+  },
+});
 
-const StyledImg = styled.img`
-  border-radius: ${misc.borderRadius};
-  flex: 1;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border: 0;
-`;
+const StyledHeading = styled(Heading, {
+  base: {
+    display: "inline-block",
+    width: "fit-content",
+  },
+});
 
 const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = "h3", size = "normal", path }: Props) => {
   const { t } = useTranslation();
   const href = getPossiblyRelativeUrl(url, path);
   const imageWidth = size === "large" ? 532 : 350;
   return (
-    <Container data-size={size} to={href}>
-      <Heading className="blog-title" css={headingCss}>
-        {parse(title)}
-      </Heading>
+    <Container data-size={size} to={href} size={size}>
+      <StyledHeading className="blog-title" asChild consumeCss textStyle="title.large">
+        <Heading>{parse(title)}</Heading>
+      </StyledHeading>
       <StyledImg src={`${metaImage.url}?width=${imageWidth}`} alt={metaImage.alt} />
       {!!author && <AuthorContainer aria-label={t("article.writtenBy", { authors: author })}>{author}</AuthorContainer>}
     </Container>

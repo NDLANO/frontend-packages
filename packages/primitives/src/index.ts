@@ -85,6 +85,7 @@ export { FieldErrorMessage } from "./FieldErrorMessage";
 
 export { FieldHelper } from "./FieldHelper";
 
+export type { FigureSize } from "./Figure";
 export { Figure } from "./Figure";
 
 export type { FramedContentVariantProps, FramedContentProps } from "./FramedContent";

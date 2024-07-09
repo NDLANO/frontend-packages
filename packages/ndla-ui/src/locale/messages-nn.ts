@@ -1469,7 +1469,6 @@ const messages = {
     menuTitle: "Om NDLA",
   },
   login: "Logg inn",
-  progress: "Progress",
 };
 
 export default messages;

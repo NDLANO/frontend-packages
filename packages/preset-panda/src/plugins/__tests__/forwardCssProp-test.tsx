@@ -74,7 +74,7 @@ describe("CSS prop forwarding", () => {
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       <div
-        class="text_grey.50 d_inline p_small rounded_xsmall"
+        class="c_grey.50 d_inline p_small bdr_xsmall"
       >
         Hello
       </div>
@@ -102,7 +102,7 @@ describe("CSS prop forwarding", () => {
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       <div
-        class="text_grey.50 d_inline p_small border_1px"
+        class="c_grey.50 d_inline p_small bd_1px"
       >
         Hello
       </div>
@@ -134,7 +134,7 @@ describe("CSS prop forwarding", () => {
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       <div
-        class="text_grey.50 d_inline p_small border_1px"
+        class="c_grey.50 d_inline p_small bd_1px"
       >
         Hello
       </div>
@@ -171,7 +171,7 @@ describe("CSS prop forwarding", () => {
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       <div
-        class="text_grey.50 d_inline p_xsmall rounded_xsmall"
+        class="c_grey.50 d_inline p_xsmall bdr_xsmall"
       >
         Hello
       </div>
@@ -222,7 +222,7 @@ describe("CSS prop forwarding", () => {
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       <div
-        class="rounded_xsmall d_flex p_xsmall text_grey.50"
+        class="bdr_xsmall d_flex p_xsmall c_grey.50"
       >
         Hello
       </div>
@@ -296,7 +296,7 @@ describe("CSS prop forwarding", () => {
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       <div
-        class="rounded_xsmall d_block text_primary"
+        class="bdr_xsmall d_block c_primary"
       >
         Hello
       </div>

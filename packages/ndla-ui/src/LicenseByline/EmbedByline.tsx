@@ -8,10 +8,9 @@
 
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors, fonts, misc, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
+import { styled } from "@ndla/styled-system/jsx";
 import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
 import { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
@@ -74,37 +73,79 @@ export type EmbedBylineTypeProps =
 
 type Props = EmbedBylineTypeProps | EmbedBylineErrorProps;
 
-const BylineWrapper = styled.figcaption`
-  display: flex;
-  flex-direction: column;
-  font-family: ${fonts.sans};
-  ${fonts.sizes("16px", "26px")};
-  padding: ${spacing.small} 0;
-  background-color: ${colors.white};
-  &[data-top-rounded="true"] {
-    border-top-right-radius: ${misc.borderRadius};
-    border-top-left-radius: ${misc.borderRadius};
-  }
+const BylineWrapper = styled(
+  "figcaption",
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      // Maybe font stuff
+      textStyle: "body.medium",
+      paddingBlock: "xsmall",
+      backgroundColor: "background.default",
+    },
+    defaultVariants: {
+      success: true,
+    },
+    variants: {
+      success: {
+        true: {},
+        false: {
+          border: "1px solid",
+          paddingInline: "medium",
+          paddingBlock: "medium",
+          borderColor: "stroke.error",
+          backgroundColor: "surface.dangerSubtle",
+          borderRadius: "xsmall",
+        },
+      },
+    },
+  },
+  {
+    defaultProps: {
+      contentEditable: false,
+    },
+  },
+);
 
-  &[data-bottom-rounded="true"] {
-    border-bottom-right-radius: ${misc.borderRadius};
-    border-bottom-left-radius: ${misc.borderRadius};
-  }
+// const BylineWrapper = styled.figcaption`
+//   display: flex;
+//   flex-direction: column;
+//   font-family: ${fonts.sans};
+//   ${fonts.sizes("16px", "26px")};
+//   padding: ${spacing.small} 0;
+//   background-color: ${colors.white};
+//   &[data-top-rounded="true"] {
+//     border-top-right-radius: ${misc.borderRadius};
+//     border-top-left-radius: ${misc.borderRadius};
+//   }
+//
+//   &[data-bottom-rounded="true"] {
+//     border-bottom-right-radius: ${misc.borderRadius};
+//     border-bottom-left-radius: ${misc.borderRadius};
+//   }
+//
+//   &[data-error="true"] {
+//     border: none;
+//     background-color: ${colors.support.redLightest};
+//     padding: ${spacing.nsmall} ${spacing.normal};
+//     ${fonts.sizes("18px", "24px")};
+//   }
+// `;
 
-  &[data-error="true"] {
-    border: none;
-    background-color: ${colors.support.redLightest};
-    padding: ${spacing.nsmall} ${spacing.normal};
-    ${fonts.sizes("18px", "24px")};
-  }
-`;
+const StyledSpan = styled("span", {
+  base: {
+    fontStyle: "italic",
+    color: "text.subtle",
+  },
+});
 
-const StyledSpan = styled.span`
-  font-style: italic;
-  color: grey;
-  font-family: ${fonts.sans};
-  ${fonts.sizes("16px", "26px")};
-`;
+// const StyledSpan = styled.span`
+//   font-style: italic;
+//   color: grey;
+//   font-family: ${fonts.sans};
+//   ${fonts.sizes("16px", "26px")};
+// `;
 
 const EmbedByline = ({ type, topRounded, bottomRounded, description, children, visibleAlt, ...props }: Props) => {
   const { t } = useTranslation();
@@ -112,7 +153,7 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
   if (props.error) {
     const typeString = type === "h5p" ? "H5P" : t(`embed.type.${type}`).toLowerCase();
     return (
-      <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-error={true}>
+      <BylineWrapper success={false}>
         <LicenseDescription warningByline={props.error} icon={<WarningOutline />}>
           {t("embed.embedError", { type: typeString })}
         </LicenseDescription>
@@ -125,12 +166,10 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
   return (
     <>
       <BylineWrapper>
-        <div>
-          <LicenseContainerContent type={type} copyright={copyright}>
-            {description}
-          </LicenseContainerContent>
-          {children}
-        </div>
+        <LicenseContainerContent type={type} copyright={copyright}>
+          {description}
+        </LicenseContainerContent>
+        {children}
       </BylineWrapper>
       {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
     </>

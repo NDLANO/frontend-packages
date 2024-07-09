@@ -7,17 +7,18 @@
  */
 
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 import { MetaData } from "@ndla/types-embed";
 
 interface Props {
   embed: MetaData<any, any>;
 }
 
-const StyledSpan = styled.span`
-  color: ${colors.support.red};
-`;
+const StyledSpan = styled("span", {
+  base: {
+    color: "text.error",
+  },
+});
 
 const UnknownEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();

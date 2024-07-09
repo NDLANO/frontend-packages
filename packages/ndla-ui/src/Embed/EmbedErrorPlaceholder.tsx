@@ -7,51 +7,70 @@
  */
 
 import { ReactNode } from "react";
-import styled from "@emotion/styled";
-import { colors, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
-import { Figure, FigureType } from "../Figure";
+import { Figure, type FigureSize } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { EmbedByline } from "../LicenseByline";
 import { EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
 
 interface Props {
   type: EmbedBylineErrorProps["type"];
-  figureType?: FigureType;
+  figureType?: FigureSize;
   children?: ReactNode;
 }
 
-const ErrorPlaceholder = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${colors.brand.greyLighter};
-  height: 330px;
+const ErrorPlaceholder = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "surface.disabled",
+    height: "surface.xsmall",
+    "& svg": {
+      fill: "text.subtle",
+      height: "90%",
+      width: "90%",
+    },
+    "&[data-embed-type='audio']": {
+      height: "surface.3xsmall",
+    },
+  },
+});
 
-  svg {
-    fill: ${colors.text.light};
-    height: 90%;
-    width: 90%;
-  }
-  &[data-embed-type="audio"] {
-    height: 150px;
-  }
-`;
+// `
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background-color: ${colors.brand.greyLighter};
+//   height: 330px;
+//
+//   svg {
+//     fill: ${colors.text.light};
+//     height: 90%;
+//     width: 90%;
+//   }
+//   &[data-embed-type="audio"] {
+//     height: 150px;
+//   }
+// `;
 
-const StyledFigure = styled(Figure)`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing.xsmall};
-`;
+const StyledFigure = styled(Figure, {
+  base: {
+    "& > *:not(:first-child)": {
+      marginBlockStart: "3xsmall",
+    },
+  },
+});
 
 const EmbedErrorPlaceholder = ({ type, children, figureType }: Props) => {
   return (
-    <StyledFigure type={figureType}>
+    <StyledFigure size={figureType}>
       {children ?? (
         <ErrorPlaceholder data-embed-type={type}>
           <WarningOutline />
         </ErrorPlaceholder>
       )}
-      <EmbedByline error type={type} topRounded bottomRounded />
+      <EmbedByline error type={type} />
     </StyledFigure>
   );
 };

@@ -7,24 +7,23 @@
  */
 
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { spacing } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 import { FootnoteMetaData } from "@ndla/types-embed";
 
 interface Props {
   embed: FootnoteMetaData;
 }
 
-const FootnoteRef = styled.span`
-  sup {
-    a {
-      margin-left: -2px;
-      padding: ${spacing.small} ${spacing.xsmall};
-      box-shadow: none;
-      text-decoration: underline;
-    }
-  }
-`;
+const FootnoteRef = styled("span", {
+  base: {
+    "& sup": {
+      "& a": {
+        textStyle: "label.xsmall",
+        marginInlineStart: "1",
+      },
+    },
+  },
+});
 
 const FootnoteEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();

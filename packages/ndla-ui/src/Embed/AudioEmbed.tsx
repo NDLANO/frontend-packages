@@ -6,17 +6,26 @@
  *
  */
 
+import { Figure } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { AudioMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { Author } from "./ImageEmbed";
+import type { Author } from "./ImageEmbed";
 import AudioPlayer from "../AudioPlayer";
-import { Figure } from "../Figure";
 import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: AudioMetaData;
   lang?: string;
 }
+
+const StyledFigure = styled(Figure, {
+  base: {
+    "& > *:not(:first-child)": {
+      marginBlockStart: "3xsmall",
+    },
+  },
+});
 
 export const getFirstNonEmptyLicenseCredits = (authors: {
   creators: Author[];
@@ -42,7 +51,7 @@ const AudioEmbed = ({ embed, lang }: Props) => {
   const img = coverPhoto && { url: coverPhoto.url, alt: coverPhoto.altText };
 
   return (
-    <Figure type="full" lang={lang}>
+    <StyledFigure lang={lang}>
       <AudioPlayer
         description={data.podcastMeta?.introduction ?? ""}
         img={img}
@@ -60,7 +69,7 @@ const AudioEmbed = ({ embed, lang }: Props) => {
         type={data.audioType === "standard" ? "audio" : "podcast"}
         copyright={embed.data.copyright}
       />
-    </Figure>
+    </StyledFigure>
   );
 };
 

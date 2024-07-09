@@ -8,18 +8,20 @@
 
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 import { ContentLinkMetaData } from "@ndla/types-embed";
+
 interface Props {
   embed: ContentLinkMetaData;
   isOembed?: boolean;
   children?: ReactNode;
 }
 
-const StyledSpan = styled.span`
-  color: ${colors.support.red};
-`;
+const StyledSpan = styled("span", {
+  base: {
+    color: "text.error",
+  },
+});
 
 const ContentLinkEmbed = ({ embed, isOembed, children }: Props) => {
   const { t } = useTranslation();

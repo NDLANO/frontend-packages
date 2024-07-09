@@ -6,8 +6,6 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
 import { LicenseLocaleType } from "@ndla/licenses";
 import { SafeLink } from "@ndla/safelink";
 
@@ -15,26 +13,15 @@ interface Props {
   license: LicenseLocaleType;
 }
 
-const StyledSafeLink = styled(SafeLink)`
-  color: ${colors.brand.primary};
-  text-decoration: underline;
-  white-space: nowrap;
-  box-shadow: none;
-  &:hover,
-  &:focus-within {
-    text-decoration: none;
-  }
-`;
-
 const LicenseLink = ({ license }: Props) => {
   if (license.abbreviation === "unknown") {
     return null;
   }
   if (license.url?.length) {
     return (
-      <StyledSafeLink to={license.url} rel="license">
+      <SafeLink to={license.url} rel="license">
         {license.abbreviation}
-      </StyledSafeLink>
+      </SafeLink>
     );
   }
   return <span>{license.abbreviation}</span>;

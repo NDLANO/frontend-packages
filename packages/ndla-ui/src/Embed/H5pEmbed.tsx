@@ -6,38 +6,44 @@
  *
  */
 
-import styled from "@emotion/styled";
+import { Figure } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { H5pMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { Figure } from "../Figure";
 
 interface Props {
   embed: H5pMetaData;
-  isConcept?: boolean;
 }
 
-const StyledFigure = styled(Figure)`
-  iframe {
-    height: auto;
-  }
-`;
+const StyledFigure = styled(Figure, {
+  base: {
+    "& iframe": {
+      width: "100%",
+      height: "auto",
+    },
+  },
+});
 
-const H5pEmbed = ({ embed, isConcept }: Props) => {
+const FigureOembed = styled(Figure, {
+  base: {
+    width: "100%",
+    "& iframe": {
+      width: "100%",
+    },
+  },
+});
+
+const H5pEmbed = ({ embed }: Props) => {
   if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="h5p" />;
   }
 
   if (embed.data.oembed) {
-    return (
-      <Figure
-        type={isConcept ? "full-column" : undefined}
-        dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }}
-      />
-    );
+    return <FigureOembed dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }} />;
   }
 
   return (
-    <StyledFigure type={isConcept ? "full-column" : undefined}>
+    <StyledFigure>
       <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
     </StyledFigure>
   );

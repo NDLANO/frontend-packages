@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from "react";
-import styled from "@emotion/styled";
+import { Figure } from "@ndla/primitives";
 import { CopyrightMetaData } from "@ndla/types-embed";
 import { EmbedByline } from "../LicenseByline";
 
@@ -16,21 +16,12 @@ interface Props {
   children?: ReactNode;
 }
 
-const StyledFigCaption = styled.figcaption`
-  background: unset;
-  font-size: unset;
-  padding: unset;
-  color: unset;
-`;
-
 const CopyrightEmbed = ({ embed, children }: Props) => {
   return (
-    <figure>
+    <Figure>
       {children}
-      <StyledFigCaption contentEditable={false}>
-        <EmbedByline type="copyright" copyright={embed.embedData.copyright} bottomRounded />
-      </StyledFigCaption>
-    </figure>
+      <EmbedByline type="copyright" copyright={embed.embedData.copyright} />
+    </Figure>
   );
 };
 

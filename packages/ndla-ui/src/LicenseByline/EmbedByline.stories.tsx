@@ -14,8 +14,6 @@ export default {
   component: EmbedByline,
   tags: ["autodocs"],
   args: {
-    topRounded: true,
-    bottomRounded: true,
     visibleAlt: "Synlig alt-tekst kan legges her, eller fjernes helt",
     type: "image",
     description:

@@ -12,6 +12,7 @@ import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
 
+// TODO: Consider if any of the backgrounds should actually be transparent
 export const buttonBaseRecipe = cva({
   base: {
     display: "inline-flex",
@@ -68,7 +69,7 @@ export const buttonBaseRecipe = cva({
       },
       secondary: {
         color: "text.strong",
-        background: "transparent",
+        background: "surface.default",
         boxShadow: "inset 0 0 0 1px var(--shadow-color)",
         _hover: {
           background: "surface.actionSubtle.hover",

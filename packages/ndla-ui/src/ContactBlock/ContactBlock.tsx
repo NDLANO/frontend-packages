@@ -14,10 +14,10 @@ import styled from "@emotion/styled";
 import { spacing, fonts, colors, mq, breakpoints, misc } from "@ndla/core";
 import { BlobPointy as UnstyledBlobPointy, BlobRound as UnstyledBlobRound } from "@ndla/icons/common";
 import { COPYRIGHTED, getLicenseByAbbreviation } from "@ndla/licenses";
+import { Image } from "@ndla/primitives";
 import { IAuthor, IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { CanonicalUrlFuncs } from "../Embed";
 import { errorSvgSrc } from "../Embed/ImageEmbed";
-import Image, { ImageLink } from "../Image";
 import LicenseLink from "../LicenseByline/LicenseLink";
 
 const BLOB_WIDTH = 90;
@@ -150,9 +150,17 @@ interface LinkWrapperProps {
   children: ReactNode;
 }
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
+
 const LinkWrapper = ({ src, children }: LinkWrapperProps) => {
   if (src) {
-    return <ImageLink src={src}>{children}</ImageLink>;
+    return (
+      <StyledLink target="_blank" href={src} rel="noopener noreferrer">
+        {children}
+      </StyledLink>
+    );
   }
   return children;
 };

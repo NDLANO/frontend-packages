@@ -330,9 +330,6 @@ export const BlockConcept = ({
   const anchorRef = useRef<HTMLDivElement>(null);
   const [modalPos, setModalPos] = useState(-9999);
 
-  const visualElementType =
-    visualElement?.embedData.resource === "brightcove" ? "video" : visualElement?.embedData.resource;
-
   const onOpenChange = useCallback((open: boolean) => {
     if (open) {
       const anchor = anchorRef.current;
@@ -369,16 +366,11 @@ export const BlockConcept = ({
                         >
                           {visualElement.resource === "image" ? (
                             <NotionImage
-                              type={visualElementType}
                               src={visualElement.data.image.imageUrl}
                               alt={visualElement.data.alttext.alttext}
                             />
                           ) : metaImage ? (
-                            <NotionImage
-                              type={visualElementType}
-                              src={metaImage?.url ?? ""}
-                              alt={metaImage?.alt ?? ""}
-                            />
+                            <NotionImage src={metaImage?.url ?? ""} alt={metaImage?.alt ?? ""} />
                           ) : undefined}
                         </StyledButton>
                       </Trigger>

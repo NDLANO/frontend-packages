@@ -54,14 +54,12 @@ const figureRecipe = cva({
         tablet: {
           float: "left",
           clear: "left",
-          paddingInlineEnd: "medium",
         },
       },
       right: {
         tablet: {
           float: "right",
           clear: "right",
-          paddingInlineStart: "medium",
         },
       },
     },
@@ -78,12 +76,36 @@ const figureRecipe = cva({
         marginBlock: "xsmall",
       },
     },
+    {
+      float: "left",
+      size: ["medium", "small", "xsmall"],
+      css: {
+        paddingInlineEnd: "medium",
+      },
+    },
+    {
+      float: "right",
+      size: ["medium", "small", "xsmall"],
+      css: {
+        paddingInlineStart: "medium",
+      },
+    },
+    {
+      float: ["left", "right"],
+      size: ["full"],
+      css: {
+        paddingInlineStart: "0",
+        paddingInlineEnd: "0",
+      },
+    },
   ],
 });
 
 export type FigureVariantProps = RecipeVariantProps<typeof figureRecipe>;
 
 export type FigureSize = RecipeVariant<typeof figureRecipe>["size"];
+
+export type FigureFloat = RecipeVariant<typeof figureRecipe>["float"];
 
 export type FigureProps = HTMLArkProps<"figure"> & JsxStyleProps & FigureVariantProps;
 

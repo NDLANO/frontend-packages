@@ -62,7 +62,10 @@ const StyledContent = styled("div", {
       transitionProperty: "opacity",
       transitionDuration: "slow",
       transitionTimingFunction: "ease-out",
-      background: "linear-gradient(#ffffff00, #ffffff)",
+      // TODO: Consider improving this gradient. It's a little light up top.
+      gradientFrom: "surface.default/00",
+      gradientTo: "surface.default",
+      backgroundGradient: "to-b",
       opacity: "1",
       zIndex: "base",
     },
@@ -102,6 +105,8 @@ const StyledIconButton = styled(IconButton, {
     },
   },
 });
+
+// TODO: Consider moving the open trigger depending on whether the content is open or closed.
 
 const FactBox = forwardRef<HTMLElement, Props>(
   ({ children, open, onOpenChange, defaultOpen = false, ...rest }, ref) => {

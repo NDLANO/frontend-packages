@@ -31,7 +31,7 @@ export type { BlockQuoteVariantProps, BlockQuoteProps } from "./BlockQuote";
 export { BlockQuote } from "./BlockQuote";
 
 export type { ButtonProps, ButtonVariantProps, IconButtonProps, IconButtonVariantProps } from "./Button";
-export { Button, IconButton } from "./Button";
+export { Button, IconButton, buttonBaseRecipe, buttonRecipe, iconButtonRecipe } from "./Button";
 
 export type { CheckboxVariantProps, CheckboxRootProps } from "./Checkbox";
 

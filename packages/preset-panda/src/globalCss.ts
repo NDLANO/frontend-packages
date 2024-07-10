@@ -35,6 +35,10 @@ export const globalCss = defineGlobalStyles({
     background: "background.subtle",
     whiteSpace: "pre-wrap",
   },
+  /* Hide default zendesk launcher so that we can provide our own. */
+  "iframe#launcher": {
+    display: "none",
+  },
   // TODO: Remove these again once they're no longer needed.
   // Some text elements don't have a styling class, and therefor no margin. Handled with generic fallbacks in old global css, and now temporarily handled by these selectors.
   "h1:not([class])": {

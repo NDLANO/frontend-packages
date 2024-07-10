@@ -8,8 +8,8 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import { PersonOutlined } from "@ndla/icons/common";
-import MissingRouterContext from "./MissingRouterContext";
-import SafeLinkIconButton from "./SafeLinkIconButton";
+import { MissingRouterContext } from "./MissingRouterContext";
+import { SafeLinkIconButton } from "./SafeLinkIconButton";
 
 export default {
   title: "Components/SafeLinkIconButton",
@@ -36,8 +36,6 @@ export const Disabled: StoryObj<typeof SafeLinkIconButton> = {
 export const ExternalLink: StoryObj<typeof SafeLinkIconButton> = {
   args: {
     to: "https://example.com",
-    showNewWindowIcon: true,
-    children: null,
     target: "_blank",
   },
 };

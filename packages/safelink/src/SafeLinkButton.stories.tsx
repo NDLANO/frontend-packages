@@ -7,8 +7,8 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import MissingRouterContext from "./MissingRouterContext";
-import SafeLinkButton from "./SafeLinkButton";
+import { MissingRouterContext } from "./MissingRouterContext";
+import { SafeLinkButton } from "./SafeLinkButton";
 
 export default {
   title: "Components/SafeLinkButton",

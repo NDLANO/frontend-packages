@@ -79,6 +79,9 @@ const StyledSearchLink = styled(SafeLink)`
     color: ${colors.text.light};
     padding-left: ${spacing.xsmall};
   }
+  &[data-highlighted="true"] {
+    ${highlightStyle};
+  }
 `;
 
 type WrapperProps = {
@@ -304,7 +307,7 @@ const SearchResultSleeve = ({
         <div>
           <SearchLinkContainer>
             <StyledSearchLink
-              css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle}
+              data-highlighted={keyboardPathNavigation === GO_TO_SEARCHPAGE}
               to={allResultUrl}
               tabIndex={-1}
             >
@@ -314,7 +317,7 @@ const SearchResultSleeve = ({
             </StyledSearchLink>
             {suggestion && suggestionUrl && (
               <StyledSearchLink
-                css={keyboardPathNavigation === GO_TO_SUGGESTION && highlightStyle}
+                data-highlighted={keyboardPathNavigation === GO_TO_SUGGESTION}
                 to={suggestionUrl}
                 tabIndex={-1}
               >

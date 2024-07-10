@@ -52,18 +52,6 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const StyledButton = styled(SafeLinkButton)`
-  display: flex;
-  gap: ${spacing.xxsmall};
-  align-items: center;
-  border: 1px solid ${colors.brand.tertiary};
-  :hover {
-    background-color: ${colors.brand.primary};
-    border: 1px solid ${colors.brand.primary};
-    color: ${colors.white};
-  }
-`;
-
 const StyledImage = styled(Image)`
   && {
     object-fit: cover;
@@ -98,10 +86,10 @@ export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) =
       <ContentWrapper>
         <Title>{title}</Title>
         <Caption>{caption}</Caption>
-        <StyledButton to={url} target="_blank" variant="outline" shape="pill">
+        <SafeLinkButton to={url} target="_blank" variant="secondary">
           {buttonText}
           <Launch aria-hidden />
-        </StyledButton>
+        </SafeLinkButton>
       </ContentWrapper>
     </ResourceBoxContainer>
   );

@@ -6,8 +6,10 @@
  *
  */
 
-export { default as MissingRouterContext } from "./MissingRouterContext";
-export { default as SafeLinkButton } from "./SafeLinkButton";
-export { default as SafeLinkIconButton } from "./SafeLinkIconButton";
-export { default as SafeLink } from "./SafeLink";
+export { MissingRouterContext } from "./MissingRouterContext";
+export { SafeLinkButton } from "./SafeLinkButton";
+export type { SafeLinkIconButtonProps } from "./SafeLinkIconButton";
+export { SafeLinkIconButton } from "./SafeLinkIconButton";
+export type { SafeLinkButtonProps } from "./SafeLinkButton";
+export { SafeLink } from "./SafeLink";
 export type { SafeLinkProps } from "./SafeLink";

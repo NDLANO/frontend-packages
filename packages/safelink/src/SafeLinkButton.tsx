@@ -6,35 +6,22 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
 import { forwardRef, ReactNode } from "react";
-import { buttonStyleV2, ButtonStyleProps } from "@ndla/button";
-import SafeLink, { SafeLinkProps } from "./SafeLink";
+import { buttonBaseRecipe, buttonRecipe, ButtonVariantProps } from "@ndla/primitives";
+import { css } from "@ndla/styled-system/css";
+import { SafeLink, SafeLinkProps } from "./SafeLink";
 
-interface Props extends SafeLinkProps, ButtonStyleProps {
+export interface SafeLinkButtonProps extends SafeLinkProps, ButtonVariantProps {
   children: ReactNode;
   to: string;
-  className?: string;
 }
 
-const SafeLinkButton = forwardRef<HTMLAnchorElement, Props>(
-  ({ children, inverted, to, size, colorTheme, variant, shape, fontWeight, ...rest }, ref) => (
+export const SafeLinkButton = forwardRef<HTMLAnchorElement, SafeLinkButtonProps>(
+  ({ variant, size, css: cssProp, ...props }, ref) => (
     <SafeLink
-      to={to}
+      {...props}
+      css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
       ref={ref}
-      css={buttonStyleV2({
-        colorTheme,
-        size,
-        variant,
-        inverted,
-        shape,
-        fontWeight,
-      })}
-      {...rest}
-    >
-      {children}
-    </SafeLink>
+    />
   ),
 );
-
-export default SafeLinkButton;

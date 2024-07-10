@@ -2948,12 +2948,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:
-    "@ndla/button": "npm:^14.0.5-alpha.0"
-    "@ndla/icons": "npm:^7.0.6-alpha.0"
+    "@ndla/preset-panda": "workspace:^"
+    "@ndla/primitives": "workspace:^"
+    "@ndla/styled-system": "workspace:^"
+    "@pandacss/dev": "npm:^0.42.0"
   peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
+    react: ">= 18"
+    react-dom: ">= 18"
     react-router-dom: ^6.3.0
   languageName: unknown
   linkType: soft

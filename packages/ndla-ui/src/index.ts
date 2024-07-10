@@ -172,3 +172,7 @@ export { LinkBlock, LinkBlockSection } from "./LinkBlock";
 export type { Article as ArticleType } from "./types";
 
 export { CodeBlock, codeLanguageOptions } from "./CodeBlock";
+
+export { ZendeskButton } from "./ZendeskButton/ZendeskButton";
+
+export type { ZendeskButtonProps } from "./ZendeskButton/ZendeskButton";

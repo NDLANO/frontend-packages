@@ -6,15 +6,10 @@
  *
  */
 
-import styled from "@emotion/styled";
 import { Meta, StoryObj } from "@storybook/react";
-import { spacing } from "@ndla/core";
-import { Heading, Text } from "@ndla/typography";
+import { Button } from "@ndla/primitives";
 import FactBox from "./FactBox";
-
-const Wrapper = styled.div`
-  padding: ${spacing.normal};
-`;
+import { OrderedList, UnOrderedList } from "../List";
 
 /**
  *For alt nytt innhold på ndla.no skal ikke flytende høyrespalte benyttes. I stedet benytter vi faktabokser innenfor innholdsspalten.
@@ -26,32 +21,54 @@ export default {
   paramemeters: {
     inlineStories: true,
   },
-  decorators: [
-    (Story) => (
-      <Wrapper>
-        <Story />
-      </Wrapper>
-    ),
-  ],
+  decorators: [(Story) => <Story />],
   args: {
     children: (
       <>
-        <Heading element="h2" headingStyle="h2">
-          Faktaboks
-        </Heading>
-        <Text textStyle="content">
-          En faktaboks kan inneholde punktlister eller korte fakta som er relevant for artikkelens innhold.
-        </Text>
-        <Text textStyle="content">
+        <h2>Faktaboks</h2>
+        <p>Innhold kan først nås etter at boksen er åpnet.</p>
+        <Button>Klikk meg</Button>
+        <p>En faktaboks kan inneholde punktlister eller korte fakta som er relevant for artikkelens innhold.</p>
+        <p>
           Det anbefales å ikke ha for mye innhold i faktaboks, slik at lese-konteksten i størst mulig grad beholdes.
-        </Text>
-        <Heading element="h2" headingStyle="h2">
-          Enkel tittel
-        </Heading>
-        <Text textStyle="content">
+        </p>
+        <h2>Enkel tittel</h2>
+        <p>
           Faktaboksen kan også brukes til å oppsummere innhold i slutten av en artikkel, og den kan inneholde
           lisensiering om eksternt innhold er brukt.
-        </Text>
+        </p>
+        <UnOrderedList>
+          <li>Punkt 1</li>
+          <li>Punkt 2</li>
+          <li>
+            <UnOrderedList>
+              <li>Punkt 1.1</li>
+              <li>Punkt 1.2</li>
+              <li>
+                <UnOrderedList>
+                  <li>Punkt 1.1.1</li>
+                  <li>Punkt 1.2.1</li>
+                </UnOrderedList>
+              </li>
+            </UnOrderedList>
+          </li>
+        </UnOrderedList>
+        <OrderedList>
+          <li>Punkt 1</li>
+          <li>Punkt 2</li>
+          <li>
+            <OrderedList>
+              <li>Punkt 1.1</li>
+              <li>Punkt 1.2</li>
+              <li>
+                <OrderedList>
+                  <li>Punkt 1.1.1</li>
+                  <li>Punkt 1.2.1</li>
+                </OrderedList>
+              </li>
+            </OrderedList>
+          </li>
+        </OrderedList>
       </>
     ),
   },

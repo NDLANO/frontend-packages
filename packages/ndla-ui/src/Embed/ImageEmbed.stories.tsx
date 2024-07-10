@@ -7,11 +7,12 @@
  */
 
 import { ReactNode } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
 import { ArticleWrapper } from "../Article";
+import { Grid } from "../Grid";
 import LayoutItem, { OneColumn } from "../Layout";
 
 const embedData: ImageEmbedData = {
@@ -323,4 +324,41 @@ export const FloatLeftExtraSmall: StoryObj<typeof ImageEmbed> = {
       <ImageEmbed {...args} />
     </TextWrapper>
   ),
+};
+
+export const In2x2Grid: StoryFn<typeof ImageEmbed> = (args) => {
+  const items = new Array(4).fill(
+    <ImageEmbed
+      {...args}
+      embed={{
+        resource: "image",
+        status: "success",
+        embedData: {
+          ...embedData,
+          align: "left",
+          border: "true",
+        },
+        data: metaData,
+      }}
+    />,
+  );
+  return <Grid columns="2x2">{items}</Grid>;
+};
+
+export const In4Grid: StoryFn<typeof ImageEmbed> = (args) => {
+  const items = new Array(4).fill(
+    <ImageEmbed
+      {...args}
+      embed={{
+        resource: "image",
+        status: "success",
+        embedData: {
+          ...embedData,
+          border: "true",
+        },
+        data: metaData,
+      }}
+    />,
+  );
+  return <Grid columns="4">{items}</Grid>;
 };

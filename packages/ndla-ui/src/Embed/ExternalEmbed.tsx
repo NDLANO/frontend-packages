@@ -8,24 +8,26 @@
 
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
+import { Figure } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { OembedMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { Figure } from "../Figure";
 import { ResourceBox } from "../ResourceBox";
 
 interface Props {
   embed: OembedMetaData;
-  isConcept?: boolean;
 }
 
-const StyledFigure = styled(Figure)`
-  iframe {
-    height: auto;
-  }
-`;
+const StyledFigure = styled(Figure, {
+  base: {
+    "& iframe": {
+      height: "auto",
+      width: "100%",
+    },
+  },
+});
 
-const ExternalEmbed = ({ embed, isConcept }: Props) => {
+const ExternalEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   const figRef = useRef<HTMLElement>(null);
 
@@ -38,6 +40,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
       iframe.height = "";
     }
   }, []);
+
   if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="external" />;
   }
@@ -50,7 +53,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
       alt: embedData.alt !== undefined ? embedData.alt : data.iframeImage?.alttext?.alttext ?? "",
     };
     return (
-      <Figure type="full">
+      <Figure>
         <ResourceBox
           image={image}
           title={embedData.title ?? ""}
@@ -62,13 +65,7 @@ const ExternalEmbed = ({ embed, isConcept }: Props) => {
     );
   }
 
-  return (
-    <StyledFigure
-      ref={figRef}
-      type={isConcept ? "full-column" : undefined}
-      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }}
-    />
-  );
+  return <StyledFigure ref={figRef} dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }} />;
 };
 
 export default ExternalEmbed;

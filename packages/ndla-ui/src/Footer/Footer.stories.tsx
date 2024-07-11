@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import FooterBlock from "./FooterBlock";
+import { FooterBlock } from "./FooterBlock";
 
 export default {
   title: "Components/FooterBlock",

@@ -6,25 +6,31 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 
-export const FooterBlock = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${spacing.large};
-  color: ${colors.white};
-  z-index: ${stackOrder.offsetSingle};
-  padding: ${spacing.large} ${spacing.large} ${spacing.xlarge};
-  background: ${colors.brand.dark};
-  ${mq.range({ from: breakpoints.wide })} {
-    padding: ${spacing.large} 170px ${spacing.xlarge};
-  }
-  > * {
-    max-width: 1100px;
-  }
-`;
-
-export default FooterBlock;
+export const FooterBlock = styled("div", {
+  base: {
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    // TODO: Not sure about this gap
+    gap: "medium",
+    background: "primary",
+    color: "text.onAction",
+    paddingBlock: "xxlarge",
+    paddingInline: "small",
+    tablet: {
+      paddingInline: "medium",
+      paddingBlock: "4xlarge",
+    },
+    "& a:focus-visible": {
+      outlineColor: "surface.default",
+    },
+    wide: {
+      paddingInline: "surface.3xsmall",
+    },
+    "& > *": {
+      maxWidth: "1128px",
+    },
+  },
+});

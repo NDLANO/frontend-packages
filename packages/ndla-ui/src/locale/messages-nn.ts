@@ -334,7 +334,7 @@ const messages = {
     useCompentenceGoalsFilter: "Bruk filter",
     closeCompentenceGoalsFilter: "Lukk filter",
     competenceGoalsNarrowBackButton: "Tilbake",
-    competenceGoalResourceSearchText: "Vis ressursar til kompetansemål {{code}}",
+    competenceGoalResourceSearchText: "Vis ressursar til {{code}}",
     coreResourceSearchText: "Vis ressursar til kjerneelement {{code}}",
     competenceGoalShowExtra: "Vis støtte til læreplanen",
     competenceGoalCloseExtra: "Skjul støtte til læreplanen",

@@ -6,14 +6,11 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { ComponentProps, ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
+import { ComponentProps, ReactNode, forwardRef, useCallback, useEffect, useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { IconButtonV2 } from "@ndla/button";
-import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
-import { ChevronDown, ChevronUp } from "@ndla/icons/common";
+import { ChevronDown } from "@ndla/icons/common";
+import { IconButton } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 
 interface Props extends ComponentProps<"aside"> {
   children?: ReactNode;
@@ -22,129 +19,132 @@ interface Props extends ComponentProps<"aside"> {
   onOpenChange?: (open: boolean) => void;
 }
 
-const StyledAside = styled.aside`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: ${stackOrder.offsetSingle};
-  margin: ${spacing.large} 0 calc(${spacing.large} - ${spacing.nsmall}) 0;
-  overflow: hidden;
-  padding-bottom: ${spacing.nsmall};
+const StyledAside = styled("aside", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "relative",
+    padding: "medium",
+    transitionProperty: "max-height",
+    transitionDuration: "slow",
+    transitionTimingFunction: "ease-in-out",
+    border: "1px solid",
+    borderColor: "stroke.default",
+    borderRadius: "xsmall",
+    maxHeight: "surface.xxsmall",
+    _closed: {
+      _print: {
+        overflow: "visible",
+        maxHeight: "500vh",
+      },
+    },
+    _open: {
+      maxHeight: "500vh",
+    },
+  },
+});
 
-  @media print {
-    overflow: visible;
-  }
+const StyledContent = styled("div", {
+  base: {
+    position: "relative",
+    width: "100%",
+    overflow: "hidden",
+    // Reset the top margin of the very first child.
+    "& :first-child": {
+      marginBlockStart: "0",
+    },
+    _after: {
+      content: '""',
+      textAlign: "center",
+      position: "absolute",
+      inset: "0",
+      transitionProperty: "opacity",
+      transitionDuration: "slow",
+      transitionTimingFunction: "ease-out",
+      // TODO: Consider improving this gradient. It's a little light up top.
+      gradientFrom: "surface.default/00",
+      gradientTo: "surface.default",
+      backgroundGradient: "to-b",
+      opacity: "1",
+      zIndex: "base",
+    },
+    _print: {
+      overflow: "visible",
+      _after: {
+        display: "none",
+      },
+    },
+    _open: {
+      paddingBlockEnd: "xsmall",
+      _after: {
+        opacity: "0",
+        zIndex: "hide",
+      },
+    },
+  },
+});
 
-  h2:first-of-type {
-    border-bottom: 2px solid ${colors.brand.primary};
-    margin-top: 0;
-    margin-bottom: ${spacing.normal};
-  }
+const StyledIconButton = styled(IconButton, {
+  base: {
+    position: "absolute",
+    bottom: "-medium",
+    zIndex: "base",
+    "& svg": {
+      transitionProperty: "transform",
+      transitionTimingFunction: "ease-in-out",
+      transitionDuration: "fast",
+    },
+    _open: {
+      "& svg": {
+        transform: "rotate(180deg)",
+      },
+    },
+    _print: {
+      display: "none",
+    },
+  },
+});
 
-  h2,
-  h3,
-  h4,
-  h5 {
-    display: block;
-    margin-top: ${spacing.normal};
-    margin-bottom: ${spacing.small};
-    border-bottom: 1px solid ${colors.brand.light};
-  }
-`;
-
-const StyledDiv = styled.div`
-  width: 100%;
-  position: relative;
-  color: ${colors.brand.greyDark};
-  padding: ${spacing.normal} ${spacing.normal} ${spacing.large};
-  border: 1px solid ${colors.brand.greyLight};
-  max-height: 190px;
-  transition: max-height 0.6s ease-in-out;
-  overflow: hidden;
-
-  &:after {
-    content: "";
-    text-align: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 99%;
-    margin: 0.5% 0.5% 0 0.5%;
-    transition: opacity 0.5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
-    /* The 00 after our color is to set its opacity to 0 */
-    background: linear-gradient(${colors.brand.light}00, ${colors.white});
-    opacity: 1;
-    z-index: ${stackOrder.base};
-  }
-
-  @media print {
-    max-height: revert;
-    &:after {
-      display: none;
-    }
-  }
-
-  & > ul:not([class]),
-  :not(li) > ul:not([class]) {
-    ${mq.range({ from: breakpoints.desktop })} {
-      margin-left: ${spacing.normal};
-    }
-  }
-
-  & > ol:not([class]),
-  :not(li) > ol:not([class]) {
-    ${mq.range({ from: breakpoints.desktop })} {
-      margin-left: ${spacing.large};
-    }
-  }
-`;
-
-const StyledIconButton = styled(IconButtonV2)`
-  margin-top: -20px;
-  z-index: ${stackOrder.offsetSingle};
-
-  @media print {
-    display: none;
-  }
-`;
-
-const expandedStyle = css`
-  max-height: 500vh;
-`;
-
-const expandedContentStyle = css`
-  max-height: 500vh;
-  &:after {
-    opacity: 0;
-    z-index: ${stackOrder.hide};
-  }
-`;
+// TODO: Consider moving the open trigger depending on whether the content is open or closed.
 
 const FactBox = forwardRef<HTMLElement, Props>(
   ({ children, open, onOpenChange, defaultOpen = false, ...rest }, ref) => {
     const { t } = useTranslation();
-    const [isOpen, setIsOpen] = useState(defaultOpen);
+    const [state, setState] = useState<"open" | "closed">(defaultOpen ? "open" : "closed");
+    const contentId = useId();
+    // Inert has existed since early 2023. It allows us to disable tabindex inside the content if it is closed, allowing us to be accessible for users with newish browsers. React 18 removes this because it doesn't recognize the attribute. This is a workaround for that.
+    // TODO: Remove this hack when we upgrade to React 19.
+    const inertAttribute = useMemo(() => {
+      return state === "closed" ? { inert: "" } : {};
+    }, [state]);
 
     useEffect(() => {
       if (open !== undefined) {
-        setIsOpen(open);
+        setState(open ? "open" : "closed");
       }
     }, [open]);
 
     const onClick = useCallback(() => {
-      const newOpen = !isOpen;
-      setIsOpen(newOpen);
-      onOpenChange?.(newOpen);
-    }, [isOpen, onOpenChange]);
+      const newState = state === "open" ? "closed" : "open";
+      setState(newState);
+      onOpenChange?.(newState === "open");
+    }, [state, onOpenChange]);
 
     return (
-      <StyledAside {...rest} css={[isOpen ? expandedStyle : undefined]} ref={ref}>
-        <StyledDiv css={isOpen ? expandedContentStyle : undefined}>{children}</StyledDiv>
-        <StyledIconButton onClick={onClick} aria-label={t(`factbox.${isOpen ? "close" : "open"}`)}>
-          {isOpen ? <ChevronUp /> : <ChevronDown />}
+      <StyledAside data-state={state} {...rest} ref={ref}>
+        <StyledIconButton
+          data-state={state}
+          onClick={onClick}
+          aria-expanded={state === "open"}
+          aria-controls={contentId}
+          aria-label={t(`factbox.${state === "open" ? "close" : "open"}`)}
+        >
+          <ChevronDown />
         </StyledIconButton>
+        <StyledContent id={contentId} data-state={state} aria-hidden={state === "closed"} {...inertAttribute}>
+          {children}
+        </StyledContent>
       </StyledAside>
     );
   },

@@ -7,9 +7,8 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@ndla/primitives";
+import { Button, UnOrderedList, OrderedList } from "@ndla/primitives";
 import FactBox from "./FactBox";
-import { OrderedList, UnOrderedList } from "../List";
 
 /**
  *For alt nytt innhold på ndla.no skal ikke flytende høyrespalte benyttes. I stedet benytter vi faktabokser innenfor innholdsspalten.

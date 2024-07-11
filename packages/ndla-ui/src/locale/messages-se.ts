@@ -335,7 +335,7 @@ const messages = {
     useCompentenceGoalsFilter: "Geavat filtara",
     closeCompentenceGoalsFilter: "Govčča filtara",
     competenceGoalsNarrowBackButton: "Ruovttoluotta",
-    competenceGoalResourceSearchText: "Vis ressursar til kompetansemål {{code}}",
+    competenceGoalResourceSearchText: "Vis ressursar til {{code}}",
     coreResourceSearchText: "Vis ressurser til kjerneelement {{code}}",
     competenceGoalShowExtra: "Čájet oahppoplána doarjaga",
     competenceGoalCloseExtra: "Čiega oahppoplána doarjaga",

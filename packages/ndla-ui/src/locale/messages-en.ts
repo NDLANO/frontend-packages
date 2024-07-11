@@ -334,7 +334,7 @@ const messages = {
     useCompentenceGoalsFilter: "Use filter",
     closeCompentenceGoalsFilter: "Close filter",
     competenceGoalsNarrowBackButton: "Go back",
-    competenceGoalResourceSearchText: "View resources to competence goal {{code}}",
+    competenceGoalResourceSearchText: "View resources for {{code}}",
     coreResourceSearchText: "View resources to core element {{code}}",
     competenceGoalShowExtra: "Show",
     competenceGoalCloseExtra: "Hide",

@@ -40,12 +40,16 @@ const Container = styled("div", {
   base: {
     display: "flex",
     flexDirection: "column",
-    gap: "medium",
     border: "1px solid",
     borderColor: "stroke.default",
     backgroundColor: "background.default",
     borderRadius: "xsmall",
     boxShadow: "full",
+    maxWidth: "surface.xsmall",
+    overflow: "hidden",
+    mobileWide: {
+      maxWidth: "surface.medium",
+    },
     tabletWide: {
       // TODO: This is probably not the correct max-width. And it should be a token
       maxWidth: "1100px",
@@ -67,12 +71,18 @@ const LinkText = styled(Text, {
 const StyledImg = styled("img", {
   base: {
     alignSelf: "center",
-    objectFit: "contain",
+    objectFit: "cover",
+    width: "100%",
+    height: "215px",
+    desktop: {
+      height: "340px",
+    },
   },
 });
 
 const ContentWrapper = styled("div", {
   base: {
+    width: "100%",
     position: "relative",
     display: "flex",
     flexDirection: "column",
@@ -110,7 +120,7 @@ const CampaignBlock = ({
   path,
   className,
 }: Props) => {
-  const imageComponent = image && <StyledImg src={`${image.src}?width=240`} height={200} width={240} alt={image.alt} />;
+  const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
   const HeaderComponent = url?.url ? LinkText : Text;
   return (
     <Container className={className} data-type="campaign-block">

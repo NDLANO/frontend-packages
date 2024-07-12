@@ -34,8 +34,6 @@ interface Props {
   path?: string;
 }
 
-// TODO: Not sure about how this should scale down. Look at later
-
 const Container = styled("div", {
   base: {
     display: "flex",

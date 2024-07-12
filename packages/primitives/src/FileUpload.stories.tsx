@@ -41,7 +41,6 @@ export default meta;
 
 export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args}>
-    <FileUploadLabel>Fileupload</FileUploadLabel>
     <FileUploadDropzone>
       <FileUploadLabel textStyle="label.medium" fontWeight="light">
         Drop your files here or click to upload
@@ -81,7 +80,6 @@ export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
 
 export const WithoutFileList: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args}>
-    <FileUploadLabel>Fileupload</FileUploadLabel>
     <FileUploadDropzone>
       <FileUploadLabel textStyle="label.medium" fontWeight="light">
         Drop your files here or click to upload
@@ -98,7 +96,6 @@ export const WithoutFileList: StoryFn<typeof FileUploadRoot> = (args) => (
 
 export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args} maxFiles={3}>
-    <FileUploadLabel>Fileupload</FileUploadLabel>
     <FileUploadDropzone>
       <FileUploadLabel textStyle="label.medium" fontWeight="light">
         Drop your files here or click to upload
@@ -138,7 +135,6 @@ export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
 
 export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args} accept="image/*">
-    <FileUploadLabel>Fileupload</FileUploadLabel>
     <FileUploadDropzone>
       <FileUploadLabel textStyle="label.medium" fontWeight="light">
         Drop your files here or click to upload
@@ -178,7 +174,6 @@ export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
 
 export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args} minFileSize={1000000} maxFileSize={4000000}>
-    <FileUploadLabel>Fileupload</FileUploadLabel>
     <FileUploadDropzone>
       <FileUploadLabel textStyle="label.medium" fontWeight="light">
         Drop your files here or click to upload
@@ -218,7 +213,6 @@ export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) 
 
 export const Disabled: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args} disabled={true}>
-    <FileUploadLabel>Fileupload</FileUploadLabel>
     <FileUploadDropzone>
       <FileUploadLabel textStyle="label.medium" fontWeight="light">
         Drop your files here or click to upload
@@ -263,10 +257,11 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
     <FieldRoot invalid={invalid}>
       <FileUploadRoot
         {...args}
-        onFileReject={(details) => details.files.length > 1 && setInvalid(true)}
+        onFileReject={(details) => {
+          details.files?.find(({ errors }) => errors.length && errors.length >= 1) ? setInvalid(true) : null;
+        }}
         accept="image/*"
       >
-        <FileUploadLabel>Fileupload</FileUploadLabel>
         <FileUploadDropzone>
           <FileUploadLabel textStyle="label.medium" fontWeight="light">
             Drop your files here or click to upload

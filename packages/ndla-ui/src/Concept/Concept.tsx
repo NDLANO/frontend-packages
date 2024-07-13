@@ -7,11 +7,11 @@
  */
 
 import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
+import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } from "../Embed";
-import { Figure } from "../Figure";
 import { LicenseContainerContent } from "../LicenseByline/EmbedByline";
 
 export interface ConceptProps extends ComponentPropsWithRef<"figure"> {

@@ -3121,8 +3121,6 @@ __metadata:
     mini-css-extract-plugin: "npm:^2.7.5"
     punycode.js: "npm:^2.3.1"
     react-device-detect: "npm:^2.2.3"
-    react-select: "npm:^5.8.0"
-    react-swipeable: "npm:^7.0.0"
     sass-loader: "npm:^13.2.2"
     webpack: "npm:^5.79.0"
     webpack-cli: "npm:^5.0.1"
@@ -17830,15 +17828,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/6d66f3bdb65e1ec79089f80314da97c9a005087a04ee034255a5de129a4c0d9fd0bf99fa7bf642781ac2dc745ca687aae3de082bd8afdd0d117bc953241e15ad
-  languageName: node
-  linkType: hard
-
-"react-swipeable@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "react-swipeable@npm:7.0.0"
-  peerDependencies:
-    react: ^16.8.3 || ^17 || ^18
-  checksum: 10c0/743107abd784665d4e4a1b3e41e7a7f0d9719de25aecb9bff1ba777f8ea091f60db77bc828fab09a0d5314c3154f4407e875536645c9a4a9e07bccb97b589c0a
   languageName: node
   linkType: hard
 

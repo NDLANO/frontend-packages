@@ -30,14 +30,4 @@ export const HeroContent = styled.div`
       }
     }
   }
-
-  &[data-film="true"] {
-    .c-breadcrumb__item,
-    .c-breadcrumb__item--home:after,
-    a,
-    a:focus,
-    a:hover {
-      color: #fff;
-    }
-  }
 `;

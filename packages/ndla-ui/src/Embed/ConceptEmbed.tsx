@@ -12,6 +12,7 @@ import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primi
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { GlossEmbed } from "./GlossEmbed";
 import { InlineTriggerButton } from "./InlineTriggerButton";
 import { RenderContext } from "./types";
 import { Concept, ConceptProps } from "../Concept/Concept";
@@ -45,6 +46,11 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
   }
 
   const { concept, visualElement } = embed.data;
+
+  // TODO: Consider whether we should do this in article-converter instead.
+  if (embed.data.concept.glossData) {
+    return <GlossEmbed embed={embed} />;
+  }
 
   if (embed.embedData.type === "inline") {
     return (

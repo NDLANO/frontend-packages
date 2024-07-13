@@ -1421,6 +1421,7 @@ const messages = {
   },
   gloss: {
     examples: "Examples",
+    showExamples: "Show examples",
     wordClass: "Word class",
     play: "Play gloss",
     transcriptions: {

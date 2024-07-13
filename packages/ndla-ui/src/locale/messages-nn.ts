@@ -1420,6 +1420,7 @@ const messages = {
   },
   gloss: {
     examples: "Eksempler",
+    showExamples: "Vis eksempler",
     wordClass: "Ordklasse",
     play: "Spill av glose",
     transcriptions: {

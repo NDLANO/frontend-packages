@@ -164,7 +164,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
           </Text>
           {!!filteredExamples.length && (
             <AccordionItemTrigger asChild>
-              <IconButton variant="tertiary">
+              <IconButton variant="tertiary" aria-label={t("gloss.showExamples")} title={t("gloss.showExamples")}>
                 <AccordionItemIndicator asChild>
                   <ChevronDown size="medium" />
                 </AccordionItemIndicator>

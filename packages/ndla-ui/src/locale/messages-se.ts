@@ -1423,6 +1423,7 @@ const messages = {
   },
   gloss: {
     examples: "Ovdamearkkat",
+    showExamples: "Vis eksempler",
     wordClass: "Sátneluohkká",
     play: "Čuojat glose",
     transcriptions: {

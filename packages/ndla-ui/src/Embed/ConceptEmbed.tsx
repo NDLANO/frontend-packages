@@ -82,6 +82,10 @@ export interface InlineConceptProps extends ConceptProps, BaseProps {
   linkText?: string;
 }
 
+// TODO: Consider if we should make this act like the old concept popover.
+// Should it take up the entire screen height on mobile? I don't think we need to.
+// Should it always stay directly underneath the trigger?
+
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
   ({ linkText, copyright, visualElement, lang, children, title, ...rest }, ref) => (
     <PopoverRoot>

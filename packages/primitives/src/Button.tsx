@@ -155,7 +155,7 @@ export const buttonRecipe = cva({
   variants: {
     size: {
       default: {
-        paddingInline: "medium",
+        paddingInline: "xsmall",
         paddingBlock: "xxsmall",
         minHeight: "24",
       },

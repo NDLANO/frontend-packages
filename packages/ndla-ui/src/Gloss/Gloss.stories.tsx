@@ -65,6 +65,12 @@ export const GlossStory: StoryFn<typeof Gloss> = ({ ...args }) => {
   return <Gloss {...args} />;
 };
 
+export const Bordered: StoryObj<typeof Gloss> = {
+  args: {
+    variant: "bordered",
+  },
+};
+
 export const NoExamples: StoryObj<typeof Gloss> = {
   args: {
     title: {
@@ -212,5 +218,5 @@ const GlossExampleText = {
 };
 
 export const GlossExampleStory: StoryFn<typeof Gloss> = () => {
-  return <GlossExample originalLanguage="zh" index={0} example={GlossExampleText} isStandalone />;
+  return <GlossExample originalLanguage="zh" examples={[GlossExampleText]} />;
 };

@@ -8,102 +8,21 @@
 
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { Trigger } from "@radix-ui/react-accordion";
-import { AccordionRoot, AccordionItem, AccordionContent } from "@ndla/accordion";
-import { colors, spacing, misc, fonts } from "@ndla/core";
+import { AccordionItemTrigger } from "@ark-ui/react";
 import { ChevronDown } from "@ndla/icons/common";
-import { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
+import {
+  AccordionItem,
+  AccordionItemContent,
+  AccordionItemIndicator,
+  AccordionRoot,
+  IconButton,
+  Text,
+} from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
+import { type StyledVariantProps } from "@ndla/styled-system/types";
+import type { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
 import GlossExample from "./GlossExample";
 import SpeechControl from "../AudioPlayer/SpeechControl";
-
-export interface Props {
-  title: {
-    title: string;
-    language: string;
-  };
-  glossData?: IGlossData;
-  audio?: {
-    title: string;
-    src?: string;
-  };
-  exampleIds?: string;
-  exampleLangs?: string;
-}
-
-const StyledAccordionItem = styled(AccordionItem)`
-  background-color: ${colors.background.lightBlue};
-  border: 1px solid ${colors.brand.light};
-  border-radius: ${misc.borderRadius};
-  span {
-    ${fonts.size.text.content}
-    font-family: ${fonts.sans};
-  }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: ${spacing.nsmall} ${spacing.normal} 0 ${spacing.normal};
-`;
-
-const GlossContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: ${spacing.nsmall};
-  span[data-pinyin] {
-    font-style: italic;
-  }
-`;
-
-const GlossSpan = styled.span`
-  font-weight: ${fonts.weight.bold};
-`;
-
-const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 ${spacing.normal} ${spacing.nsmall} ${spacing.normal};
-  background-color: ${colors.background.lightBlue};
-  border-radius: ${misc.borderRadius};
-`;
-
-const StyledAccordionContent = styled(AccordionContent)`
-  padding: 0;
-`;
-
-const StyledTrigger = styled(Trigger)`
-  background-color: transparent;
-  cursor: pointer;
-  border: none;
-  padding: ${spacing.xsmall};
-  border-radius: ${misc.borderRadiusLarge};
-  color: ${colors.brand.primary};
-  &:hover,
-  &:focus-visible {
-    color: ${colors.white};
-    background-color: ${colors.brand.primary};
-  }
-  &[data-state="open"] {
-    background-color: ${colors.brand.lighter};
-    &:hover,
-    &:focus-visible {
-      background-color: ${colors.brand.primary};
-    }
-  }
-`;
-
-const StyledChevron = styled(ChevronDown)`
-  transition: all 200ms ease-in-out;
-  [data-styled-trigger][data-state="open"] > & {
-    transform: rotate(180deg);
-  }
-  min-width: ${spacing.normal};
-  min-height: ${spacing.normal};
-`;
 
 const getFilteredExamples = (
   glossData: IGlossData | undefined,
@@ -127,7 +46,70 @@ const getFilteredExamples = (
   return glossData?.examples ?? [];
 };
 
-const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => {
+const Container = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+});
+
+const TextWrapper = styled("div", {
+  base: {
+    display: "flex",
+    gap: "small",
+  },
+});
+
+const StyledAccordionItemContent = styled(AccordionItemContent, {
+  base: {
+    paddingInline: "0",
+  },
+});
+
+const StyledContainer = styled(Container, {
+  base: {
+    marginBlockStart: "3xsmall",
+  },
+});
+
+const StyledAccordionItem = styled(AccordionItem, {
+  base: {
+    paddingBlock: "small",
+    paddingInline: "medium",
+  },
+  defaultVariants: {
+    variant: "simple",
+  },
+  variants: {
+    variant: {
+      simple: {},
+      bordered: {
+        border: "1px solid",
+        borderColor: "stroke.subtle",
+        borderRadius: "xsmall",
+      },
+    },
+  },
+});
+
+type GlossVariantProps = StyledVariantProps<typeof StyledAccordionItem>;
+
+export interface Props {
+  title: {
+    title: string;
+    language: string;
+  };
+  glossData?: IGlossData;
+  audio?: {
+    title: string;
+    src?: string;
+  };
+  exampleIds?: string;
+  exampleLangs?: string;
+}
+
+const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: Props & GlossVariantProps) => {
   const { t } = useTranslation();
 
   const filteredExamples = useMemo(
@@ -135,71 +117,72 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs }: Props) => 
     [exampleIds, exampleLangs, glossData],
   );
 
+  if (!glossData) return null;
+
   return (
-    <>
-      {glossData && (
-        <AccordionRoot type="single" collapsible>
-          <StyledAccordionItem value="1">
-            <Wrapper>
-              <GlossContainer>
-                <GlossSpan lang={glossData.originalLanguage}>{glossData.gloss}</GlossSpan>
-                {glossData.transcriptions.traditional && (
-                  <span
-                    key={t("gloss.transcriptions.traditional")}
-                    aria-label={t("gloss.transcriptions.traditional")}
-                    lang={glossData.originalLanguage}
-                  >
-                    {glossData.transcriptions.traditional}
-                  </span>
-                )}
-                {glossData.transcriptions.pinyin && (
-                  <span
-                    data-pinyin=""
-                    key={t("gloss.transcriptions.pinyin")}
-                    aria-label={t("gloss.transcriptions.pinyin")}
-                    lang={glossData.originalLanguage}
-                  >
-                    {glossData.transcriptions.pinyin}
-                  </span>
-                )}
-                {glossData.wordClass && (
-                  <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
-                )}
-              </GlossContainer>
-              {audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
-            </Wrapper>
-            {filteredExamples.length > 0 ? (
-              <>
-                <StyledWrapper>
-                  <span lang={title.language}>{title.title}</span>
-                  <StyledTrigger data-styled-trigger aria-label={t("gloss.examples")}>
-                    <StyledChevron />
-                  </StyledTrigger>
-                </StyledWrapper>
-                <StyledAccordionContent>
-                  {filteredExamples.map((examples, index) => (
-                    <div key={`gloss-example-${index}`}>
-                      {examples.map((example, innerIndex) => (
-                        <GlossExample
-                          key={`gloss-example-${index}-${innerIndex}`}
-                          example={example}
-                          originalLanguage={glossData.originalLanguage}
-                          index={innerIndex}
-                        />
-                      ))}
-                    </div>
-                  ))}
-                </StyledAccordionContent>
-              </>
-            ) : (
-              <StyledWrapper>
-                <span lang={title.language}>{title.title}</span>
-              </StyledWrapper>
+    <AccordionRoot multiple variant="clean">
+      <StyledAccordionItem value="gloss" variant={variant}>
+        <Container>
+          <TextWrapper>
+            <Text textStyle="label.medium" fontWeight="bold" asChild consumeCss lang={glossData.originalLanguage}>
+              <span>{glossData.gloss}</span>
+            </Text>
+            {glossData.transcriptions.traditional && (
+              <Text textStyle="label.medium" asChild consumeCss>
+                <span
+                  key={t("gloss.transcriptions.traditional")}
+                  aria-label={t("gloss.transcriptions.traditional")}
+                  lang={glossData.originalLanguage}
+                >
+                  {glossData.transcriptions.traditional}
+                </span>
+              </Text>
             )}
-          </StyledAccordionItem>
-        </AccordionRoot>
-      )}
-    </>
+            {glossData.transcriptions.pinyin && (
+              <Text textStyle="label.medium" asChild consumeCss>
+                <span
+                  data-pinyin=""
+                  key={t("gloss.transcriptions.pinyin")}
+                  aria-label={t("gloss.transcriptions.pinyin")}
+                  lang={glossData.originalLanguage}
+                >
+                  {glossData.transcriptions.pinyin}
+                </span>
+              </Text>
+            )}
+            {glossData.wordClass && (
+              <Text textStyle="label.medium" asChild consumeCss>
+                <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
+              </Text>
+            )}
+          </TextWrapper>
+          {audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
+        </Container>
+        <StyledContainer>
+          <Text textStyle="label.medium" asChild consumeCss>
+            <span lang={title.language}>{title.title}</span>
+          </Text>
+          {!!filteredExamples.length && (
+            <AccordionItemTrigger asChild>
+              <IconButton variant="tertiary">
+                <AccordionItemIndicator asChild>
+                  <ChevronDown size="medium" />
+                </AccordionItemIndicator>
+              </IconButton>
+            </AccordionItemTrigger>
+          )}
+        </StyledContainer>
+        <StyledAccordionItemContent>
+          {filteredExamples.map((examples, index) => (
+            <GlossExample
+              key={`gloss-example-${index}`}
+              examples={examples}
+              originalLanguage={glossData.originalLanguage}
+            />
+          ))}
+        </StyledAccordionItemContent>
+      </StyledAccordionItem>
+    </AccordionRoot>
   );
 };
 

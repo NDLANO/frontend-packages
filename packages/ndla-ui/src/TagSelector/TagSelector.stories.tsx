@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,80 +7,101 @@
  */
 
 import { useState } from "react";
-import styled from "@emotion/styled";
+import type { ComboboxInputValueChangeDetails } from "@ark-ui/react";
+
 import { Meta, StoryFn } from "@storybook/react";
-import TagSelector from "./TagSelector";
+import { Cross } from "@ndla/icons/action";
+import { ChevronDown } from "@ndla/icons/common";
+import { Done } from "@ndla/icons/editor";
+import {
+  ComboboxContent,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
+  ComboboxPositioner,
+  IconButton,
+  Input,
+  InputContainer,
+} from "@ndla/primitives";
+import { HStack } from "@ndla/styled-system/jsx";
+import {
+  TagSelectorClearTrigger,
+  TagSelectorControl,
+  TagSelectorInput,
+  TagSelectorLabel,
+  TagSelectorRoot,
+  TagSelectorTrigger,
+} from "./TagSelector";
 
-/**
- * Komponent for å tagge noe, primært tiltenkt Min NDLA
- */
 export default {
-  title: "Patterns/TagSelector",
-  component: TagSelector,
+  title: "Components/TagSelector new",
+  component: TagSelectorRoot,
   tags: ["autodocs"],
-  parameters: {
-    inlineStories: true,
-  },
-  argTypes: {
-    onChange: { control: false },
-    onCreateTag: { control: false },
-    tags: { control: false },
-    selected: { control: false },
-  },
-  args: {
-    label: "Select tags",
-    labelHidden: false,
-  },
-} as Meta<typeof TagSelector>;
+} satisfies Meta<typeof TagSelectorRoot>;
 
-const Container = styled.div`
-  margin: 10px auto;
-  max-width: 600px;
-  max-height: 300px;
-  display: flex;
-  flex-direction: column;
-`;
+const data = [
+  "BackToSchool",
+  "SchoolLife",
+  "Homework",
+  "SchoolDays",
+  "Classroom",
+  "StudyTime",
+  "TeacherLife",
+  "StudentLife",
+  "SchoolSpirit",
+  "Education",
+];
 
-export const TagSelectorStory: StoryFn<typeof TagSelector> = (args) => {
-  const dummyData = [
-    "Cat",
-    "Dog",
-    "Fish",
-    "Dinosaur",
-    "Frog",
-    "Dragon",
-    "Lion",
-    "Snake",
-    "Alligator",
-    "Antelope",
-    "Bear",
-    "Baboon",
-    "Kangaroo",
-    "Scorpion",
-    "Goose",
-    "Fox",
-    "Donkey",
-    "Chicken",
-  ];
-  const [exampleTags, setExampleTags] = useState<string[]>(dummyData);
-  const [exampleTagsSelected, setExampleTagsSelected] = useState<string[]>(dummyData.slice(0, 0));
+export const Default: StoryFn<typeof TagSelectorRoot> = (args) => {
+  const [options, setOptions] = useState(data);
+  const [value, setValue] = useState<string[]>([]);
+
+  const handleChange = (e: ComboboxInputValueChangeDetails) => {
+    const filtered = data.filter((item) => item.toLowerCase().includes(e.inputValue.toLowerCase()));
+    setOptions(filtered);
+  };
 
   return (
-    <Container>
-      <TagSelector
-        label={args.label}
-        tags={exampleTags}
-        selected={exampleTagsSelected}
-        onChange={(tags: string[]) => {
-          setExampleTagsSelected(tags);
-        }}
-        onCreateTag={(newTagName: string) => {
-          setExampleTags((prevTags) => [...prevTags, newTagName]);
-          setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, newTagName]);
-        }}
-      />
-    </Container>
+    <TagSelectorRoot
+      {...args}
+      value={value}
+      items={options}
+      onInputValueChange={handleChange}
+      onValueChange={(details) => setValue(details.value)}
+    >
+      <TagSelectorLabel>Emneknagger</TagSelectorLabel>
+      <HStack gap="4xsmall">
+        <TagSelectorControl asChild>
+          <InputContainer>
+            <TagSelectorInput asChild>
+              <Input placeholder="Søk etter emneknagger" />
+            </TagSelectorInput>
+
+            <TagSelectorClearTrigger asChild>
+              <IconButton variant="clear">
+                <Cross />
+              </IconButton>
+            </TagSelectorClearTrigger>
+          </InputContainer>
+        </TagSelectorControl>
+        <TagSelectorTrigger asChild>
+          <IconButton variant="secondary">
+            <ChevronDown />
+          </IconButton>
+        </TagSelectorTrigger>
+      </HStack>
+      <ComboboxPositioner>
+        <ComboboxContent>
+          {options.map((item) => (
+            <ComboboxItem key={item} item={item}>
+              <ComboboxItemText>{item}</ComboboxItemText>
+              <ComboboxItemIndicator>
+                <Done />
+              </ComboboxItemIndicator>
+            </ComboboxItem>
+          ))}
+        </ComboboxContent>
+      </ComboboxPositioner>
+    </TagSelectorRoot>
   );
 };
-
-TagSelectorStory.storyName = "TagSelect";

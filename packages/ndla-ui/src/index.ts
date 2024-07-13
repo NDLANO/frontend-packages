@@ -136,8 +136,17 @@ export { default as ContentPlaceholder } from "./ContentPlaceholder";
 
 export { Notion } from "./Notion";
 
-export type { TagType } from "./TagSelector";
-export { TagSelector } from "./TagSelector";
+export {
+  TagSelectorRoot,
+  TagSelectorLabel,
+  TagSelectorItemInput,
+  TagSelectorTrigger,
+  TagSelectorControl,
+  TagSelectorClearTrigger,
+  TagSelectorInputBase,
+  TagSelectorInput,
+} from "./TagSelector/TagSelector";
+export type { TagSelectorRootProps, TagSelectorControlProps, TagSelectorInputProps } from "./TagSelector/TagSelector";
 
 export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from "./SnackBar";
 export type { Snack, SnackContext } from "./SnackBar";

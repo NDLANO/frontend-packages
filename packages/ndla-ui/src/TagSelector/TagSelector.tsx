@@ -1,142 +1,175 @@
 /**
- * Copyright (c) 2022-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import { KeyboardEvent, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { MultiValue, StylesConfig } from "react-select";
-import CreatableSelect from "react-select/creatable";
-import styled from "@emotion/styled";
-import { colors, fonts, spacing, utils } from "@ndla/core";
-import { createAriaMessages } from "./ariaMessages";
-import Control from "./Control";
-import DropdownIndicator from "./DropdownIndicator";
-import Input from "./Input";
-import Menu from "./Menu";
-import MenuList from "./MenuList";
-import Option from "./Option";
-import SelectContainer from "./SelectContainer";
-import { TagType } from "./types";
-import ValueButton from "./ValueButton";
+import { forwardRef, useEffect, useId, useRef } from "react";
+import type { ComboboxCollectionItem } from "@ark-ui/react";
+import { ComboboxContext, useTagsInputContext, useComboboxContext } from "@ark-ui/react";
+import { Cross } from "@ndla/icons/action";
+import {
+  ComboboxClearTrigger,
+  ComboboxControl,
+  ComboboxControlProps,
+  ComboboxInput,
+  ComboboxInputProps,
+  ComboboxLabel,
+  ComboboxRoot,
+  ComboboxRootProps,
+  ComboboxTrigger,
+  TagsInputControl,
+  TagsInputControlProps,
+  TagsInputInput,
+  TagsInputInputProps,
+  TagsInputItem,
+  TagsInputItemDeleteTrigger,
+  TagsInputItemPreview,
+  TagsInputItemText,
+  TagsInputRoot,
+  TagsInputRootProps,
+  TagsInputItemInput,
+} from "@ndla/primitives";
+import { contains } from "@ndla/util";
 
-const styles: StylesConfig<TagType, true> = {
-  menu: () => ({}),
-  dropdownIndicator: () => ({}),
-  placeholder: (provided) => ({
-    ...provided,
-    padding: `0 ${spacing.small}`,
-    color: colors.brand.primary,
-    margin: 0,
-  }),
-  valueContainer: (provided) => ({ ...provided, padding: 0 }),
-  indicatorSeparator: () => ({
-    display: "none",
-  }),
-  indicatorsContainer: (provided) => ({
-    ...provided,
-    alignSelf: "flex-end",
-  }),
-};
+export type TagSelectorRootProps<T extends ComboboxCollectionItem> = ComboboxRootProps<T> & TagsInputRootProps;
 
-const StyledTagSelector = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow: hidden;
-`;
+export const TagSelectorRoot = <T extends ComboboxCollectionItem>({
+  allowCustomValue = true,
+  multiple = true,
+  selectionBehavior = "clear",
+  editable = false,
+  addOnPaste = false,
+  onValueChange,
+  children,
+  value,
+  ...rest
+}: TagSelectorRootProps<T>) => {
+  const ids = {
+    root: useId(),
+    input: useId(),
+    control: useId(),
+  };
 
-interface StyledLabelProps {
-  labelHidden?: boolean;
-}
+  const controlRef = useRef<HTMLDivElement | undefined>(undefined);
 
-const StyledLabel = styled.label<StyledLabelProps>`
-  font-weight: ${fonts.weight.semibold};
-  ${(p) => p.labelHidden && utils.labelHidden}
-`;
-
-interface Props {
-  label: string;
-  tags: string[];
-  selected: string[];
-  onChange: (tags: string[]) => void;
-  onCreateTag: (name: string) => void;
-  className?: string;
-  labelHidden?: boolean;
-}
-
-const TagSelector = ({
-  selected: _selected,
-  tags: _tags,
-  onChange,
-  onCreateTag,
-  className,
-  label,
-  labelHidden,
-}: Props) => {
-  const { t } = useTranslation();
-  const [input, setInput] = useState("");
-  const tags = useMemo(() => _tags.map((tag) => ({ value: tag, label: tag })), [_tags]);
-  const selected = useMemo(() => _selected.map((tag) => ({ value: tag, label: tag })), [_selected]);
-
-  const handleSpaceClick = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === " ") {
-      e.preventDefault();
-      if (!_selected.find((tag) => tag === input) && input !== "") {
-        onChange(_selected.concat(input));
-      }
-      setInput("");
+  useEffect(() => {
+    if (!controlRef.current) {
+      controlRef.current = document.getElementById(ids.control) as HTMLDivElement | undefined;
     }
-  };
-
-  const handleChange = (tags: MultiValue<TagType>) => {
-    onChange(tags.map((tag) => tag.value));
-  };
-
-  const createLabel = (tag: string) => t("tagSelector.createLabel", { tag });
+  }, [ids.control]);
 
   return (
-    <StyledTagSelector className={className}>
-      {label && (
-        <StyledLabel labelHidden={labelHidden} htmlFor="tagselector-creatable" id="tagselector-label">
-          {label}
-        </StyledLabel>
-      )}
-      <CreatableSelect
-        id="tagselector-creatable"
-        aria-labelledby={label ? "tagselector-label" : undefined}
-        ariaLiveMessages={createAriaMessages(t)}
-        components={{
-          DropdownIndicator,
-          MultiValue: ValueButton,
-          SelectContainer,
-          MenuList,
-          Control,
-          Option,
-          Menu,
-          Input,
-        }}
-        formatCreateLabel={createLabel}
-        inputValue={input}
-        isClearable={false}
-        isMulti
-        noOptionsMessage={() => t("tagSelector.noOptions")}
-        onChange={handleChange}
-        onCreateOption={onCreateTag}
-        onInputChange={setInput}
-        onKeyDown={handleSpaceClick}
-        options={tags}
-        placeholder={t("tagSelector.placeholder")}
-        screenReaderStatus={({ count }) => t("tagSelector.aria.screenReaderStatus", { count })}
-        styles={styles}
-        tabSelectsValue={false}
-        value={selected}
-      />
-    </StyledTagSelector>
+    <ComboboxRoot
+      ids={ids}
+      asChild
+      allowCustomValue={allowCustomValue}
+      multiple={multiple}
+      selectionBehavior={selectionBehavior}
+      onValueChange={onValueChange}
+      onPointerDownOutside={(event) => {
+        if (contains(controlRef.current, event.detail.originalEvent.target)) {
+          event.preventDefault();
+        }
+      }}
+      value={value}
+      {...rest}
+    >
+      <ComboboxContext>
+        {(api) => (
+          <TagsInputRoot
+            ids={ids}
+            value={value}
+            onInputValueChange={(details) => api.setInputValue(details.inputValue)}
+            editable={editable}
+            onValueChange={onValueChange}
+            addOnPaste={addOnPaste}
+          >
+            {children}
+          </TagsInputRoot>
+        )}
+      </ComboboxContext>
+    </ComboboxRoot>
   );
 };
 
-export default TagSelector;
+export type TagSelectorControlProps = ComboboxControlProps & TagsInputControlProps;
+
+export const TagSelectorLabel = ComboboxLabel;
+
+export const TagSelectorItemInput = TagsInputItemInput;
+
+export const TagSelectorTrigger = ComboboxTrigger;
+
+export const TagSelectorControl = forwardRef<HTMLDivElement, TagSelectorControlProps>(({ children, ...props }, ref) => {
+  return (
+    <ComboboxControl asChild>
+      <TagsInputControl {...props} ref={ref}>
+        {children}
+      </TagsInputControl>
+    </ComboboxControl>
+  );
+});
+
+export const TagSelectorClearTrigger = ComboboxClearTrigger;
+
+export type TagSelectorInputProps = ComboboxInputProps & TagsInputInputProps;
+
+// If you need to modify the TagsInputItem, you can use this.
+export const TagSelectorInputBase = forwardRef<HTMLInputElement, TagSelectorInputProps>(
+  ({ children, ...props }, ref) => {
+    const tagsApi = useTagsInputContext();
+    const comboboxApi = useComboboxContext();
+
+    return (
+      <ComboboxInput asChild>
+        <TagsInputInput
+          {...props}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" && comboboxApi.collection.items.length === 0) {
+              tagsApi.addValue(tagsApi.inputValue);
+            }
+          }}
+          ref={ref}
+        >
+          {children}
+        </TagsInputInput>
+      </ComboboxInput>
+    );
+  },
+);
+
+export const TagSelectorInput = forwardRef<HTMLInputElement, TagSelectorInputProps>(({ children, ...props }, ref) => {
+  const tagsApi = useTagsInputContext();
+  const comboboxApi = useComboboxContext();
+
+  return (
+    <>
+      {tagsApi.value.map((value, index) => (
+        <TagsInputItem index={index} value={value} key={value}>
+          <TagsInputItemPreview>
+            <TagsInputItemText>{value}</TagsInputItemText>
+            <TagsInputItemDeleteTrigger>
+              <Cross />
+            </TagsInputItemDeleteTrigger>
+          </TagsInputItemPreview>
+        </TagsInputItem>
+      ))}
+      <ComboboxInput asChild>
+        <TagsInputInput
+          {...props}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" && comboboxApi.collection.items.length === 0) {
+              tagsApi.addValue(tagsApi.inputValue);
+            }
+          }}
+          ref={ref}
+        >
+          {children}
+        </TagsInputInput>
+      </ComboboxInput>
+    </>
+  );
+});

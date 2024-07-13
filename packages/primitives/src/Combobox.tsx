@@ -163,37 +163,38 @@ export const ComboboxRoot = <T extends Combobox.CollectionItem>({ ...props }: Co
   );
 };
 
-export const ComboboxClearTrigger = withContext<HTMLButtonElement, Assign<JsxStyleProps, Combobox.ClearTriggerProps>>(
+export type ComboboxClearTriggerProps = Combobox.ClearTriggerProps & JsxStyleProps;
+
+export const ComboboxClearTrigger = withContext<HTMLButtonElement, ComboboxClearTriggerProps>(
   Combobox.ClearTrigger,
   "clearTrigger",
 );
 
-export const ComboboxContent = withContext<HTMLDivElement, Assign<JsxStyleProps, Combobox.ContentProps>>(
-  Combobox.Content,
-  "content",
-);
+export type ComboboxContentProps = Combobox.ContentProps & JsxStyleProps;
 
-export const ComboboxControl = withContext<HTMLDivElement, Assign<JsxStyleProps, Combobox.ControlProps>>(
-  Combobox.Control,
-  "control",
-);
+export const ComboboxContent = withContext<HTMLDivElement, ComboboxContentProps>(Combobox.Content, "content");
 
-export const ComboboxInput = withContext<HTMLInputElement, Assign<JsxStyleProps, Combobox.InputProps>>(
-  Combobox.Input,
-  "input",
-);
+export type ComboboxControlProps = Combobox.ControlProps & JsxStyleProps;
+
+export const ComboboxControl = withContext<HTMLDivElement, ComboboxControlProps>(Combobox.Control, "control");
+
+export type ComboboxInputProps = Combobox.InputProps & JsxStyleProps;
+
+export const ComboboxInput = withContext<HTMLInputElement, ComboboxInputProps>(Combobox.Input, "input");
 
 const InternalComboboxItemGroupLabel = withContext<HTMLDivElement, Assign<JsxStyleProps, Combobox.ItemGroupLabelProps>>(
   Combobox.ItemGroupLabel,
   "itemGroupLabel",
 );
 
+export type ComboboxItemGroupLabelProps = Combobox.ItemGroupLabelProps & TextProps & JsxStyleProps;
+
 export const ComboboxItemGroupLabel = ({
   children,
   textStyle = "label.small",
   fontWeight = "bold",
   ...props
-}: Combobox.ItemGroupLabelProps & TextProps) => (
+}: ComboboxItemGroupLabelProps) => (
   <InternalComboboxItemGroupLabel asChild>
     <Text asChild consumeCss textStyle={textStyle} fontWeight={fontWeight} {...props}>
       <div>{children}</div>
@@ -201,32 +202,34 @@ export const ComboboxItemGroupLabel = ({
   </InternalComboboxItemGroupLabel>
 );
 
-export const ComboboxItemGroup = withContext<HTMLDivElement, Assign<JsxStyleProps, Combobox.ItemGroupProps>>(
-  Combobox.ItemGroup,
-  "itemGroup",
-);
+export type ComboboxItemGroupProps = Combobox.ItemGroupProps & JsxStyleProps;
 
-export const ComboboxItemIndicator = withContext<HTMLDivElement, Assign<JsxStyleProps, Combobox.ItemIndicatorProps>>(
+export const ComboboxItemGroup = withContext<HTMLDivElement, ComboboxItemGroupProps>(Combobox.ItemGroup, "itemGroup");
+
+export type ComboboxItemIndicatorProps = Combobox.ItemIndicatorProps & JsxStyleProps;
+
+export const ComboboxItemIndicator = withContext<HTMLDivElement, ComboboxItemIndicatorProps>(
   Combobox.ItemIndicator,
   "itemIndicator",
 );
 
-export const ComboboxItem = withContext<HTMLDivElement, Assign<JsxStyleProps, Combobox.ItemProps>>(
-  Combobox.Item,
-  "item",
-);
+export type ComboboxItemProps = Combobox.ItemProps & JsxStyleProps;
+
+export const ComboboxItem = withContext<HTMLDivElement, ComboboxItemProps>(Combobox.Item, "item");
 
 const InternalComboboxItemText = withContext<HTMLDivElement, Assign<JsxStyleProps, Combobox.ItemTextProps>>(
   Combobox.ItemText,
   "itemText",
 );
 
+export type ComboboxItemTextProps = Combobox.ItemTextProps & TextProps & JsxStyleProps;
+
 export const ComboboxItemText = ({
   textStyle = "label.medium",
   fontWeight = "bold",
   children,
   ...props
-}: Combobox.ItemTextProps & TextProps) => (
+}: ComboboxItemTextProps) => (
   <InternalComboboxItemText asChild>
     <Text {...props} asChild consumeCss>
       <div>{children}</div>
@@ -239,22 +242,21 @@ const InternalComboboxLabel = withContext<HTMLLabelElement, Assign<JsxStyleProps
   "label",
 );
 
-export const ComboboxLabel = ({
-  textStyle = "label.medium",
-  fontWeight = "bold",
-  ...props
-}: Combobox.LabelProps & TextProps) => (
+export type ComboboxLabelProps = Combobox.LabelProps & TextProps & JsxStyleProps;
+
+export const ComboboxLabel = ({ textStyle = "label.medium", fontWeight = "bold", ...props }: ComboboxLabelProps) => (
   <InternalComboboxLabel asChild>
     <Label textStyle={textStyle} fontWeight={fontWeight} {...props} />
   </InternalComboboxLabel>
 );
 
-export const ComboboxPositioner = withContext<HTMLDivElement, Assign<JsxStyleProps, Combobox.PositionerProps>>(
+export type ComboboxPositionerProps = Combobox.PositionerProps & JsxStyleProps;
+
+export const ComboboxPositioner = withContext<HTMLDivElement, ComboboxPositionerProps>(
   Combobox.Positioner,
   "positioner",
 );
 
-export const ComboboxTrigger = withContext<HTMLButtonElement, Assign<JsxStyleProps, Combobox.TriggerProps>>(
-  Combobox.Trigger,
-  "trigger",
-);
+export type ComboboxTriggerProps = Combobox.TriggerProps & JsxStyleProps;
+
+export const ComboboxTrigger = withContext<HTMLButtonElement, ComboboxTriggerProps>(Combobox.Trigger, "trigger");

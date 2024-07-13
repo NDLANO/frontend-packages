@@ -44,7 +44,22 @@ export {
   CheckboxHiddenInput,
 } from "./Checkbox";
 
-export type { ComboboxVariantProps, ComboboxRootProps } from "./Combobox";
+export type {
+  ComboboxVariantProps,
+  ComboboxRootProps,
+  ComboboxClearTriggerProps,
+  ComboboxContentProps,
+  ComboboxControlProps,
+  ComboboxInputProps,
+  ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps,
+  ComboboxItemProps,
+  ComboboxItemIndicatorProps,
+  ComboboxItemTextProps,
+  ComboboxLabelProps,
+  ComboboxPositionerProps,
+  ComboboxTriggerProps,
+} from "./Combobox";
 export {
   ComboboxRoot,
   ComboboxClearTrigger,
@@ -197,7 +212,18 @@ export { SwitchRoot, SwitchControl, SwitchThumb, SwitchLabel, SwitchHiddenInput 
 export type { TableProps } from "./Table";
 export { Table } from "./Table";
 
-export type { TagsInputRootProps } from "./TagsInput";
+export type {
+  TagsInputRootProps,
+  TagsInputClearTriggerProps,
+  TagsInputControlProps,
+  TagsInputInputProps,
+  TagsInputItemDeleteTriggerProps,
+  TagsInputItemInputProps,
+  TagsInputItemPreviewProps,
+  TagsInputItemProps,
+  TagsInputItemTextProps,
+  TagsInputLabelProps,
+} from "./TagsInput";
 export {
   TagsInputRoot,
   TagsInputClearTrigger,

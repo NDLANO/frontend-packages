@@ -47,7 +47,12 @@ export const Concept = forwardRef<HTMLElement, ConceptProps>(
     return (
       <StyledFigure ref={ref} {...rest}>
         <ContentWrapper lang={lang}>
-          {!!title && <b>{title}</b>} {` – `}
+          {!!title && (
+            <>
+              <b>{title}</b>
+              {` – `}
+            </>
+          )}
           {children}
         </ContentWrapper>
         {visualElement?.resource === "image" ? (

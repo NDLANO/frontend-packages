@@ -8,7 +8,7 @@
 
 import { forwardRef, useEffect, useId, useRef } from "react";
 import type { ComboboxCollectionItem } from "@ark-ui/react";
-import { ComboboxContext, useTagsInputContext, useComboboxContext } from "@ark-ui/react";
+import { ComboboxContext, useTagsInputContext } from "@ark-ui/react";
 import { Cross } from "@ndla/icons/action";
 import {
   ComboboxClearTrigger,
@@ -40,7 +40,7 @@ export const TagSelectorRoot = <T extends ComboboxCollectionItem>({
   allowCustomValue = true,
   multiple = true,
   selectionBehavior = "clear",
-  editable = false,
+  editable,
   addOnPaste = false,
   onValueChange,
   children,
@@ -124,14 +124,13 @@ export type TagSelectorInputProps = ComboboxInputProps & TagsInputInputProps;
 export const TagSelectorInputBase = forwardRef<HTMLInputElement, TagSelectorInputProps>(
   ({ children, ...props }, ref) => {
     const tagsApi = useTagsInputContext();
-    const comboboxApi = useComboboxContext();
 
     return (
       <ComboboxInput asChild>
         <TagsInputInput
           {...props}
           onKeyDown={(event) => {
-            if (event.key === "Enter" && comboboxApi.collection.items.length === 0) {
+            if (event.key === "Enter") {
               tagsApi.addValue(tagsApi.inputValue);
             }
           }}
@@ -146,7 +145,6 @@ export const TagSelectorInputBase = forwardRef<HTMLInputElement, TagSelectorInpu
 
 export const TagSelectorInput = forwardRef<HTMLInputElement, TagSelectorInputProps>(({ children, ...props }, ref) => {
   const tagsApi = useTagsInputContext();
-  const comboboxApi = useComboboxContext();
 
   return (
     <>
@@ -158,13 +156,14 @@ export const TagSelectorInput = forwardRef<HTMLInputElement, TagSelectorInputPro
               <Cross />
             </TagsInputItemDeleteTrigger>
           </TagsInputItemPreview>
+          <TagsInputItemInput />
         </TagsInputItem>
       ))}
       <ComboboxInput asChild>
         <TagsInputInput
           {...props}
           onKeyDown={(event) => {
-            if (event.key === "Enter" && comboboxApi.collection.items.length === 0) {
+            if (event.key === "Enter") {
               tagsApi.addValue(tagsApi.inputValue);
             }
           }}

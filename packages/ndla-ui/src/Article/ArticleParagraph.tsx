@@ -7,19 +7,21 @@
  */
 
 import { ComponentPropsWithoutRef, ReactNode } from "react";
-import styled from "@emotion/styled";
+import { styled } from "@ndla/styled-system/jsx";
 
 interface Props extends ComponentPropsWithoutRef<"p"> {
   children?: ReactNode;
 }
 
-const StyledParagraph = styled.p`
-  &[data-align="center"] {
-    text-align: center;
-  }
-  &:has(span[dir="rtl"]) {
-    direction: rtl;
-  }
-`;
+const StyledParagraph = styled("p", {
+  base: {
+    '&[data-align="center"]': {
+      textAlign: "center",
+    },
+    '&:has(span[dir="rtl"])': {
+      direction: "rtl",
+    },
+  },
+});
 
 export const ArticleParagraph = (props: Props) => <StyledParagraph {...props} />;

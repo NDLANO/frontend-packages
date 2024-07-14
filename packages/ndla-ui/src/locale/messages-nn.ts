@@ -577,6 +577,7 @@ const messages = {
     podcast: "Podkast",
     h5p: "H5P",
     video: "Video",
+    missing: "Ukjent",
   },
   modal: {
     closeModal: "Lukk",

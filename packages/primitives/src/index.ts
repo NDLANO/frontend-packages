@@ -23,7 +23,7 @@ export type {
 } from "./ArticleLists";
 export { OrderedList, UnOrderedList, DefinitionList } from "./ArticleLists";
 
-export type { BadgeVariantProps, BadgeProps } from "./Badge";
+export type { BadgeVariantProps, BadgeProps, BadgeVariant } from "./Badge";
 
 export { Badge } from "./Badge";
 

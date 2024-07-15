@@ -22,13 +22,10 @@ const cardRecipe = sva({
       border: "1px solid",
       borderRadius: "xsmall",
       borderColor: "stroke.subtle",
-      background: "surface.actionSubtle",
       transitionDuration: "fast",
       transitionProperty: "background, color",
       transitionTimingFunction: "default",
-      "&:has(img)": {
-        background: "surface.default",
-      },
+      background: "surface.default",
       _hover: {
         background: "surface.actionSubtle.hover",
         borderColor: "stroke.hover",

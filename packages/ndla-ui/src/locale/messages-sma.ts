@@ -203,7 +203,7 @@ const messages = {
     alphabeticSort: "Fag gruppert alfabetisk",
     subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: "Alle fag",
-    myFavoriteSubjects: "Mine favorittfag",
+    myFavoriteSubjects: "Dine favorittfag",
     errorDescription: "Gaatesjen, fieljie sjïdti veedtjemisnie.",
     chooseSubject: "Veeljh faagem",
     confirmRemove: "Er du sikker på at du vil fjerne {{subject}} fra favorittfag?",

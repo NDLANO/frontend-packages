@@ -203,7 +203,7 @@ const messages = {
     alphabeticSort: "Fágat alfabehtalaččat",
     subjectGroup: 'Joavku "{{ category }}"',
     allSubjects: "Buot fágat",
-    myFavoriteSubjects: "Mu oiddotfágat",
+    myFavoriteSubjects: "Dine favorittfag",
     errorDescription: "Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.",
     chooseSubject: "Vállje fága",
     confirmRemove: "Leat go sihkar ahte áiggut sihkkut {{subject}} oiddotfágain?",

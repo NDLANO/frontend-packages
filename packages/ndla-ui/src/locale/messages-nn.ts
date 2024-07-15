@@ -203,7 +203,7 @@ const messages = {
     alphabeticSort: "Fag gruppert alfabetisk",
     subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: "Alle fag",
-    myFavoriteSubjects: "Favorittfaga mine",
+    myFavoriteSubjects: "Favorittfaga dine",
     errorDescription: "Orsak, ein feil oppstod under lasting av faga.",
     chooseSubject: "Vel fag",
     confirmRemove: "Er du sikker på at du vil fjerne {{subject}} fra favorittfag?",

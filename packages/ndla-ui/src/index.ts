@@ -130,6 +130,12 @@ export {
   ConceptBadge,
 } from "./ContentTypeBadge";
 
+export type { ContentTypeBadgeProps } from "./ContentTypeBadge/ContentTypeBadgeNew";
+export {
+  ContentTypeBadge as ContentTypeBadgeNew,
+  contentTypeToBadgeVariantMap,
+} from "./ContentTypeBadge/ContentTypeBadgeNew";
+
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 
 export { default as ContentPlaceholder } from "./ContentPlaceholder";

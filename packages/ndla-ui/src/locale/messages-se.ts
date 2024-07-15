@@ -579,6 +579,8 @@ const messages = {
     podcast: "Podkásta",
     h5p: "H5P",
     video: "Video",
+    missing: "Ukjent",
+    external: "Ekstern",
   },
   modal: {
     closeModal: "Govčča",

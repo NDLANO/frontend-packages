@@ -12,7 +12,6 @@
 export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
 export { default as FramedContent } from "./FramedContent";
 export {
-  ConceptNotionV2,
   ImageEmbed,
   getCrop,
   getFocalPoint,
@@ -140,8 +139,6 @@ export { default as CopyParagraphButton } from "./CopyParagraphButton";
 
 export { default as ContentPlaceholder } from "./ContentPlaceholder";
 
-export { Notion } from "./Notion";
-
 export {
   TagSelectorRoot,
   TagSelectorLabel,
@@ -152,7 +149,6 @@ export {
   TagSelectorInputBase,
   TagSelectorInput,
 } from "./TagSelector/TagSelector";
-export type { TagSelectorRootProps, TagSelectorControlProps, TagSelectorInputProps } from "./TagSelector/TagSelector";
 
 export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from "./SnackBar";
 export type { Snack, SnackContext } from "./SnackBar";

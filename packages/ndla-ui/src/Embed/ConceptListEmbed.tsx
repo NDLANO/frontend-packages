@@ -7,29 +7,32 @@
  */
 
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { Figure } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { ConceptListMetaData } from "@ndla/types-embed";
 import { BlockConcept } from "./ConceptEmbed";
-import { Figure } from "../Figure";
 
 interface Props {
   embed: ConceptListMetaData;
   lang?: string;
 }
 
-const ConceptList = styled.div`
-  & > figure:first-of-type {
-    margin-top: 32px;
-  }
-  & li {
-    display: block;
-  }
-`;
+// TODO: Find out if we're actually still going to use this.
+// If we are, we need to re-add some margin between the list items. We should also probably parse the concept content to HTML, like we do in ConceptEmbed.
 
-const StyledSpan = styled.span`
-  color: ${colors.support.red};
-`;
+const ConceptList = styled("div", {
+  base: {
+    "& li": {
+      display: "block",
+    },
+  },
+});
+
+const StyledSpan = styled("span", {
+  base: {
+    color: "text.error",
+  },
+});
 
 const ConceptListEmbed = ({ embed, lang }: Props) => {
   const { t } = useTranslation();
@@ -39,20 +42,18 @@ const ConceptListEmbed = ({ embed, lang }: Props) => {
   const { embedData, data } = embed;
   return (
     <div>
-      <Figure type="full">
+      <Figure>
         {embedData.title && <h2 lang={lang}>{embedData.title}</h2>}
         <ConceptList>
           <ul lang={lang}>
             {data.concepts.map(({ concept, visualElement }) => (
               <li key={concept.id}>
                 <BlockConcept
-                  title={concept.title}
+                  title={concept.title.title}
                   content={concept.content.content}
-                  metaImage={concept.metaImage}
                   copyright={concept.copyright}
-                  source={concept.source}
                   visualElement={visualElement}
-                  conceptType={concept.conceptType}
+                  lang={lang}
                 />
               </li>
             ))}

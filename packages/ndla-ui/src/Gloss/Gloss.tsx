@@ -24,6 +24,10 @@ import type { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api"
 import GlossExample from "./GlossExample";
 import SpeechControl from "../AudioPlayer/SpeechControl";
 
+// TODO: Figure out padding between bordered and simple variant.
+// The design says that the content above the accordion content should have enough padding to align with the accordion content.
+// When a gloss is bordered there's way too much padding.
+
 const getFilteredExamples = (
   glossData: IGlossData | undefined,
   exampleIds: string | undefined,

@@ -7,6 +7,7 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
+import { ExpandableBox, ExpandableBoxSummary, FramedContent } from "@ndla/primitives";
 import { UuDisclaimerEmbedData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
@@ -14,7 +15,6 @@ import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
 import { ArticleWrapper } from "../Article";
 import CopyParagraphButton from "../CopyParagraphButton";
 import FactBox from "../FactBox";
-import FramedContent from "../FramedContent";
 import LayoutItem, { OneColumn } from "../Layout";
 
 const embedData: UuDisclaimerEmbedData = {
@@ -143,10 +143,10 @@ export const WithHtml: StoryObj<typeof UuDisclaimerEmbed> = {
     children: (
       <>
         <p>Dette er html med en ekspanderboks</p>
-        <details>
-          <summary>Tittel</summary>
+        <ExpandableBox>
+          <ExpandableBoxSummary>Tittel</ExpandableBoxSummary>
           <p>innhold</p>
-        </details>
+        </ExpandableBox>
       </>
     ),
   },

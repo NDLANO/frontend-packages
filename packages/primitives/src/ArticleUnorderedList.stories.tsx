@@ -47,3 +47,55 @@ export const Default: StoryFn = () => (
     <li>Listepunkt 4</li>
   </UnOrderedList>
 );
+
+export const WithParagraphs: StoryFn = () => (
+  <UnOrderedList>
+    <li>
+      <p>Listepunkt 1</p>
+    </li>
+    <li>
+      <p>Listepunkt 2</p>
+      <UnOrderedList>
+        <li>
+          <p>Listepunkt 1</p>
+        </li>
+        <li>
+          <p>Listepunkt 2</p>
+          <UnOrderedList>
+            <li>
+              <p>Listepunkt 1</p>
+              <UnOrderedList>
+                <li>
+                  <p>Listepunkt 1</p>
+                  <UnOrderedList>
+                    <li>
+                      <p>Listepunkt 1</p>
+                    </li>
+                    <li>
+                      <p>Listepunkt 2</p>
+                    </li>
+                    <li>
+                      <p>Listepunkt 3</p>
+                    </li>
+                  </UnOrderedList>
+                </li>
+                <li>
+                  <p>Listepunkt 2</p>
+                </li>
+              </UnOrderedList>
+            </li>
+            <li>
+              <p>Listepunkt 2</p>
+            </li>
+          </UnOrderedList>
+        </li>
+        <li>
+          <p>Listepunkt 3</p>
+        </li>
+      </UnOrderedList>
+    </li>
+    <li>
+      <p>Listepunkt 3</p>
+    </li>
+  </UnOrderedList>
+);

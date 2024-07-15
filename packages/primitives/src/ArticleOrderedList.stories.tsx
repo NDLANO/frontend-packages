@@ -140,3 +140,55 @@ export const StartingAtFive: StoryFn = () => (
     <li>Listepunkt 4</li>
   </OrderedList>
 );
+
+export const WithParagraphs: StoryFn = () => (
+  <OrderedList variant="letters">
+    <li>
+      <p>Listepunkt 1</p>
+    </li>
+    <li>
+      <p>Listepunkt 2</p>
+      <OrderedList variant="letters">
+        <li>
+          <p>Listepunkt 1</p>
+        </li>
+        <li>
+          <p>Listepunkt 2</p>
+          <OrderedList variant="letters">
+            <li>
+              <p>Listepunkt 1</p>
+              <OrderedList variant="letters">
+                <li>
+                  <p>Listepunkt 1</p>
+                  <OrderedList variant="letters">
+                    <li>
+                      <p>Listepunkt 1</p>
+                    </li>
+                    <li>
+                      <p>Listepunkt 2</p>
+                    </li>
+                    <li>
+                      <p>Listepunkt 3</p>
+                    </li>
+                  </OrderedList>
+                </li>
+                <li>
+                  <p>Listepunkt 2</p>
+                </li>
+              </OrderedList>
+            </li>
+            <li>
+              <p>Listepunkt 2</p>
+            </li>
+          </OrderedList>
+        </li>
+        <li>
+          <p>Listepunkt 3</p>
+        </li>
+      </OrderedList>
+    </li>
+    <li>
+      <p>Listepunkt 3</p>
+    </li>
+  </OrderedList>
+);

@@ -20,6 +20,9 @@ const orderedListRecipe = cva({
     "& li": {
       marginBlock: "small",
     },
+    "& li > :not(ol, ul, li)": {
+      display: "inline",
+    },
   },
   defaultVariants: {
     variant: "numbers",
@@ -84,6 +87,9 @@ export const UnOrderedList = styled("ul", {
       _marker: {
         color: "icon.strong",
       },
+    },
+    "& li > :not(ol, ul, li)": {
+      display: "inline",
     },
   },
 });

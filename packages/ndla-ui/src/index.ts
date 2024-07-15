@@ -165,7 +165,6 @@ export {
   FRONTPAGE_ARTICLE_MAX_WIDTH,
   WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH,
 } from "./FrontpageArticle";
-export { DefinitionTerm, DefinitionDescription } from "./DefinitionList";
 export type { ProgrammeV2 } from "./ProgrammeCard";
 
 export { Gloss, GlossExample } from "./Gloss";

@@ -82,18 +82,25 @@ const { withProvider, withContext } = createStyleContext(sliderRecipe);
 
 export type SliderRootProps = Slider.RootProps & JsxStyleProps;
 
-export const SliderRoot = withProvider<HTMLDivElement, SliderRootProps>(Slider.Root, "root");
+export const SliderRoot = withProvider<HTMLDivElement, SliderRootProps>(Slider.Root, "root", { baseComponent: true });
 
 export const SliderControl = withContext<HTMLDivElement, JsxStyleProps & Slider.ControlProps>(
   Slider.Control,
   "control",
+  { baseComponent: true },
 );
 
-export const SliderTrack = withContext<HTMLDivElement, JsxStyleProps & Slider.TrackProps>(Slider.Track, "track");
+export const SliderTrack = withContext<HTMLDivElement, JsxStyleProps & Slider.TrackProps>(Slider.Track, "track", {
+  baseComponent: true,
+});
 
-export const SliderRange = withContext<HTMLDivElement, JsxStyleProps & Slider.RangeProps>(Slider.Range, "range");
+export const SliderRange = withContext<HTMLDivElement, JsxStyleProps & Slider.RangeProps>(Slider.Range, "range", {
+  baseComponent: true,
+});
 
-export const SliderThumb = withContext<HTMLDivElement, JsxStyleProps & Slider.ThumbProps>(Slider.Thumb, "thumb");
+export const SliderThumb = withContext<HTMLDivElement, JsxStyleProps & Slider.ThumbProps>(Slider.Thumb, "thumb", {
+  baseComponent: true,
+});
 
 const InternalSliderLabel = withContext<HTMLDivElement, JsxStyleProps & Slider.LabelProps>(Slider.Label, "label");
 

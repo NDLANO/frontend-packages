@@ -49,11 +49,16 @@ export const PopoverRoot = ({ lazyMount = true, unmountOnExit = true, ...props }
   <InternalPopoverRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const PopoverAnchor = withContext<HTMLDivElement, Popover.AnchorProps & JsxStyleProps>(Popover.Anchor, "anchor");
+export const PopoverAnchor = withContext<HTMLDivElement, Popover.AnchorProps & JsxStyleProps>(
+  Popover.Anchor,
+  "anchor",
+  { baseComponent: true },
+);
 
 export const PopoverArrowStandalone = withContext<HTMLDivElement, Popover.ArrowProps & JsxStyleProps>(
   Popover.Arrow,
   "arrow",
+  { baseComponent: true },
 );
 
 export const PopoverArrow = (props: Popover.ArrowTipProps & JsxStyleProps) => (
@@ -65,16 +70,19 @@ export const PopoverArrow = (props: Popover.ArrowTipProps & JsxStyleProps) => (
 export const PopoverArrowTip = withContext<HTMLDivElement, Popover.ArrowTipProps & JsxStyleProps>(
   Popover.ArrowTip,
   "arrowTip",
+  { baseComponent: true },
 );
 
 export const PopoverCloseTrigger = withContext<HTMLButtonElement, Popover.CloseTriggerProps & JsxStyleProps>(
   Popover.CloseTrigger,
   "closeTrigger",
+  { baseComponent: true },
 );
 
 export const PopoverContentStandalone = withContext<HTMLDivElement, Popover.ContentProps & JsxStyleProps>(
   Popover.Content,
   "content",
+  { baseComponent: true },
 );
 
 export const PopoverContent = (props: Popover.ContentProps & JsxStyleProps) => (
@@ -86,21 +94,27 @@ export const PopoverContent = (props: Popover.ContentProps & JsxStyleProps) => (
 export const PopoverDescription = withContext<HTMLParagraphElement, Popover.DescriptionProps & JsxStyleProps>(
   Popover.Description,
   "description",
+  { baseComponent: true },
 );
 
 export const PopoverIndicator = withContext<HTMLDivElement, Popover.IndicatorProps & JsxStyleProps>(
   Popover.Indicator,
   "indicator",
+  { baseComponent: true },
 );
 
 export const PopoverPositioner = withContext<HTMLDivElement, Popover.PositionerProps & JsxStyleProps>(
   Popover.Positioner,
   "positioner",
+  { baseComponent: true },
 );
 
-export const PopoverTitle = withContext<HTMLDivElement, Popover.TitleProps & JsxStyleProps>(Popover.Title, "title");
+export const PopoverTitle = withContext<HTMLDivElement, Popover.TitleProps & JsxStyleProps>(Popover.Title, "title", {
+  baseComponent: true,
+});
 
 export const PopoverTrigger = withContext<HTMLButtonElement, Popover.TriggerProps & JsxStyleProps>(
   Popover.Trigger,
   "trigger",
+  { baseComponent: true },
 );

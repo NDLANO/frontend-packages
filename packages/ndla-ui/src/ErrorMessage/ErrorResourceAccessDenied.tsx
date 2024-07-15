@@ -7,16 +7,18 @@
  */
 
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
-import { spacing } from "@ndla/core";
 import { HumanMaleBoard, LogIn } from "@ndla/icons/common";
-
+import { styled } from "@ndla/styled-system/jsx";
 import ErrorMessage from "./ErrorMessage";
 
-const StyledLogInIconWrapper = styled.span`
-  margin-left: ${spacing.xsmall};
-`;
+// TODO: This has not been redesignet yet. This is just a rewrite of the previous design in panda
+
+const StyledLogInIconWrapper = styled("span", {
+  base: {
+    marginLeft: "3xsmall",
+  },
+});
 
 type Props = {
   onAuthenticateClick: () => void;

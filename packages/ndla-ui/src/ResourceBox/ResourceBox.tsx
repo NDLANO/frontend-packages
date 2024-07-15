@@ -21,13 +21,14 @@ const Container = styled("div", {
     borderColor: "stroke.default",
     boxShadow: "full",
     gap: "medium",
-    // TODO: Consider mobile styling
-    //   ${mq.range({ until: breakpoints.desktop })} {
-    //     gap: 0;
-    //     flex-direction: column;
-    //     padding-top: ${spacing.medium};
-    //     text-align: center;
-    //   }
+    tabletWideDown: {
+      padding: "xsmall",
+    },
+    tabletDown: {
+      flexDirection: "column",
+      gap: "0",
+      padding: "0",
+    },
   },
 });
 
@@ -35,66 +36,25 @@ const ContentWrapper = styled("div", {
   base: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "flex-start",
     gap: "xsmall",
     flex: "1",
+    tabletDown: {
+      padding: "xsmall",
+    },
   },
 });
-
-// const ResourceBoxContainer = styled.div`
-//   display: flex;
-//   position: relative;
-//   padding: ${spacing.nsmall};
-//   border-radius: 5px;
-//   border: 1px solid ${colors.brand.light};
-//   font-family: ${fonts.sans};
-//   box-shadow: 0px 20px 35px -15px rgba(32, 88, 143, 0.15);
-//   gap: ${spacing.medium};
-//
-// `;
-//
-// const Title = styled.h3`
-//   font-weight: ${fonts.weight.bold};
-//   ${fonts.sizes(18)};
-//   margin-top: 0;
-// `;
-//
-// const Caption = styled.p`
-//   ${fonts.sizes(14)};
-// `;
-//
-// const ContentWrapper = styled.div`
-//   flex-basis: 0;
-//   flex-grow: 1;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   ${mq.range({ until: breakpoints.desktop })} {
-//     align-items: center;
-//     padding-top: ${spacing.small};
-//   }
-// `;
-//
-// const StyledImage = styled(Image)`
-//   && {
-//     object-fit: cover;
-//     width: 134px;
-//     height: 134px;
-//     border-radius: 5px;
-//
-//     ${mq.range({ until: breakpoints.desktop })} {
-//       width: 200px;
-//       height: 200px;
-//     }
-//   }
-// `;
 
 const StyledImage = styled(Image, {
   base: {
     objectFit: "cover",
     borderRadius: "xsmall",
-    height: "100%",
-    width: "min-content",
+    width: "fit-content",
     aspectRatio: "1/1",
+    tabletDown: {
+      width: "100%",
+      borderRadius: "0",
+    },
   },
 });
 
@@ -123,10 +83,7 @@ export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) =
       <StyledImage
         src={image.src}
         alt={image.alt}
-        height="150"
-        width="150"
-        fallbackWidth={150}
-        sizes={`(min-width: ${token("breakpoints.desktop")}) 150px, 200px`}
+        sizes={`(min-width: ${token("breakpoints.desktop")}) 150px, (max-width: ${token("breakpoints.tablet")} ) 400px, 200px`}
       />
       <ContentWrapper>
         <Heading textStyle="label.large" fontWeight="bold" asChild consumeCss>
@@ -140,19 +97,6 @@ export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) =
       </ContentWrapper>
     </Container>
   );
-  // return (
-  //   <ResourceBoxContainer>
-  //     <StyledImage src={image.src} alt={image.alt} />
-  //     <ContentWrapper>
-  //       <Title>{title}</Title>
-  //       <Caption>{caption}</Caption>
-  //       <SafeLinkButton to={url} target="_blank" variant="secondary">
-  //         {buttonText}
-  //         <Launch />
-  //       </SafeLinkButton>
-  //     </ContentWrapper>
-  //   </ResourceBoxContainer>
-  // );
 };
 
 export default ResourceBox;

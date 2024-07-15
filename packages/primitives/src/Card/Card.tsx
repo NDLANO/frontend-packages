@@ -32,9 +32,6 @@ const cardRecipe = sva({
       _hover: {
         background: "surface.actionSubtle.hover",
         borderColor: "stroke.hover",
-        "& h1, h2, h3, h4, h5, h6": {
-          textDecoration: "none",
-        },
       },
     },
     content: {
@@ -46,6 +43,9 @@ const cardRecipe = sva({
     },
     title: {
       textDecoration: "underline",
+      _hover: {
+        textDecoration: "none",
+      },
     },
     image: {
       height: "200px",

@@ -31,6 +31,7 @@
     "@ndla/types-embed": "^4.1.8"
   },
   "dependencies": {
+    "@ndla/primitives": "workspace:^",
     "@ndla/ui": "^55.0.13-alpha.0",
     "html-react-parser": "^5.1.8"
   },

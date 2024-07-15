@@ -2717,6 +2717,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/article-converter@workspace:packages/article-converter"
   dependencies:
+    "@ndla/primitives": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^4.1.8"
     "@ndla/ui": "npm:^55.0.13-alpha.0"

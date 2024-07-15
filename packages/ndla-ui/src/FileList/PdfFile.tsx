@@ -6,19 +6,36 @@
  *
  */
 
-import { Figure } from "../Figure";
+import { Heading, Figure } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 
 interface Props {
   title: string;
   url: string;
 }
 
+const StyledIframe = styled("iframe", {
+  base: {
+    width: "100%",
+  },
+});
+
+const StyledFigure = styled(Figure, {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
+  },
+});
+
 const PdfFile = ({ title, url }: Props) => {
   return (
-    <Figure>
-      <h2>{title}</h2>
-      <iframe title={title} height="1050" src={url} />
-    </Figure>
+    <StyledFigure>
+      <Heading asChild consumeCss textStyle="title.medium">
+        <h4>{title}</h4>
+      </Heading>
+      <StyledIframe title={title} height="1050" src={url} />
+    </StyledFigure>
   );
 };
 

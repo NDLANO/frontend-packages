@@ -50,8 +50,6 @@ export type { ArticleModifier } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
-export { default as Table, TableStyling } from "./Table";
-
 export { default as ContentLoader } from "./ContentLoader";
 
 export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleList";

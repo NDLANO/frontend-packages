@@ -580,6 +580,7 @@ const messages = {
     h5p: "H5P",
     video: "Video",
     missing: "Ukjent",
+    external: "Ekstern",
   },
   modal: {
     closeModal: "Govčča",

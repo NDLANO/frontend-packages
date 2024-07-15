@@ -7,15 +7,15 @@
  */
 
 import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
-import { DefinitionTerm } from "@ndla/ui";
+import { DefinitionList } from "@ndla/primitives";
 import { PluginType } from "./types";
 
-export const dtPlugin: PluginType = (node, converterOpts, opts) => {
+export const dlPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
 
   return (
-    <DefinitionTerm {...props} lang={opts.articleLanguage}>
+    <DefinitionList {...props} lang={opts.articleLanguage}>
       {domToReact(node.children as DOMNode[], converterOpts)}
-    </DefinitionTerm>
+    </DefinitionList>
   );
 };

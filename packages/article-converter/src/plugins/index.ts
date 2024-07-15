@@ -9,10 +9,9 @@
 import { anchorPlugin } from "./anchorPlugin";
 import { asidePlugin } from "./asidePlugin";
 import { copyParagraphPlugin } from "./copyParagraphPlugin";
-import { ddPlugin } from "./ddPlugin";
 import { detailsPlugin } from "./detailsPlugin";
 import { divPlugin } from "./divPlugin";
-import { dtPlugin } from "./dtPlugin";
+import { dlPlugin } from "./dlPlugin";
 import { h3Plugin } from "./h3Plugin";
 import { mathPlugin } from "./mathPlugin";
 import { navPlugin } from "./navPlugin";
@@ -34,12 +33,11 @@ export const basePlugins: Record<string, PluginType> = {
   table: tablePlugin,
   aside: asidePlugin,
   ul: ulPlugin,
-  dd: ddPlugin,
-  dt: dtPlugin,
   nav: navPlugin,
   a: anchorPlugin,
   summary: summaryPlugin,
   details: detailsPlugin,
+  dl: dlPlugin,
 };
 
 export const oembedPlugins: Record<string, PluginType> = {

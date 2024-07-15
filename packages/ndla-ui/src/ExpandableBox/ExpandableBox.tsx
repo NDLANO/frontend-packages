@@ -7,8 +7,6 @@
  */
 
 import { HTMLAttributes } from "react";
-import styled from "@emotion/styled";
-import { fonts } from "@ndla/core";
 
 interface Props extends HTMLAttributes<HTMLDetailsElement> {}
 

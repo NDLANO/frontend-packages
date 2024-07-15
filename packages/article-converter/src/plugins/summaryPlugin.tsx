@@ -7,8 +7,8 @@
  */
 
 import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
+import { ExpandableBoxSummary } from "@ndla/primitives";
 import { PluginType } from "./types";
-import { ExpandableBoxSummary } from "../../../primitives/es";
 
 export const summaryPlugin: PluginType = (node, converterOpts) => {
   const props = attributesToProps(node.attribs);

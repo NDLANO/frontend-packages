@@ -6,65 +6,63 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { breakpoints, fonts, mq, colors, spacing } from "@ndla/core";
 import { Launch } from "@ndla/icons/common";
-import { Image } from "@ndla/primitives";
+import { Heading, Image, Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
+import { styled } from "@ndla/styled-system/jsx";
+import { token } from "@ndla/styled-system/tokens";
 
-const ResourceBoxContainer = styled.div`
-  display: flex;
-  position: relative;
-  padding: ${spacing.nsmall};
-  border-radius: 5px;
-  border: 1px solid ${colors.brand.light};
-  font-family: ${fonts.sans};
-  box-shadow: 0px 20px 35px -15px rgba(32, 88, 143, 0.15);
-  gap: ${spacing.medium};
+const Container = styled("div", {
+  base: {
+    display: "flex",
+    padding: "medium",
+    borderRadius: "xsmall",
+    border: "1px solid",
+    borderColor: "stroke.default",
+    boxShadow: "full",
+    gap: "medium",
+    tabletWideDown: {
+      padding: "xsmall",
+    },
+    tabletDown: {
+      flexDirection: "column",
+      gap: "0",
+      padding: "0",
+    },
+  },
+});
 
-  ${mq.range({ until: breakpoints.desktop })} {
-    gap: 0;
-    flex-direction: column;
-    padding-top: ${spacing.medium};
-    text-align: center;
-  }
-`;
+const ContentWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "xsmall",
+    flex: "1",
+    tabletDown: {
+      padding: "xsmall",
+    },
+  },
+});
 
-const Title = styled.h3`
-  font-weight: ${fonts.weight.bold};
-  ${fonts.sizes(18)};
-  margin-top: 0;
-`;
+const StyledImage = styled(Image, {
+  base: {
+    objectFit: "cover",
+    borderRadius: "xsmall",
+    width: "fit-content",
+    aspectRatio: "1/1",
+    tabletDown: {
+      width: "100%",
+      borderRadius: "0",
+    },
+  },
+});
 
-const Caption = styled.p`
-  ${fonts.sizes(14)};
-`;
-
-const ContentWrapper = styled.div`
-  flex-basis: 0;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  ${mq.range({ until: breakpoints.desktop })} {
-    align-items: center;
-    padding-top: ${spacing.small};
-  }
-`;
-
-const StyledImage = styled(Image)`
-  && {
-    object-fit: cover;
-    width: 134px;
-    height: 134px;
-    border-radius: 5px;
-
-    ${mq.range({ until: breakpoints.desktop })} {
-      width: 200px;
-      height: 200px;
-    }
-  }
-`;
+const StyledText = styled(Text, {
+  base: {
+    flex: "1",
+  },
+});
 
 interface ImageMeta {
   src: string;
@@ -81,17 +79,23 @@ interface Props {
 
 export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) => {
   return (
-    <ResourceBoxContainer>
-      <StyledImage src={image.src} alt={image.alt} />
+    <Container>
+      <StyledImage
+        src={image.src}
+        alt={image.alt}
+        sizes={`(min-width: ${token("breakpoints.desktop")}) 150px, (max-width: ${token("breakpoints.tablet")} ) 400px, 200px`}
+      />
       <ContentWrapper>
-        <Title>{title}</Title>
-        <Caption>{caption}</Caption>
+        <Heading textStyle="label.large" fontWeight="bold" asChild consumeCss>
+          <h3>{title}</h3>
+        </Heading>
+        <StyledText textStyle="body.medium">{caption}</StyledText>
         <SafeLinkButton to={url} target="_blank" variant="secondary">
           {buttonText}
-          <Launch aria-hidden />
+          <Launch />
         </SafeLinkButton>
       </ContentWrapper>
-    </ResourceBoxContainer>
+    </Container>
   );
 };
 

@@ -14,7 +14,7 @@ import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } fro
 import { Figure } from "../Figure";
 import { LicenseContainerContent } from "../LicenseByline/EmbedByline";
 
-export interface ConceptProps extends ComponentPropsWithRef<"div"> {
+export interface ConceptProps extends ComponentPropsWithRef<"figure"> {
   copyright?: ConceptCopyright;
   visualElement?: ConceptVisualElementMeta;
   lang?: string;
@@ -42,7 +42,7 @@ const ContentWrapper = styled("div", {
 
 // TODO: Figure out if we need to support tags, subjects and headerButtons.
 
-export const Concept = forwardRef<HTMLDivElement, ConceptProps>(
+export const Concept = forwardRef<HTMLElement, ConceptProps>(
   ({ copyright, visualElement, lang, children, title, ...rest }, ref) => {
     return (
       <StyledFigure ref={ref} {...rest}>

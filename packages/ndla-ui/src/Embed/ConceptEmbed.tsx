@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,431 +7,96 @@
  */
 
 import parse from "html-react-parser";
-import { ReactNode, forwardRef, useCallback, useMemo, useRef, useState } from "react";
-import { isMobile } from "react-device-detect";
-import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { Root, Trigger, Content, Anchor, Close, Portal } from "@radix-ui/react-popover";
-import { IconButtonV2 } from "@ndla/button";
-import { breakpoints, colors, mq, spacing, stackOrder } from "@ndla/core";
-import { Cross } from "@ndla/icons/action";
-import { Tooltip } from "@ndla/tooltip";
+import { forwardRef, useMemo } from "react";
+import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
-import { ConceptNotionV2, ConceptNotionData, ConceptType } from "./conceptComponents";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { InlineTriggerButton } from "./InlineTriggerButton";
 import { RenderContext } from "./types";
-import { Figure } from "../Figure";
-import { Gloss } from "../Gloss";
-import { EmbedByline } from "../LicenseByline";
-import { Notion as UINotion } from "../Notion";
-import { NotionImage } from "../Notion/NotionImage";
+import { Concept, ConceptProps } from "../Concept/Concept";
 
-interface PopoverPosition {
-  top?: number;
-}
-
-const PopoverWrapper = styled.div<PopoverPosition>`
-  div[data-radix-popper-content-wrapper] {
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    top: ${({ top }) => top}px !important;
-    z-index: ${stackOrder.popover} !important;
-  }
-
-  ${mq.range({ until: breakpoints.tablet })} {
-    div[data-radix-popper-content-wrapper] {
-      // Fix for popover positioning on mobile.
-      // If we modify all popovers we break license icons.
-      // https://github.com/radix-ui/primitives/issues/1839
-      position: fixed !important;
-      transform: none !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw;
-      z-index: ${stackOrder.popover} !important;
-      height: 100vh;
-      min-width: 100vw !important;
-    }
-  }
-`;
-
-const ImageWrapper = styled.div`
-  float: right;
-  padding-left: ${spacing.normal};
-  position: relative;
-
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100%;
-    padding-left: 0;
-  }
-`;
-
-interface Props {
-  embed: ConceptMetaData;
-  fullWidth?: boolean;
-  lang?: string;
+interface BaseProps {
   renderContext?: RenderContext;
+  lang?: string;
 }
 
-const StyledButton = styled.button`
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-style: inherit;
-  line-height: 1em;
-  padding: 0 0 ${spacing.xxsmall} 0;
-  margin-bottom: -${spacing.xxsmall};
-  text-decoration: none;
-  color: #000;
-  position: relative;
-  cursor: pointer;
-  &:focus,
-  &:hover {
-    color: ${colors.brand.primary};
-    outline: none;
-  }
-`;
+interface Props extends BaseProps {
+  embed: ConceptMetaData;
+}
 
-export const ConceptEmbed = ({ embed, fullWidth, lang, renderContext }: Props) => {
+const StyledPopoverContent = styled(PopoverContent, {
+  base: {
+    width: "surface.xlarge",
+  },
+});
+
+export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.htmlContent);
   }, [embed]);
+
   if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;
   }
   if (embed.status === "error") {
-    return <EmbedErrorPlaceholder type="concept" />;
+    return <EmbedErrorPlaceholder type="gloss" />;
   }
 
-  const {
-    data: { concept, visualElement },
-  } = embed;
+  const { concept, visualElement } = embed.data;
 
-  if (embed.embedData.type === "block") {
-    return (
-      <BlockConcept
-        fullWidth={fullWidth}
-        title={concept.title}
-        content={parsedContent}
-        metaImage={concept.metaImage}
-        copyright={concept.copyright}
-        source={concept.source}
-        visualElement={visualElement}
-        conceptType={concept.conceptType}
-        glossData={concept.glossData}
-        lang={lang}
-        exampleIds={embed.embedData.exampleIds}
-        exampleLangs={embed.embedData.exampleLangs}
-      />
-    );
-  }
   if (embed.embedData.type === "inline") {
     return (
       <InlineConcept
-        title={concept.title}
-        content={parsedContent}
-        metaImage={concept.metaImage}
-        copyright={concept.copyright}
-        source={concept.source}
-        visualElement={visualElement}
         linkText={embed.embedData.linkText}
-        conceptType={concept.conceptType}
-        glossData={concept.glossData}
+        copyright={concept.copyright}
+        visualElement={visualElement}
         lang={lang}
-        exampleIds={embed.embedData.exampleIds}
-        exampleLangs={embed.embedData.exampleLangs}
-      />
+        title={concept.title.title}
+      >
+        {parsedContent}
+      </InlineConcept>
     );
   }
+
   return (
-    <ConceptNotionV2
-      title={concept.title}
-      content={parsedContent}
+    <BlockConcept
       copyright={concept.copyright}
-      source={concept.source}
       visualElement={visualElement}
-      conceptType={concept.conceptType}
-      glossData={concept.glossData}
       lang={lang}
-      exampleIds={embed.embedData.exampleIds}
-      exampleLangs={embed.embedData.exampleLangs}
-      showTitle={renderContext !== "embed"}
-    />
+      title={renderContext === "embed" ? undefined : concept.title.title}
+    >
+      {parsedContent}
+    </BlockConcept>
   );
 };
 
-interface InlineConceptProps extends ConceptNotionData {
-  linkText: ReactNode;
-  headerButtons?: ReactNode;
-  exampleIds?: string;
-  exampleLangs?: string;
-  setSelection?: (e: MouseEvent) => void;
+export interface InlineConceptProps extends ConceptProps, BaseProps {
+  linkText?: string;
 }
-
-const NotionButton = styled.span`
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-style: inherit;
-  line-height: 1em;
-  text-decoration: none;
-  position: relative;
-  text-align: left;
-  color: ${colors.concept.text};
-  cursor: pointer;
-  &:focus,
-  &:hover,
-  &:active,
-  &[data-open="true"] {
-    color: ${colors.concept.text};
-    background-color: ${colors.concept.light};
-  }
-  display: inline;
-  border-bottom: 5px double currentColor;
-`;
-
-const StyledAnchor = styled(Anchor)`
-  ${mq.range({ until: breakpoints.tablet })} {
-    position: fixed;
-    top: 0;
-  }
-`;
-
-const StyledAnchorSpan = styled.span`
-  position: absolute;
-  left: 50%;
-  align-self: center;
-`;
-
-const getModalPosition = (anchor: HTMLElement) => {
-  const article = anchor.closest("[data-ndla-article]");
-  const articlePos = article?.getBoundingClientRect();
-  const anchorPos = anchor.getBoundingClientRect();
-  return anchorPos.top - (articlePos?.top || -window.scrollY) + 30; // add 30 so that position is under the word
-};
 
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
-  (
-    {
-      title,
-      content,
-      copyright,
-      source,
-      visualElement,
-      linkText,
-      glossData,
-      conceptType,
-      headerButtons,
-      lang,
-      exampleIds,
-      exampleLangs,
-      setSelection,
-      ...rest
-    },
-    ref,
-  ) => {
-    const { t } = useTranslation();
-    const anchorRef = useRef<HTMLDivElement>(null);
-    const [modalPos, setModalPos] = useState(-9999);
-
-    const onOpenChange = useCallback((open: boolean) => {
-      if (open) {
-        const anchor = anchorRef.current;
-        if (anchor) {
-          const top = getModalPosition(anchor);
-          setModalPos(top);
-        }
-      } else {
-        setModalPos(-9999);
-      }
-    }, []);
-
-    const preventAutoFocusInEditor = useCallback(
-      (e: MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setSelection?.(e);
-      },
-      [setSelection],
-    );
-
-    return (
-      <Root modal={isMobile} onOpenChange={onOpenChange}>
-        <StyledAnchor ref={anchorRef} asChild>
-          <StyledAnchorSpan contentEditable={false} />
-        </StyledAnchor>
-        <Trigger asChild>
-          <NotionButton
-            onMouseDown={(e) => (setSelection ? preventAutoFocusInEditor(e.nativeEvent) : undefined)}
-            data-open={modalPos !== -9999}
-            role="button"
-            tabIndex={0}
-            ref={ref}
-            {...rest}
-          >
-            {linkText}
-          </NotionButton>
-        </Trigger>
-        <Portal container={(anchorRef.current?.closest("[data-ndla-article]") as HTMLElement | null) || undefined}>
-          <PopoverWrapper top={modalPos}>
-            <Content avoidCollisions={false} side="bottom" asChild>
-              <ConceptNotionV2
-                title={title}
-                content={content}
-                copyright={copyright}
-                source={source}
-                visualElement={visualElement}
-                inPopover
-                headerButtons={headerButtons}
-                lang={lang}
-                closeButton={
-                  <Close asChild>
-                    <IconButtonV2 aria-label={t("close")} variant="ghost">
-                      <Cross />
-                    </IconButtonV2>
-                  </Close>
-                }
-                conceptType={conceptType}
-                glossData={glossData}
-                exampleIds={exampleIds}
-                exampleLangs={exampleLangs}
-              />
-            </Content>
-          </PopoverWrapper>
-        </Portal>
-      </Root>
-    );
-  },
+  ({ linkText, copyright, visualElement, lang, children, title, ...rest }, ref) => (
+    <PopoverRoot>
+      <PopoverTrigger asChild>
+        <InlineTriggerButton {...rest} ref={ref}>
+          {linkText}
+        </InlineTriggerButton>
+      </PopoverTrigger>
+      <StyledPopoverContent>
+        <Figure>
+          <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title}>
+            {children}
+          </Concept>
+        </Figure>
+      </StyledPopoverContent>
+    </PopoverRoot>
+  ),
 );
 
-interface ConceptProps extends ConceptNotionData {
-  fullWidth?: boolean;
-  exampleIds?: string;
-  exampleLangs?: string;
-}
+export interface BlockConceptProps extends ConceptProps {}
 
-export const BlockConcept = ({
-  title,
-  content,
-  metaImage,
-  copyright,
-  source,
-  visualElement,
-  fullWidth,
-  glossData,
-  conceptType,
-  lang,
-  exampleIds,
-  exampleLangs,
-}: ConceptProps) => {
-  const { t } = useTranslation();
-  const anchorRef = useRef<HTMLDivElement>(null);
-  const [modalPos, setModalPos] = useState(-9999);
-
-  const onOpenChange = useCallback((open: boolean) => {
-    if (open) {
-      const anchor = anchorRef.current;
-      if (anchor) {
-        const top = getModalPosition(anchor);
-        setModalPos(top);
-      }
-    } else {
-      setModalPos(-9999);
-    }
-  }, []);
-
-  return (
-    <Root modal={isMobile} onOpenChange={onOpenChange}>
-      <StyledAnchor ref={anchorRef} />
-      <Figure type={fullWidth ? "full" : "full-column"}>
-        {conceptType === "concept" ? (
-          <UINotion
-            id=""
-            title={title.title}
-            text={content}
-            lang={lang}
-            visualElement={
-              visualElement?.status === "success" && (
-                <>
-                  <ImageWrapper>
-                    <Tooltip tooltip={t(`searchPage.resultType.${conceptType}`)}>
-                      <Trigger asChild>
-                        <StyledButton
-                          type="button"
-                          aria-label={t("concept.showDescription", {
-                            title: title,
-                          })}
-                        >
-                          {visualElement.resource === "image" ? (
-                            <NotionImage
-                              src={visualElement.data.image.imageUrl}
-                              alt={visualElement.data.alttext.alttext}
-                            />
-                          ) : metaImage ? (
-                            <NotionImage src={metaImage?.url ?? ""} alt={metaImage?.alt ?? ""} />
-                          ) : undefined}
-                        </StyledButton>
-                      </Trigger>
-                    </Tooltip>
-                  </ImageWrapper>
-                  <Portal
-                    container={
-                      typeof document !== "undefined"
-                        ? (document.querySelector("[data-ndla-article]") as HTMLElement | null) || undefined
-                        : undefined
-                    }
-                  >
-                    <PopoverWrapper top={modalPos}>
-                      <Content avoidCollisions={false} asChild side="bottom">
-                        <ConceptNotionV2
-                          title={title}
-                          content={content}
-                          copyright={copyright}
-                          source={source}
-                          visualElement={visualElement}
-                          inPopover
-                          lang={lang}
-                          closeButton={
-                            <Close asChild>
-                              <IconButtonV2 aria-label={t("close")} variant="ghost">
-                                <Cross />
-                              </IconButtonV2>
-                            </Close>
-                          }
-                          conceptType={conceptType}
-                          glossData={glossData}
-                        />
-                      </Content>
-                    </PopoverWrapper>
-                  </Portal>
-                </>
-              )
-            }
-          />
-        ) : (
-          <Gloss
-            glossData={glossData}
-            title={title}
-            audio={
-              visualElement?.status === "success" && visualElement.resource === "audio"
-                ? {
-                    src: visualElement.data.audioFile.url,
-                    title: visualElement.data.title.title,
-                  }
-                : undefined
-            }
-            exampleIds={exampleIds}
-            exampleLangs={exampleLangs}
-          />
-        )}
-        {copyright && conceptType === "concept" && (
-          <EmbedByline copyright={copyright} type={conceptType as ConceptType} />
-        )}
-      </Figure>
-    </Root>
-  );
-};
-
-export default ConceptEmbed;
+export const BlockConcept = forwardRef<HTMLElement, BlockConceptProps>((props, ref) => (
+  <Concept {...props} ref={ref} />
+));

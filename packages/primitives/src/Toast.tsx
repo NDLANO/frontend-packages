@@ -45,16 +45,18 @@ const toastRecipe = sva({
 const { withProvider, withContext } = createStyleContext(toastRecipe);
 
 export interface ToastRootProps extends Toast.RootProps, JsxStyleProps {}
-export const ToastRoot = withProvider<HTMLDivElement, ToastRootProps>(Toast.Root, "root");
+export const ToastRoot = withProvider<HTMLDivElement, ToastRootProps>(Toast.Root, "root", { baseComponent: true });
 
 export const ToastActionTrigger = withContext<HTMLButtonElement, JsxStyleProps & Toast.ActionTriggerProps>(
   Toast.ActionTrigger,
   "actionTrigger",
+  { baseComponent: true },
 );
 
 export const ToastCloseTrigger = withContext<HTMLDivElement, JsxStyleProps & Toast.CloseTriggerProps>(
   Toast.CloseTrigger,
   "closeTrigger",
+  { baseComponent: true },
 );
 
 const InternalToastDescription = withContext<HTMLDivElement, JsxStyleProps & Toast.DescriptionProps>(

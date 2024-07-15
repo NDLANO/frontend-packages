@@ -98,21 +98,28 @@ const { withProvider, withContext } = createStyleContext(accordionRecipe);
 
 export interface AccordionRootProps extends JsxStyleProps, Accordion.RootProps {}
 
-export const AccordionRoot = withProvider<HTMLDivElement, AccordionRootProps>(Accordion.Root, "root");
+export const AccordionRoot = withProvider<HTMLDivElement, AccordionRootProps>(Accordion.Root, "root", {
+  baseComponent: true,
+});
 
 export const AccordionItemContent = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemContentProps>(
   Accordion.ItemContent,
   "itemContent",
+  { baseComponent: true },
 );
 
 export const AccordionItemIndicator = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemIndicatorProps>(
   Accordion.ItemIndicator,
   "itemIndicator",
+  { baseComponent: true },
 );
 
-export const AccordionItem = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemProps>(Accordion.Item, "item");
+export const AccordionItem = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemProps>(Accordion.Item, "item", {
+  baseComponent: true,
+});
 
 export const AccordionItemTrigger = withContext<HTMLButtonElement, JsxStyleProps & Accordion.ItemTriggerProps>(
   Accordion.ItemTrigger,
   "itemTrigger",
+  { baseComponent: true },
 );

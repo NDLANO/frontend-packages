@@ -32,24 +32,30 @@ const { withProvider, withContext } = createStyleContext(paginationRecipe);
 
 export type PaginationRootProps = JsxStyleProps & Pagination.RootProps;
 
-export const PaginationRoot = withProvider<HTMLElement, PaginationRootProps>(Pagination.Root, "root");
+export const PaginationRoot = withProvider<HTMLElement, PaginationRootProps>(Pagination.Root, "root", {
+  baseComponent: true,
+});
 
 export const PaginationItem = withContext<HTMLButtonElement, JsxStyleProps & Pagination.ItemProps>(
   Pagination.Item,
   "item",
+  { baseComponent: true },
 );
 
 export const PaginationEllipsis = withContext<HTMLDivElement, JsxStyleProps & Pagination.EllipsisProps>(
   Pagination.Ellipsis,
   "ellipsis",
+  { baseComponent: true },
 );
 
 export const PaginationPrevTrigger = withContext<HTMLButtonElement, JsxStyleProps & Pagination.PrevTriggerProps>(
   Pagination.PrevTrigger,
   "prevTrigger",
+  { baseComponent: true },
 );
 
 export const PaginationNextTrigger = withContext<HTMLButtonElement, JsxStyleProps & Pagination.NextTriggerProps>(
   Pagination.NextTrigger,
   "nextTrigger",
+  { baseComponent: true },
 );

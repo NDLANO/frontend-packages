@@ -57,7 +57,9 @@ const cardRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(cardRecipe);
 
-export const CardRoot = withProvider<HTMLElement, HTMLArkProps<"article"> & JsxStyleProps>(ark.article, "root");
+export const CardRoot = withProvider<HTMLElement, HTMLArkProps<"article"> & JsxStyleProps>(ark.article, "root", {
+  baseComponent: true,
+});
 
 const InternalCardHeading = forwardRef<HTMLHeadingElement, TextProps>(
   ({ textStyle = "label.large", fontWeight = "bold", ...props }, ref) => (
@@ -70,6 +72,8 @@ export const CardHeading = withContext<HTMLHeadingElement, TextProps & HTMLArkPr
   "title",
 );
 
-export const CardContent = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "content");
+export const CardContent = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "content", {
+  baseComponent: true,
+});
 
 export const CardImage = withContext<HTMLImageElement, ImageProps>(Image, "image");

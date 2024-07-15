@@ -92,21 +92,26 @@ const { withProvider, withContext } = createStyleContext(radioGroupRecipe);
 
 export interface RadioGroupRootProps extends RadioGroup.RootProps, JsxStyleProps {}
 
-export const RadioGroupRoot = withProvider<HTMLDivElement, RadioGroupRootProps>(RadioGroup.Root, "root");
+export const RadioGroupRoot = withProvider<HTMLDivElement, RadioGroupRootProps>(RadioGroup.Root, "root", {
+  baseComponent: true,
+});
 
 export const RadioGroupIndicator = withContext<HTMLDivElement, RadioGroup.IndicatorProps & JsxStyleProps>(
   RadioGroup.Indicator,
   "indicator",
+  { baseComponent: true },
 );
 
 export const RadioGroupItemControl = withContext<HTMLDivElement, RadioGroup.ItemControlProps & JsxStyleProps>(
   RadioGroup.ItemControl,
   "itemControl",
+  { baseComponent: true },
 );
 
 export const RadioGroupItem = withContext<HTMLLabelElement, RadioGroup.ItemProps & JsxStyleProps>(
   RadioGroup.Item,
   "item",
+  { baseComponent: true },
 );
 
 const InternalRadioGroupItemText = withContext<HTMLSpanElement, RadioGroup.ItemTextProps & JsxStyleProps>(

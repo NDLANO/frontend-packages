@@ -10,7 +10,6 @@
 // Move components to this file when they are migrated to typescript
 
 export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
-export { default as FramedContent } from "./FramedContent";
 export {
   ImageEmbed,
   getCrop,

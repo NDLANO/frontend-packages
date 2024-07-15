@@ -80,9 +80,6 @@ export {
 
 export { FooterBlock } from "./Footer";
 
-export { Figure } from "./Figure";
-export type { FigureType } from "./Figure";
-
 export { LanguageSelector } from "./LanguageSelector";
 
 export { default as SearchResultSleeve } from "./Search/SearchResultSleeve";

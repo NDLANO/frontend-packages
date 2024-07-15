@@ -8,6 +8,7 @@
 
 import { anchorPlugin } from "./anchorPlugin";
 import { asidePlugin } from "./asidePlugin";
+import { blockquotePlugin } from "./blockquotePlugin";
 import { copyParagraphPlugin } from "./copyParagraphPlugin";
 import { detailsPlugin } from "./detailsPlugin";
 import { divPlugin } from "./divPlugin";
@@ -38,6 +39,7 @@ export const basePlugins: Record<string, PluginType> = {
   summary: summaryPlugin,
   details: detailsPlugin,
   dl: dlPlugin,
+  blockquote: blockquotePlugin,
 };
 
 export const oembedPlugins: Record<string, PluginType> = {

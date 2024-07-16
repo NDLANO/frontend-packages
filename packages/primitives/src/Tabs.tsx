@@ -203,7 +203,11 @@ const { withProvider, withContext } = createStyleContext(tabsRecipe);
 
 export type TabsVariantProps = RecipeVariantProps<typeof tabsRecipe>;
 
-export type TabsRootProps = Tabs.RootProps & TabsVariantProps & JsxStyleProps;
+interface RootProps extends Tabs.RootProps {
+  translations: Tabs.RootProps["translations"];
+}
+
+export type TabsRootProps = RootProps & TabsVariantProps & JsxStyleProps;
 
 const InternalTabsRoot = withProvider<HTMLDivElement, TabsRootProps>(Tabs.Root, "root", { baseComponent: true });
 

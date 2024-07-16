@@ -149,7 +149,9 @@ const { withProvider, withContext } = createStyleContext(comboboxRecipe);
 
 export type ComboboxVariantProps = RecipeVariantProps<typeof comboboxRecipe>;
 
-export type ComboboxRootProps<T extends Combobox.CollectionItem> = Combobox.RootProps<T> & ComboboxVariantProps;
+export type ComboboxRootProps<T extends Combobox.CollectionItem> = Combobox.RootProps<T> &
+  ComboboxVariantProps &
+  JsxStyleProps & { translations: Combobox.RootProps<T>["translations"] };
 
 const InternalComboboxRoot = withProvider<HTMLDivElement, ComboboxRootProps<Combobox.CollectionItem>>(
   Combobox.Root,

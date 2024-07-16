@@ -107,7 +107,13 @@ export { default as messagesSMA } from "./locale/messages-sma";
 export { default as Breadcrumb, HomeBreadcrumb } from "./Breadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";
 
-export { i18nInstance, formatNestedMessages } from "./i18n";
+export {
+  i18nInstance,
+  formatNestedMessages,
+  useTagsInputTranslations,
+  useTagSelectorTranslations,
+  useComboboxTranslations,
+} from "./i18n";
 
 export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";
 

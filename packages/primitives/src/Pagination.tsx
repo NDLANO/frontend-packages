@@ -30,7 +30,11 @@ const paginationRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(paginationRecipe);
 
-export type PaginationRootProps = JsxStyleProps & Pagination.RootProps;
+interface RootProps extends Pagination.RootProps {
+  translations: Pagination.RootProps["translations"];
+}
+
+export type PaginationRootProps = JsxStyleProps & RootProps;
 
 export const PaginationRoot = withProvider<HTMLElement, PaginationRootProps>(Pagination.Root, "root", {
   baseComponent: true,

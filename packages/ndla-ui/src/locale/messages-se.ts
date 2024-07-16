@@ -1475,6 +1475,29 @@ const messages = {
     menuTitle: "NDLA birra",
   },
   login: "Čálit sisa",
+  component: {
+    tagsInput: {
+      clearTriggerLabel: "Fjern alle emneknagger",
+      deleteTagTriggerLabel: "Fjern emneknagg {{tag}}",
+      tagAdded: "Emneknagg {{tag}} lagt til",
+      tagsPasted: "Limte inn {{length}} emneknagger",
+      tagEdited: "Redigerer emneknagg {{tag}}. Trykk enter for å lagre, eller esc for å avbryte.",
+      tagUpdated: "Emneknagg oppdatert til {{tag}}",
+      tagDeleted: "Emneknagg {{tag}} slettet",
+      tagSelected: "Emneknagg {{tag}} valgt. Trykk enter for å redigere. Trykk backspace eller delete for å slette",
+    },
+    combobox: {
+      triggerLabel: "Vis resultater",
+      clearTriggerLabel: "Fjern valg",
+    },
+    pagination: {
+      rootLabel: "Sidenavigering",
+      prevTriggerLabel: "Forrige side",
+      nextTriggerLabel: "Neste side",
+      lastPage: "Siste side, side {{page}}",
+      page: "Side {{page}}",
+    },
+  },
 };
 
 export default messages;

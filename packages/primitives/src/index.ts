@@ -110,7 +110,7 @@ export { FramedContent } from "./FramedContent";
 
 export type { ImageCrop, ImageFocalPoint, PictureProps, ImgProps, ImageProps } from "./Image";
 
-export { Picture, Img, Image } from "./Image";
+export { Picture, Img, Image, makeSrcQueryString, getSrcSet } from "./Image";
 
 export { Input, FieldInput, InputContainer, TextArea, FieldTextArea } from "./Input";
 

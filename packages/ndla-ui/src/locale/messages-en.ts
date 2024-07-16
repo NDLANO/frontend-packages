@@ -203,7 +203,7 @@ const messages = {
     alphabeticSort: "Subjects grouped alphabetically",
     subjectGroup: 'Group "{{ category }}"',
     allSubjects: "All subjects",
-    myFavoriteSubjects: "My favorite subjects",
+    myFavoriteSubjects: "Your favorite subjects",
     chooseSubject: "Choose subject",
     errorDescription: "Sorry, an error occurred while loading the subjects.",
     confirmRemove: "Are you sure you want to remove {{subject}} from your favorite subjects?",

@@ -1488,6 +1488,13 @@ const messages = {
       triggerLabel: "Show suggestions",
       clearTriggerLabel: "Clear selection",
     },
+    pagination: {
+      rootLabel: "Pagination",
+      prevTriggerLabel: "Previous page",
+      nextTriggerLabel: "Next page",
+      lastPage: "Last page, page {{page}}",
+      page: "Page {{page}}",
+    },
   },
 };
 

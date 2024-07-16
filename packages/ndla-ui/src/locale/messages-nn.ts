@@ -1487,6 +1487,13 @@ const messages = {
       triggerLabel: "Vis resultater",
       clearTriggerLabel: "Fjern valg",
     },
+    pagination: {
+      rootLabel: "Sidenavigering",
+      prevTriggerLabel: "Førre side",
+      nextTriggerLabel: "Neste side",
+      lastPage: "Siste side, side {{page}}",
+      page: "Side {{page}}",
+    },
   },
 };
 

@@ -8,7 +8,7 @@
 
 import { useTranslation } from "react-i18next";
 import type { ComboboxCollectionItem } from "@ark-ui/react";
-import type { ComboboxRootProps, TagsInputRootProps } from "@ndla/primitives";
+import type { ComboboxRootProps, PaginationRootProps, TagsInputRootProps } from "@ndla/primitives";
 import { TagSelectorRootProps } from "../TagSelector/TagSelector";
 
 export const useTagsInputTranslations = (
@@ -52,4 +52,21 @@ export const useTagSelectorTranslations = <T extends ComboboxCollectionItem>(
     ...tagsInputTranslations,
     ...translations,
   } as TagSelectorRootProps<T>["translations"];
+};
+
+export const usePaginationTranslations = (
+  translations?: Partial<PaginationRootProps["translations"]>,
+): PaginationRootProps["translations"] => {
+  const { t } = useTranslation("translation", { keyPrefix: "component.pagination" });
+
+  return {
+    rootLabel: t("rootLabel"),
+    prevTriggerLabel: t("prevTriggerLabel"),
+    nextTriggerLabel: t("nextTriggerLabel"),
+    itemLabel: (details) => {
+      const lastPage = details.totalPages > 1 && details.page === details.totalPages;
+      return lastPage ? t("lastPage", { page: details.page }) : t("page", { page: details.page });
+    },
+    ...translations,
+  };
 };

@@ -27,6 +27,15 @@ export default {
     count: 5000,
     pageSize: 10,
     siblingCount: 2,
+    translations: {
+      nextTriggerLabel: "Neste side",
+      prevTriggerLabel: "Forrige side",
+      rootLabel: "Sidenavigering",
+      itemLabel: (details) => {
+        const lastPage = details.totalPages > 1 && details.page === details.totalPages;
+        return lastPage ? `Forrige side, side ${details.page}` : `Side ${details.page}`;
+      },
+    },
   },
   render: (args) => (
     <PaginationRoot {...args}>

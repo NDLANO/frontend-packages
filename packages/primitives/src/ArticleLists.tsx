@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef } from "react";
+import { CSSProperties, forwardRef, useMemo } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
@@ -24,6 +24,9 @@ const orderedListRecipe = cva({
   variants: {
     variant: {
       numbers: {
+        "&[data-count='true']": {
+          counterReset: "level1 var(--start, 0)",
+        },
         counterReset: "level1",
         marginInline: "small",
         "& > li": {
@@ -33,6 +36,9 @@ const orderedListRecipe = cva({
           },
           "& > ol:not([data-variant='letters'])": {
             marginInlineStart: "xlarge",
+            "&[data-count='true']": {
+              counterReset: "level2 var(--start, 0)",
+            },
             counterReset: "level2",
             "& > li": {
               counterIncrement: "level2",
@@ -41,6 +47,9 @@ const orderedListRecipe = cva({
               },
               "& > ol:not([data-variant='letters'])": {
                 marginInlineStart: "xxlarge",
+                "&[data-count='true']": {
+                  counterReset: "level3 var(--start, 0)",
+                },
                 counterReset: "level3",
                 "& > li": {
                   counterIncrement: "level3",
@@ -49,6 +58,9 @@ const orderedListRecipe = cva({
                   },
                 },
                 "& > ol:not([data-variant='letters'])": {
+                  "&[data-count='true']": {
+                    counterReset: "level4 var(--start, 0)",
+                  },
                   counterReset: "level4",
                   "& > li": {
                     counterIncrement: "level4",
@@ -92,14 +104,20 @@ export type OrderedListProps = HTMLArkProps<"ol"> & JsxStyleProps & OrderedListV
 const StyledOrderedList = styled(ark.ol, {}, { baseComponent: true });
 
 export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
-  ({ variant, css: cssProp, ...props }, ref) => (
-    <StyledOrderedList
-      data-variant={variant}
-      css={css.raw(orderedListRecipe.raw({ variant }), cssProp)}
-      {...props}
-      ref={ref}
-    />
-  ),
+  ({ variant, css: cssProp, start, ...props }, ref) => {
+    const style = useMemo(() => ({ "--start": start ? start - 1 : undefined }) as CSSProperties, [start]);
+    return (
+      <StyledOrderedList
+        data-variant={variant}
+        data-count={start !== undefined}
+        start={start}
+        css={css.raw(orderedListRecipe.raw({ variant }), cssProp)}
+        style={style}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
 );
 
 export type UnOrderedListProps = HTMLArkProps<"ul"> & JsxStyleProps;
@@ -108,7 +126,7 @@ export const UnOrderedList = styled("ul", {
   base: {
     listStyle: "revert",
     listStylePosition: "inside",
-    paddingInlineStart: "small",
+    paddingInlineStart: "medium",
     "& li": {
       marginBlock: "small",
       _marker: {

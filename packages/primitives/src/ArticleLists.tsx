@@ -14,14 +14,8 @@ import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const orderedListRecipe = cva({
   base: {
-    listStyle: "revert",
-    listStylePosition: "inside",
-    paddingInlineStart: "small",
     "& li": {
       marginBlock: "small",
-    },
-    "& li > :not(ol, ul, li)": {
-      display: "inline",
     },
   },
   defaultVariants: {
@@ -30,28 +24,56 @@ const orderedListRecipe = cva({
   variants: {
     variant: {
       numbers: {
+        counterReset: "level1",
+        marginInline: "small",
         "& > li": {
+          counterIncrement: "level1",
           _marker: {
-            content: "counters(list-item, '.') '. '",
+            content: "counter(level1, decimal) '. '",
+          },
+          "& > ol:not([data-variant='letters'])": {
+            marginInlineStart: "xlarge",
+            counterReset: "level2",
+            "& > li": {
+              counterIncrement: "level2",
+              _marker: {
+                content: "counter(level1, decimal) '.' counter(level2, decimal) '. '",
+              },
+              "& > ol:not([data-variant='letters'])": {
+                marginInlineStart: "xxlarge",
+                counterReset: "level3",
+                "& > li": {
+                  counterIncrement: "level3",
+                  _marker: {
+                    content: "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '. '",
+                  },
+                },
+                "& > ol:not([data-variant='letters'])": {
+                  counterReset: "level4",
+                  "& > li": {
+                    counterIncrement: "level4",
+                    _marker: {
+                      content:
+                        "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level3, decimal) '. '",
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       },
       letters: {
-        "& ol[data-variant='numbers'] > li": {
-          _marker: {
-            content: "counter(list-item, numeric) '. '",
-          },
-        },
-        "& li": {
+        paddingInlineStart: "small",
+        "& > li": {
           _marker: {
             content: "counter(list-item, upper-alpha) '. '",
           },
-
-          "& > ol > li": {
+          "& > ol[data-variant='letters'] > li": {
             _marker: {
               content: "counter(list-item, lower-alpha) '. '",
             },
-            "& li": {
+            "& > ol[data-variant='letters'] > li": {
               _marker: {
                 content: "counter(list-item, lower-roman) '. '",
               },
@@ -71,7 +93,12 @@ const StyledOrderedList = styled(ark.ol, {}, { baseComponent: true });
 
 export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
   ({ variant, css: cssProp, ...props }, ref) => (
-    <StyledOrderedList css={css.raw(orderedListRecipe.raw({ variant }), cssProp)} {...props} ref={ref} />
+    <StyledOrderedList
+      data-variant={variant}
+      css={css.raw(orderedListRecipe.raw({ variant }), cssProp)}
+      {...props}
+      ref={ref}
+    />
   ),
 );
 
@@ -88,7 +115,7 @@ export const UnOrderedList = styled("ul", {
         color: "icon.strong",
       },
     },
-    "& li > :not(ol, ul, li)": {
+    "& li > *:not(ol, ul, li)": {
       display: "inline",
     },
   },

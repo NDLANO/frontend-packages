@@ -32,9 +32,10 @@ import {
   TagSelectorRoot,
   TagSelectorTrigger,
 } from "./TagSelector";
+import { useTagSelectorTranslations } from "../i18n/useComponentTranslations";
 
 export default {
-  title: "Components/TagSelector new",
+  title: "Components/TagSelector",
   component: TagSelectorRoot,
   tags: ["autodocs"],
 } satisfies Meta<typeof TagSelectorRoot>;
@@ -52,9 +53,10 @@ const data = [
   "Education",
 ];
 
-export const Default: StoryFn<typeof TagSelectorRoot> = (args) => {
+export const Default: StoryFn<typeof TagSelectorRoot> = ({ translations, ...args }) => {
   const [options, setOptions] = useState(data);
   const [value, setValue] = useState<string[]>([]);
+  const componentTranslations = useTagSelectorTranslations(translations);
 
   const handleChange = (e: ComboboxInputValueChangeDetails) => {
     const filtered = data.filter((item) => item.toLowerCase().includes(e.inputValue.toLowerCase()));
@@ -68,6 +70,7 @@ export const Default: StoryFn<typeof TagSelectorRoot> = (args) => {
       items={options}
       onInputValueChange={handleChange}
       onValueChange={(details) => setValue(details.value)}
+      translations={componentTranslations}
     >
       <TagSelectorLabel>Emneknagger</TagSelectorLabel>
       <HStack gap="4xsmall">

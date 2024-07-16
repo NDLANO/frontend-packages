@@ -1473,6 +1473,22 @@ const messages = {
     menuTitle: "About NDLA",
   },
   login: "Log in",
+  component: {
+    tagsInput: {
+      clearTriggerLabel: "Clear all tags",
+      deleteTagTriggerLabel: "Remove tag {{tag}}",
+      tagAdded: "Added tag {{tag}}",
+      tagsPasted: "Pasted {{length}} tags",
+      tagEdited: "Edited tag {{tag}}. Press enter to save, or escape to cancel.",
+      tagUpdated: "Tag updated to {{tag}}",
+      tagDeleted: "Tag {{tag}} deleted",
+      tagSelected: "Tag {{tag}} selected. Press enter to edit. Press backspace or delete to delete.",
+    },
+    combobox: {
+      triggerLabel: "Show suggestions",
+      clearTriggerLabel: "Clear selection",
+    },
+  },
 };
 
 export default messages;

@@ -45,6 +45,7 @@ export const TagSelectorRoot = <T extends ComboboxCollectionItem>({
   onValueChange,
   children,
   value,
+  translations,
   ...rest
 }: TagSelectorRootProps<T>) => {
   const ids = {
@@ -69,6 +70,7 @@ export const TagSelectorRoot = <T extends ComboboxCollectionItem>({
       multiple={multiple}
       selectionBehavior={selectionBehavior}
       onValueChange={onValueChange}
+      translations={translations}
       onPointerDownOutside={(event) => {
         if (contains(controlRef.current, event.detail.originalEvent.target)) {
           event.preventDefault();
@@ -86,6 +88,7 @@ export const TagSelectorRoot = <T extends ComboboxCollectionItem>({
             editable={editable}
             onValueChange={onValueChange}
             addOnPaste={addOnPaste}
+            translations={translations}
           >
             {children}
           </TagsInputRoot>

@@ -94,7 +94,11 @@ const tagsInputRecipe = sva({
 });
 const { withProvider, withContext } = createStyleContext(tagsInputRecipe);
 
-export type TagsInputRootProps = TagsInput.RootProps & JsxStyleProps;
+interface RootProps extends TagsInput.RootProps {
+  translations: TagsInput.RootProps["translations"];
+}
+
+export type TagsInputRootProps = RootProps & JsxStyleProps;
 export const TagsInputRoot = withProvider<HTMLDivElement, TagsInputRootProps>(TagsInput.Root, "root", {
   baseComponent: true,
 });

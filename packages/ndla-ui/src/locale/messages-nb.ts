@@ -1473,6 +1473,22 @@ const messages = {
     menuTitle: "Om NDLA",
   },
   login: "Logg inn",
+  component: {
+    tagsInput: {
+      clearTriggerLabel: "Fjern alle emneknagger",
+      deleteTagTriggerLabel: "Fjern emneknagg {{tag}}",
+      tagAdded: "Emneknagg {{tag}} lagt til",
+      tagsPasted: "Limte inn {{length}} emneknagger",
+      tagEdited: "Redigerer emneknagg {{tag}}. Trykk enter for å lagre, eller esc for å avbryte.",
+      tagUpdated: "Emneknagg oppdatert til {{tag}}",
+      tagDeleted: "Emneknagg {{tag}} slettet",
+      tagSelected: "Emneknagg {{tag}} valgt. Trykk enter for å redigere. Trykk backspace eller delete for å slette",
+    },
+    combobox: {
+      triggerLabel: "Vis resultater",
+      clearTriggerLabel: "Fjern valg",
+    },
+  },
 };
 
 export default messages;

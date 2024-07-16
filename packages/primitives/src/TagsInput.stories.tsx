@@ -32,6 +32,19 @@ import {
 const meta: Meta<typeof TagsInputRoot> = {
   title: "Primitives/TagsInput",
   component: TagsInputRoot,
+  args: {
+    translations: {
+      clearTriggerLabel: "Fjern alle emneknagger",
+      deleteTagTriggerLabel: (tag) => `Fjern emneknagg ${tag}`,
+      tagAdded: (tag) => `Emneknagg ${tag} lagt til`,
+      tagsPasted: (tags) => `${tags.length} emneknagger lagt til`,
+      tagEdited: (tag) => `Redigererer emneknagg ${tag}. Trykk enter for å lagre, eller esc for å avbryte.`,
+      tagUpdated: (tag) => `Emneknagg oppdatert til ${tag}`,
+      tagDeleted: (tag) => `Emneknagg ${tag} slettet`,
+      tagSelected: (tag) =>
+        `Emneknagg ${tag} valgt. Trykk enter for å redigere. Trykk backspace eller delete for å slette.`,
+    },
+  },
   tags: ["autodocs"],
 };
 

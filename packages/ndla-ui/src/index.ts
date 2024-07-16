@@ -60,9 +60,6 @@ export { default as Logo } from "./Logo";
 
 export { default as FactBox } from "./FactBox";
 
-export { default as Image, ImageLink, makeSrcQueryString } from "./Image";
-export type { ImageCrop, ImageFocalPoint } from "./Image";
-
 export type { HeroContentType } from "./Hero";
 export {
   SubjectMaterialHero,

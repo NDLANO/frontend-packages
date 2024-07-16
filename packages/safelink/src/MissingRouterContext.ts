@@ -8,6 +8,4 @@
 
 import { createContext } from "react";
 
-const MissingRouterContext = createContext(false);
-
-export default MissingRouterContext;
+export const MissingRouterContext = createContext(false);

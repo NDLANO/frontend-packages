@@ -7,7 +7,8 @@
  */
 
 import { domToReact, attributesToProps, Element, DOMNode } from "html-react-parser";
-import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem, FramedContent } from "@ndla/ui";
+import { FramedContent } from "@ndla/primitives";
+import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem } from "@ndla/ui";
 import { PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts) => {

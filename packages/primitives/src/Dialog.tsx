@@ -268,16 +268,19 @@ export const DialogRoot = ({ lazyMount = true, unmountOnExit = true, ...props }:
 export const DialogBackdrop = withContext<HTMLDivElement, JsxStyleProps & Dialog.BackdropProps>(
   Dialog.Backdrop,
   "backdrop",
+  { baseComponent: true },
 );
 
 export const DialogStandaloneContent = withContext<HTMLDivElement, JsxStyleProps & Dialog.ContentProps>(
   Dialog.Content,
   "content",
+  { baseComponent: true },
 );
 
 export const DialogPositioner = withContext<HTMLDivElement, JsxStyleProps & Dialog.PositionerProps>(
   Dialog.Positioner,
   "positioner",
+  { baseComponent: true },
 );
 
 export const DialogContent = forwardRef<HTMLDivElement, Dialog.ContentProps & JsxStyleProps>((props, ref) => (

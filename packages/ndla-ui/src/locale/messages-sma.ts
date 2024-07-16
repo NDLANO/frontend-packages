@@ -203,7 +203,7 @@ const messages = {
     alphabeticSort: "Fag gruppert alfabetisk",
     subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: "Alle fag",
-    myFavoriteSubjects: "Mine favorittfag",
+    myFavoriteSubjects: "Dine favorittfag",
     errorDescription: "Gaatesjen, fieljie sjïdti veedtjemisnie.",
     chooseSubject: "Veeljh faagem",
     confirmRemove: "Er du sikker på at du vil fjerne {{subject}} fra favorittfag?",
@@ -335,7 +335,7 @@ const messages = {
     useCompentenceGoalsFilter: "Bruk filter",
     closeCompentenceGoalsFilter: "Lukk filter",
     competenceGoalsNarrowBackButton: "Tilbake",
-    competenceGoalResourceSearchText: "Ohtsh gaajhkh vierhtieh mah daan maahtoeålman sjiehtieh {{code}}",
+    competenceGoalResourceSearchText: "Vis ressurser til {{code}}",
     coreResourceSearchText: "Vis ressurser til kjerneelement {{code}}",
     competenceGoalShowExtra: "Vuesehth learoesoejkesjen dåarjoem",
     competenceGoalCloseExtra: "Tjïekh learoesoejkesjen dåarjoem",
@@ -581,6 +581,8 @@ const messages = {
     podcast: "Podkast",
     h5p: "H5P",
     video: "Video",
+    missing: "Ukjent",
+    external: "Ekstern",
   },
   modal: {
     closeModal: "Dahph",
@@ -826,6 +828,7 @@ const messages = {
       url: "Fiejlie tjoeje-veedtjemisnie.",
       caption: "Gaatesjen, fiejlie sjïdti tjoeje-veedtjemisnie.",
     },
+    valueText: "{{start}} av {{end}}",
     controls: {
       forward15sec: "Juhtieh 15 sekundh åvtese",
       rewind15sec: "Juhtieh 15 sekundh bååstede",
@@ -1422,6 +1425,7 @@ const messages = {
   },
   gloss: {
     examples: "Eksempler",
+    showExamples: "Vis eksempler",
     wordClass: "Ordklasse",
     play: "Spill av glose",
     transcriptions: {
@@ -1473,6 +1477,29 @@ const messages = {
     menuTitle: "Om NDLA",
   },
   login: "Tjaangh sïjse",
+  component: {
+    tagsInput: {
+      clearTriggerLabel: "Fjern alle emneknagger",
+      deleteTagTriggerLabel: "Fjern emneknagg {{tag}}",
+      tagAdded: "Emneknagg {{tag}} lagt til",
+      tagsPasted: "Limte inn {{length}} emneknagger",
+      tagEdited: "Redigerer emneknagg {{tag}}. Trykk enter for å lagre, eller esc for å avbryte.",
+      tagUpdated: "Emneknagg oppdatert til {{tag}}",
+      tagDeleted: "Emneknagg {{tag}} slettet",
+      tagSelected: "Emneknagg {{tag}} valgt. Trykk enter for å redigere. Trykk backspace eller delete for å slette",
+    },
+    combobox: {
+      triggerLabel: "Vis resultater",
+      clearTriggerLabel: "Fjern valg",
+    },
+    pagination: {
+      rootLabel: "Sidenavigering",
+      prevTriggerLabel: "Forrige side",
+      nextTriggerLabel: "Neste side",
+      lastPage: "Siste side, side {{page}}",
+      page: "Side {{page}}",
+    },
+  },
 };
 
 export default messages;

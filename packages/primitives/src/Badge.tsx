@@ -46,6 +46,8 @@ const badgeRecipe = cva({
 
 export type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipe>;
 
+export type BadgeVariant = NonNullable<BadgeVariantProps>["colorTheme"];
+
 export type BadgeProps = HTMLArkProps<"div"> & JsxStyleProps & BadgeVariantProps;
 
 const StyledBadge = styled(ark.div, {}, { baseComponent: true });

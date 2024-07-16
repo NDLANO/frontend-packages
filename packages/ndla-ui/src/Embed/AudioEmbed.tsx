@@ -6,11 +6,11 @@
  *
  */
 
+import { Figure } from "@ndla/primitives";
 import { AudioMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { Author } from "./ImageEmbed";
 import AudioPlayer from "../AudioPlayer";
-import { Figure } from "../Figure";
 import { EmbedByline } from "../LicenseByline";
 
 interface Props {
@@ -42,7 +42,7 @@ const AudioEmbed = ({ embed, lang }: Props) => {
   const img = coverPhoto && { url: coverPhoto.url, alt: coverPhoto.altText };
 
   return (
-    <Figure type="full" lang={lang}>
+    <Figure lang={lang}>
       <AudioPlayer
         description={data.podcastMeta?.introduction ?? ""}
         img={img}

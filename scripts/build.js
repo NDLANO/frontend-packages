@@ -109,14 +109,17 @@ const libPresetEnv = [
 function buildNodePackage(p) {
   const srcDir = path.resolve(p, SRC_DIR);
   const pattern = path.resolve(srcDir, JS_FILES_PATTERN);
-  const files = glob.sync(pattern, {
-    nodir: true,
-    ignore: [IGNORE_PATTERN, STORYBOOK_PATTERN],
-  });
+  const files = glob
+    .sync(pattern, {
+      nodir: true,
+      ignore: [IGNORE_PATTERN, STORYBOOK_PATTERN],
+    })
+    .filter((file) => !file.endsWith(".d.ts"));
 
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));
 
-  const skipEmotion = p.endsWith("primitives") || p.endsWith("preset-panda");
+  const skipEmotion =
+    p.endsWith("primitives") || p.endsWith("preset-panda") || p.endsWith("icons") || p.endsWith("safelink");
 
   const presets = skipEmotion
     ? ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]]

@@ -203,7 +203,7 @@ const messages = {
     alphabeticSort: "Fag gruppert alfabetisk",
     subjectGroup: 'Gruppe "{{ category }}"',
     allSubjects: "Alle fag",
-    myFavoriteSubjects: "Favorittfaga mine",
+    myFavoriteSubjects: "Favorittfaga dine",
     errorDescription: "Orsak, ein feil oppstod under lasting av faga.",
     chooseSubject: "Vel fag",
     confirmRemove: "Er du sikker på at du vil fjerne {{subject}} fra favorittfag?",
@@ -334,7 +334,7 @@ const messages = {
     useCompentenceGoalsFilter: "Bruk filter",
     closeCompentenceGoalsFilter: "Lukk filter",
     competenceGoalsNarrowBackButton: "Tilbake",
-    competenceGoalResourceSearchText: "Vis ressursar til kompetansemål {{code}}",
+    competenceGoalResourceSearchText: "Vis ressursar til {{code}}",
     coreResourceSearchText: "Vis ressursar til kjerneelement {{code}}",
     competenceGoalShowExtra: "Vis støtte til læreplanen",
     competenceGoalCloseExtra: "Skjul støtte til læreplanen",
@@ -577,6 +577,8 @@ const messages = {
     podcast: "Podkast",
     h5p: "H5P",
     video: "Video",
+    missing: "Ukjent",
+    external: "Ekstern",
   },
   modal: {
     closeModal: "Lukk",
@@ -822,6 +824,7 @@ const messages = {
       url: "Feil ved lasting av lydfil.",
       caption: "Orsak, ein feil oppstod ved lasting av lydfil.",
     },
+    valueText: "{{start}} av {{end}}",
     controls: {
       forward15sec: "Spol 15 sekund fram",
       rewind15sec: "Spol 15 sekund tilbake",
@@ -1417,6 +1420,7 @@ const messages = {
   },
   gloss: {
     examples: "Eksempler",
+    showExamples: "Vis eksempler",
     wordClass: "Ordklasse",
     play: "Spill av glose",
     transcriptions: {
@@ -1468,6 +1472,29 @@ const messages = {
     menuTitle: "Om NDLA",
   },
   login: "Logg inn",
+  component: {
+    tagsInput: {
+      clearTriggerLabel: "Fjern alle emneknaggar",
+      deleteTagTriggerLabel: "Fjern emneknagg {{tag}}",
+      tagAdded: "Emneknagg {{tag}} lagt til",
+      tagsPasted: "Limte inn {{length}} emneknaggar",
+      tagEdited: "Redigerer emneknagg {{tag}}. Trykk enter for å lagre, eller esc for å avbryte.",
+      tagUpdated: "Emneknagg oppdatret til {{tag}}",
+      tagDeleted: "Emneknagg {{tag}} slettet",
+      tagSelected: "Emneknagg {{tag}} valgt. Trykk enter for å redigere. Trykk backspace eller delete for å slette",
+    },
+    combobox: {
+      triggerLabel: "Vis resultater",
+      clearTriggerLabel: "Fjern valg",
+    },
+    pagination: {
+      rootLabel: "Sidenavigering",
+      prevTriggerLabel: "Førre side",
+      nextTriggerLabel: "Neste side",
+      lastPage: "Siste side, side {{page}}",
+      page: "Side {{page}}",
+    },
+  },
 };
 
 export default messages;

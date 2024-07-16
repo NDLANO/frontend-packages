@@ -203,7 +203,7 @@ const messages = {
     alphabeticSort: "Fágat alfabehtalaččat",
     subjectGroup: 'Joavku "{{ category }}"',
     allSubjects: "Buot fágat",
-    myFavoriteSubjects: "Mu oiddotfágat",
+    myFavoriteSubjects: "Dine favorittfag",
     errorDescription: "Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.",
     chooseSubject: "Vállje fága",
     confirmRemove: "Leat go sihkar ahte áiggut sihkkut {{subject}} oiddotfágain?",
@@ -335,7 +335,7 @@ const messages = {
     useCompentenceGoalsFilter: "Geavat filtara",
     closeCompentenceGoalsFilter: "Govčča filtara",
     competenceGoalsNarrowBackButton: "Ruovttoluotta",
-    competenceGoalResourceSearchText: "Vis ressursar til kompetansemål {{code}}",
+    competenceGoalResourceSearchText: "Vis ressursar til {{code}}",
     coreResourceSearchText: "Vis ressurser til kjerneelement {{code}}",
     competenceGoalShowExtra: "Čájet oahppoplána doarjaga",
     competenceGoalCloseExtra: "Čiega oahppoplána doarjaga",
@@ -579,6 +579,8 @@ const messages = {
     podcast: "Podkásta",
     h5p: "H5P",
     video: "Video",
+    missing: "Ukjent",
+    external: "Ekstern",
   },
   modal: {
     closeModal: "Govčča",
@@ -824,6 +826,7 @@ const messages = {
       url: "Boasttuvuohta jietnafiilla viežžamis.",
       caption: "Šállošat, boasttuvuohta čuožžilii jietnafiilla viežžamis.",
     },
+    valueText: "{{start}} av {{end}}",
     controls: {
       forward15sec: "Sirdde 15 sekundda ovddas",
       rewind15sec: "Sirdde 15 sekundda maŋos",
@@ -1420,6 +1423,7 @@ const messages = {
   },
   gloss: {
     examples: "Ovdamearkkat",
+    showExamples: "Vis eksempler",
     wordClass: "Sátneluohkká",
     play: "Čuojat glose",
     transcriptions: {
@@ -1471,6 +1475,29 @@ const messages = {
     menuTitle: "NDLA birra",
   },
   login: "Čálit sisa",
+  component: {
+    tagsInput: {
+      clearTriggerLabel: "Fjern alle emneknagger",
+      deleteTagTriggerLabel: "Fjern emneknagg {{tag}}",
+      tagAdded: "Emneknagg {{tag}} lagt til",
+      tagsPasted: "Limte inn {{length}} emneknagger",
+      tagEdited: "Redigerer emneknagg {{tag}}. Trykk enter for å lagre, eller esc for å avbryte.",
+      tagUpdated: "Emneknagg oppdatert til {{tag}}",
+      tagDeleted: "Emneknagg {{tag}} slettet",
+      tagSelected: "Emneknagg {{tag}} valgt. Trykk enter for å redigere. Trykk backspace eller delete for å slette",
+    },
+    combobox: {
+      triggerLabel: "Vis resultater",
+      clearTriggerLabel: "Fjern valg",
+    },
+    pagination: {
+      rootLabel: "Sidenavigering",
+      prevTriggerLabel: "Forrige side",
+      nextTriggerLabel: "Neste side",
+      lastPage: "Siste side, side {{page}}",
+      page: "Side {{page}}",
+    },
+  },
 };
 
 export default messages;

@@ -203,7 +203,7 @@ const messages = {
     alphabeticSort: "Subjects grouped alphabetically",
     subjectGroup: 'Group "{{ category }}"',
     allSubjects: "All subjects",
-    myFavoriteSubjects: "My favorite subjects",
+    myFavoriteSubjects: "Your favorite subjects",
     chooseSubject: "Choose subject",
     errorDescription: "Sorry, an error occurred while loading the subjects.",
     confirmRemove: "Are you sure you want to remove {{subject}} from your favorite subjects?",
@@ -334,7 +334,7 @@ const messages = {
     useCompentenceGoalsFilter: "Use filter",
     closeCompentenceGoalsFilter: "Close filter",
     competenceGoalsNarrowBackButton: "Go back",
-    competenceGoalResourceSearchText: "View resources to competence goal {{code}}",
+    competenceGoalResourceSearchText: "View resources for {{code}}",
     coreResourceSearchText: "View resources to core element {{code}}",
     competenceGoalShowExtra: "Show",
     competenceGoalCloseExtra: "Hide",
@@ -577,6 +577,8 @@ const messages = {
     podcast: "Podcast",
     h5p: "H5P",
     video: "Video",
+    missing: "Unknown",
+    external: "External",
   },
   modal: {
     closeModal: "Close",
@@ -822,6 +824,7 @@ const messages = {
       url: "Error loading the audio.",
       caption: "Sorry, an error occurred while loading the audio.",
     },
+    valueText: "{{start}} of {{end}}",
     controls: {
       forward15sec: "Forward 15 seconds",
       rewind15sec: "Rewind 15 seconds",
@@ -1418,6 +1421,7 @@ const messages = {
   },
   gloss: {
     examples: "Examples",
+    showExamples: "Show examples",
     wordClass: "Word class",
     play: "Play gloss",
     transcriptions: {
@@ -1469,6 +1473,29 @@ const messages = {
     menuTitle: "About NDLA",
   },
   login: "Log in",
+  component: {
+    tagsInput: {
+      clearTriggerLabel: "Clear all tags",
+      deleteTagTriggerLabel: "Remove tag {{tag}}",
+      tagAdded: "Added tag {{tag}}",
+      tagsPasted: "Pasted {{length}} tags",
+      tagEdited: "Edited tag {{tag}}. Press enter to save, or escape to cancel.",
+      tagUpdated: "Tag updated to {{tag}}",
+      tagDeleted: "Tag {{tag}} deleted",
+      tagSelected: "Tag {{tag}} selected. Press enter to edit. Press backspace or delete to delete.",
+    },
+    combobox: {
+      triggerLabel: "Show suggestions",
+      clearTriggerLabel: "Clear selection",
+    },
+    pagination: {
+      rootLabel: "Pagination",
+      prevTriggerLabel: "Previous page",
+      nextTriggerLabel: "Next page",
+      lastPage: "Last page, page {{page}}",
+      page: "Page {{page}}",
+    },
+  },
 };
 
 export default messages;

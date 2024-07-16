@@ -38,16 +38,20 @@ const { withRootProvider, withContext } = createStyleContext(tooltipRecipe);
 export type TooltipRootProps = Tooltip.RootProps;
 export const TooltipRoot = withRootProvider<TooltipRootProps>(Tooltip.Root);
 
-export const TooltipArrow = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ArrowProps>(Tooltip.Arrow, "arrow");
+export const TooltipArrow = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ArrowProps>(Tooltip.Arrow, "arrow", {
+  baseComponent: true,
+});
 
 export const TooltipArrowTip = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ArrowTipProps>(
   Tooltip.ArrowTip,
   "arrowTip",
+  { baseComponent: true },
 );
 
 export const TooltipContentStandalone = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ContentProps>(
   Tooltip.Content,
   "content",
+  { baseComponent: true },
 );
 
 export const TooltipContent = forwardRef<HTMLDivElement, JsxStyleProps & Tooltip.ContentProps>(
@@ -66,9 +70,11 @@ export const TooltipContent = forwardRef<HTMLDivElement, JsxStyleProps & Tooltip
 export const TooltipPositioner = withContext<HTMLDivElement, JsxStyleProps & Tooltip.PositionerProps>(
   Tooltip.Positioner,
   "positioner",
+  { baseComponent: true },
 );
 
 export const TooltipTrigger = withContext<HTMLButtonElement, JsxStyleProps & Tooltip.TriggerProps>(
   Tooltip.Trigger,
   "trigger",
+  { baseComponent: true },
 );

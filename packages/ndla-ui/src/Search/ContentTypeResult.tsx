@@ -9,6 +9,7 @@
 /** @jsxImportSource @emotion/react */
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
 import { ButtonV2 } from "@ndla/button";
 import { Additional, ChevronDown, ChevronUp } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
@@ -63,6 +64,12 @@ type Props = {
   animateList?: number;
   unGrouped?: boolean;
 };
+
+const StyledSafeLink = styled(SafeLink)`
+  &[data-highlighted="true"] {
+    ${highlightStyle}
+  }
+`;
 
 const ContentTypeResult = ({
   contentTypeResult,
@@ -139,8 +146,7 @@ const ContentTypeResult = ({
 
             return (
               <StyledListItem key={path} delayAnimation={delayAnimation}>
-                <SafeLink
-                  css={shouldHighlight && highlightStyle}
+                <StyledSafeLink
                   data-highlighted={shouldHighlight || false}
                   {...linkProps}
                   onClick={() => {
@@ -154,7 +160,7 @@ const ContentTypeResult = ({
                   )}
                   {linkContent}
                   {renderAdditionalIcon(t("resource.additionalTooltip"), additional)}
-                </SafeLink>
+                </StyledSafeLink>
               </StyledListItem>
             );
           })}

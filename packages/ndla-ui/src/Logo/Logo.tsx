@@ -6,11 +6,7 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { useMemo } from "react";
-import { SerializedStyles, css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
 import { SafeLink } from "@ndla/safelink";
 import SvgLogo from "./SvgLogo";
 
@@ -24,8 +20,6 @@ interface Props {
       };
   label: string;
   locale?: string;
-  cssModifier?: string;
-  large?: boolean;
   name?: boolean;
   color?: string;
 }
@@ -39,29 +33,7 @@ const StyledLogoWrapper = styled.div`
   position: relative;
 `;
 
-const modifierStyles: Record<string, SerializedStyles> = {
-  large: css`
-    width: 287px;
-  `,
-  white: css`
-    svg {
-      fill: ${colors.white};
-    }
-  `,
-};
-
-export const Logo = ({ name = true, to, cssModifier, color, large = false, locale, label }: Props) => {
-  const modifiers = useMemo(() => {
-    const mods = [];
-    if (large) {
-      mods.push(modifierStyles.large);
-    }
-    if (cssModifier && modifierStyles[cssModifier]) {
-      mods.push(modifierStyles[cssModifier]);
-    }
-    return mods;
-  }, [large, cssModifier]);
-
+export const Logo = ({ name = true, to, color, locale, label }: Props) => {
   const logo = to ? (
     <SafeLink to={to} aria-label={label} title={label}>
       <SvgLogo name={name} color={color} locale={locale} />
@@ -69,7 +41,7 @@ export const Logo = ({ name = true, to, cssModifier, color, large = false, local
   ) : (
     <SvgLogo name={name} color={color} locale={locale} />
   );
-  return <StyledLogoWrapper css={modifiers}>{logo}</StyledLogoWrapper>;
+  return <StyledLogoWrapper>{logo}</StyledLogoWrapper>;
 };
 
 export default Logo;

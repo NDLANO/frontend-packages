@@ -8,36 +8,28 @@
 
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { fonts, spacing } from "@ndla/core";
 import { InformationOutline } from "@ndla/icons/common";
+import { MessageBox } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
+import { styled } from "@ndla/styled-system/jsx";
 import { UuDisclaimerMetaData } from "@ndla/types-embed";
-import { MessageBox } from "../Messages";
+
 interface Props {
   embed: UuDisclaimerMetaData;
   children?: ReactNode;
 }
 
-const StyledMessageBox = styled(MessageBox)`
-  display: flex;
-  flex-align: center;
-`;
-
-const Disclaimer = styled.div`
-  display: flow;
-  ${fonts.sizes("18px", "24px")};
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-`;
-
-const DisclaimerWrapper = styled.div`
-  > :nth-child(2) {
-    margin-top: ${spacing.xsmall};
-  }
-`;
+const StyledMessageBox = styled(MessageBox, {
+  base: {
+    display: "flex",
+    alignItems: "center",
+  },
+});
+const Disclaimer = styled("div", {
+  base: {
+    textStyle: "body.medium",
+  },
+});
 
 const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   const { t } = useTranslation();
@@ -58,8 +50,8 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   ) : null;
 
   return (
-    <DisclaimerWrapper role="region">
-      <StyledMessageBox type="info" contentEditable={false}>
+    <div role="region">
+      <StyledMessageBox variant="warning" contentEditable={false}>
         <InformationOutline />
         <Disclaimer>
           {embedData.disclaimer}
@@ -67,7 +59,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
         </Disclaimer>
       </StyledMessageBox>
       {children}
-    </DisclaimerWrapper>
+    </div>
   );
 };
 

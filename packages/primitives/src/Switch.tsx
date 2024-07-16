@@ -101,14 +101,17 @@ export type SwitchVariantProps = RecipeVariantProps<typeof switchRecipe>;
 
 export type SwitchRootProps = Switch.RootProps & JsxStyleProps & SwitchVariantProps;
 
-export const SwitchRoot = withProvider<HTMLLabelElement, SwitchRootProps>(Switch.Root, "root");
+export const SwitchRoot = withProvider<HTMLLabelElement, SwitchRootProps>(Switch.Root, "root", { baseComponent: true });
 
 export const SwitchControl = withContext<HTMLSpanElement, JsxStyleProps & Switch.ControlProps>(
   Switch.Control,
   "control",
+  { baseComponent: true },
 );
 
-export const SwitchThumb = withContext<HTMLSpanElement, JsxStyleProps & Switch.ThumbProps>(Switch.Thumb, "thumb");
+export const SwitchThumb = withContext<HTMLSpanElement, JsxStyleProps & Switch.ThumbProps>(Switch.Thumb, "thumb", {
+  baseComponent: true,
+});
 
 const InternalSwitchLabel = withContext<HTMLSpanElement, JsxStyleProps & Switch.LabelProps>(Switch.Label, "label");
 

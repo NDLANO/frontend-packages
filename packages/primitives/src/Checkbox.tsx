@@ -213,11 +213,14 @@ export type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
 
 export type CheckboxRootProps = Checkbox.RootProps & CheckboxVariantProps & JsxStyleProps;
 
-export const CheckboxRoot = withProvider<HTMLLabelElement, CheckboxRootProps>(Checkbox.Root, "root");
+export const CheckboxRoot = withProvider<HTMLLabelElement, CheckboxRootProps>(Checkbox.Root, "root", {
+  baseComponent: true,
+});
 
 export const CheckboxIndicator = withContext<HTMLDivElement, Checkbox.IndicatorProps & JsxStyleProps>(
   Checkbox.Indicator,
   "indicator",
+  { baseComponent: true },
 );
 
 const InternalCheckboxLabel = withContext<HTMLSpanElement, JsxStyleProps & Checkbox.LabelProps>(
@@ -238,8 +241,13 @@ export const CheckboxLabel = ({
 export const CheckboxControl = withContext<HTMLDivElement, JsxStyleProps & Checkbox.ControlProps>(
   Checkbox.Control,
   "control",
+  { baseComponent: true },
 );
 
-export const CheckboxGroup = withProvider<HTMLDivElement, JsxStyleProps & Checkbox.GroupProps>(Checkbox.Group, "group");
+export const CheckboxGroup = withProvider<HTMLDivElement, JsxStyleProps & Checkbox.GroupProps>(
+  Checkbox.Group,
+  "group",
+  { baseComponent: true },
+);
 
 export const CheckboxHiddenInput = Checkbox.HiddenInput;

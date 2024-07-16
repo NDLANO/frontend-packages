@@ -10,69 +10,64 @@ import { format } from "date-fns";
 import { enGB, nb, nn } from "date-fns/locale";
 import parse from "html-react-parser";
 import { useMemo } from "react";
-import styled from "@emotion/styled";
-import { breakpoints, colors, spacing, mq } from "@ndla/core";
 import { Forward, CalendarEd } from "@ndla/icons/common";
+import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
+import { styled } from "@ndla/styled-system/jsx";
 import { LinkBlockEmbedData } from "@ndla/types-embed";
-import { Heading } from "@ndla/typography";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
-const StyledForward = styled(Forward)`
-  margin: 0 ${spacing.nsmall};
-  min-width: ${spacing.normal};
-  min-height: ${spacing.normal};
-`;
+const InfoWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
+  },
+});
 
-const InfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing.small};
-`;
+const StyledSafeLink = styled(SafeLink, {
+  base: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    background: "surface.default",
+    padding: "medium",
+    border: "1px solid",
+    // TODO: Check if this is correct. Not part of design. Also check if this should have border-radius.
+    borderColor: "stroke.default",
+    "& h3": {
+      textDecoration: "underline",
+    },
+    "& [data-forward]": {
+      transitionProperty: "width, height",
+      transitionTimingFunction: "ease-in-out",
+      transitionDuration: "fast",
+    },
+    _hover: {
+      "& h3": {
+        textDecoration: "none",
+      },
+      "& [data-forward]": {
+        width: "large",
+        height: "large",
+      },
+    },
+  },
+});
 
-const StyledSafeLink = styled(SafeLink)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: none;
-  color: inherit;
-  background-color: ${colors.white};
-  border: 1px solid ${colors.brand.lighter};
-  padding: ${spacing.normal};
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    &:hover {
-      & ${InfoWrapper} :first-child {
-        text-decoration: underline;
-      }
-      & ${StyledForward} {
-        width: 32px;
-        height: 32px;
-      }
-    }
-    &:focus-visible {
-      border: 2px solid ${colors.brand.dark};
-    }
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    & ${InfoWrapper} :first-child {
-      text-decoration: underline;
-    }
-    :active :first-child {
-      text-decoration: none;
-    }
-  }
-`;
+const StyledDateContainer = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    gap: "xxsmall",
+  },
+});
 
-const StyledDateContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding-top: ${spacing.xsmall};
-  gap: ${spacing.small};
-`;
-
-const StyledCalenderEd = styled(CalendarEd)`
-  color: ${colors.icon.iconBlue};
-`;
+const StyledCalendarEd = styled(CalendarEd, {
+  base: {
+    color: "icon.strong",
+  },
+});
 
 interface Props extends Omit<LinkBlockEmbedData, "resource"> {
   path?: string;
@@ -89,17 +84,17 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
   return (
     <StyledSafeLink to={href}>
       <InfoWrapper>
-        <Heading element="h3" margin="none" headingStyle="h3">
-          {parse(title)}
+        <Heading asChild consumeCss textStyle="title.medium">
+          <h3 data-heading>{parse(title)}</h3>
         </Heading>
         {date && (
           <StyledDateContainer>
-            <StyledCalenderEd />
+            <StyledCalendarEd />
             {formattedDate}
           </StyledDateContainer>
         )}
       </InfoWrapper>
-      <StyledForward />
+      <Forward data-forward />
     </StyledSafeLink>
   );
 };

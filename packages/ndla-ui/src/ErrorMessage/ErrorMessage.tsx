@@ -7,42 +7,53 @@
  */
 
 import { ReactNode } from "react";
-import styled from "@emotion/styled";
-import { colors, spacing, breakpoints } from "@ndla/core";
+import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
+import { styled } from "@ndla/styled-system/jsx";
 
-const StyledErrorMessage = styled.article`
-  text-align: center;
-  a {
-    color: ${colors.brand.primary};
-  }
+// TODO: This has not been redesignet yet. This is just a rewrite of the previous design in panda
 
-  h1 {
-    margin-top: 0;
-  }
-`;
+const StyledErrorMessage = styled("article", {
+  base: {
+    textAlign: "center",
+    "& a": {
+      color: "text.strong",
+    },
+    "& h1": {
+      marginTop: "0",
+    },
+  },
+});
 
-const IllustrationWrapper = styled("div")`
-  margin-bottom: ${spacing.normal};
-  @media (min-width: ${breakpoints.tablet}) {
-    margin-top: ${spacing.large};
-  }
-`;
+const IllustrationWrapper = styled("div", {
+  base: {
+    marginBottom: "medium",
+    tablet: {
+      marginTop: "xxlarge",
+    },
+  },
+});
 
-const Description = styled("p")`
-  margin-bottom: ${spacing.normal};
-  @media (min-width: ${breakpoints.tablet}) {
-    margin-bottom: ${spacing.large};
-  }
-`;
+const Description = styled(Text, {
+  base: {
+    marginBottom: "medium",
+    tablet: {
+      marginBottom: "xxlarge",
+    },
+  },
+});
 
-const CustomElementWrapper = styled.div`
-  margin: ${spacing.large} 0;
-`;
+const CustomElementWrapper = styled("div", {
+  base: {
+    marginBlock: "xxlarge",
+  },
+});
 
-const MessageWrapper = styled.div`
-  margin-top: ${spacing.xsmall};
-`;
+const MessageWrapper = styled("div", {
+  base: {
+    marginTop: "3xsmall",
+  },
+});
 
 interface Props {
   messages: {

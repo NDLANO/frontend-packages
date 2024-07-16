@@ -8,17 +8,23 @@
 
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { Figure } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IframeMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { Figure } from "../Figure";
 import { ResourceBox } from "../ResourceBox";
 
 interface Props {
   embed: IframeMetaData;
-  isConcept?: boolean;
 }
 
-const IframeEmbed = ({ embed, isConcept }: Props) => {
+const StyledIframe = styled("iframe", {
+  base: {
+    width: "100%",
+  },
+});
+
+const IframeEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -43,7 +49,7 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
     const alt = embedData.alt !== undefined ? embedData.alt : iframeImage?.alttext.alttext;
     const image = { src: iframeImage?.image.imageUrl ?? "", alt: alt ?? "" };
     return (
-      <Figure type="full">
+      <Figure>
         <ResourceBox
           image={image}
           title={embedData.title ?? ""}
@@ -62,8 +68,8 @@ const IframeEmbed = ({ embed, isConcept }: Props) => {
   const urlOrTitle = title || url;
 
   return (
-    <Figure type={isConcept ? "full-column" : undefined}>
-      <iframe
+    <Figure>
+      <StyledIframe
         ref={iframeRef}
         title={urlOrTitle}
         aria-label={urlOrTitle}

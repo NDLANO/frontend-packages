@@ -42,6 +42,10 @@ const meta: Meta<typeof ComboboxRoot> = {
   component: ComboboxRoot,
   args: {
     variant: "simple",
+    translations: {
+      triggerLabel: "Vis forslag",
+      clearTriggerLabel: "Fjern valg",
+    },
   },
 };
 

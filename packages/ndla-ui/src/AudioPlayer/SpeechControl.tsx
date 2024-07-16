@@ -8,9 +8,8 @@
 
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { IconButtonV2 } from "@ndla/button";
 import { VolumeUp } from "@ndla/icons/common";
-import { Tooltip } from "@ndla/tooltip";
+import { TooltipRoot, TooltipTrigger, TooltipContent, IconButton } from "@ndla/primitives";
 
 type Props = {
   src: string;
@@ -36,11 +35,14 @@ const SpeechControl = ({ src, title, type = "audio" }: Props) => {
     <div>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
-      <Tooltip tooltip={t(`${type}.play`)}>
-        <IconButtonV2 type="button" onClick={togglePlay} aria-label={t(`${type}.play`)} variant="ghost">
-          <VolumeUp />
-        </IconButtonV2>
-      </Tooltip>
+      <TooltipRoot>
+        <TooltipTrigger asChild>
+          <IconButton variant="tertiary" aria-label={t(`${type}.play`)} onClick={togglePlay}>
+            <VolumeUp />
+          </IconButton>
+        </TooltipTrigger>
+        <TooltipContent>{t(`${type}.play`)}</TooltipContent>
+      </TooltipRoot>
     </div>
   );
 };

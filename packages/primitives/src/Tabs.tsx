@@ -203,24 +203,35 @@ const { withProvider, withContext } = createStyleContext(tabsRecipe);
 
 export type TabsVariantProps = RecipeVariantProps<typeof tabsRecipe>;
 
-export type TabsRootProps = Tabs.RootProps & TabsVariantProps & JsxStyleProps;
+interface RootProps extends Tabs.RootProps {
+  translations: Tabs.RootProps["translations"];
+}
 
-const InternalTabsRoot = withProvider<HTMLDivElement, TabsRootProps>(Tabs.Root, "root");
+export type TabsRootProps = RootProps & TabsVariantProps & JsxStyleProps;
+
+const InternalTabsRoot = withProvider<HTMLDivElement, TabsRootProps>(Tabs.Root, "root", { baseComponent: true });
 
 export const TabsRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: TabsRootProps) => (
   <InternalTabsRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const TabsContent = withContext<HTMLDivElement, Tabs.ContentProps & JsxStyleProps>(Tabs.Content, "content");
+export const TabsContent = withContext<HTMLDivElement, Tabs.ContentProps & JsxStyleProps>(Tabs.Content, "content", {
+  baseComponent: true,
+});
 
 export const TabsIndicator = withContext<HTMLDivElement, Tabs.IndicatorProps & JsxStyleProps>(
   Tabs.Indicator,
   "indicator",
+  { baseComponent: true },
 );
 
-export const TabsList = withContext<HTMLDivElement, Tabs.ListProps & JsxStyleProps>(Tabs.List, "list");
+export const TabsList = withContext<HTMLDivElement, Tabs.ListProps & JsxStyleProps>(Tabs.List, "list", {
+  baseComponent: true,
+});
 
-const InternalTabsTrigger = withContext<HTMLButtonElement, Tabs.TriggerProps & JsxStyleProps>(Tabs.Trigger, "trigger");
+const InternalTabsTrigger = withContext<HTMLButtonElement, Tabs.TriggerProps & JsxStyleProps>(Tabs.Trigger, "trigger", {
+  baseComponent: true,
+});
 
 export const TabsTrigger = ({ className, ...props }: Tabs.TriggerProps & JsxStyleProps) => (
   <InternalTabsTrigger className={cx("peer", className)} {...props} />

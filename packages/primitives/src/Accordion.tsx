@@ -8,7 +8,7 @@
 
 import { Accordion, accordionAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const accordionRecipe = sva({
@@ -25,21 +25,15 @@ const accordionRecipe = sva({
       justifyContent: "space-between",
       background: "surface.default",
       cursor: "pointer",
-      paddingInline: "medium",
-      paddingBlock: "medium",
-      boxShadowColor: "stroke.subtle",
-      boxShadow: "inset 0 0 0 1px var(--shadow-color)",
-      borderRadius: "xsmall",
       transitionDuration: "fast",
       transitionTimingFunction: "default",
       transitionProperty: "background, border-color, border, border-radius",
-      width: "100%",
       _closed: {
         transitionProperty: "background, border-color, border, border-radius",
       },
       _disabled: {
         cursor: "not-allowed",
-        background: "surface..disabled.subtle",
+        background: "surface.disabled.subtle",
         boxShadowColor: "stroke.disabled",
         color: "text.disabled",
         _hover: {
@@ -47,20 +41,6 @@ const accordionRecipe = sva({
           boxShadowColor: "stroke.disabled",
           color: "text.disabled",
         },
-      },
-      _hover: {
-        background: "surface.actionSubtle.hover",
-        boxShadowColor: "stroke.hover",
-      },
-      _open: {
-        backgroundColor: "surface.actionSubtle.active",
-        boxShadowColor: "stroke.default",
-        borderBottomRadius: "sharp",
-      },
-      _focusVisible: {
-        outline: "none",
-        boxShadowColor: "stroke.default",
-        boxShadow: "inset 0 0 0 2px var(--shadow-color)",
       },
     },
     itemIndicator: {
@@ -75,15 +55,12 @@ const accordionRecipe = sva({
     },
     itemContent: {
       overflow: "hidden",
+      // TODO: Is this needed?
       transitionProperty: "padding-bottom",
       transitionDuration: "normal",
       transitionTimingFunction: "default",
       paddingBlock: "xsmall",
       paddingInline: "small",
-      borderBottomRadius: "xsmall",
-      borderWidth: "0 1px 1px",
-      borderStyle: "solid",
-      borderColor: "stroke.default",
       _open: {
         animation: "collapse-in",
       },
@@ -91,28 +68,80 @@ const accordionRecipe = sva({
         animation: "collapse-out",
       },
     },
+    item: {
+      width: "100%",
+    },
+  },
+  defaultVariants: {
+    variant: "bordered",
+  },
+  variants: {
+    variant: {
+      clean: {},
+      bordered: {
+        itemTrigger: {
+          paddingInline: "medium",
+          paddingBlock: "medium",
+          width: "100%",
+          borderRadius: "xsmall",
+          boxShadowColor: "stroke.subtle",
+          boxShadow: "inset 0 0 0 1px var(--shadow-color)",
+          _hover: {
+            background: "surface.actionSubtle.hover",
+            boxShadowColor: "stroke.hover",
+          },
+          _open: {
+            backgroundColor: "surface.actionSubtle.active",
+            boxShadowColor: "stroke.default",
+            borderBottomRadius: "sharp",
+          },
+          _focusVisible: {
+            outline: "none",
+            boxShadowColor: "stroke.default",
+            boxShadow: "inset 0 0 0 2px var(--shadow-color)",
+          },
+        },
+        itemContent: {
+          borderBottomRadius: "xsmall",
+          borderWidth: "0 1px 1px",
+          borderStyle: "solid",
+          borderColor: "stroke.default",
+        },
+      },
+    },
   },
 });
 
 const { withProvider, withContext } = createStyleContext(accordionRecipe);
 
+export type AccordionVariantProps = RecipeVariantProps<typeof accordionRecipe>;
+
 export interface AccordionRootProps extends JsxStyleProps, Accordion.RootProps {}
 
-export const AccordionRoot = withProvider<HTMLDivElement, AccordionRootProps>(Accordion.Root, "root");
+export const AccordionRoot = withProvider<HTMLDivElement, AccordionRootProps & AccordionVariantProps>(
+  Accordion.Root,
+  "root",
+  { baseComponent: true },
+);
 
 export const AccordionItemContent = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemContentProps>(
   Accordion.ItemContent,
   "itemContent",
+  { baseComponent: true },
 );
 
 export const AccordionItemIndicator = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemIndicatorProps>(
   Accordion.ItemIndicator,
   "itemIndicator",
+  { baseComponent: true },
 );
 
-export const AccordionItem = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemProps>(Accordion.Item, "item");
+export const AccordionItem = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemProps>(Accordion.Item, "item", {
+  baseComponent: true,
+});
 
 export const AccordionItemTrigger = withContext<HTMLButtonElement, JsxStyleProps & Accordion.ItemTriggerProps>(
   Accordion.ItemTrigger,
   "itemTrigger",
+  { baseComponent: true },
 );

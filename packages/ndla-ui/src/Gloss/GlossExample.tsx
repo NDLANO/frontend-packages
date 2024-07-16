@@ -6,91 +6,65 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { colors, spacing, fonts, misc } from "@ndla/core";
+import { Fragment } from "react";
+import { Text } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IGlossExample } from "@ndla/types-backend/concept-api";
-import { Text } from "@ndla/typography";
 
-export interface Props {
-  example: IGlossExample;
+interface Props {
+  examples: IGlossExample[];
   originalLanguage: string | undefined;
-  index: number;
-  isStandalone?: boolean;
 }
 
-const StyledGlossExampleWrapper = styled.div`
-  &[data-is-standalone="true"] {
-    &:first-of-type {
-      border-top: 1px solid ${colors.brand.lighter};
-    }
-  }
+const StyledGlossExample = styled("div", {
+  base: {
+    borderTop: "1px solid",
+    borderColor: "stroke.subtle",
+    paddingBlock: "xsmall",
+    paddingInline: "medium",
+    _first: {
+      background: "surface.brand.1.subtle",
+      borderColor: "stroke.default",
+      "& p": {
+        fontWeight: "bold",
+      },
+    },
+  },
+});
 
-  &:first-of-type&:not([data-is-standalone="true"]) {
-    border-top: 1px solid ${colors.brand.primary};
-  }
+const PinyinText = styled(Text, {
+  base: {
+    fontStyle: "italic",
+  },
+});
 
-  &[data-is-standalone="false"] {
-    &:not(:last-child) {
-      div {
-        border-bottom: 1px solid ${colors.brand.lighter};
-        border-radius: 0;
-      }
-    }
-  }
-`;
-
-const StyledGlossExample = styled.div`
-  padding: ${spacing.small} ${spacing.normal};
-  background-color: ${colors.background.default};
-  border: 1px solid ${colors.brand.lighter};
-  border-top: none;
-
-  &[data-is-first="true"] {
-    background-color: ${colors.background.lightBlue};
-  }
-  &[data-is-standalone="false"] {
-    border: none;
-    border-radius: ${misc.borderRadius};
-  }
-`;
-
-const StyledText = styled(Text)`
-  &[data-is-first="true"] {
-    font-weight: ${fonts.weight.bold};
-    color: ${colors.text.primary};
-  }
-  &[data-pinyin] {
-    font-style: italic;
-  }
-`;
-
-const GlossExample = ({ example, originalLanguage, index, isStandalone = false }: Props) => {
+const GlossExample = ({ examples, originalLanguage }: Props) => {
   return (
-    <StyledGlossExampleWrapper data-is-standalone={isStandalone}>
-      <StyledGlossExample data-is-first={index === 0} lang={example.language} data-is-standalone={isStandalone}>
-        <StyledText data-is-first={index === 0} textStyle="meta-text-medium" margin="none">
-          {example.example}
-        </StyledText>
-      </StyledGlossExample>
-      {example.transcriptions.pinyin && (
-        <StyledGlossExample
-          lang={originalLanguage}
-          data-is-standalone={isStandalone}
-          data-is-last={example.transcriptions.traditional?.length === 0}
-        >
-          <StyledText data-pinyin textStyle="meta-text-medium" margin="none">
-            {example.transcriptions?.pinyin}
-          </StyledText>
-        </StyledGlossExample>
-      )}
-      {example.transcriptions.traditional && (
-        <StyledGlossExample lang={originalLanguage} data-is-standalone={isStandalone} data-is-last>
-          <StyledText textStyle="meta-text-medium" margin="none">
-            {example.transcriptions?.traditional}
-          </StyledText>
-        </StyledGlossExample>
-      )}
-    </StyledGlossExampleWrapper>
+    <div>
+      {examples.map((examples, index) => (
+        <Fragment key={index}>
+          <StyledGlossExample lang={examples.language}>
+            <Text textStyle="label.medium" lang={examples.language}>
+              {examples.example}
+            </Text>
+          </StyledGlossExample>
+          {!!examples.transcriptions.pinyin && (
+            <StyledGlossExample>
+              <PinyinText data-pinyin="" lang={originalLanguage} textStyle="label.medium">
+                {examples.transcriptions?.pinyin}
+              </PinyinText>
+            </StyledGlossExample>
+          )}
+          {!!examples.transcriptions?.traditional && (
+            <StyledGlossExample>
+              <Text textStyle="label.medium" lang={originalLanguage}>
+                {examples.transcriptions.traditional}
+              </Text>
+            </StyledGlossExample>
+          )}
+        </Fragment>
+      ))}
+    </div>
   );
 };
 

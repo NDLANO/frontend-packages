@@ -8,16 +8,18 @@
 
 import { anchorPlugin } from "./anchorPlugin";
 import { asidePlugin } from "./asidePlugin";
+import { blockquotePlugin } from "./blockquotePlugin";
 import { copyParagraphPlugin } from "./copyParagraphPlugin";
-import { ddPlugin } from "./ddPlugin";
+import { detailsPlugin } from "./detailsPlugin";
 import { divPlugin } from "./divPlugin";
-import { dtPlugin } from "./dtPlugin";
+import { dlPlugin } from "./dlPlugin";
 import { h3Plugin } from "./h3Plugin";
 import { mathPlugin } from "./mathPlugin";
 import { navPlugin } from "./navPlugin";
 import { anchorPlugin as oembedAnchorPlugin } from "./oembed/anchorPlugin";
 import { olPlugin } from "./olPlugin";
 import { paragraphPlugin } from "./paragraphPlugin";
+import { summaryPlugin } from "./summaryPlugin";
 import { tablePlugin } from "./tablePlugin";
 import { PluginType } from "./types";
 import { ulPlugin } from "./ulPlugin";
@@ -32,10 +34,12 @@ export const basePlugins: Record<string, PluginType> = {
   table: tablePlugin,
   aside: asidePlugin,
   ul: ulPlugin,
-  dd: ddPlugin,
-  dt: dtPlugin,
   nav: navPlugin,
   a: anchorPlugin,
+  summary: summaryPlugin,
+  details: detailsPlugin,
+  dl: dlPlugin,
+  blockquote: blockquotePlugin,
 };
 
 export const oembedPlugins: Record<string, PluginType> = {

@@ -99,11 +99,7 @@ const otherFootnoteMeta: FootnoteData = {
 export const WithSeveralFootnotes: StoryFn<typeof FootnoteEmbed> = ({ ...args }) => (
   <div>
     <p>
-      Her kan det ligge en fotnote
-      <FootnoteEmbed {...args} />
-    </p>
-    <p>
-      Her kan det ligge en til
+      Her kan det ligge en fotnote <FootnoteEmbed {...args} /> for eksempel. Her kan det ligge en til
       <FootnoteEmbed
         embed={{
           resource: "footnote",
@@ -112,6 +108,7 @@ export const WithSeveralFootnotes: StoryFn<typeof FootnoteEmbed> = ({ ...args })
           embedData: otherFootnoteEmbedData,
         }}
       />
+      .
     </p>
     <ArticleByline
       footnotes={

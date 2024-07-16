@@ -155,9 +155,6 @@ const meta: Meta<typeof BrightcoveEmbed> = {
   title: "Embeds/BrightcoveEmbed",
   component: BrightcoveEmbed,
   tags: ["autodocs"],
-  args: {
-    isConcept: false,
-  },
   decorators: [
     (Story) => (
       <OneColumn>

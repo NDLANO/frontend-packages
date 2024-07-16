@@ -43,6 +43,27 @@ const pageItemStyle = (small = false, color: ColorTheme) => css`
   }
 `;
 
+const StyledSafeLink = styled(SafeLink)`
+  background: transparent;
+  border: 0;
+  border-top: 3px solid ${colors.white};
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  text-decoration: none;
+  box-shadow: none;
+  color: ${colors.brand.primary};
+  cursor: pointer;
+  &[data-color="primary"] {
+    border-top: 3px solid ${colors.background.dark};
+  }
+  &[data-small="true"] {
+    padding: 0.2em 0.6em;
+  }
+  &:hover {
+    ${pageItemActiveStyle};
+  }
+`;
+
 type Query = Record<string, any>;
 
 interface PageItemProps<T extends Query> {
@@ -78,9 +99,9 @@ export const PageItem = <T extends Query>({
 
   if (Component === SafeLink) {
     return (
-      <SafeLink css={pageItemStyle(small, colorTheme)} onClick={handleClick} to={linkToPage}>
+      <StyledSafeLink data-color={colorTheme} data-small={small} onClick={handleClick} to={linkToPage}>
         {children}
-      </SafeLink>
+      </StyledSafeLink>
     );
   }
   return (

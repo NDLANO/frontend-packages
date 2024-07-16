@@ -7,8 +7,9 @@
  */
 
 import { GroupBase } from "react-select";
+import type {} from "react-select/base";
 
-declare module "react-select/dist/declarations/src/Select" {
+declare module "react-select/base" {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {
     [key: string]: any;
   }

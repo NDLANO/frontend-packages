@@ -7,7 +7,8 @@
     "isolatedModules": true,
     "strict": true,
     "allowJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
+    "module": "preserve",
     "noLib": false,
     // TODO: Remove this once @storybook/theming fixes their type issues
     "skipLibCheck": true,
@@ -45,7 +46,7 @@
       "@ndla/util": ["./packages/util/src"],
       "@ndla/preset-panda": ["./packages/preset-panda/src"],
       "@ndla/primitives": ["./packages/primitives/src"],
-      "@ndla/styled-system": ["./packages/styled-system"],
+      "@ndla/styled-system": ["./packages/styled-system/src"],
       "*": ["node_modules"]
     }
   },

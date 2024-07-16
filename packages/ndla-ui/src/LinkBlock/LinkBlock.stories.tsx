@@ -14,19 +14,17 @@ export default {
   title: "Components/Link Block",
   component: LinkBlock,
   tags: ["autodocs"],
-  args: {},
+  args: {
+    title: "Redaksjonell <em>medarbeider</em> i faget spansk 2",
+    articleLanguage: "nb",
+    date: "05. mars 2023",
+    url: "",
+  },
 } as Meta<typeof LinkBlock>;
 
-const args = {
-  title: "Redaksjonell <em>medarbeider</em> i faget spansk 2",
-  articleLanguage: "nb",
-  date: "05. mars 2023",
-  url: "",
-};
+export const AnnouncementExample: StoryObj<typeof LinkBlock> = {};
 
-export const AnnouncementExample: StoryObj<typeof LinkBlock> = { args };
-
-export const LinkList: StoryFn<typeof LinkBlock> = () => (
+export const LinkList: StoryFn<typeof LinkBlock> = (args) => (
   <LinkBlockSection>
     <LinkBlock {...args} />
     <LinkBlock {...args} />

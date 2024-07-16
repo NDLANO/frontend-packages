@@ -9,28 +9,30 @@
 import parse from "html-react-parser";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { ButtonV2 } from "@ndla/button";
-import { spacing } from "@ndla/core";
+import { Button, Figure } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { RenderContext } from "./types";
-import { Figure } from "../Figure";
 import { EmbedByline } from "../LicenseByline";
 
 interface Props {
   embed: BrightcoveMetaData;
-  isConcept?: boolean;
   renderContext?: RenderContext;
 }
 
-const LinkedVideoButton = styled(ButtonV2)`
-  margin-left: ${spacing.small};
-`;
+const LinkedVideoButton = styled(Button, {
+  base: {
+    marginInlineStart: "xsmall",
+  },
+});
 
-const BrightcoveIframe = styled.iframe`
-  height: auto;
-`;
+const BrightcoveIframe = styled("iframe", {
+  base: {
+    height: "auto",
+    width: "100%",
+  },
+});
 
 export const makeIframeString = (url: string, width: string | number, height: string | number, title = "") => {
   const strippedWidth = typeof width === "number" ? width : width.replace(/\s*px/, "");
@@ -52,7 +54,7 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? "640",
   };
 };
-const BrightcoveEmbed = ({ embed, isConcept, renderContext = "article" }: Props) => {
+const BrightcoveEmbed = ({ embed, renderContext = "article" }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -99,7 +101,7 @@ const BrightcoveEmbed = ({ embed, isConcept, renderContext = "article" }: Props)
     : undefined;
 
   return (
-    <Figure type={isConcept ? "full-column" : "full"}>
+    <Figure>
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}
@@ -112,13 +114,9 @@ const BrightcoveEmbed = ({ embed, isConcept, renderContext = "article" }: Props)
         />
       </div>
       <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription} bottomRounded>
+        {/* TODO: Figure out if this button should still be here. If yes, figure out what it should look like. */}
         {!!linkedVideoId && (
-          <LinkedVideoButton
-            variant="outline"
-            shape="pill"
-            size="small"
-            onClick={() => setShowOriginalVideo((p) => !p)}
-          >
+          <LinkedVideoButton size="small" variant="secondary" onClick={() => setShowOriginalVideo((p) => !p)}>
             {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}
           </LinkedVideoButton>
         )}

@@ -6,14 +6,13 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
 import parse from "html-react-parser";
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, spacing, mq, misc } from "@ndla/core";
+import { ReactNode } from "react";
 import { Forward } from "@ndla/icons/common";
+import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
-import { HeadingLevel } from "@ndla/typography";
+import { styled } from "@ndla/styled-system/jsx";
+import { HeadingLevel } from "../types";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 interface Image {
@@ -35,74 +34,112 @@ interface Props {
   path?: string;
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing.normal};
-  border: 1px ${colors.brand.lighter} solid;
-  border-radius: ${misc.borderRadius};
-  padding: ${spacing.normal};
-  background-color: ${colors.white};
-  &[data-image-side="right"] {
-    flex-direction: column-reverse;
-  }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    max-width: 1100px;
-    flex-direction: row;
-    &[data-image-side="right"] {
-      flex-direction: row-reverse;
-    }
-  }
-`;
+const Container = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    border: "1px solid",
+    borderColor: "stroke.default",
+    backgroundColor: "background.default",
+    borderRadius: "xsmall",
+    boxShadow: "full",
+    maxWidth: "surface.xsmall",
+    overflow: "hidden",
+    mobileWide: {
+      maxWidth: "surface.medium",
+    },
+    tabletWide: {
+      // TODO: This is probably not the correct max-width. And it should be a token
+      maxWidth: "1100px",
+      flexDirection: "row",
+    },
+  },
+});
 
-const headingStyle = css`
-  margin: 0;
-`;
+const LinkText = styled(Text, {
+  base: {
+    display: "flex",
+    gap: "xxsmall",
+    textDecoration: "underline",
+    _hover: {
+      textDecoration: "none",
+    },
+  },
+});
+const StyledImg = styled("img", {
+  base: {
+    alignSelf: "center",
+    objectFit: "cover",
+    width: "100%",
+    height: "215px",
+    desktop: {
+      height: "340px",
+    },
+  },
+});
 
-const StyledDescription = styled.p`
-  font-family: ${fonts.serif};
-  margin: ${spacing.normal} 0 ${spacing.medium};
-`;
+const ContentWrapper = styled("div", {
+  base: {
+    width: "100%",
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
+    alignItems: "flex-start",
+    paddingBlock: "medium",
+    paddingInline: "medium",
+  },
+});
 
-const StyledImg = styled.img`
-  align-self: center;
-  object-fit: contain;
-`;
+interface MaybeLinkTextProps {
+  url?: string;
+  path?: string;
+  children: ReactNode;
+}
 
-const StyledLink = styled(SafeLink)`
-  display: inline-flex;
-  align-items: center;
-  gap: ${spacing.xxsmall};
-  color: ${colors.brand.primary};
-`;
+const StyledSafeLink = styled(SafeLink, {
+  base: {
+    color: "inherit",
+  },
+});
 
-const TextWrapper = styled.div`
-  flex-grow: 1;
-`;
+const MaybeLinkText = ({ url, children, path }: MaybeLinkTextProps) => {
+  if (url) return <StyledSafeLink to={getPossiblyRelativeUrl(url, path)}>{children}</StyledSafeLink>;
+  return children;
+};
 
 const CampaignBlock = ({
   title,
   image,
   imageSide = "left",
   description,
-  headingLevel: Heading = "h2",
+  headingLevel: InternalHeading = "h2",
   url,
   path,
   className,
 }: Props) => {
+  const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
+  const HeaderComponent = url?.url ? LinkText : Text;
   return (
-    <Container className={className} data-type="campaign-block" data-image-side={imageSide}>
-      {image && <StyledImg src={`${image.src}?width=240`} height={200} width={240} alt={image.alt} />}
-      <TextWrapper>
-        <Heading css={headingStyle}>{parse(title)}</Heading>
-        <StyledDescription>{parse(description)}</StyledDescription>
+    <Container className={className} data-type="campaign-block">
+      {imageSide === "left" && imageComponent}
+      <ContentWrapper>
+        <MaybeLinkText url={url?.url} path={path}>
+          <HeaderComponent asChild consumeCss textStyle="heading.small">
+            <InternalHeading>{parse(title)}</InternalHeading>
+          </HeaderComponent>
+        </MaybeLinkText>
+        <Text textStyle="body.large">{parse(description)}</Text>
         {!!url?.url && (
-          <StyledLink to={getPossiblyRelativeUrl(url.url, path)}>
-            {parse(url.text ?? "")}
-            <Forward />
-          </StyledLink>
+          <MaybeLinkText url={url.url} path={path}>
+            <LinkText textStyle="body.medium">
+              {parse(url.text ?? "")}
+              <Forward />
+            </LinkText>
+          </MaybeLinkText>
         )}
-      </TextWrapper>
+      </ContentWrapper>
+      {imageSide !== "left" && imageComponent}
     </Container>
   );
 };

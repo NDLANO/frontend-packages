@@ -23,7 +23,7 @@ export type {
 } from "./ArticleLists";
 export { OrderedList, UnOrderedList, DefinitionList } from "./ArticleLists";
 
-export type { BadgeVariantProps, BadgeProps } from "./Badge";
+export type { BadgeVariantProps, BadgeProps, BadgeVariant } from "./Badge";
 
 export { Badge } from "./Badge";
 
@@ -31,7 +31,9 @@ export type { BlockQuoteVariantProps, BlockQuoteProps } from "./BlockQuote";
 export { BlockQuote } from "./BlockQuote";
 
 export type { ButtonProps, ButtonVariantProps, IconButtonProps, IconButtonVariantProps } from "./Button";
-export { Button, IconButton } from "./Button";
+export { Button, IconButton, buttonBaseRecipe, buttonRecipe, iconButtonRecipe } from "./Button";
+
+export { CardRoot, CardHeading, CardContent, CardImage } from "./Card/Card";
 
 export type { CheckboxVariantProps, CheckboxRootProps } from "./Checkbox";
 
@@ -44,7 +46,22 @@ export {
   CheckboxHiddenInput,
 } from "./Checkbox";
 
-export type { ComboboxVariantProps, ComboboxRootProps } from "./Combobox";
+export type {
+  ComboboxVariantProps,
+  ComboboxRootProps,
+  ComboboxClearTriggerProps,
+  ComboboxContentProps,
+  ComboboxControlProps,
+  ComboboxInputProps,
+  ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps,
+  ComboboxItemProps,
+  ComboboxItemIndicatorProps,
+  ComboboxItemTextProps,
+  ComboboxLabelProps,
+  ComboboxPositionerProps,
+  ComboboxTriggerProps,
+} from "./Combobox";
 export {
   ComboboxRoot,
   ComboboxClearTrigger,
@@ -85,10 +102,15 @@ export { FieldErrorMessage } from "./FieldErrorMessage";
 
 export { FieldHelper } from "./FieldHelper";
 
+export type { FigureSize, FigureVariantProps, FigureProps, FigureFloat } from "./Figure";
 export { Figure } from "./Figure";
 
 export type { FramedContentVariantProps, FramedContentProps } from "./FramedContent";
 export { FramedContent } from "./FramedContent";
+
+export type { ImageCrop, ImageFocalPoint, PictureProps, ImgProps, ImageProps } from "./Image";
+
+export { Picture, Img, Image, makeSrcQueryString, getSrcSet } from "./Image";
 
 export { Input, FieldInput, InputContainer, TextArea, FieldTextArea } from "./Input";
 
@@ -192,7 +214,18 @@ export { SwitchRoot, SwitchControl, SwitchThumb, SwitchLabel, SwitchHiddenInput 
 export type { TableProps } from "./Table";
 export { Table } from "./Table";
 
-export type { TagsInputRootProps } from "./TagsInput";
+export type {
+  TagsInputRootProps,
+  TagsInputClearTriggerProps,
+  TagsInputControlProps,
+  TagsInputInputProps,
+  TagsInputItemDeleteTriggerProps,
+  TagsInputItemInputProps,
+  TagsInputItemPreviewProps,
+  TagsInputItemProps,
+  TagsInputItemTextProps,
+  TagsInputLabelProps,
+} from "./TagsInput";
 export {
   TagsInputRoot,
   TagsInputClearTrigger,

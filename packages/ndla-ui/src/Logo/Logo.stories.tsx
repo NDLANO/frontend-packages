@@ -24,7 +24,6 @@ export default {
     inlineStories: true,
   },
   args: {
-    cssModifier: "large",
     name: true,
     label: "Nasjonal digital læringsarena",
   },

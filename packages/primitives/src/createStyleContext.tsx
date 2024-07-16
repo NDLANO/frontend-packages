@@ -36,6 +36,10 @@ interface BaseStyleContextProps {
   consumeCss?: boolean;
 }
 
+interface CreateStyleContextOptions {
+  baseComponent?: boolean;
+}
+
 export const createStyleContext = <R extends Recipe>(recipe: R) => {
   const StyleContext = createContext<Record<Slot<R>, SystemStyleObject> | null>(null);
 
@@ -56,9 +60,9 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
   const withProvider = <T, P extends BaseStyleContextProps & WithCss>(
     Component: ElementType,
     slot: Slot<R>,
+    options?: CreateStyleContextOptions,
   ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
-    const opts = typeof Component === "string" ? undefined : { baseComponent: true };
-    const StyledComponent = styled(Component, {}, opts) as StyledComponent<ElementType, {}>;
+    const StyledComponent = styled(Component, {}, options) as StyledComponent<ElementType, {}>;
     return forwardRef<T, P>(({ css: cssProp, ...props }, ref) => {
       const [variantProps, otherProps] = recipe.splitVariantProps(props);
 
@@ -75,9 +79,9 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
   const withContext = <T, P extends BaseStyleContextProps & WithCss>(
     Component: ElementType,
     slot: Slot<R>,
+    options?: CreateStyleContextOptions,
   ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
-    const opts = typeof Component === "string" ? undefined : { baseComponent: true };
-    const StyledComponent = styled(Component, {}, opts) as StyledComponent<ElementType, {}>;
+    const StyledComponent = styled(Component, {}, options) as StyledComponent<ElementType, {}>;
     return forwardRef<T, P>(({ css: cssProp, ...props }, ref) => {
       const slotStyles = useContext(StyleContext);
       return <StyledComponent {...props} ref={ref} css={css.raw(slotStyles?.[slot], cssProp)} />;

@@ -65,6 +65,32 @@ export const GlossStory: StoryFn<typeof Gloss> = ({ ...args }) => {
   return <Gloss {...args} />;
 };
 
+export const Bordered: StoryObj<typeof Gloss> = {
+  args: {
+    variant: "bordered",
+  },
+};
+
+export const NoExamples: StoryObj<typeof Gloss> = {
+  args: {
+    title: {
+      title: "Å angripe",
+      language: "nb",
+    },
+    glossData: {
+      gloss: "angreifen",
+      wordClass: wordClass.verb,
+      originalLanguage: "de",
+      transcriptions: {},
+      examples: [],
+    },
+    audio: {
+      title: "",
+      src: "",
+    },
+  },
+};
+
 export const GlossChineseStory: StoryObj<typeof Gloss> = {
   args: {
     title: {
@@ -103,6 +129,86 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
   },
 };
 
+export const BigExample: StoryObj<typeof Gloss> = {
+  args: {
+    title: {
+      title: "(spørsmålspartikkel); hva med…?",
+      language: "nb",
+    },
+    audio: {
+      src: "https://api.ndla.no/audio/files/ne.mp3",
+      title: "Spill av",
+    },
+    glossData: {
+      gloss: "呢",
+      wordClass: "particle",
+      originalLanguage: "zh",
+      transcriptions: {
+        pinyin: "ne",
+      },
+      examples: [
+        [
+          {
+            example: "我叫马红，你呢？//我叫馬紅，你呢？",
+            language: "zh",
+            transcriptions: {
+              pinyin: "Wǒ jiào Mǎ Hóng, nǐ ne?",
+            },
+          },
+          {
+            example: "Jeg heter Ma Hong, hva med deg?",
+            language: "nb",
+            transcriptions: {},
+          },
+          {
+            example: "Eg heiter Ma Hong, kva med deg?",
+            language: "nn",
+            transcriptions: {},
+          },
+        ],
+        [
+          {
+            example: "我姓王，你呢？",
+            language: "zh",
+            transcriptions: {
+              pinyin: "Wǒ xìng Wáng, nǐ ne?",
+            },
+          },
+          {
+            example: "Jeg heter Wang til etternavn, hva med deg?",
+            language: "nb",
+            transcriptions: {},
+          },
+          {
+            example: "Eg heiter Wang til etternamn, kva med deg?",
+            language: "nn",
+            transcriptions: {},
+          },
+        ],
+        [
+          {
+            example: "我是老师，你呢？//我是老師，你呢？",
+            language: "zh",
+            transcriptions: {
+              pinyin: "Wǒ shì lǎoshī, nǐ ne?",
+            },
+          },
+          {
+            example: "Jeg er lærer, hva med deg?",
+            language: "nb",
+            transcriptions: {},
+          },
+          {
+            example: "Eg er lærar, kva med deg?",
+            language: "nn",
+            transcriptions: {},
+          },
+        ],
+      ],
+    },
+  },
+};
+
 const GlossExampleText = {
   example: "我叫马红",
   language: "zh",
@@ -112,5 +218,5 @@ const GlossExampleText = {
 };
 
 export const GlossExampleStory: StoryFn<typeof Gloss> = () => {
-  return <GlossExample originalLanguage="zh" index={0} example={GlossExampleText} isStandalone />;
+  return <GlossExample originalLanguage="zh" examples={[GlossExampleText]} />;
 };

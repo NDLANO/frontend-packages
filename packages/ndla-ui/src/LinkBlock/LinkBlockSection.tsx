@@ -7,23 +7,20 @@
  */
 
 import { Children, HTMLAttributes, ReactNode } from "react";
-import styled from "@emotion/styled";
-import { spacing } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
 }
 
-const StyledList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing.small};
-  list-style: none;
-  padding: 0px;
-  li {
-    padding: 0px;
-  }
-`;
+const StyledList = styled("ul", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
+    listStyle: "none",
+  },
+});
 
 const LinkBlockSection = ({ children, ...rest }: Props) => {
   return (

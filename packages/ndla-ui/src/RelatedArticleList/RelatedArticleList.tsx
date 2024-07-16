@@ -6,15 +6,15 @@
  *
  */
 
-import { CSSProperties, Children, ComponentProps, ReactNode, useMemo, useState } from "react";
+import { Children, ComponentPropsWithoutRef, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { ButtonV2 } from "@ndla/button";
-import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
-import { Heading, HeadingLevel, Text } from "@ndla/typography";
-import ContentTypeBadge from "../ContentTypeBadge";
+import { styled } from "@ndla/styled-system/jsx";
+import { linkOverlay } from "@ndla/styled-system/patterns";
+import { ContentTypeBadge } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import { contentTypes } from "../model/ContentType";
+import { HeadingLevel } from "../types";
 
 interface RelatedArticleProps {
   title: string;
@@ -25,45 +25,6 @@ interface RelatedArticleProps {
   type?: string;
 }
 
-const TitleWrapper = styled.div`
-  display: flex;
-  gap: ${spacing.small};
-  align-items: flex-start;
-  div {
-    min-width: 34px;
-    min-height: 34px;
-    max-width: 34px;
-    max-height: 34px;
-  }
-`;
-
-const StyledRelatedArticle = styled.article`
-  border-left: 6px solid var(--border-color, ${colors.brand.greyLight});
-  flex-grow: 0;
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing.xsmall};
-  padding: 0px ${spacing.normal} 0px ${spacing.normal};
-`;
-
-const LinkInfo = styled(Text)`
-  font-weight: ${fonts.weight.bold};
-`;
-
-const LinkText = styled(Text)`
-  font-weight: ${fonts.weight.semibold};
-`;
-
-const colorMap = {
-  [contentTypes.SUBJECT_MATERIAL]: colors.subjectMaterial.light,
-  [contentTypes.TASKS_AND_ACTIVITIES]: colors.tasksAndActivities.background,
-  [contentTypes.ASSESSMENT_RESOURCES]: colors.assessmentResource.background,
-  [contentTypes.CONCEPT]: colors.concept.light,
-  [contentTypes.SOURCE_MATERIAL]: colors.sourceMaterial.light,
-  [contentTypes.LEARNING_PATH]: colors.learningPath.background,
-  [contentTypes.SUBJECT]: colors.subject.light,
-};
-
 export const RelatedArticle = ({
   title,
   introduction,
@@ -73,59 +34,79 @@ export const RelatedArticle = ({
   type = contentTypes.SUBJECT_MATERIAL,
 }: RelatedArticleProps) => {
   return (
-    <StyledRelatedArticle style={{ "--border-color": colorMap[type] } as CSSProperties}>
-      <TitleWrapper>
-        <ContentTypeBadge type={type} background size="small" />
-        <LinkText element="span" textStyle="meta-text-medium" margin="none">
-          <SafeLink to={to} target={target} rel={linkInfo ? "noopener noreferrer" : undefined}>
-            {title}
-          </SafeLink>
-        </LinkText>
-      </TitleWrapper>
-      <Text textStyle="meta-text-small" margin="none" dangerouslySetInnerHTML={{ __html: introduction }} />
-      <LinkInfo textStyle="content" margin="none">
-        {linkInfo}
-      </LinkInfo>
-    </StyledRelatedArticle>
+    <CardRoot>
+      <CardContent>
+        <ContentTypeBadge contentType={type} />
+        <CardHeading asChild consumeCss>
+          <span>
+            <SafeLink
+              unstyled
+              to={to}
+              target={target}
+              rel={linkInfo ? "noopener noreferrer" : undefined}
+              css={linkOverlay.raw()}
+            >
+              {title}
+            </SafeLink>
+          </span>
+        </CardHeading>
+        <Text dangerouslySetInnerHTML={{ __html: introduction }} />
+        <Text color="text.subtle" textStyle="label.small">
+          {linkInfo}
+        </Text>
+      </CardContent>
+    </CardRoot>
   );
 };
 
-const HeadingWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  align-self: flex-start;
-`;
+const HeadingWrapper = styled("div", {
+  base: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    alignSelf: "flex-start",
+  },
+});
 
-const ArticlesWrapper = styled.div`
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: ${spacing.large};
-  ${mq.range({ until: breakpoints.tablet })} {
-    grid-template-columns: 1fr;
-  }
-`;
+const ArticlesWrapper = styled("div", {
+  base: {
+    display: "grid",
+    width: "100%",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: "medium",
+    tabletDown: {
+      gridTemplateColumns: "1fr",
+    },
+  },
+});
 
-interface Props extends ComponentProps<"section"> {
+const StyledSection = styled("section", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "xsmall",
+  },
+});
+
+const StyledButton = styled(Button, {
+  base: {
+    marginBlockStart: "xsmall",
+  },
+});
+
+interface Props extends ComponentPropsWithoutRef<"section"> {
   children?: JSX.Element[];
   articleCount?: number;
   headingLevel?: HeadingLevel;
   headingButtons?: ReactNode;
 }
 
-const StyledSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${spacing.normal};
-`;
-
 export const RelatedArticleList = ({
   children = [],
   articleCount,
-  headingLevel = "h2",
+  headingLevel: HeadingElement = "h2",
   headingButtons,
   ...rest
 }: Props) => {
@@ -140,16 +121,16 @@ export const RelatedArticleList = ({
   return (
     <StyledSection {...rest}>
       <HeadingWrapper>
-        <Heading element={headingLevel} margin="none" headingStyle="list-title">
-          {t("related.title")}
+        <Heading asChild consumeCss textStyle="title.large" fontWeight="bold">
+          <HeadingElement>{t("related.title")}</HeadingElement>
         </Heading>
         {headingButtons}
       </HeadingWrapper>
       <ArticlesWrapper>{childrenToShow}</ArticlesWrapper>
       {childCount > 2 ? (
-        <ButtonV2 onClick={() => setExpanded((p) => !p)} variant="outline">
+        <StyledButton variant="secondary" onClick={() => setExpanded((p) => !p)}>
           {t(`related.show${expanded ? "Less" : "More"}`)}
-        </ButtonV2>
+        </StyledButton>
       ) : null}
     </StyledSection>
   );

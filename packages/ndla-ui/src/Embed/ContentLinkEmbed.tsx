@@ -8,27 +8,25 @@
 
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
+import { Text } from "@ndla/primitives";
 import { ContentLinkMetaData } from "@ndla/types-embed";
+
 interface Props {
   embed: ContentLinkMetaData;
   isOembed?: boolean;
   children?: ReactNode;
 }
 
-const StyledSpan = styled.span`
-  color: ${colors.support.red};
-`;
-
 const ContentLinkEmbed = ({ embed, isOembed, children }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
     return (
-      <StyledSpan>
-        <span>{`${t("embed.linkError")}: `}</span>
-        {children}
-      </StyledSpan>
+      <Text color="text.error" asChild consumeCss>
+        <span>
+          <span>{`${t("embed.linkError")}: `}</span>
+          {children}
+        </span>
+      </Text>
     );
   }
 

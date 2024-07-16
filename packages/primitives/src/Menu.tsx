@@ -138,7 +138,9 @@ export const MenuRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: M
   <InternalMenuRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const MenuContent = withContext<HTMLDivElement, JsxStyleProps & Menu.ContentProps>(Menu.Content, "content");
+export const MenuContent = withContext<HTMLDivElement, JsxStyleProps & Menu.ContentProps>(Menu.Content, "content", {
+  baseComponent: true,
+});
 
 const InternalMenuItemGroupLabel = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemGroupLabelProps>(
   Menu.ItemGroupLabel,
@@ -161,9 +163,12 @@ export const MenuItemGroupLabel = ({
 export const MenuItemGroup = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemGroupProps>(
   Menu.ItemGroup,
   "itemGroup",
+  { baseComponent: true },
 );
 
-const InternalMenuItem = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemProps>(Menu.Item, "item");
+const InternalMenuItem = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemProps>(Menu.Item, "item", {
+  baseComponent: true,
+});
 
 export type MenuItemVariantProps = RecipeVariantProps<typeof itemCva>;
 export type MenuItemProps = Menu.ItemProps & JsxStyleProps & MenuItemVariantProps;
@@ -179,11 +184,13 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(({ css: cssPro
 export const MenuPositioner = withContext<HTMLDivElement, JsxStyleProps & Menu.PositionerProps>(
   Menu.Positioner,
   "positioner",
+  { baseComponent: true },
 );
 
 const InternalMenuTriggerItem = withContext<HTMLDivElement, JsxStyleProps & Menu.TriggerItemProps>(
   Menu.TriggerItem,
   "triggerItem",
+  { baseComponent: true },
 );
 
 export const MenuTriggerItem = forwardRef<HTMLDivElement, Menu.TriggerItemProps & JsxStyleProps & MenuItemVariantProps>(
@@ -196,9 +203,12 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, Menu.TriggerItemProps 
   ),
 );
 
-export const MenuTrigger = withContext<HTMLDivElement, JsxStyleProps & Menu.TriggerProps>(Menu.Trigger, "trigger");
+export const MenuTrigger = withContext<HTMLDivElement, JsxStyleProps & Menu.TriggerProps>(Menu.Trigger, "trigger", {
+  baseComponent: true,
+});
 
 export const MenuSeparator = withContext<HTMLHRElement, JsxStyleProps & Menu.SeparatorProps>(
   Menu.Separator,
   "separator",
+  { baseComponent: true },
 );

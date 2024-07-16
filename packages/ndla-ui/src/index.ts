@@ -9,10 +9,7 @@
 // Ignore typescript implicit any warning and export all javascript components
 // Move components to this file when they are migrated to typescript
 
-export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
-export { default as FramedContent } from "./FramedContent";
 export {
-  ConceptNotionV2,
   ImageEmbed,
   getCrop,
   getFocalPoint,
@@ -51,8 +48,6 @@ export type { ArticleModifier } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
-export { default as Table, TableStyling } from "./Table";
-
 export { default as ContentLoader } from "./ContentLoader";
 
 export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleList";
@@ -64,9 +59,6 @@ export { default as FileList, File, PdfFile, Format } from "./FileList";
 export { default as Logo } from "./Logo";
 
 export { default as FactBox } from "./FactBox";
-
-export { default as Image, ImageLink, makeSrcQueryString } from "./Image";
-export type { ImageCrop, ImageFocalPoint } from "./Image";
 
 export type { HeroContentType } from "./Hero";
 export {
@@ -82,9 +74,6 @@ export {
 } from "./Hero";
 
 export { FooterBlock } from "./Footer";
-
-export { Figure } from "./Figure";
-export type { FigureType } from "./Figure";
 
 export { LanguageSelector } from "./LanguageSelector";
 
@@ -115,7 +104,13 @@ export { default as messagesSMA } from "./locale/messages-sma";
 export { default as Breadcrumb, HomeBreadcrumb } from "./Breadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";
 
-export { i18nInstance, formatNestedMessages } from "./i18n";
+export {
+  i18nInstance,
+  formatNestedMessages,
+  useTagsInputTranslations,
+  useTagSelectorTranslations,
+  useComboboxTranslations,
+} from "./i18n";
 
 export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";
 
@@ -130,17 +125,26 @@ export {
   ConceptBadge,
 } from "./ContentTypeBadge";
 
+export type { ContentTypeBadgeProps } from "./ContentTypeBadge/ContentTypeBadgeNew";
+export {
+  ContentTypeBadge as ContentTypeBadgeNew,
+  contentTypeToBadgeVariantMap,
+} from "./ContentTypeBadge/ContentTypeBadgeNew";
+
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 
 export { default as ContentPlaceholder } from "./ContentPlaceholder";
 
-export { Notion } from "./Notion";
-
-export { Folder } from "./MyNdla";
-export { ListResource, BlockResource } from "./Resource";
-export type { ListResourceProps } from "./Resource";
-export type { TagType } from "./TagSelector";
-export { TagSelector } from "./TagSelector";
+export {
+  TagSelectorRoot,
+  TagSelectorLabel,
+  TagSelectorItemInput,
+  TagSelectorTrigger,
+  TagSelectorControl,
+  TagSelectorClearTrigger,
+  TagSelectorInputBase,
+  TagSelectorInput,
+} from "./TagSelector/TagSelector";
 
 export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from "./SnackBar";
 export type { Snack, SnackContext } from "./SnackBar";
@@ -148,7 +152,6 @@ export { TreeStructure } from "./TreeStructure";
 export type { TreeStructureProps } from "./TreeStructure";
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters } from "./Search";
-export { default as LetterFilter } from "./LetterFilter";
 
 export { OrderedList, UnOrderedList } from "./List";
 export { BlogPostV2 } from "./BlogPost";
@@ -165,7 +168,6 @@ export {
   FRONTPAGE_ARTICLE_MAX_WIDTH,
   WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH,
 } from "./FrontpageArticle";
-export { DefinitionTerm, DefinitionDescription } from "./DefinitionList";
 export type { ProgrammeV2 } from "./ProgrammeCard";
 
 export { Gloss, GlossExample } from "./Gloss";
@@ -175,3 +177,7 @@ export { LinkBlock, LinkBlockSection } from "./LinkBlock";
 export type { Article as ArticleType } from "./types";
 
 export { CodeBlock, codeLanguageOptions } from "./CodeBlock";
+
+export { ZendeskButton } from "./ZendeskButton/ZendeskButton";
+
+export type { ZendeskButtonProps } from "./ZendeskButton/ZendeskButton";

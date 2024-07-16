@@ -17,6 +17,9 @@ export const MULTIDISCIPLINARY_TOPIC = "multidisciplinary-topic";
 export const CONCEPT = "concept";
 export const EXTERNAL = "external";
 export const MISSING = "missing";
+export const IMAGE = "image";
+export const VIDEO = "video";
+export const AUDIO = "audio";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,

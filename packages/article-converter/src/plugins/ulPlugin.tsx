@@ -7,7 +7,7 @@
  */
 
 import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
-import { UnOrderedList } from "@ndla/ui";
+import { UnOrderedList } from "@ndla/primitives";
 import { PluginType } from "./types";
 export const ulPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);

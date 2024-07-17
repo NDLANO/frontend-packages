@@ -153,7 +153,6 @@ export type { TreeStructureProps } from "./TreeStructure";
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters } from "./Search";
 
-export { OrderedList, UnOrderedList } from "./List";
 export { BlogPostV2 } from "./BlogPost";
 export { ProgrammeCard } from "./ProgrammeCard";
 export { KeyFigure } from "./KeyFigure";

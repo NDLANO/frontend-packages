@@ -24,10 +24,10 @@ const orderedListRecipe = cva({
   variants: {
     variant: {
       numbers: {
+        counterReset: "level1",
         "&[data-count='true']": {
           counterReset: "level1 var(--start, 0)",
         },
-        counterReset: "level1",
         marginInline: "small",
         "& > li": {
           counterIncrement: "level1",
@@ -36,10 +36,10 @@ const orderedListRecipe = cva({
           },
           "& > ol:not([data-variant='letters'])": {
             marginInlineStart: "xlarge",
+            counterReset: "level2",
             "&[data-count='true']": {
               counterReset: "level2 var(--start, 0)",
             },
-            counterReset: "level2",
             "& > li": {
               counterIncrement: "level2",
               _marker: {
@@ -47,10 +47,10 @@ const orderedListRecipe = cva({
               },
               "& > ol:not([data-variant='letters'])": {
                 marginInlineStart: "xxlarge",
+                counterReset: "level3",
                 "&[data-count='true']": {
                   counterReset: "level3 var(--start, 0)",
                 },
-                counterReset: "level3",
                 "& > li": {
                   counterIncrement: "level3",
                   _marker: {
@@ -58,10 +58,10 @@ const orderedListRecipe = cva({
                   },
                 },
                 "& > ol:not([data-variant='letters'])": {
+                  counterReset: "level4",
                   "&[data-count='true']": {
                     counterReset: "level4 var(--start, 0)",
                   },
-                  counterReset: "level4",
                   "& > li": {
                     counterIncrement: "level4",
                     _marker: {
@@ -76,10 +76,10 @@ const orderedListRecipe = cva({
         },
       },
       letters: {
+        counterReset: "list-item",
         "&[data-count='true']": {
           counterReset: "list-item var(--start, 0)",
         },
-        counterReset: "list-item",
         paddingInlineStart: "small",
         "& > li": {
           _marker: {

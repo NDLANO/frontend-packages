@@ -61,6 +61,7 @@ export type {
   ComboboxLabelProps,
   ComboboxPositionerProps,
   ComboboxTriggerProps,
+  ComboboxListProps,
 } from "./Combobox";
 export {
   ComboboxRoot,
@@ -76,6 +77,7 @@ export {
   ComboboxLabel,
   ComboboxPositioner,
   ComboboxTrigger,
+  ComboboxList,
 } from "./Combobox";
 
 export type { DialogVariantProps, DialogRootProps } from "./Dialog";
@@ -189,6 +191,7 @@ export {
   SelectPositioner,
   SelectTrigger,
   SelectValueText,
+  SelectList,
 } from "./Select";
 
 export type { SkeletonProps } from "./Skeleton";

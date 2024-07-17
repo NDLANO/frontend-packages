@@ -76,6 +76,10 @@ const orderedListRecipe = cva({
         },
       },
       letters: {
+        "&[data-count='true']": {
+          counterReset: "list-item var(--start, 0)",
+        },
+        counterReset: "list-item",
         paddingInlineStart: "small",
         "& > li": {
           _marker: {

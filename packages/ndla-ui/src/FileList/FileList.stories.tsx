@@ -9,7 +9,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import File from "./File";
 import FileList from "./FileList";
-import PdfFile from "./PdfFile";
 
 export default {
   title: "Components/FileList",
@@ -38,14 +37,10 @@ export const FileNotFound: StoryObj<typeof File> = {
 export const SeveralFiles: StoryObj<typeof File> = {
   render: () => (
     <FileList>
-      <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" />
-      <File title="Fil 2" url="https://ndla.no/2" fileExists={false} fileType="png" />
-      <PdfFile
-        title="Fil 3"
-        url="https://api.test.ndla.no/files/131789/krypteringsaktivitet_-_til_fiendegruppe_bm.pdf"
-      />
-      <File title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" />
-      <File title="Fil 4" url="https://ndla.no/4" fileExists fileType="docx" />
+      <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      <File title="Fil 2" url="https://ndla.no/2" fileExists={false} fileType="png" fileSize="100 mb" />
+      <File title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" fileSize="100 mb" />
+      <File title="Fil 4" url="https://ndla.no/4" fileExists fileType="docx" fileSize="100 mb" />
     </FileList>
   ),
 };

@@ -7,48 +7,72 @@
  */
 
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { breakpoints, colors, mq, spacing } from "@ndla/core";
-import Format from "./Format";
+import { styled } from "@ndla/styled-system/jsx";
+import { Download } from "@ndla/icons/common";
+import { SafeLinkButton } from "@ndla/safelink";
+import { Text } from "@ndla/primitives";
+import { HTMLAttributes } from "react";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLLIElement> {
   title: string;
   url: string;
   fileExists: boolean;
   fileType: string;
-}
-export interface FileType {
-  title: string;
-  formats: FileFormat[];
-  fileExists?: boolean;
+  fileSize?: string;
 }
 
-export interface FileFormat {
-  url: string;
-  fileType: string;
-  tooltip: string;
-}
+const FileItem = styled("li", {
+  base: {
+    background: "surface.infoSubtle",
+    borderBlockEnd: "1px solid",
+    borderColor: "stroke.default",
+    display: "flex",
+    justifyContent: "space-between",
+    paddingBlock: "small",
+    paddingInlineEnd: "medium",
+    paddingInlineStart: "small",
+    _hover: {
+      backgroundColor: "surface.infoSubtle.hover",
+    },
+  },
+});
 
-const StyledFileItem = styled.li`
-  background: ${colors.brand.greyLighter};
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: ${spacing.xsmall};
-  padding: ${spacing.small};
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.small} ${spacing.normal};
-  }
-`;
+const StyledSafeLink = styled(SafeLinkButton, {
+  base: {
+    width: "100%",
+    fontWeight: "light",
+    color: "text.default",
+    padding: "unset",
+    minHeight: "unset",
+  },
+});
 
-const File = ({ title, url, fileExists, fileType }: Props) => {
+const TextWrapper = styled("div", { base: { display: "flex", gap: "xxsmall" } });
+
+const File = ({ title, url, fileExists, fileType, fileSize, children, ...rest }: Props) => {
   const { t } = useTranslation();
   const tooltip = `${t("download")} ${url.split("/").pop()}`;
 
   return (
-    <StyledFileItem>
-      <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />
-    </StyledFileItem>
+    <FileItem {...rest}>
+      <TextWrapper>
+        <Download />
+        {fileExists ? (
+          <StyledSafeLink variant="link" to={url} title={tooltip}>
+            {title}
+          </StyledSafeLink>
+        ) : (
+          <Text fontWeight="light" asChild consumeCss>
+            <span>{title}</span>
+          </Text>
+        )}
+        <Text fontWeight="light">({fileType?.toUpperCase()})</Text>
+      </TextWrapper>
+      <Text fontWeight="light" asChild consumeCss>
+        <span>{fileSize}</span>
+      </Text>
+      {children}
+    </FileItem>
   );
 };
 

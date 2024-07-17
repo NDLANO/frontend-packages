@@ -257,9 +257,9 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
     <FieldRoot invalid={invalid}>
       <FileUploadRoot
         {...args}
-        onFileReject={(details) => {
-          details.files?.find(({ errors }) => errors.length && errors.length >= 1) ? setInvalid(true) : null;
-        }}
+        onFileReject={(details) =>
+          details.files?.find(({ errors }) => errors.length && errors.length >= 1) ? setInvalid(true) : null
+        }
         accept="image/*"
       >
         <FileUploadDropzone>

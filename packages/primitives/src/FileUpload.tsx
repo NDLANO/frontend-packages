@@ -83,7 +83,9 @@ export type FileUploadVariantProps = RecipeVariantProps<typeof fileUploadRecipe>
 
 export type FileUploadRootProps = FileUpload.RootProps & FileUploadVariantProps;
 
-const InternalFileUploadRoot = withProvider<HTMLDivElement, FileUploadRootProps>(FileUpload.Root, "root");
+const InternalFileUploadRoot = withProvider<HTMLDivElement, FileUploadRootProps>(FileUpload.Root, "root", {
+  baseComponent: true,
+});
 
 export const FileUploadRoot = ({ children, ...props }: FileUploadRootProps) => {
   return (
@@ -97,6 +99,7 @@ export const FileUploadRoot = ({ children, ...props }: FileUploadRootProps) => {
 const InternalFileUploadLabel = withContext<HTMLLabelElement, Assign<JsxStyleProps, FileUpload.LabelProps>>(
   FileUpload.Label,
   "label",
+  { baseComponent: true },
 );
 
 export const FileUploadLabel = ({
@@ -114,26 +117,48 @@ export const FileUploadLabel = ({
 export const FileUploadDropzone = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.DropzoneProps>>(
   FileUpload.Dropzone,
   "dropzone",
+  { baseComponent: true },
 );
 
-export const FileUploadTrigger = FileUpload.Trigger;
+const InternalFileUploadTrigger = withContext<HTMLButtonElement, Assign<JsxStyleProps, FileUpload.TriggerProps>>(
+  FileUpload.Trigger,
+  "trigger",
+  { baseComponent: true },
+);
+
+export const FileUploadTrigger = InternalFileUploadTrigger;
 
 export const FileUploadContext = FileUpload.Context;
 
-export const FileUploadItemGroup = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemGroupProps>>(
+const InternalFileUploadItemGroup = withContext<HTMLUListElement, Assign<JsxStyleProps, FileUpload.ItemGroupProps>>(
   FileUpload.ItemGroup,
   "itemGroup",
+  { baseComponent: true },
 );
-export const FileUploadItemPreview = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemPreviewProps>>(
+
+export const FileUploadItemGroup = InternalFileUploadItemGroup;
+
+const InternalFileUploadItemPreview = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemPreviewProps>>(
   FileUpload.ItemPreview,
   "itemPreview",
+  { baseComponent: true },
 );
-export const FileUploadItemPreviewImage = FileUpload.ItemPreviewImage;
+
+export const FileUploadItemPreview = InternalFileUploadItemPreview;
+
+const InternalFileUploadItemPreviewImage = withContext<
+  HTMLImageElement,
+  Assign<JsxStyleProps, FileUpload.ItemPreviewImageProps>
+>(FileUpload.ItemPreviewImage, "itemPreviewImage", { baseComponent: true });
+
+export const FileUploadItemPreviewImage = InternalFileUploadItemPreviewImage;
 
 const InternalFileUploadItemName = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemNameProps>>(
   FileUpload.ItemName,
   "itemName",
+  { baseComponent: true },
 );
+
 export const FileUploadItemName = ({
   textStyle = "label.medium",
   fontWeight = "bold",
@@ -144,14 +169,18 @@ export const FileUploadItemName = ({
   </Text>
 );
 
-export const FileUploadItem = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemProps>>(
+const InternalFileUploadItem = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemProps>>(
   FileUpload.Item,
   "item",
+  { baseComponent: true },
 );
+
+export const FileUploadItem = InternalFileUploadItem;
 
 const InternalFileUploadItemSizeText = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemSizeTextProps>>(
   FileUpload.ItemSizeText,
   "itemSizeText",
+  { baseComponent: true },
 );
 
 export const FileUploadItemSizeText = ({
@@ -167,6 +196,6 @@ export const FileUploadItemSizeText = ({
 const InternalFileUploadItemDeleteTrigger = withContext<
   HTMLButtonElement,
   Assign<JsxStyleProps, FileUpload.ItemDeleteTriggerProps>
->(FileUpload.ItemDeleteTrigger, "itemDeleteTrigger");
+>(FileUpload.ItemDeleteTrigger, "itemDeleteTrigger", { baseComponent: true });
 
 export const FileUploadItemDeleteTrigger = InternalFileUploadItemDeleteTrigger;

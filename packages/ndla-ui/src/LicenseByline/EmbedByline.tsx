@@ -6,23 +6,20 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors, fonts, misc, spacing } from "@ndla/core";
 import { WarningOutline } from "@ndla/icons/common";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
+import { Button, Text } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
 import { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import { ICopyright as ImageCopyright } from "@ndla/types-backend/image-api";
 import { BrightcoveCopyright } from "@ndla/types-embed";
-import LicenseDescription from "./LicenseDescription";
-import LicenseLink from "./LicenseLink";
+import { LicenseLink } from "./LicenseLink";
 
 interface BaseProps {
-  topRounded?: boolean;
-  bottomRounded?: boolean;
   description?: ReactNode;
   children?: ReactNode;
   visibleAlt?: string;
@@ -74,49 +71,63 @@ export type EmbedBylineTypeProps =
 
 type Props = EmbedBylineTypeProps | EmbedBylineErrorProps;
 
-const BylineWrapper = styled.figcaption`
-  display: flex;
-  flex-direction: column;
-  font-family: ${fonts.sans};
-  ${fonts.sizes("16px", "26px")};
-  padding: ${spacing.small} 0;
-  background-color: ${colors.white};
-  &[data-top-rounded="true"] {
-    border-top-right-radius: ${misc.borderRadius};
-    border-top-left-radius: ${misc.borderRadius};
-  }
+const BylineWrapper = styled("figcaption", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    paddingBlock: "xsmall",
+    background: "surface.default",
+    textStyle: "label.medium",
+  },
+});
 
-  &[data-bottom-rounded="true"] {
-    border-bottom-right-radius: ${misc.borderRadius};
-    border-bottom-left-radius: ${misc.borderRadius};
-  }
+const ErrorBylineWrapper = styled(BylineWrapper, {
+  base: {
+    border: "1px solid",
+    borderColor: "stroke.error",
+    borderRadius: "xsmall",
+    background: "surface.dangerSubtle",
+    paddingInline: "medium",
+    paddingBlock: "medium",
+  },
+});
 
-  &[data-error="true"] {
-    border: none;
-    background-color: ${colors.support.redLightest};
-    padding: ${spacing.nsmall} ${spacing.normal};
-    ${fonts.sizes("18px", "24px")};
-  }
-`;
+const StyledText = styled(Text, {
+  base: {
+    fontStyle: "italic",
+  },
+});
 
-const StyledSpan = styled.span`
-  font-style: italic;
-  color: grey;
-  font-family: ${fonts.sans};
-  ${fonts.sizes("16px", "26px")};
-`;
+const ContentWrapper = styled("div", {
+  base: {
+    display: "flex",
+    gap: "xsmall",
+    alignItems: "center",
+    textStyle: "label.medium",
+  },
+});
 
-const EmbedByline = ({ type, topRounded, bottomRounded, description, children, visibleAlt, ...props }: Props) => {
+const BaseDescription = styled("div", {
+  base: {
+    display: "inline-flex",
+    whiteSpace: "pre-wrap",
+  },
+});
+
+export const EmbedByline = ({ type, description, children, visibleAlt, ...props }: Props) => {
   const { t } = useTranslation();
 
   if (props.error) {
     const typeString = type === "h5p" ? "H5P" : t(`embed.type.${type}`).toLowerCase();
     return (
-      <BylineWrapper data-top-rounded={topRounded} data-bottom-rounded={bottomRounded} data-error={true}>
-        <LicenseDescription warningByline={props.error} icon={<WarningOutline />}>
-          {t("embed.embedError", { type: typeString })}
-        </LicenseDescription>
-      </BylineWrapper>
+      <ErrorBylineWrapper>
+        <ContentWrapper>
+          <WarningOutline />
+          <BaseDescription>
+            <span>{t("embed.embedError", { type: typeString })}</span>
+          </BaseDescription>
+        </ContentWrapper>
+      </ErrorBylineWrapper>
     );
   }
 
@@ -132,7 +143,11 @@ const EmbedByline = ({ type, topRounded, bottomRounded, description, children, v
           {children}
         </div>
       </BylineWrapper>
-      {visibleAlt ? <StyledSpan>{`Alt: ${visibleAlt}`}</StyledSpan> : null}
+      {visibleAlt ? (
+        <StyledText color="text.subtle" textStyle="label.medium" asChild consumeCss>
+          <span>{`Alt: ${visibleAlt}`}</span>
+        </StyledText>
+      ) : null}
     </>
   );
 };
@@ -143,16 +158,79 @@ interface LicenseContainerProps {
   type: Props["type"];
 }
 
+const StyledDescription = styled(BaseDescription, {
+  base: {
+    mobileWideDown: {
+      display: "grid",
+      gridTemplateColumns: "1fr auto",
+      alignItems: "center",
+      overflow: "hidden",
+      _open: {
+        display: "inline",
+      },
+    },
+  },
+});
+
+const TextContent = styled("span", {
+  base: {
+    mobileWideDown: {
+      whiteSpace: "nowrap",
+      maxHeight: "large",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      transitionProperty: "max-height",
+      transitionDuration: "slow",
+      transitionTimingFunction: "ease-in",
+      _open: {
+        whiteSpace: "pre-wrap",
+        maxHeight: "none",
+      },
+    },
+  },
+});
+
+const StyledButton = styled(Button, {
+  base: {
+    mobileWide: {
+      display: "none",
+    },
+  },
+});
+
+interface LicenseDescriptionProps {
+  children?: ReactNode;
+}
+
+const LicenseDescription = ({ children }: LicenseDescriptionProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const open = isOpen ? { "data-open": "" } : {};
+  const { t } = useTranslation();
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <ContentWrapper>
+      <StyledDescription {...open}>
+        <TextContent {...open}>{children}</TextContent>
+        <StyledButton variant="link" size="small" onClick={handleToggle}>
+          {isOpen ? `${t("audio.readLessDescriptionLabel")}` : `${t("audio.readMoreDescriptionLabel")}`}
+        </StyledButton>
+      </StyledDescription>
+    </ContentWrapper>
+  );
+};
+
 export const LicenseContainerContent = ({ children, copyright, type }: LicenseContainerProps) => {
   const { t, i18n } = useTranslation();
   const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? "", i18n.language) : undefined;
   const authors = getLicenseCredits(copyright);
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
 
-  const Component = children ? LicenseDescription : "span";
-
-  return (
-    <Component>
+  const content = (
+    <>
       {children}
       {` ${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
       {captionAuthors.map((author) => author.name).join(", ")}
@@ -162,8 +240,16 @@ export const LicenseContainerContent = ({ children, copyright, type }: LicenseCo
           <LicenseLink license={license} />
         </>
       ) : null}
-    </Component>
+    </>
+  );
+
+  if (children) {
+    return <LicenseDescription>{content}</LicenseDescription>;
+  }
+
+  return (
+    <Text textStyle="label.medium" asChild consumeCss>
+      <span>{content}</span>
+    </Text>
   );
 };
-
-export default EmbedByline;

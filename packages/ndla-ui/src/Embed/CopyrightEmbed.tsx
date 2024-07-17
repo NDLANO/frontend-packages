@@ -19,7 +19,7 @@ const CopyrightEmbed = ({ embed, children }: Props) => {
   return (
     <figure>
       {children}
-      <EmbedByline type="copyright" copyright={embed.embedData.copyright} bottomRounded />
+      <EmbedByline type="copyright" copyright={embed.embedData.copyright} />
     </figure>
   );
 };

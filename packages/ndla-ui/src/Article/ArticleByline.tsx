@@ -15,7 +15,7 @@ import { AccordionRoot, AccordionHeader, AccordionContent, AccordionItem } from 
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 import { getLicenseByAbbreviation } from "@ndla/licenses";
 import ArticleFootNotes from "./ArticleFootNotes";
-import LicenseLink from "../LicenseByline/LicenseLink";
+import { LicenseLink } from "../LicenseByline/LicenseLink";
 import { FootNote } from "../types";
 
 const Wrapper = styled.div`

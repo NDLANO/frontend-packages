@@ -9,22 +9,18 @@
 import { useTranslation } from "react-i18next";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import { SystemStyleObject } from "@ndla/styled-system/types";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { LicenseContainerContent } from "../LicenseByline/EmbedByline";
 
-type BackgroundVariantType = {
-  strong: { _before: { backgroundColor: string } };
-  moderate: { _before: { backgroundColor: string } };
-  subtle: { _before: { backgroundColor: string } };
-};
+export type ContactBlockBackground = "strong" | "moderate" | "subtle";
 
-const BackgroundVariant: BackgroundVariantType = {
+const BackgroundVariant: Record<ContactBlockBackground, SystemStyleObject> = {
   strong: { _before: { backgroundColor: "surface.brand.3" } },
   moderate: { _before: { backgroundColor: "surface.brand.3.moderate" } },
   subtle: { _before: { backgroundColor: "surface.brand.3.subtle" } },
 };
 
-export type ContactBlockBackground = keyof BackgroundVariantType;
 export const contactBlockBackgrounds = Object.keys(BackgroundVariant) as ContactBlockBackground[];
 
 const StyledWrapper = styled("div", {

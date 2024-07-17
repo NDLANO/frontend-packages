@@ -66,7 +66,7 @@ const orderedListRecipe = cva({
                     counterIncrement: "level4",
                     _marker: {
                       content:
-                        "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level3, decimal) '. '",
+                        "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level4,  decimal) '. '",
                     },
                   },
                 },
@@ -76,22 +76,23 @@ const orderedListRecipe = cva({
         },
       },
       letters: {
-        counterReset: "list-item",
+        counterReset: "level1",
         "&[data-count='true']": {
-          counterReset: "list-item var(--start, 0)",
+          counterReset: "level1 var(--start, 0)",
         },
         paddingInlineStart: "small",
         "& > li": {
+          counterIncrement: "level1",
           _marker: {
-            content: "counter(list-item, upper-alpha) '. '",
+            content: "counter(level1, upper-alpha) '. '",
           },
           "& > ol[data-variant='letters'] > li": {
             _marker: {
-              content: "counter(list-item, lower-alpha) '. '",
+              content: "counter(level1, lower-alpha) '. '",
             },
             "& > ol[data-variant='letters'] > li": {
               _marker: {
-                content: "counter(list-item, lower-roman) '. '",
+                content: "counter(level1, lower-roman) '. '",
               },
             },
           },
@@ -114,7 +115,6 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
       <StyledOrderedList
         data-variant={variant}
         data-count={start !== undefined}
-        start={start}
         css={css.raw(orderedListRecipe.raw({ variant }), cssProp)}
         style={style}
         ref={ref}

@@ -6,47 +6,42 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { HTMLAttributes, ReactNode, useMemo } from "react";
-import { css } from "@emotion/react";
-import { mq, breakpoints } from "@ndla/core";
+import { forwardRef } from "react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 
-interface Props extends HTMLAttributes<HTMLElement> {
-  children?: ReactNode;
-  layout?: "extend" | "center";
-}
+// TODO: Refactor this. This is a copy of our old layout.
+const layoutRecipe = cva({
+  variants: {
+    layout: {
+      center: {
+        position: "relative!",
+        width: "83.333%",
+        right: "auto !important",
+        left: "8.333%",
+      },
+      extend: {
+        tablet: {
+          position: "relative!",
+          width: "83.333%",
+          right: "auto!",
+          left: "8.333%",
+        },
+      },
+    },
+  },
+});
 
-const centerCss = css`
-  position: relative !important;
-  width: 83.333%;
-  right: auto !important;
-  left: 8.333%;
-`;
+type LayoutVariantProps = RecipeVariantProps<typeof layoutRecipe>;
 
-const extendCss = css`
-  ${mq.range({ from: breakpoints.tablet })} {
-    position: relative !important;
-    width: 83.333%;
-    right: auto !important;
-    left: 8.333%;
-  }
-`;
+const StyledLayout = styled(ark.section, {}, { baseComponent: true });
 
-export const LayoutItem = ({ children, layout, ...rest }: Props) => {
-  const style = useMemo(() => {
-    if (layout === "extend") {
-      return extendCss;
-    } else if (layout === "center") {
-      return centerCss;
-    }
-    return undefined;
-  }, [layout]);
-
-  return (
-    <section css={style} {...rest}>
-      {children}
-    </section>
-  );
-};
+export const LayoutItem = forwardRef<HTMLElement, HTMLArkProps<"section"> & JsxStyleProps & LayoutVariantProps>(
+  ({ layout, css: cssProp, ...props }, ref) => {
+    return <StyledLayout css={css.raw(layoutRecipe.raw({ layout }), cssProp)} {...props} ref={ref} />;
+  },
+);
 
 export default LayoutItem;

@@ -6,30 +6,40 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { ComponentPropsWithoutRef } from "react";
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { colors, mq, breakpoints } from "@ndla/core";
+import { forwardRef } from "react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { css, cva } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
-interface Props extends ComponentPropsWithoutRef<"div"> {
-  backgroundWide?: boolean;
-}
+// TODO: Refactor this. It's a rewrite of our old layout.
+const pageContainerRecipe = cva({
+  base: {
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+  },
+  variants: {
+    backgroundWide: {
+      true: {
+        tablet: {
+          backgroundColor: "#f8f8f8",
+        },
+      },
+      false: {},
+    },
+  },
+});
 
-const StyledPageContainer = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
+const StyledPageContainer = styled(ark.div, {}, { baseComponent: true });
 
-const backgroundWideStyle = css`
-  ${mq.range({ from: breakpoints.tablet })} {
-    background-color: ${colors.brand.greyLightest};
-  }
-`;
+type PageContainerVariantProps = RecipeVariantProps<typeof pageContainerRecipe>;
 
-export const PageContainer = ({ backgroundWide = false, ...rest }: Props) => (
-  <StyledPageContainer css={backgroundWide ? backgroundWideStyle : undefined} {...rest} />
-);
+export const PageContainer = forwardRef<
+  HTMLDivElement,
+  HTMLArkProps<"div"> & JsxStyleProps & PageContainerVariantProps
+>(({ backgroundWide, css: cssProp, ...props }, ref) => (
+  <StyledPageContainer css={css.raw(pageContainerRecipe.raw({ backgroundWide }), cssProp)} {...props} ref={ref} />
+));
 
 export default PageContainer;

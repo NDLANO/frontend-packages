@@ -85,8 +85,6 @@ export { SearchFieldForm } from "./Search/SearchFieldForm";
 
 export { default as resourceTypeColor } from "./utils/resourceTypeColor";
 
-export { default as CreatedBy } from "./CreatedBy";
-
 export { MessageBox, MessageBanner } from "./Messages";
 
 export { ResourceBox } from "./ResourceBox";

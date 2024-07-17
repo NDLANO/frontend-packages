@@ -12,7 +12,9 @@ import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const tabsRecipe = sva({
-  slots: tabsAnatomy.keys(),
+  // TODO: This still doesn't work. Need to figure out why we need to pass keys manually.
+  // slots: tabsAnatomy.keys(),
+  slots: ["root", "list", "trigger", "content", "indicator"],
   base: {
     root: {
       position: "relative",

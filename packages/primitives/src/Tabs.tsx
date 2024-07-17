@@ -31,7 +31,7 @@ const tabsRecipe = sva({
       position: "relative",
       display: "flex",
       flexShrink: "0",
-      overflow: "auto",
+      flexWrap: "wrap",
       _horizontal: {
         flexDirection: "row",
       },
@@ -109,10 +109,9 @@ const tabsRecipe = sva({
         },
         indicator: {
           background: "transparent",
-          outline: "4px solid",
+          outline: "3px solid",
           outlineColor: "stroke.default",
-          pointerEvents: "none",
-          outlineOffset: "-4px",
+          outlineOffset: "-3px",
           _peerFocusVisible: {
             height: "var(--height)",
             width: "var(--width)",
@@ -124,14 +123,15 @@ const tabsRecipe = sva({
             },
           },
           _horizontal: {
-            bottom: "0",
-            height: "2",
+            top: "calc(var(--top) + var(--height) - 6px)",
+            _peerFocusVisible: { top: "var(--top)" },
+            height: "3",
             width: "var(--width)",
           },
           _vertical: {
             height: "var(--height)",
             left: "0",
-            width: "2",
+            width: "3",
           },
         },
         content: {

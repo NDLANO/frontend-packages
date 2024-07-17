@@ -10,44 +10,54 @@ import { TFunction } from "i18next";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import styled from "@emotion/styled";
-import { AccordionRoot, AccordionHeader, AccordionContent, AccordionItem } from "@ndla/accordion";
-import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { ChevronDown } from "@ndla/icons/common";
 import { getLicenseByAbbreviation } from "@ndla/licenses";
+import {
+  AccordionItem,
+  AccordionItemContent,
+  AccordionItemIndicator,
+  AccordionItemTrigger,
+  AccordionRoot,
+  Heading,
+} from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import ArticleFootNotes from "./ArticleFootNotes";
 import { LicenseLink } from "../LicenseByline/LicenseLink";
 import { FootNote } from "../types";
 
-const Wrapper = styled.div`
-  margin-top: ${spacing.normal};
-  padding-top: ${spacing.normal};
-  padding-bottom: ${spacing.xsmall};
-  border-top: 1px solid ${colors.brand.greyLight};
-  ${fonts.sizes("16px", "24px")};
-  font-family: ${fonts.sans};
-  color: ${colors.brand.greyDark};
-`;
+const Wrapper = styled("div", {
+  base: {
+    // TODO: Figure out if we want to remove this margin. It's only here to add some gap between the article content and the byline.
+    marginBlockStart: "medium",
+    paddingBlockStart: "xsmall",
+    borderTop: "1px solid",
+    borderColor: "stroke.subtle",
+  },
+});
 
-const TextWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding-bottom: ${spacing.mediumlarge};
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    flex-direction: column;
-    flex-direction: column-reverse;
-    gap: ${spacing.xsmall};
-  }
-  &[data-learning-path="true"] {
-    flex-direction: column;
-    flex-direction: column-reverse;
-    gap: ${spacing.xsmall};
-  }
-`;
-
-const PrimaryContributorsWrapper = styled.span`
-  margin-left: ${spacing.xxsmall};
-`;
+// TODO: This is designed with 24px of inline padding. If you do this, most bylines will break into two lines.
+// Should reconsider.
+const TextWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column-reverse",
+    gap: "3xsmall",
+    width: "100%",
+    justifyContent: "space-between",
+    paddingBlock: "xsmall",
+    textStyle: "body.medium",
+  },
+  variants: {
+    learningpath: {
+      true: {},
+      false: {
+        tabletWide: {
+          flexDirection: "row",
+        },
+      },
+    },
+  },
+});
 
 type AuthorProps = {
   name: string;
@@ -57,8 +67,6 @@ type SupplierProps = {
   name: string;
 };
 
-type AccordionHeaderVariants = "white" | "blue";
-
 type Props = {
   authors?: AuthorProps[];
   suppliers?: SupplierProps[];
@@ -67,7 +75,6 @@ type Props = {
   licenseBox?: ReactNode;
   locale?: string;
   footnotes?: FootNote[];
-  accordionHeaderVariant?: AccordionHeaderVariants;
   displayByline?: boolean;
   bylineType?: "article" | "learningPath";
 };
@@ -96,27 +103,18 @@ const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
       });
 };
 
-const LicenseWrapper = styled.div`
-  display: flex;
-  gap: ${spacing.small};
-  padding-right: ${spacing.xsmall};
-`;
+const LicenseWrapper = styled("div", {
+  base: {
+    display: "flex",
+    gap: "xsmall",
+  },
+});
 
-const StyledAccordionHeader = styled(AccordionHeader)`
-  background-color: ${colors.brand.lightest};
-  ${fonts.sizes("16px", "29px")};
-  font-weight: ${fonts.weight.semibold};
-
-  &[data-background-color="white"][data-state="closed"] {
-    background-color: ${colors.background.default};
-  }
-`;
-
-const StyledAccordionContent = styled(AccordionContent)`
-  &[data-background-color="white"] {
-    background-color: ${colors.background.default};
-  }
-`;
+const StyledAccordionRoot = styled(AccordionRoot, {
+  base: {
+    paddingBlockStart: "xxlarge",
+  },
+});
 
 const refRegexp = /note\d/;
 const footnotesAccordionId = "footnotes";
@@ -129,7 +127,6 @@ const ArticleByline = ({
   licenseBox,
   published,
   locale,
-  accordionHeaderVariant = "blue",
   displayByline = true,
   bylineType = "article",
 }: Props) => {
@@ -167,18 +164,18 @@ const ArticleByline = ({
   return (
     <Wrapper>
       {displayByline && (
-        <TextWrapper data-learning-path={bylineType === "learningPath"}>
+        <TextWrapper learningpath={bylineType === "learningPath"}>
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (
-              <PrimaryContributorsWrapper>
+              <span>
                 {authors.length > 0 &&
                   `${t("article.authorsLabel", {
                     names: renderContributors(authors, t),
                     interpolation: { escapeValue: false },
                   })}. `}
                 {getSuppliersText(suppliers, t)}
-              </PrimaryContributorsWrapper>
+              </span>
             )}
           </LicenseWrapper>
           <div>
@@ -186,25 +183,41 @@ const ArticleByline = ({
           </div>
         </TextWrapper>
       )}
-      <AccordionRoot type="multiple" onValueChange={setOpenAccordions} value={openAccordions}>
+      <StyledAccordionRoot
+        multiple
+        value={openAccordions}
+        onValueChange={(details) => setOpenAccordions(details.value)}
+      >
         {licenseBox && (
           <AccordionItem value={accordionItemValue}>
-            <StyledAccordionHeader headingLevel="h2" data-background-color={accordionHeaderVariant}>
-              {t("article.useContent")}
-            </StyledAccordionHeader>
-            <StyledAccordionContent data-background-color={accordionHeaderVariant}>{licenseBox}</StyledAccordionContent>
+            <AccordionItemTrigger>
+              <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
+                <h2>{t("article.useContent")}</h2>
+              </Heading>
+              <AccordionItemIndicator asChild>
+                <ChevronDown />
+              </AccordionItemIndicator>
+            </AccordionItemTrigger>
+            <AccordionItemContent>{licenseBox}</AccordionItemContent>
           </AccordionItem>
         )}
 
         {!!footnotes?.length && (
           <AccordionItem value={footnotesAccordionId}>
-            <StyledAccordionHeader headingLevel="h2">{t("article.footnotes")}</StyledAccordionHeader>
-            <StyledAccordionContent forceMount data-background-color={accordionHeaderVariant}>
+            <AccordionItemTrigger>
+              <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
+                <h2>{t("article.footnotes")}</h2>
+              </Heading>
+              <AccordionItemIndicator asChild>
+                <ChevronDown />
+              </AccordionItemIndicator>
+            </AccordionItemTrigger>
+            <AccordionItemContent>
               <ArticleFootNotes footNotes={footnotes} />
-            </StyledAccordionContent>
+            </AccordionItemContent>
           </AccordionItem>
         )}
-      </AccordionRoot>
+      </StyledAccordionRoot>
     </Wrapper>
   );
 };

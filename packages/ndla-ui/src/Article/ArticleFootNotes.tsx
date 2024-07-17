@@ -6,8 +6,8 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { colors, spacing } from "@ndla/core";
+import { Text } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { FootNote as FootNoteType } from "../types";
 
 const citeDetailString = (description: string | undefined) => (description ? `${description}. ` : "");
@@ -16,36 +16,32 @@ type FootNoteProps = {
   footNote: FootNoteType;
 };
 
-const Cite = styled.cite`
-  display: flex;
-  gap: ${spacing.small};
-  a {
-    box-shadow: none;
-    text-decoration: underline;
-    text-underline-offset: ${spacing.xxsmall};
-    &:hover,
-    &:focus-visible {
-      text-decoration: none;
-    }
-  }
-`;
+const StyledCite = styled("cite", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    gap: "xsmall",
+  },
+});
 
 const FootNote = ({ footNote }: FootNoteProps) => (
   <li>
-    <Cite id={`note${footNote.ref}`}>
-      <a href={`#ref${footNote.ref}`} target="_self">
-        {footNote.ref}
-      </a>
-      {`«${footNote.title}». ${footNote.authors.join(" ")}. ${citeDetailString(footNote.edition)}${citeDetailString(
-        footNote.publisher,
-      )}${footNote.year}. `}
-      {footNote.url ? (
-        <a href={footNote.url}>
-          {footNote.url}
-          {"."}
+    <Text id={`note${footNote.ref}`} asChild consumeCss textStyle="body.medium">
+      <StyledCite>
+        <a href={`#ref${footNote.ref}`} target="_self">
+          {footNote.ref}
         </a>
-      ) : null}
-    </Cite>
+        {`«${footNote.title}». ${footNote.authors.join(" ")}. ${citeDetailString(footNote.edition)}${citeDetailString(
+          footNote.publisher,
+        )}${footNote.year}. `}
+        {footNote.url ? (
+          <a href={footNote.url}>
+            {footNote.url}
+            {"."}
+          </a>
+        ) : null}
+      </StyledCite>
+    </Text>
   </li>
 );
 
@@ -53,14 +49,14 @@ type ArticleFootNotesProps = {
   footNotes: Array<FootNoteType>;
 };
 
-const FootnoteList = styled.ol`
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  padding: ${spacing.small};
-  color: ${colors.text.light};
-`;
+const FootnoteList = styled("ol", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "medium",
+    listStyle: "none",
+  },
+});
 
 const ArticleFootNotes = ({ footNotes }: ArticleFootNotesProps) => (
   <FootnoteList>

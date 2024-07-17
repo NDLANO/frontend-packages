@@ -79,7 +79,7 @@ export const FrontpageArticle = ({ article, id, isWide, licenseBox, lang }: Prop
         {introduction}
       </Text>
       {content}
-      <ArticleByline accordionHeaderVariant={"white"} licenseBox={licenseBox} displayByline={false} />
+      <ArticleByline licenseBox={licenseBox} displayByline={false} />
     </StyledArticle>
   );
 };

@@ -6,18 +6,17 @@
  *
  */
 
-import { forwardRef } from "react";
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 // TODO: Refactor this. It's a rewrite of our old layout.
-const pageContainerRecipe = cva({
+export const PageContainer = styled("div", {
   base: {
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
+  },
+  defaultVariants: {
+    backgroundWide: false,
   },
   variants: {
     backgroundWide: {
@@ -30,16 +29,5 @@ const pageContainerRecipe = cva({
     },
   },
 });
-
-const StyledPageContainer = styled(ark.div, {}, { baseComponent: true });
-
-type PageContainerVariantProps = RecipeVariantProps<typeof pageContainerRecipe>;
-
-export const PageContainer = forwardRef<
-  HTMLDivElement,
-  HTMLArkProps<"div"> & JsxStyleProps & PageContainerVariantProps
->(({ backgroundWide, css: cssProp, ...props }, ref) => (
-  <StyledPageContainer css={css.raw(pageContainerRecipe.raw({ backgroundWide }), cssProp)} {...props} ref={ref} />
-));
 
 export default PageContainer;

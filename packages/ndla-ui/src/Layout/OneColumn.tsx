@@ -6,14 +6,10 @@
  *
  */
 
-import { forwardRef } from "react";
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 // TODO: This is a rewrite of our old layout. Refactor this.
-const oneColumnRecipe = cva({
+export const OneColumn = styled("div", {
   base: {
     marginLeft: "auto",
     marginRight: "auto",
@@ -30,6 +26,9 @@ const oneColumnRecipe = cva({
       clear: "both!",
     },
   },
+  defaultVariants: {
+    wide: false,
+  },
   variants: {
     wide: {
       true: {
@@ -41,15 +40,5 @@ const oneColumnRecipe = cva({
     },
   },
 });
-
-type OneColumnVariantProps = RecipeVariantProps<typeof oneColumnRecipe>;
-
-const StyledOneColumn = styled(ark.div, {}, { baseComponent: true });
-
-export const OneColumn = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps & OneColumnVariantProps>(
-  ({ wide, css: cssProp, ...props }, ref) => (
-    <StyledOneColumn css={css.raw(oneColumnRecipe.raw({ wide }), cssProp)} {...props} ref={ref} />
-  ),
-);
 
 export default OneColumn;

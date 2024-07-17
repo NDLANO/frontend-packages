@@ -2696,7 +2696,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/accordion@npm:^5.0.7-alpha.0, @ndla/accordion@workspace:packages/ndla-accordion":
+"@ndla/accordion@workspace:packages/ndla-accordion":
   version: 0.0.0-use.local
   resolution: "@ndla/accordion@workspace:packages/ndla-accordion"
   dependencies:
@@ -3094,7 +3094,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
-    "@ndla/accordion": "npm:^5.0.7-alpha.0"
     "@ndla/button": "npm:^14.0.7-alpha.0"
     "@ndla/core": "npm:^5.0.1"
     "@ndla/dropdown-menu": "npm:^1.0.38"

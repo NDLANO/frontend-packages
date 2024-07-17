@@ -18,7 +18,7 @@ import { Image } from "@ndla/primitives";
 import { IAuthor, IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { CanonicalUrlFuncs } from "../Embed";
 import { errorSvgSrc } from "../Embed/ImageEmbed";
-import LicenseLink from "../LicenseByline/LicenseLink";
+import { LicenseLink } from "../LicenseByline/LicenseLink";
 
 const BLOB_WIDTH = 90;
 

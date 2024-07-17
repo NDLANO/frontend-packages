@@ -6,27 +6,29 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
 import { LicenseLocaleType } from "@ndla/licenses";
 import { SafeLink } from "@ndla/safelink";
+import { styled } from "@ndla/styled-system/jsx";
 
 interface Props {
   license: LicenseLocaleType;
 }
 
-const StyledSafeLink = styled(SafeLink)`
-  color: ${colors.brand.primary};
-  text-decoration: underline;
-  white-space: nowrap;
-  box-shadow: none;
-  &:hover,
-  &:focus-within {
-    text-decoration: none;
-  }
-`;
+const StyledSafeLink = styled(SafeLink, {
+  base: {
+    color: "primary",
+    textDecoration: "underline",
+    whiteSpace: "nowrap",
+    _hover: {
+      textDecoration: "none",
+    },
+    _focusWithin: {
+      textDecoration: "none",
+    },
+  },
+});
 
-const LicenseLink = ({ license }: Props) => {
+export const LicenseLink = ({ license }: Props) => {
   if (license.abbreviation === "unknown") {
     return null;
   }
@@ -39,5 +41,3 @@ const LicenseLink = ({ license }: Props) => {
   }
   return <span>{license.abbreviation}</span>;
 };
-
-export default LicenseLink;

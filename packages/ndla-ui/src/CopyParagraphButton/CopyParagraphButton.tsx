@@ -6,39 +6,35 @@
  *
  */
 
-import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors, stackOrder } from "@ndla/core";
-import { Link } from "@ndla/icons/common";
-import { Tooltip } from "@ndla/tooltip";
-import { copyTextToClipboard } from "@ndla/util";
+import { ReactNode, useMemo } from "react";
+import { SafeLink } from "@ndla/safelink";
+import { styled } from "@ndla/styled-system/jsx";
 
-const ContainerDiv = styled.div`
-  position: relative;
-`;
-const IconButton = styled.button`
-  position: absolute;
-  left: -3em;
-  top: 0.1em;
-  background: none;
-  border: 0;
-  z-index: ${stackOrder.offsetSingle};
-  transition: 0.2s;
-  opacity: 0;
-  color: ${colors.brand.grey};
-
-  & svg {
-    width: 30px;
-    height: 30px;
-  }
-
-  ${ContainerDiv}:hover &,
-  &:focus, &:focus-visible, &:active {
-    cursor: pointer;
-    opacity: 1;
-  }
-`;
+const StyledSafeLink = styled(SafeLink, {
+  base: {
+    color: "inherit",
+    tablet: {
+      _hover: {
+        _before: {
+          position: "relative",
+          float: "left",
+          content: "'#'",
+          left: "-1em",
+          width: "0",
+          height: "0",
+          color: "text.subtle",
+          fontSize: "0.8em",
+        },
+      },
+    },
+    _hover: {
+      textDecoration: "underline",
+    },
+    _focusVisible: {
+      textDecoration: "underline",
+    },
+  },
+});
 
 interface Props {
   // What to render within the h2
@@ -47,38 +43,12 @@ interface Props {
   lang?: string;
 }
 const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
-  const [hasCopied, setHasCopied] = useState(false);
-  const { t } = useTranslation();
   const sanitizedTitle = useMemo(() => encodeURIComponent(copyText.replace(/ /g, "-")), [copyText]);
 
-  useEffect(() => {
-    if (hasCopied) {
-      setTimeout(() => setHasCopied(false), 3000);
-    }
-  }, [hasCopied]);
-
-  const onCopyClick = useCallback(() => {
-    setHasCopied(true);
-    const { location } = window;
-    const newHash = `#${sanitizedTitle}`;
-    const port = location.port ? `:${location.port}` : "";
-    const urlToCopy = `${location.protocol}//${location.hostname}${port}${location.pathname}${location.search}${newHash}`;
-
-    copyTextToClipboard(urlToCopy);
-  }, [sanitizedTitle]);
-
-  const tooltip = hasCopied ? t("article.copyPageLinkCopied") : t("article.copyHeaderLink");
   return (
-    <ContainerDiv>
-      <Tooltip tooltip={tooltip}>
-        <IconButton onClick={onCopyClick} aria-label={`${tooltip}: ${copyText}`}>
-          <Link />
-        </IconButton>
-      </Tooltip>
-      <h2 id={sanitizedTitle} tabIndex={-1} lang={lang}>
-        {children}
-      </h2>
-    </ContainerDiv>
+    <h2 id={sanitizedTitle} lang={lang}>
+      <StyledSafeLink to={`#${sanitizedTitle}`}>{children}</StyledSafeLink>
+    </h2>
   );
 };
 

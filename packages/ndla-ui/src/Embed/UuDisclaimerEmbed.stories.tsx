@@ -194,7 +194,7 @@ export const WithCopyParagraphLink: StoryObj<typeof UuDisclaimerEmbed> = {
     },
     children: (
       <CopyParagraphButton copyText="Dette er en overskrift" lang="no">
-        <h2>Dette er en overskrift</h2>
+        Dette er en overskrift
       </CopyParagraphButton>
     ),
   },

@@ -33,7 +33,7 @@ const StyledWrapper = styled("div", {
     justifyContent: "space-between",
     boxShadow: "full",
     border: "1px solid",
-    gap: "small",
+    gap: "medium",
     position: "relative",
     borderColor: "stroke.default",
     borderRadius: "xsmall",

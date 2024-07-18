@@ -51,6 +51,8 @@ const EmailLink = styled("a", {
   base: {
     color: "text.default",
     textDecoration: "underline",
+    _hover: { textDecoration: "none" },
+    _focusVisible: { textDecoration: "none" },
   },
 });
 

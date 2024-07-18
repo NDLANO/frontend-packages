@@ -6,39 +6,39 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { ComponentPropsWithoutRef } from "react";
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { mq, spacing, breakpoints } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 
-interface Props extends ComponentPropsWithoutRef<"div"> {
-  wide?: boolean;
-}
-
-const StyledOneColumn = styled.div`
-  max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  padding-left: ${spacing.nsmall};
-  padding-right: ${spacing.nsmall};
-
-  ${mq.range({ from: breakpoints.mobileWide })} {
-    padding-left: ${spacing.normal};
-    padding-right: ${spacing.normal};
-  }
-  &::after {
-    content: "" !important;
-    display: block !important;
-    clear: both !important;
-  }
-`;
-
-const wideStyle = css`
-  max-width: 1150px;
-`;
-
-export const OneColumn = ({ wide, ...rest }: Props) => <StyledOneColumn css={wide ? wideStyle : undefined} {...rest} />;
+// TODO: This is a rewrite of our old layout. Refactor this.
+export const OneColumn = styled("div", {
+  base: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "100%",
+    paddingLeft: "18px",
+    paddingRight: "18px",
+    mobileWide: {
+      paddingLeft: "medium",
+      paddingRight: "medium",
+    },
+    _after: {
+      content: '""!',
+      display: "block!",
+      clear: "both!",
+    },
+  },
+  defaultVariants: {
+    wide: false,
+  },
+  variants: {
+    wide: {
+      true: {
+        maxWidth: "1150px",
+      },
+      false: {
+        maxWidth: "1024px",
+      },
+    },
+  },
+});
 
 export default OneColumn;

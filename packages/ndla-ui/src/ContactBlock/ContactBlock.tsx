@@ -170,6 +170,7 @@ export const ContactBlock = ({
     <StyledWrapper>
       <ContentWrapper>
         <HeaderWrapper variant={backgroundColor} imageExists={!!image}>
+          {/* TODO: The font in the design specified `Source Sans Pro` and this is the default `Satoshi` */}
           <Text lang={lang} fontWeight="bold" textStyle="heading.small">
             {name}
           </Text>
@@ -189,6 +190,7 @@ export const ContactBlock = ({
             width={300}
             height={300}
           />
+          {/* TODO: The font in the design specified `Source Sans Pro` and this is the default `Satoshi` */}
           <LicenseContainerContent type="image" copyright={image.copyright} />
         </ImageWrapper>
       )}

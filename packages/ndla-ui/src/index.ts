@@ -73,12 +73,6 @@ export {
 
 export { FooterBlock } from "./Footer";
 
-export { default as SearchResultSleeve } from "./Search/SearchResultSleeve";
-
-export { default as ContentTypeResult } from "./Search/ContentTypeResult";
-
-export { SearchFieldForm } from "./Search/SearchFieldForm";
-
 export { default as resourceTypeColor } from "./utils/resourceTypeColor";
 
 export { MessageBox, MessageBanner } from "./Messages";
@@ -144,8 +138,6 @@ export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from "./SnackB
 export type { Snack, SnackContext } from "./SnackBar";
 export { TreeStructure } from "./TreeStructure";
 export type { TreeStructureProps } from "./TreeStructure";
-
-export { SearchField, SearchResultList, SearchResultItem, ActiveFilters } from "./Search";
 
 export { BlogPostV2 } from "./BlogPost";
 export { ProgrammeCard } from "./ProgrammeCard";

@@ -12,7 +12,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import { colors } from "@ndla/core";
 import Grid from "./Grid";
 import { BlogPostStory } from "../BlogPost/BlogPost.stories";
-import { KeyFigureStory } from "../KeyFigure/KeyFigure.stories";
+import { Plain } from "../KeyFigure/KeyFigure.stories";
 
 const GridWrapper = styled.div`
   .docs-story {
@@ -46,11 +46,7 @@ export default {
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
   const items = new Array(columns).fill(
-    <KeyFigureStory
-      title={KeyFigureStory.args?.title!}
-      subtitle={KeyFigureStory.args?.subtitle!}
-      image={KeyFigureStory.args?.image!}
-    />,
+    <Plain title={Plain.args?.title!} subtitle={Plain.args?.subtitle!} image={Plain.args?.image!} />,
   );
   return <Grid {...args}>{items}</Grid>;
 };

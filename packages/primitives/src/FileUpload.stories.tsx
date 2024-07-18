@@ -16,6 +16,7 @@ import { FieldErrorMessage } from "./FieldErrorMessage";
 import {
   FileUploadContext,
   FileUploadDropzone,
+  FileUploadHiddenInput,
   FileUploadItem,
   FileUploadItemDeleteTrigger,
   FileUploadItemGroup,
@@ -75,6 +76,7 @@ export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
         }
       </FileUploadContext>
     </FileUploadItemGroup>
+    <FileUploadHiddenInput />
   </FileUploadRoot>
 );
 
@@ -91,6 +93,7 @@ export const WithoutFileList: StoryFn<typeof FileUploadRoot> = (args) => (
         </Button>
       </FileUploadTrigger>
     </FileUploadDropzone>
+    <FileUploadHiddenInput />
   </FileUploadRoot>
 );
 
@@ -130,6 +133,7 @@ export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
         }
       </FileUploadContext>
     </FileUploadItemGroup>
+    <FileUploadHiddenInput />
   </FileUploadRoot>
 );
 
@@ -169,6 +173,7 @@ export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
         }
       </FileUploadContext>
     </FileUploadItemGroup>
+    <FileUploadHiddenInput />
   </FileUploadRoot>
 );
 
@@ -208,6 +213,7 @@ export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) 
         }
       </FileUploadContext>
     </FileUploadItemGroup>
+    <FileUploadHiddenInput />
   </FileUploadRoot>
 );
 
@@ -247,6 +253,7 @@ export const Disabled: StoryFn<typeof FileUploadRoot> = (args) => (
         }
       </FileUploadContext>
     </FileUploadItemGroup>
+    <FileUploadHiddenInput />
   </FileUploadRoot>
 );
 
@@ -290,6 +297,7 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
             }
           </FileUploadContext>
         </FileUploadItemGroup>
+        <FileUploadHiddenInput />
       </FileUploadRoot>
       <FieldErrorMessage>That file can't be uploaded</FieldErrorMessage>
     </FieldRoot>

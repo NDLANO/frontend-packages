@@ -1398,7 +1398,7 @@ const messages = {
     header: "Kva vil du lære om i dag?",
     description: "Vel utdanningsprogram for å sjå faga dine",
     grades: "Trinn",
-    accordionHeader: "Alle utdanningsprogram",
+    accordionHeader: "Finn utdanningsprogrammet ditt",
   },
   embed: {
     conceptListError: "Klarte ikkje å vise forklaringsliste",

@@ -8,7 +8,7 @@
 
 import { attributesToProps } from "html-react-parser";
 import { FileMetaData } from "@ndla/types-embed";
-import { PdfFile, File, FileListItem } from "@ndla/ui";
+import { PdfFile, FileListElement } from "@ndla/ui";
 import { PluginType } from "../types";
 
 export const fileEmbedPlugin: PluginType = (element) => {
@@ -16,20 +16,14 @@ export const fileEmbedPlugin: PluginType = (element) => {
   const data = JSON.parse(props["data-json"] as string) as FileMetaData;
   const { type, title, url, display } = data.embedData;
   if (type === "pdf" && display === "block") {
-    return (
-      <FileListItem>
-        <PdfFile title={title} url={url} />
-      </FileListItem>
-    );
+    return <PdfFile title={title} url={url} />;
   }
   return (
-    <FileListItem>
-      <File
-        url={url}
-        title={title}
-        fileExists={data.status === "success" ? !!data.data.exists : false}
-        fileType={type}
-      />
-    </FileListItem>
+    <FileListElement
+      url={url}
+      title={title}
+      fileExists={data.status === "success" ? !!data.data.exists : false}
+      fileType={type}
+    />
   );
 };

@@ -12,8 +12,8 @@ import { DeleteForever, DragVertical } from "@ndla/icons/editor";
 import { IconButton } from "@ndla/primitives";
 import { Flex, styled } from "@ndla/styled-system/jsx";
 import File from "./File";
-import { FileList, FileListEmbed, FileListItem, FileListRoot } from "./FileList";
-import PdfFile from "./PdfFile";
+import { FileListEmbed, FileListItem, FileListRoot } from "./FileList";
+import { PdfFile } from "./PdfFile";
 
 export default {
   title: "Components/FileList",
@@ -29,9 +29,9 @@ export default {
     fileType: "pdf",
   },
   render: (args) => (
-    <FileList>
+    <ul>
       <File {...args} />
-    </FileList>
+    </ul>
   ),
 } as Meta<typeof File>;
 
@@ -39,11 +39,11 @@ export const FileNotFound: StoryObj<typeof File> = {
   args: { fileExists: false },
   render: (args) => (
     <FileListRoot>
-      <FileList>
+      <ul>
         <FileListItem>
           <File {...args} />
         </FileListItem>
-      </FileList>
+      </ul>
     </FileListRoot>
   ),
 };
@@ -87,14 +87,14 @@ export const DifferentFiles: StoryObj<typeof File> = {
 export const NoHeader: StoryObj<typeof File> = {
   render: () => (
     <FileListRoot>
-      <FileList>
+      <ul>
         <FileListItem>
           <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
         </FileListItem>
         <FileListItem>
           <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
         </FileListItem>
-      </FileList>
+      </ul>
     </FileListRoot>
   ),
 };
@@ -109,7 +109,7 @@ const StyledFlex = styled(Flex, { base: { paddingInlineStart: "medium" } });
 export const FilesWithButtons: StoryObj<typeof File> = {
   render: () => (
     <FileListRoot>
-      <FileList>
+      <ul>
         <FileListItem>
           <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb">
             <StyledFlex>
@@ -134,7 +134,7 @@ export const FilesWithButtons: StoryObj<typeof File> = {
             </StyledFlex>
           </File>
         </FileListItem>
-      </FileList>
+      </ul>
     </FileListRoot>
   ),
 };
@@ -150,14 +150,14 @@ const StyledFileListItem = styled(FileListItem, {
 export const FilesWithDragHandle: StoryObj<typeof FileListRoot> = {
   render: () => (
     <FileListRoot>
-      <FileList>
+      <ul>
         <StyledFileListItem>
           <StyledIconButton variant="clear">
             <DragVertical />
           </StyledIconButton>
           <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
         </StyledFileListItem>
-      </FileList>
+      </ul>
     </FileListRoot>
   ),
 };

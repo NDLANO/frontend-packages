@@ -15,18 +15,11 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-export const FileListRoot = styled("div", {});
-
-export const FileList = styled("ul", {
+export const FileListRoot = styled("div", {
   base: {
-    listStyle: "none",
-    paddingInlineStart: "none",
-  },
-});
-
-export const FileListHeader = styled(Heading, {
-  base: {
-    paddingBlockEnd: "small",
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
   },
 });
 
@@ -50,10 +43,10 @@ export const FileListEmbed = ({ children, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
     <FileListRoot {...rest}>
-      <FileListHeader fontWeight="bold" textStyle="heading.small" asChild consumeCss>
+      <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
         <h3>{t("files")}</h3>
-      </FileListHeader>
-      <FileList>{children}</FileList>
+      </Heading>
+      <ul>{children}</ul>
     </FileListRoot>
   );
 };

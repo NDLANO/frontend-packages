@@ -28,7 +28,7 @@ const StyledFigure = styled(Figure, {
   },
 });
 
-const PdfFile = ({ title, url }: Props) => {
+export const PdfFile = ({ title, url }: Props) => {
   return (
     <li>
       <StyledFigure>
@@ -40,5 +40,3 @@ const PdfFile = ({ title, url }: Props) => {
     </li>
   );
 };
-
-export default PdfFile;

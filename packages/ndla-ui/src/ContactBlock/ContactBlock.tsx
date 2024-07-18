@@ -73,16 +73,18 @@ const HeaderWrapper = styled("div", {
       transform: "rotate(-4deg)",
       zIndex: "hide",
     },
-    tabletDown: {
-      "&[data-image='true']": {
-        _before: {
-          display: "none",
-        },
-      },
-    },
   },
   variants: {
     variant: BackgroundVariant,
+    imageExists: {
+      true: {
+        tabletDown: {
+          _before: {
+            display: "none",
+          },
+        },
+      },
+    },
   },
 });
 
@@ -165,7 +167,7 @@ export const ContactBlock = ({
   return (
     <StyledWrapper>
       <ContentWrapper>
-        <HeaderWrapper variant={backgroundColor} data-image={!!image}>
+        <HeaderWrapper variant={backgroundColor} imageExists={!!image}>
           <Text lang={lang} fontWeight="bold" textStyle="heading.small">
             {name}
           </Text>

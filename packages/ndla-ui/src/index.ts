@@ -36,15 +36,13 @@ export { LicenseLink, EmbedByline } from "./LicenseByline";
 export {
   ArticleByline,
   ArticleFootNotes,
-  ArticleIntroduction,
-  ArticleTitle,
   ArticleWrapper,
-  ArticleHeaderWrapper,
-  default as Article,
+  Article,
   ArticleParagraph,
+  ArticleFooter,
+  ArticleHeader,
+  ArticleContent,
 } from "./Article";
-
-export type { ArticleModifier } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 

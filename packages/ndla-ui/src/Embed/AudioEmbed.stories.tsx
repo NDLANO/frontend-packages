@@ -9,8 +9,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { AudioEmbedData, AudioMeta } from "@ndla/types-embed";
 import AudioEmbed from "./AudioEmbed";
-import { ArticleWrapper } from "../Article";
-import LayoutItem, { OneColumn } from "../Layout";
+import { ArticleContent, ArticleWrapper } from "../Article";
+import { OneColumn } from "../Layout";
 
 const embedData: AudioEmbedData = {
   resource: "audio",
@@ -188,12 +188,10 @@ const meta: Meta<typeof AudioEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <ArticleWrapper modifier="clean">
-          <LayoutItem layout="center">
-            <section>
-              <Story />
-            </section>
-          </LayoutItem>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
         </ArticleWrapper>
       </OneColumn>
     ),

@@ -9,8 +9,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from "@ndla/types-embed";
 import BrightcoveEmbed from "./BrightcoveEmbed";
-import { ArticleWrapper } from "../Article";
-import LayoutItem, { OneColumn } from "../Layout";
+import { ArticleContent, ArticleWrapper } from "../Article";
+import { OneColumn } from "../Layout";
 
 const embedData: BrightcoveEmbedData = {
   resource: "brightcove",
@@ -158,12 +158,10 @@ const meta: Meta<typeof BrightcoveEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <ArticleWrapper modifier="clean">
-          <LayoutItem layout="center">
-            <section>
-              <Story />
-            </section>
-          </LayoutItem>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
         </ArticleWrapper>
       </OneColumn>
     ),

@@ -7,10 +7,9 @@
  */
 
 import { useRef, useImperativeHandle, ReactNode, forwardRef } from "react";
-import styled from "@emotion/styled";
-import { mq, spacing, breakpoints } from "@ndla/core";
 import { ChevronRight } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
+import { styled } from "@ndla/styled-system/jsx";
 
 export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;
@@ -26,35 +25,17 @@ export interface BreadcrumbRenderProps {
   totalCount: number;
 }
 
-interface AutoCollapseProps {
-  autoCollapse?: boolean;
-}
-
-const StyledListItem = styled.li<AutoCollapseProps>`
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  :before {
-    display: none;
-  }
-  ${mq.range({ until: breakpoints.tablet })} {
-    display: block;
-  }
-`;
-
-const CollapseContainer = styled.div`
-  display: inline-block;
-  color: inherit;
-`;
-
-const StyledChevron = styled(ChevronRight)`
-  margin: ${spacing.xxsmall};
-  color: inherit;
-`;
-
-const StyledSafeLink = styled(SafeLink)`
-  color: inherit;
-`;
+const StyledListItem = styled("li", {
+  base: {
+    display: "flex",
+    color: "inherit",
+    gap: "4xsmall",
+    alignItems: "flex-end",
+    tabletDown: {
+      display: "block",
+    },
+  },
+});
 
 interface Props {
   item: IndexedBreadcrumbItem;
@@ -64,35 +45,31 @@ interface Props {
   renderSeparator?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
 }
 
-const BreadcrumbItem = forwardRef<any, Props>(
-  ({ renderItem, renderSeparator, item, totalCount, autoCollapse }, ref) => {
-    const liRef = useRef<any>();
+const BreadcrumbItem = forwardRef<any, Props>(({ renderItem, renderSeparator, item, totalCount }, ref) => {
+  const liRef = useRef<any>();
 
-    useImperativeHandle(ref, () => ({
-      setMaxWidth: (maxWidth: number) => {
-        liRef.current.children[0].style.maxWidth = maxWidth;
-      },
-    }));
+  useImperativeHandle(ref, () => ({
+    setMaxWidth: (maxWidth: number) => {
+      liRef.current.children[0].style.maxWidth = maxWidth;
+    },
+  }));
 
-    const { to, name, index } = item;
-    const isLast = index === totalCount - 1;
-    return (
-      <StyledListItem ref={liRef} autoCollapse={autoCollapse} aria-current={isLast ? "page" : undefined}>
-        <CollapseContainer>
-          {renderItem ? (
-            renderItem(item, totalCount)
-          ) : isLast ? (
-            <span>{name}</span>
-          ) : (
-            <StyledSafeLink to={to}>
-              <span>{name}</span>
-            </StyledSafeLink>
-          )}
-        </CollapseContainer>
-        {renderSeparator ? renderSeparator(item, totalCount) : !isLast && <StyledChevron />}
-      </StyledListItem>
-    );
-  },
-);
+  const { to, name, index } = item;
+  const isLast = index === totalCount - 1;
+  return (
+    <StyledListItem ref={liRef} aria-current={isLast ? "page" : undefined}>
+      {renderItem ? (
+        renderItem(item, totalCount)
+      ) : isLast ? (
+        <span>{name}</span>
+      ) : (
+        <SafeLink to={to}>
+          <span>{name}</span>
+        </SafeLink>
+      )}
+      {renderSeparator ? renderSeparator(item, totalCount) : !isLast && <ChevronRight />}
+    </StyledListItem>
+  );
+});
 
 export default BreadcrumbItem;

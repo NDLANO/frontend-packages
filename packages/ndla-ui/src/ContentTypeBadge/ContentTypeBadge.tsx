@@ -6,12 +6,9 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { CSSProperties, ComponentProps, useMemo } from "react";
+import { CSSProperties, ComponentPropsWithoutRef, useMemo } from "react";
 
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { breakpoints, colors, mq } from "@ndla/core";
+import { colors } from "@ndla/core";
 import { Minus, MenuBook } from "@ndla/icons/action";
 import { Audio } from "@ndla/icons/common";
 import {
@@ -24,12 +21,12 @@ import {
   SubjectMaterial,
   TasksAndActivities,
 } from "@ndla/icons/contentType";
-
 import { Concept, Media, Video } from "@ndla/icons/editor";
+import { styled } from "@ndla/styled-system/jsx";
 
 import * as contentTypes from "../model/ContentType";
 
-interface Props extends ComponentProps<"div"> {
+interface Props extends ComponentPropsWithoutRef<"div"> {
   size?: "xx-small" | "x-small" | "small" | "large";
   type: string;
   title?: string;
@@ -38,62 +35,74 @@ interface Props extends ComponentProps<"div"> {
   className?: string;
 }
 
-const sizes = {
-  "xx-small": css`
-    width: 20px;
-    height: 20px;
-    border: 1px solid;
-    svg {
-      width: 10px;
-      height: 10x;
-    }
-  `,
-  "x-small": css`
-    width: 20px;
-    height: 20px;
-    border: 1px solid;
-    ${mq.range({ from: breakpoints.tablet })} {
-      height: 26px;
-      width: 26px;
-    }
-    svg {
-      width: 10px;
-      height: 10x;
-      ${mq.range({ from: breakpoints.tablet })} {
-        width: 12px;
-        height: 12px;
-      }
-    }
-  `,
-  small: "",
-  large: css`
-    width: 50px;
-    height: 50px;
-    svg {
-      width: 25px;
-      height: 25px;
-    }
-  `,
-} as const;
-
-const BaseContentTypeBadge = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-  width: 34px;
-  height: 34px;
-  color: var(--icon-color);
-`;
-
-const borderStyle = css`
-  border: 2px solid;
-  border-color: var(--icon-color);
-`;
-
-const backgroundStyle = css`
-  background-color: var(--background-color);
-`;
+const StyledContentTypeBadge = styled("div", {
+  base: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "100%",
+    color: "var(--icon-color)",
+  },
+  defaultVariants: {
+    size: "small",
+    border: true,
+    background: false,
+  },
+  variants: {
+    size: {
+      "xx-small": {
+        width: "20px",
+        height: "20px",
+        border: "1px solid",
+        "& svg": {
+          width: "10px",
+          height: "10px",
+        },
+      },
+      "x-small": {
+        width: "20px",
+        height: "20px",
+        border: "1px solid",
+        tablet: {
+          height: "26px",
+          width: "26px",
+        },
+        "& svg": {
+          width: "10px",
+          height: "10px",
+          tablet: {
+            width: "12px",
+            height: "12px",
+          },
+        },
+      },
+      small: {
+        width: "34px",
+        height: "34px",
+      },
+      large: {
+        width: "50px",
+        height: "50px",
+        "& svg": {
+          width: "25px",
+          height: "25px",
+        },
+      },
+    },
+    border: {
+      true: {
+        border: "2px solid",
+        borderColor: "var(--icon-color)",
+      },
+      false: {},
+    },
+    background: {
+      true: {
+        backgroundColor: "var(--background-color)",
+      },
+    },
+  },
+});
 
 const iconMap = {
   [contentTypes.SUBJECT_MATERIAL]: {
@@ -185,21 +194,12 @@ export const ContentTypeBadge = ({
     return { Icon: fromMap.icon, style };
   }, [type]);
 
-  const cssStyles = useMemo(() => {
-    const styles = [sizes[size]];
-    if (background) {
-      styles.push(backgroundStyle);
-    }
-    if (border) {
-      styles.push(borderStyle);
-    }
-    return styles;
-  }, [background, border, size]);
-
   return (
-    <BaseContentTypeBadge
-      css={cssStyles}
+    <StyledContentTypeBadge
       title={title}
+      background={background}
+      size={size}
+      border={border}
       style={style}
       aria-label={title}
       className={className}
@@ -208,7 +208,7 @@ export const ContentTypeBadge = ({
       {...rest}
     >
       <Icon />
-    </BaseContentTypeBadge>
+    </StyledContentTypeBadge>
   );
 };
 

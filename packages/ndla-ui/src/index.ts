@@ -154,7 +154,8 @@ export { SearchField, SearchResultList, SearchResultItem, ActiveFilters } from "
 export { BlogPostV2 } from "./BlogPost";
 export { ProgrammeCard } from "./ProgrammeCard";
 export { KeyFigure } from "./KeyFigure";
-export { default as ContactBlock } from "./ContactBlock";
+export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock";
+export type { ContactBlockBackground } from "./ContactBlock";
 export type { HeartButtonType, CanonicalUrlFuncs, RenderContext } from "./Embed";
 export { CampaignBlock } from "./CampaignBlock";
 export { Grid, GridParallaxItem } from "./Grid";

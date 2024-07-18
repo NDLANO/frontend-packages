@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import ContactBlock from "./ContactBlock";
+import { ContactBlock } from "./ContactBlock";
 
 export default {
   title: "Components/Contact block",
@@ -76,8 +76,7 @@ export default {
       "Sigurd har variert ledererfaring fra utdanningssektoren, både fra videregående skole, nasjonalt senter og fra universitets/høgskolesektoren. Ansvarsområdene dekker bl.a. utdanning/opplæring/studiekvalitet, økonomi, HR, stratgi og IT-utvikling/-drift.",
     name: "Sigurd Trageton",
     email: "sigurd@ndla.no",
-    blobColor: "green",
-    blob: "pointy",
+    backgroundColor: "strong",
   },
 } as Meta<typeof ContactBlock>;
 

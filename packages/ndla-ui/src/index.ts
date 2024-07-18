@@ -56,8 +56,6 @@ export { ErrorResourceAccessDenied, default as ErrorMessage } from "./ErrorMessa
 
 export { default as FileList, File, PdfFile, Format } from "./FileList";
 
-export { default as Logo } from "./Logo";
-
 export { default as FactBox } from "./FactBox";
 
 export type { HeroContentType } from "./Hero";

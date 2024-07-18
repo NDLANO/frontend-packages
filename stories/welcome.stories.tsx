@@ -7,7 +7,8 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { ArticleWrapper, LayoutItem, Logo, PageContainer } from "@ndla/ui";
+import { NdlaLogoText } from "@ndla/primitives";
+import { ArticleWrapper, LayoutItem, PageContainer } from "@ndla/ui";
 
 export default {
   title: "Welcome",
@@ -27,7 +28,7 @@ export const Welcome: StoryFn = () => (
             alignItems: "center",
           }}
         >
-          <Logo label="Nasjonal digital læringsarena" />
+          <NdlaLogoText aria-label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
         </div>
         <p>

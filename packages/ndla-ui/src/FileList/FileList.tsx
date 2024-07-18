@@ -6,49 +6,38 @@
  *
  */
 
-import { ComponentProps, ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors, fonts, spacing } from "@ndla/core";
-import { Heading } from "@ndla/typography";
-interface Props extends ComponentProps<"section"> {
+import { Heading } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
+
+interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  headingButtons?: ReactNode;
 }
 
-const FileListSection = styled.section`
-  margin: ${spacing.large} 0;
-  padding: 0 0 ${spacing.normal} ${spacing.normal};
-  border-left: 2px solid ${colors.brand.greyLightest};
-  font-family: ${fonts.sans};
-`;
+export const FileListRoot = styled("div", {});
 
-const FileListHeaderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 ${spacing.xsmall} 0;
-  padding-bottom: ${spacing.xsmall};
-  border-bottom: 2px solid ${colors.brand.greyLight};
-`;
+export const FileList = styled("ul", {
+  base: {
+    listStyle: "none",
+    paddingInlineStart: "none",
+  },
+});
 
-const FilesList = styled.ul`
-  padding: 0;
-`;
+export const FileListHeader = styled(Heading, {
+  base: {
+    paddingBlockEnd: "small",
+  },
+});
 
-const FileList = ({ children, headingButtons, ...rest }: Props) => {
+export const FileListEmbed = ({ children, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
-    <FileListSection {...rest}>
-      <FileListHeaderWrapper>
-        <Heading element="h3" headingStyle="list-title" margin="none">
-          {t("files")}
-        </Heading>
-        <div>{headingButtons}</div>
-      </FileListHeaderWrapper>
-      <FilesList>{children}</FilesList>
-    </FileListSection>
+    <FileListRoot {...rest}>
+      <FileListHeader fontWeight="bold" textStyle="heading.small" asChild consumeCss>
+        <h3>{t("files")}</h3>
+      </FileListHeader>
+      <FileList>{children}</FileList>
+    </FileListRoot>
   );
 };
-
-export default FileList;

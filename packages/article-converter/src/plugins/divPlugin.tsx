@@ -8,7 +8,7 @@
 
 import { domToReact, attributesToProps, Element, DOMNode } from "html-react-parser";
 import { FramedContent } from "@ndla/primitives";
-import { FileList, RelatedArticleList, Grid, GridType, GridParallaxItem } from "@ndla/ui";
+import { FileListEmbed, RelatedArticleList, Grid, GridType, GridParallaxItem } from "@ndla/ui";
 import { PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts) => {
@@ -40,7 +40,7 @@ export const divPlugin: PluginType = (node, opts) => {
 
     return (
       <>
-        {files.length ? <FileList>{domToReact(files, opts)}</FileList> : undefined}
+        {files.length ? <FileListEmbed>{domToReact(files, opts)}</FileListEmbed> : undefined}
         {domToReact(pdfs, opts)}
       </>
     );

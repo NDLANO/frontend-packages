@@ -6,8 +6,10 @@
  *
  */
 
-import FileList from "./FileList";
+import { FileList, FileListEmbed, FileListHeader, FileListRoot } from "./FileList";
 
 export { default as File } from "./File";
+export { default as PdfFile } from "./PdfFile";
+export { FileList, FileListHeader, FileListRoot };
 
-export default FileList;
+export default FileListEmbed;

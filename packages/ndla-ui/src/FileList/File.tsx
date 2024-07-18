@@ -6,12 +6,12 @@
  *
  */
 
-import { useTranslation } from "react-i18next";
-import { styled } from "@ndla/styled-system/jsx";
-import { Download } from "@ndla/icons/common";
-import { SafeLinkButton } from "@ndla/safelink";
-import { Text } from "@ndla/primitives";
 import { HTMLAttributes } from "react";
+import { useTranslation } from "react-i18next";
+import { Download } from "@ndla/icons/common";
+import { Text } from "@ndla/primitives";
+import { SafeLinkButton } from "@ndla/safelink";
+import { Flex, styled } from "@ndla/styled-system/jsx";
 
 interface Props extends HTMLAttributes<HTMLLIElement> {
   title: string;
@@ -39,15 +39,27 @@ const FileItem = styled("li", {
 
 const StyledSafeLink = styled(SafeLinkButton, {
   base: {
-    width: "100%",
     fontWeight: "light",
     color: "text.default",
     padding: "unset",
     minHeight: "unset",
+    paddingInline: "3xsmall",
+    textUnderlineOffset: "2px",
   },
 });
 
-const TextWrapper = styled("div", { base: { display: "flex", gap: "xxsmall" } });
+const StyledText = styled(Text, {
+  base: {
+    paddingInline: "3xsmall",
+  },
+});
+
+const TextWrapper = styled("div", {
+  base: {
+    display: "flex",
+    gap: "4xsmall",
+  },
+});
 
 const File = ({ title, url, fileExists, fileType, fileSize, children, ...rest }: Props) => {
   const { t } = useTranslation();
@@ -62,16 +74,20 @@ const File = ({ title, url, fileExists, fileType, fileSize, children, ...rest }:
             {title}
           </StyledSafeLink>
         ) : (
-          <Text fontWeight="light" asChild consumeCss>
+          <StyledText fontWeight="light" asChild consumeCss>
             <span>{title}</span>
-          </Text>
+          </StyledText>
         )}
-        <Text fontWeight="light">({fileType?.toUpperCase()})</Text>
+        <Text fontWeight="light" asChild consumeCss>
+          <span>({fileType?.toUpperCase()})</span>
+        </Text>
       </TextWrapper>
-      <Text fontWeight="light" asChild consumeCss>
-        <span>{fileSize}</span>
-      </Text>
-      {children}
+      <Flex>
+        <Text fontWeight="light" asChild consumeCss>
+          <span>{fileSize}</span>
+        </Text>
+        {children}
+      </Flex>
     </FileItem>
   );
 };

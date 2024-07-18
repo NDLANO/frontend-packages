@@ -30,6 +30,22 @@ export const FileListHeader = styled(Heading, {
   },
 });
 
+export const FileListItem = styled("li", {
+  base: {
+    background: "surface.infoSubtle",
+    borderBlockEnd: "1px solid",
+    borderColor: "stroke.default",
+    display: "flex",
+    justifyContent: "space-between",
+    paddingBlock: "small",
+    paddingInlineEnd: "medium",
+    paddingInlineStart: "small",
+    _hover: {
+      backgroundColor: "surface.infoSubtle.hover",
+    },
+  },
+});
+
 export const FileListEmbed = ({ children, ...rest }: Props) => {
   const { t } = useTranslation();
   return (

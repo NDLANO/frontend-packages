@@ -11,31 +11,15 @@ import { useTranslation } from "react-i18next";
 import { Download } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
-import { Flex, styled } from "@ndla/styled-system/jsx";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 
-interface Props extends HTMLAttributes<HTMLLIElement> {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   title: string;
   url: string;
   fileExists: boolean;
   fileType: string;
   fileSize?: string;
 }
-
-const FileItem = styled("li", {
-  base: {
-    background: "surface.infoSubtle",
-    borderBlockEnd: "1px solid",
-    borderColor: "stroke.default",
-    display: "flex",
-    justifyContent: "space-between",
-    paddingBlock: "small",
-    paddingInlineEnd: "medium",
-    paddingInlineStart: "small",
-    _hover: {
-      backgroundColor: "surface.infoSubtle.hover",
-    },
-  },
-});
 
 const StyledSafeLink = styled(SafeLinkButton, {
   base: {
@@ -54,10 +38,9 @@ const StyledText = styled(Text, {
   },
 });
 
-const TextWrapper = styled("div", {
+const StyledHStack = styled(HStack, {
   base: {
-    display: "flex",
-    gap: "4xsmall",
+    width: "100%",
   },
 });
 
@@ -66,8 +49,8 @@ const File = ({ title, url, fileExists, fileType, fileSize, children, ...rest }:
   const tooltip = `${t("download")} ${url.split("/").pop()}`;
 
   return (
-    <FileItem {...rest}>
-      <TextWrapper>
+    <StyledHStack justify="space-between" {...rest}>
+      <HStack gap="4xsmall">
         <Download />
         {fileExists ? (
           <StyledSafeLink variant="link" to={url} title={tooltip}>
@@ -81,14 +64,14 @@ const File = ({ title, url, fileExists, fileType, fileSize, children, ...rest }:
         <Text fontWeight="light" asChild consumeCss>
           <span>({fileType?.toUpperCase()})</span>
         </Text>
-      </TextWrapper>
-      <Flex>
+      </HStack>
+      <HStack>
         <Text fontWeight="light" asChild consumeCss>
           <span>{fileSize}</span>
         </Text>
         {children}
-      </Flex>
-    </FileItem>
+      </HStack>
+    </StyledHStack>
   );
 };
 

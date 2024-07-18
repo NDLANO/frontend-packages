@@ -6,10 +6,10 @@
  *
  */
 
-import { FileList, FileListEmbed, FileListHeader, FileListRoot } from "./FileList";
+import { FileList, FileListEmbed, FileListHeader, FileListRoot, FileListItem } from "./FileList";
 
 export { default as File } from "./File";
 export { default as PdfFile } from "./PdfFile";
-export { FileList, FileListHeader, FileListRoot };
+export { FileList, FileListHeader, FileListRoot, FileListItem };
 
 export default FileListEmbed;

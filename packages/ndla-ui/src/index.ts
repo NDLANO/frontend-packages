@@ -73,8 +73,6 @@ export {
 
 export { FooterBlock } from "./Footer";
 
-export { LanguageSelector } from "./LanguageSelector";
-
 export { default as SearchResultSleeve } from "./Search/SearchResultSleeve";
 
 export { default as ContentTypeResult } from "./Search/ContentTypeResult";

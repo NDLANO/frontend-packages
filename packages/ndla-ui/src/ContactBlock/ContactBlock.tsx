@@ -39,7 +39,7 @@ const StyledWrapper = styled("div", {
     borderColor: "stroke.default",
     borderRadius: "xsmall",
     overflow: "hidden",
-    background: "white",
+    background: "surface.default",
     flexDirection: "column-reverse",
     tablet: {
       alignItems: "unset",

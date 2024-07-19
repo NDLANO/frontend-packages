@@ -82,7 +82,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
     return format(new Date(date), "dd. LLLL yyyy", { locale });
   }, [date, articleLanguage]);
   return (
-    <StyledSafeLink to={href}>
+    <StyledSafeLink to={href} data-embed-type="link-block">
       <InfoWrapper>
         <Heading asChild consumeCss textStyle="title.medium">
           <h3 data-heading>{parse(title)}</h3>

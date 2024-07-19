@@ -167,7 +167,7 @@ export const ContactBlock = ({
 }: Props) => {
   const { t } = useTranslation();
   return (
-    <StyledWrapper>
+    <StyledWrapper data-embed-type="contact-block">
       <ContentWrapper>
         <HeaderWrapper variant={backgroundColor} imageExists={!!image}>
           {/* TODO: The font in the design specified `Source Sans Pro` and this is the default `Satoshi` */}

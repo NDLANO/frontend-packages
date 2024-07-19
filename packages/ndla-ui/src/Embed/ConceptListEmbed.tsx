@@ -41,7 +41,7 @@ const ConceptListEmbed = ({ embed, lang }: Props) => {
   }
   const { embedData, data } = embed;
   return (
-    <div>
+    <div data-embed-type="concept-list">
       <Figure>
         {embedData.title && <h2 lang={lang}>{embedData.title}</h2>}
         <ConceptList>

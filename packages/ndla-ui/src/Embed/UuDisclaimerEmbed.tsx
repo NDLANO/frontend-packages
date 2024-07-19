@@ -50,7 +50,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   ) : null;
 
   return (
-    <div role="region">
+    <div role="region" data-embed-type="uu-disclaimer">
       <StyledMessageBox variant="warning" contentEditable={false}>
         <InformationOutline />
         <Disclaimer>

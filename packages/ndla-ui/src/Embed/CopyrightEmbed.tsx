@@ -17,7 +17,7 @@ interface Props {
 
 const CopyrightEmbed = ({ embed, children }: Props) => {
   return (
-    <figure>
+    <figure data-embed-type="copyright">
       {children}
       <EmbedByline type="copyright" copyright={embed.embedData.copyright} />
     </figure>

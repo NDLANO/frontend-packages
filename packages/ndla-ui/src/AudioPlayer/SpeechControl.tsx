@@ -32,7 +32,7 @@ const SpeechControl = ({ src, title, type = "audio" }: Props) => {
     }
   };
   return (
-    <div>
+    <div data-embed-type="speech">
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <TooltipRoot>

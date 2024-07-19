@@ -24,7 +24,7 @@ const heroRecipe = sva({
       width: "100%",
       zIndex: "hide",
       overflow: "hidden",
-      clipPath: "polygon(0 0, 100% 0, 100% 65%, 0 100%)",
+      clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%)",
     },
     content: {
       display: "flex",

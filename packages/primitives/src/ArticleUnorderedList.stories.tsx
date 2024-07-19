@@ -8,6 +8,7 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import { UnOrderedList } from "./ArticleLists";
+import { BlockQuote } from "./BlockQuote";
 
 export default {
   title: "Primitives/Article Unordered List",
@@ -51,7 +52,10 @@ export const Default: StoryFn = () => (
 export const WithParagraphs: StoryFn = () => (
   <UnOrderedList>
     <li>
-      <p>Listepunkt 1</p>
+      <BlockQuote>
+        <p>Listepunkt 1</p>
+        <p>Test</p>
+      </BlockQuote>
     </li>
     <li>
       <p>Listepunkt 2</p>

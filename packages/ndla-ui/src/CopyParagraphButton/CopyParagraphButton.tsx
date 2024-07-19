@@ -16,6 +16,12 @@ import { copyTextToClipboard } from "@ndla/util";
 
 const ContainerDiv = styled.div`
   position: relative;
+  &:hover {
+    [data-copy-button] {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
 `;
 const IconButton = styled.button`
   position: absolute;
@@ -33,8 +39,9 @@ const IconButton = styled.button`
     height: 30px;
   }
 
-  ${ContainerDiv}:hover &,
-  &:focus, &:focus-visible, &:active {
+  &:focus,
+  &:focus-visible,
+  &:active {
     cursor: pointer;
     opacity: 1;
   }
@@ -71,7 +78,7 @@ const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
   return (
     <ContainerDiv>
       <Tooltip tooltip={tooltip}>
-        <IconButton onClick={onCopyClick} aria-label={`${tooltip}: ${copyText}`}>
+        <IconButton data-copy-button="" onClick={onCopyClick} aria-label={`${tooltip}: ${copyText}`}>
           <Link />
         </IconButton>
       </Tooltip>

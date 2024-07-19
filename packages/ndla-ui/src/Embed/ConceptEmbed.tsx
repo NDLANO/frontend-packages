@@ -95,11 +95,9 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
         </InlineTriggerButton>
       </PopoverTrigger>
       <StyledPopoverContent>
-        <Figure>
-          <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title}>
-            {children}
-          </Concept>
-        </Figure>
+        <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title}>
+          {children}
+        </Concept>
       </StyledPopoverContent>
     </PopoverRoot>
   ),

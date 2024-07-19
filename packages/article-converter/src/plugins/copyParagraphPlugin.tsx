@@ -17,7 +17,11 @@ export const copyParagraphPlugin: PluginType = (node, converterOpts, opts) => {
     (parent?.name === "ndlaembed" && parent.attribs["data-resource"] === "uu-disclaimer")
   ) {
     return (
-      <CopyParagraphButton copyText={node.attribs["data-text"]} lang={opts.articleLanguage}>
+      <CopyParagraphButton
+        data-embed-type="copy-heading"
+        copyText={node.attribs["data-text"]}
+        lang={opts.articleLanguage}
+      >
         {domToReact(node.children as DOMNode[], converterOpts)}
       </CopyParagraphButton>
     );

@@ -9,8 +9,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { IframeData, IframeEmbedData } from "@ndla/types-embed";
 import IframeEmbed from "./IframeEmbed";
-import { ArticleWrapper } from "../Article";
-import LayoutItem, { OneColumn } from "../Layout";
+import { ArticleWrapper, ArticleContent } from "../Article";
+import { OneColumn } from "../Layout";
 
 const embedData: IframeEmbedData = {
   width: "708px",
@@ -28,12 +28,10 @@ const meta: Meta<typeof IframeEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <ArticleWrapper modifier="clean">
-          <LayoutItem layout="center">
-            <section>
-              <Story />
-            </section>
-          </LayoutItem>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
         </ArticleWrapper>
       </OneColumn>
     ),

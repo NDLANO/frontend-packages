@@ -6,14 +6,10 @@
  *
  */
 
-import Article, { ArticleTitle, ArticleIntroduction, ArticleWrapper } from "./Article";
 import ArticleByline from "./ArticleByline";
 import ArticleFootNotes from "./ArticleFootNotes";
-import ArticleHeaderWrapper from "./ArticleHeaderWrapper";
 
-export { ArticleByline, ArticleFootNotes, ArticleHeaderWrapper, ArticleTitle, ArticleIntroduction, ArticleWrapper };
+export { Article, ArticleContent, ArticleWrapper, ArticleHeader, ArticleFooter } from "./Article";
+
+export { ArticleByline, ArticleFootNotes };
 export { ArticleParagraph } from "./ArticleParagraph";
-
-export type { ArticleModifier } from "./Article";
-
-export default Article;

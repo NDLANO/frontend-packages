@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing } from "@ndla/core";
-import { OneColumn, LayoutItem } from "@ndla/ui";
+import { OneColumn, ArticleWrapper, ArticleContent } from "@ndla/ui";
 
 const StoryIntroSection = styled.section`
   background: ${colors.brand.light};
@@ -34,10 +34,12 @@ interface Props {
 const StoryIntro = ({ title, children }: Props) => (
   <StoryIntroSection>
     <OneColumn>
-      <LayoutItem layout="center">
-        <h1>{title}</h1>
-        {children}
-      </LayoutItem>
+      <ArticleWrapper>
+        <ArticleContent>
+          <h1>{title}</h1>
+          {children}
+        </ArticleContent>
+      </ArticleWrapper>
     </OneColumn>
   </StoryIntroSection>
 );

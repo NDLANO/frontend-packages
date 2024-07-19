@@ -110,6 +110,9 @@ export { Figure } from "./Figure";
 export type { FramedContentVariantProps, FramedContentProps } from "./FramedContent";
 export { FramedContent } from "./FramedContent";
 
+export type { HeroVariantProps, HeroVariant, HeroProps, HeroBackgroundProps, HeroContentProps } from "./Hero";
+export { Hero, HeroBackground, HeroContent } from "./Hero";
+
 export type { ImageCrop, ImageFocalPoint, PictureProps, ImgProps, ImageProps } from "./Image";
 
 export { Picture, Img, Image, makeSrcQueryString, getSrcSet } from "./Image";

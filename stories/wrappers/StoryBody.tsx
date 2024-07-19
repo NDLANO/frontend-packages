@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from "react";
-import { OneColumn, LayoutItem, ArticleWrapper } from "@ndla/ui";
+import { OneColumn, ArticleWrapper, ArticleContent } from "@ndla/ui";
 
 interface Props {
   children?: ReactNode;
@@ -15,9 +15,9 @@ interface Props {
 
 const StoryBody = ({ children }: Props) => (
   <OneColumn>
-    <LayoutItem layout="center">
-      <ArticleWrapper modifier="clean">{children}</ArticleWrapper>
-    </LayoutItem>
+    <ArticleWrapper>
+      <ArticleContent>{children}</ArticleContent>
+    </ArticleWrapper>
   </OneColumn>
 );
 

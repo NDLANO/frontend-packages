@@ -36,15 +36,13 @@ export { LicenseLink, EmbedByline } from "./LicenseByline";
 export {
   ArticleByline,
   ArticleFootNotes,
-  ArticleIntroduction,
-  ArticleTitle,
   ArticleWrapper,
-  ArticleHeaderWrapper,
-  default as Article,
+  Article,
   ArticleParagraph,
+  ArticleFooter,
+  ArticleHeader,
+  ArticleContent,
 } from "./Article";
-
-export type { ArticleModifier } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
@@ -58,18 +56,8 @@ export { default as FileList, File, PdfFile, Format } from "./FileList";
 
 export { default as FactBox } from "./FactBox";
 
-export type { HeroContentType } from "./Hero";
-export {
-  SubjectMaterialHero,
-  TasksAndActivitiesHero,
-  AssessmentResourcesHero,
-  SubjectHero,
-  SourceMaterialHero,
-  Hero,
-  NdlaFilmHero,
-  ConceptHero,
-  HeroContent,
-} from "./Hero";
+export type { ContentTypeHeroProps } from "./ContentTypeHero";
+export { ContentTypeHero } from "./ContentTypeHero";
 
 export { FooterBlock } from "./Footer";
 
@@ -114,7 +102,7 @@ export {
   ConceptBadge,
 } from "./ContentTypeBadge";
 
-export type { ContentTypeBadgeProps } from "./ContentTypeBadge/ContentTypeBadgeNew";
+export type { ContentTypeBadgeProps, ContentType } from "./ContentTypeBadge/ContentTypeBadgeNew";
 export {
   ContentTypeBadge as ContentTypeBadgeNew,
   contentTypeToBadgeVariantMap,

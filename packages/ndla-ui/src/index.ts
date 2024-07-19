@@ -63,7 +63,7 @@ export { FooterBlock } from "./Footer";
 
 export { default as resourceTypeColor } from "./utils/resourceTypeColor";
 
-export { MessageBox, MessageBanner } from "./Messages";
+export { MessageBox } from "./Messages";
 
 export { ResourceBox } from "./ResourceBox";
 

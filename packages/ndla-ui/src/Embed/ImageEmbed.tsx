@@ -250,7 +250,11 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
 
   // TODO: Check how this works with `children`. Will only be important for ED
   return (
-    <StyledFigure float={figureProps?.float} size={imageSizes ? "full" : figureProps?.size ?? "medium"}>
+    <StyledFigure
+      float={figureProps?.float}
+      size={imageSizes ? "full" : figureProps?.size ?? "medium"}
+      data-embed-type="image"
+    >
       {children}
       <ImageWrapper border={embedData.border === "true"} expandable={!!figureProps?.float}>
         <Image

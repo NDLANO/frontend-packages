@@ -132,7 +132,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
     }, [state, onOpenChange]);
 
     return (
-      <StyledAside data-state={state} {...rest} ref={ref}>
+      <StyledAside data-state={state} data-embed-type="factbox" {...rest} ref={ref}>
         <StyledIconButton
           data-state={state}
           onClick={onClick}

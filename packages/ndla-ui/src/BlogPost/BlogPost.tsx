@@ -111,7 +111,7 @@ const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = "h3",
   const href = getPossiblyRelativeUrl(url, path);
   const imageWidth = size === "large" ? 532 : 350;
   return (
-    <Container data-size={size} to={href} size={size}>
+    <Container data-size={size} to={href} size={size} data-embed-type="blog-post">
       <StyledHeading className="blog-title" asChild consumeCss textStyle="title.large">
         <Heading>{parse(title)}</Heading>
       </StyledHeading>

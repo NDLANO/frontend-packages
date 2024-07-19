@@ -62,7 +62,7 @@ const CodeEmbed = ({ embed }: Props) => {
   }, [isCopied]);
 
   return (
-    <StyledFigure>
+    <StyledFigure data-embed-type="code-block">
       <StyledFigCaption>{embed.embedData.title || getTitleFromFormat(embed.embedData.codeFormat)}</StyledFigCaption>
       <CodeBlock
         highlightedCode={embed.status === "success" ? embed.data.highlightedCode : ""}

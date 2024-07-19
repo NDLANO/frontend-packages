@@ -86,7 +86,7 @@ const StyledSection = styled("section", {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "xsmall",
+    gap: "medium",
   },
 });
 

@@ -20,7 +20,7 @@ const StyledGridParallaxItem = styled("div", {
 });
 
 export const GridParallaxItem = ({ children, ...rest }: HTMLAttributes<HTMLDivElement>) => (
-  <StyledGridParallaxItem {...rest}>
+  <StyledGridParallaxItem {...rest} data-embed-type="grid-parallax">
     <div>{children}</div>
   </StyledGridParallaxItem>
 );

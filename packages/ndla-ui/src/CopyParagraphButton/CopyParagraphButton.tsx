@@ -75,7 +75,7 @@ const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
 
   const tooltip = hasCopied ? t("article.copyPageLinkCopied") : t("article.copyHeaderLink");
   return (
-    <ContainerDiv>
+    <ContainerDiv data-embed-type="copy-heading">
       <IconButton data-copy-button="" onClick={onCopyClick} title={tooltip} aria-label={`${tooltip}: ${copyText}`}>
         <Link />
       </IconButton>

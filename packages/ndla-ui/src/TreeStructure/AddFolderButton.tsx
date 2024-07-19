@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 as Button } from "@ndla/button";
 import { Plus } from "@ndla/icons/action";
-import { Tooltip } from "@ndla/tooltip";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 
 interface AddFolderButtonProps {
@@ -49,32 +48,31 @@ const AddFolderButton = ({
       ? t("myNdla.newFolderUnder", { folderName: focusedFolder?.name })
       : t("treeStructure.maxFoldersAlreadyAdded");
   return (
-    <Tooltip tooltip={tooltip}>
-      <StyledAddFolderButton
-        ref={ref}
-        variant="outline"
-        shape="pill"
-        disabled={loading || !canAddFolder}
-        aria-label={tooltip}
-        onMouseDown={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          ref.current?.focus();
-        }}
-        onMouseUp={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          ref.current?.focus();
-        }}
-        onClick={(e) => {
-          e.currentTarget.focus();
-          setNewFolderParentId(focusedFolder?.id);
-          setShowTree(true);
-        }}
-      >
-        <StyledPlus /> {t("myNdla.newFolder")}
-      </StyledAddFolderButton>
-    </Tooltip>
+    <StyledAddFolderButton
+      ref={ref}
+      variant="outline"
+      shape="pill"
+      disabled={loading || !canAddFolder}
+      title={tooltip}
+      aria-label={tooltip}
+      onMouseDown={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        ref.current?.focus();
+      }}
+      onMouseUp={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        ref.current?.focus();
+      }}
+      onClick={(e) => {
+        e.currentTarget.focus();
+        setNewFolderParentId(focusedFolder?.id);
+        setShowTree(true);
+      }}
+    >
+      <StyledPlus /> {t("myNdla.newFolder")}
+    </StyledAddFolderButton>
   );
 };
 

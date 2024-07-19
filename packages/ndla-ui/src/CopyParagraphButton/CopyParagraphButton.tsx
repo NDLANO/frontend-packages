@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, stackOrder } from "@ndla/core";
 import { Link } from "@ndla/icons/common";
-import { Tooltip } from "@ndla/tooltip";
 import { copyTextToClipboard } from "@ndla/util";
 
 const ContainerDiv = styled.div`
@@ -77,11 +76,9 @@ const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
   const tooltip = hasCopied ? t("article.copyPageLinkCopied") : t("article.copyHeaderLink");
   return (
     <ContainerDiv>
-      <Tooltip tooltip={tooltip}>
-        <IconButton data-copy-button="" onClick={onCopyClick} aria-label={`${tooltip}: ${copyText}`}>
-          <Link />
-        </IconButton>
-      </Tooltip>
+      <IconButton data-copy-button="" onClick={onCopyClick} title={tooltip} aria-label={`${tooltip}: ${copyText}`}>
+        <Link />
+      </IconButton>
       <h2 id={sanitizedTitle} tabIndex={-1} lang={lang}>
         {children}
       </h2>

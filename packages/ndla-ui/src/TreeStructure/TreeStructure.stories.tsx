@@ -13,10 +13,10 @@ import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
 import { IconButtonV2 } from "@ndla/button";
 import { spacing } from "@ndla/core";
-import { FieldErrorMessage, FieldHelper, FormControl, InputContainer, InputV3, Label } from "@ndla/forms";
 import { Spinner } from "@ndla/icons";
 import { Cross } from "@ndla/icons/action";
 import { Done } from "@ndla/icons/editor";
+import { FieldErrorMessage, FieldLabel, FieldRoot, InputContainer, FieldHelper, FieldInput } from "@ndla/primitives";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 import { uuid } from "@ndla/util";
 import { flattenFolders } from "./helperFunctions";
@@ -253,11 +253,11 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
   }, [name]);
 
   return (
-    <FormControl id="folder-name" isRequired isInvalid={!!error}>
-      <Label visuallyHidden>Mine mapper</Label>
+    <FieldRoot required invalid={!!error}>
+      <FieldLabel srOnly>Mine mapper</FieldLabel>
       <FieldErrorMessage>{error}</FieldErrorMessage>
       <InputContainer>
-        <InputV3
+        <FieldInput
           autoComplete="off"
           disabled={loading}
           ref={inputRef}
@@ -307,6 +307,6 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
           )}
         </Row>
       </InputContainer>
-    </FormControl>
+    </FieldRoot>
   );
 };

@@ -3096,7 +3096,6 @@ __metadata:
   dependencies:
     "@ndla/button": "npm:^14.0.8-alpha.0"
     "@ndla/core": "npm:^5.0.1"
-    "@ndla/forms": "npm:^9.0.10-alpha.0"
     "@ndla/hooks": "npm:^2.1.8"
     "@ndla/icons": "npm:^7.0.9-alpha.0"
     "@ndla/licenses": "npm:^8.0.0-alpha.0"
@@ -3105,7 +3104,6 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "npm:^6.0.4-alpha.0"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/tooltip": "npm:^8.0.1"
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^5.0.0-alpha.0"
     "@ndla/typography": "npm:^0.4.23"

@@ -46,7 +46,6 @@
     "@ndla/tooltip": "^8.0.1",
     "@ndla/typography": "^0.4.23",
     "@ndla/util": "^4.1.0",
-    "@radix-ui/react-popover": "^1.0.7",
     "date-fns": "^2.30.0",
     "html-react-parser": "^5.1.8",
     "i18next-browser-languagedetector": "^7.1.0",

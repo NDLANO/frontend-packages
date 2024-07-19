@@ -32,6 +32,7 @@ const StyledWrapper = styled("div", {
     alignItems: "center",
     justifyContent: "space-between",
     boxShadow: "full",
+    marginBlockEnd: "4xsmall",
     border: "1px solid",
     gap: "medium",
     position: "relative",

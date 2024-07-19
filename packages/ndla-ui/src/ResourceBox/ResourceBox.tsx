@@ -20,6 +20,7 @@ const Container = styled("div", {
     border: "1px solid",
     borderColor: "stroke.default",
     boxShadow: "full",
+    marginBlockEnd: "medium",
     gap: "medium",
     tabletWideDown: {
       padding: "xsmall",

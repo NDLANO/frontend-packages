@@ -43,6 +43,7 @@ const Container = styled("div", {
     backgroundColor: "background.default",
     borderRadius: "xsmall",
     boxShadow: "full",
+    marginBlockEnd: "4xsmall",
     maxWidth: "surface.xsmall",
     overflow: "hidden",
     mobileWide: {

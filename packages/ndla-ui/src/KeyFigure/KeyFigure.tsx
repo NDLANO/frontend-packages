@@ -38,6 +38,7 @@ const SubTitleWrapper = styled("div", {
     fontSize: "large",
     lineHeight: "large",
     fontWeight: "bold",
+    textAlign: "center",
   },
 });
 

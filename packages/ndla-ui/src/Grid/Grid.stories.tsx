@@ -6,48 +6,51 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { DocsContainer, DocsContainerProps } from "@storybook/addon-docs";
 import { Meta, StoryFn } from "@storybook/react";
-import { colors } from "@ndla/core";
-import Grid from "./Grid";
+import { ArticleContent, ArticleWrapper, OneColumn } from "@ndla/ui";
+import { Grid } from "./Grid";
 import { BlogPostStory } from "../BlogPost/BlogPost.stories";
 import { Plain } from "../KeyFigure/KeyFigure.stories";
-
-const GridWrapper = styled.div`
-  .docs-story {
-    background-color: ${colors.background.lightBlue};
-  }
-`;
-
-const GridDocsContainer = ({ ...props }: DocsContainerProps) => (
-  <GridWrapper>
-    <DocsContainer {...props} />
-  </GridWrapper>
-);
 
 export default {
   title: "Components/Grid",
   component: Grid,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
-    docs: {
-      container: GridDocsContainer,
-    },
+    inlineStories: true,
+    layout: "fullscreen",
   },
   args: {
-    columns: "2",
+    columns: "3",
     border: "none",
-    background: "white",
+    background: "gray",
   },
+  decorators: [
+    (Story) => (
+      <OneColumn wide>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
+        </ArticleWrapper>
+      </OneColumn>
+    ),
+  ],
 } as Meta<typeof Grid>;
+
+const keyFigureArgs = [
+  { title: "22 000+", subtitle: "Tilgjengelige ressurser" },
+  { title: "149", subtitle: "Eksamensfag" },
+  { title: "500", subtitle: "Tverrfaglige ressurser" },
+  { title: "0", subtitle: "Dårlige ideer" },
+];
 
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
-  const items = new Array(columns).fill(
-    <Plain title={Plain.args?.title!} subtitle={Plain.args?.subtitle!} image={Plain.args?.image!} />,
-  );
+  const items = new Array(columns).fill(0).map((_, idx) => {
+    const args = keyFigureArgs[idx % keyFigureArgs.length];
+    return <Plain key={idx} {...args} />;
+  });
   return <Grid {...args}>{items}</Grid>;
 };
 

@@ -26,8 +26,28 @@ export default {
 
 export const Default: StoryFn<typeof ToastRoot> = ({ ...args }) => (
   <div>
-    <Button onClick={() => toaster.create({ title: "Hello", description: "World", duration: 1000000 })}>
+    <Button
+      onClick={() =>
+        toaster.create({
+          title: "Navn vist",
+          description: "Navnet ditt vises nå på alle dine delte mapper",
+          duration: 1000000,
+        })
+      }
+    >
       Show toast
+    </Button>
+    <Button
+      onClick={() =>
+        toaster.create({
+          title: "Navn skjult",
+          description:
+            "Navnet ditt vises nå ikke lenger på alle dine delte mapper. Navnet ditt vises nå ikke lenger på alle dine delte mapper. Navnet ditt vises nå ikke lenger på alle dine delte mapper",
+          duration: 1000000,
+        })
+      }
+    >
+      Show longer toast
     </Button>
     <Portal>
       <Toaster toaster={toaster}>

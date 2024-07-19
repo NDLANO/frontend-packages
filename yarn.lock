@@ -2893,7 +2893,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/modal@npm:^7.0.8-alpha.0, @ndla/modal@workspace:packages/ndla-modal":
+"@ndla/modal@workspace:packages/ndla-modal":
   version: 0.0.0-use.local
   resolution: "@ndla/modal@workspace:packages/ndla-modal"
   dependencies:
@@ -3099,7 +3099,6 @@ __metadata:
     "@ndla/hooks": "npm:^2.1.8"
     "@ndla/icons": "npm:^7.0.9-alpha.0"
     "@ndla/licenses": "npm:^8.0.0-alpha.0"
-    "@ndla/modal": "npm:^7.0.8-alpha.0"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "npm:^6.0.4-alpha.0"

@@ -84,6 +84,34 @@ export const Disabled: StoryObj<typeof Button> = {
   },
 };
 
+export const Loading: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+  },
+};
+
+export const LoadingReplace: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+    replaceContent: true,
+  },
+};
+
+export const CustomLoading: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+    loadingContent: "...",
+  },
+};
+
+export const CustomLoadingReplace: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+    replaceContent: true,
+    loadingContent: "Laster...",
+  },
+};
+
 export const WithIcon: StoryObj<typeof Button> = {
   args: {
     children: (

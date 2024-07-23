@@ -26,18 +26,14 @@ const StyledImage = styled("img", {
 
 const TitleWrapper = styled("div", {
   base: {
-    fontSize: "4xlarge",
-    fontWeight: "bold",
-    lineHeight: "4xlarge",
+    textStyle: "heading.large",
     whiteSpace: "nowrap",
   },
 });
 
 const SubTitleWrapper = styled("div", {
   base: {
-    fontSize: "large",
-    lineHeight: "large",
-    fontWeight: "bold",
+    textStyle: "title.medium",
     textAlign: "center",
   },
 });

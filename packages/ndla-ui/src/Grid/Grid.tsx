@@ -24,12 +24,9 @@ const GridContainer = styled("div", {
     minWidth: "surface.xxsmall",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     tabletDown: {
-      gridTemplateColumns: "repeat(1, minmax(0, 1fr))",
-      "& > div:nth-child(3):last-child": {
-        gridColumn: "span 1",
-      },
+      gridTemplateColumns: "repeat(1, minmax(0, 1fr))"
     },
-    desktopDown: {
+    tabletToDesktop: {
       gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
       "& > div:nth-child(3):last-child": {
         display: "flex",
@@ -44,8 +41,8 @@ const GridContainer = styled("div", {
     columns: {
       "2": {},
       "2x2": {},
-      "3": { tabletWide: { gridTemplateColumns: "repeat(3, minmax(0, 1fr))" } },
-      "4": { tabletWide: { gridTemplateColumns: "repeat(4, minmax(0, 1fr))" } },
+      "3": {desktop: { gridTemplateColumns: "repeat(3, minmax(0, 1fr))" } },
+      "4": { desktop: { gridTemplateColumns: "repeat(4, minmax(0, 1fr))" } },
     },
     background: {
       white: { backgroundColor: "surface.default" },

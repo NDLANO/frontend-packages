@@ -53,8 +53,7 @@ const GridContainer = styled("div", {
         border: "1px solid",
         borderColor: "surface.brand.2",
       },
-    },
-    frontpage: { true: { gridGap: "4xlarge" } },
+    }
   },
 });
 
@@ -62,16 +61,14 @@ export interface GridProps {
   columns: "2" | "3" | "4" | "2x2";
   border?: "none" | "lightBlue";
   background?: "transparent" | "white" | "gray";
-  size?: boolean;
   children?: ReactNode[];
 }
 
-export const Grid = ({ columns, border, children, background = "gray", size }: GridProps) => {
+export const Grid = ({ columns, border, children, background = "gray" }: GridProps) => {
   const amountOfColumns = children?.length === 3 ? "3" : columns;
 
   return (
     <GridContainer
-      frontpage={size}
       border={border === "none" ? undefined : border}
       columns={amountOfColumns}
       background={background}

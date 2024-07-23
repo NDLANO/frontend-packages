@@ -23,7 +23,7 @@ const GridContainer = styled("div", {
     minWidth: "surface.xxsmall",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     tabletDown: {
-      gridTemplateColumns: "repeat(1, minmax(0, 1fr))"
+      gridTemplateColumns: "repeat(1, minmax(0, 1fr))",
     },
     tabletToDesktop: {
       gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
@@ -40,7 +40,7 @@ const GridContainer = styled("div", {
     columns: {
       "2": {},
       "2x2": {},
-      "3": {desktop: { gridTemplateColumns: "repeat(3, minmax(0, 1fr))" } },
+      "3": { desktop: { gridTemplateColumns: "repeat(3, minmax(0, 1fr))" } },
       "4": { desktop: { gridTemplateColumns: "repeat(4, minmax(0, 1fr))" } },
     },
     background: {
@@ -53,7 +53,7 @@ const GridContainer = styled("div", {
         border: "1px solid",
         borderColor: "surface.brand.2",
       },
-    }
+    },
   },
 });
 
@@ -68,11 +68,7 @@ export const Grid = ({ columns, border, children, background = "gray" }: GridPro
   const amountOfColumns = children?.length === 3 ? "3" : columns;
 
   return (
-    <GridContainer
-      border={border === "none" ? undefined : border}
-      columns={amountOfColumns}
-      background={background}
-    >
+    <GridContainer border={border === "none" ? undefined : border} columns={amountOfColumns} background={background}>
       {children}
     </GridContainer>
   );

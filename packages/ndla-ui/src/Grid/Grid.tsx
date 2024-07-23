@@ -18,7 +18,6 @@ const GridContainer = styled("div", {
     gridRowGap: "large",
     gridColumnGap: "medium",
     width: "100%",
-    marginBottom: "medium",
     backgroundColor: "background.subtle",
     maxWidth: "surface.4xlarge",
     minWidth: "surface.xxsmall",

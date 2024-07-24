@@ -2765,19 +2765,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/carousel@workspace:packages/carousel":
-  version: 0.0.0-use.local
-  resolution: "@ndla/carousel@workspace:packages/carousel"
-  dependencies:
-    "@ndla/core": "npm:^5.0.1"
-    "@ndla/icons": "npm:^7.0.9-alpha.0"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
-  languageName: unknown
-  linkType: soft
-
 "@ndla/core@npm:^5.0.1, @ndla/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@ndla/core@workspace:packages/core"

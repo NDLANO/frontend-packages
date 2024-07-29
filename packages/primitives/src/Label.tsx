@@ -7,7 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { Field, HTMLArkProps, ark } from "@ark-ui/react";
+import { Field, Fieldset, HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
@@ -17,7 +17,7 @@ const StyledLegend = styled(
   ark.legend,
   {
     base: {
-      float: "none",
+      float: "left",
       width: "inherit",
       _disabled: {
         color: "text.subtle",
@@ -29,12 +29,19 @@ const StyledLegend = styled(
 
 export type LegendProps = HTMLArkProps<"legend"> & JsxStyleProps & TextProps;
 
-// TODO: This is not exported for now. Let's wait and see when ark decides to release their legend and fieldset.
 export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, color, ...rest }, ref) => (
     <StyledLegend css={css.raw({ textStyle, fontWeight, srOnly, color }, cssProp)} {...rest} ref={ref} />
   ),
 );
+
+export type FieldsetLegendProps = Fieldset.LegendProps & TextProps & JsxStyleProps;
+
+export const FieldsetLegend = forwardRef<HTMLLegendElement, LegendProps>((props, ref) => (
+  <Fieldset.Legend asChild {...props} ref={ref}>
+    <Legend />
+  </Fieldset.Legend>
+));
 
 const StyledLabel = styled(
   ark.label,
@@ -58,15 +65,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
 );
 
 export const FieldLabel = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => (
-  <Field.Label asChild>
-    <Label {...props} ref={ref} />
+  <Field.Label asChild {...props} ref={ref}>
+    <Label />
   </Field.Label>
 ));
-
-export const Fieldset = styled("fieldset", {
-  base: {
-    border: "none",
-    padding: "0",
-    margin: "0",
-  },
-});

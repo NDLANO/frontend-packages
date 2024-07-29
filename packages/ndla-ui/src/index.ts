@@ -123,8 +123,6 @@ export {
   TagSelectorInput,
 } from "./TagSelector/TagSelector";
 
-export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from "./SnackBar";
-export type { Snack, SnackContext } from "./SnackBar";
 export { TreeStructure } from "./TreeStructure";
 export type { TreeStructureProps } from "./TreeStructure";
 

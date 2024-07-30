@@ -1,6 +1,6 @@
 {
   "name": "@ndla/primitives",
-  "version": "0.0.23",
+  "version": "1.0.1-alpha.0",
   "description": "Primitive components for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^0.42.0"
+    "@pandacss/dev": "^0.44.0"
   },
   "peerDependencies": {
     "react": ">= 18",

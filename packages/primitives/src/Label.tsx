@@ -37,9 +37,9 @@ export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
 
 export type FieldsetLegendProps = Fieldset.LegendProps & TextProps & JsxStyleProps;
 
-export const FieldsetLegend = forwardRef<HTMLLegendElement, LegendProps>((props, ref) => (
+export const FieldsetLegend = forwardRef<HTMLLegendElement, LegendProps>(({ children, ...props }, ref) => (
   <Fieldset.Legend asChild {...props} ref={ref}>
-    <Legend />
+    <Legend>{children}</Legend>
   </Fieldset.Legend>
 ));
 

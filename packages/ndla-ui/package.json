@@ -63,7 +63,7 @@
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^0.2.86",
     "@ndla/types-embed": "^5.0.0-alpha.0",
-    "@pandacss/dev": "^0.42.0",
+    "@pandacss/dev": "^0.44.0",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.5",
     "sass-loader": "^13.2.2",

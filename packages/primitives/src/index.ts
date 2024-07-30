@@ -98,11 +98,11 @@ export {
 export type { ExpandableBoxProps, ExpandableBoxSummaryProps } from "./ExpandableBox";
 export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
 
-export { FieldRoot } from "./Field";
+export { FieldRoot, FieldsetRoot } from "./Field";
 
-export { FieldErrorMessage } from "./FieldErrorMessage";
+export { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";
 
-export { FieldHelper } from "./FieldHelper";
+export { FieldHelper, FieldsetHelper } from "./FieldHelper";
 
 export type { FigureSize, FigureVariantProps, FigureProps, FigureFloat } from "./Figure";
 export { Figure } from "./Figure";
@@ -119,8 +119,8 @@ export { Picture, Img, Image, makeSrcQueryString, getSrcSet } from "./Image";
 
 export { Input, FieldInput, InputContainer, TextArea, FieldTextArea } from "./Input";
 
-export type { LabelProps } from "./Label";
-export { Label, FieldLabel } from "./Label";
+export type { LabelProps, LegendProps, FieldsetLegendProps } from "./Label";
+export { Label, FieldLabel, Legend, FieldsetLegend } from "./Label";
 
 export type { MenuRootProps, MenuItemVariantProps, MenuItemProps } from "./Menu";
 export {

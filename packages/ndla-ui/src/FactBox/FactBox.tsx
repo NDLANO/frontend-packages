@@ -33,6 +33,7 @@ const StyledAside = styled("aside", {
     borderColor: "stroke.default",
     borderRadius: "xsmall",
     maxHeight: "surface.xxsmall",
+    clear: "both",
     _closed: {
       _print: {
         overflow: "visible",

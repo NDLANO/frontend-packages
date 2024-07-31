@@ -64,8 +64,8 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
   ),
 );
 
-export const FieldLabel = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => (
+export const FieldLabel = forwardRef<HTMLLabelElement, LabelProps>(({ children, ...props }, ref) => (
   <Field.Label asChild {...props} ref={ref}>
-    <Label />
+    <Label>{children}</Label>
   </Field.Label>
 ));

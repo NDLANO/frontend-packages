@@ -137,9 +137,9 @@ export const InternalRadioGroupLabel = withContext<HTMLLabelElement, RadioGroup.
 );
 
 export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroup.LabelProps & TextProps & JsxStyleProps>(
-  ({ textStyle = "label.large", ...props }, ref) => (
+  ({ textStyle = "label.large", children, ...props }, ref) => (
     <InternalRadioGroupLabel ref={ref} {...props} asChild>
-      <Label textStyle={textStyle} />
+      <Label textStyle={textStyle}>{children}</Label>
     </InternalRadioGroupLabel>
   ),
 );

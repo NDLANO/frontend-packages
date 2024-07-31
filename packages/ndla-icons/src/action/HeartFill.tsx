@@ -9,7 +9,7 @@
 import Icon, { Props } from "../Icon";
 const HeartFill = (props: Props) => (
   <Icon fill="currentColor" data-license="Apache License 2.0" data-source="RemixIcon" viewBox="0 0 24 24" {...props}>
-    <path d="M12 4.53a6 6 0 0 1 8.48 8.46L12 21.5 3.52 13A6 6 0 0 1 12 4.53" />
+    <path d="M16.5 3C19.54 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2" />
   </Icon>
 );
 export default HeartFill;

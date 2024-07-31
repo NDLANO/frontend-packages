@@ -9,7 +9,7 @@
 import Icon, { Props } from "../Icon";
 const HomeFill = (props: Props) => (
   <Icon fill="currentColor" data-license="Apache License 2.0" data-source="RemixIcon" viewBox="0 0 24 24" {...props}>
-    <path d="M21 20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.49c0-.31.14-.6.39-.79l8-6.22a1 1 0 0 1 1.22 0l8 6.22a1 1 0 0 1 .39.79z" />
+    <path d="M20 20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9H1l10.33-9.39a1 1 0 0 1 1.34 0L23 11h-3z" />
   </Icon>
 );
 export default HomeFill;

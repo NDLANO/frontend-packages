@@ -9,7 +9,7 @@
 import Icon, { Props } from "../Icon";
 const ListOrdered = (props: Props) => (
   <Icon fill="currentColor" data-license="Apache License 2.0" data-source="RemixIcon" viewBox="0 0 24 24" {...props}>
-    <path d="M8 4h13v2H8zM5 3v3h1v1H3V6h1V4H3V3zM3 14v-2.5h2V11H3v-1h3v2.5H4v.5h2v1zm2 5.5H3v-1h2V18H3v-1h3v4H3v-1h2zM8 11h13v2H8zm0 7h13v2H8z" />
+    <path d="M5.75 3.5H4.72l-1.47.4v1.55l1-.27V8.5H3V10h4V8.5H5.75zM10 4h11v2H10zm0 7h11v2H10zm0 7h11v2H10zm-7.12-2.37a2.13 2.13 0 1 1 3.8 1.29L5.32 18.5H7V20H3v-1.12l2.47-2.84c.1-.11.16-.26.16-.41a.62.62 0 0 0-1.25-.06l-.01.3h-1.5z" />
   </Icon>
 );
 export default ListOrdered;

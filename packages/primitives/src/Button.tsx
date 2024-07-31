@@ -204,8 +204,7 @@ export type ButtonProps = BaseButtonProps & ButtonVariantProps;
 const StyledButton = styled(ark.button, {}, { baseComponent: true, defaultProps: { type: "button" } });
 
 export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
-  ({ loading, loadingContent: loadingContentProp, replaceContent, onClick, children, ...props }, ref) => {
-    const ariaDisabled = loading ? { "aria-disabled": true } : {};
+  ({ loading, disabled, loadingContent: loadingContentProp, replaceContent, onClick, children, ...props }, ref) => {
     const loadingContent = replaceContent ? (
       loadingContentProp
     ) : (
@@ -216,7 +215,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
     );
 
     return (
-      <StyledButton onClick={loading ? undefined : onClick} {...ariaDisabled} {...props} ref={ref}>
+      <StyledButton onClick={loading ? undefined : onClick} disabled={disabled || loading} {...props} ref={ref}>
         {loading ? loadingContent : children}
       </StyledButton>
     );

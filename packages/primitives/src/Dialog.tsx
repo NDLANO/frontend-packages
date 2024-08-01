@@ -326,9 +326,17 @@ export const DialogTitle = ({
   </InternalDialogTitle>
 );
 
-export const DialogTrigger = Dialog.Trigger;
+export const DialogTrigger = withContext<HTMLButtonElement, JsxStyleProps & Dialog.TriggerProps>(
+  Dialog.Trigger,
+  "trigger",
+  { baseComponent: true },
+);
 
-export const DialogCloseTrigger = Dialog.CloseTrigger;
+export const DialogCloseTrigger = withContext<HTMLButtonElement, JsxStyleProps & Dialog.CloseTriggerProps>(
+  Dialog.CloseTrigger,
+  "closeTrigger",
+  { baseComponent: true },
+);
 
 export const DialogHeader = styled("div", {
   base: {

@@ -203,7 +203,7 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, Menu.TriggerItemProps 
   ),
 );
 
-export const MenuTrigger = withContext<HTMLDivElement, JsxStyleProps & Menu.TriggerProps>(Menu.Trigger, "trigger", {
+export const MenuTrigger = withContext<HTMLButtonElement, JsxStyleProps & Menu.TriggerProps>(Menu.Trigger, "trigger", {
   baseComponent: true,
 });
 

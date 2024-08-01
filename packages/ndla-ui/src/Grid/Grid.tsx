@@ -68,7 +68,12 @@ export const Grid = ({ columns, border, children, background = "gray" }: GridPro
   const amountOfColumns = children?.length === 3 ? "3" : columns;
 
   return (
-    <GridContainer border={border === "none" ? undefined : border} columns={amountOfColumns} background={background}>
+    <GridContainer
+      data-embed-type="grid"
+      border={border === "none" ? undefined : border}
+      columns={amountOfColumns}
+      background={background}
+    >
       {children}
     </GridContainer>
   );

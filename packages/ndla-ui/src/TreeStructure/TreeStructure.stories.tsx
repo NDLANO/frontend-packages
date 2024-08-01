@@ -15,7 +15,7 @@ import { IconButtonV2 } from "@ndla/button";
 import { spacing } from "@ndla/core";
 import { Spinner } from "@ndla/icons";
 import { CloseLine } from "@ndla/icons/action";
-import { Done } from "@ndla/icons/editor";
+import { CheckLine } from "@ndla/icons/editor";
 import { FieldErrorMessage, FieldLabel, FieldRoot, InputContainer, FieldHelper, FieldInput } from "@ndla/primitives";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 import { uuid } from "@ndla/util";
@@ -293,7 +293,7 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
                   size="small"
                   onClick={onSave}
                 >
-                  <Done />
+                  <CheckLine />
                 </IconButtonV2>
               )}
               <IconButtonV2 aria-label={t("close")} title={t("close")} size="small" variant="ghost" onClick={onClose}>

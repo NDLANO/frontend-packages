@@ -13,7 +13,6 @@ import { Minus, MenuBook } from "@ndla/icons/action";
 import { VoicePrintLine } from "@ndla/icons/common";
 import {
   MenuSearchLine,
-  ExternalLearningResource,
   LearningPath,
   MultidisciplinaryTopic,
   SharedResource,
@@ -21,7 +20,7 @@ import {
   SubjectMaterial,
   TasksAndActivities,
 } from "@ndla/icons/contentType";
-import { ChatLine, Media, Video } from "@ndla/icons/editor";
+import { ChatLine, LinkMedium, Media, Video } from "@ndla/icons/editor";
 import { styled } from "@ndla/styled-system/jsx";
 
 import * as contentTypes from "../model/ContentType";
@@ -150,7 +149,7 @@ const iconMap = {
     backgroundColor: colors.concept.light,
   },
   [contentTypes.EXTERNAL]: {
-    icon: ExternalLearningResource,
+    icon: LinkMedium,
     iconColor: colors.external.dark,
     backgroundColor: colors.external.light,
   },

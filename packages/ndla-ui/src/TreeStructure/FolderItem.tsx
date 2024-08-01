@@ -12,8 +12,8 @@ import styled from "@emotion/styled";
 import { ButtonV2 as Button } from "@ndla/button";
 import { colors, spacing, animations, misc, fonts } from "@ndla/core";
 import { ArrowDownShortLine } from "@ndla/icons/common";
-import { FolderOutlined, FolderShared } from "@ndla/icons/contentType";
-import { Done } from "@ndla/icons/editor";
+import { FolderUserFill } from "@ndla/icons/contentType";
+import { CheckLine, FolderLine } from "@ndla/icons/editor";
 import { SafeLink } from "@ndla/safelink";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 import { arrowNavigation } from "./arrowNavigation";
@@ -103,7 +103,7 @@ const FolderName = styled(Button)`
   }
 `;
 
-const StyledDone = styled(Done)`
+const StyledCheck = styled(CheckLine)`
   color: ${colors.support.green};
 `;
 
@@ -202,7 +202,7 @@ const FolderItem = ({
   const isMaxDepth = level > maxLevel;
   const hideArrow = isMaxDepth || emptyFolder;
 
-  const FolderIcon = folder.status === "shared" ? FolderShared : FolderOutlined;
+  const FolderIcon = folder.status === "shared" ? FolderUserFill : FolderLine;
 
   const tabable = selected || focused || (!focusedFolder && !folder.parentId && index === 0);
 
@@ -294,7 +294,7 @@ const FolderItem = ({
       </IconWrapper>
       <StyledName>{name}</StyledName>
       {containsResource && (
-        <StyledDone
+        <StyledCheck
           aria-label={t("myNdla.alreadyInFolder")}
           id={`alreadyAdded-${folder.id}`}
           title={t("myNdla.alreadyInFolder")}

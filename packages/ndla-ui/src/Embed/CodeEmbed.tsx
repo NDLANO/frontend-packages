@@ -9,7 +9,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FileCopyLine } from "@ndla/icons/action";
-import { Done } from "@ndla/icons/editor";
+import { CheckLine } from "@ndla/icons/editor";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { CodeMetaData } from "@ndla/types-embed";
@@ -75,7 +75,7 @@ const CodeEmbed = ({ embed }: Props) => {
           setIsCopied(true);
         }}
       >
-        {isCopied ? <Done /> : <FileCopyLine />}
+        {isCopied ? <CheckLine /> : <FileCopyLine />}
         {isCopied ? t("codeBlock.copiedCode") : t("codeBlock.copyCode")}
       </Button>
     </StyledFigure>

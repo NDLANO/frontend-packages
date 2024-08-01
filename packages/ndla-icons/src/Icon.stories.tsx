@@ -89,7 +89,7 @@ const IconList = ({ icons, folder }: Props) => (
 /**
  * Systemikonene identifiserer handlinger en bruker kan ta på en gitt skjerm, de kan også representere objekter og områder.
  *
- * Systemikonene er hentet fra Google sitt Material Design som er open source og tilgjengelig med Apache License Version 2.0. Hvis det er behov for flere eller nye systemikoner skal disse hentes her: https://material.io/icons/ og hvis det ikke finnes et passende ikon i denne pakken kan man lage nye ikoner ved å bruke disse retningslinjene: https://material.io/guidelines/. Ikoner kan i nød også hentes fra: https://materialdesignicons.com, som også er Apache License Version 2.0.
+ * Systemikonene er hentet fra RemixIcon som er open source og fritt tilgjengelig for alle, lisensiert basert på Apache License Version 2.0. Hvis det er behov for flere eller nye systemikoner skal disse hentes her: https://remixicon.com.
  **/
 export default {
   title: "Components/Icons",

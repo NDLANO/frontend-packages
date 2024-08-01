@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import { enGB, nb, nn } from "date-fns/locale";
 import parse from "html-react-parser";
 import { useMemo } from "react";
-import { Forward } from "@ndla/icons/common";
+import { ArrowRightLine } from "@ndla/icons/common";
 import { CalendarLine } from "@ndla/icons/editor";
 import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
@@ -95,7 +95,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
           </StyledDateContainer>
         )}
       </InfoWrapper>
-      <Forward data-forward />
+      <ArrowRightLine data-forward />
     </StyledSafeLink>
   );
 };

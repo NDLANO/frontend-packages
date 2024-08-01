@@ -9,10 +9,10 @@
 import { OptionProps } from "react-select";
 import styled from "@emotion/styled";
 import { colors, fonts, spacing } from "@ndla/core";
-import { Done } from "@ndla/icons/editor";
+import { CheckLine } from "@ndla/icons/editor";
 import { Option } from "./types";
 
-const StyledCheck = styled(Done)`
+const StyledCheck = styled(CheckLine)`
   visibility: hidden;
   flex-shrink: 0;
   &[data-selected="true"] {

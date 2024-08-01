@@ -8,7 +8,7 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { FileCopyLine } from "@ndla/icons/action";
-import { Forward } from "@ndla/icons/common";
+import { ArrowRightLine } from "@ndla/icons/common";
 import { styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 
@@ -60,7 +60,7 @@ export const Link: StoryObj<typeof Button> = {
     children: (
       <>
         {"Button"}
-        <Forward />
+        <ArrowRightLine />
       </>
     ),
   },

@@ -7,7 +7,7 @@
  */
 
 import { useTranslation } from "react-i18next";
-import { HumanMaleBoard, LogIn } from "@ndla/icons/common";
+import { PresentationLine, LogIn } from "@ndla/icons/common";
 import { Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import ErrorMessage from "./ErrorMessage";
@@ -32,7 +32,7 @@ const ErrorResourceAccessDenied = ({ onAuthenticateClick }: Props) => {
         back: t("errorMessage.back"),
         goToFrontPage: t("errorMessage.goToFrontPage"),
       }}
-      illustrationElement={<HumanMaleBoard size="medium" />}
+      illustrationElement={<PresentationLine size="medium" />}
       customElement={
         <Button onClick={onAuthenticateClick}>
           {t("user.buttonLogIn")}

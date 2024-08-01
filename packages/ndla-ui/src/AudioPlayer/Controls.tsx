@@ -9,9 +9,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { SliderValueChangeDetails } from "@ark-ui/react";
-import { Replay15Line, Forward15 } from "@ndla/icons/action";
+import { Replay15Line, Forward15Line } from "@ndla/icons/action";
 import { Play, Pause, VolumeUp } from "@ndla/icons/common";
-import { Done } from "@ndla/icons/editor";
+import { CheckLine } from "@ndla/icons/editor";
 import {
   Button,
   IconButton,
@@ -245,7 +245,7 @@ const Controls = ({ src, title }: Props) => {
           aria-label={t("audio.controls.forward15sec")}
           onClick={() => onSeekSeconds(15)}
         >
-          <Forward15 />
+          <Forward15Line />
         </Forward15SecButton>
         <ProgressWrapper>
           <Text textStyle="label.medium" asChild consumeCss>
@@ -301,7 +301,7 @@ const Controls = ({ src, title }: Props) => {
                 <SelectItem key={speed} item={speed}>
                   <SelectItemText>{speed}x</SelectItemText>
                   <SelectItemIndicator>
-                    <Done />
+                    <CheckLine />
                   </SelectItemIndicator>
                 </SelectItem>
               ))}

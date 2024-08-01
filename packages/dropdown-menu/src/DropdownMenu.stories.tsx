@@ -9,8 +9,9 @@
 import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
 import { ButtonV2, IconButtonV2 } from "@ndla/button";
-import { HorizontalMenu } from "@ndla/icons/contentType";
-import { DeleteForever, Folder } from "@ndla/icons/editor";
+import { DeleteBinLine } from "@ndla/icons/action";
+import { MoreLine } from "@ndla/icons/contentType";
+import { FolderFill } from "@ndla/icons/editor";
 import { DropdownMenu, DropdownTrigger, DropdownItem, DropdownContent } from ".";
 
 export default {
@@ -31,19 +32,19 @@ export const DropdownStory: StoryFn<typeof DropdownMenu> = (args) => {
     <DropdownMenu>
       <DropdownTrigger>
         <IconButtonV2 aria-label="Show more" title="Show more" variant="ghost" colorTheme="light">
-          <HorizontalMenu />
+          <MoreLine />
         </IconButtonV2>
       </DropdownTrigger>
       <DropdownContent {...args}>
         <DropdownItem>
           <StyledButton variant="ghost" colorTheme="light" shape="sharp" size="small" fontWeight="normal">
-            <Folder />
+            <FolderFill />
             Add item
           </StyledButton>
         </DropdownItem>
         <DropdownItem>
           <StyledButton variant="ghost" colorTheme="danger" shape="sharp" size="small" fontWeight="normal">
-            <DeleteForever />
+            <DeleteBinLine />
             Delete item
           </StyledButton>
         </DropdownItem>

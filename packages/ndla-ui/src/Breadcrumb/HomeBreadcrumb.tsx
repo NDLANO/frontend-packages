@@ -6,7 +6,7 @@
  *
  */
 
-import { ArrowRightShortLine, Home } from "@ndla/icons/common";
+import { ArrowRightShortLine, HomeFill } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import Breadcrumb from "./Breadcrumb";
@@ -51,7 +51,7 @@ const HomeBreadcrumb = ({ items }: Props) => {
     if (item.index === 0 && typeof item.name === "string") {
       return (
         <IconSafeLink aria-label={item.name} to={item.to}>
-          <Home title={item.name} />
+          <HomeFill title={item.name} />
         </IconSafeLink>
       );
     }

@@ -12,7 +12,7 @@ import styled from "@emotion/styled";
 import { IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
 import { CloseLine } from "@ndla/icons/action";
-import { Forward } from "@ndla/icons/common";
+import { ArrowRightLine } from "@ndla/icons/common";
 
 type MessageBoxType = "ghost" | "danger" | "info";
 
@@ -107,7 +107,7 @@ export const MessageBox = ({ type, children, links, showCloseButton, onClose, co
               {links.map((x) => (
                 <Link href={x.href} key={x.href}>
                   <span>{x.text}</span>
-                  <Forward />
+                  <ArrowRightLine />
                 </Link>
               ))}
             </LinkWrapper>

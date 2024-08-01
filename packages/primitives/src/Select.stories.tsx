@@ -11,7 +11,7 @@ import { Portal } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
 import { ArrowUpShortLine } from "@ndla/icons/common";
-import { Done } from "@ndla/icons/editor";
+import { CheckLine } from "@ndla/icons/editor";
 import { css } from "@ndla/styled-system/css";
 import { HStack } from "@ndla/styled-system/jsx";
 import { Button, IconButton } from "./Button";
@@ -76,7 +76,7 @@ export const Default: StoryFn<typeof SelectRoot> = ({ ...args }) => {
               <SelectItem key={measurement.value} item={measurement}>
                 <SelectItemText>{measurement.label}</SelectItemText>
                 <SelectItemIndicator asChild>
-                  <Done />
+                  <CheckLine />
                 </SelectItemIndicator>
               </SelectItem>
             ))}
@@ -108,7 +108,7 @@ export const Disabled: StoryFn<typeof SelectRoot> = ({ ...args }) => {
               <SelectItem key={measurement.value} item={measurement}>
                 <SelectItemText>{measurement.label}</SelectItemText>
                 <SelectItemIndicator asChild>
-                  <Done />
+                  <CheckLine />
                 </SelectItemIndicator>
               </SelectItem>
             ))}
@@ -141,7 +141,7 @@ export const DisabledItems: StoryFn<typeof SelectRoot> = ({ ...args }) => {
               <SelectItem key={measurement.value} item={measurement}>
                 <SelectItemText>{measurement.label}</SelectItemText>
                 <SelectItemIndicator asChild>
-                  <Done />
+                  <CheckLine />
                 </SelectItemIndicator>
               </SelectItem>
             ))}
@@ -185,7 +185,7 @@ export const Grouped: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                   <SelectItem key={country.value} item={country}>
                     <SelectItemText>{country.label}</SelectItemText>
                     <SelectItemIndicator>
-                      <Done />
+                      <CheckLine />
                     </SelectItemIndicator>
                   </SelectItem>
                 ))}
@@ -222,7 +222,7 @@ export const Multiple: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                   <SelectItem key={country.value} item={country}>
                     <SelectItemText>{country.label}</SelectItemText>
                     <SelectItemIndicator>
-                      <Done />
+                      <CheckLine />
                     </SelectItemIndicator>
                   </SelectItem>
                 ))}
@@ -273,7 +273,7 @@ export const MultipleTruncated: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                   <SelectItem key={country.value} item={country}>
                     <SelectItemText>{country.label}</SelectItemText>
                     <SelectItemIndicator>
-                      <Done />
+                      <CheckLine />
                     </SelectItemIndicator>
                   </SelectItem>
                 ))}
@@ -315,7 +315,7 @@ export const WithClearButton: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                   <SelectItem key={country.value} item={country}>
                     <SelectItemText>{country.label}</SelectItemText>
                     <SelectItemIndicator>
-                      <Done />
+                      <CheckLine />
                     </SelectItemIndicator>
                   </SelectItem>
                 ))}
@@ -372,7 +372,7 @@ export const InDialog: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                   <SelectItem key={measurement.value} item={measurement}>
                     <SelectItemText>{measurement.label}</SelectItemText>
                     <SelectItemIndicator>
-                      <Done />
+                      <CheckLine />
                     </SelectItemIndicator>
                   </SelectItem>
                 ))}
@@ -423,7 +423,7 @@ export const WithField: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                 <SelectItem key={measurement.value} item={measurement}>
                   <SelectItemText>{measurement.label}</SelectItemText>
                   <SelectItemIndicator asChild>
-                    <Done />
+                    <CheckLine />
                   </SelectItemIndicator>
                 </SelectItem>
               ))}

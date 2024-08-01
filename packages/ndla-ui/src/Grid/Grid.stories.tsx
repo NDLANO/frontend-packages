@@ -60,7 +60,7 @@ export const GridBlogPostStory: StoryFn<typeof Grid> = ({ ...args }) => {
     <BlogPostStory
       metaImage={BlogPostStory.args?.metaImage!}
       title={BlogPostStory.args?.title!}
-      size={BlogPostStory.args?.size}
+      size={"normal"}
       headingLevel={BlogPostStory.args?.headingLevel}
       url={BlogPostStory.args?.url!}
       author={BlogPostStory.args?.author}

@@ -14,7 +14,7 @@ const GridContainer = styled("div", {
     display: "grid",
     justifyContent: "center",
     borderRadius: "xsmall",
-    padding: "xxlarge",
+    padding: "xsmall",
     gridRowGap: "large",
     gridColumnGap: "medium",
     width: "100%",

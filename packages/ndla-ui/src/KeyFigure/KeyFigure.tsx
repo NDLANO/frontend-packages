@@ -14,6 +14,7 @@ const ContentWrapper = styled("div", {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "center",
   },
 });
 
@@ -27,7 +28,7 @@ const StyledImage = styled("img", {
 const TitleWrapper = styled("div", {
   base: {
     textStyle: "heading.large",
-    whiteSpace: "nowrap",
+    textAlign: "center",
   },
 });
 

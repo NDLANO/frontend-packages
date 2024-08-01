@@ -7,7 +7,7 @@
  */
 
 import { useTranslation } from "react-i18next";
-import { PresentationLine, LogIn } from "@ndla/icons/common";
+import { PresentationLine, LoginBoxLine } from "@ndla/icons/common";
 import { Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import ErrorMessage from "./ErrorMessage";
@@ -37,7 +37,7 @@ const ErrorResourceAccessDenied = ({ onAuthenticateClick }: Props) => {
         <Button onClick={onAuthenticateClick}>
           {t("user.buttonLogIn")}
           <StyledLogInIconWrapper aria-hidden>
-            <LogIn size="medium" />
+            <LoginBoxLine size="medium" />
           </StyledLogInIconWrapper>
         </Button>
       }

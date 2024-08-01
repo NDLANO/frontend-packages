@@ -9,18 +9,17 @@
 import { CSSProperties, ComponentPropsWithoutRef, useMemo } from "react";
 
 import { colors } from "@ndla/core";
-import { Minus, MenuBook } from "@ndla/icons/action";
-import { VoicePrintLine } from "@ndla/icons/common";
+import { SubtractLine } from "@ndla/icons/action";
+import { BookReadFill, ShareFill, VoicePrintLine } from "@ndla/icons/common";
 import {
   MenuSearchLine,
   LearningPath,
-  MultidisciplinaryTopic,
   SharedResource,
   Subject,
   SubjectMaterial,
   TasksAndActivities,
 } from "@ndla/icons/contentType";
-import { ChatLine, LinkMedium, Media, Video } from "@ndla/icons/editor";
+import { ChatLine, LinkMedium, ImageLine, Video } from "@ndla/icons/editor";
 import { styled } from "@ndla/styled-system/jsx";
 
 import * as contentTypes from "../model/ContentType";
@@ -120,7 +119,7 @@ const iconMap = {
     backgroundColor: colors.assessmentResource.light,
   },
   [contentTypes.SUBJECT]: {
-    icon: MenuBook,
+    icon: BookReadFill,
     iconColor: colors.subject.dark,
     backgroundColor: colors.subject.light,
   },
@@ -140,7 +139,7 @@ const iconMap = {
     backgroundColor: colors.subject.light,
   },
   [contentTypes.MULTIDISCIPLINARY_TOPIC]: {
-    icon: MultidisciplinaryTopic,
+    icon: ShareFill,
     backgroundColor: "#b9b37b",
   },
   [contentTypes.CONCEPT]: {
@@ -154,7 +153,7 @@ const iconMap = {
     backgroundColor: colors.external.light,
   },
   [contentTypes.resourceEmbedTypeMapping.image]: {
-    icon: Media,
+    icon: ImageLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
@@ -169,7 +168,7 @@ const iconMap = {
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.MISSING]: {
-    icon: Minus,
+    icon: SubtractLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },

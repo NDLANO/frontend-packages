@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors, fonts, spacing } from "@ndla/core";
-import { Information } from "@ndla/icons/common";
+import { InformationFill } from "@ndla/icons/common";
 import { CheckboxCircleFill } from "@ndla/icons/editor";
 import DropdownMenuImage from "./DropdownMenuImage";
 
@@ -140,7 +140,7 @@ const InfoPart = ({ isSelected, disabledText }: InfoPartProps) => {
     return (
       <StyledIsDisabled>
         {disabledText}
-        <Information aria-hidden={true} />
+        <InformationFill aria-hidden={true} />
       </StyledIsDisabled>
     );
   }

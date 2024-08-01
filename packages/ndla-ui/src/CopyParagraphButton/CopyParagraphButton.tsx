@@ -10,7 +10,7 @@ import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, stackOrder } from "@ndla/core";
-import { Link } from "@ndla/icons/common";
+import { LinkMedium } from "@ndla/icons/editor";
 import { copyTextToClipboard } from "@ndla/util";
 
 const ContainerDiv = styled.div`
@@ -77,7 +77,7 @@ const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
   return (
     <ContainerDiv data-embed-type="copy-heading">
       <IconButton data-copy-button="" onClick={onCopyClick} title={tooltip} aria-label={`${tooltip}: ${copyText}`}>
-        <Link />
+        <LinkMedium />
       </IconButton>
       <h2 id={sanitizedTitle} tabIndex={-1} lang={lang}>
         {children}

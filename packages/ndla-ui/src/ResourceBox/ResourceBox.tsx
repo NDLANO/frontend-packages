@@ -6,7 +6,7 @@
  *
  */
 
-import { Launch } from "@ndla/icons/common";
+import { ShareBoxLine } from "@ndla/icons/common";
 import { Heading, Image, Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
@@ -93,7 +93,7 @@ export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) =
         <StyledText textStyle="body.medium">{caption}</StyledText>
         <SafeLinkButton to={url} target="_blank" variant="secondary">
           {buttonText}
-          <Launch />
+          <ShareBoxLine />
         </SafeLinkButton>
       </ContentWrapper>
     </Container>

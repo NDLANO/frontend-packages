@@ -8,7 +8,7 @@
 
 import parse from "html-react-parser";
 import { ReactNode } from "react";
-import { Forward } from "@ndla/icons/common";
+import { ArrowRightLine } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
@@ -136,7 +136,7 @@ const CampaignBlock = ({
           <MaybeLinkText url={url.url} path={path}>
             <LinkText textStyle="body.medium">
               {parse(url.text ?? "")}
-              <Forward />
+              <ArrowRightLine />
             </LinkText>
           </MaybeLinkText>
         )}

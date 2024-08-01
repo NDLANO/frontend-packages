@@ -8,8 +8,8 @@
 
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Search } from "@ndla/icons/common";
-import { Check } from "@ndla/icons/editor";
+import { SearchLine } from "@ndla/icons/common";
+import { CheckboxCircleFill } from "@ndla/icons/editor";
 import { InputContainer, TextArea } from "./InputV3";
 
 /**
@@ -30,7 +30,7 @@ export const Default: StoryFn<typeof TextArea> = ({ ...args }) => <TextArea {...
 
 export const WithLeftDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   <InputContainer>
-    <Search />
+    <SearchLine />
     <TextArea {...args} />
   </InputContainer>
 );
@@ -38,7 +38,7 @@ export const WithLeftDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
 export const WithRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   <InputContainer>
     <TextArea {...args} />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );
 
@@ -58,8 +58,8 @@ export const WithExistingText: StoryFn<typeof TextArea> = ({ ...args }) => {
 
 export const WithLeftAndRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   <InputContainer>
-    <Search />
+    <SearchLine />
     <TextArea {...args} />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );

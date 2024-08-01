@@ -10,7 +10,7 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2 as Button } from "@ndla/button";
-import { Plus } from "@ndla/icons/action";
+import { AddLine } from "@ndla/icons/action";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 
 interface AddFolderButtonProps {
@@ -28,7 +28,7 @@ const StyledAddFolderButton = styled(Button)`
   }
 `;
 
-const StyledPlus = styled(Plus)`
+const StyledPlus = styled(AddLine)`
   height: 24px;
   width: 24px;
 `;

@@ -8,7 +8,7 @@
 
 import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Heart, HeartOutline } from "@ndla/icons/action";
+import { HeartFill, HeartLine } from "@ndla/icons/action";
 import IconButtonV2, { IconButtonProps } from "./IconButtonV2";
 
 export interface Props extends Omit<IconButtonProps, "aria-label"> {
@@ -18,7 +18,7 @@ export interface Props extends Omit<IconButtonProps, "aria-label"> {
 const FavoriteButton = forwardRef<HTMLButtonElement, Props>(({ isFavorite, onClick }, ref) => {
   const { t } = useTranslation();
   const labelModifier = isFavorite ? "added" : "add";
-  const Icon = isFavorite ? Heart : HeartOutline;
+  const Icon = isFavorite ? HeartFill : HeartLine;
   return (
     <IconButtonV2
       colorTheme="light"

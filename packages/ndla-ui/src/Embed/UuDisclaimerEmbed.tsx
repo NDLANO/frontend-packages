@@ -8,7 +8,7 @@
 
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { InformationOutline } from "@ndla/icons/common";
+import { InformationLine } from "@ndla/icons/common";
 import { MessageBox } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
@@ -52,7 +52,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   return (
     <div role="region" data-embed-type="uu-disclaimer">
       <StyledMessageBox variant="warning" contentEditable={false}>
-        <InformationOutline />
+        <InformationLine />
         <Disclaimer>
           {embedData.disclaimer}
           {disclaimerLink}

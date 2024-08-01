@@ -10,7 +10,7 @@ import { TFunction } from "i18next";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import { ChevronDown } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 import { getLicenseByAbbreviation } from "@ndla/licenses";
 import {
   AccordionItem,
@@ -195,7 +195,7 @@ const ArticleByline = ({
                 <h2>{t("article.useContent")}</h2>
               </Heading>
               <AccordionItemIndicator asChild>
-                <ChevronDown />
+                <ArrowDownShortLine />
               </AccordionItemIndicator>
             </AccordionItemTrigger>
             <AccordionItemContent>{licenseBox}</AccordionItemContent>
@@ -209,7 +209,7 @@ const ArticleByline = ({
                 <h2>{t("article.footnotes")}</h2>
               </Heading>
               <AccordionItemIndicator asChild>
-                <ChevronDown />
+                <ArrowDownShortLine />
               </AccordionItemIndicator>
             </AccordionItemTrigger>
             <AccordionItemContent>

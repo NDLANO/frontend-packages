@@ -8,7 +8,7 @@
 
 import { Portal, Toaster, createToaster } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import { Button, IconButton } from "./Button";
 import { ToastCloseTrigger, ToastDescription, ToastRoot, ToastTitle } from "./Toast";
 
@@ -57,7 +57,7 @@ export const Default: StoryFn<typeof ToastRoot> = ({ ...args }) => (
             <ToastDescription>{toast.description}</ToastDescription>
             <ToastCloseTrigger asChild>
               <IconButton variant="clearSubtle">
-                <Cross />
+                <CloseLine />
               </IconButton>
             </ToastCloseTrigger>
           </ToastRoot>

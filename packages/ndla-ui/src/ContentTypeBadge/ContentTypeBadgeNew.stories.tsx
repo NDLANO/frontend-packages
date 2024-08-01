@@ -8,7 +8,7 @@
 
 import { useTranslation } from "react-i18next";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Video } from "@ndla/icons/editor";
+import { MovieLine } from "@ndla/icons/editor";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { ContentTypeBadge } from "./ContentTypeBadgeNew";
 
@@ -63,7 +63,7 @@ export const ContentOverride: StoryFn<typeof ContentTypeBadge> = () => {
   const { t } = useTranslation();
   return (
     <StyledContentTypeBadge contentType="video">
-      <Video size="small" />
+      <MovieLine size="small" />
       {t("contentTypes.video")}
     </StyledContentTypeBadge>
   );

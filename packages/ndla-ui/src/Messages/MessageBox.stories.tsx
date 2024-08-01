@@ -8,7 +8,7 @@
 
 import { useTranslation } from "react-i18next";
 import { Meta, StoryFn } from "@storybook/react";
-import { Alarm, HumanMaleBoard, InformationOutline, WarningOutline } from "@ndla/icons/common";
+import { NotificationLine, PresentationLine, InformationLine, AlertLine } from "@ndla/icons/common";
 import MessageBox from "./MessageBox";
 
 export default {
@@ -27,7 +27,7 @@ export const Default: StoryFn<typeof MessageBox> = ({ ...args }) => {
   const { t } = useTranslation();
   return (
     <MessageBox {...args}>
-      <InformationOutline />
+      <InformationLine />
       {t("messageBoxInfo.noContent")}
     </MessageBox>
   );
@@ -37,7 +37,7 @@ export const WithoutCloseButton: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox>
-      <InformationOutline />
+      <InformationLine />
       {t("messageBoxInfo.subjectOutdated")}
     </MessageBox>
   );
@@ -53,7 +53,7 @@ export const WithLinks: StoryFn<typeof MessageBox> = () => {
         { text: "link 3", href: "#" },
       ]}
     >
-      <InformationOutline />
+      <InformationLine />
       {t("messageBoxInfo.newVersion")}
     </MessageBox>
   );
@@ -63,7 +63,7 @@ export const Ghost: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox type="ghost">
-      <HumanMaleBoard />
+      <PresentationLine />
       {t("messageBoxInfo.feide")}
     </MessageBox>
   );
@@ -73,7 +73,7 @@ export const Danger: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox type="danger">
-      <WarningOutline />
+      <AlertLine />
       {t("messageBoxInfo.feide")}
     </MessageBox>
   );
@@ -83,7 +83,7 @@ export const WithCustomIcon: StoryFn<typeof MessageBox> = () => {
   const { t } = useTranslation();
   return (
     <MessageBox type="danger">
-      <Alarm />
+      <NotificationLine />
       {t("messageBoxInfo.feide")}
     </MessageBox>
   );

@@ -9,19 +9,10 @@
 import { CSSProperties, ComponentPropsWithoutRef, useMemo } from "react";
 
 import { colors } from "@ndla/core";
-import { Minus, MenuBook } from "@ndla/icons/action";
-import { Audio } from "@ndla/icons/common";
-import {
-  AssessmentResource,
-  ExternalLearningResource,
-  LearningPath,
-  MultidisciplinaryTopic,
-  SharedResource,
-  Subject,
-  SubjectMaterial,
-  TasksAndActivities,
-} from "@ndla/icons/contentType";
-import { Concept, Media, Video } from "@ndla/icons/editor";
+import { BookmarkLine, SubtractLine } from "@ndla/icons/action";
+import { BookReadFill, ShareFill, VoicePrintLine } from "@ndla/icons/common";
+import { MenuSearchLine, LearningPath, SharedResource, TasksAndActivities } from "@ndla/icons/contentType";
+import { ChatLine, FileListLine, LinkMedium, ImageLine, MovieLine } from "@ndla/icons/editor";
 import { styled } from "@ndla/styled-system/jsx";
 
 import * as contentTypes from "../model/ContentType";
@@ -106,7 +97,7 @@ const StyledContentTypeBadge = styled("div", {
 
 const iconMap = {
   [contentTypes.SUBJECT_MATERIAL]: {
-    icon: SubjectMaterial,
+    icon: FileListLine,
     iconColor: colors.subjectMaterial.dark,
     backgroundColor: colors.subjectMaterial.light,
   },
@@ -116,12 +107,12 @@ const iconMap = {
     backgroundColor: colors.tasksAndActivities.light,
   },
   [contentTypes.ASSESSMENT_RESOURCES]: {
-    icon: AssessmentResource,
+    icon: MenuSearchLine,
     iconColor: colors.assessmentResource.dark,
     backgroundColor: colors.assessmentResource.light,
   },
   [contentTypes.SUBJECT]: {
-    icon: MenuBook,
+    icon: BookReadFill,
     iconColor: colors.subject.dark,
     backgroundColor: colors.subject.light,
   },
@@ -136,41 +127,41 @@ const iconMap = {
     backgroundColor: colors.learningPath.light,
   },
   [contentTypes.TOPIC]: {
-    icon: Subject,
+    icon: BookmarkLine,
     iconColor: colors.subject.dark,
     backgroundColor: colors.subject.light,
   },
   [contentTypes.MULTIDISCIPLINARY_TOPIC]: {
-    icon: MultidisciplinaryTopic,
+    icon: ShareFill,
     backgroundColor: "#b9b37b",
   },
   [contentTypes.CONCEPT]: {
-    icon: Concept,
+    icon: ChatLine,
     iconColor: colors.concept.text,
     backgroundColor: colors.concept.light,
   },
   [contentTypes.EXTERNAL]: {
-    icon: ExternalLearningResource,
+    icon: LinkMedium,
     iconColor: colors.external.dark,
     backgroundColor: colors.external.light,
   },
   [contentTypes.resourceEmbedTypeMapping.image]: {
-    icon: Media,
+    icon: ImageLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.audio]: {
-    icon: Audio,
+    icon: VoicePrintLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.video]: {
-    icon: Video,
+    icon: MovieLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.MISSING]: {
-    icon: Minus,
+    icon: SubtractLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },

@@ -9,7 +9,7 @@
 import { forwardRef, useEffect, useId, useRef } from "react";
 import type { ComboboxCollectionItem } from "@ark-ui/react";
 import { ComboboxContext, useTagsInputContext } from "@ark-ui/react";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import {
   ComboboxClearTrigger,
   ComboboxControl,
@@ -153,7 +153,7 @@ export const TagSelectorInput = forwardRef<HTMLInputElement, TagSelectorInputPro
           <TagsInputItemPreview>
             <TagsInputItemText>{value}</TagsInputItemText>
             <TagsInputItemDeleteTrigger>
-              <Cross />
+              <CloseLine />
             </TagsInputItemDeleteTrigger>
           </TagsInputItemPreview>
           <TagsInputItemInput />

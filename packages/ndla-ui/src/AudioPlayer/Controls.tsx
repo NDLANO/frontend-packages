@@ -9,7 +9,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { SliderValueChangeDetails } from "@ark-ui/react";
-import { Back15, Forward15 } from "@ndla/icons/action";
+import { Replay15Line, Forward15 } from "@ndla/icons/action";
 import { Play, Pause, VolumeUp } from "@ndla/icons/common";
 import { Done } from "@ndla/icons/editor";
 import {
@@ -234,7 +234,7 @@ const Controls = ({ src, title }: Props) => {
           aria-label={t("audio.controls.rewind15sec")}
           onClick={() => onSeekSeconds(-15)}
         >
-          <Back15 />
+          <Replay15Line />
         </Back15SecButton>
         <PlayButton aria-label={t(playing ? t("audio.pause") : t("audio.play"))} variant="primary" onClick={togglePlay}>
           {playing ? <Pause /> : <Play />}

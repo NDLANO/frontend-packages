@@ -14,7 +14,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import { IconButtonV2 } from "@ndla/button";
 import { spacing } from "@ndla/core";
 import { Spinner } from "@ndla/icons";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import { Done } from "@ndla/icons/editor";
 import { FieldErrorMessage, FieldLabel, FieldRoot, InputContainer, FieldHelper, FieldInput } from "@ndla/primitives";
 import { IFolder } from "@ndla/types-backend/myndla-api";
@@ -297,7 +297,7 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
                 </IconButtonV2>
               )}
               <IconButtonV2 aria-label={t("close")} title={t("close")} size="small" variant="ghost" onClick={onClose}>
-                <Cross />
+                <CloseLine />
               </IconButtonV2>
             </>
           ) : (

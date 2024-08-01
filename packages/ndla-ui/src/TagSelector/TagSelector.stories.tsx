@@ -10,8 +10,8 @@ import { useState } from "react";
 import type { ComboboxInputValueChangeDetails } from "@ark-ui/react";
 
 import { Meta, StoryFn } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
-import { ChevronDown } from "@ndla/icons/common";
+import { CloseLine } from "@ndla/icons/action";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 import { Done } from "@ndla/icons/editor";
 import {
   ComboboxContent,
@@ -82,14 +82,14 @@ export const Default: StoryFn<typeof TagSelectorRoot> = ({ translations, ...args
 
             <TagSelectorClearTrigger asChild>
               <IconButton variant="clear">
-                <Cross />
+                <CloseLine />
               </IconButton>
             </TagSelectorClearTrigger>
           </InputContainer>
         </TagSelectorControl>
         <TagSelectorTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </TagSelectorTrigger>
       </HStack>

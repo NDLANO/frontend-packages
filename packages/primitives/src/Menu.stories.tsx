@@ -8,8 +8,8 @@
 
 import { Portal } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Copy, Cross, Pencil, TrashCanOutline } from "@ndla/icons/action";
-import { ChevronRight, Share, ShareArrow } from "@ndla/icons/common";
+import { FileCopyLine, CloseLine, Pencil, TrashCanOutline } from "@ndla/icons/action";
+import { ArrowRightShortLine, Share, ShareArrow } from "@ndla/icons/common";
 import { Settings } from "@ndla/icons/editor";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
@@ -59,11 +59,11 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
             </styled.a>
           </MenuItem>
           <MenuItem value="copyLink" disabled>
-            <Copy />
+            <FileCopyLine />
             Kopier lenke til mappen
           </MenuItem>
           <MenuItem value="stopSharing">
-            <Cross />
+            <CloseLine />
             Avslutt deling
           </MenuItem>
           <MenuItem value="delete" variant="destructive">
@@ -99,7 +99,7 @@ export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
               Slett
             </MenuItem>
             <MenuItem value="stopSharing">
-              <Cross />
+              <CloseLine />
               Avslutt deling
             </MenuItem>
           </MenuItemGroup>
@@ -110,7 +110,7 @@ export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
               Gå til delt mappe
             </MenuItem>
             <MenuItem value="copyLink">
-              <Copy />
+              <FileCopyLine />
               Kopier lenke til mappen
             </MenuItem>
           </MenuItemGroup>
@@ -135,7 +135,7 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
               Gå til delt mappe
             </MenuItem>
             <MenuItem value="copyLink">
-              <Copy />
+              <FileCopyLine />
               Kopier lenke til mappen
             </MenuItem>
           </MenuItemGroup>
@@ -145,7 +145,7 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
                 <Settings />
                 Mappehandlinger
               </HStack>
-              <ChevronRight />
+              <ArrowRightShortLine />
             </MenuTriggerItem>
             <Portal>
               <MenuPositioner>
@@ -165,7 +165,7 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
                       Slett
                     </MenuItem>
                     <MenuItem value="stopSharing">
-                      <Cross />
+                      <CloseLine />
                       Avslutt deling
                     </MenuItem>
                   </MenuItemGroup>

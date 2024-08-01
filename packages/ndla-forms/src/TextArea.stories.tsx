@@ -9,7 +9,7 @@
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Search } from "@ndla/icons/common";
-import { Check } from "@ndla/icons/editor";
+import { CheckboxCircleFill } from "@ndla/icons/editor";
 import { InputContainer, TextArea } from "./InputV3";
 
 /**
@@ -38,7 +38,7 @@ export const WithLeftDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
 export const WithRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   <InputContainer>
     <TextArea {...args} />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );
 
@@ -60,6 +60,6 @@ export const WithLeftAndRightDecorative: StoryFn<typeof TextArea> = ({ ...args }
   <InputContainer>
     <Search />
     <TextArea {...args} />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );

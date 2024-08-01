@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Copy } from "@ndla/icons/action";
+import { FileCopyLine } from "@ndla/icons/action";
 import { Forward } from "@ndla/icons/common";
 import { styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
@@ -116,7 +116,7 @@ export const WithIcon: StoryObj<typeof Button> = {
   args: {
     children: (
       <>
-        <Copy />
+        <FileCopyLine />
         Button
       </>
     ),

@@ -9,7 +9,7 @@
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Search } from "@ndla/icons/common";
-import { Check } from "@ndla/icons/editor";
+import { CheckboxCircleFill } from "@ndla/icons/editor";
 import { FieldRoot, FieldsetRoot } from "./Field";
 import { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";
 import { FieldHelper, FieldsetHelper } from "./FieldHelper";
@@ -37,7 +37,7 @@ export const WithLeftDecorative: StoryFn<typeof Input> = () => (
 export const WithRightDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
     <Input />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );
 
@@ -45,7 +45,7 @@ export const WithLeftAndRightDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
     <Search />
     <Input />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );
 
@@ -76,7 +76,7 @@ export const WithField: StoryFn<typeof Input> = () => {
       <InputContainer>
         <Search />
         <FieldInput value={value} onChange={(e) => setValue(e.currentTarget.value)} />
-        <Check />
+        <CheckboxCircleFill />
       </InputContainer>
     </FieldRoot>
   );

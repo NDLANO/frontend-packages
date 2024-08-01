@@ -10,9 +10,9 @@ import { CSSProperties, ComponentPropsWithoutRef, useMemo } from "react";
 
 import { colors } from "@ndla/core";
 import { Minus, MenuBook } from "@ndla/icons/action";
-import { Audio } from "@ndla/icons/common";
+import { VoicePrintLine } from "@ndla/icons/common";
 import {
-  AssessmentResource,
+  MenuSearchLine,
   ExternalLearningResource,
   LearningPath,
   MultidisciplinaryTopic,
@@ -21,7 +21,7 @@ import {
   SubjectMaterial,
   TasksAndActivities,
 } from "@ndla/icons/contentType";
-import { Concept, Media, Video } from "@ndla/icons/editor";
+import { ChatLine, Media, Video } from "@ndla/icons/editor";
 import { styled } from "@ndla/styled-system/jsx";
 
 import * as contentTypes from "../model/ContentType";
@@ -116,7 +116,7 @@ const iconMap = {
     backgroundColor: colors.tasksAndActivities.light,
   },
   [contentTypes.ASSESSMENT_RESOURCES]: {
-    icon: AssessmentResource,
+    icon: MenuSearchLine,
     iconColor: colors.assessmentResource.dark,
     backgroundColor: colors.assessmentResource.light,
   },
@@ -145,7 +145,7 @@ const iconMap = {
     backgroundColor: "#b9b37b",
   },
   [contentTypes.CONCEPT]: {
-    icon: Concept,
+    icon: ChatLine,
     iconColor: colors.concept.text,
     backgroundColor: colors.concept.light,
   },
@@ -160,7 +160,7 @@ const iconMap = {
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.audio]: {
-    icon: Audio,
+    icon: VoicePrintLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },

@@ -8,7 +8,7 @@
 
 import { PaginationContext } from "@ark-ui/react";
 import { Meta, StoryObj } from "@storybook/react";
-import { ChevronLeft, ChevronRight } from "@ndla/icons/common";
+import { ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons/common";
 import { Button } from "./Button";
 import {
   PaginationEllipsis,
@@ -41,7 +41,7 @@ export default {
     <PaginationRoot {...args}>
       <PaginationPrevTrigger asChild>
         <Button variant="tertiary">
-          <ChevronLeft />
+          <ArrowLeftShortLine />
           Forrige
         </Button>
       </PaginationPrevTrigger>
@@ -65,7 +65,7 @@ export default {
       <PaginationNextTrigger asChild>
         <Button variant="tertiary">
           Neste
-          <ChevronRight />
+          <ArrowRightShortLine />
         </Button>
       </PaginationNextTrigger>
     </PaginationRoot>

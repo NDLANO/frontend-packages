@@ -9,8 +9,8 @@
 import { useState } from "react";
 import { Portal, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
-import { ChevronDown } from "@ndla/icons/common";
+import { CloseLine } from "@ndla/icons/action";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 import { Done } from "@ndla/icons/editor";
 import { css } from "@ndla/styled-system/css";
 import { Flex } from "@ndla/styled-system/jsx";
@@ -69,13 +69,13 @@ export const Default: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -115,13 +115,13 @@ export const Disabled: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -165,13 +165,13 @@ export const DisabledItems: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -211,13 +211,13 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -281,13 +281,13 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -345,13 +345,13 @@ export const WithField: StoryFn<typeof ComboboxRoot> = (args) => {
             </ComboboxInput>
             <ComboboxClearTrigger asChild>
               <IconButton variant="clear">
-                <Cross />
+                <CloseLine />
               </IconButton>
             </ComboboxClearTrigger>
           </InputContainer>
           <ComboboxTrigger asChild>
             <IconButton variant="secondary">
-              <ChevronDown />
+              <ArrowDownShortLine />
             </IconButton>
           </ComboboxTrigger>
         </ComboboxControl>

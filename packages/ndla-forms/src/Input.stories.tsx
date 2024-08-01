@@ -8,7 +8,7 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import { Search } from "@ndla/icons/common";
-import { Check } from "@ndla/icons/editor";
+import { CheckboxCircleFill } from "@ndla/icons/editor";
 import { Input, InputContainer } from "./InputV3";
 
 export default {
@@ -32,7 +32,7 @@ export const WithLeftDecorative: StoryFn<typeof Input> = () => (
 export const WithRightDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
     <Input />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );
 
@@ -40,6 +40,6 @@ export const WithLeftAndRightDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
     <Search />
     <Input />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );

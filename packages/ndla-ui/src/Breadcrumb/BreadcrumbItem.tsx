@@ -7,7 +7,7 @@
  */
 
 import { useRef, useImperativeHandle, ReactNode, forwardRef } from "react";
-import { ChevronRight } from "@ndla/icons/common";
+import { ArrowRightShortLine } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 
@@ -67,7 +67,7 @@ const BreadcrumbItem = forwardRef<any, Props>(({ renderItem, renderSeparator, it
           <span>{name}</span>
         </SafeLink>
       )}
-      {renderSeparator ? renderSeparator(item, totalCount) : !isLast && <ChevronRight />}
+      {renderSeparator ? renderSeparator(item, totalCount) : !isLast && <ArrowRightShortLine />}
     </StyledListItem>
   );
 });

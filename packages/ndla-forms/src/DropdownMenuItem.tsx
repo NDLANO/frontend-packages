@@ -12,7 +12,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors, fonts, spacing } from "@ndla/core";
 import { Information } from "@ndla/icons/common";
-import { Check } from "@ndla/icons/editor";
+import { CheckboxCircleFill } from "@ndla/icons/editor";
 import DropdownMenuImage from "./DropdownMenuImage";
 
 const StyledDescription = styled.span`
@@ -132,7 +132,7 @@ const InfoPart = ({ isSelected, disabledText }: InfoPartProps) => {
     return (
       <StyledisSelected>
         {t("dropdown.isSelectedItem")}
-        <Check aria-hidden={true} />
+        <CheckboxCircleFill aria-hidden={true} />
       </StyledisSelected>
     );
   }

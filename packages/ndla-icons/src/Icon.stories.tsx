@@ -14,7 +14,7 @@ import { copyTextToClipboard } from "@ndla/util";
 
 import { Icon } from ".";
 import * as actionIcons from "./action";
-import { Copy } from "./action";
+import { FileCopyLine } from "./action";
 import * as commonIcons from "./common";
 import { Person } from "./common";
 import * as contentTypeIcons from "./contentType";
@@ -43,7 +43,7 @@ const IconItem = ({ icon, folder, name }: IconItemProps) => {
           title="Kopier import-kode"
           aria-label="Kopier import-kode"
         >
-          <Copy />
+          <FileCopyLine />
         </IconButton>
       </div>
     </li>

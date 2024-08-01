@@ -10,7 +10,7 @@ import parse from "html-react-parser";
 import { ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Plus } from "@ndla/icons/action";
-import { ChevronDown, ChevronUp } from "@ndla/icons/common";
+import { ArrowDownShortLine, ArrowUpShortLine } from "@ndla/icons/common";
 import { Figure, FigureSize, FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
@@ -282,7 +282,7 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
             aria-label={t(`license.images.itemImage.${isBylineHidden ? "expandByline" : "minimizeByline"}`)}
             onClick={() => setIsBylineHidden((p) => !p)}
           >
-            {isBylineHidden ? <ChevronDown /> : <ChevronUp />}
+            {isBylineHidden ? <ArrowDownShortLine /> : <ArrowUpShortLine />}
           </BylineButton>
         )}
       </ImageWrapper>

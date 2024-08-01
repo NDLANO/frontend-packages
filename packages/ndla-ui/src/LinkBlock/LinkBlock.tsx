@@ -10,7 +10,8 @@ import { format } from "date-fns";
 import { enGB, nb, nn } from "date-fns/locale";
 import parse from "html-react-parser";
 import { useMemo } from "react";
-import { Forward, CalendarEd } from "@ndla/icons/common";
+import { Forward } from "@ndla/icons/common";
+import { CalendarLine } from "@ndla/icons/editor";
 import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
@@ -63,7 +64,7 @@ const StyledDateContainer = styled("div", {
   },
 });
 
-const StyledCalendarEd = styled(CalendarEd, {
+const StyledCalendarEd = styled(CalendarLine, {
   base: {
     color: "icon.strong",
   },

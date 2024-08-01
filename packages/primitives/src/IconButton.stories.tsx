@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import { css } from "@ndla/styled-system/css";
 import { IconButton } from "./Button";
 
@@ -16,7 +16,7 @@ export default {
   component: IconButton,
   tags: ["autodocs"],
   args: {
-    children: <Cross />,
+    children: <CloseLine />,
   },
   argTypes: {
     children: {

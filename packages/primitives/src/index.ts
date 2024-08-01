@@ -122,6 +122,9 @@ export { Input, FieldInput, InputContainer, TextArea, FieldTextArea } from "./In
 export type { LabelProps, LegendProps, FieldsetLegendProps } from "./Label";
 export { Label, FieldLabel, Legend, FieldsetLegend } from "./Label";
 
+export type { ListItemVariantProps, ListItemProps } from "./ListItem/ListItem";
+export { ListItemRoot, ListItemHeading, ListItemContent, ListItemImage } from "./ListItem/ListItem";
+
 export type { MenuRootProps, MenuItemVariantProps, MenuItemProps } from "./Menu";
 export {
   MenuRoot,

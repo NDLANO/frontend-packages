@@ -16,7 +16,7 @@ import { Icon } from ".";
 import * as actionIcons from "./action";
 import { FileCopyLine } from "./action";
 import * as commonIcons from "./common";
-import { Person } from "./common";
+import { UserFill } from "./common";
 import * as contentTypeIcons from "./contentType";
 import * as editorIcons from "./editor";
 
@@ -93,7 +93,7 @@ const IconList = ({ icons, folder }: Props) => (
  **/
 export default {
   title: "Components/Icons",
-  component: Person,
+  component: UserFill,
   tags: ["autodocs"],
   args: {
     size: "medium",
@@ -101,10 +101,10 @@ export default {
   parameters: {
     inlineStories: true,
   },
-} as Meta<typeof Person>;
+} as Meta<typeof UserFill>;
 
-export const IconStory: StoryFn<typeof Person> = (args) => {
-  return <Person {...args} />;
+export const IconStory: StoryFn<typeof UserFill> = (args) => {
+  return <UserFill {...args} />;
 };
 
 IconStory.storyName = "Icon";

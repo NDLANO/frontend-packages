@@ -9,17 +9,10 @@
 import { CSSProperties, ComponentPropsWithoutRef, useMemo } from "react";
 
 import { colors } from "@ndla/core";
-import { SubtractLine } from "@ndla/icons/action";
+import { BookmarkLine, SubtractLine } from "@ndla/icons/action";
 import { BookReadFill, ShareFill, VoicePrintLine } from "@ndla/icons/common";
-import {
-  MenuSearchLine,
-  LearningPath,
-  SharedResource,
-  Subject,
-  SubjectMaterial,
-  TasksAndActivities,
-} from "@ndla/icons/contentType";
-import { ChatLine, LinkMedium, ImageLine, Video } from "@ndla/icons/editor";
+import { MenuSearchLine, LearningPath, SharedResource, TasksAndActivities } from "@ndla/icons/contentType";
+import { ChatLine, FileListLine, LinkMedium, ImageLine, MovieLine } from "@ndla/icons/editor";
 import { styled } from "@ndla/styled-system/jsx";
 
 import * as contentTypes from "../model/ContentType";
@@ -104,7 +97,7 @@ const StyledContentTypeBadge = styled("div", {
 
 const iconMap = {
   [contentTypes.SUBJECT_MATERIAL]: {
-    icon: SubjectMaterial,
+    icon: FileListLine,
     iconColor: colors.subjectMaterial.dark,
     backgroundColor: colors.subjectMaterial.light,
   },
@@ -134,7 +127,7 @@ const iconMap = {
     backgroundColor: colors.learningPath.light,
   },
   [contentTypes.TOPIC]: {
-    icon: Subject,
+    icon: BookmarkLine,
     iconColor: colors.subject.dark,
     backgroundColor: colors.subject.light,
   },
@@ -163,7 +156,7 @@ const iconMap = {
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.video]: {
-    icon: Video,
+    icon: MovieLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },

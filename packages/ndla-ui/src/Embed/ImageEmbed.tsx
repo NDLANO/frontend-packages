@@ -9,7 +9,7 @@
 import parse from "html-react-parser";
 import { ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Plus } from "@ndla/icons/action";
+import { AddLine } from "@ndla/icons/action";
 import { ArrowDownShortLine, ArrowUpShortLine } from "@ndla/icons/common";
 import { Figure, FigureSize, FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -273,7 +273,7 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
             onClick={toggleImageSize}
             data-expanded={!!imageSizes}
           >
-            <Plus />
+            <AddLine />
           </ExpandButton>
         )}
         {(embedData.size?.endsWith("-hide-byline") || embedData.hideByline === "true") && (

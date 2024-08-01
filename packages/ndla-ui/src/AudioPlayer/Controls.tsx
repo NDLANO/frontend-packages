@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { SliderValueChangeDetails } from "@ark-ui/react";
 import { Replay15Line, Forward15Line } from "@ndla/icons/action";
-import { Play, Pause, VolumeUp } from "@ndla/icons/common";
+import { PlayFill, PauseLine, VolumeUpFill } from "@ndla/icons/common";
 import { CheckLine } from "@ndla/icons/editor";
 import {
   Button,
@@ -237,7 +237,7 @@ const Controls = ({ src, title }: Props) => {
           <Replay15Line />
         </Back15SecButton>
         <PlayButton aria-label={t(playing ? t("audio.pause") : t("audio.play"))} variant="primary" onClick={togglePlay}>
-          {playing ? <Pause /> : <Play />}
+          {playing ? <PauseLine /> : <PlayFill />}
         </PlayButton>
         <Forward15SecButton
           variant="tertiary"
@@ -311,7 +311,7 @@ const Controls = ({ src, title }: Props) => {
         <PopoverRoot positioning={{ placement: "top" }}>
           <PopoverTrigger asChild>
             <VolumeButton variant="tertiary" aria-label={t("audio.controls.adjustVolume")}>
-              <VolumeUp />
+              <VolumeUpFill />
             </VolumeButton>
           </PopoverTrigger>
           <PopoverContent>

@@ -8,9 +8,9 @@
 
 import { Portal } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
-import { FileCopyLine, CloseLine, Pencil, TrashCanOutline } from "@ndla/icons/action";
-import { ArrowRightShortLine, Share, ShareArrow } from "@ndla/icons/common";
-import { Settings } from "@ndla/icons/editor";
+import { FileCopyLine, CloseLine, PencilFill, DeleteBinLine } from "@ndla/icons/action";
+import { ArrowRightShortLine, ShareFill } from "@ndla/icons/common";
+import { SettingsLine } from "@ndla/icons/editor";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 import {
@@ -45,16 +45,16 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
       <MenuPositioner>
         <MenuContent>
           <MenuItem value="edit">
-            <Pencil />
+            <PencilFill />
             Rediger
           </MenuItem>
           <MenuItem value="share">
-            <Share />
+            <ShareFill />
             Del
           </MenuItem>
           <MenuItem value="goToShared" asChild>
             <styled.a href="https://ndla.no">
-              <ShareArrow />
+              <ShareFill />
               Gå til delt mappe
             </styled.a>
           </MenuItem>
@@ -67,7 +67,7 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
             Avslutt deling
           </MenuItem>
           <MenuItem value="delete" variant="destructive">
-            <TrashCanOutline />
+            <DeleteBinLine />
             Slett
           </MenuItem>
         </MenuContent>
@@ -87,15 +87,15 @@ export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
           <MenuItemGroup>
             <MenuItemGroupLabel>Mappehandlinger</MenuItemGroupLabel>
             <MenuItem value="edit">
-              <Pencil />
+              <PencilFill />
               Rediger
             </MenuItem>
             <MenuItem value="share">
-              <Share />
+              <ShareFill />
               Del
             </MenuItem>
             <MenuItem value="delete" variant="destructive">
-              <TrashCanOutline />
+              <DeleteBinLine />
               Slett
             </MenuItem>
             <MenuItem value="stopSharing">
@@ -106,7 +106,7 @@ export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
           <MenuItemGroup>
             <MenuItemGroupLabel>Handlinger</MenuItemGroupLabel>
             <MenuItem value="goToShared">
-              <ShareArrow />
+              <ShareFill />
               Gå til delt mappe
             </MenuItem>
             <MenuItem value="copyLink">
@@ -131,7 +131,7 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
           <MenuItemGroup>
             <MenuItemGroupLabel>Handlinger</MenuItemGroupLabel>
             <MenuItem value="goToShared">
-              <ShareArrow />
+              <ShareFill />
               Gå til delt mappe
             </MenuItem>
             <MenuItem value="copyLink">
@@ -142,7 +142,7 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
           <MenuRoot>
             <MenuTriggerItem css={{ justifyContent: "space-between" }}>
               <HStack gap="3xsmall">
-                <Settings />
+                <SettingsLine />
                 Mappehandlinger
               </HStack>
               <ArrowRightShortLine />
@@ -153,15 +153,15 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
                   <MenuItemGroup>
                     <MenuItemGroupLabel>Mappehandlinger</MenuItemGroupLabel>
                     <MenuItem value="edit">
-                      <Pencil />
+                      <PencilFill />
                       Rediger
                     </MenuItem>
                     <MenuItem value="share">
-                      <Share />
+                      <ShareFill />
                       Del
                     </MenuItem>
                     <MenuItem value="delete" variant="destructive">
-                      <TrashCanOutline />
+                      <DeleteBinLine />
                       Slett
                     </MenuItem>
                     <MenuItem value="stopSharing">

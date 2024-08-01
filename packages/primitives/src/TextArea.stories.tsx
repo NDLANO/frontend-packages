@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Search } from "@ndla/icons/common";
+import { SearchLine } from "@ndla/icons/common";
 import { CheckboxCircleFill } from "@ndla/icons/editor";
 import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
@@ -34,7 +34,7 @@ export const Default: StoryFn<typeof TextArea> = ({ ...args }) => <TextArea {...
 
 export const WithLeftDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   <InputContainer>
-    <Search />
+    <SearchLine />
     <TextArea {...args} />
   </InputContainer>
 );
@@ -62,7 +62,7 @@ export const WithExistingText: StoryFn<typeof TextArea> = () => {
 
 export const WithLeftAndRightDecorative: StoryFn<typeof TextArea> = ({ ...args }) => (
   <InputContainer>
-    <Search />
+    <SearchLine />
     <TextArea {...args} />
     <CheckboxCircleFill />
   </InputContainer>
@@ -77,7 +77,7 @@ export const WithField: StoryFn<typeof TextArea> = () => {
       <FieldHelper>Remember to include every detail!</FieldHelper>
       <FieldErrorMessage>This cannot be empty!</FieldErrorMessage>
       <InputContainer>
-        <Search />
+        <SearchLine />
         <FieldTextArea value={value} onChange={(e) => setValue(e.currentTarget.value)} />
         <CheckboxCircleFill />
       </InputContainer>

@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Search } from "@ndla/icons/common";
+import { SearchLine } from "@ndla/icons/common";
 import { CheckboxCircleFill } from "@ndla/icons/editor";
 import { FieldRoot, FieldsetRoot } from "./Field";
 import { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";
@@ -29,7 +29,7 @@ export const Default: StoryFn<typeof Input> = () => <Input />;
 
 export const WithLeftDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
-    <Search />
+    <SearchLine />
     <Input />
   </InputContainer>
 );
@@ -43,7 +43,7 @@ export const WithRightDecorative: StoryFn<typeof Input> = () => (
 
 export const WithLeftAndRightDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
-    <Search />
+    <SearchLine />
     <Input />
     <CheckboxCircleFill />
   </InputContainer>
@@ -74,7 +74,7 @@ export const WithField: StoryFn<typeof Input> = () => {
       <FieldHelper>Husk å skrive inn hele setningen!</FieldHelper>
       <FieldErrorMessage>Setningen kan ikke være tom!</FieldErrorMessage>
       <InputContainer>
-        <Search />
+        <SearchLine />
         <FieldInput value={value} onChange={(e) => setValue(e.currentTarget.value)} />
         <CheckboxCircleFill />
       </InputContainer>

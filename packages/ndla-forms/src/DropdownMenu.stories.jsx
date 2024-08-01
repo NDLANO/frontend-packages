@@ -20,7 +20,7 @@ import {
   RadioButtonGroup,
 } from "@ndla/forms";
 import { Spinner } from "@ndla/icons";
-import { Search } from "@ndla/icons/common";
+import { SearchLine } from "@ndla/icons/common";
 import { Text } from "@ndla/typography";
 import { SubjectMaterialBadge } from "@ndla/ui";
 import { mockTypeahead } from "../../../dummydata";
@@ -278,7 +278,7 @@ class MultiSelectDropdownExample extends Component {
                   data-testid="dropdown-input"
                   idField="title"
                   labelField="title"
-                  iconRight={loading ? <StyledSpinner size="normal" /> : <Search />}
+                  iconRight={loading ? <StyledSpinner size="normal" /> : <SearchLine />}
                   values={useTags === "1" && addedData}
                   removeItem={this.removeItem}
                 />

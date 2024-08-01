@@ -8,7 +8,7 @@
 
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { VolumeUp } from "@ndla/icons/common";
+import { VolumeUpFill } from "@ndla/icons/common";
 import { TooltipRoot, TooltipTrigger, TooltipContent, IconButton } from "@ndla/primitives";
 
 type Props = {
@@ -38,7 +38,7 @@ const SpeechControl = ({ src, title, type = "audio" }: Props) => {
       <TooltipRoot>
         <TooltipTrigger asChild>
           <IconButton variant="tertiary" aria-label={t(`${type}.play`)} onClick={togglePlay}>
-            <VolumeUp />
+            <VolumeUpFill />
           </IconButton>
         </TooltipTrigger>
         <TooltipContent>{t(`${type}.play`)}</TooltipContent>

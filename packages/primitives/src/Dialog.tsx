@@ -70,6 +70,7 @@ const dialogRecipe = sva({
   defaultVariants: {
     size: "medium",
     position: "center",
+    variant: "dialog",
   },
   compoundVariants: [
     {

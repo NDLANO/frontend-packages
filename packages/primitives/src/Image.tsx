@@ -109,10 +109,11 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
   ) => {
     const srcSet = srcSetProp ?? getSrcSet(src, crop, focalPoint);
     const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
+    const fallbackSrc = src ? `${src}?${queryString}` : src;
     return (
       <picture>
         {contentType !== "image/gif" && <source type={contentType} srcSet={srcSet} sizes={sizes} />}
-        <styled.img alt={alt} src={contentType === "image/gif" ? src : `${src}?${queryString}`} {...props} ref={ref} />
+        <styled.img alt={alt} src={contentType === "image/gif" ? src : fallbackSrc} {...props} ref={ref} />
       </picture>
     );
   },

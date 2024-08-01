@@ -136,6 +136,7 @@ export {
   MenuTriggerItem,
   MenuTrigger,
   MenuSeparator,
+  MenuItemText,
 } from "./Menu";
 
 export type { MessageBoxVariantProps, MessageBoxProps } from "./MessageBox";

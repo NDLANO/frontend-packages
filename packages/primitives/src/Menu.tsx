@@ -212,3 +212,7 @@ export const MenuSeparator = withContext<HTMLHRElement, JsxStyleProps & Menu.Sep
   "separator",
   { baseComponent: true },
 );
+
+export const MenuItemText = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemTextProps>(Menu.ItemText, "itemText", {
+  baseComponent: true,
+});

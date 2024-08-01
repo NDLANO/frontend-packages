@@ -48,8 +48,10 @@ export const listItemRecipe = sva({
       },
     },
     image: {
-      height: "40px",
-      width: "56px",
+      minHeight: "40px",
+      maxHeight: "40px",
+      minWidth: "56px",
+      maxWidth: "56px",
       borderRadius: "xsmall",
       objectFit: "cover",
     },

@@ -344,6 +344,7 @@ export const DialogHeader = styled("div", {
     paddingInline: "medium",
     paddingBlockStart: "medium",
     justifyContent: "space-between",
+    alignItems: "center",
     gap: "xsmall",
   },
 });

@@ -201,7 +201,7 @@ const dialogRecipe = sva({
     position: {
       left: {
         content: {
-          marginInlineStart: "min(var(--margin), 5%)",
+          marginInlineStart: "var(--margin",
         },
       },
       center: {},

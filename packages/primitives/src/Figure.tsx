@@ -111,8 +111,6 @@ export type FigureProps = HTMLArkProps<"figure"> & JsxStyleProps & FigureVariant
 
 const StyledFigure = styled(ark.figure, {}, { baseComponent: true });
 
-export const Figure = forwardRef<HTMLElement, FigureProps>(
-  ({ size = "medium", float, css: cssProp, ...props }, ref) => {
-    return <StyledFigure css={css.raw(figureRecipe.raw({ size, float }), cssProp)} {...props} ref={ref} />;
-  },
-);
+export const Figure = forwardRef<HTMLElement, FigureProps>(({ size, float, css: cssProp, ...props }, ref) => {
+  return <StyledFigure css={css.raw(figureRecipe.raw({ size, float }), cssProp)} {...props} ref={ref} />;
+});

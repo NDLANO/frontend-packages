@@ -47,11 +47,12 @@ export const errorSvgSrc = `data:image/svg+xml;charset=UTF-8,%3Csvg fill='%238A8
 
 const getFigureProps = (size?: string, float?: string): FigureVariantProps => {
   const actualFloat = float === "left" ? "left" : float === "right" ? "right" : undefined;
-  const replacedSize: FigureSize = (size?.replace("-hide-byline", "") ?? "full") as FigureSize;
+  const replacedSize = size?.replace("-hide-byline", "") ?? "full";
+  const actualSize: FigureSize = (replacedSize === "fullwidth" ? "full" : replacedSize) as FigureSize;
   return {
     float: actualFloat,
     // Figure expects you to set a size when floating. If you don't, the figure will simply take up the available width. Fallback to medium in those cases.
-    size: replacedSize === "full" && float ? "medium" : replacedSize,
+    size: actualSize === "full" && float ? "medium" : actualSize,
   };
 };
 

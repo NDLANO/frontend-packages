@@ -10,15 +10,10 @@ import { ReactNode } from "react";
 import { Heading, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import ArticleByline from "./ArticleByline";
+import { ArticleContent } from "./ArticleContent";
 import { ContentTypeBadgeNew } from "..";
 import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import { Article as ArticleType } from "../types";
-
-export const ArticleContent = styled("section", {
-  base: {
-    width: "100%",
-  },
-});
 
 export const ArticleWrapper = styled("article", {
   base: {

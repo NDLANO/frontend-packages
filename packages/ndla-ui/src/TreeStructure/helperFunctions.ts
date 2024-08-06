@@ -7,7 +7,6 @@
  */
 
 import { IFolder } from "@ndla/types-backend/myndla-api";
-import { TreeStructureType } from "./types";
 
 export const flattenFolders = (folders: IFolder[], openFolders?: string[]): IFolder[] => {
   return folders.reduce((acc, { subfolders, id, ...rest }) => {
@@ -18,6 +17,6 @@ export const flattenFolders = (folders: IFolder[], openFolders?: string[]): IFol
   }, [] as IFolder[]);
 };
 
-export const treestructureId = (type: TreeStructureType, modifier: string) => {
-  return `${type}-treestructure-${modifier}`;
+export const treestructureId = (modifier: string) => {
+  return `treestructure-${modifier}`;
 };

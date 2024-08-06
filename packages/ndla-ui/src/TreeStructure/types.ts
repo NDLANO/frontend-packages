@@ -9,8 +9,6 @@
 import { ReactNode } from "react";
 import { IFolder, IResource } from "@ndla/types-backend/myndla-api";
 
-export type TreeStructureType = "navigation" | "picker";
-
 export type OnCreatedFunc = (folder: IFolder | undefined, parentId: string) => void;
 
 export type NewFolderInputFunc = ({
@@ -26,7 +24,6 @@ export type NewFolderInputFunc = ({
 export interface CommonTreeStructureProps {
   loading?: boolean;
   targetResource?: IResource;
-  type: TreeStructureType;
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {
@@ -38,6 +35,5 @@ export interface CommonFolderItemsProps extends CommonTreeStructureProps {
   onOpenFolder: (id: string) => void;
   setFocusedFolder: (folder: IFolder) => void;
   setSelectedFolder: (folder: IFolder) => void;
-  visibleFolders: IFolder[];
   closeTree: () => void;
 }

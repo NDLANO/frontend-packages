@@ -17,6 +17,7 @@ import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline";
+import { checkAndAddPunctuation } from "../utils/checkEmbedText";
 
 interface Props {
   embed: ImageMetaData;
@@ -225,10 +226,10 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
 
   const parsedDescription = useMemo(() => {
     if (embed.embedData.caption || renderContext === "article") {
-      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
+      return embed.embedData.caption ? parse(checkAndAddPunctuation(embed.embedData.caption)) : undefined;
     }
     if (embed.status === "success" && embed.data.caption.caption) {
-      return parse(embed.data.caption.caption);
+      return parse(checkAndAddPunctuation(embed.data.caption.caption));
     }
   }, [embed, renderContext]);
 

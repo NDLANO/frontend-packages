@@ -15,6 +15,7 @@ import { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline";
+import { checkAndAddPunctuation } from "../utils/checkEmbedText";
 
 interface Props {
   embed: BrightcoveMetaData;
@@ -62,9 +63,9 @@ const BrightcoveEmbed = ({ embed, renderContext = "article" }: Props) => {
   const fallbackTitle = `${t("embed.type.video")}: ${embedData.videoid}`;
   const parsedDescription = useMemo(() => {
     if (embed.embedData.caption || renderContext === "article") {
-      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
+      return embed.embedData.caption ? parse(checkAndAddPunctuation(embed.embedData.caption)) : undefined;
     } else if (embed.status === "success" && embed.data.description) {
-      return parse(embed.data.description);
+      return parse(checkAndAddPunctuation(embed.data.description));
     }
   }, [embed, renderContext]);
 

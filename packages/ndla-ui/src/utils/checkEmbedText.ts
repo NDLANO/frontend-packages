@@ -6,8 +6,9 @@
  *
  */
 
+const regex = /[.!?]$/;
+
 export const checkAndAddPunctuation = (inputText: string): string => {
-  const regex = /[.!?]$/;
   if (!regex.test(inputText)) {
     return inputText + ".";
   }

@@ -73,10 +73,12 @@ export const DifferentFiles: StoryObj<typeof File> = {
       <FileListItem>
         <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
       </FileListItem>
-      <PdfFile
-        title="Fil 3"
-        url="https://api.test.ndla.no/files/131789/krypteringsaktivitet_-_til_fiendegruppe_bm.pdf"
-      />
+      <FileListItem>
+        <PdfFile
+          title="Fil 3"
+          url="https://api.test.ndla.no/files/131789/krypteringsaktivitet_-_til_fiendegruppe_bm.pdf"
+        />
+      </FileListItem>
       <FileListItem>
         <File title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" fileSize="100 mb" />
       </FileListItem>
@@ -86,16 +88,14 @@ export const DifferentFiles: StoryObj<typeof File> = {
 
 export const NoHeader: StoryObj<typeof File> = {
   render: () => (
-    <FileListRoot>
-      <ul>
-        <FileListItem>
-          <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
-        </FileListItem>
-        <FileListItem>
-          <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
-        </FileListItem>
-      </ul>
-    </FileListRoot>
+    <FileListEmbed showHeader={false}>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      </FileListItem>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      </FileListItem>
+    </FileListEmbed>
   ),
 };
 

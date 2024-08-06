@@ -12,6 +12,7 @@ import { Heading } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
+  showHeader?: boolean;
   children: ReactNode;
 }
 
@@ -39,13 +40,15 @@ export const FileListItem = styled("li", {
   },
 });
 
-export const FileListEmbed = ({ children, ...rest }: Props) => {
+export const FileListEmbed = ({ showHeader = true, children, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
     <FileListRoot {...rest}>
-      <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
-        <h3>{t("files")}</h3>
-      </Heading>
+      {showHeader ? (
+        <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
+          <h3>{t("files")}</h3>
+        </Heading>
+      ) : null}
       <ul>{children}</ul>
     </FileListRoot>
   );

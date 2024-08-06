@@ -59,8 +59,6 @@ export { default as FactBox } from "./FactBox";
 export type { ContentTypeHeroProps } from "./ContentTypeHero";
 export { ContentTypeHero } from "./ContentTypeHero";
 
-export { default as resourceTypeColor } from "./utils/resourceTypeColor";
-
 export { ResourceBox } from "./ResourceBox";
 
 export { default as AudioPlayer } from "./AudioPlayer";

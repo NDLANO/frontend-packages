@@ -59,11 +59,7 @@ export { default as FactBox } from "./FactBox";
 export type { ContentTypeHeroProps } from "./ContentTypeHero";
 export { ContentTypeHero } from "./ContentTypeHero";
 
-export { FooterBlock } from "./Footer";
-
 export { default as resourceTypeColor } from "./utils/resourceTypeColor";
-
-export { MessageBox } from "./Messages";
 
 export { ResourceBox } from "./ResourceBox";
 

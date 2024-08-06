@@ -21,6 +21,7 @@ export const ExpandableBox = styled("details", {
     borderRadius: "xsmall",
     borderColor: "stroke.subtle",
     padding: "medium",
+    clear: "both",
     _open: {
       padding: "medium",
       "& summary": {

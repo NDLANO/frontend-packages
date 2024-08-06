@@ -18,6 +18,7 @@ const badgeRecipe = cva({
     borderRadius: "xsmall",
     border: "1px solid",
     width: "fit-content",
+    color: "text.default",
   },
   defaultVariants: {
     colorTheme: "neutral",

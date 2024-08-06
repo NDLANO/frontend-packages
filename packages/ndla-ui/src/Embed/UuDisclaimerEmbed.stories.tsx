@@ -12,10 +12,10 @@ import { UuDisclaimerEmbedData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
-import { ArticleWrapper } from "../Article";
+import { ArticleWrapper, ArticleContent } from "../Article";
 import CopyParagraphButton from "../CopyParagraphButton";
 import FactBox from "../FactBox";
-import LayoutItem, { OneColumn } from "../Layout";
+import { OneColumn } from "../Layout";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
@@ -30,12 +30,10 @@ const meta: Meta<typeof UuDisclaimerEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <ArticleWrapper modifier="clean">
-          <LayoutItem layout="center">
-            <section>
-              <Story />
-            </section>
-          </LayoutItem>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
         </ArticleWrapper>
       </OneColumn>
     ),

@@ -7,7 +7,6 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import { colors } from "@ndla/core";
 import HomeBreadcrumb from "./HomeBreadcrumb";
 
 const items = [
@@ -42,14 +41,3 @@ export default {
 } as Meta<typeof HomeBreadcrumb>;
 
 export const Default: StoryObj<typeof HomeBreadcrumb> = {};
-
-export const Light: StoryObj<typeof HomeBreadcrumb> = {
-  args: { light: true },
-  decorators: [
-    (Story) => (
-      <div style={{ backgroundColor: colors.brand.primary }}>
-        <Story />
-      </div>
-    ),
-  ],
-};

@@ -9,7 +9,7 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { AccordionItemTrigger } from "@ark-ui/react";
-import { ChevronDown } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 import {
   AccordionItem,
   AccordionItemContent,
@@ -170,7 +170,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
             <AccordionItemTrigger asChild>
               <IconButton variant="tertiary" aria-label={t("gloss.showExamples")} title={t("gloss.showExamples")}>
                 <AccordionItemIndicator asChild>
-                  <ChevronDown size="medium" />
+                  <ArrowDownShortLine size="medium" />
                 </AccordionItemIndicator>
               </IconButton>
             </AccordionItemTrigger>

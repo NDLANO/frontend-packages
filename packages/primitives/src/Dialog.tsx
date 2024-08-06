@@ -70,6 +70,7 @@ const dialogRecipe = sva({
   defaultVariants: {
     size: "medium",
     position: "center",
+    variant: "dialog",
   },
   compoundVariants: [
     {
@@ -200,7 +201,7 @@ const dialogRecipe = sva({
     position: {
       left: {
         content: {
-          marginInlineStart: "min(var(--margin), 5%)",
+          marginInlineStart: "var(--margin)",
         },
       },
       center: {},
@@ -325,9 +326,17 @@ export const DialogTitle = ({
   </InternalDialogTitle>
 );
 
-export const DialogTrigger = Dialog.Trigger;
+export const DialogTrigger = withContext<HTMLButtonElement, JsxStyleProps & Dialog.TriggerProps>(
+  Dialog.Trigger,
+  "trigger",
+  { baseComponent: true },
+);
 
-export const DialogCloseTrigger = Dialog.CloseTrigger;
+export const DialogCloseTrigger = withContext<HTMLButtonElement, JsxStyleProps & Dialog.CloseTriggerProps>(
+  Dialog.CloseTrigger,
+  "closeTrigger",
+  { baseComponent: true },
+);
 
 export const DialogHeader = styled("div", {
   base: {
@@ -335,6 +344,7 @@ export const DialogHeader = styled("div", {
     paddingInline: "medium",
     paddingBlockStart: "medium",
     justifyContent: "space-between",
+    alignItems: "center",
     gap: "xsmall",
   },
 });

@@ -39,38 +39,53 @@ export const globalCss = defineGlobalStyles({
   "iframe#launcher": {
     display: "none",
   },
-  // TODO: Remove these again once they're no longer needed.
-  // Some text elements don't have a styling class, and therefor no margin. Handled with generic fallbacks in old global css, and now temporarily handled by these selectors.
-  "h1:not([class])": {
-    margin: "24px 0 12px 0",
+  // For future readers: Life here would be much simpler if we could use flex.
+  // However, our usage of float within the article content forces us to use margins.
+  ".ndla-article": {
+    h1: {
+      textStyle: "heading.medium",
+    },
+    h2: {
+      textStyle: "heading.small",
+    },
+    h3: {
+      textStyle: "title.large",
+    },
+    "h4, h5, h6": {
+      textStyle: "title.medium",
+    },
+    textStyle: "body.article",
+    width: "100%",
+
+    // TODO: Re-check all margin values here. Especially headings.
+    // TODO: Reconsider grid margins. Do we want custom handling for items inside a grid?
+
+    // Non-figure block elements that should have margin above and below.
+    '& details, blockquote, [data-embed-type="framed-content"], [data-embed-type="factbox"], table, [data-embed-type="related-content-list"], [data-embed-type="link-block-list"], [data-embed-type="blog-post"], [data-embed-type="campaign-block"], [data-embed-type="key-figure"], [data-embed-type="grid"], [data-embed-type="contact-block"], [data-embed-type="uu-disclaimer"]':
+      {
+        marginBlockStart: "xsmall",
+        marginBlockEnd: "xsmall",
+      },
+
+    // Article content is usually wrapped in a section. The rest of the elements in this list contains other elements, and should add margin to them no matter where they are placed in the DOM.
+    '& section:not([class]), section:not([class]) > div:not([class]), [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"], [data-embed-type="uu-disclaimer"], details, blockquote':
+      {
+        // TODO: Remove copy-heading if we can merge the new heading links
+        '& > :is(h2, [data-embed-type="copy-heading"])': {
+          marginBlockStart: "medium",
+          marginBlockEnd: "medium",
+        },
+        "& > h3": {
+          marginBlockStart: "small",
+          marginBlockEnd: "small",
+        },
+        '& > :is(p, h4, h5, h6, figure, ul, ol, dl, [data-embed-type="speech"])': {
+          marginBlockStart: "xsmall",
+          marginBlockEnd: "xsmall",
+        },
+      },
   },
-  "h2:not([class])": {
-    margin: "48px 0 12px 0",
-  },
-  "h3:not([class]), h4:not([class]), h5:not([class])": {
-    margin: "36px 0 6px 0",
-  },
-  "p:not([class])": {
-    marginBottom: "24px",
-  },
-  "blockquote:not([class])": {
-    margin: "30px 0",
-  },
-  h1: {
-    textStyle: "heading.medium",
-  },
-  h2: {
-    textStyle: "heading.small",
-  },
-  h3: {
-    textStyle: "title.large",
-  },
-  "h4, h5, h6": {
-    textStyle: "title.medium",
-  },
-  p: {
-    textStyle: "body.medium",
-  },
+  // Adds default link styling to links without classes
   'a:not([class]):not([data-unstyled]), a[class=""]:not([data-unstyled])': {
     color: "text.link",
     textDecoration: "underline",

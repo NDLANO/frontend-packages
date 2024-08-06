@@ -16,8 +16,7 @@ export interface ContactBlockEmbedData {
   imageId: string;
   description: string;
   alt?: string;
-  blobColor?: "pink" | "green";
-  blob?: "pointy" | "round";
+  background?: string;
 }
 export interface ContactBlockData {
   image: IImageMetaInformationV3;

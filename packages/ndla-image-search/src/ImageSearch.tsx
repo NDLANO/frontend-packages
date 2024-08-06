@@ -10,7 +10,7 @@ import { ChangeEvent, Component, ReactNode, KeyboardEvent } from "react";
 import styled from "@emotion/styled";
 import { fonts, colors, spacing, mq, breakpoints } from "@ndla/core";
 import { InputContainer, InputV3 } from "@ndla/forms";
-import { Search as SearchIcon } from "@ndla/icons/common";
+import { SearchLine } from "@ndla/icons/common";
 import { Pager } from "@ndla/pager";
 import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
 import ImageSearchResult from "./ImageSearchResult";
@@ -394,7 +394,7 @@ class ImageSearch extends Component<Props, State> {
               this.searchImages({ query: queryString, page: 1 });
             }}
           >
-            <SearchIcon />
+            <SearchLine />
           </SearchIconButton>
         </InputContainer>
         {noResultsFound && this.props.noResults}

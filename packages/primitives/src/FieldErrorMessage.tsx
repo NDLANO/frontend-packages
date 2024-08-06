@@ -7,26 +7,42 @@
  */
 
 import { forwardRef } from "react";
-import { Field, HTMLArkProps } from "@ark-ui/react";
+import { Field, Fieldset } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
-import { TextProps } from "./Text";
+import type { JsxStyleProps, SystemStyleObject } from "@ndla/styled-system/types";
+import type { TextProps } from "./Text";
 
-const StyledErrorText = styled(
+const errorTextStyling: SystemStyleObject = {
+  color: "text.error",
+  whiteSpace: "pre-line",
+  justifyContent: "center",
+};
+
+const StyledFieldErrorText = styled(
   Field.ErrorText,
   {
-    base: {
-      color: "text.error",
-      whiteSpace: "pre-line",
-      justifyContent: "center",
-    },
+    base: errorTextStyling,
   },
   { baseComponent: true },
 );
 
-export const FieldErrorMessage = forwardRef<HTMLSpanElement, TextProps & HTMLArkProps<"div"> & JsxStyleProps>(
-  ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => {
-    return <StyledErrorText css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />;
+export const FieldErrorMessage = forwardRef<HTMLSpanElement, Field.ErrorTextProps & TextProps & JsxStyleProps>(
+  ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => (
+    <StyledFieldErrorText css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />
+  ),
+);
+
+const StyledFieldsetErrorText = styled(
+  Fieldset.ErrorText,
+  {
+    base: errorTextStyling,
   },
+  { baseComponent: true },
+);
+
+export const FieldsetErrorText = forwardRef<HTMLSpanElement, Fieldset.ErrorTextProps & TextProps & JsxStyleProps>(
+  ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => (
+    <StyledFieldsetErrorText css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />
+  ),
 );

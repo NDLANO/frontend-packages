@@ -8,7 +8,7 @@
 
 import styled from "@emotion/styled";
 import { colors, fonts, spacing, spacingUnit, misc } from "@ndla/core";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 
 const StyledPill = styled.div`
   padding: ${spacingUnit / 8}px 0 ${spacingUnit / 8}px ${spacingUnit / 4}px;
@@ -53,7 +53,7 @@ interface FormPillProps {
 export const FormPill = ({ label, id, onClick }: FormPillProps) => (
   <StyledPill>
     <button type="button">
-      <Cross size="small" onClick={() => onClick?.(id)} />
+      <CloseLine size="small" onClick={() => onClick?.(id)} />
       <span>{label}</span>
     </button>
   </StyledPill>

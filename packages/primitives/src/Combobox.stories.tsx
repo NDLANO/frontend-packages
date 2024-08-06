@@ -9,9 +9,9 @@
 import { useState } from "react";
 import { Portal, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
-import { ChevronDown } from "@ndla/icons/common";
-import { Done } from "@ndla/icons/editor";
+import { CloseLine } from "@ndla/icons/action";
+import { ArrowDownShortLine } from "@ndla/icons/common";
+import { CheckLine } from "@ndla/icons/editor";
 import { css } from "@ndla/styled-system/css";
 import { Flex } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
@@ -69,13 +69,13 @@ export const Default: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -86,7 +86,7 @@ export const Default: StoryFn<typeof ComboboxRoot> = (args) => {
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
                 <ComboboxItemIndicator>
-                  <Done />
+                  <CheckLine />
                 </ComboboxItemIndicator>
               </ComboboxItem>
             ))}
@@ -115,13 +115,13 @@ export const Disabled: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -132,7 +132,7 @@ export const Disabled: StoryFn<typeof ComboboxRoot> = (args) => {
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
                 <ComboboxItemIndicator>
-                  <Done />
+                  <CheckLine />
                 </ComboboxItemIndicator>
               </ComboboxItem>
             ))}
@@ -165,13 +165,13 @@ export const DisabledItems: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -182,7 +182,7 @@ export const DisabledItems: StoryFn<typeof ComboboxRoot> = (args) => {
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
                 <ComboboxItemIndicator>
-                  <Done />
+                  <CheckLine />
                 </ComboboxItemIndicator>
               </ComboboxItem>
             ))}
@@ -211,13 +211,13 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -234,7 +234,7 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
                   </Flex>
                 </Flex>
                 <ComboboxItemIndicator>
-                  <Done />
+                  <CheckLine />
                 </ComboboxItemIndicator>
               </ComboboxItem>
             ))}
@@ -281,13 +281,13 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxInput>
           <ComboboxClearTrigger asChild>
             <IconButton variant="clear">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </ComboboxClearTrigger>
         </InputContainer>
         <ComboboxTrigger asChild>
           <IconButton variant="secondary">
-            <ChevronDown />
+            <ArrowDownShortLine />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>
@@ -303,7 +303,7 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
                     <ComboboxItem key={item.value} item={item}>
                       <ComboboxItemText>{item.label}</ComboboxItemText>
                       <ComboboxItemIndicator>
-                        <Done />
+                        <CheckLine />
                       </ComboboxItemIndicator>
                     </ComboboxItem>
                   ))}
@@ -345,13 +345,13 @@ export const WithField: StoryFn<typeof ComboboxRoot> = (args) => {
             </ComboboxInput>
             <ComboboxClearTrigger asChild>
               <IconButton variant="clear">
-                <Cross />
+                <CloseLine />
               </IconButton>
             </ComboboxClearTrigger>
           </InputContainer>
           <ComboboxTrigger asChild>
             <IconButton variant="secondary">
-              <ChevronDown />
+              <ArrowDownShortLine />
             </IconButton>
           </ComboboxTrigger>
         </ComboboxControl>
@@ -362,7 +362,7 @@ export const WithField: StoryFn<typeof ComboboxRoot> = (args) => {
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
                   <ComboboxItemIndicator>
-                    <Done />
+                    <CheckLine />
                   </ComboboxItemIndicator>
                 </ComboboxItem>
               ))}

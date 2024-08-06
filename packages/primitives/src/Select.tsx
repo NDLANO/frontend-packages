@@ -235,3 +235,7 @@ export const SelectValueText = withContext<HTMLSpanElement, Select.ValueTextProp
   "valueText",
   { baseComponent: true },
 );
+
+export const SelectList = withContext<HTMLDivElement, Select.ListProps & JsxStyleProps>(Select.List, "list", {
+  baseComponent: true,
+});

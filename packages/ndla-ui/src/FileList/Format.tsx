@@ -8,7 +8,7 @@
 
 import styled from "@emotion/styled";
 import { colors, spacing } from "@ndla/core";
-import { Download } from "@ndla/icons/common";
+import { DownloadLine } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
 import { Text } from "@ndla/typography";
 import { FileFormat } from "./File";
@@ -39,7 +39,7 @@ const FileLink = styled(SafeLink)`
   overflow-wrap: anywhere;
 `;
 
-const StyledDownload = styled(Download)`
+const StyledDownload = styled(DownloadLine)`
   margin-top: 3px;
   flex-shrink: 0;
   margin-right: ${spacing.small};

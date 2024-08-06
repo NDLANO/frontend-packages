@@ -12,4 +12,5 @@ export {
   useComboboxTranslations,
   useTagSelectorTranslations,
   useTagsInputTranslations,
+  usePaginationTranslations,
 } from "./useComponentTranslations";

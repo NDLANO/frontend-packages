@@ -61,6 +61,7 @@ export type {
   ComboboxLabelProps,
   ComboboxPositionerProps,
   ComboboxTriggerProps,
+  ComboboxListProps,
 } from "./Combobox";
 export {
   ComboboxRoot,
@@ -76,6 +77,7 @@ export {
   ComboboxLabel,
   ComboboxPositioner,
   ComboboxTrigger,
+  ComboboxList,
 } from "./Combobox";
 
 export type { DialogVariantProps, DialogRootProps } from "./Dialog";
@@ -96,11 +98,11 @@ export {
 export type { ExpandableBoxProps, ExpandableBoxSummaryProps } from "./ExpandableBox";
 export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
 
-export { FieldRoot } from "./Field";
+export { FieldRoot, FieldsetRoot } from "./Field";
 
-export { FieldErrorMessage } from "./FieldErrorMessage";
+export { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";
 
-export { FieldHelper } from "./FieldHelper";
+export { FieldHelper, FieldsetHelper } from "./FieldHelper";
 
 export type { FigureSize, FigureVariantProps, FigureProps, FigureFloat } from "./Figure";
 export { Figure } from "./Figure";
@@ -108,14 +110,20 @@ export { Figure } from "./Figure";
 export type { FramedContentVariantProps, FramedContentProps } from "./FramedContent";
 export { FramedContent } from "./FramedContent";
 
+export type { HeroVariantProps, HeroVariant, HeroProps, HeroBackgroundProps, HeroContentProps } from "./Hero";
+export { Hero, HeroBackground, HeroContent } from "./Hero";
+
 export type { ImageCrop, ImageFocalPoint, PictureProps, ImgProps, ImageProps } from "./Image";
 
 export { Picture, Img, Image, makeSrcQueryString, getSrcSet } from "./Image";
 
 export { Input, FieldInput, InputContainer, TextArea, FieldTextArea } from "./Input";
 
-export type { LabelProps } from "./Label";
-export { Label, FieldLabel } from "./Label";
+export type { LabelProps, LegendProps, FieldsetLegendProps } from "./Label";
+export { Label, FieldLabel, Legend, FieldsetLegend } from "./Label";
+
+export type { ListItemVariantProps, ListItemProps } from "./ListItem/ListItem";
+export { ListItemRoot, ListItemHeading, ListItemContent, ListItemImage } from "./ListItem/ListItem";
 
 export type { MenuRootProps, MenuItemVariantProps, MenuItemProps } from "./Menu";
 export {
@@ -128,6 +136,7 @@ export {
   MenuTriggerItem,
   MenuTrigger,
   MenuSeparator,
+  MenuItemText,
 } from "./Menu";
 
 export type { MessageBoxVariantProps, MessageBoxProps } from "./MessageBox";
@@ -189,6 +198,7 @@ export {
   SelectPositioner,
   SelectTrigger,
   SelectValueText,
+  SelectList,
 } from "./Select";
 
 export type { SkeletonProps } from "./Skeleton";

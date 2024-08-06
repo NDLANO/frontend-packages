@@ -9,7 +9,7 @@
 import { useEffect, useState } from "react";
 import { Portal } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import { styled } from "@ndla/styled-system/jsx";
 import { Button, IconButton } from "./Button";
 import {
@@ -65,7 +65,7 @@ export const Default: StoryFn<typeof DialogRoot> = (args) => {
             <DialogTitle>Dialog-tittel er påkrevd</DialogTitle>
             <DialogCloseTrigger asChild>
               <IconButton variant="clear">
-                <Cross />
+                <CloseLine />
               </IconButton>
             </DialogCloseTrigger>
           </DialogHeader>
@@ -106,7 +106,7 @@ export const Controlled: StoryFn<typeof DialogRoot> = () => {
             <DialogTitle>Opened</DialogTitle>
             <DialogCloseTrigger asChild>
               <IconButton variant="clear">
-                <Cross />
+                <CloseLine />
               </IconButton>
             </DialogCloseTrigger>
           </DialogHeader>
@@ -132,7 +132,7 @@ export const WithoutDialogContentHelper = () => (
             <DialogTitle>Tittel</DialogTitle>
             <DialogCloseTrigger asChild>
               <IconButton variant="clear">
-                <Cross />
+                <CloseLine />
               </IconButton>
             </DialogCloseTrigger>
           </DialogHeader>
@@ -166,7 +166,7 @@ export const LongModal: StoryFn<typeof DialogRoot> = (args) => {
             <DialogTitle>Dialog-tittel er påkrevd</DialogTitle>
             <DialogCloseTrigger asChild>
               <IconButton variant="clear">
-                <Cross />
+                <CloseLine />
               </IconButton>
             </DialogCloseTrigger>
           </DialogHeader>

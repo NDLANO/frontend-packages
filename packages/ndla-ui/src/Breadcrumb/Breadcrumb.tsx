@@ -6,9 +6,9 @@
  *
  */
 
-import { ReactNode, useRef } from "react";
+import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
+import { styled } from "@ndla/styled-system/jsx";
 import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from "./BreadcrumbItem";
 
 interface Props {
@@ -19,26 +19,28 @@ interface Props {
   renderSeparator?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
 }
 
-const BreadcrumbNav = styled.nav``;
-
-const StyledList = styled.ol`
-  display: inline-block;
-  padding-left: 0;
-  margin-bottom: 0;
-  margin-top: 0;
-  list-style: none;
-`;
+const StyledList = styled("ol", {
+  base: {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    listStyle: "none",
+    gap: "xsmall",
+    mobileDown: {
+      alignItems: "flex-start",
+      justifyContent: "center",
+      flexDirection: "column",
+      gap: "xxsmall",
+    },
+  },
+});
 
 const Breadcrumb = ({ items, renderItem, renderSeparator, collapseFirst, collapseLast = true }: Props) => {
   const { t } = useTranslation();
-  const olRef = useRef<any>();
-  const containerRef = useRef<HTMLDivElement>(null);
-  // No idiomatic way of dealing with sets of refs yet
-  // See: https://github.com/facebook/react/issues/14072#issuecomment-446777406
 
   return (
-    <BreadcrumbNav ref={containerRef} aria-label={t("breadcrumb.breadcrumb")}>
-      <StyledList ref={olRef}>
+    <nav aria-label={t("breadcrumb.breadcrumb")}>
+      <StyledList>
         {items.map((item, index) => (
           <BreadcrumbItem
             renderItem={renderItem}
@@ -60,7 +62,7 @@ const Breadcrumb = ({ items, renderItem, renderSeparator, collapseFirst, collaps
           />
         ))}
       </StyledList>
-    </BreadcrumbNav>
+    </nav>
   );
 };
 

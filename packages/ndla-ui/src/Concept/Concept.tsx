@@ -12,7 +12,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } from "../Embed";
-import { LicenseContainerContent } from "../LicenseByline/EmbedByline";
+import { EmbedByline, LicenseContainerContent } from "../LicenseByline/EmbedByline";
 
 export interface ConceptProps extends ComponentPropsWithRef<"figure"> {
   copyright?: ConceptCopyright;
@@ -66,7 +66,7 @@ export const Concept = forwardRef<HTMLElement, ConceptProps>(
         ) : visualElement?.resource === "external" ? (
           <ExternalEmbed embed={visualElement} />
         ) : null}
-        {copyright && <LicenseContainerContent copyright={copyright} type="concept" />}
+        {copyright && <EmbedByline copyright={copyright} type="concept" />}
       </StyledFigure>
     );
   },

@@ -22,6 +22,7 @@ const AudioPlayerWrapper = styled("div", {
     borderColor: "stroke.default",
     borderRadius: "xsmall",
     boxShadow: "full",
+    marginBlockEnd: "4xsmall",
     overflow: "hidden",
   },
 });

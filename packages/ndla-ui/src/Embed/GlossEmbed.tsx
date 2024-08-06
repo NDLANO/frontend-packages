@@ -57,7 +57,7 @@ export const GlossEmbed = ({ embed }: Props) => {
   }
 
   return (
-    <Figure>
+    <Figure data-embed-type="gloss">
       <Gloss glossData={concept.glossData} title={concept.title} audio={audio} variant="bordered" />
     </Figure>
   );

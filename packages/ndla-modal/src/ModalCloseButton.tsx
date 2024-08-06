@@ -12,7 +12,7 @@ import styled from "@emotion/styled";
 
 import { Close } from "@radix-ui/react-dialog";
 import { colors } from "@ndla/core";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 
 interface Props {
   children?: ReactNode;
@@ -30,7 +30,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledCross = styled(Cross)`
+const StyledCross = styled(CloseLine)`
   height: 24px;
   width: 24px;
 `;

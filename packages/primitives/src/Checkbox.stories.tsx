@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Done } from "@ndla/icons/editor";
+import { CheckLine } from "@ndla/icons/editor";
 import {
   CheckboxControl,
   CheckboxGroup,
@@ -29,7 +29,7 @@ const meta: Meta<typeof CheckboxRoot> = {
     <CheckboxRoot {...args}>
       <CheckboxControl>
         <CheckboxIndicator asChild>
-          <Done />
+          <CheckLine />
         </CheckboxIndicator>
       </CheckboxControl>
       <CheckboxLabel>Jeg godtar dette</CheckboxLabel>
@@ -113,7 +113,7 @@ export const WithField: StoryFn<typeof CheckboxRoot> = (args) => {
       <CheckboxRoot {...args} checked={checked} onCheckedChange={(e) => setChecked(e.checked === true)}>
         <CheckboxControl>
           <CheckboxIndicator asChild>
-            <Done />
+            <CheckLine />
           </CheckboxIndicator>
         </CheckboxControl>
         <CheckboxLabel>Jeg godtar dette</CheckboxLabel>
@@ -132,7 +132,7 @@ export const WithRequiredField: StoryFn<typeof CheckboxRoot> = (args) => {
       <CheckboxRoot {...args} checked={checked} onCheckedChange={(e) => setChecked(e.checked === true)}>
         <CheckboxControl>
           <CheckboxIndicator asChild>
-            <Done />
+            <CheckLine />
           </CheckboxIndicator>
         </CheckboxControl>
         <CheckboxLabel>Jeg godtar dette</CheckboxLabel>
@@ -155,7 +155,7 @@ export const Group: StoryFn<typeof CheckboxRoot> = () => {
         <CheckboxRoot key={item.value} value={item.value}>
           <CheckboxControl>
             <CheckboxIndicator asChild>
-              <Done />
+              <CheckLine />
             </CheckboxIndicator>
           </CheckboxControl>
           <CheckboxLabel>{item.label}</CheckboxLabel>

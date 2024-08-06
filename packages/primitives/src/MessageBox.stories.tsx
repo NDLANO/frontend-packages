@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import { InformationOutline } from "@ndla/icons/common";
+import { InformationLine } from "@ndla/icons/common";
 import { css } from "@ndla/styled-system/css";
 import { MessageBox } from "./MessageBox";
 import { Text } from "./Text";
@@ -23,7 +23,7 @@ export default {
     variant: "info",
     children: (
       <>
-        <InformationOutline size="medium" className={css({ marginBlockStart: "4xsmall" })} />
+        <InformationLine size="medium" className={css({ marginBlockStart: "4xsmall" })} />
         <Text>
           Dette er en melding. Fermentum lobortis tincidunt lectus aliquet. Tincidunt mi proin lectus at duis turpis
           nullam nisl.

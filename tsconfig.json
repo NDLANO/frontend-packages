@@ -19,7 +19,6 @@
     "paths": {
       "@ndla/article-converter": ["./packages/article-converter/src"],
       "@ndla/button": ["./packages/button/src"],
-      "@ndla/carousel": ["./packages/carousel/src"],
       "@ndla/core": ["./packages/core/src"],
       "@ndla/dropdown-menu": ["./packages/dropdown-menu/src"],
       "@ndla/hooks": ["./packages/hooks/src"],

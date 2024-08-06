@@ -25,19 +25,19 @@ return (
   <DropdownMenu>
     <DropdownTrigger>
       <IconButtonV2 aria-label="Show more" title="Show more" variant="ghost" colorTheme="light">
-        <HorizontalMenu />
+        <MoreLine />
       </IconButtonV2>
     </DropdownTrigger>
     <DropdownContent {...args}>
       <DropdownItem>
         <StyledButton variant="ghost" colorTheme="light" shape="sharp" size="small" fontWeight="normal">
-          <Folder />
+          <FolderFill />
           Add item
         </StyledButton>
       </DropdownItem>
       <DropdownItem>
         <StyledButton variant="ghost" colorTheme="danger" shape="sharp" size="small" fontWeight="normal">
-          <DeleteForever />
+          <DeleteBinLine />
           Delete item
         </StyledButton>
       </DropdownItem>

@@ -12,7 +12,7 @@ import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Header, Trigger } from "@radix-ui/react-accordion";
 import { colors, fonts, spacing } from "@ndla/core";
-import { ChevronDown } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 
 const StyledHeader = styled(Header)`
   display: flex;
@@ -46,7 +46,7 @@ const StyledTrigger = styled(Trigger)`
   }
 `;
 
-const StyledChevron = styled(ChevronDown)`
+const StyledArrowDown = styled(ArrowDownShortLine)`
   color: ${colors.brand.primary};
   transition: all 200ms ease-in-out;
   ${StyledTrigger}[data-state='open'] > & {
@@ -64,7 +64,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
 
 const AccordionHeader = forwardRef<HTMLButtonElement, Props>(
   ({ indicator, headingLevel: Heading = "h3", headerCSS, children, ...rest }, ref) => {
-    const indicatorElement = useMemo(() => indicator ?? <StyledChevron />, [indicator]);
+    const indicatorElement = useMemo(() => indicator ?? <StyledArrowDown />, [indicator]);
     return (
       <StyledHeader css={headerCSS} asChild>
         <Heading>

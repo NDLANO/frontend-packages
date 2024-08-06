@@ -53,7 +53,7 @@ const ExternalEmbed = ({ embed }: Props) => {
       alt: embedData.alt !== undefined ? embedData.alt : data.iframeImage?.alttext?.alttext ?? "",
     };
     return (
-      <Figure>
+      <Figure data-embed-type="external">
         <ResourceBox
           image={image}
           title={embedData.title ?? ""}
@@ -65,7 +65,13 @@ const ExternalEmbed = ({ embed }: Props) => {
     );
   }
 
-  return <StyledFigure ref={figRef} dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }} />;
+  return (
+    <StyledFigure
+      data-embed-type="external"
+      ref={figRef}
+      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }}
+    />
+  );
 };
 
 export default ExternalEmbed;

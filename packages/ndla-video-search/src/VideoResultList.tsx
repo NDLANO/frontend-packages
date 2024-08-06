@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { ButtonV2, IconButtonV2 } from "@ndla/button";
 import { breakpoints, colors, misc, mq, spacing } from "@ndla/core";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import { PanoramaPhotosphere } from "@ndla/icons/common";
 import { getLicenseByNBTitle, LicenseLocaleType } from "@ndla/licenses";
 import { SafeLink } from "@ndla/safelink";
@@ -176,7 +176,7 @@ export const VideoListItem = ({ video, onSelectVideo, translations, locale }: Vi
             title={t("close")}
             onClick={() => setIsPreviewing(false)}
           >
-            <Cross />
+            <CloseLine />
           </IconButtonV2>
           <PreviewIframe
             title={video.name}

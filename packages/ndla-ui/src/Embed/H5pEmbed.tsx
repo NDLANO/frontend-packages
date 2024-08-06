@@ -39,11 +39,11 @@ const H5pEmbed = ({ embed }: Props) => {
   }
 
   if (embed.data.oembed) {
-    return <FigureOembed dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }} />;
+    return <FigureOembed data-embed-type="h5p" dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }} />;
   }
 
   return (
-    <StyledFigure>
+    <StyledFigure data-embed-type="h5p">
       <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
     </StyledFigure>
   );

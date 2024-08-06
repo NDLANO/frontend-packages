@@ -49,7 +49,7 @@ const IframeEmbed = ({ embed }: Props) => {
     const alt = embedData.alt !== undefined ? embedData.alt : iframeImage?.alttext.alttext;
     const image = { src: iframeImage?.image.imageUrl ?? "", alt: alt ?? "" };
     return (
-      <Figure>
+      <Figure data-embed-type="iframe">
         <ResourceBox
           image={image}
           title={embedData.title ?? ""}
@@ -68,7 +68,7 @@ const IframeEmbed = ({ embed }: Props) => {
   const urlOrTitle = title || url;
 
   return (
-    <Figure>
+    <Figure data-embed-type="iframe">
       <StyledIframe
         ref={iframeRef}
         title={urlOrTitle}

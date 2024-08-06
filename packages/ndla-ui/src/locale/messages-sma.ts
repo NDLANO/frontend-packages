@@ -1403,7 +1403,7 @@ const messages = {
     header: "Maam sïjhth daan biejjien lïeredh ?",
     description: "Veeljh ööhpehtimmieprogrammem juktie dov faagide vuartasjidh",
     grades: "Daltesasse",
-    accordionHeader: "Gaajhkh ööhpehtimmieprogrammh",
+    accordionHeader: "Finn ditt utdanningsprogram",
   },
   embed: {
     conceptListError: "Klarte ikkje å vise forklaringsliste",

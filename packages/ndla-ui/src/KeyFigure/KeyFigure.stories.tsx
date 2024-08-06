@@ -6,15 +6,12 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import KeyFigure from "./KeyFigure";
+
 const args = {
-  title: "<i>500</i>",
-  subtitle: `<span lang="nn">TVERRFAGLEGE</span> RESSURSER`,
-  image: {
-    alt: "Nøkkeltall tverrfaglig",
-    src: "https://api.test.ndla.no/image-api/raw/wMowCjRg.svg",
-  },
+  title: "22 000+",
+  subtitle: "Tilgjengelige ressurser",
 };
 
 export default {
@@ -24,12 +21,22 @@ export default {
   parameters: {
     layout: "centered",
   },
-  args: args,
+  args,
 } as Meta<typeof KeyFigure>;
 
-export const KeyFigureStory: StoryFn<typeof KeyFigure> = ({ ...args }) => {
+export const Plain: StoryFn<typeof KeyFigure> = ({ ...args }) => {
   return <KeyFigure {...args} />;
 };
 
-KeyFigureStory.args = args;
-KeyFigureStory.storyName = "Key figures";
+export const WithImageAndHTML: StoryObj<typeof KeyFigure> = {
+  args: {
+    title: "<i>500</i>",
+    subtitle: `<span lang="nn">TVERRFAGLEGE</span> RESSURSER`,
+    image: {
+      alt: "Nøkkeltall tverrfaglig",
+      src: "https://api.test.ndla.no/image-api/raw/wMowCjRg.svg",
+    },
+  },
+};
+
+Plain.args = args;

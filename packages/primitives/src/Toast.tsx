@@ -22,6 +22,7 @@ const toastRecipe = sva({
       borderRadius: "xsmall",
       boxShadow: "medium",
       minWidth: "20rem",
+      maxWidth: "30rem",
       height: "var(--height)",
       opacity: "var(--opacity)",
       overflowWrap: "anywhere",
@@ -34,10 +35,16 @@ const toastRecipe = sva({
       transitionProperty: "translate, scale, opacity, height",
       transitionTimingFunction: "default",
     },
+    title: {
+      paddingInlineEnd: "xxlarge",
+    },
     closeTrigger: {
       position: "absolute",
       top: "xxsmall",
       right: "xxsmall",
+    },
+    description: {
+      paddingInlineEnd: "xxlarge",
     },
   },
 });

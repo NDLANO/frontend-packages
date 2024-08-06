@@ -7,8 +7,8 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Copy } from "@ndla/icons/action";
-import { Forward } from "@ndla/icons/common";
+import { FileCopyLine } from "@ndla/icons/action";
+import { ArrowRightLine } from "@ndla/icons/common";
 import { styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 
@@ -60,7 +60,7 @@ export const Link: StoryObj<typeof Button> = {
     children: (
       <>
         {"Button"}
-        <Forward />
+        <ArrowRightLine />
       </>
     ),
   },
@@ -84,11 +84,39 @@ export const Disabled: StoryObj<typeof Button> = {
   },
 };
 
+export const Loading: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+  },
+};
+
+export const LoadingReplace: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+    replaceContent: true,
+  },
+};
+
+export const CustomLoading: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+    loadingContent: "...",
+  },
+};
+
+export const CustomLoadingReplace: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+    replaceContent: true,
+    loadingContent: "Laster...",
+  },
+};
+
 export const WithIcon: StoryObj<typeof Button> = {
   args: {
     children: (
       <>
-        <Copy />
+        <FileCopyLine />
         Button
       </>
     ),

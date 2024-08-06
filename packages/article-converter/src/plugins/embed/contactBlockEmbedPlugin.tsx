@@ -8,25 +8,32 @@
 
 import { attributesToProps } from "html-react-parser";
 import { ContactBlockMetaData } from "@ndla/types-embed";
-import { ContactBlock } from "@ndla/ui";
+import { ContactBlock, contactBlockBackgrounds, ContactBlockBackground } from "@ndla/ui";
 import { PluginType } from "../types";
+
+export function isBackground(background?: string): background is ContactBlockBackground {
+  return (contactBlockBackgrounds as readonly string[]).includes(background ?? "");
+}
+const parseBackground = (background: string | undefined): ContactBlockBackground | undefined => {
+  if (isBackground(background)) return background;
+};
 
 export const contactBlockEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const embedData = JSON.parse(props["data-json"] as string) as ContactBlockMetaData;
-  const { name, email, description, blob, blobColor, jobTitle, alt } = embedData.embedData;
+  const { name, email, description, background, jobTitle, alt } = embedData.embedData;
+  const parsedBackground = parseBackground(background);
+
   return (
     <ContactBlock
       image={embedData.status === "success" ? embedData.data.image : undefined}
       embedAlt={alt}
       description={description}
       email={email}
-      blobColor={blobColor}
       jobTitle={jobTitle}
       name={name}
-      blob={blob}
       lang={opts.articleLanguage}
-      imageCanonicalUrl={opts.canonicalUrls?.image}
+      backgroundColor={parsedBackground}
     />
   );
 };

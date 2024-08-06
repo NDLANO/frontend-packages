@@ -101,7 +101,7 @@ const BrightcoveEmbed = ({ embed, renderContext = "article" }: Props) => {
     : undefined;
 
   return (
-    <Figure>
+    <Figure data-embed-type="brightcove">
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}
@@ -113,7 +113,7 @@ const BrightcoveEmbed = ({ embed, renderContext = "article" }: Props) => {
           allowFullScreen
         />
       </div>
-      <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription} bottomRounded>
+      <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription}>
         {/* TODO: Figure out if this button should still be here. If yes, figure out what it should look like. */}
         {!!linkedVideoId && (
           <LinkedVideoButton size="small" variant="secondary" onClick={() => setShowOriginalVideo((p) => !p)}>

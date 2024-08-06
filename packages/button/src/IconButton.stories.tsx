@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import IconButtonV2 from "./IconButtonV2";
 
 export default {
@@ -16,7 +16,7 @@ export default {
   tags: ["autodocs"],
   args: {
     colorTheme: "primary",
-    children: <Cross />,
+    children: <CloseLine />,
     size: "small",
     variant: "solid",
     fontWeight: "normal",

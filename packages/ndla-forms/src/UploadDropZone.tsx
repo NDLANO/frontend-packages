@@ -13,7 +13,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors, spacing, fonts, misc, animations, stackOrder } from "@ndla/core";
 import { Spinner } from "@ndla/icons";
-import { CloudUploadOutline, AlertCircle } from "@ndla/icons/editor";
+import { UploadCloudLine, ErrorWarningFill } from "@ndla/icons/editor";
 import { getIllegalFiles } from "./filetypeHelper";
 
 const SpinnerWrapper = styled.div`
@@ -238,7 +238,7 @@ const UploadDropZone = ({
               </SpinnerWrapper>
             ) : (
               <>
-                {useIcon || <CloudUploadOutline aria-hidden="true" />}
+                {useIcon || <UploadCloudLine aria-hidden="true" />}
                 {children}
               </>
             )}
@@ -247,7 +247,7 @@ const UploadDropZone = ({
       </Wrapper>
       {error && (
         <AlertMessages>
-          <AlertCircle aria-hidden="true" />
+          <ErrorWarningFill aria-hidden="true" />
           {error}
         </AlertMessages>
       )}

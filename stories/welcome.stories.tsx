@@ -7,7 +7,8 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { ArticleWrapper, LayoutItem, Logo, PageContainer } from "@ndla/ui";
+import { NdlaLogoText } from "@ndla/primitives";
+import { ArticleWrapper, ArticleContent, PageContainer } from "@ndla/ui";
 
 export default {
   title: "Welcome",
@@ -18,8 +19,8 @@ export default {
 
 export const Welcome: StoryFn = () => (
   <PageContainer>
-    <LayoutItem layout="center">
-      <ArticleWrapper modifier="clean">
+    <ArticleWrapper>
+      <ArticleContent>
         <div
           style={{
             display: "flex",
@@ -27,7 +28,7 @@ export const Welcome: StoryFn = () => (
             alignItems: "center",
           }}
         >
-          <Logo label="Nasjonal digital læringsarena" />
+          <NdlaLogoText aria-label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
         </div>
         <p>
@@ -101,7 +102,7 @@ export const Welcome: StoryFn = () => (
         <code>@import '~@ndla/ui/src/main';</code>
         <br />
         Osv.
-      </ArticleWrapper>
-    </LayoutItem>
+      </ArticleContent>
+    </ArticleWrapper>
   </PageContainer>
 );

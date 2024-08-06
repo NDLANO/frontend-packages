@@ -6,17 +6,16 @@
  *
  */
 
-import { Field } from "@ark-ui/react";
+import { Field, Fieldset } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
+import { SystemStyleObject } from "@ndla/styled-system/types";
 
-export const FieldRoot = styled(
-  Field.Root,
-  {
-    base: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "3xsmall",
-    },
-  },
-  { baseComponent: true },
-);
+const rootStyle: SystemStyleObject = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "3xsmall",
+};
+
+export const FieldRoot = styled(Field.Root, { base: rootStyle }, { baseComponent: true });
+
+export const FieldsetRoot = styled(Fieldset.Root, { base: rootStyle }, { baseComponent: true });

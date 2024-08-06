@@ -6,30 +6,28 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { ComponentPropsWithoutRef } from "react";
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { colors, mq, breakpoints } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 
-interface Props extends ComponentPropsWithoutRef<"div"> {
-  backgroundWide?: boolean;
-}
-
-const StyledPageContainer = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-
-const backgroundWideStyle = css`
-  ${mq.range({ from: breakpoints.tablet })} {
-    background-color: ${colors.brand.greyLightest};
-  }
-`;
-
-export const PageContainer = ({ backgroundWide = false, ...rest }: Props) => (
-  <StyledPageContainer css={backgroundWide ? backgroundWideStyle : undefined} {...rest} />
-);
+// TODO: Refactor this. It's a rewrite of our old layout.
+export const PageContainer = styled("div", {
+  base: {
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+  },
+  defaultVariants: {
+    backgroundWide: false,
+  },
+  variants: {
+    backgroundWide: {
+      true: {
+        tablet: {
+          backgroundColor: "#f8f8f8",
+        },
+      },
+      false: {},
+    },
+  },
+});
 
 export default PageContainer;

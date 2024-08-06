@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Person } from "@ndla/icons/common";
+import { UserFill } from "@ndla/icons/common";
 import { Text } from "@ndla/typography";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { FieldHelper } from "./FieldHelper";
@@ -41,7 +41,7 @@ export const Default: StoryFn<typeof FormControl> = ({ ...args }) => {
       </Text>
       <Label>Name</Label>
       <InputContainer>
-        <Person />
+        <UserFill />
         <Input
           name="name"
           aria-describedby="name-info"
@@ -59,7 +59,7 @@ export const WithFormHelper: StoryFn<typeof FormControl> = ({ ...args }) => {
     <FormControl {...args}>
       <Label>Name</Label>
       <InputContainer>
-        <Person />
+        <UserFill />
         <Input name="name" />
       </InputContainer>
       <FieldHelper>Make sure to use proper punctuation</FieldHelper>
@@ -93,7 +93,7 @@ export const FormHelperWhenNoError: StoryFn<typeof FormControl> = ({ ...args }) 
       </Text>
       <Label>Name</Label>
       <InputContainer>
-        <Person />
+        <UserFill />
         <Input
           name="name"
           aria-describedby="name-info"
@@ -127,7 +127,7 @@ export const WithoutFormControl: StoryFn<typeof FormControl> = () => {
       </Text>
       <Label htmlFor="name">Name</Label>
       <InputContainer>
-        <Person />
+        <UserFill />
         <Input
           id="name"
           name="name"
@@ -159,7 +159,7 @@ export const TextAreaFormControl: StoryFn<typeof FormControl> = ({ ...args }) =>
       </Text>
       <Label>Name</Label>
       <InputContainer>
-        <Person />
+        <UserFill />
         <TextArea
           name="name"
           aria-describedby="name-info"

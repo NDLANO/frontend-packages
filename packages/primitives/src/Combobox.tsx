@@ -278,3 +278,9 @@ export type ComboboxTriggerProps = Combobox.TriggerProps & JsxStyleProps;
 export const ComboboxTrigger = withContext<HTMLButtonElement, ComboboxTriggerProps>(Combobox.Trigger, "trigger", {
   baseComponent: true,
 });
+
+export type ComboboxListProps = Combobox.ListProps & JsxStyleProps;
+
+export const ComboboxList = withContext<HTMLDivElement, ComboboxListProps>(Combobox.List, "list", {
+  baseComponent: true,
+});

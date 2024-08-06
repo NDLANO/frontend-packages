@@ -10,7 +10,8 @@ import { format } from "date-fns";
 import { enGB, nb, nn } from "date-fns/locale";
 import parse from "html-react-parser";
 import { useMemo } from "react";
-import { Forward, CalendarEd } from "@ndla/icons/common";
+import { ArrowRightLine } from "@ndla/icons/common";
+import { CalendarLine } from "@ndla/icons/editor";
 import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
@@ -63,7 +64,7 @@ const StyledDateContainer = styled("div", {
   },
 });
 
-const StyledCalendarEd = styled(CalendarEd, {
+const StyledCalendarEd = styled(CalendarLine, {
   base: {
     color: "icon.strong",
   },
@@ -82,7 +83,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
     return format(new Date(date), "dd. LLLL yyyy", { locale });
   }, [date, articleLanguage]);
   return (
-    <StyledSafeLink to={href}>
+    <StyledSafeLink to={href} data-embed-type="link-block">
       <InfoWrapper>
         <Heading asChild consumeCss textStyle="title.medium">
           <h3 data-heading>{parse(title)}</h3>
@@ -94,7 +95,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
           </StyledDateContainer>
         )}
       </InfoWrapper>
-      <Forward data-forward />
+      <ArrowRightLine data-forward />
     </StyledSafeLink>
   );
 };

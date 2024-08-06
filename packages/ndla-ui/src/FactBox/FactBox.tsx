@@ -8,7 +8,7 @@
 
 import { ComponentProps, ReactNode, forwardRef, useCallback, useEffect, useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ChevronDown } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 
@@ -33,6 +33,7 @@ const StyledAside = styled("aside", {
     borderColor: "stroke.default",
     borderRadius: "xsmall",
     maxHeight: "surface.xxsmall",
+    clear: "both",
     _closed: {
       _print: {
         overflow: "visible",
@@ -132,7 +133,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
     }, [state, onOpenChange]);
 
     return (
-      <StyledAside data-state={state} {...rest} ref={ref}>
+      <StyledAside data-state={state} data-embed-type="factbox" {...rest} ref={ref}>
         <StyledIconButton
           data-state={state}
           onClick={onClick}
@@ -140,7 +141,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
           aria-controls={contentId}
           aria-label={t(`factbox.${state === "open" ? "close" : "open"}`)}
         >
-          <ChevronDown />
+          <ArrowDownShortLine />
         </StyledIconButton>
         <StyledContent id={contentId} data-state={state} aria-hidden={state === "closed"} {...inertAttribute}>
           {children}

@@ -30,7 +30,7 @@ const FootnoteEmbed = ({ embed }: Props) => {
   }
 
   return (
-    <span id={`ref${embed.data.entryNum}`}>
+    <span id={`ref${embed.data.entryNum}`} data-embed-type="footnote">
       <StyledSup>
         <a href={`#note${embed.data.entryNum}`} target="_self">{`[${embed.data.entryNum}]`}</a>
       </StyledSup>

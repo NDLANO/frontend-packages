@@ -174,7 +174,7 @@ export const textStyles = defineTextStyles({
       value: {
         fontFamily: "sans",
         fontWeight: "normal",
-        ...sizes("medium", "large"),
+        ...sizes("large", "large"),
       },
     },
     large: {

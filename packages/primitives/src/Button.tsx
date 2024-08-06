@@ -6,11 +6,12 @@
  *
  */
 
-import { forwardRef } from "react";
+import { ReactNode, forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
 import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
+import { Spinner } from "./Spinner";
 
 // TODO: Consider if any of the backgrounds should actually be transparent
 export const buttonBaseRecipe = cva({
@@ -192,30 +193,61 @@ type ButtonVariant = Exclude<Variant, "clear" | "clearSubtle">;
 
 export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProps<typeof buttonRecipe>;
 
-export type ButtonProps = HTMLArkProps<"button"> & JsxStyleProps & ButtonVariantProps;
+interface BaseButtonProps extends HTMLArkProps<"button">, JsxStyleProps {
+  loading?: boolean;
+  loadingContent?: ReactNode;
+  replaceContent?: boolean;
+}
+
+export type ButtonProps = BaseButtonProps & ButtonVariantProps;
 
 const StyledButton = styled(ark.button, {}, { baseComponent: true, defaultProps: { type: "button" } });
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ variant, size, css: cssProp, ...props }, ref) => (
-  <StyledButton
-    {...props}
-    css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
-    ref={ref}
-  />
-));
+export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
+  ({ loading, loadingContent: loadingContentProp, replaceContent, onClick, children, ...props }, ref) => {
+    const ariaDisabled = loading ? { "aria-disabled": true } : {};
+    const loadingContent = replaceContent ? (
+      loadingContentProp
+    ) : (
+      <>
+        {loadingContentProp}
+        {children}
+      </>
+    );
+
+    return (
+      <StyledButton onClick={loading ? undefined : onClick} {...ariaDisabled} {...props} ref={ref}>
+        {loading ? loadingContent : children}
+      </StyledButton>
+    );
+  },
+);
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant, loadingContent, size, css: cssProp, ...props }, ref) => (
+    <BaseButton
+      {...props}
+      loadingContent={loadingContent ?? <Spinner size="small" />}
+      css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
+      ref={ref}
+    />
+  ),
+);
 
 type IconButtonVariant = Exclude<Variant, "link">;
 
 export type IconButtonVariantProps = { variant?: IconButtonVariant };
 
-export type IconButtonProps = HTMLArkProps<"button"> & IconButtonVariantProps & JsxStyleProps;
+export type IconButtonProps = BaseButtonProps & IconButtonVariantProps;
 
-const StyledIconButton = styled(ark.button, {}, { baseComponent: true, defaultProps: { type: "button" } });
-
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({ variant, css: cssProp, ...props }, ref) => (
-  <StyledIconButton
-    {...props}
-    css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp)}
-    ref={ref}
-  />
-));
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
+  ({ variant, css: cssProp, loadingContent, replaceContent = true, ...props }, ref) => (
+    <BaseButton
+      {...props}
+      css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp)}
+      loadingContent={loadingContent ?? <Spinner size="small" />}
+      replaceContent={replaceContent}
+      ref={ref}
+    />
+  ),
+);

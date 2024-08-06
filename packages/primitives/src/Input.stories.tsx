@@ -8,13 +8,13 @@
 
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Search } from "@ndla/icons/common";
-import { Check } from "@ndla/icons/editor";
-import { FieldRoot } from "./Field";
-import { FieldErrorMessage } from "./FieldErrorMessage";
-import { FieldHelper } from "./FieldHelper";
+import { SearchLine } from "@ndla/icons/common";
+import { CheckboxCircleFill } from "@ndla/icons/editor";
+import { FieldRoot, FieldsetRoot } from "./Field";
+import { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";
+import { FieldHelper, FieldsetHelper } from "./FieldHelper";
 import { FieldInput, Input, InputContainer } from "./Input";
-import { FieldLabel, Label } from "./Label";
+import { FieldLabel, FieldsetLegend, Label } from "./Label";
 
 export default {
   title: "Primitives/Input",
@@ -29,7 +29,7 @@ export const Default: StoryFn<typeof Input> = () => <Input />;
 
 export const WithLeftDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
-    <Search />
+    <SearchLine />
     <Input />
   </InputContainer>
 );
@@ -37,15 +37,15 @@ export const WithLeftDecorative: StoryFn<typeof Input> = () => (
 export const WithRightDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
     <Input />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );
 
 export const WithLeftAndRightDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
-    <Search />
+    <SearchLine />
     <Input />
-    <Check />
+    <CheckboxCircleFill />
   </InputContainer>
 );
 
@@ -74,10 +74,34 @@ export const WithField: StoryFn<typeof Input> = () => {
       <FieldHelper>Husk å skrive inn hele setningen!</FieldHelper>
       <FieldErrorMessage>Setningen kan ikke være tom!</FieldErrorMessage>
       <InputContainer>
-        <Search />
+        <SearchLine />
         <FieldInput value={value} onChange={(e) => setValue(e.currentTarget.value)} />
-        <Check />
+        <CheckboxCircleFill />
       </InputContainer>
     </FieldRoot>
+  );
+};
+
+export const GroupedInputs: StoryFn<typeof Input> = () => {
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const invalid = !firstName.length || !lastName.length;
+  return (
+    <FieldsetRoot invalid={invalid}>
+      <FieldsetLegend>Ditt fulle navn</FieldsetLegend>
+      <FieldsetHelper>Noen ganger er det ikke nok med fornavn!</FieldsetHelper>
+      <FieldsetErrorText>Vi trenger hele navnet ditt!</FieldsetErrorText>
+      <FieldRoot required invalid={!firstName.length}>
+        <FieldLabel>Fornavn</FieldLabel>
+        <FieldErrorMessage>Du må ha et fornavn!</FieldErrorMessage>
+        <FieldHelper>Gjerne ta med mellomnavnet ditt her også.</FieldHelper>
+        <FieldInput value={firstName} onChange={(e) => setFirstName(e.currentTarget.value)} />
+      </FieldRoot>
+      <FieldRoot required invalid={!lastName.length}>
+        <FieldLabel>Etternavn</FieldLabel>
+        <FieldErrorMessage>Du må ha et etternavn!</FieldErrorMessage>
+        <FieldInput value={lastName} onChange={(e) => setLastName(e.currentTarget.value)} />
+      </FieldRoot>
+    </FieldsetRoot>
   );
 };

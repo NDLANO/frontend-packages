@@ -9,8 +9,8 @@
 import parse from "html-react-parser";
 import { ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Plus } from "@ndla/icons/action";
-import { ChevronDown, ChevronUp } from "@ndla/icons/common";
+import { AddLine } from "@ndla/icons/action";
+import { ArrowDownShortLine, ArrowUpShortLine } from "@ndla/icons/common";
 import { Figure, FigureSize, FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
@@ -47,11 +47,12 @@ export const errorSvgSrc = `data:image/svg+xml;charset=UTF-8,%3Csvg fill='%238A8
 
 const getFigureProps = (size?: string, float?: string): FigureVariantProps => {
   const actualFloat = float === "left" ? "left" : float === "right" ? "right" : undefined;
-  const replacedSize: FigureSize = (size?.replace("-hide-byline", "") ?? "full") as FigureSize;
+  const replacedSize = size?.replace("-hide-byline", "") ?? "full";
+  const actualSize: FigureSize = (replacedSize === "fullwidth" ? "full" : replacedSize) as FigureSize;
   return {
     float: actualFloat,
     // Figure expects you to set a size when floating. If you don't, the figure will simply take up the available width. Fallback to medium in those cases.
-    size: replacedSize === "full" && float ? "medium" : replacedSize,
+    size: actualSize === "full" && float ? "medium" : actualSize,
   };
 };
 
@@ -250,7 +251,11 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
 
   // TODO: Check how this works with `children`. Will only be important for ED
   return (
-    <StyledFigure float={figureProps?.float} size={imageSizes ? "full" : figureProps?.size ?? "medium"}>
+    <StyledFigure
+      float={figureProps?.float}
+      size={imageSizes ? "full" : figureProps?.size ?? "medium"}
+      data-embed-type="image"
+    >
       {children}
       <ImageWrapper border={embedData.border === "true"} expandable={!!figureProps?.float}>
         <Image
@@ -269,7 +274,7 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
             onClick={toggleImageSize}
             data-expanded={!!imageSizes}
           >
-            <Plus />
+            <AddLine />
           </ExpandButton>
         )}
         {(embedData.size?.endsWith("-hide-byline") || embedData.hideByline === "true") && (
@@ -278,7 +283,7 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
             aria-label={t(`license.images.itemImage.${isBylineHidden ? "expandByline" : "minimizeByline"}`)}
             onClick={() => setIsBylineHidden((p) => !p)}
           >
-            {isBylineHidden ? <ChevronDown /> : <ChevronUp />}
+            {isBylineHidden ? <ArrowDownShortLine /> : <ArrowUpShortLine />}
           </BylineButton>
         )}
       </ImageWrapper>

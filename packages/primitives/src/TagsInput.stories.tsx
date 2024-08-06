@@ -9,7 +9,7 @@
 import { useState } from "react";
 import { TagsInputContext } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import { HStack } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
 import { FieldRoot } from "./Field";
@@ -64,7 +64,7 @@ export const Default: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
                     <TagsInputItemPreview>
                       <TagsInputItemText>{value}</TagsInputItemText>
                       <TagsInputItemDeleteTrigger>
-                        <Cross />
+                        <CloseLine />
                       </TagsInputItemDeleteTrigger>
                     </TagsInputItemPreview>
                   </TagsInputItem>
@@ -78,7 +78,7 @@ export const Default: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
         </TagsInputContext>
         <TagsInputClearTrigger asChild>
           <IconButton variant="secondary">
-            <Cross />
+            <CloseLine />
           </IconButton>
         </TagsInputClearTrigger>
       </HStack>
@@ -100,7 +100,7 @@ export const Editable: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
                     <TagsInputItemPreview>
                       <TagsInputItemText>{value}</TagsInputItemText>
                       <TagsInputItemDeleteTrigger>
-                        <Cross />
+                        <CloseLine />
                       </TagsInputItemDeleteTrigger>
                     </TagsInputItemPreview>
                     <TagsInputItemInput />
@@ -115,7 +115,7 @@ export const Editable: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
         </TagsInputContext>
         <TagsInputClearTrigger asChild>
           <IconButton variant="secondary">
-            <Cross />
+            <CloseLine />
           </IconButton>
         </TagsInputClearTrigger>
       </HStack>
@@ -137,7 +137,7 @@ export const Disabled: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
                     <TagsInputItemPreview>
                       <TagsInputItemText>{value}</TagsInputItemText>
                       <TagsInputItemDeleteTrigger>
-                        <Cross />
+                        <CloseLine />
                       </TagsInputItemDeleteTrigger>
                     </TagsInputItemPreview>
                   </TagsInputItem>
@@ -151,7 +151,7 @@ export const Disabled: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
         </TagsInputContext>
         <TagsInputClearTrigger asChild>
           <IconButton variant="secondary">
-            <Cross />
+            <CloseLine />
           </IconButton>
         </TagsInputClearTrigger>
       </HStack>
@@ -179,7 +179,7 @@ export const WithField: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
                       <TagsInputItemPreview>
                         <TagsInputItemText>{value}</TagsInputItemText>
                         <TagsInputItemDeleteTrigger>
-                          <Cross />
+                          <CloseLine />
                         </TagsInputItemDeleteTrigger>
                       </TagsInputItemPreview>
                     </TagsInputItem>
@@ -193,7 +193,7 @@ export const WithField: StoryFn<typeof TagsInputRoot> = ({ ...args }) => {
           </TagsInputContext>
           <TagsInputClearTrigger asChild>
             <IconButton variant="secondary">
-              <Cross />
+              <CloseLine />
             </IconButton>
           </TagsInputClearTrigger>
         </HStack>

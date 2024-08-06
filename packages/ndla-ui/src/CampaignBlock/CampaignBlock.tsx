@@ -8,7 +8,7 @@
 
 import parse from "html-react-parser";
 import { ReactNode } from "react";
-import { Forward } from "@ndla/icons/common";
+import { ArrowRightLine } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
@@ -43,6 +43,7 @@ const Container = styled("div", {
     backgroundColor: "background.default",
     borderRadius: "xsmall",
     boxShadow: "full",
+    marginBlockEnd: "4xsmall",
     maxWidth: "surface.xsmall",
     overflow: "hidden",
     mobileWide: {
@@ -121,7 +122,8 @@ const CampaignBlock = ({
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
   const HeaderComponent = url?.url ? LinkText : Text;
   return (
-    <Container className={className} data-type="campaign-block">
+    // TODO: Remove data-type
+    <Container className={className} data-type="campaign-block" data-embed-type="campaign-block">
       {imageSide === "left" && imageComponent}
       <ContentWrapper>
         <MaybeLinkText url={url?.url} path={path}>
@@ -134,7 +136,7 @@ const CampaignBlock = ({
           <MaybeLinkText url={url.url} path={path}>
             <LinkText textStyle="body.medium">
               {parse(url.text ?? "")}
-              <Forward />
+              <ArrowRightLine />
             </LinkText>
           </MaybeLinkText>
         )}

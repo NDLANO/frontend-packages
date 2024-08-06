@@ -6,16 +6,14 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
-import EmbedByline from "./EmbedByline";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { EmbedByline } from "./EmbedByline";
 
 export default {
   title: "Components/EmbedByline",
   component: EmbedByline,
   tags: ["autodocs"],
   args: {
-    topRounded: true,
-    bottomRounded: true,
     visibleAlt: "Synlig alt-tekst kan legges her, eller fjernes helt",
     type: "image",
     description:
@@ -48,6 +46,13 @@ export default {
 
 export const EmbedBylineStory: StoryFn<typeof EmbedByline> = (args) => {
   return <EmbedByline {...args} />;
+};
+
+export const Error: StoryObj<typeof EmbedByline> = {
+  args: {
+    error: true,
+    copyright: undefined,
+  },
 };
 
 EmbedBylineStory.storyName = "EmbedByline";

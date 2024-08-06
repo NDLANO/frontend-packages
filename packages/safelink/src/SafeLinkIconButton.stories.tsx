@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import { PersonOutlined } from "@ndla/icons/common";
+import { UserLine } from "@ndla/icons/common";
 import { MissingRouterContext } from "./MissingRouterContext";
 import { SafeLinkIconButton } from "./SafeLinkIconButton";
 
@@ -20,7 +20,7 @@ export default {
   },
   args: {
     to: "/",
-    children: <PersonOutlined />,
+    children: <UserLine />,
   },
   argTypes: {
     children: { control: false },

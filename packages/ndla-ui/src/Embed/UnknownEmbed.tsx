@@ -17,7 +17,7 @@ interface Props {
 const UnknownEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   return (
-    <Text color="text.error" asChild consumeCss>
+    <Text color="text.error" asChild consumeCss data-embed-type="unknown">
       <span>{t("embed.unsupported", { type: embed.resource })}</span>
     </Text>
   );

@@ -8,7 +8,7 @@
 
 import { Accordion } from "@ark-ui/react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { ChevronDown } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 import { styled } from "@ndla/styled-system/jsx";
 import {
   AccordionItem,
@@ -35,7 +35,7 @@ const meta: Meta<typeof AccordionRoot> = {
             <AccordionItemTrigger>
               Tittel
               <AccordionItemIndicator asChild>
-                <ChevronDown size="medium" />
+                <ArrowDownShortLine size="medium" />
               </AccordionItemIndicator>
             </AccordionItemTrigger>
           </h2>
@@ -53,7 +53,7 @@ const meta: Meta<typeof AccordionRoot> = {
             <AccordionItemTrigger>
               Tittel
               <AccordionItemIndicator asChild>
-                <ChevronDown size="medium" />
+                <ArrowDownShortLine size="medium" />
               </AccordionItemIndicator>
             </AccordionItemTrigger>
           </h2>
@@ -89,7 +89,7 @@ const SimpleRender: StoryFn<typeof AccordionRoot> = (args) => (
         <AccordionItemTrigger asChild>
           <IconButton variant="tertiary" title="Åpne trekkspill" aria-label="Åpne trekkspill">
             <AccordionItemIndicator asChild>
-              <ChevronDown size="medium" />
+              <ArrowDownShortLine size="medium" />
             </AccordionItemIndicator>
           </IconButton>
         </AccordionItemTrigger>
@@ -109,7 +109,7 @@ const SimpleRender: StoryFn<typeof AccordionRoot> = (args) => (
         <AccordionItemTrigger asChild>
           <IconButton variant="tertiary" title="Åpne trekkspill" aria-label="Åpne trekkspill">
             <AccordionItemIndicator asChild>
-              <ChevronDown size="medium" />
+              <ArrowDownShortLine size="medium" />
             </AccordionItemIndicator>
           </IconButton>
         </AccordionItemTrigger>

@@ -7,8 +7,9 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
+import { NdlaLogoText } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
-import { Logo, OneColumn, PageContainer } from "@ndla/ui";
+import { OneColumn, PageContainer } from "@ndla/ui";
 import { StoryBody } from "./wrappers";
 
 export default {
@@ -23,7 +24,7 @@ export const NDLAUrls: StoryFn = () => (
     <div style={{ marginTop: "30px" }}>
       <OneColumn>
         <center>
-          <Logo label="Nasjonal digital læringsarena" />
+          <NdlaLogoText aria-label="Nasjonal digital læringsarena" />
           <h1>Lenker i NDLA</h1>
         </center>
       </OneColumn>

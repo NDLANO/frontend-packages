@@ -34,7 +34,7 @@ export const RelatedArticle = ({
   type = contentTypes.SUBJECT_MATERIAL,
 }: RelatedArticleProps) => {
   return (
-    <CardRoot>
+    <CardRoot data-embed-type="related-article">
       <CardContent>
         <ContentTypeBadge contentType={type} />
         <CardHeading asChild consumeCss>
@@ -86,7 +86,7 @@ const StyledSection = styled("section", {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "xsmall",
+    gap: "medium",
   },
 });
 
@@ -119,7 +119,7 @@ export const RelatedArticleList = ({
   );
 
   return (
-    <StyledSection {...rest}>
+    <StyledSection {...rest} data-embed-type="related-content-list">
       <HeadingWrapper>
         <Heading asChild consumeCss textStyle="title.large" fontWeight="bold">
           <HeadingElement>{t("related.title")}</HeadingElement>

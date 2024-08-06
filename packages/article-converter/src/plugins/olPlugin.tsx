@@ -7,17 +7,14 @@
  */
 
 import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
-import { OrderedList } from "@ndla/ui";
+import { OrderedList } from "@ndla/primitives";
 import { PluginType } from "./types";
 export const olPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
-  const letterClass = node.attribs["data-type"] === "letters" ? "ol-list--roman" : false;
-  const num = node.attribs.start;
-  const numClass = num ? `ol-reset-${num}` : false;
-  const classes = [node.attribs.class ?? false, letterClass, numClass].filter((c): c is string => !!c).join(" ");
+  const variantProp = node.attribs["data-type"] === "letters" ? ({ variant: "letters" } as const) : {};
 
   return (
-    <OrderedList {...props} className={classes.length ? classes : undefined} lang={opts.articleLanguage}>
+    <OrderedList {...props} {...variantProp} lang={opts.articleLanguage}>
       {domToReact(node.children as DOMNode[], converterOpts)}
     </OrderedList>
   );

@@ -20,6 +20,7 @@ import { fontWeights, textStyles, fonts, fontSizes, lineHeights } from "./typogr
 import { zIndex } from "./zIndex";
 
 const preset = definePreset({
+  name: "ndla/panda",
   globalCss: globalCss,
   conditions: conditions,
   theme: {

@@ -8,7 +8,7 @@
 
 import { DropdownIndicatorProps } from "react-select";
 import styled from "@emotion/styled";
-import { ChevronDown } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 import { Option } from "./types";
 
 export const StyledDropdown = styled.div`
@@ -27,7 +27,7 @@ const BaseDropdownIndicator = <T extends boolean>({
   selectProps: { small },
 }: DropdownIndicatorProps<Option, T>) => (
   <StyledDropdown data-small={small} {...innerProps}>
-    <ChevronDown />
+    <ArrowDownShortLine />
   </StyledDropdown>
 );
 export default BaseDropdownIndicator;

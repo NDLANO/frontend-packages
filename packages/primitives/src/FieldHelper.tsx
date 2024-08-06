@@ -7,16 +7,26 @@
  */
 
 import { forwardRef } from "react";
-import { Field, HTMLArkProps } from "@ark-ui/react";
+import { Field, Fieldset } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
-import { TextProps } from "./Text";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { TextProps } from "./Text";
 
 const StyledFieldHelper = styled(Field.HelperText, {}, { baseComponent: true });
 
-export const FieldHelper = forwardRef<HTMLDivElement, TextProps & HTMLArkProps<"div"> & JsxStyleProps>(
+export const FieldHelper = forwardRef<HTMLSpanElement, Field.HelperTextProps & TextProps & JsxStyleProps>(
   ({ textStyle = "label.small", fontWeight, color, srOnly, css: cssProp, ...props }, ref) => {
     return <StyledFieldHelper css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />;
+  },
+);
+
+const StyledFieldsetHelper = styled(Fieldset.HelperText, {}, { baseComponent: true });
+
+export const FieldsetHelper = forwardRef<HTMLSpanElement, Fieldset.HelperTextProps & TextProps & JsxStyleProps>(
+  ({ textStyle = "label.small", fontWeight, color, srOnly, css: cssProp, ...props }, ref) => {
+    return (
+      <StyledFieldsetHelper css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />
+    );
   },
 );

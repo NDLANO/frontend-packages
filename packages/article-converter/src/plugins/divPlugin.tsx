@@ -50,9 +50,8 @@ export const divPlugin: PluginType = (node, opts) => {
     const columns = props["data-columns"] as GridType["columns"];
     const border = props["data-border"] as GridType["border"];
     const background = props["data-background"] as GridType["background"];
-    const frontpage = !!props["data-size"] as GridType["size"];
     return (
-      <Grid isFrontpage={frontpage} border={border} columns={columns} background={background} {...props}>
+      <Grid border={border} columns={columns} background={background} {...props}>
         {/* @ts-ignore */}
         {domToReact(node.children, opts)}
       </Grid>

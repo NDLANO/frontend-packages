@@ -118,8 +118,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({ css: cssProp, .
 });
 
 export const FieldInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
-  <Field.Input asChild>
-    <Input {...props} ref={ref} />
+  <Field.Input asChild {...props} ref={ref}>
+    <Input />
   </Field.Input>
 ));
 
@@ -158,7 +158,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ css: c
 });
 
 export const FieldTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => (
-  <Field.Textarea asChild>
-    <TextArea {...props} ref={ref} />
+  <Field.Textarea asChild {...props} ref={ref}>
+    <TextArea />
   </Field.Textarea>
 ));

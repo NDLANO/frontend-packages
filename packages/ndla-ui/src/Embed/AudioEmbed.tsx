@@ -25,8 +25,9 @@ export const getFirstNonEmptyLicenseCredits = (authors: {
 }) => Object.values(authors).find((i) => i.length > 0) ?? [];
 
 const AudioEmbed = ({ embed, lang }: Props) => {
+  const type = embed.embedData.type === "standard" ? "audio" : "podcast";
   if (embed.status === "error") {
-    return <EmbedErrorPlaceholder type={embed.embedData.type === "standard" ? "audio" : "podcast"} />;
+    return <EmbedErrorPlaceholder type={type} />;
   }
 
   const { data, embedData } = embed;
@@ -42,7 +43,7 @@ const AudioEmbed = ({ embed, lang }: Props) => {
   const img = coverPhoto && { url: coverPhoto.url, alt: coverPhoto.altText };
 
   return (
-    <Figure lang={lang}>
+    <Figure lang={lang} data-embed-type={type}>
       <AudioPlayer
         description={data.podcastMeta?.introduction ?? ""}
         img={img}

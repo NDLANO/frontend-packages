@@ -26,6 +26,7 @@ const cardRecipe = sva({
       transitionProperty: "background, color",
       transitionTimingFunction: "default",
       background: "surface.default",
+      overflow: "hidden",
       _hover: {
         background: "surface.actionSubtle.hover",
         borderColor: "stroke.hover",

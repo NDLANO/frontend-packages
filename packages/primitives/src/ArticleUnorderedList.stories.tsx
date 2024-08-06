@@ -8,6 +8,7 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import { UnOrderedList } from "./ArticleLists";
+import { BlockQuote } from "./BlockQuote";
 
 export default {
   title: "Primitives/Article Unordered List",
@@ -45,5 +46,60 @@ export const Default: StoryFn = () => (
       </UnOrderedList>
     </li>
     <li>Listepunkt 4</li>
+  </UnOrderedList>
+);
+
+export const WithParagraphs: StoryFn = () => (
+  <UnOrderedList>
+    <li>
+      <BlockQuote>
+        <p>Listepunkt 1</p>
+        <p>Test</p>
+      </BlockQuote>
+    </li>
+    <li>
+      <p>Listepunkt 2</p>
+      <UnOrderedList>
+        <li>
+          <p>Listepunkt 1</p>
+        </li>
+        <li>
+          <p>Listepunkt 2</p>
+          <UnOrderedList>
+            <li>
+              <p>Listepunkt 1</p>
+              <UnOrderedList>
+                <li>
+                  <p>Listepunkt 1</p>
+                  <UnOrderedList>
+                    <li>
+                      <p>Listepunkt 1</p>
+                    </li>
+                    <li>
+                      <p>Listepunkt 2</p>
+                    </li>
+                    <li>
+                      <p>Listepunkt 3</p>
+                    </li>
+                  </UnOrderedList>
+                </li>
+                <li>
+                  <p>Listepunkt 2</p>
+                </li>
+              </UnOrderedList>
+            </li>
+            <li>
+              <p>Listepunkt 2</p>
+            </li>
+          </UnOrderedList>
+        </li>
+        <li>
+          <p>Listepunkt 3</p>
+        </li>
+      </UnOrderedList>
+    </li>
+    <li>
+      <p>Listepunkt 3</p>
+    </li>
   </UnOrderedList>
 );

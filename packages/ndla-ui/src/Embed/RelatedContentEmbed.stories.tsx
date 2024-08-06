@@ -9,8 +9,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { RelatedContentMetaData } from "@ndla/types-embed";
 import RelatedContentEmbed from "./RelatedContentEmbed";
-import { ArticleWrapper } from "../Article";
-import LayoutItem, { OneColumn } from "../Layout";
+import { ArticleWrapper, ArticleContent } from "../Article";
+import { OneColumn } from "../Layout";
 import RelatedArticleList from "../RelatedArticleList";
 
 const filmResourceMeta: RelatedContentMetaData = {
@@ -368,12 +368,10 @@ const meta: Meta<typeof RelatedContentEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <ArticleWrapper modifier="clean">
-          <LayoutItem layout="center">
-            <section>
-              <Story />
-            </section>
-          </LayoutItem>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
         </ArticleWrapper>
       </OneColumn>
     ),

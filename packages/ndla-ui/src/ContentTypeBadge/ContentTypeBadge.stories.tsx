@@ -6,9 +6,8 @@
  *
  */
 
-import styled from "@emotion/styled";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { spacing } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 import { ContentTypeBadge } from "./ContentTypeBadge";
 import * as contentTypes from "../model/ContentType";
 
@@ -54,11 +53,13 @@ export const NoBackground: StoryObj<typeof ContentTypeBadge> = {
   },
 };
 
-const BadgesWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing.small};
-`;
+const BadgesWrapper = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    gap: "xsmall",
+  },
+});
 
 export const AllBadges: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
   <BadgesWrapper>

@@ -9,7 +9,7 @@
 import { ComponentPropsWithRef } from "react";
 import styled from "@emotion/styled";
 import { colors, spacing, fonts } from "@ndla/core";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 
 const StyledFieldRemoveButton = styled.button`
   border: 0;
@@ -46,7 +46,7 @@ const StyledFieldRemoveButton = styled.button`
 const FieldRemoveButton = ({ children, type = "button", ...rest }: ComponentPropsWithRef<"button">) => (
   // eslint-disable-next-line react/button-has-type
   <StyledFieldRemoveButton type={type} {...rest}>
-    <Cross size="medium" aria-hidden={true} />
+    <CloseLine size="medium" aria-hidden={true} />
     <span>{children}</span>
   </StyledFieldRemoveButton>
 );

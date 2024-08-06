@@ -6,30 +6,18 @@
  *
  */
 
-/** @jsxImportSource @emotion/react */
-import { CSSProperties, ComponentProps, useMemo } from "react";
+import { CSSProperties, ComponentPropsWithoutRef, useMemo } from "react";
 
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { breakpoints, colors, mq } from "@ndla/core";
-import { Minus, MenuBook } from "@ndla/icons/action";
-import { Audio } from "@ndla/icons/common";
-import {
-  AssessmentResource,
-  ExternalLearningResource,
-  LearningPath,
-  MultidisciplinaryTopic,
-  SharedResource,
-  Subject,
-  SubjectMaterial,
-  TasksAndActivities,
-} from "@ndla/icons/contentType";
-
-import { Concept, Media, Video } from "@ndla/icons/editor";
+import { colors } from "@ndla/core";
+import { BookmarkLine, SubtractLine } from "@ndla/icons/action";
+import { BookReadFill, ShareFill, VoicePrintLine } from "@ndla/icons/common";
+import { MenuSearchLine, LearningPath, SharedResource, TasksAndActivities } from "@ndla/icons/contentType";
+import { ChatLine, FileListLine, LinkMedium, ImageLine, MovieLine } from "@ndla/icons/editor";
+import { styled } from "@ndla/styled-system/jsx";
 
 import * as contentTypes from "../model/ContentType";
 
-interface Props extends ComponentProps<"div"> {
+interface Props extends ComponentPropsWithoutRef<"div"> {
   size?: "xx-small" | "x-small" | "small" | "large";
   type: string;
   title?: string;
@@ -38,66 +26,78 @@ interface Props extends ComponentProps<"div"> {
   className?: string;
 }
 
-const sizes = {
-  "xx-small": css`
-    width: 20px;
-    height: 20px;
-    border: 1px solid;
-    svg {
-      width: 10px;
-      height: 10x;
-    }
-  `,
-  "x-small": css`
-    width: 20px;
-    height: 20px;
-    border: 1px solid;
-    ${mq.range({ from: breakpoints.tablet })} {
-      height: 26px;
-      width: 26px;
-    }
-    svg {
-      width: 10px;
-      height: 10x;
-      ${mq.range({ from: breakpoints.tablet })} {
-        width: 12px;
-        height: 12px;
-      }
-    }
-  `,
-  small: "",
-  large: css`
-    width: 50px;
-    height: 50px;
-    svg {
-      width: 25px;
-      height: 25px;
-    }
-  `,
-} as const;
-
-const BaseContentTypeBadge = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-  width: 34px;
-  height: 34px;
-  color: var(--icon-color);
-`;
-
-const borderStyle = css`
-  border: 2px solid;
-  border-color: var(--icon-color);
-`;
-
-const backgroundStyle = css`
-  background-color: var(--background-color);
-`;
+const StyledContentTypeBadge = styled("div", {
+  base: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "100%",
+    color: "var(--icon-color)",
+  },
+  defaultVariants: {
+    size: "small",
+    border: true,
+    background: false,
+  },
+  variants: {
+    size: {
+      "xx-small": {
+        width: "20px",
+        height: "20px",
+        border: "1px solid",
+        "& svg": {
+          width: "10px",
+          height: "10px",
+        },
+      },
+      "x-small": {
+        width: "20px",
+        height: "20px",
+        border: "1px solid",
+        tablet: {
+          height: "26px",
+          width: "26px",
+        },
+        "& svg": {
+          width: "10px",
+          height: "10px",
+          tablet: {
+            width: "12px",
+            height: "12px",
+          },
+        },
+      },
+      small: {
+        width: "34px",
+        height: "34px",
+      },
+      large: {
+        width: "50px",
+        height: "50px",
+        "& svg": {
+          width: "25px",
+          height: "25px",
+        },
+      },
+    },
+    border: {
+      true: {
+        border: "2px solid",
+        borderColor: "var(--icon-color)",
+      },
+      false: {},
+    },
+    background: {
+      true: {
+        backgroundColor: "var(--background-color)",
+      },
+    },
+  },
+});
 
 const iconMap = {
   [contentTypes.SUBJECT_MATERIAL]: {
-    icon: SubjectMaterial,
+    icon: FileListLine,
     iconColor: colors.subjectMaterial.dark,
     backgroundColor: colors.subjectMaterial.light,
   },
@@ -107,12 +107,12 @@ const iconMap = {
     backgroundColor: colors.tasksAndActivities.light,
   },
   [contentTypes.ASSESSMENT_RESOURCES]: {
-    icon: AssessmentResource,
+    icon: MenuSearchLine,
     iconColor: colors.assessmentResource.dark,
     backgroundColor: colors.assessmentResource.light,
   },
   [contentTypes.SUBJECT]: {
-    icon: MenuBook,
+    icon: BookReadFill,
     iconColor: colors.subject.dark,
     backgroundColor: colors.subject.light,
   },
@@ -127,41 +127,41 @@ const iconMap = {
     backgroundColor: colors.learningPath.light,
   },
   [contentTypes.TOPIC]: {
-    icon: Subject,
+    icon: BookmarkLine,
     iconColor: colors.subject.dark,
     backgroundColor: colors.subject.light,
   },
   [contentTypes.MULTIDISCIPLINARY_TOPIC]: {
-    icon: MultidisciplinaryTopic,
+    icon: ShareFill,
     backgroundColor: "#b9b37b",
   },
   [contentTypes.CONCEPT]: {
-    icon: Concept,
+    icon: ChatLine,
     iconColor: colors.concept.text,
     backgroundColor: colors.concept.light,
   },
   [contentTypes.EXTERNAL]: {
-    icon: ExternalLearningResource,
+    icon: LinkMedium,
     iconColor: colors.external.dark,
     backgroundColor: colors.external.light,
   },
   [contentTypes.resourceEmbedTypeMapping.image]: {
-    icon: Media,
+    icon: ImageLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.audio]: {
-    icon: Audio,
+    icon: VoicePrintLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.resourceEmbedTypeMapping.video]: {
-    icon: Video,
+    icon: MovieLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
   [contentTypes.MISSING]: {
-    icon: Minus,
+    icon: SubtractLine,
     iconColor: colors.brand.grey,
     backgroundColor: colors.brand.greyLight,
   },
@@ -185,21 +185,12 @@ export const ContentTypeBadge = ({
     return { Icon: fromMap.icon, style };
   }, [type]);
 
-  const cssStyles = useMemo(() => {
-    const styles = [sizes[size]];
-    if (background) {
-      styles.push(backgroundStyle);
-    }
-    if (border) {
-      styles.push(borderStyle);
-    }
-    return styles;
-  }, [background, border, size]);
-
   return (
-    <BaseContentTypeBadge
-      css={cssStyles}
+    <StyledContentTypeBadge
       title={title}
+      background={background}
+      size={size}
+      border={border}
       style={style}
       aria-label={title}
       className={className}
@@ -208,7 +199,7 @@ export const ContentTypeBadge = ({
       {...rest}
     >
       <Icon />
-    </BaseContentTypeBadge>
+    </StyledContentTypeBadge>
   );
 };
 

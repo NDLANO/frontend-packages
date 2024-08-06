@@ -10,12 +10,17 @@ import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { colors, stackOrder } from "@ndla/core";
-import { Link } from "@ndla/icons/common";
-import { Tooltip } from "@ndla/tooltip";
+import { LinkMedium } from "@ndla/icons/editor";
 import { copyTextToClipboard } from "@ndla/util";
 
 const ContainerDiv = styled.div`
   position: relative;
+  &:hover {
+    [data-copy-button] {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
 `;
 const IconButton = styled.button`
   position: absolute;
@@ -33,8 +38,9 @@ const IconButton = styled.button`
     height: 30px;
   }
 
-  ${ContainerDiv}:hover &,
-  &:focus, &:focus-visible, &:active {
+  &:focus,
+  &:focus-visible,
+  &:active {
     cursor: pointer;
     opacity: 1;
   }
@@ -69,12 +75,10 @@ const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
 
   const tooltip = hasCopied ? t("article.copyPageLinkCopied") : t("article.copyHeaderLink");
   return (
-    <ContainerDiv>
-      <Tooltip tooltip={tooltip}>
-        <IconButton onClick={onCopyClick} aria-label={`${tooltip}: ${copyText}`}>
-          <Link />
-        </IconButton>
-      </Tooltip>
+    <ContainerDiv data-embed-type="copy-heading">
+      <IconButton data-copy-button="" onClick={onCopyClick} title={tooltip} aria-label={`${tooltip}: ${copyText}`}>
+        <LinkMedium />
+      </IconButton>
       <h2 id={sanitizedTitle} tabIndex={-1} lang={lang}>
         {children}
       </h2>

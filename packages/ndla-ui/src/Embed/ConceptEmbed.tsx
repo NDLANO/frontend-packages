@@ -95,11 +95,9 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
         </InlineTriggerButton>
       </PopoverTrigger>
       <StyledPopoverContent>
-        <Figure>
-          <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title}>
-            {children}
-          </Concept>
-        </Figure>
+        <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title}>
+          {children}
+        </Concept>
       </StyledPopoverContent>
     </PopoverRoot>
   ),
@@ -108,5 +106,5 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
 export interface BlockConceptProps extends ConceptProps {}
 
 export const BlockConcept = forwardRef<HTMLElement, BlockConceptProps>((props, ref) => (
-  <Concept {...props} ref={ref} />
+  <Concept {...props} data-embed-type="concept" ref={ref} />
 ));

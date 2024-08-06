@@ -21,14 +21,17 @@ export const spinnerRecipe = cva({
     borderBlockColor: "background.subtle",
     borderInlineStartColor: "background.subtle",
     borderInlineEndColor: "stroke.default",
-    marginBlock: "medium",
-    marginInline: "auto",
   },
   defaultVariants: {
     size: "large",
   },
   variants: {
     size: {
+      small: {
+        borderWidth: "4px",
+        height: "medium",
+        width: "medium",
+      },
       medium: {
         borderWidth: "4px",
         height: "large",

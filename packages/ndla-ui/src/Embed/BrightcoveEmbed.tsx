@@ -101,7 +101,7 @@ const BrightcoveEmbed = ({ embed, renderContext = "article" }: Props) => {
     : undefined;
 
   return (
-    <Figure>
+    <Figure data-embed-type="brightcove">
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}

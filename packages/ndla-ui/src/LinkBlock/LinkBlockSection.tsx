@@ -24,7 +24,7 @@ const StyledList = styled("ul", {
 
 const LinkBlockSection = ({ children, ...rest }: Props) => {
   return (
-    <nav {...rest}>
+    <nav {...rest} data-embed-type="link-block-list">
       <StyledList>
         {Children.map(children, (child) => (
           <li>{child}</li>

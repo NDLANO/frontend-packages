@@ -8,7 +8,7 @@
 
 import { ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { WarningOutline } from "@ndla/icons/common";
+import { AlertLine } from "@ndla/icons/common";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
 import { Button, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -122,7 +122,7 @@ export const EmbedByline = ({ type, description, children, visibleAlt, ...props 
     return (
       <ErrorBylineWrapper>
         <ContentWrapper>
-          <WarningOutline />
+          <AlertLine />
           <BaseDescription>
             <span>{t("embed.embedError", { type: typeString })}</span>
           </BaseDescription>

@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Cross } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons/action";
 import { css } from "@ndla/styled-system/css";
 import { IconButton } from "./Button";
 
@@ -16,7 +16,7 @@ export default {
   component: IconButton,
   tags: ["autodocs"],
   args: {
-    children: <Cross />,
+    children: <CloseLine />,
   },
   argTypes: {
     children: {
@@ -77,5 +77,25 @@ export const ClearSubtle: StoryObj<typeof IconButton> = {
 export const Disabled: StoryObj<typeof IconButton> = {
   args: {
     disabled: true,
+  },
+};
+
+export const Loading: StoryObj<typeof IconButton> = {
+  args: {
+    loading: true,
+  },
+};
+
+export const LoadingReplace: StoryObj<typeof IconButton> = {
+  args: {
+    loading: true,
+    replaceContent: true,
+  },
+};
+
+export const CustomLoading: StoryObj<typeof IconButton> = {
+  args: {
+    loading: true,
+    loadingContent: "...",
   },
 };

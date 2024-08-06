@@ -27,6 +27,8 @@ const StyledErrorMessage = styled("article", {
 
 const IllustrationWrapper = styled("div", {
   base: {
+    display: "flex",
+    justifyContent: "center",
     marginBottom: "medium",
     tablet: {
       marginTop: "xxlarge",

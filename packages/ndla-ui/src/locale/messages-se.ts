@@ -1401,7 +1401,7 @@ const messages = {
     header: "Maid háliidat oahppat odne?",
     description: "Vállje oahppoprográmma vai oainnát iežat fágaid",
     grades: "Ceahkki",
-    accordionHeader: "Buot oahppoprográmmat",
+    accordionHeader: "Finn ditt utdanningsprogram",
   },
   embed: {
     conceptListError: "Ii sáhttán čájehit čilgehuslisttu",

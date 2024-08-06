@@ -203,7 +203,7 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, Menu.TriggerItemProps 
   ),
 );
 
-export const MenuTrigger = withContext<HTMLDivElement, JsxStyleProps & Menu.TriggerProps>(Menu.Trigger, "trigger", {
+export const MenuTrigger = withContext<HTMLButtonElement, JsxStyleProps & Menu.TriggerProps>(Menu.Trigger, "trigger", {
   baseComponent: true,
 });
 
@@ -212,3 +212,7 @@ export const MenuSeparator = withContext<HTMLHRElement, JsxStyleProps & Menu.Sep
   "separator",
   { baseComponent: true },
 );
+
+export const MenuItemText = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemTextProps>(Menu.ItemText, "itemText", {
+  baseComponent: true,
+});

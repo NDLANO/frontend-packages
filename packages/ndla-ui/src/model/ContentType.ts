@@ -20,6 +20,7 @@ export const MISSING = "missing";
 export const IMAGE = "image";
 export const VIDEO = "video";
 export const AUDIO = "audio";
+export const PODCAST = "podcast";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,
@@ -71,4 +72,5 @@ export const resourceEmbedTypeMapping: Record<string, string> = {
   video: "video",
   concept: "concept",
   audio: "audio",
+  podcast: "podcast",
 };

@@ -7,51 +7,37 @@
  */
 
 import parse from "html-react-parser";
-import styled from "@emotion/styled";
-import { breakpoints, colors, fonts, mq, spacing } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: ${spacing.small};
-  align-items: center;
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.xsmall} ${spacing.nsmall};
-  }
-`;
+const ContentWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
-const StyledImage = styled.img`
-  height: 150px;
-  width: 150px;
-`;
+const StyledImage = styled("img", {
+  base: {
+    height: "surface.3xsmall",
+    width: "surface.3xsmall",
+  },
+});
 
-const TitleWrapper = styled.div`
-  color: ${colors.text.primary};
-  font-family: ${fonts.sans};
-  font-weight: ${fonts.weight.bold};
-  overflow-wrap: break-word;
-  ${fonts.sizes("38px", "48px")};
-  text-align: center;
+const TitleWrapper = styled("div", {
+  base: {
+    textStyle: "heading.large",
+    textAlign: "center",
+  },
+});
 
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    ${fonts.sizes("30px", "36px")};
-  }
-`;
-
-const SubTitleWrapper = styled.div`
-  overflow-wrap: "break-word";
-  text-align: center;
-  ${fonts.sizes("18px", "29px")};
-  color: ${colors.text.primary};
-  font-weight: ${fonts.weight.normal};
-  font-family: ${fonts.sans};
-
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    padding-top: ${spacing.xxsmall};
-  }
-`;
+const SubTitleWrapper = styled("div", {
+  base: {
+    textStyle: "title.medium",
+    textAlign: "center",
+  },
+});
 
 interface Props {
   image?: {
@@ -64,8 +50,8 @@ interface Props {
 
 const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
-    <ContentWrapper>
-      <StyledImage src={`${image?.src}?width=150`} width={150} height={150} alt={image?.alt} />
+    <ContentWrapper data-embed-type="key-figure">
+      {image && <StyledImage src={`${image?.src}?width=150`} width={150} height={150} alt={image?.alt} />}
       <TitleWrapper>{parse(title)}</TitleWrapper>
       <SubTitleWrapper>{parse(subtitle)}</SubTitleWrapper>
     </ContentWrapper>

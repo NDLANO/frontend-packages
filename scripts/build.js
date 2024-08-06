@@ -119,7 +119,11 @@ function buildNodePackage(p) {
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));
 
   const skipEmotion =
-    p.endsWith("primitives") || p.endsWith("preset-panda") || p.endsWith("icons") || p.endsWith("safelink");
+    p.endsWith("primitives") ||
+    p.endsWith("preset-panda") ||
+    p.endsWith("icons") ||
+    p.endsWith("safelink") ||
+    p.endsWith("ui");
 
   const presets = skipEmotion
     ? ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]]

@@ -1399,7 +1399,7 @@ const messages = {
     header: "What do you want to learn today?",
     description: "Choose a programme to see your subjects",
     grades: "Grades",
-    accordionHeader: "All educational programmes",
+    accordionHeader: "Find your programme",
   },
   embed: {
     conceptListError: "Failed to show concept list",

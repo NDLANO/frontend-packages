@@ -36,15 +36,13 @@ export { LicenseLink, EmbedByline } from "./LicenseByline";
 export {
   ArticleByline,
   ArticleFootNotes,
-  ArticleIntroduction,
-  ArticleTitle,
   ArticleWrapper,
-  ArticleHeaderWrapper,
-  default as Article,
+  Article,
   ArticleParagraph,
+  ArticleFooter,
+  ArticleHeader,
+  ArticleContent,
 } from "./Article";
-
-export type { ArticleModifier } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
@@ -56,38 +54,12 @@ export { ErrorResourceAccessDenied, default as ErrorMessage } from "./ErrorMessa
 
 export { FileListEmbed, File, PdfFile, FileListItem, FileListRoot, FileListElement } from "./FileList";
 
-export { default as Logo } from "./Logo";
-
 export { default as FactBox } from "./FactBox";
 
-export type { HeroContentType } from "./Hero";
-export {
-  SubjectMaterialHero,
-  TasksAndActivitiesHero,
-  AssessmentResourcesHero,
-  SubjectHero,
-  SourceMaterialHero,
-  Hero,
-  NdlaFilmHero,
-  ConceptHero,
-  HeroContent,
-} from "./Hero";
-
-export { FooterBlock } from "./Footer";
-
-export { LanguageSelector } from "./LanguageSelector";
-
-export { default as SearchResultSleeve } from "./Search/SearchResultSleeve";
-
-export { default as ContentTypeResult } from "./Search/ContentTypeResult";
-
-export { SearchFieldForm } from "./Search/SearchFieldForm";
+export type { ContentTypeHeroProps } from "./ContentTypeHero";
+export { ContentTypeHero } from "./ContentTypeHero";
 
 export { default as resourceTypeColor } from "./utils/resourceTypeColor";
-
-export { default as CreatedBy } from "./CreatedBy";
-
-export { MessageBox, MessageBanner } from "./Messages";
 
 export { ResourceBox } from "./ResourceBox";
 
@@ -110,6 +82,7 @@ export {
   useTagsInputTranslations,
   useTagSelectorTranslations,
   useComboboxTranslations,
+  usePaginationTranslations,
 } from "./i18n";
 
 export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";
@@ -125,7 +98,7 @@ export {
   ConceptBadge,
 } from "./ContentTypeBadge";
 
-export type { ContentTypeBadgeProps } from "./ContentTypeBadge/ContentTypeBadgeNew";
+export type { ContentTypeBadgeProps, ContentType } from "./ContentTypeBadge/ContentTypeBadgeNew";
 export {
   ContentTypeBadge as ContentTypeBadgeNew,
   contentTypeToBadgeVariantMap,
@@ -146,18 +119,14 @@ export {
   TagSelectorInput,
 } from "./TagSelector/TagSelector";
 
-export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from "./SnackBar";
-export type { Snack, SnackContext } from "./SnackBar";
 export { TreeStructure } from "./TreeStructure";
 export type { TreeStructureProps } from "./TreeStructure";
 
-export { SearchField, SearchResultList, SearchResultItem, ActiveFilters } from "./Search";
-
-export { OrderedList, UnOrderedList } from "./List";
 export { BlogPostV2 } from "./BlogPost";
 export { ProgrammeCard } from "./ProgrammeCard";
 export { KeyFigure } from "./KeyFigure";
-export { default as ContactBlock } from "./ContactBlock";
+export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock";
+export type { ContactBlockBackground } from "./ContactBlock";
 export type { HeartButtonType, CanonicalUrlFuncs, RenderContext } from "./Embed";
 export { CampaignBlock } from "./CampaignBlock";
 export { Grid, GridParallaxItem } from "./Grid";

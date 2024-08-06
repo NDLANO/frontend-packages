@@ -14,9 +14,9 @@ import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
-import { ArticleWrapper } from "../Article";
+import { ArticleWrapper, ArticleContent } from "../Article";
 import { Grid } from "../Grid";
-import LayoutItem, { OneColumn } from "../Layout";
+import { OneColumn } from "../Layout";
 
 const embedData: ImageEmbedData = {
   resource: "image",
@@ -98,12 +98,10 @@ const meta: Meta<typeof ImageEmbed> = {
   decorators: [
     (Story) => (
       <OneColumn>
-        <ArticleWrapper modifier="clean">
-          <LayoutItem layout="center">
-            <section>
-              <Story />
-            </section>
-          </LayoutItem>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
         </ArticleWrapper>
       </OneColumn>
     ),

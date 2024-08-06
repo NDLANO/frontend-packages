@@ -10,7 +10,7 @@ import { KeyboardEvent, forwardRef } from "react";
 import styled from "@emotion/styled";
 import { ButtonV2 as Button, IconButtonV2 as IconButton } from "@ndla/button";
 import { breakpoints, colors, mq, spacing } from "@ndla/core";
-import { ChevronUp, ChevronDown } from "@ndla/icons/common";
+import { ArrowUpShortLine, ArrowDownShortLine } from "@ndla/icons/common";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 import { useForwardedRef } from "@ndla/util";
 import { arrowNavigation } from "./arrowNavigation";
@@ -162,7 +162,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             onToggleTree(!showTree);
           }}
         >
-          {showTree ? <ChevronUp /> : <ChevronDown />}
+          {showTree ? <ArrowUpShortLine /> : <ArrowDownShortLine />}
         </IconButton>
       </StyledRow>
     );

@@ -17,6 +17,7 @@ const framedContentRecipe = cva({
     padding: "medium",
     border: "1px solid",
     borderRadius: "small",
+    clear: "both",
   },
   variants: {
     colorTheme: {
@@ -47,6 +48,11 @@ const StyledFramedContent = styled(ark.div, {}, { baseComponent: true });
 
 export const FramedContent = forwardRef<HTMLDivElement, FramedContentProps>(
   ({ colorTheme, css: cssProp, ...props }, ref) => (
-    <StyledFramedContent css={css.raw(framedContentRecipe.raw({ colorTheme }), cssProp)} {...props} ref={ref} />
+    <StyledFramedContent
+      data-embed-type="framed-content"
+      css={css.raw(framedContentRecipe.raw({ colorTheme }), cssProp)}
+      {...props}
+      ref={ref}
+    />
   ),
 );

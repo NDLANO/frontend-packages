@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from "react";
-import { WarningOutline } from "@ndla/icons/common";
+import { AlertLine } from "@ndla/icons/common";
 import { Figure, type FigureFloat, type FigureSize } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { EmbedByline } from "../LicenseByline";
@@ -48,10 +48,10 @@ const StyledFigure = styled(Figure, {
 
 const EmbedErrorPlaceholder = ({ type, children, figureType, float }: Props) => {
   return (
-    <StyledFigure size={figureType} float={float}>
+    <StyledFigure size={figureType} float={float} data-embed-type={type}>
       {children ?? (
         <ErrorPlaceholder data-embed-type={type}>
-          <WarningOutline />
+          <AlertLine />
         </ErrorPlaceholder>
       )}
       <EmbedByline error type={type} />

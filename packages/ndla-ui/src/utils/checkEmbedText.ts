@@ -14,3 +14,16 @@ export const checkAndAddPunctuation = (inputText: string): string => {
   }
   return inputText;
 };
+
+export const extractString = (input: any): string => {
+  if (typeof input === "string") return input;
+
+  if (input?.props?.children) {
+    const children = input.props.children;
+    if (Array.isArray(children)) {
+      return children.map(extractString).join("");
+    }
+    return extractString(children);
+  }
+  return "";
+};

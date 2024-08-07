@@ -49,6 +49,7 @@ const StyledSafeLink = styled(SafeLink, {
 
 const StyledHStack = styled(HStack, {
   base: {
+    position: "relative",
     textStyle: "body.medium",
     color: "text.default",
     width: "100%",

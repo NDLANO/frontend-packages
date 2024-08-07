@@ -6,15 +6,12 @@
  *
  */
 
-import { HTMLAttributes, ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  showHeader?: boolean;
-  children: ReactNode;
-}
+interface Props extends ComponentPropsWithoutRef<"div"> {}
 
 export const FileListWrapper = styled("div", {
   base: {
@@ -40,7 +37,7 @@ export const FileListItem = styled("li", {
   },
 });
 
-export const FileListEmbed = ({ showHeader = true, children, ...rest }: Props) => {
+export const FileListEmbed = ({ children, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
     <FileListWrapper {...rest}>

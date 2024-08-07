@@ -30,11 +30,13 @@ const StyledFigure = styled(Figure, {
 
 export const PdfFile = ({ title, url }: Props) => {
   return (
-    <StyledFigure>
-      <Heading asChild consumeCss textStyle="title.medium">
-        <h4>{title}</h4>
-      </Heading>
-      <StyledIframe title={title} height="1050" src={url} />
-    </StyledFigure>
+    <li>
+      <StyledFigure>
+        <Heading asChild consumeCss textStyle="title.medium">
+          <h4>{title}</h4>
+        </Heading>
+        <StyledIframe title={title} height="1050" src={url} />
+      </StyledFigure>
+    </li>
   );
 };

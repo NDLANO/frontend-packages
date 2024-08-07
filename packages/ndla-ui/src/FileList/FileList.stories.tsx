@@ -85,12 +85,10 @@ export const DifferentFiles: StoryObj<typeof File> = {
       <FileListItem>
         <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
       </FileListItem>
-      <FileListItem>
-        <PdfFile
-          title="Fil 3"
-          url="https://api.test.ndla.no/files/131789/krypteringsaktivitet_-_til_fiendegruppe_bm.pdf"
-        />
-      </FileListItem>
+      <PdfFile
+        title="Fil 3"
+        url="https://api.test.ndla.no/files/131789/krypteringsaktivitet_-_til_fiendegruppe_bm.pdf"
+      />
       <FileListItem>
         <File title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" fileSize="100 mb" />
       </FileListItem>
@@ -115,28 +113,26 @@ export const FilesWithButtons: StoryObj<typeof File> = {
   render: () => (
     <ul>
       <FileListItem>
-        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb">
-          <HStack>
-            <IconButton variant="clear">
-              <Pencil />
-            </IconButton>
-            <IconButton variant="clear">
-              <DeleteForever />
-            </IconButton>
-          </HStack>
-        </File>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+        <HStack>
+          <IconButton variant="clear">
+            <Pencil />
+          </IconButton>
+          <IconButton variant="clear">
+            <DeleteForever />
+          </IconButton>
+        </HStack>
       </FileListItem>
       <FileListItem>
-        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb">
-          <HStack>
-            <IconButton variant="clear">
-              <Pencil />
-            </IconButton>
-            <IconButton variant="clear">
-              <DeleteForever />
-            </IconButton>
-          </HStack>
-        </File>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+        <HStack>
+          <IconButton variant="clear">
+            <Pencil />
+          </IconButton>
+          <IconButton variant="clear">
+            <DeleteForever />
+          </IconButton>
+        </HStack>
       </FileListItem>
     </ul>
   ),

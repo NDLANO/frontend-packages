@@ -17,6 +17,7 @@ export const globalCss = defineGlobalStyles({
   },
   html: {
     minHeight: "100%",
+    fontFeatureSettings: "'ss03' on, 'liga' off, 'clig' off",
   },
   body: {
     background: "background.default",

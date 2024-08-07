@@ -9,7 +9,7 @@
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { FileDocumentOutline } from "@ndla/icons/common";
-import { DeleteForever } from "@ndla/icons/editor";
+import { DeleteForever, UploadCloudLine } from "@ndla/icons/editor";
 import { Button, IconButton } from "./Button";
 import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
@@ -48,7 +48,7 @@ export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
       </FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
-          <DeleteForever />
+          <UploadCloudLine />
           Open Dialog
         </Button>
       </FileUploadTrigger>
@@ -88,7 +88,7 @@ export const WithoutFileList: StoryFn<typeof FileUploadRoot> = (args) => (
       </FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
-          <DeleteForever />
+          <UploadCloudLine />
           Open Dialog
         </Button>
       </FileUploadTrigger>
@@ -105,7 +105,7 @@ export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
       </FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
-          <DeleteForever />
+          <UploadCloudLine />
           Open Dialog
         </Button>
       </FileUploadTrigger>
@@ -145,7 +145,7 @@ export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
       </FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
-          <DeleteForever />
+          <UploadCloudLine />
           Open Dialog
         </Button>
       </FileUploadTrigger>
@@ -185,7 +185,7 @@ export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) 
       </FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
-          <DeleteForever />
+          <UploadCloudLine />
           Open Dialog
         </Button>
       </FileUploadTrigger>
@@ -225,7 +225,7 @@ export const Disabled: StoryFn<typeof FileUploadRoot> = (args) => (
       </FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
-          <DeleteForever />
+          <UploadCloudLine />
           Open Dialog
         </Button>
       </FileUploadTrigger>
@@ -275,7 +275,7 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
           </FileUploadLabel>
           <FileUploadTrigger asChild>
             <Button>
-              <DeleteForever />
+              <UploadCloudLine />
               Open Dialog
             </Button>
           </FileUploadTrigger>

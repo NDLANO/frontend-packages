@@ -34,7 +34,7 @@ const meta: Meta<typeof FileUploadRoot> = {
   tags: ["autodocs"],
   component: FileUploadRoot,
   args: {
-    maxFiles: Infinity,
+    maxFiles: 3,
   },
 };
 
@@ -43,9 +43,7 @@ export default meta;
 export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args}>
     <FileUploadDropzone>
-      <FileUploadLabel textStyle="label.medium" fontWeight="light">
-        Drop your files here or click to upload
-      </FileUploadLabel>
+      <FileUploadLabel>Drop your files here or click to upload</FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
           <UploadCloudLine />
@@ -83,9 +81,7 @@ export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
 export const WithoutFileList: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args}>
     <FileUploadDropzone>
-      <FileUploadLabel textStyle="label.medium" fontWeight="light">
-        Drop your files here or click to upload
-      </FileUploadLabel>
+      <FileUploadLabel>Drop your files here or click to upload</FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
           <UploadCloudLine />
@@ -100,9 +96,7 @@ export const WithoutFileList: StoryFn<typeof FileUploadRoot> = (args) => (
 export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args} maxFiles={3}>
     <FileUploadDropzone>
-      <FileUploadLabel textStyle="label.medium" fontWeight="light">
-        Drop your files here or click to upload
-      </FileUploadLabel>
+      <FileUploadLabel>Drop your files here or click to upload</FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
           <UploadCloudLine />
@@ -140,9 +134,7 @@ export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
 export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args} accept="image/*">
     <FileUploadDropzone>
-      <FileUploadLabel textStyle="label.medium" fontWeight="light">
-        Drop your files here or click to upload
-      </FileUploadLabel>
+      <FileUploadLabel>Drop your files here or click to upload</FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
           <UploadCloudLine />
@@ -180,9 +172,7 @@ export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
 export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args} minFileSize={1000000} maxFileSize={4000000}>
     <FileUploadDropzone>
-      <FileUploadLabel textStyle="label.medium" fontWeight="light">
-        Drop your files here or click to upload
-      </FileUploadLabel>
+      <FileUploadLabel>Drop your files here or click to upload</FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
           <UploadCloudLine />
@@ -220,9 +210,7 @@ export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) 
 export const Disabled: StoryFn<typeof FileUploadRoot> = (args) => (
   <FileUploadRoot {...args} disabled={true}>
     <FileUploadDropzone>
-      <FileUploadLabel textStyle="label.medium" fontWeight="light">
-        Drop your files here or click to upload
-      </FileUploadLabel>
+      <FileUploadLabel>Drop your files here or click to upload</FileUploadLabel>
       <FileUploadTrigger asChild>
         <Button>
           <UploadCloudLine />
@@ -270,9 +258,7 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
         accept="image/*"
       >
         <FileUploadDropzone>
-          <FileUploadLabel textStyle="label.medium" fontWeight="light">
-            Drop your files here or click to upload
-          </FileUploadLabel>
+          <FileUploadLabel>Drop your files here or click to upload</FileUploadLabel>
           <FileUploadTrigger asChild>
             <Button>
               <UploadCloudLine />

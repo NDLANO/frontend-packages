@@ -28,17 +28,17 @@ const fileUploadRecipe = sva({
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      padding: "xxlarge",
-      textStyle: "label.medium",
-      marginBottom: "medium",
+      padding: "4xlarge",
       borderRadius: "xsmall",
       border: "1px solid",
       borderColor: "stroke.subtle",
       _hover: {
         borderStyle: "dashed",
+        borderColor: "stroke.hover",
       },
     },
     itemGroup: {
+      paddingBlockStart: "medium",
       display: "flex",
       flexDirection: "column",
       gap: "xsmall",
@@ -46,7 +46,9 @@ const fileUploadRecipe = sva({
     item: {
       width: "100%",
       display: "grid",
-      gridTemplateAreas: '"preview name delete"\n "preview size delete"',
+      gridTemplateAreas: `
+      "preview name delete" 
+      "preview size delete"`,
       gridTemplateColumns: "auto 1fr auto",
       gridColumnGap: "small",
       border: "1px solid",
@@ -97,6 +99,7 @@ export const FileUploadDropzone = withContext<HTMLDivElement, Assign<JsxStylePro
 export const FileUploadTrigger = withContext<HTMLButtonElement, Assign<JsxStyleProps, FileUpload.TriggerProps>>(
   FileUpload.Trigger,
   "trigger",
+  { baseComponent: true },
 );
 
 export const FileUploadItemGroup = withContext<HTMLUListElement, Assign<JsxStyleProps, FileUpload.ItemGroupProps>>(
@@ -120,7 +123,7 @@ export const FileUploadItem = withContext<HTMLDivElement, Assign<JsxStyleProps, 
 export const FileUploadItemDeleteTrigger = withContext<
   HTMLButtonElement,
   Assign<JsxStyleProps, FileUpload.ItemDeleteTriggerProps>
->(FileUpload.ItemDeleteTrigger, "itemDeleteTrigger");
+>(FileUpload.ItemDeleteTrigger, "itemDeleteTrigger", { baseComponent: true });
 
 export const FileUploadItemPreviewImage = withContext<
   HTMLImageElement,
@@ -137,11 +140,9 @@ export const FileUploadItemName = ({
   fontWeight = "bold",
   ...props
 }: FileUpload.ItemNameProps & TextProps & JsxStyleProps) => (
-  <InternalFileUploadItemName asChild>
-    <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>
-      <div {...props} />
-    </Text>
-  </InternalFileUploadItemName>
+  <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>
+    <InternalFileUploadItemName {...props} />
+  </Text>
 );
 
 const InternalFileUploadItemSizeText = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemSizeTextProps>>(
@@ -151,14 +152,11 @@ const InternalFileUploadItemSizeText = withContext<HTMLDivElement, Assign<JsxSty
 
 export const FileUploadItemSizeText = ({
   textStyle = "label.small",
-  fontWeight = "light",
   ...props
 }: FileUpload.ItemSizeTextProps & TextProps & JsxStyleProps) => (
-  <InternalFileUploadItemSizeText asChild>
-    <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>
-      <div {...props} />
-    </Text>
-  </InternalFileUploadItemSizeText>
+  <Text textStyle={textStyle} asChild consumeCss>
+    <InternalFileUploadItemSizeText {...props} />
+  </Text>
 );
 
 const InternalFileUploadLabel = withContext<HTMLLabelElement, Assign<JsxStyleProps, FileUpload.LabelProps>>(
@@ -167,7 +165,7 @@ const InternalFileUploadLabel = withContext<HTMLLabelElement, Assign<JsxStylePro
 );
 
 export const FileUploadLabel = forwardRef<HTMLLabelElement, FileUpload.LabelProps & TextProps>(
-  ({ textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
+  ({ textStyle = "label.medium", fontWeight = "light", ...props }, ref) => (
     <InternalFileUploadLabel asChild>
       <Label textStyle={textStyle} fontWeight={fontWeight} ref={ref} {...props} />
     </InternalFileUploadLabel>

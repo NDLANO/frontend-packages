@@ -36,9 +36,6 @@ export interface FileFormat {
 
 const StyledSafeLink = styled(SafeLink, {
   base: {
-    padding: "unset",
-    minHeight: "unset",
-    paddingInline: "3xsmall",
     textUnderlineOffset: "2px",
     textDecoration: "underline",
     _hover: {
@@ -50,6 +47,9 @@ const StyledSafeLink = styled(SafeLink, {
 const StyledHStack = styled(HStack, {
   base: {
     position: "relative",
+    paddingBlock: "small",
+    paddingInlineEnd: "medium",
+    paddingInlineStart: "small",
     textStyle: "body.medium",
     color: "text.default",
     width: "100%",
@@ -62,7 +62,7 @@ const File = forwardRef<HTMLDivElement, FileProps>(({ title, url, fileExists, fi
 
   return (
     <StyledHStack justify="space-between" ref={ref} {...rest}>
-      <HStack gap="4xsmall">
+      <HStack gap="xxsmall">
         <DownloadLine />
         {fileExists ? (
           <StyledSafeLink unstyled css={linkOverlay.raw()} to={url} title={tooltip}>

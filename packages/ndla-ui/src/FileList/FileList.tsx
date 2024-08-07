@@ -28,9 +28,7 @@ export const FileListItem = styled("li", {
     borderColor: "stroke.default",
     display: "flex",
     justifyContent: "space-between",
-    paddingBlock: "small",
-    paddingInlineEnd: "medium",
-    paddingInlineStart: "small",
+
     _hover: {
       backgroundColor: "surface.infoSubtle.hover",
     },

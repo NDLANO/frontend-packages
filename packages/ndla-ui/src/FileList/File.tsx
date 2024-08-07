@@ -66,16 +66,16 @@ export const File = forwardRef<HTMLDivElement, FileProps>(
           <DownloadLine />
           {fileExists ? (
             <StyledSafeLink unstyled css={linkOverlay.raw()} to={url} title={tooltip}>
-              <Text textStyle="body.medium">{title}</Text>
+              {title}
             </StyledSafeLink>
           ) : (
-            <Text textStyle="body.medium">{title}</Text>
+            <Text textStyle="label.medium">{title}</Text>
           )}
-          <Text textStyle="body.medium" asChild consumeCss>
+          <Text textStyle="label.large" asChild consumeCss>
             <span>({fileType?.toUpperCase()})</span>
           </Text>
         </HStack>
-        <Text textStyle="body.medium" asChild consumeCss>
+        <Text textStyle="label.large" asChild consumeCss>
           <span>{fileSize}</span>
         </Text>
       </StyledHStack>

@@ -9,6 +9,7 @@
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { DownloadLine } from "@ndla/icons/common";
+import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
@@ -50,38 +51,40 @@ const StyledHStack = styled(HStack, {
     paddingBlock: "small",
     paddingInlineEnd: "medium",
     paddingInlineStart: "small",
-    textStyle: "body.medium",
-    color: "text.default",
     width: "100%",
   },
 });
 
-const File = forwardRef<HTMLDivElement, FileProps>(({ title, url, fileExists, fileType, fileSize, ...rest }, ref) => {
-  const { t } = useTranslation();
-  const tooltip = `${t("download")} ${url.split("/").pop()}`;
+export const File = forwardRef<HTMLDivElement, FileProps>(
+  ({ title, url, fileExists, fileType, fileSize, ...rest }, ref) => {
+    const { t } = useTranslation();
+    const tooltip = `${t("download")} ${url.split("/").pop()}`;
 
-  return (
-    <StyledHStack justify="space-between" ref={ref} {...rest}>
-      <HStack gap="xxsmall">
-        <DownloadLine />
-        {fileExists ? (
-          <StyledSafeLink unstyled css={linkOverlay.raw()} to={url} title={tooltip}>
-            {title}
-          </StyledSafeLink>
-        ) : (
-          <span>{title}</span>
-        )}
-        <span>({fileType?.toUpperCase()})</span>
-      </HStack>
-      <span>{fileSize}</span>
-    </StyledHStack>
-  );
-});
+    return (
+      <StyledHStack justify="space-between" ref={ref} {...rest}>
+        <HStack gap="xxsmall">
+          <DownloadLine />
+          {fileExists ? (
+            <StyledSafeLink unstyled css={linkOverlay.raw()} to={url} title={tooltip}>
+              <Text textStyle="body.medium">{title}</Text>
+            </StyledSafeLink>
+          ) : (
+            <Text textStyle="body.medium">{title}</Text>
+          )}
+          <Text textStyle="body.medium" asChild consumeCss>
+            <span>({fileType?.toUpperCase()})</span>
+          </Text>
+        </HStack>
+        <Text textStyle="body.medium" asChild consumeCss>
+          <span>{fileSize}</span>
+        </Text>
+      </StyledHStack>
+    );
+  },
+);
 
 export const FileListElement = ({ title, url, fileExists, fileType, fileSize }: FileProps) => (
   <FileListItem>
     <File title={title} url={url} fileExists={fileExists} fileType={fileType} fileSize={fileSize} />
   </FileListItem>
 );
-
-export default File;

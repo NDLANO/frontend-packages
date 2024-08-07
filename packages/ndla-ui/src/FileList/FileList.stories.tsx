@@ -11,7 +11,7 @@ import { Pencil } from "@ndla/icons/action";
 import { DeleteForever, DragVertical } from "@ndla/icons/editor";
 import { IconButton } from "@ndla/primitives";
 import { HStack, styled } from "@ndla/styled-system/jsx";
-import File from "./File";
+import { File } from "./File";
 import { FileListEmbed, FileListItem } from "./FileList";
 import { PdfFile } from "./PdfFile";
 

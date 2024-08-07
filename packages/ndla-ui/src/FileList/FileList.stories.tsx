@@ -6,13 +6,13 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Pencil } from "@ndla/icons/action";
 import { DeleteForever, DragVertical } from "@ndla/icons/editor";
 import { IconButton } from "@ndla/primitives";
-import { Flex, styled } from "@ndla/styled-system/jsx";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 import File from "./File";
-import { FileListEmbed, FileListItem, FileListRoot } from "./FileList";
+import { FileListEmbed, FileListItem } from "./FileList";
 import { PdfFile } from "./PdfFile";
 
 export default {
@@ -35,16 +35,28 @@ export default {
   ),
 } as Meta<typeof File>;
 
+export const FileListStory: StoryFn<typeof File> = (args) => (
+  <ul>
+    <FileListItem>
+      <File {...args} />
+    </FileListItem>
+    <FileListItem>
+      <File {...args} />
+    </FileListItem>
+    <FileListItem>
+      <File {...args} />
+    </FileListItem>
+  </ul>
+);
+
 export const FileNotFound: StoryObj<typeof File> = {
   args: { fileExists: false },
   render: (args) => (
-    <FileListRoot>
-      <ul>
-        <FileListItem>
-          <File {...args} />
-        </FileListItem>
-      </ul>
-    </FileListRoot>
+    <ul>
+      <FileListItem>
+        <File {...args} />
+      </FileListItem>
+    </ul>
   ),
 };
 
@@ -88,54 +100,45 @@ export const DifferentFiles: StoryObj<typeof File> = {
 
 export const NoHeader: StoryObj<typeof File> = {
   render: () => (
-    <FileListEmbed showHeader={false}>
+    <ul>
       <FileListItem>
         <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
       </FileListItem>
       <FileListItem>
         <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
       </FileListItem>
-    </FileListEmbed>
+    </ul>
   ),
 };
 
-const StyledIconButton = styled(IconButton, {
-  base: {
-    height: "small",
-  },
-});
-const StyledFlex = styled(Flex, { base: { paddingInlineStart: "medium" } });
-
 export const FilesWithButtons: StoryObj<typeof File> = {
   render: () => (
-    <FileListRoot>
-      <ul>
-        <FileListItem>
-          <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb">
-            <StyledFlex>
-              <StyledIconButton variant="clear">
-                <Pencil />
-              </StyledIconButton>
-              <StyledIconButton variant="clear">
-                <DeleteForever />
-              </StyledIconButton>
-            </StyledFlex>
-          </File>
-        </FileListItem>
-        <FileListItem>
-          <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb">
-            <StyledFlex>
-              <StyledIconButton variant="clear">
-                <Pencil />
-              </StyledIconButton>
-              <StyledIconButton variant="clear">
-                <DeleteForever />
-              </StyledIconButton>
-            </StyledFlex>
-          </File>
-        </FileListItem>
-      </ul>
-    </FileListRoot>
+    <ul>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb">
+          <HStack>
+            <IconButton variant="clear">
+              <Pencil />
+            </IconButton>
+            <IconButton variant="clear">
+              <DeleteForever />
+            </IconButton>
+          </HStack>
+        </File>
+      </FileListItem>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb">
+          <HStack>
+            <IconButton variant="clear">
+              <Pencil />
+            </IconButton>
+            <IconButton variant="clear">
+              <DeleteForever />
+            </IconButton>
+          </HStack>
+        </File>
+      </FileListItem>
+    </ul>
   ),
 };
 
@@ -147,17 +150,15 @@ const StyledFileListItem = styled(FileListItem, {
   },
 });
 
-export const FilesWithDragHandle: StoryObj<typeof FileListRoot> = {
+export const FilesWithDragHandle: StoryObj<typeof File> = {
   render: () => (
-    <FileListRoot>
-      <ul>
-        <StyledFileListItem>
-          <StyledIconButton variant="clear">
-            <DragVertical />
-          </StyledIconButton>
-          <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
-        </StyledFileListItem>
-      </ul>
-    </FileListRoot>
+    <ul>
+      <StyledFileListItem>
+        <IconButton variant="clear">
+          <DragVertical />
+        </IconButton>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      </StyledFileListItem>
+    </ul>
   ),
 };

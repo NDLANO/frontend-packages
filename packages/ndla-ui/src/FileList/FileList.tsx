@@ -16,7 +16,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-export const FileListRoot = styled("div", {
+export const FileListWrapper = styled("div", {
   base: {
     display: "flex",
     flexDirection: "column",
@@ -43,13 +43,11 @@ export const FileListItem = styled("li", {
 export const FileListEmbed = ({ showHeader = true, children, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
-    <FileListRoot {...rest}>
-      {showHeader ? (
-        <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
-          <h3>{t("files")}</h3>
-        </Heading>
-      ) : null}
+    <FileListWrapper {...rest}>
+      <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
+        <h3>{t("files")}</h3>
+      </Heading>
       <ul>{children}</ul>
-    </FileListRoot>
+    </FileListWrapper>
   );
 };

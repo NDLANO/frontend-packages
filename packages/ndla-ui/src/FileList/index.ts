@@ -6,6 +6,6 @@
  *
  */
 
-export { FileListEmbed, FileListRoot, FileListItem } from "./FileList";
+export { FileListEmbed, FileListItem } from "./FileList";
 export { default as File, FileListElement } from "./File";
 export { PdfFile } from "./PdfFile";

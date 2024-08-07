@@ -6,15 +6,15 @@
  *
  */
 
-import { HTMLAttributes } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Download } from "@ndla/icons/common";
+import { DownloadLine } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";
-import { SafeLinkButton } from "@ndla/safelink";
+import { SafeLink } from "@ndla/safelink";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { FileListItem } from ".";
 
-interface Props {
+export interface FileProps extends ComponentPropsWithRef<"div"> {
   title: string;
   url: string;
   fileExists: boolean;
@@ -22,7 +22,19 @@ interface Props {
   fileSize?: string;
 }
 
-const StyledSafeLink = styled(SafeLinkButton, {
+export interface FileType {
+  title: string;
+  formats: FileFormat[];
+  fileExists?: boolean;
+}
+
+export interface FileFormat {
+  url: string;
+  fileType: string;
+  tooltip: string;
+}
+
+const StyledSafeLink = styled(SafeLink, {
   base: {
     fontWeight: "light",
     color: "text.default",
@@ -30,12 +42,10 @@ const StyledSafeLink = styled(SafeLinkButton, {
     minHeight: "unset",
     paddingInline: "3xsmall",
     textUnderlineOffset: "2px",
-  },
-});
-
-const StyledText = styled(Text, {
-  base: {
-    paddingInline: "3xsmall",
+    textDecoration: "underline",
+    _hover: {
+      textDecoration: "none",
+    },
   },
 });
 
@@ -45,36 +55,40 @@ const StyledHStack = styled(HStack, {
   },
 });
 
-const File = ({ title, url, fileExists, fileType, fileSize, ...rest }: Props & HTMLAttributes<HTMLDivElement>) => {
-  const { t } = useTranslation();
-  const tooltip = `${t("download")} ${url.split("/").pop()}`;
+const File = forwardRef<HTMLDivElement, FileProps>(
+  ({ title, url, fileExists, fileType, fileSize, children, ...rest }, ref) => {
+    const { t } = useTranslation();
+    const tooltip = `${t("download")} ${url.split("/").pop()}`;
 
-  return (
-    <StyledHStack justify="space-between" {...rest}>
-      <HStack gap="4xsmall">
-        {/** TODO: Change ICON */}
-        <Download />
-        {fileExists ? (
-          <StyledSafeLink variant="link" to={url} title={tooltip}>
-            {title}
-          </StyledSafeLink>
-        ) : (
-          <StyledText fontWeight="light" asChild consumeCss>
-            <span>{title}</span>
-          </StyledText>
-        )}
-        <Text fontWeight="light" asChild consumeCss>
-          <span>({fileType?.toUpperCase()})</span>
-        </Text>
-      </HStack>
-      <Text fontWeight="light" asChild consumeCss>
-        <span>{fileSize}</span>
-      </Text>
-    </StyledHStack>
-  );
-};
+    return (
+      <StyledHStack justify="space-between" ref={ref} {...rest}>
+        <HStack gap="4xsmall">
+          <DownloadLine />
+          {fileExists ? (
+            <StyledSafeLink to={url} title={tooltip}>
+              {title}
+            </StyledSafeLink>
+          ) : (
+            <Text fontWeight="light" asChild consumeCss>
+              <span>{title}</span>
+            </Text>
+          )}
+          <Text fontWeight="light" asChild consumeCss>
+            <span>({fileType?.toUpperCase()})</span>
+          </Text>
+        </HStack>
+        <HStack>
+          <Text fontWeight="light" asChild consumeCss>
+            <span>{fileSize}</span>
+          </Text>
+          {children}
+        </HStack>
+      </StyledHStack>
+    );
+  },
+);
 
-export const FileListElement = ({ title, url, fileExists, fileType, fileSize }: Props) => (
+export const FileListElement = ({ title, url, fileExists, fileType, fileSize }: FileProps) => (
   <FileListItem>
     <File title={title} url={url} fileExists={fileExists} fileType={fileType} fileSize={fileSize} />
   </FileListItem>

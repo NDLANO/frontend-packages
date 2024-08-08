@@ -6,10 +6,14 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
-import File from "./File";
-import FileList from "./FileList";
-import PdfFile from "./PdfFile";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { Pencil } from "@ndla/icons/action";
+import { DeleteForever, DragVertical } from "@ndla/icons/editor";
+import { IconButton } from "@ndla/primitives";
+import { HStack, styled } from "@ndla/styled-system/jsx";
+import { File } from "./File";
+import { FileListEmbed, FileListItem } from "./FileList";
+import { PdfFile } from "./PdfFile";
 
 export default {
   title: "Components/FileList",
@@ -25,27 +29,132 @@ export default {
     fileType: "pdf",
   },
   render: (args) => (
-    <FileList>
+    <ul>
       <File {...args} />
-    </FileList>
+    </ul>
   ),
 } as Meta<typeof File>;
 
+export const FileListStory: StoryFn<typeof File> = (args) => (
+  <ul>
+    <FileListItem>
+      <File {...args} />
+    </FileListItem>
+    <FileListItem>
+      <File {...args} />
+    </FileListItem>
+    <FileListItem>
+      <File {...args} />
+    </FileListItem>
+  </ul>
+);
+
 export const FileNotFound: StoryObj<typeof File> = {
   args: { fileExists: false },
+  render: (args) => (
+    <ul>
+      <FileListItem>
+        <File {...args} />
+      </FileListItem>
+    </ul>
+  ),
 };
 
 export const SeveralFiles: StoryObj<typeof File> = {
   render: () => (
-    <FileList>
-      <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" />
-      <File title="Fil 2" url="https://ndla.no/2" fileExists={false} fileType="png" />
+    <FileListEmbed>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      </FileListItem>
+      <FileListItem>
+        <File title="Fil 2" url="https://ndla.no/2" fileExists={false} fileType="png" fileSize="100 mb" />
+      </FileListItem>
+      <FileListItem>
+        <File title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" fileSize="100 mb" />
+      </FileListItem>
+      <FileListItem>
+        <File title="Fil 4" url="https://ndla.no/4" fileExists fileType="docx" fileSize="100 mb" />
+      </FileListItem>
+    </FileListEmbed>
+  ),
+};
+
+export const DifferentFiles: StoryObj<typeof File> = {
+  render: () => (
+    <FileListEmbed>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      </FileListItem>
       <PdfFile
         title="Fil 3"
         url="https://api.test.ndla.no/files/131789/krypteringsaktivitet_-_til_fiendegruppe_bm.pdf"
       />
-      <File title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" />
-      <File title="Fil 4" url="https://ndla.no/4" fileExists fileType="docx" />
-    </FileList>
+      <FileListItem>
+        <File title="Fil 3" url="https://ndla.no/3" fileExists fileType="docx" fileSize="100 mb" />
+      </FileListItem>
+    </FileListEmbed>
+  ),
+};
+
+export const NoHeader: StoryObj<typeof File> = {
+  render: () => (
+    <ul>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      </FileListItem>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      </FileListItem>
+    </ul>
+  ),
+};
+
+export const FilesWithButtons: StoryObj<typeof File> = {
+  render: () => (
+    <ul>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+        <HStack>
+          <IconButton variant="clear">
+            <Pencil />
+          </IconButton>
+          <IconButton variant="clear">
+            <DeleteForever />
+          </IconButton>
+        </HStack>
+      </FileListItem>
+      <FileListItem>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+        <HStack>
+          <IconButton variant="clear">
+            <Pencil />
+          </IconButton>
+          <IconButton variant="clear">
+            <DeleteForever />
+          </IconButton>
+        </HStack>
+      </FileListItem>
+    </ul>
+  ),
+};
+
+const StyledFileListItem = styled(FileListItem, {
+  base: {
+    paddingInlineStart: "xxsmall",
+    display: "flex",
+    gap: "xxsmall",
+  },
+});
+
+export const FilesWithDragHandle: StoryObj<typeof File> = {
+  render: () => (
+    <ul>
+      <StyledFileListItem>
+        <IconButton variant="clear">
+          <DragVertical />
+        </IconButton>
+        <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
+      </StyledFileListItem>
+    </ul>
   ),
 };

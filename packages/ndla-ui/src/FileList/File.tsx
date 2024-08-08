@@ -6,17 +6,23 @@
  *
  */
 
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { breakpoints, colors, mq, spacing } from "@ndla/core";
-import Format from "./Format";
+import { DownloadLine } from "@ndla/icons/common";
+import { Text } from "@ndla/primitives";
+import { SafeLink } from "@ndla/safelink";
+import { HStack, styled } from "@ndla/styled-system/jsx";
+import { linkOverlay } from "@ndla/styled-system/patterns";
+import { FileListItem } from ".";
 
-interface Props {
+export interface FileProps extends ComponentPropsWithRef<"div"> {
   title: string;
   url: string;
   fileExists: boolean;
   fileType: string;
+  fileSize?: string;
 }
+
 export interface FileType {
   title: string;
   formats: FileFormat[];
@@ -29,27 +35,56 @@ export interface FileFormat {
   tooltip: string;
 }
 
-const StyledFileItem = styled.li`
-  background: ${colors.brand.greyLighter};
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: ${spacing.xsmall};
-  padding: ${spacing.small};
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.small} ${spacing.normal};
-  }
-`;
+const StyledSafeLink = styled(SafeLink, {
+  base: {
+    textUnderlineOffset: "2px",
+    textDecoration: "underline",
+    _hover: {
+      textDecoration: "none",
+    },
+  },
+});
 
-const File = ({ title, url, fileExists, fileType }: Props) => {
-  const { t } = useTranslation();
-  const tooltip = `${t("download")} ${url.split("/").pop()}`;
+const StyledHStack = styled(HStack, {
+  base: {
+    position: "relative",
+    paddingBlock: "small",
+    paddingInlineEnd: "medium",
+    paddingInlineStart: "small",
+    width: "100%",
+  },
+});
 
-  return (
-    <StyledFileItem>
-      <Format format={{ url, fileType, tooltip }} isPrimary title={title} isDeadLink={!fileExists} />
-    </StyledFileItem>
-  );
-};
+export const File = forwardRef<HTMLDivElement, FileProps>(
+  ({ title, url, fileExists, fileType, fileSize, ...rest }, ref) => {
+    const { t } = useTranslation();
+    const tooltip = `${t("download")} ${url.split("/").pop()}`;
 
-export default File;
+    return (
+      <StyledHStack justify="space-between" ref={ref} {...rest}>
+        <HStack gap="xxsmall">
+          <DownloadLine />
+          {fileExists ? (
+            <StyledSafeLink unstyled css={linkOverlay.raw()} to={url} title={tooltip}>
+              {title}
+            </StyledSafeLink>
+          ) : (
+            <Text textStyle="label.medium">{title}</Text>
+          )}
+          <Text textStyle="label.large" asChild consumeCss>
+            <span>({fileType?.toUpperCase()})</span>
+          </Text>
+        </HStack>
+        <Text textStyle="label.large" asChild consumeCss>
+          <span>{fileSize}</span>
+        </Text>
+      </StyledHStack>
+    );
+  },
+);
+
+export const FileListElement = ({ title, url, fileExists, fileType, fileSize }: FileProps) => (
+  <FileListItem>
+    <File title={title} url={url} fileExists={fileExists} fileType={fileType} fileSize={fileSize} />
+  </FileListItem>
+);

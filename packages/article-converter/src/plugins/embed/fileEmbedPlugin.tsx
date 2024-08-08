@@ -8,7 +8,7 @@
 
 import { attributesToProps } from "html-react-parser";
 import { FileMetaData } from "@ndla/types-embed";
-import { PdfFile, File } from "@ndla/ui";
+import { PdfFile, FileListElement } from "@ndla/ui";
 import { PluginType } from "../types";
 
 export const fileEmbedPlugin: PluginType = (element) => {
@@ -19,6 +19,11 @@ export const fileEmbedPlugin: PluginType = (element) => {
     return <PdfFile title={title} url={url} />;
   }
   return (
-    <File url={url} title={title} fileExists={data.status === "success" ? !!data.data.exists : false} fileType={type} />
+    <FileListElement
+      url={url}
+      title={title}
+      fileExists={data.status === "success" ? !!data.data.exists : false}
+      fileType={type}
+    />
   );
 };

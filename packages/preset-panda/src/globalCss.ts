@@ -62,7 +62,7 @@ export const globalCss = defineGlobalStyles({
     // TODO: Reconsider grid margins. Do we want custom handling for items inside a grid?
 
     // Non-figure block elements that should have margin above and below.
-    '& details, blockquote, [data-embed-type="framed-content"], [data-embed-type="factbox"], table, [data-embed-type="related-content-list"], [data-embed-type="link-block-list"], [data-embed-type="blog-post"], [data-embed-type="campaign-block"], [data-embed-type="key-figure"], [data-embed-type="grid"], [data-embed-type="contact-block"], [data-embed-type="uu-disclaimer"]':
+    '& details, blockquote, [data-embed-type="framed-content"], [data-embed-type="factbox"], table, [data-embed-type="related-content-list"], [data-embed-type="link-block-list"], [data-embed-type="blog-post"], [data-embed-type="campaign-block"], [data-embed-type="key-figure"], [data-embed-type="grid"], [data-embed-type="contact-block"], [data-embed-type="file-list"], [data-embed-type="uu-disclaimer"]':
       {
         marginBlockStart: "xsmall",
         marginBlockEnd: "xsmall",

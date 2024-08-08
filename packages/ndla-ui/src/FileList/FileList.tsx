@@ -38,7 +38,7 @@ export const FileListItem = styled("li", {
 export const FileListEmbed = ({ children, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
-    <FileListWrapper {...rest}>
+    <FileListWrapper {...rest} data-embed-type="file-list">
       <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
         <h3>{t("files")}</h3>
       </Heading>

@@ -29,7 +29,7 @@ const StyledListItem = styled("li", {
   base: {
     display: "flex",
     color: "inherit",
-    gap: "4xsmall",
+    gap: "3xsmall",
     alignItems: "flex-end",
     tabletDown: {
       display: "block",

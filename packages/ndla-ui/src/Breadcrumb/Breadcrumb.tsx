@@ -25,12 +25,11 @@ const StyledList = styled("ol", {
     flexWrap: "wrap",
     alignItems: "center",
     listStyle: "none",
-    gap: "xsmall",
+    gap: "xxsmall",
     mobileDown: {
       alignItems: "flex-start",
       justifyContent: "center",
       flexDirection: "column",
-      gap: "xxsmall",
     },
   },
 });

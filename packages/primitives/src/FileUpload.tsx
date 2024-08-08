@@ -32,6 +32,9 @@ const fileUploadRecipe = sva({
       borderRadius: "xsmall",
       border: "1px solid",
       borderColor: "stroke.subtle",
+      transitionProperty: "border, border-color",
+      transitionTimingFunction: "default",
+      transitionDuration: "normal",
       _hover: {
         borderStyle: "dashed",
         borderColor: "stroke.hover",
@@ -73,6 +76,9 @@ const fileUploadRecipe = sva({
     itemDeleteTrigger: {
       gridArea: "delete",
       alignSelf: "center",
+    },
+    itemPreviewImage: {
+      borderRadius: "xsmall",
     },
   },
 });

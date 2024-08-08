@@ -30,6 +30,7 @@ const radioGroupRecipe = sva({
       },
     },
     itemControl: {
+      flexShrink: "0",
       background: "surface.default",
       borderColor: "stroke.subtle",
       borderRadius: "full",

@@ -25,7 +25,7 @@ const embedData: ImageEmbedData = {
   align: "",
   alt: "Tenåringsjente med lyse fletter slenger på håret. Foto. ",
   caption:
-    "Den østerrikske tronfølgeren Franz Ferdinand og hans hustru Sophie var på besøk i Sarajevo i 1914. Begge ble skutt og drept av nasjonalisten Gavrilo Princip i det som er kjent som <em>skuddene i Sarajevo</em>. Denne hendelsen var den utløsende årsaken til første verdenskrig.",
+    "<span>Den østerrikske tronfølgeren Franz Ferdinand og hans hustru Sophie var på besøk i Sarajevo i 1914. Begge ble skutt og drept av nasjonalisten Gavrilo Princip i det som er kjent som <em>skuddene i Sarajevo</em>. Denne hendelsen var den utløsende årsaken til første verdenskrig.</span>",
   url: "https://api.test.ndla.no/image-api/v2/images/61181",
 };
 

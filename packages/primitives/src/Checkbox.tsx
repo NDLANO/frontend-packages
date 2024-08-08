@@ -34,6 +34,7 @@ const checkboxRecipe = sva({
       flexDirection: "column",
     },
     control: {
+      flexShrink: "0",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

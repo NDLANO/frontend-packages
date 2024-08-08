@@ -8,9 +8,8 @@
 
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { ButtonV2 as Button } from "@ndla/button";
 import { AddLine } from "@ndla/icons/action";
+import { Button } from "@ndla/primitives";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 
 interface AddFolderButtonProps {
@@ -20,18 +19,6 @@ interface AddFolderButtonProps {
   setShowTree: (value: boolean) => void;
   loading?: boolean;
 }
-
-const StyledAddFolderButton = styled(Button)`
-  &,
-  &:disabled {
-    border-color: transparent;
-  }
-`;
-
-const StyledPlus = styled(AddLine)`
-  height: 24px;
-  width: 24px;
-`;
 
 const AddFolderButton = ({
   canAddFolder,
@@ -48,10 +35,9 @@ const AddFolderButton = ({
       ? t("myNdla.newFolderUnder", { folderName: focusedFolder?.name })
       : t("treeStructure.maxFoldersAlreadyAdded");
   return (
-    <StyledAddFolderButton
+    <Button
       ref={ref}
-      variant="outline"
-      shape="pill"
+      variant="tertiary"
       disabled={loading || !canAddFolder}
       title={tooltip}
       aria-label={tooltip}
@@ -71,8 +57,8 @@ const AddFolderButton = ({
         setShowTree(true);
       }}
     >
-      <StyledPlus /> {t("myNdla.newFolder")}
-    </StyledAddFolderButton>
+      <AddLine /> {t("myNdla.newFolder")}
+    </Button>
   );
 };
 

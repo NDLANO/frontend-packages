@@ -7,67 +7,47 @@
  */
 
 import { ReactNode } from "react";
-import styled from "@emotion/styled";
-import { animations } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 import FolderItem from "./FolderItem";
 import { treestructureId } from "./helperFunctions";
-import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc } from "./types";
+import { CommonFolderItemsProps } from "./types";
 
-const StyledUL = styled.ul`
-  ${animations.fadeInLeft(animations.durations.fast)};
-  animation-fill-mode: forwards;
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
-  list-style: none;
-  padding: 0;
-`;
+const FoldersList = styled("ul", {
+  base: {
+    animationName: "fade-shift-in",
+    animationDuration: "fast",
+    animationTimingFunction: "default",
+    animationFillMode: "forwards",
+    listStyle: "none",
+  },
+});
 
-const StyledLI = styled.li`
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  &[data-type="navigation"] {
-    align-items: flex-start;
-  }
-`;
+const ListItem = styled("li", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+  },
+});
 
 export interface FolderItemsProps extends CommonFolderItemsProps {
   folders: IFolder[];
-  newFolderParentId: string | undefined;
-  onCancelNewFolder: () => void;
   openFolders: string[];
   parentFolder?: IFolder;
   children?: ReactNode;
-  onCreate: OnCreatedFunc;
-  newFolderInput?: NewFolderInputFunc;
 }
 
-const FolderItems = ({
-  folders,
-  level,
-  loading,
-  newFolderParentId,
-  onCancelNewFolder,
-  openFolders,
-  type,
-  parentFolder,
-  children,
-  onCreate,
-  newFolderInput,
-  ...rest
-}: FolderItemsProps) => (
-  <StyledUL
+const FolderItems = ({ folders, level, loading, openFolders, parentFolder, children, ...rest }: FolderItemsProps) => (
+  <FoldersList
     id={
-      level === 0 && type === "picker"
-        ? treestructureId(type, "popup")
+      level === 0
+        ? treestructureId("popup")
         : parentFolder
-          ? treestructureId(type, `subfolders-${parentFolder.id}`)
+          ? treestructureId(`subfolders-${parentFolder.id}`)
           : undefined
     }
     tabIndex={-1}
-    aria-labelledby={level === 0 && type === "picker" ? treestructureId(type, "label") : undefined}
+    aria-labelledby={level === 0 ? treestructureId("label") : undefined}
     role={level === 0 ? "tree" : "group"}
   >
     {children}
@@ -76,46 +56,22 @@ const FolderItems = ({
       const isOpen = openFolders?.includes(id);
 
       return (
-        <StyledLI key={id} tabIndex={-1} role="none" data-type={type}>
-          <FolderItem
-            index={index}
-            folder={folder}
-            isOpen={isOpen}
-            level={level}
-            loading={loading}
-            type={type}
-            isCreatingFolder={!!newFolderParentId}
-            {...rest}
-          />
-          {((subfolders && isOpen) || newFolderParentId === id) && (
+        <ListItem key={id} tabIndex={-1} role="none">
+          <FolderItem index={index} folder={folder} isOpen={isOpen} level={level} loading={loading} {...rest} />
+          {subfolders && isOpen && (
             <FolderItems
               parentFolder={folder}
               folders={subfolders}
               level={level + 1}
               loading={loading}
-              type={type}
-              newFolderParentId={newFolderParentId}
-              onCancelNewFolder={onCancelNewFolder}
               openFolders={openFolders}
-              newFolderInput={newFolderInput}
-              onCreate={onCreate}
               {...rest}
-            >
-              {newFolderParentId === id && (
-                <li role="none">
-                  {newFolderInput?.({
-                    parentId: id,
-                    onClose: onCancelNewFolder,
-                    onCreate,
-                  })}
-                </li>
-              )}
-            </FolderItems>
+            ></FolderItems>
           )}
-        </StyledLI>
+        </ListItem>
       );
     })}
-  </StyledUL>
+  </FoldersList>
 );
 
 export default FolderItems;

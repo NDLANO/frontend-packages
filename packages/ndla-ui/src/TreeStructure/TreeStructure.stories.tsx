@@ -7,16 +7,21 @@
  */
 
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
-import { IconButtonV2 } from "@ndla/button";
-import { spacing } from "@ndla/core";
-import { Spinner } from "@ndla/icons";
 import { CloseLine } from "@ndla/icons/action";
 import { CheckLine } from "@ndla/icons/editor";
-import { FieldErrorMessage, FieldLabel, FieldRoot, InputContainer, FieldHelper, FieldInput } from "@ndla/primitives";
+import {
+  FieldErrorMessage,
+  FieldLabel,
+  FieldRoot,
+  InputContainer,
+  FieldHelper,
+  FieldInput,
+  IconButton,
+  Spinner,
+} from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IFolder } from "@ndla/types-backend/myndla-api";
 import { uuid } from "@ndla/util";
 import { flattenFolders } from "./helperFunctions";
@@ -24,25 +29,23 @@ import TreeStructure, { TreeStructureProps } from "./TreeStructure";
 
 const MY_FOLDERS_ID = "folders";
 
-const Container = styled.div`
-  display: flex;
-  margin-top: 40px;
-  max-width: 600px;
-  &[data-type="picker"] {
-    height: 250px;
-  }
-`;
+const Container = styled("div", {
+  base: {
+    display: "flex",
+    marginBlockStart: "4xlarge",
+    maxWidth: "surface.large",
+    height: "surface.xsmall",
+  },
+});
 
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing.xxsmall};
-  padding-right: ${spacing.xsmall};
-`;
-
-const StyledSpinner = styled(Spinner)`
-  margin: ${spacing.small};
-`;
+const Row = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    gap: "4xsmall",
+    paddingInlineStart: "3xsmall",
+  },
+});
 
 const targetResource: TreeStructureProps["targetResource"] = {
   id: "test-resource",
@@ -147,7 +150,6 @@ export default {
     targetResource: targetResource,
     label: "Velg mappe",
     maxLevel: 5,
-    type: "picker",
     // eslint-disable-next-line no-console
     onSelectFolder: console.log,
   },
@@ -157,16 +159,10 @@ export default {
 } as Meta<typeof TreeStructure>;
 
 export const Default: StoryFn<typeof TreeStructure> = ({ ...args }) => {
-  const [structure, setStructure] = useState<IFolder[]>(
-    args.type === "picker" ? FOLDER_TREE_STRUCTURE : STRUCTURE_EXAMPLE,
-  );
-
-  useEffect(() => {
-    setStructure(args.type === "picker" ? FOLDER_TREE_STRUCTURE : STRUCTURE_EXAMPLE);
-  }, [args.type]);
+  const [structure, setStructure] = useState<IFolder[]>(FOLDER_TREE_STRUCTURE);
 
   return (
-    <Container data-type={args.type}>
+    <Container>
       <TreeStructure
         {...args}
         folders={structure}
@@ -211,12 +207,6 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
   const { t } = useTranslation();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (isMobile) {
-      inputRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
 
   const onSave = async () => {
     if (error) {
@@ -284,25 +274,17 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
           {!loading ? (
             <>
               {!error && (
-                <IconButtonV2
-                  variant={"ghost"}
-                  colorTheme="light"
-                  tabIndex={0}
-                  aria-label={t("save")}
-                  title={t("save")}
-                  size="small"
-                  onClick={onSave}
-                >
+                <IconButton variant={"clear"} aria-label={t("save")} title={t("save")} onClick={onSave}>
                   <CheckLine />
-                </IconButtonV2>
+                </IconButton>
               )}
-              <IconButtonV2 aria-label={t("close")} title={t("close")} size="small" variant="ghost" onClick={onClose}>
+              <IconButton aria-label={t("close")} title={t("close")} variant="clear" onClick={onClose}>
                 <CloseLine />
-              </IconButtonV2>
+              </IconButton>
             </>
           ) : (
             <FieldHelper>
-              <StyledSpinner size="normal" aria-label={t("loading")} />
+              <Spinner size="medium" aria-label={t("loading")} />
             </FieldHelper>
           )}
         </Row>

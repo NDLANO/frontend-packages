@@ -9,7 +9,15 @@
 import ArticleByline from "./ArticleByline";
 import ArticleFootNotes from "./ArticleFootNotes";
 
-export { Article, ArticleWrapper, ArticleHeader, ArticleFooter } from "./Article";
+export {
+  Article,
+  ArticleWrapper,
+  ArticleHeader,
+  ArticleFooter,
+  ArticleTitle,
+  ArticleFavoriteButtonWrapper,
+  ArticleTitleWrapper,
+} from "./Article";
 export { ArticleContent } from "./ArticleContent";
 
 export { ArticleByline, ArticleFootNotes };

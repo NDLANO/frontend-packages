@@ -45,7 +45,7 @@ export const ArticleWrapper = styled("article", {
   },
 });
 
-const ArticleTitleWrapper = styled("hgroup", {
+export const ArticleTitleWrapper = styled("hgroup", {
   base: {
     display: "flex",
     width: "100%",
@@ -58,7 +58,7 @@ const ArticleTitleWrapper = styled("hgroup", {
   },
 });
 
-const ArticleFavoritesButtonWrapper = styled("div", {
+export const ArticleFavoriteButtonWrapper = styled("div", {
   base: {
     position: "absolute",
     right: "8%",
@@ -91,7 +91,45 @@ export const ArticleFooter = styled("footer", {
   },
 });
 
-type Props = {
+interface ArticleTitleProps {
+  heartButton?: ReactNode;
+  contentType?: ContentType;
+  competenceGoals?: ReactNode;
+  id: string;
+  lang?: string;
+  title?: ReactNode;
+  introduction?: ReactNode;
+}
+
+export const ArticleTitle = ({
+  contentType,
+  heartButton,
+  title,
+  lang,
+  id,
+  introduction,
+  competenceGoals,
+}: ArticleTitleProps) => {
+  return (
+    <ArticleHeader>
+      <ArticleTitleWrapper>
+        {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
+        {!!heartButton && <ArticleFavoriteButtonWrapper>{heartButton}</ArticleFavoriteButtonWrapper>}
+        <Heading textStyle="heading.large" id={id} tabIndex={-1} lang={lang}>
+          {title}
+        </Heading>
+      </ArticleTitleWrapper>
+      {!!introduction && (
+        <Text lang={lang} textStyle="body.xlarge" asChild consumeCss>
+          <div>{introduction}</div>
+        </Text>
+      )}
+      {competenceGoals}
+    </ArticleHeader>
+  );
+};
+
+interface Props {
   heartButton?: ReactNode;
   article: ArticleType;
   licenseBox?: ReactNode;
@@ -100,7 +138,7 @@ type Props = {
   competenceGoals?: ReactNode;
   id: string;
   lang?: string;
-};
+}
 
 export const Article = ({
   article,
@@ -119,21 +157,15 @@ export const Article = ({
 
   return (
     <ArticleWrapper data-ndla-article="">
-      <ArticleHeader>
-        <ArticleTitleWrapper>
-          {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
-          {!!heartButton && <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper>}
-          <Heading textStyle="heading.large" id={id} tabIndex={-1} lang={lang}>
-            {title}
-          </Heading>
-        </ArticleTitleWrapper>
-        {!!introduction && (
-          <Text lang={lang} textStyle="body.xlarge" asChild consumeCss>
-            <div>{introduction}</div>
-          </Text>
-        )}
-        {competenceGoals}
-      </ArticleHeader>
+      <ArticleTitle
+        id={id}
+        contentType={contentType}
+        heartButton={heartButton}
+        title={title}
+        introduction={introduction}
+        competenceGoals={competenceGoals}
+        lang={lang}
+      />
       <ArticleContent>{content}</ArticleContent>
       <ArticleFooter>
         <ArticleByline

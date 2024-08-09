@@ -47,7 +47,6 @@ export type Props = BaseIconProps & IconVariantProps & JsxStyleProps;
 
 const StyledSvg = styled("svg");
 
-// TODO: Move this component over to ndla/icons
 const Icon = ({
   children,
   size,

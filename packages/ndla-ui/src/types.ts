@@ -43,7 +43,7 @@ export interface Copyright {
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;
   origin?: string;
-  processed: boolean;
+  processed?: boolean;
 }
 
 export interface FootNote {

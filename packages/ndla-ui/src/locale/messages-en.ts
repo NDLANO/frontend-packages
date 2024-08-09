@@ -570,7 +570,7 @@ const messages = {
     "source-material": "Source material",
     "assessment-resources": "Assessment resource",
     topic: "Topic",
-    "multidisciplinary-topic": "Multidisciplinary case",
+    multidisciplinary: "Multidisciplinary case",
     image: "Image",
     concept: "Concept",
     audio: "Audio",

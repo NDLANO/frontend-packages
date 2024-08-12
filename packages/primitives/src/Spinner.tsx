@@ -21,6 +21,9 @@ export const spinnerRecipe = cva({
     borderBlockColor: "background.subtle",
     borderInlineStartColor: "background.subtle",
     borderInlineEndColor: "stroke.default",
+    _motionReduce: {
+      animationDuration: "2s",
+    },
   },
   defaultVariants: {
     size: "large",

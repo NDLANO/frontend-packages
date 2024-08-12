@@ -50,8 +50,6 @@ const Container = styled("div", {
       maxWidth: "surface.medium",
     },
     tabletWide: {
-      // TODO: This is probably not the correct max-width. And it should be a token
-      maxWidth: "1100px",
       flexDirection: "row",
     },
   },

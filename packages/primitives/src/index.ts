@@ -148,6 +148,7 @@ export { NdlaLogoEn, NdlaLogoNb, NdlaLogoText } from "./NdlaLogo";
 export type { PaginationRootProps } from "./Pagination";
 export {
   PaginationRoot,
+  PaginationContext,
   PaginationItem,
   PaginationEllipsis,
   PaginationPrevTrigger,

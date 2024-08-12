@@ -52,6 +52,8 @@ export const PaginationEllipsis = withContext<HTMLDivElement, JsxStyleProps & Pa
   { baseComponent: true },
 );
 
+export const PaginationContext = Pagination.Context;
+
 export const PaginationPrevTrigger = withContext<HTMLButtonElement, JsxStyleProps & Pagination.PrevTriggerProps>(
   Pagination.PrevTrigger,
   "prevTrigger",

@@ -74,6 +74,10 @@ const sliderRecipe = sva({
         outlineColor: "surface.action",
         outlineOffset: "0px",
       },
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
   },
 });

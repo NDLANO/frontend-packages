@@ -121,8 +121,7 @@ const ImageWrapper = styled("div", {
     border: {
       true: {
         border: "1px solid",
-        // TODO: Not sure if we want this color.
-        borderColor: "surface.brand.1.strong",
+        borderColor: "stroke.subtle",
         borderBottom: "0",
         borderRadius: "xsmall",
         borderBottomLeftRadius: "0",
@@ -157,7 +156,6 @@ const StyledFigure = styled(Figure, {
   },
 });
 
-// TODO: Ask about BylineButton styling. Not included in design
 const BylineButton = styled(
   "button",
   {

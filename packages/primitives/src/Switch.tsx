@@ -46,6 +46,10 @@ const switchRecipe = sva({
         background: "surface.disabled",
         cursor: "not-allowed",
       },
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
     thumb: {
       display: "inline-flex",
@@ -66,12 +70,18 @@ const switchRecipe = sva({
         _disabled: {
           transform: "translateX(0)",
         },
+        _motionReduce: {
+          transform: "translateX(0)",
+        },
       },
       _checked: {
         transform: "translateX(120%)",
         _hover: {
           transform: "translateX(100%)",
           _disabled: {
+            transform: "translateX(120%)",
+          },
+          _motionReduce: {
             transform: "translateX(120%)",
           },
         },
@@ -90,6 +100,10 @@ const switchRecipe = sva({
         _hover: {
           color: "text.disabled",
         },
+      },
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
       },
     },
   },

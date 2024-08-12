@@ -28,9 +28,15 @@ const dialogRecipe = sva({
       background: "rgba(1, 1, 1, 0.3)",
       _open: {
         animation: "backdrop-in",
+        _motionReduce: {
+          animation: "none",
+        },
       },
       _closed: {
         animation: "backdrop-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
     },
     positioner: {
@@ -83,9 +89,15 @@ const dialogRecipe = sva({
           width: "var(--size)",
           _open: {
             animation: "drawer-in-left",
+            _motionReduce: {
+              animation: "none",
+            },
           },
           _closed: {
             animation: "drawer-out-left",
+            _motionReduce: {
+              animation: "none",
+            },
           },
         },
       },
@@ -100,9 +112,15 @@ const dialogRecipe = sva({
           width: "var(--size)",
           _open: {
             animation: "drawer-in-right",
+            _motionReduce: {
+              animation: "none",
+            },
           },
           _closed: {
             animation: "drawer-out-right",
+            _motionReduce: {
+              animation: "none",
+            },
           },
         },
       },
@@ -117,9 +135,15 @@ const dialogRecipe = sva({
           height: "var(--size)",
           _open: {
             animation: "drawer-in-top",
+            _motionReduce: {
+              animation: "none",
+            },
           },
           _closed: {
             animation: "drawer-out-top",
+            _motionReduce: {
+              animation: "none",
+            },
           },
         },
       },
@@ -134,9 +158,15 @@ const dialogRecipe = sva({
           height: "var(--size)",
           _open: {
             animation: "drawer-in-bottom",
+            _motionReduce: {
+              animation: "none",
+            },
           },
           _closed: {
             animation: "drawer-out-bottom",
+            _motionReduce: {
+              animation: "none",
+            },
           },
         },
       },
@@ -191,9 +221,15 @@ const dialogRecipe = sva({
           width: "var(--size)",
           _open: {
             animation: "dialog-in",
+            _motionReduce: {
+              animation: "none",
+            },
           },
           _closed: {
             animation: "dialog-out",
+            _motionReduce: {
+              animation: "none",
+            },
           },
         },
       },

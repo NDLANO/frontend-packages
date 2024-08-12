@@ -8,7 +8,7 @@
 
 import parse from "html-react-parser";
 import { forwardRef, useMemo } from "react";
-import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
+import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
@@ -81,10 +81,6 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
 export interface InlineConceptProps extends ConceptProps, BaseProps {
   linkText?: string;
 }
-
-// TODO: Consider if we should make this act like the old concept popover.
-// Should it take up the entire screen height on mobile? I don't think we need to.
-// Should it always stay directly underneath the trigger?
 
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
   ({ linkText, copyright, visualElement, lang, children, title, ...rest }, ref) => (

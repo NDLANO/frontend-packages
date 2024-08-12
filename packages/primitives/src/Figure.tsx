@@ -18,6 +18,10 @@ const figureRecipe = cva({
     transitionDuration: "normal",
     transitionProperty: "transform, width, height",
     transitionTimingFunction: "default",
+    _motionReduce: {
+      transition: "none",
+      transitionDuration: "0s",
+    },
   },
   variants: {
     size: {

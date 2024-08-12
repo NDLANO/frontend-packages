@@ -67,6 +67,10 @@ const tabsRecipe = sva({
           color: "text.subtle",
         },
       },
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
     content: {
       display: "flex",

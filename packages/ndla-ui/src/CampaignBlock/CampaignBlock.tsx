@@ -44,11 +44,7 @@ const Container = styled("div", {
     borderRadius: "xsmall",
     boxShadow: "full",
     marginBlockEnd: "4xsmall",
-    maxWidth: "surface.xsmall",
     overflow: "hidden",
-    mobileWide: {
-      maxWidth: "surface.medium",
-    },
     tabletWide: {
       flexDirection: "row",
     },

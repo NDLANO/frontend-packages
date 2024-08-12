@@ -34,8 +34,8 @@ const StyledSafeLink = styled(SafeLink, {
     background: "surface.default",
     padding: "medium",
     border: "1px solid",
-    // TODO: Check if this is correct. Not part of design. Also check if this should have border-radius.
-    borderColor: "stroke.default",
+    borderColor: "stroke.subtle",
+    borderRadius: "xsmall",
     "& h3": {
       textDecoration: "underline",
     },

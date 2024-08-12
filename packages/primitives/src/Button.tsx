@@ -14,6 +14,7 @@ import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
 import { Spinner } from "./Spinner";
 
 // TODO: Consider if any of the backgrounds should actually be transparent
+// TODO: Figure out sizing for link variant.
 export const buttonBaseRecipe = cva({
   base: {
     display: "inline-flex",

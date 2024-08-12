@@ -26,14 +26,16 @@ export const getPossiblyRelativeUrl = (url: string, path?: string) => {
   // If the host is the same, return the relative path
   if (urlObj.hostname.replace(REPLACE_WWW, "") === pathObj.hostname.replace(REPLACE_WWW, "")) {
     // Replace the language part of the url with the language part of the path
+    // Keep the search params if they exist
+    const search = urlObj.search;
     // If the path language part does not exist, remove it.
     const urlMatch = urlObj.pathname.match(LANGUAGE_REGEX);
     const pathMatch = pathObj.pathname.match(LANGUAGE_REGEX);
     if (urlMatch?.[1] && urlMatch?.[1] !== pathMatch?.[1]) {
-      return urlObj.pathname.replace(urlMatch[1], pathMatch?.[1] || "");
+      return `${urlObj.pathname.replace(urlMatch[1], pathMatch?.[1] || "")}${search}`;
     }
 
-    return urlObj.pathname;
+    return `${urlObj.pathname}${search}`;
   }
   return url;
 };

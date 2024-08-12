@@ -12,7 +12,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } from "../Embed";
-import { EmbedByline, LicenseContainerContent } from "../LicenseByline/EmbedByline";
+import { EmbedByline } from "../LicenseByline/EmbedByline";
 
 export interface ConceptProps extends ComponentPropsWithRef<"figure"> {
   copyright?: ConceptCopyright;
@@ -40,7 +40,7 @@ const ContentWrapper = styled("div", {
   },
 });
 
-// TODO: Figure out if we need to support tags, subjects and headerButtons.
+// TODO: Figure out if we need to support headerButtons.
 
 export const Concept = forwardRef<HTMLElement, ConceptProps>(
   ({ copyright, visualElement, lang, children, title, ...rest }, ref) => {

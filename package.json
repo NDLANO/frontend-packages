@@ -76,6 +76,7 @@
     "@testing-library/react": "14.1.2",
     "@types/htmlparser2": "^3.10.3",
     "@types/jest": "^29.5.10",
+    "@types/lodash.throttle": "^4.1.9",
     "@types/node": "^20.12.12",
     "@types/punycode": "^2.1.4",
     "@types/react": "^18.3.2",

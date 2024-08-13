@@ -168,7 +168,8 @@ const ArticleByline = ({
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (
-              <span>
+              //eslint-disable-next-line react/no-unknown-property
+              <span property="cc:attributionName">
                 {authors.length > 0 &&
                   `${t("article.authorsLabel", {
                     names: renderContributors(authors, t),

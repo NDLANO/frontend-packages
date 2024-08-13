@@ -14,6 +14,7 @@ import { ArticleContent } from "./ArticleContent";
 import { ContentTypeBadgeNew } from "..";
 import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import { Article as ArticleType } from "../types";
+import { licenseAttributes } from "../utils/licenseAttributes";
 
 export const ArticleWrapper = styled("article", {
   base: {
@@ -117,13 +118,15 @@ export const Article = ({
   const authors =
     copyright?.creators.length || copyright?.rightsholders.length ? copyright.creators : copyright?.processors;
 
+  const licenseProps = licenseAttributes(copyright?.license?.license, lang, undefined);
+
   return (
-    <ArticleWrapper data-ndla-article="">
+    <ArticleWrapper data-ndla-article="" {...licenseProps}>
       <ArticleHeader>
         <ArticleTitleWrapper>
           {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
           {!!heartButton && <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper>}
-          <Heading textStyle="heading.large" id={id} tabIndex={-1} lang={lang}>
+          <Heading textStyle="heading.large" id={id} tabIndex={-1} lang={lang} property="dct:title">
             {title}
           </Heading>
         </ArticleTitleWrapper>

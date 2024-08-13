@@ -58,14 +58,11 @@ export const globalCss = defineGlobalStyles({
     textStyle: "body.article",
     width: "100%",
 
-    // TODO: Re-check all margin values here. Especially headings.
-    // TODO: Reconsider grid margins. Do we want custom handling for items inside a grid?
-
     // Non-figure block elements that should have margin above and below.
     '& details, blockquote, [data-embed-type="framed-content"], [data-embed-type="factbox"], table, [data-embed-type="related-content-list"], [data-embed-type="link-block-list"], [data-embed-type="blog-post"], [data-embed-type="campaign-block"], [data-embed-type="key-figure"], [data-embed-type="grid"], [data-embed-type="contact-block"], [data-embed-type="file-list"], [data-embed-type="uu-disclaimer"]':
       {
-        marginBlockStart: "xsmall",
-        marginBlockEnd: "xsmall",
+        marginBlockStart: "xxlarge",
+        marginBlockEnd: "xxlarge",
       },
 
     // Article content is usually wrapped in a section. The rest of the elements in this list contains other elements, and should add margin to them no matter where they are placed in the DOM.
@@ -73,14 +70,18 @@ export const globalCss = defineGlobalStyles({
       {
         // TODO: Remove copy-heading if we can merge the new heading links
         '& > :is(h2, [data-embed-type="copy-heading"])': {
-          marginBlockStart: "medium",
+          marginBlockStart: "xxlarge",
           marginBlockEnd: "medium",
         },
         "& > h3": {
-          marginBlockStart: "small",
+          marginBlockStart: "xlarge",
           marginBlockEnd: "small",
         },
-        '& > :is(p, h4, h5, h6, figure, ul, ol, dl, [data-embed-type="speech"])': {
+        "& > :is(h4, h5, h6)": {
+          marginBlockStart: "large",
+          marginBlockEnd: "xsmall",
+        },
+        '& > :is(p, figure, ul, ol, dl, [data-embed-type="speech"])': {
           marginBlockStart: "xsmall",
           marginBlockEnd: "xsmall",
         },

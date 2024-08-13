@@ -22,12 +22,9 @@ export const contentTypeToHeroMap: Record<ContentType, HeroVariant> = {
   [contentTypes.SOURCE_MATERIAL]: "brand1",
   // This will never happen
   [contentTypes.LEARNING_PATH]: "primary",
-  // TODO: This needs a color
-  [contentTypes.TOPIC]: "neutral",
-  // TODO: This is just taken from thin air.
-  [contentTypes.MULTIDISCIPLINARY_TOPIC]: "brand4",
+  [contentTypes.TOPIC]: "primary",
+  [contentTypes.MULTIDISCIPLINARY_TOPIC]: "primary",
   [contentTypes.CONCEPT]: "brand1Subtle",
-  // TODO: No clue what this'll be. Maybe unused?
   [contentTypes.EXTERNAL]: "primary",
   [contentTypes.IMAGE]: "primary",
   [contentTypes.AUDIO]: "primary",

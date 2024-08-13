@@ -52,6 +52,10 @@ const accordionRecipe = sva({
       _open: {
         transform: "rotate(180deg)",
       },
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
     itemContent: {
       overflow: "hidden",
@@ -63,9 +67,15 @@ const accordionRecipe = sva({
       paddingInline: "small",
       _open: {
         animation: "collapse-in",
+        _motionReduce: {
+          animation: "none",
+        },
       },
       _closed: {
         animation: "collapse-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
     },
     item: {

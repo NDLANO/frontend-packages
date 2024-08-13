@@ -39,9 +39,15 @@ const comboboxRecipe = sva({
       maxHeight: "surface.xsmall",
       _open: {
         animation: "fade-shift-in 0.25s ease-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
       _closed: {
         animation: "fade-shift-out 0.25s ease-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
     },
     item: {
@@ -83,6 +89,10 @@ const comboboxRecipe = sva({
         transitionDuration: "normal",
         transitionProperty: "transform",
         transitionTimingFunction: "default",
+        _motionReduce: {
+          transition: "none",
+          transitionDuration: "0s",
+        },
       },
       _open: {
         "& svg": {

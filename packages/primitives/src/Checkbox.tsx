@@ -45,6 +45,10 @@ const checkboxRecipe = sva({
       transitionDuration: "normal",
       transitionProperty: "border-color, background, box-shadow, color",
       transitionTimingFunction: "default",
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
   },
   defaultVariants: {

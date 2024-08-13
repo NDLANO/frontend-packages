@@ -25,9 +25,15 @@ const tooltipRecipe = sva({
       "--arrow-background": "colors.surface.action",
       _open: {
         animation: "fade-shift-in 0.2s ease-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
       _closed: {
         animation: "fade-shift-out 0.2s ease-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
     },
   },

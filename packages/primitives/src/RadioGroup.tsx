@@ -59,6 +59,10 @@ const radioGroupRecipe = sva({
           boxShadow: "none",
         },
       },
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
     item: {
       display: "flex",

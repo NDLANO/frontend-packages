@@ -48,6 +48,10 @@ export const buttonBaseRecipe = cva({
     _focusVisible: {
       boxShadow: "inset 0 0 0 3px var(--shadow-color)",
     },
+    _motionReduce: {
+      transition: "none",
+      transitionDuration: "0s",
+    },
   },
   defaultVariants: {
     variant: "primary",

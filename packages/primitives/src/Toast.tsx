@@ -34,6 +34,10 @@ const toastRecipe = sva({
       transitionDuration: "slow",
       transitionProperty: "translate, scale, opacity, height",
       transitionTimingFunction: "default",
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
     title: {
       paddingInlineEnd: "xxlarge",

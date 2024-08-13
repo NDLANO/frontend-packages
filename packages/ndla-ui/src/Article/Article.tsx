@@ -6,16 +6,26 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
+import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
 import ArticleByline from "./ArticleByline";
-import { ArticleContent } from "./ArticleContent";
 import { ContentTypeBadgeNew } from "..";
 import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import { Article as ArticleType } from "../types";
 
-export const ArticleWrapper = styled("article", {
+const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
+
+export const ArticleContent = forwardRef<HTMLElement, HTMLArkProps<"div"> & JsxStyleProps>(
+  ({ className, ...props }, ref) => (
+    <StyledArticleContent className={cx("ndla-article", className)} {...props} ref={ref} />
+  ),
+);
+
+const StyledArticleWrapper = styled("article", {
   base: {
     display: "flex",
     flexDirection: "column",
@@ -45,7 +55,11 @@ export const ArticleWrapper = styled("article", {
   },
 });
 
-const ArticleTitleWrapper = styled("hgroup", {
+export const ArticleWrapper = forwardRef<HTMLElement, ComponentPropsWithRef<"article"> & JsxStyleProps>(
+  (props, ref) => <StyledArticleWrapper data-ndla-article="" ref={ref} {...props} />,
+);
+
+export const ArticleHGroup = styled("hgroup", {
   base: {
     display: "flex",
     width: "100%",
@@ -58,7 +72,7 @@ const ArticleTitleWrapper = styled("hgroup", {
   },
 });
 
-const ArticleFavoritesButtonWrapper = styled("div", {
+export const ArticleActionWrapper = styled("div", {
   base: {
     position: "absolute",
     right: "8%",
@@ -91,7 +105,45 @@ export const ArticleFooter = styled("footer", {
   },
 });
 
-type Props = {
+interface ArticleTitleProps {
+  heartButton?: ReactNode;
+  contentType?: ContentType;
+  competenceGoals?: ReactNode;
+  id: string;
+  lang?: string;
+  title?: ReactNode;
+  introduction?: ReactNode;
+}
+
+export const ArticleTitle = ({
+  contentType,
+  heartButton,
+  title,
+  lang,
+  id,
+  introduction,
+  competenceGoals,
+}: ArticleTitleProps) => {
+  return (
+    <ArticleHeader>
+      <ArticleHGroup>
+        {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
+        {!!heartButton && <ArticleActionWrapper>{heartButton}</ArticleActionWrapper>}
+        <Heading textStyle="heading.large" id={id} lang={lang}>
+          {title}
+        </Heading>
+      </ArticleHGroup>
+      {!!introduction && (
+        <Text lang={lang} textStyle="body.xlarge" asChild consumeCss>
+          <div>{introduction}</div>
+        </Text>
+      )}
+      {competenceGoals}
+    </ArticleHeader>
+  );
+};
+
+interface Props {
   heartButton?: ReactNode;
   article: ArticleType;
   licenseBox?: ReactNode;
@@ -100,7 +152,7 @@ type Props = {
   competenceGoals?: ReactNode;
   id: string;
   lang?: string;
-};
+}
 
 export const Article = ({
   article,
@@ -118,22 +170,16 @@ export const Article = ({
     copyright?.creators.length || copyright?.rightsholders.length ? copyright.creators : copyright?.processors;
 
   return (
-    <ArticleWrapper data-ndla-article="">
-      <ArticleHeader>
-        <ArticleTitleWrapper>
-          {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
-          {!!heartButton && <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper>}
-          <Heading textStyle="heading.large" id={id} tabIndex={-1} lang={lang}>
-            {title}
-          </Heading>
-        </ArticleTitleWrapper>
-        {!!introduction && (
-          <Text lang={lang} textStyle="body.xlarge" asChild consumeCss>
-            <div>{introduction}</div>
-          </Text>
-        )}
-        {competenceGoals}
-      </ArticleHeader>
+    <ArticleWrapper>
+      <ArticleTitle
+        id={id}
+        contentType={contentType}
+        heartButton={heartButton}
+        title={title}
+        introduction={introduction}
+        competenceGoals={competenceGoals}
+        lang={lang}
+      />
       <ArticleContent>{content}</ArticleContent>
       <ArticleFooter>
         <ArticleByline

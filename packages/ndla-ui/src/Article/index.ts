@@ -9,8 +9,16 @@
 import ArticleByline from "./ArticleByline";
 import ArticleFootNotes from "./ArticleFootNotes";
 
-export { Article, ArticleWrapper, ArticleHeader, ArticleFooter } from "./Article";
-export { ArticleContent } from "./ArticleContent";
+export {
+  Article,
+  ArticleWrapper,
+  ArticleHeader,
+  ArticleFooter,
+  ArticleTitle,
+  ArticleActionWrapper,
+  ArticleHGroup,
+  ArticleContent,
+} from "./Article";
 
 export { ArticleByline, ArticleFootNotes };
 export { ArticleParagraph } from "./ArticleParagraph";

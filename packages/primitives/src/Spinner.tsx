@@ -21,6 +21,9 @@ export const spinnerRecipe = cva({
     borderBlockColor: "background.subtle",
     borderInlineStartColor: "background.subtle",
     borderInlineEndColor: "stroke.default",
+    "& [data-name='text']": {
+      display: "none",
+    },
     _motionReduce: {
       animationDuration: "2s",
     },
@@ -56,5 +59,13 @@ export type SpinnerProps = HTMLArkProps<"div"> & JsxStyleProps & SpinnerVariantP
 const StyledSpinner = styled(ark.div, {}, { baseComponent: true });
 
 export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(({ size, css: cssProp, ...props }, ref) => (
-  <StyledSpinner css={css.raw(spinnerRecipe.raw({ size }), cssProp)} {...props} ref={ref} />
+  <StyledSpinner
+    aria-busy="true"
+    aria-live="polite"
+    aria-valuetext="Loading"
+    role="progressbar"
+    css={css.raw(spinnerRecipe.raw({ size }), cssProp)}
+    {...props}
+    ref={ref}
+  />
 ));

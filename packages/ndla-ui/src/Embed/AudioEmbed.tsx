@@ -12,6 +12,7 @@ import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { Author } from "./ImageEmbed";
 import AudioPlayer from "../AudioPlayer";
 import { EmbedByline } from "../LicenseByline";
+import { licenseAttributes } from "../utils/licenseAttributes";
 
 interface Props {
   embed: AudioMetaData;
@@ -42,8 +43,10 @@ const AudioEmbed = ({ embed, lang }: Props) => {
 
   const img = coverPhoto && { url: coverPhoto.url, alt: coverPhoto.altText };
 
+  const licenseProps = licenseAttributes(data.copyright.license.license, lang, embedData.url);
+
   return (
-    <Figure lang={lang} data-embed-type={type}>
+    <Figure lang={lang} data-embed-type={type} {...licenseProps}>
       <AudioPlayer
         description={data.podcastMeta?.introduction ?? ""}
         img={img}

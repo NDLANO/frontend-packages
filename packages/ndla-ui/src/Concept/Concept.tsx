@@ -13,6 +13,7 @@ import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept
 import { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } from "../Embed";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
+import { licenseAttributes } from "../utils/licenseAttributes";
 
 export interface ConceptProps extends ComponentPropsWithRef<"figure"> {
   copyright?: ConceptCopyright;
@@ -44,8 +45,10 @@ const ContentWrapper = styled("div", {
 
 export const Concept = forwardRef<HTMLElement, ConceptProps>(
   ({ copyright, visualElement, lang, children, title, ...rest }, ref) => {
+    const licenseProps = licenseAttributes(copyright?.license?.license, lang, title);
+
     return (
-      <StyledFigure ref={ref} {...rest}>
+      <StyledFigure ref={ref} {...rest} {...licenseProps}>
         <ContentWrapper lang={lang}>
           {!!title && (
             <>

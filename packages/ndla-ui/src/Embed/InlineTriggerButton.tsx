@@ -6,11 +6,10 @@
  *
  */
 
-import { ComponentPropsWithRef, KeyboardEvent, forwardRef, useCallback, useRef } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { styled } from "@ndla/styled-system/jsx";
-import { composeRefs } from "@ndla/util";
 
-const StyledSpan = styled("span", {
+const StyledButton = styled("button", {
   base: {
     position: "relative",
     overflow: "visible",
@@ -18,7 +17,6 @@ const StyledSpan = styled("span", {
     borderStyle: "dashed",
     borderColor: "stroke.hover",
     paddingBlock: "4xsmall",
-    paddingInline: "4xsmall",
     width: "fit-content",
     cursor: "pointer",
     _hover: {
@@ -47,26 +45,6 @@ const StyledSpan = styled("span", {
   },
 });
 
-export const InlineTriggerButton = forwardRef<HTMLSpanElement, ComponentPropsWithRef<"span">>(
-  ({ onClick, ...props }, ref) => {
-    const spanRef = useRef<HTMLSpanElement>(null);
-
-    // Emulate a button click when pressing Enter or Space
-    const onKeyboardEvent = useCallback((event: KeyboardEvent<HTMLSpanElement>) => {
-      if (event.key === "Enter" || event.key === " ") {
-        spanRef.current?.click();
-      }
-    }, []);
-
-    return (
-      <StyledSpan
-        ref={composeRefs(spanRef, ref)}
-        onKeyUp={onKeyboardEvent}
-        onClick={onClick}
-        role="button"
-        tabIndex={0}
-        {...props}
-      />
-    );
-  },
-);
+export const InlineTriggerButton = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>((props, ref) => {
+  return <StyledButton {...props} ref={ref} />;
+});

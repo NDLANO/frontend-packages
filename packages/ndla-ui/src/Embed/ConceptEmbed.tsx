@@ -82,9 +82,10 @@ export interface InlineConceptProps extends ConceptProps, BaseProps {
   linkText?: string;
 }
 
-export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
+export const InlineConcept = forwardRef<HTMLButtonElement, InlineConceptProps>(
   ({ linkText, copyright, visualElement, lang, children, title, ...rest }, ref) => (
-    <PopoverRoot>
+    // eslint-disable-next-line jsx-a11y/no-autofocus
+    <PopoverRoot autoFocus={false}>
       <PopoverTrigger asChild>
         <InlineTriggerButton {...rest} ref={ref}>
           {linkText}

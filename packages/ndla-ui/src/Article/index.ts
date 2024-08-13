@@ -18,6 +18,7 @@ export {
   ArticleActionWrapper,
   ArticleHGroup,
   ArticleContent,
+  ArticlePadding,
 } from "./Article";
 
 export { ArticleByline, ArticleFootNotes };

@@ -54,7 +54,7 @@ export const spinnerRecipe = cva({
 
 export type SpinnerVariantProps = RecipeVariantProps<typeof spinnerRecipe>;
 
-export type SpinnerProps = HTMLArkProps<"div"> & JsxStyleProps & SpinnerVariantProps;
+export type SpinnerProps = HTMLArkProps<"div"> & JsxStyleProps & SpinnerVariantProps & { "aria-valuetext": string };
 
 const StyledSpinner = styled(ark.div, {}, { baseComponent: true });
 
@@ -62,7 +62,6 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(({ size, css: cs
   <StyledSpinner
     aria-busy="true"
     aria-live="polite"
-    aria-valuetext="Loading"
     role="progressbar"
     css={css.raw(spinnerRecipe.raw({ size }), cssProp)}
     {...props}

@@ -17,6 +17,7 @@ const paginationRecipe = sva({
     root: {
       display: "flex",
       gap: "xxsmall",
+      justifyContent: "center",
     },
     item: {
       fontVariantNumeric: "tabular-nums",

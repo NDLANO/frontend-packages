@@ -14,7 +14,6 @@ const GridContainer = styled("div", {
     display: "grid",
     justifyContent: "center",
     borderRadius: "xsmall",
-    padding: "xsmall",
     gridRowGap: "large",
     gridColumnGap: "medium",
     width: "100%",
@@ -50,6 +49,7 @@ const GridContainer = styled("div", {
     },
     border: {
       lightBlue: {
+        padding: "xsmall",
         border: "1px solid",
         borderColor: "surface.brand.2",
       },

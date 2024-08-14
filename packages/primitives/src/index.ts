@@ -6,7 +6,7 @@
  *
  */
 
-export type { AccordionRootProps } from "./Accordion";
+export type { AccordionRootProps, AccordionItemProps } from "./Accordion";
 export {
   AccordionRoot,
   AccordionItemContent,

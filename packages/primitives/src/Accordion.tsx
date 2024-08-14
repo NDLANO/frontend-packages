@@ -146,7 +146,9 @@ export const AccordionItemIndicator = withContext<HTMLDivElement, JsxStyleProps 
   { baseComponent: true },
 );
 
-export const AccordionItem = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemProps>(Accordion.Item, "item", {
+export interface AccordionItemProps extends JsxStyleProps, Accordion.ItemProps {}
+
+export const AccordionItem = withContext<HTMLDivElement, AccordionItemProps>(Accordion.Item, "item", {
   baseComponent: true,
 });
 

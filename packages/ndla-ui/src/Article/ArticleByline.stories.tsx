@@ -8,7 +8,7 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 
-import ArticleByline from "./ArticleByline";
+import { ArticleByline } from "./ArticleByline";
 
 /**
  * Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse av regler ved bruk av innhold, ikon hvis artikkel er tilleggsstoff og dato for forrige oppdatering.

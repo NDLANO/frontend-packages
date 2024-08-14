@@ -6,9 +6,6 @@
  *
  */
 
-import ArticleByline from "./ArticleByline";
-import ArticleFootNotes from "./ArticleFootNotes";
-
 export {
   Article,
   ArticleWrapper,
@@ -18,7 +15,10 @@ export {
   ArticleActionWrapper,
   ArticleHGroup,
   ArticleContent,
+  ArticlePadding,
 } from "./Article";
 
-export { ArticleByline, ArticleFootNotes };
+export { ArticleByline, ArticleBylineAccordionItem } from "./ArticleByline";
+export { ArticleFootNotes } from "./ArticleFootNotes";
+
 export { ArticleParagraph } from "./ArticleParagraph";

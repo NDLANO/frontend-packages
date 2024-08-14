@@ -58,12 +58,10 @@ const FootnoteList = styled("ol", {
   },
 });
 
-const ArticleFootNotes = ({ footNotes }: ArticleFootNotesProps) => (
+export const ArticleFootNotes = ({ footNotes }: ArticleFootNotesProps) => (
   <FootnoteList>
     {footNotes.map((footNote) => (
       <FootNote key={footNote.ref} footNote={footNote} />
     ))}
   </FootnoteList>
 );
-
-export default ArticleFootNotes;

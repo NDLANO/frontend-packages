@@ -35,6 +35,7 @@ export { LicenseLink, EmbedByline } from "./LicenseByline";
 
 export {
   ArticleByline,
+  ArticleBylineAccordionItem,
   ArticleFootNotes,
   ArticleWrapper,
   Article,

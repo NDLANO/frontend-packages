@@ -89,6 +89,9 @@ export const globalCss = defineGlobalStyles({
           marginBlockStart: "xsmall",
           marginBlockEnd: "xsmall",
         },
+        "& > :is(:first-child)": {
+          marginBlockStart: "xxlarge",
+        },
       },
   },
   // Adds default link styling to links without classes

@@ -147,7 +147,7 @@ const CampaignBlock = ({
             <InternalHeading>{parse(title)}</InternalHeading>
           </HeaderComponent>
         </MaybeLinkText>
-        <Text textStyle="body.large">{parse(description)}</Text>
+        <Text textStyle="body.xlarge">{parse(description)}</Text>
         {!!url?.url && (
           <MaybeLinkText url={url.url} path={path}>
             <LinkText textStyle="body.medium">

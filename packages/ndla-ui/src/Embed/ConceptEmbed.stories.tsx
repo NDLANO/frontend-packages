@@ -192,6 +192,15 @@ export const Inline: StoryObj<typeof ConceptEmbed> = {
       data: blockMetaData,
     },
   },
+  render: (args) => (
+    <p>
+      Vi kan si at organisasjonene i arbeidslivet er spesielt viktige. Arbeidstakere og arbeidsgivere har ikke alltid de
+      samme interessene og har derfor forskjellig syn <ConceptEmbed {...args} /> på hva som er problemer, og hvordan
+      problemer skal løses. I stedet for at hver enkelt arbeidstaker stadig skal forhandle for seg selv med
+      arbeidsgiveren sin, blir mange problemer løst gjennom organisasjonene som representerer arbeidstakerne og
+      arbeidsgiverne.
+    </p>
+  ),
 };
 
 export const InlineFailed: StoryObj<typeof ConceptEmbed> = {

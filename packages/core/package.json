@@ -31,9 +31,6 @@
     "inuitcss": "6.0.0",
     "sass-mq": "^5.0.1"
   },
-  "peerDependencies": {
-    "@emotion/react": "^11.10.4"
-  },
   "publishConfig": {
     "access": "public"
   },

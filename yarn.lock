@@ -2826,10 +2826,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/hooks@workspace:packages/hooks"
   dependencies:
-    "@ndla/util": "npm:^4.1.0"
     lodash.throttle: "npm:^4.1.1"
   peerDependencies:
-    "@emotion/react": ^11.10.4
     react: ">= 16.8.0"
   languageName: unknown
   linkType: soft

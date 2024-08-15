@@ -24,6 +24,8 @@ const AudioPlayerWrapper = styled("div", {
     boxShadow: "full",
     marginBlockEnd: "4xsmall",
     overflow: "hidden",
+    // Include box-shadow in element size
+    width: "calc(100% - 4px)",
   },
 });
 

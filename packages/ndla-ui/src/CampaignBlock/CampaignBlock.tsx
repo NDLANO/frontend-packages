@@ -48,6 +48,8 @@ const Container = styled("div", {
     tabletWide: {
       flexDirection: "row",
     },
+    // Include box-shadow in element size
+    width: "calc(100% - 4px)",
   },
 });
 

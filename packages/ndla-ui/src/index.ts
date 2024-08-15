@@ -109,8 +109,6 @@ export {
 
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 
-export { default as ContentPlaceholder } from "./ContentPlaceholder";
-
 export {
   TagSelectorRoot,
   TagSelectorLabel,

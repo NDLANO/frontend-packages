@@ -203,7 +203,7 @@ export {
 } from "./Select";
 
 export type { SkeletonProps } from "./Skeleton";
-export { Skeleton } from "./Skeleton";
+export { Skeleton, SkeletonField, SkeletonWrapper } from "./Skeleton";
 
 export type { SliderRootProps } from "./Slider";
 export {

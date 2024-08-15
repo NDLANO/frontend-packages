@@ -1120,6 +1120,10 @@ const messages = {
         subscribe: "Du får nå varsling om nye svar på dette innlegget",
         unsubscribe: "Du har skrudd av varsling om nye svar på dette innlegget",
         commentedOn: "svarte på innlegget <i>{{title}}</i>",
+        button: {
+          show: "Vis varslinger",
+          showNew: "Vis {{count}} nye varslinger",
+        },
       },
       topicsBy: "Innlegg av",
       admin: {

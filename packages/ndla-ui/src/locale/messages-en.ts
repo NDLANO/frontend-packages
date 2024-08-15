@@ -1117,6 +1117,10 @@ const messages = {
         subscribe: "You will now be notified of new replies to this topic",
         unsubscribe: "You have turned off notification of new replies to this topic",
         commentedOn: "commented on the post <i>{{title}}</i>",
+        button: {
+          show: "View notifications",
+          showNew: "View {{count}} new notifications",
+        },
       },
       topicsBy: "Topics by",
       admin: {

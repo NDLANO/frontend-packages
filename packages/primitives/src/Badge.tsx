@@ -7,10 +7,10 @@
  */
 
 import { forwardRef } from "react";
-import { HTMLArkProps } from "@ark-ui/react";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
-import { Text, TextProps } from "./Text";
 
 const badgeRecipe = cva({
   base: {
@@ -18,6 +18,7 @@ const badgeRecipe = cva({
     borderRadius: "xsmall",
     border: "1px solid",
     width: "fit-content",
+    textStyle: "label.medium",
   },
   defaultVariants: {
     colorTheme: "neutral",
@@ -48,12 +49,10 @@ export type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipe>;
 
 export type BadgeVariant = NonNullable<BadgeVariantProps>["colorTheme"];
 
-export type BadgeProps = HTMLArkProps<"p"> & TextProps & JsxStyleProps & BadgeVariantProps;
+export type BadgeProps = HTMLArkProps<"div"> & JsxStyleProps & BadgeVariantProps;
 
-export const Badge = forwardRef<HTMLParagraphElement, BadgeProps>(
-  ({ colorTheme, textStyle = "label.medium", css: cssProp, children, ...props }, ref) => (
-    <Text css={css.raw(badgeRecipe.raw({ colorTheme }), cssProp)} {...props} ref={ref} asChild consumeCss>
-      <div>{children}</div>
-    </Text>
-  ),
-);
+const StyledBadge = styled(ark.div, {}, { baseComponent: true });
+
+export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({ colorTheme, css: cssProp, ...props }, ref) => (
+  <StyledBadge css={css.raw(badgeRecipe.raw({ colorTheme }), cssProp)} {...props} ref={ref} />
+));

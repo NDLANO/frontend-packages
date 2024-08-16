@@ -19,7 +19,6 @@ export default {
   args: {
     colorTheme: "neutral",
     children: "Kjernestoff",
-    textStyle: "heading.large",
   },
   render: ({ children, ...args }) => <Badge {...args}>{children}</Badge>,
 } as Meta<typeof Badge>;

@@ -116,8 +116,7 @@ const CampaignBlock = ({
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
   const HeaderComponent = url?.url ? LinkText : Text;
   return (
-    // TODO: Remove data-type
-    <Container className={className} data-type="campaign-block" data-embed-type="campaign-block">
+    <Container className={className} data-embed-type="campaign-block">
       {imageSide === "left" && imageComponent}
       <ContentWrapper>
         <MaybeLinkText url={url?.url} path={path}>

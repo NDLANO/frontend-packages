@@ -63,7 +63,7 @@ export const Current: StoryObj<typeof ListItemRoot> = {
   },
 };
 export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
-  <ListItemRoot colorTheme="none" nonInteractive>
+  <ListItemRoot variant="nonInteractive">
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
     <ListItemContent>
       <ListItemHeading>Tittel</ListItemHeading>

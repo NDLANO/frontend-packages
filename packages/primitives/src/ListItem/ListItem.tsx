@@ -32,24 +32,6 @@ export const listItemRecipe = sva({
       transitionProperty: "background-color, border-color, color",
       transitionDuration: "superFast",
       transitionTimingFunction: "ease-in-out",
-      _hover: {
-        background: "var(--background-hover)",
-      },
-      _highlighted: {
-        background: "var(--background-hover)",
-      },
-      '&[aria-current="true"], &[aria-current="page"]': {
-        background: "var(--background-current)",
-        color: "text.onAction",
-        _hover: {
-          background: "var(--background-hover)",
-          color: "text.default",
-        },
-        _highlighted: {
-          background: "var(--background-hover)",
-          color: "text.default",
-        },
-      },
     },
     content: {
       display: "flex",
@@ -57,12 +39,6 @@ export const listItemRecipe = sva({
       justifyContent: "space-between",
       gap: "xsmall",
       width: "100%",
-    },
-    title: {
-      textDecoration: "underline",
-      _hover: {
-        textDecoration: "none",
-      },
     },
     image: {
       minHeight: "40px",
@@ -78,6 +54,39 @@ export const listItemRecipe = sva({
     colorTheme: "brand1",
     borderVariant: "solid",
   },
+  compoundVariants: [
+    {
+      variant: ["standalone", "list"],
+      css: {
+        root: {
+          _hover: {
+            background: "var(--background-hover)",
+          },
+          _highlighted: {
+            background: "var(--background-hover)",
+          },
+          '&[aria-current="true"], &[aria-current="page"]': {
+            background: "var(--background-current)",
+            color: "var(--color-hover)",
+            _hover: {
+              background: "var(--background-hover)",
+              color: "text.default",
+            },
+            _highlighted: {
+              background: "var(--background-hover)",
+              color: "text.default",
+            },
+          },
+        },
+        title: {
+          textDecoration: "underline",
+          _hover: {
+            textDecoration: "none",
+          },
+        },
+      },
+    },
+  ],
   variants: {
     borderVariant: {
       solid: {
@@ -97,6 +106,7 @@ export const listItemRecipe = sva({
           "--background-hover": "colors.surface.brand.1.subtle",
           "--background-current": "colors.surface.actionSubtle.selected",
           "--border-hover": "colors.stroke.hover",
+          "--color-hover": "colors.text.onAction",
         },
       },
       brand2: {
@@ -105,10 +115,16 @@ export const listItemRecipe = sva({
           // TODO: Not a semantic color
           "--background-current": "colors.blue.800",
           "--border-hover": "colors.surface.brand.2.strong",
+          "--color-hover": "colors.text.onAction",
         },
       },
     },
     variant: {
+      nonInteractive: {
+        root: {
+          borderBlockColor: "stroke.subtle",
+        },
+      },
       standalone: {
         root: {
           borderBlockColor: "stroke.subtle",

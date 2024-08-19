@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Pencil, TrashCanOutline } from "@ndla/icons/action";
 import { Share } from "@ndla/icons/common";
 import { HorizontalMenu } from "@ndla/icons/contentType";
@@ -23,26 +23,45 @@ export default {
   title: "Primitives/ListItem",
   component: ListItemRoot,
   tags: ["autodocs"],
+  args: {
+    borderVariant: "solid",
+    colorTheme: "brand1",
+    variant: "standalone",
+  },
   parameters: {
     inlineStories: true,
   },
+  render: (args) => (
+    <ListItemRoot {...args}>
+      <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
+      <ListItemContent>
+        <ListItemHeading asChild consumeCss>
+          <h2>
+            <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
+              Tittel
+            </SafeLink>
+          </h2>
+        </ListItemHeading>
+        <Badge colorTheme="brand1">Fagstoff</Badge>
+      </ListItemContent>
+    </ListItemRoot>
+  ),
 } satisfies Meta<typeof ListItemRoot>;
 
-export const Standalone: StoryFn<typeof ListItemRoot> = (args) => (
-  <ListItemRoot {...args}>
-    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
-    <ListItemContent>
-      <ListItemHeading asChild consumeCss>
-        <h2>
-          <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
-            Tittel
-          </SafeLink>
-        </h2>
-      </ListItemHeading>
-      <Badge colorTheme="brand1">Fagstoff</Badge>
-    </ListItemContent>
-  </ListItemRoot>
-);
+export const Standalone: StoryObj<typeof ListItemRoot> = {};
+
+export const CurrentPage: StoryObj<typeof ListItemRoot> = {
+  args: {
+    "aria-current": "page",
+  },
+};
+
+export const Current: StoryObj<typeof ListItemRoot> = {
+  args: {
+    "aria-current": true,
+    colorTheme: "brand2",
+  },
+};
 
 export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
   <ListItemRoot {...args}>
@@ -67,7 +86,7 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
 );
 
 const ListComponent = () => (
-  <ListItemRoot variant="list">
+  <ListItemRoot variant="list" borderVariant="dashed" colorTheme="brand2">
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>

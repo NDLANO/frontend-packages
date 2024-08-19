@@ -14,24 +14,41 @@ import { createStyleContext } from "../createStyleContext";
 import { Image, type ImageProps } from "../Image";
 import { Heading, type TextProps } from "../Text";
 
+// TODO: Focus ring on current items is not visible
+
 export const listItemRecipe = sva({
   slots: ["root", "title", "content", "image"],
   base: {
     root: {
+      borderWidth: "1px",
+      borderInlineColor: "transparent",
+      color: "text.default",
       position: "relative",
       display: "flex",
       gap: "xsmall",
       alignItems: "center",
       paddingBlock: "xsmall",
       paddingInline: "xsmall",
-      transitionProperty: "background-color, border-color",
+      transitionProperty: "background-color, border-color, color",
       transitionDuration: "superFast",
       transitionTimingFunction: "ease-in-out",
       _hover: {
-        background: "surface.brand.1.subtle",
+        background: "var(--background-hover)",
       },
       _highlighted: {
-        background: "surface.brand.1.subtle",
+        background: "var(--background-hover)",
+      },
+      '&[aria-current="true"], &[aria-current="page"]': {
+        background: "var(--background-current)",
+        color: "text.onAction",
+        _hover: {
+          background: "var(--background-hover)",
+          color: "text.default",
+        },
+        _highlighted: {
+          background: "var(--background-hover)",
+          color: "text.default",
+        },
       },
     },
     content: {
@@ -58,57 +75,85 @@ export const listItemRecipe = sva({
   },
   defaultVariants: {
     variant: "standalone",
+    colorTheme: "brand1",
+    borderVariant: "solid",
   },
   variants: {
+    borderVariant: {
+      solid: {
+        root: {
+          borderStyle: "solid",
+        },
+      },
+      dashed: {
+        root: {
+          borderStyle: "dashed",
+        },
+      },
+    },
+    colorTheme: {
+      brand1: {
+        root: {
+          "--background-hover": "colors.surface.brand.1.subtle",
+          "--background-current": "colors.surface.actionSubtle.selected",
+          "--border-hover": "colors.stroke.hover",
+        },
+      },
+      brand2: {
+        root: {
+          "--background-hover": "colors.surface.brand.2.moderate",
+          // TODO: Not a semantic color
+          "--background-current": "colors.blue.800",
+          "--border-hover": "colors.surface.brand.2.strong",
+        },
+      },
+    },
     variant: {
       standalone: {
         root: {
-          borderBlock: "1px solid",
-          borderColor: "stroke.subtle",
+          borderBlockColor: "stroke.subtle",
           _hover: {
-            borderColor: "stroke.hover",
+            borderBlockColor: "var(--border-hover)",
           },
           _highlighted: {
-            borderColor: "stroke.hover",
+            borderBlockColor: "var(--border-hover)",
           },
         },
       },
       list: {
         root: {
-          borderTop: "1px solid",
-          borderTopColor: "stroke.subtle",
-          borderBottom: "1px solid",
-          borderBottomColor: "transparent",
-          marginTop: "-1px",
+          borderBlockStartColor: "stroke.subtle",
+          borderBlockEndColor: "transparent",
+          marginBlockStart: "-1px",
           _first: {
-            borderTopColor: "transparent",
+            borderBlockStartColor: "transparent",
             _hover: {
-              borderTopColor: "stroke.hover",
+              borderBlockStartColor: "var(--border-hover)",
             },
             _highlighted: {
-              borderTopColor: "stroke.hover",
+              borderBlockStartColor: "var(--border-hover)",
             },
           },
           _last: {
-            borderBottomColor: "stroke.subtle",
+            borderBlockEndColor: "stroke.subtle",
           },
           "&:hover + &": {
-            borderTopColor: "stroke.hover",
+            borderBlockStartColor: "var(--border-hover)",
           },
           "&[data-highlighted] + &": {
-            borderTopColor: "stroke.hover",
+            borderBlockStartColor: "var(--border-hover)",
           },
           _hover: {
-            borderBottomColor: "transparent",
-            borderTopColor: "stroke.hover",
+            borderBlockEndColor: "transparent",
+            borderBlockStartColor: "var(--border-hover)",
             _last: {
-              borderBottomColor: "stroke.hover",
+              borderBlockEndColor: "var(--border-hover)",
             },
           },
           _highlighted: {
-            borderTopColor: "stroke.hover",
+            borderBlockStartColor: "var(--border-hover)",
             _last: {
-              borderBottomColor: "stroke.hover",
+              borderBlockEndColor: "var(--border-hover)",
             },
           },
         },

@@ -40,7 +40,7 @@ export const listItemRecipe = sva({
       },
       '&[aria-current="true"], &[aria-current="page"]': {
         background: "var(--background-current)",
-        color: "text.onAction",
+        color: "var(--color-hover)",
         _hover: {
           background: "var(--background-hover)",
           color: "text.default",
@@ -77,6 +77,7 @@ export const listItemRecipe = sva({
     variant: "standalone",
     colorTheme: "brand1",
     borderVariant: "solid",
+    nonInteractive: false,
   },
   variants: {
     borderVariant: {
@@ -91,12 +92,21 @@ export const listItemRecipe = sva({
         },
       },
     },
+    nonInteractive: {
+      true: {
+        title: {
+          textDecoration: "none",
+        },
+      },
+    },
     colorTheme: {
+      none: {},
       brand1: {
         root: {
           "--background-hover": "colors.surface.brand.1.subtle",
           "--background-current": "colors.surface.actionSubtle.selected",
           "--border-hover": "colors.stroke.hover",
+          "--color-hover": "colors.text.onAction",
         },
       },
       brand2: {
@@ -105,6 +115,7 @@ export const listItemRecipe = sva({
           // TODO: Not a semantic color
           "--background-current": "colors.blue.800",
           "--border-hover": "colors.surface.brand.2.strong",
+          "--color-hover": "colors.text.onAction",
         },
       },
     },

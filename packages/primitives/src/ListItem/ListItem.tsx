@@ -24,15 +24,6 @@ export const listItemRecipe = sva({
       alignItems: "center",
       paddingBlock: "xsmall",
       paddingInline: "xsmall",
-      transitionProperty: "background-color, border-color",
-      transitionDuration: "superFast",
-      transitionTimingFunction: "ease-in-out",
-      _hover: {
-        background: "surface.brand.1.subtle",
-      },
-      _highlighted: {
-        background: "surface.brand.1.subtle",
-      },
     },
     content: {
       display: "flex",
@@ -41,12 +32,7 @@ export const listItemRecipe = sva({
       gap: "xsmall",
       width: "100%",
     },
-    title: {
-      textDecoration: "underline",
-      _hover: {
-        textDecoration: "none",
-      },
-    },
+
     image: {
       minHeight: "40px",
       maxHeight: "40px",
@@ -58,19 +44,46 @@ export const listItemRecipe = sva({
   },
   defaultVariants: {
     variant: "standalone",
+    indicateClickable: true,
   },
-  variants: {
-    variant: {
-      standalone: {
+  compoundVariants: [
+    {
+      variant: "standalone",
+      indicateClickable: true,
+      css: {
         root: {
-          borderBlock: "1px solid",
-          borderColor: "stroke.subtle",
           _hover: {
             borderColor: "stroke.hover",
           },
           _highlighted: {
             borderColor: "stroke.hover",
           },
+        },
+      },
+    },
+    {
+      variant: "list",
+      indicateClickable: true,
+      css: {
+        root: {
+          _first: {
+            _hover: {
+              borderTopColor: "stroke.hover",
+            },
+            _highlighted: {
+              borderTopColor: "stroke.hover",
+            },
+          },
+        },
+      },
+    },
+  ],
+  variants: {
+    variant: {
+      standalone: {
+        root: {
+          borderBlock: "1px solid",
+          borderColor: "stroke.subtle",
         },
       },
       list: {
@@ -82,12 +95,6 @@ export const listItemRecipe = sva({
           marginTop: "-1px",
           _first: {
             borderTopColor: "transparent",
-            _hover: {
-              borderTopColor: "stroke.hover",
-            },
-            _highlighted: {
-              borderTopColor: "stroke.hover",
-            },
           },
           _last: {
             borderBottomColor: "stroke.subtle",
@@ -110,6 +117,27 @@ export const listItemRecipe = sva({
             _last: {
               borderBottomColor: "stroke.hover",
             },
+          },
+        },
+      },
+    },
+    indicateClickable: {
+      true: {
+        root: {
+          transitionProperty: "background-color, border-color",
+          transitionDuration: "superFast",
+          transitionTimingFunction: "ease-in-out",
+          _hover: {
+            background: "surface.brand.1.subtle",
+          },
+          _highlighted: {
+            background: "surface.brand.1.subtle",
+          },
+        },
+        title: {
+          textDecoration: "underline",
+          _hover: {
+            textDecoration: "none",
           },
         },
       },

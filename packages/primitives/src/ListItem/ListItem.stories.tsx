@@ -44,6 +44,18 @@ export const Standalone: StoryFn<typeof ListItemRoot> = (args) => (
   </ListItemRoot>
 );
 
+export const NotClickable: StoryFn<typeof ListItemRoot> = (args) => (
+  <ListItemRoot indicateClickable={false}>
+    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
+    <ListItemContent>
+      <ListItemHeading asChild consumeCss>
+        <h2>Tittel</h2>
+      </ListItemHeading>
+      <Badge colorTheme="brand1">Fagstoff</Badge>
+    </ListItemContent>
+  </ListItemRoot>
+);
+
 export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
   <ListItemRoot {...args}>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />

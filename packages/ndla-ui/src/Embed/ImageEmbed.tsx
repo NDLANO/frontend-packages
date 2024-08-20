@@ -256,7 +256,6 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
       float={figureProps?.float}
       size={imageSizes ? "full" : figureProps?.size ?? "medium"}
       data-embed-type="image"
-      about={embedData.url}
       {...licenseProps}
     >
       {children}

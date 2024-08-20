@@ -21,7 +21,6 @@ export const listItemRecipe = sva({
   base: {
     root: {
       borderBlockWidth: "1px",
-      background: "surface.default",
       borderInlineColor: "transparent",
       color: "text.default",
       position: "relative",

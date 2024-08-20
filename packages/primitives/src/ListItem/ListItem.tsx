@@ -14,12 +14,11 @@ import { createStyleContext } from "../createStyleContext";
 import { Image, type ImageProps } from "../Image";
 import { Heading, type TextProps } from "../Text";
 
-// TODO: Focus ring on current items is not visible
-
 export const listItemRecipe = sva({
   slots: ["root", "title", "content", "image"],
   base: {
     root: {
+      minHeight: "3xlarge",
       borderBlockWidth: "1px",
       borderInlineColor: "transparent",
       color: "text.default",
@@ -40,6 +39,8 @@ export const listItemRecipe = sva({
       },
       '&[aria-current="true"], &[aria-current="page"]': {
         background: "var(--background-current)",
+        borderBlockStartColor: "transparent",
+        borderBlockEndColor: "transparent",
         color: "var(--color-current-hover)",
         _hover: {
           background: "var(--background-hover)",

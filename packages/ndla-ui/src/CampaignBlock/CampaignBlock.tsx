@@ -62,7 +62,6 @@ const LinkText = styled(Text, {
       textDecoration: "none",
     },
     paddingBlock: "xsmall",
-    paddingInline: "medium",
   },
 });
 
@@ -83,12 +82,6 @@ const StyledImg = styled("img", {
     width: "auto",
     height: "215px",
     mobileWide: {
-      height: "340px",
-    },
-    tabletWide: {
-      height: "280px",
-    },
-    desktop: {
       height: "340px",
     },
   },

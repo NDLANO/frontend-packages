@@ -1,6 +1,6 @@
 {
   "name": "@ndla/video-search",
-  "version": "8.0.11-alpha.0",
+  "version": "8.0.12-alpha.0",
   "description": "A simple library for searching NDLA videos",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -36,10 +36,10 @@
   "dependencies": {
     "@ndla/button": "^15.0.9-alpha.0",
     "@ndla/core": "^5.0.2",
-    "@ndla/forms": "^10.0.11-alpha.0",
+    "@ndla/forms": "^10.0.12-alpha.0",
     "@ndla/icons": "^8.0.9-alpha.0",
     "@ndla/licenses": "^8.0.1-alpha.0",
-    "@ndla/safelink": "^7.0.11-alpha.0",
+    "@ndla/safelink": "^7.0.12-alpha.0",
     "@ndla/util": "^4.1.0"
   },
   "publishConfig": {

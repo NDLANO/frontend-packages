@@ -6,53 +6,40 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { ButtonV2 } from "@ndla/button";
-import { colors, spacing } from "@ndla/core";
 import { getLicenseByAbbreviation, LicenseLocaleType } from "@ndla/licenses";
+import { Text, ListItemContent, ListItemRoot, Button, Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
+import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioBar from "./AudioBar";
 
-const StyledListItem = styled.div`
-  &:not(:last-child) {
-    padding-bottom: 1em;
-    border-bottom: 1px solid ${colors.brand.lighter};
-  }
-`;
+const StyledAudioMeta = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "small",
+  },
+});
 
-const StyledHeading = styled.h2`
-  margin-top: 30px;
-`;
+const StyledListItemContent = styled(ListItemContent, {
+  base: {
+    alignItems: "flex-end",
+    flexWrap: "wrap",
+  },
+});
 
-const LicenseWrapper = styled.div`
-  margin-bottom: ${spacing.small};
-`;
-
-const StyledContainer = styled.div`
-  margin-bottom: ${spacing.small};
-`;
-
-const StyledSafeLink = styled(SafeLink)`
-  color: ${colors.brand.primary};
-  text-decoration: underline;
-  &:hover,
-  &:focus-within {
-    text-decoration: none;
-  }
-`;
 interface LicenseLinkProps {
   license: LicenseLocaleType;
 }
 const LicenseLink = ({ license }: LicenseLinkProps) => {
   if (license.url?.length) {
     return (
-      <StyledSafeLink to={license.url} rel="license">
+      <SafeLink to={license.url} rel="license">
         {license.abbreviation}
-      </StyledSafeLink>
+      </SafeLink>
     );
   }
-  return <span>{license.abbreviation}</span>;
+  return <Text>{license.abbreviation}</Text>;
 };
 
 interface Props {
@@ -67,15 +54,17 @@ interface Props {
 export default function AudioSearchResult({ audio, fetchAudio, onError, locale, translations, onAudioSelect }: Props) {
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
-    <StyledListItem key={audio.id}>
-      <StyledContainer>
-        <StyledHeading>{audio.title?.title}</StyledHeading>
-        <LicenseWrapper>{license.rights ? <LicenseLink license={license} /> : license.title}</LicenseWrapper>
-        <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
-      </StyledContainer>
-      <ButtonV2 variant="outline" onClick={() => onAudioSelect(audio)}>
-        {translations.useAudio}
-      </ButtonV2>
-    </StyledListItem>
+    <ListItemRoot key={audio.id} variant="list" asChild consumeCss>
+      <li>
+        <StyledListItemContent>
+          <StyledAudioMeta>
+            <Heading textStyle="title.medium">{audio.title?.title}</Heading>
+            <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
+            <div>{license.rights ? <LicenseLink license={license} /> : license.title}</div>
+          </StyledAudioMeta>
+          <Button onClick={() => onAudioSelect(audio)}>{translations.useAudio}</Button>
+        </StyledListItemContent>
+      </li>
+    </ListItemRoot>
   );
 }

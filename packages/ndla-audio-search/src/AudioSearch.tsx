@@ -7,18 +7,34 @@
  */
 
 import { useEffect, useState } from "react";
-import styled from "@emotion/styled";
-import { colors } from "@ndla/core";
-import { Pager } from "@ndla/pager";
+import { ChevronLeft, ChevronRight } from "@ndla/icons/common";
+import {
+  Text,
+  Button,
+  PaginationContext,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationPrevTrigger,
+  PaginationRoot,
+  PaginationNextTrigger,
+} from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from "@ndla/types-backend/audio-api";
+import { usePaginationTranslations } from "@ndla/ui";
 import AudioSearchForm from "./AudioSearchForm";
 import AudioSearchList from "./AudioSearchList";
 
-const AudioSearchWrapper = styled.div`
-  padding: 1rem;
-  border: 1px solid ${colors.brand.lighter};
-  border-radius: 0.2rem;
-`;
+const AudioSearchWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "medium",
+    padding: "small",
+    border: "1px solid",
+    borderColor: "stroke.subtle",
+    borderRadius: "xsmall",
+  },
+});
 
 interface Props {
   queryObject: QueryObject;
@@ -52,11 +68,12 @@ const AudioSearch = ({
   onAudioSelect,
 }: Props) => {
   const [queryObject, setQueryObject] = useState<QueryObject>(query);
-  const [audios, setAudios] = useState<IAudioSummary[]>([]);
-  const [lastPage, setLastPage] = useState(0);
   const [searching, setSearching] = useState(false);
+  const [searchResult, setSearchResult] = useState<IAudioSummarySearchResult | undefined>();
 
-  const { page, locale } = queryObject ?? {};
+  const { locale } = queryObject ?? {};
+
+  const componentTranslations = usePaginationTranslations();
 
   const searchAudios = (queryObject: QueryObject) => {
     setSearching(true);
@@ -70,8 +87,7 @@ const AudioSearch = ({
           fallback: queryObject.fallback || false,
           audioType: queryObject.audioType || "standard",
         });
-        setAudios(result.results);
-        setLastPage(Math.ceil(result.totalCount / result.pageSize));
+        setSearchResult(result);
         setSearching(false);
       })
       .catch((err) => {
@@ -105,7 +121,7 @@ const AudioSearch = ({
         translations={translations}
       />
       <AudioSearchList
-        audios={audios}
+        audios={searchResult?.results ?? []}
         searching={searching}
         locale={locale}
         translations={translations}
@@ -113,14 +129,44 @@ const AudioSearch = ({
         fetchAudio={fetchAudio}
         onAudioSelect={onAudioSelect}
       />
-      <Pager
-        page={page ?? 1}
-        pathname=""
-        lastPage={lastPage}
-        query={queryObject}
-        onClick={searchAudios}
-        pageItemComponentClass="button"
-      />
+      <PaginationRoot
+        page={searchResult?.page ?? 1}
+        onPageChange={(details) => searchAudios({ ...queryObject, page: details.page })}
+        translations={componentTranslations}
+        count={searchResult?.totalCount ?? 0}
+        pageSize={searchResult?.pageSize}
+        siblingCount={2}
+      >
+        <PaginationPrevTrigger asChild>
+          <Button variant="tertiary">
+            <ChevronLeft />
+            {componentTranslations?.prevTriggerLabel}
+          </Button>
+        </PaginationPrevTrigger>
+        <PaginationContext>
+          {(pagination) =>
+            pagination.pages.map((page, index) =>
+              page.type === "page" ? (
+                <PaginationItem key={index} {...page} asChild>
+                  <Button variant={page.value === pagination.page ? "primary" : "tertiary"}>{page.value}</Button>
+                </PaginationItem>
+              ) : (
+                <PaginationEllipsis key={index} index={index} asChild>
+                  <Text asChild consumeCss>
+                    <div>&#8230;</div>
+                  </Text>
+                </PaginationEllipsis>
+              ),
+            )
+          }
+        </PaginationContext>
+        <PaginationNextTrigger asChild>
+          <Button variant="tertiary">
+            {componentTranslations?.nextTriggerLabel}
+            <ChevronRight />
+          </Button>
+        </PaginationNextTrigger>
+      </PaginationRoot>
     </AudioSearchWrapper>
   );
 };

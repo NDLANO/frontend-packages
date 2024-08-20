@@ -6,20 +6,18 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { colors, misc } from "@ndla/core";
+import { Spinner } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioSearchResult from "./AudioSearchResult";
 
-const StyledResultSpinner = styled.div`
-  border: 0.4em solid ${colors.brand.greyLight};
-  border-bottom-color: ${colors.brand.primary};
-  border-radius: ${misc.borderRadiusLarge};
-  margin: 0 auto;
-  animation: loadVideoSpinner 0.7s linear infinite;
-  height: 3em;
-  width: 3em;
-`;
+const SpinnerWrapper = styled("div", {
+  base: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+  },
+});
 
 interface Props {
   audios: IAudioSummary[];
@@ -47,10 +45,15 @@ export default function AudioSearchList({
     return <p>{translations.noResults}</p>;
   }
   if (searching && !((audios?.length ?? 0) > 0)) {
-    return <StyledResultSpinner />;
+    return (
+      <SpinnerWrapper>
+        <Spinner />
+      </SpinnerWrapper>
+    );
   }
+
   return (
-    <div>
+    <ul>
       {audios?.map((audio) => (
         <AudioSearchResult
           key={audio.id}
@@ -62,6 +65,6 @@ export default function AudioSearchList({
           onAudioSelect={onAudioSelect}
         />
       ))}
-    </div>
+    </ul>
   );
 }

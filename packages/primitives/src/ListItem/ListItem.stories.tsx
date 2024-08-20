@@ -13,7 +13,7 @@ import { HorizontalMenu } from "@ndla/icons/contentType";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot } from "./ListItem";
+import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, ListItemVariantProps } from "./ListItem";
 import { Badge } from "../Badge";
 import { IconButton } from "../Button";
 import { MenuContent, MenuItem, MenuPositioner, MenuRoot, MenuTrigger } from "../Menu";
@@ -63,7 +63,7 @@ export const Current: StoryObj<typeof ListItemRoot> = {
   },
 };
 export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
-  <ListItemRoot variant="nonInteractive">
+  <ListItemRoot nonInteractive>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
     <ListItemContent>
       <ListItemHeading>Tittel</ListItemHeading>
@@ -94,8 +94,12 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
   </ListItemRoot>
 );
 
-const ListComponent = () => (
-  <ListItemRoot variant="list" borderVariant="dashed" colorTheme="brand2">
+const ListComponent = ({
+  variant = "list",
+  borderVariant = "solid",
+  colorTheme = "brand1",
+}: NonNullable<ListItemVariantProps>) => (
+  <ListItemRoot variant={variant} borderVariant={borderVariant} colorTheme={colorTheme} aria-current="page">
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>
@@ -145,6 +149,12 @@ export const List: StoryFn<typeof ListComponent> = () => (
     </li>
     <li>
       <ListComponent />
+    </li>
+    <li>
+      <ListComponent borderVariant="dashed" />
+    </li>
+    <li>
+      <ListComponent borderVariant="dashed" />
     </li>
   </ul>
 );

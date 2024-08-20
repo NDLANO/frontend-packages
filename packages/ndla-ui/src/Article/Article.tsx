@@ -11,100 +11,187 @@ import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
-import ArticleByline from "./ArticleByline";
+import { JsxStyleProps, StyledVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
+import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadgeNew } from "..";
 import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import { Article as ArticleType } from "../types";
 import { licenseAttributes } from "../utils/licenseAttributes";
 
-const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
+const articlePadding: SystemStyleObject = {
+  paddingInline: "8%",
+};
 
-export const ArticleContent = forwardRef<HTMLElement, HTMLArkProps<"div"> & JsxStyleProps>(
+const paddingBlockEnd: SystemStyleObject = {
+  paddingBlockEnd: "xsmall",
+  tablet: {
+    paddingBlockEnd: "medium",
+  },
+  desktop: {
+    paddingBlockEnd: "xxlarge",
+  },
+};
+
+const paddingBlockStart: SystemStyleObject = {
+  paddingBlockStart: "xsmall",
+  tablet: {
+    paddingBlockStart: "medium",
+  },
+  desktop: {
+    paddingBlockStart: "xxlarge",
+  },
+};
+
+export const ArticlePadding = styled(
+  ark.div,
+  {
+    base: articlePadding,
+    variants: {
+      padStart: {
+        true: paddingBlockStart,
+      },
+      padEnd: {
+        true: paddingBlockEnd,
+      },
+    },
+  },
+  { baseComponent: true },
+);
+
+const StyledArticleContent = styled(
+  ark.section,
+  {
+    base: {
+      background: "surface.default",
+    },
+    variants: {
+      padded: {
+        true: {
+          ...articlePadding,
+          ...paddingBlockStart,
+          ...paddingBlockEnd,
+        },
+      },
+    },
+  },
+  { baseComponent: true },
+);
+
+type ArticleContentVariantProps = StyledVariantProps<typeof StyledArticleContent>;
+
+export const ArticleContent = forwardRef<HTMLElement, HTMLArkProps<"div"> & JsxStyleProps & ArticleContentVariantProps>(
   ({ className, ...props }, ref) => (
     <StyledArticleContent className={cx("ndla-article", className)} {...props} ref={ref} />
   ),
 );
 
-const StyledArticleWrapper = styled("article", {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    color: "text.default",
-    gap: "xxlarge",
-    background: "surface.default",
-    paddingBlock: "xsmall",
-    paddingInline: "8%",
-    alignItems: "center",
-    width: "100%",
-    overflowWrap: "break-word",
-    position: "relative",
-    tablet: {
-      paddingBlock: "medium",
-    },
-    desktop: {
-      paddingBlock: "xxlarge",
-    },
-    "& mjx-stretchy-v > mjx-ext > mjx-c": {
-      transform: "scaleY(100) translateY(0.075em)",
-    },
-    _after: {
-      content: "",
-      display: "table",
-      clear: "both",
+const StyledArticleWrapper = styled(
+  ark.article,
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      color: "text.default",
+      alignItems: "center",
+      width: "100%",
+      overflowWrap: "break-word",
+      position: "relative",
+      "& mjx-stretchy-v > mjx-ext > mjx-c": {
+        transform: "scaleY(100) translateY(0.075em)",
+      },
+      _after: {
+        content: "",
+        display: "table",
+        clear: "both",
+      },
     },
   },
-});
+  { baseComponent: true },
+);
 
 export const ArticleWrapper = forwardRef<HTMLElement, ComponentPropsWithRef<"article"> & JsxStyleProps>(
   (props, ref) => <StyledArticleWrapper data-ndla-article="" ref={ref} {...props} />,
 );
 
-export const ArticleHGroup = styled("hgroup", {
-  base: {
-    display: "flex",
-    width: "100%",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: "xsmall",
-    "& h1": {
-      overflowWrap: "anywhere",
+export const ArticleHGroup = styled(
+  ark.hgroup,
+  {
+    base: {
+      display: "flex",
+      width: "100%",
+      flexDirection: "column",
+      alignItems: "flex-start",
+      gap: "xsmall",
+      "& h1": {
+        overflowWrap: "anywhere",
+      },
     },
   },
-});
+  { baseComponent: true },
+);
 
-export const ArticleActionWrapper = styled("div", {
-  base: {
-    position: "absolute",
-    right: "8%",
-    top: "xsmall",
-    tablet: {
-      top: "medium",
+export const ArticleActionWrapper = styled(
+  ark.div,
+  {
+    base: {
+      position: "absolute",
+      right: "8%",
+      top: "xsmall",
+      tablet: {
+        top: "medium",
+      },
+      desktop: {
+        top: "xxlarge",
+      },
     },
-    desktop: {
-      top: "xxlarge",
+  },
+  { baseComponent: true },
+);
+
+export const ArticleHeader = styled(
+  ark.header,
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      background: "surface.default",
+      gap: "medium",
+      alignItems: "flex-start",
+      width: "100%",
+    },
+    variants: {
+      padded: {
+        true: {
+          ...articlePadding,
+          ...paddingBlockStart,
+        },
+      },
     },
   },
-});
+  { baseComponent: true },
+);
 
-export const ArticleHeader = styled("header", {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "medium",
-    alignItems: "flex-start",
-    width: "100%",
+export const ArticleFooter = styled(
+  ark.footer,
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      background: "surface.default",
+      gap: "xxlarge",
+      width: "100%",
+    },
+    variants: {
+      padded: {
+        true: {
+          ...articlePadding,
+          ...paddingBlockEnd,
+        },
+      },
+    },
   },
-});
-
-export const ArticleFooter = styled("footer", {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "xxlarge",
-    width: "100%",
-  },
-});
+  { baseComponent: true },
+);
 
 interface ArticleTitleProps {
   heartButton?: ReactNode;
@@ -126,7 +213,7 @@ export const ArticleTitle = ({
   competenceGoals,
 }: ArticleTitleProps) => {
   return (
-    <ArticleHeader>
+    <ArticleHeader padded>
       <ArticleHGroup>
         {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
         {!!heartButton && <ArticleActionWrapper>{heartButton}</ArticleActionWrapper>}
@@ -183,8 +270,8 @@ export const Article = ({
         competenceGoals={competenceGoals}
         lang={lang}
       />
-      <ArticleContent>{content}</ArticleContent>
-      <ArticleFooter>
+      <ArticleContent padded>{content}</ArticleContent>
+      <ArticleFooter padded>
         <ArticleByline
           footnotes={footNotes}
           authors={authors}

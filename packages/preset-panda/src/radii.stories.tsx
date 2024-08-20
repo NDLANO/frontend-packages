@@ -7,7 +7,6 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { RadiusToken } from "@ndla/styled-system/tokens";
 
@@ -23,9 +22,9 @@ interface Props {
 }
 
 const RadiiItem = ({ borderRadius }: Props) => (
-  <div className={css({ borderRadius, backgroundColor: "surface.action", color: "text.onAction", padding: "medium" })}>
+  <styled.div css={{ borderRadius, backgroundColor: "surface.action", color: "text.onAction", padding: "medium" }}>
     {borderRadius}
-  </div>
+  </styled.div>
 );
 
 export default {

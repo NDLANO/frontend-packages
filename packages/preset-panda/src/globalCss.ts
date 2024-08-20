@@ -81,9 +81,16 @@ export const globalCss = defineGlobalStyles({
           marginBlockStart: "large",
           marginBlockEnd: "xsmall",
         },
-        '& > :is(p, figure, ul, ol, dl, [data-embed-type="speech"])': {
+        "& > :is(figure)": {
+          marginBlockStart: "xxlarge",
+          marginBlockEnd: "xxlarge",
+        },
+        '& > :is(p, ul, ol, dl, [data-embed-type="speech"])': {
           marginBlockStart: "xsmall",
           marginBlockEnd: "xsmall",
+        },
+        "& > :is(:first-child)": {
+          marginBlockStart: "xxlarge",
         },
       },
   },

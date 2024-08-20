@@ -35,6 +35,7 @@ export { LicenseLink, EmbedByline } from "./LicenseByline";
 
 export {
   ArticleByline,
+  ArticleBylineAccordionItem,
   ArticleFootNotes,
   ArticleWrapper,
   Article,
@@ -45,6 +46,7 @@ export {
   ArticleHGroup,
   ArticleActionWrapper,
   ArticleTitle,
+  ArticlePadding,
 } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
@@ -133,11 +135,6 @@ export { CampaignBlock } from "./CampaignBlock";
 export { Grid, GridParallaxItem } from "./Grid";
 export type { GridType } from "./Grid";
 
-export {
-  default as FrontpageArticle,
-  FRONTPAGE_ARTICLE_MAX_WIDTH,
-  WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH,
-} from "./FrontpageArticle";
 export type { ProgrammeV2 } from "./ProgrammeCard";
 
 export { Gloss, GlossExample } from "./Gloss";

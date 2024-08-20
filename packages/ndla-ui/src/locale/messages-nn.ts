@@ -570,7 +570,7 @@ const messages = {
     "source-material": "Kjeldemateriale",
     "assessment-resources": "Vurderingsressurs",
     topic: "Emne",
-    "multidisciplinary-topic": "Tverrfagleg case",
+    multidisciplinary: "Tverrfagleg case",
     image: "Bilete",
     concept: "Forklaring",
     audio: "Lyd",

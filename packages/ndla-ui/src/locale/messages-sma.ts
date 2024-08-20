@@ -574,7 +574,7 @@ const messages = {
     "source-material": "Gaaltijevierhtieh",
     "assessment-resources": "Vuarjasjimmievierhtie",
     topic: "Teema",
-    "multidisciplinary-topic": "Tverrfaglig case",
+    multidisciplinary: "Tverrfaglig case",
     image: "Bilde",
     concept: "Forklaring",
     audio: "Lyd",

@@ -572,7 +572,7 @@ const messages = {
     "source-material": "Gáldomateriála",
     "assessment-resources": "Árvoštallanresursa",
     topic: "Fáddá",
-    "multidisciplinary-topic": "Fágaidrasttideaddji fáddá",
+    multidisciplinary: "Fágaidrasttideaddji fáddá",
     image: "Govva",
     concept: "Čilgehus",
     audio: "Jietna",

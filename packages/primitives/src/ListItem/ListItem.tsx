@@ -20,7 +20,8 @@ export const listItemRecipe = sva({
   slots: ["root", "title", "content", "image"],
   base: {
     root: {
-      borderWidth: "1px",
+      borderBlockWidth: "1px",
+      background: "surface.default",
       borderInlineColor: "transparent",
       color: "text.default",
       position: "relative",
@@ -32,6 +33,34 @@ export const listItemRecipe = sva({
       transitionProperty: "background-color, border-color, color",
       transitionDuration: "superFast",
       transitionTimingFunction: "ease-in-out",
+      _hover: {
+        background: "var(--background-hover)",
+      },
+      _highlighted: {
+        background: "var(--background-hover)",
+      },
+      '&[aria-current="true"], &[aria-current="page"]': {
+        background: "var(--background-current)",
+        color: "var(--color-current-hover)",
+        _hover: {
+          background: "var(--background-hover)",
+          color: "text.default",
+        },
+        _highlighted: {
+          background: "var(--background-hover)",
+          color: "text.default",
+        },
+        "& a:focus-visible": {
+          _focusVisible: {
+            outlineColor: "var(--color-current-hover)",
+          },
+        },
+        "& button:focus-visible": {
+          _focusVisible: {
+            boxShadowColor: "var(--color-current-hover)",
+          },
+        },
+      },
     },
     content: {
       display: "flex",
@@ -51,42 +80,9 @@ export const listItemRecipe = sva({
   },
   defaultVariants: {
     variant: "standalone",
-    colorTheme: "brand1",
     borderVariant: "solid",
+    nonInteractive: false,
   },
-  compoundVariants: [
-    {
-      variant: ["standalone", "list"],
-      css: {
-        root: {
-          _hover: {
-            background: "var(--background-hover)",
-          },
-          _highlighted: {
-            background: "var(--background-hover)",
-          },
-          '&[aria-current="true"], &[aria-current="page"]': {
-            background: "var(--background-current)",
-            color: "var(--color-hover)",
-            _hover: {
-              background: "var(--background-hover)",
-              color: "text.default",
-            },
-            _highlighted: {
-              background: "var(--background-hover)",
-              color: "text.default",
-            },
-          },
-        },
-        title: {
-          textDecoration: "underline",
-          _hover: {
-            textDecoration: "none",
-          },
-        },
-      },
-    },
-  ],
   variants: {
     borderVariant: {
       solid: {
@@ -100,13 +96,23 @@ export const listItemRecipe = sva({
         },
       },
     },
+    nonInteractive: {
+      false: {
+        title: {
+          textDecoration: "underline",
+          _hover: {
+            textDecoration: "none",
+          },
+        },
+      },
+    },
     colorTheme: {
       brand1: {
         root: {
           "--background-hover": "colors.surface.brand.1.subtle",
           "--background-current": "colors.surface.actionSubtle.selected",
           "--border-hover": "colors.stroke.hover",
-          "--color-hover": "colors.text.onAction",
+          "--color-current-hover": "colors.text.onAction",
         },
       },
       brand2: {
@@ -115,24 +121,20 @@ export const listItemRecipe = sva({
           // TODO: Not a semantic color
           "--background-current": "colors.blue.800",
           "--border-hover": "colors.surface.brand.2.strong",
-          "--color-hover": "colors.text.onAction",
+          "--color-current-hover": "colors.text.onAction",
         },
       },
     },
     variant: {
-      nonInteractive: {
-        root: {
-          borderBlockColor: "stroke.subtle",
-        },
-      },
       standalone: {
         root: {
-          borderBlockColor: "stroke.subtle",
+          "--border": "colors.stroke.subtle",
+          borderBlockColor: "var(--border)",
           _hover: {
-            borderBlockColor: "var(--border-hover)",
+            borderBlockColor: "var(--border-hover, var(--border))",
           },
           _highlighted: {
-            borderBlockColor: "var(--border-hover)",
+            borderBlockColor: "var(--border-hover, var(--border))",
           },
         },
       },
@@ -180,13 +182,39 @@ export const listItemRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(listItemRecipe);
 
-export type ListItemVariantProps = RecipeVariantProps<typeof listItemRecipe>;
+export type ListItemVariantProps = NonNullable<RecipeVariantProps<typeof listItemRecipe>>;
 
-export type ListItemProps = HTMLArkProps<"div"> & JsxStyleProps & ListItemVariantProps;
+type NonInteractiveListItemVariantProps = Omit<ListItemVariantProps, "colorTheme">;
 
-export const ListItemRoot = withProvider<HTMLDivElement, ListItemProps>(ark.div, "root", {
-  baseComponent: true,
-});
+interface BaseListItemProps extends HTMLArkProps<"div">, JsxStyleProps {
+  nonInteractive?: true | false;
+}
+
+interface NonInteractiveListItemProps extends BaseListItemProps, NonInteractiveListItemVariantProps {
+  nonInteractive: true;
+}
+
+interface InteractiveListItemProps extends BaseListItemProps, ListItemVariantProps {
+  nonInteractive?: false;
+}
+
+export type ListItemProps = NonInteractiveListItemProps | InteractiveListItemProps;
+
+const InternalListItemRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps & ListItemVariantProps>(
+  ark.div,
+  "root",
+  {
+    baseComponent: true,
+  },
+);
+
+export const ListItemRoot = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => (
+  <InternalListItemRoot
+    {...props}
+    colorTheme={props.nonInteractive ? undefined : props.colorTheme ?? "brand1"}
+    ref={ref}
+  />
+));
 
 const InternalListItemHeading = forwardRef<HTMLHeadingElement, TextProps>(
   ({ textStyle = "label.medium", ...props }, ref) => <Heading textStyle={textStyle} {...props} ref={ref} />,

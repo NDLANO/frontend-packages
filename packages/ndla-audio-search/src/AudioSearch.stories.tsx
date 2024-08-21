@@ -35,6 +35,7 @@ export default {
         nextTriggerLabel: "Neste side",
       },
     },
+    loadingIndicator: <p>Laster...</p>,
   },
 } as Meta<typeof AudioSearch>;
 

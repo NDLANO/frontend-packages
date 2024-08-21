@@ -6,7 +6,7 @@
  *
  */
 
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@ndla/icons/common";
 import {
   Text,
@@ -49,6 +49,7 @@ interface Props {
     paginationTranslations: PaginationRootProps["translations"];
   };
   onAudioSelect: (audio: IAudioSummary) => void;
+  loadingIndicator: ReactNode;
 }
 
 export interface QueryObject {
@@ -67,6 +68,7 @@ const AudioSearch = ({
   translations,
   fetchAudio,
   onAudioSelect,
+  loadingIndicator,
 }: Props) => {
   const [queryObject, setQueryObject] = useState<QueryObject>(query);
   const [searching, setSearching] = useState(false);
@@ -127,6 +129,7 @@ const AudioSearch = ({
         onError={onError}
         fetchAudio={fetchAudio}
         onAudioSelect={onAudioSelect}
+        loadingIndicator={loadingIndicator}
       />
       <PaginationRoot
         page={searchResult?.page ?? 1}

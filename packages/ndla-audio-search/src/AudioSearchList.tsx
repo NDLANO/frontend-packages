@@ -6,18 +6,9 @@
  *
  */
 
-import { Spinner } from "@ndla/primitives";
-import { styled } from "@ndla/styled-system/jsx";
+import { ReactNode } from "react";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioSearchResult from "./AudioSearchResult";
-
-const SpinnerWrapper = styled("div", {
-  base: {
-    display: "flex",
-    justifyContent: "center",
-    width: "100%",
-  },
-});
 
 interface Props {
   audios: IAudioSummary[];
@@ -30,6 +21,7 @@ interface Props {
   onError: (err: any) => void;
   fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
   onAudioSelect: (audio: IAudioSummary) => void;
+  loadingIndicator: ReactNode;
 }
 
 export default function AudioSearchList({
@@ -40,16 +32,13 @@ export default function AudioSearchList({
   onError,
   fetchAudio,
   onAudioSelect,
+  loadingIndicator,
 }: Props) {
   if ((!audios || audios.length === 0) && !searching) {
     return <p>{translations.noResults}</p>;
   }
   if (searching && !((audios?.length ?? 0) > 0)) {
-    return (
-      <SpinnerWrapper>
-        <Spinner />
-      </SpinnerWrapper>
-    );
+    return loadingIndicator;
   }
 
   return (

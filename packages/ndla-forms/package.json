@@ -1,6 +1,6 @@
 {
   "name": "@ndla/forms",
-  "version": "10.0.12-alpha.0",
+  "version": "10.0.13-alpha.0",
   "description": "Forms components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,7 +28,7 @@
   "dependencies": {
     "@ndla/core": "^5.0.2",
     "@ndla/icons": "^8.0.9-alpha.0",
-    "@ndla/pager": "^5.0.12-alpha.0",
+    "@ndla/pager": "^5.0.13-alpha.0",
     "@ndla/typography": "^0.4.24",
     "@ndla/util": "^4.1.0",
     "@radix-ui/react-checkbox": "^1.0.4",

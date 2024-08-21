@@ -6,7 +6,7 @@
  *
  */
 
-import { ChangeEvent, Component, ReactNode, KeyboardEvent } from "react";
+import { ChangeEvent, Component, ReactNode, KeyboardEvent, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { fonts, colors, spacing, mq, breakpoints } from "@ndla/core";
 import { InputContainer, InputV3 } from "@ndla/forms";
@@ -278,6 +278,7 @@ interface Props {
   onError: (err: any) => void;
   searchPlaceholder: string;
   searchButtonTitle: string;
+  // TODO: should we remove this unused prop and break the API?
   locale: string;
   useImageTitle: string;
   noResults?: ReactNode;
@@ -286,143 +287,129 @@ interface Props {
   checkboxLabel?: string;
 }
 
-interface State {
-  queryObject: ISearchParams;
-  images: IImageMetaInformationV3[];
-  selectedImage?: IImageMetaInformationV3;
-  lastPage: number;
-  searching: boolean;
-  queryString?: string;
-}
-class ImageSearch extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      queryObject: {
-        query: undefined,
-        page: 1,
-        pageSize: 16,
-      },
-      images: [],
-      selectedImage: undefined,
-      lastPage: 0,
-      searching: false,
-    };
+const ImageSearch = ({
+  onImageSelect,
+  searchImages: search,
+  fetchImage,
+  onError,
+  searchPlaceholder,
+  searchButtonTitle,
+  locale,
+  useImageTitle,
+  noResults,
+  checkboxAction,
+  showCheckbox,
+  checkboxLabel,
+}: Props) => {
+  const [queryObject, setQueryObject] = useState<ISearchParams>({
+    query: undefined,
+    page: 1,
+    pageSize: 16,
+  });
+  const [images, setImages] = useState<IImageMetaInformationV3[]>([]);
+  const [selectedImage, setSelectedImage] = useState<IImageMetaInformationV3>();
+  const [lastPage, setLastPage] = useState<number>(0);
+  const [searching, setSearching] = useState<boolean>(false);
+  const [queryString, setQueryString] = useState<string>();
 
-    this.searchImages = this.searchImages.bind(this);
-    this.onImageClick = this.onImageClick.bind(this);
-    this.onSelectImage = this.onSelectImage.bind(this);
-  }
+  const { page } = queryObject;
+  const noResultsFound = !searching && images.length === 0;
 
-  componentDidMount() {
-    this.searchImages(this.state.queryObject);
-  }
-
-  onImageClick(image: IImageMetaInformationV3) {
-    const { onError, fetchImage } = this.props;
-    const { selectedImage } = this.state;
+  const onImageClick = (image: IImageMetaInformationV3) => {
     if (!selectedImage || image.id !== selectedImage.id) {
       fetchImage(Number.parseInt(image.id))
         .then((result) => {
-          this.setState({ selectedImage: result });
+          setSelectedImage(result);
         })
         .catch((err) => {
           onError(err);
         });
     }
-  }
+  };
 
-  onSelectImage(image: IImageMetaInformationV3, saveAsMetaImage: boolean) {
-    const { onImageSelect, checkboxAction } = this.props;
-    this.setState({ selectedImage: undefined });
+  const onSelectImage = (image: IImageMetaInformationV3, saveAsMetaImage: boolean) => {
+    setSelectedImage(undefined);
     onImageSelect(image);
     if (saveAsMetaImage) {
       checkboxAction?.(image);
     }
-  }
+  };
 
-  searchImages(queryObject: ISearchParams) {
-    const { searchImages, onError } = this.props;
-    this.setState({ searching: true });
-    searchImages(queryObject.query, queryObject.page)
+  const searchImages = (queryObject: ISearchParams) => {
+    setSearching(true);
+    search(queryObject.query, queryObject.page)
       .then((result) => {
-        this.setState({
-          queryObject: {
-            query: queryObject.query,
-            pageSize: result.pageSize,
-            page: queryObject.page,
-          },
-          images: result.results,
-          lastPage: Math.ceil(result.totalCount / result.pageSize),
-          searching: false,
+        setQueryObject({
+          query: queryObject.query,
+          pageSize: result.pageSize,
+          page: queryObject.page,
         });
+        setImages(result.results);
+        setLastPage(Math.ceil(result.totalCount / result.pageSize));
+        setSearching(false);
       })
       .catch((err) => {
         onError(err);
-        this.setState({ searching: false });
+        setSearching(false);
       });
-  }
+  };
 
-  render() {
-    const { searchPlaceholder, searchButtonTitle, useImageTitle, showCheckbox, checkboxLabel } = this.props;
+  useEffect(() => {
+    searchImages(queryObject);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const { queryObject, images, selectedImage, lastPage, searching, queryString } = this.state;
-
-    const { page } = queryObject;
-    const noResultsFound = !searching && images.length === 0;
-
-    return (
-      <ImageSearchWrapper>
-        <InputContainer>
-          <InputV3
-            placeholder={searchPlaceholder}
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
-            value={queryString}
-            onChange={(evt: ChangeEvent<HTMLInputElement>) => this.setState({ queryString: evt.target.value })}
-            onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {
-              if (evt.key === "Enter") {
-                evt.preventDefault();
-                this.searchImages({ query: queryString, page: 1 });
-              }
-            }}
-          />
-          <SearchIconButton
-            aria-label={searchButtonTitle}
-            type="button"
-            onClick={() => {
-              this.searchImages({ query: queryString, page: 1 });
-            }}
-          >
-            <SearchLine />
-          </SearchIconButton>
-        </InputContainer>
-        {noResultsFound && this.props.noResults}
-        <div className="list">
-          {images.map((image) => (
-            <ImageSearchResult
-              key={image.id}
-              image={image}
-              onImageClick={this.onImageClick}
-              selectedImage={selectedImage}
-              onSelectImage={this.onSelectImage}
-              useImageTitle={useImageTitle}
-              showCheckbox={!!showCheckbox}
-              checkboxLabel={checkboxLabel}
-            />
-          ))}
-        </div>
-        <Pager
-          page={page ?? 1}
-          pathname=""
-          lastPage={lastPage}
-          query={queryObject}
-          onClick={this.searchImages}
-          pageItemComponentClass="button"
+  return (
+    <ImageSearchWrapper>
+      <InputContainer>
+        <InputV3
+          placeholder={searchPlaceholder}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus
+          value={queryString}
+          onChange={(evt: ChangeEvent<HTMLInputElement>) => setQueryString(evt.target.value)}
+          onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {
+            if (evt.key === "Enter") {
+              evt.preventDefault();
+              searchImages({ query: queryString, page: 1 });
+            }
+          }}
         />
-      </ImageSearchWrapper>
-    );
-  }
-}
+        <SearchIconButton
+          aria-label={searchButtonTitle}
+          type="button"
+          onClick={() => {
+            searchImages({ query: queryString, page: 1 });
+          }}
+        >
+          <SearchLine />
+        </SearchIconButton>
+      </InputContainer>
+      {noResultsFound && noResults}
+      <div className="list">
+        {images.map((image) => (
+          <ImageSearchResult
+            key={image.id}
+            image={image}
+            onImageClick={onImageClick}
+            selectedImage={selectedImage}
+            onSelectImage={onSelectImage}
+            useImageTitle={useImageTitle}
+            showCheckbox={!!showCheckbox}
+            checkboxLabel={checkboxLabel}
+          />
+        ))}
+      </div>
+      <Pager
+        page={page ?? 1}
+        pathname=""
+        lastPage={lastPage}
+        query={queryObject}
+        onClick={searchImages}
+        pageItemComponentClass="button"
+      />
+    </ImageSearchWrapper>
+  );
+};
 
 export default ImageSearch;

@@ -7,8 +7,16 @@
  */
 
 import { ReactNode } from "react";
+import { Text } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioSearchResult from "./AudioSearchResult";
+
+const StyledList = styled("ul", {
+  base: {
+    listStyle: "none",
+  },
+});
 
 interface Props {
   audios: IAudioSummary[];
@@ -34,15 +42,15 @@ export default function AudioSearchList({
   onAudioSelect,
   loadingIndicator,
 }: Props) {
-  if ((!audios || audios.length === 0) && !searching) {
-    return <p>{translations.noResults}</p>;
+  if (!audios.length && !searching) {
+    return <Text>{translations.noResults}</Text>;
   }
-  if (searching && !((audios?.length ?? 0) > 0)) {
+  if (!audios.length && searching) {
     return loadingIndicator;
   }
 
   return (
-    <ul>
+    <StyledList>
       {audios?.map((audio) => (
         <AudioSearchResult
           key={audio.id}
@@ -54,6 +62,6 @@ export default function AudioSearchList({
           onAudioSelect={onAudioSelect}
         />
       ))}
-    </ul>
+    </StyledList>
   );
 }

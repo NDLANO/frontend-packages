@@ -46,7 +46,7 @@ interface Props {
     paginationTranslations: PaginationRootProps["translations"];
   };
   onAudioSelect: (audio: IAudioSummary) => void;
-  loadingIndicator: ReactNode;
+  loadingIndicator?: ReactNode;
 }
 
 export interface QueryObject {

@@ -101,7 +101,7 @@ const accordionRecipe = sva({
             boxShadowColor: "stroke.hover",
           },
           _open: {
-            backgroundColor: "surface.actionSubtle.active",
+            background: "surface.actionSubtle.active",
             boxShadowColor: "stroke.default",
             borderBottomRadius: "sharp",
           },

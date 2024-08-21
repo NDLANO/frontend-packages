@@ -25,7 +25,7 @@ export const contentTypeToHeroMap: Record<ContentType, HeroVariant> = {
   // TODO: This needs a color
   [contentTypes.TOPIC]: "neutral",
   // TODO: This is just taken from thin air.
-  [contentTypes.MULTIDISCIPLINARY_TOPIC]: "brand4",
+  [contentTypes.MULTIDISCIPLINARY]: "brand4",
   [contentTypes.CONCEPT]: "brand1Subtle",
   // TODO: No clue what this'll be. Maybe unused?
   [contentTypes.EXTERNAL]: "primary",

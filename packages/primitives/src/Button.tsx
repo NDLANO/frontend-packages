@@ -81,7 +81,7 @@ export const buttonBaseRecipe = cva({
           background: "surface.actionSubtle.hover",
         },
         _active: {
-          background: "surface.actionSubtle.active",
+          background: "surface.actionSubtle.hover.strong",
         },
       },
       tertiary: {
@@ -96,7 +96,7 @@ export const buttonBaseRecipe = cva({
         },
         _active: {
           borderColor: "stroke.default",
-          background: "surface.actionSubtle.active",
+          background: "surface.actionSubtle.hover.strong",
         },
       },
       clear: {
@@ -114,16 +114,16 @@ export const buttonBaseRecipe = cva({
         },
       },
       danger: {
-        background: "surface.error",
+        background: "surface.danger",
         color: "text.onAction",
         _hover: {
-          background: "surface.error.hover",
+          background: "surface.danger.hover",
         },
         _active: {
-          background: "surface.error.active",
+          background: "surface.danger.active",
         },
         _focusVisible: {
-          boxShadowColor: "surface.error",
+          boxShadowColor: "surface.danger",
           boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
         },
       },
@@ -148,6 +148,9 @@ export const buttonBaseRecipe = cva({
         textDecorationThickness: "1px",
         _hover: {
           textDecoration: "none",
+        },
+        _active: {
+          background: "surface.hover",
         },
       },
     },

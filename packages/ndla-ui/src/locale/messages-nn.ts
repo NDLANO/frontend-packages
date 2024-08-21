@@ -570,7 +570,7 @@ const messages = {
     "source-material": "Kjeldemateriale",
     "assessment-resources": "Vurderingsressurs",
     topic: "Emne",
-    "multidisciplinary-topic": "Tverrfagleg case",
+    multidisciplinary: "Tverrfagleg case",
     image: "Bilete",
     concept: "Forklaring",
     audio: "Lyd",
@@ -1118,6 +1118,10 @@ const messages = {
         subscribe: "Du får no varsling om nye svar på dette innlegget",
         unsubscribe: "Du har skrudd av varsling om nye svar på dette innlegget",
         commentedOn: "svarte på innlegget <i>{{title}}</i>",
+        button: {
+          show: "Vis varsler",
+          showNew: "Vis {{count}} nye varsler",
+        },
       },
       topicsBy: "Innlegg av",
       admin: {

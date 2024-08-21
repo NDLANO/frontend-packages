@@ -54,7 +54,7 @@ interface Props {
 export default function AudioSearchResult({ audio, fetchAudio, onError, locale, translations, onAudioSelect }: Props) {
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
-    <ListItemRoot key={audio.id} variant="list" asChild consumeCss>
+    <ListItemRoot key={audio.id} variant="list" nonInteractive asChild consumeCss>
       <li>
         <StyledListItemContent>
           <StyledAudioMeta>

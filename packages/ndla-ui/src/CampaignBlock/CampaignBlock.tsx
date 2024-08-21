@@ -79,10 +79,13 @@ const StyledImg = styled("img", {
   base: {
     alignSelf: "center",
     objectFit: "cover",
-    width: "auto",
+    width: "100%",
     height: "215px",
     mobileWide: {
       height: "340px",
+    },
+    tabletWide: {
+      width: "auto",
     },
   },
 });
@@ -98,6 +101,18 @@ const ContentWrapper = styled("div", {
     justifyContent: "center",
     paddingBlock: "medium",
     paddingInline: "medium",
+  },
+});
+
+const StyledText = styled(Text, {
+  base: {
+    tabletWide: {
+      display: "block",
+      overflow: "hidden",
+      position: "relative",
+      lineClamp: 4,
+      boxOrient: "vertical",
+    },
   },
 });
 
@@ -140,7 +155,7 @@ const CampaignBlock = ({
             <InternalHeading>{parse(title)}</InternalHeading>
           </HeaderComponent>
         </MaybeLinkText>
-        <Text textStyle="body.xlarge">{parse(description)}</Text>
+        <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
         {!!url?.url && (
           <MaybeLinkText url={url.url} path={path}>
             <LinkText textStyle="body.medium">

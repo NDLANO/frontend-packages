@@ -44,7 +44,10 @@ const paddingBlockStart: SystemStyleObject = {
 export const ArticlePadding = styled(
   ark.div,
   {
-    base: articlePadding,
+    base: {
+      ...articlePadding,
+      width: "100%",
+    },
     variants: {
       padStart: {
         true: paddingBlockStart,

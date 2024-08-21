@@ -94,6 +94,7 @@ const checkboxRecipe = sva({
             },
             _checked: {
               background: "surface.disabled",
+              borderColor: "stroke.disabled",
             },
           },
           _invalid: {

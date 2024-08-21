@@ -82,6 +82,9 @@ const fileUploadRecipe = sva({
     },
     itemPreviewImage: {
       borderRadius: "xsmall",
+      objectFit: "cover",
+      width: "100%",
+      height: "100%",
     },
   },
 });
@@ -152,7 +155,7 @@ const InternalFileUploadItemName = withContext<HTMLDivElement, Assign<FileUpload
 export const FileUploadItemName = forwardRef<
   HTMLDivElement,
   Assign<FileUpload.ItemNameProps, TextProps & JsxStyleProps>
->(({ children, textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
+>(({ textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
   <Text textStyle={textStyle} fontWeight={fontWeight} asChild {...props} ref={ref}>
     {/* Do not use children here whatsoever. The component falls back to the file name only if no children are passed in. It should be up to the consumer if they want to pass in children. */}
     <InternalFileUploadItemName />
@@ -168,9 +171,9 @@ const InternalFileUploadItemSizeText = withContext<HTMLDivElement, Assign<FileUp
 export const FileUploadItemSizeText = forwardRef<
   HTMLDivElement,
   Assign<FileUpload.ItemSizeTextProps, TextProps & JsxStyleProps>
->(({ children, textStyle = "label.small", ...props }, ref) => (
+>(({ textStyle = "label.small", ...props }, ref) => (
   <Text textStyle={textStyle} ref={ref} asChild {...props}>
-    <InternalFileUploadItemSizeText>{children}</InternalFileUploadItemSizeText>
+    <InternalFileUploadItemSizeText />
   </Text>
 ));
 

@@ -29,8 +29,7 @@
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "workspace:^",
-    "@ndla/ui": "workspace:^"
+    "@ndla/safelink": "workspace:^"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
@@ -38,11 +37,8 @@
     "@pandacss/dev": "^0.44.0"
   },
   "peerDependencies": {
-    "i18next": ">= 23",
     "react": ">= 18",
-    "react-dom": ">= 18",
-    "react-i18next": ">= 14",
-    "react-router-dom": ">= 6"
+    "react-dom": ">= 18"
   },
   "publishConfig": {
     "access": "public"

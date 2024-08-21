@@ -17,10 +17,10 @@ import {
   PaginationPrevTrigger,
   PaginationRoot,
   PaginationNextTrigger,
+  PaginationRootProps,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from "@ndla/types-backend/audio-api";
-import { usePaginationTranslations } from "@ndla/ui";
 import AudioSearchForm from "./AudioSearchForm";
 import AudioSearchList from "./AudioSearchList";
 
@@ -46,6 +46,7 @@ interface Props {
     searchButtonTitle: string;
     useAudio: string;
     noResults: string;
+    paginationTranslations: PaginationRootProps["translations"];
   };
   onAudioSelect: (audio: IAudioSummary) => void;
 }
@@ -72,8 +73,6 @@ const AudioSearch = ({
   const [searchResult, setSearchResult] = useState<IAudioSummarySearchResult | undefined>();
 
   const { locale } = queryObject ?? {};
-
-  const componentTranslations = usePaginationTranslations();
 
   const searchAudios = (queryObject: QueryObject) => {
     setSearching(true);
@@ -132,7 +131,7 @@ const AudioSearch = ({
       <PaginationRoot
         page={searchResult?.page ?? 1}
         onPageChange={(details) => searchAudios({ ...queryObject, page: details.page })}
-        translations={componentTranslations}
+        translations={translations.paginationTranslations}
         count={searchResult?.totalCount ?? 0}
         pageSize={searchResult?.pageSize}
         siblingCount={2}
@@ -140,7 +139,7 @@ const AudioSearch = ({
         <PaginationPrevTrigger asChild>
           <Button variant="tertiary">
             <ChevronLeft />
-            {componentTranslations?.prevTriggerLabel}
+            {translations.paginationTranslations?.prevTriggerLabel}
           </Button>
         </PaginationPrevTrigger>
         <PaginationContext>
@@ -162,7 +161,7 @@ const AudioSearch = ({
         </PaginationContext>
         <PaginationNextTrigger asChild>
           <Button variant="tertiary">
-            {componentTranslations?.nextTriggerLabel}
+            {translations.paginationTranslations?.nextTriggerLabel}
             <ChevronRight />
           </Button>
         </PaginationNextTrigger>

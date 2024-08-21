@@ -2747,14 +2747,10 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
-    "@ndla/ui": "workspace:^"
     "@pandacss/dev": "npm:^0.44.0"
   peerDependencies:
-    i18next: ">= 23"
     react: ">= 18"
     react-dom: ">= 18"
-    react-i18next: ">= 14"
-    react-router-dom: ">= 6"
   languageName: unknown
   linkType: soft
 
@@ -3084,7 +3080,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^56.0.13-alpha.0, @ndla/ui@workspace:^, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^56.0.13-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:

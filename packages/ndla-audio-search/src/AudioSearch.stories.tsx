@@ -29,6 +29,11 @@ export default {
       searchButtonTitle: "Søk",
       useAudio: "Velg lyd",
       noResults: "Ingen resultater funnet",
+      paginationTranslations: {
+        rootLabel: "Sidenavigering",
+        prevTriggerLabel: "Forrige side",
+        nextTriggerLabel: "Neste side",
+      },
     },
   },
 } as Meta<typeof AudioSearch>;

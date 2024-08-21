@@ -30,9 +30,6 @@ const AudioSearchWrapper = styled("div", {
     flexDirection: "column",
     gap: "medium",
     padding: "small",
-    border: "1px solid",
-    borderColor: "stroke.subtle",
-    borderRadius: "xsmall",
   },
 });
 

@@ -69,9 +69,15 @@ const fileUploadRecipe = sva({
     },
     itemName: {
       gridArea: "name",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      textStyle: "label.medium",
+      fontWeight: "bold",
     },
     itemSizeText: {
       gridArea: "size",
+      textStyle: "label.small",
     },
     itemDeleteTrigger: {
       gridArea: "delete",
@@ -136,33 +142,16 @@ export const FileUploadItemPreviewImage = withContext<
   Assign<JsxStyleProps, FileUpload.ItemPreviewImageProps>
 >(FileUpload.ItemPreviewImage, "itemPreviewImage", { baseComponent: true });
 
-const InternalFileUploadItemName = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemNameProps>>(
+export const FileUploadItemName = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemNameProps>>(
   FileUpload.ItemName,
   "itemName",
+  { baseComponent: true },
 );
 
-export const FileUploadItemName = ({
-  textStyle = "label.medium",
-  fontWeight = "bold",
-  ...props
-}: FileUpload.ItemNameProps & TextProps & JsxStyleProps) => (
-  <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>
-    <InternalFileUploadItemName {...props} />
-  </Text>
-);
-
-const InternalFileUploadItemSizeText = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemSizeTextProps>>(
+export const FileUploadItemSizeText = withContext<HTMLDivElement, Assign<JsxStyleProps, FileUpload.ItemSizeTextProps>>(
   FileUpload.ItemSizeText,
   "itemSizeText",
-);
-
-export const FileUploadItemSizeText = ({
-  textStyle = "label.small",
-  ...props
-}: FileUpload.ItemSizeTextProps & TextProps & JsxStyleProps) => (
-  <Text textStyle={textStyle} asChild consumeCss>
-    <InternalFileUploadItemSizeText {...props} />
-  </Text>
+  { baseComponent: true },
 );
 
 const InternalFileUploadLabel = withContext<HTMLLabelElement, Assign<JsxStyleProps, FileUpload.LabelProps>>(

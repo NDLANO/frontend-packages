@@ -6,6 +6,7 @@
  *
  */
 
+import { useRef } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { IAudioMetaInformation, IAudioSummarySearchResult } from "@ndla/types-backend/audio-api";
 import AudioSearch, { QueryObject } from "./AudioSearch";
@@ -29,14 +30,29 @@ export default {
       searchButtonTitle: "Søk",
       useAudio: "Velg lyd",
       noResults: "Ingen resultater funnet",
+      paginationTranslations: {
+        rootLabel: "Sidenavigering",
+        prevTriggerLabel: "Forrige side",
+        nextTriggerLabel: "Neste side",
+      },
     },
+    loadingIndicator: (
+      <div style={{ display: "flex", justifyContent: "center", minHeight: "1000px" }}>
+        <p>Laster...</p>
+      </div>
+    ),
   },
 } as Meta<typeof AudioSearch>;
 
 export const Default: StoryFn<typeof AudioSearch> = ({ ...args }) => {
+  const ref = useRef<HTMLDivElement>(null);
   const fetchAudios = (queryObject: QueryObject): Promise<IAudioSummarySearchResult> => {
+    ref.current?.scrollIntoView({
+      block: "start",
+    });
     const { query, page, pageSize, locale } = queryObject;
     const queryString = `${query ? `query=${query}&` : ""}page=${page}&page-size=${pageSize}&language=${locale}`;
+
     return new Promise((resolve, reject) => {
       fetch(`https://api.test.ndla.no/audio-api/v1/audio/?${queryString}`, {
         method: "GET",
@@ -58,14 +74,16 @@ export const Default: StoryFn<typeof AudioSearch> = ({ ...args }) => {
     });
 
   return (
-    <AudioSearch
-      {...args}
-      fetchAudio={fetchAudio}
-      searchAudios={fetchAudios}
-      // eslint-disable-next-line no-console
-      onError={console.error}
-      // eslint-disable-next-line no-console
-      onAudioSelect={console.log}
-    />
+    <div ref={ref}>
+      <AudioSearch
+        {...args}
+        fetchAudio={fetchAudio}
+        searchAudios={fetchAudios}
+        // eslint-disable-next-line no-console
+        onError={console.error}
+        // eslint-disable-next-line no-console
+        onAudioSelect={console.log}
+      />
+    </div>
   );
 };

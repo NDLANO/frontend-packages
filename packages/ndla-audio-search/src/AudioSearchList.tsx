@@ -45,7 +45,7 @@ export default function AudioSearchList({
   if (!audios.length && !searching) {
     return <Text>{translations.noResults}</Text>;
   }
-  if (!audios.length && searching) {
+  if (searching) {
     return loadingIndicator;
   }
 

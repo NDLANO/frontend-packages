@@ -271,6 +271,12 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
             {({ acceptedFiles }) =>
               acceptedFiles.map((file) => (
                 <FileUploadItem key={file.name} file={file}>
+                  <FileUploadItemPreview type="image/*">
+                    <FileUploadItemPreviewImage />
+                  </FileUploadItemPreview>
+                  <FileUploadItemPreview type="^(?!image\/.*).*">
+                    <FileDocumentOutline />
+                  </FileUploadItemPreview>
                   <FileUploadItemName />
                   <FileUploadItemSizeText />
                   <FileUploadItemDeleteTrigger asChild>

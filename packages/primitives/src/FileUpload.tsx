@@ -38,6 +38,10 @@ const fileUploadRecipe = sva({
       _hover: {
         borderStyle: "dashed",
         borderColor: "stroke.hover",
+        _disabled: {
+          borderStyle: "solid",
+          borderColor: "stroke.subtle",
+        },
       },
     },
     itemGroup: {

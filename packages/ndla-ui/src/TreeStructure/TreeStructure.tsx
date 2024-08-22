@@ -64,6 +64,18 @@ const StyledHeartFill = styled(HeartFill, {
   },
 });
 
+const StyledFolderLine = styled(FolderLine, {
+  base: {
+    color: "icon.strong",
+  },
+});
+
+const StyledFolderUserLine = styled(FolderUserLine, {
+  base: {
+    color: "icon.strong",
+  },
+});
+
 const StyledTreeRootProvider = styled(TreeRootProvider, {
   base: {
     width: "100%",
@@ -268,6 +280,8 @@ const TreeStructureItem = ({ folder, targetResource }: TreeStructureItemProps) =
   const containsResource =
     targetResource && folder.resources.some((resource) => resource.resourceId === targetResource.resourceId);
 
+  const FolderIcon = folder.status === "shared" ? StyledFolderUserLine : StyledFolderLine;
+
   // TODO: Pressing enter selects the item and closes the popover immediately. Do we actually want this? Old behavior.
   const onKeyDown = useCallback(
     (e: KeyboardEvent<HTMLElement>) => {
@@ -283,7 +297,7 @@ const TreeStructureItem = ({ folder, targetResource }: TreeStructureItemProps) =
       <TreeItem key={folder.id} value={folder.id} onKeyDown={onKeyDown} id={folder.id}>
         <HStack gap="xsmall" justify="space-between">
           <HStack gap="xxsmall" justify="center">
-            <FolderLine />
+            <FolderIcon />
             <TreeItemText>{folder.name}</TreeItemText>
           </HStack>
           {containsResource && <StyledHeartFill title={t("myNdla.alreadyInFolder")} />}
@@ -306,7 +320,7 @@ const TreeStructureItem = ({ folder, targetResource }: TreeStructureItemProps) =
                 </TreeBranchIndicator>
               </TreeBranchTrigger>
             </IconButton>
-            {folder.status === "shared" ? <FolderUserLine /> : <FolderLine />}
+            <FolderIcon />
             <TreeBranchText aria-label={ariaLabel} title={ariaLabel}>
               {folder.name}
             </TreeBranchText>

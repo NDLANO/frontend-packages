@@ -11,14 +11,14 @@ import { IFolder, IResource } from "@ndla/types-backend/myndla-api";
 
 export type TreeStructureType = "navigation" | "picker";
 
-export type OnCreatedFunc = (folder: IFolder | undefined, parentId: string) => void;
+export type OnCreatedFunc = (folder: IFolder | undefined) => void;
 
 export type NewFolderInputFunc = ({
-  onClose,
+  onCancel,
   parentId,
   onCreate,
 }: {
-  onClose: () => void;
+  onCancel: () => void;
   parentId: string;
   onCreate: OnCreatedFunc;
 }) => ReactNode;

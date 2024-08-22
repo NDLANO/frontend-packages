@@ -153,11 +153,11 @@ const TreeStructure = ({
     setOpenFolders(openFolders.filter((folderId) => folderId !== id));
   };
 
-  const onNewFolderCreated = (newFolder: IFolder | undefined, parentId: string) => {
+  const onNewFolderCreated = (newFolder: IFolder | undefined) => {
     if (newFolder) {
       setSelectedFolder(newFolder);
       setFocusedFolder(newFolder);
-      setOpenFolders(uniq(openFolders.concat(parentId)));
+      setOpenFolders(uniq(newFolder.parentId ? openFolders.concat(newFolder.parentId) : openFolders));
       setNewFolderParentId?.(undefined);
       ref.current?.focus({ preventScroll: true });
     }

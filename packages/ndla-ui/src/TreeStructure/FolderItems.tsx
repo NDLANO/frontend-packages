@@ -105,7 +105,7 @@ const FolderItems = ({
                 <li role="none">
                   {newFolderInput?.({
                     parentId: id,
-                    onClose: onCancelNewFolder,
+                    onCancel: onCancelNewFolder,
                     onCreate,
                   })}
                 </li>

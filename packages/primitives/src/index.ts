@@ -269,3 +269,20 @@ export {
   TooltipPositioner,
   TooltipTrigger,
 } from "./Tooltip";
+
+export type { TreeRootProps } from "./Tree/Tree";
+export {
+  TreeRoot,
+  TreeBranchContent,
+  TreeBranchControl,
+  TreeBranchIndicator,
+  TreeBranch,
+  TreeBranchText,
+  TreeBranchTrigger,
+  TreeItemIndicator,
+  TreeItem,
+  TreeItemText,
+  TreeLabel,
+  Tree,
+  TreeRootProvider,
+} from "./Tree/Tree";

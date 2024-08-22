@@ -17,6 +17,8 @@ import { styled } from "@ndla/styled-system/jsx";
 
 import * as contentTypes from "../model/ContentType";
 
+// TODO: Remove this component
+
 interface Props extends ComponentPropsWithoutRef<"div"> {
   size?: "xx-small" | "x-small" | "small" | "large";
   type: string;

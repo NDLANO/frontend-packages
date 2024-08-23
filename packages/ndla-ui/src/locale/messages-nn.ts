@@ -1255,7 +1255,7 @@ const messages = {
       confirmDeleteAccount: "Er du sikker på at du vil slette kontoen?",
       confirmDeleteAccountButton: "Slett konto",
       myPage: "Mi side",
-      deleteAccount: "Slett Min NDLA",
+      deleteAccount: "Slett brukarprofil",
       loginPitch:
         "Velkommen til Min NDLA! Her kan du lagre favorittressursane dine frå NDLA, organisere dei og dele dei med andre. Logg inn med din Feide-konto for å komme i gang.",
       loginPitchButton: "Logg inn i Min NDLA",

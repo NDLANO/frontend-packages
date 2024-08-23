@@ -159,11 +159,11 @@ export const buttonBaseRecipe = cva({
 
 export const buttonRecipe = cva({
   defaultVariants: {
-    size: "default",
+    size: "medium",
   },
   variants: {
     size: {
-      default: {
+      medium: {
         paddingInline: "xsmall",
         paddingBlock: "xxsmall",
         minHeight: "24",
@@ -182,16 +182,37 @@ export const iconButtonRecipe = cva({
   base: {
     lineHeight: "1",
     minHeight: "unset",
-    height: "xxlarge",
-    width: "xxlarge",
-    "& svg": {
-      marginInline: "0",
-      marginBlock: "0",
-      width: "medium",
-      height: "medium",
+  },
+  defaultVariants: {
+    size: "medium",
+  },
+  variants: {
+    size: {
+      medium: {
+        height: "xxlarge",
+        width: "xxlarge",
+        "& svg": {
+          marginInline: "0",
+          marginBlock: "0",
+          width: "medium",
+          height: "medium",
+        },
+        paddingInline: "xsmall",
+        paddingBlock: "xsmall",
+      },
+      small: {
+        height: "large",
+        width: "large",
+        "& svg": {
+          marginInline: "0",
+          marginBlock: "0",
+          width: "small",
+          height: "small",
+        },
+        paddingInline: "xxsmall",
+        paddingBlock: "xxsmall",
+      },
     },
-    paddingInline: "xsmall",
-    paddingBlock: "xsmall",
   },
 });
 
@@ -244,15 +265,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 type IconButtonVariant = Exclude<Variant, "link">;
 
-export type IconButtonVariantProps = { variant?: IconButtonVariant };
+export type IconButtonVariantProps = { variant?: IconButtonVariant } & RecipeVariantProps<typeof iconButtonRecipe>;
 
 export type IconButtonProps = BaseButtonProps & IconButtonVariantProps;
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ variant, css: cssProp, loadingContent, replaceContent = true, ...props }, ref) => (
+  ({ variant, css: cssProp, loadingContent, size, replaceContent = true, ...props }, ref) => (
     <BaseButton
       {...props}
-      css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp)}
+      css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw({ size }), cssProp)}
       loadingContent={loadingContent ?? <Spinner size="small" />}
       replaceContent={replaceContent}
       ref={ref}

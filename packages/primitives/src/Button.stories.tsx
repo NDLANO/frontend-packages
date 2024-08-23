@@ -21,7 +21,7 @@ export default {
   },
   args: {
     children: "Button",
-    size: "default",
+    size: "medium",
     variant: "primary",
   },
 } as Meta<typeof Button>;
@@ -68,7 +68,7 @@ export const Link: StoryObj<typeof Button> = {
 
 export const DefaultSize: StoryObj<typeof Button> = {
   args: {
-    size: "default",
+    size: "medium",
   },
 };
 

@@ -88,6 +88,14 @@ const treeRecipe = sva({
     itemIndicator: {
       color: "icon.strong",
     },
+    itemText: {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+    },
+    branchText: {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+    },
     tree: {
       display: "flex",
       flexDirection: "column",

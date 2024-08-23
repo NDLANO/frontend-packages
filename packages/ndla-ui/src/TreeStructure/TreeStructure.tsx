@@ -55,6 +55,16 @@ const StyledButton = styled(Button, {
   base: {
     width: "100%",
     justifyContent: "space-between",
+    "& span": {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+    },
+  },
+});
+
+const StyledHStack = styled(HStack, {
+  base: {
+    overflow: "hidden",
   },
 });
 
@@ -250,7 +260,7 @@ export const TreeStructure = ({
               aria-describedby={ariaDescribedby}
               aria-activedescendant={focusedValue ?? undefined}
             >
-              {selectedFolder?.name}
+              <span>{selectedFolder?.name}</span>
               <ArrowDownShortLine />
             </StyledButton>
           </PopoverTrigger>
@@ -295,13 +305,13 @@ const TreeStructureItem = ({ folder, targetResource }: TreeStructureItemProps) =
   if (!folder.subfolders.length) {
     return (
       <TreeItem key={folder.id} value={folder.id} onKeyDown={onKeyDown} id={folder.id}>
-        <HStack gap="xsmall" justify="space-between">
-          <HStack gap="xxsmall" justify="center">
+        <StyledHStack gap="xsmall" justify="space-between">
+          <StyledHStack gap="xxsmall" justify="center">
             <FolderIcon />
             <TreeItemText>{folder.name}</TreeItemText>
-          </HStack>
+          </StyledHStack>
           {containsResource && <StyledHeartFill title={t("myNdla.alreadyInFolder")} />}
-        </HStack>
+        </StyledHStack>
       </TreeItem>
     );
   }
@@ -311,8 +321,8 @@ const TreeStructureItem = ({ folder, targetResource }: TreeStructureItemProps) =
   return (
     <TreeBranch key={folder.id} value={folder.id} id={folder.id}>
       <TreeBranchControl onKeyDown={onKeyDown} asChild>
-        <HStack gap="xsmall" justify="space-between">
-          <HStack gap="xxsmall" justify="center">
+        <StyledHStack gap="xsmall" justify="space-between">
+          <StyledHStack gap="xxsmall" justify="center">
             <IconButton variant="clear" asChild>
               <TreeBranchTrigger>
                 <TreeBranchIndicator asChild>
@@ -324,7 +334,7 @@ const TreeStructureItem = ({ folder, targetResource }: TreeStructureItemProps) =
             <TreeBranchText aria-label={ariaLabel} title={ariaLabel}>
               {folder.name}
             </TreeBranchText>
-          </HStack>
+          </StyledHStack>
           {containsResource && (
             <StyledHeartFill
               title={t("myNdla.alreadyInFolder")}
@@ -332,7 +342,7 @@ const TreeStructureItem = ({ folder, targetResource }: TreeStructureItemProps) =
               aria-hidden={false}
             />
           )}
-        </HStack>
+        </StyledHStack>
       </TreeBranchControl>
       <TreeBranchContent>
         {folder.subfolders.map((subfolder) => (

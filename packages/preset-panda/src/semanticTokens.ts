@@ -94,6 +94,7 @@ export const semanticTokens = defineSemanticTokens({
           DEFAULT: { value: "{colors.blue.500}" },
           subtle: { value: "{colors.blue.50}" },
           moderate: { value: "{colors.blue.100}" },
+          bold: { value: "{colors.blue.800}" },
           strong: { value: "{colors.blue.900}" },
         },
         3: {

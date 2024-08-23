@@ -1255,6 +1255,10 @@ const tokens = {
     "value": "var(--colors-blue-100)",
     "variable": "var(--colors-surface-brand-2-moderate)"
   },
+  "colors.surface.brand.2.bold": {
+    "value": "var(--colors-blue-800)",
+    "variable": "var(--colors-surface-brand-2-bold)"
+  },
   "colors.surface.brand.2.strong": {
     "value": "var(--colors-blue-900)",
     "variable": "var(--colors-surface-brand-2-strong)"
@@ -1934,6 +1938,18 @@ const tokens = {
   "colors.colorPalette.2.moderate": {
     "value": "var(--colors-color-palette-2-moderate)",
     "variable": "var(--colors-color-palette-2-moderate)"
+  },
+  "colors.colorPalette.brand.2.bold": {
+    "value": "var(--colors-color-palette-brand-2-bold)",
+    "variable": "var(--colors-color-palette-brand-2-bold)"
+  },
+  "colors.colorPalette.2.bold": {
+    "value": "var(--colors-color-palette-2-bold)",
+    "variable": "var(--colors-color-palette-2-bold)"
+  },
+  "colors.colorPalette.bold": {
+    "value": "var(--colors-color-palette-bold)",
+    "variable": "var(--colors-color-palette-bold)"
   },
   "colors.colorPalette.brand.2.strong": {
     "value": "var(--colors-color-palette-brand-2-strong)",

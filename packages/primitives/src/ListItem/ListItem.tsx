@@ -120,8 +120,7 @@ export const listItemRecipe = sva({
       brand2: {
         root: {
           "--background-hover": "colors.surface.brand.2.moderate",
-          // TODO: Not a semantic color
-          "--background-current": "colors.blue.800",
+          "--background-current": "colors.surface.brand.2.bold",
           "--border-hover": "colors.surface.brand.2.strong",
           "--color-current-hover": "colors.text.onAction",
         },

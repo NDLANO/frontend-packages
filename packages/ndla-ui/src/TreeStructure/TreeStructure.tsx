@@ -130,6 +130,7 @@ export const TreeStructure = ({
   const newFolderButtonRef = useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
   const rootFolderIds = useMemo(() => folders.map((folder) => folder.id), [folders]);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const selectedFolder = useMemo(() => {
     return flattenFolders(folders).find((folder) => folder.id === selectedValue);
@@ -208,7 +209,7 @@ export const TreeStructure = ({
 
   const onAnimationEnd = useCallback(() => {
     if (open && focusedValue) {
-      document.getElementById(focusedValue)?.scrollIntoView({ behavior: "smooth", block: "end" });
+      document.getElementById(focusedValue)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }, [focusedValue, open]);
 
@@ -249,7 +250,7 @@ export const TreeStructure = ({
           positioning={{ sameWidth: true }}
           onOpenChange={onOpenChange}
           persistentElements={[() => newFolderButtonRef.current]}
-          initialFocusEl={() => document.querySelector("input")}
+          initialFocusEl={() => contentRef.current?.querySelector("input") ?? null}
         >
           <PopoverTrigger asChild>
             <StyledButton
@@ -264,7 +265,7 @@ export const TreeStructure = ({
               <ArrowDownShortLine />
             </StyledButton>
           </PopoverTrigger>
-          <StyledPopoverContent onAnimationEnd={onAnimationEnd}>
+          <StyledPopoverContent onAnimationEnd={onAnimationEnd} ref={contentRef}>
             {!!newFolderParentId &&
               newFolderInput?.({ parentId: newFolderParentId, onCreate: onCreateFolder, onCancel: onCancelFolder })}
             <Tree>

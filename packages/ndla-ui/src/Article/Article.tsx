@@ -119,11 +119,15 @@ export const ArticleHGroup = styled(
   ark.hgroup,
   {
     base: {
-      display: "flex",
+      display: "grid",
       width: "100%",
-      flexDirection: "column",
+      gridTemplateColumns: "auto 1fr auto",
+      gridTemplateAreas: `
+      "badge button button"
+      "title title title"
+       `,
+      rowGap: "xsmall",
       alignItems: "flex-start",
-      gap: "xsmall",
       "& h1": {
         overflowWrap: "anywhere",
       },
@@ -132,10 +136,27 @@ export const ArticleHGroup = styled(
   { baseComponent: true },
 );
 
+export const ArticleBadgeWrapper = styled(
+  ark.div,
+  {
+    base: {
+      gridArea: "badge",
+    },
+  },
+  { baseComponent: true },
+);
+
+export const ArticleHeading = styled(Heading, {
+  base: {
+    gridArea: "title",
+  },
+});
+
 export const ArticleActionWrapper = styled(
   ark.div,
   {
     base: {
+      gridArea: "button",
       position: "absolute",
       right: "8%",
       top: "xsmall",
@@ -217,11 +238,15 @@ export const ArticleTitle = ({
   return (
     <ArticleHeader padded>
       <ArticleHGroup>
-        {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
-        {!!heartButton && <ArticleActionWrapper>{heartButton}</ArticleActionWrapper>}
-        <Heading textStyle="heading.large" id={id} lang={lang}>
+        {!!contentType && (
+          <ArticleBadgeWrapper asChild>
+            <ContentTypeBadgeNew contentType={contentType} />
+          </ArticleBadgeWrapper>
+        )}
+        <ArticleHeading textStyle="heading.large" id={id} lang={lang}>
           {title}
-        </Heading>
+        </ArticleHeading>
+        {!!heartButton && <ArticleActionWrapper>{heartButton}</ArticleActionWrapper>}
       </ArticleHGroup>
       {!!introduction && (
         <Text lang={lang} textStyle="body.xlarge" asChild consumeCss>

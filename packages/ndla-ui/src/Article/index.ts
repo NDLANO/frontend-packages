@@ -16,6 +16,8 @@ export {
   ArticleHGroup,
   ArticleContent,
   ArticlePadding,
+  ArticleBadgeWrapper,
+  ArticleHeading,
 } from "./Article";
 
 export { ArticleByline, ArticleBylineAccordionItem } from "./ArticleByline";

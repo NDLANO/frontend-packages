@@ -1264,7 +1264,7 @@ const messages = {
       loginTerms: "Log in with Feide to receive access. By logging on your accept your terms of service",
       loginResourcePitch: "Do you want to favorite this resource?",
       loginWelcome: "Welcome to My NDLA!",
-      deleteAccount: "Delete My NDLA",
+      deleteAccount: "Delete profile",
       loginPitch:
         "Welcome to My NDLA! Here you can save your favourite resources from NDLA, organize them and share them with others. Log in with your Feide account to get started.",
       loginPitchButton: "Log in to My NDLA",

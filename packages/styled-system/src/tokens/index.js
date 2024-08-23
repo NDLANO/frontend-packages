@@ -1020,7 +1020,7 @@ const tokens = {
     "variable": "var(--spacing-medium)"
   },
   "spacing.large": {
-    "value": "var(--spacing-15)",
+    "value": "var(--spacing-16)",
     "variable": "var(--spacing-large)"
   },
   "spacing.xlarge": {
@@ -1108,7 +1108,7 @@ const tokens = {
     "variable": "var(--sizes-medium)"
   },
   "sizes.large": {
-    "value": "var(--spacing-15)",
+    "value": "var(--spacing-16)",
     "variable": "var(--sizes-large)"
   },
   "sizes.xlarge": {

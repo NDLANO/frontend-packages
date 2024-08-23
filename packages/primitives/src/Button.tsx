@@ -201,8 +201,8 @@ export const iconButtonRecipe = cva({
         paddingBlock: "xsmall",
       },
       small: {
-        height: "16", //dont have semantic width
-        width: "16", // dont have semantic width
+        height: "large",
+        width: "large",
         "& svg": {
           marginInline: "0",
           marginBlock: "0",

@@ -6,6 +6,7 @@
  *
  */
 
+import { forwardRef } from "react";
 import { Popover, popoverAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
@@ -92,11 +93,11 @@ export const PopoverContentStandalone = withContext<HTMLDivElement, Popover.Cont
   { baseComponent: true },
 );
 
-export const PopoverContent = (props: Popover.ContentProps & JsxStyleProps) => (
+export const PopoverContent = forwardRef<HTMLDivElement, Popover.ContentProps & JsxStyleProps>((props, ref) => (
   <PopoverPositioner>
-    <PopoverContentStandalone {...props} />
+    <PopoverContentStandalone {...props} ref={ref} />
   </PopoverPositioner>
-);
+));
 
 export const PopoverDescription = withContext<HTMLParagraphElement, Popover.DescriptionProps & JsxStyleProps>(
   Popover.Description,

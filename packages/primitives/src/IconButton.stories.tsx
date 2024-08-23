@@ -17,7 +17,7 @@ export default {
   tags: ["autodocs"],
   args: {
     children: <CloseLine />,
-    size: "default",
+    size: "medium",
   },
   argTypes: {
     children: {
@@ -77,7 +77,7 @@ export const ClearSubtle: StoryObj<typeof IconButton> = {
 
 export const DefaultSize: StoryObj<typeof IconButton> = {
   args: {
-    size: "default",
+    size: "medium",
   },
 };
 

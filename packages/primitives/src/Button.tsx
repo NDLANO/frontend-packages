@@ -159,11 +159,11 @@ export const buttonBaseRecipe = cva({
 
 export const buttonRecipe = cva({
   defaultVariants: {
-    size: "default",
+    size: "medium",
   },
   variants: {
     size: {
-      default: {
+      medium: {
         paddingInline: "xsmall",
         paddingBlock: "xxsmall",
         minHeight: "24",
@@ -184,11 +184,11 @@ export const iconButtonRecipe = cva({
     minHeight: "unset",
   },
   defaultVariants: {
-    size: "default",
+    size: "medium",
   },
   variants: {
     size: {
-      default: {
+      medium: {
         height: "xxlarge",
         width: "xxlarge",
         "& svg": {

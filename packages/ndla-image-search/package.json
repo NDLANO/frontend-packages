@@ -26,27 +26,20 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^15.0.9-alpha.0",
-    "@ndla/core": "^5.0.2",
-    "@ndla/forms": "^10.0.9-alpha.0",
-    "@ndla/icons": "^8.0.9-alpha.0",
+    "@ndla/icons": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/util": "^4.1.0",
     "pretty-bytes": "^5.6.0"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^0.2.86",
-    "@pandacss/dev": "^0.44.0"
+    "@pandacss/dev": "^0.45.2"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "i18next": ">= 23.11.5",
-    "react": ">= 16.8.0",
-    "react-dom": ">= 16.8.0",
-    "react-i18next": ">= 14.1.1",
-    "react-router-dom": ">= 6.0.0"
+    "i18next": "^23.11.5",
+    "react": ">= 18",
+    "react-dom": ">= 18",
+    "react-i18next": "^14.1.1"
   },
   "publishConfig": {
     "access": "public"

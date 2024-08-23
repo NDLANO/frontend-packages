@@ -8,99 +8,177 @@
 
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { ButtonV2 } from "@ndla/button";
-import { spacing } from "@ndla/core";
-import { CheckboxItem, Label } from "@ndla/forms";
+import { CloseLine } from "@ndla/icons/action";
+import { HashTag } from "@ndla/icons/common";
+import { CheckLine } from "@ndla/icons/editor";
+import {
+  Button,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+  CheckboxLabel,
+  CheckboxRoot,
+  Heading,
+  Text,
+  Image,
+  IconButton,
+} from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
-import { uuid } from "@ndla/util";
-
 import ImageMeta from "./ImageMeta";
 import { getSrcSets } from "./util/imageUtil";
 
+const StyledImage = styled(Image, {
+  base: {
+    maxHeight: "300px",
+    flex: "1",
+  },
+});
+
+const StyledImageMetadata = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xxsmall",
+    flex: "2",
+  },
+});
+
+const StyledButton = styled(Button, {
+  base: {
+    width: "fit-content",
+  },
+});
+
+const HashTagWrapper = styled("div", {
+  base: {
+    display: "flex",
+    gap: "xxsmall",
+    flexWrap: "wrap",
+  },
+});
+
+const StyledTagItem = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+  },
+});
+const StyledPreview = styled("div", {
+  base: {
+    display: "flex",
+    gridColumn: "1 / -1",
+    borderColor: "stroke.default",
+    border: "1px solid",
+    borderRadius: "xsmall",
+    gap: "small",
+    padding: "small",
+  },
+});
+
+const StyledTopRow = styled("div", {
+  base: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+});
+
 interface Props {
+  id: string;
   image: IImageMetaInformationV3;
-  onSelectImage: (image: IImageMetaInformationV3, saveAsMetaImage: boolean) => void;
+  onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
   checkboxLabel?: string;
 }
 
-const CheckboxWrapper = styled.div`
-  display: flex;
-  gap: ${spacing.small};
-  align-items: center;
-`;
-
-const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, checkboxLabel }: Props) => {
+const PreviewImage = ({ id, image, onSelectImage, useImageTitle, showCheckbox, checkboxLabel }: Props) => {
   const { t } = useTranslation();
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
-  const tags = image.tags.tags ?? [];
-  const title = image.title.title ?? "";
-  const altText = image.alttext.alttext ?? "";
-  const caption = image.caption.caption ?? "";
   return (
-    <div className="image-preview">
-      <div className="image">
-        <img
-          role="presentation"
-          alt="presentation"
-          srcSet={getSrcSets(image.image.imageUrl)}
-          sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
-          src={image.image.imageUrl}
-          aria-label={title}
-        />
-      </div>
-      <div className="information">
-        <h2 className="title">{title}</h2>
-        {image.copyright.creators && image.copyright.creators.length > 0 ? (
-          <div className="copyright-author">
-            <span className="text">{image.copyright.creators.map((creator) => creator.name).join(", ")}</span>
-          </div>
-        ) : null}
-        <div className="info">
-          <span className="text">{image.copyright.license.description}</span>
-        </div>
-        <div className="info">
-          <span className="text">{`${t("image.caption")}: ${caption}`}</span>
-        </div>
-        <div className="info">
-          <span className="text">{`${t("image.altText")}: ${altText}`}</span>
-        </div>
-        <div className="info">
-          <span className="text">{`${t("image.modelReleased.label")}: ${t(
-            `image.modelReleased.${image.modelRelease}`,
-          )}`}</span>
-        </div>
+    <StyledPreview id={id}>
+      <StyledImage
+        alt=""
+        srcSet={getSrcSets(image.image.imageUrl)}
+        sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
+        src={image.image.imageUrl}
+        aria-label={image.title.title}
+      />
+      <StyledImageMetadata>
+        <StyledTopRow>
+          <Heading asChild consumeCss textStyle="title.medium">
+            <h2>{image.title.title}</h2>
+          </Heading>
+          <IconButton
+            variant="tertiary"
+            onClick={() => onSelectImage(undefined)}
+            aria-label={t("close")}
+            title={t("close")}
+          >
+            <CloseLine />
+          </IconButton>
+        </StyledTopRow>
+        {!!image.copyright.creators.length && (
+          <Text>
+            <b>{`${t("photo")}: `}</b>
+            {image.copyright.creators.map((creator) => creator.name).join(", ")}
+          </Text>
+        )}
+        {!!image.copyright.license.description?.trim() && (
+          <Text>
+            <b>{`${t("image.license")}: `}</b>
+            {image.copyright.license.description}
+          </Text>
+        )}
+        {!!image.caption.caption.trim() && (
+          <Text>
+            <b>{`${t("image.caption")}: `}</b>
+            {image.caption.caption}
+          </Text>
+        )}
+        {!!image.alttext.alttext.trim() && (
+          <Text>
+            <b>{`${t("image.altText")}:`}</b> {image.alttext.alttext}
+          </Text>
+        )}
+        {!!image.modelRelease.trim() && (
+          <Text>
+            <b>{`${t("image.modelReleased.label")}: `}</b>
+            {t(`image.modelReleased.${image.modelRelease}`)}
+          </Text>
+        )}
         <ImageMeta
           contentType={image.image.contentType}
           fileSize={image.image.size}
           imageDimensions={image.image.dimensions}
         />
-        <div className="tags">
-          {tags.map((tag) => (
-            <span key={uuid()} className="tag_item">{`#${tag}`}</span>
+        {/* TODO: make accessible ? */}
+        <HashTagWrapper>
+          {image.tags.tags.map((tag) => (
+            <StyledTagItem key={tag}>
+              <HashTag size="small" />
+              {tag}
+            </StyledTagItem>
           ))}
-        </div>
-        <ButtonV2 data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
+        </HashTagWrapper>
+        <StyledButton data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
           {useImageTitle}
-        </ButtonV2>
+        </StyledButton>
         {showCheckbox && (
-          <CheckboxWrapper>
-            <CheckboxItem
-              id="saveAsMeta"
-              checked={saveAsMetaImage}
-              onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}
-            />
-            <Label htmlFor="saveAsMeta" textStyle="label-small" margin="none">
-              {checkboxLabel}
-            </Label>
-          </CheckboxWrapper>
+          <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>
+            <CheckboxControl>
+              <CheckboxIndicator asChild>
+                <CheckLine />
+              </CheckboxIndicator>
+            </CheckboxControl>
+            <CheckboxLabel>{checkboxLabel}</CheckboxLabel>
+            <CheckboxHiddenInput />
+          </CheckboxRoot>
         )}
-      </div>
-      <div className="clear" />
-    </div>
+      </StyledImageMetadata>
+    </StyledPreview>
   );
 };
 

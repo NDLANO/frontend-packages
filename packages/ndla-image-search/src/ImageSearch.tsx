@@ -6,270 +6,49 @@
  *
  */
 
-import { ChangeEvent, Component, ReactNode, KeyboardEvent, useEffect, useState } from "react";
-import styled from "@emotion/styled";
-import { fonts, colors, spacing, mq, breakpoints } from "@ndla/core";
-import { InputContainer, InputV3 } from "@ndla/forms";
-import { SearchLine } from "@ndla/icons/common";
-import { Pager } from "@ndla/pager";
+import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState, FormEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { ChevronLeft, ChevronRight, SearchLine } from "@ndla/icons/common";
+import {
+  Button,
+  IconButton,
+  Input,
+  PaginationContext,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNextTrigger,
+  PaginationPrevTrigger,
+  PaginationRoot,
+  Text,
+  PaginationRootProps,
+} from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
 import ImageSearchResult from "./ImageSearchResult";
 
-const ImageSearchWrapper = styled.div`
-  .text {
-    text-align: center;
-  }
-  .list-item {
-    position: relative;
-    float: left;
-    height: 210px;
-    width: 100%;
-    ${mq.range({ from: breakpoints.tablet })} {
-      width: 50%;
-    }
-    ${mq.range({ from: breakpoints.tabletWide })} {
-      width: 33.3%;
-    }
-    ${mq.range({ from: breakpoints.desktop })} {
-      width: 25%;
-    }
-    ${mq.range({ from: breakpoints.wide })} {
-      width: 20%;
-    }
-    &.active {
-      height: inherit;
-    }
-  }
+const ImageSearchWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "small",
+  },
+});
 
-  .list {
-    display: flex;
-    align-items: stretch;
-    flex-flow: row wrap;
-    position: relative;
-    margin-left: -${spacing.small};
-    margin-right: -${spacing.small};
-    margin-top: ${spacing.normal};
-  }
+const StyledSearchResults = styled("div", {
+  base: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gridGap: "xsmall",
+    gridAutoFlow: "dense",
+  },
+});
 
-  .list-item-inner {
-    padding: ${spacing.small};
-    text-align: center;
-    height: 210px;
-
-    .list-item-title {
-      margin: ${spacing.xsmall} 0;
-      ${fonts.sizes("14px", 1.2)};
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      max-height: ${spacing.large};
-    }
-  }
-
-  .list-item-inner img {
-    max-height: 135px;
-    max-width: 100%;
-    border: 2px solid white;
-    transition: border-color 100ms ease;
-  }
-
-  .list-item-inner:hover {
-    img {
-      border: 2px solid ${colors.brand.primary};
-    }
-  }
-
-  .list-item-inner > .list-item-inner img {
-    border: 2px solid ${colors.brand.primary};
-  }
-
-  .list-item.active > .list-item-inner::after {
-    animation: fadeInSearchPreview 300ms ease;
-    top: 190px;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(136, 183, 213, 0);
-    border-bottom-color: ${colors.brand.lighter};
-    border-width: ${spacing.normal};
-    margin-left: -${spacing.normal};
-  }
-
-  .image-preview {
-    animation: fadeInSearchPreview 300ms ease;
-    position: relative;
-    width: 100%;
-    ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
-      width: 200%;
-    }
-    ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
-      width: 300%;
-    }
-    ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
-      width: 400%;
-    }
-    ${mq.range({ from: breakpoints.wide })} {
-      width: 500%;
-    }
-    background-color: ${colors.brand.lighter};
-    border-radius: 2px;
-    margin: 20px 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-
-    ${mq.range({ until: breakpoints.mobileWide })} {
-      display: block;
-    }
-
-    .image {
-      max-width: 50%;
-      padding: ${spacing.small};
-      ${mq.range({ until: breakpoints.mobileWide })} {
-        width: 100%;
-      }
-    }
-
-    .info {
-      ${fonts.sizes("16px", 1.3)}
-    }
-
-    .image img {
-      max-width: 100%;
-      max-height: 300px;
-    }
-
-    .information {
-      width: 50%;
-      padding: calc(${spacing.normal} - ${spacing.xsmall}) ${spacing.normal} ${spacing.normal} ${spacing.small};
-      word-break: initial;
-      ${mq.range({ until: breakpoints.mobileWide })} {
-        width: 100%;
-        padding: 0 ${spacing.small} ${spacing.normal};
-      }
-    }
-
-    .information > * {
-      margin-top: ${spacing.small};
-    }
-
-    .title {
-      padding-top: 0;
-      margin: 0;
-      line-height: 1.3;
-    }
-    .text--left {
-      width: 20%;
-      display: inline-block;
-    }
-
-    .text--right {
-      width: 80%;
-      display: inline-block;
-    }
-    .tags > b {
-      display: block;
-      margin-bottom: ${spacing.normal};
-    }
-
-    .tags > .tag_item {
-      font-weight: ${fonts.weight.semibold};
-      margin-right: ${spacing.xsmall};
-      margin-bottom: ${spacing.xsmall};
-      display: inline-block;
-      ${fonts.sizes("16px", 1.3)}
-    }
-
-    .tags > .tag_item:hover {
-      text-decoration: none;
-    }
-
-    .clear {
-      clear: both;
-    }
-
-    width: 100%;
-  }
-  ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
-    .list-item .image-preview {
-      width: 200%;
-    }
-    .list-item:nth-of-type(2n) .image-preview {
-      margin-left: -100%;
-    }
-  }
-  ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
-    .list-item .image-preview {
-      width: 300%;
-    }
-    .list-item:nth-of-type(3n - 1) .image-preview {
-      margin-left: -100%;
-    }
-    .list-item:nth-of-type(3n) .image-preview {
-      margin-left: -200%;
-    }
-  }
-  ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
-    .list-item .image-preview {
-      width: 400%;
-    }
-    .list-item:nth-of-type(4n - 2) .image-preview {
-      margin-left: -100%;
-    }
-    .list-item:nth-of-type(4n - 1) .image-preview {
-      margin-left: -200%;
-    }
-    .list-item:nth-of-type(4n) .image-preview {
-      margin-left: -300%;
-    }
-  }
-  ${mq.range({ from: breakpoints.wide })} {
-    .list-item .image-preview {
-      width: 500%;
-    }
-    .list-item:nth-of-type(5n - 3) .image-preview {
-      margin-left: -100%;
-    }
-    .list-item:nth-of-type(5n - 2) .image-preview {
-      margin-left: -200%;
-    }
-    .list-item:nth-of-type(5n - 1) .image-preview {
-      margin-left: -300%;
-    }
-    .list-item:nth-of-type(5n) .image-preview {
-      margin-left: -400%;
-    }
-  }
-
-  @keyframes fadeInSearchPreview {
-    0% {
-      display: none;
-      opacity: 0;
-    }
-    1% {
-      opacity: 0;
-      display: flex;
-      transform: translateY(-20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-  }
-`;
-
-const SearchIconButton = styled.button`
-  border: 0;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-`;
+const StyledForm = styled("form", {
+  base: {
+    display: "flex",
+    gap: "xsmall",
+  },
+});
 
 interface Props {
   onImageSelect: (image: IImageMetaInformationV3) => void;
@@ -278,8 +57,6 @@ interface Props {
   onError: (err: any) => void;
   searchPlaceholder: string;
   searchButtonTitle: string;
-  // TODO: should we remove this unused prop and break the API?
-  locale: string;
   useImageTitle: string;
   noResults?: ReactNode;
   checkboxAction?: (image: IImageMetaInformationV3) => void;
@@ -294,26 +71,33 @@ const ImageSearch = ({
   onError,
   searchPlaceholder,
   searchButtonTitle,
-  locale,
   useImageTitle,
   noResults,
   checkboxAction,
   showCheckbox,
   checkboxLabel,
 }: Props) => {
+  const { t } = useTranslation();
   const [queryObject, setQueryObject] = useState<ISearchParams>({
     query: undefined,
     page: 1,
     pageSize: 16,
   });
-  const [images, setImages] = useState<IImageMetaInformationV3[]>([]);
-  const [selectedImage, setSelectedImage] = useState<IImageMetaInformationV3>();
-  const [lastPage, setLastPage] = useState<number>(0);
+  const [selectedImage, setSelectedImage] = useState<IImageMetaInformationV3 | undefined>();
   const [searching, setSearching] = useState<boolean>(false);
-  const [queryString, setQueryString] = useState<string>();
+  const [searchResult, setSearchResult] = useState<ISearchResultV3 | undefined>();
 
   const { page } = queryObject;
-  const noResultsFound = !searching && images.length === 0;
+  const noResultsFound = !searching && searchResult?.results.length === 0;
+
+  const paginationTranslations: PaginationRootProps["translations"] = {
+    rootLabel: t("component.pagination.rootLabel"),
+    prevTriggerLabel: t("component.pagination.prevTriggerLabel"),
+    nextTriggerLabel: t("component.pagination.nextTriggerLabel"),
+    itemLabel: (details) => {
+      return t("component.pagination.page", { page: details.page });
+    },
+  };
 
   const onImageClick = (image: IImageMetaInformationV3) => {
     if (!selectedImage || image.id !== selectedImage.id) {
@@ -327,8 +111,9 @@ const ImageSearch = ({
     }
   };
 
-  const onSelectImage = (image: IImageMetaInformationV3, saveAsMetaImage: boolean) => {
+  const onSelectImage = (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => {
     setSelectedImage(undefined);
+    if (!image) return;
     onImageSelect(image);
     if (saveAsMetaImage) {
       checkboxAction?.(image);
@@ -344,14 +129,25 @@ const ImageSearch = ({
           pageSize: result.pageSize,
           page: queryObject.page,
         });
-        setImages(result.results);
-        setLastPage(Math.ceil(result.totalCount / result.pageSize));
+        setSearchResult(result);
         setSearching(false);
       })
       .catch((err) => {
         onError(err);
         setSearching(false);
       });
+  };
+
+  const handleQueryChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+    setQueryObject((prevState) => ({
+      ...prevState,
+      query: value,
+    }));
+  };
+
+  const handleSubmit = (e: KeyboardEvent<HTMLInputElement> | FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    searchImages(queryObject);
   };
 
   useEffect(() => {
@@ -361,33 +157,15 @@ const ImageSearch = ({
 
   return (
     <ImageSearchWrapper>
-      <InputContainer>
-        <InputV3
-          placeholder={searchPlaceholder}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus
-          value={queryString}
-          onChange={(evt: ChangeEvent<HTMLInputElement>) => setQueryString(evt.target.value)}
-          onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {
-            if (evt.key === "Enter") {
-              evt.preventDefault();
-              searchImages({ query: queryString, page: 1 });
-            }
-          }}
-        />
-        <SearchIconButton
-          aria-label={searchButtonTitle}
-          type="button"
-          onClick={() => {
-            searchImages({ query: queryString, page: 1 });
-          }}
-        >
+      <StyledForm onSubmit={handleSubmit}>
+        <Input type="search" placeholder={searchPlaceholder} value={queryObject?.query} onChange={handleQueryChange} />
+        <IconButton variant="primary" type="submit" aria-label={searchButtonTitle} title={searchButtonTitle}>
           <SearchLine />
-        </SearchIconButton>
-      </InputContainer>
+        </IconButton>
+      </StyledForm>
       {noResultsFound && noResults}
-      <div className="list">
-        {images.map((image) => (
+      <StyledSearchResults>
+        {searchResult?.results.map((image) => (
           <ImageSearchResult
             key={image.id}
             image={image}
@@ -399,15 +177,47 @@ const ImageSearch = ({
             checkboxLabel={checkboxLabel}
           />
         ))}
-      </div>
-      <Pager
+      </StyledSearchResults>
+      <PaginationRoot
         page={page ?? 1}
-        pathname=""
-        lastPage={lastPage}
-        query={queryObject}
-        onClick={searchImages}
-        pageItemComponentClass="button"
-      />
+        onPageChange={(details) => searchImages({ ...queryObject, page: details.page })}
+        translations={paginationTranslations}
+        count={searchResult?.totalCount ?? 0}
+        pageSize={searchResult?.pageSize}
+        siblingCount={2}
+      >
+        <PaginationPrevTrigger asChild>
+          <Button variant="tertiary">
+            <ChevronLeft />
+            {paginationTranslations?.prevTriggerLabel}
+          </Button>
+        </PaginationPrevTrigger>
+        <PaginationContext>
+          {(pagination) =>
+            pagination.pages.map((page, index, full) => {
+              // Hide last page to not trigger RESULT_WINDOW_TOO_LARGE error
+              if (index === full.length - 1) return null;
+              return page.type === "page" ? (
+                <PaginationItem key={index} {...page} asChild>
+                  <Button variant={page.value === pagination.page ? "primary" : "tertiary"}>{page.value}</Button>
+                </PaginationItem>
+              ) : (
+                <PaginationEllipsis key={index} index={index} asChild>
+                  <Text asChild consumeCss>
+                    <div>&#8230;</div>
+                  </Text>
+                </PaginationEllipsis>
+              );
+            })
+          }
+        </PaginationContext>
+        <PaginationNextTrigger asChild>
+          <Button variant="tertiary">
+            {paginationTranslations?.nextTriggerLabel}
+            <ChevronRight />
+          </Button>
+        </PaginationNextTrigger>
+      </PaginationRoot>
     </ImageSearchWrapper>
   );
 };

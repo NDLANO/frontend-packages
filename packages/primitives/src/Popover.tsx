@@ -15,6 +15,7 @@ const popoverRecipe = sva({
   slots: popoverAnatomy.keys(),
   base: {
     positioner: {
+      maxHeight: "inherit",
       position: "relative",
     },
     content: {

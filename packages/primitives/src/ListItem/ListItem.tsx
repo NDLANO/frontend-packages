@@ -37,30 +37,6 @@ export const listItemRecipe = sva({
       _highlighted: {
         background: "var(--background-hover)",
       },
-      '&[aria-current="true"], &[aria-current="page"]': {
-        background: "var(--background-current)",
-        borderBlockStartColor: "transparent",
-        borderBlockEndColor: "transparent",
-        color: "var(--color-current-hover)",
-        _hover: {
-          background: "var(--background-hover)",
-          color: "text.default",
-        },
-        _highlighted: {
-          background: "var(--background-hover)",
-          color: "text.default",
-        },
-        "& a:focus-visible": {
-          _focusVisible: {
-            outlineColor: "var(--color-current-hover)",
-          },
-        },
-        "& button:focus-visible": {
-          _focusVisible: {
-            boxShadowColor: "var(--color-current-hover)",
-          },
-        },
-      },
     },
     content: {
       display: "flex",
@@ -98,6 +74,32 @@ export const listItemRecipe = sva({
     },
     nonInteractive: {
       false: {
+        root: {
+          '&[aria-current="true"], &[aria-current="page"]': {
+            background: "var(--background-current)",
+            borderBlockStartColor: "transparent",
+            borderBlockEndColor: "transparent",
+            color: "var(--color-current-hover)",
+            _hover: {
+              background: "var(--background-hover)",
+              color: "text.default",
+            },
+            _highlighted: {
+              background: "var(--background-hover)",
+              color: "text.default",
+            },
+            "& a:focus-visible": {
+              _focusVisible: {
+                outlineColor: "var(--color-current-hover)",
+              },
+            },
+            "& button:focus-visible": {
+              _focusVisible: {
+                boxShadowColor: "var(--color-current-hover)",
+              },
+            },
+          },
+        },
         title: {
           textDecoration: "underline",
           _hover: {
@@ -118,8 +120,7 @@ export const listItemRecipe = sva({
       brand2: {
         root: {
           "--background-hover": "colors.surface.brand.2.moderate",
-          // TODO: Not a semantic color
-          "--background-current": "colors.blue.800",
+          "--background-current": "colors.surface.brand.2.bold",
           "--border-hover": "colors.surface.brand.2.strong",
           "--color-current-hover": "colors.text.onAction",
         },
@@ -128,13 +129,12 @@ export const listItemRecipe = sva({
     variant: {
       standalone: {
         root: {
-          "--border": "colors.stroke.subtle",
-          borderBlockColor: "var(--border)",
+          borderBlockColor: "stroke.subtle",
           _hover: {
-            borderBlockColor: "var(--border-hover, var(--border))",
+            borderBlockColor: "var(--border-hover)",
           },
           _highlighted: {
-            borderBlockColor: "var(--border-hover, var(--border))",
+            borderBlockColor: "var(--border-hover)",
           },
         },
       },
@@ -145,15 +145,27 @@ export const listItemRecipe = sva({
           marginBlockStart: "-1px",
           _first: {
             borderBlockStartColor: "transparent",
+          },
+          _last: {
+            borderBlockEndColor: "stroke.subtle",
+          },
+        },
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      variant: "list",
+      nonInteractive: false,
+      css: {
+        root: {
+          _first: {
             _hover: {
               borderBlockStartColor: "var(--border-hover)",
             },
             _highlighted: {
               borderBlockStartColor: "var(--border-hover)",
             },
-          },
-          _last: {
-            borderBlockEndColor: "stroke.subtle",
           },
           "&:hover + &": {
             borderBlockStartColor: "var(--border-hover)",
@@ -177,7 +189,7 @@ export const listItemRecipe = sva({
         },
       },
     },
-  },
+  ],
 });
 
 const { withProvider, withContext } = createStyleContext(listItemRecipe);

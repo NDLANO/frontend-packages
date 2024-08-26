@@ -62,6 +62,7 @@ const LinkText = styled(Text, {
       textDecoration: "none",
     },
     paddingBlock: "xsmall",
+    fontWeight: "bold",
   },
 });
 

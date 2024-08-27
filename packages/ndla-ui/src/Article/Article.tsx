@@ -199,7 +199,7 @@ export const ArticleTitle = ({
   return (
     <ArticleHeader padded>
       <ArticleHGroup>
-        <HStack justify="space-between">
+        <HStack justify="space-between" gap="small">
           {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
           {!!heartButton && heartButton}
         </HStack>

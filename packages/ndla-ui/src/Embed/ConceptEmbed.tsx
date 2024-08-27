@@ -60,6 +60,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
         visualElement={visualElement}
         lang={lang}
         title={concept.title.title}
+        source={concept.source}
       >
         {parsedContent}
       </InlineConcept>
@@ -72,6 +73,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
       visualElement={visualElement}
       lang={lang}
       title={renderContext === "embed" ? undefined : concept.title.title}
+      source={concept.source}
     >
       {parsedContent}
     </BlockConcept>
@@ -80,10 +82,11 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
 
 export interface InlineConceptProps extends ConceptProps, BaseProps {
   linkText?: string;
+  source?: string;
 }
 
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
-  ({ linkText, copyright, visualElement, lang, children, title, ...rest }, ref) => (
+  ({ linkText, copyright, visualElement, lang, children, title, source, ...rest }, ref) => (
     <PopoverRoot>
       <PopoverTrigger asChild>
         <InlineTriggerButton {...rest} ref={ref}>
@@ -91,7 +94,7 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
         </InlineTriggerButton>
       </PopoverTrigger>
       <StyledPopoverContent>
-        <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title}>
+        <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title} source={source}>
           {children}
         </Concept>
       </StyledPopoverContent>

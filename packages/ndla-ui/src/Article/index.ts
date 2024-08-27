@@ -12,12 +12,9 @@ export {
   ArticleHeader,
   ArticleFooter,
   ArticleTitle,
-  ArticleActionWrapper,
   ArticleHGroup,
   ArticleContent,
   ArticlePadding,
-  ArticleBadgeWrapper,
-  ArticleHeading,
 } from "./Article";
 
 export { ArticleByline, ArticleBylineAccordionItem } from "./ArticleByline";

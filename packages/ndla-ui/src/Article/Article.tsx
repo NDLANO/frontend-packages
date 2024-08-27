@@ -10,7 +10,7 @@ import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, StyledVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
 import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadgeNew } from "..";
@@ -119,44 +119,14 @@ export const ArticleHGroup = styled(
   ark.hgroup,
   {
     base: {
-      display: "grid",
+      display: "flex",
       width: "100%",
-      gridTemplateColumns: "auto 1fr auto",
-      gridTemplateAreas: `
-      "badge . button"
-      "title title title"
-       `,
-      rowGap: "xsmall",
+      flexDirection: "column",
       alignItems: "flex-start",
+      gap: "xsmall",
       "& h1": {
         overflowWrap: "anywhere",
       },
-    },
-  },
-  { baseComponent: true },
-);
-
-export const ArticleBadgeWrapper = styled(
-  ark.div,
-  {
-    base: {
-      gridArea: "badge",
-    },
-  },
-  { baseComponent: true },
-);
-
-export const ArticleHeading = styled(Heading, {
-  base: {
-    gridArea: "title",
-  },
-});
-
-export const ArticleActionWrapper = styled(
-  ark.div,
-  {
-    base: {
-      gridArea: "button",
     },
   },
   { baseComponent: true },
@@ -229,15 +199,13 @@ export const ArticleTitle = ({
   return (
     <ArticleHeader padded>
       <ArticleHGroup>
-        {!!contentType && (
-          <ArticleBadgeWrapper asChild>
-            <ContentTypeBadgeNew contentType={contentType} />
-          </ArticleBadgeWrapper>
-        )}
-        <ArticleHeading textStyle="heading.large" id={id} lang={lang}>
+        <HStack justify="space-between">
+          {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
+          {!!heartButton && heartButton}
+        </HStack>
+        <Heading textStyle="heading.large" id={id} lang={lang}>
           {title}
-        </ArticleHeading>
-        {!!heartButton && <ArticleActionWrapper>{heartButton}</ArticleActionWrapper>}
+        </Heading>
       </ArticleHGroup>
       {!!introduction && (
         <Text lang={lang} textStyle="body.xlarge" asChild consumeCss>

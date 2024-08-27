@@ -44,11 +44,8 @@ export {
   ArticleHeader,
   ArticleContent,
   ArticleHGroup,
-  ArticleActionWrapper,
   ArticleTitle,
   ArticlePadding,
-  ArticleBadgeWrapper,
-  ArticleHeading,
 } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";

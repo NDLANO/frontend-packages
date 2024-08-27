@@ -123,7 +123,7 @@ export const ArticleHGroup = styled(
       width: "100%",
       gridTemplateColumns: "auto 1fr auto",
       gridTemplateAreas: `
-      "badge button button"
+      "badge . button"
       "title title title"
        `,
       rowGap: "xsmall",
@@ -157,15 +157,6 @@ export const ArticleActionWrapper = styled(
   {
     base: {
       gridArea: "button",
-      position: "absolute",
-      right: "8%",
-      top: "xsmall",
-      tablet: {
-        top: "medium",
-      },
-      desktop: {
-        top: "xxlarge",
-      },
     },
   },
   { baseComponent: true },

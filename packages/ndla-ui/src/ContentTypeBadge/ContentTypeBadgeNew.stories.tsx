@@ -41,7 +41,7 @@ export const AllBadges: StoryFn<typeof ContentTypeBadge> = () => (
     <ContentTypeBadge contentType="source-material" />
     <ContentTypeBadge contentType="learning-path" />
     <ContentTypeBadge contentType="topic" />
-    <ContentTypeBadge contentType="multidisciplinary-topic" />
+    <ContentTypeBadge contentType="multidisciplinary" />
     <ContentTypeBadge contentType="concept" />
     <ContentTypeBadge contentType="external" />
     <ContentTypeBadge contentType="image" />

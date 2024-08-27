@@ -16,7 +16,7 @@ export const semanticTokens = defineSemanticTokens({
     xsmall: { value: "{spacing.6}" },
     small: { value: "{spacing.8}" },
     medium: { value: "{spacing.12}" },
-    large: { value: "{spacing.15}" },
+    large: { value: "{spacing.16}" },
     xlarge: { value: "{spacing.18}" },
     xxlarge: { value: "{spacing.24}" },
     "3xlarge": { value: "{spacing.36}" },
@@ -42,7 +42,7 @@ export const semanticTokens = defineSemanticTokens({
     xsmall: { value: "{spacing.6}" },
     small: { value: "{spacing.8}" },
     medium: { value: "{spacing.12}" },
-    large: { value: "{spacing.15}" },
+    large: { value: "{spacing.16}" },
     xlarge: { value: "{spacing.18}" },
     xxlarge: { value: "{spacing.24}" },
     "3xlarge": { value: "{spacing.36}" },
@@ -94,6 +94,7 @@ export const semanticTokens = defineSemanticTokens({
           DEFAULT: { value: "{colors.blue.500}" },
           subtle: { value: "{colors.blue.50}" },
           moderate: { value: "{colors.blue.100}" },
+          bold: { value: "{colors.blue.800}" },
           strong: { value: "{colors.blue.900}" },
         },
         3: {
@@ -132,7 +133,8 @@ export const semanticTokens = defineSemanticTokens({
       action: {
         DEFAULT: { value: "{colors.primary}" },
         hover: { value: "{colors.purple.900}" },
-        active: { value: "{colors.purple.800}" },
+        active: { value: "{colors.purple.950}" },
+        selected: { value: "{colors.purple.800}" },
       },
       actionSubtle: {
         DEFAULT: { value: "{colors.purple.50}" },
@@ -146,7 +148,8 @@ export const semanticTokens = defineSemanticTokens({
       success: {
         DEFAULT: { value: "{colors.green.800}" },
         hover: { value: "{colors.green.900}" },
-        active: { value: "{colors.green.950}" },
+        selected: { value: "{colors.green.950}" },
+        active: { value: "{colors.green.800}" },
       },
       successSubtle: {
         DEFAULT: { value: "{colors.green.100}" },
@@ -164,8 +167,9 @@ export const semanticTokens = defineSemanticTokens({
         active: { value: "{colors.yellow.400}" },
       },
       danger: {
-        DEFAULT: { value: "{colors.pink.800}" },
-        hover: { value: "{colors.pink.900}" },
+        DEFAULT: { value: "{colors.pink.700}" },
+        hover: { value: "{colors.pink.800}" },
+        selected: { value: "{colors.pink.900}" },
         active: { value: "{colors.pink.950}" },
       },
       dangerSubtle: {

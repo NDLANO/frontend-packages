@@ -36,7 +36,9 @@ interface Props {
 
 const Container = styled("div", {
   base: {
+    width: "100%",
     display: "flex",
+    gap: "medium",
     flexDirection: "column",
     border: "1px solid",
     borderColor: "stroke.default",
@@ -59,16 +61,32 @@ const LinkText = styled(Text, {
     _hover: {
       textDecoration: "none",
     },
+    paddingBlock: "xsmall",
+    fontWeight: "bold",
   },
 });
+
+const LinkHeader = styled(Text, {
+  base: {
+    display: "flex",
+    textDecoration: "underline",
+    _hover: {
+      textDecoration: "none",
+    },
+  },
+});
+
 const StyledImg = styled("img", {
   base: {
     alignSelf: "center",
     objectFit: "cover",
     width: "100%",
     height: "215px",
-    desktop: {
+    mobileWide: {
       height: "340px",
+    },
+    tabletWide: {
+      width: "auto",
     },
   },
 });
@@ -79,10 +97,23 @@ const ContentWrapper = styled("div", {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    gap: "xsmall",
+    gap: "medium",
     alignItems: "flex-start",
+    justifyContent: "center",
     paddingBlock: "medium",
     paddingInline: "medium",
+  },
+});
+
+const StyledText = styled(Text, {
+  base: {
+    tabletWide: {
+      display: "block",
+      overflow: "hidden",
+      position: "relative",
+      lineClamp: 4,
+      boxOrient: "vertical",
+    },
   },
 });
 
@@ -114,10 +145,9 @@ const CampaignBlock = ({
   className,
 }: Props) => {
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
-  const HeaderComponent = url?.url ? LinkText : Text;
+  const HeaderComponent = url?.url ? LinkHeader : Text;
   return (
-    // TODO: Remove data-type
-    <Container className={className} data-type="campaign-block" data-embed-type="campaign-block">
+    <Container className={className} data-embed-type="campaign-block">
       {imageSide === "left" && imageComponent}
       <ContentWrapper>
         <MaybeLinkText url={url?.url} path={path}>
@@ -125,7 +155,7 @@ const CampaignBlock = ({
             <InternalHeading>{parse(title)}</InternalHeading>
           </HeaderComponent>
         </MaybeLinkText>
-        <Text textStyle="body.large">{parse(description)}</Text>
+        <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
         {!!url?.url && (
           <MaybeLinkText url={url.url} path={path}>
             <LinkText textStyle="body.medium">

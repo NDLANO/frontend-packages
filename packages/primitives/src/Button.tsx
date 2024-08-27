@@ -81,7 +81,7 @@ export const buttonBaseRecipe = cva({
           background: "surface.actionSubtle.hover",
         },
         _active: {
-          background: "surface.actionSubtle.active",
+          background: "surface.actionSubtle.hover.strong",
         },
       },
       tertiary: {
@@ -96,7 +96,7 @@ export const buttonBaseRecipe = cva({
         },
         _active: {
           borderColor: "stroke.default",
-          background: "surface.actionSubtle.active",
+          background: "surface.actionSubtle.hover.strong",
         },
       },
       clear: {
@@ -114,16 +114,16 @@ export const buttonBaseRecipe = cva({
         },
       },
       danger: {
-        background: "surface.error",
+        background: "surface.danger",
         color: "text.onAction",
         _hover: {
-          background: "surface.error.hover",
+          background: "surface.danger.hover",
         },
         _active: {
-          background: "surface.error.active",
+          background: "surface.danger.active",
         },
         _focusVisible: {
-          boxShadowColor: "surface.error",
+          boxShadowColor: "surface.danger",
           boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
         },
       },
@@ -149,6 +149,9 @@ export const buttonBaseRecipe = cva({
         _hover: {
           textDecoration: "none",
         },
+        _active: {
+          background: "surface.hover",
+        },
       },
     },
   },
@@ -156,11 +159,11 @@ export const buttonBaseRecipe = cva({
 
 export const buttonRecipe = cva({
   defaultVariants: {
-    size: "default",
+    size: "medium",
   },
   variants: {
     size: {
-      default: {
+      medium: {
         paddingInline: "xsmall",
         paddingBlock: "xxsmall",
         minHeight: "24",
@@ -179,16 +182,37 @@ export const iconButtonRecipe = cva({
   base: {
     lineHeight: "1",
     minHeight: "unset",
-    height: "xxlarge",
-    width: "xxlarge",
-    "& svg": {
-      marginInline: "0",
-      marginBlock: "0",
-      width: "medium",
-      height: "medium",
+  },
+  defaultVariants: {
+    size: "medium",
+  },
+  variants: {
+    size: {
+      medium: {
+        height: "xxlarge",
+        width: "xxlarge",
+        "& svg": {
+          marginInline: "0",
+          marginBlock: "0",
+          width: "medium",
+          height: "medium",
+        },
+        paddingInline: "xsmall",
+        paddingBlock: "xsmall",
+      },
+      small: {
+        height: "large",
+        width: "large",
+        "& svg": {
+          marginInline: "0",
+          marginBlock: "0",
+          width: "small",
+          height: "small",
+        },
+        paddingInline: "xxsmall",
+        paddingBlock: "xxsmall",
+      },
     },
-    paddingInline: "xsmall",
-    paddingBlock: "xsmall",
   },
 });
 
@@ -241,15 +265,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 type IconButtonVariant = Exclude<Variant, "link">;
 
-export type IconButtonVariantProps = { variant?: IconButtonVariant };
+export type IconButtonVariantProps = { variant?: IconButtonVariant } & RecipeVariantProps<typeof iconButtonRecipe>;
 
 export type IconButtonProps = BaseButtonProps & IconButtonVariantProps;
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ variant, css: cssProp, loadingContent, replaceContent = true, ...props }, ref) => (
+  ({ variant, css: cssProp, loadingContent, size, replaceContent = true, ...props }, ref) => (
     <BaseButton
       {...props}
-      css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp)}
+      css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw({ size }), cssProp)}
       loadingContent={loadingContent ?? <Spinner size="small" />}
       replaceContent={replaceContent}
       ref={ref}

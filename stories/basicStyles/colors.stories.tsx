@@ -9,8 +9,7 @@
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
-import colors from "./colors";
-import spacing from "./spacing";
+import { colors, spacing } from "@ndla/core";
 
 interface Props {
   color: string;

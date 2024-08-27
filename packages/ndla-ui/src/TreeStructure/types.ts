@@ -7,37 +7,16 @@
  */
 
 import { ReactNode } from "react";
-import { IFolder, IResource } from "@ndla/types-backend/myndla-api";
+import { IFolder } from "@ndla/types-backend/myndla-api";
 
-export type TreeStructureType = "navigation" | "picker";
-
-export type OnCreatedFunc = (folder: IFolder | undefined, parentId: string) => void;
+export type OnCreatedFunc = (folder: IFolder | undefined) => void;
 
 export type NewFolderInputFunc = ({
-  onClose,
+  onCancel,
   parentId,
   onCreate,
 }: {
-  onClose: () => void;
+  onCancel: () => void;
   parentId: string;
   onCreate: OnCreatedFunc;
 }) => ReactNode;
-
-export interface CommonTreeStructureProps {
-  loading?: boolean;
-  targetResource?: IResource;
-  type: TreeStructureType;
-}
-
-export interface CommonFolderItemsProps extends CommonTreeStructureProps {
-  focusedFolder?: IFolder;
-  level: number;
-  maxLevel: number;
-  selectedFolder?: IFolder;
-  onCloseFolder: (id: string) => void;
-  onOpenFolder: (id: string) => void;
-  setFocusedFolder: (folder: IFolder) => void;
-  setSelectedFolder: (folder: IFolder) => void;
-  visibleFolders: IFolder[];
-  closeTree: () => void;
-}

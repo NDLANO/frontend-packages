@@ -8,8 +8,7 @@
 
 import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
-import colors from "./colors";
-import spacing from "./spacing";
+import { colors, spacing } from "@ndla/core";
 
 const Wrapper = styled.div`
   display: flex;

@@ -99,6 +99,7 @@ const menuRecipe = sva({
     item: itemStyle,
     triggerItem: itemStyle,
     content: {
+      color: "text.default",
       display: "flex",
       flexDirection: "column",
       width: "fit-content",

@@ -9,7 +9,7 @@
 import { ReactNode } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, spacing, fonts, typography } from "@ndla/core";
+import { colors, spacing, fonts } from "@ndla/core";
 
 interface StyledFieldHeaderWrapperProps {
   wrapperWidth: number;
@@ -40,7 +40,12 @@ const StyledFieldHeaderWrapper = styled.div<StyledFieldHeaderWrapperProps>`
 `;
 
 const StyledTitle = styled.h2`
-  ${typography.mediumHeaderUppercase};
+  color: ${colors.text.primary};
+  font-weight: ${fonts.weight.bold};
+  text-transform: uppercase;
+  padding-right: ${spacing.small};
+  margin: 0;
+  ${fonts.sizes(20, 1.1)};
   span {
     ${fonts.sizes(16, 1.1)};
     font-weight: ${fonts.weight.normal};

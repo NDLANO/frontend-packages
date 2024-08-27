@@ -7,7 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
@@ -18,6 +18,7 @@ const badgeRecipe = cva({
     borderRadius: "xsmall",
     border: "1px solid",
     width: "fit-content",
+    textStyle: "label.medium",
     color: "text.default",
   },
   defaultVariants: {

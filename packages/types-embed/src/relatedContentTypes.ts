@@ -16,6 +16,8 @@ export interface RelatedContentEmbedData {
   articleId?: string;
   url?: string;
   title?: string;
+  // This is filled out in article-converter and does not need to be set anywhere else.
+  urlDomain?: string;
 }
 
 export interface RelatedContentData {

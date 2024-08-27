@@ -17,7 +17,6 @@ const heroRecipe = sva({
     root: {
       width: "100%",
       position: "relative",
-      zIndex: "base",
     },
     background: {
       height: "350px",
@@ -59,8 +58,7 @@ const heroRecipe = sva({
       },
       brand2Strong: {
         background: {
-          // TODO: This is not a semantic token.
-          background: "blue.800",
+          background: "surface.brand.2.bold",
         },
         content: {
           color: "text.onAction",

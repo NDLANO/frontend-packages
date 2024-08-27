@@ -7,6 +7,7 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
+import { ArticleWrapper, ArticleContent, OneColumn } from "@ndla/ui";
 import { FramedContent } from "./FramedContent";
 
 export default {
@@ -20,9 +21,19 @@ export default {
     colorTheme: "brand1",
     children: <p>Content!</p>,
   },
+  decorators: [
+    (Story) => (
+      <OneColumn>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
+        </ArticleWrapper>
+      </OneColumn>
+    ),
+  ],
 } as Meta<typeof FramedContent>;
 
-// TODO: This should really be wrapped in an article to get proper "article" styling.
 export const TooMuchContent: StoryObj<typeof FramedContent> = {
   args: {
     children: (

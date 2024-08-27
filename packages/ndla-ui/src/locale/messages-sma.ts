@@ -1091,9 +1091,9 @@ const messages = {
         },
         fetchMore: "Hent flere svar",
         deleted: "Dette innlegget er slettet av forfatteren.",
-        upvote: "Stem opp",
+        upvote: "Liker",
         numberOfUpvotes: "{{ count }} personer har stemt opp denne.",
-        removeUpvote: "Fjern stemme",
+        removeUpvote: "Slutt å like",
         reply: "Skriv et svar til {{ name }}",
       },
       flag: {

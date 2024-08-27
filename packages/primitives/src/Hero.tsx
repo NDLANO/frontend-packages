@@ -17,7 +17,6 @@ const heroRecipe = sva({
     root: {
       width: "100%",
       position: "relative",
-      zIndex: "base",
     },
     background: {
       height: "350px",

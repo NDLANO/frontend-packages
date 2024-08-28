@@ -16,7 +16,6 @@ import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadgeNew } from "..";
 import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import { Article as ArticleType } from "../types";
-import { licenseAttributes } from "../utils/licenseAttributes";
 
 const articlePadding: SystemStyleObject = {
   paddingInline: "8%",
@@ -260,10 +259,8 @@ export const Article = ({
   const authors =
     copyright?.creators.length || copyright?.rightsholders.length ? copyright.creators : copyright?.processors;
 
-  const licenseProps = licenseAttributes(copyright?.license?.license, lang, undefined);
-
   return (
-    <ArticleWrapper {...licenseProps}>
+    <ArticleWrapper>
       <ArticleTitle
         id={id}
         contentType={contentType}

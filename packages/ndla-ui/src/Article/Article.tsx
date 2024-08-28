@@ -103,6 +103,12 @@ export const ArticleFooter = styled(
   { baseComponent: true },
 );
 
+const StyledHStack = styled(HStack, {
+  base: {
+    width: "100%",
+  },
+});
+
 interface ArticleTitleProps {
   heartButton?: ReactNode;
   contentType?: ContentType;
@@ -125,10 +131,10 @@ export const ArticleTitle = ({
   return (
     <ArticleHeader>
       <ArticleHGroup>
-        <HStack justify="space-between" gap="small">
+        <StyledHStack justify="space-between" gap="small">
           {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
           {!!heartButton && heartButton}
-        </HStack>
+        </StyledHStack>
         <Heading textStyle="heading.large" id={id} lang={lang}>
           {title}
         </Heading>

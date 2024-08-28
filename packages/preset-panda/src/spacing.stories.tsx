@@ -96,6 +96,7 @@ export const Widths: StoryFn = () => (
 
 export const SemanticWidth: StoryFn = () => (
   <SizesContainer>
+    <SizeItem width="5xsmall" />
     <SizeItem width="4xsmall" />
     <SizeItem width="3xsmall" />
     <SizeItem width="xxsmall" />
@@ -107,6 +108,7 @@ export const SemanticWidth: StoryFn = () => (
     <SizeItem width="xxlarge" />
     <SizeItem width="3xlarge" />
     <SizeItem width="4xlarge" />
+    <SizeItem width="5xlarge" />
   </SizesContainer>
 );
 

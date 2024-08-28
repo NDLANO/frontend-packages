@@ -14,7 +14,6 @@ export {
   ArticleTitle,
   ArticleHGroup,
   ArticleContent,
-  ArticlePadding,
 } from "./Article";
 
 export { ArticleByline, ArticleBylineAccordionItem } from "./ArticleByline";

@@ -10,7 +10,7 @@ import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
-import { HStack, styled } from "@ndla/styled-system/jsx";
+import { Stack, styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadgeNew } from "..";
@@ -63,7 +63,6 @@ export const ArticleHGroup = styled(
       width: "100%",
       flexDirection: "column",
       alignItems: "flex-start",
-      gap: "xsmall",
       "& h1": {
         overflowWrap: "anywhere",
       },
@@ -103,7 +102,7 @@ export const ArticleFooter = styled(
   { baseComponent: true },
 );
 
-const StyledHStack = styled(HStack, {
+const StyledStack = styled(Stack, {
   base: {
     width: "100%",
   },
@@ -131,10 +130,10 @@ export const ArticleTitle = ({
   return (
     <ArticleHeader>
       <ArticleHGroup>
-        <StyledHStack justify="space-between" gap="small">
+        <StyledStack justify="space-between" align="center" direction="row" gap="small">
           {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
-          {!!heartButton && <StyledHStack justify="flex-end">{heartButton}</StyledHStack>}
-        </StyledHStack>
+          {heartButton}
+        </StyledStack>
         <Heading textStyle="heading.large" id={id} lang={lang}>
           {title}
         </Heading>

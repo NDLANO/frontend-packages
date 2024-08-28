@@ -1171,6 +1171,18 @@ const tokens = {
     "value": "var(--spacing-550)",
     "variable": "var(--sizes-surface-4xlarge)"
   },
+  "sizes.surface.pageMax": {
+    "value": "1128px",
+    "variable": "var(--sizes-surface-page-max)"
+  },
+  "sizes.surface.contentMax": {
+    "value": "744px",
+    "variable": "var(--sizes-surface-content-max)"
+  },
+  "sizes.surface.articleMax": {
+    "value": "928px",
+    "variable": "var(--sizes-surface-article-max)"
+  },
   "colors.background.default": {
     "value": "var(--colors-white)",
     "variable": "var(--colors-background-default)"

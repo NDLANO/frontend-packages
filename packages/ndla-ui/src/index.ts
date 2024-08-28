@@ -45,7 +45,6 @@ export {
   ArticleContent,
   ArticleHGroup,
   ArticleTitle,
-  ArticlePadding,
 } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";

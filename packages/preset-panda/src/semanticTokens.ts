@@ -59,6 +59,9 @@ export const semanticTokens = defineSemanticTokens({
       xxlarge: { value: "{spacing.400}" },
       "3xlarge": { value: "{spacing.500}" },
       "4xlarge": { value: "{spacing.550}" },
+      pageMax: { value: "1128px" },
+      contentMax: { value: "744px" },
+      articleMax: { value: "928px" },
     },
   },
   colors: {

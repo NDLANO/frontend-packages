@@ -10,6 +10,7 @@ import { defineSemanticTokens } from "@pandacss/dev";
 
 export const semanticTokens = defineSemanticTokens({
   spacing: {
+    "5xsmall": { value: "{spacing.1}" },
     "4xsmall": { value: "{spacing.2}" },
     "3xsmall": { value: "{spacing.3}" },
     xxsmall: { value: "{spacing.4}" },
@@ -21,6 +22,7 @@ export const semanticTokens = defineSemanticTokens({
     xxlarge: { value: "{spacing.24}" },
     "3xlarge": { value: "{spacing.36}" },
     "4xlarge": { value: "{spacing.48}" },
+    "5xlarge": { value: "{spacing.60}" },
     surface: {
       "4xsmall": { value: "{spacing.50}" },
       "3xsmall": { value: "{spacing.75}" },
@@ -36,6 +38,7 @@ export const semanticTokens = defineSemanticTokens({
     },
   },
   sizes: {
+    "5xsmall": { value: "{spacing.1}" },
     "4xsmall": { value: "{spacing.2}" },
     "3xsmall": { value: "{spacing.3}" },
     xxsmall: { value: "{spacing.4}" },
@@ -47,6 +50,7 @@ export const semanticTokens = defineSemanticTokens({
     xxlarge: { value: "{spacing.24}" },
     "3xlarge": { value: "{spacing.36}" },
     "4xlarge": { value: "{spacing.48}" },
+    "5xlarge": { value: "{spacing.60}" },
     surface: {
       "4xsmall": { value: "{spacing.50}" },
       "3xsmall": { value: "{spacing.75}" },

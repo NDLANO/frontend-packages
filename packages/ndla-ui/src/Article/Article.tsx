@@ -96,7 +96,7 @@ export const ArticleFooter = styled(
       gap: "xxlarge",
       width: "100%",
       "& > :is(:last-child)": {
-        paddingBlockEnd: "4xlarge",
+        paddingBlockEnd: "5xlarge",
       },
     },
   },

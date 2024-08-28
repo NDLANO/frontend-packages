@@ -8,7 +8,6 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 import { Badge } from "./Badge";
-import { Text } from "./Text";
 
 export default {
   title: "Primitives/Badge",
@@ -21,11 +20,7 @@ export default {
     colorTheme: "neutral",
     children: "Kjernestoff",
   },
-  render: ({ children, ...args }) => (
-    <Badge {...args}>
-      <Text textStyle="label.medium">{children}</Text>
-    </Badge>
-  ),
+  render: ({ children, ...args }) => <Badge {...args}>{children}</Badge>,
 } as Meta<typeof Badge>;
 
 export const Neutral: StoryObj<typeof Badge> = {};

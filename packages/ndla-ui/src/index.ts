@@ -35,6 +35,7 @@ export { LicenseLink, EmbedByline } from "./LicenseByline";
 
 export {
   ArticleByline,
+  ArticleBylineAccordionItem,
   ArticleFootNotes,
   ArticleWrapper,
   Article,
@@ -42,6 +43,10 @@ export {
   ArticleFooter,
   ArticleHeader,
   ArticleContent,
+  ArticleHGroup,
+  ArticleActionWrapper,
+  ArticleTitle,
+  ArticlePadding,
 } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
@@ -104,8 +109,6 @@ export {
 
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 
-export { default as ContentPlaceholder } from "./ContentPlaceholder";
-
 export {
   TagSelectorRoot,
   TagSelectorLabel,
@@ -121,7 +124,6 @@ export { TreeStructure } from "./TreeStructure";
 export type { TreeStructureProps } from "./TreeStructure";
 
 export { BlogPostV2 } from "./BlogPost";
-export { ProgrammeCard } from "./ProgrammeCard";
 export { KeyFigure } from "./KeyFigure";
 export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock";
 export type { ContactBlockBackground } from "./ContactBlock";
@@ -129,13 +131,6 @@ export type { HeartButtonType, CanonicalUrlFuncs, RenderContext } from "./Embed"
 export { CampaignBlock } from "./CampaignBlock";
 export { Grid, GridParallaxItem } from "./Grid";
 export type { GridType } from "./Grid";
-
-export {
-  default as FrontpageArticle,
-  FRONTPAGE_ARTICLE_MAX_WIDTH,
-  WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH,
-} from "./FrontpageArticle";
-export type { ProgrammeV2 } from "./ProgrammeCard";
 
 export { Gloss, GlossExample } from "./Gloss";
 

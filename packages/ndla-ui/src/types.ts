@@ -8,25 +8,7 @@
 
 import { ReactNode } from "react";
 
-type ResourceTypes = {
-  name: string;
-};
-
 export type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-
-export type Resource = {
-  id: string;
-  name: string;
-  contentUri?: string;
-  path: string;
-  primary?: boolean;
-  rank?: number;
-  subject?: string;
-  resourceTypes?: Array<ResourceTypes>;
-  contentType?: string;
-  active?: boolean;
-  additional?: boolean;
-};
 
 export interface Contributor {
   type: string;
@@ -43,7 +25,7 @@ export interface Copyright {
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;
   origin?: string;
-  processed: boolean;
+  processed?: boolean;
 }
 
 export interface FootNote {
@@ -63,10 +45,4 @@ export interface Article {
   footNotes: Array<FootNote>;
   copyright?: Copyright;
   published: string;
-}
-
-export interface ContentTypeResultType {
-  title?: string;
-  contentType?: string;
-  resources: Array<Resource>;
 }

@@ -26,7 +26,6 @@ export const contactBlockBackgrounds = Object.keys(BackgroundVariant) as Contact
 const StyledWrapper = styled("div", {
   base: {
     display: "flex",
-    maxWidth: "744px",
     minWidth: "surface.xxsmall",
     padding: "medium",
     alignItems: "center",

@@ -1020,7 +1020,7 @@ const tokens = {
     "variable": "var(--spacing-medium)"
   },
   "spacing.large": {
-    "value": "var(--spacing-15)",
+    "value": "var(--spacing-16)",
     "variable": "var(--spacing-large)"
   },
   "spacing.xlarge": {
@@ -1108,7 +1108,7 @@ const tokens = {
     "variable": "var(--sizes-medium)"
   },
   "sizes.large": {
-    "value": "var(--spacing-15)",
+    "value": "var(--spacing-16)",
     "variable": "var(--sizes-large)"
   },
   "sizes.xlarge": {
@@ -1255,6 +1255,10 @@ const tokens = {
     "value": "var(--colors-blue-100)",
     "variable": "var(--colors-surface-brand-2-moderate)"
   },
+  "colors.surface.brand.2.bold": {
+    "value": "var(--colors-blue-800)",
+    "variable": "var(--colors-surface-brand-2-bold)"
+  },
   "colors.surface.brand.2.strong": {
     "value": "var(--colors-blue-900)",
     "variable": "var(--colors-surface-brand-2-strong)"
@@ -1356,8 +1360,12 @@ const tokens = {
     "variable": "var(--colors-surface-action-hover)"
   },
   "colors.surface.action.active": {
-    "value": "var(--colors-purple-800)",
+    "value": "var(--colors-purple-950)",
     "variable": "var(--colors-surface-action-active)"
+  },
+  "colors.surface.action.selected": {
+    "value": "var(--colors-purple-800)",
+    "variable": "var(--colors-surface-action-selected)"
   },
   "colors.surface.actionSubtle": {
     "value": "var(--colors-purple-50)",
@@ -1387,8 +1395,12 @@ const tokens = {
     "value": "var(--colors-green-900)",
     "variable": "var(--colors-surface-success-hover)"
   },
-  "colors.surface.success.active": {
+  "colors.surface.success.selected": {
     "value": "var(--colors-green-950)",
+    "variable": "var(--colors-surface-success-selected)"
+  },
+  "colors.surface.success.active": {
+    "value": "var(--colors-green-800)",
     "variable": "var(--colors-surface-success-active)"
   },
   "colors.surface.successSubtle": {
@@ -1428,12 +1440,16 @@ const tokens = {
     "variable": "var(--colors-surface-warning-subtle-active)"
   },
   "colors.surface.danger": {
-    "value": "var(--colors-pink-800)",
+    "value": "var(--colors-pink-700)",
     "variable": "var(--colors-surface-danger)"
   },
   "colors.surface.danger.hover": {
-    "value": "var(--colors-pink-900)",
+    "value": "var(--colors-pink-800)",
     "variable": "var(--colors-surface-danger-hover)"
+  },
+  "colors.surface.danger.selected": {
+    "value": "var(--colors-pink-900)",
+    "variable": "var(--colors-surface-danger-selected)"
   },
   "colors.surface.danger.active": {
     "value": "var(--colors-pink-950)",
@@ -1923,6 +1939,18 @@ const tokens = {
     "value": "var(--colors-color-palette-2-moderate)",
     "variable": "var(--colors-color-palette-2-moderate)"
   },
+  "colors.colorPalette.brand.2.bold": {
+    "value": "var(--colors-color-palette-brand-2-bold)",
+    "variable": "var(--colors-color-palette-brand-2-bold)"
+  },
+  "colors.colorPalette.2.bold": {
+    "value": "var(--colors-color-palette-2-bold)",
+    "variable": "var(--colors-color-palette-2-bold)"
+  },
+  "colors.colorPalette.bold": {
+    "value": "var(--colors-color-palette-bold)",
+    "variable": "var(--colors-color-palette-bold)"
+  },
   "colors.colorPalette.brand.2.strong": {
     "value": "var(--colors-color-palette-brand-2-strong)",
     "variable": "var(--colors-color-palette-brand-2-strong)"
@@ -2067,6 +2095,10 @@ const tokens = {
     "value": "var(--colors-color-palette-action-active)",
     "variable": "var(--colors-color-palette-action-active)"
   },
+  "colors.colorPalette.action.selected": {
+    "value": "var(--colors-color-palette-action-selected)",
+    "variable": "var(--colors-color-palette-action-selected)"
+  },
   "colors.colorPalette.actionSubtle": {
     "value": "var(--colors-color-palette-action-subtle)",
     "variable": "var(--colors-color-palette-action-subtle)"
@@ -2098,6 +2130,10 @@ const tokens = {
   "colors.colorPalette.success.hover": {
     "value": "var(--colors-color-palette-success-hover)",
     "variable": "var(--colors-color-palette-success-hover)"
+  },
+  "colors.colorPalette.success.selected": {
+    "value": "var(--colors-color-palette-success-selected)",
+    "variable": "var(--colors-color-palette-success-selected)"
   },
   "colors.colorPalette.success.active": {
     "value": "var(--colors-color-palette-success-active)",
@@ -2146,6 +2182,10 @@ const tokens = {
   "colors.colorPalette.danger.hover": {
     "value": "var(--colors-color-palette-danger-hover)",
     "variable": "var(--colors-color-palette-danger-hover)"
+  },
+  "colors.colorPalette.danger.selected": {
+    "value": "var(--colors-color-palette-danger-selected)",
+    "variable": "var(--colors-color-palette-danger-selected)"
   },
   "colors.colorPalette.danger.active": {
     "value": "var(--colors-color-palette-danger-active)",

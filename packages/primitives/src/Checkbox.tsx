@@ -45,6 +45,9 @@ const checkboxRecipe = sva({
       transitionDuration: "normal",
       transitionProperty: "border-color, background, box-shadow, color",
       transitionTimingFunction: "default",
+      _disabled: {
+        cursor: "not-allowed",
+      },
       _motionReduce: {
         transition: "none",
         transitionDuration: "0s",
@@ -91,6 +94,7 @@ const checkboxRecipe = sva({
             },
             _checked: {
               background: "surface.disabled",
+              borderColor: "stroke.disabled",
             },
           },
           _invalid: {

@@ -6,14 +6,14 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Pencil, TrashCanOutline } from "@ndla/icons/action";
 import { Share } from "@ndla/icons/common";
 import { HorizontalMenu } from "@ndla/icons/contentType";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot } from "./ListItem";
+import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, ListItemVariantProps } from "./ListItem";
 import { Badge } from "../Badge";
 import { IconButton } from "../Button";
 import { MenuContent, MenuItem, MenuPositioner, MenuRoot, MenuTrigger } from "../Menu";
@@ -23,22 +23,50 @@ export default {
   title: "Primitives/ListItem",
   component: ListItemRoot,
   tags: ["autodocs"],
+  args: {
+    borderVariant: "solid",
+    colorTheme: "brand1",
+    variant: "standalone",
+  },
   parameters: {
     inlineStories: true,
   },
+  render: (args) => (
+    <ListItemRoot {...args}>
+      <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
+      <ListItemContent>
+        <ListItemHeading asChild consumeCss>
+          <h2>
+            <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
+              Tittel
+            </SafeLink>
+          </h2>
+        </ListItemHeading>
+        <Badge colorTheme="brand1">Fagstoff</Badge>
+      </ListItemContent>
+    </ListItemRoot>
+  ),
 } satisfies Meta<typeof ListItemRoot>;
 
-export const Standalone: StoryFn<typeof ListItemRoot> = (args) => (
-  <ListItemRoot {...args}>
+export const Standalone: StoryObj<typeof ListItemRoot> = {};
+
+export const CurrentPage: StoryObj<typeof ListItemRoot> = {
+  args: {
+    "aria-current": "page",
+  },
+};
+
+export const Current: StoryObj<typeof ListItemRoot> = {
+  args: {
+    "aria-current": true,
+    colorTheme: "brand2",
+  },
+};
+export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
+  <ListItemRoot nonInteractive>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
     <ListItemContent>
-      <ListItemHeading asChild consumeCss>
-        <h2>
-          <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
-            Tittel
-          </SafeLink>
-        </h2>
-      </ListItemHeading>
+      <ListItemHeading>Tittel</ListItemHeading>
       <Badge colorTheme="brand1">Fagstoff</Badge>
     </ListItemContent>
   </ListItemRoot>
@@ -66,8 +94,12 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
   </ListItemRoot>
 );
 
-const ListComponent = () => (
-  <ListItemRoot variant="list">
+const ListComponent = ({
+  variant = "list",
+  borderVariant = "solid",
+  colorTheme = "brand1",
+}: NonNullable<ListItemVariantProps>) => (
+  <ListItemRoot variant={variant} borderVariant={borderVariant} colorTheme={colorTheme} aria-current="page">
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>
@@ -117,6 +149,12 @@ export const List: StoryFn<typeof ListComponent> = () => (
     </li>
     <li>
       <ListComponent />
+    </li>
+    <li>
+      <ListComponent borderVariant="dashed" />
+    </li>
+    <li>
+      <ListComponent borderVariant="dashed" />
     </li>
   </ul>
 );

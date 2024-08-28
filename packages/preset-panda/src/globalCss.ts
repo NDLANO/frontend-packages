@@ -68,7 +68,6 @@ export const globalCss = defineGlobalStyles({
     // Article content is usually wrapped in a section. The rest of the elements in this list contains other elements, and should add margin to them no matter where they are placed in the DOM.
     '& section:not([class]), section:not([class]) > div:not([class]), [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"], [data-embed-type="uu-disclaimer"], details, blockquote':
       {
-        // TODO: Remove copy-heading if we can merge the new heading links
         '& > :is(h2, [data-embed-type="copy-heading"])': {
           marginBlockStart: "xxlarge",
           marginBlockEnd: "medium",
@@ -81,9 +80,16 @@ export const globalCss = defineGlobalStyles({
           marginBlockStart: "large",
           marginBlockEnd: "xsmall",
         },
-        '& > :is(p, figure, ul, ol, dl, [data-embed-type="speech"])': {
+        "& > :is(figure)": {
+          marginBlockStart: "xxlarge",
+          marginBlockEnd: "xxlarge",
+        },
+        '& > :is(p, ul, ol, dl, [data-embed-type="speech"])': {
           marginBlockStart: "xsmall",
           marginBlockEnd: "xsmall",
+        },
+        "& > :is(:first-child)": {
+          marginBlockStart: "xxlarge",
         },
       },
   },

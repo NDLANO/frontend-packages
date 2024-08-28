@@ -1,6 +1,6 @@
 {
   "name": "@ndla/preset-panda",
-  "version": "0.0.15",
+  "version": "0.0.20",
   "description": "Panda preset for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,6 +31,7 @@
     "lib"
   ],
   "devDependencies": {
+    "@ndla/core": "workspace:^",
     "@pandacss/dev": "^0.44.0"
   },
   "publishConfig": {

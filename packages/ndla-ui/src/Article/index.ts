@@ -6,11 +6,19 @@
  *
  */
 
-import ArticleByline from "./ArticleByline";
-import ArticleFootNotes from "./ArticleFootNotes";
+export {
+  Article,
+  ArticleWrapper,
+  ArticleHeader,
+  ArticleFooter,
+  ArticleTitle,
+  ArticleActionWrapper,
+  ArticleHGroup,
+  ArticleContent,
+  ArticlePadding,
+} from "./Article";
 
-export { Article, ArticleWrapper, ArticleHeader, ArticleFooter } from "./Article";
-export { ArticleContent } from "./ArticleContent";
+export { ArticleByline, ArticleBylineAccordionItem } from "./ArticleByline";
+export { ArticleFootNotes } from "./ArticleFootNotes";
 
-export { ArticleByline, ArticleFootNotes };
 export { ArticleParagraph } from "./ArticleParagraph";

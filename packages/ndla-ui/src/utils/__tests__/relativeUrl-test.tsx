@@ -75,4 +75,16 @@ describe("getPossibleRelativeUrl", () => {
 
     expect(getPossiblyRelativeUrl(url, pathname)).toEqual("mailto:test@ndla.no");
   });
+  it("handles params in url", () => {
+    const url = "https://ndla.no/search?grepCodes=KM123";
+    const pathname = "https://ndla.no/article/666";
+
+    expect(getPossiblyRelativeUrl(url, pathname)).toEqual("/search?grepCodes=KM123");
+  });
+  it("handles params in url including language tag", () => {
+    const url = "https://ndla.no/nb/search?grepCodes=KM123";
+    const pathname = "https://ndla.no/en/article/666";
+
+    expect(getPossiblyRelativeUrl(url, pathname)).toEqual("/en/search?grepCodes=KM123");
+  });
 });

@@ -570,7 +570,7 @@ const messages = {
     "source-material": "Kildemateriale",
     "assessment-resources": "Vurderingsressurs",
     topic: "Emne",
-    "multidisciplinary-topic": "Tverrfaglig case",
+    multidisciplinary: "Tverrfaglig case",
     image: "Bilde",
     concept: "Forklaring",
     audio: "Lyd",
@@ -1087,9 +1087,9 @@ const messages = {
         },
         fetchMore: "Hent flere svar",
         deleted: "Dette innlegget er slettet av forfatteren.",
-        upvote: "Stem opp",
+        upvote: "Liker",
         numberOfUpvotes: "{{ count }} personer har stemt opp denne.",
-        removeUpvote: "Fjern stemme",
+        removeUpvote: "Slutt å like",
         reply: "Skriv et svar til {{ name }}",
       },
       flag: {
@@ -1118,6 +1118,10 @@ const messages = {
         subscribe: "Du får nå varsling om nye svar på dette innlegget",
         unsubscribe: "Du har skrudd av varsling om nye svar på dette innlegget",
         commentedOn: "svarte på innlegget <i>{{title}}</i>",
+        button: {
+          show: "Vis varslinger",
+          showNew: "Vis {{count}} nye varslinger",
+        },
       },
       topicsBy: "Innlegg av",
       admin: {
@@ -1251,7 +1255,7 @@ const messages = {
       confirmDeleteAccount: "Er du sikker på at du vil slette kontoen?",
       confirmDeleteAccountButton: "Slett konto",
       myPage: "Min side",
-      deleteAccount: "Slett Min NDLA",
+      deleteAccount: "Slett brukerprofil",
       loginPitch:
         "Velkommen til Min NDLA! Her kan du lagre favorittressursene dine fra NDLA, organisere dem og dele dem med andre. Logg inn med din Feide-konto for å komme i gang.",
       loginPitchButton: "Logg inn i Min NDLA",

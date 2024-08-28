@@ -1012,6 +1012,7 @@ const messages = {
         posts: "innlegg",
         posts_plural: "innlegg",
         subcategory: "Tema",
+        reactions: "reaksjonar",
       },
       publish: "Publiser",
       cancel: {
@@ -1106,13 +1107,13 @@ const messages = {
         maxLength: "Maksimal lengd for tekstfeltet er nådd",
         error: "Feltet er påkravd",
       },
-      bottomText: "Saknar du ein kategori? Gi moderatoren vår beskjed på ",
+      bottomText: "Saknar du ein kategori? Du kan be om nye kategoriar. Bruk 'Spør NDLA' eller send ein epost til ",
       moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Varslingar",
         showAll: "Sjå alle varslingar",
         description:
-          "Velkommen inn i arenaen for lærarar i vidaregåande opplæring! Dette er <em>din</em> arena: ein fagleg møtestad for diskusjon, inspirasjon, deling og utviklande samarbeid.",
+          "Velkommen til NDLA sin Arena. Her kan du diskutere, dele og samarbeide med andre lærarar frå heile Noreg.",
         myNotification: "Mine varsler",
         markAll: "Merk alle som lest",
         subscribe: "Du får no varsling om nye svar på dette innlegget",

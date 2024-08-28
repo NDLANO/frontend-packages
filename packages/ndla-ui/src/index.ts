@@ -44,7 +44,6 @@ export {
   ArticleHeader,
   ArticleContent,
   ArticleHGroup,
-  ArticleActionWrapper,
   ArticleTitle,
   ArticlePadding,
 } from "./Article";

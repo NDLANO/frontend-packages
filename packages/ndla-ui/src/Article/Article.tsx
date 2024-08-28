@@ -10,7 +10,7 @@ import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, StyledVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
 import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadgeNew } from "..";
@@ -132,24 +132,6 @@ export const ArticleHGroup = styled(
   { baseComponent: true },
 );
 
-export const ArticleActionWrapper = styled(
-  ark.div,
-  {
-    base: {
-      position: "absolute",
-      right: "8%",
-      top: "xsmall",
-      tablet: {
-        top: "medium",
-      },
-      desktop: {
-        top: "xxlarge",
-      },
-    },
-  },
-  { baseComponent: true },
-);
-
 export const ArticleHeader = styled(
   ark.header,
   {
@@ -217,8 +199,10 @@ export const ArticleTitle = ({
   return (
     <ArticleHeader padded>
       <ArticleHGroup>
-        {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
-        {!!heartButton && <ArticleActionWrapper>{heartButton}</ArticleActionWrapper>}
+        <HStack justify="space-between" gap="small">
+          {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
+          {!!heartButton && heartButton}
+        </HStack>
         <Heading textStyle="heading.large" id={id} lang={lang}>
           {title}
         </Heading>

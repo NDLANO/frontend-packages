@@ -12,7 +12,6 @@ export {
   ArticleHeader,
   ArticleFooter,
   ArticleTitle,
-  ArticleActionWrapper,
   ArticleHGroup,
   ArticleContent,
   ArticlePadding,

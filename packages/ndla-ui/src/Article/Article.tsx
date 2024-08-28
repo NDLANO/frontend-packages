@@ -133,7 +133,7 @@ export const ArticleTitle = ({
       <ArticleHGroup>
         <StyledHStack justify="space-between" gap="small">
           {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
-          {!!heartButton && heartButton}
+          {!!heartButton && <StyledHStack justify="flex-end">{heartButton}</StyledHStack>}
         </StyledHStack>
         <Heading textStyle="heading.large" id={id} lang={lang}>
           {title}

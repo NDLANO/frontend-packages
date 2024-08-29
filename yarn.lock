@@ -2724,7 +2724,7 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^5.0.1-alpha.0"
-    "@ndla/ui": "npm:^56.0.17-alpha.0"
+    "@ndla/ui": "npm:^56.0.18-alpha.0"
     html-react-parser: "npm:^5.1.8"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2862,7 +2862,7 @@ __metadata:
     "@ndla/icons": "npm:^8.0.12-alpha.0"
     "@ndla/pager": "npm:^5.0.16-alpha.0"
     "@ndla/types-backend": "npm:^0.2.86"
-    "@ndla/ui": "npm:^56.0.17-alpha.0"
+    "@ndla/ui": "npm:^56.0.18-alpha.0"
     "@ndla/util": "npm:^4.1.0"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
@@ -3080,7 +3080,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^56.0.17-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^56.0.18-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:

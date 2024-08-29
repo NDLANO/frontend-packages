@@ -105,6 +105,7 @@ export const ArticleFooter = styled(
 const StyledStack = styled(Stack, {
   base: {
     width: "100%",
+    minHeight: "xxlarge",
   },
 });
 

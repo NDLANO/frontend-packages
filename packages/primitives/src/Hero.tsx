@@ -56,7 +56,7 @@ const heroRecipe = sva({
           color: "text.onAction",
         },
       },
-      brand2Strong: {
+      brand2Bold: {
         background: {
           background: "surface.brand.2.bold",
         },
@@ -82,12 +82,6 @@ const heroRecipe = sva({
       neutral: {
         background: {
           background: "surface.infoSubtle",
-        },
-      },
-      brand4: {
-        background: {
-          // TODO: This needs a proper color...
-          background: "surface.brand.4",
         },
       },
     },

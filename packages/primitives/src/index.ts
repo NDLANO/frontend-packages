@@ -125,6 +125,7 @@ export { Label, FieldLabel, Legend, FieldsetLegend } from "./Label";
 export type { ListItemVariantProps, ListItemProps } from "./ListItem/ListItem";
 export { ListItemRoot, ListItemHeading, ListItemContent, ListItemImage } from "./ListItem/ListItem";
 
+export type { PageContentVariantProps } from "./Layout/PageContent";
 export { PageContent, BleedPageContent } from "./Layout/PageContent";
 
 export type { MenuRootProps, MenuItemVariantProps, MenuItemProps } from "./Menu";

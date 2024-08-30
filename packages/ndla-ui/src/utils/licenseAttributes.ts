@@ -15,7 +15,7 @@ export const licenseAttributes = (license: string | undefined, lang: string | un
     ? {
         "xmlns:cc": "https://creativecommons.org/ns#",
         "xmlns:dct": "http://purl.org/dc/terms/",
-        about: url ? url : undefined,
+        about: url ?? undefined,
       }
     : {};
 

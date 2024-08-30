@@ -141,3 +141,5 @@ export { CodeBlock, codeLanguageOptions } from "./CodeBlock";
 export { ZendeskButton } from "./ZendeskButton/ZendeskButton";
 
 export type { ZendeskButtonProps } from "./ZendeskButton/ZendeskButton";
+
+export { licenseAttributes } from "./utils/licenseAttributes";

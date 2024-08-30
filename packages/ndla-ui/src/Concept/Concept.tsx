@@ -13,6 +13,7 @@ import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept
 import { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } from "../Embed";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
+import { licenseAttributes } from "../utils/licenseAttributes";
 
 export interface ConceptProps extends ComponentPropsWithRef<"figure"> {
   copyright?: ConceptCopyright;
@@ -20,6 +21,7 @@ export interface ConceptProps extends ComponentPropsWithRef<"figure"> {
   lang?: string;
   title?: string;
   children?: ReactNode;
+  source?: string;
 }
 
 const StyledFigure = styled(Figure, {
@@ -43,9 +45,11 @@ const ContentWrapper = styled("div", {
 // TODO: Figure out if we need to support headerButtons.
 
 export const Concept = forwardRef<HTMLElement, ConceptProps>(
-  ({ copyright, visualElement, lang, children, title, ...rest }, ref) => {
+  ({ copyright, visualElement, lang, children, title, source, ...rest }, ref) => {
+    const licenseProps = licenseAttributes(copyright?.license?.license, lang, source);
+
     return (
-      <StyledFigure ref={ref} {...rest}>
+      <StyledFigure ref={ref} {...rest} {...licenseProps}>
         <ContentWrapper lang={lang}>
           {!!title && (
             <>

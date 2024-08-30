@@ -53,6 +53,9 @@ export const listItemRecipe = sva({
       borderRadius: "xsmall",
       objectFit: "cover",
     },
+    title: {
+      alignSelf: "center",
+    },
   },
   defaultVariants: {
     variant: "standalone",

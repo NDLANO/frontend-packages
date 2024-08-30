@@ -1016,7 +1016,8 @@ const messages = {
         posts: "innlegg",
         posts_plural: "innlegg",
         subcategory: "Tema",
-        reactions: "reaksjoner",
+        voteSingular: "reaksjon",
+        votePlural: "reaksjoner",
       },
       publish: "Publiser",
       cancel: {
@@ -1081,6 +1082,8 @@ const messages = {
         lockDescription:
           "Vil du låse dette innlegget? Dette vil gjøre at innlegget ikke kan få flere kommentarer, og vil vises som låst.",
         unlockDescription: "Vil du låse opp dette innlegget? Dette vil gjøre at innlegget kan få flere kommentarer.",
+        voteSingular: "reaksjon",
+        votePlural: "reaksjoner",
       },
       posts: {
         title: "Innlegg",

@@ -995,6 +995,10 @@ const tokens = {
     "value": "100.0625em",
     "variable": "var(--breakpoints-ultra-wide)"
   },
+  "spacing.5xsmall": {
+    "value": "var(--spacing-1)",
+    "variable": "var(--spacing-5xsmall)"
+  },
   "spacing.4xsmall": {
     "value": "var(--spacing-2)",
     "variable": "var(--spacing-4xsmall)"
@@ -1038,6 +1042,10 @@ const tokens = {
   "spacing.4xlarge": {
     "value": "var(--spacing-48)",
     "variable": "var(--spacing-4xlarge)"
+  },
+  "spacing.5xlarge": {
+    "value": "var(--spacing-60)",
+    "variable": "var(--spacing-5xlarge)"
   },
   "spacing.surface.4xsmall": {
     "value": "var(--spacing-50)",
@@ -1083,6 +1091,10 @@ const tokens = {
     "value": "var(--spacing-550)",
     "variable": "var(--spacing-surface-4xlarge)"
   },
+  "sizes.5xsmall": {
+    "value": "var(--spacing-1)",
+    "variable": "var(--sizes-5xsmall)"
+  },
   "sizes.4xsmall": {
     "value": "var(--spacing-2)",
     "variable": "var(--sizes-4xsmall)"
@@ -1127,6 +1139,10 @@ const tokens = {
     "value": "var(--spacing-48)",
     "variable": "var(--sizes-4xlarge)"
   },
+  "sizes.5xlarge": {
+    "value": "var(--spacing-60)",
+    "variable": "var(--sizes-5xlarge)"
+  },
   "sizes.surface.4xsmall": {
     "value": "var(--spacing-50)",
     "variable": "var(--sizes-surface-4xsmall)"
@@ -1170,6 +1186,18 @@ const tokens = {
   "sizes.surface.4xlarge": {
     "value": "var(--spacing-550)",
     "variable": "var(--sizes-surface-4xlarge)"
+  },
+  "sizes.surface.pageMax": {
+    "value": "1128px",
+    "variable": "var(--sizes-surface-page-max)"
+  },
+  "sizes.surface.contentMax": {
+    "value": "744px",
+    "variable": "var(--sizes-surface-content-max)"
+  },
+  "sizes.surface.articleMax": {
+    "value": "928px",
+    "variable": "var(--sizes-surface-article-max)"
   },
   "colors.background.default": {
     "value": "var(--colors-white)",
@@ -1691,6 +1719,10 @@ const tokens = {
     "value": "calc(var(--spacing-550) * -1)",
     "variable": "var(--spacing-550)"
   },
+  "spacing.-5xsmall": {
+    "value": "calc(var(--spacing-5xsmall) * -1)",
+    "variable": "var(--spacing-5xsmall)"
+  },
   "spacing.-4xsmall": {
     "value": "calc(var(--spacing-4xsmall) * -1)",
     "variable": "var(--spacing-4xsmall)"
@@ -1734,6 +1766,10 @@ const tokens = {
   "spacing.-4xlarge": {
     "value": "calc(var(--spacing-4xlarge) * -1)",
     "variable": "var(--spacing-4xlarge)"
+  },
+  "spacing.-5xlarge": {
+    "value": "calc(var(--spacing-5xlarge) * -1)",
+    "variable": "var(--spacing-5xlarge)"
   },
   "spacing.surface.-4xsmall": {
     "value": "calc(var(--spacing-surface-4xsmall) * -1)",

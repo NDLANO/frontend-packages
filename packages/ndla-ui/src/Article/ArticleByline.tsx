@@ -36,8 +36,6 @@ const Wrapper = styled("div", {
   },
 });
 
-// TODO: This is designed with 24px of inline padding. If you do this, most bylines will break into two lines.
-// Should reconsider.
 const TextWrapper = styled("div", {
   base: {
     display: "flex",

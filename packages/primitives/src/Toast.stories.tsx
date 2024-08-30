@@ -9,6 +9,7 @@
 import { Portal, Toaster, createToaster } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
+import { styled } from "@ndla/styled-system/jsx";
 import { Button, IconButton } from "./Button";
 import { ToastCloseTrigger, ToastDescription, ToastRoot, ToastTitle } from "./Toast";
 
@@ -16,6 +17,13 @@ const toaster = createToaster({
   placement: "bottom",
   overlap: true,
   gap: 8,
+});
+
+const ToastWrapper = styled("div", {
+  base: {
+    display: "flex",
+    gap: "medium",
+  },
 });
 
 export default {
@@ -26,29 +34,31 @@ export default {
 
 export const Default: StoryFn<typeof ToastRoot> = ({ ...args }) => (
   <div>
-    <Button
-      onClick={() =>
-        toaster.create({
-          title: "Navn vist",
-          description: "Navnet ditt vises nå på alle dine delte mapper",
-          duration: 1000000,
-        })
-      }
-    >
-      Show toast
-    </Button>
-    <Button
-      onClick={() =>
-        toaster.create({
-          title: "Navn skjult",
-          description:
-            "Navnet ditt vises nå ikke lenger på alle dine delte mapper. Navnet ditt vises nå ikke lenger på alle dine delte mapper. Navnet ditt vises nå ikke lenger på alle dine delte mapper",
-          duration: 1000000,
-        })
-      }
-    >
-      Show longer toast
-    </Button>
+    <ToastWrapper>
+      <Button
+        onClick={() =>
+          toaster.create({
+            title: "Navn vist",
+            description: "Navnet ditt vises nå på alle dine delte mapper",
+            duration: 1000000,
+          })
+        }
+      >
+        Show toast
+      </Button>
+      <Button
+        onClick={() =>
+          toaster.create({
+            title: "Navn skjult",
+            description:
+              "Navnet ditt vises nå ikke lenger på alle dine delte mapper. Navnet ditt vises nå ikke lenger på alle dine delte mapper. Navnet ditt vises nå ikke lenger på alle dine delte mapper",
+            duration: 1000000,
+          })
+        }
+      >
+        Show longer toast
+      </Button>
+    </ToastWrapper>
     <Portal>
       <Toaster toaster={toaster}>
         {(toast) => (

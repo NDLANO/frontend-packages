@@ -293,7 +293,6 @@ const TreeStructureItem = ({ folder, targetResource }: TreeStructureItemProps) =
 
   const FolderIcon = folder.status === "shared" ? StyledFolderUserLine : StyledFolderLine;
 
-  // TODO: Pressing enter selects the item and closes the popover immediately. Do we actually want this? Old behavior.
   const onKeyDown = useCallback(
     (e: KeyboardEvent<HTMLElement>) => {
       if (e.key === "Enter") {

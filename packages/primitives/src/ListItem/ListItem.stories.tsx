@@ -74,10 +74,14 @@ export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
 
 export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
   <ListItemRoot {...args}>
-    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
+    <ListItemImage
+      src="https://api.staging.ndla.no/image-api/raw/Ide.jpg"
+      alt="En lyspære"
+      css={{ minHeight: "40px", maxHeight: "72px", minWidth: "56px", maxWidth: "100px" }}
+    />
     <ListItemContent>
       <styled.div css={{ display: "flex", flexDirection: "column", gap: "4xsmall" }}>
-        <ListItemHeading asChild consumeCss>
+        <ListItemHeading css={{ alignSelf: "flex-start" }} asChild consumeCss>
           <h2>
             <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
               Tittel
@@ -89,7 +93,9 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
           ingenting.
         </Text>
       </styled.div>
-      <Badge colorTheme="brand1">Fagstoff</Badge>
+      <Badge colorTheme="brand1" css={{ alignSelf: "center" }}>
+        Fagstoff
+      </Badge>
     </ListItemContent>
   </ListItemRoot>
 );

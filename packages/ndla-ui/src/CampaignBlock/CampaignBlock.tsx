@@ -46,12 +46,23 @@ const Container = styled("div", {
     boxShadow: "full",
     marginBlockEnd: "4xsmall",
     overflow: "hidden",
-    tabletWide: {
-      gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
-      "&[data-img-left='true']": {
-        gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
+  },
+  variants: {
+    imageSide: {
+      left: {
+        tabletWide: {
+          gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
+        },
+      },
+      right: {
+        tabletWide: {
+          gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
+        },
       },
     },
+  },
+  defaultVariants: {
+    imageSide: "left",
   },
 });
 
@@ -148,7 +159,7 @@ const CampaignBlock = ({
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
   const HeaderComponent = url?.url ? LinkHeader : Text;
   return (
-    <Container className={className} data-embed-type="campaign-block" data-img-left={imageSide === "left"}>
+    <Container className={className} data-embed-type="campaign-block" imageSide={imageSide}>
       {imageSide === "left" && imageComponent}
       <ContentWrapper>
         <MaybeLinkText url={url?.url} path={path}>

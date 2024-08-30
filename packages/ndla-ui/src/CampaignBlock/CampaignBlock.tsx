@@ -36,10 +36,9 @@ interface Props {
 
 const Container = styled("div", {
   base: {
-    width: "100%",
-    display: "flex",
+    display: "grid",
+    gridTemplateColumns: "1fr",
     gap: "medium",
-    flexDirection: "column",
     border: "1px solid",
     borderColor: "stroke.default",
     backgroundColor: "background.default",
@@ -47,9 +46,23 @@ const Container = styled("div", {
     boxShadow: "full",
     marginBlockEnd: "4xsmall",
     overflow: "hidden",
-    tabletWide: {
-      flexDirection: "row",
+  },
+  variants: {
+    imageSide: {
+      left: {
+        tabletWide: {
+          gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
+        },
+      },
+      right: {
+        tabletWide: {
+          gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
+        },
+      },
     },
+  },
+  defaultVariants: {
+    imageSide: "left",
   },
 });
 
@@ -78,15 +91,14 @@ const LinkHeader = styled(Text, {
 
 const StyledImg = styled("img", {
   base: {
-    alignSelf: "center",
     objectFit: "cover",
     width: "100%",
     height: "215px",
-    mobileWide: {
-      height: "340px",
+    tablet: {
+      height: "265px",
     },
     tabletWide: {
-      width: "auto",
+      height: "340px",
     },
   },
 });
@@ -94,7 +106,6 @@ const StyledImg = styled("img", {
 const ContentWrapper = styled("div", {
   base: {
     width: "100%",
-    position: "relative",
     display: "flex",
     flexDirection: "column",
     gap: "medium",
@@ -102,6 +113,7 @@ const ContentWrapper = styled("div", {
     justifyContent: "center",
     paddingBlock: "medium",
     paddingInline: "medium",
+    minWidth: "270px", //required for campaign block in myNdla
   },
 });
 
@@ -147,7 +159,7 @@ const CampaignBlock = ({
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
   const HeaderComponent = url?.url ? LinkHeader : Text;
   return (
-    <Container className={className} data-embed-type="campaign-block">
+    <Container className={className} data-embed-type="campaign-block" imageSide={imageSide}>
       {imageSide === "left" && imageComponent}
       <ContentWrapper>
         <MaybeLinkText url={url?.url} path={path}>

@@ -7,47 +7,115 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { ListAlphabetical, ListCircle, ListNumbered } from "@ndla/icons/editor";
-import { ToggleGroup, ToggleItem } from "./ToggleGroup";
-
-const defaultMenuItems: ToggleItem[] = [
-  {
-    id: "alphabeticalList",
-    onClick: () => {},
-    icon: <ListAlphabetical />,
-    label: "Alphabetical list",
-  },
-  {
-    id: "numberedList",
-    onClick: () => {},
-    icon: <ListNumbered />,
-    label: "Numbered list",
-  },
-  {
-    id: "unorderedList",
-    onClick: () => {},
-    icon: <ListCircle />,
-    label: "Unordered list",
-    selected: true,
-  },
-];
+import { Bold, Italic, Link, ListAlphabetical, ListCircle, ListNumbered } from "@ndla/icons/editor";
+import { HStack, styled } from "@ndla/styled-system/jsx";
+import { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
 
 export default {
   title: "Components/ToggleGroup",
   tags: ["autodocs"],
-  component: ToggleGroup,
+  component: ToggleGroupRoot,
   args: {
-    items: defaultMenuItems,
+    variant: "subtle",
   },
-  argTypes: {
-    folders: { control: false },
-  },
-} as Meta<typeof ToggleGroup>;
+} as Meta<typeof ToggleGroupRoot>;
 
-export const Default: StoryFn<typeof ToggleGroup> = ({ ...args }) => {
-  return <ToggleGroup {...args} />;
+export const Default: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
+  return (
+    <ToggleGroupRoot variant="subtle" {...args}>
+      <ToggleGroupItem value="bold">
+        <Bold />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic">
+        <Italic />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="bulletedList">
+        <ListCircle />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="numberedList">
+        <ListNumbered />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="alphabeticalList">
+        <ListAlphabetical />
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+  );
 };
 
-export const Label: StoryFn<typeof ToggleGroup> = ({ ...args }) => {
-  return <ToggleGroup color="white" {...args} />;
+export const Label: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
+  return (
+    <ToggleGroupRoot multiple {...args}>
+      <ToggleGroupItem value="bulletedList" asChild>
+        <ListCircle />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="numberedList">
+        <ListNumbered />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="alphabeticalList">
+        <ListAlphabetical />
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+  );
+};
+
+const Wrapper = styled(HStack, {
+  base: {
+    background: "surface.infoSubtle",
+    border: "1px solid",
+    borderColor: "stroke.subtle",
+    borderTopRadius: "xsmall",
+  },
+});
+
+export const MultipleGroups: StoryFn<typeof ToggleGroupRoot> = () => {
+  return (
+    <Wrapper gap="initial">
+      <ToggleGroupRoot multiple>
+        <ToggleGroupItem value="bold">
+          <Bold />
+        </ToggleGroupItem>
+        <ToggleGroupItem value="italic">
+          <Italic />
+        </ToggleGroupItem>
+      </ToggleGroupRoot>
+      <ToggleGroupRoot>
+        <ToggleGroupItem value="bulletedList">
+          <ListCircle />
+        </ToggleGroupItem>
+        <ToggleGroupItem value="numberedList">
+          <ListNumbered />
+        </ToggleGroupItem>
+        <ToggleGroupItem value="alphabeticalList">
+          <ListAlphabetical />
+        </ToggleGroupItem>
+      </ToggleGroupRoot>
+      <ToggleGroupRoot>
+        <ToggleGroupItem value="link">
+          <Link />
+        </ToggleGroupItem>
+      </ToggleGroupRoot>
+    </Wrapper>
+  );
+};
+
+export const InitialActive: StoryFn<typeof ToggleGroupRoot> = () => {
+  return (
+    <ToggleGroupRoot multiple variant="subtle" defaultValue={["italic", "bold"]}>
+      <ToggleGroupItem value="bold">
+        <Bold />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic">
+        <Italic />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="bulletedList">
+        <ListCircle />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="numberedList">
+        <ListNumbered />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="alphabeticalList">
+        <ListAlphabetical />
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+  );
 };

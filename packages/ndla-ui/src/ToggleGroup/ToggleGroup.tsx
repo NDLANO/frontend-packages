@@ -6,78 +6,72 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef, ReactNode } from "react";
+import { toggleGroupAnatomy, ToggleGroup } from "@ark-ui/react";
 import { IconButton, IconButtonProps } from "@ndla/primitives";
-import { HStack, styled } from "@ndla/styled-system/jsx";
-import { StyledVariantProps } from "@ndla/styled-system/types";
+import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import { JsxStyleProps } from "@ndla/styled-system/types";
+import { createStyleContext } from "../../../primitives/src/createStyleContext";
 
-const StyledIconButton = styled(IconButton, {
+const toggleGroupRecipe = sva({
+  slots: toggleGroupAnatomy.keys(),
   base: {
-    _selected: {
-      backgroundColor: "surface.actionSubtle.active",
-      borderColor: "stroke.default",
-      border: "1px solid",
+    root: {
+      display: "flex",
+      flexDirection: "row",
+      padding: "3xsmall",
+      gap: "xxsmall",
     },
-  },
-});
-
-const StyledHStack = styled(HStack, {
-  base: {
-    padding: "3xsmall",
-  },
-  defaultVariants: {
-    color: "subtle",
-  },
-  variants: {
-    color: {
-      subtle: {
-        background: "surface.infoSubtle",
-        borderTopRadius: "xsmall",
-        borderColor: "stroke.subtle",
+    item: {
+      "&[data-state='on']": {
+        backgroundColor: "surface.actionSubtle.active",
+        borderColor: "stroke.default",
         border: "1px solid",
       },
-      white: {
-        background: "surface.default",
+    },
+  },
+  variants: {
+    variant: {
+      subtle: {
+        root: {
+          background: "surface.infoSubtle",
+          borderTopRadius: "xsmall",
+          borderColor: "stroke.subtle",
+          border: "1px solid",
+        },
       },
     },
   },
 });
 
-type StyledHStackProps = StyledVariantProps<typeof StyledHStack>;
+const { withProvider, withContext } = createStyleContext(toggleGroupRecipe);
 
-export interface ToggleItem {
-  icon: ReactNode;
-  variant?: IconButtonProps["variant"];
-  size?: IconButtonProps["size"];
-  label: string;
-  onClick: () => void;
-  id: string;
-  selected?: boolean;
-}
+export type ToggleGroupVariantProps = RecipeVariantProps<typeof toggleGroupRecipe>;
+export type ToggleGroupRootProps = ToggleGroup.RootProps & JsxStyleProps;
 
-export interface ToggleGroupProps extends ComponentPropsWithRef<"div"> {
-  items: ToggleItem[];
-}
-
-export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps & StyledHStackProps>(
-  ({ items, color, ...rest }, ref) => {
-    return (
-      <StyledHStack color={color} gap="xxsmall" ref={ref} {...rest}>
-        {items.map(({ icon, variant, size, label, onClick, id, selected }) => (
-          <StyledIconButton
-            key={id}
-            id={id}
-            variant={variant ?? "tertiary"}
-            size={size ?? "small"}
-            aria-label={label}
-            title={label}
-            onClick={onClick}
-            aria-selected={selected}
-          >
-            {icon}
-          </StyledIconButton>
-        ))}
-      </StyledHStack>
-    );
+export const InternalToggleGroupRoot = withProvider<HTMLDivElement, ToggleGroupRootProps & ToggleGroupVariantProps>(
+  ToggleGroup.Root,
+  "root",
+  {
+    baseComponent: true,
   },
 );
+
+export const ToggleGroupRoot = ({ ...props }: ToggleGroupRootProps & ToggleGroupVariantProps) => {
+  return <InternalToggleGroupRoot {...props} />;
+};
+
+export const InternalToggleGroupItem = withContext<HTMLButtonElement, JsxStyleProps & ToggleGroup.ItemProps>(
+  ToggleGroup.Item,
+  "item",
+  { baseComponent: true },
+);
+
+export const ToggleGroupItem = ({ children, ...props }: ToggleGroup.ItemProps & IconButtonProps) => {
+  return (
+    <InternalToggleGroupItem {...props} asChild>
+      <IconButton size="small" variant="tertiary">
+        {children}
+      </IconButton>
+    </InternalToggleGroupItem>
+  );
+};

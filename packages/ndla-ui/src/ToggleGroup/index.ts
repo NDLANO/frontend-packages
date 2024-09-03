@@ -5,6 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-export { ToggleGroup } from "./ToggleGroup";
 
-export type { ToggleGroupProps, ToggleItem } from "./ToggleGroup";
+export { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";

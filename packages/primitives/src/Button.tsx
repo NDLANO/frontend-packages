@@ -145,12 +145,14 @@ export const buttonBaseRecipe = cva({
         background: "transparent",
         color: "text.link",
         textDecoration: "underline",
+        textStyle: "body.link",
+        fontWeight: "normal",
         textDecorationThickness: "1px",
         _hover: {
           textDecoration: "none",
         },
-        _active: {
-          background: "surface.hover",
+        _focusVisible: {
+          boxShadow: "0 0 0 3px var(--shadow-color)",
         },
       },
     },
@@ -257,7 +259,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     <BaseButton
       {...props}
       loadingContent={loadingContent ?? <Spinner size="small" />}
-      css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
+      css={css.raw(buttonBaseRecipe.raw({ variant }), variant !== "link" && buttonRecipe.raw({ size }), cssProp)}
       ref={ref}
     />
   ),

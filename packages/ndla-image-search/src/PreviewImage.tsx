@@ -40,7 +40,6 @@ const StyledImageMetadata = styled("div", {
     display: "flex",
     flexDirection: "column",
     gap: "xxsmall",
-    flex: "2",
   },
 });
 
@@ -84,6 +83,23 @@ const StyledTopRow = styled("div", {
   },
 });
 
+const ContentWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "medium",
+    flex: "2",
+  },
+});
+
+const ActionsWrapper = styled("div", {
+  base: {
+    display: "flex",
+    gap: "small",
+    marginBlockEnd: "medium",
+  },
+});
+
 interface Props {
   id: string;
   image: IImageMetaInformationV3;
@@ -106,78 +122,82 @@ const PreviewImage = ({ id, image, onSelectImage, useImageTitle, showCheckbox, c
         src={image.image.imageUrl}
         aria-label={image.title.title}
       />
-      <StyledImageMetadata>
-        <StyledTopRow>
-          <Heading asChild consumeCss textStyle="title.medium">
-            <h2>{image.title.title}</h2>
-          </Heading>
-          <IconButton
-            variant="tertiary"
-            onClick={() => onSelectImage(undefined)}
-            aria-label={t("close")}
-            title={t("close")}
-          >
-            <CloseLine />
-          </IconButton>
-        </StyledTopRow>
-        {!!image.copyright.creators.length && (
-          <Text>
-            <b>{`${t("photo")}: `}</b>
-            {image.copyright.creators.map((creator) => creator.name).join(", ")}
-          </Text>
-        )}
-        {!!image.copyright.license.description?.trim() && (
-          <Text>
-            <b>{`${t("image.license")}: `}</b>
-            {image.copyright.license.description}
-          </Text>
-        )}
-        {!!image.caption.caption.trim() && (
-          <Text>
-            <b>{`${t("image.caption")}: `}</b>
-            {image.caption.caption}
-          </Text>
-        )}
-        {!!image.alttext.alttext.trim() && (
-          <Text>
-            <b>{`${t("image.altText")}:`}</b> {image.alttext.alttext}
-          </Text>
-        )}
-        {!!image.modelRelease.trim() && (
-          <Text>
-            <b>{`${t("image.modelReleased.label")}: `}</b>
-            {t(`image.modelReleased.${image.modelRelease}`)}
-          </Text>
-        )}
-        <ImageMeta
-          contentType={image.image.contentType}
-          fileSize={image.image.size}
-          imageDimensions={image.image.dimensions}
-        />
-        {/* TODO: make accessible ? */}
-        <HashTagWrapper>
-          {image.tags.tags.map((tag) => (
-            <StyledTagItem key={tag}>
-              <HashTag size="small" />
-              {tag}
-            </StyledTagItem>
-          ))}
-        </HashTagWrapper>
-        <StyledButton data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
-          {useImageTitle}
-        </StyledButton>
-        {showCheckbox && (
-          <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>
-            <CheckboxControl>
-              <CheckboxIndicator asChild>
-                <CheckLine />
-              </CheckboxIndicator>
-            </CheckboxControl>
-            <CheckboxLabel>{checkboxLabel}</CheckboxLabel>
-            <CheckboxHiddenInput />
-          </CheckboxRoot>
-        )}
-      </StyledImageMetadata>
+      <ContentWrapper>
+        <StyledImageMetadata>
+          <StyledTopRow>
+            <Heading asChild consumeCss textStyle="title.medium">
+              <h2>{image.title.title}</h2>
+            </Heading>
+            <IconButton
+              variant="tertiary"
+              onClick={() => onSelectImage(undefined)}
+              aria-label={t("close")}
+              title={t("close")}
+            >
+              <CloseLine />
+            </IconButton>
+          </StyledTopRow>
+          {!!image.copyright.creators.length && (
+            <Text>
+              <b>{`${t("photo")}: `}</b>
+              {image.copyright.creators.map((creator) => creator.name).join(", ")}
+            </Text>
+          )}
+          {!!image.copyright.license.description?.trim() && (
+            <Text>
+              <b>{`${t("image.license")}: `}</b>
+              {image.copyright.license.description}
+            </Text>
+          )}
+          {!!image.caption.caption.trim() && (
+            <Text>
+              <b>{`${t("image.caption")}: `}</b>
+              {image.caption.caption}
+            </Text>
+          )}
+          {!!image.alttext.alttext.trim() && (
+            <Text>
+              <b>{`${t("image.altText")}:`}</b> {image.alttext.alttext}
+            </Text>
+          )}
+          {!!image.modelRelease.trim() && (
+            <Text>
+              <b>{`${t("image.modelReleased.label")}: `}</b>
+              {t(`image.modelReleased.${image.modelRelease}`)}
+            </Text>
+          )}
+          <ImageMeta
+            contentType={image.image.contentType}
+            fileSize={image.image.size}
+            imageDimensions={image.image.dimensions}
+          />
+          {/* TODO: make accessible ? */}
+          <HashTagWrapper>
+            {image.tags.tags.map((tag) => (
+              <StyledTagItem key={tag}>
+                <HashTag size="small" />
+                {tag}
+              </StyledTagItem>
+            ))}
+          </HashTagWrapper>
+        </StyledImageMetadata>
+        <ActionsWrapper>
+          <StyledButton data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
+            {useImageTitle}
+          </StyledButton>
+          {showCheckbox && (
+            <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>
+              <CheckboxControl>
+                <CheckboxIndicator asChild>
+                  <CheckLine />
+                </CheckboxIndicator>
+              </CheckboxControl>
+              <CheckboxLabel>{checkboxLabel}</CheckboxLabel>
+              <CheckboxHiddenInput />
+            </CheckboxRoot>
+          )}
+        </ActionsWrapper>
+      </ContentWrapper>
     </StyledPreview>
   );
 };

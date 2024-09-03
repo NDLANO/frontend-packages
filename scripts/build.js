@@ -6,11 +6,11 @@
  *
  */
 
-const chalk = require("chalk");
-const babel = require("@babel/core");
 const fs = require("fs");
 const path = require("path");
+const chalk = require("chalk");
 const glob = require("glob");
+const babel = require("@babel/core");
 const getPackages = require("./_getPackages");
 const babelOptions = require("../babel.config");
 
@@ -123,7 +123,8 @@ function buildNodePackage(p) {
     p.endsWith("preset-panda") ||
     p.endsWith("icons") ||
     p.endsWith("safelink") ||
-    p.endsWith("ui");
+    p.endsWith("ui") ||
+    p.endsWith("audio-search");
 
   const presets = skipEmotion
     ? ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]]

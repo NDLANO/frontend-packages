@@ -40,7 +40,8 @@ const config: StorybookConfig = {
           babel: {
             overrides: [
               {
-                exclude: /primitives|preset-panda|styled-system|ndla-icons|ndla-ui|audio-search|image-search/,
+                exclude:
+                  /primitives|preset-panda|styled-system|ndla-icons|ndla-ui|audio-search|image-search|video-search/,
                 plugins: [["@emotion", { autoLabel: "always" }]],
               },
             ],
@@ -50,9 +51,9 @@ const config: StorybookConfig = {
     });
   },
   typescript: {
-    reactDocgen: "react-docgen-typescript",
+    //reactDocgen: "react-docgen-typescript",
     // uncomment this for quicker HMR during dev.
-    // reactDocgen: "react-docgen",
+    reactDocgen: "react-docgen",
   },
   framework: "@storybook/react-vite",
   /* For at "Show code" skal legge seg bakerst slik at elementer som drop-down ikke blir skjult bak den */

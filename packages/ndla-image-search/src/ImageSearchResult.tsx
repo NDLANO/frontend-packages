@@ -6,7 +6,7 @@
  *
  */
 
-import { Heading, Image, Button } from "@ndla/primitives";
+import { Text, Heading, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { MetadataTranslations } from "./ImageSearch";
@@ -68,10 +68,9 @@ export default function ImageSearchResult({
         aria-controls={`image-preview-${image.id}`}
       >
         <StyledImage alt="" srcSet={getPreviewSrcSets(image.image.imageUrl)} src={image.image.imageUrl} />
-        {/* TODO: consider if this should be h3 */}
-        <StyledHeading textStyle="label.medium" asChild consumeCss>
-          <h3>{image.title.title}</h3>
-        </StyledHeading>
+        <Text textStyle="label.medium" asChild consumeCss>
+          <span>{image.title.title}</span>
+        </Text>
       </StyledButton>
       {selectedImage?.id === image.id && (
         <PreviewImage

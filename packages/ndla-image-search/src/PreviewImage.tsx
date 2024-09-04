@@ -18,7 +18,6 @@ import {
   CheckboxIndicator,
   CheckboxLabel,
   CheckboxRoot,
-  Heading,
   Text,
   Image,
   IconButton,
@@ -29,10 +28,11 @@ import ImageMeta from "./ImageMeta";
 import { MetadataTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
 
+const ImageContainer = styled("div", { base: { flex: "0 0 auto" } });
+
 const StyledImage = styled(Image, {
   base: {
-    maxHeight: "300px",
-    flex: "1",
+    maxHeight: "surface.xsmall",
   },
 });
 
@@ -41,12 +41,6 @@ const StyledImageMetadata = styled("div", {
     display: "flex",
     flexDirection: "column",
     gap: "xxsmall",
-  },
-});
-
-const StyledButton = styled(Button, {
-  base: {
-    width: "fit-content",
   },
 });
 
@@ -82,6 +76,8 @@ const StyledPreview = styled("div", {
     borderRadius: "xsmall",
     gap: "small",
     padding: "small",
+    flexWrap: "wrap",
+    overflow: "hidden",
   },
 });
 
@@ -89,7 +85,6 @@ const StyledTopRow = styled("div", {
   base: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
   },
 });
 
@@ -135,19 +130,19 @@ const PreviewImage = ({
 
   return (
     <StyledPreview id={id}>
-      <StyledImage
-        alt=""
-        srcSet={getSrcSets(image.image.imageUrl)}
-        sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
-        src={image.image.imageUrl}
-        aria-label={image.title.title}
-      />
+      <ImageContainer>
+        <StyledImage
+          alt=""
+          srcSet={getSrcSets(image.image.imageUrl)}
+          sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
+          src={image.image.imageUrl}
+          aria-label={image.title.title}
+        />
+      </ImageContainer>
       <ContentWrapper>
         <StyledImageMetadata>
           <StyledTopRow>
-            <Heading asChild consumeCss textStyle="title.medium">
-              <h2>{image.title.title}</h2>
-            </Heading>
+            <Text textStyle="title.medium">{image.title.title}</Text>
             <IconButton
               variant="tertiary"
               onClick={() => onSelectImage(undefined)}
@@ -208,9 +203,9 @@ const PreviewImage = ({
           )}
         </StyledImageMetadata>
         <ActionsWrapper>
-          <StyledButton data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
+          <Button data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
             {useImageTitle}
-          </StyledButton>
+          </Button>
           {showCheckbox && (
             <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>
               <CheckboxControl>

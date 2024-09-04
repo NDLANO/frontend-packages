@@ -1373,7 +1373,7 @@ const messages = {
       dragHandle: "Sorter kategorien {{name}}",
     },
     favoriteSubjects: {
-      title: "Mine favorittfag",
+      title: "Mine fag",
       subjects: "{{count}} fag",
       subjects_0: "{{count}} fag",
       subjects_plural: "{{count}} fag",

@@ -1369,7 +1369,7 @@ const messages = {
       dragHandle: "Drag the category {{name}}",
     },
     favoriteSubjects: {
-      title: "My favorite subjects",
+      title: "My subjects",
       subjects: "{{count}} subject",
       subjects_0: "{{count}} subjects",
       subjects_plural: "{{count}} subjects",

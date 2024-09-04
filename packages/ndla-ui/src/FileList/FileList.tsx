@@ -23,6 +23,7 @@ export const FileListWrapper = styled("div", {
 
 export const FileListItem = styled("li", {
   base: {
+    listStyle: "none",
     background: "surface.infoSubtle",
     borderBlockEnd: "1px solid",
     borderColor: "stroke.default",

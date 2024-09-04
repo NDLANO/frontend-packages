@@ -9,35 +9,27 @@
 import { toggleGroupAnatomy, ToggleGroup } from "@ark-ui/react";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
-import { IconButton, IconButtonProps } from "./Button";
 import { createStyleContext } from "./createStyleContext";
 
 const toggleGroupRecipe = sva({
   slots: toggleGroupAnatomy.keys(),
   base: {
-    root: {
-      display: "flex",
-      flexDirection: "row",
-      padding: "3xsmall",
-      gap: "xxsmall",
-    },
     item: {
+      _hover: {
+        boxShadow: "inset 0 0 0 1px var(--shadow-color)",
+        background: "surface.actionSubtle.hover",
+        _focusVisible: {
+          boxShadow: "inset 0 0 0 3px var(--shadow-color)",
+        },
+      },
+      _active: {
+        borderColor: "stroke.default",
+        background: "surface.actionSubtle.hover.strong",
+      },
       "&[data-state='on']": {
         backgroundColor: "surface.actionSubtle.active",
         borderColor: "stroke.default",
         border: "1px solid",
-      },
-    },
-  },
-  variants: {
-    variant: {
-      subtle: {
-        root: {
-          background: "surface.infoSubtle",
-          borderTopRadius: "xsmall",
-          borderColor: "stroke.subtle",
-          border: "1px solid",
-        },
       },
     },
   },
@@ -46,32 +38,14 @@ const toggleGroupRecipe = sva({
 const { withProvider, withContext } = createStyleContext(toggleGroupRecipe);
 
 export type ToggleGroupVariantProps = RecipeVariantProps<typeof toggleGroupRecipe>;
-export type ToggleGroupRootProps = ToggleGroup.RootProps & JsxStyleProps;
+export type ToggleGroupRootProps = ToggleGroup.RootProps & JsxStyleProps & ToggleGroupVariantProps;
 
-export const InternalToggleGroupRoot = withProvider<HTMLDivElement, ToggleGroupRootProps & ToggleGroupVariantProps>(
-  ToggleGroup.Root,
-  "root",
-  {
-    baseComponent: true,
-  },
-);
+export const ToggleGroupRoot = withProvider<HTMLDivElement, ToggleGroupRootProps>(ToggleGroup.Root, "root", {
+  baseComponent: true,
+});
 
-export const ToggleGroupRoot = ({ ...props }: ToggleGroupRootProps & ToggleGroupVariantProps) => {
-  return <InternalToggleGroupRoot {...props} />;
-};
-
-export const InternalToggleGroupItem = withContext<HTMLButtonElement, JsxStyleProps & ToggleGroup.ItemProps>(
+export const ToggleGroupItem = withContext<HTMLButtonElement, JsxStyleProps & ToggleGroup.ItemProps>(
   ToggleGroup.Item,
   "item",
   { baseComponent: true },
 );
-
-export const ToggleGroupItem = ({ children, ...props }: ToggleGroup.ItemProps & IconButtonProps) => {
-  return (
-    <InternalToggleGroupItem {...props} asChild>
-      <IconButton size="small" variant="tertiary">
-        {children}
-      </IconButton>
-    </InternalToggleGroupItem>
-  );
-};

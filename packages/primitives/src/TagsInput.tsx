@@ -55,6 +55,10 @@ const tagsInputRecipe = sva({
         "& svg": {
           color: "stroke.hover",
         },
+        _motionReduce: {
+          transition: "none",
+          transitionDuration: "0s",
+        },
       },
       _highlighted: {
         backgroundColor: "surface.actionSubtle.hover",
@@ -64,6 +68,10 @@ const tagsInputRecipe = sva({
         color: "text.default",
         "& svg": {
           color: "stroke.hover",
+        },
+        _motionReduce: {
+          transition: "none",
+          transitionDuration: "0s",
         },
       },
     },

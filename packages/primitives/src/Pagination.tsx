@@ -17,6 +17,7 @@ const paginationRecipe = sva({
     root: {
       display: "flex",
       gap: "xxsmall",
+      justifyContent: "center",
     },
     item: {
       fontVariantNumeric: "tabular-nums",
@@ -51,6 +52,8 @@ export const PaginationEllipsis = withContext<HTMLDivElement, JsxStyleProps & Pa
   "ellipsis",
   { baseComponent: true },
 );
+
+export const PaginationContext = Pagination.Context;
 
 export const PaginationPrevTrigger = withContext<HTMLButtonElement, JsxStyleProps & Pagination.PrevTriggerProps>(
   Pagination.PrevTrigger,

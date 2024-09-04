@@ -25,6 +25,9 @@ export const Skeleton = styled(
       "&::before, &::after, *": {
         visibility: "hidden",
       },
+      _motionReduce: {
+        animation: "none",
+      },
     },
   },
   { baseComponent: true },

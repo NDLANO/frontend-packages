@@ -6,92 +6,150 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
-import { styled } from "@ndla/styled-system/jsx";
-import ArticleByline from "./ArticleByline";
-import { ArticleContent } from "./ArticleContent";
+import { cx } from "@ndla/styled-system/css";
+import { Stack, styled } from "@ndla/styled-system/jsx";
+import { JsxStyleProps } from "@ndla/styled-system/types";
+import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadgeNew } from "..";
 import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import { Article as ArticleType } from "../types";
 
-export const ArticleWrapper = styled("article", {
+const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
+
+export const ArticleContent = forwardRef<HTMLElement, HTMLArkProps<"div"> & JsxStyleProps>(
+  ({ className, ...props }, ref) => (
+    <StyledArticleContent className={cx("ndla-article", className)} {...props} ref={ref} />
+  ),
+);
+
+const StyledArticleWrapper = styled(
+  ark.article,
+  {
+    base: {
+      background: "background.default",
+      display: "flex",
+      flexDirection: "column",
+      gap: "xxlarge",
+      color: "text.default",
+      alignItems: "center",
+      width: "100%",
+      overflowWrap: "break-word",
+      position: "relative",
+      "& mjx-stretchy-v > mjx-ext > mjx-c": {
+        transform: "scaleY(100) translateY(0.075em)",
+      },
+      _after: {
+        content: "",
+        display: "table",
+        clear: "both",
+      },
+    },
+  },
+  { baseComponent: true },
+);
+
+export const ArticleWrapper = forwardRef<HTMLElement, ComponentPropsWithRef<"article"> & JsxStyleProps>(
+  (props, ref) => <StyledArticleWrapper data-ndla-article="" ref={ref} {...props} />,
+);
+
+export const ArticleHGroup = styled(
+  ark.hgroup,
+  {
+    base: {
+      display: "flex",
+      width: "100%",
+      flexDirection: "column",
+      alignItems: "flex-start",
+      "& h1": {
+        overflowWrap: "anywhere",
+      },
+    },
+  },
+  { baseComponent: true },
+);
+
+export const ArticleHeader = styled(
+  ark.header,
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "medium",
+      alignItems: "flex-start",
+      width: "100%",
+      paddingBlockStart: "xxlarge",
+    },
+  },
+  { baseComponent: true },
+);
+
+export const ArticleFooter = styled(
+  ark.footer,
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "xxlarge",
+      width: "100%",
+      "& > :is(:last-child)": {
+        paddingBlockEnd: "5xlarge",
+      },
+    },
+  },
+  { baseComponent: true },
+);
+
+const StyledStack = styled(Stack, {
   base: {
-    display: "flex",
-    flexDirection: "column",
-    color: "text.default",
-    gap: "xxlarge",
-    background: "surface.default",
-    paddingBlock: "xsmall",
-    paddingInline: "8%",
-    alignItems: "center",
     width: "100%",
-    overflowWrap: "break-word",
-    position: "relative",
-    tablet: {
-      paddingBlock: "medium",
-    },
-    desktop: {
-      paddingBlock: "xxlarge",
-    },
-    "& mjx-stretchy-v > mjx-ext > mjx-c": {
-      transform: "scaleY(100) translateY(0.075em)",
-    },
-    _after: {
-      content: "",
-      display: "table",
-      clear: "both",
-    },
+    minHeight: "xxlarge",
   },
 });
 
-const ArticleTitleWrapper = styled("hgroup", {
-  base: {
-    display: "flex",
-    width: "100%",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: "xsmall",
-    "& h1": {
-      overflowWrap: "anywhere",
-    },
-  },
-});
+interface ArticleTitleProps {
+  heartButton?: ReactNode;
+  contentType?: ContentType;
+  competenceGoals?: ReactNode;
+  id: string;
+  lang?: string;
+  title?: ReactNode;
+  introduction?: ReactNode;
+}
 
-const ArticleFavoritesButtonWrapper = styled("div", {
-  base: {
-    position: "absolute",
-    right: "8%",
-    top: "xsmall",
-    tablet: {
-      top: "medium",
-    },
-    desktop: {
-      top: "xxlarge",
-    },
-  },
-});
+export const ArticleTitle = ({
+  contentType,
+  heartButton,
+  title,
+  lang,
+  id,
+  introduction,
+  competenceGoals,
+}: ArticleTitleProps) => {
+  return (
+    <ArticleHeader>
+      <ArticleHGroup>
+        <StyledStack justify="space-between" align="center" direction="row" gap="small">
+          {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
+          {heartButton}
+        </StyledStack>
+        <Heading textStyle="heading.large" id={id} lang={lang} property="dct:title">
+          {title}
+        </Heading>
+      </ArticleHGroup>
+      {!!introduction && (
+        <Text lang={lang} textStyle="body.xlarge" asChild consumeCss>
+          <div>{introduction}</div>
+        </Text>
+      )}
+      {competenceGoals}
+    </ArticleHeader>
+  );
+};
 
-export const ArticleHeader = styled("header", {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "medium",
-    alignItems: "flex-start",
-    width: "100%",
-  },
-});
-
-export const ArticleFooter = styled("footer", {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "xxlarge",
-    width: "100%",
-  },
-});
-
-type Props = {
+interface Props {
   heartButton?: ReactNode;
   article: ArticleType;
   licenseBox?: ReactNode;
@@ -100,7 +158,7 @@ type Props = {
   competenceGoals?: ReactNode;
   id: string;
   lang?: string;
-};
+}
 
 export const Article = ({
   article,
@@ -118,22 +176,16 @@ export const Article = ({
     copyright?.creators.length || copyright?.rightsholders.length ? copyright.creators : copyright?.processors;
 
   return (
-    <ArticleWrapper data-ndla-article="">
-      <ArticleHeader>
-        <ArticleTitleWrapper>
-          {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
-          {!!heartButton && <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper>}
-          <Heading textStyle="heading.large" id={id} tabIndex={-1} lang={lang}>
-            {title}
-          </Heading>
-        </ArticleTitleWrapper>
-        {!!introduction && (
-          <Text lang={lang} textStyle="body.xlarge" asChild consumeCss>
-            <div>{introduction}</div>
-          </Text>
-        )}
-        {competenceGoals}
-      </ArticleHeader>
+    <ArticleWrapper>
+      <ArticleTitle
+        id={id}
+        contentType={contentType}
+        heartButton={heartButton}
+        title={title}
+        introduction={introduction}
+        competenceGoals={competenceGoals}
+        lang={lang}
+      />
       <ArticleContent>{content}</ArticleContent>
       <ArticleFooter>
         <ArticleByline

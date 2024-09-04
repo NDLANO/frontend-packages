@@ -8,7 +8,7 @@
 
 import { Toast, toastAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Text, TextProps } from "./Text";
 
@@ -17,8 +17,6 @@ const toastRecipe = sva({
   base: {
     root: {
       position: "relative",
-      background: "surface.action",
-      color: "text.onAction",
       borderRadius: "xsmall",
       boxShadow: "medium",
       minWidth: "20rem",
@@ -34,6 +32,10 @@ const toastRecipe = sva({
       transitionDuration: "slow",
       transitionProperty: "translate, scale, opacity, height",
       transitionTimingFunction: "default",
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
     title: {
       paddingInlineEnd: "xxlarge",
@@ -47,11 +49,32 @@ const toastRecipe = sva({
       paddingInlineEnd: "xxlarge",
     },
   },
+  defaultVariants: {
+    variant: "light",
+  },
+  variants: {
+    variant: {
+      light: {
+        root: {
+          background: "surface.brand.1.moderate",
+          color: "text.default",
+        },
+      },
+      dark: {
+        root: {
+          background: "surface.brand.1.strong",
+          color: "text.onAction",
+        },
+      },
+    },
+  },
 });
 
 const { withProvider, withContext } = createStyleContext(toastRecipe);
 
-export interface ToastRootProps extends Toast.RootProps, JsxStyleProps {}
+export type ToastRootVariantProps = NonNullable<RecipeVariantProps<typeof toastRecipe>>;
+
+export interface ToastRootProps extends Toast.RootProps, JsxStyleProps, ToastRootVariantProps {}
 export const ToastRoot = withProvider<HTMLDivElement, ToastRootProps>(Toast.Root, "root", { baseComponent: true });
 
 export const ToastActionTrigger = withContext<HTMLButtonElement, JsxStyleProps & Toast.ActionTriggerProps>(

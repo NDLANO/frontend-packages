@@ -6,11 +6,11 @@
  *
  */
 
+import { breakpoints } from "@ndla/core";
 import { ShareBoxLine } from "@ndla/icons/common";
 import { Heading, Image, Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import { token } from "@ndla/styled-system/tokens";
 
 const Container = styled("div", {
   base: {
@@ -84,7 +84,7 @@ export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) =
       <StyledImage
         src={image.src}
         alt={image.alt}
-        sizes={`(min-width: ${token("breakpoints.desktop")}) 150px, (max-width: ${token("breakpoints.tablet")} ) 400px, 200px`}
+        sizes={`(min-width: ${breakpoints.desktop}) 150px, (max-width: ${breakpoints.tablet} ) 400px, 200px`}
       />
       <ContentWrapper>
         <Heading textStyle="label.large" fontWeight="bold" asChild consumeCss>

@@ -18,6 +18,7 @@ import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline";
 import { processHtml } from "../utils/checkEmbedText";
+import { licenseAttributes } from "../utils/licenseAttributes";
 
 interface Props {
   embed: ImageMetaData;
@@ -122,8 +123,7 @@ const ImageWrapper = styled("div", {
     border: {
       true: {
         border: "1px solid",
-        // TODO: Not sure if we want this color.
-        borderColor: "surface.brand.1.strong",
+        borderColor: "stroke.subtle",
         borderBottom: "0",
         borderRadius: "xsmall",
         borderBottomLeftRadius: "0",
@@ -158,7 +158,6 @@ const StyledFigure = styled(Figure, {
   },
 });
 
-// TODO: Ask about BylineButton styling. Not included in design
 const BylineButton = styled(
   "button",
   {
@@ -250,12 +249,15 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
     setImageSizes((sizes) => (!sizes ? expandedSizes : undefined));
   };
 
+  const licenseProps = licenseAttributes(data.copyright.license.license, lang, embedData.url);
+
   // TODO: Check how this works with `children`. Will only be important for ED
   return (
     <StyledFigure
       float={figureProps?.float}
       size={imageSizes ? "full" : figureProps?.size ?? "medium"}
       data-embed-type="image"
+      {...licenseProps}
     >
       {children}
       <ImageWrapper border={embedData.border === "true"} expandable={!!figureProps?.float}>

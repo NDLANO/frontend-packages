@@ -6,8 +6,6 @@
  *
  */
 
-import { format } from "date-fns";
-import { enGB, nb, nn } from "date-fns/locale";
 import parse from "html-react-parser";
 import { useMemo } from "react";
 import { ArrowRightLine } from "@ndla/icons/common";
@@ -34,8 +32,8 @@ const StyledSafeLink = styled(SafeLink, {
     background: "surface.default",
     padding: "medium",
     border: "1px solid",
-    // TODO: Check if this is correct. Not part of design. Also check if this should have border-radius.
-    borderColor: "stroke.default",
+    borderColor: "stroke.subtle",
+    borderRadius: "xsmall",
     "& h3": {
       textDecoration: "underline",
     },
@@ -79,8 +77,11 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
   const href = getPossiblyRelativeUrl(url, path);
   const formattedDate = useMemo(() => {
     if (!date) return null;
-    const locale = articleLanguage === "nb" ? nb : articleLanguage === "nn" ? nn : enGB;
-    return format(new Date(date), "dd. LLLL yyyy", { locale });
+    return new Intl.DateTimeFormat(articleLanguage, {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }).format(new Date(date));
   }, [date, articleLanguage]);
   return (
     <StyledSafeLink to={href} data-embed-type="link-block">

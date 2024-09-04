@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Portal } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
-import { ArrowUpShortLine } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons/common";
 import { CheckLine } from "@ndla/icons/editor";
 import { css } from "@ndla/styled-system/css";
 import { HStack } from "@ndla/styled-system/jsx";
@@ -64,7 +64,7 @@ export const Default: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           <Button variant="secondary">
             <SelectValueText placeholder="Select measurement" />
             <SelectIndicator asChild>
-              <ArrowUpShortLine />
+              <ArrowDownShortLine />
             </SelectIndicator>
           </Button>
         </SelectTrigger>
@@ -96,7 +96,7 @@ export const Disabled: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           <Button variant="secondary">
             <SelectValueText placeholder="Select measurement" />
             <SelectIndicator asChild>
-              <ArrowUpShortLine />
+              <ArrowDownShortLine />
             </SelectIndicator>
           </Button>
         </SelectTrigger>
@@ -129,7 +129,7 @@ export const DisabledItems: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           <Button variant="secondary">
             <SelectValueText placeholder="Select measurement" />
             <SelectIndicator asChild>
-              <ArrowUpShortLine />
+              <ArrowDownShortLine />
             </SelectIndicator>
           </Button>
         </SelectTrigger>
@@ -170,7 +170,7 @@ export const Grouped: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           <Button variant="secondary">
             <SelectValueText placeholder="Choose country" />
             <SelectIndicator asChild>
-              <ArrowUpShortLine />
+              <ArrowDownShortLine />
             </SelectIndicator>
           </Button>
         </SelectTrigger>
@@ -207,7 +207,7 @@ export const Multiple: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           <Button variant="secondary">
             <SelectValueText placeholder="Choose country" />
             <SelectIndicator asChild>
-              <ArrowUpShortLine />
+              <ArrowDownShortLine />
             </SelectIndicator>
           </Button>
         </SelectTrigger>
@@ -258,7 +258,7 @@ export const MultipleTruncated: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                 : value.map((val) => val.label).join(", ")}
             </SelectValueText>
             <SelectIndicator asChild>
-              <ArrowUpShortLine />
+              <ArrowDownShortLine />
             </SelectIndicator>
           </Button>
         </SelectTrigger>
@@ -295,7 +295,7 @@ export const WithClearButton: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           <Button variant="secondary">
             <SelectValueText placeholder="Choose country" />
             <SelectIndicator asChild>
-              <ArrowUpShortLine />
+              <ArrowDownShortLine />
             </SelectIndicator>
           </Button>
         </SelectTrigger>
@@ -361,7 +361,7 @@ export const InDialog: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                 <Button variant="secondary">
                   <SelectValueText placeholder="Select measurement" />
                   <SelectIndicator asChild>
-                    <ArrowUpShortLine />
+                    <ArrowDownShortLine />
                   </SelectIndicator>
                 </Button>
               </SelectTrigger>
@@ -406,7 +406,7 @@ export const WithField: StoryFn<typeof SelectRoot> = ({ ...args }) => {
             <Button variant="secondary">
               <SelectValueText placeholder="Select measurement" />
               <SelectIndicator asChild>
-                <ArrowUpShortLine />
+                <ArrowDownShortLine />
               </SelectIndicator>
             </Button>
           </SelectTrigger>

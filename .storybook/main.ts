@@ -40,7 +40,7 @@ const config: StorybookConfig = {
           babel: {
             overrides: [
               {
-                exclude: /primitives|preset-panda|styled-system|ndla-icons|ndla-ui/,
+                exclude: /primitives|preset-panda|styled-system|ndla-icons|ndla-ui|audio-search/,
                 plugins: [["@emotion", { autoLabel: "always" }]],
               },
             ],

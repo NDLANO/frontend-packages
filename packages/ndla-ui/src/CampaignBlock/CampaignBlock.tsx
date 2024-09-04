@@ -36,24 +36,33 @@ interface Props {
 
 const Container = styled("div", {
   base: {
-    display: "flex",
-    flexDirection: "column",
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gap: "medium",
     border: "1px solid",
     borderColor: "stroke.default",
     backgroundColor: "background.default",
     borderRadius: "xsmall",
     boxShadow: "full",
     marginBlockEnd: "4xsmall",
-    maxWidth: "surface.xsmall",
     overflow: "hidden",
-    mobileWide: {
-      maxWidth: "surface.medium",
+  },
+  variants: {
+    imageSide: {
+      left: {
+        tabletWide: {
+          gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
+        },
+      },
+      right: {
+        tabletWide: {
+          gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
+        },
+      },
     },
-    tabletWide: {
-      // TODO: This is probably not the correct max-width. And it should be a token
-      maxWidth: "1100px",
-      flexDirection: "row",
-    },
+  },
+  defaultVariants: {
+    imageSide: "left",
   },
 });
 
@@ -65,15 +74,30 @@ const LinkText = styled(Text, {
     _hover: {
       textDecoration: "none",
     },
+    paddingBlock: "xsmall",
+    fontWeight: "bold",
   },
 });
+
+const LinkHeader = styled(Text, {
+  base: {
+    display: "flex",
+    textDecoration: "underline",
+    _hover: {
+      textDecoration: "none",
+    },
+  },
+});
+
 const StyledImg = styled("img", {
   base: {
-    alignSelf: "center",
     objectFit: "cover",
     width: "100%",
     height: "215px",
-    desktop: {
+    tablet: {
+      height: "265px",
+    },
+    tabletWide: {
       height: "340px",
     },
   },
@@ -82,13 +106,26 @@ const StyledImg = styled("img", {
 const ContentWrapper = styled("div", {
   base: {
     width: "100%",
-    position: "relative",
     display: "flex",
     flexDirection: "column",
-    gap: "xsmall",
+    gap: "medium",
     alignItems: "flex-start",
+    justifyContent: "center",
     paddingBlock: "medium",
     paddingInline: "medium",
+    minWidth: "270px", //required for campaign block in myNdla
+  },
+});
+
+const StyledText = styled(Text, {
+  base: {
+    tabletWide: {
+      display: "block",
+      overflow: "hidden",
+      position: "relative",
+      lineClamp: 4,
+      boxOrient: "vertical",
+    },
   },
 });
 
@@ -120,10 +157,9 @@ const CampaignBlock = ({
   className,
 }: Props) => {
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
-  const HeaderComponent = url?.url ? LinkText : Text;
+  const HeaderComponent = url?.url ? LinkHeader : Text;
   return (
-    // TODO: Remove data-type
-    <Container className={className} data-type="campaign-block" data-embed-type="campaign-block">
+    <Container className={className} data-embed-type="campaign-block" imageSide={imageSide}>
       {imageSide === "left" && imageComponent}
       <ContentWrapper>
         <MaybeLinkText url={url?.url} path={path}>
@@ -131,7 +167,7 @@ const CampaignBlock = ({
             <InternalHeading>{parse(title)}</InternalHeading>
           </HeaderComponent>
         </MaybeLinkText>
-        <Text textStyle="body.large">{parse(description)}</Text>
+        <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
         {!!url?.url && (
           <MaybeLinkText url={url.url} path={path}>
             <LinkText textStyle="body.medium">

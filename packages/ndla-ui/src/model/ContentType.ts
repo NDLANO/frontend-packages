@@ -13,7 +13,7 @@ export const SUBJECT = "subject";
 export const SOURCE_MATERIAL = "source-material";
 export const LEARNING_PATH = "learning-path";
 export const TOPIC = "topic";
-export const MULTIDISCIPLINARY_TOPIC = "multidisciplinary-topic";
+export const MULTIDISCIPLINARY = "multidisciplinary";
 export const CONCEPT = "concept";
 export const EXTERNAL = "external";
 export const MISSING = "missing";
@@ -30,7 +30,7 @@ export const contentTypes = {
   SOURCE_MATERIAL,
   LEARNING_PATH,
   TOPIC,
-  MULTIDISCIPLINARY_TOPIC,
+  MULTIDISCIPLINARY,
   CONCEPT,
   EXTERNAL,
   MISSING,
@@ -43,20 +43,6 @@ export const RESOURCE_TYPE_ASSESSMENT_RESOURCES = "urn:resourcetype:reviewResour
 export const RESOURCE_TYPE_SOURCE_MATERIAL = "urn:resourcetype:SourceMaterial";
 export const RESOURCE_TYPE_CONCEPT = "urn:resourcetype:concept";
 
-export const ListOfContentTypes = [
-  "SUBJECT_MATERIAL",
-  "TASKS_AND_ACTIVITIES",
-  "ASSESSMENT_RESOURCES",
-  "SUBJECT",
-  "SOURCE_MATERIAL",
-  "LEARNING_PATH",
-  "TOPIC",
-  "MULTIDISIPLINARY_TOPIC",
-  "CONCEPT",
-  "EXTERNAL",
-  "MISSING",
-];
-
 export const contentTypeMapping: Record<string, string> = {
   [RESOURCE_TYPE_LEARNING_PATH]: LEARNING_PATH,
   [RESOURCE_TYPE_SUBJECT_MATERIAL]: SUBJECT_MATERIAL,
@@ -64,6 +50,7 @@ export const contentTypeMapping: Record<string, string> = {
   [RESOURCE_TYPE_ASSESSMENT_RESOURCES]: ASSESSMENT_RESOURCES,
   [RESOURCE_TYPE_SOURCE_MATERIAL]: SOURCE_MATERIAL,
   [RESOURCE_TYPE_CONCEPT]: CONCEPT,
+  [MULTIDISCIPLINARY]: MULTIDISCIPLINARY,
   default: SUBJECT_MATERIAL,
 };
 

@@ -6,43 +6,18 @@
  *
  */
 
-import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
-import styled from "@emotion/styled";
-import { ButtonV2 } from "@ndla/button";
+import { ChangeEvent, FormEvent, KeyboardEvent, useState } from "react";
+import { SearchLine } from "@ndla/icons/common";
+import { IconButton, Input } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { QueryObject } from "./AudioSearch";
 
-const AudioSearchFormWrapper = styled.div`
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #eaeaea;
-`;
-
-const FormInput = styled.input`
-  width: 88%;
-  height: 3rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  box-shadow: none;
-  border-width: 2px;
-  float: left;
-  border-radius: 5px 0 0 5px;
-`;
-
-const FormButton = styled(ButtonV2)`
-  width: 12%;
-  height: 3rem;
-  display: inline-block;
-  margin-left: -2px;
-  border-radius: 0 5px 5px 0;
-  padding: 0.4em;
-
-  &:hover {
-    transform: none;
-  }
-`;
+const StyledForm = styled("form", {
+  base: {
+    display: "flex",
+    gap: "xsmall",
+  },
+});
 
 interface Props {
   queryObject: QueryObject;
@@ -57,12 +32,6 @@ interface Props {
 const AudioSearchForm = ({ queryObject: query, translations, searching, onSearchQuerySubmit }: Props) => {
   const [queryObject, setQueryObject] = useState(query);
 
-  const onKeyPress = (evt: KeyboardEvent<HTMLInputElement>) => {
-    if (evt.key === "Enter") {
-      handleSubmit(evt);
-    }
-  };
-
   const handleQueryChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     setQueryObject((prevState) => ({
       ...prevState,
@@ -70,24 +39,28 @@ const AudioSearchForm = ({ queryObject: query, translations, searching, onSearch
     }));
   };
 
-  const handleSubmit = (evt: KeyboardEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement>) => {
-    evt.preventDefault();
+  const handleSubmit = (e: KeyboardEvent<HTMLInputElement> | FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     onSearchQuerySubmit(queryObject);
   };
 
   return (
-    <AudioSearchFormWrapper>
-      <FormInput
-        type="text"
-        onChange={handleQueryChange}
-        onKeyPress={onKeyPress}
-        value={queryObject?.query}
+    <StyledForm onSubmit={handleSubmit}>
+      <Input
+        type="search"
         placeholder={translations.searchPlaceholder}
+        value={queryObject?.query}
+        onChange={handleQueryChange}
       />
-      <FormButton onClick={handleSubmit} disabled={searching}>
-        {translations.searchButtonTitle}
-      </FormButton>
-    </AudioSearchFormWrapper>
+      <IconButton
+        variant="primary"
+        type="submit"
+        aria-label={translations.searchButtonTitle}
+        title={translations.searchButtonTitle}
+      >
+        <SearchLine />
+      </IconButton>
+    </StyledForm>
   );
 };
 

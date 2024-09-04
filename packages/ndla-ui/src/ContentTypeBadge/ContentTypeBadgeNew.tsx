@@ -23,7 +23,7 @@ export type ContentType =
   | typeof contentTypes.SOURCE_MATERIAL
   | typeof contentTypes.LEARNING_PATH
   | typeof contentTypes.TOPIC
-  | typeof contentTypes.MULTIDISCIPLINARY_TOPIC
+  | typeof contentTypes.MULTIDISCIPLINARY
   | typeof contentTypes.CONCEPT
   | typeof contentTypes.EXTERNAL
   | typeof contentTypes.IMAGE
@@ -42,12 +42,9 @@ export const contentTypeToBadgeVariantMap: Record<ContentType, BadgeVariant> = {
   [contentTypes.SOURCE_MATERIAL]: "brand1",
   [contentTypes.LEARNING_PATH]: "brand3",
   [contentTypes.TOPIC]: "neutral",
-  // TODO: Verify this color
-  [contentTypes.MULTIDISCIPLINARY_TOPIC]: "neutral",
+  [contentTypes.MULTIDISCIPLINARY]: "neutral",
   [contentTypes.CONCEPT]: "brand1",
-  // TODO: Verify this color
   [contentTypes.EXTERNAL]: "brand2",
-  // TODO: Verify resourceEmbedTypeMapping colors
   [contentTypes.IMAGE]: "brand1",
   [contentTypes.AUDIO]: "brand1",
   [contentTypes.PODCAST]: "brand1",

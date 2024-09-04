@@ -1,7 +1,7 @@
 {
   "name": "@ndla/styled-system",
   "description": "Styled System for NDLA",
-  "version": "0.0.10",
+  "version": "0.0.14",
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",
@@ -19,7 +19,7 @@
     "react-dom": ">= 18"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.44.0"
+    "@pandacss/dev": "^0.45.2"
   },
   "files": [
     "*"

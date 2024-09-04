@@ -99,6 +99,7 @@ const menuRecipe = sva({
     item: itemStyle,
     triggerItem: itemStyle,
     content: {
+      color: "text.default",
       display: "flex",
       flexDirection: "column",
       width: "fit-content",
@@ -112,9 +113,15 @@ const menuRecipe = sva({
       zIndex: "dropdown",
       _open: {
         animation: "fade-shift-in 0.25s ease-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
       _closed: {
         animation: "fade-shift-out 0.25s ease-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
     },
     itemGroup: {

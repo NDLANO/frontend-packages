@@ -26,7 +26,6 @@ export const contactBlockBackgrounds = Object.keys(BackgroundVariant) as Contact
 const StyledWrapper = styled("div", {
   base: {
     display: "flex",
-    maxWidth: "744px",
     minWidth: "surface.xxsmall",
     padding: "medium",
     alignItems: "center",
@@ -171,7 +170,6 @@ export const ContactBlock = ({
     <StyledWrapper data-embed-type="contact-block">
       <ContentWrapper>
         <HeaderWrapper variant={backgroundColor} imageExists={!!image}>
-          {/* TODO: The font in the design specified `Source Sans Pro` and this is the default `Satoshi` */}
           <Text lang={lang} fontWeight="bold" textStyle="heading.small">
             {name}
           </Text>
@@ -191,7 +189,6 @@ export const ContactBlock = ({
             width={300}
             height={300}
           />
-          {/* TODO: The font in the design specified `Source Sans Pro` and this is the default `Satoshi` */}
           <LicenseContainerContent type="image" copyright={image.copyright} />
         </ImageWrapper>
       )}

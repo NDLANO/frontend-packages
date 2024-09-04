@@ -13,10 +13,10 @@ const freeUseNB = "Offentlig eie";
 const freeUseNN = "Offentleg eige";
 const freeUseEN = "Public domain";
 const restrictedUseNB = "Begrenset bruksrett";
-const restrictedUseNN = "Begrensa bruksrett";
+const restrictedUseNN = "Avgrensa bruksrett";
 const restrictedUseEN = "Restricted right of use";
 const restrictedReuseNB = "Begrenset gjenbruk";
-const restrictedReuseNN = "Begrensa gjenbruk";
+const restrictedReuseNN = "Avgrensa gjenbruk";
 const restrictedReuseEN = "Restricted reuse";
 
 const openLicenseLinkTextNB = "Les mer om opphavsrett";

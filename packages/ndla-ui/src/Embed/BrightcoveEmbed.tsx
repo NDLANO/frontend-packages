@@ -16,10 +16,12 @@ import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline";
 import { processHtml } from "../utils/checkEmbedText";
+import { licenseAttributes } from "../utils/licenseAttributes";
 
 interface Props {
   embed: BrightcoveMetaData;
   renderContext?: RenderContext;
+  lang?: string;
 }
 
 const LinkedVideoButton = styled(Button, {
@@ -55,7 +57,7 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? "640",
   };
 };
-const BrightcoveEmbed = ({ embed, renderContext = "article" }: Props) => {
+const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -101,8 +103,10 @@ const BrightcoveEmbed = ({ embed, renderContext = "article" }: Props) => {
     ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
     : undefined;
 
+  const licenseProps = licenseAttributes(data?.copyright?.license.license, lang, embedData.pageUrl);
+
   return (
-    <Figure data-embed-type="brightcove">
+    <Figure data-embed-type="brightcove" {...licenseProps}>
       <div className="brightcove-video">
         <BrightcoveIframe
           ref={iframeRef}
@@ -115,7 +119,6 @@ const BrightcoveEmbed = ({ embed, renderContext = "article" }: Props) => {
         />
       </div>
       <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription}>
-        {/* TODO: Figure out if this button should still be here. If yes, figure out what it should look like. */}
         {!!linkedVideoId && (
           <LinkedVideoButton size="small" variant="secondary" onClick={() => setShowOriginalVideo((p) => !p)}>
             {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}

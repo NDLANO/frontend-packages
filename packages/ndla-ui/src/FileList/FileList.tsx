@@ -6,49 +6,44 @@
  *
  */
 
-import { ComponentProps, ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
-import { colors, fonts, spacing } from "@ndla/core";
-import { Heading } from "@ndla/typography";
-interface Props extends ComponentProps<"section"> {
-  children: ReactNode;
-  headingButtons?: ReactNode;
-}
+import { Heading } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 
-const FileListSection = styled.section`
-  margin: ${spacing.large} 0;
-  padding: 0 0 ${spacing.normal} ${spacing.normal};
-  border-left: 2px solid ${colors.brand.greyLightest};
-  font-family: ${fonts.sans};
-`;
+interface Props extends ComponentPropsWithoutRef<"div"> {}
 
-const FileListHeaderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 ${spacing.xsmall} 0;
-  padding-bottom: ${spacing.xsmall};
-  border-bottom: 2px solid ${colors.brand.greyLight};
-`;
+export const FileListWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
+  },
+});
 
-const FilesList = styled.ul`
-  padding: 0;
-`;
+export const FileListItem = styled("li", {
+  base: {
+    listStyle: "none",
+    background: "surface.infoSubtle",
+    borderBlockEnd: "1px solid",
+    borderColor: "stroke.default",
+    display: "flex",
+    justifyContent: "space-between",
 
-const FileList = ({ children, headingButtons, ...rest }: Props) => {
+    _hover: {
+      backgroundColor: "surface.infoSubtle.hover",
+    },
+  },
+});
+
+export const FileListEmbed = ({ children, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
-    <FileListSection {...rest}>
-      <FileListHeaderWrapper>
-        <Heading element="h3" headingStyle="list-title" margin="none">
-          {t("files")}
-        </Heading>
-        <div>{headingButtons}</div>
-      </FileListHeaderWrapper>
-      <FilesList>{children}</FilesList>
-    </FileListSection>
+    <FileListWrapper {...rest} data-embed-type="file-list">
+      <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
+        <h3>{t("files")}</h3>
+      </Heading>
+      <ul>{children}</ul>
+    </FileListWrapper>
   );
 };
-
-export default FileList;

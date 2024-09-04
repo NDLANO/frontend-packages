@@ -570,7 +570,7 @@ const messages = {
     "source-material": "Source material",
     "assessment-resources": "Assessment resource",
     topic: "Topic",
-    "multidisciplinary-topic": "Multidisciplinary case",
+    multidisciplinary: "Multidisciplinary case",
     image: "Image",
     concept: "Concept",
     audio: "Audio",
@@ -1086,9 +1086,9 @@ const messages = {
         },
         fetchMore: "Fetch more answers",
         deleted: "This post has been deleted by the author.",
-        upvote: "Upvote",
+        upvote: "Like",
         numberOfUpvotes: "{{ count }} people have upvoted this.",
-        removeUpvote: "Remove upvote",
+        removeUpvote: "Stop liking",
         reply: "Write a reply to {{ name }}",
       },
       flag: {
@@ -1117,6 +1117,10 @@ const messages = {
         subscribe: "You will now be notified of new replies to this topic",
         unsubscribe: "You have turned off notification of new replies to this topic",
         commentedOn: "commented on the post <i>{{title}}</i>",
+        button: {
+          show: "View notifications",
+          showNew: "View {{count}} new notifications",
+        },
       },
       topicsBy: "Topics by",
       admin: {
@@ -1260,7 +1264,7 @@ const messages = {
       loginTerms: "Log in with Feide to receive access. By logging on your accept your terms of service",
       loginResourcePitch: "Do you want to favorite this resource?",
       loginWelcome: "Welcome to My NDLA!",
-      deleteAccount: "Delete My NDLA",
+      deleteAccount: "Delete profile",
       loginPitch:
         "Welcome to My NDLA! Here you can save your favourite resources from NDLA, organize them and share them with others. Log in with your Feide account to get started.",
       loginPitchButton: "Log in to My NDLA",
@@ -1365,7 +1369,7 @@ const messages = {
       dragHandle: "Drag the category {{name}}",
     },
     favoriteSubjects: {
-      title: "My favorite subjects",
+      title: "My subjects",
       subjects: "{{count}} subject",
       subjects_0: "{{count}} subjects",
       subjects_plural: "{{count}} subjects",

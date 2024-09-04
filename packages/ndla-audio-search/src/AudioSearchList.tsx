@@ -6,20 +6,17 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { colors, misc } from "@ndla/core";
+import { ReactNode } from "react";
+import { Text } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioSearchResult from "./AudioSearchResult";
 
-const StyledResultSpinner = styled.div`
-  border: 0.4em solid ${colors.brand.greyLight};
-  border-bottom-color: ${colors.brand.primary};
-  border-radius: ${misc.borderRadiusLarge};
-  margin: 0 auto;
-  animation: loadVideoSpinner 0.7s linear infinite;
-  height: 3em;
-  width: 3em;
-`;
+const StyledList = styled("ul", {
+  base: {
+    listStyle: "none",
+  },
+});
 
 interface Props {
   audios: IAudioSummary[];
@@ -32,6 +29,7 @@ interface Props {
   onError: (err: any) => void;
   fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
   onAudioSelect: (audio: IAudioSummary) => void;
+  loadingIndicator: ReactNode;
 }
 
 export default function AudioSearchList({
@@ -42,15 +40,17 @@ export default function AudioSearchList({
   onError,
   fetchAudio,
   onAudioSelect,
+  loadingIndicator,
 }: Props) {
-  if ((!audios || audios.length === 0) && !searching) {
-    return <p>{translations.noResults}</p>;
+  if (!audios.length && !searching) {
+    return <Text>{translations.noResults}</Text>;
   }
-  if (searching && !((audios?.length ?? 0) > 0)) {
-    return <StyledResultSpinner />;
+  if (searching) {
+    return loadingIndicator;
   }
+
   return (
-    <div>
+    <StyledList>
       {audios?.map((audio) => (
         <AudioSearchResult
           key={audio.id}
@@ -62,6 +62,6 @@ export default function AudioSearchList({
           onAudioSelect={onAudioSelect}
         />
       ))}
-    </div>
+    </StyledList>
   );
 }

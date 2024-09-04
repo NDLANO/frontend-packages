@@ -52,6 +52,10 @@ const accordionRecipe = sva({
       _open: {
         transform: "rotate(180deg)",
       },
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
+      },
     },
     itemContent: {
       overflow: "hidden",
@@ -63,9 +67,15 @@ const accordionRecipe = sva({
       paddingInline: "small",
       _open: {
         animation: "collapse-in",
+        _motionReduce: {
+          animation: "none",
+        },
       },
       _closed: {
         animation: "collapse-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
     },
     item: {
@@ -91,7 +101,7 @@ const accordionRecipe = sva({
             boxShadowColor: "stroke.hover",
           },
           _open: {
-            backgroundColor: "surface.actionSubtle.active",
+            background: "surface.actionSubtle.active",
             boxShadowColor: "stroke.default",
             borderBottomRadius: "sharp",
           },
@@ -136,7 +146,9 @@ export const AccordionItemIndicator = withContext<HTMLDivElement, JsxStyleProps 
   { baseComponent: true },
 );
 
-export const AccordionItem = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemProps>(Accordion.Item, "item", {
+export interface AccordionItemProps extends JsxStyleProps, Accordion.ItemProps {}
+
+export const AccordionItem = withContext<HTMLDivElement, AccordionItemProps>(Accordion.Item, "item", {
   baseComponent: true,
 });
 

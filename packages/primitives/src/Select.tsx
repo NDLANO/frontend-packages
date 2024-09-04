@@ -43,9 +43,15 @@ const selectRecipe = sva({
       },
       _open: {
         animation: "fade-shift-in 0.25s ease-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
       _closed: {
         animation: "fade-shift-out 0.25s ease-out",
+        _motionReduce: {
+          animation: "none",
+        },
       },
     },
     item: {
@@ -103,6 +109,10 @@ const selectRecipe = sva({
       transitionTimingFunction: "default",
       _open: {
         transform: "rotate(180deg)",
+      },
+      _motionReduce: {
+        transition: "none",
+        transitionDuration: "0s",
       },
     },
     itemIndicator: {

@@ -6,7 +6,7 @@
  *
  */
 
-export type { AccordionRootProps } from "./Accordion";
+export type { AccordionRootProps, AccordionItemProps } from "./Accordion";
 export {
   AccordionRoot,
   AccordionItemContent,
@@ -125,6 +125,9 @@ export { Label, FieldLabel, Legend, FieldsetLegend } from "./Label";
 export type { ListItemVariantProps, ListItemProps } from "./ListItem/ListItem";
 export { ListItemRoot, ListItemHeading, ListItemContent, ListItemImage } from "./ListItem/ListItem";
 
+export type { PageContentVariantProps } from "./Layout/PageContent";
+export { PageContent, BleedPageContent } from "./Layout/PageContent";
+
 export type { MenuRootProps, MenuItemVariantProps, MenuItemProps } from "./Menu";
 export {
   MenuRoot,
@@ -148,6 +151,7 @@ export { NdlaLogoEn, NdlaLogoNb, NdlaLogoText } from "./NdlaLogo";
 export type { PaginationRootProps } from "./Pagination";
 export {
   PaginationRoot,
+  PaginationContext,
   PaginationItem,
   PaginationEllipsis,
   PaginationPrevTrigger,
@@ -268,3 +272,20 @@ export {
   TooltipPositioner,
   TooltipTrigger,
 } from "./Tooltip";
+
+export type { TreeRootProps } from "./Tree/Tree";
+export {
+  TreeRoot,
+  TreeBranchContent,
+  TreeBranchControl,
+  TreeBranchIndicator,
+  TreeBranch,
+  TreeBranchText,
+  TreeBranchTrigger,
+  TreeItemIndicator,
+  TreeItem,
+  TreeItemText,
+  TreeLabel,
+  Tree,
+  TreeRootProvider,
+} from "./Tree/Tree";

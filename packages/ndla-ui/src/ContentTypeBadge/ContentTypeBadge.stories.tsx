@@ -6,9 +6,8 @@
  *
  */
 
-import styled from "@emotion/styled";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { spacing } from "@ndla/core";
+import { styled } from "@ndla/styled-system/jsx";
 import { ContentTypeBadge } from "./ContentTypeBadge";
 import * as contentTypes from "../model/ContentType";
 
@@ -54,11 +53,13 @@ export const NoBackground: StoryObj<typeof ContentTypeBadge> = {
   },
 };
 
-const BadgesWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing.small};
-`;
+const BadgesWrapper = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    gap: "xsmall",
+  },
+});
 
 export const AllBadges: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
   <BadgesWrapper>
@@ -69,7 +70,7 @@ export const AllBadges: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
     <ContentTypeBadge {...args} type={contentTypes.SOURCE_MATERIAL} />
     <ContentTypeBadge {...args} type={contentTypes.LEARNING_PATH} />
     <ContentTypeBadge {...args} type={contentTypes.TOPIC} />
-    <ContentTypeBadge {...args} type={contentTypes.MULTIDISCIPLINARY_TOPIC} />
+    <ContentTypeBadge {...args} type={contentTypes.MULTIDISCIPLINARY} />
     <ContentTypeBadge {...args} type={contentTypes.CONCEPT} />
     <ContentTypeBadge {...args} type={contentTypes.EXTERNAL} />
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.image} />

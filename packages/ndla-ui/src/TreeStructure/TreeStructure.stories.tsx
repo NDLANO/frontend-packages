@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,42 +7,34 @@
  */
 
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
 import { Meta, StoryFn } from "@storybook/react";
-import { IconButtonV2 } from "@ndla/button";
-import { spacing } from "@ndla/core";
-import { Spinner } from "@ndla/icons";
 import { CloseLine } from "@ndla/icons/action";
 import { CheckLine } from "@ndla/icons/editor";
-import { FieldErrorMessage, FieldLabel, FieldRoot, InputContainer, FieldHelper, FieldInput } from "@ndla/primitives";
+import {
+  FieldErrorMessage,
+  FieldInput,
+  FieldLabel,
+  FieldRoot,
+  FieldHelper,
+  IconButton,
+  InputContainer,
+  Spinner,
+} from "@ndla/primitives";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 import { IFolder } from "@ndla/types-backend/myndla-api";
-import { uuid } from "@ndla/util";
 import { flattenFolders } from "./helperFunctions";
-import TreeStructure, { TreeStructureProps } from "./TreeStructure";
+import { TreeStructure, TreeStructureProps } from "./TreeStructure";
+
+const Container = styled("div", {
+  base: {
+    display: "flex",
+    maxWidth: "surface.large",
+    maxHeight: "surface.small",
+  },
+});
 
 const MY_FOLDERS_ID = "folders";
-
-const Container = styled.div`
-  display: flex;
-  margin-top: 40px;
-  max-width: 600px;
-  &[data-type="picker"] {
-    height: 250px;
-  }
-`;
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing.xxsmall};
-  padding-right: ${spacing.xsmall};
-`;
-
-const StyledSpinner = styled(Spinner)`
-  margin: ${spacing.small};
-`;
 
 const targetResource: TreeStructureProps["targetResource"] = {
   id: "test-resource",
@@ -147,7 +139,6 @@ export default {
     targetResource: targetResource,
     label: "Velg mappe",
     maxLevel: 5,
-    type: "picker",
     // eslint-disable-next-line no-console
     onSelectFolder: console.log,
   },
@@ -157,25 +148,19 @@ export default {
 } as Meta<typeof TreeStructure>;
 
 export const Default: StoryFn<typeof TreeStructure> = ({ ...args }) => {
-  const [structure, setStructure] = useState<IFolder[]>(
-    args.type === "picker" ? FOLDER_TREE_STRUCTURE : STRUCTURE_EXAMPLE,
-  );
-
-  useEffect(() => {
-    setStructure(args.type === "picker" ? FOLDER_TREE_STRUCTURE : STRUCTURE_EXAMPLE);
-  }, [args.type]);
+  const [structure, setStructure] = useState<IFolder[]>(FOLDER_TREE_STRUCTURE);
 
   return (
-    <Container data-type={args.type}>
+    <Container>
       <TreeStructure
         {...args}
         folders={structure}
-        newFolderInput={({ parentId, onClose, onCreate }) => (
+        newFolderInput={({ parentId, onCancel, onCreate }) => (
           <NewFolder
             structure={structure}
             setStructure={setStructure}
             parentId={parentId}
-            onClose={onClose}
+            onCancel={onCancel}
             onCreate={onCreate}
           />
         )}
@@ -188,8 +173,8 @@ interface NewFolderProps {
   parentId: string;
   structure: IFolder[];
   setStructure: Dispatch<SetStateAction<IFolder[]>>;
-  onClose?: () => void;
-  onCreate?: (folder: IFolder, parentId: string) => void;
+  onCancel?: () => void;
+  onCreate?: (folder: IFolder) => void;
 }
 
 const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; name: string }[]): IFolder => ({
@@ -203,7 +188,7 @@ const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; 
   updated: "2023-03-03T08:40:23.444Z",
 });
 
-const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: NewFolderProps) => {
+const NewFolder = ({ parentId, onCancel, structure, setStructure, onCreate }: NewFolderProps) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -211,12 +196,6 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
   const { t } = useTranslation();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (isMobile) {
-      inputRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
 
   const onSave = async () => {
     if (error) {
@@ -230,7 +209,7 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
     setLoading(false);
     const flattenedStructure = flattenFolders(structure);
     const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);
-    const newFolderId = uuid();
+    const newFolderId = (flattenedStructure.length + 1).toString();
     const newFolder = generateNewFolder(name, newFolderId, targetFolder?.breadcrumbs ?? []);
     if (targetFolder) {
       setStructure((oldStructure) => {
@@ -240,8 +219,7 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
     } else {
       setStructure((old) => [newFolder].concat(old));
     }
-    onCreate?.(newFolder, parentId);
-    onClose?.();
+    onCreate?.(newFolder);
   };
 
   useEffect(() => {
@@ -273,39 +251,31 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
           onKeyDown={(e) => {
             if (e.key === "Escape") {
               e.preventDefault();
-              onClose?.();
+              onCancel?.();
             } else if (e.key === "Enter") {
               e.preventDefault();
               onSave();
             }
           }}
         />
-        <Row>
+        <HStack gap="3xsmall">
           {!loading ? (
             <>
               {!error && (
-                <IconButtonV2
-                  variant={"ghost"}
-                  colorTheme="light"
-                  tabIndex={0}
-                  aria-label={t("save")}
-                  title={t("save")}
-                  size="small"
-                  onClick={onSave}
-                >
+                <IconButton variant="tertiary" aria-label={t("save")} title={t("save")} onClick={onSave}>
                   <CheckLine />
-                </IconButtonV2>
+                </IconButton>
               )}
-              <IconButtonV2 aria-label={t("close")} title={t("close")} size="small" variant="ghost" onClick={onClose}>
+              <IconButton aria-label={t("close")} title={t("close")} variant="tertiary" onClick={onCancel}>
                 <CloseLine />
-              </IconButtonV2>
+              </IconButton>
             </>
           ) : (
             <FieldHelper>
-              <StyledSpinner size="normal" aria-label={t("loading")} />
+              <Spinner size="small" aria-label={t("loading")} />
             </FieldHelper>
           )}
-        </Row>
+        </HStack>
       </InputContainer>
     </FieldRoot>
   );

@@ -7,7 +7,7 @@
  */
 
 import { TFunction } from "i18next";
-import { ReactNode, useCallback, useEffect, useState } from "react";
+import { ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { ArrowDownShortLine } from "@ndla/icons/common";
@@ -16,12 +16,13 @@ import {
   AccordionItem,
   AccordionItemContent,
   AccordionItemIndicator,
+  AccordionItemProps,
   AccordionItemTrigger,
   AccordionRoot,
   Heading,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import ArticleFootNotes from "./ArticleFootNotes";
+import { ArticleFootNotes } from "./ArticleFootNotes";
 import { LicenseLink } from "../LicenseByline/LicenseLink";
 import { FootNote } from "../types";
 
@@ -35,8 +36,6 @@ const Wrapper = styled("div", {
   },
 });
 
-// TODO: This is designed with 24px of inline padding. If you do this, most bylines will break into two lines.
-// Should reconsider.
 const TextWrapper = styled("div", {
   base: {
     display: "flex",
@@ -119,7 +118,7 @@ const StyledAccordionRoot = styled(AccordionRoot, {
 const refRegexp = /note\d/;
 const footnotesAccordionId = "footnotes";
 
-const ArticleByline = ({
+export const ArticleByline = ({
   authors = [],
   suppliers = [],
   footnotes,
@@ -168,7 +167,8 @@ const ArticleByline = ({
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (
-              <span>
+              //eslint-disable-next-line react/no-unknown-property
+              <span property="cc:attributionName">
                 {authors.length > 0 &&
                   `${t("article.authorsLabel", {
                     names: renderContributors(authors, t),
@@ -188,38 +188,39 @@ const ArticleByline = ({
         value={openAccordions}
         onValueChange={(details) => setOpenAccordions(details.value)}
       >
-        {licenseBox && (
-          <AccordionItem value={accordionItemValue}>
-            <AccordionItemTrigger>
-              <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
-                <h2>{t("article.useContent")}</h2>
-              </Heading>
-              <AccordionItemIndicator asChild>
-                <ArrowDownShortLine />
-              </AccordionItemIndicator>
-            </AccordionItemTrigger>
-            <AccordionItemContent>{licenseBox}</AccordionItemContent>
-          </AccordionItem>
+        {!!licenseBox && (
+          <ArticleBylineAccordionItem value={accordionItemValue} accordionTitle={t("article.useContent")}>
+            {licenseBox}
+          </ArticleBylineAccordionItem>
         )}
-
         {!!footnotes?.length && (
-          <AccordionItem value={footnotesAccordionId}>
-            <AccordionItemTrigger>
-              <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
-                <h2>{t("article.footnotes")}</h2>
-              </Heading>
-              <AccordionItemIndicator asChild>
-                <ArrowDownShortLine />
-              </AccordionItemIndicator>
-            </AccordionItemTrigger>
-            <AccordionItemContent>
-              <ArticleFootNotes footNotes={footnotes} />
-            </AccordionItemContent>
-          </AccordionItem>
+          <ArticleBylineAccordionItem value={footnotesAccordionId} accordionTitle={t("article.footnotes")}>
+            <ArticleFootNotes footNotes={footnotes} />
+          </ArticleBylineAccordionItem>
         )}
       </StyledAccordionRoot>
     </Wrapper>
   );
 };
 
-export default ArticleByline;
+interface ArticleBylineAccordionprops extends AccordionItemProps {
+  accordionTitle: ReactNode;
+}
+
+export const ArticleBylineAccordionItem = forwardRef<HTMLDivElement, ArticleBylineAccordionprops>(
+  ({ value, accordionTitle, children, ...props }, ref) => {
+    return (
+      <AccordionItem value={value} ref={ref} {...props}>
+        <AccordionItemTrigger>
+          <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
+            <h2>{accordionTitle}</h2>
+          </Heading>
+          <AccordionItemIndicator asChild>
+            <ArrowDownShortLine />
+          </AccordionItemIndicator>
+        </AccordionItemTrigger>
+        <AccordionItemContent>{children}</AccordionItemContent>
+      </AccordionItem>
+    );
+  },
+);

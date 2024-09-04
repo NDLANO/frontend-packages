@@ -35,6 +35,7 @@ export { LicenseLink, EmbedByline } from "./LicenseByline";
 
 export {
   ArticleByline,
+  ArticleBylineAccordionItem,
   ArticleFootNotes,
   ArticleWrapper,
   Article,
@@ -42,6 +43,8 @@ export {
   ArticleFooter,
   ArticleHeader,
   ArticleContent,
+  ArticleHGroup,
+  ArticleTitle,
 } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
@@ -52,18 +55,12 @@ export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleL
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from "./ErrorMessage";
 
-export { default as FileList, File, PdfFile, Format } from "./FileList";
+export { FileListEmbed, File, PdfFile, FileListItem, FileListElement } from "./FileList";
 
 export { default as FactBox } from "./FactBox";
 
 export type { ContentTypeHeroProps } from "./ContentTypeHero";
 export { ContentTypeHero } from "./ContentTypeHero";
-
-export { FooterBlock } from "./Footer";
-
-export { default as resourceTypeColor } from "./utils/resourceTypeColor";
-
-export { MessageBox } from "./Messages";
 
 export { ResourceBox } from "./ResourceBox";
 
@@ -110,8 +107,6 @@ export {
 
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 
-export { default as ContentPlaceholder } from "./ContentPlaceholder";
-
 export {
   TagSelectorRoot,
   TagSelectorLabel,
@@ -127,7 +122,6 @@ export { TreeStructure } from "./TreeStructure";
 export type { TreeStructureProps } from "./TreeStructure";
 
 export { BlogPostV2 } from "./BlogPost";
-export { ProgrammeCard } from "./ProgrammeCard";
 export { KeyFigure } from "./KeyFigure";
 export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock";
 export type { ContactBlockBackground } from "./ContactBlock";
@@ -135,13 +129,6 @@ export type { HeartButtonType, CanonicalUrlFuncs, RenderContext } from "./Embed"
 export { CampaignBlock } from "./CampaignBlock";
 export { Grid, GridParallaxItem } from "./Grid";
 export type { GridType } from "./Grid";
-
-export {
-  default as FrontpageArticle,
-  FRONTPAGE_ARTICLE_MAX_WIDTH,
-  WIDE_FRONTPAGE_ARTICLE_MAX_WIDTH,
-} from "./FrontpageArticle";
-export type { ProgrammeV2 } from "./ProgrammeCard";
 
 export { Gloss, GlossExample } from "./Gloss";
 
@@ -154,3 +141,5 @@ export { CodeBlock, codeLanguageOptions } from "./CodeBlock";
 export { ZendeskButton } from "./ZendeskButton/ZendeskButton";
 
 export type { ZendeskButtonProps } from "./ZendeskButton/ZendeskButton";
+
+export { licenseAttributes } from "./utils/licenseAttributes";

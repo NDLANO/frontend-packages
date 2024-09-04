@@ -15,11 +15,7 @@ interface ModelReleaseLocaleInfo {
   "not-set": string;
 }
 
-interface ModelReleaseType {
-  [lang: string]: ModelReleaseLocaleInfo;
-}
-
-const modelRelease: ModelReleaseType = {
+const modelRelease: Record<string, ModelReleaseLocaleInfo> = {
   nb: { yes: "Ja", no: "Nei", "not-applicable": "Ikke relevant", "not-set": "Ikke valgt" },
   nn: { yes: "Ja", no: "Nei", "not-applicable": "Ikkje relevant", "not-set": "Ikkje valgt" },
   en: { yes: "Yes", no: "No", "not-applicable": "Not applicable", "not-set": "Not set" },
@@ -27,7 +23,7 @@ const modelRelease: ModelReleaseType = {
 
 export const getModelReleaseValue = (modelReleaseValue: string, locale: string | Locale | undefined): string => {
   const surelyLocale = getLocaleOrDefault(locale, "nb");
-  switch (modelReleaseValue.replace(/\s/g, "").toLowerCase()) {
+  switch (modelReleaseValue) {
     case "yes":
       return modelRelease[surelyLocale].yes;
     case "no":

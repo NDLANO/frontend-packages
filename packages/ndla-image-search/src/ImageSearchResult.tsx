@@ -40,7 +40,7 @@ interface Props {
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
-  translations: MetadataTranslations & { close: string };
+  translations: MetadataTranslations & { close: string; missingTitleFallback?: string };
   locale: string;
   checkboxLabel?: string;
 }
@@ -69,7 +69,9 @@ export default function ImageSearchResult({
       >
         <StyledImage alt="" srcSet={getPreviewSrcSets(image.image.imageUrl)} src={image.image.imageUrl} />
         <Text textStyle="label.medium" asChild consumeCss>
-          <span>{image.title.title.trim() ? image.title.title : `ID: ${image.id}`}</span>
+          <span>
+            {image.title.title.trim() ? image.title.title : translations.missingTitleFallback ?? `ID: ${image.id}`}
+          </span>
         </Text>
       </StyledButton>
       {selectedImage?.id === image.id && (

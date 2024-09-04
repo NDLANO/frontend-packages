@@ -75,6 +75,7 @@ interface Props {
     close: string;
     imageMetadata: MetadataTranslations;
     paginationTranslations: PaginationRootProps["translations"];
+    missingTitleFallback?: string;
   };
 }
 
@@ -101,7 +102,11 @@ const ImageSearch = ({
 
   const { page } = queryObject;
   const noResultsFound = !searching && searchResult?.results.length === 0;
-  const imageSearchTranslations = { ...translations.imageMetadata, close: translations.close };
+  const imageSearchTranslations = {
+    ...translations.imageMetadata,
+    close: translations.close,
+    missingTitleFallback: translations.missingTitleFallback,
+  };
 
   const onImageClick = (image: IImageMetaInformationV3) => {
     if (!selectedImage || image.id !== selectedImage.id) {

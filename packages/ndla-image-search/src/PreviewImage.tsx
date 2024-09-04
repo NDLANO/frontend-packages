@@ -28,7 +28,11 @@ import ImageMeta from "./ImageMeta";
 import { MetadataTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
 
-const ImageContainer = styled("div", { base: { flex: "0 0 auto" } });
+const ImageContainer = styled("div", {
+  base: {
+    flexShrink: "0",
+  },
+});
 
 const StyledImage = styled(Image, {
   base: {
@@ -111,7 +115,7 @@ interface Props {
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
-  translations: MetadataTranslations & { close: string };
+  translations: MetadataTranslations & { close: string; missingTitleFallback?: string };
   locale: string;
   checkboxLabel?: string;
 }
@@ -142,7 +146,9 @@ const PreviewImage = ({
       <ContentWrapper>
         <StyledImageMetadata>
           <StyledTopRow>
-            <Text textStyle="title.medium">{image.title.title.trim() ? image.title.title : `ID: ${image.id}`}</Text>
+            <Text textStyle="title.medium">
+              {image.title.title.trim() ? image.title.title : translations.missingTitleFallback ?? `ID: ${image.id}`}
+            </Text>
             <IconButton
               variant="tertiary"
               onClick={() => onSelectImage(undefined)}

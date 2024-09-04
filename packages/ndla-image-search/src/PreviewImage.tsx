@@ -142,7 +142,7 @@ const PreviewImage = ({
       <ContentWrapper>
         <StyledImageMetadata>
           <StyledTopRow>
-            <Text textStyle="title.medium">{image.title.title}</Text>
+            <Text textStyle="title.medium">{image.title.title.trim() ? image.title.title : `ID: ${image.id}`}</Text>
             <IconButton
               variant="tertiary"
               onClick={() => onSelectImage(undefined)}

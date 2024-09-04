@@ -69,7 +69,7 @@ export default function ImageSearchResult({
       >
         <StyledImage alt="" srcSet={getPreviewSrcSets(image.image.imageUrl)} src={image.image.imageUrl} />
         <Text textStyle="label.medium" asChild consumeCss>
-          <span>{image.title.title}</span>
+          <span>{image.title.title.trim() ? image.title.title : `ID: ${image.id}`}</span>
         </Text>
       </StyledButton>
       {selectedImage?.id === image.id && (

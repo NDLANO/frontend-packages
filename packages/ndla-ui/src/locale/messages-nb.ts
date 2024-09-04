@@ -795,7 +795,6 @@ const messages = {
   image: {
     altText: "Alt-tekst",
     caption: "Bildetekst",
-    license: "Lisens",
     type: "Filtype",
     width: "Bredde",
     height: "Høyde",

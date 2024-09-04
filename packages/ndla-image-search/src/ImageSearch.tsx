@@ -7,7 +7,6 @@
  */
 
 import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState, FormEvent } from "react";
-import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight, SearchLine } from "@ndla/icons/common";
 import {
   Button,
@@ -50,18 +49,32 @@ const StyledForm = styled("form", {
   },
 });
 
+export interface MetadataTranslations {
+  creators: string;
+  license: string;
+  caption: string;
+  altText: string;
+  modelRelease: string;
+}
+
 interface Props {
   onImageSelect: (image: IImageMetaInformationV3) => void;
   searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3>;
   fetchImage: (id: number) => Promise<IImageMetaInformationV3>;
   onError: (err: any) => void;
-  searchPlaceholder: string;
-  searchButtonTitle: string;
-  useImageTitle: string;
+  locale: string;
   noResults?: ReactNode;
   checkboxAction?: (image: IImageMetaInformationV3) => void;
   showCheckbox?: boolean;
   checkboxLabel?: string;
+  translations: {
+    searchPlaceholder: string;
+    searchButtonTitle: string;
+    useImageTitle: string;
+    close: string;
+    imageMetadata: MetadataTranslations;
+    paginationTranslations: PaginationRootProps["translations"];
+  };
 }
 
 const ImageSearch = ({
@@ -69,15 +82,13 @@ const ImageSearch = ({
   searchImages: search,
   fetchImage,
   onError,
-  searchPlaceholder,
-  searchButtonTitle,
-  useImageTitle,
+  locale,
   noResults,
   checkboxAction,
   showCheckbox,
   checkboxLabel,
+  translations,
 }: Props) => {
-  const { t } = useTranslation();
   const [queryObject, setQueryObject] = useState<ISearchParams>({
     query: undefined,
     page: 1,
@@ -89,15 +100,7 @@ const ImageSearch = ({
 
   const { page } = queryObject;
   const noResultsFound = !searching && searchResult?.results.length === 0;
-
-  const paginationTranslations: PaginationRootProps["translations"] = {
-    rootLabel: t("component.pagination.rootLabel"),
-    prevTriggerLabel: t("component.pagination.prevTriggerLabel"),
-    nextTriggerLabel: t("component.pagination.nextTriggerLabel"),
-    itemLabel: (details) => {
-      return t("component.pagination.page", { page: details.page });
-    },
-  };
+  const imageSearchTranslations = { ...translations.imageMetadata, close: translations.close };
 
   const onImageClick = (image: IImageMetaInformationV3) => {
     if (!selectedImage || image.id !== selectedImage.id) {
@@ -158,8 +161,18 @@ const ImageSearch = ({
   return (
     <ImageSearchWrapper>
       <StyledForm onSubmit={handleSubmit}>
-        <Input type="search" placeholder={searchPlaceholder} value={queryObject?.query} onChange={handleQueryChange} />
-        <IconButton variant="primary" type="submit" aria-label={searchButtonTitle} title={searchButtonTitle}>
+        <Input
+          type="search"
+          placeholder={translations.searchPlaceholder}
+          value={queryObject?.query}
+          onChange={handleQueryChange}
+        />
+        <IconButton
+          variant="primary"
+          type="submit"
+          aria-label={translations.searchButtonTitle}
+          title={translations.searchButtonTitle}
+        >
           <SearchLine />
         </IconButton>
       </StyledForm>
@@ -172,16 +185,18 @@ const ImageSearch = ({
             onImageClick={onImageClick}
             selectedImage={selectedImage}
             onSelectImage={onSelectImage}
-            useImageTitle={useImageTitle}
+            useImageTitle={translations.useImageTitle}
             showCheckbox={!!showCheckbox}
+            translations={imageSearchTranslations}
             checkboxLabel={checkboxLabel}
+            locale={locale}
           />
         ))}
       </StyledSearchResults>
       <PaginationRoot
         page={page ?? 1}
         onPageChange={(details) => searchImages({ ...queryObject, page: details.page })}
-        translations={paginationTranslations}
+        translations={translations.paginationTranslations}
         count={searchResult?.totalCount ?? 0}
         pageSize={searchResult?.pageSize}
         siblingCount={2}
@@ -189,7 +204,7 @@ const ImageSearch = ({
         <PaginationPrevTrigger asChild>
           <Button variant="tertiary">
             <ChevronLeft />
-            {paginationTranslations?.prevTriggerLabel}
+            {translations.paginationTranslations?.prevTriggerLabel}
           </Button>
         </PaginationPrevTrigger>
         <PaginationContext>
@@ -213,7 +228,7 @@ const ImageSearch = ({
         </PaginationContext>
         <PaginationNextTrigger asChild>
           <Button variant="tertiary">
-            {paginationTranslations?.nextTriggerLabel}
+            {translations.paginationTranslations?.nextTriggerLabel}
             <ChevronRight />
           </Button>
         </PaginationNextTrigger>

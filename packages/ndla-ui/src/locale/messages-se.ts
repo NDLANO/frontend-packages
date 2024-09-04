@@ -797,7 +797,6 @@ const messages = {
   image: {
     altText: "Molssaevttolaš teaksta",
     caption: "Govvateaksta",
-    license: "Lisens",
     type: "Fiilasorta",
     width: "Govdodat",
     height: "Allodat",

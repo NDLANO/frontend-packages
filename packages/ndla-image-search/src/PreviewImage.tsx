@@ -7,10 +7,10 @@
  */
 
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { CloseLine } from "@ndla/icons/action";
 import { HashTag } from "@ndla/icons/common";
 import { CheckLine } from "@ndla/icons/editor";
+import { getModelReleaseValue } from "@ndla/licenses";
 import {
   Button,
   CheckboxControl,
@@ -26,6 +26,7 @@ import {
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import ImageMeta from "./ImageMeta";
+import { MetadataTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
 
 const StyledImage = styled(Image, {
@@ -106,11 +107,21 @@ interface Props {
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
+  translations: MetadataTranslations & { close: string };
+  locale: string;
   checkboxLabel?: string;
 }
 
-const PreviewImage = ({ id, image, onSelectImage, useImageTitle, showCheckbox, checkboxLabel }: Props) => {
-  const { t } = useTranslation();
+const PreviewImage = ({
+  id,
+  image,
+  onSelectImage,
+  useImageTitle,
+  showCheckbox,
+  translations,
+  locale,
+  checkboxLabel,
+}: Props) => {
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
   return (
@@ -131,39 +142,39 @@ const PreviewImage = ({ id, image, onSelectImage, useImageTitle, showCheckbox, c
             <IconButton
               variant="tertiary"
               onClick={() => onSelectImage(undefined)}
-              aria-label={t("close")}
-              title={t("close")}
+              aria-label={translations.close}
+              title={translations.close}
             >
               <CloseLine />
             </IconButton>
           </StyledTopRow>
           {!!image.copyright.creators.length && (
             <Text>
-              <b>{`${t("photo")}: `}</b>
+              <b>{`${translations.creators}: `}</b>
               {image.copyright.creators.map((creator) => creator.name).join(", ")}
             </Text>
           )}
           {!!image.copyright.license.description?.trim() && (
             <Text>
-              <b>{`${t("image.license")}: `}</b>
+              <b>{`${translations.license}: `}</b>
               {image.copyright.license.description}
             </Text>
           )}
           {!!image.caption.caption.trim() && (
             <Text>
-              <b>{`${t("image.caption")}: `}</b>
+              <b>{`${translations.caption}: `}</b>
               {image.caption.caption}
             </Text>
           )}
           {!!image.alttext.alttext.trim() && (
             <Text>
-              <b>{`${t("image.altText")}:`}</b> {image.alttext.alttext}
+              <b>{`${translations.altText}:`}</b> {image.alttext.alttext}
             </Text>
           )}
           {!!image.modelRelease.trim() && (
             <Text>
-              <b>{`${t("image.modelReleased.label")}: `}</b>
-              {t(`image.modelReleased.${image.modelRelease}`)}
+              <b>{`${translations.modelRelease}: `}</b>
+              {getModelReleaseValue(image.modelRelease, locale)}
             </Text>
           )}
           <ImageMeta

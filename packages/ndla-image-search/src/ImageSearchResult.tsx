@@ -6,10 +6,10 @@
  *
  */
 
-import { KeyboardEvent } from "react";
 import { Heading, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetadataTranslations } from "./ImageSearch";
 import PreviewImage from "./PreviewImage";
 import { getPreviewSrcSets } from "./util/imageUtil";
 
@@ -40,8 +40,9 @@ interface Props {
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
+  translations: MetadataTranslations & { close: string };
+  locale: string;
   checkboxLabel?: string;
-  useAsMetaImageLabel?: string;
 }
 
 export default function ImageSearchResult({
@@ -51,6 +52,8 @@ export default function ImageSearchResult({
   onSelectImage,
   useImageTitle,
   showCheckbox,
+  translations,
+  locale,
   checkboxLabel,
 }: Props) {
   const active = selectedImage?.id === image.id;
@@ -77,7 +80,9 @@ export default function ImageSearchResult({
           onSelectImage={onSelectImage}
           useImageTitle={useImageTitle}
           checkboxLabel={checkboxLabel}
+          translations={translations}
           showCheckbox={showCheckbox}
+          locale={locale}
         />
       )}
     </>

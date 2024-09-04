@@ -17,11 +17,26 @@ export default {
     inlineStories: true,
   },
   args: {
-    searchPlaceholder: "Søk i bilder",
-    searchButtonTitle: "Søk",
-    useImageTitle: "Bruk bildet",
-    locale: "nb",
     noResults: <div>Søket gav ingen treff</div>,
+    locale: "nb",
+    translations: {
+      close: "Lukk",
+      searchPlaceholder: "Søk i bilder",
+      searchButtonTitle: "Søk",
+      useImageTitle: "Bruk bildet",
+      imageMetadata: {
+        creators: "Bilde",
+        license: "Lisens",
+        caption: "Bildetekst",
+        altText: "Alt-tekst",
+        modelRelease: "Modellklarert",
+      },
+      paginationTranslations: {
+        rootLabel: "Sidenavigering",
+        prevTriggerLabel: "Forrige side",
+        nextTriggerLabel: "Neste side",
+      },
+    },
   },
 } as Meta<typeof ImageSearch>;
 

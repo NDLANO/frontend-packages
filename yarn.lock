@@ -2857,16 +2857,15 @@ __metadata:
   resolution: "@ndla/image-search@workspace:packages/ndla-image-search"
   dependencies:
     "@ndla/icons": "workspace:^"
+    "@ndla/licenses": "workspace:^"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@pandacss/dev": "npm:^0.45.2"
     pretty-bytes: "npm:^5.6.0"
   peerDependencies:
-    i18next: ^23.11.5
     react: ">= 18"
     react-dom: ">= 18"
-    react-i18next: ^14.1.1
   languageName: unknown
   linkType: soft
 

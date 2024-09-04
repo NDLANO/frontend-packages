@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "@ndla/icons": "workspace:^",
+    "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
     "pretty-bytes": "^5.6.0"
   },
@@ -36,10 +37,8 @@
     "@pandacss/dev": "^0.45.2"
   },
   "peerDependencies": {
-    "i18next": "^23.11.5",
     "react": ">= 18",
-    "react-dom": ">= 18",
-    "react-i18next": "^14.1.1"
+    "react-dom": ">= 18"
   },
   "publishConfig": {
     "access": "public"

@@ -30,6 +30,7 @@ export default {
         caption: "Bildetekst",
         altText: "Alt-tekst",
         modelRelease: "Modellklarert",
+        tags: "Emneknagger",
       },
       paginationTranslations: {
         rootLabel: "Sidenavigering",

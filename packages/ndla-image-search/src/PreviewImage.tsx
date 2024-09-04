@@ -50,7 +50,7 @@ const StyledButton = styled(Button, {
   },
 });
 
-const HashTagWrapper = styled("div", {
+const HashTagWrapper = styled("ul", {
   base: {
     display: "flex",
     gap: "xxsmall",
@@ -58,12 +58,21 @@ const HashTagWrapper = styled("div", {
   },
 });
 
-const StyledTagItem = styled("div", {
+const HashTagGroup = styled("div", {
+  base: {
+    display: "flex",
+    gap: "xxsmall",
+    flexWrap: "wrap",
+  },
+});
+
+const StyledTagItem = styled("li", {
   base: {
     display: "flex",
     alignItems: "center",
   },
 });
+
 const StyledPreview = styled("div", {
   base: {
     display: "flex",
@@ -182,15 +191,21 @@ const PreviewImage = ({
             fileSize={image.image.size}
             imageDimensions={image.image.dimensions}
           />
-          {/* TODO: make accessible ? */}
-          <HashTagWrapper>
-            {image.tags.tags.map((tag) => (
-              <StyledTagItem key={tag}>
-                <HashTag size="small" />
-                {tag}
-              </StyledTagItem>
-            ))}
-          </HashTagWrapper>
+          {!!image.tags.tags.length && (
+            <HashTagGroup>
+              <Text id="tags-title">
+                <b>{`${translations.tags}: `}</b>
+              </Text>
+              <HashTagWrapper aria-describedby="tags-title">
+                {image.tags.tags.map((tag) => (
+                  <StyledTagItem key={tag}>
+                    <HashTag size="small" />
+                    {tag}
+                  </StyledTagItem>
+                ))}
+              </HashTagWrapper>
+            </HashTagGroup>
+          )}
         </StyledImageMetadata>
         <ActionsWrapper>
           <StyledButton data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>

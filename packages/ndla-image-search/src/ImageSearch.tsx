@@ -55,6 +55,7 @@ export interface MetadataTranslations {
   caption: string;
   altText: string;
   modelRelease: string;
+  tags: string;
 }
 
 interface Props {

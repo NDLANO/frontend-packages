@@ -1266,7 +1266,7 @@ const messages = {
         "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet.",
       loginTextLink: "Les vår personvernerklæring her",
       loginTerms: "Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk",
-      loginResourcePitch: "Ønsker du å favorittmerke denne resursen?",
+      loginResourcePitch: "Ønsker du å favorittmerke denne ressursen?",
       loginWelcome: "Velkommen til Min NDLA!",
       welcome:
         "Velkommen til Min NDLA! No kan du lagre favorittressursane dine frå NDLA og organisere dei i mapper og med emneknaggar.",

@@ -14,6 +14,11 @@ import { createStyleContext } from "./createStyleContext";
 const toggleGroupRecipe = sva({
   slots: toggleGroupAnatomy.keys(),
   base: {
+    root: {
+      display: "flex",
+      flexDirection: "row",
+      gap: "4xsmall",
+    },
     item: {
       _hover: {
         boxShadow: "inset 0 0 0 1px var(--shadow-color)",

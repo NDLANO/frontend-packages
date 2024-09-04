@@ -11,14 +11,12 @@ import { Bold, Italic, Link, ListAlphabetical, ListCircle, ListNumbered } from "
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
 import { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
+import { InformationLine } from "../../ndla-icons/src/common";
 
 export default {
   title: "Components/ToggleGroup",
   tags: ["autodocs"],
   component: ToggleGroupRoot,
-  args: {
-    variant: "subtle",
-  },
 } as Meta<typeof ToggleGroupRoot>;
 
 export const Default: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
@@ -53,7 +51,7 @@ export const Default: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
   );
 };
 
-export const Label: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
+export const ToggleMultiple: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
   return (
     <ToggleGroupRoot multiple {...args}>
       <ToggleGroupItem value="bulletedList" asChild>
@@ -153,6 +151,48 @@ export const InitialActive: StoryFn<typeof ToggleGroupRoot> = () => {
       <ToggleGroupItem value="alphabeticalList" asChild>
         <IconButton size="small" variant="tertiary">
           <ListAlphabetical />
+        </IconButton>
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+  );
+};
+
+export const DifferentButtons: StoryFn<typeof ToggleGroupRoot> = () => {
+  return (
+    <ToggleGroupRoot>
+      <ToggleGroupItem value="bold" asChild>
+        <IconButton size="small" variant="primary">
+          <Bold />
+        </IconButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" asChild>
+        <IconButton size="small" variant="tertiary">
+          <Italic />
+        </IconButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="bulletedList" asChild>
+        <IconButton size="small" variant="danger">
+          <ListCircle />
+        </IconButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="numberedList" asChild>
+        <IconButton size="small" variant="secondary">
+          <ListNumbered />
+        </IconButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="alphabeticalList" asChild>
+        <IconButton size="small" variant="clear">
+          <ListAlphabetical />
+        </IconButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="link" asChild>
+        <IconButton size="small" variant="clearSubtle">
+          <Link />
+        </IconButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="info" asChild>
+        <IconButton size="small" variant="success">
+          <InformationLine />
         </IconButton>
       </ToggleGroupItem>
     </ToggleGroupRoot>

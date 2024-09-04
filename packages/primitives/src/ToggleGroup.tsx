@@ -7,10 +7,10 @@
  */
 
 import { toggleGroupAnatomy, ToggleGroup } from "@ark-ui/react";
-import { IconButton, IconButtonProps } from "@ndla/primitives";
 import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "../../../primitives/src/createStyleContext";
+import { IconButton, IconButtonProps } from "./Button";
+import { createStyleContext } from "./createStyleContext";
 
 const toggleGroupRecipe = sva({
   slots: toggleGroupAnatomy.keys(),

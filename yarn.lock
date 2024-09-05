@@ -2860,6 +2860,7 @@ __metadata:
     "@ndla/licenses": "workspace:^"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
+    "@ndla/styled-system": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@pandacss/dev": "npm:^0.45.2"
     pretty-bytes: "npm:^5.6.0"

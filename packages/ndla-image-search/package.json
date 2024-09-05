@@ -29,6 +29,7 @@
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
+    "@ndla/styled-system": "workspace:^",
     "pretty-bytes": "^5.6.0"
   },
   "devDependencies": {

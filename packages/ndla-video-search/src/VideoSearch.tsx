@@ -7,11 +7,9 @@
  */
 
 import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
-import styled from "@emotion/styled";
-import { ButtonV2 } from "@ndla/button";
-import { colors, misc, spacing } from "@ndla/core";
-import { FormControl, InputV3, Label } from "@ndla/forms";
-import { Spinner } from "@ndla/icons";
+import { SearchLine } from "@ndla/icons/common";
+import { IconButton, Input } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { BrightcoveApiType } from "@ndla/types-embed";
 import { usePrevious } from "@ndla/util";
 import { VideoResultList } from "./VideoResultList";
@@ -24,6 +22,7 @@ export type Translations = {
   is360Video: string;
   previewVideo: string;
   addVideo: string;
+  close: string;
 };
 
 interface Props {
@@ -40,29 +39,20 @@ export interface VideoQueryType {
   limit: number;
 }
 
-const VideoSearchWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${spacing.normal};
-  border: 1px solid ${colors.brand.light};
-  border-radius: ${misc.borderRadius};
-  padding: ${spacing.normal};
-  > form {
-    width: 100%;
-  }
-`;
+const VideoSearchWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
+  },
+});
 
-const StyledFormControl = styled(FormControl)`
-  display: flex;
-  gap: ${spacing.small};
-  flex-direction: row;
-  align-items: center;
-  button {
-    min-width: ${spacing.xxlarge};
-    height: ${spacing.large};
-  }
-`;
+const StyledForm = styled("form", {
+  base: {
+    display: "flex",
+    gap: "xsmall",
+  },
+});
 
 export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations, locale }: Props) => {
   const [query, setQuery] = useState("");
@@ -117,19 +107,25 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
 
   return (
     <VideoSearchWrapper>
-      <form onSubmit={onSubmit}>
-        <StyledFormControl id="video-search-field">
-          <Label visuallyHidden>{translations.searchPlaceholder}</Label>
-          <InputV3 type="search" value={query} onChange={onQueryChange} placeholder={translations.searchPlaceholder} />
-          <ButtonV2 type="submit">{translations.searchButtonTitle}</ButtonV2>
-        </StyledFormControl>
-      </form>
-      {videos.length === 0 && !isLoading ? (
-        <p>{translations.noResults}</p>
-      ) : (
-        <VideoResultList videos={videos} locale={locale} onSelectVideo={onVideoSelect} translations={translations} />
-      )}
-      {isLoading ? <Spinner /> : <ButtonV2 onClick={onShowMore}>{translations.loadMoreVideos}</ButtonV2>}
+      <StyledForm onSubmit={onSubmit}>
+        <Input type="search" placeholder={translations.searchPlaceholder} value={query} onChange={onQueryChange} />
+        <IconButton
+          variant="primary"
+          type="submit"
+          aria-label={translations.searchButtonTitle}
+          title={translations.searchButtonTitle}
+        >
+          <SearchLine />
+        </IconButton>
+      </StyledForm>
+      <VideoResultList
+        videos={videos}
+        isLoading={isLoading}
+        translations={translations}
+        locale={locale}
+        onVideoSelect={onVideoSelect}
+        onShowMore={onShowMore}
+      />
     </VideoSearchWrapper>
   );
 };

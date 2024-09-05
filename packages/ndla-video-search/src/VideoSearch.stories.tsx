@@ -38,6 +38,7 @@ const meta = {
       duration: "Varighet",
       interactioncount: "Visninger",
       is360Video: "VR-video",
+      close: "Lukk",
     },
   },
 };

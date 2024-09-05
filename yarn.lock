@@ -2804,7 +2804,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/forms@npm:^10.0.21-alpha.0, @ndla/forms@workspace:packages/ndla-forms":
+"@ndla/forms@workspace:packages/ndla-forms":
   version: 0.0.0-use.local
   resolution: "@ndla/forms@workspace:packages/ndla-forms"
   dependencies:
@@ -2928,7 +2928,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^7.0.21-alpha.0, @ndla/safelink@workspace:packages/safelink":
+"@ndla/safelink@npm:^7.0.21-alpha.0, @ndla/safelink@workspace:^, @ndla/safelink@workspace:packages/safelink":
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:
@@ -3118,19 +3118,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/video-search@workspace:packages/ndla-video-search"
   dependencies:
-    "@ndla/button": "npm:^15.0.15-alpha.0"
-    "@ndla/core": "npm:^5.0.2"
-    "@ndla/forms": "npm:^10.0.21-alpha.0"
-    "@ndla/icons": "npm:^8.0.15-alpha.0"
-    "@ndla/licenses": "npm:^8.0.2-alpha.0"
-    "@ndla/safelink": "npm:^7.0.21-alpha.0"
+    "@ndla/icons": "workspace:^"
+    "@ndla/licenses": "workspace:^"
+    "@ndla/primitives": "workspace:^"
+    "@ndla/safelink": "workspace:^"
     "@ndla/types-embed": "npm:^5.0.1-alpha.0"
     "@ndla/util": "npm:^4.1.0"
   peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
-    react-dom: ">= 16.8.0"
+    react: ">= 18"
+    react-dom: ">= 18"
   languageName: unknown
   linkType: soft
 

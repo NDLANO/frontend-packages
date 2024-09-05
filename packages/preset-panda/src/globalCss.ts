@@ -55,6 +55,12 @@ export const globalCss = defineGlobalStyles({
     "h4, h5, h6": {
       textStyle: "title.medium",
     },
+    '& p[data-align="center"]': {
+      textAlign: "center",
+    },
+    '& p:has(span[dir="rtl"])': {
+      direction: "rtl",
+    },
     textStyle: "body.article",
     width: "100%",
 

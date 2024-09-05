@@ -39,7 +39,6 @@ export {
   ArticleFootNotes,
   ArticleWrapper,
   Article,
-  ArticleParagraph,
   ArticleFooter,
   ArticleHeader,
   ArticleContent,

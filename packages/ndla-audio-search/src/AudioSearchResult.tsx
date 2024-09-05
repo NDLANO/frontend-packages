@@ -8,7 +8,6 @@
 
 import { getLicenseByAbbreviation, LicenseLocaleType } from "@ndla/licenses";
 import { Text, ListItemContent, ListItemRoot, Button } from "@ndla/primitives";
-import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioBar from "./AudioBar";
@@ -34,9 +33,9 @@ interface LicenseLinkProps {
 const LicenseLink = ({ license }: LicenseLinkProps) => {
   if (license.url?.length) {
     return (
-      <SafeLink to={license.url} rel="license">
+      <a href={license.url} rel="license">
         {license.abbreviation}
-      </SafeLink>
+      </a>
     );
   }
   return <Text>{license.abbreviation}</Text>;

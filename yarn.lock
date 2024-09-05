@@ -2745,7 +2745,6 @@ __metadata:
     "@ndla/licenses": "workspace:^"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
-    "@ndla/safelink": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@pandacss/dev": "npm:^0.45.2"
   peerDependencies:
@@ -2935,7 +2934,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^7.0.16-alpha.0, @ndla/safelink@workspace:^, @ndla/safelink@workspace:packages/safelink":
+"@ndla/safelink@npm:^7.0.16-alpha.0, @ndla/safelink@workspace:packages/safelink":
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:

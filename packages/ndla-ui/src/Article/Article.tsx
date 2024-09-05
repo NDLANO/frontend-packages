@@ -135,7 +135,7 @@ export const ArticleTitle = ({
           {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
           {heartButton}
         </StyledStack>
-        <Heading textStyle="heading.large" id={id} lang={lang} property="dct:title">
+        <Heading textStyle="heading.medium" id={id} lang={lang} property="dct:title">
           {title}
         </Heading>
       </ArticleHGroup>

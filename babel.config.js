@@ -10,9 +10,15 @@ module.exports = {
       },
     ],
     "@babel/preset-typescript",
-    ["@babel/preset-react", { runtime: "automatic", importSource: "@emotion/react" }],
+    ["@babel/preset-react", { runtime: "automatic" }],
   ],
-  plugins: [["@emotion", { autoLabel: "always" }]],
+  overrides: [
+    {
+      exclude: /primitives|preset-panda|styled-system|ndla-icons|ndla-ui|audio-search/,
+      plugins: [["@emotion", { autoLabel: "always" }]],
+    },
+  ],
+  plugins: [],
   env: {
     test: {
       presets: [

@@ -1090,9 +1090,9 @@ const messages = {
         },
         fetchMore: "Fetch more answers",
         deleted: "This post has been deleted by the author.",
-        upvote: "Upvote",
+        upvote: "Like",
         numberOfUpvotes: "{{ count }} people have upvoted this.",
-        removeUpvote: "Remove upvote",
+        removeUpvote: "Stop liking",
         reply: "Write a reply to {{ name }}",
       },
       flag: {
@@ -1373,7 +1373,7 @@ const messages = {
       dragHandle: "Drag the category {{name}}",
     },
     favoriteSubjects: {
-      title: "My favorite subjects",
+      title: "My subjects",
       subjects: "{{count}} subject",
       subjects_0: "{{count}} subjects",
       subjects_plural: "{{count}} subjects",

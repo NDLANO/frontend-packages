@@ -32,13 +32,6 @@ interface Props {
 const AudioSearchForm = ({ queryObject: query, translations, searching, onSearchQuerySubmit }: Props) => {
   const [queryObject, setQueryObject] = useState(query);
 
-  // TODO: why does not submit on enter work?
-  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSubmit(e);
-    }
-  };
-
   const handleQueryChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     setQueryObject((prevState) => ({
       ...prevState,
@@ -58,7 +51,6 @@ const AudioSearchForm = ({ queryObject: query, translations, searching, onSearch
         placeholder={translations.searchPlaceholder}
         value={queryObject?.query}
         onChange={handleQueryChange}
-        onKeyDown={onKeyPress}
       />
       <IconButton
         variant="primary"

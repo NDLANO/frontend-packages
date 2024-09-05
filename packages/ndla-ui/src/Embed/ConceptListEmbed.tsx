@@ -54,6 +54,7 @@ const ConceptListEmbed = ({ embed, lang }: Props) => {
                   copyright={concept.copyright}
                   visualElement={visualElement}
                   lang={lang}
+                  source={concept.source}
                 />
               </li>
             ))}

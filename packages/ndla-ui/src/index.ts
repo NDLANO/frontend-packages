@@ -44,9 +44,7 @@ export {
   ArticleHeader,
   ArticleContent,
   ArticleHGroup,
-  ArticleActionWrapper,
   ArticleTitle,
-  ArticlePadding,
 } from "./Article";
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
@@ -143,3 +141,5 @@ export { CodeBlock, codeLanguageOptions } from "./CodeBlock";
 export { ZendeskButton } from "./ZendeskButton/ZendeskButton";
 
 export type { ZendeskButtonProps } from "./ZendeskButton/ZendeskButton";
+
+export { licenseAttributes } from "./utils/licenseAttributes";

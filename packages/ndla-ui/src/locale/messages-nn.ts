@@ -1091,9 +1091,9 @@ const messages = {
         },
         fetchMore: "Hent fleire svar",
         deleted: "Dette innlegget er sletta av forfatteren.",
-        upvote: "Stem opp",
+        upvote: "Liker",
         numberOfUpvotes: "{{ count }} personar har stemt opp denne.",
-        removeUpvote: "Fjern stemme",
+        removeUpvote: "Slutt å like",
         reply: "Skriv eit svar til {{ name }}",
       },
       flag: {
@@ -1270,7 +1270,7 @@ const messages = {
         "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet.",
       loginTextLink: "Les vår personvernerklæring her",
       loginTerms: "Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk",
-      loginResourcePitch: "Ønsker du å favorittmerke denne resursen?",
+      loginResourcePitch: "Ønsker du å favorittmerke denne ressursen?",
       loginWelcome: "Velkommen til Min NDLA!",
       welcome:
         "Velkommen til Min NDLA! No kan du lagre favorittressursane dine frå NDLA og organisere dei i mapper og med emneknaggar.",
@@ -1372,7 +1372,7 @@ const messages = {
       dragHandle: "Sorter kategorien {{name}}",
     },
     favoriteSubjects: {
-      title: "Mine favorittfag",
+      title: "Mine fag",
       subjects: "{{count}} fag",
       subjects_0: "{{count}} fag",
       subjects_plural: "{{count}} fag",

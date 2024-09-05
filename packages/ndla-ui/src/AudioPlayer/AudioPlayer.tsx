@@ -190,9 +190,11 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
               {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
                 ? description
                 : `${truncatedDescription}...`}
-              <Button variant="link" onClick={() => setShowFullDescription((p) => !p)}>
-                {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
-              </Button>
+              {description.length > DESCRIPTION_MAX_LENGTH && (
+                <Button variant="link" onClick={() => setShowFullDescription((p) => !p)}>
+                  {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
+                </Button>
+              )}
             </Text>
           )}
           {!!textVersion && !!img && textVersionButton}

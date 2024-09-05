@@ -38,7 +38,7 @@ const messages = {
     aria: {
       screenReaderStatus: "{{count}} resultat tilgjengeleg",
       disabled: "utilgjengeleg",
-      selected: "valgt",
+      selected: "valt",
       focused: "fokusert",
       guidance: {
         menu: {
@@ -52,18 +52,18 @@ const messages = {
           focused: "er fokusert",
           refine: "skriv for å filtrere lista med emneknaggar",
           down: "trykk pil ned for å åpne menyen",
-          left: "trykk venstre pil for å fokusere valgte emneknaggar",
+          left: "trykk venstre pil for å fokusere valte emneknaggar",
           space: "trykk mellomrom for å opprette ny emneknagg",
         },
         value:
-          "Bruk høgre og venstre pil for å navigere mellom valgte emneknaggar, trykk backspace for å fjerne den valgte emneknaggen. Dersom ingen emneknagg er valgt fjernes den siste.",
+          "Bruk høgre og venstre pil for å navigere mellom valte emneknaggar, trykk backspace for å fjerne den valte emneknaggen. Dersom ingen emneknagg er valt fjernes den siste.",
       },
       onChange: {
         deselect: "emneknagg {{label}}, fjerna.",
-        clear: "Alle valgte emneknaggar fjerna.",
-        initialFocus: `Emneknaggar {{labels}}, valgt.`,
+        clear: "Alle valte emneknaggar fjerna.",
+        initialFocus: `Emneknaggar {{labels}}, valt.`,
         selectedDisabled: "Emneknagg {{label}} kan ikkje velgast. Velg eit anna alternativ.",
-        selected: "Emneknagg {{label}},  valgt.",
+        selected: "Emneknagg {{label}},  valt.",
       },
       onFocus: {
         value: "emneknagg {{label}} fokusert, {{position}}.",
@@ -740,7 +740,7 @@ const messages = {
     searching: "Søkjer...",
     create: "Opprett ny",
     isSelectedItem: "Lagt til",
-    selected: "{{count}} valgte",
+    selected: "{{count}} valte",
   },
   editor: {
     versionHistory: {
@@ -804,7 +804,7 @@ const messages = {
       yes: "Ja",
       no: "Nei",
       "not-applicable": "Ikkje relevant",
-      "not-set": "Ikkje valgt",
+      "not-set": "Ikkje valt",
       description: "Om biletet er modellklarert eller ikkje:",
     },
     download: "Last ned biletet",

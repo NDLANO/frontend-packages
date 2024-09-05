@@ -38,7 +38,7 @@ const messages = {
     aria: {
       screenReaderStatus: "{{count}} resultat tilgjengeleg",
       disabled: "utilgjengeleg",
-      selected: "valgt",
+      selected: "valt",
       focused: "fokusert",
       guidance: {
         menu: {
@@ -52,18 +52,18 @@ const messages = {
           focused: "er fokusert",
           refine: "skriv for å filtrere lista med emneknaggar",
           down: "trykk pil ned for å åpne menyen",
-          left: "trykk venstre pil for å fokusere valgte emneknaggar",
+          left: "trykk venstre pil for å fokusere valte emneknaggar",
           space: "trykk mellomrom for å opprette ny emneknagg",
         },
         value:
-          "Bruk høgre og venstre pil for å navigere mellom valgte emneknaggar, trykk backspace for å fjerne den valgte emneknaggen. Dersom ingen emneknagg er valgt fjernes den siste.",
+          "Bruk høgre og venstre pil for å navigere mellom valte emneknaggar, trykk backspace for å fjerne den valte emneknaggen. Dersom ingen emneknagg er valt fjernes den siste.",
       },
       onChange: {
         deselect: "emneknagg {{label}}, fjerna.",
-        clear: "Alle valgte emneknaggar fjerna.",
-        initialFocus: `Emneknaggar {{labels}}, valgt.`,
+        clear: "Alle valte emneknaggar fjerna.",
+        initialFocus: `Emneknaggar {{labels}}, valt.`,
         selectedDisabled: "Emneknagg {{label}} kan ikkje velgast. Velg eit anna alternativ.",
-        selected: "Emneknagg {{label}},  valgt.",
+        selected: "Emneknagg {{label}},  valt.",
       },
       onFocus: {
         value: "emneknagg {{label}} fokusert, {{position}}.",
@@ -72,7 +72,7 @@ const messages = {
       },
       onFilter: " for søkeord ",
     },
-    noOptions: "Ingen mulige val",
+    noOptions: "Ingen moglege val",
     label: "Legg til emneknagg",
     createLabel: "Legg til emneknagg {{tag}}",
     placeholder: "Skriv inn emneknagg",
@@ -144,7 +144,7 @@ const messages = {
       subjectsLabel: "Opne i fag:",
       noResultHeading: "Hmm, ikkje noko innhald ...",
       noResultDescription:
-        "Vi har dessverre ikkje noko å tilby her. Om du vil føreslå noko innhald til dette området, kan du bruke Spør NDLA som du finn nede til høgre på skjermen.",
+        "Vi har dessverre ikkje noko å tilby her. Om du vil foreslå innhald til dette området, kan du bruke Spør NDLA-knappen som du finn nede til høgre på skjermen.",
     },
     searchFilterMessages: {
       backButton: "Tilbake til filter",
@@ -321,7 +321,7 @@ const messages = {
     access: {
       onlyTeacher: "Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.",
     },
-    possiblyOutdated: "Artikkelen er foreldet.",
+    possiblyOutdated: "Artikkelen er forelda.",
     footnotes: "Fotnotar",
   },
   competenceGoals: {
@@ -343,13 +343,13 @@ const messages = {
     competenceSubjectLabel: "Fag",
     competenceCoreSearchText: "Søk ressursar for kjerneelementet",
     competenceTopicSearchText: "Søk ressursar for tema",
-    competenceSubjectSearchText: "Gå til fagsiden",
+    competenceSubjectSearchText: "Gå til fagsida",
     competenceGoalClose: "Lukk",
     competenceGoalTitle: "Målet er at eleven skal kunne:",
     competenceTabLK20label: "Kompetansemål",
     competenceTabLK20Tooltip: "Vis kompetansemål",
     competenceTabCorelabel: "Kjerneelement",
-    competenceTabCoreTooltip: "Vis kjerneelementar",
+    competenceTabCoreTooltip: "Vis kjerneelement",
     competenceGoalItem: {
       title: "Kompetansemål og vurdering",
     },
@@ -463,8 +463,8 @@ const messages = {
       heading: "Slik gjenbruker du H5P-innhald",
       description: "Du finn retningslinjene for bruk av innhaldet i H5P-elementet.",
       rules: "Reglar for bruk av H5P",
-      licenseText: "Denne interaktive oppgåva (H5p) har lisensen",
-      restrictedUseText: "Denne interaktive oppgåva (H5p) har",
+      licenseText: "Denne interaktive oppgåva (H5P) har lisensen",
+      restrictedUseText: "Denne interaktive oppgåva (H5P) har",
     },
     concept: {
       embedlink: {
@@ -481,8 +481,8 @@ const messages = {
     },
     gloss: {
       embedlink: {
-        heading: "Slik viser du glosen i anna innhald",
-        description: "Denne lenka viser glosen utan kontekst (meny og botntekst)",
+        heading: "Slik viser du glosa i anna innhald",
+        description: "Denne lenka viser glosa utan kontekst (meny og botntekst)",
         copyTitle: "Kopier innbyggingslenke",
         hasCopiedTitle: "Innbyggingslenke kopiert",
       },
@@ -495,8 +495,8 @@ const messages = {
     },
     files: {
       heading: "Slik gjenbruker du filer",
-      description: "Hugs å kopiere teksten som skal leggjast ved fila der du bruker ho.",
-      rules: "Regler for bruk av fila",
+      description: "Hugs å kopiere teksten som skal leggast ved fila der du bruker ho.",
+      rules: "Reglar for bruk av fila",
       itemImage: {
         ariaLabel: "Opne i nytt vindauge",
       },
@@ -740,7 +740,7 @@ const messages = {
     searching: "Søkjer...",
     create: "Opprett ny",
     isSelectedItem: "Lagt til",
-    selected: "{{count}} valgte",
+    selected: "{{count}} valte",
   },
   editor: {
     versionHistory: {
@@ -786,7 +786,7 @@ const messages = {
   },
   cancel: "Avbryt",
   close: "Lukk",
-  loading: "Laster",
+  loading: "Lastar",
   title: "Tittel",
   save: "Lagre",
   photo: "Bilete",
@@ -804,7 +804,7 @@ const messages = {
       yes: "Ja",
       no: "Nei",
       "not-applicable": "Ikkje relevant",
-      "not-set": "Ikkje valgt",
+      "not-set": "Ikkje valt",
       description: "Om biletet er modellklarert eller ikkje:",
     },
     download: "Last ned biletet",
@@ -947,15 +947,15 @@ const messages = {
       missingName: "Skriv namn på mappe",
       folderDeleted: '"{{folderName}}" er sletta',
       folderCreated: '"{{folderName}}" er oppretta',
-      onDragStart: "Plukket opp mappa {{name}}. Mappa er på posisjon {{index}} av {{length}}",
-      onDragOver: "Mappa {{name}} blei flytta til posisjon {{index}} av {{length}}",
-      onDragOverMissingOver: "Mappa {{name}} er ikkje lenger over eit sleppbart område",
-      onDragEnd: "Mappa {{name}} blei sleppt på posisjon {{index}} av {{length}}",
-      onDragEndMissingOver: "Mappa blei sleppt",
-      onDragCancel: "Flytting avbrutt. Mappa {{name}} blei sleppt",
+      onDragStart: "Plukka opp mappa {{name}}. Mappa er på posisjon {{index}} av {{length}}",
+      onDragOver: "Mappa {{name}} vart flytta til posisjon {{index}} av {{length}}",
+      onDragOverMissingOver: "Mappa {{name}} er ikkje lenger over eit område der ho kan sleppast",
+      onDragEnd: "Mappa {{name}} vart sleppt på posisjon {{index}} av {{length}}",
+      onDragEndMissingOver: "Mappa vart sleppt",
+      onDragCancel: "Flytting avbroten. Mappa {{name}} vart sleppt",
       dragHandle: "Sorter mappa {{name}}",
       professional: "ein fagperson",
-      sharedWarning: "Namn og beskriving blir synleg for alle du deler mappa med.",
+      sharedWarning: "Namn og skildring blir synleg for alle du deler mappa med.",
       sharing: {
         share: "Del mappe",
         shared: "Delt",
@@ -993,7 +993,7 @@ const messages = {
           unShare: "Avslutt deling",
           shareLink: "Kopier lenke",
           saveLink: "Lagre lenka",
-          unSaveLink: "Fjern lenken",
+          unSaveLink: "Fjern lenka",
         },
         save: {
           warning:
@@ -1041,8 +1041,8 @@ const messages = {
         topic: "Nytt innlegg",
       },
       warning: {
-        post: "Svaret ditt er synleg for alle lærerar og tilsette som er logga på Min NDLA.",
-        topic: "Innlegget ditt er synleg for alle lærerar og tilsette som er logga på Min NDLA.",
+        post: "Svaret ditt er synleg for alle lærarar og tilsette som er logga på Min NDLA.",
+        topic: "Innlegget ditt er synleg for alle lærarar og tilsette som er logga på Min NDLA.",
       },
       removeText: {
         post: "Slett kommentar",
@@ -1246,10 +1246,10 @@ const messages = {
         info1:
           "I denne delte mappa finn du fagstoff og oppgåver frå NDLA. Artiklane er samla inn og sette i rekkefølge av ein lærar.",
       },
-      willOpenInNewTab: "Opnast i ny fane.",
+      willOpenInNewTab: "Blir opna i ny fane.",
     },
     myPage: {
-      noRecents: "Du har ikkje lagt til nokon ressursar enno. Slik kjem du i gang:",
+      noRecents: "Du har ikkje lagt til ressursar enno. Slik kjem du i gang:",
       imageAlt:
         "Halvnært bilete av jente som held eit nettbrett i hendene. Oppå nettbrettet ligg det ei samling fargeprøver i ulike former og fargar. Grafikk.",
       confirmDeleteAccount: "Er du sikker på at du vil slette kontoen?",
@@ -1264,8 +1264,8 @@ const messages = {
         "Her kan du organisere fagstoffet på <b>din</b> måte! Bruk hjarteknappen for å markere favorittfaga eller favorittressursane dine og enkelt finne dei igjen.",
       loginText:
         "For å kunne bruke tjenesten Min NDLA må du vere elev eller jobbe på ein skule i eit fylke som er med i NDLA-samarbeidet.",
-      loginTextLink: "Les vår personvernerklæring her",
-      loginTerms: "Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk",
+      loginTextLink: "Les personvernerklæringa vår her",
+      loginTerms: "Logg på med Feide for å få tilgang. Ved å logge på godkjenner du vilkåra våre for bruk",
       loginResourcePitch: "Ønsker du å favorittmerke denne ressursen?",
       loginWelcome: "Velkommen til Min NDLA!",
       welcome:
@@ -1347,24 +1347,24 @@ const messages = {
       addedToFolder: "Ressurs er lagt i ",
       removedFromFolder: 'Fjerna fra "{{folderName}}"',
       titleUpdated: "Tittel oppdatert",
-      tagsUpdated: "Emneknaggar oppdatert",
+      tagsUpdated: "Emneknaggar oppdaterte",
       show: "Vis",
       save: "Lagre ressurs",
-      onDragStart: "Plukket opp ressursen {{name}}. Ressursen er på posisjon {{index}} av {{length}}",
-      onDragOver: "Ressursen {{name}} blei flytta til posisjon {{index}} av {{length}}",
-      onDragOverMissingOver: "Ressursen {{name}} er ikkje lenger over eit sleppbart område",
-      onDragEnd: "Ressursen {{name}} blei sleppt på posisjon {{index}} av {{length}}",
-      onDragEndMissingOver: "Ressursen blei sleppt",
-      onDragCancel: "Flytting avbrutt. Ressursen {{name}} blei sleppt",
+      onDragStart: "Plukka opp ressursen {{name}}. Ressursen er på posisjon {{index}} av {{length}}",
+      onDragOver: "Ressursen {{name}} vart flytta til posisjon {{index}} av {{length}}",
+      onDragOverMissingOver: "Ressursen {{name}} er ikkje lenger over eit område der han kan sleppast",
+      onDragEnd: "Ressursen {{name}} vart sleppt på posisjon {{index}} av {{length}}",
+      onDragEndMissingOver: "Ressursen vart sleppt",
+      onDragCancel: "Flytting avbroten. Ressursen {{name}} vart sleppt",
       dragHandle: "Sorter ressursen {{name}}",
     },
     category: {
       onDragStart: "Plukka opp kategorien {{name}}. Kategorien er på posisjon {{index}} av {{length}}",
       onDragOver: "Kategorien {{name}} vart flytta til posisjon {{index}} av {{length}}",
-      onDragOverMissingOver: "Kategorien {{name}} er ikkje lenger over eit slippbart område",
+      onDragOverMissingOver: "Kategorien {{name}} er ikkje lenger over eit område der han kan sleppast",
       onDragEnd: "Kategorien {{name}} vart sleppt på posisjon {{index}} av {{length}}",
       onDragEndMissingOver: "Kategorien {{name}} vart sleppt",
-      onDragCancel: "Flytting avbrote. Kategorien {{name}} vart sleppt",
+      onDragCancel: "Flytting avbroten. Kategorien {{name}} vart sleppt",
       dragHandle: "Sorter kategorien {{name}}",
     },
     favoriteSubjects: {
@@ -1438,7 +1438,7 @@ const messages = {
   wordClass: {
     [wordClass.wordClass.adjective]: "Adjektiv",
     [wordClass.wordClass.adverb]: "Adverb",
-    [wordClass.wordClass.properNoun]: "Egennavn",
+    [wordClass.wordClass.properNoun]: "Eigennamn",
     [wordClass.wordClass.auxiliary]: "Hjelpeord",
     [wordClass.wordClass.complement]: "Komplement",
     [wordClass.wordClass.conjunction]: "Konjunksjon",
@@ -1482,10 +1482,10 @@ const messages = {
       deleteTagTriggerLabel: "Fjern emneknagg {{tag}}",
       tagAdded: "Emneknagg {{tag}} lagt til",
       tagsPasted: "Limte inn {{length}} emneknaggar",
-      tagEdited: "Redigerer emneknagg {{tag}}. Trykk enter for å lagre, eller esc for å avbryte.",
+      tagEdited: "Redigerer emneknagg {{tag}}. Trykk enter for å lagre eller esc for å avbryte.",
       tagUpdated: "Emneknagg oppdatret til {{tag}}",
-      tagDeleted: "Emneknagg {{tag}} slettet",
-      tagSelected: "Emneknagg {{tag}} valgt. Trykk enter for å redigere. Trykk backspace eller delete for å slette",
+      tagDeleted: "Emneknagg {{tag}} sletta",
+      tagSelected: "Emneknagg {{tag}} valt. Trykk enter for å redigere. Trykk backspace eller delete for å slette",
     },
     combobox: {
       triggerLabel: "Vis resultater",

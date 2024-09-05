@@ -44,6 +44,11 @@ const translations = {
   searchButtonTitle:  /* Translated string */,
   useAudio:           /* Translated string */,
   noResults:          /* Translated string */,
+  paginationTranslations: {
+        rootLabel: /* Translated string */,
+        prevTriggerLabel: /* Translated string */,
+        nextTriggerLabel: /* Translated string */,
+      },
 };
 
 

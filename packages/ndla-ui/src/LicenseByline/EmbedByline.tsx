@@ -78,6 +78,7 @@ const BylineWrapper = styled("figcaption", {
     paddingBlock: "xsmall",
     background: "surface.default",
     textStyle: "label.medium",
+    color: "text.subtle",
   },
 });
 

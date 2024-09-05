@@ -28,8 +28,7 @@
   "dependencies": {
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
-    "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "workspace:^"
+    "@ndla/primitives": "workspace:^"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",

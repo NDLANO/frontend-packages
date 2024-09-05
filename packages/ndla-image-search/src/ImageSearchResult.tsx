@@ -6,26 +6,43 @@
  *
  */
 
-import styled from "@emotion/styled";
-import { ButtonV2 } from "@ndla/button";
+import { Text, Heading, Image, Button } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { MetadataTranslations } from "./ImageSearch";
 import PreviewImage from "./PreviewImage";
 import { getPreviewSrcSets } from "./util/imageUtil";
 
-const StyledButton = styled(ButtonV2)`
-  display: flex;
-  flex-direction: column;
-`;
+const StyledButton = styled(Button, {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    borderColor: "stroke.subtle",
+  },
+});
+
+const StyledImage = styled(Image, {
+  base: {
+    maxHeight: "135px",
+  },
+});
+
+const StyledHeading = styled(Heading, {
+  base: {
+    lineClamp: "3",
+  },
+});
 
 interface Props {
   image: IImageMetaInformationV3;
   onImageClick: (image: IImageMetaInformationV3) => void;
   selectedImage?: IImageMetaInformationV3;
-  onSelectImage: (image: IImageMetaInformationV3, saveAsMetaImage: boolean) => void;
+  onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
+  translations: MetadataTranslations & { close: string; missingTitleFallback?: string };
+  locale: string;
   checkboxLabel?: string;
-  useAsMetaImageLabel?: string;
 }
 
 export default function ImageSearchResult({
@@ -35,35 +52,40 @@ export default function ImageSearchResult({
   onSelectImage,
   useImageTitle,
   showCheckbox,
+  translations,
+  locale,
   checkboxLabel,
 }: Props) {
-  const active = selectedImage && selectedImage.id === image.id ? "active" : "";
+  const active = selectedImage?.id === image.id;
 
   return (
-    <div key={image.id} className={`list-item ${active}`}>
-      <div className="list-item-inner">
-        <StyledButton variant="stripped" data-testid="select-image-from-list" onClick={() => onImageClick(image)}>
-          <img
-            role="presentation"
-            alt="presentation"
-            srcSet={getPreviewSrcSets(image.image.imageUrl)}
-            src={image.image.imageUrl}
-          />
-          <span className="list-item-title">{image.title.title}</span>
-        </StyledButton>
-      </div>
-      {selectedImage && selectedImage.id === image.id ? (
+    <>
+      <StyledButton
+        variant={active ? "secondary" : "tertiary"}
+        data-testid="select-image-from-list"
+        onClick={() => onImageClick(image)}
+        aria-expanded={active}
+        aria-controls={`image-preview-${image.id}`}
+      >
+        <StyledImage alt="" srcSet={getPreviewSrcSets(image.image.imageUrl)} src={image.image.imageUrl} />
+        <Text textStyle="label.medium" asChild consumeCss>
+          <span>
+            {image.title.title.trim() ? image.title.title : translations.missingTitleFallback ?? `ID: ${image.id}`}
+          </span>
+        </Text>
+      </StyledButton>
+      {selectedImage?.id === image.id && (
         <PreviewImage
+          id={`image-preview-${image.id}`}
           image={selectedImage}
           onSelectImage={onSelectImage}
           useImageTitle={useImageTitle}
           checkboxLabel={checkboxLabel}
+          translations={translations}
           showCheckbox={showCheckbox}
-          aria-hidden={true}
+          locale={locale}
         />
-      ) : (
-        ""
       )}
-    </div>
+    </>
   );
 }

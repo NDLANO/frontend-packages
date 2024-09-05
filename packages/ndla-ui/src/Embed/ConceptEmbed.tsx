@@ -8,6 +8,7 @@
 
 import parse from "html-react-parser";
 import { forwardRef, useMemo } from "react";
+import { Portal } from "@ark-ui/react";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
@@ -88,16 +89,17 @@ export interface InlineConceptProps extends ConceptProps, BaseProps {
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
   ({ linkText, copyright, visualElement, lang, children, title, source, ...rest }, ref) => (
     <PopoverRoot>
-      <PopoverTrigger asChild>
-        <InlineTriggerButton {...rest} ref={ref}>
-          {linkText}
-        </InlineTriggerButton>
+      {/* @ts-expect-error placing ref and rest on popover trigger somehow removes a bug where the popover target becomes a bit bigger */}
+      <PopoverTrigger asChild ref={ref} {...rest}>
+        <InlineTriggerButton>{linkText}</InlineTriggerButton>
       </PopoverTrigger>
-      <StyledPopoverContent>
-        <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title} source={source}>
-          {children}
-        </Concept>
-      </StyledPopoverContent>
+      <Portal>
+        <StyledPopoverContent>
+          <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title} source={source}>
+            {children}
+          </Concept>
+        </StyledPopoverContent>
+      </Portal>
     </PopoverRoot>
   ),
 );

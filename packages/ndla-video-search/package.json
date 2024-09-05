@@ -29,7 +29,6 @@
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "workspace:^",
     "@ndla/util": "^4.1.0"
   },
   "devDependencies": {

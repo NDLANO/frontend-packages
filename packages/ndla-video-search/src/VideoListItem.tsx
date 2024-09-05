@@ -11,7 +11,6 @@ import { CloseLine } from "@ndla/icons/action";
 import { PanoramaPhotosphere } from "@ndla/icons/common";
 import { getLicenseByNBTitle, LicenseLocaleType } from "@ndla/licenses";
 import { Image, Text, ListItemContent, ListItemRoot, Button, IconButton } from "@ndla/primitives";
-import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { BrightcoveApiType } from "@ndla/types-embed";
 import { Translations } from "./VideoSearch";
@@ -90,9 +89,9 @@ const License = ({ license }: LicenseProps) => {
   if (typeof license === "string") return <Text>{license}</Text>;
   if (license.url?.length) {
     return (
-      <SafeLink to={license.url} rel="license">
+      <a href={license.url} rel="license">
         {license.abbreviation}
-      </SafeLink>
+      </a>
     );
   }
   return <Text>{license.abbreviation}</Text>;

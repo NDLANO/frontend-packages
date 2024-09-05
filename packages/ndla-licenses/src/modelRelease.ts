@@ -8,6 +8,8 @@
 
 import { getLocaleOrDefault, Locale } from "./types";
 
+// TODO: Try to improve type safety
+
 interface ModelReleaseLocaleInfo {
   yes: string;
   no: string;

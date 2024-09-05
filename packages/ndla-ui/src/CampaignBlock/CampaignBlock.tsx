@@ -44,7 +44,6 @@ const Container = styled("div", {
     backgroundColor: "background.default",
     borderRadius: "xsmall",
     boxShadow: "full",
-    marginBlockEnd: "4xsmall",
     overflow: "hidden",
   },
   variants: {

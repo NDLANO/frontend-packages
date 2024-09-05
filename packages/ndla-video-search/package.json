@@ -29,10 +29,13 @@
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
+    "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^4.1.0"
   },
   "devDependencies": {
-    "@ndla/types-embed": "^5.0.1-alpha.0"
+    "@ndla/preset-panda": "workspace:^",
+    "@ndla/types-embed": "^5.0.1-alpha.0",
+    "@pandacss/dev": "^0.45.2"
   },
   "peerDependencies": {
     "react": ">= 18",

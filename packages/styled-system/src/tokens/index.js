@@ -764,7 +764,7 @@ const tokens = {
     "variable": "var(--font-weights-semibold)"
   },
   "fontWeights.bold": {
-    "value": 700,
+    "value": 670,
     "variable": "var(--font-weights-bold)"
   },
   "fontSizes.xxsmall": {

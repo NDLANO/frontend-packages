@@ -10,7 +10,7 @@ import { Text, Button, Spinner } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { BrightcoveApiType } from "@ndla/types-embed";
 import { VideoListItem } from "./VideoListItem";
-import { Translations } from "./VideoSearch";
+import { VideoTranslations } from "./VideoSearch";
 
 const StyledList = styled("ul", {
   base: {
@@ -37,7 +37,7 @@ const StyledVideoResultWrapper = styled("div", {
 interface Props {
   videos: BrightcoveApiType[];
   isLoading: boolean;
-  translations: Translations;
+  translations: VideoTranslations;
   locale: string;
   onVideoSelect: (video: BrightcoveApiType) => void;
   onShowMore: () => void;

@@ -14,7 +14,7 @@ import { BrightcoveApiType } from "@ndla/types-embed";
 import { usePrevious } from "@ndla/util";
 import { VideoResultList } from "./VideoResultList";
 
-export type Translations = {
+export interface VideoTranslations {
   searchPlaceholder: string;
   searchButtonTitle: string;
   loadMoreVideos: string;
@@ -23,13 +23,13 @@ export type Translations = {
   previewVideo: string;
   addVideo: string;
   close: string;
-};
+}
 
 interface Props {
   onVideoSelect: (video: BrightcoveApiType) => void;
   searchVideos: (query: VideoQueryType) => Promise<BrightcoveApiType[]>;
   onError: (e: unknown) => void;
-  translations: Translations;
+  translations: VideoTranslations;
   locale: string;
 }
 

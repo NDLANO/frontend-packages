@@ -13,7 +13,7 @@ import { getLicenseByNBTitle, LicenseLocaleType } from "@ndla/licenses";
 import { Image, Text, ListItemContent, ListItemRoot, Button, IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { BrightcoveApiType } from "@ndla/types-embed";
-import { Translations } from "./VideoSearch";
+import { VideoTranslations } from "./VideoSearch";
 
 const ButtonWrapper = styled("div", {
   base: {
@@ -99,7 +99,7 @@ const License = ({ license }: LicenseProps) => {
 
 interface VideoListItemProps {
   video: BrightcoveApiType;
-  translations: Translations;
+  translations: VideoTranslations;
   locale: string;
   onVideoSelect: (video: BrightcoveApiType) => void;
 }

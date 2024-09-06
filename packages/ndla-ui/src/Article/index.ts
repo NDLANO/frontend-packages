@@ -18,5 +18,3 @@ export {
 
 export { ArticleByline, ArticleBylineAccordionItem } from "./ArticleByline";
 export { ArticleFootNotes } from "./ArticleFootNotes";
-
-export { ArticleParagraph } from "./ArticleParagraph";

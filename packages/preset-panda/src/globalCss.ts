@@ -55,6 +55,12 @@ export const globalCss = defineGlobalStyles({
     "h4, h5, h6": {
       textStyle: "title.medium",
     },
+    '& p[data-align="center"]': {
+      textAlign: "center",
+    },
+    '& p:has(span[dir="rtl"])': {
+      direction: "rtl",
+    },
     textStyle: "body.article",
     width: "100%",
 
@@ -92,6 +98,23 @@ export const globalCss = defineGlobalStyles({
           marginBlockStart: "xxlarge",
         },
       },
+    '& [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"], [data-embed-type="uu-disclaimer"], details, blockquote':
+      {
+        "& > :first-child": {
+          marginBlockStart: "0",
+        },
+        "& > :last-child": {
+          marginBlockEnd: "0",
+        },
+      },
+    "& section:not([class]), section:not([class]) > div:not([class])": {
+      "& > :first-child": {
+        marginBlockStart: "xxlarge",
+      },
+      "& > :last-child": {
+        marginBlockEnd: "xxlarge",
+      },
+    },
   },
   // Adds default link styling to links without classes
   'a:not([class]):not([data-unstyled]), a[class=""]:not([data-unstyled])': {

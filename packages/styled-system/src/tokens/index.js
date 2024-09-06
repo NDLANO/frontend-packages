@@ -912,12 +912,16 @@ const tokens = {
     "variable": "var(--shadows-full)"
   },
   "shadows.inner": {
-    "value": "0px -1px 0px 0px var(--colors-primary) inset",
+    "value": "0px -1px 0px 0px rgba(45, 27, 98, 0.25) inset",
     "variable": "var(--shadows-inner)"
   },
   "shadows.innerTop": {
-    "value": "0px 1px 0px 0px var(--colors-primary) inset",
+    "value": "0px 1px 0px 0px rgba(45, 27, 98, 0.25) inset",
     "variable": "var(--shadows-inner-top)"
+  },
+  "shadows.innerRight": {
+    "value": "-1px 0px 0px 0px rgba(45, 27, 98, 0.25) inset",
+    "variable": "var(--shadows-inner-right)"
   },
   "zIndex.hide": {
     "value": -1,

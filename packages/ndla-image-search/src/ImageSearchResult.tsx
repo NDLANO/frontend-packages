@@ -6,7 +6,7 @@
  *
  */
 
-import { Text, Heading, Image, Button } from "@ndla/primitives";
+import { Text, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { MetadataTranslations } from "./ImageSearch";
@@ -27,7 +27,7 @@ const StyledImage = styled(Image, {
   },
 });
 
-const StyledHeading = styled(Heading, {
+const StyledText = styled(Text, {
   base: {
     lineClamp: "3",
   },
@@ -68,11 +68,11 @@ export default function ImageSearchResult({
         aria-controls={`image-preview-${image.id}`}
       >
         <StyledImage alt="" srcSet={getPreviewSrcSets(image.image.imageUrl)} src={image.image.imageUrl} />
-        <Text textStyle="label.medium" asChild consumeCss>
+        <StyledText textStyle="label.medium" asChild consumeCss>
           <span>
             {image.title.title.trim() ? image.title.title : translations.missingTitleFallback ?? `ID: ${image.id}`}
           </span>
-        </Text>
+        </StyledText>
       </StyledButton>
       {selectedImage?.id === image.id && (
         <PreviewImage

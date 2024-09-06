@@ -272,7 +272,7 @@ const NewFolder = ({ parentId, onCancel, structure, setStructure, onCreate }: Ne
             </>
           ) : (
             <FieldHelper>
-              <Spinner size="small" aria-label={t("loading")} />
+              <Spinner size="small" aria-valuetext={t("loading")} aria-label={t("loading")} />
             </FieldHelper>
           )}
         </HStack>

@@ -225,6 +225,7 @@ export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProp
 interface BaseButtonProps extends HTMLArkProps<"button">, JsxStyleProps {
   loading?: boolean;
   loadingContent?: ReactNode;
+  loadingContentText?: string;
   replaceContent?: boolean;
 }
 
@@ -253,10 +254,10 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 );
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, loadingContent, size, css: cssProp, ...props }, ref) => (
+  ({ variant, loadingContent, loadingContentText, size, css: cssProp, ...props }, ref) => (
     <BaseButton
       {...props}
-      loadingContent={loadingContent ?? <Spinner size="small" />}
+      loadingContent={loadingContent ?? <Spinner size="small" aria-valuetext={loadingContentText ?? ""} />}
       css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
       ref={ref}
     />
@@ -270,11 +271,11 @@ export type IconButtonVariantProps = { variant?: IconButtonVariant } & RecipeVar
 export type IconButtonProps = BaseButtonProps & IconButtonVariantProps;
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ variant, css: cssProp, loadingContent, size, replaceContent = true, ...props }, ref) => (
+  ({ variant, css: cssProp, loadingContent, size, loadingContentText, replaceContent = true, ...props }, ref) => (
     <BaseButton
       {...props}
       css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw({ size }), cssProp)}
-      loadingContent={loadingContent ?? <Spinner size="small" />}
+      loadingContent={loadingContent ?? <Spinner size="small" aria-valuetext={loadingContentText ?? ""} />}
       replaceContent={replaceContent}
       ref={ref}
     />

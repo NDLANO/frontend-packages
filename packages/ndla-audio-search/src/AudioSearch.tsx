@@ -33,18 +33,20 @@ const AudioSearchWrapper = styled("div", {
   },
 });
 
+export interface AudioSearchTranslations {
+  searchPlaceholder: string;
+  searchButtonTitle: string;
+  useAudio: string;
+  noResults: string;
+  paginationTranslations: PaginationRootProps["translations"];
+}
+
 interface Props {
   queryObject: QueryObject;
   fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
   searchAudios: (queryObject: QueryObject) => Promise<IAudioSummarySearchResult>;
   onError: (err: any) => void;
-  translations: {
-    searchPlaceholder: string;
-    searchButtonTitle: string;
-    useAudio: string;
-    noResults: string;
-    paginationTranslations: PaginationRootProps["translations"];
-  };
+  translations: AudioSearchTranslations;
   onAudioSelect: (audio: IAudioSummary) => void;
   loadingIndicator?: ReactNode;
 }

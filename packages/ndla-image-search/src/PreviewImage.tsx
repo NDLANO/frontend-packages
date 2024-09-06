@@ -115,21 +115,11 @@ interface Props {
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
-  translations: MetadataTranslations & { close: string; missingTitleFallback?: string };
+  translations: MetadataTranslations & { close: string; missingTitleFallback?: string; checkboxLabel?: string };
   locale: string;
-  checkboxLabel?: string;
 }
 
-const PreviewImage = ({
-  id,
-  image,
-  onSelectImage,
-  useImageTitle,
-  showCheckbox,
-  translations,
-  locale,
-  checkboxLabel,
-}: Props) => {
+const PreviewImage = ({ id, image, onSelectImage, useImageTitle, showCheckbox, translations, locale }: Props) => {
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
   return (
@@ -160,7 +150,7 @@ const PreviewImage = ({
           </StyledTopRow>
           {!!image.copyright.creators.length && (
             <Text>
-              <b>{`${translations.creators}: `}</b>
+              <b>{`${translations.creatorsLabel}: `}</b>
               {image.copyright.creators.map((creator) => creator.name).join(", ")}
             </Text>
           )}
@@ -219,7 +209,7 @@ const PreviewImage = ({
                   <CheckLine />
                 </CheckboxIndicator>
               </CheckboxControl>
-              <CheckboxLabel>{checkboxLabel}</CheckboxLabel>
+              <CheckboxLabel>{translations.checkboxLabel}</CheckboxLabel>
               <CheckboxHiddenInput />
             </CheckboxRoot>
           )}

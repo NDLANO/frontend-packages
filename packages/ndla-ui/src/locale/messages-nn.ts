@@ -1500,6 +1500,27 @@ const messages = {
       lastPage: "Siste side, side {{page}}",
       page: "Side {{page}}",
     },
+    imageSearch: {
+      close: "Lukk",
+      searchPlaceholder: "Søk i bilete",
+      searchButtonTitle: "Søk",
+      useImageTitle: "Bruk biletet",
+      checkboxLabel: "Sett som metabilete",
+      imageMetadata: {
+        creatorsLabel: "Bilete",
+        license: "Lisens",
+        caption: "Bildetekst",
+        altText: "Alt-tekst",
+        modelRelease: "Modellklarert",
+        tags: "Emneknaggar",
+      },
+    },
+    audioSearch: {
+      searchPlaceholder: "Søk i lydfiler",
+      searchButtonTitle: "Søk",
+      useAudio: "Velg lyd",
+      noResults: "Ingen resultat funnet",
+    },
   },
 };
 

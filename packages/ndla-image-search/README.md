@@ -36,8 +36,9 @@ const translations = {
     searchPlaceholder: "Søk i bilder",
     searchButtonTitle: "Søk",
     useImageTitle: "Bruk bildet",
+    checkboxLabel: "Sett som metabilde",
     imageMetadata: {
-        creators: "Bilde",
+        creatorsLabel: "Bilde",
         license: "Lisens",
         caption: "Bildetekst",
         altText: "Alt-tekst",

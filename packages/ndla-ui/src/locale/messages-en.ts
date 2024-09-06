@@ -1501,6 +1501,27 @@ const messages = {
       lastPage: "Last page, page {{page}}",
       page: "Page {{page}}",
     },
+    imageSearch: {
+      close: "Close",
+      searchPlaceholder: "Search images",
+      searchButtonTitle: "Search",
+      useImageTitle: "Use image",
+      checkboxLabel: "Set as meta image",
+      imageMetadata: {
+        creatorsLabel: "Image",
+        license: "License",
+        caption: "Caption",
+        altText: "Alt-text",
+        modelRelease: "Model released",
+        tags: "Tags",
+      },
+    },
+    audioSearch: {
+      searchPlaceholder: "Search in audio files",
+      searchButtonTitle: "Search",
+      useAudio: "Chose audio",
+      noResults: "No audio files found",
+    },
   },
 };
 

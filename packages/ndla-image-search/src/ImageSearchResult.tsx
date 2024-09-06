@@ -6,7 +6,7 @@
  *
  */
 
-import { Text, Heading, Image, Button } from "@ndla/primitives";
+import { Text, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { MetadataTranslations } from "./ImageSearch";
@@ -27,7 +27,7 @@ const StyledImage = styled(Image, {
   },
 });
 
-const StyledHeading = styled(Heading, {
+const StyledText = styled(Text, {
   base: {
     lineClamp: "3",
   },
@@ -40,9 +40,8 @@ interface Props {
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
-  translations: MetadataTranslations & { close: string; missingTitleFallback?: string };
+  translations: MetadataTranslations & { close: string; missingTitleFallback?: string; checkboxLabel?: string };
   locale: string;
-  checkboxLabel?: string;
 }
 
 export default function ImageSearchResult({
@@ -54,7 +53,6 @@ export default function ImageSearchResult({
   showCheckbox,
   translations,
   locale,
-  checkboxLabel,
 }: Props) {
   const active = selectedImage?.id === image.id;
 
@@ -68,11 +66,11 @@ export default function ImageSearchResult({
         aria-controls={`image-preview-${image.id}`}
       >
         <StyledImage alt="" srcSet={getPreviewSrcSets(image.image.imageUrl)} src={image.image.imageUrl} />
-        <Text textStyle="label.medium" asChild consumeCss>
+        <StyledText textStyle="label.medium" asChild consumeCss>
           <span>
             {image.title.title.trim() ? image.title.title : translations.missingTitleFallback ?? `ID: ${image.id}`}
           </span>
-        </Text>
+        </StyledText>
       </StyledButton>
       {selectedImage?.id === image.id && (
         <PreviewImage
@@ -80,7 +78,6 @@ export default function ImageSearchResult({
           image={selectedImage}
           onSelectImage={onSelectImage}
           useImageTitle={useImageTitle}
-          checkboxLabel={checkboxLabel}
           translations={translations}
           showCheckbox={showCheckbox}
           locale={locale}

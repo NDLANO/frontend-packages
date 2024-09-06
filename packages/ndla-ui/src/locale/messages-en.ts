@@ -1014,6 +1014,8 @@ const messages = {
         posts: "post",
         posts_plural: "posts",
         subcategory: "Subcategories",
+        votes: "reaction",
+        votes_plural: "reactions",
       },
       cancel: {
         title: {
@@ -1077,6 +1079,8 @@ const messages = {
         unlock: "Unlock topic",
         lockDescription: "Do you want do lock this topic? This will prevent this topic from getting more posts.",
         unlockDescription: "Do you want do unlock this topic? This will prevent this topic from getting more posts.",
+        votes: "reaction",
+        votes_plural: "reactions",
       },
       posts: {
         title: "Posts",
@@ -1107,13 +1111,13 @@ const messages = {
         maxLength: "The maximum length for the text field is reached",
         error: "The field is required",
       },
-      bottomText: "Are you missing a category? Let our moderator know at ",
+      bottomText: "Are you missing a category? You can request new categories. Use 'Ask NDLA' or send an email to ",
       moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Notifications",
         showAll: "View all notifications",
         description:
-          "Welcome to the arena for teachers in upper secondary education. This is <em>your</em> arena: a professional meeting place for discussion, inspiration, sharing, development, and collaboration.",
+          "Welcome to NDLAs Arena. Here, you can discuss, share and cooperate with other teachers from all over Norway.",
         myNotification: "My notifications",
         markAll: "Mark all as read",
         subscribe: "You will now be notified of new replies to this topic",

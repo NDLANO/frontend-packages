@@ -1012,8 +1012,8 @@ const messages = {
         posts: "post",
         posts_plural: "posts",
         subcategory: "Subcategories",
-        voteSingular: "reaction",
-        votePlural: "reactions",
+        votes: "reaction",
+        votes_plural: "reactions",
       },
       cancel: {
         title: {
@@ -1077,8 +1077,8 @@ const messages = {
         unlock: "Unlock topic",
         lockDescription: "Do you want do lock this topic? This will prevent this topic from getting more posts.",
         unlockDescription: "Do you want do unlock this topic? This will prevent this topic from getting more posts.",
-        voteSingular: "reaction",
-        votePlural: "reactions",
+        votes: "reaction",
+        votes_plural: "reactions",
       },
       posts: {
         title: "Posts",

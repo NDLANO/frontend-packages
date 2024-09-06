@@ -40,9 +40,8 @@ interface Props {
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
-  translations: MetadataTranslations & { close: string; missingTitleFallback?: string };
+  translations: MetadataTranslations & { close: string; missingTitleFallback?: string; checkboxLabel?: string };
   locale: string;
-  checkboxLabel?: string;
 }
 
 export default function ImageSearchResult({
@@ -54,7 +53,6 @@ export default function ImageSearchResult({
   showCheckbox,
   translations,
   locale,
-  checkboxLabel,
 }: Props) {
   const active = selectedImage?.id === image.id;
 
@@ -80,7 +78,6 @@ export default function ImageSearchResult({
           image={selectedImage}
           onSelectImage={onSelectImage}
           useImageTitle={useImageTitle}
-          checkboxLabel={checkboxLabel}
           translations={translations}
           showCheckbox={showCheckbox}
           locale={locale}

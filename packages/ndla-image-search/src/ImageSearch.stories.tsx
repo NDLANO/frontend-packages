@@ -25,7 +25,7 @@ export default {
       searchButtonTitle: "Søk",
       useImageTitle: "Bruk bildet",
       imageMetadata: {
-        creators: "Bilde",
+        creatorsLabel: "Bilde",
         license: "Lisens",
         caption: "Bildetekst",
         altText: "Alt-tekst",

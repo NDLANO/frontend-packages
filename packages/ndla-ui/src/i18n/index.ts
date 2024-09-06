@@ -13,4 +13,6 @@ export {
   useTagSelectorTranslations,
   useTagsInputTranslations,
   usePaginationTranslations,
+  useAudioSearchTranslations,
+  useImageSearchTranslations,
 } from "./useComponentTranslations";

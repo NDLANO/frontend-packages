@@ -50,12 +50,23 @@ const StyledForm = styled("form", {
 });
 
 export interface MetadataTranslations {
-  creators: string;
+  creatorsLabel: string;
   license: string;
   caption: string;
   altText: string;
   modelRelease: string;
   tags: string;
+}
+
+export interface ImageSearchTranslations {
+  searchPlaceholder: string;
+  searchButtonTitle: string;
+  useImageTitle: string;
+  close: string;
+  imageMetadata: MetadataTranslations;
+  paginationTranslations: PaginationRootProps["translations"];
+  missingTitleFallback?: string;
+  checkboxLabel?: string;
 }
 
 interface Props {
@@ -67,16 +78,7 @@ interface Props {
   noResults?: ReactNode;
   checkboxAction?: (image: IImageMetaInformationV3) => void;
   showCheckbox?: boolean;
-  checkboxLabel?: string;
-  translations: {
-    searchPlaceholder: string;
-    searchButtonTitle: string;
-    useImageTitle: string;
-    close: string;
-    imageMetadata: MetadataTranslations;
-    paginationTranslations: PaginationRootProps["translations"];
-    missingTitleFallback?: string;
-  };
+  translations: ImageSearchTranslations;
 }
 
 const ImageSearch = ({
@@ -88,7 +90,6 @@ const ImageSearch = ({
   noResults,
   checkboxAction,
   showCheckbox,
-  checkboxLabel,
   translations,
 }: Props) => {
   const [queryObject, setQueryObject] = useState<ISearchParams>({
@@ -194,7 +195,6 @@ const ImageSearch = ({
             useImageTitle={translations.useImageTitle}
             showCheckbox={!!showCheckbox}
             translations={imageSearchTranslations}
-            checkboxLabel={checkboxLabel}
             locale={locale}
           />
         ))}

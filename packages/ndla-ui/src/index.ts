@@ -84,6 +84,8 @@ export {
   useTagSelectorTranslations,
   useComboboxTranslations,
   usePaginationTranslations,
+  useAudioSearchTranslations,
+  useImageSearchTranslations,
 } from "./i18n";
 
 export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";

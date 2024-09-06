@@ -233,7 +233,8 @@ const messages = {
       "Hva vil det si å arbeide utforskende? Hvordan kan du lære bedre? Hva skal til for å få gruppearbeid til å fungere? I Verktøykassa finner både elever og lærere ressurser som er aktuelle for alle fag, og som støtter opp under læringsarbeid og utvikling av kunnskap, ferdigheter og forståelse.",
   },
   meta: {
-    description: "Kvalitetssikrede og fritt tilgjengelige nettbaserte læremidler for videregående opplæring",
+    description:
+      "Åpne og fritt tilgjengelige ressurser for videregående opplæring. Utviklet og oppdatert i samarbeid med dyktige lærere og elever",
     keywords: "læremiddel,fag,skole,videregående,lærling,pensum,fagstoff",
   },
   masthead: {

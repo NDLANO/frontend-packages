@@ -30,6 +30,8 @@ interface Props extends BaseProps {
 const StyledPopoverContent = styled(PopoverContent, {
   base: {
     width: "surface.xlarge",
+    maxHeight: "50vh",
+    overflowY: "auto",
   },
 });
 

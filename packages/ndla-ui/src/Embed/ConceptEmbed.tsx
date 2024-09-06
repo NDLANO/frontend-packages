@@ -21,6 +21,7 @@ import { Concept, ConceptProps } from "../Concept/Concept";
 interface BaseProps {
   renderContext?: RenderContext;
   lang?: string;
+  previewAlt?: boolean;
 }
 
 interface Props extends BaseProps {
@@ -35,7 +36,7 @@ const StyledPopoverContent = styled(PopoverContent, {
   },
 });
 
-export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
+export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.htmlContent);
@@ -58,6 +59,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
   if (embed.embedData.type === "inline") {
     return (
       <InlineConcept
+        previewAlt={previewAlt}
         linkText={embed.embedData.linkText}
         copyright={concept.copyright}
         visualElement={visualElement}
@@ -72,6 +74,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
 
   return (
     <BlockConcept
+      previewAlt={previewAlt}
       copyright={concept.copyright}
       visualElement={visualElement}
       lang={lang}

@@ -922,6 +922,8 @@ const messages = {
     close: "Lukk faktaboks",
   },
   myNdla: {
+    description:
+      "Min NDLA: Organiser fagstoffet på din måte! Bruk NDLAs praterobot (AI/KI). Lagre og del med kollegaer og elevar.",
     mainMenu: "Hovedmeny",
     myNDLA: "Min NDLA",
     myNDLAMenu: "Min NDLA meny",

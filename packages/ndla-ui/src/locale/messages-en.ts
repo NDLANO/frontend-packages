@@ -922,6 +922,8 @@ const messages = {
     close: "Close fact box",
   },
   myNdla: {
+    description:
+      "My NDLA: Organize the content your way! Use NDLA’s chat robot (AI). Save and share with colleagues and students.",
     mainMenu: "Main menu",
     myNDLA: "My NDLA",
     myNDLAMenu: "My NDLA menu",

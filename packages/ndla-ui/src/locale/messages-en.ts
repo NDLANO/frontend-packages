@@ -1506,18 +1506,18 @@ const messages = {
       page: "Page {{page}}",
     },
     imageSearch: {
-      close: "Close",
       searchPlaceholder: "Search images",
       searchButtonTitle: "Search",
-      useImageTitle: "Use image",
-      checkboxLabel: "Set as meta image",
-      imageMetadata: {
+      imagePreview: {
         creatorsLabel: "Image",
         license: "License",
         caption: "Caption",
         altText: "Alt-text",
         modelRelease: "Model released",
         tags: "Tags",
+        checkboxLabel: "Set as meta image",
+        close: "Close",
+        useImageTitle: "Use image",
       },
     },
     audioSearch: {

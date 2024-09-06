@@ -9,7 +9,7 @@
 import { Text, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
-import { MetadataTranslations } from "./ImageSearch";
+import { PreviewTranslations } from "./ImageSearch";
 import PreviewImage from "./PreviewImage";
 import { getPreviewSrcSets } from "./util/imageUtil";
 
@@ -38,9 +38,8 @@ interface Props {
   onImageClick: (image: IImageMetaInformationV3) => void;
   selectedImage?: IImageMetaInformationV3;
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
-  useImageTitle: string;
   showCheckbox: boolean;
-  translations: MetadataTranslations & { close: string; missingTitleFallback?: string; checkboxLabel?: string };
+  translations: PreviewTranslations;
   locale: string;
 }
 
@@ -49,7 +48,6 @@ export default function ImageSearchResult({
   onImageClick,
   selectedImage,
   onSelectImage,
-  useImageTitle,
   showCheckbox,
   translations,
   locale,
@@ -77,7 +75,6 @@ export default function ImageSearchResult({
           id={`image-preview-${image.id}`}
           image={selectedImage}
           onSelectImage={onSelectImage}
-          useImageTitle={useImageTitle}
           translations={translations}
           showCheckbox={showCheckbox}
           locale={locale}

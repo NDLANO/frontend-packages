@@ -49,24 +49,24 @@ const StyledForm = styled("form", {
   },
 });
 
-export interface MetadataTranslations {
+export interface PreviewTranslations {
   creatorsLabel: string;
   license: string;
   caption: string;
   altText: string;
   modelRelease: string;
   tags: string;
+  close: string;
+  checkboxLabel?: string;
+  missingTitleFallback?: string;
+  useImageTitle: string;
 }
 
 export interface ImageSearchTranslations {
   searchPlaceholder: string;
   searchButtonTitle: string;
-  useImageTitle: string;
-  close: string;
-  imageMetadata: MetadataTranslations;
+  imagePreview: PreviewTranslations;
   paginationTranslations: PaginationRootProps["translations"];
-  missingTitleFallback?: string;
-  checkboxLabel?: string;
 }
 
 interface Props {
@@ -103,11 +103,6 @@ const ImageSearch = ({
 
   const { page } = queryObject;
   const noResultsFound = !searching && searchResult?.results.length === 0;
-  const imageSearchTranslations = {
-    ...translations.imageMetadata,
-    close: translations.close,
-    missingTitleFallback: translations.missingTitleFallback,
-  };
 
   const onImageClick = (image: IImageMetaInformationV3) => {
     if (!selectedImage || image.id !== selectedImage.id) {
@@ -192,9 +187,8 @@ const ImageSearch = ({
             onImageClick={onImageClick}
             selectedImage={selectedImage}
             onSelectImage={onSelectImage}
-            useImageTitle={translations.useImageTitle}
             showCheckbox={!!showCheckbox}
-            translations={imageSearchTranslations}
+            translations={translations.imagePreview}
             locale={locale}
           />
         ))}

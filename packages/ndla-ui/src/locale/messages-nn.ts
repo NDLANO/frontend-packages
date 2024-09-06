@@ -1505,18 +1505,18 @@ const messages = {
       page: "Side {{page}}",
     },
     imageSearch: {
-      close: "Lukk",
       searchPlaceholder: "Søk i bilete",
       searchButtonTitle: "Søk",
-      useImageTitle: "Bruk biletet",
-      checkboxLabel: "Sett som metabilete",
-      imageMetadata: {
+      imagePreview: {
         creatorsLabel: "Bilete",
         license: "Lisens",
         caption: "Bildetekst",
         altText: "Alt-tekst",
         modelRelease: "Modellklarert",
         tags: "Emneknaggar",
+        checkboxLabel: "Sett som metabilete",
+        close: "Lukk",
+        useImageTitle: "Bruk biletet",
       },
     },
     audioSearch: {

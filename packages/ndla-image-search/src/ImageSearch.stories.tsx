@@ -20,17 +20,17 @@ export default {
     noResults: <div>Søket gav ingen treff</div>,
     locale: "nb",
     translations: {
-      close: "Lukk",
       searchPlaceholder: "Søk i bilder",
       searchButtonTitle: "Søk",
-      useImageTitle: "Bruk bildet",
-      imageMetadata: {
+      imagePreview: {
         creatorsLabel: "Bilde",
         license: "Lisens",
         caption: "Bildetekst",
         altText: "Alt-tekst",
         modelRelease: "Modellklarert",
         tags: "Emneknagger",
+        close: "Lukk",
+        useImageTitle: "Bruk bildet",
       },
       paginationTranslations: {
         rootLabel: "Sidenavigering",

@@ -84,24 +84,24 @@ interface AudioSearchTranslations {
   paginationTranslations: PaginationRootProps["translations"];
 }
 
-interface MetadataTranslations {
+export interface PreviewTranslations {
   creatorsLabel: string;
   license: string;
   caption: string;
   altText: string;
   modelRelease: string;
   tags: string;
+  close: string;
+  checkboxLabel?: string;
+  missingTitleFallback?: string;
+  useImageTitle: string;
 }
 
-interface ImageSearchTranslations {
+export interface ImageSearchTranslations {
   searchPlaceholder: string;
   searchButtonTitle: string;
-  useImageTitle: string;
-  close: string;
-  imageMetadata: MetadataTranslations;
+  imagePreview: PreviewTranslations;
   paginationTranslations: PaginationRootProps["translations"];
-  missingTitleFallback?: string;
-  checkboxLabel?: string;
 }
 
 export const useImageSearchTranslations = (
@@ -110,21 +110,22 @@ export const useImageSearchTranslations = (
   const { t } = useTranslation("translation", { keyPrefix: "component.imageSearch" });
   const paginationTranslations = usePaginationTranslations();
 
-  const { imageMetadata, paginationTranslations: fallbackPaginationTranslations, ...remaining } = translations;
+  const { imagePreview, paginationTranslations: fallbackPaginationTranslations, ...remaining } = translations;
 
   return {
-    close: t("close"),
     searchPlaceholder: t("searchPlaceholder"),
     searchButtonTitle: t("searchButtonTitle"),
-    useImageTitle: t("useImageTitle"),
-    imageMetadata: {
-      creatorsLabel: t("imageMetadata.creatorsLabel"),
-      license: t("imageMetadata.license"),
-      caption: t("imageMetadata.caption"),
-      altText: t("imageMetadata.altText"),
-      modelRelease: t("imageMetadata.modelRelease"),
-      tags: t("imageMetadata.tags"),
-      ...imageMetadata,
+    imagePreview: {
+      creatorsLabel: t("imagePreview.creatorsLabel"),
+      license: t("imagePreview.license"),
+      caption: t("imagePreview.caption"),
+      altText: t("imagePreview.altText"),
+      modelRelease: t("imagePreview.modelRelease"),
+      tags: t("imagePreview.tags"),
+      close: t("close"),
+      checkboxLabel: t("imagePreview.checkboxLabel"),
+      useImageTitle: t("imagePreview.useImageTitle"),
+      ...imagePreview,
     },
     paginationTranslations: { ...paginationTranslations, ...fallbackPaginationTranslations },
     ...remaining,

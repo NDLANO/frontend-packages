@@ -25,7 +25,7 @@ import {
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import ImageMeta from "./ImageMeta";
-import { MetadataTranslations } from "./ImageSearch";
+import { PreviewTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
 
 const ImageContainer = styled("div", {
@@ -113,13 +113,12 @@ interface Props {
   id: string;
   image: IImageMetaInformationV3;
   onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
-  useImageTitle: string;
   showCheckbox: boolean;
-  translations: MetadataTranslations & { close: string; missingTitleFallback?: string; checkboxLabel?: string };
+  translations: PreviewTranslations;
   locale: string;
 }
 
-const PreviewImage = ({ id, image, onSelectImage, useImageTitle, showCheckbox, translations, locale }: Props) => {
+const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, locale }: Props) => {
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
   return (
@@ -200,7 +199,7 @@ const PreviewImage = ({ id, image, onSelectImage, useImageTitle, showCheckbox, t
         </StyledImageMetadata>
         <ActionsWrapper>
           <Button data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
-            {useImageTitle}
+            {translations.useImageTitle}
           </Button>
           {showCheckbox && (
             <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>

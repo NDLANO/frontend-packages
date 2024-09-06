@@ -32,18 +32,18 @@ const searchImages = (query, page) => {
 const onError = (err) => void
 
 const translations = {
-    close: "Lukk",
     searchPlaceholder: "Søk i bilder",
     searchButtonTitle: "Søk",
-    useImageTitle: "Bruk bildet",
-    checkboxLabel: "Sett som metabilde",
-    imageMetadata: {
+    imagePreview: {
         creatorsLabel: "Bilde",
         license: "Lisens",
         caption: "Bildetekst",
         altText: "Alt-tekst",
         modelRelease: "Modellklarert",
         tags: "Emneknagger",
+        checkboxLabel: "Sett som metabilde",
+        close: "Lukk",
+        useImageTitle: "Bruk bildet",
     },
     paginationTranslations: {
         rootLabel: "Sidenavigering",
@@ -52,5 +52,5 @@ const translations = {
     },
 }
 
-<ImageSearch onImageSelect={onImageSelect} searchImages={searchImages}  onError={onError} translations={translations} locale="nb"/>;
+<ImageSearch onImageSelect={onImageSelect} searchImages={searchImages}  onError={onError} translations={translations} locale="nb" showCheckbox />;
 ```

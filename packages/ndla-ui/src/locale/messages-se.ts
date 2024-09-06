@@ -1508,18 +1508,18 @@ const messages = {
       page: "Side {{page}}",
     },
     imageSearch: {
-      close: "Lukk",
       searchPlaceholder: "Søk i bilder",
       searchButtonTitle: "Søk",
-      useImageTitle: "Bruk bildet",
-      checkboxLabel: "Sett som metabilde",
-      imageMetadata: {
+      imagePreview: {
         creatorsLabel: "Bilde",
         license: "Lisens",
         caption: "Bildetekst",
         altText: "Alt-tekst",
         modelRelease: "Modellklarert",
         tags: "Emneknagger",
+        checkboxLabel: "Sett som metabilde",
+        close: "Lukk",
+        useImageTitle: "Bruk bildet",
       },
     },
     audioSearch: {

@@ -20,10 +20,9 @@ export const buttonBaseRecipe = cva({
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: "xsmall",
+    gap: "xxsmall",
     cursor: "pointer",
     textDecoration: "none",
-    textStyle: "label.medium",
     fontWeight: "bold",
     transitionProperty: "all",
     transitionDuration: "fast",
@@ -144,13 +143,21 @@ export const buttonBaseRecipe = cva({
       link: {
         background: "transparent",
         color: "text.link",
+        fontWeight: "normal",
         textDecoration: "underline",
-        textDecorationThickness: "1px",
+        transitionProperty: "unset",
+        transitionTimingFunction: "unset",
+        transitionDuration: "unset",
         _hover: {
           textDecoration: "none",
         },
-        _active: {
-          background: "surface.hover",
+        _focusVisible: {
+          boxShadow: "none",
+          outline: "3px",
+          borderRadius: "xsmall",
+          outlineColor: "stroke.default",
+          outlineOffset: "3px",
+          outlineStyle: "solid",
         },
       },
     },
@@ -164,15 +171,16 @@ export const buttonRecipe = cva({
   variants: {
     size: {
       medium: {
-        paddingInline: "xsmall",
+        textStyle: "label.medium",
+        paddingInline: "medium",
         paddingBlock: "xxsmall",
         minHeight: "24",
       },
       small: {
         textStyle: "label.small",
-        minHeight: "19",
+        minHeight: "large",
         paddingInline: "small",
-        paddingBlock: "3xsmall",
+        paddingBlock: "4xsmall",
       },
     },
   },
@@ -257,7 +265,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     <BaseButton
       {...props}
       loadingContent={loadingContent ?? <Spinner size="small" />}
-      css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
+      css={css.raw(
+        buttonBaseRecipe.raw({ variant }),
+        variant !== "link" ? buttonRecipe.raw({ size }) : undefined,
+        cssProp,
+      )}
       ref={ref}
     />
   ),

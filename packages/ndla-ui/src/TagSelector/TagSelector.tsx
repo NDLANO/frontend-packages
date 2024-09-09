@@ -108,10 +108,8 @@ export const TagSelectorTrigger = ComboboxTrigger;
 
 export const TagSelectorControl = forwardRef<HTMLDivElement, TagSelectorControlProps>(({ children, ...props }, ref) => {
   return (
-    <ComboboxControl asChild>
-      <TagsInputControl {...props} ref={ref}>
-        {children}
-      </TagsInputControl>
+    <ComboboxControl ref={ref} asChild>
+      <TagsInputControl {...props}>{children}</TagsInputControl>
     </ComboboxControl>
   );
 });
@@ -126,7 +124,7 @@ export const TagSelectorInputBase = forwardRef<HTMLInputElement, TagSelectorInpu
     const tagsApi = useTagsInputContext();
 
     return (
-      <ComboboxInput asChild>
+      <ComboboxInput ref={ref} asChild>
         <TagsInputInput
           {...props}
           onKeyDown={(event) => {
@@ -134,7 +132,6 @@ export const TagSelectorInputBase = forwardRef<HTMLInputElement, TagSelectorInpu
               tagsApi.addValue(tagsApi.inputValue);
             }
           }}
-          ref={ref}
         >
           {children}
         </TagsInputInput>
@@ -159,7 +156,7 @@ export const TagSelectorInput = forwardRef<HTMLInputElement, TagSelectorInputPro
           <TagsInputItemInput />
         </TagsInputItem>
       ))}
-      <ComboboxInput asChild>
+      <ComboboxInput ref={ref} asChild>
         <TagsInputInput
           {...props}
           onKeyDown={(event) => {
@@ -167,7 +164,6 @@ export const TagSelectorInput = forwardRef<HTMLInputElement, TagSelectorInputPro
               tagsApi.addValue(tagsApi.inputValue);
             }
           }}
-          ref={ref}
         >
           {children}
         </TagsInputInput>

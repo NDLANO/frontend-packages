@@ -45,7 +45,7 @@ export const buttonBaseRecipe = cva({
       },
     },
     _focusVisible: {
-      boxShadow: "inset 0 0 0 3px var(--shadow-color)",
+      boxShadow: "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color)",
     },
     _motionReduce: {
       transition: "none",
@@ -69,7 +69,8 @@ export const buttonBaseRecipe = cva({
           background: "surface.action.active",
         },
         _focusVisible: {
-          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+          boxShadow:
+            "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color), inset 0px 0px 0px calc(var(--shadow-width, 3px) * 2) currentcolor",
         },
       },
       secondary: {
@@ -90,7 +91,7 @@ export const buttonBaseRecipe = cva({
           boxShadow: "inset 0 0 0 1px var(--shadow-color)",
           background: "surface.actionSubtle.hover",
           _focusVisible: {
-            boxShadow: "inset 0 0 0 3px var(--shadow-color)",
+            boxShadow: "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color)",
           },
         },
         _active: {
@@ -123,7 +124,8 @@ export const buttonBaseRecipe = cva({
         },
         _focusVisible: {
           boxShadowColor: "surface.danger",
-          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+          boxShadow:
+            "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color), inset 0px 0px 0px calc(var(--shadow-width, 3px) * 2) currentcolor",
         },
       },
       success: {
@@ -137,7 +139,8 @@ export const buttonBaseRecipe = cva({
         },
         _focusVisible: {
           boxShadowColor: "surface.success",
-          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+          boxShadow:
+            "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color), inset 0px 0px 0px calc(var(--shadow-width, 3px) * 2) currentcolor",
         },
       },
       link: {
@@ -197,6 +200,7 @@ export const iconButtonRecipe = cva({
   variants: {
     size: {
       medium: {
+        "--shadow-width": "3px",
         height: "xxlarge",
         width: "xxlarge",
         "& svg": {
@@ -209,6 +213,7 @@ export const iconButtonRecipe = cva({
         paddingBlock: "xsmall",
       },
       small: {
+        "--shadow-width": "2px",
         height: "large",
         width: "large",
         "& svg": {

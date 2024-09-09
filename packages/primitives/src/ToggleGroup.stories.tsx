@@ -9,9 +9,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { Bold, Italic, Link, ListAlphabetical, ListCircle, ListNumbered } from "@ndla/icons/editor";
 import { HStack, styled } from "@ndla/styled-system/jsx";
-import { IconButton } from "./Button";
 import { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
-import { InformationLine } from "../../ndla-icons/src/common";
 
 export default {
   title: "Components/ToggleGroup",
@@ -19,33 +17,67 @@ export default {
   component: ToggleGroupRoot,
 } as Meta<typeof ToggleGroupRoot>;
 
-export const Default: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
+export const Primary: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
   return (
     <ToggleGroupRoot {...args}>
-      <ToggleGroupItem value="bold" asChild>
-        <IconButton size="small" variant="tertiary">
-          <Bold />
-        </IconButton>
+      <ToggleGroupItem value="bold" size="small">
+        <Bold />
       </ToggleGroupItem>
-      <ToggleGroupItem value="italic" asChild>
-        <IconButton size="small" variant="tertiary">
-          <Italic />
-        </IconButton>
+      <ToggleGroupItem value="italic" size="small">
+        <Italic />
       </ToggleGroupItem>
-      <ToggleGroupItem value="bulletedList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListCircle />
-        </IconButton>
+      <ToggleGroupItem value="bulletedList" size="small">
+        <ListCircle />
       </ToggleGroupItem>
-      <ToggleGroupItem value="numberedList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListNumbered />
-        </IconButton>
+      <ToggleGroupItem value="numberedList" size="small">
+        <ListNumbered />
       </ToggleGroupItem>
-      <ToggleGroupItem value="alphabeticalList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListAlphabetical />
-        </IconButton>
+      <ToggleGroupItem value="alphabeticalList" size="small">
+        <ListAlphabetical />
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+  );
+};
+
+export const Secondary: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
+  return (
+    <ToggleGroupRoot {...args}>
+      <ToggleGroupItem value="bold" size="small" variant="secondary">
+        <Bold />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" size="small" variant="secondary">
+        <Italic />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="bulletedList" size="small" variant="secondary">
+        <ListCircle />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="numberedList" size="small" variant="secondary">
+        <ListNumbered />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="alphabeticalList" size="small" variant="secondary">
+        <ListAlphabetical />
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+  );
+};
+
+export const Tertiary: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
+  return (
+    <ToggleGroupRoot {...args}>
+      <ToggleGroupItem value="bold" size="small" variant="tertiary">
+        <Bold />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" size="small" variant="tertiary">
+        <Italic />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="bulletedList" size="small" variant="tertiary">
+        <ListCircle />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="numberedList" size="small" variant="tertiary">
+        <ListNumbered />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="alphabeticalList" size="small" variant="tertiary">
+        <ListAlphabetical />
       </ToggleGroupItem>
     </ToggleGroupRoot>
   );
@@ -54,20 +86,14 @@ export const Default: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
 export const ToggleMultiple: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
   return (
     <ToggleGroupRoot multiple {...args}>
-      <ToggleGroupItem value="bulletedList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListCircle />
-        </IconButton>
+      <ToggleGroupItem value="bulletedList" variant="tertiary" size="small">
+        <ListCircle />
       </ToggleGroupItem>
-      <ToggleGroupItem value="numberedList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListNumbered />
-        </IconButton>
+      <ToggleGroupItem value="numberedList" variant="tertiary" size="small">
+        <ListNumbered />
       </ToggleGroupItem>
-      <ToggleGroupItem value="alphabeticalList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListAlphabetical />
-        </IconButton>
+      <ToggleGroupItem value="alphabeticalList" variant="tertiary" size="small">
+        <ListAlphabetical />
       </ToggleGroupItem>
     </ToggleGroupRoot>
   );
@@ -79,6 +105,7 @@ const Wrapper = styled(HStack, {
     border: "1px solid",
     borderColor: "stroke.subtle",
     borderTopRadius: "xsmall",
+    padding: "3xsmall",
   },
 });
 
@@ -86,39 +113,27 @@ export const MultipleGroups: StoryFn<typeof ToggleGroupRoot> = () => {
   return (
     <Wrapper gap="initial">
       <ToggleGroupRoot multiple>
-        <ToggleGroupItem value="bold" asChild>
-          <IconButton size="small" variant="tertiary">
-            <Bold />
-          </IconButton>
+        <ToggleGroupItem value="bold" variant="tertiary" size="small">
+          <Bold />
         </ToggleGroupItem>
-        <ToggleGroupItem value="italic" asChild>
-          <IconButton size="small" variant="tertiary">
-            <Italic />
-          </IconButton>
+        <ToggleGroupItem value="italic" variant="tertiary" size="small">
+          <Italic />
         </ToggleGroupItem>
       </ToggleGroupRoot>
       <ToggleGroupRoot>
-        <ToggleGroupItem value="bulletedList" asChild>
-          <IconButton size="small" variant="tertiary">
-            <ListCircle />
-          </IconButton>
+        <ToggleGroupItem value="bulletedList" variant="tertiary" size="small">
+          <ListCircle />
         </ToggleGroupItem>
-        <ToggleGroupItem value="numberedList" asChild>
-          <IconButton size="small" variant="tertiary">
-            <ListNumbered />
-          </IconButton>
+        <ToggleGroupItem value="numberedList" variant="tertiary" size="small">
+          <ListNumbered />
         </ToggleGroupItem>
-        <ToggleGroupItem value="alphabeticalList" asChild>
-          <IconButton size="small" variant="tertiary">
-            <ListAlphabetical />
-          </IconButton>
+        <ToggleGroupItem value="alphabeticalList" variant="tertiary" size="small">
+          <ListAlphabetical />
         </ToggleGroupItem>
       </ToggleGroupRoot>
       <ToggleGroupRoot>
-        <ToggleGroupItem value="link" asChild>
-          <IconButton size="small" variant="tertiary">
-            <Link />
-          </IconButton>
+        <ToggleGroupItem value="link" variant="tertiary" size="small">
+          <Link />
         </ToggleGroupItem>
       </ToggleGroupRoot>
     </Wrapper>
@@ -128,72 +143,20 @@ export const MultipleGroups: StoryFn<typeof ToggleGroupRoot> = () => {
 export const InitialActive: StoryFn<typeof ToggleGroupRoot> = () => {
   return (
     <ToggleGroupRoot multiple defaultValue={["italic", "bold"]}>
-      <ToggleGroupItem value="bold" asChild>
-        <IconButton size="small" variant="tertiary">
-          <Bold />
-        </IconButton>
+      <ToggleGroupItem value="bold" variant="tertiary" size="small">
+        <Bold />
       </ToggleGroupItem>
-      <ToggleGroupItem value="italic" asChild>
-        <IconButton size="small" variant="tertiary">
-          <Italic />
-        </IconButton>
+      <ToggleGroupItem value="italic" variant="tertiary" size="small">
+        <Italic />
       </ToggleGroupItem>
-      <ToggleGroupItem value="bulletedList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListCircle />
-        </IconButton>
+      <ToggleGroupItem value="bulletedList" variant="tertiary" size="small">
+        <ListCircle />
       </ToggleGroupItem>
-      <ToggleGroupItem value="numberedList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListNumbered />
-        </IconButton>
+      <ToggleGroupItem value="numberedList" variant="tertiary" size="small">
+        <ListNumbered />
       </ToggleGroupItem>
-      <ToggleGroupItem value="alphabeticalList" asChild>
-        <IconButton size="small" variant="tertiary">
-          <ListAlphabetical />
-        </IconButton>
-      </ToggleGroupItem>
-    </ToggleGroupRoot>
-  );
-};
-
-export const DifferentButtons: StoryFn<typeof ToggleGroupRoot> = () => {
-  return (
-    <ToggleGroupRoot>
-      <ToggleGroupItem value="bold" asChild>
-        <IconButton size="small" variant="primary">
-          <Bold />
-        </IconButton>
-      </ToggleGroupItem>
-      <ToggleGroupItem value="italic" asChild>
-        <IconButton size="small" variant="tertiary">
-          <Italic />
-        </IconButton>
-      </ToggleGroupItem>
-      <ToggleGroupItem value="bulletedList" asChild>
-        <IconButton size="small" variant="danger">
-          <ListCircle />
-        </IconButton>
-      </ToggleGroupItem>
-      <ToggleGroupItem value="numberedList" asChild>
-        <IconButton size="small" variant="secondary">
-          <ListNumbered />
-        </IconButton>
-      </ToggleGroupItem>
-      <ToggleGroupItem value="alphabeticalList" asChild>
-        <IconButton size="small" variant="clear">
-          <ListAlphabetical />
-        </IconButton>
-      </ToggleGroupItem>
-      <ToggleGroupItem value="link" asChild>
-        <IconButton size="small" variant="clearSubtle">
-          <Link />
-        </IconButton>
-      </ToggleGroupItem>
-      <ToggleGroupItem value="info" asChild>
-        <IconButton size="small" variant="success">
-          <InformationLine />
-        </IconButton>
+      <ToggleGroupItem value="alphabeticalList" variant="tertiary" size="small">
+        <ListAlphabetical />
       </ToggleGroupItem>
     </ToggleGroupRoot>
   );

@@ -6,9 +6,11 @@
  *
  */
 
+import { forwardRef } from "react";
 import { toggleGroupAnatomy, ToggleGroup } from "@ark-ui/react";
-import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import { RecipeVariantProps, css, cva, sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
+import { IconButton, IconButtonProps } from "./Button";
 import { createStyleContext } from "./createStyleContext";
 
 const toggleGroupRecipe = sva({
@@ -19,22 +21,30 @@ const toggleGroupRecipe = sva({
       flexDirection: "row",
       gap: "4xsmall",
     },
-    item: {
-      _hover: {
-        boxShadow: "inset 0 0 0 1px var(--shadow-color)",
-        background: "surface.actionSubtle.hover",
-        _focusVisible: {
-          boxShadow: "inset 0 0 0 3px var(--shadow-color)",
+  },
+});
+
+const toggleGroupItemRecipe = cva({
+  defaultVariants: {
+    variant: "primary",
+  },
+  variants: {
+    variant: {
+      primary: {
+        _on: {
+          background: "surface.action.selected",
         },
       },
-      _active: {
-        borderColor: "stroke.default",
-        background: "surface.actionSubtle.hover.strong",
+      secondary: {
+        _on: {
+          background: "surface.actionSubtle.active",
+        },
       },
-      "&[data-state='on']": {
-        backgroundColor: "surface.actionSubtle.active",
-        borderColor: "stroke.default",
-        border: "1px solid",
+      tertiary: {
+        _on: {
+          background: "surface.actionSubtle.active",
+          boxShadow: "inset 0 0 0 1px var(--shadow-color)",
+        },
       },
     },
   },
@@ -49,8 +59,21 @@ export const ToggleGroupRoot = withProvider<HTMLDivElement, ToggleGroupRootProps
   baseComponent: true,
 });
 
-export const ToggleGroupItem = withContext<HTMLButtonElement, JsxStyleProps & ToggleGroup.ItemProps>(
-  ToggleGroup.Item,
-  "item",
-  { baseComponent: true },
+export type ToggleGroupItemVariantProps = RecipeVariantProps<typeof toggleGroupItemRecipe>;
+
+export type ToggleGroupItemProps = ToggleGroup.ItemProps & IconButtonProps & ToggleGroupItemVariantProps;
+
+const InternalToggleGroupItem = withContext<HTMLButtonElement, ToggleGroupItemProps>(ToggleGroup.Item, "item");
+
+export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProps>(
+  ({ children, variant, css: cssProp, ...props }, ref) => (
+    <InternalToggleGroupItem
+      {...props}
+      css={css.raw(toggleGroupItemRecipe.raw({ variant }), cssProp)}
+      ref={ref}
+      asChild
+    >
+      <IconButton variant={variant}>{children}</IconButton>
+    </InternalToggleGroupItem>
+  ),
 );

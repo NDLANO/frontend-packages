@@ -22,6 +22,7 @@ const StyledImage = styled("img", {
   base: {
     height: "surface.3xsmall",
     width: "surface.3xsmall",
+    borderRadius: "xsmall",
   },
 });
 

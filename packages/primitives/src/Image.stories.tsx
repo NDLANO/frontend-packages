@@ -36,6 +36,12 @@ const focalPoint: ImageFocalPoint = {
 
 export const Default: StoryObj<typeof Image> = {};
 
+export const Rounded: StoryObj<typeof Image> = {
+  args: {
+    variant: "rounded",
+  },
+};
+
 export const Crop: StoryObj<typeof Image> = {
   args: {
     crop,

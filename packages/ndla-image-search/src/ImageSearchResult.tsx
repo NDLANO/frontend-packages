@@ -53,7 +53,6 @@ export default function ImageSearchResult({
   locale,
 }: Props) {
   const active = selectedImage?.id === image.id;
-
   return (
     <>
       <StyledButton
@@ -63,7 +62,12 @@ export default function ImageSearchResult({
         aria-expanded={active}
         aria-controls={`image-preview-${image.id}`}
       >
-        <StyledImage alt="" srcSet={getPreviewSrcSets(image.image.imageUrl)} src={image.image.imageUrl} />
+        <StyledImage
+          alt=""
+          srcSet={getPreviewSrcSets(image.image.imageUrl)}
+          src={image.image.imageUrl}
+          variant="rounded"
+        />
         <StyledText textStyle="label.medium" asChild consumeCss>
           <span>
             {image.title.title.trim() ? image.title.title : translations.missingTitleFallback ?? `ID: ${image.id}`}

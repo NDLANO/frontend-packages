@@ -27,6 +27,7 @@ const ErrorPlaceholder = styled("div", {
     justifyContent: "center",
     backgroundColor: "surface.disabled",
     height: "surface.xsmall",
+    borderRadius: "xsmall",
     "& svg": {
       fill: "text.subtle",
       height: "90%",

@@ -85,6 +85,7 @@ export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) =
         src={image.src}
         alt={image.alt}
         sizes={`(min-width: ${breakpoints.desktop}) 150px, (max-width: ${breakpoints.tablet} ) 400px, 200px`}
+        variant="rounded"
       />
       <ContentWrapper>
         <Heading textStyle="label.large" fontWeight="bold" asChild consumeCss>

@@ -130,6 +130,7 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
           sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
           src={image.image.imageUrl}
           aria-label={image.title.title}
+          variant="rounded"
         />
       </ImageContainer>
       <ContentWrapper>

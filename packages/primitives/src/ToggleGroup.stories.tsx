@@ -12,7 +12,7 @@ import { HStack, styled } from "@ndla/styled-system/jsx";
 import { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
 
 export default {
-  title: "Components/ToggleGroup",
+  title: "Primitives/ToggleGroup",
   tags: ["autodocs"],
   component: ToggleGroupRoot,
 } as Meta<typeof ToggleGroupRoot>;

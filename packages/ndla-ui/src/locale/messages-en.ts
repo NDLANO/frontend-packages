@@ -1130,7 +1130,7 @@ const messages = {
       },
       topicsBy: "Topics by",
       admin: {
-        title: "Arena administrator",
+        title: "Arena admin",
         description: "Tools to moderate and administer the arena.",
         administrate: "Administrate",
         category: {

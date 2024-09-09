@@ -8,6 +8,8 @@ export interface Conditions {
 	"_ariaInvalid": string
 	/** `&:is(:disabled, [disabled], [data-disabled], [aria-disabled='true'])` */
 	"_disabled": string
+	/** `&:is([data-state="on"])` */
+	"_on": string
 	/** `&:is(:hover, [data-hover])` */
 	"_hover": string
 	/** `&:is(:focus, [data-focus])` */

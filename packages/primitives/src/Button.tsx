@@ -235,7 +235,7 @@ type ButtonVariant = Exclude<Variant, "clear" | "clearSubtle">;
 
 export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProps<typeof buttonRecipe>;
 
-interface BaseButtonProps extends HTMLArkProps<"button">, JsxStyleProps {
+export interface BaseButtonProps extends HTMLArkProps<"button">, JsxStyleProps {
   loading?: boolean;
   loadingContent?: ReactNode;
   replaceContent?: boolean;

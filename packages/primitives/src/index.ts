@@ -35,6 +35,9 @@ export { Button, IconButton, buttonBaseRecipe, buttonRecipe, iconButtonRecipe } 
 
 export { CardRoot, CardHeading, CardContent, CardImage } from "./Card/Card";
 
+export { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
+export type { ToggleGroupRootProps, ToggleGroupVariantProps } from "./ToggleGroup";
+
 export type { CheckboxVariantProps, CheckboxRootProps } from "./Checkbox";
 
 export {

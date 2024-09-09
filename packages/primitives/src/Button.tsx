@@ -175,7 +175,7 @@ export const buttonRecipe = cva({
     size: {
       medium: {
         textStyle: "label.medium",
-        paddingInline: "medium",
+        paddingInline: "small",
         paddingBlock: "xxsmall",
         minHeight: "24",
       },

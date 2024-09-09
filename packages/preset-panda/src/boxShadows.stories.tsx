@@ -46,5 +46,6 @@ export const Shadows: StoryFn = () => (
     <ShadowBlock boxShadow="full" />
     <ShadowBlock boxShadow="inner" />
     <ShadowBlock boxShadow="innerTop" />
+    <ShadowBlock boxShadow="innerRight" />
   </ShadowsContainer>
 );

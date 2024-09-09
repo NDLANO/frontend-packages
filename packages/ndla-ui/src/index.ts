@@ -9,6 +9,8 @@
 // Ignore typescript implicit any warning and export all javascript components
 // Move components to this file when they are migrated to typescript
 
+export { Concept } from "./Concept/Concept";
+
 export {
   ImageEmbed,
   getCrop,
@@ -29,6 +31,7 @@ export {
   UuDisclaimerEmbed,
   CopyrightEmbed,
   CodeEmbed,
+  InlineTriggerButton,
 } from "./Embed";
 
 export { LicenseLink, EmbedByline } from "./LicenseByline";
@@ -39,7 +42,6 @@ export {
   ArticleFootNotes,
   ArticleWrapper,
   Article,
-  ArticleParagraph,
   ArticleFooter,
   ArticleHeader,
   ArticleContent,
@@ -55,7 +57,7 @@ export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleL
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from "./ErrorMessage";
 
-export { FileListEmbed, File, PdfFile, FileListItem, FileListElement } from "./FileList";
+export { FileListEmbed, File, PdfFile, FileListItem, FileListElement, FileListWrapper } from "./FileList";
 
 export { default as FactBox } from "./FactBox";
 
@@ -84,6 +86,8 @@ export {
   useTagSelectorTranslations,
   useComboboxTranslations,
   usePaginationTranslations,
+  useAudioSearchTranslations,
+  useImageSearchTranslations,
 } from "./i18n";
 
 export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";

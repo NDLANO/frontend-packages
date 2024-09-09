@@ -22,6 +22,7 @@ export interface ConceptProps extends ComponentPropsWithRef<"figure"> {
   title?: string;
   children?: ReactNode;
   source?: string;
+  previewAlt?: boolean;
 }
 
 const StyledFigure = styled(Figure, {
@@ -45,7 +46,7 @@ const ContentWrapper = styled("div", {
 // TODO: Figure out if we need to support headerButtons.
 
 export const Concept = forwardRef<HTMLElement, ConceptProps>(
-  ({ copyright, visualElement, lang, children, title, source, ...rest }, ref) => {
+  ({ copyright, visualElement, lang, children, title, source, previewAlt, ...rest }, ref) => {
     const licenseProps = licenseAttributes(copyright?.license?.license, lang, source);
 
     return (
@@ -60,7 +61,7 @@ export const Concept = forwardRef<HTMLElement, ConceptProps>(
           {children}
         </ContentWrapper>
         {visualElement?.resource === "image" ? (
-          <ImageEmbed embed={visualElement} lang={lang} />
+          <ImageEmbed embed={visualElement} lang={lang} previewAlt={previewAlt} />
         ) : visualElement?.resource === "brightcove" ? (
           <BrightcoveEmbed embed={visualElement} />
         ) : visualElement?.resource === "h5p" ? (

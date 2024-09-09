@@ -11,6 +11,10 @@ import type { ComboboxCollectionItem } from "@ark-ui/react";
 import type { ComboboxRootProps, PaginationRootProps, TagsInputRootProps } from "@ndla/primitives";
 import { TagSelectorRootProps } from "../TagSelector/TagSelector";
 
+type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+};
+
 export const useTagsInputTranslations = (
   translations?: Partial<TagsInputRootProps["translations"]>,
 ): TagsInputRootProps["translations"] => {
@@ -68,5 +72,80 @@ export const usePaginationTranslations = (
       return lastPage ? t("lastPage", { page: details.page }) : t("page", { page: details.page });
     },
     ...translations,
+  };
+};
+
+// TODO: Deduplicate this and place it somewhere smart. Maybe core?
+interface AudioSearchTranslations {
+  searchPlaceholder: string;
+  searchButtonTitle: string;
+  useAudio: string;
+  noResults: string;
+  paginationTranslations: PaginationRootProps["translations"];
+}
+
+export interface PreviewTranslations {
+  creatorsLabel: string;
+  license: string;
+  caption: string;
+  altText: string;
+  modelRelease: string;
+  tags: string;
+  close: string;
+  checkboxLabel?: string;
+  missingTitleFallback?: string;
+  useImageTitle: string;
+}
+
+export interface ImageSearchTranslations {
+  searchPlaceholder: string;
+  searchButtonTitle: string;
+  imagePreview: PreviewTranslations;
+  paginationTranslations: PaginationRootProps["translations"];
+}
+
+export const useImageSearchTranslations = (
+  translations: DeepPartial<ImageSearchTranslations> = {},
+): ImageSearchTranslations => {
+  const { t } = useTranslation("translation", { keyPrefix: "component.imageSearch" });
+  const paginationTranslations = usePaginationTranslations();
+
+  const { imagePreview, paginationTranslations: fallbackPaginationTranslations, ...remaining } = translations;
+
+  return {
+    searchPlaceholder: t("searchPlaceholder"),
+    searchButtonTitle: t("searchButtonTitle"),
+    imagePreview: {
+      creatorsLabel: t("imagePreview.creatorsLabel"),
+      license: t("imagePreview.license"),
+      caption: t("imagePreview.caption"),
+      altText: t("imagePreview.altText"),
+      modelRelease: t("imagePreview.modelRelease"),
+      tags: t("imagePreview.tags"),
+      close: t("close"),
+      checkboxLabel: t("imagePreview.checkboxLabel"),
+      useImageTitle: t("imagePreview.useImageTitle"),
+      ...imagePreview,
+    },
+    paginationTranslations: { ...paginationTranslations, ...fallbackPaginationTranslations },
+    ...remaining,
+  };
+};
+
+export const useAudioSearchTranslations = (
+  translations: DeepPartial<AudioSearchTranslations> = {},
+): AudioSearchTranslations => {
+  const { t } = useTranslation("translation", { keyPrefix: "component.audioSearch" });
+  const paginationTranslations = usePaginationTranslations();
+
+  const { paginationTranslations: fallbackPaginationTranslations, ...remaining } = translations;
+
+  return {
+    searchPlaceholder: t("searchPlaceholder"),
+    searchButtonTitle: t("searchButtonTitle"),
+    useAudio: t("useAudio"),
+    noResults: t("noResults"),
+    paginationTranslations: { ...paginationTranslations, ...fallbackPaginationTranslations },
+    ...remaining,
   };
 };

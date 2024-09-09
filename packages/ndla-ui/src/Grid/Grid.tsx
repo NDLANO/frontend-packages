@@ -18,7 +18,6 @@ const GridContainer = styled("div", {
     gridColumnGap: "medium",
     width: "100%",
     backgroundColor: "background.subtle",
-    maxWidth: "surface.4xlarge",
     minWidth: "surface.xxsmall",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     tabletDown: {

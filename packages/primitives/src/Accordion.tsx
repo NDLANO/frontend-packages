@@ -108,7 +108,7 @@ const accordionRecipe = sva({
           _focusVisible: {
             outline: "none",
             boxShadowColor: "stroke.default",
-            boxShadow: "inset 0 0 0 2px var(--shadow-color)",
+            boxShadow: "inset 0 0 0 3px var(--shadow-color)",
           },
         },
         itemContent: {

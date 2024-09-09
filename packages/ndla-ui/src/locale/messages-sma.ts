@@ -926,6 +926,8 @@ const messages = {
     close: "Lukk faktaboks",
   },
   myNdla: {
+    description:
+      "Min NDLA: Organiser fagstoffet på din måte! Bruk NDLAs praterobot (AI/KI). Lagre og del med kolleger og elever.",
     mainMenu: "Hovedmeny",
     myNDLA: "Min NDLA",
     myNDLAMenu: "Min NDLA meny",
@@ -1016,6 +1018,8 @@ const messages = {
         posts: "innlegg",
         posts_plural: "innlegg",
         subcategory: "Tema",
+        votes: "reaksjon",
+        votes_plural: "reaksjoner",
       },
       publish: "Publiser",
       cancel: {
@@ -1080,6 +1084,8 @@ const messages = {
         lockDescription:
           "Vil du låse dette innlegget? Dette vil gjøre at innlegget ikke kan få flere kommentarer, og vil vises som låst.",
         unlockDescription: "Vil du låse opp dette innlegget? Dette vil gjøre at innlegget kan få flere kommentarer.",
+        votes: "reaksjon",
+        votes_plural: "reaksjoner",
       },
       posts: {
         title: "Innlegg",
@@ -1110,13 +1116,13 @@ const messages = {
         maxLength: "Maksimal lengde for tekstfeltet er nådd",
         error: "Feltet er påkrevd",
       },
-      bottomText: "Savner du en kategori? Gi vår moderator beskjed på ",
+      bottomText: "Savner du en kategori? Du kan be om nye kategorier. Bruk 'Spør NDLA' eller send en epost til ",
       moderatorEmail: "moderator@ndla.no",
       notification: {
         title: "Varslinger",
         showAll: "Se alle varslinger",
         description:
-          "Velkommen inn i arenaen for lærere i videregående opplæring! Dette er <em>din</em> arena: et faglig møtested for diskusjon, inspirasjon, deling og utviklende samarbeid.",
+          "Velkommen til NDLAs Arena. Her kan du diskutere, dele og samarbeide med andre lærere fra hele Norge.",
         myNotification: "Mine varsler",
         markAll: "Merk alle som lest",
         subscribe: "Du får nå varsling om nye svar på dette innlegget",
@@ -1129,7 +1135,7 @@ const messages = {
       },
       topicsBy: "Innlegg av",
       admin: {
-        title: "Arena administrator",
+        title: "Arena admin",
         description: "Verktøy for å moderere og administrere arenaen.",
         administrate: "Administrer",
         category: {
@@ -1373,7 +1379,7 @@ const messages = {
       dragHandle: "Sorter kategorien {{name}}",
     },
     favoriteSubjects: {
-      title: "Mine favorittfag",
+      title: "Mine fag",
       subjects: "{{count}} fag",
       subjects_0: "{{count}} fag",
       subjects_plural: "{{count}} fag",
@@ -1502,6 +1508,27 @@ const messages = {
       nextTriggerLabel: "Neste side",
       lastPage: "Siste side, side {{page}}",
       page: "Side {{page}}",
+    },
+    imageSearch: {
+      searchPlaceholder: "Søk i bilder",
+      searchButtonTitle: "Søk",
+      imagePreview: {
+        creatorsLabel: "Bilde",
+        license: "Lisens",
+        caption: "Bildetekst",
+        altText: "Alt-tekst",
+        modelRelease: "Modellklarert",
+        tags: "Emneknagger",
+        checkboxLabel: "Sett som metabilde",
+        close: "Lukk",
+        useImageTitle: "Bruk bildet",
+      },
+    },
+    audioSearch: {
+      searchPlaceholder: "Søk i lydfiler",
+      searchButtonTitle: "Søk",
+      useAudio: "Velg lyd",
+      noResults: "Ingen resultater funnet",
     },
   },
 };

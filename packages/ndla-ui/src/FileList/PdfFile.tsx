@@ -20,6 +20,12 @@ const StyledIframe = styled("iframe", {
   },
 });
 
+const StyledListElement = styled("li", {
+  base: {
+    listStyle: "none",
+  },
+});
+
 const StyledFigure = styled(Figure, {
   base: {
     display: "flex",
@@ -30,13 +36,13 @@ const StyledFigure = styled(Figure, {
 
 export const PdfFile = ({ title, url }: Props) => {
   return (
-    <li>
+    <StyledListElement>
       <StyledFigure>
         <Heading asChild consumeCss textStyle="title.medium">
           <h4>{title}</h4>
         </Heading>
         <StyledIframe title={title} height="1050" src={url} />
       </StyledFigure>
-    </li>
+    </StyledListElement>
   );
 };

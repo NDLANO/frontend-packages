@@ -10,7 +10,6 @@ import parse from "html-react-parser";
 import { ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AddLine } from "@ndla/icons/action";
-import { ArrowDownShortLine, ArrowUpShortLine } from "@ndla/icons/common";
 import { Figure, FigureSize, FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
@@ -157,33 +156,6 @@ const StyledFigure = styled(Figure, {
   },
 });
 
-const BylineButton = styled(
-  "button",
-  {
-    base: {
-      cursor: "pointer",
-      position: "absolute",
-      zIndex: "base",
-      bottom: "0",
-      right: "0",
-      paddingBlock: "xsmall",
-      paddingInline: "xsmall",
-      transitionProperty: "transform, background-color, color",
-      transitionDuration: "normal",
-      transitionTimingFunction: "ease-out",
-      background: "background.default/20",
-      border: "0",
-      "& svg": {
-        transitionProperty: "transform",
-        transitionDuration: "normal",
-        transitionTimingFunction: "ease-out",
-        fill: "primary",
-      },
-    },
-  },
-  { defaultProps: { type: "button" } },
-);
-
 const ExpandButton = styled(
   "button",
   {
@@ -217,7 +189,6 @@ const ExpandButton = styled(
 );
 
 const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", children }: Props) => {
-  const [isBylineHidden, setIsBylineHidden] = useState(hideByline(embed.embedData));
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   const figureProps = getFigureProps(embed.embedData.size, embed.embedData.align);
   const { t } = useTranslation();
@@ -279,30 +250,17 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
             <AddLine />
           </ExpandButton>
         )}
-        {(embedData.size?.endsWith("-hide-byline") || embedData.hideByline === "true") && (
-          <BylineButton
-            data-byline-button=""
-            aria-label={t(`license.images.itemImage.${isBylineHidden ? "expandByline" : "minimizeByline"}`)}
-            onClick={() => setIsBylineHidden((p) => !p)}
-          >
-            {isBylineHidden ? <ArrowDownShortLine /> : <ArrowUpShortLine />}
-          </BylineButton>
-        )}
       </ImageWrapper>
-      {isBylineHidden ? null : (
+      {embedData.hideByline === "true" ? null : (
         <EmbedByline
           type="image"
           copyright={data.copyright}
-          description={parsedDescription}
+          description={embedData.hideCaption === "true" ? "" : parsedDescription}
           visibleAlt={previewAlt ? embed.embedData.alt : ""}
         />
       )}
     </StyledFigure>
   );
-};
-
-const hideByline = (embed: ImageEmbedData): boolean => {
-  return (!!embed.size && embed.size.endsWith("-hide-byline")) || embed.hideByline === "true";
 };
 
 export default ImageEmbed;

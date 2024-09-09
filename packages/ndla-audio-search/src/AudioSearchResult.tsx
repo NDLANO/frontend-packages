@@ -7,8 +7,7 @@
  */
 
 import { getLicenseByAbbreviation, LicenseLocaleType } from "@ndla/licenses";
-import { Text, ListItemContent, ListItemRoot, Button, Heading } from "@ndla/primitives";
-import { SafeLink } from "@ndla/safelink";
+import { Text, ListItemContent, ListItemRoot, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioBar from "./AudioBar";
@@ -34,9 +33,9 @@ interface LicenseLinkProps {
 const LicenseLink = ({ license }: LicenseLinkProps) => {
   if (license.url?.length) {
     return (
-      <SafeLink to={license.url} rel="license">
+      <a href={license.url} rel="license">
         {license.abbreviation}
-      </SafeLink>
+      </a>
     );
   }
   return <Text>{license.abbreviation}</Text>;
@@ -58,7 +57,7 @@ export default function AudioSearchResult({ audio, fetchAudio, onError, locale, 
       <li>
         <StyledListItemContent>
           <StyledAudioMeta>
-            <Heading textStyle="title.medium">{audio.title?.title}</Heading>
+            <Text textStyle="title.medium">{audio.title?.title}</Text>
             <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
             <div>{license.rights ? <LicenseLink license={license} /> : license.title}</div>
           </StyledAudioMeta>

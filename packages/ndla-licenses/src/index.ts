@@ -41,3 +41,5 @@ export {
   podcastEpisodeApa7CopyString,
   webpageReferenceApa7CopyString,
 } from "./getCopyString";
+
+export { getModelReleaseValue } from "./modelRelease";

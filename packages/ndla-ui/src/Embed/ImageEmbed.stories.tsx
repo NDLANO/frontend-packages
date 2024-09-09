@@ -139,7 +139,23 @@ export const HiddenByline: StoryObj<typeof ImageEmbed> = {
       status: "success",
       embedData: {
         ...embedData,
-        size: "full-hide-byline",
+        size: "full",
+        hideByline: "true",
+      },
+      data: metaData,
+    },
+  },
+};
+
+export const HiddenCaption: StoryObj<typeof ImageEmbed> = {
+  args: {
+    embed: {
+      resource: "image",
+      status: "success",
+      embedData: {
+        ...embedData,
+        size: "full",
+        hideCaption: "true",
       },
       data: metaData,
     },

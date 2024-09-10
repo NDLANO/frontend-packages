@@ -20,11 +20,8 @@ import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from
 import { CodeEmbedData, CodeMetaData } from "./codeTypes";
 import { CommentEmbedData, CommentMetaData } from "./commentTypes";
 import {
-  ConceptListData,
   ConceptData,
   ConceptEmbedData,
-  ConceptListEmbedData,
-  ConceptListMetaData,
   ConceptMetaData,
   ConceptVisualElement,
   ConceptVisualElementMeta,
@@ -64,7 +61,6 @@ export type EmbedData =
   | IframeEmbedData
   | CodeEmbedData
   | FootnoteEmbedData
-  | ConceptListEmbedData
   | OembedEmbedData
   | FileEmbedData
   | BlogPostEmbedData
@@ -85,7 +81,6 @@ export type EmbedMetaData =
   | ConceptMetaData
   | IframeMetaData
   | H5pMetaData
-  | ConceptListMetaData
   | OembedMetaData
   | CodeMetaData
   | FootnoteMetaData
@@ -110,7 +105,6 @@ export type {
   CodeMetaData,
   ContentLinkMetaData,
   FootnoteMetaData,
-  ConceptListMetaData,
   FileMetaData,
   BlogPostMetaData,
   KeyFigureMetaData,
@@ -132,7 +126,6 @@ export type {
   CodeEmbedData,
   ContentLinkEmbedData,
   FootnoteEmbedData,
-  ConceptListEmbedData,
   FileEmbedData,
   BlogPostEmbedData,
   KeyFigureEmbedData,
@@ -152,7 +145,7 @@ export type { ContentLinkData };
 export type { FootnoteData };
 export type { BrightcoveData, BrightcoveApiType, BrightcoveVideoSource, BrightcoveCopyright };
 export type { RelatedContentData };
-export type { ConceptData, ConceptVisualElement, ConceptListData, ConceptVisualElementMeta };
+export type { ConceptData, ConceptVisualElement, ConceptVisualElementMeta };
 export type { AudioMeta };
 export type { H5pData };
 export type { CampaignBlockMeta };

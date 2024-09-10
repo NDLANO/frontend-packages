@@ -24,7 +24,6 @@ export {
   ContentLinkEmbed,
   RelatedContentEmbed,
   ConceptEmbed,
-  ConceptListEmbed,
   UnknownEmbed,
   InlineConcept,
   BlockConcept,

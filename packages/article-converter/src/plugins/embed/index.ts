@@ -12,7 +12,6 @@ import { brightcoveEmbedPlugin } from "./brightcoveEmbedPlugin";
 import { campaignBlockPlugin } from "./campaignBlockPlugin";
 import { codeEmbedPlugin } from "./codeEmbedPlugin";
 import { conceptEmbedPlugin } from "./conceptEmbedPlugin";
-import { conceptListEmbedPlugin } from "./conceptListEmbedPlugin";
 import { contactBlockEmbedPlugin } from "./contactBlockEmbedPlugin";
 import { contentLinkEmbedPlugin } from "./contentLinkEmbedPlugin";
 import { copyrightEmbedPlugin } from "./copyrightEmbedPlugin";
@@ -40,7 +39,6 @@ export const embedPlugins: Record<string, PluginType> = {
   "related-content": relatedContentEmbedPlugin,
   "content-link": contentLinkEmbedPlugin,
   concept: conceptEmbedPlugin,
-  "concept-list": conceptListEmbedPlugin,
   "blog-post": blogPostEmbedPlugin,
   file: fileEmbedPlugin,
   "key-figure": keyFigureEmbedPlugin,

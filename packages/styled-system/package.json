@@ -19,7 +19,7 @@
     "react-dom": ">= 18"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.45.2"
+    "@pandacss/dev": "^0.46.0"
   },
   "files": [
     "*"

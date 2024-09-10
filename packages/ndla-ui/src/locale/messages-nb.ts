@@ -1526,6 +1526,16 @@ const messages = {
       useAudio: "Velg lyd",
       noResults: "Ingen resultater funnet",
     },
+    videoSearch: {
+      searchPlaceholder: "Søk i videoer",
+      searchButtonTitle: "Søk",
+      loadMoreVideos: "Last flere videoer",
+      noResults: "Ingen videoer funnet",
+      addVideo: "Bruk video",
+      previewVideo: "Forhåndsvis",
+      is360Video: "VR-video",
+      close: "Lukk",
+    },
   },
 };
 

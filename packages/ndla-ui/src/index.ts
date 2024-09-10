@@ -88,6 +88,7 @@ export {
   usePaginationTranslations,
   useAudioSearchTranslations,
   useImageSearchTranslations,
+  useVideoSearchTranslations,
 } from "./i18n";
 
 export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";

@@ -66,6 +66,7 @@ export const semanticTokens = defineSemanticTokens({
       pageMax: { value: "1128px" },
       contentMax: { value: "744px" },
       articleMax: { value: "928px" },
+      wideMax: { value: "1440px" },
     },
   },
   colors: {

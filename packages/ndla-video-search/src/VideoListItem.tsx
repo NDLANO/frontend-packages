@@ -25,36 +25,27 @@ const ButtonWrapper = styled("div", {
 const PreviewIframe = styled("iframe", {
   base: {
     minHeight: "surface.xxsmall",
-    gridArea: "center",
   },
 });
 
 const PreviewWrapper = styled("div", {
   base: {
     display: "grid",
+    gap: "xsmall",
     gridTemplateColumns: "repeat(3,1fr)",
-    gridTemplateAreas: `". center right"`,
     padding: "small",
     borderBlockEnd: "1px solid",
     borderColor: "stroke.subtle",
-    transitionProperty: "all",
-    transitionDuration: "superfast",
-    transitionTimingFunction: "ease-in-out",
-  },
-});
-
-const ImageWrapper = styled("div", {
-  base: {
-    flexShrink: "0",
   },
 });
 
 const StyledImage = styled(Image, {
   base: {
-    width: "200px",
-    height: "100px",
-    borderRadius: "xsmall",
+    minWidth: "surface.xxsmall",
+    height: "surface.4xsmall",
     objectFit: "cover",
+    border: "1px solid",
+    borderColor: "stroke.subtle",
   },
 });
 
@@ -77,8 +68,16 @@ const StyledListItemContent = styled(ListItemContent, {
 
 const StyledIconButton = styled(IconButton, {
   base: {
-    gridArea: "right",
     marginLeft: "auto",
+  },
+});
+
+const StyledListItemRoot = styled(ListItemRoot, {
+  base: {
+    tabletDown: {
+      flexDirection: "column",
+      alignItems: "flex-start",
+    },
   },
 });
 
@@ -107,12 +106,11 @@ interface VideoListItemProps {
 export const VideoListItem = ({ video, onVideoSelect, translations, locale }: VideoListItemProps) => {
   const [isPreviewing, setIsPreviewing] = useState(false);
   const license = video.custom_fields?.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : "";
+
   return (
     <li>
-      <ListItemRoot variant="list" nonInteractive>
-        <ImageWrapper>
-          <StyledImage src={video.images?.thumbnail?.src ?? ""} alt="" />
-        </ImageWrapper>
+      <StyledListItemRoot variant="list" nonInteractive>
+        <StyledImage src={video.images?.thumbnail?.src ?? ""} alt="" variant="rounded" />
         <StyledListItemContent>
           <StyledVideoMeta>
             <Text textStyle="title.medium">
@@ -143,9 +141,10 @@ export const VideoListItem = ({ video, onVideoSelect, translations, locale }: Vi
             </Button>
           </ButtonWrapper>
         </StyledListItemContent>
-      </ListItemRoot>
+      </StyledListItemRoot>
       {isPreviewing && (
         <PreviewWrapper id={`video-preview-${video.id}`}>
+          <div />
           <PreviewIframe
             title={video.name}
             src={`//players.brightcove.net/${video.account_id}/BkLm8fT_default/index.html?videoId=${video.id}`}

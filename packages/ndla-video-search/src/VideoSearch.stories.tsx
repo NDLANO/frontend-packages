@@ -30,8 +30,8 @@ const meta = {
     translations: {
       searchPlaceholder: "Søk i videoer",
       searchButtonTitle: "Søk",
-      loadMoreVideos: "Last flere videor",
-      noResults: "Ingen videor funnet.",
+      loadMoreVideos: "Last flere videoer",
+      noResults: "Ingen videoer funnet",
       addVideo: "Bruk video",
       previewVideo: "Forhåndsvis",
       publishedDate: "Publisert dato",

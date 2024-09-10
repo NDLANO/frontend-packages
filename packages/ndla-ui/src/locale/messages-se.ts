@@ -1532,7 +1532,7 @@ const messages = {
       searchPlaceholder: "Søk i videoar",
       searchButtonTitle: "Søk",
       loadMoreVideos: "Last fleire videoar",
-      noResults: "Ingen videoar funnet.",
+      noResults: "Ingen videoar funnet",
       addVideo: "Bruk video",
       previewVideo: "Forhåndsvis",
       is360Video: "VR-video",

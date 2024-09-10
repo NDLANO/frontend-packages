@@ -1527,10 +1527,10 @@ const messages = {
       noResults: "Ingen resultater funnet",
     },
     videoSearch: {
-      searchPlaceholder: "Søk i videoar",
+      searchPlaceholder: "Søk i videoer",
       searchButtonTitle: "Søk",
-      loadMoreVideos: "Last fleire videoar",
-      noResults: "Ingen videoar funnet.",
+      loadMoreVideos: "Last flere videoer",
+      noResults: "Ingen videoer funnet",
       addVideo: "Bruk video",
       previewVideo: "Forhåndsvis",
       is360Video: "VR-video",

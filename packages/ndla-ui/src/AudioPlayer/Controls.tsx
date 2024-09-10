@@ -90,12 +90,18 @@ const ProgressWrapper = styled("div", {
     flex: "1",
     display: "flex",
     alignItems: "center",
-    gap: "xsmall",
+    gap: "xxsmall",
     gridArea: "track",
     paddingBlock: "xsmall",
     mobileDown: {
       paddingInline: "xsmall",
     },
+  },
+});
+
+const StyledText = styled(Text, {
+  base: {
+    minWidth: "xxlarge",
   },
 });
 
@@ -128,6 +134,13 @@ const StyledSelectRoot = styled(SelectRoot, {
 const StyledSliderControl = styled(SliderControl, {
   base: {
     height: "surface.3xsmall",
+    minWidth: "small",
+  },
+});
+
+const StyledPopoverContent = styled(PopoverContent, {
+  base: {
+    paddingInline: "small",
   },
 });
 
@@ -248,9 +261,9 @@ const Controls = ({ src, title }: Props) => {
           <Forward15Line />
         </Forward15SecButton>
         <ProgressWrapper>
-          <Text textStyle="label.medium" asChild consumeCss>
+          <StyledText textStyle="label.medium" asChild consumeCss>
             <div>{formatTime(currentTime)}</div>
-          </Text>
+          </StyledText>
           <SliderRoot
             value={[audioRef.current?.currentTime ?? 0]}
             defaultValue={[0]}
@@ -273,9 +286,9 @@ const Controls = ({ src, title }: Props) => {
               </SliderThumb>
             </SliderControl>
           </SliderRoot>
-          <Text textStyle="label.medium" asChild consumeCss>
+          <StyledText textStyle="label.medium" asChild consumeCss>
             <div>-{formatTime(remainingTime)}</div>
-          </Text>
+          </StyledText>
         </ProgressWrapper>
         <StyledSelectRoot
           items={speedValues}
@@ -314,7 +327,7 @@ const Controls = ({ src, title }: Props) => {
               <VolumeUpFill />
             </VolumeButton>
           </PopoverTrigger>
-          <PopoverContent>
+          <StyledPopoverContent>
             <SliderRoot
               orientation="vertical"
               value={[volumeValue]}
@@ -334,7 +347,7 @@ const Controls = ({ src, title }: Props) => {
                 </SliderThumb>
               </StyledSliderControl>
             </SliderRoot>
-          </PopoverContent>
+          </StyledPopoverContent>
         </PopoverRoot>
       </ControlsWrapper>
     </div>

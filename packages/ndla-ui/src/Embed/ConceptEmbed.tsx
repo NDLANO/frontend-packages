@@ -92,7 +92,7 @@ export interface InlineConceptProps extends ConceptProps, BaseProps {
 }
 
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
-  ({ linkText, copyright, visualElement, lang, children, title, source, ...rest }, ref) => (
+  ({ linkText, copyright, visualElement, previewAlt, lang, children, title, source, ...rest }, ref) => (
     <PopoverRoot>
       {/* @ts-expect-error placing ref and rest on popover trigger somehow removes a bug where the popover target becomes a bit bigger */}
       <PopoverTrigger asChild ref={ref} {...rest}>
@@ -100,7 +100,14 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
       </PopoverTrigger>
       <Portal>
         <StyledPopoverContent>
-          <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title} source={source}>
+          <Concept
+            copyright={copyright}
+            visualElement={visualElement}
+            lang={lang}
+            title={title}
+            source={source}
+            previewAlt={previewAlt}
+          >
             {children}
           </Concept>
         </StyledPopoverContent>

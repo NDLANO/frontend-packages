@@ -122,10 +122,10 @@ const ImageWrapper = styled("div", {
       true: {
         border: "1px solid",
         borderColor: "stroke.subtle",
-        borderBottom: "0",
         borderRadius: "xsmall",
-        borderBottomLeftRadius: "0",
-        borderBottomRightRadius: "0",
+        "& img": {
+          borderRadius: "0",
+        },
       },
       false: {},
     },
@@ -240,6 +240,7 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
           src={data.image.imageUrl}
           lang={lang}
           onClick={figureProps?.float ? toggleImageSize : undefined}
+          variant="rounded"
         />
         {!!embedData.align && (
           <ExpandButton

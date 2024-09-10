@@ -74,6 +74,7 @@ const StyledIconButton = styled(IconButton, {
 
 const StyledListItemRoot = styled(ListItemRoot, {
   base: {
+    paddingBlock: "medium",
     tabletDown: {
       flexDirection: "column",
       alignItems: "flex-start",

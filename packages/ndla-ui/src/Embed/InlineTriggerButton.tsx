@@ -17,7 +17,7 @@ const StyledSpan = styled("span", {
     borderBottom: "1px solid",
     borderStyle: "dashed",
     borderColor: "stroke.hover",
-    paddingBlock: "4xsmall",
+    paddingBlockStart: "5xsmall",
     paddingInline: "4xsmall",
     width: "fit-content",
     cursor: "pointer",

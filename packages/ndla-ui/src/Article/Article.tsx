@@ -80,6 +80,7 @@ export const ArticleHeader = styled(
       alignItems: "flex-start",
       width: "100%",
       paddingBlockStart: "xxlarge",
+      overflowWrap: "anywhere",
     },
   },
   { baseComponent: true },

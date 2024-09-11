@@ -57,7 +57,7 @@ const Container = styled("div", {
   variants: {
     imageSide: {
       left: {
-        "@/containerTablet": {
+        "@/tablet": {
           gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
         },
         "@supports not (container-type: inline-size)": {
@@ -67,7 +67,7 @@ const Container = styled("div", {
         },
       },
       right: {
-        "@/containerTablet": {
+        "@/tablet": {
           gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
         },
         "@supports not (container-type: inline-size)": {
@@ -111,7 +111,7 @@ const StyledImg = styled("img", {
     objectFit: "cover",
     width: "100%",
     height: "215px",
-    "@/containerTablet": {
+    "@/tablet": {
       height: "340px",
     },
     "@supports not (container-type: inline-size)": {

@@ -12,7 +12,6 @@ import { animations, durations, easings, keyframes } from "./animations";
 import { boxShadows } from "./boxShadows";
 import { colors } from "./colors";
 import { conditions } from "./conditions";
-import { containerSizes } from "./containerSizes";
 import { globalCss } from "./globalCss";
 import { radii } from "./radii";
 import { semanticTokens } from "./semanticTokens";
@@ -44,7 +43,7 @@ const preset = definePreset({
       zIndex: zIndex,
     },
     semanticTokens: semanticTokens,
-    containerSizes: containerSizes,
+    containerSizes: breakpoints,
   },
 });
 

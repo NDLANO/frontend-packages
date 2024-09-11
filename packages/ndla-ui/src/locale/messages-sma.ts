@@ -186,7 +186,7 @@ const messages = {
       gloss: "Glose",
     },
     contextModal: {
-      button: " + {{count}} jieniebinie sijjine",
+      button: "+ {{count}} jieniebinie sijjine",
       heading: "Vierhtie åtnasovveme jieniebinie sijjine",
       ariaLabel: "Se flere kontekster",
     },

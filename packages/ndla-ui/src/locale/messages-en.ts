@@ -186,7 +186,7 @@ const messages = {
       gloss: "Gloss",
     },
     contextModal: {
-      button: " + {{count}} more contexts",
+      button: "+ {{count}} more contexts",
       heading: "The resource is used in several contexts",
       ariaLabel: "View more contexts",
     },

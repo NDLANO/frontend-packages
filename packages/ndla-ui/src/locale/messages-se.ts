@@ -186,7 +186,7 @@ const messages = {
       gloss: "Sánit",
     },
     contextModal: {
-      button: " + {{count}} eanet sajiin",
+      button: "+ {{count}} eanet sajiin",
       heading: "Resursa lea geavahuvvon eanet sajiin",
       ariaLabel: "Geahča eanet konteavsttaid",
     },

@@ -18,6 +18,7 @@ export const CC0 = "cc0"; // Public Domain Dedication
 export const CC = "cc"; // Creative Commons
 export const COPYRIGHTED = "copyrighted"; // Copyrighted
 export const NA = "n/a"; // Not Applicable
+export const VERSION = "4.0"; //Current license version
 
 const by: RightType = {
   short: BY,

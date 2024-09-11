@@ -177,7 +177,7 @@ export const getLicenseString = (license: string | undefined, locale: string) =>
   const licenseAbbreviation = license && getLicenseByAbbreviation(license, locale).abbreviation;
 
   if (licenseAbbreviation?.startsWith("CC ")) {
-    return `${licenseAbbreviation} 4.0`;
+    return `${licenseAbbreviation}`;
   }
 
   return licenseAbbreviation ?? "";

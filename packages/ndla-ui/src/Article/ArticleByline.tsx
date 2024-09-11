@@ -183,22 +183,24 @@ export const ArticleByline = ({
           </div>
         </TextWrapper>
       )}
-      <StyledAccordionRoot
-        multiple
-        value={openAccordions}
-        onValueChange={(details) => setOpenAccordions(details.value)}
-      >
-        {!!licenseBox && (
-          <ArticleBylineAccordionItem value={accordionItemValue} accordionTitle={t("article.useContent")}>
-            {licenseBox}
-          </ArticleBylineAccordionItem>
-        )}
-        {!!footnotes?.length && (
-          <ArticleBylineAccordionItem value={footnotesAccordionId} accordionTitle={t("article.footnotes")}>
-            <ArticleFootNotes footNotes={footnotes} />
-          </ArticleBylineAccordionItem>
-        )}
-      </StyledAccordionRoot>
+      {(!!licenseBox || !!footnotes?.length) && (
+        <StyledAccordionRoot
+          multiple
+          value={openAccordions}
+          onValueChange={(details) => setOpenAccordions(details.value)}
+        >
+          {!!licenseBox && (
+            <ArticleBylineAccordionItem value={accordionItemValue} accordionTitle={t("article.useContent")}>
+              {licenseBox}
+            </ArticleBylineAccordionItem>
+          )}
+          {!!footnotes?.length && (
+            <ArticleBylineAccordionItem value={footnotesAccordionId} accordionTitle={t("article.footnotes")}>
+              <ArticleFootNotes footNotes={footnotes} />
+            </ArticleBylineAccordionItem>
+          )}
+        </StyledAccordionRoot>
+      )}
     </Wrapper>
   );
 };

@@ -84,7 +84,17 @@ interface AudioSearchTranslations {
   paginationTranslations: PaginationRootProps["translations"];
 }
 
-export interface PreviewTranslations {
+interface VideoTranslations {
+  searchPlaceholder: string;
+  searchButtonTitle: string;
+  loadMoreVideos: string;
+  noResults: string;
+  is360Video: string;
+  previewVideo: string;
+  addVideo: string;
+  close: string;
+}
+interface PreviewTranslations {
   creatorsLabel: string;
   license: string;
   caption: string;
@@ -97,7 +107,7 @@ export interface PreviewTranslations {
   useImageTitle: string;
 }
 
-export interface ImageSearchTranslations {
+interface ImageSearchTranslations {
   searchPlaceholder: string;
   searchButtonTitle: string;
   imagePreview: PreviewTranslations;
@@ -147,5 +157,21 @@ export const useAudioSearchTranslations = (
     noResults: t("noResults"),
     paginationTranslations: { ...paginationTranslations, ...fallbackPaginationTranslations },
     ...remaining,
+  };
+};
+
+export const useVideoSearchTranslations = (translations?: Partial<VideoTranslations>): VideoTranslations => {
+  const { t } = useTranslation("translation", { keyPrefix: "component.videoSearch" });
+
+  return {
+    searchPlaceholder: t("searchPlaceholder"),
+    searchButtonTitle: t("searchButtonTitle"),
+    loadMoreVideos: t("loadMoreVideos"),
+    noResults: t("noResults"),
+    is360Video: t("is360Video"),
+    previewVideo: t("previewVideo"),
+    addVideo: t("addVideo"),
+    close: t("close"),
+    ...translations,
   };
 };

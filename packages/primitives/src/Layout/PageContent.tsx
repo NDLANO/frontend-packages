@@ -47,6 +47,9 @@ const pageRecipe = cva({
       page: {
         "--size": "sizes.surface.pageMax",
       },
+      wide: {
+        "--size": "sizes.surface.wideMax",
+      },
     },
     gutters: {
       never: {

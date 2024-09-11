@@ -1526,6 +1526,16 @@ const messages = {
       useAudio: "Chose audio",
       noResults: "No audio files found",
     },
+    videoSearch: {
+      searchPlaceholder: "Search videos",
+      searchButtonTitle: "Search",
+      loadMoreVideos: "Load more videos",
+      noResults: "No videos found",
+      addVideo: "Use video",
+      previewVideo: "Preview",
+      is360Video: "VR video",
+      close: "Lukk",
+    },
   },
 };
 

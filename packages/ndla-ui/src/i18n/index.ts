@@ -15,4 +15,5 @@ export {
   usePaginationTranslations,
   useAudioSearchTranslations,
   useImageSearchTranslations,
+  useVideoSearchTranslations,
 } from "./useComponentTranslations";

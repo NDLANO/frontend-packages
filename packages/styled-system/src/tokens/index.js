@@ -1203,6 +1203,10 @@ const tokens = {
     "value": "928px",
     "variable": "var(--sizes-surface-article-max)"
   },
+  "sizes.surface.wideMax": {
+    "value": "1440px",
+    "variable": "var(--sizes-surface-wide-max)"
+  },
   "colors.background.default": {
     "value": "var(--colors-white)",
     "variable": "var(--colors-background-default)"

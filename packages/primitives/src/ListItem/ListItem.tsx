@@ -50,7 +50,6 @@ export const listItemRecipe = sva({
       maxHeight: "40px",
       minWidth: "56px",
       maxWidth: "56px",
-      borderRadius: "xsmall",
       objectFit: "cover",
     },
   },
@@ -241,4 +240,8 @@ export const ListItemContent = withContext<HTMLDivElement, HTMLArkProps<"div"> &
   baseComponent: true,
 });
 
-export const ListItemImage = withContext<HTMLImageElement, ImageProps>(Image, "image");
+const InternalListItemImage = withContext<HTMLImageElement, ImageProps>(Image, "image");
+
+export const ListItemImage = forwardRef<HTMLImageElement, ImageProps>(({ variant = "rounded", ...props }, ref) => (
+  <InternalListItemImage variant={variant} {...props} ref={ref} />
+));

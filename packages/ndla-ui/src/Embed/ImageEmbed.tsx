@@ -252,14 +252,14 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
           </ExpandButton>
         )}
       </ImageWrapper>
-      {embedData.hideByline === "true" ? null : (
-        <EmbedByline
-          type="image"
-          copyright={data.copyright}
-          description={embedData.hideCaption === "true" ? "" : parsedDescription}
-          visibleAlt={previewAlt ? embed.embedData.alt : ""}
-        />
-      )}
+      <EmbedByline
+        type="image"
+        copyright={data.copyright}
+        description={parsedDescription}
+        hideDescription={embedData.hideCaption === "true"}
+        hideCopyright={embedData.hideByline === "true"}
+        visibleAlt={previewAlt ? embed.embedData.alt : ""}
+      />
     </StyledFigure>
   );
 };

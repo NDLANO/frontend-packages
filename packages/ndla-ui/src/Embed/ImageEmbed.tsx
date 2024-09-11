@@ -224,11 +224,13 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
 
   const licenseProps = licenseAttributes(data.copyright.license.license, lang, embedData.url);
 
+  const figureSize = figureProps?.float ? figureProps?.size ?? "medium" : "full";
+
   // TODO: Check how this works with `children`. Will only be important for ED
   return (
     <StyledFigure
       float={figureProps?.float}
-      size={imageSizes ? "full" : figureProps?.size ?? "medium"}
+      size={imageSizes ? "full" : figureSize}
       data-embed-type="image"
       {...licenseProps}
     >
@@ -245,7 +247,7 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
           onClick={figureProps?.float ? toggleImageSize : undefined}
           variant="rounded"
         />
-        {!!embedData.align && (
+        {(embedData.align === "right" || embedData.align === "left") && (
           <ExpandButton
             aria-label={t(`license.images.itemImage.zoom${imageSizes ? "Out" : ""}ImageButtonLabel`)}
             onClick={toggleImageSize}

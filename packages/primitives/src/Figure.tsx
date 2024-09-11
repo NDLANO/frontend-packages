@@ -85,6 +85,7 @@ const figureRecipe = cva({
       size: ["medium", "small", "xsmall"],
       css: {
         paddingInlineEnd: "medium",
+        tabletDown: { paddingInlineEnd: "0" },
       },
     },
     {
@@ -92,6 +93,7 @@ const figureRecipe = cva({
       size: ["medium", "small", "xsmall"],
       css: {
         paddingInlineStart: "medium",
+        tabletDown: { paddingInlineStart: "0" },
       },
     },
     {

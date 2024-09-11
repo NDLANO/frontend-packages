@@ -31,6 +31,7 @@ const LinkedVideoButton = styled(Button, {
 
 const BrightcoveIframe = styled("iframe", {
   base: {
+    border: 0,
     height: "auto",
     width: "100%",
   },
@@ -86,9 +87,8 @@ const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
           ref={iframeRef}
           title={embedData.alt ?? fallbackTitle}
           aria-label={embedData.alt ?? fallbackTitle}
-          frameBorder="0"
           {...getIframeProps(embedData, [])}
-          allowFullScreen
+          allow="fullscreen; encrypted-media"
         />
       </EmbedErrorPlaceholder>
     );
@@ -112,9 +112,8 @@ const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
           className="original"
           title={embedData.alt ?? data.name ?? fallbackTitle}
           aria-label={embedData.alt ?? data.name ?? fallbackTitle}
-          frameBorder="0"
           {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
-          allowFullScreen
+          allow="fullscreen; encrypted-media"
         />
       </div>
       <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription}>

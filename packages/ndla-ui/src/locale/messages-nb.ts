@@ -186,7 +186,7 @@ const messages = {
       listView: "Listevisning",
     },
     contextModal: {
-      button: "+ {{count}} flere steder",
+      button: " + {{count}} flere steder",
       heading: "Ressursen er brukt flere steder",
       ariaLabel: "Se flere kontekster",
     },

@@ -24,6 +24,8 @@ interface BaseProps {
   children?: ReactNode;
   visibleAlt?: string;
   error?: true | false;
+  hideDescription?: boolean;
+  hideCopyright?: boolean;
 }
 
 export interface EmbedBylineErrorProps extends BaseProps {
@@ -115,7 +117,15 @@ const BaseDescription = styled("div", {
   },
 });
 
-export const EmbedByline = ({ type, description, children, visibleAlt, ...props }: Props) => {
+export const EmbedByline = ({
+  type,
+  description,
+  children,
+  visibleAlt,
+  hideCopyright,
+  hideDescription,
+  ...props
+}: Props) => {
   const { t } = useTranslation();
 
   if (props.error) {
@@ -133,14 +143,18 @@ export const EmbedByline = ({ type, description, children, visibleAlt, ...props 
   }
 
   const { copyright } = props;
+  const bylineDescription = hideDescription ? "" : description;
 
   return (
     <>
       <BylineWrapper>
         <div>
-          <LicenseContainerContent type={type} copyright={copyright}>
-            {description}
-          </LicenseContainerContent>
+          {hideCopyright && bylineDescription}
+          {!hideCopyright && (
+            <LicenseContainerContent type={type} copyright={copyright}>
+              {bylineDescription}
+            </LicenseContainerContent>
+          )}
           {children}
         </div>
       </BylineWrapper>

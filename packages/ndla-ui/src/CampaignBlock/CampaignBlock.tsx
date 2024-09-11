@@ -58,8 +58,8 @@ const Container = styled("div", {
   variants: {
     imageSide: {
       left: {
-        //tabletWide
-        "@container wrapper (min-width: 48rem)": {
+        //tablet
+        "@container wrapper (min-width: 37.5625em)": {
           gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
         },
         "@supports not (container-type: inline-size)": {
@@ -69,8 +69,8 @@ const Container = styled("div", {
         },
       },
       right: {
-        //tabletWide
-        "@container wrapper (min-width: 48rem)": {
+        //tablet
+        "@container wrapper (min-width: 37.5625em)": {
           gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
         },
         "@supports not (container-type: inline-size)": {
@@ -114,11 +114,17 @@ const StyledImg = styled("img", {
     objectFit: "cover",
     width: "100%",
     height: "215px",
-    tablet: {
-      height: "265px",
-    },
-    tabletWide: {
+    //tablet
+    "@container wrapper (min-width: 37.5625em)": {
       height: "340px",
+    },
+    "@supports not (container-type: inline-size)": {
+      tablet: {
+        height: "265px",
+      },
+      tabletWide: {
+        height: "340px",
+      },
     },
   },
 });
@@ -138,7 +144,7 @@ const ContentWrapper = styled("div", {
 
 const StyledText = styled(Text, {
   base: {
-    tabletWide: {
+    tablet: {
       display: "block",
       overflow: "hidden",
       position: "relative",

@@ -39,7 +39,6 @@ const Wrapper = styled("div", {
     width: "100%",
     height: "100%",
     containerType: "inline-size",
-    containerName: "wrapper",
   },
 });
 
@@ -58,8 +57,7 @@ const Container = styled("div", {
   variants: {
     imageSide: {
       left: {
-        //tablet
-        "@container wrapper (min-width: 37.5625em)": {
+        "@/containerTablet": {
           gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
         },
         "@supports not (container-type: inline-size)": {
@@ -69,8 +67,7 @@ const Container = styled("div", {
         },
       },
       right: {
-        //tablet
-        "@container wrapper (min-width: 37.5625em)": {
+        "@/containerTablet": {
           gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
         },
         "@supports not (container-type: inline-size)": {
@@ -114,8 +111,7 @@ const StyledImg = styled("img", {
     objectFit: "cover",
     width: "100%",
     height: "215px",
-    //tablet
-    "@container wrapper (min-width: 37.5625em)": {
+    "@/containerTablet": {
       height: "340px",
     },
     "@supports not (container-type: inline-size)": {

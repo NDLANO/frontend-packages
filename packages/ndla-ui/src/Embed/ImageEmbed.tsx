@@ -183,6 +183,9 @@ const ExpandButton = styled(
         transitionDuration: "normal",
         transitionTimingFunction: "ease-out",
       },
+      tabletDown: {
+        display: "none",
+      },
     },
   },
   { defaultProps: { type: "button" } },

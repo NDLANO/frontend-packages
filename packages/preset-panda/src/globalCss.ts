@@ -21,6 +21,7 @@ export const globalCss = defineGlobalStyles({
   },
   body: {
     background: "background.default",
+    color: "text.default",
   },
   "a, summary,[tabindex]:not([tabindex='-1'])": {
     outline: "none",

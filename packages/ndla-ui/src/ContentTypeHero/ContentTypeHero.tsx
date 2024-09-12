@@ -22,7 +22,7 @@ export const contentTypeToHeroMap: Record<ContentType, HeroVariant> = {
   [contentTypes.LEARNING_PATH]: "primary",
   [contentTypes.TOPIC]: "neutral",
   [contentTypes.MULTIDISCIPLINARY]: "primary",
-  [contentTypes.CONCEPT]: "brand1Subtle",
+  [contentTypes.CONCEPT]: "brand1Moderate",
   [contentTypes.EXTERNAL]: "primary",
   [contentTypes.IMAGE]: "primary",
   [contentTypes.AUDIO]: "primary",

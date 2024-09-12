@@ -74,9 +74,9 @@ const heroRecipe = sva({
           background: "surface.brand.1",
         },
       },
-      brand1Subtle: {
+      brand1Moderate: {
         background: {
-          background: "surface.brand.1.subtle",
+          background: "surface.brand.1.moderate",
         },
       },
       neutral: {

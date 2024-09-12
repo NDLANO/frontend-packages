@@ -21,6 +21,7 @@ const BreakpointsContainer = styled("div", {
 
 interface Props {
   width: SizeToken;
+  name?: string;
 }
 
 const BreakpointItem = ({ width }: Props) => (
@@ -33,6 +34,19 @@ const BreakpointItem = ({ width }: Props) => (
     })}
   >
     {width}
+  </div>
+);
+
+const ContainerSizesItem = ({ width, name }: Props) => (
+  <div
+    className={css({
+      width: width,
+      backgroundColor: "surface.brand.2",
+      color: "text.onAction",
+      padding: "medium",
+    })}
+  >
+    {name}
   </div>
 );
 
@@ -54,5 +68,17 @@ export const Breakpoints: StoryFn = () => (
     <BreakpointItem width="breakpoint-desktop" />
     <BreakpointItem width="breakpoint-wide" />
     <BreakpointItem width="breakpoint-ultraWide" />
+  </BreakpointsContainer>
+);
+
+export const ContainerSizes: StoryFn = () => (
+  <BreakpointsContainer>
+    <ContainerSizesItem width="breakpoint-mobile" name="mobile" />
+    <ContainerSizesItem width="breakpoint-mobileWide" name="mobileWide" />
+    <ContainerSizesItem width="breakpoint-tablet" name="tablet" />
+    <ContainerSizesItem width="breakpoint-tabletWide" name="tabletWide" />
+    <ContainerSizesItem width="breakpoint-desktop" name="desktop" />
+    <ContainerSizesItem width="breakpoint-wide" name="wide" />
+    <ContainerSizesItem width="breakpoint-ultraWide" name="ultraWide" />
   </BreakpointsContainer>
 );

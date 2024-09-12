@@ -270,6 +270,20 @@ export interface Conditions {
 	"desktopToUltraWide": string
 	/** `@media screen and (min-width: 81.3125rem) and (max-width: 100.06rem)` */
 	"wideToUltraWide": string
+	/** `@container  (min-width: 20rem)` */
+	"@/mobile": string
+	/** `@container  (min-width: 29.75rem)` */
+	"@/mobileWide": string
+	/** `@container  (min-width: 37.5625rem)` */
+	"@/tablet": string
+	/** `@container  (min-width: 48rem)` */
+	"@/tabletWide": string
+	/** `@container  (min-width: 61.3125rem)` */
+	"@/desktop": string
+	/** `@container  (min-width: 81.3125rem)` */
+	"@/wide": string
+	/** `@container  (min-width: 100.0625rem)` */
+	"@/ultraWide": string
 	/** The base (=no conditions) styles to apply  */
 	"base": string
 }

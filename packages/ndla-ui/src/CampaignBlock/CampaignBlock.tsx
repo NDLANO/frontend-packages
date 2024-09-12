@@ -34,6 +34,14 @@ interface Props {
   path?: string;
 }
 
+const Wrapper = styled("div", {
+  base: {
+    width: "100%",
+    height: "100%",
+    containerType: "inline-size",
+  },
+});
+
 const Container = styled("div", {
   base: {
     display: "grid",
@@ -49,13 +57,23 @@ const Container = styled("div", {
   variants: {
     imageSide: {
       left: {
-        tabletWide: {
+        "@/tablet": {
           gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
+        },
+        "@supports not (container-type: inline-size)": {
+          tabletWide: {
+            gridTemplateColumns: "minmax(230px, 455px) auto",
+          },
         },
       },
       right: {
-        tabletWide: {
+        "@/tablet": {
           gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
+        },
+        "@supports not (container-type: inline-size)": {
+          tabletWide: {
+            gridTemplateColumns: "auto minmax(230px, 455px)",
+          },
         },
       },
     },
@@ -93,11 +111,16 @@ const StyledImg = styled("img", {
     objectFit: "cover",
     width: "100%",
     height: "215px",
-    tablet: {
-      height: "265px",
-    },
-    tabletWide: {
+    "@/tablet": {
       height: "340px",
+    },
+    "@supports not (container-type: inline-size)": {
+      tablet: {
+        height: "265px",
+      },
+      tabletWide: {
+        height: "340px",
+      },
     },
   },
 });
@@ -112,13 +135,12 @@ const ContentWrapper = styled("div", {
     justifyContent: "center",
     paddingBlock: "medium",
     paddingInline: "medium",
-    minWidth: "270px", //required for campaign block in myNdla
   },
 });
 
 const StyledText = styled(Text, {
   base: {
-    tabletWide: {
+    tablet: {
       display: "block",
       overflow: "hidden",
       position: "relative",
@@ -158,26 +180,28 @@ const CampaignBlock = ({
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
   const HeaderComponent = url?.url ? LinkHeader : Text;
   return (
-    <Container className={className} data-embed-type="campaign-block" imageSide={imageSide}>
-      {imageSide === "left" && imageComponent}
-      <ContentWrapper>
-        <MaybeLinkText url={url?.url} path={path}>
-          <HeaderComponent asChild consumeCss textStyle="heading.small">
-            <InternalHeading>{parse(title)}</InternalHeading>
-          </HeaderComponent>
-        </MaybeLinkText>
-        <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
-        {!!url?.url && (
-          <MaybeLinkText url={url.url} path={path}>
-            <LinkText textStyle="body.medium">
-              {parse(url.text ?? "")}
-              <ArrowRightLine />
-            </LinkText>
+    <Wrapper>
+      <Container className={className} data-embed-type="campaign-block" imageSide={imageSide}>
+        {imageSide === "left" && imageComponent}
+        <ContentWrapper>
+          <MaybeLinkText url={url?.url} path={path}>
+            <HeaderComponent asChild consumeCss textStyle="heading.small">
+              <InternalHeading>{parse(title)}</InternalHeading>
+            </HeaderComponent>
           </MaybeLinkText>
-        )}
-      </ContentWrapper>
-      {imageSide !== "left" && imageComponent}
-    </Container>
+          <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
+          {!!url?.url && (
+            <MaybeLinkText url={url.url} path={path}>
+              <LinkText textStyle="body.medium">
+                {parse(url.text ?? "")}
+                <ArrowRightLine />
+              </LinkText>
+            </MaybeLinkText>
+          )}
+        </ContentWrapper>
+        {imageSide !== "left" && imageComponent}
+      </Container>
+    </Wrapper>
   );
 };
 

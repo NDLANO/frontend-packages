@@ -124,6 +124,14 @@ export const listItemRecipe = sva({
           "--color-current-hover": "colors.text.onAction",
         },
       },
+      brand3: {
+        root: {
+          "--background-hover": "colors.surface.action.myNdla.hover",
+          "--background-current": "colors.surface.action.myNdla.current",
+          "--border-hover": "colors.stroke.subtle",
+          "--color-current-hover": "colors.text.default",
+        },
+      },
     },
     variant: {
       standalone: {

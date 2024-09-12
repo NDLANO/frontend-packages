@@ -101,6 +101,14 @@ export {
 export type { ExpandableBoxProps, ExpandableBoxSummaryProps } from "./ExpandableBox";
 export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
 
+export {
+  ErrorMessageRoot,
+  ErrorMessageContent,
+  ErrorMessageActions,
+  ErrorMessageDescription,
+  ErrorMessageTitle,
+} from "./ErrorMessage/ErrorMessage";
+
 export { FieldRoot, FieldsetRoot } from "./Field";
 
 export { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";

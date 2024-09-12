@@ -80,6 +80,8 @@ export const ArticleHeader = styled(
       alignItems: "flex-start",
       width: "100%",
       paddingBlockStart: "xxlarge",
+      overflowWrap: "break-word",
+      hyphens: "auto",
     },
   },
   { baseComponent: true },

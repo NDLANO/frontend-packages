@@ -6,7 +6,7 @@
  *
  */
 
-import { IConcept, IConceptSummary } from "@ndla/types-backend/concept-api";
+import { IConcept } from "@ndla/types-backend/concept-api";
 import {
   AudioEmbedData,
   AudioMetaData,
@@ -51,19 +51,3 @@ export interface ConceptData {
 }
 
 export type ConceptMetaData = MetaData<ConceptEmbedData, ConceptData>;
-
-export type ConceptListEmbedData = {
-  resource: "concept-list";
-  tag: string;
-  title: string;
-  subjectId: string;
-};
-
-export interface ConceptListData {
-  concepts: {
-    concept: IConceptSummary;
-    visualElement?: ConceptVisualElementMeta;
-  }[];
-}
-
-export type ConceptListMetaData = MetaData<ConceptListEmbedData, ConceptListData>;

@@ -2846,8 +2846,6 @@ __metadata:
     "@ndla/styled-system": "workspace:^"
     "@pandacss/dev": "npm:^0.46.0"
   peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
     react: ">= 18"
     react-dom: ">= 18"
   languageName: unknown
@@ -3098,8 +3096,6 @@ __metadata:
     webpack: "npm:^5.79.0"
     webpack-cli: "npm:^5.0.1"
   peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
     i18next: ^23.11.5
     react: ">= 18"
     react-dom: ">= 18"

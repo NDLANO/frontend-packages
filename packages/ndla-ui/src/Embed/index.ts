@@ -18,7 +18,6 @@ export { default as ContentLinkEmbed } from "./ContentLinkEmbed";
 export { default as RelatedContentEmbed } from "./RelatedContentEmbed";
 export { ConceptEmbed, InlineConcept, BlockConcept } from "./ConceptEmbed";
 export type { InlineConceptProps, BlockConceptProps } from "./ConceptEmbed";
-export { default as ConceptListEmbed } from "./ConceptListEmbed";
 export { default as UnknownEmbed } from "./UnknownEmbed";
 export { default as UuDisclaimerEmbed } from "./UuDisclaimerEmbed";
 export { default as CopyrightEmbed } from "./CopyrightEmbed";

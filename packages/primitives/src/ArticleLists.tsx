@@ -56,17 +56,17 @@ const orderedListRecipe = cva({
                   _marker: {
                     content: "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '. '",
                   },
-                },
-                "& > ol:not([data-variant='letters'])": {
-                  counterReset: "level4",
-                  "&[data-count='true']": {
-                    counterReset: "level4 var(--start, 0)",
-                  },
-                  "& > li": {
-                    counterIncrement: "level4",
-                    _marker: {
-                      content:
-                        "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level4,  decimal) '. '",
+                  "& > ol:not([data-variant='letters'])": {
+                    counterReset: "level4",
+                    "&[data-count='true']": {
+                      counterReset: "level4 var(--start, 0)",
+                    },
+                    "& > li": {
+                      counterIncrement: "level4",
+                      _marker: {
+                        content:
+                          "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level4,  decimal) '. '",
+                      },
                     },
                   },
                 },

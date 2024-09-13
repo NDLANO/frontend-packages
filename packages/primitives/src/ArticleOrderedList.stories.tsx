@@ -196,7 +196,21 @@ export const StartingAtFive: StoryFn = () => (
                   <OrderedList>
                     <li>Listepunkt 1</li>
                     <li>Listepunkt 2</li>
-                    <li>Listepunkt 3</li>
+                    <li>
+                      Listepunkt 3
+                      <OrderedList>
+                        <li>Listepunkt 1</li>
+                        <li>Listepunkt 2</li>
+                        <li>
+                          Listepunkt 3
+                          <OrderedList>
+                            <li>Listepunkt 1</li>
+                            <li>Listepunkt 2</li>
+                            <li>Listepunkt 3</li>
+                          </OrderedList>
+                        </li>
+                      </OrderedList>
+                    </li>
                   </OrderedList>
                 </li>
               </OrderedList>

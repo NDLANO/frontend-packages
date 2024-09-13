@@ -44,8 +44,6 @@
     "i18next-browser-languagedetector": "^7.1.0"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
     "i18next": "^23.11.5",
     "react": ">= 18",
     "react-dom": ">= 18",

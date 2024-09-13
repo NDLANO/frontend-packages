@@ -122,6 +122,12 @@ const TextVersionButton = styled(Button, {
   },
 });
 
+const ShowMoreButton = styled(Button, {
+  base: {
+    marginInlineStart: "3xsmall",
+  },
+});
+
 const DESCRIPTION_MAX_LENGTH = 200;
 
 type Props = {
@@ -191,9 +197,9 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
                 ? description
                 : `${truncatedDescription}...`}
               {description.length > DESCRIPTION_MAX_LENGTH && (
-                <Button variant="link" onClick={() => setShowFullDescription((p) => !p)}>
+                <ShowMoreButton variant="link" onClick={() => setShowFullDescription((p) => !p)}>
                   {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
-                </Button>
+                </ShowMoreButton>
               )}
             </Text>
           )}

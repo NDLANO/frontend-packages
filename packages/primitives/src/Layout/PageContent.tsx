@@ -12,8 +12,6 @@ import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
-// TODO: Rename this component
-
 const pageRecipe = cva({
   base: {
     display: "grid",

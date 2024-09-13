@@ -43,8 +43,6 @@ const ContentWrapper = styled("div", {
   },
 });
 
-// TODO: Figure out if we need to support headerButtons.
-
 export const Concept = forwardRef<HTMLElement, ConceptProps>(
   ({ copyright, visualElement, lang, children, title, source, previewAlt, ...rest }, ref) => {
     const licenseProps = licenseAttributes(copyright?.license?.license, lang, source);

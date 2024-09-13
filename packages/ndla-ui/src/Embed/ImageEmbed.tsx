@@ -226,7 +226,6 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
 
   const figureSize = figureProps?.float ? figureProps?.size ?? "medium" : "full";
 
-  // TODO: Check how this works with `children`. Will only be important for ED
   return (
     <StyledFigure
       float={figureProps?.float}

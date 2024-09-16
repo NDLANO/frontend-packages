@@ -197,6 +197,7 @@ const TextContent = styled("span", {
       transitionProperty: "max-height",
       transitionDuration: "slow",
       transitionTimingFunction: "ease-in",
+      marginInlineEnd: "4xsmall",
       _open: {
         whiteSpace: "pre-wrap",
         maxHeight: "none",

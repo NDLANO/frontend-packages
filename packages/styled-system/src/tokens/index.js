@@ -1404,7 +1404,7 @@ const tokens = {
     "variable": "var(--colors-surface-action-selected)"
   },
   "colors.surface.action.myNdla": {
-    "value": "var(--colors-yellow-50)",
+    "value": "var(--colors-yellow-300)",
     "variable": "var(--colors-surface-action-my-ndla)"
   },
   "colors.surface.action.myNdla.hover": {

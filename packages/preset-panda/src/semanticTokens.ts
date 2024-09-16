@@ -144,7 +144,7 @@ export const semanticTokens = defineSemanticTokens({
         active: { value: "{colors.purple.950}" },
         selected: { value: "{colors.purple.800}" },
         myNdla: {
-          DEFAULT: { value: "{colors.yellow.50}" },
+          DEFAULT: { value: "{colors.yellow.300}" },
           hover: { value: "{colors.yellow.500}" },
           current: { value: "{colors.yellow.700}" },
         },

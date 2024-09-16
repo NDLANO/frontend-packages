@@ -69,6 +69,7 @@ export { default as EmailOutline } from "./EmailOutline";
 export { default as Esc } from "./Esc";
 export { default as ExclamationMark } from "./ExclamationMark";
 export { default as Explanation } from "./Explanation";
+export { default as ExternalLinkLine } from "./ExternalLinkLine";
 export { default as Facebook } from "./Facebook";
 export { default as FacebookCircleFill } from "./FacebookCircleFill";
 export { default as FacebookCircleLine } from "./FacebookCircleLine";

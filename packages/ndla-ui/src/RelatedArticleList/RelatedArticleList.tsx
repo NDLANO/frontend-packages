@@ -8,6 +8,7 @@
 
 import { Children, ComponentPropsWithoutRef, ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ExternalLinkLine } from "@ndla/icons/common";
 import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
@@ -24,6 +25,16 @@ interface RelatedArticleProps {
   target?: string;
   type?: string;
 }
+
+const StyledSpan = styled("span", {
+  base: {
+    display: "flex",
+    gap: "3",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    flexDirection: "row",
+  },
+});
 
 export const RelatedArticle = ({
   title,
@@ -46,7 +57,10 @@ export const RelatedArticle = ({
               rel={linkInfo ? "noopener noreferrer" : undefined}
               css={linkOverlay.raw()}
             >
-              {title}
+              <StyledSpan>
+                {title}
+                {type === "external" && <ExternalLinkLine />}
+              </StyledSpan>
             </SafeLink>
           </span>
         </CardHeading>

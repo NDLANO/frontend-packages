@@ -11,7 +11,7 @@ import { MetaData } from ".";
 
 export type KeyFigureEmbedData = {
   resource: "key-figure";
-  imageId: string;
+  imageId?: string;
   title: string;
   subtitle: string;
   alt?: string;

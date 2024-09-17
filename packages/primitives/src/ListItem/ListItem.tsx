@@ -40,7 +40,7 @@ export const listItemRecipe = sva({
     },
     content: {
       display: "flex",
-      alignItems: "flex-start",
+      alignItems: "center",
       justifyContent: "space-between",
       gap: "xsmall",
       width: "100%",
@@ -51,9 +51,6 @@ export const listItemRecipe = sva({
       minWidth: "56px",
       maxWidth: "56px",
       objectFit: "cover",
-    },
-    title: {
-      alignSelf: "center",
     },
   },
   defaultVariants: {

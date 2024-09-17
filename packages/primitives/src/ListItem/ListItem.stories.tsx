@@ -81,7 +81,7 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
     />
     <ListItemContent>
       <styled.div css={{ display: "flex", flexDirection: "column", gap: "4xsmall" }}>
-        <ListItemHeading css={{ alignSelf: "flex-start" }} asChild consumeCss>
+        <ListItemHeading asChild consumeCss>
           <h2>
             <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
               Tittel
@@ -93,9 +93,7 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
           ingenting.
         </Text>
       </styled.div>
-      <Badge colorTheme="brand1" css={{ alignSelf: "center" }}>
-        Fagstoff
-      </Badge>
+      <Badge colorTheme="brand1">Fagstoff</Badge>
     </ListItemContent>
   </ListItemRoot>
 );

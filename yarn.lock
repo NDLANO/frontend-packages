@@ -2728,8 +2728,6 @@ __metadata:
     "@ndla/ui": "npm:^56.0.29-alpha.0"
     html-react-parser: "npm:^5.1.8"
   peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
     i18next: ">= 23.11.5"
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"

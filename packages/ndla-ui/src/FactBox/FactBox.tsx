@@ -21,27 +21,30 @@ interface Props extends ComponentProps<"aside"> {
 
 const StyledAside = styled("aside", {
   base: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
     position: "relative",
     padding: "medium",
-    transitionProperty: "max-height",
+    display: "grid",
+    gridTemplateRows: "0fr",
+    transitionProperty: "grid-template-rows",
     transitionDuration: "slow",
     transitionTimingFunction: "ease-in-out",
+    justifyItems: "center",
     border: "1px solid",
     borderColor: "stroke.default",
     borderRadius: "xsmall",
-    maxHeight: "surface.xxsmall",
     clear: "both",
+    _open: {
+      gridTemplateRows: "1fr",
+    },
     _closed: {
       _print: {
         overflow: "visible",
         maxHeight: "500vh",
       },
     },
-    _open: {
-      maxHeight: "500vh",
+    "& > div": {
+      minHeight: "surface.3xsmall",
+      overflow: "hidden",
     },
   },
 });

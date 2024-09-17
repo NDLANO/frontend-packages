@@ -59,7 +59,7 @@ export const RelatedArticle = ({
             >
               <StyledSpan>
                 {title}
-                {type === "external" && <ExternalLinkLine />}
+                {target === "_blank" && <ExternalLinkLine />}
               </StyledSpan>
             </SafeLink>
           </span>

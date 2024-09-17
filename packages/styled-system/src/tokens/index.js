@@ -1240,8 +1240,12 @@ const tokens = {
     "variable": "var(--colors-text-on-action)"
   },
   "colors.text.link": {
-    "value": "var(--colors-purple-900)",
+    "value": "var(--colors-blue-800)",
     "variable": "var(--colors-text-link)"
+  },
+  "colors.text.linkVisited": {
+    "value": "var(--colors-purple-900)",
+    "variable": "var(--colors-text-link-visited)"
   },
   "colors.text.error": {
     "value": "var(--colors-pink-800)",
@@ -1926,6 +1930,10 @@ const tokens = {
   "colors.colorPalette.link": {
     "value": "var(--colors-color-palette-link)",
     "variable": "var(--colors-color-palette-link)"
+  },
+  "colors.colorPalette.linkVisited": {
+    "value": "var(--colors-color-palette-link-visited)",
+    "variable": "var(--colors-color-palette-link-visited)"
   },
   "colors.colorPalette.error": {
     "value": "var(--colors-color-palette-error)",

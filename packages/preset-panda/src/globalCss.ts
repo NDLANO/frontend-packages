@@ -124,5 +124,8 @@ export const globalCss = defineGlobalStyles({
     _hover: {
       textDecoration: "none",
     },
+    _visited: {
+      color: "text.linkVisited",
+    },
   },
 });

@@ -50,7 +50,7 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
         introduction=""
         to={embedData.url}
         target="_blank"
-        type={"external"}
+        type="external"
         linkInfo={`${t("related.linkInfo")} ${embedData.urlDomain}`}
       />
     );

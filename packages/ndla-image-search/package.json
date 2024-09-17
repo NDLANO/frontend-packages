@@ -1,6 +1,6 @@
 {
   "name": "@ndla/image-search",
-  "version": "11.0.16-alpha.0",
+  "version": "11.0.27-alpha.0",
   "description": "A simple library for searching images from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build:types"
+    "prepublish": "concurrently 'yarn build:types' 'mkdir -p dist' 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
   },
   "repository": {
     "type": "git",
@@ -21,31 +21,25 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "scss",
+    "dist",
     "lib",
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^15.0.11-alpha.0",
-    "@ndla/core": "^5.0.2",
-    "@ndla/forms": "^10.0.15-alpha.0",
-    "@ndla/icons": "^8.0.11-alpha.0",
-    "@ndla/pager": "^5.0.15-alpha.0",
-    "@ndla/ui": "^56.0.16-alpha.0",
-    "@ndla/util": "^4.1.0",
+    "@ndla/icons": "workspace:^",
+    "@ndla/licenses": "workspace:^",
+    "@ndla/primitives": "workspace:^",
+    "@ndla/styled-system": "workspace:^",
     "pretty-bytes": "^5.6.0"
   },
   "devDependencies": {
-    "@ndla/types-backend": "^0.2.86"
+    "@ndla/preset-panda": "workspace:^",
+    "@ndla/types-backend": "^0.2.86",
+    "@pandacss/dev": "^0.46.0"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "i18next": ">= 23.11.5",
-    "react": ">= 16.8.0",
-    "react-dom": ">= 16.8.0",
-    "react-i18next": ">= 14.1.1",
-    "react-router-dom": ">= 6.0.0"
+    "react": ">= 18",
+    "react-dom": ">= 18"
   },
   "publishConfig": {
     "access": "public"

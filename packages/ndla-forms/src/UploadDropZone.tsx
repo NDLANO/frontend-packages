@@ -12,9 +12,9 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors, spacing, fonts, misc, animations, stackOrder } from "@ndla/core";
-import { Spinner } from "@ndla/icons";
 import { UploadCloudLine, ErrorWarningFill } from "@ndla/icons/editor";
 import { getIllegalFiles } from "./filetypeHelper";
+import { Spinner } from "./Spinner";
 
 const SpinnerWrapper = styled.div`
   margin: -${spacing.small} 0;

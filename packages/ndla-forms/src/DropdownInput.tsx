@@ -7,11 +7,11 @@
  */
 
 import styled from "@emotion/styled";
-import { Spinner } from "@ndla/icons";
 import { SearchLine } from "@ndla/icons/common";
 import { Input, FormPill, InputProps } from ".";
 //@ts-ignore
 import { getFieldValue } from "./dropdownHelper";
+import { Spinner } from "./Spinner";
 
 type StringObject<T> = {
   [K in keyof T]: T[K] extends string ? K : never;
@@ -40,7 +40,7 @@ const DropdownInput = <T extends object>({
   ...rest
 }: Props<T>) => (
   <Input
-    iconRight={loading ? <StyledSpinner size="normal" aria-hidden="true" /> : <SearchLine aria-hidden="true" />}
+    iconRight={loading ? <StyledSpinner data-size="normal" aria-hidden="true" /> : <SearchLine aria-hidden="true" />}
     {...rest}
     tags={
       multiSelect &&

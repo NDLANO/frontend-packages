@@ -66,6 +66,7 @@ export const semanticTokens = defineSemanticTokens({
       pageMax: { value: "1128px" },
       contentMax: { value: "744px" },
       articleMax: { value: "928px" },
+      wideMax: { value: "1440px" },
     },
   },
   colors: {
@@ -80,7 +81,8 @@ export const semanticTokens = defineSemanticTokens({
       strong: { value: "{colors.primary}" },
       action: { value: "{colors.purple.800}" },
       onAction: { value: "{colors.white}" },
-      link: { value: "{colors.purple.900}" },
+      link: { value: "{colors.blue.800}" },
+      linkVisited: { value: "{colors.purple.900}" },
       error: { value: "{colors.pink.800}" },
       disabled: { value: "{colors.grey.400}" },
     },
@@ -142,6 +144,11 @@ export const semanticTokens = defineSemanticTokens({
         hover: { value: "{colors.purple.900}" },
         active: { value: "{colors.purple.950}" },
         selected: { value: "{colors.purple.800}" },
+        myNdla: {
+          DEFAULT: { value: "{colors.yellow.300}" },
+          hover: { value: "{colors.yellow.500}" },
+          current: { value: "{colors.yellow.700}" },
+        },
       },
       actionSubtle: {
         DEFAULT: { value: "{colors.purple.50}" },

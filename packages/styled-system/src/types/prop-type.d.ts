@@ -19,7 +19,7 @@ export interface UtilityValues {
 	float: "start" | "end" | CssProperties["float"];
 	hideFrom: Tokens["breakpoints"];
 	hideBelow: Tokens["breakpoints"];
-	flexBasis: Tokens["spacing"] | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "1/5" | "2/5" | "3/5" | "4/5" | "1/6" | "2/6" | "3/6" | "4/6" | "5/6" | "1/12" | "2/12" | "3/12" | "4/12" | "5/12" | "6/12" | "7/12" | "8/12" | "9/12" | "10/12" | "11/12" | "full";
+	flexBasis: Tokens["sizes"] | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "1/5" | "2/5" | "3/5" | "4/5" | "1/6" | "2/6" | "3/6" | "4/6" | "5/6" | "1/12" | "2/12" | "3/12" | "4/12" | "5/12" | "6/12" | "7/12" | "8/12" | "9/12" | "10/12" | "11/12" | "full";
 	flex: "1" | "auto" | "initial" | "none";
 	gridTemplateColumns: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
 	gridTemplateRows: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
@@ -184,18 +184,18 @@ export interface UtilityValues {
 	srOnly: boolean;
 	debug: boolean;
 	containerName: CssProperties["containerName"];
-	colorPalette: "grey" | "blue" | "purple" | "yellow" | "green" | "pink" | "white" | "primary" | "background" | "text" | "icon" | "surface" | "surface.brand.1" | "surface.brand" | "surface.brand.2" | "surface.brand.3" | "surface.brand.4" | "surface.brand.5" | "surface.disabled" | "surface.infoSubtle" | "surface.action" | "surface.actionSubtle" | "surface.actionSubtle.hover" | "surface.success" | "surface.successSubtle" | "surface.warning" | "surface.warningSubtle" | "surface.danger" | "surface.dangerSubtle" | "surface.error" | "surface.errorSubtle" | "stroke";
+	colorPalette: "grey" | "blue" | "purple" | "yellow" | "green" | "pink" | "white" | "primary" | "background" | "text" | "icon" | "surface" | "surface.brand.1" | "surface.brand" | "surface.brand.2" | "surface.brand.3" | "surface.brand.4" | "surface.brand.5" | "surface.disabled" | "surface.infoSubtle" | "surface.action" | "surface.action.myNdla" | "surface.actionSubtle" | "surface.actionSubtle.hover" | "surface.success" | "surface.successSubtle" | "surface.warning" | "surface.warningSubtle" | "surface.danger" | "surface.dangerSubtle" | "surface.error" | "surface.errorSubtle" | "stroke";
 	textStyle: "heading.large" | "heading.medium" | "heading.small" | "title.large" | "title.medium" | "title.small" | "body.article" | "body.articleLink" | "body.link" | "body.xlarge" | "body.large" | "body.medium" | "body.small" | "label.large" | "label.medium" | "label.small" | "label.xsmall";
 }
 
 
 
-type WithColorOpacityModifier<T> = T extends string ? `${T}/${string}` : T
+type WithColorOpacityModifier<T> = [T] extends [string] ? `${T}/${string}` & { __colorOpacityModifier?: true } : never
 
 type ImportantMark = "!" | "!important"
 type WhitespaceImportant = ` ${ImportantMark}`
 type Important = ImportantMark | WhitespaceImportant
-type WithImportant<T> = T extends string ? `${T}${Important}` & { __important?: true } : T;
+type WithImportant<T> = [T] extends [string] ? `${T}${Important}` & { __important?: true } : never
 
 /**
  * Only relevant when using `strictTokens` or `strictPropertyValues` in your config.

@@ -35,6 +35,9 @@ export { Button, IconButton, buttonBaseRecipe, buttonRecipe, iconButtonRecipe } 
 
 export { CardRoot, CardHeading, CardContent, CardImage } from "./Card/Card";
 
+export { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
+export type { ToggleGroupRootProps, ToggleGroupVariantProps } from "./ToggleGroup";
+
 export type { CheckboxVariantProps, CheckboxRootProps } from "./Checkbox";
 
 export {
@@ -98,6 +101,14 @@ export {
 export type { ExpandableBoxProps, ExpandableBoxSummaryProps } from "./ExpandableBox";
 export { ExpandableBox, ExpandableBoxSummary } from "./ExpandableBox";
 
+export {
+  ErrorMessageRoot,
+  ErrorMessageContent,
+  ErrorMessageActions,
+  ErrorMessageDescription,
+  ErrorMessageTitle,
+} from "./ErrorMessage/ErrorMessage";
+
 export { FieldRoot, FieldsetRoot } from "./Field";
 
 export { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";
@@ -125,6 +136,7 @@ export { Label, FieldLabel, Legend, FieldsetLegend } from "./Label";
 export type { ListItemVariantProps, ListItemProps } from "./ListItem/ListItem";
 export { ListItemRoot, ListItemHeading, ListItemContent, ListItemImage } from "./ListItem/ListItem";
 
+export type { PageContentVariantProps } from "./Layout/PageContent";
 export { PageContent, BleedPageContent } from "./Layout/PageContent";
 
 export type { MenuRootProps, MenuItemVariantProps, MenuItemProps } from "./Menu";

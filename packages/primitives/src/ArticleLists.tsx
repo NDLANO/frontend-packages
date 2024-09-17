@@ -56,17 +56,17 @@ const orderedListRecipe = cva({
                   _marker: {
                     content: "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '. '",
                   },
-                },
-                "& > ol:not([data-variant='letters'])": {
-                  counterReset: "level4",
-                  "&[data-count='true']": {
-                    counterReset: "level4 var(--start, 0)",
-                  },
-                  "& > li": {
-                    counterIncrement: "level4",
-                    _marker: {
-                      content:
-                        "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level4,  decimal) '. '",
+                  "& > ol:not([data-variant='letters'])": {
+                    counterReset: "level4",
+                    "&[data-count='true']": {
+                      counterReset: "level4 var(--start, 0)",
+                    },
+                    "& > li": {
+                      counterIncrement: "level4",
+                      _marker: {
+                        content:
+                          "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level4,  decimal) '. '",
+                      },
                     },
                   },
                 },
@@ -80,19 +80,22 @@ const orderedListRecipe = cva({
         "&[data-count='true']": {
           counterReset: "level1 var(--start, 0)",
         },
-        paddingInlineStart: "small",
+        paddingInlineStart: "medium",
         "& > li": {
           counterIncrement: "level1",
           _marker: {
             content: "counter(level1, upper-alpha) '. '",
           },
-          "& > ol[data-variant='letters'] > li": {
-            _marker: {
-              content: "counter(level1, lower-alpha) '. '",
-            },
-            "& > ol[data-variant='letters'] > li": {
+          "& > ol[data-variant='letters']": {
+            paddingInlineStart: "small",
+            "& > li": {
               _marker: {
-                content: "counter(level1, lower-roman) '. '",
+                content: "counter(level1, lower-alpha) '. '",
+              },
+              "& > ol[data-variant='letters'] > li": {
+                _marker: {
+                  content: "counter(level1, lower-roman) '. '",
+                },
               },
             },
           },

@@ -6,17 +6,17 @@
  *
  */
 
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA } from "./licenseRights";
+import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA, VERSION } from "./licenseRights";
 import { getLocaleOrDefault, LicenseType, LicenseLocaleType, Locale } from "./types";
 
 const freeUseNB = "Offentlig eie";
 const freeUseNN = "Offentleg eige";
 const freeUseEN = "Public domain";
 const restrictedUseNB = "Begrenset bruksrett";
-const restrictedUseNN = "Begrensa bruksrett";
+const restrictedUseNN = "Avgrensa bruksrett";
 const restrictedUseEN = "Restricted right of use";
 const restrictedReuseNB = "Begrenset gjenbruk";
-const restrictedReuseNN = "Begrensa gjenbruk";
+const restrictedReuseNN = "Avgrensa gjenbruk";
 const restrictedReuseEN = "Restricted reuse";
 
 const openLicenseLinkTextNB = "Les mer om opphavsrett";
@@ -27,7 +27,7 @@ const naNB = "N/A - ikke relevant";
 const naNN = "N/A - ikkje relevant";
 const naEN = "N/A - not applicable";
 
-const byncndAbbrev = `${CC} ${BY}-${NC}-${ND}`.toUpperCase();
+const byncndAbbrev = `${CC} ${BY}-${NC}-${ND} ${VERSION}`.toUpperCase();
 
 const byncnd: LicenseType = {
   nn: {
@@ -64,7 +64,7 @@ const byncnd: LicenseType = {
   rights: [CC, BY, NC, ND],
 };
 
-const byncsaAbbrev = `${CC} ${BY}-${NC}-${SA}`.toUpperCase();
+const byncsaAbbrev = `${CC} ${BY}-${NC}-${SA} ${VERSION}`.toUpperCase();
 
 const byncsa: LicenseType = {
   nn: {
@@ -101,7 +101,7 @@ const byncsa: LicenseType = {
   rights: [CC, BY, NC, SA],
 };
 
-const byncAbbrev = `${CC} ${BY}-${NC}`.toUpperCase();
+const byncAbbrev = `${CC} ${BY}-${NC} ${VERSION}`.toUpperCase();
 
 const bync: LicenseType = {
   nn: {
@@ -138,7 +138,7 @@ const bync: LicenseType = {
   rights: [CC, BY, NC],
 };
 
-const byndAbbrev = `${CC} ${BY}-${ND}`.toUpperCase();
+const byndAbbrev = `${CC} ${BY}-${ND} ${VERSION}`.toUpperCase();
 
 const bynd: LicenseType = {
   nn: {
@@ -175,7 +175,7 @@ const bynd: LicenseType = {
   rights: [CC, BY, ND],
 };
 
-const bysaAbbrev = `${CC} ${BY}-${SA}`.toUpperCase();
+const bysaAbbrev = `${CC} ${BY}-${SA} ${VERSION}`.toUpperCase();
 
 const bysa: LicenseType = {
   nn: {
@@ -212,7 +212,7 @@ const bysa: LicenseType = {
   rights: [CC, BY, SA],
 };
 
-const byAbbrev = `${CC} ${BY}`.toUpperCase();
+const byAbbrev = `${CC} ${BY} ${VERSION}`.toUpperCase();
 
 const by: LicenseType = {
   nn: {

@@ -8,7 +8,7 @@
 
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import { JsxStyleProps, StyledVariantProps } from "@ndla/styled-system/types";
 
 export interface ImageCrop {
   startX: number;
@@ -63,7 +63,21 @@ export const Picture = forwardRef<HTMLPictureElement, PictureProps>(
   },
 );
 
-export interface ImgProps extends JsxStyleProps, ComponentPropsWithRef<"img"> {
+const StyledImage = styled("img", {
+  defaultVariants: { variant: "regular" },
+  variants: {
+    variant: {
+      regular: {},
+      rounded: {
+        borderRadius: "xsmall",
+      },
+    },
+  },
+});
+
+type ImageVariantProps = StyledVariantProps<typeof StyledImage>;
+
+export interface ImgProps extends JsxStyleProps, ComponentPropsWithRef<"img">, ImageVariantProps {
   alt: string;
   src: string;
   fallbackWidth?: number;
@@ -76,12 +90,12 @@ export const Img = forwardRef<HTMLImageElement, ImgProps>(
   ({ fallbackWidth = FALLBACK_WIDTH, crop, focalPoint, contentType, src, alt, ...props }, ref) => {
     const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
     return (
-      <styled.img alt={alt} src={contentType === "image/gif" ? src : `${src}?${queryString}`} {...props} ref={ref} />
+      <StyledImage alt={alt} src={contentType === "image/gif" ? src : `${src}?${queryString}`} {...props} ref={ref} />
     );
   },
 );
 
-export interface ImageProps extends JsxStyleProps, ComponentPropsWithRef<"img"> {
+export interface ImageProps extends JsxStyleProps, ComponentPropsWithRef<"img">, ImageVariantProps {
   alt: string;
   src: string;
   sizes?: string;
@@ -113,7 +127,7 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
     return (
       <picture>
         {contentType !== "image/gif" && <source type={contentType} srcSet={srcSet} sizes={sizes} />}
-        <styled.img alt={alt} src={contentType === "image/gif" ? src : fallbackSrc} {...props} ref={ref} />
+        <StyledImage alt={alt} src={contentType === "image/gif" ? src : fallbackSrc} {...props} ref={ref} />
       </picture>
     );
   },

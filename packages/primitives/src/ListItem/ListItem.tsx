@@ -50,7 +50,6 @@ export const listItemRecipe = sva({
       maxHeight: "40px",
       minWidth: "56px",
       maxWidth: "56px",
-      borderRadius: "xsmall",
       objectFit: "cover",
     },
     title: {
@@ -126,6 +125,14 @@ export const listItemRecipe = sva({
           "--background-current": "colors.surface.brand.2.bold",
           "--border-hover": "colors.surface.brand.2.strong",
           "--color-current-hover": "colors.text.onAction",
+        },
+      },
+      brand3: {
+        root: {
+          "--background-hover": "colors.surface.action.myNdla.hover",
+          "--background-current": "colors.surface.action.myNdla.current",
+          "--border-hover": "colors.stroke.subtle",
+          "--color-current-hover": "colors.text.default",
         },
       },
     },
@@ -244,4 +251,8 @@ export const ListItemContent = withContext<HTMLDivElement, HTMLArkProps<"div"> &
   baseComponent: true,
 });
 
-export const ListItemImage = withContext<HTMLImageElement, ImageProps>(Image, "image");
+const InternalListItemImage = withContext<HTMLImageElement, ImageProps>(Image, "image");
+
+export const ListItemImage = forwardRef<HTMLImageElement, ImageProps>(({ variant = "rounded", ...props }, ref) => (
+  <InternalListItemImage variant={variant} {...props} ref={ref} />
+));

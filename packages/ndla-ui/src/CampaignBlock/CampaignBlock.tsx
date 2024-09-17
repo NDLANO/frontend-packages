@@ -34,22 +34,52 @@ interface Props {
   path?: string;
 }
 
-const Container = styled("div", {
+const Wrapper = styled("div", {
   base: {
     width: "100%",
-    display: "flex",
+    height: "100%",
+    containerType: "inline-size",
+  },
+});
+
+const Container = styled("div", {
+  base: {
+    display: "grid",
+    gridTemplateColumns: "1fr",
     gap: "medium",
-    flexDirection: "column",
     border: "1px solid",
     borderColor: "stroke.default",
     backgroundColor: "background.default",
     borderRadius: "xsmall",
     boxShadow: "full",
-    marginBlockEnd: "4xsmall",
     overflow: "hidden",
-    tabletWide: {
-      flexDirection: "row",
+  },
+  variants: {
+    imageSide: {
+      left: {
+        "@/tablet": {
+          gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
+        },
+        "@supports not (container-type: inline-size)": {
+          tabletWide: {
+            gridTemplateColumns: "minmax(230px, 455px) auto",
+          },
+        },
+      },
+      right: {
+        "@/tablet": {
+          gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
+        },
+        "@supports not (container-type: inline-size)": {
+          tabletWide: {
+            gridTemplateColumns: "auto minmax(230px, 455px)",
+          },
+        },
+      },
     },
+  },
+  defaultVariants: {
+    imageSide: "left",
   },
 });
 
@@ -78,15 +108,19 @@ const LinkHeader = styled(Text, {
 
 const StyledImg = styled("img", {
   base: {
-    alignSelf: "center",
     objectFit: "cover",
     width: "100%",
     height: "215px",
-    mobileWide: {
+    "@/tablet": {
       height: "340px",
     },
-    tabletWide: {
-      width: "auto",
+    "@supports not (container-type: inline-size)": {
+      tablet: {
+        height: "265px",
+      },
+      tabletWide: {
+        height: "340px",
+      },
     },
   },
 });
@@ -94,7 +128,6 @@ const StyledImg = styled("img", {
 const ContentWrapper = styled("div", {
   base: {
     width: "100%",
-    position: "relative",
     display: "flex",
     flexDirection: "column",
     gap: "medium",
@@ -107,7 +140,7 @@ const ContentWrapper = styled("div", {
 
 const StyledText = styled(Text, {
   base: {
-    tabletWide: {
+    tablet: {
       display: "block",
       overflow: "hidden",
       position: "relative",
@@ -147,26 +180,28 @@ const CampaignBlock = ({
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
   const HeaderComponent = url?.url ? LinkHeader : Text;
   return (
-    <Container className={className} data-embed-type="campaign-block">
-      {imageSide === "left" && imageComponent}
-      <ContentWrapper>
-        <MaybeLinkText url={url?.url} path={path}>
-          <HeaderComponent asChild consumeCss textStyle="heading.small">
-            <InternalHeading>{parse(title)}</InternalHeading>
-          </HeaderComponent>
-        </MaybeLinkText>
-        <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
-        {!!url?.url && (
-          <MaybeLinkText url={url.url} path={path}>
-            <LinkText textStyle="body.medium">
-              {parse(url.text ?? "")}
-              <ArrowRightLine />
-            </LinkText>
+    <Wrapper>
+      <Container className={className} data-embed-type="campaign-block" imageSide={imageSide}>
+        {imageSide === "left" && imageComponent}
+        <ContentWrapper>
+          <MaybeLinkText url={url?.url} path={path}>
+            <HeaderComponent asChild consumeCss textStyle="heading.small">
+              <InternalHeading>{parse(title)}</InternalHeading>
+            </HeaderComponent>
           </MaybeLinkText>
-        )}
-      </ContentWrapper>
-      {imageSide !== "left" && imageComponent}
-    </Container>
+          <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
+          {!!url?.url && (
+            <MaybeLinkText url={url.url} path={path}>
+              <LinkText textStyle="body.medium">
+                {parse(url.text ?? "")}
+                <ArrowRightLine />
+              </LinkText>
+            </MaybeLinkText>
+          )}
+        </ContentWrapper>
+        {imageSide !== "left" && imageComponent}
+      </Container>
+    </Wrapper>
   );
 };
 

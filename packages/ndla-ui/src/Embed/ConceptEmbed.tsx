@@ -8,6 +8,7 @@
 
 import parse from "html-react-parser";
 import { forwardRef, useMemo } from "react";
+import { Portal } from "@ark-ui/react";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
@@ -20,6 +21,7 @@ import { Concept, ConceptProps } from "../Concept/Concept";
 interface BaseProps {
   renderContext?: RenderContext;
   lang?: string;
+  previewAlt?: boolean;
 }
 
 interface Props extends BaseProps {
@@ -29,10 +31,12 @@ interface Props extends BaseProps {
 const StyledPopoverContent = styled(PopoverContent, {
   base: {
     width: "surface.xlarge",
+    maxHeight: "50vh",
+    overflowY: "auto",
   },
 });
 
-export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
+export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.htmlContent);
@@ -55,11 +59,13 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
   if (embed.embedData.type === "inline") {
     return (
       <InlineConcept
+        previewAlt={previewAlt}
         linkText={embed.embedData.linkText}
         copyright={concept.copyright}
         visualElement={visualElement}
         lang={lang}
         title={concept.title.title}
+        source={concept.source}
       >
         {parsedContent}
       </InlineConcept>
@@ -68,10 +74,12 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
 
   return (
     <BlockConcept
+      previewAlt={previewAlt}
       copyright={concept.copyright}
       visualElement={visualElement}
       lang={lang}
       title={renderContext === "embed" ? undefined : concept.title.title}
+      source={concept.source}
     >
       {parsedContent}
     </BlockConcept>
@@ -80,21 +88,30 @@ export const ConceptEmbed = ({ embed, renderContext, lang }: Props) => {
 
 export interface InlineConceptProps extends ConceptProps, BaseProps {
   linkText?: string;
+  source?: string;
 }
 
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
-  ({ linkText, copyright, visualElement, lang, children, title, ...rest }, ref) => (
+  ({ linkText, copyright, visualElement, previewAlt, lang, children, title, source, ...rest }, ref) => (
     <PopoverRoot>
-      <PopoverTrigger asChild>
-        <InlineTriggerButton {...rest} ref={ref}>
-          {linkText}
-        </InlineTriggerButton>
+      {/* @ts-expect-error placing ref and rest on popover trigger somehow removes a bug where the popover target becomes a bit bigger */}
+      <PopoverTrigger asChild ref={ref} {...rest}>
+        <InlineTriggerButton>{linkText}</InlineTriggerButton>
       </PopoverTrigger>
-      <StyledPopoverContent>
-        <Concept copyright={copyright} visualElement={visualElement} lang={lang} title={title}>
-          {children}
-        </Concept>
-      </StyledPopoverContent>
+      <Portal>
+        <StyledPopoverContent>
+          <Concept
+            copyright={copyright}
+            visualElement={visualElement}
+            lang={lang}
+            title={title}
+            source={source}
+            previewAlt={previewAlt}
+          >
+            {children}
+          </Concept>
+        </StyledPopoverContent>
+      </Portal>
     </PopoverRoot>
   ),
 );

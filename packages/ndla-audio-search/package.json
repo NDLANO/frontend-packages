@@ -1,6 +1,6 @@
 {
   "name": "@ndla/audio-search",
-  "version": "7.0.15-alpha.0",
+  "version": "7.0.25-alpha.0",
   "description": "A simple library for searching for audio files from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -29,12 +29,12 @@
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "workspace:^"
+    "@ndla/styled-system": "workspace:^"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^0.2.86",
-    "@pandacss/dev": "^0.44.0"
+    "@pandacss/dev": "^0.46.0"
   },
   "peerDependencies": {
     "react": ">= 18",

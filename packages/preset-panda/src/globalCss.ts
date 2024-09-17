@@ -21,6 +21,7 @@ export const globalCss = defineGlobalStyles({
   },
   body: {
     background: "background.default",
+    color: "text.default",
   },
   "a, summary,[tabindex]:not([tabindex='-1'])": {
     outline: "none",
@@ -50,10 +51,16 @@ export const globalCss = defineGlobalStyles({
       textStyle: "heading.small",
     },
     h3: {
-      textStyle: "title.large",
+      textStyle: "title.medium",
     },
     "h4, h5, h6": {
-      textStyle: "title.medium",
+      textStyle: "title.small",
+    },
+    '& p[data-align="center"]': {
+      textAlign: "center",
+    },
+    '& p:has(span[dir="rtl"])': {
+      direction: "rtl",
     },
     textStyle: "body.article",
     width: "100%",
@@ -69,15 +76,15 @@ export const globalCss = defineGlobalStyles({
     '& section:not([class]), section:not([class]) > div:not([class]), [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"], [data-embed-type="uu-disclaimer"], details, blockquote':
       {
         '& > :is(h2, [data-embed-type="copy-heading"])': {
-          marginBlockStart: "xxlarge",
-          marginBlockEnd: "medium",
-        },
-        "& > h3": {
           marginBlockStart: "xlarge",
           marginBlockEnd: "small",
         },
-        "& > :is(h4, h5, h6)": {
+        "& > h3": {
           marginBlockStart: "large",
+          marginBlockEnd: "xsmall",
+        },
+        "& > :is(h4, h5, h6)": {
+          marginBlockStart: "medium",
           marginBlockEnd: "xsmall",
         },
         "& > :is(figure)": {
@@ -92,6 +99,23 @@ export const globalCss = defineGlobalStyles({
           marginBlockStart: "xxlarge",
         },
       },
+    '& [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"], [data-embed-type="uu-disclaimer"], details, blockquote':
+      {
+        "& > :first-child": {
+          marginBlockStart: "0",
+        },
+        "& > :last-child": {
+          marginBlockEnd: "0",
+        },
+      },
+    "& section:not([class]), section:not([class]) > div:not([class])": {
+      "& > :first-child": {
+        marginBlockStart: "xxlarge",
+      },
+      "& > :last-child": {
+        marginBlockEnd: "xxlarge",
+      },
+    },
   },
   // Adds default link styling to links without classes
   'a:not([class]):not([data-unstyled]), a[class=""]:not([data-unstyled])': {
@@ -99,6 +123,9 @@ export const globalCss = defineGlobalStyles({
     textDecoration: "underline",
     _hover: {
       textDecoration: "none",
+    },
+    _visited: {
+      color: "text.linkVisited",
     },
   },
 });

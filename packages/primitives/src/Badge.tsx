@@ -27,7 +27,7 @@ const badgeRecipe = cva({
   variants: {
     colorTheme: {
       brand1: {
-        backgroundColor: "surface.brand.1.subtle",
+        backgroundColor: "surface.brand.1.moderate",
         borderColor: "surface.brand.1.strong",
       },
       brand2: {

@@ -16,7 +16,7 @@ interface Props {
 
 const StyledSafeLink = styled(SafeLink, {
   base: {
-    color: "primary",
+    color: "text.link",
     textDecoration: "underline",
     whiteSpace: "nowrap",
     _hover: {

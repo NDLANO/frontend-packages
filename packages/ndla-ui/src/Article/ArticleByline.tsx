@@ -36,8 +36,6 @@ const Wrapper = styled("div", {
   },
 });
 
-// TODO: This is designed with 24px of inline padding. If you do this, most bylines will break into two lines.
-// Should reconsider.
 const TextWrapper = styled("div", {
   base: {
     display: "flex",
@@ -169,7 +167,8 @@ export const ArticleByline = ({
           <LicenseWrapper>
             {license && <LicenseLink license={license} />}
             {showPrimaryContributors && (
-              <span>
+              //eslint-disable-next-line react/no-unknown-property
+              <span property="cc:attributionName">
                 {authors.length > 0 &&
                   `${t("article.authorsLabel", {
                     names: renderContributors(authors, t),
@@ -184,22 +183,24 @@ export const ArticleByline = ({
           </div>
         </TextWrapper>
       )}
-      <StyledAccordionRoot
-        multiple
-        value={openAccordions}
-        onValueChange={(details) => setOpenAccordions(details.value)}
-      >
-        {!!licenseBox && (
-          <ArticleBylineAccordionItem value={accordionItemValue} accordionTitle={t("article.useContent")}>
-            {licenseBox}
-          </ArticleBylineAccordionItem>
-        )}
-        {!!footnotes?.length && (
-          <ArticleBylineAccordionItem value={footnotesAccordionId} accordionTitle={t("article.footnotes")}>
-            <ArticleFootNotes footNotes={footnotes} />
-          </ArticleBylineAccordionItem>
-        )}
-      </StyledAccordionRoot>
+      {(!!licenseBox || !!footnotes?.length) && (
+        <StyledAccordionRoot
+          multiple
+          value={openAccordions}
+          onValueChange={(details) => setOpenAccordions(details.value)}
+        >
+          {!!licenseBox && (
+            <ArticleBylineAccordionItem value={accordionItemValue} accordionTitle={t("article.useContent")}>
+              {licenseBox}
+            </ArticleBylineAccordionItem>
+          )}
+          {!!footnotes?.length && (
+            <ArticleBylineAccordionItem value={footnotesAccordionId} accordionTitle={t("article.footnotes")}>
+              <ArticleFootNotes footNotes={footnotes} />
+            </ArticleBylineAccordionItem>
+          )}
+        </StyledAccordionRoot>
+      )}
     </Wrapper>
   );
 };

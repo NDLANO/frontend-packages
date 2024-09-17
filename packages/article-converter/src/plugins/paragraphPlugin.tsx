@@ -7,14 +7,13 @@
  */
 
 import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
-import { ArticleParagraph } from "@ndla/ui";
 import { PluginType } from "./types";
 
 export const paragraphPlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
   return (
-    <ArticleParagraph {...props} lang={opts.articleLanguage}>
+    <p {...props} lang={opts.articleLanguage}>
       {domToReact(node.children as DOMNode[], converterOpts)}
-    </ArticleParagraph>
+    </p>
   );
 };

@@ -42,9 +42,12 @@ export const boxShadows = defineTokens.shadows({
     value: "4px 4px 0px 0px {colors.primary}",
   },
   inner: {
-    value: `0px -1px 0px 0px {colors.primary} inset`,
+    value: `0px -1px 0px 0px rgba(45, 27, 98, 0.25) inset`, //colors.primary
   },
   innerTop: {
-    value: "0px 1px 0px 0px {colors.primary} inset",
+    value: "0px 1px 0px 0px rgba(45, 27, 98, 0.25) inset", //colors.primary
+  },
+  innerRight: {
+    value: "-1px 0px 0px 0px rgba(45, 27, 98, 0.25) inset", //colors.primary
   },
 });

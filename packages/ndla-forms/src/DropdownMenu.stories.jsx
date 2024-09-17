@@ -19,10 +19,10 @@ import {
   RadioButtonItem,
   RadioButtonGroup,
 } from "@ndla/forms";
-import { Spinner } from "@ndla/icons";
 import { SearchLine } from "@ndla/icons/common";
 import { Text } from "@ndla/typography";
 import { SubjectMaterialBadge } from "@ndla/ui";
+import { Spinner } from "./Spinner";
 import { mockTypeahead } from "../../../dummydata";
 
 const meta = {

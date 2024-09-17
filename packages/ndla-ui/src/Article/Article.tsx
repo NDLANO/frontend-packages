@@ -32,7 +32,6 @@ const StyledArticleWrapper = styled(
       background: "background.default",
       display: "flex",
       flexDirection: "column",
-      gap: "xxlarge",
       color: "text.default",
       alignItems: "center",
       width: "100%",
@@ -81,6 +80,8 @@ export const ArticleHeader = styled(
       alignItems: "flex-start",
       width: "100%",
       paddingBlockStart: "xxlarge",
+      overflowWrap: "break-word",
+      hyphens: "auto",
     },
   },
   { baseComponent: true },
@@ -105,6 +106,7 @@ export const ArticleFooter = styled(
 const StyledStack = styled(Stack, {
   base: {
     width: "100%",
+    minHeight: "xxlarge",
   },
 });
 
@@ -130,11 +132,13 @@ export const ArticleTitle = ({
   return (
     <ArticleHeader>
       <ArticleHGroup>
-        <StyledStack justify="space-between" align="center" direction="row" gap="small">
-          {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
-          {heartButton}
-        </StyledStack>
-        <Heading textStyle="heading.large" id={id} lang={lang}>
+        {(!!contentType || !!heartButton) && (
+          <StyledStack justify="space-between" align="center" direction="row" gap="small">
+            {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
+            {heartButton}
+          </StyledStack>
+        )}
+        <Heading textStyle="heading.medium" id={id} lang={lang} property="dct:title">
           {title}
         </Heading>
       </ArticleHGroup>

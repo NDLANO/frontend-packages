@@ -43,6 +43,7 @@ const preset = definePreset({
       zIndex: zIndex,
     },
     semanticTokens: semanticTokens,
+    containerSizes: breakpoints,
   },
 });
 

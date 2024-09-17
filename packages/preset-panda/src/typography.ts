@@ -13,7 +13,7 @@ export const fontWeights = defineTokens.fontWeights({
   light: { value: 300 },
   normal: { value: 400 },
   semibold: { value: 600 },
-  bold: { value: 700 },
+  bold: { value: 670 },
 });
 
 export const fonts = defineTokens.fonts({

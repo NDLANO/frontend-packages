@@ -188,8 +188,8 @@ const InternalFileUploadLabel = withContext<HTMLLabelElement, Assign<FileUpload.
 
 export const FileUploadLabel = forwardRef<HTMLLabelElement, Assign<FileUpload.LabelProps, JsxStyleProps & TextProps>>(
   ({ textStyle = "label.medium", fontWeight = "light", children, ...props }, ref) => (
-    <InternalFileUploadLabel asChild>
-      <Label textStyle={textStyle} fontWeight={fontWeight} ref={ref} {...props}>
+    <InternalFileUploadLabel ref={ref} asChild>
+      <Label textStyle={textStyle} fontWeight={fontWeight} {...props}>
         {children}
       </Label>
     </InternalFileUploadLabel>

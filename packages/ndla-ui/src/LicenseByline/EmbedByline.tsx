@@ -24,6 +24,8 @@ interface BaseProps {
   children?: ReactNode;
   visibleAlt?: string;
   error?: true | false;
+  hideDescription?: boolean;
+  hideCopyright?: boolean;
 }
 
 export interface EmbedBylineErrorProps extends BaseProps {
@@ -78,6 +80,7 @@ const BylineWrapper = styled("figcaption", {
     paddingBlock: "xsmall",
     background: "surface.default",
     textStyle: "label.medium",
+    color: "text.subtle",
   },
 });
 
@@ -114,7 +117,15 @@ const BaseDescription = styled("div", {
   },
 });
 
-export const EmbedByline = ({ type, description, children, visibleAlt, ...props }: Props) => {
+export const EmbedByline = ({
+  type,
+  description,
+  children,
+  visibleAlt,
+  hideCopyright,
+  hideDescription,
+  ...props
+}: Props) => {
   const { t } = useTranslation();
 
   if (props.error) {
@@ -132,14 +143,18 @@ export const EmbedByline = ({ type, description, children, visibleAlt, ...props 
   }
 
   const { copyright } = props;
+  const bylineDescription = hideDescription ? "" : description;
 
   return (
     <>
       <BylineWrapper>
         <div>
-          <LicenseContainerContent type={type} copyright={copyright}>
-            {description}
-          </LicenseContainerContent>
+          {hideCopyright && bylineDescription}
+          {!hideCopyright && (
+            <LicenseContainerContent type={type} copyright={copyright}>
+              {bylineDescription}
+            </LicenseContainerContent>
+          )}
           {children}
         </div>
       </BylineWrapper>
@@ -182,6 +197,7 @@ const TextContent = styled("span", {
       transitionProperty: "max-height",
       transitionDuration: "slow",
       transitionTimingFunction: "ease-in",
+      marginInlineEnd: "4xsmall",
       _open: {
         whiteSpace: "pre-wrap",
         maxHeight: "none",
@@ -233,7 +249,8 @@ export const LicenseContainerContent = ({ children, copyright, type }: LicenseCo
     <>
       {children}
       {` ${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
-      {captionAuthors.map((author) => author.name).join(", ")}
+      {/*eslint-disable-next-line react/no-unknown-property */}
+      <span property="cc:attributionName">{captionAuthors.map((author) => author.name).join(", ")}</span>
       {license ? (
         <>
           {" / "}

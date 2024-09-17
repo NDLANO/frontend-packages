@@ -13,17 +13,14 @@ import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
 import { Spinner } from "./Spinner";
 
-// TODO: Consider if any of the backgrounds should actually be transparent
-// TODO: Figure out sizing for link variant.
 export const buttonBaseRecipe = cva({
   base: {
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: "xsmall",
+    gap: "xxsmall",
     cursor: "pointer",
     textDecoration: "none",
-    textStyle: "label.medium",
     fontWeight: "bold",
     transitionProperty: "all",
     transitionDuration: "fast",
@@ -46,7 +43,7 @@ export const buttonBaseRecipe = cva({
       },
     },
     _focusVisible: {
-      boxShadow: "inset 0 0 0 3px var(--shadow-color)",
+      boxShadow: "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color)",
     },
     _motionReduce: {
       transition: "none",
@@ -70,7 +67,8 @@ export const buttonBaseRecipe = cva({
           background: "surface.action.active",
         },
         _focusVisible: {
-          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+          boxShadow:
+            "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color), inset 0px 0px 0px calc(var(--shadow-width, 3px) * 2) currentcolor",
         },
       },
       secondary: {
@@ -91,7 +89,7 @@ export const buttonBaseRecipe = cva({
           boxShadow: "inset 0 0 0 1px var(--shadow-color)",
           background: "surface.actionSubtle.hover",
           _focusVisible: {
-            boxShadow: "inset 0 0 0 3px var(--shadow-color)",
+            boxShadow: "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color)",
           },
         },
         _active: {
@@ -124,7 +122,8 @@ export const buttonBaseRecipe = cva({
         },
         _focusVisible: {
           boxShadowColor: "surface.danger",
-          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+          boxShadow:
+            "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color), inset 0px 0px 0px calc(var(--shadow-width, 3px) * 2) currentcolor",
         },
       },
       success: {
@@ -138,19 +137,28 @@ export const buttonBaseRecipe = cva({
         },
         _focusVisible: {
           boxShadowColor: "surface.success",
-          boxShadow: "inset 0 0 0 3px var(--shadow-color), inset 0px 0px 0px 6px currentcolor",
+          boxShadow:
+            "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color), inset 0px 0px 0px calc(var(--shadow-width, 3px) * 2) currentcolor",
         },
       },
       link: {
         background: "transparent",
         color: "text.link",
+        fontWeight: "normal",
         textDecoration: "underline",
-        textDecorationThickness: "1px",
+        transitionProperty: "unset",
+        transitionTimingFunction: "unset",
+        transitionDuration: "unset",
         _hover: {
           textDecoration: "none",
         },
-        _active: {
-          background: "surface.hover",
+        _focusVisible: {
+          boxShadow: "none",
+          outline: "3px",
+          borderRadius: "xsmall",
+          outlineColor: "stroke.default",
+          outlineOffset: "3px",
+          outlineStyle: "solid",
         },
       },
     },
@@ -164,15 +172,16 @@ export const buttonRecipe = cva({
   variants: {
     size: {
       medium: {
-        paddingInline: "xsmall",
+        textStyle: "label.medium",
+        paddingInline: "small",
         paddingBlock: "xxsmall",
         minHeight: "24",
       },
       small: {
         textStyle: "label.small",
-        minHeight: "19",
-        paddingInline: "small",
-        paddingBlock: "3xsmall",
+        minHeight: "large",
+        paddingInline: "xsmall",
+        paddingBlock: "4xsmall",
       },
     },
   },
@@ -189,6 +198,7 @@ export const iconButtonRecipe = cva({
   variants: {
     size: {
       medium: {
+        "--shadow-width": "3px",
         height: "xxlarge",
         width: "xxlarge",
         "& svg": {
@@ -201,6 +211,7 @@ export const iconButtonRecipe = cva({
         paddingBlock: "xsmall",
       },
       small: {
+        "--shadow-width": "2px",
         height: "large",
         width: "large",
         "& svg": {
@@ -222,7 +233,7 @@ type ButtonVariant = Exclude<Variant, "clear" | "clearSubtle">;
 
 export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProps<typeof buttonRecipe>;
 
-interface BaseButtonProps extends HTMLArkProps<"button">, JsxStyleProps {
+export interface BaseButtonProps extends HTMLArkProps<"button">, JsxStyleProps {
   loading?: boolean;
   loadingContent?: ReactNode;
   replaceContent?: boolean;
@@ -257,7 +268,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     <BaseButton
       {...props}
       loadingContent={loadingContent ?? <Spinner size="small" />}
-      css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
+      css={css.raw(
+        buttonBaseRecipe.raw({ variant }),
+        variant !== "link" ? buttonRecipe.raw({ size }) : undefined,
+        cssProp,
+      )}
       ref={ref}
     />
   ),

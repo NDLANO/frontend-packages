@@ -11,23 +11,18 @@ import { Hero, HeroProps, HeroVariant } from "@ndla/primitives";
 import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import * as contentTypes from "../model/ContentType";
 
-// TODO: Figure out what to do with frontpage articles. If anything...
-// Also, verify all of these colors.
 export const contentTypeToHeroMap: Record<ContentType, HeroVariant> = {
   [contentTypes.SUBJECT_MATERIAL]: "primary",
-  [contentTypes.TASKS_AND_ACTIVITIES]: "brand2Strong",
+  [contentTypes.TASKS_AND_ACTIVITIES]: "brand2Bold",
   [contentTypes.ASSESSMENT_RESOURCES]: "brand2",
   // This will never happen
   [contentTypes.SUBJECT]: "primary",
   [contentTypes.SOURCE_MATERIAL]: "brand1",
   // This will never happen
   [contentTypes.LEARNING_PATH]: "primary",
-  // TODO: This needs a color
   [contentTypes.TOPIC]: "neutral",
-  // TODO: This is just taken from thin air.
-  [contentTypes.MULTIDISCIPLINARY]: "brand4",
-  [contentTypes.CONCEPT]: "brand1Subtle",
-  // TODO: No clue what this'll be. Maybe unused?
+  [contentTypes.MULTIDISCIPLINARY]: "primary",
+  [contentTypes.CONCEPT]: "brand1Moderate",
   [contentTypes.EXTERNAL]: "primary",
   [contentTypes.IMAGE]: "primary",
   [contentTypes.AUDIO]: "primary",

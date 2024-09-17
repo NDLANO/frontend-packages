@@ -6,6 +6,7 @@
  *
  */
 
+import { Portal } from "@ark-ui/react";
 import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
@@ -47,11 +48,13 @@ export const GlossEmbed = ({ embed }: Props) => {
         <PopoverTrigger asChild>
           <InlineTriggerButton>{embed.embedData.linkText}</InlineTriggerButton>
         </PopoverTrigger>
-        <StyledPopoverContent>
-          <Figure>
-            <Gloss glossData={concept.glossData} title={concept.title} audio={audio} />
-          </Figure>
-        </StyledPopoverContent>
+        <Portal>
+          <StyledPopoverContent>
+            <Figure>
+              <Gloss glossData={concept.glossData} title={concept.title} audio={audio} />
+            </Figure>
+          </StyledPopoverContent>
+        </Portal>
       </PopoverRoot>
     );
   }

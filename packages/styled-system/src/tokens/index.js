@@ -764,7 +764,7 @@ const tokens = {
     "variable": "var(--font-weights-semibold)"
   },
   "fontWeights.bold": {
-    "value": 700,
+    "value": 670,
     "variable": "var(--font-weights-bold)"
   },
   "fontSizes.xxsmall": {
@@ -912,12 +912,16 @@ const tokens = {
     "variable": "var(--shadows-full)"
   },
   "shadows.inner": {
-    "value": "0px -1px 0px 0px var(--colors-primary) inset",
+    "value": "0px -1px 0px 0px rgba(45, 27, 98, 0.25) inset",
     "variable": "var(--shadows-inner)"
   },
   "shadows.innerTop": {
-    "value": "0px 1px 0px 0px var(--colors-primary) inset",
+    "value": "0px 1px 0px 0px rgba(45, 27, 98, 0.25) inset",
     "variable": "var(--shadows-inner-top)"
+  },
+  "shadows.innerRight": {
+    "value": "-1px 0px 0px 0px rgba(45, 27, 98, 0.25) inset",
+    "variable": "var(--shadows-inner-right)"
   },
   "zIndex.hide": {
     "value": -1,
@@ -1199,6 +1203,10 @@ const tokens = {
     "value": "928px",
     "variable": "var(--sizes-surface-article-max)"
   },
+  "sizes.surface.wideMax": {
+    "value": "1440px",
+    "variable": "var(--sizes-surface-wide-max)"
+  },
   "colors.background.default": {
     "value": "var(--colors-white)",
     "variable": "var(--colors-background-default)"
@@ -1232,8 +1240,12 @@ const tokens = {
     "variable": "var(--colors-text-on-action)"
   },
   "colors.text.link": {
-    "value": "var(--colors-purple-900)",
+    "value": "var(--colors-blue-800)",
     "variable": "var(--colors-text-link)"
+  },
+  "colors.text.linkVisited": {
+    "value": "var(--colors-purple-900)",
+    "variable": "var(--colors-text-link-visited)"
   },
   "colors.text.error": {
     "value": "var(--colors-pink-800)",
@@ -1394,6 +1406,18 @@ const tokens = {
   "colors.surface.action.selected": {
     "value": "var(--colors-purple-800)",
     "variable": "var(--colors-surface-action-selected)"
+  },
+  "colors.surface.action.myNdla": {
+    "value": "var(--colors-yellow-300)",
+    "variable": "var(--colors-surface-action-my-ndla)"
+  },
+  "colors.surface.action.myNdla.hover": {
+    "value": "var(--colors-yellow-500)",
+    "variable": "var(--colors-surface-action-my-ndla-hover)"
+  },
+  "colors.surface.action.myNdla.current": {
+    "value": "var(--colors-yellow-700)",
+    "variable": "var(--colors-surface-action-my-ndla-current)"
   },
   "colors.surface.actionSubtle": {
     "value": "var(--colors-purple-50)",
@@ -1907,6 +1931,10 @@ const tokens = {
     "value": "var(--colors-color-palette-link)",
     "variable": "var(--colors-color-palette-link)"
   },
+  "colors.colorPalette.linkVisited": {
+    "value": "var(--colors-color-palette-link-visited)",
+    "variable": "var(--colors-color-palette-link-visited)"
+  },
   "colors.colorPalette.error": {
     "value": "var(--colors-color-palette-error)",
     "variable": "var(--colors-color-palette-error)"
@@ -2134,6 +2162,34 @@ const tokens = {
   "colors.colorPalette.action.selected": {
     "value": "var(--colors-color-palette-action-selected)",
     "variable": "var(--colors-color-palette-action-selected)"
+  },
+  "colors.colorPalette.action.myNdla": {
+    "value": "var(--colors-color-palette-action-my-ndla)",
+    "variable": "var(--colors-color-palette-action-my-ndla)"
+  },
+  "colors.colorPalette.myNdla": {
+    "value": "var(--colors-color-palette-my-ndla)",
+    "variable": "var(--colors-color-palette-my-ndla)"
+  },
+  "colors.colorPalette.action.myNdla.hover": {
+    "value": "var(--colors-color-palette-action-my-ndla-hover)",
+    "variable": "var(--colors-color-palette-action-my-ndla-hover)"
+  },
+  "colors.colorPalette.myNdla.hover": {
+    "value": "var(--colors-color-palette-my-ndla-hover)",
+    "variable": "var(--colors-color-palette-my-ndla-hover)"
+  },
+  "colors.colorPalette.action.myNdla.current": {
+    "value": "var(--colors-color-palette-action-my-ndla-current)",
+    "variable": "var(--colors-color-palette-action-my-ndla-current)"
+  },
+  "colors.colorPalette.myNdla.current": {
+    "value": "var(--colors-color-palette-my-ndla-current)",
+    "variable": "var(--colors-color-palette-my-ndla-current)"
+  },
+  "colors.colorPalette.current": {
+    "value": "var(--colors-color-palette-current)",
+    "variable": "var(--colors-color-palette-current)"
   },
   "colors.colorPalette.actionSubtle": {
     "value": "var(--colors-color-palette-action-subtle)",

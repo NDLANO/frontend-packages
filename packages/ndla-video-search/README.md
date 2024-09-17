@@ -41,6 +41,7 @@ const translations = {
   duration: "Duration",
   interactioncount: "Views",
   is360Video: "360 video",
+  close: "Close",
 };
 
 <VideoSearch onVideoSelect={onVideoSelect} searchVideos={searchVideos} translations={translations} locale="nb" />;

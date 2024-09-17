@@ -29,10 +29,7 @@ interface RelatedArticleProps {
 const StyledSpan = styled("span", {
   base: {
     display: "flex",
-    gap: "3",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    flexDirection: "row",
+    gap: "3xsmall",
   },
 });
 

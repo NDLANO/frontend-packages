@@ -14,7 +14,8 @@ module.exports = {
   ],
   overrides: [
     {
-      exclude: /primitives|preset-panda|styled-system|ndla-icons|ndla-ui|audio-search|image-search|video-search|util/,
+      exclude:
+        /primitives|preset-panda|styled-system|ndla-icons|ndla-ui|audio-search|image-search|video-search|util|error-reporter|tracker/,
       plugins: [["@emotion", { autoLabel: "always" }]],
     },
   ],

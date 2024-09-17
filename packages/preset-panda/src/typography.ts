@@ -108,6 +108,9 @@ export const textStyles = defineTextStyles({
         fontFamily: "sans",
         fontWeight: "bold",
         ...sizes("4xlarge", "4xlarge"),
+        mobileWideDown: {
+          ...sizes("3xlarge", "3xlarge"),
+        },
       },
     },
     medium: {
@@ -115,6 +118,9 @@ export const textStyles = defineTextStyles({
         fontFamily: "sans",
         fontWeight: "bold",
         ...sizes("3xlarge", "3xlarge"),
+        mobileWideDown: {
+          ...sizes("xxlarge", "xxlarge"),
+        },
       },
     },
     small: {
@@ -122,6 +128,9 @@ export const textStyles = defineTextStyles({
         fontFamily: "sans",
         fontWeight: "bold",
         ...sizes("xxlarge", "xxlarge"),
+        mobileWideDown: {
+          ...sizes("xlarge", "xlarge"),
+        },
       },
     },
   },
@@ -131,6 +140,9 @@ export const textStyles = defineTextStyles({
         fontFamily: "sans",
         fontWeight: "bold",
         ...sizes("xlarge", "xlarge"),
+        mobileWideDown: {
+          ...sizes("large", "large"),
+        },
       },
     },
     medium: {
@@ -138,6 +150,9 @@ export const textStyles = defineTextStyles({
         fontFamily: "sans",
         fontWeight: "bold",
         ...sizes("large", "large"),
+        mobileWideDown: {
+          ...sizes("medium", "small"),
+        },
       },
     },
     small: {

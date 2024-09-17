@@ -18,6 +18,7 @@ const pageRecipe = cva({
     transitionProperty: "all",
     transitionDuration: "default",
     transitionTimingFunction: "default",
+    alignContent: "start",
     /**
      * var(--size) is the max width of the content
      * calc(100% - (var(--gutter, 0) * 2)) is the max width of the page, minus the gutters (inline padding without being actual padding).

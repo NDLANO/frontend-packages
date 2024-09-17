@@ -51,10 +51,10 @@ export const globalCss = defineGlobalStyles({
       textStyle: "heading.small",
     },
     h3: {
-      textStyle: "title.large",
+      textStyle: "title.medium",
     },
     "h4, h5, h6": {
-      textStyle: "title.medium",
+      textStyle: "title.small",
     },
     '& p[data-align="center"]': {
       textAlign: "center",
@@ -76,15 +76,15 @@ export const globalCss = defineGlobalStyles({
     '& section:not([class]), section:not([class]) > div:not([class]), [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"], [data-embed-type="uu-disclaimer"], details, blockquote':
       {
         '& > :is(h2, [data-embed-type="copy-heading"])': {
-          marginBlockStart: "xxlarge",
-          marginBlockEnd: "medium",
-        },
-        "& > h3": {
           marginBlockStart: "xlarge",
           marginBlockEnd: "small",
         },
-        "& > :is(h4, h5, h6)": {
+        "& > h3": {
           marginBlockStart: "large",
+          marginBlockEnd: "xsmall",
+        },
+        "& > :is(h4, h5, h6)": {
+          marginBlockStart: "medium",
           marginBlockEnd: "xsmall",
         },
         "& > :is(figure)": {

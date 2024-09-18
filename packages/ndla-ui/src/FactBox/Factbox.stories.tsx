@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import { Button, UnOrderedList, OrderedList } from "@ndla/primitives";
+import { Button, Heading, UnOrderedList, OrderedList } from "@ndla/primitives";
 import FactBox from "./FactBox";
 
 /**
@@ -24,7 +24,7 @@ export default {
   args: {
     children: (
       <>
-        <h2>Faktaboks</h2>
+        <Heading>Faktaboks</Heading>
         <p>Innhold kan først nås etter at boksen er åpnet.</p>
         <Button>Klikk meg</Button>
         <p>En faktaboks kan inneholde punktlister eller korte fakta som er relevant for artikkelens innhold.</p>

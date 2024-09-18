@@ -6,6 +6,7 @@
  *
  */
 
+import { useRef } from "react";
 import { Portal } from "@ark-ui/react";
 import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -25,6 +26,7 @@ const StyledPopoverContent = styled(PopoverContent, {
 });
 
 export const GlossEmbed = ({ embed }: Props) => {
+  const contentRef = useRef<HTMLDivElement>(null);
   if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;
   }
@@ -44,12 +46,12 @@ export const GlossEmbed = ({ embed }: Props) => {
 
   if (embed.embedData.type === "inline") {
     return (
-      <PopoverRoot>
+      <PopoverRoot initialFocusEl={() => contentRef.current}>
         <PopoverTrigger asChild>
           <InlineTriggerButton>{embed.embedData.linkText}</InlineTriggerButton>
         </PopoverTrigger>
         <Portal>
-          <StyledPopoverContent>
+          <StyledPopoverContent ref={contentRef}>
             <Figure>
               <Gloss glossData={concept.glossData} title={concept.title} audio={audio} />
             </Figure>

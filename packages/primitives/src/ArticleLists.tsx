@@ -12,13 +12,22 @@ import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
+const LIST_ITEM = "& > li";
+const LETTER_LIST = "& > ol[data-variant='letters']";
+const NUMBER_LIST = "& > ol:not([data-variant='letters'])";
+const LETTER_LIST_ITEM = `${LETTER_LIST} > li`;
+const NUMBER_LIST_ITEM = `${NUMBER_LIST} > li`;
+
 const orderedListRecipe = cva({
   base: {
-    "& li": {
+    [LIST_ITEM]: {
       marginBlock: "small",
-      "& > p": {
-        display: "inline",
+      _before: {
+        position: "absolute",
+        transform: "translateX(-100%)",
+        paddingInlineEnd: "3xsmall",
       },
+      marginInlineStart: "medium",
     },
   },
   defaultVariants: {
@@ -31,49 +40,43 @@ const orderedListRecipe = cva({
         "&[data-count='true']": {
           counterReset: "level1 var(--start, 0)",
         },
-        "& > li": {
+        [LIST_ITEM]: {
           counterIncrement: "level1",
           _before: {
             content: "counter(level1, decimal) '. '",
           },
-          "& > ol[data-variant='letters'] > li": {
-            paddingInlineStart: "medium",
+          [LETTER_LIST_ITEM]: {
+            marginInlineStart: "medium",
           },
-          "& > ol:not([data-variant='letters'])": {
+          [NUMBER_LIST]: {
             counterReset: "level2",
             "&[data-count='true']": {
               counterReset: "level2 var(--start, 0)",
             },
-            "& > li": {
-              paddingInlineStart: "medium",
+            [LIST_ITEM]: {
+              marginInlineStart: "large",
               counterIncrement: "level2",
               _before: {
                 content: "counter(level1, decimal) '.' counter(level2, decimal) '. '",
               },
-              "& > ol[data-variant='letters'] > li": {
-                paddingInlineStart: "large",
-              },
-              "& > ol:not([data-variant='letters'])": {
+              [NUMBER_LIST]: {
                 counterReset: "level3",
                 "&[data-count='true']": {
                   counterReset: "level3 var(--start, 0)",
                 },
-                "& > li": {
-                  paddingInlineStart: "large",
+                [LIST_ITEM]: {
+                  marginInlineStart: "xlarge",
                   counterIncrement: "level3",
                   _before: {
                     content: "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '. '",
                   },
-                  "& > ol:not([data-variant='letters'])": {
+                  [NUMBER_LIST]: {
                     counterReset: "level4",
                     "&[data-count='true']": {
                       counterReset: "level4 var(--start, 0)",
                     },
-                    "& > li": {
-                      "& > ol[data-variant='letters'] > li": {
-                        paddingInlineStart: "xxlarge",
-                      },
-                      paddingInlineStart: "xxlarge",
+                    [LIST_ITEM]: {
+                      marginInlineStart: "xxlarge",
                       counterIncrement: "level4",
                       _before: {
                         content:
@@ -92,31 +95,27 @@ const orderedListRecipe = cva({
         "&[data-count='true']": {
           counterReset: "level1 var(--start, 0)",
         },
-        "& > li": {
+        [LIST_ITEM]: {
           counterIncrement: "level1",
           _before: {
             content: "counter(level1, upper-alpha) '. '",
           },
-          "& > ol > li": {
-            paddingInlineStart: "medium",
+          [NUMBER_LIST_ITEM]: {
+            marginInlineStart: "small",
           },
-          "& > ol[data-variant='letters'] > li": {
+          [LETTER_LIST_ITEM]: {
+            marginInlineStart: "medium",
             _before: {
               content: "counter(level1, lower-alpha) '. '",
             },
-            "& > ol[data-variant='letters'] > li": {
-              paddingInlineStart: "small",
+            [LETTER_LIST_ITEM]: {
+              marginInlineStart: "small",
               _before: {
-                display: "inline-block",
-                width: "xsmall",
-                right: "small",
-                textAlign: "right",
                 content: "counter(level1, lower-roman) '. '",
-                marginRight: "4xsmall",
               },
-            },
-            "& > ol:not([data-variant='letters']) > li": {
-              paddingInlineStart: "small",
+              [NUMBER_LIST_ITEM]: {
+                marginInlineStart: "medium",
+              },
             },
           },
         },

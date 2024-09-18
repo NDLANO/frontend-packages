@@ -56,6 +56,7 @@ export const listItemRecipe = sva({
   defaultVariants: {
     variant: "standalone",
     borderVariant: "solid",
+    image: "small",
     nonInteractive: false,
   },
   variants: {
@@ -156,6 +157,26 @@ export const listItemRecipe = sva({
           _last: {
             borderBlockEndColor: "stroke.subtle",
           },
+        },
+      },
+    },
+    image: {
+      small: {
+        image: {
+          minHeight: "40px",
+          maxHeight: "40px",
+          minWidth: "56px",
+          maxWidth: "56px",
+          objectFit: "cover",
+        },
+      },
+      medium: {
+        image: {
+          minHeight: "72px",
+          maxHeight: "72px",
+          minWidth: "100px",
+          maxWidth: "100px",
+          objectFit: "cover",
         },
       },
     },

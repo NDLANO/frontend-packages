@@ -10,9 +10,8 @@
   "scripts": {
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "concurrently 'yarn build:types' 'yarn build:css' 'yarn build:panda'",
-    "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'",
-    "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib"
+    "prepublish": "concurrently 'yarn build:types' 'yarn build:panda'",
+    "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
   },
   "repository": {
     "type": "git",
@@ -54,12 +53,7 @@
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^0.2.86",
     "@ndla/types-embed": "^5.0.2-alpha.0",
-    "@pandacss/dev": "^0.46.0",
-    "css-loader": "^6.7.3",
-    "mini-css-extract-plugin": "^2.7.5",
-    "sass-loader": "^13.2.2",
-    "webpack": "^5.79.0",
-    "webpack-cli": "^5.0.1"
+    "@pandacss/dev": "^0.46.0"
   },
   "publishConfig": {
     "access": "public"

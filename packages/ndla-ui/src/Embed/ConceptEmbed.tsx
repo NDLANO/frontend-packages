@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { forwardRef, useMemo } from "react";
+import { forwardRef, useMemo, useRef } from "react";
 import { Portal } from "@ark-ui/react";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -92,28 +92,31 @@ export interface InlineConceptProps extends ConceptProps, BaseProps {
 }
 
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
-  ({ linkText, copyright, visualElement, previewAlt, lang, children, title, source, ...rest }, ref) => (
-    <PopoverRoot>
-      {/* @ts-expect-error placing ref and rest on popover trigger somehow removes a bug where the popover target becomes a bit bigger */}
-      <PopoverTrigger asChild ref={ref} {...rest}>
-        <InlineTriggerButton>{linkText}</InlineTriggerButton>
-      </PopoverTrigger>
-      <Portal>
-        <StyledPopoverContent>
-          <Concept
-            copyright={copyright}
-            visualElement={visualElement}
-            lang={lang}
-            title={title}
-            source={source}
-            previewAlt={previewAlt}
-          >
-            {children}
-          </Concept>
-        </StyledPopoverContent>
-      </Portal>
-    </PopoverRoot>
-  ),
+  ({ linkText, copyright, visualElement, previewAlt, lang, children, title, source, ...rest }, ref) => {
+    const contentRef = useRef<HTMLDivElement>(null);
+    return (
+      <PopoverRoot initialFocusEl={() => contentRef.current}>
+        {/* @ts-expect-error placing ref and rest on popover trigger somehow removes a bug where the popover target becomes a bit bigger */}
+        <PopoverTrigger asChild ref={ref} {...rest}>
+          <InlineTriggerButton>{linkText}</InlineTriggerButton>
+        </PopoverTrigger>
+        <Portal>
+          <StyledPopoverContent ref={contentRef}>
+            <Concept
+              copyright={copyright}
+              visualElement={visualElement}
+              title={title}
+              lang={lang}
+              source={source}
+              previewAlt={previewAlt}
+            >
+              {children}
+            </Concept>
+          </StyledPopoverContent>
+        </Portal>
+      </PopoverRoot>
+    );
+  },
 );
 
 export interface BlockConceptProps extends ConceptProps {}

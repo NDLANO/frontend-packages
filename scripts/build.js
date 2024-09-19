@@ -126,7 +126,11 @@ function buildNodePackage(p) {
     p.endsWith("ui") ||
     p.endsWith("audio-search") ||
     p.endsWith("image-search") ||
-    p.endsWith("video-search");
+    p.endsWith("video-search") ||
+    p.endsWith("util") ||
+    p.endsWith("error-reporter") ||
+    p.endsWith("tracker") ||
+    p.endsWith("article-converter");
 
   const presets = skipEmotion
     ? ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]]

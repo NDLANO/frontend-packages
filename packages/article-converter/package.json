@@ -1,6 +1,6 @@
 {
   "name": "@ndla/article-converter",
-  "version": "10.0.28-alpha.0",
+  "version": "10.0.35-alpha.0",
   "description": "Transforms NDLA articles into extended html versions",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,16 +28,14 @@
   ],
   "devDependencies": {
     "@ndla/types-backend": "^0.2.86",
-    "@ndla/types-embed": "^5.0.1-alpha.0"
+    "@ndla/types-embed": "^5.0.3-alpha.0"
   },
   "dependencies": {
     "@ndla/primitives": "workspace:^",
-    "@ndla/ui": "^56.0.28-alpha.0",
+    "@ndla/ui": "^56.0.33-alpha.0",
     "html-react-parser": "^5.1.8"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
     "i18next": ">= 23.11.5",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",

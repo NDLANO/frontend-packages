@@ -1,6 +1,6 @@
 # ndla-error-reporter
 
-Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly.
+Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly
 
 N.B. Number of messages is limited to 10 per session (reset by browser refresh).
 

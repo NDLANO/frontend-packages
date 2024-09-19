@@ -65,13 +65,13 @@ const StyledContent = styled("div", {
       inset: "0",
       transitionProperty: "opacity",
       transitionDuration: "slow",
-      transitionTimingFunction: "ease-out",
-      // TODO: Consider improving this gradient. It's a little light up top.
-      gradientFrom: "surface.default/00",
-      gradientTo: "surface.default",
+      transitionTimingFunction: "ease-in-out",
+      gradientFrom: "surface.default/20",
+      gradientTo: "surface.default/95",
       backgroundGradient: "to-b",
       opacity: "1",
       zIndex: "base",
+      pointerEvents: "none",
     },
     _print: {
       overflow: "visible",
@@ -83,7 +83,6 @@ const StyledContent = styled("div", {
       paddingBlockEnd: "xsmall",
       _after: {
         opacity: "0",
-        zIndex: "hide",
       },
     },
   },

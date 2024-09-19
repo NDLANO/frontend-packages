@@ -70,6 +70,10 @@ export const globalCss = defineGlobalStyles({
       {
         marginBlockStart: "xxlarge",
         marginBlockEnd: "xxlarge",
+        tabletDown: {
+          marginBlockStart: "xlarge",
+          marginBlockEnd: "xlarge",
+        },
       },
 
     // Article content is usually wrapped in a section. The rest of the elements in this list contains other elements, and should add margin to them no matter where they are placed in the DOM.
@@ -78,18 +82,30 @@ export const globalCss = defineGlobalStyles({
         '& > :is(h2, [data-embed-type="copy-heading"])': {
           marginBlockStart: "xlarge",
           marginBlockEnd: "small",
+          tabletDown: {
+            marginBlockStart: "large",
+          },
         },
         "& > h3": {
           marginBlockStart: "large",
           marginBlockEnd: "xsmall",
+          tabletDown: {
+            marginBlockStart: "medium",
+          },
         },
         "& > :is(h4, h5, h6)": {
           marginBlockStart: "medium",
           marginBlockEnd: "xsmall",
+          tabletDown: {
+            marginBlockStart: "small",
+          },
         },
         "& > :is(figure)": {
           marginBlockStart: "xxlarge",
           marginBlockEnd: "xxlarge",
+          tabletDown: {
+            marginBlockStart: "xlarge",
+          },
         },
         '& > :is(p, ul, ol, dl, [data-embed-type="speech"])': {
           marginBlockStart: "xsmall",
@@ -97,6 +113,9 @@ export const globalCss = defineGlobalStyles({
         },
         "& > :is(:first-child)": {
           marginBlockStart: "xxlarge",
+          tabletDown: {
+            marginBlockStart: "xlarge",
+          },
         },
       },
     '& [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"], [data-embed-type="uu-disclaimer"], details, blockquote':
@@ -111,9 +130,15 @@ export const globalCss = defineGlobalStyles({
     "& section:not([class]), section:not([class]) > div:not([class])": {
       "& > :first-child": {
         marginBlockStart: "xxlarge",
+        tabletDown: {
+          marginBlockStart: "xlarge",
+        },
       },
       "& > :last-child": {
         marginBlockEnd: "xxlarge",
+        tabletDown: {
+          marginBlockStart: "xlarge",
+        },
       },
     },
   },

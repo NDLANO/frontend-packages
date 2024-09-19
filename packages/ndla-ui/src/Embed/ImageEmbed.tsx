@@ -140,6 +140,7 @@ const ImageWrapper = styled("div", {
 
 const StyledFigure = styled(Figure, {
   base: {
+    zIndex: "docked",
     _hover: {
       "& [data-byline-button]": {
         background: "background.default",

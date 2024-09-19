@@ -17,7 +17,11 @@ export interface SafeLinkIconButtonProps extends SafeLinkProps, IconButtonVarian
 }
 
 export const SafeLinkIconButton = forwardRef<HTMLAnchorElement, SafeLinkIconButtonProps>(
-  ({ variant, css: cssProp, ...props }, ref) => (
-    <SafeLink {...props} css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw(), cssProp)} ref={ref} />
+  ({ variant, size, css: cssProp, ...props }, ref) => (
+    <SafeLink
+      {...props}
+      css={css.raw(buttonBaseRecipe.raw({ variant }), iconButtonRecipe.raw({ size }), cssProp)}
+      ref={ref}
+    />
   ),
 );

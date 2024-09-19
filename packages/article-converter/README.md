@@ -1,6 +1,6 @@
 # Article-converter
 
-Converts NDLA articles created in [ed.ndla.no](https://ed.ndla.no) into a React tree.
+Converts NDLA articles created in [ed.ndla.no](https://ed.ndla.no) into a React tree
 
 ## Installation
 

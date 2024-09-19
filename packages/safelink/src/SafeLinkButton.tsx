@@ -20,7 +20,11 @@ export const SafeLinkButton = forwardRef<HTMLAnchorElement, SafeLinkButtonProps>
   ({ variant, size, css: cssProp, ...props }, ref) => (
     <SafeLink
       {...props}
-      css={css.raw(buttonBaseRecipe.raw({ variant }), buttonRecipe.raw({ size }), cssProp)}
+      css={css.raw(
+        buttonBaseRecipe.raw({ variant }),
+        variant !== "link" ? buttonRecipe.raw({ size }) : undefined,
+        cssProp,
+      )}
       ref={ref}
     />
   ),

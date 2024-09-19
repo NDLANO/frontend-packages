@@ -210,7 +210,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
       {!!textVersion && (
         <TextVersionWrapper id={textDescriptionId} hidden={!showTextVersion}>
           <Heading asChild textStyle="title.medium" consumeCss>
-            <h3>{t("audio.textVersion.heading")}</h3>
+            <h4>{t("audio.textVersion.heading")}</h4>
           </Heading>
           <TextVersionText>{textVersion}</TextVersionText>
         </TextVersionWrapper>

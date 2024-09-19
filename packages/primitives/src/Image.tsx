@@ -6,7 +6,8 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from "react";
+import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
+import { ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, StyledVariantProps } from "@ndla/styled-system/types";
 
@@ -75,6 +76,18 @@ const StyledImage = styled("img", {
   },
 });
 
+const StyledFallbackElement = styled(
+  ark.div,
+  {
+    base: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  },
+  { baseComponent: true },
+);
+
 type ImageVariantProps = StyledVariantProps<typeof StyledImage>;
 
 export interface ImgProps extends JsxStyleProps, ComponentPropsWithRef<"img">, ImageVariantProps {
@@ -102,6 +115,7 @@ export interface ImageProps extends JsxStyleProps, ComponentPropsWithRef<"img">,
   fallbackWidth?: number;
   contentType?: string;
   crop?: ImageCrop;
+  fallbackElement?: ReactNode;
   focalPoint?: ImageFocalPoint;
 }
 
@@ -117,6 +131,7 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
       fallbackWidth = FALLBACK_WIDTH,
       sizes = FALLBACK_SIZES,
       alt,
+      fallbackElement,
       ...props
     },
     ref,
@@ -124,6 +139,13 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
     const srcSet = srcSetProp ?? getSrcSet(src, crop, focalPoint);
     const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
     const fallbackSrc = src ? `${src}?${queryString}` : src;
+    if ((!src || !src.length) && fallbackElement) {
+      return (
+        <StyledFallbackElement {...props} ref={ref}>
+          {fallbackElement}
+        </StyledFallbackElement>
+      );
+    }
     return (
       <picture>
         {contentType !== "image/gif" && <source type={contentType} srcSet={srcSet} sizes={sizes} />}

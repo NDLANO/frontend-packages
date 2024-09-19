@@ -20,7 +20,6 @@ export const listItemRecipe = sva({
     root: {
       minHeight: "3xlarge",
       borderBlockWidth: "1px",
-      borderInlineColor: "transparent",
       color: "text.default",
       position: "relative",
       display: "flex",
@@ -77,12 +76,12 @@ export const listItemRecipe = sva({
         root: {
           '&[aria-current="true"], &[aria-current="page"]': {
             background: "var(--background-current)",
-            borderBlockStartColor: "transparent",
-            borderBlockEndColor: "transparent",
+            borderInlineWidth: "6px",
             color: "var(--color-current-hover)",
             _hover: {
               background: "var(--background-hover)",
               color: "text.default",
+              borderInlineColor: "transparent",
             },
             _highlighted: {
               background: "var(--background-hover)",
@@ -111,18 +110,18 @@ export const listItemRecipe = sva({
     colorTheme: {
       brand1: {
         root: {
-          "--background-hover": "colors.surface.brand.1.subtle",
-          "--background-current": "colors.surface.actionSubtle.selected",
+          "--background-hover": "colors.surface.brand.1.moderate",
+          "--background-current": "colors.surface.actionSubtle.hover.strong",
           "--border-hover": "colors.stroke.hover",
-          "--color-current-hover": "colors.text.onAction",
+          "--color-current-hover": "colors.text.default",
         },
       },
       brand2: {
         root: {
           "--background-hover": "colors.surface.brand.2.moderate",
-          "--background-current": "colors.surface.brand.2.bold",
+          "--background-current": "var(--colors-blue-200)",
           "--border-hover": "colors.surface.brand.2.strong",
-          "--color-current-hover": "colors.text.onAction",
+          "--color-current-hover": "colors.text.default",
         },
       },
       brand3: {
@@ -150,6 +149,7 @@ export const listItemRecipe = sva({
         root: {
           borderBlockStartColor: "stroke.subtle",
           borderBlockEndColor: "transparent",
+          borderInlineColor: "transparent",
           marginBlockStart: "-1px",
           _first: {
             borderBlockStartColor: "transparent",

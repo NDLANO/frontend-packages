@@ -6,9 +6,5 @@
  *
  */
 
-import LayoutItem from "./LayoutItem";
-
 export { default as OneColumn } from "./OneColumn";
 export { default as PageContainer } from "./PageContainer";
-
-export default LayoutItem;

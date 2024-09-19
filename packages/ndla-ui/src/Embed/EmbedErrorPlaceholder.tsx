@@ -7,7 +7,7 @@
  */
 
 import { ReactNode } from "react";
-import { AlertLine } from "@ndla/icons/common";
+import { Report } from "@ndla/icons/common";
 import { Figure, type FigureFloat, type FigureSize } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { EmbedByline } from "../LicenseByline";
@@ -25,16 +25,15 @@ const ErrorPlaceholder = styled("div", {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "surface.disabled",
+    background: "background.subtle",
     height: "surface.xsmall",
+    border: "1px solid",
+    borderColor: "stroke.default",
     borderRadius: "xsmall",
     "& svg": {
-      fill: "text.subtle",
-      height: "90%",
-      width: "90%",
-    },
-    "&[data-embed-type='audio']": {
-      height: "surface.3xsmall",
+      height: "5xlarge",
+      width: "5xlarge",
+      fill: "stroke.default",
     },
   },
 });
@@ -52,7 +51,7 @@ const EmbedErrorPlaceholder = ({ type, children, figureType, float }: Props) => 
     <StyledFigure size={figureType} float={float} data-embed-type={type}>
       {children ?? (
         <ErrorPlaceholder data-embed-type={type}>
-          <AlertLine />
+          <Report />
         </ErrorPlaceholder>
       )}
       <EmbedByline error type={type} />

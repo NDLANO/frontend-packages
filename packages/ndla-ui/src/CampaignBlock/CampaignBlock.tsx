@@ -12,6 +12,7 @@ import { ArrowRightLine } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
+import { CampaignBlockEmbedData } from "@ndla/types-embed";
 import { HeadingLevel } from "../types";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
@@ -29,10 +30,10 @@ interface Props {
     text?: string;
   };
   image?: Image;
-  imageSide?: "left" | "right";
+  imageSide?: CampaignBlockEmbedData["imageSide"];
   className?: string;
   path?: string;
-  blockColor?: "neutral" | "brand1" | "brand2";
+  background?: CampaignBlockEmbedData["background"];
 }
 
 const Wrapper = styled("div", {
@@ -81,19 +82,19 @@ const Container = styled("div", {
         },
       },
     },
-    blockColor: {
+    background: {
       neutral: {},
       brand1: {
         backgroundColor: "surface.brand.1",
       },
-      brand2: {
+      brand3: {
         backgroundColor: "surface.brand.3",
       },
     },
   },
   defaultVariants: {
     imageSide: "left",
-    blockColor: "neutral",
+    background: "neutral",
   },
 });
 
@@ -186,13 +187,13 @@ const CampaignBlock = ({
   url,
   path,
   className,
-  blockColor,
+  background,
 }: Props) => {
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
 
   return (
     <Wrapper>
-      <Container className={className} data-embed-type="campaign-block" imageSide={imageSide} blockColor={blockColor}>
+      <Container className={className} data-embed-type="campaign-block" imageSide={imageSide} background={background}>
         {imageSide === "left" && imageComponent}
         <ContentWrapper>
           <Text asChild consumeCss textStyle="heading.small">

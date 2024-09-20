@@ -9,6 +9,7 @@
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { OrderedList } from "./ArticleLists";
 import { BlockQuote } from "./BlockQuote";
+import { OneColumn, ArticleWrapper, ArticleContent } from "../../ndla-ui/src";
 
 /**
  * Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet annerledes.
@@ -20,6 +21,17 @@ export default {
   parameters: {
     inlineStories: true,
   },
+  decorators: [
+    (Story) => (
+      <OneColumn>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
+        </ArticleWrapper>
+      </OneColumn>
+    ),
+  ],
   render: ({ ...args }) => (
     <OrderedList {...args}>
       <li>Listepunkt 1</li>

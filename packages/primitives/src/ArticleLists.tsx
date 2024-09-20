@@ -28,7 +28,7 @@ const orderedListRecipe = cva({
         paddingInlineEnd: "3xsmall",
         fontVariantNumeric: "tabular-nums",
       },
-      marginInlineStart: "small",
+      marginInlineStart: "medium",
     },
   },
   defaultVariants: {

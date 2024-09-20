@@ -198,6 +198,7 @@ export { default as UserLine } from "./UserLine";
 export { default as VoicePrintLine } from "./VoicePrintLine";
 export { default as VolumeUp } from "./VolumeUp";
 export { default as VolumeUpFill } from "./VolumeUpFill";
+export { default as VolumeUpLine } from "./VolumeUpLine";
 export { default as WarningOutline } from "./WarningOutline";
 export { default as Wrench } from "./Wrench";
 export { default as Youtube } from "./Youtube";

@@ -10,8 +10,9 @@ import parse from "html-react-parser";
 import { ReactNode } from "react";
 import { ArrowRightLine } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";
-import { SafeLink } from "@ndla/safelink";
+import { SafeLinkButton } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
+import { CampaignBlockEmbedData } from "@ndla/types-embed";
 import { HeadingLevel } from "../types";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
@@ -29,9 +30,10 @@ interface Props {
     text?: string;
   };
   image?: Image;
-  imageSide?: "left" | "right";
+  imageSide?: CampaignBlockEmbedData["imageSide"];
   className?: string;
   path?: string;
+  background?: CampaignBlockEmbedData["background"];
 }
 
 const Wrapper = styled("div", {
@@ -46,7 +48,6 @@ const Container = styled("div", {
   base: {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gap: "medium",
     border: "1px solid",
     borderColor: "stroke.default",
     backgroundColor: "background.default",
@@ -77,32 +78,19 @@ const Container = styled("div", {
         },
       },
     },
+    background: {
+      neutral: {},
+      brand1: {
+        backgroundColor: "surface.brand.1",
+      },
+      brand3: {
+        backgroundColor: "surface.brand.3",
+      },
+    },
   },
   defaultVariants: {
     imageSide: "left",
-  },
-});
-
-const LinkText = styled(Text, {
-  base: {
-    display: "flex",
-    gap: "xxsmall",
-    textDecoration: "underline",
-    _hover: {
-      textDecoration: "none",
-    },
-    paddingBlock: "xsmall",
-    fontWeight: "bold",
-  },
-});
-
-const LinkHeader = styled(Text, {
-  base: {
-    display: "flex",
-    textDecoration: "underline",
-    _hover: {
-      textDecoration: "none",
-    },
+    background: "neutral",
   },
 });
 
@@ -122,6 +110,7 @@ const StyledImg = styled("img", {
         height: "340px",
       },
     },
+    backgroundColor: "background.default",
   },
 });
 
@@ -135,6 +124,7 @@ const ContentWrapper = styled("div", {
     justifyContent: "center",
     paddingBlock: "medium",
     paddingInline: "medium",
+    position: "relative",
   },
 });
 
@@ -150,20 +140,32 @@ const StyledText = styled(Text, {
   },
 });
 
-interface MaybeLinkTextProps {
+interface LinkButtonProps {
   url?: string;
   path?: string;
   children: ReactNode;
 }
 
-const StyledSafeLink = styled(SafeLink, {
+const StyledSafeLinkButton = styled(SafeLinkButton, {
   base: {
-    color: "inherit",
+    boxShadow: "full",
+    border: "1px solid",
+    borderColor: "stroke.default",
   },
 });
 
-const MaybeLinkText = ({ url, children, path }: MaybeLinkTextProps) => {
-  if (url) return <StyledSafeLink to={getPossiblyRelativeUrl(url, path)}>{children}</StyledSafeLink>;
+const LinkButton = ({ url, children, path }: LinkButtonProps) => {
+  if (url)
+    return (
+      <StyledSafeLinkButton
+        to={getPossiblyRelativeUrl(url, path)}
+        target="_blank"
+        variant="secondary"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </StyledSafeLinkButton>
+    );
   return children;
 };
 
@@ -176,27 +178,24 @@ const CampaignBlock = ({
   url,
   path,
   className,
+  background,
 }: Props) => {
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
-  const HeaderComponent = url?.url ? LinkHeader : Text;
+
   return (
     <Wrapper>
-      <Container className={className} data-embed-type="campaign-block" imageSide={imageSide}>
+      <Container className={className} data-embed-type="campaign-block" imageSide={imageSide} background={background}>
         {imageSide === "left" && imageComponent}
         <ContentWrapper>
-          <MaybeLinkText url={url?.url} path={path}>
-            <HeaderComponent asChild consumeCss textStyle="heading.small">
-              <InternalHeading>{parse(title)}</InternalHeading>
-            </HeaderComponent>
-          </MaybeLinkText>
+          <Text asChild consumeCss textStyle="heading.small">
+            <InternalHeading>{parse(title)}</InternalHeading>
+          </Text>
           <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
           {!!url?.url && (
-            <MaybeLinkText url={url.url} path={path}>
-              <LinkText textStyle="body.medium">
-                {parse(url.text ?? "")}
-                <ArrowRightLine />
-              </LinkText>
-            </MaybeLinkText>
+            <LinkButton url={url.url} path={path}>
+              {parse(url.text ?? "")}
+              <ArrowRightLine />
+            </LinkButton>
           )}
         </ContentWrapper>
         {imageSide !== "left" && imageComponent}

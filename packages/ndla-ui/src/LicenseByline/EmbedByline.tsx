@@ -29,7 +29,7 @@ interface BaseProps {
 }
 
 export interface EmbedBylineErrorProps extends BaseProps {
-  type: EmbedBylineTypeProps["type"] | "h5p" | "external";
+  type: EmbedBylineTypeProps["type"] | "h5p" | "external" | "code";
   error: true;
 }
 

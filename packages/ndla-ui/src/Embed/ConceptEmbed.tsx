@@ -46,6 +46,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) 
     return <span>{embed.embedData.linkText}</span>;
   }
   if (embed.status === "error") {
+    // TODO: This could be either concept or gloss. We don't know if it errors out. :)
     return <EmbedErrorPlaceholder type="gloss" />;
   }
 

@@ -1429,6 +1429,7 @@ const messages = {
       external: "Olgguldas resursa",
       gloss: "Glose",
       copyright: "Tekst",
+      code: "Kodeblokk",
     },
   },
   gloss: {

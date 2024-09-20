@@ -7,9 +7,10 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { ArticleContent, ArticleWrapper } from "@ndla/ui";
 import { OrderedList } from "./ArticleLists";
 import { BlockQuote } from "./BlockQuote";
-import { OneColumn, ArticleWrapper, ArticleContent } from "../../ndla-ui/src";
+import { PageContent } from "./Layout/PageContent";
 
 /**
  * Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet annerledes.
@@ -23,13 +24,13 @@ export default {
   },
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
   render: ({ ...args }) => (

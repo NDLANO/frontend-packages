@@ -112,13 +112,14 @@ const tabsRecipe = sva({
           },
         },
         indicator: {
-          background: "transparent",
-          outline: "3px solid",
-          outlineColor: "stroke.default",
-          outlineOffset: "-3px",
+          background: "stroke.default",
           _peerFocusVisible: {
             height: "var(--height)",
             width: "var(--width)",
+            outline: "3px solid",
+            outlineOffset: "-3px",
+            outlineColor: "stroke.default",
+            background: "transparent",
             _horizontal: {
               borderTopRadius: "xsmall",
             },
@@ -128,9 +129,9 @@ const tabsRecipe = sva({
           },
           _horizontal: {
             top: "calc(var(--top) + var(--height) - 6px)",
-            _peerFocusVisible: { top: "var(--top)" },
             height: "3",
             width: "var(--width)",
+            _peerFocusVisible: { top: "var(--top)" },
           },
           _vertical: {
             height: "var(--height)",

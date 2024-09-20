@@ -49,8 +49,8 @@ const Container = styled("div", {
     display: "grid",
     gridTemplateColumns: "1fr",
     gap: "medium",
-    border: "1px solid",
-    borderColor: "stroke.default",
+    outline: "1px solid",
+    outlineColor: "stroke.default",
     backgroundColor: "background.default",
     borderRadius: "xsmall",
     boxShadow: "full",
@@ -126,9 +126,18 @@ const ContentWrapper = styled("div", {
     gap: "medium",
     alignItems: "flex-start",
     justifyContent: "center",
-    paddingBlock: "medium",
+    paddingBlockStart: "medium",
+    paddingBlockEnd: "xxlarge",
     paddingInline: "medium",
     position: "relative",
+    "@/tablet": {
+      paddingBlock: "medium",
+    },
+    "@supports not (container-type: inline-size)": {
+      tabletWide: {
+        paddingBlock: "medium",
+      },
+    },
   },
 });
 

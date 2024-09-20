@@ -25,10 +25,10 @@ const orderedListRecipe = cva({
       _before: {
         position: "absolute",
         transform: "translateX(-100%)",
-        paddingInlineEnd: "3xsmall",
+        paddingInlineEnd: "0.25em",
         fontVariantNumeric: "tabular-nums",
       },
-      marginInlineStart: "medium",
+      marginInlineStart: "1.5em",
     },
   },
   defaultVariants: {
@@ -47,7 +47,7 @@ const orderedListRecipe = cva({
             content: "counter(level1, decimal) '. '",
           },
           [LETTER_LIST_ITEM]: {
-            marginInlineStart: "medium",
+            marginInlineStart: "1em",
           },
           [NUMBER_LIST]: {
             counterReset: "level2",
@@ -55,7 +55,7 @@ const orderedListRecipe = cva({
               counterReset: "level2 var(--start, 0)",
             },
             [LIST_ITEM]: {
-              marginInlineStart: "xlarge",
+              marginInlineStart: "2em",
               counterIncrement: "level2",
               _before: {
                 content: "counter(level1, decimal) '.' counter(level2, decimal) '. '",
@@ -66,7 +66,7 @@ const orderedListRecipe = cva({
                   counterReset: "level3 var(--start, 0)",
                 },
                 [LIST_ITEM]: {
-                  marginInlineStart: "xxlarge",
+                  marginInlineStart: "3em",
                   counterIncrement: "level3",
                   _before: {
                     content: "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '. '",
@@ -77,7 +77,7 @@ const orderedListRecipe = cva({
                       counterReset: "level4 var(--start, 0)",
                     },
                     [LIST_ITEM]: {
-                      marginInlineStart: "3xlarge",
+                      marginInlineStart: "4em",
                       counterIncrement: "level4",
                       _before: {
                         content:
@@ -102,20 +102,20 @@ const orderedListRecipe = cva({
             content: "counter(level1, upper-alpha) '. '",
           },
           [NUMBER_LIST_ITEM]: {
-            marginInlineStart: "medium",
+            marginInlineStart: "1em",
           },
           [LETTER_LIST_ITEM]: {
-            marginInlineStart: "small",
+            marginInlineStart: "1em",
             _before: {
               content: "counter(level1, lower-alpha) '. '",
             },
             [LETTER_LIST_ITEM]: {
-              marginInlineStart: "small",
+              marginInlineStart: "1em",
               _before: {
                 content: "counter(level1, lower-roman) '. '",
               },
               [NUMBER_LIST_ITEM]: {
-                marginInlineStart: "medium",
+                marginInlineStart: "1.5em",
               },
             },
           },

@@ -42,7 +42,7 @@ const tagsInputRecipe = sva({
       borderRadius: "large",
       outline: "1px solid",
       outlineColor: "transparent",
-      backgroundColor: "surface.actionSubtle.selected",
+      backgroundColor: "surface.action.selected",
       color: "text.onAction",
       transitionDuration: "normal",
       transitionProperty: "background, outline-color, color",

@@ -77,6 +77,8 @@ const Container = styled("div", {
         },
       },
     },
+    // Include box-shadow in element size
+    width: "calc(100% - 4px)",
   },
   defaultVariants: {
     imageSide: "left",

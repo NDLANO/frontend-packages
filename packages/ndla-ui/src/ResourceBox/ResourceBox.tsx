@@ -30,6 +30,8 @@ const Container = styled("div", {
       gap: "0",
       padding: "0",
     },
+    // Include box-shadow in element size
+    width: "calc(100% - 4px)",
   },
 });
 

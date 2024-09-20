@@ -43,6 +43,8 @@ const StyledWrapper = styled("div", {
       alignItems: "unset",
       flexDirection: "row",
     },
+    // Include box-shadow in element size
+    width: "calc(100% - 4px)",
   },
 });
 

@@ -9,6 +9,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { UnOrderedList } from "./ArticleLists";
 import { BlockQuote } from "./BlockQuote";
+import { OneColumn, ArticleWrapper, ArticleContent } from "../../ndla-ui/src";
 
 export default {
   title: "Primitives/Article Unordered List",
@@ -16,6 +17,17 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
+  decorators: [
+    (Story) => (
+      <OneColumn>
+        <ArticleWrapper>
+          <ArticleContent>
+            <Story />
+          </ArticleContent>
+        </ArticleWrapper>
+      </OneColumn>
+    ),
+  ],
   component: UnOrderedList,
 } as Meta<typeof UnOrderedList>;
 

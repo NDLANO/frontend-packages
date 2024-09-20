@@ -144,7 +144,7 @@ export type UnOrderedListProps = HTMLArkProps<"ul"> & JsxStyleProps;
 export const UnOrderedList = styled("ul", {
   base: {
     listStyle: "revert",
-    paddingInlineStart: "1em",
+    paddingInlineStart: "1.5ch",
     "& li": {
       marginBlock: "small",
       _marker: {

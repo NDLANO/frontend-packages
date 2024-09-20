@@ -8,14 +8,13 @@
 
 import { ReactNode } from "react";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Text } from "@ndla/primitives";
+import { PageContent, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
 import { Grid } from "../Grid";
-import { OneColumn } from "../Layout";
 
 const embedData: ImageEmbedData = {
   resource: "image",
@@ -96,13 +95,13 @@ const meta: Meta<typeof ImageEmbed> = {
   },
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 };

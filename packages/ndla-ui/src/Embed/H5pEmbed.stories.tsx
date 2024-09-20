@@ -7,10 +7,10 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
+import { PageContent } from "@ndla/primitives";
 import { H5pEmbedData, H5pData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
-import { OneColumn } from "../Layout";
 
 const embedData: H5pEmbedData = {
   resource: "h5p",
@@ -52,13 +52,13 @@ const meta: Meta<typeof H5pEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 };

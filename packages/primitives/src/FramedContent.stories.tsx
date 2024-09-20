@@ -7,8 +7,9 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import { ArticleWrapper, ArticleContent, OneColumn } from "@ndla/ui";
+import { ArticleWrapper, ArticleContent } from "@ndla/ui";
 import { FramedContent } from "./FramedContent";
+import { PageContent } from "./Layout/PageContent";
 
 export default {
   title: "Primitives/FramedContent",
@@ -23,13 +24,13 @@ export default {
   },
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 } as Meta<typeof FramedContent>;

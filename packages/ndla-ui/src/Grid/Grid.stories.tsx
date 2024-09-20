@@ -7,7 +7,8 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { ArticleContent, ArticleWrapper, OneColumn } from "@ndla/ui";
+import { PageContent } from "@ndla/primitives";
+import { ArticleContent, ArticleWrapper } from "@ndla/ui";
 import { Grid } from "./Grid";
 import { BlogPostStory } from "../BlogPost/BlogPost.stories";
 import { Plain } from "../KeyFigure/KeyFigure.stories";
@@ -27,13 +28,13 @@ export default {
   },
   decorators: [
     (Story) => (
-      <OneColumn wide>
+      <PageContent asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 } as Meta<typeof Grid>;

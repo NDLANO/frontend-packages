@@ -7,10 +7,9 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { HeroBackground, HeroContent, Text } from "@ndla/primitives";
+import { HeroBackground, HeroContent, PageContent, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ContentTypeHero } from "./ContentTypeHero";
-import { OneColumn } from "../Layout";
 
 /**
  * A thin wrapper around the `Hero` component that automatically assigns a variant based on the provided content type
@@ -31,7 +30,7 @@ export default {
 export const HeroStory: StoryFn<typeof ContentTypeHero> = ({ ...args }) => (
   <ContentTypeHero {...args}>
     <HeroBackground />
-    <OneColumn>
+    <PageContent>
       <HeroContent>Hello</HeroContent>
 
       <styled.div css={{ background: "surface.default", padding: "medium" }}>
@@ -69,7 +68,7 @@ export const HeroStory: StoryFn<typeof ContentTypeHero> = ({ ...args }) => (
           faucibus ac ut mauris. Fusce facilisis at erat a dignissim.
         </Text>
       </styled.div>
-    </OneColumn>
+    </PageContent>
   </ContentTypeHero>
 );
 

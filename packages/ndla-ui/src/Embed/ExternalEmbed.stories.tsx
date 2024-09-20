@@ -7,10 +7,10 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
+import { PageContent } from "@ndla/primitives";
 import { OembedEmbedData, OembedData } from "@ndla/types-embed";
 import ExternalEmbed from "./ExternalEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
-import { OneColumn } from "../Layout";
 
 const embedData: OembedEmbedData = {
   resource: "external",
@@ -55,7 +55,7 @@ const meta: Meta<typeof ExternalEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <section>
@@ -63,7 +63,7 @@ const meta: Meta<typeof ExternalEmbed> = {
             </section>
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 };

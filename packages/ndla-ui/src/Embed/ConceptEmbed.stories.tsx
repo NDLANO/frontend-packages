@@ -7,10 +7,10 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
+import { PageContent } from "@ndla/primitives";
 import { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
 import { ConceptEmbed } from "./ConceptEmbed";
 import { ArticleContent, ArticleWrapper } from "../Article";
-import { OneColumn } from "../Layout";
 
 const blockEmbedData: ConceptEmbedData = {
   contentId: "35",
@@ -149,13 +149,13 @@ const meta: Meta<typeof ConceptEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 };

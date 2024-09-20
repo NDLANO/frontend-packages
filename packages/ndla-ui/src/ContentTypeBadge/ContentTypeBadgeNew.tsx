@@ -15,7 +15,7 @@ export interface ContentTypeBadgeProps extends Omit<BadgeProps, "colorTheme"> {
   contentType: ContentType | undefined;
 }
 
-export type ContentType =
+export type StrictContentType =
   | typeof contentTypes.SUBJECT_MATERIAL
   | typeof contentTypes.TASKS_AND_ACTIVITIES
   | typeof contentTypes.ASSESSMENT_RESOURCES
@@ -30,7 +30,10 @@ export type ContentType =
   | typeof contentTypes.AUDIO
   | typeof contentTypes.VIDEO
   | typeof contentTypes.MISSING
-  | typeof contentTypes.PODCAST
+  | typeof contentTypes.PODCAST;
+
+export type ContentType =
+  | StrictContentType
   // This allows for us to fallback to string without getting a ts error, while still keeping intellisense
   | (string & {});
 

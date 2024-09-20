@@ -103,11 +103,17 @@ export {
   ConceptBadge,
 } from "./ContentTypeBadge";
 
-export type { ContentTypeBadgeProps, ContentType } from "./ContentTypeBadge/ContentTypeBadgeNew";
+export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadgeNew";
 export {
   ContentTypeBadge as ContentTypeBadgeNew,
   contentTypeToBadgeVariantMap,
 } from "./ContentTypeBadge/ContentTypeBadgeNew";
+
+export { ContentTypeBlockQuote } from "./ContentTypeBlockQuote/ContentTypeBlockQuote";
+export { type ContentTypeBlockQuoteVariant } from "./ContentTypeBlockQuote/ContentTypeBlockQuote";
+
+export { ContentTypeFramedContent } from "./ContentTypeFramedContent/ContentTypeFramedContent";
+export { type ContentTypeFramedContentVariant } from "./ContentTypeFramedContent/ContentTypeFramedContent";
 
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 

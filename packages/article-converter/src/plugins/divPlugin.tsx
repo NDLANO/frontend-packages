@@ -7,13 +7,24 @@
  */
 
 import { domToReact, attributesToProps, Element, DOMNode } from "html-react-parser";
-import { FramedContent } from "@ndla/primitives";
-import { FileListEmbed, RelatedArticleList, Grid, GridType, GridParallaxItem } from "@ndla/ui";
+import {
+  FileListEmbed,
+  RelatedArticleList,
+  Grid,
+  GridType,
+  GridParallaxItem,
+  ContentTypeFramedContent,
+} from "@ndla/ui";
 import { PluginType } from "./types";
 
-export const divPlugin: PluginType = (node, opts) => {
+export const divPlugin: PluginType = (node, opts, { contentType }) => {
   if (node.attribs["data-type"] === "framed-content" || node.attribs.class === "c-bodybox") {
-    return <FramedContent>{domToReact(node.children as DOMNode[], opts)}</FramedContent>;
+    const props = attributesToProps(node.attribs);
+    return (
+      <ContentTypeFramedContent contentType={contentType} {...props}>
+        {domToReact(node.children as DOMNode[], opts)}
+      </ContentTypeFramedContent>
+    );
   }
   if (node.attribs["data-type"] === "related-content" && node.children.length) {
     const props = attributesToProps(node.attribs);

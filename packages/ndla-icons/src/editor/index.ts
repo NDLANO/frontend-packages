@@ -15,6 +15,7 @@ export { default as AlignRight } from "./AlignRight";
 export { default as ArrowExpand } from "./ArrowExpand";
 export { default as BlogPost } from "./BlogPost";
 export { default as Bold } from "./Bold";
+export { default as BrushLine } from "./BrushLine";
 export { default as CalculatorFill } from "./CalculatorFill";
 export { default as CalculatorLine } from "./CalculatorLine";
 export { default as Calendar } from "./Calendar";

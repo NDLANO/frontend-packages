@@ -48,12 +48,12 @@ const Container = styled("div", {
   base: {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gap: "medium",
-    outline: "1px solid",
-    outlineColor: "stroke.default",
+    border: "1px solid",
+    borderColor: "stroke.default",
     backgroundColor: "background.default",
     borderRadius: "xsmall",
     boxShadow: "full",
+    overflow: "hidden",
   },
   variants: {
     imageSide: {
@@ -68,14 +68,10 @@ const Container = styled("div", {
         },
       },
       right: {
-        display: "flex",
-        flexDirection: "column-reverse",
         "@/tablet": {
-          display: "grid",
           gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
         },
         "@supports not (container-type: inline-size)": {
-          display: "grid",
           tabletWide: {
             gridTemplateColumns: "auto minmax(230px, 455px)",
           },
@@ -126,18 +122,9 @@ const ContentWrapper = styled("div", {
     gap: "medium",
     alignItems: "flex-start",
     justifyContent: "center",
-    paddingBlockStart: "medium",
-    paddingBlockEnd: "xxlarge",
+    paddingBlock: "medium",
     paddingInline: "medium",
     position: "relative",
-    "@/tablet": {
-      paddingBlock: "medium",
-    },
-    "@supports not (container-type: inline-size)": {
-      tabletWide: {
-        paddingBlock: "medium",
-      },
-    },
   },
 });
 
@@ -162,13 +149,8 @@ interface LinkButtonProps {
 const StyledSafeLinkButton = styled(SafeLinkButton, {
   base: {
     boxShadow: "full",
-    position: "absolute",
-    left: "50%",
-    bottom: "0%",
-    transform: "translate(-50%, 50%)",
     border: "1px solid",
     borderColor: "stroke.default",
-    width: "max-content",
   },
 });
 

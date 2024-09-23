@@ -1427,6 +1427,7 @@ const messages = {
       external: "External resource",
       gloss: "Gloss",
       copyright: "Text",
+      code: "Code block",
     },
   },
   gloss: {

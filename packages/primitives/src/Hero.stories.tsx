@@ -8,8 +8,8 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import { styled } from "@ndla/styled-system/jsx";
-import { OneColumn } from "@ndla/ui";
 import { Hero, HeroBackground, HeroContent } from "./Hero";
+import { PageContent } from "./Layout/PageContent";
 import { Heading, Text } from "./Text";
 
 export default {
@@ -28,7 +28,7 @@ export default {
 export const Default: StoryFn<typeof Hero> = ({ ...args }) => (
   <Hero {...args}>
     <HeroBackground />
-    <OneColumn>
+    <PageContent>
       <HeroContent>
         <Heading>Fargen på innholdet i Hero endrer seg automatisk basert på varianten som velges</Heading>
       </HeroContent>
@@ -67,7 +67,7 @@ export const Default: StoryFn<typeof Hero> = ({ ...args }) => (
           faucibus ac ut mauris. Fusce facilisis at erat a dignissim.
         </Text>
       </styled.div>
-    </OneColumn>
+    </PageContent>
   </Hero>
 );
 
@@ -79,7 +79,7 @@ export const WithBackgroundImage: StoryFn<typeof Hero> = ({ ...args }) => (
       </HeroBackground>
       <HeroContent></HeroContent>
     </Hero>
-    <OneColumn>
+    <PageContent>
       <styled.div css={{ background: "surface.default", padding: "medium" }}>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut orci a lectus pellentesque porta. Integer
@@ -115,6 +115,6 @@ export const WithBackgroundImage: StoryFn<typeof Hero> = ({ ...args }) => (
           faucibus ac ut mauris. Fusce facilisis at erat a dignissim.
         </Text>
       </styled.div>
-    </OneColumn>
+    </PageContent>
   </div>
 );

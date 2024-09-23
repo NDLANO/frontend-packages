@@ -7,10 +7,10 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
+import { PageContent } from "@ndla/primitives";
 import { IframeData, IframeEmbedData } from "@ndla/types-embed";
 import IframeEmbed from "./IframeEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
-import { OneColumn } from "../Layout";
 
 const embedData: IframeEmbedData = {
   width: "708px",
@@ -27,13 +27,13 @@ const meta: Meta<typeof IframeEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 };

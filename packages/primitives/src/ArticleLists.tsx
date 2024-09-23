@@ -12,11 +12,24 @@ import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
+const LIST_ITEM = "& > li";
+const LETTER_LIST = "& > ol[data-variant='letters']";
+const NUMBER_LIST = "& > ol:not([data-variant='letters'])";
+const LETTER_LIST_ITEM = `${LETTER_LIST} > li`;
+const NUMBER_LIST_ITEM = `${NUMBER_LIST} > li`;
+
 const orderedListRecipe = cva({
   base: {
-    "& li": {
+    [LIST_ITEM]: {
       marginBlock: "small",
+      _before: {
+        position: "absolute",
+        transform: "translateX(-100%)",
+        paddingInlineEnd: "0.25em",
+        fontVariantNumeric: "tabular-nums",
+      },
     },
+    marginInlineStart: "2.5ch",
   },
   defaultVariants: {
     variant: "numbers",
@@ -28,44 +41,47 @@ const orderedListRecipe = cva({
         "&[data-count='true']": {
           counterReset: "level1 var(--start, 0)",
         },
-        marginInline: "small",
-        "& > li": {
+        [LIST_ITEM]: {
           counterIncrement: "level1",
-          _marker: {
+          _before: {
             content: "counter(level1, decimal) '. '",
           },
-          "& > ol:not([data-variant='letters'])": {
-            marginInlineStart: "xlarge",
+          [NUMBER_LIST]: {
             counterReset: "level2",
             "&[data-count='true']": {
               counterReset: "level2 var(--start, 0)",
             },
-            "& > li": {
+            [LIST_ITEM]: {
+              marginInlineStart: "1ch",
               counterIncrement: "level2",
-              _marker: {
+              _before: {
                 content: "counter(level1, decimal) '.' counter(level2, decimal) '. '",
               },
-              "& > ol:not([data-variant='letters'])": {
-                marginInlineStart: "xxlarge",
+              [NUMBER_LIST]: {
                 counterReset: "level3",
                 "&[data-count='true']": {
                   counterReset: "level3 var(--start, 0)",
                 },
-                "& > li": {
+                [LIST_ITEM]: {
+                  marginInlineStart: "2.5ch",
                   counterIncrement: "level3",
-                  _marker: {
+                  _before: {
                     content: "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '. '",
                   },
-                  "& > ol:not([data-variant='letters'])": {
+                  [NUMBER_LIST]: {
                     counterReset: "level4",
                     "&[data-count='true']": {
                       counterReset: "level4 var(--start, 0)",
                     },
-                    "& > li": {
+                    [LIST_ITEM]: {
+                      marginInlineStart: "4.5ch",
                       counterIncrement: "level4",
-                      _marker: {
+                      _before: {
                         content:
                           "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level4,  decimal) '. '",
+                      },
+                      [LETTER_LIST_ITEM]: {
+                        marginInlineStart: "0.5ch",
                       },
                     },
                   },
@@ -80,22 +96,18 @@ const orderedListRecipe = cva({
         "&[data-count='true']": {
           counterReset: "level1 var(--start, 0)",
         },
-        paddingInlineStart: "medium",
-        "& > li": {
+        [LIST_ITEM]: {
           counterIncrement: "level1",
-          _marker: {
+          _before: {
             content: "counter(level1, upper-alpha) '. '",
           },
-          "& > ol[data-variant='letters']": {
-            paddingInlineStart: "small",
-            "& > li": {
-              _marker: {
-                content: "counter(level1, lower-alpha) '. '",
-              },
-              "& > ol[data-variant='letters'] > li": {
-                _marker: {
-                  content: "counter(level1, lower-roman) '. '",
-                },
+          [LETTER_LIST_ITEM]: {
+            _before: {
+              content: "counter(level1, lower-alpha) '. '",
+            },
+            [LETTER_LIST_ITEM]: {
+              _before: {
+                content: "counter(level1, lower-roman) '. '",
               },
             },
           },
@@ -132,7 +144,7 @@ export type UnOrderedListProps = HTMLArkProps<"ul"> & JsxStyleProps;
 export const UnOrderedList = styled("ul", {
   base: {
     listStyle: "revert",
-    paddingInlineStart: "medium",
+    paddingInlineStart: "1.5ch",
     "& li": {
       marginBlock: "small",
       _marker: {

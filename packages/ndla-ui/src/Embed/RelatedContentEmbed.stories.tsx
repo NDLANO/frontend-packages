@@ -7,10 +7,10 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
+import { PageContent } from "@ndla/primitives";
 import { RelatedContentMetaData } from "@ndla/types-embed";
 import RelatedContentEmbed from "./RelatedContentEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
-import { OneColumn } from "../Layout";
 import RelatedArticleList from "../RelatedArticleList";
 
 const filmResourceMeta: RelatedContentMetaData = {
@@ -367,13 +367,13 @@ const meta: Meta<typeof RelatedContentEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 };

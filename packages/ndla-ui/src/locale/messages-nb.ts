@@ -1427,6 +1427,7 @@ const messages = {
       external: "Ekstern ressurs",
       gloss: "Glose",
       copyright: "Tekst",
+      code: "Kodeblokk",
     },
   },
   gloss: {

@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
-import { ExpandableBox, ExpandableBoxSummary, FramedContent } from "@ndla/primitives";
+import { ExpandableBox, ExpandableBoxSummary, FramedContent, PageContent } from "@ndla/primitives";
 import { UuDisclaimerEmbedData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
@@ -15,7 +15,6 @@ import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
 import CopyParagraphButton from "../CopyParagraphButton";
 import FactBox from "../FactBox";
-import { OneColumn } from "../Layout";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
@@ -29,13 +28,13 @@ const meta: Meta<typeof UuDisclaimerEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 };

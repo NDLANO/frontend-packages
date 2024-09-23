@@ -14,10 +14,9 @@ import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { CodeMetaData } from "@ndla/types-embed";
 import { copyTextToClipboard } from "@ndla/util";
+import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { CodeBlock, codeLanguageOptions } from "../CodeBlock";
 import { ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
-
-// TODO: We need an error state for this
 
 interface Props {
   embed: CodeMetaData;
@@ -60,6 +59,10 @@ const CodeEmbed = ({ embed }: Props) => {
       };
     }
   }, [isCopied]);
+
+  if (embed.status === "error") {
+    return <EmbedErrorPlaceholder type="code" />;
+  }
 
   return (
     <StyledFigure data-embed-type="code-block">

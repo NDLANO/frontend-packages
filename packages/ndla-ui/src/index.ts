@@ -90,7 +90,7 @@ export {
   useVideoSearchTranslations,
 } from "./i18n";
 
-export { default as LayoutItem, OneColumn, PageContainer } from "./Layout";
+export { OneColumn, PageContainer } from "./Layout";
 
 export {
   default as ContentTypeBadge,
@@ -121,9 +121,6 @@ export {
   TagSelectorInputBase,
   TagSelectorInput,
 } from "./TagSelector/TagSelector";
-
-export { TreeStructure } from "./TreeStructure";
-export type { TreeStructureProps } from "./TreeStructure";
 
 export { BlogPostV2 } from "./BlogPost";
 export { KeyFigure } from "./KeyFigure";

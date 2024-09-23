@@ -153,8 +153,8 @@ const checkboxRecipe = sva({
           },
           _checked: {
             color: "text.onAction",
-            background: "surface.actionSubtle.selected",
-            borderColor: "surface.actionSubtle.selected",
+            background: "surface.action.selected",
+            borderColor: "surface.action.selected",
             outlineColor: "icon.onAction",
             _focus: {
               outlineOffset: "-4px",

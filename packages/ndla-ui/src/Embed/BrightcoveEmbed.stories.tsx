@@ -7,10 +7,10 @@
  */
 
 import { Meta, StoryObj } from "@storybook/react";
+import { PageContent } from "@ndla/primitives";
 import { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from "@ndla/types-embed";
 import BrightcoveEmbed from "./BrightcoveEmbed";
 import { ArticleContent, ArticleWrapper } from "../Article";
-import { OneColumn } from "../Layout";
 
 const embedData: BrightcoveEmbedData = {
   resource: "brightcove",
@@ -157,13 +157,13 @@ const meta: Meta<typeof BrightcoveEmbed> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <OneColumn>
+      <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
             <Story />
           </ArticleContent>
         </ArticleWrapper>
-      </OneColumn>
+      </PageContent>
     ),
   ],
 };

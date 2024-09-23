@@ -166,6 +166,9 @@ export const listItemRecipe = sva({
       nonInteractive: false,
       css: {
         root: {
+          '&[aria-current="true"], &[aria-current="page"]': {
+            borderColor: "initial",
+          },
           _first: {
             _hover: {
               borderBlockStartColor: "var(--border-hover)",

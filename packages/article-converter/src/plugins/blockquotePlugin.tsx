@@ -7,13 +7,17 @@
  */
 
 import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
-import { ContentTypeBlockQuote } from "@ndla/ui";
+import { ContentTypeBlockQuote, ContentTypeBlockQuoteVariant } from "@ndla/ui";
 import { PluginType } from "./types";
 
 export const blockquotePlugin: PluginType = (node, opts, { contentType }) => {
-  const props = attributesToProps(node.attribs);
+  const { "data-variant": variant, ...props } = attributesToProps(node.attribs);
   return (
-    <ContentTypeBlockQuote {...props} contentType={contentType}>
+    <ContentTypeBlockQuote
+      {...props}
+      variant={variant as ContentTypeBlockQuoteVariant | undefined}
+      contentType={contentType}
+    >
       {domToReact(node.children as DOMNode[], opts)}
     </ContentTypeBlockQuote>
   );

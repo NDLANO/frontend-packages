@@ -14,14 +14,19 @@ import {
   GridType,
   GridParallaxItem,
   ContentTypeFramedContent,
+  ContentTypeFramedContentVariant,
 } from "@ndla/ui";
 import { PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts, { contentType }) => {
   if (node.attribs["data-type"] === "framed-content" || node.attribs.class === "c-bodybox") {
-    const props = attributesToProps(node.attribs);
+    const { "data-variant": variant, ...props } = attributesToProps(node.attribs);
     return (
-      <ContentTypeFramedContent contentType={contentType} {...props}>
+      <ContentTypeFramedContent
+        contentType={contentType}
+        variant={variant as ContentTypeFramedContentVariant | undefined}
+        {...props}
+      >
         {domToReact(node.children as DOMNode[], opts)}
       </ContentTypeFramedContent>
     );

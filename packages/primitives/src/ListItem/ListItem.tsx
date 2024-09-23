@@ -55,7 +55,6 @@ export const listItemRecipe = sva({
   defaultVariants: {
     variant: "standalone",
     borderVariant: "solid",
-    image: "small",
     nonInteractive: false,
   },
   variants: {

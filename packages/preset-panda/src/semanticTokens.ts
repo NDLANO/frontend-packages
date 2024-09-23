@@ -149,6 +149,19 @@ export const semanticTokens = defineSemanticTokens({
           hover: { value: "{colors.yellow.500}" },
           current: { value: "{colors.yellow.700}" },
         },
+        brand: {
+          1: {
+            DEFAULT: { value: "{colors.purple.50}" },
+            hover: { value: "{colors.purple.100}" },
+            active: { value: "{colors.purple.300}" },
+            selected: { value: "{colors.purple.400}" },
+          },
+          2: {
+            DEFAULT: { value: "{colors.blue.50}" },
+            hover: { value: "{colors.blue.100}" },
+            selected: { value: "{colors.blue.200}" },
+          },
+        },
       },
       actionSubtle: {
         DEFAULT: { value: "{colors.purple.50}" },

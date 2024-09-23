@@ -109,8 +109,8 @@ export const listItemRecipe = sva({
     colorTheme: {
       brand1: {
         root: {
-          "--background-hover": "colors.surface.brand.1.moderate",
-          "--background-current": "colors.surface.actionSubtle.hover.strong",
+          "--background-hover": "colors.surface.action.brand.1.hover",
+          "--background-current": "colors.surface.action.brand.1.selected",
           "--border-hover": "colors.stroke.hover",
           "--color-current-hover": "colors.text.default",
         },
@@ -118,7 +118,7 @@ export const listItemRecipe = sva({
       brand2: {
         root: {
           "--background-hover": "colors.surface.brand.2.moderate",
-          "--background-current": "var(--colors-blue-200)",
+          "--background-current": "colors.surface.action.brand.2.selected",
           "--border-hover": "colors.surface.brand.2.strong",
           "--color-current-hover": "colors.text.default",
         },

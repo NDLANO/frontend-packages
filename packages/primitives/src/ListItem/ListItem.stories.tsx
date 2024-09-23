@@ -27,7 +27,6 @@ export default {
     borderVariant: "solid",
     colorTheme: "brand1",
     variant: "standalone",
-    image: "small",
   },
   parameters: {
     inlineStories: true,
@@ -74,7 +73,7 @@ export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
 );
 
 export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
-  <ListItemRoot {...args} image="medium">
+  <ListItemRoot {...args}>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <styled.div css={{ display: "flex", flexDirection: "column", gap: "4xsmall" }}>

@@ -1419,6 +1419,34 @@ const tokens = {
     "value": "var(--colors-yellow-700)",
     "variable": "var(--colors-surface-action-my-ndla-current)"
   },
+  "colors.surface.action.brand.1": {
+    "value": "var(--colors-purple-50)",
+    "variable": "var(--colors-surface-action-brand-1)"
+  },
+  "colors.surface.action.brand.1.hover": {
+    "value": "var(--colors-purple-100)",
+    "variable": "var(--colors-surface-action-brand-1-hover)"
+  },
+  "colors.surface.action.brand.1.active": {
+    "value": "var(--colors-purple-300)",
+    "variable": "var(--colors-surface-action-brand-1-active)"
+  },
+  "colors.surface.action.brand.1.selected": {
+    "value": "var(--colors-purple-400)",
+    "variable": "var(--colors-surface-action-brand-1-selected)"
+  },
+  "colors.surface.action.brand.2": {
+    "value": "var(--colors-blue-50)",
+    "variable": "var(--colors-surface-action-brand-2)"
+  },
+  "colors.surface.action.brand.2.hover": {
+    "value": "var(--colors-blue-100)",
+    "variable": "var(--colors-surface-action-brand-2-hover)"
+  },
+  "colors.surface.action.brand.2.selected": {
+    "value": "var(--colors-blue-200)",
+    "variable": "var(--colors-surface-action-brand-2-selected)"
+  },
   "colors.surface.actionSubtle": {
     "value": "var(--colors-purple-50)",
     "variable": "var(--colors-surface-action-subtle)"
@@ -2190,6 +2218,74 @@ const tokens = {
   "colors.colorPalette.current": {
     "value": "var(--colors-color-palette-current)",
     "variable": "var(--colors-color-palette-current)"
+  },
+  "colors.colorPalette.action.brand.1": {
+    "value": "var(--colors-color-palette-action-brand-1)",
+    "variable": "var(--colors-color-palette-action-brand-1)"
+  },
+  "colors.colorPalette.action.brand.1.hover": {
+    "value": "var(--colors-color-palette-action-brand-1-hover)",
+    "variable": "var(--colors-color-palette-action-brand-1-hover)"
+  },
+  "colors.colorPalette.brand.1.hover": {
+    "value": "var(--colors-color-palette-brand-1-hover)",
+    "variable": "var(--colors-color-palette-brand-1-hover)"
+  },
+  "colors.colorPalette.1.hover": {
+    "value": "var(--colors-color-palette-1-hover)",
+    "variable": "var(--colors-color-palette-1-hover)"
+  },
+  "colors.colorPalette.action.brand.1.active": {
+    "value": "var(--colors-color-palette-action-brand-1-active)",
+    "variable": "var(--colors-color-palette-action-brand-1-active)"
+  },
+  "colors.colorPalette.brand.1.active": {
+    "value": "var(--colors-color-palette-brand-1-active)",
+    "variable": "var(--colors-color-palette-brand-1-active)"
+  },
+  "colors.colorPalette.1.active": {
+    "value": "var(--colors-color-palette-1-active)",
+    "variable": "var(--colors-color-palette-1-active)"
+  },
+  "colors.colorPalette.action.brand.1.selected": {
+    "value": "var(--colors-color-palette-action-brand-1-selected)",
+    "variable": "var(--colors-color-palette-action-brand-1-selected)"
+  },
+  "colors.colorPalette.brand.1.selected": {
+    "value": "var(--colors-color-palette-brand-1-selected)",
+    "variable": "var(--colors-color-palette-brand-1-selected)"
+  },
+  "colors.colorPalette.1.selected": {
+    "value": "var(--colors-color-palette-1-selected)",
+    "variable": "var(--colors-color-palette-1-selected)"
+  },
+  "colors.colorPalette.action.brand.2": {
+    "value": "var(--colors-color-palette-action-brand-2)",
+    "variable": "var(--colors-color-palette-action-brand-2)"
+  },
+  "colors.colorPalette.action.brand.2.hover": {
+    "value": "var(--colors-color-palette-action-brand-2-hover)",
+    "variable": "var(--colors-color-palette-action-brand-2-hover)"
+  },
+  "colors.colorPalette.brand.2.hover": {
+    "value": "var(--colors-color-palette-brand-2-hover)",
+    "variable": "var(--colors-color-palette-brand-2-hover)"
+  },
+  "colors.colorPalette.2.hover": {
+    "value": "var(--colors-color-palette-2-hover)",
+    "variable": "var(--colors-color-palette-2-hover)"
+  },
+  "colors.colorPalette.action.brand.2.selected": {
+    "value": "var(--colors-color-palette-action-brand-2-selected)",
+    "variable": "var(--colors-color-palette-action-brand-2-selected)"
+  },
+  "colors.colorPalette.brand.2.selected": {
+    "value": "var(--colors-color-palette-brand-2-selected)",
+    "variable": "var(--colors-color-palette-brand-2-selected)"
+  },
+  "colors.colorPalette.2.selected": {
+    "value": "var(--colors-color-palette-2-selected)",
+    "variable": "var(--colors-color-palette-2-selected)"
   },
   "colors.colorPalette.actionSubtle": {
     "value": "var(--colors-color-palette-action-subtle)",

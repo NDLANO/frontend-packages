@@ -66,7 +66,7 @@ export const listItemRecipe = sva({
       },
       dashed: {
         root: {
-          borderStyle: "dashed",
+          borderBlockStyle: "dashed",
         },
       },
     },

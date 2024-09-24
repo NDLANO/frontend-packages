@@ -76,6 +76,7 @@ export const listItemRecipe = sva({
           '&[aria-current="true"], &[aria-current="page"]': {
             background: "var(--background-current)",
             paddingInline: "3xsmall",
+            borderColor: "initial",
             borderInlineWidth: "6px",
             color: "var(--color-current-hover)",
             _hover: {
@@ -167,9 +168,6 @@ export const listItemRecipe = sva({
       nonInteractive: false,
       css: {
         root: {
-          '&[aria-current="true"], &[aria-current="page"]': {
-            borderColor: "initial",
-          },
           _first: {
             _hover: {
               borderBlockStartColor: "var(--border-hover)",

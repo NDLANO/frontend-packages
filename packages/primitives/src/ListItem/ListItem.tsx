@@ -76,7 +76,7 @@ export const listItemRecipe = sva({
           '&[aria-current="true"], &[aria-current="page"]': {
             background: "var(--background-current)",
             paddingInline: "3xsmall",
-            borderColor: "initial",
+            borderColor: "var(--border-color-current)",
             borderInlineWidth: "6px",
             color: "var(--color-current-hover)",
             _hover: {
@@ -117,6 +117,7 @@ export const listItemRecipe = sva({
           "--background-current": "colors.surface.action.brand.1.selected",
           "--border-hover": "colors.stroke.hover",
           "--color-current-hover": "colors.text.default",
+          "--border-color-current": "colors.stroke.default",
         },
       },
       brand2: {
@@ -125,6 +126,7 @@ export const listItemRecipe = sva({
           "--background-current": "colors.surface.action.brand.2.selected",
           "--border-hover": "colors.surface.brand.2.strong",
           "--color-current-hover": "colors.text.default",
+          "--border-color-current": "colors.surface.brand.2.strong",
         },
       },
       brand3: {

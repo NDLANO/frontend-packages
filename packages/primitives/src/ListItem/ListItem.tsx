@@ -81,6 +81,8 @@ export const listItemRecipe = sva({
             color: "var(--color-current-hover)",
             _hover: {
               background: "var(--background-hover)",
+              paddingInline: "xsmall",
+              borderInlineWidth: "0px",
               color: "text.default",
               borderInlineColor: "transparent",
             },

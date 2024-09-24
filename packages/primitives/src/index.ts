@@ -96,6 +96,7 @@ export {
   DialogCloseTrigger,
   DialogHeader,
   DialogBody,
+  DialogFooter,
 } from "./Dialog";
 
 export type { ExpandableBoxProps, ExpandableBoxSummaryProps } from "./ExpandableBox";

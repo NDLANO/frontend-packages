@@ -395,3 +395,15 @@ export const DialogBody = styled("div", {
     paddingBlockEnd: "medium",
   },
 });
+
+export const DialogFooter = styled("div", {
+  base: {
+    display: "flex",
+    gap: "3xsmall",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    paddingInline: "medium",
+    paddingBlockStart: "small",
+    paddingBlockEnd: "medium",
+  },
+});

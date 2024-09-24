@@ -12,6 +12,7 @@ import { styled } from "@ndla/styled-system/jsx";
 
 interface Props {
   license: LicenseLocaleType;
+  hideLink?: boolean;
 }
 
 const StyledSafeLink = styled(SafeLink, {
@@ -25,16 +26,22 @@ const StyledSafeLink = styled(SafeLink, {
     _focusWithin: {
       textDecoration: "none",
     },
+    mobileWideDown: {
+      _disabled: {
+        display: "none",
+      },
+    },
   },
 });
 
-export const LicenseLink = ({ license }: Props) => {
+export const LicenseLink = ({ license, hideLink }: Props) => {
+  const disabled = hideLink ? { "data-disabled": "" } : {};
   if (license.abbreviation === "unknown") {
     return null;
   }
   if (license.url?.length) {
     return (
-      <StyledSafeLink to={license.url} rel="license">
+      <StyledSafeLink to={license.url} rel="license" {...disabled}>
         {license.abbreviation}
       </StyledSafeLink>
     );

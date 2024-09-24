@@ -7,7 +7,7 @@
  */
 
 import { Element, HTMLReactParserOptions } from "html-react-parser";
-import { RenderContext, CanonicalUrlFuncs } from "@ndla/ui";
+import { RenderContext, CanonicalUrlFuncs, ContentType } from "@ndla/ui";
 
 export interface TransformOptions {
   isOembed?: boolean;
@@ -18,6 +18,7 @@ export interface TransformOptions {
   articleLanguage?: string;
   canonicalUrls?: CanonicalUrlFuncs;
   renderContext?: RenderContext;
+  contentType?: ContentType;
 }
 
 export type PluginType = (

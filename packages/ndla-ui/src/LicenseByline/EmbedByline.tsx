@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AlertLine } from "@ndla/icons/common";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
@@ -216,10 +216,11 @@ const StyledButton = styled(Button, {
 
 interface LicenseDescriptionProps {
   children?: ReactNode;
+  isOpen: Boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const LicenseDescription = ({ children }: LicenseDescriptionProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const LicenseDescription = ({ children, isOpen, setIsOpen }: LicenseDescriptionProps) => {
   const open = isOpen ? { "data-open": "" } : {};
   const { t } = useTranslation();
 
@@ -244,6 +245,7 @@ export const LicenseContainerContent = ({ children, copyright, type }: LicenseCo
   const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? "", i18n.language) : undefined;
   const authors = getLicenseCredits(copyright);
   const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const content = (
     <>
@@ -254,14 +256,18 @@ export const LicenseContainerContent = ({ children, copyright, type }: LicenseCo
       {license ? (
         <>
           {" / "}
-          <LicenseLink license={license} />
+          {<LicenseLink license={license} hideLink={!isOpen && !!children} />}
         </>
       ) : null}
     </>
   );
 
   if (children) {
-    return <LicenseDescription>{content}</LicenseDescription>;
+    return (
+      <LicenseDescription isOpen={isOpen} setIsOpen={setIsOpen}>
+        {content}
+      </LicenseDescription>
+    );
   }
 
   return (

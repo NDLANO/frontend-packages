@@ -157,6 +157,12 @@ export const listItemRecipe = sva({
           borderInlineColor: "transparent",
           marginBlockStart: "-1px",
           _first: {
+            '&[aria-current="true"], &[aria-current="page"]': {
+              borderBlockStartColor: "stroke.default",
+              _hover: {
+                borderBlockStartColor: "stroke.hover",
+              },
+            },
             borderBlockStartColor: "transparent",
           },
           _last: {

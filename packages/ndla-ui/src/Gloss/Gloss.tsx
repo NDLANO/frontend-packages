@@ -6,7 +6,7 @@
  *
  */
 
-import { useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { AccordionItemTrigger } from "@ark-ui/react";
 import { ArrowDownShortLine } from "@ndla/icons/common";
@@ -15,6 +15,7 @@ import {
   AccordionItemContent,
   AccordionItemIndicator,
   AccordionRoot,
+  AccordionRootProps,
   IconButton,
   Text,
 } from "@ndla/primitives";
@@ -113,81 +114,84 @@ export interface Props {
   exampleLangs?: string;
 }
 
-const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: Props & GlossVariantProps) => {
-  const { t } = useTranslation();
+const Gloss = forwardRef<HTMLDivElement, Omit<AccordionRootProps, "title"> & Props & GlossVariantProps>(
+  ({ title, glossData, audio, exampleIds, exampleLangs, variant, children, ...rest }, ref) => {
+    const { t } = useTranslation();
 
-  const filteredExamples = useMemo(
-    () => getFilteredExamples(glossData, exampleIds, exampleLangs),
-    [exampleIds, exampleLangs, glossData],
-  );
+    const filteredExamples = useMemo(
+      () => getFilteredExamples(glossData, exampleIds, exampleLangs),
+      [exampleIds, exampleLangs, glossData],
+    );
 
-  if (!glossData) return null;
+    if (!glossData) return null;
 
-  return (
-    <AccordionRoot multiple variant="clean">
-      <StyledAccordionItem value="gloss" variant={variant}>
-        <Container>
-          <TextWrapper>
-            <Text textStyle="label.medium" fontWeight="bold" asChild consumeCss lang={glossData.originalLanguage}>
-              <span>{glossData.gloss}</span>
+    return (
+      <AccordionRoot multiple variant="clean" {...rest} ref={ref}>
+        <StyledAccordionItem value="gloss" variant={variant}>
+          <Container>
+            <TextWrapper>
+              <Text textStyle="label.medium" fontWeight="bold" asChild consumeCss lang={glossData.originalLanguage}>
+                <span>{glossData.gloss}</span>
+              </Text>
+              {glossData.transcriptions.traditional && (
+                <Text textStyle="label.medium" asChild consumeCss>
+                  <span
+                    key={t("gloss.transcriptions.traditional")}
+                    aria-label={t("gloss.transcriptions.traditional")}
+                    lang={glossData.originalLanguage}
+                  >
+                    {glossData.transcriptions.traditional}
+                  </span>
+                </Text>
+              )}
+              {glossData.transcriptions.pinyin && (
+                <Text textStyle="label.medium" asChild consumeCss>
+                  <span
+                    data-pinyin=""
+                    key={t("gloss.transcriptions.pinyin")}
+                    aria-label={t("gloss.transcriptions.pinyin")}
+                    lang={glossData.originalLanguage}
+                  >
+                    {glossData.transcriptions.pinyin}
+                  </span>
+                </Text>
+              )}
+              {glossData.wordClass && (
+                <Text textStyle="label.medium" asChild consumeCss>
+                  <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
+                </Text>
+              )}
+            </TextWrapper>
+            {audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
+          </Container>
+          <StyledContainer>
+            <Text textStyle="label.medium" asChild consumeCss>
+              <span lang={title.language}>{title.title}</span>
             </Text>
-            {glossData.transcriptions.traditional && (
-              <Text textStyle="label.medium" asChild consumeCss>
-                <span
-                  key={t("gloss.transcriptions.traditional")}
-                  aria-label={t("gloss.transcriptions.traditional")}
-                  lang={glossData.originalLanguage}
-                >
-                  {glossData.transcriptions.traditional}
-                </span>
-              </Text>
+            {!!filteredExamples.length && (
+              <AccordionItemTrigger asChild>
+                <IconButton variant="tertiary" aria-label={t("gloss.showExamples")} title={t("gloss.showExamples")}>
+                  <AccordionItemIndicator asChild>
+                    <ArrowDownShortLine size="medium" />
+                  </AccordionItemIndicator>
+                </IconButton>
+              </AccordionItemTrigger>
             )}
-            {glossData.transcriptions.pinyin && (
-              <Text textStyle="label.medium" asChild consumeCss>
-                <span
-                  data-pinyin=""
-                  key={t("gloss.transcriptions.pinyin")}
-                  aria-label={t("gloss.transcriptions.pinyin")}
-                  lang={glossData.originalLanguage}
-                >
-                  {glossData.transcriptions.pinyin}
-                </span>
-              </Text>
-            )}
-            {glossData.wordClass && (
-              <Text textStyle="label.medium" asChild consumeCss>
-                <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
-              </Text>
-            )}
-          </TextWrapper>
-          {audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
-        </Container>
-        <StyledContainer>
-          <Text textStyle="label.medium" asChild consumeCss>
-            <span lang={title.language}>{title.title}</span>
-          </Text>
-          {!!filteredExamples.length && (
-            <AccordionItemTrigger asChild>
-              <IconButton variant="tertiary" aria-label={t("gloss.showExamples")} title={t("gloss.showExamples")}>
-                <AccordionItemIndicator asChild>
-                  <ArrowDownShortLine size="medium" />
-                </AccordionItemIndicator>
-              </IconButton>
-            </AccordionItemTrigger>
-          )}
-        </StyledContainer>
-        <StyledAccordionItemContent>
-          {filteredExamples.map((examples, index) => (
-            <GlossExample
-              key={`gloss-example-${index}`}
-              examples={examples}
-              originalLanguage={glossData.originalLanguage}
-            />
-          ))}
-        </StyledAccordionItemContent>
-      </StyledAccordionItem>
-    </AccordionRoot>
-  );
-};
+          </StyledContainer>
+          <StyledAccordionItemContent>
+            {filteredExamples.map((examples, index) => (
+              <GlossExample
+                key={`gloss-example-${index}`}
+                examples={examples}
+                originalLanguage={glossData.originalLanguage}
+              />
+            ))}
+          </StyledAccordionItemContent>
+        </StyledAccordionItem>
+        {children}
+      </AccordionRoot>
+    );
+  },
+);
 
 export default Gloss;

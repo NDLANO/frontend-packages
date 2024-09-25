@@ -7,18 +7,18 @@
  */
 
 import parse from "html-react-parser";
-import { ReactNode, useMemo, useState } from "react";
+import { ComponentPropsWithRef, ReactNode, forwardRef, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AddLine } from "@ndla/icons/action";
 import { Figure, FigureSize, FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import EmbedErrorPlaceholder, { ErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   embed: ImageMetaData;
   previewAlt?: boolean;
   lang?: string;
@@ -192,81 +192,96 @@ const ExpandButton = styled(
   { defaultProps: { type: "button" } },
 );
 
-const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", children }: Props) => {
-  const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
-  const figureProps = getFigureProps(embed.embedData.size, embed.embedData.align);
-  const { t } = useTranslation();
+const ImageEmbed = forwardRef<HTMLElement, Props>(
+  ({ embed, previewAlt, lang, renderContext = "article", children, ...rest }, ref) => {
+    const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
+    const figureProps = getFigureProps(embed.embedData.size, embed.embedData.align);
+    const { t } = useTranslation();
 
-  const parsedDescription = useMemo(() => {
-    if (embed.embedData.caption || renderContext === "article") {
-      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
+    const parsedDescription = useMemo(() => {
+      if (embed.embedData.caption || renderContext === "article") {
+        return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
+      }
+      if (embed.status === "success" && embed.data.caption.caption) {
+        return parse(embed.data.caption.caption);
+      }
+    }, [embed, renderContext]);
+
+    if (embed.status === "error") {
+      return (
+        <EmbedErrorPlaceholder
+          type="image"
+          figureType={figureProps?.size}
+          float={figureProps?.float}
+          {...rest}
+          ref={ref}
+        >
+          <ErrorPlaceholder type="image" />
+          {children}
+        </EmbedErrorPlaceholder>
+      );
     }
-    if (embed.status === "success" && embed.data.caption.caption) {
-      return parse(embed.data.caption.caption);
-    }
-  }, [embed, renderContext]);
 
-  if (embed.status === "error") {
-    return <EmbedErrorPlaceholder type={"image"} figureType={figureProps?.size} float={figureProps?.float} />;
-  }
+    const { data, embedData } = embed;
 
-  const { data, embedData } = embed;
+    const altText = embedData.alt || "";
 
-  const altText = embedData.alt || "";
+    const sizes = getSizes(embedData.size, embedData.align);
 
-  const sizes = getSizes(embedData.size, embedData.align);
+    const focalPoint = getFocalPoint(embedData);
+    const crop = getCrop(embedData);
 
-  const focalPoint = getFocalPoint(embedData);
-  const crop = getCrop(embedData);
+    const toggleImageSize = () => {
+      setImageSizes((sizes) => (!sizes ? expandedSizes : undefined));
+    };
 
-  const toggleImageSize = () => {
-    setImageSizes((sizes) => (!sizes ? expandedSizes : undefined));
-  };
+    const licenseProps = licenseAttributes(data.copyright.license.license, lang, embedData.url);
 
-  const licenseProps = licenseAttributes(data.copyright.license.license, lang, embedData.url);
+    const figureSize = figureProps?.float ? figureProps?.size ?? "medium" : "full";
 
-  const figureSize = figureProps?.float ? figureProps?.size ?? "medium" : "full";
-
-  return (
-    <StyledFigure
-      float={figureProps?.float}
-      size={imageSizes ? "full" : figureSize}
-      data-embed-type="image"
-      {...licenseProps}
-    >
-      {children}
-      <ImageWrapper border={embedData.border === "true"} expandable={!!figureProps?.float}>
-        <Image
-          focalPoint={focalPoint}
-          contentType={data.image.contentType}
-          crop={crop}
-          sizes={imageSizes ?? sizes}
-          alt={altText}
-          src={data.image.imageUrl}
-          lang={lang}
-          onClick={figureProps?.float ? toggleImageSize : undefined}
-          variant="rounded"
+    return (
+      <StyledFigure
+        float={figureProps?.float}
+        size={imageSizes ? "full" : figureSize}
+        data-embed-type="image"
+        {...licenseProps}
+        {...rest}
+        ref={ref}
+      >
+        {children}
+        <ImageWrapper border={embedData.border === "true"} expandable={!!figureProps?.float}>
+          <Image
+            focalPoint={focalPoint}
+            contentType={data.image.contentType}
+            crop={crop}
+            sizes={imageSizes ?? sizes}
+            alt={altText}
+            src={data.image.imageUrl}
+            lang={lang}
+            onClick={figureProps?.float ? toggleImageSize : undefined}
+            variant="rounded"
+          />
+          {(embedData.align === "right" || embedData.align === "left") && (
+            <ExpandButton
+              aria-label={t(`license.images.itemImage.zoom${imageSizes ? "Out" : ""}ImageButtonLabel`)}
+              onClick={toggleImageSize}
+              data-expanded={!!imageSizes}
+            >
+              <AddLine />
+            </ExpandButton>
+          )}
+        </ImageWrapper>
+        <EmbedByline
+          type="image"
+          copyright={data.copyright}
+          description={parsedDescription}
+          hideDescription={embedData.hideCaption === "true"}
+          hideCopyright={embedData.hideByline === "true"}
+          visibleAlt={previewAlt ? embed.embedData.alt : ""}
         />
-        {(embedData.align === "right" || embedData.align === "left") && (
-          <ExpandButton
-            aria-label={t(`license.images.itemImage.zoom${imageSizes ? "Out" : ""}ImageButtonLabel`)}
-            onClick={toggleImageSize}
-            data-expanded={!!imageSizes}
-          >
-            <AddLine />
-          </ExpandButton>
-        )}
-      </ImageWrapper>
-      <EmbedByline
-        type="image"
-        copyright={data.copyright}
-        description={parsedDescription}
-        hideDescription={embedData.hideCaption === "true"}
-        hideCopyright={embedData.hideByline === "true"}
-        visibleAlt={previewAlt ? embed.embedData.alt : ""}
-      />
-    </StyledFigure>
-  );
-};
+      </StyledFigure>
+    );
+  },
+);
 
 export default ImageEmbed;

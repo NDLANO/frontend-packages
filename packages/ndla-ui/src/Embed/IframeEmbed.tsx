@@ -6,15 +6,15 @@
  *
  */
 
-import { useEffect, useRef } from "react";
+import { ComponentPropsWithRef, forwardRef, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IframeMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import EmbedErrorPlaceholder, { ErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import { ResourceBox } from "../ResourceBox";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   embed: IframeMetaData;
 }
 
@@ -24,7 +24,7 @@ const StyledIframe = styled("iframe", {
   },
 });
 
-const IframeEmbed = ({ embed }: Props) => {
+const IframeEmbed = forwardRef<HTMLElement, Props>(({ embed, children, ...rest }, ref) => {
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -39,7 +39,12 @@ const IframeEmbed = ({ embed }: Props) => {
   }, []);
 
   if (embed.status === "error") {
-    return <EmbedErrorPlaceholder type="external" />;
+    return (
+      <EmbedErrorPlaceholder type="external" {...rest} ref={ref}>
+        <ErrorPlaceholder type="external" />
+        {children}
+      </EmbedErrorPlaceholder>
+    );
   }
 
   const { embedData, data } = embed;
@@ -49,7 +54,7 @@ const IframeEmbed = ({ embed }: Props) => {
     const alt = embedData.alt !== undefined ? embedData.alt : iframeImage?.alttext.alttext;
     const image = { src: iframeImage?.image.imageUrl ?? "", alt: alt ?? "" };
     return (
-      <Figure data-embed-type="iframe">
+      <Figure data-embed-type="iframe" {...rest} ref={ref}>
         <ResourceBox
           image={image}
           title={embedData.title ?? ""}
@@ -57,6 +62,7 @@ const IframeEmbed = ({ embed }: Props) => {
           caption={embedData.caption ?? ""}
           buttonText={t("license.other.itemImage.ariaLabel")}
         />
+        {children}
       </Figure>
     );
   }
@@ -68,7 +74,7 @@ const IframeEmbed = ({ embed }: Props) => {
   const urlOrTitle = title || url;
 
   return (
-    <Figure data-embed-type="iframe">
+    <Figure data-embed-type="iframe" {...rest} ref={ref}>
       <StyledIframe
         ref={iframeRef}
         title={urlOrTitle}
@@ -83,8 +89,9 @@ const IframeEmbed = ({ embed }: Props) => {
         frameBorder="0"
         loading="lazy"
       />
+      {children}
     </Figure>
   );
-};
+});
 
 export default IframeEmbed;

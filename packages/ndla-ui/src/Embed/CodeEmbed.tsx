@@ -6,7 +6,7 @@
  *
  */
 
-import { useEffect, useState } from "react";
+import { ComponentPropsWithRef, forwardRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FileCopyLine } from "@ndla/icons/action";
 import { CheckLine } from "@ndla/icons/editor";
@@ -14,11 +14,11 @@ import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { CodeMetaData } from "@ndla/types-embed";
 import { copyTextToClipboard } from "@ndla/util";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import EmbedErrorPlaceholder, { ErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import { CodeBlock, codeLanguageOptions } from "../CodeBlock";
 import { ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   embed: CodeMetaData;
 }
 
@@ -46,7 +46,7 @@ const getTitleFromFormat = (format: string) => {
   return;
 };
 
-const CodeEmbed = ({ embed }: Props) => {
+const CodeEmbed = forwardRef<HTMLElement, Props>(({ embed, children, ...rest }, ref) => {
   const [isCopied, setIsCopied] = useState(false);
   const { t } = useTranslation();
 
@@ -61,11 +61,16 @@ const CodeEmbed = ({ embed }: Props) => {
   }, [isCopied]);
 
   if (embed.status === "error") {
-    return <EmbedErrorPlaceholder type="code" />;
+    return (
+      <EmbedErrorPlaceholder type="code">
+        <ErrorPlaceholder type="code" />
+        {children}
+      </EmbedErrorPlaceholder>
+    );
   }
 
   return (
-    <StyledFigure data-embed-type="code-block">
+    <StyledFigure data-embed-type="code-block" {...rest} ref={ref}>
       <StyledFigCaption>{embed.embedData.title || getTitleFromFormat(embed.embedData.codeFormat)}</StyledFigCaption>
       <CodeBlock
         highlightedCode={embed.status === "success" ? embed.data.highlightedCode : ""}
@@ -81,8 +86,9 @@ const CodeEmbed = ({ embed }: Props) => {
         {isCopied ? <CheckLine /> : <FileCopyLine />}
         {isCopied ? t("codeBlock.copiedCode") : t("codeBlock.copyCode")}
       </Button>
+      {children}
     </StyledFigure>
   );
-};
+});
 
 export default CodeEmbed;

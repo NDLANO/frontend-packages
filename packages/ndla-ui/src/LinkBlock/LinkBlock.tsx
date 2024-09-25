@@ -11,7 +11,7 @@ import { useMemo } from "react";
 import { ArrowRightLine } from "@ndla/icons/common";
 import { CalendarLine } from "@ndla/icons/editor";
 import { Heading } from "@ndla/primitives";
-import { SafeLink } from "@ndla/safelink";
+import { SafeLink, SafeLinkProps } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { LinkBlockEmbedData } from "@ndla/types-embed";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
@@ -73,7 +73,15 @@ interface Props extends Omit<LinkBlockEmbedData, "resource"> {
   articleLanguage?: string;
 }
 
-const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
+const LinkBlock = ({
+  title,
+  articleLanguage,
+  date,
+  url,
+  path,
+  children,
+  ...rest
+}: Omit<SafeLinkProps, "to"> & Props) => {
   const href = getPossiblyRelativeUrl(url, path);
   const formattedDate = useMemo(() => {
     if (!date) return null;
@@ -84,7 +92,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
     }).format(new Date(date));
   }, [date, articleLanguage]);
   return (
-    <StyledSafeLink to={href} data-embed-type="link-block">
+    <StyledSafeLink to={href} data-embed-type="link-block" {...rest}>
       <InfoWrapper>
         <Heading asChild consumeCss textStyle="title.medium">
           <h3 data-heading>{parse(title)}</h3>
@@ -97,6 +105,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
         )}
       </InfoWrapper>
       <ArrowRightLine data-forward />
+      {children}
     </StyledSafeLink>
   );
 };

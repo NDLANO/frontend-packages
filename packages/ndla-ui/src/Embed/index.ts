@@ -23,3 +23,4 @@ export { default as UuDisclaimerEmbed } from "./UuDisclaimerEmbed";
 export { default as CopyrightEmbed } from "./CopyrightEmbed";
 export { default as CodeEmbed } from "./CodeEmbed";
 export type { HeartButtonType, CanonicalUrlFuncs, RenderContext } from "./types";
+export { default as EmbedErrorPlaceholder, ErrorPlaceholder } from "./EmbedErrorPlaceholder";

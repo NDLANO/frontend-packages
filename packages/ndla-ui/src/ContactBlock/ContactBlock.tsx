@@ -6,6 +6,7 @@
  *
  */
 
+import { ComponentPropsWithoutRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -142,7 +143,7 @@ const StyledDescription = styled(Text, {
   },
 });
 
-interface Props {
+interface Props extends ComponentPropsWithoutRef<"div"> {
   image?: IImageMetaInformationV3;
   jobTitle: string;
   description: string;
@@ -163,10 +164,12 @@ export const ContactBlock = ({
   embedAlt,
   lang,
   backgroundColor = "strong",
+  children,
+  ...rest
 }: Props) => {
   const { t } = useTranslation();
   return (
-    <StyledWrapper data-embed-type="contact-block">
+    <StyledWrapper data-embed-type="contact-block" {...rest}>
       <ContentWrapper>
         <HeaderWrapper variant={backgroundColor} imageExists={!!image}>
           <Text lang={lang} fontWeight="bold" textStyle="heading.small">
@@ -191,6 +194,7 @@ export const ContactBlock = ({
           <LicenseContainerContent type="image" copyright={image.copyright} />
         </ImageWrapper>
       )}
+      {children}
     </StyledWrapper>
   );
 };

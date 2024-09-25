@@ -6,18 +6,18 @@
  *
  */
 
-import { useRef } from "react";
+import { ComponentPropsWithRef, forwardRef, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { VolumeUpFill } from "@ndla/icons/common";
 import { TooltipRoot, TooltipTrigger, TooltipContent, IconButton } from "@ndla/primitives";
 
-type Props = {
+interface Props extends ComponentPropsWithRef<"div"> {
   src: string;
   title: string;
   type?: "gloss" | "audio";
-};
+}
 
-const SpeechControl = ({ src, title, type = "audio" }: Props) => {
+const SpeechControl = forwardRef<HTMLDivElement, Props>(({ src, title, type = "audio", children, ...rest }, ref) => {
   const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -32,7 +32,7 @@ const SpeechControl = ({ src, title, type = "audio" }: Props) => {
     }
   };
   return (
-    <div data-embed-type="speech">
+    <div data-embed-type="speech" {...rest} ref={ref}>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <TooltipRoot>
@@ -43,8 +43,9 @@ const SpeechControl = ({ src, title, type = "audio" }: Props) => {
         </TooltipTrigger>
         <TooltipContent>{t(`${type}.play`)}</TooltipContent>
       </TooltipRoot>
+      {children}
     </div>
   );
-};
+});
 
 export default SpeechControl;

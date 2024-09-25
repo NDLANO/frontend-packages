@@ -6,22 +6,22 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ComponentPropsWithRef, ComponentPropsWithoutRef, ReactNode, forwardRef } from "react";
 import { CopyrightMetaData } from "@ndla/types-embed";
 import { EmbedByline } from "../LicenseByline";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   embed: CopyrightMetaData;
   children?: ReactNode;
 }
 
-const CopyrightEmbed = ({ embed, children }: Props) => {
+const CopyrightEmbed = forwardRef<HTMLElement, Props>(({ embed, children, ...rest }, ref) => {
   return (
-    <figure data-embed-type="copyright">
+    <figure data-embed-type="copyright" {...rest} ref={ref}>
       {children}
       <EmbedByline type="copyright" copyright={embed.embedData.copyright} />
     </figure>
   );
-};
+});
 
 export default CopyrightEmbed;

@@ -6,6 +6,7 @@
  *
  */
 
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { breakpoints } from "@ndla/core";
 import { ShareBoxLine } from "@ndla/icons/common";
 import { Heading, Image, Text } from "@ndla/primitives";
@@ -70,7 +71,7 @@ interface ImageMeta {
   alt: string;
 }
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"div"> {
   image: ImageMeta;
   title: string;
   caption: string;
@@ -78,27 +79,29 @@ interface Props {
   buttonText: string;
 }
 
-export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) => {
-  return (
-    <Container>
-      <StyledImage
-        src={image.src}
-        alt={image.alt}
-        sizes={`(min-width: ${breakpoints.desktop}) 150px, (max-width: ${breakpoints.tablet} ) 400px, 200px`}
-        variant="rounded"
-      />
-      <ContentWrapper>
-        <Heading textStyle="label.large" fontWeight="bold" asChild consumeCss>
-          <h3>{title}</h3>
-        </Heading>
-        <StyledText textStyle="body.medium">{caption}</StyledText>
-        <SafeLinkButton to={url} target="_blank" variant="secondary">
-          {buttonText}
-          <ShareBoxLine />
-        </SafeLinkButton>
-      </ContentWrapper>
-    </Container>
-  );
-};
+export const ResourceBox = forwardRef<HTMLDivElement, Props>(
+  ({ image, title, caption, url, buttonText, ...rest }, ref) => {
+    return (
+      <Container {...rest} ref={ref}>
+        <StyledImage
+          src={image.src}
+          alt={image.alt}
+          sizes={`(min-width: ${breakpoints.desktop}) 150px, (max-width: ${breakpoints.tablet} ) 400px, 200px`}
+          variant="rounded"
+        />
+        <ContentWrapper>
+          <Heading textStyle="label.large" fontWeight="bold" asChild consumeCss>
+            <h3>{title}</h3>
+          </Heading>
+          <StyledText textStyle="body.medium">{caption}</StyledText>
+          <SafeLinkButton to={url} target="_blank" variant="secondary">
+            {buttonText}
+            <ShareBoxLine />
+          </SafeLinkButton>
+        </ContentWrapper>
+      </Container>
+    );
+  },
+);
 
 export default ResourceBox;

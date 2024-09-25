@@ -6,10 +6,10 @@
  *
  */
 
-import { Children, HTMLAttributes, ReactNode } from "react";
+import { Children, ComponentPropsWithoutRef, ReactNode } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 
-interface Props extends HTMLAttributes<HTMLElement> {
+interface Props extends ComponentPropsWithoutRef<"nav"> {
   children: ReactNode;
 }
 

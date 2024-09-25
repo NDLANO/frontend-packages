@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useId, useMemo, useState } from "react";
+import { ComponentPropsWithRef, ReactNode, forwardRef, useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
@@ -130,7 +130,7 @@ const ShowMoreButton = styled(Button, {
 
 const DESCRIPTION_MAX_LENGTH = 200;
 
-type Props = {
+interface Props extends ComponentPropsWithRef<"div"> {
   src: string;
   title: string;
   subtitle?: {
@@ -144,79 +144,85 @@ type Props = {
     url: string;
     alt: string;
   };
-};
+}
 
-const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersion }: Props) => {
-  const { t } = useTranslation();
-  const [showTextVersion, setShowTextVersion] = useState(false);
-  const [showFullDescription, setShowFullDescription] = useState(false);
-  const truncatedDescription = useMemo(() => description?.slice(0, DESCRIPTION_MAX_LENGTH), [description]);
-  const textDescriptionId = useId();
+const AudioPlayer = forwardRef<HTMLDivElement, Props>(
+  ({ src, title, subtitle, speech, description, img, textVersion, children, ...rest }, ref) => {
+    const { t } = useTranslation();
+    const [showTextVersion, setShowTextVersion] = useState(false);
+    const [showFullDescription, setShowFullDescription] = useState(false);
+    const truncatedDescription = useMemo(() => description?.slice(0, DESCRIPTION_MAX_LENGTH), [description]);
+    const textDescriptionId = useId();
 
-  if (speech) {
-    return <SpeechControl src={src} title={title} />;
-  }
+    if (speech) {
+      return (
+        <SpeechControl src={src} title={title} {...rest} ref={ref}>
+          {children}
+        </SpeechControl>
+      );
+    }
 
-  const toggleTextVersion = () => {
-    setShowTextVersion((curr) => !curr);
-  };
+    const toggleTextVersion = () => {
+      setShowTextVersion((curr) => !curr);
+    };
 
-  const textVersionButton = (
-    <TextVersionButton
-      variant="secondary"
-      aria-expanded={showTextVersion}
-      aria-controls={textDescriptionId}
-      size="small"
-      onClick={toggleTextVersion}
-    >
-      {t(showTextVersion ? "audio.textVersion.close" : "audio.textVersion.heading")}
-    </TextVersionButton>
-  );
+    const textVersionButton = (
+      <TextVersionButton
+        variant="secondary"
+        aria-expanded={showTextVersion}
+        aria-controls={textDescriptionId}
+        size="small"
+        onClick={toggleTextVersion}
+      >
+        {t(showTextVersion ? "audio.textVersion.close" : "audio.textVersion.heading")}
+      </TextVersionButton>
+    );
 
-  return (
-    <AudioPlayerWrapper>
-      <InfoWrapper>
-        {img && (
-          <ImageWrapper>
-            <img src={img.url} alt={img.alt} />
-          </ImageWrapper>
-        )}
-        <TextWrapper data-has-image={!!img}>
-          <TitleWrapper>
-            <div>
-              {subtitle?.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
-              <Heading asChild consumeCss textStyle="title.large">
-                <h3>{title}</h3>
-              </Heading>
-            </div>
-            {!!textVersion && !img && textVersionButton}
-          </TitleWrapper>
-          {description && (
-            <Text textStyle="body.medium">
-              {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
-                ? description
-                : `${truncatedDescription}...`}
-              {description.length > DESCRIPTION_MAX_LENGTH && (
-                <ShowMoreButton variant="link" onClick={() => setShowFullDescription((p) => !p)}>
-                  {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
-                </ShowMoreButton>
-              )}
-            </Text>
+    return (
+      <AudioPlayerWrapper {...rest} ref={ref}>
+        <InfoWrapper>
+          {img && (
+            <ImageWrapper>
+              <img src={img.url} alt={img.alt} />
+            </ImageWrapper>
           )}
-          {!!textVersion && !!img && textVersionButton}
-        </TextWrapper>
-      </InfoWrapper>
-      <Controls src={src} title={title} />
-      {!!textVersion && (
-        <TextVersionWrapper id={textDescriptionId} hidden={!showTextVersion}>
-          <Heading asChild textStyle="title.medium" consumeCss>
-            <h4>{t("audio.textVersion.heading")}</h4>
-          </Heading>
-          <TextVersionText>{textVersion}</TextVersionText>
-        </TextVersionWrapper>
-      )}
-    </AudioPlayerWrapper>
-  );
-};
-
+          <TextWrapper data-has-image={!!img}>
+            <TitleWrapper>
+              <div>
+                {subtitle?.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle?.title}
+                <Heading asChild consumeCss textStyle="title.large">
+                  <h3>{title}</h3>
+                </Heading>
+              </div>
+              {!!textVersion && !img && textVersionButton}
+            </TitleWrapper>
+            {description && (
+              <Text textStyle="body.medium">
+                {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
+                  ? description
+                  : `${truncatedDescription}...`}
+                {description.length > DESCRIPTION_MAX_LENGTH && (
+                  <ShowMoreButton variant="link" onClick={() => setShowFullDescription((p) => !p)}>
+                    {t(`audio.${showFullDescription ? "readLessDescriptionLabel" : "readMoreDescriptionLabel"}`)}
+                  </ShowMoreButton>
+                )}
+              </Text>
+            )}
+            {!!textVersion && !!img && textVersionButton}
+          </TextWrapper>
+        </InfoWrapper>
+        <Controls src={src} title={title} />
+        {!!textVersion && (
+          <TextVersionWrapper id={textDescriptionId} hidden={!showTextVersion}>
+            <Heading asChild textStyle="title.medium" consumeCss>
+              <h4>{t("audio.textVersion.heading")}</h4>
+            </Heading>
+            <TextVersionText>{textVersion}</TextVersionText>
+          </TextVersionWrapper>
+        )}
+        {children}
+      </AudioPlayerWrapper>
+    );
+  },
+);
 export default AudioPlayer;

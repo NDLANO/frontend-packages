@@ -17,6 +17,7 @@ interface Props extends ComponentProps<"aside"> {
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  actionButtons?: ReactNode;
 }
 
 const StyledAside = styled("aside", {
@@ -112,7 +113,7 @@ const StyledIconButton = styled(IconButton, {
 // TODO: Consider moving the open trigger depending on whether the content is open or closed.
 
 const FactBox = forwardRef<HTMLElement, Props>(
-  ({ children, open, onOpenChange, defaultOpen = false, ...rest }, ref) => {
+  ({ children, open, onOpenChange, defaultOpen = false, actionButtons, ...rest }, ref) => {
     const { t } = useTranslation();
     const [state, setState] = useState<"open" | "closed">(defaultOpen ? "open" : "closed");
     const contentId = useId();
@@ -145,6 +146,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
         >
           <ArrowDownShortLine />
         </StyledIconButton>
+        {actionButtons}
         <StyledContent id={contentId} data-state={state} aria-hidden={state === "closed"} {...inertAttribute}>
           {children}
         </StyledContent>

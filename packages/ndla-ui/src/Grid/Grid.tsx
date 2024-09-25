@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 
 const GridContainer = styled("div", {
@@ -63,17 +63,21 @@ export interface GridProps {
   children?: ReactNode[];
 }
 
-export const Grid = ({ columns, border, children, background = "gray" }: GridProps) => {
-  const amountOfColumns = children?.length === 3 ? "3" : columns;
+export const Grid = forwardRef<HTMLDivElement, GridProps>(
+  ({ columns, border, children, background = "gray", ...rest }, ref) => {
+    const amountOfColumns = children?.length === 3 ? "3" : columns;
 
-  return (
-    <GridContainer
-      data-embed-type="grid"
-      border={border === "none" ? undefined : border}
-      columns={amountOfColumns}
-      background={background}
-    >
-      {children}
-    </GridContainer>
-  );
-};
+    return (
+      <GridContainer
+        data-embed-type="grid"
+        border={border === "none" ? undefined : border}
+        columns={amountOfColumns}
+        background={background}
+        {...rest}
+        ref={ref}
+      >
+        {children}
+      </GridContainer>
+    );
+  },
+);

@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { ReactNode } from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { ArrowRightLine } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
@@ -21,7 +21,7 @@ interface Image {
   alt: string;
 }
 
-interface Props {
+interface Props extends ComponentPropsWithoutRef<"div"> {
   title: string;
   description: string;
   headingLevel?: HeadingLevel;
@@ -31,7 +31,6 @@ interface Props {
   };
   image?: Image;
   imageSide?: CampaignBlockEmbedData["imageSide"];
-  className?: string;
   path?: string;
   background?: CampaignBlockEmbedData["background"];
 }
@@ -177,14 +176,15 @@ const CampaignBlock = ({
   headingLevel: InternalHeading = "h2",
   url,
   path,
-  className,
   background,
+  children,
+  ...rest
 }: Props) => {
   const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
 
   return (
-    <Wrapper>
-      <Container className={className} data-embed-type="campaign-block" imageSide={imageSide} background={background}>
+    <Wrapper data-embed-type="campaign-block" {...rest}>
+      <Container imageSide={imageSide} background={background}>
         {imageSide === "left" && imageComponent}
         <ContentWrapper>
           <Text asChild consumeCss textStyle="heading.small">
@@ -200,6 +200,7 @@ const CampaignBlock = ({
         </ContentWrapper>
         {imageSide !== "left" && imageComponent}
       </Container>
+      {children}
     </Wrapper>
   );
 };

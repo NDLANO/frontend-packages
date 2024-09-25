@@ -6,12 +6,14 @@
  *
  */
 
+import parse from "html-react-parser";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { H5pMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import EmbedErrorPlaceholder, { ErrorPlaceholder } from "./EmbedErrorPlaceholder";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   embed: H5pMetaData;
 }
 
@@ -33,20 +35,31 @@ const FigureOembed = styled(Figure, {
   },
 });
 
-const H5pEmbed = ({ embed }: Props) => {
+const H5pEmbed = forwardRef<HTMLElement, Props>(({ embed, children, ...rest }, ref) => {
   if (embed.status === "error") {
-    return <EmbedErrorPlaceholder type="h5p" />;
+    return (
+      <EmbedErrorPlaceholder type="h5p" {...rest} ref={ref}>
+        <ErrorPlaceholder type="h5p" />
+        {children}
+      </EmbedErrorPlaceholder>
+    );
   }
 
   if (embed.data.oembed) {
-    return <FigureOembed data-embed-type="h5p" dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }} />;
+    return (
+      <FigureOembed {...rest} data-embed-type="h5p" ref={ref}>
+        {!!embed.data.oembed.html && parse(embed.data.oembed.html)}
+        {children}
+      </FigureOembed>
+    );
   }
 
   return (
-    <StyledFigure data-embed-type="h5p">
+    <StyledFigure data-embed-type="h5p" {...rest} ref={ref}>
+      {children}
       <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
     </StyledFigure>
   );
-};
+});
 
 export default H5pEmbed;

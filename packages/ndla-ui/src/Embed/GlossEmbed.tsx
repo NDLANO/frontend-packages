@@ -6,16 +6,16 @@
  *
  */
 
-import { useRef } from "react";
+import { ComponentPropsWithRef, ForwardedRef, forwardRef, useRef } from "react";
 import { Portal } from "@ark-ui/react";
 import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import EmbedErrorPlaceholder, { ErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import { InlineTriggerButton } from "./InlineTriggerButton";
 import { Gloss } from "../Gloss";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   embed: ConceptMetaData;
 }
 
@@ -25,13 +25,17 @@ const StyledPopoverContent = styled(PopoverContent, {
   },
 });
 
-export const GlossEmbed = ({ embed }: Props) => {
+export const GlossEmbed = forwardRef<HTMLElement, Props>(({ embed, children, ...rest }, ref) => {
   const contentRef = useRef<HTMLDivElement>(null);
   if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;
   }
   if (embed.status === "error" || !embed.data.concept.glossData) {
-    return <EmbedErrorPlaceholder type="gloss" />;
+    return (
+      <EmbedErrorPlaceholder type="gloss" ref={ref} {...rest}>
+        <ErrorPlaceholder type="gloss" />
+      </EmbedErrorPlaceholder>
+    );
   }
 
   const { concept, visualElement } = embed.data;
@@ -62,8 +66,9 @@ export const GlossEmbed = ({ embed }: Props) => {
   }
 
   return (
-    <Figure data-embed-type="gloss">
+    <Figure data-embed-type="gloss" ref={ref} {...rest}>
       <Gloss glossData={concept.glossData} title={concept.title} audio={audio} variant="bordered" />
+      {children}
     </Figure>
   );
-};
+});

@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { InformationLine } from "@ndla/icons/common";
 import { MessageBox } from "@ndla/primitives";
@@ -14,7 +14,7 @@ import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { UuDisclaimerMetaData } from "@ndla/types-embed";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"div"> {
   embed: UuDisclaimerMetaData;
   children?: ReactNode;
 }
@@ -31,7 +31,7 @@ const Disclaimer = styled("div", {
   },
 });
 
-const UuDisclaimerEmbed = ({ embed, children }: Props) => {
+const UuDisclaimerEmbed = forwardRef<HTMLDivElement, Props>(({ embed, children, ...rest }, ref) => {
   const { t } = useTranslation();
 
   if (embed.status === "error") {
@@ -50,7 +50,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   ) : null;
 
   return (
-    <div role="region" data-embed-type="uu-disclaimer">
+    <div role="region" data-embed-type="uu-disclaimer" {...rest} ref={ref}>
       <StyledMessageBox variant="warning" contentEditable={false}>
         <InformationLine />
         <Disclaimer>
@@ -61,6 +61,6 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
       {children}
     </div>
   );
-};
+});
 
 export default UuDisclaimerEmbed;

@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { ComponentPropsWithRef, forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -17,7 +17,7 @@ import { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   embed: BrightcoveMetaData;
   renderContext?: RenderContext;
   lang?: string;
@@ -57,74 +57,78 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? "640",
   };
 };
-const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
-  const [showOriginalVideo, setShowOriginalVideo] = useState(true);
-  const { t } = useTranslation();
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const { embedData } = embed;
-  const fallbackTitle = `${t("embed.type.video")}: ${embedData.videoid}`;
-  const parsedDescription = useMemo(() => {
-    if (embed.embedData.caption || renderContext === "article") {
-      return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
-    } else if (embed.status === "success" && embed.data.description) {
-      return parse(embed.data.description);
-    }
-  }, [embed, renderContext]);
+const BrightcoveEmbed = forwardRef<HTMLElement, Props>(
+  ({ embed, renderContext = "article", lang, children, ...rest }, ref) => {
+    const [showOriginalVideo, setShowOriginalVideo] = useState(true);
+    const { t } = useTranslation();
+    const iframeRef = useRef<HTMLIFrameElement>(null);
+    const { embedData } = embed;
+    const fallbackTitle = `${t("embed.type.video")}: ${embedData.videoid}`;
+    const parsedDescription = useMemo(() => {
+      if (embed.embedData.caption || renderContext === "article") {
+        return embed.embedData.caption ? parse(embed.embedData.caption) : undefined;
+      } else if (embed.status === "success" && embed.data.description) {
+        return parse(embed.data.description);
+      }
+    }, [embed, renderContext]);
 
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (iframe) {
-      const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
-      iframe.style.aspectRatio = `${width}/${height}`;
-      iframe.width = "";
-      iframe.height = "";
+    useEffect(() => {
+      const iframe = iframeRef.current;
+      if (iframe) {
+        const [width, height] = [parseInt(iframe.width), parseInt(iframe.height)];
+        iframe.style.aspectRatio = `${width}/${height}`;
+        iframe.width = "";
+        iframe.height = "";
+      }
+    }, []);
+    if (embed.status === "error") {
+      return (
+        <EmbedErrorPlaceholder type="video" {...rest} ref={ref}>
+          <BrightcoveIframe
+            ref={iframeRef}
+            title={embedData.alt ?? fallbackTitle}
+            aria-label={embedData.alt ?? fallbackTitle}
+            {...getIframeProps(embedData, [])}
+            allow="fullscreen; encrypted-media"
+          />
+          {children}
+        </EmbedErrorPlaceholder>
+      );
     }
-  }, []);
-  if (embed.status === "error") {
+    const { data } = embed;
+
+    const linkedVideoId = isNumeric(data.link?.text) ? data.link?.text : undefined;
+
+    const originalVideoProps = getIframeProps(embedData, data.sources);
+    const alternativeVideoProps = linkedVideoId
+      ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
+      : undefined;
+
+    const licenseProps = licenseAttributes(data?.copyright?.license.license, lang, embedData.pageUrl);
+
     return (
-      <EmbedErrorPlaceholder type="video">
-        <BrightcoveIframe
-          ref={iframeRef}
-          title={embedData.alt ?? fallbackTitle}
-          aria-label={embedData.alt ?? fallbackTitle}
-          {...getIframeProps(embedData, [])}
-          allow="fullscreen; encrypted-media"
-        />
-      </EmbedErrorPlaceholder>
+      <Figure data-embed-type="brightcove" {...licenseProps} {...rest} ref={ref}>
+        <div className="brightcove-video">
+          <BrightcoveIframe
+            ref={iframeRef}
+            className="original"
+            title={embedData.alt ?? data.name ?? fallbackTitle}
+            aria-label={embedData.alt ?? data.name ?? fallbackTitle}
+            {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
+            allow="fullscreen; encrypted-media"
+          />
+        </div>
+        <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription}>
+          {!!linkedVideoId && (
+            <LinkedVideoButton size="small" variant="secondary" onClick={() => setShowOriginalVideo((p) => !p)}>
+              {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}
+            </LinkedVideoButton>
+          )}
+        </EmbedByline>
+        {children}
+      </Figure>
     );
-  }
-  const { data } = embed;
-
-  const linkedVideoId = isNumeric(data.link?.text) ? data.link?.text : undefined;
-
-  const originalVideoProps = getIframeProps(embedData, data.sources);
-  const alternativeVideoProps = linkedVideoId
-    ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
-    : undefined;
-
-  const licenseProps = licenseAttributes(data?.copyright?.license.license, lang, embedData.pageUrl);
-
-  return (
-    <Figure data-embed-type="brightcove" {...licenseProps}>
-      <div className="brightcove-video">
-        <BrightcoveIframe
-          ref={iframeRef}
-          className="original"
-          title={embedData.alt ?? data.name ?? fallbackTitle}
-          aria-label={embedData.alt ?? data.name ?? fallbackTitle}
-          {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
-          allow="fullscreen; encrypted-media"
-        />
-      </div>
-      <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription}>
-        {!!linkedVideoId && (
-          <LinkedVideoButton size="small" variant="secondary" onClick={() => setShowOriginalVideo((p) => !p)}>
-            {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}
-          </LinkedVideoButton>
-        )}
-      </EmbedByline>
-    </Figure>
-  );
-};
+  },
+);
 
 export default BrightcoveEmbed;

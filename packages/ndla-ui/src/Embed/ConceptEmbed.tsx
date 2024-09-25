@@ -7,12 +7,12 @@
  */
 
 import parse from "html-react-parser";
-import { forwardRef, useMemo, useRef } from "react";
+import { ComponentPropsWithRef, forwardRef, useMemo, useRef } from "react";
 import { Portal } from "@ark-ui/react";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import EmbedErrorPlaceholder, { ErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import { GlossEmbed } from "./GlossEmbed";
 import { InlineTriggerButton } from "./InlineTriggerButton";
 import { RenderContext } from "./types";
@@ -24,7 +24,7 @@ interface BaseProps {
   previewAlt?: boolean;
 }
 
-interface Props extends BaseProps {
+interface Props extends BaseProps, ComponentPropsWithRef<"figure"> {
   embed: ConceptMetaData;
 }
 
@@ -36,56 +36,78 @@ const StyledPopoverContent = styled(PopoverContent, {
   },
 });
 
-export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) => {
-  const parsedContent = useMemo(() => {
-    if (embed.status === "error" || !embed.data.concept.content) return undefined;
-    return parse(embed.data.concept.content.htmlContent);
-  }, [embed]);
+export const ConceptEmbed = forwardRef<HTMLElement, Props>(
+  ({ embed, renderContext, lang, previewAlt, children, ...rest }, ref) => {
+    const parsedContent = useMemo(() => {
+      if (embed.status === "error" || !embed.data.concept.content) return undefined;
+      return parse(embed.data.concept.content.htmlContent);
+    }, [embed]);
 
-  if (embed.status === "error" && embed.embedData.type === "inline") {
-    return <span>{embed.embedData.linkText}</span>;
-  }
-  if (embed.status === "error") {
-    // TODO: This could be either concept or gloss. We don't know if it errors out. :)
-    return <EmbedErrorPlaceholder type="gloss" />;
-  }
+    if (embed.status === "error" && embed.embedData.type === "inline") {
+      return (
+        <span {...rest} ref={ref}>
+          {children}
+          {embed.embedData.linkText}
+        </span>
+      );
+    }
+    if (embed.status === "error") {
+      // TODO: This could be either concept or gloss. We don't know if it errors out. :)
+      return (
+        <EmbedErrorPlaceholder type="gloss" {...rest} ref={ref}>
+          {children}
+          <ErrorPlaceholder type="gloss" />
+        </EmbedErrorPlaceholder>
+      );
+    }
 
-  const { concept, visualElement } = embed.data;
+    const { concept, visualElement } = embed.data;
 
-  // TODO: Consider whether we should do this in article-converter instead.
-  if (embed.data.concept.glossData) {
-    return <GlossEmbed embed={embed} />;
-  }
+    // TODO: Consider whether we should do this in article-converter instead.
+    if (embed.data.concept.glossData) {
+      return (
+        <GlossEmbed embed={embed} {...rest} ref={ref}>
+          {children}
+        </GlossEmbed>
+      );
+    }
 
-  if (embed.embedData.type === "inline") {
+    if (embed.embedData.type === "inline") {
+      return (
+        <InlineConcept
+          {...rest}
+          previewAlt={previewAlt}
+          linkText={embed.embedData.linkText}
+          copyright={concept.copyright}
+          visualElement={visualElement}
+          lang={lang}
+          title={concept.title.title}
+          source={concept.source}
+          ref={ref}
+        >
+          {children}
+          {parsedContent}
+        </InlineConcept>
+      );
+    }
+
     return (
-      <InlineConcept
+      <BlockConcept
+        {...rest}
         previewAlt={previewAlt}
-        linkText={embed.embedData.linkText}
         copyright={concept.copyright}
         visualElement={visualElement}
         lang={lang}
-        title={concept.title.title}
+        title={renderContext === "embed" ? undefined : concept.title.title}
         source={concept.source}
+        ref={ref}
       >
+        {children}
         {parsedContent}
-      </InlineConcept>
+      </BlockConcept>
     );
-  }
-
-  return (
-    <BlockConcept
-      previewAlt={previewAlt}
-      copyright={concept.copyright}
-      visualElement={visualElement}
-      lang={lang}
-      title={renderContext === "embed" ? undefined : concept.title.title}
-      source={concept.source}
-    >
-      {parsedContent}
-    </BlockConcept>
-  );
-};
+  },
+);
 
 export interface InlineConceptProps extends ConceptProps, BaseProps {
   linkText?: string;

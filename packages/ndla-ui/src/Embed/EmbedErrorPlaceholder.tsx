@@ -6,21 +6,21 @@
  *
  */
 
-import { ReactNode } from "react";
+import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import { Report } from "@ndla/icons/common";
 import { Figure, type FigureFloat, type FigureSize } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { EmbedByline } from "../LicenseByline";
 import { EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   type: EmbedBylineErrorProps["type"];
   figureType?: FigureSize;
   float?: FigureFloat;
   children?: ReactNode;
 }
 
-const ErrorPlaceholder = styled("div", {
+const StyledErrorPlaceholder = styled("div", {
   base: {
     display: "flex",
     alignItems: "center",
@@ -46,17 +46,25 @@ const StyledFigure = styled(Figure, {
   },
 });
 
-const EmbedErrorPlaceholder = ({ type, children, figureType, float }: Props) => {
+interface ErrorPlaceholderProps extends ComponentPropsWithRef<"div"> {
+  type: EmbedBylineErrorProps["type"];
+}
+
+export const ErrorPlaceholder = forwardRef<HTMLDivElement, ErrorPlaceholderProps>(
+  ({ children, type, ...rest }, ref) => (
+    <StyledErrorPlaceholder data-embed-type={type} {...rest} ref={ref}>
+      {children ?? <Report />}
+    </StyledErrorPlaceholder>
+  ),
+);
+
+const EmbedErrorPlaceholder = forwardRef<HTMLElement, Props>(({ type, children, figureType, float, ...rest }, ref) => {
   return (
-    <StyledFigure size={figureType} float={float} data-embed-type={type}>
-      {children ?? (
-        <ErrorPlaceholder data-embed-type={type}>
-          <Report />
-        </ErrorPlaceholder>
-      )}
+    <StyledFigure size={figureType} float={float} data-embed-type={type} {...rest} ref={ref}>
+      {children}
       <EmbedByline error type={type} />
     </StyledFigure>
   );
-};
+});
 
 export default EmbedErrorPlaceholder;

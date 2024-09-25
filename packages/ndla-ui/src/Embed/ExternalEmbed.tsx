@@ -6,15 +6,17 @@
  *
  */
 
-import { useEffect, useRef } from "react";
+import parse from "html-react-parser";
+import { ComponentPropsWithRef, forwardRef, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { OembedMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { composeRefs } from "@ndla/util";
+import EmbedErrorPlaceholder, { ErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import { ResourceBox } from "../ResourceBox";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"figure"> {
   embed: OembedMetaData;
 }
 
@@ -27,7 +29,7 @@ const StyledFigure = styled(Figure, {
   },
 });
 
-const ExternalEmbed = ({ embed }: Props) => {
+const ExternalEmbed = forwardRef<HTMLElement, Props>(({ embed, children, ...rest }, ref) => {
   const { t } = useTranslation();
   const figRef = useRef<HTMLElement>(null);
 
@@ -42,7 +44,12 @@ const ExternalEmbed = ({ embed }: Props) => {
   }, []);
 
   if (embed.status === "error") {
-    return <EmbedErrorPlaceholder type="external" />;
+    return (
+      <EmbedErrorPlaceholder type="external" {...rest} ref={ref}>
+        <ErrorPlaceholder type="external" />
+        {children}
+      </EmbedErrorPlaceholder>
+    );
   }
 
   const { embedData, data } = embed;
@@ -53,7 +60,7 @@ const ExternalEmbed = ({ embed }: Props) => {
       alt: embedData.alt !== undefined ? embedData.alt : data.iframeImage?.alttext?.alttext ?? "",
     };
     return (
-      <Figure data-embed-type="external">
+      <Figure data-embed-type="external" {...rest} ref={ref}>
         <ResourceBox
           image={image}
           title={embedData.title ?? ""}
@@ -61,17 +68,17 @@ const ExternalEmbed = ({ embed }: Props) => {
           caption={embedData.caption ?? ""}
           buttonText={t("license.other.itemImage.ariaLabel")}
         />
+        {children}
       </Figure>
     );
   }
 
   return (
-    <StyledFigure
-      data-embed-type="external"
-      ref={figRef}
-      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }}
-    />
+    <StyledFigure data-embed-type="external" ref={composeRefs(figRef, ref)} {...rest}>
+      {!!data.oembed.html && parse(data.oembed.html)}
+      {children}
+    </StyledFigure>
   );
-};
+});
 
 export default ExternalEmbed;

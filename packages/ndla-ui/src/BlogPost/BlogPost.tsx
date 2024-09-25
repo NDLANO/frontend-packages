@@ -9,12 +9,12 @@
 import parse from "html-react-parser";
 import { useTranslation } from "react-i18next";
 import { Heading } from "@ndla/primitives";
-import { SafeLink } from "@ndla/safelink";
+import { SafeLink, SafeLinkProps } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { HeadingLevel } from "../types";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
-export interface Props {
+export interface Props extends Omit<SafeLinkProps, "to"> {
   title: string;
   author?: string;
   url: string;
@@ -106,17 +106,28 @@ const StyledHeading = styled(Heading, {
   },
 });
 
-const BlogPost = ({ title, author, url, metaImage, headingLevel: Heading = "h3", size = "normal", path }: Props) => {
+const BlogPost = ({
+  title,
+  author,
+  url,
+  metaImage,
+  headingLevel: Heading = "h3",
+  size = "normal",
+  path,
+  children,
+  ...rest
+}: Props) => {
   const { t } = useTranslation();
   const href = getPossiblyRelativeUrl(url, path);
   const imageWidth = size === "large" ? 532 : 350;
   return (
-    <Container data-size={size} to={href} size={size} data-embed-type="blog-post">
+    <Container data-size={size} to={href} size={size} data-embed-type="blog-post" {...rest}>
       <StyledHeading className="blog-title" asChild consumeCss textStyle="title.large">
         <Heading>{parse(title)}</Heading>
       </StyledHeading>
       <StyledImg src={`${metaImage.url}?width=${imageWidth}`} alt={metaImage.alt} />
       {!!author && <AuthorContainer aria-label={t("article.writtenBy", { authors: author })}>{author}</AuthorContainer>}
+      {children}
     </Container>
   );
 };

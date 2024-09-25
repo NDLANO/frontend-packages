@@ -7,6 +7,7 @@
  */
 
 import parse from "html-react-parser";
+import { ComponentPropsWithoutRef } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 
 const ContentWrapper = styled("div", {
@@ -40,7 +41,7 @@ const SubTitleWrapper = styled("div", {
   },
 });
 
-interface Props {
+interface Props extends ComponentPropsWithoutRef<"div"> {
   image?: {
     src?: string;
     alt?: string;
@@ -49,12 +50,13 @@ interface Props {
   subtitle: string;
 }
 
-const KeyFigure = ({ image, title, subtitle }: Props) => {
+const KeyFigure = ({ image, title, subtitle, children, ...rest }: Props) => {
   return (
-    <ContentWrapper data-embed-type="key-figure">
+    <ContentWrapper data-embed-type="key-figure" {...rest}>
       {image && <StyledImage src={`${image?.src}?width=150`} width={150} height={150} alt={image?.alt} />}
       <TitleWrapper>{parse(title)}</TitleWrapper>
       <SubTitleWrapper>{parse(subtitle)}</SubTitleWrapper>
+      {children}
     </ContentWrapper>
   );
 };

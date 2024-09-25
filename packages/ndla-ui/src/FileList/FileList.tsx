@@ -6,21 +6,25 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { ark } from "@ark-ui/react";
 import { Heading } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 
-interface Props extends ComponentPropsWithoutRef<"div"> {}
+interface Props extends ComponentPropsWithRef<"div"> {}
 
-export const FileListWrapper = styled("div", {
+const StyledFileListWrapper = styled("div", {
   base: {
     display: "flex",
     flexDirection: "column",
     gap: "xsmall",
   },
 });
+
+export const FileListWrapper = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>((props, ref) => (
+  <StyledFileListWrapper ref={ref} {...props} data-embed-type="file-list" />
+));
 
 export const FileListItem = styled(
   ark.li,
@@ -41,14 +45,14 @@ export const FileListItem = styled(
   { baseComponent: true },
 );
 
-export const FileListEmbed = ({ children, ...rest }: Props) => {
+export const FileListEmbed = forwardRef<HTMLDivElement, Props>(({ children, ...rest }, ref) => {
   const { t } = useTranslation();
   return (
-    <FileListWrapper {...rest} data-embed-type="file-list">
+    <FileListWrapper {...rest} ref={ref}>
       <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
         <h3>{t("files")}</h3>
       </Heading>
       <ul>{children}</ul>
     </FileListWrapper>
   );
-};
+});

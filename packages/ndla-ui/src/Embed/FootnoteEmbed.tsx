@@ -6,11 +6,12 @@
  *
  */
 
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { styled } from "@ndla/styled-system/jsx";
 import { FootnoteMetaData } from "@ndla/types-embed";
 
-interface Props {
+interface Props extends ComponentPropsWithRef<"span"> {
   embed: FootnoteMetaData;
 }
 
@@ -23,19 +24,25 @@ const StyledSup = styled("sup", {
   },
 });
 
-const FootnoteEmbed = ({ embed }: Props) => {
+const FootnoteEmbed = forwardRef<HTMLSpanElement, Props>(({ embed, children, ...rest }, ref) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
-    return <div>{t("error")}</div>;
+    return (
+      <span {...rest} ref={ref}>
+        {t("error")}
+        {children}
+      </span>
+    );
   }
 
   return (
-    <span id={`ref${embed.data.entryNum}`} data-embed-type="footnote">
+    <span id={`ref${embed.data.entryNum}`} data-embed-type="footnote" {...rest} ref={ref}>
       <StyledSup>
         <a href={`#note${embed.data.entryNum}`} target="_self">{`[${embed.data.entryNum}]`}</a>
       </StyledSup>
+      {children}
     </span>
   );
-};
+});
 
 export default FootnoteEmbed;

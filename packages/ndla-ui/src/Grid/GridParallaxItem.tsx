@@ -6,7 +6,7 @@
  *
  */
 
-import { HTMLAttributes } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 
 const StyledGridParallaxItem = styled("div", {
@@ -19,8 +19,10 @@ const StyledGridParallaxItem = styled("div", {
   },
 });
 
-export const GridParallaxItem = ({ children, ...rest }: HTMLAttributes<HTMLDivElement>) => (
-  <StyledGridParallaxItem {...rest} data-embed-type="grid-parallax">
-    <div>{children}</div>
-  </StyledGridParallaxItem>
+export const GridParallaxItem = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(
+  ({ children, ...rest }, ref) => (
+    <StyledGridParallaxItem {...rest} data-embed-type="grid-parallax" ref={ref}>
+      <div>{children}</div>
+    </StyledGridParallaxItem>
+  ),
 );

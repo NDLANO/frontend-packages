@@ -6,7 +6,7 @@
  *
  */
 
-import { Children, ComponentPropsWithoutRef, ReactNode, useMemo, useState } from "react";
+import { Children, ComponentPropsWithRef, ReactNode, forwardRef, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ExternalLinkLine } from "@ndla/icons/common";
 import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla/primitives";
@@ -107,42 +107,38 @@ const StyledButton = styled(Button, {
   },
 });
 
-interface Props extends ComponentPropsWithoutRef<"section"> {
+interface Props extends ComponentPropsWithRef<"section"> {
   children?: JSX.Element[];
   articleCount?: number;
   headingLevel?: HeadingLevel;
   headingButtons?: ReactNode;
 }
 
-export const RelatedArticleList = ({
-  children = [],
-  articleCount,
-  headingLevel: HeadingElement = "h2",
-  headingButtons,
-  ...rest
-}: Props) => {
-  const [expanded, setExpanded] = useState(false);
-  const { t } = useTranslation();
-  const childCount = useMemo(() => articleCount ?? Children.count(children), [children, articleCount]);
-  const childrenToShow = useMemo(
-    () => (childCount > 2 && !expanded ? children?.slice(0, 2) : children),
-    [childCount, children, expanded],
-  );
+export const RelatedArticleList = forwardRef<HTMLElement, Props>(
+  ({ children = [], articleCount, headingLevel: HeadingElement = "h2", headingButtons, ...rest }, ref) => {
+    const [expanded, setExpanded] = useState(false);
+    const { t } = useTranslation();
+    const childCount = useMemo(() => articleCount ?? Children.count(children), [children, articleCount]);
+    const childrenToShow = useMemo(
+      () => (childCount > 2 && !expanded ? children?.slice(0, 2) : children),
+      [childCount, children, expanded],
+    );
 
-  return (
-    <StyledSection {...rest} data-embed-type="related-content-list">
-      <HeadingWrapper>
-        <Heading asChild consumeCss textStyle="title.large" fontWeight="bold">
-          <HeadingElement>{t("related.title")}</HeadingElement>
-        </Heading>
-        {headingButtons}
-      </HeadingWrapper>
-      <ArticlesWrapper>{childrenToShow}</ArticlesWrapper>
-      {childCount > 2 ? (
-        <StyledButton variant="secondary" onClick={() => setExpanded((p) => !p)}>
-          {t(`related.show${expanded ? "Less" : "More"}`)}
-        </StyledButton>
-      ) : null}
-    </StyledSection>
-  );
-};
+    return (
+      <StyledSection {...rest} ref={ref} data-embed-type="related-content-list">
+        <HeadingWrapper>
+          <Heading asChild consumeCss textStyle="title.large" fontWeight="bold">
+            <HeadingElement>{t("related.title")}</HeadingElement>
+          </Heading>
+          {headingButtons}
+        </HeadingWrapper>
+        <ArticlesWrapper>{childrenToShow}</ArticlesWrapper>
+        {childCount > 2 ? (
+          <StyledButton variant="secondary" onClick={() => setExpanded((p) => !p)}>
+            {t(`related.show${expanded ? "Less" : "More"}`)}
+          </StyledButton>
+        ) : null}
+      </StyledSection>
+    );
+  },
+);

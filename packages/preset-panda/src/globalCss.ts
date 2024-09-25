@@ -111,12 +111,6 @@ export const globalCss = defineGlobalStyles({
           marginBlockStart: "xsmall",
           marginBlockEnd: "xsmall",
         },
-        "& > :is(:first-child)": {
-          marginBlockStart: "xxlarge",
-          tabletDown: {
-            marginBlockStart: "xlarge",
-          },
-        },
       },
     '& [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"], [data-embed-type="uu-disclaimer"], details, blockquote':
       {

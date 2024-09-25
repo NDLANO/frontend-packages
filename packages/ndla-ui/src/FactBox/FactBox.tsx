@@ -54,9 +54,6 @@ const StyledContent = styled("div", {
     position: "relative",
     width: "100%",
     overflow: "hidden",
-    "& > ol, & > ul": {
-      marginInlineStart: "large",
-    },
     // Reset the top margin of the very first child.
     "& :first-child": {
       marginBlockStart: "0",

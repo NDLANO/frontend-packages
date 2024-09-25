@@ -301,3 +301,18 @@ export const WithParagraphs: StoryFn = () => (
     </li>
   </OrderedList>
 );
+
+export const ListsBelowEachOther: StoryFn = () => (
+  <>
+    <OrderedList>
+      <li>Listepunkt 1</li>
+      <li>Listepunkt 2</li>
+      <li>Listepunkt 3</li>
+    </OrderedList>
+    <OrderedList variant="letters">
+      <li>Listepunkt 1</li>
+      <li>Listepunkt 2</li>
+      <li>Listepunkt 3</li>
+    </OrderedList>
+  </>
+);

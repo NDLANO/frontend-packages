@@ -1437,9 +1437,6 @@ const messages = {
       pinyin: "Pinyin",
     },
   },
-  uuDisclaimer: {
-    alternative: "You can find alternative content in the article",
-  },
   wordClass: {
     [wordClass.wordClass.adjective]: "Adjective",
     [wordClass.wordClass.adverb]: "Adverb",

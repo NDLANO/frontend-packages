@@ -1441,9 +1441,6 @@ const messages = {
       pinyin: "Pinyin",
     },
   },
-  uuDisclaimer: {
-    alternative: "Du kan finne alternativt innhold i artikkelen",
-  },
   wordClass: {
     [wordClass.wordClass.adjective]: "Adjektiv",
     [wordClass.wordClass.adverb]: "Adverb",

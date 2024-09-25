@@ -7,7 +7,6 @@
  */
 
 import { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
 import { InformationLine } from "@ndla/icons/common";
 import { MessageBox } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
@@ -31,10 +30,13 @@ const Disclaimer = styled("div", {
     textStyle: "body.medium",
   },
 });
+const StyledSafeLink = styled(SafeLink, {
+  base: {
+    paddingInlineStart: "4xsmall",
+  },
+});
 
 const UuDisclaimerEmbed = ({ embed, children }: Props) => {
-  const { t } = useTranslation();
-
   if (embed.status === "error") {
     return null;
   }
@@ -42,12 +44,9 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   const { embedData, data } = embed;
 
   const disclaimerLink = data?.disclaimerLink ? (
-    <>
-      {` ${t("uuDisclaimer.alternative")} `}
-      <SafeLink to={data.disclaimerLink.href} target="_blank" rel="noopener noreferrer">
-        {data.disclaimerLink.text}
-      </SafeLink>
-    </>
+    <StyledSafeLink to={data.disclaimerLink.href} target="_blank" rel="noopener noreferrer">
+      {data.disclaimerLink.text}
+    </StyledSafeLink>
   ) : null;
 
   return (

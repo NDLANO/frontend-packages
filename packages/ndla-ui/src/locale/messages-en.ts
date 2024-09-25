@@ -1247,11 +1247,8 @@ const messages = {
         "Learning paths and multidisciplinary cases cannot be shown directly in a shared folder. You can open the learning path in a new tab by clicking the link in the navigation menu to the left.",
       drawerButton: "Show folders and resources",
       drawerTitle: "Folders and resources",
-      description: {
-        all: "In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.\n\nYou can use the menu to navigate through the articles.",
-        info1:
-          "In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.",
-      },
+      description:
+        "In this folder you find articles and tasks from NDLA. The articles have been collected and placed in order by a teacher.",
       willOpenInNewTab: "Opens in a new tab.",
     },
     myPage: {

@@ -152,6 +152,7 @@ const ImageSearch = ({
 
   const handleSubmit = (e: KeyboardEvent<HTMLInputElement> | FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.stopPropagation();
     searchImages(queryObject);
   };
 

@@ -135,6 +135,7 @@ export const listItemRecipe = sva({
           "--background-current": "colors.surface.action.myNdla.current",
           "--border-hover": "colors.stroke.subtle",
           "--color-current-hover": "colors.text.default",
+          "--border-color-current": "colors.stroke.subtle",
         },
       },
     },

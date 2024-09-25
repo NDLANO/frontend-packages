@@ -31,6 +31,7 @@ export {
   CopyrightEmbed,
   CodeEmbed,
   InlineTriggerButton,
+  EmbedWrapper,
 } from "./Embed";
 
 export { LicenseLink, EmbedByline } from "./LicenseByline";

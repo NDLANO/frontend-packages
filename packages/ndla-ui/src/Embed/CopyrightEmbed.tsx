@@ -7,6 +7,7 @@
  */
 
 import { ReactNode } from "react";
+import { styled } from "@ndla/styled-system/jsx";
 import { CopyrightMetaData } from "@ndla/types-embed";
 import { EmbedByline } from "../LicenseByline";
 
@@ -15,10 +16,16 @@ interface Props {
   children?: ReactNode;
 }
 
+const StyledCopyrightContent = styled("div", {
+  base: {
+    marginBlockEnd: "xsmall",
+  },
+});
+
 const CopyrightEmbed = ({ embed, children }: Props) => {
   return (
     <figure data-embed-type="copyright">
-      {children}
+      <StyledCopyrightContent data-copyright-content="">{children}</StyledCopyrightContent>
       <EmbedByline type="copyright" copyright={embed.embedData.copyright} />
     </figure>
   );

@@ -23,6 +23,7 @@ const StyledMessageBox = styled(MessageBox, {
   base: {
     display: "flex",
     alignItems: "center",
+    marginBlockEnd: "xsmall",
   },
 });
 const Disclaimer = styled("div", {
@@ -58,7 +59,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
           {disclaimerLink}
         </Disclaimer>
       </StyledMessageBox>
-      {children}
+      <div data-uu-content="">{children}</div>
     </div>
   );
 };

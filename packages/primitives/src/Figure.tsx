@@ -84,24 +84,24 @@ const figureRecipe = cva({
       float: "left",
       size: ["medium", "small", "xsmall"],
       css: {
-        paddingInlineEnd: "medium",
-        tabletDown: { paddingInlineEnd: "0" },
+        marginInlineEnd: "medium",
+        tabletDown: { marginInlineEnd: "0" },
       },
     },
     {
       float: "right",
       size: ["medium", "small", "xsmall"],
       css: {
-        paddingInlineStart: "medium",
-        tabletDown: { paddingInlineStart: "0" },
+        marginInlineStart: "medium",
+        tabletDown: { marginInlineStart: "0" },
       },
     },
     {
       float: ["left", "right"],
       size: ["full"],
       css: {
-        paddingInlineStart: "0",
-        paddingInlineEnd: "0",
+        marginInlineStart: "0",
+        marginInlineEnd: "0",
       },
     },
   ],

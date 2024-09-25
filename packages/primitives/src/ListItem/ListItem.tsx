@@ -74,6 +74,12 @@ export const listItemRecipe = sva({
       false: {
         root: {
           '&[aria-current="true"], &[aria-current="page"]': {
+            _first: {
+              borderBlockStartColor: "stroke.default",
+              _hover: {
+                borderBlockStartColor: "stroke.hover",
+              },
+            },
             background: "var(--background-current)",
             paddingInline: "3xsmall",
             borderColor: "var(--border-color-current)",
@@ -158,12 +164,6 @@ export const listItemRecipe = sva({
           borderInlineColor: "transparent",
           marginBlockStart: "-1px",
           _first: {
-            '&[aria-current="true"], &[aria-current="page"]': {
-              borderBlockStartColor: "stroke.default",
-              _hover: {
-                borderBlockStartColor: "stroke.hover",
-              },
-            },
             borderBlockStartColor: "transparent",
           },
           _last: {

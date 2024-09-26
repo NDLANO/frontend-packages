@@ -15,6 +15,11 @@ const ContentWrapper = styled("div", {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    gap: "xsmall",
+
+    "&:not(:has(> img))": {
+      paddingBlock: "xxlarge",
+    },
   },
 });
 

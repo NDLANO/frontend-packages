@@ -1251,11 +1251,8 @@ const messages = {
         "Læringsstier og tverrfaglige caser kan ikke vises direkte i delte mapper. Dersom du trykker på lenka i navigasjonsmenyen til venstre, vil stien åpnes i en ny fane.",
       drawerButton: "Vis mapper og ressurser",
       drawerTitle: "Mapper og ressurser",
-      description: {
-        all: "I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.\n\nDu kan bla i artiklene ved å bruke menyen.",
-        info1:
-          "I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.",
-      },
+      description:
+        "I denne delte mappa finner du fagstoff og oppgaver fra NDLA. Artiklene er samlet inn og satt i rekkefølge av en lærer.",
       willOpenInNewTab: "Åpnes i ny fane.",
     },
     myPage: {
@@ -1443,9 +1440,6 @@ const messages = {
       traditional: "Tradisjonell skrivemåte",
       pinyin: "Pinyin",
     },
-  },
-  uuDisclaimer: {
-    alternative: "Du kan finne alternativt innhold i artikkelen",
   },
   wordClass: {
     [wordClass.wordClass.adjective]: "Adjektiv",

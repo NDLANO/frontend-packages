@@ -49,6 +49,36 @@ const StyledForm = styled("form", {
   },
 });
 
+const StyledPaginationRoot = styled(PaginationRoot, {
+  base: {
+    flexWrap: "wrap",
+  },
+});
+
+const StyledButton = styled(Button, {
+  base: {
+    tabletWideDown: {
+      paddingInline: "xsmall",
+      "& span": {
+        display: "none",
+      },
+    },
+  },
+});
+
+const StyledPaginationItem = styled(PaginationItem, {
+  base: {
+    tabletWideDown: {
+      "&:nth-child(2)": {
+        display: "none",
+      },
+      "&:nth-last-child(2)": {
+        display: "none",
+      },
+    },
+  },
+});
+
 export interface PreviewTranslations {
   creatorsLabel: string;
   license: string;
@@ -152,6 +182,7 @@ const ImageSearch = ({
 
   const handleSubmit = (e: KeyboardEvent<HTMLInputElement> | FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.stopPropagation();
     searchImages(queryObject);
   };
 
@@ -193,19 +224,22 @@ const ImageSearch = ({
           />
         ))}
       </StyledSearchResults>
-      <PaginationRoot
+      <StyledPaginationRoot
         page={page ?? 1}
         onPageChange={(details) => searchImages({ ...queryObject, page: details.page })}
         translations={translations.paginationTranslations}
         count={searchResult?.totalCount ?? 0}
         pageSize={searchResult?.pageSize}
-        siblingCount={2}
       >
         <PaginationPrevTrigger asChild>
-          <Button variant="tertiary">
+          <StyledButton
+            variant="tertiary"
+            aria-label={translations.paginationTranslations?.prevTriggerLabel}
+            title={translations.paginationTranslations?.prevTriggerLabel}
+          >
             <ChevronLeft />
-            {translations.paginationTranslations?.prevTriggerLabel}
-          </Button>
+            <span>{translations.paginationTranslations?.prevTriggerLabel}</span>
+          </StyledButton>
         </PaginationPrevTrigger>
         <PaginationContext>
           {(pagination) =>
@@ -213,9 +247,9 @@ const ImageSearch = ({
               // Hide last page to not trigger RESULT_WINDOW_TOO_LARGE error
               if (index === full.length - 1) return null;
               return page.type === "page" ? (
-                <PaginationItem key={index} {...page} asChild>
+                <StyledPaginationItem key={index} {...page} asChild>
                   <Button variant={page.value === pagination.page ? "primary" : "tertiary"}>{page.value}</Button>
-                </PaginationItem>
+                </StyledPaginationItem>
               ) : (
                 <PaginationEllipsis key={index} index={index} asChild>
                   <Text asChild consumeCss>
@@ -227,12 +261,16 @@ const ImageSearch = ({
           }
         </PaginationContext>
         <PaginationNextTrigger asChild>
-          <Button variant="tertiary">
-            {translations.paginationTranslations?.nextTriggerLabel}
+          <StyledButton
+            variant="tertiary"
+            aria-label={translations.paginationTranslations?.nextTriggerLabel}
+            title={translations.paginationTranslations?.nextTriggerLabel}
+          >
+            <span>{translations.paginationTranslations?.nextTriggerLabel}</span>
             <ChevronRight />
-          </Button>
+          </StyledButton>
         </PaginationNextTrigger>
-      </PaginationRoot>
+      </StyledPaginationRoot>
     </ImageSearchWrapper>
   );
 };

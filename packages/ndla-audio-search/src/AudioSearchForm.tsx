@@ -41,6 +41,7 @@ const AudioSearchForm = ({ queryObject: query, translations, searching, onSearch
 
   const handleSubmit = (e: KeyboardEvent<HTMLInputElement> | FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.stopPropagation();
     onSearchQuerySubmit(queryObject);
   };
 

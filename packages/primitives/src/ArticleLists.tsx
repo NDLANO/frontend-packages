@@ -16,7 +16,6 @@ const LIST_ITEM = "& > li";
 const LETTER_LIST = "& > ol[data-variant='letters']";
 const NUMBER_LIST = "& > ol:not([data-variant='letters'])";
 const LETTER_LIST_ITEM = `${LETTER_LIST} > li`;
-const NUMBER_LIST_ITEM = `${NUMBER_LIST} > li`;
 
 const orderedListRecipe = cva({
   base: {
@@ -25,11 +24,14 @@ const orderedListRecipe = cva({
       _before: {
         position: "absolute",
         transform: "translateX(-100%)",
-        paddingInlineEnd: "0.25em",
+        paddingInlineEnd: "0.25ch",
         fontVariantNumeric: "tabular-nums",
       },
     },
-    marginInlineStart: "2.5ch",
+    marginInlineStart: "3ch",
+    "& > li > ol": {
+      marginInlineStart: "2.5ch",
+    },
   },
   defaultVariants: {
     variant: "numbers",
@@ -144,7 +146,7 @@ export type UnOrderedListProps = HTMLArkProps<"ul"> & JsxStyleProps;
 export const UnOrderedList = styled("ul", {
   base: {
     listStyle: "revert",
-    paddingInlineStart: "2.5ch",
+    paddingInlineStart: "3ch",
     "& li": {
       marginBlock: "small",
       _marker: {

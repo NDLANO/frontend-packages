@@ -113,6 +113,7 @@ const StyledStack = styled(Stack, {
 interface ArticleTitleProps {
   heartButton?: ReactNode;
   contentType?: ContentType;
+  contentTypeLabel?: ReactNode;
   competenceGoals?: ReactNode;
   id: string;
   lang?: string;
@@ -127,6 +128,7 @@ export const ArticleTitle = ({
   lang,
   id,
   introduction,
+  contentTypeLabel,
   competenceGoals,
 }: ArticleTitleProps) => {
   return (
@@ -134,7 +136,7 @@ export const ArticleTitle = ({
       <ArticleHGroup>
         {(!!contentType || !!heartButton) && (
           <StyledStack justify="space-between" align="center" direction="row" gap="small">
-            {!!contentType && <ContentTypeBadgeNew contentType={contentType} />}
+            {!!contentType && <ContentTypeBadgeNew contentType={contentType}>{contentTypeLabel}</ContentTypeBadgeNew>}
             {heartButton}
           </StyledStack>
         )}
@@ -157,6 +159,7 @@ interface Props {
   article: ArticleType;
   licenseBox?: ReactNode;
   contentType?: ContentType;
+  contentTypeLabel?: ReactNode;
   children?: ReactNode;
   competenceGoals?: ReactNode;
   id: string;
@@ -169,6 +172,7 @@ export const Article = ({
   licenseBox,
   children,
   competenceGoals,
+  contentTypeLabel,
   id,
   heartButton,
   lang,
@@ -188,6 +192,7 @@ export const Article = ({
         introduction={introduction}
         competenceGoals={competenceGoals}
         lang={lang}
+        contentTypeLabel={contentTypeLabel}
       />
       <ArticleContent>{content}</ArticleContent>
       <ArticleFooter>

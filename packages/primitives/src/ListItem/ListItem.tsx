@@ -77,7 +77,7 @@ export const listItemRecipe = sva({
             _first: {
               borderBlockStartColor: "stroke.default",
               _hover: {
-                borderBlockStartColor: "stroke.hover",
+                borderBlockStartColor: "var(--border-hover)",
               },
             },
             background: "var(--background-current)",

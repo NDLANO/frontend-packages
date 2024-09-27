@@ -83,7 +83,6 @@ export const listItemRecipe = sva({
             },
             background: "var(--background-current)",
             borderBlockStartColor: "transparent",
-            paddingInline: "normal",
             borderColor: "var(--border-color-current)",
             boxShadow: "inset -6px 0 0 0 var(--border-color-current), inset 6px 0 0 0 var(--border-color-current)",
             color: "var(--color-current-hover)",
@@ -161,7 +160,6 @@ export const listItemRecipe = sva({
         root: {
           borderBlockStartColor: "stroke.subtle",
           borderBlockEndColor: "transparent",
-          borderInlineColor: "transparent",
           marginBlockStart: "-1px",
           _first: {
             borderBlockStartColor: "transparent",

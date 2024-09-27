@@ -134,8 +134,8 @@ export const SwitchLabel = ({
   children,
   ...props
 }: Switch.LabelProps & TextProps & JsxStyleProps) => (
-  <InternalSwitchLabel asChild>
-    <Text asChild consumeCss textStyle={textStyle} {...props}>
+  <InternalSwitchLabel asChild {...props}>
+    <Text asChild consumeCss textStyle={textStyle}>
       <span>{children}</span>
     </Text>
   </InternalSwitchLabel>

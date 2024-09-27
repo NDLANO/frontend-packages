@@ -50,7 +50,11 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
   const items = new Array(columns).fill(0).map((_, idx) => {
     const args = keyFigureArgs[idx % keyFigureArgs.length];
-    return <Plain key={idx} {...args} />;
+    return (
+      <div key={idx} data-type="grid-cell" data-parallax-cell="false">
+        <Plain key={idx} {...args} />
+      </div>
+    );
   });
   return <Grid {...args}>{items}</Grid>;
 };
@@ -58,14 +62,16 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
 export const GridBlogPostStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
   const items = new Array(columns).fill(
-    <BlogPostStory
-      metaImage={BlogPostStory.args?.metaImage!}
-      title={BlogPostStory.args?.title!}
-      size={"normal"}
-      headingLevel={BlogPostStory.args?.headingLevel}
-      url={BlogPostStory.args?.url!}
-      author={BlogPostStory.args?.author}
-    />,
+    <div data-type="grid-cell" data-parallax-cell="false">
+      <BlogPostStory
+        metaImage={BlogPostStory.args?.metaImage!}
+        title={BlogPostStory.args?.title!}
+        size={"normal"}
+        headingLevel={BlogPostStory.args?.headingLevel}
+        url={BlogPostStory.args?.url!}
+        author={BlogPostStory.args?.author}
+      />
+    </div>,
   );
   return <Grid {...args}>{items}</Grid>;
 };

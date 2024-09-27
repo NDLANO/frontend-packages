@@ -28,8 +28,7 @@
   "dependencies": {
     "@ndla/core": "^5.0.2",
     "@ndla/dropdown-menu": "^1.0.40-alpha.0",
-    "@ndla/icons": "^8.0.27-alpha.0",
-    "@ndla/tooltip": "^8.0.2"
+    "@ndla/icons": "^8.0.27-alpha.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

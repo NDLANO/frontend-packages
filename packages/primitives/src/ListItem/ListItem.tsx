@@ -40,7 +40,7 @@ export const listItemRecipe = sva({
     },
     content: {
       display: "flex",
-      alignItems: "flex-start",
+      alignItems: "center",
       justifyContent: "space-between",
       gap: "xsmall",
       width: "100%",
@@ -78,10 +78,25 @@ export const listItemRecipe = sva({
             background: "var(--background-current)",
             borderBlockStartColor: "transparent",
             borderBlockEndColor: "transparent",
+            borderColor: "var(--border-color-current)",
+            position: "relative",
+            _before: {
+              content: "''",
+              position: "absolute",
+              borderInline: "6px solid",
+              borderColor: "var(--border-color-current)",
+              bottom: "-1px",
+              top: "-1px",
+              left: "0",
+              width: "100%",
+            },
             color: "var(--color-current-hover)",
             _hover: {
               background: "var(--background-hover)",
               color: "text.default",
+              _before: {
+                display: "none",
+              },
             },
             _highlighted: {
               background: "var(--background-hover)",
@@ -110,18 +125,20 @@ export const listItemRecipe = sva({
     colorTheme: {
       brand1: {
         root: {
-          "--background-hover": "colors.surface.brand.1.subtle",
-          "--background-current": "colors.surface.actionSubtle.selected",
+          "--background-hover": "colors.surface.action.brand.1.hover",
+          "--background-current": "colors.surface.action.brand.1.selected",
           "--border-hover": "colors.stroke.hover",
-          "--color-current-hover": "colors.text.onAction",
+          "--color-current-hover": "colors.text.default",
+          "--border-color-current": "colors.stroke.default",
         },
       },
       brand2: {
         root: {
           "--background-hover": "colors.surface.brand.2.moderate",
-          "--background-current": "colors.surface.brand.2.bold",
+          "--background-current": "colors.surface.action.brand.2.selected",
           "--border-hover": "colors.surface.brand.2.strong",
-          "--color-current-hover": "colors.text.onAction",
+          "--color-current-hover": "colors.text.default",
+          "--border-color-current": "colors.surface.brand.2.strong",
         },
       },
       brand3: {
@@ -130,6 +147,7 @@ export const listItemRecipe = sva({
           "--background-current": "colors.surface.action.myNdla.current",
           "--border-hover": "colors.stroke.subtle",
           "--color-current-hover": "colors.text.default",
+          "--border-color-current": "colors.stroke.subtle",
         },
       },
     },

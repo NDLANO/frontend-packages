@@ -33,7 +33,7 @@ export default {
   },
   render: (args) => (
     <ListItemRoot {...args}>
-      <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
+      <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
       <ListItemContent>
         <ListItemHeading asChild consumeCss>
           <h2>
@@ -64,7 +64,7 @@ export const Current: StoryObj<typeof ListItemRoot> = {
 };
 export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
   <ListItemRoot nonInteractive>
-    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
+    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <ListItemHeading>Tittel</ListItemHeading>
       <Badge colorTheme="brand1">Fagstoff</Badge>
@@ -74,7 +74,7 @@ export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
 
 export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
   <ListItemRoot {...args}>
-    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
+    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <styled.div css={{ display: "flex", flexDirection: "column", gap: "4xsmall" }}>
         <ListItemHeading asChild consumeCss>
@@ -98,9 +98,15 @@ const ListComponent = ({
   variant = "list",
   borderVariant = "solid",
   colorTheme = "brand1",
-}: NonNullable<ListItemVariantProps>) => (
-  <ListItemRoot variant={variant} borderVariant={borderVariant} colorTheme={colorTheme} aria-current="page">
-    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={40} />
+  ariaCurrent,
+}: NonNullable<ListItemVariantProps & { ariaCurrent?: "page" }>) => (
+  <ListItemRoot
+    variant={variant}
+    borderVariant={borderVariant}
+    colorTheme={colorTheme}
+    aria-current={ariaCurrent ?? "false"}
+  >
+    <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>
         <h2>
@@ -145,7 +151,7 @@ export const List: StoryFn<typeof ListComponent> = () => (
       <ListComponent />
     </li>
     <li>
-      <ListComponent />
+      <ListComponent ariaCurrent="page" />
     </li>
     <li>
       <ListComponent />

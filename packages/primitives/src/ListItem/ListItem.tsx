@@ -20,6 +20,7 @@ export const listItemRecipe = sva({
     root: {
       minHeight: "3xlarge",
       borderBlockWidth: "1px",
+      borderInlineColor: "transparent",
       color: "text.default",
       position: "relative",
       display: "flex",
@@ -66,7 +67,7 @@ export const listItemRecipe = sva({
       },
       dashed: {
         root: {
-          borderBlockStyle: "dashed",
+          borderStyle: "dashed",
         },
       },
     },
@@ -81,16 +82,15 @@ export const listItemRecipe = sva({
               },
             },
             background: "var(--background-current)",
-            paddingInline: "3xsmall",
+            borderBlockStartColor: "transparent",
+            paddingInline: "normal",
             borderColor: "var(--border-color-current)",
-            borderInlineWidth: "6px",
+            boxShadow: "inset -6px 0 0 0 var(--border-color-current), inset 6px 0 0 0 var(--border-color-current)",
             color: "var(--color-current-hover)",
             _hover: {
               background: "var(--background-hover)",
-              paddingInline: "xsmall",
-              borderInlineWidth: "0px",
               color: "text.default",
-              borderInlineColor: "transparent",
+              boxShadow: "none",
             },
             _highlighted: {
               background: "var(--background-hover)",

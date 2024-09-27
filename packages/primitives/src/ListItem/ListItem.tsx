@@ -75,17 +75,10 @@ export const listItemRecipe = sva({
       false: {
         root: {
           '&[aria-current="true"], &[aria-current="page"]': {
-            _first: {
-              borderBlockStartColor: "stroke.default",
-              _hover: {
-                borderBlockStartColor: "var(--border-hover)",
-              },
-            },
             background: "var(--background-current)",
-            borderBlockStartColor: "transparent",
+            color: "var(--color-current-hover)",
             borderColor: "var(--border-color-current)",
             boxShadow: "inset -6px 0 0 0 var(--border-color-current), inset 6px 0 0 0 var(--border-color-current)",
-            color: "var(--color-current-hover)",
             _hover: {
               background: "var(--background-hover)",
               color: "text.default",

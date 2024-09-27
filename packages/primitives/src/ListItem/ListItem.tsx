@@ -78,11 +78,24 @@ export const listItemRecipe = sva({
             background: "var(--background-current)",
             color: "var(--color-current-hover)",
             borderColor: "var(--border-color-current)",
-            boxShadow: "inset -6px 0 0 0 var(--border-color-current), inset 6px 0 0 0 var(--border-color-current)",
+            position: "relative",
+            _before: {
+              content: "''",
+              position: "absolute",
+              borderInline: "6px solid",
+              borderColor: "var(--border-color-current)",
+              bottom: "-1px",
+              top: "-1px",
+              left: "0",
+              width: "100%",
+            },
+
             _hover: {
               background: "var(--background-hover)",
               color: "text.default",
-              boxShadow: "none",
+              _before: {
+                display: "none",
+              },
             },
             _highlighted: {
               background: "var(--background-hover)",

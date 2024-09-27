@@ -98,8 +98,9 @@ const ListComponent = ({
   variant = "list",
   borderVariant = "solid",
   colorTheme = "brand1",
-}: NonNullable<ListItemVariantProps>) => (
-  <ListItemRoot variant={variant} borderVariant={borderVariant} colorTheme={colorTheme} aria-current="page">
+  ariaCurrent,
+}: NonNullable<ListItemVariantProps & { ariaCurrent?: "page" }>) => (
+  <ListItemRoot variant={variant} borderVariant={borderVariant} colorTheme={colorTheme} aria-current={ariaCurrent}>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>
@@ -145,7 +146,7 @@ export const List: StoryFn<typeof ListComponent> = () => (
       <ListComponent />
     </li>
     <li>
-      <ListComponent />
+      <ListComponent ariaCurrent="page" />
     </li>
     <li>
       <ListComponent />

@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import type { ComboboxInputValueChangeDetails } from "@ark-ui/react";
+import { type ComboboxInputValueChangeDetails, createListCollection } from "@ark-ui/react";
 
 import { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
@@ -63,11 +63,13 @@ export const Default: StoryFn<typeof TagSelectorRoot> = ({ translations, ...args
     setOptions(filtered);
   };
 
+  const collection = createListCollection({ items: options });
+
   return (
     <TagSelectorRoot
       {...args}
       value={value}
-      items={options}
+      collection={collection}
       onInputValueChange={handleChange}
       onValueChange={(details) => setValue(details.value)}
       translations={componentTranslations}

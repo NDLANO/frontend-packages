@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import { Portal } from "@ark-ui/react";
+import { Portal, createListCollection } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
 import { ArrowDownShortLine } from "@ndla/icons/common";
@@ -46,6 +46,8 @@ import {
 } from "./Select";
 import { europeanCountries, measurements } from "./storybookHelpers/data";
 
+const measurementsCollection = createListCollection({ items: measurements });
+
 export default {
   title: "Primitives/Select",
   component: SelectRoot,
@@ -57,7 +59,7 @@ export default {
 
 export const Default: StoryFn<typeof SelectRoot> = ({ ...args }) => {
   return (
-    <SelectRoot {...args} items={measurements}>
+    <SelectRoot {...args} collection={measurementsCollection}>
       <SelectLabel>Measurement</SelectLabel>
       <SelectControl>
         <SelectTrigger asChild>
@@ -89,7 +91,7 @@ export const Default: StoryFn<typeof SelectRoot> = ({ ...args }) => {
 
 export const Disabled: StoryFn<typeof SelectRoot> = ({ ...args }) => {
   return (
-    <SelectRoot {...args} disabled items={measurements}>
+    <SelectRoot {...args} disabled collection={measurementsCollection}>
       <SelectLabel>Measurement</SelectLabel>
       <SelectControl>
         <SelectTrigger asChild>
@@ -121,8 +123,10 @@ export const Disabled: StoryFn<typeof SelectRoot> = ({ ...args }) => {
 
 export const DisabledItems: StoryFn<typeof SelectRoot> = ({ ...args }) => {
   const withDisabled = measurements.map((measurement, index) => ({ ...measurement, disabled: index % 2 === 1 }));
+  const collection = createListCollection({ items: withDisabled });
+
   return (
-    <SelectRoot {...args} items={withDisabled}>
+    <SelectRoot {...args} collection={collection}>
       <SelectLabel>Measurement</SelectLabel>
       <SelectControl>
         <SelectTrigger asChild>
@@ -161,9 +165,11 @@ const groupedCountries = europeanCountries.reduce<Record<string, (typeof europea
   return acc;
 }, {});
 
+const europeanCountriesCollection = createListCollection({ items: europeanCountries });
+
 export const Grouped: StoryFn<typeof SelectRoot> = ({ ...args }) => {
   return (
-    <SelectRoot {...args} items={europeanCountries}>
+    <SelectRoot {...args} collection={europeanCountriesCollection}>
       <SelectLabel>Country</SelectLabel>
       <SelectControl>
         <SelectTrigger asChild>
@@ -200,7 +206,7 @@ export const Grouped: StoryFn<typeof SelectRoot> = ({ ...args }) => {
 
 export const Multiple: StoryFn<typeof SelectRoot> = ({ ...args }) => {
   return (
-    <SelectRoot {...args} items={europeanCountries} multiple>
+    <SelectRoot {...args} collection={europeanCountriesCollection} multiple>
       <SelectLabel>Countries you've been to</SelectLabel>
       <SelectControl>
         <SelectTrigger asChild>
@@ -242,7 +248,7 @@ export const MultipleTruncated: StoryFn<typeof SelectRoot> = ({ ...args }) => {
       {...args}
       value={value.map((val) => val.value)}
       onValueChange={(vals) => setValue(vals.items)}
-      items={europeanCountries}
+      collection={europeanCountriesCollection}
       multiple
     >
       <SelectLabel>Countries you've been to</SelectLabel>
@@ -288,7 +294,7 @@ export const MultipleTruncated: StoryFn<typeof SelectRoot> = ({ ...args }) => {
 
 export const WithClearButton: StoryFn<typeof SelectRoot> = ({ ...args }) => {
   return (
-    <SelectRoot {...args} items={europeanCountries} multiple>
+    <SelectRoot {...args} collection={europeanCountriesCollection} multiple>
       <SelectLabel>Countries you've been to</SelectLabel>
       <SelectControl>
         <SelectTrigger asChild>
@@ -352,7 +358,7 @@ export const InDialog: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           </DialogDescription>
           <SelectRoot
             {...args}
-            items={measurements}
+            collection={measurementsCollection}
             positioning={{ strategy: "fixed", placement: "bottom", sameWidth: true }}
           >
             <SelectLabel>Measurement</SelectLabel>
@@ -397,7 +403,12 @@ export const WithField: StoryFn<typeof SelectRoot> = ({ ...args }) => {
 
   return (
     <FieldRoot invalid={invalid}>
-      <SelectRoot value={value} onValueChange={(val) => setValue(val.value)} {...args} items={measurements}>
+      <SelectRoot
+        value={value}
+        onValueChange={(val) => setValue(val.value)}
+        {...args}
+        collection={measurementsCollection}
+      >
         <SelectLabel>Measurement</SelectLabel>
         <FieldHelper>You cannot choose centimeter.</FieldHelper>
         <FieldErrorMessage>I told you to choose anything but centimeter...</FieldErrorMessage>

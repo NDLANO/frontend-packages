@@ -7,7 +7,7 @@
  */
 
 import { forwardRef, useEffect, useId, useRef } from "react";
-import type { ComboboxCollectionItem } from "@ark-ui/react";
+import type { CollectionItem } from "@ark-ui/react";
 import { ComboboxContext, useTagsInputContext } from "@ark-ui/react";
 import { CloseLine } from "@ndla/icons/action";
 import {
@@ -34,9 +34,9 @@ import {
 } from "@ndla/primitives";
 import { contains } from "@ndla/util";
 
-export type TagSelectorRootProps<T extends ComboboxCollectionItem> = ComboboxRootProps<T> & TagsInputRootProps;
+export type TagSelectorRootProps<T extends CollectionItem> = ComboboxRootProps<T> & TagsInputRootProps;
 
-export const TagSelectorRoot = <T extends ComboboxCollectionItem>({
+export const TagSelectorRoot = <T extends CollectionItem>({
   allowCustomValue = true,
   multiple = true,
   selectionBehavior = "clear",

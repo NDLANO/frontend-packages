@@ -8,7 +8,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { SliderValueChangeDetails } from "@ark-ui/react";
+import { type SliderValueChangeDetails, createListCollection } from "@ark-ui/react";
 import { Replay15Line, Forward15Line } from "@ndla/icons/action";
 import { PlayFill, PauseLine, VolumeUpFill } from "@ndla/icons/common";
 import { CheckLine } from "@ndla/icons/editor";
@@ -152,7 +152,7 @@ const formatTime = (seconds: number) => {
   return `${minutes}:${formattedSeconds}`;
 };
 
-const speedValues = ["0.5", "0.75", "1", "1.25", "1.5", "1.75", "2"];
+const speedValues = createListCollection({ items: ["0.5", "0.75", "1", "1.25", "1.5", "1.75", "2"] });
 
 interface Props {
   src: string;
@@ -291,7 +291,7 @@ const Controls = ({ src, title }: Props) => {
           </StyledText>
         </ProgressWrapper>
         <StyledSelectRoot
-          items={speedValues}
+          collection={speedValues}
           value={[speedValue.toString()]}
           onValueChange={(details) => setSpeedValue(parseFloat(details.value[0]))}
           positioning={{ placement: "top" }}
@@ -310,7 +310,7 @@ const Controls = ({ src, title }: Props) => {
           </SelectControl>
           <SelectPositioner>
             <SelectContent>
-              {speedValues.map((speed) => (
+              {speedValues.items.map((speed) => (
                 <SelectItem key={speed} item={speed}>
                   <SelectItemText>{speed}x</SelectItemText>
                   <SelectItemIndicator>

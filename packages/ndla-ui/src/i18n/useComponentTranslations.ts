@@ -7,7 +7,7 @@
  */
 
 import { useTranslation } from "react-i18next";
-import type { ComboboxCollectionItem } from "@ark-ui/react";
+import type { CollectionItem } from "@ark-ui/react";
 import type { ComboboxRootProps, PaginationRootProps, TagsInputRootProps } from "@ndla/primitives";
 import { TagSelectorRootProps } from "../TagSelector/TagSelector";
 
@@ -33,7 +33,7 @@ export const useTagsInputTranslations = (
   };
 };
 
-export const useComboboxTranslations = <T extends ComboboxCollectionItem>(
+export const useComboboxTranslations = <T extends CollectionItem>(
   translations?: Partial<ComboboxRootProps<T>["translations"]>,
 ): ComboboxRootProps<T>["translations"] => {
   const { t } = useTranslation("translation", { keyPrefix: "component.combobox" });
@@ -45,7 +45,7 @@ export const useComboboxTranslations = <T extends ComboboxCollectionItem>(
   };
 };
 
-export const useTagSelectorTranslations = <T extends ComboboxCollectionItem>(
+export const useTagSelectorTranslations = <T extends CollectionItem>(
   translations?: Partial<TagSelectorRootProps<T>["translations"]>,
 ): TagSelectorRootProps<T>["translations"] => {
   const tagsInputTranslations = useTagsInputTranslations();

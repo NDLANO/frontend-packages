@@ -164,15 +164,9 @@ export const listItemRecipe = sva({
       },
       list: {
         root: {
-          borderBlockStartColor: "stroke.subtle",
-          borderBlockEndColor: "transparent",
+          borderBlockStartColor: "transparent",
+          borderBlockEndColor: "stroke.subtle",
           marginBlockStart: "-1px",
-          _first: {
-            borderBlockStartColor: "transparent",
-          },
-          _last: {
-            borderBlockEndColor: "stroke.subtle",
-          },
         },
       },
     },

@@ -99,6 +99,9 @@ const baseInputCss = css.raw({
   _focus: {
     appearance: "none",
   },
+  _placeholder: {
+    color: "text.subtle",
+  },
 });
 
 const baseTextAreaCss = css.raw({

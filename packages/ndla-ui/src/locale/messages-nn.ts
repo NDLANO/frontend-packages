@@ -1123,7 +1123,8 @@ const messages = {
         markAll: "Merk alle som lest",
         subscribe: "Du får no varsling om nye svar på dette innlegget",
         unsubscribe: "Du har skrudd av varsling om nye svar på dette innlegget",
-        commentedOn: "svarte på innlegget <i>{{title}}</i>",
+        "new-reply": "svarte på innlegget <i>{{title}}</i>",
+        upvote: "likte innlegget ditt i <i>{{title}}</i>",
         button: {
           show: "Vis varsler",
           showNew: "Vis {{count}} nye varsler",

@@ -98,9 +98,8 @@ const ListComponent = ({
   variant = "list",
   borderVariant = "solid",
   colorTheme = "brand1",
-  ariaCurrent,
-}: NonNullable<ListItemVariantProps & { ariaCurrent?: "page" }>) => (
-  <ListItemRoot variant={variant} borderVariant={borderVariant} colorTheme={colorTheme} aria-current={ariaCurrent}>
+}: NonNullable<ListItemVariantProps>) => (
+  <ListItemRoot variant={variant} borderVariant={borderVariant} colorTheme={colorTheme}>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>
@@ -146,7 +145,7 @@ export const List: StoryFn<typeof ListComponent> = () => (
       <ListComponent />
     </li>
     <li>
-      <ListComponent ariaCurrent="page" />
+      <ListComponent />
     </li>
     <li>
       <ListComponent />
@@ -157,5 +156,70 @@ export const List: StoryFn<typeof ListComponent> = () => (
     <li>
       <ListComponent borderVariant="dashed" />
     </li>
+  </ul>
+);
+
+const ListWithCurrentComponent = ({
+  variant = "list",
+  borderVariant = "solid",
+  colorTheme = "brand1",
+  ariaCurrent,
+}: NonNullable<ListItemVariantProps & { ariaCurrent?: "page" }>) => (
+  <ListItemRoot
+    variant={variant}
+    borderVariant={borderVariant}
+    colorTheme={colorTheme}
+    aria-current={ariaCurrent}
+    asChild
+    consumeCss
+  >
+    <li>
+      <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
+      <ListItemContent>
+        <ListItemHeading asChild consumeCss>
+          <h2>
+            <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
+              Tittel
+            </SafeLink>
+          </h2>
+        </ListItemHeading>
+        <styled.div css={{ display: "flex", gap: "xsmall", alignItems: "center" }}>
+          <Badge colorTheme="brand1">Fagstoff</Badge>
+          <MenuRoot>
+            <MenuTrigger css={{ position: "relative" }} asChild>
+              <IconButton variant="tertiary">
+                <HorizontalMenu />
+              </IconButton>
+            </MenuTrigger>
+            <MenuPositioner>
+              <MenuContent>
+                <MenuItem value="edit">
+                  <Pencil />
+                  Rediger
+                </MenuItem>
+                <MenuItem value="delete" variant="destructive">
+                  <TrashCanOutline />
+                  Slett
+                </MenuItem>
+                <MenuItem value="share">
+                  <Share />
+                  Del
+                </MenuItem>
+              </MenuContent>
+            </MenuPositioner>
+          </MenuRoot>
+        </styled.div>
+      </ListItemContent>
+    </li>
+  </ListItemRoot>
+);
+
+export const ListWithCurrent: StoryFn<typeof ListComponent> = () => (
+  <ul>
+    <ListWithCurrentComponent />
+    <ListWithCurrentComponent ariaCurrent="page" />
+    <ListWithCurrentComponent />
+    <ListWithCurrentComponent borderVariant="dashed" />
+    <ListWithCurrentComponent borderVariant="dashed" />
   </ul>
 );

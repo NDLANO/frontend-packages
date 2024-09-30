@@ -119,6 +119,23 @@ export { FieldHelper, FieldsetHelper } from "./FieldHelper";
 export type { FigureSize, FigureVariantProps, FigureProps, FigureFloat } from "./Figure";
 export { Figure } from "./Figure";
 
+export type { FileUploadRootProps, FileUploadVariantProps } from "./FileUpload";
+export {
+  FileUploadHiddenInput,
+  FileUploadContext,
+  FileUploadRoot,
+  FileUploadDropzone,
+  FileUploadTrigger,
+  FileUploadItemGroup,
+  FileUploadItemPreview,
+  FileUploadItem,
+  FileUploadItemDeleteTrigger,
+  FileUploadItemName,
+  FileUploadItemPreviewImage,
+  FileUploadItemSizeText,
+  FileUploadLabel,
+} from "./FileUpload";
+
 export type { FramedContentVariantProps, FramedContentProps } from "./FramedContent";
 export { FramedContent } from "./FramedContent";
 

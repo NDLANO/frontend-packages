@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import { Portal, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
+import { Portal, createListCollection, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
 import { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
 import { ArrowDownShortLine } from "@ndla/icons/common";
@@ -59,8 +59,10 @@ export const Default: StoryFn<typeof ComboboxRoot> = (args) => {
     setItems(filtered.length > 0 ? filtered : europeanCountries);
   };
 
+  const collection = createListCollection({ items });
+
   return (
-    <ComboboxRoot {...args} items={items} onInputValueChange={handleChange}>
+    <ComboboxRoot {...args} collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Choose your place of residence</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
@@ -105,8 +107,10 @@ export const Disabled: StoryFn<typeof ComboboxRoot> = (args) => {
     setItems(filtered.length > 0 ? filtered : europeanCountries);
   };
 
+  const collection = createListCollection({ items });
+
   return (
-    <ComboboxRoot {...args} disabled items={items} onInputValueChange={handleChange}>
+    <ComboboxRoot {...args} disabled collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Choose your place of residence</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
@@ -155,8 +159,10 @@ export const DisabledItems: StoryFn<typeof ComboboxRoot> = (args) => {
     setItems(filtered.length > 0 ? filtered : disabledEuropeanCountries);
   };
 
+  const collection = createListCollection({ items });
+
   return (
-    <ComboboxRoot {...args} items={items} onInputValueChange={handleChange}>
+    <ComboboxRoot {...args} collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Choose your place of residence</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
@@ -201,8 +207,10 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
     setItems(filtered.length > 0 ? filtered : advancedItems);
   };
 
+  const collection = createListCollection({ items });
+
   return (
-    <ComboboxRoot {...args} variant="bordered" items={items} onInputValueChange={handleChange}>
+    <ComboboxRoot {...args} variant="bordered" collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
@@ -265,14 +273,10 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
     setItems(filtered);
   };
 
+  const collection = createListCollection({ items, itemToString: (item) => item.label });
+
   return (
-    <ComboboxRoot
-      {...args}
-      variant="bordered"
-      items={items}
-      onInputValueChange={handleChange}
-      itemToString={(item) => item.label}
-    >
+    <ComboboxRoot {...args} variant="bordered" collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Countries you've visited</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
@@ -325,6 +329,8 @@ export const WithField: StoryFn<typeof ComboboxRoot> = (args) => {
     setItems(filtered.length > 0 ? filtered : europeanCountries);
   };
 
+  const collection = createListCollection({ items });
+
   const invalid = !value.length;
 
   return (
@@ -333,7 +339,7 @@ export const WithField: StoryFn<typeof ComboboxRoot> = (args) => {
         {...args}
         value={value}
         onValueChange={(val) => setValue(val.value)}
-        items={items}
+        collection={collection}
         onInputValueChange={handleChange}
       >
         <ComboboxLabel>Choose your place of residence</ComboboxLabel>

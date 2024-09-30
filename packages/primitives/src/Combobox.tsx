@@ -170,10 +170,7 @@ const InternalComboboxRoot = withProvider<HTMLDivElement, ComboboxRootProps<Comb
 );
 
 export const ComboboxRoot = <T extends Combobox.CollectionItem>({ ...props }: ComboboxRootProps<T>) => {
-  return (
-    //@ts-expect-error - withProvider swallows the generic that Combobox.Root expects.
-    <InternalComboboxRoot {...props} />
-  );
+  return <InternalComboboxRoot {...props} />;
 };
 
 export type ComboboxClearTriggerProps = Combobox.ClearTriggerProps & JsxStyleProps;

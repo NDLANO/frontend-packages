@@ -42,7 +42,7 @@ const StyledSearchResults = styled("div", {
   },
 });
 
-const StyledForm = styled("form", {
+const InputWrapper = styled("div", {
   base: {
     display: "flex",
     gap: "xsmall",
@@ -180,9 +180,9 @@ const ImageSearch = ({
     }));
   };
 
-  const handleSubmit = (e: KeyboardEvent<HTMLInputElement> | FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleSubmit = (e?: KeyboardEvent<HTMLInputElement>) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     searchImages(queryObject);
   };
 
@@ -193,7 +193,7 @@ const ImageSearch = ({
 
   return (
     <ImageSearchWrapper>
-      <StyledForm onSubmit={handleSubmit}>
+      <InputWrapper role="search">
         <Input
           type="search"
           placeholder={translations.searchPlaceholder}
@@ -202,13 +202,13 @@ const ImageSearch = ({
         />
         <IconButton
           variant="primary"
-          type="submit"
           aria-label={translations.searchButtonTitle}
           title={translations.searchButtonTitle}
+          onClick={() => handleSubmit()}
         >
           <SearchLine />
         </IconButton>
-      </StyledForm>
+      </InputWrapper>
       {noResultsFound && noResults}
       <StyledSearchResults>
         {searchResult?.results.map((image) => (

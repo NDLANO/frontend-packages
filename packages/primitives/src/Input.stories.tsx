@@ -30,7 +30,7 @@ export const Default: StoryFn<typeof Input> = () => <Input />;
 export const WithLeftDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>
     <SearchLine />
-    <Input />
+    <Input placeholder="Placeholder" />
   </InputContainer>
 );
 

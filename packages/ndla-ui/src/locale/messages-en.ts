@@ -1093,7 +1093,7 @@ const messages = {
         fetchMore: "Fetch more answers",
         deleted: "This post has been deleted by the author.",
         upvote: "Like",
-        numberOfUpvotes: "{{ count }} people have upvoted this.",
+        numberOfUpvotes: "{{ count }} people have liked this post.",
         removeUpvote: "Stop liking",
         reply: "Write a reply to {{ name }}",
       },

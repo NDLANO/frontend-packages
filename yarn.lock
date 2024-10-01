@@ -2914,7 +2914,7 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^5.0.3-alpha.0"
-    "@ndla/ui": "npm:^56.0.41-alpha.0"
+    "@ndla/ui": "npm:^56.0.42-alpha.0"
     html-react-parser: "npm:^5.1.8"
   peerDependencies:
     i18next: ">= 23.11.5"
@@ -2998,7 +2998,7 @@ __metadata:
   dependencies:
     "@ndla/core": "npm:^5.0.2"
     "@ndla/icons": "npm:^8.0.27-alpha.0"
-    "@ndla/pager": "npm:^5.0.37-alpha.0"
+    "@ndla/pager": "npm:^5.0.38-alpha.0"
     "@ndla/typography": "npm:^0.4.25"
     "@ndla/util": "npm:^5.0.0-alpha.0"
     "@radix-ui/react-checkbox": "npm:^1.0.4"
@@ -3077,12 +3077,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/pager@npm:^5.0.37-alpha.0, @ndla/pager@workspace:packages/ndla-pager":
+"@ndla/pager@npm:^5.0.38-alpha.0, @ndla/pager@workspace:packages/ndla-pager":
   version: 0.0.0-use.local
   resolution: "@ndla/pager@workspace:packages/ndla-pager"
   dependencies:
     "@ndla/core": "npm:^5.0.2"
-    "@ndla/safelink": "npm:^7.0.37-alpha.0"
+    "@ndla/safelink": "npm:^7.0.38-alpha.0"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -3114,7 +3114,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^7.0.37-alpha.0, @ndla/safelink@workspace:packages/safelink":
+"@ndla/safelink@npm:^7.0.38-alpha.0, @ndla/safelink@workspace:packages/safelink":
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:
@@ -3244,7 +3244,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^56.0.41-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^56.0.42-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
@@ -3253,7 +3253,7 @@ __metadata:
     "@ndla/licenses": "npm:^8.0.3-alpha.0"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
-    "@ndla/safelink": "npm:^7.0.37-alpha.0"
+    "@ndla/safelink": "npm:^7.0.38-alpha.0"
     "@ndla/styled-system": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^5.0.3-alpha.0"

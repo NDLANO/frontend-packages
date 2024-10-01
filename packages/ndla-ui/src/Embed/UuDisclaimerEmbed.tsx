@@ -33,6 +33,15 @@ const Disclaimer = styled("div", {
 const StyledSafeLink = styled(SafeLink, {
   base: {
     paddingInlineStart: "4xsmall",
+    color: "text.link",
+    textDecoration: "underline",
+    whiteSpace: "nowrap",
+    _hover: {
+      textDecoration: "none",
+    },
+    _focusWithin: {
+      textDecoration: "none",
+    },
   },
 });
 

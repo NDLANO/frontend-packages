@@ -28,13 +28,9 @@ const comboboxRecipe = sva({
     },
     content: {
       display: "flex",
-      gap: "4xsmall",
       flexDirection: "column",
       zIndex: "dropdown",
       background: "surface.default",
-      borderRadius: "xsmall",
-      boxShadow: "large",
-      padding: "xsmall",
       overflowY: "auto",
       maxHeight: "surface.xsmall",
       _open: {
@@ -55,7 +51,6 @@ const comboboxRecipe = sva({
       justifyContent: "space-between",
       alignItems: "center",
       cursor: "pointer",
-      borderRadius: "xsmall",
       transitionDuration: "fast",
       transitionProperty: "background, color, border-color",
       transitionTimingFunction: "default",
@@ -118,39 +113,23 @@ const comboboxRecipe = sva({
     },
   },
   defaultVariants: {
-    variant: "simple",
+    variant: "standalone",
   },
   variants: {
     variant: {
-      simple: {
+      standalone: {
         item: {
           padding: "xsmall",
+          borderRadius: "xsmall",
+        },
+        content: {
+          boxShadow: "large",
+          borderRadius: "xsmall",
+          padding: "xsmall",
+          gap: "4xsmall",
         },
       },
-      bordered: {
-        item: {
-          paddingInline: "small",
-          paddingBlock: "xsmall",
-          border: "1px solid",
-          borderColor: "stroke.subtle",
-          _hover: {
-            borderColor: "stroke.hover",
-            background: "surface.default",
-          },
-          _highlighted: {
-            borderColor: "stroke.default",
-          },
-          _checked: {
-            borderColor: "stroke.default",
-          },
-          _disabled: {
-            borderColor: "stroke.disabled",
-            _hover: {
-              borderColor: "stroke.disabled",
-            },
-          },
-        },
-      },
+      composite: {},
     },
   },
 });

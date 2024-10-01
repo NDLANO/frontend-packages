@@ -6,7 +6,7 @@
  *
  */
 
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { SearchLine } from "@ndla/icons/common";
 import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -47,7 +47,7 @@ const VideoSearchWrapper = styled("div", {
   },
 });
 
-const StyledForm = styled("form", {
+const InputWrapper = styled("div", {
   base: {
     display: "flex",
     gap: "xsmall",
@@ -85,15 +85,10 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setOffset(0);
-      fetchVideos(query, offset);
-    },
-    [fetchVideos, offset, query],
-  );
+  const onSearch = useCallback(() => {
+    setOffset(0);
+    fetchVideos(query, offset);
+  }, [fetchVideos, offset, query]);
 
   const onShowMore = useCallback(() => {
     const newOffset = offset + 10;
@@ -107,17 +102,28 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
 
   return (
     <VideoSearchWrapper>
-      <StyledForm onSubmit={onSubmit}>
-        <Input type="search" placeholder={translations.searchPlaceholder} value={query} onChange={onQueryChange} />
+      <InputWrapper role="search">
+        <Input
+          type="search"
+          placeholder={translations.searchPlaceholder}
+          value={query}
+          onChange={onQueryChange}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onSearch();
+            }
+          }}
+        />
         <IconButton
           variant="primary"
           type="submit"
           aria-label={translations.searchButtonTitle}
           title={translations.searchButtonTitle}
+          onClick={onSearch}
         >
           <SearchLine />
         </IconButton>
-      </StyledForm>
+      </InputWrapper>
       <VideoResultList
         videos={videos}
         isLoading={isLoading}

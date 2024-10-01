@@ -6,13 +6,13 @@
  *
  */
 
-import { ChangeEvent, FormEvent, KeyboardEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { SearchLine } from "@ndla/icons/common";
 import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { QueryObject } from "./AudioSearch";
 
-const StyledForm = styled("form", {
+const InputWrapper = styled("div", {
   base: {
     display: "flex",
     gap: "xsmall",
@@ -39,29 +39,29 @@ const AudioSearchForm = ({ queryObject: query, translations, searching, onSearch
     }));
   };
 
-  const handleSubmit = (e: KeyboardEvent<HTMLInputElement> | FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onSearchQuerySubmit(queryObject);
-  };
-
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <InputWrapper role="search">
       <Input
         type="search"
         placeholder={translations.searchPlaceholder}
         value={queryObject?.query}
         onChange={handleQueryChange}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onSearchQuerySubmit(queryObject);
+          }
+        }}
       />
       <IconButton
         variant="primary"
         type="submit"
         aria-label={translations.searchButtonTitle}
         title={translations.searchButtonTitle}
+        onClick={() => onSearchQuerySubmit(queryObject)}
       >
         <SearchLine />
       </IconButton>
-    </StyledForm>
+    </InputWrapper>
   );
 };
 

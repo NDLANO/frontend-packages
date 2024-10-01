@@ -66,7 +66,7 @@ export const VideoResultList = ({ videos, isLoading, translations, locale, onVid
           <Spinner />
         </SpinnerWrapper>
       )}
-      {!!videos.length && <Button onClick={onShowMore}>{translations.loadMoreVideos}</Button>}
+      {videos.length === 10 && <Button onClick={onShowMore}>{translations.loadMoreVideos}</Button>}
     </StyledVideoResultWrapper>
   );
 };

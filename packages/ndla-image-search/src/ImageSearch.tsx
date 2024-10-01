@@ -180,6 +180,12 @@ const ImageSearch = ({
     }));
   };
 
+  const onEnter = (e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter") {
+      searchImages(queryObject);
+    }
+  };
+
   useEffect(() => {
     searchImages(queryObject);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -193,16 +199,13 @@ const ImageSearch = ({
           placeholder={translations.searchPlaceholder}
           value={queryObject?.query}
           onChange={handleQueryChange}
-          onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
-            if (e.key === "Enter") {
-              searchImages(queryObject);
-            }
-          }}
+          onKeyDown={onEnter}
         />
         <IconButton
           variant="primary"
           aria-label={translations.searchButtonTitle}
           title={translations.searchButtonTitle}
+          onKeyDown={onEnter}
           onClick={() => searchImages(queryObject)}
         >
           <SearchLine />

@@ -6,7 +6,7 @@
  *
  */
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { SearchLine } from "@ndla/icons/common";
 import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -29,7 +29,7 @@ interface Props {
   onSearchQuerySubmit: (query: QueryObject) => void;
 }
 
-const AudioSearchForm = ({ queryObject: query, translations, searching, onSearchQuerySubmit }: Props) => {
+const AudioSearchInput = ({ queryObject: query, translations, onSearchQuerySubmit }: Props) => {
   const [queryObject, setQueryObject] = useState(query);
 
   const handleQueryChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +39,12 @@ const AudioSearchForm = ({ queryObject: query, translations, searching, onSearch
     }));
   };
 
+  const onEnter = (e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter") {
+      onSearchQuerySubmit(queryObject);
+    }
+  };
+
   return (
     <InputWrapper role="search">
       <Input
@@ -46,17 +52,14 @@ const AudioSearchForm = ({ queryObject: query, translations, searching, onSearch
         placeholder={translations.searchPlaceholder}
         value={queryObject?.query}
         onChange={handleQueryChange}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            onSearchQuerySubmit(queryObject);
-          }
-        }}
+        onKeyDown={onEnter}
       />
       <IconButton
         variant="primary"
         type="submit"
         aria-label={translations.searchButtonTitle}
         title={translations.searchButtonTitle}
+        onKeyDown={onEnter}
         onClick={() => onSearchQuerySubmit(queryObject)}
       >
         <SearchLine />
@@ -65,4 +68,4 @@ const AudioSearchForm = ({ queryObject: query, translations, searching, onSearch
   );
 };
 
-export default AudioSearchForm;
+export default AudioSearchInput;

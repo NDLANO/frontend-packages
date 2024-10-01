@@ -6,7 +6,7 @@
  *
  */
 
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState, KeyboardEvent } from "react";
 import { SearchLine } from "@ndla/icons/common";
 import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -54,6 +54,8 @@ const InputWrapper = styled("div", {
   },
 });
 
+const VIDEO_FETCH_LIMIT = 10;
+
 export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations, locale }: Props) => {
   const [query, setQuery] = useState("");
   const [offset, setOffset] = useState(0);
@@ -65,12 +67,12 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
     async (query: string, offset: number) => {
       setIsLoading(true);
       try {
-        const isAppending = query === previousQuery;
         const results = await searchVideos({
           query,
           offset: offset,
-          limit: 10,
+          limit: VIDEO_FETCH_LIMIT,
         });
+        const isAppending = query === previousQuery && offset !== 0;
         setVideos((prev) => (isAppending ? prev.concat(results) : results));
       } catch (e) {
         onError(e);
@@ -100,6 +102,12 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
     setQuery(e.target.value);
   }, []);
 
+  const onEnter = (e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter") {
+      onSearch();
+    }
+  };
+
   return (
     <VideoSearchWrapper>
       <InputWrapper role="search">
@@ -108,17 +116,14 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
           placeholder={translations.searchPlaceholder}
           value={query}
           onChange={onQueryChange}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              onSearch();
-            }
-          }}
+          onKeyDown={onEnter}
         />
         <IconButton
           variant="primary"
           type="submit"
           aria-label={translations.searchButtonTitle}
           title={translations.searchButtonTitle}
+          onKeyDown={onEnter}
           onClick={onSearch}
         >
           <SearchLine />

@@ -21,7 +21,7 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from "@ndla/types-backend/audio-api";
-import AudioSearchForm from "./AudioSearchForm";
+import AudioSearchInput from "./AudioSearchInput";
 import AudioSearchList from "./AudioSearchList";
 
 const AudioSearchWrapper = styled("div", {
@@ -144,7 +144,7 @@ const AudioSearch = ({
 
   return (
     <AudioSearchWrapper>
-      <AudioSearchForm
+      <AudioSearchInput
         onSearchQuerySubmit={submitAudioSearchQuery}
         queryObject={queryObject}
         searching={searching}

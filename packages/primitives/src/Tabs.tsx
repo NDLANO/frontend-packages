@@ -175,12 +175,12 @@ const tabsRecipe = sva({
           },
           _selected: {
             background: "surface.default",
-            borderColor: "stroke.subtle",
+            borderColor: "stroke.default",
             _horizontal: {
-              borderBottomColor: "transparent",
+              borderBottom: "none",
             },
             _vertical: {
-              borderRightColor: "transparent",
+              borderRight: "none",
             },
           },
           _focusVisible: {
@@ -191,10 +191,18 @@ const tabsRecipe = sva({
         },
         content: {
           borderWidth: "1px",
-          borderColor: "stroke.subtle",
+          borderColor: "stroke.default",
           background: "surface.default",
           width: "100%",
           padding: "xsmall",
+          _vertical: {
+            borderBottomRadius: "xsmall",
+            borderRightRadius: "xsmall",
+          },
+          _horizontal: {
+            borderRightRadius: "xsmall",
+            borderBottomLeftRadius: "xsmall",
+          },
           _focusVisible: {
             outline: "3px solid",
             outlineOffset: "-3px",

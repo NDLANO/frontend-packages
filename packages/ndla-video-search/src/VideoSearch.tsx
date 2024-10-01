@@ -61,10 +61,9 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
   const [offset, setOffset] = useState(0);
   const [videos, setVideos] = useState<BrightcoveApiType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const previousQuery = usePrevious(query);
 
   const fetchVideos = useCallback(
-    async (query: string, offset: number) => {
+    async (query: string, offset: number, isAppending?: boolean) => {
       setIsLoading(true);
       try {
         const results = await searchVideos({
@@ -72,14 +71,13 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
           offset: offset,
           limit: VIDEO_FETCH_LIMIT,
         });
-        const isAppending = query === previousQuery && offset !== 0;
         setVideos((prev) => (isAppending ? prev.concat(results) : results));
       } catch (e) {
         onError(e);
       }
       setIsLoading(false);
     },
-    [searchVideos, previousQuery, onError],
+    [searchVideos, onError],
   );
 
   useEffect(() => {
@@ -89,13 +87,13 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
 
   const onSearch = useCallback(() => {
     setOffset(0);
-    fetchVideos(query, offset);
-  }, [fetchVideos, offset, query]);
+    fetchVideos(query, 0);
+  }, [fetchVideos, query]);
 
   const onShowMore = useCallback(() => {
-    const newOffset = offset + 10;
+    const newOffset = offset + VIDEO_FETCH_LIMIT;
     setOffset(newOffset);
-    fetchVideos(query, newOffset);
+    fetchVideos(query, newOffset, true);
   }, [fetchVideos, offset, query]);
 
   const onQueryChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -136,6 +134,7 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
         locale={locale}
         onVideoSelect={onVideoSelect}
         onShowMore={onShowMore}
+        existsMoreVideos={videos.length === offset + VIDEO_FETCH_LIMIT}
       />
     </VideoSearchWrapper>
   );

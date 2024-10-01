@@ -180,7 +180,7 @@ const ImageSearch = ({
     }));
   };
 
-  const onEnter = (e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLButtonElement>) => {
+  const onEnter = (e: KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => {
     if (e.key === "Enter") {
       searchImages(queryObject);
     }
@@ -232,6 +232,7 @@ const ImageSearch = ({
         translations={translations.paginationTranslations}
         count={searchResult?.totalCount ?? 0}
         pageSize={searchResult?.pageSize}
+        hidden={noResultsFound}
       >
         <PaginationPrevTrigger asChild>
           <StyledButton

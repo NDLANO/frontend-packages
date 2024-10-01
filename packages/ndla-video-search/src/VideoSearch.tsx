@@ -100,7 +100,7 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
     setQuery(e.target.value);
   }, []);
 
-  const onEnter = (e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLButtonElement>) => {
+  const onEnter = (e: KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => {
     if (e.key === "Enter") {
       onSearch();
     }

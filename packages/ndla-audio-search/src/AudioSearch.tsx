@@ -102,6 +102,7 @@ const AudioSearch = ({
   const [queryObject, setQueryObject] = useState<QueryObject>(query);
   const [searching, setSearching] = useState(false);
   const [searchResult, setSearchResult] = useState<IAudioSummarySearchResult | undefined>();
+  const noResultsFound = !searching && searchResult?.results.length === 0;
 
   const { locale } = queryObject ?? {};
 
@@ -166,6 +167,7 @@ const AudioSearch = ({
         translations={translations.paginationTranslations}
         count={searchResult?.totalCount ?? 0}
         pageSize={searchResult?.pageSize}
+        hidden={noResultsFound}
       >
         <PaginationPrevTrigger asChild>
           <StyledButton

@@ -39,7 +39,7 @@ const AudioSearchInput = ({ queryObject: query, translations, onSearchQuerySubmi
     }));
   };
 
-  const onEnter = (e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLButtonElement>) => {
+  const onEnter = (e: KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => {
     if (e.key === "Enter") {
       onSearchQuerySubmit(queryObject);
     }

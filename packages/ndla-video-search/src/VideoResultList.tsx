@@ -36,6 +36,7 @@ const StyledVideoResultWrapper = styled("div", {
 
 interface Props {
   videos: BrightcoveApiType[];
+  existsMoreVideos: boolean;
   isLoading: boolean;
   translations: VideoTranslations;
   locale: string;
@@ -43,7 +44,15 @@ interface Props {
   onShowMore: () => void;
 }
 
-export const VideoResultList = ({ videos, isLoading, translations, locale, onVideoSelect, onShowMore }: Props) => {
+export const VideoResultList = ({
+  videos,
+  existsMoreVideos,
+  isLoading,
+  translations,
+  locale,
+  onVideoSelect,
+  onShowMore,
+}: Props) => {
   return (
     <StyledVideoResultWrapper>
       {!videos.length && !isLoading ? (
@@ -66,7 +75,7 @@ export const VideoResultList = ({ videos, isLoading, translations, locale, onVid
           <Spinner />
         </SpinnerWrapper>
       )}
-      {!!videos.length && <Button onClick={onShowMore}>{translations.loadMoreVideos}</Button>}
+      {existsMoreVideos && <Button onClick={onShowMore}>{translations.loadMoreVideos}</Button>}
     </StyledVideoResultWrapper>
   );
 };

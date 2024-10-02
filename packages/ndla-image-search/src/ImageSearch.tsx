@@ -42,7 +42,7 @@ const StyledSearchResults = styled("div", {
   },
 });
 
-const StyledForm = styled("form", {
+const InputWrapper = styled("div", {
   base: {
     display: "flex",
     gap: "xsmall",
@@ -180,10 +180,10 @@ const ImageSearch = ({
     }));
   };
 
-  const handleSubmit = (e: KeyboardEvent<HTMLInputElement> | FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    searchImages(queryObject);
+  const onEnter = (e: KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => {
+    if (e.key === "Enter") {
+      searchImages(queryObject);
+    }
   };
 
   useEffect(() => {
@@ -193,22 +193,24 @@ const ImageSearch = ({
 
   return (
     <ImageSearchWrapper>
-      <StyledForm onSubmit={handleSubmit}>
+      <InputWrapper role="search">
         <Input
           type="search"
           placeholder={translations.searchPlaceholder}
           value={queryObject?.query}
           onChange={handleQueryChange}
+          onKeyDown={onEnter}
         />
         <IconButton
           variant="primary"
-          type="submit"
           aria-label={translations.searchButtonTitle}
           title={translations.searchButtonTitle}
+          onKeyDown={onEnter}
+          onClick={() => searchImages(queryObject)}
         >
           <SearchLine />
         </IconButton>
-      </StyledForm>
+      </InputWrapper>
       {noResultsFound && noResults}
       <StyledSearchResults>
         {searchResult?.results.map((image) => (
@@ -230,6 +232,7 @@ const ImageSearch = ({
         translations={translations.paginationTranslations}
         count={searchResult?.totalCount ?? 0}
         pageSize={searchResult?.pageSize}
+        hidden={noResultsFound}
       >
         <PaginationPrevTrigger asChild>
           <StyledButton

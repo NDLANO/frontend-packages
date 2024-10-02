@@ -21,6 +21,7 @@ interface Props {
 const StyledIframe = styled("iframe", {
   base: {
     width: "100%",
+    border: 0,
   },
 });
 
@@ -76,11 +77,7 @@ const IframeEmbed = ({ embed }: Props) => {
         src={url}
         width={strippedWidth}
         height={strippedHeight}
-        // eslint-disable-next-line react/no-unknown-property
-        allowFullScreen
-        allow="encrypted-media"
-        scrolling="no"
-        frameBorder="0"
+        allow="fullscreen; encrypted-media"
         loading="lazy"
       />
     </Figure>

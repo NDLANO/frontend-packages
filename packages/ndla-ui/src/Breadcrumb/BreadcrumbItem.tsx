@@ -34,6 +34,11 @@ const StyledListItem = styled("li", {
     tabletDown: {
       display: "block",
     },
+    "& a": {
+      _visited: {
+        color: "inherit",
+      },
+    },
   },
 });
 

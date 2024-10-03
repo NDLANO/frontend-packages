@@ -116,15 +116,7 @@ const BaseDescription = styled("div", {
   },
 });
 
-export const EmbedByline = ({
-  type,
-  description,
-  children,
-  visibleAlt,
-  hideCopyright,
-  hideDescription,
-  ...props
-}: Props) => {
+export const EmbedByline = ({ type, description, children, visibleAlt, hideCopyright, ...props }: Props) => {
   const { t } = useTranslation();
 
   if (props.error) {
@@ -142,21 +134,23 @@ export const EmbedByline = ({
   }
 
   const { copyright } = props;
-  const bylineDescription = hideDescription ? "" : description;
+  const hideByline = hideCopyright && !description;
 
   return (
     <>
-      <BylineWrapper>
-        <div>
-          {hideCopyright && bylineDescription}
-          {!hideCopyright && (
-            <LicenseContainerContent type={type} copyright={copyright}>
-              {bylineDescription}
-            </LicenseContainerContent>
-          )}
-          {children}
-        </div>
-      </BylineWrapper>
+      {!hideByline && (
+        <BylineWrapper>
+          <div>
+            {hideCopyright && description}
+            {!hideCopyright && (
+              <LicenseContainerContent type={type} copyright={copyright}>
+                {description}
+              </LicenseContainerContent>
+            )}
+            {children}
+          </div>
+        </BylineWrapper>
+      )}
       {visibleAlt ? (
         <StyledText color="text.subtle" textStyle="label.medium" asChild consumeCss>
           <span>{`Alt: ${visibleAlt}`}</span>

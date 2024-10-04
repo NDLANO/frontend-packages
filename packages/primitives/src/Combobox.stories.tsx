@@ -12,7 +12,6 @@ import { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
 import { ArrowDownShortLine } from "@ndla/icons/common";
 import { CheckLine } from "@ndla/icons/editor";
-import { css } from "@ndla/styled-system/css";
 import { Flex } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
 import {
@@ -33,6 +32,7 @@ import {
 import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { Input, InputContainer } from "./Input";
+import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot } from "./ListItem/ListItem";
 import { AdvancedItem, advancedItems, europeanCountries } from "./storybookHelpers/data";
 import { Text } from "./Text";
 
@@ -41,7 +41,7 @@ const meta: Meta<typeof ComboboxRoot> = {
   tags: ["autodocs"],
   component: ComboboxRoot,
   args: {
-    variant: "simple",
+    variant: "standalone",
     translations: {
       triggerLabel: "Vis forslag",
       clearTriggerLabel: "Fjern valg",
@@ -210,7 +210,7 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
   const collection = createListCollection({ items });
 
   return (
-    <ComboboxRoot {...args} variant="bordered" collection={collection} onInputValueChange={handleChange}>
+    <ComboboxRoot {...args} variant="composite" collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
@@ -233,17 +233,21 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
         <ComboboxPositioner>
           <ComboboxContent>
             {items.map((item) => (
-              <ComboboxItem key={item.value} item={item}>
-                <Flex className={css({ gap: "xsmall" })}>
-                  <img src={item.img} alt="" width="56" height="40" />
-                  <Flex direction="column">
-                    <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <Text textStyle="label.xsmall">{item.description}</Text>
-                  </Flex>
-                </Flex>
-                <ComboboxItemIndicator>
-                  <CheckLine />
-                </ComboboxItemIndicator>
+              <ComboboxItem key={item.value} item={item} asChild>
+                <ListItemRoot variant="list">
+                  <ListItemImage src={item.img} alt="" />
+                  <ListItemContent>
+                    <Flex direction="column">
+                      <ListItemHeading asChild consumeCss>
+                        <span>{item.label}</span>
+                      </ListItemHeading>
+                      <Text>{item.description}</Text>
+                    </Flex>
+                    <ComboboxItemIndicator>
+                      <CheckLine />
+                    </ComboboxItemIndicator>
+                  </ListItemContent>
+                </ListItemRoot>
               </ComboboxItem>
             ))}
           </ComboboxContent>
@@ -276,7 +280,7 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
   const collection = createListCollection({ items, itemToString: (item) => item.label });
 
   return (
-    <ComboboxRoot {...args} variant="bordered" collection={collection} onInputValueChange={handleChange}>
+    <ComboboxRoot {...args} variant="standalone" collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Countries you've visited</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>

@@ -118,6 +118,8 @@ export { type ContentTypeFramedContentVariant } from "./ContentTypeFramedContent
 
 export { default as CopyParagraphButton } from "./CopyParagraphButton";
 
+export type { TagSelectorControlProps, TagSelectorInputProps, TagSelectorRootProps } from "./TagSelector/TagSelector";
+
 export {
   TagSelectorRoot,
   TagSelectorLabel,

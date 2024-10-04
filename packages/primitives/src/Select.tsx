@@ -246,3 +246,5 @@ export const SelectValueText = withContext<HTMLSpanElement, Select.ValueTextProp
 export const SelectList = withContext<HTMLDivElement, Select.ListProps & JsxStyleProps>(Select.List, "list", {
   baseComponent: true,
 });
+
+export const SelectHiddenSelect = Select.HiddenSelect;

@@ -232,6 +232,7 @@ export {
   SelectTrigger,
   SelectValueText,
   SelectList,
+  SelectHiddenSelect,
 } from "./Select";
 
 export type { SkeletonProps } from "./Skeleton";

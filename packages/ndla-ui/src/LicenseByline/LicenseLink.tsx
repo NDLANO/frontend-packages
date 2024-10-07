@@ -6,11 +6,12 @@
  *
  */
 
+import { forwardRef } from "react";
 import { LicenseLocaleType } from "@ndla/licenses";
-import { SafeLink } from "@ndla/safelink";
+import { SafeLink, SafeLinkProps } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 
-interface Props {
+interface Props extends Omit<SafeLinkProps, "to"> {
   license: LicenseLocaleType;
   hideLink?: boolean;
 }
@@ -34,17 +35,17 @@ const StyledSafeLink = styled(SafeLink, {
   },
 });
 
-export const LicenseLink = ({ license, hideLink }: Props) => {
+export const LicenseLink = forwardRef<HTMLAnchorElement, Props>(({ license, hideLink, ...rest }, ref) => {
   const disabled = hideLink ? { "data-disabled": "" } : {};
   if (license.abbreviation === "unknown") {
     return null;
   }
   if (license.url?.length) {
     return (
-      <StyledSafeLink to={license.url} rel="license" {...disabled}>
+      <StyledSafeLink to={license.url} rel="license" {...disabled} {...rest} ref={ref}>
         {license.abbreviation}
       </StyledSafeLink>
     );
   }
   return <span>{license.abbreviation}</span>;
-};
+});

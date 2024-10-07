@@ -92,13 +92,13 @@ test("makeSrcQueryString renders correctly", () => {
     x: 65.08,
     y: 45.28,
   };
-  expect(makeSrcQueryString(undefined, undefined, undefined)).toMatch("");
-  expect(makeSrcQueryString(1024, undefined, undefined)).toMatch("width=1024");
-  expect(makeSrcQueryString(undefined, crop, undefined)).toMatch(
+  expect(makeSrcQueryString({ width: undefined })).toMatch("");
+  expect(makeSrcQueryString({ width: 1024 })).toMatch("width=1024");
+  expect(makeSrcQueryString({ width: undefined, crop })).toMatch(
     "cropStartX=14.59&cropEndX=79.63&cropStartY=20&cropEndY=100",
   );
-  expect(makeSrcQueryString(undefined, undefined, focalPoint)).toMatch("focalX=65.08&focalY=45.28");
-  expect(makeSrcQueryString(1024, crop, focalPoint)).toMatch(
+  expect(makeSrcQueryString({ width: undefined, focalPoint })).toMatch("focalX=65.08&focalY=45.28");
+  expect(makeSrcQueryString({ width: 1024, crop, focalPoint })).toMatch(
     "width=1024&cropStartX=14.59&cropEndX=79.63&cropStartY=20&cropEndY=100&focalX=65.08&focalY=45.28",
   );
 });

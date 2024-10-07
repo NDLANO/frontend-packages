@@ -23,19 +23,36 @@ export interface ImageFocalPoint {
   y: number;
 }
 
-export const makeSrcQueryString = (width: number | undefined, crop?: ImageCrop, focalPoint?: ImageFocalPoint) => {
+interface SrcQueryStringOptions {
+  width: number | undefined;
+  crop?: ImageCrop;
+  focalPoint?: ImageFocalPoint;
+  imageLanguage?: string;
+}
+
+export const makeSrcQueryString = ({ width, crop, focalPoint, imageLanguage }: SrcQueryStringOptions) => {
   const widthParams = width && `width=${width}`;
   const cropParams =
     crop && `cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`;
   const focalPointParams = focalPoint && `focalX=${focalPoint.x}&focalY=${focalPoint.y}`;
-  const params = [widthParams, cropParams, focalPointParams].filter((p) => p).join("&");
+  const imageLanguageParams = imageLanguage && `language=${imageLanguage}`;
+  const params = [widthParams, cropParams, focalPointParams, imageLanguageParams].filter((p) => p).join("&");
 
   return params;
 };
 
-export const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFocalPoint | undefined) => {
+interface SrcSetOptions {
+  src: string;
+  crop?: ImageCrop;
+  focalPoint?: ImageFocalPoint;
+  imageLanguage?: string;
+}
+
+export const getSrcSet = ({ src, crop, focalPoint, imageLanguage }: SrcSetOptions) => {
   const widths = [2720, 2080, 1760, 1440, 1120, 1000, 960, 800, 640, 480, 320, 240, 180];
-  return widths.map((width) => `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`).join(", ");
+  return widths
+    .map((width) => `${src}?${makeSrcQueryString({ width, crop, focalPoint, imageLanguage })} ${width}w`)
+    .join(", ");
 };
 
 const FALLBACK_WIDTH = 1024;
@@ -49,11 +66,25 @@ export interface PictureProps extends JsxStyleProps, ComponentPropsWithRef<"pict
   srcSet?: string;
   crop?: ImageCrop;
   focalPoint?: ImageFocalPoint;
+  imageLanguage?: string;
 }
 
 export const Picture = forwardRef<HTMLPictureElement, PictureProps>(
-  ({ children, srcSet: srcSetProp, crop, focalPoint, src, contentType, sizes = FALLBACK_SIZES, ...props }, ref) => {
-    const srcSet = srcSetProp ?? getSrcSet(src, crop, focalPoint);
+  (
+    {
+      children,
+      srcSet: srcSetProp,
+      crop,
+      focalPoint,
+      src,
+      imageLanguage,
+      contentType,
+      sizes = FALLBACK_SIZES,
+      ...props
+    },
+    ref,
+  ) => {
+    const srcSet = srcSetProp ?? getSrcSet({ src, crop, focalPoint, imageLanguage });
 
     return (
       <styled.picture {...props} ref={ref}>
@@ -96,12 +127,13 @@ export interface ImgProps extends JsxStyleProps, ComponentPropsWithRef<"img">, I
   fallbackWidth?: number;
   contentType?: string;
   crop?: ImageCrop;
+  imageLanguage?: string;
   focalPoint?: ImageFocalPoint;
 }
 
 export const Img = forwardRef<HTMLImageElement, ImgProps>(
-  ({ fallbackWidth = FALLBACK_WIDTH, crop, focalPoint, contentType, src, alt, ...props }, ref) => {
-    const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
+  ({ fallbackWidth = FALLBACK_WIDTH, crop, focalPoint, imageLanguage, contentType, src, alt, ...props }, ref) => {
+    const queryString = makeSrcQueryString({ width: fallbackWidth, crop, focalPoint, imageLanguage });
     return (
       <StyledImage alt={alt} src={contentType === "image/gif" ? src : `${src}?${queryString}`} {...props} ref={ref} />
     );
@@ -114,6 +146,7 @@ export interface ImageProps extends JsxStyleProps, ComponentPropsWithRef<"img">,
   sizes?: string;
   fallbackWidth?: number;
   contentType?: string;
+  imageLanguage?: string;
   crop?: ImageCrop;
   fallbackElement?: ReactNode;
   focalPoint?: ImageFocalPoint;
@@ -128,6 +161,7 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
       focalPoint,
       src,
       contentType,
+      imageLanguage,
       fallbackWidth = FALLBACK_WIDTH,
       sizes = FALLBACK_SIZES,
       alt,
@@ -136,8 +170,8 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
     },
     ref,
   ) => {
-    const srcSet = srcSetProp ?? getSrcSet(src, crop, focalPoint);
-    const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
+    const srcSet = srcSetProp ?? getSrcSet({ src, crop, focalPoint, imageLanguage });
+    const queryString = makeSrcQueryString({ width: fallbackWidth, crop, focalPoint, imageLanguage });
     const fallbackSrc = src ? `${src}?${queryString}` : src;
     if ((!src || !src.length) && fallbackElement) {
       return (

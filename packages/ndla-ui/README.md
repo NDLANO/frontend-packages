@@ -18,11 +18,12 @@ The following dependencies are optional, but some components may depend on one o
 
 ```js
 react-router
-@ndla/article-converter
-@ndla/button
-@ndla/licenses
+@ndla/core
 @ndla/icons
-@ndla/tabs
+@ndla/licenses
+@ndla/primitives
+@ndla/safelink
+@ndla/styled-system
 @ndla/util
 ```
 

@@ -32,7 +32,6 @@
       "@ndla/licenses": ["./packages/ndla-licenses/src"],
       "@ndla/modal": ["./packages/ndla-modal/src"],
       "@ndla/pager": ["./packages/ndla-pager/src"],
-      "@ndla/tabs": ["./packages/ndla-tabs/src"],
       "@ndla/tracker": ["./packages/ndla-tracker/src"],
       "@ndla/ui": ["./packages/ndla-ui/src"],
       "@ndla/video-search": ["./packages/ndla-video-search/src"],

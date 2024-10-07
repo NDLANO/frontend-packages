@@ -19,6 +19,7 @@ const checkboxRecipe = sva({
       userSelect: "none",
       display: "flex",
       alignItems: "center",
+      width: "fit-content",
       cursor: "pointer",
       _disabled: {
         color: "text.disabled",

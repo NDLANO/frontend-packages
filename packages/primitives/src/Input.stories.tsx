@@ -23,9 +23,12 @@ export default {
   parameters: {
     inlineStories: true,
   },
+  args: { componentSize: "medium" },
 } as Meta<typeof Input>;
 
-export const Default: StoryFn<typeof Input> = () => <Input />;
+export const Default: StoryFn<typeof Input> = ({ ...args }) => <Input {...args} />;
+
+export const Small: StoryFn<typeof Input> = () => <Input componentSize="small" />;
 
 export const WithLeftDecorative: StoryFn<typeof Input> = () => (
   <InputContainer>

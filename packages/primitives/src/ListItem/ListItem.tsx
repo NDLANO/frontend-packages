@@ -31,12 +31,6 @@ export const listItemRecipe = sva({
       transitionProperty: "background-color, border-color, color",
       transitionDuration: "superFast",
       transitionTimingFunction: "ease-in-out",
-      _hover: {
-        background: "var(--background-hover)",
-      },
-      _highlighted: {
-        background: "var(--background-hover)",
-      },
     },
     content: {
       display: "flex",
@@ -54,7 +48,8 @@ export const listItemRecipe = sva({
     },
   },
   defaultVariants: {
-    variant: "standalone",
+    variant: "intense",
+    context: "standalone",
     borderVariant: "solid",
     nonInteractive: false,
   },
@@ -105,6 +100,19 @@ export const listItemRecipe = sva({
       },
     },
     variant: {
+      intense: {
+        root: {
+          _hover: {
+            background: "var(--background-hover)",
+          },
+          _highlighted: {
+            background: "var(--background-hover)",
+          },
+        },
+      },
+      subtle: {},
+    },
+    context: {
       standalone: {
         root: {
           borderBlockColor: "stroke.subtle",
@@ -127,7 +135,7 @@ export const listItemRecipe = sva({
   },
   compoundVariants: [
     {
-      variant: "list",
+      context: "list",
       nonInteractive: false,
       css: {
         root: {

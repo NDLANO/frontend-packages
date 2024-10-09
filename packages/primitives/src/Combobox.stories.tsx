@@ -234,7 +234,7 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
           <ComboboxContent>
             {items.map((item) => (
               <ComboboxItem key={item.value} item={item} asChild>
-                <ListItemRoot variant="list">
+                <ListItemRoot context="list">
                   <ListItemImage src={item.img} alt="" />
                   <ListItemContent>
                     <Flex direction="column">

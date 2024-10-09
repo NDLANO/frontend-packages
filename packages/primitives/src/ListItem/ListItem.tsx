@@ -73,46 +73,6 @@ export const listItemRecipe = sva({
     },
     nonInteractive: {
       false: {
-        root: {
-          '&[aria-current="true"], &[aria-current="page"]': {
-            background: "var(--background-current)",
-            color: "var(--color-current-hover)",
-            borderColor: "var(--border-color-current)",
-            position: "relative",
-            _before: {
-              content: "''",
-              position: "absolute",
-              borderInline: "6px solid",
-              borderColor: "var(--border-color-current)",
-              bottom: "-1px",
-              top: "-1px",
-              left: "0",
-              width: "100%",
-            },
-
-            _hover: {
-              background: "var(--background-hover)",
-              color: "text.default",
-              _before: {
-                display: "none",
-              },
-            },
-            _highlighted: {
-              background: "var(--background-hover)",
-              color: "text.default",
-            },
-            "& a:focus-visible": {
-              _focusVisible: {
-                outlineColor: "var(--color-current-hover)",
-              },
-            },
-            "& button:focus-visible": {
-              _focusVisible: {
-                boxShadowColor: "var(--color-current-hover)",
-              },
-            },
-          },
-        },
         title: {
           textDecoration: "underline",
           _hover: {
@@ -125,27 +85,21 @@ export const listItemRecipe = sva({
       brand1: {
         root: {
           "--background-hover": "colors.surface.action.brand.1.hover",
-          "--background-current": "colors.surface.action.brand.1.selected",
           "--border-hover": "colors.stroke.hover",
-          "--color-current-hover": "colors.text.default",
           "--border-color-current": "colors.stroke.default",
         },
       },
       brand2: {
         root: {
           "--background-hover": "colors.surface.brand.2.moderate",
-          "--background-current": "colors.surface.action.brand.2.selected",
           "--border-hover": "colors.surface.brand.2.strong",
-          "--color-current-hover": "colors.text.default",
           "--border-color-current": "colors.surface.brand.2.strong",
         },
       },
       brand3: {
         root: {
           "--background-hover": "colors.surface.action.myNdla.hover",
-          "--background-current": "colors.surface.action.myNdla.current",
           "--border-hover": "colors.stroke.subtle",
-          "--color-current-hover": "colors.text.default",
           "--border-color-current": "colors.stroke.subtle",
         },
       },

@@ -26,7 +26,8 @@ export default {
   args: {
     borderVariant: "solid",
     colorTheme: "brand1",
-    variant: "standalone",
+    context: "standalone",
+    variant: "intense",
   },
   parameters: {
     inlineStories: true,
@@ -55,6 +56,7 @@ export const Brand2: StoryObj<typeof ListItemRoot> = {
     colorTheme: "brand2",
   },
 };
+
 export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
   <ListItemRoot nonInteractive>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
@@ -88,11 +90,11 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
 );
 
 const ListComponent = ({
-  variant = "list",
+  context = "list",
   borderVariant = "solid",
   colorTheme = "brand1",
 }: NonNullable<ListItemVariantProps>) => (
-  <ListItemRoot variant={variant} borderVariant={borderVariant} colorTheme={colorTheme}>
+  <ListItemRoot context={context} borderVariant={borderVariant} colorTheme={colorTheme}>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>

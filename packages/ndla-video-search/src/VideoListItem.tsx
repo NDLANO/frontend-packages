@@ -110,7 +110,7 @@ export const VideoListItem = ({ video, onVideoSelect, translations, locale }: Vi
 
   return (
     <li>
-      <StyledListItemRoot variant="list" nonInteractive>
+      <StyledListItemRoot context="list" nonInteractive>
         <StyledImage src={video.images?.thumbnail?.src ?? ""} alt="" variant="rounded" />
         <StyledListItemContent>
           <StyledVideoMeta>

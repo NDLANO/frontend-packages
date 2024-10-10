@@ -9,7 +9,7 @@
 import { forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "../createStyleContext";
 import { type ImageProps, Image } from "../Image";
 import { Heading, type TextProps } from "../Text";
@@ -67,7 +67,11 @@ const cardRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(cardRecipe);
 
-export const CardRoot = withProvider<HTMLElement, HTMLArkProps<"article"> & JsxStyleProps>(ark.article, "root", {
+export type CardVariantProps = RecipeVariantProps<typeof cardRecipe>;
+
+export type CardRootProps = HTMLArkProps<"article"> & JsxStyleProps & CardVariantProps;
+
+export const CardRoot = withProvider<HTMLElement, CardRootProps>(ark.article, "root", {
   baseComponent: true,
 });
 

@@ -24,3 +24,4 @@ export { default as CopyrightEmbed } from "./CopyrightEmbed";
 export { default as CodeEmbed } from "./CodeEmbed";
 export type { HeartButtonType, CanonicalUrlFuncs, RenderContext } from "./types";
 export { EmbedWrapper } from "./EmbedWrapper";
+export type { EmbedWrapperVariantProps, EmbedWrapperProps } from "./EmbedWrapper";

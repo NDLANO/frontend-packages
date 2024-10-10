@@ -34,6 +34,8 @@ export {
   EmbedWrapper,
 } from "./Embed";
 
+export type { EmbedWrapperProps, EmbedWrapperVariantProps } from "./Embed";
+
 export { LicenseLink, EmbedByline } from "./LicenseByline";
 
 export {

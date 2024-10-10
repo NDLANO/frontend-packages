@@ -19,18 +19,17 @@ const LETTER_LIST_ITEM = `${LETTER_LIST} > li`;
 
 const orderedListRecipe = cva({
   base: {
+    marginInlineStart: "small",
+    paddingInlineStart: "small",
     [LIST_ITEM]: {
-      marginBlock: "small",
       _before: {
         position: "absolute",
-        transform: "translateX(-100%)",
-        paddingInlineEnd: "0.25ch",
+        transform: "translateX(calc(-100% + (token(spacing.small) * -1)))",
         fontVariantNumeric: "tabular-nums",
       },
     },
-    marginInlineStart: "3ch",
-    "& > li > ol": {
-      marginInlineStart: "2.5ch",
+    "& li": {
+      marginBlock: "small",
     },
   },
   defaultVariants: {
@@ -39,6 +38,10 @@ const orderedListRecipe = cva({
   variants: {
     variant: {
       numbers: {
+        [NUMBER_LIST]: {
+          marginInlineStart: "0",
+          paddingInlineStart: "0",
+        },
         counterReset: "level1",
         "&[data-count='true']": {
           counterReset: "level1 var(--start, 0)",
@@ -54,7 +57,7 @@ const orderedListRecipe = cva({
               counterReset: "level2 var(--start, 0)",
             },
             [LIST_ITEM]: {
-              marginInlineStart: "1ch",
+              marginInlineStart: "small",
               counterIncrement: "level2",
               _before: {
                 content: "counter(level1, decimal) '.' counter(level2, decimal) '. '",
@@ -65,7 +68,7 @@ const orderedListRecipe = cva({
                   counterReset: "level3 var(--start, 0)",
                 },
                 [LIST_ITEM]: {
-                  marginInlineStart: "2.5ch",
+                  marginInlineStart: "calc(1.5ch + token(spacing.small))",
                   counterIncrement: "level3",
                   _before: {
                     content: "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '. '",
@@ -76,14 +79,11 @@ const orderedListRecipe = cva({
                       counterReset: "level4 var(--start, 0)",
                     },
                     [LIST_ITEM]: {
-                      marginInlineStart: "4.5ch",
+                      marginInlineStart: "calc(3ch + token(spacing.small))",
                       counterIncrement: "level4",
                       _before: {
                         content:
                           "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level4,  decimal) '. '",
-                      },
-                      [LETTER_LIST_ITEM]: {
-                        marginInlineStart: "0.5ch",
                       },
                     },
                   },
@@ -97,6 +97,10 @@ const orderedListRecipe = cva({
         counterReset: "level1",
         "&[data-count='true']": {
           counterReset: "level1 var(--start, 0)",
+        },
+        [LETTER_LIST]: {
+          marginInlineStart: "0",
+          paddingInlineStart: "0",
         },
         [LIST_ITEM]: {
           counterIncrement: "level1",
@@ -130,6 +134,7 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
     const style = useMemo(() => ({ "--start": start ? start - 1 : undefined }) as CSSProperties, [start]);
     return (
       <StyledOrderedList
+        data-embed-type="ordered-list"
         data-variant={variant}
         data-count={start !== undefined}
         css={css.raw(orderedListRecipe.raw({ variant }), cssProp)}
@@ -146,9 +151,14 @@ export type UnOrderedListProps = HTMLArkProps<"ul"> & JsxStyleProps;
 export const UnOrderedList = styled("ul", {
   base: {
     listStyle: "revert",
-    paddingInlineStart: "3ch",
+    marginInlineStart: "medium",
+    paddingInlineStart: "small",
+    "&  ul": {
+      marginInlineStart: "0",
+    },
     "& li": {
       marginBlock: "small",
+      paddingInlineStart: "small",
       _marker: {
         color: "icon.strong",
       },

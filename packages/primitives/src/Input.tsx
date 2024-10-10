@@ -8,9 +8,9 @@
 
 import { createContext, forwardRef, useCallback, useContext, useEffect, useRef } from "react";
 import { Field, HTMLArkProps, ark } from "@ark-ui/react";
-import { css } from "@ndla/styled-system/css";
+import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import { JsxStyleProps, type RecipeVariantProps } from "@ndla/styled-system/types";
 import { composeRefs } from "@ndla/util";
 
 interface InputContextType {}
@@ -18,40 +18,36 @@ interface InputContextType {}
 const InputContext = createContext<InputContextType | undefined>(undefined);
 
 const inputCss = css.raw({
-  outline: "1px solid",
-  outlineColor: "stroke.subtle",
+  boxShadowColor: "stroke.subtle",
+  boxShadow: "inset 0 0 0 1px var(--shadow-color)",
   background: "background.default",
   borderRadius: "xsmall",
-  minHeight: "xxlarge",
-  paddingBlock: "0",
-  paddingInline: "xsmall",
   _ariaInvalid: {
-    outlineColor: "stroke.error",
+    boxShadowColor: "stroke.error",
     _hover: {
-      outlineColor: "stroke.error",
+      boxShadowColor: "stroke.error",
     },
     _focusWithin: {
-      outlineColor: "stroke.error",
+      boxShadowColor: "stroke.error",
       _hover: {
-        outlineColor: "stroke.error",
+        boxShadowColor: "stroke.error",
       },
     },
   },
   _hover: {
-    outlineColor: "stroke.hover",
+    boxShadowColor: "stroke.hover",
   },
   _focusWithin: {
-    outlineWidth: "2px",
-    outlineOffset: "-1px",
-    outlineColor: "stroke.default",
+    boxShadow: "inset 0 0 0 2px var(--shadow-color)",
+    boxShadowColor: "stroke.default",
     _hover: {
-      outlineColor: "stroke.default",
+      boxShadowColor: "stroke.default",
     },
   },
   "&:disabled, &:has(:disabled)": {
-    outlineColor: "stroke.subtle",
+    boxShadowColor: "stroke.subtle",
     _hover: {
-      outlineColor: "stroke.subtle",
+      boxShadowColor: "stroke.subtle",
     },
   },
 });
@@ -66,6 +62,12 @@ const StyledInputContainer = styled(
       "& svg": {
         width: "medium",
         height: "medium",
+      },
+      "&:not(:has(input:first-child,textarea:first-child))": {
+        paddingInlineStart: "xsmall",
+      },
+      "&:not(:has(input:last-child,textarea:last-child))": {
+        paddingInlineEnd: "xsmall",
       },
     },
   },
@@ -88,7 +90,6 @@ const baseInputCss = css.raw({
   outline: "none",
   background: "none",
   border: "0",
-  padding: "xxsmall",
   _disabled: {
     cursor: "not-allowed",
   },
@@ -105,19 +106,46 @@ const baseInputCss = css.raw({
 });
 
 const baseTextAreaCss = css.raw({
-  paddingInline: "xsmall",
-  paddingBlock: "xsmall",
+  padding: "xsmall",
+  minHeight: "xxlarge",
+  height: "xxlarge",
   resize: "none",
   overflowY: "hidden",
 });
 
-export interface InputProps extends HTMLArkProps<"input">, JsxStyleProps {}
-
 const StyledInput = styled(ark.input, {}, { baseComponent: true });
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(({ css: cssProp, ...props }, ref) => {
+const inputRecipe = cva({
+  defaultVariants: {
+    componentSize: "medium",
+  },
+  variants: {
+    componentSize: {
+      small: {
+        paddingBlock: "4xsmall",
+        paddingInline: "xsmall",
+      },
+      medium: {
+        minHeight: "xxlarge",
+        padding: "xsmall",
+      },
+    },
+  },
+});
+
+type InputVariantProps = RecipeVariantProps<typeof inputRecipe>;
+
+export type InputProps = HTMLArkProps<"input"> & JsxStyleProps & InputVariantProps;
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ css: cssProp, componentSize, ...props }, ref) => {
   const context = useContext(InputContext);
-  return <StyledInput css={css.raw(baseInputCss, context ? undefined : inputCss, cssProp)} ref={ref} {...props} />;
+  return (
+    <StyledInput
+      css={css.raw(inputRecipe.raw({ componentSize }), baseInputCss, context ? undefined : inputCss, cssProp)}
+      ref={ref}
+      {...props}
+    />
+  );
 });
 
 export const FieldInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
@@ -138,6 +166,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ css: c
   const resize = useCallback(() => {
     if (!localRef.current) return;
     localRef.current.style.height = "0";
+    // TODO: Figure out if we need to add the 3 extra pixels, maybe related to scroll?
     localRef.current.style.height = `${localRef.current.scrollHeight + 3}px`;
   }, []);
 

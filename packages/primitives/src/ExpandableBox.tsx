@@ -6,34 +6,43 @@
  *
  */
 
+import { forwardRef } from "react";
 import { HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 
 export type ExpandableBoxProps = HTMLArkProps<"details"> & JsxStyleProps;
 
-export const ExpandableBox = styled("details", {
-  base: {
-    transitionDuration: "fast",
-    width: "100%",
-    position: "relative",
-    border: "1px solid",
-    borderRadius: "xsmall",
-    borderColor: "stroke.subtle",
-    padding: "medium",
-    clear: "both",
-    _open: {
+const StyledExpandableBox = styled(
+  ark.details,
+  {
+    base: {
+      transitionDuration: "fast",
+      width: "100%",
+      position: "relative",
+      border: "1px solid",
+      borderRadius: "xsmall",
+      borderColor: "stroke.subtle",
       padding: "medium",
-      "& summary": {
-        marginBlockEnd: "-xxsmall",
+      clear: "both",
+      _open: {
+        padding: "medium",
+        "& summary, [data-embed-type='expandable-box-summary']": {
+          marginBlockEnd: "-xxsmall",
+        },
       },
     },
   },
-});
+  { baseComponent: true },
+);
+
+export const ExpandableBox = forwardRef<HTMLDetailsElement, ExpandableBoxProps>((props, ref) => (
+  <StyledExpandableBox {...props} data-embed-type="expandable-box" ref={ref} />
+));
 
 export type ExpandableBoxSummaryProps = HTMLArkProps<"summary"> & JsxStyleProps;
 
-export const ExpandableBoxSummary = styled(
+const StyledExpandableBoxSummary = styled(
   ark.summary,
   {
     base: {
@@ -52,3 +61,7 @@ export const ExpandableBoxSummary = styled(
   },
   { baseComponent: true },
 );
+
+export const ExpandableBoxSummary = forwardRef<HTMLElement, ExpandableBoxSummaryProps>((props, ref) => (
+  <StyledExpandableBoxSummary {...props} data-embed-type="expandable-box-summary" ref={ref} />
+));

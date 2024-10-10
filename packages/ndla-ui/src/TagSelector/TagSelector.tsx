@@ -8,7 +8,7 @@
 
 import { forwardRef, useEffect, useId, useRef } from "react";
 import type { CollectionItem } from "@ark-ui/react";
-import { ComboboxContext, useTagsInputContext } from "@ark-ui/react";
+import { useTagsInputContext, useComboboxContext } from "@ark-ui/react";
 import { CloseLine } from "@ndla/icons/action";
 import {
   ComboboxClearTrigger,
@@ -79,24 +79,30 @@ export const TagSelectorRoot = <T extends CollectionItem>({
       value={value}
       {...rest}
     >
-      <ComboboxContext>
-        {(api) => (
-          <TagsInputRoot
-            ids={ids}
-            value={value}
-            onInputValueChange={(details) => api.setInputValue(details.inputValue)}
-            editable={editable}
-            onValueChange={onValueChange}
-            addOnPaste={addOnPaste}
-            translations={translations}
-          >
-            {children}
-          </TagsInputRoot>
-        )}
-      </ComboboxContext>
+      <TagSelectorTagsInputRoot
+        ids={ids}
+        value={value}
+        editable={editable}
+        onValueChange={onValueChange}
+        addOnPaste={addOnPaste}
+        translations={translations}
+      >
+        {children}
+      </TagSelectorTagsInputRoot>
     </ComboboxRoot>
   );
 };
+
+const TagSelectorTagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((props, ref) => {
+  const comboboxApi = useComboboxContext();
+  return (
+    <TagsInputRoot
+      ref={ref}
+      onInputValueChange={(details) => comboboxApi.setInputValue(details.inputValue)}
+      {...props}
+    />
+  );
+});
 
 export type TagSelectorControlProps = ComboboxControlProps & TagsInputControlProps;
 
@@ -126,12 +132,12 @@ export const TagSelectorInputBase = forwardRef<HTMLInputElement, TagSelectorInpu
     return (
       <ComboboxInput ref={ref} asChild>
         <TagsInputInput
-          {...props}
           onKeyDown={(event) => {
             if (event.key === "Enter") {
               tagsApi.addValue(tagsApi.inputValue);
             }
           }}
+          {...props}
         >
           {children}
         </TagsInputInput>
@@ -158,12 +164,12 @@ export const TagSelectorInput = forwardRef<HTMLInputElement, TagSelectorInputPro
       ))}
       <ComboboxInput ref={ref} asChild>
         <TagsInputInput
-          {...props}
           onKeyDown={(event) => {
             if (event.key === "Enter") {
               tagsApi.addValue(tagsApi.inputValue);
             }
           }}
+          {...props}
         >
           {children}
         </TagsInputInput>

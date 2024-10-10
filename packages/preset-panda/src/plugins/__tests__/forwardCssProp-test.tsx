@@ -365,6 +365,54 @@ describe("CSS prop forwarding", () => {
     `);
   });
 
+  test("converts itself to a class name when re-styled and asChilded onto a regular component", () => {
+    const StyledContainer = styled(
+      ark.div,
+      {
+        base: {
+          display: "flex",
+        },
+      },
+      { baseComponent: true },
+    );
+
+    const StyledStyledContainer = styled(StyledContainer, {
+      base: {
+        display: "block",
+      },
+    });
+
+    const StyledStyledStyledContainer = styled(StyledStyledContainer, {
+      base: {
+        display: "inline",
+      },
+    });
+
+    const { container } = render(
+      <StyledStyledStyledContainer asChild consumeCss>
+        <span>Hello</span>
+      </StyledStyledStyledContainer>,
+    );
+
+    const notAsChildedResult = render(<StyledStyledStyledContainer>Hello</StyledStyledStyledContainer>);
+
+    expect(container.firstChild).toMatchInlineSnapshot(`
+      <span
+        class="d_inline"
+      >
+        Hello
+      </span>
+    `);
+
+    expect(notAsChildedResult.container.firstChild).toMatchInlineSnapshot(`
+      <div
+        class="d_inline"
+      >
+        Hello
+      </div>
+    `);
+  });
+
   test("should automatically merge complex components wrapped in styled and asChilded to a non-complex component", () => {
     const StyledBase = styled(
       ark.div,

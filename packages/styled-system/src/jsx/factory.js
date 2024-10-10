@@ -24,7 +24,7 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
     const { as: Element = __base__, consumeCss, children, ...restProps } = props
 
     const consume = props.asChild
-      ? consumeCss && options.baseComponent
+      ? consumeCss && (options.baseComponent || Dynamic.__baseComponent__)
       : consumeCss ?? contextConsume
 
     const combinedProps = useMemo(() => Object.assign({}, defaultProps, restProps), [restProps])
@@ -65,6 +65,7 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
   StyledComponent.__cva__ = __cvaFn__
   StyledComponent.__base__ = __base__
   StyledComponent.__shouldForwardProps__ = shouldForwardProp
+  StyledComponent.__baseComponent__ = options.baseComponent ?? Dynamic.__baseComponent__
 
   return StyledComponent
 }

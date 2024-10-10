@@ -18,6 +18,7 @@ const framedContentRecipe = cva({
     border: "1px solid",
     borderRadius: "small",
     clear: "both",
+    overflow: "hidden",
   },
   variants: {
     colorTheme: {

@@ -28,7 +28,6 @@ const cardRecipe = sva({
       background: "surface.default",
       overflow: "hidden",
       _hover: {
-        background: "surface.actionSubtle.hover",
         borderColor: "stroke.hover",
       },
     },
@@ -49,6 +48,19 @@ const cardRecipe = sva({
       height: "200px",
       objectFit: "cover",
       width: "100%",
+    },
+  },
+  defaultVariants: {
+    variant: "intense",
+  },
+  variants: {
+    variant: {
+      subtle: {},
+      intense: {
+        root: {
+          background: "surface.actionSubtle.hover",
+        },
+      },
     },
   },
 });

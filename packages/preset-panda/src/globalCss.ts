@@ -18,6 +18,10 @@ export const globalCss = defineGlobalStyles({
   html: {
     minHeight: "100%",
     fontFeatureSettings: "'ss03' on, 'liga' off, 'clig' off",
+    // this is included in the css reset we use. We don't want it.
+    "& h1, h2, h3, h4, h5, h6": {
+      textWrap: "unset",
+    },
   },
   body: {
     background: "background.default",

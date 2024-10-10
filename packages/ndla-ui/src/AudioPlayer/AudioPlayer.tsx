@@ -113,6 +113,15 @@ const TextVersionText = styled("div", {
     "& span > *": {
       whiteSpace: "pre-wrap",
     },
+    "& p:not(:first-child):not(:last-child)": {
+      marginBlock: "small",
+    },
+    '& p[data-align="center"]': {
+      textAlign: "center",
+    },
+    '& p:has(span[dir="rtl"])': {
+      direction: "rtl",
+    },
   },
 });
 

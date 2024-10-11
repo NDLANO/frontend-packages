@@ -12,6 +12,9 @@ import { UnOrderedList } from "./ArticleLists";
 import { BlockQuote } from "./BlockQuote";
 import { PageContent } from "./Layout/PageContent";
 
+const lipsum =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis convallis augue. Aenean ipsum erat, fringilla ut erat fringilla, scelerisque eleifend nulla. Vestibulum facilisis odio vitae risus accumsan vestibulum. Nulla vitae enim condimentum, finibus lacus sed, sodales quam. Donec pretium metus ac blandit varius. Ut vehicula risus vitae malesuada accumsan. Praesent id ante condimentum, venenatis ex varius, tempor diam. Praesent mollis luctus enim, id convallis metus vulputate a. Sed et diam odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur faucibus sodales tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus.";
+
 export default {
   title: "Primitives/Article Unordered List",
   tags: ["autodocs"],
@@ -23,7 +26,11 @@ export default {
       <PageContent variant="content" asChild>
         <ArticleWrapper>
           <ArticleContent>
-            <Story />
+            <section>
+              <p>{lipsum}</p>
+              <Story />
+              <p>{lipsum}</p>
+            </section>
           </ArticleContent>
         </ArticleWrapper>
       </PageContent>

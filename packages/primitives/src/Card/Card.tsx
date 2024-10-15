@@ -58,7 +58,9 @@ const cardRecipe = sva({
       subtle: {},
       intense: {
         root: {
-          background: "surface.actionSubtle.hover",
+          _hover: {
+            background: "surface.actionSubtle.hover",
+          },
         },
       },
     },

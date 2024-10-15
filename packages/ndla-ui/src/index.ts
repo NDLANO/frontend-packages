@@ -133,7 +133,7 @@ export {
   TagSelectorInput,
 } from "./TagSelector/TagSelector";
 
-export { BlogPostV2 } from "./BlogPost";
+export { Pitch } from "./Pitch";
 export { KeyFigure } from "./KeyFigure";
 export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock";
 export type { ContactBlockBackground } from "./ContactBlock";

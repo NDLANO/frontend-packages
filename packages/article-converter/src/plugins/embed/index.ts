@@ -7,7 +7,6 @@
  */
 
 import { audioEmbedPlugin } from "./audioEmbedPlugin";
-import { blogPostEmbedPlugin } from "./blogPostEmbedPlugin";
 import { brightcoveEmbedPlugin } from "./brightcoveEmbedPlugin";
 import { campaignBlockPlugin } from "./campaignBlockPlugin";
 import { codeEmbedPlugin } from "./codeEmbedPlugin";
@@ -23,6 +22,7 @@ import { iframeEmbedPlugin } from "./iframeEmbedPlugin";
 import { imageEmbedPlugin } from "./imageEmbedPlugin";
 import { keyFigureEmbedPlugin } from "./KeyFigureEmbedPlugin";
 import { linkBlockPlugin } from "./linkBlockEmbedPlugin";
+import { pitchEmbedPlugin } from "./pitchEmbedPlugin";
 import { relatedContentEmbedPlugin } from "./relatedContentEmbedPlugin";
 import { uuDisclaimerEmbedPlugin } from "./uuDisclaimerEmbedPlugin";
 import { PluginType } from "../types";
@@ -39,7 +39,7 @@ export const embedPlugins: Record<string, PluginType> = {
   "related-content": relatedContentEmbedPlugin,
   "content-link": contentLinkEmbedPlugin,
   concept: conceptEmbedPlugin,
-  "blog-post": blogPostEmbedPlugin,
+  pitch: pitchEmbedPlugin,
   file: fileEmbedPlugin,
   "key-figure": keyFigureEmbedPlugin,
   "contact-block": contactBlockEmbedPlugin,

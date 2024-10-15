@@ -9,18 +9,17 @@
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { MetaData } from ".";
 
-export type BlogPostEmbedData = {
-  resource: "blog-post";
+export type PitchEmbedData = {
+  resource: "pitch";
   imageId: string;
   title: string;
-  size?: "normal" | "large";
-  author?: string;
+  description?: string;
   url: string;
   alt?: string;
 };
 
-export interface BlogPostMeta {
+export interface PitchMeta {
   metaImage?: IImageMetaInformationV3;
 }
 
-export type BlogPostMetaData = MetaData<BlogPostEmbedData, BlogPostMeta>;
+export type PitchMetaData = MetaData<PitchEmbedData, PitchMeta>;

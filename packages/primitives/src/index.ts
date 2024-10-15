@@ -147,6 +147,7 @@ export type { ImageCrop, ImageFocalPoint, PictureProps, ImgProps, ImageProps } f
 
 export { Picture, Img, Image, makeSrcQueryString, getSrcSet } from "./Image";
 
+export type { InputProps } from "./Input";
 export { Input, FieldInput, InputContainer, TextArea, FieldTextArea } from "./Input";
 
 export type { LabelProps, LegendProps, FieldsetLegendProps } from "./Label";

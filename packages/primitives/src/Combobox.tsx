@@ -148,8 +148,12 @@ const InternalComboboxRoot = withProvider<HTMLDivElement, ComboboxRootProps<Comb
   { baseComponent: true },
 );
 
-export const ComboboxRoot = <T extends Combobox.CollectionItem>({ ...props }: ComboboxRootProps<T>) => {
-  return <InternalComboboxRoot {...props} />;
+export const ComboboxRoot = <T extends Combobox.CollectionItem>({
+  lazyMount = true,
+  unmountOnExit = true,
+  ...props
+}: ComboboxRootProps<T>) => {
+  return <InternalComboboxRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />;
 };
 
 export type ComboboxClearTriggerProps = Combobox.ClearTriggerProps & JsxStyleProps;

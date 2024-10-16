@@ -41,7 +41,7 @@ const meta: Meta<typeof ComboboxRoot> = {
   tags: ["autodocs"],
   component: ComboboxRoot,
   args: {
-    variant: "standalone",
+    context: "standalone",
     translations: {
       triggerLabel: "Vis forslag",
       clearTriggerLabel: "Fjern valg",
@@ -210,7 +210,7 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
   const collection = createListCollection({ items });
 
   return (
-    <ComboboxRoot {...args} variant="composite" collection={collection} onInputValueChange={handleChange}>
+    <ComboboxRoot {...args} variant="complex" collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>
@@ -280,7 +280,7 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
   const collection = createListCollection({ items, itemToString: (item) => item.label });
 
   return (
-    <ComboboxRoot {...args} variant="standalone" collection={collection} onInputValueChange={handleChange}>
+    <ComboboxRoot {...args} context="standalone" collection={collection} onInputValueChange={handleChange}>
       <ComboboxLabel>Countries you've visited</ComboboxLabel>
       <ComboboxControl>
         <InputContainer>

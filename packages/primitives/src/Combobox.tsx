@@ -113,23 +113,31 @@ const comboboxRecipe = sva({
     },
   },
   defaultVariants: {
-    variant: "standalone",
+    context: "standalone",
+    variant: "simple",
   },
   variants: {
-    variant: {
+    context: {
       standalone: {
+        content: {
+          boxShadow: "large",
+          borderRadius: "xsmall",
+          padding: "xsmall",
+        },
+      },
+      composite: {},
+    },
+    variant: {
+      simple: {
         item: {
           padding: "xsmall",
           borderRadius: "xsmall",
         },
         content: {
-          boxShadow: "large",
-          borderRadius: "xsmall",
-          padding: "xsmall",
           gap: "4xsmall",
         },
       },
-      composite: {},
+      complex: {},
     },
   },
 });

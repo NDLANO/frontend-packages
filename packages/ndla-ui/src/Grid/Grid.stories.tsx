@@ -10,8 +10,8 @@ import { Meta, StoryFn } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
 import { ArticleContent, ArticleWrapper } from "@ndla/ui";
 import { Grid } from "./Grid";
-import { BlogPostStory } from "../BlogPost/BlogPost.stories";
 import { Plain } from "../KeyFigure/KeyFigure.stories";
+import { Default as PitchStory } from "../Pitch/Pitch.stories";
 
 export default {
   title: "Components/Grid",
@@ -59,17 +59,15 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   return <Grid {...args}>{items}</Grid>;
 };
 
-export const GridBlogPostStory: StoryFn<typeof Grid> = ({ ...args }) => {
+export const GridPitchStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
   const items = new Array(columns).fill(
     <div data-type="grid-cell" data-parallax-cell="false">
-      <BlogPostStory
-        metaImage={BlogPostStory.args?.metaImage!}
-        title={BlogPostStory.args?.title!}
-        size={"normal"}
-        headingLevel={BlogPostStory.args?.headingLevel}
-        url={BlogPostStory.args?.url!}
-        author={BlogPostStory.args?.author}
+      <PitchStory
+        metaImage={PitchStory.args?.metaImage!}
+        title={PitchStory.args?.title!}
+        url={PitchStory.args?.url!}
+        description={PitchStory.args?.description}
       />
     </div>,
   );

@@ -7,7 +7,6 @@
  */
 
 import { AudioMetaData, AudioEmbedData, AudioMeta } from "./audioTypes";
-import { BlogPostEmbedData, BlogPostMetaData, BlogPostMeta } from "./blogPostTypes";
 import {
   BrightcoveData,
   BrightcoveEmbedData,
@@ -46,6 +45,7 @@ import { IframeMetaData, IframeEmbedData, IframeData } from "./iframeTypes";
 import { ImageEmbedData, ImageMetaData } from "./imageTypes";
 import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from "./keyFigureTypes";
 import { LinkBlockEmbedData, LinkBlockMetaData } from "./linkBlockTypes";
+import { PitchEmbedData, PitchMetaData, PitchMeta } from "./pitchTypes";
 import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from "./relatedContentTypes";
 import { DisclaimerLink, UuDisclaimerData, UuDisclaimerEmbedData, UuDisclaimerMetaData } from "./uuDisclaimerTypes";
 
@@ -63,7 +63,7 @@ export type EmbedData =
   | FootnoteEmbedData
   | OembedEmbedData
   | FileEmbedData
-  | BlogPostEmbedData
+  | PitchEmbedData
   | KeyFigureEmbedData
   | ContactBlockEmbedData
   | CampaignBlockEmbedData
@@ -85,7 +85,7 @@ export type EmbedMetaData =
   | CodeMetaData
   | FootnoteMetaData
   | FileMetaData
-  | BlogPostMetaData
+  | PitchMetaData
   | KeyFigureMetaData
   | ContactBlockMetaData
   | CampaignBlockMetaData
@@ -106,7 +106,7 @@ export type {
   ContentLinkMetaData,
   FootnoteMetaData,
   FileMetaData,
-  BlogPostMetaData,
+  PitchMetaData,
   KeyFigureMetaData,
   ContactBlockMetaData,
   CampaignBlockMetaData,
@@ -127,7 +127,7 @@ export type {
   ContentLinkEmbedData,
   FootnoteEmbedData,
   FileEmbedData,
-  BlogPostEmbedData,
+  PitchEmbedData,
   KeyFigureEmbedData,
   ContactBlockEmbedData,
   CampaignBlockEmbedData,
@@ -137,7 +137,7 @@ export type {
   CommentEmbedData,
 };
 
-export type { BlogPostMeta };
+export type { PitchMeta };
 export type { KeyFigureMeta };
 export type { OembedEmbedData, OembedData, OembedMetaData };
 export type { IframeData };

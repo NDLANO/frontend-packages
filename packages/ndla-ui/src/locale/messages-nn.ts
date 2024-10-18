@@ -233,7 +233,8 @@ const messages = {
       "Kva vil det seie å arbeide utforskande? Korleis kan du lære betre? Kva skal til for å få gruppearbeid til å fungere? I Verktøykassa finn både elevar og lærerar ressursar som er aktuelle for alle fag, og som støtter opp under læringsarbeid og utvikling av kunnskap, ferdigheter og forståing.",
   },
   meta: {
-    description: "Opne og fritt tilgjengelege ressursar for vidaregåande opplæring. Utvikla og oppdaterte i samarbeid med dyktige lærarar og elevar.",
+    description:
+      "Opne og fritt tilgjengelege ressursar for vidaregåande opplæring. Utvikla og oppdaterte i samarbeid med dyktige lærarar og elevar.",
     keywords: "læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ",
   },
   masthead: {

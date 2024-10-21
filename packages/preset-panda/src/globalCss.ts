@@ -21,6 +21,9 @@ export const globalCss = defineGlobalStyles({
     // this is included in the css reset we use. We don't want it.
     "& h1, h2, h3, h4, h5, h6": {
       textWrap: "unset",
+      "& b, strong": {
+        fontWeight: "bold",
+      },
     },
   },
   body: {

@@ -233,7 +233,7 @@ const messages = {
       "What will it mean to work exploratory? How can you learn better? What is needed in order to make group work function? In the toolbox both students and teach find resources that are current for every subject, and that support learning work and development of knowledge, skills and understanding.",
   },
   meta: {
-    description: "Norwegian Digital Learning Arena, Open Educational Resources",
+    description: "Norwegian Digital Learning Arena, Open Educational Resources for upper secondary education.",
     keywords: "open educational resources,teaching,learning",
   },
   masthead: {

@@ -13,7 +13,7 @@ import { ArticleContent, ArticleWrapper } from "../Article";
 import { Grid } from "../Grid";
 
 const args: Props = {
-  title: "Min bloggpost",
+  title: "Min pitch",
   description:
     "Vil du øve på spansk? Kunne du tenke deg hjelp til naturfag? Drømmer du om en prat med Mandela? Lag din egen praterobot!",
   url: "#",
@@ -45,7 +45,7 @@ export const Default: StoryFn<typeof Pitch> = ({ ...args }) => {
   return (
     <Grid columns="2" background="transparent">
       <Pitch {...args} />
-      <Pitch {...args} />
+      <Pitch {...args} description="Kortere beskrivelse" />
     </Grid>
   );
 };

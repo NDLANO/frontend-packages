@@ -8,24 +8,26 @@
 
 import { Meta, StoryFn } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
-import { Pitch } from "./Pitch";
+import { Pitch, Props } from "./Pitch";
 import { ArticleContent, ArticleWrapper } from "../Article";
 import { Grid } from "../Grid";
+
+const args: Props = {
+  title: "Min pitch",
+  description:
+    "Vil du øve på spansk? Kunne du tenke deg hjelp til naturfag? Drømmer du om en prat med Mandela? Lag din egen praterobot!",
+  url: "#",
+  metaImage: {
+    alt: "Yonghetempelet i Beijing. Foto.",
+    url: "https://api.test.ndla.no/image-api/raw/id//62870",
+  },
+};
 
 export default {
   title: "Components/Pitch",
   component: Pitch,
   tags: ["autodocs"],
-  args: {
-    title: "Min bloggpost",
-    description:
-      "Vil du øve på spansk? Kunne du tenke deg hjelp til naturfag? Drømmer du om en prat med Mandela? Lag din egen praterobot!",
-    url: "#",
-    metaImage: {
-      alt: "Yonghetempelet i Beijing. Foto.",
-      url: "https://api.test.ndla.no/image-api/raw/id//62870",
-    },
-  },
+  args: args,
   decorators: [
     (Story) => (
       <PageContent variant="page" asChild>
@@ -43,7 +45,9 @@ export const Default: StoryFn<typeof Pitch> = ({ ...args }) => {
   return (
     <Grid columns="2" background="transparent">
       <Pitch {...args} />
-      <Pitch {...args} />
+      <Pitch {...args} description="Kortere beskrivelse" />
     </Grid>
   );
 };
+
+Default.args = args;

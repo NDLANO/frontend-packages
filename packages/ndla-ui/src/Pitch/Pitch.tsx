@@ -38,10 +38,14 @@ const StyledText = styled(Text, {
 
 const StyledCardRoot = styled(CardRoot, {
   base: {
+    height: "100%",
     border: "0",
     display: "flex",
     flexDirection: "column",
     gap: "small",
+    "& > picture:last-child": {
+      marginBlockStart: "auto",
+    },
   },
 });
 

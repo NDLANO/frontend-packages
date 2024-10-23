@@ -17,18 +17,15 @@ const GridContainer = styled("div", {
     gridRowGap: "large",
     gridColumnGap: "medium",
     width: "100%",
+    height: "100%",
     backgroundColor: "background.subtle",
     minWidth: "surface.xxsmall",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-
-    "& :not(div[data-parallax-cell='true']) > div[data-embed-type='pitch']": {
-      height: "100%",
-      "& > :last-child": {
-        marginTop: "auto",
-      },
-    },
     tabletDown: {
       gridTemplateColumns: "repeat(1, minmax(0, 1fr))",
+    },
+    '& [data-type="grid-cell"]': {
+      height: "100%",
     },
     tabletToDesktop: {
       gridTemplateColumns: "repeat(2, minmax(0, 1fr))",

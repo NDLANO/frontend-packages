@@ -187,7 +187,7 @@ export const globalCss = defineGlobalStyles({
     "& :nth-last-child(1 of .linenumber)": {
       paddingBlockEnd: "xsmall",
     },
-    // The remaining css is copied from the coy theme in prismjs. A lot of css is omitted due to styling clashes
+    // The remaining css is copied from the coy theme in prismjs. A lot of css is omitted due to styling clashes. TODO: Consider moving this
     "& .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata": {
       color: "#7d8b99",
     },

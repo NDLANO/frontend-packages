@@ -44,8 +44,12 @@ export default {
 export const Default: StoryFn<typeof Pitch> = ({ ...args }) => {
   return (
     <Grid columns="2" background="transparent">
-      <Pitch {...args} />
-      <Pitch {...args} description="Kortere beskrivelse" />
+      <div data-type="grid-cell" data-parallax-cell="false">
+        <Pitch {...args} />
+      </div>
+      <div data-type="grid-cell" data-parallax-cell="false">
+        <Pitch {...args} description="Kortere beskrivelse" />
+      </div>
     </Grid>
   );
 };

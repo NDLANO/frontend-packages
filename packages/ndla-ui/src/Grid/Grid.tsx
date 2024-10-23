@@ -20,7 +20,9 @@ const GridContainer = styled("div", {
     backgroundColor: "background.subtle",
     minWidth: "surface.xxsmall",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-    "& > [data-embed-type='pitch']": {
+
+    "& :not(div[data-parallax-cell='true']) > div[data-embed-type='pitch']": {
+      height: "100%",
       "& > :last-child": {
         marginTop: "auto",
       },

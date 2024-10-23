@@ -72,7 +72,7 @@ export const Pitch = ({ title, url, metaImage, path, description }: Props) => {
           variant="rounded"
           src={metaImage.url}
           alt={metaImage.alt}
-          sizes="180px"
+          sizes="480px"
           fallbackWidth={300}
           width={550}
           height={310}

@@ -528,7 +528,7 @@ const messages = {
     selectLanguage: "Vel språk (language): ",
     vision: "Saman skapar vi framtidas læring",
     linksHeader: "Kontakt",
-    info: "Nettstaden er utarbeida som åpen kjeldekode.",
+    info: "Nettstaden er utarbeida med åpen kjeldekode.",
     editorInChief: "Ansvarleg redaktør:",
     availabilityLink: "Tilgjengelegheitserklæring",
     privacyLink: "Personvernerklæring",

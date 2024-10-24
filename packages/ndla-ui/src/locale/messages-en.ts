@@ -133,6 +133,7 @@ const messages = {
     label: {
       subjects: "Subjects",
     },
+    includes: "Includes:",
     searchField: {
       contentTypeResultShowMoreLabel: "Show more results",
       contentTypeResultShowLessLabel: "Show less results",

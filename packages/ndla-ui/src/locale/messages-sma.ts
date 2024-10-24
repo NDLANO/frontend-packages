@@ -133,6 +133,7 @@ const messages = {
     label: {
       subjects: "Faage:",
     },
+    includes: "Meatan vaeltedh:",
     searchField: {
       contentTypeResultShowMoreLabel: "Gïehtjh jienebh illedahkh",
       contentTypeResultShowLessLabel: "Gïehtjh vaenebh illedahkh",

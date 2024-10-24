@@ -526,7 +526,7 @@ const messages = {
     aboutNDLA: "About NDLA",
     socialMedia: "Social media",
     selectLanguage: "Choose language (språk): ",
-    info: "This webapplication is developed as Open Source code.",
+    info: "This webapplication is developed with Open Source code.",
     editorInChief: "Editor in chief:",
     linksHeader: "Contact",
     availabilityLink: "Availability statement",

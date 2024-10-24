@@ -133,6 +133,7 @@ const messages = {
     label: {
       subjects: "Fága:",
     },
+    includes: "Inneholder:",
     searchField: {
       contentTypeResultShowMoreLabel: "Geahča eanet bohtosiid",
       contentTypeResultShowLessLabel: "Geahča unnit bohtosiid",

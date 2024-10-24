@@ -25,7 +25,7 @@ interface Props {
 
 const LinkedVideoButton = styled(Button, {
   base: {
-    marginInlineStart: "xsmall",
+    marginBlockStart: "3xsmall",
   },
 });
 
@@ -117,11 +117,13 @@ const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
         />
       </div>
       <EmbedByline type="video" copyright={data.copyright!} description={parsedDescription}>
-        {!!linkedVideoId && (
-          <LinkedVideoButton size="small" variant="secondary" onClick={() => setShowOriginalVideo((p) => !p)}>
-            {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}
-          </LinkedVideoButton>
-        )}
+        <div>
+          {!!linkedVideoId && (
+            <LinkedVideoButton size="small" variant="secondary" onClick={() => setShowOriginalVideo((p) => !p)}>
+              {t(`figure.button.${!showOriginalVideo ? "original" : "alternative"}`)}
+            </LinkedVideoButton>
+          )}
+        </div>
       </EmbedByline>
     </Figure>
   );

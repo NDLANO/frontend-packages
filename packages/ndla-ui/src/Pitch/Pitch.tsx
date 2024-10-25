@@ -42,6 +42,7 @@ const StyledCardRoot = styled(CardRoot, {
     display: "flex",
     flexDirection: "column",
     gap: "small",
+    paddingInline: "medium",
   },
 });
 

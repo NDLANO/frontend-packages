@@ -529,7 +529,7 @@ const messages = {
     selectLanguage: "Velg språk (language): ",
     vision: "Sammen skaper vi framtidas læring",
     linksHeader: "Kontakt",
-    info: "Nettstedet er utarbeidet med åpen kildekode.",
+    info: "Nettstedet er utarbeidet som åpen kildekode.",
     editorInChief: "Ansvarlig redaktør:",
     availabilityLink: "Tilgjengelighetserklæring",
     privacyLink: "Personvernerklæring",

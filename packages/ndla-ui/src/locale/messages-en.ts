@@ -1008,6 +1008,9 @@ const messages = {
           "Preview of shared folder. The folder is not available to others until you update its status to shared.",
       },
     },
+    learningpath: {
+      title: "My learning paths",
+    },
     arena: {
       title: "Arena",
       category: {
@@ -1202,6 +1205,7 @@ const messages = {
       subjects: "Subjects",
       profile: "Profile",
       more: "More",
+      learningpath: "Learning paths",
     },
     tagList: "Tags",
     tags: "{{count}} tag",

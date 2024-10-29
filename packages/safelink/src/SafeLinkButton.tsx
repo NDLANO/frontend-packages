@@ -13,7 +13,6 @@ import { SafeLink, SafeLinkProps } from "./SafeLink";
 
 export interface SafeLinkButtonProps extends SafeLinkProps, ButtonVariantProps {
   children: ReactNode;
-  to: string;
 }
 
 export const SafeLinkButton = forwardRef<HTMLAnchorElement, SafeLinkButtonProps>(

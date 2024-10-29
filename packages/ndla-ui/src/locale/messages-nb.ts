@@ -1009,6 +1009,9 @@ const messages = {
           "Forhåndsvisning av delt mappe. Mappa blir ikke tilgjengelig for andre før du setter den som delt.",
       },
     },
+    learningpath: {
+      title: "Mine læringsstier",
+    },
     arena: {
       title: "Arena",
       category: {
@@ -1204,6 +1207,7 @@ const messages = {
       subjects: "Favorittfag",
       profile: "Profil",
       more: "Mer",
+      learningpath: "Læringsstier",
     },
     tagList: "Emneknagger",
     tags: "{{count}} emneknagg",

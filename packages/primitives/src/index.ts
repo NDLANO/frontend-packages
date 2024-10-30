@@ -113,8 +113,10 @@ export {
 
 export { FieldRoot, FieldsetRoot } from "./Field";
 
+export type { FieldErrorMessageProps, FieldsetErrorTextProps } from "./FieldErrorMessage";
 export { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";
 
+export type { FieldHelperProps, FieldsetHelperProps } from "./FieldHelper";
 export { FieldHelper, FieldsetHelper } from "./FieldHelper";
 
 export type { FigureSize, FigureVariantProps, FigureProps, FigureFloat } from "./Figure";

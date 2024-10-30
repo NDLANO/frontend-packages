@@ -15,7 +15,9 @@ import type { TextProps } from "./Text";
 
 const StyledFieldHelper = styled(Field.HelperText, {}, { baseComponent: true });
 
-export const FieldHelper = forwardRef<HTMLSpanElement, Field.HelperTextProps & TextProps & JsxStyleProps>(
+export type FieldHelperProps = Field.HelperTextProps & TextProps & JsxStyleProps;
+
+export const FieldHelper = forwardRef<HTMLSpanElement, FieldHelperProps>(
   ({ textStyle = "label.small", fontWeight, color, srOnly, css: cssProp, ...props }, ref) => {
     return <StyledFieldHelper css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />;
   },
@@ -23,7 +25,9 @@ export const FieldHelper = forwardRef<HTMLSpanElement, Field.HelperTextProps & T
 
 const StyledFieldsetHelper = styled(Fieldset.HelperText, {}, { baseComponent: true });
 
-export const FieldsetHelper = forwardRef<HTMLSpanElement, Fieldset.HelperTextProps & TextProps & JsxStyleProps>(
+export type FieldsetHelperProps = Fieldset.HelperTextProps & TextProps & JsxStyleProps;
+
+export const FieldsetHelper = forwardRef<HTMLSpanElement, FieldsetHelperProps>(
   ({ textStyle = "label.small", fontWeight, color, srOnly, css: cssProp, ...props }, ref) => {
     return (
       <StyledFieldsetHelper css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} {...props} ref={ref} />

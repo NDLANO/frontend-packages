@@ -167,6 +167,8 @@ export { default as QuestionLine } from "./QuestionLine";
 export { default as Report } from "./Report";
 export { default as ReportOutlined } from "./ReportOutlined";
 export { default as Rotation3D } from "./Rotation3D";
+export { default as RouteFill } from "./RouteFill";
+export { default as RouteLine } from "./RouteLine";
 export { default as RssFeed } from "./RssFeed";
 export { default as RssFill } from "./RssFill";
 export { default as RssLine } from "./RssLine";

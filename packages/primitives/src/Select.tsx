@@ -138,6 +138,9 @@ const selectRecipe = sva({
       flexDirection: "column",
       gap: "4xsmall",
     },
+    valueText: {
+      textAlign: "start",
+    },
   },
 });
 

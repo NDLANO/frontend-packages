@@ -56,13 +56,13 @@ const Icon = ({
   width,
   height,
   css: cssProp,
-  "aria-hidden": ariaHidden = true,
+  "aria-hidden": ariaHidden,
   ...props
 }: Props) => {
   return (
     <StyledSvg
       data-icon=""
-      aria-hidden={ariaHidden}
+      aria-hidden={ariaHidden ?? (props["aria-label"] ? undefined : true)}
       preserveAspectRatio="xMidYMid meet"
       css={css.raw(iconRecipe.raw({ size }), cssProp)}
       {...props}

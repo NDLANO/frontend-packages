@@ -12,7 +12,8 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors, spacing, fonts, misc, animations, stackOrder } from "@ndla/core";
-import { UploadCloudLine, ErrorWarningFill } from "@ndla/icons/editor";
+import { ErrorWarningFill } from "@ndla/icons/common";
+import { UploadCloudLine } from "@ndla/icons/editor";
 import { getIllegalFiles } from "./filetypeHelper";
 import { Spinner } from "./Spinner";
 
@@ -247,7 +248,7 @@ const UploadDropZone = ({
       </Wrapper>
       {error && (
         <AlertMessages>
-          <ErrorWarningFill aria-hidden="true" />
+          <ErrorWarningFill />
           {error}
         </AlertMessages>
       )}

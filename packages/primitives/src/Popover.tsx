@@ -11,6 +11,7 @@ import { Popover, popoverAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
+import { Heading, TextProps } from "./Text";
 
 const popoverRecipe = sva({
   slots: popoverAnatomy.keys(),
@@ -117,9 +118,19 @@ export const PopoverPositioner = withContext<HTMLDivElement, Popover.PositionerP
   { baseComponent: true },
 );
 
-export const PopoverTitle = withContext<HTMLDivElement, Popover.TitleProps & JsxStyleProps>(Popover.Title, "title", {
+const InternalPopoverTitle = withContext<HTMLDivElement, Popover.TitleProps & JsxStyleProps>(Popover.Title, "title", {
   baseComponent: true,
 });
+
+export const PopoverTitle = ({
+  textStyle = "title.medium",
+  children,
+  ...rest
+}: Popover.TitleProps & TextProps & JsxStyleProps) => (
+  <Heading textStyle={textStyle} {...rest} asChild consumeCss>
+    <InternalPopoverTitle>{children}</InternalPopoverTitle>
+  </Heading>
+);
 
 export const PopoverTrigger = withContext<HTMLButtonElement, Popover.TriggerProps & JsxStyleProps>(
   Popover.Trigger,

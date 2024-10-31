@@ -51,8 +51,6 @@ export { default as DoorLockLine } from "./DoorLockLine";
 export { default as DragHorizontal } from "./DragHorizontal";
 export { default as DragVertical } from "./DragVertical";
 export { default as Draggable } from "./Draggable";
-export { default as ErrorWarningFill } from "./ErrorWarningFill";
-export { default as ErrorWarningLine } from "./ErrorWarningLine";
 export { default as ExpandDiagonalLine } from "./ExpandDiagonalLine";
 export { default as ExpandUpDownLine } from "./ExpandUpDownLine";
 export { default as Expandable } from "./Expandable";

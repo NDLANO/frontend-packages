@@ -66,6 +66,8 @@ export { default as Download } from "./Download";
 export { default as DownloadLine } from "./DownloadLine";
 export { default as Email } from "./Email";
 export { default as EmailOutline } from "./EmailOutline";
+export { default as ErrorWarningFill } from "./ErrorWarningFill";
+export { default as ErrorWarningLine } from "./ErrorWarningLine";
 export { default as Esc } from "./Esc";
 export { default as ExclamationMark } from "./ExclamationMark";
 export { default as Explanation } from "./Explanation";

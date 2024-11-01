@@ -223,7 +223,8 @@ const Controls = ({ src, title }: Props) => {
   };
 
   const handleSliderChange = (details: SliderValueChangeDetails) => {
-    if (audioRef.current) {
+    const newValue = details.value[0];
+    if (audioRef.current && newValue != null && !isNaN(newValue)) {
       audioRef.current.currentTime = details.value[0];
     }
   };

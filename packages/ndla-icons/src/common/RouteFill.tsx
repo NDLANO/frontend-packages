@@ -9,7 +9,7 @@
 import Icon, { Props } from "../Icon";
 const RouteFill = (props: Props) => (
   <Icon fill="currentColor" data-license="Apache License 2.0" data-source="RemixIcon" viewBox="0 0 24 24" {...props}>
-    <path d="m9.9 20.04 6.5.03a4.5 4.5 0 1 0 .05-9l-7-.03a2.5 2.5 0 1 1 .02-5l6.67.03a3 3 0 1 0 .01-2l-6.67-.03a4.5 4.5 0 1 0-.04 9l7 .03a2.5 2.5 0 1 1-.02 5l-6.5-.03.01-3-5.02 3.98 4.98 4.02z" />
+    <path d="M9 20h6.5a4.5 4.5 0 1 0 0-9h-7a2.5 2.5 0 0 1 0-5h6.67a3 3 0 1 0 0-2H8.5a4.5 4.5 0 1 0 0 9h7a2.5 2.5 0 0 1 0 5H9v-3l-5 4 5 4z" />
   </Icon>
 );
 export default RouteFill;

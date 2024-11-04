@@ -33,6 +33,7 @@ const selectRecipe = sva({
       flexDirection: "column",
       zIndex: "dropdown",
       background: "surface.default",
+      color: "text.default",
       borderRadius: "xsmall",
       boxShadow: "large",
       padding: "xsmall",

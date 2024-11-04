@@ -80,6 +80,8 @@ export { default as Feide } from "./Feide";
 export { default as FeideText } from "./FeideText";
 export { default as FileDocumentOutline } from "./FileDocumentOutline";
 export { default as FileDownloadOutline } from "./FileDownloadOutline";
+export { default as FileEditFill } from "./FileEditFill";
+export { default as FileEditLine } from "./FileEditLine";
 export { default as FilePdfFill } from "./FilePdfFill";
 export { default as FilePdfLine } from "./FilePdfLine";
 export { default as FileTextFill } from "./FileTextFill";

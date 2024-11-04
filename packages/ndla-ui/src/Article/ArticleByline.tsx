@@ -137,7 +137,7 @@ export const ArticleByline = ({
   const onHashChange = useCallback(
     (e: HashChangeEvent) => {
       const hash = e.newURL.split("#")[1];
-      if (hash.match(refRegexp) && !openAccordions.includes(footnotesAccordionId)) {
+      if (hash?.match(refRegexp) && !openAccordions.includes(footnotesAccordionId)) {
         setOpenAccordions([...openAccordions, footnotesAccordionId]);
         const el = document.getElementById(`#${hash}`);
         el?.click();

@@ -594,6 +594,7 @@ const messages = {
     sma: "Southern Sami",
     es: "Spanish",
     zh: "Chinese",
+    ukr: "Ukranian",
     unknown: "Unknown",
     prefixChangeLanguage: "Choose language",
   },

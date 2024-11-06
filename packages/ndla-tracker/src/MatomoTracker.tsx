@@ -17,6 +17,7 @@ export const MatomoTracker = ({ trackerUrl, siteId }: Props) => {
       dangerouslySetInnerHTML={{
         __html: `
         var _paq = window._paq = window._paq || [];
+        _paq.push(['alwaysUseSendBeacon']);
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {

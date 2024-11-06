@@ -7,7 +7,7 @@
  */
 
 import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState, FormEvent } from "react";
-import { ChevronLeft, ChevronRight, SearchLine } from "@ndla/icons/common";
+import { ArrowLeftShortLine, ArrowRightShortLine, SearchLine } from "@ndla/icons/common";
 import {
   Button,
   IconButton,
@@ -240,7 +240,7 @@ const ImageSearch = ({
             aria-label={translations.paginationTranslations?.prevTriggerLabel}
             title={translations.paginationTranslations?.prevTriggerLabel}
           >
-            <ChevronLeft />
+            <ArrowLeftShortLine />
             <span>{translations.paginationTranslations?.prevTriggerLabel}</span>
           </StyledButton>
         </PaginationPrevTrigger>
@@ -270,7 +270,7 @@ const ImageSearch = ({
             title={translations.paginationTranslations?.nextTriggerLabel}
           >
             <span>{translations.paginationTranslations?.nextTriggerLabel}</span>
-            <ChevronRight />
+            <ArrowRightShortLine />
           </StyledButton>
         </PaginationNextTrigger>
       </StyledPaginationRoot>

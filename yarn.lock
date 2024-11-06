@@ -3055,18 +3055,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/typography@workspace:packages/typography":
-  version: 0.0.0-use.local
-  resolution: "@ndla/typography@workspace:packages/typography"
-  dependencies:
-    "@ndla/core": "npm:^5.0.2"
-    "@ndla/util": "npm:^5.0.0-alpha.0"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    react: ">= 16.8.0"
-  languageName: unknown
-  linkType: soft
-
 "@ndla/ui@npm:^56.0.61-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"

@@ -34,7 +34,6 @@
       "@ndla/video-search": ["./packages/ndla-video-search/src"],
       "@ndla/safelink": ["./packages/safelink/src"],
       "@ndla/types-embed": ["./packages/types-embed/src"],
-      "@ndla/typography": ["./packages/typography/src"],
       "@ndla/util": ["./packages/util/src"],
       "@ndla/preset-panda": ["./packages/preset-panda/src"],
       "@ndla/primitives": ["./packages/primitives/src"],

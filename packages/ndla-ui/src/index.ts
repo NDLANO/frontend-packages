@@ -31,6 +31,7 @@ export {
   CopyrightEmbed,
   CodeEmbed,
   InlineTriggerButton,
+  ConceptInlineTriggerButton,
   EmbedWrapper,
 } from "./Embed";
 

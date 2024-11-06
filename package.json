@@ -86,7 +86,6 @@
     "concurrently": "^9.0.1",
     "cross-env": "^7.0.3",
     "cross-spawn": "^7.0.3",
-    "downshift": "^3.2.2",
     "eslint": "^8.57.0",
     "i18next": "^23.11.5",
     "jest": "^29.7.0",

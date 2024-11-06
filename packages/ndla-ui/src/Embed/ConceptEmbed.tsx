@@ -12,9 +12,9 @@ import { Portal } from "@ark-ui/react";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
+import { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { GlossEmbed } from "./GlossEmbed";
-import { InlineTriggerButton } from "./InlineTriggerButton";
 import { RenderContext } from "./types";
 import { Concept, ConceptProps } from "../Concept/Concept";
 
@@ -99,7 +99,7 @@ export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
       <PopoverRoot initialFocusEl={() => contentRef.current}>
         {/* @ts-expect-error placing ref and rest on popover trigger somehow removes a bug where the popover target becomes a bit bigger */}
         <PopoverTrigger asChild ref={ref} {...rest}>
-          <InlineTriggerButton>{linkText}</InlineTriggerButton>
+          <ConceptInlineTriggerButton>{linkText}</ConceptInlineTriggerButton>
         </PopoverTrigger>
         <Portal>
           <StyledPopoverContent ref={contentRef}>

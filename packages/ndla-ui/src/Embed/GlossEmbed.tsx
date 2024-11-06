@@ -11,8 +11,8 @@ import { Portal } from "@ark-ui/react";
 import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ConceptMetaData } from "@ndla/types-embed";
+import { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { InlineTriggerButton } from "./InlineTriggerButton";
 import { Gloss } from "../Gloss";
 
 interface Props {
@@ -48,7 +48,7 @@ export const GlossEmbed = ({ embed }: Props) => {
     return (
       <PopoverRoot initialFocusEl={() => contentRef.current}>
         <PopoverTrigger asChild>
-          <InlineTriggerButton>{embed.embedData.linkText}</InlineTriggerButton>
+          <ConceptInlineTriggerButton>{embed.embedData.linkText}</ConceptInlineTriggerButton>
         </PopoverTrigger>
         <Portal>
           <StyledPopoverContent ref={contentRef}>

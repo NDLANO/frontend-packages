@@ -793,6 +793,8 @@ const messages = {
   photo: "Photo",
   email: "Email",
   finished: "Finished",
+  continue: "Continue",
+  previous: "Previous",
   image: {
     altText: "Alt-text",
     caption: "Caption",
@@ -1010,6 +1012,33 @@ const messages = {
     },
     learningpath: {
       title: "My learning paths",
+      description:
+        "Here you can create your own learning paths and share them with your students. The learning paths can contain articles from NDLA, links to other resources as well as short texts you create yourself. See example of a learning path: www.lenketileksempel.no",
+      newLearningpath: "New learning path",
+      learningpathTitle: {
+        title: "Title and description",
+        description: "Give the step in the learning path a descriptive title",
+      },
+      metaImage: {
+        title: "Meta image",
+        description: "Add an image that represents your learning path.",
+      },
+      addContent: {
+        title: "Add content",
+        description: "Add content to the learning path.",
+      },
+      addStep: "Add steps",
+      contentSelection: {
+        title: "Content",
+        description: "What should the step contain?",
+        contentOptions: {
+          ownText: "Text I have written myself",
+          ndla: "Content from NDLA",
+          otherSite: "Content from another website",
+          myFolder: "Content from one of my folders in My NDLA",
+        },
+      },
+      created: "Opprettet",
     },
     arena: {
       title: "Arena",

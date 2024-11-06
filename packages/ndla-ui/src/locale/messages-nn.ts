@@ -794,6 +794,8 @@ const messages = {
   photo: "Bilete",
   email: "E-post",
   finished: "Ferdig",
+  continue: "Gå videre",
+  previous: "Forrige",
   image: {
     altText: "Alt-tekst",
     caption: "Bilettekst",
@@ -1011,6 +1013,33 @@ const messages = {
     },
     learningpath: {
       title: "Mine læringsstiar",
+      description:
+        "Her kan du oppretta dine eigne læringsstiar og dela dei med elevane dine. Læringsstiane kan innehalda artiklar frå NDLA, lenkjar til andre ressursar og dessutan korte tekstar du lagar sjølv. Sjå døme på ein læringssti: www.lenketileksempel.no",
+      newLearningpath: "Ny læringssti",
+      learningpathTitle: {
+        title: "Tittel og beskriving",
+        description: "Gi trinnet i læringsstien ein beskrivande tittel",
+      },
+      metaImage: {
+        title: "Metabilete",
+        description: "Legg til eit bilete som representerer læringsstien din.",
+      },
+      addContent: {
+        title: "Legg til innhald",
+        description: "Legg til innhald i læringsstien.",
+      },
+      addStep: "Legg til trinn",
+      contentSelection: {
+        title: "Innhald",
+        description: "Kva skal trinnet innehalda?",
+        contentOptions: {
+          ownText: "Tekst eg har skrive sjølv",
+          ndla: "Innhald frå NDLA",
+          otherSite: "Innhald frå ein annan nettstad",
+          myFolder: "Innhald frå ein av mappene mine i Min NDLA",
+        },
+      },
+      created: "Opprettet",
     },
     arena: {
       title: "Arena",

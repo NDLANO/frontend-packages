@@ -7,7 +7,7 @@
  */
 
 import { ReactNode, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "@ndla/icons/common";
+import { ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons/common";
 import {
   Text,
   Button,
@@ -175,7 +175,7 @@ const AudioSearch = ({
             aria-label={translations.paginationTranslations?.prevTriggerLabel}
             title={translations.paginationTranslations?.prevTriggerLabel}
           >
-            <ChevronLeft />
+            <ArrowLeftShortLine />
             <span>{translations.paginationTranslations?.prevTriggerLabel}</span>
           </StyledButton>
         </PaginationPrevTrigger>
@@ -203,7 +203,7 @@ const AudioSearch = ({
             title={translations.paginationTranslations?.nextTriggerLabel}
           >
             <span>{translations.paginationTranslations?.nextTriggerLabel}</span>
-            <ChevronRight />
+            <ArrowRightShortLine />
           </StyledButton>
         </PaginationNextTrigger>
       </StyledPaginationRoot>

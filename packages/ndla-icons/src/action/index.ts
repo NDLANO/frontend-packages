@@ -47,7 +47,6 @@ export { default as Minus } from "./Minus";
 export { default as Pencil } from "./Pencil";
 export { default as PencilFill } from "./PencilFill";
 export { default as PencilLine } from "./PencilLine";
-export { default as Plus } from "./Plus";
 export { default as Print } from "./Print";
 export { default as RemoveCircle } from "./RemoveCircle";
 export { default as Replay15Line } from "./Replay15Line";

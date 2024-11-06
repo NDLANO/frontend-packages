@@ -25,7 +25,6 @@ export { default as Camera } from "./Camera";
 export { default as CameraFill } from "./CameraFill";
 export { default as CameraLine } from "./CameraLine";
 export { default as ChatLine } from "./ChatLine";
-export { default as Check } from "./Check";
 export { default as CheckLine } from "./CheckLine";
 export { default as CheckboxCircleFill } from "./CheckboxCircleFill";
 export { default as CheckboxCircleLine } from "./CheckboxCircleLine";

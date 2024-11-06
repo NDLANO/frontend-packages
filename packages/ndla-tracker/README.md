@@ -1,6 +1,6 @@
 # ndla-tracker
 
-NDLA's tracker for google tag manager
+NDLA's tracker for Matomo
 
 ## Installation
 

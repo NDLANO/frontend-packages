@@ -42,7 +42,6 @@ export { default as CopyrightLine } from "./CopyrightLine";
 export { default as Crop } from "./Crop";
 export { default as CropFill } from "./CropFill";
 export { default as CropLine } from "./CropLine";
-export { default as DeleteForever } from "./DeleteForever";
 export { default as DetailSearch } from "./DetailSearch";
 export { default as Done } from "./Done";
 export { default as DoorLockFill } from "./DoorLockFill";

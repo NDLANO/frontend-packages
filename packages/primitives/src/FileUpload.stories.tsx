@@ -8,8 +8,9 @@
 
 import { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
+import { DeleteBinLine } from "@ndla/icons/action";
 import { FileDocumentOutline } from "@ndla/icons/common";
-import { DeleteForever, UploadCloudLine } from "@ndla/icons/editor";
+import { UploadCloudLine } from "@ndla/icons/editor";
 import { Button, IconButton } from "./Button";
 import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
@@ -66,7 +67,7 @@ export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
               <FileUploadItemSizeText />
               <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
-                  <DeleteForever />
+                  <DeleteBinLine />
                 </IconButton>
               </FileUploadItemDeleteTrigger>
             </FileUploadItem>
@@ -119,7 +120,7 @@ export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
               <FileUploadItemSizeText />
               <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
-                  <DeleteForever />
+                  <DeleteBinLine />
                 </IconButton>
               </FileUploadItemDeleteTrigger>
             </FileUploadItem>
@@ -157,7 +158,7 @@ export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
               <FileUploadItemSizeText />
               <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
-                  <DeleteForever />
+                  <DeleteBinLine />
                 </IconButton>
               </FileUploadItemDeleteTrigger>
             </FileUploadItem>
@@ -195,7 +196,7 @@ export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) 
               <FileUploadItemSizeText />
               <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
-                  <DeleteForever />
+                  <DeleteBinLine />
                 </IconButton>
               </FileUploadItemDeleteTrigger>
             </FileUploadItem>
@@ -233,7 +234,7 @@ export const Disabled: StoryFn<typeof FileUploadRoot> = (args) => (
               <FileUploadItemSizeText />
               <FileUploadItemDeleteTrigger asChild>
                 <IconButton variant="secondary">
-                  <DeleteForever />
+                  <DeleteBinLine />
                 </IconButton>
               </FileUploadItemDeleteTrigger>
             </FileUploadItem>
@@ -281,7 +282,7 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
                   <FileUploadItemSizeText />
                   <FileUploadItemDeleteTrigger asChild>
                     <IconButton variant="secondary">
-                      <DeleteForever />
+                      <DeleteBinLine />
                     </IconButton>
                   </FileUploadItemDeleteTrigger>
                 </FileUploadItem>

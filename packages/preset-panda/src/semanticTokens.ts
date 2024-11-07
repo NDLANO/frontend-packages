@@ -90,6 +90,7 @@ export const semanticTokens = defineSemanticTokens({
       default: { value: "{colors.grey.950}" },
       strong: { value: "{colors.primary}" },
       onAction: { value: "{colors.white}" },
+      subtle: { value: "{colors.grey.700}" },
     },
     surface: {
       brand: {

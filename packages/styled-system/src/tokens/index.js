@@ -1267,6 +1267,10 @@ const tokens = {
     "value": "var(--colors-white)",
     "variable": "var(--colors-icon-on-action)"
   },
+  "colors.icon.subtle": {
+    "value": "var(--colors-grey-700)",
+    "variable": "var(--colors-icon-subtle)"
+  },
   "colors.surface.brand.1": {
     "value": "var(--colors-purple-500)",
     "variable": "var(--colors-surface-brand-1)"

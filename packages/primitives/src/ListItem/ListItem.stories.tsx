@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Pencil, TrashCanOutline } from "@ndla/icons/action";
+import { Pencil, DeleteBinLine } from "@ndla/icons/action";
 import { Share } from "@ndla/icons/common";
 import { HorizontalMenu } from "@ndla/icons/contentType";
 import { SafeLink } from "@ndla/safelink";
@@ -119,7 +119,7 @@ const ListComponent = ({
                 Rediger
               </MenuItem>
               <MenuItem value="delete" variant="destructive">
-                <TrashCanOutline />
+                <DeleteBinLine />
                 Slett
               </MenuItem>
               <MenuItem value="share">

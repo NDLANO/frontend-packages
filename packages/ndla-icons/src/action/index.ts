@@ -56,4 +56,3 @@ export { default as School } from "./School";
 export { default as SubtractLine } from "./SubtractLine";
 export { default as Thumb } from "./Thumb";
 export { default as ThumbFilled } from "./ThumbFilled";
-export { default as TrashCanOutline } from "./TrashCanOutline";

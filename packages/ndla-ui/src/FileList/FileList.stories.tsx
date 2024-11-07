@@ -7,8 +7,8 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Pencil } from "@ndla/icons/action";
-import { DeleteForever, DragVertical } from "@ndla/icons/editor";
+import { Pencil, DeleteBinLine } from "@ndla/icons/action";
+import { DragVertical } from "@ndla/icons/editor";
 import { IconButton } from "@ndla/primitives";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { File } from "./File";
@@ -119,7 +119,7 @@ export const FilesWithButtons: StoryObj<typeof File> = {
             <Pencil />
           </IconButton>
           <IconButton variant="clear">
-            <DeleteForever />
+            <DeleteBinLine />
           </IconButton>
         </HStack>
       </FileListItem>
@@ -130,7 +130,7 @@ export const FilesWithButtons: StoryObj<typeof File> = {
             <Pencil />
           </IconButton>
           <IconButton variant="clear">
-            <DeleteForever />
+            <DeleteBinLine />
           </IconButton>
         </HStack>
       </FileListItem>

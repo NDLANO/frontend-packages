@@ -21,7 +21,6 @@ const dialogRecipe = sva({
       position: "fixed",
       height: "100vh",
       width: "100vw",
-      zIndex: "overlay",
       left: "0",
       top: "0",
       // TODO: Consider if this should be a token. It's probably consistent enough between dark and light mode to be a token.
@@ -49,7 +48,6 @@ const dialogRecipe = sva({
       top: "0",
       width: "100vw",
       height: "100dvh",
-      zIndex: "modal",
     },
     content: {
       "--margin": "token(sizes.medium)",
@@ -77,6 +75,7 @@ const dialogRecipe = sva({
     size: "medium",
     position: "center",
     variant: "dialog",
+    context: "dialog",
   },
   compoundVariants: [
     {
@@ -209,6 +208,24 @@ const dialogRecipe = sva({
     },
   ],
   variants: {
+    context: {
+      dialog: {
+        positioner: {
+          zIndex: "modal",
+        },
+        backdrop: {
+          zIndex: "overlay",
+        },
+      },
+      alert: {
+        positioner: {
+          zIndex: "alertModal",
+        },
+        backdrop: {
+          zIndex: "alertModalOverlay",
+        },
+      },
+    },
     variant: {
       drawer: {
         content: {

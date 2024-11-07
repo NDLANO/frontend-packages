@@ -955,20 +955,28 @@ const tokens = {
     "value": 1400,
     "variable": "var(--z-index-modal)"
   },
+  "zIndex.alertModalOverlay": {
+    "value": 1400,
+    "variable": "var(--z-index-alert-modal-overlay)"
+  },
+  "zIndex.alertModal": {
+    "value": 1600,
+    "variable": "var(--z-index-alert-modal)"
+  },
   "zIndex.popover": {
-    "value": 1500,
+    "value": 1700,
     "variable": "var(--z-index-popover)"
   },
   "zIndex.skipLink": {
-    "value": 1600,
+    "value": 1800,
     "variable": "var(--z-index-skip-link)"
   },
   "zIndex.toast": {
-    "value": 1700,
+    "value": 1900,
     "variable": "var(--z-index-toast)"
   },
   "zIndex.tooltip": {
-    "value": 1800,
+    "value": 2000,
     "variable": "var(--z-index-tooltip)"
   },
   "breakpoints.mobile": {

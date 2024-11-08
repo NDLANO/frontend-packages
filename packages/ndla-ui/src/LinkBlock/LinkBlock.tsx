@@ -78,6 +78,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
   const formattedDate = useMemo(() => {
     if (!date) return null;
     return new Intl.DateTimeFormat(articleLanguage, {
+      timeZone: "UTC",
       day: "2-digit",
       month: "long",
       year: "numeric",

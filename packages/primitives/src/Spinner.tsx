@@ -33,8 +33,8 @@ export const spinnerRecipe = cva({
     size: {
       small: {
         borderWidth: "4px",
-        height: "medium",
-        width: "medium",
+        height: "small",
+        width: "small",
       },
       medium: {
         borderWidth: "4px",

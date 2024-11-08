@@ -11,7 +11,6 @@ import { SearchLine } from "@ndla/icons/common";
 import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { BrightcoveApiType } from "@ndla/types-embed";
-import { usePrevious } from "@ndla/util";
 import { VideoResultList } from "./VideoResultList";
 
 export interface VideoTranslations {

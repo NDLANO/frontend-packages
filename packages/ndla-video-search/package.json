@@ -29,8 +29,7 @@
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/styled-system": "workspace:^",
-    "@ndla/util": "^5.0.0-alpha.0"
+    "@ndla/styled-system": "workspace:^"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",

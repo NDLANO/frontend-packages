@@ -3099,7 +3099,6 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
     "@ndla/types-embed": "npm:^5.0.4-alpha.0"
-    "@ndla/util": "npm:^5.0.0-alpha.0"
     "@pandacss/dev": "npm:^0.46.0"
   peerDependencies:
     react: ">= 18"

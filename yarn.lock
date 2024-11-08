@@ -2813,7 +2813,7 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^5.0.4-alpha.0"
-    "@ndla/ui": "npm:^56.0.67-alpha.0"
+    "@ndla/ui": "npm:^56.0.68-alpha.0"
     html-react-parser: "npm:^5.1.8"
   peerDependencies:
     i18next: ">= 23.11.5"
@@ -2847,7 +2847,7 @@ __metadata:
   dependencies:
     "@ndla/core": "npm:^5.0.2"
     "@ndla/dropdown-menu": "npm:^1.0.40-alpha.0"
-    "@ndla/icons": "npm:^8.0.41-alpha.0"
+    "@ndla/icons": "npm:^8.0.42-alpha.0"
   peerDependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
@@ -2901,7 +2901,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/icons@npm:^8.0.41-alpha.0, @ndla/icons@workspace:^, @ndla/icons@workspace:packages/ndla-icons":
+"@ndla/icons@npm:^8.0.42-alpha.0, @ndla/icons@workspace:^, @ndla/icons@workspace:packages/ndla-icons":
   version: 0.0.0-use.local
   resolution: "@ndla/icons@workspace:packages/ndla-icons"
   dependencies:
@@ -2944,7 +2944,7 @@ __metadata:
   resolution: "@ndla/modal@workspace:packages/ndla-modal"
   dependencies:
     "@ndla/core": "npm:^5.0.2"
-    "@ndla/icons": "npm:^8.0.41-alpha.0"
+    "@ndla/icons": "npm:^8.0.42-alpha.0"
     "@radix-ui/react-dialog": "npm:^1.0.5"
   peerDependencies:
     "@emotion/react": ^11.10.4
@@ -2979,7 +2979,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^7.0.52-alpha.0, @ndla/safelink@workspace:packages/safelink":
+"@ndla/safelink@npm:^7.0.53-alpha.0, @ndla/safelink@workspace:packages/safelink":
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:
@@ -3055,16 +3055,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/ui@npm:^56.0.67-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^56.0.68-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
     "@ndla/core": "npm:^5.0.2"
-    "@ndla/icons": "npm:^8.0.41-alpha.0"
+    "@ndla/icons": "npm:^8.0.42-alpha.0"
     "@ndla/licenses": "npm:^8.0.3-alpha.0"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
-    "@ndla/safelink": "npm:^7.0.52-alpha.0"
+    "@ndla/safelink": "npm:^7.0.53-alpha.0"
     "@ndla/styled-system": "workspace:^"
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^5.0.4-alpha.0"

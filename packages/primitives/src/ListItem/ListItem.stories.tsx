@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Pencil, DeleteBinLine } from "@ndla/icons/action";
+import { PencilFill, DeleteBinLine } from "@ndla/icons/action";
 import { Share } from "@ndla/icons/common";
 import { HorizontalMenu } from "@ndla/icons/contentType";
 import { SafeLink } from "@ndla/safelink";
@@ -115,7 +115,7 @@ const ListComponent = ({
           <MenuPositioner>
             <MenuContent>
               <MenuItem value="edit">
-                <Pencil />
+                <PencilFill />
                 Rediger
               </MenuItem>
               <MenuItem value="delete" variant="destructive">

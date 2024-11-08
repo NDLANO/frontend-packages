@@ -33,16 +33,22 @@ export const zIndex = defineTokens.zIndex({
   modal: {
     value: 1400,
   },
-  popover: {
-    value: 1500,
+  alertModalOverlay: {
+    value: 1400,
   },
-  skipLink: {
+  alertModal: {
     value: 1600,
   },
-  toast: {
+  popover: {
     value: 1700,
   },
-  tooltip: {
+  skipLink: {
     value: 1800,
+  },
+  toast: {
+    value: 1900,
+  },
+  tooltip: {
+    value: 2000,
   },
 });

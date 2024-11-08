@@ -17,6 +17,7 @@ export const spinnerRecipe = cva({
     borderRadius: "full",
     animation: "spin",
     display: "block",
+    marginInline: "auto",
     borderStyle: "solid",
     borderBlockColor: "background.subtle",
     borderInlineStartColor: "background.subtle",

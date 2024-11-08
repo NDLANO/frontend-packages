@@ -19,12 +19,6 @@ const StyledList = styled("ul", {
   },
 });
 
-const SpinnerWrapper = styled("div", {
-  base: {
-    display: "flex",
-    justifyContent: "center",
-  },
-});
 const StyledVideoResultWrapper = styled("div", {
   base: {
     display: "flex",
@@ -70,11 +64,7 @@ export const VideoResultList = ({
           ))}
         </StyledList>
       )}
-      {isLoading && (
-        <SpinnerWrapper>
-          <Spinner />
-        </SpinnerWrapper>
-      )}
+      {isLoading && <Spinner />}
       {existsMoreVideos && <Button onClick={onShowMore}>{translations.loadMoreVideos}</Button>}
     </StyledVideoResultWrapper>
   );

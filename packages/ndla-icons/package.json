@@ -31,7 +31,6 @@
     "action"
   ],
   "dependencies": {
-    "@ndla/core": "^5.0.2",
     "@ndla/styled-system": "workspace:^"
   },
   "devDependencies": {

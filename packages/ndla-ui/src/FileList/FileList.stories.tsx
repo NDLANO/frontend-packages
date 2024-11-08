@@ -7,7 +7,7 @@
  */
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { Pencil, DeleteBinLine } from "@ndla/icons/action";
+import { PencilFill, DeleteBinLine } from "@ndla/icons/action";
 import { DragVertical } from "@ndla/icons/editor";
 import { IconButton } from "@ndla/primitives";
 import { HStack, styled } from "@ndla/styled-system/jsx";
@@ -116,7 +116,7 @@ export const FilesWithButtons: StoryObj<typeof File> = {
         <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
         <HStack>
           <IconButton variant="clear">
-            <Pencil />
+            <PencilFill />
           </IconButton>
           <IconButton variant="clear">
             <DeleteBinLine />
@@ -127,7 +127,7 @@ export const FilesWithButtons: StoryObj<typeof File> = {
         <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
         <HStack>
           <IconButton variant="clear">
-            <Pencil />
+            <PencilFill />
           </IconButton>
           <IconButton variant="clear">
             <DeleteBinLine />

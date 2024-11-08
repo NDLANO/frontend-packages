@@ -956,7 +956,7 @@ const tokens = {
     "variable": "var(--z-index-modal)"
   },
   "zIndex.alertModalOverlay": {
-    "value": 1400,
+    "value": 1500,
     "variable": "var(--z-index-alert-modal-overlay)"
   },
   "zIndex.alertModal": {

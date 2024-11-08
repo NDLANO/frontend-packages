@@ -34,7 +34,7 @@ export const zIndex = defineTokens.zIndex({
     value: 1400,
   },
   alertModalOverlay: {
-    value: 1400,
+    value: 1500,
   },
   alertModal: {
     value: 1600,

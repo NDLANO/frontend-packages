@@ -46,7 +46,7 @@ export const FileListEmbed = ({ children, ...rest }: Props) => {
   return (
     <FileListWrapper {...rest} data-embed-type="file-list">
       <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
-        <h3>{t("files")}</h3>
+        <h2>{t("files")}</h2>
       </Heading>
       <ul>{children}</ul>
     </FileListWrapper>

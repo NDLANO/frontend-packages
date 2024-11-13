@@ -12,7 +12,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import { ColorToken } from "@ndla/styled-system/tokens";
 import { JsxStyleProps } from "@ndla/styled-system/types";
 
-export type LogoProps = ComponentPropsWithoutRef<"svg"> & { color?: ColorToken } & JsxStyleProps;
+export type LogoProps = ComponentPropsWithoutRef<"svg"> & { color?: ColorToken; alt?: string } & JsxStyleProps;
 
 const BaseSvg = ({ color = "primary", css: cssProp, ...props }: LogoProps) => (
   <styled.svg xmlns="http://www.w3.org/2000/svg" css={css.raw({ color }, cssProp)} {...props} />

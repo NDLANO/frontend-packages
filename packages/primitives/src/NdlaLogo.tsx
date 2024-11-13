@@ -14,8 +14,13 @@ import { JsxStyleProps } from "@ndla/styled-system/types";
 
 export type LogoProps = ComponentPropsWithoutRef<"svg"> & { color?: ColorToken } & JsxStyleProps;
 
-const BaseSvg = ({ color = "primary", css: cssProp, ...props }: LogoProps) => (
-  <styled.svg xmlns="http://www.w3.org/2000/svg" css={css.raw({ color }, cssProp)} {...props} />
+const BaseSvg = ({ color = "primary", "aria-hidden": ariaHidden = true, css: cssProp, ...props }: LogoProps) => (
+  <styled.svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden={ariaHidden}
+    css={css.raw({ color }, cssProp)}
+    {...props}
+  />
 );
 
 export const NdlaLogoEn = (props: LogoProps) => (

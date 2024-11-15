@@ -39,12 +39,7 @@ export { CardRoot, CardHeading, CardContent, CardImage } from "./Card/Card";
 export { createStyleContext } from "./createStyleContext";
 
 export { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
-export type {
-  ToggleGroupRootProps,
-  ToggleGroupVariantProps,
-  ToggleGroupItemProps,
-  ToggleGroupItemVariantProps,
-} from "./ToggleGroup";
+export type { ToggleGroupRootProps, ToggleGroupVariantProps, ToggleGroupItemProps } from "./ToggleGroup";
 
 export type { CheckboxVariantProps, CheckboxRootProps } from "./Checkbox";
 

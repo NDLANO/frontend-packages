@@ -64,6 +64,7 @@ export const Table = styled(
         display: "table-cell",
         paddingInline: "xsmall",
         paddingBlock: "3xsmall",
+        minWidth: "large",
         "&[data-align='center']": {
           textAlign: "center",
         },

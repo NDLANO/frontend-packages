@@ -70,6 +70,9 @@ export const buttonBaseRecipe = cva({
           boxShadow:
             "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color), inset 0px 0px 0px calc(var(--shadow-width, 3px) * 2) currentcolor",
         },
+        _on: {
+          background: "surface.action.selected",
+        },
       },
       secondary: {
         color: "text.strong",
@@ -80,6 +83,9 @@ export const buttonBaseRecipe = cva({
         },
         _active: {
           background: "surface.actionSubtle.hover.strong",
+        },
+        _on: {
+          background: "surface.actionSubtle.active",
         },
       },
       tertiary: {
@@ -95,6 +101,10 @@ export const buttonBaseRecipe = cva({
         _active: {
           borderColor: "stroke.default",
           background: "surface.actionSubtle.hover.strong",
+        },
+        _on: {
+          background: "surface.actionSubtle.active",
+          boxShadow: "inset 0 0 0 1px var(--shadow-color)",
         },
       },
       clear: {

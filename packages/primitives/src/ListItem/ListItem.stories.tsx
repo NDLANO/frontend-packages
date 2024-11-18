@@ -16,7 +16,7 @@ import { linkOverlay } from "@ndla/styled-system/patterns";
 import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, ListItemVariantProps } from "./ListItem";
 import { Badge } from "../Badge";
 import { IconButton } from "../Button";
-import { MenuContent, MenuItem, MenuPositioner, MenuRoot, MenuTrigger } from "../Menu";
+import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu";
 import { Text } from "../Text";
 
 export default {
@@ -112,22 +112,20 @@ const ListComponent = ({
               <HorizontalMenu />
             </IconButton>
           </MenuTrigger>
-          <MenuPositioner>
-            <MenuContent>
-              <MenuItem value="edit">
-                <PencilFill />
-                Rediger
-              </MenuItem>
-              <MenuItem value="delete" variant="destructive">
-                <DeleteBinLine />
-                Slett
-              </MenuItem>
-              <MenuItem value="share">
-                <Share />
-                Del
-              </MenuItem>
-            </MenuContent>
-          </MenuPositioner>
+          <MenuContent>
+            <MenuItem value="edit">
+              <PencilFill />
+              Rediger
+            </MenuItem>
+            <MenuItem value="delete" variant="destructive">
+              <DeleteBinLine />
+              Slett
+            </MenuItem>
+            <MenuItem value="share">
+              <Share />
+              Del
+            </MenuItem>
+          </MenuContent>
         </MenuRoot>
       </styled.div>
     </ListItemContent>

@@ -27,7 +27,6 @@
   ],
   "dependencies": {
     "@ndla/core": "^5.0.2",
-    "@ndla/dropdown-menu": "^1.0.40-alpha.0",
     "@ndla/icons": "^8.0.43-alpha.0"
   },
   "peerDependencies": {

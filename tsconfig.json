@@ -20,7 +20,6 @@
       "@ndla/article-converter": ["./packages/article-converter/src"],
       "@ndla/button": ["./packages/button/src"],
       "@ndla/core": ["./packages/core/src"],
-      "@ndla/dropdown-menu": ["./packages/dropdown-menu/src"],
       "@ndla/hooks": ["./packages/hooks/src"],
       "@ndla/audio-search": ["./packages/ndla-audio-search/src"],
       "@ndla/error-reporter": ["./packages/ndla-error-reporter/src"],

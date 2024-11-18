@@ -35,6 +35,9 @@ const StyledIconButton = styled(IconButton, {
     "&:focus, &:focus-visible, &:active": {
       opacity: "1",
     },
+    tabletDown: {
+      display: "none",
+    },
   },
 });
 

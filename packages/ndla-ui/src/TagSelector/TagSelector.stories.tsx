@@ -18,7 +18,6 @@ import {
   ComboboxItem,
   ComboboxItemIndicator,
   ComboboxItemText,
-  ComboboxPositioner,
   IconButton,
   Input,
   InputContainer,
@@ -95,18 +94,16 @@ export const Default: StoryFn<typeof TagSelectorRoot> = ({ translations, ...args
           </IconButton>
         </TagSelectorTrigger>
       </HStack>
-      <ComboboxPositioner>
-        <ComboboxContent>
-          {options.map((item) => (
-            <ComboboxItem key={item} item={item}>
-              <ComboboxItemText>{item}</ComboboxItemText>
-              <ComboboxItemIndicator>
-                <CheckLine />
-              </ComboboxItemIndicator>
-            </ComboboxItem>
-          ))}
-        </ComboboxContent>
-      </ComboboxPositioner>
+      <ComboboxContent>
+        {options.map((item) => (
+          <ComboboxItem key={item} item={item}>
+            <ComboboxItemText>{item}</ComboboxItemText>
+            <ComboboxItemIndicator>
+              <CheckLine />
+            </ComboboxItemIndicator>
+          </ComboboxItem>
+        ))}
+      </ComboboxContent>
     </TagSelectorRoot>
   );
 };

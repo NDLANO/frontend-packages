@@ -145,9 +145,19 @@ export const MenuRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: M
   <InternalMenuRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const MenuContent = withContext<HTMLDivElement, JsxStyleProps & Menu.ContentProps>(Menu.Content, "content", {
-  baseComponent: true,
-});
+export const MenuContentStandalone = withContext<HTMLDivElement, JsxStyleProps & Menu.ContentProps>(
+  Menu.Content,
+  "content",
+  {
+    baseComponent: true,
+  },
+);
+
+export const MenuContent = forwardRef<HTMLDivElement, JsxStyleProps & Menu.ContentProps>((props, ref) => (
+  <MenuPositioner>
+    <MenuContentStandalone ref={ref} {...props} />
+  </MenuPositioner>
+));
 
 const InternalMenuItemGroupLabel = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemGroupLabelProps>(
   Menu.ItemGroupLabel,

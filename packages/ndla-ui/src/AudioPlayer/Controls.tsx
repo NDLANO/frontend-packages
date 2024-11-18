@@ -24,7 +24,6 @@ import {
   SelectItemIndicator,
   SelectItemText,
   SelectLabel,
-  SelectPositioner,
   SelectRoot,
   SelectTrigger,
   SliderControl,
@@ -309,18 +308,16 @@ const Controls = ({ src, title }: Props) => {
               </SpeedButton>
             </SelectTrigger>
           </SelectControl>
-          <SelectPositioner>
-            <SelectContent>
-              {speedValues.items.map((speed) => (
-                <SelectItem key={speed} item={speed}>
-                  <SelectItemText>{speed}x</SelectItemText>
-                  <SelectItemIndicator>
-                    <CheckLine />
-                  </SelectItemIndicator>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </SelectPositioner>
+          <SelectContent>
+            {speedValues.items.map((speed) => (
+              <SelectItem key={speed} item={speed}>
+                <SelectItemText>{speed}x</SelectItemText>
+                <SelectItemIndicator>
+                  <CheckLine />
+                </SelectItemIndicator>
+              </SelectItem>
+            ))}
+          </SelectContent>
         </StyledSelectRoot>
         <PopoverRoot positioning={{ placement: "top" }}>
           <PopoverTrigger asChild>

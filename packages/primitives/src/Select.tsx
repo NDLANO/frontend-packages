@@ -163,11 +163,17 @@ export const SelectClearTrigger = withContext<HTMLButtonElement, Select.ClearTri
   { baseComponent: true },
 );
 
-export const SelectContent = withContext<HTMLDivElement, Select.ContentProps & JsxStyleProps>(
+export const SelectContentStandalone = withContext<HTMLDivElement, Select.ContentProps & JsxStyleProps>(
   Select.Content,
   "content",
   { baseComponent: true },
 );
+
+export const SelectContent = forwardRef<HTMLDivElement, Select.ContentProps & JsxStyleProps>((props, ref) => (
+  <SelectPositioner>
+    <SelectContentStandalone ref={ref} {...props} />
+  </SelectPositioner>
+));
 
 export const SelectControl = withContext<HTMLDivElement, Select.ControlProps & JsxStyleProps>(
   Select.Control,

@@ -9,7 +9,7 @@
 import { Text, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
-import { PreviewTranslations } from "./ImageSearch";
+import { PreviewTranslations } from "./BaseImageSearch";
 import PreviewImage from "./PreviewImage";
 import { getPreviewSrcSets } from "./util/imageUtil";
 
@@ -35,9 +35,9 @@ const StyledText = styled(Text, {
 
 interface Props {
   image: IImageMetaInformationV3;
-  onImageClick: (image: IImageMetaInformationV3) => void;
+  onImageClick: (image: IImageMetaInformationV3 | undefined) => void;
   selectedImage?: IImageMetaInformationV3;
-  onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
+  onSelectImage: (image: IImageMetaInformationV3, saveAsMetaImage?: boolean) => void;
   showCheckbox: boolean;
   translations: PreviewTranslations;
   locale: string;
@@ -78,6 +78,7 @@ export default function ImageSearchResult({
         <PreviewImage
           id={`image-preview-${image.id}`}
           image={selectedImage}
+          onImageClick={onImageClick}
           onSelectImage={onSelectImage}
           translations={translations}
           showCheckbox={showCheckbox}

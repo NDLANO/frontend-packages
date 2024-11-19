@@ -24,8 +24,8 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import { PreviewTranslations } from "./BaseImageSearch";
 import ImageMeta from "./ImageMeta";
-import { PreviewTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
 
 const ImageContainer = styled("div", {
@@ -112,13 +112,14 @@ const ActionsWrapper = styled("div", {
 interface Props {
   id: string;
   image: IImageMetaInformationV3;
-  onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
+  onSelectImage: (image: IImageMetaInformationV3, saveAsMetaImage?: boolean) => void;
+  onImageClick: (image: IImageMetaInformationV3 | undefined) => void;
   showCheckbox: boolean;
   translations: PreviewTranslations;
   locale: string;
 }
 
-const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, locale }: Props) => {
+const PreviewImage = ({ id, image, onSelectImage, onImageClick, showCheckbox, translations, locale }: Props) => {
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
   return (
@@ -141,7 +142,7 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
             </Text>
             <IconButton
               variant="tertiary"
-              onClick={() => onSelectImage(undefined)}
+              onClick={() => onImageClick(undefined)}
               aria-label={translations.close}
               title={translations.close}
             >
@@ -199,7 +200,13 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
           )}
         </StyledImageMetadata>
         <ActionsWrapper>
-          <Button data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
+          <Button
+            data-testid="use-image"
+            onClick={() => {
+              onImageClick(undefined);
+              onSelectImage(image, saveAsMetaImage);
+            }}
+          >
             {translations.useImageTitle}
           </Button>
           {showCheckbox && (

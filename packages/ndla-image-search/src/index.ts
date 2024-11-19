@@ -8,3 +8,4 @@
 
 export { default as ImageMeta } from "./ImageMeta";
 export { default as ImageSearch } from "./ImageSearch";
+export { BaseImageSearch } from "./BaseImageSearch";

@@ -6,98 +6,9 @@
  *
  */
 
-import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState, FormEvent } from "react";
-import { ArrowLeftShortLine, ArrowRightShortLine, SearchLine } from "@ndla/icons/common";
-import {
-  Button,
-  IconButton,
-  Input,
-  PaginationContext,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationNextTrigger,
-  PaginationPrevTrigger,
-  PaginationRoot,
-  Text,
-  PaginationRootProps,
-} from "@ndla/primitives";
-import { styled } from "@ndla/styled-system/jsx";
-import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
-import ImageSearchResult from "./ImageSearchResult";
-
-const ImageSearchWrapper = styled("div", {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "small",
-  },
-});
-
-const StyledSearchResults = styled("div", {
-  base: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    gridGap: "xsmall",
-    gridAutoFlow: "dense",
-  },
-});
-
-const InputWrapper = styled("div", {
-  base: {
-    display: "flex",
-    gap: "xsmall",
-  },
-});
-
-const StyledPaginationRoot = styled(PaginationRoot, {
-  base: {
-    flexWrap: "wrap",
-  },
-});
-
-const StyledButton = styled(Button, {
-  base: {
-    tabletWideDown: {
-      paddingInline: "xsmall",
-      "& span": {
-        display: "none",
-      },
-    },
-  },
-});
-
-const StyledPaginationItem = styled(PaginationItem, {
-  base: {
-    tabletWideDown: {
-      "&:nth-child(2)": {
-        display: "none",
-      },
-      "&:nth-last-child(2)": {
-        display: "none",
-      },
-    },
-  },
-});
-
-export interface PreviewTranslations {
-  creatorsLabel: string;
-  license: string;
-  caption: string;
-  altText: string;
-  modelRelease: string;
-  tags: string;
-  close: string;
-  checkboxLabel?: string;
-  missingTitleFallback?: string;
-  useImageTitle: string;
-}
-
-export interface ImageSearchTranslations {
-  searchPlaceholder: string;
-  searchButtonTitle: string;
-  imagePreview: PreviewTranslations;
-  paginationTranslations: PaginationRootProps["translations"];
-}
+import { ReactNode, useState, ChangeEvent, useEffect } from "react";
+import { IImageMetaInformationV3, ISearchParams, ISearchResultV3 } from "@ndla/types-backend/image-api";
+import { BaseImageSearch, ImageSearchTranslations } from "./BaseImageSearch";
 
 interface Props {
   onImageSelect: (image: IImageMetaInformationV3) => void;
@@ -114,10 +25,8 @@ interface Props {
 const ImageSearch = ({
   onImageSelect,
   searchImages: search,
-  fetchImage,
   onError,
   locale,
-  noResults,
   checkboxAction,
   showCheckbox,
   translations,
@@ -127,27 +36,14 @@ const ImageSearch = ({
     page: 1,
     pageSize: 16,
   });
-  const [selectedImage, setSelectedImage] = useState<IImageMetaInformationV3 | undefined>();
+  const [focusedImage, setFocusedImage] = useState<IImageMetaInformationV3 | undefined>();
   const [searching, setSearching] = useState<boolean>(false);
   const [searchResult, setSearchResult] = useState<ISearchResultV3 | undefined>();
 
-  const { page } = queryObject;
   const noResultsFound = !searching && searchResult?.results.length === 0;
 
-  const onImageClick = (image: IImageMetaInformationV3) => {
-    if (!selectedImage || image.id !== selectedImage.id) {
-      fetchImage(Number.parseInt(image.id))
-        .then((result) => {
-          setSelectedImage(result);
-        })
-        .catch((err) => {
-          onError(err);
-        });
-    }
-  };
-
   const onSelectImage = (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => {
-    setSelectedImage(undefined);
+    setFocusedImage(undefined);
     if (!image) return;
     onImageSelect(image);
     if (saveAsMetaImage) {
@@ -155,7 +51,7 @@ const ImageSearch = ({
     }
   };
 
-  const searchImages = (queryObject: ISearchParams) => {
+  const searchImages = (queryObject: Partial<ISearchParams>) => {
     setSearching(true);
     search(queryObject.query, queryObject.page)
       .then((result) => {
@@ -180,101 +76,26 @@ const ImageSearch = ({
     }));
   };
 
-  const onEnter = (e: KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => {
-    if (e.key === "Enter") {
-      searchImages(queryObject);
-    }
-  };
-
   useEffect(() => {
     searchImages(queryObject);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <ImageSearchWrapper>
-      <InputWrapper role="search">
-        <Input
-          type="search"
-          placeholder={translations.searchPlaceholder}
-          value={queryObject?.query}
-          onChange={handleQueryChange}
-          onKeyDown={onEnter}
-        />
-        <IconButton
-          variant="primary"
-          aria-label={translations.searchButtonTitle}
-          title={translations.searchButtonTitle}
-          onKeyDown={onEnter}
-          onClick={() => searchImages(queryObject)}
-        >
-          <SearchLine />
-        </IconButton>
-      </InputWrapper>
-      {noResultsFound && noResults}
-      <StyledSearchResults>
-        {searchResult?.results.map((image) => (
-          <ImageSearchResult
-            key={image.id}
-            image={image}
-            onImageClick={onImageClick}
-            selectedImage={selectedImage}
-            onSelectImage={onSelectImage}
-            showCheckbox={!!showCheckbox}
-            translations={translations.imagePreview}
-            locale={locale}
-          />
-        ))}
-      </StyledSearchResults>
-      <StyledPaginationRoot
-        page={page ?? 1}
-        onPageChange={(details) => searchImages({ ...queryObject, page: details.page })}
-        translations={translations.paginationTranslations}
-        count={searchResult?.totalCount ?? 0}
-        pageSize={searchResult?.pageSize}
-        hidden={noResultsFound}
-      >
-        <PaginationPrevTrigger asChild>
-          <StyledButton
-            variant="tertiary"
-            aria-label={translations.paginationTranslations?.prevTriggerLabel}
-            title={translations.paginationTranslations?.prevTriggerLabel}
-          >
-            <ArrowLeftShortLine />
-            <span>{translations.paginationTranslations?.prevTriggerLabel}</span>
-          </StyledButton>
-        </PaginationPrevTrigger>
-        <PaginationContext>
-          {(pagination) =>
-            pagination.pages.map((page, index, full) => {
-              // Hide last page to not trigger RESULT_WINDOW_TOO_LARGE error
-              if (index === full.length - 1) return null;
-              return page.type === "page" ? (
-                <StyledPaginationItem key={index} {...page} asChild>
-                  <Button variant={page.value === pagination.page ? "primary" : "tertiary"}>{page.value}</Button>
-                </StyledPaginationItem>
-              ) : (
-                <PaginationEllipsis key={index} index={index} asChild>
-                  <Text asChild consumeCss>
-                    <div>&#8230;</div>
-                  </Text>
-                </PaginationEllipsis>
-              );
-            })
-          }
-        </PaginationContext>
-        <PaginationNextTrigger asChild>
-          <StyledButton
-            variant="tertiary"
-            aria-label={translations.paginationTranslations?.nextTriggerLabel}
-            title={translations.paginationTranslations?.nextTriggerLabel}
-          >
-            <span>{translations.paginationTranslations?.nextTriggerLabel}</span>
-            <ArrowRightShortLine />
-          </StyledButton>
-        </PaginationNextTrigger>
-      </StyledPaginationRoot>
-    </ImageSearchWrapper>
+    <BaseImageSearch
+      onSelectImage={onSelectImage}
+      setFocusedImage={setFocusedImage}
+      searchImages={searchImages}
+      focusedImage={focusedImage}
+      images={searchResult?.results ?? []}
+      noResultsFound={noResultsFound}
+      translations={translations}
+      showCheckbox={showCheckbox}
+      locale={locale}
+      handleQueryChange={handleQueryChange}
+      totalCount={searchResult?.totalCount ?? 0}
+      queryObject={queryObject}
+    />
   );
 };
 

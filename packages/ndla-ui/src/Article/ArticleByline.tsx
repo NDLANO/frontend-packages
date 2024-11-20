@@ -11,7 +11,6 @@ import { ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { ArrowDownShortLine } from "@ndla/icons/common";
-import { getLicenseByAbbreviation } from "@ndla/licenses";
 import {
   AccordionItem,
   AccordionItemContent,
@@ -23,7 +22,6 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ArticleFootNotes } from "./ArticleFootNotes";
-import { LicenseLink } from "../LicenseByline/LicenseLink";
 import { FootNote } from "../types";
 
 const Wrapper = styled("div", {
@@ -58,6 +56,12 @@ const TextWrapper = styled("div", {
   },
 });
 
+const PublishedWrapper = styled("div", {
+  base: {
+    marginLeft: "auto",
+  },
+});
+
 type AuthorProps = {
   name: string;
 };
@@ -70,9 +74,7 @@ type Props = {
   authors?: AuthorProps[];
   suppliers?: SupplierProps[];
   published?: string;
-  license?: string;
   licenseBox?: ReactNode;
-  locale?: string;
   footnotes?: FootNote[];
   displayByline?: boolean;
   bylineType?: "article" | "learningPath";
@@ -102,13 +104,6 @@ const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
       });
 };
 
-const LicenseWrapper = styled("div", {
-  base: {
-    display: "flex",
-    gap: "xsmall",
-  },
-});
-
 const StyledAccordionRoot = styled(AccordionRoot, {
   base: {
     paddingBlockStart: "xxlarge",
@@ -122,10 +117,8 @@ export const ArticleByline = ({
   authors = [],
   suppliers = [],
   footnotes,
-  license: licenseString,
   licenseBox,
   published,
-  locale,
   displayByline = true,
   bylineType = "article",
 }: Props) => {
@@ -156,31 +149,26 @@ export const ArticleByline = ({
     return () => window.removeEventListener("hashchange", onHashChange);
   }, [onHashChange]);
 
-  const license = licenseString && getLicenseByAbbreviation(licenseString, locale);
-
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
 
   return (
     <Wrapper>
       {displayByline && (
         <TextWrapper learningpath={bylineType === "learningPath"}>
-          <LicenseWrapper>
-            {license && <LicenseLink license={license} />}
-            {showPrimaryContributors && (
-              //eslint-disable-next-line react/no-unknown-property
-              <span property="cc:attributionName">
-                {authors.length > 0 &&
-                  `${t("article.authorsLabel", {
-                    names: renderContributors(authors, t),
-                    interpolation: { escapeValue: false },
-                  })}. `}
-                {getSuppliersText(suppliers, t)}
-              </span>
-            )}
-          </LicenseWrapper>
-          <div>
+          {showPrimaryContributors && (
+            //eslint-disable-next-line react/no-unknown-property
+            <span property="cc:attributionName">
+              {authors.length > 0 &&
+                `${t("article.authorsLabel", {
+                  names: renderContributors(authors, t),
+                  interpolation: { escapeValue: false },
+                })}. `}
+              {getSuppliersText(suppliers, t)}
+            </span>
+          )}
+          <PublishedWrapper>
             {t(`${bylineType}.lastUpdated`)} {published}
-          </div>
+          </PublishedWrapper>
         </TextWrapper>
       )}
       {(!!licenseBox || !!footnotes?.length) && (

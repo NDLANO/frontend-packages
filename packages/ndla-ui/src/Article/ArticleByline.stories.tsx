@@ -23,7 +23,6 @@ export default {
   args: {
     authors: [{ name: "Frida Forfatter" }, { name: "Fred Forfatter" }],
     published: "21.06.2018",
-    license: "CC BY-SA",
   },
 } as Meta<typeof ArticleByline>;
 
@@ -36,7 +35,6 @@ ArticleBylineStory.storyName = "ArticleByline";
 export const SeveralAuthors: StoryObj<typeof ArticleByline> = {
   args: {
     published: "21.06.2018",
-    license: "CC BY-SA",
     authors: [{ name: "Frida Forfatter" }, { name: "Ida Illustratør" }, { name: "Fred Forfatter" }],
   },
 };
@@ -44,7 +42,6 @@ export const SeveralAuthors: StoryObj<typeof ArticleByline> = {
 export const WithoutCreators: StoryObj<typeof ArticleByline> = {
   args: {
     published: "21.06.2018",
-    license: "CC BY-SA",
     authors: [],
   },
 };

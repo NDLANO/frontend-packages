@@ -200,7 +200,6 @@ export const Article = ({
           authors={authors}
           suppliers={copyright?.rightsholders}
           published={published}
-          license={copyright?.license?.license ?? ""}
           licenseBox={licenseBox}
         />
         {children}

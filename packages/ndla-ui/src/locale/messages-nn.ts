@@ -557,6 +557,7 @@ const messages = {
       blog: "Fagblogg",
       tips: "Tips til elevar",
       vacancies: "Ledige stillingar",
+      contact: "Kontakt oss",
     },
     otherLanguages: "Andre språk",
   },

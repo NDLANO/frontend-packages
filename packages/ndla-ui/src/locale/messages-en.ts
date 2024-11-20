@@ -556,6 +556,7 @@ const messages = {
       blog: "Blog",
       tips: "Tips to students",
       vacancies: "Vacancies",
+      contact: "Contact us",
     },
     otherLanguages: "Other languages",
   },

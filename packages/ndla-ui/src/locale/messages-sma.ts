@@ -560,6 +560,7 @@ const messages = {
       blog: "Faageblogge",
       tips: "Tipsh learoehkidie",
       vacancies: "Gaavnoes barkoeh",
+      contact: "Kontakt oss",
     },
     otherLanguages: "Andre språk",
   },

@@ -558,6 +558,7 @@ const messages = {
       blog: "Fágablogga",
       tips: "Cavgileapmi ohppiide",
       vacancies: "Rabas virggit",
+      contact: "Kontakt oss",
     },
     otherLanguages: "Andre språk",
   },

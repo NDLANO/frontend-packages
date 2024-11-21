@@ -13,5 +13,4 @@ module.exports = {
     "@ndla/(.+)$": ["<rootDir>packages/$1/src", "<rootDir>packages/ndla-$1/src"],
   },
   testRegex: "/packages/.*/src/.*__tests__/.*-test.(js|jsx|ts|tsx)$",
-  snapshotSerializers: ["@emotion/jest/serializer"],
 };

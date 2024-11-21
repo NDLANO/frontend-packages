@@ -7,10 +7,10 @@
  */
 
 import { Meta, StoryFn } from "@storybook/react";
-import { NdlaLogoText } from "@ndla/primitives";
+import { PageContent } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
-import { OneColumn, PageContainer } from "@ndla/ui";
-import { StoryBody } from "./wrappers";
+import { styled } from "@ndla/styled-system/jsx";
+import { ArticleContent, ArticleWrapper } from "@ndla/ui";
 
 export default {
   title: "NDLA urls",
@@ -19,61 +19,66 @@ export default {
   },
 } as Meta;
 
+const StyledPageContent = styled(PageContent, {
+  base: {
+    paddingBlockEnd: "xxlarge",
+  },
+});
+
 export const NDLAUrls: StoryFn = () => (
-  <PageContainer>
-    <div style={{ marginTop: "30px" }}>
-      <OneColumn>
-        <center>
-          <NdlaLogoText aria-label="Nasjonal digital læringsarena" />
+  <StyledPageContent variant="page">
+    <ArticleWrapper>
+      <ArticleContent>
+        <section>
           <h1>Lenker i NDLA</h1>
-        </center>
-      </OneColumn>
-      <StoryBody>
-        <h2>NDLA.no</h2>
-        <p>
-          Produksjon:
+          <h2>NDLA.no</h2>
+          <p>
+            Produksjon:
+            <br />
+            <SafeLink to="https://ndla.no/">https://ndla.no</SafeLink>
+          </p>
+          <p>
+            Staging:
+            <br />
+            <SafeLink to="https://staging.ndla.no/">https://staging.ndla.no</SafeLink>
+          </p>
+          <p>
+            Test:
+            <br />
+            <SafeLink to="https://test.ndla.no/">https://test.ndla.no</SafeLink>
+          </p>
+          <h2>Editorial (ED)</h2>
+          <p>
+            Produksjon:
+            <br />
+            <SafeLink to="https://ed.ndla.no/">https://ed.ndla.no</SafeLink>
+          </p>
+          <p>
+            Staging:
+            <br />
+            <SafeLink to="https://ed.staging.ndla.no/">https://ed.staging.ndla.no</SafeLink>
+          </p>
+          <p>
+            Test:
+            <br />
+            <SafeLink to="https://ed.test.ndla.no/">https://ed.test.ndla.no</SafeLink>
+          </p>
+          <h2>API</h2>
+          <p>
+            API dokumentasjon (Swagger):
+            <br />
+            <SafeLink to="https://api.ndla.no/">https://api.ndla.no/</SafeLink>
+          </p>
+          <h2>Design</h2>
+          <SafeLink to="https://www.figma.com/file/aGuqdNB8y8gPZsiK9YJ2An/NDLA-components">
+            Komponenter (Figma)
+          </SafeLink>
           <br />
-          <SafeLink to="https://ndla.no/">https://ndla.no</SafeLink>
-        </p>
-        <p>
-          Staging:
-          <br />
-          <SafeLink to="https://staging.ndla.no/">https://staging.ndla.no</SafeLink>
-        </p>
-        <p>
-          Test:
-          <br />
-          <SafeLink to="https://test.ndla.no/">https://test.ndla.no</SafeLink>
-        </p>
-        <h2>Editorial (ED)</h2>
-        <p>
-          Produksjon:
-          <br />
-          <SafeLink to="https://ed.ndla.no/">https://ed.ndla.no</SafeLink>
-        </p>
-        <p>
-          Staging:
-          <br />
-          <SafeLink to="https://ed.staging.ndla.no/">https://ed.staging.ndla.no</SafeLink>
-        </p>
-        <p>
-          Test:
-          <br />
-          <SafeLink to="https://ed.test.ndla.no/">https://ed.test.ndla.no</SafeLink>
-        </p>
-        <h2>API</h2>
-        <p>
-          API dokumentasjon (Swagger):
-          <br />
-          <SafeLink to="https://api.ndla.no/">https://api.ndla.no/</SafeLink>
-        </p>
-        <h2>Design</h2>
-        <SafeLink to="https://www.figma.com/file/aGuqdNB8y8gPZsiK9YJ2An/NDLA-components">Komponenter (Figma)</SafeLink>
-        <br />
-        <SafeLink to="https://www.figma.com/file/jiZ86RzWFZZZHrjZUse866/NDLA-pages">Sider (Figma)</SafeLink>
-      </StoryBody>
-    </div>
-  </PageContainer>
+          <SafeLink to="https://www.figma.com/file/jiZ86RzWFZZZHrjZUse866/NDLA-pages">Sider (Figma)</SafeLink>
+        </section>
+      </ArticleContent>
+    </ArticleWrapper>
+  </StyledPageContent>
 );
 
 NDLAUrls.storyName = "NDLA urls";

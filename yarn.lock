@@ -2142,24 +2142,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/source-code-pro@npm:^4.5.9":
-  version: 4.5.9
-  resolution: "@fontsource/source-code-pro@npm:4.5.9"
-  checksum: 10c0/e21523a82a2174f20887edd45fb18deedf1383256b8dcad2bdbe40b75670a81ecc0a238a9be80154797046a830bac9415624fed9e5e112b6801e56a07d097b47
+"@fontsource-variable/source-code-pro@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@fontsource-variable/source-code-pro@npm:5.1.0"
+  checksum: 10c0/d1567710406e05c655bd96c03392bec3aeebe4f6c6e089611ca708deada35246170a5230e0939f608bd6ec54d324001d15ea4641ff67d0d104482dbb58de18ca
   languageName: node
   linkType: hard
 
-"@fontsource/source-sans-pro@npm:^4.5.9":
-  version: 4.5.9
-  resolution: "@fontsource/source-sans-pro@npm:4.5.9"
-  checksum: 10c0/4ae2c75f3b2315e5a23f00ae4491867118ccc1161ee7c2ea5d45ee1f80534fdb37764ab6b2cf80382bca7b3c3d909df69d869df7880128cc8f949e747d8d12f1
-  languageName: node
-  linkType: hard
-
-"@fontsource/source-serif-pro@npm:^4.5.7":
-  version: 4.5.7
-  resolution: "@fontsource/source-serif-pro@npm:4.5.7"
-  checksum: 10c0/cb30a860d7b45efd9ea4f5f083e5241c228991a05e7a7bc2f35c65b6ace518b9f9659a16ef96d936c8ec2e085eea34a2bcf2937de64ea419666f8bf211279916
+"@fontsource-variable/source-serif-4@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@fontsource-variable/source-serif-4@npm:5.1.0"
+  checksum: 10c0/9fddb90a7255ae6f6d7cca9c02bb6d129a03a2b6dd1180d3bd69f0be41535b9b56ff3507d2a3384bd5287ade69fe30793e877322c28653c946cceb802f7e6eba
   languageName: node
   linkType: hard
 
@@ -9659,9 +9652,8 @@ __metadata:
     "@babel/preset-env": "npm:^7.26.0"
     "@babel/preset-react": "npm:^7.25.9"
     "@babel/preset-typescript": "npm:^7.26.0"
-    "@fontsource/source-code-pro": "npm:^4.5.9"
-    "@fontsource/source-sans-pro": "npm:^4.5.9"
-    "@fontsource/source-serif-pro": "npm:^4.5.7"
+    "@fontsource-variable/source-code-pro": "npm:^5.1.0"
+    "@fontsource-variable/source-serif-4": "npm:^5.1.0"
     "@ndla/types-backend": "npm:^0.2.86"
     "@pandacss/dev": "npm:^0.46.0"
     "@storybook/addon-a11y": "npm:^8.4.5"

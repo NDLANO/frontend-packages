@@ -23,9 +23,6 @@ const config: StorybookConfig = {
     "@storybook/addon-measure",
     "@storybook/addon-outline",
   ],
-  core: {
-    builder: "@storybook/builder-vite",
-  },
   typescript: {
     reactDocgen: "react-docgen-typescript",
     // uncomment this for quicker HMR during dev.

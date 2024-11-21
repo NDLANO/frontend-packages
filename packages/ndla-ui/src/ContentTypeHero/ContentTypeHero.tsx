@@ -29,6 +29,11 @@ export const contentTypeToHeroMap: Record<ContentType, HeroVariant> = {
   [contentTypes.PODCAST]: "primary",
   [contentTypes.VIDEO]: "primary",
   [contentTypes.MISSING]: "neutral",
+  [contentTypes.GLOSS]: "brand1Moderate",
+  // this will never happen
+  [contentTypes.PROGRAMME]: "primary",
+  // this will never happen
+  [contentTypes.PODCAST_SERIES]: "primary",
 };
 
 export interface ContentTypeHeroProps extends HeroProps {

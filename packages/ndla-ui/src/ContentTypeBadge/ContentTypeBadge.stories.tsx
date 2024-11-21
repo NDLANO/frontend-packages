@@ -76,5 +76,8 @@ export const AllBadges: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.image} />
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.audio} />
     <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.video} />
+    <ContentTypeBadge {...args} type={contentTypes.GLOSS} />
+    <ContentTypeBadge {...args} type={contentTypes.PROGRAMME} />
+    <ContentTypeBadge {...args} type={contentTypes.PODCAST_SERIES} />
   </BadgesWrapper>
 );

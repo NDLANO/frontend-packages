@@ -2829,21 +2829,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/button@workspace:packages/button":
-  version: 0.0.0-use.local
-  resolution: "@ndla/button@workspace:packages/button"
-  dependencies:
-    "@ndla/core": "npm:^5.0.2"
-    "@ndla/icons": "npm:^8.0.43-alpha.0"
-  peerDependencies:
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    react: ">= 16.8.0"
-    react-dom: ">= 16.8.0"
-    react-i18next: ^14.1.1
-  languageName: unknown
-  linkType: soft
-
 "@ndla/core@npm:^5.0.2, @ndla/core@workspace:^, @ndla/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@ndla/core@workspace:packages/core"

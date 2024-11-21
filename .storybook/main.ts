@@ -26,30 +26,6 @@ const config: StorybookConfig = {
   core: {
     builder: "@storybook/builder-vite",
   },
-  viteFinal: async (config) => {
-    // Storybook imports these as CJS modules by default, but Vite wants them to be ESM.
-    // By importing them dynamically we can ensure they are ESM.
-    // TODO: Update this when Storybook no longer uses these as CJS.
-    const { mergeConfig } = await import("vite");
-    const react = await import("@vitejs/plugin-react");
-    const tsconfigPaths = await import("vite-tsconfig-paths");
-    return mergeConfig(config, {
-      plugins: [
-        tsconfigPaths.default({ root: "../" }),
-        react.default({
-          babel: {
-            overrides: [
-              {
-                exclude:
-                  /primitives|preset-panda|styled-system|ndla-icons|ndla-ui|audio-search|image-search|video-search|util|error-reporter|tracker|article-converter/,
-                plugins: [["@emotion", { autoLabel: "always" }]],
-              },
-            ],
-          },
-        }),
-      ],
-    });
-  },
   typescript: {
     reactDocgen: "react-docgen-typescript",
     // uncomment this for quicker HMR during dev.

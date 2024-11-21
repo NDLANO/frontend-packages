@@ -21,6 +21,9 @@ export const IMAGE = "image";
 export const VIDEO = "video";
 export const AUDIO = "audio";
 export const PODCAST = "podcast";
+export const GLOSS = "gloss";
+export const PROGRAMME = "programme";
+export const PODCAST_SERIES = "podcast-series";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,
@@ -34,6 +37,8 @@ export const contentTypes = {
   CONCEPT,
   EXTERNAL,
   MISSING,
+  PROGRAMME,
+  PODCAST_SERIES,
 };
 
 export const RESOURCE_TYPE_LEARNING_PATH = "urn:resourcetype:learningPath";
@@ -60,4 +65,5 @@ export const resourceEmbedTypeMapping: Record<string, string> = {
   concept: "concept",
   audio: "audio",
   podcast: "podcast",
+  gloss: "gloss",
 };

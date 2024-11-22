@@ -94,8 +94,6 @@ export {
   useVideoSearchTranslations,
 } from "./i18n";
 
-export { OneColumn, PageContainer } from "./Layout";
-
 export {
   default as ContentTypeBadge,
   SubjectMaterialBadge,

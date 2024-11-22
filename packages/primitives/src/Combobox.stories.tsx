@@ -293,7 +293,7 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
       <Portal>
         <ComboboxContent>
           {Object.entries(groupedItems)
-            .filter(([_, value]) => !!value.length)
+            .filter(([, value]) => !!value.length)
             .map(([key, value], index) => (
               <ComboboxItemGroup key={index}>
                 <ComboboxItemGroupLabel>{key}</ComboboxItemGroupLabel>

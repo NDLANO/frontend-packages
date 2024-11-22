@@ -35,7 +35,6 @@ export const Disabled: StoryObj<typeof SafeLinkButton> = {
 export const ExternalLink: StoryObj<typeof SafeLinkButton> = {
   args: {
     to: "https://example.com",
-    showNewWindowIcon: true,
     target: "_blank",
   },
 };

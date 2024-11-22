@@ -121,8 +121,8 @@ test("ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
 
   // simmulate on error call
   try {
-    //@ts-expect-error
-    someUndefinedFunction(); // eslint-disable-line no-undef
+    //@ts-expect-error - The entire point is that it is undefined
+    someUndefinedFunction();
   } catch (e: any) {
     await window.onerror?.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
@@ -141,7 +141,7 @@ test("ndla-error-reporter/ErrorReporter should not send duplicate errors ", asyn
   // simmulate several duplicate on error calls
   try {
     const someVal = null;
-    //@ts-expect-error
+    //@ts-expect-error - The entire point is that it will throw an error
     someVal.foo = 1;
   } catch (e: any) {
     window.onerror?.call(window, e.toString(), document.location.toString(), 58, 4, e);

@@ -36,7 +36,7 @@ export const divPlugin: PluginType = (node, opts, { contentType }) => {
 
     return (
       <RelatedArticleList {...props}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - This works, the types just won't match entirely */}
         {domToReact(node.children, opts)}
       </RelatedArticleList>
     );
@@ -68,7 +68,7 @@ export const divPlugin: PluginType = (node, opts, { contentType }) => {
     const background = props["data-background"] as GridType["background"];
     return (
       <Grid border={border} columns={columns} background={background} {...props}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - This works, the types just won't match entirely */}
         {domToReact(node.children, opts)}
       </Grid>
     );

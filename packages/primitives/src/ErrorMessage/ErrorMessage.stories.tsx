@@ -16,7 +16,7 @@ import {
   ErrorMessageRoot,
   ErrorMessageTitle,
 } from "./ErrorMessage";
-//@ts-ignore
+//@ts-expect-error - It exists.
 import Oops from "../../../../images/oops.gif";
 import { Button } from "../Button";
 

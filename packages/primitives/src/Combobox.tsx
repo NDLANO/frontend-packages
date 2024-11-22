@@ -255,7 +255,7 @@ export const ComboboxItemText = ({
   ...props
 }: ComboboxItemTextProps) => (
   <InternalComboboxItemText asChild>
-    <Text {...props} asChild consumeCss>
+    <Text {...props} textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>
       <div>{children}</div>
     </Text>
   </InternalComboboxItemText>

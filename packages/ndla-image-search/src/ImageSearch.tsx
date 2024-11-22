@@ -6,7 +6,7 @@
  *
  */
 
-import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState, FormEvent } from "react";
+import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState } from "react";
 import { ArrowLeftShortLine, ArrowRightShortLine, SearchLine } from "@ndla/icons/common";
 import {
   Button,

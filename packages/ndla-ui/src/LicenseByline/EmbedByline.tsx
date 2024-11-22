@@ -209,7 +209,7 @@ const StyledButton = styled(Button, {
 
 interface LicenseDescriptionProps {
   children?: ReactNode;
-  isOpen: Boolean;
+  isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 

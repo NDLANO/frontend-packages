@@ -155,7 +155,6 @@ export interface ImageProps extends JsxStyleProps, ComponentPropsWithRef<"img">,
 export const Image = forwardRef<HTMLImageElement, ImageProps>(
   (
     {
-      children,
       srcSet: srcSetProp,
       crop,
       focalPoint,

@@ -581,6 +581,9 @@ const messages = {
     video: "Video",
     missing: "Unknown",
     external: "External",
+    gloss: "Gloss",
+    programme: "Programme",
+    "podcast-series": "Podcast series",
   },
   modal: {
     closeModal: "Close",

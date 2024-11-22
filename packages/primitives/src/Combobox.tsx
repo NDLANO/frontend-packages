@@ -33,7 +33,7 @@ const comboboxRecipe = sva({
       zIndex: "dropdown",
       background: "surface.default",
       overflowY: "auto",
-      maxHeight: "surface.xsmall",
+      maxHeight: "min(token(spacing.surface.xsmall), 45vh)",
       _open: {
         animation: "fade-shift-in 0.25s ease-out",
         _motionReduce: {

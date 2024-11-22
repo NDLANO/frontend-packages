@@ -37,7 +37,7 @@ const selectRecipe = sva({
       boxShadow: "large",
       padding: "xsmall",
       overflowY: "auto",
-      maxHeight: "surface.xsmall",
+      maxHeight: "min(token(spacing.surface.xsmall), 45vh)",
       _focusVisible: {
         outlineOffset: "-1",
       },

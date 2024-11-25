@@ -38,7 +38,7 @@ const AudioBar = ({ audio, fetchAudio, onError }: Props) => {
     [],
   );
 
-  return <audio controls>{audioSource && <source src={audioSource} type={audioType} />}</audio>;
+  return <audio controls>{!!audioSource && <source src={audioSource} type={audioType} />}</audio>;
 };
 
 export default AudioBar;

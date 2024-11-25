@@ -21,7 +21,7 @@ interface Props {
 const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
-    return <></>;
+    return null;
   }
 
   const { data, embedData } = embed;
@@ -55,7 +55,7 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
       />
     );
   }
-  return <></>;
+  return null;
 };
 
 export default RelatedContentEmbed;

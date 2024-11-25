@@ -56,8 +56,8 @@ const Icon = ({ children, size, title, description, css: cssProp, "aria-hidden":
       css={css.raw(iconRecipe.raw({ size }), cssProp)}
       {...props}
     >
-      {title && <title>{title}</title>}
-      {description && <desc>{description}</desc>}
+      {!!title && <title>{title}</title>}
+      {!!description && <desc>{description}</desc>}
       {children}
     </StyledSvg>
   );

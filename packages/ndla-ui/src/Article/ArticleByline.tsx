@@ -162,11 +162,11 @@ export const ArticleByline = ({
 
   return (
     <Wrapper>
-      {displayByline && (
+      {!!displayByline && (
         <TextWrapper learningpath={bylineType === "learningPath"}>
           <LicenseWrapper>
-            {license && <LicenseLink license={license} />}
-            {showPrimaryContributors && (
+            {!!license && <LicenseLink license={license} />}
+            {!!showPrimaryContributors && (
               //eslint-disable-next-line react/no-unknown-property
               <span property="cc:attributionName">
                 {authors.length > 0 &&

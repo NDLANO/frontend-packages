@@ -211,7 +211,7 @@ const ImageSearch = ({
           <SearchLine />
         </IconButton>
       </InputWrapper>
-      {noResultsFound && noResults}
+      {!!noResultsFound && noResults}
       <StyledSearchResults>
         {searchResult?.results.map((image) => (
           <ImageSearchResult

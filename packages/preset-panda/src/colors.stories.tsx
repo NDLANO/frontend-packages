@@ -29,12 +29,12 @@ interface ColorBlocksProps {
 
 const ColorBlocks = ({ title, description, children }: ColorBlocksProps) => (
   <div>
-    {title && (
+    {!!title && (
       <Heading asChild consumeCss>
         <h2>{title}</h2>
       </Heading>
     )}
-    {description && <Text>{description}</Text>}
+    {!!description && <Text>{description}</Text>}
     <StyledColorBlocks>{children}</StyledColorBlocks>
   </div>
 );

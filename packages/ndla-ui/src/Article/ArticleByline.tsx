@@ -37,15 +37,12 @@ const Wrapper = styled("div", {
 const TextWrapper = styled("div", {
   base: {
     display: "flex",
-    flexDirection: "column-reverse",
+    flexDirection: "column",
     gap: "3xsmall",
     width: "100%",
     justifyContent: "space-between",
     paddingBlock: "xsmall",
     textStyle: "body.medium",
-    '& [data-contributors="false"]': {
-      marginLeft: "auto",
-    },
   },
   variants: {
     learningpath: {
@@ -53,6 +50,9 @@ const TextWrapper = styled("div", {
       false: {
         tabletWide: {
           flexDirection: "row",
+          '& [data-contributors="false"]': {
+            marginInlineStart: "auto",
+          },
         },
       },
     },

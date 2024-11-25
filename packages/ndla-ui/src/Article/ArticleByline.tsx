@@ -43,6 +43,9 @@ const TextWrapper = styled("div", {
     justifyContent: "space-between",
     paddingBlock: "xsmall",
     textStyle: "body.medium",
+    '& [data-contributors="false"]': {
+      marginLeft: "auto",
+    },
   },
   variants: {
     learningpath: {
@@ -53,12 +56,6 @@ const TextWrapper = styled("div", {
         },
       },
     },
-  },
-});
-
-const PublishedWrapper = styled("div", {
-  base: {
-    marginLeft: "auto",
   },
 });
 
@@ -166,9 +163,9 @@ export const ArticleByline = ({
               {getSuppliersText(suppliers, t)}
             </span>
           )}
-          <PublishedWrapper>
+          <div data-contributors={showPrimaryContributors}>
             {t(`${bylineType}.lastUpdated`)} {published}
-          </PublishedWrapper>
+          </div>
         </TextWrapper>
       )}
       {(!!licenseBox || !!footnotes?.length) && (

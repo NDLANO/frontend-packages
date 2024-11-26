@@ -185,7 +185,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   return (
     <AudioPlayerWrapper>
       <InfoWrapper>
-        {img && (
+        {!!img && (
           <ImageWrapper>
             <img src={img.url} alt={img.alt} />
           </ImageWrapper>
@@ -200,7 +200,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
             </div>
             {!!textVersion && !img && textVersionButton}
           </TitleWrapper>
-          {description && (
+          {!!description && (
             <Text textStyle="body.medium">
               {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
                 ? description

@@ -90,7 +90,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
         <Heading asChild consumeCss textStyle="title.medium">
           <h3 data-heading>{parse(title)}</h3>
         </Heading>
-        {date && (
+        {!!date && (
           <StyledDateContainer>
             <StyledCalendarEd />
             {formattedDate}

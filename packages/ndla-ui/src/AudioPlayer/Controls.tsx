@@ -101,6 +101,8 @@ const ProgressWrapper = styled("div", {
 const StyledText = styled(Text, {
   base: {
     minWidth: "xxlarge",
+    flexShrink: "0",
+    textAlign: "center",
   },
 });
 

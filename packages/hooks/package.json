@@ -1,6 +1,6 @@
 {
   "name": "@ndla/hooks",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "Collection of React hooks used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

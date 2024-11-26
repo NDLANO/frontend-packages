@@ -141,7 +141,7 @@ export const EmbedByline = ({ type, description, children, visibleAlt, hideCopyr
       {!hideByline && (
         <BylineWrapper>
           <div>
-            {hideCopyright && description}
+            {!!hideCopyright && description}
             {!hideCopyright && (
               <LicenseContainerContent type={type} copyright={copyright}>
                 {description}

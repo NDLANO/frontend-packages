@@ -215,6 +215,10 @@ export const semanticTokens = defineSemanticTokens({
         hover: { value: "{colors.pink.300}" },
         active: { value: "{colors.pink.500}" },
       },
+      subtle: {
+        DEFAULT: { value: "{colors.grey.50}" },
+        selected: { value: "{colors.grey.100}" },
+      },
     },
     stroke: {
       default: { value: "{colors.primary}" },
@@ -225,6 +229,7 @@ export const semanticTokens = defineSemanticTokens({
       warning: { value: "{colors.yellow.1200}" },
       error: { value: "{colors.pink.800}" },
       disabled: { value: "{colors.grey.300}" },
+      discrete: { value: "{colors.grey.300}" },
     },
   },
 });

@@ -254,6 +254,10 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"surface.errorSubtle.hover"} />
       <ColorBlock backgroundColor={"surface.errorSubtle.active"} />
     </ColorBlocks>
+    <ColorBlocks title="Surface subtle">
+      <ColorBlock backgroundColor={"surface.subtle"} />
+      <ColorBlock backgroundColor={"surface.subtle.selected"} />
+    </ColorBlocks>
     <ColorBlocks title="Stroke">
       <ColorBlock backgroundColor={"stroke.default"} />
       <ColorBlock backgroundColor={"stroke.hover"} />
@@ -263,6 +267,7 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"stroke.warning"} />
       <ColorBlock backgroundColor={"stroke.error"} />
       <ColorBlock backgroundColor={"stroke.disabled"} />
+      <ColorBlock backgroundColor={"stroke.discrete"} />
     </ColorBlocks>
   </div>
 );

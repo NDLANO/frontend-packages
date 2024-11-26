@@ -43,6 +43,9 @@ const TextWrapper = styled("div", {
     justifyContent: "space-between",
     paddingBlock: "xsmall",
     textStyle: "body.medium",
+    '& [data-contributors="false"]': {
+      marginInlineStart: "auto",
+    },
   },
   variants: {
     learningpath: {
@@ -50,9 +53,6 @@ const TextWrapper = styled("div", {
       false: {
         tabletWide: {
           flexDirection: "row",
-          '& [data-contributors="false"]': {
-            marginInlineStart: "auto",
-          },
         },
       },
     },

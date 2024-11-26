@@ -64,8 +64,11 @@ export const GridPitchStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const items = new Array(columns).fill(
     <div data-type="grid-cell" data-parallax-cell="false">
       <PitchStory
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         metaImage={PitchStory.args?.metaImage!}
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         title={PitchStory.args?.title!}
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         url={PitchStory.args?.url!}
         description={PitchStory.args?.description}
       />

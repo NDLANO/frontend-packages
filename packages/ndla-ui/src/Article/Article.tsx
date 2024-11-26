@@ -12,8 +12,8 @@ import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { Stack, styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
-import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadgeNew } from "..";
+import { ArticleByline } from "./ArticleByline";
 import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
 import { Article as ArticleType } from "../types";
 

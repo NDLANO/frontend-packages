@@ -69,7 +69,7 @@ export const Concept = forwardRef<HTMLElement, ConceptProps>(
         ) : visualElement?.resource === "external" ? (
           <ExternalEmbed embed={visualElement} />
         ) : null}
-        {copyright && <EmbedByline copyright={copyright} type="concept" />}
+        {!!copyright && <EmbedByline copyright={copyright} type="concept" />}
       </StyledFigure>
     );
   },

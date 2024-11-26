@@ -131,7 +131,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
             <Text textStyle="label.medium" fontWeight="bold" asChild consumeCss lang={glossData.originalLanguage}>
               <span>{glossData.gloss}</span>
             </Text>
-            {glossData.transcriptions.traditional && (
+            {!!glossData.transcriptions.traditional && (
               <Text textStyle="label.medium" asChild consumeCss>
                 <span
                   key={t("gloss.transcriptions.traditional")}
@@ -142,7 +142,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
                 </span>
               </Text>
             )}
-            {glossData.transcriptions.pinyin && (
+            {!!glossData.transcriptions.pinyin && (
               <Text textStyle="label.medium" asChild consumeCss>
                 <span
                   data-pinyin=""
@@ -154,13 +154,13 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
                 </span>
               </Text>
             )}
-            {glossData.wordClass && (
+            {!!glossData.wordClass && (
               <Text textStyle="label.medium" asChild consumeCss>
                 <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
               </Text>
             )}
           </TextWrapper>
-          {audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
+          {!!audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
         </Container>
         <StyledContainer>
           <Text textStyle="label.medium" asChild consumeCss>

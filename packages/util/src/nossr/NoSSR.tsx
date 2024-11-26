@@ -24,10 +24,10 @@ const NoSSR = ({ children, fallback = null }: Props) => {
   }, []);
 
   if (!mounted) {
-    return <>{fallback}</>;
+    return fallback;
   }
 
-  return <>{children}</>;
+  return children;
 };
 
 export default NoSSR;

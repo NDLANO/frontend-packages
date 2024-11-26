@@ -6,7 +6,7 @@
  *
  */
 
-import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState, FormEvent } from "react";
+import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState } from "react";
 import { ArrowLeftShortLine, ArrowRightShortLine, SearchLine } from "@ndla/icons/common";
 import {
   Button,
@@ -211,7 +211,7 @@ const ImageSearch = ({
           <SearchLine />
         </IconButton>
       </InputWrapper>
-      {noResultsFound && noResults}
+      {!!noResultsFound && noResults}
       <StyledSearchResults>
         {searchResult?.results.map((image) => (
           <ImageSearchResult

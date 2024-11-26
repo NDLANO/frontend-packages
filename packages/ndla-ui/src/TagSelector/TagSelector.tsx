@@ -7,8 +7,7 @@
  */
 
 import { forwardRef, useEffect, useId, useRef } from "react";
-import type { CollectionItem } from "@ark-ui/react";
-import { useTagsInputContext, useComboboxContext } from "@ark-ui/react";
+import { type CollectionItem, useTagsInputContext, useComboboxContext } from "@ark-ui/react";
 import { CloseLine } from "@ndla/icons/action";
 import {
   ComboboxClearTrigger,

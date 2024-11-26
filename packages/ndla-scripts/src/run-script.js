@@ -6,6 +6,8 @@
  *
  */
 
+/* eslint-disable no-console */
+
 import { join, dirname } from "path";
 import spawn from "cross-spawn";
 import glob from "glob";

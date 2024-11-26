@@ -118,25 +118,9 @@ function buildNodePackage(p) {
 
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));
 
-  const skipEmotion =
-    p.endsWith("primitives") ||
-    p.endsWith("preset-panda") ||
-    p.endsWith("icons") ||
-    p.endsWith("safelink") ||
-    p.endsWith("ui") ||
-    p.endsWith("audio-search") ||
-    p.endsWith("image-search") ||
-    p.endsWith("video-search") ||
-    p.endsWith("util") ||
-    p.endsWith("error-reporter") ||
-    p.endsWith("tracker") ||
-    p.endsWith("article-converter");
+  const presets = ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]];
 
-  const presets = skipEmotion
-    ? ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]]
-    : ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic", importSource: "@emotion/react" }]];
-
-  const plugins = skipEmotion ? [] : [...babelOptions.plugins];
+  const plugins = [];
 
   files.forEach((file) => {
     buildFile(file, "es", { silent: true, override: { presets: [esPresetEnv].concat(presets), plugins } });

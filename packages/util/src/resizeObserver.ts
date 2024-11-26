@@ -32,7 +32,6 @@ function fallbackResizeObserver(element: HTMLElement, handler: (el: HTMLElement)
 }
 
 function resizeObserverWrapper(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
-  // @ts-ignore ResizeObserver
   let resizeObserver: ResizeObserver | null = new ResizeObserver(() => {
     handler(element);
   });
@@ -51,7 +50,6 @@ function resizeObserverWrapper(element: HTMLElement, handler: (el: HTMLElement) 
  * @returns a callback function which removes the resize listner
  */
 export function resizeObserver(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
-  // @ts-ignore ResizeObserver
   if (typeof ResizeObserver === "function") {
     return resizeObserverWrapper(element, handler);
   }

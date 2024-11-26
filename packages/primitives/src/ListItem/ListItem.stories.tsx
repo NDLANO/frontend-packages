@@ -57,7 +57,7 @@ export const Brand2: StoryObj<typeof ListItemRoot> = {
   },
 };
 
-export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
+export const NonInteractive: StoryFn<typeof ListItemRoot> = () => (
   <ListItemRoot nonInteractive>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>

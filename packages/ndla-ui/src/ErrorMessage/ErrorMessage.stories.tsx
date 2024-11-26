@@ -8,7 +8,7 @@
 
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import ErrorMessage from "./ErrorMessage";
-//@ts-ignore
+// @ts-expect-error - It exists.
 import Oops from "../../../../images/oops.gif";
 
 /**

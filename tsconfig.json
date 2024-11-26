@@ -18,7 +18,6 @@
     "types": ["jest", "node"],
     "paths": {
       "@ndla/article-converter": ["./packages/article-converter/src"],
-      "@ndla/button": ["./packages/button/src"],
       "@ndla/core": ["./packages/core/src"],
       "@ndla/hooks": ["./packages/hooks/src"],
       "@ndla/audio-search": ["./packages/ndla-audio-search/src"],

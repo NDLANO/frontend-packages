@@ -180,7 +180,7 @@ export const ContactBlock = ({
         </HeaderWrapper>
         <StyledDescription textStyle="body.large">{description}</StyledDescription>
       </ContentWrapper>
-      {image && (
+      {!!image && (
         <ImageWrapper variant={backgroundColor}>
           <StyledImage
             alt={embedAlt !== undefined ? embedAlt : image.alttext.alttext}

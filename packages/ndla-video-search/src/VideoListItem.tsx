@@ -143,7 +143,7 @@ export const VideoListItem = ({ video, onVideoSelect, translations, locale }: Vi
           </ButtonWrapper>
         </StyledListItemContent>
       </StyledListItemRoot>
-      {isPreviewing && (
+      {!!isPreviewing && (
         <PreviewWrapper id={`video-preview-${video.id}`}>
           <div />
           <PreviewIframe

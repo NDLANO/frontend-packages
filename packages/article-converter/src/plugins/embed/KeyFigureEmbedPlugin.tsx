@@ -11,7 +11,7 @@ import { KeyFigureMetaData } from "@ndla/types-embed";
 import { KeyFigure } from "@ndla/ui";
 import { PluginType } from "../types";
 
-export const keyFigureEmbedPlugin: PluginType = (element, _) => {
+export const keyFigureEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props["data-json"] as string) as KeyFigureMetaData;
   const { title, subtitle, alt } = data.embedData;

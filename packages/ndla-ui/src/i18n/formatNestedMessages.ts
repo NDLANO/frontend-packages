@@ -21,7 +21,6 @@ export const formatNestedMessages = (
 ) => {
   const messages = formattedMessages;
 
-  // eslint-disable-next-line
   Object.keys(phrases).forEach((key) => {
     const value = phrases[key];
     if ({}.hasOwnProperty.call(phrases, key)) {

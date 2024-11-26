@@ -202,7 +202,7 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
           <Button data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
             {translations.useImageTitle}
           </Button>
-          {showCheckbox && (
+          {!!showCheckbox && (
             <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>
               <CheckboxControl>
                 <CheckboxIndicator asChild>

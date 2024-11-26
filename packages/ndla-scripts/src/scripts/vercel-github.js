@@ -11,6 +11,8 @@
  * Forked/Inspired by: https://github.com/kentcdodds/glamorous-website/blob/master/other/now-travis
  */
 
+/* eslint-disable no-console */
+
 import { inspect } from "util";
 import spawn from "cross-spawn-promise";
 import normalizeUrl from "normalize-url";

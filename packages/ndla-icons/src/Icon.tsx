@@ -47,18 +47,7 @@ export type Props = BaseIconProps & IconVariantProps & JsxStyleProps;
 
 const StyledSvg = styled("svg");
 
-const Icon = ({
-  children,
-  size,
-  role,
-  title,
-  description,
-  width,
-  height,
-  css: cssProp,
-  "aria-hidden": ariaHidden,
-  ...props
-}: Props) => {
+const Icon = ({ children, size, title, description, css: cssProp, "aria-hidden": ariaHidden, ...props }: Props) => {
   return (
     <StyledSvg
       data-icon=""
@@ -67,8 +56,8 @@ const Icon = ({
       css={css.raw(iconRecipe.raw({ size }), cssProp)}
       {...props}
     >
-      {title && <title>{title}</title>}
-      {description && <desc>{description}</desc>}
+      {!!title && <title>{title}</title>}
+      {!!description && <desc>{description}</desc>}
       {children}
     </StyledSvg>
   );

@@ -10,7 +10,6 @@
     "moduleResolution": "Bundler",
     "module": "preserve",
     "noLib": false,
-    // TODO: Remove this once @storybook/theming fixes their type issues
     "skipLibCheck": true,
     "noEmit": true,
     "sourceMap": true,

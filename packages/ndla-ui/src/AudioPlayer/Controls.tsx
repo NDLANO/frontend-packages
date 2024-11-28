@@ -14,6 +14,7 @@ import { PlayFill, PauseLine, VolumeUpFill } from "@ndla/icons/common";
 import { CheckLine } from "@ndla/icons/editor";
 import {
   Button,
+  FieldRoot,
   IconButton,
   PopoverContent,
   PopoverRoot,
@@ -292,35 +293,37 @@ const Controls = ({ src, title }: Props) => {
             <div>-{formatTime(remainingTime)}</div>
           </StyledText>
         </ProgressWrapper>
-        <StyledSelectRoot
-          collection={speedValues}
-          value={[speedValue.toString()]}
-          onValueChange={(details) => setSpeedValue(parseFloat(details.value[0]))}
-          positioning={{ placement: "top" }}
-        >
-          <SelectLabel css={visuallyHidden.raw()}>{t("audio.controls.selectSpeed")}</SelectLabel>
-          <SelectControl>
-            <SelectTrigger asChild>
-              <SpeedButton
-                variant="tertiary"
-                title={t("audio.controls.selectSpeed")}
-                aria-label={t("audio.controls.selectSpeed")}
-              >
-                <span>{`${speedValue}x`}</span>
-              </SpeedButton>
-            </SelectTrigger>
-          </SelectControl>
-          <SelectContent>
-            {speedValues.items.map((speed) => (
-              <SelectItem key={speed} item={speed}>
-                <SelectItemText>{speed}x</SelectItemText>
-                <SelectItemIndicator>
-                  <CheckLine />
-                </SelectItemIndicator>
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </StyledSelectRoot>
+        <FieldRoot>
+          <StyledSelectRoot
+            collection={speedValues}
+            value={[speedValue.toString()]}
+            onValueChange={(details) => setSpeedValue(parseFloat(details.value[0]))}
+            positioning={{ placement: "top" }}
+          >
+            <SelectLabel css={visuallyHidden.raw()}>{t("audio.controls.selectSpeed")}</SelectLabel>
+            <SelectControl>
+              <SelectTrigger asChild>
+                <SpeedButton
+                  variant="tertiary"
+                  title={t("audio.controls.selectSpeed")}
+                  aria-label={t("audio.controls.selectSpeed")}
+                >
+                  <span>{`${speedValue}x`}</span>
+                </SpeedButton>
+              </SelectTrigger>
+            </SelectControl>
+            <SelectContent>
+              {speedValues.items.map((speed) => (
+                <SelectItem key={speed} item={speed}>
+                  <SelectItemText>{speed}x</SelectItemText>
+                  <SelectItemIndicator>
+                    <CheckLine />
+                  </SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </StyledSelectRoot>
+        </FieldRoot>
         <PopoverRoot positioning={{ placement: "top" }}>
           <PopoverTrigger asChild>
             <VolumeButton variant="tertiary" aria-label={t("audio.controls.adjustVolume")}>

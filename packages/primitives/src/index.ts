@@ -114,6 +114,7 @@ export {
   ErrorMessageTitle,
 } from "./ErrorMessage/ErrorMessage";
 
+export { useFieldContext } from "@ark-ui/react";
 export { FieldRoot, FieldsetRoot } from "./Field";
 
 export type { FieldErrorMessageProps, FieldsetErrorTextProps } from "./FieldErrorMessage";

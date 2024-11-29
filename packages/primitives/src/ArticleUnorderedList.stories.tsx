@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { ArticleContent, ArticleWrapper } from "@ndla/ui";
 import { UnOrderedList } from "./ArticleLists";
 import { BlockQuote } from "./BlockQuote";

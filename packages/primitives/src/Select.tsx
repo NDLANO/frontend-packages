@@ -9,10 +9,10 @@
 import { forwardRef } from "react";
 import { Select, selectAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
-import { TextProps } from "./Text";
+import { type TextProps } from "./Text";
 
 const selectRecipe = sva({
   slots: selectAnatomy.keys(),

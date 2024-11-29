@@ -6,9 +6,9 @@
  *
  */
 
-import { ElementType } from "react";
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
-import { EmbedMetaData } from "@ndla/types-embed";
+import type { ElementType } from "react";
+import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { EmbedMetaData } from "@ndla/types-embed";
 
 export type HeartButtonType = ElementType<{
   embed: Extract<EmbedMetaData, { status: "success" }>;

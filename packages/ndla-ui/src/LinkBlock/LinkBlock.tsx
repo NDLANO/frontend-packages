@@ -13,7 +13,7 @@ import { CalendarLine } from "@ndla/icons/editor";
 import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import { LinkBlockEmbedData } from "@ndla/types-embed";
+import type { LinkBlockEmbedData } from "@ndla/types-embed";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 const InfoWrapper = styled("div", {

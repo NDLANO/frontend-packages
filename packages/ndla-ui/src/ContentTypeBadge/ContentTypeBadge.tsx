@@ -8,7 +8,7 @@
 
 import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Badge, BadgeProps, type BadgeVariant } from "@ndla/primitives";
+import { Badge, type BadgeProps, type BadgeVariant } from "@ndla/primitives";
 import * as contentTypes from "../model/ContentType";
 
 export interface ContentTypeBadgeProps extends Omit<BadgeProps, "colorTheme"> {

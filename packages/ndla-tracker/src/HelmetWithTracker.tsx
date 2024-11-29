@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import warning from "tiny-warning";
 import { usePrevious } from "@ndla/util";

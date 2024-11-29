@@ -7,9 +7,9 @@
  */
 
 import { attributesToProps } from "html-react-parser";
-import { ContactBlockMetaData } from "@ndla/types-embed";
-import { ContactBlock, contactBlockBackgrounds, ContactBlockBackground } from "@ndla/ui";
-import { PluginType } from "../types";
+import { type ContactBlockMetaData } from "@ndla/types-embed";
+import { ContactBlock, contactBlockBackgrounds, type ContactBlockBackground } from "@ndla/ui";
+import { type PluginType } from "../types";
 
 export function isBackground(background?: string): background is ContactBlockBackground {
   return (contactBlockBackgrounds as readonly string[]).includes(background ?? "");

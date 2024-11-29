@@ -6,14 +6,14 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { PencilFill, DeleteBinLine } from "@ndla/icons/action";
 import { Share } from "@ndla/icons/common";
 import { HorizontalMenu } from "@ndla/icons/contentType";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, ListItemVariantProps } from "./ListItem";
+import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, type ListItemVariantProps } from "./ListItem";
 import { Badge } from "../Badge";
 import { IconButton } from "../Button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu";

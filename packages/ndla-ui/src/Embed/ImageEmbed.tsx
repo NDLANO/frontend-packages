@@ -7,14 +7,14 @@
  */
 
 import parse from "html-react-parser";
-import { ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AddLine } from "@ndla/icons/action";
-import { Figure, FigureSize, FigureVariantProps, Image } from "@ndla/primitives";
+import { Figure, type FigureSize, type FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
+import type { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { RenderContext } from "./types";
+import type { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 

@@ -9,9 +9,9 @@
 import { forwardRef } from "react";
 import { Menu, menuAnatomy } from "@ark-ui/react";
 import { css, cva, sva } from "@ndla/styled-system/css";
-import { JsxStyleProps, RecipeVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { Text, TextProps } from "./Text";
+import { Text, type TextProps } from "./Text";
 
 const itemStyle: SystemStyleObject = css.raw({
   display: "flex",

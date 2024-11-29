@@ -6,8 +6,8 @@
  *
  */
 
-import { Element, HTMLReactParserOptions } from "html-react-parser";
-import { RenderContext, CanonicalUrlFuncs, ContentType } from "@ndla/ui";
+import { Element, type HTMLReactParserOptions } from "html-react-parser";
+import type { RenderContext, CanonicalUrlFuncs, ContentType } from "@ndla/ui";
 
 export interface TransformOptions {
   isOembed?: boolean;

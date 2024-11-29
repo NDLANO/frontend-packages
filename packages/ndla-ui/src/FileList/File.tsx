@@ -6,7 +6,7 @@
  *
  */
 
-import { ComponentPropsWithRef, forwardRef } from "react";
+import { type ComponentPropsWithRef, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { DownloadLine } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";

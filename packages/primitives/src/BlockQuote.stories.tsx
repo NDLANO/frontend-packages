@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { BlockQuote } from "./BlockQuote";
 import { Text } from "./Text";
 

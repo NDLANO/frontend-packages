@@ -12,11 +12,11 @@ import { FileCopyLine } from "@ndla/icons/action";
 import { CheckLine } from "@ndla/icons/editor";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { CodeMetaData } from "@ndla/types-embed";
+import type { CodeMetaData } from "@ndla/types-embed";
 import { copyTextToClipboard } from "@ndla/util";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { CodeBlock, codeLanguageOptions } from "../CodeBlock";
-import { ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
+import type { ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
 
 interface Props {
   embed: CodeMetaData;

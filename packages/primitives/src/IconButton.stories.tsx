@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
 import { css } from "@ndla/styled-system/css";
 import { IconButton } from "./Button";

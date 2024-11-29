@@ -6,7 +6,7 @@
  *
  */
 
-import { useRef, useImperativeHandle, ReactNode, forwardRef } from "react";
+import { useRef, useImperativeHandle, type ReactNode, forwardRef } from "react";
 import { ArrowRightShortLine } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";

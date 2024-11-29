@@ -7,8 +7,8 @@
  */
 
 import { Tabs } from "@ark-ui/react";
-import { RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import { type RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const tabsRecipe = sva({

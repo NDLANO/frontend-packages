@@ -7,7 +7,7 @@
  */
 
 import { forwardRef, useState } from "react";
-import { Button, ButtonProps } from "@ndla/primitives";
+import { Button, type ButtonProps } from "@ndla/primitives";
 
 // TODO: Let's consider abandoning `disabled` on the button here. It should instead just open/close the widget based on its current state.
 

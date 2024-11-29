@@ -6,12 +6,12 @@
  *
  */
 
-import parse, { HTMLReactParserOptions } from "html-react-parser";
-import { MetaData } from "@ndla/types-embed";
+import parse, { type HTMLReactParserOptions } from "html-react-parser";
+import { type MetaData } from "@ndla/types-embed";
 import { UnknownEmbed } from "@ndla/ui";
 import { basePlugins, oembedPlugins } from "./plugins";
 import { embedPlugins } from "./plugins/embed";
-import { TransformOptions } from "./plugins/types";
+import { type TransformOptions } from "./plugins/types";
 
 const transform = (content: string, opts: TransformOptions) => {
   const plugins = opts?.isOembed ? oembedPlugins : basePlugins;

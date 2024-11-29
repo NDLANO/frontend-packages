@@ -7,11 +7,11 @@
  */
 
 import { forwardRef } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "../createStyleContext";
-import { Heading, Text, TextProps } from "../Text";
+import { Heading, Text, type TextProps } from "../Text";
 
 const errorMessageRecipe = sva({
   slots: ["root", "content", "actions", "title", "description"],

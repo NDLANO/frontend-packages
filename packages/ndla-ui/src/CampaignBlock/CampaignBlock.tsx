@@ -7,13 +7,13 @@
  */
 
 import parse from "html-react-parser";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { ArrowRightLine } from "@ndla/icons/common";
 import { Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import { CampaignBlockEmbedData } from "@ndla/types-embed";
-import { HeadingLevel } from "../types";
+import type { CampaignBlockEmbedData } from "@ndla/types-embed";
+import type { HeadingLevel } from "../types";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 interface Image {

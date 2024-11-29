@@ -7,9 +7,9 @@
  */
 
 import { attributesToProps } from "html-react-parser";
-import { KeyFigureMetaData } from "@ndla/types-embed";
+import { type KeyFigureMetaData } from "@ndla/types-embed";
 import { KeyFigure } from "@ndla/ui";
-import { PluginType } from "../types";
+import { type PluginType } from "../types";
 
 export const keyFigureEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);

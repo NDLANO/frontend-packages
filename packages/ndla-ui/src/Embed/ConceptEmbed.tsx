@@ -11,12 +11,12 @@ import { forwardRef, useMemo, useRef } from "react";
 import { Portal } from "@ark-ui/react";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { ConceptMetaData } from "@ndla/types-embed";
+import type { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { GlossEmbed } from "./GlossEmbed";
-import { RenderContext } from "./types";
-import { Concept, ConceptProps } from "../Concept/Concept";
+import type { RenderContext } from "./types";
+import { Concept, type ConceptProps } from "../Concept/Concept";
 
 interface BaseProps {
   renderContext?: RenderContext;

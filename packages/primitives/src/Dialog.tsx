@@ -8,11 +8,11 @@
 
 import { forwardRef } from "react";
 import { Dialog, dialogAnatomy } from "@ark-ui/react";
-import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { Heading, Text, TextProps } from "./Text";
+import { Heading, Text, type TextProps } from "./Text";
 
 const dialogRecipe = sva({
   slots: dialogAnatomy.keys(),

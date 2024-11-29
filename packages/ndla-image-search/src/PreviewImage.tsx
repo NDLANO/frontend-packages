@@ -23,9 +23,9 @@ import {
   IconButton,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import ImageMeta from "./ImageMeta";
-import { PreviewTranslations } from "./ImageSearch";
+import type { PreviewTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
 
 const ImageContainer = styled("div", {

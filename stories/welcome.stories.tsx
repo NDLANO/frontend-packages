@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { NdlaLogoText, PageContent } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ArticleWrapper, ArticleContent } from "@ndla/ui";

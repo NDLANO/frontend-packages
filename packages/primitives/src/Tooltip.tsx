@@ -9,7 +9,7 @@
 import { forwardRef } from "react";
 import { Tooltip, tooltipAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const tooltipRecipe = sva({

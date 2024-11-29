@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Portal, createListCollection, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
 import { ArrowDownShortLine } from "@ndla/icons/common";
 import { CheckLine } from "@ndla/icons/editor";
@@ -32,7 +32,7 @@ import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { Input, InputContainer } from "./Input";
 import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot } from "./ListItem/ListItem";
-import { AdvancedItem, advancedItems, europeanCountries } from "./storybookHelpers/data";
+import { type AdvancedItem, advancedItems, europeanCountries } from "./storybookHelpers/data";
 import { Text } from "./Text";
 
 const meta: Meta<typeof ComboboxRoot> = {

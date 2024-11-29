@@ -7,8 +7,8 @@
  */
 
 import { toggleGroupAnatomy, ToggleGroup } from "@ark-ui/react";
-import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const toggleGroupRecipe = sva({

@@ -7,10 +7,10 @@
  */
 
 import { Switch, switchAnatomy } from "@ark-ui/react";
-import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { Text, TextProps } from "./Text";
+import { Text, type TextProps } from "./Text";
 
 const switchRecipe = sva({
   slots: switchAnatomy.keys(),

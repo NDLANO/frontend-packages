@@ -6,8 +6,8 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
-import { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
+import type { Meta, StoryObj } from "@storybook/react";
+import type { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
 import { GlossEmbed } from "./GlossEmbed";
 
 const glossBlockEmbedData: ConceptEmbedData = {

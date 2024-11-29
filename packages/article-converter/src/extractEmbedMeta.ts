@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { EmbedMetaData } from "@ndla/types-embed";
+import { type EmbedMetaData } from "@ndla/types-embed";
 
 const extractEmbedMeta = (embed: string): EmbedMetaData | undefined => {
   const node = parse(embed);

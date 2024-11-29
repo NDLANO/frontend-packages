@@ -6,7 +6,7 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef } from "react";
 import { useTranslation } from "react-i18next";
 import { ark } from "@ark-ui/react";
 import { Heading } from "@ndla/primitives";

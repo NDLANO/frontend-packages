@@ -6,11 +6,11 @@
  *
  */
 
-import { ReactNode, forwardRef } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
-import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
+import { type ReactNode, forwardRef } from "react";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
+import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
 import { Spinner } from "./Spinner";
 
 export const buttonBaseRecipe = cva({

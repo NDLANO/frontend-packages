@@ -6,7 +6,7 @@
  *
  */
 
-import { MutableRefObject, Ref } from "react";
+import type { MutableRefObject, Ref } from "react";
 
 type PossibleRef<T> = Ref<T> | undefined;
 

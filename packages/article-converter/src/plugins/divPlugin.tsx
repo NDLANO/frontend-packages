@@ -6,17 +6,17 @@
  *
  */
 
-import { domToReact, attributesToProps, Element, DOMNode } from "html-react-parser";
+import { domToReact, attributesToProps, Element, type DOMNode } from "html-react-parser";
 import {
   FileListEmbed,
   RelatedArticleList,
   Grid,
-  GridType,
+  type GridType,
   GridParallaxItem,
   ContentTypeFramedContent,
-  ContentTypeFramedContentVariant,
+  type ContentTypeFramedContentVariant,
 } from "@ndla/ui";
-import { PluginType } from "./types";
+import { type PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts, { contentType }) => {
   if (node.attribs["data-type"] === "framed-content" || node.attribs.class === "c-bodybox") {

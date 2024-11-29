@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Report } from "@ndla/icons/common";
 import { Figure, type FigureFloat, type FigureSize } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { EmbedByline } from "../LicenseByline";
-import { EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
+import { type EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
 
 interface Props {
   type: EmbedBylineErrorProps["type"];

@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { TagsInputContext } from "@ark-ui/react";
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
 import { HStack } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";

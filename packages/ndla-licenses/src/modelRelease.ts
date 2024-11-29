@@ -6,7 +6,7 @@
  *
  */
 
-import { getLocaleOrDefault, Locale } from "./types";
+import { getLocaleOrDefault, type Locale } from "./types";
 
 // TODO: Try to improve type safety
 

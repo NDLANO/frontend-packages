@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
+import type { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioSearchResult from "./AudioSearchResult";
 
 const StyledList = styled("ul", {

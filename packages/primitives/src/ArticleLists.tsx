@@ -6,11 +6,11 @@
  *
  */
 
-import { CSSProperties, forwardRef, useMemo } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
+import { type CSSProperties, forwardRef, useMemo } from "react";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const LIST_ITEM = "& > li";
 const LETTER_LIST = "& > ol[data-variant='letters']";

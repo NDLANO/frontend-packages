@@ -6,7 +6,7 @@
  *
  */
 
-import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState } from "react";
+import { type ChangeEvent, type ReactNode, type KeyboardEvent, useEffect, useState } from "react";
 import { ArrowLeftShortLine, ArrowRightShortLine, SearchLine } from "@ndla/icons/common";
 import {
   Button,
@@ -19,10 +19,10 @@ import {
   PaginationPrevTrigger,
   PaginationRoot,
   Text,
-  PaginationRootProps,
+  type PaginationRootProps,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
 import ImageSearchResult from "./ImageSearchResult";
 
 const ImageSearchWrapper = styled("div", {

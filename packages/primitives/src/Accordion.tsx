@@ -8,7 +8,7 @@
 
 import { Accordion, accordionAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const accordionRecipe = sva({

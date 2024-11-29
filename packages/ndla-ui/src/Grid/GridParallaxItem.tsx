@@ -6,7 +6,7 @@
  *
  */
 
-import { HTMLAttributes } from "react";
+import { type HTMLAttributes } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 
 const StyledGridParallaxItem = styled("div", {

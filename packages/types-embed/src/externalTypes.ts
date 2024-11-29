@@ -6,8 +6,8 @@
  *
  */
 
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
-import { MetaData, OembedProxyResponse } from ".";
+import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { MetaData, OembedProxyResponse } from ".";
 
 export interface OembedEmbedData {
   resource: "external";

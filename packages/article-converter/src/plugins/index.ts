@@ -21,7 +21,7 @@ import { olPlugin } from "./olPlugin";
 import { paragraphPlugin } from "./paragraphPlugin";
 import { summaryPlugin } from "./summaryPlugin";
 import { tablePlugin } from "./tablePlugin";
-import { PluginType } from "./types";
+import { type PluginType } from "./types";
 import { ulPlugin } from "./ulPlugin";
 
 export const basePlugins: Record<string, PluginType> = {

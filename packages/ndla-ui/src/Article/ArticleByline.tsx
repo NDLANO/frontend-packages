@@ -6,8 +6,8 @@
  *
  */
 
-import { TFunction } from "i18next";
-import { ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
+import type { TFunction } from "i18next";
+import { type ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { ArrowDownShortLine } from "@ndla/icons/common";
@@ -15,14 +15,14 @@ import {
   AccordionItem,
   AccordionItemContent,
   AccordionItemIndicator,
-  AccordionItemProps,
+  type AccordionItemProps,
   AccordionItemTrigger,
   AccordionRoot,
   Heading,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ArticleFootNotes } from "./ArticleFootNotes";
-import { FootNote } from "../types";
+import type { FootNote } from "../types";
 
 const Wrapper = styled("div", {
   base: {

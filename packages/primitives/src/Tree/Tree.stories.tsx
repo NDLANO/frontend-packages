@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { ArrowRightShortLine } from "@ndla/icons/common";
 import { CheckLine, FolderLine } from "@ndla/icons/editor";
 import { HStack } from "@ndla/styled-system/jsx";

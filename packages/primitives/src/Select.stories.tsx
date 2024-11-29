@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Portal, createListCollection } from "@ark-ui/react";
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { CloseLine } from "@ndla/icons/action";
 import { ArrowDownShortLine } from "@ndla/icons/common";
 import { CheckLine } from "@ndla/icons/editor";

@@ -6,9 +6,9 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
-import { Pitch, Props } from "./Pitch";
+import { Pitch, type Props } from "./Pitch";
 import { ArticleContent, ArticleWrapper } from "../Article";
 import { Grid } from "../Grid";
 

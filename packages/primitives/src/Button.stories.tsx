@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { FileCopyLine } from "@ndla/icons/action";
 import { ArrowRightLine } from "@ndla/icons/common";
 import { styled } from "@ndla/styled-system/jsx";

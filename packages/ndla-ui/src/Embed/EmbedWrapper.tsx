@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const embedWrapperRecipe = cva({
   base: {

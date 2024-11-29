@@ -9,10 +9,10 @@
 import { forwardRef } from "react";
 import { RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
-import { Text, TextProps } from "./Text";
+import { Text, type TextProps } from "./Text";
 
 const radioGroupRecipe = sva({
   slots: radioGroupAnatomy.keys(),

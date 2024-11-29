@@ -6,8 +6,8 @@
  *
  */
 
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
-import { MetaData } from ".";
+import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { MetaData } from ".";
 
 export interface CampaignBlockEmbedData {
   resource: "campaign-block";

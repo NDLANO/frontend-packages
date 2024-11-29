@@ -6,7 +6,16 @@
  *
  */
 
-import { ComponentProps, ReactNode, forwardRef, useCallback, useEffect, useId, useMemo, useState } from "react";
+import {
+  type ComponentProps,
+  type ReactNode,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowDownShortLine } from "@ndla/icons/common";
 import { IconButton } from "@ndla/primitives";

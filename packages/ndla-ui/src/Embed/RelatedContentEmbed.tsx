@@ -7,7 +7,7 @@
  */
 
 import { useTranslation } from "react-i18next";
-import { RelatedContentMetaData } from "@ndla/types-embed";
+import type { RelatedContentMetaData } from "@ndla/types-embed";
 import { contentTypeMapping } from "../model/ContentType";
 import { RelatedArticle } from "../RelatedArticleList/RelatedArticleList";
 

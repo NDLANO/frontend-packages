@@ -8,9 +8,9 @@
 
 import { Toast, toastAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { Text, TextProps } from "./Text";
+import { Text, type TextProps } from "./Text";
 
 const toastRecipe = sva({
   slots: toastAnatomy.keys(),

@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useId, useMemo, useState } from "react";
+import { type ReactNode, useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";

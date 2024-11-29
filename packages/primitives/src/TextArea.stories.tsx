@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { SearchLine } from "@ndla/icons/common";
 import { CheckboxCircleFill } from "@ndla/icons/editor";
 import { FieldRoot } from "./Field";

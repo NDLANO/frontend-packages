@@ -6,8 +6,8 @@
  *
  */
 
-import { ComponentProps, ReactElement, createElement, useMemo } from "react";
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { type ComponentProps, type ReactElement, createElement, useMemo } from "react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { copyTextToClipboard } from "@ndla/util";

@@ -7,7 +7,7 @@
  */
 
 import { PaginationContext } from "@ark-ui/react";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons/common";
 import { Button } from "./Button";
 import {

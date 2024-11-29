@@ -6,7 +6,7 @@
  *
  */
 
-import { Children, ComponentPropsWithoutRef, ReactNode, useMemo, useState } from "react";
+import { Children, type ComponentPropsWithoutRef, type ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ExternalLinkLine } from "@ndla/icons/common";
 import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla/primitives";
@@ -15,7 +15,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
 import { ContentTypeBadge } from "../ContentTypeBadge/ContentTypeBadge";
 import { contentTypes } from "../model/ContentType";
-import { HeadingLevel } from "../types";
+import type { HeadingLevel } from "../types";
 
 interface RelatedArticleProps {
   title: string;

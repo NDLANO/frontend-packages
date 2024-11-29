@@ -6,9 +6,9 @@
  *
  */
 
-import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
+import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { LinkBlockSection } from "@ndla/ui";
-import { PluginType } from "./types";
+import { type PluginType } from "./types";
 
 export const navPlugin: PluginType = (node, opts) => {
   if (node.attribs["data-type"] === "link-block-list") {

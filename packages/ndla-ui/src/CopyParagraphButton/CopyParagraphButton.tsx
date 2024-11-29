@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LinkMedium } from "@ndla/icons/editor";
 import { IconButton } from "@ndla/primitives";

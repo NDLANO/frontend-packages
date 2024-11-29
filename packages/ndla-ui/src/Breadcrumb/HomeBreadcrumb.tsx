@@ -10,7 +10,7 @@ import { ArrowRightShortLine, HomeLine } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import Breadcrumb from "./Breadcrumb";
-import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from "./BreadcrumbItem";
+import type { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from "./BreadcrumbItem";
 
 const StyledSafeLink = styled(SafeLink, {
   base: {

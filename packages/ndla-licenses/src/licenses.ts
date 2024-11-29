@@ -7,7 +7,7 @@
  */
 
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA, VERSION } from "./licenseRights";
-import { getLocaleOrDefault, LicenseType, LicenseLocaleType, Locale } from "./types";
+import { getLocaleOrDefault, type LicenseType, type LicenseLocaleType, type Locale } from "./types";
 
 const freeUseNB = "Offentlig eie";
 const freeUseNN = "Offentleg eige";

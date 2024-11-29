@@ -6,10 +6,10 @@
  *
  */
 
-import { getLicenseByAbbreviation, LicenseLocaleType } from "@ndla/licenses";
+import { getLicenseByAbbreviation, type LicenseLocaleType } from "@ndla/licenses";
 import { Text, ListItemContent, ListItemRoot, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
+import type { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
 import AudioBar from "./AudioBar";
 
 const StyledAudioMeta = styled("div", {

@@ -6,9 +6,9 @@
  *
  */
 
-import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
+import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { Table } from "@ndla/primitives";
-import { PluginType } from "./types";
+import { type PluginType } from "./types";
 export const tablePlugin: PluginType = (node, converterOpts, opts) => {
   const props = attributesToProps(node.attribs);
   return (

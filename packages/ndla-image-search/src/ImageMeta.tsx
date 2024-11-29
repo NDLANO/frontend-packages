@@ -8,7 +8,7 @@
 
 import prettyBytes from "pretty-bytes";
 import { Text } from "@ndla/primitives";
-import { IImageDimensions } from "@ndla/types-backend/image-api";
+import type { IImageDimensions } from "@ndla/types-backend/image-api";
 
 interface Props {
   contentType: string;

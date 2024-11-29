@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";

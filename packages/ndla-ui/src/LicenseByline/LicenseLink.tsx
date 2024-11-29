@@ -7,8 +7,8 @@
  */
 
 import { forwardRef } from "react";
-import { LicenseLocaleType } from "@ndla/licenses";
-import { SafeLink, SafeLinkProps } from "@ndla/safelink";
+import type { LicenseLocaleType } from "@ndla/licenses";
+import { SafeLink, type SafeLinkProps } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 
 interface Props extends Omit<SafeLinkProps, "to"> {

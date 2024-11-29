@@ -7,8 +7,8 @@
  */
 
 import { forwardRef } from "react";
-import { Hero, HeroProps, HeroVariant } from "@ndla/primitives";
-import { ContentType } from "../ContentTypeBadge/ContentTypeBadge";
+import { Hero, type HeroProps, type HeroVariant } from "@ndla/primitives";
+import type { ContentType } from "../ContentTypeBadge/ContentTypeBadge";
 import * as contentTypes from "../model/ContentType";
 
 export const contentTypeToHeroMap: Record<ContentType, HeroVariant> = {

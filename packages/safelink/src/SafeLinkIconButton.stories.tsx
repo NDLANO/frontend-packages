@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { UserLine } from "@ndla/icons/common";
 import { MissingRouterContext } from "./MissingRouterContext";
 import { SafeLinkIconButton } from "./SafeLinkIconButton";

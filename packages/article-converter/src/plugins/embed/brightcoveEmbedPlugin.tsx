@@ -7,9 +7,9 @@
  */
 
 import { attributesToProps } from "html-react-parser";
-import { BrightcoveMetaData } from "@ndla/types-embed";
+import { type BrightcoveMetaData } from "@ndla/types-embed";
 import { BrightcoveEmbed } from "@ndla/ui";
-import { PluginType } from "../types";
+import { type PluginType } from "../types";
 
 export const brightcoveEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);

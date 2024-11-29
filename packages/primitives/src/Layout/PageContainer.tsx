@@ -7,10 +7,10 @@
  */
 
 import { forwardRef } from "react";
-import { HTMLArkProps } from "@ark-ui/react";
+import { type HTMLArkProps } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { PageContent, PageContentVariantProps } from "./PageContent";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import { PageContent, type PageContentVariantProps } from "./PageContent";
 
 const pageContainerRecipe = cva({
   defaultVariants: {

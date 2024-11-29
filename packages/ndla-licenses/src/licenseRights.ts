@@ -6,7 +6,7 @@
  *
  */
 
-import { isLocale, Locale, RightLocaleInfo, RightType } from "./types";
+import { isLocale, type Locale, type RightLocaleInfo, type RightType } from "./types";
 
 // License rights
 export const BY = "by"; // Attribution

@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { Bold, Italic, Link, ListAlphabetical, ListCircle, ListNumbered } from "@ndla/icons/editor";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";

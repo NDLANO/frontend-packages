@@ -8,9 +8,9 @@
 
 import { Checkbox, checkboxAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { Text, TextProps } from "./Text";
+import { Text, type TextProps } from "./Text";
 
 const checkboxRecipe = sva({
   slots: checkboxAnatomy.keys(),

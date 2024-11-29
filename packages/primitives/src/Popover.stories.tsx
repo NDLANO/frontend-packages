@@ -7,7 +7,7 @@
  */
 
 import { Portal } from "@ark-ui/react";
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 import {
   PopoverContent,

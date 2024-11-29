@@ -6,11 +6,11 @@
  *
  */
 
-import { ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef } from "react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { ColorToken } from "@ndla/styled-system/tokens";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { ColorToken } from "@ndla/styled-system/tokens";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 
 export type LogoProps = ComponentPropsWithoutRef<"svg"> & { color?: ColorToken } & JsxStyleProps;
 

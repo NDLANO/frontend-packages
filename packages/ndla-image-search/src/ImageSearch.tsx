@@ -103,7 +103,7 @@ interface Props {
   onImageSelect: (image: IImageMetaInformationV3) => void;
   searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3>;
   fetchImage: (id: number) => Promise<IImageMetaInformationV3>;
-  onError: (err: any) => void;
+  onError?: (err: any) => void;
   locale: string;
   noResults?: ReactNode;
   checkboxAction?: (image: IImageMetaInformationV3) => void;
@@ -141,7 +141,7 @@ const ImageSearch = ({
           setSelectedImage(result);
         })
         .catch((err) => {
-          onError(err);
+          onError?.(err);
         });
     }
   };
@@ -168,7 +168,7 @@ const ImageSearch = ({
         setSearching(false);
       })
       .catch((err) => {
-        onError(err);
+        onError?.(err);
         setSearching(false);
       });
   };

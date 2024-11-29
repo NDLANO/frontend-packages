@@ -54,8 +54,6 @@ export {
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
-export { default as ContentLoader } from "./ContentLoader";
-
 export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleList";
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from "./ErrorMessage";

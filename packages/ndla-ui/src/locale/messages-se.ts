@@ -586,6 +586,7 @@ const messages = {
     gloss: "Glose",
     programme: "Programfag",
     "podcast-series": "Podkast-serie",
+    "frontpage-article": "Om NDLA-artikkel",
   },
   modal: {
     closeModal: "Govčča",

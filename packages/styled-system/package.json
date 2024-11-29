@@ -1,7 +1,7 @@
 {
   "name": "@ndla/styled-system",
   "description": "Styled System for NDLA",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",

@@ -1,83 +1,70 @@
 /**
- * Copyright (c) 2023-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
+import { useTranslation } from "react-i18next";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { styled } from "@ndla/styled-system/jsx";
+import { MovieLine } from "@ndla/icons/editor";
+import { HStack, styled } from "@ndla/styled-system/jsx";
 import { ContentTypeBadge } from "./ContentTypeBadge";
-import * as contentTypes from "../model/ContentType";
 
 export default {
   title: "Components/ContentTypeBadge",
+  component: ContentTypeBadge,
   tags: ["autodocs"],
   parameters: {
     inlineStories: true,
   },
   args: {
-    size: "small",
-    border: true,
-    type: "subject-material",
-    background: true,
-    title: "I'm a badge",
+    contentType: "subject-material",
   },
-  argTypes: {
-    children: { control: false },
-  },
-  component: ContentTypeBadge,
-} as Meta<typeof ContentTypeBadge>;
+} satisfies Meta<typeof ContentTypeBadge>;
 
 export const Default: StoryObj<typeof ContentTypeBadge> = {};
 
-export const Sizes: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
-  <>
-    <ContentTypeBadge {...args} size="xx-small" />
-    <ContentTypeBadge {...args} size="x-small" />
-    <ContentTypeBadge {...args} size="small" />
-    <ContentTypeBadge {...args} size="large" />
-  </>
-);
-
-export const NoBorder: StoryObj<typeof ContentTypeBadge> = {
-  args: {
-    border: false,
-  },
-};
-
-export const NoBackground: StoryObj<typeof ContentTypeBadge> = {
-  args: {
-    background: false,
-  },
-};
-
-const BadgesWrapper = styled("div", {
+const StyledHStack = styled(HStack, {
   base: {
-    display: "flex",
-    alignItems: "center",
-    gap: "xsmall",
+    flexWrap: "wrap",
   },
 });
 
-export const AllBadges: StoryFn<typeof ContentTypeBadge> = ({ ...args }) => (
-  <BadgesWrapper>
-    <ContentTypeBadge {...args} type={contentTypes.SUBJECT_MATERIAL} />
-    <ContentTypeBadge {...args} type={contentTypes.TASKS_AND_ACTIVITIES} />
-    <ContentTypeBadge {...args} type={contentTypes.ASSESSMENT_RESOURCES} />
-    <ContentTypeBadge {...args} type={contentTypes.SUBJECT} />
-    <ContentTypeBadge {...args} type={contentTypes.SOURCE_MATERIAL} />
-    <ContentTypeBadge {...args} type={contentTypes.LEARNING_PATH} />
-    <ContentTypeBadge {...args} type={contentTypes.TOPIC} />
-    <ContentTypeBadge {...args} type={contentTypes.MULTIDISCIPLINARY} />
-    <ContentTypeBadge {...args} type={contentTypes.CONCEPT} />
-    <ContentTypeBadge {...args} type={contentTypes.EXTERNAL} />
-    <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.image} />
-    <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.audio} />
-    <ContentTypeBadge {...args} type={contentTypes.resourceEmbedTypeMapping.video} />
-    <ContentTypeBadge {...args} type={contentTypes.GLOSS} />
-    <ContentTypeBadge {...args} type={contentTypes.PROGRAMME} />
-    <ContentTypeBadge {...args} type={contentTypes.PODCAST_SERIES} />
-  </BadgesWrapper>
+export const AllBadges: StoryFn<typeof ContentTypeBadge> = () => (
+  <StyledHStack gap="3xsmall">
+    <ContentTypeBadge contentType="subject-material" />
+    <ContentTypeBadge contentType="tasks-and-activities" />
+    <ContentTypeBadge contentType="assessment-resources" />
+    <ContentTypeBadge contentType="subject" />
+    <ContentTypeBadge contentType="source-material" />
+    <ContentTypeBadge contentType="learning-path" />
+    <ContentTypeBadge contentType="topic" />
+    <ContentTypeBadge contentType="multidisciplinary" />
+    <ContentTypeBadge contentType="concept" />
+    <ContentTypeBadge contentType="external" />
+    <ContentTypeBadge contentType="image" />
+    <ContentTypeBadge contentType="audio" />
+    <ContentTypeBadge contentType="video" />
+    <ContentTypeBadge contentType="missing" />
+  </StyledHStack>
 );
+
+const StyledContentTypeBadge = styled(ContentTypeBadge, {
+  base: {
+    display: "flex",
+    gap: "4xsmall",
+    alignItems: "center",
+  },
+});
+
+export const ContentOverride: StoryFn<typeof ContentTypeBadge> = () => {
+  const { t } = useTranslation();
+  return (
+    <StyledContentTypeBadge contentType="video">
+      <MovieLine size="small" />
+      {t("contentTypes.video")}
+    </StyledContentTypeBadge>
+  );
+};

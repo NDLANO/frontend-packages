@@ -12,9 +12,9 @@ import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { Stack, styled } from "@ndla/styled-system/jsx";
 import { JsxStyleProps } from "@ndla/styled-system/types";
-import { ContentTypeBadgeNew } from "..";
+import { ContentTypeBadge } from "..";
 import { ArticleByline } from "./ArticleByline";
-import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
+import { ContentType } from "../ContentTypeBadge/ContentTypeBadge";
 import { Article as ArticleType } from "../types";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
@@ -135,7 +135,7 @@ export const ArticleTitle = ({
       <ArticleHGroup>
         {(!!contentType || !!heartButton) && (
           <StyledStack justify="space-between" align="center" direction="row" gap="small">
-            {!!contentType && <ContentTypeBadgeNew contentType={contentType}>{contentTypeLabel}</ContentTypeBadgeNew>}
+            {!!contentType && <ContentTypeBadge contentType={contentType}>{contentTypeLabel}</ContentTypeBadge>}
             {heartButton}
           </StyledStack>
         )}

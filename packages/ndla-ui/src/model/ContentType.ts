@@ -24,6 +24,7 @@ export const PODCAST = "podcast";
 export const GLOSS = "gloss";
 export const PROGRAMME = "programme";
 export const PODCAST_SERIES = "podcast-series";
+export const FRONTPAGE_ARTICLE = "frontpage-article";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,
@@ -57,6 +58,7 @@ export const contentTypeMapping: Record<string, string> = {
   [RESOURCE_TYPE_CONCEPT]: CONCEPT,
   [MULTIDISCIPLINARY]: MULTIDISCIPLINARY,
   [TOPIC]: TOPIC,
+  [FRONTPAGE_ARTICLE]: FRONTPAGE_ARTICLE,
   default: SUBJECT_MATERIAL,
 };
 

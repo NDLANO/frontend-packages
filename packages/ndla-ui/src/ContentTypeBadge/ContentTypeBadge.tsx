@@ -1,227 +1,79 @@
 /**
- * Copyright (c) 2018-present, NDLA.
+ * Copyright (c) 2024-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import { CSSProperties, ComponentPropsWithoutRef, useMemo } from "react";
-
-import { colors } from "@ndla/core";
-import { BookmarkLine, SubtractLine } from "@ndla/icons/action";
-import { BookReadFill, ShareFill, VoicePrintLine } from "@ndla/icons/common";
-import { MenuSearchLine, LearningPath, SharedResource, TasksAndActivities } from "@ndla/icons/contentType";
-import { ChatLine, FileListLine, LinkMedium, ImageLine, MovieLine } from "@ndla/icons/editor";
-import { styled } from "@ndla/styled-system/jsx";
-
+import { forwardRef } from "react";
+import { useTranslation } from "react-i18next";
+import { Badge, BadgeProps, type BadgeVariant } from "@ndla/primitives";
 import * as contentTypes from "../model/ContentType";
 
-// TODO: Remove this component
-
-interface Props extends ComponentPropsWithoutRef<"div"> {
-  size?: "xx-small" | "x-small" | "small" | "large";
-  type: string;
-  title?: string;
-  background?: boolean;
-  border?: boolean;
-  className?: string;
+export interface ContentTypeBadgeProps extends Omit<BadgeProps, "colorTheme"> {
+  contentType: ContentType | undefined;
 }
 
-const StyledContentTypeBadge = styled("div", {
-  base: {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: "100%",
-    color: "var(--icon-color)",
-  },
-  defaultVariants: {
-    size: "small",
-    border: true,
-    background: false,
-  },
-  variants: {
-    size: {
-      "xx-small": {
-        width: "20px",
-        height: "20px",
-        border: "1px solid",
-        "& svg": {
-          width: "10px",
-          height: "10px",
-        },
-      },
-      "x-small": {
-        width: "20px",
-        height: "20px",
-        border: "1px solid",
-        tablet: {
-          height: "26px",
-          width: "26px",
-        },
-        "& svg": {
-          width: "10px",
-          height: "10px",
-          tablet: {
-            width: "12px",
-            height: "12px",
-          },
-        },
-      },
-      small: {
-        width: "34px",
-        height: "34px",
-      },
-      large: {
-        width: "50px",
-        height: "50px",
-        "& svg": {
-          width: "25px",
-          height: "25px",
-        },
-      },
-    },
-    border: {
-      true: {
-        border: "2px solid",
-        borderColor: "var(--icon-color)",
-      },
-      false: {},
-    },
-    background: {
-      true: {
-        backgroundColor: "var(--background-color)",
-      },
-    },
-  },
-});
+export type StrictContentType =
+  | typeof contentTypes.SUBJECT_MATERIAL
+  | typeof contentTypes.TASKS_AND_ACTIVITIES
+  | typeof contentTypes.ASSESSMENT_RESOURCES
+  | typeof contentTypes.SUBJECT
+  | typeof contentTypes.SOURCE_MATERIAL
+  | typeof contentTypes.LEARNING_PATH
+  | typeof contentTypes.TOPIC
+  | typeof contentTypes.MULTIDISCIPLINARY
+  | typeof contentTypes.CONCEPT
+  | typeof contentTypes.EXTERNAL
+  | typeof contentTypes.IMAGE
+  | typeof contentTypes.AUDIO
+  | typeof contentTypes.VIDEO
+  | typeof contentTypes.MISSING
+  | typeof contentTypes.PODCAST
+  | typeof contentTypes.GLOSS
+  | typeof contentTypes.PROGRAMME
+  | typeof contentTypes.PODCAST_SERIES
+  | typeof contentTypes.FRONTPAGE_ARTICLE;
 
-const iconMap = {
-  [contentTypes.SUBJECT_MATERIAL]: {
-    icon: FileListLine,
-    iconColor: colors.subjectMaterial.dark,
-    backgroundColor: colors.subjectMaterial.light,
-  },
-  [contentTypes.TASKS_AND_ACTIVITIES]: {
-    icon: TasksAndActivities,
-    iconColor: colors.tasksAndActivities.dark,
-    backgroundColor: colors.tasksAndActivities.light,
-  },
-  [contentTypes.ASSESSMENT_RESOURCES]: {
-    icon: MenuSearchLine,
-    iconColor: colors.assessmentResource.dark,
-    backgroundColor: colors.assessmentResource.light,
-  },
-  [contentTypes.SUBJECT]: {
-    icon: BookReadFill,
-    iconColor: colors.subject.dark,
-    backgroundColor: colors.subject.light,
-  },
-  [contentTypes.SOURCE_MATERIAL]: {
-    icon: SharedResource,
-    iconColor: colors.sourceMaterial.dark,
-    backgroundColor: colors.sourceMaterial.light,
-  },
-  [contentTypes.LEARNING_PATH]: {
-    icon: LearningPath,
-    iconColor: colors.learningPath.dark,
-    backgroundColor: colors.learningPath.light,
-  },
-  [contentTypes.TOPIC]: {
-    icon: BookmarkLine,
-    iconColor: colors.subject.dark,
-    backgroundColor: colors.subject.light,
-  },
-  [contentTypes.MULTIDISCIPLINARY]: {
-    icon: ShareFill,
-    backgroundColor: "#b9b37b",
-  },
-  [contentTypes.CONCEPT]: {
-    icon: ChatLine,
-    iconColor: colors.concept.text,
-    backgroundColor: colors.concept.light,
-  },
-  [contentTypes.EXTERNAL]: {
-    icon: LinkMedium,
-    iconColor: colors.external.dark,
-    backgroundColor: colors.external.light,
-  },
-  [contentTypes.resourceEmbedTypeMapping.image]: {
-    icon: ImageLine,
-    iconColor: colors.brand.grey,
-    backgroundColor: colors.brand.greyLight,
-  },
-  [contentTypes.resourceEmbedTypeMapping.audio]: {
-    icon: VoicePrintLine,
-    iconColor: colors.brand.grey,
-    backgroundColor: colors.brand.greyLight,
-  },
-  [contentTypes.resourceEmbedTypeMapping.video]: {
-    icon: MovieLine,
-    iconColor: colors.brand.grey,
-    backgroundColor: colors.brand.greyLight,
-  },
-  [contentTypes.MISSING]: {
-    icon: SubtractLine,
-    iconColor: colors.brand.grey,
-    backgroundColor: colors.brand.greyLight,
-  },
-} as const;
+export type ContentType =
+  | StrictContentType
+  // This allows for us to fallback to string without getting a ts error, while still keeping intellisense
+  | (string & {});
 
-export const ContentTypeBadge = ({
-  type,
-  background,
-  title,
-  size = "small",
-  border = true,
-  className,
-  ...rest
-}: Props) => {
-  const { Icon, style } = useMemo(() => {
-    const fromMap = iconMap[type];
-    const style = {
-      "--icon-color": fromMap.iconColor,
-      "--background-color": fromMap.backgroundColor,
-    } as CSSProperties;
-    return { Icon: fromMap.icon, style };
-  }, [type]);
-
-  return (
-    <StyledContentTypeBadge
-      title={title}
-      background={background}
-      size={size}
-      border={border}
-      style={style}
-      aria-label={title}
-      className={className}
-      data-badge=""
-      data-type={type}
-      {...rest}
-    >
-      <Icon />
-    </StyledContentTypeBadge>
-  );
+export const contentTypeToBadgeVariantMap: Record<ContentType, BadgeVariant> = {
+  [contentTypes.SUBJECT_MATERIAL]: "brand1",
+  [contentTypes.TASKS_AND_ACTIVITIES]: "brand2",
+  [contentTypes.ASSESSMENT_RESOURCES]: "brand2",
+  [contentTypes.SUBJECT]: "neutral",
+  [contentTypes.SOURCE_MATERIAL]: "brand1",
+  [contentTypes.LEARNING_PATH]: "brand3",
+  [contentTypes.TOPIC]: "neutral",
+  [contentTypes.MULTIDISCIPLINARY]: "neutral",
+  [contentTypes.CONCEPT]: "brand1",
+  [contentTypes.EXTERNAL]: "brand2",
+  [contentTypes.IMAGE]: "brand1",
+  [contentTypes.AUDIO]: "brand1",
+  [contentTypes.PODCAST]: "brand1",
+  [contentTypes.VIDEO]: "brand1",
+  [contentTypes.MISSING]: "neutral",
+  [contentTypes.PODCAST_SERIES]: "brand1",
+  [contentTypes.GLOSS]: "brand1",
+  [contentTypes.PROGRAMME]: "neutral",
+  [contentTypes.FRONTPAGE_ARTICLE]: "brand2",
 };
 
-export const SubjectMaterialBadge = (props: Omit<Props, "type">) => (
-  <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />
+export const ContentTypeBadge = forwardRef<HTMLDivElement, ContentTypeBadgeProps>(
+  ({ contentType, children, ...props }, ref) => {
+    const { t } = useTranslation();
+    return (
+      <Badge
+        colorTheme={contentTypeToBadgeVariantMap[contentType ?? "missing"] ?? contentTypeToBadgeVariantMap["missing"]}
+        {...props}
+        ref={ref}
+      >
+        {children ?? t(`contentTypes.${contentType}`)}
+      </Badge>
+    );
+  },
 );
-export const TasksAndActivitiesBadge = (props: Omit<Props, "type">) => (
-  <ContentTypeBadge {...props} type={contentTypes.TASKS_AND_ACTIVITIES} />
-);
-export const AssessmentResourcesBadge = (props: Omit<Props, "type">) => (
-  <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
-);
-export const SubjectBadge = (props: Omit<Props, "type">) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
-export const SourceMaterialBadge = (props: Omit<Props, "type">) => (
-  <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
-);
-export const LearningPathBadge = (props: Omit<Props, "type">) => (
-  <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
-);
-export const MultidisciplinaryTopicBadge = (props: Omit<Props, "type">) => (
-  <ContentTypeBadge {...props} type={contentTypes.MULTIDISCIPLINARY} />
-);
-export const ConceptBadge = (props: Omit<Props, "type">) => <ContentTypeBadge {...props} type={contentTypes.CONCEPT} />;

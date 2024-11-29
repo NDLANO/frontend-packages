@@ -8,7 +8,7 @@
 
 import { forwardRef } from "react";
 import { Hero, HeroProps, HeroVariant } from "@ndla/primitives";
-import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
+import { ContentType } from "../ContentTypeBadge/ContentTypeBadge";
 import * as contentTypes from "../model/ContentType";
 
 export const contentTypeToHeroMap: Record<ContentType, HeroVariant> = {
@@ -34,6 +34,7 @@ export const contentTypeToHeroMap: Record<ContentType, HeroVariant> = {
   [contentTypes.PROGRAMME]: "primary",
   // this will never happen
   [contentTypes.PODCAST_SERIES]: "primary",
+  [contentTypes.FRONTPAGE_ARTICLE]: "primary",
 };
 
 export interface ContentTypeHeroProps extends HeroProps {

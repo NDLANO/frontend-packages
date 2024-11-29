@@ -13,7 +13,7 @@ import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { ContentTypeBadge } from "../ContentTypeBadge/ContentTypeBadgeNew";
+import { ContentTypeBadge } from "../ContentTypeBadge/ContentTypeBadge";
 import { contentTypes } from "../model/ContentType";
 import { HeadingLevel } from "../types";
 

@@ -92,22 +92,8 @@ export {
   useVideoSearchTranslations,
 } from "./i18n";
 
-export {
-  default as ContentTypeBadge,
-  SubjectMaterialBadge,
-  TasksAndActivitiesBadge,
-  AssessmentResourcesBadge,
-  LearningPathBadge,
-  SubjectBadge,
-  SourceMaterialBadge,
-  ConceptBadge,
-} from "./ContentTypeBadge";
-
-export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadgeNew";
-export {
-  ContentTypeBadge as ContentTypeBadgeNew,
-  contentTypeToBadgeVariantMap,
-} from "./ContentTypeBadge/ContentTypeBadgeNew";
+export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadge";
+export { ContentTypeBadge, contentTypeToBadgeVariantMap } from "./ContentTypeBadge/ContentTypeBadge";
 
 export { ContentTypeBlockQuote } from "./ContentTypeBlockQuote/ContentTypeBlockQuote";
 export { type ContentTypeBlockQuoteVariant } from "./ContentTypeBlockQuote/ContentTypeBlockQuote";

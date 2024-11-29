@@ -48,6 +48,11 @@ export const AllBadges: StoryFn<typeof ContentTypeBadge> = () => (
     <ContentTypeBadge contentType="audio" />
     <ContentTypeBadge contentType="video" />
     <ContentTypeBadge contentType="missing" />
+    <ContentTypeBadge contentType="frontpage-article" />
+    <ContentTypeBadge contentType="programme" />
+    <ContentTypeBadge contentType="podcast" />
+    <ContentTypeBadge contentType="podcast-series" />
+    <ContentTypeBadge contentType="gloss" />
   </StyledHStack>
 );
 

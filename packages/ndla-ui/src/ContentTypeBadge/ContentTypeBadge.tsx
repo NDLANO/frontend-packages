@@ -33,7 +33,8 @@ export type StrictContentType =
   | typeof contentTypes.PODCAST
   | typeof contentTypes.GLOSS
   | typeof contentTypes.PROGRAMME
-  | typeof contentTypes.PODCAST_SERIES;
+  | typeof contentTypes.PODCAST_SERIES
+  | typeof contentTypes.FRONTPAGE_ARTICLE;
 
 export type ContentType =
   | StrictContentType
@@ -59,6 +60,7 @@ export const contentTypeToBadgeVariantMap: Record<ContentType, BadgeVariant> = {
   [contentTypes.PODCAST_SERIES]: "brand1",
   [contentTypes.GLOSS]: "brand1",
   [contentTypes.PROGRAMME]: "neutral",
+  [contentTypes.FRONTPAGE_ARTICLE]: "brand2",
 };
 
 export const ContentTypeBadge = forwardRef<HTMLDivElement, ContentTypeBadgeProps>(

@@ -11,7 +11,7 @@ import { join, dirname } from "path";
 import { transform } from "@svgr/core";
 
 const __dirname = dirname(new URL(import.meta.url).pathname);
-const rootDir = join(__dirname, "..", "packages", "ndla-icons");
+const rootDir = join(__dirname, "..", "packages", "icons");
 const today = new Date(new Date().setHours(0, 0, 0, 0));
 
 const copyright = await readFile(join(__dirname, "..", "COPYRIGHT"), "utf-8");

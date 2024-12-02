@@ -1,4 +1,4 @@
-# ndla-icons
+# @ndla/icons
 
 A package containing icons used in NDLA frontends
 
@@ -51,7 +51,7 @@ _TLDR:_ Change/Add/Remove svg file(s). Run `node scripts/createTsIconComponents.
 
 ### Add new svg file:
 
-1. Add svg file to an appropiate folder in [ndla-icons/svg](/packages/ndla-icons/svg).
+1. Add svg file to an appropiate folder in [icons/svg](/packages/icons/svg).
 2. Ensure that `data-license` and `data-source` attributes are on the `<svg>` element.
 3. Run `node scripts/createTsIconComponents.mjs` from root folder.
 4. Commit changes.
@@ -72,4 +72,4 @@ _TLDR:_ Change/Add/Remove svg file(s). Run `node scripts/createTsIconComponents.
 
 1. Do changes.
 2. Run `node scripts/createTsIconComponents.mjs` from root folder.
-3. Update files array in [packages.json](/packages/ndla-icons/package.json).
+3. Update files array in [packages.json](/packages/icons/package.json).

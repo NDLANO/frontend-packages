@@ -19,7 +19,7 @@ import {
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { type StyledVariantProps } from "@ndla/styled-system/types";
+import type { StyledVariantProps } from "@ndla/styled-system/types";
 import type { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
 import GlossExample from "./GlossExample";
 import SpeechControl from "../AudioPlayer/SpeechControl";

@@ -84,6 +84,7 @@ const TitleWrapper = styled("div", {
     display: "flex",
     flexDirection: "column",
     gap: "xsmall",
+    fontFamily: "sans",
     tabletWide: {
       width: "100%",
       flexDirection: "row",

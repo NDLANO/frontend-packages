@@ -8,7 +8,7 @@
 
 /* eslint-env jest */
 
-import React, { ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import { StaticRouter } from "react-router-dom/server.js";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";

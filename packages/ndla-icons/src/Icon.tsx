@@ -9,7 +9,7 @@
 import { type ComponentPropsWithRef } from "react";
 import { type RecipeVariantProps, cva, css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { type JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 
 export const iconRecipe = cva({
   base: {

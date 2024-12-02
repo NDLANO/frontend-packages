@@ -8,7 +8,7 @@
 
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { type JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 
 const heroRecipe = sva({

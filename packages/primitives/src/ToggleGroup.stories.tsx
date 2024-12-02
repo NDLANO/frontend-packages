@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryFn } from "@storybook/react";
-import { Bold, Italic, Link, ListAlphabetical, ListUnordered, ListOrdered } from "@ndla/icons/editor";
+import { Bold, Italic, LinkMedium, ListAlphabetical, ListUnordered, ListOrdered } from "@ndla/icons/editor";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
 import { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
@@ -181,7 +181,7 @@ export const MultipleGroups: StoryFn<typeof ToggleGroupRoot> = () => {
       <ToggleGroupRoot>
         <ToggleGroupItem value="link" asChild>
           <IconButton variant="tertiary" size="small">
-            <Link />
+            <LinkMedium />
           </IconButton>
         </ToggleGroupItem>
       </ToggleGroupRoot>

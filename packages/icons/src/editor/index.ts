@@ -52,7 +52,6 @@ export { default as ImageXsmall } from "./ImageXsmall";
 export { default as ImageXxSmall } from "./ImageXxSmall";
 export { default as Italic } from "./Italic";
 export { default as LayoutColumnLine } from "./LayoutColumnLine";
-export { default as Link } from "./Link";
 export { default as LinkMedium } from "./LinkMedium";
 export { default as ListAlphabetical } from "./ListAlphabetical";
 export { default as ListCheck } from "./ListCheck";

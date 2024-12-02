@@ -17,7 +17,6 @@ import * as actionIcons from "./action";
 import { FileCopyLine } from "./action";
 import * as commonIcons from "./common";
 import { UserFill } from "./common";
-import * as contentTypeIcons from "./contentType";
 import * as editorIcons from "./editor";
 
 interface IconItemProps {
@@ -111,14 +110,6 @@ IconStory.storyName = "Icon";
 
 export const CommonIcons: StoryObj<typeof Icon> = {
   render: () => <IconList icons={commonIcons} folder="common" />,
-};
-
-/** Hver innholdstype i NDLA-systemet har et ikon knyttet til seg. Ikonene er visuelle representasjoner av innholdstypen og skal sammen med innholdstypefargen skape en gjenkjennelseseffekt for brukerne.
- *
- * Hvis det skal lages nye innholdstypeikoner er det viktig at de kommuniserer innholdstypens kjernefunksjon og hensikt. De må også ha lik visuell utførelse og fremtoning som de eksisterende. Alle innholdstypeikonene er bygget ut fra Material Design sine ikoner; https://material.io/icons/
- **/
-export const ContentTypes: StoryObj<typeof Icon> = {
-  render: () => <IconList icons={contentTypeIcons} folder="contentType" />,
 };
 
 export const Action: StoryObj<typeof Icon> = {

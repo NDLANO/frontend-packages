@@ -9,7 +9,7 @@
 import { useState } from "react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { DeleteBinLine } from "@ndla/icons/action";
-import { FileDocumentOutline } from "@ndla/icons/common";
+import { FileTextLine } from "@ndla/icons/common";
 import { UploadCloudLine } from "@ndla/icons/editor";
 import { Button, IconButton } from "./Button";
 import { FieldRoot } from "./Field";
@@ -61,7 +61,7 @@ export const Default: StoryFn<typeof FileUploadRoot> = (args) => (
                 <FileUploadItemPreviewImage />
               </FileUploadItemPreview>
               <FileUploadItemPreview type="^(?!image\/.*).*">
-                <FileDocumentOutline />
+                <FileTextLine />
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
@@ -114,7 +114,7 @@ export const MaxThreeFiles: StoryFn<typeof FileUploadRoot> = (args) => (
                 <FileUploadItemPreviewImage />
               </FileUploadItemPreview>
               <FileUploadItemPreview type="^(?!image\/.*).*">
-                <FileDocumentOutline />
+                <FileTextLine />
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
@@ -152,7 +152,7 @@ export const OnlyImages: StoryFn<typeof FileUploadRoot> = (args) => (
                 <FileUploadItemPreviewImage />
               </FileUploadItemPreview>
               <FileUploadItemPreview type="^(?!image\/.*).*">
-                <FileDocumentOutline />
+                <FileTextLine />
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
@@ -190,7 +190,7 @@ export const OnlyFilesBetween1MbAnd4Mb: StoryFn<typeof FileUploadRoot> = (args) 
                 <FileUploadItemPreviewImage />
               </FileUploadItemPreview>
               <FileUploadItemPreview type="^(?!image\/.*).*">
-                <FileDocumentOutline />
+                <FileTextLine />
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
@@ -228,7 +228,7 @@ export const Disabled: StoryFn<typeof FileUploadRoot> = (args) => (
                 <FileUploadItemPreviewImage />
               </FileUploadItemPreview>
               <FileUploadItemPreview type="^(?!image\/.*).*">
-                <FileDocumentOutline />
+                <FileTextLine />
               </FileUploadItemPreview>
               <FileUploadItemName />
               <FileUploadItemSizeText />
@@ -276,7 +276,7 @@ export const WithField: StoryFn<typeof FileUploadRoot> = (args) => {
                     <FileUploadItemPreviewImage />
                   </FileUploadItemPreview>
                   <FileUploadItemPreview type="^(?!image\/.*).*">
-                    <FileDocumentOutline />
+                    <FileTextLine />
                   </FileUploadItemPreview>
                   <FileUploadItemName />
                   <FileUploadItemSizeText />

@@ -8,8 +8,7 @@
 
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { PencilFill, DeleteBinLine } from "@ndla/icons/action";
-import { Share } from "@ndla/icons/common";
-import { HorizontalMenu } from "@ndla/icons/contentType";
+import { ShareLine, MoreLine } from "@ndla/icons/common";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
@@ -109,7 +108,7 @@ const ListComponent = ({
         <MenuRoot>
           <MenuTrigger css={{ position: "relative" }} asChild>
             <IconButton variant="tertiary">
-              <HorizontalMenu />
+              <MoreLine />
             </IconButton>
           </MenuTrigger>
           <MenuContent>
@@ -122,7 +121,7 @@ const ListComponent = ({
               Slett
             </MenuItem>
             <MenuItem value="share">
-              <Share />
+              <ShareLine />
               Del
             </MenuItem>
           </MenuContent>

@@ -61,7 +61,7 @@ export { default as OrganizationChart } from "./OrganizationChart";
 export { default as QuestionnaireFill } from "./QuestionnaireFill";
 export { default as QuestionnaireLine } from "./QuestionnaireLine";
 export { default as Quote } from "./Quote";
-export { default as Restore } from "./Restore";
+export { default as ResetLeft } from "./ResetLeft";
 export { default as SearchContent } from "./SearchContent";
 export { default as SearchMedia } from "./SearchMedia";
 export { default as SettingsFill } from "./SettingsFill";

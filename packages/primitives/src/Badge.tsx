@@ -42,6 +42,18 @@ const badgeRecipe = cva({
         backgroundColor: "surface.infoSubtle",
         borderColor: "stroke.default",
       },
+      danger: {
+        backgroundColor: "surface.dangerSubtle",
+        borderColor: "surface.danger",
+      },
+      success: {
+        backgroundColor: "surface.successSubtle",
+        borderColor: "surface.success",
+      },
+      warning: {
+        backgroundColor: "surface.warningSubtle",
+        borderColor: "surface.warning",
+      },
     },
   },
 });

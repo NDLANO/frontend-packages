@@ -7,7 +7,7 @@
  */
 
 import { useTranslation } from "react-i18next";
-import { PresentationLine, LoginBoxLine } from "@ndla/icons/common";
+import { PresentationLine, LoginBoxLine } from "@ndla/icons";
 import { Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import ErrorMessage from "./ErrorMessage";

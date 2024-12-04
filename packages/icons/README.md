@@ -15,27 +15,18 @@ npm install @ndla/icons --save
 ## Usage
 
 ```js
-import { VoicePrintLine } from "@ndla/icons/common";
-import { CameraFill } from "@ndla/icons/editor";
+import { VoiceprintLine, CameraFill } from "@ndla/icons";
 
 const IconList = () => (
   <ul>
     <li>
-      <VoicePrintLine /> Audio icon
+      <VoiceprintLine /> Audio icon
     </li>
     <li>
       <CameraFill /> Camera icon
     </li>
   </ul>
 );
-```
-
-or
-
-```js
-import { VoicePrintLine } from "@ndla/icons/lib/common/VoicePrintLine";
-
-<VoicePrintLine />;
 ```
 
 ### Icons are currently grouped into four folders

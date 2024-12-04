@@ -8,7 +8,7 @@
 
 import { type Dispatch, type ReactNode, type SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AlertLine } from "@ndla/icons/common";
+import { AlertLine } from "@ndla/icons";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
 import { Button, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";

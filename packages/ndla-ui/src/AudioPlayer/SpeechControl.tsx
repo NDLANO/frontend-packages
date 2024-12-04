@@ -8,7 +8,7 @@
 
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { VolumeUpFill } from "@ndla/icons/common";
+import { VolumeUpFill } from "@ndla/icons";
 import { TooltipRoot, TooltipTrigger, TooltipContent, IconButton } from "@ndla/primitives";
 
 type Props = {

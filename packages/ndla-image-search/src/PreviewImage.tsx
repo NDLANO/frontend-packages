@@ -7,9 +7,7 @@
  */
 
 import { useState } from "react";
-import { CloseLine } from "@ndla/icons/action";
-import { HashTag } from "@ndla/icons/common";
-import { CheckLine } from "@ndla/icons/editor";
+import { CloseLine, HashTag, CheckLine } from "@ndla/icons";
 import { getModelReleaseValue } from "@ndla/licenses";
 import {
   Button,

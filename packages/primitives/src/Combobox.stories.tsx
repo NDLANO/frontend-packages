@@ -9,9 +9,7 @@
 import { useState } from "react";
 import { Portal, createListCollection, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
-import { CloseLine } from "@ndla/icons/action";
-import { ArrowDownShortLine } from "@ndla/icons/common";
-import { CheckLine } from "@ndla/icons/editor";
+import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import { Flex } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
 import {

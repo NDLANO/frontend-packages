@@ -7,7 +7,7 @@
  */
 
 import { type ReactNode } from "react";
-import { ErrorWarningLine } from "@ndla/icons/common";
+import { ErrorWarningLine } from "@ndla/icons";
 import { Figure, type FigureFloat, type FigureSize } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { EmbedByline } from "../LicenseByline";

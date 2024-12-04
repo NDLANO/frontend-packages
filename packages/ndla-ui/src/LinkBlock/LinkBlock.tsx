@@ -8,8 +8,7 @@
 
 import parse from "html-react-parser";
 import { useMemo } from "react";
-import { ArrowRightLine } from "@ndla/icons/common";
-import { CalendarLine } from "@ndla/icons/editor";
+import { ArrowRightLine, CalendarLine } from "@ndla/icons";
 import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";

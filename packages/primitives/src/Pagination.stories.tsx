@@ -8,7 +8,7 @@
 
 import { PaginationContext } from "@ark-ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons/common";
+import { ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons";
 import { Button } from "./Button";
 import {
   PaginationEllipsis,

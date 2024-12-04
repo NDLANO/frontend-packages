@@ -7,8 +7,7 @@
  */
 
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { PencilFill, DeleteBinLine } from "@ndla/icons/action";
-import { ShareLine, MoreLine } from "@ndla/icons/common";
+import { PencilFill, DeleteBinLine, ShareLine, MoreLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";

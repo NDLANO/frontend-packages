@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { CheckLine } from "@ndla/icons/editor";
+import { CheckLine } from "@ndla/icons";
 import {
   CheckboxControl,
   CheckboxGroup,

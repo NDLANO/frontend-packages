@@ -2678,9 +2678,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/icons@npm:^8.0.46-alpha.0, @ndla/icons@workspace:^, @ndla/icons@workspace:packages/ndla-icons":
+"@ndla/icons@npm:^8.0.46-alpha.0, @ndla/icons@workspace:^, @ndla/icons@workspace:packages/icons":
   version: 0.0.0-use.local
-  resolution: "@ndla/icons@workspace:packages/ndla-icons"
+  resolution: "@ndla/icons@workspace:packages/icons"
   dependencies:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/styled-system": "workspace:^"

@@ -1,9 +1,0 @@
-
-{
-  "name": "@ndla/icons/contentType",
-  "private": true,
-  "main": "../lib/contentType/index.js",
-  "module": "../es/contentType/index.js",
-  "jsnext:main": "../es/contentType/index.js"
-}
-    

@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryFn } from "@storybook/react";
-import { Bold, Italic, Link, ListAlphabetical, ListCircle, ListNumbered } from "@ndla/icons/editor";
+import { Bold, Italic, LinkMedium, ListAlphabetical, ListUnordered, ListOrdered } from "@ndla/icons/editor";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
 import { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
@@ -33,12 +33,12 @@ export const Primary: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
       </ToggleGroupItem>
       <ToggleGroupItem value="bulletedList" asChild>
         <IconButton size="small">
-          <ListCircle />
+          <ListUnordered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="numberedList" asChild>
         <IconButton size="small">
-          <ListNumbered />
+          <ListOrdered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="alphabeticalList" asChild>
@@ -65,12 +65,12 @@ export const Secondary: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
       </ToggleGroupItem>
       <ToggleGroupItem value="bulletedList" asChild>
         <IconButton size="small" variant="secondary">
-          <ListCircle />
+          <ListUnordered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="numberedList" asChild>
         <IconButton size="small" variant="secondary">
-          <ListNumbered />
+          <ListOrdered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="alphabeticalList" asChild>
@@ -97,12 +97,12 @@ export const Tertiary: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => {
       </ToggleGroupItem>
       <ToggleGroupItem value="bulletedList" asChild>
         <IconButton size="small" variant="tertiary">
-          <ListCircle />
+          <ListUnordered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="numberedList" asChild>
         <IconButton size="small" variant="tertiary">
-          <ListNumbered />
+          <ListOrdered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="alphabeticalList" asChild>
@@ -119,12 +119,12 @@ export const ToggleMultiple: StoryFn<typeof ToggleGroupRoot> = ({ ...args }) => 
     <ToggleGroupRoot multiple {...args}>
       <ToggleGroupItem value="bulletedList" asChild>
         <IconButton variant="tertiary" size="small">
-          <ListCircle />
+          <ListUnordered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="numberedList" asChild>
         <IconButton variant="tertiary" size="small">
-          <ListNumbered />
+          <ListOrdered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="alphabeticalList" asChild>
@@ -164,12 +164,12 @@ export const MultipleGroups: StoryFn<typeof ToggleGroupRoot> = () => {
       <ToggleGroupRoot>
         <ToggleGroupItem value="bulletedList" asChild>
           <IconButton variant="tertiary" size="small">
-            <ListCircle />
+            <ListUnordered />
           </IconButton>
         </ToggleGroupItem>
         <ToggleGroupItem value="numberedList" asChild>
           <IconButton variant="tertiary" size="small">
-            <ListNumbered />
+            <ListOrdered />
           </IconButton>
         </ToggleGroupItem>
         <ToggleGroupItem value="alphabeticalList" asChild>
@@ -181,7 +181,7 @@ export const MultipleGroups: StoryFn<typeof ToggleGroupRoot> = () => {
       <ToggleGroupRoot>
         <ToggleGroupItem value="link" asChild>
           <IconButton variant="tertiary" size="small">
-            <Link />
+            <LinkMedium />
           </IconButton>
         </ToggleGroupItem>
       </ToggleGroupRoot>
@@ -204,12 +204,12 @@ export const InitialActive: StoryFn<typeof ToggleGroupRoot> = () => {
       </ToggleGroupItem>
       <ToggleGroupItem value="bulletedList" asChild>
         <IconButton variant="tertiary" size="small">
-          <ListCircle />
+          <ListUnordered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="numberedList" asChild>
         <IconButton variant="tertiary" size="small">
-          <ListNumbered />
+          <ListOrdered />
         </IconButton>
       </ToggleGroupItem>
       <ToggleGroupItem value="alphabeticalList" asChild>

@@ -99,7 +99,7 @@ As mentioned on https://designmanual.ndla.no/?path=/story/components--icons, new
 - Sizing is written in full (link-m-line = LinkMediumLine, arrow-up-s-line = ArrowUpShortLine)
 - Some icons have several variants, indicated by numbers. Since we won't be using more than one such variant, the number is omitted
 
-Icons are downloaded and placed in the best matching sub-folder in `frontend-packages/packages/ndla-icons/svg/`. Edit the svg and add license information matching the other svg files.
+Icons are downloaded and placed in the best matching sub-folder in `frontend-packages/packages/icons/svg/`. Edit the svg and add license information matching the other svg files.
 
 ### Generate typescript component file
 

@@ -1,0 +1,48 @@
+{
+  "name": "@ndla/icons",
+  "version": "8.0.46-alpha.0",
+  "description": "A package containing icons used in NDLA frontends",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "sideEffects": false,
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "node ../../scripts/build.js package",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "concurrently 'yarn build:types' 'mkdir -p dist' 'panda cssgen --minimal  --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/icons"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "editor",
+    "common",
+    "contentType",
+    "action"
+  ],
+  "dependencies": {
+    "@ndla/styled-system": "workspace:^"
+  },
+  "devDependencies": {
+    "@ndla/preset-panda": "workspace:^",
+    "@pandacss/dev": "^0.48.0"
+  },
+  "peerDependencies": {
+    "react": ">= 18",
+    "react-dom": ">= 18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
+}

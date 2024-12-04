@@ -45,3 +45,24 @@ export const Brand3: StoryObj<typeof Badge> = {
     children: "Læringssti",
   },
 };
+
+export const Success: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "success",
+    children: "Endret",
+  },
+};
+
+export const Warning: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "warning",
+    children: "Noe skurrer...",
+  },
+};
+
+export const Danger: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "danger",
+    children: "Pass på!",
+  },
+};

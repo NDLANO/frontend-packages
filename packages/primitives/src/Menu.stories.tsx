@@ -8,9 +8,15 @@
 
 import { Portal } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
-import { FileCopyLine, CloseLine, PencilFill, DeleteBinLine } from "@ndla/icons/action";
-import { ArrowRightShortLine, ShareFill } from "@ndla/icons/common";
-import { SettingsLine } from "@ndla/icons/editor";
+import {
+  FileCopyLine,
+  CloseLine,
+  PencilFill,
+  DeleteBinLine,
+  ArrowRightShortLine,
+  ShareFill,
+  SettingsLine,
+} from "@ndla/icons";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 import {

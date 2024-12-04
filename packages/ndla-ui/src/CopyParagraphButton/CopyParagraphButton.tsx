@@ -8,7 +8,7 @@
 
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { LinkMedium } from "@ndla/icons/editor";
+import { LinkMedium } from "@ndla/icons";
 import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { copyTextToClipboard } from "@ndla/util";

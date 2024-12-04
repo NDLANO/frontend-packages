@@ -8,7 +8,7 @@
 
 import { useTranslation } from "react-i18next";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { MovieLine } from "@ndla/icons/editor";
+import { MovieLine } from "@ndla/icons";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { ContentTypeBadge } from "./ContentTypeBadge";
 

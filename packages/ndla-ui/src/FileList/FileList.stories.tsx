@@ -7,8 +7,7 @@
  */
 
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { PencilFill, DeleteBinLine } from "@ndla/icons/action";
-import { Draggable } from "@ndla/icons/editor";
+import { PencilFill, DeleteBinLine, Draggable } from "@ndla/icons";
 import { IconButton } from "@ndla/primitives";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { File } from "./File";

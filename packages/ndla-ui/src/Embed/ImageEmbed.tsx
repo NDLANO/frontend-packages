@@ -9,7 +9,7 @@
 import parse from "html-react-parser";
 import { type ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AddLine } from "@ndla/icons/action";
+import { AddLine } from "@ndla/icons";
 import { Figure, type FigureSize, type FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";

@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { LoginBoxLine, PresentationLine } from "@ndla/icons/common";
+import { LoginBoxLine, PresentationLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
 import {
   ErrorMessageActions,

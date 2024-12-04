@@ -8,7 +8,7 @@
 
 import { Portal, Toaster, createToaster } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
-import { CloseLine } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons";
 import { styled } from "@ndla/styled-system/jsx";
 import { Button, IconButton } from "./Button";
 import { ToastCloseTrigger, ToastDescription, ToastRoot, ToastTitle } from "./Toast";

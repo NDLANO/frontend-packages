@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { CloseLine } from "@ndla/icons/action";
+import { CloseLine } from "@ndla/icons";
 import { css } from "@ndla/styled-system/css";
 import { IconButton } from "./Button";
 

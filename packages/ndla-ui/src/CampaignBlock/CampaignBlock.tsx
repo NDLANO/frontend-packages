@@ -8,7 +8,7 @@
 
 import parse from "html-react-parser";
 import { type ReactNode } from "react";
-import { ArrowRightLine } from "@ndla/icons/common";
+import { ArrowRightLine } from "@ndla/icons";
 import { Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";

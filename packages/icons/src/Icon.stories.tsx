@@ -12,20 +12,15 @@ import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { copyTextToClipboard } from "@ndla/util";
 
-import { Icon } from ".";
-import * as actionIcons from "./action";
-import { FileCopyLine } from "./action";
-import * as commonIcons from "./common";
-import { UserFill } from "./common";
-import * as editorIcons from "./editor";
+import { FileCopyLine, Icon, UserFill } from ".";
+import * as icons from "./icons";
 
 interface IconItemProps {
   icon: (props: ComponentProps<typeof Icon>) => ReactElement<ComponentProps<typeof Icon>>;
-  folder: string;
   name: string;
 }
 
-const IconItem = ({ icon, folder, name }: IconItemProps) => {
+const IconItem = ({ icon, name }: IconItemProps) => {
   const iconProps = useMemo(() => icon({}).props as Record<string, any>, [icon]);
 
   return (
@@ -38,7 +33,7 @@ const IconItem = ({ icon, folder, name }: IconItemProps) => {
         {iconProps["data-license"]}
         <IconButton
           variant="tertiary"
-          onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)}
+          onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons';`)}
           title="Kopier import-kode"
           aria-label="Kopier import-kode"
         >
@@ -48,11 +43,6 @@ const IconItem = ({ icon, folder, name }: IconItemProps) => {
     </li>
   );
 };
-
-interface Props {
-  icons: Record<string, (props: ComponentProps<typeof Icon>) => ReactElement<ComponentProps<typeof Icon>>>;
-  folder: string;
-}
 
 const StyledList = styled("ul", {
   base: {
@@ -77,14 +67,6 @@ const StyledList = styled("ul", {
   },
 });
 
-const IconList = ({ icons, folder }: Props) => (
-  <StyledList>
-    {Object.keys(icons).map((key) => (
-      <IconItem key={key} name={key} icon={icons[key]} folder={folder} />
-    ))}
-  </StyledList>
-);
-
 /**
  * Systemikonene identifiserer handlinger en bruker kan ta på en gitt skjerm, de kan også representere objekter og områder.
  *
@@ -108,14 +90,13 @@ export const IconStory: StoryFn<typeof UserFill> = (args) => {
 
 IconStory.storyName = "Icon";
 
-export const CommonIcons: StoryObj<typeof Icon> = {
-  render: () => <IconList icons={commonIcons} folder="common" />,
-};
-
-export const Action: StoryObj<typeof Icon> = {
-  render: () => <IconList icons={actionIcons} folder="action" />,
-};
-
-export const Editor: StoryObj<typeof Icon> = {
-  render: () => <IconList icons={editorIcons} folder="editor" />,
+export const AllIcons: StoryObj<typeof Icon> = {
+  render: () => (
+    <StyledList>
+      {Object.keys(icons).map((key) => (
+        // @ts-expect-error - this is just a test
+        <IconItem key={key} name={key} icon={icons[key]} />
+      ))}
+    </StyledList>
+  ),
 };

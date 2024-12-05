@@ -11,16 +11,38 @@ function closePrint(this: any) {
 }
 
 function setPrint(this: any) {
-  this.contentWindow.__container__ = this;
-  this.contentWindow.onbeforeunload = closePrint;
-  this.contentWindow.onafterprint = closePrint;
-  this.contentWindow.focus(); // Required for IE
-  setTimeout(() => this.contentWindow.print(), 2000);
+  const iframeWindow = this.contentWindow;
+  iframeWindow.__container__ = this;
+  iframeWindow.onbeforeunload = closePrint;
+  iframeWindow.onafterprint = closePrint;
+
+  // Wait until the content is fully ready to print
+  if (isContentReady(iframeWindow.document)) {
+    iframeWindow.focus();
+    iframeWindow.print();
+  } else {
+    // If content isn't ready, use MutationObserver to wait for it
+    const observer = new MutationObserver((_, obs) => {
+      if (isContentReady(iframeWindow.document)) {
+        obs.disconnect(); // Stop observing
+        iframeWindow.focus();
+        iframeWindow.print();
+      }
+    });
+
+    observer.observe(iframeWindow.document, { childList: true, subtree: true });
+  }
+}
+
+function isContentReady(doc: Document): boolean {
+  // Logic to determine if the iframe's content is ready
+  return doc.readyState === "complete";
 }
 
 export function printPage(url: string) {
   const iframe = document.createElement("iframe");
   iframe.onload = setPrint;
   iframe.src = url;
+  iframe.style.visibility = "hidden"; // Optional: Hide iframe during print process
   document.body.appendChild(iframe);
 }

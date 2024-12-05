@@ -59,6 +59,7 @@ export { default as CompassLine } from "./CompassLine";
 export { default as CopyrightFill } from "./CopyrightFill";
 export { default as CopyrightLine } from "./CopyrightLine";
 export { default as CornerDownLeftLine } from "./CornerDownLeftLine";
+export { default as CornerDownRightLine } from "./CornerDownRightLine";
 export { default as CropFill } from "./CropFill";
 export { default as CropLine } from "./CropLine";
 export { default as DeleteBinFill } from "./DeleteBinFill";

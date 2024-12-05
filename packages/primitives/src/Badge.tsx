@@ -18,13 +18,21 @@ const badgeRecipe = cva({
     borderRadius: "xsmall",
     border: "1px solid",
     width: "fit-content",
-    textStyle: "label.medium",
     color: "text.default",
   },
   defaultVariants: {
     colorTheme: "neutral",
+    size: "medium",
   },
   variants: {
+    size: {
+      small: {
+        textStyle: "label.small",
+      },
+      medium: {
+        textStyle: "label.medium",
+      },
+    },
     colorTheme: {
       brand1: {
         backgroundColor: "surface.brand.1.moderate",
@@ -66,6 +74,6 @@ export type BadgeProps = HTMLArkProps<"div"> & JsxStyleProps & BadgeVariantProps
 
 const StyledBadge = styled(ark.div, {}, { baseComponent: true });
 
-export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({ colorTheme, css: cssProp, ...props }, ref) => (
-  <StyledBadge css={css.raw(badgeRecipe.raw({ colorTheme }), cssProp)} {...props} ref={ref} />
+export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({ colorTheme, size, css: cssProp, ...props }, ref) => (
+  <StyledBadge css={css.raw(badgeRecipe.raw({ colorTheme, size }), cssProp)} {...props} ref={ref} />
 ));

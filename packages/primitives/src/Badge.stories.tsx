@@ -18,6 +18,7 @@ export default {
   },
   args: {
     colorTheme: "neutral",
+    size: "medium",
     children: "Kjernestoff",
   },
   render: ({ children, ...args }) => <Badge {...args}>{children}</Badge>,
@@ -64,5 +65,12 @@ export const Danger: StoryObj<typeof Badge> = {
   args: {
     colorTheme: "danger",
     children: "Pass på!",
+  },
+};
+
+export const SmallSize: StoryObj<typeof Badge> = {
+  args: {
+    size: "small",
+    children: "Fagstoff",
   },
 };

@@ -1,9 +1,5 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "release": {
-    "projectsRelationship": "independent",
-    "projects": ["packages/*"]
-  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],

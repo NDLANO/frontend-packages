@@ -39,7 +39,7 @@
     "@ndla/safelink": "^7.0.62-alpha.0",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^5.0.2-alpha.0",
-    "html-react-parser": "^5.1.8",
+    "html-react-parser": "^5.1.19",
     "i18next-browser-languagedetector": "^7.1.0"
   },
   "peerDependencies": {

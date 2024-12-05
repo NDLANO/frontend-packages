@@ -2581,7 +2581,7 @@ __metadata:
     "@ndla/types-backend": "npm:^0.2.86"
     "@ndla/types-embed": "npm:^5.0.5-alpha.0"
     "@ndla/ui": "npm:^56.0.77-alpha.0"
-    html-react-parser: "npm:^5.1.8"
+    html-react-parser: "npm:^5.1.19"
   peerDependencies:
     i18next: ">= 23.11.5"
     react: ">= 16.8.0"
@@ -2790,7 +2790,7 @@ __metadata:
     "@ndla/types-embed": "npm:^5.0.5-alpha.0"
     "@ndla/util": "npm:^5.0.2-alpha.0"
     "@pandacss/dev": "npm:^0.48.0"
-    html-react-parser: "npm:^5.1.8"
+    html-react-parser: "npm:^5.1.19"
     i18next-browser-languagedetector: "npm:^7.1.0"
   peerDependencies:
     i18next: ^23.11.5
@@ -10207,13 +10207,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-dom-parser@npm:5.0.8":
-  version: 5.0.8
-  resolution: "html-dom-parser@npm:5.0.8"
+"html-dom-parser@npm:5.0.11":
+  version: 5.0.11
+  resolution: "html-dom-parser@npm:5.0.11"
   dependencies:
     domhandler: "npm:5.0.3"
     htmlparser2: "npm:9.1.0"
-  checksum: 10c0/a0fcd84e0729c7b18c5df03ac0d2de6feae61846e746a7aab11315d6eb3e2352d12897cb8af7667b493a55f3fed066550037d8c37efaa1fe05ebedb28921b7d1
+  checksum: 10c0/752c962663d9873d90d15d1c0b5721dd16816b2ee307b660e5d579d962674d9aec10d7b532607349df21a6ee8c0f308821480b1fe664fbefad76fe94ca96d086
   languageName: node
   linkType: hard
 
@@ -10242,21 +10242,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-react-parser@npm:^5.1.8":
-  version: 5.1.8
-  resolution: "html-react-parser@npm:5.1.8"
+"html-react-parser@npm:^5.1.19":
+  version: 5.1.19
+  resolution: "html-react-parser@npm:5.1.19"
   dependencies:
     domhandler: "npm:5.0.3"
-    html-dom-parser: "npm:5.0.8"
+    html-dom-parser: "npm:5.0.11"
     react-property: "npm:2.0.2"
-    style-to-js: "npm:1.1.10"
+    style-to-js: "npm:1.1.16"
   peerDependencies:
-    "@types/react": 17 || 18
+    "@types/react": 0.14 || 15 || 16 || 17 || 18
     react: 0.14 || 15 || 16 || 17 || 18
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/e761dc1db61dcc384a5d6fffedb3d83b4a6793eda36551394d0907cb8afe75ac1b5ca36b26bdd054da7940c920d278837bd9c34ccd39c29da4ebc4b016c0a96d
+  checksum: 10c0/e1eeea0c40d7a4e96a77e6f79128978795af3f8f961653729bf0cc5de4e0bf377a6b576932988755285d1b0c6c6e748dbbddaa1d7cbd0dcd937fc163be4b56be
   languageName: node
   linkType: hard
 
@@ -10505,10 +10505,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inline-style-parser@npm:0.2.2":
-  version: 0.2.2
-  resolution: "inline-style-parser@npm:0.2.2"
-  checksum: 10c0/82099645fd99451301ff243706f70917c066e3033d32bdb1074a54eb1909e08d1cafb48c426a643facbe8248cff362082e90ca14760b3d44e09a858fe668b3fe
+"inline-style-parser@npm:0.2.4":
+  version: 0.2.4
+  resolution: "inline-style-parser@npm:0.2.4"
+  checksum: 10c0/ddc0b210eaa03e0f98d677b9836242c583c7c6051e84ce0e704ae4626e7871c5b78f8e30853480218b446355745775df318d4f82d33087ff7e393245efa9a881
   languageName: node
   linkType: hard
 
@@ -15741,21 +15741,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-to-js@npm:1.1.10":
-  version: 1.1.10
-  resolution: "style-to-js@npm:1.1.10"
+"style-to-js@npm:1.1.16":
+  version: 1.1.16
+  resolution: "style-to-js@npm:1.1.16"
   dependencies:
-    style-to-object: "npm:1.0.5"
-  checksum: 10c0/bb0603f50be1ac19cb2b1acd1175d9203ca9858112a851aa05ed6af2cf64f4f2dfe765e2fefce5e64f59b5993e7d8411cdb5eae6812c0f2992b0f04cfd52fbc8
+    style-to-object: "npm:1.0.8"
+  checksum: 10c0/578a4dff804539ec7e64d3cc8d327540befb9ad30e3cd0b6b0392f93f793f3a028f90084a9aaff088bffb87818fa2c6c153f0df576f61f9ab0b0938b582bcac7
   languageName: node
   linkType: hard
 
-"style-to-object@npm:1.0.5":
-  version: 1.0.5
-  resolution: "style-to-object@npm:1.0.5"
+"style-to-object@npm:1.0.8":
+  version: 1.0.8
+  resolution: "style-to-object@npm:1.0.8"
   dependencies:
-    inline-style-parser: "npm:0.2.2"
-  checksum: 10c0/39bbc5e9f82a80d6a84c134bf49ba50402bf90304af4281fdd317c9792436c166b2f3a2a3d9a65e3f2a3360b35fe4e352932ec9a51513b9864bfd80b7f5a82e1
+    inline-style-parser: "npm:0.2.4"
+  checksum: 10c0/daa6646b1ff18258c0ca33ed281fbe73485c8391192db1b56ce89d40c93ea64507a41e8701d0dadfe771bc2f540c46c9b295135f71584c8e5cb23d6a19be9430
   languageName: node
   linkType: hard
 

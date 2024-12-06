@@ -24,4 +24,5 @@ export { default as usePrevious } from "./usePrevious";
 export { composeRefs } from "./composeRefs";
 export { polymorphicForwardRef } from "./polymorphicForwardRef";
 export { contains } from "./contains";
+export { humanFileSize } from "./humanFileSize";
 export type { PolymorphicProps } from "./polymorphicForwardRef";

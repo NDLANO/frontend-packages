@@ -179,6 +179,7 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
             contentType={image.image.contentType}
             fileSize={image.image.size}
             imageDimensions={image.image.dimensions}
+            locale={locale}
           />
           {!!image.tags.tags.length && (
             <HashTagGroup>

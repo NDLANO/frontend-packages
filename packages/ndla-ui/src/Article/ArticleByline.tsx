@@ -198,14 +198,16 @@ export const ArticleBylineAccordionItem = forwardRef<HTMLDivElement, ArticleByli
   ({ value, accordionTitle, children, ...props }, ref) => {
     return (
       <AccordionItem value={value} ref={ref} {...props}>
-        <AccordionItemTrigger>
-          <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
-            <h2>{accordionTitle}</h2>
-          </Heading>
-          <AccordionItemIndicator asChild>
-            <ArrowDownShortLine />
-          </AccordionItemIndicator>
-        </AccordionItemTrigger>
+        <Heading asChild consumeCss textStyle="label.medium" fontWeight="bold">
+          <h2>
+            <AccordionItemTrigger>
+              {accordionTitle}
+              <AccordionItemIndicator asChild>
+                <ArrowDownShortLine />
+              </AccordionItemIndicator>
+            </AccordionItemTrigger>
+          </h2>
+        </Heading>
         <AccordionItemContent>{children}</AccordionItemContent>
       </AccordionItem>
     );

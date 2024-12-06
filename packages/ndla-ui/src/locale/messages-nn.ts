@@ -828,6 +828,7 @@ const messages = {
     pause: "Pause",
     download: "Last ned lydfil",
     reuse: "Bruk lydfil",
+    progressBar: "Framdriftsindikator",
     error: {
       url: "Feil ved lasting av lydfil.",
       caption: "Orsak, ein feil oppstod ved lasting av lydfil.",

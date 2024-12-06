@@ -829,6 +829,7 @@ const messages = {
     pause: "Boatkke",
     download: "Viečča jietnafiilla",
     reuse: "Geavat jietnafiilla",
+    progressBar: "Fremdriftsindikator",
     error: {
       url: "Boasttuvuohta jietnafiilla viežžamis.",
       caption: "Šállošat, boasttuvuohta čuožžilii jietnafiilla viežžamis.",

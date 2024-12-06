@@ -35,7 +35,6 @@ import {
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { visuallyHidden } from "@ndla/styled-system/patterns";
 
 const ControlsWrapper = styled("div", {
   base: {
@@ -278,6 +277,7 @@ const Controls = ({ src, title }: Props) => {
               })
             }
           >
+            <SliderLabel srOnly>{t("audio.progressBar")}</SliderLabel>
             <SliderControl>
               <SliderTrack>
                 <SliderRange />
@@ -298,7 +298,7 @@ const Controls = ({ src, title }: Props) => {
             onValueChange={(details) => setSpeedValue(parseFloat(details.value[0]))}
             positioning={{ placement: "top" }}
           >
-            <SelectLabel css={visuallyHidden.raw()}>{t("audio.controls.selectSpeed")}</SelectLabel>
+            <SelectLabel srOnly>{t("audio.controls.selectSpeed")}</SelectLabel>
             <SelectControl>
               <SelectTrigger asChild>
                 <SpeedButton
@@ -338,7 +338,7 @@ const Controls = ({ src, title }: Props) => {
               step={1}
               onValueChange={handleVolumeSliderChange}
             >
-              <SliderLabel css={visuallyHidden.raw()}>{t("audio.controls.adjustVolume")}</SliderLabel>
+              <SliderLabel srOnly>{t("audio.controls.adjustVolume")}</SliderLabel>
               <StyledSliderControl>
                 <SliderTrack>
                   <SliderRange />

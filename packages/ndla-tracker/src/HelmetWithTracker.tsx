@@ -7,7 +7,6 @@
  */
 
 import { type ReactNode, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import warning from "tiny-warning";
 import { usePrevious } from "@ndla/util";
 import useTracker from "./useTracker";
@@ -38,7 +37,12 @@ const HelmetWithTracker = ({ title, children }: Props) => {
     }
   }, [hasTracked, previousTitle, title, trackPageView]);
 
-  return <Helmet title={title}>{children}</Helmet>;
+  return (
+    <>
+      <title>{title}</title>
+      {children}
+    </>
+  );
 };
 
 export default HelmetWithTracker;

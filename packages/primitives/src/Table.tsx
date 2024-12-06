@@ -77,5 +77,6 @@ export const Table = styled(
       },
     },
   },
-  { baseComponent: true },
+  // TODO: Chrome doesn't support automatically making overflowed elements tabbable yet. Revisit this in a year or two
+  { baseComponent: true, defaultProps: { tabIndex: 0 } },
 );

@@ -827,6 +827,7 @@ const messages = {
     pause: "Pause",
     download: "Download audio",
     reuse: "Use audio",
+    progressBar: "Progress bar",
     error: {
       url: "Error loading the audio.",
       caption: "Sorry, an error occurred while loading the audio.",

@@ -831,6 +831,7 @@ const messages = {
     pause: "Pause",
     download: "Veedtjh tjoeje-fijlem",
     reuse: "Nuhtjh tjoeje-fijlem",
+    progressBar: "Fremdriftsindikator",
     error: {
       url: "Fiejlie tjoeje-veedtjemisnie.",
       caption: "Gaatesjen, fiejlie sjïdti tjoeje-veedtjemisnie.",

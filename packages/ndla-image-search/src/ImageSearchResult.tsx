@@ -8,8 +8,8 @@
 
 import { Text, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
-import { PreviewTranslations } from "./ImageSearch";
+import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { PreviewTranslations } from "./ImageSearch";
 import PreviewImage from "./PreviewImage";
 import { getPreviewSrcSets } from "./util/imageUtil";
 
@@ -24,6 +24,8 @@ const StyledButton = styled(Button, {
 const StyledImage = styled(Image, {
   base: {
     maxHeight: "135px",
+    width: "100%",
+    height: "100%",
   },
 });
 

@@ -6,8 +6,8 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
-import { IImageMetaInformationV3, ISearchResultV3 } from "@ndla/types-backend/image-api";
+import type { Meta, StoryFn } from "@storybook/react";
+import type { IImageMetaInformationV3, ISearchResultV3 } from "@ndla/types-backend/image-api";
 import ImageSearch from "./ImageSearch";
 
 export default {

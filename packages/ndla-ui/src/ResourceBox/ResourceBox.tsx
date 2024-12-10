@@ -7,7 +7,7 @@
  */
 
 import { breakpoints } from "@ndla/core";
-import { ShareBoxLine } from "@ndla/icons/common";
+import { ShareBoxLine } from "@ndla/icons";
 import { Heading, Image, Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";

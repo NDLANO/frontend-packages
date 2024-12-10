@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from "react";
-import { Meta, StoryFn } from "@storybook/react";
+import type { ReactNode } from "react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { Heading, Text } from "@ndla/primitives";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { ColorToken, token } from "@ndla/styled-system/tokens";
+import { type ColorToken, token } from "@ndla/styled-system/tokens";
 
 const StyledColorBlocks = styled("div", {
   base: {
@@ -29,12 +29,12 @@ interface ColorBlocksProps {
 
 const ColorBlocks = ({ title, description, children }: ColorBlocksProps) => (
   <div>
-    {title && (
+    {!!title && (
       <Heading asChild consumeCss>
         <h2>{title}</h2>
       </Heading>
     )}
-    {description && <Text>{description}</Text>}
+    {!!description && <Text>{description}</Text>}
     <StyledColorBlocks>{children}</StyledColorBlocks>
   </div>
 );
@@ -254,6 +254,10 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"surface.errorSubtle.hover"} />
       <ColorBlock backgroundColor={"surface.errorSubtle.active"} />
     </ColorBlocks>
+    <ColorBlocks title="Surface subtle">
+      <ColorBlock backgroundColor={"surface.subtle"} />
+      <ColorBlock backgroundColor={"surface.subtle.selected"} />
+    </ColorBlocks>
     <ColorBlocks title="Stroke">
       <ColorBlock backgroundColor={"stroke.default"} />
       <ColorBlock backgroundColor={"stroke.hover"} />
@@ -263,6 +267,7 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"stroke.warning"} />
       <ColorBlock backgroundColor={"stroke.error"} />
       <ColorBlock backgroundColor={"stroke.disabled"} />
+      <ColorBlock backgroundColor={"stroke.discrete"} />
     </ColorBlocks>
   </div>
 );

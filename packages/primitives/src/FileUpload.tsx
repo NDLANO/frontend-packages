@@ -7,12 +7,12 @@
  */
 
 import { forwardRef } from "react";
-import { Assign, FileUpload, fileUploadAnatomy } from "@ark-ui/react";
-import { RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import { type Assign, FileUpload, fileUploadAnatomy } from "@ark-ui/react";
+import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
-import { TextProps, Text } from "./Text";
+import { type TextProps, Text } from "./Text";
 
 const fileUploadRecipe = sva({
   slots: fileUploadAnatomy.keys(),

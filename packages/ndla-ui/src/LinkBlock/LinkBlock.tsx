@@ -8,12 +8,11 @@
 
 import parse from "html-react-parser";
 import { useMemo } from "react";
-import { ArrowRightLine } from "@ndla/icons/common";
-import { CalendarLine } from "@ndla/icons/editor";
+import { ArrowRightLine, CalendarLine } from "@ndla/icons";
 import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import { LinkBlockEmbedData } from "@ndla/types-embed";
+import type { LinkBlockEmbedData } from "@ndla/types-embed";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 const InfoWrapper = styled("div", {
@@ -78,7 +77,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
   const formattedDate = useMemo(() => {
     if (!date) return null;
     return new Intl.DateTimeFormat(articleLanguage, {
-      timeZone: "UTC",
+      timeZone: "CET",
       day: "2-digit",
       month: "long",
       year: "numeric",
@@ -90,7 +89,7 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
         <Heading asChild consumeCss textStyle="title.medium">
           <h3 data-heading>{parse(title)}</h3>
         </Heading>
-        {date && (
+        {!!date && (
           <StyledDateContainer>
             <StyledCalendarEd />
             {formattedDate}

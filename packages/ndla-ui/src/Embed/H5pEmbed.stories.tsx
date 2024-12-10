@@ -6,9 +6,9 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
-import { H5pEmbedData, H5pData } from "@ndla/types-embed";
+import type { H5pEmbedData, H5pData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
 

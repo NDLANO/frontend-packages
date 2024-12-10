@@ -8,7 +8,7 @@
 
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { FootNote as FootNoteType } from "../types";
+import type { FootNote as FootNoteType } from "../types";
 
 const citeDetailString = (description: string | undefined) => (description ? `${description}. ` : "");
 

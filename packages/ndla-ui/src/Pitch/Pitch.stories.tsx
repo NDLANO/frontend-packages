@@ -6,9 +6,9 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
-import { Pitch, Props } from "./Pitch";
+import { Pitch, type Props } from "./Pitch";
 import { ArticleContent, ArticleWrapper } from "../Article";
 import { Grid } from "../Grid";
 
@@ -41,7 +41,7 @@ export default {
   ],
 } as Meta<typeof Pitch>;
 
-export const Default: StoryFn<typeof Pitch> = ({ ...args }) => {
+export const Default = ({ ...args }: Props) => {
   return (
     <Grid columns="2" background="transparent">
       <div data-type="grid-cell" data-parallax-cell="false">

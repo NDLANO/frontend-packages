@@ -7,11 +7,11 @@
  */
 
 import { forwardRef } from "react";
-import { Field, Fieldset, HTMLArkProps, ark } from "@ark-ui/react";
+import { Field, Fieldset, type HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
-import { TextProps } from "./Text";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
+import { type TextProps } from "./Text";
 
 const StyledLegend = styled(
   ark.legend,

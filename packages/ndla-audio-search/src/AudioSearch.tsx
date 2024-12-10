@@ -6,8 +6,8 @@
  *
  */
 
-import { ReactNode, useEffect, useState } from "react";
-import { ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons/common";
+import { type ReactNode, useEffect, useState } from "react";
+import { ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons";
 import {
   Text,
   Button,
@@ -17,10 +17,10 @@ import {
   PaginationPrevTrigger,
   PaginationRoot,
   PaginationNextTrigger,
-  PaginationRootProps,
+  type PaginationRootProps,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from "@ndla/types-backend/audio-api";
+import type { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from "@ndla/types-backend/audio-api";
 import AudioSearchInput from "./AudioSearchInput";
 import AudioSearchList from "./AudioSearchList";
 

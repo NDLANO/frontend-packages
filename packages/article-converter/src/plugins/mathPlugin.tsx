@@ -7,9 +7,9 @@
  */
 
 import { attributesToProps } from "html-react-parser";
-import { PluginType } from "./types";
+import { type PluginType } from "./types";
 export const mathPlugin: PluginType = (node) => {
   const { "data-math": mathContent, ...props } = attributesToProps(node.attribs);
-  // @ts-ignore
+  // @ts-expect-error - math is a valid tag
   return <math {...props} dangerouslySetInnerHTML={{ __html: mathContent }} />;
 };

@@ -6,8 +6,8 @@
  *
  */
 
-import { ICopyright } from "@ndla/types-backend/article-api";
-import { MetaData } from ".";
+import type { ICopyright } from "@ndla/types-backend/article-api";
+import type { MetaData } from ".";
 
 export interface CopyrightEmbedData {
   resource: "copyright";

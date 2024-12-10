@@ -6,11 +6,10 @@
  *
  */
 
-import { StoryFn } from "@storybook/react";
-import { BrightcoveApiType } from "@ndla/types-embed";
-import { VideoSearch, VideoQueryType } from "./VideoSearch";
-//@ts-ignore
-import { firstBrightcoveList, secondBrightcoveList } from "../../../dummydata";
+import type { StoryFn } from "@storybook/react";
+import type { BrightcoveApiType } from "@ndla/types-embed";
+import { VideoSearch, type VideoQueryType } from "./VideoSearch";
+import { firstBrightcoveList, secondBrightcoveList } from "../../../dummydata/mockBrightcove";
 
 const firstDummyData = firstBrightcoveList as unknown as BrightcoveApiType[];
 const secondDummyData = secondBrightcoveList as unknown as BrightcoveApiType[];

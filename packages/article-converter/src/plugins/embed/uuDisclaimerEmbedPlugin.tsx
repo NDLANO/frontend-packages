@@ -6,10 +6,10 @@
  *
  */
 
-import { DOMNode, attributesToProps, domToReact } from "html-react-parser";
-import { UuDisclaimerMetaData } from "@ndla/types-embed";
+import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
+import { type UuDisclaimerMetaData } from "@ndla/types-embed";
 import { UuDisclaimerEmbed } from "@ndla/ui";
-import { PluginType } from "../types";
+import { type PluginType } from "../types";
 
 export const uuDisclaimerEmbedPlugin: PluginType = (element, opts) => {
   const props = attributesToProps(element.attribs);

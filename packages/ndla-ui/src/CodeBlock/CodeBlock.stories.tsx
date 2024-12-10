@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import CodeBlock from "./CodeBlock";
 
 export default {

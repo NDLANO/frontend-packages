@@ -6,10 +6,10 @@
  *
  */
 
-import { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useContext } from "react";
-import { Link, LinkProps } from "react-router-dom";
+import { forwardRef, type HTMLAttributes, type MutableRefObject, type ReactNode, useContext } from "react";
+import { Link, type LinkProps } from "react-router-dom";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { MissingRouterContext } from "./MissingRouterContext";
 
 const oldNdlaRegex = /(.*)\/?node\/(\d+).*/;
@@ -21,7 +21,6 @@ const isExternalLink = (to?: LinkProps["to"]) =>
 export const isOldNdlaLink = (to?: LinkProps["to"]) => typeof to === "string" && to.match(oldNdlaRegex) !== null;
 
 type Props = {
-  showNewWindowIcon?: boolean;
   ref?: MutableRefObject<HTMLAnchorElement | null>;
   asAnchor?: boolean;
   children?: ReactNode;
@@ -36,7 +35,7 @@ const StyledLink = styled(Link, {}, { baseComponent: true });
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 
 export const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
-  ({ to, replace, disabled, unstyled, children, showNewWindowIcon, tabIndex, asAnchor, ...rest }, ref) => {
+  ({ to, replace, disabled, unstyled, children, tabIndex, asAnchor, ...rest }, ref) => {
     const isMissingRouterContext = useContext(MissingRouterContext);
     const unstyledProps = unstyled ? { "data-unstyled": "" } : {};
 

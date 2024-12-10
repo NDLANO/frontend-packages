@@ -557,6 +557,7 @@ const messages = {
       blog: "Fagblogg",
       tips: "Tips til elevar",
       vacancies: "Ledige stillingar",
+      contact: "Kontakt oss",
     },
     otherLanguages: "Andre språk",
   },
@@ -581,6 +582,10 @@ const messages = {
     video: "Video",
     missing: "Ukjent",
     external: "Ekstern",
+    gloss: "Glose",
+    programme: "Programfag",
+    "podcast-series": "Podkast-serie",
+    "frontpage-article": "Om NDLA-artikkel",
   },
   modal: {
     closeModal: "Lukk",
@@ -823,6 +828,7 @@ const messages = {
     pause: "Pause",
     download: "Last ned lydfil",
     reuse: "Bruk lydfil",
+    progressBar: "Framdriftsindikator",
     error: {
       url: "Feil ved lasting av lydfil.",
       caption: "Orsak, ein feil oppstod ved lasting av lydfil.",

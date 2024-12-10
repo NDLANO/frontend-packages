@@ -1,6 +1,6 @@
 {
   "name": "@ndla/licenses",
-  "version": "8.0.3-alpha.0",
+  "version": "8.0.5-alpha.0",
   "description": "A simple library for retrieving license information for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

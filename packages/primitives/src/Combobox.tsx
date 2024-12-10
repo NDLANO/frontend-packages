@@ -6,12 +6,13 @@
  *
  */
 
-import { Assign, Combobox, comboboxAnatomy } from "@ark-ui/react";
+import { forwardRef } from "react";
+import { type Assign, Combobox, comboboxAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
-import { Text, TextProps } from "./Text";
+import { Text, type TextProps } from "./Text";
 
 const comboboxRecipe = sva({
   slots: comboboxAnatomy.keys(),
@@ -32,7 +33,7 @@ const comboboxRecipe = sva({
       zIndex: "dropdown",
       background: "surface.default",
       overflowY: "auto",
-      maxHeight: "surface.xsmall",
+      maxHeight: "min(token(spacing.surface.xsmall), 45vh)",
       _open: {
         animation: "fade-shift-in 0.25s ease-out",
         _motionReduce: {
@@ -174,9 +175,19 @@ export const ComboboxClearTrigger = withContext<HTMLButtonElement, ComboboxClear
 
 export type ComboboxContentProps = Combobox.ContentProps & JsxStyleProps;
 
-export const ComboboxContent = withContext<HTMLDivElement, ComboboxContentProps>(Combobox.Content, "content", {
-  baseComponent: true,
-});
+export const ComboboxContentStandalone = withContext<HTMLDivElement, ComboboxContentProps>(
+  Combobox.Content,
+  "content",
+  {
+    baseComponent: true,
+  },
+);
+
+export const ComboboxContent = forwardRef<HTMLDivElement, Combobox.ContentProps & JsxStyleProps>((props, ref) => (
+  <ComboboxPositioner>
+    <ComboboxContentStandalone ref={ref} {...props} />
+  </ComboboxPositioner>
+));
 
 export type ComboboxControlProps = Combobox.ControlProps & JsxStyleProps;
 
@@ -244,7 +255,7 @@ export const ComboboxItemText = ({
   ...props
 }: ComboboxItemTextProps) => (
   <InternalComboboxItemText asChild>
-    <Text {...props} asChild consumeCss>
+    <Text {...props} textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>
       <div>{children}</div>
     </Text>
   </InternalComboboxItemText>

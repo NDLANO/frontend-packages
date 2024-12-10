@@ -6,9 +6,9 @@
  *
  */
 
-import { HTMLArkProps, ark } from "@ark-ui/react";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 
 export type TableProps = HTMLArkProps<"table"> & JsxStyleProps;
 
@@ -64,6 +64,7 @@ export const Table = styled(
         display: "table-cell",
         paddingInline: "xsmall",
         paddingBlock: "3xsmall",
+        minWidth: "large",
         "&[data-align='center']": {
           textAlign: "center",
         },
@@ -76,5 +77,6 @@ export const Table = styled(
       },
     },
   },
-  { baseComponent: true },
+  // TODO: Chrome doesn't support automatically making overflowed elements tabbable yet. Revisit this in a year or two
+  { baseComponent: true, defaultProps: { tabIndex: 0 } },
 );

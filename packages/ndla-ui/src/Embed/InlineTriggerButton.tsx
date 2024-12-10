@@ -6,7 +6,7 @@
  *
  */
 
-import { ComponentPropsWithRef, KeyboardEvent, forwardRef, useCallback, useRef } from "react";
+import { type ComponentPropsWithRef, type KeyboardEvent, forwardRef, useCallback, useRef } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 import { composeRefs } from "@ndla/util";
 

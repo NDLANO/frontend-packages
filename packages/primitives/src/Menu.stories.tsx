@@ -7,10 +7,16 @@
  */
 
 import { Portal } from "@ark-ui/react";
-import { Meta, StoryFn } from "@storybook/react";
-import { FileCopyLine, CloseLine, PencilFill, DeleteBinLine } from "@ndla/icons/action";
-import { ArrowRightShortLine, ShareFill } from "@ndla/icons/common";
-import { SettingsLine } from "@ndla/icons/editor";
+import type { Meta, StoryFn } from "@storybook/react";
+import {
+  FileCopyLine,
+  CloseLine,
+  PencilFill,
+  DeleteBinLine,
+  ArrowRightShortLine,
+  ShareFill,
+  SettingsLine,
+} from "@ndla/icons";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { Button } from "./Button";
 import {
@@ -18,7 +24,6 @@ import {
   MenuItem,
   MenuItemGroup,
   MenuItemGroupLabel,
-  MenuPositioner,
   MenuRoot,
   MenuTrigger,
   MenuTriggerItem,
@@ -42,36 +47,34 @@ export const Default: StoryFn<typeof MenuRoot> = (args) => (
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>
-      <MenuPositioner>
-        <MenuContent>
-          <MenuItem value="edit">
-            <PencilFill />
-            Rediger
-          </MenuItem>
-          <MenuItem value="share">
+      <MenuContent>
+        <MenuItem value="edit">
+          <PencilFill />
+          Rediger
+        </MenuItem>
+        <MenuItem value="share">
+          <ShareFill />
+          Del
+        </MenuItem>
+        <MenuItem value="goToShared" asChild>
+          <styled.a href="https://ndla.no">
             <ShareFill />
-            Del
-          </MenuItem>
-          <MenuItem value="goToShared" asChild>
-            <styled.a href="https://ndla.no">
-              <ShareFill />
-              Gå til delt mappe
-            </styled.a>
-          </MenuItem>
-          <MenuItem value="copyLink" disabled>
-            <FileCopyLine />
-            Kopier lenke til mappen
-          </MenuItem>
-          <MenuItem value="stopSharing">
-            <CloseLine />
-            Avslutt deling
-          </MenuItem>
-          <MenuItem value="delete" variant="destructive">
-            <DeleteBinLine />
-            Slett
-          </MenuItem>
-        </MenuContent>
-      </MenuPositioner>
+            Gå til delt mappe
+          </styled.a>
+        </MenuItem>
+        <MenuItem value="copyLink" disabled>
+          <FileCopyLine />
+          Kopier lenke til mappen
+        </MenuItem>
+        <MenuItem value="stopSharing">
+          <CloseLine />
+          Avslutt deling
+        </MenuItem>
+        <MenuItem value="delete" variant="destructive">
+          <DeleteBinLine />
+          Slett
+        </MenuItem>
+      </MenuContent>
     </Portal>
   </MenuRoot>
 );
@@ -82,40 +85,38 @@ export const Grouped: StoryFn<typeof MenuRoot> = (args) => (
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>
-      <MenuPositioner>
-        <MenuContent>
-          <MenuItemGroup>
-            <MenuItemGroupLabel>Mappehandlinger</MenuItemGroupLabel>
-            <MenuItem value="edit">
-              <PencilFill />
-              Rediger
-            </MenuItem>
-            <MenuItem value="share">
-              <ShareFill />
-              Del
-            </MenuItem>
-            <MenuItem value="delete" variant="destructive">
-              <DeleteBinLine />
-              Slett
-            </MenuItem>
-            <MenuItem value="stopSharing">
-              <CloseLine />
-              Avslutt deling
-            </MenuItem>
-          </MenuItemGroup>
-          <MenuItemGroup>
-            <MenuItemGroupLabel>Handlinger</MenuItemGroupLabel>
-            <MenuItem value="goToShared">
-              <ShareFill />
-              Gå til delt mappe
-            </MenuItem>
-            <MenuItem value="copyLink">
-              <FileCopyLine />
-              Kopier lenke til mappen
-            </MenuItem>
-          </MenuItemGroup>
-        </MenuContent>
-      </MenuPositioner>
+      <MenuContent>
+        <MenuItemGroup>
+          <MenuItemGroupLabel>Mappehandlinger</MenuItemGroupLabel>
+          <MenuItem value="edit">
+            <PencilFill />
+            Rediger
+          </MenuItem>
+          <MenuItem value="share">
+            <ShareFill />
+            Del
+          </MenuItem>
+          <MenuItem value="delete" variant="destructive">
+            <DeleteBinLine />
+            Slett
+          </MenuItem>
+          <MenuItem value="stopSharing">
+            <CloseLine />
+            Avslutt deling
+          </MenuItem>
+        </MenuItemGroup>
+        <MenuItemGroup>
+          <MenuItemGroupLabel>Handlinger</MenuItemGroupLabel>
+          <MenuItem value="goToShared">
+            <ShareFill />
+            Gå til delt mappe
+          </MenuItem>
+          <MenuItem value="copyLink">
+            <FileCopyLine />
+            Kopier lenke til mappen
+          </MenuItem>
+        </MenuItemGroup>
+      </MenuContent>
     </Portal>
   </MenuRoot>
 );
@@ -126,55 +127,51 @@ export const Nested: StoryFn<typeof MenuRoot> = (args) => (
       <Button>Open me!</Button>
     </MenuTrigger>
     <Portal>
-      <MenuPositioner>
-        <MenuContent>
-          <MenuItemGroup>
-            <MenuItemGroupLabel>Handlinger</MenuItemGroupLabel>
-            <MenuItem value="goToShared">
-              <ShareFill />
-              Gå til delt mappe
-            </MenuItem>
-            <MenuItem value="copyLink">
-              <FileCopyLine />
-              Kopier lenke til mappen
-            </MenuItem>
-          </MenuItemGroup>
-          <MenuRoot>
-            <MenuTriggerItem css={{ justifyContent: "space-between" }}>
-              <HStack gap="3xsmall">
-                <SettingsLine />
-                Mappehandlinger
-              </HStack>
-              <ArrowRightShortLine />
-            </MenuTriggerItem>
-            <Portal>
-              <MenuPositioner>
-                <MenuContent>
-                  <MenuItemGroup>
-                    <MenuItemGroupLabel>Mappehandlinger</MenuItemGroupLabel>
-                    <MenuItem value="edit">
-                      <PencilFill />
-                      Rediger
-                    </MenuItem>
-                    <MenuItem value="share">
-                      <ShareFill />
-                      Del
-                    </MenuItem>
-                    <MenuItem value="delete" variant="destructive">
-                      <DeleteBinLine />
-                      Slett
-                    </MenuItem>
-                    <MenuItem value="stopSharing">
-                      <CloseLine />
-                      Avslutt deling
-                    </MenuItem>
-                  </MenuItemGroup>
-                </MenuContent>
-              </MenuPositioner>
-            </Portal>
-          </MenuRoot>
-        </MenuContent>
-      </MenuPositioner>
+      <MenuContent>
+        <MenuItemGroup>
+          <MenuItemGroupLabel>Handlinger</MenuItemGroupLabel>
+          <MenuItem value="goToShared">
+            <ShareFill />
+            Gå til delt mappe
+          </MenuItem>
+          <MenuItem value="copyLink">
+            <FileCopyLine />
+            Kopier lenke til mappen
+          </MenuItem>
+        </MenuItemGroup>
+        <MenuRoot>
+          <MenuTriggerItem css={{ justifyContent: "space-between" }}>
+            <HStack gap="3xsmall">
+              <SettingsLine />
+              Mappehandlinger
+            </HStack>
+            <ArrowRightShortLine />
+          </MenuTriggerItem>
+          <Portal>
+            <MenuContent>
+              <MenuItemGroup>
+                <MenuItemGroupLabel>Mappehandlinger</MenuItemGroupLabel>
+                <MenuItem value="edit">
+                  <PencilFill />
+                  Rediger
+                </MenuItem>
+                <MenuItem value="share">
+                  <ShareFill />
+                  Del
+                </MenuItem>
+                <MenuItem value="delete" variant="destructive">
+                  <DeleteBinLine />
+                  Slett
+                </MenuItem>
+                <MenuItem value="stopSharing">
+                  <CloseLine />
+                  Avslutt deling
+                </MenuItem>
+              </MenuItemGroup>
+            </MenuContent>
+          </Portal>
+        </MenuRoot>
+      </MenuContent>
     </Portal>
   </MenuRoot>
 );

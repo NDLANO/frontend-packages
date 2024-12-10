@@ -9,16 +9,13 @@
 import { useState } from "react";
 import { type ComboboxInputValueChangeDetails, createListCollection } from "@ark-ui/react";
 
-import { Meta, StoryFn } from "@storybook/react";
-import { CloseLine } from "@ndla/icons/action";
-import { ArrowDownShortLine } from "@ndla/icons/common";
-import { CheckLine } from "@ndla/icons/editor";
+import type { Meta, StoryFn } from "@storybook/react";
+import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import {
   ComboboxContent,
   ComboboxItem,
   ComboboxItemIndicator,
   ComboboxItemText,
-  ComboboxPositioner,
   IconButton,
   Input,
   InputContainer,
@@ -95,18 +92,16 @@ export const Default: StoryFn<typeof TagSelectorRoot> = ({ translations, ...args
           </IconButton>
         </TagSelectorTrigger>
       </HStack>
-      <ComboboxPositioner>
-        <ComboboxContent>
-          {options.map((item) => (
-            <ComboboxItem key={item} item={item}>
-              <ComboboxItemText>{item}</ComboboxItemText>
-              <ComboboxItemIndicator>
-                <CheckLine />
-              </ComboboxItemIndicator>
-            </ComboboxItem>
-          ))}
-        </ComboboxContent>
-      </ComboboxPositioner>
+      <ComboboxContent>
+        {options.map((item) => (
+          <ComboboxItem key={item} item={item}>
+            <ComboboxItemText>{item}</ComboboxItemText>
+            <ComboboxItemIndicator>
+              <CheckLine />
+            </ComboboxItemIndicator>
+          </ComboboxItem>
+        ))}
+      </ComboboxContent>
     </TagSelectorRoot>
   );
 };

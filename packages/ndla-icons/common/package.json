@@ -1,9 +1,0 @@
-
-{
-  "name": "@ndla/icons/common",
-  "private": true,
-  "main": "../lib/common/index.js",
-  "module": "../es/common/index.js",
-  "jsnext:main": "../es/common/index.js"
-}
-    

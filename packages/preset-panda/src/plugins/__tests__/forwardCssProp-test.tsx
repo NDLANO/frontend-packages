@@ -7,11 +7,11 @@
  */
 
 import React, { forwardRef } from "react";
-import { ark, HTMLArkProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { render } from "@testing-library/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 
 describe("CSS prop forwarding", () => {
   test("Should have a sane default", () => {

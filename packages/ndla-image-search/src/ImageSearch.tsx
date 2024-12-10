@@ -6,8 +6,8 @@
  *
  */
 
-import { ChangeEvent, ReactNode, KeyboardEvent, useEffect, useState, FormEvent } from "react";
-import { ArrowLeftShortLine, ArrowRightShortLine, SearchLine } from "@ndla/icons/common";
+import { type ChangeEvent, type ReactNode, type KeyboardEvent, useEffect, useState } from "react";
+import { ArrowLeftShortLine, ArrowRightShortLine, SearchLine } from "@ndla/icons";
 import {
   Button,
   IconButton,
@@ -19,10 +19,10 @@ import {
   PaginationPrevTrigger,
   PaginationRoot,
   Text,
-  PaginationRootProps,
+  type PaginationRootProps,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
 import ImageSearchResult from "./ImageSearchResult";
 
 const ImageSearchWrapper = styled("div", {
@@ -103,7 +103,7 @@ interface Props {
   onImageSelect: (image: IImageMetaInformationV3) => void;
   searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3>;
   fetchImage: (id: number) => Promise<IImageMetaInformationV3>;
-  onError: (err: any) => void;
+  onError?: (err: any) => void;
   locale: string;
   noResults?: ReactNode;
   checkboxAction?: (image: IImageMetaInformationV3) => void;
@@ -141,7 +141,7 @@ const ImageSearch = ({
           setSelectedImage(result);
         })
         .catch((err) => {
-          onError(err);
+          onError?.(err);
         });
     }
   };
@@ -168,7 +168,7 @@ const ImageSearch = ({
         setSearching(false);
       })
       .catch((err) => {
-        onError(err);
+        onError?.(err);
         setSearching(false);
       });
   };
@@ -211,7 +211,7 @@ const ImageSearch = ({
           <SearchLine />
         </IconButton>
       </InputWrapper>
-      {noResultsFound && noResults}
+      {!!noResultsFound && noResults}
       <StyledSearchResults>
         {searchResult?.results.map((image) => (
           <ImageSearchResult

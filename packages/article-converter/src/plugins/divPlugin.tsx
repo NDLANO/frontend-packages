@@ -6,17 +6,17 @@
  *
  */
 
-import { domToReact, attributesToProps, Element, DOMNode } from "html-react-parser";
+import { domToReact, attributesToProps, Element, type DOMNode } from "html-react-parser";
 import {
   FileListEmbed,
   RelatedArticleList,
   Grid,
-  GridType,
+  type GridType,
   GridParallaxItem,
   ContentTypeFramedContent,
-  ContentTypeFramedContentVariant,
+  type ContentTypeFramedContentVariant,
 } from "@ndla/ui";
-import { PluginType } from "./types";
+import { type PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts, { contentType }) => {
   if (node.attribs["data-type"] === "framed-content" || node.attribs.class === "c-bodybox") {
@@ -36,7 +36,7 @@ export const divPlugin: PluginType = (node, opts, { contentType }) => {
 
     return (
       <RelatedArticleList {...props}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - This works, the types just won't match entirely */}
         {domToReact(node.children, opts)}
       </RelatedArticleList>
     );
@@ -68,7 +68,7 @@ export const divPlugin: PluginType = (node, opts, { contentType }) => {
     const background = props["data-background"] as GridType["background"];
     return (
       <Grid border={border} columns={columns} background={background} {...props}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - This works, the types just won't match entirely */}
         {domToReact(node.children, opts)}
       </Grid>
     );

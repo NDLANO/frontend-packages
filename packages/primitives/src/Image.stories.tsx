@@ -6,8 +6,8 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
-import { Image, ImageCrop, ImageFocalPoint, Img, Picture } from "./Image";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Image, type ImageCrop, type ImageFocalPoint, Img, Picture } from "./Image";
 
 export default {
   title: "Primitives/Image",

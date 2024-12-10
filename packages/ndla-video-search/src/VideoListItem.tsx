@@ -7,13 +7,12 @@
  */
 
 import { useState } from "react";
-import { CloseLine } from "@ndla/icons/action";
-import { PanoramaPhotosphere } from "@ndla/icons/common";
-import { getLicenseByNBTitle, LicenseLocaleType } from "@ndla/licenses";
+import { CloseLine, PanoramaPhotosphere } from "@ndla/icons";
+import { getLicenseByNBTitle, type LicenseLocaleType } from "@ndla/licenses";
 import { Image, Text, ListItemContent, ListItemRoot, Button, IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { BrightcoveApiType } from "@ndla/types-embed";
-import { VideoTranslations } from "./VideoSearch";
+import type { BrightcoveApiType } from "@ndla/types-embed";
+import type { VideoTranslations } from "./VideoSearch";
 
 const ButtonWrapper = styled("div", {
   base: {
@@ -143,7 +142,7 @@ export const VideoListItem = ({ video, onVideoSelect, translations, locale }: Vi
           </ButtonWrapper>
         </StyledListItemContent>
       </StyledListItemRoot>
-      {isPreviewing && (
+      {!!isPreviewing && (
         <PreviewWrapper id={`video-preview-${video.id}`}>
           <div />
           <PreviewIframe

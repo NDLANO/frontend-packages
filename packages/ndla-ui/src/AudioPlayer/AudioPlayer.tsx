@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useId, useMemo, useState } from "react";
+import { type ReactNode, useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
@@ -84,6 +84,7 @@ const TitleWrapper = styled("div", {
     display: "flex",
     flexDirection: "column",
     gap: "xsmall",
+    fontFamily: "sans",
     tabletWide: {
       width: "100%",
       flexDirection: "row",
@@ -185,7 +186,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
   return (
     <AudioPlayerWrapper>
       <InfoWrapper>
-        {img && (
+        {!!img && (
           <ImageWrapper>
             <img src={img.url} alt={img.alt} />
           </ImageWrapper>
@@ -200,7 +201,7 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
             </div>
             {!!textVersion && !img && textVersionButton}
           </TitleWrapper>
-          {description && (
+          {!!description && (
             <Text textStyle="body.medium">
               {showFullDescription || description.length < DESCRIPTION_MAX_LENGTH
                 ? description

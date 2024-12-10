@@ -9,10 +9,10 @@
 import { forwardRef } from "react";
 import { Select, selectAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
-import { TextProps } from "./Text";
+import { type TextProps } from "./Text";
 
 const selectRecipe = sva({
   slots: selectAnatomy.keys(),
@@ -37,7 +37,7 @@ const selectRecipe = sva({
       boxShadow: "large",
       padding: "xsmall",
       overflowY: "auto",
-      maxHeight: "surface.xsmall",
+      maxHeight: "min(token(spacing.surface.xsmall), 45vh)",
       _focusVisible: {
         outlineOffset: "-1",
       },
@@ -163,11 +163,17 @@ export const SelectClearTrigger = withContext<HTMLButtonElement, Select.ClearTri
   { baseComponent: true },
 );
 
-export const SelectContent = withContext<HTMLDivElement, Select.ContentProps & JsxStyleProps>(
+export const SelectContentStandalone = withContext<HTMLDivElement, Select.ContentProps & JsxStyleProps>(
   Select.Content,
   "content",
   { baseComponent: true },
 );
+
+export const SelectContent = forwardRef<HTMLDivElement, Select.ContentProps & JsxStyleProps>((props, ref) => (
+  <SelectPositioner>
+    <SelectContentStandalone ref={ref} {...props} />
+  </SelectPositioner>
+));
 
 export const SelectControl = withContext<HTMLDivElement, Select.ControlProps & JsxStyleProps>(
   Select.Control,

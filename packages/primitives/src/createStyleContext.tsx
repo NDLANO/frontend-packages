@@ -17,7 +17,7 @@ import {
 } from "react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { StyledComponent, SystemStyleObject, WithCss } from "@ndla/styled-system/types";
+import type { StyledComponent, SystemStyleObject, WithCss } from "@ndla/styled-system/types";
 
 type Props = Record<string, unknown>;
 type Recipe = {

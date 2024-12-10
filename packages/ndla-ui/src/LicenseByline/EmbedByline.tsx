@@ -6,17 +6,17 @@
  *
  */
 
-import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { type Dispatch, type ReactNode, type SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AlertLine } from "@ndla/icons/common";
+import { AlertLine } from "@ndla/icons";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
 import { Button, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
-import { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
-import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
-import { ICopyright as ImageCopyright } from "@ndla/types-backend/image-api";
-import { BrightcoveCopyright } from "@ndla/types-embed";
+import type { ICopyright as ArticleCopyright } from "@ndla/types-backend/article-api";
+import type { ICopyright as AudioCopyright } from "@ndla/types-backend/audio-api";
+import type { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
+import type { ICopyright as ImageCopyright } from "@ndla/types-backend/image-api";
+import type { BrightcoveCopyright } from "@ndla/types-embed";
 import { LicenseLink } from "./LicenseLink";
 
 interface BaseProps {
@@ -141,7 +141,7 @@ export const EmbedByline = ({ type, description, children, visibleAlt, hideCopyr
       {!hideByline && (
         <BylineWrapper>
           <div>
-            {hideCopyright && description}
+            {!!hideCopyright && description}
             {!hideCopyright && (
               <LicenseContainerContent type={type} copyright={copyright}>
                 {description}
@@ -209,7 +209,7 @@ const StyledButton = styled(Button, {
 
 interface LicenseDescriptionProps {
   children?: ReactNode;
-  isOpen: Boolean;
+  isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 

@@ -556,6 +556,7 @@ const messages = {
       blog: "Blog",
       tips: "Tips to students",
       vacancies: "Vacancies",
+      contact: "Contact us",
     },
     otherLanguages: "Other languages",
   },
@@ -580,6 +581,10 @@ const messages = {
     video: "Video",
     missing: "Unknown",
     external: "External",
+    gloss: "Gloss",
+    programme: "Programme",
+    "podcast-series": "Podcast series",
+    "frontpage-article": "About NDLA article",
   },
   modal: {
     closeModal: "Close",
@@ -822,6 +827,7 @@ const messages = {
     pause: "Pause",
     download: "Download audio",
     reuse: "Use audio",
+    progressBar: "Progress bar",
     error: {
       url: "Error loading the audio.",
       caption: "Sorry, an error occurred while loading the audio.",

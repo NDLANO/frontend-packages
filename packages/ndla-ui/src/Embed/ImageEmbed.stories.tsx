@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from "react";
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { ReactNode } from "react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { PageContent, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
-import { ImageEmbedData } from "@ndla/types-embed";
+import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
 import { Grid } from "../Grid";

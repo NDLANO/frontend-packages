@@ -6,10 +6,10 @@
  *
  */
 
-import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
+import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, StyledVariantProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, StyledVariantProps } from "@ndla/styled-system/types";
 
 export interface ImageCrop {
   startX: number;
@@ -155,7 +155,6 @@ export interface ImageProps extends JsxStyleProps, ComponentPropsWithRef<"img">,
 export const Image = forwardRef<HTMLImageElement, ImageProps>(
   (
     {
-      children,
       srcSet: srcSetProp,
       crop,
       focalPoint,

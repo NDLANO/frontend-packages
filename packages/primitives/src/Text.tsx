@@ -7,12 +7,11 @@
  */
 
 import { forwardRef } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";
-import { JsxStyleProps } from "@ndla/styled-system/types";
-import type { UtilityValues } from "@ndla/styled-system/types";
+import type { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";
+import type { JsxStyleProps, UtilityValues } from "@ndla/styled-system/types";
 
 export interface TextProps {
   textStyle?: UtilityValues["textStyle"];

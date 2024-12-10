@@ -6,7 +6,7 @@
  *
  */
 
-import { ForwardedRef, useEffect, useRef } from "react";
+import { type ForwardedRef, useEffect, useRef } from "react";
 
 const useForwardedRef = <T>(ref?: ForwardedRef<T>) => {
   const innerRef = useRef<T | null>(null);

@@ -7,9 +7,9 @@
  */
 
 import { attributesToProps } from "html-react-parser";
-import { RelatedContentMetaData } from "@ndla/types-embed";
+import { type RelatedContentMetaData } from "@ndla/types-embed";
 import { RelatedContentEmbed } from "@ndla/ui";
-import { PluginType } from "../types";
+import { type PluginType } from "../types";
 
 export const relatedContentEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);

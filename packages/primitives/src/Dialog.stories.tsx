@@ -8,8 +8,8 @@
 
 import { useEffect, useState } from "react";
 import { Portal } from "@ark-ui/react";
-import { Meta, StoryFn } from "@storybook/react";
-import { CloseLine } from "@ndla/icons/action";
+import type { Meta, StoryFn } from "@storybook/react";
+import { CloseLine } from "@ndla/icons";
 import { styled } from "@ndla/styled-system/jsx";
 import { Button, IconButton } from "./Button";
 import {

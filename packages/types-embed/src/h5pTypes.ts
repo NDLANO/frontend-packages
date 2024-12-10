@@ -6,7 +6,7 @@
  *
  */
 
-import { MetaData, OembedProxyResponse } from ".";
+import type { MetaData, OembedProxyResponse } from ".";
 
 export interface H5pEmbedData {
   resource: "h5p";

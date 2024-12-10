@@ -9,7 +9,7 @@
 import { useTranslation } from "react-i18next";
 import type { CollectionItem } from "@ark-ui/react";
 import type { ComboboxRootProps, PaginationRootProps, TagsInputRootProps } from "@ndla/primitives";
-import { TagSelectorRootProps } from "../TagSelector/TagSelector";
+import { type TagSelectorRootProps } from "../TagSelector/TagSelector";
 
 type DeepPartial<T> = {
   [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];

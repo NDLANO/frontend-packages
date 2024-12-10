@@ -6,9 +6,9 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
-import { IframeData, IframeEmbedData } from "@ndla/types-embed";
+import type { IframeData, IframeEmbedData } from "@ndla/types-embed";
 import IframeEmbed from "./IframeEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article";
 

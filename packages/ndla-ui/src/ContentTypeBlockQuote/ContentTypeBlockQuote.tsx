@@ -7,8 +7,8 @@
  */
 
 import { forwardRef } from "react";
-import { BlockQuote, BlockQuoteProps, BlockQuoteVariantProps } from "@ndla/primitives";
-import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
+import { BlockQuote, type BlockQuoteProps, type BlockQuoteVariantProps } from "@ndla/primitives";
+import type { ContentType } from "../ContentTypeBadge/ContentTypeBadge";
 
 export type ContentTypeBlockQuoteVariant = "colored" | "neutral";
 

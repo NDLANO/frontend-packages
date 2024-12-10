@@ -560,6 +560,7 @@ const messages = {
       blog: "Faageblogge",
       tips: "Tipsh learoehkidie",
       vacancies: "Gaavnoes barkoeh",
+      contact: "Kontakt oss",
     },
     otherLanguages: "Andre språk",
   },
@@ -584,6 +585,10 @@ const messages = {
     video: "Video",
     missing: "Ukjent",
     external: "Ekstern",
+    gloss: "Glose",
+    programme: "Programfag",
+    "podcast-series": "Podkast-serie",
+    "frontpage-article": "Om NDLA-artikkel",
   },
   modal: {
     closeModal: "Dahph",
@@ -826,6 +831,7 @@ const messages = {
     pause: "Pause",
     download: "Veedtjh tjoeje-fijlem",
     reuse: "Nuhtjh tjoeje-fijlem",
+    progressBar: "Fremdriftsindikator",
     error: {
       url: "Fiejlie tjoeje-veedtjemisnie.",
       caption: "Gaatesjen, fiejlie sjïdti tjoeje-veedtjemisnie.",

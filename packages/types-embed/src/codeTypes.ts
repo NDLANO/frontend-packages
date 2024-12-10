@@ -6,7 +6,7 @@
  *
  */
 
-import { MetaData } from ".";
+import type { MetaData } from ".";
 
 export interface CodeEmbedData {
   resource: "code-block";

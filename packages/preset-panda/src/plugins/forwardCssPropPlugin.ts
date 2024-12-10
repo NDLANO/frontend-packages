@@ -6,7 +6,7 @@
  *
  */
 
-import { CodegenPrepareHookArgs, PandaPlugin } from "@pandacss/types";
+import type { CodegenPrepareHookArgs, PandaPlugin } from "@pandacss/types";
 
 const supportedJsxFrameworks = ["react"];
 

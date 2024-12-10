@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 
 const GridContainer = styled("div", {

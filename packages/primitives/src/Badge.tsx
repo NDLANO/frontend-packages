@@ -8,9 +8,9 @@
 
 import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
-import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
+import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 
 const badgeRecipe = cva({
   base: {
@@ -18,13 +18,21 @@ const badgeRecipe = cva({
     borderRadius: "xsmall",
     border: "1px solid",
     width: "fit-content",
-    textStyle: "label.medium",
     color: "text.default",
   },
   defaultVariants: {
     colorTheme: "neutral",
+    size: "medium",
   },
   variants: {
+    size: {
+      small: {
+        textStyle: "label.small",
+      },
+      medium: {
+        textStyle: "label.medium",
+      },
+    },
     colorTheme: {
       brand1: {
         backgroundColor: "surface.brand.1.moderate",
@@ -42,6 +50,18 @@ const badgeRecipe = cva({
         backgroundColor: "surface.infoSubtle",
         borderColor: "stroke.default",
       },
+      danger: {
+        backgroundColor: "surface.dangerSubtle",
+        borderColor: "surface.danger",
+      },
+      success: {
+        backgroundColor: "surface.successSubtle",
+        borderColor: "surface.success",
+      },
+      warning: {
+        backgroundColor: "surface.warningSubtle",
+        borderColor: "surface.warning",
+      },
     },
   },
 });
@@ -54,6 +74,6 @@ export type BadgeProps = HTMLArkProps<"div"> & JsxStyleProps & BadgeVariantProps
 
 const StyledBadge = styled(ark.div, {}, { baseComponent: true });
 
-export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({ colorTheme, css: cssProp, ...props }, ref) => (
-  <StyledBadge css={css.raw(badgeRecipe.raw({ colorTheme }), cssProp)} {...props} ref={ref} />
+export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({ colorTheme, size, css: cssProp, ...props }, ref) => (
+  <StyledBadge css={css.raw(badgeRecipe.raw({ colorTheme, size }), cssProp)} {...props} ref={ref} />
 ));

@@ -8,7 +8,7 @@
 
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { H5pMetaData } from "@ndla/types-embed";
+import type { H5pMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 
 interface Props {

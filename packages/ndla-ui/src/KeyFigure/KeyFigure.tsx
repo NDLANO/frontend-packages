@@ -45,7 +45,7 @@ const SubTitleWrapper = styled("div", {
   },
 });
 
-interface Props {
+export interface Props {
   image?: {
     src?: string;
     alt?: string;
@@ -57,7 +57,7 @@ interface Props {
 const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper data-embed-type="key-figure">
-      {image && <StyledImage src={`${image?.src}?width=150`} width={150} height={150} alt={image?.alt} />}
+      {!!image && <StyledImage src={`${image?.src}?width=150`} width={150} height={150} alt={image?.alt} />}
       <TitleWrapper>{parse(title)}</TitleWrapper>
       <SubTitleWrapper>{parse(subtitle)}</SubTitleWrapper>
     </ContentWrapper>

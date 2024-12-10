@@ -6,10 +6,10 @@
  *
  */
 
-import { IArticleV2 } from "@ndla/types-backend/article-api";
-import { IArticle } from "@ndla/types-backend/draft-api";
-import { Node } from "@ndla/types-taxonomy";
-import { MetaData } from ".";
+import type { IArticleV2 } from "@ndla/types-backend/article-api";
+import type { IArticle } from "@ndla/types-backend/draft-api";
+import type { Node } from "@ndla/types-taxonomy";
+import type { MetaData } from ".";
 
 export interface RelatedContentEmbedData {
   resource: "related-content";

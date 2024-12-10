@@ -7,7 +7,7 @@
  */
 
 import { useTranslation } from "react-i18next";
-import { RelatedContentMetaData } from "@ndla/types-embed";
+import type { RelatedContentMetaData } from "@ndla/types-embed";
 import { contentTypeMapping } from "../model/ContentType";
 import { RelatedArticle } from "../RelatedArticleList/RelatedArticleList";
 
@@ -21,7 +21,7 @@ interface Props {
 const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
-    return <></>;
+    return null;
   }
 
   const { data, embedData } = embed;
@@ -55,7 +55,7 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
       />
     );
   }
-  return <></>;
+  return null;
 };
 
 export default RelatedContentEmbed;

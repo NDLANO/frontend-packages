@@ -6,10 +6,10 @@
  *
  */
 
-import { forwardRef, ReactNode } from "react";
-import { buttonBaseRecipe, buttonRecipe, ButtonVariantProps } from "@ndla/primitives";
+import { forwardRef, type ReactNode } from "react";
+import { buttonBaseRecipe, buttonRecipe, type ButtonVariantProps } from "@ndla/primitives";
 import { css } from "@ndla/styled-system/css";
-import { SafeLink, SafeLinkProps } from "./SafeLink";
+import { SafeLink, type SafeLinkProps } from "./SafeLink";
 
 export interface SafeLinkButtonProps extends SafeLinkProps, ButtonVariantProps {
   children: ReactNode;

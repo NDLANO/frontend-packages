@@ -6,10 +6,10 @@
  *
  */
 
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { styled } from "@ndla/styled-system/jsx";
-import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from "./BreadcrumbItem";
+import BreadcrumbItem, { type IndexedBreadcrumbItem, type SimpleBreadcrumbItem } from "./BreadcrumbItem";
 
 interface Props {
   items: SimpleBreadcrumbItem[];

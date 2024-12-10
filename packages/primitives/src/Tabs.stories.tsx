@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 import { TabsContent, TabsIndicator, TabsList, TabsRoot, TabsTrigger } from "./Tabs";
 import { Heading, Text } from "./Text";

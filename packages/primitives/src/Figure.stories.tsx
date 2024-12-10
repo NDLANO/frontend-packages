@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { styled } from "@ndla/styled-system/jsx";
 import { Figure } from "./Figure";

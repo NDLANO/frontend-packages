@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { OembedMetaData } from "@ndla/types-embed";
+import type { OembedMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { ResourceBox } from "../ResourceBox";
 

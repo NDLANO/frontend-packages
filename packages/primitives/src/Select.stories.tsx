@@ -8,10 +8,8 @@
 
 import { useState } from "react";
 import { Portal, createListCollection } from "@ark-ui/react";
-import { Meta, StoryFn } from "@storybook/react";
-import { CloseLine } from "@ndla/icons/action";
-import { ArrowDownShortLine } from "@ndla/icons/common";
-import { CheckLine } from "@ndla/icons/editor";
+import type { Meta, StoryFn } from "@storybook/react";
+import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import { css } from "@ndla/styled-system/css";
 import { HStack } from "@ndla/styled-system/jsx";
 import { Button, IconButton } from "./Button";
@@ -39,7 +37,6 @@ import {
   SelectItemIndicator,
   SelectItemText,
   SelectLabel,
-  SelectPositioner,
   SelectRoot,
   SelectTrigger,
   SelectValueText,
@@ -72,18 +69,16 @@ export const Default: StoryFn<typeof SelectRoot> = ({ ...args }) => {
         </SelectTrigger>
       </SelectControl>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            {measurements.map((measurement) => (
-              <SelectItem key={measurement.value} item={measurement}>
-                <SelectItemText>{measurement.label}</SelectItemText>
-                <SelectItemIndicator asChild>
-                  <CheckLine />
-                </SelectItemIndicator>
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </SelectPositioner>
+        <SelectContent>
+          {measurements.map((measurement) => (
+            <SelectItem key={measurement.value} item={measurement}>
+              <SelectItemText>{measurement.label}</SelectItemText>
+              <SelectItemIndicator asChild>
+                <CheckLine />
+              </SelectItemIndicator>
+            </SelectItem>
+          ))}
+        </SelectContent>
       </Portal>
     </SelectRoot>
   );
@@ -104,18 +99,16 @@ export const Disabled: StoryFn<typeof SelectRoot> = ({ ...args }) => {
         </SelectTrigger>
       </SelectControl>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            {measurements.map((measurement) => (
-              <SelectItem key={measurement.value} item={measurement}>
-                <SelectItemText>{measurement.label}</SelectItemText>
-                <SelectItemIndicator asChild>
-                  <CheckLine />
-                </SelectItemIndicator>
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </SelectPositioner>
+        <SelectContent>
+          {measurements.map((measurement) => (
+            <SelectItem key={measurement.value} item={measurement}>
+              <SelectItemText>{measurement.label}</SelectItemText>
+              <SelectItemIndicator asChild>
+                <CheckLine />
+              </SelectItemIndicator>
+            </SelectItem>
+          ))}
+        </SelectContent>
       </Portal>
     </SelectRoot>
   );
@@ -139,18 +132,16 @@ export const DisabledItems: StoryFn<typeof SelectRoot> = ({ ...args }) => {
         </SelectTrigger>
       </SelectControl>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            {withDisabled.map((measurement) => (
-              <SelectItem key={measurement.value} item={measurement}>
-                <SelectItemText>{measurement.label}</SelectItemText>
-                <SelectItemIndicator asChild>
-                  <CheckLine />
-                </SelectItemIndicator>
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </SelectPositioner>
+        <SelectContent>
+          {withDisabled.map((measurement) => (
+            <SelectItem key={measurement.value} item={measurement}>
+              <SelectItemText>{measurement.label}</SelectItemText>
+              <SelectItemIndicator asChild>
+                <CheckLine />
+              </SelectItemIndicator>
+            </SelectItem>
+          ))}
+        </SelectContent>
       </Portal>
     </SelectRoot>
   );
@@ -182,23 +173,21 @@ export const Grouped: StoryFn<typeof SelectRoot> = ({ ...args }) => {
         </SelectTrigger>
       </SelectControl>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            {Object.entries(groupedCountries).map(([letter, countries]) => (
-              <SelectItemGroup key={letter}>
-                <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
-                {countries.map((country) => (
-                  <SelectItem key={country.value} item={country}>
-                    <SelectItemText>{country.label}</SelectItemText>
-                    <SelectItemIndicator>
-                      <CheckLine />
-                    </SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
-            ))}
-          </SelectContent>
-        </SelectPositioner>
+        <SelectContent>
+          {Object.entries(groupedCountries).map(([letter, countries]) => (
+            <SelectItemGroup key={letter}>
+              <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
+              {countries.map((country) => (
+                <SelectItem key={country.value} item={country}>
+                  <SelectItemText>{country.label}</SelectItemText>
+                  <SelectItemIndicator>
+                    <CheckLine />
+                  </SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          ))}
+        </SelectContent>
       </Portal>
     </SelectRoot>
   );
@@ -219,23 +208,21 @@ export const Multiple: StoryFn<typeof SelectRoot> = ({ ...args }) => {
         </SelectTrigger>
       </SelectControl>
       <Portal>
-        <SelectPositioner>
-          <SelectContent className={css({ maxHeight: "surface.small" })}>
-            {Object.entries(groupedCountries).map(([letter, countries]) => (
-              <SelectItemGroup key={letter}>
-                <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
-                {countries.map((country) => (
-                  <SelectItem key={country.value} item={country}>
-                    <SelectItemText>{country.label}</SelectItemText>
-                    <SelectItemIndicator>
-                      <CheckLine />
-                    </SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
-            ))}
-          </SelectContent>
-        </SelectPositioner>
+        <SelectContent className={css({ maxHeight: "surface.small" })}>
+          {Object.entries(groupedCountries).map(([letter, countries]) => (
+            <SelectItemGroup key={letter}>
+              <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
+              {countries.map((country) => (
+                <SelectItem key={country.value} item={country}>
+                  <SelectItemText>{country.label}</SelectItemText>
+                  <SelectItemIndicator>
+                    <CheckLine />
+                  </SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          ))}
+        </SelectContent>
       </Portal>
     </SelectRoot>
   );
@@ -270,23 +257,21 @@ export const MultipleTruncated: StoryFn<typeof SelectRoot> = ({ ...args }) => {
         </SelectTrigger>
       </SelectControl>
       <Portal>
-        <SelectPositioner>
-          <SelectContent className={css({ maxHeight: "surface.small" })}>
-            {Object.entries(groupedCountries).map(([letter, countries]) => (
-              <SelectItemGroup key={letter}>
-                <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
-                {countries.map((country) => (
-                  <SelectItem key={country.value} item={country}>
-                    <SelectItemText>{country.label}</SelectItemText>
-                    <SelectItemIndicator>
-                      <CheckLine />
-                    </SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
-            ))}
-          </SelectContent>
-        </SelectPositioner>
+        <SelectContent className={css({ maxHeight: "surface.small" })}>
+          {Object.entries(groupedCountries).map(([letter, countries]) => (
+            <SelectItemGroup key={letter}>
+              <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
+              {countries.map((country) => (
+                <SelectItem key={country.value} item={country}>
+                  <SelectItemText>{country.label}</SelectItemText>
+                  <SelectItemIndicator>
+                    <CheckLine />
+                  </SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          ))}
+        </SelectContent>
       </Portal>
     </SelectRoot>
   );
@@ -312,23 +297,21 @@ export const WithClearButton: StoryFn<typeof SelectRoot> = ({ ...args }) => {
         </SelectClearTrigger>
       </SelectControl>
       <Portal>
-        <SelectPositioner>
-          <SelectContent className={css({ maxHeight: "surface.small" })}>
-            {Object.entries(groupedCountries).map(([letter, countries]) => (
-              <SelectItemGroup key={letter}>
-                <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
-                {countries.map((country) => (
-                  <SelectItem key={country.value} item={country}>
-                    <SelectItemText>{country.label}</SelectItemText>
-                    <SelectItemIndicator>
-                      <CheckLine />
-                    </SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
-            ))}
-          </SelectContent>
-        </SelectPositioner>
+        <SelectContent className={css({ maxHeight: "surface.small" })}>
+          {Object.entries(groupedCountries).map(([letter, countries]) => (
+            <SelectItemGroup key={letter}>
+              <SelectItemGroupLabel>{letter}</SelectItemGroupLabel>
+              {countries.map((country) => (
+                <SelectItem key={country.value} item={country}>
+                  <SelectItemText>{country.label}</SelectItemText>
+                  <SelectItemIndicator>
+                    <CheckLine />
+                  </SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          ))}
+        </SelectContent>
       </Portal>
     </SelectRoot>
   );
@@ -372,18 +355,16 @@ export const InDialog: StoryFn<typeof SelectRoot> = ({ ...args }) => {
                 </Button>
               </SelectTrigger>
             </SelectControl>
-            <SelectPositioner>
-              <SelectContent>
-                {measurements.map((measurement) => (
-                  <SelectItem key={measurement.value} item={measurement}>
-                    <SelectItemText>{measurement.label}</SelectItemText>
-                    <SelectItemIndicator>
-                      <CheckLine />
-                    </SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </SelectPositioner>
+            <SelectContent>
+              {measurements.map((measurement) => (
+                <SelectItem key={measurement.value} item={measurement}>
+                  <SelectItemText>{measurement.label}</SelectItemText>
+                  <SelectItemIndicator>
+                    <CheckLine />
+                  </SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectContent>
           </SelectRoot>
           <HStack gap="xsmall" className={css({ alignSelf: "flex-end" })}>
             <DialogCloseTrigger asChild>
@@ -428,18 +409,16 @@ export const WithField: StoryFn<typeof SelectRoot> = ({ ...args }) => {
           </SelectClearTrigger>
         </SelectControl>
         <Portal>
-          <SelectPositioner>
-            <SelectContent>
-              {measurements.map((measurement) => (
-                <SelectItem key={measurement.value} item={measurement}>
-                  <SelectItemText>{measurement.label}</SelectItemText>
-                  <SelectItemIndicator asChild>
-                    <CheckLine />
-                  </SelectItemIndicator>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </SelectPositioner>
+          <SelectContent>
+            {measurements.map((measurement) => (
+              <SelectItem key={measurement.value} item={measurement}>
+                <SelectItemText>{measurement.label}</SelectItemText>
+                <SelectItemIndicator asChild>
+                  <CheckLine />
+                </SelectItemIndicator>
+              </SelectItem>
+            ))}
+          </SelectContent>
         </Portal>
       </SelectRoot>
     </FieldRoot>

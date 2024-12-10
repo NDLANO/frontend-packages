@@ -6,8 +6,8 @@
  *
  */
 
-import { IConcept } from "@ndla/types-backend/concept-api";
-import {
+import type { IConcept } from "@ndla/types-backend/concept-api";
+import type {
   AudioEmbedData,
   AudioMetaData,
   BrightcoveEmbedData,
@@ -16,9 +16,9 @@ import {
   IframeMetaData,
   MetaData,
 } from ".";
-import { OembedEmbedData, OembedMetaData } from "./externalTypes";
-import { H5pEmbedData, H5pMetaData } from "./h5pTypes";
-import { ImageEmbedData, ImageMetaData } from "./imageTypes";
+import type { OembedEmbedData, OembedMetaData } from "./externalTypes";
+import type { H5pEmbedData, H5pMetaData } from "./h5pTypes";
+import type { ImageEmbedData, ImageMetaData } from "./imageTypes";
 
 export interface ConceptEmbedData {
   resource: "concept";

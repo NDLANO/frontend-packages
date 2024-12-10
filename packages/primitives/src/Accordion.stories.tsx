@@ -7,8 +7,8 @@
  */
 
 import { Accordion } from "@ark-ui/react";
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { ArrowDownShortLine } from "@ndla/icons/common";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { ArrowDownShortLine } from "@ndla/icons";
 import { styled } from "@ndla/styled-system/jsx";
 import {
   AccordionItem,

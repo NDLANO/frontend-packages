@@ -7,9 +7,9 @@
  */
 
 import { attributesToProps } from "html-react-parser";
-import { IframeMetaData } from "@ndla/types-embed";
+import { type IframeMetaData } from "@ndla/types-embed";
 import { IframeEmbed } from "@ndla/ui";
-import { PluginType } from "../types";
+import { type PluginType } from "../types";
 
 export const iframeEmbedPlugin: PluginType = (element) => {
   const props = attributesToProps(element.attribs);

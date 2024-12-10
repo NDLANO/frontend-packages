@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryObj, StoryFn } from "@storybook/react";
+import type { Meta, StoryObj, StoryFn } from "@storybook/react";
 import { LinkBlockSection } from ".";
 import LinkBlock from "./LinkBlock";
 

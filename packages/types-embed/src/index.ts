@@ -6,8 +6,8 @@
  *
  */
 
-import { AudioMetaData, AudioEmbedData, AudioMeta } from "./audioTypes";
-import {
+import type { AudioMetaData, AudioEmbedData, AudioMeta } from "./audioTypes";
+import type {
   BrightcoveData,
   BrightcoveEmbedData,
   BrightcoveMetaData,
@@ -15,23 +15,23 @@ import {
   BrightcoveApiType,
   BrightcoveCopyright,
 } from "./brightcoveTypes";
-import { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from "./campaignBlockTypes";
-import { CodeEmbedData, CodeMetaData } from "./codeTypes";
-import { CommentEmbedData, CommentMetaData } from "./commentTypes";
-import {
+import type { CampaignBlockEmbedData, CampaignBlockMeta, CampaignBlockMetaData } from "./campaignBlockTypes";
+import type { CodeEmbedData, CodeMetaData } from "./codeTypes";
+import type { CommentEmbedData, CommentMetaData } from "./commentTypes";
+import type {
   ConceptData,
   ConceptEmbedData,
   ConceptMetaData,
   ConceptVisualElement,
   ConceptVisualElementMeta,
 } from "./conceptTypes";
-import { ContactBlockEmbedData, ContactBlockMetaData } from "./contactBlockTypes";
-import { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from "./contentLinkTypes";
-import { CopyrightEmbedData, CopyrightMetaData } from "./copyrightTypes";
-import { OembedEmbedData, OembedMetaData, OembedData } from "./externalTypes";
-import { FileEmbedData, FileMetaData } from "./fileTypes";
-import { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from "./footnoteTypes";
-import {
+import type { ContactBlockEmbedData, ContactBlockMetaData } from "./contactBlockTypes";
+import type { ContentLinkData, ContentLinkEmbedData, ContentLinkMetaData } from "./contentLinkTypes";
+import type { CopyrightEmbedData, CopyrightMetaData } from "./copyrightTypes";
+import type { OembedEmbedData, OembedMetaData, OembedData } from "./externalTypes";
+import type { FileEmbedData, FileMetaData } from "./fileTypes";
+import type { FootnoteData, FootnoteEmbedData, FootnoteMetaData } from "./footnoteTypes";
+import type {
   H5pMetaData,
   H5pEmbedData,
   OembedProxyData,
@@ -41,13 +41,18 @@ import {
   H5pInfo,
   H5pData,
 } from "./h5pTypes";
-import { IframeMetaData, IframeEmbedData, IframeData } from "./iframeTypes";
-import { ImageEmbedData, ImageMetaData } from "./imageTypes";
-import { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from "./keyFigureTypes";
-import { LinkBlockEmbedData, LinkBlockMetaData } from "./linkBlockTypes";
-import { PitchEmbedData, PitchMetaData, PitchMeta } from "./pitchTypes";
-import { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from "./relatedContentTypes";
-import { DisclaimerLink, UuDisclaimerData, UuDisclaimerEmbedData, UuDisclaimerMetaData } from "./uuDisclaimerTypes";
+import type { IframeMetaData, IframeEmbedData, IframeData } from "./iframeTypes";
+import type { ImageEmbedData, ImageMetaData } from "./imageTypes";
+import type { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from "./keyFigureTypes";
+import type { LinkBlockEmbedData, LinkBlockMetaData } from "./linkBlockTypes";
+import type { PitchEmbedData, PitchMetaData, PitchMeta } from "./pitchTypes";
+import type { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from "./relatedContentTypes";
+import type {
+  DisclaimerLink,
+  UuDisclaimerData,
+  UuDisclaimerEmbedData,
+  UuDisclaimerMetaData,
+} from "./uuDisclaimerTypes";
 
 export type EmbedData =
   | AudioEmbedData

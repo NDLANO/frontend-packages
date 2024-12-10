@@ -6,9 +6,9 @@
  *
  */
 
-import { DOMNode, Element, domToReact } from "html-react-parser";
+import { type DOMNode, Element, domToReact } from "html-react-parser";
 import { CopyParagraphButton } from "@ndla/ui";
-import { PluginType } from "./types";
+import { type PluginType } from "./types";
 export const copyParagraphPlugin: PluginType = (node, converterOpts, opts) => {
   const parent = node.parent as Element | undefined;
   if (

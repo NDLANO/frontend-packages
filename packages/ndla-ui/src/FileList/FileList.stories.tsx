@@ -6,9 +6,8 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { PencilFill, DeleteBinLine } from "@ndla/icons/action";
-import { DragVertical } from "@ndla/icons/editor";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { PencilFill, DeleteBinLine, Draggable } from "@ndla/icons";
 import { IconButton } from "@ndla/primitives";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { File } from "./File";
@@ -151,7 +150,7 @@ export const FilesWithDragHandle: StoryObj<typeof File> = {
     <ul>
       <StyledFileListItem>
         <IconButton variant="clear">
-          <DragVertical />
+          <Draggable />
         </IconButton>
         <File title="Fil 1" url="https://ndla.no/1" fileExists fileType="mp4" fileSize="100 mb" />
       </StyledFileListItem>

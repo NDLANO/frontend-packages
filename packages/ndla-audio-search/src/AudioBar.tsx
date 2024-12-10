@@ -9,7 +9,7 @@
 /* eslint jsx-a11y/media-has-caption: 0 */
 
 import { useEffect, useState } from "react";
-import { IAudioMetaInformation } from "@ndla/types-backend/audio-api";
+import type { IAudioMetaInformation } from "@ndla/types-backend/audio-api";
 
 interface Props {
   audio: { id: number };
@@ -38,7 +38,7 @@ const AudioBar = ({ audio, fetchAudio, onError }: Props) => {
     [],
   );
 
-  return <audio controls>{audioSource && <source src={audioSource} type={audioType} />}</audio>;
+  return <audio controls>{!!audioSource && <source src={audioSource} type={audioType} />}</audio>;
 };
 
 export default AudioBar;

@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from "react";
-import { InformationLine } from "@ndla/icons/common";
+import { type ReactNode } from "react";
+import { InformationLine } from "@ndla/icons";
 import { MessageBox } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import { UuDisclaimerMetaData } from "@ndla/types-embed";
+import type { UuDisclaimerMetaData } from "@ndla/types-embed";
 
 interface Props {
   embed: UuDisclaimerMetaData;

@@ -8,10 +8,8 @@
 
 import { useState } from "react";
 import { Portal, createListCollection, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
-import { Meta, StoryFn } from "@storybook/react";
-import { CloseLine } from "@ndla/icons/action";
-import { ArrowDownShortLine } from "@ndla/icons/common";
-import { CheckLine } from "@ndla/icons/editor";
+import type { Meta, StoryFn } from "@storybook/react";
+import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import { Flex } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
 import {
@@ -25,7 +23,6 @@ import {
   ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxLabel,
-  ComboboxPositioner,
   ComboboxRoot,
   ComboboxTrigger,
 } from "./Combobox";
@@ -33,7 +30,7 @@ import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { Input, InputContainer } from "./Input";
 import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot } from "./ListItem/ListItem";
-import { AdvancedItem, advancedItems, europeanCountries } from "./storybookHelpers/data";
+import { type AdvancedItem, advancedItems, europeanCountries } from "./storybookHelpers/data";
 import { Text } from "./Text";
 
 const meta: Meta<typeof ComboboxRoot> = {
@@ -82,18 +79,16 @@ export const Default: StoryFn<typeof ComboboxRoot> = (args) => {
         </ComboboxTrigger>
       </ComboboxControl>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            {items.map((item) => (
-              <ComboboxItem key={item.value} item={item}>
-                <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator>
-                  <CheckLine />
-                </ComboboxItemIndicator>
-              </ComboboxItem>
-            ))}
-          </ComboboxContent>
-        </ComboboxPositioner>
+        <ComboboxContent>
+          {items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator>
+                <CheckLine />
+              </ComboboxItemIndicator>
+            </ComboboxItem>
+          ))}
+        </ComboboxContent>
       </Portal>
     </ComboboxRoot>
   );
@@ -130,18 +125,16 @@ export const Disabled: StoryFn<typeof ComboboxRoot> = (args) => {
         </ComboboxTrigger>
       </ComboboxControl>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            {items.map((item) => (
-              <ComboboxItem key={item.value} item={item}>
-                <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator>
-                  <CheckLine />
-                </ComboboxItemIndicator>
-              </ComboboxItem>
-            ))}
-          </ComboboxContent>
-        </ComboboxPositioner>
+        <ComboboxContent>
+          {items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator>
+                <CheckLine />
+              </ComboboxItemIndicator>
+            </ComboboxItem>
+          ))}
+        </ComboboxContent>
       </Portal>
     </ComboboxRoot>
   );
@@ -182,18 +175,16 @@ export const DisabledItems: StoryFn<typeof ComboboxRoot> = (args) => {
         </ComboboxTrigger>
       </ComboboxControl>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            {items.map((item) => (
-              <ComboboxItem key={item.value} item={item}>
-                <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator>
-                  <CheckLine />
-                </ComboboxItemIndicator>
-              </ComboboxItem>
-            ))}
-          </ComboboxContent>
-        </ComboboxPositioner>
+        <ComboboxContent>
+          {items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator>
+                <CheckLine />
+              </ComboboxItemIndicator>
+            </ComboboxItem>
+          ))}
+        </ComboboxContent>
       </Portal>
     </ComboboxRoot>
   );
@@ -230,28 +221,26 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
         </ComboboxTrigger>
       </ComboboxControl>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            {items.map((item) => (
-              <ComboboxItem key={item.value} item={item} asChild>
-                <ListItemRoot context="list">
-                  <ListItemImage src={item.img} alt="" />
-                  <ListItemContent>
-                    <Flex direction="column">
-                      <ListItemHeading asChild consumeCss>
-                        <span>{item.label}</span>
-                      </ListItemHeading>
-                      <Text>{item.description}</Text>
-                    </Flex>
-                    <ComboboxItemIndicator>
-                      <CheckLine />
-                    </ComboboxItemIndicator>
-                  </ListItemContent>
-                </ListItemRoot>
-              </ComboboxItem>
-            ))}
-          </ComboboxContent>
-        </ComboboxPositioner>
+        <ComboboxContent>
+          {items.map((item) => (
+            <ComboboxItem key={item.value} item={item} asChild>
+              <ListItemRoot context="list">
+                <ListItemImage src={item.img} alt="" />
+                <ListItemContent>
+                  <Flex direction="column">
+                    <ListItemHeading asChild consumeCss>
+                      <span>{item.label}</span>
+                    </ListItemHeading>
+                    <Text>{item.description}</Text>
+                  </Flex>
+                  <ComboboxItemIndicator>
+                    <CheckLine />
+                  </ComboboxItemIndicator>
+                </ListItemContent>
+              </ListItemRoot>
+            </ComboboxItem>
+          ))}
+        </ComboboxContent>
       </Portal>
     </ComboboxRoot>
   );
@@ -300,25 +289,23 @@ export const Grouped: StoryFn<typeof ComboboxRoot> = (args) => {
         </ComboboxTrigger>
       </ComboboxControl>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            {Object.entries(groupedItems)
-              .filter(([_, value]) => !!value.length)
-              .map(([key, value], index) => (
-                <ComboboxItemGroup key={index}>
-                  <ComboboxItemGroupLabel>{key}</ComboboxItemGroupLabel>
-                  {value.map((item) => (
-                    <ComboboxItem key={item.value} item={item}>
-                      <ComboboxItemText>{item.label}</ComboboxItemText>
-                      <ComboboxItemIndicator>
-                        <CheckLine />
-                      </ComboboxItemIndicator>
-                    </ComboboxItem>
-                  ))}
-                </ComboboxItemGroup>
-              ))}
-          </ComboboxContent>
-        </ComboboxPositioner>
+        <ComboboxContent>
+          {Object.entries(groupedItems)
+            .filter(([, value]) => !!value.length)
+            .map(([key, value], index) => (
+              <ComboboxItemGroup key={index}>
+                <ComboboxItemGroupLabel>{key}</ComboboxItemGroupLabel>
+                {value.map((item) => (
+                  <ComboboxItem key={item.value} item={item}>
+                    <ComboboxItemText>{item.label}</ComboboxItemText>
+                    <ComboboxItemIndicator>
+                      <CheckLine />
+                    </ComboboxItemIndicator>
+                  </ComboboxItem>
+                ))}
+              </ComboboxItemGroup>
+            ))}
+        </ComboboxContent>
       </Portal>
     </ComboboxRoot>
   );
@@ -366,18 +353,16 @@ export const WithField: StoryFn<typeof ComboboxRoot> = (args) => {
           </ComboboxTrigger>
         </ComboboxControl>
         <Portal>
-          <ComboboxPositioner>
-            <ComboboxContent>
-              {items.map((item) => (
-                <ComboboxItem key={item.value} item={item}>
-                  <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator>
-                    <CheckLine />
-                  </ComboboxItemIndicator>
-                </ComboboxItem>
-              ))}
-            </ComboboxContent>
-          </ComboboxPositioner>
+          <ComboboxContent>
+            {items.map((item) => (
+              <ComboboxItem key={item.value} item={item}>
+                <ComboboxItemText>{item.label}</ComboboxItemText>
+                <ComboboxItemIndicator>
+                  <CheckLine />
+                </ComboboxItemIndicator>
+              </ComboboxItem>
+            ))}
+          </ComboboxContent>
         </Portal>
       </ComboboxRoot>
     </FieldRoot>

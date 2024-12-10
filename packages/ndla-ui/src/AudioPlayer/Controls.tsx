@@ -9,11 +9,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { type SliderValueChangeDetails, createListCollection } from "@ark-ui/react";
-import { Replay15Line, Forward15Line } from "@ndla/icons/action";
-import { PlayFill, PauseLine, VolumeUpFill } from "@ndla/icons/common";
-import { CheckLine } from "@ndla/icons/editor";
+import { Replay15Line, Forward15Line, PlayFill, PauseLine, VolumeUpFill, CheckLine } from "@ndla/icons";
 import {
   Button,
+  FieldRoot,
   IconButton,
   PopoverContent,
   PopoverRoot,
@@ -24,7 +23,6 @@ import {
   SelectItemIndicator,
   SelectItemText,
   SelectLabel,
-  SelectPositioner,
   SelectRoot,
   SelectTrigger,
   SliderControl,
@@ -37,7 +35,6 @@ import {
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { visuallyHidden } from "@ndla/styled-system/patterns";
 
 const ControlsWrapper = styled("div", {
   base: {
@@ -102,6 +99,8 @@ const ProgressWrapper = styled("div", {
 const StyledText = styled(Text, {
   base: {
     minWidth: "xxlarge",
+    flexShrink: "0",
+    textAlign: "center",
   },
 });
 
@@ -278,6 +277,7 @@ const Controls = ({ src, title }: Props) => {
               })
             }
           >
+            <SliderLabel srOnly>{t("audio.progressBar")}</SliderLabel>
             <SliderControl>
               <SliderTrack>
                 <SliderRange />
@@ -291,25 +291,25 @@ const Controls = ({ src, title }: Props) => {
             <div>-{formatTime(remainingTime)}</div>
           </StyledText>
         </ProgressWrapper>
-        <StyledSelectRoot
-          collection={speedValues}
-          value={[speedValue.toString()]}
-          onValueChange={(details) => setSpeedValue(parseFloat(details.value[0]))}
-          positioning={{ placement: "top" }}
-        >
-          <SelectLabel css={visuallyHidden.raw()}>{t("audio.controls.selectSpeed")}</SelectLabel>
-          <SelectControl>
-            <SelectTrigger asChild>
-              <SpeedButton
-                variant="tertiary"
-                title={t("audio.controls.selectSpeed")}
-                aria-label={t("audio.controls.selectSpeed")}
-              >
-                <span>{`${speedValue}x`}</span>
-              </SpeedButton>
-            </SelectTrigger>
-          </SelectControl>
-          <SelectPositioner>
+        <FieldRoot>
+          <StyledSelectRoot
+            collection={speedValues}
+            value={[speedValue.toString()]}
+            onValueChange={(details) => setSpeedValue(parseFloat(details.value[0]))}
+            positioning={{ placement: "top" }}
+          >
+            <SelectLabel srOnly>{t("audio.controls.selectSpeed")}</SelectLabel>
+            <SelectControl>
+              <SelectTrigger asChild>
+                <SpeedButton
+                  variant="tertiary"
+                  title={t("audio.controls.selectSpeed")}
+                  aria-label={t("audio.controls.selectSpeed")}
+                >
+                  <span>{`${speedValue}x`}</span>
+                </SpeedButton>
+              </SelectTrigger>
+            </SelectControl>
             <SelectContent>
               {speedValues.items.map((speed) => (
                 <SelectItem key={speed} item={speed}>
@@ -320,8 +320,8 @@ const Controls = ({ src, title }: Props) => {
                 </SelectItem>
               ))}
             </SelectContent>
-          </SelectPositioner>
-        </StyledSelectRoot>
+          </StyledSelectRoot>
+        </FieldRoot>
         <PopoverRoot positioning={{ placement: "top" }}>
           <PopoverTrigger asChild>
             <VolumeButton variant="tertiary" aria-label={t("audio.controls.adjustVolume")}>
@@ -338,7 +338,7 @@ const Controls = ({ src, title }: Props) => {
               step={1}
               onValueChange={handleVolumeSliderChange}
             >
-              <SliderLabel css={visuallyHidden.raw()}>{t("audio.controls.adjustVolume")}</SliderLabel>
+              <SliderLabel srOnly>{t("audio.controls.adjustVolume")}</SliderLabel>
               <StyledSliderControl>
                 <SliderTrack>
                   <SliderRange />

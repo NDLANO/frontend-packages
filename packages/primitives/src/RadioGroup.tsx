@@ -9,10 +9,9 @@
 import { forwardRef } from "react";
 import { RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
-import { Label } from "./Label";
-import { Text, TextProps } from "./Text";
+import { Text, type TextProps } from "./Text";
 
 const radioGroupRecipe = sva({
   slots: radioGroupAnatomy.keys(),
@@ -142,9 +141,11 @@ export const InternalRadioGroupLabel = withContext<HTMLLabelElement, RadioGroup.
 );
 
 export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroup.LabelProps & TextProps & JsxStyleProps>(
-  ({ textStyle = "label.large", children, ...props }, ref) => (
-    <InternalRadioGroupLabel ref={ref} {...props} asChild>
-      <Label textStyle={textStyle}>{children}</Label>
+  ({ textStyle = "label.large", fontWeight = "bold", children, ...props }, ref) => (
+    <InternalRadioGroupLabel {...props} asChild ref={ref}>
+      <Text textStyle={textStyle} fontWeight={fontWeight}>
+        {children}
+      </Text>
     </InternalRadioGroupLabel>
   ),
 );

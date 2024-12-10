@@ -6,7 +6,7 @@
  *
  */
 
-import { RefObject, useCallback, useMemo, useState } from "react";
+import { type RefObject, useCallback, useMemo, useState } from "react";
 import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
 function getSize(el: HTMLElement | null) {

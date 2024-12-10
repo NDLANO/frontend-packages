@@ -6,16 +6,16 @@
  *
  */
 
-import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
+import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { Stack, styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
+import { ContentTypeBadge } from "..";
 import { ArticleByline } from "./ArticleByline";
-import { ContentTypeBadgeNew } from "..";
-import { ContentType } from "../ContentTypeBadge/ContentTypeBadgeNew";
-import { Article as ArticleType } from "../types";
+import { type ContentType } from "../ContentTypeBadge/ContentTypeBadge";
+import type { Article as ArticleType } from "../types";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
 
@@ -135,7 +135,7 @@ export const ArticleTitle = ({
       <ArticleHGroup>
         {(!!contentType || !!heartButton) && (
           <StyledStack justify="space-between" align="center" direction="row" gap="small">
-            {!!contentType && <ContentTypeBadgeNew contentType={contentType}>{contentTypeLabel}</ContentTypeBadgeNew>}
+            {!!contentType && <ContentTypeBadge contentType={contentType}>{contentTypeLabel}</ContentTypeBadge>}
             {heartButton}
           </StyledStack>
         )}
@@ -200,7 +200,6 @@ export const Article = ({
           authors={authors}
           suppliers={copyright?.rightsholders}
           published={published}
-          license={copyright?.license?.license ?? ""}
           licenseBox={licenseBox}
         />
         {children}

@@ -6,8 +6,8 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import KeyFigure from "./KeyFigure";
+import type { Meta, StoryObj } from "@storybook/react";
+import KeyFigure, { type Props } from "./KeyFigure";
 
 const args = {
   title: "22 000+",
@@ -24,7 +24,7 @@ export default {
   args,
 } as Meta<typeof KeyFigure>;
 
-export const Plain: StoryFn<typeof KeyFigure> = ({ ...args }) => {
+export const Plain = ({ ...args }: Props) => {
   return <KeyFigure {...args} />;
 };
 

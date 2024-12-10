@@ -10,7 +10,7 @@ import { useRef } from "react";
 import { Portal } from "@ark-ui/react";
 import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { ConceptMetaData } from "@ndla/types-embed";
+import type { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { Gloss } from "../Gloss";

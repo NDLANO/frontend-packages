@@ -6,19 +6,25 @@
  *
  */
 
-import prettyBytes from "pretty-bytes";
+import { useMemo } from "react";
 import { Text } from "@ndla/primitives";
-import { IImageDimensions } from "@ndla/types-backend/image-api";
+import type { IImageDimensions } from "@ndla/types-backend/image-api";
+import { humanFileSize } from "@ndla/util";
 
 interface Props {
   contentType: string;
   fileSize: number;
   imageDimensions?: IImageDimensions;
+  locale: string;
 }
 
-const ImageMeta = ({ contentType, fileSize, imageDimensions }: Props) => {
+const ImageMeta = ({ contentType, fileSize, imageDimensions, locale }: Props) => {
+  const prettySize = useMemo(() => {
+    return humanFileSize(fileSize, locale);
+  }, [fileSize, locale]);
+
   const dimensions = imageDimensions ? ` - ${imageDimensions.width}x${imageDimensions.height} px` : "";
-  return <Text>{`${contentType} - ${prettyBytes(fileSize)}${dimensions}`}</Text>;
+  return <Text>{`${contentType} - ${prettySize}${dimensions}`}</Text>;
 };
 
 export default ImageMeta;

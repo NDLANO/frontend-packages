@@ -25,7 +25,7 @@ import { linkBlockPlugin } from "./linkBlockEmbedPlugin";
 import { pitchEmbedPlugin } from "./pitchEmbedPlugin";
 import { relatedContentEmbedPlugin } from "./relatedContentEmbedPlugin";
 import { uuDisclaimerEmbedPlugin } from "./uuDisclaimerEmbedPlugin";
-import { PluginType } from "../types";
+import { type PluginType } from "../types";
 
 export const embedPlugins: Record<string, PluginType> = {
   image: imageEmbedPlugin,

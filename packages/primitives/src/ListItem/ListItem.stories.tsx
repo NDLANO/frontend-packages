@@ -6,17 +6,15 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { PencilFill, DeleteBinLine } from "@ndla/icons/action";
-import { Share } from "@ndla/icons/common";
-import { HorizontalMenu } from "@ndla/icons/contentType";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { PencilFill, DeleteBinLine, ShareLine, MoreLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, ListItemVariantProps } from "./ListItem";
+import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, type ListItemVariantProps } from "./ListItem";
 import { Badge } from "../Badge";
 import { IconButton } from "../Button";
-import { MenuContent, MenuItem, MenuPositioner, MenuRoot, MenuTrigger } from "../Menu";
+import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu";
 import { Text } from "../Text";
 
 export default {
@@ -57,7 +55,7 @@ export const Brand2: StoryObj<typeof ListItemRoot> = {
   },
 };
 
-export const NonInteractive: StoryFn<typeof ListItemRoot> = (args) => (
+export const NonInteractive: StoryFn<typeof ListItemRoot> = () => (
   <ListItemRoot nonInteractive>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
@@ -109,25 +107,23 @@ const ListComponent = ({
         <MenuRoot>
           <MenuTrigger css={{ position: "relative" }} asChild>
             <IconButton variant="tertiary">
-              <HorizontalMenu />
+              <MoreLine />
             </IconButton>
           </MenuTrigger>
-          <MenuPositioner>
-            <MenuContent>
-              <MenuItem value="edit">
-                <PencilFill />
-                Rediger
-              </MenuItem>
-              <MenuItem value="delete" variant="destructive">
-                <DeleteBinLine />
-                Slett
-              </MenuItem>
-              <MenuItem value="share">
-                <Share />
-                Del
-              </MenuItem>
-            </MenuContent>
-          </MenuPositioner>
+          <MenuContent>
+            <MenuItem value="edit">
+              <PencilFill />
+              Rediger
+            </MenuItem>
+            <MenuItem value="delete" variant="destructive">
+              <DeleteBinLine />
+              Slett
+            </MenuItem>
+            <MenuItem value="share">
+              <ShareLine />
+              Del
+            </MenuItem>
+          </MenuContent>
         </MenuRoot>
       </styled.div>
     </ListItemContent>

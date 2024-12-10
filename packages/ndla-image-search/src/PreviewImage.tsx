@@ -7,9 +7,7 @@
  */
 
 import { useState } from "react";
-import { CloseLine } from "@ndla/icons/action";
-import { HashTag } from "@ndla/icons/common";
-import { CheckLine } from "@ndla/icons/editor";
+import { CloseLine, HashTag, CheckLine } from "@ndla/icons";
 import { getModelReleaseValue } from "@ndla/licenses";
 import {
   Button,
@@ -23,9 +21,9 @@ import {
   IconButton,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import ImageMeta from "./ImageMeta";
-import { PreviewTranslations } from "./ImageSearch";
+import type { PreviewTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
 
 const ImageContainer = styled("div", {
@@ -181,6 +179,7 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
             contentType={image.image.contentType}
             fileSize={image.image.size}
             imageDimensions={image.image.dimensions}
+            locale={locale}
           />
           {!!image.tags.tags.length && (
             <HashTagGroup>
@@ -202,7 +201,7 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
           <Button data-testid="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
             {translations.useImageTitle}
           </Button>
-          {showCheckbox && (
+          {!!showCheckbox && (
             <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>
               <CheckboxControl>
                 <CheckboxIndicator asChild>

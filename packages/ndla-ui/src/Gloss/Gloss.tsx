@@ -9,7 +9,7 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { AccordionItemTrigger } from "@ark-ui/react";
-import { ArrowDownShortLine } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons";
 import {
   AccordionItem,
   AccordionItemContent,
@@ -19,7 +19,7 @@ import {
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { type StyledVariantProps } from "@ndla/styled-system/types";
+import type { StyledVariantProps } from "@ndla/styled-system/types";
 import type { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
 import GlossExample from "./GlossExample";
 import SpeechControl from "../AudioPlayer/SpeechControl";
@@ -131,7 +131,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
             <Text textStyle="label.medium" fontWeight="bold" asChild consumeCss lang={glossData.originalLanguage}>
               <span>{glossData.gloss}</span>
             </Text>
-            {glossData.transcriptions.traditional && (
+            {!!glossData.transcriptions.traditional && (
               <Text textStyle="label.medium" asChild consumeCss>
                 <span
                   key={t("gloss.transcriptions.traditional")}
@@ -142,7 +142,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
                 </span>
               </Text>
             )}
-            {glossData.transcriptions.pinyin && (
+            {!!glossData.transcriptions.pinyin && (
               <Text textStyle="label.medium" asChild consumeCss>
                 <span
                   data-pinyin=""
@@ -154,13 +154,13 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
                 </span>
               </Text>
             )}
-            {glossData.wordClass && (
+            {!!glossData.wordClass && (
               <Text textStyle="label.medium" asChild consumeCss>
                 <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
               </Text>
             )}
           </TextWrapper>
-          {audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
+          {!!audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
         </Container>
         <StyledContainer>
           <Text textStyle="label.medium" asChild consumeCss>

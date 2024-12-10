@@ -54,8 +54,6 @@ export {
 
 export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
-export { default as ContentLoader } from "./ContentLoader";
-
 export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleList";
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from "./ErrorMessage";
@@ -94,24 +92,8 @@ export {
   useVideoSearchTranslations,
 } from "./i18n";
 
-export { OneColumn, PageContainer } from "./Layout";
-
-export {
-  default as ContentTypeBadge,
-  SubjectMaterialBadge,
-  TasksAndActivitiesBadge,
-  AssessmentResourcesBadge,
-  LearningPathBadge,
-  SubjectBadge,
-  SourceMaterialBadge,
-  ConceptBadge,
-} from "./ContentTypeBadge";
-
-export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadgeNew";
-export {
-  ContentTypeBadge as ContentTypeBadgeNew,
-  contentTypeToBadgeVariantMap,
-} from "./ContentTypeBadge/ContentTypeBadgeNew";
+export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadge";
+export { ContentTypeBadge, contentTypeToBadgeVariantMap } from "./ContentTypeBadge/ContentTypeBadge";
 
 export { ContentTypeBlockQuote } from "./ContentTypeBlockQuote/ContentTypeBlockQuote";
 export { type ContentTypeBlockQuoteVariant } from "./ContentTypeBlockQuote/ContentTypeBlockQuote";

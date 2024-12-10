@@ -6,9 +6,18 @@
  *
  */
 
-import { ComponentProps, ReactNode, forwardRef, useCallback, useEffect, useId, useMemo, useState } from "react";
+import {
+  type ComponentProps,
+  type ReactNode,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowDownShortLine } from "@ndla/icons/common";
+import { ArrowDownShortLine } from "@ndla/icons";
 import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 
@@ -120,7 +129,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
     // TODO: Remove this hack when we upgrade to React 19.
     const inertAttribute = useMemo(() => {
       return state === "closed" ? { inert: "" } : {};
-    }, [state]);
+    }, [state]) as { inert?: boolean };
 
     useEffect(() => {
       if (open !== undefined) {

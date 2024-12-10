@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Badge } from "./Badge";
 
 export default {
@@ -18,6 +18,7 @@ export default {
   },
   args: {
     colorTheme: "neutral",
+    size: "medium",
     children: "Kjernestoff",
   },
   render: ({ children, ...args }) => <Badge {...args}>{children}</Badge>,
@@ -43,5 +44,33 @@ export const Brand3: StoryObj<typeof Badge> = {
   args: {
     colorTheme: "brand3",
     children: "Læringssti",
+  },
+};
+
+export const Success: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "success",
+    children: "Endret",
+  },
+};
+
+export const Warning: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "warning",
+    children: "Noe skurrer...",
+  },
+};
+
+export const Danger: StoryObj<typeof Badge> = {
+  args: {
+    colorTheme: "danger",
+    children: "Pass på!",
+  },
+};
+
+export const SmallSize: StoryObj<typeof Badge> = {
+  args: {
+    size: "small",
+    children: "Fagstoff",
   },
 };

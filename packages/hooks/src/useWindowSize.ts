@@ -43,10 +43,14 @@ export function useWindowSize(wait?: number) {
     setWindowSize(getSize());
     // Throttle if wait param is provided
     const fn = wait ? throttle(handleResize, wait) : handleResize;
-    window && window.removeEventListener("resize", fn);
-    window && window.addEventListener("resize", fn);
+    if (window) {
+      window.removeEventListener("resize", fn);
+      window.addEventListener("resize", fn);
+    }
     return () => {
-      window && window.removeEventListener("resize", fn);
+      if (window) {
+        window.removeEventListener("resize", fn);
+      }
     };
   }, [wait]);
 

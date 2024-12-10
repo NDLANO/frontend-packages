@@ -6,8 +6,8 @@
  *
  */
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { FootnoteData, FootnoteEmbedData } from "@ndla/types-embed";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { FootnoteData, FootnoteEmbedData } from "@ndla/types-embed";
 import FootnoteEmbed from "./FootnoteEmbed";
 import { ArticleByline } from "../Article";
 

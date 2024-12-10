@@ -6,12 +6,11 @@
  *
  */
 
-import { i18nInstance } from "@ndla/ui";
-import { Preview } from "@storybook/react";
-import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs";
+import type { Preview } from "@storybook/react";
+import { i18nInstance } from "@ndla/ui";
 import "./styles.css";
 
 const viewports = {
@@ -228,9 +227,7 @@ const preview: Preview = {
     (Story) => (
       <BrowserRouter>
         <I18nextProvider i18n={i18nInstance}>
-          <HelmetProvider>
-            <Story />
-          </HelmetProvider>
+          <Story />
         </I18nextProvider>
       </BrowserRouter>
     ),

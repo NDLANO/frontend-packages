@@ -1583,6 +1583,14 @@ const tokens = {
     "value": "var(--colors-pink-500)",
     "variable": "var(--colors-surface-error-subtle-active)"
   },
+  "colors.surface.subtle": {
+    "value": "var(--colors-grey-50)",
+    "variable": "var(--colors-surface-subtle)"
+  },
+  "colors.surface.subtle.selected": {
+    "value": "var(--colors-grey-100)",
+    "variable": "var(--colors-surface-subtle-selected)"
+  },
   "colors.stroke.default": {
     "value": "var(--colors-primary)",
     "variable": "var(--colors-stroke-default)"
@@ -1614,6 +1622,10 @@ const tokens = {
   "colors.stroke.disabled": {
     "value": "var(--colors-grey-300)",
     "variable": "var(--colors-stroke-disabled)"
+  },
+  "colors.stroke.discrete": {
+    "value": "var(--colors-grey-300)",
+    "variable": "var(--colors-stroke-discrete)"
   },
   "spacing.-1": {
     "value": "calc(var(--spacing-1) * -1)",
@@ -2423,9 +2435,17 @@ const tokens = {
     "value": "var(--colors-color-palette-error-subtle-active)",
     "variable": "var(--colors-color-palette-error-subtle-active)"
   },
+  "colors.colorPalette.subtle.selected": {
+    "value": "var(--colors-color-palette-subtle-selected)",
+    "variable": "var(--colors-color-palette-subtle-selected)"
+  },
   "colors.colorPalette.info": {
     "value": "var(--colors-color-palette-info)",
     "variable": "var(--colors-color-palette-info)"
+  },
+  "colors.colorPalette.discrete": {
+    "value": "var(--colors-color-palette-discrete)",
+    "variable": "var(--colors-color-palette-discrete)"
   }
 }
 

@@ -6,7 +6,7 @@
  *
  */
 
-import { Breakpoints } from "../types";
+import type { Breakpoints } from "../types";
 
 const breakpoints: Breakpoints = {
   mobile: "20em",

@@ -6,8 +6,9 @@
  *
  */
 
-import { Element, HTMLReactParserOptions } from "html-react-parser";
-import { RenderContext, CanonicalUrlFuncs, ContentType } from "@ndla/ui";
+import { Element, type HTMLReactParserOptions } from "html-react-parser";
+import type { RenderContext, CanonicalUrlFuncs, ContentType } from "@ndla/ui";
+import type { ReactElement } from "react";
 
 export interface TransformOptions {
   isOembed?: boolean;
@@ -25,4 +26,4 @@ export type PluginType = (
   element: Element,
   options: HTMLReactParserOptions,
   metaData: TransformOptions,
-) => JSX.Element | undefined | null;
+) => ReactElement | undefined | null;

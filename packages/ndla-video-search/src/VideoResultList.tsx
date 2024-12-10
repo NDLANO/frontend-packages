@@ -8,9 +8,9 @@
 
 import { Text, Button, Spinner } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { BrightcoveApiType } from "@ndla/types-embed";
+import type { BrightcoveApiType } from "@ndla/types-embed";
 import { VideoListItem } from "./VideoListItem";
-import { VideoTranslations } from "./VideoSearch";
+import type { VideoTranslations } from "./VideoSearch";
 
 const StyledList = styled("ul", {
   base: {
@@ -64,8 +64,8 @@ export const VideoResultList = ({
           ))}
         </StyledList>
       )}
-      {isLoading && <Spinner />}
-      {existsMoreVideos && <Button onClick={onShowMore}>{translations.loadMoreVideos}</Button>}
+      {!!isLoading && <Spinner />}
+      {!!existsMoreVideos && <Button onClick={onShowMore}>{translations.loadMoreVideos}</Button>}
     </StyledVideoResultWrapper>
   );
 };

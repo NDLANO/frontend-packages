@@ -1,9 +1,0 @@
-
-{
-  "name": "@ndla/icons/editor",
-  "private": true,
-  "main": "../lib/editor/index.js",
-  "module": "../es/editor/index.js",
-  "jsnext:main": "../es/editor/index.js"
-}
-    

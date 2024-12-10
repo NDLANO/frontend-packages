@@ -21,6 +21,10 @@ export const IMAGE = "image";
 export const VIDEO = "video";
 export const AUDIO = "audio";
 export const PODCAST = "podcast";
+export const GLOSS = "gloss";
+export const PROGRAMME = "programme";
+export const PODCAST_SERIES = "podcast-series";
+export const FRONTPAGE_ARTICLE = "frontpage-article";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,
@@ -34,6 +38,8 @@ export const contentTypes = {
   CONCEPT,
   EXTERNAL,
   MISSING,
+  PROGRAMME,
+  PODCAST_SERIES,
 };
 
 export const RESOURCE_TYPE_LEARNING_PATH = "urn:resourcetype:learningPath";
@@ -51,6 +57,8 @@ export const contentTypeMapping: Record<string, string> = {
   [RESOURCE_TYPE_SOURCE_MATERIAL]: SOURCE_MATERIAL,
   [RESOURCE_TYPE_CONCEPT]: CONCEPT,
   [MULTIDISCIPLINARY]: MULTIDISCIPLINARY,
+  [TOPIC]: TOPIC,
+  [FRONTPAGE_ARTICLE]: FRONTPAGE_ARTICLE,
   default: SUBJECT_MATERIAL,
 };
 
@@ -60,4 +68,5 @@ export const resourceEmbedTypeMapping: Record<string, string> = {
   concept: "concept",
   audio: "audio",
   podcast: "podcast",
+  gloss: "gloss",
 };

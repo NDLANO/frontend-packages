@@ -1,6 +1,6 @@
 {
   "name": "@ndla/image-search",
-  "version": "11.0.61-alpha.0",
+  "version": "11.0.70-alpha.0",
   "description": "A simple library for searching images from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -30,12 +30,12 @@
     "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
     "@ndla/styled-system": "workspace:^",
-    "pretty-bytes": "^5.6.0"
+    "@ndla/util": "workspace:^"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^0.2.86",
-    "@pandacss/dev": "^0.46.0"
+    "@pandacss/dev": "^0.48.0"
   },
   "peerDependencies": {
     "react": ">= 18",

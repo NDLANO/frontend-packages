@@ -7,8 +7,8 @@
  */
 
 import { forwardRef } from "react";
-import { FramedContent, FramedContentProps, FramedContentVariantProps } from "@ndla/primitives";
-import { ContentType } from "..";
+import { FramedContent, type FramedContentProps, type FramedContentVariantProps } from "@ndla/primitives";
+import type { ContentType } from "..";
 
 const contentTypeToVariantMapping = {
   "subject-material": "brand1",

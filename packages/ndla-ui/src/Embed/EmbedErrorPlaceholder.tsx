@@ -6,12 +6,12 @@
  *
  */
 
-import { ReactNode } from "react";
-import { Report } from "@ndla/icons/common";
+import { type ReactNode } from "react";
+import { ErrorWarningLine } from "@ndla/icons";
 import { Figure, type FigureFloat, type FigureSize } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { EmbedByline } from "../LicenseByline";
-import { EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
+import { type EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
 
 interface Props {
   type: EmbedBylineErrorProps["type"];
@@ -51,7 +51,7 @@ const EmbedErrorPlaceholder = ({ type, children, figureType, float }: Props) => 
     <StyledFigure size={figureType} float={float} data-embed-type={type}>
       {children ?? (
         <ErrorPlaceholder data-embed-type={type}>
-          <Report />
+          <ErrorWarningLine />
         </ErrorPlaceholder>
       )}
       <EmbedByline error type={type} />

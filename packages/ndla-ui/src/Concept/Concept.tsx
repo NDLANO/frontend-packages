@@ -6,11 +6,11 @@
  *
  */
 
-import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
+import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
-import { ConceptVisualElementMeta } from "@ndla/types-embed";
+import type { IDraftCopyright as ConceptCopyright } from "@ndla/types-backend/concept-api";
+import type { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } from "../Embed";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
@@ -69,7 +69,7 @@ export const Concept = forwardRef<HTMLElement, ConceptProps>(
         ) : visualElement?.resource === "external" ? (
           <ExternalEmbed embed={visualElement} />
         ) : null}
-        {copyright && <EmbedByline copyright={copyright} type="concept" />}
+        {!!copyright && <EmbedByline copyright={copyright} type="concept" />}
       </StyledFigure>
     );
   },

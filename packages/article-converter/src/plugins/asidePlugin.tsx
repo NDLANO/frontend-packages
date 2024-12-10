@@ -6,9 +6,9 @@
  *
  */
 
-import { DOMNode, domToReact } from "html-react-parser";
+import { type DOMNode, domToReact } from "html-react-parser";
 import { FactBox } from "@ndla/ui";
-import { PluginType } from "./types";
+import { type PluginType } from "./types";
 export const asidePlugin: PluginType = (node, opts) => {
   if (node.attribs["data-type"] === "factAside") {
     return <FactBox>{domToReact(node.children as DOMNode[], opts)}</FactBox>;

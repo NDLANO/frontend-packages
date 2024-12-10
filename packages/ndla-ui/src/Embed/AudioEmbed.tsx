@@ -7,9 +7,9 @@
  */
 
 import { Figure } from "@ndla/primitives";
-import { AudioMetaData } from "@ndla/types-embed";
+import type { AudioMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { Author } from "./ImageEmbed";
+import type { Author } from "./ImageEmbed";
 import AudioPlayer from "../AudioPlayer";
 import { EmbedByline } from "../LicenseByline";
 import { licenseAttributes } from "../utils/licenseAttributes";

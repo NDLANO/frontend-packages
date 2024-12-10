@@ -6,7 +6,7 @@
  *
  */
 
-import { ComponentPropsWithRef, ElementType, forwardRef } from "react";
+import { type ComponentPropsWithRef, type ElementType, forwardRef } from "react";
 
 type DistributiveOmit<T, TOmitted extends PropertyKey> = T extends any ? Omit<T, TOmitted> : never;
 

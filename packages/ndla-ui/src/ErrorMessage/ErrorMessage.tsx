@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
@@ -76,27 +76,27 @@ interface Props {
 }
 export const ErrorMessage = ({ children, messages, illustration, illustrationElement, customElement }: Props) => (
   <StyledErrorMessage>
-    {illustration && (
+    {!!illustration && (
       <IllustrationWrapper>
         <img src={illustration.url} alt={illustration.altText} />
       </IllustrationWrapper>
     )}
-    {illustrationElement && <IllustrationWrapper>{illustrationElement}</IllustrationWrapper>}
+    {!!illustrationElement && <IllustrationWrapper>{illustrationElement}</IllustrationWrapper>}
     <h1>{messages.title}</h1>
-    {messages.description && <Description>{messages.description}</Description>}
-    {customElement && <CustomElementWrapper>{customElement}</CustomElementWrapper>}
-    {messages.linksTitle && <h2>{messages.linksTitle}</h2>}
-    {messages.back && (
+    {!!messages.description && <Description>{messages.description}</Description>}
+    {!!customElement && <CustomElementWrapper>{customElement}</CustomElementWrapper>}
+    {!!messages.linksTitle && <h2>{messages.linksTitle}</h2>}
+    {!!messages.back && (
       <SafeLink to={`/#${encodeURI(messages.back)}`} onClick={() => window.history.back()}>
         {messages.back}
       </SafeLink>
     )}
-    {messages.goToFrontPage && (
+    {!!messages.goToFrontPage && (
       <MessageWrapper>
         <SafeLink to="/">{messages.goToFrontPage}</SafeLink>
       </MessageWrapper>
     )}
-    {messages.logInFailed && (
+    {!!messages.logInFailed && (
       <MessageWrapper>
         <SafeLink to="/minndla">{messages.logInFailed}</SafeLink>
       </MessageWrapper>

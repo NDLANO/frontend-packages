@@ -7,10 +7,10 @@
  */
 
 import { forwardRef } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
-import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
+import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps } from "@ndla/styled-system/types";
 
 export const spinnerRecipe = cva({
   base: {

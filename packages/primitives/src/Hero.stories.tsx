@@ -6,7 +6,7 @@
  *
  */
 
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { styled } from "@ndla/styled-system/jsx";
 import { Hero, HeroBackground, HeroContent } from "./Hero";
 import { PageContent } from "./Layout/PageContent";

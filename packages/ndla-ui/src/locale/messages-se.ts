@@ -558,6 +558,7 @@ const messages = {
       blog: "Fágablogga",
       tips: "Cavgileapmi ohppiide",
       vacancies: "Rabas virggit",
+      contact: "Kontakt oss",
     },
     otherLanguages: "Andre språk",
   },
@@ -582,6 +583,10 @@ const messages = {
     video: "Video",
     missing: "Ukjent",
     external: "Ekstern",
+    gloss: "Glose",
+    programme: "Programfag",
+    "podcast-series": "Podkast-serie",
+    "frontpage-article": "Om NDLA-artikkel",
   },
   modal: {
     closeModal: "Govčča",
@@ -824,6 +829,7 @@ const messages = {
     pause: "Boatkke",
     download: "Viečča jietnafiilla",
     reuse: "Geavat jietnafiilla",
+    progressBar: "Fremdriftsindikator",
     error: {
       url: "Boasttuvuohta jietnafiilla viežžamis.",
       caption: "Šállošat, boasttuvuohta čuožžilii jietnafiilla viežžamis.",

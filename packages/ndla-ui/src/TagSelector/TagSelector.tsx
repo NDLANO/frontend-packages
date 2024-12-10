@@ -7,29 +7,28 @@
  */
 
 import { forwardRef, useEffect, useId, useRef } from "react";
-import type { CollectionItem } from "@ark-ui/react";
-import { useTagsInputContext, useComboboxContext } from "@ark-ui/react";
-import { CloseLine } from "@ndla/icons/action";
+import { type CollectionItem, useTagsInputContext, useComboboxContext } from "@ark-ui/react";
+import { CloseLine } from "@ndla/icons";
 import {
   ComboboxClearTrigger,
   ComboboxControl,
-  ComboboxControlProps,
+  type ComboboxControlProps,
   ComboboxInput,
-  ComboboxInputProps,
+  type ComboboxInputProps,
   ComboboxLabel,
   ComboboxRoot,
-  ComboboxRootProps,
+  type ComboboxRootProps,
   ComboboxTrigger,
   TagsInputControl,
-  TagsInputControlProps,
+  type TagsInputControlProps,
   TagsInputInput,
-  TagsInputInputProps,
+  type TagsInputInputProps,
   TagsInputItem,
   TagsInputItemDeleteTrigger,
   TagsInputItemPreview,
   TagsInputItemText,
   TagsInputRoot,
-  TagsInputRootProps,
+  type TagsInputRootProps,
   TagsInputItemInput,
 } from "@ndla/primitives";
 import { contains } from "@ndla/util";

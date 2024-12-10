@@ -9,8 +9,8 @@
 import { useTranslation } from "react-i18next";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { SystemStyleObject } from "@ndla/styled-system/types";
-import { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { SystemStyleObject } from "@ndla/styled-system/types";
+import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
 import { LicenseContainerContent } from "../LicenseByline/EmbedByline";
 
 export type ContactBlockBackground = "strong" | "moderate" | "subtle";
@@ -180,7 +180,7 @@ export const ContactBlock = ({
         </HeaderWrapper>
         <StyledDescription textStyle="body.large">{description}</StyledDescription>
       </ContentWrapper>
-      {image && (
+      {!!image && (
         <ImageWrapper variant={backgroundColor}>
           <StyledImage
             alt={embedAlt !== undefined ? embedAlt : image.alttext.alttext}

@@ -7,9 +7,9 @@
  */
 
 import { attributesToProps } from "html-react-parser";
-import { ConceptMetaData } from "@ndla/types-embed";
+import { type ConceptMetaData } from "@ndla/types-embed";
 import { ConceptEmbed } from "@ndla/ui";
-import { PluginType } from "../types";
+import { type PluginType } from "../types";
 
 export const conceptEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);

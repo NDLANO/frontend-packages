@@ -9,7 +9,7 @@
 import { Fragment } from "react";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { IGlossExample } from "@ndla/types-backend/concept-api";
+import type { IGlossExample } from "@ndla/types-backend/concept-api";
 
 interface Props {
   examples: IGlossExample[];

@@ -7,10 +7,10 @@
  */
 
 import { createContext, forwardRef, useCallback, useContext, useEffect, useRef } from "react";
-import { Field, HTMLArkProps, ark } from "@ark-ui/react";
+import { Field, type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, type RecipeVariantProps } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { composeRefs } from "@ndla/util";
 
 interface InputContextType {}

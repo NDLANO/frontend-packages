@@ -8,7 +8,7 @@
 
 import { Field, Fieldset } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
-import { SystemStyleObject } from "@ndla/styled-system/types";
+import type { SystemStyleObject } from "@ndla/styled-system/types";
 
 const rootStyle: SystemStyleObject = {
   display: "flex",

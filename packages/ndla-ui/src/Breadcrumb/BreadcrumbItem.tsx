@@ -6,8 +6,8 @@
  *
  */
 
-import { useRef, useImperativeHandle, ReactNode, forwardRef } from "react";
-import { ArrowRightShortLine } from "@ndla/icons/common";
+import { useRef, useImperativeHandle, type ReactNode, forwardRef } from "react";
+import { ArrowRightShortLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 
@@ -51,7 +51,7 @@ interface Props {
 }
 
 const BreadcrumbItem = forwardRef<any, Props>(({ renderItem, renderSeparator, item, totalCount }, ref) => {
-  const liRef = useRef<any>();
+  const liRef = useRef<any>(null);
 
   useImperativeHandle(ref, () => ({
     setMaxWidth: (maxWidth: number) => {

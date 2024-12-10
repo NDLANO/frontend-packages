@@ -6,11 +6,11 @@
  *
  */
 
-import { ReactNode, forwardRef } from "react";
-import { HTMLArkProps, ark } from "@ark-ui/react";
-import { RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
+import { type ReactNode, forwardRef } from "react";
+import { type HTMLArkProps, ark } from "@ark-ui/react";
+import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
+import type { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
 import { Spinner } from "./Spinner";
 
 export const buttonBaseRecipe = cva({
@@ -70,6 +70,9 @@ export const buttonBaseRecipe = cva({
           boxShadow:
             "inset 0 0 0 var(--shadow-width, 3px) var(--shadow-color), inset 0px 0px 0px calc(var(--shadow-width, 3px) * 2) currentcolor",
         },
+        _on: {
+          background: "surface.action.selected",
+        },
       },
       secondary: {
         color: "text.strong",
@@ -80,6 +83,9 @@ export const buttonBaseRecipe = cva({
         },
         _active: {
           background: "surface.actionSubtle.hover.strong",
+        },
+        _on: {
+          background: "surface.actionSubtle.active",
         },
       },
       tertiary: {
@@ -95,6 +101,10 @@ export const buttonBaseRecipe = cva({
         _active: {
           borderColor: "stroke.default",
           background: "surface.actionSubtle.hover.strong",
+        },
+        _on: {
+          background: "surface.actionSubtle.active",
+          boxShadow: "inset 0 0 0 1px var(--shadow-color)",
         },
       },
       clear: {

@@ -7,9 +7,7 @@
  */
 
 import { ComponentPropsWithoutRef } from "react";
-import { useTranslation } from "react-i18next";
 import { ark } from "@ark-ui/react";
-import { Heading } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {}
@@ -42,12 +40,8 @@ export const FileListItem = styled(
 );
 
 export const FileListEmbed = ({ children, ...rest }: Props) => {
-  const { t } = useTranslation();
   return (
     <FileListWrapper {...rest} data-embed-type="file-list">
-      <Heading fontWeight="bold" textStyle="heading.small" asChild consumeCss>
-        <h2>{t("files")}</h2>
-      </Heading>
       <ul>{children}</ul>
     </FileListWrapper>
   );

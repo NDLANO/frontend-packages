@@ -27,7 +27,7 @@
     "src"
   ],
   "devDependencies": {
-    "@ndla/types-backend": "^0.2.86",
+    "@ndla/types-backend": "^1.0.1",
     "@ndla/types-embed": "^5.0.5-alpha.0"
   },
   "dependencies": {

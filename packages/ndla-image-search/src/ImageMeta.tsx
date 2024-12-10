@@ -8,13 +8,13 @@
 
 import { useMemo } from "react";
 import { Text } from "@ndla/primitives";
-import type { IImageDimensions } from "@ndla/types-backend/image-api";
+import type { IImageDimensionsDTO } from "@ndla/types-backend/image-api";
 import { humanFileSize } from "@ndla/util";
 
 interface Props {
   contentType: string;
   fileSize: number;
-  imageDimensions?: IImageDimensions;
+  imageDimensions?: IImageDimensionsDTO;
   locale: string;
 }
 

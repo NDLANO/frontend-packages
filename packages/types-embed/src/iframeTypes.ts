@@ -6,7 +6,7 @@
  *
  */
 
-import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { MetaData } from ".";
 
 export interface IframeEmbedData {
@@ -22,7 +22,7 @@ export interface IframeEmbedData {
 }
 
 export interface IframeData {
-  iframeImage?: IImageMetaInformationV3;
+  iframeImage?: IImageMetaInformationV3DTO;
 }
 
 export type IframeMetaData = MetaData<IframeEmbedData, IframeData>;

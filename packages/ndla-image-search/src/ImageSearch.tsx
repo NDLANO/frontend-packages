@@ -22,7 +22,7 @@ import {
   type PaginationRootProps,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3DTO, ISearchResultV3DTO, ISearchParamsDTO } from "@ndla/types-backend/image-api";
 import ImageSearchResult from "./ImageSearchResult";
 
 const ImageSearchWrapper = styled("div", {
@@ -100,13 +100,13 @@ export interface ImageSearchTranslations {
 }
 
 interface Props {
-  onImageSelect: (image: IImageMetaInformationV3) => void;
-  searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3>;
-  fetchImage: (id: number) => Promise<IImageMetaInformationV3>;
+  onImageSelect: (image: IImageMetaInformationV3DTO) => void;
+  searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3DTO>;
+  fetchImage: (id: number) => Promise<IImageMetaInformationV3DTO>;
   onError?: (err: any) => void;
   locale: string;
   noResults?: ReactNode;
-  checkboxAction?: (image: IImageMetaInformationV3) => void;
+  checkboxAction?: (image: IImageMetaInformationV3DTO) => void;
   showCheckbox?: boolean;
   translations: ImageSearchTranslations;
 }
@@ -122,19 +122,19 @@ const ImageSearch = ({
   showCheckbox,
   translations,
 }: Props) => {
-  const [queryObject, setQueryObject] = useState<ISearchParams>({
+  const [queryObject, setQueryObject] = useState<ISearchParamsDTO>({
     query: undefined,
     page: 1,
     pageSize: 16,
   });
-  const [selectedImage, setSelectedImage] = useState<IImageMetaInformationV3 | undefined>();
+  const [selectedImage, setSelectedImage] = useState<IImageMetaInformationV3DTO | undefined>();
   const [searching, setSearching] = useState<boolean>(false);
-  const [searchResult, setSearchResult] = useState<ISearchResultV3 | undefined>();
+  const [searchResult, setSearchResult] = useState<ISearchResultV3DTO | undefined>();
 
   const { page } = queryObject;
   const noResultsFound = !searching && searchResult?.results.length === 0;
 
-  const onImageClick = (image: IImageMetaInformationV3) => {
+  const onImageClick = (image: IImageMetaInformationV3DTO) => {
     if (!selectedImage || image.id !== selectedImage.id) {
       fetchImage(Number.parseInt(image.id))
         .then((result) => {
@@ -146,7 +146,7 @@ const ImageSearch = ({
     }
   };
 
-  const onSelectImage = (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => {
+  const onSelectImage = (image: IImageMetaInformationV3DTO | undefined, saveAsMetaImage?: boolean) => {
     setSelectedImage(undefined);
     if (!image) return;
     onImageSelect(image);
@@ -155,7 +155,7 @@ const ImageSearch = ({
     }
   };
 
-  const searchImages = (queryObject: ISearchParams) => {
+  const searchImages = (queryObject: ISearchParamsDTO) => {
     setSearching(true);
     search(queryObject.query, queryObject.page)
       .then((result) => {

@@ -8,7 +8,7 @@
 
 import { Text, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { PreviewTranslations } from "./ImageSearch";
 import PreviewImage from "./PreviewImage";
 import { getPreviewSrcSets } from "./util/imageUtil";
@@ -36,10 +36,10 @@ const StyledText = styled(Text, {
 });
 
 interface Props {
-  image: IImageMetaInformationV3;
-  onImageClick: (image: IImageMetaInformationV3) => void;
-  selectedImage?: IImageMetaInformationV3;
-  onSelectImage: (image: IImageMetaInformationV3 | undefined, saveAsMetaImage?: boolean) => void;
+  image: IImageMetaInformationV3DTO;
+  onImageClick: (image: IImageMetaInformationV3DTO) => void;
+  selectedImage?: IImageMetaInformationV3DTO;
+  onSelectImage: (image: IImageMetaInformationV3DTO | undefined, saveAsMetaImage?: boolean) => void;
   showCheckbox: boolean;
   translations: PreviewTranslations;
   locale: string;

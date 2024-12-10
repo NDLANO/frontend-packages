@@ -9,7 +9,7 @@
 import type { ReactNode } from "react";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
+import type { IAudioMetaInformationDTO, IAudioSummaryDTO } from "@ndla/types-backend/audio-api";
 import AudioSearchResult from "./AudioSearchResult";
 
 const StyledList = styled("ul", {
@@ -19,7 +19,7 @@ const StyledList = styled("ul", {
 });
 
 interface Props {
-  audios: IAudioSummary[];
+  audios: IAudioSummaryDTO[];
   searching: boolean;
   locale: string;
   translations: {
@@ -27,8 +27,8 @@ interface Props {
     useAudio: string;
   };
   onError: (err: any) => void;
-  fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
-  onAudioSelect: (audio: IAudioSummary) => void;
+  fetchAudio: (id: number) => Promise<IAudioMetaInformationDTO>;
+  onAudioSelect: (audio: IAudioSummaryDTO) => void;
   loadingIndicator: ReactNode;
 }
 

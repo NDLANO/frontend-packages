@@ -20,7 +20,7 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledVariantProps } from "@ndla/styled-system/types";
-import type { IGlossData, IGlossExample } from "@ndla/types-backend/concept-api";
+import type { IGlossDataDTO, IGlossExampleDTO } from "@ndla/types-backend/concept-api";
 import GlossExample from "./GlossExample";
 import SpeechControl from "../AudioPlayer/SpeechControl";
 
@@ -29,10 +29,10 @@ import SpeechControl from "../AudioPlayer/SpeechControl";
 // When a gloss is bordered there's way too much padding.
 
 const getFilteredExamples = (
-  glossData: IGlossData | undefined,
+  glossData: IGlossDataDTO | undefined,
   exampleIds: string | undefined,
   exampleLangs: string | undefined,
-): IGlossExample[][] => {
+): IGlossExampleDTO[][] => {
   if (exampleIds !== undefined || exampleLangs !== undefined) {
     const exampleIdsList = exampleIds?.toString()?.split(",") ?? [];
     const exampleLangsList = exampleLangs?.split(",") ?? [];
@@ -104,7 +104,7 @@ export interface Props {
     title: string;
     language: string;
   };
-  glossData?: IGlossData;
+  glossData?: IGlossDataDTO;
   audio?: {
     title: string;
     src?: string;

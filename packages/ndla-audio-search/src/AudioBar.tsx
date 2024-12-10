@@ -9,11 +9,11 @@
 /* eslint jsx-a11y/media-has-caption: 0 */
 
 import { useEffect, useState } from "react";
-import type { IAudioMetaInformation } from "@ndla/types-backend/audio-api";
+import type { IAudioMetaInformationDTO } from "@ndla/types-backend/audio-api";
 
 interface Props {
   audio: { id: number };
-  fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
+  fetchAudio: (id: number) => Promise<IAudioMetaInformationDTO>;
   onError: (err: any) => void;
 }
 

@@ -6,7 +6,7 @@
  *
  */
 
-import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { MetaData } from ".";
 
 export type KeyFigureEmbedData = {
@@ -18,7 +18,7 @@ export type KeyFigureEmbedData = {
 };
 
 export interface KeyFigureMeta {
-  metaImage?: IImageMetaInformationV3;
+  metaImage?: IImageMetaInformationV3DTO;
 }
 
 export type KeyFigureMetaData = MetaData<KeyFigureEmbedData, KeyFigureMeta>;

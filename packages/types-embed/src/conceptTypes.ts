@@ -6,7 +6,7 @@
  *
  */
 
-import type { IConcept } from "@ndla/types-backend/concept-api";
+import type { IConceptDTO } from "@ndla/types-backend/concept-api";
 import type {
   AudioEmbedData,
   AudioMetaData,
@@ -46,7 +46,7 @@ export type ConceptVisualElementMeta =
   | AudioMetaData;
 
 export interface ConceptData {
-  concept: IConcept;
+  concept: IConceptDTO;
   visualElement?: ConceptVisualElementMeta;
 }
 

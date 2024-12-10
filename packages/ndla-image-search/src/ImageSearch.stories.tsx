@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryFn } from "@storybook/react";
-import type { IImageMetaInformationV3, ISearchResultV3 } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3DTO, ISearchResultV3DTO } from "@ndla/types-backend/image-api";
 import ImageSearch from "./ImageSearch";
 
 export default {
@@ -42,7 +42,7 @@ export default {
 } as Meta<typeof ImageSearch>;
 
 export const Default: StoryFn<typeof ImageSearch> = ({ ...args }) => {
-  const fetchImages = (query?: string, page?: number): Promise<ISearchResultV3> => {
+  const fetchImages = (query?: string, page?: number): Promise<ISearchResultV3DTO> => {
     const queryString = query ? `query=${query}&page=${page}&page-size=15` : `page=${page}&page-size=15`;
     return new Promise((resolve, reject) => {
       fetch(`https://api.test.ndla.no/image-api/v3/images/?${queryString}`, {
@@ -56,7 +56,7 @@ export const Default: StoryFn<typeof ImageSearch> = ({ ...args }) => {
     });
   };
 
-  const fetchImage = (id: string | number): Promise<IImageMetaInformationV3> =>
+  const fetchImage = (id: string | number): Promise<IImageMetaInformationV3DTO> =>
     new Promise((resolve, reject) => {
       fetch(`https://api.test.ndla.no/image-api/v3/images/${id}`, {
         method: "GET",

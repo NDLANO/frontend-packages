@@ -9,10 +9,10 @@
 import { Fragment } from "react";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IGlossExample } from "@ndla/types-backend/concept-api";
+import type { IGlossExampleDTO } from "@ndla/types-backend/concept-api";
 
 interface Props {
-  examples: IGlossExample[];
+  examples: IGlossExampleDTO[];
   originalLanguage: string | undefined;
 }
 

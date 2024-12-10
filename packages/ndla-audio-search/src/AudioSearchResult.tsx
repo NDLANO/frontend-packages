@@ -9,7 +9,7 @@
 import { getLicenseByAbbreviation, type LicenseLocaleType } from "@ndla/licenses";
 import { Text, ListItemContent, ListItemRoot, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IAudioMetaInformation, IAudioSummary } from "@ndla/types-backend/audio-api";
+import type { IAudioMetaInformationDTO, IAudioSummaryDTO } from "@ndla/types-backend/audio-api";
 import AudioBar from "./AudioBar";
 
 const StyledAudioMeta = styled("div", {
@@ -42,12 +42,12 @@ const LicenseLink = ({ license }: LicenseLinkProps) => {
 };
 
 interface Props {
-  audio: IAudioSummary;
+  audio: IAudioSummaryDTO;
   translations: { useAudio: string };
-  fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
+  fetchAudio: (id: number) => Promise<IAudioMetaInformationDTO>;
   onError: (err: any) => void;
   locale: string;
-  onAudioSelect: (audio: IAudioSummary) => void;
+  onAudioSelect: (audio: IAudioSummaryDTO) => void;
 }
 
 export default function AudioSearchResult({ audio, fetchAudio, onError, locale, translations, onAudioSelect }: Props) {

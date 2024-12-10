@@ -6,7 +6,7 @@
  *
  */
 
-import type { IImageMetaInformationV3 } from "@ndla/types-backend/image-api";
+import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { MetaData } from ".";
 export interface ContactBlockEmbedData {
   resource: "contact-block";
@@ -19,7 +19,7 @@ export interface ContactBlockEmbedData {
   background?: string;
 }
 export interface ContactBlockData {
-  image: IImageMetaInformationV3;
+  image: IImageMetaInformationV3DTO;
 }
 
 export type ContactBlockMetaData = MetaData<ContactBlockEmbedData, ContactBlockData>;

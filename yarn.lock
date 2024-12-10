@@ -2578,7 +2578,7 @@ __metadata:
   resolution: "@ndla/article-converter@workspace:packages/article-converter"
   dependencies:
     "@ndla/primitives": "workspace:^"
-    "@ndla/types-backend": "npm:^0.2.86"
+    "@ndla/types-backend": "npm:^1.0.1"
     "@ndla/types-embed": "npm:^5.0.5-alpha.0"
     "@ndla/ui": "npm:^56.0.78-alpha.0"
     html-react-parser: "npm:^5.1.19"
@@ -2600,7 +2600,7 @@ __metadata:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^0.2.86"
+    "@ndla/types-backend": "npm:^1.0.1"
     "@pandacss/dev": "npm:^0.48.0"
   peerDependencies:
     react: ">= 18"
@@ -2660,7 +2660,7 @@ __metadata:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^0.2.86"
+    "@ndla/types-backend": "npm:^1.0.1"
     "@ndla/util": "workspace:^"
     "@pandacss/dev": "npm:^0.48.0"
   peerDependencies:
@@ -2751,10 +2751,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/types-backend@npm:^0.2.86":
-  version: 0.2.86
-  resolution: "@ndla/types-backend@npm:0.2.86"
-  checksum: 10c0/96125abec7d8aed87d9048266db7953e8c56b1bc873da654faf8303e9f33e0b6dbc34c997de0c4a6bfa8691786f61a7220dec4b26880733e8e00327f09a57cfb
+"@ndla/types-backend@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@ndla/types-backend@npm:1.0.1"
+  checksum: 10c0/417fd69c5fc526f4b90371b0d00162909c2cec496e4228230990839c10d2c5a0a0caf562cb4e7e44c8bf66b4583b826d87f3aababaed6e3a9e727ba8385f0e1b
   languageName: node
   linkType: hard
 
@@ -2762,7 +2762,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/types-embed@workspace:packages/types-embed"
   dependencies:
-    "@ndla/types-backend": "npm:^0.2.86"
+    "@ndla/types-backend": "npm:^1.0.1"
     "@ndla/types-taxonomy": "npm:^1.0.26"
   languageName: unknown
   linkType: soft
@@ -2785,7 +2785,7 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "npm:^7.0.63-alpha.0"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^0.2.86"
+    "@ndla/types-backend": "npm:^1.0.1"
     "@ndla/types-embed": "npm:^5.0.5-alpha.0"
     "@ndla/util": "npm:^5.0.3-alpha.0"
     "@pandacss/dev": "npm:^0.48.0"
@@ -9572,7 +9572,7 @@ __metadata:
     "@fontsource/source-code-pro": "npm:^4.5.9"
     "@fontsource/source-sans-pro": "npm:^4.5.9"
     "@fontsource/source-serif-pro": "npm:^4.5.7"
-    "@ndla/types-backend": "npm:^0.2.86"
+    "@ndla/types-backend": "npm:^1.0.1"
     "@pandacss/dev": "npm:^0.48.0"
     "@storybook/addon-a11y": "npm:^8.4.7"
     "@storybook/addon-docs": "npm:^8.4.7"

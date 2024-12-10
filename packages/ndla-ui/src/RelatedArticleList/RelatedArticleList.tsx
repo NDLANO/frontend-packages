@@ -6,7 +6,7 @@
  *
  */
 
-import { Children, type ComponentPropsWithoutRef, type ReactNode, useMemo, useState } from "react";
+import { Children, type ComponentPropsWithoutRef, type ReactElement, type ReactNode, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ExternalLinkLine } from "@ndla/icons";
 import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla/primitives";
@@ -108,7 +108,7 @@ const StyledButton = styled(Button, {
 });
 
 interface Props extends ComponentPropsWithoutRef<"section"> {
-  children?: JSX.Element[];
+  children?: ReactElement[];
   articleCount?: number;
   headingLevel?: HeadingLevel;
   headingButtons?: ReactNode;

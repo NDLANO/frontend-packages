@@ -45,7 +45,7 @@ const SubTitleWrapper = styled("div", {
   },
 });
 
-interface Props {
+export interface Props {
   image?: {
     src?: string;
     alt?: string;

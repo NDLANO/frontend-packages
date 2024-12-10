@@ -51,7 +51,7 @@ interface Props {
 }
 
 const BreadcrumbItem = forwardRef<any, Props>(({ renderItem, renderSeparator, item, totalCount }, ref) => {
-  const liRef = useRef<any>();
+  const liRef = useRef<any>(null);
 
   useImperativeHandle(ref, () => ({
     setMaxWidth: (maxWidth: number) => {

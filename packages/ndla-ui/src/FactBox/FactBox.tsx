@@ -129,7 +129,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
     // TODO: Remove this hack when we upgrade to React 19.
     const inertAttribute = useMemo(() => {
       return state === "closed" ? { inert: "" } : {};
-    }, [state]);
+    }, [state]) as { inert?: boolean };
 
     useEffect(() => {
       if (open !== undefined) {

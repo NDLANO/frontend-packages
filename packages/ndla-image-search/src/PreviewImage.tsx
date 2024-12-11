@@ -135,7 +135,7 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
         <StyledImageMetadata>
           <StyledTopRow>
             <Text textStyle="title.medium">
-              {image.title.title.trim() ? image.title.title : translations.missingTitleFallback ?? `ID: ${image.id}`}
+              {image.title.title.trim() ? image.title.title : (translations.missingTitleFallback ?? `ID: ${image.id}`)}
             </Text>
             <IconButton
               variant="tertiary"

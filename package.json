@@ -83,7 +83,7 @@
     "lerna": "^8.1.9",
     "nx": "20.1.4",
     "postcss": "^8.4.22",
-    "prettier": "^3.1.0",
+    "prettier": "^3.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^14.1.1",

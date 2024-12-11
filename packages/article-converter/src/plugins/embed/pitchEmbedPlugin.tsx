@@ -25,7 +25,7 @@ export const pitchEmbedPlugin: PluginType = (element, _, opts) => {
       path={opts.path}
       metaImage={{
         alt: alt ? alt : "",
-        url: data.status === "success" ? data.data.metaImage?.image.imageUrl ?? errorSvgSrc : errorSvgSrc,
+        url: data.status === "success" ? (data.data.metaImage?.image.imageUrl ?? errorSvgSrc) : errorSvgSrc,
       }}
     />
   );

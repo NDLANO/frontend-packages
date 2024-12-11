@@ -203,7 +203,7 @@ const InternalListItemRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & 
 export const ListItemRoot = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => (
   <InternalListItemRoot
     {...props}
-    colorTheme={props.nonInteractive ? undefined : props.colorTheme ?? "brand1"}
+    colorTheme={props.nonInteractive ? undefined : (props.colorTheme ?? "brand1")}
     ref={ref}
   />
 ));

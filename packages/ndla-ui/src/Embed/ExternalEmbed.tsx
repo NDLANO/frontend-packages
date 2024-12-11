@@ -50,7 +50,7 @@ const ExternalEmbed = ({ embed }: Props) => {
   if (embedData.type === "fullscreen") {
     const image = {
       src: data.iframeImage?.image.imageUrl ?? "",
-      alt: embedData.alt !== undefined ? embedData.alt : data.iframeImage?.alttext?.alttext ?? "",
+      alt: embedData.alt !== undefined ? embedData.alt : (data.iframeImage?.alttext?.alttext ?? ""),
     };
     return (
       <Figure data-embed-type="external">

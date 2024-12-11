@@ -72,7 +72,7 @@ export default function ImageSearchResult({
         />
         <StyledText textStyle="label.medium" asChild consumeCss>
           <span>
-            {image.title.title.trim() ? image.title.title : translations.missingTitleFallback ?? `ID: ${image.id}`}
+            {image.title.title.trim() ? image.title.title : (translations.missingTitleFallback ?? `ID: ${image.id}`)}
           </span>
         </StyledText>
       </StyledButton>

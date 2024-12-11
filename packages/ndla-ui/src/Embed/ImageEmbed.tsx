@@ -223,7 +223,7 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
 
   const licenseProps = licenseAttributes(data.copyright.license.license, lang, embedData.url);
 
-  const figureSize = figureProps?.float ? figureProps?.size ?? "medium" : "full";
+  const figureSize = figureProps?.float ? (figureProps?.size ?? "medium") : "full";
 
   return (
     <StyledFigure

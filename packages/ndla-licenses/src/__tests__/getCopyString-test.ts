@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint-env jest */
-
 import { i18nInstance } from "../../../ndla-ui/src/i18n";
 import {
   getCopyString,

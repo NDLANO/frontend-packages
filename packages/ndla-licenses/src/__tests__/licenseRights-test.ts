@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint-env jest */
-
 import { getLicenseRightByAbbreviation, BY, COPYRIGHTED } from "../licenseRights";
 
 test("lisence/getLicenseRightByAbbreviation get info for BY in bokmål", () => {

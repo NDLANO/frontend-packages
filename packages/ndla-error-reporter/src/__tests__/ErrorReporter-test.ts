@@ -6,9 +6,6 @@
  *
  */
 
-/* eslint-env jest */
-
-import "isomorphic-fetch";
 import nock from "nock";
 import { ErrorReporter } from "../index";
 

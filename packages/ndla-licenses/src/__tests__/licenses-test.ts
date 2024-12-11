@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint-env jest */
-
 import { BY, SA, NC, CC, COPYRIGHTED, NA } from "../licenseRights";
 import { getLicenseByAbbreviation, isCreativeCommonsLicense } from "../licenses";
 

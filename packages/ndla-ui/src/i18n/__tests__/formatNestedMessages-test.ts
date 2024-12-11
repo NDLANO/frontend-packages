@@ -6,7 +6,6 @@
  *
  */
 
-/* eslint-env jest */
 import { formatNestedMessages } from "../formatNestedMessages";
 
 test("i18n formatNestedMessages()", () => {

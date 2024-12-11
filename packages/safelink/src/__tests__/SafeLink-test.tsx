@@ -6,12 +6,9 @@
  *
  */
 
-/* eslint-env jest */
-
-import React, { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { StaticRouter } from "react-router-dom/server.js";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import { MissingRouterContext } from "../MissingRouterContext";
 import { SafeLink, isOldNdlaLink } from "../SafeLink";
 

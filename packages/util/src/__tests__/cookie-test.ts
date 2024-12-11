@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint-env jest */
-
 import { getCookie, isValidCookie } from "../index";
 
 const testCookieKey = "COOKIE_KEY";

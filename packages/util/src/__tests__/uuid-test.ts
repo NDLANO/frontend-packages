@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint-env jest */
-
 import { uuid } from "../index";
 
 test("@ndla/util/uuid sanity test", () => {

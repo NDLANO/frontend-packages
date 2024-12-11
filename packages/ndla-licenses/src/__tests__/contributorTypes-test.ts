@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint-env jest */
-
 import {
   contributorTypes,
   contributorGroups,

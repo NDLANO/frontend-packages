@@ -16,7 +16,7 @@
     "sourceMap": true,
     "verbatimModuleSyntax": true,
     "lib": ["ES2023", "esnext.asynciterable", "dom"],
-    "types": ["jest", "node"],
+    "types": ["vitest/globals", "node", "@testing-library/jest-dom"],
     "paths": {
       "@ndla/article-converter": ["./packages/article-converter/src"],
       "@ndla/audio-search": ["./packages/ndla-audio-search/src"],
@@ -38,5 +38,5 @@
     }
   },
   "include": ["./packages/**/*", "./stories/**/*", "./dummydata/**/*", ".storybook/**/*"],
-  "exclude": ["./packages/*/lib", "**/*-test.*"]
+  "exclude": ["./packages/*/lib"]
 }

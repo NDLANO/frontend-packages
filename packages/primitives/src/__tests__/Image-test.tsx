@@ -6,9 +6,7 @@
  *
  */
 
-import React from "react";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import { Image, makeSrcQueryString } from "../Image";
 
 test("Image renderers correctly", () => {

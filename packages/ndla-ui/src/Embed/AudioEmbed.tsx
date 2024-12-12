@@ -53,7 +53,7 @@ const AudioEmbed = ({ embed, lang }: Props) => {
         src={data.audioFile.url}
         textVersion={
           data.manuscript?.manuscript.length ? (
-            <span dangerouslySetInnerHTML={{ __html: data.manuscript.manuscript }} />
+            <div dangerouslySetInnerHTML={{ __html: data.manuscript.manuscript }} />
           ) : undefined
         }
         title={data.title.title}

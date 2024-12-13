@@ -269,23 +269,18 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
   ({ loading, loadingContent: loadingContentProp, replaceContent, onClick, children, ...props }, ref) => {
     const ariaDisabled = loading ? { "aria-disabled": true } : {};
 
-    // The conditions within this component are a bit complex, but unfortunately necessary.
-    // Google Translate and React do not play well together. If we use a fragment for the loading content, React will crash.
-    // This is supposed to be the inline equivalent of:
-    //
-    //  const loadingContent = replaceContent ? (
-    //   loadingContentProp
-    //  ) : (
-    //    <>
-    //      {loadingContentProp}
-    //      {children}
-    //    </>
-    //  );
+    const loadingContent = replaceContent ? (
+      loadingContentProp
+    ) : (
+      <>
+        {loadingContentProp}
+        {children}
+      </>
+    );
 
     return (
       <StyledButton onClick={loading ? undefined : onClick} {...ariaDisabled} {...props} ref={ref}>
-        {!!loading && loadingContentProp}
-        {(!loading || (!!loading && !replaceContent)) && children}
+        {loading ? loadingContent : children}
       </StyledButton>
     );
   },

@@ -8,19 +8,10 @@
 
 import type { MetaData } from ".";
 
-export interface DisclaimerLink {
-  text: string;
-  href: string;
-}
-
 export interface UuDisclaimerEmbedData {
   resource: "uu-disclaimer";
   disclaimer: string;
   articleId?: string;
 }
 
-export interface UuDisclaimerData {
-  disclaimerLink?: DisclaimerLink;
-}
-
-export type UuDisclaimerMetaData = MetaData<UuDisclaimerEmbedData, UuDisclaimerData>;
+export type UuDisclaimerMetaData = MetaData<UuDisclaimerEmbedData, null>;

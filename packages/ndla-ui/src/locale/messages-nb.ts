@@ -275,8 +275,10 @@ const messages = {
       "Tilleggsstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.",
     youAreHere: "Du er her",
     trait: {
-      video: "Video",
+      audio: "Lyd",
       h5p: "Interaktiv",
+      podcast: "Podkast",
+      video: "Video",
     },
   },
   messageBoxInfo: {

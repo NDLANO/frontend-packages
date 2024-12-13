@@ -275,8 +275,10 @@ const messages = {
       "Tilleggsstoff er innhald du kan velje i tillegg til kjernestoffet. Gjennom dette kan du fordjupe deg i eit emne eller nærme deg emnet på ein annan måte.",
     youAreHere: "Du er her",
     trait: {
-      video: "Video",
+      audio: "Lyd",
       h5p: "Interaktiv",
+      podcast: "Podkast",
+      video: "Video",
     },
   },
   messageBoxInfo: {

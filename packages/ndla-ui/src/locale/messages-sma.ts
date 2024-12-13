@@ -274,8 +274,10 @@ const messages = {
       "Lissie-aamhtese lea faagesisvege maam maahtah lissine veeljedh jarnge-aamhtesasse. Maahtah veelebelaakan teemam goerehtidh jallh teemam jeatjahlaakan geatskanidh.",
     youAreHere: "Datne daesnie",
     trait: {
-      video: "Videjove",
+      audio: "Tjoeje",
       h5p: "Interaktijve",
+      podcast: "Podkast",
+      video: "Videjove",
     },
   },
   messageBoxInfo: {

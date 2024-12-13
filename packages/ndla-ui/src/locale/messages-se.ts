@@ -275,8 +275,10 @@ const messages = {
       "Lassiávnnas lea sisdoallu fágas maid sáhtát lassin válljet guovddášávdnasii. Lassiávdnasa bokte sáhtát čiekŋudit iežat muhtin fáddái dahje lahkonaddat fáddái eará vugiin.",
     youAreHere: "Don leat dás",
     trait: {
-      video: "Video",
+      audio: "Jietna",
       h5p: "Interaktiiva",
+      podcast: "Podkásta",
+      video: "Video",
     },
   },
   messageBoxInfo: {

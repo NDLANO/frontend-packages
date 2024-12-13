@@ -274,8 +274,10 @@ const messages = {
       "Additional content is content in the subject that you can choose in addition to the core material. Through the additional subject, you can immerse yourself in a topic or approach yourself in a different way.",
     youAreHere: "You are here",
     trait: {
-      video: "Video",
+      audio: "Audio",
       h5p: "Interactive",
+      podcast: "Podcast",
+      video: "Video",
     },
   },
   messageBoxInfo: {

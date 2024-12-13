@@ -19,6 +19,7 @@ import {
   Text,
   Image,
   IconButton,
+  FieldRoot,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
@@ -105,6 +106,10 @@ const ActionsWrapper = styled("div", {
     gap: "small",
     marginBlockEnd: "medium",
   },
+});
+
+const StyledFieldRoot = styled(FieldRoot, {
+  base: { alignSelf: "center" },
 });
 
 interface Props {
@@ -202,15 +207,17 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
             {translations.useImageTitle}
           </Button>
           {!!showCheckbox && (
-            <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>
-              <CheckboxControl>
-                <CheckboxIndicator asChild>
-                  <CheckLine />
-                </CheckboxIndicator>
-              </CheckboxControl>
-              <CheckboxLabel>{translations.checkboxLabel}</CheckboxLabel>
-              <CheckboxHiddenInput />
-            </CheckboxRoot>
+            <StyledFieldRoot>
+              <CheckboxRoot checked={saveAsMetaImage} onCheckedChange={() => setSaveAsMetaImage((prev) => !prev)}>
+                <CheckboxControl>
+                  <CheckboxIndicator asChild>
+                    <CheckLine />
+                  </CheckboxIndicator>
+                </CheckboxControl>
+                <CheckboxLabel>{translations.checkboxLabel}</CheckboxLabel>
+                <CheckboxHiddenInput />
+              </CheckboxRoot>
+            </StyledFieldRoot>
           )}
         </ActionsWrapper>
       </ContentWrapper>

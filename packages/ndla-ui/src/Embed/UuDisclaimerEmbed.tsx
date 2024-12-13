@@ -8,7 +8,7 @@
 
 import { type ReactNode } from "react";
 import { Portal } from "@ark-ui/react";
-import { AccesibilityLine } from "@ndla/icons";
+import { AccessibilityFill } from "@ndla/icons";
 import { Text, IconButton, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { UuDisclaimerMetaData } from "@ndla/types-embed";
@@ -45,7 +45,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
       <PopoverRoot>
         <PopoverTrigger asChild>
           <StyledIconButton size="small" variant="secondary">
-            <AccesibilityLine />
+            <AccessibilityFill />
           </StyledIconButton>
         </PopoverTrigger>
         <Portal>

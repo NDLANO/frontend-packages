@@ -1443,6 +1443,7 @@ const messages = {
       code: "Kodeblokk",
     },
   },
+  uuDisclaimer: { title: "Tilgjengelighet" },
   gloss: {
     examples: "Ovdamearkkat",
     showExamples: "Vis eksempler",

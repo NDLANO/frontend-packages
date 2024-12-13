@@ -1441,6 +1441,7 @@ const messages = {
       code: "Code block",
     },
   },
+  uuDisclaimer: { title: "Accessibility" },
   gloss: {
     examples: "Examples",
     showExamples: "Show examples",

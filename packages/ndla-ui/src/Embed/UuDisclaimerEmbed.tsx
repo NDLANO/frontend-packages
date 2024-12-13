@@ -7,9 +7,9 @@
  */
 
 import { type ReactNode } from "react";
-import { InformationLine } from "@ndla/icons";
-import { MessageBox } from "@ndla/primitives";
-import { SafeLink } from "@ndla/safelink";
+import { Portal } from "@ark-ui/react";
+import { AccesibilityLine } from "@ndla/icons";
+import { Text, IconButton, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { UuDisclaimerMetaData } from "@ndla/types-embed";
 
@@ -18,36 +18,18 @@ interface Props {
   children?: ReactNode;
 }
 
-const StyledMessageBox = styled(MessageBox, {
+const DisclaimerWrapper = styled("div", {
   base: {
     display: "flex",
-    alignItems: "center",
-    marginBlockEnd: "xsmall",
-  },
-});
-const Disclaimer = styled("div", {
-  base: {
-    textStyle: "body.medium",
-  },
-});
-const StyledSafeLink = styled(SafeLink, {
-  base: {
-    paddingInlineStart: "4xsmall",
-    color: "text.link",
-    textDecoration: "underline",
-    whiteSpace: "nowrap",
-    _hover: {
-      textDecoration: "none",
-    },
-    _focusWithin: {
-      textDecoration: "none",
-    },
+    flexDirection: "column",
+    gap: "3xsmall",
+    clear: "both",
   },
 });
 
-const Wrapper = styled("div", {
+const StyledIconButton = styled(IconButton, {
   base: {
-    clear: "both",
+    alignSelf: "flex-end",
   },
 });
 
@@ -56,25 +38,24 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
     return null;
   }
 
-  const { embedData, data } = embed;
-
-  const disclaimerLink = data?.disclaimerLink ? (
-    <StyledSafeLink to={data.disclaimerLink.href} target="_blank" rel="noopener noreferrer">
-      {data.disclaimerLink.text}
-    </StyledSafeLink>
-  ) : null;
+  const { embedData } = embed;
 
   return (
-    <Wrapper role="region" data-embed-type="uu-disclaimer">
-      <StyledMessageBox variant="warning" contentEditable={false}>
-        <InformationLine />
-        <Disclaimer>
-          {embedData.disclaimer}
-          {disclaimerLink}
-        </Disclaimer>
-      </StyledMessageBox>
+    <DisclaimerWrapper role="region" data-embed-type="uu-disclaimer">
+      <PopoverRoot>
+        <PopoverTrigger asChild>
+          <StyledIconButton size="small" variant="secondary">
+            <AccesibilityLine />
+          </StyledIconButton>
+        </PopoverTrigger>
+        <Portal>
+          <PopoverContent>
+            <Text>{embedData.disclaimer}</Text>
+          </PopoverContent>
+        </Portal>
+      </PopoverRoot>
       <div data-uu-content="">{children}</div>
-    </Wrapper>
+    </DisclaimerWrapper>
   );
 };
 

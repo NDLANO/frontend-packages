@@ -47,23 +47,7 @@ export const Regular: StoryObj<typeof UuDisclaimerEmbed> = {
       resource: "uu-disclaimer",
       status: "success",
       embedData: embedData,
-      data: {},
-    },
-  },
-};
-
-export const WithLink: StoryObj<typeof UuDisclaimerEmbed> = {
-  args: {
-    embed: {
-      resource: "uu-disclaimer",
-      status: "success",
-      embedData: embedData,
-      data: {
-        disclaimerLink: {
-          href: "https://ndla.no/article/123",
-          text: "Navn på artikkel med innhold",
-        },
-      },
+      data: null,
     },
   },
 };
@@ -74,7 +58,7 @@ export const WithIframe: StoryObj<typeof UuDisclaimerEmbed> = {
       resource: "uu-disclaimer",
       status: "success",
       embedData: embedData,
-      data: {},
+      data: null,
     },
     children: (
       <IframeEmbed
@@ -99,7 +83,7 @@ export const WithH5p: StoryObj<typeof UuDisclaimerEmbed> = {
       resource: "uu-disclaimer",
       status: "success",
       embedData: embedData,
-      data: {},
+      data: null,
     },
     children: (
       <H5pEmbed
@@ -135,7 +119,7 @@ export const WithHtml: StoryObj<typeof UuDisclaimerEmbed> = {
       resource: "uu-disclaimer",
       status: "success",
       embedData: embedData,
-      data: {},
+      data: null,
     },
     children: (
       <>
@@ -155,7 +139,7 @@ export const WithFramedContent: StoryObj<typeof UuDisclaimerEmbed> = {
       resource: "uu-disclaimer",
       status: "success",
       embedData: embedData,
-      data: {},
+      data: null,
     },
     children: (
       <FramedContent>
@@ -171,7 +155,7 @@ export const WithFactBox: StoryObj<typeof UuDisclaimerEmbed> = {
       resource: "uu-disclaimer",
       status: "success",
       embedData: embedData,
-      data: {},
+      data: null,
     },
     children: (
       <FactBox>
@@ -187,7 +171,7 @@ export const WithCopyParagraphLink: StoryObj<typeof UuDisclaimerEmbed> = {
       resource: "uu-disclaimer",
       status: "success",
       embedData: embedData,
-      data: {},
+      data: null,
     },
     children: (
       <CopyParagraphButton copyText="Dette er en overskrift" lang="no">

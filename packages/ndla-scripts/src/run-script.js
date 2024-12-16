@@ -10,7 +10,7 @@
 
 import { join, dirname } from "path";
 import spawn from "cross-spawn";
-import glob from "glob";
+import { glob } from "glob";
 
 const { sync } = glob;
 const __dirname = dirname(new URL(import.meta.url).pathname);

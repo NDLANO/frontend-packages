@@ -10,9 +10,9 @@ import { type ComponentPropsWithoutRef } from "react";
 import { ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
 
-interface Props extends ComponentPropsWithoutRef<"div"> {}
+interface Props extends ComponentPropsWithoutRef<"ul"> {}
 
-export const FileListWrapper = styled("div", {
+export const FileListWrapper = styled("ul", {
   base: {
     display: "flex",
     flexDirection: "column",
@@ -42,7 +42,7 @@ export const FileListItem = styled(
 export const FileListEmbed = ({ children, ...rest }: Props) => {
   return (
     <FileListWrapper {...rest} data-embed-type="file-list">
-      <ul>{children}</ul>
+      {children}
     </FileListWrapper>
   );
 };

@@ -6,11 +6,12 @@
  *
  */
 
+import parse from "html-react-parser";
 import { type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Portal } from "@ark-ui/react";
 import { AccessibilityFill } from "@ndla/icons";
-import { Text, IconButton, PopoverContent, PopoverRoot, PopoverTrigger, PopoverTitle } from "@ndla/primitives";
+import { IconButton, PopoverContent, PopoverRoot, PopoverTrigger, PopoverTitle } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { UuDisclaimerMetaData } from "@ndla/types-embed";
 
@@ -58,7 +59,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
         <Portal>
           <PopoverContent>
             <PopoverTitle>{t("uuDisclaimer.title")}</PopoverTitle>
-            <Text>{embedData.disclaimer}</Text>
+            <div>{parse(embedData.disclaimer)}</div>
           </PopoverContent>
         </Portal>
       </PopoverRoot>

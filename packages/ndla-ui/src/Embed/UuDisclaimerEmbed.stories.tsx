@@ -18,7 +18,7 @@ import FactBox from "../FactBox";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
-  disclaimer: "Dette inholdet er ikke tastaturvennlig.",
+  disclaimer: "Dette inholdet er <strong>ikke</strong> tastaturvennlig.",
 };
 
 const meta: Meta<typeof UuDisclaimerEmbed> = {

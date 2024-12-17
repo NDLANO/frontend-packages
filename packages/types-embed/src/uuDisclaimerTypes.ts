@@ -11,7 +11,6 @@ import type { MetaData } from ".";
 export interface UuDisclaimerEmbedData {
   resource: "uu-disclaimer";
   disclaimer: string;
-  articleId?: string;
 }
 
 export type UuDisclaimerMetaData = MetaData<UuDisclaimerEmbedData, null>;

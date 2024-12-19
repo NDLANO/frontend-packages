@@ -29,16 +29,14 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
   if (embedData.articleId && data) {
     const typeId = data.resource?.resourceTypes.find((rt) => contentTypeMapping[rt.id])?.id;
     const type = typeId ? contentTypeMapping[typeId] : undefined;
-    const path =
-      data.resource?.paths.find((p) => p.split("/")[1] === subject?.replace("urn:", "")) ??
-      data.resource?.path ??
-      `/article/${embedData.articleId}`;
+    const context = data.resource?.contexts.find((c) => c.rootId === subject);
+    const url = context?.url ?? data.resource?.url ?? `/article/${embedData.articleId}`;
     return (
       <RelatedArticle
         title={data.article.title?.title ?? ""}
         introduction={data.article.metaDescription?.metaDescription ?? ""}
         target={isOembed ? "_blank" : undefined}
-        to={`${ndlaFrontendDomain ?? ""}${path ?? ""}`}
+        to={`${ndlaFrontendDomain ?? ""}${url ?? ""}`}
         type={type}
       />
     );

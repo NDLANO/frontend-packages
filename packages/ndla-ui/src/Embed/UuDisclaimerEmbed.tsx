@@ -6,7 +6,6 @@
  *
  */
 
-import parse from "html-react-parser";
 import { type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Portal } from "@ark-ui/react";
@@ -17,6 +16,7 @@ import type { UuDisclaimerMetaData } from "@ndla/types-embed";
 
 interface Props {
   embed: UuDisclaimerMetaData;
+  transformedDisclaimer: ReactNode;
   children?: ReactNode;
 }
 
@@ -35,13 +35,11 @@ const StyledIconButton = styled(IconButton, {
   },
 });
 
-const UuDisclaimerEmbed = ({ embed, children }: Props) => {
+const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
     return null;
   }
-
-  const { embedData } = embed;
 
   return (
     <DisclaimerWrapper role="region" data-embed-type="uu-disclaimer">
@@ -59,7 +57,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
         <Portal>
           <PopoverContent>
             <PopoverTitle>{t("uuDisclaimer.title")}</PopoverTitle>
-            <div>{parse(embedData.disclaimer)}</div>
+            <div>{transformedDisclaimer}</div>
           </PopoverContent>
         </Portal>
       </PopoverRoot>

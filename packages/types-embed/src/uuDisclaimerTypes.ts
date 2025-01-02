@@ -13,4 +13,8 @@ export interface UuDisclaimerEmbedData {
   disclaimer: string;
 }
 
-export type UuDisclaimerMetaData = MetaData<UuDisclaimerEmbedData, null>;
+export interface UUDisclaimerData {
+  transformedContent: string;
+}
+
+export type UuDisclaimerMetaData = MetaData<UuDisclaimerEmbedData, UUDisclaimerData>;

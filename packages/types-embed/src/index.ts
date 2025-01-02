@@ -47,7 +47,7 @@ import type { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from "./key
 import type { LinkBlockEmbedData, LinkBlockMetaData } from "./linkBlockTypes";
 import type { PitchEmbedData, PitchMetaData, PitchMeta } from "./pitchTypes";
 import type { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from "./relatedContentTypes";
-import type { UuDisclaimerEmbedData, UuDisclaimerMetaData } from "./uuDisclaimerTypes";
+import type { UUDisclaimerData, UuDisclaimerEmbedData, UuDisclaimerMetaData } from "./uuDisclaimerTypes";
 
 export type EmbedData =
   | AudioEmbedData
@@ -150,6 +150,7 @@ export type { AudioMeta };
 export type { H5pData };
 export type { CampaignBlockMeta };
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
+export type { UUDisclaimerData };
 
 interface MetaDataFailure<T extends EmbedData> {
   resource: T["resource"];

@@ -8,7 +8,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { ExpandableBox, ExpandableBoxSummary, FramedContent, PageContent } from "@ndla/primitives";
-import type { UuDisclaimerEmbedData } from "@ndla/types-embed";
+import type { UUDisclaimerData, UuDisclaimerEmbedData } from "@ndla/types-embed";
 import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
@@ -18,13 +18,18 @@ import FactBox from "../FactBox";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",
-  disclaimer: "Dette inholdet er <strong>ikke</strong> tastaturvennlig.",
+  disclaimer: "Dette inholdet er ikke tastaturvennlig.",
+};
+
+const data: UUDisclaimerData = {
+  transformedContent: "Dette inholdet er ikke tastaturvennlig.",
 };
 
 const meta: Meta<typeof UuDisclaimerEmbed> = {
   title: "Embeds/UuDisclaimerEmbed",
   component: UuDisclaimerEmbed,
   tags: ["autodocs"],
+  args: { transformedDisclaimer: data.transformedContent },
   decorators: [
     (Story) => (
       <PageContent variant="content" asChild>
@@ -45,8 +50,8 @@ export const Regular: StoryObj<typeof UuDisclaimerEmbed> = {
     embed: {
       resource: "uu-disclaimer",
       status: "success",
-      embedData: embedData,
-      data: null,
+      embedData,
+      data,
     },
   },
 };
@@ -56,8 +61,8 @@ export const WithIframe: StoryObj<typeof UuDisclaimerEmbed> = {
     embed: {
       resource: "uu-disclaimer",
       status: "success",
-      embedData: embedData,
-      data: null,
+      embedData,
+      data,
     },
     children: (
       <IframeEmbed
@@ -81,8 +86,8 @@ export const WithH5p: StoryObj<typeof UuDisclaimerEmbed> = {
     embed: {
       resource: "uu-disclaimer",
       status: "success",
-      embedData: embedData,
-      data: null,
+      embedData,
+      data,
     },
     children: (
       <H5pEmbed
@@ -117,8 +122,8 @@ export const WithHtml: StoryObj<typeof UuDisclaimerEmbed> = {
     embed: {
       resource: "uu-disclaimer",
       status: "success",
-      embedData: embedData,
-      data: null,
+      embedData,
+      data,
     },
     children: (
       <>
@@ -137,8 +142,8 @@ export const WithFramedContent: StoryObj<typeof UuDisclaimerEmbed> = {
     embed: {
       resource: "uu-disclaimer",
       status: "success",
-      embedData: embedData,
-      data: null,
+      embedData,
+      data,
     },
     children: (
       <FramedContent>
@@ -153,8 +158,8 @@ export const WithFactBox: StoryObj<typeof UuDisclaimerEmbed> = {
     embed: {
       resource: "uu-disclaimer",
       status: "success",
-      embedData: embedData,
-      data: null,
+      embedData,
+      data,
     },
     children: (
       <FactBox>
@@ -169,8 +174,8 @@ export const WithCopyParagraphLink: StoryObj<typeof UuDisclaimerEmbed> = {
     embed: {
       resource: "uu-disclaimer",
       status: "success",
-      embedData: embedData,
-      data: null,
+      embedData,
+      data,
     },
     children: (
       <CopyParagraphButton copyText="Dette er en overskrift" lang="no">

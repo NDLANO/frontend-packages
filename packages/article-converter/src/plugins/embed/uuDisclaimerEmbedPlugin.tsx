@@ -15,7 +15,10 @@ import { type PluginType } from "../types";
 export const uuDisclaimerEmbedPlugin: PluginType = (element, opts, transformOpts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props["data-json"] as string) as UuDisclaimerMetaData;
-  const transformedDisclaimer = transform(data.embedData.disclaimer, transformOpts);
+  if (data.status === "error") {
+    return null;
+  }
+  const transformedDisclaimer = transform(data.data.transformedContent, transformOpts);
   return (
     <UuDisclaimerEmbed embed={data} transformedDisclaimer={transformedDisclaimer}>
       {domToReact(element.children as DOMNode[], opts)}

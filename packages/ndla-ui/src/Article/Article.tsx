@@ -109,6 +109,15 @@ const StyledStack = styled(Stack, {
   },
 });
 
+const StyledWrapper = styled("div", {
+  base: {
+    display: "flex",
+    gap: "small",
+    flexWrap: "wrap",
+    alignItems: "center",
+  },
+});
+
 interface ArticleTitleProps {
   heartButton?: ReactNode;
   contentType?: ContentType;
@@ -118,6 +127,7 @@ interface ArticleTitleProps {
   lang?: string;
   title?: ReactNode;
   introduction?: ReactNode;
+  disclaimer?: ReactNode;
 }
 
 export const ArticleTitle = ({
@@ -129,6 +139,7 @@ export const ArticleTitle = ({
   introduction,
   contentTypeLabel,
   competenceGoals,
+  disclaimer,
 }: ArticleTitleProps) => {
   return (
     <ArticleHeader>
@@ -148,7 +159,10 @@ export const ArticleTitle = ({
           <div>{introduction}</div>
         </Text>
       )}
-      {competenceGoals}
+      <StyledWrapper>
+        {competenceGoals}
+        {disclaimer}
+      </StyledWrapper>
     </ArticleHeader>
   );
 };
@@ -163,6 +177,7 @@ interface Props {
   competenceGoals?: ReactNode;
   id: string;
   lang?: string;
+  disclaimer?: ReactNode;
 }
 
 export const Article = ({
@@ -175,6 +190,7 @@ export const Article = ({
   id,
   heartButton,
   lang,
+  disclaimer,
 }: Props) => {
   const { title, introduction, published, content, footNotes, copyright } = article;
 
@@ -192,6 +208,7 @@ export const Article = ({
         competenceGoals={competenceGoals}
         lang={lang}
         contentTypeLabel={contentTypeLabel}
+        disclaimer={disclaimer}
       />
       <ArticleContent>{content}</ArticleContent>
       <ArticleFooter>

@@ -1445,6 +1445,7 @@ const messages = {
       code: "Kodeblokk",
     },
   },
+  uuDisclaimer: { title: "Tilgjengelighet" },
   gloss: {
     examples: "Eksempler",
     showExamples: "Vis eksempler",

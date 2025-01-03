@@ -16,7 +16,7 @@ export const uuDisclaimerEmbedPlugin: PluginType = (element, opts, transformOpts
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props["data-json"] as string) as UuDisclaimerMetaData;
   if (data.status === "error") {
-    return null;
+    return <>{domToReact(element.children as DOMNode[], opts)}</>;
   }
   const transformedDisclaimer = transform(data.data.transformedContent, transformOpts);
   return (

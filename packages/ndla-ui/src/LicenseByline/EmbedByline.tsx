@@ -244,8 +244,7 @@ export const LicenseContainerContent = ({ children, copyright, type }: LicenseCo
     <>
       {children}
       {` ${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
-      {/*eslint-disable-next-line react/no-unknown-property */}
-      <span property="cc:attributionName">{captionAuthors.map((author) => author.name).join(", ")}</span>
+      <span>{captionAuthors.map((author) => author.name).join(", ")}</span>
       {license ? (
         <>
           {" / "}

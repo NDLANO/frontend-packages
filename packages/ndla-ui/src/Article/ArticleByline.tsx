@@ -153,8 +153,7 @@ export const ArticleByline = ({
       {!!displayByline && (
         <TextWrapper learningpath={bylineType === "learningPath"}>
           {!!showPrimaryContributors && (
-            //eslint-disable-next-line react/no-unknown-property
-            <span property="cc:attributionName">
+            <span>
               {authors.length > 0 &&
                 `${t("article.authorsLabel", {
                   names: renderContributors(authors, t),

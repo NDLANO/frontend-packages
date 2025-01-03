@@ -10,9 +10,8 @@
 
 import { join, dirname } from "path";
 import spawn from "cross-spawn";
-import { glob } from "glob";
+import fastGlob from "fast-glob";
 
-const { sync } = glob;
 const __dirname = dirname(new URL(import.meta.url).pathname);
 
 const [executor, ignoredBin, script, ...args] = process.argv;
@@ -57,7 +56,7 @@ if (script) {
   spawnScript();
 } else {
   const scriptsPath = join(__dirname, "scripts/");
-  const scriptsAvailable = sync(join(__dirname, "scripts", "*"));
+  const scriptsAvailable = fastGlob.sync(join(__dirname, "scripts", "*"));
   const scriptsAvailableMessage = scriptsAvailable
     .map((s) => s.replace(scriptsPath, "").replace(/\.js$/, ""))
     .filter(Boolean)

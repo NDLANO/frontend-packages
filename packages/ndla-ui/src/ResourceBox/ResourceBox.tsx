@@ -66,7 +66,7 @@ const StyledText = styled(Text, {
 });
 
 interface ImageMeta {
-  src: string;
+  src: string | undefined;
   alt: string;
 }
 

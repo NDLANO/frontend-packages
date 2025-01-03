@@ -95,7 +95,7 @@ export const DifferentFiles: StoryObj<typeof File> = {
   ),
 };
 
-export const NoHeader: StoryObj<typeof File> = {
+export const JustTheFileItems: StoryObj<typeof File> = {
   render: () => (
     <ul>
       <FileListItem>
@@ -108,7 +108,7 @@ export const NoHeader: StoryObj<typeof File> = {
   ),
 };
 
-export const FilesWithButtons: StoryObj<typeof File> = {
+export const FileItemsWithButtons: StoryObj<typeof File> = {
   render: () => (
     <ul>
       <FileListItem>

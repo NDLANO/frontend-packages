@@ -42,13 +42,14 @@ export const makeSrcQueryString = ({ width, crop, focalPoint, imageLanguage }: S
 };
 
 interface SrcSetOptions {
-  src: string;
+  src?: string;
   crop?: ImageCrop;
   focalPoint?: ImageFocalPoint;
   imageLanguage?: string;
 }
 
 export const getSrcSet = ({ src, crop, focalPoint, imageLanguage }: SrcSetOptions) => {
+  if (!src) return undefined;
   const widths = [2720, 2080, 1760, 1440, 1120, 1000, 960, 800, 640, 480, 320, 240, 180];
   return widths
     .map((width) => `${src}?${makeSrcQueryString({ width, crop, focalPoint, imageLanguage })} ${width}w`)
@@ -142,7 +143,7 @@ export const Img = forwardRef<HTMLImageElement, ImgProps>(
 
 export interface ImageProps extends JsxStyleProps, ComponentPropsWithRef<"img">, ImageVariantProps {
   alt: string;
-  src: string;
+  src?: string;
   sizes?: string;
   fallbackWidth?: number;
   contentType?: string;

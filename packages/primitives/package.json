@@ -1,7 +1,7 @@
 {
   "name": "@ndla/primitives",
   "version": "1.0.66-alpha.0",
-  "description": "Primitive components for NDLA.",
+  "description": "Primitive components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",

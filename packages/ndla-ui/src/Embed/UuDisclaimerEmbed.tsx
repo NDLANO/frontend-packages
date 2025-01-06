@@ -45,6 +45,12 @@ const StyledSafeLink = styled(SafeLink, {
   },
 });
 
+const Wrapper = styled("div", {
+  base: {
+    clear: "both",
+  },
+});
+
 const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   if (embed.status === "error") {
     return null;
@@ -59,7 +65,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
   ) : null;
 
   return (
-    <div role="region" data-embed-type="uu-disclaimer">
+    <Wrapper role="region" data-embed-type="uu-disclaimer">
       <StyledMessageBox variant="warning" contentEditable={false}>
         <InformationLine />
         <Disclaimer>
@@ -68,7 +74,7 @@ const UuDisclaimerEmbed = ({ embed, children }: Props) => {
         </Disclaimer>
       </StyledMessageBox>
       <div data-uu-content="">{children}</div>
-    </div>
+    </Wrapper>
   );
 };
 

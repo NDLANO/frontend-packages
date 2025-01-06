@@ -21,6 +21,7 @@ export const Table = styled(
       maxWidth: "100%",
       padding: "4xsmall",
       tableLayout: "fixed",
+      clear: "both",
       "& > caption": {
         fontWeight: "bold",
         textAlign: "left",

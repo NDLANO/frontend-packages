@@ -25,6 +25,12 @@ const StyledIframe = styled("iframe", {
   },
 });
 
+const StyledFigure = styled(Figure, {
+  base: {
+    clear: "both",
+  },
+});
+
 const IframeEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -50,7 +56,7 @@ const IframeEmbed = ({ embed }: Props) => {
     const alt = embedData.alt !== undefined ? embedData.alt : iframeImage?.alttext.alttext;
     const image = { src: iframeImage?.image.imageUrl, alt: alt ?? "" };
     return (
-      <Figure data-embed-type="iframe">
+      <StyledFigure data-embed-type="iframe">
         <ResourceBox
           image={image}
           title={embedData.title ?? ""}
@@ -58,7 +64,7 @@ const IframeEmbed = ({ embed }: Props) => {
           caption={embedData.caption ?? ""}
           buttonText={t("license.other.itemImage.ariaLabel")}
         />
-      </Figure>
+      </StyledFigure>
     );
   }
 
@@ -69,7 +75,7 @@ const IframeEmbed = ({ embed }: Props) => {
   const urlOrTitle = title || url;
 
   return (
-    <Figure data-embed-type="iframe">
+    <StyledFigure data-embed-type="iframe">
       <StyledIframe
         ref={iframeRef}
         title={urlOrTitle}
@@ -80,7 +86,7 @@ const IframeEmbed = ({ embed }: Props) => {
         allow="fullscreen; encrypted-media"
         loading="lazy"
       />
-    </Figure>
+    </StyledFigure>
   );
 };
 

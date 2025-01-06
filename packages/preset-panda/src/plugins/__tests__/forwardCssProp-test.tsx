@@ -266,6 +266,38 @@ describe("CSS prop forwarding", () => {
     `);
   });
 
+  test("explicitly setting consumeCss to false should not consume the css prop", () => {
+    const StyledComponent = styled("div", { base: { display: "flex" } });
+
+    const { container } = render(<StyledComponent consumeCss={false}>Hello</StyledComponent>);
+
+    expect(container.firstChild).toMatchInlineSnapshot(`
+      <div
+        class="d_flex"
+      >
+        Hello
+      </div>
+    `);
+  });
+
+  test("explicitly setting consumeCss and asChild to false should not consume the css prop", () => {
+    const StyledComponent = styled(ark.div, { base: { display: "flex" } }, { baseComponent: true });
+
+    const { container } = render(
+      <StyledComponent asChild={false} consumeCss={false}>
+        Hello
+      </StyledComponent>,
+    );
+
+    expect(container.firstChild).toMatchInlineSnapshot(`
+      <div
+        class="d_flex"
+      >
+        Hello
+      </div>
+    `);
+  });
+
   test("css prop usage should win when asChilded onto a styled component", () => {
     const StyledOuter = styled(
       ark.div,

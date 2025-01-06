@@ -18,14 +18,14 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
   const __cvaFn__ = composeCvaFn(Dynamic.__cva__, cvaFn)
   const __shouldForwardProps__ = composeShouldForwardProps(Dynamic, shouldForwardProp)
   const __base__ = Dynamic.__base__ || Dynamic
-  const contextConsume = options.baseComponent ?? Dynamic.__base__ ?? typeof Dynamic === "string"
+  const contextConsume = options.baseComponent || Dynamic.__base__ || typeof Dynamic === "string"
 
   const StyledComponent = /* @__PURE__ */ forwardRef(function StyledComponent(props, ref) {
     const { as: Element = __base__, consumeCss, children, ...restProps } = props
 
     const consume = props.asChild
       ? consumeCss && (options.baseComponent || Dynamic.__baseComponent__)
-      : consumeCss ?? contextConsume
+      : consumeCss || contextConsume
 
     const combinedProps = useMemo(() => Object.assign({}, defaultProps, restProps), [restProps])
 
@@ -65,7 +65,7 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
   StyledComponent.__cva__ = __cvaFn__
   StyledComponent.__base__ = __base__
   StyledComponent.__shouldForwardProps__ = shouldForwardProp
-  StyledComponent.__baseComponent__ = options.baseComponent ?? Dynamic.__baseComponent__
+  StyledComponent.__baseComponent__ = options.baseComponent || Dynamic.__baseComponent__
 
   return StyledComponent
 }

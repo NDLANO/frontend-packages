@@ -35,7 +35,7 @@ const StyledLink = styled(Link, {}, { baseComponent: true });
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 
 export const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
-  ({ to, replace, disabled, unstyled, children, tabIndex, asAnchor, ...rest }, ref) => {
+  ({ to, replace, state, disabled, unstyled, children, tabIndex, asAnchor, reloadDocument, ...rest }, ref) => {
     const isMissingRouterContext = useContext(MissingRouterContext);
     const unstyledProps = unstyled ? { "data-unstyled": "" } : {};
 
@@ -58,7 +58,16 @@ export const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
 
     return (
       // RR6 link immediately fails if to is somehow undefined, so we provide an empty fallback to recover.
-      <StyledLink ref={ref} tabIndex={tabIndex ?? 0} to={to ?? ""} replace={replace} {...unstyledProps} {...rest}>
+      <StyledLink
+        ref={ref}
+        tabIndex={tabIndex ?? 0}
+        to={to ?? ""}
+        state={state}
+        reloadDocument={reloadDocument}
+        replace={replace}
+        {...unstyledProps}
+        {...rest}
+      >
         {children}
       </StyledLink>
     );

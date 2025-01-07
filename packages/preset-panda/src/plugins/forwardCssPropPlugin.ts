@@ -46,7 +46,7 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   factoryJs.code = factoryJs.code.replace(
     baseCode,
     `${baseCode}
-  const contextConsume = options.baseComponent ?? Dynamic.__base__ ?? typeof Dynamic === "string"`,
+  const contextConsume = options.baseComponent || Dynamic.__base__ || typeof Dynamic === "string"`,
   );
 
   const propsCode = "const { as: Element = __base__, children, ...restProps } = props";
@@ -57,7 +57,7 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
 
     const consume = props.asChild
       ? consumeCss && (options.baseComponent || Dynamic.__baseComponent__)
-      : consumeCss ?? contextConsume`,
+      : consumeCss || contextConsume`,
   );
 
   const cvaCode = "const cvaStyles = __cvaFn__.raw(variantProps)";
@@ -80,7 +80,7 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   factoryJs.code = factoryJs.code.replace(
     styledComponentForwardPropDeclaration,
     `${styledComponentForwardPropDeclaration}
-  StyledComponent.__baseComponent__ = options.baseComponent ?? Dynamic.__baseComponent__`,
+  StyledComponent.__baseComponent__ = options.baseComponent || Dynamic.__baseComponent__`,
   );
 
   const shouldForwardPropCode = "shouldForwardProp?(prop: string, variantKeys: string[]): boolean";

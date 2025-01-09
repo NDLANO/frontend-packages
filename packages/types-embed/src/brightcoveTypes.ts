@@ -32,6 +32,7 @@ export interface BrightcoveCopyright {
     description?: string;
     url?: string;
   };
+  origin?: string;
   creators: Author[];
   processors: Author[];
   rightsholders: Author[];
@@ -64,6 +65,7 @@ export interface BrightcoveApiType {
   name?: string;
   link?: {
     text: string;
+    url: string;
   };
 }
 

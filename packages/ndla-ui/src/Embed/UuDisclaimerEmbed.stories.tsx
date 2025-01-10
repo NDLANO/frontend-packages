@@ -184,3 +184,18 @@ export const WithCopyParagraphLink: StoryObj<typeof UuDisclaimerEmbed> = {
     ),
   },
 };
+
+export const Error: StoryObj<typeof UuDisclaimerEmbed> = {
+  args: {
+    embed: {
+      resource: "uu-disclaimer",
+      status: "error",
+      embedData,
+    },
+    children: (
+      <CopyParagraphButton copyText="Dette er en overskrift" lang="no">
+        <h2>Dette er en overskrift</h2>
+      </CopyParagraphButton>
+    ),
+  },
+};

@@ -9,7 +9,7 @@
 import { type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Portal } from "@ark-ui/react";
-import { AccessibilityFill } from "@ndla/icons";
+import { AccessibilityFill, ErrorWarningFill } from "@ndla/icons";
 import { IconButton, PopoverContent, PopoverRoot, PopoverTrigger, PopoverTitle } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { UuDisclaimerMetaData } from "@ndla/types-embed";
@@ -35,10 +35,25 @@ const StyledIconButton = styled(IconButton, {
   },
 });
 
+const StyledErrorWarningFill = styled(ErrorWarningFill, {
+  base: {
+    alignSelf: "flex-end",
+    fill: "icon.subtle",
+  },
+});
+
 const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
-    return null;
+    return (
+      <DisclaimerWrapper>
+        <StyledErrorWarningFill
+          aria-label={t("embed.embedError", { type: t("embed.type.disclaimer") })}
+          title={t("embed.embedError", { type: t("embed.type.disclaimer") })}
+        />
+        {children}
+      </DisclaimerWrapper>
+    );
   }
 
   return (

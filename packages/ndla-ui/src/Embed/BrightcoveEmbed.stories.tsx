@@ -105,7 +105,7 @@ const visuallyInterpretedEmbedMetaData: BrightcoveMetaData = {
         src: "https://cf-images.eu-west-1.prod.boltdns.net/v1/static/4806596774001/a09bcb7b-ffe1-4c3a-98ea-bf997340a8cd/23f01e33-413e-418c-a4de-2c87c8b05c26/1280x720/match/image.jpg",
       },
     },
-    link: { text: "6242635463001" },
+    link: { text: "6242635463001", url: "" },
     long_description: null,
     name: "Frivillighet i helse og omsorgstjenesten (synstolket)",
     published_at: "2021-03-25T11:40:38.476Z",

@@ -7,12 +7,19 @@
  */
 
 import { Figure } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import type { AudioMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import type { Author } from "./ImageEmbed";
 import AudioPlayer from "../AudioPlayer";
 import { EmbedByline } from "../LicenseByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
+
+const StyledFigure = styled(Figure, {
+  base: {
+    clear: "both",
+  },
+});
 
 interface Props {
   embed: AudioMetaData;
@@ -46,7 +53,7 @@ const AudioEmbed = ({ embed, lang }: Props) => {
   const licenseProps = licenseAttributes(data.copyright.license.license, lang, embedData.url);
 
   return (
-    <Figure lang={lang} data-embed-type={type} {...licenseProps}>
+    <StyledFigure lang={lang} data-embed-type={type} {...licenseProps}>
       <AudioPlayer
         description={data.podcastMeta?.introduction ?? ""}
         img={img}
@@ -64,7 +71,7 @@ const AudioEmbed = ({ embed, lang }: Props) => {
         type={data.audioType === "standard" ? "audio" : "podcast"}
         copyright={embed.data.copyright}
       />
-    </Figure>
+    </StyledFigure>
   );
 };
 

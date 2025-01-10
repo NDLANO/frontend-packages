@@ -8,8 +8,11 @@
 
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Figure } from "@ndla/primitives";
+import { ArrowRightShortLine } from "@ndla/icons";
+import { Figure, Text } from "@ndla/primitives";
+import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
+import { linkOverlay } from "@ndla/styled-system/patterns";
 import type { OembedMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { ResourceBox } from "../ResourceBox";
@@ -24,6 +27,59 @@ const StyledFigure = styled(Figure, {
       height: "auto",
       width: "100%",
     },
+  },
+});
+
+// TODO: Move this to own component in UI? Use variant of existing?
+const StyledSafeLink = styled(SafeLink, {
+  base: {
+    textDecoration: "underline",
+    textStyle: "label.large",
+    color: "text.link",
+    fontWeight: "bold",
+    _hover: {
+      textDecoration: "unset",
+    },
+  },
+});
+
+const LinkWrapper = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "xsmall",
+  },
+});
+
+const TextWrapper = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "xxsmall",
+  },
+});
+
+const Wrapper = styled("div", {
+  base: {
+    display: "flex",
+    width: "100%",
+    gap: "small",
+    flexDirection: "column",
+    backgroundColor: "surface.brand.2.subtle",
+    borderRadius: "xxsmall",
+    padding: "medium",
+    border: "1px solid",
+    borderColor: "stroke.info",
+  },
+});
+
+const UrlText = styled(Text, {
+  base: {
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
   },
 });
 
@@ -65,13 +121,33 @@ const ExternalEmbed = ({ embed }: Props) => {
     );
   }
 
+  if (embedData.type === "link") {
+    return (
+      <Figure data-embed-type="external">
+        <Wrapper>
+          <LinkWrapper>
+            <TextWrapper>
+              <StyledSafeLink to={embedData.url} unstyled css={linkOverlay.raw()}>
+                {embedData.title}
+              </StyledSafeLink>
+              <Text textStyle="label.medium">{embedData.caption}</Text>
+            </TextWrapper>
+            <ArrowRightShortLine />
+          </LinkWrapper>
+          <UrlText textStyle="label.medium" color="text.subtle">
+            {embedData.url}
+          </UrlText>
+        </Wrapper>
+      </Figure>
+    );
+  }
+
   return (
     <StyledFigure
       data-embed-type="external"
       ref={figRef}
-      dangerouslySetInnerHTML={{ __html: data.oembed.html ?? "" }}
+      dangerouslySetInnerHTML={{ __html: data?.oembed?.html ?? "" }}
     />
   );
 };
-
 export default ExternalEmbed;

@@ -22,7 +22,8 @@ export interface OembedEmbedData {
 }
 
 export interface OembedData {
-  oembed: OembedProxyResponse;
+  // TODO: Should oembed be allowd to be undefined? It should with external links??
+  oembed?: OembedProxyResponse;
   iframeImage?: IImageMetaInformationV3DTO;
 }
 

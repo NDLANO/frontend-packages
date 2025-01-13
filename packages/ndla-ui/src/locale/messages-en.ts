@@ -1439,8 +1439,10 @@ const messages = {
       gloss: "Gloss",
       copyright: "Text",
       code: "Code block",
+      disclaimer: "Accessibility warning",
     },
   },
+  uuDisclaimer: { title: "Accessibility" },
   gloss: {
     examples: "Examples",
     showExamples: "Show examples",

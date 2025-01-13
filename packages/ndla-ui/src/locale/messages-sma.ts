@@ -1443,8 +1443,10 @@ const messages = {
       gloss: "Glosa",
       copyright: "Tekst",
       code: "Kodeblokk",
+      disclaimer: "UU-advarsel",
     },
   },
+  uuDisclaimer: { title: "Tilgjengelighet" },
   gloss: {
     examples: "Eksempler",
     showExamples: "Vis eksempler",

@@ -101,7 +101,12 @@ export interface ImageSearchTranslations {
 
 interface Props {
   onImageSelect: (image: IImageMetaInformationV3DTO) => void;
-  searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3DTO>;
+  searchImages: (
+    query: string | undefined,
+    page: number | undefined,
+    pageSize: number | undefined,
+    license: string | undefined,
+  ) => Promise<ISearchResultV3DTO>;
   fetchImage: (id: number) => Promise<IImageMetaInformationV3DTO>;
   onError?: (err: any) => void;
   locale: string;
@@ -126,6 +131,7 @@ const ImageSearch = ({
     query: undefined,
     page: 1,
     pageSize: 16,
+    license: undefined,
   });
   const [selectedImage, setSelectedImage] = useState<IImageMetaInformationV3DTO | undefined>();
   const [searching, setSearching] = useState<boolean>(false);
@@ -157,12 +163,13 @@ const ImageSearch = ({
 
   const searchImages = (queryObject: ISearchParamsDTO) => {
     setSearching(true);
-    search(queryObject.query, queryObject.page)
+    search(queryObject.query, queryObject.page, queryObject.pageSize, queryObject.license)
       .then((result) => {
         setQueryObject({
           query: queryObject.query,
           pageSize: result.pageSize,
           page: queryObject.page,
+          license: queryObject.license,
         });
         setSearchResult(result);
         setSearching(false);

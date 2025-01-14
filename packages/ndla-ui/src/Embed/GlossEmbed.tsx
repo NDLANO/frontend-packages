@@ -53,7 +53,13 @@ export const GlossEmbed = ({ embed }: Props) => {
         <Portal>
           <StyledPopoverContent ref={contentRef}>
             <Figure>
-              <Gloss glossData={concept.glossData} title={concept.title} audio={audio} />
+              <Gloss
+                glossData={concept.glossData}
+                title={concept.title}
+                audio={audio}
+                exampleIds={embed.embedData.exampleIds}
+                exampleLangs={embed.embedData.exampleLangs}
+              />
             </Figure>
           </StyledPopoverContent>
         </Portal>
@@ -63,7 +69,14 @@ export const GlossEmbed = ({ embed }: Props) => {
 
   return (
     <Figure data-embed-type="gloss">
-      <Gloss glossData={concept.glossData} title={concept.title} audio={audio} variant="bordered" />
+      <Gloss
+        glossData={concept.glossData}
+        title={concept.title}
+        audio={audio}
+        exampleIds={embed.embedData.exampleIds}
+        exampleLangs={embed.embedData.exampleLangs}
+        variant="bordered"
+      />
     </Figure>
   );
 };

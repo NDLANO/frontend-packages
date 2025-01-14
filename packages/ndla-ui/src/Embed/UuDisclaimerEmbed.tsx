@@ -10,7 +10,7 @@ import { type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Portal } from "@ark-ui/react";
 import { AccessibilityFill, ErrorWarningFill } from "@ndla/icons";
-import { IconButton, PopoverContent, PopoverRoot, PopoverTrigger, PopoverTitle } from "@ndla/primitives";
+import { IconButton, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { UuDisclaimerMetaData } from "@ndla/types-embed";
 
@@ -70,10 +70,7 @@ const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) =>
           </StyledIconButton>
         </PopoverTrigger>
         <Portal>
-          <PopoverContent>
-            <PopoverTitle>{t("uuDisclaimer.title")}</PopoverTitle>
-            <div>{transformedDisclaimer}</div>
-          </PopoverContent>
+          <PopoverContent>{transformedDisclaimer}</PopoverContent>
         </Portal>
       </PopoverRoot>
       <div data-uu-content="">{children}</div>

@@ -9301,6 +9301,7 @@ __metadata:
     storybook: "npm:^8.4.7"
     typescript: "npm:^5.7.2"
     typescript-eslint: "npm:^8.15.0"
+    vercel: "npm:^33.6.2"
     vite: "npm:^6.0.2"
     vitest: "npm:^2.1.8"
   languageName: unknown

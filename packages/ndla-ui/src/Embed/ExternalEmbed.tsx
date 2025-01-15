@@ -77,8 +77,7 @@ const Wrapper = styled("div", {
 
 const UrlText = styled(Text, {
   base: {
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
+    lineClamp: "1",
     overflow: "hidden",
   },
 });

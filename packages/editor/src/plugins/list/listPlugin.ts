@@ -16,6 +16,7 @@ import { listOnTab } from "./handlers/listOnTab";
 import { listOnEnter } from "./handlers/listOnEnter";
 import { listOnBackspace } from "./handlers/listOnBackspace";
 import { isListElement, isListItemElement } from "./queries/listElementQueries";
+import { defaultListBlock } from "./listBlocks";
 
 export const listPlugin = createPlugin({
   type: LIST_ELEMENT_TYPE,
@@ -83,17 +84,17 @@ export const listPlugin = createPlugin({
 
       // TODO: Handle this, consider if we need changeTo
       // Handle changing list-items marked for listType change
-      // if (node.changeTo) {
-      //   const changeTo = node.changeTo;
-      //   Editor.withoutNormalizing(editor, () => {
-      //     Transforms.unsetNodes(editor, ["changeTo"], { at: path });
-      //     Transforms.wrapNodes(editor, defaultListBlock(changeTo), {
-      //       at: path,
-      //     });
-      //     Transforms.liftNodes(editor, { at: path });
-      //   });
-      //   return;
-      // }
+      if (node.changeTo) {
+        const changeTo = node.changeTo;
+        Editor.withoutNormalizing(editor, () => {
+          Transforms.unsetNodes(editor, ["changeTo"], { at: path });
+          Transforms.wrapNodes(editor, defaultListBlock(changeTo), {
+            at: path,
+          });
+          Transforms.liftNodes(editor, { at: path });
+        });
+        return true;
+      }
     }
     if (isListElement(node)) {
       // If list is empty or zero-length text element, remove it

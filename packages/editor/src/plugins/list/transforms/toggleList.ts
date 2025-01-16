@@ -6,28 +6,18 @@
  *
  */
 
-import { Path, Range, Transforms, type Editor } from "slate";
-import { type ListItemElement, type ListType } from "../listTypes";
+import { Editor, Element, Path, Range, Transforms } from "slate";
+import { LIST_ELEMENT_TYPE, type ListType } from "../listTypes";
 import { isElementOfType } from "../../../utils/isElementType";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { defaultListBlock, defaultListItemBlock } from "../listBlocks";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
-import { ReactEditor } from "slate-react";
-
-export const isListItemSelected = (editor: Editor, node: ListItemElement) => {
-  if (!Range.isRange(editor.selection)) return false;
-
-  if (Range.includes(editor.selection, [...ReactEditor.findPath(editor, node), 0])) {
-    return true;
-  }
-  return false;
-};
 
 const isPathSelected = (editor: Editor, path: Path) => {
   return Range.isRange(editor.selection) && Range.includes(editor.selection, path.concat(0));
 };
 
-export const getListItemType = (editor: Editor, path: Path) => {
+const getListItemType = (editor: Editor, path: Path) => {
   const [parentNode] = editor.node(Path.parent(path));
 
   if (isListElement(parentNode)) {
@@ -88,26 +78,28 @@ export const toggleList = (editor: Editor, listType: ListType) => {
     });
     // Selected list items are of mixed type.
   } else if (hasListItem(editor)) {
+    // Transforms.setNodes(editor, { listType }, { match: isListElement });
+    // editor.withoutNormalizing(() => {
+    //   // const listNodes = editor.nodes({
+    //   //   match: isListElement,
+    //   // });
+    // });
     // Mark list items for change. The actual change happens in list normalizer.
     // TODO: I want to rewrite this to not use `changeTo`
-    // Transforms.setNodes(
-    //   editor,
-    //   { changeTo: listType },
-    //   {
-    //     match: (node) => {
-    //       if (!Element.isElement(node) || node.type !== TYPE_LIST_ITEM || !isListItemSelected(editor, node)) {
-    //         return false;
-    //       }
-    //       const [parentNode] = Editor.node(editor, Path.parent(ReactEditor.findPath(editor, node)));
-    //
-    //       const shouldChange =
-    //         Element.isElement(parentNode) && parentNode.type === TYPE_LIST && parentNode.listType !== listType;
-    //
-    //       return shouldChange;
-    //     },
-    //     mode: "all",
-    //   },
-    // );
+    Transforms.setNodes(
+      editor,
+      { changeTo: listType },
+      {
+        match: (node, path) => {
+          if (!isListItemElement(node) || !isPathSelected(editor, path)) return false;
+          const [parentNode] = editor.node(Path.parent(path));
+          const shouldChange =
+            Element.isElement(parentNode) && parentNode.type === LIST_ELEMENT_TYPE && parentNode.listType !== listType;
+          return shouldChange;
+        },
+        mode: "all",
+      },
+    );
     // No list items are selected
   } else {
     // Wrap all regular text blocks. (paragraph, quote, blockquote)

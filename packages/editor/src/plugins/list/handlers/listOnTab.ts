@@ -7,7 +7,6 @@
  */
 
 import { Transforms, Path } from "slate";
-import { ReactEditor } from "slate-react";
 
 import type { ShortcutHandler } from "../../../core";
 import { hasNodeOfType } from "../../../queries/hasNodeOfType";
@@ -106,10 +105,9 @@ export const listOnTab: ShortcutHandler = (editor, event) => {
               // If a child list does not exist and following items exist, wrap following items in list and move it
               // inside selected item
               Transforms.wrapNodes(editor, defaultListBlock(currentListNode.listType), {
-                match: (node) => {
+                match: (node, path) => {
                   if (!isListItemElement(node)) return false;
-                  const nodePath = ReactEditor.findPath(editor, node);
-                  return Path.equals(Path.parent(nodePath), Path.parent(currentItemPath));
+                  return Path.equals(Path.parent(path), Path.parent(currentItemPath));
                 },
                 at: {
                   anchor,

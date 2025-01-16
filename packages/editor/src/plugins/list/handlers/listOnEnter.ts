@@ -6,7 +6,6 @@
  *
  */
 
-import { ReactEditor } from "slate-react";
 import type { ShortcutHandler } from "../../../core";
 import { LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
 import { Node, Path, Point, Range, Transforms } from "slate";
@@ -18,14 +17,14 @@ import { isListItemElement } from "../queries/listElementQueries";
 export const listOnEnter: ShortcutHandler = (editor, event) => {
   if (event.shiftKey || !editor.selection) return false;
 
-  const [firstChild, secondChild] = getEditorAncestors(editor, true);
-  const selectedDefinitionItem = firstChild.type === LIST_ITEM_ELEMENT_TYPE ? firstChild : secondChild;
+  const [firstEntry, secondEntry] = getEditorAncestors(editor, true);
+  const selectedDefinitionEntry = firstEntry[0]?.type === LIST_ITEM_ELEMENT_TYPE ? firstEntry : secondEntry;
 
-  if (!selectedDefinitionItem) {
+  if (!selectedDefinitionEntry) {
     return false;
   }
 
-  const selectedDefinitionItemPath = ReactEditor.findPath(editor, selectedDefinitionItem);
+  const [selectedDefinitionItem, selectedDefinitionItemPath] = selectedDefinitionEntry;
 
   // Check that list and paragraph are of correct type.
   if (selectedDefinitionItem.type !== LIST_ITEM_ELEMENT_TYPE) {

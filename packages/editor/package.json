@@ -10,8 +10,7 @@
   "scripts": {
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "concurrently 'yarn build:types' 'yarn build:panda'",
-    "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
+    "prepublish": "concurrently 'yarn build:types'"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,6 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "dist",
     "lib",
     "src",
     "es",
@@ -45,10 +43,6 @@
     "react-dom": ">= 18"
   },
   "devDependencies": {
-    "@ndla/preset-panda": "workspace:^",
-    "@ndla/types-backend": "^1.0.1",
-    "@ndla/types-embed": "^5.0.9-alpha.0",
-    "@pandacss/dev": "^0.48.0",
     "@types/he": "^1.2.3",
     "@types/is-hotkey": "^0"
   },

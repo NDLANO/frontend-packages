@@ -2423,10 +2423,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/editor@workspace:packages/editor"
   dependencies:
-    "@ndla/preset-panda": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.1"
-    "@ndla/types-embed": "npm:^5.0.9-alpha.0"
-    "@pandacss/dev": "npm:^0.48.0"
     "@types/he": "npm:^1.2.3"
     "@types/is-hotkey": "npm:^0"
     he: "npm:^1.2.0"

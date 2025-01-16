@@ -14,6 +14,8 @@ import type { ParagraphElement } from "../plugins/paragraph/paragraphTypes";
 import type { CustomText } from "../plugins/mark/markTypes";
 import type { KeyboardEventHandler } from "react";
 import type { SoftBreakElement } from "../plugins/softBreak/softBreakTypes";
+import type { ListElement, ListItemElement } from "../plugins/list/listTypes";
+import type { SectionElement } from "../plugins/section/sectionTypes";
 
 interface CustomEditor {
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
@@ -22,7 +24,7 @@ interface CustomEditor {
 declare module "slate" {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor & HistoryEditor & CustomEditor;
-    Element: ParagraphElement | LinkElement | SoftBreakElement;
+    Element: ParagraphElement | LinkElement | SoftBreakElement | ListItemElement | ListElement | SectionElement;
     Text: CustomText;
   }
 }

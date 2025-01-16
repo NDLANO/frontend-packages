@@ -9,19 +9,18 @@
 import type { SlatePluginFn } from ".";
 
 export const createPlugin: SlatePluginFn =
-  ({ isInline: isInlineProp, shortcuts, isVoid: isVoidProp, type, normalize, override = {} }) =>
+  ({ isInline: isInlineProp, shortcuts, isVoid: isVoidProp, type, normalize, transform }) =>
   (editor) => {
-    const { isInline: overrideIsInline, isVoid: overrideIsVoid } = override;
     const { isInline, isVoid } = editor;
     editor.isInline = (element) => {
       if (element.type === type) {
-        return overrideIsInline?.(element) ?? !!isInlineProp;
+        return !!isInlineProp;
       }
       return isInline(element);
     };
     editor.isVoid = (element) => {
       if (element.type === type) {
-        return overrideIsVoid?.(element) ?? !!isVoidProp;
+        return !!isVoidProp;
       }
       return isVoid(element);
     };
@@ -54,5 +53,5 @@ export const createPlugin: SlatePluginFn =
       };
     }
 
-    return editor;
+    return transform?.(editor) ?? editor;
   };

@@ -24,8 +24,8 @@ interface SlateCreatePluginProps<TType extends Element["type"]> {
   isInline?: boolean;
   type?: TType;
   shortcuts?: Record<string, Shortcut>;
-  override?: Partial<Omit<BaseEditor, "children" | "selection" | "operations" | "marks">>;
   normalize?: (editor: Editor, node: Node, path: Path, options?: Parameters<BaseEditor["normalizeNode"]>[1]) => boolean;
+  transform?: (editor: Editor) => Editor;
 }
 
 export type SlatePlugin = (editor: Editor) => Editor;

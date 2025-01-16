@@ -1,0 +1,48 @@
+{
+  "name": "@ndla/editor-components",
+  "version": "0.0.1",
+  "description": "Slate editor components for NDLA",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "node ../../scripts/build.js package",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "concurrently 'yarn build:types'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/editor-components"
+  },
+  "keywords": [
+    "editor",
+    "slate",
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "src",
+    "es",
+    "types"
+  ],
+  "dependencies": {
+    "@ndla/editor": "workspace:^",
+    "@ndla/primitives": "workspace:^"
+  },
+  "peerDependencies": {
+    "react": ">= 18",
+    "react-dom": ">= 18",
+    "slate": "^0.112.0",
+    "slate-dom": "^0.112.0",
+    "slate-history": "^0.110.3",
+    "slate-react": "^0.112.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "ebeb8a1d86cba369e1156719ebaecb58a6e2cdfc"
+}

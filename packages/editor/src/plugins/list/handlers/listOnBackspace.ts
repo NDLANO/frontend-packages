@@ -8,7 +8,7 @@
 
 import { Point, Range, Transforms } from "slate";
 import type { ShortcutHandler } from "../../../core";
-import { LIST_ELEMENT_TYPE } from "../listTypes";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
 import { hasNodeOfType } from "../../../queries/hasNodeOfType";
 import { getCurrentBlock } from "../../../queries/getCurrentBlock";
 import { isListItemElement } from "../queries/listElementQueries";
@@ -16,7 +16,7 @@ import { isListItemElement } from "../queries/listElementQueries";
 export const listOnBackspace: ShortcutHandler = (editor, event) => {
   if (!editor.selection || !hasNodeOfType(editor, LIST_ELEMENT_TYPE)) return false;
 
-  const entry = getCurrentBlock(editor, LIST_ELEMENT_TYPE);
+  const entry = getCurrentBlock(editor, LIST_ITEM_ELEMENT_TYPE);
   if (!entry) return false;
 
   const [currentItemNode, currentItemPath] = entry;

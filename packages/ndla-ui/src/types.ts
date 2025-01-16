@@ -45,4 +45,5 @@ export interface Article {
   footNotes: Array<FootNote>;
   copyright?: Copyright;
   published: string;
+  disclaimer?: ReactNode;
 }

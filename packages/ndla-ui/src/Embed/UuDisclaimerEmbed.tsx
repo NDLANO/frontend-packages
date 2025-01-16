@@ -70,7 +70,9 @@ const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) =>
           </StyledIconButton>
         </PopoverTrigger>
         <Portal>
-          <PopoverContent>{transformedDisclaimer}</PopoverContent>
+          <PopoverContent>
+            <div>{transformedDisclaimer}</div>
+          </PopoverContent>
         </Portal>
       </PopoverRoot>
       <div data-uu-content="">{children}</div>

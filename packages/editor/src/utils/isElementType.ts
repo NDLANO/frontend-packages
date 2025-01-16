@@ -1,0 +1,19 @@
+/**
+ * Copyright (c) 2025-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { Element, Node } from "slate";
+
+export const isElementOfType = <TType extends Element["type"]>(
+  node: Node | undefined,
+  type: TType | TType[] | undefined,
+): node is TType extends any[] ? Extract<Element, { type: TType[number] }>[] : Extract<Element, { type: TType }> => {
+  if (!Element.isElement(node)) {
+    return false;
+  }
+  return Array.isArray(type) ? type.includes(node.type as TType) : node.type === type;
+};

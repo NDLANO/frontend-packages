@@ -1,0 +1,59 @@
+{
+  "name": "@ndla/editor",
+  "version": "0.0.1",
+  "description": "Slate editor components for NDLA",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "node ../../scripts/build.js package",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "concurrently 'yarn build:types' 'yarn build:panda'",
+    "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/editor"
+  },
+  "keywords": [
+    "editor",
+    "slate",
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "dist",
+    "lib",
+    "src",
+    "es",
+    "types"
+  ],
+  "dependencies": {
+    "he": "^1.2.0",
+    "is-hotkey": "^0.2.0",
+    "slate": "^0.112.0",
+    "slate-dom": "^0.111.0",
+    "slate-history": "^0.110.3",
+    "slate-hyperscript": "^0.100.0",
+    "slate-react": "^0.112.0"
+  },
+  "peerDependencies": {
+    "react": ">= 18",
+    "react-dom": ">= 18"
+  },
+  "devDependencies": {
+    "@ndla/preset-panda": "workspace:^",
+    "@ndla/types-backend": "^1.0.1",
+    "@ndla/types-embed": "^5.0.9-alpha.0",
+    "@pandacss/dev": "^0.48.0",
+    "@types/he": "^1.2.3",
+    "@types/is-hotkey": "^0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "ebeb8a1d86cba369e1156719ebaecb58a6e2cdfc"
+}

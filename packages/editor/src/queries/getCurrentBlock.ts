@@ -6,10 +6,16 @@
  *
  */
 
-import type { Editor, Element } from "slate";
+import type { Editor, Element, NodeEntry } from "slate";
 import { isElementOfType } from "../utils/isElementType";
 
-export const getCurrentBlock = <T extends Element["type"]>(editor: Editor, type: T) => {
-  const [match] = editor.nodes({ match: (n) => isElementOfType(n, type), mode: "lowest" });
+export const getCurrentBlock = <T extends Element["type"]>(
+  editor: Editor,
+  type: T,
+): NodeEntry<Extract<Element, { type: T }>> | undefined => {
+  const [match] = editor.nodes<Extract<Element, { type: T }>>({
+    match: (n) => isElementOfType(n, type),
+    mode: "lowest",
+  });
   return match;
 };

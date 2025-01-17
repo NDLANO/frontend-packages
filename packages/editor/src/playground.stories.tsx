@@ -11,11 +11,14 @@ import { type Descendant } from "slate";
 import { Editable, Slate } from "slate-react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { ListAlphabetical, ListOrdered, ListUnordered } from "@ndla/icons";
-import { IconButton, OrderedList, UnOrderedList, type IconButtonProps } from "@ndla/primitives";
+import { Heading, IconButton, OrderedList, UnOrderedList, type IconButtonProps } from "@ndla/primitives";
+import { LoggerManager } from "./editor/logger/Logger";
+import { headingPlugin } from "./plugins/heading/headingPlugin";
 import { useListToolbarButton, useListToolbarButtonState } from "./plugins/list/hooks/useListToolbarButton";
 import { listPlugin } from "./plugins/list/listPlugin";
 import type { ListType } from "./plugins/list/listTypes";
 import { markPlugin } from "./plugins/mark/markPlugin";
+import { sectionPlugin } from "./plugins/section/sectionPlugin";
 import { softBreakPlugin } from "./plugins/softBreak/softBreakPlugin";
 import { createSlate } from "./utils/createSlate";
 
@@ -30,6 +33,11 @@ const initialValue: Descendant[] = [
   {
     type: "section",
     children: [
+      {
+        type: "heading",
+        level: 1,
+        children: [{ text: "Heading 1" }],
+      },
       {
         type: "paragraph",
         children: [{ text: "A line of text in a paragraph." }],
@@ -77,13 +85,26 @@ export const ToolbarButtons = () => {
 };
 
 export const EditorPlayground: StoryFn = () => {
-  const [editor] = useState(() => createSlate({ plugins: [markPlugin, listPlugin, softBreakPlugin] }));
+  const [editor] = useState(() =>
+    createSlate({
+      plugins: [markPlugin, listPlugin, softBreakPlugin, sectionPlugin, headingPlugin],
+      logger: new LoggerManager({ debug: false }),
+    }),
+  );
   return (
-    <Slate editor={editor} initialValue={initialValue}>
+    <Slate editor={editor} initialValue={initialValue} onValueChange={console.log}>
       <ToolbarButtons></ToolbarButtons>
       <Editable
         onKeyDown={editor.onKeyDown}
         renderElement={({ element, children, attributes }) => {
+          if (element.type === "heading") {
+            const El = `h${element.level}` as const;
+            return (
+              <Heading {...attributes} asChild consumeCss>
+                <El>{children}</El>
+              </Heading>
+            );
+          }
           if (element.type === "list" && element.listType === "numbered-list") {
             return <OrderedList {...attributes}>{children}</OrderedList>;
           } else if (element.type === "list" && element.listType === "letter-list") {

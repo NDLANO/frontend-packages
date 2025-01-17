@@ -17,6 +17,7 @@ import type { SoftBreakElement } from "../plugins/softBreak/softBreakTypes";
 import type { ListElement, ListItemElement } from "../plugins/list/listTypes";
 import type { SectionElement } from "../plugins/section/sectionTypes";
 import type { LoggerManager } from "../editor/logger/Logger";
+import type { HeadingElement } from "../plugins/heading/headingTypes";
 
 export interface CustomEditor {
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
@@ -26,7 +27,14 @@ export interface CustomEditor {
 
 export interface SlateEditor {
   Editor: BaseEditor & ReactEditor & HistoryEditor & CustomEditor;
-  Element: ParagraphElement | LinkElement | SoftBreakElement | ListItemElement | ListElement | SectionElement;
+  Element:
+    | ParagraphElement
+    | LinkElement
+    | SoftBreakElement
+    | ListItemElement
+    | ListElement
+    | SectionElement
+    | HeadingElement;
   Text: CustomText;
 }
 

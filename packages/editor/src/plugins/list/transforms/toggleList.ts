@@ -6,8 +6,8 @@
  *
  */
 
-import { Editor, Element, Path, Range, Transforms } from "slate";
-import { LIST_ELEMENT_TYPE, type ListType } from "../listTypes";
+import { Editor, Path, Range, Transforms } from "slate";
+import { type ListType } from "../listTypes";
 import { isElementOfType } from "../../../utils/isElementType";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { defaultListBlock, defaultListItemBlock } from "../listBlocks";
@@ -17,27 +17,18 @@ const isPathSelected = (editor: Editor, path: Path) => {
   return Range.isRange(editor.selection) && Range.includes(editor.selection, path.concat(0));
 };
 
-const getListItemType = (editor: Editor, path: Path) => {
+const getListItemType = (editor: Editor, path: Path): ListType => {
   const [parentNode] = editor.node(Path.parent(path));
-
-  if (isListElement(parentNode)) {
-    return parentNode.listType;
-  }
-  return "numbered-list";
+  return isListElement(parentNode) ? parentNode.listType : "numbered-list";
 };
 
 const hasListItem = (editor: Editor, type?: string) => {
   // For all selected list elements
   for (const [, path] of editor.nodes({ match: isListItemElement })) {
-    if (type) {
-      const itemListType = getListItemType(editor, path);
-
-      if (itemListType === type && isPathSelected(editor, path)) {
-        return true;
-      }
-    } else if (isPathSelected(editor, path)) {
-      return true;
-    }
+    const isSelected = isPathSelected(editor, path);
+    if (!type && isSelected) return true;
+    const itemListType = getListItemType(editor, path);
+    if (type && isSelected && itemListType === type) return true;
   }
   return false;
 };
@@ -51,14 +42,8 @@ const isSelectionOnlyOfType = (editor: Editor, type: ListType) => {
   })) {
     const [parentNode] = editor.parent(path);
     if (isListElement(parentNode)) {
-      if (parentNode.listType !== type) {
-        return false;
-      } else if (parentNode.listType === type) {
-        hasListItems = true;
-        continue;
-      } else {
-        return false;
-      }
+      if (parentNode.listType !== type) return false;
+      hasListItems = true;
     } else {
       return false;
     }
@@ -93,9 +78,7 @@ export const toggleList = (editor: Editor, listType: ListType) => {
         match: (node, path) => {
           if (!isListItemElement(node) || !isPathSelected(editor, path)) return false;
           const [parentNode] = editor.node(Path.parent(path));
-          const shouldChange =
-            Element.isElement(parentNode) && parentNode.type === LIST_ELEMENT_TYPE && parentNode.listType !== listType;
-          return shouldChange;
+          return isListElement(parentNode) && parentNode.listType !== listType;
         },
         mode: "all",
       },
@@ -103,7 +86,6 @@ export const toggleList = (editor: Editor, listType: ListType) => {
     // No list items are selected
   } else {
     // Wrap all regular text blocks. (paragraph, quote, blockquote)
-
     const nodes = Array.from(
       editor.nodes({
         // TODO: Text match stuff
@@ -113,10 +95,8 @@ export const toggleList = (editor: Editor, listType: ListType) => {
     );
     // Find the highest level element that should be toggled.
     const targetPathLevel = nodes.reduce<number>((shortestPath, [, path]) => {
-      if (path.length < shortestPath && !nodes.find(([, childPath]) => Path.isChild(childPath, path))) {
-        return path.length;
-      }
-      return shortestPath;
+      const isTopLevel = !nodes.some(([, childPath]) => Path.isChild(childPath, path));
+      return isTopLevel ? Math.min(shortestPath, path.length) : shortestPath;
     }, Infinity);
 
     editor.withoutNormalizing(() => {
@@ -124,12 +104,8 @@ export const toggleList = (editor: Editor, listType: ListType) => {
         if (path.length !== targetPathLevel) {
           continue;
         }
-        Transforms.wrapNodes(editor, defaultListItemBlock(), {
-          at: path,
-        });
-        Transforms.wrapNodes(editor, defaultListBlock(listType), {
-          at: path,
-        });
+        Transforms.wrapNodes(editor, defaultListItemBlock(), { at: path });
+        Transforms.wrapNodes(editor, defaultListBlock(listType), { at: path });
       }
     });
   }

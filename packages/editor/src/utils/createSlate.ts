@@ -6,21 +6,10 @@
  *
  */
 
-import { createEditor, Editor } from "slate";
-import { withReact } from "slate-react";
+import type { Editor } from "slate";
 import type { SlatePlugin } from "../core";
-import { withHistory } from "slate-history";
 
-interface Props {
-  plugins?: SlatePlugin[];
-}
-
-export const createSlate = ({ plugins }: Props) => {
-  const editor = withPlugins(withHistory(withReact(createEditor())), plugins);
-  return editor;
-};
-
-const withPlugins = (editor: Editor, plugins?: SlatePlugin[]) => {
+export const withPlugins = (editor: Editor, plugins?: SlatePlugin[]) => {
   if (plugins) {
     return plugins.reduce((editor, plugin) => plugin(editor), editor);
   }

@@ -17,16 +17,18 @@ import type { SoftBreakElement } from "../plugins/softBreak/softBreakTypes";
 import type { ListElement, ListItemElement } from "../plugins/list/listTypes";
 import type { SectionElement } from "../plugins/section/sectionTypes";
 
-interface CustomEditor {
+export interface CustomEditor {
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
 }
 
+export interface SlateEditor {
+  Editor: BaseEditor & ReactEditor & HistoryEditor & CustomEditor;
+  Element: ParagraphElement | LinkElement | SoftBreakElement | ListItemElement | ListElement | SectionElement;
+  Text: CustomText;
+}
+
 declare module "slate" {
-  interface CustomTypes {
-    Editor: BaseEditor & ReactEditor & HistoryEditor & CustomEditor;
-    Element: ParagraphElement | LinkElement | SoftBreakElement | ListItemElement | ListElement | SectionElement;
-    Text: CustomText;
-  }
+  interface CustomTypes extends SlateEditor {}
 }
 
 export interface SlateSerializer {

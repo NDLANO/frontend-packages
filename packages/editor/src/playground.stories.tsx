@@ -7,14 +7,16 @@
  */
 
 import { useState } from "react";
-import { type Descendant } from "slate";
-import { Editable, Slate } from "slate-react";
+import { createEditor, type Descendant } from "slate";
+import { withHistory } from "slate-history";
+import { Editable, Slate, withReact } from "slate-react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { OrderedList, UnOrderedList } from "@ndla/primitives";
+import type { SlatePlugin } from "./core";
 import { listPlugin } from "./plugins/list/listPlugin";
 import { markPlugin } from "./plugins/mark/markPlugin";
 import { softBreakPlugin } from "./plugins/softBreak/softBreakPlugin";
-import { createSlate } from "./utils/createSlate";
+import { withPlugins } from "./utils/createSlate";
 
 export default {
   title: "Editor/Playground",
@@ -22,6 +24,11 @@ export default {
     layout: "fullscreen",
   },
 } as Meta;
+
+const createSlate = ({ plugins }: { plugins: SlatePlugin[] }) => {
+  const editor = withPlugins(withHistory(withReact(createEditor())), plugins);
+  return editor;
+};
 
 const initialValue: Descendant[] = [
   {

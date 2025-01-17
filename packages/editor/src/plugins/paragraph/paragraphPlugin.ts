@@ -11,6 +11,7 @@ import { PARAGRAPH_ELEMENT_TYPE } from "./paragraphTypes";
 
 export const paragraphPlugin = createPlugin({
   type: PARAGRAPH_ELEMENT_TYPE,
+  name: PARAGRAPH_ELEMENT_TYPE,
   // override: {
   //   normalizeNode: (entry) => (editor) => {},
   // },

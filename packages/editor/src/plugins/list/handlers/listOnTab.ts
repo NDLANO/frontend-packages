@@ -17,7 +17,7 @@ import { isElementOfType } from "../../../utils/isElementType";
 import { defaultListBlock } from "../listBlocks";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
 
-export const listOnTab: ShortcutHandler = (editor, event) => {
+export const listOnTab: ShortcutHandler = (editor, event, logger) => {
   if (!editor.selection || !hasNodeOfType(editor, LIST_ELEMENT_TYPE)) return false;
 
   const listEntry = getCurrentBlock(editor, LIST_ELEMENT_TYPE);
@@ -53,6 +53,7 @@ export const listOnTab: ShortcutHandler = (editor, event) => {
       if (!isListItemElement(parentNode)) {
         const childList = currentItemNode.children[currentItemNode.children.length - 1];
         if (isListElement(childList) && childList.listType !== currentListNode.listType) {
+          logger.log("Lifting list element out of current list.");
           Transforms.setNodes(
             editor,
             { listType: currentListNode.listType },
@@ -135,9 +136,11 @@ export const listOnTab: ShortcutHandler = (editor, event) => {
       const [lastNode, lastNodePath] = editor.node([...previousPath, previousNode.children.length - 1]);
       // If previous list item has a sublist, move current item inside it.
       if (isListElement(lastNode)) {
+        logger.log("Moving current list item into sublist of previous list item");
         Transforms.moveNodes(editor, { at: currentItemPath, to: [...lastNodePath, lastNode.children.length] });
         // Wrap current item inside a new list and move the new list to the previous list item.
       } else {
+        logger.log("Wrapping current list item inside a new list and moving it to the previous list item");
         Transforms.wrapNodes(editor, defaultListBlock(currentListNode.listType), { at: currentItemPath });
         Transforms.moveNodes(editor, { at: currentItemPath, to: [...previousPath, previousNode.children.length] });
       }

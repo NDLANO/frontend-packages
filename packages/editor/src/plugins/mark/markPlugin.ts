@@ -13,6 +13,7 @@ import { toggleMark } from "./toggleMark";
 import { marks } from "./markTypes";
 
 export const markPlugin = createPlugin({
+  name: "mark",
   normalize: (editor, node, path) => {
     if (!isEmptyTextNode(node)) return false;
     if (node.bold || node.code || node.italic || node.sub || node.sup || node.underlined) {

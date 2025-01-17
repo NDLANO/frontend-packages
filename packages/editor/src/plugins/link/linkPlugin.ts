@@ -53,6 +53,7 @@ export const linkSerializer: SlateSerializer = {
 
 export const linkPlugin = createPlugin({
   type: LINK_ELEMENT_TYPE,
+  name: LINK_ELEMENT_TYPE,
   isInline: true,
   normalize: (editor, node, path) => {
     if (!isElementOfType(node, LINK_ELEMENT_TYPE)) return false;

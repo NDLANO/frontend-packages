@@ -11,4 +11,5 @@ import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
 
 export const sectionPlugin = createPlugin({
   type: SECTION_ELEMENT_TYPE,
+  name: SECTION_ELEMENT_TYPE,
 });

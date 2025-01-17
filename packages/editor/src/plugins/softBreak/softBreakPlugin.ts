@@ -13,6 +13,7 @@ import { Transforms } from "slate";
 
 export const softBreakPlugin = createPlugin({
   type: SOFT_BREAK_ELEMENT_TYPE,
+  name: SOFT_BREAK_ELEMENT_TYPE,
   isVoid: true,
   shortcuts: {
     "soft-break": {

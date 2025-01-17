@@ -9,8 +9,9 @@
 import type { SlatePluginFn } from ".";
 
 export const createPlugin: SlatePluginFn =
-  ({ isInline: isInlineProp, shortcuts, isVoid: isVoidProp, type, normalize, transform }) =>
+  ({ isInline: isInlineProp, name, shortcuts, isVoid: isVoidProp, type, normalize, transform }) =>
   (editor) => {
+    const logger = editor.logger.getLogger(name);
     const { isInline, isVoid } = editor;
     editor.isInline = (element) => {
       if (element.type === type) {
@@ -28,7 +29,7 @@ export const createPlugin: SlatePluginFn =
       const { normalizeNode } = editor;
       editor.normalizeNode = (entry, options) => {
         const [node, path] = entry;
-        const res = normalize?.(editor, node, path, options);
+        const res = normalize?.(editor, node, path, logger);
         if (res) {
           return;
         }
@@ -41,10 +42,12 @@ export const createPlugin: SlatePluginFn =
     if (shortcutEntries.length) {
       const { onKeyDown } = editor;
       editor.onKeyDown = (event) => {
-        for (const [_key, { handler, keyCondition }] of shortcutEntries) {
+        for (const [key, { handler, keyCondition }] of shortcutEntries) {
           const keyConditions = Array.isArray(keyCondition) ? keyCondition : [keyCondition];
           if (keyConditions.some((condition) => condition(event))) {
-            if (handler(editor, event)) {
+            logger.log(`Shortcut "${key}" triggered.`);
+            if (handler(editor, event, logger)) {
+              logger.log(`Shortcut "${key}" consumed keyDown event. Ignoring further handlers.`);
               return;
             }
           }

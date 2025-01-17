@@ -16,9 +16,12 @@ import type { KeyboardEventHandler } from "react";
 import type { SoftBreakElement } from "../plugins/softBreak/softBreakTypes";
 import type { ListElement, ListItemElement } from "../plugins/list/listTypes";
 import type { SectionElement } from "../plugins/section/sectionTypes";
+import type { LoggerManager } from "../editor/logger/Logger";
 
 export interface CustomEditor {
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
+  logger: LoggerManager;
+  debug?: boolean;
 }
 
 export interface SlateEditor {

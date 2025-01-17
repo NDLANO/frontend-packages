@@ -7,16 +7,17 @@
  */
 
 import { useState } from "react";
-import { createEditor, type Descendant } from "slate";
-import { withHistory } from "slate-history";
-import { Editable, Slate, withReact } from "slate-react";
+import { type Descendant } from "slate";
+import { Editable, Slate } from "slate-react";
 import type { Meta, StoryFn } from "@storybook/react";
-import { OrderedList, UnOrderedList } from "@ndla/primitives";
-import type { SlatePlugin } from "./core";
+import { ListAlphabetical, ListOrdered, ListUnordered } from "@ndla/icons";
+import { IconButton, OrderedList, UnOrderedList, type IconButtonProps } from "@ndla/primitives";
+import { useListToolbarButton, useListToolbarButtonState } from "./plugins/list/hooks/useListToolbarButton";
 import { listPlugin } from "./plugins/list/listPlugin";
+import type { ListType } from "./plugins/list/listTypes";
 import { markPlugin } from "./plugins/mark/markPlugin";
 import { softBreakPlugin } from "./plugins/softBreak/softBreakPlugin";
-import { withPlugins } from "./utils/createSlate";
+import { createSlate } from "./utils/createSlate";
 
 export default {
   title: "Editor/Playground",
@@ -24,11 +25,6 @@ export default {
     layout: "fullscreen",
   },
 } as Meta;
-
-const createSlate = ({ plugins }: { plugins: SlatePlugin[] }) => {
-  const editor = withPlugins(withHistory(withReact(createEditor())), plugins);
-  return editor;
-};
 
 const initialValue: Descendant[] = [
   {
@@ -46,30 +42,6 @@ const initialValue: Descendant[] = [
         type: "paragraph",
         children: [{ text: "A line of text in a paragraph." }],
       },
-      // {
-      //   type: "list",
-      //   listType: "numbered-list",
-      //   data: {},
-      //   children: [
-      //     { type: "list-item", children: [{ type: "paragraph", children: [{ text: "Item 1" }] }] },
-      //     {
-      //       type: "list-item",
-      //       children: [
-      //         {
-      //           type: "paragraph",
-      //           children: [{ text: "Item 2" }],
-      //         },
-      //         {
-      //           type: "list",
-      //           data: {},
-      //           listType: "numbered-list",
-      //           children: [{ type: "list-item", children: [{ type: "paragraph", children: [{ text: "nested item" }] }] }],
-      //         },
-      //       ],
-      //     },
-      //     // { type: "list-item", children: [{ type: "paragraph", children: [{ text: "Item 3" }] }] },
-      //   ],
-      // },
       {
         type: "paragraph",
         children: [{ text: "A line of text in a paragraph." }],
@@ -78,15 +50,48 @@ const initialValue: Descendant[] = [
   },
 ];
 
+interface ListToolbarButtonProps extends IconButtonProps {
+  listType: ListType;
+}
+
+const ListToolbarButton = ({ listType, ...rest }: ListToolbarButtonProps) => {
+  const state = useListToolbarButtonState({ type: listType });
+  const toolbarButton = useListToolbarButton(state);
+  return <IconButton size="small" variant="secondary" {...toolbarButton.props} {...rest} />;
+};
+
+export const ToolbarButtons = () => {
+  return (
+    <>
+      <ListToolbarButton listType="bulleted-list">
+        <ListUnordered />
+      </ListToolbarButton>
+      <ListToolbarButton listType="numbered-list">
+        <ListOrdered />
+      </ListToolbarButton>
+      <ListToolbarButton listType="letter-list">
+        <ListAlphabetical />
+      </ListToolbarButton>
+    </>
+  );
+};
+
 export const EditorPlayground: StoryFn = () => {
   const [editor] = useState(() => createSlate({ plugins: [markPlugin, listPlugin, softBreakPlugin] }));
   return (
     <Slate editor={editor} initialValue={initialValue}>
+      <ToolbarButtons></ToolbarButtons>
       <Editable
         onKeyDown={editor.onKeyDown}
         renderElement={({ element, children, attributes }) => {
           if (element.type === "list" && element.listType === "numbered-list") {
             return <OrderedList {...attributes}>{children}</OrderedList>;
+          } else if (element.type === "list" && element.listType === "letter-list") {
+            return (
+              <OrderedList variant="letters" {...attributes}>
+                {children}
+              </OrderedList>
+            );
           } else if (element.type === "list") {
             return <UnOrderedList {...attributes}>{children}</UnOrderedList>;
           } else if (element.type === "list-item") {

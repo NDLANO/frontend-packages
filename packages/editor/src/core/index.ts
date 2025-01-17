@@ -6,13 +6,19 @@
  *
  */
 
-import type { BaseEditor, Editor, Element, Node, Path } from "slate";
+import type { Editor, Element, Node, Path } from "slate";
 import type { KeyboardEventLike } from "is-hotkey";
 import type { KeyboardEvent } from "react";
 
 type KeyConditionFn = (event: KeyboardEventLike) => boolean;
 
-export type ShortcutHandler = (editor: Editor, event: KeyboardEvent<HTMLDivElement>) => boolean;
+export type ShortcutHandler = (editor: Editor, event: KeyboardEvent<HTMLDivElement>, logger: Logger) => boolean;
+
+export type SlateExtensionFn = (editor: Editor) => Editor;
+
+export interface Logger {
+  log: (...args: any[]) => void;
+}
 
 export interface Shortcut {
   handler: ShortcutHandler;
@@ -20,11 +26,12 @@ export interface Shortcut {
 }
 
 interface SlateCreatePluginProps<TType extends Element["type"]> {
+  name: string;
   isVoid?: boolean;
   isInline?: boolean;
   type?: TType;
   shortcuts?: Record<string, Shortcut>;
-  normalize?: (editor: Editor, node: Node, path: Path, options?: Parameters<BaseEditor["normalizeNode"]>[1]) => boolean;
+  normalize?: (editor: Editor, node: Node, path: Path, logger: Logger) => boolean;
   transform?: (editor: Editor) => Editor;
 }
 

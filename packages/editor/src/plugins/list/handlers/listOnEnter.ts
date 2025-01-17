@@ -14,7 +14,7 @@ import { defaultListItemBlock } from "../listBlocks";
 import { isParagraphElement } from "../../paragraph/queries/paragraphElementQueries";
 import { isListItemElement } from "../queries/listElementQueries";
 
-export const listOnEnter: ShortcutHandler = (editor, event) => {
+export const listOnEnter: ShortcutHandler = (editor, event, logger) => {
   if (event.shiftKey || !editor.selection) return false;
 
   const [firstEntry, secondEntry] = getEditorAncestors(editor, true);
@@ -32,14 +32,14 @@ export const listOnEnter: ShortcutHandler = (editor, event) => {
   }
   event.preventDefault();
 
-  // If selection is expanded, delete selected content first.
-  // Selection should now be collapsed
   if (Range.isExpanded(editor.selection)) {
+    logger.log("Selection is expanded, deleting selected content.");
     editor.deleteFragment();
+    // Selection should now be collapsed
   }
 
-  // If list-item is empty, remove list item and jump out of list.
   if (Node.string(selectedDefinitionItem) === "" && selectedDefinitionItem.children.length === 1) {
+    logger.log("List item is empty, removing list item and jumping out of list");
     editor.withoutNormalizing(() => {
       Transforms.unwrapNodes(editor, {
         at: selectedDefinitionItemPath,
@@ -60,6 +60,7 @@ export const listOnEnter: ShortcutHandler = (editor, event) => {
   const listItemEnd = editor.end(selectedDefinitionItemPath);
   if (Point.equals(listItemEnd, editor.selection.anchor)) {
     const nextPath = Path.next(selectedDefinitionItemPath);
+    logger.log("Enter at end of list item, inserting new list item.");
     Transforms.insertNodes(
       editor,
       // TODO: Update children
@@ -73,6 +74,7 @@ export const listOnEnter: ShortcutHandler = (editor, event) => {
   // If at the start of list-item, insert a new list item at current path
   const listItemStart = editor.start(selectedDefinitionItemPath);
   if (Point.equals(listItemStart, editor.selection.anchor)) {
+    logger.log("Enter at start of list item, inserting new list item.");
     Transforms.insertNodes(
       editor,
       // TODO: Update children
@@ -81,6 +83,8 @@ export const listOnEnter: ShortcutHandler = (editor, event) => {
     );
     return true;
   }
+
+  logger.log("Enter in the middle of list item, splitting list item.");
   // Split current listItem at selection.
   Transforms.splitNodes(editor, { match: isListItemElement, mode: "lowest" });
   Transforms.select(editor, editor.start(Path.next(selectedDefinitionItemPath)));

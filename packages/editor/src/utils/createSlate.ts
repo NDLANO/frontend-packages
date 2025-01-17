@@ -6,12 +6,26 @@
  *
  */
 
-import type { Editor } from "slate";
+import { createEditor, type Editor } from "slate";
 import type { SlatePlugin } from "../core";
+import { LoggerManager } from "../editor/logger/Logger";
+import { withHistory } from "slate-history";
+import { withReact } from "slate-react";
+import { withLogger } from "../editor/logger/withLogger";
 
 export const withPlugins = (editor: Editor, plugins?: SlatePlugin[]) => {
   if (plugins) {
     return plugins.reduce((editor, plugin) => plugin(editor), editor);
   }
+  return editor;
+};
+
+interface CreateSlate {
+  plugins?: SlatePlugin[];
+  logger?: LoggerManager;
+}
+
+export const createSlate = ({ plugins, logger = new LoggerManager({ debug: false }) }: CreateSlate) => {
+  const editor = withPlugins(withHistory(withReact(withLogger(createEditor(), logger))), plugins);
   return editor;
 };

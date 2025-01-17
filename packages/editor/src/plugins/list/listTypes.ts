@@ -8,8 +8,8 @@
 
 import type { Descendant } from "slate";
 
-export const LIST_ELEMENT_TYPE = "list";
-export const LIST_ITEM_ELEMENT_TYPE = "list-item";
+export const LIST_ELEMENT_TYPE = "list" as const;
+export const LIST_ITEM_ELEMENT_TYPE = "list-item" as const;
 
 export type ListElementType = "list";
 export type ListItemElementType = "list-item";

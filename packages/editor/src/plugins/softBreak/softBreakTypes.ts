@@ -8,7 +8,7 @@
 
 import type { Descendant } from "slate";
 
-export const SOFT_BREAK_ELEMENT_TYPE = "br";
+export const SOFT_BREAK_ELEMENT_TYPE = "br" as const;
 
 export type SoftBreakElementType = typeof SOFT_BREAK_ELEMENT_TYPE;
 

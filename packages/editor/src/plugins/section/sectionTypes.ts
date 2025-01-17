@@ -8,7 +8,7 @@
 
 import type { Descendant } from "slate";
 
-export const SECTION_ELEMENT_TYPE = "section";
+export const SECTION_ELEMENT_TYPE = "section" as const;
 
 export type SectionElementType = "section";
 

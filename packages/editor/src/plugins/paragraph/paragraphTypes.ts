@@ -8,7 +8,7 @@
 
 import type { Descendant } from "slate";
 
-export const PARAGRAPH_ELEMENT_TYPE = "paragraph";
+export const PARAGRAPH_ELEMENT_TYPE = "paragraph" as const;
 
 export type ParagraphElementType = typeof PARAGRAPH_ELEMENT_TYPE;
 

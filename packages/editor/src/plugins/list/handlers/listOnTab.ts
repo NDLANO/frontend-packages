@@ -53,13 +53,14 @@ export const listOnTab: ShortcutHandler = (editor, event, logger) => {
       if (!isListItemElement(parentNode)) {
         const childList = currentItemNode.children[currentItemNode.children.length - 1];
         if (isListElement(childList) && childList.listType !== currentListNode.listType) {
-          logger.log("Lifting list element out of current list.");
+          logger.log("List has sublist with different type, changing type to match parent list");
           Transforms.setNodes(
             editor,
             { listType: currentListNode.listType },
             { at: [...currentItemPath, currentItemNode.children.length - 1] },
           );
         }
+        logger.log("List is a top level list, lifting list items out of list");
         Transforms.liftNodes(editor, { at: currentItemPath });
         return true;
       }
@@ -75,15 +76,15 @@ export const listOnTab: ShortcutHandler = (editor, event, logger) => {
           if (anchor && focus) {
             const childList = currentItemNode.children[currentItemNode.children.length - 1];
             if (isListElement(childList)) {
-              // Child list will be changed to match current list type
               if (childList.listType !== currentListNode.listType) {
+                logger.log("Sublist has different type, changing type to match parent list");
                 Transforms.setNodes(
                   editor,
                   { listType: currentListNode.listType },
                   { at: [...currentItemPath, currentItemNode.children.length - 1] },
                 );
               }
-              // move any following list-items of selected list to the child list.
+              logger.log("Moving following list items to sublist of selected list item");
               Transforms.moveNodes(editor, {
                 match: (node) => isListItemElement(node),
                 mode: "lowest",
@@ -91,8 +92,9 @@ export const listOnTab: ShortcutHandler = (editor, event, logger) => {
                 to: [...currentItemPath, currentItemNode.children.length - 1, childList.children.length],
               });
             } else {
-              // If a child list does not exist and following items exist, wrap following items in list and move it
-              // inside selected item
+              logger.log(
+                "No sublist exists, wrapping following list items in new list and moving it to selected list item",
+              );
               Transforms.wrapNodes(editor, defaultListBlock(currentListNode.listType), {
                 match: (n, p) => isListItemElement(n) && Path.equals(Path.parent(p), Path.parent(currentItemPath)),
                 at: { anchor, focus },
@@ -106,8 +108,8 @@ export const listOnTab: ShortcutHandler = (editor, event, logger) => {
         }
 
         const nextListPath = Path.next(currentListPath);
-        // If current list is followed by more blocks, move the blocks to the selected list item
         if (editor.hasPath(nextListPath)) {
+          logger.log("Current list is followed by more blocks, moving them to selected list item");
           Transforms.moveNodes(editor, {
             match: isListElement,
             at: {
@@ -122,6 +124,7 @@ export const listOnTab: ShortcutHandler = (editor, event, logger) => {
         Transforms.moveNodes(editor, { at: currentItemPath, to: Path.next(targetPath) });
         // Clean up old list node if it initally had one item only
         if (currentListNode.children.length === 1) {
+          logger.log("List contains exactly one item, removing it");
           Transforms.removeNodes(editor, { at: currentListPath });
         }
         return true;

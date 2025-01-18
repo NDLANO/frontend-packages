@@ -15,14 +15,16 @@ export const linkPlugin = createPlugin({
   type: LINK_ELEMENT_TYPE,
   name: LINK_ELEMENT_TYPE,
   isInline: true,
-  normalize: (editor, node, path) => {
+  normalize: (editor, node, path, logger) => {
     if (!isElementOfType(node, LINK_ELEMENT_TYPE)) return false;
     if (Node.string(node) === "") {
+      logger.log("Link element is empty, removing it");
       Transforms.removeNodes(editor, { at: path });
       return true;
     }
     for (const [index, child] of node.children.entries()) {
       if (!Text.isText(child)) {
+        logger.log("Link element contains non-text children, unwrapping them");
         Transforms.unwrapNodes(editor, { at: [...path, index] });
         return true;
       }

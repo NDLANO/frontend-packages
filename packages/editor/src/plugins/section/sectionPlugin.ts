@@ -12,8 +12,10 @@ import { isSectionElement } from "./queries/sectionQueries";
 import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { isElementOfType } from "../../utils/isElementType";
+import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 
-const ALLOWED_FIRST_ELEMENTS: Element["type"][] = [PARAGRAPH_ELEMENT_TYPE] as const;
+// TODO: This should probably be configurable
+const ALLOWED_FIRST_ELEMENTS: Element["type"][] = [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const;
 
 export const sectionPlugin = createPlugin({
   type: SECTION_ELEMENT_TYPE,

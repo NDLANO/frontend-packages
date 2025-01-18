@@ -6,4 +6,42 @@
  *
  */
 
-export const linkSerializer = {};
+import { jsx as slatejsx } from "slate-hyperscript";
+import type { SlateSerializer } from "../../types";
+import { LINK_ELEMENT_TYPE } from "./linkTypes";
+import { isLinkElement } from "./queries/linkQueries";
+import { createHtmlTag } from "../../utils/serializationHelpers";
+
+export const linkSerializer: SlateSerializer = {
+  deserialize: (el, children) => {
+    const tag = el.tagName.toLowerCase();
+    if (tag !== "a") return;
+    const a = el as HTMLLinkElement;
+    return slatejsx(
+      "element",
+      {
+        type: LINK_ELEMENT_TYPE,
+        data: {
+          href: a.href ?? "#",
+          target: a.target !== "" ? a.target : undefined,
+          title: a.title !== "" ? a.title : undefined,
+          rel: a.rel !== "" ? a.rel : undefined,
+        },
+      },
+      children,
+    );
+  },
+  serialize: (node, children) => {
+    if (!isLinkElement(node)) return;
+    return createHtmlTag({
+      tag: "a",
+      data: {
+        href: node.data?.href,
+        target: node.data?.target,
+        title: node.data?.title,
+        rel: node.data?.rel,
+      },
+      children,
+    });
+  },
+};

@@ -17,15 +17,15 @@ export const linkPlugin = createPlugin({
   isInline: true,
   normalize: (editor, node, path) => {
     if (!isElementOfType(node, LINK_ELEMENT_TYPE)) return false;
+    if (Node.string(node) === "") {
+      Transforms.removeNodes(editor, { at: path });
+      return true;
+    }
     for (const [index, child] of node.children.entries()) {
       if (!Text.isText(child)) {
         Transforms.unwrapNodes(editor, { at: [...path, index] });
         return true;
       }
-    }
-    if (Node.string(node) === "") {
-      Transforms.removeNodes(editor, { at: path });
-      return true;
     }
     return false;
   },

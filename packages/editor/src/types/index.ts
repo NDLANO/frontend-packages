@@ -25,6 +25,10 @@ export interface CustomEditor {
   debug?: boolean;
 }
 
+export type BlockElement = ParagraphElement | HeadingElement;
+
+export type BlockElementType = BlockElement["type"];
+
 export interface SlateEditor {
   Editor: BaseEditor & ReactEditor & HistoryEditor & CustomEditor;
   Element:

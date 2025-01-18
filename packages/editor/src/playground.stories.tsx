@@ -7,19 +7,30 @@
  */
 
 import { useState } from "react";
-import { type Descendant } from "slate";
-import { Editable, Slate } from "slate-react";
+import { type Descendant, type EditorMarks } from "slate";
+import { Editable, Slate, useSlate } from "slate-react";
 import type { Meta, StoryFn } from "@storybook/react";
-import { ListAlphabetical, ListOrdered, ListUnordered } from "@ndla/icons";
+import {
+  Bold,
+  CodeView,
+  Italic,
+  ListAlphabetical,
+  ListOrdered,
+  ListUnordered,
+  Subscript,
+  Superscript,
+} from "@ndla/icons";
 import { Heading, IconButton, OrderedList, UnOrderedList, type IconButtonProps } from "@ndla/primitives";
 import { LoggerManager } from "./editor/logger/Logger";
 import { headingPlugin } from "./plugins/heading/headingPlugin";
 import { useListToolbarButton, useListToolbarButtonState } from "./plugins/list/hooks/useListToolbarButton";
 import { listPlugin } from "./plugins/list/listPlugin";
 import type { ListType } from "./plugins/list/listTypes";
+import { useMarkToolbarButton, useMarkToolbarButtonState } from "./plugins/mark/hooks/useMarkToolbarButton";
 import { markPlugin } from "./plugins/mark/markPlugin";
 import { sectionPlugin } from "./plugins/section/sectionPlugin";
 import { softBreakPlugin } from "./plugins/softBreak/softBreakPlugin";
+import { toggleBlock } from "./transforms/toggleBlock";
 import { createSlate } from "./utils/createSlate";
 
 export default {
@@ -68,9 +79,38 @@ const ListToolbarButton = ({ listType, ...rest }: ListToolbarButtonProps) => {
   return <IconButton size="small" variant="secondary" {...toolbarButton.props} {...rest} />;
 };
 
+interface MarkToolbarButtonProps extends IconButtonProps {
+  mark: keyof EditorMarks;
+}
+
+const MarkToolbarButton = ({ mark, ...rest }: MarkToolbarButtonProps) => {
+  const state = useMarkToolbarButtonState({ type: mark });
+  const toolbarButton = useMarkToolbarButton(state);
+  return <IconButton size="small" variant="secondary" {...toolbarButton.props} {...rest} />;
+};
+
 export const ToolbarButtons = () => {
+  const editor = useSlate();
   return (
     <>
+      <IconButton size="small" variant="secondary" onClick={() => toggleBlock(editor, "heading", { level: 2 })}>
+        H2
+      </IconButton>
+      <MarkToolbarButton mark="bold">
+        <Bold />
+      </MarkToolbarButton>
+      <MarkToolbarButton mark="italic">
+        <Italic />
+      </MarkToolbarButton>
+      <MarkToolbarButton mark="code">
+        <CodeView />
+      </MarkToolbarButton>
+      <MarkToolbarButton mark="sup">
+        <Superscript />
+      </MarkToolbarButton>
+      <MarkToolbarButton mark="sub">
+        <Subscript />
+      </MarkToolbarButton>
       <ListToolbarButton listType="bulleted-list">
         <ListUnordered />
       </ListToolbarButton>

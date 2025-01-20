@@ -29,7 +29,7 @@ export const headingOnEnter: ShortcutHandler = (editor, event, logger) => {
     Transforms.insertNodes(editor, { type: "paragraph", children: [{ text: "" }] });
   } else {
     logger.log("Enter in middle of heading, splitting nodes");
-    Transforms.splitNodes(editor, { at: path });
+    Transforms.splitNodes(editor);
   }
   return true;
 };

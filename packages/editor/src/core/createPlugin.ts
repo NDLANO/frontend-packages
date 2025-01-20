@@ -46,10 +46,11 @@ export const createPlugin: SlatePluginFn =
         for (const [key, { handler, keyCondition }] of shortcutEntries) {
           const keyConditions = Array.isArray(keyCondition) ? keyCondition : [keyCondition];
           if (keyConditions.some((condition) => condition(event))) {
-            logger.log(`Shortcut "${key}" triggered.`);
             if (handler(editor, event, logger)) {
               logger.log(`Shortcut "${key}" consumed keyDown event. Ignoring further handlers.`);
               return;
+            } else {
+              logger.log(`Shortcut "${key}" triggered, but did not consume the keyDown event.`);
             }
           }
         }

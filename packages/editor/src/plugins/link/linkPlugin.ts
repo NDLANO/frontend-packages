@@ -9,25 +9,29 @@
 import { Node, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { LINK_ELEMENT_TYPE } from "./linkTypes";
-import { isElementOfType } from "../../utils/isElementType";
+import { isLinkElement } from "./queries/linkQueries";
 
 export const linkPlugin = createPlugin({
   type: LINK_ELEMENT_TYPE,
   name: LINK_ELEMENT_TYPE,
   isInline: true,
+  isVoid: false,
   normalize: (editor, node, path, logger) => {
-    if (!isElementOfType(node, LINK_ELEMENT_TYPE)) return false;
+    if (!isLinkElement(node)) return false;
     if (Node.string(node) === "") {
       logger.log("Link element is empty, removing it");
       Transforms.removeNodes(editor, { at: path });
       return true;
     }
-    for (const [index, child] of node.children.entries()) {
-      if (!Text.isText(child)) {
-        logger.log("Link element contains non-text children, unwrapping them");
-        Transforms.unwrapNodes(editor, { at: [...path, index] });
+    const nonTextEntries = Array.from(node.children.entries()).filter(([_, child]) => !Text.isText(child));
+    if (nonTextEntries.length) {
+      logger.log("Link element contains non-text children, unwrapping them");
+      editor.withoutNormalizing(() => {
+        for (const [index] of nonTextEntries) {
+          Transforms.unwrapNodes(editor, { at: path.concat(index) });
+        }
         return true;
-      }
+      });
     }
     return false;
   },

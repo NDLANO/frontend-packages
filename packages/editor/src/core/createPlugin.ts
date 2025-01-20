@@ -31,6 +31,7 @@ export const createPlugin: SlatePluginFn =
         const [node, path] = entry;
         const res = normalize?.(editor, node, path, logger);
         if (res) {
+          logger.log("consumed normalizeNode event. Further normalization will happen in a new normalization loop.");
           return;
         }
         return normalizeNode(entry, options);

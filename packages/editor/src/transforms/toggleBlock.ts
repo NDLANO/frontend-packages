@@ -9,7 +9,7 @@
 import { Element, Transforms, type Editor } from "slate";
 import { PARAGRAPH_ELEMENT_TYPE } from "../plugins/paragraph/paragraphTypes";
 import type { BlockElementType } from "../types";
-import { isElementOfType } from "../../es/utils/isElementType";
+import { isElementOfType } from "../utils/isElementType";
 
 // TODO: This could be configurable
 const defaultType = PARAGRAPH_ELEMENT_TYPE;

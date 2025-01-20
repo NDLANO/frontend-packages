@@ -42,6 +42,14 @@ const StyledErrorWarningFill = styled(ErrorWarningFill, {
   },
 });
 
+const StyledPopoverContent = styled(PopoverContent, {
+  base: {
+    width: "surface.xlarge",
+    maxHeight: "50vh",
+    overflowY: "auto",
+  },
+});
+
 const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
@@ -70,9 +78,9 @@ const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) =>
           </StyledIconButton>
         </PopoverTrigger>
         <Portal>
-          <PopoverContent>
+          <StyledPopoverContent>
             <div>{transformedDisclaimer}</div>
-          </PopoverContent>
+          </StyledPopoverContent>
         </Portal>
       </PopoverRoot>
       <div data-uu-content="">{children}</div>

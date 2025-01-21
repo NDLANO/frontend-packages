@@ -6,6 +6,7 @@
  *
  */
 
+import { breakSerializer } from "../../plugins/break/breakSerializer";
 import { headingSerializer } from "../../plugins/heading/headingSerializer";
 import { linkSerializer } from "../../plugins/link/linkSerializer";
 import { listSerializer } from "../../plugins/list/listSerializer";
@@ -18,7 +19,7 @@ export const commonSerializers = [
   // noopSerializer,
   paragraphSerializer,
   sectionSerializer,
-  // breakSerializer,
+  breakSerializer,
   markSerializer,
   linkSerializer,
   // blockQuoteSerializer,
@@ -39,7 +40,7 @@ export const extendedSerializers: SlateSerializer[] = [
   // noopSerializer,
   paragraphSerializer,
   sectionSerializer,
-  // breakSerializer,
+  breakSerializer,
   markSerializer,
   linkSerializer,
   // blockQuoteSerializer,

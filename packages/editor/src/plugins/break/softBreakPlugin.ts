@@ -8,13 +8,10 @@
 
 import isHotkey from "is-hotkey";
 import { createPlugin } from "../../core/createPlugin";
-import { SOFT_BREAK_ELEMENT_TYPE } from "./softBreakTypes";
 import { Transforms } from "slate";
 
 export const softBreakPlugin = createPlugin({
-  type: SOFT_BREAK_ELEMENT_TYPE,
-  name: SOFT_BREAK_ELEMENT_TYPE,
-  isVoid: true,
+  name: "soft-break",
   shortcuts: {
     "soft-break": {
       keyCondition: isHotkey("shift+enter"),

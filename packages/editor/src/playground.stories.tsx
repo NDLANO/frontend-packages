@@ -46,7 +46,7 @@ import { useMarkToolbarButton, useMarkToolbarButtonState } from "./plugins/mark/
 import { markPlugin } from "./plugins/mark/markPlugin";
 import { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 import { sectionPlugin } from "./plugins/section/sectionPlugin";
-import { softBreakPlugin } from "./plugins/softBreak/softBreakPlugin";
+import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
 import { toggleBlock } from "./transforms/toggleBlock";
 import { createSlate } from "./utils/createSlate";
 

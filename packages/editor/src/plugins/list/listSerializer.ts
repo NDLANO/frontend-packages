@@ -11,7 +11,7 @@ import { jsx as slatejsx } from "slate-hyperscript";
 import type { SlateSerializer } from "../../types";
 import { isElementOfType } from "../../utils/isElementType";
 import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "./listTypes";
-import { SOFT_BREAK_ELEMENT_TYPE } from "../softBreak/softBreakTypes";
+import { BREAK_ELEMENT_TYPE } from "../break/breakTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { LINK_ELEMENT_TYPE } from "../link/linkTypes";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
@@ -40,7 +40,7 @@ export const listSerializer: SlateSerializer = {
       if (!cur) {
         return acc;
       } else if (Element.isElement(cur) && !inlines.includes(cur.type)) {
-        if (cur.type === SOFT_BREAK_ELEMENT_TYPE) {
+        if (cur.type === BREAK_ELEMENT_TYPE) {
           if (isElementOfType(lastElement, PARAGRAPH_ELEMENT_TYPE) && lastElement.serializeAsText) {
             lastElement.children.push({ text: "\n" });
           } else {

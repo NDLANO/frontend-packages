@@ -7,12 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import { isElementOfType } from "../../../utils/isElementType";
+import { BREAK_ELEMENT_TYPE } from "../breakTypes";
 
-export const SOFT_BREAK_ELEMENT_TYPE = "br" as const;
-
-export type SoftBreakElementType = typeof SOFT_BREAK_ELEMENT_TYPE;
-
-export interface SoftBreakElement {
-  type: "br";
-  children: Descendant[];
-}
+export const isBreakElement = (node: Descendant) => isElementOfType(node, BREAK_ELEMENT_TYPE);

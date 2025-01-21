@@ -13,7 +13,7 @@ import type { LinkElement } from "../plugins/link/linkTypes";
 import type { ParagraphElement } from "../plugins/paragraph/paragraphTypes";
 import type { CustomText } from "../plugins/mark/markTypes";
 import type { KeyboardEventHandler } from "react";
-import type { SoftBreakElement } from "../plugins/softBreak/softBreakTypes";
+import type { BreakElement } from "../plugins/break/breakTypes";
 import type { ListElement, ListItemElement } from "../plugins/list/listTypes";
 import type { SectionElement } from "../plugins/section/sectionTypes";
 import type { LoggerManager } from "../editor/logger/Logger";
@@ -34,7 +34,7 @@ export interface SlateEditor {
   Element:
     | ParagraphElement
     | LinkElement
-    | SoftBreakElement
+    | BreakElement
     | ListItemElement
     | ListElement
     | SectionElement

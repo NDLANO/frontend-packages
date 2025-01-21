@@ -18,6 +18,8 @@ import { listOnBackspace } from "./handlers/listOnBackspace";
 import { isListElement, isListItemElement } from "./queries/listElementQueries";
 import { defaultListBlock } from "./listBlocks";
 
+const ALLOWED_LIST_ELEMENTS: Element["type"][] = [PARAGRAPH_ELEMENT_TYPE] as const;
+
 export const listPlugin = createPlugin({
   name: LIST_ELEMENT_TYPE,
   type: LIST_ELEMENT_TYPE,
@@ -61,7 +63,7 @@ export const listPlugin = createPlugin({
 
       const firstChild = node.children[0];
       // Some weird stuff here TODO: Fix
-      if (Element.isElement(firstChild) && ![PARAGRAPH_ELEMENT_TYPE].includes(firstChild.type)) {
+      if (Element.isElement(firstChild) && !ALLOWED_LIST_ELEMENTS.includes(firstChild.type)) {
         logger.log("First child is not a text element, inserting default text element type");
         Transforms.insertNodes(
           editor,

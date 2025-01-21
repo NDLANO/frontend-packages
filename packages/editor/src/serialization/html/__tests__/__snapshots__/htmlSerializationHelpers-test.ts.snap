@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`createHtmlTag converts camel-case to kebab-case 1`] = `"<ndlaembed data-resource="audio" data-resource_id="123" data-type="standard" data-url="https://api.test.ndla.no/audio-api/v1/audio/3000"></ndlaembed>"`;
+
+exports[`createHtmlTag creates brightcove embed tag from object 1`] = `"<ndlaembed data-account="4806596774001" data-caption="Intervju med Hallvard" data-player="BkLm8fT" data-resource="brightcove" data-videoid="ref:106952"></ndlaembed>"`;
+
+exports[`createHtmlTag creates h5p embed tag from object 1`] = `"<ndlaembed data-resource="h5p" data-url="https://h5p-test.ndla.no/resource/3ab6850d/oembed"></ndlaembed>"`;
+
+exports[`createHtmlTag creates h5p embed tag from object 2`] = `"<ndlaembed data-resource="h5p" data-url="https://h5p-test.ndla.no/resource/3ab6850d/oembed"></ndlaembed>"`;
+
+exports[`createHtmlTag creates image embed tag from object 1`] = `"<ndlaembed data-align="" data-alt="Guinness sign" data-caption="Guinness is good for you" data-resource="image" data-resource_id="42159" data-size="full" data-url="https://api.ndla.no/image-api/v3/images/42159"></ndlaembed>"`;
+
+exports[`createHtmlTag filters out null and undefined values, but not false values 1`] = `"<ndlaembed data-resource="unknown" data-auto-play="false" data-videoid="123"></ndlaembed>"`;

@@ -37,7 +37,7 @@ export const headingPlugin = createPlugin({
       logger.log("Removing bold from nodes within heading.");
       editor.withoutNormalizing(() => {
         boldEntries.forEach(([_, path]) => {
-          Transforms.setNodes(editor, { bold: false }, { at: path });
+          Transforms.setNodes(editor, { bold: undefined }, { at: path });
         });
         return true;
       });

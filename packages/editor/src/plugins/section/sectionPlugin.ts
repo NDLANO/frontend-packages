@@ -6,7 +6,7 @@
  *
  */
 
-import { Text, Transforms, Element } from "slate";
+import { Text, Transforms, Element, Node } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { isSectionElement } from "./queries/sectionQueries";
 import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
@@ -33,9 +33,32 @@ export const sectionPlugin = createPlugin({
   normalize: (editor, node, path, logger) => {
     if (!isSectionElement(node)) return false;
 
+    for (const [child, childPath] of Node.children(editor, path)) {
+      if (Text.isText(child)) {
+        Transforms.wrapNodes(
+          editor,
+          {
+            type: "paragraph",
+            children: [],
+          },
+          { at: childPath },
+        );
+        return true;
+      }
+    }
+
+    const textNodes = Array.from(node.children.entries()).filter((entry) => Text.isText(entry[1]));
+    if (textNodes.length) {
+      logger.log("Section contains text node, wrapping them in paragraphs");
+      // this is somewhat ineffective, but I couldn't figure out a better way of doing it.
+      // Also: This normalization check runs before the others because the others will insert redundant empty paragraphs.
+      Transforms.wrapNodes(editor, { type: "paragraph", children: [] }, { at: path, match: (n) => Text.isText(n) });
+      return true;
+    }
+
     // TODO: Do we actually need empty paragraphs?
     if (!isElementOfType(node.children[0], ALLOWED_FIRST_ELEMENTS)) {
-      logger.log("First element is invalid, inserting paragraph");
+      logger.log("First element is invalid, inserting paragraph", node.children[0]);
       Transforms.insertNodes(
         editor,
         { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] },
@@ -54,24 +77,6 @@ export const sectionPlugin = createPlugin({
       );
       return true;
     }
-
-    editor.withoutNormalizing(() => {
-      let modifiedChildren = false;
-      for (const [i, child] of node.children.entries()) {
-        if (Text.isText(child)) {
-          logger.log("Section contains text node, wrapping in paragraph");
-          Transforms.wrapNodes(
-            editor,
-            { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] },
-            { at: path.concat(i) },
-          );
-          modifiedChildren = true;
-        }
-      }
-      if (modifiedChildren) {
-        return true;
-      }
-    });
 
     return false;
   },

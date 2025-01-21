@@ -6,9 +6,11 @@
  *
  */
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { type Descendant, type EditorMarks } from "slate";
-import { Editable, Slate, useSlate } from "slate-react";
+import { DOMEditor } from "slate-dom";
+import { Editable, Slate, useSlate, type RenderElementProps } from "slate-react";
+import { Portal } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
 import {
   Bold,
@@ -20,14 +22,29 @@ import {
   Subscript,
   Superscript,
 } from "@ndla/icons";
-import { Heading, IconButton, OrderedList, UnOrderedList, type IconButtonProps } from "@ndla/primitives";
+import {
+  Button,
+  Heading,
+  IconButton,
+  OrderedList,
+  PopoverContent,
+  PopoverRootProvider,
+  PopoverTitle,
+  PopoverTrigger,
+  UnOrderedList,
+  type IconButtonProps,
+} from "@ndla/primitives";
 import { LoggerManager } from "./editor/logger/Logger";
+import { useEditorPopover } from "./hooks/useEditorPopover";
 import { headingPlugin } from "./plugins/heading/headingPlugin";
+import { linkPlugin } from "./plugins/link/linkPlugin";
+import { type LinkElement } from "./plugins/link/linkTypes";
 import { useListToolbarButton, useListToolbarButtonState } from "./plugins/list/hooks/useListToolbarButton";
 import { listPlugin } from "./plugins/list/listPlugin";
 import type { ListType } from "./plugins/list/listTypes";
 import { useMarkToolbarButton, useMarkToolbarButtonState } from "./plugins/mark/hooks/useMarkToolbarButton";
 import { markPlugin } from "./plugins/mark/markPlugin";
+import { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 import { sectionPlugin } from "./plugins/section/sectionPlugin";
 import { softBreakPlugin } from "./plugins/softBreak/softBreakPlugin";
 import { toggleBlock } from "./transforms/toggleBlock";
@@ -45,9 +62,25 @@ const initialValue: Descendant[] = [
     type: "section",
     children: [
       {
-        type: "heading",
-        level: 1,
-        children: [{ text: "Heading 1" }],
+        type: "paragraph",
+        children: [{ text: "A line of text in a paragraph." }],
+      },
+      {
+        type: "paragraph",
+        children: [{ text: "A line of text in a paragraph." }],
+      },
+      {
+        type: "paragraph",
+        children: [
+          {
+            type: "link",
+            children: [{ text: "A link" }],
+            data: {
+              href: "https://nrk.no",
+              target: "_blank",
+            },
+          },
+        ],
       },
       {
         type: "paragraph",
@@ -57,6 +90,7 @@ const initialValue: Descendant[] = [
         type: "paragraph",
         children: [{ text: "A line of text in a paragraph." }],
       },
+
       {
         type: "paragraph",
         children: [{ text: "A line of text in a paragraph." }],
@@ -87,6 +121,37 @@ const MarkToolbarButton = ({ mark, ...rest }: MarkToolbarButtonProps) => {
   const state = useMarkToolbarButtonState({ type: mark });
   const toolbarButton = useMarkToolbarButton(state);
   return <IconButton size="small" variant="secondary" {...toolbarButton.props} {...rest} />;
+};
+
+interface LinkProps extends RenderElementProps {
+  element: LinkElement;
+}
+
+const NewLink = ({ element, attributes, children }: LinkProps) => {
+  const editor = useSlate();
+  const ref = useRef<HTMLDivElement>(null);
+  const popover = useEditorPopover({
+    initialFocusEl: () => ref.current,
+  });
+
+  return (
+    <PopoverRootProvider value={popover} onExitComplete={() => DOMEditor.focus(editor)}>
+      <PopoverTrigger asChild consumeCss>
+        <a {...attributes} href={element.data.href} target={element.data.target} tabIndex={0}>
+          {children}
+        </a>
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent ref={ref}>
+          <PopoverTitle>Hello</PopoverTitle>
+          <div>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </div>
+        </PopoverContent>
+      </Portal>
+    </PopoverRootProvider>
+  );
 };
 
 export const ToolbarButtons = () => {
@@ -127,25 +192,26 @@ export const ToolbarButtons = () => {
 export const EditorPlayground: StoryFn = () => {
   const [editor] = useState(() =>
     createSlate({
-      plugins: [markPlugin, listPlugin, softBreakPlugin, sectionPlugin, headingPlugin],
-      logger: new LoggerManager({ debug: false }),
+      plugins: [paragraphPlugin, markPlugin, listPlugin, linkPlugin, softBreakPlugin, sectionPlugin, headingPlugin],
+      logger: new LoggerManager({ debug: true }),
     }),
   );
   return (
-    <Slate editor={editor} initialValue={initialValue} onValueChange={console.log}>
+    <Slate editor={editor} initialValue={initialValue}>
       <ToolbarButtons></ToolbarButtons>
       <Editable
         onKeyDown={editor.onKeyDown}
         renderElement={({ element, children, attributes }) => {
-          if (element.type === "heading") {
+          if (element.type === "section") {
+            return <section {...attributes}>{children}</section>;
+          } else if (element.type === "heading") {
             const El = `h${element.level}` as const;
             return (
               <Heading {...attributes} asChild consumeCss>
                 <El>{children}</El>
               </Heading>
             );
-          }
-          if (element.type === "list" && element.listType === "numbered-list") {
+          } else if (element.type === "list" && element.listType === "numbered-list") {
             return <OrderedList {...attributes}>{children}</OrderedList>;
           } else if (element.type === "list" && element.listType === "letter-list") {
             return (
@@ -153,14 +219,29 @@ export const EditorPlayground: StoryFn = () => {
                 {children}
               </OrderedList>
             );
+          } else if (element.type === "br") {
+            return (
+              <div {...attributes} contentEditable={false}>
+                <br />
+                {children}
+              </div>
+            );
           } else if (element.type === "list") {
             return <UnOrderedList {...attributes}>{children}</UnOrderedList>;
           } else if (element.type === "list-item") {
             return <li {...attributes}>{children}</li>;
-          } else if (element.type === "section") {
-            return <section {...attributes}>{children}</section>;
+          } else if (element.type === "link") {
+            return (
+              <NewLink element={element} attributes={attributes}>
+                {children}
+              </NewLink>
+            );
           }
-          return <p {...attributes}>{children}</p>;
+          return (
+            <p {...attributes} data-align="">
+              {children}
+            </p>
+          );
         }}
         renderLeaf={({ leaf, children, attributes }) => {
           let ret;

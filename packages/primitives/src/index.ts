@@ -201,6 +201,7 @@ export {
 export type { PopoverRootProps } from "./Popover";
 export {
   PopoverRoot,
+  PopoverRootProvider,
   PopoverAnchor,
   PopoverArrowStandalone,
   PopoverArrow,
@@ -213,6 +214,7 @@ export {
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
+  usePopover,
 } from "./Popover";
 
 export type { RadioGroupRootProps } from "./RadioGroup";

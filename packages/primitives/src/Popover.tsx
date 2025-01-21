@@ -7,7 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { Popover, popoverAnatomy } from "@ark-ui/react";
+import { Popover, popoverAnatomy, usePopover as _usePopover, type PopoverRootProviderProps } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
@@ -137,3 +137,7 @@ export const PopoverTrigger = withContext<HTMLButtonElement, Popover.TriggerProp
   "trigger",
   { baseComponent: true },
 );
+
+export const PopoverRootProvider = withRootProvider<PopoverRootProviderProps>(Popover.RootProvider);
+
+export const usePopover = _usePopover;

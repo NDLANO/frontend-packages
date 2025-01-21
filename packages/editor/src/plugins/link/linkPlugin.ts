@@ -19,8 +19,9 @@ export const linkPlugin = createPlugin({
   normalize: (editor, node, path, logger) => {
     if (!isLinkElement(node)) return false;
     if (Node.string(node) === "") {
-      logger.log("Link element is empty, removing it");
-      Transforms.removeNodes(editor, { at: path });
+      // we unwrap instead of remove here to keep the cursor position in the new paragraph
+      logger.log("Link element is empty, unwrapping it");
+      Transforms.unwrapNodes(editor, { at: path });
       return true;
     }
     const nonTextEntries = Array.from(node.children.entries()).filter(([_, child]) => !Text.isText(child));

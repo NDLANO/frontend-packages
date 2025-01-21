@@ -6,7 +6,7 @@
  *
  */
 
-import { Node, Path, Text, Transforms } from "slate";
+import { Node, Path, Range, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { HEADING_ELEMENT_TYPE } from "./headingTypes";
 import { isHeadingElement } from "./queries/headingQueries";
@@ -26,7 +26,10 @@ export const headingPlugin = createPlugin({
   normalize: (editor, node, path, logger) => {
     if (!isHeadingElement(node)) return false;
 
-    if (Node.string(node) === "" && editor.selection && !Path.isCommon(path, editor.selection.anchor.path)) {
+    if (
+      Node.string(node) === "" &&
+      (!editor.selection || (Range.isCollapsed(editor.selection) && !Path.isCommon(path, editor.selection.anchor.path)))
+    ) {
       logger.log("Removing empty heading that is not selected");
       Transforms.unwrapNodes(editor, { at: path });
       return true;

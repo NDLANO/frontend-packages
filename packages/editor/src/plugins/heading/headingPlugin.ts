@@ -18,7 +18,7 @@ export const headingPlugin = createPlugin({
   name: HEADING_ELEMENT_TYPE,
   shortcuts: {
     // TODO: We used to have a backspace handler here that replaced empty headings with a paragraph. Do we want it?
-    enter: {
+    headingOnEnter: {
       keyCondition: isHotkey("enter"),
       handler: headingOnEnter,
     },

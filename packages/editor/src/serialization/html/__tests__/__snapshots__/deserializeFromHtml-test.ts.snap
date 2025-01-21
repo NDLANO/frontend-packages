@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`articleContentConverter convert article that is a mix of inline and block object by wrapping the inline 1`] = `"<section><h2>Section 1</h2>Some text that slate wants to delete <em>blabla</em></section><section><h2>Section 2</h2></section><section><h2>Section 3</h2></section>"`;
+exports[`articleContentConverter convert article that is a mix of inline and block object by wrapping the inline 1`] = `"<section><h2>Section 1</h2><p>Some text that slate wants to delete <em>blabla</em></p></section><section><h2>Section 2</h2></section><section><h2>Section 3</h2></section>"`;
 
 exports[`articleContentConverter convert learningresource content 1`] = `
 {

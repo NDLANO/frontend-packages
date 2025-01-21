@@ -9,6 +9,8 @@
 import { inlineContentToEditorValue, blockContentToEditorValue } from "../deserializeFromHtml";
 import { blockContentToHTML, inlineContentToHTML } from "../serializeToHtml";
 
+// TODO: The snapshots this file generates are invalid because we don't support all embeds.
+
 const contentHTML = `<section><h2>Lorem ipsum</h2></section>`;
 
 const contentHTMLWithSections = `<section><h2>Section 1</h2></section><section><h2>Section 2</h2></section><section><h2>Section 3</h2></section>`;

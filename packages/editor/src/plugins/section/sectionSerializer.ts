@@ -11,7 +11,7 @@ import { jsx as slatejsx } from "slate-hyperscript";
 import type { SlateSerializer } from "../../types";
 import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
 import { isElementOfType } from "../../../es/utils/isElementType";
-import { createHtmlTag } from "../../utils/serializationHelpers";
+import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 
 export const sectionSerializer: SlateSerializer = {
   deserialize(el, children) {

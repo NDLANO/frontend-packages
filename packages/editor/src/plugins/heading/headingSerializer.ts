@@ -9,8 +9,8 @@
 import { jsx as slatejsx } from "slate-hyperscript";
 import type { SlateSerializer } from "../../types";
 import { isHeadingElement } from "./queries/headingQueries";
-import { createHtmlTag } from "../../utils/serializationHelpers";
 import { HEADING_ELEMENT_TYPE } from "./headingTypes";
+import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 
 export const headingSerializer: SlateSerializer = {
   deserialize(el, children) {

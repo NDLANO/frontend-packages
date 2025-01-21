@@ -11,10 +11,10 @@ import { jsx as slatejsx } from "slate-hyperscript";
 import type { SlateSerializer } from "../../types";
 import { isElementOfType } from "../../utils/isElementType";
 import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "./listTypes";
-import { createHtmlTag } from "../../utils/serializationHelpers";
 import { SOFT_BREAK_ELEMENT_TYPE } from "../softBreak/softBreakTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { LINK_ELEMENT_TYPE } from "../link/linkTypes";
+import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 
 const LIST_TAG_TYPES = ["ol", "ul"];
 

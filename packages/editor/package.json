@@ -30,6 +30,7 @@
     "types"
   ],
   "dependencies": {
+    "escape-html": "^1.0.3",
     "he": "^1.2.0",
     "is-hotkey": "^0.2.0",
     "slate": "^0.112.0",

@@ -6,7 +6,7 @@
  *
  */
 
-import { Editor, Node, Point, Range, Text, Transforms } from "slate";
+import { Editor, Node, Path, Point, Range, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { HEADING_ELEMENT_TYPE } from "./headingTypes";
 import { isHeadingElement } from "./queries/headingQueries";
@@ -25,8 +25,17 @@ const onDelete = (editor: Editor, logger: Logger) => {
 export const headingPlugin = createPlugin({
   type: HEADING_ELEMENT_TYPE,
   name: HEADING_ELEMENT_TYPE,
-  normalize: (editor, node, _path, logger) => {
+  normalize: (editor, node, path, logger) => {
     if (!isHeadingElement(node)) return false;
+
+    if (
+      Node.string(node) === "" &&
+      (!editor.selection || (Range.isCollapsed(editor.selection) && !Path.isCommon(path, editor.selection.anchor.path)))
+    ) {
+      logger.log("Removing empty heading that is not selected");
+      Transforms.unwrapNodes(editor, { at: path });
+      return true;
+    }
 
     const boldEntries = Array.from(editor.nodes({ match: (n) => Text.isText(n) && !!n.bold }), (n) => n);
     if (boldEntries.length) {

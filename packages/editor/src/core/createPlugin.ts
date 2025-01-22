@@ -58,5 +58,5 @@ export const createPlugin: SlatePluginFn =
       };
     }
 
-    return transform?.(editor) ?? editor;
+    return transform?.(editor, logger) ?? editor;
   };

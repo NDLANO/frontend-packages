@@ -32,7 +32,7 @@ interface SlateCreatePluginProps<TType extends Element["type"]> {
   type?: TType;
   shortcuts?: Record<string, Shortcut>;
   normalize?: (editor: Editor, node: Node, path: Path, logger: Logger) => boolean;
-  transform?: (editor: Editor) => Editor;
+  transform?: (editor: Editor, logger: Logger) => Editor;
 }
 
 export type SlatePlugin = (editor: Editor) => Editor;

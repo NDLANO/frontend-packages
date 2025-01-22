@@ -36,6 +36,8 @@ import {
 } from "@ndla/primitives";
 import { LoggerManager } from "./editor/logger/Logger";
 import { useEditorPopover } from "./hooks/useEditorPopover";
+import { breakPlugin } from "./plugins/break/breakPlugin";
+import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
 import { headingPlugin } from "./plugins/heading/headingPlugin";
 import { linkPlugin } from "./plugins/link/linkPlugin";
 import { type LinkElement } from "./plugins/link/linkTypes";
@@ -46,7 +48,6 @@ import { useMarkToolbarButton, useMarkToolbarButtonState } from "./plugins/mark/
 import { markPlugin } from "./plugins/mark/markPlugin";
 import { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 import { sectionPlugin } from "./plugins/section/sectionPlugin";
-import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
 import { toggleBlock } from "./transforms/toggleBlock";
 import { createSlate } from "./utils/createSlate";
 
@@ -192,83 +193,94 @@ export const ToolbarButtons = () => {
 export const EditorPlayground: StoryFn = () => {
   const [editor] = useState(() =>
     createSlate({
-      plugins: [paragraphPlugin, markPlugin, listPlugin, linkPlugin, softBreakPlugin, sectionPlugin, headingPlugin],
+      plugins: [
+        paragraphPlugin,
+        markPlugin,
+        listPlugin,
+        linkPlugin,
+        softBreakPlugin,
+        sectionPlugin,
+        headingPlugin,
+        breakPlugin,
+      ],
       logger: new LoggerManager({ debug: true }),
     }),
   );
   return (
-    <Slate editor={editor} initialValue={initialValue}>
-      <ToolbarButtons></ToolbarButtons>
-      <Editable
-        onKeyDown={editor.onKeyDown}
-        renderElement={({ element, children, attributes }) => {
-          if (element.type === "section") {
-            return <section {...attributes}>{children}</section>;
-          } else if (element.type === "heading") {
-            const El = `h${element.level}` as const;
+    <div className="ndla-article">
+      <Slate editor={editor} initialValue={initialValue}>
+        <ToolbarButtons></ToolbarButtons>
+        <Editable
+          onKeyDown={editor.onKeyDown}
+          renderElement={({ element, children, attributes }) => {
+            if (element.type === "section") {
+              return <section {...attributes}>{children}</section>;
+            } else if (element.type === "heading") {
+              const El = `h${element.level}` as const;
+              return (
+                <Heading {...attributes} asChild consumeCss>
+                  <El>{children}</El>
+                </Heading>
+              );
+            } else if (element.type === "list" && element.listType === "numbered-list") {
+              return <OrderedList {...attributes}>{children}</OrderedList>;
+            } else if (element.type === "list" && element.listType === "letter-list") {
+              return (
+                <OrderedList variant="letters" {...attributes}>
+                  {children}
+                </OrderedList>
+              );
+            } else if (element.type === "br") {
+              return (
+                <div {...attributes} contentEditable={false}>
+                  <br />
+                  {children}
+                </div>
+              );
+            } else if (element.type === "list") {
+              return <UnOrderedList {...attributes}>{children}</UnOrderedList>;
+            } else if (element.type === "list-item") {
+              return <li {...attributes}>{children}</li>;
+            } else if (element.type === "link") {
+              return (
+                <NewLink element={element} attributes={attributes}>
+                  {children}
+                </NewLink>
+              );
+            }
             return (
-              <Heading {...attributes} asChild consumeCss>
-                <El>{children}</El>
-              </Heading>
-            );
-          } else if (element.type === "list" && element.listType === "numbered-list") {
-            return <OrderedList {...attributes}>{children}</OrderedList>;
-          } else if (element.type === "list" && element.listType === "letter-list") {
-            return (
-              <OrderedList variant="letters" {...attributes}>
+              <p {...attributes} data-align="">
                 {children}
-              </OrderedList>
+              </p>
             );
-          } else if (element.type === "br") {
-            return (
-              <div {...attributes} contentEditable={false}>
-                <br />
-                {children}
-              </div>
-            );
-          } else if (element.type === "list") {
-            return <UnOrderedList {...attributes}>{children}</UnOrderedList>;
-          } else if (element.type === "list-item") {
-            return <li {...attributes}>{children}</li>;
-          } else if (element.type === "link") {
-            return (
-              <NewLink element={element} attributes={attributes}>
-                {children}
-              </NewLink>
-            );
-          }
-          return (
-            <p {...attributes} data-align="">
-              {children}
-            </p>
-          );
-        }}
-        renderLeaf={({ leaf, children, attributes }) => {
-          let ret;
-          if (leaf.bold) {
-            ret = <strong {...attributes}>{ret || children}</strong>;
-          }
-          if (leaf.italic) {
-            ret = <em {...attributes}>{ret || children}</em>;
-          }
-          if (leaf.sup) {
-            ret = <sup {...attributes}>{ret || children}</sup>;
-          }
-          if (leaf.sub) {
-            ret = <sub {...attributes}>{ret || children}</sub>;
-          }
-          if (leaf.underlined) {
-            ret = <u {...attributes}>{ret || children}</u>;
-          }
-          if (leaf.code) {
-            ret = <code {...attributes}>{ret || children}</code>;
-          }
-          if (ret) {
-            return ret;
-          }
-          return <span {...attributes}>{children}</span>;
-        }}
-      />
-    </Slate>
+          }}
+          renderLeaf={({ leaf, children, attributes }) => {
+            let ret;
+            if (leaf.bold) {
+              ret = <strong {...attributes}>{ret || children}</strong>;
+            }
+            if (leaf.italic) {
+              ret = <em {...attributes}>{ret || children}</em>;
+            }
+            if (leaf.sup) {
+              ret = <sup {...attributes}>{ret || children}</sup>;
+            }
+            if (leaf.sub) {
+              ret = <sub {...attributes}>{ret || children}</sub>;
+            }
+            if (leaf.underlined) {
+              ret = <u {...attributes}>{ret || children}</u>;
+            }
+            if (leaf.code) {
+              ret = <code {...attributes}>{ret || children}</code>;
+            }
+            if (ret) {
+              return ret;
+            }
+            return <span {...attributes}>{children}</span>;
+          }}
+        />
+      </Slate>
+    </div>
   );
 };

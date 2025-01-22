@@ -155,7 +155,7 @@ const NewLink = ({ element, attributes, children }: LinkProps) => {
   );
 };
 
-export const ToolbarButtons = () => {
+const ToolbarButtons = () => {
   const editor = useSlate();
   return (
     <>

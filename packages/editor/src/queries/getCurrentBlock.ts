@@ -11,7 +11,7 @@ import { isElementOfType } from "../utils/isElementType";
 
 export const getCurrentBlock = <T extends Element["type"]>(
   editor: Editor,
-  type: T,
+  type: T | T[],
 ): NodeEntry<Extract<Element, { type: T }>> | undefined => {
   const [match] = editor.nodes<Extract<Element, { type: T }>>({
     match: (n) => isElementOfType(n, type),

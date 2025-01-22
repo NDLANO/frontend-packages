@@ -35,14 +35,7 @@ export const sectionPlugin = createPlugin({
 
     for (const [child, childPath] of Node.children(editor, path)) {
       if (Text.isText(child)) {
-        Transforms.wrapNodes(
-          editor,
-          {
-            type: "paragraph",
-            children: [],
-          },
-          { at: childPath },
-        );
+        Transforms.wrapNodes(editor, { type: "paragraph", children: [] }, { at: childPath });
         return true;
       }
     }

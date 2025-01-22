@@ -162,9 +162,11 @@ export const ArticleByline = ({
               {getSuppliersText(suppliers, t)}
             </span>
           )}
-          <div data-contributors={showPrimaryContributors}>
-            {t(`${bylineType}.lastUpdated`)} {published}
-          </div>
+          {published ? (
+            <div data-contributors={showPrimaryContributors}>
+              {t(`${bylineType}.lastUpdated`)} {published}
+            </div>
+          ) : null}
         </TextWrapper>
       )}
       {(!!licenseBox || !!footnotes?.length) && (

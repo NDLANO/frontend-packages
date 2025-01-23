@@ -71,7 +71,4 @@ export const paragraphPlugin = createPlugin({
 
     return false;
   },
-  // override: {
-  //   normalizeNode: (entry) => (editor) => {},
-  // },
 });

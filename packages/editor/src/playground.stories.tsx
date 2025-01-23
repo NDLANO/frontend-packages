@@ -62,14 +62,8 @@ const initialValue: Descendant[] = [
   {
     type: "section",
     children: [
-      {
-        type: "paragraph",
-        children: [{ text: "A line of text in a paragraph." }],
-      },
-      {
-        type: "paragraph",
-        children: [{ text: "A line of text in a paragraph." }],
-      },
+      { type: "paragraph", children: [{ text: "A line of text in a paragraph." }] },
+      { type: "paragraph", children: [{ text: "A line of text in a paragraph." }] },
       {
         type: "paragraph",
         children: [
@@ -83,23 +77,10 @@ const initialValue: Descendant[] = [
           },
         ],
       },
-      {
-        type: "paragraph",
-        children: [{ text: "A line of text in a paragraph." }],
-      },
-      {
-        type: "paragraph",
-        children: [{ text: "A line of text in a paragraph." }],
-      },
-
-      {
-        type: "paragraph",
-        children: [{ text: "A line of text in a paragraph." }],
-      },
-      {
-        type: "paragraph",
-        children: [{ text: "A line of text in a paragraph." }],
-      },
+      { type: "paragraph", children: [{ text: "A line of text in a paragraph." }] },
+      { type: "paragraph", children: [{ text: "A line of text in a paragraph." }] },
+      { type: "paragraph", children: [{ text: "A line of text in a paragraph." }] },
+      { type: "paragraph", children: [{ text: "A line of text in a paragraph." }] },
     ],
   },
 ];
@@ -194,13 +175,13 @@ export const EditorPlayground: StoryFn = () => {
   const [editor] = useState(() =>
     createSlate({
       plugins: [
-        paragraphPlugin,
-        markPlugin,
-        listPlugin,
-        linkPlugin,
-        softBreakPlugin,
         sectionPlugin,
         headingPlugin,
+        markPlugin,
+        listPlugin,
+        paragraphPlugin,
+        linkPlugin,
+        softBreakPlugin,
         breakPlugin,
       ],
       logger: new LoggerManager({ debug: true }),
@@ -248,11 +229,7 @@ export const EditorPlayground: StoryFn = () => {
                 </NewLink>
               );
             }
-            return (
-              <p {...attributes} data-align="">
-                {children}
-              </p>
-            );
+            return <p {...attributes}>{children}</p>;
           }}
           renderLeaf={({ leaf, children, attributes }) => {
             let ret;

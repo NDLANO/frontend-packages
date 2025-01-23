@@ -73,4 +73,13 @@ export const sectionPlugin = createPlugin({
 
     return false;
   },
+  transform: (editor) => {
+    const { getFragment } = editor;
+    // section element should not be included in the fragment when copying content from the editor
+    editor.getFragment = () => {
+      const fragment = getFragment();
+      return fragment.flatMap((node) => (isSectionElement(node) ? node.children : node));
+    };
+    return editor;
+  },
 });

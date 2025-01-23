@@ -174,14 +174,3 @@ export const Fullscreen: StoryObj<typeof ExternalEmbed> = {
     },
   },
 };
-
-export const Link: StoryObj<typeof ExternalEmbed> = {
-  args: {
-    embed: {
-      resource: "external",
-      status: "success",
-      embedData: { ...embedDataFullscreen, type: "link" },
-      data: opensInNewMetaData,
-    },
-  },
-};

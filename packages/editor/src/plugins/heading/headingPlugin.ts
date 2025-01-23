@@ -69,7 +69,7 @@ export const headingPlugin = createPlugin({
     };
 
     editor.insertBreak = () => {
-      if (!editor.selection || !Range.isRange(editor.selection)) return false;
+      if (!editor.selection || !Range.isRange(editor.selection)) return insertBreak();
 
       const entry = getCurrentBlock(editor, HEADING_ELEMENT_TYPE);
       if (!entry) return insertBreak();

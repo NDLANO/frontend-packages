@@ -25,13 +25,6 @@ interface CreateSlate {
   logger?: LoggerManager;
 }
 
-const catchSlateFragment = /data-slate-fragment="(.+?)"/m;
-export const getSlateFragmentAttribute = (dataTransfer: DataTransfer): string | void => {
-  const htmlData = dataTransfer.getData("text/html");
-  const [, fragment] = htmlData.match(catchSlateFragment) || [];
-  return fragment;
-};
-
 export const createSlate = ({ plugins, logger = new LoggerManager({ debug: false }) }: CreateSlate) => {
   const editor = withPlugins(withReact(withHistory(withLogger(createEditor(), logger))), plugins);
   return editor;

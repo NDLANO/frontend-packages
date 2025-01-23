@@ -39,6 +39,7 @@ import { useEditorPopover } from "./hooks/useEditorPopover";
 import { breakPlugin } from "./plugins/break/breakPlugin";
 import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
 import { headingPlugin } from "./plugins/heading/headingPlugin";
+import { toggleHeading } from "./plugins/heading/transforms/toggleHeading";
 import { linkPlugin } from "./plugins/link/linkPlugin";
 import { type LinkElement } from "./plugins/link/linkTypes";
 import { useListToolbarButton, useListToolbarButtonState } from "./plugins/list/hooks/useListToolbarButton";
@@ -48,7 +49,6 @@ import { useMarkToolbarButton, useMarkToolbarButtonState } from "./plugins/mark/
 import { markPlugin } from "./plugins/mark/markPlugin";
 import { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 import { sectionPlugin } from "./plugins/section/sectionPlugin";
-import { toggleBlock } from "./transforms/toggleBlock";
 import { createSlate } from "./utils/createSlate";
 
 export default {
@@ -62,8 +62,8 @@ const initialValue: Descendant[] = [
   {
     type: "section",
     children: [
-      { type: "paragraph", children: [{ text: "A line of text in a paragraph." }] },
-      { type: "paragraph", children: [{ text: "A line of text in a paragraph." }] },
+      { type: "heading", level: 2, children: [{ text: "A line of text in a paragraph." }] },
+      { type: "heading", level: 3, children: [{ text: "A line of text in a paragraph." }] },
       {
         type: "paragraph",
         children: [
@@ -140,8 +140,21 @@ const ToolbarButtons = () => {
   const editor = useSlate();
   return (
     <>
-      <IconButton size="small" variant="secondary" onClick={() => toggleBlock(editor, "heading", { level: 2 })}>
+      <IconButton
+        size="small"
+        variant="secondary"
+        onMouseDown={(e) => e.preventDefault()}
+        onClick={() => toggleHeading(editor, 2)}
+      >
         H2
+      </IconButton>
+      <IconButton
+        size="small"
+        variant="secondary"
+        onMouseDown={(e) => e.preventDefault()}
+        onClick={() => toggleHeading(editor, 3)}
+      >
+        H3
       </IconButton>
       <MarkToolbarButton mark="bold">
         <Bold />

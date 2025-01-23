@@ -17,8 +17,10 @@ import { listOnEnter } from "./handlers/listOnEnter";
 import { listOnBackspace } from "./handlers/listOnBackspace";
 import { isListElement, isListItemElement } from "./queries/listElementQueries";
 import { defaultListBlock } from "./listBlocks";
+import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 
-const ALLOWED_LIST_ELEMENTS: Element["type"][] = [PARAGRAPH_ELEMENT_TYPE] as const;
+// TODO: Should be configurable.
+const ALLOWED_LIST_ELEMENTS: Element["type"][] = [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const;
 
 export const listPlugin = createPlugin({
   name: LIST_ELEMENT_TYPE,

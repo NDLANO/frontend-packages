@@ -12,6 +12,7 @@ import { isElementOfType } from "../../../utils/isElementType";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { defaultListBlock, defaultListItemBlock } from "../listBlocks";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
+import { HEADING_ELEMENT_TYPE } from "../../heading/headingTypes";
 
 const isPathSelected = (editor: Editor, path: Path) => {
   return Range.isRange(editor.selection) && Range.includes(editor.selection, path.concat(0));
@@ -89,7 +90,7 @@ export const toggleList = (editor: Editor, listType: ListType) => {
     const nodes = Array.from(
       editor.nodes({
         // TODO: Text match stuff
-        match: (n) => isElementOfType(n, [PARAGRAPH_ELEMENT_TYPE]),
+        match: (n) => isElementOfType(n, [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE]),
         at: editor.unhangRange(editor.selection),
       }),
     );

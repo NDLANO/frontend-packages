@@ -1329,19 +1329,10 @@ const messages = {
       },
       disclaimerText: {
         employee:
-          "Navnet ditt vises bare for deg selv når du er logget inn i Min NDLA, og dersom du velger å vise det ved deling av mapper.",
+          "Navnet ditt vises når du deler en mappe eller en læringssti. Dersom du ikke ønsker å dele navnet ditt kan du avslutte deling av mapper eller læringsstier.",
         student: "Navnet ditt vises bare for deg selv når du er logget inn.",
       },
-      preferenceTitle: "Velg om du vil vise navn når du deler en mappe",
-      preferenceText:
-        "Her kan du selv velge om du vil vise navnet ditt når du deler en mappe. Valget gjelder for alle mappene dine og kan endres senere. Dersom du endrer vil navnet ditt vises på alle dine delte mapper.",
       editButtonText: "Endre profilbilde",
-      namePreference: {
-        onNameShown: "Navnet ditt vises nå på alle dine delte mapper",
-        onNameHidden: "Navnet ditt er nå fjernet fra alle dine delte mapper",
-        showName: "Vis navnet mitt når jeg deler en mappe",
-        dontShowName: "Ikke vis navnet mitt når jeg deler mappe",
-      },
       modalTexts: {
         title: "Last opp nytt profilbilde",
         uploadSection: {

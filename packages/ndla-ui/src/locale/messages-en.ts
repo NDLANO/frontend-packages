@@ -1327,19 +1327,10 @@ const messages = {
       },
       disclaimerText: {
         employee:
-          "Your name is only displayed for you while you are logged into My NDLA, and if you choose to display it while sharing folders.",
+          "Your name is displayed when you share a folder or a learning path. If you do not wish to share your name, you can stop sharing folders or learning paths.",
         student: "Your name is only displayed for you",
       },
-      preferenceTitle: "Choose whether you want to display name when sharing a folder",
-      preferenceText:
-        "Here you can choose whether you want to display your name when you share a folder. The selected option applies to all your folders and can be changed later. If you later change the option, your name will appear on all your shared folders.",
       editButtonText: "Change profile picture",
-      namePreference: {
-        onNameShown: "Your name is now shown on all of your shared folders",
-        onNameHidden: "Your name is now removed from all of your shared folders",
-        showName: "Show my name when I share a folder",
-        dontShowName: "Do not show my name when I share a folder",
-      },
       modalTexts: {
         title: "Upload a new profile picture",
         uploadSection: {

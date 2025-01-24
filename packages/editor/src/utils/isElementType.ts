@@ -7,8 +7,9 @@
  */
 
 import { Element, Node } from "slate";
+import type { ElementType } from "../types";
 
-export const isElementOfType = <TType extends Element["type"]>(
+export const isElementOfType = <TType extends ElementType>(
   node: Node | undefined,
   type: TType | TType[] | undefined,
 ): node is TType extends any[] ? Extract<Element, { type: TType[number] }>[] : Extract<Element, { type: TType }> => {

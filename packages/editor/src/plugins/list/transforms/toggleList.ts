@@ -7,12 +7,10 @@
  */
 
 import { Editor, Path, Range, Transforms } from "slate";
-import { type ListType } from "../listTypes";
+import { type ListPluginConfiguration, type ListType } from "../listTypes";
 import { isElementOfType } from "../../../utils/isElementType";
-import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { defaultListBlock, defaultListItemBlock } from "../listBlocks";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
-import { HEADING_ELEMENT_TYPE } from "../../heading/headingTypes";
 
 const isPathSelected = (editor: Editor, path: Path) => {
   return Range.isRange(editor.selection) && Range.includes(editor.selection, path.concat(0));
@@ -52,7 +50,7 @@ const isSelectionOnlyOfType = (editor: Editor, type: ListType) => {
   return hasListItems;
 };
 
-export const toggleList = (editor: Editor, listType: ListType) => {
+export const toggleList = (editor: Editor, listType: ListType, options: ListPluginConfiguration) => {
   if (!Range.isRange(editor.selection)) return;
 
   // If all selected list items are of type input by user, unwrap all of them by lifting them out.
@@ -89,8 +87,7 @@ export const toggleList = (editor: Editor, listType: ListType) => {
     // Wrap all regular text blocks. (paragraph, quote, blockquote)
     const nodes = Array.from(
       editor.nodes({
-        // TODO: Text match stuff
-        match: (n) => isElementOfType(n, [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE]),
+        match: (n) => isElementOfType(n, options.allowedListItemFirstChildTypes),
         at: editor.unhangRange(editor.selection),
       }),
     );

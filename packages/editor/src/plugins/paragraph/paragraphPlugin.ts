@@ -8,28 +8,26 @@
 
 import { Element, Node, Path, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
-import { PARAGRAPH_ELEMENT_TYPE } from "./paragraphTypes";
+import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElementType, type ParagraphPluginConfiguration } from "./paragraphTypes";
 import { isParagraphElement } from "./queries/paragraphElementQueries";
 import { LIST_ITEM_ELEMENT_TYPE } from "../list/listTypes";
 
-const NON_TEXT_SERIALIZE_PARENTS: Element["type"][] = [
-  // TYPE_TABLE_CELL,
-  LIST_ITEM_ELEMENT_TYPE,
-  // TYPE_SUMMARY
-  // TYPE_NOOP
-];
-
-export const paragraphPlugin = createPlugin({
+export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPluginConfiguration>({
   type: PARAGRAPH_ELEMENT_TYPE,
   name: PARAGRAPH_ELEMENT_TYPE,
-  normalize: (editor, node, path, logger) => {
+  configuration: {
+    options: {
+      nonSerializableParents: [LIST_ITEM_ELEMENT_TYPE],
+    },
+  },
+  normalize: (editor, node, path, logger, opts) => {
     if (!isParagraphElement(node)) return false;
     const [parentNode] = editor.node(Path.parent(path));
 
     // If paragraph is not in a list or table, make sure it will be rendered with <p>-tag
     if (
       Element.isElement(parentNode) &&
-      !NON_TEXT_SERIALIZE_PARENTS.includes(parentNode.type) &&
+      !opts.nonSerializableParents?.includes(parentNode.type) &&
       node.serializeAsText
     ) {
       Transforms.unsetNodes(editor, "serializeAsText", { at: path });

@@ -8,7 +8,12 @@
 
 import { Element, Node, Path, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "./listTypes";
+import {
+  LIST_ELEMENT_TYPE,
+  LIST_ITEM_ELEMENT_TYPE,
+  type ListElementType,
+  type ListPluginConfiguration,
+} from "./listTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { isKeyHotkey } from "is-hotkey";
 import { toggleList } from "./transforms/toggleList";
@@ -19,26 +24,30 @@ import { isListElement, isListItemElement } from "./queries/listElementQueries";
 import { defaultListBlock } from "./listBlocks";
 import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 
-// TODO: Should be configurable.
-const ALLOWED_LIST_ELEMENTS: Element["type"][] = [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const;
+export const listPluginDefaultConfiguration: ListPluginConfiguration = {
+  allowedListItemFirstChildTypes: [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const,
+};
 
-export const listPlugin = createPlugin({
+export const listPlugin = createPlugin<ListElementType, ListPluginConfiguration>({
   name: LIST_ELEMENT_TYPE,
   type: LIST_ELEMENT_TYPE,
+  configuration: {
+    options: listPluginDefaultConfiguration,
+  },
   shortcuts: {
     toggleNumberedList: {
       keyCondition: isKeyHotkey("mod+o"),
-      handler: (editor, event) => {
+      handler: (editor, event, _, opts) => {
         event.preventDefault();
-        toggleList(editor, "numbered-list");
+        toggleList(editor, "numbered-list", opts);
         return true;
       },
     },
     toggleBulletedList: {
       keyCondition: isKeyHotkey("mod+l"),
-      handler: (editor, event) => {
+      handler: (editor, event, _, opts) => {
         event.preventDefault();
-        toggleList(editor, "bulleted-list");
+        toggleList(editor, "bulleted-list", opts);
         return true;
       },
     },
@@ -46,7 +55,7 @@ export const listPlugin = createPlugin({
     listItemInsertion: { keyCondition: isKeyHotkey("enter"), handler: listOnEnter },
     listItemDeletion: { keyCondition: isKeyHotkey("backspace"), handler: listOnBackspace },
   },
-  normalize: (editor, node, path, logger) => {
+  normalize: (editor, node, path, logger, options) => {
     if (isListItemElement(node)) {
       const [parentNode] = editor.node(Path.parent(path));
       if (Element.isElement(parentNode) && parentNode.type !== LIST_ELEMENT_TYPE) {
@@ -64,9 +73,8 @@ export const listPlugin = createPlugin({
       }
 
       const firstChild = node.children[0];
-      // Some weird stuff here TODO: Fix
-      if (Element.isElement(firstChild) && !ALLOWED_LIST_ELEMENTS.includes(firstChild.type)) {
-        logger.log("First child is not a text element, inserting default text element type");
+      if (Element.isElement(firstChild) && !options.allowedListItemFirstChildTypes?.includes(firstChild.type)) {
+        logger.log("First child is not an allowed element, inserting default text element type");
         Transforms.insertNodes(
           editor,
           { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] },

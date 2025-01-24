@@ -8,7 +8,7 @@
 
 import { jsx as slatejsx } from "slate-hyperscript";
 import { Element, Node, Text, type Descendant } from "slate";
-import type { SlateSerializer } from "../../types";
+import type { ElementType, SlateSerializer } from "../../types";
 import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/paragraph/paragraphTypes";
 import { commonSerializers, extendedSerializers } from "./htmlSerializers";
@@ -74,7 +74,7 @@ export const deserializeFromHtml = (html: string, rules: SlateSerializer[], noop
   return normalizedNodes;
 };
 
-export const inlines: Element["type"][] = [
+export const inlines: ElementType[] = [
   // TYPE_CONCEPT_INLINE,
   // TYPE_FOOTNOTE,
   LINK_ELEMENT_TYPE,
@@ -84,7 +84,7 @@ export const inlines: Element["type"][] = [
   // TYPE_COMMENT_INLINE,
 ];
 
-export const blocks: Element["type"][] = [
+export const blocks: ElementType[] = [
   // TYPE_ASIDE,
   // TYPE_FRAMED_CONTENT,
   // TYPE_CODEBLOCK,

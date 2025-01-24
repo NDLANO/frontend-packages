@@ -7,6 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import type { ElementType } from "../../types";
 
 export const LIST_ELEMENT_TYPE = "list" as const;
 export const LIST_ITEM_ELEMENT_TYPE = "list-item" as const;
@@ -31,4 +32,8 @@ export interface ListItemElement {
   type: "list-item";
   changeTo?: string;
   children: Descendant[];
+}
+
+export interface ListPluginConfiguration {
+  allowedListItemFirstChildTypes?: ElementType[];
 }

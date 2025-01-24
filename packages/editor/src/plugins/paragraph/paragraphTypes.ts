@@ -7,6 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import type { ElementType } from "../../types";
 
 export const PARAGRAPH_ELEMENT_TYPE = "paragraph" as const;
 
@@ -19,4 +20,8 @@ export interface ParagraphElement {
   };
   serializeAsText?: boolean;
   children: Descendant[];
+}
+
+export interface ParagraphPluginConfiguration {
+  nonSerializableParents?: ElementType[];
 }

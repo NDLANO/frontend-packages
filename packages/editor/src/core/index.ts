@@ -6,9 +6,10 @@
  *
  */
 
-import type { Editor, Element, Node, Path } from "slate";
+import type { Editor, Node, Path } from "slate";
 import type { KeyboardEventLike } from "is-hotkey";
 import type { KeyboardEvent } from "react";
+import type { ElementType } from "../types";
 
 type KeyConditionFn = (event: KeyboardEventLike) => boolean;
 
@@ -47,7 +48,7 @@ interface Configuration<TOptions = undefined> {
   options?: TOptions;
 }
 
-export interface SlateCreatePluginProps<TType extends Element["type"], TOptions = undefined> {
+export interface SlateCreatePluginProps<TType extends ElementType, TOptions = undefined> {
   /**
    * The name of the plugin. Used for logging
    */
@@ -77,7 +78,7 @@ export interface SlateCreatePluginProps<TType extends Element["type"], TOptions 
 
 export type SlatePlugin = (editor: Editor) => Editor;
 
-export type SlatePluginFn = <TType extends Element["type"], TOptions = undefined>(
+export type SlatePluginFn = <TType extends ElementType, TOptions = undefined>(
   props: SlateCreatePluginProps<TType, TOptions>,
 ) => PluginReturnType<TOptions>;
 

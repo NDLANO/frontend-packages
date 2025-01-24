@@ -6,7 +6,7 @@
  *
  */
 
-import type { BaseEditor, Descendant } from "slate";
+import type { BaseEditor, Descendant, Element } from "slate";
 import { HistoryEditor } from "slate-history";
 import { ReactEditor } from "slate-react";
 import type { LinkElement } from "../plugins/link/linkTypes";
@@ -28,6 +28,8 @@ export interface CustomEditor {
 export type BlockElement = ParagraphElement | HeadingElement;
 
 export type BlockElementType = BlockElement["type"];
+
+export type ElementType = Element["type"];
 
 export interface SlateEditor {
   Editor: BaseEditor & ReactEditor & HistoryEditor & CustomEditor;

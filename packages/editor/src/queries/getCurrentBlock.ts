@@ -8,8 +8,9 @@
 
 import type { Editor, Element, NodeEntry } from "slate";
 import { isElementOfType } from "../utils/isElementType";
+import type { ElementType } from "../types";
 
-export const getCurrentBlock = <T extends Element["type"]>(
+export const getCurrentBlock = <T extends ElementType>(
   editor: Editor,
   type: T | T[],
 ): NodeEntry<Extract<Element, { type: T }>> | undefined => {

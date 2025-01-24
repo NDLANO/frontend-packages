@@ -7,6 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import type { ElementType } from "../../types";
 
 export const SECTION_ELEMENT_TYPE = "section" as const;
 
@@ -15,4 +16,8 @@ export type SectionElementType = "section";
 export interface SectionElement {
   type: "section";
   children: Descendant[];
+}
+
+export interface SectionPluginConfiguration {
+  allowedFirstElements?: ElementType[];
 }

@@ -6,20 +6,22 @@
  *
  */
 
-import { Text, Transforms, Element, Node } from "slate";
+import { Text, Transforms, Node } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { isSectionElement } from "./queries/sectionQueries";
-import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
+import { SECTION_ELEMENT_TYPE, type SectionElementType, type SectionPluginConfiguration } from "./sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { isElementOfType } from "../../utils/isElementType";
 import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 
-// TODO: This should probably be configurable
-const ALLOWED_FIRST_ELEMENTS: Element["type"][] = [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const;
-
-export const sectionPlugin = createPlugin({
+export const sectionPlugin = createPlugin<SectionElementType, SectionPluginConfiguration>({
   type: SECTION_ELEMENT_TYPE,
   name: SECTION_ELEMENT_TYPE,
+  configuration: {
+    options: {
+      allowedFirstElements: [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const,
+    },
+  },
   // TODO: This is inherited from ED. I don't really know if we want to do it?
   // shortcuts: {
   //   "disable-enter": {
@@ -30,7 +32,7 @@ export const sectionPlugin = createPlugin({
   //     },
   //   },
   // },
-  normalize: (editor, node, path, logger) => {
+  normalize: (editor, node, path, logger, opts) => {
     if (!isSectionElement(node)) return false;
 
     for (const [child, childPath] of Node.children(editor, path)) {
@@ -49,8 +51,7 @@ export const sectionPlugin = createPlugin({
       return true;
     }
 
-    // TODO: Do we actually need empty paragraphs?
-    if (!isElementOfType(node.children[0], ALLOWED_FIRST_ELEMENTS)) {
+    if (!isElementOfType(node.children[0], opts.allowedFirstElements)) {
       logger.log("First element is invalid, inserting paragraph", node.children[0]);
       Transforms.insertNodes(
         editor,
@@ -60,7 +61,6 @@ export const sectionPlugin = createPlugin({
       return true;
     }
 
-    // TODO: Do we actually need empty paragraphs?
     if (!isElementOfType(node.children[node.children.length - 1], PARAGRAPH_ELEMENT_TYPE)) {
       logger.log("Last element is invalid, inserting paragraph");
       Transforms.insertNodes(

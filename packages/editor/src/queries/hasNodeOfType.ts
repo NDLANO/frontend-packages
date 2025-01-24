@@ -6,10 +6,11 @@
  *
  */
 
-import { Range, Editor, Element, Path } from "slate";
+import { Range, Editor, Path } from "slate";
 import { isElementOfType } from "../utils/isElementType";
+import type { ElementType } from "../types";
 
-export const hasNodeOfType = (editor: Editor, type: Element["type"], path?: Path) => {
+export const hasNodeOfType = (editor: Editor, type: ElementType, path?: Path) => {
   const at = path ?? (Range.isRange(editor.selection) ? editor.unhangRange(editor.selection) : undefined);
   const [match] = editor.nodes({ match: (n) => isElementOfType(n, type), at });
   return !!match;

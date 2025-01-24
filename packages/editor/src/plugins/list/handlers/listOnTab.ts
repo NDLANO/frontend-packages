@@ -10,14 +10,13 @@ import { Transforms, Path, Range } from "slate";
 
 import type { ShortcutHandler } from "../../../core";
 import { hasNodeOfType } from "../../../queries/hasNodeOfType";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, type ListPluginConfiguration } from "../listTypes";
 import { getCurrentBlock } from "../../../queries/getCurrentBlock";
-import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { isElementOfType } from "../../../utils/isElementType";
 import { defaultListBlock } from "../listBlocks";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
 
-export const listOnTab: ShortcutHandler = (editor, event, logger) => {
+export const listOnTab: ShortcutHandler<ListPluginConfiguration> = (editor, event, logger, options) => {
   if (!editor.selection || !hasNodeOfType(editor, LIST_ELEMENT_TYPE)) return false;
 
   const listEntry = getCurrentBlock(editor, LIST_ELEMENT_TYPE);
@@ -28,8 +27,7 @@ export const listOnTab: ShortcutHandler = (editor, event, logger) => {
   const [currentListNode, currentListPath] = listEntry;
   const [currentItemNode, currentItemPath] = listItemEntry;
   const [[currentTextBlockNode, currentTextBlockPath]] = editor.nodes({
-    // TODO: Fix match text block
-    match: (n) => isElementOfType(n, [PARAGRAPH_ELEMENT_TYPE]),
+    match: (n) => isElementOfType(n, options.allowedListItemFirstChildTypes),
     mode: "lowest",
   });
 

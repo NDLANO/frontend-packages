@@ -6,9 +6,10 @@
  *
  */
 
-import type { Editor, Element } from "slate";
+import type { Editor } from "slate";
 import type { PluginReturnType, SlateCreatePluginProps, SlatePluginFn } from ".";
-export const createPlugin: SlatePluginFn = <TType extends Element["type"], TOptions = undefined>(
+import type { ElementType } from "../types";
+export const createPlugin: SlatePluginFn = <TType extends ElementType, TOptions = undefined>(
   params: SlateCreatePluginProps<TType, TOptions>,
 ): PluginReturnType<TOptions> => {
   const pluginFn = (editor: Editor) => {

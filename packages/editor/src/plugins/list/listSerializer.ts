@@ -8,7 +8,7 @@
 
 import { Element, Text, type Descendant } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
-import type { SlateSerializer } from "../../types";
+import type { ElementType, SlateSerializer } from "../../types";
 import { isElementOfType } from "../../utils/isElementType";
 import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "./listTypes";
 import { BREAK_ELEMENT_TYPE } from "../break/breakTypes";
@@ -19,7 +19,7 @@ import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers
 const LIST_TAG_TYPES = ["ol", "ul"];
 
 // TODO: I want this to be configurable
-const inlines: Element["type"][] = [
+const inlines: ElementType[] = [
   // TYPE_CONCEPT_INLINE,
   // TYPE_FOOTNOTE,
   LINK_ELEMENT_TYPE,

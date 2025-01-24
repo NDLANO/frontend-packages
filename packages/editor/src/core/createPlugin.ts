@@ -6,11 +6,22 @@
  *
  */
 
-import type { SlatePluginFn } from ".";
-
-export const createPlugin: SlatePluginFn =
-  ({ isInline: isInlineProp, name, shortcuts, isVoid: isVoidProp, type, normalize, transform }) =>
-  (editor) => {
+import type { Editor, Element } from "slate";
+import type { PluginReturnType, SlateCreatePluginProps, SlatePluginFn } from ".";
+export const createPlugin: SlatePluginFn = <TType extends Element["type"], TOptions = undefined>(
+  params: SlateCreatePluginProps<TType, TOptions>,
+): PluginReturnType<TOptions> => {
+  const pluginFn = (editor: Editor) => {
+    const {
+      isInline: isInlineProp,
+      name,
+      shortcuts,
+      isVoid: isVoidProp,
+      type,
+      normalize,
+      transform,
+      configuration,
+    } = params;
     const logger = editor.logger.getLogger(name);
     const { isInline, isVoid } = editor;
     editor.isInline = (element) => {
@@ -29,7 +40,8 @@ export const createPlugin: SlatePluginFn =
       const { normalizeNode } = editor;
       editor.normalizeNode = (entry, options) => {
         const [node, path] = entry;
-        const res = normalize?.(editor, node, path, logger);
+        // If `configuration.options` do not exist, the generic will be undefined. This is fine.
+        const res = normalize?.(editor, node, path, logger, configuration?.options as TOptions);
         if (res) {
           logger.log("consumed normalizeNode event. Further normalization will happen in a new normalization loop.");
           return;
@@ -38,7 +50,10 @@ export const createPlugin: SlatePluginFn =
       };
     }
 
-    const shortcutEntries = shortcuts ? Object.entries(shortcuts) : [];
+    let shortcutEntries = shortcuts ? Object.entries(shortcuts) : [];
+    if (configuration?.shortcuts) {
+      shortcutEntries = shortcutEntries.concat(Object.entries(configuration.shortcuts));
+    }
 
     if (shortcutEntries.length) {
       const { onKeyDown } = editor;
@@ -46,7 +61,7 @@ export const createPlugin: SlatePluginFn =
         for (const [key, { handler, keyCondition }] of shortcutEntries) {
           const keyConditions = Array.isArray(keyCondition) ? keyCondition : [keyCondition];
           if (keyConditions.some((condition) => condition(event))) {
-            if (handler(editor, event, logger)) {
+            if (handler(editor, event, logger, configuration?.options as TOptions)) {
               logger.log(`Shortcut "${key}" consumed keyDown event. Ignoring further handlers.`);
               return;
             } else {
@@ -58,5 +73,32 @@ export const createPlugin: SlatePluginFn =
       };
     }
 
-    return transform?.(editor, logger) ?? editor;
+    let ret = editor;
+    if (transform) {
+      ret = transform(editor, logger, configuration?.options as TOptions);
+    }
+
+    if (configuration?.transform) {
+      ret = configuration.transform(ret, logger, configuration?.options as TOptions);
+    }
+
+    return ret;
   };
+
+  // A proxy allows us to expose a `.configure` method on the plugin function without actually attaching it to the returned editor object
+  const plugin = new Proxy(pluginFn, {
+    get(_, prop) {
+      if (prop === "configure") {
+        // TODO: Should we merge with existing configuration?
+        return (configuration: typeof params.configuration) => createPlugin({ ...params, configuration });
+      }
+      return undefined; // Only expose `.configure`
+    },
+    apply(target, thisArg, args) {
+      // When called as a function, execute the plugin logic
+      return Reflect.apply(target, thisArg, args);
+    },
+  });
+
+  return plugin as PluginReturnType<TOptions>;
+};

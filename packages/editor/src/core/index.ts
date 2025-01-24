@@ -12,27 +12,42 @@ import type { KeyboardEvent } from "react";
 
 type KeyConditionFn = (event: KeyboardEventLike) => boolean;
 
-export type ShortcutHandler = (editor: Editor, event: KeyboardEvent<HTMLDivElement>, logger: Logger) => boolean;
+export type ShortcutHandler<TOptions = undefined> = (
+  editor: Editor,
+  event: KeyboardEvent<HTMLDivElement>,
+  logger: Logger,
+  configuration: TOptions,
+) => boolean;
 
-export type SlateExtensionFn = (editor: Editor) => Editor;
+export type SlateExtensionFn<TOptions = undefined> = (
+  editor: Editor,
+  logger: Logger,
+  configuration: TOptions,
+) => Editor;
 
 export interface Logger {
   log: (...args: any[]) => void;
 }
 
-export interface Shortcut {
+export interface Shortcut<TOptions = undefined> {
   /**
    * The handler that should be called when the shortcut is triggered
    * By returning true, you can signal that the event has been handled, and that further processing should be skipped.
    */
-  handler: ShortcutHandler;
+  handler: ShortcutHandler<TOptions>;
   /**
    * A key condition that must be met for the handler to be called
    */
   keyCondition: KeyConditionFn | KeyConditionFn[];
 }
 
-interface SlateCreatePluginProps<TType extends Element["type"]> {
+interface Configuration<TOptions = undefined> {
+  shortcuts?: Record<string, Shortcut<TOptions>>;
+  transform?: SlateExtensionFn<TOptions>;
+  options?: TOptions;
+}
+
+export interface SlateCreatePluginProps<TType extends Element["type"], TOptions = undefined> {
   /**
    * The name of the plugin. Used for logging
    */
@@ -47,20 +62,25 @@ interface SlateCreatePluginProps<TType extends Element["type"]> {
   /**
    * A set of keyboard shortcuts that the plugin should handle
    */
-  shortcuts?: Record<string, Shortcut>;
+  shortcuts?: Record<string, Shortcut<TOptions>>;
   /**
    * A simple wrapper around the Slate normalizeNode method.
    * By returning true, you can signal that the node has been normalized, and that further normalization should be skipped this iteration.
    */
-  normalize?: (editor: Editor, node: Node, path: Path, logger: Logger) => boolean;
+  normalize?: (editor: Editor, node: Node, path: Path, logger: Logger, options: TOptions) => boolean;
   /**
    * A function that further transforms the editor. Typically used for extending the editor with functionality not supported by `createPlugin`.
    */
-  transform?: (editor: Editor, logger: Logger) => Editor;
+  transform?: (editor: Editor, logger: Logger, options: TOptions) => Editor;
+  configuration?: Configuration<TOptions>;
 }
 
 export type SlatePlugin = (editor: Editor) => Editor;
 
-export type SlatePluginFn = <TType extends Element["type"]>(
-  props: SlateCreatePluginProps<TType>,
-) => (editor: Editor) => Editor;
+export type SlatePluginFn = <TType extends Element["type"], TOptions = undefined>(
+  props: SlateCreatePluginProps<TType, TOptions>,
+) => PluginReturnType<TOptions>;
+
+export type PluginReturnType<TOptions = undefined> = SlatePlugin & {
+  configure: (configuration: Configuration<TOptions>) => SlatePlugin;
+};

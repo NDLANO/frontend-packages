@@ -6,7 +6,7 @@
  *
  */
 
-import type { Descendant } from "slate";
+import type { Descendant, Element } from "slate";
 
 export const BREAK_ELEMENT_TYPE = "br" as const;
 
@@ -15,4 +15,8 @@ export type BreakElementType = typeof BREAK_ELEMENT_TYPE;
 export interface BreakElement {
   type: "br";
   children: Descendant[];
+}
+
+export interface BreakPluginConfiguration {
+  validBreakElements?: Element["type"][];
 }

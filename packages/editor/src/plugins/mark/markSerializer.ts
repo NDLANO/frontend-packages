@@ -10,11 +10,11 @@
 import escapeHtml from "escape-html";
 import { Text } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
-import type { SlateSerializer } from "../../types";
 import { marks, type MarkType } from "./markTypes";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
+import { createSerializer } from "../../core/createSerializer";
 
-export const markSerializer: SlateSerializer = {
+export const markSerializer = createSerializer({
   deserialize(el, children) {
     const mark = marks[el.tagName.toLowerCase() as MarkType];
     if (!mark) return;
@@ -57,4 +57,4 @@ export const markSerializer: SlateSerializer = {
     }
     return children;
   },
-};
+});

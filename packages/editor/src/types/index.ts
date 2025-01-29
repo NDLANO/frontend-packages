@@ -6,7 +6,7 @@
  *
  */
 
-import type { BaseEditor, Descendant, Element } from "slate";
+import type { BaseEditor, Element } from "slate";
 import { HistoryEditor } from "slate-history";
 import { ReactEditor } from "slate-react";
 import type { LinkElement } from "../plugins/link/linkTypes";
@@ -46,9 +46,4 @@ export interface SlateEditor {
 
 declare module "slate" {
   interface CustomTypes extends SlateEditor {}
-}
-
-export interface SlateSerializer {
-  deserialize: (el: HTMLElement, children: Descendant[]) => Descendant | Descendant[] | undefined;
-  serialize: (node: Descendant, children: string | undefined) => string | undefined;
 }

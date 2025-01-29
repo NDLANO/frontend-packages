@@ -8,12 +8,12 @@
 
 import { Text } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
-import type { SlateSerializer } from "../../types";
 import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 import { isElementOfType } from "../../utils/isElementType";
+import { createSerializer } from "../../core/createSerializer";
 
-export const sectionSerializer: SlateSerializer = {
+export const sectionSerializer = createSerializer({
   deserialize(el, children) {
     const tag = el.tagName.toLowerCase();
     if (tag === SECTION_ELEMENT_TYPE) {
@@ -30,4 +30,4 @@ export const sectionSerializer: SlateSerializer = {
       return createHtmlTag({ tag: SECTION_ELEMENT_TYPE, children });
     }
   },
-};
+});

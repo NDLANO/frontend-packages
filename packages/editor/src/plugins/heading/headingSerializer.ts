@@ -7,13 +7,13 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
-import type { SlateSerializer } from "../../types";
 import { isHeadingElement } from "./queries/headingQueries";
 import { HEADING_ELEMENT_TYPE } from "./headingTypes";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
+import { createSerializer } from "../../core/createSerializer";
 
-export const headingSerializer: SlateSerializer = {
-  deserialize(el, children) {
+export const headingSerializer = createSerializer({
+  deserialize: (el, children) => {
     const tag = el.tagName.toLowerCase();
     if (tag === "h1") {
       return slatejsx("element", { type: HEADING_ELEMENT_TYPE, level: 2 }, children);
@@ -34,9 +34,9 @@ export const headingSerializer: SlateSerializer = {
       return slatejsx("element", { type: HEADING_ELEMENT_TYPE, level: 4 }, children);
     }
   },
-  serialize(node, children) {
+  serialize: (node, children) => {
     if (isHeadingElement(node)) {
       return createHtmlTag({ tag: `h${node.level}`, children });
     }
   },
-};
+});

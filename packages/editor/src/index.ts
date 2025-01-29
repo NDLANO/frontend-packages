@@ -6,4 +6,4 @@
  *
  */
 
-export type { SlateEditor, CustomEditor, SlateSerializer } from "./types";
+export type { SlateEditor, CustomEditor } from "./types";

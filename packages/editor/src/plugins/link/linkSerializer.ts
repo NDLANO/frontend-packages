@@ -7,12 +7,12 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
-import type { SlateSerializer } from "../../types";
 import { LINK_ELEMENT_TYPE } from "./linkTypes";
 import { isLinkElement } from "./queries/linkQueries";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
+import { createSerializer } from "../../core/createSerializer";
 
-export const linkSerializer: SlateSerializer = {
+export const linkSerializer = createSerializer({
   deserialize: (el, children) => {
     const tag = el.tagName.toLowerCase();
     if (tag !== "a") return;
@@ -44,4 +44,4 @@ export const linkSerializer: SlateSerializer = {
       children,
     });
   },
-};
+});

@@ -37,3 +37,8 @@ export interface ListItemElement {
 export interface ListPluginConfiguration {
   allowedListItemFirstChildTypes?: ElementType[];
 }
+
+export interface ListSerializerOptions {
+  allowedListTags: string[];
+  inlineTypes: ElementType[];
+}

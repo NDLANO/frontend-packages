@@ -36,14 +36,7 @@ describe("mergeOptions", () => {
     const config: MappedConfigurationOption<TestOptions> = {
       arr: ["b"],
     };
-
-    const valueConfig: MappedConfigurationOption<TestOptions> = {
-      arr: {
-        value: ["b"],
-      },
-    };
     expect(mergeOptions(options, config)).toEqual({ arr: ["a", "b"] });
-    expect(mergeOptions(options, valueConfig)).toEqual({ arr: ["a", "b"] });
   });
 
   it("should override array values when override is true", () => {

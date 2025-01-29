@@ -6,7 +6,7 @@
  *
  */
 
-import type { Editor, Node, Path } from "slate";
+import type { Descendant, Editor, Node, Path } from "slate";
 import type { KeyboardEventLike } from "is-hotkey";
 import type { KeyboardEvent } from "react";
 import type { ElementType } from "../types";
@@ -72,7 +72,7 @@ export interface PluginConfiguration<TType extends ElementType, TOptions = undef
 
 export interface ConfigurationOption<T> {
   value: T;
-  override?: boolean;
+  override: true;
 }
 
 export type MappedConfigurationOption<T> = {
@@ -108,3 +108,14 @@ export type PluginReturnType<TType extends ElementType, TOptions = undefined> = 
     },
   ) => SlatePlugin;
 };
+
+export interface SlateSerializer<TOptions extends {} | undefined = undefined> {
+  deserialize: (el: HTMLElement, children: Descendant[], options: TOptions) => Descendant | Descendant[] | undefined;
+  serialize: (node: Descendant, children: string | undefined, options: TOptions) => string | undefined;
+  options?: TOptions;
+}
+
+export interface ConfigurableSlateSerializer<TOptions extends {} | undefined = undefined>
+  extends SlateSerializer<TOptions> {
+  configure: (options: MappedConfigurationOption<TOptions>) => ConfigurableSlateSerializer<TOptions>;
+}

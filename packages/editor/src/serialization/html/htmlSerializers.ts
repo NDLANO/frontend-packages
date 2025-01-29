@@ -6,6 +6,7 @@
  *
  */
 
+import type { SlateSerializer } from "../../core";
 import { breakSerializer } from "../../plugins/break/breakSerializer";
 import { headingSerializer } from "../../plugins/heading/headingSerializer";
 import { linkSerializer } from "../../plugins/link/linkSerializer";
@@ -13,9 +14,8 @@ import { listSerializer } from "../../plugins/list/listSerializer";
 import { markSerializer } from "../../plugins/mark/markSerializer";
 import { paragraphSerializer } from "../../plugins/paragraph/paragraphSerializer";
 import { sectionSerializer } from "../../plugins/section/sectionSerializer";
-import type { SlateSerializer } from "../../types";
 
-export const commonSerializers = [
+export const commonSerializers: SlateSerializer<any>[] = [
   // noopSerializer,
   paragraphSerializer,
   sectionSerializer,
@@ -36,7 +36,7 @@ export const commonSerializers = [
 ];
 
 // Rules are checked from first to last
-export const extendedSerializers: SlateSerializer[] = [
+export const extendedSerializers: SlateSerializer<any>[] = [
   // noopSerializer,
   paragraphSerializer,
   sectionSerializer,

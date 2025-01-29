@@ -8,11 +8,12 @@
 
 import { jsx as slatejsx } from "slate-hyperscript";
 import { Element, Node, Text, type Descendant } from "slate";
-import type { ElementType, SlateSerializer } from "../../types";
+import type { ElementType } from "../../types";
 import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/paragraph/paragraphTypes";
 import { commonSerializers, extendedSerializers } from "./htmlSerializers";
 import { LINK_ELEMENT_TYPE } from "../../plugins/link/linkTypes";
+import type { SlateSerializer } from "../../core";
 
 // TODO: This entire file should be refactored and reconsidered. Our current deserialization is too complex.
 
@@ -56,7 +57,7 @@ export const deserializeFromHtml = (html: string, rules: SlateSerializer[], noop
         continue;
       }
       // Already checked that nodeType === 1 -> el must be of type HTMLElement.
-      const ret = rule.deserialize(el as HTMLElement, children);
+      const ret = rule.deserialize(el as HTMLElement, children, rule.options);
       if (ret === undefined) {
         continue;
       } else {

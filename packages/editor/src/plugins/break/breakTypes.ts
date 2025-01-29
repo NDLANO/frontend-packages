@@ -21,3 +21,7 @@ export interface BreakElement {
 export interface BreakPluginOptions {
   validBreakElements?: ElementType[];
 }
+
+export interface BreakSerializerOptions {
+  allowedBreakContainers?: string[];
+}

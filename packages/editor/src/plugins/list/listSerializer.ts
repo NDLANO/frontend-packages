@@ -8,28 +8,27 @@
 
 import { Element, Text, type Descendant } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
-import type { ElementType, SlateSerializer } from "../../types";
 import { isElementOfType } from "../../utils/isElementType";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "./listTypes";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, type ListSerializerOptions } from "./listTypes";
 import { BREAK_ELEMENT_TYPE } from "../break/breakTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { LINK_ELEMENT_TYPE } from "../link/linkTypes";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
+import { createSerializer } from "../../core/createSerializer";
 
-const LIST_TAG_TYPES = ["ol", "ul"];
-
-// TODO: I want this to be configurable
-const inlines: ElementType[] = [
-  // TYPE_CONCEPT_INLINE,
-  // TYPE_FOOTNOTE,
-  LINK_ELEMENT_TYPE,
-  // TYPE_CONTENT_LINK,
-  // TYPE_MATHML,
-  // TYPE_COMMENT_INLINE
-] as const;
-
-export const listSerializer: SlateSerializer = {
-  deserialize(el: HTMLElement, children: (Descendant | null)[]) {
+export const listSerializer = createSerializer<ListSerializerOptions>({
+  options: {
+    inlineTypes: [
+      // TYPE_CONCEPT_INLINE,
+      // TYPE_FOOTNOTE,
+      LINK_ELEMENT_TYPE,
+      // TYPE_CONTENT_LINK,
+      // TYPE_MATHML,
+      // TYPE_COMMENT_INLINE
+    ],
+    allowedListTags: ["ol", "ul"],
+  },
+  deserialize(el, children, options) {
     const tag = el.tagName.toLowerCase();
 
     // TODO: I don't really like this deserialization. It relies on too many other plugins indirectly. Maybe we could make it configurable?
@@ -39,7 +38,7 @@ export const listSerializer: SlateSerializer = {
       const lastElement = acc[acc.length - 1];
       if (!cur) {
         return acc;
-      } else if (Element.isElement(cur) && !inlines.includes(cur.type)) {
+      } else if (Element.isElement(cur) && !options.inlineTypes.includes(cur.type)) {
         if (cur.type === BREAK_ELEMENT_TYPE) {
           if (isElementOfType(lastElement, PARAGRAPH_ELEMENT_TYPE) && lastElement.serializeAsText) {
             lastElement.children.push({ text: "\n" });
@@ -50,7 +49,7 @@ export const listSerializer: SlateSerializer = {
           acc.push(cur);
         }
         return acc;
-      } else if (Text.isText(cur) || isElementOfType(cur, inlines)) {
+      } else if (Text.isText(cur) || isElementOfType(cur, options.inlineTypes)) {
         if (isElementOfType(lastElement, PARAGRAPH_ELEMENT_TYPE) && lastElement.serializeAsText) {
           lastElement.children.push(cur);
           return acc;
@@ -96,7 +95,7 @@ export const listSerializer: SlateSerializer = {
       return slatejsx("element", { type: LIST_ITEM_ELEMENT_TYPE }, children);
     }
   },
-  serialize(node, children) {
+  serialize(node, children, options) {
     if (!Element.isElement(node)) return;
 
     if (node.type === LIST_ELEMENT_TYPE) {
@@ -116,8 +115,8 @@ export const listSerializer: SlateSerializer = {
       // If first child of list-item is a list, it means that an empty paragraph has been removed by
       // paragraph serializer. This should not be removed, therefore inserting it when serializing.
       const firstChild = node.children[0];
-      const illegalFirstElement = !Element.isElement(firstChild) || LIST_TAG_TYPES.includes(firstChild.type);
+      const illegalFirstElement = !Element.isElement(firstChild) || options.allowedListTags.includes(firstChild.type);
       return createHtmlTag({ tag: "li", children: illegalFirstElement ? `<p></p>${children}` : children });
     }
   },
-};
+});

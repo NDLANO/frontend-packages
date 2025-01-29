@@ -7,42 +7,42 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
-import type { SlateSerializer } from "../../types";
-import { BREAK_ELEMENT_TYPE } from "./breakTypes";
+import { BREAK_ELEMENT_TYPE, type BreakSerializerOptions } from "./breakTypes";
 import { isBreakElement } from "./queries/breakQueries";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
+import { createSerializer } from "../../core/createSerializer";
 
-// TODO: This should be configurable
-const allowedBreakContainers = [
-  "section",
-  "div",
-  "aside",
-  "li",
-  "blockquote",
-  "h1",
-  "h2",
-  "h3",
-  "h4",
-  "h5",
-  "h6",
-  "summary",
-  "pre",
-];
-
-export const breakSerializer: SlateSerializer = {
-  deserialize(el) {
+export const breakSerializer = createSerializer<BreakSerializerOptions>({
+  options: {
+    allowedBreakContainers: [
+      "section",
+      "div",
+      "aside",
+      "li",
+      "blockquote",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "summary",
+      "pre",
+    ],
+  },
+  deserialize: (el, _, options) => {
     if (el.tagName.toLowerCase() !== BREAK_ELEMENT_TYPE) return;
 
     if (el.parentElement && el.parentElement.tagName) {
       const tagName = el.parentElement.tagName.toLowerCase();
-      if (allowedBreakContainers.includes(tagName)) {
+      if (options.allowedBreakContainers?.includes(tagName)) {
         return slatejsx("element", { type: BREAK_ELEMENT_TYPE }, [{ text: "" }]);
       }
     }
     return slatejsx("text", { text: "\n" });
   },
-  serialize(node) {
+  serialize: (node) => {
     if (!isBreakElement(node)) return;
     return createHtmlTag({ tag: "br", shorthand: true });
   },
-};
+});

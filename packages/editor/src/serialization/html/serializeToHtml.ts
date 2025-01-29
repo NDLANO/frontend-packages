@@ -7,8 +7,8 @@
  */
 
 import { Element, type Descendant } from "slate";
-import type { SlateSerializer } from "../../types";
 import { commonSerializers, extendedSerializers } from "./htmlSerializers";
+import type { SlateSerializer } from "../../core";
 
 const serialize = (node: Descendant, rules: SlateSerializer[]): string | undefined => {
   const children = Element.isElement(node)
@@ -23,7 +23,7 @@ const serialize = (node: Descendant, rules: SlateSerializer[]): string | undefin
       continue;
     }
 
-    const ret = rule.serialize(node, children);
+    const ret = rule.serialize(node, children, rule.options);
     if (ret === undefined) {
       continue;
     } else if (ret === null) {

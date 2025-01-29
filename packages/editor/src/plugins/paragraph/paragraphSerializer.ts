@@ -7,7 +7,6 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
-import type { SlateSerializer } from "../../types";
 import { PARAGRAPH_ELEMENT_TYPE } from "./paragraphTypes";
 import { isParagraphElement } from "./queries/paragraphElementQueries";
 import { Node, Text } from "slate";
@@ -16,8 +15,9 @@ import {
   createHtmlTag,
   parseElementAttributes,
 } from "../../serialization/html/htmlSerializationHelpers";
+import { createSerializer } from "../../core/createSerializer";
 
-export const paragraphSerializer: SlateSerializer = {
+export const paragraphSerializer = createSerializer({
   deserialize(el, children) {
     if (el.tagName.toLowerCase() !== "p") return;
 
@@ -50,4 +50,4 @@ export const paragraphSerializer: SlateSerializer = {
     const data = createDataAttributes({ align: node.data?.align });
     return createHtmlTag({ tag: "p", data, children });
   },
-};
+});

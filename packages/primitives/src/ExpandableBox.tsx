@@ -25,6 +25,7 @@ const StyledExpandableBox = styled(
       borderColor: "stroke.subtle",
       padding: "medium",
       clear: "both",
+      overflow: "hidden",
       _open: {
         padding: "medium",
         "& summary, [data-embed-type='expandable-box-summary']": {

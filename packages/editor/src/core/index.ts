@@ -42,13 +42,7 @@ export interface Shortcut<TOptions = undefined> {
   keyCondition: KeyConditionFn | KeyConditionFn[];
 }
 
-interface Configuration<TOptions = undefined> {
-  shortcuts?: Record<string, Shortcut<TOptions>>;
-  transform?: SlateExtensionFn<TOptions>;
-  options?: TOptions;
-}
-
-export interface SlateCreatePluginProps<TType extends ElementType, TOptions = undefined> {
+export interface PluginConfiguration<TType extends ElementType, TOptions = undefined> {
   /**
    * The name of the plugin. Used for logging
    */
@@ -73,15 +67,44 @@ export interface SlateCreatePluginProps<TType extends ElementType, TOptions = un
    * A function that further transforms the editor. Typically used for extending the editor with functionality not supported by `createPlugin`.
    */
   transform?: (editor: Editor, logger: Logger, options: TOptions) => Editor;
-  configuration?: Configuration<TOptions>;
+  options?: TOptions;
+}
+
+export interface ConfigurationOption<T> {
+  value: T;
+  override?: boolean;
+}
+
+export type MappedConfigurationOption<T> = {
+  [K in keyof T]: T[K] extends any[] | undefined
+    ? ConfigurationOption<T[K]> | T[K]
+    : T[K] extends object | undefined
+      ? MappedConfigurationOption<T[K]>
+      : T[K];
+};
+
+export interface PluginConfigurationWithConfiguration<TType extends ElementType, TOptions>
+  extends PluginConfiguration<TType, TOptions> {
+  configuration?: Omit<Partial<PluginConfiguration<TType, TOptions>>, "options"> & {
+    options?: MappedConfigurationOption<TOptions>;
+  };
+  override?: {
+    shortcuts?: boolean;
+    normalize?: boolean;
+    transform?: boolean;
+  };
 }
 
 export type SlatePlugin = (editor: Editor) => Editor;
 
 export type SlatePluginFn = <TType extends ElementType, TOptions = undefined>(
-  props: SlateCreatePluginProps<TType, TOptions>,
-) => PluginReturnType<TOptions>;
+  props: PluginConfiguration<TType, TOptions>,
+) => PluginReturnType<TType, TOptions>;
 
-export type PluginReturnType<TOptions = undefined> = SlatePlugin & {
-  configure: (configuration: Configuration<TOptions>) => SlatePlugin;
+export type PluginReturnType<TType extends ElementType, TOptions = undefined> = SlatePlugin & {
+  configure: (
+    configuration: Omit<Partial<PluginConfiguration<TType, TOptions>>, "options"> & {
+      options?: MappedConfigurationOption<TOptions>;
+    },
+  ) => SlatePlugin;
 };

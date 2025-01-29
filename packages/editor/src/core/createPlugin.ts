@@ -7,42 +7,48 @@
  */
 
 import type { Editor } from "slate";
-import type { PluginReturnType, SlateCreatePluginProps, SlatePluginFn } from ".";
+import type { PluginConfiguration, PluginConfigurationWithConfiguration, PluginReturnType } from ".";
 import type { ElementType } from "../types";
-export const createPlugin: SlatePluginFn = <TType extends ElementType, TOptions = undefined>(
-  params: SlateCreatePluginProps<TType, TOptions>,
-): PluginReturnType<TOptions> => {
+import { mergeOptions } from "./mergeOptions";
+
+export const createPlugin = <TType extends ElementType, TOptions extends object | undefined = undefined>(
+  params: PluginConfiguration<TType, TOptions>,
+): PluginReturnType<TType, TOptions> => {
   const pluginFn = (editor: Editor) => {
-    const {
-      isInline: isInlineProp,
-      name,
-      shortcuts,
-      isVoid: isVoidProp,
-      type,
-      normalize,
-      transform,
-      configuration,
-    } = params;
+    const { normalize, transform, configuration, override } = params as PluginConfigurationWithConfiguration<
+      TType,
+      TOptions
+    >;
+    const name = configuration?.name ?? params.name;
+    const isInlineParam = configuration?.isInline ?? params.isInline;
+    const isVoidParam = configuration?.isVoid ?? params.isVoid;
+    const type = configuration?.type ?? params.type;
     const logger = editor.logger.getLogger(name);
+    // If `pluginOptions` do not exist, the `TOPtions` generic will be undefined. This is fine.
+    const pluginOptions = mergeOptions(params.options, configuration?.options) as TOptions;
     const { isInline, isVoid } = editor;
     editor.isInline = (element) => {
       if (element.type === type) {
-        return !!isInlineProp;
+        return !!isInlineParam;
       }
       return isInline(element);
     };
     editor.isVoid = (element) => {
       if (element.type === type) {
-        return !!isVoidProp;
+        return !!isVoidParam;
       }
       return isVoid(element);
     };
-    if (normalize) {
+
+    if (normalize || configuration?.normalize) {
       const { normalizeNode } = editor;
       editor.normalizeNode = (entry, options) => {
         const [node, path] = entry;
-        // If `configuration.options` do not exist, the generic will be undefined. This is fine.
-        const res = normalize?.(editor, node, path, logger, configuration?.options as TOptions);
+        let res = !override?.normalize ? normalize?.(editor, node, path, logger, pluginOptions) : false;
+
+        if (!res && configuration?.normalize) {
+          res = configuration.normalize(editor, node, path, logger, pluginOptions);
+        }
         if (res) {
           logger.log("consumed normalizeNode event. Further normalization will happen in a new normalization loop.");
           return;
@@ -51,9 +57,10 @@ export const createPlugin: SlatePluginFn = <TType extends ElementType, TOptions 
       };
     }
 
-    let shortcutEntries = shortcuts ? Object.entries(shortcuts) : [];
+    let shortcutEntries = params.shortcuts ? Object.entries(params.shortcuts) : [];
     if (configuration?.shortcuts) {
-      shortcutEntries = shortcutEntries.concat(Object.entries(configuration.shortcuts));
+      const configurationShortcuts = Object.entries(configuration.shortcuts);
+      shortcutEntries = override?.shortcuts ? configurationShortcuts : shortcutEntries.concat(configurationShortcuts);
     }
 
     if (shortcutEntries.length) {
@@ -62,7 +69,7 @@ export const createPlugin: SlatePluginFn = <TType extends ElementType, TOptions 
         for (const [key, { handler, keyCondition }] of shortcutEntries) {
           const keyConditions = Array.isArray(keyCondition) ? keyCondition : [keyCondition];
           if (keyConditions.some((condition) => condition(event))) {
-            if (handler(editor, event, logger, configuration?.options as TOptions)) {
+            if (handler(editor, event, logger, pluginOptions)) {
               logger.log(`Shortcut "${key}" consumed keyDown event. Ignoring further handlers.`);
               return;
             } else {
@@ -75,12 +82,12 @@ export const createPlugin: SlatePluginFn = <TType extends ElementType, TOptions 
     }
 
     let ret = editor;
-    if (transform) {
-      ret = transform(editor, logger, configuration?.options as TOptions);
+    if (transform && !override?.transform) {
+      ret = transform(editor, logger, pluginOptions);
     }
 
     if (configuration?.transform) {
-      ret = configuration.transform(ret, logger, configuration?.options as TOptions);
+      ret = configuration.transform(ret, logger, pluginOptions);
     }
 
     return ret;
@@ -91,7 +98,8 @@ export const createPlugin: SlatePluginFn = <TType extends ElementType, TOptions 
     get(_, prop) {
       if (prop === "configure") {
         // TODO: Should we merge with existing configuration?
-        return (configuration: typeof params.configuration) => createPlugin({ ...params, configuration });
+        return (configuration: PluginConfigurationWithConfiguration<TType, TOptions>) =>
+          createPlugin({ ...params, configuration } as PluginConfiguration<TType, TOptions>);
       }
       return undefined; // Only expose `.configure`
     },
@@ -101,5 +109,5 @@ export const createPlugin: SlatePluginFn = <TType extends ElementType, TOptions 
     },
   });
 
-  return plugin as PluginReturnType<TOptions>;
+  return plugin as PluginReturnType<TType, TOptions>;
 };

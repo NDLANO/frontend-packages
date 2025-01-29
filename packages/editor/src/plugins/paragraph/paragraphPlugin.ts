@@ -15,10 +15,8 @@ import { LIST_ITEM_ELEMENT_TYPE } from "../list/listTypes";
 export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPluginConfiguration>({
   type: PARAGRAPH_ELEMENT_TYPE,
   name: PARAGRAPH_ELEMENT_TYPE,
-  configuration: {
-    options: {
-      nonSerializableParents: [LIST_ITEM_ELEMENT_TYPE],
-    },
+  options: {
+    nonSerializableParents: [LIST_ITEM_ELEMENT_TYPE],
   },
   normalize: (editor, node, path, logger, opts) => {
     if (!isParagraphElement(node)) return false;

@@ -33,6 +33,7 @@
     "escape-html": "^1.0.3",
     "he": "^1.2.0",
     "is-hotkey": "^0.2.0",
+    "lodash.mergewith": "^4.6.2",
     "slate": "^0.112.0",
     "slate-dom": "^0.111.0",
     "slate-history": "^0.110.3",
@@ -45,7 +46,8 @@
   },
   "devDependencies": {
     "@types/he": "^1.2.3",
-    "@types/is-hotkey": "^0"
+    "@types/is-hotkey": "^0",
+    "@types/lodash.mergewith": "^4"
   },
   "publishConfig": {
     "access": "public"

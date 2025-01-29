@@ -9,25 +9,23 @@
 import { Node, Range, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
-import { BREAK_ELEMENT_TYPE, type BreakElementType, type BreakPluginConfiguration } from "./breakTypes";
+import { BREAK_ELEMENT_TYPE, type BreakElementType, type BreakPluginOptions } from "./breakTypes";
 import { getCurrentBlock } from "../../queries/getCurrentBlock";
 
-export const breakPlugin = createPlugin<BreakElementType, BreakPluginConfiguration>({
+export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
   type: BREAK_ELEMENT_TYPE,
   name: BREAK_ELEMENT_TYPE,
   isVoid: true,
-  configuration: {
-    options: {
-      validBreakElements: [PARAGRAPH_ELEMENT_TYPE],
-    },
+  options: {
+    validBreakElements: [PARAGRAPH_ELEMENT_TYPE],
   },
-  transform: (editor, logger, configuration) => {
+  transform: (editor, logger, options) => {
     const { insertBreak } = editor;
 
     editor.insertBreak = () => {
       if (!editor.selection || !Range.isRange(editor.selection)) return false;
       // TODO: Should we consider void nodes here? We used to do that in the old implementation
-      const entry = getCurrentBlock(editor, configuration.validBreakElements ?? PARAGRAPH_ELEMENT_TYPE);
+      const entry = getCurrentBlock(editor, options.validBreakElements ?? PARAGRAPH_ELEMENT_TYPE);
 
       if (entry && Node.string(entry[0]) === "") {
         logger.log("Tried to insert new paragraph, but current paragraph is empty, inserting break instead");

@@ -18,6 +18,6 @@ export interface BreakElement {
   children: Descendant[];
 }
 
-export interface BreakPluginConfiguration {
+export interface BreakPluginOptions {
   validBreakElements?: ElementType[];
 }

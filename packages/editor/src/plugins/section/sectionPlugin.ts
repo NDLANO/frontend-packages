@@ -17,10 +17,8 @@ import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 export const sectionPlugin = createPlugin<SectionElementType, SectionPluginConfiguration>({
   type: SECTION_ELEMENT_TYPE,
   name: SECTION_ELEMENT_TYPE,
-  configuration: {
-    options: {
-      allowedFirstElements: [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const,
-    },
+  options: {
+    allowedFirstElements: [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const,
   },
   // TODO: This is inherited from ED. I don't really know if we want to do it?
   // shortcuts: {

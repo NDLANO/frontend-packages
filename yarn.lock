@@ -2425,9 +2425,11 @@ __metadata:
   dependencies:
     "@types/he": "npm:^1.2.3"
     "@types/is-hotkey": "npm:^0"
+    "@types/lodash.mergewith": "npm:^4"
     escape-html: "npm:^1.0.3"
     he: "npm:^1.2.0"
     is-hotkey: "npm:^0.2.0"
+    lodash.mergewith: "npm:^4.6.2"
     slate: "npm:^0.112.0"
     slate-dom: "npm:^0.111.0"
     slate-history: "npm:^0.110.3"
@@ -4390,6 +4392,15 @@ __metadata:
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
   checksum: 10c0/6bf5337bc447b706bb5b4431d37686aa2ea6d07cfd6f79cc31de80170d6ff9b1c7384a9c0ccbc45b3f512bae9e9f75c2e12109806a15331dc94e8a8db6dbb4ac
+  languageName: node
+  linkType: hard
+
+"@types/lodash.mergewith@npm:^4":
+  version: 4.6.9
+  resolution: "@types/lodash.mergewith@npm:4.6.9"
+  dependencies:
+    "@types/lodash": "npm:*"
+  checksum: 10c0/d245cb8c66f88251a6251f93eaec9e876f8c967ef7dac67d7da75eec2a8049e37342478dbe5ae163a566c233b2a1ecd494b180ccaa8603bef58d4ca6a803d2cf
   languageName: node
   linkType: hard
 
@@ -11412,6 +11423,13 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: 10c0/402fa16a1edd7538de5b5903a90228aa48eb5533986ba7fa26606a49db2572bf414ff73a2c9f5d5fd36b31c46a5d5c7e1527749c07cbcf965ccff5fbdf32c506
+  languageName: node
+  linkType: hard
+
+"lodash.mergewith@npm:^4.6.2":
+  version: 4.6.2
+  resolution: "lodash.mergewith@npm:4.6.2"
+  checksum: 10c0/4adbed65ff96fd65b0b3861f6899f98304f90fd71e7f1eb36c1270e05d500ee7f5ec44c02ef979b5ddbf75c0a0b9b99c35f0ad58f4011934c4d4e99e5200b3b5
   languageName: node
   linkType: hard
 

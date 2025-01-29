@@ -31,9 +31,7 @@ export const listPluginDefaultConfiguration: ListPluginConfiguration = {
 export const listPlugin = createPlugin<ListElementType, ListPluginConfiguration>({
   name: LIST_ELEMENT_TYPE,
   type: LIST_ELEMENT_TYPE,
-  configuration: {
-    options: listPluginDefaultConfiguration,
-  },
+  options: listPluginDefaultConfiguration,
   shortcuts: {
     toggleNumberedList: {
       keyCondition: isKeyHotkey("mod+o"),

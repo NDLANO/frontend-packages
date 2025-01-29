@@ -11,24 +11,17 @@ import { commonSerializers, extendedSerializers } from "./htmlSerializers";
 import type { SlateSerializer } from "../../core";
 
 const serialize = (node: Descendant, rules: SlateSerializer[]): string | undefined => {
-  const children = Element.isElement(node)
-    ? node.children
-        .map((n) => serialize(n, rules))
-        .filter((n) => !!n)
-        .join("")
-    : "";
+  const children = Element.isElement(node) ? node.children.map((n) => serialize(n, rules)).join("") : "";
 
   for (const rule of rules) {
-    if (!rule.serialize) {
-      continue;
+    if (rule.serialize) {
+      const ret = rule.serialize(node, children, rule.options);
+      if (ret === undefined) {
+        continue;
+      } else if (ret === null) {
+        return undefined;
+      } else return ret;
     }
-
-    const ret = rule.serialize(node, children, rule.options);
-    if (ret === undefined) {
-      continue;
-    } else if (ret === null) {
-      return undefined;
-    } else return ret;
   }
 
   return children;
@@ -37,11 +30,7 @@ const serialize = (node: Descendant, rules: SlateSerializer[]): string | undefin
 const DELETE_REGEXP = /<deleteme><\/deleteme>/g;
 
 export const serializeToHtml = (value: Descendant[], rules: SlateSerializer[]) => {
-  const elements = value
-    .map((descendant) => serialize(descendant, rules))
-    .filter((n) => !!n)
-    .join("");
-
+  const elements = value.map((descendant) => serialize(descendant, rules)).join("");
   return elements.replace(DELETE_REGEXP, "");
 };
 

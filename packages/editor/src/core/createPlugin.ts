@@ -97,7 +97,6 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
   const plugin = new Proxy(pluginFn, {
     get(_, prop) {
       if (prop === "configure") {
-        // TODO: Should we merge with existing configuration?
         return (configuration: PluginConfigurationWithConfiguration<TType, TOptions>) =>
           createPlugin({ ...params, configuration } as PluginConfiguration<TType, TOptions>);
       }

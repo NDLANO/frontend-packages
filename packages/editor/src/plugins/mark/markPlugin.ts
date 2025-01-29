@@ -5,12 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
 import { Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { isEmptyTextNode } from "../../utils/isEmptyTextNode";
-import { isKeyHotkey } from "is-hotkey";
-import { toggleMark } from "./toggleMark";
-import { marks } from "./markTypes";
 
 export const markPlugin = createPlugin({
   name: "mark",
@@ -23,23 +21,5 @@ export const markPlugin = createPlugin({
       return true;
     }
     return false;
-  },
-  shortcuts: {
-    toggleBold: {
-      keyCondition: isKeyHotkey("mod+b"),
-      handler: (editor, event) => {
-        event.preventDefault();
-        toggleMark(editor, marks.strong);
-        return false;
-      },
-    },
-    toggleItalic: {
-      keyCondition: isKeyHotkey("mod+i"),
-      handler: (editor, event) => {
-        event.preventDefault();
-        toggleMark(editor, marks.em);
-        return false;
-      },
-    },
   },
 });

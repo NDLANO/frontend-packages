@@ -16,7 +16,6 @@ import {
 } from "./listTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { isKeyHotkey } from "is-hotkey";
-import { toggleList } from "./transforms/toggleList";
 import { listOnTab } from "./handlers/listOnTab";
 import { listOnEnter } from "./handlers/listOnEnter";
 import { listOnBackspace } from "./handlers/listOnBackspace";
@@ -33,22 +32,6 @@ export const listPlugin = createPlugin<ListElementType, ListPluginConfiguration>
   type: LIST_ELEMENT_TYPE,
   options: listPluginDefaultConfiguration,
   shortcuts: {
-    toggleNumberedList: {
-      keyCondition: isKeyHotkey("mod+o"),
-      handler: (editor, event, _, opts) => {
-        event.preventDefault();
-        toggleList(editor, "numbered-list", opts);
-        return true;
-      },
-    },
-    toggleBulletedList: {
-      keyCondition: isKeyHotkey("mod+l"),
-      handler: (editor, event, _, opts) => {
-        event.preventDefault();
-        toggleList(editor, "bulleted-list", opts);
-        return true;
-      },
-    },
     dentList: { keyCondition: isKeyHotkey("shift?+tab"), handler: listOnTab },
     listItemInsertion: { keyCondition: isKeyHotkey("enter"), handler: listOnEnter },
     listItemDeletion: { keyCondition: isKeyHotkey("backspace"), handler: listOnBackspace },

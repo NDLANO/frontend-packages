@@ -6,6 +6,7 @@
  *
  */
 
+import { isKeyHotkey } from "is-hotkey";
 import { useRef, useState } from "react";
 import { type Descendant, type EditorMarks } from "slate";
 import { DOMEditor } from "slate-dom";
@@ -45,8 +46,11 @@ import { type LinkElement } from "./plugins/link/linkTypes";
 import { useListToolbarButton, useListToolbarButtonState } from "./plugins/list/hooks/useListToolbarButton";
 import { listPlugin } from "./plugins/list/listPlugin";
 import type { ListType } from "./plugins/list/listTypes";
+import { toggleList } from "./plugins/list/transforms/toggleList";
 import { useMarkToolbarButton, useMarkToolbarButtonState } from "./plugins/mark/hooks/useMarkToolbarButton";
 import { markPlugin } from "./plugins/mark/markPlugin";
+import { marks } from "./plugins/mark/markTypes";
+import { toggleMark } from "./plugins/mark/toggleMark";
 import { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 import { sectionPlugin } from "./plugins/section/sectionPlugin";
 import { createSlate } from "./utils/createSlate";
@@ -84,6 +88,48 @@ const initialValue: Descendant[] = [
     ],
   },
 ];
+
+const configuredMarkPlugin = markPlugin.configure({
+  shortcuts: {
+    toggleBold: {
+      keyCondition: isKeyHotkey("mod+b"),
+      handler: (editor, event) => {
+        event.preventDefault();
+        toggleMark(editor, marks.strong);
+        return false;
+      },
+    },
+    toggleItalic: {
+      keyCondition: isKeyHotkey("mod+i"),
+      handler: (editor, event) => {
+        event.preventDefault();
+        toggleMark(editor, marks.em);
+        return false;
+      },
+    },
+  },
+});
+
+const configuredListPlugin = listPlugin.configure({
+  shortcuts: {
+    toggleNumberedList: {
+      keyCondition: isKeyHotkey("mod+o"),
+      handler: (editor, event, _, opts) => {
+        event.preventDefault();
+        toggleList(editor, "numbered-list", opts);
+        return true;
+      },
+    },
+    toggleBulletedList: {
+      keyCondition: isKeyHotkey("mod+l"),
+      handler: (editor, event, _, opts) => {
+        event.preventDefault();
+        toggleList(editor, "bulleted-list", opts);
+        return true;
+      },
+    },
+  },
+});
 
 interface ListToolbarButtonProps extends IconButtonProps {
   listType: ListType;
@@ -190,8 +236,8 @@ export const EditorPlayground: StoryFn = () => {
       plugins: [
         sectionPlugin,
         headingPlugin,
-        markPlugin,
-        listPlugin,
+        configuredMarkPlugin,
+        configuredListPlugin,
         paragraphPlugin,
         linkPlugin,
         softBreakPlugin,

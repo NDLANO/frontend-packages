@@ -10,6 +10,8 @@ import { useSlate } from "slate-react";
 import type { ListType } from "../listTypes";
 import { isListElement } from "../queries/listElementQueries";
 import { toggleList } from "../transforms/toggleList";
+import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
+import { HEADING_ELEMENT_TYPE } from "../../heading/headingTypes";
 
 interface ListToolbarButtonStateOptions {
   type: ListType;
@@ -36,7 +38,10 @@ export const useListToolbarButton = (state: ReturnType<typeof useListToolbarButt
     props: {
       "data-state": state["data-state"],
       onClick: () => {
-        toggleList(editor, state.type);
+        // TODO: We don't want options here
+        toggleList(editor, state.type, {
+          allowedListItemFirstChildTypes: [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const,
+        });
       },
       onMouseDown: (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();

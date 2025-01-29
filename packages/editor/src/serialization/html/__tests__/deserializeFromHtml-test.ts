@@ -6,7 +6,7 @@
  *
  */
 
-import { inlineContentToEditorValue, blockContentToEditorValue } from "../deserializeFromHtml";
+import { testBlockContentToEditorValue, testInlineContentToEditorValue } from "../../../__tests__/testUtils";
 import { blockContentToHTML, inlineContentToHTML } from "../serializeToHtml";
 
 // TODO: The snapshots this file generates are invalid because we don't support all embeds.
@@ -18,30 +18,30 @@ const mustBeWrappedHtml = `<section><h2>Section 1</h2><aside>Some text that slat
 
 test("articleContentConverter convert topic article content to and from editorValue", () => {
   // Todo fix test to handle empty text nodes
-  const editorValue = inlineContentToEditorValue(contentHTML);
+  const editorValue = testInlineContentToEditorValue(contentHTML);
   const html = inlineContentToHTML(editorValue);
   expect(html).toMatchSnapshot();
 });
 
 test("articleContentConverter convert learningresource content to and from editorValue", () => {
-  const editorValue = blockContentToEditorValue(contentHTML);
+  const editorValue = testBlockContentToEditorValue(contentHTML);
   const html = blockContentToHTML(editorValue);
   expect(html).toMatchSnapshot();
 });
 
 test("articleContentConverter convert learningresource content", () => {
-  const editorValue = blockContentToEditorValue(contentHTML);
+  const editorValue = testBlockContentToEditorValue(contentHTML);
   expect(editorValue[0]).toMatchSnapshot();
 });
 
 test("articleContentConverter convert learningresource content with multiple sections to and from editorValue", () => {
-  const editorValue = blockContentToEditorValue(contentHTMLWithSections);
+  const editorValue = testBlockContentToEditorValue(contentHTMLWithSections);
   const html = blockContentToHTML(editorValue);
   expect(html).toMatchSnapshot();
 });
 
 test("articleContentConverter convert article that is a mix of inline and block object by wrapping the inline", () => {
-  const editorValue = blockContentToEditorValue(mustBeWrappedHtml);
+  const editorValue = testBlockContentToEditorValue(mustBeWrappedHtml);
 
   const html = blockContentToHTML(editorValue);
   expect(html).toMatchSnapshot();

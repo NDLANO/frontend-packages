@@ -10,7 +10,7 @@ import type { Descendant } from "slate";
 import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { HEADING_ELEMENT_TYPE } from "../headingTypes";
 import { blockContentToHTML } from "../../../serialization/html/serializeToHtml";
-import { blockContentToEditorValue } from "../../../serialization/html/deserializeFromHtml";
+import { testBlockContentToEditorValue } from "../../../__tests__/testUtils";
 
 const editor: Descendant[] = [
   {
@@ -49,7 +49,7 @@ describe("heading serializing tests", () => {
         ],
       },
     ];
-    const res = blockContentToEditorValue(html);
+    const res = testBlockContentToEditorValue(html);
     expect(res).toEqual(expected);
   });
 });

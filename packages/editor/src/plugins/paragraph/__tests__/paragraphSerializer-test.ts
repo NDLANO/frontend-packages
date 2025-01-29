@@ -10,7 +10,7 @@ import type { Descendant } from "slate";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraphTypes";
 import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { blockContentToHTML } from "../../../serialization/html/serializeToHtml";
-import { blockContentToEditorValue } from "../../../serialization/html/deserializeFromHtml";
+import { testBlockContentToEditorValue } from "../../../__tests__/testUtils";
 
 const editor: Descendant[] = [
   {
@@ -47,14 +47,14 @@ describe("paragraph serializing tests", () => {
   });
 
   test("deserializing", () => {
-    const res = blockContentToEditorValue(html);
+    const res = testBlockContentToEditorValue(html);
     expect(res).toEqual(editor);
   });
 
   test("deserializing handles unwrapped text", () => {
     const htmlWithUnwrappedText = "<section>123<p>abc</p></section>";
 
-    const res = blockContentToEditorValue(htmlWithUnwrappedText);
+    const res = testBlockContentToEditorValue(htmlWithUnwrappedText);
     expect(res).toEqual(editor);
   });
 });

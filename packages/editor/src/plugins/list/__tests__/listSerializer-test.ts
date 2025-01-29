@@ -11,7 +11,7 @@ import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { blockContentToHTML } from "../../../serialization/html/serializeToHtml";
-import { blockContentToEditorValue } from "../../../serialization/html/deserializeFromHtml";
+import { testBlockContentToEditorValue } from "../../../__tests__/testUtils";
 
 const editor: Descendant[] = [
   {
@@ -104,7 +104,7 @@ describe("paragraph serializing tests", () => {
   });
 
   test("deserializing", () => {
-    const res = blockContentToEditorValue(html);
+    const res = testBlockContentToEditorValue(html);
     expect(res).toEqual(editor);
   });
 
@@ -164,7 +164,7 @@ describe("paragraph serializing tests", () => {
       },
     ];
 
-    const res = blockContentToEditorValue(html);
+    const res = testBlockContentToEditorValue(html);
     expect(res).toEqual(expected);
   });
 });

@@ -11,7 +11,7 @@ import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { LINK_ELEMENT_TYPE } from "../linkTypes";
 import { blockContentToHTML } from "../../../serialization/html/serializeToHtml";
-import { blockContentToEditorValue } from "../../../serialization/html/deserializeFromHtml";
+import { testBlockContentToEditorValue } from "../../../__tests__/testUtils";
 
 // TODO: This used to include content-link tests. We need to port those over
 
@@ -52,7 +52,7 @@ describe("link serializing tests", () => {
   });
 
   test("deserializing", () => {
-    const res = blockContentToEditorValue(html);
+    const res = testBlockContentToEditorValue(html);
     expect(res).toMatchObject(editor);
   });
 });

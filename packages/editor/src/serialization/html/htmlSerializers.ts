@@ -15,6 +15,8 @@ import { markSerializer } from "../../plugins/mark/markSerializer";
 import { paragraphSerializer } from "../../plugins/paragraph/paragraphSerializer";
 import { sectionSerializer } from "../../plugins/section/sectionSerializer";
 
+// TODO: This is probably not the right place for this. Should we require consumers to put this together?
+
 export const commonSerializers: SlateSerializer<any>[] = [
   // noopSerializer,
   paragraphSerializer,

@@ -107,7 +107,7 @@ export { serializeToHtml } from "./serialization/html/serializeToHtml";
 
 export { toggleBlock } from "./transforms/toggleBlock";
 
-export type { SlateEditor, CustomEditor, ElementType, BlockElementType, BlockElement } from "./types";
+export type { SlateEditor, CustomEditor, ElementType } from "./types";
 
 export { isElementOfType } from "./utils/isElementType";
 export { isEmptyTextNode } from "./utils/isEmptyTextNode";

@@ -35,10 +35,7 @@ export const useListToolbarButton = (state: ReturnType<typeof useListToolbarButt
   return {
     props: {
       "data-state": state["data-state"],
-      onClick: () => {
-        // TODO: We don't want options here
-        toggleList(editor, state.type);
-      },
+      onClick: () => toggleList(editor, state.type),
       onMouseDown: (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
       },

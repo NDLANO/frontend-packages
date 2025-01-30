@@ -8,7 +8,6 @@
 
 import type { MouseEvent } from "react";
 import type { EditorMarks } from "slate";
-import { DOMEditor } from "slate-dom";
 import { useSlate } from "slate-react";
 import { toggleMark } from "../toggleMark";
 
@@ -18,7 +17,7 @@ interface MarkToolbarButtonStateOptions {
 
 export const useMarkToolbarButtonState = ({ type }: MarkToolbarButtonStateOptions) => {
   const editor = useSlate();
-  const pressed = editor.marks?.[type];
+  const pressed = editor.getMarks()?.[type];
 
   return {
     type,
@@ -32,10 +31,7 @@ export const useMarkToolbarButton = (state: ReturnType<typeof useMarkToolbarButt
   return {
     props: {
       "data-state": state.pressed ? "on" : "off",
-      onClick: () => {
-        toggleMark(editor, state.type);
-        DOMEditor.focus(editor);
-      },
+      onClick: () => toggleMark(editor, state.type),
       onMouseDown: (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
       },

@@ -27,7 +27,7 @@ interface CreateSlate {
   logger?: LoggerManager;
 }
 
-export const createSlate = ({ plugins, logger = new LoggerManager({ debug: false }) }: CreateSlate) => {
+export const createSlate = ({ plugins, logger = new LoggerManager({ debug: false }) }: CreateSlate): Editor => {
   const editor = withPlugins(withReact(withHistory(withLogger(createEditor(), logger))), plugins);
   return editor;
 };

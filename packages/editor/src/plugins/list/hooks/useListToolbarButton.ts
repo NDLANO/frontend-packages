@@ -6,6 +6,7 @@
  *
  */
 
+import type { MouseEvent } from "react";
 import { useSlate } from "slate-react";
 import type { ListType } from "../listTypes";
 import { isListElement } from "../queries/listElementQueries";
@@ -36,7 +37,7 @@ export const useListToolbarButton = (state: ReturnType<typeof useListToolbarButt
     props: {
       "data-state": state["data-state"],
       onClick: () => toggleList(editor, state.type),
-      onMouseDown: (e: React.MouseEvent<HTMLButtonElement>) => {
+      onMouseDown: (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
       },
     },

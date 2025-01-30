@@ -6,17 +6,12 @@
  *
  */
 
-// import { TYPE_NDLA_EMBED } from "../../components/SlateEditor/plugins/embed/types";
-// import { blockContentToEditorValue } from "../articleContentConverter";
 import {
-  // isUserProvidedEmbedDataValid,
   createDataAttributes,
   createHtmlTag,
   parseElementAttributes,
   stringifyAttributes,
 } from "../htmlSerializationHelpers";
-
-// These are not ported yet
 
 test("createDataAttributes handles resourceId correctly", () => {
   const data = createDataAttributes({
@@ -157,45 +152,6 @@ test("createHtmlTag creates brightcove embed tag from object", () => {
 test("createHtmlTag returns an empty string if the object contains no keys", () => {
   expect(createHtmlTag({ tag: "ndlaembed", data: {}, bailOnEmpty: true })).toBe("");
 });
-
-// not ported over yet
-// test("isUserProvidedEmbedDataValid for image", () => {
-//   expect(
-//     isUserProvidedEmbedDataValid({
-//       resource: "image",
-//       resourceId: "123",
-//       alt: "Alternative",
-//       caption: "Intervju med Hallvard",
-//     }),
-//   ).toBe(true);
-//
-//   expect(
-//     isUserProvidedEmbedDataValid({
-//       resource: "image",
-//       resourceId: "123",
-//       alt: "",
-//       caption: "Intervju med Hallvard",
-//     }),
-//   ).toBe(false);
-//
-//   expect(
-//     isUserProvidedEmbedDataValid({
-//       resource: "image",
-//       resourceId: "123",
-//       alt: "Alt",
-//     }),
-//   ).toBe(true);
-// });
-
-// not ported over yet
-
-// test("deserializing related-content works", () => {
-//   const deserialized = blockContentToEditorValue(
-//     '<div data-type="related-content"><ndlaembed data-url="http://www.vg.no" data-resource="related-content" data-title="Forsiden vg"></ndlaembed><ndlaembed data-resource="related-content" data-article-id="54"></ndlaembed></div>',
-//   );
-//
-//   expect(deserialized).toMatchSnapshot();
-// });
 
 test("parseElementAttributes removes styled attribute", () => {
   const attributes = [{ name: "style", value: "{display: flex;}" }];

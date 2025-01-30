@@ -6,9 +6,8 @@
  *
  */
 
-import { Element, Transforms, type Editor } from "slate";
+import { Element, Transforms, type BlockElementType, type Editor } from "slate";
 import { PARAGRAPH_ELEMENT_TYPE } from "../plugins/paragraph/paragraphTypes";
-import type { BlockElementType } from "../types";
 import { isElementOfType } from "../utils/isElementType";
 
 // TODO: This could be configurable

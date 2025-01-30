@@ -27,10 +27,6 @@ export interface CustomEditor {
   getPluginOptions: <T>(pluginName: string) => T | undefined;
 }
 
-export type BlockElement = ParagraphElement | HeadingElement;
-
-export type BlockElementType = BlockElement["type"];
-
 export type ElementType = Element["type"];
 
 export interface SlateEditor {
@@ -47,5 +43,7 @@ export interface SlateEditor {
 }
 
 declare module "slate" {
+  export type BlockElement = ParagraphElement | HeadingElement;
+  export type BlockElementType = BlockElement["type"];
   interface CustomTypes extends SlateEditor {}
 }

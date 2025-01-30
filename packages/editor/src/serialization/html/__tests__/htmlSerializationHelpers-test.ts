@@ -9,7 +9,6 @@
 // import { TYPE_NDLA_EMBED } from "../../components/SlateEditor/plugins/embed/types";
 // import { blockContentToEditorValue } from "../articleContentConverter";
 import {
-  // parseEmbedTag,
   // isUserProvidedEmbedDataValid,
   createDataAttributes,
   createHtmlTag,
@@ -18,53 +17,6 @@ import {
 } from "../htmlSerializationHelpers";
 
 // These are not ported yet
-
-// test("parseEmbedTag parses image embed tag to object", () => {
-//   const obj = parseEmbedTag(
-//     `<ndlaembed
-//       data-size="full"
-//       data-align=""
-//       data-resource="image"
-//       data-alt="Guinness sign"
-//       data-caption="Guinness is good for you" data-resource_id="42159"
-//       data-resource_id="0"
-//       data-url="https://api.ndla.no/image-api/v3/images/42159"></ndlaembed>`,
-//   );
-//   expect(obj).toMatchSnapshot();
-// });
-//
-// test("parseEmbedTag parses brightcove embed tag to object", () => {
-//   const obj = parseEmbedTag(
-//     `<ndlaembed
-//       data-account="4806596774001"
-//       data-caption="Intervju med Hallvard"
-//       data-player="BkLm8fT"
-//       data-resource="brightcove"
-//       data-videoid="ref:106952"
-//       data-id="0"></ndlaembed>`,
-//   );
-//   expect(obj).toMatchSnapshot();
-// });
-//
-// test("parseEmbedTag parses h5p embed tag to object", () => {
-//   const obj = parseEmbedTag(
-//     `<ndlaembed
-//       data-resource="h5p"
-//       data-url="https://h5p-test.ndla.no/resource/3ab6850d-cd30-4f11-aead-8be65f66f566/oembed"
-//       data-id="0"></ndlaembed>`,
-//   );
-//   expect(obj).toMatchSnapshot();
-// });
-//
-// test("parseEmbedTag parses related-content embed tag to object", () => {
-//   const obj = parseEmbedTag(
-//     `<ndlaembed
-//       data-article-id="363"
-//       data-resource="related-content"
-//      ></ndlaembed>`,
-//   );
-//   expect(obj).toMatchSnapshot();
-// });
 
 test("createDataAttributes handles resourceId correctly", () => {
   const data = createDataAttributes({

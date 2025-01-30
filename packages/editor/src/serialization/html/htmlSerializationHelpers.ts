@@ -36,24 +36,6 @@ export const parseElementAttributes = (
   }, {});
 };
 
-// export const parseEmbedTag = (embedTag?: string): Embed | undefined => {
-//   if (!embedTag) {
-//     return undefined;
-//   }
-//   const el = document.createElement("html");
-//   el.innerHTML = embedTag;
-//   const embedElements = el.getElementsByTagName(TYPE_NDLA_EMBED);
-//
-//   if (embedElements.length !== 1) {
-//     return undefined;
-//   }
-//
-//   const obj = parseElementAttributes(Array.from(embedElements[0].attributes));
-//   delete obj.id;
-//
-//   return obj as unknown as Embed;
-// };
-
 const attributeRegex = /[A-Z]/g;
 
 type EmbedProps<T extends object> = {

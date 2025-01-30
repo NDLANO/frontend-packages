@@ -94,7 +94,6 @@ export type { SectionElement, SectionElementType, SectionPluginOptions } from ".
 export { isSectionElement } from "./plugins/section/queries/sectionQueries";
 
 export { getCurrentBlock } from "./queries/getCurrentBlock";
-export { getEditorAncestors } from "./queries/getEditorAncestors";
 export { hasNodeOfType } from "./queries/hasNodeOfType";
 
 export {

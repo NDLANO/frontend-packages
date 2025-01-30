@@ -8,8 +8,7 @@
 
 import type { ShortcutHandler } from "../../../core";
 import { LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
-import { Node, Path, Point, Range, Transforms } from "slate";
-import { getEditorAncestors } from "../../../queries/getEditorAncestors";
+import { Element, Node, Path, Point, Range, Transforms, type NodeEntry } from "slate";
 import { defaultListItemBlock } from "../listBlocks";
 import { isParagraphElement } from "../../paragraph/queries/paragraphElementQueries";
 import { isListItemElement } from "../queries/listElementQueries";
@@ -17,7 +16,11 @@ import { isListItemElement } from "../queries/listElementQueries";
 export const listOnEnter: ShortcutHandler = (editor, event, logger) => {
   if (event.shiftKey || !editor.selection) return false;
 
-  const [firstEntry, secondEntry] = getEditorAncestors(editor, true);
+  const ancestors = Node.ancestors(editor, editor.path(editor.selection.anchor.path), { reverse: true });
+  const [firstEntry, secondEntry] = Array.from(ancestors).filter(
+    (entry): entry is NodeEntry<Element> => Element.isElement(entry[0]) && entry[0].type !== "section",
+  );
+
   const selectedDefinitionEntry = firstEntry[0]?.type === LIST_ITEM_ELEMENT_TYPE ? firstEntry : secondEntry;
 
   if (!selectedDefinitionEntry) {

@@ -6,7 +6,7 @@
  *
  */
 
-import { createEditor, type Editor } from "slate";
+import { createEditor, Element, type Editor } from "slate";
 import type { SlatePlugin } from "../core";
 import { LoggerManager } from "../editor/logger/Logger";
 import { withHistory } from "slate-history";
@@ -29,5 +29,8 @@ interface CreateSlate {
 
 export const createSlate = ({ plugins, logger = new LoggerManager({ debug: false }) }: CreateSlate): Editor => {
   const editor = withPlugins(withReact(withHistory(withLogger(createEditor(), logger))), plugins);
+
+  editor.hasVoids = (element) => element.children.some((n) => Element.isElement(n) && editor.isVoid(n));
+
   return editor;
 };

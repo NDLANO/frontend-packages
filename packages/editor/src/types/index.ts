@@ -7,8 +7,8 @@
  */
 
 import type { BaseEditor, Element } from "slate";
-import { HistoryEditor } from "slate-history";
-import { ReactEditor } from "slate-react";
+import type { HistoryEditor } from "slate-history";
+import type { ReactEditor } from "slate-react";
 import type { LinkElement } from "../plugins/link/linkTypes";
 import type { ParagraphElement } from "../plugins/paragraph/paragraphTypes";
 import type { CustomText } from "../plugins/mark/markTypes";
@@ -25,6 +25,7 @@ export interface CustomEditor {
   debug?: boolean;
   pluginOptions: Map<string, unknown>;
   getPluginOptions: <T>(pluginName: string) => T | undefined;
+  hasVoids: (element: Element) => boolean;
 }
 
 export type ElementType = Element["type"];

@@ -26,6 +26,15 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
     const logger = editor.logger.getLogger(name);
     // If `pluginOptions` do not exist, the `TOPtions` generic will be undefined. This is fine.
     const pluginOptions = mergeOptions(params.options, configuration?.options) as TOptions;
+
+    if (!editor.pluginOptions) {
+      editor.pluginOptions = new Map();
+    }
+    if (editor.pluginOptions.has(name)) {
+      logger.log(`Encountered a plugin with the same name (${name}). This may lead to unexpected behavior.`);
+    }
+    editor.pluginOptions.set(name, pluginOptions);
+
     const { isInline, isVoid } = editor;
     editor.isInline = (element) => {
       if (element.type === type) {
@@ -97,7 +106,7 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
   const plugin = new Proxy(pluginFn, {
     get(_, prop) {
       if (prop === "configure") {
-        return (configuration: PluginConfigurationWithConfiguration<TType, TOptions>) =>
+        return (configuration: PluginConfiguration<TType, TOptions>) =>
           createPlugin({ ...params, configuration } as PluginConfiguration<TType, TOptions>);
       }
       return undefined; // Only expose `.configure`

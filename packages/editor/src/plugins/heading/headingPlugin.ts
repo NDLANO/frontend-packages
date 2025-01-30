@@ -8,7 +8,7 @@
 
 import { Editor, Node, Path, Point, Range, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
-import { HEADING_ELEMENT_TYPE } from "./headingTypes";
+import { HEADING_ELEMENT_TYPE, HEADING_PLUGIN } from "./headingTypes";
 import { isHeadingElement } from "./queries/headingQueries";
 import { getCurrentBlock } from "../../queries/getCurrentBlock";
 import type { Logger } from "../../core";
@@ -24,7 +24,7 @@ const onDelete = (editor: Editor, logger: Logger) => {
 
 export const headingPlugin = createPlugin({
   type: HEADING_ELEMENT_TYPE,
-  name: HEADING_ELEMENT_TYPE,
+  name: HEADING_PLUGIN,
   normalize: (editor, node, path, logger) => {
     if (!isHeadingElement(node)) return false;
 

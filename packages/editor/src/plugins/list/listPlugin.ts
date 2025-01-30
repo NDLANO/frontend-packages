@@ -11,8 +11,9 @@ import { createPlugin } from "../../core/createPlugin";
 import {
   LIST_ELEMENT_TYPE,
   LIST_ITEM_ELEMENT_TYPE,
+  LIST_PLUGIN,
   type ListElementType,
-  type ListPluginConfiguration,
+  type ListPluginOptions,
 } from "./listTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { isKeyHotkey } from "is-hotkey";
@@ -23,14 +24,14 @@ import { isListElement, isListItemElement } from "./queries/listElementQueries";
 import { defaultListBlock } from "./listBlocks";
 import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 
-export const listPluginDefaultConfiguration: ListPluginConfiguration = {
+export const listPluginDefaultOptions: ListPluginOptions = {
   allowedListItemFirstChildTypes: [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const,
 };
 
-export const listPlugin = createPlugin<ListElementType, ListPluginConfiguration>({
-  name: LIST_ELEMENT_TYPE,
+export const listPlugin = createPlugin<ListElementType, ListPluginOptions>({
+  name: LIST_PLUGIN,
   type: LIST_ELEMENT_TYPE,
-  options: listPluginDefaultConfiguration,
+  options: listPluginDefaultOptions,
   shortcuts: {
     dentList: { keyCondition: isKeyHotkey("shift?+tab"), handler: listOnTab },
     listItemInsertion: { keyCondition: isKeyHotkey("enter"), handler: listOnEnter },

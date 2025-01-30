@@ -9,14 +9,19 @@
 import { Text, Transforms, Node } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { isSectionElement } from "./queries/sectionQueries";
-import { SECTION_ELEMENT_TYPE, type SectionElementType, type SectionPluginConfiguration } from "./sectionTypes";
+import {
+  SECTION_ELEMENT_TYPE,
+  SECTION_PLUGIN,
+  type SectionElementType,
+  type SectionPluginOptions,
+} from "./sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { isElementOfType } from "../../utils/isElementType";
 import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 
-export const sectionPlugin = createPlugin<SectionElementType, SectionPluginConfiguration>({
+export const sectionPlugin = createPlugin<SectionElementType, SectionPluginOptions>({
   type: SECTION_ELEMENT_TYPE,
-  name: SECTION_ELEMENT_TYPE,
+  name: SECTION_PLUGIN,
   options: {
     allowedFirstElements: [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const,
   },

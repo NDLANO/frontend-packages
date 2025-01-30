@@ -13,12 +13,9 @@ import type { ElementType } from "../types";
 
 type KeyConditionFn = (event: KeyboardEventLike) => boolean;
 
-export type ShortcutHandler<TOptions = undefined> = (
-  editor: Editor,
-  event: KeyboardEvent<HTMLDivElement>,
-  logger: Logger,
-  configuration: TOptions,
-) => boolean;
+export type ShortcutHandler<TOptions = undefined> = TOptions extends undefined
+  ? (editor: Editor, event: KeyboardEvent<HTMLDivElement>, logger: Logger) => boolean
+  : (editor: Editor, event: KeyboardEvent<HTMLDivElement>, logger: Logger, options?: TOptions) => boolean;
 
 export interface Logger {
   log: (...args: any[]) => void;
@@ -97,6 +94,7 @@ export type PluginReturnType<TType extends ElementType, TOptions = undefined> = 
       options?: MappedConfigurationOption<TOptions>;
     },
   ) => SlatePlugin;
+  options: TOptions;
 };
 
 export interface SlateSerializer<TOptions extends {} | undefined = undefined> {

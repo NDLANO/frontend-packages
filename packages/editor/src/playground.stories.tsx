@@ -35,6 +35,7 @@ import {
   UnOrderedList,
   type IconButtonProps,
 } from "@ndla/primitives";
+import { createSlate } from "./editor/createSlate";
 import { LoggerManager } from "./editor/logger/Logger";
 import { useEditorPopover } from "./hooks/useEditorPopover";
 import { breakPlugin } from "./plugins/break/breakPlugin";
@@ -53,7 +54,6 @@ import { marks } from "./plugins/mark/markTypes";
 import { toggleMark } from "./plugins/mark/toggleMark";
 import { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 import { sectionPlugin } from "./plugins/section/sectionPlugin";
-import { createSlate } from "./editor/createSlate";
 
 export default {
   title: "Editor/Playground",

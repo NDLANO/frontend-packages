@@ -8,13 +8,13 @@
 
 import { Point, Range, Transforms } from "slate";
 import type { ShortcutHandler } from "../../../core";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, type ListPluginConfiguration } from "../listTypes";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
 import { hasNodeOfType } from "../../../queries/hasNodeOfType";
 import { getCurrentBlock } from "../../../queries/getCurrentBlock";
 
 // This function only has one purpose: to remove a list item when the user presses backspace at the start of a list item.
 // Can probably be simplified further.
-export const listOnBackspace: ShortcutHandler<ListPluginConfiguration> = (editor, event, logger) => {
+export const listOnBackspace: ShortcutHandler = (editor, event, logger) => {
   if (!editor.selection || !Range.isCollapsed(editor.selection) || !hasNodeOfType(editor, LIST_ELEMENT_TYPE))
     return false;
 

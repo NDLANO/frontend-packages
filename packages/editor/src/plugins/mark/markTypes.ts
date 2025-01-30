@@ -6,6 +6,8 @@
  *
  */
 
+export const MARK_PLUGIN = "mark" as const;
+
 export const marks = {
   strong: "bold",
   code: "code",

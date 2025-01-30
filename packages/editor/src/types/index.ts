@@ -23,6 +23,8 @@ export interface CustomEditor {
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
   logger: LoggerManager;
   debug?: boolean;
+  pluginOptions: Map<string, unknown>;
+  getPluginOptions: <T>(pluginName: string) => T | undefined;
 }
 
 export type BlockElement = ParagraphElement | HeadingElement;

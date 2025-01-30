@@ -9,6 +9,7 @@
 import type { Descendant } from "slate";
 
 export const HEADING_ELEMENT_TYPE = "heading" as const;
+export const HEADING_PLUGIN = "heading" as const;
 export type HeadingElementType = typeof HEADING_ELEMENT_TYPE;
 
 export interface HeadingElement {

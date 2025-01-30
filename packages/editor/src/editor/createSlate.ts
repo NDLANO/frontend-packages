@@ -15,8 +15,10 @@ import { withLogger } from "../editor/logger/withLogger";
 
 export const withPlugins = (editor: Editor, plugins?: SlatePlugin[]) => {
   if (plugins) {
+    editor.getPluginOptions = <T>(pluginName: string) => editor.pluginOptions.get(pluginName) as T | undefined;
     return plugins.reduce((editor, plugin) => plugin(editor), editor);
   }
+
   return editor;
 };
 

@@ -10,6 +10,8 @@ import type { Descendant } from "slate";
 import type { ElementType } from "../../types";
 
 export const BREAK_ELEMENT_TYPE = "br" as const;
+export const BREAK_PLUGIN = "break" as const;
+export const SOFT_BREAK_PLUGIN = "soft-break" as const;
 
 export type BreakElementType = typeof BREAK_ELEMENT_TYPE;
 

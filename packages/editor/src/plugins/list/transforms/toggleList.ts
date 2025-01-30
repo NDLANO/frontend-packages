@@ -7,7 +7,7 @@
  */
 
 import { Editor, Path, Range, Transforms } from "slate";
-import { type ListPluginConfiguration, type ListType } from "../listTypes";
+import { LIST_PLUGIN, type ListPluginOptions, type ListType } from "../listTypes";
 import { isElementOfType } from "../../../utils/isElementType";
 import { defaultListBlock, defaultListItemBlock } from "../listBlocks";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
@@ -50,8 +50,9 @@ const isSelectionOnlyOfType = (editor: Editor, type: ListType) => {
   return hasListItems;
 };
 
-export const toggleList = (editor: Editor, listType: ListType, options: ListPluginConfiguration) => {
+export const toggleList = (editor: Editor, listType: ListType, options?: ListPluginOptions) => {
   if (!Range.isRange(editor.selection)) return;
+  const pluginOptions = options ?? editor.getPluginOptions<ListPluginOptions>(LIST_PLUGIN);
 
   // If all selected list items are of type input by user, unwrap all of them by lifting them out.
   if (isSelectionOnlyOfType(editor, listType)) {
@@ -87,7 +88,7 @@ export const toggleList = (editor: Editor, listType: ListType, options: ListPlug
     // Wrap all regular text blocks. (paragraph, quote, blockquote)
     const nodes = Array.from(
       editor.nodes({
-        match: (n) => isElementOfType(n, options.allowedListItemFirstChildTypes),
+        match: (n) => isElementOfType(n, pluginOptions?.allowedListItemFirstChildTypes),
         at: editor.unhangRange(editor.selection),
       }),
     );

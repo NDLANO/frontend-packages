@@ -10,6 +10,7 @@ import type { Descendant } from "slate";
 import type { ElementType } from "../../types";
 
 export const PARAGRAPH_ELEMENT_TYPE = "paragraph" as const;
+export const PARAGRAPH_PLUGIN = "paragraph" as const;
 
 export type ParagraphElementType = typeof PARAGRAPH_ELEMENT_TYPE;
 
@@ -22,6 +23,6 @@ export interface ParagraphElement {
   children: Descendant[];
 }
 
-export interface ParagraphPluginConfiguration {
+export interface ParagraphPluginOptions {
   nonSerializableParents?: ElementType[];
 }

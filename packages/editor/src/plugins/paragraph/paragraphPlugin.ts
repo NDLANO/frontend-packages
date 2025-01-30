@@ -8,13 +8,18 @@
 
 import { Element, Node, Path, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
-import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElementType, type ParagraphPluginConfiguration } from "./paragraphTypes";
+import {
+  PARAGRAPH_ELEMENT_TYPE,
+  PARAGRAPH_PLUGIN,
+  type ParagraphElementType,
+  type ParagraphPluginOptions,
+} from "./paragraphTypes";
 import { isParagraphElement } from "./queries/paragraphElementQueries";
 import { LIST_ITEM_ELEMENT_TYPE } from "../list/listTypes";
 
-export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPluginConfiguration>({
+export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPluginOptions>({
   type: PARAGRAPH_ELEMENT_TYPE,
-  name: PARAGRAPH_ELEMENT_TYPE,
+  name: PARAGRAPH_PLUGIN,
   options: {
     nonSerializableParents: [LIST_ITEM_ELEMENT_TYPE],
   },

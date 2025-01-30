@@ -7,14 +7,14 @@
  */
 
 import type { ShortcutHandler } from "../../../core";
-import { LIST_ITEM_ELEMENT_TYPE, type ListPluginConfiguration } from "../listTypes";
+import { LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
 import { Node, Path, Point, Range, Transforms } from "slate";
 import { getEditorAncestors } from "../../../queries/getEditorAncestors";
 import { defaultListItemBlock } from "../listBlocks";
 import { isParagraphElement } from "../../paragraph/queries/paragraphElementQueries";
 import { isListItemElement } from "../queries/listElementQueries";
 
-export const listOnEnter: ShortcutHandler<ListPluginConfiguration> = (editor, event, logger) => {
+export const listOnEnter: ShortcutHandler = (editor, event, logger) => {
   if (event.shiftKey || !editor.selection) return false;
 
   const [firstEntry, secondEntry] = getEditorAncestors(editor, true);

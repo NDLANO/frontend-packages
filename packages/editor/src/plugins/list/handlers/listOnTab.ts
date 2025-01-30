@@ -10,24 +10,29 @@ import { Transforms, Path, Range } from "slate";
 
 import type { ShortcutHandler } from "../../../core";
 import { hasNodeOfType } from "../../../queries/hasNodeOfType";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, type ListPluginConfiguration } from "../listTypes";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, LIST_PLUGIN, type ListPluginOptions } from "../listTypes";
 import { getCurrentBlock } from "../../../queries/getCurrentBlock";
 import { isElementOfType } from "../../../utils/isElementType";
 import { defaultListBlock } from "../listBlocks";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
 
-export const listOnTab: ShortcutHandler<ListPluginConfiguration> = (editor, event, logger, options) => {
+export const listOnTab: ShortcutHandler<ListPluginOptions> = (editor, event, logger, options) => {
   if (!editor.selection || !hasNodeOfType(editor, LIST_ELEMENT_TYPE)) return false;
 
   const listEntry = getCurrentBlock(editor, LIST_ELEMENT_TYPE);
   const listItemEntry = getCurrentBlock(editor, LIST_ITEM_ELEMENT_TYPE);
+
+  const listOptions = options ?? editor.getPluginOptions<ListPluginOptions>(LIST_PLUGIN);
+  if (!listOptions) {
+    logger.log("Tried to retrieve options, but did not find any");
+  }
 
   if (!listEntry || !listItemEntry) return false;
 
   const [currentListNode, currentListPath] = listEntry;
   const [currentItemNode, currentItemPath] = listItemEntry;
   const [[currentTextBlockNode, currentTextBlockPath]] = editor.nodes({
-    match: (n) => isElementOfType(n, options.allowedListItemFirstChildTypes),
+    match: (n) => isElementOfType(n, listOptions?.allowedListItemFirstChildTypes),
     mode: "lowest",
   });
 

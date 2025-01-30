@@ -8,12 +8,12 @@
 
 import { Node, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
-import { LINK_ELEMENT_TYPE } from "./linkTypes";
+import { LINK_ELEMENT_TYPE, LINK_PLUGIN } from "./linkTypes";
 import { isLinkElement } from "./queries/linkQueries";
 
 export const linkPlugin = createPlugin({
   type: LINK_ELEMENT_TYPE,
-  name: LINK_ELEMENT_TYPE,
+  name: LINK_PLUGIN,
   isInline: true,
   isVoid: false,
   normalize: (editor, node, path, logger) => {

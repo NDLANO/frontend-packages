@@ -11,6 +11,7 @@ import type { ElementType } from "../../types";
 
 export const LIST_ELEMENT_TYPE = "list" as const;
 export const LIST_ITEM_ELEMENT_TYPE = "list-item" as const;
+export const LIST_PLUGIN = "list" as const;
 
 export type ListElementType = "list";
 export type ListItemElementType = "list-item";
@@ -34,7 +35,7 @@ export interface ListItemElement {
   children: Descendant[];
 }
 
-export interface ListPluginConfiguration {
+export interface ListPluginOptions {
   allowedListItemFirstChildTypes?: ElementType[];
 }
 

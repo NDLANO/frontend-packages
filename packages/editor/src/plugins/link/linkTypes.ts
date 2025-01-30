@@ -9,6 +9,7 @@
 import type { Descendant } from "slate";
 
 export const LINK_ELEMENT_TYPE = "link" as const;
+export const LINK_PLUGIN = "link" as const;
 export type LinkElementType = typeof LINK_ELEMENT_TYPE;
 
 export type LinkEmbedData = {

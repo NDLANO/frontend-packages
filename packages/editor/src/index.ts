@@ -60,7 +60,7 @@ export type {
   ListType,
   ListElement,
   ListItemElement,
-  ListPluginConfiguration,
+  ListPluginOptions,
   ListSerializerOptions,
 } from "./plugins/list/listTypes";
 export { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, LIST_TYPES } from "./plugins/list/listTypes";
@@ -84,13 +84,13 @@ export { PARAGRAPH_ELEMENT_TYPE } from "./plugins/paragraph/paragraphTypes";
 export type {
   ParagraphElement,
   ParagraphElementType,
-  ParagraphPluginConfiguration,
+  ParagraphPluginOptions,
 } from "./plugins/paragraph/paragraphTypes";
 
 export { sectionPlugin } from "./plugins/section/sectionPlugin";
 export { sectionSerializer } from "./plugins/section/sectionSerializer";
 export { SECTION_ELEMENT_TYPE } from "./plugins/section/sectionTypes";
-export type { SectionElement, SectionElementType, SectionPluginConfiguration } from "./plugins/section/sectionTypes";
+export type { SectionElement, SectionElementType, SectionPluginOptions } from "./plugins/section/sectionTypes";
 export { isSectionElement } from "./plugins/section/queries/sectionQueries";
 
 export { getCurrentBlock } from "./queries/getCurrentBlock";

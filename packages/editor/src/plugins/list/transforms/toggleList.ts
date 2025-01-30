@@ -63,12 +63,6 @@ export const toggleList = (editor: Editor, listType: ListType, options?: ListPlu
     });
     // Selected list items are of mixed type.
   } else if (hasListItem(editor)) {
-    // Transforms.setNodes(editor, { listType }, { match: isListElement });
-    // editor.withoutNormalizing(() => {
-    //   // const listNodes = editor.nodes({
-    //   //   match: isListElement,
-    //   // });
-    // });
     // Mark list items for change. The actual change happens in list normalizer.
     // TODO: I want to rewrite this to not use `changeTo`
     Transforms.setNodes(

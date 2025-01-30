@@ -6,11 +6,24 @@
  *
  */
 
-import { Node, Range, Transforms } from "slate";
+import { type Editor, Node, Range, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { BREAK_ELEMENT_TYPE, BREAK_PLUGIN, type BreakElementType, type BreakPluginOptions } from "./breakTypes";
 import { getCurrentBlock } from "../../queries/getCurrentBlock";
+
+const containsVoid = (editor: Editor, node: Node) => {
+  const nodes = Node.elements(node);
+
+  for (const entry of nodes) {
+    const [child] = entry;
+    if (!child) break;
+    if (editor.isVoid(child)) {
+      return true;
+    }
+  }
+  return false;
+};
 
 export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
   type: BREAK_ELEMENT_TYPE,
@@ -24,10 +37,9 @@ export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
 
     editor.insertBreak = () => {
       if (!editor.selection || !Range.isRange(editor.selection)) return false;
-      // TODO: Should we consider void nodes here? We used to do that in the old implementation
       const entry = getCurrentBlock(editor, options.validBreakElements ?? PARAGRAPH_ELEMENT_TYPE);
 
-      if (entry && Node.string(entry[0]) === "") {
+      if (entry && Node.string(entry[0]) === "" && !containsVoid(editor, entry[0])) {
         logger.log("Tried to insert new paragraph, but current paragraph is empty, inserting break instead");
         Transforms.insertNodes(editor, [
           { type: BREAK_ELEMENT_TYPE, children: [] },

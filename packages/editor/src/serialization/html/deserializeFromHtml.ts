@@ -13,7 +13,7 @@ import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/paragraph/paragraphTypes";
 import { commonSerializers, extendedSerializers } from "./htmlSerializers";
 import type { SlateSerializer } from "../../core";
-import { isElementOfType } from "../../../es/utils/isElementType";
+import { isElementOfType } from "../../utils/isElementType";
 
 // TODO: This entire file should be refactored and reconsidered. Our current deserialization is too complex.
 
@@ -139,15 +139,13 @@ const addEmptyParagraphs = (node: Element, blocks: ElementType[]) => {
 
 const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: ElementType[]): Descendant => {
   if (!Element.isElement(node)) return node;
-
   const children = node.children;
-  const blockAmount = children.filter((c) => Element.isElement(c) && !inlines.includes(c.type)).length;
-  if (!!blockAmount && blockAmount !== children.length) {
-    // Process children recursively if no mixed content is found
-    node.children = children.map((child) => wrapMixedChildren(child, blocks, inlines));
 
-    // Call helpers depending on the presence of block children
-    if (!blockAmount && children.length > 0) {
+  const blockChildren = children.filter((child) => Element.isElement(child) && !inlines.includes(child.type));
+  const mixed = !!blockChildren.length && blockChildren.length !== children.length;
+  if (!mixed) {
+    node.children = children.map((child) => wrapMixedChildren(child, blocks, inlines));
+    if (!blockChildren.length && !!children.length) {
       addEmptyTextNodes(node);
     } else {
       addEmptyParagraphs(node, blocks);
@@ -158,11 +156,11 @@ const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: Ele
   // Handle mixed inline-block content
   const cleanNodes: Descendant[] = [];
   let openWrapperBlock: ParagraphElement | null = null;
-
   for (const child of children) {
-    if (Text.isText(child) || isElementOfType(child, inlines)) {
-      if (!Node.string(child).trim().length) continue;
-
+    if (Text.isText(child) || (Element.isElement(child) && inlines.includes(child.type))) {
+      if (!Node.string(child).trim().length) {
+        continue;
+      }
       if (!openWrapperBlock) {
         openWrapperBlock = slatejsx("element", { type: "paragraph" }, []) as ParagraphElement;
         cleanNodes.push(openWrapperBlock);

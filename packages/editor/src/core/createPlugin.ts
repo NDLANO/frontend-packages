@@ -24,7 +24,7 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
     const isVoidParam = configuration?.isVoid ?? params.isVoid;
     const type = configuration?.type ?? params.type;
     const logger = editor.logger.getLogger(name);
-    // If `pluginOptions` do not exist, the `TOPtions` generic will be undefined. This is fine.
+    // If `pluginOptions` does not exist, the `TOptions` generic will be undefined. This is fine.
     const pluginOptions = mergeOptions(params.options, configuration?.options) as TOptions;
 
     if (!editor.pluginOptions) {

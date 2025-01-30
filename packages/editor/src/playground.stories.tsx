@@ -53,7 +53,7 @@ import { marks } from "./plugins/mark/markTypes";
 import { toggleMark } from "./plugins/mark/toggleMark";
 import { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 import { sectionPlugin } from "./plugins/section/sectionPlugin";
-import { createSlate } from "./utils/createSlate";
+import { createSlate } from "./editor/createSlate";
 
 export default {
   title: "Editor/Playground",

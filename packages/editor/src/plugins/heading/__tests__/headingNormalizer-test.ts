@@ -14,7 +14,7 @@ import { sectionPlugin } from "../../section/sectionPlugin";
 import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
 import { headingPlugin } from "../headingPlugin";
 import { markPlugin } from "../../mark/markPlugin";
-import { createSlate } from "../../../utils/createSlate";
+import { createSlate } from "../../../editor/createSlate";
 import { softBreakPlugin } from "../../break/softBreakPlugin";
 
 const editor = createSlate({ plugins: [sectionPlugin, paragraphPlugin, headingPlugin, markPlugin, softBreakPlugin] });

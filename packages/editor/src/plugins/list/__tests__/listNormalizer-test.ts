@@ -7,7 +7,7 @@
  */
 
 import type { Descendant } from "slate";
-import { createSlate } from "../../../utils/createSlate";
+import { createSlate } from "../../../editor/createSlate";
 import { sectionPlugin } from "../../section/sectionPlugin";
 import { listPlugin } from "../listPlugin";
 import { paragraphPlugin } from "../../paragraph/paragraphPlugin";

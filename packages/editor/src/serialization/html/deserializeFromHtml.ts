@@ -94,62 +94,71 @@ export const deserializeFromHtml = (
 };
 
 const addEmptyTextNodes = (node: Element) => {
-  const { children } = node;
+  const children = node.children;
+  let lastWasText = false;
 
-  node.children = children.reduce<Descendant[]>((acc, cur, index) => {
-    if (!Text.isText(cur) && (!index || !Text.isText(acc[acc.length - 1]))) {
-      acc.push({ text: "" });
+  // Iterating in reverse ensures that we add empty text nodes only when necessary
+  for (let i = 0; i < children.length; i++) {
+    const child = children[i];
+    const currentIsText = Text.isText(child);
+
+    if (!currentIsText && !lastWasText) {
+      children.splice(i, 0, { text: "" });
+      i++; // Skip next iteration since we inserted a new child
     }
-    acc.push(cur);
-    return acc;
-  }, []);
-  if (!Text.isText(node.children[node.children.length - 1])) {
-    node.children.push({ text: "" });
+    lastWasText = currentIsText;
+  }
+
+  // Ensure the last child is a text node
+  if (!Text.isText(children[children.length - 1])) {
+    children.push({ text: "" });
   }
 };
 
 const addEmptyParagraphs = (node: Element, blocks: ElementType[]) => {
-  const { children } = node;
+  const children = node.children;
+  let lastBlock = false;
 
-  node.children = children.reduce((acc, cur, index) => {
-    if (isElementOfType(cur, blocks) && (!index || isElementOfType(acc[acc.length - 1], blocks))) {
-      // this used to be defaultParagraphBlock
-      acc.push({ type: "paragraph", children: [{ text: "" }] });
+  for (let i = 0; i < children.length; i++) {
+    const child = children[i];
+    const currentIsBlock = isElementOfType(child, blocks);
+
+    if (currentIsBlock && !lastBlock) {
+      children.splice(i, 0, { type: "paragraph", children: [{ text: "" }] });
+      i++; // Skip next iteration since we inserted a new paragraph
     }
-    acc.push(cur);
-    return acc;
-  }, [] as Descendant[]);
 
-  if (isElementOfType(node.children[node.children.length - 1], blocks)) {
-    // this used to be defaultParagraphBlock
-    node.children.push({ type: "paragraph", children: [{ text: "" }] });
+    lastBlock = currentIsBlock;
+  }
+
+  // Ensure the last child is a paragraph if needed
+  if (isElementOfType(children[children.length - 1], blocks)) {
+    children.push({ type: "paragraph", children: [{ text: "" }] });
   }
 };
 
-/**
- * Slate does not allow a block to contain both blocks and inline nodes, so this code checks if the original
- * html violates this constraint and wraps consecutive inline nodes in a paragraph.
- *
- * Code heavily 'inspired' from: https://github.com/Foundry376/Mailspring/blob/master/app/src/components/composer-editor/conversion.jsx#L172
- *
- */
 const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: ElementType[]): Descendant => {
   if (!Element.isElement(node)) return node;
-  const children = node.children;
 
-  const blockChildren = children.filter((child) => Element.isElement(child) && !inlines.includes(child.type));
-  const mixed = !!blockChildren.length && blockChildren.length !== children.length;
-  if (!mixed) {
+  const children = node.children;
+  const blockAmount = children.filter((c) => Element.isElement(c) && !inlines.includes(c.type)).length;
+  if (!!blockAmount && blockAmount !== children.length) {
+    // Process children recursively if no mixed content is found
     node.children = children.map((child) => wrapMixedChildren(child, blocks, inlines));
-    if (!blockChildren.length && !!children.length) {
+
+    // Call helpers depending on the presence of block children
+    if (!blockAmount && children.length > 0) {
       addEmptyTextNodes(node);
     } else {
       addEmptyParagraphs(node, blocks);
     }
     return node;
   }
-  const cleanNodes = [];
-  let openWrapperBlock;
+
+  // Handle mixed inline-block content
+  const cleanNodes: Descendant[] = [];
+  let openWrapperBlock: ParagraphElement | null = null;
+
   for (const child of children) {
     if (Text.isText(child) || isElementOfType(child, inlines)) {
       if (!Node.string(child).trim().length) continue;
@@ -165,8 +174,10 @@ const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: Ele
       cleanNodes.push(child);
     }
   }
+
   addEmptyParagraphs(node, blocks);
 
+  // Process the cleaned-up nodes recursively
   node.children = cleanNodes.map((child) => wrapMixedChildren(child, blocks, inlines));
   return node;
 };

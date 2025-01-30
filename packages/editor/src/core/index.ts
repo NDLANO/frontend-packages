@@ -20,12 +20,6 @@ export type ShortcutHandler<TOptions = undefined> = (
   configuration: TOptions,
 ) => boolean;
 
-export type SlateExtensionFn<TOptions = undefined> = (
-  editor: Editor,
-  logger: Logger,
-  configuration: TOptions,
-) => Editor;
-
 export interface Logger {
   log: (...args: any[]) => void;
 }
@@ -96,10 +90,6 @@ export interface PluginConfigurationWithConfiguration<TType extends ElementType,
 }
 
 export type SlatePlugin = (editor: Editor) => Editor;
-
-export type SlatePluginFn = <TType extends ElementType, TOptions = undefined>(
-  props: PluginConfiguration<TType, TOptions>,
-) => PluginReturnType<TType, TOptions>;
 
 export type PluginReturnType<TType extends ElementType, TOptions = undefined> = SlatePlugin & {
   configure: (

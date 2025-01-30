@@ -15,7 +15,6 @@ export const linkPlugin = createPlugin({
   type: LINK_ELEMENT_TYPE,
   name: LINK_PLUGIN,
   isInline: true,
-  isVoid: false,
   normalize: (editor, node, path, logger) => {
     if (!isLinkElement(node)) return false;
     if (Node.string(node) === "") {

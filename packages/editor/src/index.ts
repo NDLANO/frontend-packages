@@ -17,10 +17,15 @@ export type {
   MappedConfigurationOption,
   SlatePlugin,
   SlateSerializer,
+  SlateRenderer,
+  ElementRenderer,
+  LeafRenderer,
+  CreateSlateElementRenderer,
+  CreateSlateLeafRenderer,
 } from "./core";
 export { mergeOptions } from "./core/mergeOptions";
 
-export { createSlate, withPlugins } from "./editor/createSlate";
+export { createSlate, withPlugins, withRenderers } from "./editor/createSlate";
 export { withLogger } from "./editor/logger/withLogger";
 export { LoggerManager, type LoggerOptions, loggerManager } from "./editor/logger/Logger";
 
@@ -66,7 +71,7 @@ export type {
 export { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, LIST_TYPES, LIST_PLUGIN } from "./plugins/list/listTypes";
 export { isListElement, isListItemElement } from "./plugins/list/queries/listElementQueries";
 export { toggleList } from "./plugins/list/transforms/toggleList";
-export { useListToolbarButton } from "./plugins/list/hooks/useListToolbarButton";
+export { useListToolbarButton, useListToolbarButtonState } from "./plugins/list/hooks/useListToolbarButton";
 export { listOnBackspace } from "./plugins/list/handlers/listOnBackspace";
 export { listOnEnter } from "./plugins/list/handlers/listOnEnter";
 export { listOnTab } from "./plugins/list/handlers/listOnTab";
@@ -76,7 +81,7 @@ export { markSerializer } from "./plugins/mark/markSerializer";
 export type { CustomText, MarkType } from "./plugins/mark/markTypes";
 export { marks, MARK_PLUGIN } from "./plugins/mark/markTypes";
 export { toggleMark } from "./plugins/mark/toggleMark";
-export { useMarkToolbarButton } from "./plugins/mark/hooks/useMarkToolbarButton";
+export { useMarkToolbarButton, useMarkToolbarButtonState } from "./plugins/mark/hooks/useMarkToolbarButton";
 
 export { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 export { paragraphSerializer } from "./plugins/paragraph/paragraphSerializer";

@@ -6,13 +6,13 @@
  *
  */
 
+import type { KeyboardEventHandler, JSX } from "react";
 import type { BaseEditor, Element } from "slate";
 import type { HistoryEditor } from "slate-history";
-import type { ReactEditor } from "slate-react";
+import type { ReactEditor, RenderElementProps, RenderLeafProps } from "slate-react";
 import type { LinkElement } from "../plugins/link/linkTypes";
 import type { ParagraphElement } from "../plugins/paragraph/paragraphTypes";
 import type { CustomText } from "../plugins/mark/markTypes";
-import type { KeyboardEventHandler } from "react";
 import type { BreakElement } from "../plugins/break/breakTypes";
 import type { ListElement, ListItemElement } from "../plugins/list/listTypes";
 import type { SectionElement } from "../plugins/section/sectionTypes";
@@ -26,6 +26,8 @@ export interface CustomEditor {
   pluginOptions: Map<string, unknown>;
   getPluginOptions: <T>(pluginName: string) => T | undefined;
   hasVoids: (element: Element) => boolean;
+  renderElement?: (props: RenderElementProps) => JSX.Element | undefined;
+  renderLeaf?: (props: RenderLeafProps) => JSX.Element | undefined;
 }
 
 export type ElementType = Element["type"];

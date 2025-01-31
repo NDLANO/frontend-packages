@@ -7,7 +7,7 @@
  */
 
 import { Transforms, type Editor } from "slate";
-import type { HeadingElement } from "../headingTypes";
+import { HEADING_ELEMENT_TYPE, type HeadingElement } from "../headingTypes";
 import { isHeadingElement } from "../queries/headingQueries";
 
 export const toggleHeading = (editor: Editor, level: HeadingElement["level"]) => {
@@ -20,7 +20,7 @@ export const toggleHeading = (editor: Editor, level: HeadingElement["level"]) =>
     // TODO: This should be configurable
     Transforms.setNodes(editor, { type: "paragraph" }, { at: editor.selection });
   } else {
-    Transforms.setNodes(editor, { type: "heading", level }, { at: editor.selection });
+    Transforms.setNodes(editor, { type: HEADING_ELEMENT_TYPE, level }, { at: editor.selection });
   }
   return true;
 };

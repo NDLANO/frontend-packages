@@ -8,8 +8,9 @@
 
 import type { Descendant, Editor, Node, Path } from "slate";
 import type { KeyboardEventLike } from "is-hotkey";
-import type { KeyboardEvent } from "react";
+import type { KeyboardEvent, JSX } from "react";
 import type { ElementType } from "../types";
+import type { RenderElementProps, RenderLeafProps } from "slate-react";
 
 type KeyConditionFn = (event: KeyboardEventLike) => boolean;
 
@@ -107,3 +108,11 @@ export interface ConfigurableSlateSerializer<TOptions extends {} | undefined = u
   extends SlateSerializer<TOptions> {
   configure: (options: MappedConfigurationOption<TOptions>) => ConfigurableSlateSerializer<TOptions>;
 }
+
+export type SlateRenderer = (editor: Editor) => Editor;
+
+export type ElementRenderer = (props: RenderElementProps) => JSX.Element | undefined;
+export type LeafRenderer = (props: RenderLeafProps) => JSX.Element | undefined;
+
+export type CreateSlateElementRenderer = (fn: ElementRenderer) => (editor: Editor) => Editor;
+export type CreateSlateLeafRenderer = (fn: LeafRenderer) => (editor: Editor) => Editor;

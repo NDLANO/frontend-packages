@@ -7,11 +7,12 @@
  */
 
 import { createEditor, Element, type Editor } from "slate";
-import type { SlatePlugin } from "../core";
+import type { ElementRenderer, LeafRenderer, SlatePlugin, SlateRenderer } from "../core";
 import { LoggerManager } from "../editor/logger/Logger";
 import { withHistory } from "slate-history";
 import { withReact } from "slate-react";
 import { withLogger } from "../editor/logger/withLogger";
+import { createElementRenderer, createLeafRenderer } from "../core/createRenderer";
 
 export const withPlugins = (editor: Editor, plugins?: SlatePlugin[]) => {
   if (plugins) {
@@ -22,13 +23,34 @@ export const withPlugins = (editor: Editor, plugins?: SlatePlugin[]) => {
   return editor;
 };
 
+export const withRenderers = (editor: Editor, renderers?: SlateRenderer[]) => {
+  if (renderers) {
+    return renderers.reduce((editor, renderer) => renderer(editor), editor);
+  }
+
+  return editor;
+};
+
 interface CreateSlate {
   plugins?: SlatePlugin[];
   logger?: LoggerManager;
+  elementRenderers?: ElementRenderer[];
+  leafRenderers?: LeafRenderer[];
 }
 
-export const createSlate = ({ plugins, logger = new LoggerManager({ debug: false }) }: CreateSlate): Editor => {
-  const editor = withPlugins(withReact(withHistory(withLogger(createEditor(), logger))), plugins);
+export const createSlate = ({
+  plugins,
+  elementRenderers,
+  leafRenderers,
+  logger = new LoggerManager({ debug: false }),
+}: CreateSlate): Editor => {
+  const editor = withRenderers(
+    withRenderers(
+      withPlugins(withReact(withHistory(withLogger(createEditor(), logger))), plugins),
+      elementRenderers?.map(createElementRenderer),
+    ),
+    leafRenderers?.map(createLeafRenderer),
+  );
 
   editor.hasVoids = (element) => element.children.some((n) => Element.isElement(n) && editor.isVoid(n));
 

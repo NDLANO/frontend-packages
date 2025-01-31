@@ -85,8 +85,8 @@ const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
       <EmbedErrorPlaceholder type="video">
         <BrightcoveIframe
           ref={iframeRef}
-          title={embedData.alt ?? fallbackTitle}
-          aria-label={embedData.alt ?? fallbackTitle}
+          title={embedData.alt || fallbackTitle}
+          aria-label={embedData.alt || fallbackTitle}
           {...getIframeProps(embedData, [])}
           allow="fullscreen; encrypted-media"
         />
@@ -110,8 +110,8 @@ const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
         <BrightcoveIframe
           ref={iframeRef}
           className="original"
-          title={embedData.alt ?? data.name ?? fallbackTitle}
-          aria-label={embedData.alt ?? data.name ?? fallbackTitle}
+          title={embedData.alt || data.name || fallbackTitle}
+          aria-label={embedData.alt || data.name || fallbackTitle}
           {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
           allow="fullscreen; encrypted-media"
         />

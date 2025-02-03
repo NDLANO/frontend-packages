@@ -12,9 +12,7 @@ import { mergeOptions } from "./mergeOptions";
 export const createSerializer = <TOptions extends {} | undefined = undefined>(
   params: SlateSerializer<TOptions>,
 ): ConfigurableSlateSerializer<TOptions> => {
-  const obj = params;
-
-  const serializer = new Proxy(obj, {
+  const serializer = new Proxy(params, {
     get(target, prop, receiver) {
       if (prop === "configure") {
         return (options: MappedConfigurationOption<TOptions>) => {

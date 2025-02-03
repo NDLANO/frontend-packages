@@ -48,7 +48,7 @@ export const sectionPlugin = createPlugin<SectionElementType, SectionPluginOptio
     const textNodes = Array.from(node.children.entries()).filter((entry) => Text.isText(entry[1]));
     if (textNodes.length) {
       logger.log("Section contains text node, wrapping them in paragraphs");
-      // this is somewhat ineffective, but I couldn't figure out a better way of doing it.
+      // TODO: this is somewhat ineffective, but I couldn't figure out a better way of doing it.
       // Also: This normalization check runs before the others because the others will insert redundant empty paragraphs.
       Transforms.wrapNodes(editor, { type: "paragraph", children: [] }, { at: path, match: (n) => Text.isText(n) });
       return true;

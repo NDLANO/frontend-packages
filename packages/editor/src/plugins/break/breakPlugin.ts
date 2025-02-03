@@ -26,7 +26,7 @@ export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
       if (!editor.selection || !Range.isRange(editor.selection)) return false;
       const entry = getCurrentBlock(editor, options.validBreakElements ?? PARAGRAPH_ELEMENT_TYPE);
 
-      if (entry && Node.string(entry[0]) === "" && editor.hasVoids(entry[0])) {
+      if (entry && Node.string(entry[0]) === "" && !editor.hasVoids(entry[0])) {
         logger.log("Tried to insert new paragraph, but current paragraph is empty, inserting break instead");
         Transforms.insertNodes(editor, [
           { type: BREAK_ELEMENT_TYPE, children: [] },

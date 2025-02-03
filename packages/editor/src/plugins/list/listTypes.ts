@@ -31,7 +31,7 @@ export interface ListElement {
 
 export interface ListItemElement {
   type: "list-item";
-  changeTo?: string;
+  changeTo?: ListType;
   children: Descendant[];
 }
 

@@ -7,9 +7,9 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "./listTypes";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, type ListType } from "./listTypes";
 
-export const defaultListBlock = (listType: string) => {
+export const defaultListBlock = (listType: ListType) => {
   return slatejsx("element", { type: LIST_ELEMENT_TYPE, listType, data: {} });
 };
 

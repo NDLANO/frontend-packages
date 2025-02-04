@@ -6,10 +6,10 @@
  *
  */
 
+import { toggleMark } from "@ndla/editor";
 import type { MouseEvent } from "react";
 import type { EditorMarks } from "slate";
 import { useSlate } from "slate-react";
-import { toggleMark } from "../toggleMark";
 
 interface MarkToolbarButtonStateOptions {
   type: keyof EditorMarks;

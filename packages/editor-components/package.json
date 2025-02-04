@@ -1,7 +1,7 @@
 {
-  "name": "@ndla/editor",
+  "name": "@ndla/editor-components",
   "version": "0.0.1",
-  "description": "Slate editor plugins for NDLA",
+  "description": "Slate editor components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -15,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",
-    "directory": "packages/editor"
+    "directory": "packages/editor-components"
   },
   "keywords": [
     "editor",
@@ -30,11 +30,8 @@
     "types"
   ],
   "dependencies": {
-    "escape-html": "^1.0.3",
-    "he": "^1.2.0",
-    "is-hotkey": "^0.2.0",
-    "lodash.mergewith": "^4.6.2",
-    "slate-hyperscript": "^0.100.0"
+    "@ndla/editor": "workspace:^",
+    "@ndla/primitives": "workspace:^"
   },
   "peerDependencies": {
     "react": ">= 18",
@@ -43,11 +40,6 @@
     "slate-dom": "^0.111.0",
     "slate-history": "^0.110.3",
     "slate-react": "^0.112.0"
-  },
-  "devDependencies": {
-    "@types/he": "^1.2.3",
-    "@types/is-hotkey": "^0",
-    "@types/lodash.mergewith": "^4"
   },
   "publishConfig": {
     "access": "public"

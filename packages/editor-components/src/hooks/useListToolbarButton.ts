@@ -8,9 +8,7 @@
 
 import type { MouseEvent } from "react";
 import { useSlate } from "slate-react";
-import type { ListType } from "../listTypes";
-import { isListElement } from "../queries/listElementQueries";
-import { toggleList } from "../transforms/toggleList";
+import { isListElement, type ListType, toggleList } from "@ndla/editor";
 
 interface ListToolbarButtonStateOptions {
   type: ListType;

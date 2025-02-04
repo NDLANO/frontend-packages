@@ -14,6 +14,13 @@ import { Editable, Slate, useSlate, type RenderElementProps } from "slate-react"
 import { Portal } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
 import {
+  useEditorPopover,
+  useListToolbarButton,
+  useListToolbarButtonState,
+  useMarkToolbarButton,
+  useMarkToolbarButtonState,
+} from "@ndla/editor-components";
+import {
   Bold,
   CodeView,
   Italic,
@@ -37,18 +44,15 @@ import {
 } from "@ndla/primitives";
 import { createSlate } from "./editor/createSlate";
 import { LoggerManager } from "./editor/logger/Logger";
-import { useEditorPopover } from "./hooks/useEditorPopover";
 import { breakPlugin } from "./plugins/break/breakPlugin";
 import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
 import { headingPlugin } from "./plugins/heading/headingPlugin";
 import { toggleHeading } from "./plugins/heading/transforms/toggleHeading";
 import { linkPlugin } from "./plugins/link/linkPlugin";
 import { type LinkElement } from "./plugins/link/linkTypes";
-import { useListToolbarButton, useListToolbarButtonState } from "./plugins/list/hooks/useListToolbarButton";
 import { listPlugin } from "./plugins/list/listPlugin";
 import type { ListType } from "./plugins/list/listTypes";
 import { toggleList } from "./plugins/list/transforms/toggleList";
-import { useMarkToolbarButton, useMarkToolbarButtonState } from "./plugins/mark/hooks/useMarkToolbarButton";
 import { markPlugin } from "./plugins/mark/markPlugin";
 import { marks } from "./plugins/mark/markTypes";
 import { toggleMark } from "./plugins/mark/toggleMark";

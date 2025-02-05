@@ -157,7 +157,8 @@ const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: Ele
   let openWrapperBlock: ParagraphElement | null = null;
   for (const child of children) {
     if (Text.isText(child) || (Element.isElement(child) && inlines.includes(child.type))) {
-      if (!Node.string(child).trim().length) {
+      // TODO: Consider trimming
+      if (Node.string(child) === "" || Node.string(child) === " ") {
         continue;
       }
       if (!openWrapperBlock) {

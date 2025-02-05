@@ -48,6 +48,9 @@ export { HEADING_ELEMENT_TYPE, HEADING_PLUGIN } from "./plugins/heading/headingT
 export { isHeadingElement } from "./plugins/heading/queries/headingQueries";
 export { toggleHeading } from "./plugins/heading/transforms/toggleHeading";
 
+export { inlineNavigationPlugin } from "./plugins/inlineNavigation/inlineNavigationPlugin";
+export { INLINE_NAVIGATION_PLUGIN } from "./plugins/inlineNavigation/inlineNavigationTypes";
+
 export { linkPlugin } from "./plugins/link/linkPlugin";
 export { linkSerializer } from "./plugins/link/linkSerializer";
 export type { LinkElement, LinkElementType, LinkEmbedData } from "./plugins/link/linkTypes";

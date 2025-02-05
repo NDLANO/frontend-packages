@@ -116,18 +116,18 @@ const addEmptyTextNodes = (node: Element) => {
 
 const addEmptyParagraphs = (node: Element, blocks: ElementType[]) => {
   const children = node.children;
-  let lastBlock = false;
+  let lastWasBlock = false;
 
   for (let i = 0; i < children.length; i++) {
     const child = children[i];
     const currentIsBlock = isElementOfType(child, blocks);
 
-    if (currentIsBlock && !lastBlock) {
+    if (currentIsBlock && (i === 0 || lastWasBlock)) {
       children.splice(i, 0, { type: "paragraph", children: [{ text: "" }] });
       i++; // Skip next iteration since we inserted a new paragraph
     }
 
-    lastBlock = currentIsBlock;
+    lastWasBlock = currentIsBlock;
   }
 
   // Ensure the last child is a paragraph if needed

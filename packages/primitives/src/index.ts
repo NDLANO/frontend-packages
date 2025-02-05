@@ -317,7 +317,7 @@ export {
   TooltipTrigger,
 } from "./Tooltip";
 
-export type { TreeRootProps } from "./Tree/Tree";
+export type { TreeRootProps, TreeRootProviderProps } from "./Tree/Tree";
 export {
   TreeRoot,
   TreeBranchContent,
@@ -332,4 +332,8 @@ export {
   TreeLabel,
   Tree,
   TreeRootProvider,
+  TreeNodeProvider,
+  TreeNodeContext,
+  createTreeCollection,
+  useTreeView,
 } from "./Tree/Tree";

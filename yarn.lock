@@ -2424,7 +2424,10 @@ __metadata:
   resolution: "@ndla/editor-components@workspace:packages/editor-components"
   dependencies:
     "@ndla/editor": "workspace:^"
+    "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
+    "@ndla/styled-system": "workspace:^"
+    "@pandacss/dev": "npm:^0.48.0"
   peerDependencies:
     react: ">= 18"
     react-dom: ">= 18"

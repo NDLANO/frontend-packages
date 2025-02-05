@@ -10,7 +10,8 @@
   "scripts": {
     "build": "node ../../scripts/build.js package",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "concurrently 'yarn build:types'"
+    "prepublish": "concurrently 'yarn build:types' 'yarn build:panda'",
+    "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
+    "dist",
     "lib",
     "src",
     "es",
@@ -31,7 +33,8 @@
   ],
   "dependencies": {
     "@ndla/editor": "workspace:^",
-    "@ndla/primitives": "workspace:^"
+    "@ndla/primitives": "workspace:^",
+    "@ndla/styled-system": "workspace:^"
   },
   "peerDependencies": {
     "react": ">= 18",
@@ -40,6 +43,10 @@
     "slate-dom": "^0.112.0",
     "slate-history": "^0.110.3",
     "slate-react": "^0.112.0"
+  },
+  "devDependencies": {
+    "@ndla/preset-panda": "workspace:^",
+    "@pandacss/dev": "^0.48.0"
   },
   "publishConfig": {
     "access": "public"

@@ -87,6 +87,7 @@ export type {
   ParagraphElementType,
   ParagraphPluginOptions,
 } from "./plugins/paragraph/paragraphTypes";
+export { isParagraphElement } from "./plugins/paragraph/queries/paragraphElementQueries";
 
 export { sectionPlugin } from "./plugins/section/sectionPlugin";
 export { sectionSerializer } from "./plugins/section/sectionSerializer";
@@ -104,6 +105,7 @@ export {
   createHtmlTag,
 } from "./serialization/html/htmlSerializationHelpers";
 export { serializeToHtml } from "./serialization/html/serializeToHtml";
+export { deserializeFromHtml } from "./serialization/html/deserializeFromHtml";
 
 export { toggleBlock } from "./transforms/toggleBlock";
 

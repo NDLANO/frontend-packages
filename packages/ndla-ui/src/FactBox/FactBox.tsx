@@ -6,7 +6,7 @@
  *
  */
 
-import {
+import React, {
   type ComponentProps,
   type ReactNode,
   forwardRef,
@@ -126,9 +126,10 @@ const FactBox = forwardRef<HTMLElement, Props>(
     const [state, setState] = useState<"open" | "closed">(defaultOpen ? "open" : "closed");
     const contentId = useId();
     // Inert has existed since early 2023. It allows us to disable tabindex inside the content if it is closed, allowing us to be accessible for users with newish browsers. React 18 removes this because it doesn't recognize the attribute. This is a workaround for that.
-    // TODO: Remove this hack when we upgrade to React 19.
+    // When running in React 18, we need to use an empty string instead of true.
+    // TODO: Remove this hack once we upgrade to React 19 as a peer dep.
     const inertAttribute = useMemo(() => {
-      return state === "closed" ? { inert: "" } : {};
+      return state === "closed" ? { inert: typeof React.use === "function" ? true : "" } : {};
     }, [state]) as { inert?: boolean };
 
     useEffect(() => {

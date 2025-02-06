@@ -26,11 +26,7 @@ interface Props extends Omit<BlockQuoteProps, "variant"> {
 }
 
 export const ContentTypeBlockQuote = forwardRef<HTMLQuoteElement, Props>(({ variant, contentType, ...props }, ref) => {
-  return (
-    <BlockQuote
-      {...props}
-      variant={variant === "colored" && contentType ? contentTypeToVariantMapping[contentType] : undefined}
-      ref={ref}
-    />
-  );
+  const color = contentType ? (contentTypeToVariantMapping[contentType] ?? "brand1") : "brand1";
+  const variantColor = variant === "colored" ? color : undefined;
+  return <BlockQuote {...props} variant={variantColor} ref={ref} />;
 });

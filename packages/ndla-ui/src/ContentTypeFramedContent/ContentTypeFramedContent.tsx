@@ -27,12 +27,8 @@ interface Props extends FramedContentProps {
 
 export const ContentTypeFramedContent = forwardRef<HTMLDivElement, Props>(
   ({ variant = "neutral", contentType, ...props }, ref) => {
-    return (
-      <FramedContent
-        {...props}
-        colorTheme={variant === "colored" && contentType ? contentTypeToVariantMapping[contentType] : undefined}
-        ref={ref}
-      />
-    );
+    const color = contentType ? (contentTypeToVariantMapping[contentType] ?? "brand1") : "brand1";
+    const variantColor = variant === "colored" ? color : undefined;
+    return <FramedContent {...props} colorTheme={variantColor} ref={ref} />;
   },
 );

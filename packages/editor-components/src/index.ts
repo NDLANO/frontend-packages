@@ -11,3 +11,5 @@ export { InlineBugfix } from "./components/inline/InlineBugfix";
 export { useEditorPopover } from "./hooks/useEditorPopover";
 export { useListToolbarButton, useListToolbarButtonState } from "./hooks/useListToolbarButton";
 export { useMarkToolbarButton, useMarkToolbarButtonState } from "./hooks/useMarkToolbarButton";
+
+export { platformSpecificTooltip } from "./utils/platformSpecificTooltip";

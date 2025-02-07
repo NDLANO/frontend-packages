@@ -7,7 +7,13 @@
  */
 
 import { forwardRef } from "react";
-import { TreeView, treeViewAnatomy } from "@ark-ui/react";
+import {
+  TreeView,
+  treeViewAnatomy,
+  type TreeNode,
+  createTreeCollection as _createTreeCollection,
+  useTreeView as _useTreeView,
+} from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "../createStyleContext";
@@ -106,15 +112,23 @@ const treeRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(treeRecipe);
 
-export type TreeRootProps = TreeView.RootProps & JsxStyleProps;
+export type TreeRootProps<T extends TreeNode = TreeNode> = TreeView.RootProps<T> & JsxStyleProps;
 
-export const TreeRoot = withProvider<HTMLDivElement, TreeRootProps>(TreeView.Root, "root", {
+const InternalTreeRoot = withProvider<HTMLDivElement, TreeRootProps>(TreeView.Root, "root", {
   baseComponent: true,
 });
 
-export const TreeRootProvider = withProvider<HTMLDivElement, TreeView.RootProviderProps & JsxStyleProps>(
+export const TreeRoot = <T extends TreeNode = TreeNode>(props: TreeRootProps<T>) => <InternalTreeRoot {...props} />;
+
+export type TreeRootProviderProps<T extends TreeNode = TreeNode> = TreeView.RootProviderProps<T> & JsxStyleProps;
+
+const InternalTreeRootProvider = withProvider<HTMLDivElement, TreeRootProviderProps & JsxStyleProps>(
   TreeView.RootProvider,
   "root",
+);
+
+export const TreeRootProvider = <T extends TreeNode = TreeNode>(props: TreeRootProviderProps<T>) => (
+  <InternalTreeRootProvider {...props} />
 );
 
 export const TreeBranchContent = withContext<HTMLDivElement, TreeView.BranchContentProps & JsxStyleProps>(
@@ -204,3 +218,9 @@ export const TreeLabel = forwardRef<HTMLDivElement, TreeView.LabelProps & TextPr
 export const Tree = withContext<HTMLDivElement, TreeView.TreeProps & JsxStyleProps>(TreeView.Tree, "tree", {
   baseComponent: true,
 });
+
+export const createTreeCollection = _createTreeCollection;
+
+export const TreeNodeProvider = TreeView.NodeProvider;
+export const TreeNodeContext = TreeView.NodeContext;
+export const useTreeView = _useTreeView;

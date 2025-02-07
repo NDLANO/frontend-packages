@@ -53,7 +53,7 @@
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^1.0.1",
     "@ndla/types-embed": "^5.0.10-alpha.0",
-    "@pandacss/dev": "^0.48.0"
+    "@pandacss/dev": "^0.52.0"
   },
   "publishConfig": {
     "access": "public"

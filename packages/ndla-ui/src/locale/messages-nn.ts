@@ -1539,6 +1539,23 @@ const messages = {
       close: "Lukk",
     },
   },
+  richTextEditor: {
+    tooltip: {
+      bold: "Fet ({{shortcut}})",
+      code: "Kode ({{shortcut}})",
+      sub: "Senka skrift ({{shortcut}})",
+      sup: "Heva skrift ({{shortcut}})",
+      underlined: "Understreka ({{shortcut}})",
+      italic: "Kursiv ({{shortcut}})",
+      "numbered-list": "Nummerert liste ({{shortcut}})",
+      "letter-list": "Alfabetisk liste ({{shortcut}})",
+      "bulleted-list": "Punktliste ({{shortcut}})",
+      heading: "Overskrift {{level}} ({{shortcut}})",
+      paragraph: "Paragraf ({{shortcut}})",
+      section: "Seksjon ({{shortcut}})",
+      link: "Lenke ({{shortcut}})",
+    },
+  },
 };
 
 export default messages;

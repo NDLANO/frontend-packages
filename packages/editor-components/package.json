@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^0.48.0"
+    "@pandacss/dev": "^0.52.0"
   },
   "publishConfig": {
     "access": "public"

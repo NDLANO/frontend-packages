@@ -1539,6 +1539,23 @@ const messages = {
       close: "Lukk",
     },
   },
+  richTextEditor: {
+    tooltip: {
+      bold: "Bold ({{shortcut}})",
+      code: "Code ({{shortcut}})",
+      sub: "Subscript ({{shortcut}})",
+      sup: "Superscript ({{shortcut}})",
+      underlined: "Underlined ({{shortcut}})",
+      italic: "Italic ({{shortcut}})",
+      "numbered-list": "Numbered list ({{shortcut}})",
+      "letter-list": "Alphabetical list ({{shortcut}})",
+      "bulleted-list": "Bulleted list ({{shortcut}})",
+      heading: "Heading {{level}} ({{shortcut}})",
+      paragraph: "Paragraph ({{shortcut}})",
+      section: "Section ({{shortcut}})",
+      link: "Link ({{shortcut}})",
+    },
+  },
 };
 
 export default messages;

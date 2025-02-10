@@ -65,7 +65,7 @@
     "@svgr/plugin-svgo": "^8.1.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "16.1.0",
+    "@testing-library/react": "16.2.0",
     "@types/htmlparser2": "^3.10.3",
     "@types/lodash.throttle": "^4.1.9",
     "@types/node": "^20.12.12",
@@ -79,7 +79,7 @@
     "cross-spawn": "^7.0.3",
     "eslint": "^9.15.0",
     "i18next": "^23.11.5",
-    "jsdom": "^25.0.1",
+    "jsdom": "^26.0.0",
     "lerna": "^8.1.9",
     "nx": "20.1.4",
     "postcss": "^8.4.22",
@@ -98,8 +98,8 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.15.0",
     "vercel": "^33.6.2",
-    "vite": "^6.0.2",
-    "vitest": "^2.1.8"
+    "vite": "^6.1.0",
+    "vitest": "^3.0.5"
   },
   "packageManager": "yarn@4.1.0"
 }

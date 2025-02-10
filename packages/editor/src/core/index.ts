@@ -109,11 +109,7 @@ export type PluginReturnType<TType extends ElementType, TOptions = undefined> = 
    * Allows consumers of plugins to further modify most aspects of the plugin.
    * Usually just used to modify the options passed into the plugin.
    */
-  configure: (
-    configuration: Omit<Partial<PluginConfiguration<TType, TOptions>>, "options"> & {
-      options?: MappedConfigurationOption<TOptions>;
-    },
-  ) => SlatePlugin;
+  configure: (configuration: Partial<PluginConfiguration<TType, TOptions>>) => SlatePlugin;
   options: TOptions;
 };
 
@@ -137,7 +133,7 @@ export interface ConfigurableSlateSerializer<TOptions extends {} | undefined = u
   /**
    * Allows consumers of serializers to modify the default options passed into the serializer.
    */
-  configure: (options: MappedConfigurationOption<TOptions>) => ConfigurableSlateSerializer<TOptions>;
+  configure: (options: Partial<MappedConfigurationOption<TOptions>>) => ConfigurableSlateSerializer<TOptions>;
 }
 
 export type SlateRenderer = (editor: Editor) => Editor;

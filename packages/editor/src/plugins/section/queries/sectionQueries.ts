@@ -10,4 +10,4 @@ import type { Node } from "slate";
 import { isElementOfType } from "../../../utils/isElementType";
 import { SECTION_ELEMENT_TYPE } from "../sectionTypes";
 
-export const isSectionElement = (node: Node) => isElementOfType(node, SECTION_ELEMENT_TYPE);
+export const isSectionElement = (node: Node | undefined) => isElementOfType(node, SECTION_ELEMENT_TYPE);

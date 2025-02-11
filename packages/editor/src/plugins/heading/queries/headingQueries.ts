@@ -10,4 +10,4 @@ import type { Node } from "slate";
 import { isElementOfType } from "../../../utils/isElementType";
 import { HEADING_ELEMENT_TYPE } from "../headingTypes";
 
-export const isHeadingElement = (node: Node) => isElementOfType(node, HEADING_ELEMENT_TYPE);
+export const isHeadingElement = (node: Node | undefined) => isElementOfType(node, HEADING_ELEMENT_TYPE);

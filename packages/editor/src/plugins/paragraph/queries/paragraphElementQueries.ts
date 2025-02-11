@@ -10,4 +10,4 @@ import type { Node } from "slate";
 import { isElementOfType } from "../../../utils/isElementType";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraphTypes";
 
-export const isParagraphElement = (node: Node) => isElementOfType(node, PARAGRAPH_ELEMENT_TYPE);
+export const isParagraphElement = (node: Node | undefined) => isElementOfType(node, PARAGRAPH_ELEMENT_TYPE);

@@ -309,6 +309,7 @@ const messages = {
     urlAuthorLabel: "Read more about {{name}}",
     multipleAuthorsLabelAbbreviation: "et al.",
     authorsLabel: "Written by: {{names}}",
+    authorsLabelLearningpath: "Made by {{names}}",
     multipleAuthorsLabelAriaConjunction: "and",
     copyPageLink: "Copy page-link",
     copyPageLinkCopied: "Link copied",

@@ -310,6 +310,7 @@ const messages = {
     urlAuthorLabel: "Les meir om {{name}}",
     multipleAuthorsLabelAbbreviation: "m. fl.",
     authorsLabel: "Skrive av {{names}}",
+    authorsLabelLearningpath: "Laga av {{names}}",
     multipleAuthorsLabelAriaConjunction: "og",
     copyPageLink: "Kopier lenke til sida",
     copyPageLinkCopied: "Lenke kopiert",

@@ -10,4 +10,4 @@ import type { Descendant } from "slate";
 import { isElementOfType } from "../../../utils/isElementType";
 import { BREAK_ELEMENT_TYPE } from "../breakTypes";
 
-export const isBreakElement = (node: Descendant) => isElementOfType(node, BREAK_ELEMENT_TYPE);
+export const isBreakElement = (node: Descendant | undefined) => isElementOfType(node, BREAK_ELEMENT_TYPE);

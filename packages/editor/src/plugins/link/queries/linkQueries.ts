@@ -10,4 +10,4 @@ import type { Node } from "slate";
 import { isElementOfType } from "../../../utils/isElementType";
 import { LINK_ELEMENT_TYPE } from "../linkTypes";
 
-export const isLinkElement = (node: Node) => isElementOfType(node, LINK_ELEMENT_TYPE);
+export const isLinkElement = (node: Node | undefined) => isElementOfType(node, LINK_ELEMENT_TYPE);

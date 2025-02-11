@@ -153,7 +153,7 @@ export const UnOrderedList = styled("ul", {
     listStyle: "revert",
     marginInlineStart: "medium",
     paddingInlineStart: "small",
-    "&  ul": {
+    "& ul": {
       marginInlineStart: "0",
     },
     "& li": {
@@ -161,6 +161,14 @@ export const UnOrderedList = styled("ul", {
       paddingInlineStart: "small",
       _marker: {
         color: "icon.strong",
+      },
+    },
+
+    listStyleType: "disc",
+    "& > li > ul": {
+      listStyleType: "square",
+      "& > li > ul": {
+        listStyleType: "circle",
       },
     },
   },

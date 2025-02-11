@@ -310,6 +310,7 @@ const messages = {
     urlAuthorLabel: "Loga eanet {{name}} birra",
     multipleAuthorsLabelAbbreviation: "e.e.",
     authorsLabel: "Dán lea/leat čállán {{names}}",
+    authorsLabelLearningpath: "Laget av {{names}}",
     multipleAuthorsLabelAriaConjunction: "ja",
     copyPageLink: "Máŋge liŋkka siidui",
     copyPageLinkCopied: "Liŋka máŋgejuvvon",

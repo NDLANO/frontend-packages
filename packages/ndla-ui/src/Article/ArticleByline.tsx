@@ -75,6 +75,7 @@ type Props = {
   footnotes?: FootNote[];
   displayByline?: boolean;
   bylineType?: "article" | "learningPath";
+  bylineSuffix?: ReactNode;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -118,6 +119,7 @@ export const ArticleByline = ({
   published,
   displayByline = true,
   bylineType = "article",
+  bylineSuffix,
 }: Props) => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
@@ -147,15 +149,16 @@ export const ArticleByline = ({
   }, [onHashChange]);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
+  const isLearningpath = bylineType === "learningPath";
 
   return (
     <Wrapper>
       {!!displayByline && (
-        <TextWrapper learningpath={bylineType === "learningPath"}>
+        <TextWrapper learningpath={isLearningpath}>
           {!!showPrimaryContributors && (
             <span>
               {authors.length > 0 &&
-                `${t("article.authorsLabel", {
+                `${t(isLearningpath ? "article.authorsLabelLearningpath" : "article.authorsLabel", {
                   names: renderContributors(authors, t),
                   interpolation: { escapeValue: false },
                 })}. `}
@@ -167,6 +170,7 @@ export const ArticleByline = ({
               {t(`${bylineType}.lastUpdated`)} {published}
             </div>
           ) : null}
+          {bylineSuffix}
         </TextWrapper>
       )}
       {(!!licenseBox || !!footnotes?.length) && (

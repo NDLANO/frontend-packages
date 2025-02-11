@@ -310,6 +310,7 @@ const messages = {
     urlAuthorLabel: "Lohkh vielie {name}:n bïjre",
     multipleAuthorsLabelAbbreviation: "jïh jienebh",
     authorsLabel: "{{names}} tjaaleme",
+    authorsLabelLearningpath: "Laget av {{names}}",
     multipleAuthorsLabelAriaConjunction: "og",
     copyPageLink: "Kopijeerh svaalhtesem sæjrose",
     copyPageLinkCopied: "Svaalhtesem kopijeereme",

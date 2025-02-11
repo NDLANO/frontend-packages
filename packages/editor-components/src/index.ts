@@ -7,6 +7,7 @@
  */
 
 export { InlineBugfix } from "./components/inline/InlineBugfix";
+export { ContentEditableFieldLabel } from "./components/editor/ContentEditableFieldLabel";
 
 export { useEditorPopover } from "./hooks/useEditorPopover";
 export { useListToolbarButton, useListToolbarButtonState } from "./hooks/useListToolbarButton";

@@ -22,6 +22,9 @@ const orderedListRecipe = cva({
     marginInlineStart: "small",
     paddingInlineStart: "small",
     [LIST_ITEM]: {
+      "& > ul": {
+        marginInlineStart: "0 !important",
+      },
       _before: {
         position: "absolute",
         transform: "translateX(calc(-100% + (token(spacing.small) * -1)))",
@@ -161,6 +164,10 @@ export const UnOrderedList = styled("ul", {
       paddingInlineStart: "small",
       _marker: {
         color: "icon.strong",
+      },
+
+      "& > ol": {
+        marginInlineStart: "0 !important",
       },
     },
 

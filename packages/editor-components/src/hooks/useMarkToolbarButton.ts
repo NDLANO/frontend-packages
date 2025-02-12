@@ -17,7 +17,9 @@ interface MarkToolbarButtonStateOptions {
 
 export const useMarkToolbarButtonState = ({ type }: MarkToolbarButtonStateOptions) => {
   const editor = useSlate();
-  const pressed = editor.getMarks()?.[type];
+  const pressed = !!(editor.selection && editor.hasPath(editor.selection.anchor.path)
+    ? editor.getMarks()?.[type]
+    : undefined);
 
   return {
     type,

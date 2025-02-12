@@ -22,9 +22,12 @@ interface ListToolbarButtonState {
 
 export const useListToolbarButtonState = ({ type }: ListToolbarButtonStateOptions): ListToolbarButtonState => {
   const editor = useSlate();
-  const [match] = editor.nodes({
-    match: (n) => isListElement(n) && n.listType === type,
-  });
+  const [match] =
+    editor.selection && editor.hasPath(editor.selection.anchor.path)
+      ? editor.nodes({
+          match: (n) => isListElement(n) && n.listType === type,
+        })
+      : [];
   return { pressed: !!match, "data-state": match ? "on" : "off", type };
 };
 

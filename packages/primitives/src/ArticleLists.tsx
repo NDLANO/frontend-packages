@@ -166,9 +166,9 @@ export const UnOrderedList = styled("ul", {
 
     listStyleType: "disc",
     "& > li > ul": {
-      listStyleType: "square",
+      listStyleType: "circle",
       "& > li > ul": {
-        listStyleType: "circle",
+        listStyleType: "square",
       },
     },
   },

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/audio-search",
-  "version": "7.0.81-alpha.0",
+  "version": "7.0.82-alpha.0",
   "description": "A simple library for searching for audio files from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

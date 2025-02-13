@@ -1,6 +1,6 @@
 {
   "name": "@ndla/editor-components",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Slate editor components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

@@ -22,7 +22,7 @@ export {
   getLicenseByAbbreviation,
   getLicenseByNBTitle,
   isCreativeCommonsLicense,
-  copyrights,
+  licenses,
   ALL_ABBREVIATIONS,
 } from "./licenses";
 export type { LicenseLocaleType } from "./types";

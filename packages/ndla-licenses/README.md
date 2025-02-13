@@ -17,15 +17,15 @@ npm install @ndla/licenses
 ### Get license by abbreviation
 
 ```js
-import getLicenseByAbbreviation from "@ndla/licenses";
+import { licenses, getLicenseByAbbreviation } from "@ndla/licenses";
 
-const license = getLicenseByAbbreviation("CC-BY-NC-4.0", "en");
+const license = getLicenseByAbbreviation(licenses.CC_BY_NC_4, "en");
 
 console.log(license);
 //> { short: 'Free use', title: 'Attribution-NonCommercial', description: 'This license...', rights: ['by', 'sa'] }
 
 // defaults to Norsk Bokmål (nb)
-const license = getLicenseByAbbreviation("CC-BY-NC-4.0", "unknown-locale");
+const license = getLicenseByAbbreviation(licenses.CC_BY_NC_4, "unknown-locale");
 console.log(license);
 //> { short: 'Fri bruk', title: 'Navngivelse-IkkeKommersiell', description: 'Denne lisensen...', rights: ['by', 'sa'] }
 
@@ -38,15 +38,15 @@ console.log(license);
 ### Get license right info by abbreviation/constant
 
 ```js
-import { getLicenseRightByAbbreviation, BY, CC } from "@ndla/licenses";
+import { getLicenseRightByAbbreviation, rights } from "@ndla/licenses";
 
-const licenseRight = getLicenseRightByAbbreviation(BY, "en");
+const licenseRight = getLicenseRightByAbbreviation(rights.BY, "en");
 
 console.log(licenseRight);
 //> { short: 'cc', title: 'Copyright', userFriendlyTitle: 'Copyright', description: 'Only the creator can derive...' }
 
 // defaults to Norsk Bokmål (nb)
-const licenseRight = getLicenseRightByAbbreviation(CC, "unknown-locale");
+const licenseRight = getLicenseRightByAbbreviation(rights.CC, "unknown-locale");
 console.log(licenseRight);
 //> { short: 'cc', title: 'Copyright', userFriendlyTitle: 'Opphavsrett', description: 'Bare opphavspersonen kan bearbeide...' }
 
@@ -59,14 +59,14 @@ console.log(licenseRight);
 ### License right constants
 
 ```js
-import { BY, SA } from "@ndla/licenses";
+import { rights } from "@ndla/licenses";
 import Icon from "./Icons";
 
 const LicenseIcon = ({ licenseRight }) => {
   switch (licenseRight) {
-    case BY:
+    case rights.BY:
       return <Icon.LicenseBy />;
-    case SA:
+    case rights.SA:
       return <Icon.LicenseSa />;
     default:
       return undefined;
@@ -74,14 +74,16 @@ const LicenseIcon = ({ licenseRight }) => {
 };
 ```
 
-**Available constants:**
+**Available constants in rights object:**
 
-| Exported name | Value   | Description              |
-| ------------- | ------- | ------------------------ |
-| `BY`          | `'by'`  | Attribution              |
-| `SA`          | `'sa'`  | Share-alike              |
-| `NC`          | `'nc'`  | Non-commercial           |
-| `ND`          | `'nd'`  | No derivative work       |
-| `PD`          | `'pd'`  | Public Domain            |
-| `CC0`         | `'cc0'` | Public Domain Dedication |
-| `CC`          | `'cc'`  | Copyright                |
+| Exported name | Value           | Description              |
+| ------------- | --------------- | ------------------------ |
+| `BY`          | `'by'`          | Attribution              |
+| `SA`          | `'sa'`          | Share-alike              |
+| `NC`          | `'nc'`          | Non-commercial           |
+| `ND`          | `'nd'`          | No derivative work       |
+| `PD`          | `'pd'`          | Public Domain            |
+| `CC0`         | `'cc0'`         | Public Domain Dedication |
+| `CC`          | `'cc'`          | Creative Commons         |
+| `COPYRIGHTED` | `'copyrighted'` | Copyrighted              |
+| `NA`          | `'n/a'`         | Not Appliccable          |

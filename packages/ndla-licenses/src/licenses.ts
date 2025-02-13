@@ -400,7 +400,7 @@ function licenseByLocale(license: LicenseType, locale: Locale | string | undefin
   };
 }
 
-export const copyrights = {
+export const licenses = {
   CC_BY_NC_ND_4: "CC-BY-NC-ND-4.0",
   CC_BY_NC_SA_4: "CC-BY-NC-SA-4.0",
   CC_BY_NC_4: "CC-BY-NC-4.0",
@@ -414,43 +414,43 @@ export const copyrights = {
 } as const;
 
 export const ALL_ABBREVIATIONS = [
-  copyrights.CC_BY_NC_ND_4,
-  copyrights.CC_BY_NC_SA_4,
-  copyrights.CC_BY_NC_4,
-  copyrights.CC_BY_ND_4,
-  copyrights.CC_BY_SA_4,
-  copyrights.CC_BY_4,
-  copyrights.PD,
-  copyrights.CC0,
-  copyrights.COPYRIGHTED,
-  copyrights.NA,
+  licenses.CC_BY_NC_ND_4,
+  licenses.CC_BY_NC_SA_4,
+  licenses.CC_BY_NC_4,
+  licenses.CC_BY_ND_4,
+  licenses.CC_BY_SA_4,
+  licenses.CC_BY_4,
+  licenses.PD,
+  licenses.CC0,
+  licenses.COPYRIGHTED,
+  licenses.NA,
 ] as const;
 
 export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | string | undefined): LicenseLocaleType {
   switch (abbreviation) {
-    case copyrights.CC_BY_NC_ND_4:
+    case licenses.CC_BY_NC_ND_4:
       return licenseByLocale(byncnd, locale);
-    case copyrights.CC_BY_NC_SA_4:
+    case licenses.CC_BY_NC_SA_4:
       return licenseByLocale(byncsa, locale);
-    case copyrights.CC_BY_NC_4:
+    case licenses.CC_BY_NC_4:
       return licenseByLocale(bync, locale);
-    case copyrights.CC_BY_ND_4:
+    case licenses.CC_BY_ND_4:
       return licenseByLocale(bynd, locale);
-    case copyrights.CC_BY_SA_4:
+    case licenses.CC_BY_SA_4:
       return licenseByLocale(bysa, locale);
-    case copyrights.CC_BY_4:
+    case licenses.CC_BY_4:
       return licenseByLocale(by, locale);
     case rights.PD:
-    case copyrights.PD:
+    case licenses.PD:
       return licenseByLocale(pd, locale);
     case rights.CC0:
-    case copyrights.CC0:
+    case licenses.CC0:
       return licenseByLocale(cc0, locale);
     case rights.COPYRIGHTED:
-    case copyrights.COPYRIGHTED:
+    case licenses.COPYRIGHTED:
       return licenseByLocale(copy, locale);
     case rights.NA:
-    case copyrights.NA:
+    case licenses.NA:
       return licenseByLocale(na, locale);
     default:
       return {
@@ -469,19 +469,19 @@ export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | 
 export function getLicenseByNBTitle(title: string, locale?: Locale | string): LicenseLocaleType | string {
   switch (title.replace(/\s/g, "").toLowerCase()) {
     case "navngivelse-ikkekommersiell-ingenbearbeidelser":
-      return getLicenseByAbbreviation(copyrights.CC_BY_NC_ND_4, locale);
+      return getLicenseByAbbreviation(licenses.CC_BY_NC_ND_4, locale);
     case "navngivelse-ikkekommersiell-ingenbearbeidelse":
-      return getLicenseByAbbreviation(copyrights.CC_BY_NC_ND_4, locale);
+      return getLicenseByAbbreviation(licenses.CC_BY_NC_ND_4, locale);
     case "navngivelse-ikkekommersiell-delpåsammevilkår":
-      return getLicenseByAbbreviation(copyrights.CC_BY_NC_SA_4, locale);
+      return getLicenseByAbbreviation(licenses.CC_BY_NC_SA_4, locale);
     case "navngivelse-ikkekommersiell":
-      return getLicenseByAbbreviation(copyrights.CC_BY_NC_4, locale);
+      return getLicenseByAbbreviation(licenses.CC_BY_NC_4, locale);
     case "navngivelse-ingenbearbeidelse":
-      return getLicenseByAbbreviation(copyrights.CC_BY_ND_4, locale);
+      return getLicenseByAbbreviation(licenses.CC_BY_ND_4, locale);
     case "navngivelse-delpåsammevilkår":
-      return getLicenseByAbbreviation(copyrights.CC_BY_SA_4, locale);
+      return getLicenseByAbbreviation(licenses.CC_BY_SA_4, locale);
     case "navngivelse":
-      return getLicenseByAbbreviation(copyrights.CC_BY_4, locale);
+      return getLicenseByAbbreviation(licenses.CC_BY_4, locale);
     default:
       return title;
   }

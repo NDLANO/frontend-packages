@@ -98,6 +98,13 @@ export const listItemRecipe = sva({
           "--border-color-current": "colors.stroke.subtle",
         },
       },
+      neutral: {
+        root: {
+          "--background-hover": "colors.surface.hover",
+          "--border-hover": "colors.stroke.subtle",
+          "--border-color-current": "colors.stroke.discrete",
+        },
+      },
     },
     variant: {
       intense: {

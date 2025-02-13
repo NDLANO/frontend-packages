@@ -114,5 +114,5 @@ export { toggleBlock } from "./transforms/toggleBlock";
 
 export type { SlateEditor, CustomEditor, ElementType } from "./types";
 
-export { isElementOfType } from "./utils/isElementType";
+export { isElementOfType, isEntryOfType } from "./utils/isElementType";
 export { isEmptyTextNode } from "./utils/isEmptyTextNode";

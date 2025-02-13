@@ -6,7 +6,7 @@
  *
  */
 
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA, VERSION } from "./licenseRights";
+import { rights } from "./licenseRights";
 import { getLocaleOrDefault, type LicenseType, type LicenseLocaleType, type Locale } from "./types";
 
 const freeUseNB = "Offentlig eie";
@@ -27,7 +27,7 @@ const naNB = "N/A - ikke relevant";
 const naNN = "N/A - ikkje relevant";
 const naEN = "N/A - not applicable";
 
-const byncndAbbrev = `${CC} ${BY}-${NC}-${ND} ${VERSION}`.toUpperCase();
+const byncndAbbrev = `${rights.CC} ${rights.BY}-${rights.NC}-${rights.ND} ${rights.VERSION}`.toUpperCase();
 
 const byncnd: LicenseType = {
   nn: {
@@ -61,10 +61,10 @@ const byncnd: LicenseType = {
     description:
       "This license is the most restrictive of our six main licenses, only allowing others to download your works and share them with others as long as they credit you, but they can’t change them in any way or use them commercially.",
   },
-  rights: [CC, BY, NC, ND],
+  rights: [rights.CC, rights.BY, rights.NC, rights.ND],
 };
 
-const byncsaAbbrev = `${CC} ${BY}-${NC}-${SA} ${VERSION}`.toUpperCase();
+const byncsaAbbrev = `${rights.CC} ${rights.BY}-${rights.NC}-${rights.SA} ${rights.VERSION}`.toUpperCase();
 
 const byncsa: LicenseType = {
   nn: {
@@ -98,10 +98,10 @@ const byncsa: LicenseType = {
     description:
       "This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms.",
   },
-  rights: [CC, BY, NC, SA],
+  rights: [rights.CC, rights.BY, rights.NC, rights.SA],
 };
 
-const byncAbbrev = `${CC} ${BY}-${NC} ${VERSION}`.toUpperCase();
+const byncAbbrev = `${rights.CC} ${rights.BY}-${rights.NC} ${rights.VERSION}`.toUpperCase();
 
 const bync: LicenseType = {
   nn: {
@@ -135,10 +135,10 @@ const bync: LicenseType = {
     description:
       "This license lets others remix, tweak, and build upon your work non-commercially, and although their new works must also acknowledge you and be non-commercial, they don’t have to license their derivative works on the same terms.",
   },
-  rights: [CC, BY, NC],
+  rights: [rights.CC, rights.BY, rights.NC],
 };
 
-const byndAbbrev = `${CC} ${BY}-${ND} ${VERSION}`.toUpperCase();
+const byndAbbrev = `${rights.CC} ${rights.BY}-${rights.ND} ${rights.VERSION}`.toUpperCase();
 
 const bynd: LicenseType = {
   nn: {
@@ -172,10 +172,10 @@ const bynd: LicenseType = {
     description:
       "This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.",
   },
-  rights: [CC, BY, ND],
+  rights: [rights.CC, rights.BY, rights.ND],
 };
 
-const bysaAbbrev = `${CC} ${BY}-${SA} ${VERSION}`.toUpperCase();
+const bysaAbbrev = `${rights.CC} ${rights.BY}-${rights.SA} ${rights.VERSION}`.toUpperCase();
 
 const bysa: LicenseType = {
   nn: {
@@ -209,10 +209,10 @@ const bysa: LicenseType = {
     description:
       "This license lets others remix, tweak, and build upon your work even for commercial purposes, as long as they credit you and license their new creations under the identical terms. This license is often compared to “copyleft” free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content from Wikipedia and similarly licensed projects.",
   },
-  rights: [CC, BY, SA],
+  rights: [rights.CC, rights.BY, rights.SA],
 };
 
-const byAbbrev = `${CC} ${BY} ${VERSION}`.toUpperCase();
+const byAbbrev = `${rights.CC} ${rights.BY} ${rights.VERSION}`.toUpperCase();
 
 const by: LicenseType = {
   nn: {
@@ -246,7 +246,7 @@ const by: LicenseType = {
     description:
       "This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials.",
   },
-  rights: [CC, BY],
+  rights: [rights.CC, rights.BY],
 };
 
 const pd: LicenseType = {
@@ -281,10 +281,10 @@ const pd: LicenseType = {
     description:
       "This mark lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.",
   },
-  rights: [PD],
+  rights: [rights.PD],
 };
 
-const cc0Abbrev = CC0.toUpperCase();
+const cc0Abbrev = rights.CC0.toUpperCase();
 
 const cc0: LicenseType = {
   nn: {
@@ -318,7 +318,7 @@ const cc0: LicenseType = {
     description:
       "This mark lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.",
   },
-  rights: [CC0],
+  rights: [rights.CC0],
 };
 
 const copy: LicenseType = {
@@ -353,10 +353,10 @@ const copy: LicenseType = {
     description:
       "Only those who have created the content can modify, publish, and give others permission to use the content.",
   },
-  rights: [COPYRIGHTED],
+  rights: [rights.COPYRIGHTED],
 };
 
-const naAbbreviation = NA.toUpperCase();
+const naAbbreviation = rights.NA.toUpperCase();
 
 const na: LicenseType = {
   nn: {
@@ -387,7 +387,7 @@ const na: LicenseType = {
     abbreviation: naAbbreviation,
     description: "This mark is intended for content that does not require a license.",
   },
-  rights: [NA],
+  rights: [rights.NA],
 };
 
 function licenseByLocale(license: LicenseType, locale: Locale | string | undefined) {
@@ -400,55 +400,57 @@ function licenseByLocale(license: LicenseType, locale: Locale | string | undefin
   };
 }
 
-export const CC_BY_NC_ND_4 = "CC-BY-NC-ND-4.0";
-export const CC_BY_NC_SA_4 = "CC-BY-NC-SA-4.0";
-export const CC_BY_NC_4 = "CC-BY-NC-4.0";
-export const CC_BY_ND_4 = "CC-BY-ND-4.0";
-export const CC_BY_SA_4 = "CC-BY-SA-4.0";
-export const CC_BY_4 = "CC-BY-4.0";
-export const CPRGHTD = "COPYRIGHTED";
-export const PD_LIC = "PD";
-export const CC0_LIC = "CC0-1.0";
-export const NA_LIC = "N/A";
+export const copyrights = {
+  CC_BY_NC_ND_4: "CC-BY-NC-ND-4.0",
+  CC_BY_NC_SA_4: "CC-BY-NC-SA-4.0",
+  CC_BY_NC_4: "CC-BY-NC-4.0",
+  CC_BY_ND_4: "CC-BY-ND-4.0",
+  CC_BY_SA_4: "CC-BY-SA-4.0",
+  CC_BY_4: "CC-BY-4.0",
+  PD: "PD",
+  CC0: "CC0-1.0",
+  COPYRIGHTED: "COPYRIGHTED",
+  NA: "N/A",
+} as const;
 
 export const ALL_ABBREVIATIONS = [
-  CC_BY_NC_ND_4,
-  CC_BY_NC_SA_4,
-  CC_BY_NC_4,
-  CC_BY_ND_4,
-  CC_BY_SA_4,
-  CC_BY_4,
-  PD_LIC,
-  CC0_LIC,
-  CPRGHTD,
-  NA_LIC,
+  copyrights.CC_BY_NC_ND_4,
+  copyrights.CC_BY_NC_SA_4,
+  copyrights.CC_BY_NC_4,
+  copyrights.CC_BY_ND_4,
+  copyrights.CC_BY_SA_4,
+  copyrights.CC_BY_4,
+  copyrights.PD,
+  copyrights.CC0,
+  copyrights.COPYRIGHTED,
+  copyrights.NA,
 ] as const;
 
 export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | string | undefined): LicenseLocaleType {
   switch (abbreviation) {
-    case CC_BY_NC_ND_4:
+    case copyrights.CC_BY_NC_ND_4:
       return licenseByLocale(byncnd, locale);
-    case CC_BY_NC_SA_4:
+    case copyrights.CC_BY_NC_SA_4:
       return licenseByLocale(byncsa, locale);
-    case CC_BY_NC_4:
+    case copyrights.CC_BY_NC_4:
       return licenseByLocale(bync, locale);
-    case CC_BY_ND_4:
+    case copyrights.CC_BY_ND_4:
       return licenseByLocale(bynd, locale);
-    case CC_BY_SA_4:
+    case copyrights.CC_BY_SA_4:
       return licenseByLocale(bysa, locale);
-    case CC_BY_4:
+    case copyrights.CC_BY_4:
       return licenseByLocale(by, locale);
-    case PD:
-    case PD_LIC:
+    case rights.PD:
+    case copyrights.PD:
       return licenseByLocale(pd, locale);
-    case CC0:
-    case CC0_LIC:
+    case rights.CC0:
+    case copyrights.CC0:
       return licenseByLocale(cc0, locale);
-    case COPYRIGHTED:
-    case CPRGHTD:
+    case rights.COPYRIGHTED:
+    case copyrights.COPYRIGHTED:
       return licenseByLocale(copy, locale);
-    case NA:
-    case NA_LIC:
+    case rights.NA:
+    case copyrights.NA:
       return licenseByLocale(na, locale);
     default:
       return {
@@ -467,22 +469,23 @@ export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | 
 export function getLicenseByNBTitle(title: string, locale?: Locale | string): LicenseLocaleType | string {
   switch (title.replace(/\s/g, "").toLowerCase()) {
     case "navngivelse-ikkekommersiell-ingenbearbeidelser":
-      return getLicenseByAbbreviation(CC_BY_NC_ND_4, locale);
+      return getLicenseByAbbreviation(copyrights.CC_BY_NC_ND_4, locale);
     case "navngivelse-ikkekommersiell-ingenbearbeidelse":
-      return getLicenseByAbbreviation(CC_BY_NC_ND_4, locale);
+      return getLicenseByAbbreviation(copyrights.CC_BY_NC_ND_4, locale);
     case "navngivelse-ikkekommersiell-delpåsammevilkår":
-      return getLicenseByAbbreviation(CC_BY_NC_SA_4, locale);
+      return getLicenseByAbbreviation(copyrights.CC_BY_NC_SA_4, locale);
     case "navngivelse-ikkekommersiell":
-      return getLicenseByAbbreviation(CC_BY_NC_4, locale);
+      return getLicenseByAbbreviation(copyrights.CC_BY_NC_4, locale);
     case "navngivelse-ingenbearbeidelse":
-      return getLicenseByAbbreviation(CC_BY_ND_4, locale);
+      return getLicenseByAbbreviation(copyrights.CC_BY_ND_4, locale);
     case "navngivelse-delpåsammevilkår":
-      return getLicenseByAbbreviation(CC_BY_SA_4, locale);
+      return getLicenseByAbbreviation(copyrights.CC_BY_SA_4, locale);
     case "navngivelse":
-      return getLicenseByAbbreviation(CC_BY_4, locale);
+      return getLicenseByAbbreviation(copyrights.CC_BY_4, locale);
     default:
       return title;
   }
 }
 
-export const isCreativeCommonsLicense = (licenseRights: string[]) => licenseRights.every((r) => r !== COPYRIGHTED);
+export const isCreativeCommonsLicense = (licenseRights: string[]) =>
+  licenseRights.every((r) => r !== rights.COPYRIGHTED);

@@ -16,34 +16,13 @@ export {
 export { resourceTypes, getResourceTypeNamespace, metaTypes } from "./CCRel";
 export type { MetaType } from "./CCRel";
 
-export {
-  BY,
-  SA,
-  NA,
-  NC,
-  ND,
-  PD,
-  CC0,
-  CC,
-  COPYRIGHTED,
-  licenseRights,
-  getLicenseRightByAbbreviation,
-} from "./licenseRights";
+export { rights, getLicenseRightByAbbreviation } from "./licenseRights";
 
 export {
   getLicenseByAbbreviation,
   getLicenseByNBTitle,
   isCreativeCommonsLicense,
-  CC_BY_NC_ND_4,
-  CC_BY_NC_SA_4,
-  CC_BY_NC_4,
-  CC_BY_ND_4,
-  CC_BY_SA_4,
-  CC_BY_4,
-  CPRGHTD,
-  CC0_LIC,
-  PD_LIC,
-  NA_LIC,
+  copyrights,
   ALL_ABBREVIATIONS,
 } from "./licenses";
 export type { LicenseLocaleType } from "./types";

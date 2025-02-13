@@ -9,19 +9,21 @@
 import { isLocale, type Locale, type RightLocaleInfo, type RightType } from "./types";
 
 // License rights
-export const BY = "by"; // Attribution
-export const SA = "sa"; // Share-alike
-export const NC = "nc"; // Non-commercial
-export const ND = "nd"; // No derivative work
-export const PD = "pd"; // Public Domain
-export const CC0 = "cc0"; // Public Domain Dedication
-export const CC = "cc"; // Creative Commons
-export const COPYRIGHTED = "copyrighted"; // Copyrighted
-export const NA = "n/a"; // Not Applicable
-export const VERSION = "4.0"; //Current license version
+export const rights = {
+  BY: "by", // Attribution
+  SA: "sa", // Share-alike
+  NC: "nc", // Non-commercial
+  ND: "nd", // No derivative work
+  PD: "pd", // Public Domain
+  CC0: "cc0", // Public Domain Dedication
+  CC: "cc", // Creative Commons
+  COPYRIGHTED: "copyrighted", // Copyrighted
+  NA: "n/a", // Not Applicable
+  VERSION: "4.0", //Current license version
+};
 
 const by: RightType = {
-  short: BY,
+  short: rights.BY,
   nn: {
     title: "Namngiving",
     userFriendlyTitle: "Namngiving",
@@ -40,7 +42,7 @@ const by: RightType = {
 };
 
 const sa: RightType = {
-  short: SA,
+  short: rights.SA,
   nn: {
     title: "Del på same vilkår",
     userFriendlyTitle: "Del på same vilkår",
@@ -59,7 +61,7 @@ const sa: RightType = {
 };
 
 const nc: RightType = {
-  short: NC,
+  short: rights.NC,
   nn: {
     title: "Ikkje-kommersiell",
     userFriendlyTitle: "Ikkje-kommersiell",
@@ -78,7 +80,7 @@ const nc: RightType = {
 };
 
 const nd: RightType = {
-  short: ND,
+  short: rights.ND,
   nn: {
     title: "Ingen tilarbeiding",
     userFriendlyTitle: "Ingen tilarbeiding",
@@ -97,7 +99,7 @@ const nd: RightType = {
 };
 
 const pd: RightType = {
-  short: PD,
+  short: rights.PD,
   nn: {
     title: "Offentleg eige",
     userFriendlyTitle: "Offentleg eigedom",
@@ -116,7 +118,7 @@ const pd: RightType = {
 };
 
 const cc0: RightType = {
-  short: CC0,
+  short: rights.CC0,
   nn: {
     title: "Gjeve til fellesskapet",
     userFriendlyTitle: "Gjeve til fellesskapet",
@@ -135,7 +137,7 @@ const cc0: RightType = {
 };
 
 const copyrighted: RightType = {
-  short: COPYRIGHTED,
+  short: rights.COPYRIGHTED,
   nn: {
     title: "Opphavsrett",
     userFriendlyTitle: "Opphavsrett",
@@ -156,7 +158,7 @@ const copyrighted: RightType = {
 };
 
 const cc: RightType = {
-  short: CC,
+  short: rights.CC,
   nn: {
     title: "Creative Commons",
     userFriendlyTitle: "Opphavsrett",
@@ -175,7 +177,7 @@ const cc: RightType = {
 };
 
 const na: RightType = {
-  short: NA,
+  short: rights.NA,
   nn: {
     title: "N/A - ikkje relevant",
     userFriendlyTitle: "NA - ikkje relevant",
@@ -211,31 +213,29 @@ function licenseRightByLocale(
   };
 }
 
-export const licenseRights = [BY, SA, NC, ND, PD, CC, CC0, COPYRIGHTED, NA];
-
 export function getLicenseRightByAbbreviation(
   abbreviation: string,
   locale: Locale | string | undefined,
 ): RightLocaleInfo & { short: string } {
   // const
   switch (abbreviation) {
-    case BY:
+    case rights.BY:
       return licenseRightByLocale(by, locale);
-    case SA:
+    case rights.SA:
       return licenseRightByLocale(sa, locale);
-    case NC:
+    case rights.NC:
       return licenseRightByLocale(nc, locale);
-    case ND:
+    case rights.ND:
       return licenseRightByLocale(nd, locale);
-    case PD:
+    case rights.PD:
       return licenseRightByLocale(pd, locale);
-    case CC:
+    case rights.CC:
       return licenseRightByLocale(cc, locale);
-    case CC0:
+    case rights.CC0:
       return licenseRightByLocale(cc0, locale);
-    case COPYRIGHTED:
+    case rights.COPYRIGHTED:
       return licenseRightByLocale(copyrighted, locale);
-    case NA:
+    case rights.NA:
       return licenseRightByLocale(na, locale);
     default:
       return {

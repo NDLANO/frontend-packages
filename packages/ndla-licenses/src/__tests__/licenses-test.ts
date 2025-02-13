@@ -6,28 +6,28 @@
  *
  */
 
-import { BY, SA, NC, CC, COPYRIGHTED, NA } from "../licenseRights";
+import { rights } from "../licenseRights";
 import { getLicenseByAbbreviation, isCreativeCommonsLicense } from "../licenses";
 
 test("licenses/getLicenseByAbbreviation get license for CC-BY-SA-4.0 in english", () => {
   const license = getLicenseByAbbreviation("CC-BY-SA-4.0", "en");
 
   expect(license.title).toBe("CC BY-SA 4.0: Attribution ShareAlike");
-  expect(license.rights).toEqual([CC, BY, SA]);
+  expect(license.rights).toEqual([rights.CC, rights.BY, rights.SA]);
 });
 
 test("licenses/getLicenseByAbbreviation get license for N/A in norwegian", () => {
   const license = getLicenseByAbbreviation("N/A", "nb");
 
   expect(license.title).toBe("N/A - ikke relevant");
-  expect(license.rights).toEqual([NA]);
+  expect(license.rights).toEqual([rights.NA]);
 });
 
 test("licenses/getLicenseByAbbreviation get license without locale defaults to nb", () => {
   const license = getLicenseByAbbreviation("CC-BY-NC-SA-4.0", undefined);
 
   expect(license.title).toBe("CC BY-NC-SA 4.0: Navngivelse-Ikkekommersiell-Del på samme vilkår");
-  expect(license.rights).toEqual([CC, BY, NC, SA]);
+  expect(license.rights).toEqual([rights.CC, rights.BY, rights.NC, rights.SA]);
 });
 
 test("licenses/getLicenseByAbbreviation unknown license", () => {
@@ -40,11 +40,11 @@ test("licenses/getLicenseByAbbreviation unknown license", () => {
 });
 
 test("licenses/isCreativeCommonsLicense when creative commons license should return true", () => {
-  const result = isCreativeCommonsLicense([CC, BY]);
+  const result = isCreativeCommonsLicense([rights.CC, rights.BY]);
   expect(result).toBe(true);
 });
 
 test("licenses/isCreativeCommonsLicense when copy licebse should return false", () => {
-  const result = isCreativeCommonsLicense([COPYRIGHTED]);
+  const result = isCreativeCommonsLicense([rights.COPYRIGHTED]);
   expect(result).toBe(false);
 });

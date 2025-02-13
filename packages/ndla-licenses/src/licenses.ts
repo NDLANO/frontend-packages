@@ -400,48 +400,55 @@ function licenseByLocale(license: LicenseType, locale: Locale | string | undefin
   };
 }
 
+export const CC_BY_NC_ND = "CC-BY-NC-ND-4.0";
+export const CC_BY_NC_SA = "CC-BY-NC-SA-4.0";
+export const CC_BY_NC = "CC-BY-NC-4.0";
+export const CC_BY_ND = "CC-BY-ND-4.0";
+export const CC_BY_SA = "CC-BY-SA-4.0";
+export const CC_BY = "CC-BY-4.0";
+export const CPRGHTD = "COPYRIGHTED";
+export const PD_LIC = "PD";
+export const CC0_LIC = "CC0-1.0";
+export const NA_LIC = "N/A";
+
 export const ALL_ABBREVIATIONS = [
-  "CC-BY-NC-ND-4.0",
-  "CC-BY-NC-SA-4.0",
-  "CC-BY-NC-4.0",
-  "CC-BY-ND-4.0",
-  "CC-BY-SA-4.0",
-  "CC-BY-4.0",
-  "PD",
-  "CC0-1.0",
-  "COPYRIGHTED",
-  "N/A",
+  CC_BY_NC_ND,
+  CC_BY_NC_SA,
+  CC_BY_NC,
+  CC_BY_ND,
+  CC_BY_SA,
+  CC_BY,
+  PD_LIC,
+  CC0_LIC,
+  CPRGHTD,
+  NA_LIC,
 ] as const;
 
 export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | string | undefined): LicenseLocaleType {
   switch (abbreviation) {
-    case "CC-BY-NC-ND-4.0":
+    case CC_BY_NC_ND:
       return licenseByLocale(byncnd, locale);
-    case "CC-BY-NC-SA-4.0":
+    case CC_BY_NC_SA:
       return licenseByLocale(byncsa, locale);
-    case "CC-BY-NC-4.0":
+    case CC_BY_NC:
       return licenseByLocale(bync, locale);
-    case "CC-BY-ND-4.0":
+    case CC_BY_ND:
       return licenseByLocale(bynd, locale);
-    case "CC-BY-SA-4.0":
+    case CC_BY_SA:
       return licenseByLocale(bysa, locale);
-    case "CC-BY-4.0":
+    case CC_BY:
       return licenseByLocale(by, locale);
-    case "PD":
+    case PD:
+    case PD_LIC:
       return licenseByLocale(pd, locale);
-    case "CC0-1.0":
+    case CC0:
+    case CC0_LIC:
       return licenseByLocale(cc0, locale);
-    case "COPYRIGHTED":
+    case COPYRIGHTED:
+    case CPRGHTD:
       return licenseByLocale(copy, locale);
-    case "N/A":
-      return licenseByLocale(na, locale);
-    case "pd":
-      return licenseByLocale(pd, locale);
-    case "cc0":
-      return licenseByLocale(cc0, locale);
-    case "copyrighted":
-      return licenseByLocale(copy, locale);
-    case "na":
+    case NA:
+    case NA_LIC:
       return licenseByLocale(na, locale);
     default:
       return {
@@ -460,19 +467,19 @@ export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | 
 export function getLicenseByNBTitle(title: string, locale?: Locale | string): LicenseLocaleType | string {
   switch (title.replace(/\s/g, "").toLowerCase()) {
     case "navngivelse-ikkekommersiell-ingenbearbeidelser":
-      return getLicenseByAbbreviation("CC-BY-NC-ND-4.0", locale);
+      return getLicenseByAbbreviation(CC_BY_NC_ND, locale);
     case "navngivelse-ikkekommersiell-ingenbearbeidelse":
-      return getLicenseByAbbreviation("CC-BY-NC-ND-4.0", locale);
+      return getLicenseByAbbreviation(CC_BY_NC_ND, locale);
     case "navngivelse-ikkekommersiell-delpåsammevilkår":
-      return getLicenseByAbbreviation("CC-BY-NC-SA-4.0", locale);
+      return getLicenseByAbbreviation(CC_BY_NC_SA, locale);
     case "navngivelse-ikkekommersiell":
-      return getLicenseByAbbreviation("CC-BY-NC-4.0", locale);
+      return getLicenseByAbbreviation(CC_BY_NC, locale);
     case "navngivelse-ingenbearbeidelse":
-      return getLicenseByAbbreviation("CC-BY-ND-4.0", locale);
+      return getLicenseByAbbreviation(CC_BY_ND, locale);
     case "navngivelse-delpåsammevilkår":
-      return getLicenseByAbbreviation("CC-BY-SA-4.0", locale);
+      return getLicenseByAbbreviation(CC_BY_SA, locale);
     case "navngivelse":
-      return getLicenseByAbbreviation("CC-BY-4.0", locale);
+      return getLicenseByAbbreviation(CC_BY, locale);
     default:
       return title;
   }

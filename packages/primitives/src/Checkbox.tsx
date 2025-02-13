@@ -66,7 +66,7 @@ const checkboxRecipe = sva({
           _hover: {
             color: "text.action",
           },
-          _focus: {
+          _focusVisible: {
             outline: "2px solid",
             outlineOffset: "4xsmall",
             outlineColor: "stroke.default",

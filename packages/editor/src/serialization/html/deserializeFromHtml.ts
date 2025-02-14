@@ -13,11 +13,11 @@ import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/paragraph/paragraphTypes";
 import type { SlateSerializer } from "../../core";
 import { isElementOfType } from "../../utils/isElementType";
+import { NOOP_ELEMENT_TYPE } from "../../plugins/noop/noopTypes";
 
 // TODO: This entire file should be refactored and reconsidered. Our current deserialization is too complex.
 
-// TODO: This should be of noop type
-const DEFAULT_NOOP: Descendant[] = [{ type: "paragraph", children: [{ text: "" }] }];
+const DEFAULT_NOOP: Descendant[] = [{ type: NOOP_ELEMENT_TYPE, children: [{ text: "" }] }];
 
 const EMPTY_VALUE: Descendant[] = [
   {

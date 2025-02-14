@@ -82,6 +82,12 @@ export type { CustomText, MarkType } from "./plugins/mark/markTypes";
 export { marks, MARK_PLUGIN } from "./plugins/mark/markTypes";
 export { toggleMark } from "./plugins/mark/toggleMark";
 
+export { isNoopElement } from "./plugins/noop/queries/noopQueries";
+export { noopPlugin } from "./plugins/noop/noopPlugin";
+export { noopSerializer } from "./plugins/noop/noopSerializer";
+export { NOOP_ELEMENT_TYPE, NOOP_PLUGIN } from "./plugins/noop/noopTypes";
+export type { NoopElement, NoopPluginOptions, NoopElementType } from "./plugins/noop/noopTypes";
+
 export { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
 export { paragraphSerializer } from "./plugins/paragraph/paragraphSerializer";
 export { PARAGRAPH_ELEMENT_TYPE, PARAGRAPH_PLUGIN } from "./plugins/paragraph/paragraphTypes";

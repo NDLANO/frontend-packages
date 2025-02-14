@@ -99,7 +99,7 @@ export interface ImageSearchTranslations {
   paginationTranslations: PaginationRootProps["translations"];
 }
 
-interface Props {
+export interface ImageSearchProps {
   onImageSelect: (image: IImageMetaInformationV3DTO) => void;
   searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3DTO>;
   fetchImage: (id: number) => Promise<IImageMetaInformationV3DTO>;
@@ -121,7 +121,7 @@ const ImageSearch = ({
   checkboxAction,
   showCheckbox,
   translations,
-}: Props) => {
+}: ImageSearchProps) => {
   const [queryObject, setQueryObject] = useState<ISearchParamsDTO>({
     query: undefined,
     page: 1,

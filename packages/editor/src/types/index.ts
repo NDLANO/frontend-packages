@@ -18,6 +18,7 @@ import type { ListElement, ListItemElement } from "../plugins/list/listTypes";
 import type { SectionElement } from "../plugins/section/sectionTypes";
 import type { LoggerManager } from "../editor/logger/Logger";
 import type { HeadingElement } from "../plugins/heading/headingTypes";
+import type { NoopElement } from "../plugins/noop/noopTypes";
 
 export interface CustomEditor {
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
@@ -41,7 +42,8 @@ export interface SlateEditor {
     | ListItemElement
     | ListElement
     | SectionElement
-    | HeadingElement;
+    | HeadingElement
+    | NoopElement;
   Text: CustomText;
 }
 

@@ -1,0 +1,24 @@
+/**
+ * Copyright (c) 2025-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import type { Descendant } from "slate";
+import type { ElementType } from "../../types";
+
+export const NOOP_ELEMENT_TYPE = "noop" as const;
+export const NOOP_PLUGIN = "noop" as const;
+
+export type NoopElementType = typeof NOOP_ELEMENT_TYPE;
+
+export interface NoopElement {
+  type: "noop";
+  children: Descendant[];
+}
+
+export interface NoopPluginOptions {
+  inlineBlocks?: ElementType[];
+}

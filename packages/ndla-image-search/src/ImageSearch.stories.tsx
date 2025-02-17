@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryFn } from "@storybook/react";
-import type { IImageMetaInformationV3DTO, ISearchResultV3DTO } from "@ndla/types-backend/image-api";
+import type { ISearchResultV3DTO } from "@ndla/types-backend/image-api";
 import ImageSearch from "./ImageSearch";
 
 export default {
@@ -56,21 +56,9 @@ export const Default: StoryFn<typeof ImageSearch> = ({ ...args }) => {
     });
   };
 
-  const fetchImage = (id: string | number): Promise<IImageMetaInformationV3DTO> =>
-    new Promise((resolve, reject) => {
-      fetch(`https://api.test.ndla.no/image-api/v3/images/${id}`, {
-        method: "GET",
-      }).then((res) => {
-        if (res.ok) {
-          return resolve(res.json());
-        }
-        return res.json().then((json) => reject(json));
-      });
-    });
   return (
     <ImageSearch
       {...args}
-      fetchImage={fetchImage}
       searchImages={fetchImages}
       // eslint-disable-next-line no-console
       onImageSelect={console.log}

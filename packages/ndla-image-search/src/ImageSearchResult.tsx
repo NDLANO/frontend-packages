@@ -54,14 +54,14 @@ export default function ImageSearchResult({
   translations,
   locale,
 }: Props) {
-  const active = selectedImage?.id === image.id;
+  const isSelectedImage = selectedImage?.id === image.id;
   return (
     <>
       <StyledButton
-        variant={active ? "secondary" : "tertiary"}
+        variant={isSelectedImage ? "secondary" : "tertiary"}
         data-testid="select-image-from-list"
         onClick={() => onImageClick(image)}
-        aria-expanded={active}
+        aria-expanded={isSelectedImage}
         aria-controls={`image-preview-${image.id}`}
       >
         <StyledImage
@@ -76,7 +76,7 @@ export default function ImageSearchResult({
           </span>
         </StyledText>
       </StyledButton>
-      {selectedImage?.id === image.id && (
+      {isSelectedImage ? (
         <PreviewImage
           id={`image-preview-${image.id}`}
           image={selectedImage}
@@ -85,7 +85,7 @@ export default function ImageSearchResult({
           showCheckbox={showCheckbox}
           locale={locale}
         />
-      )}
+      ) : null}
     </>
   );
 }

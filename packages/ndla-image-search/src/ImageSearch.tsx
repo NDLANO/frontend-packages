@@ -102,7 +102,6 @@ export interface ImageSearchTranslations {
 export interface ImageSearchProps {
   onImageSelect: (image: IImageMetaInformationV3DTO) => void;
   searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3DTO>;
-  fetchImage: (id: number) => Promise<IImageMetaInformationV3DTO>;
   onError?: (err: any) => void;
   locale: string;
   noResults?: ReactNode;
@@ -114,7 +113,6 @@ export interface ImageSearchProps {
 const ImageSearch = ({
   onImageSelect,
   searchImages: search,
-  fetchImage,
   onError,
   locale,
   noResults,
@@ -133,18 +131,6 @@ const ImageSearch = ({
 
   const { page } = queryObject;
   const noResultsFound = !searching && searchResult?.results.length === 0;
-
-  const onImageClick = (image: IImageMetaInformationV3DTO) => {
-    if (!selectedImage || image.id !== selectedImage.id) {
-      fetchImage(Number.parseInt(image.id))
-        .then((result) => {
-          setSelectedImage(result);
-        })
-        .catch((err) => {
-          onError?.(err);
-        });
-    }
-  };
 
   const onSelectImage = (image: IImageMetaInformationV3DTO | undefined, saveAsMetaImage?: boolean) => {
     setSelectedImage(undefined);
@@ -197,7 +183,7 @@ const ImageSearch = ({
         <Input
           type="search"
           placeholder={translations.searchPlaceholder}
-          value={queryObject?.query}
+          value={queryObject?.query ?? ""}
           onChange={handleQueryChange}
           onKeyDown={onEnter}
         />
@@ -217,7 +203,7 @@ const ImageSearch = ({
           <ImageSearchResult
             key={image.id}
             image={image}
-            onImageClick={onImageClick}
+            onImageClick={(image) => setSelectedImage(image)}
             selectedImage={selectedImage}
             onSelectImage={onSelectImage}
             showCheckbox={!!showCheckbox}

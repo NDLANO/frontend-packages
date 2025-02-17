@@ -84,6 +84,12 @@ const heroRecipe = sva({
           background: "surface.infoSubtle",
         },
       },
+      footer: {
+        background: {
+          height: "200px",
+          clipPath: "polygon(0 0, 100% calc(0% + 5vw), 100% 100%, 0 100%)",
+        },
+      },
     },
   },
 });

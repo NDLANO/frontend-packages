@@ -69,6 +69,11 @@ const heroRecipe = sva({
           background: "surface.brand.2",
         },
       },
+      brand2Moderate: {
+        background: {
+          background: "surface.brand.2.moderate",
+        },
+      },
       brand1: {
         background: {
           background: "surface.brand.1",
@@ -77,6 +82,21 @@ const heroRecipe = sva({
       brand1Moderate: {
         background: {
           background: "surface.brand.1.moderate",
+        },
+      },
+      brand3Moderate: {
+        background: {
+          background: "surface.brand.3.moderate",
+        },
+      },
+      brand4Moderate: {
+        background: {
+          background: "surface.brand.4.moderate",
+        },
+      },
+      brand5Moderate: {
+        background: {
+          background: "surface.brand.5.moderate",
         },
       },
       neutral: {

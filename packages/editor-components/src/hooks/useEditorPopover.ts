@@ -7,16 +7,17 @@
  */
 
 import { type UsePopoverProps } from "@ark-ui/react";
-import { useEffect } from "react";
+import { useEffect, type RefObject } from "react";
 import { Range } from "slate";
 import { useFocused, useSelected, useSlate } from "slate-react";
 import { usePopover } from "@ndla/primitives";
 
 interface UseEditorPopover extends UsePopoverProps {
   openOnEnter?: boolean;
+  triggerRef: RefObject<HTMLElement | null>;
 }
 
-export const useEditorPopover = (opts: UseEditorPopover = {}) => {
+export const useEditorPopover = ({ triggerRef, ...opts }: UseEditorPopover) => {
   const editor = useSlate();
   const isActive = useSelected();
   const isFocused = useFocused();
@@ -28,7 +29,11 @@ export const useEditorPopover = (opts: UseEditorPopover = {}) => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const { selection } = editor;
       if (event.key !== "Enter" || !isActive || !isFocused || !selection) return;
-      if (Range.isCollapsed(selection) && !editor.isEdge(selection.anchor, selection.anchor.path)) {
+      if (
+        Range.isCollapsed(selection) &&
+        !editor.isEdge(selection.anchor, selection.anchor.path) &&
+        document.activeElement?.contains(triggerRef.current)
+      ) {
         event.preventDefault();
         popover.setOpen(!popover.open);
       }

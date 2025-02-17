@@ -162,13 +162,15 @@ interface LinkProps extends RenderElementProps {
 const NewLink = ({ element, attributes, children }: LinkProps) => {
   const editor = useSlate();
   const ref = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const popover = useEditorPopover({
     initialFocusEl: () => ref.current,
+    triggerRef,
   });
 
   return (
     <PopoverRootProvider value={popover} onExitComplete={() => DOMEditor.focus(editor)}>
-      <PopoverTrigger asChild consumeCss>
+      <PopoverTrigger asChild consumeCss ref={triggerRef}>
         <a {...attributes} href={element.data.href} target={element.data.target} tabIndex={0}>
           {children}
         </a>

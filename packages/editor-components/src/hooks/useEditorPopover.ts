@@ -29,11 +29,7 @@ export const useEditorPopover = ({ triggerRef, ...opts }: UseEditorPopover) => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const { selection } = editor;
       if (event.key !== "Enter" || !isActive || !isFocused || !selection) return;
-      if (
-        Range.isCollapsed(selection) &&
-        !editor.isEdge(selection.anchor, selection.anchor.path) &&
-        document.activeElement?.contains(triggerRef.current)
-      ) {
+      if (Range.isCollapsed(selection) && document.activeElement?.contains(triggerRef.current)) {
         event.preventDefault();
         popover.setOpen(!popover.open);
       }

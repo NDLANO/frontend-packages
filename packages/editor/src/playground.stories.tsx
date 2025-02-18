@@ -48,6 +48,7 @@ import { breakPlugin } from "./plugins/break/breakPlugin";
 import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
 import { headingPlugin } from "./plugins/heading/headingPlugin";
 import { toggleHeading } from "./plugins/heading/transforms/toggleHeading";
+import { inlineNavigationPlugin } from "./plugins/inlineNavigation/inlineNavigationPlugin";
 import { linkPlugin } from "./plugins/link/linkPlugin";
 import { type LinkElement } from "./plugins/link/linkTypes";
 import { listPlugin } from "./plugins/list/listPlugin";
@@ -240,6 +241,7 @@ export const EditorPlayground: StoryFn = () => {
   const [editor] = useState(() =>
     createSlate({
       plugins: [
+        inlineNavigationPlugin,
         sectionPlugin,
         headingPlugin,
         configuredMarkPlugin,

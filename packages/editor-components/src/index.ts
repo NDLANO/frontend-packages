@@ -14,3 +14,4 @@ export { useListToolbarButton, useListToolbarButtonState } from "./hooks/useList
 export { useMarkToolbarButton, useMarkToolbarButtonState } from "./hooks/useMarkToolbarButton";
 
 export { platformSpecificTooltip } from "./utils/platformSpecificTooltip";
+export { getClosestEditor } from "./utils/getClosestEditor";

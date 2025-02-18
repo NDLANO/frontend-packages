@@ -113,6 +113,24 @@ export const Colors: StoryFn = () => (
       <ColorBlock backgroundColor={"purple.900"} />
       <ColorBlock backgroundColor={"purple.950"} />
     </ColorBlocks>
+    <ColorBlocks title="lightYellow">
+      <ColorBlock backgroundColor={"lightYellow.50"} />
+      <ColorBlock backgroundColor={"lightYellow.100"} />
+      <ColorBlock backgroundColor={"lightYellow.200"} />
+      <ColorBlock backgroundColor={"lightYellow.300"} />
+      <ColorBlock backgroundColor={"lightYellow.400"} />
+      <ColorBlock backgroundColor={"lightYellow.500"} />
+      <ColorBlock backgroundColor={"lightYellow.600"} />
+      <ColorBlock backgroundColor={"lightYellow.700"} />
+      <ColorBlock backgroundColor={"lightYellow.800"} />
+      <ColorBlock backgroundColor={"lightYellow.900"} />
+      <ColorBlock backgroundColor={"lightYellow.950"} />
+      <ColorBlock backgroundColor={"lightYellow.1000"} />
+      <ColorBlock backgroundColor={"lightYellow.1100"} />
+      <ColorBlock backgroundColor={"lightYellow.1200"} />
+      <ColorBlock backgroundColor={"lightYellow.1300"} />
+      <ColorBlock backgroundColor={"lightYellow.1400"} />
+    </ColorBlocks>
     <ColorBlocks title="Yellow">
       <ColorBlock backgroundColor={"yellow.50"} />
       <ColorBlock backgroundColor={"yellow.100"} />
@@ -125,11 +143,6 @@ export const Colors: StoryFn = () => (
       <ColorBlock backgroundColor={"yellow.800"} />
       <ColorBlock backgroundColor={"yellow.900"} />
       <ColorBlock backgroundColor={"yellow.950"} />
-      <ColorBlock backgroundColor={"yellow.1000"} />
-      <ColorBlock backgroundColor={"yellow.1100"} />
-      <ColorBlock backgroundColor={"yellow.1200"} />
-      <ColorBlock backgroundColor={"yellow.1300"} />
-      <ColorBlock backgroundColor={"yellow.1400"} />
     </ColorBlocks>
     <ColorBlocks title="Green">
       <ColorBlock backgroundColor={"green.50"} />
@@ -144,6 +157,19 @@ export const Colors: StoryFn = () => (
       <ColorBlock backgroundColor={"green.900"} />
       <ColorBlock backgroundColor={"green.950"} />
     </ColorBlocks>
+    <ColorBlocks title="lightGreen">
+      <ColorBlock backgroundColor={"lightGreen.50"} />
+      <ColorBlock backgroundColor={"lightGreen.100"} />
+      <ColorBlock backgroundColor={"lightGreen.200"} />
+      <ColorBlock backgroundColor={"lightGreen.300"} />
+      <ColorBlock backgroundColor={"lightGreen.400"} />
+      <ColorBlock backgroundColor={"lightGreen.500"} />
+      <ColorBlock backgroundColor={"lightGreen.600"} />
+      <ColorBlock backgroundColor={"lightGreen.700"} />
+      <ColorBlock backgroundColor={"lightGreen.800"} />
+      <ColorBlock backgroundColor={"lightGreen.900"} />
+      <ColorBlock backgroundColor={"lightGreen.950"} />
+    </ColorBlocks>
     <ColorBlocks title="Pink">
       <ColorBlock backgroundColor={"pink.50"} />
       <ColorBlock backgroundColor={"pink.100"} />
@@ -156,6 +182,19 @@ export const Colors: StoryFn = () => (
       <ColorBlock backgroundColor={"pink.800"} />
       <ColorBlock backgroundColor={"pink.900"} />
       <ColorBlock backgroundColor={"pink.950"} />
+    </ColorBlocks>
+    <ColorBlocks title="Red">
+      <ColorBlock backgroundColor={"red.50"} />
+      <ColorBlock backgroundColor={"red.100"} />
+      <ColorBlock backgroundColor={"red.200"} />
+      <ColorBlock backgroundColor={"red.300"} />
+      <ColorBlock backgroundColor={"red.400"} />
+      <ColorBlock backgroundColor={"red.500"} />
+      <ColorBlock backgroundColor={"red.600"} />
+      <ColorBlock backgroundColor={"red.700"} />
+      <ColorBlock backgroundColor={"red.800"} />
+      <ColorBlock backgroundColor={"red.900"} />
+      <ColorBlock backgroundColor={"red.950"} />
     </ColorBlocks>
   </div>
 );
@@ -181,6 +220,9 @@ export const SemanticColors: StoryFn = () => (
       <ColorBlock backgroundColor={"icon.default"} />
       <ColorBlock backgroundColor={"icon.strong"} />
       <ColorBlock backgroundColor={"icon.onAction"} />
+      <ColorBlock backgroundColor={"icon.subtle"} />
+      <ColorBlock backgroundColor={"icon.warning"} />
+      <ColorBlock backgroundColor={"icon.danger"} />
     </ColorBlocks>
     <ColorBlocks title="Surface">
       <ColorBlock backgroundColor={"surface.default"} />

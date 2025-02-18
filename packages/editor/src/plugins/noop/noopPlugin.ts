@@ -6,7 +6,7 @@
  *
  */
 
-import { Text } from "slate";
+import { Text, Transforms } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
 import { createPlugin } from "../../core/createPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
@@ -28,9 +28,13 @@ export const noopPlugin = createPlugin<NoopElementType, NoopPluginOptions>({
       const child = node.children[0];
       if (Text.isText(child)) {
         logger.log("Noop contains only text, wrapping in paragraph.");
-        editor.wrapNodes(slatejsx("element", { type: PARAGRAPH_ELEMENT_TYPE, serializeAsText: true }, child), {
-          at: [...path, 0],
-        });
+        Transforms.wrapNodes(
+          editor,
+          slatejsx("element", { type: PARAGRAPH_ELEMENT_TYPE, serializeAsText: true }, child),
+          {
+            at: [...path, 0],
+          },
+        );
         return true;
       }
 
@@ -40,7 +44,8 @@ export const noopPlugin = createPlugin<NoopElementType, NoopPluginOptions>({
 
       if (!child.serializeAsText && !containsInlineBlock) {
         logger.log("Noop contains paragraph with no inline blocks, setting serializeAsText.");
-        editor.setNodes(
+        Transforms.setNodes(
+          editor,
           { type: PARAGRAPH_ELEMENT_TYPE, serializeAsText: true },
           { at: path, match: isParagraphElement },
         );
@@ -49,7 +54,8 @@ export const noopPlugin = createPlugin<NoopElementType, NoopPluginOptions>({
 
       if (child.serializeAsText && containsInlineBlock) {
         logger.log("Noop contains paragraph with inline blocks, unsetting serializeAsText.");
-        editor.setNodes(
+        Transforms.setNodes(
+          editor,
           { type: PARAGRAPH_ELEMENT_TYPE, serializeAsText: false },
           { at: path, match: isParagraphElement },
         );
@@ -60,7 +66,8 @@ export const noopPlugin = createPlugin<NoopElementType, NoopPluginOptions>({
     // If multiple blocks serialize as paragraphs
     if (node?.children.length > 1) {
       logger.log("Noop contains multiple blocks, setting serializeAsText.");
-      editor.setNodes(
+      Transforms.setNodes(
+        editor,
         { type: PARAGRAPH_ELEMENT_TYPE, serializeAsText: false },
         { at: path, match: isParagraphElement },
       );

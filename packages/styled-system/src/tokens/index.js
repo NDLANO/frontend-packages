@@ -1700,27 +1700,27 @@ const tokens = {
     "variable": "var(--colors-surface-danger-subtle-active)"
   },
   "colors.surface.error": {
-    "value": "var(--colors-pink-800)",
+    "value": "var(--colors-pink-500)",
     "variable": "var(--colors-surface-error)"
   },
   "colors.surface.error.hover": {
-    "value": "var(--colors-pink-900)",
+    "value": "var(--colors-pink-700)",
     "variable": "var(--colors-surface-error-hover)"
   },
   "colors.surface.error.active": {
-    "value": "var(--colors-pink-950)",
+    "value": "var(--colors-pink-900)",
     "variable": "var(--colors-surface-error-active)"
   },
   "colors.surface.errorSubtle": {
-    "value": "var(--colors-pink-100)",
+    "value": "var(--colors-red-50)",
     "variable": "var(--colors-surface-error-subtle)"
   },
   "colors.surface.errorSubtle.hover": {
-    "value": "var(--colors-pink-300)",
+    "value": "var(--colors-pink-100)",
     "variable": "var(--colors-surface-error-subtle-hover)"
   },
   "colors.surface.errorSubtle.active": {
-    "value": "var(--colors-pink-500)",
+    "value": "var(--colors-pink-200)",
     "variable": "var(--colors-surface-error-subtle-active)"
   },
   "colors.surface.subtle": {

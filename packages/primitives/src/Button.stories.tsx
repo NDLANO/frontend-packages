@@ -124,7 +124,7 @@ export const WithIcon: StoryObj<typeof Button> = {
 
 const UglyButton = styled(Button, {
   base: {
-    background: "yellow.1000",
+    background: "yellow.600",
     color: "text.onAction",
     paddingBlock: "large",
     paddingInline: "large",

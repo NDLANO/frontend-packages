@@ -8,7 +8,7 @@
 
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { ArticleContent, ArticleWrapper } from "@ndla/ui";
-import { OrderedList } from "./ArticleLists";
+import { OrderedList, UnOrderedList } from "./ArticleLists";
 import { BlockQuote } from "./BlockQuote";
 import { PageContent } from "./Layout/PageContent";
 
@@ -322,4 +322,27 @@ export const ListsBelowEachOther: StoryFn = () => (
       <li>Listepunkt 3</li>
     </OrderedList>
   </>
+);
+
+export const WithNestedUnOrderedList: StoryFn = () => (
+  <OrderedList>
+    <li>
+      Listepunkt 1
+      <OrderedList>
+        <li>Listepunkt 2</li>
+      </OrderedList>
+    </li>
+    <li>Listepunkt 3</li>
+    <li>
+      Listepunkt 4
+      <UnOrderedList>
+        <li>
+          Listepunkt 5
+          <UnOrderedList>
+            <li>Listepunkt 6</li>
+          </UnOrderedList>
+        </li>
+      </UnOrderedList>
+    </li>
+  </OrderedList>
 );

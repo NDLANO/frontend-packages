@@ -101,6 +101,8 @@ export {
   DialogHeader,
   DialogBody,
   DialogFooter,
+  useDialog,
+  DialogRootProvider,
 } from "./Dialog";
 
 export type { ExpandableBoxProps, ExpandableBoxSummaryProps } from "./ExpandableBox";

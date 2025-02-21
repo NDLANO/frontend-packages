@@ -7,7 +7,7 @@
  */
 
 import { forwardRef } from "react";
-import { Dialog, dialogAnatomy } from "@ark-ui/react";
+import { Dialog, dialogAnatomy, type DialogRootProviderProps, useDialog as _useDialog } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
@@ -424,3 +424,7 @@ export const DialogFooter = styled("div", {
     paddingBlockEnd: "medium",
   },
 });
+
+export const DialogRootProvider = withRootProvider<DialogRootProviderProps>(Dialog.RootProvider);
+
+export const useDialog = _useDialog;

@@ -30,6 +30,7 @@ import {
   SelectClearTrigger,
   SelectContent,
   SelectControl,
+  SelectHiddenSelect,
   SelectIndicator,
   SelectItem,
   SelectItemGroup,
@@ -420,6 +421,7 @@ export const WithField: StoryFn<typeof SelectRoot> = ({ ...args }) => {
             ))}
           </SelectContent>
         </Portal>
+        <SelectHiddenSelect />
       </SelectRoot>
     </FieldRoot>
   );

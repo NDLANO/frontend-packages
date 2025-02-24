@@ -7,8 +7,9 @@
  */
 
 import { forwardRef } from "react";
-import { RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
+import { ark, RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
 import { createStyleContext } from "./createStyleContext";
 import { Text, type TextProps } from "./Text";
@@ -123,14 +124,20 @@ const InternalRadioGroupItemText = withContext<HTMLSpanElement, RadioGroup.ItemT
   "itemText",
 );
 
+const InnerRadioGroupItemText = styled(ark.span, {}, { baseComponent: true });
+
 export const RadioGroupItemText = ({
   textStyle = "label.medium",
   children,
+  asChild,
+  consumeCss,
   ...props
 }: RadioGroup.ItemTextProps & TextProps & JsxStyleProps) => (
   <InternalRadioGroupItemText asChild>
     <Text asChild consumeCss textStyle={textStyle} {...props}>
-      <span>{children}</span>
+      <InnerRadioGroupItemText asChild={asChild} consumeCss={consumeCss}>
+        {children}
+      </InnerRadioGroupItemText>
     </Text>
   </InternalRadioGroupItemText>
 );
@@ -140,11 +147,15 @@ export const InternalRadioGroupLabel = withContext<HTMLLabelElement, RadioGroup.
   "label",
 );
 
+const InnerRadioGroupLabel = styled(ark.div, {}, { baseComponent: true });
+
 export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroup.LabelProps & TextProps & JsxStyleProps>(
   ({ textStyle = "label.large", fontWeight = "bold", children, asChild, consumeCss, ...props }, ref) => (
     <InternalRadioGroupLabel {...props} asChild ref={ref}>
-      <Text textStyle={textStyle} fontWeight={fontWeight} asChild={asChild} consumeCss={consumeCss}>
-        {children}
+      <Text textStyle={textStyle} fontWeight={fontWeight} asChild>
+        <InnerRadioGroupLabel asChild={asChild} consumeCss={consumeCss}>
+          {children}
+        </InnerRadioGroupLabel>
       </Text>
     </InternalRadioGroupLabel>
   ),

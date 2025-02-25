@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import type { CollectionItem } from "@ark-ui/react";
 import type { ComboboxRootProps, PaginationRootProps, TagsInputRootProps } from "@ndla/primitives";
 import { type TagSelectorRootProps } from "../TagSelector/TagSelector";
+import { useMemo } from "react";
 
 type DeepPartial<T> = {
   [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
@@ -20,17 +21,20 @@ export const useTagsInputTranslations = (
 ): TagsInputRootProps["translations"] => {
   const { t } = useTranslation("translation", { keyPrefix: "component.tagsInput" });
 
-  return {
-    clearTriggerLabel: t("clearTriggerLabel"),
-    deleteTagTriggerLabel: (tag) => t("deleteTagTriggerLabel", { tag }),
-    tagAdded: (tag) => t("tagAdded", { tag }),
-    tagsPasted: (tag) => t("tagsPasted", { length: tag.length }),
-    tagEdited: (tag) => t("tagEdited", { tag }),
-    tagUpdated: (tag) => t("tagUpdated", { tag }),
-    tagDeleted: (tag) => t("tagDeleted", { tag }),
-    tagSelected: (tag) => t("tagSelected", { tag }),
-    ...translations,
-  };
+  return useMemo(
+    () => ({
+      clearTriggerLabel: t("clearTriggerLabel"),
+      deleteTagTriggerLabel: (tag) => t("deleteTagTriggerLabel", { tag }),
+      tagAdded: (tag) => t("tagAdded", { tag }),
+      tagsPasted: (tag) => t("tagsPasted", { length: tag.length }),
+      tagEdited: (tag) => t("tagEdited", { tag }),
+      tagUpdated: (tag) => t("tagUpdated", { tag }),
+      tagDeleted: (tag) => t("tagDeleted", { tag }),
+      tagSelected: (tag) => t("tagSelected", { tag }),
+      ...translations,
+    }),
+    [t, translations],
+  );
 };
 
 export const useComboboxTranslations = <T extends CollectionItem>(
@@ -38,11 +42,14 @@ export const useComboboxTranslations = <T extends CollectionItem>(
 ): ComboboxRootProps<T>["translations"] => {
   const { t } = useTranslation("translation", { keyPrefix: "component.combobox" });
 
-  return {
-    triggerLabel: t("triggerLabel"),
-    clearTriggerLabel: t("clearTriggerLabel"),
-    ...translations,
-  };
+  return useMemo(
+    () => ({
+      triggerLabel: t("triggerLabel"),
+      clearTriggerLabel: t("clearTriggerLabel"),
+      ...translations,
+    }),
+    [t, translations],
+  );
 };
 
 export const useTagSelectorTranslations = <T extends CollectionItem>(
@@ -51,11 +58,15 @@ export const useTagSelectorTranslations = <T extends CollectionItem>(
   const tagsInputTranslations = useTagsInputTranslations();
   const comboboxTranslations = useComboboxTranslations();
 
-  return {
-    ...comboboxTranslations,
-    ...tagsInputTranslations,
-    ...translations,
-  } as TagSelectorRootProps<T>["translations"];
+  return useMemo(
+    () =>
+      ({
+        ...comboboxTranslations,
+        ...tagsInputTranslations,
+        ...translations,
+      }) as TagSelectorRootProps<T>["translations"],
+    [comboboxTranslations, tagsInputTranslations, translations],
+  );
 };
 
 export const usePaginationTranslations = (
@@ -63,16 +74,19 @@ export const usePaginationTranslations = (
 ): PaginationRootProps["translations"] => {
   const { t } = useTranslation("translation", { keyPrefix: "component.pagination" });
 
-  return {
-    rootLabel: t("rootLabel"),
-    prevTriggerLabel: t("prevTriggerLabel"),
-    nextTriggerLabel: t("nextTriggerLabel"),
-    itemLabel: (details) => {
-      const lastPage = details.totalPages > 1 && details.page === details.totalPages;
-      return lastPage ? t("lastPage", { page: details.page }) : t("page", { page: details.page });
-    },
-    ...translations,
-  };
+  return useMemo(
+    () => ({
+      rootLabel: t("rootLabel"),
+      prevTriggerLabel: t("prevTriggerLabel"),
+      nextTriggerLabel: t("nextTriggerLabel"),
+      itemLabel: (details) => {
+        const lastPage = details.totalPages > 1 && details.page === details.totalPages;
+        return lastPage ? t("lastPage", { page: details.page }) : t("page", { page: details.page });
+      },
+      ...translations,
+    }),
+    [translations, t],
+  );
 };
 
 // TODO: Deduplicate this and place it somewhere smart. Maybe core?
@@ -122,24 +136,27 @@ export const useImageSearchTranslations = (
 
   const { imagePreview, paginationTranslations: fallbackPaginationTranslations, ...remaining } = translations;
 
-  return {
-    searchPlaceholder: t("searchPlaceholder"),
-    searchButtonTitle: t("searchButtonTitle"),
-    imagePreview: {
-      creatorsLabel: t("imagePreview.creatorsLabel"),
-      license: t("imagePreview.license"),
-      caption: t("imagePreview.caption"),
-      altText: t("imagePreview.altText"),
-      modelRelease: t("imagePreview.modelRelease"),
-      tags: t("imagePreview.tags"),
-      close: t("close"),
-      checkboxLabel: t("imagePreview.checkboxLabel"),
-      useImageTitle: t("imagePreview.useImageTitle"),
-      ...imagePreview,
-    },
-    paginationTranslations: { ...paginationTranslations, ...fallbackPaginationTranslations },
-    ...remaining,
-  };
+  return useMemo(
+    () => ({
+      searchPlaceholder: t("searchPlaceholder"),
+      searchButtonTitle: t("searchButtonTitle"),
+      imagePreview: {
+        creatorsLabel: t("imagePreview.creatorsLabel"),
+        license: t("imagePreview.license"),
+        caption: t("imagePreview.caption"),
+        altText: t("imagePreview.altText"),
+        modelRelease: t("imagePreview.modelRelease"),
+        tags: t("imagePreview.tags"),
+        close: t("close"),
+        checkboxLabel: t("imagePreview.checkboxLabel"),
+        useImageTitle: t("imagePreview.useImageTitle"),
+        ...imagePreview,
+      },
+      paginationTranslations: { ...paginationTranslations, ...fallbackPaginationTranslations },
+      ...remaining,
+    }),
+    [t, paginationTranslations, imagePreview, fallbackPaginationTranslations, remaining],
+  );
 };
 
 export const useAudioSearchTranslations = (
@@ -150,28 +167,34 @@ export const useAudioSearchTranslations = (
 
   const { paginationTranslations: fallbackPaginationTranslations, ...remaining } = translations;
 
-  return {
-    searchPlaceholder: t("searchPlaceholder"),
-    searchButtonTitle: t("searchButtonTitle"),
-    useAudio: t("useAudio"),
-    noResults: t("noResults"),
-    paginationTranslations: { ...paginationTranslations, ...fallbackPaginationTranslations },
-    ...remaining,
-  };
+  return useMemo(
+    () => ({
+      searchPlaceholder: t("searchPlaceholder"),
+      searchButtonTitle: t("searchButtonTitle"),
+      useAudio: t("useAudio"),
+      noResults: t("noResults"),
+      paginationTranslations: { ...paginationTranslations, ...fallbackPaginationTranslations },
+      ...remaining,
+    }),
+    [t, paginationTranslations, fallbackPaginationTranslations, remaining],
+  );
 };
 
 export const useVideoSearchTranslations = (translations?: Partial<VideoTranslations>): VideoTranslations => {
   const { t } = useTranslation("translation", { keyPrefix: "component.videoSearch" });
 
-  return {
-    searchPlaceholder: t("searchPlaceholder"),
-    searchButtonTitle: t("searchButtonTitle"),
-    loadMoreVideos: t("loadMoreVideos"),
-    noResults: t("noResults"),
-    is360Video: t("is360Video"),
-    previewVideo: t("previewVideo"),
-    addVideo: t("addVideo"),
-    close: t("close"),
-    ...translations,
-  };
+  return useMemo(
+    () => ({
+      searchPlaceholder: t("searchPlaceholder"),
+      searchButtonTitle: t("searchButtonTitle"),
+      loadMoreVideos: t("loadMoreVideos"),
+      noResults: t("noResults"),
+      is360Video: t("is360Video"),
+      previewVideo: t("previewVideo"),
+      addVideo: t("addVideo"),
+      close: t("close"),
+      ...translations,
+    }),
+    [t, translations],
+  );
 };

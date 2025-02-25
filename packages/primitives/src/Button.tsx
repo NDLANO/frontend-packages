@@ -6,7 +6,7 @@
  *
  */
 
-import { type ReactNode, forwardRef } from "react";
+import { type ReactNode, forwardRef, useMemo } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
@@ -266,20 +266,24 @@ export type ButtonProps = BaseButtonProps & ButtonVariantProps;
 const StyledButton = styled(ark.button, {}, { baseComponent: true, defaultProps: { type: "button" } });
 
 export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
-  ({ loading, loadingContent: loadingContentProp, replaceContent, onClick, children, ...props }, ref) => {
+  ({ loading, loadingContent: loadingContentProp, replaceContent, onClick: _onClick, children, ...props }, ref) => {
     const ariaDisabled = loading ? { "aria-disabled": true } : {};
 
-    const loadingContent = replaceContent ? (
-      loadingContentProp
-    ) : (
-      <>
-        {loadingContentProp}
-        {children}
-      </>
-    );
+    const onClick = useMemo(() => (loading ? undefined : _onClick), [_onClick, loading]);
+
+    const loadingContent = useMemo(() => {
+      return replaceContent ? (
+        loadingContentProp
+      ) : (
+        <>
+          {loadingContentProp}
+          {children}
+        </>
+      );
+    }, [children, loadingContentProp, replaceContent]);
 
     return (
-      <StyledButton onClick={loading ? undefined : onClick} {...ariaDisabled} {...props} ref={ref}>
+      <StyledButton onClick={onClick} {...ariaDisabled} {...props} ref={ref}>
         {loading ? loadingContent : children}
       </StyledButton>
     );

@@ -6,7 +6,14 @@
  *
  */
 
-import { type ChangeEvent, type ReactNode, type KeyboardEvent, useEffect, useState } from "react";
+import {
+  type ChangeEvent,
+  type ReactNode,
+  type KeyboardEvent,
+  useEffect,
+  useState,
+  type ComponentPropsWithRef,
+} from "react";
 import { ArrowLeftShortLine, ArrowRightShortLine, SearchLine } from "@ndla/icons";
 import {
   Button,
@@ -99,7 +106,7 @@ export interface ImageSearchTranslations {
   paginationTranslations: PaginationRootProps["translations"];
 }
 
-export interface ImageSearchProps {
+export interface ImageSearchProps extends ComponentPropsWithRef<"input"> {
   onImageSelect: (image: IImageMetaInformationV3DTO) => void;
   searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3DTO>;
   onError?: (err: any) => void;
@@ -111,6 +118,7 @@ export interface ImageSearchProps {
 }
 
 const ImageSearch = ({
+  ref,
   onImageSelect,
   searchImages: search,
   onError,
@@ -168,6 +176,7 @@ const ImageSearch = ({
 
   const onEnter = (e: KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => {
     if (e.key === "Enter") {
+      e.stopPropagation();
       searchImages(queryObject);
     }
   };
@@ -186,12 +195,12 @@ const ImageSearch = ({
           value={queryObject?.query ?? ""}
           onChange={handleQueryChange}
           onKeyDown={onEnter}
+          ref={ref}
         />
         <IconButton
           variant="primary"
           aria-label={translations.searchButtonTitle}
           title={translations.searchButtonTitle}
-          onKeyDown={onEnter}
           onClick={() => searchImages(queryObject)}
         >
           <SearchLine />

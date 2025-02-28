@@ -13,7 +13,6 @@ import messagesEN from "../locale/messages-en";
 import messagesNB from "../locale/messages-nb";
 import messagesNN from "../locale/messages-nn";
 import messagesSE from "../locale/messages-se";
-import messagesSMA from "../locale/messages-sma";
 
 const DETECTION_OPTIONS = {
   order: ["path", "localStorage", "htmlTag"],
@@ -21,7 +20,7 @@ const DETECTION_OPTIONS = {
   lookupLocalStorage: "i18nextLng",
 };
 
-export const supportedTranslationLanguages = ["nb", "nn", "en", "se", "sma"] as const;
+export const supportedTranslationLanguages = ["nb", "nn", "en", "se"] as const;
 const i18nInstance = i18n.use(initReactI18next).use(LanguageDetector);
 
 i18nInstance.init({
@@ -41,9 +40,6 @@ i18nInstance.init({
     },
     se: {
       translation: messagesSE,
-    },
-    sma: {
-      translation: messagesSMA,
     },
   },
 });

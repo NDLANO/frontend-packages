@@ -56,7 +56,7 @@ export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
 export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleList";
 
-export { ErrorResourceAccessDenied, default as ErrorMessage } from "./ErrorMessage";
+export { default as ErrorMessage } from "./ErrorMessage";
 
 export { FileListEmbed, File, PdfFile, FileListItem, FileListElement, FileListWrapper } from "./FileList";
 
@@ -75,7 +75,6 @@ export { default as messagesNB } from "./locale/messages-nb";
 export { default as messagesNN } from "./locale/messages-nn";
 export { default as messagesEN } from "./locale/messages-en";
 export { default as messagesSE } from "./locale/messages-se";
-export { default as messagesSMA } from "./locale/messages-sma";
 
 export { default as Breadcrumb, HomeBreadcrumb } from "./Breadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";

@@ -36,10 +36,10 @@
     "html-react-parser": "^5.1.19"
   },
   "peerDependencies": {
-    "i18next": ">= 23.11.5",
+    "i18next": ">= 24.2.2",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",
-    "react-i18next": "^14.1.1",
+    "react-i18next": "^15.4.1",
     "react-router-dom": ">= 6.0.0"
   },
   "publishConfig": {

@@ -11,7 +11,6 @@ import messagesEN from "../messages-en";
 import messagesNB from "../messages-nb";
 import messagesNN from "../messages-nn";
 import messagesSE from "../messages-se";
-import messagesSMA from "../messages-sma";
 
 test("That all translations has all language keys", () => {
   const anyMissing = validateTranslationFiles(
@@ -31,10 +30,6 @@ test("That all translations has all language keys", () => {
       {
         languageName: "Nordsamisk",
         translationObject: messagesSE,
-      },
-      {
-        languageName: "Sørsamisk",
-        translationObject: messagesSMA,
       },
     ],
     "only-on-error",

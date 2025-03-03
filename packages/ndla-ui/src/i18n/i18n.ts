@@ -7,25 +7,16 @@
  */
 
 import i18n from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import messagesEN from "../locale/messages-en";
 import messagesNB from "../locale/messages-nb";
 import messagesNN from "../locale/messages-nn";
 import messagesSE from "../locale/messages-se";
 
-const DETECTION_OPTIONS = {
-  order: ["path", "localStorage", "htmlTag"],
-  caches: ["localStorage"],
-  lookupLocalStorage: "i18nextLng",
-};
-
 export const supportedTranslationLanguages = ["nb", "nn", "en", "se"] as const;
-const i18nInstance = i18n.use(initReactI18next).use(LanguageDetector);
+const i18nInstance = i18n.use(initReactI18next);
 
 i18nInstance.init({
-  compatibilityJSON: "v3",
-  detection: DETECTION_OPTIONS,
   fallbackLng: "nb",
   supportedLngs: supportedTranslationLanguages,
   resources: {

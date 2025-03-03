@@ -26,3 +26,5 @@ export { polymorphicForwardRef } from "./polymorphicForwardRef";
 export { contains } from "./contains";
 export { humanFileSize } from "./humanFileSize";
 export type { PolymorphicProps } from "./polymorphicForwardRef";
+
+export { groupBy, uniq, uniqBy, partition, keyBy, sortBy } from "./arrayHelpers";

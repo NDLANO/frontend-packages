@@ -108,6 +108,8 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
       if (prop === "configure") {
         return (configuration: PluginConfiguration<TType, TOptions>) =>
           createPlugin({ ...params, configuration } as PluginConfiguration<TType, TOptions>);
+      } else if (prop === "normalizeInitialValue") {
+        return params.normalizeInitialValue;
       }
       return undefined; // Only expose `.configure`
     },

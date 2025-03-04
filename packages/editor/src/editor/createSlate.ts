@@ -6,15 +6,15 @@
  *
  */
 
-import { createEditor, Element, type Editor } from "slate";
-import type { ElementRenderer, LeafRenderer, SlatePlugin, SlateRenderer } from "../core";
+import { createEditor, Element, type Descendant, type Editor } from "slate";
+import type { ElementRenderer, LeafRenderer, PluginReturnType, SlateRenderer } from "../core";
 import { LoggerManager } from "../editor/logger/Logger";
 import { withHistory } from "slate-history";
 import { withReact } from "slate-react";
 import { withLogger } from "../editor/logger/withLogger";
 import { createElementRenderer, createLeafRenderer } from "../core/createRenderer";
 
-export const withPlugins = (editor: Editor, plugins?: SlatePlugin[]) => {
+export const withPlugins = (editor: Editor, plugins?: PluginReturnType<any, any>[]) => {
   if (plugins) {
     editor.getPluginOptions = <T>(pluginName: string) => editor.pluginOptions.get(pluginName) as T | undefined;
     return plugins.reduce((editor, plugin) => plugin(editor), editor);
@@ -32,10 +32,11 @@ export const withRenderers = (editor: Editor, renderers?: SlateRenderer[]) => {
 };
 
 interface CreateSlate {
-  plugins?: SlatePlugin[];
+  plugins?: PluginReturnType<any, any>[];
   logger?: LoggerManager;
   elementRenderers?: ElementRenderer[];
   leafRenderers?: LeafRenderer[];
+  value?: Descendant[];
 }
 
 export const createSlate = ({
@@ -43,6 +44,7 @@ export const createSlate = ({
   elementRenderers,
   leafRenderers,
   logger = new LoggerManager({ debug: false }),
+  value,
 }: CreateSlate): Editor => {
   const editor = withRenderers(
     withRenderers(
@@ -51,6 +53,16 @@ export const createSlate = ({
     ),
     leafRenderers?.map(createLeafRenderer),
   );
+
+  if (value) {
+    editor.children = value;
+  }
+
+  if (editor.children.length) {
+    plugins?.forEach((plugin) => {
+      plugin.normalizeInitialValue?.(editor);
+    });
+  }
 
   editor.hasVoids = (element) => element.children.some((n) => Element.isElement(n) && editor.isVoid(n));
 

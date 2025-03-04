@@ -71,6 +71,7 @@ export interface PluginConfiguration<TType extends ElementType, TOptions = undef
    * For instance, use it to define valid blocks another block/inline can be nested in
    */
   options?: TOptions;
+  normalizeInitialValue?: (editor: Editor) => void;
 }
 
 export interface ConfigurationOption<T> {
@@ -114,6 +115,7 @@ export type PluginReturnType<TType extends ElementType, TOptions = undefined> = 
       options?: MappedConfigurationOption<Partial<TOptions>>;
     },
   ) => SlatePlugin;
+  normalizeInitialValue: (editor: Editor) => void;
   options: TOptions;
 };
 

@@ -106,8 +106,14 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
   const plugin = new Proxy(pluginFn, {
     get(_, prop) {
       if (prop === "configure") {
-        return (configuration: PluginConfiguration<TType, TOptions>) =>
-          createPlugin({ ...params, configuration } as PluginConfiguration<TType, TOptions>);
+        return (configuration: PluginConfiguration<TType, TOptions>) => {
+          if (configuration.normalizeInitialValue) {
+            params.normalizeInitialValue = configuration.normalizeInitialValue;
+          }
+          return createPlugin({ ...params, configuration } as PluginConfiguration<TType, TOptions>);
+        };
+      } else if (prop === "normalizeInitialValue") {
+        return params.normalizeInitialValue;
       }
       return undefined; // Only expose `.configure`
     },

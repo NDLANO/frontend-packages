@@ -6,8 +6,8 @@
  *
  */
 
-import { getLicenseByAbbreviation } from ".";
 import type { Contributor, CopyrightType } from "./contributorTypes";
+import { getLicenseByAbbreviation } from "./licenses";
 
 export const getLicenseCredits = (copyright?: {
   creators?: Contributor[];

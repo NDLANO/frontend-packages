@@ -22,6 +22,7 @@ export interface VideoTranslations {
   previewVideo: string;
   addVideo: string;
   close: string;
+  loading: string;
 }
 
 interface Props {

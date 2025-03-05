@@ -400,6 +400,7 @@ const messages = {
       previewVideo: "Preview",
       is360Video: "VR video",
       close: "Lukk",
+      loading: "Loading videos",
     },
   },
   richTextEditor: {

@@ -12,9 +12,8 @@ import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { Stack, styled } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { ContentTypeBadge } from "..";
 import { ArticleByline } from "./ArticleByline";
-import { type ContentType } from "../ContentTypeBadge/ContentTypeBadge";
+import { ContentTypeBadge, type ContentType } from "../ContentTypeBadge/ContentTypeBadge";
 import type { Article as ArticleType } from "../types";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });

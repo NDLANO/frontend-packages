@@ -124,7 +124,7 @@ const SpeedButton = styled(Button, {
   },
 });
 
-const StyledSelectRoot = styled(SelectRoot, {
+const StyledSelectRoot = styled(SelectRoot<string>, {
   base: {
     gridArea: "speed",
   },

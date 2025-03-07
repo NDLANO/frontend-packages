@@ -40,7 +40,11 @@ export const Default: StoryFn = () => {
   const [locale, setLocale] = useState("nb");
   return (
     <div>
-      <RadioGroupRoot orientation="horizontal" value={locale} onValueChange={(details) => setLocale(details.value)}>
+      <RadioGroupRoot
+        orientation="horizontal"
+        value={locale}
+        onValueChange={(details) => (details.value ? setLocale(details.value) : {})}
+      >
         <RadioGroupLabel>Description language</RadioGroupLabel>
         {languageOptions.map((option) => (
           <RadioGroupItem key={option.value} value={option.value}>

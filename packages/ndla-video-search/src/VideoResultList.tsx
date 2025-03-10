@@ -64,7 +64,7 @@ export const VideoResultList = ({
           ))}
         </StyledList>
       )}
-      {!!isLoading && <Spinner />}
+      {!!isLoading && <Spinner aria-label={translations.loading} />}
       {!!existsMoreVideos && <Button onClick={onShowMore}>{translations.loadMoreVideos}</Button>}
     </StyledVideoResultWrapper>
   );

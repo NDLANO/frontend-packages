@@ -92,23 +92,3 @@ export const Disabled: StoryObj<typeof IconButton> = {
     disabled: true,
   },
 };
-
-export const Loading: StoryObj<typeof IconButton> = {
-  args: {
-    loading: true,
-  },
-};
-
-export const LoadingReplace: StoryObj<typeof IconButton> = {
-  args: {
-    loading: true,
-    replaceContent: true,
-  },
-};
-
-export const CustomLoading: StoryObj<typeof IconButton> = {
-  args: {
-    loading: true,
-    loadingContent: "...",
-  },
-};

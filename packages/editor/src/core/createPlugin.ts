@@ -7,7 +7,7 @@
  */
 
 import type { Editor } from "slate";
-import type { PluginConfiguration, PluginConfigurationWithConfiguration, PluginReturnType } from ".";
+import type { PluginConfiguration, PluginConfigurationConfigurationType, PluginReturnType } from ".";
 import type { ElementType } from "../types";
 import { mergeOptions } from "./mergeOptions";
 
@@ -15,10 +15,9 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
   params: PluginConfiguration<TType, TOptions>,
 ): PluginReturnType<TType, TOptions> => {
   const pluginFn = (editor: Editor) => {
-    const { normalize, transform, configuration, override } = params as PluginConfigurationWithConfiguration<
-      TType,
-      TOptions
-    >;
+    const { normalize, transform, configuration } = params as PluginConfiguration<TType, TOptions> & {
+      configuration?: PluginConfigurationConfigurationType<TType, TOptions>;
+    };
     const name = configuration?.name ?? params.name;
     const isInlineParam = configuration?.isInline ?? params.isInline;
     const isVoidParam = configuration?.isVoid ?? params.isVoid;
@@ -53,7 +52,7 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
       const { normalizeNode } = editor;
       editor.normalizeNode = (entry, options) => {
         const [node, path] = entry;
-        let res = !override?.normalize ? normalize?.(editor, node, path, logger, pluginOptions) : false;
+        let res = !configuration?.override?.normalize ? normalize?.(editor, node, path, logger, pluginOptions) : false;
 
         if (!res && configuration?.normalize) {
           res = configuration.normalize(editor, node, path, logger, pluginOptions);
@@ -69,7 +68,9 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
     let shortcutEntries = params.shortcuts ? Object.entries(params.shortcuts) : [];
     if (configuration?.shortcuts) {
       const configurationShortcuts = Object.entries(configuration.shortcuts);
-      shortcutEntries = override?.shortcuts ? configurationShortcuts : shortcutEntries.concat(configurationShortcuts);
+      shortcutEntries = configuration?.override?.shortcuts
+        ? configurationShortcuts
+        : shortcutEntries.concat(configurationShortcuts);
     }
 
     if (shortcutEntries.length) {
@@ -91,7 +92,7 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
     }
 
     let ret = editor;
-    if (transform && !override?.transform) {
+    if (transform && !configuration?.override?.transform) {
       ret = transform(editor, logger, pluginOptions);
     }
 
@@ -106,9 +107,17 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
   const plugin = new Proxy(pluginFn, {
     get(_, prop) {
       if (prop === "configure") {
-        return (configuration: PluginConfiguration<TType, TOptions>) => {
+        return (configuration: PluginConfigurationConfigurationType<TType, TOptions>) => {
           if (configuration.normalizeInitialValue) {
-            params.normalizeInitialValue = configuration.normalizeInitialValue;
+            if (!configuration.override?.normalizeInitialValue && params.normalizeInitialValue) {
+              const { normalizeInitialValue } = params;
+              params.normalizeInitialValue = (editor) => {
+                normalizeInitialValue(editor);
+                configuration.normalizeInitialValue?.(editor);
+              };
+            } else {
+              params.normalizeInitialValue = configuration.normalizeInitialValue;
+            }
           }
           return createPlugin({ ...params, configuration } as PluginConfiguration<TType, TOptions>);
         };

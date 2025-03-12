@@ -22,6 +22,7 @@ export type {
   LeafRenderer,
   CreateSlateElementRenderer,
   CreateSlateLeafRenderer,
+  PluginReturnType,
 } from "./core";
 export { mergeOptions } from "./core/mergeOptions";
 

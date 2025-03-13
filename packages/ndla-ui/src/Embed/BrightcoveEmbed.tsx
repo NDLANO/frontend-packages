@@ -102,6 +102,8 @@ const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
     ? getIframeProps({ ...embedData, videoid: linkedVideoId }, data.sources)
     : undefined;
 
+  const title = embedData.alt?.trim() ? embedData.alt : data.name?.trim() ? data.name : fallbackTitle;
+
   const licenseProps = licenseAttributes(data?.copyright?.license.license, lang, embedData.pageUrl);
 
   return (
@@ -110,8 +112,8 @@ const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
         <BrightcoveIframe
           ref={iframeRef}
           className="original"
-          title={embedData.alt || data.name || fallbackTitle}
-          aria-label={embedData.alt || data.name || fallbackTitle}
+          title={title}
+          aria-label={title}
           {...(alternativeVideoProps && !showOriginalVideo ? alternativeVideoProps : originalVideoProps)}
           allow="fullscreen; encrypted-media"
         />

@@ -87,11 +87,9 @@ export type MappedConfigurationOption<T> = {
       : T[K];
 };
 
-export interface PluginConfigurationWithConfiguration<TType extends ElementType, TOptions>
-  extends PluginConfiguration<TType, TOptions> {
-  configuration?: Omit<Partial<PluginConfiguration<TType, TOptions>>, "options"> & {
-    options?: MappedConfigurationOption<TOptions>;
-  };
+export interface PluginConfigurationConfigurationType<TType extends ElementType, TOptions>
+  extends Omit<Partial<PluginConfiguration<TType, TOptions>>, "options"> {
+  options?: MappedConfigurationOption<TOptions>;
   /**
    * Specify whether the new configuration should entirely replace the existing configuration, or if it should be merged with the existing configuration.
    * By default, the new configuration will be merged with the existing configuration.
@@ -99,6 +97,7 @@ export interface PluginConfigurationWithConfiguration<TType extends ElementType,
   override?: {
     shortcuts?: boolean;
     normalize?: boolean;
+    normalizeInitialValue?: boolean;
     transform?: boolean;
   };
 }
@@ -110,11 +109,7 @@ export type PluginReturnType<TType extends ElementType, TOptions = undefined> = 
    * Allows consumers of plugins to further modify most aspects of the plugin.
    * Usually just used to modify the options passed into the plugin.
    */
-  configure: (
-    configuration: Omit<Partial<PluginConfiguration<TType, TOptions>>, "options"> & {
-      options?: MappedConfigurationOption<Partial<TOptions>>;
-    },
-  ) => SlatePlugin;
+  configure: (configuration: PluginConfigurationConfigurationType<TType, TOptions>) => SlatePlugin;
   normalizeInitialValue: (editor: Editor) => void;
   options: TOptions;
 };

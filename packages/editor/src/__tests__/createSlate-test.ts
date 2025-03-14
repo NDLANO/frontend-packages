@@ -68,14 +68,55 @@ describe("createSlate", () => {
         { type: "section", children: [{ type: "paragraph", children: [{ text: "Updated" }] }] },
       ] as const;
 
-      const testPlugin = createPlugin({ name: "test" });
+      const testPlugin = createPlugin({
+        name: "test",
+        normalizeInitialValue: (editor) => {
+          editor.children.push({ type: "section", children: [{ type: "paragraph", children: [{ text: "Add" }] }] });
+          return true;
+        },
+      });
       const editor = createSlate({
         value: value,
         plugins: [
           (editor) => editor,
           testPlugin.configure({
             normalizeInitialValue: (editor) => {
-              editor.children = expected;
+              //@ts-expect-error - this is a test
+              editor.children[0].children[0].children[0].text = "Updated";
+              return true;
+            },
+            override: {
+              normalizeInitialValue: true,
+            },
+          }),
+        ],
+      });
+      expect(editor.children).toEqual(expected);
+    });
+    it("can run both the original and the `configure` normalizeInitialValue", () => {
+      const value: Descendant[] = [
+        { type: "section", children: [{ type: "paragraph", children: [{ text: "Hello" }] }] },
+      ] as const;
+
+      const expected: Descendant[] = [
+        { type: "section", children: [{ type: "paragraph", children: [{ text: "Updated" }] }] },
+        { type: "section", children: [{ type: "paragraph", children: [{ text: "Add" }] }] },
+      ] as const;
+      const testPlugin = createPlugin({
+        name: "test",
+        normalizeInitialValue: (editor) => {
+          editor.children.push({ type: "section", children: [{ type: "paragraph", children: [{ text: "Add" }] }] });
+          return true;
+        },
+      });
+      const editor = createSlate({
+        value: value,
+        plugins: [
+          (editor) => editor,
+          testPlugin.configure({
+            normalizeInitialValue: (editor) => {
+              //@ts-expect-error - this is a test
+              editor.children[0].children[0].children[0].text = "Updated";
               return true;
             },
           }),

@@ -6,6 +6,7 @@
  *
  */
 
+import { useTranslation } from "react-i18next";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { H5pMetaData } from "@ndla/types-embed";
@@ -34,6 +35,7 @@ const FigureOembed = styled(Figure, {
 });
 
 const H5pEmbed = ({ embed }: Props) => {
+  const { t } = useTranslation();
   if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="h5p" />;
   }
@@ -42,9 +44,17 @@ const H5pEmbed = ({ embed }: Props) => {
     return <FigureOembed data-embed-type="h5p" dangerouslySetInnerHTML={{ __html: embed.data.oembed.html ?? "" }} />;
   }
 
+  const title = embed.embedData.title?.trim()
+    ? embed.embedData.title
+    : embed.data.h5pLicenseInformation?.h5p.title?.trim()
+      ? embed.data.h5pLicenseInformation.h5p.title
+      : embed.embedData.url;
+
+  const titleWithPrefix = `${t("embed.type.h5p")}: ${title}`;
+
   return (
     <StyledFigure data-embed-type="h5p">
-      <iframe title={embed.embedData.url} aria-label={embed.embedData.url} src={embed.embedData.url} />
+      <iframe title={titleWithPrefix} aria-label={titleWithPrefix} src={embed.embedData.url} />
     </StyledFigure>
   );
 };

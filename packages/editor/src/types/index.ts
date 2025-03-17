@@ -50,5 +50,6 @@ export interface SlateEditor {
 declare module "slate" {
   export type BlockElement = ParagraphElement | HeadingElement;
   export type BlockElementType = BlockElement["type"];
+  export type ElementType = Element["type"];
   interface CustomTypes extends SlateEditor {}
 }

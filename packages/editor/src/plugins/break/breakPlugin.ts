@@ -11,6 +11,8 @@ import { createPlugin } from "../../core/createPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { BREAK_ELEMENT_TYPE, BREAK_PLUGIN, type BreakElementType, type BreakPluginOptions } from "./breakTypes";
 import { getCurrentBlock } from "../../queries/getCurrentBlock";
+import { isElementOfType } from "../../utils/isElementType";
+import { SECTION_ELEMENT_TYPE } from "../section/sectionTypes";
 
 export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
   type: BREAK_ELEMENT_TYPE,
@@ -18,6 +20,7 @@ export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
   isVoid: true,
   options: {
     validBreakElements: [PARAGRAPH_ELEMENT_TYPE],
+    validBreakParents: [SECTION_ELEMENT_TYPE],
   },
   transform: (editor, logger, options) => {
     const { insertBreak } = editor;
@@ -25,8 +28,13 @@ export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
     editor.insertBreak = () => {
       if (!editor.selection || !Range.isRange(editor.selection)) return false;
       const entry = getCurrentBlock(editor, options.validBreakElements ?? PARAGRAPH_ELEMENT_TYPE);
+      if (!entry) return insertBreak();
+      const [node, path] = entry;
+      if (!options.validBreakParents?.length && !isElementOfType(editor.parent(path)[0], options.validBreakParents)) {
+        return insertBreak();
+      }
 
-      if (entry && Node.string(entry[0]) === "" && !editor.hasVoids(entry[0])) {
+      if (entry && Node.string(node) === "" && !editor.hasVoids(node)) {
         logger.log("Tried to insert new paragraph, but current paragraph is empty, inserting break instead");
         Transforms.insertNodes(editor, [
           { type: BREAK_ELEMENT_TYPE, children: [] },

@@ -6,8 +6,7 @@
  *
  */
 
-import type { Descendant } from "slate";
-import type { ElementType } from "../../types";
+import type { Descendant, ElementType } from "slate";
 
 export const BREAK_ELEMENT_TYPE = "br" as const;
 export const BREAK_PLUGIN = "break" as const;
@@ -22,6 +21,7 @@ export interface BreakElement {
 
 export interface BreakPluginOptions {
   validBreakElements?: ElementType[];
+  validBreakParents?: ElementType[];
 }
 
 export interface BreakSerializerOptions {

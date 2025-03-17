@@ -7,9 +7,10 @@
  */
 
 import { attributesToProps } from "html-react-parser";
+import { MathEmbed } from "@ndla/ui";
 import { type PluginType } from "./types";
+
 export const mathPlugin: PluginType = (node) => {
   const { "data-math": mathContent, ...props } = attributesToProps(node.attribs);
-  // @ts-expect-error - math is a valid tag
-  return <math {...props} dangerouslySetInnerHTML={{ __html: mathContent }} />;
+  return <MathEmbed mathContent={mathContent as string} {...props} />;
 };

@@ -26,3 +26,4 @@ export type { HeartButtonType, CanonicalUrlFuncs, RenderContext } from "./types"
 export { EmbedWrapper } from "./EmbedWrapper";
 export type { EmbedWrapperVariantProps, EmbedWrapperProps } from "./EmbedWrapper";
 export { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
+export { MathEmbed } from "./MathEmbed";

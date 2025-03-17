@@ -159,7 +159,6 @@ const LinkButton = ({ url, children, path }: LinkButtonProps) => {
     return (
       <StyledSafeLinkButton
         to={getPossiblyRelativeUrl(url, path)}
-        target="_blank"
         variant="secondary"
         rel="noopener noreferrer"
       >

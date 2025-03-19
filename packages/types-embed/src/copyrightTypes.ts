@@ -7,7 +7,7 @@
  */
 
 import type { ICopyrightDTO } from "@ndla/types-backend/article-api";
-import type { MetaData } from ".";
+import type { MetaData } from "./baseTypes";
 
 export interface CopyrightEmbedData {
   resource: "copyright";

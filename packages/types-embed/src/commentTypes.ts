@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import type { MetaData } from ".";
+
+import type { MetaData } from "./baseTypes";
 
 export interface CommentEmbedData {
   resource: "comment";

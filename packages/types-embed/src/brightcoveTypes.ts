@@ -6,7 +6,7 @@
  *
  */
 
-import type { MetaData } from ".";
+import type { MetaData } from "./baseTypes";
 
 export type BrightcoveEmbedData = {
   resource: "brightcove";

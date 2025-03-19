@@ -7,7 +7,8 @@
  */
 
 import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
-import type { MetaData } from ".";
+import type { MetaData } from "./baseTypes";
+
 export interface ContactBlockEmbedData {
   resource: "contact-block";
   jobTitle: string;

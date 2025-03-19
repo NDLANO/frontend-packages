@@ -8,7 +8,7 @@
 
 import type { IAudioMetaInformationDTO } from "@ndla/types-backend/audio-api";
 import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
-import type { MetaData } from ".";
+import type { MetaData } from "./baseTypes";
 
 export type AudioEmbedData = {
   resource: "audio";

@@ -9,7 +9,7 @@
 import type { IArticleV2DTO } from "@ndla/types-backend/article-api";
 import type { IArticleDTO } from "@ndla/types-backend/draft-api";
 import type { Node } from "@ndla/types-taxonomy";
-import type { MetaData } from ".";
+import type { MetaData } from "./baseTypes";
 
 export interface RelatedContentEmbedData {
   resource: "related-content";

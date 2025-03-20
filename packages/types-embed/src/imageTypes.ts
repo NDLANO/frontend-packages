@@ -7,7 +7,7 @@
  */
 
 import type { ICopyrightDTO, IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
-import type { MetaData } from ".";
+import type { MetaData } from "./baseTypes";
 
 export interface ImageEmbedData {
   resource: "image";

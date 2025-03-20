@@ -7,18 +7,13 @@
  */
 
 import type { IConceptDTO } from "@ndla/types-backend/concept-api";
-import type {
-  AudioEmbedData,
-  AudioMetaData,
-  BrightcoveEmbedData,
-  BrightcoveMetaData,
-  IframeEmbedData,
-  IframeMetaData,
-  MetaData,
-} from ".";
+import type { MetaData } from "./baseTypes";
 import type { OembedEmbedData, OembedMetaData } from "./externalTypes";
 import type { H5pEmbedData, H5pMetaData } from "./h5pTypes";
 import type { ImageEmbedData, ImageMetaData } from "./imageTypes";
+import type { BrightcoveEmbedData, BrightcoveMetaData } from "./brightcoveTypes";
+import type { IframeEmbedData, IframeMetaData } from "./iframeTypes";
+import type { AudioEmbedData, AudioMetaData } from "./audioTypes";
 
 export interface ConceptEmbedData {
   resource: "concept";

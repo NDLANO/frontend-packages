@@ -151,40 +151,8 @@ export type { H5pData };
 export type { CampaignBlockMeta };
 export type { OembedProxyData, H5pPreviewResponse, H5pOembedData, H5pLicenseInformation, H5pInfo };
 export type { UUDisclaimerData };
-
-interface MetaDataFailure<T extends EmbedData> {
-  resource: T["resource"];
-  embedData: T;
-  status: "error";
-  message?: string;
-}
-
-interface MetaDataSuccess<T extends EmbedData, Data> {
-  resource: T["resource"];
-  embedData: T;
-  data: Data;
-  status: "success";
-}
-
-export type MetaData<Embed extends EmbedData, Data> = MetaDataFailure<Embed> | MetaDataSuccess<Embed, Data>;
-
-export interface OembedProxyResponse {
-  type: string;
-  version: string;
-  title?: string;
-  description?: string;
-  authorName?: string;
-  authorUrl?: string;
-  providerName?: string;
-  providerUrl?: string;
-  cacheAge?: number;
-  thumbnailUrl?: string;
-  thumbnailWidth?: number;
-  thumbnailHeight?: number;
-  width?: number;
-  height?: number;
-  html?: string;
-}
+export type { MetaData } from "./baseTypes";
+export type { OembedProxyResponse } from "./oembedTypes";
 
 export interface NRKEmbedData {
   resource: "nrk";

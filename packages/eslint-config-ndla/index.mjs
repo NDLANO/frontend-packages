@@ -233,6 +233,7 @@ export default tseslint.config(
           " *",
           " ",
         ],
+        2,
       ],
     },
   },

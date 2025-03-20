@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
 export function copyTextToClipboard(text: string, el = document.body) {
   if (!window || !document) {
     return false;

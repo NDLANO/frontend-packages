@@ -67,7 +67,7 @@ const filePromises = allFiles.map(async ({ filename, file, ctime, mtime }) => {
       },
       template: (variables, { tpl }) => {
         return tpl`
-            ${copyright.replace(regexPattern, `${ctime.getFullYear()}-`)}
+            ${copyright.replace(regexPattern, `${ctime.getFullYear()}-`) + "\u000A"}
 
             ${autoNotice}
 

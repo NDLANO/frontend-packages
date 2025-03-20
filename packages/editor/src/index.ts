@@ -119,7 +119,7 @@ export { deserializeFromHtml } from "./serialization/html/deserializeFromHtml";
 
 export { toggleBlock } from "./transforms/toggleBlock";
 
-export type { SlateEditor, CustomEditor, ElementType } from "./types";
+export type { SlateEditor, CustomEditor } from "./types";
 
 export { isElementOfType } from "./utils/isElementType";
 export { isEmptyTextNode } from "./utils/isEmptyTextNode";

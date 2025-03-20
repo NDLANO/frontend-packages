@@ -6,8 +6,7 @@
  *
  */
 
-import type { Descendant } from "slate";
-import type { ElementType } from "../../types";
+import type { Descendant, ElementType } from "slate";
 
 export const NOOP_ELEMENT_TYPE = "noop" as const;
 export const NOOP_PLUGIN = "noop" as const;

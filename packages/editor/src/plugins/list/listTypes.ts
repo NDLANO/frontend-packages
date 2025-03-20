@@ -6,8 +6,7 @@
  *
  */
 
-import type { Descendant } from "slate";
-import type { ElementType } from "../../types";
+import type { Descendant, ElementType } from "slate";
 
 export const LIST_ELEMENT_TYPE = "list" as const;
 export const LIST_ITEM_ELEMENT_TYPE = "list-item" as const;

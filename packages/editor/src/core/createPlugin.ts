@@ -6,9 +6,8 @@
  *
  */
 
-import type { Editor } from "slate";
+import type { Editor, ElementType } from "slate";
 import type { PluginConfiguration, PluginConfigurationConfigurationType, PluginReturnType } from ".";
-import type { ElementType } from "../types";
 import { mergeOptions } from "./mergeOptions";
 
 export const createPlugin = <TType extends ElementType, TOptions extends object | undefined = undefined>(

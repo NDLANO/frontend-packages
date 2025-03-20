@@ -7,7 +7,7 @@
  */
 
 import { I18nextProvider } from "react-i18next";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs";
 import type { Preview } from "@storybook/react";
 import { i18nInstance } from "@ndla/ui";

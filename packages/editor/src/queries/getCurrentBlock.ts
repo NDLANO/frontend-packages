@@ -6,9 +6,8 @@
  *
  */
 
-import type { Editor, Element, NodeEntry } from "slate";
+import type { Editor, Element, NodeEntry, ElementType } from "slate";
 import { isElementOfType } from "../utils/isElementType";
-import type { ElementType } from "../types";
 
 export const getCurrentBlock = <T extends ElementType>(
   editor: Editor,

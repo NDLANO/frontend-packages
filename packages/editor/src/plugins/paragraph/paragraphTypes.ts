@@ -6,8 +6,7 @@
  *
  */
 
-import type { Descendant } from "slate";
-import type { ElementType } from "../../types";
+import type { Descendant, ElementType } from "slate";
 
 export const PARAGRAPH_ELEMENT_TYPE = "paragraph" as const;
 export const PARAGRAPH_PLUGIN = "paragraph" as const;

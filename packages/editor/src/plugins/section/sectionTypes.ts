@@ -6,8 +6,7 @@
  *
  */
 
-import type { Descendant } from "slate";
-import type { ElementType } from "../../types";
+import type { Descendant, ElementType } from "slate";
 
 export const SECTION_ELEMENT_TYPE = "section" as const;
 export const SECTION_PLUGIN = "section" as const;

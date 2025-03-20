@@ -7,8 +7,7 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
-import { Element, Node, Text, type Descendant } from "slate";
-import type { ElementType } from "../../types";
+import { Element, Node, Text, type Descendant, type ElementType } from "slate";
 import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/paragraph/paragraphTypes";
 import type { SlateSerializer } from "../../core";

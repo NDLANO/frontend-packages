@@ -6,8 +6,7 @@
  *
  */
 
-import { Element, Node } from "slate";
-import type { ElementType } from "../types";
+import { Element, Node, type ElementType } from "slate";
 
 export const isElementOfType = <TType extends ElementType>(
   node: Node | undefined,

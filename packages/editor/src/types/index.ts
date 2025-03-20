@@ -31,8 +31,6 @@ export interface CustomEditor {
   renderLeaf?: (props: RenderLeafProps) => JSX.Element | undefined;
 }
 
-export type ElementType = Element["type"];
-
 export interface SlateEditor {
   Editor: BaseEditor & ReactEditor & HistoryEditor & CustomEditor;
   Element:

@@ -30,7 +30,7 @@ export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
       const entry = getCurrentBlock(editor, options.validBreakElements ?? PARAGRAPH_ELEMENT_TYPE);
       if (!entry) return insertBreak();
       const [node, path] = entry;
-      if (!options.validBreakParents?.length && !isElementOfType(editor.parent(path)[0], options.validBreakParents)) {
+      if (!options.validBreakParents?.length || !isElementOfType(editor.parent(path)[0], options.validBreakParents)) {
         return insertBreak();
       }
 

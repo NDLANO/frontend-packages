@@ -14,21 +14,7 @@ import { createSerializer } from "../../core/createSerializer";
 
 export const breakSerializer = createSerializer<BreakSerializerOptions>({
   options: {
-    allowedBreakContainers: [
-      "section",
-      "div",
-      "aside",
-      "li",
-      "blockquote",
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6",
-      "summary",
-      "pre",
-    ],
+    allowedBreakContainers: ["section", "div", "aside", "li", "h1", "h2", "h3", "h4", "h5", "h6", "pre"],
   },
   deserialize: (el, _, options) => {
     if (el.tagName.toLowerCase() !== BREAK_ELEMENT_TYPE) return;

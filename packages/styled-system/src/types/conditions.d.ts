@@ -112,7 +112,7 @@ export interface Conditions {
 	"_groupChecked": string
 	/** `.group:is([aria-expanded=true], [data-expanded], [data-state="expanded"]) &` */
 	"_groupExpanded": string
-	/** `.group:invalid &` */
+	/** `.group:is(:invalid, [data-invalid]) &` */
 	"_groupInvalid": string
 	/** `&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state="indeterminate"])` */
 	"_indeterminate": string
@@ -152,7 +152,7 @@ export interface Conditions {
 	"_open": string
 	/** `&:is([closed], [data-closed], [data-state="closed"])` */
 	"_closed": string
-	/** `&is(:fullscreen, [data-fullscreen])` */
+	/** `&:is(:fullscreen, [data-fullscreen])` */
 	"_fullscreen": string
 	/** `&:is([data-loading], [aria-busy=true])` */
 	"_loading": string

@@ -33,19 +33,24 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
     }
     editor.pluginOptions.set(name, pluginOptions);
 
-    const { isInline, isVoid } = editor;
-    editor.isInline = (element) => {
-      if (element.type === type) {
-        return !!isInlineParam;
-      }
-      return isInline(element);
-    };
-    editor.isVoid = (element) => {
-      if (element.type === type) {
-        return !!isVoidParam;
-      }
-      return isVoid(element);
-    };
+    if (isInlineParam != null) {
+      const { isInline } = editor;
+      editor.isInline = (element) => {
+        if (element.type === type) {
+          return !!isInlineParam;
+        }
+        return isInline(element);
+      };
+    }
+    if (isVoidParam != null) {
+      const { isVoid } = editor;
+      editor.isVoid = (element) => {
+        if (element.type === type) {
+          return !!isVoidParam;
+        }
+        return isVoid(element);
+      };
+    }
 
     if (normalize || configuration?.normalize) {
       const { normalizeNode } = editor;

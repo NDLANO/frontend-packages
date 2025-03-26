@@ -15,7 +15,6 @@ import importPlugin from "eslint-plugin-import";
 // @ts-expect-error - no typedefs
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
-// @ts-expect-error - no typedefs
 import hooksPlugin from "eslint-plugin-react-hooks";
 import globals from "globals";
 import tseslint from "typescript-eslint";

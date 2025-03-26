@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tracker",
-  "version": "5.0.17-alpha.0",
+  "version": "5.0.18-alpha.0",
   "description": "A simple library for tracking NDLA applications",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -35,7 +35,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ndla/util": "^5.0.6-alpha.0",
+    "@ndla/util": "^5.0.7-alpha.0",
     "tiny-warning": "^1.0.3"
   }
 }

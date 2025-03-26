@@ -68,18 +68,18 @@ const IframeEmbed = ({ embed }: Props) => {
     );
   }
 
-  const { width, height, title, url } = embedData;
+  const { width, height, url } = embedData;
 
   const strippedWidth = typeof width === "number" ? width : width?.replace(/\s*px/, "");
   const strippedHeight = typeof height === "number" ? height : height?.replace(/\s*px/, "");
-  const urlOrTitle = title || url;
+  const title = `${t("embed.type.external")}: ${embedData.title?.trim() ? embedData.title : url}`;
 
   return (
     <StyledFigure data-embed-type="iframe">
       <StyledIframe
         ref={iframeRef}
-        title={urlOrTitle}
-        aria-label={urlOrTitle}
+        title={title}
+        aria-label={title}
         src={url}
         width={strippedWidth}
         height={strippedHeight}

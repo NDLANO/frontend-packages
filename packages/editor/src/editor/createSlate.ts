@@ -36,6 +36,14 @@ interface CreateSlate {
   logger?: LoggerManager;
   elementRenderers?: ElementRenderer[];
   leafRenderers?: LeafRenderer[];
+  /**
+   * Whether to normalize the initial value of the editor.
+   */
+  shouldNormalize?: boolean;
+  /**
+   * Callback function to be called when the initial value has been normalized.
+   */
+  onInitialNormalized?: (value: Descendant[]) => void;
   value?: Descendant[];
 }
 
@@ -44,6 +52,8 @@ export const createSlate = ({
   elementRenderers,
   leafRenderers,
   logger = new LoggerManager({ debug: false }),
+  shouldNormalize,
+  onInitialNormalized,
   value,
 }: CreateSlate): Editor => {
   const editor = withRenderers(
@@ -64,6 +74,13 @@ export const createSlate = ({
       // If the plugin is a proxy, it will run the function if it exists.
       (plugin as PluginReturnType<any, any>).normalizeInitialValue?.(editor);
     });
+  }
+
+  if (shouldNormalize) {
+    editor.normalize({ force: true });
+    editor.history = { redos: [], undos: [] };
+    const children = editor.children;
+    onInitialNormalized?.(children);
   }
 
   editor.hasVoids = (element) => element.children.some((n) => Element.isElement(n) && editor.isVoid(n));

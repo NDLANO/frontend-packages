@@ -19,6 +19,7 @@ import type { SectionElement } from "../plugins/section/sectionTypes";
 import type { LoggerManager } from "../editor/logger/Logger";
 import type { HeadingElement } from "../plugins/heading/headingTypes";
 import type { NoopElement } from "../plugins/noop/noopTypes";
+import type { ReinitializeOptions } from "../editor/createSlate";
 
 export interface CustomEditor {
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
@@ -29,6 +30,7 @@ export interface CustomEditor {
   hasVoids: (element: Element) => boolean;
   renderElement?: (props: RenderElementProps) => JSX.Element | undefined;
   renderLeaf?: (props: RenderLeafProps) => JSX.Element | undefined;
+  reinitialize: (options: ReinitializeOptions) => void;
 }
 
 export interface SlateEditor {

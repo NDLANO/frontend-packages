@@ -47,23 +47,22 @@ interface CreateSlate {
   value?: Descendant[];
 }
 
-export const createSlate = ({
-  plugins,
-  elementRenderers,
-  leafRenderers,
-  logger = new LoggerManager({ debug: false }),
-  shouldNormalize,
-  onInitialNormalized,
-  value,
-}: CreateSlate): Editor => {
-  const editor = withRenderers(
-    withRenderers(
-      withPlugins(withReact(withHistory(withLogger(createEditor(), logger))), plugins),
-      elementRenderers?.map(createElementRenderer),
-    ),
-    leafRenderers?.map(createLeafRenderer),
-  );
+interface BaseInitializeOptions {
+  shouldNormalize?: boolean;
+  onInitialNormalized?: (value: Descendant[]) => void;
+  value?: Descendant[];
+}
 
+interface InitializeOptions extends BaseInitializeOptions {
+  editor: Editor;
+  plugins?: (SlatePlugin | PluginReturnType<any, any>)[];
+}
+
+export interface ReinitializeOptions extends BaseInitializeOptions {
+  value: Descendant[];
+}
+
+const initializeEditor = ({ value, editor, plugins, shouldNormalize, onInitialNormalized }: InitializeOptions) => {
   if (value) {
     editor.children = value;
   }
@@ -82,6 +81,30 @@ export const createSlate = ({
     const children = editor.children;
     onInitialNormalized?.(children);
   }
+};
+
+export const createSlate = ({
+  plugins,
+  elementRenderers,
+  leafRenderers,
+  logger = new LoggerManager({ debug: false }),
+  shouldNormalize,
+  onInitialNormalized,
+  value,
+}: CreateSlate): Editor => {
+  const editor = withRenderers(
+    withRenderers(
+      withPlugins(withReact(withHistory(withLogger(createEditor(), logger))), plugins),
+      elementRenderers?.map(createElementRenderer),
+    ),
+    leafRenderers?.map(createLeafRenderer),
+  );
+
+  initializeEditor({ plugins, shouldNormalize, value, editor, onInitialNormalized });
+
+  editor.reinitialize = ({ value, shouldNormalize, onInitialNormalized }: ReinitializeOptions) => {
+    initializeEditor({ editor, plugins, shouldNormalize, value, onInitialNormalized });
+  };
 
   editor.hasVoids = (element) => element.children.some((n) => Element.isElement(n) && editor.isVoid(n));
 

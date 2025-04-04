@@ -149,6 +149,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
         <StyledIconButton
           data-state={state}
           onClick={onClick}
+          contentEditable={false}
           aria-expanded={state === "open"}
           aria-controls={contentId}
           aria-label={t(`factbox.${state === "open" ? "close" : "open"}`)}

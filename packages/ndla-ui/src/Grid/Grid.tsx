@@ -6,7 +6,7 @@
  *
  */
 
-import { type ReactNode } from "react";
+import { type ComponentProps, type ReactNode } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 
 const GridContainer = styled("div", {
@@ -63,14 +63,14 @@ const GridContainer = styled("div", {
   },
 });
 
-export interface GridProps {
+export interface GridProps extends ComponentProps<"div"> {
   columns: "2" | "3" | "4" | "2x2";
   border?: "none" | "lightBlue";
   background?: "transparent" | "white" | "gray";
   children?: ReactNode[];
 }
 
-export const Grid = ({ columns, border, children, background = "gray" }: GridProps) => {
+export const Grid = ({ columns, border, children, background = "gray", ...rest }: GridProps) => {
   const amountOfColumns = children?.length === 3 ? "3" : columns;
 
   return (
@@ -79,6 +79,7 @@ export const Grid = ({ columns, border, children, background = "gray" }: GridPro
       border={border === "none" ? undefined : border}
       columns={amountOfColumns}
       background={background}
+      {...rest}
     >
       {children}
     </GridContainer>

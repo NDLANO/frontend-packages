@@ -401,6 +401,7 @@ const messages = {
       previewVideo: "Førehandsvis",
       is360Video: "VR-video",
       close: "Lukk",
+      loading: "Lastar videoar",
     },
   },
   richTextEditor: {

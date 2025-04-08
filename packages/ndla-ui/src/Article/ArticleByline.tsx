@@ -154,7 +154,7 @@ export const ArticleByline = ({
   const authorLabel: Record<string, string> = {
     article: "article.authorsLabel",
     learningPath: "article.authorsLabelLearningpath",
-    external: "article.externalStepAuthorsLabel",
+    external: "article.authorsLabelExternal",
   };
 
   return (

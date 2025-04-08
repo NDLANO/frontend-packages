@@ -96,10 +96,10 @@ export default {
         description: "Creative Commons Attribution-ShareAlike 4.0 International",
         url: "https://creativecommons.org/licenses/by-sa/4.0/",
       },
-      creators: [{ type: "Writer", name: "Sissel Paaske" }],
+      creators: [{ type: "writer", name: "Sissel Paaske" }],
       processors: [
-        { type: "Processor", name: "Totaltekst" },
-        { type: "Correction", name: "Arbeidets art" },
+        { type: "processor", name: "Totaltekst" },
+        { type: "correction", name: "Arbeidets art" },
       ],
       rightsholders: [],
       processed: false,

@@ -42,17 +42,17 @@ const filmResourceMeta: RelatedContentMetaData = {
         origin: "",
         creators: [
           {
-            type: "Writer",
+            type: "writer",
             name: "Elisabeth Thoresen Olseng",
           },
         ],
         processors: [
           {
-            type: "Processor",
+            type: "processor",
             name: "Tone Hadler-Olsen",
           },
           {
-            type: "Correction",
+            type: "correction",
             name: "Totaltekst",
           },
         ],
@@ -231,7 +231,7 @@ const learningResourceMeta: RelatedContentMetaData = {
         origin: "",
         creators: [
           {
-            type: "Writer",
+            type: "writer",
             name: "Albertine Aaberge",
           },
         ],

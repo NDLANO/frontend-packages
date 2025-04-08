@@ -43,27 +43,20 @@ const conceptMetaData: ConceptData["concept"] = {
       description: "Creative Commons Attribution-ShareAlike 4.0 International",
       url: "https://creativecommons.org/licenses/by-sa/4.0/",
     },
-    creators: [{ type: "Writer", name: "Sissel Paaske" }],
+    creators: [{ type: "writer", name: "Sissel Paaske" }],
     processors: [
-      { type: "Processor", name: "Totaltekst" },
-      { type: "Correction", name: "Arbeidets art" },
+      { type: "processor", name: "Totaltekst" },
+      { type: "correction", name: "Arbeidets art" },
     ],
     rightsholders: [],
     processed: false,
   },
   source: "",
-  metaImage: {
-    url: "https://api.test.ndla.no/image-api/raw/id/52863",
-    alt: "Eksempel på hvordan borevæsken kan trenge ut i formasjonen fra borehullet og skade formasjonens permeabilitet. Illustrasjon.",
-    language: "nb",
-  },
   tags: { tags: ["Brønn:Reservoar:"], language: "nb" },
-  subjectIds: ["urn:subject:6"],
   created: "2018-07-02T10:53:40Z",
   updated: "2020-11-18T08:58:33Z",
   updatedBy: ["sPHJn0BEtfxw2d2DUpIuS3iY", "KBAJskRqPXZUv9LFjAbz8btB", "eEIRDzflTh9oUp_3CgpuIMOg"],
   supportedLanguages: ["nb", "nn"],
-  articleIds: [],
   status: { current: "PUBLISHED", other: [] },
   visualElement: {
     visualElement:
@@ -104,7 +97,7 @@ const visualElementData: ConceptData["visualElement"] = {
       origin: "",
       creators: [
         {
-          type: "Illustrator",
+          type: "illustrator",
           name: "Sissel Paaske",
         },
       ],

@@ -43,16 +43,10 @@ const glossMetaData: ConceptData["concept"] = {
     processed: false,
   },
   source: "",
-  metaImage: {
-    url: "",
-    alt: "",
-    language: "und",
-  },
   created: "2023-07-19T09:30:40.000Z",
   updated: "2023-09-19T17:13:56.573Z",
   updatedBy: ["XxnkdI7rApMl58MeG3p4g4B8", "hd5ZL5Lm4kKkumWgN2gjy9wx"],
   supportedLanguages: ["nb"],
-  articleIds: [],
   status: {
     current: "IN_PROGRESS",
     other: [],

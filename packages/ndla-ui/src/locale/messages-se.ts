@@ -42,6 +42,7 @@ const messages = {
     copyPageLinkCopied: "Liŋka máŋgejuvvon",
     copyHeaderLink: "Máŋge liŋka bajilčállagii",
     conjunction: "ja",
+    externalStepAuthorsLabel: "Denne lenken er lagt til av {{names}}",
     supplierLabel: "Vuoigatvuođaguoddi: {{name}}",
     multipleSuppliersLabel: "Vuoigatvuođaguoddit: {{names}}",
     printPage: "Čálit teavstta",

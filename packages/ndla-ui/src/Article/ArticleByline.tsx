@@ -76,6 +76,7 @@ type Props = {
   displayByline?: boolean;
   bylineType?: "article" | "learningPath";
   bylineSuffix?: ReactNode;
+  isExternal?: boolean;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -120,6 +121,7 @@ export const ArticleByline = ({
   displayByline = true,
   bylineType = "article",
   bylineSuffix,
+  isExternal = false,
 }: Props) => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
@@ -158,10 +160,17 @@ export const ArticleByline = ({
           {!!showPrimaryContributors && (
             <span>
               {authors.length > 0 &&
-                `${t(isLearningpath ? "article.authorsLabelLearningpath" : "article.authorsLabel", {
-                  names: renderContributors(authors, t),
-                  interpolation: { escapeValue: false },
-                })}. `}
+                `${t(
+                  isLearningpath
+                    ? "article.authorsLabelLearningpath"
+                    : isExternal
+                      ? "article.externalStepAuthorsLabel"
+                      : "article.authorsLabel",
+                  {
+                    names: renderContributors(authors, t),
+                    interpolation: { escapeValue: false },
+                  },
+                )}. `}
               {getSuppliersText(suppliers, t)}
             </span>
           )}

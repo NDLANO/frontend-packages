@@ -74,9 +74,8 @@ type Props = {
   licenseBox?: ReactNode;
   footnotes?: FootNote[];
   displayByline?: boolean;
-  bylineType?: "article" | "learningPath";
+  bylineType?: "article" | "learningPath" | "external";
   bylineSuffix?: ReactNode;
-  isExternal?: boolean;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -121,7 +120,6 @@ export const ArticleByline = ({
   displayByline = true,
   bylineType = "article",
   bylineSuffix,
-  isExternal = false,
 }: Props) => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
@@ -152,6 +150,7 @@ export const ArticleByline = ({
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const isLearningpath = bylineType === "learningPath";
+  const isExternal = bylineType === "external";
 
   return (
     <Wrapper>

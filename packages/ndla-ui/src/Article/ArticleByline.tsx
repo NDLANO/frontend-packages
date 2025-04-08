@@ -150,7 +150,12 @@ export const ArticleByline = ({
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const isLearningpath = bylineType === "learningPath";
-  const isExternal = bylineType === "external";
+
+  const authorLabel: Record<string, string> = {
+    article: "article.authorsLabel",
+    learningPath: "article.authorsLabelLearningpath",
+    external: "article.externalStepAuthorsLabel",
+  };
 
   return (
     <Wrapper>
@@ -159,17 +164,10 @@ export const ArticleByline = ({
           {!!showPrimaryContributors && (
             <span>
               {authors.length > 0 &&
-                `${t(
-                  isLearningpath
-                    ? "article.authorsLabelLearningpath"
-                    : isExternal
-                      ? "article.externalStepAuthorsLabel"
-                      : "article.authorsLabel",
-                  {
-                    names: renderContributors(authors, t),
-                    interpolation: { escapeValue: false },
-                  },
-                )}. `}
+                `${t(authorLabel[bylineType], {
+                  names: renderContributors(authors, t),
+                  interpolation: { escapeValue: false },
+                })}. `}
               {getSuppliersText(suppliers, t)}
             </span>
           )}

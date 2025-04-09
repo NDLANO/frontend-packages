@@ -149,7 +149,6 @@ export const ArticleByline = ({
   }, [onHashChange]);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
-  const isLearningpath = bylineType === "learningPath";
 
   const authorLabel: Record<string, string> = {
     article: "article.authorsLabel",
@@ -160,7 +159,7 @@ export const ArticleByline = ({
   return (
     <Wrapper>
       {!!displayByline && (
-        <TextWrapper learningpath={isLearningpath}>
+        <TextWrapper learningpath={bylineType === "learningPath"}>
           {!!showPrimaryContributors && (
             <span>
               {authors.length > 0 &&

@@ -74,7 +74,7 @@ type Props = {
   licenseBox?: ReactNode;
   footnotes?: FootNote[];
   displayByline?: boolean;
-  bylineType?: "article" | "learningPath";
+  bylineType?: "article" | "learningPath" | "external";
   bylineSuffix?: ReactNode;
 };
 
@@ -149,16 +149,21 @@ export const ArticleByline = ({
   }, [onHashChange]);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
-  const isLearningpath = bylineType === "learningPath";
+
+  const authorLabel: Record<string, string> = {
+    article: "article.authorsLabel",
+    learningPath: "article.authorsLabelLearningpath",
+    external: "article.authorsLabelExternal",
+  };
 
   return (
     <Wrapper>
       {!!displayByline && (
-        <TextWrapper learningpath={isLearningpath}>
+        <TextWrapper learningpath={bylineType === "learningPath"}>
           {!!showPrimaryContributors && (
             <span>
               {authors.length > 0 &&
-                `${t(isLearningpath ? "article.authorsLabelLearningpath" : "article.authorsLabel", {
+                `${t(authorLabel[bylineType], {
                   names: renderContributors(authors, t),
                   interpolation: { escapeValue: false },
                 })}. `}

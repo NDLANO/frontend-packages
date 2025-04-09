@@ -41,6 +41,7 @@ const messages = {
     copyPageLinkCopied: "Link copied",
     copyHeaderLink: "Copy link to header",
     conjunction: "and",
+    authorsLabelExternal: "This link is added by {{names}}",
     supplierLabel: "Rightsholder: {{name}}",
     multipleSuppliersLabel: "Rightsholders: {{names}}",
     printPage: "Print text",

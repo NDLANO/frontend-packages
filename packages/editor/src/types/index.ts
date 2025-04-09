@@ -20,6 +20,7 @@ import type { LoggerManager } from "../editor/logger/Logger";
 import type { HeadingElement } from "../plugins/heading/headingTypes";
 import type { NoopElement } from "../plugins/noop/noopTypes";
 import type { ReinitializeOptions } from "../editor/createSlate";
+import type { SpanElement } from "../plugins/span/spanTypes";
 
 export interface CustomEditor {
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
@@ -43,7 +44,8 @@ export interface SlateEditor {
     | ListElement
     | SectionElement
     | HeadingElement
-    | NoopElement;
+    | NoopElement
+    | SpanElement;
   Text: CustomText;
 }
 

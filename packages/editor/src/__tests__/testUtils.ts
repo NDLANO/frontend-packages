@@ -18,6 +18,8 @@ import { paragraphSerializer } from "../plugins/paragraph/paragraphSerializer";
 import { sectionSerializer } from "../plugins/section/sectionSerializer";
 import { deserializeFromHtml } from "../serialization/html/deserializeFromHtml";
 import { serializeToHtml } from "../serialization/html/serializeToHtml";
+import { spanSerializer } from "../plugins/span/spanSerializer";
+import { SPAN_ELEMENT_TYPE } from "../plugins/span/spanTypes";
 
 export const inlines = [
   // TYPE_CONCEPT_INLINE,
@@ -25,7 +27,7 @@ export const inlines = [
   LINK_ELEMENT_TYPE,
   // TYPE_CONTENT_LINK,
   // TYPE_MATHML,
-  // TYPE_SPAN,
+  SPAN_ELEMENT_TYPE,
   // TYPE_COMMENT_INLINE,
 ];
 
@@ -109,7 +111,7 @@ export const extendedSerializers: SlateSerializer<any>[] = [
   // embedSerializer,
   // framedContentSerializer,
   // divSerializer,
-  // spanSerializer,
+  spanSerializer,
 ];
 
 export const testBlockContentToEditorValue = (content: string, noop?: boolean) => {

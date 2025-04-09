@@ -105,6 +105,12 @@ export { SECTION_ELEMENT_TYPE, SECTION_PLUGIN } from "./plugins/section/sectionT
 export type { SectionElement, SectionElementType, SectionPluginOptions } from "./plugins/section/sectionTypes";
 export { isSectionElement } from "./plugins/section/queries/sectionQueries";
 
+export { spanPlugin } from "./plugins/span/spanPlugin";
+export { spanSerializer } from "./plugins/span/spanSerializer";
+export { SPAN_ELEMENT_TYPE, SPAN_PLUGIN } from "./plugins/span/spanTypes";
+export type { SpanElement, SpanPluginOptions } from "./plugins/span/spanTypes";
+export { isSpanElement } from "./plugins/span/spanQueries";
+
 export { getCurrentBlock } from "./queries/getCurrentBlock";
 export { hasNodeOfType } from "./queries/hasNodeOfType";
 

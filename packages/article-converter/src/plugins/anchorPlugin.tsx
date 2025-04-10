@@ -7,6 +7,7 @@
  */
 
 import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
+import { ExternalLinkLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
 import { getPossiblyRelativeUrl } from "@ndla/ui";
 import { type PluginType } from "./types";
@@ -14,10 +15,12 @@ import { type PluginType } from "./types";
 export const anchorPlugin: PluginType = (node, opts, { path }) => {
   const props = attributesToProps(node.attribs);
   const href = getPossiblyRelativeUrl(props.href as string, path);
+  const icon = props.target === "_blank" ? <ExternalLinkLine size="small" /> : "";
 
   return (
     <SafeLink {...props} to={href}>
       {domToReact(node.children as DOMNode[], opts)}
+      {icon}
     </SafeLink>
   );
 };

@@ -33,6 +33,16 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
     }
     editor.pluginOptions.set(name, pluginOptions);
 
+    if (type) {
+      const { supportsElement } = editor;
+      editor.supportsElement = (element) => {
+        if (element.type === type) {
+          return true;
+        }
+        return supportsElement(element);
+      };
+    }
+
     if (isInlineParam != null) {
       const { isInline } = editor;
       editor.isInline = (element) => {

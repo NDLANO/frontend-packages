@@ -125,4 +125,21 @@ describe("createSlate", () => {
       expect(editor.children).toEqual(expected);
     });
   });
+  describe("supportsElement", () => {
+    it("returns false if no plugins are registered", () => {
+      const editor = createSlate({});
+      const result = editor.supportsElement({ type: "paragraph", children: [{ text: "" }] });
+      expect(result).toBe(false);
+    });
+    it("returns true if a plugin supports the element", () => {
+      const editor = createSlate({ plugins: [createPlugin({ name: "test", type: "paragraph" })] });
+      const result = editor.supportsElement({ type: "paragraph", children: [{ text: "" }] });
+      expect(result).toBe(true);
+    });
+    it("returns false if a plugin does not support the element", () => {
+      const editor = createSlate({ plugins: [createPlugin({ name: "test", type: "section" })] });
+      const result = editor.supportsElement({ type: "paragraph", children: [{ text: "" }] });
+      expect(result).toBe(false);
+    });
+  });
 });

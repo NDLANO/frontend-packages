@@ -15,8 +15,12 @@ import { withLogger } from "../editor/logger/withLogger";
 import { createElementRenderer, createLeafRenderer } from "../core/createRenderer";
 
 export const withPlugins = (editor: Editor, plugins?: (SlatePlugin | PluginReturnType<any, any>)[]) => {
+  // base case
+  editor.supportsElement = (_) => {
+    return false;
+  };
+  editor.getPluginOptions = <T>(pluginName: string) => editor.pluginOptions.get(pluginName) as T | undefined;
   if (plugins) {
-    editor.getPluginOptions = <T>(pluginName: string) => editor.pluginOptions.get(pluginName) as T | undefined;
     return plugins.reduce((editor, plugin) => plugin(editor), editor);
   }
 

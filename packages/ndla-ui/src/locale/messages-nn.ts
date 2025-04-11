@@ -42,7 +42,7 @@ const messages = {
     copyPageLinkCopied: "Lenke kopiert",
     copyHeaderLink: "Kopier lenke til overskrifta",
     conjunction: "og",
-    authorsLabelExternal: "Denne lenka er lagd til av {{names}}",
+    authorsLabelExternal: "Denne lenka er lagt til av {{names}}",
     supplierLabel: "Rettshavar: {{name}}",
     multipleSuppliersLabel: "Rettshavarar: {{names}}",
     printPage: "Skriv ut teksten",

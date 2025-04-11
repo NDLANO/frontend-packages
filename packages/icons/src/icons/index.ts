@@ -149,6 +149,7 @@ export { default as MovieFill } from "./MovieFill";
 export { default as MovieLine } from "./MovieLine";
 export { default as NotificationFill } from "./NotificationFill";
 export { default as NotificationLine } from "./NotificationLine";
+export { default as Omega } from "./Omega";
 export { default as OrganizationChart } from "./OrganizationChart";
 export { default as PanoramaPhotosphere } from "./PanoramaPhotosphere";
 export { default as PauseLine } from "./PauseLine";

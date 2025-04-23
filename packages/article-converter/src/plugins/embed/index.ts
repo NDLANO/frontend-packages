@@ -24,6 +24,7 @@ import { keyFigureEmbedPlugin } from "./KeyFigureEmbedPlugin";
 import { linkBlockPlugin } from "./linkBlockEmbedPlugin";
 import { pitchEmbedPlugin } from "./pitchEmbedPlugin";
 import { relatedContentEmbedPlugin } from "./relatedContentEmbedPlugin";
+import { symbolEmbedPlugin } from "./symbolEmbedPlugin";
 import { uuDisclaimerEmbedPlugin } from "./uuDisclaimerEmbedPlugin";
 import { type PluginType } from "../types";
 
@@ -47,4 +48,5 @@ export const embedPlugins: Record<string, PluginType> = {
   "link-block": linkBlockPlugin,
   "uu-disclaimer": uuDisclaimerEmbedPlugin,
   copyright: copyrightEmbedPlugin,
+  symbol: symbolEmbedPlugin,
 };

@@ -47,6 +47,7 @@ import type { KeyFigureEmbedData, KeyFigureMeta, KeyFigureMetaData } from "./key
 import type { LinkBlockEmbedData, LinkBlockMetaData } from "./linkBlockTypes";
 import type { PitchEmbedData, PitchMetaData, PitchMeta } from "./pitchTypes";
 import type { RelatedContentData, RelatedContentEmbedData, RelatedContentMetaData } from "./relatedContentTypes";
+import type { SymbolEmbedData, SymbolMetaData } from "./symbolTypes";
 import type { UUDisclaimerData, UuDisclaimerEmbedData, UuDisclaimerMetaData } from "./uuDisclaimerTypes";
 
 export type EmbedData =
@@ -70,7 +71,8 @@ export type EmbedData =
   | LinkBlockEmbedData
   | UuDisclaimerEmbedData
   | CopyrightEmbedData
-  | CommentEmbedData;
+  | CommentEmbedData
+  | SymbolEmbedData;
 
 export type EmbedMetaData =
   | AudioMetaData
@@ -92,7 +94,8 @@ export type EmbedMetaData =
   | LinkBlockMetaData
   | UuDisclaimerMetaData
   | CopyrightMetaData
-  | CommentMetaData;
+  | CommentMetaData
+  | SymbolMetaData;
 
 export type {
   ConceptMetaData,
@@ -114,6 +117,7 @@ export type {
   UuDisclaimerMetaData,
   CopyrightMetaData,
   CommentMetaData,
+  SymbolMetaData,
 };
 export type {
   ConceptEmbedData,
@@ -135,6 +139,7 @@ export type {
   UuDisclaimerEmbedData,
   CopyrightEmbedData,
   CommentEmbedData,
+  SymbolEmbedData,
 };
 
 export type { PitchMeta };

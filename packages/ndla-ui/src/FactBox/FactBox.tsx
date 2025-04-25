@@ -53,7 +53,15 @@ const StyledAside = styled("aside", {
     },
     "& > div": {
       minHeight: "surface.3xsmall",
-      overflow: "hidden",
+    },
+  },
+  variants: {
+    overflowHidden: {
+      true: {
+        "& > div": {
+          overflow: "hidden",
+        },
+      },
     },
   },
 });
@@ -62,7 +70,6 @@ const StyledContent = styled("div", {
   base: {
     position: "relative",
     width: "100%",
-    overflow: "hidden",
     // Reset the top margin of the very first child.
     "& :first-child": {
       marginBlockStart: "0",
@@ -124,6 +131,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
   ({ children, open, onOpenChange, defaultOpen = false, ...rest }, ref) => {
     const { t } = useTranslation();
     const [state, setState] = useState<"open" | "closed">(defaultOpen ? "open" : "closed");
+    const [overflowHidden, setOverflowHidden] = useState(false);
     const contentId = useId();
     // Inert has existed since early 2023. It allows us to disable tabindex inside the content if it is closed, allowing us to be accessible for users with newish browsers. React 18 removes this because it doesn't recognize the attribute. This is a workaround for that.
     // When running in React 18, we need to use an empty string instead of true.
@@ -145,7 +153,23 @@ const FactBox = forwardRef<HTMLElement, Props>(
     }, [state, onOpenChange]);
 
     return (
-      <StyledAside data-state={state} data-embed-type="factbox" {...rest} ref={ref}>
+      <StyledAside
+        data-state={state}
+        data-embed-type="factbox"
+        {...rest}
+        ref={ref}
+        overflowHidden={overflowHidden}
+        onTransitionStart={(e) => {
+          if (e.target === e.currentTarget && state === "closed") {
+            setOverflowHidden(true);
+          }
+        }}
+        onTransitionEnd={(e) => {
+          if (e.target === e.currentTarget && state === "open") {
+            setOverflowHidden(false);
+          }
+        }}
+      >
         <StyledIconButton
           data-state={state}
           onClick={onClick}

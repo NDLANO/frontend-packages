@@ -6,7 +6,7 @@
  *
  */
 
-import type { Descendant } from "slate";
+import type { Descendant, ElementType } from "slate";
 
 export const HEADING_ELEMENT_TYPE = "heading" as const;
 export const HEADING_PLUGIN = "heading" as const;
@@ -16,4 +16,8 @@ export interface HeadingElement {
   type: "heading";
   level: 1 | 2 | 3 | 4 | 5 | 6;
   children: Descendant[];
+}
+
+export interface HeadingPluginOptions {
+  validChildren?: ElementType[];
 }

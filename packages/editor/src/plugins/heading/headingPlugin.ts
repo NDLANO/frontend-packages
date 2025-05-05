@@ -37,15 +37,21 @@ export const headingPlugin = createPlugin({
       return true;
     }
 
-    const boldEntries = Array.from(editor.nodes({ match: (n) => Text.isText(n) && !!n.bold }), (n) => n);
-    if (boldEntries.length) {
-      logger.log("Removing bold from nodes within heading.");
-      editor.withoutNormalizing(() => {
-        boldEntries.forEach(([_, path]) => {
-          Transforms.setNodes(editor, { bold: undefined }, { at: path });
-        });
+    for (const [index, child] of node.children.entries()) {
+      if (Text.isText(child)) {
+        if (child.bold) {
+          logger.log("Removing bold from text within heading");
+          Transforms.setNodes(editor, { bold: undefined }, { at: path.concat(index) });
+          return true;
+        }
+        continue;
+      }
+
+      if (!editor.isInline(child)) {
+        logger.log("Heading contains block element, unwrapping.");
+        Transforms.unwrapNodes(editor, { at: path.concat(index) });
         return true;
-      });
+      }
     }
 
     return false;

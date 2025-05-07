@@ -23,12 +23,14 @@
     "src"
   ],
   "dependencies": {
-    "cross-spawn": "^7.0.3",
-    "cross-spawn-promise": "^0.10.2",
+    "cross-spawn": "^7.0.6",
     "fast-glob": "^3.3.2",
     "normalize-url": "^8.0.1",
     "url-regex-safe": "^4.0.0",
     "vercel": "^41.4.1"
+  },
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.6"
   },
   "publishConfig": {
     "access": "public"

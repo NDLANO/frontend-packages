@@ -14,7 +14,7 @@
 /* eslint-disable no-console */
 
 import { inspect } from "util";
-import spawn from "cross-spawn-promise";
+import { spawnSync } from "child_process";
 import normalizeUrl from "normalize-url";
 import urlRegex from "url-regex-safe";
 
@@ -127,7 +127,7 @@ async function spawnAlias(sha, deployUrl) {
   const cliArgs = ["--token", vercelToken, "alias", "set", deployUrl, newUrl];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    await spawn("vercel", cliArgs, { encoding: "utf8" });
+    spawnSync("vercel", cliArgs, { encoding: "utf8" });
   } catch (error) {
     onError(sha, error);
     throw error;
@@ -139,8 +139,8 @@ async function spawnDeploy(sha) {
   const cliArgs = ["--token", vercelToken, "--regions", "dub1", "--yes", ...providedArgs];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    const result = await spawn("vercel", cliArgs, { encoding: "utf8" });
-    return result.toString();
+    const result = spawnSync("vercel", cliArgs, { encoding: "utf8" });
+    return result.stdout.toString();
   } catch (error) {
     onError(sha, error);
     throw error;

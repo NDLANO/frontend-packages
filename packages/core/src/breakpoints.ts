@@ -6,7 +6,9 @@
  *
  */
 
-import type { Breakpoints } from "../types";
+export type Breakpoint = "mobile" | "mobileWide" | "tablet" | "tabletWide" | "desktop" | "wide" | "ultraWide";
+
+export type Breakpoints = { [key in Breakpoint]: string };
 
 const breakpoints: Breakpoints = {
   mobile: "20em",

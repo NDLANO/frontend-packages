@@ -1,9 +1,0 @@
-input {
-  padding: calc($spacing / 3);
-  @include font-size(18px, 1.33);
-  border-style: solid;
-  border-color: $brand-grey--light;
-}
-button.search {
-  margin-left: -55px;
-}

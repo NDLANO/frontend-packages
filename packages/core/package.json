@@ -23,14 +23,8 @@
   "author": "ndla@knowit.no",
   "files": [
     "lib",
-    "es",
-    "scss",
-    "types"
+    "es"
   ],
-  "dependencies": {
-    "inuitcss": "6.0.0",
-    "sass-mq": "^5.0.1"
-  },
   "publishConfig": {
     "access": "public"
   },

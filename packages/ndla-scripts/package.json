@@ -24,10 +24,10 @@
   ],
   "dependencies": {
     "cross-spawn": "^7.0.6",
-    "fast-glob": "^3.3.2",
+    "fast-glob": "^3.3.3",
     "normalize-url": "^8.0.1",
     "url-regex-safe": "^4.0.0",
-    "vercel": "^41.4.1"
+    "vercel": "^41.7.2"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.6"

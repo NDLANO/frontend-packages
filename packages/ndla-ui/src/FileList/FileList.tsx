@@ -12,13 +12,18 @@ import { styled } from "@ndla/styled-system/jsx";
 
 interface Props extends ComponentPropsWithoutRef<"ul"> {}
 
-export const FileListWrapper = styled("ul", {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "xsmall",
+export const FileListWrapper = styled(
+  ark.ul,
+  {
+    base: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "xsmall",
+      clear: "both",
+    },
   },
-});
+  { baseComponent: true },
+);
 
 export const FileListItem = styled(
   ark.li,

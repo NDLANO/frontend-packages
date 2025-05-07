@@ -16,7 +16,7 @@
     "ndla"
   ],
   "engines": {
-    "node": ">= 20.6.0"
+    "node": ">= 22.0.0"
   },
   "author": "ndla@knowit.no",
   "files": [

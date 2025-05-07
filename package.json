@@ -68,7 +68,7 @@
     "@testing-library/react": "16.2.0",
     "@types/htmlparser2": "^3.10.3",
     "@types/lodash.throttle": "^4.1.9",
-    "@types/node": "^20.12.12",
+    "@types/node": "^22.15.12",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
     "@vitejs/plugin-react": "^4.3.4",

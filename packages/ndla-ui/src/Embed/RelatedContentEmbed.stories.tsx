@@ -108,6 +108,7 @@ const filmResourceMeta: RelatedContentMetaData = {
       baseName: "Dokumentaren «Influenser»",
       name: "Dokumentaren «Influenser»",
       language: "nb",
+      contextids: [],
       contentUri: "urn:article:27911",
       path: "/subject:187c1484-84a5-474d-bf63-0c7915809a7d/topic:d792acc0-d332-48cf-9116-0db520e34f19/topic:3510fff0-fe20-4742-8e25-09262df2ac45/resource:e21cb6a7-0072-4066-894b-d5f6bb4f7ead",
       paths: [
@@ -273,6 +274,7 @@ const learningResourceMeta: RelatedContentMetaData = {
     },
     resource: {
       id: "urn:resource:5d81f622-1fc5-49c8-943d-690e23450e09",
+      contextids: [],
       baseName: "Teknikker for idéutvikling",
       language: "nb",
       name: "Teknikker for idéutvikling",

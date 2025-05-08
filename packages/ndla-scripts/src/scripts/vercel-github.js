@@ -14,7 +14,7 @@
 /* eslint-disable no-console */
 
 import { inspect } from "util";
-import { spawnSync } from "child_process";
+import { spawn } from "child_process";
 import normalizeUrl from "normalize-url";
 import urlRegex from "url-regex-safe";
 
@@ -114,6 +114,36 @@ function onError(sha, err) {
   });
 }
 
+function spawnWithOutput(cmd, args, opts = {}) {
+  return new Promise((resolve, reject) => {
+    const proc = spawn(cmd, args, {
+      shell: true,
+      stdio: ["ignore", "pipe", "pipe"],
+      ...opts,
+    });
+
+    let stdout = "";
+    let stderr = "";
+
+    proc.stdout.on("data", (chunk) => (stdout += chunk));
+    proc.stderr.on("data", (chunk) => (stderr += chunk));
+
+    proc.on("close", (code) => {
+      if (code === 0) {
+        resolve(stdout.trim());
+      } else {
+        const err = new Error(`Command failed: ${cmd} ${args.join(" ")}\n${stderr}`);
+        err.code = code;
+        err.stdout = stdout;
+        err.stderr = stderr;
+        reject(err);
+      }
+    });
+
+    proc.on("error", reject);
+  });
+}
+
 function getAliasUrl() {
   const repoName = GITHUB_REPOSITORY.split("/")[1];
   if (GH_PR_NUMBER === "") {
@@ -127,7 +157,7 @@ async function spawnAlias(sha, deployUrl) {
   const cliArgs = ["--token", vercelToken, "alias", "set", deployUrl, newUrl];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    spawnSync("vercel", cliArgs, { encoding: "utf8" });
+    await spawnWithOutput("vercel", cliArgs, { encoding: "utf8", shell: true });
   } catch (error) {
     onError(sha, error);
     throw error;
@@ -139,8 +169,8 @@ async function spawnDeploy(sha) {
   const cliArgs = ["--token", vercelToken, "--regions", "dub1", "--yes", ...providedArgs];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    const result = spawnSync("vercel", cliArgs, { encoding: "utf8" });
-    return result.stdout.toString();
+    const result = await spawnWithOutput("vercel", cliArgs, { encoding: "utf8", shell: true });
+    return result;
   } catch (error) {
     onError(sha, error);
     throw error;

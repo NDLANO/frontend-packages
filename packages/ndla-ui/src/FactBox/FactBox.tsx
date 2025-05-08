@@ -131,7 +131,7 @@ const FactBox = forwardRef<HTMLElement, Props>(
   ({ children, open, onOpenChange, defaultOpen = false, ...rest }, ref) => {
     const { t } = useTranslation();
     const [state, setState] = useState<"open" | "closed">(defaultOpen ? "open" : "closed");
-    const [overflowHidden, setOverflowHidden] = useState(false);
+    const [overflowHidden, setOverflowHidden] = useState(!defaultOpen);
     const contentId = useId();
     // Inert has existed since early 2023. It allows us to disable tabindex inside the content if it is closed, allowing us to be accessible for users with newish browsers. React 18 removes this because it doesn't recognize the attribute. This is a workaround for that.
     // When running in React 18, we need to use an empty string instead of true.

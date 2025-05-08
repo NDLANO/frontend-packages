@@ -122,7 +122,7 @@ function getAliasUrl() {
   return `${repoName}-pr-${GH_PR_NUMBER}`;
 }
 
-async function spawnAlias(sha, deployUrl) {
+function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
   const cliArgs = ["--token", vercelToken, "alias", "set", deployUrl, newUrl];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
@@ -135,7 +135,7 @@ async function spawnAlias(sha, deployUrl) {
   return `https://${newUrl}.vercel.app`;
 }
 
-async function spawnDeploy(sha) {
+function spawnDeploy(sha) {
   const cliArgs = ["--token", vercelToken, "--regions", "dub1", "--yes", ...providedArgs];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
@@ -162,7 +162,7 @@ async function deploy(sha) {
   }
   let targetUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
 
-  updateStatus(sha, {
+  await updateStatus(sha, {
     target_url: targetUrl,
     state: "pending",
     description: `▲ Vercel deployment starting`,
@@ -170,22 +170,22 @@ async function deploy(sha) {
 
   console.log(`🤠 Alrighty, deploy starting.`);
 
-  const result = await spawnDeploy(sha);
+  const result = spawnDeploy(sha);
   targetUrl = getUrl(result);
 
   console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
 
-  updateStatus(sha, {
+  await updateStatus(sha, {
     target_url: `${targetUrl}`,
     state: "pending",
     description: `▲ Aliasing vercel deployment...`,
   });
 
-  targetUrl = await spawnAlias(sha, targetUrl);
+  targetUrl = spawnAlias(sha, targetUrl);
 
   console.log(`🔗 It's linked!`);
 
-  updateStatus(sha, {
+  await updateStatus(sha, {
     target_url: targetUrl,
     state: "success",
     description: `▲ Vercel deployment complete`,

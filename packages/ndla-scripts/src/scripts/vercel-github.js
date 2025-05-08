@@ -14,7 +14,7 @@
 /* eslint-disable no-console */
 
 import { inspect } from "util";
-import { spawn } from "child_process";
+import { spawnSync } from "child_process";
 import normalizeUrl from "normalize-url";
 import urlRegex from "url-regex-safe";
 
@@ -114,36 +114,6 @@ function onError(sha, err) {
   });
 }
 
-function spawnWithOutput(cmd, args, opts = {}) {
-  return new Promise((resolve, reject) => {
-    const proc = spawn(cmd, args, {
-      shell: true,
-      stdio: ["ignore", "pipe", "pipe"],
-      ...opts,
-    });
-
-    let stdout = "";
-    let stderr = "";
-
-    proc.stdout.on("data", (chunk) => (stdout += chunk));
-    proc.stderr.on("data", (chunk) => (stderr += chunk));
-
-    proc.on("close", (code) => {
-      if (code === 0) {
-        resolve(stdout.trim());
-      } else {
-        const err = new Error(`Command failed: ${cmd} ${args.join(" ")}\n${stderr}`);
-        err.code = code;
-        err.stdout = stdout;
-        err.stderr = stderr;
-        reject(err);
-      }
-    });
-
-    proc.on("error", reject);
-  });
-}
-
 function getAliasUrl() {
   const repoName = GITHUB_REPOSITORY.split("/")[1];
   if (GH_PR_NUMBER === "") {
@@ -152,12 +122,12 @@ function getAliasUrl() {
   return `${repoName}-pr-${GH_PR_NUMBER}`;
 }
 
-async function spawnAlias(sha, deployUrl) {
+function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
   const cliArgs = ["--token", vercelToken, "alias", "set", deployUrl, newUrl];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    await spawnWithOutput("vercel", cliArgs, { encoding: "utf8", shell: true });
+    spawnSync("vercel", cliArgs, { encoding: "utf8", shell: true });
   } catch (error) {
     onError(sha, error);
     throw error;
@@ -165,12 +135,12 @@ async function spawnAlias(sha, deployUrl) {
   return `https://${newUrl}.vercel.app`;
 }
 
-async function spawnDeploy(sha) {
+function spawnDeploy(sha) {
   const cliArgs = ["--token", vercelToken, "--regions", "dub1", "--yes", ...providedArgs];
   safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
   try {
-    const result = await spawnWithOutput("vercel", cliArgs, { encoding: "utf8", shell: true });
-    return result;
+    const result = spawnSync("vercel", cliArgs, { encoding: "utf8", shell: true });
+    return result.stdout.toString();
   } catch (error) {
     onError(sha, error);
     throw error;
@@ -192,7 +162,7 @@ async function deploy(sha) {
   }
   let targetUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
 
-  updateStatus(sha, {
+  await updateStatus(sha, {
     target_url: targetUrl,
     state: "pending",
     description: `▲ Vercel deployment starting`,
@@ -200,22 +170,22 @@ async function deploy(sha) {
 
   console.log(`🤠 Alrighty, deploy starting.`);
 
-  const result = await spawnDeploy(sha);
+  const result = spawnDeploy(sha);
   targetUrl = getUrl(result);
 
   console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
 
-  updateStatus(sha, {
+  await updateStatus(sha, {
     target_url: `${targetUrl}`,
     state: "pending",
     description: `▲ Aliasing vercel deployment...`,
   });
 
-  targetUrl = await spawnAlias(sha, targetUrl);
+  targetUrl = spawnAlias(sha, targetUrl);
 
   console.log(`🔗 It's linked!`);
 
-  updateStatus(sha, {
+  await updateStatus(sha, {
     target_url: targetUrl,
     state: "success",
     description: `▲ Vercel deployment complete`,

@@ -2322,6 +2322,7 @@ __metadata:
   resolution: "@ndla/scripts@workspace:packages/ndla-scripts"
   dependencies:
     "@types/cross-spawn": "npm:^6.0.6"
+    "@vercel/sdk": "npm:^1.6"
     cross-spawn: "npm:^7.0.6"
     fast-glob: "npm:^3.3.3"
     normalize-url: "npm:^8.0.1"
@@ -4600,6 +4601,21 @@ __metadata:
   version: 2.2.0
   resolution: "@vercel/ruby@npm:2.2.0"
   checksum: 10c0/7c9b183aff352bff61f38beaefb7ad48d9f0dbae7a8adc18a4e2804af6a1bcecec3cef50c36fa6dcdd3d06b866a0eaae20b09fb729a5cd44216e31c20eec9c07
+  languageName: node
+  linkType: hard
+
+"@vercel/sdk@npm:^1.6":
+  version: 1.6.12
+  resolution: "@vercel/sdk@npm:1.6.12"
+  peerDependencies:
+    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0"
+    zod: ">= 3"
+  peerDependenciesMeta:
+    "@modelcontextprotocol/sdk":
+      optional: true
+  bin:
+    mcp: bin/mcp-server.js
+  checksum: 10c0/619dbfb17dbdc264ef5d2f1842a2f49766577a223827e1b9cafa5ded4f23bcdaf172c6be7883e92c7336f3e716dc86c322ab330368465c60c3164ff9f0dbb89b
   languageName: node
   linkType: hard
 

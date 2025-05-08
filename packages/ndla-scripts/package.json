@@ -23,6 +23,7 @@
     "src"
   ],
   "dependencies": {
+    "@vercel/sdk": "^1.6",
     "cross-spawn": "^7.0.6",
     "fast-glob": "^3.3.3",
     "normalize-url": "^8.0.1",

@@ -1,22 +1,16 @@
 #!/usr/bin/env node
 /**
- * Copyright (c) 2021-present, NDLA.
+ * Copyright (c) 2025-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-/**
- * Forked/Inspired by: https://github.com/kentcdodds/glamorous-website/blob/master/other/now-travis
- */
+import { inspect } from "util";
+import { Vercel } from "@vercel/sdk";
 
 /* eslint-disable no-console */
-
-import { inspect } from "util";
-import { spawnSync } from "child_process";
-import normalizeUrl from "normalize-url";
-import urlRegex from "url-regex-safe";
 
 if (!process.env.CI || !process.env.GITHUB_ACTIONS) {
   throw new Error("Could not detect Github Actions CI environment");
@@ -35,9 +29,8 @@ const {
   VERCEL_TOKEN: vercelToken,
   GH_TOKEN: githubToken,
 } = process.env;
-const providedArgs = process.argv.slice(2);
 
-function isFork() {
+const isFork = () => {
   if (!GH_PR_REPO) {
     return false;
   }
@@ -45,13 +38,15 @@ function isFork() {
   const [owner] = GITHUB_REPOSITORY.split("/");
 
   return owner !== prOwner;
-}
+};
 
-function getUrl(content) {
-  const urls = content.match(urlRegex()) || [];
-
-  return urls.map((url) => normalizeUrl(url.trim().replace(/\.+$/, "")))[0];
-}
+const getAliasUrl = () => {
+  const repoName = GITHUB_REPOSITORY.split("/")[1];
+  if (GH_PR_NUMBER === "") {
+    return `${repoName}-master`;
+  }
+  return `${repoName}-pr-${GH_PR_NUMBER}.vercel.app`;
+};
 
 function logError(message) {
   return function logIfError(error) {
@@ -61,33 +56,6 @@ function logError(message) {
       // console.log(message, error);
     }
   };
-}
-
-function safeify(s, safed = []) {
-  if (safed.indexOf(s) !== -1) {
-    return "CIRCULAR";
-  }
-  safed.push(s);
-  if (typeof s === "string") {
-    return s.split(vercelToken).join("VERCEL_TOKEN").split(githubToken).join("GITHUB_TOKEN");
-  }
-  if (typeof s === "object" && s !== null) {
-    return Object.keys(s).reduce((acc, k) => {
-      acc[k] = safeify(s, safed);
-      return acc;
-    }, {});
-  }
-  return s;
-}
-
-function safeLog(...args) {
-  const safeArgs = args.map((s) => safeify(s));
-  console.log(...safeArgs);
-}
-
-function safeError(...args) {
-  const safeArgs = args.map((s) => safeify(s));
-  console.error(...safeArgs);
 }
 
 async function updateStatus(sha, options) {
@@ -106,53 +74,11 @@ async function updateStatus(sha, options) {
   }).catch(logError("setting complete status"));
 }
 
-function onError(sha, err) {
-  safeError(err);
-  updateStatus(sha, {
-    state: "error",
-    description: `▲ Vercel deployment failed. See github-actions logs for details.`,
-  });
-}
-
-function getAliasUrl() {
-  const repoName = GITHUB_REPOSITORY.split("/")[1];
-  if (GH_PR_NUMBER === "") {
-    return `${repoName}-master`;
-  }
-  return `${repoName}-pr-${GH_PR_NUMBER}`;
-}
-
-async function spawnAlias(sha, deployUrl) {
-  const newUrl = getAliasUrl();
-  const cliArgs = ["--token", vercelToken, "alias", "set", deployUrl, newUrl];
-  safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
-  try {
-    spawnSync("vercel", cliArgs, { encoding: "utf8" });
-  } catch (error) {
-    onError(sha, error);
-    throw error;
-  }
-  return `https://${newUrl}.vercel.app`;
-}
-
-async function spawnDeploy(sha) {
-  const cliArgs = ["--token", vercelToken, "--regions", "dub1", "--yes", ...providedArgs];
-  safeLog("spawning shell with command:", `vercel ${cliArgs.join(" ")}`);
-  try {
-    const result = spawnSync("vercel", cliArgs, { encoding: "utf8" });
-    return result.stdout.toString();
-  } catch (error) {
-    onError(sha, error);
-    throw error;
-  }
-}
-
-async function deploy(sha) {
+const deploy = async (sha) => {
   if (isFork()) {
-    console.log(`▲ Vercel deployment is skipped for forks...`);
+    console.log("▲ Vercel deployment is skipped for forks...");
     return;
   }
-
   if (!githubToken) {
     throw new Error("Missing required environment variable GH_TOKEN");
   }
@@ -160,39 +86,73 @@ async function deploy(sha) {
   if (!vercelToken) {
     throw new Error("Missing required environment variable VERCEL_TOKEN");
   }
+  const vercel = new Vercel({ bearerToken: vercelToken });
+
   let targetUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
 
-  updateStatus(sha, {
+  await updateStatus(sha, {
     target_url: targetUrl,
     state: "pending",
     description: `▲ Vercel deployment starting`,
   });
 
-  console.log(`🤠 Alrighty, deploy starting.`);
+  console.log("🤠 Alrighty, deploy starting.");
 
-  const result = await spawnDeploy(sha);
-  targetUrl = getUrl(result);
-
-  console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
-
-  updateStatus(sha, {
-    target_url: `${targetUrl}`,
-    state: "pending",
-    description: `▲ Aliasing vercel deployment...`,
+  const response = await vercel.deployments.createDeployment({
+    requestBody: {
+      name: "frontend-packages",
+      target: "production",
+      gitSource: {
+        type: "github",
+        repo: "frontend-packages",
+        org: "ndlano",
+        ref: sha,
+      },
+    },
   });
 
-  targetUrl = await spawnAlias(sha, targetUrl);
+  const deploymentId = response.id;
 
-  console.log(`🔗 It's linked!`);
+  console.log(`Deployment created: ID ${deploymentId} and status ${response.status}`);
 
-  updateStatus(sha, {
-    target_url: targetUrl,
-    state: "success",
-    description: `▲ Vercel deployment complete`,
-  });
+  let deploymentStatus;
+  let deploymentURL;
 
-  console.log("🏁 All done!");
-}
+  do {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    const statusResponse = await vercel.deployments.getDeployment({
+      idOrUrl: deploymentId,
+      withGitRepoInfo: "true",
+    });
+    deploymentStatus = statusResponse.status;
+    deploymentURL = statusResponse.url;
+    console.log(`Deployment status: ${deploymentStatus}`);
+  } while (deploymentStatus === "BUILDING" || deploymentStatus === "INITIALIZING");
+
+  if (deploymentStatus === "READY") {
+    console.log("💪 Deploy finished! Now we're going to alias to ndla.sh");
+    await updateStatus(sha, {
+      target_url: `${deploymentURL}`,
+      state: "pending",
+      description: `▲ Aliasing vercel deployment...`,
+    });
+    const aliasResponse = await vercel.aliases.assignAlias({
+      id: deploymentId,
+      requestBody: {
+        alias: getAliasUrl(),
+        redirect: null,
+      },
+    });
+    console.log(`🔗 It's linked!`);
+    await updateStatus(sha, {
+      target_url: aliasResponse.alias,
+      state: "success",
+      description: `▲ Vercel deployment complete`,
+    });
+
+    console.log("🏁 All done!");
+  }
+};
 
 switch (GITHUB_EVENT_NAME) {
   case "pull_request": {
@@ -200,14 +160,14 @@ switch (GITHUB_EVENT_NAME) {
     break;
   }
   case "push": {
-    if (GITHUB_REF === "refs/heads/master") {
+    if (GITHUB_REF === "refs/heads/main") {
       deploy(GITHUB_SHA);
     } else {
-      console.log(`Skip deploy of commits not updating a PR`);
+      console.log("Not deploying, not on main branch");
     }
     break;
   }
   default: {
-    console.log(`${GITHUB_EVENT_NAME} is not supported by vercel-github`);
+    console.log(`${GITHUB_EVENT_NAME} is not a supported event type.`);
   }
 }

@@ -39,7 +39,7 @@ export const Welcome: StoryFn = () => (
         <section>
           <HeaderWrapper>
             <NdlaLogoText aria-label="Nasjonal digital læringsarena" />
-            <h1>Designmanual</h1>
+            <h1>Designmanual som jeg tester</h1>
           </HeaderWrapper>
           <p>
             <i>

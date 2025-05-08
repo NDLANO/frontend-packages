@@ -1,6 +1,6 @@
 # ndla-core
 
-ndla-core contains common styling for all NDLA components. It includes all global variables for stuff like typography, colors, etc
+@ndla/core contains constants used throughout NDLA applications
 
 ## Installation
 
@@ -14,16 +14,8 @@ npm i --save @ndla/core
 
 ## Usage
 
-```scss
-/* Your project's main .scss import file */
-@import "~ndla-core/scss/core"; // with webpack and sass-loader
-@import "../path/to/node_modules/ndla-core/scss/core"; // direct reference
-```
+```tsx
+import { breakpoints } from "@ndla/core";
 
-Utilities are located in a seperate file and should be imported last (after component styling)
-
-```scss
-@import "~@ndla/core/scss/core";
-@import "my-awesome-component";
-@import "~@ndla/core/scss/utilities";
+console.log(breakpoints.mobile);
 ```

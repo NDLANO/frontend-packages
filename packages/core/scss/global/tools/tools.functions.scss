@@ -1,5 +1,0 @@
-@mixin chinese() {
-  :where([lang="zh"], [lang="zh-Hans"], [lang="zh-Hant"]):not([data-pinyin]) {
-    @content;
-  }
-}

@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^0.53.3"
+    "@pandacss/dev": "^0.53.6"
   },
   "peerDependencies": {
     "react": ">= 18",

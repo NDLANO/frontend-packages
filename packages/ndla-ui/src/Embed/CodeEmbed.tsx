@@ -30,6 +30,7 @@ const StyledFigCaption = styled("figcaption", {
 
 const StyledFigure = styled(Figure, {
   base: {
+    clear: "both",
     // We apply margin here to allow for the float and size props on figure to work as intended.
     "& > *:not(:where(:first-child))": {
       marginBlockStart: "xsmall",

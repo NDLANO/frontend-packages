@@ -20,7 +20,6 @@ const datePickerRecipe = sva({
     root: {
       display: "flex",
       flexDirection: "column",
-      // TODO: Check out
       gap: "xsmall",
     },
     content: {
@@ -67,13 +66,12 @@ const datePickerRecipe = sva({
           content: "'-'",
           color: "stroke.default",
           position: "absolute",
-          marginBlockStart: "xsmall",
+          marginBlockStart: "medium",
         },
       },
-      _selected: {
-        _before: {
-          background: "surface.action.selected",
-        },
+      "&[data-outside-range]": {
+        color: "text.subtle",
+        fontWeight: "normal",
       },
     },
     view: {
@@ -87,9 +85,9 @@ const { withProvider, withContext } = createStyleContext(datePickerRecipe);
 
 export interface DatePickerRootProps extends DatePicker.RootProps, JsxStyleProps {
   translations: DatePicker.RootProps["translations"];
+  locale: DatePicker.RootProps["locale"];
 }
 
-// TODO: Consider custom handling for locale
 export const DatePickerRoot = withProvider<HTMLDivElement, DatePickerRootProps>(DatePicker.Root, "root", {
   baseComponent: true,
 });

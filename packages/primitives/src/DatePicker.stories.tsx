@@ -44,6 +44,7 @@ export default {
     startOfWeek: 1,
     outsideDaySelectable: true,
     isDateUnavailable: () => false,
+    locale: "nb-NO",
   },
 } satisfies Meta<typeof DatePickerRoot>;
 

@@ -8,6 +8,7 @@
 
 import type { Meta, StoryFn } from "@storybook/react";
 import { ArrowLeftLine, ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons";
+import { useDatePickerTranslations } from "@ndla/ui";
 import { Button, IconButton } from "./Button";
 import {
   DatePickerContent,
@@ -40,159 +41,167 @@ export default {
   args: {
     fixedWeeks: true,
     startOfWeek: 1,
+    outsideDaySelectable: true,
     isDateUnavailable: () => false,
   },
 } satisfies Meta<typeof DatePickerRoot>;
 
-export const Default: StoryFn<typeof DatePickerRoot> = (args) => (
-  <DatePickerRoot {...args}>
-    <DatePickerControl>
-      <DatePickerTrigger asChild>
-        <Button variant="secondary">Open date picker</Button>
-      </DatePickerTrigger>
-    </DatePickerControl>
-    <DatePickerContent>
-      <DatePickerView view="day">
+export const Default: StoryFn<typeof DatePickerRoot> = (args) => {
+  const translations = useDatePickerTranslations();
+  return (
+    <DatePickerRoot {...args} translations={translations}>
+      <DatePickerControl>
         <DatePickerContext>
           {(api) => (
-            <>
-              <DatePickerViewControl>
-                <DatePickerPrevTrigger asChild>
-                  <IconButton variant="tertiary" size="small">
-                    <ArrowLeftShortLine />
-                  </IconButton>
-                </DatePickerPrevTrigger>
-                <DatePickerViewTrigger asChild>
-                  <Button variant="tertiary" size="small">
-                    <DatePickerRangeText />
+            <DatePickerTrigger asChild>
+              <Button variant="secondary">{translations.trigger(api.open)}</Button>
+            </DatePickerTrigger>
+          )}
+        </DatePickerContext>
+      </DatePickerControl>
+      <DatePickerContent>
+        <DatePickerView view="day">
+          <DatePickerContext>
+            {(api) => (
+              <>
+                <DatePickerViewControl>
+                  <DatePickerPrevTrigger asChild>
+                    <IconButton variant="tertiary" size="small">
+                      <ArrowLeftShortLine />
+                    </IconButton>
+                  </DatePickerPrevTrigger>
+                  <DatePickerViewTrigger asChild>
+                    <Button variant="tertiary" size="small">
+                      <DatePickerRangeText />
+                    </Button>
+                  </DatePickerViewTrigger>
+                  <DatePickerNextTrigger asChild>
+                    <IconButton variant="tertiary" size="small">
+                      <ArrowRightShortLine />
+                    </IconButton>
+                  </DatePickerNextTrigger>
+                  <Button size="small" onClick={() => api.selectToday()}>
+                    Gå til dagens dato
                   </Button>
-                </DatePickerViewTrigger>
-                <DatePickerNextTrigger asChild>
-                  <IconButton variant="tertiary" size="small">
-                    <ArrowRightShortLine />
-                  </IconButton>
-                </DatePickerNextTrigger>
-                <Button size="small" onClick={() => api.selectToday()}>
-                  Gå til dagens dato
-                </Button>
-              </DatePickerViewControl>
-              <DatePickerTable>
-                <DatePickerTableHead>
-                  <DatePickerTableRow>
-                    {api.weekDays.map((weekDay, id) => (
-                      <DatePickerTableHeader key={id}>{weekDay.narrow}</DatePickerTableHeader>
+                </DatePickerViewControl>
+                <DatePickerTable>
+                  <DatePickerTableHead>
+                    <DatePickerTableRow>
+                      {api.weekDays.map((weekDay, id) => (
+                        <DatePickerTableHeader key={id}>{weekDay.narrow}</DatePickerTableHeader>
+                      ))}
+                    </DatePickerTableRow>
+                  </DatePickerTableHead>
+                  <DatePickerTableBody>
+                    {api.weeks.map((week, id) => (
+                      <DatePickerTableRow key={id}>
+                        {week.map((day, id) => {
+                          return (
+                            <DatePickerTableCell key={id} value={day}>
+                              <DatePickerTableCellTrigger
+                                asChild
+                                data-state={api.value[0]?.compare(day) === 0 ? "on" : "off"}
+                              >
+                                <IconButton variant="tertiary">{day.day}</IconButton>
+                              </DatePickerTableCellTrigger>
+                            </DatePickerTableCell>
+                          );
+                        })}
+                      </DatePickerTableRow>
                     ))}
-                  </DatePickerTableRow>
-                </DatePickerTableHead>
-                <DatePickerTableBody>
-                  {api.weeks.map((week, id) => (
-                    <DatePickerTableRow key={id}>
-                      {week.map((day, id) => {
-                        return (
-                          <DatePickerTableCell key={id} value={day}>
+                  </DatePickerTableBody>
+                </DatePickerTable>
+              </>
+            )}
+          </DatePickerContext>
+        </DatePickerView>
+        <DatePickerView view="month">
+          <DatePickerContext>
+            {(api) => (
+              <>
+                <DatePickerViewControl>
+                  <DatePickerPrevTrigger asChild>
+                    <IconButton variant="tertiary" size="small">
+                      <ArrowLeftLine />
+                    </IconButton>
+                  </DatePickerPrevTrigger>
+                  <DatePickerViewTrigger asChild>
+                    <Button variant="tertiary" size="small">
+                      <DatePickerRangeText />
+                    </Button>
+                  </DatePickerViewTrigger>
+                  <DatePickerNextTrigger asChild>
+                    <IconButton variant="tertiary" size="small">
+                      <ArrowRightShortLine />
+                    </IconButton>
+                  </DatePickerNextTrigger>
+                </DatePickerViewControl>
+                <DatePickerTable>
+                  <DatePickerTableBody>
+                    {api.getMonthsGrid({ columns: 4, format: "short" }).map((months, id) => (
+                      <DatePickerTableRow key={id}>
+                        {months.map((month, id) => (
+                          <DatePickerTableCell key={id} value={month.value}>
                             <DatePickerTableCellTrigger
                               asChild
-                              data-state={api.value[0]?.compare(day) === 0 ? "on" : "off"}
+                              data-state={api.value?.[0]?.month === month.value ? "on" : "off"}
                             >
-                              <IconButton variant="tertiary">{day.day}</IconButton>
+                              <Button variant="tertiary">{month.label}</Button>
                             </DatePickerTableCellTrigger>
                           </DatePickerTableCell>
-                        );
-                      })}
-                    </DatePickerTableRow>
-                  ))}
-                </DatePickerTableBody>
-              </DatePickerTable>
-            </>
-          )}
-        </DatePickerContext>
-      </DatePickerView>
-      <DatePickerView view="month">
-        <DatePickerContext>
-          {(api) => (
-            <>
-              <DatePickerViewControl>
-                <DatePickerPrevTrigger asChild>
-                  <IconButton variant="tertiary" size="small">
-                    <ArrowLeftLine />
-                  </IconButton>
-                </DatePickerPrevTrigger>
-                <DatePickerViewTrigger asChild>
-                  <Button variant="tertiary" size="small">
-                    <DatePickerRangeText />
-                  </Button>
-                </DatePickerViewTrigger>
-                <DatePickerNextTrigger asChild>
-                  <IconButton variant="tertiary" size="small">
-                    <ArrowRightShortLine />
-                  </IconButton>
-                </DatePickerNextTrigger>
-              </DatePickerViewControl>
-              <DatePickerTable>
-                <DatePickerTableBody>
-                  {api.getMonthsGrid({ columns: 4, format: "short" }).map((months, id) => (
-                    <DatePickerTableRow key={id}>
-                      {months.map((month, id) => (
-                        <DatePickerTableCell key={id} value={month.value}>
-                          <DatePickerTableCellTrigger
-                            asChild
-                            data-state={api.value?.[0]?.month === month.value ? "on" : "off"}
-                          >
-                            <Button variant="tertiary">{month.label}</Button>
-                          </DatePickerTableCellTrigger>
-                        </DatePickerTableCell>
-                      ))}
-                    </DatePickerTableRow>
-                  ))}
-                </DatePickerTableBody>
-              </DatePickerTable>
-            </>
-          )}
-        </DatePickerContext>
-      </DatePickerView>
-      <DatePickerView view="year">
-        <DatePickerContext>
-          {(api) => (
-            <>
-              <DatePickerViewControl>
-                <DatePickerPrevTrigger asChild>
-                  <IconButton variant="tertiary" size="small">
-                    <ArrowLeftShortLine />
-                  </IconButton>
-                </DatePickerPrevTrigger>
-                <DatePickerViewTrigger asChild>
-                  <Button variant="tertiary" size="small">
-                    <DatePickerRangeText />
-                  </Button>
-                </DatePickerViewTrigger>
-                <DatePickerNextTrigger asChild>
-                  <IconButton variant="tertiary" size="small">
-                    <ArrowRightShortLine />
-                  </IconButton>
-                </DatePickerNextTrigger>
-              </DatePickerViewControl>
-              <DatePickerTable>
-                <DatePickerTableBody>
-                  {api.getYearsGrid({ columns: 4 }).map((years, id) => (
-                    <DatePickerTableRow key={id}>
-                      {years.map((year, id) => (
-                        <DatePickerTableCell key={id} value={year.value}>
-                          <DatePickerTableCellTrigger
-                            asChild
-                            data-state={api.value?.[0]?.year === year.value ? "on" : "off"}
-                          >
-                            <Button variant="tertiary">{year.label}</Button>
-                          </DatePickerTableCellTrigger>
-                        </DatePickerTableCell>
-                      ))}
-                    </DatePickerTableRow>
-                  ))}
-                </DatePickerTableBody>
-              </DatePickerTable>
-            </>
-          )}
-        </DatePickerContext>
-      </DatePickerView>
-    </DatePickerContent>
-  </DatePickerRoot>
-);
+                        ))}
+                      </DatePickerTableRow>
+                    ))}
+                  </DatePickerTableBody>
+                </DatePickerTable>
+              </>
+            )}
+          </DatePickerContext>
+        </DatePickerView>
+        <DatePickerView view="year">
+          <DatePickerContext>
+            {(api) => (
+              <>
+                <DatePickerViewControl>
+                  <DatePickerPrevTrigger asChild>
+                    <IconButton variant="tertiary" size="small">
+                      <ArrowLeftShortLine />
+                    </IconButton>
+                  </DatePickerPrevTrigger>
+                  <DatePickerViewTrigger asChild>
+                    <Button variant="tertiary" size="small">
+                      <DatePickerRangeText />
+                    </Button>
+                  </DatePickerViewTrigger>
+                  <DatePickerNextTrigger asChild>
+                    <IconButton variant="tertiary" size="small">
+                      <ArrowRightShortLine />
+                    </IconButton>
+                  </DatePickerNextTrigger>
+                </DatePickerViewControl>
+                <DatePickerTable>
+                  <DatePickerTableBody>
+                    {api.getYearsGrid({ columns: 4 }).map((years, id) => (
+                      <DatePickerTableRow key={id}>
+                        {years.map((year, id) => (
+                          <DatePickerTableCell key={id} value={year.value}>
+                            <DatePickerTableCellTrigger
+                              asChild
+                              data-state={api.value?.[0]?.year === year.value ? "on" : "off"}
+                            >
+                              <Button variant="tertiary">{year.label}</Button>
+                            </DatePickerTableCellTrigger>
+                          </DatePickerTableCell>
+                        ))}
+                      </DatePickerTableRow>
+                    ))}
+                  </DatePickerTableBody>
+                </DatePickerTable>
+              </>
+            )}
+          </DatePickerContext>
+        </DatePickerView>
+      </DatePickerContent>
+    </DatePickerRoot>
+  );
+};

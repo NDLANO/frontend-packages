@@ -85,8 +85,11 @@ const datePickerRecipe = sva({
 });
 const { withProvider, withContext } = createStyleContext(datePickerRecipe);
 
-export interface DatePickerRootProps extends DatePicker.RootProps, JsxStyleProps {}
+export interface DatePickerRootProps extends DatePicker.RootProps, JsxStyleProps {
+  translations: DatePicker.RootProps["translations"];
+}
 
+// TODO: Consider custom handling for locale
 export const DatePickerRoot = withProvider<HTMLDivElement, DatePickerRootProps>(DatePicker.Root, "root", {
   baseComponent: true,
 });

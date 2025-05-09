@@ -6,6 +6,7 @@
  *
  */
 
+import { getLocalTimeZone, today } from "@internationalized/date";
 import type { Meta, StoryFn } from "@storybook/react";
 import { ArrowLeftLine, ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons";
 import { useDatePickerTranslations } from "@ndla/ui";
@@ -80,7 +81,13 @@ export const Default: StoryFn<typeof DatePickerRoot> = (args) => {
                       <ArrowRightShortLine />
                     </IconButton>
                   </DatePickerNextTrigger>
-                  <Button size="small" onClick={() => api.selectToday()}>
+                  <Button
+                    size="small"
+                    onClick={() => {
+                      api.selectToday();
+                      api.setValue([today(getLocalTimeZone())]);
+                    }}
+                  >
                     Gå til dagens dato
                   </Button>
                 </DatePickerViewControl>

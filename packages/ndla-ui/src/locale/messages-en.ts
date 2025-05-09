@@ -402,6 +402,40 @@ const messages = {
       is360Video: "VR video",
       close: "Lukk",
     },
+    datePicker: {
+      dayCell: {
+        unavailable: "Unavailable date. {{date}}",
+        selected: "Selected date. {{date}}",
+        select: "Select date. {{date}}",
+      },
+      nextTrigger: {
+        day: "Go to next month",
+        month: "Go to next year",
+        year: "Go to next decade",
+      },
+      prevTrigger: {
+        day: "Go to previous month",
+        month: "Go to previous year",
+        year: "Go to previous decade",
+      },
+      monthSelect: "Select month",
+      yearSelect: "Select year",
+      viewTrigger: {
+        day: "Switch to day view",
+        month: "Switch to month view",
+        year: "Switch to year view",
+      },
+      presetTrigger: {
+        single: "Select {{date}}",
+        range: "Select from {{start}} to {{end}}",
+      },
+      clearTrigger: "Clear selected dates",
+      trigger: {
+        open: "Open date picker",
+        close: "Close date picker",
+      },
+      content: "Calendar",
+    },
   },
   richTextEditor: {
     tooltip: {

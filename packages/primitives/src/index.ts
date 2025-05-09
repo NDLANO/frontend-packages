@@ -87,6 +87,36 @@ export {
   ComboboxList,
 } from "./Combobox";
 
+export type { DatePickerRootProps } from "./DatePicker";
+export {
+  DatePickerRoot,
+  DatePickerClearTrigger,
+  DatePickerContent,
+  DatePickerStandaloneContent,
+  DatePickerControl,
+  DatePickerInput,
+  DatePickerLabel,
+  DatePickerMonthSelect,
+  DatePickerNextTrigger,
+  DatePickerPositioner,
+  DatePickerPresetTrigger,
+  DatePickerPrevTrigger,
+  DatePickerRangeText,
+  DatePickerTableBody,
+  DatePickerTableCell,
+  DatePickerTableCellTrigger,
+  DatePickerTableHead,
+  DatePickerTableHeader,
+  DatePickerTable,
+  DatePickerTableRow,
+  DatePickerTrigger,
+  DatePickerViewControl,
+  DatePickerView,
+  DatePickerViewTrigger,
+  DatePickerYearSelect,
+  DatePickerContext,
+} from "./DatePicker";
+
 export type { DialogVariantProps, DialogRootProps } from "./Dialog";
 export {
   DialogRoot,

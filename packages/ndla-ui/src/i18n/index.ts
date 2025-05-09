@@ -16,4 +16,5 @@ export {
   useAudioSearchTranslations,
   useImageSearchTranslations,
   useVideoSearchTranslations,
+  useDatePickerTranslations,
 } from "./useComponentTranslations";

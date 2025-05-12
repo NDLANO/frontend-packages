@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "56.0.117-alpha.0",
+  "version": "56.0.118-alpha.0",
   "description": "UI component library for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -32,11 +32,11 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/core": "^5.0.3",
-    "@ndla/icons": "^8.0.55-alpha.0",
+    "@ndla/core": "^6.0.0-alpha.0",
+    "@ndla/icons": "^8.0.56-alpha.0",
     "@ndla/licenses": "^9.0.1",
     "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "^7.0.86-alpha.0",
+    "@ndla/safelink": "^7.0.87-alpha.0",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^5.0.7-alpha.0",
     "html-react-parser": "^5.1.19"
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^1.0.40",
-    "@ndla/types-embed": "^5.0.13-alpha.0",
+    "@ndla/types-embed": "^5.0.14-alpha.0",
     "@pandacss/dev": "^0.53.6"
   },
   "publishConfig": {

@@ -173,6 +173,7 @@ export { default as Quote } from "./Quote";
 export { default as Replay15Line } from "./Replay15Line";
 export { default as Reply } from "./Reply";
 export { default as ResetLeft } from "./ResetLeft";
+export { default as RobotFill } from "./RobotFill";
 export { default as RouteFill } from "./RouteFill";
 export { default as RouteLine } from "./RouteLine";
 export { default as RssFill } from "./RssFill";

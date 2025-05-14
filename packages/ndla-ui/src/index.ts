@@ -89,6 +89,7 @@ export {
   useAudioSearchTranslations,
   useImageSearchTranslations,
   useVideoSearchTranslations,
+  useDatePickerTranslations,
 } from "./i18n";
 
 export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadge";

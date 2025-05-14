@@ -404,6 +404,40 @@ const messages = {
       is360Video: "VR-video",
       close: "Lukk",
     },
+    datePicker: {
+      dayCell: {
+        unavailable: "Ikke tilgjengelig dato. {{date}}",
+        selected: "Valgt dato. {{date}}",
+        select: "Velg dato. {{date}}",
+      },
+      nextTrigger: {
+        day: "Gå til neste måned",
+        month: "Gå til neste år",
+        year: "Gå til neste tiår",
+      },
+      prevTrigger: {
+        day: "Gå til forrige måned",
+        month: "Gå til forrige år",
+        year: "Gå til forrige tiår",
+      },
+      monthSelect: "Velg måned",
+      yearSelect: "Velg år",
+      viewTrigger: {
+        day: "Bytt til dagvisning",
+        month: "Bytt til månedvisning",
+        year: "Bytt til årvisning",
+      },
+      presetTrigger: {
+        single: "Velg {{date}}",
+        range: "Velg fra {{start}} til {{end}}",
+      },
+      clearTrigger: "Fjern valgte datoer",
+      trigger: {
+        open: "Åpne datovelger",
+        close: "Lukk datovelger",
+      },
+      content: "Kalender",
+    },
   },
   richTextEditor: {
     tooltip: {

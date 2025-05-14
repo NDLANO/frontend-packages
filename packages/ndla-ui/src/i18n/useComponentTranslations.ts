@@ -8,7 +8,7 @@
 
 import { useTranslation } from "react-i18next";
 import type { CollectionItem } from "@ark-ui/react";
-import type { ComboboxRootProps, PaginationRootProps, TagsInputRootProps } from "@ndla/primitives";
+import type { ComboboxRootProps, PaginationRootProps, TagsInputRootProps, DatePickerRootProps } from "@ndla/primitives";
 import { type TagSelectorRootProps } from "../TagSelector/TagSelector";
 import { useMemo } from "react";
 
@@ -194,6 +194,41 @@ export const useVideoSearchTranslations = (translations?: Partial<VideoTranslati
       addVideo: t("addVideo"),
       close: t("close"),
       ...translations,
+    }),
+    [t, translations],
+  );
+};
+
+export const useDatePickerTranslations = (
+  translations?: Partial<DatePickerRootProps["translations"]>,
+): NonNullable<DatePickerRootProps["translations"]> => {
+  const { t } = useTranslation("translation", { keyPrefix: "component.datePicker" });
+
+  return useMemo(
+    () => ({
+      dayCell: (state) => {
+        if (state.unavailable) {
+          return t("dayCell.unavailable", { date: state.formattedDate });
+        } else if (state.selected) {
+          return t("dayCell.selected", { date: state.formattedDate });
+        } else return t("dayCell.select", { date: state.formattedDate });
+      },
+      nextTrigger: (view) => t(`nextTrigger.${view}`),
+      prevTrigger: (view) => t(`prevTrigger.${view}`),
+      monthSelect: t("monthSelect"),
+      yearSelect: t("yearSelect"),
+      viewTrigger: (view) => t(`viewTrigger.${view}`),
+      presetTrigger: (value) => {
+        if (Array.isArray(value)) {
+          return t("presetTrigger.range", { start: value[0], end: value[1] });
+        } else return t("presetTrigger.single", { date: value });
+      },
+      clearTrigger: t("clearTrigger"),
+      trigger: (open) => t(`trigger.${open ? "close" : "open"}`),
+      content: t("content"),
+      placeholder: (_locale) => {
+        return { day: "dd", month: "mm", year: "yyyy" };
+      },
     }),
     [t, translations],
   );

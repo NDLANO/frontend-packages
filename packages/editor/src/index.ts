@@ -129,4 +129,5 @@ export type { SlateEditor, CustomEditor } from "./types";
 
 export { isElementOfType } from "./utils/isElementType";
 export { isEmptyTextNode } from "./utils/isEmptyTextNode";
+export type { NormalizerConfig } from "./utils/defaultNormalizer";
 export { defaultNormalizer } from "./utils/defaultNormalizer";

@@ -26,7 +26,7 @@ export type {
 } from "./core";
 export { mergeOptions } from "./core/mergeOptions";
 
-export { createSlate, withPlugins, withRenderers } from "./editor/createSlate";
+export { useCreateSlate, createSlate, withPlugins, withRenderers } from "./editor/createSlate";
 export { withLogger } from "./editor/logger/withLogger";
 export { LoggerManager, type LoggerOptions, loggerManager } from "./editor/logger/Logger";
 

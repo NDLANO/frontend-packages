@@ -88,7 +88,7 @@ const initializeEditor = ({ value, editor, plugins, shouldNormalize, onInitialNo
   }
 };
 
-export const useCreateSlate = (opts: CreateSlate) => {
+export const useCreateSlate = (opts: CreateSlate): Editor => {
   const [editor] = useState(() => createSlate(opts));
   return editor;
 };

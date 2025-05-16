@@ -6,7 +6,7 @@
  *
  */
 
-import { createEditor, Element, type Descendant, type Editor } from "slate";
+import { createEditor, Element, Path, Range, Transforms, type Descendant, type Editor } from "slate";
 import type { ElementRenderer, LeafRenderer, PluginReturnType, SlatePlugin, SlateRenderer } from "../core";
 import { LoggerManager } from "../editor/logger/Logger";
 import { withHistory } from "slate-history";
@@ -64,6 +64,7 @@ interface InitializeOptions extends BaseInitializeOptions {
 
 export interface ReinitializeOptions extends BaseInitializeOptions {
   value: Descendant[];
+  restoreSelection?: boolean;
 }
 
 const initializeEditor = ({ value, editor, plugins, shouldNormalize, onInitialNormalized }: InitializeOptions) => {
@@ -87,6 +88,22 @@ const initializeEditor = ({ value, editor, plugins, shouldNormalize, onInitialNo
   }
 };
 
+// At the time of writing, Slate is able to restore selection to void elements on its own when reinitializing, but keyboard navigation doesn't work unless a big setTimeout is used.
+// This is a workaround to restore selection to the next path, allowing users to edit instantly after the editor has been reinitialized.
+const getSelection = (editor: Editor): Range | null => {
+  if (!editor.selection || !Range.isCollapsed(editor.selection)) return null;
+  const [entry] = editor.nodes({ mode: "lowest", at: editor.selection });
+  if (!entry || !Element.isElement(entry[0])) return null;
+
+  const nextPath = Path.next(entry[1]);
+  if (editor.hasPath(nextPath)) {
+    console.log("is element", editor.selection);
+    return { anchor: { path: nextPath, offset: 0 }, focus: { path: nextPath, offset: 0 } };
+  } else {
+    return null;
+  }
+};
+
 export const createSlate = ({
   plugins,
   elementRenderers,
@@ -106,8 +123,12 @@ export const createSlate = ({
 
   initializeEditor({ plugins, shouldNormalize, value, editor, onInitialNormalized });
 
-  editor.reinitialize = ({ value, shouldNormalize, onInitialNormalized }: ReinitializeOptions) => {
+  editor.reinitialize = ({ value, shouldNormalize, onInitialNormalized, restoreSelection }: ReinitializeOptions) => {
+    const range = restoreSelection ? getSelection(editor) : null;
     initializeEditor({ editor, plugins, shouldNormalize, value, onInitialNormalized });
+    if (range) {
+      Transforms.select(editor, range);
+    }
   };
 
   editor.hasVoids = (element) => element.children.some((n) => Element.isElement(n) && editor.isVoid(n));

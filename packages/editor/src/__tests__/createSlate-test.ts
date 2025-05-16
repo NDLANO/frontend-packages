@@ -6,9 +6,12 @@
  *
  */
 
-import type { Descendant } from "slate";
+import { Range, type Descendant } from "slate";
 import { createSlate } from "../editor/createSlate";
 import { createPlugin } from "../core/createPlugin";
+import { sectionPlugin } from "../plugins/section/sectionPlugin";
+import { paragraphPlugin } from "../plugins/paragraph/paragraphPlugin";
+import { breakPlugin } from "../plugins/break/breakPlugin";
 
 describe("createSlate", () => {
   describe("normalizeInitialValue", () => {
@@ -140,6 +143,95 @@ describe("createSlate", () => {
       const editor = createSlate({ plugins: [createPlugin({ name: "test", type: "section" })] });
       const result = editor.supportsElement({ type: "paragraph", children: [{ text: "" }] });
       expect(result).toBe(false);
+    });
+  });
+  describe("restoreFocus", () => {
+    it("restores focus when the editor is reinitialized", () => {
+      const value: Descendant[] = [
+        {
+          type: "section",
+          children: [
+            { type: "paragraph", children: [{ text: "Hello 1" }] },
+            { type: "paragraph", children: [{ text: "Hello 2" }] },
+            { type: "paragraph", children: [{ text: "Hello 3" }] },
+          ],
+        },
+      ] as const;
+
+      const editor = createSlate({
+        value,
+        shouldNormalize: true,
+      });
+
+      const expected: Range = {
+        anchor: { path: [0, 1, 0], offset: 3 },
+        focus: { path: [0, 1, 0], offset: 3 },
+      };
+
+      editor.selection = expected;
+
+      editor.reinitialize({ value: value, restoreSelection: true });
+      expect(editor.selection).toEqual(expected);
+    });
+
+    it("retains expanded ranges when reinitializing", () => {
+      const value: Descendant[] = [
+        {
+          type: "section",
+          children: [
+            { type: "paragraph", children: [{ text: "Hello 1" }] },
+            { type: "paragraph", children: [{ text: "Hello 2" }] },
+            { type: "paragraph", children: [{ text: "Hello 3" }] },
+          ],
+        },
+      ] as const;
+
+      const editor = createSlate({
+        value,
+        shouldNormalize: true,
+      });
+
+      const expected: Range = {
+        anchor: { path: [0, 1, 0], offset: 3 },
+        focus: { path: [0, 2, 0], offset: 5 },
+      };
+
+      editor.selection = expected;
+
+      editor.reinitialize({ value: value, restoreSelection: true });
+      expect(editor.selection).toEqual(expected);
+    });
+    it("moves the selection to the next path if the selected element is a block element", () => {
+      const value: Descendant[] = [
+        {
+          type: "section",
+          children: [
+            { type: "paragraph", children: [{ text: "Hello 1" }] },
+            { type: "paragraph", children: [{ text: "Hello 2" }] },
+            // not really a focusable element, but we don't have any other void block elements in frontend-packages
+            { type: "br", children: [{ text: "" }] },
+            { type: "paragraph", children: [{ text: "Hello 3" }] },
+          ],
+        },
+      ] as const;
+
+      const editor = createSlate({
+        value,
+        plugins: [sectionPlugin, paragraphPlugin, breakPlugin],
+        shouldNormalize: true,
+      });
+
+      editor.selection = {
+        anchor: { path: [0, 2, 0], offset: 0 },
+        focus: { path: [0, 2, 0], offset: 0 },
+      };
+
+      editor.reinitialize({ value, restoreSelection: true });
+
+      expect(editor.selection).toEqual({
+        anchor: { path: [0, 3, 0], offset: 0 },
+        focus: { path: [0, 3, 0], offset: 0 },
+      });
     });
   });
 });

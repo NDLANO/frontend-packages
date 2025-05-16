@@ -7,7 +7,7 @@
  */
 
 import { isKeyHotkey } from "is-hotkey";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { type Descendant, type EditorMarks } from "slate";
 import { DOMEditor } from "slate-dom";
 import { Editable, Slate, useSlate, type RenderElementProps } from "slate-react";
@@ -42,7 +42,7 @@ import {
   UnOrderedList,
   type IconButtonProps,
 } from "@ndla/primitives";
-import { createSlate } from "./editor/createSlate";
+import { useCreateSlate } from "./editor/createSlate";
 import { LoggerManager } from "./editor/logger/Logger";
 import { breakPlugin } from "./plugins/break/breakPlugin";
 import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
@@ -238,22 +238,20 @@ const ToolbarButtons = () => {
 };
 
 export const EditorPlayground: StoryFn = () => {
-  const [editor] = useState(() =>
-    createSlate({
-      plugins: [
-        inlineNavigationPlugin,
-        sectionPlugin,
-        headingPlugin,
-        configuredMarkPlugin,
-        configuredListPlugin,
-        paragraphPlugin,
-        linkPlugin,
-        softBreakPlugin,
-        breakPlugin,
-      ],
-      logger: new LoggerManager({ debug: true }),
-    }),
-  );
+  const editor = useCreateSlate({
+    plugins: [
+      inlineNavigationPlugin,
+      sectionPlugin,
+      headingPlugin,
+      configuredMarkPlugin,
+      configuredListPlugin,
+      paragraphPlugin,
+      linkPlugin,
+      softBreakPlugin,
+      breakPlugin,
+    ],
+    logger: new LoggerManager({ debug: true }),
+  });
   return (
     <div className="ndla-article">
       <Slate editor={editor} initialValue={initialValue}>

@@ -6,6 +6,7 @@
  *
  */
 
+import { useState } from "react";
 import { createEditor, Element, type Descendant, type Editor } from "slate";
 import type { ElementRenderer, LeafRenderer, PluginReturnType, SlatePlugin, SlateRenderer } from "../core";
 import { LoggerManager } from "../editor/logger/Logger";
@@ -85,6 +86,11 @@ const initializeEditor = ({ value, editor, plugins, shouldNormalize, onInitialNo
     const children = editor.children;
     onInitialNormalized?.(children);
   }
+};
+
+export const useCreateSlate = (opts: CreateSlate) => {
+  const [editor] = useState(() => createSlate(opts));
+  return editor;
 };
 
 export const createSlate = ({

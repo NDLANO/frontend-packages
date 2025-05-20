@@ -6,7 +6,7 @@
  *
  */
 
-export function copyTextToClipboard(text: string, el = document.body) {
+export function copyTextToClipboard(text: string, el: HTMLElement = document.body): boolean {
   if (!window || !document) {
     return false;
   }

@@ -11,7 +11,7 @@ type Target = HTMLElement | EventTarget | null | undefined;
 export const isHTMLElement = (v: any): v is HTMLElement =>
   typeof v === "object" && v?.nodeType === Node.ELEMENT_NODE && typeof v?.nodeName === "string";
 
-export const contains = (parent: Target, child: Target) => {
+export const contains = (parent: Target, child: Target): boolean => {
   if (!parent || !child) return false;
   if (!isHTMLElement(parent) || !isHTMLElement(child)) return false;
   return parent === child || parent.contains(child);

@@ -25,5 +25,5 @@ const setRef = <T>(ref: PossibleRef<T>, value: T) => {
  * Taken from https://github.com/chakra-ui/ark/blob/main/packages/frameworks/react/src/compose-refs.ts
  */
 export const composeRefs = <T>(...refs: PossibleRef<T>[]) => {
-  return (node: T) => refs.forEach((ref) => setRef(ref, node));
+  return (node: T): void => refs.forEach((ref) => setRef(ref, node));
 };

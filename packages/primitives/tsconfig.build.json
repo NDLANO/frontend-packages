@@ -5,7 +5,7 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "'lib",
-    "declarationDir": "./lib",
+    "declarationDir": "./dist",
     "rootDir": "./src"
   },
   "include": ["./src"]

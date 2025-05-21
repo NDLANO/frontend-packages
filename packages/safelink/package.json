@@ -3,11 +3,13 @@
   "version": "7.0.87-alpha.0",
   "description": "SafeLink component for NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "node ../../scripts/build.js package",
+    "build": "tsup",
+    "build:dev": "tsup --watch",
     "build:types": "tsc -p tsconfig.build.json",
     "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'",
     "prepublish": "concurrently 'yarn build:types' 'yarn build:panda'"
@@ -22,9 +24,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "dist",
-    "lib",
-    "es"
+    "dist"
   ],
   "dependencies": {
     "@ndla/primitives": "workspace:^",

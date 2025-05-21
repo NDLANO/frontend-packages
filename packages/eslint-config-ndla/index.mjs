@@ -109,6 +109,8 @@ export default tseslint.config(
           patterns: [
             "@ndla/*/lib/**",
             "@ndla/*/lib",
+            "@ndla/*/dist/**",
+            "@ndla/*/dist",
             "@ndla/*/es/**",
             "@ndla/*/es",
             "@ndla/*/src/**",

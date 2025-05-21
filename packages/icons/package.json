@@ -3,12 +3,13 @@
   "version": "8.0.57-alpha.0",
   "description": "A package containing icons used in NDLA frontends",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "sideEffects": false,
-  "types": "lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "node ../../scripts/build.js package",
+    "build": "tsup",
+    "build:dev": "tsup --watch",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "concurrently 'yarn build:types' 'mkdir -p dist' 'panda cssgen --minimal  --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
   },
@@ -22,13 +23,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "dist",
-    "lib",
-    "es",
-    "editor",
-    "common",
-    "contentType",
-    "action"
+    "dist"
   ],
   "dependencies": {
     "@ndla/styled-system": "workspace:^"

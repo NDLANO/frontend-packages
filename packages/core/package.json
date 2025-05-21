@@ -3,12 +3,13 @@
   "version": "6.0.0-alpha.0",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "sideEffects": false,
-  "types": "lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "node ../../scripts/build.js package",
+    "build": "tsup",
+    "build:dev": "tsup --watch",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build:types"
   },
@@ -22,8 +23,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "lib",
-    "es"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"

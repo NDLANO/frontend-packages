@@ -7,7 +7,7 @@
  */
 
 import { defineConfig } from "@pandacss/dev";
-import type { ArtifactContent, Artifact, ArtifactId } from "@pandacss/types";
+import type { Artifact } from "@pandacss/types";
 import preset from "./src";
 import { forwardCssPropPlugin } from "./src/plugins/forwardCssPropPlugin";
 
@@ -35,27 +35,6 @@ export default defineConfig({
             indexFile.code = indexFile.code.concat("\nexport * from './prop-type';");
           }
         }
-        const [regularFiles, typeFiles] = artifact.files.reduce<[ArtifactContent[], ArtifactContent[]]>(
-          (acc, curr) => {
-            if (curr.file.endsWith("d.ts")) acc[1].push(curr);
-            else acc[0].push(curr);
-
-            return acc;
-          },
-          [[], []],
-        );
-
-        acc.push({
-          ...artifact,
-          files: regularFiles.concat(typeFiles),
-        });
-
-        acc.push({
-          id: (artifact.id + "-types") as ArtifactId,
-          dir: artifact.dir?.map((path, index) => (index === 1 ? path.replace("/src", "/lib") : path)),
-          files: typeFiles,
-        });
-
         return acc;
       }, []);
 

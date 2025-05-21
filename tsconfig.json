@@ -40,5 +40,5 @@
     }
   },
   "include": ["./packages/**/*", "./stories/**/*", "./dummydata/**/*", ".storybook/**/*"],
-  "exclude": ["./packages/*/lib"]
+  "exclude": ["./packages/*/dist"]
 }

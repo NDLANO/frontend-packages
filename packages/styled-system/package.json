@@ -8,7 +8,10 @@
     "directory": "packages/styled-system"
   },
   "scripts": {
-    "build": "node ../../scripts/build.js package"
+    "build": "tsup",
+    "build:dev": "tsup --watch",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "concurrently 'yarn build:types'"
   },
   "sideEffects": false,
   "publishConfig": {
@@ -26,34 +29,34 @@
   ],
   "exports": {
     "./css": {
-      "types": "./lib/css/index.d.ts",
-      "require": "./lib/css/index.js",
-      "import": "./es/css/index.js"
+      "types": "./src/css/index.d.ts",
+      "require": "./dist/css/index.js",
+      "import": "./dist/css/index.mjs"
     },
     "./tokens": {
-      "types": "./lib/tokens/index.d.ts",
-      "require": "./lib/tokens/index.js",
-      "import": "./es/tokens/index.js"
+      "types": "./src/tokens/index.d.ts",
+      "require": "./dist/tokens/index.js",
+      "import": "./dist/tokens/index.mjs"
     },
     "./types": {
-      "types": "./lib/types/index.d.ts",
-      "require": "./lib/types/index.js",
-      "import": "./es/types/index.js"
+      "types": "./src/types/index.d.ts",
+      "require": "./dist/types/index.js",
+      "import": "./dist/types/index.mjs"
     },
     "./patterns": {
-      "types": "./lib/patterns/index.d.ts",
-      "require": "./lib/patterns/index.js",
-      "import": "./es/patterns/index.js"
+      "types": "./src/patterns/index.d.ts",
+      "require": "./dist/patterns/index.js",
+      "import": "./dist/patterns/index.mjs"
     },
     "./recipes": {
-      "types": "./lib/recipes/index.d.ts",
-      "require": "./lib/recipes/index.js",
-      "import": "./es/recipes/index.js"
+      "types": "./src/recipes/index.d.ts",
+      "require": "./dist/recipes/index.js",
+      "import": "./dist/recipes/index.mjs"
     },
     "./jsx": {
-      "types": "./lib/jsx/index.d.ts",
-      "require": "./lib/jsx/index.js",
-      "import": "./es/jsx/index.js"
+      "types": "./src/jsx/index.d.ts",
+      "require": "./dist/jsx/index.js",
+      "import": "./dist/jsx/index.mjs"
     }
   }
 }

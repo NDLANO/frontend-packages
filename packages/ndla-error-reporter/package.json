@@ -3,22 +3,22 @@
   "version": "2.0.13",
   "description": "Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly.",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-error-reporter/"
   },
   "scripts": {
-    "build": "node ../../scripts/build.js package"
+    "build": "tsup",
+    "build:dev": "tsup --watch"
   },
   "keywords": [
     "ndla"
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "lib",
-    "es"
+    "dist"
   ],
   "devDependencies": {
     "nock": "^14.0.4"

@@ -4,8 +4,8 @@
     "baseUrl": "./",
     "declaration": true,
     "emitDeclarationOnly": true,
-    "outDir": "'lib",
-    "declarationDir": "./lib",
+    "outDir": "'dist",
+    "declarationDir": "./dist",
     "rootDir": "./src"
   },
   "include": ["./src"]

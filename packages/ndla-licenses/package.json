@@ -3,11 +3,12 @@
   "version": "9.0.1",
   "description": "A simple library for retrieving license information for NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "node ../../scripts/build.js package",
+    "build": "tsup",
+    "build:dev": "tsup --watch",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build:types"
   },
@@ -21,8 +22,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "lib",
-    "es"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"

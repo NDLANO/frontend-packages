@@ -3,7 +3,7 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/lib/*.js", "{projectRoot}/es/*.js"],
+      "outputs": ["{projectRoot}/dist/*.js", "{projectRoot}/dist/*.mjs"],
       "cache": true
     },
     "prepublish": {
@@ -14,8 +14,20 @@
         "{projectRoot}/*",
         "{projectRoot}/src/**/*"
       ],
-      "outputs": ["{projectRoot}/lib/*.d.ts", "{projectRoot}/dist/*.css", "{projectRoot}/dist/*"],
+      "outputs": ["{projectRoot}/dist/*.d.ts", "{projectRoot}/dist/*.css", "{projectRoot}/dist/*"],
       "cache": true
+    },
+    "build:dev": {
+      "cache": false,
+      "continuous": true
+    },
+    "watch:tsc": {
+      "cache": false,
+      "continuous": true
+    },
+    "watch": {
+      "cache": false,
+      "continuous": true
     }
   },
   "defaultBase": "master",
@@ -23,5 +35,8 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
     "production": ["default"]
+  },
+  "tui": {
+    "autoExit": 1
   }
 }

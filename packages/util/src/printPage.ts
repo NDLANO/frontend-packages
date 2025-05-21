@@ -39,7 +39,7 @@ function isContentReady(doc: Document): boolean {
   return doc.readyState === "complete";
 }
 
-export function printPage(url: string) {
+export function printPage(url: string): void {
   const iframe = document.createElement("iframe");
   iframe.onload = setPrint;
   iframe.src = url;

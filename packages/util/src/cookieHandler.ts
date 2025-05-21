@@ -16,7 +16,7 @@ export interface CookieParams {
 }
 
 /** Client/Browser only */
-export const setCookie = (params: CookieParams) => {
+export const setCookie = (params: CookieParams): void => {
   document.cookie = getCookieString(params);
 };
 
@@ -68,6 +68,6 @@ export const isValidCookie = (cookieName: string, cookies: string): boolean => {
 };
 
 /** Client/Browser only */
-export const deleteCookie = (cookieName: string) => {
+export const deleteCookie = (cookieName: string): void => {
   setCookie({ cookieName, cookieValue: "", removeCookie: true });
 };

@@ -116,4 +116,15 @@ export const listPlugin = createPlugin<ListElementType, ListPluginOptions>({
     }
     return false;
   },
+  transform: (editor) => {
+    const { supportsElement } = editor;
+    editor.supportsElement = (element) => {
+      if (element.type === LIST_ITEM_ELEMENT_TYPE) {
+        return true;
+      }
+      return supportsElement?.(element);
+    };
+
+    return editor;
+  },
 });

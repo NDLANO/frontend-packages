@@ -58,14 +58,16 @@ const StyledHStack = styled(HStack, {
 export const File = forwardRef<HTMLDivElement, FileProps>(
   ({ title, url, fileExists, fileType, fileSize, ...rest }, ref) => {
     const { t } = useTranslation();
-    const tooltip = `${t("download")} ${url.split("/").pop()}`;
+    const filename = `${title}-${url.split("/").pop() ?? ""}`;
+    const downloadUrl = `${url}?download=${filename}`;
+    const tooltip = `${t("download")} ${filename}`;
 
     return (
       <StyledHStack justify="space-between" ref={ref} {...rest}>
         <HStack gap="xxsmall">
           <DownloadLine />
           {fileExists ? (
-            <StyledSafeLink unstyled css={linkOverlay.raw()} to={url} title={tooltip}>
+            <StyledSafeLink unstyled css={linkOverlay.raw()} to={downloadUrl} title={tooltip}>
               {title}
             </StyledSafeLink>
           ) : (

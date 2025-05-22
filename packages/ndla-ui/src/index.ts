@@ -132,8 +132,6 @@ export type { Article as ArticleType, HeadingLevel } from "./types";
 
 export { CodeBlock, codeLanguageOptions } from "./CodeBlock";
 
-export { TargetBlankIcon } from "./TargetBlankIcon";
-
 export { ZendeskButton } from "./ZendeskButton/ZendeskButton";
 
 export type { ZendeskButtonProps } from "./ZendeskButton/ZendeskButton";

@@ -7,7 +7,7 @@
  */
 
 import type { ReactNode } from "react";
-import { StaticRouter } from "react-router-dom/server.js";
+import { StaticRouter } from "react-router";
 import { render } from "@testing-library/react";
 import { MissingRouterContext } from "../MissingRouterContext";
 import { SafeLink, isOldNdlaLink } from "../SafeLink";
@@ -25,14 +25,15 @@ test("SafeLink renderers Link correctly if router context is present", async () 
   const link = await findByRole("link");
   expect(link).toHaveAttribute("href", "/my/path");
   expect(container.firstChild).toMatchInlineSnapshot(`
-<a
-  class=""
-  href="/my/path"
-  tabindex="0"
->
-  Internal link
-</a>
-`);
+    <a
+      class=""
+      data-discover="true"
+      href="/my/path"
+      tabindex="0"
+    >
+      Internal link
+    </a>
+  `);
 });
 
 test("SafeLink defaults to normal link if to prop is an external link", async () => {

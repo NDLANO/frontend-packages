@@ -37,7 +37,7 @@
   "peerDependencies": {
     "react": ">= 18",
     "react-dom": ">= 18",
-    "react-router-dom": "^6.3.0"
+    "react-router": ">= 6.0.0"
   },
   "publishConfig": {
     "access": "public"

@@ -8,10 +8,11 @@
 
 import { Editor, Node, Path, Point, Range, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
-import { HEADING_ELEMENT_TYPE, HEADING_PLUGIN } from "./headingTypes";
+import { HEADING_ELEMENT_TYPE, HEADING_PLUGIN, type HeadingPluginOptions } from "./headingTypes";
 import { isHeadingElement } from "./queries/headingQueries";
 import { getCurrentBlock } from "../../queries/getCurrentBlock";
 import type { Logger } from "../../core";
+import { SPAN_ELEMENT_TYPE } from "../span/spanTypes";
 
 const onDelete = (editor: Editor, logger: Logger) => {
   if (!editor.selection || !Range.isCollapsed(editor.selection) || editor.selection.anchor.offset) return;
@@ -22,10 +23,13 @@ const onDelete = (editor: Editor, logger: Logger) => {
   }
 };
 
-export const headingPlugin = createPlugin({
+export const headingPlugin = createPlugin<typeof HEADING_ELEMENT_TYPE, HeadingPluginOptions>({
   type: HEADING_ELEMENT_TYPE,
   name: HEADING_PLUGIN,
-  normalize: (editor, node, path, logger) => {
+  options: {
+    validChildren: [SPAN_ELEMENT_TYPE],
+  },
+  normalize: (editor, node, path, logger, opts) => {
     if (!isHeadingElement(node)) return false;
 
     if (
@@ -37,15 +41,21 @@ export const headingPlugin = createPlugin({
       return true;
     }
 
-    const boldEntries = Array.from(editor.nodes({ match: (n) => Text.isText(n) && !!n.bold }), (n) => n);
-    if (boldEntries.length) {
-      logger.log("Removing bold from nodes within heading.");
-      editor.withoutNormalizing(() => {
-        boldEntries.forEach(([_, path]) => {
-          Transforms.setNodes(editor, { bold: undefined }, { at: path });
-        });
-        return true;
-      });
+    const { validChildren } = opts;
+
+    for (const [index, child] of node.children.entries()) {
+      if (Text.isText(child)) {
+        if (child.bold) {
+          logger.log("Removing bold from text within heading");
+          Transforms.setNodes(editor, { bold: undefined }, { at: path.concat(index) });
+          return true;
+        }
+        continue;
+      }
+      if (validChildren?.length && !validChildren.includes(child.type)) {
+        logger.log("Heading has invalid child type, unwrapping");
+        Transforms.unwrapNodes(editor, { at: path.concat(index) });
+      }
     }
 
     return false;

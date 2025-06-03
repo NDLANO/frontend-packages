@@ -1,10 +1,18 @@
-import { addons } from "@storybook/manager-api";
-import { create } from "@storybook/theming/create";
+/**
+ * Copyright (c) 2025-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { addons } from "storybook/manager-api";
+import { create } from "storybook/theming";
 
 const theme = create({
   base: "light",
   brandTitle: "NDLA Designmanual",
-  brandUrl: "https://designmanual.ndla.sh",
+  brandUrl: "https://designmanual.ndla.no",
   brandImage: "/ndla-logo.svg",
   colorSecondary: "#20588f",
 });

@@ -210,7 +210,7 @@ const preview: Preview = {
       "storybook/docs/panel": { hidden: true },
     },
     viewport: {
-      viewports,
+      options: viewports,
     },
     docs: {
       container: DocsContainer,

@@ -14,14 +14,9 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-a11y",
     "@storybook/addon-links",
-    "@storybook/addon-actions",
-    "@storybook/addon-viewport",
+    "storybook/actions",
+    "storybook/viewport",
     "@storybook/addon-docs",
-    "@storybook/addon-controls",
-    "@storybook/addon-backgrounds",
-    "@storybook/addon-toolbars",
-    "@storybook/addon-measure",
-    "@storybook/addon-outline",
   ],
   typescript: {
     reactDocgen: "react-docgen-typescript",
@@ -37,9 +32,6 @@ const config: StorybookConfig = {
     }
   </style>
   ${head}`,
-  docs: {
-    autodocs: "tag",
-  },
 };
 
 export default config;

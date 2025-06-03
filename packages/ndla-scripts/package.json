@@ -12,16 +12,12 @@
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-error-reporter/"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "engines": {
     "node": ">= 22.0.0"
   },
   "author": "ndla@knowit.no",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "dependencies": {
     "cross-spawn": "^7.0.6",
     "fast-glob": "^3.3.3",

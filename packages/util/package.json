@@ -17,15 +17,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/util"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "lib",
-    "es",
-    "types"
-  ],
+  "files": ["lib", "es", "types"],
   "peerDependencies": {
     "react": ">= 16.8.0"
   },

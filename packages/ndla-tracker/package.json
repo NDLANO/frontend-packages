@@ -17,16 +17,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/ndla-tracker"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "lib",
-    "src",
-    "es",
-    "types"
-  ],
+  "files": ["lib", "src", "es", "types"],
   "peerDependencies": {
     "react": ">= 19.0.0",
     "react-router-dom": ">= 6.0.0"

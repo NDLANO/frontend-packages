@@ -9,14 +9,7 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/eslint-config-ndla"
   },
-  "keywords": [
-    "lint",
-    "eslintconfig",
-    "styleguide",
-    "airbnb",
-    "ndla",
-    "config"
-  ],
+  "keywords": ["lint", "eslintconfig", "styleguide", "airbnb", "ndla", "config"],
   "author": "ndla@knowit.no",
   "dependencies": {
     "eslint-plugin-header": "^3.1.1",

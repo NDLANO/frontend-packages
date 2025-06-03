@@ -16,15 +16,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/ndla-image-search"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "lib",
-    "es"
-  ],
+  "files": ["dist", "lib", "es"],
   "dependencies": {
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",

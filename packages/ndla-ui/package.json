@@ -18,19 +18,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/ndla-ui"
   },
-  "keywords": [
-    "styleguide",
-    "storybook",
-    "ndla"
-  ],
+  "keywords": ["styleguide", "storybook", "ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "lib",
-    "src",
-    "es",
-    "types"
-  ],
+  "files": ["dist", "lib", "src", "es", "types"],
   "dependencies": {
     "@ndla/core": "^6.0.0-alpha.0",
     "@ndla/icons": "^8.0.58-alpha.0",

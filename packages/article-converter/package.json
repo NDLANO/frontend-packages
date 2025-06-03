@@ -17,15 +17,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/article-converter"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "lib",
-    "es",
-    "src"
-  ],
+  "files": ["lib", "es", "src"],
   "devDependencies": {
     "@ndla/types-backend": "^1.0.40",
     "@ndla/types-embed": "^5.0.14-alpha.0"

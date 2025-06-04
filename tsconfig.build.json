@@ -6,6 +6,8 @@
     "emitDeclarationOnly": true
   },
   "exclude": [
+    "./packages/*/dist",
+    "./packages/*/es",
     "./packages/*/lib",
     "**/*-test.*",
     "./**/*.stories.tsx",

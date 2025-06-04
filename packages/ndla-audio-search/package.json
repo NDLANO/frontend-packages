@@ -15,16 +15,9 @@
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "lib",
-    "es",
-    "types"
-  ],
+  "files": ["dist", "lib", "es", "types"],
   "dependencies": {
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",

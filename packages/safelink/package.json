@@ -17,15 +17,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/safelink"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "lib",
-    "es"
-  ],
+  "files": ["dist", "lib", "es"],
   "dependencies": {
     "@ndla/primitives": "workspace:^",
     "@ndla/styled-system": "workspace:^"

@@ -17,19 +17,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/icons"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "lib",
-    "es",
-    "editor",
-    "common",
-    "contentType",
-    "action"
-  ],
+  "files": ["dist", "lib", "es", "editor", "common", "contentType", "action"],
   "dependencies": {
     "@ndla/styled-system": "workspace:^"
   },

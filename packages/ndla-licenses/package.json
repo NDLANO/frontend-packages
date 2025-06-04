@@ -16,14 +16,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/ndla-licenses"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "lib",
-    "es"
-  ],
+  "files": ["lib", "es"],
   "publishConfig": {
     "access": "public"
   },

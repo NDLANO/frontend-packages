@@ -16,6 +16,9 @@
       ],
       "outputs": ["{projectRoot}/lib/*.d.ts", "{projectRoot}/dist/*.css", "{projectRoot}/dist/*"],
       "cache": true
+    },
+    "dev": {
+      "cache": false
     }
   },
   "defaultBase": "master",

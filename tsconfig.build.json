@@ -9,6 +9,7 @@
     "./packages/*/dist",
     "./packages/*/es",
     "./packages/*/lib",
+    "./packages/**/__tests__",
     "**/*-test.*",
     "./**/*.stories.tsx",
     "./**/*.stories.jsx",

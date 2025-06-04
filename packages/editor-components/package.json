@@ -34,7 +34,8 @@
   "dependencies": {
     "@ndla/editor": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/styled-system": "workspace:^"
+    "@ndla/styled-system": "workspace:^",
+    "@zag-js/react": "^1.0.0"
   },
   "peerDependencies": {
     "react": ">= 18",

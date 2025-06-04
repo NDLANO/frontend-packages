@@ -175,6 +175,10 @@ export default tseslint.config(
   jsxA11y.flatConfigs.recommended,
   {
     files: ["**/*.{jsx,tsx,mtsx,ctsx}"],
+    ignores: [
+      "**/*.stories.{js,mjs,cjs,ts,jsx,tsx,mts,cts,mtsx,ctsx}",
+      "**/*-test.{js,mjs,cjs,ts,jsx,tsx,mts,cts,mtsx,ctsx}",
+    ],
     plugins: {
       import: importPlugin,
     },
@@ -210,6 +214,7 @@ export default tseslint.config(
           ],
         },
       ],
+      "import/no-extraneous-dependencies": "error",
     },
   },
   {

@@ -1,6 +1,6 @@
 # @ndla/primitives
 
-A set of primitive components used throughout ndla packages and websites. Mostly styled versions of components from [ ark-ui ](https://ark-ui.com).
+A set of primitive components used throughout ndla packages and websites. Mostly styled versions of components from [ ark-ui ](https://ark-ui.com)
 
 ## Installation
 

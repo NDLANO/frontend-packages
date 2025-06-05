@@ -1,7 +1,5 @@
 # eslint-config-ndla
 
-Based on [eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb).
-
 Overrides some settings to better suit NDLA.
 
 ## Installing

@@ -1,7 +1,7 @@
 {
   "name": "@ndla/tracker",
   "version": "5.0.21-alpha.0",
-  "description": "A simple library for tracking NDLA applications",
+  "description": "A simple library for tracking NDLA applications.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",

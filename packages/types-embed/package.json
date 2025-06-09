@@ -14,14 +14,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/types-embed"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "lib",
-    "es"
-  ],
+  "files": ["lib", "es"],
   "devDependencies": {
     "@ndla/types-backend": "^1.0.40",
     "@ndla/types-taxonomy": "^1.0.34"

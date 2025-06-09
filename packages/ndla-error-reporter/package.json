@@ -12,14 +12,9 @@
   "scripts": {
     "build": "node ../../scripts/build.js package"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "lib",
-    "es"
-  ],
+  "files": ["lib", "es"],
   "devDependencies": {
     "nock": "^14.0.4"
   },

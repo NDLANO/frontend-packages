@@ -19,17 +19,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/preset-panda"
   },
-  "keywords": [
-    "panda",
-    "preset",
-    "ndla"
-  ],
+  "keywords": ["panda", "preset", "ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "es",
-    "lib"
-  ],
+  "files": ["dist", "es", "lib"],
   "devDependencies": {
     "@ndla/core": "workspace:^",
     "@pandacss/dev": "^0.53.6"

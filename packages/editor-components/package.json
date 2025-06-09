@@ -18,19 +18,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/editor-components"
   },
-  "keywords": [
-    "editor",
-    "slate",
-    "ndla"
-  ],
+  "keywords": ["editor", "slate", "ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "lib",
-    "src",
-    "es",
-    "types"
-  ],
+  "files": ["dist", "lib", "src", "es", "types"],
   "dependencies": {
     "@ndla/editor": "workspace:^",
     "@ndla/primitives": "workspace:^",

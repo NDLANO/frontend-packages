@@ -17,16 +17,9 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/primitives"
   },
-  "keywords": [
-    "primitives",
-    "ndla"
-  ],
+  "keywords": ["primitives", "ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "es",
-    "lib"
-  ],
+  "files": ["dist", "es", "lib"],
   "dependencies": {
     "@ark-ui/react": "^5.9.0",
     "@ndla/styled-system": "workspace:^",

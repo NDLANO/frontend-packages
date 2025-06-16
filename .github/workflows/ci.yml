@@ -22,7 +22,7 @@ jobs:
       - name: "Enable yarn v4"
         run: |
           corepack enable
-          yarn set version 4.1.0
+          yarn set version 4.9.2
       - uses: actions/cache@v3
         with:
           path: |

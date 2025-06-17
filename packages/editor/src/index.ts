@@ -79,7 +79,7 @@ export { listOnTab } from "./plugins/list/handlers/listOnTab";
 
 export { markPlugin } from "./plugins/mark/markPlugin";
 export { markSerializer } from "./plugins/mark/markSerializer";
-export type { CustomText, MarkType } from "./plugins/mark/markTypes";
+export type { CustomText, MarkType, MarkTagType } from "./plugins/mark/markTypes";
 export { marks, MARK_PLUGIN } from "./plugins/mark/markTypes";
 export { toggleMark } from "./plugins/mark/toggleMark";
 
@@ -128,6 +128,5 @@ export { toggleBlock } from "./transforms/toggleBlock";
 export type { SlateEditor, CustomEditor } from "./types";
 
 export { isElementOfType } from "./utils/isElementType";
-export { isEmptyTextNode } from "./utils/isEmptyTextNode";
 export type { NormalizerConfig } from "./utils/defaultNormalizer";
 export { defaultNormalizer } from "./utils/defaultNormalizer";

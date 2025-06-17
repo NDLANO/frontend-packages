@@ -12,7 +12,7 @@ import type { HistoryEditor } from "slate-history";
 import type { ReactEditor, RenderElementProps, RenderLeafProps } from "slate-react";
 import type { LinkElement } from "../plugins/link/linkTypes";
 import type { ParagraphElement } from "../plugins/paragraph/paragraphTypes";
-import type { CustomText } from "../plugins/mark/markTypes";
+import type { CustomText, MarkType } from "../plugins/mark/markTypes";
 import type { BreakElement } from "../plugins/break/breakTypes";
 import type { ListElement, ListItemElement } from "../plugins/list/listTypes";
 import type { SectionElement } from "../plugins/section/sectionTypes";
@@ -33,6 +33,7 @@ export interface CustomEditor {
   renderLeaf?: (props: RenderLeafProps) => JSX.Element | undefined;
   reinitialize: (options: ReinitializeOptions) => void;
   supportsElement: (element: Element) => boolean;
+  supportsMark: (mark: MarkType | MarkType[]) => boolean;
 }
 
 export interface SlateEditor {

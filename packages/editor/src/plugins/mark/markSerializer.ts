@@ -10,13 +10,13 @@
 import escapeHtml from "escape-html";
 import { Text } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
-import { marks, type MarkType } from "./markTypes";
+import { marks, type MarkTagType } from "./markTypes";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 import { createSerializer } from "../../core/createSerializer";
 
 export const markSerializer = createSerializer({
   deserialize(el, children) {
-    const mark = marks[el.tagName.toLowerCase() as MarkType];
+    const mark = marks[el.tagName.toLowerCase() as MarkTagType];
     if (!mark) return;
     return children.map((child) => (Text.isText(child) ? slatejsx("text", { [mark]: true }, child) : child));
   },

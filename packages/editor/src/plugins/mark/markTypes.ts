@@ -17,7 +17,12 @@ export const marks = {
   sub: "sub",
 } as const;
 
-export type MarkType = keyof typeof marks;
+export type MarkTagType = keyof typeof marks;
+export type MarkType = (typeof marks)[keyof typeof marks];
+
+export interface MarkPluginOptions {
+  supportedMarks?: MarkType[];
+}
 
 export interface CustomText {
   text: string;

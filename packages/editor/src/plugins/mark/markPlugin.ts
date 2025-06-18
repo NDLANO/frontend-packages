@@ -37,6 +37,7 @@ export const markPlugin = createPlugin<any, MarkPluginOptions>({
   transform: (editor, _, opts) => {
     editor.supportsMark = (mark) => {
       const marks = Array.isArray(mark) ? mark : [mark];
+      if (!opts.supportedMarks?.length) return false;
       return marks.every((m) => opts.supportedMarks?.includes(m));
     };
 

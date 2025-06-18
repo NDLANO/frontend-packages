@@ -6,15 +6,17 @@
  *
  */
 
-import type { MappedConfigurationOption } from ".";
 import mergeWith from "lodash.mergewith";
+import cloneDeep from "lodash/cloneDeep";
+import type { MappedConfigurationOption } from ".";
 
 export const mergeOptions = <TOptions extends object | undefined = undefined>(
   options: TOptions,
   configuration: MappedConfigurationOption<TOptions>,
 ): TOptions => {
   if (!options && !configuration) return options;
-  return mergeWith(options, configuration, (objValue, srcValue) => {
+  // Beware: mergeWith mutates the first argument.
+  return mergeWith(cloneDeep(options), configuration, (objValue, srcValue) => {
     if (typeof srcValue === "object" && "override" in srcValue) {
       return srcValue.override ? srcValue.value : objValue;
     } else if (Array.isArray(srcValue) || Array.isArray(objValue)) {

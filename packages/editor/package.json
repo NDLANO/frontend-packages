@@ -34,6 +34,7 @@
     "escape-html": "^1.0.3",
     "he": "^1.2.0",
     "is-hotkey": "^0.2.0",
+    "lodash.clonedeep": "^4.5.0",
     "lodash.mergewith": "^4.6.2",
     "slate-hyperscript": "^0.100.0"
   },
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@types/he": "^1.2.3",
     "@types/is-hotkey": "^0",
+    "@types/lodash.clonedeep": "^4",
     "@types/lodash.mergewith": "^4"
   },
   "publishConfig": {

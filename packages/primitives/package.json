@@ -29,7 +29,7 @@
     "lib"
   ],
   "dependencies": {
-    "@ark-ui/react": "^5.9.0",
+    "@ark-ui/react": "^5.14.1",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^5.0.9-alpha.0"
   },

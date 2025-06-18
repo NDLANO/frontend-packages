@@ -33,4 +33,27 @@ describe("createPlugin", () => {
     expect(firstEditor.pluginOptions.get("test-plugin")).toEqual({ foo: ["baz"] });
     expect(secondEditor.pluginOptions.get("test-plugin")).toEqual({ foo: ["bazzzz"] });
   });
+
+  it("should allow to configure an already configured plugin", () => {
+    const originalPlugin = createPlugin({
+      name: "test",
+      options: {
+        foo: [1],
+      },
+    });
+
+    const configured = originalPlugin.configure({
+      options: {
+        foo: { value: [1, 2], override: true },
+      },
+    });
+
+    const reconfigured = configured.configure({
+      options: {
+        foo: { value: [1, 2, 3], override: true },
+      },
+    });
+    const editor = createSlate({ plugins: [reconfigured] });
+    expect(editor.pluginOptions.get("test")).toEqual({ foo: [1, 2, 3] });
+  });
 });

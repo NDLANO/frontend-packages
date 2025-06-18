@@ -108,7 +108,9 @@ export type PluginReturnType<TType extends ElementType, TOptions = undefined> = 
    * Allows consumers of plugins to further modify most aspects of the plugin.
    * Usually just used to modify the options passed into the plugin.
    */
-  configure: (configuration: PluginConfigurationConfigurationType<TType, TOptions>) => SlatePlugin;
+  configure: (
+    configuration: PluginConfigurationConfigurationType<TType, TOptions>,
+  ) => PluginReturnType<TType, TOptions>;
   normalizeInitialValue: (editor: Editor) => void;
   options: TOptions;
 };

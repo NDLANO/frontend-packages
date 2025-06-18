@@ -1,6 +1,6 @@
 {
   "name": "@ndla/image-search",
-  "version": "11.0.104-alpha.0",
+  "version": "11.0.105-alpha.0",
   "description": "A simple library for searching images from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

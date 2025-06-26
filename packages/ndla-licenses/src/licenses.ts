@@ -12,9 +12,6 @@ import { getLocaleOrDefault, type LicenseType, type LicenseLocaleType, type Loca
 const freeUseNB = "Offentlig eie";
 const freeUseNN = "Offentleg eige";
 const freeUseEN = "Public domain";
-const restrictedUseNB = "Begrenset bruksrett";
-const restrictedUseNN = "Avgrensa bruksrett";
-const restrictedUseEN = "Restricted right of use";
 const restrictedReuseNB = "Begrenset gjenbruk";
 const restrictedReuseNN = "Avgrensa gjenbruk";
 const restrictedReuseEN = "Restricted reuse";
@@ -50,7 +47,6 @@ const byncnd: LicenseType = {
     description:
       "Denne lisensen er den mest restriktive av våre seks kjernelisenser. Den tillater andre å laste ned ditt verk og dele det med andre så lenge du er navngitt som opphaver, men de kan ikke endre det på noen måte, eller bruke det kommersielt.",
   },
-
   en: {
     short: restrictedReuseEN,
     title: "CC BY-NC-ND 4.0: Attribution-NonCommercial-NoDerivs",
@@ -87,7 +83,6 @@ const byncsa: LicenseType = {
     description:
       "Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som den opprinnelige opphaveren og avledete verk må bære en tilsvarende lisens.",
   },
-
   en: {
     short: restrictedReuseEN,
     title: "CC BY-NC-SA 4.0: Attribution-NonCommercial-ShareAlike",
@@ -124,7 +119,6 @@ const bync: LicenseType = {
     description:
       "Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som opphaver og også være ikke-kommersielle, men de behøver ikke kreve at verk avledet fra deres bærer de samme vilkårene.",
   },
-
   en: {
     short: restrictedReuseEN,
     title: "CC BY-NC 4.0: Attribution-NonCommercial",
@@ -161,7 +155,6 @@ const bynd: LicenseType = {
     description:
       "Denne lisensen gir mulighet for å videredistribuere verket, både for kommersielle og ikke-kommersielle formål, så lenge det gis videre uendret og i sin helhet, og at du navngis som den som har skapt verket.",
   },
-
   en: {
     short: restrictedReuseEN,
     title: "CC BY-ND 4.0: Attribution-NoDerivs",
@@ -198,7 +191,6 @@ const bysa: LicenseType = {
     description:
       "Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til opphaver(ene). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.",
   },
-
   en: {
     short: restrictedReuseEN,
     title: "CC BY-SA 4.0: Attribution ShareAlike",
@@ -235,7 +227,6 @@ const by: LicenseType = {
     description:
       "Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphaveren. Dette er den mest fleksible og åpne lisensen vi tilbyr. Den anbefales dersom du ønsker maksimal spredning og bruk av materiale under en CC-lisens.",
   },
-
   en: {
     short: freeUseEN,
     title: "CC BY 4.0: Attribution",
@@ -270,7 +261,6 @@ const pd: LicenseType = {
     description:
       "Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.",
   },
-
   en: {
     short: freeUseEN,
     title: "PD: Public Domain Mark",
@@ -307,7 +297,6 @@ const cc0: LicenseType = {
     description:
       "Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.",
   },
-
   en: {
     short: freeUseEN,
     title: "CC0: Public Domain Dedication",
@@ -323,33 +312,32 @@ const cc0: LicenseType = {
 
 const copy: LicenseType = {
   nn: {
-    short: restrictedUseNN,
-    title: "Opphavsrett",
+    short: restrictedReuseNN,
+    title: "Avgrensa gjenbruk",
     userFriendlyTitle: "",
     url: "https://ndla.no/nn/article/opphavsrett",
     linkText: "Lær meir om opphavsrett",
-    abbreviation: restrictedUseNN,
+    abbreviation: restrictedReuseNN,
     description:
       "Det er berre den som har laga innhaldet som kan endra, publisera og gje andre rett til å nytte innhaldet.",
   },
   nb: {
-    short: restrictedUseNB,
-    title: "Opphavsrett",
+    short: restrictedReuseNB,
+    title: "Begrenset gjenbruk",
     userFriendlyTitle: "",
     url: "https://ndla.no/nb/article/opphavsrett",
     linkText: "Lær mer om opphavsrett",
-    abbreviation: restrictedUseNB,
+    abbreviation: restrictedReuseNB,
     description:
       "Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.",
   },
-
   en: {
-    short: restrictedUseEN,
+    short: restrictedReuseEN,
     title: "Copyright",
     userFriendlyTitle: "",
     url: "https://ndla.no/en/article/opphavsrett",
     linkText: "Learn more about copyright",
-    abbreviation: restrictedUseEN,
+    abbreviation: restrictedReuseEN,
     description:
       "Only those who have created the content can modify, publish, and give others permission to use the content.",
   },
@@ -377,7 +365,6 @@ const na: LicenseType = {
     abbreviation: naAbbreviation,
     description: "Dette merket er ment for innhold som ikke trenger lisens.",
   },
-
   en: {
     short: naEN,
     title: "N/A - not applicable",

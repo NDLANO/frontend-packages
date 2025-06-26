@@ -6,7 +6,6 @@
  *
  */
 
-import type { TFunction } from "i18next";
 import { type ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
@@ -69,6 +68,7 @@ type SupplierProps = {
 };
 
 type Props = {
+  lang?: string;
   authors?: AuthorProps[];
   suppliers?: SupplierProps[];
   published?: string;
@@ -80,14 +80,10 @@ type Props = {
   learningpathCopiedFrom?: string;
 };
 
-const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
-  const contributorsArray = contributors.map((contributor, index) => {
-    if (index < 1) return contributor.name;
-    const sep = index === contributors.length - 1 ? ` ${t("article.conjunction")} ` : ", ";
-    return `${sep}${contributor.name}`;
-  });
-  return contributorsArray.join("");
-};
+function formatList(list: SupplierProps[], locale = "no") {
+  const listFormatter = new Intl.ListFormat(locale, { style: "long", type: "conjunction" });
+  return listFormatter.format(list.map((l) => l.name));
+}
 
 const StyledAccordionRoot = styled(AccordionRoot, {
   base: {
@@ -99,6 +95,7 @@ const refRegexp = /note\d/;
 const footnotesAccordionId = "footnotes";
 
 export const ArticleByline = ({
+  lang,
   authors = [],
   suppliers = [],
   footnotes,
@@ -147,13 +144,11 @@ export const ArticleByline = ({
               {authors.length > 0 &&
                 `${t("article.authorsLabel", {
                   context: bylineType,
-                  names: renderContributors(authors, t),
-                  interpolation: { escapeValue: false },
+                  names: formatList(authors, lang),
                 })}. `}
               {t("article.supplierLabel", {
                 count: suppliers.length,
-                name: renderContributors(suppliers, t),
-                interpolation: { escapeValue: false },
+                name: formatList(suppliers, lang),
               })}
             </span>
           )}

@@ -53,7 +53,7 @@ const messages = {
     footnotes: "Fotnotar",
   },
   learningPath: {
-    copiedFrom: "Dette er en remix av en annen læringsti",
+    copiedFrom: "Dette er en remiks av en annen læringsti",
     lastUpdated: "Sist fagleg oppdatert",
   },
   license: {

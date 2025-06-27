@@ -39,9 +39,34 @@ export const SeveralAuthors: StoryObj<typeof ArticleByline> = {
   },
 };
 
+export const SeveralSuppliers: StoryObj<typeof ArticleByline> = {
+  args: {
+    published: "21.06.2018",
+    authors: [{ name: "Frida Forfatter" }, { name: "Ida Illustratør" }, { name: "Fred Forfatter" }],
+    suppliers: [{ name: "NDLA" }, { name: "Norsk Tipping" }],
+  },
+};
+
 export const WithoutCreators: StoryObj<typeof ArticleByline> = {
   args: {
     published: "21.06.2018",
     authors: [],
+  },
+};
+
+export const LearningpathByline: StoryObj<typeof ArticleByline> = {
+  args: {
+    published: "21.06.2018",
+    authors: [{ name: "Frida Forfatter" }],
+    bylineType: "learningPath",
+  },
+};
+
+export const LearningpathBylineCopied: StoryObj<typeof ArticleByline> = {
+  args: {
+    published: "21.06.2018",
+    authors: [{ name: "Frida Forfatter" }],
+    bylineType: "learningPath",
+    learningpathCopiedFrom: "https://ndla.no/learningpath/123",
   },
 };

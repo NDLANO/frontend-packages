@@ -6,7 +6,6 @@
  *
  */
 
-import type { TFunction } from "i18next";
 import { type ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
@@ -20,6 +19,7 @@ import {
   AccordionRoot,
   Heading,
 } from "@ndla/primitives";
+import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { ArticleFootNotes } from "./ArticleFootNotes";
 import type { FootNote } from "../types";
@@ -68,6 +68,7 @@ type SupplierProps = {
 };
 
 type Props = {
+  lang?: string;
   authors?: AuthorProps[];
   suppliers?: SupplierProps[];
   published?: string;
@@ -76,31 +77,13 @@ type Props = {
   displayByline?: boolean;
   bylineType?: "article" | "learningPath" | "external";
   bylineSuffix?: ReactNode;
+  learningpathCopiedFrom?: string;
 };
 
-const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
-  const contributorsArray = contributors.map((contributor, index) => {
-    if (index < 1) return contributor.name;
-    const sep = index === contributors.length - 1 ? ` ${t("article.conjunction")} ` : ", ";
-    return `${sep}${contributor.name}`;
-  });
-  return contributorsArray.join("");
-};
-
-const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
-  if (suppliers.length === 0) {
-    return "";
-  }
-  return suppliers.length > 1
-    ? t("article.multipleSuppliersLabel", {
-        names: renderContributors(suppliers, t),
-        interpolation: { escapeValue: false },
-      })
-    : t("article.supplierLabel", {
-        name: renderContributors(suppliers, t),
-        interpolation: { escapeValue: false },
-      });
-};
+function formatList(list: SupplierProps[], locale = "no") {
+  const listFormatter = new Intl.ListFormat(locale, { style: "long", type: "conjunction" });
+  return listFormatter.format(list.map((l) => l.name));
+}
 
 const StyledAccordionRoot = styled(AccordionRoot, {
   base: {
@@ -112,6 +95,7 @@ const refRegexp = /note\d/;
 const footnotesAccordionId = "footnotes";
 
 export const ArticleByline = ({
+  lang,
   authors = [],
   suppliers = [],
   footnotes,
@@ -120,6 +104,7 @@ export const ArticleByline = ({
   displayByline = true,
   bylineType = "article",
   bylineSuffix,
+  learningpathCopiedFrom,
 }: Props) => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
@@ -150,12 +135,6 @@ export const ArticleByline = ({
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
 
-  const authorLabel: Record<string, string> = {
-    article: "article.authorsLabel",
-    learningPath: "article.authorsLabelLearningpath",
-    external: "article.authorsLabelExternal",
-  };
-
   return (
     <Wrapper>
       {!!displayByline && (
@@ -163,13 +142,19 @@ export const ArticleByline = ({
           {!!showPrimaryContributors && (
             <span>
               {authors.length > 0 &&
-                `${t(authorLabel[bylineType], {
-                  names: renderContributors(authors, t),
-                  interpolation: { escapeValue: false },
+                `${t("article.authorsLabel", {
+                  context: bylineType,
+                  names: formatList(authors, lang),
                 })}. `}
-              {getSuppliersText(suppliers, t)}
+              {t("article.supplierLabel", {
+                count: suppliers.length,
+                name: formatList(suppliers, lang),
+              })}
             </span>
           )}
+          {learningpathCopiedFrom ? (
+            <SafeLink to={learningpathCopiedFrom}>{t(`learningPath.copiedFrom`)}</SafeLink>
+          ) : null}
           {published ? (
             <div data-contributors={showPrimaryContributors}>
               {t(`${bylineType}.lastUpdated`)} {published}

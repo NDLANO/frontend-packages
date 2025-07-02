@@ -1128,7 +1128,7 @@ __metadata:
   dependencies:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.40"
+    "@ndla/types-backend": "npm:^1.0.50"
     "@ndla/types-embed": "npm:^5.0.14-alpha.0"
     "@ndla/ui": "npm:^56.0.125-alpha.0"
     html-react-parser: "npm:^5.1.19"
@@ -1150,7 +1150,7 @@ __metadata:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.40"
+    "@ndla/types-backend": "npm:^1.0.50"
     "@pandacss/dev": "npm:^0.53.6"
   peerDependencies:
     react: ">= 18"
@@ -1250,7 +1250,7 @@ __metadata:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.40"
+    "@ndla/types-backend": "npm:^1.0.50"
     "@ndla/util": "workspace:^"
     "@pandacss/dev": "npm:^0.53.6"
   peerDependencies:
@@ -1342,10 +1342,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/types-backend@npm:^1.0.40":
-  version: 1.0.40
-  resolution: "@ndla/types-backend@npm:1.0.40"
-  checksum: 10c0/a86d7719b0536b5eb34be531ed8c3fadaf71436a4689ff030f31d43d0cf40db78560fd5ee0a3140633d2b078e99fe297a37088cc88ac6f8c4c85e4e873547185
+"@ndla/types-backend@npm:^1.0.50":
+  version: 1.0.50
+  resolution: "@ndla/types-backend@npm:1.0.50"
+  checksum: 10c0/5ccb1d4c848916fe1eaa6748b600f63cd995d89053e1bdcd77c4cb0d51ab050c876dade6b1f8a38d5061da5e8cf9d1c635d9c9d275f5494900289ede24198cf1
   languageName: node
   linkType: hard
 
@@ -1353,7 +1353,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/types-embed@workspace:packages/types-embed"
   dependencies:
-    "@ndla/types-backend": "npm:^1.0.40"
+    "@ndla/types-backend": "npm:^1.0.50"
     "@ndla/types-taxonomy": "npm:^1.0.34"
   languageName: unknown
   linkType: soft
@@ -1377,7 +1377,7 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "npm:^7.0.93-alpha.0"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.40"
+    "@ndla/types-backend": "npm:^1.0.50"
     "@ndla/types-embed": "npm:^5.0.14-alpha.0"
     "@ndla/util": "npm:^5.0.9-alpha.0"
     "@pandacss/dev": "npm:^0.53.6"
@@ -8006,7 +8006,7 @@ __metadata:
     "@fontsource/source-code-pro": "npm:^4.5.9"
     "@fontsource/source-sans-pro": "npm:^4.5.9"
     "@fontsource/source-serif-pro": "npm:^4.5.7"
-    "@ndla/types-backend": "npm:^1.0.40"
+    "@ndla/types-backend": "npm:^1.0.50"
     "@pandacss/dev": "npm:^0.53.6"
     "@storybook/addon-a11y": "npm:^9.0.4"
     "@storybook/addon-docs": "npm:^9.0.4"

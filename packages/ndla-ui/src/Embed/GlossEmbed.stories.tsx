@@ -29,6 +29,7 @@ const glossMetaData: ConceptData["concept"] = {
   revision: 6,
   title: {
     title: "Ma Hong",
+    htmlTitle: "Ma Hong",
     language: "nb",
   },
   content: {

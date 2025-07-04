@@ -18,6 +18,7 @@ const meta: Meta<typeof Gloss> = {
   args: {
     title: {
       title: "Å angripe",
+      htmlTitle: "Å angripe",
       language: "nb",
     },
     glossData: {
@@ -75,6 +76,7 @@ export const NoExamples: StoryObj<typeof Gloss> = {
   args: {
     title: {
       title: "Å angripe",
+      htmlTitle: "Å angripe",
       language: "nb",
     },
     glossData: {
@@ -95,6 +97,7 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
   args: {
     title: {
       title: "Ma Hong",
+      htmlTitle: "Ma Hong",
       language: "nb",
     },
     glossData: {
@@ -133,6 +136,7 @@ export const BigExample: StoryObj<typeof Gloss> = {
   args: {
     title: {
       title: "(spørsmålspartikkel); hva med…?",
+      htmlTitle: "(spørsmålspartikkel); hva med…?",
       language: "nb",
     },
     audio: {

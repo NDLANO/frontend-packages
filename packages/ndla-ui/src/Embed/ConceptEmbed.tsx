@@ -42,6 +42,11 @@ export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) 
     return parse(embed.data.concept.content.htmlContent);
   }, [embed]);
 
+  const parsedTitle = useMemo(
+    () => (embed.status === "success" ? parse(embed.data.concept.title.htmlTitle) : undefined),
+    [embed],
+  );
+
   if (embed.status === "error" && embed.embedData.type === "inline") {
     return <span>{embed.embedData.linkText}</span>;
   }
@@ -65,7 +70,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) 
         copyright={concept.copyright}
         visualElement={visualElement}
         lang={lang}
-        title={concept.title.title}
+        title={parsedTitle}
         source={concept.source}
       >
         {parsedContent}
@@ -79,7 +84,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) 
       copyright={concept.copyright}
       visualElement={visualElement}
       lang={lang}
-      title={renderContext === "embed" ? undefined : concept.title.title}
+      title={renderContext === "embed" ? undefined : parsedTitle}
       source={concept.source}
     >
       {parsedContent}

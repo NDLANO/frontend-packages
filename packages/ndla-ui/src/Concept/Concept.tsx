@@ -15,11 +15,11 @@ import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } fro
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 
-export interface ConceptProps extends ComponentPropsWithRef<"figure"> {
+export interface ConceptProps extends Omit<ComponentPropsWithRef<"figure">, "title"> {
   copyright?: ConceptCopyright;
   visualElement?: ConceptVisualElementMeta;
   lang?: string;
-  title?: string;
+  title?: ReactNode;
   children?: ReactNode;
   source?: string;
   previewAlt?: boolean;

@@ -6,6 +6,7 @@
  *
  */
 
+import parse from "html-react-parser";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { AccordionItemTrigger } from "@ark-ui/react";
@@ -20,7 +21,7 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledVariantProps } from "@ndla/styled-system/types";
-import type { IGlossDataDTO, IGlossExampleDTO } from "@ndla/types-backend/concept-api";
+import type { ConceptTitleDTO, IGlossDataDTO, IGlossExampleDTO } from "@ndla/types-backend/concept-api";
 import GlossExample from "./GlossExample";
 import SpeechControl from "../AudioPlayer/SpeechControl";
 
@@ -100,10 +101,7 @@ const StyledAccordionItem = styled(AccordionItem, {
 type GlossVariantProps = StyledVariantProps<typeof StyledAccordionItem>;
 
 export interface Props {
-  title: {
-    title: string;
-    language: string;
-  };
+  title: ConceptTitleDTO;
   glossData?: IGlossDataDTO;
   audio?: {
     title: string;
@@ -115,6 +113,8 @@ export interface Props {
 
 const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: Props & GlossVariantProps) => {
   const { t } = useTranslation();
+
+  const parsedTitle = useMemo(() => parse(title.htmlTitle), [title.htmlTitle]);
 
   const filteredExamples = useMemo(
     () => getFilteredExamples(glossData, exampleIds, exampleLangs),
@@ -164,7 +164,7 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
         </Container>
         <StyledContainer>
           <Text textStyle="label.medium" asChild consumeCss>
-            <span lang={title.language}>{title.title}</span>
+            <span lang={title.language}>{parsedTitle}</span>
           </Text>
           {!!filteredExamples.length && (
             <AccordionItemTrigger asChild>

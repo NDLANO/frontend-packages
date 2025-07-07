@@ -1,6 +1,6 @@
 {
   "name": "@ndla/video-search",
-  "version": "8.0.103-alpha.0",
+  "version": "8.0.104-alpha.0",
   "description": "A simple library for searching NDLA videos",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@ndla/types-embed": "^5.0.14-alpha.0",
+    "@ndla/types-embed": "^5.0.15-alpha.0",
     "@pandacss/dev": "^0.53.6"
   },
   "peerDependencies": {

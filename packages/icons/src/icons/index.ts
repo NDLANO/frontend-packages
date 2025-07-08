@@ -111,6 +111,7 @@ export { default as HomeFill } from "./HomeFill";
 export { default as HomeLine } from "./HomeLine";
 export { default as ImageFill } from "./ImageFill";
 export { default as ImageLine } from "./ImageLine";
+export { default as InfoI } from "./InfoI";
 export { default as InformationFill } from "./InformationFill";
 export { default as InformationLine } from "./InformationLine";
 export { default as InstagramFill } from "./InstagramFill";

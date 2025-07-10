@@ -16,12 +16,10 @@ const blockEmbedData: ConceptEmbedData = {
   contentId: "35",
   resource: "concept",
   type: "block",
-  linkText: "",
 };
 
 const inlineEmbedData: ConceptEmbedData = {
   contentId: "2318",
-  linkText: "forklaring",
   resource: "concept",
   type: "inline",
 };

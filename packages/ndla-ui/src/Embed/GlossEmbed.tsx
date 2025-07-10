@@ -17,6 +17,7 @@ import { Gloss } from "../Gloss";
 
 interface Props {
   embed: ConceptMetaData;
+  children?: React.ReactNode;
 }
 
 const StyledPopoverContent = styled(PopoverContent, {
@@ -25,10 +26,10 @@ const StyledPopoverContent = styled(PopoverContent, {
   },
 });
 
-export const GlossEmbed = ({ embed }: Props) => {
+export const GlossEmbed = ({ embed, children }: Props) => {
   const contentRef = useRef<HTMLDivElement>(null);
   if (embed.status === "error" && embed.embedData.type === "inline") {
-    return <span>{embed.embedData.linkText}</span>;
+    return <span>{children}</span>;
   }
   if (embed.status === "error" || !embed.data.concept.glossData) {
     return <EmbedErrorPlaceholder type="gloss" />;
@@ -48,7 +49,7 @@ export const GlossEmbed = ({ embed }: Props) => {
     return (
       <PopoverRoot initialFocusEl={() => contentRef.current}>
         <PopoverTrigger asChild>
-          <ConceptInlineTriggerButton>{embed.embedData.linkText}</ConceptInlineTriggerButton>
+          <ConceptInlineTriggerButton>{children}</ConceptInlineTriggerButton>
         </PopoverTrigger>
         <Portal>
           <StyledPopoverContent ref={contentRef}>

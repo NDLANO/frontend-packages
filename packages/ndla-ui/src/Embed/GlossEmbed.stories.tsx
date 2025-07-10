@@ -14,12 +14,10 @@ const glossBlockEmbedData: ConceptEmbedData = {
   contentId: "4942",
   resource: "concept",
   type: "block",
-  linkText: "",
 };
 
 const glossInlineEmbedData: ConceptEmbedData = {
   contentId: "23",
-  linkText: "glose",
   resource: "concept",
   type: "inline",
 };

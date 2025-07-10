@@ -7,7 +7,7 @@
  */
 
 import parse from "html-react-parser";
-import { forwardRef, useMemo, useRef } from "react";
+import { forwardRef, useMemo, useRef, type ReactNode } from "react";
 import { Portal } from "@ark-ui/react";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
@@ -26,6 +26,7 @@ interface BaseProps {
 
 interface Props extends BaseProps {
   embed: ConceptMetaData;
+  children?: ReactNode;
 }
 
 const StyledPopoverContent = styled(PopoverContent, {
@@ -36,7 +37,7 @@ const StyledPopoverContent = styled(PopoverContent, {
   },
 });
 
-export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) => {
+export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt, children }: Props) => {
   const parsedContent = useMemo(() => {
     if (embed.status === "error" || !embed.data.concept.content) return undefined;
     return parse(embed.data.concept.content.htmlContent);
@@ -48,7 +49,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) 
   );
 
   if (embed.status === "error" && embed.embedData.type === "inline") {
-    return <span>{embed.embedData.linkText}</span>;
+    return <span>{children}</span>;
   }
   if (embed.status === "error") {
     // TODO: This could be either concept or gloss. We don't know if it errors out. :)
@@ -66,7 +67,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) 
     return (
       <InlineConcept
         previewAlt={previewAlt}
-        linkText={embed.embedData.linkText}
+        linkContent={children}
         copyright={concept.copyright}
         visualElement={visualElement}
         lang={lang}
@@ -93,18 +94,18 @@ export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt }: Props) 
 };
 
 export interface InlineConceptProps extends ConceptProps, BaseProps {
-  linkText?: string;
+  linkContent?: ReactNode;
   source?: string;
 }
 
 export const InlineConcept = forwardRef<HTMLSpanElement, InlineConceptProps>(
-  ({ linkText, copyright, visualElement, previewAlt, lang, children, title, source, ...rest }, ref) => {
+  ({ linkContent, copyright, visualElement, previewAlt, lang, children, title, source, ...rest }, ref) => {
     const contentRef = useRef<HTMLDivElement>(null);
     return (
       <PopoverRoot initialFocusEl={() => contentRef.current}>
         {/* @ts-expect-error placing ref and rest on popover trigger somehow removes a bug where the popover target becomes a bit bigger */}
         <PopoverTrigger asChild ref={ref} {...rest}>
-          <ConceptInlineTriggerButton>{linkText}</ConceptInlineTriggerButton>
+          <ConceptInlineTriggerButton>{linkContent}</ConceptInlineTriggerButton>
         </PopoverTrigger>
         <Portal>
           <StyledPopoverContent ref={contentRef}>

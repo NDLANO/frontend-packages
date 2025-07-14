@@ -33,6 +33,7 @@ export {
   InlineTriggerButton,
   ConceptInlineTriggerButton,
   EmbedWrapper,
+  MathEmbed,
 } from "./Embed";
 
 export type { EmbedWrapperProps, EmbedWrapperVariantProps } from "./Embed";

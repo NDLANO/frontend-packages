@@ -154,40 +154,45 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>((props, ref) 
   </Field.Input>
 ));
 
-interface TextAreaProps extends HTMLArkProps<"textarea">, JsxStyleProps {}
+interface TextAreaProps extends HTMLArkProps<"textarea">, JsxStyleProps {
+  autoResize?: boolean;
+}
 
 const StyledTextArea = styled(ark.textarea, {}, { baseComponent: true });
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ css: cssProp, ...props }, ref) => {
-  const context = useContext(InputContext);
-  const localRef = useRef<HTMLTextAreaElement>(null);
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  ({ css: cssProp, autoResize = true, ...props }, ref) => {
+    const context = useContext(InputContext);
+    const localRef = useRef<HTMLTextAreaElement>(null);
 
-  // Automatically resize a textarea based on its content
-  const resize = useCallback(() => {
-    if (!localRef.current) return;
-    localRef.current.style.height = "0";
-    // TODO: Figure out if we need to add the 3 extra pixels, maybe related to scroll?
-    localRef.current.style.height = `${localRef.current.scrollHeight + 3}px`;
-  }, []);
+    // Automatically resize a textarea based on its content
+    const resize = useCallback(() => {
+      if (!localRef.current) return;
+      localRef.current.style.height = "0";
+      // TODO: Figure out if we need to add the 3 extra pixels, maybe related to scroll?
+      localRef.current.style.height = `${localRef.current.scrollHeight + 3}px`;
+    }, []);
 
-  useEffect(() => {
-    window.addEventListener("input", resize);
-    window.addEventListener("resize", resize);
-    resize();
-    return () => {
-      window.removeEventListener("input", resize);
-      window.removeEventListener("resize", resize);
-    };
-  }, [resize]);
+    useEffect(() => {
+      if (!autoResize) return;
+      window.addEventListener("input", resize);
+      window.addEventListener("resize", resize);
+      resize();
+      return () => {
+        window.removeEventListener("input", resize);
+        window.removeEventListener("resize", resize);
+      };
+    }, [resize, autoResize]);
 
-  return (
-    <StyledTextArea
-      css={css.raw(baseInputCss, context ? undefined : inputCss, baseTextAreaCss, cssProp)}
-      ref={composeRefs(ref, localRef)}
-      {...props}
-    />
-  );
-});
+    return (
+      <StyledTextArea
+        css={css.raw(baseInputCss, context ? undefined : inputCss, baseTextAreaCss, cssProp)}
+        ref={composeRefs(ref, localRef)}
+        {...props}
+      />
+    );
+  },
+);
 
 export const FieldTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => (
   <Field.Textarea asChild {...props} ref={ref}>

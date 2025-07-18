@@ -10,7 +10,6 @@
 
 // @ts-expect-error - no typedefs
 import pluginHeader from "eslint-plugin-header";
-// @ts-expect-error - no typedefs
 import importPlugin from "eslint-plugin-import";
 // @ts-expect-error - no typedefs
 import jsxA11y from "eslint-plugin-jsx-a11y";

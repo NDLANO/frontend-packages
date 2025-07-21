@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
 import config from "./packages/eslint-config-ndla/index.mjs";
 
 export default config;

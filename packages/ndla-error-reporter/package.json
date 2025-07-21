@@ -22,7 +22,7 @@
     "es"
   ],
   "devDependencies": {
-    "nock": "^14.0.4"
+    "nock": "^14.0.5"
   },
   "dependencies": {
     "@ndla/util": "^5.0.9-alpha.0",

@@ -37,20 +37,22 @@ const messages = {
   article: {
     lastUpdated: "Maŋemusat ođastuvvon",
     useContent: "Čujuhit vai ođđasit atnit?",
-    authorsLabel_article: "Dán lea/leat čállán {{- names}}",
-    authorsLabel_learningPath: "Laget av {{- names}}",
-    authorsLabel_external: "Denne lenken er lagt til av {{- names}}",
+    authorsLabel_article: "Dán lea/leat čállán ",
+    authorsLabel_learningPath: "Laget av",
+    authorsLabel_external: "Denne lenken er lagt til av",
     copyPageLinkCopied: "Liŋka máŋgejuvvon",
     copyHeaderLink: "Máŋge liŋka bajilčállagii",
     conjunction: "ja",
-    supplierLabel_zero: "",
-    supplierLabel_one: "Vuoigatvuođaguoddi: {{- name}}",
-    supplierLabel_other: "Vuoigatvuođaguoddit: {{- name}}",
+    supplierLabel_one: "Vuoigatvuođaguoddi:",
+    supplierLabel_other: "Vuoigatvuođaguoddit:",
     printPage: "Čálit teavstta",
     access: {
       onlyTeacher: "Dát resursa lea dušše olamuttus oahpaheddjiide geat leat Feide bokte sisaloggejuvvon.",
     },
     footnotes: "Fotnotar",
+  },
+  external: {
+    lastUpdated: "Maŋemusat ođastuvvon",
   },
   learningPath: {
     copiedFrom: "Dette er en remiks av en annen læringsti",

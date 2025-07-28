@@ -80,8 +80,7 @@ type Props = {
   learningpathCopiedFrom?: string;
 };
 
-function formatList(list: SupplierProps[], locale = "no") {
-  const listFormatter = new Intl.ListFormat(locale, { style: "long", type: "conjunction" });
+function formatList(list: SupplierProps[], listFormatter: Intl.ListFormat) {
   return listFormatter.format(list.map((l) => l.name));
 }
 
@@ -134,6 +133,7 @@ export const ArticleByline = ({
   }, [onHashChange]);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
+  const listFormatter = new Intl.ListFormat(lang, { style: "long", type: "conjunction" });
 
   return (
     <Wrapper>
@@ -142,14 +142,9 @@ export const ArticleByline = ({
           {!!showPrimaryContributors && (
             <span>
               {authors.length > 0 &&
-                `${t("article.authorsLabel", {
-                  context: bylineType,
-                  names: formatList(authors, lang),
-                })}. `}
-              {t("article.supplierLabel", {
-                count: suppliers.length,
-                name: formatList(suppliers, lang),
-              })}
+                `${t("article.authorsLabel", { context: bylineType })} ${formatList(authors, listFormatter)}. `}
+              {suppliers.length > 0 &&
+                `${t("article.supplierLabel", { count: suppliers.length })} ${formatList(suppliers, listFormatter)}.`}
             </span>
           )}
           {learningpathCopiedFrom ? (

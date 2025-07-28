@@ -36,20 +36,22 @@ const messages = {
   article: {
     lastUpdated: "Last revised date",
     useContent: "Cite or reuse?",
-    authorsLabel_article: "Written by: {{- names}}",
-    authorsLabel_learningPath: "Made by {{- names}}",
-    authorsLabel_external: "This link is added by {{- names}}",
+    authorsLabel_article: "Written by",
+    authorsLabel_learningPath: "Made by",
+    authorsLabel_external: "This link is added by",
     copyPageLinkCopied: "Link copied",
     copyHeaderLink: "Copy link to header",
     conjunction: "and",
-    supplierLabel_zero: "",
-    supplierLabel_one: "Rightsholder: {{- name}}",
-    supplierLabel_other: "Rightsholders: {{- name}}",
+    supplierLabel_one: "Rightsholder:",
+    supplierLabel_other: "Rightsholders:",
     printPage: "Print text",
     access: {
       onlyTeacher: "This resource is accessible only to teachers who are logged in with Feide.",
     },
     footnotes: "Footnotes",
+  },
+  external: {
+    lastUpdated: "Last revised date",
   },
   learningPath: {
     copiedFrom: "This is a remix of a different learning path",

@@ -212,6 +212,7 @@ export const Article = ({
       <ArticleContent>{content}</ArticleContent>
       <ArticleFooter>
         <ArticleByline
+          lang={lang}
           footnotes={footNotes}
           authors={authors}
           suppliers={copyright?.rightsholders}

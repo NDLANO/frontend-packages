@@ -37,19 +37,26 @@ const messages = {
   article: {
     lastUpdated: "Sist fagleg oppdatert",
     useContent: "Sitere eller gjenbruke?",
-    authorsLabel: "Skrive av {{names}}",
-    authorsLabelLearningpath: "Laga av {{names}}",
+    authorsLabel_article: "Skrive av",
+    authorsLabel_learningPath: "Laga av",
+    authorsLabel_external: "Denne lenka er lagt til av",
     copyPageLinkCopied: "Lenke kopiert",
     copyHeaderLink: "Kopier lenke til overskrifta",
     conjunction: "og",
-    authorsLabelExternal: "Denne lenka er lagt til av {{names}}",
-    supplierLabel: "Rettshavar: {{name}}",
-    multipleSuppliersLabel: "Rettshavarar: {{names}}",
+    supplierLabel_one: "Rettshavar:",
+    supplierLabel_other: "Rettshavarar:",
     printPage: "Skriv ut teksten",
     access: {
       onlyTeacher: "Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.",
     },
     footnotes: "Fotnotar",
+  },
+  external: {
+    lastUpdated: "Sist fagleg oppdatert",
+  },
+  learningPath: {
+    copiedFrom: "Dette er en remiks av en annen læringsti",
+    lastUpdated: "Sist fagleg oppdatert",
   },
   license: {
     copyTitle: "Kopier kjeldetilvising",

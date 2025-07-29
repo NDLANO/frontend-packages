@@ -19,7 +19,6 @@ export interface ConceptEmbedData {
   resource: "concept";
   contentId: string;
   type: "block" | "inline" | "notion";
-  linkText: string;
   pageUrl?: string;
   exampleIds?: string;
   exampleLangs?: string;

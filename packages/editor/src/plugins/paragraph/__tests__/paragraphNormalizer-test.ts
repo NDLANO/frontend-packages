@@ -14,6 +14,7 @@ import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraphTypes";
 import { spanPlugin } from "../../span/spanPlugin";
 import { SPAN_ELEMENT_TYPE } from "../../span/spanTypes";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../../list/listTypes";
 
 const editor = createSlate({ plugins: [sectionPlugin, paragraphPlugin, spanPlugin] });
 
@@ -166,6 +167,145 @@ describe("paragraph normalizer tests", () => {
               { text: "" },
             ],
           },
+        ],
+      },
+    ];
+    editor.reinitialize({ value: editorValue, shouldNormalize: true });
+    expect(editor.children).toEqual(expectedValue);
+  });
+
+  test("Removing trailing whitespace doesn't interfere with other elements", () => {
+    const editorValue: Descendant[] = [
+      {
+        type: SECTION_ELEMENT_TYPE,
+        children: [
+          {
+            type: PARAGRAPH_ELEMENT_TYPE,
+            children: [
+              {
+                text: "Fosterutviklingen starter når en eggcelle og en sædcelle smelter sammen ved befruktning, og omfatter utviklingen fram til klekking eller fødsel. Den befruktede eggcellen ",
+              },
+              { text: "zygoten", italic: true },
+              {
+                text: " gjennomgår flere utviklingsstadier før organismen får sine karakteristiske form og funksjon. ",
+              },
+            ],
+          },
+          {
+            type: LIST_ELEMENT_TYPE,
+            listType: "bulleted-list",
+            data: {},
+            children: [
+              {
+                type: LIST_ITEM_ELEMENT_TYPE,
+                children: [{ type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "Hello" }] }],
+              },
+            ],
+          },
+          { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] },
+        ],
+      },
+    ];
+    const expectedValue: Descendant[] = [
+      {
+        type: SECTION_ELEMENT_TYPE,
+        children: [
+          {
+            type: PARAGRAPH_ELEMENT_TYPE,
+            children: [
+              {
+                text: "Fosterutviklingen starter når en eggcelle og en sædcelle smelter sammen ved befruktning, og omfatter utviklingen fram til klekking eller fødsel. Den befruktede eggcellen ",
+              },
+              { text: "zygoten", italic: true },
+              {
+                text: " gjennomgår flere utviklingsstadier før organismen får sine karakteristiske form og funksjon.",
+              },
+            ],
+          },
+          {
+            type: LIST_ELEMENT_TYPE,
+            listType: "bulleted-list",
+            data: {},
+            children: [
+              {
+                type: LIST_ITEM_ELEMENT_TYPE,
+                children: [{ type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "Hello" }] }],
+              },
+            ],
+          },
+          {
+            type: PARAGRAPH_ELEMENT_TYPE,
+            children: [{ text: "" }],
+          },
+        ],
+      },
+    ];
+    editor.reinitialize({ value: editorValue, shouldNormalize: true });
+    expect(editor.children).toEqual(expectedValue);
+  });
+
+  test("Removing leading whitespace doesn't interfere with other elements", () => {
+    const editorValue: Descendant[] = [
+      {
+        type: SECTION_ELEMENT_TYPE,
+        children: [
+          { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] },
+          {
+            type: LIST_ELEMENT_TYPE,
+            listType: "bulleted-list",
+            data: {},
+            children: [
+              {
+                type: LIST_ITEM_ELEMENT_TYPE,
+                children: [{ type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "Hello" }] }],
+              },
+            ],
+          },
+          {
+            type: PARAGRAPH_ELEMENT_TYPE,
+            children: [
+              {
+                text: " Fosterutviklingen starter når en eggcelle og en sædcelle smelter sammen ved befruktning, og omfatter utviklingen fram til klekking eller fødsel. Den befruktede eggcellen ",
+              },
+              { text: "zygoten", italic: true },
+              {
+                text: " gjennomgår flere utviklingsstadier før organismen får sine karakteristiske form og funksjon.",
+              },
+            ],
+          },
+          { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] },
+        ],
+      },
+    ];
+    const expectedValue: Descendant[] = [
+      {
+        type: SECTION_ELEMENT_TYPE,
+        children: [
+          { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] },
+          {
+            type: LIST_ELEMENT_TYPE,
+            listType: "bulleted-list",
+            data: {},
+            children: [
+              {
+                type: LIST_ITEM_ELEMENT_TYPE,
+                children: [{ type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "Hello" }] }],
+              },
+            ],
+          },
+          {
+            type: PARAGRAPH_ELEMENT_TYPE,
+            children: [
+              {
+                text: "Fosterutviklingen starter når en eggcelle og en sædcelle smelter sammen ved befruktning, og omfatter utviklingen fram til klekking eller fødsel. Den befruktede eggcellen ",
+              },
+              { text: "zygoten", italic: true },
+              {
+                text: " gjennomgår flere utviklingsstadier før organismen får sine karakteristiske form og funksjon.",
+              },
+            ],
+          },
+          { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] },
         ],
       },
     ];

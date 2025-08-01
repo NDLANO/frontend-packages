@@ -102,7 +102,7 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
     }
 
     if (stringContent[stringContent.length - 1] === " ") {
-      const [lastTextElement] = editor.nodes({
+      const [lastTextElement] = editor.nodes<Text>({
         match: (n, p) => Text.isText(n) && !editor.hasPath(Path.next(p)) && n.text.endsWith(" "),
         at: path,
       });
@@ -114,7 +114,7 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
       Transforms.delete(editor, {
         at: {
           path: lastTextElement[1],
-          offset: stringContent.length - 1,
+          offset: lastTextElement[0].text.length - 1,
         },
         distance: 1,
         unit: "character",

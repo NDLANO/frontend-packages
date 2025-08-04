@@ -14,12 +14,10 @@ const glossBlockEmbedData: ConceptEmbedData = {
   contentId: "4942",
   resource: "concept",
   type: "block",
-  linkText: "",
 };
 
 const glossInlineEmbedData: ConceptEmbedData = {
   contentId: "23",
-  linkText: "glose",
   resource: "concept",
   type: "inline",
 };
@@ -89,6 +87,9 @@ export default {
   title: "Embeds/GlossEmbed",
   component: GlossEmbed,
   tags: ["autodocs"],
+  argTypes: {
+    children: { control: false },
+  },
   render: (args) => <GlossEmbed {...args} />,
 } satisfies Meta<typeof GlossEmbed>;
 
@@ -121,6 +122,7 @@ export const Inline: StoryObj<typeof GlossEmbed> = {
       embedData: glossInlineEmbedData,
       data: glossBlockData,
     },
+    children: "glose",
   },
 };
 
@@ -131,5 +133,6 @@ export const InlineFailed: StoryObj<typeof GlossEmbed> = {
       status: "error",
       embedData: glossInlineEmbedData,
     },
+    children: "glose",
   },
 };

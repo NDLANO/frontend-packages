@@ -16,12 +16,10 @@ const blockEmbedData: ConceptEmbedData = {
   contentId: "35",
   resource: "concept",
   type: "block",
-  linkText: "",
 };
 
 const inlineEmbedData: ConceptEmbedData = {
   contentId: "2318",
-  linkText: "forklaring",
   resource: "concept",
   type: "inline",
 };
@@ -140,6 +138,9 @@ const meta: Meta<typeof ConceptEmbed> = {
   title: "Embeds/ConceptEmbed",
   component: ConceptEmbed,
   tags: ["autodocs"],
+  argTypes: {
+    children: { control: false },
+  },
   decorators: [
     (Story) => (
       <PageContent variant="content" asChild>
@@ -184,6 +185,7 @@ export const Inline: StoryObj<typeof ConceptEmbed> = {
       embedData: inlineEmbedData,
       data: blockMetaData,
     },
+    children: "forklaring",
   },
 };
 
@@ -194,5 +196,6 @@ export const InlineFailed: StoryObj<typeof ConceptEmbed> = {
       status: "error",
       embedData: inlineEmbedData,
     },
+    children: "forklaring",
   },
 };

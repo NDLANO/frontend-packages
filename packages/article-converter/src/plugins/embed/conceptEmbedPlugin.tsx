@@ -6,20 +6,22 @@
  *
  */
 
-import { attributesToProps } from "html-react-parser";
+import { attributesToProps, domToReact, type DOMNode } from "html-react-parser";
 import { type ConceptMetaData } from "@ndla/types-embed";
 import { ConceptEmbed } from "@ndla/ui";
 import { type PluginType } from "../types";
 
-export const conceptEmbedPlugin: PluginType = (element, _, opts) => {
+export const conceptEmbedPlugin: PluginType = (element, parserOpts, transformOpts) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props["data-json"] as string) as ConceptMetaData;
   return (
     <ConceptEmbed
       embed={data}
-      lang={opts.articleLanguage}
-      renderContext={opts.renderContext}
-      previewAlt={opts.previewAlt}
-    />
+      lang={transformOpts.articleLanguage}
+      renderContext={transformOpts.renderContext}
+      previewAlt={transformOpts.previewAlt}
+    >
+      {domToReact(element.children as DOMNode[], parserOpts)}
+    </ConceptEmbed>
   );
 };

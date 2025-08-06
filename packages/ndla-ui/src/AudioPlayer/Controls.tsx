@@ -265,10 +265,10 @@ const Controls = ({ src, title }: Props) => {
             <div>{formatTime(currentTime)}</div>
           </StyledText>
           <SliderRoot
-            value={[audioRef.current?.currentTime ?? 0]}
+            value={[audioRef.current?.currentTime || 0]}
             defaultValue={[0]}
             step={1}
-            max={Math.round(audioRef.current?.duration ?? 0)}
+            max={Math.round(audioRef.current?.duration || 0)}
             onValueChange={handleSliderChange}
             getAriaValueText={(value) =>
               t("audio.valueText", {

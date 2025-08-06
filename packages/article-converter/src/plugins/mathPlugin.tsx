@@ -10,6 +10,8 @@ import { attributesToProps } from "html-react-parser";
 import { type PluginType } from "./types";
 export const mathPlugin: PluginType = (node) => {
   const { "data-math": mathContent, ...props } = attributesToProps(node.attribs);
-  // @ts-expect-error - math is a valid tag
-  return <math {...props} dangerouslySetInnerHTML={{ __html: mathContent }} />;
+  return (
+    // @ts-expect-error - math is a valid tag
+    <math xmlns="http://www.w3.org/1998/Math/MathML" {...props} dangerouslySetInnerHTML={{ __html: mathContent }} />
+  );
 };

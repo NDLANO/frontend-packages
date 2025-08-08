@@ -12,7 +12,7 @@ import { getLocaleOrDefault, type LicenseType, type LicenseLocaleType, type Loca
 const freeUseNB = "Offentlig eie";
 const freeUseNN = "Offentleg eige";
 const freeUseEN = "Public domain";
-const restrictedReuseNB = "Begrenset gjenbruk";
+const restrictedReuseNB = "Begrensa gjenbruk";
 const restrictedReuseNN = "Avgrensa gjenbruk";
 const restrictedReuseEN = "Restricted reuse";
 
@@ -323,7 +323,7 @@ const copy: LicenseType = {
   },
   nb: {
     short: restrictedReuseNB,
-    title: "Begrenset gjenbruk",
+    title: "Begrensa gjenbruk",
     userFriendlyTitle: "",
     url: "https://ndla.no/nb/article/opphavsrett",
     linkText: "Lær mer om opphavsrett",

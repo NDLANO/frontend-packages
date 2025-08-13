@@ -193,6 +193,7 @@ export const useVideoSearchTranslations = (translations?: Partial<VideoTranslati
       previewVideo: t("previewVideo"),
       addVideo: t("addVideo"),
       close: t("close"),
+      loading: t("loading"),
       ...translations,
     }),
     [t, translations],

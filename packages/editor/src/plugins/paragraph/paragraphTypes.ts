@@ -24,4 +24,5 @@ export interface ParagraphElement {
 
 export interface ParagraphPluginOptions {
   nonSerializableParents?: ElementType[];
+  enableWhitespaceStrip?: boolean;
 }

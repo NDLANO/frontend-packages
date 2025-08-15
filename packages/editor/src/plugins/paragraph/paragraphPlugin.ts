@@ -22,6 +22,7 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
   name: PARAGRAPH_PLUGIN,
   options: {
     nonSerializableParents: [LIST_ITEM_ELEMENT_TYPE],
+    enableWhitespaceStrip: true,
   },
   normalize: (editor, node, path, logger, opts) => {
     if (!isParagraphElement(node)) return false;
@@ -101,7 +102,7 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
       return true;
     }
 
-    if (stringContent[stringContent.length - 1] === " ") {
+    if (opts.enableWhitespaceStrip && stringContent[stringContent.length - 1] === " ") {
       const [lastTextElement] = editor.nodes<Text>({
         match: (n, p) => Text.isText(n) && !editor.hasPath(Path.next(p)) && n.text.endsWith(" "),
         at: path,

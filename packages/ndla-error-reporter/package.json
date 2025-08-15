@@ -1,6 +1,6 @@
 {
   "name": "@ndla/error-reporter",
-  "version": "2.0.16",
+  "version": "2.0.17",
   "description": "Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly.",
   "license": "GPL-3.0",
   "main": "lib/index.js",

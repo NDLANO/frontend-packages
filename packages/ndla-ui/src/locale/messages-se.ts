@@ -410,6 +410,7 @@ const messages = {
       previewVideo: "Forhåndsvis",
       is360Video: "VR-video",
       close: "Lukk",
+      loading: "Laster videoer",
     },
     datePicker: {
       dayCell: {

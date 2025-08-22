@@ -36,7 +36,7 @@
     "@ndla/editor": "workspace:^",
     "@ndla/primitives": "workspace:^",
     "@ndla/styled-system": "workspace:^",
-    "@zag-js/react": "^1.0.0"
+    "@zag-js/react": "^1.21.7"
   },
   "peerDependencies": {
     "react": ">= 18",

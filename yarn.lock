@@ -7880,10 +7880,10 @@ __metadata:
     react-i18next: "npm:^15.4.1"
     react-router-dom: "npm:^7.0.0"
     serve: "npm:^14.2.4"
-    slate: "npm:^0.117.0"
-    slate-dom: "npm:^0.116.0"
+    slate: "npm:^0.118.1"
+    slate-dom: "npm:^0.118.1"
     slate-history: "npm:^0.113.1"
-    slate-react: "npm:^0.116.0"
+    slate-react: "npm:^0.117.4"
     storybook: "npm:^9.1.1"
     tsdown: "npm:^0.13.4"
     typescript: "npm:^5.9.2"
@@ -12976,9 +12976,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate-dom@npm:^0.116.0":
-  version: 0.116.0
-  resolution: "slate-dom@npm:0.116.0"
+"slate-dom@npm:^0.118.1":
+  version: 0.118.1
+  resolution: "slate-dom@npm:0.118.1"
   dependencies:
     "@juggle/resize-observer": "npm:^3.4.0"
     direction: "npm:^1.0.4"
@@ -12989,7 +12989,7 @@ __metadata:
     tiny-invariant: "npm:1.3.1"
   peerDependencies:
     slate: ">=0.99.0"
-  checksum: 10c0/ad256c1ac305a5304cd2b7d82ada470ec611a3786d2da836c380ebd1c4c62054a8ab889e3b7a11484bdffd41c2caaf9c07d5df8d70687771ac87820a98ecac22
+  checksum: 10c0/f6cfc02f75d984c437513285bfdeb2c5ea04a9b3152bf10e83d30a0312d41d2666173fbd4e7d756d64cce0da30c8fbf3619d5267bc5d0ea52c6b77505f2c30e6
   languageName: node
   linkType: hard
 
@@ -13015,9 +13015,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate-react@npm:^0.116.0":
-  version: 0.116.0
-  resolution: "slate-react@npm:0.116.0"
+"slate-react@npm:^0.117.4":
+  version: 0.117.4
+  resolution: "slate-react@npm:0.117.4"
   dependencies:
     "@juggle/resize-observer": "npm:^3.4.0"
     direction: "npm:^1.0.4"
@@ -13030,17 +13030,17 @@ __metadata:
     react-dom: ">=18.2.0"
     slate: ">=0.114.0"
     slate-dom: ">=0.116.0"
-  checksum: 10c0/249b26fb3598c7993367a50a69c0e126d854afa73117746e71356a72b5179560bfd17b45c03c58c164f85327f96a09850573d9ef990824b2d2e2ab8764d55362
+  checksum: 10c0/d7bd7eaa7ce37bbf3c63a4aab67d1125d9e08f936b29faed8e8cd8c6dbcf7bcef9354c6028c5bba9b5fc9a3719e3017be322d0b69c788f953d7447b3c45c3770
   languageName: node
   linkType: hard
 
-"slate@npm:^0.117.0":
-  version: 0.117.0
-  resolution: "slate@npm:0.117.0"
+"slate@npm:^0.118.1":
+  version: 0.118.1
+  resolution: "slate@npm:0.118.1"
   dependencies:
     immer: "npm:^10.0.3"
     tiny-warning: "npm:^1.0.3"
-  checksum: 10c0/7e1251bc814a7237a7b6d2f0c631a8f7ee5317d9fdb6ffa1b1d97178adc5648789d6b2059a3fb2590967799b3e6105832c4d160aa68723929ce85320a7c18701
+  checksum: 10c0/5004e3cb455317755057158d5a9ff9913539d1222135a2012af7ef7788cf330f074d8423d16e5f1899fd77ad2286ec03975cf929f1f8fcf80a24c99d99758a52
   languageName: node
   linkType: hard
 

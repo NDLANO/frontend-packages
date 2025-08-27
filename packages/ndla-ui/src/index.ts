@@ -80,7 +80,6 @@ export { default as Breadcrumb, HomeBreadcrumb } from "./Breadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb";
 
 export {
-  i18nInstance,
   formatNestedMessages,
   useTagsInputTranslations,
   useTagSelectorTranslations,

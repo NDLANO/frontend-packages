@@ -6,7 +6,7 @@
  *
  */
 
-import { i18nInstance } from "../../../ndla-ui/src/i18n";
+import { i18nInstance } from "../../../../testUtils/i18nTestInstance";
 import {
   getCopyString,
   figureApa7CopyString,

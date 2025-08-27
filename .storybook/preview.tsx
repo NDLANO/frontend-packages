@@ -9,8 +9,8 @@
 import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router";
 import type { Preview } from "@storybook/react";
-import { i18nInstance } from "@ndla/ui";
 import "./styles.css";
+import { i18nInstance } from "../testUtils/i18nTestInstance";
 
 const viewports = {
   small: {

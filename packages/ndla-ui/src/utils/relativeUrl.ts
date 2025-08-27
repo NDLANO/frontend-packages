@@ -6,7 +6,7 @@
  *
  */
 
-import { supportedTranslationLanguages } from "../i18n/i18n";
+const supportedTranslationLanguages = ["nb", "nn", "en", "se"] as const;
 
 const ENV_REGEX = /(staging|test)\.?/;
 const LANGUAGE_REGEX = new RegExp(`^\\/((?:${supportedTranslationLanguages.join("|")})(?:$|\\/))`, "");

@@ -44,7 +44,7 @@
     "html-react-parser": "^5.1.19"
   },
   "peerDependencies": {
-    "i18next": "^24.2.2",
+    "i18next": ">= 25.0.0",
     "react": ">= 18",
     "react-dom": ">= 18",
     "react-i18next": "^15.4.1",

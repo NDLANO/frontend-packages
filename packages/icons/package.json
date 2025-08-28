@@ -1,12 +1,15 @@
 {
   "name": "@ndla/icons",
+  "type": "module",
   "version": "8.0.61-alpha.0",
   "description": "A package containing icons used in NDLA frontends",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./es/index.js",
+    "require": "./lib/index.js"
+  },
   "sideEffects": false,
-  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch ./src",

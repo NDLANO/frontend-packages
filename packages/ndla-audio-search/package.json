@@ -1,11 +1,14 @@
 {
   "name": "@ndla/audio-search",
+  "type": "module",
   "version": "7.0.107-alpha.0",
   "description": "A simple library for searching for audio files from NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./es/index.js",
+    "require": "./lib/index.js"
+  },
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch ./src",

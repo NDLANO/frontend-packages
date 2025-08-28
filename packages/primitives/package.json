@@ -1,11 +1,14 @@
 {
   "name": "@ndla/primitives",
+  "type": "module",
   "version": "1.0.94-alpha.0",
   "description": "Primitive components for NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./es/index.js",
+    "require": "./lib/index.js"
+  },
   "sideEffects": false,
   "scripts": {
     "build": "tsdown",

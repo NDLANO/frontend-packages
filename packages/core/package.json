@@ -1,12 +1,15 @@
 {
   "name": "@ndla/core",
+  "type": "module",
   "version": "6.0.1-alpha.0",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./es/index.js",
+    "require": "./lib/index.js"
+  },
   "sideEffects": false,
-  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch ./src",

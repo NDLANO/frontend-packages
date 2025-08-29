@@ -1,7 +1,7 @@
 {
   "name": "@ndla/ui",
   "type": "module",
-  "version": "56.0.136",
+  "version": "56.0.137-alpha.0",
   "description": "UI component library for NDLA",
   "license": "GPL-3.0",
   "exports": {
@@ -41,7 +41,7 @@
     "@ndla/icons": "^8.0.63-alpha.0",
     "@ndla/licenses": "^9.0.7",
     "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "^7.0.98-alpha.0",
+    "@ndla/safelink": "^7.0.99-alpha.0",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^5.0.11-alpha.0",
     "html-react-parser": "^5.1.19"

@@ -8,7 +8,7 @@
 
 import { type ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { ArrowDownShortLine } from "@ndla/icons";
 import {
   AccordionItem,

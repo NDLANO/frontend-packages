@@ -64,7 +64,7 @@ yarn link
 In repo using the package (ie. ndla-frontend). Forces usage of the same react versions as in frontend-packages.
 
 ```js
-yarn link @ndla/[package-name] react react-dom react-router react-router-dom
+yarn link @ndla/[package-name] react react-dom react-router
 yarn
 ```
 

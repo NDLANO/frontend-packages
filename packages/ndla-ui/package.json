@@ -1,7 +1,7 @@
 {
   "name": "@ndla/ui",
   "type": "module",
-  "version": "56.0.135-alpha.0",
+  "version": "56.0.136-alpha.0",
   "description": "UI component library for NDLA",
   "license": "GPL-3.0",
   "exports": {
@@ -37,13 +37,13 @@
   ],
   "dependencies": {
     "@ark-ui/react": "^5.20.0",
-    "@ndla/core": "^6.0.1-alpha.0",
-    "@ndla/icons": "^8.0.61-alpha.0",
-    "@ndla/licenses": "^9.0.5",
+    "@ndla/core": "^6.0.2-alpha.0",
+    "@ndla/icons": "^8.0.62-alpha.0",
+    "@ndla/licenses": "^9.0.6",
     "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "^7.0.96-alpha.0",
+    "@ndla/safelink": "^7.0.97-alpha.0",
     "@ndla/styled-system": "workspace:^",
-    "@ndla/util": "^5.0.9-alpha.0",
+    "@ndla/util": "^5.0.10-alpha.0",
     "html-react-parser": "^5.1.19"
   },
   "peerDependencies": {

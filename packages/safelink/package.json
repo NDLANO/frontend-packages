@@ -1,7 +1,7 @@
 {
   "name": "@ndla/safelink",
   "type": "module",
-  "version": "7.0.96-alpha.0",
+  "version": "7.0.97-alpha.0",
   "description": "SafeLink component for NDLA",
   "license": "GPL-3.0",
   "exports": {

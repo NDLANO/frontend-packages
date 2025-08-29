@@ -1,7 +1,7 @@
 {
   "name": "@ndla/hooks",
   "type": "module",
-  "version": "2.1.12",
+  "version": "2.1.13",
   "description": "Collection of React hooks used by NDLA",
   "license": "GPL-3.0",
   "exports": {

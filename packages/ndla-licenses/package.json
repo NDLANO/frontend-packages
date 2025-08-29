@@ -1,7 +1,7 @@
 {
   "name": "@ndla/licenses",
   "type": "module",
-  "version": "9.0.5",
+  "version": "9.0.6",
   "description": "A simple library for retrieving license information for NDLA",
   "license": "GPL-3.0",
   "exports": {

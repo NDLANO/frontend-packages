@@ -7,7 +7,7 @@
  */
 
 import type { ReactNode } from "react";
-import { StaticRouter } from "react-router-dom";
+import { StaticRouter } from "react-router";
 import { render } from "@testing-library/react";
 import { MissingRouterContext } from "../MissingRouterContext";
 import { SafeLink, isOldNdlaLink } from "../SafeLink";

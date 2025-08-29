@@ -5,7 +5,7 @@
   "description": "Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly.",
   "license": "GPL-3.0",
   "exports": {
-    "import": "./es/index.js",
+    "import": "./es/index.mjs",
     "require": "./lib/index.js"
   },
   "repository": {

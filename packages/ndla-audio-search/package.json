@@ -6,7 +6,7 @@
   "license": "GPL-3.0",
   "exports": {
     "types": "./lib/index.d.ts",
-    "import": "./es/index.js",
+    "import": "./es/index.mjs",
     "require": "./lib/index.js"
   },
   "scripts": {

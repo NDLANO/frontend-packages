@@ -26,8 +26,7 @@ export default defineConfig({
       return {
         ...options,
         dir: "es",
-        // TODO: We should switch over to using .mjs and .cjs
-        entryFileNames: "[name].js",
+        entryFileNames: "[name].mjs",
       };
     } else {
       return {

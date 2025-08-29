@@ -29,32 +29,32 @@
     "./css": {
       "types": "./lib/css/index.d.ts",
       "require": "./lib/css/index.js",
-      "import": "./es/css/index.js"
+      "import": "./es/css/index.mjs"
     },
     "./tokens": {
       "types": "./lib/tokens/index.d.ts",
       "require": "./lib/tokens/index.js",
-      "import": "./es/tokens/index.js"
+      "import": "./es/tokens/index.mjs"
     },
     "./types": {
       "types": "./lib/types/index.d.ts",
       "require": "./lib/types/index.js",
-      "import": "./es/types/index.js"
+      "import": "./es/types/index.mjs"
     },
     "./patterns": {
       "types": "./lib/patterns/index.d.ts",
       "require": "./lib/patterns/index.js",
-      "import": "./es/patterns/index.js"
+      "import": "./es/patterns/index.mjs"
     },
     "./recipes": {
       "types": "./lib/recipes/index.d.ts",
       "require": "./lib/recipes/index.js",
-      "import": "./es/recipes/index.js"
+      "import": "./es/recipes/index.mjs"
     },
     "./jsx": {
       "types": "./lib/jsx/index.d.ts",
       "require": "./lib/jsx/index.js",
-      "import": "./es/jsx/index.js"
+      "import": "./es/jsx/index.mjs"
     }
   }
 }

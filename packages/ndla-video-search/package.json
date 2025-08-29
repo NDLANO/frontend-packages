@@ -1,11 +1,14 @@
 {
   "name": "@ndla/video-search",
+  "type": "module",
   "version": "8.0.110-alpha.0",
   "description": "A simple library for searching NDLA videos",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./es/index.js",
+    "require": "./lib/index.js"
+  },
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch ./src",

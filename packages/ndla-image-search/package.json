@@ -1,11 +1,14 @@
 {
   "name": "@ndla/image-search",
+  "type": "module",
   "version": "11.0.111-alpha.0",
   "description": "A simple library for searching images from NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./es/index.js",
+    "require": "./lib/index.js"
+  },
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch ./src",

@@ -1,11 +1,14 @@
 {
   "name": "@ndla/editor",
+  "type": "module",
   "version": "0.0.30",
   "description": "Slate editor plugins for NDLA",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./es/index.js",
+    "require": "./lib/index.js"
+  },
   "sideEffects": false,
   "scripts": {
     "build": "tsdown",

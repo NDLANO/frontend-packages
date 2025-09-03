@@ -1,7 +1,7 @@
 {
   "name": "@ndla/editor-components",
   "type": "module",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "description": "Slate editor components for NDLA",
   "license": "GPL-3.0",
   "exports": {

@@ -6,7 +6,7 @@
  *
  */
 
-import isHotkey from "is-hotkey";
+import { isHotkey } from "is-hotkey";
 import { createPlugin } from "../../core/createPlugin";
 import { Transforms } from "slate";
 import { SOFT_BREAK_PLUGIN } from "./breakTypes";

@@ -12,7 +12,6 @@ import { FileCopyLine, CheckLine } from "@ndla/icons";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { CodeMetaData } from "@ndla/types-embed";
-import { copyTextToClipboard } from "@ndla/util";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import { CodeBlock, codeLanguageOptions } from "../CodeBlock";
 import type { ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
@@ -73,9 +72,15 @@ const CodeEmbed = ({ embed }: Props) => {
       />
       <Button
         variant="secondary"
-        onClick={() => {
-          copyTextToClipboard(embed.status === "success" ? embed.data.decodedContent : "");
-          setIsCopied(true);
+        onClick={async () => {
+          if (embed.status === "success") {
+            try {
+              await navigator.clipboard.writeText(embed.data.decodedContent);
+              setIsCopied(true);
+            } catch {
+              // do nothing
+            }
+          }
         }}
       >
         {isCopied ? <CheckLine /> : <FileCopyLine />}

@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import { LinkMedium } from "@ndla/icons";
 import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { copyTextToClipboard } from "@ndla/util";
 
 const ContainerDiv = styled("div", {
   base: {
@@ -55,14 +54,17 @@ const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
     }
   }, [hasCopied]);
 
-  const onCopyClick = useCallback(() => {
-    setHasCopied(true);
+  const onCopyClick = useCallback(async () => {
     const { location } = window;
     const newHash = `#${sanitizedTitle}`;
     const port = location.port ? `:${location.port}` : "";
     const urlToCopy = `${location.protocol}//${location.hostname}${port}${location.pathname}${location.search}${newHash}`;
-
-    copyTextToClipboard(urlToCopy);
+    try {
+      await navigator.clipboard.writeText(urlToCopy);
+      setHasCopied(true);
+    } catch {
+      // do nothing
+    }
   }, [sanitizedTitle]);
 
   const tooltip = hasCopied ? t("article.copyPageLinkCopied") : t("article.copyHeaderLink");

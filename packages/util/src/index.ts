@@ -7,7 +7,6 @@
  */
 
 export { default as uuid } from "./uuid";
-export { copyTextToClipboard } from "./copyTextToClipboard";
 export { setCookie, getCookie, deleteCookie, isValidCookie } from "./cookieHandler";
 export { printPage } from "./printPage";
 export { validateTranslationFiles } from "./translationValidation";

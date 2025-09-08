@@ -10,7 +10,6 @@ import { type ComponentProps, type ReactElement, createElement, useMemo } from "
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { copyTextToClipboard } from "@ndla/util";
 
 import { FileCopyLine, Icon, UserFill } from ".";
 import * as icons from "./icons";
@@ -33,7 +32,7 @@ const IconItem = ({ icon, name }: IconItemProps) => {
         {iconProps["data-license"]}
         <IconButton
           variant="tertiary"
-          onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons';`)}
+          onClick={async () => await navigator.clipboard.writeText(`import { ${name} } from '@ndla/icons';`)}
           title="Kopier import-kode"
           aria-label="Kopier import-kode"
         >

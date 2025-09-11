@@ -10,6 +10,7 @@ import type { MetaData } from "./baseTypes";
 
 export interface UuDisclaimerEmbedData {
   resource: "uu-disclaimer";
+  skipContent?: string;
   disclaimer: string;
 }
 

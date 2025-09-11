@@ -8,33 +8,15 @@
 
 import { getLocaleOrDefault, type Locale } from "./types";
 
-// TODO: Try to improve type safety
+type ModelRelease = "yes" | "no" | "not-applicable" | "not-set";
 
-interface ModelReleaseLocaleInfo {
-  yes: string;
-  no: string;
-  "not-applicable": string;
-  "not-set": string;
-}
-
-const modelRelease: Record<string, ModelReleaseLocaleInfo> = {
-  nb: { yes: "Ja", no: "Nei", "not-applicable": "Ikke relevant", "not-set": "Ikke valgt" },
-  nn: { yes: "Ja", no: "Nei", "not-applicable": "Ikkje relevant", "not-set": "Ikkje valgt" },
-  en: { yes: "Yes", no: "No", "not-applicable": "Not applicable", "not-set": "Not set" },
+const modelRelease: Record<ModelRelease, Record<Locale, string>> = {
+  yes: { nb: "Ja", nn: "Ja", en: "Yes" },
+  no: { nb: "Nei", nn: "Nei", en: "No" },
+  "not-applicable": { nb: "Ikke relevant", nn: "Ikkje relevant", en: "Not applicable" },
+  "not-set": { nb: "Ikke valg", nn: "Ikkje valgt", en: "Not set" },
 };
 
 export const getModelReleaseValue = (modelReleaseValue: string, locale: string | Locale | undefined): string => {
-  const surelyLocale = getLocaleOrDefault(locale, "nb");
-  switch (modelReleaseValue) {
-    case "yes":
-      return modelRelease[surelyLocale].yes;
-    case "no":
-      return modelRelease[surelyLocale].no;
-    case "not-applicable":
-      return modelRelease[surelyLocale]["not-applicable"];
-    case "not-set":
-      return modelRelease[surelyLocale]["not-set"];
-    default:
-      return modelReleaseValue;
-  }
+  return modelRelease[modelReleaseValue as ModelRelease]?.[getLocaleOrDefault(locale, "nb")] ?? modelReleaseValue;
 };

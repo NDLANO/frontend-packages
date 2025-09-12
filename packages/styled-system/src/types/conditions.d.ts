@@ -24,7 +24,7 @@ export interface Conditions {
 	"_visited": string
 	/** `&:target` */
 	"_target": string
-	/** `&:is(:read-only, [data-read-only])` */
+	/** `&:is(:read-only, [data-read-only], [aria-readonly=true])` */
 	"_readOnly": string
 	/** `&:read-write` */
 	"_readWrite": string
@@ -52,7 +52,7 @@ export interface Conditions {
 	"_firstLetter": string
 	/** `&::first-line` */
 	"_firstLine": string
-	/** `&::marker` */
+	/** `&:is(::marker, ::-webkit-details-marker)` */
 	"_marker": string
 	/** `&::selection` */
 	"_selection": string
@@ -86,7 +86,7 @@ export interface Conditions {
 	"_peerFocusWithin": string
 	/** `.peer:is(:focus-visible, [data-focus-visible]) ~ &` */
 	"_peerFocusVisible": string
-	/** `.peer:is(:disabled, [disabled], [data-disabled]) ~ &` */
+	/** `.peer:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) ~ &` */
 	"_peerDisabled": string
 	/** `.peer:is(:checked, [data-checked], [aria-checked=true], [data-state="checked"]) ~ &` */
 	"_peerChecked": string
@@ -106,13 +106,13 @@ export interface Conditions {
 	"_groupFocusWithin": string
 	/** `.group:is(:focus-visible, [data-focus-visible]) &` */
 	"_groupFocusVisible": string
-	/** `.group:is(:disabled, [disabled], [data-disabled]) &` */
+	/** `.group:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) &` */
 	"_groupDisabled": string
 	/** `.group:is(:checked, [data-checked], [aria-checked=true], [data-state="checked"]) &` */
 	"_groupChecked": string
 	/** `.group:is([aria-expanded=true], [data-expanded], [data-state="expanded"]) &` */
 	"_groupExpanded": string
-	/** `.group:is(:invalid, [data-invalid]) &` */
+	/** `.group:is(:invalid, [data-invalid], [aria-invalid=true]) &` */
 	"_groupInvalid": string
 	/** `&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state="indeterminate"])` */
 	"_indeterminate": string
@@ -120,7 +120,7 @@ export interface Conditions {
 	"_required": string
 	/** `&:is(:valid, [data-valid])` */
 	"_valid": string
-	/** `&:is(:invalid, [data-invalid])` */
+	/** `&:is(:invalid, [data-invalid], [aria-invalid=true])` */
 	"_invalid": string
 	/** `&:autofill` */
 	"_autofill": string
@@ -148,7 +148,7 @@ export interface Conditions {
 	"_default": string
 	/** `&:optional` */
 	"_optional": string
-	/** `&:is([open], [data-open], [data-state="open"])` */
+	/** `&:is([open], [data-open], [data-state="open"], :popover-open)` */
 	"_open": string
 	/** `&:is([closed], [data-closed], [data-state="closed"])` */
 	"_closed": string
@@ -200,9 +200,9 @@ export interface Conditions {
 	"_lessContrast": string
 	/** `@media (prefers-contrast: more)` */
 	"_moreContrast": string
-	/** `[dir=ltr] &` */
+	/** `:where([dir=ltr], :dir(ltr)) &` */
 	"_ltr": string
-	/** `[dir=rtl] &` */
+	/** `:where([dir=rtl], :dir(rtl)) &` */
 	"_rtl": string
 	/** `&::-webkit-scrollbar` */
 	"_scrollbar": string
@@ -218,6 +218,10 @@ export interface Conditions {
 	"_icon": string
 	/** `@starting-style` */
 	"_starting": string
+	/** `@media (scripting: none)` */
+	"_noscript": string
+	/** `@media (inverted-colors: inverted)` */
+	"_invertedColors": string
 	/** `@media screen and (min-width: 20rem)` */
 	"mobile": string
 	/** `@media screen and (min-width: 20rem) and (max-width: 29.7475rem)` */

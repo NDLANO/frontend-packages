@@ -1,5 +1,6 @@
 export * from './factory.js';
 export * from './is-valid-prop.js';
+export * from './create-style-context.js';
 export * from './box.js';
 export * from './flex.js';
 export * from './stack.js';

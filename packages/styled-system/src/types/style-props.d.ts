@@ -5907,7 +5907,7 @@ transitionDuration?: ConditionalValue<UtilityValues["transitionDuration"] | CssV
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/transition-property
    */
-transitionProperty?: ConditionalValue<CssProperties["transitionProperty"] | AnyString>
+transitionProperty?: ConditionalValue<UtilityValues["transitionProperty"] | CssVars | CssProperties["transitionProperty"] | AnyString>
  /**
    * The **`transition-timing-function`** CSS property sets how intermediate values are calculated for CSS properties being affected by a transition effect.
    *
@@ -6227,14 +6227,24 @@ zoom?: ConditionalValue<CssProperties["zoom"] | AnyString>
  hideBelow?: ConditionalValue<UtilityValues["hideBelow"] | CssVars | AnyString>
  spaceX?: ConditionalValue<UtilityValues["spaceX"] | CssVars | AnyString>
  spaceY?: ConditionalValue<UtilityValues["spaceY"] | CssVars | AnyString>
+ focusRing?: ConditionalValue<UtilityValues["focusRing"] | CssVars | AnyString>
+ focusVisibleRing?: ConditionalValue<UtilityValues["focusVisibleRing"] | CssVars | AnyString>
+ focusRingColor?: ConditionalValue<UtilityValues["focusRingColor"] | CssVars | AnyString>
+ focusRingOffset?: ConditionalValue<UtilityValues["focusRingOffset"] | CssVars | AnyString>
+ focusRingWidth?: ConditionalValue<UtilityValues["focusRingWidth"] | CssVars | AnyString>
+ focusRingStyle?: ConditionalValue<UtilityValues["focusRingStyle"] | CssVars | AnyString>
  divideX?: ConditionalValue<string | number | AnyString>
  divideY?: ConditionalValue<string | number | AnyString>
  divideColor?: ConditionalValue<UtilityValues["divideColor"] | CssVars | AnyString>
  divideStyle?: ConditionalValue<UtilityValues["divideStyle"] | CssVars | AnyString>
+ boxSize?: ConditionalValue<UtilityValues["boxSize"] | CssVars | AnyString>
  fontSmoothing?: ConditionalValue<UtilityValues["fontSmoothing"] | CssVars | AnyString>
  textShadowColor?: ConditionalValue<UtilityValues["textShadowColor"] | CssVars | AnyString>
  truncate?: ConditionalValue<UtilityValues["truncate"] | CssVars | AnyString>
  backgroundGradient?: ConditionalValue<UtilityValues["backgroundGradient"] | CssVars | AnyString>
+ backgroundLinear?: ConditionalValue<UtilityValues["backgroundLinear"] | CssVars | AnyString>
+ backgroundRadial?: ConditionalValue<string | number | AnyString>
+ backgroundConic?: ConditionalValue<string | number | AnyString>
  textGradient?: ConditionalValue<UtilityValues["textGradient"] | CssVars | AnyString>
  gradientFromPosition?: ConditionalValue<string | number | AnyString>
  gradientToPosition?: ConditionalValue<string | number | AnyString>

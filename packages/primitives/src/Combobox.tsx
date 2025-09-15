@@ -10,7 +10,7 @@ import { forwardRef, type ElementType } from "react";
 import { Combobox, comboboxAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 import { Label } from "./Label";
 import { Text, type TextProps } from "./Text";
 
@@ -147,9 +147,9 @@ const { withProvider, withContext } = createStyleContext(comboboxRecipe);
 
 export type ComboboxVariantProps = RecipeVariantProps<typeof comboboxRecipe>;
 
-export type ComboboxRootProps<T extends Combobox.CollectionItem> = Combobox.RootProps<T> &
-  ComboboxVariantProps &
-  JsxStyleProps & { translations: Combobox.RootProps<T>["translations"] };
+export type ComboboxRootProps<T extends Combobox.CollectionItem> = StyledProps &
+  Combobox.RootProps<T> &
+  ComboboxVariantProps & { translations: Combobox.RootProps<T>["translations"] };
 
 const InternalComboboxRoot = withProvider<ElementType<ComboboxRootProps<Combobox.CollectionItem>>>(
   Combobox.Root,
@@ -165,31 +165,31 @@ export const ComboboxRoot = <T extends Combobox.CollectionItem>({
   return <InternalComboboxRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />;
 };
 
-export type ComboboxClearTriggerProps = Combobox.ClearTriggerProps & JsxStyleProps;
+export type ComboboxClearTriggerProps = Combobox.ClearTriggerProps & StyledProps;
 
 export const ComboboxClearTrigger = withContext(Combobox.ClearTrigger, "clearTrigger", { baseComponent: true });
 
-export type ComboboxContentProps = Combobox.ContentProps & JsxStyleProps;
+export type ComboboxContentProps = Combobox.ContentProps & StyledProps;
 
 export const ComboboxContentStandalone = withContext(Combobox.Content, "content", { baseComponent: true });
 
-export const ComboboxContent = forwardRef<HTMLDivElement, Combobox.ContentProps & JsxStyleProps>((props, ref) => (
+export const ComboboxContent = forwardRef<HTMLDivElement, Combobox.ContentProps & StyledProps>((props, ref) => (
   <ComboboxPositioner>
     <ComboboxContentStandalone ref={ref} {...props} />
   </ComboboxPositioner>
 ));
 
-export type ComboboxControlProps = Combobox.ControlProps & JsxStyleProps;
+export type ComboboxControlProps = Combobox.ControlProps & StyledProps;
 
 export const ComboboxControl = withContext(Combobox.Control, "control", { baseComponent: true });
 
-export type ComboboxInputProps = Combobox.InputProps & JsxStyleProps;
+export type ComboboxInputProps = Combobox.InputProps & StyledProps;
 
 export const ComboboxInput = withContext(Combobox.Input, "input", { baseComponent: true });
 
 const InternalComboboxItemGroupLabel = withContext(Combobox.ItemGroupLabel, "itemGroupLabel");
 
-export type ComboboxItemGroupLabelProps = Combobox.ItemGroupLabelProps & TextProps & JsxStyleProps;
+export type ComboboxItemGroupLabelProps = Combobox.ItemGroupLabelProps & TextProps & StyledProps;
 
 export const ComboboxItemGroupLabel = ({
   children,
@@ -204,21 +204,21 @@ export const ComboboxItemGroupLabel = ({
   </InternalComboboxItemGroupLabel>
 );
 
-export type ComboboxItemGroupProps = Combobox.ItemGroupProps & JsxStyleProps;
+export type ComboboxItemGroupProps = Combobox.ItemGroupProps & StyledProps;
 
 export const ComboboxItemGroup = withContext(Combobox.ItemGroup, "itemGroup", { baseComponent: true });
 
-export type ComboboxItemIndicatorProps = Combobox.ItemIndicatorProps & JsxStyleProps;
+export type ComboboxItemIndicatorProps = Combobox.ItemIndicatorProps & StyledProps;
 
 export const ComboboxItemIndicator = withContext(Combobox.ItemIndicator, "itemIndicator", { baseComponent: true });
 
-export type ComboboxItemProps = Combobox.ItemProps & JsxStyleProps;
+export type ComboboxItemProps = Combobox.ItemProps & StyledProps;
 
 export const ComboboxItem = withContext(Combobox.Item, "item", { baseComponent: true });
 
 const InternalComboboxItemText = withContext(Combobox.ItemText, "itemText");
 
-export type ComboboxItemTextProps = Combobox.ItemTextProps & TextProps & JsxStyleProps;
+export type ComboboxItemTextProps = Combobox.ItemTextProps & TextProps & StyledProps;
 
 export const ComboboxItemText = ({
   textStyle = "label.medium",
@@ -235,7 +235,7 @@ export const ComboboxItemText = ({
 
 const InternalComboboxLabel = withContext(Combobox.Label, "label");
 
-export type ComboboxLabelProps = Combobox.LabelProps & TextProps & JsxStyleProps;
+export type ComboboxLabelProps = Combobox.LabelProps & TextProps & StyledProps;
 
 export const ComboboxLabel = ({ textStyle = "label.medium", fontWeight = "bold", ...props }: ComboboxLabelProps) => (
   <InternalComboboxLabel asChild>
@@ -243,14 +243,14 @@ export const ComboboxLabel = ({ textStyle = "label.medium", fontWeight = "bold",
   </InternalComboboxLabel>
 );
 
-export type ComboboxPositionerProps = Combobox.PositionerProps & JsxStyleProps;
+export type ComboboxPositionerProps = Combobox.PositionerProps & StyledProps;
 
 export const ComboboxPositioner = withContext(Combobox.Positioner, "positioner", { baseComponent: true });
 
-export type ComboboxTriggerProps = Combobox.TriggerProps & JsxStyleProps;
+export type ComboboxTriggerProps = Combobox.TriggerProps & StyledProps;
 
 export const ComboboxTrigger = withContext(Combobox.Trigger, "trigger", { baseComponent: true });
 
-export type ComboboxListProps = Combobox.ListProps & JsxStyleProps;
+export type ComboboxListProps = Combobox.ListProps & StyledProps;
 
 export const ComboboxList = withContext(Combobox.List, "list", { baseComponent: true });

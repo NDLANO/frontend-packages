@@ -10,7 +10,7 @@ import { type ReactNode, forwardRef, useMemo } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
+import type { RecipeVariant, StyledProps } from "@ndla/styled-system/types";
 import { Spinner } from "./Spinner";
 
 export const buttonBaseRecipe = cva({
@@ -255,7 +255,7 @@ type ButtonVariant = Exclude<Variant, "clear" | "clearSubtle">;
 
 export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProps<typeof buttonRecipe>;
 
-export interface BaseButtonProps extends HTMLArkProps<"button">, JsxStyleProps {
+export interface BaseButtonProps extends HTMLArkProps<"button">, StyledProps {
   loading?: boolean;
   loadingContent?: ReactNode;
   replaceContent?: boolean;

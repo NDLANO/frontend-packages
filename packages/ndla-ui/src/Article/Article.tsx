@@ -11,14 +11,14 @@ import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { Stack, styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadge, type ContentType } from "../ContentTypeBadge/ContentTypeBadge";
 import type { Article as ArticleType } from "../types";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
 
-export const ArticleContent = forwardRef<HTMLElement, HTMLArkProps<"div"> & JsxStyleProps>(
+export const ArticleContent = forwardRef<HTMLElement, HTMLArkProps<"div"> & StyledProps>(
   ({ className, ...props }, ref) => (
     <StyledArticleContent className={cx("ndla-article", className)} {...props} ref={ref} />
   ),
@@ -49,9 +49,9 @@ const StyledArticleWrapper = styled(
   { baseComponent: true },
 );
 
-export const ArticleWrapper = forwardRef<HTMLElement, ComponentPropsWithRef<"article"> & JsxStyleProps>(
-  (props, ref) => <StyledArticleWrapper data-ndla-article="" ref={ref} {...props} />,
-);
+export const ArticleWrapper = forwardRef<HTMLElement, ComponentPropsWithRef<"article"> & StyledProps>((props, ref) => (
+  <StyledArticleWrapper data-ndla-article="" ref={ref} {...props} />
+));
 
 export const ArticleHGroup = styled(
   ark.hgroup,

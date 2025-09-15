@@ -10,12 +10,12 @@ import { forwardRef } from "react";
 import { Field, Fieldset } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import type { TextProps } from "./Text";
 
 const StyledFieldHelper = styled(Field.HelperText, {}, { baseComponent: true });
 
-export type FieldHelperProps = Field.HelperTextProps & TextProps & JsxStyleProps;
+export type FieldHelperProps = Field.HelperTextProps & TextProps & StyledProps;
 
 export const FieldHelper = forwardRef<HTMLSpanElement, FieldHelperProps>(
   ({ textStyle = "label.small", fontWeight, color, srOnly, css: cssProp, ...props }, ref) => {
@@ -25,7 +25,7 @@ export const FieldHelper = forwardRef<HTMLSpanElement, FieldHelperProps>(
 
 const StyledFieldsetHelper = styled(Fieldset.HelperText, {}, { baseComponent: true });
 
-export type FieldsetHelperProps = Fieldset.HelperTextProps & TextProps & JsxStyleProps;
+export type FieldsetHelperProps = Fieldset.HelperTextProps & TextProps & StyledProps;
 
 export const FieldsetHelper = forwardRef<HTMLSpanElement, FieldsetHelperProps>(
   ({ textStyle = "label.small", fontWeight, color, srOnly, css: cssProp, ...props }, ref) => {

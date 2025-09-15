@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { Dialog, dialogAnatomy, useDialog as _useDialog } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext, styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Heading, Text, type TextProps } from "./Text";
 
 const dialogRecipe = sva({
@@ -324,7 +324,7 @@ export const DialogStandaloneContent = withContext(Dialog.Content, "content", { 
 
 export const DialogPositioner = withContext(Dialog.Positioner, "positioner", { baseComponent: true });
 
-export const DialogContent = forwardRef<HTMLDivElement, Dialog.ContentProps & JsxStyleProps>((props, ref) => (
+export const DialogContent = forwardRef<HTMLDivElement, Dialog.ContentProps & StyledProps>((props, ref) => (
   <>
     <DialogBackdrop />
     <DialogPositioner>
@@ -339,7 +339,7 @@ export const DialogDescription = ({
   textStyle = "body.large",
   children,
   ...rest
-}: Dialog.DescriptionProps & TextProps & JsxStyleProps) => {
+}: Dialog.DescriptionProps & TextProps & StyledProps) => {
   return (
     <InternalDialogDescription asChild>
       <Text textStyle={textStyle} {...rest}>
@@ -355,7 +355,7 @@ export const DialogTitle = ({
   textStyle = "title.medium",
   children,
   ...rest
-}: Dialog.TitleProps & TextProps & JsxStyleProps) => (
+}: Dialog.TitleProps & TextProps & StyledProps) => (
   <InternalDialogTitle asChild>
     <Heading textStyle={textStyle} {...rest}>
       {children}

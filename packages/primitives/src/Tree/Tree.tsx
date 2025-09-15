@@ -16,7 +16,7 @@ import {
 } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "../Text";
 
 const treeRecipe = sva({
@@ -112,15 +112,15 @@ const treeRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(treeRecipe);
 
-export type TreeRootProps<T extends TreeNode = TreeNode> = TreeView.RootProps<T> & JsxStyleProps;
+export type TreeRootProps<T extends TreeNode = TreeNode> = TreeView.RootProps<T> & StyledProps;
 
 const InternalTreeRoot = withProvider<ElementType<TreeRootProps>>(TreeView.Root, "root", { baseComponent: true });
 
 export const TreeRoot = <T extends TreeNode = TreeNode>(props: TreeRootProps<T>) => <InternalTreeRoot {...props} />;
 
-export type TreeRootProviderProps<T extends TreeNode = TreeNode> = TreeView.RootProviderProps<T> & JsxStyleProps;
+export type TreeRootProviderProps<T extends TreeNode = TreeNode> = TreeView.RootProviderProps<T> & StyledProps;
 
-const InternalTreeRootProvider = withProvider<ElementType<TreeRootProviderProps & JsxStyleProps>>(
+const InternalTreeRootProvider = withProvider<ElementType<TreeRootProviderProps & StyledProps>>(
   TreeView.RootProvider,
   "root",
 );
@@ -141,7 +141,7 @@ export const TreeBranch = withContext(TreeView.Branch, "branch", {
 
 const InternalTreeBranchText = withContext(TreeView.BranchText, "branchText", { baseComponent: true });
 
-export const TreeBranchText = forwardRef<HTMLDivElement, TreeView.BranchTextProps & TextProps & JsxStyleProps>(
+export const TreeBranchText = forwardRef<HTMLDivElement, TreeView.BranchTextProps & TextProps & StyledProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", children, ...props }, ref) => (
     <InternalTreeBranchText asChild {...props} ref={ref}>
       <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>
@@ -159,7 +159,7 @@ export const TreeItem = withContext(TreeView.Item, "item", { baseComponent: true
 
 const InternalTreeItemText = withContext(TreeView.ItemText, "itemText", { baseComponent: true });
 
-export const TreeItemText = forwardRef<HTMLDivElement, TreeView.ItemTextProps & TextProps & JsxStyleProps>(
+export const TreeItemText = forwardRef<HTMLDivElement, TreeView.ItemTextProps & TextProps & StyledProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", children, ...props }, ref) => (
     <InternalTreeItemText asChild {...props} ref={ref}>
       <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>
@@ -171,7 +171,7 @@ export const TreeItemText = forwardRef<HTMLDivElement, TreeView.ItemTextProps & 
 
 const InternalTreeLabel = withContext(TreeView.Label, "label", { baseComponent: true });
 
-export const TreeLabel = forwardRef<HTMLDivElement, TreeView.LabelProps & TextProps & JsxStyleProps>(
+export const TreeLabel = forwardRef<HTMLDivElement, TreeView.LabelProps & TextProps & StyledProps>(
   ({ children, textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
     <InternalTreeLabel asChild {...props} ref={ref}>
       <Text textStyle={textStyle} fontWeight={fontWeight} asChild consumeCss>

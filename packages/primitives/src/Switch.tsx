@@ -9,7 +9,7 @@
 import { Switch, switchAnatomy } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "./Text";
 
 const switchRecipe = sva({
@@ -113,7 +113,7 @@ const { withProvider, withContext } = createStyleContext(switchRecipe);
 
 export type SwitchVariantProps = RecipeVariantProps<typeof switchRecipe>;
 
-export type SwitchRootProps = Switch.RootProps & JsxStyleProps & SwitchVariantProps;
+export type SwitchRootProps = Switch.RootProps & StyledProps & SwitchVariantProps;
 
 export const SwitchRoot = withProvider(Switch.Root, "root", { baseComponent: true });
 
@@ -127,7 +127,7 @@ export const SwitchLabel = ({
   textStyle = "label.medium",
   children,
   ...props
-}: Switch.LabelProps & TextProps & JsxStyleProps) => (
+}: Switch.LabelProps & TextProps & StyledProps) => (
   <InternalSwitchLabel asChild {...props}>
     <Text asChild consumeCss textStyle={textStyle}>
       <span>{children}</span>

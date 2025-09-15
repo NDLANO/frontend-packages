@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 export const spinnerRecipe = cva({
   base: {
@@ -52,7 +52,7 @@ export const spinnerRecipe = cva({
 
 export type SpinnerVariantProps = RecipeVariantProps<typeof spinnerRecipe>;
 
-export type SpinnerProps = HTMLArkProps<"div"> & JsxStyleProps & SpinnerVariantProps;
+export type SpinnerProps = HTMLArkProps<"div"> & StyledProps & SpinnerVariantProps;
 
 const StyledSpinner = styled(ark.div, {}, { baseComponent: true });
 

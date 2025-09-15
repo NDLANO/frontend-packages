@@ -9,7 +9,7 @@
 import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, StyledVariantProps } from "@ndla/styled-system/types";
+import type { StyledProps, StyledVariantProps } from "@ndla/styled-system/types";
 
 export interface ImageCrop {
   startX: number;
@@ -60,7 +60,7 @@ const FALLBACK_WIDTH = 1024;
 
 const FALLBACK_SIZES = "(min-width: 1024px) 1024px, 100vw";
 
-export interface PictureProps extends JsxStyleProps, ComponentPropsWithRef<"picture"> {
+export interface PictureProps extends StyledProps, ComponentPropsWithRef<"picture"> {
   src: string;
   sizes?: string;
   contentType?: string;
@@ -122,7 +122,7 @@ const StyledFallbackElement = styled(
 
 type ImageVariantProps = StyledVariantProps<typeof StyledImage>;
 
-export interface ImgProps extends JsxStyleProps, ComponentPropsWithRef<"img">, ImageVariantProps {
+export interface ImgProps extends StyledProps, ComponentPropsWithRef<"img">, ImageVariantProps {
   alt: string;
   src: string;
   fallbackWidth?: number;
@@ -141,7 +141,7 @@ export const Img = forwardRef<HTMLImageElement, ImgProps>(
   },
 );
 
-export interface ImageProps extends JsxStyleProps, ComponentPropsWithRef<"img">, ImageVariantProps {
+export interface ImageProps extends StyledProps, ComponentPropsWithRef<"img">, ImageVariantProps {
   alt: string;
   src?: string;
   sizes?: string;

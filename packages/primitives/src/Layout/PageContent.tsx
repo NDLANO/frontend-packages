@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const pageRecipe = cva({
   base: {
@@ -80,7 +80,7 @@ const StyledPageContent = styled(ark.div, {}, { baseComponent: true });
 
 export type PageContentVariantProps = RecipeVariantProps<typeof pageRecipe>;
 
-export const PageContent = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & PageContentVariantProps & JsxStyleProps>(
+export const PageContent = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & PageContentVariantProps & StyledProps>(
   ({ variant, gutters, css: cssProp, ...props }, ref) => (
     <StyledPageContent css={css.raw(pageRecipe.raw({ variant, gutters }), cssProp)} ref={ref} {...props} />
   ),

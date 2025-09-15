@@ -6,12 +6,12 @@
  *
  */
 
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { render } from "@testing-library/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 describe("CSS prop forwarding", () => {
   test("Should have a sane default", () => {
@@ -336,7 +336,7 @@ describe("CSS prop forwarding", () => {
   });
 
   test("should allow for automatically merging complex components", () => {
-    const Text = ({ children, css: cssProp, ...rest }: HTMLArkProps<"div"> & JsxStyleProps) => {
+    const Text = ({ children, css: cssProp, ...rest }: HTMLArkProps<"div"> & StyledProps) => {
       return (
         <styled.p className={css({ textStyle: "heading.large", display: "block" }, cssProp)} {...rest}>
           {children}
@@ -456,7 +456,7 @@ describe("CSS prop forwarding", () => {
       { baseComponent: true },
     );
 
-    const Text = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(
+    const Text = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & StyledProps>(
       ({ children, css: cssProp, ...rest }, ref) => {
         return (
           <StyledBase css={css.raw({ textStyle: "heading.large" }, cssProp)} {...rest} ref={ref}>
@@ -472,7 +472,7 @@ describe("CSS prop forwarding", () => {
       },
     });
 
-    const LinkText = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(
+    const LinkText = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & StyledProps>(
       ({ children, css: cssProp, ...rest }, ref) => {
         return (
           <StyledText css={css.raw({ textStyle: "body.articleLink" }, cssProp)} {...rest} ref={ref}>

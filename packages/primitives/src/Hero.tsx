@@ -9,7 +9,7 @@
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const heroRecipe = sva({
   slots: ["root", "background", "content"],
@@ -114,14 +114,14 @@ export type HeroVariantProps = RecipeVariantProps<typeof heroRecipe>;
 
 export type HeroVariant = NonNullable<HeroVariantProps>["variant"];
 
-export type HeroProps = HTMLArkProps<"div"> & JsxStyleProps & HeroVariantProps;
+export type HeroProps = HTMLArkProps<"div"> & StyledProps & HeroVariantProps;
 
 export const Hero = withProvider(ark.div, "root", { baseComponent: true });
 
-export type HeroBackgroundProps = HTMLArkProps<"div"> & JsxStyleProps;
+export type HeroBackgroundProps = HTMLArkProps<"div"> & StyledProps;
 
 export const HeroBackground = withContext(ark.div, "background", { baseComponent: true });
 
-export type HeroContentProps = HTMLArkProps<"div"> & JsxStyleProps;
+export type HeroContentProps = HTMLArkProps<"div"> & StyledProps;
 
 export const HeroContent = withContext(ark.div, "content", { baseComponent: true });

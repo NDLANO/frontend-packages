@@ -10,7 +10,7 @@ import { forwardRef, type ComponentType } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { Image, type ImageProps } from "../Image";
 import { Heading, type TextProps } from "../Text";
 
@@ -185,7 +185,7 @@ export type ListItemVariantProps = NonNullable<RecipeVariantProps<typeof listIte
 
 type NonInteractiveListItemVariantProps = Omit<ListItemVariantProps, "colorTheme">;
 
-interface BaseListItemProps extends HTMLArkProps<"div">, JsxStyleProps {
+interface BaseListItemProps extends HTMLArkProps<"div">, StyledProps {
   nonInteractive?: true | false;
 }
 

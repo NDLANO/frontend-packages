@@ -9,7 +9,7 @@
 import { toggleGroupAnatomy, ToggleGroup } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const toggleGroupRecipe = sva({
   slots: toggleGroupAnatomy.keys(),
@@ -25,10 +25,10 @@ const toggleGroupRecipe = sva({
 const { withProvider, withContext } = createStyleContext(toggleGroupRecipe);
 
 export type ToggleGroupVariantProps = RecipeVariantProps<typeof toggleGroupRecipe>;
-export type ToggleGroupRootProps = ToggleGroup.RootProps & JsxStyleProps & ToggleGroupVariantProps;
+export type ToggleGroupRootProps = ToggleGroup.RootProps & StyledProps & ToggleGroupVariantProps;
 
 export const ToggleGroupRoot = withProvider(ToggleGroup.Root, "root", { baseComponent: true });
 
-export type ToggleGroupItemProps = ToggleGroup.ItemProps & JsxStyleProps;
+export type ToggleGroupItemProps = ToggleGroup.ItemProps & StyledProps;
 
 export const ToggleGroupItem = withContext(ToggleGroup.Item, "item", { baseComponent: true });

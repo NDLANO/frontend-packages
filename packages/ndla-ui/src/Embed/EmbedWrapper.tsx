@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const embedWrapperRecipe = cva({
   base: {
@@ -35,7 +35,7 @@ const embedWrapperRecipe = cva({
 
 export type EmbedWrapperVariantProps = RecipeVariantProps<typeof embedWrapperRecipe>;
 
-export type EmbedWrapperProps = HTMLArkProps<"div"> & JsxStyleProps & EmbedWrapperVariantProps;
+export type EmbedWrapperProps = HTMLArkProps<"div"> & StyledProps & EmbedWrapperVariantProps;
 
 const StyledEmbedWrapper = styled(ark.div, {}, { baseComponent: true });
 

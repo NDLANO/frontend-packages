@@ -9,7 +9,7 @@
 import { Slider, sliderAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Label } from "./Label";
 import { type TextProps } from "./Text";
 
@@ -84,7 +84,7 @@ const sliderRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(sliderRecipe);
 
-export type SliderRootProps = Slider.RootProps & JsxStyleProps;
+export type SliderRootProps = Slider.RootProps & StyledProps;
 
 export const SliderRoot = withProvider(Slider.Root, "root", { baseComponent: true });
 
@@ -98,10 +98,7 @@ export const SliderThumb = withContext(Slider.Thumb, "thumb", { baseComponent: t
 
 const InternalSliderLabel = withContext(Slider.Label, "label");
 
-export const SliderLabel = ({
-  textStyle = "label.medium",
-  ...props
-}: Slider.LabelProps & TextProps & JsxStyleProps) => (
+export const SliderLabel = ({ textStyle = "label.medium", ...props }: Slider.LabelProps & TextProps & StyledProps) => (
   <InternalSliderLabel asChild>
     <Label textStyle={textStyle} {...props} />
   </InternalSliderLabel>

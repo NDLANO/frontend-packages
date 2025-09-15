@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Heading, Text, type TextProps } from "../Text";
 
 const errorMessageRecipe = sva({
@@ -51,13 +51,13 @@ export const ErrorMessageContent = withContext(ark.div, "content", { baseCompone
 
 export const ErrorMessageActions = withContext(ark.div, "actions", { baseComponent: true });
 
-const InternalErrorMessageTitle = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & JsxStyleProps & TextProps>(
+const InternalErrorMessageTitle = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & StyledProps & TextProps>(
   ({ textStyle = "heading.small", ...props }, ref) => <Heading textStyle={textStyle} {...props} ref={ref} />,
 );
 
 export const ErrorMessageTitle = withContext(InternalErrorMessageTitle, "title");
 
-const InternalErrorMessageDescription = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & JsxStyleProps & TextProps>(
+const InternalErrorMessageDescription = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & StyledProps & TextProps>(
   ({ textStyle = "body.xlarge", ...props }, ref) => <Text textStyle={textStyle} {...props} ref={ref} />,
 );
 

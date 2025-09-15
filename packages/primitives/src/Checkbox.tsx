@@ -6,10 +6,10 @@
  *
  */
 
-import { Checkbox, checkboxAnatomy } from "@ark-ui/react";
+import { Checkbox, checkboxAnatomy, type HTMLArkProps } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "./Text";
 
 const checkboxRecipe = sva({
@@ -221,11 +221,9 @@ const { withProvider, withContext } = createStyleContext(checkboxRecipe);
 
 export type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
 
-export type CheckboxRootProps = Checkbox.RootProps & CheckboxVariantProps & JsxStyleProps;
+export type CheckboxRootProps = StyledProps & HTMLArkProps<"label"> & CheckboxVariantProps;
 
-export const CheckboxRoot = withProvider(Checkbox.Root, "root", {
-  baseComponent: true,
-});
+export const CheckboxRoot = withProvider(Checkbox.Root, "root", { baseComponent: true });
 
 export const CheckboxIndicator = withContext(Checkbox.Indicator, "indicator", { baseComponent: true });
 
@@ -235,7 +233,7 @@ export const CheckboxLabel = ({
   textStyle = "label.medium",
   children,
   ...props
-}: Checkbox.LabelProps & TextProps & JsxStyleProps) => (
+}: StyledProps & Checkbox.LabelProps & TextProps) => (
   <InternalCheckboxLabel {...props} asChild>
     <Text textStyle={textStyle}>{children}</Text>
   </InternalCheckboxLabel>

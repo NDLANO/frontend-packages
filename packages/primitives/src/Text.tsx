@@ -6,12 +6,12 @@
  *
  */
 
-import { forwardRef, type ComponentType } from "react";
+import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";
-import type { HTMLStyledProps, UtilityValues } from "@ndla/styled-system/types";
+import type { StyledProps, UtilityValues } from "@ndla/styled-system/types";
 
 export interface TextProps {
   textStyle?: UtilityValues["textStyle"];
@@ -22,7 +22,7 @@ export interface TextProps {
 
 const StyledP = styled(ark.p, {}, { baseComponent: true });
 
-export const Text = forwardRef<HTMLParagraphElement, HTMLStyledProps<ComponentType<HTMLArkProps<"p"> & TextProps>>>(
+export const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & StyledProps & TextProps>(
   ({ textStyle = "body.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
     <StyledP css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} ref={ref} {...rest} />
   ),
@@ -30,7 +30,7 @@ export const Text = forwardRef<HTMLParagraphElement, HTMLStyledProps<ComponentTy
 
 const StyledH1 = styled(ark.h1, {}, { baseComponent: true });
 
-export const Heading = forwardRef<HTMLHeadingElement, HTMLStyledProps<ComponentType<HTMLArkProps<"h1"> & TextProps>>>(
+export const Heading = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & StyledProps & TextProps>(
   ({ textStyle = "heading.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
     <StyledH1 css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} ref={ref} {...rest} />
   ),

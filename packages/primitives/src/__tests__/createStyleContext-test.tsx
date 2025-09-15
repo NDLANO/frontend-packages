@@ -11,7 +11,7 @@ import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { render } from "@testing-library/react";
 import { css, sva } from "@ndla/styled-system/css";
 import { createStyleContext, styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const svaA = sva({
   slots: ["root", "child"],
@@ -453,11 +453,9 @@ describe("createStyleContext", () => {
   test("correctly consumes css when merging a complex styled component onto a primitive", () => {
     const TextComponent = styled(ark.p, {}, { baseComponent: true });
 
-    const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & JsxStyleProps>(
-      ({ css: cssProp, ...rest }, ref) => {
-        return <TextComponent css={css.raw({ display: "block" }, cssProp)} ref={ref} {...rest} />;
-      },
-    );
+    const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & StyledProps>(({ css: cssProp, ...rest }, ref) => {
+      return <TextComponent css={css.raw({ display: "block" }, cssProp)} ref={ref} {...rest} />;
+    });
 
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 

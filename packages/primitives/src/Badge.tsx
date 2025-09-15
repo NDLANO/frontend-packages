@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const badgeRecipe = cva({
   base: {
@@ -70,7 +70,7 @@ export type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipe>;
 
 export type BadgeVariant = NonNullable<BadgeVariantProps>["colorTheme"];
 
-export type BadgeProps = HTMLArkProps<"div"> & JsxStyleProps & BadgeVariantProps;
+export type BadgeProps = StyledProps & HTMLArkProps<"div"> & BadgeVariantProps;
 
 const StyledBadge = styled(ark.div, {}, { baseComponent: true });
 

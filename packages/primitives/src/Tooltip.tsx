@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { Tooltip, tooltipAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const tooltipRecipe = sva({
   slots: tooltipAnatomy.keys(),
@@ -50,7 +50,7 @@ export const TooltipArrowTip = withContext(Tooltip.ArrowTip, "arrowTip", { baseC
 
 export const TooltipContentStandalone = withContext(Tooltip.Content, "content", { baseComponent: true });
 
-export const TooltipContent = forwardRef<HTMLDivElement, JsxStyleProps & Tooltip.ContentProps>(
+export const TooltipContent = forwardRef<HTMLDivElement, StyledProps & Tooltip.ContentProps>(
   ({ children, ...props }, ref) => (
     <TooltipPositioner>
       <TooltipContentStandalone {...props} ref={ref}>

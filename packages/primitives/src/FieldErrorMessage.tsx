@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { Field, Fieldset } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, SystemStyleObject } from "@ndla/styled-system/types";
+import type { StyledProps, SystemStyleObject } from "@ndla/styled-system/types";
 import type { TextProps } from "./Text";
 
 const errorTextStyling: SystemStyleObject = {
@@ -27,7 +27,7 @@ const StyledFieldErrorText = styled(
   { baseComponent: true },
 );
 
-export type FieldErrorMessageProps = Field.ErrorTextProps & TextProps & JsxStyleProps;
+export type FieldErrorMessageProps = Field.ErrorTextProps & TextProps & StyledProps;
 
 export const FieldErrorMessage = forwardRef<HTMLSpanElement, FieldErrorMessageProps>(
   ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => (
@@ -43,7 +43,7 @@ const StyledFieldsetErrorText = styled(
   { baseComponent: true },
 );
 
-export type FieldsetErrorTextProps = Fieldset.ErrorTextProps & TextProps & JsxStyleProps;
+export type FieldsetErrorTextProps = Fieldset.ErrorTextProps & TextProps & StyledProps;
 
 export const FieldsetErrorText = forwardRef<HTMLSpanElement, FieldsetErrorTextProps>(
   ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => (

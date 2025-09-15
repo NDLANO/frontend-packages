@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { ark, RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext, styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "./Text";
 
 const radioGroupRecipe = sva({
@@ -94,7 +94,7 @@ const radioGroupRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(radioGroupRecipe);
 
-export interface RadioGroupRootProps extends RadioGroup.RootProps, JsxStyleProps {}
+export interface RadioGroupRootProps extends RadioGroup.RootProps, StyledProps {}
 
 export const RadioGroupRoot = withProvider(RadioGroup.Root, "root", {
   baseComponent: true,
@@ -116,7 +116,7 @@ export const RadioGroupItemText = ({
   asChild,
   consumeCss,
   ...props
-}: RadioGroup.ItemTextProps & TextProps & JsxStyleProps) => (
+}: RadioGroup.ItemTextProps & TextProps & StyledProps) => (
   <InternalRadioGroupItemText asChild>
     <Text asChild consumeCss textStyle={textStyle} {...props}>
       <InnerRadioGroupItemText asChild={asChild} consumeCss={consumeCss}>
@@ -130,7 +130,7 @@ export const InternalRadioGroupLabel = withContext(RadioGroup.Label, "label");
 
 const InnerRadioGroupLabel = styled(ark.div, {}, { baseComponent: true });
 
-export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroup.LabelProps & TextProps & JsxStyleProps>(
+export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroup.LabelProps & TextProps & StyledProps>(
   ({ textStyle = "label.large", fontWeight = "bold", children, asChild, consumeCss, ...props }, ref) => (
     <InternalRadioGroupLabel {...props} asChild ref={ref}>
       <Text textStyle={textStyle} fontWeight={fontWeight} asChild>

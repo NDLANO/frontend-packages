@@ -9,7 +9,7 @@
 import { forwardRef } from "react";
 import { type HTMLArkProps } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { PageContent, type PageContentVariantProps } from "./PageContent";
 
 const pageContainerRecipe = cva({
@@ -38,7 +38,7 @@ const pageContainerRecipe = cva({
 export type PageContainerVariantProps = RecipeVariantProps<typeof pageContainerRecipe>;
 
 export type PageContainerProps = HTMLArkProps<"div"> &
-  JsxStyleProps &
+  StyledProps &
   PageContentVariantProps &
   PageContainerVariantProps;
 

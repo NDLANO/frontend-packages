@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
+import type { RecipeVariant, StyledProps } from "@ndla/styled-system/types";
 
 const figureRecipe = cva({
   base: {
@@ -113,7 +113,7 @@ export type FigureSize = RecipeVariant<typeof figureRecipe>["size"];
 
 export type FigureFloat = RecipeVariant<typeof figureRecipe>["float"];
 
-export type FigureProps = HTMLArkProps<"figure"> & JsxStyleProps & FigureVariantProps;
+export type FigureProps = HTMLArkProps<"figure"> & StyledProps & FigureVariantProps;
 
 const StyledFigure = styled(ark.figure, {}, { baseComponent: true });
 

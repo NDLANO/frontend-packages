@@ -9,7 +9,7 @@
 import { Tabs } from "@ark-ui/react";
 import { type RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const tabsRecipe = sva({
   // TODO: This still doesn't work. Need to figure out why we need to pass keys manually.
@@ -222,7 +222,7 @@ interface RootProps extends Tabs.RootProps {
   translations: Tabs.RootProps["translations"];
 }
 
-export type TabsRootProps = RootProps & TabsVariantProps & JsxStyleProps;
+export type TabsRootProps = RootProps & TabsVariantProps & StyledProps;
 
 const InternalTabsRoot = withProvider(Tabs.Root, "root", { baseComponent: true });
 
@@ -238,6 +238,6 @@ export const TabsList = withContext(Tabs.List, "list", { baseComponent: true });
 
 const InternalTabsTrigger = withContext(Tabs.Trigger, "trigger", { baseComponent: true });
 
-export const TabsTrigger = ({ className, ...props }: Tabs.TriggerProps & JsxStyleProps) => (
+export const TabsTrigger = ({ className, ...props }: Tabs.TriggerProps & StyledProps) => (
   <InternalTabsTrigger className={cx("peer", className)} {...props} />
 );

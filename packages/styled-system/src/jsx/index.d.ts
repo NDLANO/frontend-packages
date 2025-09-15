@@ -22,4 +22,4 @@ export * from './float';
 export * from './bleed';
 export * from './visually-hidden';
 export * from './cq';
-export type { HTMLStyledProps, StyledComponent } from '../types/jsx';
+export type { HTMLStyledProps, StyledComponent, StyledProps } from '../types/jsx';

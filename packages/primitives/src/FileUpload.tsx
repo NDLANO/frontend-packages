@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { type Assign, FileUpload, fileUploadAnatomy } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Label } from "./Label";
 import { type TextProps, Text } from "./Text";
 
@@ -124,21 +124,20 @@ export const FileUploadItemPreviewImage = withContext(FileUpload.ItemPreviewImag
 
 const InternalFileUploadItemName = withContext(FileUpload.ItemName, "itemName", { baseComponent: true });
 
-export const FileUploadItemName = forwardRef<
-  HTMLDivElement,
-  Assign<FileUpload.ItemNameProps, TextProps & JsxStyleProps>
->(({ textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
-  <Text textStyle={textStyle} fontWeight={fontWeight} asChild {...props} ref={ref}>
-    {/* Do not use children here whatsoever. The component falls back to the file name only if no children are passed in. It should be up to the consumer if they want to pass in children. */}
-    <InternalFileUploadItemName />
-  </Text>
-));
+export const FileUploadItemName = forwardRef<HTMLDivElement, Assign<FileUpload.ItemNameProps, TextProps & StyledProps>>(
+  ({ textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
+    <Text textStyle={textStyle} fontWeight={fontWeight} asChild {...props} ref={ref}>
+      {/* Do not use children here whatsoever. The component falls back to the file name only if no children are passed in. It should be up to the consumer if they want to pass in children. */}
+      <InternalFileUploadItemName />
+    </Text>
+  ),
+);
 
 const InternalFileUploadItemSizeText = withContext(FileUpload.ItemSizeText, "itemSizeText", { baseComponent: true });
 
 export const FileUploadItemSizeText = forwardRef<
   HTMLDivElement,
-  Assign<FileUpload.ItemSizeTextProps, TextProps & JsxStyleProps>
+  Assign<FileUpload.ItemSizeTextProps, TextProps & StyledProps>
 >(({ textStyle = "label.small", ...props }, ref) => (
   <Text textStyle={textStyle} ref={ref} asChild {...props}>
     <InternalFileUploadItemSizeText />
@@ -147,7 +146,7 @@ export const FileUploadItemSizeText = forwardRef<
 
 const InternalFileUploadLabel = withContext(FileUpload.Label, "label");
 
-export const FileUploadLabel = forwardRef<HTMLLabelElement, Assign<FileUpload.LabelProps, JsxStyleProps & TextProps>>(
+export const FileUploadLabel = forwardRef<HTMLLabelElement, Assign<FileUpload.LabelProps, StyledProps & TextProps>>(
   ({ textStyle = "label.medium", fontWeight = "light", children, ...props }, ref) => (
     <InternalFileUploadLabel ref={ref} asChild>
       <Label textStyle={textStyle} fontWeight={fontWeight} {...props}>

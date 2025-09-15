@@ -9,8 +9,7 @@
 import { forwardRef } from "react";
 import { DatePicker, datePickerAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import { createStyleContext, type StyledProps } from "@ndla/styled-system/jsx";
 import { Label } from "./Label";
 import type { TextProps } from "./Text";
 
@@ -83,7 +82,7 @@ const datePickerRecipe = sva({
 });
 const { withProvider, withContext } = createStyleContext(datePickerRecipe);
 
-export interface DatePickerRootProps extends DatePicker.RootProps, JsxStyleProps {
+export interface DatePickerRootProps extends DatePicker.RootProps, StyledProps {
   translations: DatePicker.RootProps["translations"];
   locale: DatePicker.RootProps["locale"];
 }
@@ -94,7 +93,7 @@ export const DatePickerClearTrigger = withContext(DatePicker.ClearTrigger, "clea
   baseComponent: true,
 });
 
-export const DatePickerContent = forwardRef<HTMLDivElement, DatePicker.ContentProps & JsxStyleProps>((props, ref) => (
+export const DatePickerContent = forwardRef<HTMLDivElement, DatePicker.ContentProps & StyledProps>((props, ref) => (
   <DatePickerPositioner>
     <DatePickerStandaloneContent {...props} ref={ref} />
   </DatePickerPositioner>
@@ -106,7 +105,7 @@ export const DatePickerControl = withContext(DatePicker.Control, "control", { ba
 
 export const DatePickerInput = withContext(DatePicker.Input, "input", { baseComponent: true });
 
-interface DatePickerLabelProps extends DatePicker.LabelProps, JsxStyleProps {}
+interface DatePickerLabelProps extends DatePicker.LabelProps, StyledProps {}
 
 const InternalDatePickerLabel = withContext(DatePicker.Label, "label");
 
@@ -122,7 +121,7 @@ export const DatePickerLabel = ({
 
 export const DatePickerMonthSelect = withContext(DatePicker.MonthSelect, "monthSelect", { baseComponent: true });
 
-interface DatePickerNextTrigger extends DatePicker.NextTriggerProps, JsxStyleProps {}
+interface DatePickerNextTrigger extends DatePicker.NextTriggerProps, StyledProps {}
 
 export const DatePickerNextTrigger = withContext(DatePicker.NextTrigger, "nextTrigger", { baseComponent: true });
 

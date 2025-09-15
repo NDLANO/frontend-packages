@@ -71,5 +71,6 @@ export type JsxElements = {
 export type Styled = JsxFactory & JsxElements
 
 export type HTMLStyledProps<T extends ElementType> = JsxHTMLProps<ComponentProps<T> & UnstyledProps & AsProps, JsxStyleProps>
+export interface StyledProps extends UnstyledProps, AsProps, JsxStyleProps {}
 
 export type StyledVariantProps<T extends StyledComponent<any, any>> = T extends StyledComponent<any, infer Props> ? Props : never

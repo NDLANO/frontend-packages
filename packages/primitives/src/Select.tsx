@@ -10,7 +10,7 @@ import { forwardRef, type ElementType } from "react";
 import { Select, selectAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Label } from "./Label";
 import { type TextProps } from "./Text";
 
@@ -146,7 +146,7 @@ const selectRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(selectRecipe);
 
-export type SelectRootProps<T extends Select.CollectionItem> = Select.RootProps<T> & JsxStyleProps;
+export type SelectRootProps<T extends Select.CollectionItem> = Select.RootProps<T> & StyledProps;
 const InternalSelectRoot = withProvider<ElementType<SelectRootProps<Select.CollectionItem>>>(Select.Root, "root", {
   baseComponent: true,
 });
@@ -161,7 +161,7 @@ export const SelectClearTrigger = withContext(Select.ClearTrigger, "clearTrigger
 
 export const SelectContentStandalone = withContext(Select.Content, "content", { baseComponent: true });
 
-export const SelectContent = forwardRef<HTMLDivElement, Select.ContentProps & JsxStyleProps>((props, ref) => (
+export const SelectContent = forwardRef<HTMLDivElement, Select.ContentProps & StyledProps>((props, ref) => (
   <SelectPositioner>
     <SelectContentStandalone ref={ref} {...props} />
   </SelectPositioner>
@@ -171,7 +171,7 @@ export const SelectControl = withContext(Select.Control, "control", { baseCompon
 
 export const SelectIndicator = withContext(Select.Indicator, "indicator", { baseComponent: true });
 
-export const SelectItemGroupLabel = forwardRef<HTMLDivElement, Select.ItemGroupLabelProps & JsxStyleProps & TextProps>(
+export const SelectItemGroupLabel = forwardRef<HTMLDivElement, Select.ItemGroupLabelProps & StyledProps & TextProps>(
   ({ children, ...props }, ref) => (
     <InternalSelectItemGroupLabel asChild ref={ref} {...props}>
       <Label asChild consumeCss>
@@ -195,7 +195,7 @@ export const SelectItemText = withContext(Select.ItemText, "itemText", { baseCom
 
 const InternalSelectLabel = withContext(Select.Label, "label");
 
-export const SelectLabel = forwardRef<HTMLLabelElement, Select.LabelProps & JsxStyleProps & TextProps>(
+export const SelectLabel = forwardRef<HTMLLabelElement, Select.LabelProps & StyledProps & TextProps>(
   ({ children, ...props }, ref) => (
     <InternalSelectLabel asChild ref={ref} {...props}>
       <Label>{children}</Label>

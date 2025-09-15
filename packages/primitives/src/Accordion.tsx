@@ -9,7 +9,7 @@
 import { Accordion, accordionAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 
 const accordionRecipe = sva({
   slots: accordionAnatomy.keys(),
@@ -126,7 +126,7 @@ const { withProvider, withContext } = createStyleContext(accordionRecipe);
 
 export type AccordionVariantProps = RecipeVariantProps<typeof accordionRecipe>;
 
-export interface AccordionRootProps extends JsxStyleProps, Accordion.RootProps {}
+export interface AccordionRootProps extends StyledProps, Accordion.RootProps {}
 
 export const AccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
 
@@ -134,7 +134,7 @@ export const AccordionItemContent = withContext(Accordion.ItemContent, "itemCont
 
 export const AccordionItemIndicator = withContext(Accordion.ItemIndicator, "itemIndicator", { baseComponent: true });
 
-export interface AccordionItemProps extends JsxStyleProps, Accordion.ItemProps {}
+export interface AccordionItemProps extends StyledProps, Accordion.ItemProps {}
 
 export const AccordionItem = withContext(Accordion.Item, "item", { baseComponent: true });
 

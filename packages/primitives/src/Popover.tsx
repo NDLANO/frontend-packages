@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { Popover, popoverAnatomy, usePopover as _usePopover } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Heading, type TextProps } from "./Text";
 
 const popoverRecipe = sva({
@@ -62,7 +62,7 @@ export const PopoverAnchor = withContext(Popover.Anchor, "anchor", { baseCompone
 
 export const PopoverArrowStandalone = withContext(Popover.Arrow, "arrow", { baseComponent: true });
 
-export const PopoverArrow = (props: Popover.ArrowTipProps & JsxStyleProps) => (
+export const PopoverArrow = (props: Popover.ArrowTipProps & StyledProps) => (
   <PopoverArrowStandalone>
     <PopoverArrowTip {...props} />
   </PopoverArrowStandalone>
@@ -74,7 +74,7 @@ export const PopoverCloseTrigger = withContext(Popover.CloseTrigger, "closeTrigg
 
 export const PopoverContentStandalone = withContext(Popover.Content, "content", { baseComponent: true });
 
-export const PopoverContent = forwardRef<HTMLDivElement, Popover.ContentProps & JsxStyleProps>((props, ref) => (
+export const PopoverContent = forwardRef<HTMLDivElement, Popover.ContentProps & StyledProps>((props, ref) => (
   <PopoverPositioner>
     <PopoverContentStandalone {...props} ref={ref} />
   </PopoverPositioner>
@@ -92,7 +92,7 @@ export const PopoverTitle = ({
   textStyle = "title.medium",
   children,
   ...rest
-}: Popover.TitleProps & TextProps & JsxStyleProps) => (
+}: Popover.TitleProps & TextProps & StyledProps) => (
   <Heading textStyle={textStyle} {...rest} asChild consumeCss>
     <InternalPopoverTitle>{children}</InternalPopoverTitle>
   </Heading>

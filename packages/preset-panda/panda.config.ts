@@ -31,7 +31,7 @@ export default defineConfig({
       const newArtifacts = config.artifacts.reduce<Artifact[]>((acc, artifact) => {
         if (artifact.id === "types-entry") {
           const indexFile = artifact.files.find((f) => f.file === "index.d.ts");
-          if (indexFile?.code) {
+          if (indexFile?.code && !indexFile.code.includes("export * from './prop-type'")) {
             indexFile.code = indexFile.code.concat("\nexport * from './prop-type';");
           }
         }

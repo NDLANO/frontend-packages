@@ -7,4 +7,3 @@ export * from './system-types';
 export * from './jsx';
 export * from './style-props';
 export * from './prop-type';
-export * from './prop-type';

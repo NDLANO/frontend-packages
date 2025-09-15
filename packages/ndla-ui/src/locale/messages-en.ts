@@ -22,7 +22,8 @@ const messages = {
     [subjectTypes.RESOURCE_COLLECTION]: "Resource collections",
   },
   subjectTypes: {
-    [subjectTypes.BETA_SUBJECT]: "Betafag",
+    [subjectTypes.ARCHIVE_SUBJECT]: "Archive subject",
+    [subjectTypes.BETA_SUBJECT]: "Beta subject",
     [subjectTypes.RESOURCE_COLLECTION]: "Resource collection",
     [subjectTypes.SUBJECT]: "Subject",
   },

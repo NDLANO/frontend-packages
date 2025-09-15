@@ -22,6 +22,7 @@ const messages = {
     [subjectTypes.RESOURCE_COLLECTION]: "Resursačoakkáldat",
   },
   subjectTypes: {
+    [subjectTypes.ARCHIVE_SUBJECT]: "Arkivfag",
     [subjectTypes.BETA_SUBJECT]: "Betafága",
     [subjectTypes.RESOURCE_COLLECTION]: "Resursačoakkáldat",
     [subjectTypes.SUBJECT]: "Fága",

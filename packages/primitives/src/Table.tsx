@@ -10,7 +10,7 @@ import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
 
-export type TableProps = HTMLArkProps<"table"> & StyledProps;
+export interface TableProps extends HTMLArkProps<"table">, StyledProps {}
 
 export const Table = styled(
   ark.table,

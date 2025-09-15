@@ -38,9 +38,9 @@ const blockQuoteRecipe = cva({
   },
 });
 
-export type BlockQuoteVariantProps = RecipeVariantProps<typeof blockQuoteRecipe>;
+export type BlockQuoteVariantProps = NonNullable<RecipeVariantProps<typeof blockQuoteRecipe>>;
 
-export type BlockQuoteProps = HTMLArkProps<"blockquote"> & StyledProps & BlockQuoteVariantProps;
+export interface BlockQuoteProps extends HTMLArkProps<"blockquote">, StyledProps, BlockQuoteVariantProps {}
 
 const StyledBlockQuote = styled(ark.blockquote, {}, { baseComponent: true });
 

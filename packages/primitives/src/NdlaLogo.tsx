@@ -12,7 +12,9 @@ import { styled } from "@ndla/styled-system/jsx";
 import type { ColorToken } from "@ndla/styled-system/tokens";
 import type { StyledProps } from "@ndla/styled-system/types";
 
-export type LogoProps = ComponentPropsWithoutRef<"svg"> & { color?: ColorToken } & StyledProps;
+export interface LogoProps extends Omit<ComponentPropsWithoutRef<"svg">, "color">, StyledProps {
+  color?: ColorToken;
+}
 
 const BaseSvg = ({ color = "primary", "aria-hidden": ariaHidden = true, css: cssProp, ...props }: LogoProps) => (
   <styled.svg

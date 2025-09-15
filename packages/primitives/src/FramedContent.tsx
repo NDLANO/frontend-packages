@@ -41,9 +41,9 @@ const framedContentRecipe = cva({
   },
 });
 
-export type FramedContentVariantProps = RecipeVariantProps<typeof framedContentRecipe>;
+export type FramedContentVariantProps = NonNullable<RecipeVariantProps<typeof framedContentRecipe>>;
 
-export type FramedContentProps = HTMLArkProps<"div"> & StyledProps & FramedContentVariantProps;
+export interface FramedContentProps extends HTMLArkProps<"div">, StyledProps, FramedContentVariantProps {}
 
 const StyledFramedContent = styled(ark.div, {}, { baseComponent: true });
 

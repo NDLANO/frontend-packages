@@ -78,9 +78,11 @@ const pageRecipe = cva({
 
 const StyledPageContent = styled(ark.div, {}, { baseComponent: true });
 
-export type PageContentVariantProps = RecipeVariantProps<typeof pageRecipe>;
+export type PageContentVariantProps = NonNullable<RecipeVariantProps<typeof pageRecipe>>;
 
-export const PageContent = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & PageContentVariantProps & StyledProps>(
+export interface PageContentProps extends HTMLArkProps<"div">, StyledProps, PageContentVariantProps {}
+
+export const PageContent = forwardRef<HTMLDivElement, PageContentProps>(
   ({ variant, gutters, css: cssProp, ...props }, ref) => (
     <StyledPageContent css={css.raw(pageRecipe.raw({ variant, gutters }), cssProp)} ref={ref} {...props} />
   ),

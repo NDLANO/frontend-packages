@@ -33,4 +33,4 @@ export const Skeleton = styled(
   { baseComponent: true },
 );
 
-export type SkeletonProps = HTMLArkProps<"div"> & StyledProps;
+export interface SkeletonProps extends HTMLArkProps<"div">, StyledProps {}

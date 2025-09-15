@@ -22,7 +22,9 @@ export interface TextProps {
 
 const StyledP = styled(ark.p, {}, { baseComponent: true });
 
-export const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & StyledProps & TextProps>(
+interface TextComponentProps extends Omit<HTMLArkProps<"p">, "color">, StyledProps, TextProps {}
+
+export const Text = forwardRef<HTMLParagraphElement, TextComponentProps>(
   ({ textStyle = "body.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
     <StyledP css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} ref={ref} {...rest} />
   ),
@@ -30,7 +32,9 @@ export const Text = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & StyledP
 
 const StyledH1 = styled(ark.h1, {}, { baseComponent: true });
 
-export const Heading = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & StyledProps & TextProps>(
+interface HeadingComponentProps extends Omit<HTMLArkProps<"h1">, "color">, StyledProps, TextProps {}
+
+export const Heading = forwardRef<HTMLHeadingElement, HeadingComponentProps>(
   ({ textStyle = "heading.medium", fontWeight, color, srOnly, css: cssProp, ...rest }, ref) => (
     <StyledH1 css={css.raw({ textStyle, fontWeight, color, srOnly }, cssProp)} ref={ref} {...rest} />
   ),

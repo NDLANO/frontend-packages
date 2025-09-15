@@ -216,13 +216,11 @@ const tabsRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(tabsRecipe);
 
-export type TabsVariantProps = RecipeVariantProps<typeof tabsRecipe>;
+export type TabsVariantProps = NonNullable<RecipeVariantProps<typeof tabsRecipe>>;
 
-interface RootProps extends Tabs.RootProps {
+export interface TabsRootProps extends Tabs.RootProps, TabsVariantProps, StyledProps {
   translations: Tabs.RootProps["translations"];
 }
-
-export type TabsRootProps = RootProps & TabsVariantProps & StyledProps;
 
 const InternalTabsRoot = withProvider(Tabs.Root, "root", { baseComponent: true });
 
@@ -238,6 +236,8 @@ export const TabsList = withContext(Tabs.List, "list", { baseComponent: true });
 
 const InternalTabsTrigger = withContext(Tabs.Trigger, "trigger", { baseComponent: true });
 
-export const TabsTrigger = ({ className, ...props }: Tabs.TriggerProps & StyledProps) => (
+interface TabsTriggerProps extends Tabs.TriggerProps, StyledProps {}
+
+export const TabsTrigger = ({ className, ...props }: TabsTriggerProps) => (
   <InternalTabsTrigger className={cx("peer", className)} {...props} />
 );

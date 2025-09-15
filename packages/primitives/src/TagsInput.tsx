@@ -102,52 +102,51 @@ const tagsInputRecipe = sva({
 });
 const { withProvider, withContext } = createStyleContext(tagsInputRecipe);
 
-interface RootProps extends TagsInput.RootProps {
+export interface TagsInputRootProps extends TagsInput.RootProps, StyledProps {
   translations: TagsInput.RootProps["translations"];
 }
 
-export type TagsInputRootProps = RootProps & StyledProps;
 export const TagsInputRoot = withProvider(TagsInput.Root, "root", {
   baseComponent: true,
 });
 
-export type TagsInputClearTriggerProps = TagsInput.ClearTriggerProps & StyledProps;
+export interface TagsInputClearTriggerProps extends TagsInput.ClearTriggerProps, StyledProps {}
 
 export const TagsInputClearTrigger = withContext(TagsInput.ClearTrigger, "clearTrigger", { baseComponent: true });
 
-export type TagsInputControlProps = TagsInput.ControlProps & StyledProps;
+export interface TagsInputControlProps extends TagsInput.ControlProps, StyledProps {}
 
 export const TagsInputControl = withContext(TagsInput.Control, "control", { baseComponent: true });
 
-export type TagsInputInputProps = TagsInput.InputProps & StyledProps;
+export interface TagsInputInputProps extends TagsInput.InputProps, StyledProps {}
 
 export const TagsInputInput = withContext(TagsInput.Input, "input", { baseComponent: true });
 
-export type TagsInputItemDeleteTriggerProps = TagsInput.ItemDeleteTriggerProps & StyledProps;
+export interface TagsInputItemDeleteTriggerProps extends TagsInput.ItemDeleteTriggerProps, StyledProps {}
 
 export const TagsInputItemDeleteTrigger = withContext(TagsInput.ItemDeleteTrigger, "itemDeleteTrigger", {
   baseComponent: true,
 });
 
-export type TagsInputItemInputProps = TagsInput.ItemInputProps & StyledProps;
+export interface TagsInputItemInputProps extends TagsInput.ItemInputProps, StyledProps {}
 
 export const TagsInputItemInput = withContext(TagsInput.ItemInput, "itemInput", { baseComponent: true });
 
-export type TagsInputItemPreviewProps = TagsInput.ItemPreviewProps & StyledProps;
+export interface TagsInputItemPreviewProps extends TagsInput.ItemPreviewProps, StyledProps {}
 
 export const TagsInputItemPreview = withContext(TagsInput.ItemPreview, "itemPreview", { baseComponent: true });
 
-export type TagsInputItemProps = TagsInput.ItemProps & StyledProps;
+export interface TagsInputItemProps extends TagsInput.ItemProps, StyledProps {}
 
 export const TagsInputItem = withContext(TagsInput.Item, "item", { baseComponent: true });
 
-export type TagsInputItemTextProps = TagsInput.ItemTextProps & StyledProps;
+export interface TagsInputItemTextProps extends TagsInput.ItemTextProps, StyledProps {}
 
 export const TagsInputItemText = withContext(TagsInput.ItemText, "itemText", { baseComponent: true });
 
 const InternalTagsInputLabel = withContext(TagsInput.Label, "label");
 
-export type TagsInputLabelProps = TagsInput.LabelProps & StyledProps & TextProps;
+export interface TagsInputLabelProps extends Omit<TagsInput.LabelProps, "color">, StyledProps, TextProps {}
 
 export const TagsInputLabel = forwardRef<HTMLLabelElement, TagsInputLabelProps>(({ children, ...props }, ref) => (
   <InternalTagsInputLabel asChild ref={ref} {...props}>

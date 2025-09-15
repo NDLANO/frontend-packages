@@ -253,7 +253,9 @@ type Variant = RecipeVariant<typeof buttonBaseRecipe>["variant"];
 
 type ButtonVariant = Exclude<Variant, "clear" | "clearSubtle">;
 
-export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProps<typeof buttonRecipe>;
+export interface ButtonVariantProps extends NonNullable<RecipeVariantProps<typeof buttonRecipe>> {
+  variant?: ButtonVariant;
+}
 
 export interface BaseButtonProps extends HTMLArkProps<"button">, StyledProps {
   loading?: boolean;
@@ -261,7 +263,7 @@ export interface BaseButtonProps extends HTMLArkProps<"button">, StyledProps {
   replaceContent?: boolean;
 }
 
-export type ButtonProps = BaseButtonProps & ButtonVariantProps;
+export interface ButtonProps extends BaseButtonProps, ButtonVariantProps {}
 
 const StyledButton = styled(ark.button, {}, { baseComponent: true, defaultProps: { type: "button" } });
 
@@ -307,9 +309,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 type IconButtonVariant = Exclude<Variant, "link">;
 
-export type IconButtonVariantProps = { variant?: IconButtonVariant } & RecipeVariantProps<typeof iconButtonRecipe>;
+export interface IconButtonVariantProps extends NonNullable<RecipeVariantProps<typeof iconButtonRecipe>> {
+  variant?: IconButtonVariant;
+}
 
-export type IconButtonProps = BaseButtonProps & IconButtonVariantProps;
+export interface IconButtonProps extends BaseButtonProps, IconButtonVariantProps {}
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ variant, css: cssProp, loadingContent, size, replaceContent = true, ...props }, ref) => (

@@ -308,9 +308,9 @@ const dialogRecipe = sva({
 
 const { withRootProvider, withContext } = createStyleContext(dialogRecipe);
 
-export type DialogVariantProps = RecipeVariantProps<typeof dialogRecipe>;
+export type DialogVariantProps = NonNullable<RecipeVariantProps<typeof dialogRecipe>>;
 
-export type DialogRootProps = Dialog.RootProps & DialogVariantProps;
+export interface DialogRootProps extends Dialog.RootProps, DialogVariantProps {}
 
 export const InternalDialogRoot = withRootProvider(Dialog.Root);
 
@@ -324,7 +324,9 @@ export const DialogStandaloneContent = withContext(Dialog.Content, "content", { 
 
 export const DialogPositioner = withContext(Dialog.Positioner, "positioner", { baseComponent: true });
 
-export const DialogContent = forwardRef<HTMLDivElement, Dialog.ContentProps & StyledProps>((props, ref) => (
+interface DialogContentProps extends Dialog.ContentProps, StyledProps {}
+
+export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((props, ref) => (
   <>
     <DialogBackdrop />
     <DialogPositioner>
@@ -335,11 +337,9 @@ export const DialogContent = forwardRef<HTMLDivElement, Dialog.ContentProps & St
 
 const InternalDialogDescription = withContext(Dialog.Description, "description");
 
-export const DialogDescription = ({
-  textStyle = "body.large",
-  children,
-  ...rest
-}: Dialog.DescriptionProps & TextProps & StyledProps) => {
+interface DialogDescriptionProps extends Omit<Dialog.DescriptionProps, "color">, TextProps, StyledProps {}
+
+export const DialogDescription = ({ textStyle = "body.large", children, ...rest }: DialogDescriptionProps) => {
   return (
     <InternalDialogDescription asChild>
       <Text textStyle={textStyle} {...rest}>
@@ -351,11 +351,9 @@ export const DialogDescription = ({
 
 const InternalDialogTitle = withContext(Dialog.Title, "title");
 
-export const DialogTitle = ({
-  textStyle = "title.medium",
-  children,
-  ...rest
-}: Dialog.TitleProps & TextProps & StyledProps) => (
+interface DialogTitleProps extends Omit<Dialog.TitleProps, "color">, TextProps, StyledProps {}
+
+export const DialogTitle = ({ textStyle = "title.medium", children, ...rest }: DialogTitleProps) => (
   <InternalDialogTitle asChild>
     <Heading textStyle={textStyle} {...rest}>
       {children}

@@ -126,9 +126,9 @@ const orderedListRecipe = cva({
   },
 });
 
-export type OrderedListVariantProps = RecipeVariantProps<typeof orderedListRecipe>;
+export type OrderedListVariantProps = NonNullable<RecipeVariantProps<typeof orderedListRecipe>>;
 
-export type OrderedListProps = StyledProps & HTMLArkProps<"ol"> & OrderedListVariantProps;
+export interface OrderedListProps extends StyledProps, HTMLArkProps<"ol">, OrderedListVariantProps {}
 
 const StyledOrderedList = styled(ark.ol, {}, { baseComponent: true });
 

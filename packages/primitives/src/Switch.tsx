@@ -111,9 +111,9 @@ const switchRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(switchRecipe);
 
-export type SwitchVariantProps = RecipeVariantProps<typeof switchRecipe>;
+export type SwitchVariantProps = NonNullable<RecipeVariantProps<typeof switchRecipe>>;
 
-export type SwitchRootProps = Switch.RootProps & StyledProps & SwitchVariantProps;
+export interface SwitchRootProps extends Switch.RootProps, StyledProps, SwitchVariantProps {}
 
 export const SwitchRoot = withProvider(Switch.Root, "root", { baseComponent: true });
 
@@ -123,11 +123,9 @@ export const SwitchThumb = withContext(Switch.Thumb, "thumb", { baseComponent: t
 
 const InternalSwitchLabel = withContext(Switch.Label, "label");
 
-export const SwitchLabel = ({
-  textStyle = "label.medium",
-  children,
-  ...props
-}: Switch.LabelProps & TextProps & StyledProps) => (
+interface SwitchLabelProps extends Omit<Switch.LabelProps, "color">, TextProps, StyledProps {}
+
+export const SwitchLabel = ({ textStyle = "label.medium", children, ...props }: SwitchLabelProps) => (
   <InternalSwitchLabel asChild {...props}>
     <Text asChild consumeCss textStyle={textStyle}>
       <span>{children}</span>

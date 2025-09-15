@@ -24,11 +24,11 @@ const toggleGroupRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(toggleGroupRecipe);
 
-export type ToggleGroupVariantProps = RecipeVariantProps<typeof toggleGroupRecipe>;
-export type ToggleGroupRootProps = ToggleGroup.RootProps & StyledProps & ToggleGroupVariantProps;
+export type ToggleGroupVariantProps = NonNullable<RecipeVariantProps<typeof toggleGroupRecipe>>;
+export interface ToggleGroupRootProps extends ToggleGroup.RootProps, StyledProps, ToggleGroupVariantProps {}
 
 export const ToggleGroupRoot = withProvider(ToggleGroup.Root, "root", { baseComponent: true });
 
-export type ToggleGroupItemProps = ToggleGroup.ItemProps & StyledProps;
+export interface ToggleGroupItemProps extends ToggleGroup.ItemProps, StyledProps {}
 
 export const ToggleGroupItem = withContext(ToggleGroup.Item, "item", { baseComponent: true });

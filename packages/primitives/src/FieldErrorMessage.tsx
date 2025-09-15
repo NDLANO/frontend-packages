@@ -27,7 +27,7 @@ const StyledFieldErrorText = styled(
   { baseComponent: true },
 );
 
-export type FieldErrorMessageProps = Field.ErrorTextProps & TextProps & StyledProps;
+export interface FieldErrorMessageProps extends Omit<Field.ErrorTextProps, "color">, TextProps, StyledProps {}
 
 export const FieldErrorMessage = forwardRef<HTMLSpanElement, FieldErrorMessageProps>(
   ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => (
@@ -43,7 +43,7 @@ const StyledFieldsetErrorText = styled(
   { baseComponent: true },
 );
 
-export type FieldsetErrorTextProps = Fieldset.ErrorTextProps & TextProps & StyledProps;
+export interface FieldsetErrorTextProps extends Omit<Fieldset.ErrorTextProps, "color">, TextProps, StyledProps {}
 
 export const FieldsetErrorText = forwardRef<HTMLSpanElement, FieldsetErrorTextProps>(
   ({ textStyle = "label.small", fontWeight, css: cssProp, color, srOnly, ...props }, ref) => (

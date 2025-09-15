@@ -146,7 +146,7 @@ const selectRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(selectRecipe);
 
-export type SelectRootProps<T extends Select.CollectionItem> = Select.RootProps<T> & StyledProps;
+export interface SelectRootProps<T extends Select.CollectionItem> extends Select.RootProps<T>, StyledProps {}
 const InternalSelectRoot = withProvider<ElementType<SelectRootProps<Select.CollectionItem>>>(Select.Root, "root", {
   baseComponent: true,
 });
@@ -161,7 +161,9 @@ export const SelectClearTrigger = withContext(Select.ClearTrigger, "clearTrigger
 
 export const SelectContentStandalone = withContext(Select.Content, "content", { baseComponent: true });
 
-export const SelectContent = forwardRef<HTMLDivElement, Select.ContentProps & StyledProps>((props, ref) => (
+interface SelectContentProps extends Select.ContentProps, StyledProps {}
+
+export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => (
   <SelectPositioner>
     <SelectContentStandalone ref={ref} {...props} />
   </SelectPositioner>
@@ -171,7 +173,9 @@ export const SelectControl = withContext(Select.Control, "control", { baseCompon
 
 export const SelectIndicator = withContext(Select.Indicator, "indicator", { baseComponent: true });
 
-export const SelectItemGroupLabel = forwardRef<HTMLDivElement, Select.ItemGroupLabelProps & StyledProps & TextProps>(
+interface SelectItemGroupLabelProps extends Omit<Select.ItemGroupLabelProps, "color">, StyledProps, TextProps {}
+
+export const SelectItemGroupLabel = forwardRef<HTMLDivElement, SelectItemGroupLabelProps>(
   ({ children, ...props }, ref) => (
     <InternalSelectItemGroupLabel asChild ref={ref} {...props}>
       <Label asChild consumeCss>
@@ -195,13 +199,13 @@ export const SelectItemText = withContext(Select.ItemText, "itemText", { baseCom
 
 const InternalSelectLabel = withContext(Select.Label, "label");
 
-export const SelectLabel = forwardRef<HTMLLabelElement, Select.LabelProps & StyledProps & TextProps>(
-  ({ children, ...props }, ref) => (
-    <InternalSelectLabel asChild ref={ref} {...props}>
-      <Label>{children}</Label>
-    </InternalSelectLabel>
-  ),
-);
+interface SelectLabelProps extends Omit<Select.LabelProps, "color">, StyledProps, TextProps {}
+
+export const SelectLabel = forwardRef<HTMLLabelElement, SelectLabelProps>(({ children, ...props }, ref) => (
+  <InternalSelectLabel asChild ref={ref} {...props}>
+    <Label>{children}</Label>
+  </InternalSelectLabel>
+));
 
 export const SelectPositioner = withContext(Select.Positioner, "positioner", { baseComponent: true });
 

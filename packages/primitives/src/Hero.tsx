@@ -110,18 +110,18 @@ const heroRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(heroRecipe);
 
-export type HeroVariantProps = RecipeVariantProps<typeof heroRecipe>;
+export type HeroVariantProps = NonNullable<RecipeVariantProps<typeof heroRecipe>>;
 
 export type HeroVariant = NonNullable<HeroVariantProps>["variant"];
 
-export type HeroProps = HTMLArkProps<"div"> & StyledProps & HeroVariantProps;
+export interface HeroProps extends HTMLArkProps<"div">, StyledProps, HeroVariantProps {}
 
 export const Hero = withProvider(ark.div, "root", { baseComponent: true });
 
-export type HeroBackgroundProps = HTMLArkProps<"div"> & StyledProps;
+export interface HeroBackgroundProps extends HTMLArkProps<"div">, StyledProps {}
 
 export const HeroBackground = withContext(ark.div, "background", { baseComponent: true });
 
-export type HeroContentProps = HTMLArkProps<"div"> & StyledProps;
+export interface HeroContentProps extends HTMLArkProps<"div">, StyledProps {}
 
 export const HeroContent = withContext(ark.div, "content", { baseComponent: true });

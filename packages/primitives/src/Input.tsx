@@ -74,7 +74,9 @@ const StyledInputContainer = styled(
   { baseComponent: true },
 );
 
-export const InputContainer = forwardRef<HTMLDivElement, StyledProps & HTMLArkProps<"div">>(
+interface InputContainerProps extends HTMLArkProps<"div">, StyledProps {}
+
+export const InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
   ({ children, css: cssProp, ...rest }, ref) => (
     <InputContext.Provider value={{}}>
       <StyledInputContainer css={css.raw(inputCss, cssProp)} {...rest} ref={ref}>
@@ -133,9 +135,9 @@ const inputRecipe = cva({
   },
 });
 
-type InputVariantProps = RecipeVariantProps<typeof inputRecipe>;
+type InputVariantProps = NonNullable<RecipeVariantProps<typeof inputRecipe>>;
 
-export type InputProps = HTMLArkProps<"input"> & StyledProps & InputVariantProps;
+export interface InputProps extends HTMLArkProps<"input">, StyledProps, InputVariantProps {}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(({ css: cssProp, componentSize, ...props }, ref) => {
   const context = useContext(InputContext);

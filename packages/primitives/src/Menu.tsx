@@ -147,7 +147,9 @@ export const MenuRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: M
 
 export const MenuContentStandalone = withContext(Menu.Content, "content", { baseComponent: true });
 
-export const MenuContent = forwardRef<HTMLDivElement, StyledProps & Menu.ContentProps>((props, ref) => (
+interface MenuContentProps extends Menu.ContentProps, StyledProps {}
+
+export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => (
   <MenuPositioner>
     <MenuContentStandalone ref={ref} {...props} />
   </MenuPositioner>
@@ -155,12 +157,14 @@ export const MenuContent = forwardRef<HTMLDivElement, StyledProps & Menu.Content
 
 const InternalMenuItemGroupLabel = withContext(Menu.ItemGroupLabel, "itemGroupLabel");
 
+interface MenuItemGroupLabelProps extends Omit<Menu.ItemGroupLabelProps, "color">, StyledProps, TextProps {}
+
 export const MenuItemGroupLabel = ({
   textStyle = "label.medium",
   fontWeight = "bold",
   children,
   ...props
-}: Menu.ItemGroupLabelProps & StyledProps & TextProps) => (
+}: MenuItemGroupLabelProps) => (
   <InternalMenuItemGroupLabel {...props} asChild>
     <Text textStyle={textStyle} fontWeight={fontWeight}>
       {children}
@@ -172,8 +176,8 @@ export const MenuItemGroup = withContext(Menu.ItemGroup, "itemGroup", { baseComp
 
 const InternalMenuItem = withContext(Menu.Item, "item", { baseComponent: true });
 
-export type MenuItemVariantProps = RecipeVariantProps<typeof itemCva>;
-export type MenuItemProps = Menu.ItemProps & StyledProps & MenuItemVariantProps;
+export type MenuItemVariantProps = NonNullable<RecipeVariantProps<typeof itemCva>>;
+export interface MenuItemProps extends Menu.ItemProps, StyledProps, MenuItemVariantProps {}
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(({ css: cssProp = {}, variant, ...props }, ref) => (
   <InternalMenuItem
@@ -187,7 +191,9 @@ export const MenuPositioner = withContext(Menu.Positioner, "positioner", { baseC
 
 const InternalMenuTriggerItem = withContext(Menu.TriggerItem, "triggerItem", { baseComponent: true });
 
-export const MenuTriggerItem = forwardRef<HTMLDivElement, Menu.TriggerItemProps & StyledProps & MenuItemVariantProps>(
+interface MenuTriggerItemProps extends Menu.TriggerItemProps, StyledProps, MenuItemVariantProps {}
+
+export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
   ({ css: cssProp = {}, variant, ...props }, ref) => (
     <InternalMenuTriggerItem
       css={[itemCva.raw({ variant }), ...(Array.isArray(cssProp) ? cssProp : [cssProp])]}

@@ -124,9 +124,9 @@ const accordionRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(accordionRecipe);
 
-export type AccordionVariantProps = RecipeVariantProps<typeof accordionRecipe>;
+export type AccordionVariantProps = NonNullable<RecipeVariantProps<typeof accordionRecipe>>;
 
-export interface AccordionRootProps extends StyledProps, Accordion.RootProps {}
+export interface AccordionRootProps extends StyledProps, Accordion.RootProps, AccordionVariantProps {}
 
 export const AccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
 

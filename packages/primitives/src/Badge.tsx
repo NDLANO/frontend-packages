@@ -66,11 +66,11 @@ const badgeRecipe = cva({
   },
 });
 
-export type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipe>;
+export type BadgeVariantProps = NonNullable<RecipeVariantProps<typeof badgeRecipe>>;
 
 export type BadgeVariant = NonNullable<BadgeVariantProps>["colorTheme"];
 
-export type BadgeProps = StyledProps & HTMLArkProps<"div"> & BadgeVariantProps;
+export interface BadgeProps extends StyledProps, HTMLArkProps<"div">, BadgeVariantProps {}
 
 const StyledBadge = styled(ark.div, {}, { baseComponent: true });
 

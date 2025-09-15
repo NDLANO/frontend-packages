@@ -50,18 +50,18 @@ export const TooltipArrowTip = withContext(Tooltip.ArrowTip, "arrowTip", { baseC
 
 export const TooltipContentStandalone = withContext(Tooltip.Content, "content", { baseComponent: true });
 
-export const TooltipContent = forwardRef<HTMLDivElement, StyledProps & Tooltip.ContentProps>(
-  ({ children, ...props }, ref) => (
-    <TooltipPositioner>
-      <TooltipContentStandalone {...props} ref={ref}>
-        <TooltipArrow>
-          <TooltipArrowTip />
-        </TooltipArrow>
-        {children}
-      </TooltipContentStandalone>
-    </TooltipPositioner>
-  ),
-);
+interface TooltipContentProps extends Tooltip.ContentProps, StyledProps {}
+
+export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(({ children, ...props }, ref) => (
+  <TooltipPositioner>
+    <TooltipContentStandalone {...props} ref={ref}>
+      <TooltipArrow>
+        <TooltipArrowTip />
+      </TooltipArrow>
+      {children}
+    </TooltipContentStandalone>
+  </TooltipPositioner>
+));
 
 export const TooltipPositioner = withContext(Tooltip.Positioner, "positioner", { baseComponent: true });
 

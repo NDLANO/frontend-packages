@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef, type ComponentType } from "react";
+import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -209,14 +209,13 @@ export const ListItemRoot = forwardRef<HTMLDivElement, ListItemProps>((props, re
   />
 ));
 
-const InternalListItemHeading = forwardRef<HTMLHeadingElement, TextProps>(
+interface ListItemHeadingProps extends Omit<HTMLArkProps<"p">, "color">, TextProps {}
+
+const InternalListItemHeading = forwardRef<HTMLHeadingElement, ListItemHeadingProps>(
   ({ textStyle = "label.medium", ...props }, ref) => <Heading textStyle={textStyle} {...props} ref={ref} />,
 );
 
-export const ListItemHeading = withContext<ComponentType<HTMLArkProps<"p"> & TextProps>>(
-  InternalListItemHeading,
-  "title",
-);
+export const ListItemHeading = withContext(InternalListItemHeading, "title");
 
 export const ListItemContent = withContext(ark.div, "content", { baseComponent: true });
 

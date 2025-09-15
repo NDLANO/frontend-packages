@@ -50,9 +50,9 @@ export const spinnerRecipe = cva({
   },
 });
 
-export type SpinnerVariantProps = RecipeVariantProps<typeof spinnerRecipe>;
+export type SpinnerVariantProps = NonNullable<RecipeVariantProps<typeof spinnerRecipe>>;
 
-export type SpinnerProps = HTMLArkProps<"div"> & StyledProps & SpinnerVariantProps;
+export interface SpinnerProps extends HTMLArkProps<"div">, StyledProps, SpinnerVariantProps {}
 
 const StyledSpinner = styled(ark.div, {}, { baseComponent: true });
 

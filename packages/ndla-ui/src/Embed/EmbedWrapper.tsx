@@ -33,9 +33,9 @@ const embedWrapperRecipe = cva({
   },
 });
 
-export type EmbedWrapperVariantProps = RecipeVariantProps<typeof embedWrapperRecipe>;
+export type EmbedWrapperVariantProps = NonNullable<RecipeVariantProps<typeof embedWrapperRecipe>>;
 
-export type EmbedWrapperProps = HTMLArkProps<"div"> & StyledProps & EmbedWrapperVariantProps;
+export interface EmbedWrapperProps extends HTMLArkProps<"div">, StyledProps, EmbedWrapperVariantProps {}
 
 const StyledEmbedWrapper = styled(ark.div, {}, { baseComponent: true });
 

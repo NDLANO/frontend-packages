@@ -84,7 +84,7 @@ const sliderRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(sliderRecipe);
 
-export type SliderRootProps = Slider.RootProps & StyledProps;
+export interface SliderRootProps extends Slider.RootProps, StyledProps {}
 
 export const SliderRoot = withProvider(Slider.Root, "root", { baseComponent: true });
 
@@ -98,7 +98,9 @@ export const SliderThumb = withContext(Slider.Thumb, "thumb", { baseComponent: t
 
 const InternalSliderLabel = withContext(Slider.Label, "label");
 
-export const SliderLabel = ({ textStyle = "label.medium", ...props }: Slider.LabelProps & TextProps & StyledProps) => (
+interface SliderLabelProps extends Omit<Slider.LabelProps, "color">, TextProps, StyledProps {}
+
+export const SliderLabel = ({ textStyle = "label.medium", ...props }: SliderLabelProps) => (
   <InternalSliderLabel asChild>
     <Label textStyle={textStyle} {...props} />
   </InternalSliderLabel>

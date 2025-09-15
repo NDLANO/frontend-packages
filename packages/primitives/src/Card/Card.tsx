@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef, type ComponentType } from "react";
+import { forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -69,19 +69,21 @@ const cardRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(cardRecipe);
 
-export type CardVariantProps = RecipeVariantProps<typeof cardRecipe>;
+export type CardVariantProps = NonNullable<RecipeVariantProps<typeof cardRecipe>>;
 
-export type CardRootProps = HTMLArkProps<"article"> & StyledProps & CardVariantProps;
+export interface CardRootProps extends HTMLArkProps<"article">, StyledProps, CardVariantProps {}
 
 export const CardRoot = withProvider(ark.article, "root", { baseComponent: true });
 
-const InternalCardHeading = forwardRef<HTMLHeadingElement, TextProps>(
+interface CardHeadingProps extends StyledProps, Omit<HTMLArkProps<"p">, "color">, TextProps {}
+
+const InternalCardHeading = forwardRef<HTMLHeadingElement, CardHeadingProps>(
   ({ textStyle = "label.large", fontWeight = "bold", ...props }, ref) => (
     <Heading textStyle={textStyle} fontWeight={fontWeight} {...props} ref={ref} />
   ),
 );
 
-export const CardHeading = withContext<ComponentType<HTMLArkProps<"p"> & TextProps>>(InternalCardHeading, "title");
+export const CardHeading = withContext(InternalCardHeading, "title");
 
 export const CardContent = withContext(ark.div, "content", { baseComponent: true });
 

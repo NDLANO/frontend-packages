@@ -31,11 +31,9 @@ const paginationRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(paginationRecipe);
 
-interface RootProps extends Pagination.RootProps {
+export interface PaginationRootProps extends Pagination.RootProps, StyledProps {
   translations: Pagination.RootProps["translations"];
 }
-
-export type PaginationRootProps = StyledProps & RootProps;
 
 export const PaginationRoot = withProvider(Pagination.Root, "root", { baseComponent: true });
 

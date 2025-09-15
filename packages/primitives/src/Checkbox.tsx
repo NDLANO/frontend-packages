@@ -219,9 +219,9 @@ const checkboxRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(checkboxRecipe);
 
-export type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
+export type CheckboxVariantProps = NonNullable<RecipeVariantProps<typeof checkboxRecipe>>;
 
-export type CheckboxRootProps = StyledProps & HTMLArkProps<"label"> & CheckboxVariantProps;
+export interface CheckboxRootProps extends StyledProps, HTMLArkProps<"label">, CheckboxVariantProps {}
 
 export const CheckboxRoot = withProvider(Checkbox.Root, "root", { baseComponent: true });
 
@@ -229,11 +229,9 @@ export const CheckboxIndicator = withContext(Checkbox.Indicator, "indicator", { 
 
 const InternalCheckboxLabel = withContext(Checkbox.Label, "label");
 
-export const CheckboxLabel = ({
-  textStyle = "label.medium",
-  children,
-  ...props
-}: StyledProps & Checkbox.LabelProps & TextProps) => (
+interface CheckboxLabelProps extends StyledProps, Omit<Checkbox.LabelProps, "color">, TextProps {}
+
+export const CheckboxLabel = ({ textStyle = "label.medium", children, ...props }: CheckboxLabelProps) => (
   <InternalCheckboxLabel {...props} asChild>
     <Text textStyle={textStyle}>{children}</Text>
   </InternalCheckboxLabel>

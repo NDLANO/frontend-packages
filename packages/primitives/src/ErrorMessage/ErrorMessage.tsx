@@ -51,13 +51,17 @@ export const ErrorMessageContent = withContext(ark.div, "content", { baseCompone
 
 export const ErrorMessageActions = withContext(ark.div, "actions", { baseComponent: true });
 
-const InternalErrorMessageTitle = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & StyledProps & TextProps>(
+interface ErrorMessageTitleProps extends Omit<HTMLArkProps<"h1">, "color">, StyledProps, TextProps {}
+
+const InternalErrorMessageTitle = forwardRef<HTMLHeadingElement, ErrorMessageTitleProps>(
   ({ textStyle = "heading.small", ...props }, ref) => <Heading textStyle={textStyle} {...props} ref={ref} />,
 );
 
 export const ErrorMessageTitle = withContext(InternalErrorMessageTitle, "title");
 
-const InternalErrorMessageDescription = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & StyledProps & TextProps>(
+interface ErrorMessageDescriptionProps extends Omit<HTMLArkProps<"p">, "color">, StyledProps, TextProps {}
+
+const InternalErrorMessageDescription = forwardRef<HTMLParagraphElement, ErrorMessageDescriptionProps>(
   ({ textStyle = "body.xlarge", ...props }, ref) => <Text textStyle={textStyle} {...props} ref={ref} />,
 );
 

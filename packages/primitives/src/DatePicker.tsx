@@ -93,7 +93,9 @@ export const DatePickerClearTrigger = withContext(DatePicker.ClearTrigger, "clea
   baseComponent: true,
 });
 
-export const DatePickerContent = forwardRef<HTMLDivElement, DatePicker.ContentProps & StyledProps>((props, ref) => (
+interface DatePickerContentProps extends DatePicker.ContentProps, StyledProps {}
+
+export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentProps>((props, ref) => (
   <DatePickerPositioner>
     <DatePickerStandaloneContent {...props} ref={ref} />
   </DatePickerPositioner>
@@ -105,7 +107,7 @@ export const DatePickerControl = withContext(DatePicker.Control, "control", { ba
 
 export const DatePickerInput = withContext(DatePicker.Input, "input", { baseComponent: true });
 
-interface DatePickerLabelProps extends DatePicker.LabelProps, StyledProps {}
+interface DatePickerLabelProps extends Omit<DatePicker.LabelProps, "color">, StyledProps, TextProps {}
 
 const InternalDatePickerLabel = withContext(DatePicker.Label, "label");
 
@@ -113,7 +115,7 @@ export const DatePickerLabel = ({
   textStyle = "label.medium",
   fontWeight = "bold",
   ...props
-}: DatePickerLabelProps & TextProps) => (
+}: DatePickerLabelProps) => (
   <InternalDatePickerLabel asChild>
     <Label textStyle={textStyle} fontWeight={fontWeight} {...props} />
   </InternalDatePickerLabel>

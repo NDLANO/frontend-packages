@@ -107,13 +107,13 @@ const figureRecipe = cva({
   ],
 });
 
-export type FigureVariantProps = RecipeVariantProps<typeof figureRecipe>;
+export type FigureVariantProps = NonNullable<RecipeVariantProps<typeof figureRecipe>>;
 
 export type FigureSize = RecipeVariant<typeof figureRecipe>["size"];
 
 export type FigureFloat = RecipeVariant<typeof figureRecipe>["float"];
 
-export type FigureProps = HTMLArkProps<"figure"> & StyledProps & FigureVariantProps;
+export interface FigureProps extends HTMLArkProps<"figure">, StyledProps, FigureVariantProps {}
 
 const StyledFigure = styled(ark.figure, {}, { baseComponent: true });
 

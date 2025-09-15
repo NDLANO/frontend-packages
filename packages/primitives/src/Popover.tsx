@@ -62,7 +62,9 @@ export const PopoverAnchor = withContext(Popover.Anchor, "anchor", { baseCompone
 
 export const PopoverArrowStandalone = withContext(Popover.Arrow, "arrow", { baseComponent: true });
 
-export const PopoverArrow = (props: Popover.ArrowTipProps & StyledProps) => (
+interface PopoverArrowProps extends Popover.ArrowTipProps, StyledProps {}
+
+export const PopoverArrow = (props: PopoverArrowProps) => (
   <PopoverArrowStandalone>
     <PopoverArrowTip {...props} />
   </PopoverArrowStandalone>
@@ -74,7 +76,9 @@ export const PopoverCloseTrigger = withContext(Popover.CloseTrigger, "closeTrigg
 
 export const PopoverContentStandalone = withContext(Popover.Content, "content", { baseComponent: true });
 
-export const PopoverContent = forwardRef<HTMLDivElement, Popover.ContentProps & StyledProps>((props, ref) => (
+interface PopoverContentProps extends Popover.ContentProps, StyledProps {}
+
+export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref) => (
   <PopoverPositioner>
     <PopoverContentStandalone {...props} ref={ref} />
   </PopoverPositioner>
@@ -88,11 +92,9 @@ export const PopoverPositioner = withContext(Popover.Positioner, "positioner", {
 
 const InternalPopoverTitle = withContext(Popover.Title, "title", { baseComponent: true });
 
-export const PopoverTitle = ({
-  textStyle = "title.medium",
-  children,
-  ...rest
-}: Popover.TitleProps & TextProps & StyledProps) => (
+interface PopoverTitleProps extends Omit<Popover.TitleProps, "color">, TextProps, StyledProps {}
+
+export const PopoverTitle = ({ textStyle = "title.medium", children, ...rest }: PopoverTitleProps) => (
   <Heading textStyle={textStyle} {...rest} asChild consumeCss>
     <InternalPopoverTitle>{children}</InternalPopoverTitle>
   </Heading>

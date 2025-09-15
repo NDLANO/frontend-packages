@@ -46,9 +46,9 @@ const messageBoxRecipe = cva({
   },
 });
 
-export type MessageBoxVariantProps = RecipeVariantProps<typeof messageBoxRecipe>;
+export type MessageBoxVariantProps = NonNullable<RecipeVariantProps<typeof messageBoxRecipe>>;
 
-export type MessageBoxProps = HTMLArkProps<"div"> & StyledProps & MessageBoxVariantProps;
+export interface MessageBoxProps extends HTMLArkProps<"div">, StyledProps, MessageBoxVariantProps {}
 
 const StyledMessageBox = styled(ark.div, {}, { baseComponent: true });
 

@@ -9,9 +9,8 @@
 import { forwardRef } from "react";
 import { ark, RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
+import { createStyleContext, styled } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 import { Text, type TextProps } from "./Text";
 
 const radioGroupRecipe = sva({
@@ -97,32 +96,17 @@ const { withProvider, withContext } = createStyleContext(radioGroupRecipe);
 
 export interface RadioGroupRootProps extends RadioGroup.RootProps, JsxStyleProps {}
 
-export const RadioGroupRoot = withProvider<HTMLDivElement, RadioGroupRootProps>(RadioGroup.Root, "root", {
+export const RadioGroupRoot = withProvider(RadioGroup.Root, "root", {
   baseComponent: true,
 });
 
-export const RadioGroupIndicator = withContext<HTMLDivElement, RadioGroup.IndicatorProps & JsxStyleProps>(
-  RadioGroup.Indicator,
-  "indicator",
-  { baseComponent: true },
-);
+export const RadioGroupIndicator = withContext(RadioGroup.Indicator, "indicator", { baseComponent: true });
 
-export const RadioGroupItemControl = withContext<HTMLDivElement, RadioGroup.ItemControlProps & JsxStyleProps>(
-  RadioGroup.ItemControl,
-  "itemControl",
-  { baseComponent: true },
-);
+export const RadioGroupItemControl = withContext(RadioGroup.ItemControl, "itemControl", { baseComponent: true });
 
-export const RadioGroupItem = withContext<HTMLLabelElement, RadioGroup.ItemProps & JsxStyleProps>(
-  RadioGroup.Item,
-  "item",
-  { baseComponent: true },
-);
+export const RadioGroupItem = withContext(RadioGroup.Item, "item", { baseComponent: true });
 
-const InternalRadioGroupItemText = withContext<HTMLSpanElement, RadioGroup.ItemTextProps & JsxStyleProps>(
-  RadioGroup.ItemText,
-  "itemText",
-);
+const InternalRadioGroupItemText = withContext(RadioGroup.ItemText, "itemText");
 
 const InnerRadioGroupItemText = styled(ark.span, {}, { baseComponent: true });
 
@@ -142,10 +126,7 @@ export const RadioGroupItemText = ({
   </InternalRadioGroupItemText>
 );
 
-export const InternalRadioGroupLabel = withContext<HTMLLabelElement, RadioGroup.LabelProps & JsxStyleProps>(
-  RadioGroup.Label,
-  "label",
-);
+export const InternalRadioGroupLabel = withContext(RadioGroup.Label, "label");
 
 const InnerRadioGroupLabel = styled(ark.div, {}, { baseComponent: true });
 

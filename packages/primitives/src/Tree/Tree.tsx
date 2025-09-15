@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type ElementType } from "react";
 import {
   TreeView,
   treeViewAnatomy,
@@ -15,8 +15,8 @@ import {
   useTreeView as _useTreeView,
 } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "../createStyleContext";
 import { Text, type TextProps } from "../Text";
 
 const treeRecipe = sva({
@@ -114,15 +114,13 @@ const { withProvider, withContext } = createStyleContext(treeRecipe);
 
 export type TreeRootProps<T extends TreeNode = TreeNode> = TreeView.RootProps<T> & JsxStyleProps;
 
-const InternalTreeRoot = withProvider<HTMLDivElement, TreeRootProps>(TreeView.Root, "root", {
-  baseComponent: true,
-});
+const InternalTreeRoot = withProvider<ElementType<TreeRootProps>>(TreeView.Root, "root", { baseComponent: true });
 
 export const TreeRoot = <T extends TreeNode = TreeNode>(props: TreeRootProps<T>) => <InternalTreeRoot {...props} />;
 
 export type TreeRootProviderProps<T extends TreeNode = TreeNode> = TreeView.RootProviderProps<T> & JsxStyleProps;
 
-const InternalTreeRootProvider = withProvider<HTMLDivElement, TreeRootProviderProps & JsxStyleProps>(
+const InternalTreeRootProvider = withProvider<ElementType<TreeRootProviderProps & JsxStyleProps>>(
   TreeView.RootProvider,
   "root",
 );
@@ -131,33 +129,17 @@ export const TreeRootProvider = <T extends TreeNode = TreeNode>(props: TreeRootP
   <InternalTreeRootProvider {...props} />
 );
 
-export const TreeBranchContent = withContext<HTMLDivElement, TreeView.BranchContentProps & JsxStyleProps>(
-  TreeView.BranchContent,
-  "branchContent",
-  { baseComponent: true },
-);
+export const TreeBranchContent = withContext(TreeView.BranchContent, "branchContent", { baseComponent: true });
 
-export const TreeBranchControl = withContext<HTMLDivElement, TreeView.BranchControlProps & JsxStyleProps>(
-  TreeView.BranchControl,
-  "branchControl",
-  { baseComponent: true },
-);
+export const TreeBranchControl = withContext(TreeView.BranchControl, "branchControl", { baseComponent: true });
 
-export const TreeBranchIndicator = withContext<HTMLDivElement, TreeView.BranchIndicatorProps & JsxStyleProps>(
-  TreeView.BranchIndicator,
-  "branchIndicator",
-  { baseComponent: true },
-);
+export const TreeBranchIndicator = withContext(TreeView.BranchIndicator, "branchIndicator", { baseComponent: true });
 
-export const TreeBranch = withContext<HTMLDivElement, TreeView.BranchProps & JsxStyleProps>(TreeView.Branch, "branch", {
+export const TreeBranch = withContext(TreeView.Branch, "branch", {
   baseComponent: true,
 });
 
-const InternalTreeBranchText = withContext<HTMLDivElement, TreeView.BranchTextProps & JsxStyleProps>(
-  TreeView.BranchText,
-  "branchText",
-  { baseComponent: true },
-);
+const InternalTreeBranchText = withContext(TreeView.BranchText, "branchText", { baseComponent: true });
 
 export const TreeBranchText = forwardRef<HTMLDivElement, TreeView.BranchTextProps & TextProps & JsxStyleProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", children, ...props }, ref) => (
@@ -169,27 +151,13 @@ export const TreeBranchText = forwardRef<HTMLDivElement, TreeView.BranchTextProp
   ),
 );
 
-export const TreeBranchTrigger = withContext<HTMLDivElement, TreeView.BranchTriggerProps & JsxStyleProps>(
-  TreeView.BranchTrigger,
-  "branchTrigger",
-  { baseComponent: true },
-);
+export const TreeBranchTrigger = withContext(TreeView.BranchTrigger, "branchTrigger", { baseComponent: true });
 
-export const TreeItemIndicator = withContext<HTMLDivElement, TreeView.ItemIndicatorProps & JsxStyleProps>(
-  TreeView.ItemIndicator,
-  "itemIndicator",
-  { baseComponent: true },
-);
+export const TreeItemIndicator = withContext(TreeView.ItemIndicator, "itemIndicator", { baseComponent: true });
 
-export const TreeItem = withContext<HTMLDivElement, TreeView.ItemProps & JsxStyleProps>(TreeView.Item, "item", {
-  baseComponent: true,
-});
+export const TreeItem = withContext(TreeView.Item, "item", { baseComponent: true });
 
-const InternalTreeItemText = withContext<HTMLDivElement, TreeView.ItemTextProps & JsxStyleProps>(
-  TreeView.ItemText,
-  "itemText",
-  { baseComponent: true },
-);
+const InternalTreeItemText = withContext(TreeView.ItemText, "itemText", { baseComponent: true });
 
 export const TreeItemText = forwardRef<HTMLDivElement, TreeView.ItemTextProps & TextProps & JsxStyleProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", children, ...props }, ref) => (
@@ -201,9 +169,7 @@ export const TreeItemText = forwardRef<HTMLDivElement, TreeView.ItemTextProps & 
   ),
 );
 
-const InternalTreeLabel = withContext<HTMLDivElement, TreeView.LabelProps & JsxStyleProps>(TreeView.Label, "label", {
-  baseComponent: true,
-});
+const InternalTreeLabel = withContext(TreeView.Label, "label", { baseComponent: true });
 
 export const TreeLabel = forwardRef<HTMLDivElement, TreeView.LabelProps & TextProps & JsxStyleProps>(
   ({ children, textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
@@ -215,9 +181,7 @@ export const TreeLabel = forwardRef<HTMLDivElement, TreeView.LabelProps & TextPr
   ),
 );
 
-export const Tree = withContext<HTMLDivElement, TreeView.TreeProps & JsxStyleProps>(TreeView.Tree, "tree", {
-  baseComponent: true,
-});
+export const Tree = withContext(TreeView.Tree, "tree", { baseComponent: true });
 
 export const createTreeCollection = _createTreeCollection;
 

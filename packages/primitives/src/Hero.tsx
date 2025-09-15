@@ -8,8 +8,8 @@
 
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 
 const heroRecipe = sva({
   slots: ["root", "background", "content"],
@@ -116,18 +116,12 @@ export type HeroVariant = NonNullable<HeroVariantProps>["variant"];
 
 export type HeroProps = HTMLArkProps<"div"> & JsxStyleProps & HeroVariantProps;
 
-export const Hero = withProvider<HTMLDivElement, HeroProps>(ark.div, "root", {
-  baseComponent: true,
-});
+export const Hero = withProvider(ark.div, "root", { baseComponent: true });
 
 export type HeroBackgroundProps = HTMLArkProps<"div"> & JsxStyleProps;
 
-export const HeroBackground = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "background", {
-  baseComponent: true,
-});
+export const HeroBackground = withContext(ark.div, "background", { baseComponent: true });
 
 export type HeroContentProps = HTMLArkProps<"div"> & JsxStyleProps;
 
-export const HeroContent = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "content", {
-  baseComponent: true,
-});
+export const HeroContent = withContext(ark.div, "content", { baseComponent: true });

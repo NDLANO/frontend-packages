@@ -6,13 +6,12 @@
  *
  */
 
-import React, { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
+import { type ReactNode, forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { render } from "@testing-library/react";
 import { css, sva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
+import { createStyleContext, styled } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "../createStyleContext";
 
 const svaA = sva({
   slots: ["root", "child"],
@@ -47,10 +46,10 @@ describe("createStyleContext", () => {
   test("should have a sane default", () => {
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 
-    const RootProviderRoot = withRootProvider<MockContextProps>(MockContext);
+    const RootProviderRoot = withRootProvider(MockContext);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div">>(ark.div, "root", { baseComponent: true });
-    const ContextRoot = withContext<HTMLDivElement, HTMLArkProps<"div">>(ark.div, "root", { baseComponent: true });
+    const ProviderRoot = withProvider(ark.div, "root", { baseComponent: true });
+    const ContextRoot = withContext(ark.div, "root", { baseComponent: true });
 
     const rootProviderResult = render(
       <RootProviderRoot>
@@ -80,10 +79,10 @@ describe("createStyleContext", () => {
   test("should have a sane default with string components", () => {
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 
-    const RootProviderRoot = withRootProvider<MockContextProps>(MockContext);
+    const RootProviderRoot = withRootProvider(MockContext);
 
-    const ProviderRoot = withProvider<HTMLDivElement, ComponentPropsWithRef<"div"> & JsxStyleProps>("div", "root");
-    const ContextRoot = withContext<HTMLDivElement, ComponentPropsWithRef<"div"> & JsxStyleProps>("div", "root");
+    const ProviderRoot = withProvider("div", "root");
+    const ContextRoot = withContext("div", "root");
 
     const rootProviderResult = render(
       <RootProviderRoot>
@@ -113,12 +112,12 @@ describe("createStyleContext", () => {
   test("should have a sane default when using the css prop directly on a styled element", () => {
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 
-    const RootProviderRoot = withRootProvider<MockContextProps>(MockContext);
+    const RootProviderRoot = withRootProvider(MockContext);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const ContextRoot = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ContextRoot = withContext(ark.div, "root", {
       baseComponent: true,
     });
 
@@ -150,10 +149,10 @@ describe("createStyleContext", () => {
   test("should have no problems merging a react component and a string component", () => {
     const { withProvider, withContext } = createStyleContext(svaA);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const ContextRoot = withContext<HTMLDivElement, ComponentPropsWithRef<"div"> & JsxStyleProps>("div", "child");
+    const ContextRoot = withContext("div", "child");
 
     const contextResult = render(
       <ProviderRoot asChild>
@@ -175,10 +174,10 @@ describe("createStyleContext", () => {
   test("should not automatically forward css prop regardless of whether you pass in a component or a string", () => {
     const { withProvider, withContext } = createStyleContext(svaA);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const ContextRoot = withContext<HTMLDivElement, ComponentPropsWithRef<"div"> & JsxStyleProps>("div", "root");
+    const ContextRoot = withContext("div", "root");
 
     const providerResult = render(
       <ProviderRoot>
@@ -204,12 +203,12 @@ describe("createStyleContext", () => {
   test("should be automatically overridden with styled", () => {
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 
-    const RootProviderRoot = withRootProvider<MockContextProps>(MockContext);
+    const RootProviderRoot = withRootProvider(MockContext);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const ContextRoot = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ContextRoot = withContext(ark.div, "root", {
       baseComponent: true,
     });
 
@@ -252,12 +251,12 @@ describe("createStyleContext", () => {
   test("should merge in css from parent components", () => {
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 
-    const RootProviderRoot = withRootProvider<MockContextProps>(MockContext);
+    const RootProviderRoot = withRootProvider(MockContext);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const ContextRoot = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ContextRoot = withContext(ark.div, "root", {
       baseComponent: true,
     });
 
@@ -307,12 +306,12 @@ describe("createStyleContext", () => {
   test("should automatically forward the css prop when asChild is true", () => {
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 
-    const RootProviderRoot = withRootProvider<MockContextProps>(MockContext);
+    const RootProviderRoot = withRootProvider(MockContext);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const ContextRoot = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ContextRoot = withContext(ark.div, "root", {
       baseComponent: true,
     });
 
@@ -358,23 +357,23 @@ describe("createStyleContext", () => {
   test("seamlessly merges components from two different sets", () => {
     const styledA = createStyleContext(svaA);
 
-    const ARootProviderRoot = styledA.withRootProvider<MockContextProps>(MockContext);
+    const ARootProviderRoot = styledA.withRootProvider(MockContext);
 
-    const AProviderRoot = styledA.withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const AProviderRoot = styledA.withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const AContextRoot = styledA.withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const AContextRoot = styledA.withContext(ark.div, "root", {
       baseComponent: true,
     });
 
     const styledB = createStyleContext(svaB);
 
-    const BRootProviderRoot = styledB.withRootProvider<MockContextProps>(MockContext);
+    const BRootProviderRoot = styledB.withRootProvider(MockContext);
 
-    const BProviderRoot = styledB.withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const BProviderRoot = styledB.withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const BContextRoot = styledB.withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const BContextRoot = styledB.withContext(ark.div, "root", {
       baseComponent: true,
     });
 
@@ -418,12 +417,12 @@ describe("createStyleContext", () => {
   test("seamlessly merges components onto non-styled components", () => {
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 
-    const RootProviderRoot = withRootProvider<MockContextProps>(MockContext);
+    const RootProviderRoot = withRootProvider(MockContext);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
     });
-    const ContextRoot = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "root", {
+    const ContextRoot = withContext(ark.div, "root", {
       baseComponent: true,
     });
 
@@ -462,10 +461,10 @@ describe("createStyleContext", () => {
 
     const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
 
-    const RootProviderRoot = withRootProvider<MockContextProps>(MockContext);
+    const RootProviderRoot = withRootProvider(MockContext);
 
-    const ProviderRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(Text, "root");
-    const ContextRoot = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(Text, "root");
+    const ProviderRoot = withProvider(Text, "root");
+    const ContextRoot = withContext(Text, "root");
 
     const rootProviderResult = render(
       <RootProviderRoot>

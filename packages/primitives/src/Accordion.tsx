@@ -8,8 +8,8 @@
 
 import { Accordion, accordionAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 
 const accordionRecipe = sva({
   slots: accordionAnatomy.keys(),
@@ -128,32 +128,14 @@ export type AccordionVariantProps = RecipeVariantProps<typeof accordionRecipe>;
 
 export interface AccordionRootProps extends JsxStyleProps, Accordion.RootProps {}
 
-export const AccordionRoot = withProvider<HTMLDivElement, AccordionRootProps & AccordionVariantProps>(
-  Accordion.Root,
-  "root",
-  { baseComponent: true },
-);
+export const AccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
 
-export const AccordionItemContent = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemContentProps>(
-  Accordion.ItemContent,
-  "itemContent",
-  { baseComponent: true },
-);
+export const AccordionItemContent = withContext(Accordion.ItemContent, "itemContent", { baseComponent: true });
 
-export const AccordionItemIndicator = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemIndicatorProps>(
-  Accordion.ItemIndicator,
-  "itemIndicator",
-  { baseComponent: true },
-);
+export const AccordionItemIndicator = withContext(Accordion.ItemIndicator, "itemIndicator", { baseComponent: true });
 
 export interface AccordionItemProps extends JsxStyleProps, Accordion.ItemProps {}
 
-export const AccordionItem = withContext<HTMLDivElement, AccordionItemProps>(Accordion.Item, "item", {
-  baseComponent: true,
-});
+export const AccordionItem = withContext(Accordion.Item, "item", { baseComponent: true });
 
-export const AccordionItemTrigger = withContext<HTMLButtonElement, JsxStyleProps & Accordion.ItemTriggerProps>(
-  Accordion.ItemTrigger,
-  "itemTrigger",
-  { baseComponent: true },
-);
+export const AccordionItemTrigger = withContext(Accordion.ItemTrigger, "itemTrigger", { baseComponent: true });

@@ -8,8 +8,8 @@
 
 import { Slider, sliderAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
 import { type TextProps } from "./Text";
 
@@ -86,27 +86,17 @@ const { withProvider, withContext } = createStyleContext(sliderRecipe);
 
 export type SliderRootProps = Slider.RootProps & JsxStyleProps;
 
-export const SliderRoot = withProvider<HTMLDivElement, SliderRootProps>(Slider.Root, "root", { baseComponent: true });
+export const SliderRoot = withProvider(Slider.Root, "root", { baseComponent: true });
 
-export const SliderControl = withContext<HTMLDivElement, JsxStyleProps & Slider.ControlProps>(
-  Slider.Control,
-  "control",
-  { baseComponent: true },
-);
+export const SliderControl = withContext(Slider.Control, "control", { baseComponent: true });
 
-export const SliderTrack = withContext<HTMLDivElement, JsxStyleProps & Slider.TrackProps>(Slider.Track, "track", {
-  baseComponent: true,
-});
+export const SliderTrack = withContext(Slider.Track, "track", { baseComponent: true });
 
-export const SliderRange = withContext<HTMLDivElement, JsxStyleProps & Slider.RangeProps>(Slider.Range, "range", {
-  baseComponent: true,
-});
+export const SliderRange = withContext(Slider.Range, "range", { baseComponent: true });
 
-export const SliderThumb = withContext<HTMLDivElement, JsxStyleProps & Slider.ThumbProps>(Slider.Thumb, "thumb", {
-  baseComponent: true,
-});
+export const SliderThumb = withContext(Slider.Thumb, "thumb", { baseComponent: true });
 
-const InternalSliderLabel = withContext<HTMLDivElement, JsxStyleProps & Slider.LabelProps>(Slider.Label, "label");
+const InternalSliderLabel = withContext(Slider.Label, "label");
 
 export const SliderLabel = ({
   textStyle = "label.medium",

@@ -7,11 +7,10 @@
  */
 
 import { forwardRef } from "react";
-import { Dialog, dialogAnatomy, type DialogRootProviderProps, useDialog as _useDialog } from "@ark-ui/react";
+import { Dialog, dialogAnatomy, useDialog as _useDialog } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
+import { createStyleContext, styled } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 import { Heading, Text, type TextProps } from "./Text";
 
 const dialogRecipe = sva({
@@ -313,29 +312,17 @@ export type DialogVariantProps = RecipeVariantProps<typeof dialogRecipe>;
 
 export type DialogRootProps = Dialog.RootProps & DialogVariantProps;
 
-export const InternalDialogRoot = withRootProvider<DialogRootProps>(Dialog.Root);
+export const InternalDialogRoot = withRootProvider(Dialog.Root);
 
 export const DialogRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: DialogRootProps) => (
   <InternalDialogRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const DialogBackdrop = withContext<HTMLDivElement, JsxStyleProps & Dialog.BackdropProps>(
-  Dialog.Backdrop,
-  "backdrop",
-  { baseComponent: true },
-);
+export const DialogBackdrop = withContext(Dialog.Backdrop, "backdrop", { baseComponent: true });
 
-export const DialogStandaloneContent = withContext<HTMLDivElement, JsxStyleProps & Dialog.ContentProps>(
-  Dialog.Content,
-  "content",
-  { baseComponent: true },
-);
+export const DialogStandaloneContent = withContext(Dialog.Content, "content", { baseComponent: true });
 
-export const DialogPositioner = withContext<HTMLDivElement, JsxStyleProps & Dialog.PositionerProps>(
-  Dialog.Positioner,
-  "positioner",
-  { baseComponent: true },
-);
+export const DialogPositioner = withContext(Dialog.Positioner, "positioner", { baseComponent: true });
 
 export const DialogContent = forwardRef<HTMLDivElement, Dialog.ContentProps & JsxStyleProps>((props, ref) => (
   <>
@@ -346,10 +333,7 @@ export const DialogContent = forwardRef<HTMLDivElement, Dialog.ContentProps & Js
   </>
 ));
 
-const InternalDialogDescription = withContext<HTMLParagraphElement, JsxStyleProps & Dialog.DescriptionProps>(
-  Dialog.Description,
-  "description",
-);
+const InternalDialogDescription = withContext(Dialog.Description, "description");
 
 export const DialogDescription = ({
   textStyle = "body.large",
@@ -365,7 +349,7 @@ export const DialogDescription = ({
   );
 };
 
-const InternalDialogTitle = withContext<HTMLHeadingElement, JsxStyleProps & Dialog.TitleProps>(Dialog.Title, "title");
+const InternalDialogTitle = withContext(Dialog.Title, "title");
 
 export const DialogTitle = ({
   textStyle = "title.medium",
@@ -379,17 +363,9 @@ export const DialogTitle = ({
   </InternalDialogTitle>
 );
 
-export const DialogTrigger = withContext<HTMLButtonElement, JsxStyleProps & Dialog.TriggerProps>(
-  Dialog.Trigger,
-  "trigger",
-  { baseComponent: true },
-);
+export const DialogTrigger = withContext(Dialog.Trigger, "trigger", { baseComponent: true });
 
-export const DialogCloseTrigger = withContext<HTMLButtonElement, JsxStyleProps & Dialog.CloseTriggerProps>(
-  Dialog.CloseTrigger,
-  "closeTrigger",
-  { baseComponent: true },
-);
+export const DialogCloseTrigger = withContext(Dialog.CloseTrigger, "closeTrigger", { baseComponent: true });
 
 export const DialogHeader = styled("div", {
   base: {
@@ -425,6 +401,6 @@ export const DialogFooter = styled("div", {
   },
 });
 
-export const DialogRootProvider = withRootProvider<DialogRootProviderProps>(Dialog.RootProvider);
+export const DialogRootProvider = withRootProvider(Dialog.RootProvider);
 
 export const useDialog = _useDialog;

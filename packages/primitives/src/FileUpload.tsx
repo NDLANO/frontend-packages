@@ -9,8 +9,8 @@
 import { forwardRef } from "react";
 import { type Assign, FileUpload, fileUploadAnatomy } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 import { Label } from "./Label";
 import { type TextProps, Text } from "./Text";
 
@@ -102,59 +102,27 @@ export type FileUploadRootProps = FileUpload.RootProps & FileUploadVariantProps;
 export const FileUploadHiddenInput = FileUpload.HiddenInput;
 export const FileUploadContext = FileUpload.Context;
 
-export const FileUploadRoot = withProvider<HTMLDivElement, Assign<FileUploadRootProps, JsxStyleProps>>(
-  FileUpload.Root,
-  "root",
-  {
-    baseComponent: true,
-  },
-);
+export const FileUploadRoot = withProvider(FileUpload.Root, "root", { baseComponent: true });
 
-export const FileUploadDropzone = withContext<HTMLDivElement, Assign<FileUpload.DropzoneProps, JsxStyleProps>>(
-  FileUpload.Dropzone,
-  "dropzone",
-  { baseComponent: true },
-);
+export const FileUploadDropzone = withContext(FileUpload.Dropzone, "dropzone", { baseComponent: true });
 
-export const FileUploadTrigger = withContext<HTMLButtonElement, Assign<FileUpload.TriggerProps, JsxStyleProps>>(
-  FileUpload.Trigger,
-  "trigger",
-  { baseComponent: true },
-);
+export const FileUploadTrigger = withContext(FileUpload.Trigger, "trigger", { baseComponent: true });
 
-export const FileUploadItemGroup = withContext<HTMLUListElement, Assign<FileUpload.ItemGroupProps, JsxStyleProps>>(
-  FileUpload.ItemGroup,
-  "itemGroup",
-  { baseComponent: true },
-);
+export const FileUploadItemGroup = withContext(FileUpload.ItemGroup, "itemGroup", { baseComponent: true });
 
-export const FileUploadItemPreview = withContext<HTMLDivElement, Assign<FileUpload.ItemPreviewProps, JsxStyleProps>>(
-  FileUpload.ItemPreview,
-  "itemPreview",
-  { baseComponent: true },
-);
+export const FileUploadItemPreview = withContext(FileUpload.ItemPreview, "itemPreview", { baseComponent: true });
 
-export const FileUploadItem = withContext<HTMLDivElement, Assign<FileUpload.ItemProps, JsxStyleProps>>(
-  FileUpload.Item,
-  "item",
-  { baseComponent: true },
-);
+export const FileUploadItem = withContext(FileUpload.Item, "item", { baseComponent: true });
 
-export const FileUploadItemDeleteTrigger = withContext<
-  HTMLButtonElement,
-  Assign<FileUpload.ItemDeleteTriggerProps, JsxStyleProps>
->(FileUpload.ItemDeleteTrigger, "itemDeleteTrigger", { baseComponent: true });
+export const FileUploadItemDeleteTrigger = withContext(FileUpload.ItemDeleteTrigger, "itemDeleteTrigger", {
+  baseComponent: true,
+});
 
-export const FileUploadItemPreviewImage = withContext<
-  HTMLImageElement,
-  Assign<FileUpload.ItemPreviewImageProps, JsxStyleProps>
->(FileUpload.ItemPreviewImage, "itemPreviewImage", { baseComponent: true });
+export const FileUploadItemPreviewImage = withContext(FileUpload.ItemPreviewImage, "itemPreviewImage", {
+  baseComponent: true,
+});
 
-const InternalFileUploadItemName = withContext<HTMLDivElement, Assign<FileUpload.ItemNameProps, JsxStyleProps>>(
-  FileUpload.ItemName,
-  "itemName",
-  { baseComponent: true },
-);
+const InternalFileUploadItemName = withContext(FileUpload.ItemName, "itemName", { baseComponent: true });
 
 export const FileUploadItemName = forwardRef<
   HTMLDivElement,
@@ -166,11 +134,7 @@ export const FileUploadItemName = forwardRef<
   </Text>
 ));
 
-const InternalFileUploadItemSizeText = withContext<HTMLDivElement, Assign<FileUpload.ItemSizeTextProps, JsxStyleProps>>(
-  FileUpload.ItemSizeText,
-  "itemSizeText",
-  { baseComponent: true },
-);
+const InternalFileUploadItemSizeText = withContext(FileUpload.ItemSizeText, "itemSizeText", { baseComponent: true });
 
 export const FileUploadItemSizeText = forwardRef<
   HTMLDivElement,
@@ -181,10 +145,7 @@ export const FileUploadItemSizeText = forwardRef<
   </Text>
 ));
 
-const InternalFileUploadLabel = withContext<HTMLLabelElement, Assign<FileUpload.LabelProps, JsxStyleProps>>(
-  FileUpload.Label,
-  "label",
-);
+const InternalFileUploadLabel = withContext(FileUpload.Label, "label");
 
 export const FileUploadLabel = forwardRef<HTMLLabelElement, Assign<FileUpload.LabelProps, JsxStyleProps & TextProps>>(
   ({ textStyle = "label.medium", fontWeight = "light", children, ...props }, ref) => (

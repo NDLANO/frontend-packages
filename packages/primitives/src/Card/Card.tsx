@@ -6,12 +6,12 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type ComponentType } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "../createStyleContext";
-import { type ImageProps, Image } from "../Image";
+import { Image } from "../Image";
 import { Heading, type TextProps } from "../Text";
 
 const cardRecipe = sva({
@@ -73,9 +73,7 @@ export type CardVariantProps = RecipeVariantProps<typeof cardRecipe>;
 
 export type CardRootProps = HTMLArkProps<"article"> & JsxStyleProps & CardVariantProps;
 
-export const CardRoot = withProvider<HTMLElement, CardRootProps>(ark.article, "root", {
-  baseComponent: true,
-});
+export const CardRoot = withProvider(ark.article, "root", { baseComponent: true });
 
 const InternalCardHeading = forwardRef<HTMLHeadingElement, TextProps>(
   ({ textStyle = "label.large", fontWeight = "bold", ...props }, ref) => (
@@ -83,13 +81,8 @@ const InternalCardHeading = forwardRef<HTMLHeadingElement, TextProps>(
   ),
 );
 
-export const CardHeading = withContext<HTMLHeadingElement, TextProps & HTMLArkProps<"p"> & JsxStyleProps>(
-  InternalCardHeading,
-  "title",
-);
+export const CardHeading = withContext<ComponentType<HTMLArkProps<"p"> & TextProps>>(InternalCardHeading, "title");
 
-export const CardContent = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "content", {
-  baseComponent: true,
-});
+export const CardContent = withContext(ark.div, "content", { baseComponent: true });
 
-export const CardImage = withContext<HTMLImageElement, ImageProps>(Image, "image");
+export const CardImage = withContext(Image, "image");

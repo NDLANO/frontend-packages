@@ -49,11 +49,11 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   const contextConsume = options.baseComponent || Dynamic.__base__ || typeof Dynamic === "string"`,
   );
 
-  const propsCode = "const { as: Element = __base__, children, ...restProps } = props";
+  const propsCode = "const { as: Element = __base__, unstyled, children, ...restProps } = props";
 
   factoryJs.code = factoryJs.code.replace(
     propsCode,
-    `const { as: Element = __base__, consumeCss, children, ...restProps } = props
+    `const { as: Element = __base__, unstyled, consumeCss, children, ...restProps } = props
 
     const consume = props.asChild
       ? consumeCss && (options.baseComponent || Dynamic.__baseComponent__)
@@ -83,7 +83,7 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   StyledComponent.__baseComponent__ = options.baseComponent || Dynamic.__baseComponent__`,
   );
 
-  const shouldForwardPropCode = "shouldForwardProp?(prop: string, variantKeys: string[]): boolean";
+  const shouldForwardPropCode = "shouldForwardProp?: (prop: string, variantKeys: string[]) => boolean";
 
   jsxTypes.code = jsxTypes.code.replace(
     shouldForwardPropCode,

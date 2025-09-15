@@ -9,8 +9,8 @@
 import { forwardRef } from "react";
 import { Tooltip, tooltipAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 
 const tooltipRecipe = sva({
   slots: tooltipAnatomy.keys(),
@@ -42,23 +42,13 @@ const tooltipRecipe = sva({
 const { withRootProvider, withContext } = createStyleContext(tooltipRecipe);
 
 export type TooltipRootProps = Tooltip.RootProps;
-export const TooltipRoot = withRootProvider<TooltipRootProps>(Tooltip.Root);
+export const TooltipRoot = withRootProvider(Tooltip.Root);
 
-export const TooltipArrow = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ArrowProps>(Tooltip.Arrow, "arrow", {
-  baseComponent: true,
-});
+export const TooltipArrow = withContext(Tooltip.Arrow, "arrow", { baseComponent: true });
 
-export const TooltipArrowTip = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ArrowTipProps>(
-  Tooltip.ArrowTip,
-  "arrowTip",
-  { baseComponent: true },
-);
+export const TooltipArrowTip = withContext(Tooltip.ArrowTip, "arrowTip", { baseComponent: true });
 
-export const TooltipContentStandalone = withContext<HTMLDivElement, JsxStyleProps & Tooltip.ContentProps>(
-  Tooltip.Content,
-  "content",
-  { baseComponent: true },
-);
+export const TooltipContentStandalone = withContext(Tooltip.Content, "content", { baseComponent: true });
 
 export const TooltipContent = forwardRef<HTMLDivElement, JsxStyleProps & Tooltip.ContentProps>(
   ({ children, ...props }, ref) => (
@@ -73,14 +63,6 @@ export const TooltipContent = forwardRef<HTMLDivElement, JsxStyleProps & Tooltip
   ),
 );
 
-export const TooltipPositioner = withContext<HTMLDivElement, JsxStyleProps & Tooltip.PositionerProps>(
-  Tooltip.Positioner,
-  "positioner",
-  { baseComponent: true },
-);
+export const TooltipPositioner = withContext(Tooltip.Positioner, "positioner", { baseComponent: true });
 
-export const TooltipTrigger = withContext<HTMLButtonElement, JsxStyleProps & Tooltip.TriggerProps>(
-  Tooltip.Trigger,
-  "trigger",
-  { baseComponent: true },
-);
+export const TooltipTrigger = withContext(Tooltip.Trigger, "trigger", { baseComponent: true });

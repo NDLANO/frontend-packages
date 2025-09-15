@@ -8,8 +8,8 @@
 
 import { Tabs } from "@ark-ui/react";
 import { type RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 
 const tabsRecipe = sva({
   // TODO: This still doesn't work. Need to figure out why we need to pass keys manually.
@@ -224,29 +224,19 @@ interface RootProps extends Tabs.RootProps {
 
 export type TabsRootProps = RootProps & TabsVariantProps & JsxStyleProps;
 
-const InternalTabsRoot = withProvider<HTMLDivElement, TabsRootProps>(Tabs.Root, "root", { baseComponent: true });
+const InternalTabsRoot = withProvider(Tabs.Root, "root", { baseComponent: true });
 
 export const TabsRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: TabsRootProps) => (
   <InternalTabsRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const TabsContent = withContext<HTMLDivElement, Tabs.ContentProps & JsxStyleProps>(Tabs.Content, "content", {
-  baseComponent: true,
-});
+export const TabsContent = withContext(Tabs.Content, "content", { baseComponent: true });
 
-export const TabsIndicator = withContext<HTMLDivElement, Tabs.IndicatorProps & JsxStyleProps>(
-  Tabs.Indicator,
-  "indicator",
-  { baseComponent: true },
-);
+export const TabsIndicator = withContext(Tabs.Indicator, "indicator", { baseComponent: true });
 
-export const TabsList = withContext<HTMLDivElement, Tabs.ListProps & JsxStyleProps>(Tabs.List, "list", {
-  baseComponent: true,
-});
+export const TabsList = withContext(Tabs.List, "list", { baseComponent: true });
 
-const InternalTabsTrigger = withContext<HTMLButtonElement, Tabs.TriggerProps & JsxStyleProps>(Tabs.Trigger, "trigger", {
-  baseComponent: true,
-});
+const InternalTabsTrigger = withContext(Tabs.Trigger, "trigger", { baseComponent: true });
 
 export const TabsTrigger = ({ className, ...props }: Tabs.TriggerProps & JsxStyleProps) => (
   <InternalTabsTrigger className={cx("peer", className)} {...props} />

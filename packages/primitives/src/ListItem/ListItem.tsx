@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type ComponentType } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "../createStyleContext";
 import { Image, type ImageProps } from "../Image";
 import { Heading, type TextProps } from "../Text";
 
@@ -199,13 +199,7 @@ interface InteractiveListItemProps extends BaseListItemProps, ListItemVariantPro
 
 export type ListItemProps = NonInteractiveListItemProps | InteractiveListItemProps;
 
-const InternalListItemRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps & ListItemVariantProps>(
-  ark.div,
-  "root",
-  {
-    baseComponent: true,
-  },
-);
+const InternalListItemRoot = withProvider(ark.div, "root", { baseComponent: true });
 
 export const ListItemRoot = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => (
   <InternalListItemRoot
@@ -219,16 +213,14 @@ const InternalListItemHeading = forwardRef<HTMLHeadingElement, TextProps>(
   ({ textStyle = "label.medium", ...props }, ref) => <Heading textStyle={textStyle} {...props} ref={ref} />,
 );
 
-export const ListItemHeading = withContext<HTMLHeadingElement, TextProps & HTMLArkProps<"p"> & JsxStyleProps>(
+export const ListItemHeading = withContext<ComponentType<HTMLArkProps<"p"> & TextProps>>(
   InternalListItemHeading,
   "title",
 );
 
-export const ListItemContent = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "content", {
-  baseComponent: true,
-});
+export const ListItemContent = withContext(ark.div, "content", { baseComponent: true });
 
-const InternalListItemImage = withContext<HTMLImageElement, ImageProps>(Image, "image");
+const InternalListItemImage = withContext(Image, "image");
 
 export const ListItemImage = forwardRef<HTMLImageElement, ImageProps>(({ variant = "rounded", ...props }, ref) => (
   <InternalListItemImage variant={variant} {...props} ref={ref} />

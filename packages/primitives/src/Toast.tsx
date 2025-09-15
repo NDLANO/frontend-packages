@@ -8,8 +8,8 @@
 
 import { Toast, toastAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
 import { Text, type TextProps } from "./Text";
 
 const toastRecipe = sva({
@@ -75,24 +75,13 @@ const { withProvider, withContext } = createStyleContext(toastRecipe);
 export type ToastRootVariantProps = NonNullable<RecipeVariantProps<typeof toastRecipe>>;
 
 export interface ToastRootProps extends Toast.RootProps, JsxStyleProps, ToastRootVariantProps {}
-export const ToastRoot = withProvider<HTMLDivElement, ToastRootProps>(Toast.Root, "root", { baseComponent: true });
+export const ToastRoot = withProvider(Toast.Root, "root", { baseComponent: true });
 
-export const ToastActionTrigger = withContext<HTMLButtonElement, JsxStyleProps & Toast.ActionTriggerProps>(
-  Toast.ActionTrigger,
-  "actionTrigger",
-  { baseComponent: true },
-);
+export const ToastActionTrigger = withContext(Toast.ActionTrigger, "actionTrigger", { baseComponent: true });
 
-export const ToastCloseTrigger = withContext<HTMLDivElement, JsxStyleProps & Toast.CloseTriggerProps>(
-  Toast.CloseTrigger,
-  "closeTrigger",
-  { baseComponent: true },
-);
+export const ToastCloseTrigger = withContext(Toast.CloseTrigger, "closeTrigger", { baseComponent: true });
 
-const InternalToastDescription = withContext<HTMLDivElement, JsxStyleProps & Toast.DescriptionProps>(
-  Toast.Description,
-  "description",
-);
+const InternalToastDescription = withContext(Toast.Description, "description");
 
 export const ToastDescription = ({
   textStyle = "label.medium",
@@ -106,7 +95,7 @@ export const ToastDescription = ({
   </InternalToastDescription>
 );
 
-const InternalToastTitle = withContext<HTMLDivElement, JsxStyleProps & Toast.TitleProps>(Toast.Title, "title");
+const InternalToastTitle = withContext(Toast.Title, "title");
 
 export const ToastTitle = ({
   textStyle = "label.medium",

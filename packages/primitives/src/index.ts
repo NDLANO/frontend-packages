@@ -36,8 +36,6 @@ export { Button, IconButton, buttonBaseRecipe, buttonRecipe, iconButtonRecipe } 
 export type { CardRootProps, CardVariantProps } from "./Card/Card";
 export { CardRoot, CardHeading, CardContent, CardImage } from "./Card/Card";
 
-export { createStyleContext } from "./createStyleContext";
-
 export { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
 export type { ToggleGroupRootProps, ToggleGroupVariantProps, ToggleGroupItemProps } from "./ToggleGroup";
 

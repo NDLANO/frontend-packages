@@ -8,22 +8,27 @@
 
 import { metaTypes } from "./CCRel";
 
+const creators = [
+  "originator",
+  "photographer",
+  "artist",
+  "writer",
+  "scriptwriter",
+  "reader",
+  "translator",
+  "director",
+  "illustrator",
+  "cowriter",
+  "composer",
+];
+const processors = ["processor", "facilitator", "editorial", "linguistic", "idea", "compiler", "correction"];
+const rightsholders = ["rightsholder", "publisher", "distributor", "supplier"];
+
 export const contributorGroups = {
-  creators: [
-    "originator",
-    "photographer",
-    "artist",
-    "writer",
-    "scriptwriter",
-    "reader",
-    "translator",
-    "director",
-    "illustrator",
-    "cowriter",
-    "composer",
-  ],
-  processors: ["processor", "facilitator", "editorial", "linguistic", "idea", "compiler", "correction"],
-  rightsholders: ["rightsholder", "publisher", "distributor", "supplier"],
+  creators,
+  processors,
+  rightsholders,
+  contributors: [...creators, ...rightsholders, ...processors],
 };
 
 export interface ContributorTypes {

@@ -1,7 +1,7 @@
 {
   "name": "@ndla/video-search",
   "type": "module",
-  "version": "8.0.112-alpha.0",
+  "version": "8.0.113-alpha.0",
   "description": "A simple library for searching NDLA videos",
   "license": "GPL-3.0",
   "exports": {

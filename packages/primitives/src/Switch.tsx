@@ -8,8 +8,8 @@
 
 import { Switch, switchAnatomy } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "./Text";
 
 const switchRecipe = sva({
@@ -111,29 +111,21 @@ const switchRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(switchRecipe);
 
-export type SwitchVariantProps = RecipeVariantProps<typeof switchRecipe>;
+export type SwitchVariantProps = NonNullable<RecipeVariantProps<typeof switchRecipe>>;
 
-export type SwitchRootProps = Switch.RootProps & JsxStyleProps & SwitchVariantProps;
+export interface SwitchRootProps extends Switch.RootProps, StyledProps, SwitchVariantProps {}
 
-export const SwitchRoot = withProvider<HTMLLabelElement, SwitchRootProps>(Switch.Root, "root", { baseComponent: true });
+export const SwitchRoot = withProvider(Switch.Root, "root", { baseComponent: true });
 
-export const SwitchControl = withContext<HTMLSpanElement, JsxStyleProps & Switch.ControlProps>(
-  Switch.Control,
-  "control",
-  { baseComponent: true },
-);
+export const SwitchControl = withContext(Switch.Control, "control", { baseComponent: true });
 
-export const SwitchThumb = withContext<HTMLSpanElement, JsxStyleProps & Switch.ThumbProps>(Switch.Thumb, "thumb", {
-  baseComponent: true,
-});
+export const SwitchThumb = withContext(Switch.Thumb, "thumb", { baseComponent: true });
 
-const InternalSwitchLabel = withContext<HTMLSpanElement, JsxStyleProps & Switch.LabelProps>(Switch.Label, "label");
+const InternalSwitchLabel = withContext(Switch.Label, "label");
 
-export const SwitchLabel = ({
-  textStyle = "label.medium",
-  children,
-  ...props
-}: Switch.LabelProps & TextProps & JsxStyleProps) => (
+interface SwitchLabelProps extends Omit<Switch.LabelProps, "color">, TextProps, StyledProps {}
+
+export const SwitchLabel = ({ textStyle = "label.medium", children, ...props }: SwitchLabelProps) => (
   <InternalSwitchLabel asChild {...props}>
     <Text asChild consumeCss textStyle={textStyle}>
       <span>{children}</span>

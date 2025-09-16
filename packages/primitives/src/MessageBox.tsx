@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const messageBoxRecipe = cva({
   base: {
@@ -46,9 +46,9 @@ const messageBoxRecipe = cva({
   },
 });
 
-export type MessageBoxVariantProps = RecipeVariantProps<typeof messageBoxRecipe>;
+export type MessageBoxVariantProps = NonNullable<RecipeVariantProps<typeof messageBoxRecipe>>;
 
-export type MessageBoxProps = HTMLArkProps<"div"> & JsxStyleProps & MessageBoxVariantProps;
+export interface MessageBoxProps extends HTMLArkProps<"div">, StyledProps, MessageBoxVariantProps {}
 
 const StyledMessageBox = styled(ark.div, {}, { baseComponent: true });
 

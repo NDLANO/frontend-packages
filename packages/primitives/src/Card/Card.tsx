@@ -9,9 +9,9 @@
 import { forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "../createStyleContext";
-import { type ImageProps, Image } from "../Image";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import { Image } from "../Image";
 import { Heading, type TextProps } from "../Text";
 
 const cardRecipe = sva({
@@ -69,27 +69,22 @@ const cardRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(cardRecipe);
 
-export type CardVariantProps = RecipeVariantProps<typeof cardRecipe>;
+export type CardVariantProps = NonNullable<RecipeVariantProps<typeof cardRecipe>>;
 
-export type CardRootProps = HTMLArkProps<"article"> & JsxStyleProps & CardVariantProps;
+export interface CardRootProps extends HTMLArkProps<"article">, StyledProps, CardVariantProps {}
 
-export const CardRoot = withProvider<HTMLElement, CardRootProps>(ark.article, "root", {
-  baseComponent: true,
-});
+export const CardRoot = withProvider(ark.article, "root", { baseComponent: true });
 
-const InternalCardHeading = forwardRef<HTMLHeadingElement, TextProps>(
+interface CardHeadingProps extends StyledProps, Omit<HTMLArkProps<"p">, "color">, TextProps {}
+
+const InternalCardHeading = forwardRef<HTMLHeadingElement, CardHeadingProps>(
   ({ textStyle = "label.large", fontWeight = "bold", ...props }, ref) => (
     <Heading textStyle={textStyle} fontWeight={fontWeight} {...props} ref={ref} />
   ),
 );
 
-export const CardHeading = withContext<HTMLHeadingElement, TextProps & HTMLArkProps<"p"> & JsxStyleProps>(
-  InternalCardHeading,
-  "title",
-);
+export const CardHeading = withContext(InternalCardHeading, "title");
 
-export const CardContent = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "content", {
-  baseComponent: true,
-});
+export const CardContent = withContext(ark.div, "content", { baseComponent: true });
 
-export const CardImage = withContext<HTMLImageElement, ImageProps>(Image, "image");
+export const CardImage = withContext(Image, "image");

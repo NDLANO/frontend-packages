@@ -9,8 +9,7 @@
 import { forwardRef } from "react";
 import { DatePicker, datePickerAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext, type StyledProps } from "@ndla/styled-system/jsx";
 import { Label } from "./Label";
 import type { TextProps } from "./Text";
 
@@ -83,205 +82,83 @@ const datePickerRecipe = sva({
 });
 const { withProvider, withContext } = createStyleContext(datePickerRecipe);
 
-export interface DatePickerRootProps extends DatePicker.RootProps, JsxStyleProps {
+export interface DatePickerRootProps extends DatePicker.RootProps, StyledProps {
   translations: DatePicker.RootProps["translations"];
   locale: DatePicker.RootProps["locale"];
 }
 
-export const DatePickerRoot = withProvider<HTMLDivElement, DatePickerRootProps>(DatePicker.Root, "root", {
+export const DatePickerRoot = withProvider(DatePicker.Root, "root", { baseComponent: true });
+
+export const DatePickerClearTrigger = withContext(DatePicker.ClearTrigger, "clearTrigger", {
   baseComponent: true,
 });
 
-interface ClearTriggerProps extends DatePicker.ClearTriggerProps, JsxStyleProps {}
+interface DatePickerContentProps extends DatePicker.ContentProps, StyledProps {}
 
-export const DatePickerClearTrigger = withContext<HTMLButtonElement, ClearTriggerProps>(
-  DatePicker.ClearTrigger,
-  "clearTrigger",
-  {
-    baseComponent: true,
-  },
-);
-
-export const DatePickerContent = forwardRef<HTMLDivElement, DatePicker.ContentProps & JsxStyleProps>((props, ref) => (
+export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentProps>((props, ref) => (
   <DatePickerPositioner>
     <DatePickerStandaloneContent {...props} ref={ref} />
   </DatePickerPositioner>
 ));
 
-interface DatePickerContentProps extends DatePicker.ContentProps, JsxStyleProps {}
+export const DatePickerStandaloneContent = withContext(DatePicker.Content, "content", { baseComponent: true });
 
-export const DatePickerStandaloneContent = withContext<HTMLDivElement, DatePickerContentProps>(
-  DatePicker.Content,
-  "content",
-  {
-    baseComponent: true,
-  },
-);
+export const DatePickerControl = withContext(DatePicker.Control, "control", { baseComponent: true });
 
-interface DatePickerControlProps extends DatePicker.ControlProps, JsxStyleProps {}
+export const DatePickerInput = withContext(DatePicker.Input, "input", { baseComponent: true });
 
-export const DatePickerControl = withContext<HTMLDivElement, DatePickerControlProps>(DatePicker.Control, "control", {
-  baseComponent: true,
-});
+interface DatePickerLabelProps extends Omit<DatePicker.LabelProps, "color">, StyledProps, TextProps {}
 
-interface DatePickerInputProps extends DatePicker.InputProps, JsxStyleProps {}
-
-export const DatePickerInput = withContext<HTMLInputElement, DatePickerInputProps>(DatePicker.Input, "input", {
-  baseComponent: true,
-});
-
-interface DatePickerLabelProps extends DatePicker.LabelProps, JsxStyleProps {}
-
-const InternalDatePickerLabel = withContext<HTMLLabelElement, DatePickerLabelProps>(DatePicker.Label, "label");
+const InternalDatePickerLabel = withContext(DatePicker.Label, "label");
 
 export const DatePickerLabel = ({
   textStyle = "label.medium",
   fontWeight = "bold",
   ...props
-}: DatePickerLabelProps & TextProps) => (
+}: DatePickerLabelProps) => (
   <InternalDatePickerLabel asChild>
     <Label textStyle={textStyle} fontWeight={fontWeight} {...props} />
   </InternalDatePickerLabel>
 );
 
-interface DatePickerMonthSelectProps extends DatePicker.MonthSelectProps, JsxStyleProps {}
+export const DatePickerMonthSelect = withContext(DatePicker.MonthSelect, "monthSelect", { baseComponent: true });
 
-export const DatePickerMonthSelect = withContext<HTMLSelectElement, DatePickerMonthSelectProps>(
-  DatePicker.MonthSelect,
-  "monthSelect",
-  { baseComponent: true },
-);
+interface DatePickerNextTrigger extends DatePicker.NextTriggerProps, StyledProps {}
 
-interface DatePickerNextTrigger extends DatePicker.NextTriggerProps, JsxStyleProps {}
+export const DatePickerNextTrigger = withContext(DatePicker.NextTrigger, "nextTrigger", { baseComponent: true });
 
-export const DatePickerNextTrigger = withContext<HTMLButtonElement, DatePickerNextTrigger>(
-  DatePicker.NextTrigger,
-  "nextTrigger",
-  { baseComponent: true },
-);
+export const DatePickerPositioner = withContext(DatePicker.Positioner, "positioner", { baseComponent: true });
 
-interface DatePickerPositionerProps extends DatePicker.PositionerProps, JsxStyleProps {}
+export const DatePickerPresetTrigger = withContext(DatePicker.PresetTrigger, "presetTrigger", { baseComponent: true });
 
-export const DatePickerPositioner = withContext<HTMLDivElement, DatePickerPositionerProps>(
-  DatePicker.Positioner,
-  "positioner",
-  {
-    baseComponent: true,
-  },
-);
+export const DatePickerPrevTrigger = withContext(DatePicker.PrevTrigger, "prevTrigger", { baseComponent: true });
 
-interface DatePickerPresetTriggerProps extends DatePicker.PresetTriggerProps, JsxStyleProps {}
+export const DatePickerRangeText = withContext(DatePicker.RangeText, "rangeText", { baseComponent: true });
 
-export const DatePickerPresetTrigger = withContext<HTMLButtonElement, DatePickerPresetTriggerProps>(
-  DatePicker.PresetTrigger,
-  "presetTrigger",
-  { baseComponent: true },
-);
+export const DatePickerTableBody = withContext(DatePicker.TableBody, "tableBody", { baseComponent: true });
 
-interface DatePickerPrevTriggerProps extends DatePicker.PrevTriggerProps, JsxStyleProps {}
+export const DatePickerTableCell = withContext(DatePicker.TableCell, "tableCell", { baseComponent: true });
 
-export const DatePickerPrevTrigger = withContext<HTMLButtonElement, DatePickerPrevTriggerProps>(
-  DatePicker.PrevTrigger,
-  "prevTrigger",
-  { baseComponent: true },
-);
-
-interface DatePickerRangeTextProps extends DatePicker.RangeTextProps, JsxStyleProps {}
-
-export const DatePickerRangeText = withContext<HTMLDivElement, DatePickerRangeTextProps>(
-  DatePicker.RangeText,
-  "rangeText",
-  { baseComponent: true },
-);
-
-interface DatePickerTableBodyProps extends DatePicker.TableBodyProps, JsxStyleProps {}
-
-export const DatePickerTableBody = withContext<HTMLTableSectionElement, DatePickerTableBodyProps>(
-  DatePicker.TableBody,
-  "tableBody",
-  { baseComponent: true },
-);
-
-interface DatePickerTableCellProps extends DatePicker.TableCellProps, JsxStyleProps {}
-
-export const DatePickerTableCell = withContext<HTMLTableCellElement, DatePickerTableCellProps>(
-  DatePicker.TableCell,
-  "tableCell",
-  { baseComponent: true },
-);
-
-interface DatePickerTableCellTriggerProps extends DatePicker.TableCellTriggerProps, JsxStyleProps {}
-
-export const DatePickerTableCellTrigger = withContext<HTMLDivElement, DatePickerTableCellTriggerProps>(
-  DatePicker.TableCellTrigger,
-  "tableCellTrigger",
-  { baseComponent: true },
-);
-
-interface DatePickerTableHeadProps extends DatePicker.TableHeadProps, JsxStyleProps {}
-
-export const DatePickerTableHead = withContext<HTMLTableSectionElement, DatePickerTableHeadProps>(
-  DatePicker.TableHead,
-  "tableHead",
-  { baseComponent: true },
-);
-
-interface DatePickerTableHeaderProps extends DatePicker.TableHeaderProps, JsxStyleProps {}
-
-export const DatePickerTableHeader = withContext<HTMLTableCellElement, DatePickerTableHeaderProps>(
-  DatePicker.TableHeader,
-  "tableHeader",
-  { baseComponent: true },
-);
-
-interface DatePickerTableProps extends DatePicker.TableProps, JsxStyleProps {}
-
-export const DatePickerTable = withContext<HTMLTableElement, DatePickerTableProps>(DatePicker.Table, "table", {
+export const DatePickerTableCellTrigger = withContext(DatePicker.TableCellTrigger, "tableCellTrigger", {
   baseComponent: true,
 });
 
-interface DatePickerTableRowProps extends DatePicker.TableRowProps, JsxStyleProps {}
+export const DatePickerTableHead = withContext(DatePicker.TableHead, "tableHead", { baseComponent: true });
 
-export const DatePickerTableRow = withContext<HTMLTableRowElement, DatePickerTableRowProps>(
-  DatePicker.TableRow,
-  "tableRow",
-  { baseComponent: true },
-);
+export const DatePickerTableHeader = withContext(DatePicker.TableHeader, "tableHeader", { baseComponent: true });
 
-interface DatePickerTriggerProps extends DatePicker.TriggerProps, JsxStyleProps {}
+export const DatePickerTable = withContext(DatePicker.Table, "table", { baseComponent: true });
 
-export const DatePickerTrigger = withContext<HTMLButtonElement, DatePickerTriggerProps>(DatePicker.Trigger, "trigger", {
-  baseComponent: true,
-});
+export const DatePickerTableRow = withContext(DatePicker.TableRow, "tableRow", { baseComponent: true });
 
-interface DatePickerViewControlProps extends DatePicker.ViewControlProps, JsxStyleProps {}
+export const DatePickerTrigger = withContext(DatePicker.Trigger, "trigger", { baseComponent: true });
 
-export const DatePickerViewControl = withContext<HTMLDivElement, DatePickerViewControlProps>(
-  DatePicker.ViewControl,
-  "viewControl",
-  { baseComponent: true },
-);
+export const DatePickerViewControl = withContext(DatePicker.ViewControl, "viewControl", { baseComponent: true });
 
-interface DatePickerViewProps extends DatePicker.ViewProps, JsxStyleProps {}
+export const DatePickerView = withContext(DatePicker.View, "view", { baseComponent: true });
 
-export const DatePickerView = withContext<HTMLDivElement, DatePickerViewProps>(DatePicker.View, "view", {
-  baseComponent: true,
-});
+export const DatePickerViewTrigger = withContext(DatePicker.ViewTrigger, "viewTrigger", { baseComponent: true });
 
-interface DatePickerViewTriggerProps extends DatePicker.ViewTriggerProps, JsxStyleProps {}
-
-export const DatePickerViewTrigger = withContext<HTMLButtonElement, DatePickerViewTriggerProps>(
-  DatePicker.ViewTrigger,
-  "viewTrigger",
-  { baseComponent: true },
-);
-
-interface DatePickerYearSelectProps extends DatePicker.YearSelectProps, JsxStyleProps {}
-
-export const DatePickerYearSelect = withContext<HTMLSelectElement, DatePickerYearSelectProps>(
-  DatePicker.YearSelect,
-  "yearSelect",
-  { baseComponent: true },
-);
+export const DatePickerYearSelect = withContext(DatePicker.YearSelect, "yearSelect", { baseComponent: true });
 
 export { DatePickerContext } from "@ark-ui/react";

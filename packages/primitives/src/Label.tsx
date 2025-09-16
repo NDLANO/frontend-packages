@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { Field, Fieldset, type HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { type TextProps } from "./Text";
 
 const StyledLegend = styled(
@@ -27,7 +27,7 @@ const StyledLegend = styled(
   { baseComponent: true },
 );
 
-export type LegendProps = HTMLArkProps<"legend"> & JsxStyleProps & TextProps;
+export interface LegendProps extends Omit<HTMLArkProps<"legend">, "color">, StyledProps, TextProps {}
 
 export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, color, ...rest }, ref) => (
@@ -35,7 +35,7 @@ export const Legend = forwardRef<HTMLLegendElement, LegendProps>(
   ),
 );
 
-export type FieldsetLegendProps = Fieldset.LegendProps & TextProps & JsxStyleProps;
+export interface FieldsetLegendProps extends Omit<Fieldset.LegendProps, "color">, TextProps, StyledProps {}
 
 export const FieldsetLegend = forwardRef<HTMLLegendElement, LegendProps>(({ children, ...props }, ref) => (
   <Fieldset.Legend asChild {...props} ref={ref}>
@@ -56,7 +56,7 @@ const StyledLabel = styled(
   { baseComponent: true },
 );
 
-export type LabelProps = HTMLArkProps<"label"> & TextProps & JsxStyleProps;
+export interface LabelProps extends Omit<HTMLArkProps<"label">, "color">, TextProps, StyledProps {}
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", css: cssProp, srOnly, color, ...rest }, ref) => (

@@ -9,8 +9,8 @@
 import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "../createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Heading, Text, type TextProps } from "../Text";
 
 const errorMessageRecipe = sva({
@@ -45,38 +45,24 @@ const errorMessageRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(errorMessageRecipe);
 
-export const ErrorMessageRoot = withProvider<HTMLElement, HTMLArkProps<"article"> & JsxStyleProps>(
-  ark.article,
-  "root",
-  { baseComponent: true },
-);
+export const ErrorMessageRoot = withProvider(ark.article, "root", { baseComponent: true });
 
-export const ErrorMessageContent = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(
-  ark.div,
-  "content",
-  { baseComponent: true },
-);
+export const ErrorMessageContent = withContext(ark.div, "content", { baseComponent: true });
 
-export const ErrorMessageActions = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(
-  ark.div,
-  "actions",
-  { baseComponent: true },
-);
+export const ErrorMessageActions = withContext(ark.div, "actions", { baseComponent: true });
 
-const InternalErrorMessageTitle = forwardRef<HTMLHeadingElement, HTMLArkProps<"h1"> & JsxStyleProps & TextProps>(
+interface ErrorMessageTitleProps extends Omit<HTMLArkProps<"h1">, "color">, StyledProps, TextProps {}
+
+const InternalErrorMessageTitle = forwardRef<HTMLHeadingElement, ErrorMessageTitleProps>(
   ({ textStyle = "heading.small", ...props }, ref) => <Heading textStyle={textStyle} {...props} ref={ref} />,
 );
 
-export const ErrorMessageTitle = withContext<HTMLHeadingElement, HTMLArkProps<"h1"> & JsxStyleProps & TextProps>(
-  InternalErrorMessageTitle,
-  "title",
-);
+export const ErrorMessageTitle = withContext(InternalErrorMessageTitle, "title");
 
-const InternalErrorMessageDescription = forwardRef<HTMLParagraphElement, HTMLArkProps<"p"> & JsxStyleProps & TextProps>(
+interface ErrorMessageDescriptionProps extends Omit<HTMLArkProps<"p">, "color">, StyledProps, TextProps {}
+
+const InternalErrorMessageDescription = forwardRef<HTMLParagraphElement, ErrorMessageDescriptionProps>(
   ({ textStyle = "body.xlarge", ...props }, ref) => <Text textStyle={textStyle} {...props} ref={ref} />,
 );
 
-export const ErrorMessageDescription = withContext<HTMLParagraphElement, HTMLArkProps<"p"> & JsxStyleProps & TextProps>(
-  InternalErrorMessageDescription,
-  "description",
-);
+export const ErrorMessageDescription = withContext(InternalErrorMessageDescription, "description");

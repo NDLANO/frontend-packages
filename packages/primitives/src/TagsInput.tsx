@@ -9,8 +9,8 @@
 import { forwardRef } from "react";
 import { TagsInput, tagsInputAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Label } from "./Label";
 import { type TextProps } from "./Text";
 
@@ -102,77 +102,51 @@ const tagsInputRecipe = sva({
 });
 const { withProvider, withContext } = createStyleContext(tagsInputRecipe);
 
-interface RootProps extends TagsInput.RootProps {
+export interface TagsInputRootProps extends TagsInput.RootProps, StyledProps {
   translations: TagsInput.RootProps["translations"];
 }
 
-export type TagsInputRootProps = RootProps & JsxStyleProps;
-export const TagsInputRoot = withProvider<HTMLDivElement, TagsInputRootProps>(TagsInput.Root, "root", {
+export const TagsInputRoot = withProvider(TagsInput.Root, "root", {
   baseComponent: true,
 });
 
-export type TagsInputClearTriggerProps = TagsInput.ClearTriggerProps & JsxStyleProps;
+export interface TagsInputClearTriggerProps extends TagsInput.ClearTriggerProps, StyledProps {}
 
-export const TagsInputClearTrigger = withContext<HTMLButtonElement, TagsInputClearTriggerProps>(
-  TagsInput.ClearTrigger,
-  "clearTrigger",
-  { baseComponent: true },
-);
+export const TagsInputClearTrigger = withContext(TagsInput.ClearTrigger, "clearTrigger", { baseComponent: true });
 
-export type TagsInputControlProps = TagsInput.ControlProps & JsxStyleProps;
+export interface TagsInputControlProps extends TagsInput.ControlProps, StyledProps {}
 
-export const TagsInputControl = withContext<HTMLDivElement, TagsInputControlProps>(TagsInput.Control, "control", {
+export const TagsInputControl = withContext(TagsInput.Control, "control", { baseComponent: true });
+
+export interface TagsInputInputProps extends TagsInput.InputProps, StyledProps {}
+
+export const TagsInputInput = withContext(TagsInput.Input, "input", { baseComponent: true });
+
+export interface TagsInputItemDeleteTriggerProps extends TagsInput.ItemDeleteTriggerProps, StyledProps {}
+
+export const TagsInputItemDeleteTrigger = withContext(TagsInput.ItemDeleteTrigger, "itemDeleteTrigger", {
   baseComponent: true,
 });
 
-export type TagsInputInputProps = TagsInput.InputProps & JsxStyleProps;
+export interface TagsInputItemInputProps extends TagsInput.ItemInputProps, StyledProps {}
 
-export const TagsInputInput = withContext<HTMLInputElement, TagsInputInputProps>(TagsInput.Input, "input", {
-  baseComponent: true,
-});
+export const TagsInputItemInput = withContext(TagsInput.ItemInput, "itemInput", { baseComponent: true });
 
-export type TagsInputItemDeleteTriggerProps = TagsInput.ItemDeleteTriggerProps & JsxStyleProps;
+export interface TagsInputItemPreviewProps extends TagsInput.ItemPreviewProps, StyledProps {}
 
-export const TagsInputItemDeleteTrigger = withContext<HTMLButtonElement, TagsInputItemDeleteTriggerProps>(
-  TagsInput.ItemDeleteTrigger,
-  "itemDeleteTrigger",
-  { baseComponent: true },
-);
+export const TagsInputItemPreview = withContext(TagsInput.ItemPreview, "itemPreview", { baseComponent: true });
 
-export type TagsInputItemInputProps = TagsInput.ItemInputProps & JsxStyleProps;
+export interface TagsInputItemProps extends TagsInput.ItemProps, StyledProps {}
 
-export const TagsInputItemInput = withContext<HTMLInputElement, TagsInputItemInputProps>(
-  TagsInput.ItemInput,
-  "itemInput",
-  { baseComponent: true },
-);
+export const TagsInputItem = withContext(TagsInput.Item, "item", { baseComponent: true });
 
-export type TagsInputItemPreviewProps = TagsInput.ItemPreviewProps & JsxStyleProps;
+export interface TagsInputItemTextProps extends TagsInput.ItemTextProps, StyledProps {}
 
-export const TagsInputItemPreview = withContext<HTMLDivElement, TagsInputItemPreviewProps>(
-  TagsInput.ItemPreview,
-  "itemPreview",
-  { baseComponent: true },
-);
+export const TagsInputItemText = withContext(TagsInput.ItemText, "itemText", { baseComponent: true });
 
-export type TagsInputItemProps = TagsInput.ItemProps & JsxStyleProps;
+const InternalTagsInputLabel = withContext(TagsInput.Label, "label");
 
-export const TagsInputItem = withContext<HTMLDivElement, TagsInputItemProps>(TagsInput.Item, "item", {
-  baseComponent: true,
-});
-
-export type TagsInputItemTextProps = TagsInput.ItemTextProps & JsxStyleProps;
-
-export const TagsInputItemText = withContext<HTMLSpanElement, TagsInputItemTextProps>(TagsInput.ItemText, "itemText", {
-  baseComponent: true,
-});
-
-const InternalTagsInputLabel = withContext<HTMLLabelElement, TagsInput.LabelProps & JsxStyleProps>(
-  TagsInput.Label,
-  "label",
-);
-
-export type TagsInputLabelProps = TagsInput.LabelProps & JsxStyleProps & TextProps;
+export interface TagsInputLabelProps extends Omit<TagsInput.LabelProps, "color">, StyledProps, TextProps {}
 
 export const TagsInputLabel = forwardRef<HTMLLabelElement, TagsInputLabelProps>(({ children, ...props }, ref) => (
   <InternalTagsInputLabel asChild ref={ref} {...props}>

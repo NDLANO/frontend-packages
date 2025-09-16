@@ -9,8 +9,8 @@
 import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "../createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { Image, type ImageProps } from "../Image";
 import { Heading, type TextProps } from "../Text";
 
@@ -185,7 +185,7 @@ export type ListItemVariantProps = NonNullable<RecipeVariantProps<typeof listIte
 
 type NonInteractiveListItemVariantProps = Omit<ListItemVariantProps, "colorTheme">;
 
-interface BaseListItemProps extends HTMLArkProps<"div">, JsxStyleProps {
+interface BaseListItemProps extends HTMLArkProps<"div">, StyledProps {
   nonInteractive?: true | false;
 }
 
@@ -199,13 +199,7 @@ interface InteractiveListItemProps extends BaseListItemProps, ListItemVariantPro
 
 export type ListItemProps = NonInteractiveListItemProps | InteractiveListItemProps;
 
-const InternalListItemRoot = withProvider<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps & ListItemVariantProps>(
-  ark.div,
-  "root",
-  {
-    baseComponent: true,
-  },
-);
+const InternalListItemRoot = withProvider(ark.div, "root", { baseComponent: true });
 
 export const ListItemRoot = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => (
   <InternalListItemRoot
@@ -215,20 +209,17 @@ export const ListItemRoot = forwardRef<HTMLDivElement, ListItemProps>((props, re
   />
 ));
 
-const InternalListItemHeading = forwardRef<HTMLHeadingElement, TextProps>(
+interface ListItemHeadingProps extends Omit<HTMLArkProps<"p">, "color">, TextProps {}
+
+const InternalListItemHeading = forwardRef<HTMLHeadingElement, ListItemHeadingProps>(
   ({ textStyle = "label.medium", ...props }, ref) => <Heading textStyle={textStyle} {...props} ref={ref} />,
 );
 
-export const ListItemHeading = withContext<HTMLHeadingElement, TextProps & HTMLArkProps<"p"> & JsxStyleProps>(
-  InternalListItemHeading,
-  "title",
-);
+export const ListItemHeading = withContext(InternalListItemHeading, "title");
 
-export const ListItemContent = withContext<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(ark.div, "content", {
-  baseComponent: true,
-});
+export const ListItemContent = withContext(ark.div, "content", { baseComponent: true });
 
-const InternalListItemImage = withContext<HTMLImageElement, ImageProps>(Image, "image");
+const InternalListItemImage = withContext(Image, "image");
 
 export const ListItemImage = forwardRef<HTMLImageElement, ImageProps>(({ variant = "rounded", ...props }, ref) => (
   <InternalListItemImage variant={variant} {...props} ref={ref} />

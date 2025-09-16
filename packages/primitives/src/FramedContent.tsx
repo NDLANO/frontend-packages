@@ -10,7 +10,7 @@ import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 
 const framedContentRecipe = cva({
   base: {
@@ -41,9 +41,9 @@ const framedContentRecipe = cva({
   },
 });
 
-export type FramedContentVariantProps = RecipeVariantProps<typeof framedContentRecipe>;
+export type FramedContentVariantProps = NonNullable<RecipeVariantProps<typeof framedContentRecipe>>;
 
-export type FramedContentProps = HTMLArkProps<"div"> & JsxStyleProps & FramedContentVariantProps;
+export interface FramedContentProps extends HTMLArkProps<"div">, StyledProps, FramedContentVariantProps {}
 
 const StyledFramedContent = styled(ark.div, {}, { baseComponent: true });
 

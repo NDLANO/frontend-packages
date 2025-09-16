@@ -10,7 +10,7 @@ import { type ReactNode, forwardRef, useMemo } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariant } from "@ndla/styled-system/types";
+import type { RecipeVariant, StyledProps } from "@ndla/styled-system/types";
 import { Spinner } from "./Spinner";
 
 export const buttonBaseRecipe = cva({
@@ -253,15 +253,17 @@ type Variant = RecipeVariant<typeof buttonBaseRecipe>["variant"];
 
 type ButtonVariant = Exclude<Variant, "clear" | "clearSubtle">;
 
-export type ButtonVariantProps = { variant?: ButtonVariant } & RecipeVariantProps<typeof buttonRecipe>;
+export interface ButtonVariantProps extends NonNullable<RecipeVariantProps<typeof buttonRecipe>> {
+  variant?: ButtonVariant;
+}
 
-export interface BaseButtonProps extends HTMLArkProps<"button">, JsxStyleProps {
+export interface BaseButtonProps extends HTMLArkProps<"button">, StyledProps {
   loading?: boolean;
   loadingContent?: ReactNode;
   replaceContent?: boolean;
 }
 
-export type ButtonProps = BaseButtonProps & ButtonVariantProps;
+export interface ButtonProps extends BaseButtonProps, ButtonVariantProps {}
 
 const StyledButton = styled(ark.button, {}, { baseComponent: true, defaultProps: { type: "button" } });
 
@@ -307,9 +309,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 type IconButtonVariant = Exclude<Variant, "link">;
 
-export type IconButtonVariantProps = { variant?: IconButtonVariant } & RecipeVariantProps<typeof iconButtonRecipe>;
+export interface IconButtonVariantProps extends NonNullable<RecipeVariantProps<typeof iconButtonRecipe>> {
+  variant?: IconButtonVariant;
+}
 
-export type IconButtonProps = BaseButtonProps & IconButtonVariantProps;
+export interface IconButtonProps extends BaseButtonProps, IconButtonVariantProps {}
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ variant, css: cssProp, loadingContent, size, replaceContent = true, ...props }, ref) => (

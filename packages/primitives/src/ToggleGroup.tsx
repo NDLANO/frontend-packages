@@ -8,8 +8,8 @@
 
 import { toggleGroupAnatomy, ToggleGroup } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const toggleGroupRecipe = sva({
   slots: toggleGroupAnatomy.keys(),
@@ -24,15 +24,11 @@ const toggleGroupRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(toggleGroupRecipe);
 
-export type ToggleGroupVariantProps = RecipeVariantProps<typeof toggleGroupRecipe>;
-export type ToggleGroupRootProps = ToggleGroup.RootProps & JsxStyleProps & ToggleGroupVariantProps;
+export type ToggleGroupVariantProps = NonNullable<RecipeVariantProps<typeof toggleGroupRecipe>>;
+export interface ToggleGroupRootProps extends ToggleGroup.RootProps, StyledProps, ToggleGroupVariantProps {}
 
-export const ToggleGroupRoot = withProvider<HTMLDivElement, ToggleGroupRootProps>(ToggleGroup.Root, "root", {
-  baseComponent: true,
-});
+export const ToggleGroupRoot = withProvider(ToggleGroup.Root, "root", { baseComponent: true });
 
-export type ToggleGroupItemProps = ToggleGroup.ItemProps & JsxStyleProps;
+export interface ToggleGroupItemProps extends ToggleGroup.ItemProps, StyledProps {}
 
-export const ToggleGroupItem = withContext<HTMLButtonElement, ToggleGroupItemProps>(ToggleGroup.Item, "item", {
-  baseComponent: true,
-});
+export const ToggleGroupItem = withContext(ToggleGroup.Item, "item", { baseComponent: true });

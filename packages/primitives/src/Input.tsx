@@ -10,7 +10,7 @@ import { createContext, forwardRef, useCallback, useContext, useEffect, useRef }
 import { Field, type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 import { composeRefs } from "@ndla/util";
 
 interface InputContextType {}
@@ -74,7 +74,9 @@ const StyledInputContainer = styled(
   { baseComponent: true },
 );
 
-export const InputContainer = forwardRef<HTMLDivElement, HTMLArkProps<"div"> & JsxStyleProps>(
+interface InputContainerProps extends HTMLArkProps<"div">, StyledProps {}
+
+export const InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
   ({ children, css: cssProp, ...rest }, ref) => (
     <InputContext.Provider value={{}}>
       <StyledInputContainer css={css.raw(inputCss, cssProp)} {...rest} ref={ref}>
@@ -133,9 +135,9 @@ const inputRecipe = cva({
   },
 });
 
-type InputVariantProps = RecipeVariantProps<typeof inputRecipe>;
+type InputVariantProps = NonNullable<RecipeVariantProps<typeof inputRecipe>>;
 
-export type InputProps = HTMLArkProps<"input"> & JsxStyleProps & InputVariantProps;
+export interface InputProps extends HTMLArkProps<"input">, StyledProps, InputVariantProps {}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(({ css: cssProp, componentSize, ...props }, ref) => {
   const context = useContext(InputContext);
@@ -154,7 +156,7 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>((props, ref) 
   </Field.Input>
 ));
 
-interface TextAreaProps extends HTMLArkProps<"textarea">, JsxStyleProps {
+interface TextAreaProps extends HTMLArkProps<"textarea">, StyledProps {
   autoResize?: boolean;
 }
 

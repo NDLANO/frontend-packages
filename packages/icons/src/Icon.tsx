@@ -9,7 +9,7 @@
 import { type ComponentPropsWithRef } from "react";
 import { type RecipeVariantProps, cva, css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 export const iconRecipe = cva({
   base: {
@@ -43,7 +43,7 @@ interface BaseIconProps extends ComponentPropsWithRef<"svg"> {
   description?: string;
 }
 
-export type Props = BaseIconProps & IconVariantProps & JsxStyleProps;
+export type Props = BaseIconProps & IconVariantProps & StyledProps;
 
 const StyledSvg = styled("svg");
 

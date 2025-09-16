@@ -10,7 +10,7 @@ import { type CSSProperties, forwardRef, useMemo } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { HTMLStyledProps, RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 
 const LIST_ITEM = "& > li";
 const LETTER_LIST = "& > ol[data-variant='letters']";
@@ -126,9 +126,9 @@ const orderedListRecipe = cva({
   },
 });
 
-export type OrderedListVariantProps = RecipeVariantProps<typeof orderedListRecipe>;
+export type OrderedListVariantProps = NonNullable<RecipeVariantProps<typeof orderedListRecipe>>;
 
-export type OrderedListProps = HTMLArkProps<"ol"> & JsxStyleProps & OrderedListVariantProps;
+export interface OrderedListProps extends StyledProps, HTMLArkProps<"ol">, OrderedListVariantProps {}
 
 const StyledOrderedList = styled(ark.ol, {}, { baseComponent: true });
 
@@ -149,7 +149,7 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
   },
 );
 
-export type UnOrderedListProps = HTMLArkProps<"ul"> & JsxStyleProps;
+export interface UnOrderedListProps extends StyledProps, HTMLArkProps<"ul"> {}
 
 export const UnOrderedList = styled("ul", {
   base: {
@@ -192,4 +192,4 @@ export const DefinitionList = styled("dl", {
   },
 });
 
-export type DefinitionListProps = HTMLArkProps<"dl"> & JsxStyleProps;
+export type DefinitionListProps = HTMLStyledProps<"dl">;

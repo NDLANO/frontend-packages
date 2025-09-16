@@ -9,9 +9,9 @@
 import { forwardRef } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
-export type ExpandableBoxProps = HTMLArkProps<"details"> & JsxStyleProps;
+export interface ExpandableBoxProps extends HTMLArkProps<"details">, StyledProps {}
 
 const StyledExpandableBox = styled(
   ark.details,
@@ -41,7 +41,7 @@ export const ExpandableBox = forwardRef<HTMLDetailsElement, ExpandableBoxProps>(
   <StyledExpandableBox {...props} data-embed-type="expandable-box" ref={ref} />
 ));
 
-export type ExpandableBoxSummaryProps = HTMLArkProps<"summary"> & JsxStyleProps;
+export interface ExpandableBoxSummaryProps extends HTMLArkProps<"summary">, StyledProps {}
 
 const StyledExpandableBoxSummary = styled(
   ark.summary,

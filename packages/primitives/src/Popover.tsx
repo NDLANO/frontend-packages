@@ -7,10 +7,10 @@
  */
 
 import { forwardRef } from "react";
-import { Popover, popoverAnatomy, usePopover as _usePopover, type PopoverRootProviderProps } from "@ark-ui/react";
+import { Popover, popoverAnatomy, usePopover as _usePopover } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Heading, type TextProps } from "./Text";
 
 const popoverRecipe = sva({
@@ -52,92 +52,56 @@ const popoverRecipe = sva({
 const { withRootProvider, withContext } = createStyleContext(popoverRecipe);
 
 export type PopoverRootProps = Popover.RootProps;
-const InternalPopoverRoot = withRootProvider<PopoverRootProps>(Popover.Root);
+const InternalPopoverRoot = withRootProvider(Popover.Root);
 
 export const PopoverRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: PopoverRootProps) => (
   <InternalPopoverRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const PopoverAnchor = withContext<HTMLDivElement, Popover.AnchorProps & JsxStyleProps>(
-  Popover.Anchor,
-  "anchor",
-  { baseComponent: true },
-);
+export const PopoverAnchor = withContext(Popover.Anchor, "anchor", { baseComponent: true });
 
-export const PopoverArrowStandalone = withContext<HTMLDivElement, Popover.ArrowProps & JsxStyleProps>(
-  Popover.Arrow,
-  "arrow",
-  { baseComponent: true },
-);
+export const PopoverArrowStandalone = withContext(Popover.Arrow, "arrow", { baseComponent: true });
 
-export const PopoverArrow = (props: Popover.ArrowTipProps & JsxStyleProps) => (
+interface PopoverArrowProps extends Popover.ArrowTipProps, StyledProps {}
+
+export const PopoverArrow = (props: PopoverArrowProps) => (
   <PopoverArrowStandalone>
     <PopoverArrowTip {...props} />
   </PopoverArrowStandalone>
 );
 
-export const PopoverArrowTip = withContext<HTMLDivElement, Popover.ArrowTipProps & JsxStyleProps>(
-  Popover.ArrowTip,
-  "arrowTip",
-  { baseComponent: true },
-);
+export const PopoverArrowTip = withContext(Popover.ArrowTip, "arrowTip", { baseComponent: true });
 
-export const PopoverCloseTrigger = withContext<HTMLButtonElement, Popover.CloseTriggerProps & JsxStyleProps>(
-  Popover.CloseTrigger,
-  "closeTrigger",
-  { baseComponent: true },
-);
+export const PopoverCloseTrigger = withContext(Popover.CloseTrigger, "closeTrigger", { baseComponent: true });
 
-export const PopoverContentStandalone = withContext<HTMLDivElement, Popover.ContentProps & JsxStyleProps>(
-  Popover.Content,
-  "content",
-  { baseComponent: true },
-);
+export const PopoverContentStandalone = withContext(Popover.Content, "content", { baseComponent: true });
 
-export const PopoverContent = forwardRef<HTMLDivElement, Popover.ContentProps & JsxStyleProps>((props, ref) => (
+interface PopoverContentProps extends Popover.ContentProps, StyledProps {}
+
+export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref) => (
   <PopoverPositioner>
     <PopoverContentStandalone {...props} ref={ref} />
   </PopoverPositioner>
 ));
 
-export const PopoverDescription = withContext<HTMLParagraphElement, Popover.DescriptionProps & JsxStyleProps>(
-  Popover.Description,
-  "description",
-  { baseComponent: true },
-);
+export const PopoverDescription = withContext(Popover.Description, "description", { baseComponent: true });
 
-export const PopoverIndicator = withContext<HTMLDivElement, Popover.IndicatorProps & JsxStyleProps>(
-  Popover.Indicator,
-  "indicator",
-  { baseComponent: true },
-);
+export const PopoverIndicator = withContext(Popover.Indicator, "indicator", { baseComponent: true });
 
-export const PopoverPositioner = withContext<HTMLDivElement, Popover.PositionerProps & JsxStyleProps>(
-  Popover.Positioner,
-  "positioner",
-  { baseComponent: true },
-);
+export const PopoverPositioner = withContext(Popover.Positioner, "positioner", { baseComponent: true });
 
-const InternalPopoverTitle = withContext<HTMLDivElement, Popover.TitleProps & JsxStyleProps>(Popover.Title, "title", {
-  baseComponent: true,
-});
+const InternalPopoverTitle = withContext(Popover.Title, "title", { baseComponent: true });
 
-export const PopoverTitle = ({
-  textStyle = "title.medium",
-  children,
-  ...rest
-}: Popover.TitleProps & TextProps & JsxStyleProps) => (
+interface PopoverTitleProps extends Omit<Popover.TitleProps, "color">, TextProps, StyledProps {}
+
+export const PopoverTitle = ({ textStyle = "title.medium", children, ...rest }: PopoverTitleProps) => (
   <Heading textStyle={textStyle} {...rest} asChild consumeCss>
     <InternalPopoverTitle>{children}</InternalPopoverTitle>
   </Heading>
 );
 
-export const PopoverTrigger = withContext<HTMLButtonElement, Popover.TriggerProps & JsxStyleProps>(
-  Popover.Trigger,
-  "trigger",
-  { baseComponent: true },
-);
+export const PopoverTrigger = withContext(Popover.Trigger, "trigger", { baseComponent: true });
 
-export const PopoverRootProvider = withRootProvider<PopoverRootProviderProps>(Popover.RootProvider);
+export const PopoverRootProvider = withRootProvider(Popover.RootProvider);
 
 export const usePopover = _usePopover;

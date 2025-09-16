@@ -10,9 +10,9 @@ import type { HTMLProps } from "react";
 import { mergeProps } from "@zag-js/react";
 import { Label, useFieldContext, type LabelProps, type TextProps } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
-interface Props extends TextProps, JsxStyleProps, Omit<HTMLProps<HTMLParagraphElement>, "color"> {}
+interface Props extends TextProps, StyledProps, Omit<HTMLProps<HTMLParagraphElement>, "color" | "as"> {}
 
 const StyledLabel = styled(Label, {
   base: {

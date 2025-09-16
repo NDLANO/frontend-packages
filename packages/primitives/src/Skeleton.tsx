@@ -8,7 +8,7 @@
 
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 export const Skeleton = styled(
   ark.div,
@@ -33,4 +33,4 @@ export const Skeleton = styled(
   { baseComponent: true },
 );
 
-export interface SkeletonProps extends HTMLArkProps<"div">, JsxStyleProps {}
+export interface SkeletonProps extends HTMLArkProps<"div">, StyledProps {}

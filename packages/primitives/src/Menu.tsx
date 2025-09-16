@@ -9,8 +9,8 @@
 import { forwardRef } from "react";
 import { Menu, menuAnatomy } from "@ark-ui/react";
 import { css, cva, sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps, RecipeVariantProps, SystemStyleObject } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps, StyledProps, SystemStyleObject } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "./Text";
 
 const itemStyle: SystemStyleObject = css.raw({
@@ -139,37 +139,32 @@ const { withRootProvider, withContext } = createStyleContext(menuRecipe);
 
 export type MenuRootProps = Menu.RootProps;
 
-const InternalMenuRoot = withRootProvider<MenuRootProps>(Menu.Root);
+const InternalMenuRoot = withRootProvider(Menu.Root);
 
 export const MenuRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: MenuRootProps) => (
   <InternalMenuRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 
-export const MenuContentStandalone = withContext<HTMLDivElement, JsxStyleProps & Menu.ContentProps>(
-  Menu.Content,
-  "content",
-  {
-    baseComponent: true,
-  },
-);
+export const MenuContentStandalone = withContext(Menu.Content, "content", { baseComponent: true });
 
-export const MenuContent = forwardRef<HTMLDivElement, JsxStyleProps & Menu.ContentProps>((props, ref) => (
+interface MenuContentProps extends Menu.ContentProps, StyledProps {}
+
+export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => (
   <MenuPositioner>
     <MenuContentStandalone ref={ref} {...props} />
   </MenuPositioner>
 ));
 
-const InternalMenuItemGroupLabel = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemGroupLabelProps>(
-  Menu.ItemGroupLabel,
-  "itemGroupLabel",
-);
+const InternalMenuItemGroupLabel = withContext(Menu.ItemGroupLabel, "itemGroupLabel");
+
+interface MenuItemGroupLabelProps extends Omit<Menu.ItemGroupLabelProps, "color">, StyledProps, TextProps {}
 
 export const MenuItemGroupLabel = ({
   textStyle = "label.medium",
   fontWeight = "bold",
   children,
   ...props
-}: Menu.ItemGroupLabelProps & JsxStyleProps & TextProps) => (
+}: MenuItemGroupLabelProps) => (
   <InternalMenuItemGroupLabel {...props} asChild>
     <Text textStyle={textStyle} fontWeight={fontWeight}>
       {children}
@@ -177,18 +172,12 @@ export const MenuItemGroupLabel = ({
   </InternalMenuItemGroupLabel>
 );
 
-export const MenuItemGroup = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemGroupProps>(
-  Menu.ItemGroup,
-  "itemGroup",
-  { baseComponent: true },
-);
+export const MenuItemGroup = withContext(Menu.ItemGroup, "itemGroup", { baseComponent: true });
 
-const InternalMenuItem = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemProps>(Menu.Item, "item", {
-  baseComponent: true,
-});
+const InternalMenuItem = withContext(Menu.Item, "item", { baseComponent: true });
 
-export type MenuItemVariantProps = RecipeVariantProps<typeof itemCva>;
-export type MenuItemProps = Menu.ItemProps & JsxStyleProps & MenuItemVariantProps;
+export type MenuItemVariantProps = NonNullable<RecipeVariantProps<typeof itemCva>>;
+export interface MenuItemProps extends Menu.ItemProps, StyledProps, MenuItemVariantProps {}
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(({ css: cssProp = {}, variant, ...props }, ref) => (
   <InternalMenuItem
@@ -198,19 +187,13 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(({ css: cssPro
   />
 ));
 
-export const MenuPositioner = withContext<HTMLDivElement, JsxStyleProps & Menu.PositionerProps>(
-  Menu.Positioner,
-  "positioner",
-  { baseComponent: true },
-);
+export const MenuPositioner = withContext(Menu.Positioner, "positioner", { baseComponent: true });
 
-const InternalMenuTriggerItem = withContext<HTMLDivElement, JsxStyleProps & Menu.TriggerItemProps>(
-  Menu.TriggerItem,
-  "triggerItem",
-  { baseComponent: true },
-);
+const InternalMenuTriggerItem = withContext(Menu.TriggerItem, "triggerItem", { baseComponent: true });
 
-export const MenuTriggerItem = forwardRef<HTMLDivElement, Menu.TriggerItemProps & JsxStyleProps & MenuItemVariantProps>(
+interface MenuTriggerItemProps extends Menu.TriggerItemProps, StyledProps, MenuItemVariantProps {}
+
+export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
   ({ css: cssProp = {}, variant, ...props }, ref) => (
     <InternalMenuTriggerItem
       css={[itemCva.raw({ variant }), ...(Array.isArray(cssProp) ? cssProp : [cssProp])]}
@@ -220,16 +203,8 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, Menu.TriggerItemProps 
   ),
 );
 
-export const MenuTrigger = withContext<HTMLButtonElement, JsxStyleProps & Menu.TriggerProps>(Menu.Trigger, "trigger", {
-  baseComponent: true,
-});
+export const MenuTrigger = withContext(Menu.Trigger, "trigger", { baseComponent: true });
 
-export const MenuSeparator = withContext<HTMLHRElement, JsxStyleProps & Menu.SeparatorProps>(
-  Menu.Separator,
-  "separator",
-  { baseComponent: true },
-);
+export const MenuSeparator = withContext(Menu.Separator, "separator", { baseComponent: true });
 
-export const MenuItemText = withContext<HTMLDivElement, JsxStyleProps & Menu.ItemTextProps>(Menu.ItemText, "itemText", {
-  baseComponent: true,
-});
+export const MenuItemText = withContext(Menu.ItemText, "itemText", { baseComponent: true });

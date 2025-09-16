@@ -6,10 +6,10 @@
  *
  */
 
-import { Checkbox, checkboxAnatomy } from "@ark-ui/react";
+import { Checkbox, checkboxAnatomy, type HTMLArkProps } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "./Text";
 
 const checkboxRecipe = sva({
@@ -219,45 +219,26 @@ const checkboxRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(checkboxRecipe);
 
-export type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
+export type CheckboxVariantProps = NonNullable<RecipeVariantProps<typeof checkboxRecipe>>;
 
-export type CheckboxRootProps = Checkbox.RootProps & CheckboxVariantProps & JsxStyleProps;
+export interface CheckboxRootProps extends StyledProps, HTMLArkProps<"label">, CheckboxVariantProps {}
 
-export const CheckboxRoot = withProvider<HTMLLabelElement, CheckboxRootProps>(Checkbox.Root, "root", {
-  baseComponent: true,
-});
+export const CheckboxRoot = withProvider(Checkbox.Root, "root", { baseComponent: true });
 
-export const CheckboxIndicator = withContext<HTMLDivElement, Checkbox.IndicatorProps & JsxStyleProps>(
-  Checkbox.Indicator,
-  "indicator",
-  { baseComponent: true },
-);
+export const CheckboxIndicator = withContext(Checkbox.Indicator, "indicator", { baseComponent: true });
 
-const InternalCheckboxLabel = withContext<HTMLSpanElement, JsxStyleProps & Checkbox.LabelProps>(
-  Checkbox.Label,
-  "label",
-);
+const InternalCheckboxLabel = withContext(Checkbox.Label, "label");
 
-export const CheckboxLabel = ({
-  textStyle = "label.medium",
-  children,
-  ...props
-}: Checkbox.LabelProps & TextProps & JsxStyleProps) => (
+interface CheckboxLabelProps extends StyledProps, Omit<Checkbox.LabelProps, "color">, TextProps {}
+
+export const CheckboxLabel = ({ textStyle = "label.medium", children, ...props }: CheckboxLabelProps) => (
   <InternalCheckboxLabel {...props} asChild>
     <Text textStyle={textStyle}>{children}</Text>
   </InternalCheckboxLabel>
 );
 
-export const CheckboxControl = withContext<HTMLDivElement, JsxStyleProps & Checkbox.ControlProps>(
-  Checkbox.Control,
-  "control",
-  { baseComponent: true },
-);
+export const CheckboxControl = withContext(Checkbox.Control, "control", { baseComponent: true });
 
-export const CheckboxGroup = withProvider<HTMLDivElement, JsxStyleProps & Checkbox.GroupProps>(
-  Checkbox.Group,
-  "group",
-  { baseComponent: true },
-);
+export const CheckboxGroup = withProvider(Checkbox.Group, "group", { baseComponent: true });
 
 export const CheckboxHiddenInput = Checkbox.HiddenInput;

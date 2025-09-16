@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type ElementType } from "react";
 import { Select, selectAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Label } from "./Label";
 import { type TextProps } from "./Text";
 
@@ -146,8 +146,8 @@ const selectRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(selectRecipe);
 
-export type SelectRootProps<T extends Select.CollectionItem> = Select.RootProps<T> & JsxStyleProps;
-const InternalSelectRoot = withProvider<HTMLDivElement, SelectRootProps<Select.CollectionItem>>(Select.Root, "root", {
+export interface SelectRootProps<T extends Select.CollectionItem> extends Select.RootProps<T>, StyledProps {}
+const InternalSelectRoot = withProvider<ElementType<SelectRootProps<Select.CollectionItem>>>(Select.Root, "root", {
   baseComponent: true,
 });
 
@@ -157,37 +157,25 @@ export const SelectRoot = <T extends Select.CollectionItem>({
   ...props
 }: SelectRootProps<T>) => <InternalSelectRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />;
 
-export const SelectClearTrigger = withContext<HTMLButtonElement, Select.ClearTriggerProps & JsxStyleProps>(
-  Select.ClearTrigger,
-  "clearTrigger",
-  { baseComponent: true },
-);
+export const SelectClearTrigger = withContext(Select.ClearTrigger, "clearTrigger", { baseComponent: true });
 
-export const SelectContentStandalone = withContext<HTMLDivElement, Select.ContentProps & JsxStyleProps>(
-  Select.Content,
-  "content",
-  { baseComponent: true },
-);
+export const SelectContentStandalone = withContext(Select.Content, "content", { baseComponent: true });
 
-export const SelectContent = forwardRef<HTMLDivElement, Select.ContentProps & JsxStyleProps>((props, ref) => (
+interface SelectContentProps extends Select.ContentProps, StyledProps {}
+
+export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => (
   <SelectPositioner>
     <SelectContentStandalone ref={ref} {...props} />
   </SelectPositioner>
 ));
 
-export const SelectControl = withContext<HTMLDivElement, Select.ControlProps & JsxStyleProps>(
-  Select.Control,
-  "control",
-  { baseComponent: true },
-);
+export const SelectControl = withContext(Select.Control, "control", { baseComponent: true });
 
-export const SelectIndicator = withContext<HTMLDivElement, Select.IndicatorProps & JsxStyleProps>(
-  Select.Indicator,
-  "indicator",
-  { baseComponent: true },
-);
+export const SelectIndicator = withContext(Select.Indicator, "indicator", { baseComponent: true });
 
-export const SelectItemGroupLabel = forwardRef<HTMLDivElement, Select.ItemGroupLabelProps & JsxStyleProps & TextProps>(
+interface SelectItemGroupLabelProps extends Omit<Select.ItemGroupLabelProps, "color">, StyledProps, TextProps {}
+
+export const SelectItemGroupLabel = forwardRef<HTMLDivElement, SelectItemGroupLabelProps>(
   ({ children, ...props }, ref) => (
     <InternalSelectItemGroupLabel asChild ref={ref} {...props}>
       <Label asChild consumeCss>
@@ -197,62 +185,35 @@ export const SelectItemGroupLabel = forwardRef<HTMLDivElement, Select.ItemGroupL
   ),
 );
 
-const InternalSelectItemGroupLabel = withContext<HTMLDivElement, Select.ItemGroupLabelProps & JsxStyleProps>(
-  Select.ItemGroupLabel,
-  "itemGroupLabel",
-);
+const InternalSelectItemGroupLabel = withContext(Select.ItemGroupLabel, "itemGroupLabel");
 
-export const SelectItemGroup = withContext<HTMLDivElement, Select.ItemGroupProps & JsxStyleProps>(
-  Select.ItemGroup,
-  "itemGroup",
-  { baseComponent: true },
-);
+export const SelectItemGroup = withContext(Select.ItemGroup, "itemGroup", { baseComponent: true });
 
-export const SelectItemIndicator = withContext<HTMLDivElement, Select.ItemIndicatorProps & JsxStyleProps>(
-  Select.ItemIndicator,
-  "itemIndicator",
-  { baseComponent: true },
-);
+export const SelectItemIndicator = withContext(Select.ItemIndicator, "itemIndicator", { baseComponent: true });
 
-export const SelectItem = withContext<HTMLDivElement, Select.ItemProps & JsxStyleProps>(Select.Item, "item", {
+export const SelectItem = withContext(Select.Item, "item", {
   baseComponent: true,
 });
 
-export const SelectItemText = withContext<HTMLDivElement, Select.ItemTextProps & JsxStyleProps>(
-  Select.ItemText,
-  "itemText",
-  { baseComponent: true },
-);
+export const SelectItemText = withContext(Select.ItemText, "itemText", { baseComponent: true });
 
-const InternalSelectLabel = withContext<HTMLLabelElement, Select.LabelProps & JsxStyleProps>(Select.Label, "label");
+const InternalSelectLabel = withContext(Select.Label, "label");
 
-export const SelectLabel = forwardRef<HTMLLabelElement, Select.LabelProps & JsxStyleProps & TextProps>(
-  ({ children, ...props }, ref) => (
-    <InternalSelectLabel asChild ref={ref} {...props}>
-      <Label>{children}</Label>
-    </InternalSelectLabel>
-  ),
-);
+interface SelectLabelProps extends Omit<Select.LabelProps, "color">, StyledProps, TextProps {}
 
-export const SelectPositioner = withContext<HTMLDivElement, Select.PositionerProps & JsxStyleProps>(
-  Select.Positioner,
-  "positioner",
-  { baseComponent: true },
-);
+export const SelectLabel = forwardRef<HTMLLabelElement, SelectLabelProps>(({ children, ...props }, ref) => (
+  <InternalSelectLabel asChild ref={ref} {...props}>
+    <Label>{children}</Label>
+  </InternalSelectLabel>
+));
 
-export const SelectTrigger = withContext<HTMLButtonElement, Select.TriggerProps & JsxStyleProps>(
-  Select.Trigger,
-  "trigger",
-  { baseComponent: true },
-);
+export const SelectPositioner = withContext(Select.Positioner, "positioner", { baseComponent: true });
 
-export const SelectValueText = withContext<HTMLSpanElement, Select.ValueTextProps & JsxStyleProps>(
-  Select.ValueText,
-  "valueText",
-  { baseComponent: true },
-);
+export const SelectTrigger = withContext(Select.Trigger, "trigger", { baseComponent: true });
 
-export const SelectList = withContext<HTMLDivElement, Select.ListProps & JsxStyleProps>(Select.List, "list", {
+export const SelectValueText = withContext(Select.ValueText, "valueText", { baseComponent: true });
+
+export const SelectList = withContext(Select.List, "list", {
   baseComponent: true,
 });
 

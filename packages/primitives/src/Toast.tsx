@@ -8,8 +8,8 @@
 
 import { Toast, toastAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "./Text";
 
 const toastRecipe = sva({
@@ -74,31 +74,18 @@ const { withProvider, withContext } = createStyleContext(toastRecipe);
 
 export type ToastRootVariantProps = NonNullable<RecipeVariantProps<typeof toastRecipe>>;
 
-export interface ToastRootProps extends Toast.RootProps, JsxStyleProps, ToastRootVariantProps {}
-export const ToastRoot = withProvider<HTMLDivElement, ToastRootProps>(Toast.Root, "root", { baseComponent: true });
+export interface ToastRootProps extends Toast.RootProps, StyledProps, ToastRootVariantProps {}
+export const ToastRoot = withProvider(Toast.Root, "root", { baseComponent: true });
 
-export const ToastActionTrigger = withContext<HTMLButtonElement, JsxStyleProps & Toast.ActionTriggerProps>(
-  Toast.ActionTrigger,
-  "actionTrigger",
-  { baseComponent: true },
-);
+export const ToastActionTrigger = withContext(Toast.ActionTrigger, "actionTrigger", { baseComponent: true });
 
-export const ToastCloseTrigger = withContext<HTMLDivElement, JsxStyleProps & Toast.CloseTriggerProps>(
-  Toast.CloseTrigger,
-  "closeTrigger",
-  { baseComponent: true },
-);
+export const ToastCloseTrigger = withContext(Toast.CloseTrigger, "closeTrigger", { baseComponent: true });
 
-const InternalToastDescription = withContext<HTMLDivElement, JsxStyleProps & Toast.DescriptionProps>(
-  Toast.Description,
-  "description",
-);
+const InternalToastDescription = withContext(Toast.Description, "description");
 
-export const ToastDescription = ({
-  textStyle = "label.medium",
-  children,
-  ...props
-}: Toast.DescriptionProps & TextProps & JsxStyleProps) => (
+interface ToastDescriptionProps extends Omit<Toast.DescriptionProps, "color">, TextProps, StyledProps {}
+
+export const ToastDescription = ({ textStyle = "label.medium", children, ...props }: ToastDescriptionProps) => (
   <InternalToastDescription asChild>
     <Text asChild consumeCss textStyle={textStyle} {...props}>
       <div>{children}</div>
@@ -106,14 +93,16 @@ export const ToastDescription = ({
   </InternalToastDescription>
 );
 
-const InternalToastTitle = withContext<HTMLDivElement, JsxStyleProps & Toast.TitleProps>(Toast.Title, "title");
+const InternalToastTitle = withContext(Toast.Title, "title");
+
+interface ToastTitleProps extends Omit<Toast.TitleProps, "color">, TextProps, StyledProps {}
 
 export const ToastTitle = ({
   textStyle = "label.medium",
   fontWeight = "semibold",
   children,
   ...props
-}: JsxStyleProps & Toast.TitleProps & TextProps) => (
+}: ToastTitleProps) => (
   <InternalToastTitle asChild>
     <Text asChild consumeCss fontWeight={fontWeight} textStyle={textStyle} {...props}>
       <div>{children}</div>

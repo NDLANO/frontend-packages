@@ -37,7 +37,11 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
     .find((art) => art.id === "types-gen-system")
     ?.files.find((f) => f.file.includes("system-types"));
 
-  if (!factoryJs?.code || !jsxTypes?.code || !systemTypes?.code) {
+  const jsxIndex = args.artifacts
+    .find((art) => art.id === "jsx-patterns-index")
+    ?.files.find((file) => file.file === "index.d.ts");
+
+  if (!factoryJs?.code || !jsxTypes?.code || !systemTypes?.code || !jsxIndex?.code) {
     return args.artifacts;
   }
 
@@ -49,11 +53,11 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   const contextConsume = options.baseComponent || Dynamic.__base__ || typeof Dynamic === "string"`,
   );
 
-  const propsCode = "const { as: Element = __base__, children, ...restProps } = props";
+  const propsCode = "const { as: Element = __base__, unstyled, children, ...restProps } = props";
 
   factoryJs.code = factoryJs.code.replace(
     propsCode,
-    `const { as: Element = __base__, consumeCss, children, ...restProps } = props
+    `const { as: Element = __base__, unstyled, consumeCss, children, ...restProps } = props
 
     const consume = props.asChild
       ? consumeCss && (options.baseComponent || Dynamic.__baseComponent__)
@@ -83,7 +87,7 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   StyledComponent.__baseComponent__ = options.baseComponent || Dynamic.__baseComponent__`,
   );
 
-  const shouldForwardPropCode = "shouldForwardProp?(prop: string, variantKeys: string[]): boolean";
+  const shouldForwardPropCode = "shouldForwardProp?: (prop: string, variantKeys: string[]) => boolean";
 
   jsxTypes.code = jsxTypes.code.replace(
     shouldForwardPropCode,
@@ -96,6 +100,22 @@ export const transformStyledFn = (args: CodegenPrepareHookArgs) => {
   * const Button = styled(ark.button, { baseComponent: true })
   */
   baseComponent?: boolean`,
+  );
+
+  const htmlStyledPropsCode =
+    "export type HTMLStyledProps<T extends ElementType> = JsxHTMLProps<ComponentProps<T> & UnstyledProps & AsProps, JsxStyleProps>";
+
+  jsxTypes.code = jsxTypes.code.replace(
+    htmlStyledPropsCode,
+    `${htmlStyledPropsCode}
+export interface StyledProps extends UnstyledProps, AsProps, JsxStyleProps {}`,
+  );
+
+  const jsxExportCode = "export type { HTMLStyledProps, StyledComponent } from '../types/jsx';";
+
+  jsxIndex.code = jsxIndex.code.replace(
+    jsxExportCode,
+    `export type { HTMLStyledProps, StyledComponent, StyledProps } from '../types/jsx';`,
   );
 
   const jsxStylePropsCode = "export type JsxStyleProps =";

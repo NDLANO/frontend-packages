@@ -8,8 +8,11 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
   const cvaFn = configOrCva.__cva__ || configOrCva.__recipe__ ? configOrCva : cva(configOrCva)
 
   const forwardFn = options.shouldForwardProp || defaultShouldForwardProp
-  const shouldForwardProp = (prop) => forwardFn(prop, cvaFn.variantKeys)
-
+  const shouldForwardProp = (prop) => {
+    if (options.forwardProps?.includes(prop)) return true
+    return forwardFn(prop, cvaFn.variantKeys)
+  }
+  
   const defaultProps = Object.assign(
     options.dataAttr && configOrCva.__name__ ? { 'data-recipe': configOrCva.__name__ } : {},
     options.defaultProps,
@@ -21,7 +24,7 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
   const contextConsume = options.baseComponent || Dynamic.__base__ || typeof Dynamic === "string"
 
   const StyledComponent = /* @__PURE__ */ forwardRef(function StyledComponent(props, ref) {
-    const { as: Element = __base__, consumeCss, children, ...restProps } = props
+    const { as: Element = __base__, unstyled, consumeCss, children, ...restProps } = props
 
     const consume = props.asChild
       ? consumeCss && (options.baseComponent || Dynamic.__baseComponent__)
@@ -48,7 +51,13 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
       return cx(css(cvaStyles, propStyles, cssStyles), combinedProps.className)
     }
 
-    const classes = configOrCva.__recipe__ ? recipeClass : cvaClass
+    const classes = () => {
+      if (unstyled) {
+        const { css: cssStyles, ...propStyles } = styleProps
+        return cx(css(propStyles, cssStyles), combinedProps.className)
+      }
+      return configOrCva.__recipe__ ? recipeClass() : cvaClass()
+    }
 
     return createElement(Element, {
       ref,
@@ -56,7 +65,7 @@ function styledFn(Dynamic, configOrCva = {}, options = {}) {
       ...elementProps,
       ...normalizeHTMLProps(htmlProps),
       ...(consume ? { className: classes() } : { css: classes(), consumeCss } ),
-    }, combinedProps.children ?? children)
+    }, children ?? combinedProps.children)
   })
 
   const name = getDisplayName(__base__)

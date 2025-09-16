@@ -8,8 +8,8 @@
 
 import { Accordion, accordionAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 
 const accordionRecipe = sva({
   slots: accordionAnatomy.keys(),
@@ -124,36 +124,18 @@ const accordionRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(accordionRecipe);
 
-export type AccordionVariantProps = RecipeVariantProps<typeof accordionRecipe>;
+export type AccordionVariantProps = NonNullable<RecipeVariantProps<typeof accordionRecipe>>;
 
-export interface AccordionRootProps extends JsxStyleProps, Accordion.RootProps {}
+export interface AccordionRootProps extends StyledProps, Accordion.RootProps, AccordionVariantProps {}
 
-export const AccordionRoot = withProvider<HTMLDivElement, AccordionRootProps & AccordionVariantProps>(
-  Accordion.Root,
-  "root",
-  { baseComponent: true },
-);
+export const AccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
 
-export const AccordionItemContent = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemContentProps>(
-  Accordion.ItemContent,
-  "itemContent",
-  { baseComponent: true },
-);
+export const AccordionItemContent = withContext(Accordion.ItemContent, "itemContent", { baseComponent: true });
 
-export const AccordionItemIndicator = withContext<HTMLDivElement, JsxStyleProps & Accordion.ItemIndicatorProps>(
-  Accordion.ItemIndicator,
-  "itemIndicator",
-  { baseComponent: true },
-);
+export const AccordionItemIndicator = withContext(Accordion.ItemIndicator, "itemIndicator", { baseComponent: true });
 
-export interface AccordionItemProps extends JsxStyleProps, Accordion.ItemProps {}
+export interface AccordionItemProps extends StyledProps, Accordion.ItemProps {}
 
-export const AccordionItem = withContext<HTMLDivElement, AccordionItemProps>(Accordion.Item, "item", {
-  baseComponent: true,
-});
+export const AccordionItem = withContext(Accordion.Item, "item", { baseComponent: true });
 
-export const AccordionItemTrigger = withContext<HTMLButtonElement, JsxStyleProps & Accordion.ItemTriggerProps>(
-  Accordion.ItemTrigger,
-  "itemTrigger",
-  { baseComponent: true },
-);
+export const AccordionItemTrigger = withContext(Accordion.ItemTrigger, "itemTrigger", { baseComponent: true });

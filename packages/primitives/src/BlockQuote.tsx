@@ -7,10 +7,10 @@
  */
 
 import { forwardRef } from "react";
-import { type HTMLArkProps, ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const blockQuoteRecipe = cva({
   base: {
@@ -38,9 +38,9 @@ const blockQuoteRecipe = cva({
   },
 });
 
-export type BlockQuoteVariantProps = RecipeVariantProps<typeof blockQuoteRecipe>;
+export type BlockQuoteVariantProps = NonNullable<RecipeVariantProps<typeof blockQuoteRecipe>>;
 
-export type BlockQuoteProps = HTMLArkProps<"blockquote"> & JsxStyleProps & BlockQuoteVariantProps;
+export interface BlockQuoteProps extends HTMLArkProps<"blockquote">, StyledProps, BlockQuoteVariantProps {}
 
 const StyledBlockQuote = styled(ark.blockquote, {}, { baseComponent: true });
 

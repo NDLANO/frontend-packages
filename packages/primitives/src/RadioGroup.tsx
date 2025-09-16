@@ -9,9 +9,8 @@
 import { forwardRef } from "react";
 import { ark, RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext, styled } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Text, type TextProps } from "./Text";
 
 const radioGroupRecipe = sva({
@@ -95,36 +94,23 @@ const radioGroupRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(radioGroupRecipe);
 
-export interface RadioGroupRootProps extends RadioGroup.RootProps, JsxStyleProps {}
+export interface RadioGroupRootProps extends RadioGroup.RootProps, StyledProps {}
 
-export const RadioGroupRoot = withProvider<HTMLDivElement, RadioGroupRootProps>(RadioGroup.Root, "root", {
+export const RadioGroupRoot = withProvider(RadioGroup.Root, "root", {
   baseComponent: true,
 });
 
-export const RadioGroupIndicator = withContext<HTMLDivElement, RadioGroup.IndicatorProps & JsxStyleProps>(
-  RadioGroup.Indicator,
-  "indicator",
-  { baseComponent: true },
-);
+export const RadioGroupIndicator = withContext(RadioGroup.Indicator, "indicator", { baseComponent: true });
 
-export const RadioGroupItemControl = withContext<HTMLDivElement, RadioGroup.ItemControlProps & JsxStyleProps>(
-  RadioGroup.ItemControl,
-  "itemControl",
-  { baseComponent: true },
-);
+export const RadioGroupItemControl = withContext(RadioGroup.ItemControl, "itemControl", { baseComponent: true });
 
-export const RadioGroupItem = withContext<HTMLLabelElement, RadioGroup.ItemProps & JsxStyleProps>(
-  RadioGroup.Item,
-  "item",
-  { baseComponent: true },
-);
+export const RadioGroupItem = withContext(RadioGroup.Item, "item", { baseComponent: true });
 
-const InternalRadioGroupItemText = withContext<HTMLSpanElement, RadioGroup.ItemTextProps & JsxStyleProps>(
-  RadioGroup.ItemText,
-  "itemText",
-);
+const InternalRadioGroupItemText = withContext(RadioGroup.ItemText, "itemText");
 
 const InnerRadioGroupItemText = styled(ark.span, {}, { baseComponent: true });
+
+interface RadioGroupItemTextProps extends Omit<RadioGroup.ItemTextProps, "color">, TextProps, StyledProps {}
 
 export const RadioGroupItemText = ({
   textStyle = "label.medium",
@@ -132,7 +118,7 @@ export const RadioGroupItemText = ({
   asChild,
   consumeCss,
   ...props
-}: RadioGroup.ItemTextProps & TextProps & JsxStyleProps) => (
+}: RadioGroupItemTextProps) => (
   <InternalRadioGroupItemText asChild>
     <Text asChild consumeCss textStyle={textStyle} {...props}>
       <InnerRadioGroupItemText asChild={asChild} consumeCss={consumeCss}>
@@ -142,14 +128,13 @@ export const RadioGroupItemText = ({
   </InternalRadioGroupItemText>
 );
 
-export const InternalRadioGroupLabel = withContext<HTMLLabelElement, RadioGroup.LabelProps & JsxStyleProps>(
-  RadioGroup.Label,
-  "label",
-);
+export const InternalRadioGroupLabel = withContext(RadioGroup.Label, "label");
 
 const InnerRadioGroupLabel = styled(ark.div, {}, { baseComponent: true });
 
-export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroup.LabelProps & TextProps & JsxStyleProps>(
+interface RadioGroupLabelProps extends Omit<RadioGroup.LabelProps, "color">, TextProps, StyledProps {}
+
+export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroupLabelProps>(
   ({ textStyle = "label.large", fontWeight = "bold", children, asChild, consumeCss, ...props }, ref) => (
     <InternalRadioGroupLabel {...props} asChild ref={ref}>
       <Text textStyle={textStyle} fontWeight={fontWeight} asChild>

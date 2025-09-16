@@ -8,8 +8,8 @@
 
 import { Pagination, paginationAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
-import { createStyleContext } from "./createStyleContext";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 
 const paginationRecipe = sva({
   slots: paginationAnatomy.keys(),
@@ -31,38 +31,18 @@ const paginationRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(paginationRecipe);
 
-interface RootProps extends Pagination.RootProps {
+export interface PaginationRootProps extends Pagination.RootProps, StyledProps {
   translations: Pagination.RootProps["translations"];
 }
 
-export type PaginationRootProps = JsxStyleProps & RootProps;
+export const PaginationRoot = withProvider(Pagination.Root, "root", { baseComponent: true });
 
-export const PaginationRoot = withProvider<HTMLElement, PaginationRootProps>(Pagination.Root, "root", {
-  baseComponent: true,
-});
+export const PaginationItem = withContext(Pagination.Item, "item", { baseComponent: true });
 
-export const PaginationItem = withContext<HTMLButtonElement, JsxStyleProps & Pagination.ItemProps>(
-  Pagination.Item,
-  "item",
-  { baseComponent: true },
-);
-
-export const PaginationEllipsis = withContext<HTMLDivElement, JsxStyleProps & Pagination.EllipsisProps>(
-  Pagination.Ellipsis,
-  "ellipsis",
-  { baseComponent: true },
-);
+export const PaginationEllipsis = withContext(Pagination.Ellipsis, "ellipsis", { baseComponent: true });
 
 export const PaginationContext = Pagination.Context;
 
-export const PaginationPrevTrigger = withContext<HTMLButtonElement, JsxStyleProps & Pagination.PrevTriggerProps>(
-  Pagination.PrevTrigger,
-  "prevTrigger",
-  { baseComponent: true },
-);
+export const PaginationPrevTrigger = withContext(Pagination.PrevTrigger, "prevTrigger", { baseComponent: true });
 
-export const PaginationNextTrigger = withContext<HTMLButtonElement, JsxStyleProps & Pagination.NextTriggerProps>(
-  Pagination.NextTrigger,
-  "nextTrigger",
-  { baseComponent: true },
-);
+export const PaginationNextTrigger = withContext(Pagination.NextTrigger, "nextTrigger", { baseComponent: true });

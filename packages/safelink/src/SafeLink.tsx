@@ -9,7 +9,7 @@
 import { forwardRef, type HTMLAttributes, type MutableRefObject, type ReactNode, useContext } from "react";
 import { Link, type LinkProps } from "react-router";
 import { styled } from "@ndla/styled-system/jsx";
-import type { JsxStyleProps } from "@ndla/styled-system/types";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { MissingRouterContext } from "./MissingRouterContext";
 
 const oldNdlaRegex = /(.*)\/?node\/(\d+).*/;
@@ -28,7 +28,7 @@ type Props = {
   unstyled?: boolean;
 };
 
-export type SafeLinkProps = Props & LinkProps & JsxStyleProps & HTMLAttributes<HTMLElement>;
+export type SafeLinkProps = Props & LinkProps & StyledProps & HTMLAttributes<HTMLElement>;
 
 const StyledLink = styled(Link, {}, { baseComponent: true });
 

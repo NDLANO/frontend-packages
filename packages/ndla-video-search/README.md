@@ -1,6 +1,6 @@
 # ndla-video-search
 
-A simple library for selecting NDLA videos
+A simple library for selecting NDLA videos.
 
 ## Installation
 

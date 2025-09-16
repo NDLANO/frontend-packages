@@ -1,6 +1,6 @@
 # ndla-audio-search
 
-A simple library for selecting NDLA audio files
+A simple library for selecting NDLA audio files.
 
 ## Installation
 

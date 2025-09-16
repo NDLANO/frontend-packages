@@ -1,6 +1,6 @@
 # ndla-ui
 
-Main UI component library for NDLA
+Main UI component library for NDLA.
 
 ## Installation
 

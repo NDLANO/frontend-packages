@@ -1,6 +1,6 @@
 # ndla-safelink
 
-Link component
+Link component.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 # @ndla/icons
 
-A package containing icons used in NDLA frontends
+A package containing icons used in NDLA frontends.
 
 ## Installation
 

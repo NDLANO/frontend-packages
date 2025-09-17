@@ -32,7 +32,7 @@
     "lib"
   ],
   "dependencies": {
-    "@ark-ui/react": "^5.20.0",
+    "@ark-ui/react": "^5.25.0",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^5.0.12-alpha.0"
   },

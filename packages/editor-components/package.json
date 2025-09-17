@@ -36,10 +36,10 @@
     "types"
   ],
   "dependencies": {
+    "@ark-ui/react": "^5.25.0",
     "@ndla/editor": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/styled-system": "workspace:^",
-    "@zag-js/react": "^1.21.7"
+    "@ndla/styled-system": "workspace:^"
   },
   "peerDependencies": {
     "react": ">= 18",

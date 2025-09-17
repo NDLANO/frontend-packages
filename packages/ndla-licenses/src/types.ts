@@ -26,19 +26,6 @@ export interface LicenseType {
   rights: string[];
 }
 
-export interface RightLocaleInfo {
-  title: string;
-  userFriendlyTitle: string;
-  description: string;
-}
-
-export interface RightType {
-  short: string;
-  nb: RightLocaleInfo;
-  nn: RightLocaleInfo;
-  en: RightLocaleInfo;
-}
-
 const locales = ["nb", "nn", "en"] as const;
 export type Locale = (typeof locales)[number];
 

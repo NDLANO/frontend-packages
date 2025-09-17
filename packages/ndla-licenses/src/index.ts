@@ -25,7 +25,7 @@ export {
   licenses,
   ALL_ABBREVIATIONS,
 } from "./licenses";
-export type { LicenseLocaleType } from "./types";
+export type { LicenseLocaleType } from "./licenses";
 
 export {
   getCopyString,

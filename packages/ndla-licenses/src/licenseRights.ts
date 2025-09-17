@@ -6,9 +6,7 @@
  *
  */
 
-import { isLocale, type Locale } from "./types";
-
-type LocaleString = Record<Locale, string>;
+import { isLocale, type Locale, type LocaleString } from "./types";
 
 interface RightType {
   short: string;

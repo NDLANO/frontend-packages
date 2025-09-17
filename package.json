@@ -45,7 +45,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@ark-ui/react": "^5.14.1",
+    "@ark-ui/react": "^5.25.0",
     "@babel/core": "^7.28.4",
     "@fontsource/source-code-pro": "^4.5.9",
     "@fontsource/source-sans-pro": "^4.5.9",

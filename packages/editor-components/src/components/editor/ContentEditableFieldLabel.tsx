@@ -7,7 +7,7 @@
  */
 
 import type { HTMLProps } from "react";
-import { mergeProps } from "@zag-js/react";
+import { mergeProps } from "@ark-ui/react";
 import { Label, useFieldContext, type LabelProps, type TextProps } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

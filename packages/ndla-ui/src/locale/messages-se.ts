@@ -12,7 +12,10 @@ import constants from "../model";
 const { subjectCategories, subjectTypes, wordClass } = constants;
 
 const messages = {
-  ...contributorTypes.se,
+  ...Object.entries(contributorTypes).reduce<Record<string, string>>((acc, curr) => {
+    acc[curr[0]] = curr[1].nb;
+    return acc;
+  }, {}),
   askNDLA: "Jeara NDLA:s",
   subjectCategories: {
     [subjectCategories.ACTIVE_SUBJECTS]: "Doaimmas",

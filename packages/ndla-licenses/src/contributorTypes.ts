@@ -7,6 +7,7 @@
  */
 
 import { metaTypes } from "./CCRel";
+import type { Locale, LocaleString } from "./types";
 
 const creators = [
   "originator",
@@ -20,149 +21,47 @@ const creators = [
   "illustrator",
   "cowriter",
   "composer",
-];
-const processors = ["processor", "facilitator", "editorial", "linguistic", "idea", "compiler", "correction"];
-const rightsholders = ["rightsholder", "publisher", "distributor", "supplier"];
+] as const;
+const processors = ["processor", "facilitator", "editorial", "linguistic", "idea", "compiler", "correction"] as const;
+const rightsholders = ["rightsholder", "publisher", "distributor", "supplier"] as const;
+
+type CreatorType = (typeof creators)[number];
+type ProcessorType = (typeof processors)[number];
+type RightsholderType = (typeof rightsholders)[number];
+type ContributorType = CreatorType | ProcessorType | RightsholderType;
 
 export const contributorGroups = {
   creators,
   processors,
   rightsholders,
   contributors: [...creators, ...rightsholders, ...processors],
-};
+} as const;
 
-export interface ContributorTypes {
-  [lang: string]: {
-    [key: string]: string;
-  };
-}
+type ContributorTypes = Record<ContributorType, LocaleString>;
 
 export const contributorTypes: ContributorTypes = {
-  en: {
-    originator: "Originator",
-    photographer: "Photographer",
-    artist: "Artist",
-    editorial: "Editorial",
-    writer: "Writer",
-    scriptwriter: "Scriptwriter",
-    reader: "Reader",
-    translator: "Translator",
-    director: "Director",
-    illustrator: "Illustrator",
-    cowriter: "Cowriter",
-    composer: "Composer",
-    processor: "Processor",
-    facilitator: "Facilitator",
-    linguistic: "Linguistic",
-    idea: "Idea",
-    compiler: "Compiler",
-    correction: "Correction",
-    rightsholder: "Rightsholder",
-    publisher: "Publisher",
-    distributor: "Distributor",
-    supplier: "Supplier",
-    author: "Author",
-  },
-  nb: {
-    originator: "Opphaver",
-    photographer: "Fotograf",
-    artist: "Kunstner",
-    editorial: "Redaksjonelt",
-    writer: "Forfatter",
-    scriptwriter: "Manusforfatter",
-    reader: "Innleser",
-    translator: "Oversetter",
-    director: "Regissør",
-    illustrator: "Illustratør",
-    cowriter: "Medforfatter",
-    composer: "Komponist",
-    processor: "Bearbeider",
-    facilitator: "Tilrettelegger",
-    linguistic: "Språklig",
-    idea: "Idé",
-    compiler: "Sammenstiller",
-    correction: "Korrektur",
-    rightsholder: "Rettighetshaver",
-    publisher: "Forlag",
-    distributor: "Distributør",
-    supplier: "Leverandør",
-    author: "Forfatter",
-  },
-  nn: {
-    originator: "Opphavar",
-    photographer: "Fotograf",
-    artist: "Kunstnar",
-    editorial: "Redaksjonelt",
-    writer: "Forfattar",
-    scriptwriter: "Manusforfattar",
-    reader: "Innlesar",
-    translator: "Omsetjar",
-    director: "Regissør",
-    illustrator: "Illustratør",
-    cowriter: "Medforfattar",
-    composer: "Komponist",
-    processor: "Tilarbeidar",
-    facilitator: "Tilretteleggjar",
-    linguistic: "Språkleg",
-    idea: "Idé",
-    compiler: "Sammenstillar",
-    correction: "Korrektur",
-    rightsholder: "Rettshavar",
-    publisher: "Forlag",
-    distributor: "Distributør",
-    supplier: "Leverandør",
-    author: "Forfattar",
-  },
-  se: {
-    originator: "Vuoigŋadahkki",
-    photographer: "Govvejeaddji",
-    artist: "Dáiddár",
-    editorial: "Doaimmahuslaš",
-    writer: "Čálli",
-    scriptwriter: "Mánusčálli",
-    reader: "Lohkki",
-    translator: "Jorgaleaddji",
-    director: "Rešissevra",
-    illustrator: "Govvasárgu",
-    cowriter: "Mielčálli",
-    composer: "Šuokŋadahkki",
-    processor: "Gieđahalli",
-    facilitator: "Heiveheaddji",
-    linguistic: "Gielalaš",
-    idea: "Jurdda",
-    compiler: "Dássádeaddji",
-    correction: "Korrektuvra",
-    rightsholder: "Vuoigatvuođalaš",
-    publisher: "Lágádus",
-    distributor: "Distributevra",
-    supplier: "Lágideaddji",
-    author: "Author",
-  },
-  sma: {
-    originator: "Voestesaajhtere",
-    photographer: "Guvvievaeltije",
-    artist: "Tjiehpiedæjja",
-    editorial: "Redaksjonelle",
-    writer: "Tjaelije",
-    scriptwriter: "Manuse-tjaelije",
-    reader: "Lohkije",
-    translator: "Jarkoestæjja",
-    director: "Bïhkedæjja",
-    illustrator: "Illustratööre",
-    cowriter: "Mubpie tjaelije",
-    composer: "Komponiste",
-    processor: "Gïetedæjja ",
-    facilitator: "Sjïehteladtjije",
-    linguistic: "Gïeleldh",
-    idea: "Åssjalommese",
-    compiler: "Iktedæjja",
-    correction: "Staeriedimmie",
-    rightsholder: "Reakta-aajhtere",
-    publisher: "Berteme",
-    distributor: "Deallahtæjja",
-    supplier: "Deallahtæjja",
-    author: "Author",
-  },
+  originator: { nb: "Opphaver", nn: "Opphavar", en: "Originator" },
+  photographer: { nb: "Fotograf", nn: "Fotograf", en: "Photographer" },
+  artist: { nb: "Kunstner", nn: "Kunstnar", en: "Artist" },
+  editorial: { nb: "Redaksjonelt", nn: "Redaksjonelt", en: "Editorial" },
+  writer: { nb: "Forfatter", nn: "Forfattar", en: "Writer" },
+  scriptwriter: { nb: "Manusforfatter", nn: "Manusforfattar", en: "Scriptwriter" },
+  reader: { nb: "Innleser", nn: "Innlesar", en: "Reader" },
+  translator: { nb: "Oversetter", nn: "Omsetjar", en: "Translator" },
+  director: { nb: "Regissør", nn: "Regissør", en: "Director" },
+  illustrator: { nb: "Illustratør", nn: "Illustratør", en: "Illustrator" },
+  cowriter: { nb: "Medforfatter", nn: "Medforfattar", en: "Cowriter" },
+  composer: { nb: "Komponist", nn: "Komponist", en: "Composer" },
+  processor: { nb: "Bearbeider", nn: "Tilarbeidar", en: "Processor" },
+  facilitator: { nb: "Tilrettelegger", nn: "Tilretteleggjar", en: "Facilitator" },
+  linguistic: { nb: "Språklig", nn: "Språkleg", en: "Linguistic" },
+  idea: { nb: "Idé", nn: "Idé", en: "Idea" },
+  compiler: { nb: "Sammenstiller", nn: "Sammenstillar", en: "Compiler" },
+  correction: { nb: "Korrektur", nn: "Korrektur", en: "Correction" },
+  rightsholder: { nb: "Rettighetshaver", nn: "Rettshavar", en: "Rightsholder" },
+  publisher: { nb: "Forlag", nn: "Forlag", en: "Publisher" },
+  distributor: { nb: "Distributør", nn: "Distributør", en: "Distributor" },
+  supplier: { nb: "Leverandør", nn: "Leverandør", en: "Supplier" },
 };
 
 export interface Contributor {
@@ -176,34 +75,34 @@ export interface CopyrightType {
   rightsholders: Contributor[];
 }
 
-export function mkContributorString(contributors: Contributor[], lang: string, ignoreType?: string) {
+export function mkContributorString(contributors: Contributor[], lang: Locale, ignoreType?: string) {
   return contributors
     .map((contributor) => {
       const type = contributor.type.toLowerCase();
       if (type === ignoreType) {
         return contributor.name;
       }
-      const translatedType = contributorTypes[lang][type];
+      const translatedType = contributorTypes[type as ContributorType][lang];
       return `${translatedType} ${contributor.name}`;
     })
     .join(", ");
 }
 
-export function getGroupedContributorDescriptionList(copyright: CopyrightType, lang: string) {
+export function getGroupedContributorDescriptionList(copyright: CopyrightType, lang: Locale) {
   const { creators, rightsholders, processors } = copyright;
   return [
     {
-      label: contributorTypes[lang].originator,
+      label: contributorTypes.originator[lang],
       description: mkContributorString(creators, lang, "originator"),
       metaType: metaTypes.author,
     },
     {
-      label: contributorTypes[lang].rightsholder,
+      label: contributorTypes.rightsholder[lang],
       description: mkContributorString(rightsholders, lang, "rightsholder"),
       metaType: metaTypes.copyrightHolder,
     },
     {
-      label: contributorTypes[lang].processor,
+      label: contributorTypes.processor[lang],
       description: mkContributorString(processors, lang, "processor"),
       metaType: metaTypes.contributor,
     },

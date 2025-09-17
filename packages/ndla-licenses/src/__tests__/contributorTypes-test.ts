@@ -6,35 +6,7 @@
  *
  */
 
-import {
-  contributorTypes,
-  contributorGroups,
-  mkContributorString,
-  getGroupedContributorDescriptionList,
-} from "../contributorTypes";
-
-test("ContributorTypes keys is the same for each supported language", () => {
-  const enLength = Object.keys(contributorTypes.en);
-  const nbLength = Object.keys(contributorTypes.nb);
-  expect(enLength).toEqual(nbLength);
-});
-
-test("Each contributor type in a contributor group has a valid translation", () => {
-  contributorGroups.processors.forEach((processor) => {
-    expect(contributorTypes.en[processor]).toBeDefined();
-    expect(contributorTypes.nb[processor]).toBeDefined();
-  });
-
-  contributorGroups.creators.forEach((creator) => {
-    expect(contributorTypes.en[creator]).toBeDefined();
-    expect(contributorTypes.nb[creator]).toBeDefined();
-  });
-
-  contributorGroups.rightsholders.forEach((rightsholder) => {
-    expect(contributorTypes.en[rightsholder]).toBeDefined();
-    expect(contributorTypes.nb[rightsholder]).toBeDefined();
-  });
-});
+import { mkContributorString, getGroupedContributorDescriptionList } from "../contributorTypes";
 
 const contributorList = [
   {

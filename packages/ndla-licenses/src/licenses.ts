@@ -52,7 +52,7 @@ const byncnd: LicenseType = {
     nn: "CC BY-NC-ND 4.0: Namngiving-Ikkjekommersiell-Ingen tilarbeiding",
     en: "CC BY-NC-ND 4.0: Attribution-NonCommercial-NoDerivs",
   },
-  url: ccLocaleLink("https://creativecommons.org/licenses/by-nd/4.0"),
+  url: ccLocaleLink("https://creativecommons.org/licenses/by-nc-nd/4.0"),
   linkText: openLicenseLinkTextLocale,
   abbreviation: { nb: byncndAbbrev, nn: byncndAbbrev, en: byncndAbbrev },
   description: {

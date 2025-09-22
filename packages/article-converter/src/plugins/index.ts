@@ -16,7 +16,6 @@ import { dlPlugin } from "./dlPlugin";
 import { h3Plugin } from "./h3Plugin";
 import { mathPlugin } from "./mathPlugin";
 import { navPlugin } from "./navPlugin";
-import { anchorPlugin as oembedAnchorPlugin } from "./oembed/anchorPlugin";
 import { olPlugin } from "./olPlugin";
 import { paragraphPlugin } from "./paragraphPlugin";
 import { summaryPlugin } from "./summaryPlugin";
@@ -24,7 +23,7 @@ import { tablePlugin } from "./tablePlugin";
 import { type PluginType } from "./types";
 import { ulPlugin } from "./ulPlugin";
 
-export const basePlugins: Record<string, PluginType> = {
+export const plugins: Record<string, PluginType> = {
   h2: copyParagraphPlugin,
   h3: h3Plugin,
   ol: olPlugin,
@@ -40,9 +39,4 @@ export const basePlugins: Record<string, PluginType> = {
   details: detailsPlugin,
   dl: dlPlugin,
   blockquote: blockquotePlugin,
-};
-
-export const oembedPlugins: Record<string, PluginType> = {
-  ...basePlugins,
-  a: oembedAnchorPlugin,
 };

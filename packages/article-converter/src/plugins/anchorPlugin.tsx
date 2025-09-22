@@ -7,16 +7,19 @@
  */
 
 import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
+import type { AnchorHTMLAttributes } from "react";
 import { SafeLink } from "@ndla/safelink";
 import { getPossiblyRelativeUrl } from "@ndla/ui";
 import { type PluginType } from "./types";
 
-export const anchorPlugin: PluginType = (node, opts, { path }) => {
+export const anchorPlugin: PluginType = (node, opts, { path, isOembed }) => {
   const props = attributesToProps(node.attribs);
   const href = getPossiblyRelativeUrl(props.href as string, path);
 
+  const oembedProps: AnchorHTMLAttributes<HTMLAnchorElement> = isOembed ? { target: "_blank", rel: "noreferrer" } : {};
+
   return (
-    <SafeLink {...props} to={href}>
+    <SafeLink {...props} to={href} {...oembedProps} target="">
       {domToReact(node.children as DOMNode[], opts)}
     </SafeLink>
   );

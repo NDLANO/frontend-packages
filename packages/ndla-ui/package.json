@@ -1,7 +1,7 @@
 {
   "name": "@ndla/ui",
   "type": "module",
-  "version": "56.0.141-alpha.0",
+  "version": "56.0.142-alpha.0",
   "description": "UI component library for NDLA",
   "license": "GPL-3.0",
   "exports": {

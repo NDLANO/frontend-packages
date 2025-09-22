@@ -1,7 +1,7 @@
 {
   "name": "@ndla/icons",
   "type": "module",
-  "version": "8.0.66-alpha.0",
+  "version": "8.0.67-alpha.0",
   "description": "A package containing icons used in NDLA frontends",
   "license": "GPL-3.0",
   "exports": {

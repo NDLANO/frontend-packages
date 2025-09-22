@@ -9,7 +9,7 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { VolumeUpFill } from "@ndla/icons";
-import { TooltipRoot, TooltipTrigger, TooltipContent, IconButton } from "@ndla/primitives";
+import { IconButton } from "@ndla/primitives";
 
 type Props = {
   src: string;
@@ -35,14 +35,9 @@ const SpeechControl = ({ src, title, type = "audio" }: Props) => {
     <div data-embed-type="speech">
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
-      <TooltipRoot>
-        <TooltipTrigger asChild>
-          <IconButton variant="tertiary" aria-label={t(`${type}.play`)} onClick={togglePlay}>
-            <VolumeUpFill />
-          </IconButton>
-        </TooltipTrigger>
-        <TooltipContent>{t(`${type}.play`)}</TooltipContent>
-      </TooltipRoot>
+      <IconButton variant="tertiary" aria-label={t(`${type}.play`)} title={t(`${type}.play`)} onClick={togglePlay}>
+        <VolumeUpFill />
+      </IconButton>
     </div>
   );
 };

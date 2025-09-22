@@ -32,6 +32,10 @@ export const iconRecipe = cva({
         width: "medium",
         height: "medium",
       },
+      large: {
+        width: "xxlarge",
+        height: "xxlarge",
+      },
     },
   },
 });

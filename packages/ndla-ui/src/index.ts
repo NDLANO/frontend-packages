@@ -56,8 +56,6 @@ export { getPossiblyRelativeUrl } from "./utils/relativeUrl";
 
 export { default as RelatedArticleList, RelatedArticle } from "./RelatedArticleList";
 
-export { default as ErrorMessage } from "./ErrorMessage";
-
 export { FileListEmbed, File, PdfFile, FileListItem, FileListElement, FileListWrapper } from "./FileList";
 
 export { default as FactBox } from "./FactBox";

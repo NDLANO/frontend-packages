@@ -27,7 +27,7 @@
     "fast-glob": "^3.3.3",
     "normalize-url": "^8.0.1",
     "url-regex-safe": "^4.0.0",
-    "vercel": "^42.3.0"
+    "vercel": "^48.1.1"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.6"

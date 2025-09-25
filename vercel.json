@@ -1,26 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "storybook-static/index.html" },
-    { "source": "/(.*)", "destination": "storybook-static/$1" }
-  ],
-  "headers": [
-    {
-      "source": "/",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "s-maxage=1000"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "s-maxage=86400"
-        }
-      ]
-    }
-  ]
+  "framework": "storybook",
+  "buildCommand": "yarn storybook build",
+  "installCommand": ""
 }

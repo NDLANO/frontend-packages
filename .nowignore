@@ -1,5 +1,0 @@
-# Whitelist storybook-static
-/*
-!/packages
-/packages/*
-!/storybook-static

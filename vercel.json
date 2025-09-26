@@ -1,4 +1,5 @@
 {
   "framework": "storybook",
-  "buildCommand": "yarn build-storybook"
+  "buildCommand": "yarn build-storybook",
+  "installCommand": ""
 }

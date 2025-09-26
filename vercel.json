@@ -1,5 +1,4 @@
 {
   "framework": "storybook",
-  "buildCommand": "yarn build-storybook",
-  "installCommand": "yarn set version 4.9.2 --yarn-path && yarn install"
+  "buildCommand": "yarn build-storybook"
 }

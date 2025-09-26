@@ -37,9 +37,8 @@ jobs:
         run: yarn bootstrap:ci
       - name: "Check-all"
         run: yarn check-all
-      - name: "Build storybook"
-        run: yarn build-storybook
-      - name: "Deploy designmanual"
-        if: github.ref == 'refs/heads/master'
-        run: yarn deploy
-        continue-on-error: true
+      - name: "Deploy to vercel"
+        if: github.event_name == 'pull_request'
+        uses: ./.github/actions/vercel-deploy
+        with:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

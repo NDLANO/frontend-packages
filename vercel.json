@@ -1,5 +1,5 @@
 {
   "framework": "storybook",
-  "buildCommand": "yarn bootstrap:ci && yarn build-storybook",
+  "buildCommand": "yarn build-storybook",
   "installCommand": "yarn set version 4.9.2 --yarn-path && yarn install"
 }

@@ -11,14 +11,12 @@ import { isLocale, type Locale, type LocaleString } from "./types";
 interface RightType {
   short: string;
   title: LocaleString;
-  userFriendlyTitle: LocaleString;
   description: LocaleString;
 }
 
 interface RightLocaleInfo {
   short: string;
   title: string;
-  userFriendlyTitle: string;
   description: string;
 }
 
@@ -39,7 +37,6 @@ export const rights = {
 const by: RightType = {
   short: rights.BY,
   title: { nb: "Navngivelse", nn: "Namngiving", en: "Attribution" },
-  userFriendlyTitle: { nb: "Navngivelse", nn: "Namngiving", en: "Refer to name" },
   description: {
     nb: "Du må alltid oppgi hvem som har laget innholdet.",
     nn: "Du må alltid oppgi kven som har laga innhaldet.",
@@ -50,7 +47,6 @@ const by: RightType = {
 const sa: RightType = {
   short: rights.SA,
   title: { nb: "Del på samme vilkår", nn: "Del på same vilkår", en: "Share with same license" },
-  userFriendlyTitle: { nb: "Del på samme vilkår", nn: "Del på same vilkår", en: "Share with same license" },
   description: {
     nb: "Du kan bare dele innholdet med samme lisens som det opprinnelige innholdet.",
     nn: "Du kan berre dele innhaldet med same lisens som det opphavlege innhaldet.",
@@ -61,7 +57,6 @@ const sa: RightType = {
 const nc: RightType = {
   short: rights.NC,
   title: { nb: "Ikke-kommersiell", nn: "Ikkje-kommersiell", en: "Non Commercial" },
-  userFriendlyTitle: { nb: "Ikke-kommersiell", nn: "Ikkje-kommersiell", en: "Non Commercial" },
   description: {
     nb: "Du kan ikke tjene penger på bruk av dette innholdet.",
     nn: "Du kan ikkje tene pengar på bruk av dette innhaldet.",
@@ -72,7 +67,6 @@ const nc: RightType = {
 const nd: RightType = {
   short: rights.ND,
   title: { nb: "Ingen bearbeiding", nn: "Ingen tilarbeiding", en: "NO DERIVES" },
-  userFriendlyTitle: { nb: "Ingen bearbeiding", nn: "Ingen tilarbeiding", en: "NO DERIVES" },
   description: {
     nb: "Du kan ikke endre innholdet.",
     nn: "Du kan ikkje endre innhaldet.",
@@ -83,7 +77,6 @@ const nd: RightType = {
 const pd: RightType = {
   short: rights.PD,
   title: { nb: "Offentlig eie", nn: "Offentleg eige", en: "Public Domain" },
-  userFriendlyTitle: { nb: "Offentlig eiendom", nn: "Offentleg eigedom", en: "Public Domain" },
   description: {
     nb: "Innholdet er så gammelt at du kan bruke det som du vil.",
     nn: "Innhaldet er så gammalt at du kan bruke det som du vil.",
@@ -94,7 +87,6 @@ const pd: RightType = {
 const cc0: RightType = {
   short: rights.CC0,
   title: { nb: "Gitt til fellesskapet", nn: "Gjeve til fellesskapet", en: "Public Domain Dedication" },
-  userFriendlyTitle: { nb: "Gitt til fellesskapet", nn: "Gjeve til fellesskapet", en: "Public Domain Dedication" },
   description: {
     nb: "Du kan bruke innholdet fritt.",
     nn: "Du kan bruke innhaldet fritt.",
@@ -105,7 +97,6 @@ const cc0: RightType = {
 const copyrighted: RightType = {
   short: rights.COPYRIGHTED,
   title: { nb: "Opphavsrett", nn: "Opphavsrett", en: "Copyright" },
-  userFriendlyTitle: { nb: "Opphavsrett", nn: "Opphavsrett", en: "Copyright" },
   description: {
     nb: "Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.",
     nn: "Det er berre den som har laga innhaldet som kan endre, publisera og gje andre rett til å bruke innhaldet.",
@@ -116,7 +107,6 @@ const copyrighted: RightType = {
 const cc: RightType = {
   short: rights.CC,
   title: { nb: "Creative Commons", nn: "Creative Commons", en: "Creative Commons" },
-  userFriendlyTitle: { nb: "Opphavsrett", nn: "Opphavsrett", en: "Copyright" },
   description: {
     nb: "Denne lisensen gir deg rett til å dele og bruke dette innholdet på visse vilkår:",
     nn: "Denne lisensen gir deg rett til å dele og bruke dette innhaldet på visse vilkår:",
@@ -127,7 +117,6 @@ const cc: RightType = {
 const na: RightType = {
   short: rights.NA,
   title: { nb: "N/A - ikke relevant", nn: "N/A - ikkje relevant", en: "N/A - not applicable" },
-  userFriendlyTitle: { nb: "NA - ikke relevant", nn: "NA - ikkje relevant", en: "NA - not applicable" },
   description: {
     nb: "Dette merket er ment for innhold som ikke trenger lisens.",
     nn: "Dette merket er meint for innhald som ikkje treng lisens.",
@@ -155,7 +144,6 @@ function licenseRightByLocale(license: RightType, locale: Locale | string | unde
   return {
     short: license.short,
     title: license.title[surelyLocale],
-    userFriendlyTitle: license.userFriendlyTitle[surelyLocale],
     description: license.description[surelyLocale],
   };
 }
@@ -171,7 +159,6 @@ export function getLicenseRightByAbbreviation(
   return {
     short: abbreviation,
     title: abbreviation,
-    userFriendlyTitle: abbreviation,
     description: abbreviation,
   };
 }

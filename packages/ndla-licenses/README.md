@@ -43,17 +43,17 @@ import { getLicenseRightByAbbreviation, rights } from "@ndla/licenses";
 const licenseRight = getLicenseRightByAbbreviation(rights.BY, "en");
 
 console.log(licenseRight);
-//> { short: 'cc', title: 'Copyright', userFriendlyTitle: 'Copyright', description: 'Only the creator can derive...' }
+//> { short: 'cc', title: 'Copyright', description: 'Only the creator can derive...' }
 
 // defaults to Norsk Bokmål (nb)
 const licenseRight = getLicenseRightByAbbreviation(rights.CC, "unknown-locale");
 console.log(licenseRight);
-//> { short: 'cc', title: 'Copyright', userFriendlyTitle: 'Opphavsrett', description: 'Bare opphavspersonen kan bearbeide...' }
+//> { short: 'cc', title: 'Copyright', description: 'Bare opphavspersonen kan bearbeide...' }
 
 // returns abbreviation if licenseRight is unknown
 const licenseRight = getLicenseRightByAbbreviation("unknown-lr", "en");
 console.log(licenseRight);
-//> { short: 'unknown-lr', title: 'unknown-lr', userFriendlyTitle: 'unknown-lr', description: 'unknown-lr'}
+//> { short: 'unknown-lr', title: 'unknown-lr', description: 'unknown-lr'}
 ```
 
 ### License right constants

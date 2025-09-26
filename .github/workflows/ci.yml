@@ -42,3 +42,5 @@ jobs:
         uses: ./.github/actions/vercel-deploy
         with:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          MASTER_ALIAS: "designmanual.ndla.no"
+          REPO_NAME: "frontend-packages"

@@ -4,6 +4,12 @@ inputs:
   VERCEL_TOKEN:
     description: "Vercel API token"
     required: true
+  MASTER_ALIAS:
+    description: "URL to alias to when something is merged into master"
+    required: true
+  REPO_NAME:
+    description: "The name of the repo the action is being ran in. Used to generate PR preview URLs"
+    required: true
 runs:
   using: "composite"
   steps:
@@ -52,9 +58,9 @@ runs:
       continue-on-error: true
       run: |
         if [ ${{github.ref}} == 'refs/heads/master' ]; then
-          ALIAS="designmanual.ndla.no"
+          ALIAS="${{ inputs.MASTER_ALIAS }}"
         else
-          ALIAS="frontend-packages-${{ github.event.number }}.vercel.app"
+          ALIAS="${{ inputs.REPO_NAME }}-${{ github.event.number }}.vercel.app"
         fi
         vercel alias --token=${{ inputs.VERCEL_TOKEN }} ${{ steps.deploy.outputs.DEPLOYMENT_URL }} $ALIAS
         echo "ALIAS=$ALIAS" >> "$GITHUB_OUTPUT"

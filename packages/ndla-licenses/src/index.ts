@@ -16,7 +16,12 @@ export {
 export { resourceTypes, getResourceTypeNamespace, metaTypes } from "./CCRel";
 export type { MetaType } from "./CCRel";
 
-export { rights, getLicenseRightByAbbreviation } from "./licenseRights";
+export { rights, isLicenseRight } from "./licenseRights";
+export type { LicenseRight } from "./licenseRights";
+
+export { licenseRights as licenseRightsNB } from "./licenseTranslationsNB";
+export { licenseRights as licenseRightsNN } from "./licenseTranslationsNN";
+export { licenseRights as licenseRightsEN } from "./licenseTranslationsEN";
 
 export {
   getLicenseByAbbreviation,

@@ -22,8 +22,9 @@ const restrictedReuseLocale: LocaleString = {
   en: "Restricted reuse",
 };
 
+const VERSION = "4.0";
 
-const byncndAbbrev = `${rights.CC} ${rights.BY}-${rights.NC}-${rights.ND} ${rights.VERSION}`.toUpperCase();
+const byncndAbbrev = `${rights.CC} ${rights.BY}-${rights.NC}-${rights.ND} ${VERSION}`.toUpperCase();
 
 const ccLocaleLink = (link: string) => {
   const noLink = `${link}/deed.no`;
@@ -51,7 +52,7 @@ const byncnd: LicenseType = {
   rights: [rights.CC, rights.BY, rights.NC, rights.ND],
 };
 
-const byncsaAbbrev = `${rights.CC} ${rights.BY}-${rights.NC}-${rights.SA} ${rights.VERSION}`.toUpperCase();
+const byncsaAbbrev = `${rights.CC} ${rights.BY}-${rights.NC}-${rights.SA} ${VERSION}`.toUpperCase();
 
 const byncsa: LicenseType = {
   short: restrictedReuseLocale,
@@ -70,7 +71,7 @@ const byncsa: LicenseType = {
   rights: [rights.CC, rights.BY, rights.NC, rights.SA],
 };
 
-const byncAbbrev = `${rights.CC} ${rights.BY}-${rights.NC} ${rights.VERSION}`.toUpperCase();
+const byncAbbrev = `${rights.CC} ${rights.BY}-${rights.NC} ${VERSION}`.toUpperCase();
 
 const bync: LicenseType = {
   short: restrictedReuseLocale,
@@ -89,7 +90,7 @@ const bync: LicenseType = {
   rights: [rights.CC, rights.BY, rights.NC],
 };
 
-const byndAbbrev = `${rights.CC} ${rights.BY}-${rights.ND} ${rights.VERSION}`.toUpperCase();
+const byndAbbrev = `${rights.CC} ${rights.BY}-${rights.ND} ${VERSION}`.toUpperCase();
 
 const bynd: LicenseType = {
   short: restrictedReuseLocale,
@@ -108,7 +109,7 @@ const bynd: LicenseType = {
   rights: [rights.CC, rights.BY, rights.ND],
 };
 
-const bysaAbbrev = `${rights.CC} ${rights.BY}-${rights.SA} ${rights.VERSION}`.toUpperCase();
+const bysaAbbrev = `${rights.CC} ${rights.BY}-${rights.SA} ${VERSION}`.toUpperCase();
 
 const bysa: LicenseType = {
   short: restrictedReuseLocale,
@@ -127,7 +128,7 @@ const bysa: LicenseType = {
   rights: [rights.CC, rights.BY, rights.SA],
 };
 
-const byAbbrev = `${rights.CC} ${rights.BY} ${rights.VERSION}`.toUpperCase();
+const byAbbrev = `${rights.CC} ${rights.BY} ${VERSION}`.toUpperCase();
 
 const by: LicenseType = {
   short: freeUseLocale,

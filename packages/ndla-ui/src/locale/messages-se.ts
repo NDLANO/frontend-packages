@@ -6,7 +6,7 @@
  *
  */
 
-import { contributorTypes } from "@ndla/licenses";
+import { contributorTypes, licenseRightsNB } from "@ndla/licenses";
 import constants from "../model";
 
 const { subjectCategories, subjectTypes, wordClass } = constants;
@@ -466,6 +466,9 @@ const messages = {
       section: "Seksjon ({{shortcut}})",
       link: "Lenke ({{shortcut}})",
     },
+  },
+  licenses: {
+    rights: licenseRightsNB,
   },
 };
 

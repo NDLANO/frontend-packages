@@ -717,24 +717,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/source-code-pro@npm:^4.5.9":
-  version: 4.5.9
-  resolution: "@fontsource/source-code-pro@npm:4.5.9"
-  checksum: 10c0/e21523a82a2174f20887edd45fb18deedf1383256b8dcad2bdbe40b75670a81ecc0a238a9be80154797046a830bac9415624fed9e5e112b6801e56a07d097b47
+"@fontsource-variable/source-code-pro@npm:^5.2.7":
+  version: 5.2.7
+  resolution: "@fontsource-variable/source-code-pro@npm:5.2.7"
+  checksum: 10c0/8c0a909782e2f950571701b5686f22ef12ae635528eabced63245910630f0bc95cfe9fc178fb54f0f0b01304eae66c7de8ab14cd73511826116718a900a2ae20
   languageName: node
   linkType: hard
 
-"@fontsource/source-sans-pro@npm:^4.5.9":
-  version: 4.5.9
-  resolution: "@fontsource/source-sans-pro@npm:4.5.9"
-  checksum: 10c0/4ae2c75f3b2315e5a23f00ae4491867118ccc1161ee7c2ea5d45ee1f80534fdb37764ab6b2cf80382bca7b3c3d909df69d869df7880128cc8f949e747d8d12f1
-  languageName: node
-  linkType: hard
-
-"@fontsource/source-serif-pro@npm:^4.5.7":
-  version: 4.5.7
-  resolution: "@fontsource/source-serif-pro@npm:4.5.7"
-  checksum: 10c0/cb30a860d7b45efd9ea4f5f083e5241c228991a05e7a7bc2f35c65b6ace518b9f9659a16ef96d936c8ec2e085eea34a2bcf2937de64ea419666f8bf211279916
+"@fontsource-variable/source-serif-4@npm:^5.2.9":
+  version: 5.2.9
+  resolution: "@fontsource-variable/source-serif-4@npm:5.2.9"
+  checksum: 10c0/95bf11dbdf1b9948d6f8c01ed194c0dea41c277ef65f1f43d24ad2690b4dc57ec0ccae0adbdd9648604a436e1c7b02441a85474605d53dce2f4619e9df162df6
   languageName: node
   linkType: hard
 
@@ -6825,9 +6818,8 @@ __metadata:
   dependencies:
     "@ark-ui/react": "npm:^5.25.0"
     "@babel/core": "npm:^7.28.4"
-    "@fontsource/source-code-pro": "npm:^4.5.9"
-    "@fontsource/source-sans-pro": "npm:^4.5.9"
-    "@fontsource/source-serif-pro": "npm:^4.5.7"
+    "@fontsource-variable/source-code-pro": "npm:^5.2.7"
+    "@fontsource-variable/source-serif-4": "npm:^5.2.9"
     "@ndla/types-backend": "npm:^1.0.50"
     "@pandacss/dev": "npm:^1.3.1"
     "@storybook/addon-a11y": "npm:^9.1.5"
@@ -7499,9 +7491,9 @@ __metadata:
   linkType: hard
 
 "ignore@npm:^5.0.4, ignore@npm:^5.2.0":
-  version: 5.3.2
-  resolution: "ignore@npm:5.3.2"
-  checksum: 10c0/f9f652c957983634ded1e7f02da3b559a0d4cc210fca3792cb67f1b153623c9c42efdc1c4121af171e295444459fc4a9201101fb041b1104a3c000bccb188337
+  version: 5.2.4
+  resolution: "ignore@npm:5.2.4"
+  checksum: 10c0/7c7cd90edd9fea6e037f9b9da4b01bf0a86b198ce78345f9bbd983929d68ff14830be31111edc5d70c264921f4962404d75b7262b4d9cc3bc12381eccbd03096
   languageName: node
   linkType: hard
 

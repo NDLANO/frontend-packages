@@ -311,7 +311,11 @@ const messages = {
       disclaimer: "Accessibility warning",
     },
   },
-  uuDisclaimer: { title: "Accessibility" },
+  uuDisclaimer: {
+    title: "Accessibility",
+    skipContent: "Skip non-accessible content",
+    contentCompleted: "End of non-accessible content.",
+  },
   gloss: {
     examples: "Examples",
     showExamples: "Show examples",

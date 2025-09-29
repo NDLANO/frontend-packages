@@ -13,7 +13,7 @@
     "format-check": "prettier '**/*.{js,jsx,md,ts,tsx}' --check --experimental-cli",
     "type-check": "tsc --noEmit",
     "type-check-watch": "yarn type-check --watch --preserveWatchOutput",
-    "test": "cross-env NODE_ENV=unittest vitest --run",
+    "test": "vitest --run",
     "check-all": "yarn type-check && yarn format-check && yarn lint-es && yarn test",
     "deploy": "vercel --token $VERCEL_TOKEN alias set frontend-packages-master.vercel.app designmanual.ndla.no",
     "clean": "rm -rf ./packages/*/dist ./packages/*/es ./packages/*/lib",
@@ -25,7 +25,7 @@
     "watch:tsc": "nx watch --all -- nx prepublish \\$NX_PROJECT_NAME",
     "watch": "concurrently 'yarn watch:src' 'yarn watch:tsc'",
     "start": "storybook dev -p 6006 --no-open",
-    "check-translations": "cross-env NODE_ENV=unittest vitest --run 'packages/ndla-ui/src/locale/__tests__/'",
+    "check-translations": "vitest --run 'packages/ndla-ui/src/locale/__tests__/'",
     "generate:icons": "node ./scripts/createTsIconComponents.mjs"
   },
   "repository": {
@@ -67,7 +67,6 @@
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^5.0.0",
     "concurrently": "^9.2.0",
-    "cross-env": "^7.0.3",
     "eslint": "^9.32.0",
     "i18next": "^25.4.2",
     "jsdom": "^26.1.0",

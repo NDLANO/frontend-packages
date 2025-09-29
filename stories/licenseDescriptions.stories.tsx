@@ -80,7 +80,6 @@ export const Default: StoryFn = () => {
               </tr>
               <tr>
                 <td>Linktekst</td>
-                <td>{license.linkText}</td>
               </tr>
               <tr>
                 <td>Beskrivelse</td>
